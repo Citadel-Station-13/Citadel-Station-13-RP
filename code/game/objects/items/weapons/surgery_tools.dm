@@ -58,7 +58,7 @@
 	name = "surgical drill"
 	desc = "You can drill using this item. You dig?"
 	icon_state = "drill"
-	hitsound = 'sound/weapons/circsawhit.ogg'
+	attack_sound = 'sound/weapons/circsawhit.ogg'
 	matter = list(MAT_STEEL = 15000, MAT_GLASS = 10000)
 	damage_force = 15.0
 	w_class = ITEMSIZE_NORMAL
@@ -144,7 +144,7 @@
 	name = "circular saw"
 	desc = "For heavy duty cutting."
 	icon_state = "saw3"
-	hitsound = 'sound/weapons/circsawhit.ogg'
+	attack_sound = 'sound/weapons/circsawhit.ogg'
 	damage_force = 15.0
 	w_class = ITEMSIZE_NORMAL
 	throw_force = 9.0
@@ -161,7 +161,7 @@
 	desc = "For heavy duty cutting (and sealing), with science!"
 	icon_state = "adv_saw"
 	item_state = "saw3"
-	hitsound = 'sound/weapons/emitter2.ogg'
+	attack_sound = 'sound/weapons/emitter2.ogg'
 	damtype = SEARING
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)

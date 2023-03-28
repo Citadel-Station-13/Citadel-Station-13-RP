@@ -81,7 +81,7 @@
 	damage_force = 15
 	throw_force = 15
 	attack_verb = list("stabbed", "chopped", "cut")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	can_hold = list(
 		/obj/item/pen/crayon/chalk,
 		/obj/item/reagent_containers/pill,

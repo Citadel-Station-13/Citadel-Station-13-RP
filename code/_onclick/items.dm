@@ -254,8 +254,8 @@
 		return NONE
 	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
-	if(hitsound)
-		playsound(src, hitsound, 50, 1, -1)
+	if(attack_sound)
+		playsound(src, attack_sound, 50, 1, -1)
 	// feedback
 	visible_message(SPAN_DANGER("[L] has been [length(attack_verb)? pick(attack_verb) : attack_verb] with [src] by [user]!"))
 

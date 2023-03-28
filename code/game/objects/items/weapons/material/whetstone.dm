@@ -53,7 +53,7 @@
 	desc = "A refined, fine grit whetstone, useful for sharpening dull edges, polishing out dents, and, with extra material, replacing an edge."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "sharpener"
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 	force_divisor = 0.7
 	thrown_force_divisor = 1
 	var/repair_amount = 5

@@ -26,7 +26,7 @@
 	var/base_icon
 	var/base_name
 	var/unwielded_force_divisor = 0.25
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 
@@ -211,7 +211,7 @@
 	throw_speed = 5
 	edge = 0
 	sharp = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
 	default_material = "glass"
@@ -300,7 +300,7 @@
 	description_info = "This weapon can cleave, striking nearby lesser, hostile enemies close to the primary target.  It must be held in both hands to do this."
 	unwielded_force_divisor = 0.25
 	force_divisor = 0.6 // 9/36 with hardness 60 (steel) and 0.25 unwielded divisor
-	hitsound = 'sound/weapons/heavysmash.ogg'
+	attack_sound = 'sound/weapons/heavysmash.ogg'
 	w_class = ITEMSIZE_HUGE
 	slowdown = 1.5
 	dulled_divisor = 0.95	//Still metal on a stick

@@ -217,8 +217,8 @@
 			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
-				if (I.hitsound)
-					playsound(loc, I.hitsound, 50, 1, -1)
+				if (I.attack_sound)
+					playsound(loc, I.attack_sound, 50, 1, -1)
 		take_damage(W.damage_force)
 
 	else

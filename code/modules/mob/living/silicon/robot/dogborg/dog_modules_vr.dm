@@ -5,7 +5,7 @@
 	desc = "The jaws of the law."
 	damage_force = 10
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 	w_class = ITEMSIZE_NORMAL
 
@@ -16,7 +16,7 @@
 	desc = "The jaws of a small dog."
 	damage_force = 5
 	throw_force = 0
-	hitsound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 	w_class = ITEMSIZE_NORMAL
 	var/emagged = 0
@@ -35,7 +35,7 @@
 			desc = "The jaws of the law."
 			damage_force = 10
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 			w_class = ITEMSIZE_NORMAL
 		else
@@ -45,7 +45,7 @@
 			desc = "The jaws of a small dog."
 			damage_force = 5
 			throw_force = 0
-			hitsound = 'sound/weapons/bite.ogg'
+			attack_sound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
 			w_class = ITEMSIZE_NORMAL
 		update_icon()
@@ -180,7 +180,7 @@
 	desc = "Useful for slurping mess off the floor before affectionally licking the crew members in the face."
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "synthtongue"
-	hitsound = 'sound/effects/attackblob.ogg'
+	attack_sound = 'sound/effects/attackblob.ogg'
 	item_flags = ITEM_NOBLUDGEON
 	var/emagged = 0
 	var/datum/matter_synth/water = null
@@ -337,7 +337,7 @@
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
-	hitsound = 'sound/weapons/blade1.ogg'
+	attack_sound = 'sound/weapons/blade1.ogg'
 	attack_verb = list("slashed", "stabbed", "jabbed", "mauled", "sliced")
 	w_class = ITEMSIZE_NORMAL
 

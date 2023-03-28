@@ -253,7 +253,7 @@
 			src.damage_force = 15
 			src.damtype = "fire"
 			src.w_class = ITEMSIZE_LARGE
-			src.hitsound = 'sound/items/welder.ogg'
+			src.attack_sound = 'sound/items/welder.ogg'
 			welding = 1
 			update_icon()
 			if(!always_process)
@@ -276,7 +276,7 @@
 		src.damtype = "brute"
 		src.w_class = initial(src.w_class)
 		src.welding = 0
-		src.hitsound = initial(src.hitsound)
+		src.attack_sound = initial(src.attack_sound)
 		update_icon()
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection

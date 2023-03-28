@@ -92,7 +92,7 @@
 	desc = "A wooden musical instrument with four strings and a bow. \"The devil went down to space, he was looking for an assistant to grief.\""
 	icon_state = "violin"
 	item_state = "violin"
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	allowed_instrument_ids = "violin"
 
 /obj/item/instrument/violin/golden
@@ -120,7 +120,7 @@
 	icon_state = "guitar"
 	item_state = "guitar"
 	attack_verb = list("played metal on", "serenaded", "crashed", "smashed")
-	hitsound = 'sound/weapons/stringsmash.ogg'
+	attack_sound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "guitar"
 
 /obj/item/instrument/eguitar
@@ -130,7 +130,7 @@
 	item_state = "eguitar"
 	damage_force = 12
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
-	hitsound = 'sound/weapons/stringsmash.ogg'
+	attack_sound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
 
 /obj/item/instrument/glockenspiel
@@ -271,7 +271,7 @@
 	damage_force = 0
 	throw_speed = 3
 	throw_range = 15
-	hitsound = 'sound/items/bikehorn.ogg'
+	attack_sound = 'sound/items/bikehorn.ogg'
 
 /obj/item/instrument/banjo
 	name = "banjo"
@@ -279,7 +279,7 @@
 	icon_state = "banjo"
 	item_state = "banjo"
 	attack_verb = list("scruggs-styled", "hum-diggitied", "shin-digged", "clawhammered")
-	hitsound = 'sound/weapons/banjoslap.ogg'
+	attack_sound = 'sound/weapons/banjoslap.ogg'
 	allowed_instrument_ids = "banjo"
 
 /*
@@ -330,5 +330,5 @@
 	icon_state = "gameboy"
 	item_state = "gameboy"
 	attack_verb = ("bitcrushed")
-	hitsound = "sound/weapons/gboy.ogg"
+	attack_sound = "sound/weapons/gboy.ogg"
 	allowed_instrument_ids = "square"

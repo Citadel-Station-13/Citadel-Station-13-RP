@@ -80,7 +80,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/spellblade
 	icon_state = "spellblade"
 	item_state = "spellblade"
-	hitsound = 'sound/weapons/rapierhit.ogg'
+	attack_sound = 'sound/weapons/rapierhit.ogg'
 	damage_force = 20
 	armour_penetration = 75
 	block_chance = 50
@@ -89,7 +89,7 @@
 
 /obj/item/gun/magic/staff/spellblade/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/butchering, 15, 125, 0, hitsound)
+	AddComponent(/datum/component/butchering, 15, 125, 0, attack_sound)
 
 /obj/item/gun/magic/staff/spellblade/run_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	// Do not block projectiles.

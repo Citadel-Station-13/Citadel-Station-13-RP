@@ -51,8 +51,6 @@
 	var/r_speed = 1.0
 	var/burn_point = null
 	var/burning = null
-	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
-	var/hitsound = HITSOUND_UNSET
 	var/storage_cost = null
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
 	var/no_attack_log = FALSE
@@ -116,7 +114,9 @@
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
 
-	//! Sounds!
+	//? Sounds
+	/// sound used when used in melee attacks. null for default for our damage tpye.
+	var/attack_sound
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the item into a valid slot from hands or ground
@@ -148,6 +148,7 @@
 			embed_chance = max(5, round(damage_force/w_class))
 		else
 			embed_chance = max(5, round(damage_force/(w_class*3)))
+	#warn refactor
 	if(hitsound == HITSOUND_UNSET)
 		if(damtype == "fire")
 			hitsound = 'sound/items/welder.ogg'
@@ -412,8 +413,8 @@
 		if (throw_force > 0)
 			if (mob_throw_hit_sound)
 				playsound(A, mob_throw_hit_sound, volume, TRUE, -1)
-			else if(hitsound)
-				playsound(A, hitsound, volume, TRUE, -1)
+			else if(attack_sound)
+				playsound(A, attack_sound, volume, TRUE, -1)
 			else
 				playsound(A, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
 		else

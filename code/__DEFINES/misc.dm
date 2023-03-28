@@ -431,11 +431,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 /// Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337
 
-
-/// No hitsound define
-#define HITSOUND_UNSET	"UNSET"
-
-
 /// Herm Gender
 /// Snowflake Global that throws a fit
 #define HERM "herm"

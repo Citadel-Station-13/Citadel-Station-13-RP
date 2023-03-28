@@ -14,7 +14,7 @@
 	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	tool_sound = 'sound/items/screwdriver.ogg'
 	drop_sound = 'sound/items/drop/screwdriver.ogg'
 	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
@@ -148,7 +148,7 @@
 	throw_speed = 2
 	throw_range = 3//it's heavier than a screw driver/wrench, so it does more damage, but can't be thrown as far
 	attack_verb = list("drilled", "screwed", "jabbed", "whacked")
-	hitsound = 'sound/items/drill_hit.ogg'
+	attack_sound = 'sound/items/drill_hit.ogg'
 	tool_sound = 'sound/items/drill_use.ogg'
 	tool_speed = 0.25
 	random_color = FALSE

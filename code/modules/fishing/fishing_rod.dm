@@ -16,7 +16,7 @@
 	throw_force = 1
 	sharp = TRUE
 	attack_verb = list("whipped", "battered", "slapped", "fished", "hooked")
-	hitsound = 'sound/weapons/punchmiss.ogg'
+	attack_sound = 'sound/weapons/punchmiss.ogg'
 	applies_material_colour = TRUE
 	default_material = "wood"
 	can_dull = FALSE

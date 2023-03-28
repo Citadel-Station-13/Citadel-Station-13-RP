@@ -86,7 +86,7 @@
 	damage_force = 15
 	sharp = 1
 	edge = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 
 
 /obj/item/sword/fluff/joanaria/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -563,7 +563,7 @@
     w_class = ITEMSIZE_SMALL
     matter = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
-    hitsound = 'sound/weapons/sparkle.ogg'
+    attack_sound = 'sound/weapons/sparkle.ogg'
     var/last_use = 0
     var/cooldown = 30
 

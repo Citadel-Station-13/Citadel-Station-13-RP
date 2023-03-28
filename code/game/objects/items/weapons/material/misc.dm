@@ -135,7 +135,7 @@
 	item_state = "cleaving_saw"
 	active = 0
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	w_class = ITEMSIZE_LARGE
 	edge = 1
 	sharp = 1

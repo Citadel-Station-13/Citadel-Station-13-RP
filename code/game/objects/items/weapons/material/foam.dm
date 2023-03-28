@@ -8,7 +8,7 @@
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
-	hitsound = 'sound/effects/bodyfall3.ogg'
+	attack_sound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/twohanded/baseballbat/foam
 	attack_verb = list("bonked","whacked")
@@ -18,7 +18,7 @@
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
-	hitsound = 'sound/effects/bodyfall3.ogg'
+	attack_sound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/sword/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
@@ -34,7 +34,7 @@
 	unbreakable = 1
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
-	hitsound = 'sound/effects/bodyfall3.ogg'
+	attack_sound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/twohanded/spear/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
@@ -55,7 +55,7 @@
 	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	drop_sound = 'sound/items/drop/device.ogg'
 	pickup_sound = 'sound/items/pickup/device.ogg'
-	hitsound = 'sound/effects/bodyfall3.ogg'
+	attack_sound = 'sound/effects/bodyfall3.ogg'
 
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")

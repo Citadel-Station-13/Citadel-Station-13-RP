@@ -7,7 +7,7 @@
 	clothing_flags = CLOTHING_IGNORE_BELTLINK
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("whipped")
-	hitsound = 'sound/weapons/towelwhip.ogg'
+	attack_sound = 'sound/weapons/towelwhip.ogg'
 	desc = "A soft cotton towel."
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'

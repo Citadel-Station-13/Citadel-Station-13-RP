@@ -3,7 +3,7 @@
 // They are also fragile based on material data and many can break/smash apart.
 /obj/item/material
 	health = 10
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	icon = 'icons/obj/weapons.dmi'
 	gender = NEUTER
 	throw_speed = 3

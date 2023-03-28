@@ -138,7 +138,7 @@
 	sharp = 1
 	edge = 1
 	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
-	hitsound = 'sound/weapons/chainsaw_attack.ogg'
+	attack_sound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
 
 /obj/item/chainsaw/chainsword/turnOn(mob/user as mob)

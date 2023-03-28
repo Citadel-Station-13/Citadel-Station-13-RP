@@ -268,7 +268,7 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
 	matter = list(MAT_STEEL = 200, MAT_GLASS = 50)
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	light_color = LIGHT_COLOR_FLUORESCENT_FLASHLIGHT
 	light_wedge = LIGHT_NARROW
 

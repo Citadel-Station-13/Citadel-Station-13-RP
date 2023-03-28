@@ -11,7 +11,7 @@
 	throw_range = 4
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("called", "rang")
-	hitsound = 'sound/weapons/ring.ogg'
+	attack_sound = 'sound/weapons/ring.ogg'
 
 /obj/item/rsp
 	name = "\improper Rapid-Seed-Producer (RSP)"

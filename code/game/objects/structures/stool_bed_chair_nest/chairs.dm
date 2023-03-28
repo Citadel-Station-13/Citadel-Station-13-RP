@@ -596,7 +596,7 @@
 	edge = 0
 	w_class = ITEMSIZE_LARGE
 	force_wielded = 10
-	hitsound = 'sound/effects/metal_chair_slam.ogg'
+	attack_sound = 'sound/effects/metal_chair_slam.ogg'
 	pickup_sound = 'sound/items/pickup/axe.ogg'
 	drop_sound = 'sound/effects/metal_chair_clang.ogg'
 	var/placed_object = /obj/structure/bed/chair

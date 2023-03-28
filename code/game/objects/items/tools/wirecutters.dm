@@ -16,7 +16,7 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
 	matter = list(MAT_STEEL = 80)
 	attack_verb = list("pinched", "nipped")
-	hitsound = 'sound/items/wirecutter.ogg'
+	attack_sound = 'sound/items/wirecutter.ogg'
 	tool_sound = 'sound/items/wirecutter.ogg'
 	drop_sound = 'sound/items/drop/wirecutter.ogg'
 	pickup_sound = 'sound/items/pickup/wirecutter.ogg'

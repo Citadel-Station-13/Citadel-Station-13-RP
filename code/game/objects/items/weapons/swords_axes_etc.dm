@@ -190,7 +190,7 @@
 	var/on =  0
 	slot_flags = null
 	damage_force = 0
-	hitsound = "sound/items/bikehorn.ogg"
+	attack_sound = "sound/items/bikehorn.ogg"
 
 /obj/item/melee/stool/faiza/attack_self(mob/user)
 	. = ..()
@@ -219,7 +219,7 @@
 	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 	var/reinforced = FALSE
 	var/burnt = FALSE
 	var/burned_in
@@ -306,7 +306,7 @@
 	damage_force = 15
 	slot_flags = SLOT_BACK
 	sharp = 1
-	hitsound = "swing_hit"
+	attack_sound = "swing_hit"
 	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
@@ -348,7 +348,7 @@
 	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 
 /obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))

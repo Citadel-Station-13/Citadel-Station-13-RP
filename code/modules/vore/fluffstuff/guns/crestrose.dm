@@ -16,7 +16,7 @@
 	recoil = 2
 	auto_eject = 1
 	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
-	hitsound = null
+	attack_sound = null
 	caliber = "s762"
 	magazine_type = /obj/item/ammo_magazine/m762
 	allowed_magazines = list(/obj/item/ammo_magazine/m762)

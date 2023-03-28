@@ -5,7 +5,7 @@
 	base_icon = "metalbat"
 	throw_force = 7
 	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
-	hitsound = 'sound/weapons/genhit3.ogg'
+	attack_sound = 'sound/weapons/genhit3.ogg'
 	default_material = "wood"
 	force_divisor = 1				// 20 when wielded with weight 20 (steel)
 	unwielded_force_divisor = 0.7	// 15 when unwielded based on above.

@@ -3,7 +3,7 @@
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."
 	icon_state = "butterflyknife"
 	item_state = null
-	hitsound = null
+	attack_sound = null
 	var/active = 0
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("patted", "tapped")
@@ -18,7 +18,7 @@
 		sharp = 1
 		..() //Updates damage_force.
 		throw_force = max(3,damage_force-3)
-		hitsound = 'sound/weapons/bladeslice.ogg'
+		attack_sound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -26,7 +26,7 @@
 		damage_force = 3
 		edge = 0
 		sharp = 0
-		hitsound = initial(hitsound)
+		attack_sound = initial(attack_sound)
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
 		attack_verb = initial(attack_verb)
