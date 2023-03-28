@@ -12,7 +12,7 @@
 	var/cooldown_time = 0
 	var/cooldown_timeleft = 0
 	var/cooldown_on = FALSE
-	req_access = list(access_ai_upload)
+	req_access = list(ACCESS_COMMAND_UPLOAD)
 
 /obj/machinery/ai_slipper/Initialize(mapload, newdir)
 	. = ..()
@@ -57,7 +57,7 @@
 /obj/machinery/ai_slipper/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/ai_slipper/attack_hand(mob/user as mob)
+/obj/machinery/ai_slipper/attack_hand(mob/user, list/params)
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if((get_dist(src, user) > 1))

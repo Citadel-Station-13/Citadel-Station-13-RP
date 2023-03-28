@@ -24,14 +24,10 @@
 		"cargo" = new /obj/item/pda/multicaster/cargo(src),
 		"civilian" = new /obj/item/pda/multicaster/civilian(src))
 
-/obj/machinery/pda_multicaster/prebuilt/Initialize(mapload, newdir)
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/pda_multicaster/Destroy()
 	for(var/atom/movable/AM in contents)
 		qdel(AM)
-	..()
+	return ..()
 
 /obj/machinery/pda_multicaster/update_icon()
 	if(on)
@@ -50,7 +46,7 @@
 /obj/machinery/pda_multicaster/attack_ai(mob/user)
 	attack_hand(user)
 
-/obj/machinery/pda_multicaster/attack_hand(mob/user)
+/obj/machinery/pda_multicaster/attack_hand(mob/user, list/params)
 	toggle_power(user)
 
 /obj/machinery/pda_multicaster/proc/toggle_power(mob/user)

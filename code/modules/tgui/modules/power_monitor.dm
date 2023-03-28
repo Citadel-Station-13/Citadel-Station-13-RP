@@ -1,14 +1,14 @@
-/datum/tgui_module/power_monitor
+/datum/tgui_module_old/power_monitor
 	name = "Power Monitor"
 	tgui_id = "PowerMonitor"
 	var/list/grid_sensors
 	var/active_sensor = null	//name_tag of the currently selected sensor
 
-/datum/tgui_module/power_monitor/New()
+/datum/tgui_module_old/power_monitor/New()
 	. = ..()
 	refresh_sensors()
 
-/datum/tgui_module/power_monitor/ui_data(mob/user)
+/datum/tgui_module_old/power_monitor/ui_data(mob/user)
 	var/list/data = list()
 
 	var/list/sensors = list()
@@ -37,7 +37,7 @@
 
 	return data
 
-/datum/tgui_module/power_monitor/ui_act(action, params)
+/datum/tgui_module_old/power_monitor/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -52,13 +52,13 @@
 			active_sensor = params["id"]
 			. = TRUE
 
-/datum/tgui_module/power_monitor/proc/has_alarm()
+/datum/tgui_module_old/power_monitor/proc/has_alarm()
 	for(var/obj/machinery/power/sensor/S in grid_sensors)
 		if(S.check_grid_warning())
 			return TRUE
 	return FALSE
 
-/datum/tgui_module/power_monitor/proc/refresh_sensors()
+/datum/tgui_module_old/power_monitor/proc/refresh_sensors()
 	grid_sensors = list()
 
 	// Handle ultranested programs
@@ -76,10 +76,10 @@
 			else
 				grid_sensors += S
 
-/datum/tgui_module/power_monitor/ntos
+/datum/tgui_module_old/power_monitor/ntos
 	ntos = TRUE
 
 // Subtype for self_state
-/datum/tgui_module/power_monitor/robot
-/datum/tgui_module/power_monitor/robot/ui_state(mob/user)
+/datum/tgui_module_old/power_monitor/robot
+/datum/tgui_module_old/power_monitor/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state

@@ -9,7 +9,7 @@
 #define COMM_MSGLEN_MINIMUM 6
 #define COMM_CCMSGLEN_MINIMUM 20
 
-/datum/tgui_module/communications
+/datum/tgui_module_old/communications
 	name = "Command & Communications"
 	tgui_id = "CommunicationsConsole"
 
@@ -37,19 +37,19 @@
 
 	var/list/req_access = list()
 
-/datum/tgui_module/communications/New(host)
+/datum/tgui_module_old/communications/New(host)
 	. = ..()
 	ATC = atc
 	crew_announcement = new()
 	crew_announcement.newscast = TRUE
 
-/datum/tgui_module/communications/ui_interact(mob/user, datum/tgui/ui)
+/datum/tgui_module_old/communications/ui_interact(mob/user, datum/tgui/ui)
 	if(GLOB.using_map && !(get_z(user) in GLOB.using_map.contact_levels))
 		to_chat(user, SPAN_DANGER("Unable to establish a connection: You're too far away from the station!"))
 		return FALSE
 	. = ..()
 
-/datum/tgui_module/communications/proc/is_authenticated(mob/user, message = TRUE)
+/datum/tgui_module_old/communications/proc/is_authenticated(mob/user, message = TRUE)
 	if(authenticated == COMM_AUTHENTICATION_MAX)
 		return COMM_AUTHENTICATION_MAX
 	else if(isobserver(user))
@@ -63,7 +63,7 @@
 			to_chat(user, SPAN_WARNING("Access denied."))
 		return COMM_AUTHENTICATION_NONE
 
-/datum/tgui_module/communications/proc/change_security_level(new_level)
+/datum/tgui_module_old/communications/proc/change_security_level(new_level)
 	tmp_alertlevel = new_level
 	var/old_level = GLOB.security_level
 	if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
@@ -87,7 +87,7 @@
 				feedback_inc("alert_comms_blue",1)
 	tmp_alertlevel = 0
 
-/datum/tgui_module/communications/ui_data(mob/user)
+/datum/tgui_module_old/communications/ui_data(mob/user)
 	var/list/data = ..()
 	data["is_ai"]         = isAI(user) || isrobot(user)
 	data["menu_state"]    = data["is_ai"] ? ai_menu_state : menu_state
@@ -155,7 +155,7 @@
 		data["esc_status"] += " [timeleft / 60 % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 	return data
 
-/datum/tgui_module/communications/proc/setCurrentMessage(mob/user, value)
+/datum/tgui_module_old/communications/proc/setCurrentMessage(mob/user, value)
 	current_viewing_message_id = value
 
 	var/datum/comm_message_listener/l = obtain_message_listener()
@@ -163,13 +163,13 @@
 		if(m["id"] == current_viewing_message_id)
 			current_viewing_message = m
 
-/datum/tgui_module/communications/proc/setMenuState(mob/user, value)
+/datum/tgui_module_old/communications/proc/setMenuState(mob/user, value)
 	if(isAI(user) || isrobot(user))
 		ai_menu_state = value
 	else
 		menu_state = value
 
-/datum/tgui_module/communications/proc/obtain_message_listener()
+/datum/tgui_module_old/communications/proc/obtain_message_listener()
 	if(istype(host, /datum/computer_file/program/comm))
 		var/datum/computer_file/program/comm/P = host
 		return P.message_core
@@ -197,7 +197,7 @@
 
 	frequency.post_signal(null, status_signal)
 
-/datum/tgui_module/communications/ui_act(action, params)
+/datum/tgui_module_old/communications/ui_act(action, params)
 	if(..())
 		return TRUE
 	if(using_map && !(get_z(usr) in using_map.contact_levels))
@@ -216,9 +216,9 @@
 			setMenuState(usr, COMM_SCREEN_MAIN)
 			return
 		// Login function.
-		if(check_access(usr, access_heads))
+		if(check_access(usr, ACCESS_COMMAND_BRIDGE))
 			authenticated = COMM_AUTHENTICATION_MIN
-		if(check_access(usr, access_captain))
+		if(check_access(usr, ACCESS_COMMAND_CAPTAIN))
 			authenticated = COMM_AUTHENTICATION_MAX
 			var/mob/M = usr
 			var/obj/item/card/id = M.GetIdCard()
@@ -374,7 +374,7 @@
 			emagged = FALSE
 			setMenuState(usr, COMM_SCREEN_MAIN)
 
-/datum/tgui_module/communications/ntos
+/datum/tgui_module_old/communications/ntos
 	ntos = TRUE
 
 /* Etc global procs */

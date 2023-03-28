@@ -71,7 +71,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/medical
 	name = "medical tape"
 	desc = "A length of medical tape.  Do not cross."
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	color = COLOR_WHITE
 
 /obj/item/barrier_tape_roll/police
@@ -83,7 +83,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/police
 	name = "police tape"
 	desc = "A length of police tape.  Do not cross."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	color = COLOR_RED_LIGHT
 
 /obj/item/barrier_tape_roll/engineering
@@ -98,7 +98,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/engineering
 	name = "engineering tape"
 	desc = "A length of engineering tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_YELLOW
 
 /obj/item/barrier_tape_roll/atmos
@@ -110,7 +110,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/barrier_tape_roll/update_icon()
@@ -133,11 +133,14 @@ var/list/tape_roll_applications = list()
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_hand()
+/obj/item/barrier_tape_roll/attack_hand(mob/user, list/params)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_self(mob/user as mob)
+/obj/item/barrier_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!start)
 		start = get_turf(src)
 		to_chat(user, "<span class='notice'>You place the first end of \the [src].</span>")
@@ -331,7 +334,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
-/obj/item/barrier_tape_segment/attack_hand(mob/user as mob)
+/obj/item/barrier_tape_segment/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
 		for(var/obj/item/barrier_tape_segment/T in gettapeline())

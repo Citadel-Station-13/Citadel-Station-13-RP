@@ -82,7 +82,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/morgue/attack_hand(mob/user as mob)
+/obj/structure/morgue/attack_hand(mob/user, list/params)
 	if (src.connected)
 		close()
 	else
@@ -173,7 +173,7 @@
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/m_tray/attack_hand(mob/user as mob)
+/obj/structure/m_tray/attack_hand(mob/user, list/params)
 	if (src.connected)
 		for(var/atom/movable/A as mob|obj in src.loc)
 			if (!( A.anchored ))
@@ -227,7 +227,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			src.icon_state = "crema1"
 	return
 
-/obj/structure/morgue/crematorium/attack_hand(mob/user as mob)
+/obj/structure/morgue/crematorium/attack_hand(mob/user, list/params)
 	if (cremating)
 		to_chat(usr, "<span class='warning'>It's locked.</span>")
 		return
@@ -347,10 +347,10 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	desc = "Burn baby burn!"
 	icon = 'icons/obj/power.dmi'
 	icon_state = "crema_switch"
-	req_access = list(access_crematorium)
+	req_access = list(ACCESS_GENERAL_CREMATOR)
 	id = 1
 
-/obj/machinery/button/crematorium/attack_hand(mob/user as mob)
+/obj/machinery/button/crematorium/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(src.allowed(user))

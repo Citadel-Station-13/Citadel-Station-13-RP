@@ -171,6 +171,18 @@
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+/datum/crafting_recipe/dataknife
+	name = "Data Knife"
+	result = /obj/item/material/knife/tacknife/dataknife
+	tools = list(TOOL_SCREWDRIVER, TOOL_WELDER)
+	reqs = list(/obj/item/stack/cable_coil = 10,
+				/obj/item/multitool = 1,
+				/obj/item/assembly/igniter = 1,
+				/obj/item/storage/box/survival_knife = 1)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
 /* We don't have amputation features for this yet?
 /datum/crafting_recipe/tailclub
 	name = "Tail Club"

@@ -2,10 +2,11 @@
 	name = "labcoat"
 	desc = "A suit that protects against minor chemical spills."
 	icon_state = "labcoat"
+	icon = 'icons/clothing/suit/coats/labcoats.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	blood_overlay_type = "coat"
-	body_parts_covered = UPPER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/analyzer,/obj/item/stack/medical,/obj/item/dnainjector,/obj/item/reagent_containers/dropper,/obj/item/reagent_containers/syringe,/obj/item/reagent_containers/hypospray,/obj/item/healthanalyzer,/obj/item/flashlight/pen,/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle,/obj/item/paper)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
 
@@ -33,16 +34,34 @@
 	icon_state = "labgreen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green_labcoat", SLOT_ID_LEFT_HAND = "green_labcoat")
 
+/obj/item/clothing/suit/storage/toggle/labcoat/mad/classic
+	name = "The Mad's labcoat (Classic)"
+	desc = "It makes you look capable of konking someone on the noggin and shooting them into space. It looks old-fashioned."
+	icon_state = "labgreenclassic"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green_labcoat", SLOT_ID_LEFT_HAND = "green_labcoat")
+
 /obj/item/clothing/suit/storage/toggle/labcoat/genetics
 	name = "Geneticist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder."
 	icon_state = "labcoat_gen"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "genetics_labcoat", SLOT_ID_LEFT_HAND = "genetics_labcoat")
 
+/obj/item/clothing/suit/storage/toggle/labcoat/genetics/classic
+	name = "Geneticist labcoat (Classic)"
+	desc = "A suit that protects against minor chemical spills. Has a blue stripe on the shoulder. It looks old-fashioned."
+	icon_state = "labcoat_genclassic"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "genetics_labcoat", SLOT_ID_LEFT_HAND = "genetics_labcoat")
+
 /obj/item/clothing/suit/storage/toggle/labcoat/chemist
 	name = "Chemist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
 	icon_state = "labcoat_chem"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chemist_labcoat", SLOT_ID_LEFT_HAND = "chemist_labcoat")
+
+/obj/item/clothing/suit/storage/toggle/labcoat/chemist/classic
+	name = "Chemist labcoat (Classic)"
+	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder. It looks old-fashioned."
+	icon_state = "labcoat_chemclassic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chemist_labcoat", SLOT_ID_LEFT_HAND = "chemist_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/virologist
@@ -52,10 +71,23 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "virologist_labcoat", SLOT_ID_LEFT_HAND = "virologist_labcoat")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
 
+/obj/item/clothing/suit/storage/toggle/labcoat/virologist/classic
+	name = "Virologist labcoat (Classic)"
+	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against biohazards than the standard model. Has a green stripe on the shoulder. It looks old-fashioned."
+	icon_state = "labcoat_virclassic"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "virologist_labcoat", SLOT_ID_LEFT_HAND = "virologist_labcoat")
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
+
 /obj/item/clothing/suit/storage/toggle/labcoat/science
 	name = "Scientist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
 	icon_state = "labcoat_sci"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "science_labcoat", SLOT_ID_LEFT_HAND = "science_labcoat")
+
+/obj/item/clothing/suit/storage/toggle/labcoat/science/classic
+	name = "Scientist labcoat (Classic)"
+	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder. It looks old-fashioned."
+	icon_state = "labcoat_sciclassic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "science_labcoat", SLOT_ID_LEFT_HAND = "science_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/emt
@@ -75,6 +107,11 @@
 	name = "Roboticist labcoat"
 	desc = "A suit that protects against oil, acid, and burn hazards. Has a red stripe on the shoulder."
 	icon_state = "labcoat_robo"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/robotics/classic
+	name = "Roboticist labcoat (Classic)"
+	desc = "A suit that protects against oil, acid, and burn hazards. Has a red stripe on the shoulder. It looks old-fashioned."
+	icon_state = "labcoat_roboclassic"
 
 /obj/item/clothing/suit/storage/toggle/labcoat/blue
 	name = "blue-edged labcoat"

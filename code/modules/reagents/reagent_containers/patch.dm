@@ -5,7 +5,7 @@
 
 /obj/item/reagent_containers/pill/patch
 	name = "patch"
-	desc = "A patch."
+	desc = "A thin, sticky patch, capable of suffusing chemicals through the skin."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	base_icon_state = "patch"
@@ -69,7 +69,7 @@
 				reagents.trans_to_mob(target, reagents.total_volume, CHEM_TOUCH)
 			qdel(src)
 
-			for(var/datum/wound/W in affecting.wounds)
+			for(var/datum/wound/W as anything in affecting.wounds)
 				if (W.internal)//ignore internal wounds and check the remaining
 					continue
 				if(W.bandaged)//already bandaged wounds dont need to be bandaged again

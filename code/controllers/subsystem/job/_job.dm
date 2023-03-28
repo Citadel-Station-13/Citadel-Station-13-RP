@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
+	init_access()
 	if(!length(department_datums))
 		setup_departments()
 	if(!length(occupations))
@@ -29,6 +30,7 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
+	init_access()
 	occupations = SSjob.occupations
 	name_occupations = SSjob.name_occupations
 	job_lookup = SSjob.job_lookup

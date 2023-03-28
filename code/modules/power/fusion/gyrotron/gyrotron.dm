@@ -5,7 +5,7 @@ var/list/gyrotrons = list()
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	desc = "It is a heavy duty industrial gyrotron suited for powering fusion reactors."
 	icon_state = "emitter-off"
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 	use_power = USE_POWER_IDLE
 	active_power_usage = 50000
 
@@ -23,7 +23,6 @@ var/list/gyrotrons = list()
 /obj/machinery/power/emitter/gyrotron/Initialize(mapload)
 	gyrotrons += src
 	active_power_usage = mega_energy * 50000
-	default_apply_parts()
 	. = ..()
 
 /obj/machinery/power/emitter/gyrotron/Destroy()

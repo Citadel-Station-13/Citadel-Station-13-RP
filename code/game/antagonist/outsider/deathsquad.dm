@@ -9,7 +9,7 @@ var/datum/antagonist/deathsquad/deathsquad
 	antag_sound = 'sound/effects/antag_notice/deathsquid_alert.ogg'
 	landmark_id = "Commando"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_OVERRIDE_MOB | ANTAG_HAS_NUKE | ANTAG_HAS_LEADER
-	default_access = list(access_cent_general, access_cent_specops, access_cent_living, access_cent_storage)
+	default_access = list(ACCESS_CENTCOM_GENERAL, ACCESS_CENTCOM_ERT, ACCESS_CENTCOM_DORMS, ACCESS_CENTCOM_STORAGE)
 	antaghud_indicator = "deathsquad"
 
 	hard_cap = 4

@@ -62,9 +62,11 @@
 					hood.atom_flags |= PHORONGUARD
 				else
 					hood.atom_flags &= ~PHORONGUARD
+				hood.armor = armor?.Copy()
+				hood.atom_colours = atom_colours?.Copy()
+				hood.update_atom_colour()
+				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
-				if(armor)
-					hood.armor = armor.Copy()
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]-t"
@@ -77,8 +79,8 @@
 	desc = "A costume made from 'synthetic' carp scales, it smells."
 	icon_state = "carp_casual"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "carp_casual", SLOT_ID_LEFT_HAND = "carp_casual") //Does not exist -S2-
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE	//Space carp like space, so you should too
 	action_button_name = "Toggle Carp Hood"
@@ -89,8 +91,8 @@
 	desc = "A costume that looks like someone made a human-like corgi, it won't guarantee belly rubs."
 	icon_state = "ian"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	action_button_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
@@ -98,8 +100,8 @@
 	name = "bee costume"
 	desc = "A giant bee costume, popular at parties and random bar functions."
 	icon_state = "bee"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	action_button_name = "Toggle Bee Hood"
 	hoodtype = /obj/item/clothing/head/hood/bee_hood
 
@@ -107,8 +109,8 @@
 	name = "flash costume"
 	desc = "Once a common sight at Security hosted balls, this outfit has oddly fallen out of favor recently."
 	icon_state = "flashsuit"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	action_button_name = "Toggle Flash Top"
 	hoodtype = /obj/item/clothing/head/hood/flash_hood
 
@@ -117,8 +119,8 @@
 	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."
 	icon_state = "techpriest"
 	action_button_name = "Toggle Priest Hood"
-	body_parts_covered = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
-	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
+	body_cover_flags = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
+	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "techpriest", SLOT_ID_LEFT_HAND = "techpriest")
 	hoodtype = /obj/item/clothing/head/hood/techpriest
 
@@ -127,9 +129,9 @@
 	desc = "A heavy jacket made from 'synthetic' animal furs."
 	icon_state = "coatwinter"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatwinter", SLOT_ID_LEFT_HAND = "coatwinter")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	atom_flags = PHORONGUARD
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
@@ -352,7 +354,8 @@
 	name = "ratvarian winter coat"
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
 	icon_state = "coatratvar"
-	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60)
+	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/ratvar
 	var/real = TRUE
 
@@ -381,7 +384,8 @@
 	name = "narsian winter coat"
 	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "rad" = 10)
+	armor = list("melee" = 40, "bullet" = 45, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 70, "rad" = 40)
+	siemens_coefficient = 0.5
 	hoodtype = /obj/item/clothing/head/hood/winter/narsie
 	var/real = TRUE
 
@@ -430,7 +434,7 @@
 	item_state = "explorer"
 	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/explorer
@@ -456,7 +460,7 @@
 	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
@@ -481,8 +485,8 @@
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
 	icon_state = "ronin_coat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	flags_inv = HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/ronin
@@ -495,8 +499,8 @@
 	name = "Runner Jacket"
 	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
 	icon_state = "runner_jacket"
-	flags_inv = HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/runner
@@ -517,10 +521,10 @@
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
 	clothing_flags = THICKMATERIAL
-	flags_inv = HIDEHOLSTER
+	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
 	armor = list(melee = 20, bullet = 0, laser = 40, energy = 40, bomb = 20, bio = 30, rad = 20)
 	siemens_coefficient = 0.9
@@ -539,7 +543,7 @@
 		)
 	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hood/goliath
-	body_parts_covered = UPPER_TORSO|ARMS|LEGS
+	body_cover_flags = UPPER_TORSO|ARMS|LEGS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/storage/hooded/cloak/drake
@@ -550,7 +554,7 @@
 	armor = list("melee" = 70, "bullet" = 20, "laser" = 35, "energy" = 25, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	hoodtype = /obj/item/clothing/head/hood/drake
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 
 //Vainglorious
@@ -560,8 +564,8 @@
 	desc = "A sleeveless hoodie produced by AFW. Lightweight and sporty, it doesn't seem to offer much protection from the elements, but it's undeniably stylish."
 	icon_state = "vainglorious"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatwinter", SLOT_ID_LEFT_HAND = "coatwinter")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/hood/vainglorious
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
@@ -571,8 +575,8 @@
 	desc = "A thin, opaque coat meant to protect you from all sorts of rain. Preferred by outdoorsmen and janitors alike across the rift. Of course, the only type of fluids you'd like to protect yourself from around this place don't rain down from the sky. Usually. Comes with a hood!"
 	icon_state = "raincoat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	flags_inv = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	inv_hide_flags = HIDEHOLSTER
 	hoodtype = /obj/item/clothing/head/hood/raincoat
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
@@ -582,18 +586,29 @@
 	desc = "A thin plastic poncho meant to protect you from rain. It's cheap, and it won't keep you dry for long."
 	icon_state = "rainponcho"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/rainponcho
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+/obj/item/clothing/suit/storage/hooded/mercy
+	name = "Mercy Robe"
+	desc = "A pearlescent white, soft robe covered in various anti-bacterial silks. It seems to be preferred by medical professionals. Comes with a hood."
+	icon_state = "mercy_hoodie"
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/mercy
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 40, rad = 20)
 
 //Donator jacket.
 /obj/item/clothing/suit/storage/hooded/pariah
 	name = "Springtime Pariah Moto Jacket"
 	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
 	icon_state = "pariah"
-	flags_inv = HIDEHOLSTER
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/pariah

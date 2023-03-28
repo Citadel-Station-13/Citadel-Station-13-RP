@@ -4985,7 +4985,9 @@
 	layer = 2.9
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/eva/equipped,
+/obj/item/rig/eva/equipped{
+	req_access = list(10)
+},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "arG" = (
@@ -15054,7 +15056,7 @@
 	dir = 1
 	},
 /obj/structure/table/wooden_reinforced,
-/obj/machinery/chemical_dispenser/bar_alc{
+/obj/machinery/chemical_dispenser/catering/bar_alc{
 	pixel_y = 10
 	},
 /turf/simulated/floor/wood,
@@ -21065,7 +21067,7 @@
 /area/quartermaster/qm)
 "oYF" = (
 /obj/structure/table/woodentable,
-/obj/machinery/chemical_dispenser/bar_coffee/full,
+/obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
 "oZR" = (

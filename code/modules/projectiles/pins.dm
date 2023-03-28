@@ -176,7 +176,7 @@
 	desc = "A firing pin used to prevent weapon discharge on the station."
 	icon_state = "firing_pin_explorer"
 	fail_message = "<span class='warning'>CANNOT FIRE WHILE ON STATION.</span>"
-	req_access = list(access_armory) //for toggling safety
+	req_access = list(ACCESS_SECURITY_ARMORY) //for toggling safety
 	var/locked = 1
 
 // This checks that the user isn't on the station Z-level.

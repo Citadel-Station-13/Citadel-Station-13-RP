@@ -219,7 +219,7 @@
 			var/amount = 0
 			for (var/datum/reagent/R in I.reagents.reagent_list)
 				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					var/delta = oil.get_free_space()
+					var/delta = oil.available_volume()
 					delta = min(delta, R.volume)
 					oil.add_reagent(R.id, delta)
 					I.reagents.remove_reagent(R.id, delta)

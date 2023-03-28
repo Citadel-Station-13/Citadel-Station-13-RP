@@ -85,6 +85,9 @@
 	return ..()
 
 /obj/item/bikehorn/golden/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(flip_cooldown < world.time)
 		flip_mobs()
 	..()
@@ -136,6 +139,9 @@
 	temp_blade.attack_self()
 
 /obj/item/cane/concealed/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	if(concealed_blade)
 		user.visible_message(
@@ -149,8 +155,6 @@
 		user.put_in_hands(concealed_blade)
 		user.put_in_hands(src)
 		concealed_blade = null
-	else
-		..()
 
 /obj/item/cane/concealed/attackby(obj/item/material/butterfly/W, mob/user)
 	if(!src.concealed_blade && istype(W))
@@ -203,7 +207,10 @@
 	force = 3
 	var/on = 0
 
-/obj/item/cane/whitecane/collapsible/attack_self(mob/user as mob)
+/obj/item/cane/whitecane/collapsible/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	on = !on
 	if(on)
 		user.visible_message(

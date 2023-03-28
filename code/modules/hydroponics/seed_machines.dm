@@ -13,7 +13,10 @@
 	pixel_x = rand(-5,5)
 	pixel_y = rand(-5,5)
 
-/obj/item/disk/botany/attack_self(var/mob/user as mob)
+/obj/item/disk/botany/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(genes.len)
 		var/choice = alert(user, "Are you sure you want to wipe the disk?", "Xenobotany Data", "No", "Yes")
 		if(src && user && genes && choice && choice == "Yes" && user.Adjacent(get_turf(src)))
@@ -60,7 +63,7 @@
 /obj/machinery/botany/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/botany/attack_hand(mob/user as mob)
+/obj/machinery/botany/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/botany/proc/finished_task()
@@ -170,7 +173,7 @@
 
 	return data
 
-/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -201,7 +204,7 @@
 			loaded_disk = null
 			return TRUE
 
-/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/extractor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -299,7 +302,7 @@
 
 	return data
 
-/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/botany/editor/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

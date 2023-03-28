@@ -144,9 +144,26 @@
 	return ..()
 
 /obj/item/tool/wrench/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the screw driver bit to [src].</span>")
+
+/obj/item/tool/wrench/crystal
+	name = "crystalline wrench"
+	desc = "A crystalline wrenching tool of an alien make."
+	icon_state = "crystal_wrench"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/wrench/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

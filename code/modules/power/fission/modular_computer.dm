@@ -7,7 +7,7 @@
 	program_menu_icon = "notice"
 	extended_desc = "This program connects to specially calibrated sensors to provide information on the status of a fission core."
 	ui_header = "smmon_0.gif"
-	required_access = access_engine
+	required_access = ACCESS_ENGINEERING_MAIN
 	requires_ntnet = 1
 	network_destination = "fission monitoring system"
 	size = 5

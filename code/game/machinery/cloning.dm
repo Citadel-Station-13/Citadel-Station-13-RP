@@ -32,7 +32,7 @@
 	circuit = /obj/item/circuitboard/clonepod
 	icon = 'icons/obj/cloning.dmi'
 	icon_state = "pod_0"
-	req_access = list(access_genetics) // For premature unlocking.
+	req_access = list(ACCESS_SCIENCE_GENETICS) // For premature unlocking.
 	var/mob/living/occupant
 	/// The clone is released once its health reaches this level.
 	var/heal_level = 20
@@ -51,9 +51,8 @@
 	/// How many beakers can the machine hold?
 	var/container_limit = 3
 
-/obj/machinery/clonepod/Initialize(mapload, newdir)
+/obj/machinery/clonepod/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/clonepod/attack_ai(mob/user)
@@ -61,7 +60,7 @@
 	add_hiddenprint(user)
 	return attack_hand(user)
 
-/obj/machinery/clonepod/attack_hand(mob/user)
+/obj/machinery/clonepod/attack_hand(mob/user, list/params)
 	if((isnull(occupant)) || (machine_stat & NOPOWER))
 		return
 	if((!isnull(occupant)) && (occupant.stat != 2))
@@ -526,7 +525,10 @@
 	var/diskcolor = pick(0,1,2)
 	icon_state = "datadisk[diskcolor]"
 
-/obj/item/disk/data/attack_self(mob/user as mob)
+/obj/item/disk/data/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	read_only = !read_only
 	to_chat(user, "You flip the write-protect tab to [read_only ? "protected" : "unprotected"].")
 

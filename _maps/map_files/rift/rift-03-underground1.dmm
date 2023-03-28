@@ -31,6 +31,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"ad" = (
+/obj/random/cigarettes,
+/obj/structure/catwalk,
+/mob/living/simple_mob/vore/aggressive/rat/maurice,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/trash_pit)
 "ae" = (
 /turf/simulated/wall,
 /area/rift/station/stairs_two)
@@ -43,6 +49,13 @@
 "ag" = (
 /turf/simulated/open,
 /area/rift/station/stairs_two)
+"ah" = (
+/obj/machinery/vending/tool/adherent,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/crystal,
+/area/rift/station/adherent_maintenance)
 "ai" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/runder/level1)
@@ -3270,6 +3283,9 @@
 "ks" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/bioscan_antenna/permanent{
+	network_key_obfuscated = "rift_bioscanners"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
@@ -9531,7 +9547,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "LE" = (
-/obj/machinery/pda_multicaster/prebuilt,
+/obj/machinery/pda_multicaster,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "LF" = (
@@ -9723,12 +9739,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"MG" = (
-/obj/random/cigarettes,
-/mob/living/simple_mob/vore/aggressive/rat/maurice,
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/lower/trash_pit)
 "MH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -23393,7 +23403,7 @@ Cl
 eg
 rT
 zz
-Am
+ah
 PH
 PH
 Yt
@@ -24923,7 +24933,7 @@ aa
 aa
 aa
 Ol
-MG
+ad
 UE
 Zc
 BN

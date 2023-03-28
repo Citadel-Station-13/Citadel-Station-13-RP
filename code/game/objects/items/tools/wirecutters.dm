@@ -141,9 +141,26 @@
 	return ..()
 
 /obj/item/tool/wirecutters/power/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, 1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
 		counterpart.forceMove(get_turf(user))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the pry jaws to [src].</span>")
+
+/obj/item/tool/wirecutters/crystal
+	name = "crystalline shears"
+	desc = "A crystalline shearing tool of an alien make."
+	icon_state = "crystal_wirecutter"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/wirecutters/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

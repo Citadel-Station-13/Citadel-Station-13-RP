@@ -62,7 +62,7 @@
 		tape.ruin() //Fires destroy the tape
 	return ..()
 
-/obj/item/tape_recorder/attack_hand(mob/user)
+/obj/item/tape_recorder/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(tape)
 			eject()
@@ -439,6 +439,9 @@
 	TIMER_COOLDOWN_START(src, CD_INDEX_TAPE_PRINT, 30 SECONDS)
 
 /obj/item/tape_recorder/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(is_playing())
 		stop_playing(user)
 	else if(is_recording())

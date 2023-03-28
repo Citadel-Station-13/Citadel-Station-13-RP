@@ -3,8 +3,13 @@
 	title = "Chief Engineer"
 	economy_payscale = ECONOMY_PAYSCALE_JOB_COMMAND
 	flag = CHIEF
-	departments_managed = list(DEPARTMENT_ENGINEERING)
-	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_COMMAND)
+	departments_managed = list(
+		DEPARTMENT_ENGINEERING,
+	)
+	departments = list(
+		DEPARTMENT_ENGINEERING,
+		DEPARTMENT_COMMAND,
+	)
 	sorting_order = 2
 	department_flag = ENGSEC
 	disallow_jobhop = TRUE
@@ -19,14 +24,27 @@
 	minimum_character_age = 25
 	ideal_character_age = 50
 
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-						access_heads, access_construction, access_sec_doors,
-						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
-	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-						access_teleporter, access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-						access_heads, access_construction, access_sec_doors,
-						access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload)
+	minimal_access = list(
+		ACCESS_ENGINEERING_ATMOS,
+		ACCESS_ENGINEERING_AIRLOCK,
+		ACCESS_ENGINEERING_CE,
+		ACCESS_ENGINEERING_CONSTRUCTION,
+		ACCESS_ENGINEERING_EDIT,
+		ACCESS_ENGINEERING_ENGINE,
+		ACCESS_ENGINEERING_MAIN,
+		ACCESS_ENGINEERING_MAINT,
+		ACCESS_ENGINEERING_TECHSTORAGE,
+		ACCESS_ENGINEERING_TELECOMMS,
+		ACCESS_ENGINEERING_TRIAGE,
+		ACCESS_COMMAND_ANNOUNCE,
+		ACCESS_COMMAND_BRIDGE,
+		ACCESS_COMMAND_EVA,
+		ACCESS_COMMAND_KEYAUTH,
+		ACCESS_COMMAND_TELEPORTER,
+		ACCESS_COMMAND_UPLOAD,
+		ACCESS_SECURITY_MAIN,
+	)
+
 	minimal_player_age = 7
 	alt_titles = list(
 		"Head Engineer" = /datum/prototype/alt_title/head_engineer,

@@ -9,7 +9,7 @@
  */
 /obj/item/storage/firstaid
 	name = "first aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "It's an emergency medical kit, meant to either treat light injuries or stabilize the dying."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "firstaid"
 	throw_speed = 2
@@ -24,7 +24,7 @@
 
 /obj/item/storage/firstaid/fire
 	name = "fire first aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
+	desc = "It's an emergency medical kit, loaded with everything you would need to treat burns of any kind."
 	icon_state = "ointment"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-ointment", SLOT_ID_LEFT_HAND = "firstaid-ointment")
 	starts_with = list(
@@ -66,7 +66,7 @@
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid kit"
-	desc = "A box full of oxygen goodies."
+	desc = "It's an emergency medical kit, commonly seen aboard spacecraft, loaded with chemicals to treat oxygen deprivation."
 	icon_state = "o2"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-o2", SLOT_ID_LEFT_HAND = "firstaid-o2")
 	starts_with = list(
@@ -81,7 +81,7 @@
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first aid kit"
-	desc = "Contains advanced medical treatments, for <b>serious</b> boo-boos."
+	desc = "Contains advanced medical items, for when serious injuries require serious medicine."
 	icon_state = "advfirstaid"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
@@ -96,7 +96,7 @@
 
 /obj/item/storage/firstaid/combat
 	name = "combat medical kit"
-	desc = "Contains advanced medical treatments."
+	desc = "A collection of everything an enterprising operative needs to stay alive in the field."
 	icon_state = "bezerk"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(

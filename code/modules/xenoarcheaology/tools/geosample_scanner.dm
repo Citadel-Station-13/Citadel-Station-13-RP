@@ -20,7 +20,7 @@
 	var/last_process_worldtime = 0
 	//
 	var/scanner_progress = 0
-	var/scanner_rate = 1.25			//80 seconds per scan
+	var/scanner_rate = 12.5			// 8 seconds per scan ~ buffed 10x by silicons due to the minigame being awful and unfun, we should redesign this someday.
 	var/scanner_rpm = 0
 	var/scanner_rpm_dir = 1
 	var/scanner_temperature = 0
@@ -115,7 +115,7 @@
 	if(total_purity && fresh_coolant)
 		coolant_purity = total_purity / fresh_coolant
 
-/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user)
+/obj/machinery/radiocarbon_spectrometer/attack_hand(mob/user, list/params)
 	ui_interact(user)
 
 /obj/machinery/radiocarbon_spectrometer/ui_interact(mob/user, datum/tgui/ui)
@@ -156,7 +156,7 @@
 
 	return data
 
-/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/radiocarbon_spectrometer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 

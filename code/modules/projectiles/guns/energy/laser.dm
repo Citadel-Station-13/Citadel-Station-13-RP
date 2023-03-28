@@ -125,8 +125,7 @@
 
 /obj/item/gun/energy/lasercannon
 	name = "laser cannon"
-	desc = "With the laser cannon, the lasing medium is enclosed in a tube lined with uranium-235 and subjected to high neutron \
-	flux in a nuclear reactor core. This incredible technology may help YOU achieve high excitation rates with small laser volumes!"
+	desc = "The Hephaestus Industries G80E encloses the lasing medium within a tube lined with uranium-235 and subjected to high-neutron flux via a miniature nuclear reactor, necessitating brief periods between shots for the components to cool down. In layman's terms, big laser gets hot."
 	icon_state = "lasercannon"
 	item_state = null
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3, TECH_POWER = 3)
@@ -153,8 +152,7 @@
 
 /obj/item/gun/energy/xray
 	name = "xray laser gun"
-	desc = "A high-power laser gun capable of expelling concentrated xray blasts, which are able to penetrate matter easier than \
-	standard photonic beams, resulting in an effective 'anti-armor' energy weapon."
+	desc = "A high-power laser gun, the experimental NT-XRD fire concentrated x-ray blasts, capable of penetrating armor far better than standard photonic lasers. A potent 'anti-armor' weapon."
 	icon_state = "xray"
 	heavy = TRUE
 	item_state = "xray"
@@ -242,7 +240,7 @@
 /obj/item/gun/energy/lasertag
 	name = "laser tag gun"
 	item_state = "laser"
-	desc = "Standard issue weapon of the Imperial Guard"
+	desc = "Based off an ancient model of laser gun, the NT-Tagger will make you the terror of the next workplace lasertag tournament."
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
 	matter = list(MAT_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/lasertag/blue

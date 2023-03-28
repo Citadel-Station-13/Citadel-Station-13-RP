@@ -9,8 +9,6 @@
 	spawn_positions = -1
 	supervisors = "nobody! You don't work here"
 	selection_color = "#515151"
-	access = list()			//See /datum/role/job/station/assistant/get_access()
-	minimal_access = list()	//See /datum/role/job/station/assistant/get_access()
 	timeoff_factor = 0
 
 	outfit_type = /datum/outfit/job/station/assistant
@@ -23,7 +21,7 @@
 
 /datum/role/job/station/assistant/get_access()
 	if(config_legacy.assistant_maint)
-		return list(access_maint_tunnels)
+		return list(ACCESS_ENGINEERING_MAINT)
 	else
 		return list()
 

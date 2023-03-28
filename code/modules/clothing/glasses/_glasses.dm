@@ -31,6 +31,9 @@ BLIND     // can't see anything
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/glasses/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(toggleable)
 		if(active)
 			active = 0
@@ -60,7 +63,7 @@ BLIND     // can't see anything
 	desc = "A pair of glasses with a light blue tint on the inside to change your whole worldview."
 	icon = 'icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/tinted/Initialize(mapload)
 	. = ..()
@@ -155,7 +158,7 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
-	body_parts_covered = EYES //cit change
+	body_cover_flags = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
 /obj/item/clothing/glasses/meson/Initialize(mapload)
@@ -201,7 +204,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 	clothing_flags = SCAN_REAGENTS
 
 /obj/item/clothing/glasses/science/Initialize(mapload)
@@ -213,7 +216,7 @@ BLIND     // can't see anything
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 	atom_flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night
@@ -225,7 +228,7 @@ BLIND     // can't see anything
 	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	body_parts_covered = EYES // Cit change
+	body_cover_flags = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT)
@@ -244,7 +247,7 @@ BLIND     // can't see anything
 	desc = "Yarr."
 	icon_state = "eyepatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/eye = null
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'
@@ -255,7 +258,7 @@ BLIND     // can't see anything
 	desc = "A simple eyepatch made of a strip of cloth tied around the head."
 	icon_state = "eyepatch_white"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/eye = null
 
 /obj/item/clothing/glasses/eyepatchwhite/verb/switcheye()
@@ -291,7 +294,7 @@ BLIND     // can't see anything
 	desc = "Such a dapper eyepiece!"
 	icon_state = "monocle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/material
 	name = "optical material scanner"
@@ -302,7 +305,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
-	body_parts_covered = EYES //cit change
+	body_cover_flags = EYES //cit change
 	enables_planes = list(VIS_FULLBRIGHT)
 
 /obj/item/clothing/glasses/material/Initialize(mapload)
@@ -324,7 +327,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	off_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
-	body_parts_covered = EYES // Cit change
+	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
 
@@ -338,7 +341,7 @@ BLIND     // can't see anything
 	icon_state = "glasses"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	prescription = 1
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/regular/scanners
 	name = "scanning goggles"
@@ -355,14 +358,14 @@ BLIND     // can't see anything
 	name = "3D glasses"
 	icon_state = "3d"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/gglasses
 	name = "green glasses"
 	desc = "Forest green glasses, like the kind you'd wear when hatching a nasty scheme."
 	icon_state = "gglasses"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/regular/rimless
 	name = "prescription rimless glasses"
@@ -447,7 +450,10 @@ BLIND     // can't see anything
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = TINT_HEAVY
 
-/obj/item/clothing/glasses/welding/attack_self()
+/obj/item/clothing/glasses/welding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()
@@ -458,16 +464,16 @@ BLIND     // can't see anything
 	if(usr.canmove && !usr.stat && !usr.restrained())
 		if(src.up)
 			src.up = !src.up
-			flags_inv |= HIDEEYES
-			body_parts_covered |= EYES
+			inv_hide_flags |= HIDEEYES
+			body_cover_flags |= EYES
 			icon_state = initial(icon_state)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
 			to_chat(usr, "You flip \the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
-			flags_inv &= ~HIDEEYES
-			body_parts_covered &= ~EYES
+			inv_hide_flags &= ~HIDEEYES
+			body_cover_flags &= ~EYES
 			icon_state = "[initial(icon_state)]up"
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
@@ -536,7 +542,7 @@ BLIND     // can't see anything
 	name = "tactical HUD"
 	desc = "Flash-resistant goggles with inbuilt combat and security information."
 	icon_state = "swatgoggles"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator
 	name = "security HUD aviators"
@@ -549,6 +555,9 @@ BLIND     // can't see anything
 	activation_sound = 'sound/effects/pop.ogg'
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(toggleable && !user.incapacitated())
 		on = !on
 		if(on)
@@ -638,14 +647,14 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Monocle"
 	atom_flags = NONE //doesn't protect eyes because it's a monocle, duh
 
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/thermal/plain/eyepatch
 	name = "optical thermal eyepatch"
 	desc = "An eyepatch with built-in thermal optics"
 	icon_state = "eyepatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
-	body_parts_covered = 0
+	body_cover_flags = 0
 	toggleable = 1
 	action_button_name = "Toggle Eyepatch"
 
@@ -663,10 +672,13 @@ BLIND     // can't see anything
 	action_button_name = "Adjust Orange Goggles"
 	atom_flags = PHORONGUARD
 	var/up = 0
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 	species_restricted = list(SPECIES_TESHARI)
 
-/obj/item/clothing/glasses/aerogelgoggles/attack_self()
+/obj/item/clothing/glasses/aerogelgoggles/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 /obj/item/clothing/glasses/aerogelgoggles/verb/toggle()
@@ -677,14 +689,14 @@ BLIND     // can't see anything
 	if(usr.canmove && !usr.stat && !usr.restrained())
 		if(src.up)
 			src.up = !src.up
-			flags_inv |= HIDEEYES
-			body_parts_covered |= EYES
+			inv_hide_flags |= HIDEEYES
+			body_cover_flags |= EYES
 			icon_state = initial(icon_state)
 			to_chat(usr, "You flip \the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
-			flags_inv &= ~HIDEEYES
-			body_parts_covered &= ~EYES
+			inv_hide_flags &= ~HIDEEYES
+			body_cover_flags &= ~EYES
 			icon_state = "[initial(icon_state)]up"
 			to_chat(usr, "You push \the [src] up from in front of your eyes.")
 		update_worn_icon()
@@ -696,7 +708,7 @@ BLIND     // can't see anything
 	icon_state = "jamjar_glasses"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	prescription = 1
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/glasses/augmentedshades
 	name = "augmented shades"
@@ -776,7 +788,7 @@ BLIND     // can't see anything
 	//We're getting a prescription
 	else if(ishuman(target))
 		var/mob/living/carbon/human/T = target
-		if(T.glasses || (T.head && T.head.flags_inv & HIDEEYES))
+		if(T.glasses || (T.head && T.head.inv_hide_flags & HIDEEYES))
 			to_chat(user, "<span class='warning'>The person's eyes can't be covered!</span>")
 			return
 
@@ -799,7 +811,7 @@ BLIND     // can't see anything
 	icon_state = "tajblind"
 	item_state = "tajblind"
 	prescription = 1
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/hud/health/tajblind
 	name = "lightweight veil"
@@ -808,7 +820,7 @@ BLIND     // can't see anything
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_med"
 	item_state = "tajblind_med"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/sunglasses/sechud/tajblind
 	name = "sleek veil"
@@ -818,7 +830,7 @@ BLIND     // can't see anything
 	icon_state = "tajblind_sec"
 	item_state = "tajblind_sec"
 	prescription = 1
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/meson/prescription/tajblind
 	name = "industrial veil"
@@ -828,7 +840,7 @@ BLIND     // can't see anything
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
 	off_state = "tajblind"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/material/prescription/tajblind
 	name = "mining veil"
@@ -838,7 +850,7 @@ BLIND     // can't see anything
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
 	off_state = "tajblind"
-	body_parts_covered = EYES
+	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/welding/laconic
 	name = "laconic goggles"

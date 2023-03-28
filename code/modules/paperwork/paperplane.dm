@@ -50,6 +50,9 @@
 	add_overlay(overlays_to_add)
 
 /obj/item/paperplane/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You unfold [src].</span>")
 	var/atom/movable/internal_paper_tmp = internalPaper
 	internal_paper_tmp.forceMove(loc)
@@ -89,7 +92,7 @@
 		return
 	var/mob/living/carbon/human/H = hit_atom
 	if(prob(2))
-		if((H.head && H.head.body_parts_covered & EYES) || (H.wear_mask && H.wear_mask.body_parts_covered & EYES) || (H.glasses && H.glasses.body_parts_covered & EYES))
+		if((H.head && H.head.body_cover_flags & EYES) || (H.wear_mask && H.wear_mask.body_cover_flags & EYES) || (H.glasses && H.glasses.body_cover_flags & EYES))
 			return
 		visible_message("<span class='danger'>\The [src] hits [H] in the eye!</span>")
 		H.eye_blurry += 10

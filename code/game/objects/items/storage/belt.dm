@@ -618,3 +618,19 @@
 	starts_with = list(
 		/obj/item/ammo_casing/arrow/ash = 15
 		)
+
+/obj/item/storage/belt/utility/crystal
+	name = "crystalline tool harness"
+	desc = "A segmented belt of strange crystalline material."
+	icon_state = "utilitybelt_crystal"
+	item_state = "utilitybelt_crystal"
+
+/obj/item/storage/belt/utility/crystal/Initialize()
+	new /obj/item/multitool/crystal(src)
+	new /obj/item/tool/wrench/crystal(src)
+	new /obj/item/tool/crowbar/crystal(src)
+	new /obj/item/tool/screwdriver/crystal(src)
+	new /obj/item/tool/wirecutters/crystal(src)
+	new /obj/item/weldingtool/electric/crystal(src)
+	update_icon()
+	. = ..()

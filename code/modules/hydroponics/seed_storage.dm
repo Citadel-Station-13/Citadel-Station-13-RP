@@ -204,7 +204,7 @@
 		/obj/item/seeds/whitebeetseed = 3
 		)
 
-/obj/machinery/seed_storage/attack_hand(mob/user as mob)
+/obj/machinery/seed_storage/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
@@ -353,7 +353,7 @@
 
 	return data
 
-/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/seed_storage/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	var/ID = text2num(params["id"])

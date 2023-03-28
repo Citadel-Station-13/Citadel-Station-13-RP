@@ -76,6 +76,8 @@ export const ClawMachine = (props, context) => {
   }
   return (
     <Window
+      width={300}
+      height={400}
       resizable>
       <center>
         {body}

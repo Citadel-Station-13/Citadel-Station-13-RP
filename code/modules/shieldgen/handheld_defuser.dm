@@ -45,6 +45,9 @@
 		icon_state = "hdiffuser_off"
 
 /obj/item/shield_diffuser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	enabled = !enabled
 	update_icon()
 	if(enabled)
@@ -58,7 +61,7 @@
 	to_chat(user, "The charge meter reads [cell ? cell.percent() : 0]%")
 	to_chat(user, "It is [enabled ? "enabled" : "disabled"].")
 
-/obj/item/shield_diffuser/attack_hand(mob/user as mob)
+/obj/item/shield_diffuser/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)
 		if(cell)
 			cell.update_icon()

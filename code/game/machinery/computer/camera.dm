@@ -11,7 +11,7 @@
 	var/mapping = 0//For the overview file, interesting bit of code.
 	var/list/network = list()
 
-	var/datum/tgui_module/camera/camera
+	var/datum/tgui_module_old/camera/camera
 
 /obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
@@ -29,7 +29,7 @@
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	camera.ui_interact(user, ui)
 
-/obj/machinery/computer/security/attack_hand(mob/user)
+/obj/machinery/computer/security/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return

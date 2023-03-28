@@ -9,7 +9,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-	req_access = list(access_robotics)
+	req_access = list(ACCESS_SCIENCE_ROBOTICS)
 	circuit = /obj/item/circuitboard/mechfab
 
 	///Current items in the build queue.
@@ -101,9 +101,7 @@
 
 		materials[Name] = 0
 
-	default_apply_parts()
 	files = new /datum/research(src) //Setup the research data holder.
-
 
 /obj/machinery/mecha_part_fabricator/update_icon_state()
 	. = ..()
@@ -475,7 +473,7 @@
 		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
-/obj/machinery/mecha_part_fabricator/attack_hand(var/mob/user)
+/obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))

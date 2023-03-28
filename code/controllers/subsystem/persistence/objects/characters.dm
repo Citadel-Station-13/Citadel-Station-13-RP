@@ -1,8 +1,12 @@
 /**
- * ? Character Persistence System
+ * ? Character Data System
+ *
+ * This is both used for persistence, as well as potentially admin backend in the future.
+ * Please exercise caution when editing the subsystem and the root of /datum/character_data.
+ * Use and abuse subtypes to do what you need to do for persistence features.
  */
 /datum/controller/subsystem/persistence
-	/// loaded characters - "[id]" = /datum/character instance
+	/// loaded characters - "[id]" = /datum/character_data instance
 	var/list/character_cache = list()
 
 /**
@@ -13,7 +17,7 @@
  * * char - character datum
  * * persisting - update persistence info if mob is given
  */
-/datum/controller/subsystem/persistence/proc/save_character(datum/character/char, mob/persisting)
+/datum/controller/subsystem/persistence/proc/save_character(datum/character_data/char, mob/persisting)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -76,7 +80,7 @@
 	usr = null
 	// section below can never be allowed to runtime
 
-	var/datum/character/loaded = character_cache[num2text(id, 16)]
+	var/datum/character_data/loaded = character_cache[num2text(id, 16)]
 	if(!force && loaded)
 		return loaded
 
@@ -182,15 +186,15 @@
 	usr = __oldusr
 
 /**
- * hardcoded switch: what character type string corrosponds to what /datum/character
+ * hardcoded switch: what character type string corrosponds to what /datum/character_data
  */
 /datum/controller/subsystem/persistence/proc/character_type_to_datum_path(what)
 	switch(what)
 		if(OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN)
-			return /datum/character/human
+			return /datum/character_data/human
 
-/datum/character
-	abstract_type = /datum/character
+/datum/character_data
+	abstract_type = /datum/character_data
 	/// our character id, if we're already in the sql database
 	var/character_id
 	/// character type - should never change
@@ -211,7 +215,7 @@
  *
  * this *is* allowed to touch the mob's /datum/mind!
  */
-/datum/character/proc/read_from(mob/M)
+/datum/character_data/proc/read_from(mob/M)
 	return
 
 /**
@@ -219,7 +223,7 @@
  *
  * this *is* allowed to touch the mob's /datum/mind!
  */
-/datum/character/proc/write_to(mob/M)
+/datum/character_data/proc/write_to(mob/M)
 	return
 
 /**
@@ -227,22 +231,22 @@
  *
  * @return list of k-v entries
  */
-/datum/character/proc/make_persist_data(mob/M)
+/datum/character_data/proc/make_persist_data(mob/M)
 	return list()
 
 /**
  * loads fields from persisting data
  */
-/datum/character/proc/read_persist_data(list/data)
+/datum/character_data/proc/read_persist_data(list/data)
 	return
 
 /**
  * changes the name of this character
  * only ever change names this way, this'll handle the necessary updates, within the subsystem and on /datum/player's.
  */
-/datum/character/proc/immediate_rename(new_name)
+/datum/character_data/proc/immediate_rename(new_name)
 	canonical_name = ckey(new_name)
 	SSpersistence.save_character(src)
 
-/datum/character/human
+/datum/character_data/human
 	character_type = OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN

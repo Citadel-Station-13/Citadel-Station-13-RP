@@ -1018,6 +1018,50 @@
 				to_chat(src, usage)
 				return
 
+		if ("roll")
+			var/usage = "To use this emote specify what die you want to roll in the first line. Prefix it with a \"D\". You may add a bonus to your roll, simply add a \"+\" and your number after your chosen die. If you want to incorporate a difficulty check, add a \"-DC\". You may use a bonus, a difficulty check or both.<br>Here is an example: roll-D20+5-DC15. This will roll a twenty-sided die, add five and compare it against a difficulty check of 15."
+			if(!param)
+				to_chat(src, usage)
+				return
+
+			var/t1 = findtext(param, "+", 1, null)
+			var/t2 = findtext(param, "-", 1, null)
+			var/die = copytext(param, 1, t1)
+			var/bonus = copytext(param, t1 + 1, t2)
+			var/dc = copytext(param, t2 + 1, length(param) + 1 )
+			if (!t1)
+				bonus = null
+			if (!t2)
+				dc = null
+			var/die_number = text2num(copytext(die, 2, length(die) + 1))
+			var/bonus_number = text2num(bonus)
+			var/dc_number = text2num(copytext(dc, 3, length(dc) + 1))
+
+			var/die_result = rand(die_number)
+			var/die_total = die_result + bonus_number
+
+			if (die_number && bonus_number && dc_number)
+				if (die_total >= dc_number)
+					message = SPAN_GREEN("tries something. They succed, beating a difficulty check of [dc_number] with a roll of [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!")
+				if (die_total < dc_number)
+					message = SPAN_RED("tries something. They fail, losing to a difficulty check of [dc_number] with a roll of [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!")
+
+			else if (die_number && dc_number)
+				if (die_result >= dc_number)
+					message = SPAN_GREEN("tries something. They succed, beating a difficulty check of [dc_number] with a roll of [die_total] out of [die_number]!")
+				if (die_result < dc_number)
+					message = SPAN_RED("tries something. They fail, losing to a difficulty check of [dc_number] with a roll of [die_total] out of [die_number]!")
+
+			else if (die_number && bonus_number)
+				message = "tries something. They roll a [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!"
+
+			else if (die_number)
+				message = "tries something. They roll a [die_result] out of [die_number]!"
+
+			else if (!message)
+				to_chat(src, usage)
+				return
+
 		if ("help")
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \

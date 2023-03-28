@@ -1,5 +1,5 @@
 
-/datum/tgui_module/appearance_changer
+/datum/tgui_module_old/appearance_changer
 	name = "Appearance Editor"
 	tgui_id = "AppearanceChanger"
 	var/flags = APPEARANCE_ALL_HAIR
@@ -27,7 +27,7 @@
 	var/list/valid_tailstyles = list()
 	var/list/valid_wingstyles = list()
 
-/datum/tgui_module/appearance_changer/New(
+/datum/tgui_module_old/appearance_changer/New(
 		var/host,
 		mob/living/carbon/human/H,
 		check_species_whitelist = 1,
@@ -69,7 +69,7 @@
 	whitelist = species_whitelist
 	blacklist = species_blacklist
 
-/datum/tgui_module/appearance_changer/Destroy()
+/datum/tgui_module_old/appearance_changer/Destroy()
 	GLOB.moved_event.unregister(owner, src, .proc/update_active_camera_screen)
 	last_camera_turf = null
 	qdel(cam_screen)
@@ -78,7 +78,7 @@
 	cut_data()
 	return ..()
 
-/datum/tgui_module/appearance_changer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/appearance_changer/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -275,7 +275,7 @@
 					return 1
 	return FALSE
 
-/datum/tgui_module/appearance_changer/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null, datum/ui_state/custom_state)
+/datum/tgui_module_old/appearance_changer/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null, datum/ui_state/custom_state)
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(user))
@@ -299,7 +299,7 @@
 	if(custom_state)
 		ui.set_state(custom_state)
 
-/datum/tgui_module/appearance_changer/ui_static_data(mob/user)
+/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user)
 	var/list/data = ..()
 
 	generate_data(usr)
@@ -327,7 +327,7 @@
 
 	return data
 
-/datum/tgui_module/appearance_changer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/appearance_changer/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	generate_data(user)
@@ -390,12 +390,12 @@
 		data["facial_hair_color"] = rgb(target.r_facial, target.g_facial, target.b_facial)
 	return data
 
-/datum/tgui_module/appearance_changer/ui_static_data(mob/user)
+/datum/tgui_module_old/appearance_changer/ui_static_data(mob/user)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	return data
 
-/datum/tgui_module/appearance_changer/proc/update_active_camera_screen()
+/datum/tgui_module_old/appearance_changer/proc/update_active_camera_screen()
 	var/turf/newturf = get_turf(customize_usr ? ui_host() : owner)
 	if(newturf == last_camera_turf)
 		return
@@ -415,7 +415,7 @@
 	local_skybox.scale_to_view(3)
 	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - newturf.x, (world.maxy>>1) - newturf.y)
 
-/datum/tgui_module/appearance_changer/proc/update_dna()
+/datum/tgui_module_old/appearance_changer/proc/update_dna()
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))
@@ -425,7 +425,7 @@
 	if(target && (flags & APPEARANCE_UPDATE_DNA))
 		target.update_dna()
 
-/datum/tgui_module/appearance_changer/proc/can_change(var/flag)
+/datum/tgui_module_old/appearance_changer/proc/can_change(var/flag)
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))
@@ -434,7 +434,7 @@
 
 	return target && (flags & flag)
 
-/datum/tgui_module/appearance_changer/proc/can_change_skin_tone()
+/datum/tgui_module_old/appearance_changer/proc/can_change_skin_tone()
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))
@@ -443,7 +443,7 @@
 
 	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_TONE
 
-/datum/tgui_module/appearance_changer/proc/can_change_skin_color()
+/datum/tgui_module_old/appearance_changer/proc/can_change_skin_color()
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))
@@ -452,7 +452,7 @@
 
 	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_COLOR
 
-/datum/tgui_module/appearance_changer/proc/cut_data()
+/datum/tgui_module_old/appearance_changer/proc/cut_data()
 	// Making the assumption that the available species remain constant
 	valid_hairstyles.Cut()
 	valid_facial_hairstyles.Cut()
@@ -460,7 +460,7 @@
 	valid_tailstyles.Cut()
 	valid_wingstyles.Cut()
 
-/datum/tgui_module/appearance_changer/proc/generate_data(mob/user)
+/datum/tgui_module_old/appearance_changer/proc/generate_data(mob/user)
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(user))
@@ -509,7 +509,7 @@
 					"second_color" = !!instance.extra_overlay,
 				)))
 
-/datum/tgui_module/appearance_changer/proc/get_genders()
+/datum/tgui_module_old/appearance_changer/proc/get_genders()
 	var/mob/living/carbon/human/target = owner
 	if(customize_usr)
 		if(!ishuman(usr))
@@ -524,10 +524,10 @@
 	return possible_genders
 
 // Used for subtypes to handle messaging or whatever.
-/datum/tgui_module/appearance_changer/proc/changed_hook(flag)
+/datum/tgui_module_old/appearance_changer/proc/changed_hook(flag)
 	return
 
-/datum/tgui_module/appearance_changer/proc/can_use_sprite(datum/sprite_accessory/X, mob/living/carbon/human/target, mob/user)
+/datum/tgui_module_old/appearance_changer/proc/can_use_sprite(datum/sprite_accessory/X, mob/living/carbon/human/target, mob/user)
 	if(X.apply_restrictions && !(target.species.name in X.species_allowed))
 		return FALSE
 
@@ -536,10 +536,10 @@
 
 	return TRUE
 
-/datum/tgui_module/appearance_changer/mirror
+/datum/tgui_module_old/appearance_changer/mirror
 	name = "SalonPro Nano-Mirror&trade;"
 	flags = APPEARANCE_ALL_HAIR
 	customize_usr = TRUE
 
-/datum/tgui_module/appearance_changer/mirror/coskit
+/datum/tgui_module_old/appearance_changer/mirror/coskit
 	name = "SalonPro Porta-Makeover Deluxe&trade;"

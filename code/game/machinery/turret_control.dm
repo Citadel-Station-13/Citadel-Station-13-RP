@@ -35,7 +35,7 @@
 	/// Silicons cannot use this.
 	var/ailock = FALSE
 
-	req_access = list(access_ai_upload)
+	req_access = list(ACCESS_COMMAND_UPLOAD)
 
 /obj/machinery/turretid/stun
 	enabled = TRUE
@@ -118,7 +118,7 @@
 
 	nano_ui_interact(user)
 
-/obj/machinery/turretid/attack_hand(mob/user)
+/obj/machinery/turretid/attack_hand(mob/user, list/params)
 	if(isLocked(user))
 		return
 
