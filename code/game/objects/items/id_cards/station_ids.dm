@@ -43,10 +43,12 @@
 	var/datum/role/job/J = SSjob.get_job(rank)
 	if(J)
 		access = J.get_access()
+		job_access_type = J
 
 /obj/item/card/id/examine(mob/user)
-	..()
-	. = dat()
+	var/list/result = dat()
+	result.Insert(1, ..())
+	return result
 	//show(user)
 
 /obj/item/card/id/examine_more(mob/user)
@@ -115,19 +117,25 @@
 	id_card.age = age
 	id_card.species = src.species.name
 
+	if(istype(id_card,/obj/item/card/id/contractor))
+		var/obj/item/card/id/contractor/c_id = id_card
+
+		var/faction = src.mind?.original_background_faction()
+		c_id.employing_coperation = faction
+
 /obj/item/card/id/proc/dat()
-	var/dat = ("<table><tr><td>")
-	dat += text("Name: []</A><BR>", registered_name)
-	dat += text("Sex: []</A><BR>", sex)
-	dat += text("Age: []</A><BR>", age)
-	dat += text("Rank: []</A><BR>", assignment)
-	dat += text("Species: []</A><BR>", species)
+	var/dat = list()
+	dat += text("Name: [registered_name]", )
+	dat += text("Sex: [sex]")
+	dat += text("Age: []", age)
+	dat += text("Rank: []", assignment)
+	dat += text("Species: []", species)
 	//dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
-	dat += text("Blood Type: []<BR>", blood_type)
+	dat += text("Blood Type: []", blood_type)
 	//dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
 	/*if(front && side)
 		dat +="<td align = center valign = top>Photo</td>"*/
-	dat += "</tr></table>"
+	//dat += "</tr></table>"
 	return dat
 
 /obj/item/card/id/attack_self(mob/user)
