@@ -84,7 +84,7 @@
 			continue
 
 		var/obj/item/I = bp
-		if(I.body_cover_flags & bodypart.body_part)
+		if(I.body_cover_flags & bodypart.body_part_flags)
 			return TRUE
 	return FALSE
 

@@ -19,7 +19,7 @@
 	density = FALSE
 	anchored = FALSE
 	w_class = ITEMSIZE_SMALL
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 15

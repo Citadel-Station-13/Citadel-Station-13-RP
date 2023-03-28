@@ -4,7 +4,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "red"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_red", SLOT_ID_LEFT_HAND = "toolbox_red")
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 7
@@ -70,7 +70,7 @@
 	icon_state = "syndicate"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)
-	force = 14
+	damage_force = 14
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow,
 		/obj/item/tool/screwdriver,
@@ -96,7 +96,7 @@
 	name = "golden toolbox"
 	desc = "A gold plated toolbox, fancy and harmless due to the gold plating being on cardboard!"
 	icon_state = "gold"
-	force = 0
+	damage_force = 0
 	throw_force = 0
 
 /obj/item/storage/toolbox/lunchbox

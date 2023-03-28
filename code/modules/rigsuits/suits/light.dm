@@ -1,3 +1,10 @@
+/datum/armor/rig/light
+	melee = 0.5
+	bullet = 0.15
+	laser = 0.5
+	energy = 0.1
+	bomb = 0.25
+
 // Light rigs are not space-capable, but don't suffer excessive slowdown or sight issues when depowered.
 /obj/item/rig/light
 	name = "light suit control module"
@@ -5,7 +12,7 @@
 	icon_state = "ninja_rig"
 	suit_type = "light suit"
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/cell)
-	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
+	armor_type = /datum/armor/rig/light
 	emp_protection = 10
 	slowdown = 0
 	clothing_flags = THICKMATERIAL
@@ -80,7 +87,6 @@
 	suit_type = "ominous"
 	desc = "A unique suit of nano-enhanced armor designed for covert operations."
 	icon_state = "ninja_rig"
-	armor = list(melee = 50, bullet = 15, laser = 30, energy = 10, bomb = 25, bio = 100, rad = 30)
 	emp_protection = 40 //change this to 30 if too high.
 	slowdown = 0
 
@@ -90,6 +96,18 @@
 	cell_type =  /obj/item/cell/hyper
 
 	req_access = list(ACCESS_FACTION_SYNDICATE)
+	allowed = list(
+		/obj/item/gun,
+		/obj/item/ammo_magazine,
+		/obj/item/ammo_casing,
+		/obj/item/melee/baton,
+		/obj/item/handcuffs,
+		/obj/item/tank,
+		/obj/item/suit_cooling_unit,
+		/obj/item/cell,
+		/obj/item/storage/backpack,
+		/obj/item/bluespace_radio,
+	)
 
 	initial_modules = list(
 		/obj/item/rig_module/teleporter,

@@ -56,11 +56,11 @@
 	attack_generic(user,damage_dealt,attack_message)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile) && prob(30))
+	if(istype(mover, /obj/projectile) && prob(30))
 		return TRUE
 	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
@@ -147,9 +147,9 @@
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.damage_force
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.damage_force * 0.1
 	healthcheck()
 	..()
 	return

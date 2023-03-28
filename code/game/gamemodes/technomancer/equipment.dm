@@ -188,7 +188,7 @@
 	desc = "It's a purple gem, attached to a rod and a handle, along with small wires.  It looks like it would make a good club."
 	icon = 'icons/obj/technomancer.dmi'
 	icon_state = "scepter"
-	force = 15
+	damage_force = 15
 	slot_flags = SLOT_BELT
 	attack_verb = list("beaten", "smashed", "struck", "whacked")
 

@@ -5,6 +5,7 @@
 
 /datum/surgery_step/robotics/
 	can_infect = 0
+	surface_odd_buff = 30 // can do it basically anywhere but a floor
 
 /datum/surgery_step/robotics/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (isslime(target))

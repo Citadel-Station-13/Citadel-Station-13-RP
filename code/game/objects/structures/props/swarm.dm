@@ -16,8 +16,8 @@
 		var/mob/living/L = mover
 		if(L.faction == "swarmer")
 			return TRUE
-	else if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	else if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "swarmer")
 			return TRUE
 	return ..()

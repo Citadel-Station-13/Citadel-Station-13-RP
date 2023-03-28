@@ -16,7 +16,7 @@
 	item_state = "gun"
 
 	fire_sound = 'sound/effects/basscannon.ogg'
-	projectile_type = /obj/item/projectile/pummel
+	projectile_type = /obj/projectile/pummel
 
 	charge_cost = 600
 
@@ -26,17 +26,17 @@
 	w_class = ITEMSIZE_LARGE
 
 //Projectile
-/obj/item/projectile/pummel
+/obj/projectile/pummel
 	name = "sonic blast"
 	icon_state = "sound"
 	damage = 5
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 	embed_chance = 0
 	vacuum_traversal = 0
 	range = 6 //Scary name, but just deletes the projectile after this range
 
-/obj/item/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
+/obj/projectile/pummel/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(isliving(target))
 		var/mob/living/L = target
 		var/throwdir = get_dir(firer,L)

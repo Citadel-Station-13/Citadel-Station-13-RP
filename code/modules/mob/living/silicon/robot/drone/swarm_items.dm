@@ -146,15 +146,15 @@
 	icon_state = "xray"
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	projectile_type = /obj/item/projectile/beam/shock
+	projectile_type = /obj/projectile/beam/shock
 	charge_cost = 175
 
 	self_recharge = TRUE
 	use_external_power = TRUE
 
 	firemodes = list(
-		list(mode_name="kill", projectile_type=/obj/item/projectile/beam/gamma, charge_cost = 300),
-		list(mode_name="deter", projectile_type=/obj/item/projectile/beam/shock, charge_cost = 175),
+		list(mode_name="kill", projectile_type=/obj/projectile/beam/gamma, charge_cost = 300),
+		list(mode_name="deter", projectile_type=/obj/projectile/beam/shock, charge_cost = 175),
 		)
 
 /obj/item/gun/energy/xray/swarm/Initialize(mapload)

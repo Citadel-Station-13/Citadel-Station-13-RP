@@ -295,6 +295,26 @@
 					message = "salutes."
 			m_type = 1
 
+		if ("fullsalute")
+			if (!src.buckled)
+				var/M = null
+				if (param)
+					for (var/mob/A in view(null, null))
+						if (param == A.name)
+							M = A
+							break
+				if (!M)
+					param = null
+
+				if (param)
+					message = "salutes to [param]."
+				else
+					message = "salutes."
+
+				playsound(src.loc, 'sound/misc/salute.ogg', 30, 0)
+			m_type = 1
+
+
 		if ("choke")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "clutches [T.his] throat desperately!"
@@ -1065,7 +1085,7 @@
 		if ("help")
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
-					raise, roll, salute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
+					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
 					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
 
 		else
