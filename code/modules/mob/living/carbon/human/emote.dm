@@ -993,7 +993,7 @@
 			var/bonus_number = text2num(bonus)
 			var/dc_number = text2num(copytext(dc, 3, length(dc) + 1))
 
-			var/die_result = rand(die_number)
+			var/die_result = rand(die_number - 1) + 1
 			var/die_total = die_result + bonus_number
 
 			if (die_number && bonus_number && dc_number)
