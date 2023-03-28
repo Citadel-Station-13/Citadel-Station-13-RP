@@ -636,6 +636,9 @@
 		|ACCESSORY_SLOT_ARMOR_S\
 		|ACCESSORY_SLOT_ARMOR_M)
 	blood_overlay_type = "armor"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/storage/pouches/large)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)
