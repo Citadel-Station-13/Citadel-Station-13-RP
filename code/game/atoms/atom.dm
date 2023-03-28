@@ -180,6 +180,10 @@
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
+	//? Sounds
+	/// Default sound played on impact when damaged by a weapon / projectile / whatnot. This is usually null for default.
+	var/hit_sound
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *

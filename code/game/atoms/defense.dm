@@ -40,8 +40,8 @@
  * * attack_type - attack type enum like melee / projectile / thrown / unarmed / etc
  * * weapon - attacking /obj/item for melee / thrown, /obj/projectile for ranged, /mob for unarmed
  */
-/atom/proc/hitsound_query(damage_type, damage_mode, attack_type, datum/weapon)
-	return null // default
+/atom/proc/hitsound_override(damage_type, damage_mode, attack_type, datum/weapon)
+	return // default is null
 
 //? Direct Integrity
 

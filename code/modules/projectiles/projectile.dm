@@ -154,7 +154,6 @@
 
 	var/temporary_unstoppable_movement = FALSE
 	var/no_attack_log = FALSE
-	var/hitsound
 
 /obj/projectile/proc/Range()
 	range--
