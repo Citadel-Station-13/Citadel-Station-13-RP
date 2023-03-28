@@ -379,7 +379,8 @@
 		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		if(!user.attempt_insert_item_for_installation(W, src))
+		if(!user.attempt_insert_item_for_installation(W, loc))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
 			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
