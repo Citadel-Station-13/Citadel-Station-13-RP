@@ -253,7 +253,7 @@
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
 		step(user.pulling, get_dir(user.pulling.loc, src))
-		M.start_pulling(t)
+		M.start_pulling(t, suppress_message = TRUE)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
