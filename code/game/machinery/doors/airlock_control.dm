@@ -297,3 +297,61 @@
 /obj/machinery/access_button/airlock_exterior
 	frequency = 1379
 	command = "cycle_exterior"
+
+/obj/machinery/access_button/violet_protocol
+	name = "Violet Protocol Trigger"
+	desc = "WARNING: This button activates a facility-wide kill agent. Misuse will result in fines and jail time."
+	//icon = 'icons/obj/objects_vr.dmi'
+	//icon_state = "panicbutton"
+	anchored = 1
+	frequency = 1366
+	command = "valve_toggle"
+	//var/glass = 1
+	//var/triggered = 0
+
+/*
+/obj/machinery/access_button/violet_protocol/set_frequency(new_frequency)
+	radio_controller.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
+
+/obj/machinery/access_button/violet_protocol/update_icon()
+	if(triggered)
+		icon_state = "[initial(icon_state)]_launched"
+	else if(!glass)
+		icon_state = "[initial(icon_state)]_open"
+	else
+		icon_state = "[initial(icon_state)]"
+
+/obj/machinery/access_button/violet_protocol/attack_hand(mob/user, list/params)
+	if(!istype(user))
+		return ..()
+
+	if(user.incapacitated())
+		return
+
+	// Already punched.
+	if(triggered)
+		to_chat(user, "<span class='warning'>The button is already depressed; evacuate the area.</span>")
+	// Glass present
+	else if(glass)
+		if(user.a_intent == INTENT_HARM)
+			visible_message("<span class='warning'>smashes the glass on [src]!</span>")
+			glass = FALSE
+			playsound(src, 'sound/effects/hit_on_shattered_glass.ogg')
+			update_icon()
+		else
+			visible_message("<span class='notice'>caresses the [src] glass lovingly.</span>")
+			to_chat(user, "<span class='warning'>If you're trying to break the glass, you'll have to hit it harder than that...</span>")
+	// Must be !glass and !launched
+	else
+		user.custom_emote("<span class='warning'>pushes the button on [src]!</span>")
+		var/datum/signal/signal = new
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
+		signal.data["tag"] = master_tag
+		signal.data["command"] = command
+
+		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, radio_filter = RADIO_AIRLOCK)
+		playsound(src, get_sfx("button"))
+		update_icon()
+*/

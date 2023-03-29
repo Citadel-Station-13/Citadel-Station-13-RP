@@ -647,7 +647,6 @@
 "aAf" = (
 /obj/structure/closet/secure_closet/psych,
 /obj/item/clothing/suit/straight_jacket,
-/obj/item/handcuffs/disruptor,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "aAY" = (
@@ -2710,6 +2709,13 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
+"cba" = (
+/obj/machinery/access_button/violet_protocol{
+	master_tag = "protvio";
+	tag = "protvio"
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/medical/patient_wing)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/window/reinforced{
@@ -31235,6 +31241,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
+"tCM" = (
+/obj/machinery/atmospherics/valve/digital{
+	dir = 4;
+	frequency = "1366";
+	id = "protvio";
+	name = "Prot-Vio valve";
+	tag = "protvio"
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/medical/patient_wing)
 "tDp" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -52560,8 +52576,8 @@ jnU
 cZF
 rTa
 qkU
-qkU
-qkU
+tCM
+cba
 qkU
 jXq
 dFP
