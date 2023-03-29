@@ -217,7 +217,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(holopad_name)
 		return holopad_name
 	var/obj/effect/overmap/visitable/sector = get_overmap_sector(src)
-	return "[sector? "[sector.scanner_name]: " : ""][get_area(src)?:name] - [holopad_uid]"
+	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
 
 /**
  * our holocall category
@@ -234,11 +234,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/list/built = list()
 	for(var/obj/machinery/holopad/pad as anything in holocall_query())
 		var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(pad))
+		var/sector_name = sector?.scanner_name || sector?.name
 		built[++built.len] = list(
 			"id" = pad.holopad_uid,
 			"name" = pad.holocall_name(),
 			"category" = pad.holocall_category(),
-			"sector" = sector?.scanner_name,
+			"sector" = sector_name,
 		)
 	return built
 
@@ -842,9 +843,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /datum/holocall/proc/ui_caller_id()
 	// todo: overmap sector names for anonymous.
+	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(source))
+	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
 	return list(
 		"name" = (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name(),
-		"sector" = "[get_overmap_sector(source)?.scanner_name || "Unknown"]",
+		"sector" = "[scanner_name]",
 		"id" = source.holopad_uid,
 	)
 
