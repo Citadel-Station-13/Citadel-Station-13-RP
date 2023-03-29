@@ -17,7 +17,6 @@
 	. = ..()
 	var/datum/role/job/J = SSjob.get_job(rank)
 	var/department = lowertext(LAZYACCESS(J?.departments,1))
-	TO_WORLD("department read:[department]")
 	switch(department)
 		if("security")
 			icon_state = "chit_red"
