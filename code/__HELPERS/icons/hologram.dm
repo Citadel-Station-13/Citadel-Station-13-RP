@@ -52,19 +52,22 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 	if(!isnull(use_alpha))
 		rendered.alpha = use_alpha
 	if(scanlines)
-		var/icon/I = rendered.icon
-		var/width = I.Width()
-		var/height = I.Height()
+		var/icon/I = compiling:icon
+		var/width = 32
+		var/height = 32
+		if(!istype(I, /icon) && I)
+			I = icon(I) // try to grab it from stringw
+		if(istype(I, /icon))
+			width = I.Width()
+			height = I.Height()
 		var/key = "[width]x[height]"
 		if(!GLOB.hologram_scanline_cache[key])
 			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
 			generated.Scale(width, height)
-			GLOB.hologram_scanline_cache = generated
+			GLOB.hologram_scanline_cache[key] = generated
 		rendered.filters += filter(
 			type = "alpha",
 			icon = GLOB.hologram_scanline_cache[key],
 		)
 	rendered.appearance_flags |= KEEP_TOGETHER
 	return rendered
-
-

@@ -91,11 +91,11 @@ export const Holopad = (props, context) => {
                 ?(data.isAIProjecting? "Start Projecting" : "Stop Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting? `phone` : `phone-xmark`)}
+              icon={data.aiEnabled && (data.isAIProjecting? `phone` : `stop`)}
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (
-            !!data.aiRequestAllowed && <Button
+            !!data.aiRequestAllowed && <Button.Confirm
               content={data.aiEnabled
                 ?(data.aiRequested? "AI Requested" : "Request AI")
                 : "AI Disabled"}
@@ -157,7 +157,7 @@ const HolopadCallOutgoing = (props, context) => {
       buttons={
         <Button.Confirm
           content="Disconnect"
-          icon="phone-xmark"
+          icon="stop"
           onClick={() => act('disconnect')} />
       }>
       {
@@ -199,7 +199,7 @@ const HolopadCallIncoming = (props, context) => {
       buttons={
         <Button.Confirm
           content="Disconnect All"
-          icon="phone-xmark"
+          icon="stop"
           onClick={() => act('disconnect')} />
       }>
       <LabeledList>

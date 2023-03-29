@@ -208,6 +208,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			continue
 		if(long_range && pad.long_range)
 			. += pad
+	. -= src
 
 /**
  * our holopad name
@@ -463,6 +464,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if("disconnect")
 			// id, null for all
 			var/id = params["id"]
+			if(isnull(id))
+				disconnect_all_calls()
+				return TRUE
 			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 			if(outgoing_call?.destination == pad)
 				disconnect_call(outgoing_call)
@@ -817,6 +821,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/obj/effect/overlay/hologram/holopad/hologram
 	/// last hologram move
 	var/hologram_last_move
+	/// tracking when to hang up if ringing (30 second timeout)
+	var/ring_timerid
 
 /datum/holocall/New(obj/machinery/holopad/sender, obj/machinery/holopad/receiver)
 	action_hang_up = new(src)
@@ -884,6 +890,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	connected = TRUE
 	LAZYADD(destination.incoming_calls, src)
 	LAZYREMOVE(destination.ringing_calls, src)
+	if(ring_timerid)
+		deltimer(ring_timerid)
 
 /datum/holocall/proc/register()
 	ASSERT(isnull(source.outgoing_call))
@@ -900,9 +908,14 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	LAZYREMOVE(destination.incoming_calls, src)
 	LAZYREMOVE(destination.ringing_calls, src)
 	destination = null
+	if(ring_timerid)
+		deltimer(ring_timerid)
 
 /datum/holocall/proc/ring()
+	if(ring_timerid)
+		deltimer(ring_timerid)
 	destination.ring(src)
+	ring_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/holocall, disconnect), TRUE), 30 SECONDS, TIMER_STOPPABLE)
 
 /datum/holocall/proc/disconnect(we_hung_up)
 	destination.hung_up(src, we_hung_up)
