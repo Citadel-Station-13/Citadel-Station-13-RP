@@ -232,14 +232,16 @@ const HolopadRinging = (props, context) => {
   return ((
     <LabeledList>
       <>
-        {data.ringing.map((pad) => {
-          <LabeledList.Item label={`${pad.name} - ${pad.sector}`}
+        {data.ringing.map((pad) => (
+          <LabeledList.Item
+            key={pad.id}
+            label={`${pad.name} - ${pad.sector}`}
             buttons={
               <Button.Confirm
                 content="Connect"
                 onClick={() => act('connect', { id: pad?.id })} />
-            } />;
-        })}
+            } />
+        ))}
       </>
     </LabeledList>
   ));

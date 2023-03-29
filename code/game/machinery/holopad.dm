@@ -233,7 +233,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/ui_connectivity_data()
 	var/list/built = list()
 	for(var/obj/machinery/holopad/pad as anything in holocall_query())
-		var/obj/effect/overmap/visitable/sector = get_overmap_sector(pad)
+		var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(pad))
 		built[++built.len] = list(
 			"id" = pad.holopad_uid,
 			"name" = pad.holocall_name(),
@@ -844,7 +844,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// todo: overmap sector names for anonymous.
 	return list(
 		"name" = (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name(),
-		"sector" = "[get_overmap_sector(source) || "Unknown"]",
+		"sector" = "[get_overmap_sector(source)?.scanner_name || "Unknown"]",
 		"id" = source.holopad_uid,
 	)
 

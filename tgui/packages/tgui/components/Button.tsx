@@ -176,17 +176,23 @@ type ButtonConfirmProps = ButtonProps & {
   confirmColor?: string;
 }
 
-export class ButtonConfirm<T extends ButtonConfirmProps> extends Component<T, {}> {
-  clicked: boolean = false;
+type ButtonConfirmState = {
+  clicked: boolean;
+}
+
+export class ButtonConfirm extends Component<ButtonConfirmProps, ButtonConfirmState> {
+  state: ButtonConfirmState = {
+    clicked: false,
+  };
 
   handleClick = () => {
-    if (this.clicked) {
-      this.clicked = false;
+    if (this.state.clicked) {
+      this.setClickedOnce(false);
     }
   }
 
   setClickedOnce(clickedOnce) {
-    this.clicked = clickedOnce;
+    this.setState({ clicked: clickedOnce });
     if (clickedOnce) {
       setTimeout(() => window.addEventListener('click', this.handleClick));
     }
@@ -208,10 +214,10 @@ export class ButtonConfirm<T extends ButtonConfirmProps> extends Component<T, {}
     } = this.props;
     return (
       <Button
-        content={this.clicked ? confirmContent : content}
-        icon={this.clicked ? confirmIcon : icon}
-        color={this.clicked ? confirmColor : color}
-        onClick={(e) => this.clicked
+        content={this.state.clicked ? confirmContent : content}
+        icon={this.state.clicked ? confirmIcon : icon}
+        color={this.state.clicked ? confirmColor : color}
+        onClick={(e) => this.state.clicked
           ? onClick?.(e)
           : this.setClickedOnce(true)}
         {...rest}
