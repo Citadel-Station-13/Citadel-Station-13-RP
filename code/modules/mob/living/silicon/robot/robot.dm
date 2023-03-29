@@ -896,6 +896,8 @@
 /mob/living/silicon/robot/update_canmove()
 	. = ..()
 	updateicon()
+	spawn(-1) // We don't need to wait for this.
+		check_clearance()
 
 
 /mob/living/silicon/robot/updateicon()
@@ -1428,14 +1430,12 @@
 		if("Belly up")
 			bellyup = TRUE
 
-/mob/living/silicon/robot/lay_down()
-	. = ..()
-	set waitfor = FALSE
-	if(sitting)
-		for(var/mob/living/carbon/human/smooshed in loc) // Literally the worstbest place for this code.
+/mob/living/silicon/robot/proc/check_clearance() // Literally just for sitting.
+	if(sitting || resting) // should it be sitting, resting, or both?
+		for(var/mob/living/carbon/smooshed in loc)
 			if(prob(1))
 				. = smooshed.apply_damage(60, BRUTE, BP_HEAD)
-			if(.)
+			if(.) //Hooray, we damaged something.
 				smooshed.visible_message(
 					"[name] slams their chassis into [smooshed]'s head! That looked painful!",
 					"Your [BP_HEAD] is crushed by [name]'s mechanical parts!",
