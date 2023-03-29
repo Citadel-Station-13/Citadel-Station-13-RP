@@ -1436,10 +1436,11 @@
 			if(prob(1))
 				. = smooshed.apply_damage(60, BRUTE, BP_HEAD)
 			if(.) //Hooray, we damaged something.
+				var/obj/head = smooshed.get_organ(BP_HEAD) | "head mount" // Yeah, we probably already have a head if the first check passed anyways.
 				smooshed.visible_message(
-					"[name] slams their chassis into [smooshed]'s head! That looked painful!",
-					"Your [smooshed.get_organ(BP_HEAD)] is crushed by [name]'s mechanical parts!",
-					"You hear the sound of bones being crunching!",
+					"[name] slams their chassis into [smooshed]'s [head]! That looked painful!",
+					"Your [head] is crushed by [name]'s mechanical parts!",
+					"You hear a loud crack!",
 				)
 
 /mob/living/silicon/robot/proc/ex_reserve_refill()
