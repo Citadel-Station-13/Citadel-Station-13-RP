@@ -102,12 +102,14 @@
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
 	initial_flooring = /singleton/flooring/grass
+CREATE_STANDARD_TURFS(/turf/simulated/floor/grass)
 
 /turf/simulated/floor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "tiled"
 	initial_flooring = /singleton/flooring/tiling
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
@@ -477,8 +479,12 @@
 /turf/simulated/floor/beach/water
 /turf/simulated/floor/beach/water/ocean
 */
+/**This literally does nothing, need to axe or make it do something */
 /turf/simulated/floor/airless/ceiling
+
 /turf/simulated/floor/plating
+	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
 
 /turf/simulated/floor/plating/external
 	outdoors = TRUE
