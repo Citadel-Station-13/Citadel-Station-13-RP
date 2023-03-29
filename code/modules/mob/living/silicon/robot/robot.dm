@@ -906,6 +906,16 @@
 		if (stat == CONSCIOUS && resting)
 			if(sitting)
 				icon_state = "[module_sprites[icontype]]-sit"
+				spawn(-1) // Let's not wait for this to update the sprites, lol.
+					for(var/mob/living/carbon/human/smooshed in loc) // Literally the worstbest place for this code.
+						if(prob(1))
+							. = smooshed.apply_damage(60, BRUTE, BP_HEAD)
+						if(.)
+							smooshed.visible_message(
+								"[name] slams their chassis into [smooshed]'s head! That looked painful!",
+								"Your [BP_HEAD] is crushed by [name]'s mechanical parts!",
+								"You hear the sound of bones being crunching!",
+							)
 			else if(bellyup)
 				icon_state = "[module_sprites[icontype]]-bellyup"
 			else
