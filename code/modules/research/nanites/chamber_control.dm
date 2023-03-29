@@ -19,10 +19,23 @@
 
 /obj/machinery/computer/nanite_chamber/proc/unlink_chamber()
 
+/obj/machinery/computer/nanite_chamber/proc/check_chamber()
+	if(!linked)
+		return
+	if(get_dist(linked, src) > 1)
+		unlink_chamber()
+
 /obj/machinery/computer/nanite_chamber/proc/relink()
+	check_chamber()
+	if(linked)
+		return
+	var/obj/machinery/nanite_chamber/chamber = nearby_chamber()
+	if(!chamber || chamber.linked)
+		return
+	link_chamber(chamber)
 
 /obj/machinery/computer/nanite_chamber/proc/nearby_chamber()
-	RETURN_TYPE(/obj/machinery/nanite_chamber/chamber)
+	RETURN_TYPE(/obj/machinery/nanite_chamber)
 	return locate(/obj/machinery/nanite_chamber) in orange(1, src)
 
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
