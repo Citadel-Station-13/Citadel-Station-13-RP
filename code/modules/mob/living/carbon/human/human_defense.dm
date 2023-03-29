@@ -8,7 +8,7 @@ emp_act
 
 */
 
-/mob/living/carbon/human/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/carbon/human/bullet_act(var/obj/projectile/P, var/def_zone)
 	def_zone = check_zone(def_zone)
 	if(!has_organ(def_zone))
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
@@ -74,7 +74,7 @@ emp_act
 
 	..(stun_amount, agony_amount, def_zone)
 
-/mob/living/carbon/human/run_mob_armor(var/def_zone, var/type)
+/mob/living/carbon/human/legacy_mob_armor(var/def_zone, var/type)
 	var/armorval = 0
 	var/total = 0
 
@@ -96,8 +96,8 @@ emp_act
 				total += weight
 	return (armorval/max(total, 1))
 
-//Like run_mob_armor, but the value it returns will be numerical damage reduction
-/mob/living/carbon/human/run_mob_soak(var/def_zone, var/type)
+//Like legacy_mob_armor, but the value it returns will be numerical damage reduction
+/mob/living/carbon/human/legacy_mob_soak(var/def_zone, var/type)
 	var/soakval = 0
 	var/total = 0
 
@@ -128,7 +128,7 @@ emp_act
 
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes) // What all are we checking?
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_cover_flags & def_zone.body_part)) // Is that body part being targeted covered?
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags)) // Is that body part being targeted covered?
 			siemens_coefficient *= C.siemens_coefficient
 
 	return siemens_coefficient
@@ -159,7 +159,7 @@ emp_act
 	var/list/results = list()
 	var/list/clothing_items = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes)
 	for(var/obj/item/clothing/C in clothing_items)
-		if(istype(C) && (C.body_cover_flags & def_zone.body_part))
+		if(istype(C) && (C.body_cover_flags & def_zone.body_part_flags))
 			results.Add(C)
 	return results
 
@@ -170,7 +170,7 @@ emp_act
 	var/protection = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		protection += gear.armor[type]
+		protection += gear.fetch_armor().raw(type) * 100
 	return protection
 
 /mob/living/carbon/human/proc/getsoak_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -179,7 +179,7 @@ emp_act
 	var/soaked = 0
 	var/list/protective_gear = def_zone.get_covering_clothing()
 	for(var/obj/item/clothing/gear in protective_gear)
-		soaked += gear.armorsoak[type]
+		soaked += gear.fetch_armor().soak(type)
 	return soaked
 
 // Checked in borer code
@@ -226,7 +226,7 @@ emp_act
 	if(!hit_zone)
 		return null
 
-	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
+	if(check_shields(I.damage_force, I, user, target_zone, "the [I.name]"))
 		return
 
 	var/obj/item/organ/external/affecting = get_organ(hit_zone)
@@ -264,7 +264,7 @@ emp_act
 		effective_force -= round(effective_force*0.8)
 	// Handle striking to cripple.
 	if(user.a_intent == INTENT_DISARM)
-		effective_force *= 0.5 //reduced effective force...
+		effective_force *= 0.5 //reduced effective damage_force...
 		if(!..(I, user, effective_force, blocked, soaked, hit_zone))
 			return 0
 

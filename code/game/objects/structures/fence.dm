@@ -67,7 +67,7 @@
 
 // Projectiles can pass through fences.
 /obj/structure/fence/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return TRUE
 	return ..()
 

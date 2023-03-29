@@ -9,7 +9,7 @@
 
 	step_delay = 0.5
 
-	projectile = /obj/item/projectile/bullet/incendiary/flamethrower/large
+	projectile = /obj/projectile/bullet/incendiary/flamethrower/large
 	fire_sound = 'sound/weapons/towelwipe.ogg'
 
 	origin_tech = list(TECH_MATERIAL = 4, TECH_COMBAT = 6, TECH_PHORON = 4, TECH_ILLEGAL = 4)
@@ -22,7 +22,7 @@
 	energy_drain = 50
 	required_type = list(/obj/mecha/combat, /obj/mecha/working)
 
-	projectile = /obj/item/projectile/bullet/incendiary/flamethrower
+	projectile = /obj/projectile/bullet/incendiary/flamethrower
 
 	origin_tech = list(TECH_MATERIAL = 3, TECH_COMBAT = 3, TECH_PHORON = 3, TECH_ILLEGAL = 2)
 

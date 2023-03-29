@@ -40,7 +40,7 @@
 	icon_state = "russianranged"
 	icon_living = "russianranged"
 
-	projectiletype = /obj/item/projectile/bullet
+	projectiletype = /obj/projectile/bullet
 	casingtype = /obj/item/ammo_casing/spent
 	projectilesound = 'sound/weapons/Gunshot4.ogg'
 

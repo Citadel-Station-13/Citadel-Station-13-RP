@@ -25,13 +25,13 @@
 	species = SScharacters.resolve_species_path(/datum/species/diona)
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
-	add_verb(src, /mob/living/carbon/alien/diona/proc/merge)
+	add_verb(src, /mob/living/carbon/alien/diona/proc/diona_merge)
 
 /mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
 	if(hat)
 		return
 	hat = new_hat
-	new_hat.loc = src
+	new_hat.forceMove(src)
 	update_icons()
 
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)

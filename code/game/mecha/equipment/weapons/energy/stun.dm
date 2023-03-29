@@ -4,7 +4,7 @@
 	icon_state = "mecha_taser"
 	energy_drain = 20
 	equip_cooldown = 8
-	projectile = /obj/item/projectile/beam/stun
+	projectile = /obj/projectile/beam/stun
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser/rigged
@@ -12,6 +12,6 @@
 	desc = "A vaguely functional taser analog, inside an extinguisher casing."
 	icon_state = "mecha_taser-rig"
 	energy_drain = 30
-	projectile = /obj/item/projectile/beam/stun/weak
+	projectile = /obj/projectile/beam/stun/weak
 
 	equip_type = EQUIP_UTILITY

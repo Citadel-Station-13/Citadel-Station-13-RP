@@ -36,7 +36,7 @@
 	melee_damage_upper = 25
 	attacktext = list("punched", "kicked", "smacked")
 	attack_sound = "punch"
-	armor = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
+	armor_legacy_mob = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
 
 	has_hands = 1
 	humanoid_hands = 1
@@ -142,7 +142,7 @@
 	icon_state = "industrial-rig"
 	rig1 = /obj/item/rig/industrial/old
 	rig2 = /obj/item/rig/industrial/old/spring
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/rig/industrial/old
 	name = "old Industrial hardsuit"
@@ -158,7 +158,7 @@
 	icon_state = "merc-rig"
 	rig1 = /obj/item/rig/merc/old
 	rig2 = /obj/item/rig/merc/old/spring
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
 
 /obj/item/rig/merc/old
 	name = "old crimson hardsuit control module"

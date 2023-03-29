@@ -11,15 +11,15 @@
 	item_icons = null
 
 	fire_sound = 'sound/weapons/Taser.ogg'
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 
 	modifystate = "dominatorstun"
 
 	dna_lock = 1
 
 	firemodes = list(
-	list(mode_name="stun", charge_cost=240,projectile_type=/obj/item/projectile/beam/stun, modifystate="dominatorstun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/item/projectile/beam/dominator, modifystate="dominatorkill", fire_sound='sound/weapons/gauss_shoot.ogg'),
+	list(mode_name="stun", charge_cost=240,projectile_type=/obj/projectile/beam/stun, modifystate="dominatorstun", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", charge_cost=480,projectile_type=/obj/projectile/beam/dominator, modifystate="dominatorkill", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 	var/emagged = FALSE
@@ -42,7 +42,7 @@
 
 
 // Dominator Ammo
-/obj/item/projectile/beam/dominator
+/obj/projectile/beam/dominator
 	name = "dominator lethal beam"
 	icon_state = "xray"
 	muzzle_type = /obj/effect/projectile/muzzle/xray

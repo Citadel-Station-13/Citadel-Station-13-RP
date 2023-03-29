@@ -23,7 +23,7 @@
 	maxHealth = 150
 	hovering = TRUE // Can fly.
 
-	projectiletype = /obj/item/projectile/beam
+	projectiletype = /obj/projectile/beam
 	base_attack_cooldown = 2 SECONDS
 
 	var/datum/effect_system/ion_trail_follow/ion_trail

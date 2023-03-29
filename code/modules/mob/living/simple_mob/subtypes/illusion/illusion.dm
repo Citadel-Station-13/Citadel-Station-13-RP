@@ -45,7 +45,7 @@
 		return
 
 
-/mob/living/simple_mob/illusion/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/illusion/bullet_act(obj/projectile/P)
 	if(!P)
 		return
 

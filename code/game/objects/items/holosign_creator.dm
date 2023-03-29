@@ -4,7 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "signmaker"
 	item_state = "electronic"
-	force = 0
+	damage_force = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_force = 0
 	throw_speed = 3
