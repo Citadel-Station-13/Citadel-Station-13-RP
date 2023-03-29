@@ -1438,7 +1438,7 @@
 			if(.) //Hooray, we damaged something.
 				smooshed.visible_message(
 					"[name] slams their chassis into [smooshed]'s head! That looked painful!",
-					"Your [BP_HEAD] is crushed by [name]'s mechanical parts!",
+					"Your [smooshed.get_organ(BP_HEAD)] is crushed by [name]'s mechanical parts!",
 					"You hear the sound of bones being crunching!",
 				)
 
