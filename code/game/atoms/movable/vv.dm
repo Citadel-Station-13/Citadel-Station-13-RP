@@ -31,8 +31,17 @@
 			else if(isnull(var_value))
 				moveToNullspace()
 				return TRUE
-			return FALSE
-	return ..()
+			return
+	. = ..()
+	if(!.)
+		return
+	if(!raw_edit)
+		switch(var_name)
+			if(NAMEOF(src, rad_insulation))
+				var/turf/simulated/ST = loc
+				if(!istype(ST))
+					return
+				ST.update_rad_insulation()
 
 /atom/movable/vv_get_dropdown()
 	. = ..()
