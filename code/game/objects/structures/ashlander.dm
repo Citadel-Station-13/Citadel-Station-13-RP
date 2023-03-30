@@ -350,7 +350,7 @@
 	if(!H.faction == "lavaland")
 		to_chat(user, "<span class='danger'>You feel as if an eye briefly regards you, and then turns away.</span>")
 	else
-		H.add_modifier(/datum/modifier/ashlander_blessing, 5 MINUTES)
+		H.add_modifier(/datum/modifier/ashlander_blessing, 15 MINUTES)
 
 /datum/modifier/ashlander_blessing
 	name = "The Mother's Blessing"
