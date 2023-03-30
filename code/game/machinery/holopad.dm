@@ -854,6 +854,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/proc/initiate_remote_presence(mob/user)
 	if(remoting)
 		cleanup_remote_presence()
+	if(!isAI(user) && user.loc != src.loc)
+		user.action_feedback(SPAN_WARNING("You have to be standing on the holopad!"), source)
+		return FALSE
 	if(!user.request_movement_intercept(src))
 		user.action_feedback(SPAN_WARNING("You're already controlling something else!"), source)
 		return FALSE
@@ -865,13 +868,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
-	hologram = destination.create_hologram(user)
+	if(isAI(user))
+		var/mob/living/silicon/ai/ai_user = user
+		hologram = destination.create_hologram(ai_user.hologram_appearance())
+	else
+		hologram = destination.create_hologram(user)
 	return TRUE
 
 /datum/holocall/proc/remote_perspective()
 	return destination.get_perspective()
 
 /datum/holocall/intercept_mob_move(mob/moving, dir)
+	. = TRUE
 	if(hologram_last_move + 1 > world.time)
 		return
 	hologram_last_move = world.time
