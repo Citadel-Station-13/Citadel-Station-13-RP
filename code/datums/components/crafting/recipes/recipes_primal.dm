@@ -434,7 +434,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/cooking_spit
-	name = "cooking spit"
+	name = "Cooking Spit"
 	result = /obj/machinery/appliance/cooker/grill/spit
 	time = 200
 	reqs = list(/obj/item/stack/material/bone = 10,
@@ -445,7 +445,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/stone_dropper
-	name = "stone dropper"
+	name = "Stone Dropper"
 	result = /obj/item/reagent_containers/dropper/ashlander
 	time = 40
 	reqs = list(/obj/item/ore/slag = 1,
@@ -455,7 +455,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/goliath_gloves
-	name = "goliath hide gloves"
+	name = "Goliath Hide Gloves"
 	result = /obj/item/clothing/gloves/goliath
 	time = 20
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
@@ -464,7 +464,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/tying_post
-	name = "bone tying post"
+	name = "Bone Tying Post"
 	result = /obj/structure/bed/chair/post
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
@@ -474,7 +474,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/goliath_mining_satchel
-	name = "goliath hide mining satchel"
+	name = "Goliath Hide Mining Satchel"
 	result = /obj/item/storage/bag/ore/ashlander
 	time = 20
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 6,
@@ -485,7 +485,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashlander_armor
-	name = "ashen lamellar panoply"
+	name = "Ashen Lamellar Panoply"
 	result = /obj/item/clothing/suit/armor/ashlander
 	time = 120
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 10,
@@ -496,7 +496,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashlander_helmet
-	name = "ashen lamellar helmet"
+	name = "Ashen Lamellar Helmet"
 	result = /obj/item/clothing/head/helmet/ashlander
 	time = 100
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
@@ -507,7 +507,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashlander_tunic
-	name = "coarse tunic"
+	name = "Coarse Tunic"
 	result = /obj/item/clothing/under/tribal_tunic/ashlander
 	time = 60
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
@@ -516,7 +516,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashlander_tunic_fem
-	name = "coarse tunic (female)"
+	name = "Coarse Tunic (female)"
 	result = /obj/item/clothing/under/tribal_tunic_fem/ashlander
 	time = 60
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4
@@ -525,7 +525,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/goliath_plant_bag
-	name = "goliath hide plant bag"
+	name = "Goliath Hide Plant Bag"
 	result = /obj/item/storage/bag/plants/ashlander
 	time = 20
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4,
@@ -536,7 +536,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/goliath_halfcloak
-	name = "goliath hide half cloak"
+	name = "Goliath Hide Half Cloak"
 	result = /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
 	time = 50
 	reqs = list(/obj/item/stack/sinew = 1,
@@ -545,7 +545,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/sand_whetstone
-	name = "ashen whetstone"
+	name = "Ashen Whetstone"
 	result = /obj/item/whetstone/ashlander
 	time = 30
 	reqs = list(/obj/item/stack/material/sandstone = 2,
@@ -554,7 +554,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashen_vestment
-	name = "ashen vestments"
+	name = "Ashen Vestments"
 	result = /obj/item/clothing/suit/ashen_vestment
 	time = 20
 	reqs = list(/obj/item/stack/material/bone = 4,
@@ -564,7 +564,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/ashen_tabard
-	name = "ashen tabard"
+	name = "Ashen Tabard"
 	result = /obj/item/clothing/suit/ashen_tabard
 	time = 20
 	reqs = list(/obj/item/stack/sinew = 1,
@@ -574,7 +574,7 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/heaven_shaker
-	name = "heaven shaker"
+	name = "Heaven Shaker"
 	result = /obj/item/grenade/explosive/ied/ashlander
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
@@ -584,12 +584,50 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/heaven_shaker_frag
-	name = "heaven shaker (fragmentation)"
+	name = "Heaven Shaker (fragmentation)"
 	result = /obj/item/grenade/explosive/ied/ashlander/fragmentation
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
 				/obj/item/ore/slag = 2,
+				/obj/item/elderstone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/goliathcowl
+	name = "Goliath Hide Cowl"
+	result = /obj/item/clothing/head/cowl/goliath
+	time = 30
+	reqs = list(/obj/item/stack/sinew = 1,
+				/obj/item/stack/animalhide/goliath_hide = 2)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/primitive_splint
+	name = "Primitive Splints"
+	result = /obj/item/stack/medical/splint/primitive
+	time = 50
+	reqs = list(/obj/item/stack/sinew = 5,
+				/obj/item/stack/material/bone = 10)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/bone_pipe
+	name = "Bone Pipe"
+	result = /obj/item/clothing/mask/smokable/pipe/bonepipe
+	time = 30
+	tools = list(/obj/item/material/knife)
+	reqs = list(/obj/item/stack/material/bone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/spark_striker
+	name = "Spark Striker"
+	result = /obj/item/flame/lighter/ashlander
+	time = 30
+	reqs = list(/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/bone = 2,
+				/obj/item/pen/charcoal = 1,
 				/obj/item/elderstone = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
