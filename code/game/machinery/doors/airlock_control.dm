@@ -305,7 +305,7 @@
 	//icon_state = "panicbutton"
 	anchored = 1
 	frequency = 1366
-	command = "valve_toggle"
+	command = "valve_open"
 	//var/glass = 1
 	//var/triggered = 0
 
