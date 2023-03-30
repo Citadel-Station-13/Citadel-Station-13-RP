@@ -372,7 +372,10 @@ GLOBAL_LIST_EMPTY(buildholders)
 				var/turf/TC = get_turf(object)
 				if(ispath(holder.buildmode.objholder,/turf))
 					var/turf/T = get_turf(object)
-					T.ChangeTurf(holder.buildmode.objholder)
+					if(T.density)
+						T.ChangeTurf(holder.buildmode.objholder)
+					else
+						T.PlaceOnTop(holder.buildmode.objholder)
 				else
 					var/obj/A = new holder.buildmode.objholder (get_turf(object))
 					A.setDir(holder.builddir.dir)
