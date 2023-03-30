@@ -572,3 +572,24 @@
 				/obj/item/stack/animalhide/goliath_hide = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/heaven_shaker
+	name = "heaven shaker"
+	result = /obj/item/grenade/explosive/ied/ashlander
+	time = 300
+	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
+				/obj/item/condensedphlogiston = 3,
+				/obj/item/elderstone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/heaven_shaker_frag
+	name = "heaven shaker (fragmentation)"
+	result = /obj/item/grenade/explosive/ied/ashlander/fragmentation
+	time = 300
+	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
+				/obj/item/condensedphlogiston = 3,
+				/obj/item/ore/slag = 2,
+				/obj/item/elderstone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE

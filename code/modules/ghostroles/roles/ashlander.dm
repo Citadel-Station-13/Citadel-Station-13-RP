@@ -85,7 +85,8 @@
 		/datum/crafting_recipe/stone_dropper, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/stone_mortar, /datum/crafting_recipe/bone_arrow, /datum/crafting_recipe/hard_bone_arrow,
 		/datum/crafting_recipe/goliath_mining_satchel, /datum/crafting_recipe/ashlander_armor, /datum/crafting_recipe/ashlander_helmet, /datum/crafting_recipe/ashlander_tunic,
 		/datum/crafting_recipe/ashlander_tunic_fem, /datum/crafting_recipe/tying_post, /datum/crafting_recipe/goliath_curtain, /datum/crafting_recipe/goliath_plant_bag, /datum/crafting_recipe/goliath_halfcloak,
-		/datum/crafting_recipe/sand_whetstone, /datum/crafting_recipe/ashen_vestment, /datum/crafting_recipe/ashen_tabard
+		/datum/crafting_recipe/sand_whetstone, /datum/crafting_recipe/ashen_vestment, /datum/crafting_recipe/ashen_tabard, /datum/crafting_recipe/heaven_shaker,
+		/datum/crafting_recipe/heaven_shaker_frag
 		)
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
