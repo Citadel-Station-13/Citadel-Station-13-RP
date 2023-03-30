@@ -300,7 +300,7 @@
 
 /obj/machinery/access_button/violet_protocol
 	name = "Violet Protocol Trigger"
-	desc = "WARNING: This button activates a facility-wide kill agent. Misuse will result in fines and jail time."
+	desc = "WARNING: This button activates a complex-wide kill agent. Misuse will result in fines and jail time."
 	//icon = 'icons/obj/objects_vr.dmi'
 	//icon_state = "panicbutton"
 	anchored = 1
@@ -309,12 +309,12 @@
 	//var/glass = 1
 	//var/triggered = 0
 
-/*
 /obj/machinery/access_button/violet_protocol/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
 	frequency = new_frequency
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_ATMOSIA)
 
+/*
 /obj/machinery/access_button/violet_protocol/update_icon()
 	if(triggered)
 		icon_state = "[initial(icon_state)]_launched"

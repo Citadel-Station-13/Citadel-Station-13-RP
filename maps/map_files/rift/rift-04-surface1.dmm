@@ -2711,6 +2711,7 @@
 /area/rnd/outpost/xenobiology/outpost_storage)
 "cba" = (
 /obj/machinery/access_button/violet_protocol{
+	command = "valve_open";
 	master_tag = "protvio";
 	tag = "protvio"
 	},
