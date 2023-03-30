@@ -350,7 +350,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	update_icon()
 	if(LAZYACCESS(holocall_anti_spam, incoming.source.holopad_uid) > world.time)
 		return
-	LAZYSET(holocall_anti_spam, incoming.source.holopad_uid, 30 SECONDS)
+	LAZYSET(holocall_anti_spam, incoming.source.holopad_uid, world.time + 30 SECONDS)
 	playsound(src, 'sound/machines/beep.ogg', 75)
 	atom_say("Incoming holocall from [incoming.caller_id()]")
 	if(!incoming.cross_sector)
@@ -494,7 +494,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			var/id = params["id"]
 			var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 			for(var/datum/holocall/connecting as anything in ringing_calls)
-				if(connecting.destination != pad)
+				if(connecting.source != pad)
 					continue
 				connect_call(connecting)
 				return TRUE

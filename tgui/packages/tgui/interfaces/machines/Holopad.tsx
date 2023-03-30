@@ -103,6 +103,7 @@ export const Holopad = (props, context) => {
               selected={data.aiRequested}
               onClick={() => act('ai_request')} />
           )}>
+          <HolopadRinging />
           <Tabs>
             <Tabs.Tab
               width="50%"
@@ -118,26 +119,17 @@ export const Holopad = (props, context) => {
             </Tabs.Tab>
           </Tabs>
           {tab === 1 && (
-            <Stack>
-              <Stack.Item grow={1}>
-                {!!data.canCall && (
-                  data.calling === HolopadCalling.None? (
-                    <HolopadDirectory />
-                  ) : (
-                    data.calling === HolopadCalling.Destination? (
-                      <HolopadCallIncoming />
-                    ) : (
-                      data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
-                    )
-                  )
-                )}
-              </Stack.Item>
-              {!!data.ringing.length && (
-                <Stack.Item>
-                  <HolopadRinging />
-                </Stack.Item>
-              )}
-            </Stack>
+            !!data.canCall && (
+              data.calling === HolopadCalling.None? (
+                <HolopadDirectory />
+              ) : (
+                data.calling === HolopadCalling.Destination? (
+                  <HolopadCallIncoming />
+                ) : (
+                  data.calling === HolopadCalling.Source && <HolopadCallOutgoing />
+                )
+              )
+            )
           )}
           {tab === 2 && (
             <HolopadSettings />
@@ -229,22 +221,27 @@ const HolopadCallIncoming = (props, context) => {
 
 const HolopadRinging = (props, context) => {
   const { data, act } = useBackend<HolopadContext>(context);
-  return ((
-    <LabeledList>
-      <>
-        {data.ringing.map((pad) => (
-          <LabeledList.Item
-            key={pad.id}
-            label={`${pad.name} - ${pad.sector}`}
-            buttons={
-              <Button.Confirm
-                content="Connect"
-                onClick={() => act('connect', { id: pad?.id })} />
-            } />
-        ))}
-      </>
-    </LabeledList>
-  ));
+  return (
+    <>
+      {
+        data.ringing.map((pad) => (
+          <NoticeBox key={pad.id}>
+            <Stack>
+              <Stack.Item grow={1}>
+                Incoming call from {pad.name} - {pad.sector}
+              </Stack.Item>
+              <Stack.Item>
+                <Button.Confirm
+                  disabled={data.calling === HolopadCalling.Source}
+                  content={data.calling === HolopadCalling.Source? "Already In Call" : "Connect"}
+                  onClick={() => act('connect', { id: pad.id })} />
+              </Stack.Item>
+            </Stack>
+          </NoticeBox>
+        ))
+      }
+    </>
+  );
 };
 
 const MISC_SECTOR = "Other";
