@@ -1169,7 +1169,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		img.appearance_flags |= PIXEL_SCALE
 	img.pixel_x = half_diff_width*-1
 	img.pixel_y = half_diff_height*-1
-	flick_overlay_view(img, A, anim_duration*loops, TRUE)
+	A.flick_overlay_view(img, anim_duration*loops, TRUE)
 
 	//Animate it growing
 	animate(img, alpha = 0, transform = matrix()*grow_to, time = anim_duration, loop = loops)

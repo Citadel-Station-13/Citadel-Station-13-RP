@@ -122,7 +122,11 @@
 	var/tmp/is_outside = OUTSIDE_AREA
 
 /turf/vv_edit_var(var_name, new_value)
-	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
+	var/static/list/banned_edits = list(
+		NAMEOF_STATIC(src, x),
+		NAMEOF_STATIC(src, y),
+		NAMEOF_STATIC(src, z),
+	)
 	if(var_name in banned_edits)
 		return FALSE
 	. = ..()
