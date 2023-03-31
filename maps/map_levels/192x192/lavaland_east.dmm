@@ -176,14 +176,6 @@
 /obj/structure/ghost_role_spawner/ashlander,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
-"xP" = (
-/obj/structure/mob_spawner/goliath{
-	simultaneous_spawns = 0;
-	spawn_types = list();
-	total_spawns = 0
-	},
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/unexplored)
 "yC" = (
 /obj/structure/fence/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -337,13 +329,12 @@
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "XO" = (
-/obj/effect/abstract/over_openspace_darkness,
 /obj/structure/mob_spawner/goliath{
 	simultaneous_spawns = 0;
 	spawn_types = list();
 	total_spawns = 0
 	},
-/turf/simulated/floor/outdoors/lavaland,
+/turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/unexplored)
 "XQ" = (
 /obj/item/oar/ashlander,
@@ -21851,7 +21842,7 @@ DP
 DP
 DP
 DP
-xP
+XO
 DP
 XO
 DP
