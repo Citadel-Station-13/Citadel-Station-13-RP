@@ -1,5 +1,12 @@
 /obj/item/circuitboard/machine/lathe
-	#warn impl
+	abstract_type = /obj/item/circuitboard/machine/lathe
+	name = T_BOARD("lathe")
+	build_path = /obj/machinery/lathe
+	req_components = list(
+		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/matter_bin = 3,
+	)
 
 /obj/machinery/lathe
 	abstract_type = /obj/machinery/lathe
@@ -7,8 +14,11 @@
 	#warn sprite including base_icon_state
 	atom_flags = OPENCONTAINER
 	use_power = USE_POWER_IDLE
-	idle_power_usage = 30
-	active_power_usage = 5000
+	idle_power_usage = POWER_USAGE_LATHE_IDLE
+	active_power_usage = POWER_USAGE_LATHE_ACTIVE_SCALE(1)
+	density = TRUE
+	anchored = TRUE
+	circuit = /obj/item/circuitboard/machine/lathe
 
 	/// icon state when printing, if any
 	var/active_icon_state
@@ -16,8 +26,6 @@
 	var/insert_icon_state
 	/// icon state to flick when recycling, if any
 	var/recycle_icon_state
-
-	#warn component parts & upgrade handling
 
 	/// print speed - multiplier. affects power cost.
 	var/speed_multiplier = 1
@@ -71,6 +79,36 @@
 	if(design_holder?.owner == src)
 		QDEL_NULL(design_holder)
 	return ..()
+
+/obj/machinery/lathe/RefreshParts()
+	. = ..()
+	var/speed_factor = 1
+	var/efficiency_factor = 1
+	var/storage_multiplier = 1
+	var/manips_total = 0
+	var/manips_rating = 0
+	var/bins_total = 0
+	var/bins_rating = 0
+	for(var/obj/item/stock_parts/manipulator/manip as anything in component_parts)
+		manips_rating += manip.rating
+		manips_total++
+	for(var/obj/item/stock_parts/matter_bin/bin as anything in component_parts)
+		bins_rating += bin.rating
+		bins_total++
+	manips_rating /= manips_total
+	bins_rating /= bins_total
+	speed_factor = manips_rating * 0.5 + 0.5
+	efficiency_factor = MATERIAL_EFFICIENCY_LATHE_SCALE(manips_rating)
+	storage_multiplier = bins_rating * 0.5 + 0.5
+	speed_multiplier = speed_factor
+	power_multiplier = power_factor
+	efficiency_multiplier = efficiency_factor
+	update_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
+	stored.set_multiplied_capacity(materials_max, storage_multiplier)
+
+/obj/machinery/lathe/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	. = ..()
+	#warn impl
 
 /obj/machinery/lathe/proc/create_storages()
 	stored = new(materials_max)

@@ -7,6 +7,21 @@
 /datum/material_container/New(list/materials_capacity)
 	src.capacity = materials_capacity
 
+/datum/material_container/proc/set_capacity(new_capacity)
+	capacity = new_capacity
+
+/datum/material_container/proc/set_multiplied_capacity(new_capacity, multiplier = 1)
+	if(isnull(new_capacity))
+		capacity = new_capacity
+	else if(isnum(new_capacity))
+		capacity = new_capacity * multiplier
+	else if(islist(new_capacity))
+		var/list/built = new_capacity
+		built = built.Copy()
+		for(var/key in built)
+			built[key] *= multiplier
+		capacity = built
+
 /**
  * dumps everything out
  *

@@ -11,12 +11,6 @@
 	clicksound = "keyboard"
 	clickvol = 30
 
-	circuit = /obj/item/circuitboard/autolathe
-
-	var/static/datum/category_collection/autolathe/autolathe_recipes
-	var/list/stored_material =  list(MAT_STEEL = 0, MAT_GLASS = 0)
-	var/list/storage_capacity = list(MAT_STEEL = 0, MAT_GLASS = 0)
-
 	var/hacked = FALSE
 	var/disabled = FALSE
 	var/shocked = FALSE
@@ -53,53 +47,11 @@
 		return UI_CLOSE
 	return ..()
 
-/obj/machinery/autolathe/ui_static_data(mob/user)
-	var/list/data = ..()
-
-	var/list/categories = list()
-	var/list/recipes = list()
-	for(var/datum/category_group/autolathe/A in autolathe_recipes.categories)
-		categories += A.name
-		for(var/datum/category_item/autolathe/M in A.items)
-			if(M.hidden && !hacked)
-				continue
-			if(M.man_rating > man_rating)
-				continue
-			recipes.Add(list(list(
-				"category" = A.name,
-				"name" = M.name,
-				"ref" = REF(M),
-				"requirements" = M.resources,
-				"hidden" = M.hidden,
-				"coeff_applies" = !M.no_scale,
-			)))
-	data["recipes"] = recipes
-	data["categories"] = categories
-
-	return data
 
 /obj/machinery/autolathe/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
-
-/obj/machinery/autolathe/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	var/list/data = ..()
-
-	var/list/material_data = list()
-	for(var/mat_id in stored_material)
-		var/amount = stored_material[mat_id]
-		var/list/material_info = list(
-			"name" = mat_id,
-			"amount" = amount,
-			"sheets" = round(amount / SHEET_MATERIAL_AMOUNT),
-			"removable" = amount >= SHEET_MATERIAL_AMOUNT
-		)
-		material_data += list(material_info)
-	data["busy"] = busy
-	data["materials"] = material_data
-	data["mat_efficiency"] = mat_efficiency
-	return data
 
 /obj/machinery/autolathe/interact(mob/user)
 	if(panel_open)

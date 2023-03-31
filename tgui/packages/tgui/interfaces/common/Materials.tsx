@@ -7,11 +7,13 @@ import { BoxProps } from '../../components/Box';
 
 export interface MaterialsContext {
   materials: Record<string, Material>;
+  sheetAmount: number;
 }
 
 export interface FullMaterialsContext {
   materials: Record<string, DetailedMaterial>;
-}
+  sheetAmount: number;
+ }
 
 export interface Material {
   name: string;
