@@ -125,14 +125,14 @@
 
 /obj/item/card/id/proc/dat()
 	var/dat = list()
-	dat += text("Name: [registered_name]", )
-	dat += text("Sex: [sex]")
-	dat += text("Age: []", age)
-	dat += text("Rank: []", assignment)
-	dat += text("Species: []", species)
-	//dat += text("Fingerprint: []</A><BR>\n", fingerprint_hash)
-	dat += text("Blood Type: []", blood_type)
-	//dat += text("DNA Hash: []<BR><BR>\n", dna_hash)
+	dat += "Name: [registered_name]"
+	dat += "Sex: [sex]"
+	dat += "Age: [age]"
+	dat += "Rank: [assignment]"
+	dat += "Species: [species]"
+	// dat += "Fingerprint: [fingerprint_hash]</A><BR>\n"
+	dat += "Blood Type: [blood_type]"
+	// dat += "DNA Hash: [dna_hash]<BR><BR>\n"
 	/*if(front && side)
 		dat +="<td align = center valign = top>Photo</td>"*/
 	//dat += "</tr></table>"
