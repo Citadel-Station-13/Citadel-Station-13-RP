@@ -204,8 +204,8 @@ const HolopadCallIncoming = (props, context) => {
               buttons={
                 <>
                   <Button
-                    content="Projecting"
-                    disabled
+                    content={callContext.projecting.includes(pad.id)? "Projecting" : "Not Projecting"}
+                    color="transparent"
                     selected={callContext.projecting.includes(pad.id)} />
                   <Button.Confirm
                     content="Disconnect"

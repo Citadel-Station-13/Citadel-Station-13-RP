@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(dpc)
 	var/list/targets = list()
 
 /datum/controller/subsystem/dpc/proc/queue_invoke(datum/target, procpath/callpath, ...)
-	targets += args.Copy()
+	targets[++targets.len] = args.Copy()
 	if(!primed)
 		prime()
 
@@ -23,3 +23,4 @@ SUBSYSTEM_DEF(dpc)
 	primed = FALSE
 	for(var/list/targlist as anything in targets)
 		call(targlist[1], targlist[2])(arglist(targlist.Copy(3)))
+	targets.len = 0

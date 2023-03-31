@@ -1,9 +1,9 @@
 GLOBAL_LIST_EMPTY(holopad_lookup)
 
-#define HOLO_NORMAL_COLOR null
-#define HOLO_VORE_COLOR "#d97de0"
-#define HOLO_NORMAL_ALPHA 120
-#define HOLO_VORE_ALPHA 200
+#define HOLO_NORMAL_COLOR rgba_auto_greyscale_matrix("#11ccff")
+#define HOLO_VORE_COLOR rgba_auto_greyscale_matrix("#d97de0")
+#define HOLO_NORMAL_ALPHA 165
+#define HOLO_VORE_ALPHA 210
 
 /obj/machinery/holopad
 	name = "\improper AI holopad"
@@ -387,7 +387,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			"connected" = connected,
 			"ringing" = !outgoing_call.connected,
 			"remoting" = !!outgoing_call.remoting,
-			"destination" = outgoing_call.caller_id_destination()
+			"destination" = outgoing_call.ui_caller_id_destination()
 		)
 	else if(incoming_calls_connected())
 		// DESITNATION MODE
@@ -560,7 +560,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * returns if we're projecting
  */
 /obj/machinery/holopad/proc/is_active()
-	return length(holograms)
+	return length(ais_projecting) || length(ringing_calls) || length(incoming_calls) || outgoing_call
 
 /obj/machinery/holopad/update_icon()
 	. = ..()
@@ -582,10 +582,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * * state - are we on?
  */
 /obj/machinery/holopad/proc/update_activity_hologram(state)
-	var/needed = state? (!length(holograms)) : length(ringing_calls)
+	var/needed = state && !length(ais_projecting) && !length(incoming_calls)
 	if(needed && !activity_hologram)
 		activity_hologram = new(loc, activity_hologram_style, src)
+		activity_hologram.pixel_y = 24
 		activity_hologram.set_light(2)
+		animate(activity_hologram, time = 5, flags = ANIMATION_RELATIVE | ANIMATION_END_NOW, pixel_y = 5)
+		animate(time = 5, flags = ANIMATION_RELATIVE, loop = -1, pixel_y = -5)
 	else if(!needed && activity_hologram)
 		QDEL_NULL(activity_hologram)
 
@@ -730,7 +733,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/relay_intercepted_emote(atom/movable/emoting, visible_name, msg)
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
-	if(istype(emoting, /obj/machinery/holopad))
+	if(istype(emoting, /obj/machinery/holopad) || isnull(emoting))
 		return
 	// if it's the outgoing caller, send to other side
 	if(emoting == outgoing_call?.remoting)
@@ -923,9 +926,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/holocall/proc/cleanup_remote_presence()
 	if(!remoting)
 		return
+	UnregisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE)
 	remoting.unshunt_perspective()
 	remoting.clear_movement_intercept()
-	UnregisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE)
 	action_hang_up.remove(remoting)
 	action_swap_view.remove(remoting)
 	remoting = null
@@ -999,8 +1002,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /datum/action/holocall
 	abstract_type = /datum/action/holocall
 	target_type = /datum/holocall
+	action_type = ACTION_TYPE_DEFAULT
 
 /datum/action/holocall/hang_up
+	name = "Hang Up"
 	button_icon = 'icons/screen/actions/generic.dmi'
 	button_icon_state = "hang_up"
 	background_icon = 'icons/screen/actions/backgrounds.dmi'
@@ -1011,6 +1016,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	receiver.disconnect(TRUE)
 
 /datum/action/holocall/swap_view
+	name = "Stop View"
 	button_icon = 'icons/screen/actions/generic.dmi'
 	button_icon_state = "swap_cam"
 	background_icon = 'icons/screen/actions/backgrounds.dmi'
@@ -1027,7 +1033,6 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	name = "hologram"
 	desc = "Some kind of hologram."
 	alpha = HOLO_NORMAL_ALPHA
-	color = HOLO_NORMAL_COLOR
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
@@ -1038,6 +1043,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	. = ..()
 	if(clone_from)
 		from_appearance(clone_from)
+	color = HOLO_NORMAL_COLOR
 
 /obj/effect/overlay/hologram/Destroy()
 	walk(src, NONE)
@@ -1050,7 +1056,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(density)
 		walk_to(src, T)
 	else
-		walk_towards(src, T)
+		forceMove(T)
 
 /obj/effect/overlay/hologram/proc/stop_moving()
 	walk(src, NONE)
@@ -1107,7 +1113,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	else if(isatom(appearancelike))
 		appearancelike = cheap? make_hologram_appearance(appearancelike, 255) : render_hologram_icon(appearancelike, 255)
 
-	src.appearance = appearancelike
+	if(isicon(appearancelike))
+		src.icon = appearancelike
+		src.overlays = list()
+		src.our_overlays = list()
+	else
+		src.appearance = appearancelike
+		src.our_overlays = src.overlays
 	src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	// mangle layer
 	src.layer = MANGLE_PLANE_AND_LAYER(src.plane, src.layer)
@@ -1142,6 +1154,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	return ..()
 
 /obj/effect/overlay/hologram/holopad/check_location()
+	if(!pad)
+		return
 	if(!pad.check_hologram(src))
 		on_out_of_bounds()
 

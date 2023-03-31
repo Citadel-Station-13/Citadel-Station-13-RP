@@ -11,7 +11,7 @@
  * * scanlines - include scanlines
  * * no_anim - kill any animations.
  */
-/proc/render_hologram_icon(rendering, use_alpha = (140 / 255), no_anim, scanlines = TRUE)
+/proc/render_hologram_icon(rendering, use_alpha = 180, no_anim, scanlines = TRUE)
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
@@ -40,19 +40,22 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
  * * use_alpha - what alpha to render it as
  * * scanlines - include scanlines
  */
-/proc/make_hologram_appearance(rendering, use_alpha = (140 / 255), scanlines = TRUE)
-	var/appearance/compiling
+/proc/make_hologram_appearance(rendering, use_alpha = 140, scanlines = TRUE)
+	var/mutable_appearance/rendered
 	if(isicon(rendering))
-		compiling = icon2appearance(rendering)
-	else if(ismutableappearance(rendering))
-		compiling = rendering:appearance
-	else // /atom, /appearance, /image
-		compiling = rendering:appearance
-	var/mutable_appearance/rendered = new(compiling)
+		rendered = new(rendering)
+	else if(ismutableappearance(rendering) || isimage(rendering) || IS_APPEARANCE(rendering))
+		rendered = new(rendering)
+	else if(isatom(rendering))
+		var/atom/casted = rendering
+		casted.compile_overlays()
+		rendered = new(casted)
+	else
+		CRASH("unexpected input: [rendering]")
 	if(!isnull(use_alpha))
 		rendered.alpha = use_alpha
 	if(scanlines)
-		var/icon/I = compiling:icon
+		var/icon/I = rendered.icon
 		var/width = 32
 		var/height = 32
 		if(!istype(I, /icon) && I)
@@ -64,10 +67,13 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 		if(!GLOB.hologram_scanline_cache[key])
 			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
 			generated.Scale(width, height)
+			generated.MapColors(aa = -1)
+			generated.Blend("#ffffff", ICON_ADD)
 			GLOB.hologram_scanline_cache[key] = generated
-		rendered.filters += filter(
-			type = "alpha",
-			icon = GLOB.hologram_scanline_cache[key],
-		)
+		var/image/the_overlay = image(GLOB.hologram_scanline_cache[key])
+		the_overlay.blend_mode = BLEND_SUBTRACT
+		rendered.overlays += the_overlay
 	rendered.appearance_flags |= KEEP_TOGETHER
+	rendered.density = FALSE
+	rendered.opacity = FALSE
 	return rendered

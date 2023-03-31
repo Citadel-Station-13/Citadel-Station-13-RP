@@ -1,16 +1,16 @@
 //? YOU SHOULD ALWAYS USE AB DEFAULT; THE OTHERS ARE LEGACY. STOP USING THEM.
-#define AB_DEFAULT 0
-#define AB_ITEM 1
-#define AB_SPELL 2
-#define AB_INNATE 3
-#define AB_GENERIC 4
+#define ACTION_TYPE_DEFAULT 0
+#define ACTION_TYPE_ITEM 1
+#define ACTION_TYPE_SPELL 2
+#define ACTION_TYPE_INNATE 3
+#define ACTION_TYPE_GENERIC 4
 
-#define AB_CHECK_RESTRAINED (1<<0)
-#define AB_CHECK_STUNNED (1<<1)
-#define AB_CHECK_LYING (1<<2)
-#define AB_CHECK_ALIVE (1<<3)
-#define AB_CHECK_INSIDE (1<<4)
-#define AB_CHECK_CONSCIOUS (1<<5)
+#define ACTION_CHECK_RESTRAINED (1<<0)
+#define ACTION_CHECK_STUNNED (1<<1)
+#define ACTION_CHECK_LYING (1<<2)
+#define ACTION_CHECK_ALIVE (1<<3)
+#define ACTION_CHECK_INSIDE (1<<4)
+#define ACTION_CHECK_CONSCIOUS (1<<5)
 
 // todo: multiple owners
 // todo: ability datums? cooldown needs more checking
@@ -42,7 +42,7 @@
 
 	//? legacy / unsorted
 	/// action type for legacy non-default handling
-	var/action_type = AB_ITEM
+	var/action_type = ACTION_TYPE_ITEM
 	var/procname = null
 	var/check_flags = 0
 	var/processing = 0
@@ -96,23 +96,22 @@
 	// todo: log
 	if(!Checks())
 		return FALSE
+	on_trigger(user, target)
 	switch(action_type)
-		if(AB_DEFAULT)
-			on_trigger(user, target)
-		if(AB_ITEM)
+		if(ACTION_TYPE_ITEM)
 			if(target)
 				var/obj/item/item = target
 				item.ui_action_click(src, user)
-		//if(AB_SPELL)
+		//if(ACTION_TYPE_SPELL)
 		//	if(target)
 		//		var/obj/effect/proc_holder/spell = target
 		//		spell.Click()
-		if(AB_INNATE)
+		if(ACTION_TYPE_INNATE)
 			if(!active)
 				Activate()
 			else
 				Deactivate()
-		if(AB_GENERIC)
+		if(ACTION_TYPE_GENERIC)
 			if(target && procname)
 				call(target,procname)(usr)
 	return TRUE
@@ -145,22 +144,22 @@
 /datum/action/proc/Checks()// returns 1 if all checks pass
 	if(!owner)
 		return 0
-	if(check_flags & AB_CHECK_RESTRAINED)
+	if(check_flags & ACTION_CHECK_RESTRAINED)
 		if(owner.restrained())
 			return 0
-	if(check_flags & AB_CHECK_STUNNED)
+	if(check_flags & ACTION_CHECK_STUNNED)
 		if(owner.stunned)
 			return 0
-	if(check_flags & AB_CHECK_LYING)
+	if(check_flags & ACTION_CHECK_LYING)
 		if(owner.lying)
 			return 0
-	if(check_flags & AB_CHECK_ALIVE)
+	if(check_flags & ACTION_CHECK_ALIVE)
 		if(owner.stat)
 			return 0
-	if(check_flags & AB_CHECK_INSIDE)
+	if(check_flags & ACTION_CHECK_INSIDE)
 		if(!(target in owner))
 			return 0
-	if(check_flags & AB_CHECK_CONSCIOUS)
+	if(check_flags & ACTION_CHECK_CONSCIOUS)
 		if(!STAT_IS_CONSCIOUS(owner.stat))
 			return FALSE
 	return 1
@@ -174,7 +173,7 @@
 
 	button.cut_overlays()
 	var/image/img
-	if(action_type == AB_ITEM && target)
+	if(action_type == ACTION_TYPE_ITEM && isitem(target))
 		var/obj/item/I = target
 		img = image(I.icon, src , I.icon_state)
 	else if(button_icon && button_icon_state)
@@ -269,14 +268,14 @@
 
 //Presets for item actions
 /datum/action/item_action
-	action_type = AB_ITEM
-	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUNNED|AB_CHECK_LYING|AB_CHECK_ALIVE|AB_CHECK_INSIDE
+	action_type = ACTION_TYPE_ITEM
+	check_flags = ACTION_CHECK_RESTRAINED|ACTION_CHECK_STUNNED|ACTION_CHECK_LYING|ACTION_CHECK_ALIVE|ACTION_CHECK_INSIDE
 
 /datum/action/item_action/CheckRemoval(mob/living/user)
 	return !(target in user)
 
 /datum/action/item_action/hands_free
-	check_flags = AB_CHECK_ALIVE|AB_CHECK_INSIDE
+	check_flags = ACTION_CHECK_ALIVE|ACTION_CHECK_INSIDE
 
 #undef AB_WEST_OFFSET
 #undef AB_NORTH_OFFSET
@@ -284,7 +283,7 @@
 
 
 /datum/action/innate/
-	action_type = AB_INNATE
+	action_type = ACTION_TYPE_INNATE
 
 
 //? /datum impl
