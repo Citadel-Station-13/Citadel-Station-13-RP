@@ -76,10 +76,11 @@
  * * mode - damage_mode
  * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
  * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * gradual - loud effects like glass clanging should not happen. use for stuff like acid and fire.
  *
  * @return raw damage taken
  */
-/atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon)
+/atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
 	var/list/returned = run_armor(arglist(args))

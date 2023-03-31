@@ -27,6 +27,8 @@
 #define ARMOR_BOMB "bomb"
 #define ARMOR_BIO "bio"
 #define ARMOR_RAD "rad"
+#define ARMOR_FIRE "fire"
+#define ARMOR_ACID "acid"
 
 GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 	ARMOR_MELEE,
@@ -42,6 +44,8 @@ GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 	ARMOR_BOMB,
 	ARMOR_BIO,
 	ARMOR_RAD,
+	ARMOR_FIRE,
+	ARMOR_ACID,
 )
 
 //? --- armor tiers ---

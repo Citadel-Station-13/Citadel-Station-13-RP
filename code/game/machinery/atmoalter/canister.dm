@@ -229,9 +229,13 @@ update_flag
 	if(exposed_temperature > temperature_resistance)
 		inflict_atom_damage(5)
 
+/obj/machinery/portable_atmospherics/canister/drop_products(method)
+	. = ..()
+	new /obj/item/stack/material/steel(drop_location(), method == ATOM_DECONSTRUCT_DISASSEMBLED? 10 : 7)
+
 /obj/machinery/portable_atmospherics/canister/atom_break()
 	. = ..()
-	location.assume_air(air_contents)
+	loc.assume_air(air_contents)
 	set_density(FALSE)
 	playsound(src, 'sound/effects/spray.ogg', 20, 1)
 	if(holding)

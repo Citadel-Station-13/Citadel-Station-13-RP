@@ -5,7 +5,7 @@
 /datum/armor
 	/// just for vv
 	var/name
-	
+
 	var/melee = 0
 	var/melee_tier = ARMOR_TIER_DEFAULT
 	var/melee_soak = 0
@@ -19,6 +19,8 @@
 	var/bomb = 0
 	var/bio = 0
 	var/rad = 0
+	var/fire = 0
+	var/acid = 0
 
 /datum/armor/New(list/from_values)
 	if(from_values)
@@ -45,6 +47,8 @@
 	UNPACK_OR(bomb, ARMOR_BOMB, 0)
 	UNPACK_OR(bio, ARMOR_BIO, 0)
 	UNPACK_OR(rad, ARMOR_RAD, 0)
+	UNPACK_OR(fire, AROMR_FIRE, 0)
+	UNPACK_OR(acid, ARMOR_ACID, 0)
 	#undef UNPACK_OR
 
 /datum/armor/proc/to_list()
@@ -62,6 +66,8 @@
 		ARMOR_BOMB = bomb,
 		ARMOR_BIO = bio,
 		ARMOR_RAD = rad,
+		ARMOR_FIRE = fire,
+		ARMOR_ACID = acid,
 	)
 
 /datum/armor/proc/to_name()
@@ -73,6 +79,8 @@
 		"[round(bomb * 100, 0.1)]",
 		"[round(bio * 100, 0.1)]",
 		"[round(rad * 100, 0.1)]",
+		"[round(fire * 100, 0.1)]",
+		"[round(acid * 100, 0.1)]",
 	), " | ")
 
 /datum/armor/proc/raw(flag)
@@ -101,6 +109,10 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
+		if(ARMOR_FIRE)
+			return fire
+		if(ARMOR_ACID)
+			return acid
 		else
 			CRASH("Invalid flag: [flag]")
 
@@ -123,6 +135,10 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
+		if(AROMR_FIRE)
+			return fire
+		if(ARMOR_ACID)
+			return acid
 		else
 			CRASH("Invalid flag: [flag]")
 
@@ -156,6 +172,10 @@
 			return damage * (1 - bio)
 		if(ARMOR_RAD)
 			return damage * (1 - rad)
+		if(ARMOR_FIRE)
+			return damage * (1 - fire)
+		if(ARMOR_ACID)
+			return damage * (1 - acid)
 		else
 			CRASH("Invalid flag: [flag]")
 
@@ -169,6 +189,8 @@
 	. += "Bomb: [round(bomb * 100, 0.1)]%"
 	. += "Bio: [round(bio * 100, 0.1)]%"
 	. += "Radiation: [round(rad * 100, 0.1)]%"
+	. += "Thermal: [round(fire * 100, 0.1)]%"
+	. += "Acid: [round(acid * 100, 0.1)]%"
 
 /datum/armor/proc/log_string()
 	var/list/built = list()

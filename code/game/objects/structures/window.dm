@@ -15,6 +15,7 @@
 
 	integrity = 20
 	integrity_max = 20
+	integrity_failure = 0
 
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE
@@ -45,7 +46,6 @@
 		anchored = 0
 		construction_state = 0
 		update_verbs()
-	health = maxhealth
 	AIR_UPDATE_ON_INITIALIZE_AUTO
 	update_nearby_icons()
 
@@ -78,10 +78,10 @@
 /obj/structure/window/examine(mob/user)
 	. = ..()
 
-	if(health == maxhealth)
+	if(integrity == integrity_max)
 		. += "<span class='notice'>It looks fully intact.</span>"
 	else
-		var/perc = health / maxhealth
+		var/perc = percent_integrity()
 		if(perc > 0.75)
 			. += "<span class='notice'>It has a few cracks.</span>"
 		else if(perc > 0.5)
@@ -98,29 +98,22 @@
 		else
 			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
-/obj/structure/window/take_damage_legacy(var/damage = 0,  var/sound_effect = 1)
-	var/initialhealth = health
-
-	if(silicate)
-		damage = damage * (1 - silicate / 200)
-
-	health = max(0, health - damage)
-
-	if(health <= 0)
-		shatter()
-	else
-		if(sound_effect)
-			playsound(loc, 'sound/effects/Glasshit.ogg', 100, 1)
-		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
-			visible_message("[src] looks like it's about to shatter!" )
-			update_icon()
-		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
-			visible_message("[src] looks seriously damaged!" )
-			update_icon()
-		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
-			visible_message("Cracks begin to appear in [src]!" )
-			update_icon()
-	return
+/obj/structure/window/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+	var/initial_integrity = integrity
+	. = ..()
+	if(gradual)
+		update_icon()
+		return
+	playsound(src, 'sound/effects/Glasshit.ogg', 75, 1)
+	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
+		visible_message("[src] looks like it's about to shatter!" )
+		update_icon()
+	else if(integrity < integrity_max / 2 && initial_integrity >= integrity_max / 2)
+		visible_message("[src] looks seriously damaged!" )
+		update_icon()
+	else if(integrity < integrity_max * 3/4 && initial_integrity >= integrity_max * 3/4 && integrity > 0)
+		visible_message("Cracks begin to appear in [src]!" )
+		update_icon()
 
 /obj/structure/window/proc/apply_silicate(var/amount)
 	if(health < maxhealth) // Mend the damage
@@ -141,10 +134,9 @@
 	img.alpha = silicate * 255 / 100
 	add_overlay(img)
 
-/obj/structure/window/proc/shatter(var/display_message = 1)
+/obj/structure/window/atom_destruction()
 	playsound(src, "shatter", 70, 1)
-	if(display_message)
-		visible_message("[src] shatters!")
+	visible_message("[src] shatters!")
 	new shardtype(loc)
 	if(considered_reinforced)
 		new /obj/item/stack/rods(loc)
@@ -152,32 +144,7 @@
 		new shardtype(loc) //todo pooling?
 		if(considered_reinforced)
 			new /obj/item/stack/rods(loc)
-	qdel(src)
-	return
-
-
-/obj/structure/window/bullet_act(var/obj/projectile/Proj)
-
-	var/proj_damage = Proj.get_structure_damage()
-	if(!proj_damage) return
-
-	..()
-	take_damage(proj_damage)
-	return
-
-
-/obj/structure/window/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			qdel(src)
-			return
-		if(2.0)
-			shatter(0)
-			return
-		if(3.0)
-			if(prob(50))
-				shatter(0)
-				return
+	return ..()
 
 /obj/structure/window/blob_act()
 	take_damage(50)
@@ -437,6 +404,7 @@
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()
+	// todo: this is inefficient and batshit insane in terms of costs.
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//this way it will only update full-tile ones
 	cut_overlays()
@@ -471,9 +439,10 @@
 
 	return
 
+// todo: generic fire
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > maximal_heat)
-		take_damage(damage_per_fire_tick)
+		inflict_atom_damage(damage_per_fire_tick, flag = ARMOR_FIRE, gradual = TRUE)
 	..()
 
 /obj/structure/window/drop_products(method)
@@ -578,12 +547,14 @@
 	glasstype = /obj/item/stack/material/glass
 	maximal_heat = T0C + 500 // Bumping it up a bit, so that a small fire doesn't instantly melt it. Also, makes sense as glass starts softening at around ~700 C
 	damage_per_fire_tick = 2.0
-	maxhealth = 12.0
+	integrity = 20
+	integrity_max = 20
 	force_threshold = 3
 
 /obj/structure/window/basic/full
 	icon_state = "window-full"
-	maxhealth = 24
+	integrity = 40
+	integrity_max = 40
 	fulltile = TRUE
 
 	// smoothing_flags = SMOOTH_BITMASK
@@ -599,14 +570,15 @@
 	glasstype = /obj/item/stack/material/glass/phoronglass
 	maximal_heat = INFINITY // This is high-grade atmospherics glass. Let's not have it burn, mmmkay?
 	damage_per_fire_tick = 1.0
-	maxhealth = 40.0
+	integrity = 80
+	integrity_max = 80
 	force_threshold = 5
 
 /obj/structure/window/phoronbasic/full
 	icon_state = "phoronwindow-full"
-	maxhealth = 80
+	integrity = 160
+	integrity_max = 160
 	fulltile = TRUE
-
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
@@ -621,12 +593,14 @@
 	considered_reinforced = 1
 	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
-	maxhealth = 80.0
+	integrity = 120
+	integrity_max = 120
 	force_threshold = 10
 
 /obj/structure/window/phoronreinforced/full
 	icon_state = "phoronrwindow-full"
-	maxhealth = 160
+	integrity = 240
+	integrity_max = 240
 	fulltile = TRUE
 
 	// smoothing_flags = SMOOTH_BITMASK
@@ -639,7 +613,8 @@
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
 	basestate = "rwindow"
-	maxhealth = 40.0
+	integrity = 80
+	integrity_max = 80
 	considered_reinforced = 1
 	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
@@ -648,7 +623,8 @@
 
 /obj/structure/window/reinforced/full
 	icon_state = "rwindow-full"
-	maxhealth = 80
+	integrity = 160
+	integrity_max = 160
 	fulltile = TRUE
 
 	// smoothing_flags = SMOOTH_BITMASK
@@ -667,7 +643,6 @@
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
 	icon_state = "fwindow"
 	basestate = "fwindow"
-	maxhealth = 30
 	force_threshold = 5
 
 /obj/structure/window/shuttle
@@ -676,7 +651,8 @@
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
-	maxhealth = 40
+	integrity = 160
+	integrity_max = 160
 	considered_reinforced = 1
 	basestate = "w"
 	dir = 5
@@ -693,7 +669,8 @@
 
 /obj/structure/window/reinforced/polarized/full
 	icon_state = "rwindow-full"
-	maxhealth = 80
+	integrity = 160
+	integrity_max = 160
 	fulltile = TRUE
 
 	// smoothing_flags = SMOOTH_BITMASK
@@ -724,8 +701,6 @@
 	else
 		animate(src, color="#222222", time=5)
 		set_opacity(1)
-
-
 
 /obj/machinery/button/windowtint
 	name = "window tint control"
@@ -786,38 +761,10 @@
 	shardtype = /obj/item/material/shard/wood
 	maximal_heat = T0C + 300 // Same as wooden walls "melting"
 	damage_per_fire_tick = 2.0
-	maxhealth = 10.0
+	integrity = 40
+	integrity_max = 40
 	force_threshold = 3
-	opacity = 1
-
-/obj/structure/window/wooden/take_damage_legacy(var/damage = 0,  var/sound_effect = 1)
-	var/initialhealth = health
-
-	health = max(0, health - damage)
-
-	if(health <= 0)
-		shatter()
-	else
-		if(sound_effect)
-			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
-		if(health < maxhealth / 4 && initialhealth >= maxhealth / 4)
-			visible_message("[src] looks like it's about to fall apart!" )
-			update_icon()
-		else if(health < maxhealth / 2 && initialhealth >= maxhealth / 2)
-			visible_message("[src] looks seriously damaged!" )
-			update_icon()
-		else if(health < maxhealth * 3/4 && initialhealth >= maxhealth * 3/4)
-			visible_message("Cracks begin to appear in [src]!" )
-			update_icon()
-	return
-
-/obj/structure/window/wooden/shatter(var/display_message = 1)
-	playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
-	if(display_message)
-		visible_message("[src] falls apart!")
-	new shardtype(loc)
-	qdel(src)
-	return
+	opacity = TRUE
 
 /obj/structure/window/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

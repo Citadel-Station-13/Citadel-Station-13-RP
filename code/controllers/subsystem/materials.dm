@@ -71,6 +71,13 @@ SUBSYSTEM_DEF(materials)
 		. += material_lookup[id]
 
 /**
+ * drop a material sheet
+ */
+/datum/controller/subsystem/materials/proc/drop_sheets(datum/material/id_or_path, amount, atom/where)
+	var/datum/material/mat = get_material(id_or_path)
+	mat.place_sheet(where, amount)
+
+/**
  * ! DEPRECATED
  * todo: REMOVE
  *

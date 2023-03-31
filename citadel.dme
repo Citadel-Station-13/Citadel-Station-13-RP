@@ -2039,6 +2039,7 @@
 #include "code\modules\atmospherics\machinery\datum_pipeline.dm"
 #include "code\modules\atmospherics\machinery\machinery.dm"
 #include "code\modules\atmospherics\machinery\mainspipe.dm"
+#include "code\modules\atmospherics\machinery\components\component.dm"
 #include "code\modules\atmospherics\machinery\components\binary_devices\algae_generator_vr.dm"
 #include "code\modules\atmospherics\machinery\components\binary_devices\binary_atmos_base.dm"
 #include "code\modules\atmospherics\machinery\components\binary_devices\circulator.dm"
