@@ -376,7 +376,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/turf/making_path = holder.buildmode.objholder
 					if(T.density) // T is dense, we likely want to replace it as it's likely a wall
 						T.ChangeTurf(holder.buildmode.objholder)
-					else if(!T.density && initial(making_path.density)) // thing we're placing is dense but not existing turf, place on top
+					else if(initial(making_path.density)) // thing we're placing is dense but not existing turf, place on top
 						T.PlaceOnTop(holder.buildmode.objholder)
 					else // densities match / other cases just changeturf.
 						T.ChangeTurf(holder.buildmode.objholder)
