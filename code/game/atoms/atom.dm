@@ -144,7 +144,7 @@
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
-	/// contamination insulation; null defaults to rad_insulation
+	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness
 
 	//? Overlays
@@ -849,6 +849,9 @@
 
 /**
  * called when we're hit by a radiation wave
+ * 
+ * this is only called on the top level atoms directly on a turf
+ * for nested atoms, you need /datum/component/radiation_listener
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)
