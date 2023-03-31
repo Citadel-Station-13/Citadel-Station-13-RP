@@ -236,7 +236,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 				src.icon_state = "buildmode5"
 			if(5)
 				master.cl.buildmode = 6
-				src.icon_state = "buildmode6" 
+				src.icon_state = "buildmode6"
 			if(6)
 				master.cl.buildmode = 7
 				src.icon_state = "buildmode7"
