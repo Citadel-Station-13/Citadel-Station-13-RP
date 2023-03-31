@@ -114,7 +114,7 @@
 			return laser
 		if(ARMOR_LASER_SOAK)
 			return laser_soak
-		if(AROMR_LASER_TIER)
+		if(ARMOR_LASER_TIER)
 			return laser_tier
 		if(ARMOR_LASER_DEFLECT)
 			return laser_deflect
@@ -152,7 +152,7 @@
 			return bio
 		if(ARMOR_RAD)
 			return rad
-		if(AROMR_FIRE)
+		if(ARMOR_FIRE)
 			return fire
 		if(ARMOR_ACID)
 			return acid
