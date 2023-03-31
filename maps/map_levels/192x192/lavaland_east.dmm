@@ -70,6 +70,10 @@
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
+"kk" = (
+/obj/machinery/cryopod/robot/door/travel/ashlander,
+/turf/simulated/floor/bone/engraved/lavaland,
+/area/lavaland/east/ashlander_village)
 "kx" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
@@ -172,6 +176,14 @@
 /obj/structure/ghost_role_spawner/ashlander,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
+"xP" = (
+/obj/structure/mob_spawner/goliath{
+	simultaneous_spawns = 0;
+	spawn_types = list();
+	total_spawns = 0
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/unexplored)
 "yC" = (
 /obj/structure/fence/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -324,6 +336,15 @@
 	},
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
+"XO" = (
+/obj/effect/abstract/over_openspace_darkness,
+/obj/structure/mob_spawner/goliath{
+	simultaneous_spawns = 0;
+	spawn_types = list();
+	total_spawns = 0
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/unexplored)
 "XQ" = (
 /obj/item/oar/ashlander,
 /obj/item/oar/ashlander,
@@ -340,6 +361,12 @@
 	},
 /obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/east/ashlander_village)
+"ZZ" = (
+/obj/machinery/computer/cryopod/ashlander{
+	pixel_y = 3
+	},
+/turf/simulated/wall/bone,
 /area/lavaland/east/ashlander_village)
 
 (1,1,1) = {"
@@ -21824,9 +21851,9 @@ DP
 DP
 DP
 DP
+xP
 DP
-DP
-DP
+XO
 DP
 DP
 DP
@@ -22018,9 +22045,9 @@ DP
 DP
 DP
 EA
-EA
-EA
-EA
+kk
+ZZ
+kk
 EA
 EA
 DP

@@ -362,3 +362,16 @@
 	evasion = 5
 	on_created_text = "<span class='notice'>You feel safe and content. There is a sense that someone is watching over you.</span>"
 	on_expired_text = "<span class='notice'>The feeling that you are being protected fades, but the sense of contentment lingers.</span>"
+
+//Ashlander Cryo
+/obj/machinery/cryopod/robot/door/travel/ashlander
+	name = "Warrens Passage"
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cryo_open"
+	announce_channel = null
+	on_store_message = "has descented into the Dark Below."
+	on_store_name = "The Mother"
+	on_enter_visible_message = "begins descending into the"
+	on_enter_occupant_message = "The goliath hide cloak flutters behind you as you begin to walk down the hand-carved stairs."
+	on_store_visible_message_1 = "echoes with fading footsteps"
+	on_store_visible_message_2 = "to the dark below."
