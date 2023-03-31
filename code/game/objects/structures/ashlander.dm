@@ -367,7 +367,9 @@
 /obj/machinery/cryopod/robot/door/travel/ashlander
 	name = "Warrens Passage"
 	icon = 'icons/obj/lavaland.dmi'
-	icon_state = "cryo_open"
+	icon_state = "golicryo_0"
+	base_icon_state = "golicryo_0"
+	occupied_icon_state = "golicryo_1"
 	announce_channel = null
 	on_store_message = "has descented into the Dark Below."
 	on_store_name = "The Mother"
