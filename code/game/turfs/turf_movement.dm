@@ -1,6 +1,6 @@
 var/const/enterloopsanity = 100
 /turf/Entered(atom/movable/AM)
-	. = ..()
+	..()
 
 	if(LAZYLEN(acting_automata))
 		for(var/datum/automata/A as anything in acting_automata)

@@ -57,7 +57,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.add_chemical_effect(CE_SPEEDBOOST, 3)
-	M.add_chemical_effect(CE_PAINKILLER, 60)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 60)
 	M.adjustHalLoss(-30)
 	M.AdjustUnconscious(-2)
 	M.AdjustStunned(-2)

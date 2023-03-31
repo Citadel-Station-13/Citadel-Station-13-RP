@@ -3468,6 +3468,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Pathfinder's Office"
 
 
+/area/station/protean_nanite_room
+	name = "\improper Nanite Chamber"
+	icon_state = "blue"
+
+
 //Elevator areas
 // Used for creating the exchange areas.
 /area/turbolift
