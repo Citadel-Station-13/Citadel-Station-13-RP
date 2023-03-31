@@ -575,7 +575,7 @@
 
 /datum/crafting_recipe/heaven_shaker
 	name = "Heaven Shaker"
-	result = /obj/item/grenade/explosive/ied/ashlander
+	result = /obj/item/grenade/explosive/ashlander
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
@@ -585,7 +585,7 @@
 
 /datum/crafting_recipe/heaven_shaker_frag
 	name = "Heaven Shaker (fragmentation)"
-	result = /obj/item/grenade/explosive/ied/ashlander/fragmentation
+	result = /obj/item/grenade/explosive/ashlander/fragmentation
 	time = 300
 	reqs = list(/obj/item/reagent_containers/glass/bucket/sandstone = 1,
 				/obj/item/condensedphlogiston = 3,
