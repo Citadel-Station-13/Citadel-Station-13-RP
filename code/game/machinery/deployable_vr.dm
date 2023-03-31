@@ -4,7 +4,10 @@
 	icon = 'icons/obj/cardboard_cutout.dmi'
 	icon_state = "cutout_basic"
 
-	maxhealth = 15 //Weaker than normal barricade
+	integrity = 40
+	integrity_max = 40
+	integrity_failure = 20
+
 	anchored = FALSE
 
 	var/fake_name = "unknown"
@@ -50,11 +53,15 @@
 	name = fake_name
 	desc = fake_desc
 	visible_message(SPAN_WARNING("[src] is uprighted to their proper position."))
+	set_integrity(integrity_max)
 
-/obj/structure/barricade/cutout/CheckHealth()
-	if(!toppled && (health < (maxhealth/2)))
-		topple()
-	..()
+/obj/structure/barricade/cutout/atom_break()
+	. = ..()
+	topple()
+
+/obj/structure/barricade/cutout/atom_fix()
+	. = ..()
+	untopple()
 
 /obj/structure/barricade/cutout/attack_hand(mob/user, list/params)
 	if((. = ..()))

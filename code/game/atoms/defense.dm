@@ -234,6 +234,7 @@
 /atom/proc/atom_break()
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	atom_flags |= ATOM_BROKEN
 
 /**
  * called when integrity rises above integrity_failure
@@ -243,6 +244,7 @@
 /atom/proc/atom_fix()
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
+	atom_flags &= ~ATOM_BROKEN
 
 //? Deconstruction
 

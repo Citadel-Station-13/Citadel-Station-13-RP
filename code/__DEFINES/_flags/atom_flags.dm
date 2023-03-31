@@ -9,20 +9,22 @@
 #define ATOM_OVERLAY_QUEUED (1<<3)
 /// Atom is absolute-abstract - should not be interactable or movable in any way shape or form
 #define ATOM_ABSTRACT       (1<<4)
+/// uses integrity, and is broken
+#define ATOM_BROKEN			(1<<5)
 /// We are an holographic atom from a holodeck/AR system
-#define HOLOGRAM            (1<<5) // TODO: should this be an atom flag?
+#define HOLOGRAM            (1<<6) // TODO: should this be an atom flag?
 /// Used for items if they don't want to get a blood overlay.
-#define NOBLOODY            (1<<6) // TODO: item flag
+#define NOBLOODY            (1<<7) // TODO: item flag
 /// Reagents don't react inside this container.
-#define NOREACT             (1<<7) // TODO: reagent holder flag
+#define NOREACT             (1<<8) // TODO: reagent holder flag
 /// Doesn't Conduct electricity. (metal etc.)
-#define NOCONDUCT           (1<<8) // TODO: item flag
+#define NOCONDUCT           (1<<9) // TODO: item flag
 /// Is an open container for chemistry purposes.
-#define OPENCONTAINER       (1<<9) // TODO: reagent holder flags
+#define OPENCONTAINER       (1<<10) // TODO: reagent holder flags
 /// Does not get contaminated by phoron.
-#define PHORONGUARD         (1<<10) // TODO: item flag
+#define PHORONGUARD         (1<<11) // TODO: item flag
 /// Does not leave user's fingerprints/fibers when used on things?
-#define NOPRINT             (1<<11) // TODO: item flag
+#define NOPRINT             (1<<12) // TODO: item flag
 
 ///CITMAIN FLAG BITMASKS - Completely unused.
 /*

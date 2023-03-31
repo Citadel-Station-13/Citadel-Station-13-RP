@@ -53,6 +53,14 @@
 /**
  * public
  *
+ * Forces an UI update.
+ */
+/datum/proc/update_uis()
+	SStgui.update_uis(src)
+
+/**
+ * public
+ *
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
