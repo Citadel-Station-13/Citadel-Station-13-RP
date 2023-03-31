@@ -136,7 +136,7 @@
 	num_fragments = 5
 	spread_range = 3
 	explosion_size = 1
-	det_time = 20
+	det_time = 40
 
 /obj/item/grenade/explosive/ashlander/on_explosion(var/turf/O)
 	if(explosion_size)
@@ -145,8 +145,9 @@
 /obj/item/grenade/explosive/ashlander/fragmentation
 	name = "\improper heaven shaker (fragmentation)"
 	desc = "A scored clay ball packed with alchemical solution. A small fleck of elderstone protrudes from the sphere - it looks like it can be depressed."
-	fragment_types = list(/obj/projectile/bullet/pellet/fragment/weak, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
-	num_fragments = 30
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/strong)
+	num_fragments = 150
+	spread_range = 3
 
 /obj/item/grenade/explosive/ashlander/fragmentation/on_explosion(var/turf/O)
 	if(explosion_size)
