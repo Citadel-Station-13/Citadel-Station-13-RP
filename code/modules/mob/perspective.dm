@@ -152,7 +152,7 @@
  * returns if our perspective is shunted elsewhere
  */
 /mob/proc/perspective_shunted()
-	return self_perspective == using_perspective
+	return self_perspective != using_perspective
 
 //? Perspective - Self
 

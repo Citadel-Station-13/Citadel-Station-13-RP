@@ -63,6 +63,7 @@ type OutgoingCallContext = BaseCallContext & {
   remoting: BooleanLike; // are we projecting to the other side?
   ringing: BooleanLike; // are we connected or still ringing
   connected: [TargetHolopad]; // all pads connected
+  destination: TargetHolopad;
 }
 
 // incoming calls have this
@@ -145,7 +146,7 @@ const HolopadCallOutgoing = (props, context) => {
   const callContext: OutgoingCallContext = data.calldata as OutgoingCallContext;
   return (
     <Section
-      title={`Outgoing Call${data.sectorAnonymous? " (Anonymous)" : ""}`}
+      title={`Outgoing Call - ${`${callContext.destination.sector}: `} ${callContext.destination.name}`}
       buttons={
         <Button.Confirm
           content="Disconnect"
@@ -169,11 +170,11 @@ const HolopadCallOutgoing = (props, context) => {
             </Section>
             <Section title="Connected Pads">
               <LabeledList>
-                {callContext.connected.map((pad) => {
+                {callContext.connected.map((pad) => (
                   <LabeledList.Item
                     label={`${pad.name} - ${pad.sector}${pad.id === callContext.target? " (Host)" : ""}`}
-                    key={pad.id} />;
-                })}
+                    key={pad.id} />
+                ))}
               </LabeledList>
             </Section>
           </>
@@ -196,7 +197,7 @@ const HolopadCallIncoming = (props, context) => {
       }>
       <LabeledList>
         <>
-          {callContext.callers.map((pad) => {
+          {callContext.callers.map((pad) => (
             <LabeledList.Item
               key={pad.id}
               label={`${pad.name} - ${pad.sector}`}
@@ -208,11 +209,11 @@ const HolopadCallIncoming = (props, context) => {
                     selected={callContext.projecting.includes(pad.id)} />
                   <Button.Confirm
                     content="Disconnect"
-                    icon="phone-hangup"
+                    icon="stop"
                     onClick={() => act('disconnect', { id: pad.id })} />
                 </>
-              } />;
-          })}
+              } />
+          ))}
         </>
       </LabeledList>
     </Section>

@@ -352,18 +352,19 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	LAZYSET(holocall_anti_spam, incoming.source.holopad_uid, world.time + 30 SECONDS)
 	playsound(src, 'sound/machines/beep.ogg', 75)
-	atom_say("Incoming holocall from [incoming.caller_id()]")
+	atom_say("Incoming holocall from [incoming.caller_id_source()]")
 	if(!incoming.cross_sector)
 		return // don't need the radio part
 	if(world.time < holocall_last_radio + 30 SECONDS)
 		return
 	holocall_last_radio = world.time
-	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id()] at [get_area(src)].", name, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id_source()] at [get_area(src)].", name, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
 
 /**
  * get hung up by a call
  */
 /obj/machinery/holopad/proc/hung_up(datum/holocall/disconnecting, we_hung_up)
+	SSdpc.queue_invoke(src, TYPE_PROC_REF(/atom, update_icon))
 
 //? UI
 
@@ -379,20 +380,21 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		var/list/connected = list()
 		if(outgoing_call.connected)
 			for(var/datum/holocall/holocall as anything in outgoing_call.destination.incoming_calls)
-				connected[++connected.len] = holocall.ui_caller_id()
+				connected[++connected.len] = holocall.ui_caller_id_source()
 		.["calling"] = "source"
 		.["calldata"] = list(
 			"target" = outgoing_call.destination.holopad_uid,
 			"connected" = connected,
 			"ringing" = !outgoing_call.connected,
 			"remoting" = !!outgoing_call.remoting,
+			"destination" = outgoing_call.caller_id_destination()
 		)
 	else if(incoming_calls_connected())
 		// DESITNATION MODE
 		var/list/projecting = list()
 		var/list/callers = list()
 		for(var/datum/holocall/holocall as anything in incoming_calls)
-			callers[++callers.len] = holocall.ui_caller_id()
+			callers[++callers.len] = holocall.ui_caller_id_source()
 			if(holocall.remoting)
 				projecting += holocall.source.holopad_uid
 		.["calling"] = "destination"
@@ -437,7 +439,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	. |= ui_call_data()
 	var/list/ringing = list()
 	for(var/datum/holocall/holocall as anything in ringing_calls)
-		ringing[++ringing.len] = holocall.ui_caller_id()
+		ringing[++ringing.len] = holocall.ui_caller_id_source()
 	.["ringing"] = ringing
 
 /obj/machinery/holopad/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -638,6 +640,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	the_ai.holopad = src
 	the_ai.hologram = create_hologram(the_ai.hologram_appearance())
 	the_ai.hologram.owner = the_ai
+	LAZYADD(ais_projecting, the_ai)
 	update_icon()
 	visible_message("A holographic image of [the_ai] flicks to life right before your eyes!")
 	return TRUE
@@ -660,6 +663,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(!QDELETED(holo))
 		qdel(holo)
 	the_ai.holopad = null
+	LAZYREMOVE(ais_projecting, the_ai)
 	update_icon()
 	return TRUE
 
@@ -707,11 +711,19 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
 	if(istype(speaking, /obj/machinery/holopad))
 		return
+	var/our_name = holocall_name()
+	voice_name = "[our_name] - [voice_name]"
 	// relay to whereever we're calling to
 	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
 		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
+	// relay to relevant AIs too
+	if(!ais_projecting)
+		return
+	var/list/relevant_ais = ais_projecting - speaking
+	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
+		the_ai.hear_say(msg, "says ([our_name])", using_language, speaker = speaking)
 
 /**
  * relays a seen emote
@@ -727,6 +739,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// otherwise, anyone on our side can see it
 	for(var/datum/holocall/holocall as anything in incoming_calls)
 		holocall.remoting?.show_message("[SPAN_NAME(visible_name)] [msg]", 1)
+	// relay to relevant AIs too
+	if(!ais_projecting)
+		return
+	var/list/relevant_ais = ais_projecting - emoting
+	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
+		the_ai.show_message("(Holopad) [SPAN_NAME(visible_name)] [msg]")
 
 /**
  * relays a say sent to us
@@ -748,6 +766,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 				continue
 			O.hear_talk(src, msg, using_verb, using_language)
 	// relay to relevant AIs too
+	if(!ais_projecting)
+		return
 	var/list/relevant_ais = ais_projecting - speaker
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
 		if(the_ai.say_understands(speaker, using_language))
@@ -771,6 +791,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	else
 		visible_message("[SPAN_NAME(speaker_name)] [msg]")
 	// relay to relevant AIs too
+	if(!ais_projecting)
+		return
 	var/list/relevant_ais = ais_projecting - speaker
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
 		the_ai.show_message("(Holopad) [SPAN_NAME(speaker_name)] [msg]")
@@ -838,10 +860,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	QDEL_NULL(action_swap_view)
 	return ..()
 
-/datum/holocall/proc/caller_id()
+/datum/holocall/proc/caller_id_source()
 	return (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name()
 
-/datum/holocall/proc/ui_caller_id()
+/datum/holocall/proc/ui_caller_id_source()
 	// todo: overmap sector names for anonymous.
 	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(source))
 	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
@@ -851,10 +873,23 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		"id" = source.holopad_uid,
 	)
 
+/datum/holocall/proc/caller_id_destination()
+	return (destination.call_anonymous_sector && cross_sector)? "Anonymous" : destination.holocall_name()
+
+/datum/holocall/proc/ui_caller_id_destination()
+	// todo: overmap sector names for anonymous.
+	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(destination))
+	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
+	return list(
+		"name" = (destination.call_anonymous_sector && cross_sector)? "Anonymous" : destination.holocall_name(),
+		"sector" = "[scanner_name]",
+		"id" = destination.holopad_uid,
+	)
+
 /datum/holocall/proc/initiate_remote_presence(mob/user)
 	if(remoting)
 		cleanup_remote_presence()
-	if(!isAI(user) && user.loc != src.loc)
+	if(!isAI(user) && user.loc != source.loc)
 		user.action_feedback(SPAN_WARNING("You have to be standing on the holopad!"), source)
 		return FALSE
 	if(!user.request_movement_intercept(src))
