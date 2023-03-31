@@ -11,12 +11,15 @@
 #define ARMOR_MELEE "melee"
 #define ARMOR_MELEE_TIER "melee_t"
 #define ARMOR_MELEE_SOAK "melee_s"
+#define ARMOR_MELEE_DEFLECT "melee_d"
 #define ARMOR_BULLET "bullet"
 #define ARMOR_BULLET_TIER "bullet_t"
 #define ARMOR_BULLET_SOAK "bullet_s"
+#define ARMOR_BULLET_DEFLECT "bullet_d"
 #define ARMOR_LASER "laser"
 #define ARMOR_LASER_TIER "laser_t"
 #define ARMOR_LASER_SOAK "laser_s"
+#define ARMOR_LASER_DEFLECT "laser_d"
 
 //? Flat - stacked multiplicatively when layered
 //? Standalone:
@@ -34,12 +37,15 @@ GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
 	ARMOR_MELEE,
 	ARMOR_MELEE_TIER,
 	ARMOR_MELEE_SOAK,
+	ARMOR_MELEE_DEFLECT,
 	ARMOR_BULLET,
 	ARMOR_BULLET_TIER,
 	ARMOR_BULLET_SOAK,
+	ARMOR_BULLET_DEFLECT,
 	ARMOR_LASER,
 	ARMOR_LASER_TIER,
 	ARMOR_LASER_SOAK,
+	ARMOR_LASER_DEFLECT,
 	ARMOR_ENERGY,
 	ARMOR_BOMB,
 	ARMOR_BIO,

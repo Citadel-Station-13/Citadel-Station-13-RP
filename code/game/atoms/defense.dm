@@ -83,9 +83,12 @@
 /atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
-	var/list/returned = run_armor(arglist(args))
-	damage = returned[1]
-	mode = returned[4]
+	if(flag)
+		var/list/returned = run_armor(arglist(args))
+		damage = returned[1]
+		mode = returned[4]
+	if(!damage)
+		return
 	. = integrity
 	damage_integrity(damage)
 	. = . - integrity

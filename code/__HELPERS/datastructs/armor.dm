@@ -9,12 +9,15 @@
 	var/melee = 0
 	var/melee_tier = ARMOR_TIER_DEFAULT
 	var/melee_soak = 0
+	var/melee_deflect = 0
 	var/bullet = 0
 	var/bullet_tier = ARMOR_TIER_DEFAULT
 	var/bullet_soak = 0
+	var/bullet_deflect = 0
 	var/laser = 0
 	var/laser_tier = ARMOR_TIER_DEFAULT
 	var/laser_soak = 0
+	var/laser_deflect = 0
 	var/energy = 0
 	var/bomb = 0
 	var/bio = 0
@@ -37,17 +40,20 @@
 	UNPACK_OR(melee, ARMOR_MELEE, 0)
 	UNPACK_OR(melee_tier, ARMOR_MELEE_TIER, ARMOR_TIER_DEFAULT)
 	UNPACK_OR(melee_soak, ARMOR_MELEE_SOAK, 0)
+	UNPACK_OR(melee_deflect, ARMOR_MELEE_DEFLECT, 0)
 	UNPACK_OR(bullet, ARMOR_BULLET, 0)
 	UNPACK_OR(bullet_tier, ARMOR_BULLET_TIER, ARMOR_TIER_DEFAULT)
 	UNPACK_OR(bullet_soak, ARMOR_BULLET_SOAK, 0)
+	UNPACK_OR(bullet_deflect, ARMOR_BULLET_DEFLECT, 0)
 	UNPACK_OR(laser, ARMOR_LASER, 0)
 	UNPACK_OR(laser_tier, ARMOR_LASER_TIER, ARMOR_TIER_DEFAULT)
 	UNPACK_OR(laser_soak, ARMOR_LASER_SOAK, 0)
+	UNPACK_OR(laser_deflect, ARMOR_LASER_DEFLECT, 0)
 	UNPACK_OR(energy, ARMOR_ENERGY, 0)
 	UNPACK_OR(bomb, ARMOR_BOMB, 0)
 	UNPACK_OR(bio, ARMOR_BIO, 0)
 	UNPACK_OR(rad, ARMOR_RAD, 0)
-	UNPACK_OR(fire, AROMR_FIRE, 0)
+	UNPACK_OR(fire, ARMOR_FIRE, 0)
 	UNPACK_OR(acid, ARMOR_ACID, 0)
 	#undef UNPACK_OR
 
@@ -56,12 +62,15 @@
 		ARMOR_MELEE = melee,
 		ARMOR_MELEE_TIER = melee_tier,
 		ARMOR_MELEE_SOAK = melee_soak,
+		ARMOR_MELEE_DEFLECT = melee_deflect,
 		ARMOR_BULLET = bullet,
 		ARMOR_BULLET_TIER = bullet_tier,
 		ARMOR_BULLET_SOAK = bullet_soak,
+		ARMOR_BULLET_DEFLECT = bullet_deflect,
 		ARMOR_LASER = laser,
 		ARMOR_LASER_TIER = laser_tier,
 		ARMOR_LASER_SOAK = laser_soak,
+		ARMOR_LASER_DEFLECT = laser_deflect,
 		ARMOR_ENERGY = energy,
 		ARMOR_BOMB = bomb,
 		ARMOR_BIO = bio,
@@ -91,16 +100,24 @@
 			return melee_soak
 		if(ARMOR_MELEE_TIER)
 			return melee_tier
+		if(ARMOR_MELEE_DEFLECT)
+			return melee_deflect
 		if(ARMOR_BULLET)
 			return bullet
 		if(ARMOR_BULLET_SOAK)
 			return bullet_soak
 		if(ARMOR_BULLET_TIER)
 			return bullet_tier
+		if(ARMOR_BULLET_DEFLECT)
+			return bullet_deflect
 		if(ARMOR_LASER)
 			return laser
 		if(ARMOR_LASER_SOAK)
 			return laser_soak
+		if(AROMR_LASER_TIER)
+			return laser_tier
+		if(ARMOR_LASER_DEFLECT)
+			return laser_deflect
 		if(ARMOR_ENERGY)
 			return energy
 		if(ARMOR_BOMB)
@@ -153,15 +170,32 @@
 		else
 			return 0
 
+/datum/armor/proc/deflect(flag)
+	switch(flag)
+		if(ARMOR_MELEE)
+			return melee_deflect
+		if(ARMOR_BULLET)
+			return bullet_deflect
+		if(ARMOR_LASER)
+			return laser_deflect
+		else
+			return 0
+
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)
 		if(ARMOR_MELEE)
+			if(damage <= melee_deflect)
+				return 0
 			var/tdiff = melee_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
 		if(ARMOR_BULLET)
+			if(damage <= bullet_deflect)
+				return 0
 			var/tdiff = bullet_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
 		if(ARMOR_LASER)
+			if(damage <= laser_deflect)
+				return 0
 			var/tdiff = laser_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
 		if(ARMOR_ENERGY)
