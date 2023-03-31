@@ -370,7 +370,7 @@
 	icon_state = "golicryo_0"
 	base_icon_state = "golicryo_0"
 	occupied_icon_state = "golicryo_1"
-	announce_channel = null
+	announce_channel = "Mercenary"
 	on_store_message = "has descented into the Dark Below."
 	on_store_name = "The Mother"
 	on_enter_visible_message = "begins descending into the"

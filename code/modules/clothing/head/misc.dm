@@ -718,4 +718,6 @@
 	icon = 'icons/clothing/head/cowl.dmi'
 	icon_state = "golhood"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	body_cover_flags = HEAD|FACE
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	action_button_name = "Toggle Hood"
