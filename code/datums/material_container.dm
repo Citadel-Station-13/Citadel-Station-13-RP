@@ -134,25 +134,27 @@
  *
  * @params
  * * sheets - units of sheets to use
+ * * multiplier - multiplier for actual amount, for convenience
  *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/material_container/proc/checked_use(list/using)
-	if(!has(using))
+/datum/material_container/proc/checked_use(list/using, multiplier = 1)
+	if(!has(using, multiplier))
 		return FALSE
-	return use(using)
+	return use(using, multiplier)
 
 /**
  * uses the given resources
  *
  * @params
  * * sheets - units of sheets to use
+ * * multiplier - multiplier to actual amount, for convenience
  */
-/datum/material_container/proc/use(list/using)
+/datum/material_container/proc/use(list/using, multiplier = 1)
 	for(var/key in using)
 		if(isnull(stored[key]))
 			continue
-		stored[key] = max(0, stored[key] - using[key])
+		stored[key] = max(0, stored[key] - using[key] * multiplier)
 	return TRUE
 
 /**
@@ -160,9 +162,10 @@
  *
  * @params
  * * sheets - units of sheets
+ * * multiplier - multiplier to actual amount, for convenience
  */
-/datum/material_container/proc/has(list/wanted)
+/datum/material_container/proc/has(list/wanted, multiplier = 1)
 	for(var/key in wanted)
-		if(stored?[key] < wanted[key])
+		if(stored?[key] < wanted[key] * multiplier)
 			return FALSE
 	return TRUE

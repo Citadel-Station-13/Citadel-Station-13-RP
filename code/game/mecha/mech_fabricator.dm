@@ -470,7 +470,7 @@
 
 /obj/machinery/mecha_part_fabricator/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
+		get_asset_datum(/datum/asset/spritesheet/materials)
 	)
 
 /obj/machinery/mecha_part_fabricator/attack_hand(mob/user, list/params)

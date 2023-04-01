@@ -16,15 +16,9 @@
 	var/shocked = FALSE
 	var/busy = FALSE
 
-	var/mat_efficiency = 1
-	var/build_time = 50
+#warn  wires?
 
 	var/datum/wires/autolathe/wires = null
-
-	var/mb_rating = 0
-	var/man_rating = 0
-
-	var/filtertext
 
 /obj/machinery/autolathe/Initialize(mapload)
 	. = ..()
@@ -36,22 +30,10 @@
 	QDEL_NULL(wires)
 	return ..()
 
-/obj/machinery/autolathe/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "Autolathe", name)
-		ui.open()
-
 /obj/machinery/autolathe/ui_status(mob/user)
 	if(disabled)
 		return UI_CLOSE
 	return ..()
-
-
-/obj/machinery/autolathe/ui_assets(mob/user)
-	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
-	)
 
 /obj/machinery/autolathe/interact(mob/user)
 	if(panel_open)
@@ -71,16 +53,6 @@
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return
 
-	if(default_deconstruction_screwdriver(user, O))
-		interact(user)
-		return
-	if(default_deconstruction_crowbar(user, O))
-		return
-	if(default_part_replacement(user, O))
-		return
-
-	if(machine_stat)
-		return
 
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
@@ -155,19 +127,10 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/autolathe/attack_hand(mob/user, list/params)
-	user.set_machine(src)
-	interact(user)
 
 /obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
-
-	usr.set_machine(src)
-
-	if(busy)
-		to_chat(usr, SPAN_NOTICE("The autolathe is busy. Please wait for completion of previous operation."))
-		return
 
 	switch(action)
 		if("make")
@@ -232,86 +195,3 @@
 						new making.path(src.loc)
 			return TRUE
 	return FALSE
-
-/obj/machinery/autolathe/update_icon()
-	cut_overlays()
-
-	icon_state = initial(icon_state)
-
-	if(panel_open)
-		icon_state = "autolathe_t"
-	else if(busy)
-		icon_state = "autolathe_n"
-	else
-		if(icon_state == "autolathe_n")
-			flick("autolathe_u", src) //If lid WAS closed, show opening animation
-		icon_state = "autolathe"
-
-//Updates overall lathe storage size.
-/obj/machinery/autolathe/RefreshParts()
-	..()
-	var/mb_rating = 0
-	var/man_rating = 0
-	for(var/obj/item/stock_parts/matter_bin/MB in component_parts)
-		mb_rating += MB.rating
-	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		man_rating += M.rating
-
-	storage_capacity[MAT_STEEL] = mb_rating  * 25000
-	storage_capacity[MAT_GLASS] = mb_rating  * 12500
-	build_time = 50 / man_rating
-	mat_efficiency = 1.1 - man_rating * 0.1 //Normally, price is 1.25 the amount of material, so this shouldn't go higher than 0.6. Maximum rating of parts is 5
-	update_static_data(usr)
-
-/obj/machinery/autolathe/dismantle()
-	for(var/mat in stored_material)
-		var/datum/material/M = get_material_by_name(mat)
-		if(!istype(M))
-			continue
-		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))
-		if(stored_material[mat] > S.perunit)
-			S.amount = round(stored_material[mat] / S.perunit)
-		else
-			qdel(S)
-	..()
-	return 1
-
-/datum/category_item/autolathe/arms/classic_smg_9mm
-	name = "SMG magazine (9mm)"
-	path = /obj/item/ammo_magazine/m9mml
-	hidden = 1
-/* De-coded?
-/datum/category_item/autolathe/arms/classic_smg_9mmr
-	name = "SMG magazine (9mm rubber)"
-	path = /obj/item/ammo_magazine/m9mml/rubber
-
-/datum/category_item/autolathe/arms/classic_smg_9mmp
-	name = "SMG magazine (9mm practice)"
-	path = /obj/item/ammo_magazine/m9mml/practice
-
-/datum/category_item/autolathe/arms/classic_smg_9mmf
-	name = "SMG magazine (9mm flash)"
-	path = /obj/item/ammo_magazine/m9mml/flash
-*/
-
-// 0 amount = 0 means ejecting a full stack; -1 means eject everything
-/obj/machinery/partslathe/proc/eject_materials(var/material, var/amount)
-	var/recursive = amount == -1 ? TRUE : FALSE
-	material = lowertext(material)
-	var/mattype
-	switch(material)
-		if(MAT_STEEL)
-			mattype = /obj/item/stack/material/steel
-		if(MAT_GLASS)
-			mattype = /obj/item/stack/material/glass
-		else
-			return
-	var/obj/item/stack/material/S = new mattype(loc)
-	if(amount <= 0)
-		amount = S.max_amount
-	var/ejected = min(round(materials[material] / S.perunit), amount)
-	if(!S.set_amount(min(ejected, amount)))
-		return
-	materials[material] -= ejected * S.perunit
-	if(recursive && materials[material] >= S.perunit)
-		eject_materials(material, -1)

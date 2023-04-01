@@ -36,6 +36,7 @@
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/reagents
 	// todo: reagent_parts?
+	#warn items
 
 	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
 	var/name

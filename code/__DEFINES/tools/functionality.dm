@@ -1,4 +1,4 @@
-//! Tool Behaviours - make these human readable!
+//* Tool Behaviours - make these human readable!
 
 //? Engineering
 #define TOOL_CROWBAR 		"crowbar"
@@ -34,11 +34,11 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 	TOOL_SCREWDRIVER = "screwdriver"
 )
 
-//! Tool usage flags
+//* Tool usage flags
 
 //? None yet! Waiting on skill-system design.
 
-//! Tool hints - make these human readable!
+//* Tool hints - make these human readable! Not all hints will be defined here.
 
 #define TOOL_HINT_UNSCREWING_WINDOW_FRAME "unsecure frame"
 #define TOOL_HINT_SCREWING_WINDOW_FRAME "secure frame"
@@ -48,7 +48,8 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 #define TOOL_HINT_CROWBAR_WINDOW_OUT "pane out"
 #define TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY "dismantle"
 
-//! tool_locked var
+//* tool_locked var
+
 /// unlocked - use dynamic tool system
 #define TOOL_LOCKING_DYNAMIC 1
 /// use static behavior

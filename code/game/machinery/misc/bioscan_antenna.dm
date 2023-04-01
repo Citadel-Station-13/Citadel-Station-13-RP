@@ -2,8 +2,8 @@ GLOBAL_LIST_EMPTY(bioscan_antenna_list)
 /obj/machinery/bioscan_antenna
 	name = "Bioscan Antenna"
 	desc = "A fragile antenna used to locate nearby biosignatures."
-	allow_deconstruct = TRUE
-	allow_unanchor = TRUE
+	default_deconstruct = 0
+	default_unanchor = 50
 	icon = 'icons/machinery/bioscan.dmi'
 	base_icon_state = "antenna"
 	icon_state = "antenna"

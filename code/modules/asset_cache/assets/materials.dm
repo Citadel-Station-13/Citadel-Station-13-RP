@@ -1,7 +1,7 @@
-/datum/asset/spritesheet/sheetmaterials
+/datum/asset/spritesheet/materials
 	name = "sheetmaterials"
 
-/datum/asset/spritesheet/sheetmaterials/create_spritesheets()
+/datum/asset/spritesheet/materials/create_spritesheets()
 
 
 

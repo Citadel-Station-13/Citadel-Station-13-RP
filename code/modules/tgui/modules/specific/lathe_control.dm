@@ -20,6 +20,10 @@
 /datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 
+/datum/tgui_module/lathe_control/ui_assets(mob/user)
+	. = ..()
+	. += get_asset_datum(/datum/asset/spritesheet/materials)
+
 /datum/tgui_module/lathe_control/proc/ui_design_data(list/datum/design/designs)
 
 /datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)

@@ -532,7 +532,7 @@
 	if(construction_state == WINDOW_STATE_UNSECURED)
 		return list(
 			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
-			TOOL_WRENCH
+			TOOL_WRENCH = TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY
 		)
 	if(!considered_reinforced)
 		return list(
@@ -568,6 +568,8 @@
 			return dyntool_image_forward(TOOL_SCREWDRIVER)
 		if(TOOL_HINT_UNSCREWING_WINDOW_PANE)
 			return dyntool_image_backward(TOOL_SCREWDRIVER)
+		if(TOOL_HINT_WRENCH_WINDOW_DISASSEMBLY)
+			return dyntool_image_backward(TOOL_WRENCH)
 	return ..()
 
 /obj/structure/window/basic
