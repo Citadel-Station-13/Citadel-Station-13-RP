@@ -76,7 +76,7 @@ GAIA_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /turf/simulated/floor/tiled/classm/outdoors
 	outdoors = TRUE
 
-/turf/simulated/floor/outdoors/concrete/classm/outdoors
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors
 	outdoors = TRUE
 
 /turf/simulated/floor/outdoors/concrete/tile/classm/outdoors

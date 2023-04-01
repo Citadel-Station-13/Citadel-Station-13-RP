@@ -33,13 +33,13 @@
 /area/class_m/outside)
 "aD" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "aF" = (
 /obj/structure/catwalk,
@@ -123,7 +123,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "bC" = (
 /obj/structure/table/marble,
@@ -155,7 +155,7 @@
 /area/class_m/outside)
 "bL" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -169,7 +169,7 @@
 	},
 /obj/structure/railing/grey,
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -272,7 +272,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -309,7 +309,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "cI" = (
 /obj/structure/catwalk,
@@ -392,7 +392,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "dT" = (
 /obj/effect/floor_decal/grass_edge,
@@ -461,7 +461,7 @@
 /area/class_m/outside)
 "eT" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -484,20 +484,28 @@
 /obj/item/tool/wirecutters/clippers/trimmers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"eV" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
 "eW" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "eZ" = (
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "ff" = (
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/white,
@@ -588,7 +596,7 @@
 /area/class_m/outside)
 "fZ" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -639,10 +647,10 @@
 "gC" = (
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "gD" = (
 /obj/structure/fence/corner{
@@ -661,7 +669,7 @@
 "gW" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -697,6 +705,11 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"hS" = (
+/obj/structure/table/marble,
+/obj/machinery/floor_light/prebuilt,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "ia" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/catwalk,
@@ -709,7 +722,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -727,7 +740,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "il" = (
 /obj/structure/catwalk,
@@ -755,7 +768,7 @@
 "it" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/structure/undies_wardrobe,
@@ -780,7 +793,7 @@
 	dir = 8
 	},
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -842,7 +855,7 @@
 "jE" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/water/deep/classm,
@@ -886,7 +899,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "jV" = (
 /turf/simulated/floor/carpet/bcarpet,
@@ -974,7 +987,7 @@
 /area/class_m/inside)
 "kM" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1135,8 +1148,7 @@
 	nightshift_allowed = 0
 	},
 /obj/machinery/light/spot{
-	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -1183,7 +1195,7 @@
 /area/class_m/outside)
 "nc" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -1243,7 +1255,7 @@
 /area/class_m/outside)
 "nz" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -1257,7 +1269,7 @@
 /area/class_m/inside)
 "nF" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/mineral/floor/classm,
@@ -1273,7 +1285,7 @@
 /area/class_m/outside)
 "nV" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1359,7 +1371,7 @@
 "ov" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -1368,20 +1380,20 @@
 /area/class_m/outside)
 "ow" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "oA" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "oB" = (
 /obj/machinery/door/airlock{
@@ -1469,6 +1481,13 @@
 /obj/item/melee/umbrella,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"po" = (
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/dirt/classm/outdoors,
+/area/class_m/outside)
 "ps" = (
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood/classm,
@@ -1488,7 +1507,7 @@
 /area/class_m/inside)
 "py" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "pC" = (
 /obj/structure/flora/pottedplant/largebush,
@@ -1500,7 +1519,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/concrete/indoors,
@@ -1527,7 +1546,7 @@
 "qa" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1546,7 +1565,7 @@
 /area/class_m/outside)
 "qp" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -1578,7 +1597,7 @@
 /area/class_m/inside)
 "qJ" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1629,7 +1648,7 @@
 /area/class_m/inside)
 "qZ" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1647,7 +1666,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1710,7 +1729,7 @@
 "rI" = (
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -1776,7 +1795,7 @@
 /area/class_m/inside)
 "sx" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -1834,7 +1853,7 @@
 /area/class_m/outside)
 "sR" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/spline/plain,
@@ -1854,7 +1873,7 @@
 /area/class_m/outside)
 "sZ" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1909,7 +1928,7 @@
 "tx" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/water/beach/corner{
@@ -1965,6 +1984,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
+"uk" = (
+/obj/structure/table/marble,
+/obj/structure/dancepole{
+	pixel_x = 1;
+	pixel_y = 14
+	},
+/obj/machinery/floor_light/prebuilt,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "uq" = (
 /obj/structure/closet/crate/trashcart,
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -1977,7 +2005,7 @@
 	dir = 8
 	},
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -2005,7 +2033,7 @@
 "vg" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "vh" = (
 /obj/structure/table/woodentable,
@@ -2148,7 +2176,7 @@
 "wM" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/machinery/door/airlock{
@@ -2171,13 +2199,6 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside)
-"xh" = (
-/obj/machinery/light/flamp/noshade{
-	light_range = 10;
-	nightshift_allowed = 0
-	},
-/turf/simulated/floor/outdoors/dirt/classm/outdoors,
-/area/class_m/outside)
 "xm" = (
 /mob/living/simple_mob/animal/passive/bird/european_robin,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -2219,15 +2240,15 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "xH" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "xJ" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/structure/flora/ausbushes/fullgrass,
@@ -2375,7 +2396,7 @@
 "zo" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -2444,7 +2465,7 @@
 "zK" = (
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -2456,7 +2477,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "zM" = (
 /obj/structure/bed/chair{
@@ -2593,7 +2614,7 @@
 /area/class_m/inside)
 "AY" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/water/deep/classm,
@@ -2605,7 +2626,7 @@
 /area/class_m/inside)
 "Bh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Bm" = (
 /obj/structure/railing/grey{
@@ -2613,7 +2634,7 @@
 	},
 /obj/structure/railing/grey,
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -2679,7 +2700,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20
+	light_range = 8
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
@@ -2725,15 +2746,18 @@
 /turf/simulated/floor/outdoors/grass/forest,
 /area/class_m/outside)
 "CU" = (
-/mob/living/simple_mob/animal/passive/fish/trout,
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
 	},
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
 "CV" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -2764,7 +2788,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Du" = (
 /obj/structure/railing{
@@ -2775,7 +2799,7 @@
 /area/class_m/outside)
 "Dx" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -2809,11 +2833,11 @@
 /area/class_m/outside)
 "DQ" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "DU" = (
 /obj/item/melee/umbrella,
@@ -2898,7 +2922,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Ew" = (
 /obj/structure/catwalk,
@@ -2968,7 +2992,8 @@
 	nightshift_allowed = 0
 	},
 /obj/machinery/light/spot{
-	light_range = 20;
+	dir = 1;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/water/deep/classm,
@@ -2983,7 +3008,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Fj" = (
 /obj/structure/fence/end{
@@ -3027,7 +3052,7 @@
 /area/class_m/inside)
 "FK" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "FN" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -3095,7 +3120,7 @@
 "GG" = (
 /obj/machinery/light/spot{
 	dir = 8;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/structure/railing/grey{
@@ -3113,6 +3138,7 @@
 	pixel_x = 13;
 	pixel_y = 47
 	},
+/obj/machinery/floor_light/prebuilt,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "GP" = (
@@ -3130,7 +3156,7 @@
 	},
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/concrete/indoors,
@@ -3197,7 +3223,7 @@
 /area/class_m/outside)
 "HB" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -3223,7 +3249,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_2"
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "HQ" = (
 /obj/structure/railing{
@@ -3237,7 +3263,7 @@
 "HZ" = (
 /obj/machinery/light/spot{
 	dir = 1;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -3299,13 +3325,13 @@
 /area/class_m/inside)
 "IP" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "IS" = (
 /obj/machinery/door/blast/shutters{
@@ -3424,6 +3450,7 @@
 	pixel_x = -13;
 	pixel_y = 47
 	},
+/obj/machinery/floor_light/prebuilt,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Ks" = (
@@ -3467,7 +3494,7 @@
 	dir = 4
 	},
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -3489,7 +3516,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "KY" = (
 /obj/machinery/shower{
@@ -3617,7 +3644,7 @@
 /area/class_m/outside)
 "LU" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/carpet,
@@ -3627,7 +3654,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "LY" = (
 /obj/structure/bed/double/padded,
@@ -3790,10 +3817,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside)
 "NG" = (
-/obj/machinery/holosign/bar{
-	id = "bar_sign"
-	},
-/turf/simulated/wall/classm,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/sign/double/barsign,
+/turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "NI" = (
 /obj/structure/closet/chefcloset,
@@ -3823,7 +3850,7 @@
 /area/class_m/outside)
 "NU" = (
 /obj/item/clothing/head/cone,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Of" = (
 /turf/simulated/mineral/floor/classm,
@@ -4231,7 +4258,7 @@
 /area/class_m/outside)
 "Pz" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/forest,
@@ -4285,10 +4312,10 @@
 "Qg" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Ql" = (
 /obj/structure/catwalk,
@@ -4371,10 +4398,10 @@
 /area/class_m/inside)
 "Rd" = (
 /obj/machinery/light/spot{
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Rh" = (
 /obj/structure/flora/ausbushes/stalkybush,
@@ -4431,6 +4458,14 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"RP" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "RQ" = (
 /obj/machinery/vending/cola,
@@ -4535,7 +4570,7 @@
 "SZ" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -4654,7 +4689,7 @@
 	dir = 4
 	},
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -4780,7 +4815,7 @@
 /area/class_m/outside)
 "VG" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -4797,7 +4832,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/tile/indoors,
 /area/class_m/inside)
 "VT" = (
 /obj/structure/table/rack,
@@ -4864,6 +4899,15 @@
 /obj/machinery/smartfridge,
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
+"Wn" = (
+/obj/structure/table/marble,
+/obj/structure/dancepole{
+	pixel_x = 1;
+	pixel_y = 16
+	},
+/obj/machinery/floor_light/prebuilt,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "Wp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4912,7 +4956,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "WN" = (
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "WO" = (
 /obj/item/bee_pack,
@@ -4949,7 +4993,7 @@
 "WT" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/outdoors/grass/classm,
@@ -4980,7 +5024,7 @@
 /area/class_m/inside)
 "Xm" = (
 /obj/machinery/light/flamp/noshade{
-	light_range = 10;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /obj/structure/flora/ausbushes/ywflowers,
@@ -5016,7 +5060,7 @@
 "Xy" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/white,
@@ -5059,6 +5103,16 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"XZ" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/water/classm,
+/area/class_m/outside)
 "Ya" = (
 /mob/living/bot/farmbot{
 	replaces_nutriment = 1
@@ -5078,7 +5132,7 @@
 "Ym" = (
 /obj/machinery/light/spot{
 	dir = 4;
-	light_range = 20;
+	light_range = 8;
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/wood/classm,
@@ -5153,11 +5207,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "YX" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "YY" = (
 /obj/machinery/light{
@@ -5223,7 +5277,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/classm/outdoors,
+/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Zu" = (
 /turf/simulated/wall/wood,
@@ -15762,7 +15816,7 @@ VF
 VF
 VF
 VF
-kh
+XZ
 Me
 ge
 WU
@@ -18274,7 +18328,7 @@ Xw
 ab
 tF
 HA
-tF
+CV
 Zt
 WN
 WN
@@ -18475,7 +18529,7 @@ WN
 WN
 WN
 py
-tF
+CV
 UT
 tF
 tF
@@ -19437,13 +19491,13 @@ Xw
 (74,1,1) = {"
 ab
 Yr
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -20407,13 +20461,13 @@ Xw
 (79,1,1) = {"
 ab
 UT
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-Er
+CV
 Lp
 Lp
 Lp
@@ -20607,7 +20661,7 @@ WN
 WN
 WN
 py
-tF
+Er
 Lp
 Lp
 Lp
@@ -21376,14 +21430,14 @@ Xw
 "}
 (84,1,1) = {"
 ab
-tF
 ON
+CV
 Zt
 WN
 WN
 WN
 py
-Lp
+qp
 Lp
 Tl
 Ve
@@ -21571,7 +21625,7 @@ Xw
 (85,1,1) = {"
 ab
 tF
-tF
+ra
 Zt
 WN
 WN
@@ -22153,7 +22207,7 @@ Xw
 (88,1,1) = {"
 ab
 tF
-tF
+ra
 Zt
 WN
 WN
@@ -22347,13 +22401,13 @@ Xw
 (89,1,1) = {"
 ab
 tF
-ra
+CV
 Zt
 WN
 WN
 WN
 py
-Lp
+qp
 Lp
 Tl
 VF
@@ -23317,13 +23371,13 @@ Xw
 (94,1,1) = {"
 ab
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 Lp
 Lp
 pJ
@@ -24287,14 +24341,14 @@ Xw
 (99,1,1) = {"
 ab
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 WN
 py
-tF
+CV
 tF
 Lp
 Lp
@@ -25167,8 +25221,8 @@ Cp
 kP
 kV
 Kq
-WF
-WF
+hS
+hS
 WF
 WF
 WF
@@ -25258,7 +25312,7 @@ Xw
 ab
 tF
 yX
-tF
+CV
 Zt
 WN
 WN
@@ -25266,7 +25320,7 @@ WN
 WN
 WN
 py
-tF
+CV
 tF
 Lp
 Lp
@@ -25360,9 +25414,9 @@ Dm
 Dm
 kP
 kV
-mk
-WF
-WF
+uk
+Wn
+hS
 WF
 WF
 WF
@@ -25555,8 +25609,8 @@ Cp
 kP
 kV
 GL
-WF
-WF
+hS
+hS
 WF
 WF
 WF
@@ -26230,13 +26284,13 @@ Kt
 tF
 tF
 Kt
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -27200,13 +27254,13 @@ tF
 tF
 tF
 Kt
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -28068,7 +28122,7 @@ tF
 tF
 tF
 tF
-yX
+tF
 tF
 tF
 tv
@@ -28170,13 +28224,13 @@ tF
 Kt
 ra
 tF
-Yr
+RP
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -29140,13 +29194,13 @@ UT
 UT
 tF
 Kt
-Sx
+eV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -30110,13 +30164,13 @@ tF
 Sx
 ra
 Kt
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -30167,7 +30221,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 tF
 tF
 tF
@@ -30550,7 +30604,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 jN
 Dt
 WN
@@ -30560,7 +30614,7 @@ WN
 WN
 Dt
 xE
-tF
+CV
 tF
 tF
 tF
@@ -30886,13 +30940,13 @@ tF
 yX
 tF
 Er
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 Er
 tF
 TM
@@ -31347,13 +31401,13 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -31517,7 +31571,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
@@ -31533,7 +31587,7 @@ WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -31741,7 +31795,7 @@ WN
 WN
 WN
 py
-tF
+iP
 tF
 tF
 tF
@@ -31856,13 +31910,13 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-UT
+SZ
 tF
 tF
 TM
@@ -31904,23 +31958,23 @@ tF
 tF
 tF
 tF
-tF
-Zt
-WN
-WN
-WN
-WN
-WN
-py
-tF
-TM
-TM
 tF
 Zt
 WN
 WN
 WN
 WN
+WN
+py
+tF
+TM
+TM
+CV
+Zt
+WN
+WN
+WN
+WN
 py
 tF
 tF
@@ -31928,7 +31982,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
@@ -32129,7 +32183,7 @@ WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -32313,7 +32367,7 @@ WN
 WN
 Dt
 xE
-tF
+CV
 tF
 jN
 WN
@@ -32680,7 +32734,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
@@ -32688,7 +32742,7 @@ WN
 WN
 WN
 py
-TM
+po
 TM
 Mc
 TM
@@ -32826,13 +32880,13 @@ tF
 yX
 ra
 tF
-Yr
+RP
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -32888,7 +32942,7 @@ TM
 TM
 TM
 Mc
-TM
+po
 zL
 WN
 WN
@@ -32903,7 +32957,7 @@ WN
 WN
 WN
 ii
-tF
+CV
 tF
 TM
 tF
@@ -33651,7 +33705,7 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
@@ -33669,13 +33723,13 @@ TM
 Mc
 TM
 TM
-TM
+po
 zL
 bv
 bv
 bv
 ii
-tF
+CV
 Mc
 TM
 tF
@@ -33796,13 +33850,13 @@ tF
 Er
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 yX
 tF
@@ -33854,7 +33908,7 @@ WN
 WN
 WN
 xE
-tF
+CV
 TM
 Mc
 TM
@@ -34633,7 +34687,7 @@ WN
 WN
 WN
 xE
-TM
+po
 Mc
 TM
 TM
@@ -34773,13 +34827,13 @@ WN
 WN
 py
 tF
-cn
+tF
 tF
 TM
 TM
 TM
 dT
-cn
+tF
 tF
 tF
 tF
@@ -34817,7 +34871,7 @@ TM
 TM
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
@@ -34960,13 +35014,13 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 TM
 cw
 TM
@@ -35230,7 +35284,7 @@ TM
 TM
 TM
 Mc
-TM
+po
 TM
 TM
 TM
@@ -35413,12 +35467,12 @@ WN
 WN
 WN
 xE
-TM
+po
 Mc
 TM
 TM
 TM
-TM
+po
 jN
 Dt
 Dt
@@ -35428,7 +35482,7 @@ Dt
 Dt
 Dt
 xE
-tF
+CV
 tF
 tF
 tF
@@ -35626,7 +35680,7 @@ Dt
 Dt
 Dt
 xE
-tF
+CV
 tF
 tF
 tF
@@ -35790,7 +35844,7 @@ Mc
 TM
 tF
 tF
-tF
+CV
 zL
 WN
 WN
@@ -35930,20 +35984,20 @@ tF
 tF
 yX
 ra
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 TM
 tF
 TM
 TM
 tF
 dT
-cn
+tF
 tF
 tF
 tF
@@ -36519,7 +36573,7 @@ WN
 WN
 py
 tF
-cn
+tF
 cw
 TM
 TM
@@ -36570,7 +36624,7 @@ TM
 TM
 TM
 TM
-TM
+po
 zL
 bv
 WN
@@ -36601,7 +36655,7 @@ WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -36777,12 +36831,12 @@ WN
 bv
 bv
 ii
-TM
-TM
-Mc
+po
 TM
 Mc
 TM
+Mc
+po
 TM
 TM
 zL
@@ -36980,7 +37034,7 @@ Mc
 TM
 Mc
 TM
-TM
+po
 zL
 WN
 WN
@@ -37094,13 +37148,13 @@ tF
 tF
 tF
 tF
-tF
+CV
 Zt
 WN
 WN
 WN
 py
-tF
+CV
 tF
 tF
 tF
@@ -37159,7 +37213,7 @@ TM
 TM
 TM
 TM
-TM
+po
 TM
 TM
 TM
@@ -37566,7 +37620,7 @@ Mc
 TM
 TM
 TM
-TM
+po
 Zt
 WN
 WN
@@ -37574,7 +37628,7 @@ WN
 WN
 WN
 py
-tF
+CV
 ab
 tF
 Wb
@@ -37879,7 +37933,7 @@ WN
 WN
 WN
 xE
-tF
+CV
 ra
 tF
 tF
@@ -38454,7 +38508,7 @@ Kt
 UT
 tF
 UT
-tF
+CV
 Zt
 WN
 WN
@@ -38465,7 +38519,7 @@ WN
 WN
 WN
 xE
-tF
+CV
 tF
 tF
 tF
@@ -38858,7 +38912,7 @@ WN
 Dt
 Dt
 xE
-tF
+CV
 tF
 tF
 TM
@@ -39118,7 +39172,7 @@ Mc
 TM
 TM
 TM
-TM
+po
 Zt
 WN
 WN
@@ -39126,7 +39180,7 @@ WN
 WN
 WN
 ii
-tF
+CV
 ab
 tF
 Wb
@@ -39233,7 +39287,7 @@ tF
 yX
 tF
 tF
-tF
+CV
 zL
 WN
 WN
@@ -39291,13 +39345,13 @@ Mt
 Mt
 Mt
 Mt
-xh
+po
 TM
 jN
 Dt
 Dt
 xE
-TM
+po
 Mc
 TM
 TM
@@ -39690,13 +39744,13 @@ WN
 WN
 Dt
 xE
+po
 TM
 TM
 TM
 TM
 TM
-TM
-TM
+po
 jN
 Dt
 WN
@@ -39819,7 +39873,7 @@ tF
 tF
 UT
 Yr
-tF
+CV
 zL
 bv
 WN
@@ -39899,7 +39953,7 @@ WN
 WN
 WN
 py
-TM
+po
 tF
 tF
 tF
@@ -40211,7 +40265,7 @@ tF
 tF
 ra
 yX
-tF
+CV
 zL
 bv
 bv
@@ -40410,7 +40464,7 @@ tF
 tF
 ra
 pe
-TM
+po
 Mt
 Mt
 Mt
@@ -40672,7 +40726,7 @@ WN
 WN
 bv
 ii
-TM
+po
 Mc
 TM
 TM
@@ -40849,7 +40903,7 @@ Mt
 TM
 TM
 TM
-TM
+po
 TM
 zL
 bv
@@ -41242,13 +41296,13 @@ Mc
 TM
 TM
 TM
-TM
+po
 TM
 TM
 Mc
 TM
 TM
-TM
+po
 TM
 TM
 TM
