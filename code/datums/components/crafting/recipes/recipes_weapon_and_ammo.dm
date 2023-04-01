@@ -413,7 +413,7 @@
 */
 
 /datum/crafting_recipe/piperifle
-	name = "pipe rifle"
+	name = "Pipe Rifle"
 	result = /obj/item/gun/ballistic/contender/pipegun
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
@@ -421,6 +421,36 @@
 				/obj/item/duct_tape_piece = 5)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/plasmarifle
+	name = "Experimental Plasma Rifle"
+	result = /obj/item/gun/energy/plasma
+	reqs = list(/obj/item/pipe = 1,
+				/obj/item/weaponcrafting/receiver = 1,
+				/obj/item/copper_coil = 2,
+				/obj/item/plasma_rifle_casing = 1,
+				/obj/item/stock_parts/capacitor/adv = 5,
+				/obj/item/stack/material/plasteel = 5
+				)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WELDER)
+	time = 1000
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/plasmapistol
+	name = "Experimental Plasma Rifle"
+	result = /obj/item/gun/energy/plasma/pistol
+	reqs = list(/obj/item/pipe = 1,
+				/obj/item/weaponcrafting/receiver = 1,
+				/obj/item/copper_coil = 1,
+				/obj/item/plasma_pistol_casing = 1,
+				/obj/item/stock_parts/capacitor/adv = 5,
+				/obj/item/stack/material/plasteel = 5
+				)
+	tools = list(TOOL_SCREWDRIVER, TOOL_WELDER)
+	time = 800
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
@@ -638,5 +668,15 @@
 	result = /obj/item/kanabo_studs
 	reqs = list(/obj/item/stack/material/steel = 5)
 	time = 10
+	category = CAT_WEAPONRY
+	subcategory = CAT_PARTS
+
+//Copper Coil
+/datum/crafting_recipe/coppercoil
+	name = "Copper Coil"
+	result = /obj/item/copper_coil
+	reqs = list(/obj/item/stack/material/copper = 5)
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
+	time = 30
 	category = CAT_WEAPONRY
 	subcategory = CAT_PARTS

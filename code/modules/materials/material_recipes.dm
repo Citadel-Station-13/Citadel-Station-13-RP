@@ -121,6 +121,8 @@
 	recipes += new/datum/stack_recipe("whetstone", /obj/item/whetstone, 2, time = 10)
 	recipes += new/datum/stack_recipe("reinforced skateboard assembly", /obj/item/heavy_skateboard_frame, 10, time = 20, one_per_turf = 1)
 	recipes += new/datum/stack_recipe("plasteel floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20)
+	recipes += new/datum/stack_recipe("plasma rifle casing", /obj/item/plasma_rifle_casing, 10, time = 60)
+	recipes += new/datum/stack_recipe("plasma pistol casing", /obj/item/plasma_pistol_casing, 8, time = 60)
 
 /datum/material/sandstone/generate_recipes()
 	..()

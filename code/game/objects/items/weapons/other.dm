@@ -895,3 +895,24 @@
 	icon_state = "elderstone"
 	w_class = ITEMSIZE_SMALL
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
+
+/obj/item/copper_coil
+	name = "copper wire coil"
+	desc = "A coil of copper wire."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "coppercoil"
+	w_class = ITEMSIZE_NORMAL
+
+/obj/item/plasma_rifle_casing
+	name = "casing (plasma rifle)"
+	desc = "This hammered plasteel casing has been shaped and cut into the upper frame of a plasma rifle."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "caseplasmarifle"
+	w_class = ITEMSIZE_NORMAL
+
+/obj/item/plasma_pistol_casing
+	name = "casing (plasma pistol)"
+	desc = "This hammered plasteel casing has been shaped and cut into the upper frame of a plasma pistol."
+	icon = 'icons/obj/items_vr.dmi'
+	icon_state = "caseplasmapistol"
+	w_class = ITEMSIZE_NORMAL
