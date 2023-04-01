@@ -489,7 +489,7 @@
 /obj/item/gun/energy/plasma/update_icon()
 	. = ..()
 	if(overheating)
-		icon_state = "prifle-overheat"
+		icon_state = "prifle_overheat"
 		update_held_icon()
 	else
 		return
@@ -527,7 +527,7 @@
 /obj/item/gun/energy/plasma/pistol/update_icon()
 	. = ..()
 	if(overheating)
-		icon_state = "ppistol-overheat"
+		icon_state = "ppistol_overheat"
 		update_held_icon()
 	else
 		return
