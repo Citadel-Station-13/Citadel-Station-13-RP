@@ -467,7 +467,7 @@
 	name = "NT-PLR-EX plasma rifle"
 	desc = "This bulky weapon fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "prifle"
-	item_state = "prifle"
+	item_state = null
 	projectile_type = /obj/projectile/plasma
 	fire_delay = 20
 	charge_cost = 400
@@ -501,7 +501,7 @@
 			if(1)
 				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
 				overheating = 1
-				spawn(rand(5 SECONDS,10 SECONDS))
+				spawn(rand(2 SECONDS,5 SECONDS))
 					if(src)
 						visible_message("<span class='critical'>\The [src] detonates!</span>")
 						explosion(get_turf(src), -1, 0, 2, 3)
@@ -515,7 +515,6 @@
 	name = "NT-PLP-EX plasma pistol"
 	desc = "This scaled down plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "ppistol"
-	item_state = "ppistol"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL
 	heavy = FALSE
@@ -540,7 +539,7 @@
 				if(1)
 					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
 					overheating = 1
-					spawn(rand(5 SECONDS,10 SECONDS))
+					spawn(rand(2 SECONDS,5 SECONDS))
 						if(src)
 							visible_message("<span class='critical'>\The [src] detonates!</span>")
 							explosion(get_turf(src), -1, 0, 2, 3)
