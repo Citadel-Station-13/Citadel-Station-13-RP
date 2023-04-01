@@ -406,8 +406,21 @@ var/list/flooring_types
 
 /singleton/flooring/concrete
 	name = "concrete"
+	desc = "That's concrete baby!"
 	icon = 'icons/turf/flooring/concrete.dmi'
 	icon_base = "concrete"
+	footstep_sounds = list("human" = list(
+		'sound/effects/footstep/floor1.ogg',
+		'sound/effects/footstep/floor2.ogg',
+		'sound/effects/footstep/floor3.ogg',
+		'sound/effects/footstep/floor4.ogg',
+		'sound/effects/footstep/floor5.ogg'))
+
+/singleton/flooring/concrete/tile
+	name = "concrete tile"
+	desc = "That's concrete baby!"
+	icon = 'icons/turf/flooring/concrete.dmi'
+	icon_base = "concrete3"
 
 /singleton/flooring/bananium
 	name = "bananium floor"
@@ -645,14 +658,15 @@ var/list/flooring_types
 	icon_base = "flesh_floor"
 
 /singleton/flooring/outdoors/beach/sand/desert
-	name = "sand"
+	name = "beach"
 	icon = 'icons/turf/outdoors.dmi'
-	icon_base = "sand"
+	icon_base = "desert"
 	footstep_sounds = list("human" = list(
 		'sound/effects/footstep/asteroid1.ogg',
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
 

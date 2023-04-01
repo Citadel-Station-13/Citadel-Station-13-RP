@@ -28,6 +28,8 @@
 	name = "beach"
 	icon = 'icons/misc/beach.dmi'
 	initial_flooring = /singleton/flooring/outdoors/beach
+	edge_blending_priority = 1
+	smoothing_flags = NONE
 
 /turf/simulated/floor/outdoors/beach/sand
 	name = "sand"
@@ -36,7 +38,7 @@
 /turf/simulated/floor/outdoors/beach/sand/desert
 	name = "Dunes"
 	desc = "It seems to go on and on.."
-	icon = 'icons/turf/desert.dmi'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "desert"
 	initial_flooring = /singleton/flooring/outdoors/beach/sand/desert
 
@@ -50,7 +52,7 @@
 
 /turf/simulated/floor/outdoors/beach/sand/lowdesert
 	name = "\improper low desert"
-	icon = 'icons/turf/desert.dmi'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lowdesert"
 
 /turf/simulated/floor/outdoors/beach/outdoors/sand/lowdesert/Initialize(mapload)

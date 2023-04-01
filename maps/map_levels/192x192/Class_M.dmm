@@ -13,7 +13,7 @@
 "aq" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_alc,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "av" = (
 /obj/machinery/door/blast/shutters{
@@ -39,7 +39,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "aF" = (
 /obj/structure/catwalk,
@@ -85,7 +85,7 @@
 /area/class_m/outside)
 "aZ" = (
 /obj/structure/table/woodentable,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "ba" = (
 /obj/structure/railing/grey{
@@ -123,7 +123,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "bC" = (
 /obj/structure/table/marble,
@@ -210,7 +210,7 @@
 /obj/item/material/twohanded/folded_metal_chair{
 	pixel_y = 8
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "bV" = (
 /obj/machinery/door/window/eastright{
@@ -260,7 +260,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "cn" = (
 /obj/structure/lightpost,
@@ -309,7 +309,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "cI" = (
 /obj/structure/catwalk,
@@ -392,7 +392,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "dT" = (
 /obj/effect/floor_decal/grass_edge,
@@ -419,6 +419,11 @@
 "eo" = (
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside)
+"eH" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete16"
+	},
+/area/class_m/outside)
 "eJ" = (
 /obj/structure/fence{
 	dir = 4
@@ -497,10 +502,10 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "eZ" = (
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "ff" = (
 /obj/machinery/light/spot{
@@ -650,13 +655,18 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "gD" = (
 /obj/structure/fence/corner{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
+"gM" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete18"
+	},
 /area/class_m/outside)
 "gN" = (
 /obj/item/radio/intercom{
@@ -740,7 +750,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "il" = (
 /obj/structure/catwalk,
@@ -805,7 +815,7 @@
 "iQ" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_soft,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "ja" = (
 /obj/machinery/door/blast/shutters{
@@ -836,7 +846,7 @@
 	pixel_x = 6;
 	pixel_y = 15
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "jv" = (
 /obj/machinery/door/blast/shutters{
@@ -899,7 +909,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "jV" = (
 /turf/simulated/floor/carpet/bcarpet,
@@ -1069,7 +1079,7 @@
 /area/class_m/outside)
 "lL" = (
 /obj/machinery/chem_master/condimaster,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "lO" = (
 /obj/structure/flora/pottedplant/flower,
@@ -1130,11 +1140,17 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
+"mA" = (
+/obj/structure/fence/post{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
 "mD" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "mF" = (
 /obj/structure/bed/chair/wood/wings{
@@ -1205,7 +1221,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "nk" = (
 /obj/effect/floor_decal/spline/plain{
@@ -1350,7 +1366,7 @@
 /obj/item/towel/random,
 /obj/item/towel/random,
 /obj/structure/table/rack,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "os" = (
 /obj/structure/fence/post{
@@ -1393,7 +1409,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "oB" = (
 /obj/machinery/door/airlock{
@@ -1410,6 +1426,11 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
+	},
+/area/class_m/outside)
+"oF" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete22"
 	},
 /area/class_m/outside)
 "oG" = (
@@ -1507,7 +1528,7 @@
 /area/class_m/inside)
 "py" = (
 /obj/structure/railing/grey,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "pC" = (
 /obj/structure/flora/pottedplant/largebush,
@@ -1522,7 +1543,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "pJ" = (
 /turf/simulated/floor/water/beach/corner{
@@ -1670,6 +1691,11 @@
 	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"rf" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete21"
+	},
 /area/class_m/outside)
 "rg" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -1978,7 +2004,7 @@
 /obj/machinery/microwave{
 	pixel_y = 6
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "ui" = (
 /obj/structure/catwalk,
@@ -2033,7 +2059,7 @@
 "vg" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "vh" = (
 /obj/structure/table/woodentable,
@@ -2224,7 +2250,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "xv" = (
 /obj/structure/bed/chair/comfy/black{
@@ -2240,11 +2266,11 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "xH" = (
 /obj/effect/floor_decal/spline/plain,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "xJ" = (
 /obj/machinery/light/flamp/noshade{
@@ -2303,12 +2329,12 @@
 	name = "NO WEAPONS BEYOND THIS POINT";
 	pixel_y = 32
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "xX" = (
 /obj/structure/table/marble,
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "yg" = (
 /turf/simulated/floor/tiled/classm,
@@ -2321,7 +2347,7 @@
 	name = "Gaia Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "yt" = (
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
@@ -2477,7 +2503,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "zM" = (
 /obj/structure/bed/chair{
@@ -2568,7 +2594,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "AB" = (
 /obj/vehicle_old/train/engine/quadbike/random,
@@ -2626,7 +2652,7 @@
 /area/class_m/inside)
 "Bh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Bm" = (
 /obj/structure/railing/grey{
@@ -2788,7 +2814,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Du" = (
 /obj/structure/railing{
@@ -2837,7 +2863,7 @@
 	nightshift_allowed = 0
 	},
 /obj/effect/floor_decal/industrial/warning/dust/corner,
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "DU" = (
 /obj/item/melee/umbrella,
@@ -2922,7 +2948,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Ew" = (
 /obj/structure/catwalk,
@@ -3008,7 +3034,7 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Fj" = (
 /obj/structure/fence/end{
@@ -3028,6 +3054,12 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
 	name = "beach"
+	},
+/area/class_m/outside)
+"Fx" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete19"
 	},
 /area/class_m/outside)
 "FE" = (
@@ -3052,7 +3084,7 @@
 /area/class_m/inside)
 "FK" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "FN" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -3086,7 +3118,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "Gs" = (
 /obj/machinery/button/remote/blast_door{
@@ -3126,7 +3158,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "GJ" = (
 /obj/structure/table/woodentable,
@@ -3159,7 +3191,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "GT" = (
 /obj/machinery/door/airlock{
@@ -3249,7 +3281,7 @@
 /obj/effect/shuttle_landmark/automatic{
 	docking_controller = "gaia_2"
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "HQ" = (
 /obj/structure/railing{
@@ -3331,7 +3363,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "IS" = (
 /obj/machinery/door/blast/shutters{
@@ -3466,7 +3498,9 @@
 /area/class_m/outside)
 "Kw" = (
 /obj/item/stool/padded,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete17"
+	},
 /area/class_m/outside)
 "Kz" = (
 /obj/structure/catwalk,
@@ -3516,7 +3550,7 @@
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "KY" = (
 /obj/machinery/shower{
@@ -3601,13 +3635,13 @@
 	name = "Gaia Dock Controller";
 	pixel_y = 30
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "Lr" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "Lt" = (
 /obj/machinery/gear_painter,
@@ -3654,7 +3688,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "LY" = (
 /obj/structure/bed/double/padded,
@@ -3850,7 +3884,7 @@
 /area/class_m/outside)
 "NU" = (
 /obj/item/clothing/head/cone,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Of" = (
 /turf/simulated/mineral/floor/classm,
@@ -4245,7 +4279,7 @@
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Pm" = (
 /obj/structure/flora/ausbushes/leafybush,
@@ -4300,6 +4334,11 @@
 	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/inside)
+"PS" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete15"
+	},
+/area/class_m/outside)
 "PU" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/classm/outdoors,
@@ -4315,7 +4354,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Ql" = (
 /obj/structure/catwalk,
@@ -4329,6 +4368,11 @@
 /area/class_m/outside)
 "Qm" = (
 /turf/simulated/floor/carpet/purcarpet,
+/area/class_m/outside)
+"Qp" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete20"
+	},
 /area/class_m/outside)
 "Qq" = (
 /obj/machinery/light{
@@ -4401,7 +4445,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Rh" = (
 /obj/structure/flora/ausbushes/stalkybush,
@@ -4481,6 +4525,11 @@
 "Sc" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/wood/classm,
+/area/class_m/outside)
+"Sg" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete23"
+	},
 /area/class_m/outside)
 "Sl" = (
 /obj/machinery/icecream_vat,
@@ -4832,7 +4881,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside)
 "VT" = (
 /obj/structure/table/rack,
@@ -4849,7 +4898,7 @@
 /obj/item/material/fishing_net,
 /obj/item/material/fishing_net,
 /obj/item/material/fishing_net,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "VU" = (
 /obj/machinery/door/airlock/glass,
@@ -4864,7 +4913,7 @@
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
 "Wb" = (
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "We" = (
 /obj/machinery/door/airlock{
@@ -4879,7 +4928,7 @@
 	name = "NO WEAPONS BEYOND THIS POINT";
 	pixel_y = -32
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "Wi" = (
 /obj/machinery/button/remote/airlock{
@@ -4935,7 +4984,7 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "WE" = (
-/turf/simulated/floor/outdoors/concrete/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside)
 "WF" = (
 /obj/machinery/floor_light/prebuilt,
@@ -4956,7 +5005,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "WN" = (
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "WO" = (
 /obj/item/bee_pack,
@@ -5012,7 +5061,7 @@
 /area/class_m/outside)
 "Xd" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "Xh" = (
 /obj/structure/flora/ausbushes/stalkybush,
@@ -5207,11 +5256,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "YX" = (
 /obj/structure/catwalk,
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "YY" = (
 /obj/machinery/light{
@@ -5277,7 +5326,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/concrete/rng/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Zu" = (
 /turf/simulated/wall/wood,
@@ -5323,7 +5372,7 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 157
 	},
-/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 
 (1,1,1) = {"
@@ -23890,8 +23939,8 @@ CV
 tF
 Lp
 jf
-Wb
-Wb
+WN
+WN
 aZ
 aZ
 so
@@ -24084,9 +24133,9 @@ tF
 tF
 Ee
 aq
-Wb
-Wb
-Wb
+WN
+WN
+WN
 ZU
 so
 Lp
@@ -24278,8 +24327,8 @@ tF
 Lp
 Ee
 iQ
-Wb
-Wb
+eH
+oF
 Kw
 aZ
 so
@@ -24472,9 +24521,9 @@ tF
 Lp
 Ee
 xX
-Wb
-Wb
-Wb
+rf
+PS
+Qp
 ZU
 so
 Lp
@@ -24666,9 +24715,9 @@ tF
 Lp
 Lp
 Pl
-Wb
-Wb
-Kw
+gM
+Sg
+Fx
 aZ
 so
 Lp
@@ -24860,9 +24909,9 @@ CV
 tF
 Ee
 lL
-Wb
-Wb
-Wb
+WN
+WN
+WN
 ZU
 so
 Lp
@@ -25054,8 +25103,8 @@ oT
 tF
 Lp
 ud
-Wb
-Wb
+WN
+WN
 aZ
 aZ
 so
@@ -25404,7 +25453,7 @@ tF
 tF
 tF
 tF
-tF
+ow
 xb
 HZ
 Dm
@@ -27568,11 +27617,11 @@ tF
 tF
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 tF
 tF
@@ -28318,7 +28367,7 @@ tF
 tF
 tF
 tF
-tF
+ow
 tv
 HZ
 kP
@@ -29702,11 +29751,11 @@ tF
 tF
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 tv
 cM
@@ -31836,11 +31885,11 @@ tF
 tF
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 tF
 tF
@@ -33970,11 +34019,11 @@ tF
 tF
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 tF
 Lp
@@ -35141,7 +35190,7 @@ oT
 tF
 tF
 Lp
-os
+gp
 Lp
 Wb
 WN
@@ -36104,11 +36153,11 @@ tF
 ab
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 Lp
 gp
@@ -38235,14 +38284,14 @@ WN
 WN
 Wb
 Wb
-wa
+ab
 tF
 tF
-cn
+CV
 oT
 oT
 oT
-cn
+CV
 tF
 tF
 gp
@@ -38427,7 +38476,7 @@ WN
 WN
 WN
 WN
-Wb
+WN
 Wb
 Xd
 oT
@@ -38441,7 +38490,7 @@ oT
 oT
 Xd
 Wb
-Wb
+WN
 WN
 WN
 WN
@@ -38621,9 +38670,9 @@ WN
 WN
 WN
 WN
-Wb
+WN
 Wf
-Wb
+mA
 oT
 oT
 oT
@@ -38633,9 +38682,9 @@ oT
 oT
 oT
 oT
-Wb
+mA
 xW
-Wb
+WN
 WN
 WN
 WN
@@ -38815,7 +38864,7 @@ WN
 WN
 WN
 WN
-Wb
+WN
 Wb
 Xd
 XA
@@ -38829,7 +38878,7 @@ oT
 XA
 Xd
 Wb
-Wb
+WN
 WN
 WN
 WN

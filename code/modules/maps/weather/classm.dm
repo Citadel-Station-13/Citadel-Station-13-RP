@@ -11,7 +11,7 @@
 
 
 /datum/time/classm
-	seconds_in_day = 3 HOURS
+	seconds_in_day = 10 HOURS
 
 /datum/planet/classm
 	name = "Class-M Gaia Planet"
@@ -111,7 +111,7 @@
 		WEATHER_OVERCAST	= 15,
 		WEATHER_RAIN		= 5,
 		WEATHER_STORM		= 4,
-		WEATHER_BLOODMOON	= 1
+		WEATHER_BLOODMOON	= 0
 		)
 
 /datum/weather/classm
@@ -127,8 +127,8 @@
 		)
 	transition_messages = list(
 		"The sky clears up.",
-		"The sky is visible.",
-		"The weather is calm."
+		"The sky becomes visible.",
+		"The weather grows calm."
 		)
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
@@ -146,7 +146,7 @@
 	transition_messages = list(
 		"All you can see above are clouds.",
 		"Clouds cut off your view of the sky.",
-		"It's very cloudy."
+		"It becomes very cloudy."
 		)
 
 
@@ -163,9 +163,9 @@
 		WEATHER_RAIN = 55,
 		WEATHER_STORM = 5
 		)
-	observed_message = "It is raining."
+	observed_message = "The sky is dark, and rain falls down upon you."
 	transition_messages = list(
-		"The sky is dark, and rain falls down upon you."
+		"The sky grows dark, and rain falls down upon you."
 	)
 
 /datum/weather/classm/rain/process_effects()
@@ -208,7 +208,7 @@
 	var/max_lightning_cooldown = 1 MINUTE
 	observed_message = "An intense storm pours down over the region."
 	transition_messages = list(
-		"You feel intense winds hit you as the weather takes a turn for the worst.",
+		"You feel intense winds hit you as the weather takes a turn for the worse.",
 		"Loud thunder is heard in the distance.",
 		"A bright flash heralds the approach of a storm."
 	)
