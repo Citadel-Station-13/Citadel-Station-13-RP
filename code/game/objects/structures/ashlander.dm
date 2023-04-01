@@ -366,6 +366,7 @@
 //Ashlander Cryo
 /obj/machinery/cryopod/robot/door/travel/ashlander
 	name = "Warrens Passage"
+	desc = "A mildly obscured passage down into the deep warrens of Surt-nar-Cthardamz."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "golicryo_0"
 	base_icon_state = "golicryo_0"
