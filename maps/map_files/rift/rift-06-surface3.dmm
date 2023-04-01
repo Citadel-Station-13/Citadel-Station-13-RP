@@ -2125,15 +2125,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "adZ" = (
-/obj/effect/floor_decal/steeldecal/steel_decals_central5{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
@@ -17731,16 +17722,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aMd" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -23747,16 +23728,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "aZe" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
