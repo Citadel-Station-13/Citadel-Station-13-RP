@@ -41,20 +41,22 @@
 /datum/outfit/job/station/explorer
 	name = OUTFIT_JOB_NAME("Explorer")
 	id_pda_assignment = "Explorer"
-	shoes = /obj/item/clothing/shoes/boots/winter/explorer
-	uniform = /obj/item/clothing/under/explorer
+	shoes = /obj/item/clothing/shoes/clown_shoes
+	uniform = /obj/item/clothing/under/rank/clown
+	mask = /obj/item/clothing/mask/gas/clown_hat
 	l_ear = /obj/item/radio/headset/explorer
+	r_pocket = /obj/item/bikehorn
 
 	id_slot = SLOT_ID_WORN_ID
 	pda_slot = SLOT_ID_LEFT_POCKET
 
-	pda_type = /obj/item/pda/explorer
+	pda_type = /obj/item/pda/clown
 	id_type = /obj/item/card/id/explorer/explorer
 
-	backpack = /obj/item/storage/backpack/voyager
+	backpack = /obj/item/storage/backpack/clown
 	backpack_contents = list(/obj/item/clothing/accessory/permit/gun/planetside = 1)
 	satchel_one = /obj/item/storage/backpack/satchel/voyager
-	dufflebag = /obj/item/storage/backpack/dufflebag/voyager
+	dufflebag = /obj/item/storage/backpack/dufflebag/clown
 
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_COMPREHENSIVE_SURVIVAL
 

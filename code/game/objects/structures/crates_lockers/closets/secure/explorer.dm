@@ -11,11 +11,11 @@
 	req_access = list(ACCESS_GENERAL_EXPLORER)
 
 	starts_with = list(
-		/obj/item/clothing/under/explorer,
-		/obj/item/clothing/suit/storage/hooded/explorer,
-		/obj/item/clothing/mask/gas/explorer,
-		/obj/item/clothing/shoes/boots/winter/explorer,
-		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/under/rank/clown,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/mask/gas/sexyclown,
+		/obj/item/clothing/shoes/clown_shoes,
+		/obj/item/clothing/gloves/rainbow,
 		/obj/item/gun/energy/frontier/locked/holdout,
 		/obj/item/radio/headset/explorer,
 		/obj/item/flashlight,
@@ -30,6 +30,8 @@
 		/obj/item/clothing/accessory/holster/machete,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/storage/fancy/markers,
 		/obj/item/cataloguer)
 
 /obj/structure/closet/secure_closet/explorer/Initialize(mapload)
@@ -44,7 +46,7 @@
 	name = "field medic locker"
 
 	starts_with = list(
-		/obj/item/storage/backpack/dufflebag/emt,
+		/obj/item/storage/backpack/dufflebag/clown,
 		/obj/item/storage/box/autoinjectors,
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline,
@@ -52,10 +54,11 @@
 		/obj/item/storage/belt/medical/emt,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/gun/energy/frontier/locked/holdout,
-		/obj/item/clothing/mask/gas/explorer,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/mask/gas/sexyclown,
 		/obj/item/clothing/suit/storage/hooded/explorer/medic,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar,
-		/obj/item/clothing/shoes/boots/winter/explorer,
+		/obj/item/clothing/shoes/clown_shoes,
 		/obj/item/radio/headset/sar,
 		/obj/item/cartridge/medical,
 		/obj/item/material/knife/machete,
@@ -76,6 +79,8 @@
 		/obj/item/gps/medical,
 		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/storage/fancy/markers,
 		/obj/item/cataloguer/compact)
 
 //Pilot Locker
@@ -88,13 +93,12 @@
 		/obj/item/storage/backpack/parachute,
 		/obj/item/storage/box/survival_knife,
 		/obj/item/gun/energy/frontier/locked/holdout,
-		/obj/item/clothing/head/pilot,
-		/obj/item/clothing/under/rank/pilot1,
+		/obj/item/clothing/under/rank/clown,
 		/obj/item/clothing/suit/storage/toggle/bomber/pilot,
-		/obj/item/clothing/shoes/boots/winter/explorer,
-		/obj/item/clothing/mask/gas/half,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/gloves/fingerless,
+		/obj/item/clothing/shoes/clown_shoes,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/mask/gas/sexyclown,
+		/obj/item/clothing/gloves/rainbow,
 		/obj/item/radio/headset/pilot/alt,
 		/obj/item/flashlight,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
@@ -106,6 +110,8 @@
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/gps/explorer,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/storage/fancy/markers,
 		/obj/item/cataloguer/compact)
 
 /obj/structure/closet/secure_closet/pilot/Initialize(mapload)
@@ -128,11 +134,11 @@
 	req_access = list(ACCESS_GENERAL_GATEWAY)
 
 	starts_with = list(
-		/obj/item/clothing/under/explorer,
-		/obj/item/clothing/suit/storage/hooded/explorer,
-		/obj/item/clothing/mask/gas/explorer,
-		/obj/item/clothing/shoes/boots/winter/explorer,
-		/obj/item/clothing/gloves/black,
+		/obj/item/clothing/under/rank/clown,
+		/obj/item/clothing/mask/gas/clown_hat,
+		/obj/item/clothing/mask/gas/sexyclown,
+		/obj/item/clothing/shoes/clown_shoes,
+		/obj/item/clothing/gloves/rainbow,
 		/obj/item/radio/headset/pathfinder,
 		/obj/item/radio/headset/pathfinder/alt,
 		/obj/item/flashlight,
@@ -156,6 +162,8 @@
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,
+		/obj/item/storage/fancy/crayons,
+		/obj/item/storage/fancy/markers,
 		/obj/item/cataloguer/compact/pathfinder)
 
 /obj/structure/closet/secure_closet/pathfinder/Initialize(mapload)

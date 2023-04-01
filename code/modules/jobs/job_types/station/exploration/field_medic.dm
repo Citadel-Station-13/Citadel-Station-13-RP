@@ -29,21 +29,22 @@
 
 /datum/outfit/job/station/sar
 	name = OUTFIT_JOB_NAME("Field Medic")
-	uniform = /obj/item/clothing/under/utility/blue
-	suit = /obj/item/clothing/suit/storage/hooded/wintercoat/medical/sar
-	shoes = /obj/item/clothing/shoes/boots/winter/explorer
+	uniform = /obj/item/clothing/under/rank/clown
+	shoes = /obj/item/clothing/shoes/clown_shoes
 	l_ear = /obj/item/radio/headset/sar
+	r_pocket = /obj/item/bikehorn
+	mask = /obj/item/clothing/mask/gas/clown_hat
 	l_hand = /obj/item/storage/firstaid/regular
 	belt = /obj/item/storage/belt/medical/emt
 	pda_slot = SLOT_ID_LEFT_POCKET
 	r_pocket = /obj/item/flashlight/pen
-	pda_type = /obj/item/pda/sar
+	pda_type = /obj/item/pda/clown
 	id_type = /obj/item/card/id/medical/sar
 	id_pda_assignment = "Field Medic"
 
-	backpack = /obj/item/storage/backpack/medic
+	backpack = /obj/item/storage/backpack/clown
 	satchel_one = /obj/item/storage/backpack/satchel/med
 	messenger_bag = /obj/item/storage/backpack/messenger/med
-	dufflebag = /obj/item/storage/backpack/dufflebag/med
+	dufflebag = /obj/item/storage/backpack/dufflebag/clown
 
 	flags = OUTFIT_HAS_BACKPACK|OUTFIT_EXTENDED_SURVIVAL|OUTFIT_COMPREHENSIVE_SURVIVAL
