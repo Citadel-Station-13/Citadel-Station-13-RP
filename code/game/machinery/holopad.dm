@@ -1056,6 +1056,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(density)
 		walk_to(src, T)
 	else
+		setDir(get_dir(src, T))
 		forceMove(T)
 
 /obj/effect/overlay/hologram/proc/stop_moving()

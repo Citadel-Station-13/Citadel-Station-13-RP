@@ -11,7 +11,7 @@
  * * scanlines - include scanlines
  * * no_anim - kill any animations.
  */
-/proc/render_hologram_icon(rendering, use_alpha = 180, no_anim, scanlines = TRUE)
+/proc/render_hologram_icon(rendering, use_alpha, no_anim, scanlines = TRUE)
 	var/icon/processing
 	if(!isicon(rendering))
 		// cursed : operator; see params for why.
@@ -67,11 +67,13 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 		if(!GLOB.hologram_scanline_cache[key])
 			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
 			generated.Scale(width, height)
-			generated.MapColors(aa = -1)
+			generated.MapColors(arglist(rgba_construct_color_matrix(aa = -1)))
 			generated.Blend("#ffffff", ICON_ADD)
 			GLOB.hologram_scanline_cache[key] = generated
 		var/image/the_overlay = image(GLOB.hologram_scanline_cache[key])
-		the_overlay.blend_mode = BLEND_SUBTRACT
+		the_overlay.plane = FLOAT_PLANE
+		the_overlay.layer = FLOAT_LAYER + 10000
+		the_overlay.blend_mode = BLEND_MULTIPLY
 		rendered.overlays += the_overlay
 	rendered.appearance_flags |= KEEP_TOGETHER
 	rendered.density = FALSE

@@ -1,0 +1,18 @@
+#define CONST_GREYSCALE_R 0.3
+#define CONST_GREYSCALE_G 0.59
+#define CONST_GREYSCALE_B 0.11
+
+/**
+ * Turns the icon into a greyscaled icon. Alpha masks are untouched.
+ */
+/icon/proc/greyscale()
+	MapColors(
+		CONST_GREYSCALE_R, CONST_GREYSCALE_R, CONST_GREYSCALE_R,
+		CONST_GREYSCALE_G, CONST_GREYSCALE_G, CONST_GREYSCALE_G,
+		CONST_GREYSCALE_B, CONST_GREYSCALE_B, CONST_GREYSCALE_B
+	)
+
+#undef CONST_GREYSCALE_R
+#undef CONST_GREYSCALE_G
+#undef CONST_GREYSCALE_B
+

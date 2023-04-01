@@ -23,8 +23,6 @@ icon/ChangeOpacity(amount = 1)
     for MapColors() which can change opacity any way you like, in much the same way that SetIntensity()
     can make an icon lighter or darker. If amount is 0.5, the opacity of the icon will be cut in half.
     If amount is 2, opacity is doubled and anything more than half-opaque will become fully opaque.
-icon/GrayScale()
-    Converts the icon to grayscale instead of a fully colored icon. Alpha values are left intact.
 icon/ColorTone(tone)
     Similar to GrayScale(), this proc converts the icon to a range of black -> tone -> white, where tone is an
     RGB color (its alpha is ignored). This can be used to create a sepia tone or similar effect.
@@ -116,103 +114,6 @@ ColorTone(rgb, tone)
     using strict shades of gray. The tone value is an RGB color; any alpha value is ignored.
 */
 
-/*
-Get Flat Icon DEMO by DarkCampainger
-
-This is a test for the get flat icon proc, modified approprietly for icons and their states.
-Probably not a good idea to run this unless you want to see how the proc works in detail.
-mob
-	icon = 'old_or_unused.dmi'
-	icon_state = "green"
-
-	Login()
-		// Testing image underlays
-		underlays += image(icon='old_or_unused.dmi',icon_state="red")
-		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = 32)
-		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = -32)
-
-		// Testing image overlays
-		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = -32))
-		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = 32))
-		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = -32, pixel_y = -32))
-
-		// Testing icon file overlays (defaults to mob's state)
-		add_overlay('_flat_demoIcons2.dmi')
-
-		// Testing icon_state overlays (defaults to mob's icon)
-		add_overlay("white")
-
-		// Testing dynamic icon overlays
-		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
-		I.Shift(NORTH,16,1)
-		add_overlay(I)
-
-		// Testing dynamic image overlays
-		I=image(icon=I,pixel_x = -32, pixel_y = 32)
-		add_overlay(I)
-
-		// Testing object types (and layers)
-		add_overlay(/obj/effect/overlayTest)
-
-		loc = locate (10,10,1)
-	verb
-		Browse_Icon()
-			set name = "1. Browse Icon"
-			// Give it a name for the cache
-			var/iconName = "[ckey(src.name)]_flattened.dmi"
-			// Send the icon to src's local cache
-			src<<browse_rsc(get_flat_icon(src), iconName)
-			// Display the icon in their browser
-			src<<browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
-
-		Output_Icon()
-			set name = "2. Output Icon"
-			to_chat(src, "Icon is: [icon2base64html(get_flat_icon(src))]")
-
-		Label_Icon()
-			set name = "3. Label Icon"
-			// Give it a name for the cache
-			var/iconName = "[ckey(src.name)]_flattened.dmi"
-			// Copy the file to the rsc manually
-			var/icon/I = fcopy_rsc(get_flat_icon(src))
-			// Send the icon to src's local cache
-			src<<browse_rsc(I, iconName)
-			// Update the label to show it
-			winset(src,"imageLabel","image='[REF(I)]'");
-
-		Add_Overlay()
-			set name = "4. Add Overlay"
-			add_overlay(image(icon='old_or_unused.dmi',icon_state="yellow",pixel_x = rand(-64,32), pixel_y = rand(-64,32))
-
-		Stress_Test()
-			set name = "5. Stress Test"
-			for(var/i = 0 to 1000)
-				// The third parameter forces it to generate a new one, even if it's already cached
-				get_flat_icon(src,0,2)
-				if(prob(5))
-					Add_Overlay()
-			Browse_Icon()
-
-		Cache_Test()
-			set name = "6. Cache Test"
-			for(var/i = 0 to 1000)
-				get_flat_icon(src)
-			Browse_Icon()
-
-/obj/effect/overlayTest
-	icon = 'old_or_unused.dmi'
-	icon_state = "blue"
-	pixel_x = -24
-	pixel_y = 24
-	layer = TURF_LAYER // Should appear below the rest of the overlays
-
-world
-	view = "7x7"
-	maxx = 20
-	maxy = 20
-	maxz = 1
-*/
-
 #define TO_HEX_DIGIT(n) ascii2text((n&15) + ((n&15)<10 ? 48 : 87))
 
 /icon/proc/MakeLying()
@@ -229,12 +130,8 @@ world
 /icon/proc/ChangeOpacity(opacity = 1)
 	MapColors(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,opacity, 0,0,0,0)
 
-// Convert to grayscale
-/icon/proc/GrayScale()
-	MapColors(0.3,0.3,0.3, 0.59,0.59,0.59, 0.11,0.11,0.11, 0,0,0)
-
 /icon/proc/ColorTone(tone)
-	GrayScale()
+	greyscale()
 
 	var/list/TONE = ReadRGB(tone)
 	var/gray = round(TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11, 1)
