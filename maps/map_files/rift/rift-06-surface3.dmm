@@ -1081,12 +1081,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -1578,16 +1572,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "acU" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 5
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 6
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central5{
-	dir = 1;
-	pixel_y = 1
-	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
 	id_tag = "expshuttle_dock";
@@ -3335,17 +3319,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "agr" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/industrial/outline,
 /obj/machinery/suit_cycler/pilot,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/exploration/explorer_prep)
@@ -4153,18 +4126,6 @@
 /obj/structure/snowman,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"aim" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/arcadecarpet,
-/area/exploration)
 "ain" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin,
@@ -8876,21 +8837,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"asy" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/industrial/outline,
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/simulated/floor/carpet/gaycarpet,
-/area/exploration/explorer_prep)
 "asz" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -12983,22 +12929,6 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
 /area/hydroponics)
-"aBs" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/carpet/arcadecarpet,
-/area/exploration)
 "aBt" = (
 /obj/machinery/door/airlock/maintenance/int,
 /obj/structure/cable/green{
@@ -17510,24 +17440,13 @@
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfaceeva/aa/cliff_south)
 "aLw" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/industrial/outline,
-/obj/structure/table/rack/shelf,
 /obj/item/tank/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
 /obj/item/tank/jetpack/oxygen,
 /obj/item/clothing/suit/space/void/clownop,
 /obj/item/clothing/head/helmet/space/void/clownop,
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/exploration/explorer_prep)
 "aLx" = (
@@ -17703,10 +17622,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 2
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/carpet/arcadecarpet,
 /area/exploration)
@@ -18637,18 +18552,6 @@
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "aNW" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/industrial/outline,
-/obj/structure/table/rack/shelf,
 /obj/item/tank/oxygen,
 /obj/item/suit_cooling_unit,
 /obj/item/clothing/shoes/magboots,
@@ -18658,6 +18561,7 @@
 	},
 /obj/item/clothing/suit/space/void/clownop,
 /obj/item/clothing/head/helmet/space/void/clownop/alt,
+/obj/structure/table/rack/shelf,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/exploration/explorer_prep)
 "aNX" = (
@@ -20499,17 +20403,6 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"aRQ" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor/glass/hidden,
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/carpet/arcadecarpet,
-/area/exploration)
 "aRR" = (
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -21096,17 +20989,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "aTd" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 1
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
-	dir = 4
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/pilot,
 /turf/simulated/floor/carpet/gaycarpet,
 /area/exploration/explorer_prep)
@@ -24016,13 +23898,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
 "aZu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 10
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 9
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals_central5,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/bananium,
 /area/exploration/excursion_dock)
@@ -24211,18 +24086,6 @@
 	},
 /turf/simulated/floor/bananium,
 /area/exploration/pathfinder_office)
-"aZV" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/turf/simulated/floor/carpet/arcadecarpet,
-/area/exploration)
 "aZW" = (
 /obj/structure/anomaly_container,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -43400,7 +43263,7 @@ arY
 aih
 aJw
 arY
-aRQ
+arY
 aLP
 abR
 aAt
@@ -43982,11 +43845,11 @@ ack
 ack
 aEq
 aEq
-aBs
-aZV
-aim
+aSk
+agW
+arf
 aKY
-asy
+koe
 aTd
 aTd
 aTd
