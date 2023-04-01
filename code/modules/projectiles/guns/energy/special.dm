@@ -479,11 +479,20 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
 	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
+	var/overheating = 0
 
 	firemodes = list(
 		list(mode_name="standard", projectile_type=/obj/projectile/plasma, charge_cost = 350),
 		list(mode_name="high power", projectile_type=/obj/projectile/plasma/hot, charge_cost = 370),
 		)
+
+/obj/item/gun/energy/plasma/update_icon()
+	. = ..()
+	if(overheating)
+		icon_state = "prifle-overheat"
+		update_held_icon()
+	else
+		return
 
 /obj/item/gun/energy/plasma/consume_next_projectile(mob/user as mob)
 	. = ..()
@@ -491,14 +500,14 @@
 		switch(rand(1,6))
 			if(1)
 				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				icon_state = "prifle_overheat"
+				overheating = 1
 				spawn(rand(5 SECONDS,10 SECONDS))
 					if(src)
 						visible_message("<span class='critical'>\The [src] detonates!</span>")
 						explosion(get_turf(src), -1, 0, 2, 3)
 						qdel(chambered)
 						qdel(src)
-				return
+				return ..()
 			if(2 to 6)
 				return ..()
 
@@ -515,19 +524,28 @@
 	matter = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
+/obj/item/gun/energy/plasma/pistol/update_icon()
+	. = ..()
+	if(overheating)
+		icon_state = "ppistol-overheat"
+		update_held_icon()
+	else
+		return
+
 /obj/item/gun/energy/plasma/pistol/consume_next_projectile(mob/user as mob)
 	. = ..()
-	if(src.projectile_type == /obj/projectile/plasma/hot)
-		switch(rand(1,6))
-			if(1)
-				to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
-				icon_state = "ppistol_overheat"
-				spawn(rand(5 SECONDS,10 SECONDS))
-					if(src)
-						visible_message("<span class='critical'>\The [src] detonates!</span>")
-						explosion(get_turf(src), -1, 0, 2, 3)
-						qdel(chambered)
-						qdel(src)
-				return
-			if(2 to 6)
-				return ..()
+	if(.)
+		if(src.projectile_type == /obj/projectile/plasma/hot)
+			switch(rand(1,6))
+				if(1)
+					to_chat(user, "<span class='danger'>The containment coil catastrophically overheats!</span>")
+					overheating = 1
+					spawn(rand(5 SECONDS,10 SECONDS))
+						if(src)
+							visible_message("<span class='critical'>\The [src] detonates!</span>")
+							explosion(get_turf(src), -1, 0, 2, 3)
+							qdel(chambered)
+							qdel(src)
+					return ..()
+				if(2 to 6)
+					return ..()
