@@ -404,6 +404,11 @@ var/list/flooring_types
 	build_type = /obj/item/stack/tile/bmarble
 	flooring_flags = TURF_REMOVE_CROWBAR
 
+/singleton/flooring/concrete
+	name = "concrete"
+	icon = 'icons/turf/flooring/concrete.dmi'
+	icon_base = "concrete"
+
 /singleton/flooring/bananium
 	name = "bananium floor"
 	desc = "Have you ever seen a clown frown?"

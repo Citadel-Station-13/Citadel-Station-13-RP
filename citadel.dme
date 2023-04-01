@@ -1785,6 +1785,7 @@
 #include "code\game\turfs\simulated\flooring\flooring_traps.dm"
 #include "code\game\turfs\simulated\flooring\shuttle_vr.dm"
 #include "code\game\turfs\simulated\floors\atmoscaves_vr.dm"
+#include "code\game\turfs\simulated\floors\concrete.dm"
 #include "code\game\turfs\simulated\floors\dirt.dm"
 #include "code\game\turfs\simulated\floors\dungeon.dm"
 #include "code\game\turfs\simulated\floors\grass.dm"

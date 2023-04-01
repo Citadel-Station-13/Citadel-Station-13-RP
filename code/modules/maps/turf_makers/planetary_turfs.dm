@@ -51,14 +51,18 @@ GAIA_TURF_CREATE(/turf/simulated/wall/planetary/gaia)
 GAIA_TURF_CREATE(/turf/simulated/wall)
 GAIA_TURF_CREATE(/turf/simulated/wall/sandstone)
 GAIA_TURF_CREATE(/turf/simulated/wall/sandstonediamond)
-GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
 GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
+GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/dirt/classm)
 GAIA_TURF_CREATE(/turf/simulated/floor/wood)
 GAIA_TURF_CREATE(/turf/simulated/floor/tiled)
+GAIA_TURF_CREATE(/turf/simulated/floor/tiled/monotile)
+GAIA_TURF_CREATE(/turf/simulated/floor)
 GAIA_TURF_CREATE(/turf/simulated/floor)
 GAIA_TURF_CREATE(/turf/simulated/floor/water)
 GAIA_TURF_CREATE(/turf/simulated/floor/water/deep)
+GAIA_TURF_CREATE(/turf/simulated/floor/water/beach)
+GAIA_TURF_CREATE(/turf/simulated/floor/water/beach/corner)
 GAIA_TURF_CREATE(/turf/simulated/floor/water/shoreline)
 GAIA_TURF_CREATE(/turf/simulated/floor/water/shoreline/corner)
 GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand)
@@ -70,6 +74,30 @@ GAIA_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 //Exterior Turfs for weather effects.
 /turf/simulated/floor/tiled/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/outdoors/concrete/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/outdoors/concrete/tile/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/outdoors/dirt/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/water/beach/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/water/beach/corner/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/water/shoreline/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/water/shoreline/corner/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/tiled/monotile/classm/outdoors
 	outdoors = TRUE
 
 /turf/simulated/floor/wood/classm/outdoors
