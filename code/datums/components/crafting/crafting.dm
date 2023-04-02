@@ -238,7 +238,7 @@
 				var/datum/reagent/RGNT
 				while(amt > 0)
 					var/obj/item/reagent_containers/RC = locate() in surroundings
-					RG = RC.reagents.get_reagent(A)
+					RG = RC.reagents.get_reagent(RG.id)
 					if(RG)
 						if(!locate(RG.type) in Deletion)
 							Deletion += new RG.type()
