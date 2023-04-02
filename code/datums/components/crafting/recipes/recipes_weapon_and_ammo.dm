@@ -291,10 +291,10 @@
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/explosive/ied
-	reqs = list(/obj/item/stack/cable_coil = 1,
+	reqs = list(/datum/reagent/fuel = 50,
+				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
 				/obj/item/trash/punctured_can = 1)
-	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER

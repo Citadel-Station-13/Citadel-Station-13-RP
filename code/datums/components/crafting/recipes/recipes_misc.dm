@@ -229,7 +229,8 @@
 				/obj/item/reagent_containers/glass/beaker)
 	reqs = list(/obj/item/stack/material/cardboard = 1, //so we dont null items in crafting
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/gold = 1)
+				/obj/item/stack/material/gold = 1,
+				/datum/reagent/water = 15)
 	time = 40
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
@@ -280,7 +281,8 @@
 	result = /obj/item/tool/screwdriver/brass
 	reqs = list(/obj/item/tool/screwdriver = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -294,7 +296,8 @@
 	result = /obj/item/weldingtool/brass
 	reqs = list(/obj/item/weldingtool = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -308,7 +311,8 @@
 	result = /obj/item/tool/wirecutters/brass
 	reqs = list(/obj/item/tool/wirecutters = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -322,7 +326,8 @@
 	result = /obj/item/tool/crowbar/brass
 	reqs = list(/obj/item/tool/crowbar = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -336,7 +341,8 @@
 	result = /obj/item/tool/wrench/brass
 	reqs = list(/obj/item/tool/wrench = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
