@@ -431,7 +431,6 @@
 	desc = "For holding your limbs in place with hide and sinew."
 	icon_state = "primitive-splint"
 	amount = 5
-	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
 // Begin Citadel Changes - New advanced kit sprites
 /obj/item/stack/medical/advanced/Initialize(mapload)

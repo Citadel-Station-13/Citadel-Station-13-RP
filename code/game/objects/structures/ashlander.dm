@@ -372,7 +372,7 @@
 	base_icon_state = "golicryo_0"
 	occupied_icon_state = "golicryo_1"
 	announce_channel = "Mercenary"
-	on_store_message = "has descented into the Dark Below."
+	on_store_message = "has descended into the Dark Below."
 	on_store_name = "The Mother"
 	on_enter_visible_message = "begins descending into the"
 	on_enter_occupant_message = "The goliath hide cloak flutters behind you as you begin to walk down the hand-carved stairs."
