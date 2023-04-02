@@ -969,7 +969,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(ring_timerid)
 		deltimer(ring_timerid)
 	destination.ring(src)
-	ring_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/holocall, disconnect), src), TRUE), 30 SECONDS, TIMER_STOPPABLE)
+	ring_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/holocall, disconnect), src), 30 SECONDS, TIMER_STOPPABLE)
 
 /datum/holocall/proc/disconnect(obj/machinery/holopad/initiating)
 	destination.hung_up(src, initiating == destination)
