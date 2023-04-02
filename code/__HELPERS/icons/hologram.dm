@@ -100,6 +100,7 @@ GLOBAL_LIST_EMPTY(hologram_scanline_inverses)
 	rendered.opacity = FALSE
 	return rendered
 
+/*
 /atom/movable/proc/amask_test()
 	var/atom/movable/screen/render/renderer = hologram_scanline_renderer(32, 32)
 	vis_contents += renderer
@@ -111,3 +112,4 @@ GLOBAL_LIST_EMPTY(hologram_scanline_inverses)
 	I.color = construct_rgba_color_matrix(aa = -1000000, cr = 1, cg = 1, cb = 1, ca = 1)
 	I.blend_mode = BLEND_SUBTRACT
 	overlays += I
+*/
