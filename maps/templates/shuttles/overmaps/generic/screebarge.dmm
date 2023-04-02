@@ -128,6 +128,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/reinforced,
 /area/shuttle/screebarge/fore)
 "ar" = (

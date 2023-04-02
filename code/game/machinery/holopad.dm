@@ -6,8 +6,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_VORE_ALPHA 210
 
 /obj/machinery/holopad
-	name = "\improper AI holopad"
-	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
+	name = "holopad"
+	desc = "It's a floor-mounted device for projecting holographic images."
 	icon = 'icons/machinery/holopad.dmi'
 	icon_state = "holopad"
 	base_icon_state = "holopad"
@@ -70,7 +70,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	/// visibility
 	var/call_visibility = TRUE
 	/// visibility toggleable
-	var/call_toggleable = FALSE
+	var/call_toggleable = TRUE
 	/// anonymous sector calls?
 	var/call_anonymous_sector = FALSE
 	/// anonymous sector calls toggleable
@@ -816,13 +816,14 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	LAZYREMOVE(holograms, holo)
 
 /obj/machinery/holopad/ship
-	name = "Command Holopad"
+	name = "sector holopad"
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
 	long_range = TRUE
 
-#warn put on trade post, trade shuttle, pirate post, pirate shuttle, every fucking shuttle in general, bridge, meeting room
+/obj/machinery/holopad/ship/starts_inactive
+	call_visibility = FALSE
 
 /**
  * state holder for holocall info

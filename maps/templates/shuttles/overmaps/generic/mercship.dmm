@@ -2775,7 +2775,7 @@
 /obj/machinery/airlock_sensor/airlock_interior{
 	frequency = 1414;
 	id_tag = "southinteriorsensor";
-	master_tag = "southairlock";
+	master_tag = "southairlock"
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -2936,7 +2936,7 @@
 	},
 /obj/machinery/airlock_sensor{
 	frequency = 1414;
-	id_tag = "southchambersensor";
+	id_tag = "southchambersensor"
 	},
 /turf/simulated/floor,
 /area/ship/mercenary/southairlock)
@@ -3297,7 +3297,7 @@
 /obj/machinery/airlock_sensor/airlock_exterior{
 	frequency = 1414;
 	id_tag = "southairlock";
-	master_tag = "southexteriorsensor";
+	master_tag = "southexteriorsensor"
 	},
 /turf/space,
 /area/space)
@@ -4248,6 +4248,34 @@
 /obj/structure/sign/warning/vacuum,
 /turf/simulated/wall/rshull,
 /area/ship/mercenary/armoury)
+"MG" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/dark,
+/area/ship/mercenary/bridge)
+"OA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	icon_state = "map-scrubbers";
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/dark,
+/area/ship/mercenary/hangar)
 
 (1,1,1) = {"
 aa
@@ -11845,7 +11873,7 @@ bb
 cd
 cC
 cK
-ds
+OA
 aG
 cQ
 ds
@@ -16956,7 +16984,7 @@ aU
 hF
 bs
 bP
-cl
+MG
 cl
 hE
 eS

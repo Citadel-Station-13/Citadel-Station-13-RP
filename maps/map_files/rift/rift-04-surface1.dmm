@@ -35509,8 +35509,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "wkj" = (
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/library)
 "wkp" = (

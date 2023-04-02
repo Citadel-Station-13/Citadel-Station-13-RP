@@ -488,6 +488,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/rnd/outpost/atmospherics)
+"cx" = (
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled,
+/area/rnd/outpost)
 "cy" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3586,7 +3590,6 @@
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
 "qw" = (
-/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost)
 "qx" = (
@@ -39817,7 +39820,7 @@ bj
 bj
 bj
 Cb
-RQ
+cx
 RQ
 Um
 bO

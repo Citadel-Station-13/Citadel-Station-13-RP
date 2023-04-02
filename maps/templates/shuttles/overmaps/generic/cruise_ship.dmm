@@ -213,6 +213,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "wg" = (

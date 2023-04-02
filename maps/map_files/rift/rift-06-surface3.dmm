@@ -12259,9 +12259,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "ayy" = (
@@ -19777,6 +19777,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aOI" = (
@@ -24361,6 +24362,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "aYa" = (
@@ -25809,8 +25811,8 @@
 /area/crew_quarters/heads/blueshield)
 "fQQ" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/holopad,
 /obj/landmark/observer_spawn,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "fVL" = (
@@ -25819,6 +25821,10 @@
 /obj/structure/table/rack/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
+"gbx" = (
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/excursion/general)
 "gjR" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -26310,6 +26316,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
+"lZF" = (
+/obj/machinery/holopad/ship,
+/turf/simulated/floor/tiled/monowhite,
+/area/shuttle/emt/general)
 "mbo" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -40683,7 +40693,7 @@ aNY
 aOV
 aRf
 aNz
-aoo
+gbx
 aoo
 aJI
 acT
@@ -45465,7 +45475,7 @@ amk
 anz
 aSl
 aqP
-aqP
+lZF
 avt
 axq
 aAo

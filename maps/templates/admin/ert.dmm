@@ -377,6 +377,10 @@
 /obj/item/clothing/suit/armor/vest/ert/command,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
+"dv" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/space,
+/area/space)
 "dx" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 9
@@ -5529,6 +5533,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/ert/bridge)
 "OH" = (
@@ -11273,7 +11278,7 @@ yz
 yz
 yz
 yz
-yz
+dv
 yz
 yz
 yz
