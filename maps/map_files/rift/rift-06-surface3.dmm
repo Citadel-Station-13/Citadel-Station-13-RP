@@ -5679,7 +5679,7 @@
 "akZ" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Medic Prep";
-	req_one_access = list(19,5)
+	req_one_access = list(44,19,5)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
