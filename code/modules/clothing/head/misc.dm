@@ -691,3 +691,33 @@
 	icon = 'icons/clothing/head/bard.dmi'
 	icon_state = "bardhat"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/cowl
+	name = "cloth cowl"
+	desc = "A loose cowl fashioned from cloth. Designed to cover the head and potentially conceal one's identity."
+	icon = 'icons/clothing/head/cowl.dmi'
+	icon_state = "golhood"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	action_button_name = "Toggle Hood"
+
+/obj/item/clothing/head/cowl/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]1"
+		to_chat(user, "You raise the [src].")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You lower the [src].")
+	update_worn_icon()	//so our mob-overlays update"
+
+/obj/item/clothing/head/cowl/goliath
+	name = "goliath hide cowl"
+	desc = "A loose cowl fashioned from Goliath hide. Designed to cover the head and potentially conceal one's identity."
+	icon = 'icons/clothing/head/cowl.dmi'
+	icon_state = "golhood"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	body_cover_flags = HEAD|FACE
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
+	action_button_name = "Toggle Hood"

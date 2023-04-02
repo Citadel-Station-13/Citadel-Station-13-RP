@@ -229,7 +229,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/shoes/boots/jackboots,
 		/obj/item/clothing/suit/storage/vest/blueshield,
-		/obj/item/clothing/suit/storage/vest/blueshield/heavy,
+		/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield,
 		/obj/item/storage/backpack/blueshield,
 		/obj/item/clothing/accessory/badge/holo,
 		/obj/item/clothing/accessory/badge/holo/cord,
