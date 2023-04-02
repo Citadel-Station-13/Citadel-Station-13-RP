@@ -338,29 +338,6 @@
 	build_path = /obj/item/gun/energy/sickshot
 	sort_string = "MAAAJ"
 
-//Plasma Weapons
-/datum/design/item/weapon/energy/AssembleDesignName()
-	..()
-	name = "Experimental weapon prototype ([item_name])"
-
-/datum/design/item/weapon/energy/plasma_rifle
-	name = "Plasma Projection Rifle"
-	desc = "This brand new weapon produced by NT projects balls of magnetically contained plasma at high velocity."
-	id = "plasmarifle"
-	req_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000, "phoron" = 2000, "gold" = 4000, "uranium" = 5000)
-	build_path = /obj/item/gun/energy/plasma
-	sort_string = "MAATJA"
-
-/datum/design/item/weapon/energy/plasma_pistol
-	name = "Plasma Projection Pistol"
-	desc = "This compact experimental weapon produced by NT projects balls of magnetically contained plasma at high velocity."
-	id = "plasmapistol"
-	req_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, "phoron" = 2000, "gold" = 3000, "uranium" = 4000)
-	build_path = /obj/item/gun/energy/plasma/pistol
-	sort_string = "MAATJB"
-
 // Misc weapons
 
 /datum/design/item/weapon/pummeler
