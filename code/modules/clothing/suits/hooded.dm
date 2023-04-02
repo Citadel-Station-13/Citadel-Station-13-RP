@@ -620,21 +620,23 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier
 	valid_accessory_slots = (\
-		ACCESSORY_SLOT_OVER\
-		|ACCESSORY_SLOT_INSIGNIA\
-		|ACCESSORY_SLOT_ARMOR_C\
-		|ACCESSORY_SLOT_ARMOR_A\
-		|ACCESSORY_SLOT_ARMOR_L\
-		|ACCESSORY_SLOT_ARMOR_S\
-		|ACCESSORY_SLOT_ARMOR_M)
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
 	restricted_accessory_slots = (\
-		ACCESSORY_SLOT_OVER\
-		|ACCESSORY_SLOT_INSIGNIA\
-		|ACCESSORY_SLOT_ARMOR_C\
-		|ACCESSORY_SLOT_ARMOR_A\
-		|ACCESSORY_SLOT_ARMOR_L\
-		|ACCESSORY_SLOT_ARMOR_S\
-		|ACCESSORY_SLOT_ARMOR_M)
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
 	blood_overlay_type = "armor"
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
