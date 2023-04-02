@@ -24,7 +24,7 @@
 	if(scanlines)
 		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', "scanline"))
 	if(!isnull(use_alpha))
-		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha)))
+		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha / 255)))
 	return processing
 
 GLOBAL_LIST_EMPTY(hologram_scanline_renders)
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(hologram_scanline_inverses)
  * * use_alpha - what alpha to render it as
  * * scanlines - include scanlines
  */
-/proc/make_hologram_appearance(rendering, use_alpha = 140, scanlines = TRUE)
+/proc/make_hologram_appearance(rendering, use_alpha, scanlines = TRUE)
 	var/mutable_appearance/rendered
 	if(isicon(rendering))
 		rendered = new(rendering)

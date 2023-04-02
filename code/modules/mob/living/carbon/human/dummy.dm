@@ -3,8 +3,6 @@
 	status_flags = GODMODE|CANPUSH
 	no_vore = TRUE //Dummies don't need bellies.
 
-
-
 // NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP
 // MAKE SOMETHING THAT ISN'T /HUMAN IF YOU JUST WANT A MANNEQUIN THIS IS NOT HARD TO FIGURE OUT
 // DONT USE THE SUPER COMPLICATED PLAYER MOB WITH ORGANS FOR A *MANNEQUIN*, WHY??
@@ -23,6 +21,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy/mannequin)
 /mob/living/carbon/human/dummy/mannequin/proc/wipe_state()
 	delete_inventory(TRUE, TRUE)
 	set_species(/datum/species/human, TRUE, TRUE)
+
+/mob/living/carbon/human/dummy/mannequin/proc/unset_busy()
+	wipe_state()
+	in_use = FALSE
 
 //Inefficient pooling/caching way.
 GLOBAL_LIST_EMPTY(human_dummy_list)
@@ -74,8 +76,7 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 		return
 	var/mob/living/carbon/human/dummy/mannequin/D = GLOB.human_dummy_list[slotkey]
 	if(istype(D))
-		D.wipe_state()
-		D.in_use = FALSE
+		D.unset_busy()
 
 /proc/clear_human_dummy(slotkey)
 	if(!slotkey)

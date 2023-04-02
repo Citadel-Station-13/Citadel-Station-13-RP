@@ -6,4 +6,4 @@
 	copy_to(renderer, flags)
 	renderer.compile_overlays()
 	. = renderer.appearance
-	unset_busy_human_dummy(renderer)
+	unset_busy_human_dummy("prefs/render_to_appearance")
