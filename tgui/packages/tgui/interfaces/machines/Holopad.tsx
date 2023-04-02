@@ -92,7 +92,7 @@ export const Holopad = (props, context) => {
                 ?(data.isAIProjecting? "Stop Projecting" : "Start Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
-              icon={data.aiEnabled && (data.isAIProjecting? `phone` : `stop`)}
+              icon={data.aiEnabled && (data.isAIProjecting? `stop` : `phone`)}
               selected={data.aiEnabled && data.isAIProjecting}
               onClick={() => act('ai_project', { mode: !data.isAIProjecting })} />
           ) : (

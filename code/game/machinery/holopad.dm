@@ -753,6 +753,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * relays a say sent to us
  */
 /obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says")
+	. = TRUE
 	var/scrambled = stars(msg)
 	var/for_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
 	var/for_not_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
@@ -782,6 +783,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * relays an emote sent to us
  */
 /obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo)
+	. = TRUE
 	// attempt autodetect
 	if(!speaker_name)
 		speaker_name = speaker.name
@@ -1128,10 +1130,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		src.appearance = appearancelike
 		src.our_overlays = src.overlays
 	src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	src.alpha = HOLO_NORMAL_ALPHA
+	src.color = HOLO_NORMAL_COLOR
 	// mangle layer
 	src.layer = MANGLE_PLANE_AND_LAYER(src.plane, src.layer)
 	// revert plane
-	src.plane = initial(src.plane)
+	src.plane = MOB_PLANE
 	// emissive-fy
 	cheap_become_emissive()
 
