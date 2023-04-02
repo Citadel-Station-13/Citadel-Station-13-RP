@@ -189,7 +189,7 @@
 	name = "Weaver"
 	desc = "You can produce silk and create various articles of clothing and objects."
 	cost = 2
-	var_changes = list("is_weaver" = 1)
+	//var_changes = list("is_weaver" = 1)
 
 /datum/trait/positive/positive/weaver/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..()
@@ -198,3 +198,6 @@
 	add_verb(H, /mob/living/carbon/human/proc/weave_structure)
 	add_verb(H, /mob/living/carbon/human/proc/weave_item)
 	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)
+	var/obj/item/organ/internal/weaver/weak/silk = new(H)
+	H.internal_organs += silk
+	H.internal_organs_by_name[silk.name] = silk
