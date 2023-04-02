@@ -200,4 +200,4 @@
 	add_verb(H, /mob/living/carbon/human/proc/set_silk_color)
 	var/obj/item/organ/internal/weaver/weak/silk = new(H)
 	H.internal_organs += silk
-	H.internal_organs_by_name[silk.name] = silk
+	H.internal_organs_by_name[O_WEAVER] = silk

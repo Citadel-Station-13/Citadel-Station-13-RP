@@ -88,6 +88,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "innards"
 	desc = "The organ allowing its host to weave silk strands"
+	organ_tag = O_WEAVER
 	//!Weaver abilities
 	var/silk_production = FALSE
 	var/silk_reserve = 500
