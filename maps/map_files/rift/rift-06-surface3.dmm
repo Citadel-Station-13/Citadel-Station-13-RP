@@ -14632,14 +14632,14 @@
 /area/security/nuke_storage)
 "aDK" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
+	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
+	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
@@ -19145,7 +19145,7 @@
 "aNo" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "captaindoor";
-	name = "Facility Director's Office";
+	name = "Facility Director";
 	req_access = list(20)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -25910,7 +25910,7 @@
 "hBp" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "blueshielddoor";
-	name = "Blueshield's Office";
+	name = "Blueshield";
 	req_access = list(69)
 	},
 /obj/structure/cable/green{
