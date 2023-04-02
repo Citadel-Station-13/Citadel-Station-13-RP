@@ -5,7 +5,7 @@
 	category = SPECIES_CATEGORY_RESTRICTED
 	galactic_language = FALSE
 	default_language = LANGUAGE_ID_SCORI
-	intrinsic_languages = LANGUAGE_ID_SCORI
+	intrinsic_languages = list(LANGUAGE_ID_SCORI,LANGUAGE_ID_SIGN)
 	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	rarity_value = 4

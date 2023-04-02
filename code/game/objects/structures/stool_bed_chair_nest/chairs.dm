@@ -574,6 +574,7 @@
 	icon_state = "horsepost"
 	base_icon = "horsepost"
 	picked_up_item = null
+	density = 1
 
 /obj/structure/bed/chair/post/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
