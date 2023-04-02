@@ -195,6 +195,32 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	return output
 
 /**
+ * Force a matrix to be a full 20 value rgba matrix.
+ */
+/proc/color_matrix_expand(list/M)
+	var/list/expanding = M.Copy()
+	. = expanding
+	switch(length(M))
+		if(20) // rgba full with constant
+		if(9) // rgb without constant
+			expanding.Insert(4, null) // inject ra
+			expanding.Insert(8, null) // inject ga
+			expanding.Insert(12, null) // inject ba
+			expanding.Insert(13, null, null, null, 1) // inject ar to aa
+			expanding.Insert(17, null, null, null, null) // inject cr to ca
+		if(12) // rgb with constant			expanding.Insert(4, null)
+			expanding.Insert(4, null) // insert ra
+			expanding.Insert(8, null) // inject ga
+			expanding.Insert(12, null) // inject ba
+			expanding.Insert(13, null, null, null, 1) // inject ar to aa
+			expanding.Insert(20, null) // inject ca
+		if(16) // rgba without constant
+			expanding.Insert(17, null, null, null, null) // inject cr to ca
+		else
+			. = color_matrix_identity()
+			CRASH("what?")
+
+/**
  * Returns a matrix multiplication of A with B.
  *
  * todo: support rgb instead of rgba.
@@ -202,8 +228,10 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /proc/color_matrix_multiply(list/A, list/B)
 	if(!istype(A) || !istype(B))
 		return color_matrix_identity()
-	if(A.len != 20 || B.len != 20)
-		CRASH("one of the matrices isn't a rgba matrix; support for rgb (without a) will be added later.")
+	if(A.len < 20)
+		A = color_matrix_expand(A)
+	if(B.len < 20)
+		B = color_matrix_expand(B)
 	var/list/output = list()
 	output.len = 20
 	var/x = 1

@@ -389,7 +389,9 @@
 // todo: unified rendering and a single game render master plane?
 // #define MASTER_RENDERER_PLANE
 
-//////////////////////////
+//? Misc render sources / targets
+
+#define RENDER_SOURCE_HOLOGRAM(key) "*hg_[key]"
 
 //! Helpers
 /// computed based on highest/lowest plane, and highest/lowest layer (which I assume to be 10k.)

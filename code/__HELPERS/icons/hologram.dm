@@ -27,7 +27,36 @@
 		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha)))
 	return processing
 
-GLOBAL_LIST_EMPTY(hologram_scanline_cache)
+GLOBAL_LIST_EMPTY(hologram_scanline_renders)
+
+/proc/hologram_scanline_renderer(width, height)
+	var/key = "[width]x[height]"
+	var/atom/movable/screen/render/scanline/cached = GLOB.hologram_scanline_renders[key]
+	if(isnull(cached))
+		cached = new
+		cached.render_target = RENDER_SOURCE_HOLOGRAM(key)
+		var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
+		generated.Scale(width, height)
+		cached.icon = generated
+		GLOB.hologram_scanline_renders[key] = cached
+	return cached
+
+/atom/movable/screen/render/scanline
+
+GLOBAL_LIST_EMPTY(hologram_scanline_inverses)
+
+/**
+ * output icons have white lines suitable for BLEND_SUBTRACT-ing.
+ */
+/proc/hologram_scanline_inverse(width, height)
+	var/key = "[width]x[height]"
+	var/icon/cached = GLOB.hologram_scanline_inverses[key]
+	if(isnull(cached))
+		cached = icon('icons/system/alphamask_32x32.dmi', "scanline")
+		cached.MapColors(arglist(construct_rgba_color_matrix(aa = -1000000, cr = 1, cg = 1, cb = 1, ca = 1)))
+		cached.Scale(width, height)
+		GLOB.hologram_scanline_inverses[key] = cached
+	return cached
 
 /**
  * cheap way of just rendering an appearance for a hologram
@@ -63,19 +92,22 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 		if(istype(I, /icon))
 			width = I.Width()
 			height = I.Height()
-		var/key = "[width]x[height]"
-		if(!GLOB.hologram_scanline_cache[key])
-			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
-			generated.Scale(width, height)
-			generated.MapColors(arglist(construct_rgba_color_matrix(aa = -1)))
-			generated.Blend("#ffffff", ICON_ADD)
-			GLOB.hologram_scanline_cache[key] = generated
-		var/image/the_overlay = image(GLOB.hologram_scanline_cache[key])
-		the_overlay.plane = FLOAT_PLANE
-		the_overlay.layer = FLOAT_LAYER + 10000
-		the_overlay.blend_mode = BLEND_MULTIPLY
+		var/image/the_overlay = image(hologram_scanline_inverse(width, height), layer = FLOAT_LAYER)
+		the_overlay.blend_mode = BLEND_SUBTRACT
 		rendered.overlays += the_overlay
 	rendered.appearance_flags |= KEEP_TOGETHER
 	rendered.density = FALSE
 	rendered.opacity = FALSE
 	return rendered
+
+/atom/movable/proc/amask_test()
+	var/atom/movable/screen/render/renderer = hologram_scanline_renderer(32, 32)
+	vis_contents += renderer
+	add_filter("test", 1, alpha_mask_filter(render_source = renderer.render_target))
+
+/atom/proc/asub_test()
+	appearance_flags |= KEEP_TOGETHER
+	var/image/I = image(icon('icons/system/alphamask_32x32.dmi', "scanline"), layer = FLOAT_LAYER)
+	I.color = construct_rgba_color_matrix(aa = -1000000, cr = 1, cg = 1, cb = 1, ca = 1)
+	I.blend_mode = BLEND_SUBTRACT
+	overlays += I

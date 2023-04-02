@@ -1,8 +1,8 @@
 GLOBAL_LIST_EMPTY(holopad_lookup)
 
-#define HOLO_NORMAL_COLOR rgba_auto_greyscale_matrix("#11ccff")
-#define HOLO_VORE_COLOR rgba_auto_greyscale_matrix("#d97de0")
-#define HOLO_NORMAL_ALPHA 165
+#define HOLO_NORMAL_COLOR color_matrix_from_rgb("#ccccff")
+#define HOLO_VORE_COLOR color_matrix_from_rgb("#d97de0")
+#define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
 /obj/machinery/holopad
@@ -317,7 +317,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * this assumes you checked that the call is actually valid.
  */
 /obj/machinery/holopad/proc/disconnect_call(datum/holocall/disconnecting)
-	disconnecting.disconnect()
+	disconnecting.disconnect(src)
 
 /**
  * connect a ringing call
@@ -455,13 +455,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		if("ai_project")
 			/// do they want to start or end
 			var/mode = text2num(params["mode"])
+			var/mob/living/silicon/ai/the_ai = usr
+			if(!istype(the_ai))
+				return TRUE
 			if(mode && !is_ai_projecting(usr))
-				// check to make sure they don't have another
-				var/mob/living/silicon/ai/the_ai = usr
-				the_ai.holopad?.kill_ai_hologram(the_ai)
-				initiate_ai_hologram(the_ai)
+				the_ai.initiate_holopad_connection(src)
 			else if(!mode && is_ai_projecting(usr))
-				kill_ai_hologram(usr)
+				the_ai.terminate_holopad_connection()
 			return TRUE
 		// user requesting to hang up a call, or all calls
 		if("disconnect")
@@ -582,13 +582,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * * state - are we on?
  */
 /obj/machinery/holopad/proc/update_activity_hologram(state)
-	var/needed = state && !length(ais_projecting) && !length(incoming_calls)
+	var/needed = state && !length(ais_projecting) && !length(incoming_calls) && !outgoing_call
 	if(needed && !activity_hologram)
 		activity_hologram = new(loc, activity_hologram_style, src)
 		activity_hologram.pixel_y = 24
 		activity_hologram.set_light(2)
-		animate(activity_hologram, time = 5, flags = ANIMATION_RELATIVE | ANIMATION_END_NOW, pixel_y = 5)
-		animate(time = 5, flags = ANIMATION_RELATIVE, loop = -1, pixel_y = -5)
+		animate(activity_hologram, time = 5, loop = -1, flags = ANIMATION_RELATIVE, pixel_y = 2)
+		animate(time = 5, flags = ANIMATION_RELATIVE, pixel_y = -2)
 	else if(!needed && activity_hologram)
 		QDEL_NULL(activity_hologram)
 
@@ -641,7 +641,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		the_ai.eyeobj.setLoc(get_turf(src))
 	//? end
 	the_ai.holopad = src
-	the_ai.hologram = create_hologram(the_ai.hologram_appearance())
+	the_ai.hologram = create_hologram(the_ai.hologram_appearance(), /obj/effect/overlay/hologram/holopad/ai)
 	the_ai.hologram.owner = the_ai
 	LAZYADD(ais_projecting, the_ai)
 	update_icon()
@@ -802,8 +802,9 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 //? holograms
 
-/obj/machinery/holopad/proc/create_hologram(initial_appearance)
-	. = new /obj/effect/overlay/hologram/holopad(get_turf(src), initial_appearance, src)
+/obj/machinery/holopad/proc/create_hologram(initial_appearance, path = /obj/effect/overlay/hologram/holopad)
+	ASSERT(ispath(path, /obj/effect/overlay/hologram/holopad))
+	. = new path(get_turf(src), initial_appearance, src)
 
 /obj/machinery/holopad/proc/destroy_holograms()
 	QDEL_NULL(activity_hologram)
@@ -940,12 +941,15 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	connected = TRUE
 	LAZYADD(destination.incoming_calls, src)
 	LAZYREMOVE(destination.ringing_calls, src)
+	source.update_icon()
+	destination.update_icon()
 	if(ring_timerid)
 		deltimer(ring_timerid)
 
 /datum/holocall/proc/register()
 	ASSERT(isnull(source.outgoing_call))
 	source.outgoing_call = src
+	source.update_icon()
 	LAZYADD(destination.ringing_calls, src)
 	cross_sector = get_overmap_sector(source) != get_overmap_sector(destination)
 
@@ -965,16 +969,17 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(ring_timerid)
 		deltimer(ring_timerid)
 	destination.ring(src)
-	ring_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/holocall, disconnect), TRUE), 30 SECONDS, TIMER_STOPPABLE)
+	ring_timerid = addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/holocall, disconnect), src), TRUE), 30 SECONDS, TIMER_STOPPABLE)
 
-/datum/holocall/proc/disconnect(we_hung_up)
-	destination.hung_up(src, we_hung_up)
+/datum/holocall/proc/disconnect(obj/machinery/holopad/initiating)
+	destination.hung_up(src, initiating == destination)
+	source.hung_up(src, initiating == source)
 	if(!QDELING(src))
 		qdel(src)
 
 /datum/holocall/proc/validate()
 	if(!check())
-		disconnect()
+		disconnect(src)
 		return FALSE
 	. = TRUE
 	if(remoting)
@@ -1014,7 +1019,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /datum/action/holocall/hang_up/on_trigger(mob/user, datum/holocall/receiver)
 	. = ..()
-	receiver.disconnect(TRUE)
+	receiver.disconnect(receiver.source)
 
 /datum/action/holocall/swap_view
 	name = "Stop View"

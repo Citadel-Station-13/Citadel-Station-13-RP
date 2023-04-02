@@ -89,7 +89,7 @@ export const Holopad = (props, context) => {
           buttons={data.isAI? (
             <Button
               content={data.aiEnabled
-                ?(data.isAIProjecting? "Start Projecting" : "Stop Projecting")
+                ?(data.isAIProjecting? "Stop Projecting" : "Start Projecting")
                 : "AI Disabled"}
               disabled={!data.aiEnabled}
               icon={data.aiEnabled && (data.isAIProjecting? `phone` : `stop`)}
