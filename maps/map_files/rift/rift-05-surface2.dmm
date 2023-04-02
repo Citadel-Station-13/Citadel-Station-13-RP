@@ -9216,7 +9216,7 @@
 /obj/machinery/door/airlock/glass_security/polarized{
 	id_tag = "warden_office";
 	id_tint = "warden_office";
-	name = "Warden's Office";
+	name = "Warden";
 	req_one_access = list(3)
 	},
 /obj/structure/cable/green{
