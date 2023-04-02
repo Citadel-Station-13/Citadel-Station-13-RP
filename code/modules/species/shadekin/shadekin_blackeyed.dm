@@ -29,7 +29,7 @@
 	)
 	max_additional_languages = 3
 
-	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
 	siemens_coefficient = 0 // Completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
 	darksight = 10 // Best darksight around

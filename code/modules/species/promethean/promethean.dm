@@ -82,7 +82,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	body_temperature = T20C	// Room temperature
 
-	rarity_value = 5
+	//rarity_value = 5
 	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)

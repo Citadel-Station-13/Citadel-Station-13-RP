@@ -8,7 +8,7 @@
 	intrinsic_languages = LANGUAGE_ID_SCORI
 	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
-	rarity_value = 4
+	//rarity_value = 4
 
 	blurb = "The Scori are the native inhabitants of Surt. Much of their history has been lost,	save for artistic \
 	depictions sometimes recovered on archaeological digs. Insular and xenophobic, the Scori are more commonly \
