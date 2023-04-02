@@ -107,8 +107,6 @@ RotateHue(hsv, angle)
     Takes an HSV or HSVA value and rotates the hue forward through red, green, and blue by an angle from 0 to 360.
     (Rotating red by 60° produces yellow.) The result is another HSV or HSVA color with the same saturation and value
     as the original, but a different hue.
-GrayScale(rgb)
-    Takes an RGB or RGBA color and converts it to grayscale. Returns an RGB or RGBA string.
 ColorTone(rgb, tone)
     Similar to GrayScale(), this proc converts an RGB or RGBA color to a range of black -> tone -> white instead of
     using strict shades of gray. The tone value is an RGB color; any alpha value is ignored.
@@ -576,12 +574,6 @@ ColorTone(rgb, tone)
 	HSV[1] += round(HSV[1] / 255)
 
 	return hsv(HSV[1], HSV[2], HSV[3], (HSV.len > 3 ? HSV[4] : null))
-
-// Convert an rgb color to grayscale
-/proc/GrayScale(rgb)
-	var/list/RGB = ReadRGB(rgb)
-	var/gray = RGB[1]*0.3 + RGB[2]*0.59 + RGB[3]*0.11
-	return (RGB.len > 3) ? rgb(gray, gray, gray, RGB[4]) : rgb(gray, gray, gray)
 
 // Change grayscale color to black->tone->white range
 /proc/ColorTone(rgb, tone)

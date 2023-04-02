@@ -24,7 +24,7 @@
 	if(scanlines)
 		processing.alpha_mask(icon('icons/system/alphamask_32x32.dmi', "scanline"))
 	if(!isnull(use_alpha))
-		processing.MapColors(arglist(rgba_construct_color_matrix(aa = use_alpha)))
+		processing.MapColors(arglist(construct_rgba_color_matrix(aa = use_alpha)))
 	return processing
 
 GLOBAL_LIST_EMPTY(hologram_scanline_cache)
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(hologram_scanline_cache)
 		if(!GLOB.hologram_scanline_cache[key])
 			var/icon/generated = icon('icons/system/alphamask_32x32.dmi', "scanline")
 			generated.Scale(width, height)
-			generated.MapColors(arglist(rgba_construct_color_matrix(aa = -1)))
+			generated.MapColors(arglist(construct_rgba_color_matrix(aa = -1)))
 			generated.Blend("#ffffff", ICON_ADD)
 			GLOB.hologram_scanline_cache[key] = generated
 		var/image/the_overlay = image(GLOB.hologram_scanline_cache[key])
