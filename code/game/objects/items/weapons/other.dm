@@ -875,8 +875,7 @@
 	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
 	icon_state = "saddle_lavaland"
 
-//Ashlander Specific Crafting Item - I'll eventually just make an item .dm for these guys at this rate.
-//This item will replace soulstones in Lavaland recipes/features.
+//Ashlander Specific Crafting Items
 /datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
 	name = "Scorian Religion - Elder Stones"
 	desc = "Originally depicted in Scorian carvings and cave paintings discovered at various dig sites around Surt, \
@@ -891,7 +890,14 @@
 /obj/item/elderstone
 	name = "elder stone"
 	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "elderstone"
 	w_class = ITEMSIZE_SMALL
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
+
+/obj/item/condensedphlogiston
+	name = "condensed phlogiston"
+	desc = "Phlogiston stabilized into a putty-like solid. It is less volatile than raw phlogiston, requiring special circumstances to detonate."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "condensedphlogiston"
+	w_class = ITEMSIZE_SMALL

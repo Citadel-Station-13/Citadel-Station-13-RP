@@ -497,6 +497,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cobpipe"
 	chem_volume = 35
 
+/obj/item/clothing/mask/smokable/pipe/bonepipe
+	name = "bone pipe"
+	desc = "A fragile pipe, masterfully carved by hand from the bone of an unknown creature."
+	icon_state = "bonepipe"
+	item_state = "bonepipe"
+	chem_volume = 25
+
 ///////////////
 //CUSTOM CIGS//
 ///////////////
@@ -726,3 +733,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper Adhomai lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
+
+//Ashlander Lighters
+/obj/item/flame/lighter/ashlander
+	name = "spark striker"
+	desc = "A fragment of elder stone and a chunk of charcoal, bound together by sinew and bone to easily create sparks."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "striker"
+	item_state = "lighter-r"
