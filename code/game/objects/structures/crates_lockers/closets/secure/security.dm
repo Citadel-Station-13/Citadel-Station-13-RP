@@ -239,8 +239,10 @@
 		/obj/item/storage/belt/security,
 		/obj/item/gun/energy/gun/fluff/dominator,
 		/obj/item/cell/device/weapon,
+		/obj/item/tank/oxygen,
 		/obj/item/melee/telebaton,
 		/obj/item/gps/command/blueshield,
+		/obj/item/clothing/mask/gas,
 		/obj/item/tool/crowbar/red,
 		/obj/item/flashlight/maglight,
 		/obj/item/cartridge/security)
