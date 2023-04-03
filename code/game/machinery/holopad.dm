@@ -178,8 +178,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * returns if we can reach another holopad
  */
 /obj/machinery/holopad/proc/holocall_connectivity(obj/machinery/holopad/other)
-	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(src)
-	var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(other)
+	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
+	var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(other))
 	if(!our_sector || !their_sector)
 		return !(sector_only || other.sector_only) && (get_z(src) == get_z(other))
 	if(our_sector != their_sector)
@@ -191,12 +191,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  */
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
-	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(src)
+	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(!pad.operable())
 			continue
-		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(pad)
+		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(pad))
 		if(!our_sector || !their_sector)
 			if((sector_only || pad.sector_only) || (get_z(src) != get_z(pad)))
 				continue
@@ -216,7 +216,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/holocall_name()
 	if(holopad_name)
 		return holopad_name
-	var/obj/effect/overmap/visitable/sector = get_overmap_sector(src)
+	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(src))
 	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
 
 /**
@@ -953,7 +953,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	source.outgoing_call = src
 	source.update_icon()
 	LAZYADD(destination.ringing_calls, src)
-	cross_sector = get_overmap_sector(source) != get_overmap_sector(destination)
+	cross_sector = get_overmap_sector(get_z(source)) != get_overmap_sector(get_z(destination))
 
 /datum/holocall/proc/cleanup()
 	if(remoting)
