@@ -29,6 +29,20 @@
 		/mob/living/carbon/human/proc/weave_structure,
 	)
 
+	has_organ = list(
+		O_HEART        = /obj/item/organ/internal/heart,
+		O_LUNGS        = /obj/item/organ/internal/lungs,
+		O_VOICE        = /obj/item/organ/internal/voicebox,
+		O_LIVER        = /obj/item/organ/internal/liver,
+		O_KIDNEYS      = /obj/item/organ/internal/kidneys,
+		O_SPLEEN       = /obj/item/organ/internal/spleen/minor,
+		O_BRAIN        = /obj/item/organ/internal/brain,
+		O_EYES         = /obj/item/organ/internal/eyes,
+		O_STOMACH      = /obj/item/organ/internal/stomach,
+		O_INTESTINE    = /obj/item/organ/internal/intestine,
+		O_WEAVER 	   = /obj/item/organ/internal/weaver,
+	)
+
 	max_age = 80
 
 	blurb = {"
