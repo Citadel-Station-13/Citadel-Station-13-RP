@@ -21,6 +21,20 @@
 				L.source_atom.update_light()
 	return TRUE
 
+// todo:
+// the new move chain should be:
+// turf/atom Exit --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
+// turf/atom Enter --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
+// at this point, it's valid to move ; if it was a forceMove, we don't check at all
+// if it wasn't, we need to check if the Bump changed the moving thing's location. Bump handlers should be able to handle this themselves too via unstoppable flag check.
+// Exited() called for new loc, signals, etc
+// Moved() called but only if Exited() didn't end up moving the atom.
+// Entered() called for new loc, signals, etc, but only if Moved() didn't move the atom out of the new loc; otherwise we call Entered() on the actual new loc
+// pending changes.
+// regardless,
+// Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
+// also, rename forceMove to force_move because bay, and setDir to set_dir().
+
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
 // To be removed on step_ conversion
