@@ -1,5 +1,7 @@
 #warn circuit
 
+/obj/machinery/bluespace_projector
+
 #warn teleport_projector
 /obj/machinery/tele_projector
 	name = "projector"

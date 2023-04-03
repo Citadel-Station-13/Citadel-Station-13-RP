@@ -1,5 +1,7 @@
 #warn circuit
 
+/obj/machinery/bluespace_pad
+
 #warn teleport_pad
 /obj/machinery/tele_pad
 	name = "teleporter pad"
