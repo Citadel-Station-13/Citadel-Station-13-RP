@@ -168,12 +168,15 @@
 	// Out of the dir check, we have no valid neighbors, and thus are not complete.
 	return FALSE
 
+// was causing issues
+/*
 /obj/structure/stairs/bottom/Crossed(var/atom/movable/AM, var/atom/oldloc)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.has_AI())
 			use_stairs(AM, oldloc)
 	..()
+*/
 
 /obj/structure/stairs/bottom/use_stairs(atom/movable/AM, atom/oldloc)
 	if(!common_prechecks(AM, oldloc))
@@ -349,18 +352,15 @@
 	// Out of the dir check, we have no valid neighbors, and thus are not complete. `.` was set by ..()
 	return
 
+// was causing issues
+/*
 /obj/structure/stairs/top/Crossed(var/atom/movable/AM, var/atom/oldloc)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.has_AI())
 			use_stairs(AM, oldloc)
 	..()
-
-/obj/structure/stairs/top/Uncrossed(var/atom/movable/AM)
-	// Going down stairs from the topstair piece
-	if(AM.dir == turn(dir, 180) && check_integrity())
-		use_stairs_instant(AM)
-		return
+*/
 
 /obj/structure/stairs/top/get_destination_turf()
 	return get_turf(bottom)

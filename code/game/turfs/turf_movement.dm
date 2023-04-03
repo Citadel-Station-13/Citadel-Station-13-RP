@@ -69,8 +69,10 @@ var/const/enterloopsanity = 100
 	. = ..()
 	if(!. || QDELETED(mover))
 		return FALSE
-	for(var/i in contents)
-		if(i == mover)
+	for(var/atom/movable/thing as anything in contents)
+		if(mover.loc != src) // deleted or yanked out
+			return FALSE
+		if(thing == mover)
 			continue
 		var/atom/movable/thing = i
 		if(!thing.Uncross(mover, newloc))
@@ -78,5 +80,3 @@ var/const/enterloopsanity = 100
 				mover.Bump(thing)
 			if(!(mover.movement_type & MOVEMENT_UNSTOPPABLE))
 				return FALSE
-		if(QDELETED(mover))
-			return FALSE		//We were deleted.
