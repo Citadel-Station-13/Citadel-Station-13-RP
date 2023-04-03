@@ -5,8 +5,8 @@
 /obj/machinery/computer/nanite_chamber
 	name = "nanite chamber control"
 	desc = "A control console for nanite chambers. Automatically links to adjacent chambers."
-	#warn sprite
 	circuit = /obj/item/circuitboard/computer/nanite_chamber
+	icon_screen = "nanite_chamber"
 
 	idle_power_usage = POWER_USAGE_COMPUTER_MID_IDLE
 	active_power_usage = POWER_USAGE_COMPUTER_MID_ACTIVE
@@ -99,7 +99,8 @@
 				"intact" = intact_organs,
 				"missing" = missing_organs,
 				"cost" = linked.protean_reconstruction_costs(),
-			)
+			),
+			"materials" = linked.available_materials(),
 		)
 	else
 		.["hasProtean"] = FALSE

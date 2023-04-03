@@ -10,7 +10,9 @@
 /obj/machinery/nanite_chamber
 	name = "nanite chamber"
 	desc = "A nanoswarm servicing chamber."
-	#warn sprite
+	icon = 'icons/modules/nanites/machinery/chamber.dmi'
+	icon_state = "chamber"
+	base_icon_state = "chamber"
 	circuit = /obj/item/circuitboard/machine/nanite_chamber
 
 	idle_power_usage = POWER_USAGE_NANITE_CHAMBER_IDLE
@@ -57,7 +59,22 @@
 
 /obj/machinery/nanite_chamber/Destroy()
 	drop_contents()
+	return ..()
 
+/obj/machinery/nanite_chamber/update_overlays()
+	. = ..()
+	if(locked)
+		. += "[base_icon_state]_bolted"
+
+/obj/machinery/nanite_chamber/update_icon_state()
+	if(operating)
+		icon_state = "[base_icon_state]_active"
+	else if(occupant)
+		icon_state = "[base_icon_state]_occupied"
+	else if(open)
+		icon_state = "[base_icon_state]_open"
+	else
+		icon_state = "[base_icon_state]"
 	return ..()
 
 /obj/machinery/nanite_chamber/Moved(atom/old_loc, direction, forced)
@@ -155,6 +172,11 @@
 	if(!locate(/obj/item/organ/internal/nano/refactory) in held_items)
 		for(var/mat in protean_cost_refactory)
 			.[mat] += protean_cost_refactory[mat]
+
+/obj/machinery/nanite_chamber/proc/available_materials()
+	. = list()
+	for(var/obj/item/stack/material/matstack in held_items)
+		.[matstack.material.id] += matstack.amount * SHEET_MATERIAL_AMOUNT
 
 /obj/machinery/nanite_chamber/contents_resist(mob/escapee)
 	if(open(escapee))

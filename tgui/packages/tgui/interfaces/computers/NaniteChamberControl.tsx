@@ -21,6 +21,7 @@ interface OccupantData {
 interface ProteanData {
   name: string;
   organs: ProteanOrgans[];
+  materials: Record<string, number>;
 }
 
 interface ProteanOrgans {
