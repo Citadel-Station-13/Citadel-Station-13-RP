@@ -186,18 +186,6 @@ var/list/floor_light_cache = list()
 	. = ..()
 	update_colour()
 
-/obj/machinery/floor_light/changing/update_brightness()
-	if(on && use_power == USE_POWER_ACTIVE)
-		if(light_range != default_light_range || light_power != default_light_power || light_color != default_light_colour)
-			set_light(default_light_range, default_light_power, default_light_colour)
-	else
-		update_use_power(USE_POWER_OFF)
-		if(light_range || light_power)
-			set_light(0)
-
-	active_power_usage = ((light_range + light_power) * 10)
-	update_icon()
-
 /obj/machinery/floor_light/changing/proc/update_colour()
 	if(last_color_change > world.time - 0.5 SECONDS)
 		return
@@ -222,29 +210,6 @@ var/list/floor_light_cache = list()
 		else
 			default_light_colour = "#0CD5E8"
 	update_brightness(default_light_range, default_light_power, default_light_colour)
-
-
-/obj/machinery/floor_light/changing/update_icon()
-	cut_overlays()
-	if(use_power && !broken())
-		if(isnull(damaged))
-			var/cache_key = "floorlight-[previous_color]"
-			if(!floor_light_cache[cache_key])
-				var/image/I = image("on")
-				I.color = previous_color
-				I.layer = layer+0.001
-				floor_light_cache[cache_key] = I
-			add_overlay(floor_light_cache[cache_key])
-		else
-			if(damaged == 0) //Needs init.
-				damaged = rand(1,4)
-			var/cache_key = "floorlight-broken[damaged]-[previous_color]"
-			if(!floor_light_cache[cache_key])
-				var/image/I = image("flicker[damaged]")
-				I.color = previous_color
-				I.layer = layer+0.001
-				floor_light_cache[cache_key] = I
-			add_overlay(floor_light_cache[cache_key])
 
 /obj/machinery/floor_light/changing/prebuilt
 	anchored = TRUE
