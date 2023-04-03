@@ -74,7 +74,6 @@ var/const/enterloopsanity = 100
 			return FALSE
 		if(thing == mover)
 			continue
-		var/atom/movable/thing = i
 		if(!thing.Uncross(mover, newloc))
 			if(thing.atom_flags & ATOM_BORDER)
 				mover.Bump(thing)
