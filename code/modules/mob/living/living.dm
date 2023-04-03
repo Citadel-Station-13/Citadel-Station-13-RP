@@ -750,6 +750,8 @@ default behaviour is:
 		ear_deaf = deaf
 
 /mob/living/proc/vomit(var/skip_wait, var/blood_vomit)
+	if(IS_DEAD(src))
+		return
 	if(!check_has_mouth())
 		return
 

@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Section } from "../../components";
+import { Button, Section } from "../../components";
 import { Window } from "../../layouts";
 
 interface NaniteChamberControlData {
@@ -48,7 +48,16 @@ const NaniteChamberControlContent = (props, context) => {
   const { act, data } = useBackend<NaniteChamberControlData>(context);
 
   return (
-    <Section title={`Chamber`}>
+    <Section
+      title={`Chamber`}
+      buttons={
+        <Button
+          disabled={data.open}
+          icon={data.locked? "lock" : "lock-open"}
+          content={data.locked? "Locked" : "Unlocked"}
+          color={data.locked? "bad" : "default"}
+          onClick={() => act('lock')} />
+      }>
       test
     </Section>
   );

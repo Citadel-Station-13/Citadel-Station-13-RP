@@ -863,7 +863,7 @@
 	// FBPs will overheat when alive, prosthetic limbs are fine.
 	if(stat != DEAD && robobody_count)
 		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
-			bodytemperature += round(robobody_count*1.15)
+			bodytemperature += round(robobody_count*0.3)
 		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
 		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
 			bodytemperature += round(robobody_count*0.5)

@@ -579,7 +579,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
 			return
 
-		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
 				use(use_amt)

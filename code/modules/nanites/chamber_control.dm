@@ -56,8 +56,6 @@
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
-		if("open")
-
 		if("lock")
 
 		if("reconstruct")

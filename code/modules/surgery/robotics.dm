@@ -148,8 +148,8 @@
 		/obj/item/pickaxe/plasmacutter = 50
 	)
 
-	min_duration = 50
-	max_duration = 60
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/robotics/repair_brute/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -170,7 +170,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] finishes patching damage to [target]'s [affected.name] with \the [tool].</span>", \
 	"<span class='notice'>You finish patching damage to [target]'s [affected.name] with \the [tool].</span>")
-	affected.heal_damage(rand(30,50),0,1,1)
+	affected.heal_damage(20, 0, 1, 1)
 	affected.disfigured = 0
 
 /datum/surgery_step/robotics/repair_brute/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -188,8 +188,8 @@
 		/obj/item/stack/cable_coil = 100
 	)
 
-	min_duration = 50
-	max_duration = 60
+	min_duration = 20
+	max_duration = 20
 
 /datum/surgery_step/robotics/repair_burn/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -200,11 +200,11 @@
 				to_chat(user, "<span class='notice'>There are no burnt wires here!</span>")
 				return SURGERY_FAILURE
 			else
-				if(!C.can_use(5))
+				if(!C.can_use(1))
 					to_chat(user, "<span class='danger'>You need at least five cable pieces to repair this part.</span>") //usage amount made more consistent with regular cable repair
 					return SURGERY_FAILURE
 				else
-					C.use(5)
+					C.use(1)
 
 		return affected && affected.open == 3 && (affected.disfigured || affected.burn_dam > 0) && target_zone != O_MOUTH
 
@@ -218,7 +218,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='notice'>[user] finishes splicing cable into [target]'s [affected.name].</span>", \
 	"<span class='notice'>You finishes splicing new cable into [target]'s [affected.name].</span>")
-	affected.heal_damage(0,rand(30,50),1,1)
+	affected.heal_damage(0, 20, 1, 1)
 	affected.disfigured = 0
 
 /datum/surgery_step/robotics/repair_burn/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
