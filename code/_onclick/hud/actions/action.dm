@@ -1,54 +1,88 @@
-#define AB_ITEM 1
-#define AB_SPELL 2
-#define AB_INNATE 3
-#define AB_GENERIC 4
+//? YOU SHOULD ALWAYS USE AB DEFAULT; THE OTHERS ARE LEGACY. STOP USING THEM.
+#define ACTION_TYPE_DEFAULT 0
+#define ACTION_TYPE_ITEM 1
+#define ACTION_TYPE_SPELL 2
+#define ACTION_TYPE_INNATE 3
+#define ACTION_TYPE_GENERIC 4
 
-#define AB_CHECK_RESTRAINED (1<<0)
-#define AB_CHECK_STUNNED (1<<1)
-#define AB_CHECK_LYING (1<<2)
-#define AB_CHECK_ALIVE (1<<3)
-#define AB_CHECK_INSIDE (1<<4)
-#define AB_CHECK_CONSCIOUS (1<<5)
+#define ACTION_CHECK_RESTRAINED (1<<0)
+#define ACTION_CHECK_STUNNED (1<<1)
+#define ACTION_CHECK_LYING (1<<2)
+#define ACTION_CHECK_ALIVE (1<<3)
+#define ACTION_CHECK_INSIDE (1<<4)
+#define ACTION_CHECK_CONSCIOUS (1<<5)
 
 // todo: multiple owners
 // todo: ability datums? cooldown needs more checking
+/**
+ * action datums
+ *
+ * holder for movable/snappable hud action buttons.
+ * binds to a single target datum; clicks are sent to it
+ * or processed on `trigger` --> `on_trigger`.
+ *
+ * it is allowable to manually re-cast the target
+ * arg on trigger and on_trigger *only* if you use target_compatible
+ * to verify the target is valid.
+ *
+ * keep in mind that you have to manually delete actions
+ * when gcing its target! this is to encourage best practice;
+ * the action button will not automatically listen to qdel's.
+ *
+ */
 /datum/action
 	/// action name
 	var/name = "Generic Action"
 	/// description
 	var/desc = "An action."
-	var/action_type = AB_ITEM
+	/// target; it will receive ui_action_click(user, us).
+	VAR_PRIVATE/datum/target
+	/// expected target type
+	var/target_type
+
+	//? legacy / unsorted
+	/// action type for legacy non-default handling
+	var/action_type = ACTION_TYPE_ITEM
 	var/procname = null
-	var/atom/movable/target = null
 	var/check_flags = 0
 	var/processing = 0
 	var/active = 0
 	var/atom/movable/screen/movable/action_button/button = null
 	var/button_icon = 'icons/screen/actions/actions.dmi'
 	var/button_icon_state = "default"
+	var/background_icon = 'icons/screen/actions/actions.dmi'
 	var/background_icon_state = "bg_default"
-	var/mob/living/owner
+	var/mob/owner
 
-/datum/action/New(var/Target)
-	target = Target
+/datum/action/New(datum/target)
+	if(!target_compatible(target))
+		qdel(src)
+		CRASH("invalid target for [src] - [target]")
+	src.target = target
+
+/**
+ * checks if a datum is a valid target for us
+ */
+/datum/action/proc/target_compatible(datum/target)
+	return isnull(target_type) || istype(target, target_type)
 
 /datum/action/Destroy()
 	if(owner)
-		Remove(owner)
+		remove(owner)
 	target = null
 	QDEL_NULL(button)
 	return ..()
 
-/datum/action/proc/Grant(mob/living/T)
+/datum/action/proc/grant(mob/living/T)
 	if(owner)
 		if(owner == T)
 			return
-		Remove(owner)
+		remove(owner)
 	owner = T
 	owner.actions.Add(src)
 	owner.update_action_buttons()
 
-/datum/action/proc/Remove(mob/living/T)
+/datum/action/proc/remove(mob/living/T)
 	if(button)
 		if(T.client)
 			T.client.screen -= button
@@ -57,27 +91,39 @@
 	T.update_action_buttons()
 	owner = null
 
-/datum/action/proc/Trigger()
+/datum/action/proc/trigger(mob/user)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	// todo: log
 	if(!Checks())
 		return FALSE
+	on_trigger(user, target)
 	switch(action_type)
-		if(AB_ITEM)
-			if(target)
-				var/obj/item/item = target
-				item.ui_action_click()
-		//if(AB_SPELL)
+		//if(ACTION_TYPE_SPELL)
 		//	if(target)
 		//		var/obj/effect/proc_holder/spell = target
 		//		spell.Click()
-		if(AB_INNATE)
+		if(ACTION_TYPE_INNATE)
 			if(!active)
 				Activate()
 			else
 				Deactivate()
-		if(AB_GENERIC)
+		if(ACTION_TYPE_GENERIC)
 			if(target && procname)
 				call(target,procname)(usr)
 	return TRUE
+
+/**
+ * called when we get triggered by someone
+ *
+ * it is valid to typecast receiver accordingly
+ * *if and only if* you used target_compatible() to check for type before.
+ *
+ * @params
+ * - user - user triggering
+ * - receiver - object receiving - this is just the "target" variable.
+ */
+/datum/action/proc/on_trigger(mob/user, datum/receiver)
+	target?.ui_action_click(src, user)
 
 /datum/action/proc/Activate()
 	return
@@ -94,28 +140,48 @@
 /datum/action/proc/Checks()// returns 1 if all checks pass
 	if(!owner)
 		return 0
-	if(check_flags & AB_CHECK_RESTRAINED)
+	if(check_flags & ACTION_CHECK_RESTRAINED)
 		if(owner.restrained())
 			return 0
-	if(check_flags & AB_CHECK_STUNNED)
+	if(check_flags & ACTION_CHECK_STUNNED)
 		if(owner.stunned)
 			return 0
-	if(check_flags & AB_CHECK_LYING)
+	if(check_flags & ACTION_CHECK_LYING)
 		if(owner.lying)
 			return 0
-	if(check_flags & AB_CHECK_ALIVE)
+	if(check_flags & ACTION_CHECK_ALIVE)
 		if(owner.stat)
 			return 0
-	if(check_flags & AB_CHECK_INSIDE)
+	if(check_flags & ACTION_CHECK_INSIDE)
 		if(!(target in owner))
 			return 0
-	if(check_flags & AB_CHECK_CONSCIOUS)
+	if(check_flags & ACTION_CHECK_CONSCIOUS)
 		if(!STAT_IS_CONSCIOUS(owner.stat))
 			return FALSE
 	return 1
 
 /datum/action/proc/UpdateName()
 	return name
+
+/datum/action/proc/update_button(atom/movable/screen/movable/action_button/button)
+	button.icon = background_icon
+	button.icon_state = background_icon_state
+
+	button.cut_overlays()
+	var/image/img
+	if(action_type == ACTION_TYPE_ITEM && isitem(target))
+		var/obj/item/I = target
+		img = image(I.icon, src , I.icon_state)
+	else if(button_icon && button_icon_state)
+		img = image(button_icon,src,button_icon_state)
+	img.pixel_x = 0
+	img.pixel_y = 0
+	button.add_overlay(img)
+
+	if(!IsAvailable())
+		button.color = rgb(128,0,0,128)
+	else
+		button.color = rgb(255,255,255,255)
 
 /atom/movable/screen/movable/action_button
 	var/datum/action/owner
@@ -128,30 +194,13 @@
 		return 1
 	if(usr.next_move >= world.time) // Is this needed ?
 		return
-	owner.Trigger()
+	owner.trigger(usr)
 	return 1
 
 /atom/movable/screen/movable/action_button/proc/UpdateIcon()
 	if(!owner)
 		return
-	icon = owner.button_icon
-	icon_state = owner.background_icon_state
-
-	cut_overlays()
-	var/image/img
-	if(owner.action_type == AB_ITEM && owner.target)
-		var/obj/item/I = owner.target
-		img = image(I.icon, src , I.icon_state)
-	else if(owner.button_icon && owner.button_icon_state)
-		img = image(owner.button_icon,src,owner.button_icon_state)
-	img.pixel_x = 0
-	img.pixel_y = 0
-	add_overlay(img)
-
-	if(!owner.IsAvailable())
-		color = rgb(128,0,0,128)
-	else
-		color = rgb(255,255,255,255)
+	owner.update_button(src)
 
 //Hide/Show Action Buttons ... Button
 /atom/movable/screen/movable/action_button/hide_toggle
@@ -215,13 +264,14 @@
 
 //Presets for item actions
 /datum/action/item_action
-	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUNNED|AB_CHECK_LYING|AB_CHECK_ALIVE|AB_CHECK_INSIDE
+	action_type = ACTION_TYPE_ITEM
+	check_flags = ACTION_CHECK_RESTRAINED|ACTION_CHECK_STUNNED|ACTION_CHECK_LYING|ACTION_CHECK_ALIVE|ACTION_CHECK_INSIDE
 
 /datum/action/item_action/CheckRemoval(mob/living/user)
 	return !(target in user)
 
 /datum/action/item_action/hands_free
-	check_flags = AB_CHECK_ALIVE|AB_CHECK_INSIDE
+	check_flags = ACTION_CHECK_ALIVE|ACTION_CHECK_INSIDE
 
 #undef AB_WEST_OFFSET
 #undef AB_NORTH_OFFSET
@@ -229,4 +279,17 @@
 
 
 /datum/action/innate/
-	action_type = AB_INNATE
+	action_type = ACTION_TYPE_INNATE
+
+
+//? /datum impl
+
+/**
+ * called when someone clicks an action bound to us.
+ *
+ * @params
+ * * action - action datuam
+ * * user - person clicking
+ */
+/datum/proc/ui_action_click(datum/action/action, mob/user)
+	return

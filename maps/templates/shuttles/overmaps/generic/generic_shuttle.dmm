@@ -450,6 +450,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals3{
 	dir = 1
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled{
 	icon_state = "monotile"
 	},

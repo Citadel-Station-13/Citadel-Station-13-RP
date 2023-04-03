@@ -329,7 +329,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aU" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -2413,7 +2413,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/station/stairs_two)
 "hn" = (
@@ -4036,7 +4036,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/civilian)
 "mh" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5392,7 +5392,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -7592,7 +7592,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
 "ww" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -7778,7 +7778,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "xc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "xd" = (
@@ -8278,7 +8278,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_9)
 "yC" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "yF" = (
@@ -8389,7 +8389,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
 "yX" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -9266,7 +9266,7 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/techfloor{
 	dir = 1
 	},
@@ -9321,7 +9321,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/warehouse)
 "BT" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -9491,7 +9491,7 @@
 	layer = 3.3;
 	pixel_x = -27
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
@@ -9520,7 +9520,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "CA" = (
@@ -10187,7 +10187,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "EG" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/triumph/surfacebase/mining_main/storage)
 "EH" = (
@@ -10710,7 +10710,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/dormitory)
 "Gd" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -11912,7 +11912,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/bar)
 "JV" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -12007,7 +12007,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_11)
 "Km" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
 "Ko" = (
@@ -12304,7 +12304,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "Ll" = (
@@ -13920,7 +13920,7 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/storage)
 "Qs" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/station/stairs_two)
 "Qu" = (
@@ -14122,7 +14122,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "Rh" = (
@@ -14564,7 +14564,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -16410,7 +16410,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},

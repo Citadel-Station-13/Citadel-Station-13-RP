@@ -8,7 +8,7 @@ import { sanitizeText } from '../sanitize';
 
 type SpeciesPickerContext = {
   whitelisted: string[],
-  species: [String: Species[]],
+  species: Record<string, Species[]>,
   default: string,
   admin: BooleanLike,
 };
@@ -38,7 +38,7 @@ export const SpeciesPicker = (props, context) => {
   const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
   const [selectedSpecies, setSelectedSpecies] = useLocalState<String | null>(context, 'selectedSpecies', data.default);
   const { whitelisted = [] } = data;
-  let categories: String[] = [];
+  let categories: string[] = [];
   let species: Species[] = [];
   let selected: Species | undefined;
   Object.entries(data.species).forEach(([k, v]) => {
