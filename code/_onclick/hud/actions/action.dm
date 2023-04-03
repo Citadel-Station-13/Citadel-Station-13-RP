@@ -98,10 +98,6 @@
 		return FALSE
 	on_trigger(user, target)
 	switch(action_type)
-		if(ACTION_TYPE_ITEM)
-			if(target)
-				var/obj/item/item = target
-				item.ui_action_click(src, user)
 		//if(ACTION_TYPE_SPELL)
 		//	if(target)
 		//		var/obj/effect/proc_holder/spell = target
