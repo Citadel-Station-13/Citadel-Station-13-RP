@@ -1,6 +1,17 @@
-#warn impl
+/obj/item/circuitboard/machine/nanite_chamber
+	name = T_BOARD("nanite chamber")
+	build_path = /obj/machinery/nanite_chamber
+	req_components = list(
+		/obj/item/stock_parts/manipulator = 2,
+		/obj/item/stock_parts/matter_bin = 1,
+		/obj/item/stock_parts/scanning_module = 1,
+	)
 
 /obj/machinery/nanite_chamber
+	name = "nanite chamber"
+	desc = "A nanoswarm servicing chamber."
+	#warn sprite
+	circuit = /obj/item/circuitboard/machine/nanite_chamber
 
 	idle_power_usage = POWER_USAGE_NANITE_CHAMBER_IDLE
 	active_power_usage = POWER_USAGE_NANITE_CHAMBER_ACTIVE
@@ -94,20 +105,22 @@
 /obj/machinery/nanite_chamber/proc/take_contents()
 	if(!occupant)
 		var/mob/living/new_mob = locate() in loc
-		occupant = new_mob
-		new_mob.forceMove(src)
-	if(!protean_core)
+		if(new_mob)
+			occupant = new_mob
+			new_mob.forceMove(src)
+	if(!occupant && !protean_core)
 		var/obj/item/mmi/digital/posibrain/nano/new_core = locate() in loc
-		protean_core = new_core
-		new_core.forceMove(src)
-	for(var/obj/item/organ/internal/nano/O in loc)
-		LAZYADD(held_items, O)
-		O.forceMove(src)
-	for(var/obj/item/stack/material/M in loc)
-		M.forceMove(src)
-		if(QDELETED(M))
-			continue
-		LAZYADD(held_items, M)
+		if(new_core)
+			protean_core = new_core
+			new_core.forceMove(src)
+		for(var/obj/item/organ/internal/nano/O in loc)
+			LAZYADD(held_items, O)
+			O.forceMove(src)
+		for(var/obj/item/stack/material/M in loc)
+			M.forceMove(src)
+			if(QDELETED(M))
+				continue
+			LAZYADD(held_items, M)
 	linked?.update_static_data()
 
 /**

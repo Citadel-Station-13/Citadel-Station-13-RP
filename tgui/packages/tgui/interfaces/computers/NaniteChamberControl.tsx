@@ -1,20 +1,60 @@
-import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Box, Button, Collapsible, Grid, LabeledList, NoticeBox, NumberInput, Section } from '../components';
-import { Window } from '../layouts';
+import { BooleanLike } from "common/react";
+import { useBackend } from "../../backend";
+import { Section } from "../../components";
+import { Window } from "../../layouts";
+
+interface NaniteChamberControlData {
+  hasChamber: BooleanLike;
+  locked: BooleanLike;
+  open: BooleanLike;
+  operating: BooleanLike;
+  hasOccupant: BooleanLike;
+  occupant: OccupantData;
+  hasProtean: BooleanLike;
+  protean: ProteanData;
+}
+
+interface OccupantData {
+  name: string;
+}
+
+interface ProteanData {
+  name: string;
+  organs: ProteanOrgans[];
+}
+
+interface ProteanOrgans {
+  intact: string[];
+  missing: string[];
+  cost: Record<string, number>;
+}
 
 export const NaniteChamberControl = (props, context) => {
+  const { act, data } = useBackend<NaniteChamberControlData>(context);
+
   return (
     <Window
+      title="Nanite Chamber Control"
       width={380}
-      height={570}
-      resizable>
-      <Window.Content scrollable>
+      height={570}>
+      <Window.Content>
         <NaniteChamberControlContent />
       </Window.Content>
     </Window>
   );
 };
+
+const NaniteChamberControlContent = (props, context) => {
+  const { act, data } = useBackend<NaniteChamberControlData>(context);
+
+  return (
+    <Section title={`Chamber`}>
+      test
+    </Section>
+  );
+};
+
+/*
 
 export const NaniteChamberControlContent = (props, context) => {
   const { act, data } = useBackend(context);
@@ -186,95 +226,95 @@ export const NaniteChamberControlContent = (props, context) => {
                           <Grid.Column>
                             <Section>
                               <LabeledList>
-                                {/* I mean, bruh, this indentation level
-                                    is ABSOLUTELY INSANE!!! */}
-                                {program.timer_restart && (
-                                  <LabeledList.Item label="Restart Timer">
-                                    {program.timer_restart} s
+                                    {program.timer_restart && (
+                                      <LabeledList.Item label="Restart Timer">
+                                        {program.timer_restart} s
+                                      </LabeledList.Item>
+                                    )}
+                                    {program.timer_shutdown && (
+                                      <LabeledList.Item label="Shutdown Timer">
+                                        {program.timer_shutdown} s
+                                      </LabeledList.Item>
+                                    )}
+                                  </LabeledList>
+                                </Section>
+                              </Grid.Column>
+                            )}
+                          </Grid>
+                        )}
+                        {scan_level >= 3 && (
+                          !!program.has_extra_settings && (
+                            <Section
+                              title="Extra Settings"
+                              level={2}>
+                              <LabeledList>
+                                {extra_settings.map(extra_setting => (
+                                  <LabeledList.Item
+                                    key={extra_setting.name}
+                                    label={extra_setting.name}>
+                                    {extra_setting.value}
                                   </LabeledList.Item>
-                                )}
-                                {program.timer_shutdown && (
-                                  <LabeledList.Item label="Shutdown Timer">
-                                    {program.timer_shutdown} s
-                                  </LabeledList.Item>
-                                )}
+                                ))}
                               </LabeledList>
                             </Section>
-                          </Grid.Column>
+                          )
                         )}
-                      </Grid>
-                    )}
-                    {scan_level >= 3 && (
-                      !!program.has_extra_settings && (
-                        <Section
-                          title="Extra Settings"
-                          level={2}>
-                          <LabeledList>
-                            {extra_settings.map(extra_setting => (
-                              <LabeledList.Item
-                                key={extra_setting.name}
-                                label={extra_setting.name}>
-                                {extra_setting.value}
-                              </LabeledList.Item>
-                            ))}
-                          </LabeledList>
-                        </Section>
-                      )
-                    )}
-                    {scan_level >= 4 && (
-                      <Grid>
-                        <Grid.Column>
-                          <Section
-                            title="Codes"
-                            level={2}>
-                            <LabeledList>
-                              {!!program.activation_code && (
-                                <LabeledList.Item label="Activation">
-                                  {program.activation_code}
-                                </LabeledList.Item>
-                              )}
-                              {!!program.deactivation_code && (
-                                <LabeledList.Item label="Deactivation">
-                                  {program.deactivation_code}
-                                </LabeledList.Item>
-                              )}
-                              {!!program.kill_code && (
-                                <LabeledList.Item label="Kill">
-                                  {program.kill_code}
-                                </LabeledList.Item>
-                              )}
-                              {!!program.can_trigger
-                                && !!program.trigger_code && (
-                                <LabeledList.Item label="Trigger">
-                                  {program.trigger_code}
-                                </LabeledList.Item>
-                              )}
-                            </LabeledList>
-                          </Section>
-                        </Grid.Column>
-                        {program.has_rules && (
-                          <Grid.Column>
-                            <Section
-                              title="Rules"
-                              level={2}>
-                              {rules.map(rule => (
-                                <Fragment key={rule.display}>
-                                  {rule.display}
-                                  <br />
-                                </Fragment>
-                              ))}
-                            </Section>
-                          </Grid.Column>
+                        {scan_level >= 4 && (
+                          <Grid>
+                            <Grid.Column>
+                              <Section
+                                title="Codes"
+                                level={2}>
+                                <LabeledList>
+                                  {!!program.activation_code && (
+                                    <LabeledList.Item label="Activation">
+                                      {program.activation_code}
+                                    </LabeledList.Item>
+                                  )}
+                                  {!!program.deactivation_code && (
+                                    <LabeledList.Item label="Deactivation">
+                                      {program.deactivation_code}
+                                    </LabeledList.Item>
+                                  )}
+                                  {!!program.kill_code && (
+                                    <LabeledList.Item label="Kill">
+                                      {program.kill_code}
+                                    </LabeledList.Item>
+                                  )}
+                                  {!!program.can_trigger
+                                    && !!program.trigger_code && (
+                                    <LabeledList.Item label="Trigger">
+                                      {program.trigger_code}
+                                    </LabeledList.Item>
+                                  )}
+                                </LabeledList>
+                              </Section>
+                            </Grid.Column>
+                            {program.has_rules && (
+                              <Grid.Column>
+                                <Section
+                                  title="Rules"
+                                  level={2}>
+                                  {rules.map(rule => (
+                                    <Fragment key={rule.display}>
+                                      {rule.display}
+                                      <br />
+                                    </Fragment>
+                                  ))}
+                                </Section>
+                              </Grid.Column>
+                            )}
+                          </Grid>
                         )}
-                      </Grid>
-                    )}
-                  </Section>
-                </Collapsible>
-              );
-            })}
-          </Section>
-        </Fragment>
-      )}
-    </Section>
-  );
-};
+                      </Section>
+                    </Collapsible>
+                  );
+                })}
+              </Section>
+            </Fragment>
+          )}
+        </Section>
+      );
+    };
+
+*/
