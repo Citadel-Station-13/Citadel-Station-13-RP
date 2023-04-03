@@ -40,10 +40,11 @@ var/const/enterloopsanity = 100
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
 	var/CanPassSelf = CanPass(mover, src)
+	var/atom/mover_loc = mover.loc
 	if(CanPassSelf || (mover.movement_type & MOVEMENT_UNSTOPPABLE))
 		for(var/i in contents)
-			if(QDELETED(mover))
-				return FALSE		//We were deleted, do not attempt to proceed with movement.
+			if(mover.loc != mover_loc)
+				return FALSE		// something yanked it out; this shouldn't happen but just break here.
 			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
 				continue
 			var/atom/movable/thing = i

@@ -33,6 +33,7 @@
 // regardless,
 // Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
 // also, rename forceMove to force_move because bay, and setDir to set_dir().
+// also, need to decide how to handle Exit/Enter checks if we don't want Uncross/Cross checks.
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
