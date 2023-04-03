@@ -157,6 +157,8 @@
 	var/equip_traits = TRUE
 	/// Allows the selection of specific species for ghost roles.
 	var/species_required = null
+	/// Allows the blacklisting of specific species from ghost roles.
+	//var/species_restricted = null
 
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
@@ -167,8 +169,14 @@
 		return
 
 	if(!isnull(species_required) && species_required != C.prefs.real_species_datum().type)
-		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
+
+	/*
+	if(!isnull(species_restricted) && species_restricted == C.prefs.real_species_datum().type)
+		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		return
+	*/
 
 	LoadSavefile(C, H)
 	return H
