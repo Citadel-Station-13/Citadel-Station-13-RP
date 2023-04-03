@@ -2,7 +2,10 @@
 /obj/item/clothing/get_description_info()
 	var/armor_stats = description_info + "\
 	<br>"
-
+	var/list/describing = fetch_armor().describe_list()
+	if(length(describing))
+		armor_stats += jointext(describing, "\n")
+		armor_stats += "\n"
 
 	if(atom_flags & ALLOWINTERNALS)
 		armor_stats += "It is airtight. \n"
