@@ -172,19 +172,8 @@
 		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
-	/*
-	if(!isnull(species_restricted) && species_restricted == C.prefs.real_species_datum().type)
-		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
-		return
-	*/
-
 	LoadSavefile(C, H)
 	return H
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	//SSjob.EquipRank(H, USELESS_JOB)
-	// if(equip_loadout)
-	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
-	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))
-	// 	SSquirks.AssignQuirks(H, C, TRUE, FALSE, null, FALSE, C)
