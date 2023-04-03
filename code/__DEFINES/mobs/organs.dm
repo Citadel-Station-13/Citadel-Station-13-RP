@@ -88,6 +88,7 @@
 #define O_FACT "refactory"
 #define O_FRUIT "fruit gland"
 #define O_HONEYSTOMACH "honey stomach"
+#define O_WEAVER "silk gland"
 /// List of all non-standard organs.
 #define O_ALL_NONSTANDARD list( \
 		O_ACID, \
@@ -112,7 +113,8 @@
 		O_RESPONSE, \
 		O_STRATA, \
 		O_VENTC, \
-		O_VRLINK)
+		O_VRLINK, \
+		O_WEAVER)
 
 
 //* FBP ORGANS *//

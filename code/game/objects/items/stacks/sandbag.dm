@@ -49,7 +49,7 @@
 /obj/item/stack/sandbags
 	name = "sandbag"
 	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular name = "sandbag"
+	singular_name = "sandbag"
 	icon_state = "sandbags"
 	w_class = ITEMSIZE_NORMAL
 	damage_force = 10

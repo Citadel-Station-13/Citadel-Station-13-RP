@@ -2141,6 +2141,20 @@
 	. = ..()
 	reagents.add_reagent("slimejelly", 5)
 
+/obj/item/reagent_containers/food/snacks/gluetoast
+	name = "Glue Toast"
+	desc = "A slice of bread covered with... delicious.... glue?"
+	icon_state = "gluetoast"
+	trash = /obj/item/trash/plate
+	filling_color = "#fff6f6"
+	nutriment_amt = 5
+	nutriment_desc = list("toasted bread" = 2, "delicious glue" = 2)
+
+/obj/item/reagent_containers/food/snacks/gluetoast/Initialize(mapload)
+	. = ..()
+	bitesize = 1
+	reagents.add_reagent("glue", 5)
+
 /obj/item/reagent_containers/food/snacks/jellyburger
 	name = "Jelly Burger"
 	desc = "Culinary delight..?"

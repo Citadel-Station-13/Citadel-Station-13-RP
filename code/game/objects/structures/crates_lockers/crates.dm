@@ -743,6 +743,14 @@
 	icon_opened = "ossopen"
 	icon_closed = "oss"
 
+//Ashie Crate - Sprite isn't stellar, maybe some day we can do a better one.
+/obj/structure/closet/crate/ashlander
+	name = "bonemold crate"
+	desc = "A crate shaped out of fused bone plates. It is held shut by a sturdy hide strap."
+	icon_state = "ashcrate"
+	icon_opened = "ashcrateopen"
+	icon_closed = "ashcrate"
+
 //Secure crates
 
 /obj/structure/closet/crate/secure/aether

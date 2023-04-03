@@ -466,14 +466,6 @@
 	/// Whether the species can infect wounds, only works with claws / bites
 	var/infect_wounds = 0
 
-//! ## Misc vars
-	//!Weaver abilities
-	var/is_weaver = FALSE
-	var/silk_production = FALSE
-	var/silk_reserve = 100
-	var/silk_max_reserve = 500
-	var/silk_color = "#FFFFFF"
-
 
 /datum/species/New()
 	if(hud_type)
