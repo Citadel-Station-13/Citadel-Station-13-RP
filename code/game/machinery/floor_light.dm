@@ -176,7 +176,6 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/changing
 	name = "changing Floor light"
-	var/previous_color = "#0CD5E8"
 	var/last_color_change
 
 /obj/machinery/floor_light/changing/Initialize(mapload)
@@ -185,12 +184,12 @@ var/list/floor_light_cache = list()
 
 /obj/machinery/floor_light/changing/process(delta_time)
 	. = ..()
-	update_brightness()
+	update_colour()
 
 /obj/machinery/floor_light/changing/update_brightness()
 	if(on && use_power == USE_POWER_ACTIVE)
 		if(light_range != default_light_range || light_power != default_light_power || light_color != default_light_colour)
-			set_light_color_chain(default_light_range, default_light_power)
+			set_light(default_light_range, default_light_power, default_light_colour)
 	else
 		update_use_power(USE_POWER_OFF)
 		if(light_range || light_power)
@@ -199,31 +198,31 @@ var/list/floor_light_cache = list()
 	active_power_usage = ((light_range + light_power) * 10)
 	update_icon()
 
-/obj/machinery/floor_light/changing/proc/set_light_color_chain(var/light_range, var/light_power)
+/obj/machinery/floor_light/changing/proc/update_colour()
 	if(last_color_change > world.time - 0.5 SECONDS)
 		return
 	last_color_change = world.time
-	switch(previous_color)
+	switch(default_light_colour)
 		if("#0CD5E8")
-			previous_color = "#0CF241"
+			default_light_colour = "#0CF241"
 		if("#0CF241")
-			previous_color = "#ADDB01"
+			default_light_colour = "#ADDB01"
 		if("#ADDB01")
-			previous_color = "#F2BA0C"
+			default_light_colour = "#F2BA0C"
 		if("#F2BA0C")
-			previous_color = "#EB610C"
+			default_light_colour = "#EB610C"
 		if("#EB610C")
-			previous_color = "#F20C30"
+			default_light_colour = "#F20C30"
 		if("#F20C30")
-			previous_color = "#8B00DB"
+			default_light_colour = "#8B00DB"
 		if("#8B00DB")
-			previous_color = "#0C37F2"
+			default_light_colour = "#0C37F2"
 		if("#0C37F2")
-			previous_color = "#0CD5E8"
+			default_light_colour = "#0CD5E8"
 		else
-			previous_color = "#0CD5E8"
-	set_light(light_range, light_power, previous_color)
-	update_icon()
+			default_light_colour = "#0CD5E8"
+	update_brightness(default_light_range, default_light_power, default_light_colour)
+
 
 /obj/machinery/floor_light/changing/update_icon()
 	cut_overlays()
