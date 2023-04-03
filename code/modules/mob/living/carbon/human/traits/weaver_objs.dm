@@ -61,8 +61,9 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/wall/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mover
-		if(H.species.is_weaver)
-			return TRUE
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return TRUE
 	..()
 
 /obj/structure/bed/double/weaversilk_nest
@@ -98,8 +99,10 @@ var/global/list/weavable_items = list()
 		return
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if(H.species.is_weaver)
-			return
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return
+
 	if(isliving(AM) && trap_active)
 		var/mob/living/L = AM
 		if(L.m_intent == MOVE_INTENT_RUN)

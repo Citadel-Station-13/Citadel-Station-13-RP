@@ -11,7 +11,7 @@
 /datum/map_template/submap/level_specific/wilderness
 	name = "Surface Content - Wildy"
 	desc = "Used to make the surface's wilderness be 17% less boring."
-	prefix = "_maps/submaps/wilderness/"
+	prefix = "maps/submaps/wilderness/"
 
 // 'Normal' templates get used on the top half, and should be challenging.
 /datum/map_template/submap/level_specific/wilderness/normal

@@ -1,5 +1,6 @@
 /mob/living/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/radiation_listener)
 	AddElement(/datum/element/z_radiation_listener)
 
 	//I'll just hang my coat up over here

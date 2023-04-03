@@ -31,7 +31,7 @@
 
 	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
-	siemens_coefficient = 0 // Completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
+	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
 	darksight = 10 // Best darksight around
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
@@ -41,6 +41,7 @@
 	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
 	radiation_mod = 0
+	toxins_mod = 1.2
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
 	hunger_factor = 0.2 // Gets hungrier faster than human baseline.
@@ -49,7 +50,7 @@
 	hazard_low_pressure = -1
 
 	warning_high_pressure = 300
-	hazard_high_pressure = INFINITY
+	hazard_high_pressure = 1000 // Same High Pressure resistance as Voidsuits get
 
 	cold_level_1 = -1 // Immune to cold
 	cold_level_2 = -1

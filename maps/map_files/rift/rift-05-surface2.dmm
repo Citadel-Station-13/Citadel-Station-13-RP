@@ -4388,9 +4388,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
-"dnx" = (
-/turf/simulated/wall,
-/area/medical/chemistry)
 "dpk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -9219,7 +9216,7 @@
 /obj/machinery/door/airlock/glass_security/polarized{
 	id_tag = "warden_office";
 	id_tint = "warden_office";
-	name = "Warden's Office";
+	name = "Warden";
 	req_one_access = list(3)
 	},
 /obj/structure/cable/green{
@@ -21629,8 +21626,8 @@
 	},
 /obj/machinery/door/window/brigdoor/southleft{
 	name = "Research And Development";
-	req_access = list(47);
-	req_one_access = list(47)
+	req_access = list(7);
+	req_one_access = list(7)
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment,
@@ -25118,7 +25115,8 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "sys" = (
 /obj/machinery/door/airlock/maintenance/rnd{
-	name = "RnD Maintenance Access"
+	name = "RnD Maintenance Access";
+	req_one_access = list(7)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
@@ -30837,7 +30835,8 @@
 /area/maintenance/lower/medsec_maintenance)
 "wLN" = (
 /obj/machinery/door/airlock/glass_research{
-	name = "RnD Lab"
+	name = "RnD Lab";
+	req_one_access = list(7)
 	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -44772,8 +44771,8 @@ sbA
 lDM
 ylV
 vgt
-dnx
-dnx
+osz
+osz
 cUw
 tzd
 hyJ

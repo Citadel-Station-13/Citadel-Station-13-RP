@@ -1,155 +1,212 @@
 /datum/radiation_burst
-	/// numbers of emitters we're from
-	var/emitter_count = 1
-	/// intensity
-	var/intensity
-	/// falloff
 	var/falloff
-	/// max intensity
+	var/intensity
 	var/highest
+	var/emitter_count
 
 /datum/radiation_burst/New(intensity, falloff)
-	src.intensity = src.highest = intensity
 	src.falloff = falloff
+	src.intensity = intensity
+	src.highest = intensity
+	src.emitter_count = 1
+
+#define SPREAD_LEFT 1
+#define SPREAD_RIGHT 2
 
 /datum/radiation_wave
-	/// current center of wave
-	var/turf/current
-	/// how far we've moved
-	var/steps = 0
-	/// original intensity
-	var/starting_intensity
-	/// maximum intensity of this collated wave; used to prevent radiation cascades
-	var/max_intensity
-	/// current intensity
-	var/current_intensity
-	/// falloff modifier - 0.5 is half falloff, etc
-	var/falloff_modifier
-	/// direction of movement
-	var/dir
-	/// can we cause contaminate?
-	var/can_contaminate
-	/// remaining contamination
-	var/remaining_contam
-	/// mobs we already hit - we REALLY do not want to double hit mobs and turn 1500 intensity one-off to lethal.
-	var/list/hit_mobs
-	/// how many emitters of atleast RAD_MOB_ACT_PROTECTION we're from
-	var/relevant_count
+	/// source turf
+	var/turf/source
+	/// turfs, associated to power
+	var/list/turfs
+	/// dirs of ray movement
+	var/list/dirs
+	/// dirs of ray spread:
+	var/list/spreads
 
-/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE, relevant_count = 1, contam_left)
-	src.current = starting
-	src.dir = dir
-	src.starting_intensity = src.current_intensity = intensity
-	src.max_intensity = max_intensity || intensity
-	src.remaining_contam = contam_left || intensity
+	/// current cycles - this determines our current falloff-applied power. starts at 0, meaning 3x3 = 0 dist, not 1x1.
+	var/cycles
+	/// initial power
+	var/power
+	/// falloff rate as a multipier
+	var/falloff_modifier = 1
+
+	/// turfs next, associated to power
+	var/list/turfs_next
+	/// dirs of movement next
+	var/list/dirs_next
+	/// dirs of spread next
+	var/list/spreads_next
+
+/datum/radiation_wave/New(turf/source, power, falloff_modifier = RAD_FALLOFF_NORMAL)
+	src.source = source
+	src.power = power
 	src.falloff_modifier = falloff_modifier
-	src.can_contaminate = can_contaminate
-	src.relevant_count = relevant_count
-	hit_mobs = list()
 	SSradiation.waves += src
 
 /datum/radiation_wave/Destroy()
 	SSradiation.waves -= src
-	hit_mobs = null
-	..()
-	return QDEL_HINT_IWILLGC
+	return ..()
 
-/**
- * return true if not deleted
- */
-/datum/radiation_wave/proc/propagate()
-	current = get_step(current, dir)
-	if(!current)
+/datum/radiation_wave/proc/start()
+	cycles = 0
+	// we have to stagger a bit, so we preprocess *part* of a 3x3.
+	var/after_center = power * irradiate_turf(source, power)
+	if(after_center <= RAD_BACKGROUND_RADIATION)
 		qdel(src)
-		return FALSE
-	++steps
-	var/effective_steps = max(falloff_modifier * steps, 1)
-	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps, 1) : current_intensity
-	if(strength < RAD_BACKGROUND_RADIATION)
-		qdel(src)
-		return FALSE
-	var/list/atom/atoms = atoms_within_line()
-	// block **first**
-	process_obstructions(atoms)
-	// then radiate/contaminate
-	var/contaminated = radiate(atoms, strength)
-	if(contaminated)
-		remaining_contam = max(0, remaining_contam - contaminated)
-	return TRUE
+		return
+	// north and south are slightly narrower to prevent overlap.
+	turfs = list()
+	dirs = list()
+	spreads = list()
+	var/turf/irradiating = get_step(source, NORTH)
+	var/atom/movable/AM
+	if(!isnull(irradiating))
+		turfs[irradiating] = after_center
+		dirs += NORTH
+		spreads += null
+	irradiating = get_step(source, SOUTH)
+	if(!isnull(irradiating))
+		turfs[irradiating] = after_center
+		dirs += SOUTH
+		spreads += null
+	// east and west aren't, but to prevent diagonal leakage,
+	// we manually get their resistances.
+	var/power_east
+	irradiating = get_step(source, EAST)
+	if(!isnull(irradiating))
+		turfs[irradiating] = after_center
+		dirs += EAST
+		spreads += null
+		power_east = after_center * irradiating.rad_insulation
+		for(AM as anything in irradiating)
+			power_east *= AM.rad_insulation
+	var/power_west
+	irradiating = get_step(source, WEST)
+	if(!isnull(irradiating))
+		turfs[irradiating] = after_center
+		dirs += WEST
+		spreads += null
+		power_west = after_center * irradiating.rad_insulation
+		for(AM as anything in irradiating)
+			power_west *= AM.rad_insulation
+	// and then make emissions on diagonals
+	if(power_east > RAD_BACKGROUND_RADIATION)
+		irradiating = get_step(source, NORTHEAST)
+		if(!isnull(irradiating))
+			turfs[irradiating] = power_east
+			dirs += EAST
+			spreads += SPREAD_LEFT
+		irradiating = get_step(source, SOUTHEAST)
+		if(!isnull(irradiating))
+			turfs[irradiating] = power_east
+			dirs += EAST
+			spreads += SPREAD_RIGHT
+	if(power_west > RAD_BACKGROUND_RADIATION)
+		irradiating = get_step(source, NORTHWEST)
+		if(!isnull(irradiating))
+			turfs[irradiating] = power_west
+			dirs += WEST
+			spreads += SPREAD_RIGHT
+		irradiating = get_step(source, SOUTHWEST)
+		if(!isnull(irradiating))
+			turfs[irradiating] = power_west
+			dirs += WEST
+			spreads += SPREAD_LEFT
 
-/datum/radiation_wave/proc/atoms_within_line()
-	. = list()
-	var/cmove_dir = dir
-	// prevent corners overlapping
-	var/cdist = (cmove_dir & (NORTH|SOUTH)) ? (steps - 1) : steps
-	var/turf/cturf = current
-	// get current
-	. += get_rad_contents(cturf)
-	// scan left
-	var/turf/cscan = cturf
-	var/dscan = turn(cmove_dir, 90)
-	for(var/i in 1 to cdist)
-		cscan = get_step(cscan, dscan)
-		if(isnull(cscan))
-			break
-		. += get_rad_contents(cscan)
-	// scan right
-	cscan = cturf
-	dscan = turn(cmove_dir, -90)
-	for(var/i in 1 to cdist)
-		cscan = get_step(cscan, dscan)
-		if(isnull(cscan))
-			break
-		. += get_rad_contents(cscan)
+	turfs_next = list()
+	dirs_next = list()
+	spreads_next = list()
 
 /**
- * reduce our intensity based on stuff with radiation insulation
- * insulating objects have higher effect to us the closer they are to our start
- * which is a shit model of radiation but hey it's faster than
- * fully raycasting everything (kinda) (probably)
+ * irradiates a turf
+ *
+ * returns rad insulation
  */
-/datum/radiation_wave/proc/process_obstructions(list/atoms)
-	var/cwidth = 1 + ((dir & (NORTH|SOUTH)) ? (steps - 1) : steps) * 2
-	for(var/atom/A as anything in atoms)
-		if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_WAVE_PASSING, src, cwidth) & COMPONENT_RAD_WAVE_HANDLED)
-			continue
-		if(A.rad_insulation != RAD_INSULATION_NONE)
-			current_intensity *= (1-((1-A.rad_insulation)/cwidth))
+/datum/radiation_wave/proc/irradiate_turf(turf/T, power)
+	. = T.rad_insulation * T.rad_insulation_contents
+	T.rad_act(power, src)
+	SEND_SIGNAL(T, COMSIG_ATOM_RAD_PULSE_ITERATE, power, src)
 
 /**
- * hits atoms with radiation wave
- * hits amount of contamination inflicted
+ * returns TRUE / FALSE based on if we're completed.
  */
-/datum/radiation_wave/proc/radiate(list/atoms, strength)
-	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION || !can_contaminate || !remaining_contam
-	var/list/contaminating = list()
-	for(var/atom/A as anything in atoms)
-		A.rad_act(strength, src)
-		if(ismob(A))
-			if(hit_mobs[A])
-				continue
-			hit_mobs[A] = TRUE	// let's NOT doublehit mobs
-		if(radiation_infect_ignore[A.type] || cannot_contam)
+/datum/radiation_wave/proc/iterate(ticklimit)
+	var/i
+	var/turf/T // current
+	var/turf/F // forwards
+	var/dir_diag
+	var/power
+	var/power_next
+	var/dir
+	var/spread
+	var/existing
+	var/inverse_square_factor = 1 / (2 ** (falloff_modifier * cycles))
+
+	for(i in length(turfs) to 1 step -1)
+		T = turfs[i]
+		power = turfs[T]
+		dir = dirs[i]
+		spread = spreads[i]
+
+		power_next = power * irradiate_turf(T, power * inverse_square_factor)
+
+		if(power_next * inverse_square_factor < RAD_BACKGROUND_RADIATION)
 			continue
-		if((A.rad_flags & RAD_NO_CONTAMINATE) || (SEND_SIGNAL(A, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION))
+
+		F = get_step(T, dir)
+
+		if(isnull(F))
 			continue
-		contaminating += A
-	. = 0
-	if(length(contaminating))
-		// maximum we can contaminate them up to
-		// var/max_str = min(strength, max_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT
-		var/max_str = min(strength, max_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
-		// how much we're going to apply
-		var/apply_str = min(max_str, remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
-		if(apply_str <= 0)
-			return
-		for(var/atom/A as anything in contaminating)
-			var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
-			var/effective_stack = (isnull(A.rad_stickiness)? A.rad_insulation : A.rad_stickiness) * max_str	// rad insulation helps against contamination by blocking it too
-			if(effective_stack < RAD_CONTAMINATION_MEANINGFUL)
-				continue
-			if(!R)
-				A.AddComponent(/datum/component/radioactive, min(apply_str, effective_stack))
-				. += apply_str
-			else
-				. += R.constructive_interference(effective_stack, apply_str)
+
+		existing = turfs_next[F]
+		if(isnull(existing))
+			turfs_next[F] = power_next
+			dirs_next += dir
+			spreads_next += spread
+		else
+			turfs_next[F] = max(turfs_next[F], power_next)
+		if(spread != SPREAD_RIGHT)
+			dir_diag = turn(dir, 45)
+			F = get_step(T, dir_diag)
+			if(!isnull(F))
+				existing = turfs_next[F]
+				if(isnull(existing))
+					turfs_next[F] = power_next
+					dirs_next += dir
+					spreads_next += SPREAD_LEFT
+				else
+					turfs_next[F] = max(turfs_next[F], power_next)
+		if(spread != SPREAD_LEFT)
+			dir_diag = turn(dir, -45)
+			F = get_step(T, dir_diag)
+			if(!isnull(F))
+				existing = turfs_next[F]
+				if(isnull(existing))
+					turfs_next[F] = power_next
+					dirs_next += dir
+					spreads_next += SPREAD_RIGHT
+				else
+					turfs_next[F] = max(turfs_next[F], power_next)
+
+		if(TICK_USAGE > ticklimit)
+			break
+
+	var/length_turfs = length(turfs)
+	turfs.len -= length_turfs - i + 1
+	dirs.len -= length_turfs - i + 1
+	spreads.len -= length_turfs - i + 1
+	if(!length(turfs))
+		next()
+	++cycles
+	return !length(turfs) && cycles < RAD_MAXIMUM_CYCLES
+
+/datum/radiation_wave/proc/next()
+	turfs = turfs_next
+	dirs = dirs_next
+	spreads = spreads_next
+	turfs_next = list()
+	dirs_next = list()
+	spreads_next = list()
+
+#undef SPREAD_LEFT
+#undef SPREAD_RIGHT
