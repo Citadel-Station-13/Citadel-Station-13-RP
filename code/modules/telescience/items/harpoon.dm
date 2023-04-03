@@ -1,4 +1,6 @@
 /obj/item/bluespace_harpoon
+	name = "bluespace tunnel projector"
+	desc = "A device used to rip open short duration conduits through bluespace to tunnel to a nearby location. Takes a moment to charge up and perform path calculations, and uses a lot of energy in the process."
 
 //RD 'gun'
 /obj/item/bluespace_harpoon
