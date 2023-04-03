@@ -734,3 +734,12 @@
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_MISCELLANEOUS
 	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/glue_toast
+	name = "Glue on Toast"
+	result = /obj/item/reagent_containers/food/snacks/gluetoast
+	reqs = list(/datum/reagent/drink/glue = 5,
+				/obj/item/reagent_containers/food/snacks/slice/bread = 1)
+	time = 5
+	category = CAT_FOOD
+	subcategory = CAT_BREAD
