@@ -1,6 +1,4 @@
-/*
- * Hand-tele
- */
+#warn bluespace_teleporter
 /obj/item/hand_tele
 	name = "hand tele"
 	desc = "A portable item using blue-space technology."

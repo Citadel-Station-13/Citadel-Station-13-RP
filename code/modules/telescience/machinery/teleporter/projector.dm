@@ -1,6 +1,9 @@
+#warn circuit
+
+#warn teleport_projector
 /obj/machinery/tele_projector
 	name = "projector"
-	desc = "This machine is capable of projecting a miniature wormhole leading directly to its provided target."
+	desc = "A combination bluespace receiver-projector unit. Handles the busywork of locking onto nearby bluespace flare signals and projecting a readymade conduit for instantaneous matter transmission."
 	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "station"
 	density = TRUE

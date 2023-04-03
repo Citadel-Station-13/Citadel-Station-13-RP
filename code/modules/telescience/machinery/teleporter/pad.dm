@@ -1,3 +1,6 @@
+#warn circuit
+
+#warn teleport_pad
 /obj/machinery/tele_pad
 	name = "teleporter pad"
 	desc = "The teleporter pad handles all of the impossibly complex busywork required in instant matter transmission."

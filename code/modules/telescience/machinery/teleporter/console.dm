@@ -1,3 +1,5 @@
+#warn circuit
+
 /obj/machinery/computer/teleporter
 	name = "teleporter control console"
 	desc = "Used to control a linked teleportation Pad and Projector."

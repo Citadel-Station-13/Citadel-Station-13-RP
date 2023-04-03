@@ -1,3 +1,7 @@
+/obj/effect/portal
+
+#warn impl
+
 GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 
 /obj/effect/portal

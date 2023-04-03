@@ -1,4 +1,4 @@
-//The perfect adminboos device?
+#warn bluespace_translocator
 /obj/item/perfect_tele
 	name = "personal translocator"
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."

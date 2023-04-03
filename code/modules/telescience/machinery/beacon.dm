@@ -1,8 +1,10 @@
+#warn circuit
+
 /obj/machinery/bluespace_beacon
+	name = "bluespace gigabeacon"
+	desc = "A beacon that draws a large amount of energy to create a pinhole into bluespace and transmit tracking data to nearby receivers. As unwieldly as this is, this piece of technology is still the backbone of modern translocation technology."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beaconf"
-	name = "Bluespace Gigabeacon"
-	desc = "A device that draws power from bluespace and creates a permanent tracking beacon."
 	level = 1		// underfloor
 	layer = UNDER_JUNK_LAYER
 	anchored = TRUE

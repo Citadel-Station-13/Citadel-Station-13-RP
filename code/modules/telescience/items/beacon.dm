@@ -1,3 +1,5 @@
+/obj/item/bluespace_beacon
+
 /obj/item/radio/beacon
 	name = "tracking beacon"
 	desc = "A beacon used by a teleporter."
