@@ -76,15 +76,31 @@
 
 /obj/machinery/nanite_chamber/proc/detect_connection()
 
+/obj/machinery/nanite_chamber/proc/set_locked(new_value)
+	locked = new_value
+
+/obj/machinery/nanite_chamber/proc/toggle_locked()
+	set_locked(!locked)
+
 /obj/machinery/nanite_chamber/proc/is_locked()
 	return locked || operating
 
 /obj/machinery/nanite_chamber/proc/rebuild_protean()
 	#warn impl
 
-/obj/machinery/nanite_chamber/proc/toggle_open(user)
+/obj/machinery/nanite_chamber/proc/open(mob/user)
+	if(open)
+		return TRUE
+	return toggle_open(user)
+
+/obj/machinery/nanite_chamber/proc/close(mob/user)
+	if(!open)
+		return TRUE
+	return toggle_open(user)
+
+/obj/machinery/nanite_chamber/proc/toggle_open(mob/user)
 	if(is_locked())
-		return
+		return FALSE
 	if(open)
 		take_contents()
 	else
@@ -92,6 +108,7 @@
 	open = !open
 	density = !open
 	update_icon()
+	return TRUE
 
 /obj/machinery/nanite_chamber/proc/drop_contents()
 	var/atom/where = drop_location()
@@ -138,3 +155,25 @@
 	if(!locate(/obj/item/organ/internal/nano/refactory) in held_items)
 		for(var/mat in protean_cost_refactory)
 			.[mat] += protean_cost_refactory[mat]
+
+/obj/machinery/nanite_chamber/contents_resist(mob/escapee)
+	if(open(escapee))
+		return FALSE
+	escapee.action_feedback(SPAN_WARNING("You start kicking at [src], trying to free yourself!"), src)
+	visible_message(
+		SPAN_WARNING("A loud thumping sound is heard from [src]!"),
+		blind_message = SPAN_WARNING("You hear a loud thumping noise, as if someone was trying to break glass."),
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+	)
+	contents_resist_sequence(escapee, 1 MINUTES)
+	return TRUE
+
+/obj/machinery/nanite_chamber/contents_resist_finish(mob/escapee)
+	set_locked(FALSE)
+	open(escapee)
+	escapee.action_feedback(SPAN_WARNING("You kick open [src], freeing yourself!"))
+	visible_message(
+		SPAN_WARNING("A final kick from [escapee] finally manages to disengage [src]'s locks."),
+		blind_message = SPAN_WARNING("You hear a loud kick on glass, and the sound of mechanical locks disengaging."),
+		range = MESSAGE_RANGE_COMBAT_LOUD,
+	)

@@ -19,7 +19,7 @@
 	relink()
 
 /obj/machinery/computer/nanite_chamber/Destroy()
-
+	unlink_chamber()
 	return ..()
 
 /obj/machinery/computer/nanite_chamber/proc/link_chamber(obj/machinery/nanite_chamber/chamber)
@@ -55,6 +55,12 @@
 
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	switch(action)
+		if("open")
+
+		if("lock")
+
+		if("reconstruct")
 
 /obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -78,9 +84,24 @@
 	else
 		.["hasOccupant"] = FALSE
 	if(!isnull(linked.protean_core))
+		var/list/intact_organs = list()
+		var/list/missing_organs = list()
+		if(locate(/obj/item/organ/internal/nano/refactory) in linked.held_items)
+			intact_organs += "refactory"
+		else
+			missing_organs += "refactory"
+		if(locate(/obj/item/organ/internal/nano/orchestrator) in linked.held_items)
+			intact_organs += "orchestrator"
+		else
+			missing_organs += "orchestrator"
 		.["hasProtean"] = TRUE
 		.["protean"] = list(
-			#warn impl
+			"name" = linked.protean_core.name,
+			"organs" = list(
+				"intact" = intact_organs,
+				"missing" = missing_organs,
+				"cost" = linked.protean_reconstruction_costs(),
+			)
 		)
 	else
 		.["hasProtean"] = FALSE

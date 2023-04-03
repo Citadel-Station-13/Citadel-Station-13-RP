@@ -419,7 +419,7 @@
 		return 0 //closed but not sealed...
 	return 1
 
-/obj/structure/closet/container_resist(mob/living/escapee)
+/obj/structure/closet/contents_resist(mob/escapee)
 	if(breakout)
 		return
 	if(!req_breakout() && !opened)

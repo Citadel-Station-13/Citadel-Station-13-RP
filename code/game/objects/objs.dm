@@ -215,5 +215,80 @@
 		add_fingerprint(user)
 	..()
 
-/obj/proc/container_resist(var/mob/living)
+//? Resists
+
+/**
+ * called when something tries to resist out from inside us.
+ *
+ * @return TRUE if something was done to start to resist / as a resist actino, FALSE if something trivial was done / nothing was done.
+ */
+/obj/proc/contents_resist(mob/escapee)
+	SHOULD_NOT_SLEEP(TRUE)
+	return FALSE
+
+/**
+ * Invoke asynchronously from contents_resist.
+ *
+ * @return TRUE / FALSE based on if they started an action.
+ */
+/obj/proc/contents_resist_sequence(mob/escapee, time = 2 MINUTES, interval = 5 SECONDS)
+	set waitfor = FALSE
+	if(INTERACTING_WITH_FOR(escapee, src, INTERACTING_FOR_RESIST))
+		return FALSE
+	. = TRUE
+	_contents_resist_sequence(arglist(args))
+
+/obj/proc/_contents_resist_sequence(mob/escapee, time, interval)
+	START_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
+	. = TRUE
+	#warn impl
+	STOP_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
+	if(.)
+		contents_resist_finish(escapee)
+
+/*
+	if(breakout)
+		return
+	if(!req_breakout() && !opened)
+		open()
+		return
+
+	escapee.setClickCooldown(100)
+
+	//okay, so the closet is either sealed or locked... resist!!!
+	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")
+
+	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
+
+	spawn(0)
+		breakout = 1 //can't think of a better way to do this right now.
+		for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
+			if(!do_after(escapee, 50)) //5 seconds
+				breakout = 0
+				return
+			if(!escapee || escapee.incapacitated() || escapee.loc != src)
+				breakout = 0
+				return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
+			//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
+			if(!req_breakout())
+				breakout = 0
+				return
+
+			playsound(src.loc, breakout_sound, 100, 1)
+			animate_shake()
+			add_fingerprint(escapee)
+
+		//Well then break it!
+		breakout = 0
+		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
+		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
+		playsound(src.loc, breakout_sound, 100, 1)
+		animate_shake()
+		break_open()
+		*/
+
+/**
+ * Called when contents_resist_sequence finishes successfully.
+ */
+/obj/proc/contents_resist_finish(mob/escapee)
 	return
