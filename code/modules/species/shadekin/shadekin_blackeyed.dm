@@ -29,7 +29,7 @@
 	)
 	max_additional_languages = 3
 
-	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
+	//rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
 	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
 	darksight = 10 // Best darksight around

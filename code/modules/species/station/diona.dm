@@ -42,7 +42,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Dionea"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/dionaea)
-	rarity_value   = 3
+	//rarity_value   = 3
 
 	has_organ = list(
 		O_NUTRIENT = /obj/item/organ/internal/diona/nutrients,

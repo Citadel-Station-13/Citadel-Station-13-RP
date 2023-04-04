@@ -60,7 +60,7 @@
 
 	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
-	rarity_value =          5
+	//7rarity_value =          5
 
 	has_organ = list(
 		O_BRAIN = /obj/item/organ/internal/mmi_holder/posibrain/nano,
