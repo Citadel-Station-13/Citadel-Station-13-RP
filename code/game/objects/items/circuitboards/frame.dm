@@ -72,7 +72,7 @@
 
 /obj/item/circuitboard/holopad
 	name = T_BOARD("holopad")
-	build_path = /obj/machinery/hologram/holopad
+	build_path = /obj/machinery/holopad
 	board_type = new /datum/frame/frame_types/holopad
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 

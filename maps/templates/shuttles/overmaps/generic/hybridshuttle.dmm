@@ -235,8 +235,7 @@
 /obj/machinery/light,
 /obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
-	tele_name = "Hybrid Shuttle";
-
+	tele_name = "Hybrid Shuttle"
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -651,6 +650,11 @@
 	},
 /turf/space,
 /area/shuttle/blue_fo)
+"La" = (
+/obj/machinery/light,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/blue_fo)
 
 (1,1,1) = {"
 aa
@@ -908,7 +912,7 @@ ab
 aZ
 bg
 bl
-be
+La
 bu
 bx
 aa

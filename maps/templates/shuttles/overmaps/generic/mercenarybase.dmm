@@ -191,7 +191,7 @@
 /obj/machinery/airlock_sensor/airlock_exterior{
 	frequency = 1200;
 	id_tag = "westairlock";
-	master_tag = "westexteriorsensor";
+	master_tag = "westexteriorsensor"
 	},
 /turf/simulated/mineral/floor,
 /area/mercbase/roid)
@@ -203,7 +203,7 @@
 /obj/machinery/airlock_sensor/airlock_interior{
 	frequency = 1200;
 	id_tag = "westairlock";
-	master_tag = "westchambersensor";
+	master_tag = "westchambersensor"
 	},
 /turf/simulated/floor,
 /area/mercbase/airlock)
@@ -211,7 +211,7 @@
 /obj/machinery/airlock_sensor/airlock_interior{
 	frequency = 1200;
 	id_tag = "westairlock";
-	master_tag = "westinteriorsensor";
+	master_tag = "westinteriorsensor"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
@@ -3091,6 +3091,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "nc" = (
@@ -3628,6 +3629,13 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/hall)
+"PT" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/dark,
+/area/mercbase/command)
 
 (1,1,1) = {"
 mc
@@ -11782,7 +11790,7 @@ fS
 fS
 gR
 gX
-gX
+PT
 gX
 hb
 hc

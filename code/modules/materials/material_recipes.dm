@@ -446,9 +446,10 @@
 		new/datum/stack_recipe("bone statue", /obj/structure/statue/bone, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("skull statue", /obj/structure/statue/bone/skull, 20, time = 5, one_per_turf = 1, on_floor = 1), \
 		new/datum/stack_recipe("half skull statue", /obj/structure/statue/bone/skull/half, 20, time = 5, one_per_turf = 1, on_floor = 1), \
-		new/datum/stack_recipe("bone roofing tile", /obj/item/stack/tile/roofing/bone, 3, 4, 20), \
-		new/datum/stack_recipe("bone table frame", /obj/structure/table, 1, time = 10, one_per_turf = 1, on_floor = 1)
 		))
+	recipes += new/datum/stack_recipe("bone roofing tile", /obj/item/stack/tile/roofing/bone, 3, 4, 20)
+	recipes += new/datum/stack_recipe("bone table frame", /obj/structure/table, 1, time = 10, one_per_turf = 1, on_floor = 1)
+	recipes += new/datum/stack_recipe("bone crate", /obj/structure/closet/crate/ashlander, 10, time = 50, one_per_turf = 1)
 
 /datum/material/sinew/generate_recipes()
 	..()
