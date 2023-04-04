@@ -1599,6 +1599,12 @@
 	dir = 1
 	},
 /area/class_m/outside)
+"qy" = (
+/obj/vehicle/ridden/gokart/random{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/class_m/outside)
 "qG" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_rod/modern/strong,
@@ -2308,12 +2314,6 @@
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"xN" = (
-/obj/vehicle_old/train/engine/quadbike/random{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monowhite,
-/area/class_m/outside)
 "xT" = (
 /turf/simulated/floor/water/beach{
 	dir = 6
@@ -2600,10 +2600,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
-/area/class_m/outside)
-"AB" = (
-/obj/vehicle_old/train/engine/quadbike/random,
-/turf/simulated/floor/tiled/monowhite,
 /area/class_m/outside)
 "AD" = (
 /obj/structure/fence/post,
@@ -3060,6 +3056,12 @@
 /turf/simulated/floor/concrete/tile/classm/outdoors{
 	icon_state = "concrete19"
 	},
+/area/class_m/outside)
+"Fz" = (
+/obj/vehicle/ridden/gokart/random{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monowhite,
 /area/class_m/outside)
 "FE" = (
 /obj/structure/closet/crate/bin{
@@ -10674,26 +10676,26 @@ tF
 tF
 tF
 xb
-Em
+qy
 CB
-Em
+qy
 vb
-Em
+qy
 YY
-Em
+qy
 vb
-Em
+qy
 UQ
-Em
+qy
 vb
-Em
+qy
 nY
-Em
+qy
 vb
-Em
+qy
 Qq
-Em
-Ut
+qy
+xb
 oT
 oT
 oT
@@ -10868,25 +10870,25 @@ tF
 tF
 tF
 xb
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
 Em
-AB
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
 Ut
 oT
 oT
@@ -13196,25 +13198,25 @@ tF
 tF
 tF
 xb
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
 Em
-xN
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
+Em
 Ut
 oT
 oT
@@ -13390,25 +13392,25 @@ tF
 tF
 tF
 xb
-Em
+Fz
 eQ
-Em
+Fz
 vb
-Em
+Fz
 SJ
-Em
+Fz
 vb
-Em
+Fz
 Gs
-Em
+Fz
 vb
-Em
+Fz
 Vf
-Em
+Fz
 vb
-Em
+Fz
 dn
-Em
+Fz
 Ut
 oT
 oT

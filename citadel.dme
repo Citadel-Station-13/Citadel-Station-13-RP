@@ -4409,6 +4409,7 @@
 #include "code\modules\vehicles\ridden.dm"
 #include "code\modules\vehicles\sealed.dm"
 #include "code\modules\vehicles\ridden\bike.dm"
+#include "code\modules\vehicles\ridden\gokart.dm"
 #include "code\modules\vehicles\ridden\quad.dm"
 #include "code\modules\vehicles\ridden\rock.dm"
 #include "code\modules\vehicles\ridden\three_wheel_carts.dm"
