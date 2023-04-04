@@ -18,7 +18,7 @@
 "av" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = "Garage5";
+	id = "garage5";
 	name = "Garage 5"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -172,7 +172,7 @@
 "bD" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "Garage7";
+	id = "garage7";
 	name = "Garage 7"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -407,7 +407,7 @@
 "dn" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "Garage6";
+	id = "garage6";
 	name = "Garage Door Control";
 	pixel_x = 26
 	},
@@ -501,7 +501,7 @@
 "eQ" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "Garage10";
+	id = "garage10";
 	name = "Garage Door Control";
 	pixel_x = 26
 	},
@@ -913,7 +913,7 @@
 "ja" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = "Garage3";
+	id = "garage3";
 	name = "Garage 3"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -950,7 +950,7 @@
 "jv" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "Garage8";
+	id = "garage8";
 	name = "Garage 8"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -1471,7 +1471,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "Garage2";
+	id = "garage2";
 	name = "Garage Door Control";
 	pixel_x = -26
 	},
@@ -1533,7 +1533,7 @@
 "ot" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "Garage6";
+	id = "garage6";
 	name = "Garage 6"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -2488,7 +2488,7 @@
 "xn" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = "Garage4";
+	id = "garage4";
 	name = "Garage 4"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -3026,7 +3026,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "Garage5";
+	id = "garage5";
 	name = "Garage Door Control";
 	pixel_x = -26
 	},
@@ -3425,7 +3425,7 @@
 "Gs" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "Garage8";
+	id = "garage8";
 	name = "Garage Door Control";
 	pixel_x = 26
 	},
@@ -3707,7 +3707,7 @@
 "IS" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = "Garage2";
+	id = "garage2";
 	name = "Garage 2"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -4196,7 +4196,7 @@
 "Nk" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = "Garage1";
+	id = "garage1";
 	name = "Garage 1"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -4821,7 +4821,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "Garage1";
+	id = "garage1";
 	name = "Garage Door Control";
 	pixel_x = -26
 	},
@@ -4991,7 +4991,7 @@
 "Sq" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "Garage9";
+	id = "garage9";
 	name = "Garage 9"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -5050,7 +5050,7 @@
 "SJ" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "Garage9";
+	id = "garage9";
 	name = "Garage Door Control";
 	pixel_x = 26
 	},
@@ -5265,7 +5265,7 @@
 "UJ" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = "Garage10";
+	id = "garage10";
 	name = "Garage 10"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -5277,7 +5277,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "Garage3";
+	id = "garage3";
 	name = "Garage Door Control";
 	pixel_x = -26
 	},
@@ -5294,7 +5294,7 @@
 "Vf" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "Garage7";
+	id = "garage7";
 	name = "Garage Door Control";
 	pixel_x = 26
 	},
@@ -5775,7 +5775,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "Garage4";
+	id = "garage4";
 	name = "Garage Door Control";
 	pixel_x = -26
 	},
