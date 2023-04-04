@@ -37,8 +37,8 @@
 
 	req_open = 0
 
-	min_duration = 90
-	max_duration = 110
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/unscrew_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -75,8 +75,8 @@
 
 	allowed_procs = list(IS_CROWBAR = 100)
 
-	min_duration = 30
-	max_duration = 40
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/open_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
@@ -113,8 +113,8 @@
 
 	allowed_procs = list(IS_CROWBAR = 100)
 
-	min_duration = 70
-	max_duration = 100
+	min_duration = 20
+	max_duration = 30
 
 /datum/surgery_step/robotics/close_hatch/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if(..())
