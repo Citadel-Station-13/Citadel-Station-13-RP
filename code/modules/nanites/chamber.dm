@@ -115,7 +115,7 @@
 		return FALSE
 	operating = TRUE
 	flick(src, "[base_icon_state]_raising")
-	#warn effects callback timer
+	addtimer(effects_callback, min(effects_in, time))
 	addtimer(CALLBACK(src, PROC_REF(finish_operating)), time)
 	FLICK_IN(src, "[base_icon_state]_falling", max(time - (RAISE_ANIMATE_TIME + FALL_ANIMATE_TIME), 0))
 
