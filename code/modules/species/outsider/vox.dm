@@ -26,7 +26,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Vox"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vox)
-	rarity_value = 4
+	//rarity_value = 4
 
 //	taste_sensitivity = TASTE_DULL
 
