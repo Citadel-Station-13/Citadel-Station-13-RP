@@ -1,3 +1,5 @@
+/obj/item/bluespace_translocator
+
 #warn bluespace_translocator
 /obj/item/perfect_tele
 	name = "personal translocator"

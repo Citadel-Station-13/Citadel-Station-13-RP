@@ -1,3 +1,5 @@
+/obj/item/bluespace_teleporter
+
 #warn bluespace_teleporter
 /obj/item/hand_tele
 	name = "hand tele"
