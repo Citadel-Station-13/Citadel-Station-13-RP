@@ -40,5 +40,4 @@
 		. *= bglore.economy_payscale
 	// todo: character species when *necessary*
 	var/datum/species/S = real_species_datum()
-	. *= S.economy_payscale
 	. *= GLOB.economic_class_payscale_lookup[economic_status] || 1
