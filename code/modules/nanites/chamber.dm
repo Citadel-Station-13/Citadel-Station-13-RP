@@ -142,12 +142,16 @@
 	operate_for(15 SECONDS, 7 SECONDS, CALLBACK(src, PROC_REF(refresh_protean)))
 
 /obj/machinery/nanite_chamber/proc/refresh_protean()
-	#warn impl
+	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in occupant
+	if(isnull(protean_refactory))
+		return
+	protean_refactory.materials[MAT_STEEL] = protean_refactory.max_storage
+	occupant.innate_feedback(SPAN_NOTICE("Your refactory chimes as your nanite reserves are refilled by the chamber."))
 
 /obj/machinery/nanite_chamber/proc/rebuild_protean()
 	if(isnull(protean_core))
 		return
-	consume_protean_costs()
+	consume_reconstruction_costs()
 	// for now we just delete old organs, after organ refactor we wanna make this proper
 	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in held_items
 	var/obj/item/organ/internal/nano/orchestrator/protean_orchestrator = locate() in held_items
@@ -246,7 +250,7 @@
 		if(!remaining[key])
 			continue
 		var/consumed = min(matstack.amount * SHEET_MATERIAL_AMOUNT, remaining[key])
-		remaining[key] -= consume
+		remaining[key] -= consumed
 		matstack.use(CEILING(consumed / SHEET_MATERIAL_AMOUNT, 1))
 
 /obj/machinery/nanite_chamber/proc/available_materials()

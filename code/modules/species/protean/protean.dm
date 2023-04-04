@@ -56,6 +56,7 @@
 
 
 	body_temperature =      290
+	item_slowdown_mod = 0.25 // temporary major hardy due to loss of other resistances
 
 	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
