@@ -80,6 +80,14 @@
 	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
+	/// Makes the icon wider/thinner.
+	var/icon_scale_x = 1
+	/// Makes the icon taller/shorter.
+	var/icon_scale_y = 1
+	/// Used for offsetting large icons.
+	var/pixel_offset_x = 0
+	/// Used for offsetting large icons.
+	var/pixel_offset_y = 0
 
 	//? Overlays
 	/// Used by changelings. Should also be used for icon previews.
@@ -88,7 +96,6 @@
 	var/color_mult = 0
 	/// force non greyscale icons to greyscale before multiplying? WARNING :CITADEL JANK, REPLACE ASAP
 	var/color_force_greyscale = FALSE
-
 	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
 	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
 	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
@@ -96,18 +103,6 @@
 	var/fire_icon_state = "humanoid"
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
-
-	//? Scale
-	/// Makes the icon wider/thinner.
-	var/icon_scale_x = 1
-	/// Makes the icon taller/shorter.
-	var/icon_scale_y = 1
-
-	//? Offset
-	/// Used for offsetting large icons.
-	var/pixel_offset_x = 0
-	/// Used for offsetting large icons.
-	var/pixel_offset_y = 0
 
 	//? Alternate appearance
 	/// The basic skin colours this species uses.
