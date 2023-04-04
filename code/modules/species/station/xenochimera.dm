@@ -661,7 +661,7 @@
 
 /datum/ability/species/xenochimera
 	abstract_type = /datum/ability/species/xenochimera
-
+	always_bind = TRUE
 
 #warn impl
 
