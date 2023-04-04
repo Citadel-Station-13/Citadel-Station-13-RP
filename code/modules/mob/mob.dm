@@ -83,7 +83,7 @@
 		client.screen = list()
 	if(mind && mind.current == src)
 		spellremove(src)
-		mind.current = null
+		mind.disassociate(src)
 	#warn nuke abilities
 	// this kicks out client
 	ghostize()

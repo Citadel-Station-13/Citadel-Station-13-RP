@@ -17,7 +17,7 @@
 	var/category = "Abilities"
 
 	//? mob
-	/// owning mob
+	/// owning mob - can be null if we aren't bound / granted to anyone.
 	var/mob/owner
 	/// action button
 	var/datum/action/button
@@ -49,11 +49,26 @@
 /datum/ability/proc/action_trigger()
 	#warn impl
 
+/datum/ability/proc/attempt_trigger()
+	#warn impl
+
 /**
  * called on trigger
  */
 /datum/ability/proc/on_trigger()
 	return
+
+/datum/ability/proc/quickbind()
+	#warn impl
+
+/datum/ability/proc/unbind()
+	#warn impl
+
+/datum/ability/proc/associate(mob/M)
+	#warn impl
+
+/datum/ability/proc/disassociate(mob/M)
+	#warn impl
 
 /**
  * checks if we can be used

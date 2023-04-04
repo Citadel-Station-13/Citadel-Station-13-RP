@@ -541,7 +541,8 @@
 		var/datum/trait/T = all_traits[name]
 		T.apply(src, H)
 
-	#warn grant abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(H)
 
 /**
  * called when we are removed from a mob
@@ -561,7 +562,8 @@
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
 
-	#warn remove abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(H)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

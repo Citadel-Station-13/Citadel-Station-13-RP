@@ -101,6 +101,7 @@
 
 /datum/mind/Destroy()
 	QDEL_NULL(characteristics)
+	QDEL_LIST_NULL(abilities)
 	return ..()
 
 /**
@@ -112,35 +113,51 @@
 		characteristics.associate_with_mind(src)
 	return characteristics
 
+#warn some way to handle transfer to null!
+
 /datum/mind/proc/transfer_to(mob/living/new_character)
 	if(!istype(new_character))
 		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn")
-	if(current)					//remove ourself from our old body's mind variable
+
+	//* remove from old
+	if(current)
+		// LEGACY: remove changeling
 		if(changeling)
 			current.remove_changeling_powers()
 			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
-		current.mind = null
+		// remove characteristics
 		characteristics?.disassociate_from_mob(current)
+		// remove abilities
+		for(var/datum/ability/ability as anything in abilities)
+			ability.disassociate(current)
+		// transfer uis
+		SStgui.on_transfer(current, new_character)
+		SSnanoui.user_transferred(current, new_character)
+		// null mind
+		current.mind = null
 
-		#warn remove abilities
-
-		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+	//* handle mind internals
 	if(new_character.mind)		//remove any mind currently in our new body's mind variable
 		new_character.mind.current = null
-
 	current = new_character		//link ourself to our new body
-	new_character.mind = src	//and link our new body to ourself
-	characteristics?.associate_with_mob(current)
 
+	//* add to new
+	// set mind
+	new_character.mind = src	//and link our new body to ourself
+	// add characteristics
+	characteristics?.associate_with_mob(new_character)
+	// add abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(new_character)
+	// LEGACY: add changeling
 	if(changeling)
 		new_character.make_changeling()
 
+	//* transfer player if necessary
 	if(active)
 		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
 	// if(new_character.client) //TODO: Eye Contact
 	// 	LAZYCLEARLIST(new_character.client.recent_examines)
-
-	#warn grant abliities
 
 /datum/mind/proc/store_memory(new_text)
 	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
@@ -659,3 +676,39 @@
 		original_save_data[CHARACTER_DATA_RELIGION],
 	)
 	listclearnulls(.)
+
+//? Abilities
+
+/**
+ * adds an ability to us
+ *
+ * @params
+ * * ability - a datum or path. once passed in, this datum is owned by the mind, and the mind can delete it at any time! if a path is passed in, this will runtime on duplicates - paths must always be unique if used in this way.
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/add_ability(datum/ability/ability)
+	if(ispath(ability))
+		. = FALSE
+		ASSERT(!(locate(ability) in abilities))
+		ability = new ability
+	abilities += ability
+	if(current)
+		ability.associate(current)
+	return TRUE
+
+/**
+ * removes, and deletes, an ability on us
+ *
+ * @params
+ * * ability - a datum or path. paths should only be used if it's an unique ability nothing else should grant!
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/remove_ability(datum/ability/ability)
+	if(ispath(ability))
+		ability = locate(ability) in abilities
+	abilities -= ability
+	if(current)
+		ability.disassociate(current)
+	return TRUE
