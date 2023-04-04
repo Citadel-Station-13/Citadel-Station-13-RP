@@ -3,10 +3,6 @@
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
 	category = SPECIES_CATEGORY_RESTRICTED
-	galactic_language = FALSE
-	default_language = LANGUAGE_ID_SCORI
-	intrinsic_languages = list(LANGUAGE_ID_SCORI,LANGUAGE_ID_SIGN)
-	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	//rarity_value = 4
 
@@ -20,8 +16,6 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Scori"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
@@ -30,28 +24,38 @@
 	base_color = "#373652"
 	blood_color = "#3c6d45"
 
-	species_flags = NO_MINOR_CUT
-	siemens_coefficient = 1.5
-
 	max_age = 200
 
-	//Adapted to overcast skies and caverns.
-	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
-	flash_mod = 3.0
+	galactic_language = FALSE
+	default_language = LANGUAGE_ID_SCORI
+	intrinsic_languages = list(LANGUAGE_ID_SCORI,LANGUAGE_ID_SIGN)
+	max_additional_languages = 0
+
+	species_flags = NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	//Physical resistances and weaknesses.
 	burn_mod = 0.25
 	radiation_mod = 1.5
 	toxins_mod = 1.5
 
+	//Adapted to overcast skies and caverns.
+	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
+	flash_mod = 3.0
+
+	siemens_coefficient = 1.5
+
 	//Adapted to Surt's hot, thin atmosphere.
 	breath_type = /datum/gas/carbon_dioxide
 	exhale_type = /datum/gas/oxygen
-	minimum_breath_pressure = 11
+
 	heat_discomfort_level = T0C+20
+
 	warning_low_pressure = 10
-	hazard_low_pressure  = 5
 	safe_pressure = 18
+	hazard_low_pressure  = 5
+	minimum_breath_pressure = 11
 
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/tie_hair
