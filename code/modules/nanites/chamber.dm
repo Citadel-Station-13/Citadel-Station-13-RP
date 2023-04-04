@@ -56,9 +56,11 @@
 
 /obj/machinery/nanite_chamber/Initialize(mapload)
 	. = ..()
+	detect_connection()
 
 /obj/machinery/nanite_chamber/Destroy()
 	drop_contents()
+	linked?.unlink_chamber()
 	return ..()
 
 /obj/machinery/nanite_chamber/update_overlays()
@@ -77,9 +79,6 @@
 		icon_state = "[base_icon_state]"
 	return ..()
 
-/obj/machinery/nanite_chamber/Moved(atom/old_loc, direction, forced)
-	. = ..()
-
 /obj/machinery/nanite_chamber/interact(mob/user)
 	. = ..()
 	if(.)
@@ -87,11 +86,12 @@
 	toggle_open(user)
 	return TRUE
 
-#warn impl
-
-/obj/machinery/nanite_chamber/proc/reassert_connection()
-
 /obj/machinery/nanite_chamber/proc/detect_connection()
+	if(linked)
+		return
+	var/obj/machinery/computer/nanite_chamber/chamber = locate() in orange(1, src)
+	if(chamber)
+		chamber?.relink()
 
 /obj/machinery/nanite_chamber/proc/set_locked(new_value)
 	locked = new_value
@@ -102,8 +102,32 @@
 /obj/machinery/nanite_chamber/proc/is_locked()
 	return locked || operating
 
-/obj/machinery/nanite_chamber/proc/rebuild_protean()
+#warn operating time
+
+/obj/machinery/nanite_chamber/proc/try_refresh_protean()
 	#warn impl
+
+/obj/machinery/nanite_chamber/proc/refresh_protean()
+	#warn impl
+
+/obj/machinery/nanite_chamber/proc/rebuild_protean()
+	if(isnull(protean_core))
+		return
+	consume_protean_costs()
+	// for now we just delete old organs, after organ refactor we wanna make this proper
+	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in held_items
+	var/obj/item/organ/internal/nano/orchestrator/protean_orchestrator = locate() in held_items
+	if(protean_refactory)
+		QDEL_NULL(protean_refactory)
+	if(protean_orchestrator)
+		QDEL_NULL(protean_orchestrator)
+	// do the human thing :D
+	// todo: this doesn't transfer markings / naything because brains and minds are fucking stupid kill me please
+	// todo: ORGAN AND CHARACTER SAVING REFACTOR AAAAAAAAAA
+	var/mob/living/carbon/human/new_protean = new(src)
+	new_protean.set_species(/datum/species/protean, force = TRUE)
+	new_protean.real_name = protean_core.brainmob.real_name
+	protean_core.brainmob.mind.transfer_to(new_protean)
 
 /obj/machinery/nanite_chamber/proc/open(mob/user)
 	if(open)
@@ -157,6 +181,14 @@
 			LAZYADD(held_items, M)
 	linked?.update_static_data()
 
+/obj/machinery/nanite_chamber/proc/check_reconstruction_costs()
+	var/list/avail = available_materials()
+	var/list/wanted = protean_reconstruction_costs()
+	for(var/mat in wanted)
+		if(avail[mat] < wanted[mat])
+			return FALSE
+	return TRUE
+
 /**
  * estimate cost of reconstruction for proteans, null if no protean found.
  */
@@ -172,6 +204,16 @@
 	if(!locate(/obj/item/organ/internal/nano/refactory) in held_items)
 		for(var/mat in protean_cost_refactory)
 			.[mat] += protean_cost_refactory[mat]
+
+/obj/machinery/nanite_chamber/proc/consume_reconstruction_costs()
+	var/list/remaining = protean_reconstruction_costs()
+	for(var/obj/item/stack/material/matstack in held_items)
+		var/key = matstack.material.id
+		if(!remaining[key])
+			continue
+		var/consumed = min(matstack.amount * SHEET_MATERIAL_AMOUNT, remaining[key])
+		remaining[key] -= consume
+		matstack.use(CEILING(consumed / SHEET_MATERIAL_AMOUNT, 1))
 
 /obj/machinery/nanite_chamber/proc/available_materials()
 	. = list()

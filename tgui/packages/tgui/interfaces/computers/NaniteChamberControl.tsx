@@ -16,6 +16,7 @@ interface NaniteChamberControlData {
 
 interface OccupantData {
   name: string;
+  isProtean: BooleanLike;
 }
 
 interface ProteanData {

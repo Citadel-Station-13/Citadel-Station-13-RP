@@ -57,8 +57,17 @@
 	. = ..()
 	switch(action)
 		if("lock")
-
-		if("reconstruct")
+			linked?.toggle_locked()
+			return TRUE
+		if("protean_reconstruct")
+			if(!linked.protean_core || !linked.check_reconstruction_costs())
+				return TRUE
+			linked.consume_reconstruction_costs()
+			linked.rebuild_protean()
+			return TRUE
+		if("protean_refresh")
+			linked.try_refresh_protean()
+			return TRUE
 
 /obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -75,9 +84,14 @@
 		return
 	.["hasChamber"] = TRUE
 	if(!isnull(linked.occupant))
+		var/is_protean = FALSE
+		if(ishuman(linked.occupant))
+			var/mob/living/carbon/human/H = linked.occupant
+			is_protean = istype(H.species, /datum/species/protean)
 		.["hasOccupant"] = TRUE
 		.["occupant"] = list(
-			linked.occupant.name,
+			"name" = linked.occupant.name,
+			"isProtean" = is_protean,
 		)
 	else
 		.["hasOccupant"] = FALSE
