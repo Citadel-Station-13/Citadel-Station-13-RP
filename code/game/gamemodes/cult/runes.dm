@@ -655,8 +655,7 @@ var/list/sacrificed = list()
 		var/worth = 0
 		if(istype(H,/mob/living/carbon/human))
 			var/mob/living/carbon/human/lamb = H
-			if(lamb.species.rarity_value > 3)
-				worth = 1
+			CRASH("This function wants to use a rarety value for the mobs, which was removed.")
 
 		if (SSticker.mode.name == "cult")
 			if(H.mind == cult.sacrifice_target)

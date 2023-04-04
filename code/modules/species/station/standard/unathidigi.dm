@@ -17,7 +17,6 @@
 	While some unathi are plantigrade and almost resemble humans in their silhouette, others are more hulking; a digitigrade, beastial and alien creature.
 	"}
 
-	organs_icon = 'icons/mob/species/unathidigi/organs.dmi'
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest/unathi),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin/unathi),

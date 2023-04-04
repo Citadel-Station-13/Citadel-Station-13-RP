@@ -224,7 +224,6 @@
 					prob(4);/obj/item/storage/pill_bottle/happy,
 					prob(4);/obj/item/storage/pill_bottle/zoom,
 					prob(4);/obj/item/gun/energy/sizegun,
-					prob(4);/obj/item/reagent_containers/food/drinks/glue,
 					prob(4);/obj/item/gun/energy/stripper,
 					prob(3);/obj/item/material/butterfly,
 					prob(3);/obj/item/material/butterfly/switchblade,
