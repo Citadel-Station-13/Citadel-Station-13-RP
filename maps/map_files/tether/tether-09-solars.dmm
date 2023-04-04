@@ -1404,7 +1404,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/testing_lab)
 "du" = (
@@ -1553,7 +1553,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "dP" = (
@@ -2541,7 +2541,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "fx" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost)
 "fy" = (
@@ -3907,7 +3907,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "hJ" = (

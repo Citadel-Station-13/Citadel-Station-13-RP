@@ -154,7 +154,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
 "bn" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "bp" = (
@@ -1791,7 +1791,7 @@
 /turf/simulated/floor/reinforced,
 /area/gateway)
 "pu" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/refinery)
 "pC" = (
@@ -2075,7 +2075,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/prison)
 "sf" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost/recreation)
 "so" = (
@@ -2652,7 +2652,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/refinery)
 "yk" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "yn" = (
@@ -3832,7 +3832,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
 "Is" = (
@@ -3891,7 +3891,7 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "IZ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/near_gateway)
 "Jd" = (

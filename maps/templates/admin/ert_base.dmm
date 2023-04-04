@@ -2107,6 +2107,10 @@
 /obj/item/storage/belt/janitor,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
+"Yp" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/shuttle/floor/darkred,
+/area/shuttle/specops/centcom)
 
 (1,1,1) = {"
 aa
@@ -3343,7 +3347,7 @@ bd
 bd
 bd
 bd
-bd
+Yp
 bd
 bd
 bd

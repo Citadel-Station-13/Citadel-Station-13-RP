@@ -475,8 +475,8 @@
 
 //? Emissives
 /atom/movable/proc/update_emissive_layers()
-	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
-	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
 	if(em_block)
@@ -494,7 +494,7 @@
 	if(!em_block)
 		return
 	// layer it BELOW us incase WE wanna be fuh-nee with our own emissives
-	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/remove_emissive_blocker()
 	if(!em_block)
@@ -525,7 +525,7 @@
 	if(!em_render)
 		return
 	// layer it at our layer
-	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/remove_emissive_render()
 	if(!em_render)

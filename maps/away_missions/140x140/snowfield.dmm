@@ -369,7 +369,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bd" = (

@@ -78,7 +78,7 @@
 	icon = 'icons/obj/vending.dmi';
 	icon_deny = null;
 	icon_state = "sovietsoda";
-	products = list(/obj/item/clothing/under/rank/chief_engineer = 4, /obj/item/clothing/under/rank/engineer = 4, /obj/item/clothing/shoes/orange = 4, /obj/item/clothing/head/hardhat = 4, /obj/item/storage/belt/utility = 4, /obj/item/clothing/glasses/meson = 4, /obj/item/clothing/gloves/yellow = 4, /obj/item/tool/screwdriver = 12, /obj/item/tool/crowbar = 12, /obj/item/tool/wirecutters = 12, /obj/item/multitool = 12, /obj/item/tool/wrench = 12, /obj/item/t_scanner = 12, /obj/item/stack/cable_coil/heavyduty = 8, /obj/item/cell = 8, /obj/item/weldingtool = 8, /obj/item/clothing/head/welding = 8, /obj/item/light/tube = 10, /obj/item/clothing/head/hardhat/red = 4, /obj/item/clothing/suit/fire = 4, /obj/item/stock_parts/scanning_module = 5, /obj/item/stock_parts/micro_laser = 5, /obj/item/stock_parts/matter_bin = 5, /obj/item/stock_parts/manipulator = 5, /obj/item/stock_parts/console_screen = 5);
+	products = list(/obj/item/clothing/under/rank/chief_engineer=4,/obj/item/clothing/under/rank/engineer=4,/obj/item/clothing/shoes/orange=4,/obj/item/clothing/head/hardhat=4,/obj/item/storage/belt/utility=4,/obj/item/clothing/glasses/meson=4,/obj/item/clothing/gloves/yellow=4,/obj/item/tool/screwdriver=12,/obj/item/tool/crowbar=12,/obj/item/tool/wirecutters=12,/obj/item/multitool=12,/obj/item/tool/wrench=12,/obj/item/t_scanner=12,/obj/item/stack/cable_coil/heavyduty=8,/obj/item/cell=8,/obj/item/weldingtool=8,/obj/item/clothing/head/welding=8,/obj/item/light/tube=10,/obj/item/clothing/head/hardhat/red=4,/obj/item/clothing/suit/fire=4,/obj/item/stock_parts/scanning_module=5,/obj/item/stock_parts/micro_laser=5,/obj/item/stock_parts/matter_bin=5,/obj/item/stock_parts/manipulator=5,/obj/item/stock_parts/console_screen=5);
 	req_access = list(301);
 	req_log_access = 301;
 	req_one_access = list(301)
@@ -594,6 +594,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/talon/deckone/central_hallway)
+"fx" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/eris/white/gray_platform,
+/area/shuttle/talonboat)
 "fA" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -1047,7 +1051,7 @@
 	dir = 1
 	},
 /obj/structure/closet/wardrobe/black{
-	starts_with = list(/obj/item/clothing/under/color/black = 4, /obj/item/clothing/accessory/storage/black_vest = 4, /obj/item/clothing/accessory/storage/black_drop_pouches = 4, /obj/item/clothing/gloves/black = 4, /obj/item/clothing/head/soft/black = 4, /obj/item/clothing/mask/balaclava = 4, /obj/item/clothing/mask/bandana = 4, /obj/item/clothing/mask/gas/commando = 4, /obj/item/storage/backpack/messenger/black = 4, /obj/item/storage/backpack/dufflebag = 4, /obj/item/clothing/shoes/black = 4, /obj/item/clothing/shoes/boots/duty = 4)
+	starts_with = list(/obj/item/clothing/under/color/black=4,/obj/item/clothing/accessory/storage/black_vest=4,/obj/item/clothing/accessory/storage/black_drop_pouches=4,/obj/item/clothing/gloves/black=4,/obj/item/clothing/head/soft/black=4,/obj/item/clothing/mask/balaclava=4,/obj/item/clothing/mask/bandana=4,/obj/item/clothing/mask/gas/commando=4,/obj/item/storage/backpack/messenger/black=4,/obj/item/storage/backpack/dufflebag=4,/obj/item/clothing/shoes/black=4,/obj/item/clothing/shoes/boots/duty=4)
 	},
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/armory)
@@ -1120,21 +1124,21 @@
 	},
 /obj/structure/table/steel,
 /obj/item/radio/off{
-	channels = list("Talon" = 1);
+	channels = list("Talon"=1);
 	pixel_y = 6
 	},
 /obj/item/radio/off{
-	channels = list("Talon" = 1);
+	channels = list("Talon"=1);
 	pixel_x = -6;
 	pixel_y = 4
 	},
 /obj/item/radio/off{
-	channels = list("Talon" = 1);
+	channels = list("Talon"=1);
 	pixel_x = 6;
 	pixel_y = 4
 	},
 /obj/item/radio/off{
-	channels = list("Talon" = 1)
+	channels = list("Talon"=1)
 	},
 /turf/simulated/floor/tiled/eris/dark/orangecorner,
 /area/talon/deckone/secure_storage)
@@ -1913,7 +1917,7 @@
 "qx" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32;
-	starts_with = list(/obj/item/clothing/suit/fire/firefighter = 2, /obj/item/clothing/mask/gas = 2, /obj/item/flashlight = 2, /obj/item/tank/oxygen/red = 2, /obj/item/extinguisher = 2, /obj/item/clothing/head/hardhat/red = 2)
+	starts_with = list(/obj/item/clothing/suit/fire/firefighter=2,/obj/item/clothing/mask/gas=2,/obj/item/flashlight=2,/obj/item/tank/oxygen/red=2,/obj/item/extinguisher=2,/obj/item/clothing/head/hardhat/red=2)
 	},
 /turf/simulated/floor/tiled/eris/dark/danger,
 /area/talon/deckone/secure_storage)
@@ -1925,14 +1929,9 @@
 /turf/simulated/floor/tiled/eris/dark/cyancorner,
 /area/talon/deckone/bridge)
 "qF" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/eris/steel,
-/area/talon/deckone/central_hallway)
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/hull/airless,
+/area/talon/deckone/nose)
 "qO" = (
 /obj/structure/cable/green{
 	dir = 1;
@@ -2355,7 +2354,7 @@
 /area/talon/deckone/starboard_eng)
 "ux" = (
 /obj/machinery/vending/engivend{
-	products = list(/obj/item/geiger_counter = 4, /obj/item/clothing/glasses/meson = 2, /obj/item/multitool = 4, /obj/item/cell/high = 10, /obj/item/airlock_electronics = 10, /obj/item/module/power_control = 10, /obj/item/circuitboard/airalarm = 10, /obj/item/circuitboard/firealarm = 10, /obj/item/circuitboard/status_display = 2, /obj/item/circuitboard/ai_status_display = 2, /obj/item/circuitboard/newscaster = 2, /obj/item/circuitboard/holopad = 2, /obj/item/circuitboard/intercom = 4, /obj/item/circuitboard/security/telescreen/entertainment = 4, /obj/item/stock_parts/motor = 2, /obj/item/stock_parts/spring = 2, /obj/item/stock_parts/gear = 2, /obj/item/circuitboard/atm, /obj/item/circuitboard/guestpass, /obj/item/circuitboard/keycard_auth, /obj/item/circuitboard/photocopier, /obj/item/circuitboard/fax, /obj/item/circuitboard/request, /obj/item/circuitboard/microwave, /obj/item/circuitboard/washing, /obj/item/circuitboard/scanner_console, /obj/item/circuitboard/sleeper_console, /obj/item/circuitboard/body_scanner, /obj/item/circuitboard/sleeper, /obj/item/circuitboard/dna_analyzer, /obj/item/circuitboard/partslathe);
+	products = list(/obj/item/geiger_counter=4,/obj/item/clothing/glasses/meson=2,/obj/item/multitool=4,/obj/item/cell/high=10,/obj/item/airlock_electronics=10,/obj/item/module/power_control=10,/obj/item/circuitboard/airalarm=10,/obj/item/circuitboard/firealarm=10,/obj/item/circuitboard/status_display=2,/obj/item/circuitboard/ai_status_display=2,/obj/item/circuitboard/newscaster=2,/obj/item/circuitboard/holopad=2,/obj/item/circuitboard/intercom=4,/obj/item/circuitboard/security/telescreen/entertainment=4,/obj/item/stock_parts/motor=2,/obj/item/stock_parts/spring=2,/obj/item/stock_parts/gear=2,/obj/item/circuitboard/atm,/obj/item/circuitboard/guestpass,/obj/item/circuitboard/keycard_auth,/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,/obj/item/circuitboard/dna_analyzer,/obj/item/circuitboard/partslathe);
 	req_access = list(301);
 	req_log_access = 301
 	},
@@ -5916,6 +5915,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/eris/white/golden,
 /area/talon/deckone/bridge)
 "WR" = (
@@ -16020,7 +16020,7 @@ ST
 pV
 ZX
 FN
-qF
+Iz
 Gb
 KW
 KW
@@ -16045,7 +16045,7 @@ Sc
 Sc
 fZ
 fZ
-fZ
+fx
 fZ
 fZ
 ta
@@ -16993,7 +16993,7 @@ Os
 Os
 Os
 Os
-Os
+qF
 Os
 Os
 Os

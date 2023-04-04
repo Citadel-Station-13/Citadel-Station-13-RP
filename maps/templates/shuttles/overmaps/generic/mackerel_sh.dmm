@@ -58,6 +58,7 @@
 /area/shuttle/mackerel_sh)
 "cD" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_sh)
 "dG" = (

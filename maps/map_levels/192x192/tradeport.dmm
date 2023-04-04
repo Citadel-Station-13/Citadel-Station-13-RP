@@ -1133,7 +1133,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/structure/window/reinforced,
 /obj/item/storage/briefcase/fission{
-	starts_with = list(/obj/item/coin/supermatter, /obj/item/coin/supermatter, /obj/item/coin/supermatter)
+	starts_with = list(/obj/item/coin/supermatter,/obj/item/coin/supermatter,/obj/item/coin/supermatter)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -7761,7 +7761,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
@@ -7947,10 +7947,10 @@
 /area/tradeport/commons)
 "Er" = (
 /obj/machinery/vending/sovietsoda{
-	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb = 20);
+	contraband = list(/obj/item/reagent_containers/food/drinks/cans/crystalgibb=20);
 	desc = "An old sweet water vending machine. It looks like someone crossed out the D and replaced it with an F.";
 	name = "BOFA";
-	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko = 20)
+	products = list(/obj/item/reagent_containers/food/drinks/cans/thirteenloko=20)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -8033,6 +8033,7 @@
 	name = "Beruang";
 	pixel_x = 32
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/cockpit)
 "EL" = (
@@ -8219,7 +8220,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -11950,7 +11951,7 @@
 /obj/machinery/vending/assist{
 	contraband = null;
 	name = "Old Vending Machine";
-	products = list(/obj/item/assembly/prox_sensor = 5, /obj/item/assembly/signaler = 4, /obj/item/assembly/infra = 4, /obj/item/assembly/prox_sensor = 4, /obj/item/handcuffs = 8, /obj/item/flash = 4, /obj/item/cartridge/signal = 4, /obj/item/clothing/glasses/sunglasses = 4)
+	products = list(/obj/item/assembly/prox_sensor=5,/obj/item/assembly/signaler=4,/obj/item/assembly/infra=4,/obj/item/assembly/prox_sensor=4,/obj/item/handcuffs=8,/obj/item/flash=4,/obj/item/cartridge/signal=4,/obj/item/clothing/glasses/sunglasses=4)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
@@ -12897,6 +12898,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "XJ" = (
@@ -12934,6 +12936,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "XR" = (

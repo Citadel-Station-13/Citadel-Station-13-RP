@@ -5741,6 +5741,7 @@
 	icon_state = "bordercolor";
 	dir = 4
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "lr" = (
@@ -8085,9 +8086,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringpower)
 "pt" = (
-/obj/machinery/power/smes/buildable{
-
-	},
+/obj/machinery/power/smes/buildable,
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -8279,7 +8278,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
@@ -12071,7 +12070,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor4)
@@ -12092,7 +12091,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
@@ -12113,7 +12112,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor3)
@@ -12131,7 +12130,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
@@ -12146,7 +12145,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
@@ -12164,7 +12163,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
@@ -12182,7 +12181,7 @@
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
-	pixel_y = 26;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
@@ -12239,6 +12238,24 @@
 /obj/item/deskbell,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seclobby)
+"EC" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/expe/bridge)
+"WC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	icon_state = "intact-supply";
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/white,
+/area/ship/expe/medicalmain)
 
 (1,1,1) = {"
 aa
@@ -21683,7 +21700,7 @@ hH
 iZ
 kw
 aX
-ks
+WC
 lA
 kv
 qp
@@ -30342,7 +30359,7 @@ fM
 gI
 hn
 it
-it
+EC
 it
 it
 jR
