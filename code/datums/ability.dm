@@ -49,13 +49,22 @@
 /datum/ability/proc/action_trigger()
 	#warn impl
 
-/datum/ability/proc/attempt_trigger()
+/**
+ * called to try to trigger.
+ *
+ * @params
+ * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
+ */
+/datum/ability/proc/attempt_trigger(toggling)
 	#warn impl
 
 /**
  * called on trigger
+ *
+ * @params
+ * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/on_trigger()
+/datum/ability/proc/on_trigger(toggling)
 	return
 
 /datum/ability/proc/quickbind()

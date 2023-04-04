@@ -656,3 +656,16 @@
 				SPAN_DANGER("[src] pulls the tendrils out!"),
 				SPAN_WARNING("The sensation fades. You feel made anew."),
 			)
+
+//? Abilities
+
+/datum/ability/species/xenochimera
+	abstract_type = /datum/ability/species/xenochimera
+
+
+#warn impl
+
+/datum/ability/species/xenochimera/on_trigger()
+	. = ..()
+
+
