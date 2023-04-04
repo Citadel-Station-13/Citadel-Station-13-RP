@@ -30,7 +30,7 @@
 	anchored = 1
 	max_closets = 1
 	opened = 1
-	color = "#eec99f"
+	color = "#c2b29f"
 
 /obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
@@ -177,4 +177,4 @@
 /obj/structure/closet/grave/snow
 	name = "grave"
 	desc = "Snow."
-	color = "#bce4ff"
+	color = "#e6f3fc"
