@@ -116,6 +116,10 @@
 	path =/obj/item/light/bulb
 	is_stack = TRUE
 
+/datum/category_item/autolathe/general/bulb/fairy
+	name = "fairy light bulb"
+	path = "/obj/item/light/bulb/fairy"
+
 /datum/category_item/autolathe/general/ashtray_glass
 	name = "glass ashtray"
 	path =/obj/item/material/ashtray/glass
