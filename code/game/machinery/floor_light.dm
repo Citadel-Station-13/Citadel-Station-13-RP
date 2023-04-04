@@ -175,21 +175,13 @@ var/list/floor_light_cache = list()
 	update_brightness()
 
 /obj/machinery/floor_light/changing
-	name = "changing Floor light"
-	var/last_color_change
-
-/obj/machinery/floor_light/changing/Initialize(mapload)
-	. = ..()
-	last_color_change = world.time
+	name = "changing floor light"
 
 /obj/machinery/floor_light/changing/process(delta_time)
 	. = ..()
-	update_colour()
+	update_color()
 
-/obj/machinery/floor_light/changing/proc/update_colour()
-	if(last_color_change > world.time - 0.5 SECONDS)
-		return
-	last_color_change = world.time
+/obj/machinery/floor_light/changing/proc/update_color()
 	switch(default_light_colour)
 		if("#0CD5E8")
 			default_light_colour = "#0CF241"
