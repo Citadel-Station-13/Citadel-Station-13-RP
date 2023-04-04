@@ -40,16 +40,14 @@
 	flash_mod = 3.0
 
 	//Physical resistances and weaknesses.
-	brute_mod = 0.85
 	burn_mod = 0.25
-	radiation_mod = 0.5
-	toxins_mod = 0.5
+	radiation_mod = 1.5
+	toxins_mod = 1.5
 
 	//Adapted to Surt's hot, thin atmosphere.
 	breath_type = /datum/gas/carbon_dioxide
 	exhale_type = /datum/gas/oxygen
 	minimum_breath_pressure = 11
-	oxy_mod = 0.25
 	heat_discomfort_level = T0C+20
 	warning_low_pressure = 10
 	hazard_low_pressure  = 5
