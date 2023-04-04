@@ -896,8 +896,6 @@
 /mob/living/silicon/robot/update_canmove()
 	. = ..()
 	updateicon()
-	spawn(-1) // We don't need to wait for this.
-		check_clearance()
 
 
 /mob/living/silicon/robot/updateicon()
@@ -1430,19 +1428,6 @@
 		if("Belly up")
 			bellyup = TRUE
 
-/mob/living/silicon/robot/proc/check_clearance() // Literally just for sitting.
-	if(sitting || resting) // should it be sitting, resting, or both?
-		for(var/mob/living/carbon/smooshed in loc)
-			if(prob(1))
-				. = smooshed.apply_damage(60, BRUTE, BP_HEAD)
-			if(.) //Hooray, we damaged something.
-				var/obj/head = smooshed.get_organ(BP_HEAD) | "head mount" // Yeah, we probably already have a head if the first check passed anyways.
-				smooshed.visible_message(
-					"[name] slams their chassis into [smooshed]'s [head]! That looked painful!",
-					"Your [head] is crushed by [name]'s mechanical parts!",
-					"You hear a loud crack!",
-				)
-
 /mob/living/silicon/robot/proc/ex_reserve_refill()
 	set name = "Refill Extinguisher"
 	set category = "Object"
@@ -1459,7 +1444,7 @@
 			else
 				to_chat(src, "Insufficient water reserves.")
 
-/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+/mob/living/silicon/robot/on_changed_z_level(old_z, new_z)
 	if(shell)
 		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
 			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")

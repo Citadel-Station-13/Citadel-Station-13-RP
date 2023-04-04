@@ -2659,7 +2659,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eB" = (

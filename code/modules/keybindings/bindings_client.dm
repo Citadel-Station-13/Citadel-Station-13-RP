@@ -1,4 +1,5 @@
 /client
+
 	/// Amount of keydowns in the last keysend checking interval
 	var/client_keysend_amount = 0
 	/// World tick time where client_keysend_amount will reset
@@ -77,8 +78,9 @@
 		if(kb.can_use(src) && kb.down(src) && keycount >= MAX_COMMANDS_PER_KEY)
 			break
 
-	holder?.key_down(_key, src)
-	mob.focus?.key_down(_key, src)
+	if(mob.key_intercept?.key_down(_key, src))
+		return
+	mob.key_focus?.key_down(_key, src)
 
 /// Keyup's all keys held down.
 /client/proc/ForceAllKeysUp()
@@ -136,13 +138,16 @@
 		var/datum/keybinding/kb = GLOB.keybindings_by_name[kb_name]
 		if(kb.can_use(src) && kb.up(src))
 			break
-	holder?.key_up(_key, src)
-	mob.focus?.key_up(_key, src)
+
+	if(mob.key_intercept?.key_up(_key, src))
+		return
+	mob.key_focus?.key_up(_key, src)
 
 // Called every game tick
 /client/keyLoop()
-	holder?.keyLoop(src)
-	mob.focus?.keyLoop(src)
+	if(mob.key_intercept?.keyLoop(src))
+		return
+	mob.key_focus?.keyLoop(src)
 
 /client/proc/update_movement_keys(datum/preferences/direct_prefs)
 	var/datum/preferences/D = prefs || direct_prefs

@@ -195,7 +195,7 @@ const ViewStationTraitsPage = (props, context) => {
                 disabled={data.too_late_to_revert || !stationTrait.can_revert}
                 tooltip={
                   (!stationTrait.can_revert && "This trait is not revertable.")
-                  || (data.too_late_to_revert && "It's too late to revert station traits, the round has already started.")
+                  || (!!data.too_late_to_revert && "It's too late to revert station traits, the round has already started.")
                 }
                 icon="times"
                 onClick={() => act("revert", {

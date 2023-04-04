@@ -40,10 +40,11 @@ var/const/enterloopsanity = 100
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
 	var/CanPassSelf = CanPass(mover, src)
+	var/atom/mover_loc = mover.loc
 	if(CanPassSelf || (mover.movement_type & MOVEMENT_UNSTOPPABLE))
 		for(var/i in contents)
-			if(QDELETED(mover))
-				return FALSE		//We were deleted, do not attempt to proceed with movement.
+			if(mover.loc != mover_loc)
+				return FALSE		// something yanked it out; this shouldn't happen but just break here.
 			if(i == mover || i == mover.loc) // Multi tile objects and moving out of other objects
 				continue
 			var/atom/movable/thing = i
@@ -69,14 +70,13 @@ var/const/enterloopsanity = 100
 	. = ..()
 	if(!. || QDELETED(mover))
 		return FALSE
-	for(var/i in contents)
-		if(i == mover)
+	for(var/atom/movable/thing as anything in contents)
+		if(mover.loc != src) // deleted or yanked out
+			return FALSE
+		if(thing == mover)
 			continue
-		var/atom/movable/thing = i
 		if(!thing.Uncross(mover, newloc))
 			if(thing.atom_flags & ATOM_BORDER)
 				mover.Bump(thing)
 			if(!(mover.movement_type & MOVEMENT_UNSTOPPABLE))
 				return FALSE
-		if(QDELETED(mover))
-			return FALSE		//We were deleted.
