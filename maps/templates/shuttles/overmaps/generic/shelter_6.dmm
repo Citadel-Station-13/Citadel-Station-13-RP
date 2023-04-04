@@ -1428,6 +1428,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bn" = (
@@ -1738,6 +1739,11 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
+"nd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/reinforced,
+/area/shuttle/tabiranth)
 "wz" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
@@ -1847,7 +1853,7 @@ ad
 af
 al
 as
-as
+nd
 as
 aR
 bh

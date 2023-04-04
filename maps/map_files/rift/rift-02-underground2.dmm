@@ -4229,7 +4229,7 @@
 "lZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
@@ -6912,7 +6912,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8333,7 +8333,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "zk" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/lino,
 /area/chapel/office)
 "zl" = (
@@ -8627,7 +8627,7 @@
 	dir = 6
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -11691,7 +11691,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
 "Ni" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
 "Nj" = (

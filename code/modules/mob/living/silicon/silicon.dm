@@ -75,7 +75,7 @@
 	idcard = new idcard_type(src)
 	set_id_info(idcard)
 
-/mob/living/silicon/proc/SetName(pickedName as text)
+/mob/living/silicon/proc/SetName(pickedName = "Alice")
 	real_name = pickedName
 	name = real_name
 

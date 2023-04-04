@@ -476,7 +476,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/proc/ui_action_click()
+/obj/item/ui_action_click(datum/action/action, mob/user)
 	attack_self(usr)
 
 //RETURN VALUES

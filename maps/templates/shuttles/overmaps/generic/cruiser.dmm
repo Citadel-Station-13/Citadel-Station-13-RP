@@ -8145,7 +8145,7 @@
 /obj/item/rcd_ammo,
 /obj/item/rig/ce/equipped{
 	req_access = list(56)
-},
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
@@ -9240,6 +9240,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
+"Ow" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/steel_grid,
+/area/mothership/bridge)
 "Ox" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -9261,6 +9265,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
+"Pp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/carpet/blue,
+/area/mothership/breakroom)
 "PC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
@@ -9343,6 +9354,10 @@
 	landmark_tag = "ws_port_dock_1";
 	name = "Cruiser Dock P1"
 	},
+/turf/space,
+/area/space)
+"Rm" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/space,
 /area/space)
 "RE" = (
@@ -15291,7 +15306,7 @@ aa
 aa
 aa
 aa
-aa
+Rm
 aa
 aa
 aa
@@ -19560,7 +19575,7 @@ he
 dD
 mb
 ms
-mG
+Ow
 uI
 np
 nG
@@ -19943,7 +19958,7 @@ tG
 tG
 aq
 ax
-FW
+Pp
 aH
 aW
 bh

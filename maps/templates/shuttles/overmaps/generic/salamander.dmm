@@ -674,6 +674,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "ks" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "kx" = (
@@ -1181,6 +1182,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_engineering)
+"ub" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/salamander)
 "ur" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -2302,7 +2312,7 @@ bN
 dO
 eP
 iS
-hp
+ub
 jT
 iS
 Qq

@@ -236,10 +236,13 @@
 		/obj/item/barrier_tape_roll/police,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
+		/obj/item/storage/belt/security,
 		/obj/item/gun/energy/gun/fluff/dominator,
 		/obj/item/cell/device/weapon,
+		/obj/item/tank/oxygen,
 		/obj/item/melee/telebaton,
 		/obj/item/gps/command/blueshield,
+		/obj/item/clothing/mask/gas,
 		/obj/item/tool/crowbar/red,
 		/obj/item/flashlight/maglight,
 		/obj/item/cartridge/security)
