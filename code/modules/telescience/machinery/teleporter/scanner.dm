@@ -11,3 +11,8 @@
 	name = "bluespace sensors"
 	desc = "A prototype bluespace scanning and analysis suite. Uses massive amounts of power to detect nearby locator signals, whether active or passive. Additional power is required to lock onto passive sources."
 
+
+	/// linked consoles
+	var/list/obj/machinery/computer/teleporter/consoles
+	/// linked remotes
+	var/list/obj/item/bluespace_remote/remotes

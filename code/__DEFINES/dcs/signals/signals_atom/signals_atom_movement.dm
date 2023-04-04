@@ -4,6 +4,18 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
+/// From base of atom/Entered(): (atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+#define COMSIG_ATOM_ENTERED "atom_entered"
+/// Sent from the atom that just Entered src. From base of atom/Entered(): (/atom/destination, atom/old_loc, list/atom/old_locs)
+// #define COMSIG_ATOM_ENTERING "atom_entering"
+/// From base of atom/Exit(): (/atom/movable/leaving, atom/new_loc)
+#define COMSIG_ATOM_EXIT "atom_exit"
+	#define COMPONENT_ATOM_BLOCK_EXIT (1<<0)
+/// From base of atom/Exited(): (atom/movable/gone, atom/new_loc)
+#define COMSIG_ATOM_EXITED "atom_exited"
+/// From base of atom/Bumped(): (/atom/movable)
+#define COMSIG_ATOM_BUMPED "atom_bumped"
+
 /// Signal sent out by an atom when it checks if it can be pulled, for additional checks
 ////#define COMSIG_ATOM_CAN_BE_PULLED "movable_can_be_pulled"
 	////#define COMSIG_ATOM_CANT_PULL (1<<0)

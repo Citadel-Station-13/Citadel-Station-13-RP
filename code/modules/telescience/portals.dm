@@ -1,8 +1,36 @@
+GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
+
 /obj/effect/portal
+	name = "portal"
+	desc = "A semi-stable conduit through bluespace. Surely this can't be a bad idea."
+	#warn sprite
+	anchored = TRUE
+
+/obj/effect/portal/Initialize()
+	. = ..()
+	AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_ENTERED, TYPE_PROC_REF(/obj/effect/portal, on_cross)))
+
+/obj/effect/portal/Destroy()
+
+	return ..()
+
+/obj/effect/portal/proc/on_cross(datum/source, atom/movable/what, atom/oldloc)
+	if(oldloc == loc)
+		return // no loops
+	teleport(what, TRUE)
+
+/obj/effect/portal/attack_hand(mob/user, list/params)
+	teleport(user, FALSE)
+	return TRUE
+
+/obj/effect/portal/proc/teleport(atom/movable/target, crossed)
+	if(target.atom_flags & ATOM_ABSTRACT)
+		return FALSE
+	if(target.anchored)
+		return FALSE
 
 #warn impl
 
-GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 
 /obj/effect/portal
 	name = "portal"
@@ -15,15 +43,6 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 	var/obj/item/target = null
 	var/creator = null
 	anchored = 1.0
-
-/obj/effect/portal/Bumped(mob/M as mob|obj)
-	if(istype(M,/mob) && !(istype(M,/mob/living)))
-		return	//do not send ghosts, zshadows, ai eyes, etc
-	teleport(M)
-
-/obj/effect/portal/Crossed(AM as mob|obj)
-	. = ..()
-	teleport(AM)
 
 /obj/effect/portal/attack_hand(mob/user, list/params)
 	if(istype(user) && !(istype(user,/mob/living)))
@@ -53,4 +72,5 @@ GLOBAL_LIST_BOILERPLATE(all_portals, /obj/effect/portal)
 			do_teleport(M, locate(rand(5, world.maxx - 5), rand(5, world.maxy -5), pick(GLOB.using_map.get_map_levels(z))), 0)
 		else
 			do_teleport(M, target, 1) ///You will appear adjacent to the beacon
+
 

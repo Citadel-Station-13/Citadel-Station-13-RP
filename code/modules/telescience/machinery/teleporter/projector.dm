@@ -1,6 +1,17 @@
 #warn circuit
 
 /obj/machinery/bluespace_projector
+	name = "bluespace field projector"
+	desc = "A prototype field projector used to project a confinement field over a teleportation pad."
+
+	/// linked capacitor
+	var/obj/machinery/bluespace_capacitor/capacitor
+	/// target pad
+	var/obj/machinery/bluespace_pad/active_target
+	/// linked consoles
+	var/list/obj/machinery/computer/teleporter/consoles
+	/// linked remotes
+	var/list/obj/item/bluespace_remote/remotes
 
 #warn teleport_projector
 /obj/machinery/tele_projector

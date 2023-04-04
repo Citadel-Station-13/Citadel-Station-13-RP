@@ -4368,6 +4368,7 @@
 #include "code\modules\telescience\machinery\quantum_pad.dm"
 #include "code\modules\telescience\machinery\teleporter\capacitor.dm"
 #include "code\modules\telescience\machinery\teleporter\console.dm"
+#include "code\modules\telescience\machinery\teleporter\field.dm"
 #include "code\modules\telescience\machinery\teleporter\pad.dm"
 #include "code\modules\telescience\machinery\teleporter\projector.dm"
 #include "code\modules\telescience\machinery\teleporter\scanner.dm"

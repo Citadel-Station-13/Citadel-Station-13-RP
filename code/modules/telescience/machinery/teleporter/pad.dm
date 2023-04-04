@@ -1,6 +1,23 @@
 #warn circuit
 
 /obj/machinery/bluespace_pad
+	name = "bluespace projection pad"
+	desc = "A pad specially built to contain a projected confinement field."
+	#warn sprite
+
+	/// linked consoles
+	var/list/obj/machinery/computer/teleporter/consoles
+	/// linked remotes
+	var/list/obj/item/bluespace_remote/remotes
+
+	/// active field
+	var/obj/effect/bluespace_field/field
+
+/obj/machinery/bluespace_pad/Destroy()
+	if(field)
+		QDEL_NULL(field)
+	#warn impl
+	return ..()
 
 #warn teleport_pad
 /obj/machinery/tele_pad
