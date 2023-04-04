@@ -13,6 +13,8 @@
 	var/name = "Unnamed ability"
 	/// desc
 	var/desc = "Some sort of ability."
+	/// category - used for tgui
+	var/category = "Abilities"
 
 	//? mob
 	/// owning mob
@@ -33,6 +35,8 @@
 	//? checks
 	/// check flags - see [code/__DEFINES/ability.dm]
 	var/ability_check_flags = NONE
+	/// mobility check flags
+	var/mobility_check_flags = NONE
 	/// cooldown delay, if we have a cooldown
 	var/cooldown = 0
 	/// last use world.time
@@ -65,7 +69,7 @@
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated))
+	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
 		return FALSE
 	return TRUE
 
@@ -83,7 +87,7 @@
 		return "You cannot do that while on the ground."
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return "You cannot do that without a free hand."
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated))
+	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
 		return "You cannot do that while incapacitated."
 
 /**
