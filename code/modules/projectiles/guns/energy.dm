@@ -13,7 +13,7 @@
 
 	var/accept_cell_type = /obj/item/cell/device
 	var/cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/projectile/beam/practice
 
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge

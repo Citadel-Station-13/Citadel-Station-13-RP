@@ -27,7 +27,7 @@
 
 		var/damage_to_inflict = max(L.health / L.getMaxHealth(), 0) // Otherwise, those in crit would actually be healed.
 
-		var/armor_factor = abs(L.run_mob_armor(null, "energy") - 100)
+		var/armor_factor = abs(L.legacy_mob_armor(null, "energy") - 100)
 		armor_factor = armor_factor / 100
 
 		damage_to_inflict = damage_to_inflict * armor_factor

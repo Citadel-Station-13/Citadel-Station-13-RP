@@ -47,7 +47,7 @@
 	else
 		return ..()
 
-/obj/structure/target_stake/bullet_act(obj/item/projectile/P, def_zone)
+/obj/structure/target_stake/bullet_act(obj/projectile/P, def_zone)
 	if(pinned_target)
 		return pinned_target.bullet_act(P, def_zone)
 	else

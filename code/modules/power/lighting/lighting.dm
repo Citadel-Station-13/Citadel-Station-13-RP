@@ -644,7 +644,7 @@ var/global/list/light_type_cache = list()
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
 
 
-		if(prob(1+W.force * 5))
+		if(prob(1+W.damage_force * 5))
 
 			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M in viewers(src))

@@ -25,7 +25,7 @@
 
 	maxHealth = 400
 	deflect_chance = 20
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 35,
 				"laser"		= 15,
@@ -37,7 +37,7 @@
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	base_attack_cooldown = 2 SECONDS
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 
 	var/defense_mode = FALSE
 	var/defense_deflect = 35

@@ -76,7 +76,7 @@
 	name = "concussion-frag grenade"
 	desc = "A polymer and steel concussion grenade, optimized for disorienting personnel and being accused of war crimes."
 	icon_state = "conc-frag"
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment/rubber, /obj/item/projectile/bullet/pellet/fragment/rubber/strong)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment/rubber, /obj/projectile/bullet/pellet/fragment/rubber/strong)
 	var/num_fragments = 40  //total number of fragments produced by the grenade
 	var/spread_range = 5 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 

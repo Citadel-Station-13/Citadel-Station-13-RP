@@ -6,14 +6,14 @@
 	#include "tether_telecomms.dm"
 	#include "tether_weather.dm"
 
-	#include "../../_maps/map_files/tether/tether-01-surface1.dmm"
-	#include "../../_maps/map_files/tether/tether-02-surface2.dmm"
-	#include "../../_maps/map_files/tether/tether-03-surface3.dmm"
-	#include "../../_maps/map_files/tether/tether-04-transit.dmm"
-	#include "../../_maps/map_files/tether/tether-05-station1.dmm"
-	#include "../../_maps/map_files/tether/tether-06-station2.dmm"
-	#include "../../_maps/map_files/tether/tether-08-mining.dmm"
-	#include "../../_maps/map_files/tether/tether-09-solars.dmm"
+	#include "../../maps/map_files/tether/tether-01-surface1.dmm"
+	#include "../../maps/map_files/tether/tether-02-surface2.dmm"
+	#include "../../maps/map_files/tether/tether-03-surface3.dmm"
+	#include "../../maps/map_files/tether/tether-04-transit.dmm"
+	#include "../../maps/map_files/tether/tether-05-station1.dmm"
+	#include "../../maps/map_files/tether/tether-06-station2.dmm"
+	#include "../../maps/map_files/tether/tether-08-mining.dmm"
+	#include "../../maps/map_files/tether/tether-09-solars.dmm"
 
 
 	#define USING_MAP_DATUM /datum/map/tether

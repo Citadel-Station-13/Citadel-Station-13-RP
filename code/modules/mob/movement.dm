@@ -49,8 +49,8 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
-	if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
 	if(!mover.density && !mover.throwing)
@@ -134,6 +134,9 @@
 	// admin control (?)
 	if(mob.control_object)
 		return Move_object(direct)
+	//* movement intercept
+	if(mob.movement_intercept?.intercept_mob_move(mob, direct))
+		return
 	// nonliving get handled differently
 	if(!isliving(mob))
 		return mob.Move(n, direct)
@@ -606,3 +609,20 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
+
+//? Movement Intercepts
+
+/mob/proc/request_movement_intercept(datum/requesting)
+	if(movement_intercept)
+		if(requesting == movement_intercept)
+			return TRUE
+		return FALSE
+	movement_intercept = requesting
+	return TRUE
+
+/mob/proc/clear_movement_intercept()
+	movement_intercept = null
+	return TRUE
+
+/datum/proc/intercept_mob_move(mob/moving, dir)
+	return

@@ -1,3 +1,6 @@
+/mob/living/init_inventory()
+	inventory = new(src)
+
 /mob/living/get_active_held_item()
 	RETURN_TYPE(/obj/item)
 	return hand? l_hand : r_hand

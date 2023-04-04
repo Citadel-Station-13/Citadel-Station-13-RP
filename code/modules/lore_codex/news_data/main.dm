@@ -23,7 +23,11 @@
 		/datum/lore/codex/page/tyrmalins,
 		/datum/lore/codex/page/moths,
 		/datum/lore/codex/page/fungaltb,
-		/datum/lore/codex/page/pirates3
+		/datum/lore/codex/page/pirates3,
+		/datum/lore/codex/page/keisani,
+		/datum/lore/codex/page/xenohybrid,
+		/datum/lore/codex/page/ad3,
+		/datum/lore/codex/page/prince
 		)
 
 /datum/lore/codex/page/about_news
@@ -73,7 +77,7 @@
 	conflict with larger neighbors after it runs out of easy opponents. Military analysts are adamant of the increasing need for the Orion Confederation to increase its own \
 	military spending and to reorganize its byzantine command structures claiming the current navy of Orion would stand no chance should the Hegemony invade in force.\
 	With reliance on Orion's allies in the  Vikara Combine growing every day Orion refues to improve its own fleet, pessimeists claijm its only a matter of time before \
-	humanity is oput in true danger by the Moghes slaver menace."
+	humanity is put in true danger by the Moghes slaver menace."
 
 /datum/lore/codex/page/vetalans
 	name = "AD: Vetalans Syndrome: You are not alone."
@@ -223,13 +227,13 @@
 	Gilthari are strictly confidential. Oculum News Network promises to keep you updated on this story as it develops and wishes all spacemen a safe journey in these dangerous times."
 
 /datum/lore/codex/page/apidaens
-	name = "Apidaens Queens Declare Open Doon On Trade! - 9/19/2565"
+	name = "Apidaens Queens Declare Open Door On Trade! - 9/19/2565"
 	data = 	"In a rare public statement the Queens of the Apidaens hives have annouced in unison that they are ending the trade restrictions that have kept their hives and economies \
 	closed off from the wider galaxy. Under the previous policies the honey producig Apidaens and their valuable luxuries were largely closed off from the wider glaactic trade network.\
 	That is set to change as the lifting of the trade laws would allow megacorporations and independent traders for the first time to buy Apidaen goods in mass quanities.\
 	Already Gilthari Exports has annouced it will be sending delegations to the hives in order to try and broker trade deals for the vast honey stocks Apidaen hives produce.\
-	Similarly Centauri Provisions has also sent a team to the planet and both corporations seem to racing to see which of them canpresent their offers to the Queens of the Apidaens\
-	first. Small sample of Apidaens technology have already leaked to the wider galaxy, showing an apparent apitiude for biotechnology among their species, and the Vikara Combine\
+	Similarly Centauri Provisions has also sent a team to the planet and both corporations seem to racing to see which of them can present their offers to the Queens of the Apidaens \
+	first. Small sample of Apidaens technology have already leaked to the wider galaxy, showing an apparent apitiude for biotechnology among their species. The Vikara Combine \
 	teams have already released a statement stating optimism with the opening of relations and stating that they can't wait to learn from eachother."
 
 /datum/lore/codex/page/ad2
@@ -258,8 +262,8 @@
 	the small mining community apparently was destroyed when increased volcanic activity caused the lava pumps in the colony to fail causing the colony \
 	to heat to deadly temperatures thanks to lava backflows. It is reported that the entire colony was wiped out with no survivors. Nanotrasen declined \
 	to comment on details and though many colony buildings survive the colony remains quarantined due to continued dangerous  pyroclastic flows. No bodies \
-	have been recovered and Nanotrasen has stated that there will be no further attempts to recover the bodies of the victims. Nanotrasen applies that all \
-	should repsect the quarantine due to continued dangers of the site and that breaking it my result in arrest or even death."
+	have been recovered and Nanotrasen has stated that there will be no further attempts to recover the bodies of the victims. Nanotrasen has in a pubblic statement \
+	warned to repsect system wide quarantine due to continued dangers of the site and that breaking said quarantine my result in arrest or even death."
 
 /datum/lore/codex/page/tyrmalins
 	name = "Mars By-Elections results in Landslide for Tyrmalin Population - 4/2/2566"
@@ -305,22 +309,22 @@
 	The Orion Confederation has suspened the mining operations of Rzhavoye-Zoloto for the immediate future while it dispatches a team to comb the region for \
 	any additional Syndicate assets still hidden in the belt, hoping to make sure that no addition Nuclear Biological or Chemical weapons are hidden in the region. \
 	<br><br>\
-	Fungal Tuberculois was developed by new defunct Cybersun Industries at the height of the Syndicate's war on Nanotrasen. The fungus, whose offical name has \
-	been likely intentionally lost by its creators, was designed to infect station and starsghip ventilation systems rapidly spreading itself to an entire crew \
+	Fungal Tuberculois was developed by now defunct Cybersun Industries at the height of the Syndicate's war on Nanotrasen. The fungus, whose offical name has \
+	been likely intentionally lost by its creators, was designed to infect station and starship ventilation systems rapidly spreading itself to an entire crew \
 	undetected. Infected individuals would rapidly develop symptoms similar to late stage tuberculois infections. Victims often die coughing up blood as the fungus \
 	rapidly eats away at their lungs. Cybersun and its Syndicate allies would often deploy the bioweapon on targets covertly shortly before launching boarding \
 	actions in hopes to seize vessels, stations or thier cargos. Though initially highly effective, Nanotrasen's own medical staff was able to rise against this \
 	new threat and was able to devise an effective antifungal treatment in a matter of months since the first reports of the infection. Unfortunately the rapid \
-	spread of the fungal infection and its quick lethality meant that many stations were often crippled by the infection and countless NT employess died \
-	before Cybersun ultimately moved its remaining stockpile of Fungal Tuberculois and its dispersal device into storage shortly a few years before Cybersun \
-	Industries and the Syndicate dissolved entirely signaling an end to the phoron wars. \
+	spread of the fungal infection, and its quick lethality meant that many stations were often crippled by the infection and countless NT employess died from \
+	the aggressive fungal bioweweapon. With the effectiveness of the weapon diminishing due to NT's treatments Cybersun ultimately moved its remaining stockpile \
+	of Fungal Tuberculois and their dispersal devices into storage shortly a few years before Cybersun Industries and the Syndicate dissolved entirely \
+	signaling an end to the phoron wars. \
 	<br><br>\
-	Since that time incidents like the tragedy on Rzhavoye-Zoloto have not been entirely unheard of. Cybersun's rapid dissolution alongside the collapse of its \
-	allies such as Gorlex Manufacturing Corporation, saw countless stockpiles of Syndicate weaponry even their well guarded Nuclear Biological and Chemical weapon \
-	stockpiles disappear, as they were either hidden, destroyed, sold or perhaps even simply forgotten about. With the spread of Nanotrasen's antifungal counter \
-	to the old bioweapon and Zeng-Hu Pharmaceutical's incorporation of similarly effective anti-fungal agents into their own mass market antifungal drugs, \
-	deaths from Fungal Tuberculois are now thankfully rare, and with fewer and fewer samples floating about the galaxy, many hope that this grim \
-	reminder of the phoron wars will soon only exist in labortories."
+	Since that the phoron wars incidents like the tragedy on Rzhavoye-Zoloto have not been entirely unheard of. Cybersun's rapid dissolution, alongside the collapse of its \
+	allies such as the Gorlex Manufacturing Corporation, saw countless stockpiles of Syndicate Nuclear Biological and Chemical weaponry disappear as they were either \
+	hidden, destroyed, sold or perhaps even simply forgotten about. With the spread of Nanotrasen's antifungal counter to fungal TB and Zeng-Hu Pharmaceutical's own \
+	incorporation of  similarly effective anti-fungal agents into their own mass market drugs, deaths from Fungal Tuberculois are now thankfully rare, and with \
+	fewer and fewer samples of the weapon floating about the galaxy, many hope that this grim reminder of the phoron wars will soon only exist in labortories."
 
 /datum/lore/codex/page/pirates3
 	name = "Pirate Raids Lock Down the Temhöser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
@@ -355,3 +359,86 @@
 	In closing words, We need to expect price increases in various luxury goods and raw materials coming from outside the Orion Confederacy. With piracy on the rise, \
 	not many traders and transport corporations are willing to risk loosing their ships, and cargo, in wild space, and those that do often raise their prices to be \
 	able to pay for their security staff."
+
+/datum/lore/codex/page/keisani
+	name = "Keisani 'Rosetta Stone' Released by Dioscuri Xenoarchaeologists. Will This Dead Language Make a Comeback? - 1/14/2567"
+	data = "Today xenoarchaeology teams located on Dioscuri released the largest and most comprehensive codex on the ancient Keisa Language to date \
+	with the latest codex thought to cover over 75% of the ancient language. Xenoarchaeologists hope that the translations can give insight to the \
+	Keisa people and their technology. Keisa technology which was built on a foundation of nanite technology made them perhaps the most advanced \
+	pre-FTL civilization to be studied by modern Xenoarchaeologists. The destruction of the Keisa civilization due to nuclear war and the resulting \
+	planet wide EMPs wiping out nanite colonies has resulted in their former homeworld of Dioscuri becoming one of the most archaelogically and \
+	technologically rich sites in the galaxy. The planet is beset by piratical looters and ancient half functional but still deadly Keisani nanite \
+	constructs. Xenoarchaeological teams hope that with better understanding of the Keisa language they can disable and repurpose these \
+	ancient nanites devices and constructs furthering the galaxy's collective understanding of nanite technology without falling into the same \
+	pitfalls of the extinct Keisa. Though the codex is currently only available in xenoarchaeological circles both trained professionals and \
+	educators the xenoarchaeology team has also announced it is developing a version for civilian and commercial use, though when this product will be available \
+	remains to be seen."
+
+/datum/lore/codex/page/xenohybrid
+	name = "Orion Confederation Welcomes First Xenohybrid Diaspora Representative, Prompts Council Chamber Redesign - 1/31/2567"
+	data =	"Elections on the Orion Confederation Member system of Enshamhet this week ended with the appointment of Praetorian Neomorph Melanippe to take \
+	Dysterhet's seat on the Confederation marking the first time a Xenomorph Hybrid has ever held a seat in the highest halls of the Orion Confederation \
+	outside the Neomorph homeworld of Berkaugen. \
+	<br><br>\
+	The lonely system of Enshamet is a mere ten light years from Dysterhet, the star Berkaugen. Its only populated world is the Traskherren a world known \
+	for its acid rains and slightly chlorinated atmosphere. The conditions on the surface were hostile to human life however they proved valuable for \
+	both mining and research the unique atmosphere being host to variety of specialized flora and micro organisms. The unique atmosphere and pletniful acid \
+	also made certain chemical processes very effecient which lead to the first permanent settlements on the planet, which were funded by Zheng-Hu Pharmaceuticals. \
+	Though the atmosphere was toxic to humans xenohybrids had no trouble in it and their chitin made them resistant to the acid rains of the planet. Zheng-Hu \
+	encouraged migration of Neomorphs from Berkaugen to Traskherren. Upon the admission of Traskherren to the Orion Confederation thirty years ago Neomorphs \
+	made up almost 40% of Traskherren's population. \
+	<br><br>\
+	Melanippe's Canididacy on Traskherren was a close faught campaign. Traskherren politics had been largely dominated by Zheng-Hu Pharmaceuticals with \
+	their Orion representative being the Zheng-Hu endorsed candidate since the world's admission to the Confederation. Melanippe challenged the nearly two \
+	decade long incumbent candidate Zhou Yingkun. After two decades Yingkun despite his Zheng-Hu backing had become increasing unpopular due to his \
+	economic policies being seen as favorable only to his Zheng-Hu backers. His campaign against Melanippe was marred by personal attacks towards the \
+	hybrid asking if she could truly represent the entire system rather than just the interests of the Neomorph hives of Traskherren. Despite this though\
+	Melanippe was able to gain enough support from the non-Neomorph population to win a narrow victory on Traskherren with 52% of the vote. \
+	<br><br>\
+	Melanippe has recieved a warm welcome already from many council members,her membership was soon faced with a problem in that the standardized \
+	sized seats in the Confederation halls would be too small for the three and half meter tall Praetorian. Until a properly sized seat can be secured \
+	and the council chamber rearranged to accommodate her, Melanippe will have to attend Council meetings through holocall. During her victory speech Melanippe \
+	promised to not only represent everyone on Traskherren not just Xenohybrid population. She reiterated her campaign to see the corporate investments on Taskherren \
+	diversified beyond its roots as a Zheng-Hu backed colony and more infastructure funding for frontier planets like Traskhassen. Melanippe's future with Orion remains \
+	to be seen but Xenohybrid activists across Orion have celebrated her election saying it is but another victory in their battle to find acceptance not just with \
+	the Orion Confederation but the galaxy as a whole. Melanippe is expected to take her seat, even if only in hologram form. by June."
+
+/datum/lore/codex/page/ad3
+	name = "AD: DONK! On your enemies with RIOT DARTS!"
+	data = "Live in a bad hood? Do weapons laws prevent YOU from defending yourself? \
+	<br><br>\
+	We at Donk co have the solution. Introducing RIOT DARTS! \
+	<br><br>\
+	That's right what was once reserved for riot control is now available on the civilian market! \
+	<br><br>\
+	DONK on your enemies with a self defense option without worrying about pesky weapons control laws! \
+	<br><br>\
+	Its compatible with all Donksoft products, lay into your enemies with DONK dart weaponry! \
+	<br><br>\
+	Available at selected DONK Co. Locations or Order off of exo at 63453.94321.56721.12521! \
+	<br><br>\
+	Warning, civilian ownership of DONK brand riot darts is not legal in some polities be sure to check with local law before order. DONK Co \
+	Riot Darts should be kept out of the reach of children at all times. DONK Co waives all liabilities to injuries sustained by DONK Co Riot Darts \
+	and other Donk Co products. DONK Co Riot Darts can cause severe damage to eyes and eyewear, gentilia, children and Teshari, please use caution when employing \
+	Donk Co Riot Darts against these targets."
+
+/datum/lore/codex/page/prince
+	name = "The New Kingdom of Adhomai Says Final Goobye To Its Prince. Millions Attend Funeral For Prince Thram Azunja - 3/13/2567"
+	data = "The funeral for Crown Prince Thram Azunja drew the attendance of hundreds of thousands of the citizens of the New Kingdom of Adhomai. In accordance with \
+	Adhomai tradition the prince was cremated in one of the original furnace engines of Adhomai first created to hold off the cold on the onset of \
+	Adhomai's continuing age of frost. The body reportedly already horribly disfigured from the shuttle crash that killed the prince a mere 10 days ago \
+	was only allowed to be seen by the royal family and a few thousand nobles and chosen commoners before it was commited to S'randarr. Hundreds of \
+	thousands of Tajara prayed for the prince's soul in the temple complex and  with millions praying in the adjoining residential units around the \
+	old furnace generator. Across the New Kingom hundreds of millions prayed in a nationwide moment of prayer. Several public services were also held \
+	in the handful of New Kingdom Alignd Freehold but private services honoring the Prince occured across Adhomai even within the territory of rival \
+	governments like the People's Republic of Adhomai. \
+	<br><br>\
+	King Arzthram Azunja, the father of the deceased, made only a brief appearance at the funeral. He stayed only long enough to see his son commended to \
+	the fires of the furnace generator before departing with his guard. As of yet, the King has not yet chosen a successor to the crown prince. With the \
+	continuing absence of a new heir, noble factions have gathered around the potential successors. According to anonymous sources within the noble court \
+	of Adhomai, many of King Arzthram's grandchildren and nephews have already staked their claim to the throne privately and are gathering supporters. Battle \
+	lines could be seen even at the funeral. Noble factions gathered around the heir of their choice. As of yet, no clear front-runner has emerged from nearly \
+	two dozen reported candidates for an heir. King Arzthram, whose advanced age has spurred whispers of abdication in the past, is now left with a difficult \
+	choice of who will lead the kingdom in place of his beloved son. With many prominent nobles backing opposing candidates, it is clear that even as Prince \
+	Thram's body burned to ash, the race to replace him was already progressing. Its unclear who among the candidates will emerge as crown prince to lead the \
+	New Kingdom of Adhomai in a rapidly changing galaxy"

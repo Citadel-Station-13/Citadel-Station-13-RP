@@ -408,8 +408,9 @@
  */
 /obj/item/barcodescanner
 	name = "barcode scanner"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/modules/library/items/barcode_scanner.dmi'
 	icon_state ="scanner"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL

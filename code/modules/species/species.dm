@@ -461,13 +461,6 @@
 	/// do we have a species statpanel?
 	var/species_statpanel = FALSE
 
-	//!Weaver abilities
-	var/is_weaver = FALSE
-	var/silk_production = FALSE
-	var/silk_reserve = 100
-	var/silk_max_reserve = 500
-	var/silk_color = "#FFFFFF"
-
 	/// max nutrition - i hate myself for haphazardly throwing this in but sue me
 	var/max_nutrition = 450
 

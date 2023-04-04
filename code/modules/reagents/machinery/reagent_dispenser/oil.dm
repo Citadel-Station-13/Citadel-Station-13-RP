@@ -21,7 +21,7 @@
 	)
 	starting_capacity = 5000
 
-/obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/cookingoil/bullet_act(var/obj/projectile/Proj)
 	if(Proj.get_structure_damage())
 		explode()
 

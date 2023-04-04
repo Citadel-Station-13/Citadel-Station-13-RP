@@ -814,3 +814,8 @@
 	name = "I.C.V."
 	desc = "The charred name of a cargo ship of some description."
 	icon_state = "poi_engine2"
+
+/obj/structure/sign/senator
+	name = "Senator Painting"
+	desc = "A painting of some human senator. On the bottom there is a mostly faded phrase in which only the end can be made out. '-Can't fret over every egg' "
+	icon_state = "senator"

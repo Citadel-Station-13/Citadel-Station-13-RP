@@ -15,7 +15,7 @@
 	icon_state = "baton"
 	item_state = "classic_baton"
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	drop_sound = 'sound/items/drop/crowbar.ogg'
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
@@ -23,12 +23,12 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-		user.Weaken(3 * force)
+		user.Weaken(3 * damage_force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.apply_damage(2*force, BRUTE, BP_HEAD)
+			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 		else
-			L.take_organ_damage(2*force)
+			L.take_organ_damage(2*damage_force)
 		return
 	return ..()
 
@@ -48,7 +48,7 @@
 	icon_state = "telebaton"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 3
+	damage_force = 3
 	var/on = 0
 	var/off_force = 3
 	var/on_force = 15
@@ -68,7 +68,7 @@
 		src.icon_state = "[icon_state]_1"
 		src.item_state = "[item_state]_1"
 		w_class = ITEMSIZE_NORMAL
-		force = on_force //quite robust
+		damage_force = on_force //quite robust
 		attack_verb = list("struck", "beat")
 	else
 		on = 0
@@ -78,7 +78,7 @@
 		src.icon_state = initial(icon_state)
 		src.item_state = initial(item_state)
 		w_class = ITEMSIZE_SMALL
-		force = off_force //not so robust now
+		damage_force = off_force //not so robust now
 		attack_verb = list("poked", "jabbed")
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
@@ -99,25 +99,25 @@
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-			user.Weaken(3 * force)
+			user.Weaken(3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				H.apply_damage(2*force, BRUTE, BP_HEAD)
+				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
 			else if(isliving(user))
 				var/mob/living/L = user
-				L.take_organ_damage(2*force)
+				L.take_organ_damage(2*damage_force)
 			return
 		var/old_damtype = damtype
 		var/old_attack_verb = attack_verb
-		var/old_force = force
+		var/old_force = damage_force
 		if(user.a_intent != INTENT_HARM)
 			damtype = HALLOSS
 			attack_verb = list("suppressed")
-			force = on_pain_force
+			damage_force = on_pain_force
 		. = ..()
 		damtype = old_damtype
 		attack_verb = old_attack_verb
-		force = old_force
+		damage_force = old_force
 	else
 		return ..()
 
@@ -143,7 +143,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "armblade"
-	force = 15 // same force as a drill
+	damage_force = 15 // same damage_force as a drill
 	defend_chance = 20 // did you know melee weapons have a default 5% chance to block frontal melee?
 	sharp = TRUE
 	edge = TRUE
@@ -164,7 +164,7 @@
 	name = "jagged spike"
 	desc = "A polished spike with miniscule edges all over its surface. You won't be holding onto it for long if you stab someone with it."
 	embed_chance = 100 // these should probably come in a bandolier or have some sort of fabricator, tbf
-	force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
+	damage_force = 5 // HAVING A STICK JAMMED INTO YOU IS LIKELY BAD FOR YOUR HEALTH // well to be fair most of the damage comes from the embed not the stab
 	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_STEEL = 2500)
 	sharp = TRUE
@@ -184,12 +184,12 @@
 	desc = "Apply munchkin cat."
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "cn_stool_c"
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	var/on =  0
 	slot_flags = null
-	force = 0
+	damage_force = 0
 	hitsound = "sound/items/bikehorn.ogg"
 
 /obj/item/melee/stool/faiza/attack_self(mob/user)
@@ -216,7 +216,7 @@
 	icon_state = "bokken"
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damtype = HALLOSS
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
 	hitsound = 'sound/weapons/genhit3.ogg'
@@ -241,7 +241,7 @@
 		var/obj/item/stack/rods/R = I
 		if(!reinforced)
 			if(R.use(1))
-				src.force = (force + 5)
+				src.damage_force = (damage_force + 5)
 				reinforced = TRUE
 				to_chat(user, "<span class='notice'>You slide a metal rod into [src]\'s hilt. It feels a little heftier in your hands.")
 		else
@@ -258,20 +258,20 @@
 	name = "hardwood bokken"
 	desc = "A blunt katana made from hardwood, a dense organic wood."
 	icon_state = "bokken_hard"
-	force = 10
+	damage_force = 10
 
 /obj/item/melee/bokken/waki
 	name = "wakizashi bokken"
 	desc = "A space-Japanese training sword made of wood and shaped like a wakizashi."
 	icon_state = "wakibokken"
 	slot_flags = SLOT_BELT
-	force = 5
+	damage_force = 5
 
 /obj/item/melee/bokken/waki/hardwood
 	name = "wakizashi hardwood bokken"
 	desc = "A blunt wakizashi made from hardwood, a dense organic wood."
 	icon_state = "wakibokken_hard"
-	force = 10
+	damage_force = 10
 
 /obj/item/bokken_hilt
 	name = "bokken hilt"
@@ -303,7 +303,7 @@
 	desc = "A thick rod of hardened wood, useful as a walking stick, as much as a defensive tool."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "wakibokken_blade_h"
-	force = 15
+	damage_force = 15
 	slot_flags = SLOT_BACK
 	sharp = 1
 	hitsound = "swing_hit"
@@ -345,7 +345,7 @@
 	icon_state = "kanabo"
 	slot_flags = SLOT_BACK
 	damtype = BRUTE
-	force = 15
+	damage_force = 15
 	throw_force = 5
 	attack_verb = list("battered", "hammered", "struck")
 	hitsound = 'sound/weapons/genhit3.ogg'

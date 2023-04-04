@@ -14,31 +14,8 @@
 /datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.add_chemical_effect(CE_PAINKILLER, 10)
-/*
-/datum/reagent/inaprovaline/topical//Main way to obtain is destiller
-	name = "Inaprovalaze"
-	id = "inaprovalaze"
-	description = "Inaprovalaze is a topical variant of Inaprovaline."
-	taste_description = "bitterness"
-	reagent_state = REAGENT_LIQUID
-	color = "#00BFFF"
-	overdose = REAGENTS_OVERDOSE * 2
-	metabolism = REM * 0.5
-	scannable = 1
-	touch_met = REM * 0.75
-	can_overdose_touch = TRUE
+		M.ceiling_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		..()
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/inaprovaline/topical/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 20)
-		M.add_chemical_effect(CE_PAINKILLER, 12)
-*/
 /datum/reagent/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
@@ -264,7 +241,7 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 15)
-		M.add_chemical_effect(CE_PAINKILLER, 15)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
@@ -290,7 +267,7 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 10)
-		M.add_chemical_effect(CE_PAINKILLER, 25)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
 			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
@@ -460,7 +437,7 @@
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
-	M.add_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
+	M.ceiling_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
 /datum/reagent/paracetamol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -485,7 +462,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.8
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
-	M.add_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
+	M.ceiling_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
 /datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -508,7 +485,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 		M.stuttering = min(50, max(0, M.stuttering + 5)) //If you can't feel yourself, and your main mode of speech is resonation, there's a problem.
-	M.add_chemical_effect(CE_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
+	M.ceiling_chemical_effect(CE_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
 	M.add_chemical_effect(CE_SLOWDOWN, 1)
 	M.eye_blurry = min(M.eye_blurry + 10, 250 * chem_effective)
 
@@ -530,7 +507,7 @@
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
 
 /datum/reagent/numbing_enzyme/affect_blood(mob/living/carbon/M, alien, removed)
-	M.add_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
+	M.ceiling_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
@@ -590,7 +567,7 @@
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)//Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
-	M.add_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
 
 /datum/reagent/hyperzine
 	name = "Hyperzine"
@@ -636,7 +613,7 @@
 		if(dose >= 10 && M.paralysis < 40)
 			M.AdjustUnconscious(1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
-	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -685,7 +662,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.add_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -710,7 +687,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.add_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -1209,7 +1186,7 @@
 	can_overdose_touch = TRUE
 
 /datum/reagent/spacomycaze/affect_blood(mob/living/carbon/M, alien, removed)
-	M.add_chemical_effect(CE_PAINKILLER, 10)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 10)
 	M.adjustToxLoss(3 * removed)
 
 /datum/reagent/spacomycaze/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -1228,7 +1205,7 @@
 				to_chat(M, "<span class='warning'>Your skin itches.</span>")
 
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
-	M.add_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
+	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/touch_obj(obj/O)
 	if(istype(O, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)

@@ -91,7 +91,7 @@
 	spawn(1) dismantle()
 	return 1
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/girder/bullet_act(var/obj/projectile/Proj)
 	//Girders only provide partial cover. There's a chance that the projectiles will just pass through. (unless you are trying to shoot the girder)
 	if(Proj.original != src && !prob(cover))
 		return PROJECTILE_CONTINUE //pass through
@@ -100,7 +100,7 @@
 	if(!damage)
 		return
 
-	if(!istype(Proj, /obj/item/projectile/beam))
+	if(!istype(Proj, /obj/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
 
 	else if(girder_material && girder_material.reflectivity >= 0.5) // Reflect lasers.

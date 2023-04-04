@@ -214,7 +214,7 @@
 		if(COLORMATE_TINT)
 			color_to_use = activecolor
 		if(COLORMATE_MATRIX)
-			color_to_use = rgb_construct_color_matrix(
+			color_to_use = construct_rgb_color_matrix(
 				text2num(color_matrix_last[1]),
 				text2num(color_matrix_last[2]),
 				text2num(color_matrix_last[3]),
@@ -245,7 +245,7 @@
 		var/list/cm
 		switch(active_mode)
 			if(COLORMATE_MATRIX)
-				cm = rgb_construct_color_matrix(
+				cm = construct_rgb_color_matrix(
 					text2num(color_matrix_last[1]),
 					text2num(color_matrix_last[2]),
 					text2num(color_matrix_last[3]),
