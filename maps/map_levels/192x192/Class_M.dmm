@@ -18,7 +18,7 @@
 "av" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = Garage5;
+	id = "Garage5";
 	name = "Garage 5"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -172,7 +172,7 @@
 "bD" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = Garage7;
+	id = "Garage7";
 	name = "Garage 7"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -913,7 +913,7 @@
 "ja" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = Garage3;
+	id = "Garage3";
 	name = "Garage 3"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -950,7 +950,7 @@
 "jv" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = Garage8;
+	id = "Garage8";
 	name = "Garage 8"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -1533,7 +1533,7 @@
 "ot" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = Garage6;
+	id = "Garage6";
 	name = "Garage 6"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -2488,7 +2488,7 @@
 "xn" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = Garage4;
+	id = "Garage4";
 	name = "Garage 4"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -3707,7 +3707,7 @@
 "IS" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = Garage2;
+	id = "Garage2";
 	name = "Garage 2"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -4196,7 +4196,7 @@
 "Nk" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
-	id = Garage1;
+	id = "Garage1";
 	name = "Garage 1"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -4991,7 +4991,7 @@
 "Sq" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = Garage9;
+	id = "Garage9";
 	name = "Garage 9"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
@@ -5265,7 +5265,7 @@
 "UJ" = (
 /obj/machinery/door/blast/shutters{
 	dir = 8;
-	id = Garage10;
+	id = "Garage10";
 	name = "Garage 10"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
