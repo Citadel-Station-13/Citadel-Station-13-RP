@@ -124,7 +124,6 @@
 	sleep(1 SECOND)
 	cut_overlay(deflect_image)
 	qdel(deflect_image)
-//	flick_overlay_view(deflect_image, src, duration = 1 SECOND, gc_after = TRUE)
 
 /mob/living/simple_mob/mechanical/mecha/attackby(obj/item/I, mob/user)
 	if(prob(deflect_chance))
