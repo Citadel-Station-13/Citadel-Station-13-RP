@@ -1,3 +1,6 @@
+#define RAISE_ANIMATE_TIME 20
+#define FALL_ANIMATE_TIME 20
+
 /obj/item/circuitboard/machine/nanite_chamber
 	name = T_BOARD("nanite chamber")
 	build_path = /obj/machinery/nanite_chamber
@@ -34,6 +37,11 @@
 	var/obj/item/mmi/digital/posibrain/nano/protean_core
 	/// stored materials as items
 	var/list/obj/item/held_items
+
+	/// operating timerid
+	var/operation_timerid
+	/// operation effects timerid
+	var/operation_effects_timerid
 
 	/// cost to rebuild a protean's swarm
 	var/static/list/protean_cost_nanoswarm = list(
@@ -102,10 +110,36 @@
 /obj/machinery/nanite_chamber/proc/is_locked()
 	return locked || operating
 
-#warn operating time
+/obj/machinery/nanite_chamber/proc/operate_for(time = 15 SECONDS, effects_in = 7 SECONDS, datum/callback/effects_callback)
+	if(operating)
+		return FALSE
+	operating = TRUE
+	flick(src, "[base_icon_state]_raising")
+	#warn effects callback timer
+	addtimer(CALLBACK(src, PROC_REF(finish_operating)), time)
+	FLICK_IN(src, "[base_icon_state]_falling", max(time - (RAISE_ANIMATE_TIME + FALL_ANIMATE_TIME), 0))
+
+/obj/machinery/nanite_chamber/proc/finish_operating()
+	operating = FALSE
+
+/obj/machinery/nanite_chamber/proc/cancel_operation(immediate)
+	if(!operating)
+		return
+	if(operation_timerid)
+		deltimer(operation_timerid)
+	if(operation_effects_timerid)
+		deltimer(operation_effects_timerid)
+	flick(src, "[base_icon_state]_falling")
+	if(!immediate)
+		addtimer(CALLBACK(src, PROC_REF(do_cancel_operation)))
+	else
+		do_cancel_operation()
+
+/obj/machinery/nanite_chamber/proc/do_cancel_operation()
+	operating = FALSE
 
 /obj/machinery/nanite_chamber/proc/try_refresh_protean()
-	#warn impl
+	operate_for(15 SECONDS, 7 SECONDS, CALLBACK(src, PROC_REF(refresh_protean)))
 
 /obj/machinery/nanite_chamber/proc/refresh_protean()
 	#warn impl
@@ -241,3 +275,7 @@
 		blind_message = SPAN_WARNING("You hear a loud kick on glass, and the sound of mechanical locks disengaging."),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
+	cancel_operation()
+
+#undef RAISE_ANIMATE_TIME
+#undef FALL_ANIMATE_TIME
