@@ -8538,7 +8538,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
 "LR" = (
-/obj/machinery/holopad/ship,
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
 "LV" = (
