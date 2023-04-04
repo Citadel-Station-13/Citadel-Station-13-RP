@@ -23,7 +23,7 @@
 
 	max_age = 180
 	health_hud_intensity = 1.5
-	rarity_value = 5
+	//rarity_value = 5
 	blood_color = "#FC2BC5"
 
 	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE

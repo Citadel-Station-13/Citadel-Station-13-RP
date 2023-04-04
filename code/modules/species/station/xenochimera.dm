@@ -35,7 +35,7 @@
 	"}
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_The_Xenochimera"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenochimera)
-	rarity_value = 4
+	//rarity_value = 4
 
 	breath_type = /datum/gas/oxygen
 	poison_type = /datum/gas/phoron

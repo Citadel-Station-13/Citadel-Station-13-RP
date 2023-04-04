@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(lying && !resting && !sleeping)
 		anim_time = 1 //Thud
 
-	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
+	if(lying) //Only rotate them if we're not drawing a specific icon for being prone. there are no prone icons
 		var/randn = rand(1, 2)
 		if(randn <= 1) // randomly choose a rotation
 			M.Turn(-90)
