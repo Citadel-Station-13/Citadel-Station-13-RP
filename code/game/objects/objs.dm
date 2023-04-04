@@ -40,6 +40,12 @@
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
 
+	//? Sounds
+	/// volume when breaking out using resist process
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
+	/// volume when breaking out using resist process
+	var/breakout_volume = 100
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -240,55 +246,50 @@
 
 /obj/proc/_contents_resist_sequence(mob/escapee, time, interval)
 	START_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
+	if(!contents_resist_step(escapee, 0))
+		return FALSE
 	. = TRUE
-	#warn impl
+	// todo: mobility flags
+	var/extra_time = MODULUS(time, interval)
+	var/i
+	for(i in 1 to round(time / interval))
+		if(!do_after(escapee, interval, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+			return FALSE
+		if(escapee.loc != src)
+			return FALSE
+		if(!contents_resist_step(escapee, i))
+			return FALSE
+		if(breakout_sound)
+			playsound(src, breakout_sound, breakout_volume, 1)
+	if(!do_after(escapee, extra_time, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+		return FALSE
+	if(!contents_resist_step(escapee, i + 1, TRUE))
+		return FALSE
 	STOP_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
 	if(.)
 		contents_resist_finish(escapee)
 
-/*
-	if(breakout)
-		return
-	if(!req_breakout() && !opened)
-		open()
-		return
-
-	escapee.setClickCooldown(100)
-
-	//okay, so the closet is either sealed or locked... resist!!!
-	to_chat(escapee, "<span class='warning'>You lean on the back of \the [src] and start pushing the door open. (this will take about [breakout_time] minutes)</span>")
-
-	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
-
-	spawn(0)
-		breakout = 1 //can't think of a better way to do this right now.
-		for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
-			if(!do_after(escapee, 50)) //5 seconds
-				breakout = 0
-				return
-			if(!escapee || escapee.incapacitated() || escapee.loc != src)
-				breakout = 0
-				return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
-			//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
-			if(!req_breakout())
-				breakout = 0
-				return
-
-			playsound(src.loc, breakout_sound, 100, 1)
-			animate_shake()
-			add_fingerprint(escapee)
-
-		//Well then break it!
-		breakout = 0
-		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
-		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
-		playsound(src.loc, breakout_sound, 100, 1)
-		animate_shake()
-		break_open()
-		*/
+/**
+ * called on interval step of contents_request_sequence
+ * use this to cancel and open if we're already open / whatever.
+ *
+ * @return TRUE / FALSE to keep resisting or not
+ */
+/obj/proc/contents_resist_step(mob/escapee, iteration, finishing)
+	contents_resist_shake()
+	return TRUE
 
 /**
  * Called when contents_resist_sequence finishes successfully.
  */
 /obj/proc/contents_resist_finish(mob/escapee)
 	return
+
+/**
+ * called to shake during contents resist
+ */
+/obj/proc/contents_resist_shake()
+	var/init_px = pixel_x
+	var/shake_dir = pick(-1, 1)
+	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
