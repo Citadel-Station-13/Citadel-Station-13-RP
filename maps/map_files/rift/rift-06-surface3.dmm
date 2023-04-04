@@ -7623,9 +7623,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 9
 	},
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_x = -28;
@@ -11794,7 +11791,6 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "axE" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -15341,9 +15337,6 @@
 	dir = 8
 	},
 /obj/machinery/computer/timeclock/premade/west,
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
 "aFo" = (
@@ -19003,12 +18996,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
-"aMW" = (
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
 "aMY" = (
 /obj/machinery/recharge_station,
 /obj/effect/floor_decal/techfloor{
@@ -20920,9 +20907,6 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 1
-	},
-/obj/landmark{
-	name = "JoinLateGateway"
 	},
 /obj/item/radio/intercom{
 	dir = 1;
@@ -23225,7 +23209,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "aVK" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
@@ -24507,9 +24490,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aYv" = (
-/obj/landmark{
-	name = "JoinLateCyborg"
-	},
 /obj/machinery/computer/cryopod/robot{
 	dir = 1;
 	pixel_y = -28
@@ -39865,9 +39845,9 @@ agI
 agI
 agI
 agI
-aMW
+ave
 anN
-aMW
+ave
 agm
 acH
 arX
