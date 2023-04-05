@@ -39,6 +39,8 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
 		return
 
+	#warn the entire proc, deal with moved proc order/whatever
+
 	// Past this is the point of no return
 	if(length(locs) <= 1)	// We're not a multi-tile object.
 		var/atom/oldloc = loc
@@ -438,28 +440,68 @@
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
 
-		#warn impl
-		loc = destination
 		moving_diagonally = 0
 
 		if(!same_loc)
-			if(oldloc)
-				oldloc.Exited(src, destination)
+			if(is_multi_tile && isturf(destination))
+				// gather
+				var/list/old_locs = locs // implicit Copy() due to locs being special byond list
+				var/list/new_locs = block(
+					destination,
+					locate(
+						min(world.maxx, destination.x + ROUND_UP(bound_width / 32)),
+						min(world.maxy, destination.y + ROUND_UP(bound_height / 32)),
+						destination.z
+					)
+				)
+
+				// exit
 				if(old_area && old_area != destarea)
-					old_area.Exited(src, destination)
+					old_area.Exited(src)
+				for(var/atom/left_loc as anything in old_locs - new_locs)
+					left_loc.Exited(src, oldloc)
+					// todo: remove uncrossed
+					for(var/atom/movable/AM as anything in left_loc)
+						AM.Uncrossed(src)
 
-			// todo: remove uncrossed
-			for(var/atom/movable/AM in oldloc)
-				AM.Uncrossed(src)
-			destination.Entered(src, oldloc)
-			if(destarea && old_area != destarea)
-				destarea.Entered(src, oldloc)
+				// move
+				loc = destination
+				Moved(oldloc, NONE, TRUE)
 
-			// todo: remove crossed
-			for(var/atom/movable/AM in destination)
-				if(AM == src)
-					continue
-				AM.Crossed(src, oldloc)
+				// enter
+				if(old_area && old_area != destarea)
+					destarea.Entered(src)
+				for(var/atom/entering_loc as anything in new_locs - old_locs)
+					entering_loc.Entered(src, oldloc)
+					// todo: remove crossed
+					for(var/atom/movable/AM as anything in left_loc)
+						AM.Cross(src)
+
+			else
+				// exit
+				if(!isnull(oldloc))
+					oldloc.Exited(src, destination)
+					if(old_area && old_area != destarea)
+						old_area.Exited(src)
+				// todo: remove uncrossed
+				for(var/atom/movable/AM in oldloc)
+					AM.Uncrossed(src)
+
+				// move
+				loc = destination
+				Moved(oldloc, NONE, TRUE)
+
+				#warn the entire proc, deal with moved proc order/whatever
+
+				// enter
+				destination.Entered(src, oldloc)
+				if(destarea && old_area != destarea)
+					destarea.Entered(src)
+				// todo: remove crossed
+				for(var/atom/movable/AM in destination)
+					if(AM == src)
+						continue
+					AM.Crossed(src, oldloc)
 		if(pulling)
 			check_pulling()
 		if(pulledby)
@@ -483,7 +525,7 @@
 			var/area/old_area = get_area(src)
 			loc = null
 			if(!isnull(old_area))
-				old_area.Exited(src, null)
+				old_area.Exited(src)
 			for(var/atom/A as anything in old_locs)
 				A.Exited(src, null)
 		else
@@ -492,9 +534,9 @@
 				var/area/old_area = get_area(loc)
 				oldloc.Exited(src, null)
 				if(old_area)
-					old_area.Exited(src, null)
+					old_area.Exited(src)
 
-	Moved(oldloc, NONE, TRUE)
+		Moved(oldloc, NONE, TRUE)
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
