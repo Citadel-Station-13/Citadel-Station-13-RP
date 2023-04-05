@@ -218,11 +218,17 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /**
  * our holopad name
+ *
+ * todo: this proc is shit and shouldn't exist because we keep requerying this mid-call, holocalls need eventual redesigning
  */
-/obj/machinery/holopad/proc/holocall_name()
+/obj/machinery/holopad/proc/holocall_name(obj/machinery/holopad/in_respects_to)
 	if(holopad_name)
 		return holopad_name
 	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(src))
+	if(in_respects_to && call_anonymous_sector)
+		var/obj/effect/overmap/visitable/other = get_overmap_sector(in_respects_to)
+		if(sector != other)
+			return "Anonymous"
 	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
 
 /**
@@ -720,19 +726,17 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
 	if(istype(speaking, /obj/machinery/holopad))
 		return
-	var/our_name = holocall_name()
-	voice_name = "[our_name] - [voice_name]"
 	// relay to whereever we're calling to
-	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL , src)
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
-		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
+		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src)
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
 	var/list/relevant_ais = ais_projecting - speaking
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.hear_say(msg, "says ([our_name])", using_language, speaker = speaking)
+		the_ai.hear_say(msg, "says ([src])", using_language, speaker = speaking)
 
 /**
  * relays a seen emote
@@ -743,7 +747,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	// if it's the outgoing caller, send to other side
 	if(emoting == outgoing_call?.remoting)
-		outgoing_call?.destination.relay_inbound_emote(emoting, visible_name, msg, outgoing_call.hologram, src)
+		outgoing_call?.destination.relay_inbound_emote(emoting, visible_name, msg, outgoing_call.hologram, source = src)
 		return
 	// otherwise, anyone on our side can see it
 	for(var/datum/holocall/holocall as anything in incoming_calls)
@@ -761,8 +765,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source)
 	. = TRUE
 	var/scrambled = stars(msg)
-	var/for_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
-	var/for_not_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
+	var/for_knowers = "[source && "[source.holocall_name(src)]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
+	var/for_not_knowers = "[source && "[source.holocall_name(src)]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
 	for(var/atom/movable/AM as anything in get_hearers_in_view(world.view, src))
 		if(ismob(AM))
 			var/mob/M = AM
@@ -804,7 +808,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(holo)
 		holo.relay_emote(speaker_name, msg)
 	else
-		visible_message("[SPAN_NAME(speaker_name)] [msg]")
+		visible_message("[msg]")
 	// conference calls!
 	for(var/datum/holocall/holocall as anything in incoming_calls)
 		if(holocall.source == source)
@@ -815,7 +819,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	var/list/relevant_ais = ais_projecting - speaker
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.show_message("(Holopad) [SPAN_NAME(speaker_name)] [msg]")
+		the_ai.show_message("(Holopad) [msg]")
 
 //? holograms
 
