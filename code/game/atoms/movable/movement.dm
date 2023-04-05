@@ -21,7 +21,7 @@
 	if(!newloc || newloc == loc)
 		return
 	if(get_dist(loc, newloc) > 1)
-		CRASH("attempted to move longer than 1 tile with Move(); please use force_move!")
+		CRASH("attempted to move longer than 1 get_dist with Move(); please use force_move!")
 	#warn impl
 	if(!direct)
 		direct = get_dir(src, newloc)
