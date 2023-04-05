@@ -3595,12 +3595,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
-"HP" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_2"
-	},
-/turf/simulated/floor/concrete/rng/classm/outdoors,
-/area/class_m/outside)
 "HQ" = (
 /obj/structure/railing{
 	dir = 8
@@ -38824,7 +38818,7 @@ WN
 WN
 WN
 WN
-HP
+WN
 WN
 WN
 WN
