@@ -15,9 +15,7 @@
   * otherwise leave value the result of the parent call
   */
 /atom/Exit(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
-		return FALSE
+	return TRUE
 
 /**
   * An atom has exited this atom's contents

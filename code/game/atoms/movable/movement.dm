@@ -1,8 +1,6 @@
 
 // todo:
 // the new move chain should be:
-// turf/atom Exit --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
-// turf/atom Enter --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
 // at this point, it's valid to move ; if it was a forceMove, we don't check at all
 // if it wasn't, we need to check if the Bump changed the moving thing's location. Bump handlers should be able to handle this themselves too via unstoppable flag check.
 // Exited() called for new loc, signals, etc
@@ -13,17 +11,16 @@
 // Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
 
 ////////////////////////////////////////
-// Here's where we rewrite how byond handles movement except slightly different
-// To be removed on step_ conversion
-// All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direct = NONE)
+
+/**
+ * Internal Move() handling, called from the actual Move() implementation via override and ..()
+ * This rewrites how we handle movement to avoid some BYOND-isms.
+ */
+/atom/movable/Move(atom/newloc, direct)
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
-	if(get_dist(loc, newloc) > 1)
-		CRASH("attempted to move longer than 1 get_dist with Move(); please use forceMove!")
-	#warn impl
-	if(!direct)
+	if(isnull(direct))
 		direct = get_dir(src, newloc)
 
 	setDir(direct)
@@ -75,16 +72,23 @@
 			return
 		. = doMove(newloc)
 
-//
-////////////////////////////////////////
 
+/**
+ * Move() implementation
+ *
+ * Only supports moves up to range 1, in any direction including diagonals.
+ */
 /atom/movable/Move(atom/newloc, direct, glide_size_override)
+	if(!isturf(loc) || !isturf(newloc))
+		return FALSE
+	if(get_dist(loc, newloc) > 1)
+		CRASH("attempted to move longer than 1 get_dist with Move(); please use forceMove!")
+	if(isnull(direct))
+		direct = get_dir(src, newloc)
 	var/atom/movable/pullee = pulling
 	var/turf/T = loc
 	if(!moving_from_pull)
 		check_pulling()
-	if(!loc || !newloc)
-		return FALSE
 	var/atom/oldloc = loc
 	//Early override for some cases like diagonal movement
 	if(glide_size_override)
@@ -295,12 +299,17 @@
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
 
-/// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
-/// You probably want CanPass()
+/**
+ * Make sure you know what you're doing if you override or call this.
+ *
+ * This *must* be a pure proc. You cannot act on the atom if you override this! Use Bump() for that.
+ *
+ * You probably want CanPass() if you're overriding.
+ */
 /atom/movable/Cross(atom/movable/AM)
 	. = TRUE
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
-	return CanPass(AM, src, TRUE)
+	return CanPass(AM, loc)
 
 //oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
@@ -309,8 +318,13 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
 	throwing?.crossed_by(AM)
 
+/**
+ * Make sure you know what you're doing if you override or call this.
+ *
+ * This *must* be a pure proc. You cannot act on the atom if you override this! Use Bump() for that.
+ */
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
-	. = ..()
+	. = TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSS, AM) & COMPONENT_MOVABLE_BLOCK_UNCROSS)
 		return FALSE
 	if(isturf(newloc) && !CheckExit(AM, newloc))
