@@ -2579,8 +2579,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
+	name = "Secure Storage";
+	req_one_access = list(20,30)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
@@ -2980,8 +2980,8 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
+	name = "Secure Storage";
+	req_one_access = list(20,30)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
@@ -4059,8 +4059,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/highsecurity{
-	req_one_access = list(20,30);
-	name = "Classified Science Records"
+	name = "Classified Science Records";
+	req_one_access = list(20,30)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical/records)
@@ -5802,13 +5802,13 @@
 /obj/machinery/door/firedoor/glass,
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
+	name = "Secure Storage";
+	req_one_access = list(20,30)
 	},
 /obj/machinery/access_button/airlock_exterior{
-	pixel_x = -24;
 	dir = 4;
-	master_tag = "secure_science_stroage_airlock_control"
+	master_tag = "secure_science_stroage_airlock_control";
+	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6659,8 +6659,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/highsecurity{
-	req_one_access = list(20,30);
-	name = "Vault 1"
+	name = "Vault 1";
+	req_one_access = list(20,30)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
@@ -7733,7 +7733,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "xd" = (
-/obj/structure/closet/coffin,
+/obj/structure/closet/coffin/comfy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/chapel/chapel_morgue)
 "xf" = (
@@ -7970,6 +7970,20 @@
 	},
 /turf/simulated/open,
 /area/maintenance/lower/mining)
+"xJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/multi_tile,
+/obj/machinery/door/airlock/multi_tile/glass{
+	id_tag = "chapel_crematorium";
+	name = "Funeral Services";
+	req_one_access = list(27)
+	},
+/turf/simulated/floor/tiled/dark,
+/area/chapel/main)
 "xK" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
@@ -8142,8 +8156,8 @@
 /area/rnd/secure_storage/critical/records)
 "yp" = (
 /obj/machinery/camera/motion{
-	network = list("Research","Command");
-	dir = 8
+	dir = 8;
+	network = list("Research","Command")
 	},
 /obj/machinery/holoplant,
 /turf/simulated/floor/tiled/techfloor,
@@ -8254,8 +8268,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/highsecurity{
-	req_one_access = list(20,30);
-	name = "Vault 2"
+	name = "Vault 2";
+	req_one_access = list(20,30)
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
@@ -10745,8 +10759,8 @@
 "Jy" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2;
-	req_one_access = list(47);
-	name = "General Storage"
+	name = "General Storage";
+	req_one_access = list(47)
 	},
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 2
@@ -13135,10 +13149,10 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "Ts" = (
-/obj/structure/closet/coffin,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/structure/closet/coffin/comfy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/chapel/chapel_morgue)
 "Tt" = (
@@ -13613,8 +13627,8 @@
 /area/engineering/foyer)
 "Vr" = (
 /obj/machinery/camera/motion{
-	network = list("Research","Command");
-	dir = 8
+	dir = 8;
+	network = list("Research","Command")
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/critical)
@@ -13645,10 +13659,10 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "Vx" = (
-/obj/structure/closet/coffin,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/closet/coffin/comfy,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/chapel/chapel_morgue)
 "Vy" = (
@@ -13949,10 +13963,10 @@
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/airlock/access_controller{
+	dir = 8;
 	id_tag = "secure_science_stroage_airlock_control";
 	name = "Secure Storage Access Controller";
-	pixel_x = 25;
-	dir = 8
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/critical)
@@ -13978,13 +13992,13 @@
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/science{
-	req_one_access = list(20,30);
-	name = "Secure Storage"
+	name = "Secure Storage";
+	req_one_access = list(20,30)
 	},
 /obj/machinery/access_button/airlock_interior{
+	dir = 4;
 	master_tag = "secure_science_stroage_airlock_control";
-	pixel_x = -24;
-	dir = 4
+	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27266,7 +27280,7 @@ Da
 Da
 Da
 Da
-Da
+xJ
 Da
 wz
 OI
