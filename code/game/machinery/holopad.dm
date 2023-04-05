@@ -5,6 +5,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
+// todo: refresh connectivity / change status when something is taken offline / becoming invisible.
+
 /obj/machinery/holopad
 	name = "holopad"
 	desc = "It's a floor-mounted device for projecting holographic images."
@@ -194,7 +196,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
-		if(!pad.operable())
+		if(!pad.operable() || !pad.call_visibility)
 			continue
 		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(pad))
 		if(!our_sector || !their_sector)
