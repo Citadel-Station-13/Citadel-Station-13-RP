@@ -381,7 +381,7 @@
 	return handle_item_insertion(I, user, prevent_warning)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, doMove = TRUE)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
 	if(!istype(W))
 		return 0
 
@@ -394,7 +394,7 @@
 			if (M.client)
 				M.client.screen -= W
 
-	if(doMove)
+	if(do_move)
 		if(new_location)
 			W.forceMove(new_location)
 		else

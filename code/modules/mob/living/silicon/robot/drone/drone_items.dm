@@ -60,7 +60,7 @@
 	wrapped = null
 	switch(newloc)
 		if(null)
-			old.move_to_nullspace()
+			old.moveToNullspace()
 		if(FALSE)
 		else
 			old.forceMove(newloc)

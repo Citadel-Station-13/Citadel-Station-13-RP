@@ -348,7 +348,7 @@
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, null)
-		I.move_to_nullspace()
+		I.moveToNullspace()
 		return TRUE
 	return FALSE
 

@@ -176,7 +176,7 @@
 
 	. = ..()
 
-	move_to_nullspace()
+	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
 

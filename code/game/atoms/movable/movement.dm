@@ -425,7 +425,7 @@
 	else
 		CRASH("No valid destination passed into forceMove")
 
-/atom/movable/proc/move_to_nullspace()
+/atom/movable/proc/moveToNullspace()
 	return doMove(null)
 
 /atom/movable/proc/doMove(atom/destination)

@@ -268,7 +268,7 @@
 			var/mob/living/carbon/human/dummy/mannequin = new()
 			client.prefs.dress_preview_mob(mannequin)
 			var/mob/observer/dead/observer = new(mannequin)
-			observer.move_to_nullspace()	// Let's not stay in our doomed mannequin
+			observer.moveToNullspace()	// Let's not stay in our doomed mannequin
 			qdel(mannequin)
 
 			spawning = 1

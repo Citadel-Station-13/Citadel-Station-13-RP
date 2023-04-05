@@ -29,7 +29,7 @@
 				forceMove(var_value)
 				return TRUE
 			else if(isnull(var_value))
-				move_to_nullspace()
+				moveToNullspace()
 				return TRUE
 			return
 	. = ..()

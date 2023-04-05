@@ -46,7 +46,7 @@
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location, doMove = TRUE)
+/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
 	. = ..()
 	if(.)
 		if(W == front_id)

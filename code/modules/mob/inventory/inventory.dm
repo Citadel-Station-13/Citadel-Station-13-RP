@@ -136,7 +136,7 @@
 		else
 			if(!(I.item_flags & ITEM_DROPDEL))
 				if(newloc == null)
-					I.move_to_nullspace()
+					I.moveToNullspace()
 				else if(newloc != FALSE)
 					I.forceMove(newloc)
 

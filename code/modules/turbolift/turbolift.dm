@@ -97,7 +97,7 @@
 			door.close()
 	return
 
-/datum/turbolift/proc/doMove()
+/datum/turbolift/proc/do_move()
 
 	var/current_floor_index = floors.Find(current_floor)
 

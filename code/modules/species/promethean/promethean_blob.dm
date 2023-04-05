@@ -396,7 +396,7 @@
 	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
-	move_to_nullspace()
+	moveToNullspace()
 
 	//Message
 	blob.visible_message("<b>[src.name]</b> squishes into their true form!")
@@ -481,7 +481,7 @@
 	//Get rid of friend blob
 	stored_blob = blob
 	blob.set_light(0)
-	blob.move_to_nullspace()
+	blob.moveToNullspace()
 	//qdel(blob)
 
 	//Return ourselves in case someone wants it
