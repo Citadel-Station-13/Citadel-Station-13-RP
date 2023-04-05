@@ -474,7 +474,7 @@
 		else
 			visible_message("\The [AM] bounces off of \the [src]'s rim!")
 
-/obj/machinery/disposal/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/machinery/disposal/can_allow_through(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile))
 		return 1
 	if (istype(mover,/obj/item) && mover.throwing)

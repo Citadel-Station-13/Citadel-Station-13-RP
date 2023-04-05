@@ -367,7 +367,7 @@
 	temporary_form = blob
 
 	//Mail them to nullspace
-	moveToNullspace()
+	move_to_nullspace()
 
 	if(blob.client && panel_selected)
 		blob.client.statpanel = SPECIES_PROTEAN

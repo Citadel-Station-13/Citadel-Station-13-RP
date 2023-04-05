@@ -140,7 +140,7 @@
 	..()
 	return
 
-/obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/effect/alien/resin/can_allow_through(atom/movable/mover, turf/target)
 	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return TRUE
 	return ..()

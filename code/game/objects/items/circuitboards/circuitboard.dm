@@ -64,7 +64,7 @@
 
 		// Move to nullspace so you don't trigger handle_atom_del logic and remove existing parts.
 		for(var/obj/item/part in M.component_parts)
-			part.moveToNullspace(loc)
+			part.move_to_nullspace(loc)
 			qdel(part)
 
 	// List of components always contains the circuit board used to build it.
@@ -80,7 +80,7 @@
 		stack_trace("apply_default_parts called from a circuit board that does not belong to machine: [M]")
 
 		// Move to nullspace so you don't trigger handle_atom_del logic, remove old circuit, add new circuit.
-		M.circuit.moveToNullspace()
+		M.circuit.move_to_nullspace()
 		qdel(M.circuit)
 		M.circuit = src
 

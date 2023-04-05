@@ -169,7 +169,7 @@
 		var/mob/observer/dead/M = src
 		M.manifest(user)
 
-/mob/observer/dead/CanAllowThrough(atom/movable/mover, turf/target)
+/mob/observer/dead/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	return TRUE
 

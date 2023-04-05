@@ -36,7 +36,7 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/railing/can_allow_through(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, target) & turn(dir, 180)))
 		return TRUE
 	return ..()

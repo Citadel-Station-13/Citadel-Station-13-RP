@@ -1,4 +1,4 @@
-/obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/table/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(.)
 		return

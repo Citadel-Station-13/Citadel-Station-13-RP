@@ -47,7 +47,7 @@ var/list/blobs = list()
 		set_light(0)
 
 // Blob tiles are not actually dense so we need Special Code(tm).
-/obj/structure/blob/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/blob/can_allow_through(atom/movable/mover, turf/target)
 	// density is false, can't trust parent procs
 	if(check_standard_flag_pass(mover))
 		return TRUE

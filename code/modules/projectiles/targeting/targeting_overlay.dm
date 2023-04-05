@@ -21,7 +21,7 @@
 /obj/aiming_overlay/Initialize(mapload)
 	. = ..()
 	owner = loc
-	moveToNullspace()
+	move_to_nullspace()
 	verbs.Cut()
 
 /obj/aiming_overlay/proc/toggle_permission(var/perm)
@@ -222,5 +222,5 @@
 	aiming_with = null
 	aiming_at.aimed -= src
 	aiming_at = null
-	moveToNullspace()
+	move_to_nullspace()
 	STOP_PROCESSING(SSobj, src)

@@ -146,7 +146,7 @@
 		else
 			die(0)
 
-/obj/effect/meteor/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/effect/meteor/can_allow_through(atom/movable/mover, turf/target)
 	return istype(mover, /obj/effect/meteor) ? 1 : ..()
 
 /obj/effect/meteor/proc/ram_turf(var/turf/T)

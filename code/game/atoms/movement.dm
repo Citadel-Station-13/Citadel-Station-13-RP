@@ -40,13 +40,13 @@
 	// SHOULD_CALL_PARENT(TRUE)
 	if(mover.movement_type & MOVEMENT_UNSTOPPABLE)
 		return TRUE
-	. = CanAllowThrough(mover, target)
-	// This is cheaper than calling the proc every time since most things dont override CanPassThrough
+	. = can_allow_through(mover, target)
+	// This is cheaper than calling the proc every time since most things dont override can_pass_through
 	if(!mover.generic_canpass)
-		return mover.CanPassThrough(src, target, .)
+		return mover.can_pass_through(src, target, .)
 
 /// Returns true or false to allow the mover to move through src
-/atom/proc/CanAllowThrough(atom/movable/mover, turf/target)
+/atom/proc/can_allow_through(atom/movable/mover, turf/target)
 	// SHOULD_CALL_PARENT(TRUE)
 	// SHOULD_BE_PURE(TRUE)
 	if(mover.pass_flags & pass_flags_self)

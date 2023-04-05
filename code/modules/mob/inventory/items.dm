@@ -283,8 +283,8 @@
 	RETURN_TYPE(/mob)
 	return worn_inside?.worn_mob() || (worn_slot? loc : null)
 
-// doMove hook to ensure proper functionality when inv procs aren't called
-/obj/item/doMove(atom/destination)
+// do_move hook to ensure proper functionality when inv procs aren't called
+/obj/item/do_move(atom/destination)
 	if(worn_slot && !worn_hook_suppressed)
 		// inventory handling
 		if(destination == worn_inside)

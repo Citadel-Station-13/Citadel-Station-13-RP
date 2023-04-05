@@ -11,7 +11,7 @@
 /obj/effect/shadekin_ability/Initialize(mapload)
 	. = ..()
 	my_kin = loc
-	moveToNullspace()
+	move_to_nullspace()
 
 /obj/effect/shadekin_ability/Destroy()
 	my_kin = null

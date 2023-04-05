@@ -55,7 +55,7 @@
 /obj/structure/windoor_assembly/update_icon()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
-/obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/windoor_assembly/can_allow_through(atom/movable/mover, turf/target)
 	if(!(get_dir(loc, mover) & dir))
 		// if it isn't our side we don't care
 		return TRUE

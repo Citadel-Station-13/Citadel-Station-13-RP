@@ -36,7 +36,7 @@
 	density = FALSE
 	solidledge = FALSE
 
-/obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/ledge/can_allow_through(atom/movable/mover, turf/target)
 	if(!solidledge)
 		return TRUE
 	if(!(get_dir(mover, target) & turn(dir, 180)))

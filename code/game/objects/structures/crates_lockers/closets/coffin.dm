@@ -43,7 +43,7 @@
 							"<span class='notice'>You stop climbing into \the [src.name].</span>")
 	return
 
-/obj/structure/closet/grave/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/closet/grave/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(opened && ismob(mover))
 		var/mob/M = mover

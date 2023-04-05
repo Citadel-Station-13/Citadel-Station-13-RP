@@ -29,7 +29,7 @@
 	return ..()
 
 /datum/component/mirage_border/PreTransfer()
-	holder.moveToNullspace()
+	holder.move_to_nullspace()
 
 /datum/component/mirage_border/PostTransfer()
 	if(!isturf(parent))

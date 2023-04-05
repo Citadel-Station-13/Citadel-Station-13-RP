@@ -55,7 +55,7 @@
 		return CanAStarPass(ID, to_dir, caller.pulling)
 	return TRUE //diseases, stings, etc can pass
 
-/obj/structure/plasticflaps/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/plasticflaps/can_allow_through(atom/movable/mover, turf/target)
 	if(mover.check_pass_flags(ATOM_PASS_GLASS) && prob(60))
 		return TRUE
 

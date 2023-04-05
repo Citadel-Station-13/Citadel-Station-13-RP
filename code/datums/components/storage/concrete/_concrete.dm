@@ -45,7 +45,7 @@
 		_contents_limbo = list()
 		for(var/atom/movable/AM in parent)
 			_contents_limbo += AM
-			AM.moveToNullspace()
+			AM.move_to_nullspace()
 
 /datum/component/storage/concrete/PostTransfer()
 	if(!isatom(parent))
@@ -135,7 +135,7 @@
 		AM.on_exit_storage(src)
 	else
 		//Being destroyed, just move to nullspace now (so it's not in contents for the icon update)
-		AM.moveToNullspace()
+		AM.move_to_nullspace()
 	refresh_mob_views()
 	if(isobj(parent))
 		var/obj/O = parent

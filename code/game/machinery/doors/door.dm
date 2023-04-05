@@ -139,7 +139,7 @@
 			else
 				do_animate("deny")
 
-/obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/machinery/door/can_allow_through(atom/movable/mover, turf/target)
 	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return TRUE
 	return ..()

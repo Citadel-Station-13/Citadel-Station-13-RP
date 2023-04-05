@@ -653,7 +653,7 @@
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
 
-/obj/projectile/CanAllowThrough()
+/obj/projectile/can_allow_through()
 	. = ..()
 	return TRUE
 

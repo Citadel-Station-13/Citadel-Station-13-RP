@@ -385,7 +385,7 @@
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 
-/obj/structure/holohoop/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/holohoop/can_allow_through(atom/movable/mover, turf/target)
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/projectile))

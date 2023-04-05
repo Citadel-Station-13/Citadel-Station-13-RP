@@ -815,7 +815,7 @@
 		if(!istype(drop_destination) || drop_destination == destination)
 			return force_move(destination)
 		destination = drop_destination
-	return moveToNullspace()
+	return move_to_nullspace()
 
 /atom/proc/onDropInto(var/atom/movable/AM)
 	return // If onDropInto returns null, then dropInto will force_move AM into us.

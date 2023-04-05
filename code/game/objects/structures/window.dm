@@ -181,7 +181,7 @@
 /obj/structure/window/blob_act()
 	take_damage(50)
 
-/obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/window/can_allow_through(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/window))
 		// if they're a window we have special handling
 		var/obj/structure/window/them = mover

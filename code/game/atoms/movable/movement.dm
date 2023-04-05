@@ -33,7 +33,6 @@
 // pending changes.
 // regardless,
 // Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
-// also, rename force_move to force_move because bay, and set_dir to set_dir().
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
@@ -89,7 +88,7 @@
 	else if(newloc)	// We're a multi-tile object.
 		if(!check_multi_tile_move_density_dir(direct, locs))	// We're big, and we can't move that way.
 			return
-		. = doMove(newloc)
+		. = do_move(newloc)
 
 //
 ////////////////////////////////////////
@@ -239,11 +238,6 @@
 		newtonian_move(movement_dir)
  */
 
-/*
-	if (length(client_mobs_in_contents))
-		update_parallax_contents()
- */
-
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
 
@@ -256,6 +250,42 @@
 
 	if (old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf?.z, new_turf?.z)
+
+
+
+/**
+ * Called after a successful Move(). By this point, we've already moved.
+ * Arguments:
+ * * old_loc is the location prior to the move. Can be null to indicate nullspace.
+ * * movement_dir is the direction the movement took place. Can be NONE if it was some sort of teleport.
+ * * The forced flag indicates whether this was a forced move, which skips many checks of regular movement.
+ * * The old_locs is an optional argument, in case the moved movable was present in multiple locations before the movement.
+ * * momentum_change represents whether this movement is due to a "new" force if TRUE or an already "existing" force if FALSE
+ **/
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+
+	if (!inertia_moving && momentum_change)
+		newtonian_move(movement_dir)
+	// If we ain't moving diagonally right now, update our parallax
+	// We don't do this all the time because diag movements should trigger one call to this, not two
+	// Waste of cpu time, and it fucks the animate
+	if (!moving_diagonally && client_mobs_in_contents)
+		update_parallax_contents()
+
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
+
+	if(old_loc)
+		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src, movement_dir)
+	if(loc)
+		SEND_SIGNAL(loc, COMSIG_ATOM_ABSTRACT_ENTERED, src, old_loc, old_locs)
+
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(src)
+
+	if (old_turf?.z != new_turf?.z)
+		var/same_z_layer = (GET_TURF_PLANE_OFFSET(old_turf) == GET_TURF_PLANE_OFFSET(new_turf))
+		on_changed_z_level(old_turf, new_turf, same_z_layer)
 
 /*
 	if(HAS_SPATIAL_GRID_CONTENTS(src))
@@ -271,10 +301,9 @@
 
 		else if(new_turf && !old_turf)
 			SSspatial_grid.enter_cell(src, new_turf)
- */
+*/
 
 	return TRUE
-
 
 /**
  * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
@@ -312,8 +341,6 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
 /atom/movable/Bump(atom/A)
-	if(!A)
-		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 
 	. = ..()
@@ -417,14 +444,14 @@
 	. = FALSE
 	pulledby?.stop_pulling()
 	if(destination)
-		. = doMove(destination)
+		. = do_move(destination)
 	else
 		CRASH("No valid destination passed into force_move")
 
-/atom/movable/proc/moveToNullspace()
-	return doMove(null)
+/atom/movable/proc/move_to_nullspace()
+	return do_move(null)
 
-/atom/movable/proc/doMove(atom/destination)
+/atom/movable/proc/do_move(atom/destination)
 	. = FALSE
 	var/atom/oldloc = loc
 	if(destination)
@@ -485,13 +512,13 @@
 		var/atom/movable/AM = item
 		AM.on_changed_z_level(old_z, new_z)
 
-/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
+/atom/movable/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(mover in buckled_mobs)
 		return TRUE
 
 /// Returns true or false to allow src to move through the blocker, mover has final say
-/atom/movable/proc/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+/atom/movable/proc/can_pass_through(atom/blocker, turf/target, blocker_opinion)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_BE_PURE(TRUE)
 	return blocker_opinion

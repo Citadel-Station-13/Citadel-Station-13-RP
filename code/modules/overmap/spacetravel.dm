@@ -148,5 +148,5 @@ var/list/cached_space = list()
 		var/obj/effect/overmap/visitable/sector/temporary/source = M
 		if (source.can_die())
 			testing("Caching [M] for future use")
-			source.moveToNullspace()
+			source.move_to_nullspace()
 			cached_space += source

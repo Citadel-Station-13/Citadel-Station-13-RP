@@ -87,7 +87,7 @@
 		else
 			. += "It is full."
 
-/obj/structure/closet/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/closet/can_allow_through(atom/movable/mover, turf/target)
 	if(wall_mounted)
 		return TRUE
 	return ..()

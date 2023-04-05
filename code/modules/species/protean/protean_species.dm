@@ -162,7 +162,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	var/obj/item/nif/saved_nif = H.nif
 	if(saved_nif)
 		H.nif.unimplant(H) //Needs reference to owner to unimplant right.
-		H.nif.moveToNullspace()
+		H.nif.move_to_nullspace()
 	..()
 	if(saved_nif)
 		saved_nif.quick_implant(H)

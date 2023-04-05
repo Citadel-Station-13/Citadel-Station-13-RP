@@ -38,7 +38,7 @@
 		if(epitaph)
 			. += epitaph
 
-/obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/gravemarker/can_allow_through(atom/movable/mover, turf/target)
 	if(!(get_dir(loc, target) & dir))
 		return TRUE
 	return ..()

@@ -34,7 +34,7 @@
 	return ..()
 
 
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+/mob/living/can_allow_through(atom/movable/mover, turf/target)
 	if(ismob(mover))
 		var/mob/M = mover
 		if(buckled && M.buckled == buckled)

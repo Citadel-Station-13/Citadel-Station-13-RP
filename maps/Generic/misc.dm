@@ -13,8 +13,8 @@
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf
 	return TRUE
-/* // Variant that Triumph had. Dont know what the difference between CanPass and CanAllowThrough is so Im going to leave this here in case theres an important difference - Bloop
-/obj/effect/ceiling/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
+/* // Variant that Triumph had. Dont know what the difference between CanPass and can_allow_through is so Im going to leave this here in case theres an important difference - Bloop
+/obj/effect/ceiling/can_allow_through(atom/movable/mover, turf/target, height=0, air_group=0)
 	. = ..()
 	if(mover && mover.z > src.z)
 		return FALSE // Block entry from above to our turf

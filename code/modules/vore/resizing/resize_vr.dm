@@ -204,7 +204,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 //! sigh, we can't do this yet
 /*
-/mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+/mob/living/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(isliving(mover))
 		var/fetish_content_check = stupid_fucking_micro_canpass_fetish_check(mover)

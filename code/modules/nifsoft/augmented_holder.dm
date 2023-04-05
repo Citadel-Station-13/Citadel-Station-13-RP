@@ -15,7 +15,7 @@
 	holder = master
 	holder.vis_contents += src
 	vis_flags = VIS_INHERIT_ID
-	moveToNullspace()
+	move_to_nullspace()
 	return ..()
 
 /atom/movable/augmented_holder/Destroy()

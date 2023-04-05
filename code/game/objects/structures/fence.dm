@@ -66,7 +66,7 @@
 	hole_size = LARGE_HOLE
 
 // Projectiles can pass through fences.
-/obj/structure/fence/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/fence/can_allow_through(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile))
 		return TRUE
 	return ..()

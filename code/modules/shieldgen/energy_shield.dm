@@ -199,7 +199,7 @@
 
 
 // As we have various shield modes, this handles whether specific things can pass or not.
-/obj/effect/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
+/obj/effect/shield/can_allow_through(var/atom/movable/mover, var/turf/target)
 	. = ..()
 	// Somehow we don't have a generator. This shouldn't happen. Delete the shield.
 	if(!gen)

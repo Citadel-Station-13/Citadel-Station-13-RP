@@ -30,7 +30,7 @@
 			var/list/N = var_value
 			for(var/atom/movable/AM in O - N)
 				// these go away
-				AM.moveToNullspace()
+				AM.move_to_nullspace()
 			for(var/atom/movable/AM in N - O)
 				// these go in
 				AM.force_move(src)

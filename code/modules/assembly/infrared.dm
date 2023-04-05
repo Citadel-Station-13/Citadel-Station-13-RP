@@ -129,7 +129,7 @@
 	set_dir(old_dir)
 	Queue()
 
-/obj/item/assembly/infra/doMove()
+/obj/item/assembly/infra/do_move()
 	. = ..()
 	Queue()
 

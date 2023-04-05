@@ -43,7 +43,7 @@
 		else
 			mob.control_object.force_move(get_step(mob.control_object,direct))
 
-/mob/CanAllowThrough(atom/movable/mover, turf/target)
+/mob/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(ismob(mover))
 		var/mob/moving_mob = mover
@@ -56,7 +56,7 @@
 	if(!mover.density && !mover.throwing)
 		return TRUE
 
-/mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
+/mob/can_pass_through(atom/blocker, turf/target, blocker_opinion)
 	if((buckled?.loc == target) && ismovable(blocker))
 		var/atom/movable/AM = blocker
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
