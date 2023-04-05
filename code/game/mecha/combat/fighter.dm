@@ -29,8 +29,8 @@
 	stomp_sound = 'sound/machines/generator/generator_end.ogg'
 	swivel_sound = 'sound/machines/hiss.ogg'
 
-	bound_height = 64
-	bound_width = 64
+	bound_height = 32 //these both *need* to be 64 for balanced/predictable targeting and movement, but this is a bandaid for a bug I'm too dumb to fix
+	bound_width = 32
 
 	max_hull_equip = 2
 	max_weapon_equip = 2
