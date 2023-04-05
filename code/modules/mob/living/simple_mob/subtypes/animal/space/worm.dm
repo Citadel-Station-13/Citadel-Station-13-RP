@@ -115,7 +115,7 @@
 		icon_state = "[icon_living][previous ? 1 : 0]"
 
 	if(previous)
-		set_dir(get_dir(previous,src))
+		setDir(get_dir(previous,src))
 
 	if(stat)
 		icon_state = "[icon_state]_dead"
@@ -188,7 +188,7 @@
 
 	return
 
-/mob/living/simple_mob/animal/space/space_worm/can_allow_through(atom/movable/mover, turf/target)
+/mob/living/simple_mob/animal/space/space_worm/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/simple_mob/animal/space/space_worm/head))
 		var/mob/living/simple_mob/animal/space/space_worm/head/H = mover
 		if(H.previous == src)
@@ -218,10 +218,10 @@
 				previous.z_transitioning = TRUE
 			else
 				previous.z_transitioning = FALSE
-			previous.force_move(attachementNextPosition)	// None of this 'ripped in half by an airlock' business.
+			previous.forceMove(attachementNextPosition)	// None of this 'ripped in half by an airlock' business.
 		update_icon()
 
-/mob/living/simple_mob/animal/space/space_worm/force_move()
+/mob/living/simple_mob/animal/space/space_worm/forceMove()
 	var/attachementNextPosition = loc
 	. = ..()
 	if(.)
@@ -230,7 +230,7 @@
 				previous.z_transitioning = TRUE
 			else
 				previous.z_transitioning = FALSE
-			previous.force_move(attachementNextPosition)	// None of this 'ripped in half by an airlock' business. x 2
+			previous.forceMove(attachementNextPosition)	// None of this 'ripped in half by an airlock' business. x 2
 		update_icon()
 
 /mob/living/simple_mob/animal/space/space_worm/head/Bump(atom/obstacle)
@@ -257,7 +257,7 @@
 		icon_state = "spacewormtail"
 		if(stat)
 			icon_state = "[icon_state]_dead"
-		set_dir(get_dir(src,next))
+		setDir(get_dir(src,next))
 
 	if(next)
 		color = next.color
@@ -310,7 +310,7 @@
 
 			if(objectOrMob)
 				objectOrMob.update_nearby_tiles()
-				objectOrMob.force_move(src)
+				objectOrMob.forceMove(src)
 				return 1
 
 	return 0
@@ -377,10 +377,10 @@
 /mob/living/simple_mob/animal/space/space_worm/proc/DumpStomach()
 	if(previous && previous.stat != DEAD)
 		for(var/atom/movable/stomachContent in contents) //transfer it along the digestive tract
-			stomachContent.force_move(previous)
+			stomachContent.forceMove(previous)
 	else
 		for(var/atom/movable/stomachContent in contents) // Or dump it out.
-			stomachContent.force_move(get_turf(src))
+			stomachContent.forceMove(get_turf(src))
 	return
 
 /mob/living/simple_mob/animal/space/space_worm/proc/stomach_special(var/atom/A)	// Futureproof. Anything that interacts with contents without relying on digestion probability. Return TRUE if it should skip digest.

@@ -36,7 +36,7 @@
 	for(var/obj/structure/railing/R in orange(location, 1))
 		R.update_icon()
 
-/obj/structure/railing/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/railing/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, target) & turn(dir, 180)))
 		return TRUE
 	return ..()
@@ -150,7 +150,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))
 	update_icon()
 	return
 
@@ -169,7 +169,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	update_icon()
 	return
 
@@ -194,7 +194,7 @@
 		return 0
 
 	src.loc = get_step(src, src.dir)
-	set_dir(turn(dir, 180))
+	setDir(turn(dir, 180))
 	update_icon()
 	return
 
@@ -249,9 +249,9 @@
 					return
 			else
 				if (get_turf(G.affecting) == get_turf(src))
-					G.affecting.force_move(get_step(src, src.dir))
+					G.affecting.forceMove(get_step(src, src.dir))
 				else
-					G.affecting.force_move(get_turf(src))
+					G.affecting.forceMove(get_turf(src))
 				G.affecting.Weaken(5)
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)

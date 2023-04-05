@@ -368,7 +368,7 @@
 	to_chat(user, "<span class='notice'>You attach [src] to [H].</span>")
 	return TRUE
 /obj/item/crusher_trophy/proc/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
-	force_move(get_turf(H))
+	forceMove(get_turf(H))
 	H.trophies -= src
 	return TRUE
 /obj/item/crusher_trophy/proc/on_melee_hit(mob/living/target, mob/living/user) //the target and the user

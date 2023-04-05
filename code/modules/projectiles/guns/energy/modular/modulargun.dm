@@ -202,25 +202,25 @@
 			return
 		var/turf/T = get_turf(src)
 		if(primarycore && primarycore.removable == TRUE)
-			primarycore.force_move(T)
+			primarycore.forceMove(T)
 			primarycore = null
 		if(secondarycore && secondarycore.removable == TRUE)
-			secondarycore.force_move(T)
+			secondarycore.forceMove(T)
 			secondarycore = null
 		if(tertiarycore && tertiarycore.removable == TRUE)
-			tertiarycore.force_move(T)
+			tertiarycore.forceMove(T)
 			tertiarycore = null
 		if(laserlens && laserlens.removable == TRUE)
-			laserlens.force_move(T)
+			laserlens.forceMove(T)
 			laserlens = null
 		if(lasercap && lasercap.removable == TRUE)
-			lasercap.force_move(T)
+			lasercap.forceMove(T)
 			lasercap = null
 		if(lasercooler && lasercooler.removable == TRUE)
-			lasercooler.force_move(T)
+			lasercooler.forceMove(T)
 			lasercooler = null
 		if(circuit && circuit.removable == TRUE)
-			circuit.force_move(T)
+			circuit.forceMove(T)
 			circuit = null
 		generatefiremodes()
 	if(istype(I, /obj/item/modularlaser))

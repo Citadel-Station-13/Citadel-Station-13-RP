@@ -368,7 +368,7 @@
 		var/obj/item/organ/external/affected = owner.get_organ(parent_organ)
 		if(affected) affected.internal_organs -= src
 
-		force_move(owner.drop_location())
+		forceMove(owner.drop_location())
 		rejecting = null
 
 	if(istype(owner))

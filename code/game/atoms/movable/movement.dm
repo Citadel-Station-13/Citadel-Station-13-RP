@@ -3,7 +3,7 @@
 // the new move chain should be:
 // turf/atom Exit --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
 // turf/atom Enter --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
-// at this point, it's valid to move ; if it was a force_move, we don't check at all
+// at this point, it's valid to move ; if it was a forceMove, we don't check at all
 // if it wasn't, we need to check if the Bump changed the moving thing's location. Bump handlers should be able to handle this themselves too via unstoppable flag check.
 // Exited() called for new loc, signals, etc
 // Moved() called but only if Exited() didn't end up moving the atom.
@@ -21,12 +21,12 @@
 	if(!newloc || newloc == loc)
 		return
 	if(get_dist(loc, newloc) > 1)
-		CRASH("attempted to move longer than 1 get_dist with Move(); please use force_move!")
+		CRASH("attempted to move longer than 1 get_dist with Move(); please use forceMove!")
 	#warn impl
 	if(!direct)
 		direct = get_dir(src, newloc)
 
-	set_dir(direct)
+	setDir(direct)
 
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 
@@ -71,7 +71,7 @@
 	else if(newloc)	// We're a multi-tile object.
 		if(!check_multi_tile_move_density_dir(direct, locs))	// We're big, and we can't move that way.
 			return
-		. = do_move(newloc)
+		. = doMove(newloc)
 
 //
 ////////////////////////////////////////
@@ -94,7 +94,7 @@
 		else //Diagonal move, split it into cardinal moves
 			moving_diagonally = FIRST_DIAG_STEP
 			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a force_move taking
+			// The `&& moving_diagonally` checks are so that a forceMove taking
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
@@ -138,7 +138,7 @@
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
 				if(!.)
-					set_dir(first_step_dir)
+					setDir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
 					newtonian_move(direct)
@@ -147,7 +147,7 @@
 	else		// trying to move to the same place
 		if(direct)
 			last_move_dir = direct
-			set_dir(direct)
+			setDir(direct)
 		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
@@ -178,7 +178,7 @@
 
 	if(direct)
 		last_move_dir = direct
-		set_dir(direct)
+		setDir(direct)
 
 	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
 	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
@@ -197,15 +197,15 @@
 				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 				continue
 			else
-				force_move(M.loc)
+				forceMove(M.loc)
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
 			for(var/mob/resetting as anything in buckled_mobs)
 				if(resetting.loc != loc)
-					resetting.force_move(loc)
+					resetting.forceMove(loc)
 			return FALSE
 		else
-			M.set_dir(dir)
+			M.setDir(dir)
 	return TRUE
 
 /*
@@ -285,7 +285,7 @@
 /**
  * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
  * if you want something to move onto a tile with a beartrap or recycler or tripmine or mouse without that object knowing about it at all, use this
- * most of the time you want force_move()
+ * most of the time you want forceMove()
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
@@ -300,7 +300,7 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
 	return CanPass(AM, src, TRUE)
 
-//oldloc = old location on atom, inserted when force_move is called and ONLY when force_move is called!
+//oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
@@ -331,7 +331,7 @@
 	A.Bumped(src)
 
 /**
-  * force_move but it brings along pulling/buckled stuff
+  * forceMove but it brings along pulling/buckled stuff
   * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
   * Probably needs a better way of handling this in the future.
   */
@@ -384,7 +384,7 @@
 	if(!.)
 		return
 	for(var/mob/M in old_grabbed)
-		M.force_move(loc)
+		M.forceMove(loc)
 
 /**
   * Gets the atoms that we'd pull along with a locationTransitForceMove
@@ -411,24 +411,24 @@
 			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed) : M
 
 /**
-  * Wrapper for force_move when we're called by a recursing locationTransitForceMove().
+  * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
   */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
 	. = TRUE
-	force_move(destination)
+	forceMove(destination)
 
-/atom/movable/proc/force_move(atom/destination)
+/atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
 	pulledby?.stop_pulling()
 	if(destination)
-		. = do_move(destination)
+		. = doMove(destination)
 	else
-		CRASH("No valid destination passed into force_move")
+		CRASH("No valid destination passed into forceMove")
 
 /atom/movable/proc/move_to_nullspace()
-	return do_move(null)
+	return doMove(null)
 
-/atom/movable/proc/do_move(atom/destination)
+/atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 	var/atom/oldloc = loc
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
@@ -496,13 +496,13 @@
 
 	Moved(oldloc, NONE, TRUE)
 
-/atom/movable/can_allow_through(atom/movable/mover, turf/target)
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(mover in buckled_mobs)
 		return TRUE
 
 /// Returns true or false to allow src to move through the blocker, mover has final say
-/atom/movable/proc/can_pass_through(atom/blocker, turf/target, blocker_opinion)
+/atom/movable/proc/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_BE_PURE(TRUE)
 	return blocker_opinion
@@ -580,7 +580,7 @@
 /**
  * Hook for running code when a dir change occurs
  */
-/atom/proc/set_dir(newdir)
+/atom/proc/setDir(newdir)
 	if(dir == newdir)
 		return FALSE
 	SHOULD_CALL_PARENT(TRUE)

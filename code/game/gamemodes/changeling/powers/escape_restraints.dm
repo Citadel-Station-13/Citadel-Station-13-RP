@@ -32,10 +32,10 @@
 
 	var/mob/living/carbon/human/H = C
 
-	H.handcuffed?.force_move(drop_location())
-	H.legcuffed?.force_move(drop_location())
+	H.handcuffed?.forceMove(drop_location())
+	H.legcuffed?.forceMove(drop_location())
 	if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket))
-		H.wear_suit.force_move(drop_location())
+		H.wear_suit.forceMove(drop_location())
 
 	if(src.mind.changeling.recursive_enhancement)
 		escape_cooldown *= 0.5

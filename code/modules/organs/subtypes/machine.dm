@@ -87,7 +87,7 @@
 
 	if(stored_mmi)
 		. = stored_mmi
-		stored_mmi.force_move(drop_location())
+		stored_mmi.forceMove(drop_location())
 		if(owner.mind)
 			owner.mind.transfer_to(stored_mmi.brainmob)
 	..()

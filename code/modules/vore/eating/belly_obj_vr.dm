@@ -251,7 +251,7 @@
 		return 0 // They weren't in this belly anyway
 
 	//Place them into our drop_location
-	M.force_move(drop_location())
+	M.forceMove(drop_location())
 
 	items_preserved -= M
 
@@ -300,7 +300,7 @@
 	if (prey.buckled)
 		prey.buckled.unbuckle_mob()
 
-	prey.force_move(src)
+	prey.forceMove(src)
 	owner.updateVRPanel()
 
 	for(var/mob/living/M in contents)
@@ -405,13 +405,13 @@
 				var/obj/item/organ/internal/mmi_holder/MMI = W
 				var/atom/movable/brain = MMI.removed()
 				if(brain)
-					brain.force_move(src)
+					brain.forceMove(src)
 					items_preserved += brain
 			if(istype(W,/obj/item/organ/external/chest))
 				var/obj/item/organ/external/chest/C = W
 				for (var/obj/item/I in C.implants)
 					if(istype(I,/obj/item/implant/mirror))
-						I.force_move(src)
+						I.forceMove(src)
 						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
 				var/obj/item/I = M.item_by_slot(slot)
@@ -470,7 +470,7 @@
 
 	//This is probably already the case, but for sub-prey, it won't be.
 	if(M.loc != src)
-		M.force_move(src)
+		M.forceMove(src)
 
 	//Seek out absorbed prey of the prey, absorb them too.
 	//This in particular will recurse oddly because if there is absorbed prey of prey of prey...
@@ -634,7 +634,7 @@
 /obj/belly/proc/transfer_contents(var/atom/movable/content, var/obj/belly/target, silent = 0)
 	if(!(content in src) || !istype(target))
 		return
-	content.force_move(target)
+	content.forceMove(target)
 	if(isitem(content))
 		var/obj/item/I = content
 		if(istype(I,/obj/item/card/id))

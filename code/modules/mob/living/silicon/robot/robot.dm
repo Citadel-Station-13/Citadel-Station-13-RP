@@ -712,7 +712,7 @@
 			to_chat(user, "You begin removing \the [bolt].")
 
 			if(do_after(user, 2 SECONDS, src))
-				bolt.force_move(get_turf(src))
+				bolt.forceMove(get_turf(src))
 				bolt = null
 
 				to_chat(user, "You remove \the [bolt].")

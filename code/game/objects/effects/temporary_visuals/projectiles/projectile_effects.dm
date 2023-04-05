@@ -46,7 +46,7 @@
 	scale_to(1,scaling, FALSE)
 	turn_to(angle_override, FALSE)
 	if(!isnull(new_loc))	//If you want to null it just delete it...
-		force_move(new_loc)
+		forceMove(new_loc)
 	for(var/i in 1 to increment)
 		pixel_x += round((sin(angle_override)+16*sin(angle_override)*2), 1)
 		pixel_y += round((cos(angle_override)+16*cos(angle_override)*2), 1)

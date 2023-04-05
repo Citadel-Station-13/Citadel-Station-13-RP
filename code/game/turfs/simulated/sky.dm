@@ -63,7 +63,7 @@
 	if(!T)
 		return
 
-	AM.force_move(T)
+	AM.forceMove(T)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		message_admins("\The [AM] fell out of the sky.")
@@ -113,7 +113,7 @@
 	if(!T)
 		return
 
-	AM.force_move(T)
+	AM.forceMove(T)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		message_admins("\The [AM] fell out of the sky.")
@@ -145,7 +145,7 @@
 	if(!T)
 		return
 
-	AM.force_move(T)
+	AM.forceMove(T)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		message_admins("\The [AM] fell out of the sky.")

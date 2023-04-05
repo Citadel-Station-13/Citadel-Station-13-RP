@@ -36,7 +36,7 @@
 	density = FALSE
 	solidledge = FALSE
 
-/obj/structure/ledge/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/ledge/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!solidledge)
 		return TRUE
 	if(!(get_dir(mover, target) & turn(dir, 180)))
@@ -68,9 +68,9 @@
 		return
 
 	if(get_turf(user) == get_turf(src))
-		usr.force_move(get_step(src, src.dir))
+		usr.forceMove(get_step(src, src.dir))
 	else
-		usr.force_move(get_turf(src))
+		usr.forceMove(get_turf(src))
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	climbers -= user

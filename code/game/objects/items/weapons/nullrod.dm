@@ -99,7 +99,7 @@
 
 /obj/item/nullrod/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
-		user.set_dir(i)
+		user.setDir(i)
 		if(i == WEST)
 			user.emote("flip")
 		sleep(1)

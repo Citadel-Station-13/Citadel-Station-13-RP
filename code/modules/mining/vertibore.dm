@@ -42,7 +42,7 @@
 		if(!cell)
 			to_chat(user, "<span class='warning'>\The [src] has no cell installed.</span>")
 			return
-		cell.force_move(get_turf(src))
+		cell.forceMove(get_turf(src))
 		user.put_in_hands(cell)
 		user.visible_message("<span class='notice'>\The [user] unscrews \the [cell.name] from \the [src].</span>")
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)

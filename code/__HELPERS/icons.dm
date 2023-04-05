@@ -765,7 +765,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 
 		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 		for(var/D in showDirs)
-			body.set_dir(D)
+			body.setDir(D)
 			body.compile_overlays()
 			var/icon/partial = get_flat_icon(body)
 			out_icon.Insert(partial,dir=D)
@@ -779,7 +779,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 //Hook, override to run code on- wait this is images
 //Images have dir without being an atom, so they get their own definition.
 //Lame.
-/image/proc/set_dir(newdir)
+/image/proc/setDir(newdir)
 	dir = newdir
 /*
 GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0,0,0)))

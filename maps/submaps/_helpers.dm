@@ -75,13 +75,13 @@
 	if(!T)
 		log_debug(SPAN_DEBUGERROR("Fake stairs at [x],[y],[z] [ADMIN_JMP(src)] couldn't move someone to their destination."))
 		return
-	AM.force_move(T)
-	spawn AM.set_dir(dir_to_use)
+	AM.forceMove(T)
+	spawn AM.setDir(dir_to_use)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.pulling)
-			L.pulling.force_move(T)
-			spawn L.pulling.set_dir(dir_to_use)
+			L.pulling.forceMove(T)
+			spawn L.pulling.setDir(dir_to_use)
 
 /obj/structure/fake_stairs/north/top
 	name = "stairs"

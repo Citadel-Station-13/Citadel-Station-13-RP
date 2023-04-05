@@ -46,7 +46,7 @@ var/global/list/map_sectors = list()
 
 /turf/unsimulated/map/edge/Bumped(var/atom/movable/AM)
 	if(wrap_buddy?.map_is_to_my)
-		AM.force_move(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
+		AM.forceMove(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
 	else
 		. = ..()
 

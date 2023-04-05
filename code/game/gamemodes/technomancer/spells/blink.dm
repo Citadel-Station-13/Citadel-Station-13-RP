@@ -46,7 +46,7 @@
 			var/mob/living/L = AM
 			if(L.buckled)
 				L.buckled.unbuckle_mob()
-		AM.force_move(destination)
+		AM.forceMove(destination)
 		AM.visible_message("<span class='notice'>\The [AM] vanishes!</span>")
 		to_chat(AM, "<span class='notice'>You suddenly appear somewhere else!</span>")
 		new /obj/effect/particle_effect/sparks(destination)

@@ -624,11 +624,11 @@ var/list/global/tank_gauge_cache = list()
 
 	M.temporarily_remove_from_inventory(S, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!M.put_in_active_hand(src))		//Equips the bomb if possible, or puts it on the floor.
-		force_move(M.drop_location())
+		forceMove(M.drop_location())
 
 	proxyassembly.assembly = S	//Tell the bomb about its assembly part
 	S.master = proxyassembly		//Tell the assembly about its new owner
-	S.force_move(src)			//Move the assembly
+	S.forceMove(src)			//Move the assembly
 
 	update_icon()
 

@@ -28,7 +28,7 @@
 		shock(user)
 		return 1
 
-/obj/machinery/containment_field/can_allow_through(atom/movable/mover, turf/target)
+/obj/machinery/containment_field/CanAllowThrough(atom/movable/mover, turf/target)
 	if(isliving(mover))
 		return FALSE
 	return ..()

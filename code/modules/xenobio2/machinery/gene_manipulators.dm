@@ -84,7 +84,7 @@
 					return
 
 			user.drop_from_inventory(W)
-			W.force_move(src)
+			W.forceMove(src)
 			loaded_disk = W
 			to_chat(user, "You load [W] into [src].")
 
@@ -111,7 +111,7 @@
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
-			loaded_disk.force_move(get_turf(src))
+			loaded_disk.forceMove(get_turf(src))
 			visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 
@@ -144,7 +144,7 @@
 		else
 			var/obj/item/xenoproduct/B = W
 			user.drop_from_inventory(B)
-			B.force_move(src)
+			B.forceMove(src)
 			product = B
 			to_chat(user, "You load [B] into [src].")
 
@@ -191,7 +191,7 @@
 
 /obj/machinery/xenobio/proc/eject_disk()
 	if(!loaded_disk) return
-	loaded_disk.force_move(loc)
+	loaded_disk.forceMove(loc)
 	visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [loaded_disk].")
 	loaded_disk = null
 
@@ -203,7 +203,7 @@
 	if(href_list["eject_product"])
 		if(!product) return
 
-		product.force_move(get_turf(src))
+		product.forceMove(get_turf(src))
 		visible_message("[icon2html(thing = src, target = world)] [src] beeps and spits out [product].")
 		product = null
 
@@ -289,7 +289,7 @@
 				var/mob/living/simple_mob/xeno/X = G.affecting
 				if(do_after(user, 30) && X.Adjacent(src) && user.Adjacent(src) && X.Adjacent(user) && !occupant)
 					user.drop_from_inventory(G)
-					X.force_move(src)
+					X.forceMove(src)
 					occupant = X
 					to_chat(user, "You load [X] into [src]."
 			else
@@ -394,7 +394,7 @@
 		if(victim.client)
 			victim.client.perspective = EYE_PERSPECTIVE
 			victim.client.eye = src
-		victim.force_move(src)
+		victim.forceMove(src)
 		occupant = victim
 
 /obj/machinery/xenobio/editor/proc/eject_contents()
@@ -403,7 +403,7 @@
 
 /obj/machinery/xenobio/editor/proc/eject_xeno()
 	if(occupant)
-		occupant.force_move(loc)
+		occupant.forceMove(loc)
 		occupant = null
 
 /obj/item/circuitboard/bioproddestanalyzer

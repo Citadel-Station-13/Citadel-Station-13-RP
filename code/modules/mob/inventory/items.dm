@@ -11,7 +11,7 @@
 	 * current item we're fitted in.
 	 */
 	var/obj/item/worn_inside
-	/// suppress auto inventory hooks in force_move
+	/// suppress auto inventory hooks in forceMove
 	var/worn_hook_suppressed = FALSE
 
 /obj/item/Destroy()
@@ -283,8 +283,8 @@
 	RETURN_TYPE(/mob)
 	return worn_inside?.worn_mob() || (worn_slot? loc : null)
 
-// do_move hook to ensure proper functionality when inv procs aren't called
-/obj/item/do_move(atom/destination)
+// doMove hook to ensure proper functionality when inv procs aren't called
+/obj/item/doMove(atom/destination)
 	if(worn_slot && !worn_hook_suppressed)
 		// inventory handling
 		if(destination == worn_inside)
@@ -310,7 +310,7 @@
 	. = ..()
 	if(!. || (loc == M))
 		// kick them out
-		force_move(M.drop_location())
+		forceMove(M.drop_location())
 
 /**
  * checks if we're in inventory. if so, returns mob we're in

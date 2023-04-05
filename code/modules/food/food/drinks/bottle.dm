@@ -23,7 +23,7 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/Destroy()
 	if(rag)
-		rag.force_move(src.loc)
+		rag.forceMove(src.loc)
 	rag = null
 	return ..()
 
@@ -67,7 +67,7 @@
 	B.icon = I
 
 	if(rag && rag.on_fire && isliving(against))
-		rag.force_move(loc)
+		rag.forceMove(loc)
 		var/mob/living/L = against
 		L.IgniteMob()
 

@@ -67,7 +67,7 @@
 		factory.spores -= src
 	factory = null
 	if(infested)
-		infested.force_move(get_turf(src))
+		infested.forceMove(get_turf(src))
 		visible_message(SPAN_WARNING( "\The [infested] falls to the ground as the blob spore bursts."))
 		infested = null
 	return ..()
@@ -127,7 +127,7 @@
 	melee_damage_upper += 11 // 15 total.
 	attacktext = list("claws")
 
-	H.force_move(src)
+	H.forceMove(src)
 	infested = H
 
 	say_list = new /datum/say_list/infested()

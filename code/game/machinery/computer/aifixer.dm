@@ -38,7 +38,7 @@
 			var/mob/living/silicon/ai/new_occupant = card.carded_ai
 			to_chat(new_occupant, SPAN_NOTICE("You have been transferred into a stationary terminal. Sadly there is no remote access from here."))
 			to_chat(user, "<span class='notice'>Transfer Successful:</span> [new_occupant] placed within stationary terminal.")
-			new_occupant.force_move(src)
+			new_occupant.forceMove(src)
 			new_occupant.cancel_camera()
 			new_occupant.control_disabled = TRUE
 			occupier = new_occupant

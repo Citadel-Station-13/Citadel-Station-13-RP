@@ -39,7 +39,7 @@
 				return 0
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
-			I.force_move(src)
+			I.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You put the [I] into the [src]"))
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
@@ -70,7 +70,7 @@
 		return
 
 	for (var/atom/movable/A in contents)
-		A.force_move(get_turf(src))
+		A.forceMove(get_turf(src))
 
 	user << SPAN_NOTICE("You remove all the solid items from the [src].")
 

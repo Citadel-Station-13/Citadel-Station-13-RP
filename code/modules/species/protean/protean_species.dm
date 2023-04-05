@@ -416,15 +416,15 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
-		src.force_move(get_turf(prig))
-		prig.force_move(src)
+		src.forceMove(get_turf(prig))
+		prig.forceMove(src)
 		return
 
 	if(isturf(loc))
 		var/obj/item/rig/protean/prig = locate() in contents
 		if(prig)
-			prig.force_move(get_turf(src))
-			src.force_move(prig)
+			prig.forceMove(get_turf(src))
+			src.forceMove(prig)
 			return
 
 #undef DAM_SCALE_FACTOR

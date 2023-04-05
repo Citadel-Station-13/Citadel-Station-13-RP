@@ -31,7 +31,7 @@
 				return FALSE
 		else
 			// just move it to our loc
-			I.force_move(get_turf(src))
+			I.forceMove(get_turf(src))
 	else
 		if(!isturf(throwing.loc))
 			CRASH("throw resolve override called but didn't move what we should throw to turf. this is bad practice.")

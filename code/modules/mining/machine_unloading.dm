@@ -39,4 +39,4 @@
 			I = locate() in input.loc
 			if(!I)
 				break
-			I.force_move(output.loc)
+			I.forceMove(output.loc)

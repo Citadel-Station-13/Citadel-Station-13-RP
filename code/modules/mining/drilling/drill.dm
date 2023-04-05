@@ -396,5 +396,5 @@
 		to_chat(usr, "It is anchored in place!")
 		return 0
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	return 1

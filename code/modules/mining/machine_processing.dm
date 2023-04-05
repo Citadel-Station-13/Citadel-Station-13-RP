@@ -27,7 +27,7 @@
 
 /obj/machinery/mineral/processing_unit_console/Destroy()
 	if(inserted_id)
-		inserted_id.force_move(loc) //Prevents deconstructing from deleting whatever ID was inside it.
+		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
 	. = ..()
 
 /obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, list/params)

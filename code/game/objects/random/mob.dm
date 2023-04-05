@@ -231,4 +231,4 @@
 		for(var/i = 1 to 20)
 			T = get_step_rand(this_mob) || T
 		if(T)
-			this_mob.force_move(T)
+			this_mob.forceMove(T)

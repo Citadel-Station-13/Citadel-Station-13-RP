@@ -35,7 +35,7 @@
 
 /obj/effect/phase_shift/Destroy()
 	for(var/atom/movable/AM in contents) //Eject everything out.
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -48,7 +48,7 @@
 		return
 
 	to_chat(user, "<span class='notice'>You step out of the rift.</span>")
-	user.force_move(get_turf(src))
+	user.forceMove(get_turf(src))
 	qdel(src)
 
 /obj/item/spell/phase_shift/on_use_cast(mob/user)
@@ -57,7 +57,7 @@
 			var/obj/effect/phase_shift/PS = new(get_turf(user))
 			visible_message("<span class='warning'>[user] vanishes into a pink rift!</span>")
 			to_chat(user, "<span class='info'>You create an unstable rift, and go through it.  Be sure to not stay too long.</span>")
-			user.force_move(PS)
+			user.forceMove(PS)
 			adjust_instability(10)
 			qdel(src)
 		else

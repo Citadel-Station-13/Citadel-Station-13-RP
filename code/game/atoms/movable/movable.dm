@@ -31,7 +31,7 @@
 	var/atom/movable/pulling
 	/// Who's currently pulling us
 	var/atom/movable/pulledby
-	/// If false makes [CanPass][/atom/proc/CanPass] call [can_pass_through][/atom/movable/proc/can_pass_through] on this type instead of using default behaviour
+	/// If false makes [CanPass][/atom/proc/CanPass] call [CanPassThrough][/atom/movable/proc/CanPassThrough] on this type instead of using default behaviour
 	var/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
@@ -180,7 +180,7 @@
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()
 
-/atom/movable/can_allow_through(atom/movable/mover, turf/target)
+/atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	if(mover in buckled_mobs)
 		return TRUE
 	. = ..()
@@ -240,7 +240,7 @@
 
 		var/turf/T = locate(new_x, new_y, new_z)
 		if(istype(T))
-			force_move(T)
+			forceMove(T)
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()

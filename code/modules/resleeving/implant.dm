@@ -72,7 +72,7 @@
 	if(imps.len)
 		to_chat(user, "<span class='notice'>You eject a backup implant.</span>")
 		var/obj/item/implant/backup/imp = imps[imps.len]
-		imp.force_move(get_turf(user))
+		imp.forceMove(get_turf(user))
 		imps -= imp
 		user.put_in_hands(imp)
 		update()

@@ -245,7 +245,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
 	animate(src, transform = rot_matrix, rotation_speed, easing = SINE_EASING)
 
-	set_dir(arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH)
+	setDir(arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH)
 
 /obj/machinery/power/pointdefense/proc/finish_shot(datum/weakref/target)
 
@@ -278,7 +278,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	/*
 	var/desiredir = arctan(transform.b, transform.a) > 0 ? NORTH : SOUTH
 	if(dir != desiredir)
-		set_dir(desiredir)
+		setDir(desiredir)
 	*/
 
 	if(LAZYLEN(GLOB.meteor_list) > 0)

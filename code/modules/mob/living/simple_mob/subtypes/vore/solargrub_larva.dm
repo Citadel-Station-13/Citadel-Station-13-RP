@@ -126,7 +126,7 @@ var/global/list/grub_machine_overlays = list()
 	if(!istype(M))
 		return
 	set_AI_busy(TRUE)
-	force_move(M)
+	forceMove(M)
 	powermachine.draining = 2
 	visible_message("<span class='warning'>\The [src] finds an opening and crawls inside \the [M].</span>")
 	if(!(M.type in grub_machine_overlays))
@@ -147,7 +147,7 @@ var/global/list/grub_machine_overlays = list()
 			M = loc
 		else
 			return
-	force_move(get_turf(M))
+	forceMove(get_turf(M))
 	sparks.start()
 	if(machine_effect)
 		for(var/mob/L in GLOB.player_list)
@@ -164,7 +164,7 @@ var/global/list/grub_machine_overlays = list()
 	var/obj/machinery/atmospherics/component/unary/vent_pump/end_vent = get_safe_ventcrawl_target(vent)
 	if(!end_vent)
 		return
-	force_move(vent)
+	forceMove(vent)
 	playsound(vent, 'sound/machines/ventcrawl.ogg', 50, 1, -3)
 	vent.visible_message("\The [src] wiggles into \the [vent]!")
 	var/redirect_attempts = 3
@@ -174,13 +174,13 @@ var/global/list/grub_machine_overlays = list()
 		if(end_vent.welded)
 			end_vent = get_safe_ventcrawl_target(vent)
 			if(!end_vent)
-				force_move(get_turf(vent))
+				forceMove(get_turf(vent))
 				return
 			redirect_attempts--
 			continue
 		break
 	playsound(end_vent, 'sound/machines/ventcrawl.ogg', 50, 1, -3)
-	force_move(get_turf(end_vent))
+	forceMove(get_turf(end_vent))
 
 /mob/living/simple_mob/animal/solargrub_larva/proc/expand_grub()
 	eject_from_machine()

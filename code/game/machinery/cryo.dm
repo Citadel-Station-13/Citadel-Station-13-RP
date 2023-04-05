@@ -49,7 +49,7 @@
 	var/turf/T = src.loc
 	T.contents += contents
 	if(beaker)
-		beaker.force_move(get_step(loc, SOUTH)) //Beaker is carefully ejected from the wreckage of the cryotube
+		beaker.forceMove(get_step(loc, SOUTH)) //Beaker is carefully ejected from the wreckage of the cryotube
 		beaker = null
 	. = ..()
 
@@ -276,10 +276,10 @@
 	vis_contents -= occupant
 	occupant.pixel_x = occupant.base_pixel_x
 	occupant.pixel_y = occupant.base_pixel_y
-	occupant.force_move(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
+	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.update_perspective()
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
@@ -305,7 +305,7 @@
 	if(!node)
 		to_chat(usr, SPAN_WARNING("The cell is not correctly connected to its pipe network!"))
 		return
-	M.force_move(src)
+	M.forceMove(src)
 	M.ExtinguishMob()
 	if(M.health > -100 && (M.health < 0 || M.sleeping))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))

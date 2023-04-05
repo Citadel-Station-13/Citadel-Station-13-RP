@@ -71,7 +71,7 @@
 		if(W.is_screwdriver())
 			update_use_power(USE_POWER_OFF)
 			to_chat(user, "You remove the [scanner] from [src]")
-			scanner.force_move(src.loc)
+			scanner.forceMove(src.loc)
 			scanner = null
 			scan_for_collectors()
 	else
@@ -82,7 +82,7 @@
 		if(istype(W, /obj/item/scanning_array))
 			to_chat(user, "You install the [W].")
 			scanner = W
-			W.force_move(src)
+			W.forceMove(src)
 			scan_for_collectors(scanner.range)
 	update_icon_state()
 

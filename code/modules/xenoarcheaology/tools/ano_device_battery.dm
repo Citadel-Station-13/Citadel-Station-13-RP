@@ -114,7 +114,7 @@
 			return TRUE
 		if("ejectbattery")
 			if(inserted_battery)
-				inserted_battery.force_move(get_turf(src))
+				inserted_battery.forceMove(get_turf(src))
 				inserted_battery = null
 				UpdateSprite()
 			shutdown_emission()

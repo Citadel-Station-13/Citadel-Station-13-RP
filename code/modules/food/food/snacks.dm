@@ -39,7 +39,7 @@
 			if(ispath(trash,/obj/item))
 				var/obj/item/TrashItem = new trash(M)
 				if(!M.put_in_hands(TrashItem))
-					TrashItem.force_move(M.drop_location())
+					TrashItem.forceMove(M.drop_location())
 			else if(istype(trash,/obj/item))
 				M.put_in_hands(trash)
 		qdel(src)

@@ -50,7 +50,7 @@
 		if(M.abiotic())
 			to_chat(user, SPAN_NOTICE("Subject cannot have abiotic items on."))
 			return
-		M.force_move(src)
+		M.forceMove(src)
 		occupant = M
 		update_icon() //icon_state = "body_scanner_1" // Health display for consoles with light and such.
 		playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
@@ -94,7 +94,7 @@
 	else
 		visible_message("[user] puts [O] into the body scanner.")
 
-	O.force_move(src)
+	O.forceMove(src)
 	occupant = O
 	update_icon() //Health display for consoles with light and such.
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
@@ -118,7 +118,7 @@
 /obj/machinery/bodyscanner/proc/go_out()
 	if(!occupant || src.locked)
 		return
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.update_perspective()
 	occupant = null
 	update_icon() //Health display for consoles with light and such.
@@ -229,7 +229,7 @@
 			if(bodyscannernew)
 				scanner = bodyscannernew
 				bodyscannernew.console = src
-				set_dir(get_dir(src, bodyscannernew))
+				setDir(get_dir(src, bodyscannernew))
 				return
 		return
 

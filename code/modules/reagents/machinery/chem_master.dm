@@ -141,7 +141,7 @@
 /obj/machinery/chem_master/on_deconstruction()
 	replace_beaker()
 	if(pill_bottle)
-		pill_bottle.force_move(drop_location())
+		pill_bottle.forceMove(drop_location())
 		adjust_item_drop_location(pill_bottle)
 		pill_bottle = null
 	return ..()
@@ -289,7 +289,7 @@
 		if("ejectPillBottle")
 			if(!pill_bottle)
 				return FALSE
-			pill_bottle.force_move(drop_location())
+			pill_bottle.forceMove(drop_location())
 			adjust_item_drop_location(pill_bottle)
 			pill_bottle = null
 			return TRUE

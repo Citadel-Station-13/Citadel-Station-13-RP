@@ -93,7 +93,7 @@ fundamental differences
 		if (selection)
 			var/obj/item/I = menuoptions[selection]
 			if (!user || !user.put_in_hands(I))
-				I.force_move(get_turf(src))
+				I.forceMove(get_turf(src))
 			update_icon()
 		return 1
 	return 0

@@ -115,7 +115,7 @@
 	var/old_decals = Origin.decals ? Origin.decals.Copy() : null
 
 	X = Destination.PlaceOnTop(Origin.type)
-	X.set_dir(old_dir1)
+	X.setDir(old_dir1)
 	X.icon_state = old_icon_state1
 	X.icon = old_icon1
 	X.copy_overlays(Origin, TRUE)
@@ -134,7 +134,7 @@
 	if (Origin.z != X.z)
 		z_level_change = TRUE
 
-	// Move the objects. Not force_move because the object isn't "moving" really, it's supposed to be on the "same" turf.
+	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 	for(var/obj/O in Origin)
 		if(O.atom_flags & ATOM_ABSTRACT)
 			continue

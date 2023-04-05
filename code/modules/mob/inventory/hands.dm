@@ -19,7 +19,7 @@
  */
 /mob/proc/put_in_hands_or_drop(obj/item/I, flags, atom/drop_loc = drop_location())
 	if(!put_in_hands(I, flags))
-		I.force_move(drop_loc)
+		I.forceMove(drop_loc)
 		return FALSE
 	return TRUE
 
@@ -57,7 +57,7 @@
 /mob/proc/put_in_hand_or_drop(obj/item/I, index, flags, atom/drop_loc = drop_location())
 	. = index == 1? put_in_left_hand(I, flags) : put_in_right_hand(I, flags)
 	if(!.)
-		I.force_move(drop_loc)
+		I.forceMove(drop_loc)
 
 /**
  * returns held items

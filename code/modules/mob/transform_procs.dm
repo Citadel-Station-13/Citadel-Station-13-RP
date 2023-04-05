@@ -82,7 +82,7 @@
 
 	if(move)
 		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/role/job/station/ai)
-		O.force_move(S.GetSpawnLoc())
+		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
 	O.on_mob_init()
@@ -137,7 +137,7 @@
 	else
 		O.key = key
 
-	O.force_move(loc)
+	O.forceMove(loc)
 	O.job = "Cyborg"
 
 	for(var/i in languages)

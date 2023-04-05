@@ -13,7 +13,7 @@
 
 	// Otherwise jump
 	else if(A.loc)
-		force_move(get_turf(A))
+		forceMove(get_turf(A))
 //		update_parallax_contents()
 
 /client/var/inquisitive_ghost = 1
@@ -70,19 +70,19 @@
 /obj/effect/portal/attack_ghost(mob/user)
 	. = ..()
 	if(target)
-		user.force_move(get_turf(target))
+		user.forceMove(get_turf(target))
 
 /obj/machinery/gateway/centerstation/attack_ghost(mob/user)
 	. = ..()
 	if(awaygate)
-		user.force_move(awaygate.loc)
+		user.forceMove(awaygate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
 /obj/machinery/gateway/centeraway/attack_ghost(mob/user)
 	. = ..()
 	if(stationgate)
-		user.force_move(stationgate.loc)
+		user.forceMove(stationgate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 

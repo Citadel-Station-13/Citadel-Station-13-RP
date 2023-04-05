@@ -54,7 +54,7 @@
 	to_chat(user, "<span class='notice'>You cut open the present.</span>")
 
 	for(var/mob/M in src) //Should only be one but whatever.
-		M.force_move(loc)
+		M.forceMove(loc)
 		M.update_perspective()
 
 	qdel(src)
@@ -239,7 +239,7 @@
 				G.w_class = G.size + 1
 				G.icon_state = text("gift[]", G.size)
 				G.gift = W
-				W.force_move(G)
+				W.forceMove(G)
 				G.add_fingerprint(user)
 				W.add_fingerprint(user)
 			if (src.amount <= 0)
@@ -266,7 +266,7 @@
 			var/obj/effect/spresent/present = new /obj/effect/spresent (H.loc)
 			src.amount -= 2
 
-			H.force_move(present)
+			H.forceMove(present)
 			H.update_perspective()
 
 			add_attack_logs(user,H,"Wrapped with [src]")

@@ -50,7 +50,7 @@ Pipelines + Other Objects -> Pipe network
 	if(!icon_manager)
 		icon_manager = new()
 	if(!isnull(newdir))
-		set_dir(newdir)
+		setDir(newdir)
 	if(!pipe_color)
 		pipe_color = color
 	color = null

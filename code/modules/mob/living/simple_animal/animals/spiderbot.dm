@@ -107,7 +107,7 @@
 		src.mmi = O
 		src.transfer_personality(O)
 
-		O.force_move(src)
+		O.forceMove(src)
 		src.update_icon()
 		return 1
 
@@ -142,7 +142,7 @@
 			to_chat(user, "<span class='notice'>You swipe your access card and pop the brain out of \the [src].</span>")
 			eject_brain()
 			if(held_item)
-				held_item.force_move(src.loc)
+				held_item.forceMove(src.loc)
 				held_item = null
 			return 1
 		else
@@ -194,7 +194,7 @@
 	if(mmi)
 		var/turf/T = get_turf(loc)
 		if(T)
-			mmi.force_move(T)
+			mmi.forceMove(T)
 		if(mind)	mind.transfer_to(mmi.brainmob)
 		mmi = null
 		real_name = initial(real_name)
@@ -222,7 +222,7 @@
 	if(camera)
 		camera.status = 0
 
-	held_item.force_move(src.loc)
+	held_item.forceMove(src.loc)
 	held_item = null
 
 	gibs(loc, null, null, /obj/effect/gibspawner/robot) //TODO: use gib() or refactor spiderbots into synthetics.
@@ -247,7 +247,7 @@
 			"<span class='danger'>You launch \the [held_item]!</span>", \
 			"You hear a skittering noise and a thump!")
 		var/obj/item/grenade/G = held_item
-		G.force_move(src.loc)
+		G.forceMove(src.loc)
 		G.detonate()
 		held_item = null
 		return 1
@@ -256,7 +256,7 @@
 		"<span class='notice'>You drop \the [held_item].</span>", \
 		"You hear a skittering noise and a soft thump.")
 
-	held_item.force_move(src.loc)
+	held_item.forceMove(src.loc)
 	held_item = null
 	return 1
 
@@ -285,7 +285,7 @@
 		for(var/obj/item/I in view(1, src))
 			if(selection == I)
 				held_item = selection
-				selection.force_move(src)
+				selection.forceMove(src)
 				visible_message("<span class='notice'>\The [src] scoops up \the [held_item].</span>", \
 					"<span class='notice'>You grab \the [held_item].</span>", \
 					"You hear a skittering noise and a clink.")

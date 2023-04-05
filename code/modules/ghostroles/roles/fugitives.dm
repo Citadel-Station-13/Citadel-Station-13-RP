@@ -67,7 +67,7 @@
 
 /obj/structure/ghost_role_spawner/fugitive_hunter/bounty/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
-	S.set_dir(dir)
+	S.setDir(dir)
 	return ..()
 
 /obj/structure/ghost_role_spawner/fugitive_hunter/bounty/armor

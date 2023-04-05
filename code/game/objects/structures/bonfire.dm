@@ -117,7 +117,7 @@
 /obj/structure/bonfire/proc/remove_fuel(mob/user)
 	if(get_fuel_amount())
 		var/atom/movable/AM = pop(contents)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 		to_chat(user, SPAN_NOTICE("You take \the [AM] out of \the [src] before it has a chance to burn away."))
 		update_icon()
 
@@ -132,7 +132,7 @@
 		var/obj/item/stack/F = new_fuel
 		var/obj/item/stack/S = F.split(1)
 		if(S)
-			S.force_move(src)
+			S.forceMove(src)
 			to_chat(user, SPAN_WARNING("You add \the [new_fuel] to \the [src]."))
 			update_icon()
 			return TRUE
@@ -304,7 +304,7 @@
 /obj/structure/fireplace/proc/remove_fuel(mob/user)
 	if(get_fuel_amount())
 		var/atom/movable/AM = pop(contents)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 		to_chat(user, "<span class='notice'>You take \the [AM] out of \the [src] before it has a chance to burn away.</span>")
 		update_icon()
 
@@ -316,7 +316,7 @@
 		var/obj/item/stack/F = new_fuel
 		var/obj/item/stack/S = F.split(1)
 		if(S)
-			S.force_move(src)
+			S.forceMove(src)
 			to_chat(user, "<span class='warning'>You add \the [new_fuel] to \the [src].</span>")
 			update_icon()
 			return TRUE

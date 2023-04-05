@@ -191,7 +191,7 @@
 
 		if("ejectItem")
 			if(scanned_item)
-				scanned_item.force_move(loc)
+				scanned_item.forceMove(loc)
 				scanned_item = null
 			return TRUE
 

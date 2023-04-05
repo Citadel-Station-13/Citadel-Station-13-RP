@@ -32,7 +32,7 @@
 	var/old_loc = get_turf(src)
 	if(..())
 		if(tow)
-			tow.force_move(old_loc)
+			tow.forceMove(old_loc)
 		return 1
 	else
 		if(lead)
@@ -95,7 +95,7 @@
 
 	if(user != load)
 		if(user in src)		//for handling players stuck in src - this shouldn't happen - but just in case it does
-			user.force_move(T)
+			user.forceMove(T)
 			return 1
 		return 0
 
@@ -121,7 +121,7 @@
 		return 0
 
 	if(user != load && (user in src))
-		user.force_move(loc)			//for handling players stuck in src
+		user.forceMove(loc)			//for handling players stuck in src
 	else if(load)
 		unload(user)			//unload if loaded
 	else if(!load && !user.buckled)
@@ -174,7 +174,7 @@
 	//latch with src as the follower
 	lead = T
 	T.tow = src
-	set_dir(lead.dir)
+	setDir(lead.dir)
 
 	if(user)
 		to_chat(user, "<font color=#4F49AF>You hitch [src] to [T].</font>")

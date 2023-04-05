@@ -43,7 +43,7 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
 	for(var/obj/O in src)
-		O.force_move(get_turf(src))
+		O.forceMove(get_turf(src))
 	icon_state = icon_opened
 	src.opened = 1
 
@@ -68,7 +68,7 @@
 			var/obj/structure/bed/B = O
 			if(B.has_buckled_mobs())
 				continue
-		O.force_move(src)
+		O.forceMove(src)
 		itemcount++
 
 	icon_state = icon_closed
@@ -510,12 +510,12 @@
 				continue
 			if(!S.anchored)
 				found = 1
-				S.force_move(src)
+				S.forceMove(src)
 				break
 		if(!found)
 			for(var/obj/machinery/M in src.loc)
 				if(!M.anchored)
-					M.force_move(src)
+					M.forceMove(src)
 					break
 	return
 
@@ -540,12 +540,12 @@
 				continue
 			if(!S.anchored)
 				found = 1
-				S.force_move(src)
+				S.forceMove(src)
 				break
 		if(!found)
 			for(var/obj/machinery/M in src.loc)
 				if(!M.anchored)
-					M.force_move(src)
+					M.forceMove(src)
 					break
 	return
 

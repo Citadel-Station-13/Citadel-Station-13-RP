@@ -104,7 +104,7 @@
 			to_chat(M, "Something disgusting and slimy wiggles into your ear!")
 
 		src.host = M
-		src.force_move(M)
+		src.forceMove(M)
 
 		//Update their traitor status.
 		if(host.mind)

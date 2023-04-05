@@ -55,7 +55,7 @@
 
 	attack_generic(user,damage_dealt,attack_message)
 
-/obj/structure/grille/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/projectile) && prob(30))
 		return TRUE
 	return ..()

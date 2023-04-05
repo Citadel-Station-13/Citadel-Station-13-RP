@@ -387,14 +387,14 @@
 		if(available_blobs.len)
 			var/obj/structure/blob/targeted = pick(available_blobs)
 			var/turf/T = get_turf(targeted)
-			targeted.force_move(get_turf(B))
-			B.force_move(T) // Swap places.
+			targeted.forceMove(get_turf(B))
+			B.forceMove(T) // Swap places.
 	return ..()
 
 /datum/blob_type/shifting_fragments/on_expand(var/obj/structure/blob/B, var/obj/structure/blob/new_B, var/turf/T, var/mob/observer/blob/O)
 	if(istype(B, /obj/structure/blob/normal) || (istype(B, /obj/structure/blob/shield) && prob(25)))
-		new_B.force_move(get_turf(B))
-		B.force_move(T)
+		new_B.forceMove(get_turf(B))
+		B.forceMove(T)
 
 // A very cool blob, literally.
 /datum/blob_type/cryogenic_goo
@@ -632,7 +632,7 @@
 			B.visible_message(SPAN_DANGER("[name] heaves and pulls at [H]'s [I], struggling to pull it from their grip!"))
 			return ..()
 		if((I.sharp || I.edge) && !istype(I, /obj/item/gun))
-			I.force_move(get_turf(B)) // Disarmed entirely.
+			I.forceMove(get_turf(B)) // Disarmed entirely.
 			B.visible_message("<span class='danger'>The [name] heaves, \the [attacker]'s weapon becoming stuck in the churning mass!</span>")
 		else
 			I.throw_at_old(B, 2, 4) // Just yoinked.

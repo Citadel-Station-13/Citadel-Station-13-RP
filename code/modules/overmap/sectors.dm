@@ -49,7 +49,7 @@
 	start_x = start_x || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 	start_y = start_y || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
 
-	force_move(locate(start_x, start_y, GLOB.using_map.overmap_z))
+	forceMove(locate(start_x, start_y, GLOB.using_map.overmap_z))
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 

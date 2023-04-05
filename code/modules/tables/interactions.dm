@@ -1,4 +1,4 @@
-/obj/structure/table/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/table/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(.)
 		return
@@ -89,7 +89,7 @@
 					to_chat(user, "<span class='danger'>You need a better grip to do that!</span>")
 					return
 			else if(G.state > GRAB_AGGRESSIVE || world.time >= (G.last_action + UPGRADE_COOLDOWN))
-				M.force_move(get_turf(src))
+				M.forceMove(get_turf(src))
 				M.Weaken(5)
 				visible_message("<span class='danger'>[G.assailant] puts [G.affecting] on \the [src].</span>")
 			qdel(W)

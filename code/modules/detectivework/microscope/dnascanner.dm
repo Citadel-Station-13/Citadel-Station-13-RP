@@ -95,7 +95,7 @@
 
 		if("ejectItem")
 			if(bloodsamp)
-				bloodsamp.force_move(loc)
+				bloodsamp.forceMove(loc)
 				bloodsamp = null
 				scanning = FALSE
 				update_icon()
@@ -133,7 +133,7 @@
 			data += "No DNA found.<br>"
 		P.info = "<b>[src] analysis report #[report_num]</b><br>"
 		P.info += "<b>Scanned item:</b><br>[bloodsamp.name]<br>[bloodsamp.desc]<br><br>" + data
-		P.force_move(loc)
+		P.forceMove(loc)
 		P.update_icon()
 		scanning = FALSE
 		update_icon()

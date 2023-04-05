@@ -153,7 +153,7 @@
 		A.pixel_x = pixel_x
 		A.pixel_y = pixel_y
 		A.circuit = M
-		A.set_dir(dir)
+		A.setDir(dir)
 		A.anchored = 1
 		A.state = 2
 		A.update_icon()

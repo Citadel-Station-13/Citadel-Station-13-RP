@@ -236,7 +236,7 @@
 			var/obj/structure/sign/poster/P = O
 			P.roll_and_drop(src)
 		else
-			O.force_move(src)
+			O.forceMove(src)
 	ScrapeAway()
 
 /turf/simulated/wall/legacy_ex_act(severity)

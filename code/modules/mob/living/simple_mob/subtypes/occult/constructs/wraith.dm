@@ -153,7 +153,7 @@
 			return FALSE // Hit a wall.
 
 		// Get into the tile.
-		force_move(T)
+		forceMove(T)
 
 
 /mob/living/simple_mob/construct/wraith/should_special_attack(atom/A)

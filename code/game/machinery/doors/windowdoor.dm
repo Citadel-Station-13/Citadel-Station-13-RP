@@ -82,7 +82,7 @@
 		open()
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
-/obj/machinery/door/window/can_allow_through(atom/movable/mover, turf/target)
+/obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(mover, loc) & turn(dir, 180)))
 		return TRUE
 	return ..()
@@ -224,7 +224,7 @@
 					wa.secure = "secure_"
 				if (src.base_state == "right" || src.base_state == "rightsecure")
 					wa.facing = "r"
-				wa.set_dir(src.dir)
+				wa.setDir(src.dir)
 				wa.anchored = 1
 				wa.created_name = name
 				wa.state = "02"

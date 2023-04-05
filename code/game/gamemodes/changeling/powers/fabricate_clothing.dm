@@ -147,7 +147,7 @@ var/global/list/changeling_fabricated_clothing = list(
 		visible_message("<span class='warning'>[H] tears off [src]!</span>",
 		"<span class='notice'>We remove [src].</span>")
 		for(var/atom/movable/AM in src.contents) //Dump whatever's in the bag before deleting.
-			AM.force_move(get_turf(loc))
+			AM.forceMove(get_turf(loc))
 		qdel(src)
 
 /obj/item/clothing/gloves/chameleon/changeling

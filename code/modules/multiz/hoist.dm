@@ -46,7 +46,7 @@
 
 /obj/structure/hoist/proc/attach_hoistee(atom/movable/AM)
 	if (get_turf(AM) != get_turf(source_hook))
-		AM.force_move(get_turf(source_hook))
+		AM.forceMove(get_turf(source_hook))
 	hoistee = AM
 	if(ismob(AM))
 		source_hook.buckle_mob(AM)
@@ -78,7 +78,7 @@
 	source_hoist.check_consistency()
 
 	var/turf/desturf = dest
-	source_hoist.hoistee.force_move(desturf)
+	source_hoist.hoistee.forceMove(desturf)
 	usr.visible_message(SPAN_DANGER("[usr] detaches \the [source_hoist.hoistee] from the hoist clamp."), SPAN_DANGER("You detach \the [source_hoist.hoistee] from the hoist clamp."), SPAN_DANGER("You hear something unclamp."))
 	source_hoist.release_hoistee()
 
@@ -259,14 +259,14 @@
 	if (!can)
 		return 0
 	var/turf/move_dest = direction == UP ? GetAbove(source_hook) : GetBelow(source_hook)
-	source_hook.force_move(move_dest)
+	source_hook.forceMove(move_dest)
 	if (!ishoisting)
 		return 1
 	hoistee.hoist_act(move_dest)
 	return 1
 
 /atom/movable/proc/hoist_act(turf/dest)
-	force_move(dest)
+	forceMove(dest)
 	return TRUE
 
 #undef NORMAL_LAYER

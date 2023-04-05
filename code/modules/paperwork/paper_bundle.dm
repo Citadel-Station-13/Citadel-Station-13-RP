@@ -40,7 +40,7 @@
 		if(!user.attempt_consume_item_for_construction(W))
 			return
 		for(var/obj/O in W)
-			O.force_move(src)
+			O.forceMove(src)
 			O.add_fingerprint(usr)
 			pages.Add(O)
 		to_chat(user, "<span class='notice'>You add \the [W.name] to [(src.name == "paper bundle") ? "the paper bundle" : src.name].</span>")
@@ -206,7 +206,7 @@
 
 	to_chat(usr, "<span class='notice'>You loosen the bundle.</span>")
 	for(var/obj/O in src)
-		O.force_move(usr.loc)
+		O.forceMove(usr.loc)
 		O.reset_plane_and_layer()
 		O.add_fingerprint(usr)
 	qdel(src)

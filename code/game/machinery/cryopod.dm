@@ -150,7 +150,7 @@
 
 		visible_message(SPAN_NOTICE("The console beeps happily as it disgorges \the [I]."), 3)
 
-		I.force_move(get_turf(src))
+		I.forceMove(get_turf(src))
 		frozen_items -= I
 
 	else if(href_list["allitems"])
@@ -163,7 +163,7 @@
 		visible_message(SPAN_NOTICE("The console beeps happily as it disgorges the desired objects."), 3)
 
 		for(var/obj/item/I in frozen_items)
-			I.force_move(get_turf(src))
+			I.forceMove(get_turf(src))
 			frozen_items -= I
 
 	updateUsrDialog()
@@ -307,7 +307,7 @@
 
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
-		occupant.force_move(loc)
+		occupant.forceMove(loc)
 		occupant.resting = 1
 	return ..()
 
@@ -372,7 +372,7 @@
 	for(var/obj/item/I in R.module) // the tools the borg has; metal, glass, guns etc
 		for(var/mob/M in I)			despawn_occupant(M)
 		for(var/obj/item/O in I) // the things inside the tools, if anything; mainly for janiborg trash bags
-			O.force_move(R)
+			O.forceMove(R)
 		qdel(I)
 	qdel(R.module)
 
@@ -400,12 +400,12 @@
 			for(var/mob/living/sub_L in B)
 				despawn_occupant(sub_L)
 			for(var/obj/item/W in B)
-				W.force_move(src)
+				W.forceMove(src)
 				if(W.contents.len)
 					for(var/obj/item/O in W.contents)
 						if(istype(O,/obj/item/storage/internal))
 							continue
-						O.force_move(src)
+						O.forceMove(src)
 		if(ishuman(to_despawn))
 			var/mob/living/carbon/human/H = to_despawn
 			if(H.nif)
@@ -416,13 +416,13 @@
 
 	//Drop all items into the pod.
 	for(var/obj/item/W in to_despawn.get_equipped_items(TRUE, FALSE))
-		W.force_move(src)
+		W.forceMove(src)
 
 		if(W.contents.len) //Make sure we catch anything not handled by qdel() on the items.
 			for(var/obj/item/O in W.contents)
 				if(istype(O,/obj/item/storage/internal)) //Stop eating pockets, you fuck!
 					continue
-				O.force_move(src)
+				O.forceMove(src)
 
 	//Delete all items not on the preservation list.
 	var/list/items = contents.Copy()
@@ -553,10 +553,10 @@
 	if(announce) items -= announce
 
 	for(var/obj/item/W in items)
-		W.force_move(get_turf(src))
+		W.forceMove(get_turf(src))
 
 	for(var/obj/structure/bed/S in src.contents)
-		S.force_move(get_turf(src))
+		S.forceMove(get_turf(src))
 
 	go_out()
 	add_fingerprint(usr)
@@ -593,7 +593,7 @@
 			return
 
 		usr.stop_pulling()
-		usr.force_move(src)
+		usr.forceMove(src)
 		usr.update_perspective()
 		set_occupant(usr)
 		if(ishuman(usr) && applies_stasis)
@@ -616,7 +616,7 @@
 	if(!occupant)
 		return
 
-	occupant.force_move(get_turf(src))
+	occupant.forceMove(get_turf(src))
 	occupant.update_perspective()
 
 	if(ishuman(occupant) && applies_stasis)
@@ -665,7 +665,7 @@
 			if(occupant)
 				to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 				return
-			M.force_move(src)
+			M.forceMove(src)
 			M.update_perspective()
 		else
 			return

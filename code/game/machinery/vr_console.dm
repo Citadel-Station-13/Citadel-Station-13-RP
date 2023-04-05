@@ -204,7 +204,7 @@
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
 		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN)
 			avatar.shapeshifter_change_shape(occupant.species.name)
-		avatar.force_move(get_turf(S))			// Put the mob on the landmark, instead of inside it
+		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
 		avatar.Sleeping(1)
 
 		occupant.enter_vr(avatar)

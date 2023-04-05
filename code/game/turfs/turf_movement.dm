@@ -32,7 +32,7 @@ var/const/enterloopsanity = 100
 			var/mob/living/L = M
 			L.handle_footstep(src)
 
-//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/can_allow_through/Cross call, lemme know or go ahead and fix this mess - kevinz000
+//There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanAllowThrough/Cross call, lemme know or go ahead and fix this mess - kevinz000
 /turf/Enter(atom/movable/mover, atom/oldloc)
 	// Do not call ..()
 	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
@@ -49,7 +49,7 @@ var/const/enterloopsanity = 100
 				continue
 			var/atom/movable/thing = i
 			if(!thing.Cross(mover))
-				if(QDELETED(mover))		//Mover deleted from Cross/can_allow_through, do not proceed.
+				if(QDELETED(mover))		//Mover deleted from Cross/CanAllowThrough, do not proceed.
 					return FALSE
 				if(mover.movement_type & MOVEMENT_UNSTOPPABLE)
 					mover.Bump(thing)
@@ -57,7 +57,7 @@ var/const/enterloopsanity = 100
 				else
 					if(!firstbump || ((thing.layer > firstbump.layer || thing.atom_flags & ATOM_BORDER) && !(firstbump.atom_flags & ATOM_BORDER)))
 						firstbump = thing
-	if(QDELETED(mover))					//Mover deleted from Cross/can_allow_through/Bump, do not proceed.
+	if(QDELETED(mover))					//Mover deleted from Cross/CanAllowThrough/Bump, do not proceed.
 		return FALSE
 	if(!CanPassSelf)	//Even if mover is unstoppable they need to bump us.
 		firstbump = src

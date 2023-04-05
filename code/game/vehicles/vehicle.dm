@@ -93,7 +93,7 @@
 
 /obj/vehicle/proc/add_cell(var/obj/item/cell/C=null)
 	if(C)
-		C.force_move(src)
+		C.forceMove(src)
 		cell = C
 		return
 	cell = new(src)

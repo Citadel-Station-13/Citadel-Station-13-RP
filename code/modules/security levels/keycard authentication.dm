@@ -52,11 +52,11 @@
 			A.need_circuit = 0
 			A.pixel_x = pixel_x
 			A.pixel_y = pixel_y
-			A.set_dir(dir)
+			A.setDir(dir)
 			A.circuit = M
 			A.anchored = 1
 			for (var/obj/C in src)
-				C.force_move(loc)
+				C.forceMove(loc)
 			A.state = 3
 			A.update_icon()
 			M.after_deconstruct(src)

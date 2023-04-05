@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.atom_colours = atom_colours.Copy()
 		T.update_atom_colour()
 	if(T.dir != dir)
-		T.set_dir(dir)
+		T.setDir(dir)
 	return T
 
 /**

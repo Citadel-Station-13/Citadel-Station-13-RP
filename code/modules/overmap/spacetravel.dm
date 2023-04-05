@@ -39,7 +39,7 @@ var/list/cached_space = list()
 	else if(cached_space.len)
 		res = cached_space[cached_space.len]
 		cached_space -= res
-		res.force_move(overmap_turf)
+		res.forceMove(overmap_turf)
 		return res
 	else
 		return new /obj/effect/overmap/visitable/sector/temporary(x, y, GLOB.using_map.get_empty_zlevel())
@@ -138,11 +138,11 @@ var/list/cached_space = list()
 
 	var/turf/dest = locate(nx,ny,nz)
 	if(istype(dest))
-		A.force_move(dest)
+		A.forceMove(dest)
 		if(ismob(A))
 			var/mob/D = A
 			if(D.pulling)
-				D.pulling.force_move(dest)
+				D.pulling.forceMove(dest)
 
 	if(istype(M, /obj/effect/overmap/visitable/sector/temporary))
 		var/obj/effect/overmap/visitable/sector/temporary/source = M

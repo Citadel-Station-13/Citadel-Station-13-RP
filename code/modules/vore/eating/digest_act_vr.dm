@@ -9,10 +9,10 @@
 			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
 				for(var/obj/item/SO in O)
 					if(item_storage)
-						SO.force_move(item_storage)
+						SO.forceMove(item_storage)
 					qdel(O)
 			else if(item_storage)
-				O.force_move(item_storage)
+				O.forceMove(item_storage)
 		qdel(src)
 		return w_class
 	var/g_damage = 1
@@ -30,10 +30,10 @@
 			if(istype(O,/obj/item/storage/internal)) //Dump contents from dummy pockets.
 				for(var/obj/item/SO in O)
 					if(item_storage)
-						SO.force_move(item_storage)
+						SO.forceMove(item_storage)
 					qdel(O)
 			else if(item_storage)
-				O.force_move(item_storage)
+				O.forceMove(item_storage)
 		qdel(src)
 	return g_damage
 
@@ -96,7 +96,7 @@
 /obj/item/holder/digest_act(var/atom/movable/item_storage = null)
 	for(var/mob/living/M in contents)
 		if(item_storage)
-			M.force_move(item_storage)
+			M.forceMove(item_storage)
 	held_mob = null
 
 	. = ..()

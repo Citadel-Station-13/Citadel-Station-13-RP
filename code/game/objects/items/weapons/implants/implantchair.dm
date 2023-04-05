@@ -87,7 +87,7 @@
 		return
 	if(M == occupant) // so that the guy inside can't eject himself -Agouri
 		return
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.update_perspective()
 	if(injecting)
 		implant(src.occupant)
@@ -104,7 +104,7 @@
 	if(occupant)
 		to_chat(usr, "<span class='warning'>\The [src] is already occupied!</span>")
 		return
-	M.force_move(src)
+	M.forceMove(src)
 	M.update_perspective()
 	occupant = M
 	src.add_fingerprint(usr)

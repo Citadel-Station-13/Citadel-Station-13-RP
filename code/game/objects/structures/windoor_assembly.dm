@@ -40,9 +40,9 @@
 		anchored = 0
 	switch(start_dir)
 		if(NORTH, SOUTH, EAST, WEST)
-			set_dir(start_dir)
+			setDir(start_dir)
 		else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
-			set_dir(NORTH)
+			setDir(NORTH)
 	update_state()
 
 	update_nearby_tiles()
@@ -55,7 +55,7 @@
 /obj/structure/windoor_assembly/update_icon()
 	icon_state = "[facing]_[secure]windoor_assembly[state]"
 
-/obj/structure/windoor_assembly/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/windoor_assembly/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(loc, mover) & dir))
 		// if it isn't our side we don't care
 		return TRUE
@@ -220,7 +220,7 @@
 						else
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
-					windoor.set_dir(src.dir)
+					windoor.setDir(src.dir)
 					windoor.density = 0
 					if(created_name)
 						windoor.name = created_name
@@ -229,7 +229,7 @@
 					windoor.req_access = electronics.conf_req_access?.Copy()
 					windoor.req_one_access = electronics.conf_req_one_access?.Copy()
 					windoor.electronics = electronics
-					electronics.force_move(windoor)
+					electronics.forceMove(windoor)
 					qdel(src)
 			else
 				..()
@@ -261,7 +261,7 @@
 	if(src.state != "01")
 		update_nearby_tiles() //Compel updates before
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 	if(src.state != "01")
 		update_nearby_tiles()

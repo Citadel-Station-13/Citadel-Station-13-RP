@@ -31,7 +31,7 @@
 
 	using = new /atom/movable/screen()
 	using.name = "act_intent"
-	using.set_dir(SOUTHWEST)
+	using.setDir(SOUTHWEST)
 	using.icon = ui_style
 	using.icon_state = "intent_"+mymob.a_intent
 	using.screen_loc = ui_zonesel

@@ -50,7 +50,7 @@
  * * where - where to move to
  */
 /atom/proc/drop_product(method, atom/movable/dropping, atom/where)
-	dropping.force_move(where || drop_location())
+	dropping.forceMove(where || drop_location())
 
 //? Armor
 

@@ -261,7 +261,7 @@
 	var/obj/item/material/twohanded/spear/S = locate() in parts_list
 	if(S)
 		if(S.explosive)
-			S.explosive.force_move(get_turf(src))
+			S.explosive.forceMove(get_turf(src))
 			S.explosive = null
 		parts_list -= S
 		qdel(S)

@@ -59,7 +59,7 @@
 		icon_state = "stickyweb2"
 	return ..()
 
-/obj/effect/spider/stickyweb/can_allow_through(atom/movable/mover, turf/target)
+/obj/effect/spider/stickyweb/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(istype(mover, /mob/living/simple_mob/animal/giant_spider))
 		return TRUE

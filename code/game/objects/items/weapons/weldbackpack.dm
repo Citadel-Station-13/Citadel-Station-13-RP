@@ -49,7 +49,7 @@
 	return 1
 
 /obj/item/weldpack/proc/return_nozzle(var/mob/living/user)
-	nozzle.force_move(src)
+	nozzle.forceMove(src)
 	nozzle_attached = 1
 
 /obj/item/weldpack/attackby(obj/item/W as obj, mob/user as mob)

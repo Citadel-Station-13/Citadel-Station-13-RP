@@ -111,7 +111,7 @@
 			if(!user.attempt_insert_item_for_installation(acc, src))
 				return
 			else
-				acc.force_move(src)
+				acc.forceMove(src)
 		attach_accessory(user, acc)
 		return TRUE
 	else

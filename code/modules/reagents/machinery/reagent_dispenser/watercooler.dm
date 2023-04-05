@@ -34,7 +34,7 @@
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	set_dir(turn(dir, 270))
+	setDir(turn(dir, 270))
 	return 1
 
 /obj/structure/reagent_dispensers/water_cooler/attackby(obj/item/I as obj, mob/user as mob)

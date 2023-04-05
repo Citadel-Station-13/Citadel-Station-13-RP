@@ -162,6 +162,6 @@
 	return FALSE
 
 // Override here to prevent things accidentally moving around overlays.
-/atom/movable/lighting_overlay/force_move(atom/destination, harderforce = FALSE)
+/atom/movable/lighting_overlay/forceMove(atom/destination, harderforce = FALSE)
 	if(QDELING(src))
 		. = ..()

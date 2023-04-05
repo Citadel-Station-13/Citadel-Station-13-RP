@@ -80,7 +80,7 @@
 		adjustBruteLoss(-maxHealth*0.0125)
 		adjustFireLoss(-maxHealth*0.0125)
 
-/mob/living/simple_mob/blob/can_allow_through(atom/movable/mover, turf/target)
+/mob/living/simple_mob/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/blob)) // Don't block blobs from expanding onto a tile occupied by a blob mob.
 		return TRUE
 	return ..()

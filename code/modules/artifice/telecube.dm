@@ -159,7 +159,7 @@
 
 	if(T1)
 		A.visible_message("<span class='alien'>\The [A] fades out of existence.</span>")
-		A.force_move(T1)
+		A.forceMove(T1)
 		. = TRUE
 		A.visible_message("<span class='alien'>\The [A] fades into existence.</span>")
 	else

@@ -138,7 +138,7 @@
 				if(newloc == null)
 					I.move_to_nullspace()
 				else if(newloc != FALSE)
-					I.force_move(newloc)
+					I.forceMove(newloc)
 
 	log_inventory("[key_name(src)] unequipped [I] from [old].")
 
@@ -169,7 +169,7 @@
 		I.equip_on_worn_over_remove(src, old_slot, user, I.worn_over, flags)
 		// I is free to be forcemoved now, but the old object needs to be put back on
 		over.worn_hook_suppressed = TRUE
-		over.force_move(src)
+		over.forceMove(src)
 		over.worn_hook_suppressed = FALSE
 		// put it back in the slot
 		_equip_slot(over, old_slot, flags)
@@ -324,7 +324,7 @@
 		//! This is intentional, but very, very sonwflakey.
 		to_wear_over.worn_inside = I
 		// setting worn inside first disallows equip/unequip from triggering
-		to_wear_over.force_move(I)
+		to_wear_over.forceMove(I)
 		// check we don't have something already (wtf)
 		if(I.worn_over)
 			handle_item_denesting(I, denest_to, flags, user)
@@ -459,7 +459,7 @@
 
 		var/atom/oldLoc = I.loc
 		if(I.loc != src)
-			I.force_move(src)
+			I.forceMove(src)
 		if(I.loc != src)
 			// UH OH, SOMEONE MOVED US
 			log_inventory("[key_name(src)] failed to equip [I] to slot (loc sanity failed).")

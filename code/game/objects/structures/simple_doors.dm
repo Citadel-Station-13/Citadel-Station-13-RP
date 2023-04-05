@@ -64,7 +64,7 @@
 /obj/structure/simple_door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
-/obj/structure/simple_door/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(istype(mover, /obj/effect/beam))
 		return !opacity

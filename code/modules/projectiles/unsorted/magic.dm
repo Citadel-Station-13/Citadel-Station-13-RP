@@ -275,7 +275,7 @@
 					L.mind.transfer_to(S)
 					if(owner)
 						to_chat(S, "<span class='userdanger'>You are an animated statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
-				P.force_move(S)
+				P.forceMove(S)
 				return
 		else
 			var/obj/O = src
@@ -346,7 +346,7 @@
 			return
 		if(M.anchored)
 			return ..()
-		M.force_move(src)
+		M.forceMove(src)
 		return FALSE
 	return ..()
 */
@@ -364,7 +364,7 @@
 /obj/projectile/magic/locker/Destroy()
 	locker_suck = FALSE
 	for(var/atom/movable/AM in contents)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 	. = ..()
 
 /obj/structure/closet/decay
@@ -508,7 +508,7 @@
 
 /obj/projectile/magic/nuclear/Destroy()
 	for(var/atom/movable/AM in contents)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 	. = ..()
 
 //Spellcards

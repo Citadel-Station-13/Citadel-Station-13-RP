@@ -23,7 +23,7 @@
 	Unregister()
 	return ..()
 
-/obj/landmark/spawnpoint/force_move(atom/destination)
+/obj/landmark/spawnpoint/forceMove(atom/destination)
 	Unregister()
 	. = ..()
 	Register()

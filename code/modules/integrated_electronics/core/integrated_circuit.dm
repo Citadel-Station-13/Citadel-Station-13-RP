@@ -292,7 +292,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 	A.assembly_components.Cut(index, index + 1)
 
 	var/turf/T = get_turf(src)
-	force_move(T)
+	forceMove(T)
 	assembly = null
 	if(!silent)
 		playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)

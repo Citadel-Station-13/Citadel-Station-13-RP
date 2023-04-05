@@ -25,7 +25,7 @@
 	if(contained)
 		return
 	contained = artifact
-	artifact.force_move(src)
+	artifact.forceMove(src)
 	underlays += image(artifact)
 	desc = "Used to safely contain and move anomalies. \The [contained] is kept inside."
 

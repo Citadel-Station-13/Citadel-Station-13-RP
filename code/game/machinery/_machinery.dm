@@ -147,7 +147,7 @@
 
 /obj/machinery/Initialize(mapload, newdir)
 	if(newdir)
-		set_dir(newdir)
+		setDir(newdir)
 	. = ..()
 
 	GLOB.machines += src
@@ -181,7 +181,7 @@
 		for(var/atom/A in contents)
 			if(ismob(A))
 				var/mob/M = A
-				M.force_move(loc)
+				M.forceMove(loc)
 				M.update_perspective()
 			else
 				qdel(A)
@@ -199,7 +199,7 @@
 		pulse2.icon_state = "empdisable"
 		pulse2.name = "emp sparks"
 		pulse2.anchored = 1
-		pulse2.set_dir(pick(GLOB.cardinal))
+		pulse2.setDir(pick(GLOB.cardinal))
 
 		spawn(10)
 			qdel(pulse2)
@@ -493,7 +493,7 @@
 
 	if(A.frame_type.frame_class == FRAME_CLASS_MACHINE)
 		for(var/obj/D in component_parts)
-			D.force_move(src.loc)
+			D.forceMove(src.loc)
 		if(A.components)
 			A.components.Cut()
 		else
@@ -511,7 +511,7 @@
 	else
 		A.state = FRAME_WIRED
 
-	A.set_dir(dir)
+	A.setDir(dir)
 	A.pixel_x = pixel_x
 	A.pixel_y = pixel_y
 	A.update_desc()
@@ -546,7 +546,7 @@
 		// because if this fails and something nulls, something bad happens
 		// i bandaided this to drop location but that's inflexible
 	else
-		object.force_move(drop_location())
+		object.forceMove(drop_location())
 
 /// Adjust item drop location to a 3x3 grid inside the tile, returns slot id from 0 to 8.
 /obj/machinery/proc/adjust_item_drop_location(atom/movable/dropped_atom)

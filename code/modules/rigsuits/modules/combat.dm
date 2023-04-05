@@ -261,7 +261,7 @@
 
 	if(target)
 		var/obj/item/firing = new fabrication_type()
-		firing.force_move(get_turf(src))
+		firing.forceMove(get_turf(src))
 		H.visible_message("<span class='danger'>[H] launches \a [firing]!</span>")
 		firing.throw_at_old(target,fire_force,fire_distance)
 	else
@@ -269,7 +269,7 @@
 			to_chat(H, "<span class='danger'>Your hands are full.</span>")
 		else
 			var/obj/item/new_weapon = new fabrication_type()
-			new_weapon.force_move(H)
+			new_weapon.forceMove(H)
 			to_chat(H, "<font color=#4F49AF><b>You quickly fabricate \a [new_weapon].</b></font>")
 			H.put_in_hands(new_weapon)
 
@@ -336,4 +336,4 @@
 
 /obj/item/rig_module/armblade/deactivate()
 	..()
-	held_blade?.force_move(src)
+	held_blade?.forceMove(src)

@@ -807,10 +807,10 @@
 			T.apply_damage(15, BRUTE, T_ext) //Damage the external organ they're going through.
 			T_int.removed()
 			if(B)
-				T_int.force_move(B) //Move to pred's gut
+				T_int.forceMove(B) //Move to pred's gut
 				visible_message("<span class='danger'>[src] severely damages [T_int.name] of [T]!</span>")
 			else
-				T_int.force_move(T.loc)
+				T_int.forceMove(T.loc)
 				visible_message("<span class='danger'>[src] severely damages [T_ext.name] of [T], resulting in their [T_int.name] coming out!</span>","<span class='warning'>You tear out [T]'s [T_int.name]!</span>")
 
 		//Removing an external organ
@@ -822,10 +822,10 @@
 				T.apply_damage(25, BRUTE, T_ext)
 				visible_message("<span class='danger'>[src] severely damages [T]'s [T_ext.name]!</span>")
 			else if(B)
-				T_ext.force_move(B)
+				T_ext.forceMove(B)
 				visible_message("<span class='warning'>[src] swallows [T]'s [T_ext.name] into their [lowertext(B.name)]!</span>")
 			else
-				T_ext.force_move(T.loc)
+				T_ext.forceMove(T.loc)
 				visible_message("<span class='warning'>[src] tears off [T]'s [T_ext.name]!</span>","<span class='warning'>You tear off [T]'s [T_ext.name]!</span>")
 
 		//Not targeting an internal organ w/ > 25 damage , and the limb doesn't have < 25 damage.

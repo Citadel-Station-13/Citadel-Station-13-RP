@@ -41,7 +41,7 @@
 /obj/effect/accelerated_particle/Initialize(mapload, dir = SOUTH)
 	. = ..()
 	src.loc = loc
-	src.set_dir(dir)
+	src.setDir(dir)
 	INVOKE_ASYNC(src, .proc/move, 1)
 
 /obj/effect/accelerated_particle/Moved()
@@ -87,13 +87,13 @@
 /obj/effect/accelerated_particle/proc/move(var/lag)
 	if(target)
 		if(movetotarget)
-			force_move(get_step_towards(src, target))
+			forceMove(get_step_towards(src, target))
 			if(get_dist(src,target) < 1)
 				movetotarget = 0
 		else
-			force_move(get_step_away(src, source))
+			forceMove(get_step_away(src, source))
 	else
-		force_move(get_step(src, dir))
+		forceMove(get_step(src, dir))
 	movement_range--
 	if(movement_range <= 0)
 		qdel(src)

@@ -118,7 +118,7 @@
 	// Also spawn doors and loot.
 	if(value == SD_DOOR_TILE)
 		var/obj/structure/S = new door_type(T, auto_open_doors)
-		S.set_dir(spawn_dir)
+		S.setDir(spawn_dir)
 
 	else if(value == SD_SUPPLY_TILE)
 		get_spawned_drop(T)
@@ -139,13 +139,13 @@
 				drop.tag = null
 				if(drop.buckled)
 					drop.buckled = null
-				drop.force_move(T)
+				drop.forceMove(T)
 	else if(ispath(drop_type))
 		drop = new drop_type(T)
 		if(istype(drop))
 			if(drop.buckled)
 				drop.buckled = null
-			drop.force_move(T)
+			drop.forceMove(T)
 
 /datum/admins/proc/call_drop_pod()
 	set category = "Fun"

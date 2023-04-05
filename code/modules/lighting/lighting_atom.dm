@@ -101,7 +101,7 @@
 		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
 
-/atom/movable/force_move()
+/atom/movable/forceMove()
 	. = ..()
 
 	if (light_source_solo)

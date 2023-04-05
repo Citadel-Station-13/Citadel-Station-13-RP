@@ -225,7 +225,7 @@
 	if(carved)
 		if(store)
 			to_chat(user, "<span class='notice'>[store] falls out of [title]!</span>")
-			store.force_move(drop_location())
+			store.forceMove(drop_location())
 			store = null
 			return
 		else

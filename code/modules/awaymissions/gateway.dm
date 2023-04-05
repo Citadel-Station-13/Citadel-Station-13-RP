@@ -125,14 +125,14 @@
 	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)
-		M.force_move(get_step(awaygate.loc, SOUTH))
-		M.set_dir(SOUTH)
+		M.forceMove(get_step(awaygate.loc, SOUTH))
+		M.setDir(SOUTH)
 		return
 	else
 		var/obj/landmark/dest = pick(awaydestinations)
 		if(dest)
-			M.force_move(dest.loc)
-			M.set_dir(SOUTH)
+			M.forceMove(dest.loc)
+			M.setDir(SOUTH)
 		return
 
 /obj/machinery/gateway/centerstation/attackby(obj/item/W as obj, mob/user as mob)
@@ -233,8 +233,8 @@
 			if(E.imp_in == M)//Checking that it's actually implanted vs just in their pocket
 				to_chat(M, "<font color='black'>The station gate has detected your exile implant and is blocking your entry.</font>")
 				return
-	M.force_move(get_step(stationgate.loc, SOUTH))
-	M.set_dir(SOUTH)
+	M.forceMove(get_step(stationgate.loc, SOUTH))
+	M.setDir(SOUTH)
 	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 

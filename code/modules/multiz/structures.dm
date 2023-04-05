@@ -353,14 +353,14 @@
 	if(!check_integrity())
 		return
 	transition_atom(AM)
-	AM.set_dir(turn(dir, 180))
+	AM.setDir(turn(dir, 180))
 
 /obj/structure/stairs/top/use_stairs_instant(atom/movable/AM)
 	if(!common_prechecks(AM))
 		return
 	AM = common_redirect(AM)
 	transition_atom(AM, get_turf(bottom))
-	AM.set_dir(turn(dir, 180))
+	AM.setDir(turn(dir, 180))
 
 // Mapping pieces, placed at the bottommost part of the stairs
 /obj/structure/stairs/spawner

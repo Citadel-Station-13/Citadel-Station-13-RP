@@ -30,8 +30,8 @@
 
 	D.holder = src
 	D2.holder = src
-	D.force_move(src)
-	D2.force_move(src)
+	D.forceMove(src)
+	D2.forceMove(src)
 	a_left = D
 	a_right = D2
 	name = "[D.name]-[D2.name] assembly"
@@ -134,10 +134,10 @@
 			return FALSE
 		if(a_left)
 			a_left.holder = null
-			a_left.force_move(T)
+			a_left.forceMove(T)
 		if(a_right)
 			a_right.holder = null
-			a_right.force_move(T)
+			a_right.forceMove(T)
 		qdel(src)
 
 

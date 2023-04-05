@@ -183,7 +183,7 @@
 	var/turf/T = get_turf(src)
 
 	var/mob/living/carbon/alien/diona/S = new(T)
-	S.set_dir(dir)
+	S.setDir(dir)
 	transfer_languages(src, S)
 
 	if(mind)
@@ -196,15 +196,15 @@
 
 	for(var/mob/living/carbon/alien/diona/D in src)
 		nymphs++
-		D.force_move(T)
+		D.forceMove(T)
 		transfer_languages(src, D, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
-		D.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
 			transfer_languages(src, M, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
-			M.set_dir(pick(NORTH, SOUTH, EAST, WEST))
+			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
 	drop_inventory(TRUE, TRUE, TRUE)

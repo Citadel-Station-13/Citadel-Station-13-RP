@@ -257,7 +257,7 @@
 				if(used)
 					to_chat(user,"<span class='warning'>The injector cannot be removed now that the stasis bag has been used!</span>")
 				else
-					syringe.force_move(src.loc)
+					syringe.forceMove(src.loc)
 					to_chat(user,"<span class='info'>You pry \the [syringe] out of \the [src].</span>")
 					syringe = null
 

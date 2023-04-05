@@ -261,7 +261,7 @@
 			wzhzhzh(16)
 			muck_finish()
 			cooked = fail()
-			cooked.force_move(src.loc)
+			cooked.forceMove(src.loc)
 			return
 		else if (has_extra_item())
 			if (!wzhzhzh(16))
@@ -269,7 +269,7 @@
 				return
 			broke()
 			cooked = fail()
-			cooked.force_move(src.loc)
+			cooked.forceMove(src.loc)
 			return
 		else
 			if (!wzhzhzh(40))
@@ -277,7 +277,7 @@
 				return
 			stop()
 			cooked = fail()
-			cooked.force_move(src.loc)
+			cooked.forceMove(src.loc)
 			return
 	else
 		var/halftime = round((recipe.time*4)/10/2)
@@ -287,7 +287,7 @@
 		if (!wzhzhzh(halftime))
 			abort()
 			cooked = fail()
-			cooked.force_move(src.loc)
+			cooked.forceMove(src.loc)
 			return
 
 
@@ -302,7 +302,7 @@
 			cooked_items += things
 			//Move cooked things to the buffer so they're not considered as ingredients
 			for (var/atom/movable/AM in things)
-				AM.force_move(temp)
+				AM.forceMove(temp)
 
 			valid = 0
 			recipe = select_recipe(available_recipes,src)
@@ -312,7 +312,7 @@
 
 		for (var/r in cooked_items)
 			var/atom/movable/R = r
-			R.force_move(src) //Move everything from the buffer back to the container
+			R.forceMove(src) //Move everything from the buffer back to the container
 
 		QDEL_NULL(temp)//Delete buffer object
 
@@ -365,7 +365,7 @@
 
 /obj/machinery/microwave/proc/dispose(var/message = 1)
 	for (var/atom/movable/A in contents)
-		A.force_move(loc)
+		A.forceMove(loc)
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()

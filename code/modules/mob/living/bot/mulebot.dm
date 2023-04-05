@@ -304,11 +304,11 @@
 
 	busy = 1
 
-	C.force_move(loc)
+	C.forceMove(loc)
 	sleep(2)
 	if(C.loc != loc) //To prevent you from going onto more than one bot.
 		return
-	C.force_move(src)
+	C.forceMove(src)
 	load = C
 
 	C.pixel_y += 9
@@ -325,7 +325,7 @@
 	busy = 1
 	cut_overlays()
 
-	load.force_move(loc)
+	load.forceMove(loc)
 	load.pixel_y -= 9
 	load.layer = initial(load.layer)
 
@@ -338,7 +338,7 @@
 		if(AM == botcard || AM == access_scanner)
 			continue
 
-		AM.force_move(loc)
+		AM.forceMove(loc)
 		AM.layer = initial(AM.layer)
 		AM.pixel_y = initial(AM.pixel_y)
 	busy = 0

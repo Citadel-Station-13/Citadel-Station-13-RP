@@ -222,7 +222,7 @@
 			backup_implants += BI
 	if(backup_implants.len)
 		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.force_move(src)
+			BI.forceMove(src)
 	if(color_action == 1)
 		M.set_species(O.species.name, example = M)
 	else if(color_action == 2)
@@ -237,7 +237,7 @@
 	if(backup_implants.len)
 		var/obj/item/organ/external/torso = M.get_organ(BP_TORSO)
 		for(var/obj/item/implant/backup/BI in backup_implants)
-			BI.force_move(torso)
+			BI.forceMove(torso)
 			torso.implants += BI
 
 
@@ -255,7 +255,7 @@
 		egg_name = "[O.vore_egg_type] egg"
 
 	var/obj/structure/closet/secure_closet/egg/egg = new egg_path(src)
-	M.force_move(egg)
+	M.forceMove(egg)
 	egg.name = egg_name
 	if(message)
 		to_chat(M, "<span class='notice'>You lose sensation of your body, feeling only the warmth around you as you're encased in an egg.</span>")

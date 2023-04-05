@@ -135,7 +135,7 @@
 		if("eject")
 			if(!sample)
 				return FALSE
-			sample.force_move(loc)
+			sample.forceMove(loc)
 			sample = null
 			update_icon()
 			return TRUE

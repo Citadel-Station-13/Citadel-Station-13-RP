@@ -65,7 +65,7 @@
 	if(shifted_out)
 		var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
 		if(destination)
-			force_move(destination)
+			forceMove(destination)
 		return TRUE
 
 	return ..()

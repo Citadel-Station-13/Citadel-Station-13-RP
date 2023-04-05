@@ -35,7 +35,7 @@
 		var/prey = 0
 		for(var/mob/living/M in targets)
 			if(!findNullRod(M))
-				M.force_move(destination)
+				M.forceMove(destination)
 				if(M != user)
 					prey = 1
 		to_chat(user, "<span class='sinister'>You warp back to Nar-Sie[prey ? " along with your prey":""].</span>")

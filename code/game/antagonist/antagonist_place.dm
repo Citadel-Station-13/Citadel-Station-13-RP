@@ -24,4 +24,4 @@
 	if(!starting_locations || !starting_locations.len)
 		return
 	var/turf/T = pick_mobless_turf_if_exists(starting_locations)
-	mob.force_move(T)
+	mob.forceMove(T)

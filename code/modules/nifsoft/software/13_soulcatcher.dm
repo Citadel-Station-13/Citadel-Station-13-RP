@@ -447,9 +447,9 @@
 	else
 		return ..(A)
 
-/mob/living/carbon/brain/caught_soul/set_dir(var/direction)
+/mob/living/carbon/brain/caught_soul/setDir(var/direction)
 	if(eyeobj)
-		return eyeobj.set_dir(direction)
+		return eyeobj.setDir(direction)
 	else
 		return ..(direction)
 
@@ -523,7 +523,7 @@
 	name = "[brainmob.name] (AR)"	//Set the name
 	real_name = brainmob.real_name	//And the OTHER name
 
-	force_move(get_turf(parent_human))
+	forceMove(get_turf(parent_human))
 	RegisterSignal(parent_human, COMSIG_MOVABLE_MOVED, .proc/human_moved)
 
 	//Time to play dressup
@@ -563,9 +563,9 @@
 	for(var/i = 0; i < max(sprint, initial); i += 20)
 		var/turf/stepn = get_turf(get_step(src, direct))
 		if(stepn)
-			set_dir(direct)
+			setDir(direct)
 			if(get_dist(parent_human, stepn) <= SOULCATCHER_RANGE)
-				force_move(stepn)
+				forceMove(stepn)
 
 	cooldown = world.timeofday + 5
 	if(acceleration)
@@ -576,7 +576,7 @@
 
 /mob/observer/eye/ar_soul/proc/human_moved()
 	if(get_dist(parent_human,src) > SOULCATCHER_RANGE)
-		force_move(get_turf(parent_human))
+		forceMove(get_turf(parent_human))
 
 ///////////////////
 //The catching hook
@@ -695,7 +695,7 @@
 		to_chat(src,"<span class='warning'>You're not projecting into AR!</span>")
 		return
 
-	eyeobj.force_move(get_turf(nif))
+	eyeobj.forceMove(get_turf(nif))
 
 /mob/living/carbon/brain/caught_soul/verb/reenter_soulcatcher()
 	set name = "Re-enter Soulcatcher"

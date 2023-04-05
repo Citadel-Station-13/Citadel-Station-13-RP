@@ -61,7 +61,7 @@
 		user.visible_message("<span class='notice'>\The [user] pushes \the [patient] into \the [src].</span>")
 
 	playsound(loc, 'sound/effects/slosh.ogg', 50, 1)
-	patient.force_move(src)
+	patient.forceMove(src)
 	occupant = patient
 	START_PROCESSING(SSobj, src)
 	return TRUE

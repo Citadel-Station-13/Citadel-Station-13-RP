@@ -132,7 +132,7 @@
 		return 0
 
 	//trap the victim in place
-	set_dir(L.dir)
+	setDir(L.dir)
 	// allow it so they can do buckle interactions at all
 	buckle_allowed = TRUE
 	buckle_mob(L, BUCKLE_OP_FORCE)

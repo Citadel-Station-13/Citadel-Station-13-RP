@@ -35,7 +35,7 @@
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
 		if(do_after(user, 50))
-			user.force_move(src.loc)
+			user.forceMove(src.loc)
 			visible_message("<span class='notice'>[user] climbs into \the [src.name].</span>", \
 							"<span class='notice'>You climb into \the [src.name].</span>")
 		else
@@ -43,7 +43,7 @@
 							"<span class='notice'>You stop climbing into \the [src.name].</span>")
 	return
 
-/obj/structure/closet/grave/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/closet/grave/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(opened && ismob(mover))
 		var/mob/M = mover

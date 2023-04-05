@@ -98,7 +98,7 @@ var/global/list/total_extraction_beacons = list()
 				A.density = FALSE
 			var/obj/effect/extraction_holder/holder_obj = new(A.loc)
 			holder_obj.appearance = /obj/item/extraction_holdercrate
-			A.force_move(holder_obj)
+			A.forceMove(holder_obj)
 			balloon2 = mutable_appearance('icons/obj/fulton_balloon.dmi', "fulton_expand")
 			balloon2.pixel_y = 18
 			balloon2.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
@@ -133,9 +133,9 @@ var/global/list/total_extraction_beacons = list()
 					continue
 				flooring_near_beacon += T
 			if(!length(flooring_near_beacon))
-				holder_obj.force_move(get_turf(beacon))
+				holder_obj.forceMove(get_turf(beacon))
 			else
-				holder_obj.force_move(pick(flooring_near_beacon))
+				holder_obj.forceMove(pick(flooring_near_beacon))
 			animate(holder_obj, pixel_z = 10, time = 50)
 			sleep(50)
 			animate(holder_obj, pixel_z = 15, time = 10)
@@ -153,7 +153,7 @@ var/global/list/total_extraction_beacons = list()
 			A.density = initial(A.density)
 			animate(holder_obj, pixel_z = 0, time = 5)
 			sleep(5)
-			A.force_move(holder_obj.loc)
+			A.forceMove(holder_obj.loc)
 			qdel(holder_obj)
 			if(uses_left <= 0)
 				qdel(src)

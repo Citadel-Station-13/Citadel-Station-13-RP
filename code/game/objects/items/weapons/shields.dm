@@ -151,7 +151,7 @@
 				playsound(src, 'sound/items/deconstruct.ogg', 50, TRUE)
 				qdel(embedded_flash)
 				embedded_flash = flash
-				flash.force_move(src)
+				flash.forceMove(src)
 				update_icon()
 				return
 	..()

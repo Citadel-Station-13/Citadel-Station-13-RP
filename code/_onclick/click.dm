@@ -354,7 +354,7 @@
 		else
 			direction = WEST
 	if(direction != dir)
-		set_dir(direction)
+		setDir(direction)
 
 /atom/movable/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'

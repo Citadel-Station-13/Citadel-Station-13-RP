@@ -26,7 +26,7 @@
 			limit_y = yc[locNum]+1
 			build()
 			sleep(20) //Give explosion time so the pod itself doesn't go boom
-			src.force_move(L)
+			src.forceMove(L)
 			playsound(src, pick('sound/soundbytes/effects/explosion/explosion1.ogg', 'sound/soundbytes/effects/explosion/explosion2.ogg', 'sound/soundbytes/effects/explosion/explosion3.ogg', 'sound/soundbytes/effects/explosion/explosion4.ogg'))
 			in_transit = 0
 			sleep(2)
@@ -58,7 +58,7 @@
 		return
 
 	add_fingerprint(O)
-	O.force_move(src)
+	O.forceMove(src)
 	O.update_perspective()
 	occupant = O
 	update_appearance()
@@ -73,7 +73,7 @@
 	if(!occupant)
 		return
 
-	occupant.force_move(src.loc)
+	occupant.forceMove(src.loc)
 	occupant.update_perspective()
 	occupant = null
 	update_icon()

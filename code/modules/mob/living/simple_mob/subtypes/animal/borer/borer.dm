@@ -171,7 +171,7 @@
 	if(host.mind)
 		borers.remove_antagonist(host.mind)
 
-	force_move(host.loc)
+	forceMove(host.loc)
 	update_perspective()
 
 	machine = null

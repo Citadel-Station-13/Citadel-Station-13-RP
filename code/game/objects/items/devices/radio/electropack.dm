@@ -33,10 +33,10 @@
 			return
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit( user )
 		A.icon = 'icons/obj/assemblies.dmi'
-		W.force_move(A)
+		W.forceMove(A)
 		W.master = A
 		A.part1 = W
-		force_move(A)
+		forceMove(A)
 		master = A
 		A.part2 = src
 		user.put_in_hands(A)

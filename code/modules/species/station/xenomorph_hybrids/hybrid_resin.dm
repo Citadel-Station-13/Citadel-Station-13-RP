@@ -254,7 +254,7 @@
 	..()
 	return
 
-/obj/effect/alien/hybrid_resin/can_allow_through(atom/movable/mover, turf/target)
+/obj/effect/alien/hybrid_resin/CanAllowThrough(atom/movable/mover, turf/target)
 	if(check_standard_flag_pass(mover))
 		return TRUE
 	return ..()

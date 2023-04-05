@@ -534,10 +534,10 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		return
 
 	if(isobserver(A))
-		A.force_move(T) // Harmlessly move ghosts.
+		A.forceMove(T) // Harmlessly move ghosts.
 		return
 
-	A.force_move(T)
+	A.forceMove(T)
 	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
 		message_admins("\The [A] fell out of the sky.")
 		var/mob/living/L = A

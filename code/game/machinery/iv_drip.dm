@@ -271,7 +271,7 @@
 		if(attached_victim)
 			visible_message(SPAN_WARNING("[attached_victim] is detached from [src]."))
 			detach_iv()
-		reagent_container.force_move(drop_location())
+		reagent_container.forceMove(drop_location())
 		reagent_container = null
 		update_appearance()
 

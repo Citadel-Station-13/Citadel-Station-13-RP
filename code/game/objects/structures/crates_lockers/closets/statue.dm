@@ -18,7 +18,7 @@
 		if(L.buckled)
 			L.buckled = 0
 			L.anchored = 0
-		L.force_move(src)
+		L.forceMove(src)
 		L.update_perspective()
 		L.sdisabilities |= SDISABILITY_MUTE
 		health = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
@@ -59,10 +59,10 @@
 
 /obj/structure/closet/statue/dump_contents()
 	for(var/obj/O in src)
-		O.force_move(loc)
+		O.forceMove(loc)
 
 	for(var/mob/living/M in src)
-		M.force_move(loc)
+		M.forceMove(loc)
 		M.update_perspective()
 		M.sdisabilities &= ~SDISABILITY_MUTE
 		M.take_overall_damage((M.health - health - 100),0) //any new damage the statue incurred is transfered to the mob

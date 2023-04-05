@@ -120,13 +120,13 @@
 			C = L.buckled
 	if(attempt_vr(src,"try_televore",args)) return //Sigh...
 	if(force_teleport)
-		teleatom.force_move(destturf)
+		teleatom.forceMove(destturf)
 		playSpecials(destturf,effectout,soundout)
 	else
-		if(teleatom.force_move(destturf))
+		if(teleatom.forceMove(destturf))
 			playSpecials(destturf,effectout,soundout)
 	if(C)
-		C.force_move(destturf)
+		C.forceMove(destturf)
 
 	destarea.Entered(teleatom)
 
@@ -224,9 +224,9 @@
 	if(isbelly(destination.loc))
 		var/obj/belly/B = destination.loc
 
-		teleatom.force_move(get_turf(B)) //So we can splash the sound and sparks and everything.
+		teleatom.forceMove(get_turf(B)) //So we can splash the sound and sparks and everything.
 		playSpecials(destination,effectout,soundout)
-		teleatom.force_move(B)
+		teleatom.forceMove(B)
 		return TRUE
 
 	//No fun!

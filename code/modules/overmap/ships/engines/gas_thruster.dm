@@ -206,7 +206,7 @@
 		if(istype(T))
 			T.hotspot_expose(1000,125)
 		set_light(0.5, 3)
-	set_dir(ndir)
+	setDir(ndir)
 	QDEL_IN(src, 20)
 
 /obj/item/circuitboard/unary_atmos/engine //why don't we move this elsewhere?

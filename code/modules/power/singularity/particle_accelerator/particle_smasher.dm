@@ -34,7 +34,7 @@
 		qdel(D)
 	recipes.Cut()
 	for(var/atom/movable/AM in contents)
-		AM.force_move(drop_location())
+		AM.forceMove(drop_location())
 	return ..()
 
 /obj/machinery/particle_smasher/examine(mob/user)
@@ -235,7 +235,7 @@
 /obj/machinery/particle_smasher/proc/DumpContents()
 	var/atom/A = drop_location()
 	for(var/obj/item/I in contents)
-		I.force_move(A)
+		I.forceMove(A)
 	update_icon()
 
 /*

@@ -211,7 +211,7 @@
 				S.name = "dried [S.name]"
 				S.color = "#AAAAAA"
 				I.instances -= S
-				S.force_move(get_turf(src))
+				S.forceMove(get_turf(src))
 			else
 				var/D = S.dried_type
 				new D(get_turf(src))

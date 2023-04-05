@@ -214,7 +214,7 @@ var/darkspace_abduction_z
 				T.opacity = FALSE
 				T.vis_contents.Cut()
 
-	target.force_move(locate(target.x,target.y,darkspace_abduction_z))
+	target.forceMove(locate(target.x,target.y,darkspace_abduction_z))
 	to_chat(target,"<span class='danger'>The tug relaxes, but everything around you looks... slightly off.</span>")
 	to_chat(user,"<span class='notice'>The mob has been moved. ([admin_jump_link(target,usr.client.holder)])</span>")
 

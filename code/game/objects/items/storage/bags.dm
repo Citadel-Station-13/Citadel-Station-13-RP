@@ -135,7 +135,7 @@
 		if(contents.len >= max_storage_space)
 			failure = 1
 			break
-		I.force_move(src)
+		I.forceMove(src)
 		success = 1
 	if(success && !failure && !silent)
 		if(world.time >= last_message == 0)
@@ -288,7 +288,7 @@
 		if(!S.amount)
 			qdel(S)
 		else
-			S.force_move(src)
+			S.forceMove(src)
 
 	orient2hud(usr)
 	if(usr.s_active)

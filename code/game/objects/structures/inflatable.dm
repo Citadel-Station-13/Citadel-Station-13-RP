@@ -178,7 +178,7 @@
 /obj/structure/inflatable/door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
-/obj/structure/inflatable/door/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/inflatable/door/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(istype(mover, /obj/effect/beam))
 		return !opacity

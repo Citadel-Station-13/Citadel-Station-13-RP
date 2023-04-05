@@ -91,9 +91,9 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	animate(mopimage, alpha = 50, time = sweep_time*1.2)
 	var/sweep_step = (sweep_time - 1) * 0.5
 	spawn(1)
-		mopimage.force_move(target, sweep_step)
+		mopimage.forceMove(target, sweep_step)
 		sleep(sweep_step)
-		mopimage.force_move(end, sweep_step)
+		mopimage.forceMove(end, sweep_step)
 	spawn(sweep_time+1)
 		qdel(mopimage)
 

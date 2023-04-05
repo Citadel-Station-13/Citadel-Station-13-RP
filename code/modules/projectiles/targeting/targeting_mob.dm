@@ -49,7 +49,7 @@
 		if(mover.aimed.len)
 			mover.trigger_aiming(TARGET_CAN_MOVE)
 
-/mob/living/force_move(atom/destination)
+/mob/living/forceMove(atom/destination)
 	. = ..()
 	if(aiming && aiming.aiming_at)
 		aiming.update_aiming()

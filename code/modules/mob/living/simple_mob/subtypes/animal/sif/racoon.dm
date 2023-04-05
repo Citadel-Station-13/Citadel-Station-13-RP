@@ -72,7 +72,7 @@
 
 /mob/living/simple_mob/animal/sif/sakimm/proc/drop_hat(var/mob/user)
 	if(hat)
-		hat.force_move(get_turf(user))
+		hat.forceMove(get_turf(user))
 		hat = null
 		update_icon()
 		if(user == src)

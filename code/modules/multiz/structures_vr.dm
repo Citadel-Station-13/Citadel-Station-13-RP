@@ -71,5 +71,5 @@
 	if(dest)
 		SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 		playsound(src, 'sound/effects/phasein.ogg', 100, 1)
-		M.force_move(dest.loc)
+		M.forceMove(dest.loc)
 	return

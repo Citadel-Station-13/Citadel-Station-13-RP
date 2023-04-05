@@ -218,7 +218,7 @@
 
 		if("remove_cell")
 			var/turf/T = get_turf(src)
-			battery.force_move(T)
+			battery.forceMove(T)
 			playsound(T, 'sound/items/Crowbar.ogg', 50, TRUE)
 			to_chat(usr, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
 			battery = null
@@ -265,7 +265,7 @@
 			if(!istype(C))
 				return
 			// Puts it at the bottom of our contents
-			// Note, this intentionally does *not* use force_move, because force_move will stop if it detects the same loc
+			// Note, this intentionally does *not* use forceMove, because forceMove will stop if it detects the same loc
 			ui_circuit_props.Cut(params["index"], 1 + params["index"])
 			ui_circuit_props.Add(list(list("name" = C.displayed_name,"ref" = REF(C),"removable" = C.removable,"input" = C.can_be_asked_input)))
 			assembly_components.Cut(params["index"], 1 + params["index"])
@@ -382,7 +382,7 @@
 	if((allowed_circuit_action_flags & IC.action_flags) != IC.action_flags)
 		to_chat(user, SPAN_WARNING("You can't seem to add the '[IC.name]', since the case doesn't support the circuit type."))
 		return FALSE
-	if(!IC.force_move(src))
+	if(!IC.forceMove(src))
 		return FALSE
 
 	to_chat(user, SPAN_NOTICE("You slide [IC] inside [src]."))
@@ -395,7 +395,7 @@
 
 // Actually puts the circuit inside, doesn't perform any checks.
 /obj/item/electronic_assembly/proc/add_component(var/obj/item/integrated_circuit/IC)
-	IC.force_move(get_object())
+	IC.forceMove(get_object())
 	IC.assembly = src
 	// Build TGUI lists here for efficiency.  We don't need to do that every time the UI updates.
 	ui_circuit_props.Add(list(list("name" = IC.displayed_name,"ref" = REF(IC),"removable" = IC.removable,"input" = IC.can_be_asked_input)))
@@ -439,7 +439,7 @@
 			ui_interact(user)
 			return TRUE
 		else
-			I.force_move(drop_location())
+			I.forceMove(drop_location())
 
 	else if(I.is_crowbar())
 		if(!opened)
@@ -447,7 +447,7 @@
 		if(!battery)
 			to_chat(usr, SPAN_WARNING("There's no power cell to remove from \the [src]."))
 			return FALSE
-		battery.force_move(get_turf(src))
+		battery.forceMove(get_turf(src))
 		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
 		to_chat(user, SPAN_NOTICE("You pull \the [battery] out of \the [src]'s power supplier."))
 		battery = null

@@ -813,12 +813,12 @@
 	while(istype(destination))
 		var/atom/drop_destination = destination.onDropInto(src)
 		if(!istype(drop_destination) || drop_destination == destination)
-			return force_move(destination)
+			return forceMove(destination)
 		destination = drop_destination
 	return move_to_nullspace()
 
 /atom/proc/onDropInto(var/atom/movable/AM)
-	return // If onDropInto returns null, then dropInto will force_move AM into us.
+	return // If onDropInto returns null, then dropInto will forceMove AM into us.
 
 /atom/movable/onDropInto(var/atom/movable/AM)
 	return loc // If onDropInto returns something, then dropInto will attempt to drop AM there.
@@ -953,7 +953,7 @@
 			reagents.conditional_update()
 		else if(ismovable(A))
 			var/atom/movable/M = A
-			M.force_move(src)
+			M.forceMove(src)
 
 /atom/proc/is_drainable()
 	return reagents && (reagents.reagents_holder_flags & DRAINABLE)

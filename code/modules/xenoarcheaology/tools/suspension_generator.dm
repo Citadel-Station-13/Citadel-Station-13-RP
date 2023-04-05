@@ -31,7 +31,7 @@
 				if(!suspension_field.contents.len)
 					suspension_field.icon_state = "energynet"
 					suspension_field.add_overlay("shield2")
-				I.force_move(suspension_field)
+				I.forceMove(suspension_field)
 		else
 			deactivate()
 
@@ -39,7 +39,7 @@
 	if(panel_open)
 		if(cell)
 			to_chat(user, SPAN_NOTICE("You remove [cell]."))
-			cell.force_move(loc)
+			cell.forceMove(loc)
 			cell.add_fingerprint(user)
 			cell.update_icon()
 
@@ -184,7 +184,7 @@
 	if(anchored)
 		to_chat(usr, SPAN_DANGER("You cannot rotate [src], it has been firmly fixed to the floor."))
 		return
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 
 /obj/machinery/suspension_gen/verb/rotate_clockwise()
 	set src in view(1)
@@ -194,7 +194,7 @@
 	if(anchored)
 		to_chat(usr, SPAN_DANGER("You cannot rotate [src], it has been firmly fixed to the floor."))
 		return
-	set_dir(turn(dir, 270))
+	setDir(turn(dir, 270))
 
 /obj/machinery/suspension_gen/powered(channel)
 	return TRUE		// we use snowflake cell power

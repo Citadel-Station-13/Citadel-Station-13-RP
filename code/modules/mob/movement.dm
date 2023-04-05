@@ -41,9 +41,9 @@
 			if(!mob.control_object)	return
 			mob.control_object.dir = direct
 		else
-			mob.control_object.force_move(get_step(mob.control_object,direct))
+			mob.control_object.forceMove(get_step(mob.control_object,direct))
 
-/mob/can_allow_through(atom/movable/mover, turf/target)
+/mob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(ismob(mover))
 		var/mob/moving_mob = mover
@@ -56,7 +56,7 @@
 	if(!mover.density && !mover.throwing)
 		return TRUE
 
-/mob/can_pass_through(atom/blocker, turf/target, blocker_opinion)
+/mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
 	if((buckled?.loc == target) && ismovable(blocker))
 		var/atom/movable/AM = blocker
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
@@ -321,7 +321,7 @@
 	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.set_dir(GLOB.reverse_dir[direct])
+			mob.setDir(GLOB.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
@@ -356,7 +356,7 @@
 	if(.)
 		throwing?.terminate()
 	if(pulling && !ismob(pulling) && pulling.density)
-		set_dir(turn(dir, 180))	// face pulling
+		setDir(turn(dir, 180))	// face pulling
 
 ///Process_Incorpmove
 ///Called by client/Move()
@@ -369,8 +369,8 @@
 			var/turf/T = get_step(mob, direct)
 			if(!T)
 				return
-			mob.force_move(get_step(mob, direct))
-			mob.set_dir(direct)
+			mob.forceMove(get_step(mob, direct))
+			mob.setDir(direct)
 		if(2)
 			if(prob(50))
 				var/locx
@@ -398,7 +398,7 @@
 							return
 					else
 						return
-				mob.force_move(locate(locx,locy,mobloc.z))
+				mob.forceMove(locate(locx,locy,mobloc.z))
 				spawn(0)
 					var/limit = 2//For only two trailing shadows.
 					for(var/turf/T in getline(mobloc, mob.loc))
@@ -409,7 +409,7 @@
 			else
 				spawn(0)
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
-				mob.force_move(get_step(mob, direct))
+				mob.forceMove(get_step(mob, direct))
 			mob.dir = direct
 	// Crossed is always a bit iffy
 	for(var/obj/S in mob.loc)
@@ -543,7 +543,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	set_dir(EAST)
+	setDir(EAST)
 	last_turn = world.time
 	return TRUE
 
@@ -553,7 +553,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	set_dir(WEST)
+	setDir(WEST)
 	last_turn = world.time
 	return TRUE
 
@@ -563,7 +563,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	set_dir(NORTH)
+	setDir(NORTH)
 	last_turn = world.time
 	return TRUE
 
@@ -573,7 +573,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	set_dir(SOUTH)
+	setDir(SOUTH)
 	last_turn = world.time
 	return TRUE
 

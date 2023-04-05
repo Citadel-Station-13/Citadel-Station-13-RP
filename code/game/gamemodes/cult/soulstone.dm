@@ -77,7 +77,7 @@
 				A.status_flags &= ~GODMODE
 				A.canmove = 1
 				to_chat(A, "<b>You have been released from your prison, but you are still bound to [U.name]'s will. Help them suceed in their goals at all costs.</b>")
-				A.force_move(U.loc)
+				A.forceMove(U.loc)
 				A.cancel_camera()
 				src.icon_state = "soulstone"
 	attack_self(U)
@@ -132,7 +132,7 @@
 	qdel(animation)
 
 	var/mob/living/simple_mob/construct/shade/S = new /mob/living/simple_mob/construct/shade( T.loc )
-	S.force_move(src) //put shade in stone
+	S.forceMove(src) //put shade in stone
 	S.status_flags |= GODMODE //So they won't die inside the stone somehow
 	S.canmove = 0//Can't move out of the soul stone
 	S.name = "Shade of [T.real_name]"
@@ -168,7 +168,7 @@
 		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
 		return
 
-	T.force_move(src) //put shade in stone
+	T.forceMove(src) //put shade in stone
 	T.status_flags |= GODMODE
 	T.canmove = 0
 	T.health = T.getMaxHealth()

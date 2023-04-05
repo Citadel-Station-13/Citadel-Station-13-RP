@@ -63,7 +63,7 @@
 	chassis.use_power(energy_drain)
 	var/turf/trg = get_turf(target)
 	var/obj/item/reagent_containers/syringe/S = syringes[1]
-	S.force_move(get_turf(chassis))
+	S.forceMove(get_turf(chassis))
 	reagents.trans_to_obj(S, min(S.volume, reagents.total_volume))
 	syringes -= S
 	S.icon = 'icons/obj/medical/chemical.dmi'
@@ -213,7 +213,7 @@
 				occupant_message("Unable to load syringe.")
 				return 0
 		S.reagents.trans_to_obj(src, S.reagents.total_volume)
-		S.force_move(src)
+		S.forceMove(src)
 		syringes += S
 		occupant_message("Syringe loaded.")
 		update_equip_info()

@@ -73,12 +73,12 @@
 				to_chat(user, "<span class='notice'>No ID is inserted.</span>")
 				return
 			if(ishuman(user))
-				inserted.force_move(get_turf(src))
+				inserted.forceMove(get_turf(src))
 				if(!user.get_active_held_item())
 					user.put_in_hands(inserted)
 				inserted = null
 			else
-				inserted.force_move(get_turf(src))
+				inserted.forceMove(get_turf(src))
 				inserted = null
 			return
 		if("Cancel")

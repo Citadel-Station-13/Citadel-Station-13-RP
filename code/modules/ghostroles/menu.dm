@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(ghostrole_menu, /datum/ghostrole_menu, new)
 			if(!A.loc)
 				to_chat(usr, "<span class='danger'>BUG: Spawnpoint was nullspace.</span>")
 				return
-			usr.force_move(get_turf(A))
+			usr.forceMove(get_turf(A))
 		if("spawn")
 			var/client/C = usr.client
 			var/error = role.AttemptSpawn(C)

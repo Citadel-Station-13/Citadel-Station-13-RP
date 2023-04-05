@@ -168,7 +168,7 @@
 			L.Weaken(2)
 
 		// Get into the tile.
-		force_move(T)
+		forceMove(T)
 
 		// Visuals and sound.
 		dig_under_floor(get_turf(src))

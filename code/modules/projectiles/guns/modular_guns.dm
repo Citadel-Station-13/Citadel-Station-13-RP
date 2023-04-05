@@ -62,7 +62,7 @@
 		for(var/obj/item/I in guncomponents)
 			to_chat(user, "<span class='notice'>You remove the gun's components.</span>")
 			playsound(src, O.tool_sound, 50, 1)
-			I.force_move(get_turf(src))
+			I.forceMove(get_turf(src))
 			guncomponents.Remove(I)
 			CheckParts()
 		return
@@ -81,7 +81,7 @@
 		return
 	user.drop_item()
 	guncomponents += O
-	O.force_move(src)
+	O.forceMove(src)
 	to_chat(user, "<span class='notice'>You add a component to the [src]</span>")
 	CheckParts()
 

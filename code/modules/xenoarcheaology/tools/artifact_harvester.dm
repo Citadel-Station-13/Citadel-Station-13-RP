@@ -95,7 +95,7 @@
 
 		if("ejectbattery")
 			if(inserted_battery)
-				inserted_battery.force_move(loc)
+				inserted_battery.forceMove(loc)
 				inserted_battery = null
 			return TRUE
 

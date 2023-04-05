@@ -53,14 +53,14 @@ var/datum/antagonist/borer/borers
 			var/obj/item/organ/external/head = host.get_organ(BP_HEAD)
 			borer.host = host
 			head.implants += borer
-			borer.force_move(head)
+			borer.forceMove(head)
 			if(!borer.host_brain)
 				borer.host_brain = new(borer)
 			borer.host_brain.name = host.name
 			borer.host_brain.real_name = host.real_name
 			return
 		 // Place them at a vent if they can't get a host.
-		borer.force_move(get_turf(pick(get_vents())))
+		borer.forceMove(get_turf(pick(get_vents())))
 
 /datum/antagonist/borer/attempt_random_spawn()
 	if(config_legacy.aliens_allowed) ..()

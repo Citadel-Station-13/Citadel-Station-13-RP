@@ -15,7 +15,7 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/mech_sensor/can_allow_through(atom/movable/mover, turf/target)
+/obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!enabled())
 		return TRUE
 	if(!(get_dir(src, target) & dir))

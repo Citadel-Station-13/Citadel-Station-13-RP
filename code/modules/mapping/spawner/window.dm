@@ -39,7 +39,7 @@
 			if(found_dirs & d)
 				continue
 			W = new window_pane_path(loc)
-			W.set_dir(d)
+			W.setDir(d)
 	if(firelocks)
 		new /obj/machinery/door/firedoor(loc)
 

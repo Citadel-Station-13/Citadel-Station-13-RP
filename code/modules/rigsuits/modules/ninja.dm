@@ -132,13 +132,13 @@
 	if(!..()) return 0
 
 	phase_out(H,get_turf(H))
-	H.force_move(T)
+	H.forceMove(T)
 	phase_in(H,get_turf(H))
 
 	for(var/obj/item/grab/G in H.contents)
 		if(G.affecting)
 			phase_out(G.affecting,get_turf(G.affecting))
-			G.affecting.force_move(locate(T.x+rand(-1,1),T.y+rand(-1,1),T.z))
+			G.affecting.forceMove(locate(T.x+rand(-1,1),T.y+rand(-1,1),T.z))
 			phase_in(G.affecting,get_turf(G.affecting))
 
 	return 1
@@ -161,7 +161,7 @@
 
 	if(holder && holder.wearer)
 		if(..(target) && target)
-			set_dir(get_dir(src,target))  // Face the target
+			setDir(get_dir(src,target))  // Face the target
 			holder.wearer.Beam(target,"n_beam",,10)
 		return 1
 	return 0

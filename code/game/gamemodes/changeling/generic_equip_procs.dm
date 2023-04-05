@@ -111,7 +111,7 @@
 		if(M.back && stuff_to_equip["back"])
 			if(istype(M.back, stuff_to_equip["back"]))
 				for(var/atom/movable/AM in M.back.contents) //Dump whatever's in the bag before deleting.
-					AM.force_move(src.loc)
+					AM.forceMove(src.loc)
 				qdel(M.back)
 				success = 1
 

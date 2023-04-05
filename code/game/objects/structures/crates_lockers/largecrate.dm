@@ -33,7 +33,7 @@
 	var/obj/item/I
 	for(I in src.loc)
 		if(I.density || I.anchored || I == src) continue
-		I.force_move(src)
+		I.forceMove(src)
 	// adjust locker size to hold all items with 5 units of free store room
 	var/content_size = 0
 	for(I in src.contents)
@@ -56,7 +56,7 @@
 	for(var/obj/I in src.loc)
 		if(I.density || I.anchored || I == src || (I.atom_flags & ATOM_ABSTRACT))
 			continue
-		I.force_move(src)
+		I.forceMove(src)
 	update_icon()
 
 */
@@ -74,7 +74,7 @@
 
 		for(var/atom/movable/AM in contents)
 			if(!(AM.atom_flags & ATOM_ABSTRACT))
-				AM.force_move(T)
+				AM.forceMove(T)
 
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
@@ -197,7 +197,7 @@
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
 			if(!(AM.atom_flags & ATOM_ABSTRACT))
-				AM.force_move(T)
+				AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
 							 "<span class='notice'>You hear splitting wood.</span>")

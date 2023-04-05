@@ -50,7 +50,7 @@
 
 	if(glasses)
 		if(aug && aug.integrated_object == glasses)
-			aug.integrated_object.force_move(aug)
+			aug.integrated_object.forceMove(aug)
 			if(!glasses)
 				to_chat(src, "<span class='alien'>Your [aug.integrated_object] retract into your skull.</span>")
 		else if(!istype(glasses, /obj/item/clothing/glasses/hud/security/jensenshades))
@@ -68,7 +68,7 @@
 			to_chat(src, "<span class='alien'>Your [aug.integrated_object] deploy.</span>")
 			force_equip_to_slot(aug.integrated_object, SLOT_ID_GLASSES)
 			if(!glasses || glasses != aug.integrated_object)
-				aug.integrated_object.force_move(aug)
+				aug.integrated_object.forceMove(aug)
 
 /obj/item/organ/internal/augment/bioaugment/sprint_enhance
 	name = "locomotive optimization implant"

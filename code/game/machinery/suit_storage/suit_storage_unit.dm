@@ -398,7 +398,7 @@
 		if(user.loc != src.loc)
 			to_chat(occupant, "<font color=#4F49AF>You leave the not-so-cozy confines of the SSU.</font>")
 
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.update_perspective()
 	occupant = null
 	if(!isopen)
@@ -440,7 +440,7 @@
 	visible_message("[usr] starts squeezing into the suit storage unit!", 3)
 	if(do_after(usr, 10))
 		usr.stop_pulling()
-		usr.force_move(src)
+		usr.forceMove(src)
 		usr.update_perspective()
 //		usr.metabslow = 1
 		occupant = usr
@@ -484,7 +484,7 @@
 		if(do_after(user, 20))
 			if(!G || !G.affecting) return //derpcheck
 			var/mob/M = G.affecting
-			M.force_move(src)
+			M.forceMove(src)
 			M.update_perspective()
 			occupant = M
 			isopen = 0 //close ittt

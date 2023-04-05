@@ -82,7 +82,7 @@
 			spawn(0)
 				A.throw_at_old(pick(targets),1,1)
 
-	set_dir(direction)
+	setDir(direction)
 	if(dir != NORTH)
 		plane = MOB_PLANE
 		layer = ABOVE_MOB_LAYER

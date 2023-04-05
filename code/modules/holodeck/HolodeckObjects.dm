@@ -385,13 +385,13 @@
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 
-/obj/structure/holohoop/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/holohoop/CanAllowThrough(atom/movable/mover, turf/target)
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
 		if(istype(I, /obj/projectile))
 			return TRUE
 		if(prob(50))
-			I.force_move(loc)
+			I.forceMove(loc)
 			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
 			visible_message(SPAN_WARNING( "\The [I] bounces off of \the [src]'s rim!"), 3)

@@ -441,7 +441,7 @@
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)
 			for(var/obj/item/fuelrod/rod in rods)
-				rod.force_move(L)
+				rod.forceMove(L)
 			rods.Cut()
 			pipes.Cut()
 			empulse(src, decaying_rods * 10, decaying_rods * 100)

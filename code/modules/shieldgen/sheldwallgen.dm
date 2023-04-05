@@ -153,7 +153,7 @@
 		T2 = T
 		var/obj/machinery/shieldwall/CF = new/obj/machinery/shieldwall/(T, src, G) //(ref to this gen, ref to connected gen)
 		CF.loc = T
-		CF.set_dir(field_dir)
+		CF.setDir(field_dir)
 
 
 /obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user)
@@ -315,7 +315,7 @@
 				G.storedpower -= 12000
 	return
 
-/obj/machinery/shieldwall/can_allow_through(atom/movable/mover, turf/target)
+/obj/machinery/shieldwall/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(.)
 		return

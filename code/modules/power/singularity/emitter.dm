@@ -38,7 +38,7 @@
 	if (src.anchored || usr:stat)
 		to_chat(usr, "It is fastened to the floor!")
 		return 0
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 	return 1
 
 /obj/machinery/power/emitter/Initialize(mapload)

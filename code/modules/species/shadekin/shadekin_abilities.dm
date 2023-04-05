@@ -76,7 +76,7 @@
 		shadekin_adjust_energy(-ability_cost)
 	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
-	force_move(T)
+	forceMove(T)
 	var/original_canmove = canmove
 	SetStunned(0)
 	SetWeakened(0)
@@ -124,7 +124,7 @@
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
-					target.force_move(vore_selected)
+					target.forceMove(vore_selected)
 					to_chat(target, SPAN_WARNING("\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!"))
 
 		//Affect nearby lights

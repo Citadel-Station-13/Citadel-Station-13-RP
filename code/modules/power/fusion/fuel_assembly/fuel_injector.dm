@@ -24,7 +24,7 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector/Destroy()
 	if(cur_assembly)
-		cur_assembly.force_move(get_turf(src))
+		cur_assembly.forceMove(get_turf(src))
 		cur_assembly = null
 	fuel_injectors -= src
 	return ..()
@@ -56,7 +56,7 @@ var/list/fuel_injectors = list()
 			return
 
 		if(cur_assembly)
-			cur_assembly.force_move(get_turf(src))
+			cur_assembly.forceMove(get_turf(src))
 			user.put_in_hands(cur_assembly)
 			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
 		else
@@ -86,7 +86,7 @@ var/list/fuel_injectors = list()
 		return
 
 	if(cur_assembly)
-		cur_assembly.force_move(get_turf(src))
+		cur_assembly.forceMove(get_turf(src))
 		user.put_in_hands(cur_assembly)
 		visible_message("<span class='notice'>\The [user] removes \the [cur_assembly] from \the [src].</span>")
 		cur_assembly = null
@@ -138,7 +138,7 @@ var/list/fuel_injectors = list()
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 270))
+	src.setDir(turn(src.dir, 270))
 
 /obj/machinery/fusion_fuel_injector/verb/rotate_counterclockwise()
 	set category = "Object"
@@ -148,4 +148,4 @@ var/list/fuel_injectors = list()
 	if (usr.incapacitated() || usr.restrained()  || anchored)
 		return
 
-	src.set_dir(turn(src.dir, 90))
+	src.setDir(turn(src.dir, 90))

@@ -25,7 +25,7 @@
 	// Drop all the things. All of them.
 	cut_overlays()
 	for(var/obj/item/I in carrying)
-		I.force_move(drop_location())
+		I.forceMove(drop_location())
 		carrying.Remove(I)
 		if(isturf(I.loc))
 			spawn()
@@ -189,7 +189,7 @@
 			if(calc_carry() + add >= max_carry)
 				break
 			var/image/Img = new(src.icon)
-			I.force_move(src)
+			I.forceMove(src)
 			carrying.Add(I)
 			Img.icon = I.icon
 			Img.icon_state = I.icon_state
@@ -211,7 +211,7 @@
 		if(isturf(loc) && !(locate(/mob/living) in src.loc))
 			cut_overlays()
 			for(var/obj/item/I in carrying)
-				I.force_move(src.loc)
+				I.forceMove(src.loc)
 				carrying.Remove(I)
 				if(noTable)
 					for(var/i = 1, i <= rand(1,2), i++)

@@ -21,7 +21,7 @@
 	if(T)
 		if(user.buckled)
 			user.buckled = null
-		user.force_move(T)
+		user.forceMove(T)
 
 		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.set_up(3, 0, starting)

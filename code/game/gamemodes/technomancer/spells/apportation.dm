@@ -39,7 +39,7 @@
 			s1.start()
 			s2.start()
 			I.visible_message("<span class='danger'>\The [I] vanishes into thin air!</span>")
-			I.force_move(get_turf(user))
+			I.forceMove(get_turf(user))
 			user.transfer_item_to_nullspace(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			user.put_in_hands(I)
 			user.visible_message("<span class='notice'>\A [I] appears in \the [user]'s hand!</span>")

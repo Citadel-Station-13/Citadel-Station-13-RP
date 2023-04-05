@@ -79,7 +79,7 @@
 				if(do_after(user, 80) && build_stage == 2)
 					if(S.use(5))
 						var/obj/item/vehicle_assembly/quadtrailer/Trailer = new(src)
-						Trailer.force_move(get_turf(src))
+						Trailer.forceMove(get_turf(src))
 						Trailer.increase_step("framed [initial(Trailer.name)]")
 						to_chat(user, "<span class='notice'>You convert \the [src] into \the [Trailer].</span>")
 						qdel(src)
@@ -137,7 +137,7 @@
 					var/obj/vehicle_old/train/engine/quadbike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
-					cell.force_move(product)
+					cell.forceMove(product)
 					cell = null
 					qdel(src)
 
@@ -260,6 +260,6 @@
 					var/obj/vehicle_old/bike/built/product = new(get_turf(src))
 					to_chat(user, "<span class='notice'>You finish \the [product]</span>")
 					product.cell = cell
-					cell.force_move(product)
+					cell.forceMove(product)
 					cell = null
 					qdel(src)

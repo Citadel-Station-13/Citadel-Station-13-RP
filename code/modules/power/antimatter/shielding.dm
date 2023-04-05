@@ -72,7 +72,7 @@
 	//Might want to have it leave a mess on the floor but no sprites for now
 	return ..()
 
-/obj/machinery/am_shielding/can_allow_through(atom/movable/mover, turf/target)
+/obj/machinery/am_shielding/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	return FALSE
 

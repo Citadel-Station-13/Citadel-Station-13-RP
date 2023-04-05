@@ -24,7 +24,7 @@
 	var/last_process = 0
 	var/time_offset = 0
 	var/datum/point/vector/trajectory
-	var/trajectory_ignore_forcemove = FALSE	//instructs force_move to NOT reset our trajectory to the new location!
+	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 	var/ignore_source_check = FALSE
 
 	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
@@ -228,7 +228,7 @@
 			var/old = loc
 			before_z_change(loc, T)
 			trajectory_ignore_forcemove = TRUE
-			force_move(T)
+			forceMove(T)
 			trajectory_ignore_forcemove = FALSE
 			after_z_change(old, loc)
 			if(!hitscanning)
@@ -312,7 +312,7 @@
 		trajectory.set_angle(new_angle)
 	return TRUE
 
-/obj/projectile/force_move(atom/target)
+/obj/projectile/forceMove(atom/target)
 	if(!isloc(target) || !isloc(loc) || !z)
 		return ..()
 	var/zc = target.z != z
@@ -352,7 +352,7 @@
 		setAngle(Angle + rand(-dispersion, dispersion))
 	original_angle = Angle
 	trajectory_ignore_forcemove = TRUE
-	force_move(starting)
+	forceMove(starting)
 	trajectory_ignore_forcemove = FALSE
 	trajectory = new(starting.x, starting.y, starting.z, pixel_x, pixel_y, Angle, SSprojectiles.global_pixel_speed)
 	last_projectile_move = world.time
@@ -403,7 +403,7 @@
 					curloc = get_turf(T)
 
 	trajectory_ignore_forcemove = TRUE
-	force_move(get_turf(source))
+	forceMove(get_turf(source))
 	trajectory_ignore_forcemove = FALSE
 	starting = curloc
 	original = target
@@ -552,13 +552,13 @@
 /obj/projectile/Bump(atom/A)
 	if(A in permutated)
 		trajectory_ignore_forcemove = TRUE
-		force_move(get_turf(A))
+		forceMove(get_turf(A))
 		trajectory_ignore_forcemove = FALSE
 		return FALSE
 	if(firer && !reflected)
 		if(A == firer || (A == firer.loc && istype(A, /obj/mecha))) //cannot shoot yourself or your mech
 			trajectory_ignore_forcemove = TRUE
-			force_move(get_turf(A))
+			forceMove(get_turf(A))
 			trajectory_ignore_forcemove = FALSE
 			return FALSE
 
@@ -604,7 +604,7 @@
 
 	if(passthrough)
 		trajectory_ignore_forcemove = TRUE
-		force_move(target_turf)
+		forceMove(target_turf)
 		permutated.Add(A)
 		trajectory_ignore_forcemove = FALSE
 		return FALSE
@@ -653,7 +653,7 @@
 /obj/projectile/proc/check_fire(atom/target as mob, mob/living/user as mob)  //Checks if you can hit them or not.
 	check_trajectory(target, user, pass_flags, atom_flags)
 
-/obj/projectile/can_allow_through()
+/obj/projectile/CanAllowThrough()
 	. = ..()
 	return TRUE
 

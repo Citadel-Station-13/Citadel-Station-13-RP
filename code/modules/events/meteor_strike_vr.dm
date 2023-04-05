@@ -37,7 +37,7 @@
 			return
 		for(var/atom/movable/A in current)
 			LEGACY_EX_ACT(A, 3, null) //Let's have it be heavy, but not devistation in case it hits walls or something.
-		force_move(below)
+		forceMove(below)
 		meteor_fall()
 		return
 	meteor_impact()
@@ -109,6 +109,6 @@
 
 		M.visible_message("<span cleass='warning'>[M] breaks apart \the [src].</span>", "<span cleass='warning'>You break apart \the [src].</span>")
 		for(var/obj/O in src)
-			O.force_move(get_turf(src))
+			O.forceMove(get_turf(src))
 		qdel(src)
 		return

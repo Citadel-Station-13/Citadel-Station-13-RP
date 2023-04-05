@@ -311,7 +311,7 @@
 	if(!load)
 		return
 	dummy_load.actual_load = C
-	C.force_move(src)
+	C.forceMove(src)
 
 	if(load_item_visible)
 		C.pixel_x += load_offset_x

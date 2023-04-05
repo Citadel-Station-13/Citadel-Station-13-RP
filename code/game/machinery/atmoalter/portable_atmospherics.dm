@@ -160,7 +160,7 @@
 
 
 	if(do_after(O, 3 SECOND, src))
-		O.force_move(src.loc)
+		O.forceMove(src.loc)
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
@@ -204,7 +204,7 @@
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and removes [cell].</span>", "<span class='notice'>You open the panel on [src] and remove [cell].</span>")
 		playsound(src, I.tool_sound, 50, 1)
 		cell.add_fingerprint(user)
-		cell.force_move(drop_location())
+		cell.forceMove(drop_location())
 		cell = null
 		power_change()
 		return

@@ -28,7 +28,7 @@
 
 /obj/machinery/computer/timeclock/Destroy()
 	if(card)
-		card.force_move(get_turf(src))
+		card.forceMove(get_turf(src))
 		card = null
 	. = ..()
 

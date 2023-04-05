@@ -123,7 +123,7 @@
 			rot_degree = 90
 		if(ROTATION_FLIP)
 			rot_degree = 180
-	AM.set_dir(turn(AM.dir,rot_degree))
+	AM.setDir(turn(AM.dir,rot_degree))
 	after_rotation.Invoke(user,rotation_type)
 
 /datum/component/simple_rotation/proc/default_can_user_rotate(mob/living/user, rotation_type)

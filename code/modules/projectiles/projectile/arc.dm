@@ -94,7 +94,7 @@
 
 		// Update our shadow.
 		if(shadow)
-			shadow.force_move(loc)
+			shadow.forceMove(loc)
 			shadow.pixel_x = pixel_x
 			shadow.pixel_y = pixel_y + visual_y_offset
 

@@ -38,7 +38,7 @@
 	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
 	if (start_dir)
-		set_dir(start_dir)
+		setDir(start_dir)
 	//player-constructed windows
 	if (constructed)
 		anchored = 0
@@ -58,7 +58,7 @@
 /obj/structure/window/Move()
 	moving_right_now = dir
 	. = ..()
-	set_dir(moving_right_now)
+	setDir(moving_right_now)
 	moving_right_now = null
 
 /obj/structure/window/Moved(atom/oldloc)
@@ -181,7 +181,7 @@
 /obj/structure/window/blob_act()
 	take_damage(50)
 
-/obj/structure/window/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
 	if(istype(mover, /obj/structure/window))
 		// if they're a window we have special handling
 		var/obj/structure/window/them = mover
@@ -212,7 +212,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/window/set_dir(newdir)
+/obj/structure/window/setDir(newdir)
 	. = ..()
 	update_nearby_tiles()
 
@@ -385,7 +385,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 	updateSilicate()
 
 /obj/structure/window/verb/rotate_clockwise()
@@ -403,7 +403,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	set_dir(turn(dir, 270))
+	setDir(turn(dir, 270))
 	updateSilicate()
 
 //! Does this work? idk. Let's call it TBI.

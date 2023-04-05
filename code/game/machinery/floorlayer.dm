@@ -104,7 +104,7 @@
 /obj/machinery/floorlayer/proc/TakeTile(obj/item/stack/tile/tile)
 	if(!T)
 		T = tile
-		tile.force_move(src)
+		tile.forceMove(src)
 	else
 		tile.merge(T)
 

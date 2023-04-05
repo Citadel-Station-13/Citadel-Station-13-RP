@@ -137,7 +137,7 @@
 				to_chat(user, "<span class='notice'>[src] already has a cell.</span>")
 		else if(W.is_screwdriver() && bcell)
 			bcell.update_icon()
-			bcell.force_move(get_turf(loc))
+			bcell.forceMove(get_turf(loc))
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
 			deactivate()
@@ -356,7 +356,7 @@
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.set_dir(i)
+		user.setDir(i)
 		if(i == WEST)
 			user.emote("flip")
 		sleep(1)
@@ -474,7 +474,7 @@
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
-		user.set_dir(i)
+		user.setDir(i)
 		if(i == WEST)
 			user.emote("flip")
 		sleep(1)

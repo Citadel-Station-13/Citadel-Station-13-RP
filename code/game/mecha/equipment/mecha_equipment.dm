@@ -222,7 +222,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/proc/detach(atom/moveto=null)
 	moveto = moveto || get_turf(chassis)
-	if(src.force_move(moveto))
+	if(src.forceMove(moveto))
 		chassis.equipment -= src
 		chassis.universal_equipment -= src
 		if(equip_type)

@@ -75,7 +75,7 @@
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [target.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 			if(do_after(user, 30, target) && length(contents) < max_item_count)
-				target.force_move(src)
+				target.forceMove(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [target.name] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [target] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(analyzer && istype(target,/obj/item))
@@ -92,7 +92,7 @@
 			var/mob/living/simple_mob/trashmouse = target
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashmouse] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashmouse] into your [src.name]...</span>")
 			if(do_after(user, 30, trashmouse) && length(contents) < max_item_count)
-				trashmouse.force_move(src)
+				trashmouse.forceMove(src)
 				trashmouse.update_perspective(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashmouse] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashmouse] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
@@ -112,7 +112,7 @@
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashman] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashman] into your [src.name]...</span>")
 			if(do_after(user, 30, trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
-				trashman.force_move(src)
+				trashman.forceMove(src)
 				trashman.update_perspective()
 				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashman] slips inside.</span>")
@@ -142,7 +142,7 @@
 			if(patient)
 				return //If you try to eat two people at once, you can only eat one.
 			else //If you don't have someone in you, proceed.
-				H.force_move(src)
+				H.forceMove(src)
 				H.update_perspective(src)
 				update_patient()
 				START_PROCESSING(SSobj, src)
@@ -161,11 +161,11 @@
 		for(var/C in contents)
 			if(ishuman(C))
 				var/mob/living/carbon/human/person = C
-				person.force_move(get_turf(src))
+				person.forceMove(get_turf(src))
 				person.update_perspective()
 			else
 				var/obj/T = C
-				T.force_move(hound.loc)
+				T.forceMove(hound.loc)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		update_patient()
 	else //You clicked eject with nothing in you, let's just reset stuff to be sure.
@@ -348,11 +348,11 @@
 			for(var/C in deliverylists[delivery_tag])
 				if(ishuman(C))
 					var/mob/living/carbon/human/person = C
-					person.force_move(get_turf(src))
+					person.forceMove(get_turf(src))
 					person.update_perspective()
 				else
 					var/obj/T = C
-					T.force_move(hound.loc)
+					T.forceMove(hound.loc)
 			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 			update_patient()
 			var/list/tagged = deliverylists[delivery_tag]
@@ -554,7 +554,7 @@
 						for(var/belly in T.vore_organs)
 							var/obj/belly/B = belly
 							for(var/atom/movable/thing in B)
-								thing.force_move(src)
+								thing.forceMove(src)
 								if(ismob(thing))
 									to_chat(thing, "As [T] melts away around you, you find yourself in [hound]'s [name]")
 					for(var/obj/item/I in T)
@@ -562,7 +562,7 @@
 							var/obj/item/organ/internal/mmi_holder/MMI = I
 							var/atom/movable/brain = MMI.removed()
 							if(brain)
-								brain.force_move(src)
+								brain.forceMove(src)
 								items_preserved |= brain
 						else
 							T.transfer_item_to_loc(I, src, INV_OP_FORCE)

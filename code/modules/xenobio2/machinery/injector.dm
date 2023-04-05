@@ -62,7 +62,7 @@
 		if(victim.client)
 			victim.client.perspective = EYE_PERSPECTIVE
 			victim.client.eye = src
-		victim.force_move(src)
+		victim.forceMove(src)
 		src.occupant = victim
 
 /obj/machinery/xenobio2/manualinjector/proc/eject_contents()
@@ -72,7 +72,7 @@
 
 /obj/machinery/xenobio2/manualinjector/proc/eject_xeno()
 	if(occupant)
-		occupant.force_move(loc)
+		occupant.forceMove(loc)
 		occupant = null
 
 /obj/machinery/xenobio2/manualinjector/proc/eject_beaker()

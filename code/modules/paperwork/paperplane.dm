@@ -23,7 +23,7 @@
 			var/obj/item/storage/S = newPaper.loc
 			S.remove_from_storage(newPaper, src)
 		else
-			newPaper.force_move(src)
+			newPaper.forceMove(src)
 	else
 		internalPaper = new /obj/item/paper(src)
 	update_icon()
@@ -55,7 +55,7 @@
 		return
 	to_chat(user, "<span class='notice'>You unfold [src].</span>")
 	var/atom/movable/internal_paper_tmp = internalPaper
-	internal_paper_tmp.force_move(loc)
+	internal_paper_tmp.forceMove(loc)
 	internalPaper = null
 	qdel(src)
 	user.put_in_hands(internal_paper_tmp)

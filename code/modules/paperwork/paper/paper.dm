@@ -345,7 +345,7 @@
 			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.lit)
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
-				force_move(drop_location())
+				forceMove(drop_location())
 				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
@@ -455,11 +455,11 @@
 		else if (P.name != "paper" && P.name != "photo")
 			B.name = P.name
 		if(!(old_slot? (user.equip_to_slot_if_possible(B, old_slot)) : (user.put_in_hands(B))))
-			B.force_move(get_turf(src))
+			B.forceMove(get_turf(src))
 
 		to_chat(user, "<span class='notice'>You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name].</span>")
-		force_move(B)
-		P.force_move(B)
+		forceMove(B)
+		P.forceMove(B)
 
 		B.pages.Add(src)
 		B.pages.Add(P)

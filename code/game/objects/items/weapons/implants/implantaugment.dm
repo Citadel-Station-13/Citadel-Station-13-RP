@@ -35,7 +35,7 @@
 			spawn(rand(1 SECONDS, 30 SECONDS))
 				to_chat(H, "<span class='alien'>You feel a pressure in your [E] as the tingling fades, the lump caused by the implant now gone.</span>")
 
-			NewOrgan.force_move(H)
+			NewOrgan.forceMove(H)
 			NewOrgan.owner = H
 			if(E.internal_organs == null)
 				E.internal_organs = list()
@@ -79,7 +79,7 @@
 			spawn(rand(1 SECONDS, 30 SECONDS))
 				to_chat(H, "<span class='alien'>You feel a pressure in your [E] as the tingling fades, the lump caused by the implant now gone.</span>")
 
-			NewOrgan.force_move(H)
+			NewOrgan.forceMove(H)
 			NewOrgan.owner = H
 			if(E.internal_organs == null)
 				E.internal_organs = list()

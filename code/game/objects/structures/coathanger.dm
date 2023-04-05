@@ -28,7 +28,7 @@
 		to_chat(user, "<span class='notice'>You cannot hang [W] on [src]</span>")
 		return ..()
 
-/obj/structure/coatrack/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/coatrack/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	var/can_hang = 0
 	for (var/T in allowed)
@@ -38,7 +38,7 @@
 	if (can_hang && !coat)
 		src.visible_message("[mover] lands on \the [src].")
 		coat = mover
-		coat.force_move(src)
+		coat.forceMove(src)
 		update_icon()
 		return 0
 	else

@@ -357,5 +357,5 @@
 			var/datum/integrated_io/IO2 = assembly.get_pin_ref_list(wire[2])
 			IO.connect_pin(IO2)
 
-	assembly.force_move(loc)
+	assembly.forceMove(loc)
 	return assembly

@@ -57,7 +57,7 @@
 
 /obj/machinery/gear_painter/Destroy()
 	if(inserted) //please i beg you do not drop nulls
-		inserted.force_move(drop_location())
+		inserted.forceMove(drop_location())
 	return ..()
 
 /obj/machinery/gear_painter/attackby(obj/item/I, mob/living/user)
@@ -102,7 +102,7 @@
 	if(user)
 		visible_message(SPAN_WARNING("[user] stuffs [victim] into [src]!"))
 	inserted = victim
-	inserted.force_move(src)
+	inserted.forceMove(src)
 
 /obj/machinery/gear_painter/AllowDrop()
 	return FALSE
@@ -122,7 +122,7 @@
 	if(!inserted)
 		return
 	to_chat(usr, SPAN_NOTICE("You remove [inserted] from [src]"))
-	inserted.force_move(drop_location())
+	inserted.forceMove(drop_location())
 	var/mob/living/user = usr
 	if(istype(user))
 		user.put_in_hands(inserted)

@@ -356,7 +356,7 @@
 	if(!istype(W))
 		return 0
 
-	W.force_move(src)
+	W.forceMove(src)
 	W.on_enter_storage(src)
 	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
@@ -381,7 +381,7 @@
 	return handle_item_insertion(I, user, prevent_warning)
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, doMove = TRUE)
 	if(!istype(W))
 		return 0
 
@@ -394,11 +394,11 @@
 			if (M.client)
 				M.client.screen -= W
 
-	if(do_move)
+	if(doMove)
 		if(new_location)
-			W.force_move(new_location)
+			W.forceMove(new_location)
 		else
-			W.force_move(get_turf(src))
+			W.forceMove(get_turf(src))
 
 	if(usr?.s_active == src)
 		orient2hud(usr)

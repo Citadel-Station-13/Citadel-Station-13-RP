@@ -22,7 +22,7 @@
 			var/datum/gender/T = GLOB.gender_datums[G.affecting.get_visible_gender()]
 			visible_message("<span class = 'danger'>[user] has forced [G.affecting] onto the spike, killing [T.him] instantly!</span>")
 			var/mob/M = G.affecting
-			M.force_move(src)
+			M.forceMove(src)
 			qdel(G)
 			qdel(M)
 		else

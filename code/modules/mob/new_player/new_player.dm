@@ -280,7 +280,7 @@
 			var/obj/landmark/L = pick_landmark_by_key(/obj/landmark/observer_spawn)
 			if(L)
 				to_chat(src, SPAN_NOTICE("Now teleporting."))
-				observer.force_move(L.loc)
+				observer.forceMove(L.loc)
 			else
 				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
@@ -556,7 +556,7 @@
 	// Moving wheelchair if they have one
 	if(character.buckled && istype(character.buckled, /obj/structure/bed/chair/wheelchair))
 		character.buckled.loc = character.loc
-		character.buckled.set_dir(character.dir)
+		character.buckled.setDir(character.dir)
 
 	SSticker.mode.latespawn(character)
 

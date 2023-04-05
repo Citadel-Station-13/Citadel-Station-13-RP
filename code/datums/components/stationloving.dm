@@ -33,7 +33,7 @@
 			CRASH("Unable to find a blobstart landmark")
 
 	var/atom/movable/AM = parent
-	AM.force_move(targetturf)
+	AM.forceMove(targetturf)
 	to_chat(get(parent, /mob), "<span class='danger'>You can't help but feel that you just lost something back there...</span>")
 	// move the disc, so ghosts remain orbiting it even if it's "destroyed"
 	return targetturf

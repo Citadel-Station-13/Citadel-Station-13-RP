@@ -63,7 +63,7 @@
 
 // Prevents singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
-/obj/effect/shield/force_move()
+/obj/effect/shield/forceMove()
 	if(QDELING(src))
 		return ..()
 	return FALSE
@@ -199,7 +199,7 @@
 
 
 // As we have various shield modes, this handles whether specific things can pass or not.
-/obj/effect/shield/can_allow_through(var/atom/movable/mover, var/turf/target)
+/obj/effect/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
 	. = ..()
 	// Somehow we don't have a generator. This shouldn't happen. Delete the shield.
 	if(!gen)

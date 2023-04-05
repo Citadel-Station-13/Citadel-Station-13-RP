@@ -327,7 +327,7 @@
 	if(!occupant)
 		return
 
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.update_perspective()
 
 	eject_wait = 0 //If it's still set somehow.
@@ -394,7 +394,7 @@
 		var/turf/T = get_turf(src)
 		if(T)
 			for(var/obj/item/reagent_containers/glass/G in containers)
-				G.force_move(T)
+				G.forceMove(T)
 				containers -= G
 		return	1
 	return 0

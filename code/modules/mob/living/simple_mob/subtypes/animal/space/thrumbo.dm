@@ -60,7 +60,7 @@
 	if(!chargeturf)
 		return
 	var/chargedir = get_dir(src, chargeturf)
-	set_dir(chargedir)
+	setDir(chargedir)
 	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, IS_DIAGONAL(chargedir) ? 1 : 2)
 	if(!T)
 		charging = 0

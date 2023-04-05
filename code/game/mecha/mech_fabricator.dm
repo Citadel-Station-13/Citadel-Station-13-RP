@@ -333,7 +333,7 @@
 			return TRUE
 
 		atom_say("Obstruction cleared. \The [stored_part] is complete.")
-		stored_part.force_move(exit)
+		stored_part.forceMove(exit)
 		stored_part = null
 
 	//If there's nothing being built, try to build something
@@ -375,7 +375,7 @@
 		return FALSE
 
 	atom_say("\The [I] is complete.")
-	I.force_move(exit)
+	I.forceMove(exit)
 	return I
 
 /**

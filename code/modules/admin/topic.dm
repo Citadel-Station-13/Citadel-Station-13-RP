@@ -1314,7 +1314,7 @@
 		var/atom/movable/AM = locate(href_list["admingetmovable"])
 		if(QDELETED(AM))
 			return
-		AM.force_move(get_turf(usr))
+		AM.forceMove(get_turf(usr))
 
 	else if(href_list["adminplayerobservejump"])
 		if(!check_rights(R_EVENT|R_MOD|R_ADMIN|R_SERVER|R_EVENT))	return
@@ -1741,7 +1741,7 @@
 					else
 						var/atom/O = new path(target)
 						if(O)
-							O.set_dir(obj_dir)
+							O.setDir(obj_dir)
 							if(obj_name)
 								O.name = obj_name
 								if(istype(O,/mob))

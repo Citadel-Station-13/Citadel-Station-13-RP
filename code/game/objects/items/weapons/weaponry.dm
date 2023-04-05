@@ -71,7 +71,7 @@
 		for(var/A in buckled_mobs)
 			var/mob/living/occupant = A
 			occupant.buckled = null
-			occupant.force_move(src.loc)
+			occupant.forceMove(src.loc)
 			occupant.buckled = src
 			if (occupant && (src.loc != occupant.loc))
 				unbuckle_mob(occupant)

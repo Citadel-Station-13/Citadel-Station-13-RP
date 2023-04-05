@@ -414,7 +414,7 @@
 /datum/wires/proc/attach_assembly(color, obj/item/assembly/signaler/S)
 	if(S && istype(S) && !is_attached(color))
 		assemblies[color] = S
-		S.force_move(holder)
+		S.forceMove(holder)
 		S.connected = src
 		return S
 
@@ -431,7 +431,7 @@
 	if(S && istype(S))
 		assemblies -= color
 		S.connected = null
-		S.force_move(holder.drop_location())
+		S.forceMove(holder.drop_location())
 		return S
 
 /**

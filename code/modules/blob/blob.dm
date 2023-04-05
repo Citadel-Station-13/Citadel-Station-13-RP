@@ -22,7 +22,7 @@
 	health = maxHealth
 	update_icon()
 
-/obj/effect/blob/can_allow_through(atom/movable/mover, turf/target)
+/obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
 /obj/effect/blob/legacy_ex_act(severity)
@@ -205,6 +205,6 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/shield/can_allow_through(var/atom/movable/mover, var/turf/target)
+/obj/effect/blob/shield/CanAllowThrough(var/atom/movable/mover, var/turf/target)
 	. = ..()
 	return !density

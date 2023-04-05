@@ -120,10 +120,10 @@
 					if(!do_mob(usr, target, 30) || !can_apply_to_target(target, usr))
 						return
 					if(tank)
-						tank.force_move(src)
+						tank.forceMove(src)
 					if (breather.wear_mask == contained)
 						breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
-						contained.force_move(src)
+						contained.forceMove(src)
 					else
 						qdel(contained)
 						contained = new mask_type(src)
@@ -216,7 +216,7 @@
 					START_PROCESSING(SSobj,src)
 		if ("Remove vessel")
 			if(beaker)
-				beaker.force_move(loc)
+				beaker.forceMove(loc)
 				beaker = null
 				update_icon()
 
@@ -247,7 +247,7 @@
 	if(C && istype(C))
 		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			if(tank)
-				tank.force_move(C)
+				tank.forceMove(C)
 			breather = C
 			return TRUE
 
@@ -365,10 +365,10 @@
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)
-				tank.force_move(src)
+				tank.forceMove(src)
 			if (breather.wear_mask == contained)
 				breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
-				contained.force_move(src)
+				contained.forceMove(src)
 			else
 				qdel(contained)
 				contained = new mask_type (src)

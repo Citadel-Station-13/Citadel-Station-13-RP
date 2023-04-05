@@ -68,7 +68,7 @@
 /obj/machinery/processor/proc/empty()
 	for(var/atom/movable/AM in to_be_processed)
 		to_be_processed.Remove(AM)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 
 // Ejects all the things out of the machine.
 /obj/machinery/processor/proc/insert(var/atom/movable/AM, var/mob/living/user)
@@ -79,14 +79,14 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
 		return
 	to_be_processed.Add(AM)
-	AM.force_move(src)
+	AM.forceMove(src)
 	visible_message("<span class='notice'>\the [user] places [AM] inside \the [src].</span>")
 
 /obj/machinery/processor/proc/auto_insert(atom/movable/AM)
 	if(!can_insert(AM) || !isturf(AM.loc))
 		return
 	to_be_processed.Add(AM)
-	AM.force_move(src)
+	AM.forceMove(src)
 	visible_message("<span class='notice'>[src] sucks up [AM].</span>")
 
 /obj/machinery/processor/process(delta_time)

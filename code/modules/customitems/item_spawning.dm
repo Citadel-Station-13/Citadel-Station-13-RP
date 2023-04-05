@@ -235,5 +235,5 @@
 	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
 		return newitem
 
-	newitem.force_move(M.drop_location())
+	newitem.forceMove(M.drop_location())
 	return newitem

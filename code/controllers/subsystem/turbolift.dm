@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(turbolifts)
 		spawn(0)
 			lift.busy = 1
 			var/floor_delay
-			if(!(floor_delay = lift.do_move()))
+			if(!(floor_delay = lift.doMove()))
 				moving_lifts[liftref] = null
 				moving_lifts -= liftref
 				if(lift.target_floor)

@@ -62,7 +62,7 @@
 
 	avatar.exit_vr()
 
-	occupant.force_move(loc)
+	occupant.forceMove(loc)
 	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
@@ -105,7 +105,7 @@
 		if (newname)
 			avatar.real_name = newname
 
-		avatar.force_move(T)
+		avatar.forceMove(T)
 		visible_message("<span class='green'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
 
 	else

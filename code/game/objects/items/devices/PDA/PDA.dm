@@ -1071,7 +1071,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 			M.put_in_hands_or_drop(id)
 			to_chat(usr, "<span class='notice'>You remove the ID from the [name].</span>")
 		else
-			id.force_move(drop_location())
+			id.forceMove(drop_location())
 		id = null
 
 /obj/item/pda/proc/remove_pen()
@@ -1269,7 +1269,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "<span class='notice'>There's no cartridge to eject.</span>")
 		return
 
-	cartridge.force_move(get_turf(src))
+	cartridge.forceMove(get_turf(src))
 	if(ismob(loc))
 		var/mob/M = loc
 		M.put_in_hands(cartridge)
@@ -1487,7 +1487,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Destroy()
 	GLOB.PDAs -= src
 	if (src.id && prob(100)) //IDs are kept in 100% of the cases //TODO: WHY?
-		src.id.force_move(get_turf(src.loc))
+		src.id.forceMove(get_turf(src.loc))
 	else
 		QDEL_NULL(src.id)
 	QDEL_NULL(src.cartridge)

@@ -73,7 +73,7 @@
 	visible = !visible
 	head?.SetVisible(visible)
 
-/obj/item/assembly/infra/set_dir()
+/obj/item/assembly/infra/setDir()
 	var/old = dir
 	. = ..()
 	if(old == dir)
@@ -102,7 +102,7 @@
 	// spread
 	var/obj/effect/beam/i_beam/I = new(loc, src, range - 1, visible, null)
 	I.density = TRUE
-	I.set_dir(dir)
+	I.setDir(dir)
 	step(I, I.dir)
 	// did it work?
 	if(QDELETED(I))
@@ -126,17 +126,17 @@
 /obj/item/assembly/infra/Move()
 	var/old_dir = dir
 	. = ..()
-	set_dir(old_dir)
+	setDir(old_dir)
 	Queue()
 
-/obj/item/assembly/infra/do_move()
+/obj/item/assembly/infra/doMove()
 	. = ..()
 	Queue()
 
 /obj/item/assembly/infra/holder_movement()
 	if(!holder)
 		return FALSE
-	set_dir(holder.dir)
+	setDir(holder.dir)
 	Queue()
 	return TRUE
 
@@ -197,7 +197,7 @@
 	set category = "Object"
 	set src in usr
 
-	set_dir(turn(dir, 90))
+	setDir(turn(dir, 90))
 
 /***************************IBeam*********************************/
 
@@ -260,7 +260,7 @@
 		// spread
 		var/obj/effect/beam/i_beam/I = new type(loc, master, propagate - 1, visible, src)
 		I.density = TRUE
-		I.set_dir(dir)
+		I.setDir(dir)
 		step(I, I.dir)
 		// did it work?
 		if(QDELETED(I))

@@ -310,5 +310,5 @@ note dizziness decrements automatically in the mob's Life() proc.
 					D = SOUTH
 				if(WEST)
 					D = NORTH
-			set_dir(D)
+			setDir(D)
 			spintime -= speed

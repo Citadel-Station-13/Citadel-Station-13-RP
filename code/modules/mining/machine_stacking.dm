@@ -123,7 +123,7 @@
 			stack_storage[S.name] += S.amount
 			qdel(S)
 			continue
-		I.force_move(outturf)
+		I.forceMove(outturf)
 
 	//Output amounts that are past stack_amt.
 	for(var/sheet in stack_storage)

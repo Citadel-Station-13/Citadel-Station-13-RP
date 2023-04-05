@@ -97,14 +97,14 @@ var/global/list/narsie_list = list()
 	else if(istype(A, /obj/structure/cult))
 		qdel(A)
 
-/obj/singularity/narsie/move(var/force_move = 0)
+/obj/singularity/narsie/move(var/forceMove = 0)
 	if(!move_self)
 		return 0
 
 	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
-	if(force_move)
-		movement_dir = force_move
+	if(forceMove)
+		movement_dir = forceMove
 
 	if(target && prob(60))
 		movement_dir = get_dir(src,target)
@@ -115,14 +115,14 @@ var/global/list/narsie_list = list()
 		step(src, movement_dir)
 	return 1
 
-/obj/singularity/narsie/large/move(var/force_move = 0)
+/obj/singularity/narsie/large/move(var/forceMove = 0)
 	if(!move_self)
 		return 0
 
 	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
-	if(force_move)
-		movement_dir = force_move
+	if(forceMove)
+		movement_dir = forceMove
 
 	if(target && prob(60))
 		movement_dir = get_dir(src,target)

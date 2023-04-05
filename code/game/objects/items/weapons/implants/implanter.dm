@@ -134,7 +134,7 @@
 			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
 		c.scanned = I
-		I.force_move(src)
+		I.forceMove(src)
 		update()
 
 /// Universal translator implant.

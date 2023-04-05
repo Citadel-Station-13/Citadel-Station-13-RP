@@ -35,7 +35,7 @@ FLOOR SAFES
 			return
 		if(I.w_class + space <= maxspace)
 			space += I.w_class
-			I.force_move(src)
+			I.forceMove(src)
 
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)

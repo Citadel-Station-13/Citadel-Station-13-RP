@@ -24,7 +24,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Destroy()
 	qdel(pr_mech_sleeper)
 	for(var/atom/movable/AM in src)
-		AM.force_move(get_turf(src))
+		AM.forceMove(get_turf(src))
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/Exit(atom/movable/O)
@@ -54,7 +54,7 @@
 		if(occupant)
 			occupant_message(SPAN_DANGER("<B>The sleeper is already occupied!</B>"))
 			return
-		target.force_move(src)
+		target.forceMove(src)
 		target.update_perspective()
 		occupant = target
 		occupant.Stasis(3)
@@ -73,7 +73,7 @@
 /obj/item/mecha_parts/mecha_equipment/tool/sleeper/proc/go_out()
 	if(!occupant)
 		return
-	occupant.force_move(get_turf(src))
+	occupant.forceMove(get_turf(src))
 	occupant.update_perspective()
 	occupant_message("[occupant] ejected. Life support functions disabled.")
 	log_message("[occupant] ejected. Life support functions disabled.")

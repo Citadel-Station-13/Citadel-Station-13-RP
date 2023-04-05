@@ -6,7 +6,7 @@
 		return
 
 	if(config_legacy.allow_admin_jump)
-		usr.force_move(pick(get_area_turfs(A)))
+		usr.forceMove(pick(get_area_turfs(A)))
 
 		log_admin("[key_name(usr)] jumped to [A]")
 		message_admins("[key_name_admin(usr)] jumped to [A]", 1)
@@ -22,7 +22,7 @@
 	if(config_legacy.allow_admin_jump)
 		log_admin("[key_name(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]")
 		message_admins("[key_name_admin(usr)] jumped to [T.x],[T.y],[T.z] in [T.loc]", 1)
-		usr.force_move(T)
+		usr.forceMove(T)
 		feedback_add_details("admin_verb","JT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
 		alert("Admin jumping disabled")
@@ -42,7 +42,7 @@
 			var/turf/T = get_turf(M)
 			if(T && isturf(T))
 				feedback_add_details("admin_verb","JM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-				A.force_move(T)
+				A.forceMove(T)
 			else
 				to_chat(A, "This mob is not located in the game world.")
 	else
@@ -62,7 +62,7 @@
 			if(!T)
 				to_chat(src, "<span class='warning'>[tx], [ty], [tz] does not exist!</span>")
 				return
-			A.force_move(T)
+			A.forceMove(T)
 			feedback_add_details("admin_verb","JC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		message_admins("[key_name_admin(usr)] jumped to coordinates [tx], [ty], [tz]")
 
@@ -87,7 +87,7 @@
 		var/mob/M = selection:mob
 		log_admin("[key_name(usr)] jumped to [key_name(M)]")
 		message_admins("[key_name_admin(usr)] jumped to [key_name_admin(M)]", 1)
-		usr.force_move(M.loc)
+		usr.forceMove(M.loc)
 		feedback_add_details("admin_verb","JK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
 		alert("Admin jumping disabled")
@@ -103,7 +103,7 @@
 		var/msg = "[key_name_admin(usr)] jumped to [key_name_admin(M)]"
 		message_admins(msg)
 		admin_ticket_log(M, msg)
-		M.force_move(get_turf(usr))
+		M.forceMove(get_turf(usr))
 		feedback_add_details("admin_verb","GM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
 		alert("Admin jumping disabled")
@@ -132,7 +132,7 @@
 		message_admins(msg)
 		admin_ticket_log(M, msg)
 		if(M)
-			M.force_move(get_turf(usr))
+			M.forceMove(get_turf(usr))
 			feedback_add_details("admin_verb","GK") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else
 		alert("Admin jumping disabled")
@@ -145,7 +145,7 @@
 	var/area/A = input(usr, "Pick an area.", "Pick an area") in GLOB.sortedAreas
 	if(A)
 		if(config_legacy.allow_admin_jump)
-			M.force_move(pick(get_area_turfs(A)))
+			M.forceMove(pick(get_area_turfs(A)))
 			feedback_add_details("admin_verb","SMOB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 			log_admin("[key_name(usr)] teleported [key_name(M)]")

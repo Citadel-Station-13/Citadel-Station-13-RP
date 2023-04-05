@@ -61,7 +61,7 @@
 			anchored = init_anc
 			return 0
 
-		set_dir(get_dir(old_loc, loc))
+		setDir(get_dir(old_loc, loc))
 		anchored = init_anc
 
 		if(mechanical && on && powered)
@@ -70,8 +70,8 @@
 		//Dummy loads do not have to be moved as they are just an overlay
 		//See load_object() proc in cargo_trains.dm for an example
 		if(load && !istype(load, /datum/vehicle_dummy_load))
-			load.force_move(loc)
-			load.set_dir(dir)
+			load.forceMove(loc)
+			load.setDir(dir)
 
 		return 1
 	else
@@ -158,7 +158,7 @@
 	pulse2.icon_state = "empdisable"
 	pulse2.name = "emp sparks"
 	pulse2.anchored = 1
-	pulse2.set_dir(pick(GLOB.cardinal))
+	pulse2.setDir(pick(GLOB.cardinal))
 
 	spawn(10)
 		qdel(pulse2)
@@ -226,7 +226,7 @@
 		new /obj/effect/debris/cleanable/blood/oil(src.loc)
 
 		if(cell)
-			cell.force_move(Tsec)
+			cell.forceMove(Tsec)
 			cell.update_icon()
 			cell = null
 
@@ -303,8 +303,8 @@
 	if(istype(crate))
 		crate.close()
 
-	C.force_move(loc)
-	C.set_dir(dir)
+	C.forceMove(loc)
+	C.setDir(dir)
 	C.anchored = 1
 
 	load = C
@@ -356,8 +356,8 @@
 	if(ismob(load))
 		unbuckle_mob(load, BUCKLE_OP_FORCE)
 
-	load.force_move(dest)
-	load.set_dir(get_dir(loc, dest))
+	load.forceMove(dest)
+	load.setDir(get_dir(loc, dest))
 	load.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
 	load.pixel_x = initial(load.pixel_x)
 	load.pixel_y = initial(load.pixel_y)

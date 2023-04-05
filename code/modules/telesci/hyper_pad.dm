@@ -47,7 +47,7 @@
 	if(.)
 		return
 	if(linked_pad && !QDELETED(linked_pad))
-		ghost.force_move(get_turf(linked_pad))
+		ghost.forceMove(get_turf(linked_pad))
 
 /obj/machinery/hyperpad/attack_ghost(mob/observer/dead/ghost)
 	. = ..()

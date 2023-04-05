@@ -57,7 +57,7 @@
 	if(EA)
 		if (I.is_crowbar())
 			var/turf/T = get_turf(src)
-			EA.force_move(T)
+			EA.forceMove(T)
 			src.EA_Installed = 0
 			src.icon_state = "circuitry-open"
 			src.EA = null

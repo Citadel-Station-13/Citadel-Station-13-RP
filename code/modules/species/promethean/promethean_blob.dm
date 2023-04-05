@@ -335,7 +335,7 @@
 		blob.ai_holder = null
 	else
 		blob = stored_blob
-		blob.force_move(creation_spot)
+		blob.forceMove(creation_spot)
 
 	//Drop all our things
 	var/list/things_to_drop = contents.Copy()
@@ -389,7 +389,7 @@
 		blob.handle_light()
 	if(has_hat)
 		blob.hat = new_hat
-		new_hat.force_move(src)
+		new_hat.forceMove(src)
 
 	blob.update_icon()
 	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
@@ -405,7 +405,7 @@
 	blob.vore_organs = vore_organs
 	blob.vore_selected = vore_selected
 	for(var/obj/belly/B as anything in vore_organs)
-		B.force_move(blob)
+		B.forceMove(blob)
 		B.owner = blob
 
 	//We can still speak our languages!
@@ -437,7 +437,7 @@
 	resize(blob.size_multiplier, FALSE)
 
 	//Move them back where the blob was
-	force_move(reform_spot)
+	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
 	Weaken(2)
@@ -452,7 +452,7 @@
 
 	if(hat)
 		if(!equip_to_slot_if_possible(hat, SLOT_ID_HEAD))
-			hat.force_move(drop_location())
+			hat.forceMove(drop_location())
 	nutrition = blob.nutrition // food good
 
 
@@ -469,7 +469,7 @@
 	//Transfer vore organs
 	vore_selected = blob.vore_selected
 	for(var/obj/belly/B as anything in blob.vore_organs)
-		B.force_move(src)
+		B.forceMove(src)
 		B.owner = src
 
 	//vore_organs.Cut()

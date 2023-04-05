@@ -160,9 +160,9 @@
 	var/mob/living/target_mob = get_pin_data(IC_INPUT, 2)
 	my_voice.transfer_identity(target_mob)
 	if(!isnull(text) && !isnull(my_voice) && !isnull(my_voice.name))
-		my_voice.force_move(get_turf(src))
+		my_voice.forceMove(get_turf(src))
 		my_voice.say("[text]")
-		my_voice.force_move(src)
+		my_voice.forceMove(src)
 
 /obj/item/integrated_circuit/output/sound
 	name = "speaker circuit"
@@ -468,7 +468,7 @@
 		var/holo_abs_y = T.y + holo_y
 		var/turf/W = locate(holo_abs_x, holo_abs_y, T.z)
 		if(W) // Make sure we're not out of bounds.
-			hologram.force_move(W)
+			hologram.forceMove(W)
 		return TRUE
 	return FALSE
 

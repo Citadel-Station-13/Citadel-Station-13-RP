@@ -97,7 +97,7 @@
 		// send to the turf below
 		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[fall_message]</span>")
 		T.visible_message("<span class='boldwarning'>[AM] falls from above!</span>")
-		AM.force_move(T)
+		AM.forceMove(T)
 		if(isliving(AM))
 			var/mob/living/L = AM
 			L.Paralyze(100)

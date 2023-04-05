@@ -86,7 +86,7 @@
 	if(!istype(S))
 		return
 	has_suit = S
-	force_move(S)
+	forceMove(S)
 
 	// inventory handling start
 
@@ -123,7 +123,7 @@
 		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
 	else if(get_turf(src))		//We actually exist in space
-		force_move(get_turf(src))
+		forceMove(get_turf(src))
 
 //default attackby behaviour
 /obj/item/clothing/accessory/attackby(obj/item/I, mob/user)

@@ -119,7 +119,7 @@
 
 /obj/item/switchtool/proc/add_module(obj/item/module, switchtool_enum)
 	if(module.loc != src)
-		module.force_move(src)
+		module.forceMove(src)
 	tools[module] = switchtool_enum
 
 /obj/item/switchtool/proc/remove_module(obj/item/module)
@@ -287,7 +287,7 @@
 		return ..()
 	. = deployed.melee_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
 	if(deployed && deployed.loc != src)
-		deployed.force_move(src)
+		deployed.forceMove(src)
 		undeploy()
 
 //? click redirection
@@ -296,7 +296,7 @@
 		return ..()
 	. = deployed.ranged_attack_chain(target, user, clickchain_flags | CLICKCHAIN_REDIRECTED, params)
 	if(deployed.loc != src)
-		deployed.force_move(src)
+		deployed.forceMove(src)
 		undeploy()
 
 /obj/item/switchtool/surgery

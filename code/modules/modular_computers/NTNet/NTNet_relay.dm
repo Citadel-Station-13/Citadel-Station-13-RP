@@ -129,7 +129,7 @@
 		to_chat(user, "You disassemble \the [src]!")
 
 		for(var/atom/movable/A in component_parts)
-			A.force_move(src.loc)
+			A.forceMove(src.loc)
 		new /obj/structure/frame(src.loc)
 		qdel(src)
 		return

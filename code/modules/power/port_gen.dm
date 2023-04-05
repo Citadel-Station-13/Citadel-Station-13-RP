@@ -616,7 +616,7 @@
 		return
 
 	if(alien)
-		alien.force_move(get_turf(src))
+		alien.forceMove(get_turf(src))
 		user.put_in_active_hand(alien)
 		alien = null
 		state_change = TRUE

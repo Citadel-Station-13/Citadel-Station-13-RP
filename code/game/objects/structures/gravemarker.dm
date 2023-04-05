@@ -38,7 +38,7 @@
 		if(epitaph)
 			. += epitaph
 
-/obj/structure/gravemarker/can_allow_through(atom/movable/mover, turf/target)
+/obj/structure/gravemarker/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!(get_dir(loc, target) & dir))
 		return TRUE
 	return ..()
@@ -125,4 +125,4 @@
 	if(ismouse(usr) || (isobserver(usr) && !config_legacy.ghost_interaction))
 		return
 
-	set_dir(turn(src.dir, 270))
+	setDir(turn(src.dir, 270))
