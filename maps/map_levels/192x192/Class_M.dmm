@@ -1030,14 +1030,6 @@
 /obj/structure/sign/warning/high_voltage,
 /turf/simulated/wall,
 /area/class_m/outside)
-"kf" = (
-/obj/structure/fence/corner{
-	dir = 1
-	},
-/turf/simulated/floor/water/beach{
-	dir = 8
-	},
-/area/class_m/outside)
 "kg" = (
 /obj/structure/toilet{
 	dir = 4
@@ -1402,17 +1394,6 @@
 	name = "beach"
 	},
 /area/class_m/outside)
-"np" = (
-/obj/structure/fence/corner{
-	dir = 1
-	},
-/obj/structure/fence/post{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classm{
-	name = "beach"
-	},
-/area/class_m/outside)
 "nt" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1762,6 +1743,15 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"qm" = (
+/obj/structure/fence{
+	name = "vollyball net";
+	pass_flags_self = 481
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
+/area/class_m/outside)
 "qp" = (
 /obj/machinery/light/flamp/noshade{
 	light_range = 8;
@@ -1809,6 +1799,14 @@
 	dir = 6
 	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
+"qK" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
 /area/class_m/outside)
 "qN" = (
 /obj/effect/floor_decal/corner_steel_grid,
@@ -2590,6 +2588,20 @@
 /obj/machinery/chemical_dispenser/catering/bar_coffee,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"ye" = (
+/obj/structure/fence{
+	name = "vollyball net";
+	pass_flags_self = 481
+	},
+/obj/structure/fence/end{
+	dir = 1;
+	name = "vollyball net";
+	pass_flags_self = 481
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
+/area/class_m/outside)
 "yg" = (
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
@@ -3319,26 +3331,6 @@
 /mob/living/simple_mob/animal/passive/fish/koi,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
-"Fj" = (
-/obj/structure/fence/end{
-	pass_flags_self = 481
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classm{
-	name = "beach"
-	},
-/area/class_m/outside)
-"Fn" = (
-/obj/structure/fence{
-	pass_flags_self = 481
-	},
-/obj/structure/fence/end{
-	dir = 1;
-	pass_flags_self = 481
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classm{
-	name = "beach"
-	},
-/area/class_m/outside)
 "Fx" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/concrete/tile/classm/outdoors{
@@ -3791,6 +3783,15 @@
 	name = "Automated Resort"
 	},
 /turf/simulated/floor/tiled/monotile/classm,
+/area/class_m/outside)
+"JT" = (
+/obj/structure/fence/end{
+	name = "vollyball net";
+	pass_flags_self = 481
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
 /area/class_m/outside)
 "JZ" = (
 /obj/structure/filingcabinet/chestdrawer,
@@ -5293,14 +5294,6 @@
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/monowhite,
-/area/class_m/outside)
-"Vh" = (
-/obj/structure/fence{
-	pass_flags_self = 481
-	},
-/turf/simulated/floor/outdoors/beach/sand/desert/classm{
-	name = "beach"
-	},
 /area/class_m/outside)
 "Vj" = (
 /obj/structure/flora/tree/jungle_small,
@@ -22521,8 +22514,8 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
+pJ
+RE
 VF
 VF
 VF
@@ -22715,8 +22708,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -22909,8 +22902,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -23096,15 +23089,15 @@ Lp
 Lp
 Lp
 Lp
-ZL
 Lp
 Lp
 Lp
 Lp
-ZL
+Lp
+Lp
+Lp
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -23287,8 +23280,9 @@ bT
 Lp
 Lp
 Lp
-oE
-Rq
+Lp
+Lp
+Lp
 Lp
 Lp
 Lp
@@ -23298,7 +23292,6 @@ Lp
 Lp
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -23481,8 +23474,9 @@ om
 Lp
 Lp
 Lp
-oE
-Rq
+Lp
+Lp
+Lp
 Lp
 Lp
 Lp
@@ -23492,7 +23486,6 @@ Lp
 Lp
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -23675,8 +23668,9 @@ AA
 Lp
 Lp
 Lp
-oE
-Rq
+Lp
+Lp
+Lp
 Lp
 Lp
 Lp
@@ -23686,7 +23680,6 @@ Lp
 Lp
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -23869,8 +23862,9 @@ Lp
 Lp
 Lp
 Lp
-oE
-Rq
+Lp
+Lp
+Lp
 Lp
 Lp
 Lp
@@ -23880,7 +23874,6 @@ Lp
 Lp
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -24067,14 +24060,14 @@ Lp
 Lp
 Lp
 ZL
-Fn
-Vh
-Vh
-Fj
+Lp
+Lp
+Lp
+Lp
 ZL
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -24267,8 +24260,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -24460,9 +24453,9 @@ Lp
 Lp
 Lp
 Lp
-SQ
-xT
-VF
+Lp
+Lp
+Tl
 VF
 VF
 VF
@@ -24654,9 +24647,9 @@ Lp
 Lp
 Lp
 Lp
+Lp
+Lp
 Tl
-VF
-VF
 VF
 VF
 VF
@@ -24841,16 +24834,16 @@ oF
 Kw
 aZ
 so
+oE
 Lp
 Lp
 Lp
 Lp
 Lp
 Lp
-Lp
-Tl
-VF
-VF
+qK
+SQ
+xT
 VF
 VF
 VF
@@ -25035,15 +25028,15 @@ PS
 Qp
 ZU
 so
-Lp
+oE
 ZL
-Lp
-Lp
-Lp
-Lp
+ye
+qm
+qm
+JT
 ZL
+qK
 Tl
-VF
 VF
 VF
 VF
@@ -25229,15 +25222,15 @@ Sg
 Fx
 aZ
 so
+oE
 Lp
 Lp
 Lp
 Lp
 Lp
 Lp
-Lp
+qK
 Tl
-VF
 VF
 VF
 VF
@@ -25430,8 +25423,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -25624,8 +25617,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -25818,8 +25811,8 @@ Lp
 Lp
 Lp
 Lp
+Lp
 Tl
-VF
 VF
 VF
 VF
@@ -26006,14 +25999,14 @@ Lp
 Lp
 Lp
 Lp
+ZL
 Lp
 Lp
 Lp
 Lp
-Lp
+ZL
 Lp
 Tl
-VF
 VF
 VF
 VF
@@ -26206,8 +26199,8 @@ Lp
 Lp
 Lp
 Lp
-Tl
-VF
+SQ
+xT
 VF
 VF
 VF
@@ -33401,7 +33394,7 @@ Lp
 Lp
 pJ
 Xp
-kf
+Xp
 Xp
 RE
 VF
@@ -33595,7 +33588,7 @@ QL
 Lp
 Lp
 Lp
-gp
+Lp
 Lp
 pJ
 RE
@@ -33789,7 +33782,7 @@ Lp
 oJ
 Lp
 Lp
-gp
+Lp
 Lp
 Lp
 Tl
@@ -33983,7 +33976,7 @@ Lp
 Lp
 Lp
 Lp
-gp
+oJ
 Lp
 Lp
 Tl
@@ -34177,7 +34170,7 @@ Lp
 Lp
 Lp
 Lp
-gp
+Lp
 Lp
 Lp
 pJ
@@ -34371,7 +34364,7 @@ Lp
 Lp
 oJ
 Lp
-gp
+Lp
 Lp
 Lp
 Lp
@@ -34565,9 +34558,9 @@ Lp
 Lp
 Lp
 Lp
-gp
 Lp
 Lp
+oJ
 Lp
 pJ
 RE
@@ -34759,7 +34752,7 @@ jL
 jL
 jL
 jL
-np
+eM
 Lp
 QL
 Lp
