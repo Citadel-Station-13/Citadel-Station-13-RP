@@ -120,7 +120,7 @@
 	if(!linked_pad && map_pad_link_id)
 		initMappedLink()
 	if(linked_pad && !QDELETED(linked_pad))
-		ghost.forceMove(get_turf(linked_pad))
+		ghost.force_move(get_turf(linked_pad))
 
 /obj/machinery/power/quantumpad/proc/doteleport(mob/user)
 	if(!linked_pad)

@@ -39,7 +39,7 @@
 /mob/proc/grab_item_from_interacted_with(obj/item/I, atom/interacted)
 	// TODO: proper MUTATION_TELEKINESIS checks
 	if(!Adjacent(interacted))
-		I.forceMove(interacted.drop_location())
+		I.force_move(interacted.drop_location())
 		return
 	put_in_hands_or_drop(I)
 

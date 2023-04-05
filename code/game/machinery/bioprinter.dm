@@ -199,7 +199,7 @@
 /// Returns TRUE if it succeeds, FALSE if it fails. Added in case someone wants to add messages to the user.
 /obj/machinery/organ_printer/proc/remove_beaker()
 	if(container)
-		container.forceMove(get_turf(src))
+		container.force_move(get_turf(src))
 		container = null
 		return TRUE
 	return FALSE
@@ -284,7 +284,7 @@
 	var/turf/T = get_turf(src)
 	if(T)
 		if(container)
-			container.forceMove(T)
+			container.force_move(T)
 			container = null
 	return ..()
 

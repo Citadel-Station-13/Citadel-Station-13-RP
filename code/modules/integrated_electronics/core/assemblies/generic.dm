@@ -236,7 +236,7 @@
 		to_chat(user, "<span class='warning'>You cannot place \the [src] on this spot!</span>")
 		return
 	if(istype(user, /mob/living/silicon/robot)) //Robots cannot unequip/drop items, for Safety Reasons.
-		forceMove(T)
+		force_move(T)
 	else if(!user.attempt_insert_item_for_installation(src, T))
 		return
 	playsound(src, 'sound/machines/click.ogg', 75, 1)

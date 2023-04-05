@@ -340,7 +340,7 @@
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, newloc)
-		I.forceMove(newloc)
+		I.force_move(newloc)
 		return TRUE
 	return FALSE
 
@@ -356,6 +356,6 @@
 	if(is_in_inventory(I) && considered_removable(I))
 		if(is_in_gripper(I))
 			return unreference_from_gripper(I, drop_location())
-		I.forceMove(drop_location())
+		I.force_move(drop_location())
 		return TRUE
 	return FALSE

@@ -54,7 +54,7 @@
 /mob/living/silicon/ai/LateInitialize()
 	. = ..()
 	if(eyeobj && loc)
-		eyeobj.forceMove(loc)
+		eyeobj.force_move(loc)
 
 /mob/living/silicon/ai/Destroy()
 	destroy_eyeobj()

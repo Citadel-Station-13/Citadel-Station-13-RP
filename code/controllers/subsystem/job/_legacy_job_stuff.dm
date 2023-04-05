@@ -253,7 +253,7 @@
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
 
 		if(istype(S))
-			H.forceMove(S.GetSpawnLoc())
+			H.force_move(S.GetSpawnLoc())
 			S.OnSpawn(H, H.client)
 		else
 			var/list/spawn_props = LateSpawn(H.client, rank)
@@ -262,13 +262,13 @@
 				to_chat(H, SPAN_CRITICAL("You were unable to be spawned at your chosen late-join spawnpoint. Please verify your job/spawn point combination makes sense, and try another one."))
 				return
 			else
-				H.forceMove(S.GetSpawnLoc())
+				H.force_move(S.GetSpawnLoc())
 				S.OnSpawn(H, H.client)
 
 		// Moving wheelchair if they have one
 		if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
-			H.buckled.forceMove(H.loc)
-			H.buckled.setDir(H.dir)
+			H.buckled.force_move(H.loc)
+			H.buckled.set_dir(H.dir)
 
 	if(job)
 
@@ -410,7 +410,7 @@
 			var/obj/structure/bed/chair/wheelchair/W = new wheelchair_type(H.loc)
 			W.buckle_mob(H)
 			H.update_canmove()
-			W.setDir(H.dir)
+			W.set_dir(H.dir)
 			W.add_fingerprint(H)
 			if(R)
 				W.color = R.color

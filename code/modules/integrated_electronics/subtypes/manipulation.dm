@@ -264,14 +264,14 @@
 		if(contents.len < max_items && AM.w_class <= max_w_class)
 			var/atom/A = get_object()
 			A.investigate_log("picked up ([AM]) with [src].", INVESTIGATE_CIRCUIT)
-			AM.forceMove(src)
+			AM.force_move(src)
 
 /obj/item/integrated_circuit/manipulation/grabber/proc/drop(obj/item/AM, turf/T = drop_location())
 	if(!check_target(AM, FALSE, TRUE, TRUE, TRUE))
 		return
 	var/atom/A = get_object()
 	A.investigate_log("dropped ([AM]) from [src].", INVESTIGATE_CIRCUIT)
-	AM.forceMove(T)
+	AM.force_move(T)
 
 /obj/item/integrated_circuit/manipulation/grabber/proc/drop_all()
 	if(contents.len)
@@ -433,7 +433,7 @@
 		//throw it
 		assembly.visible_message("<span class='danger'>[assembly] has thrown [A]!</span>")
 		log_attack("[assembly] [REF(assembly)] has thrown [A] with non-lethal force.")
-		A.forceMove(drop_location())
+		A.force_move(drop_location())
 		A.throw_at_old(locate(x_abs, y_abs, T.z), range, 3, src)
 
 		// If the item came from a grabber now we can update the outputs since we've thrown it.

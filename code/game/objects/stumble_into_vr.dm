@@ -17,7 +17,7 @@
 	visible_message("<span class='warning'>[M] flopped onto \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	M.forceMove(get_turf(src))
+	M.force_move(get_turf(src))
 	M.stop_flying()
 
 /obj/machinery/disposal/stumble_into(mob/living/M)
@@ -25,7 +25,7 @@
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	M.forceMove(src)
+	M.force_move(src)
 	M.update_perspective()
 	M.stop_flying()
 	update()
@@ -48,7 +48,7 @@
 	visible_message("<span class='warning'>[M] flopped onto \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	M.forceMove(get_turf(src))
+	M.force_move(get_turf(src))
 	M.stop_flying()
 
 /obj/structure/c_tray/stumble_into(mob/living/M)
@@ -56,7 +56,7 @@
 	visible_message("<span class='warning'>[M] flopped onto \the [src]!</span>")
 	M.apply_damage(5, BRUTE)
 	M.Weaken(2)
-	M.forceMove(get_turf(src))
+	M.force_move(get_turf(src))
 	M.stop_flying()
 
 /obj/structure/window/stumble_into(mob/living/M)
@@ -74,9 +74,9 @@
 	M.Weaken(2)
 	M.stop_flying()
 	if(get_turf(M) == get_turf(src))
-		M.forceMove(get_step(src, src.dir))
+		M.force_move(get_step(src, src.dir))
 	else
-		M.forceMove(get_turf(src))
+		M.force_move(get_turf(src))
 
 /obj/machinery/door/window/stumble_into(mob/living/M)
 	..()
@@ -122,7 +122,7 @@
 		return ..()
 	playsound(src, 'sound/effects/clang.ogg', 25, 1, -1)
 	visible_message("<span class='warning'>[M] [pick("tripped", "stumbled")] into \the [src]!</span>")
-	M.forceMove(src)
+	M.force_move(src)
 	M.update_perspective()
 	occupant = M
 	isopen = 0

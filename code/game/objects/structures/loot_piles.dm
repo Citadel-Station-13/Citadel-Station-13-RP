@@ -96,7 +96,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 
 			if(loot)
 				searched_by |= user.ckey
-				loot.forceMove(get_turf(src))
+				loot.force_move(get_turf(src))
 				to_chat(L, "<span class='[span]'>You found \a [loot]!</span>")
 				if(loot_depletion)
 					loot_left--

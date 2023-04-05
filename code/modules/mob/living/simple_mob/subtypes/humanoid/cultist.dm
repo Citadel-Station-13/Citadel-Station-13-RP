@@ -183,7 +183,7 @@
 			return FALSE // Hit a wall.
 
 		// Get into the tile.
-		forceMove(T)
+		force_move(T)
 
 
 /mob/living/simple_mob/humanoid/cultist/human/bloodjaunt/should_special_attack(atom/A)

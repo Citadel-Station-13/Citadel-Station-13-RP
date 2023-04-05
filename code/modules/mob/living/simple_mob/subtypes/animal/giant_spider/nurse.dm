@@ -127,14 +127,14 @@
 		fed++
 		visible_message(SPAN_WARNING("\The [src] sticks a proboscis into \the [L], and sucks a viscous substance out."))
 		to_chat(src, SPAN_NOTICE("You've fed upon \the [L], and can now lay [fed] cluster\s of eggs."))
-		L.forceMove(C)
+		L.force_move(C)
 		large_cocoon = TRUE
 		break
 
 	// This part's pretty stupid.
 	for(var/obj/O in C.loc)
 		if(!O.anchored)
-			O.forceMove(C)
+			O.force_move(C)
 
 	// Todo: Put this code on the cocoon object itself?
 	if(large_cocoon)

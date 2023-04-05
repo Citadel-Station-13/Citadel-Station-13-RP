@@ -185,7 +185,7 @@
 		var/turf/placing = locate(ext_panel_x, ext_panel_y, cz)
 		var/obj/structure/lift/button/panel_ext = new(placing, lift)
 		panel_ext.floor = cfloor
-		panel_ext.setDir(udir)
+		panel_ext.set_dir(udir)
 		cfloor.ext_panel = panel_ext
 
         // Place lights
@@ -194,11 +194,11 @@
 		var/obj/machinery/light/light1 = new(placing1)
 		var/obj/machinery/light/light2 = new(placing2)
 		if(udir == NORTH || udir == SOUTH)
-			light1.setDir(WEST)
-			light2.setDir(EAST)
+			light1.set_dir(WEST)
+			light2.set_dir(EAST)
 		else
-			light1.setDir(SOUTH)
-			light2.setDir(NORTH)
+			light1.set_dir(SOUTH)
+			light2.set_dir(NORTH)
 
 		// Update area.
 		if(az > areas_to_use.len)
@@ -217,7 +217,7 @@
 	// Place lift panel.
 	var/turf/T = locate(int_panel_x, int_panel_y, uz)
 	lift.control_panel_interior = new(T, lift)
-	lift.control_panel_interior.setDir(udir)
+	lift.control_panel_interior.set_dir(udir)
 	lift.current_floor = lift.floors[1]
 
 	lift.open_doors()

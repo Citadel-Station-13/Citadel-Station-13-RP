@@ -244,7 +244,7 @@
 		transform = null
 	..()
 
-/obj/effect/overmap/visitable/ship/setDir(new_dir)
+/obj/effect/overmap/visitable/ship/set_dir(new_dir)
 	return ..(NORTH)	// NO! We always face north.
 
 /obj/effect/overmap/visitable/ship/proc/burn()

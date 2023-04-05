@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		LAZYREMOVE(old_area.holopads, src)
 	if(new_area)
 		LAZYADD(new_area.holopads, src)
-	activity_hologram?.forceMove(loc)
+	activity_hologram?.force_move(loc)
 
 //? Holo reach
 
@@ -1064,8 +1064,8 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(density)
 		walk_to(src, T)
 	else
-		setDir(get_dir(src, T))
-		forceMove(T)
+		set_dir(get_dir(src, T))
+		force_move(T)
 
 /obj/effect/overlay/hologram/proc/stop_moving()
 	walk(src, NONE)
@@ -1171,7 +1171,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		on_out_of_bounds()
 
 /obj/effect/overlay/hologram/holopad/on_out_of_bounds()
-	forceMove(get_turf(pad))
+	force_move(get_turf(pad))
 
 /obj/effect/overlay/hologram/holopad/move_to_target(turf/T, kill_on_failure)
 	if(!pad.turf_in_range(T))
@@ -1197,7 +1197,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	drop_vored()
 	// dump shit out just in case
 	for(var/atom/movable/AM as anything in contents)
-		AM.forceMove(loc)
+		AM.force_move(loc)
 	return ..()
 
 /obj/effect/overlay/hologram/holopad/ai/examine(mob/user)
@@ -1217,7 +1217,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return FALSE
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
 	vored = victim
-	victim.forceMove(src)
+	victim.force_move(src)
 	visible_message(SPAN_BOLDWARNING("[src] suddenly materializes around [victim], entirely engulfing them!"))
 	to_chat(user, SPAN_NOTICE("You completely engulf [victim] with your hardlight hologram."))
 	pass_flags = NONE
@@ -1230,7 +1230,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(!vored)
 		return FALSE
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
-	vored.forceMove(drop_location())
+	vored.force_move(drop_location())
 	vored.Weaken(1)
 	visible_message(SPAN_BOLDWARNING("[vored] flops out of [src]."))
 	vored = null

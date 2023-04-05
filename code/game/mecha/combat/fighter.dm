@@ -46,7 +46,7 @@
 
 /obj/mecha/combat/fighter/add_cell(var/obj/item/cell/C=null)
 	if(C)
-		C.forceMove(src)
+		C.force_move(src)
 		cell = C
 		return
 	cell = new(src)
@@ -112,8 +112,8 @@
 	var/choice = input("Choose an overmap destination:", "Destination", null) as null|anything in choices
 	if(!choice)
 		var/backwards = turn(what_edge, 180)
-		forceMove(get_step(src,backwards)) //Move them back a step, then.
-		setDir(backwards)
+		force_move(get_step(src,backwards)) //Move them back a step, then.
+		set_dir(backwards)
 		return
 	else
 		var/obj/effect/overmap/visitable/V = choices[choice]
@@ -130,7 +130,7 @@
 		to_chat(occupant, "<span class='warning'>You don't appear to be able to get there from here! Is it blocked?</span>")
 		return
 	else
-		forceMove(destination)
+		force_move(destination)
 
 //Modified phazon code
 /obj/mecha/combat/fighter/Topic(href, href_list)

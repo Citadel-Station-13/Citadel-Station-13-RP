@@ -86,7 +86,7 @@
 	desc = "The safest way to transport high-risk patients."
 	icon_state = "wheelchair_dolly"
 
-/obj/structure/bed/chair/wheelchair/dolly/setDir()
+/obj/structure/bed/chair/wheelchair/dolly/set_dir()
 	..()
 	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
@@ -94,5 +94,5 @@
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.setDir(dir)
+			L.set_dir(dir)
 */

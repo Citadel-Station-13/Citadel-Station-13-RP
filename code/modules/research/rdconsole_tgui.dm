@@ -626,5 +626,5 @@
 					PR.info += GetResearchLevelsInfo()
 				PR.info_links = PR.info
 				PR.icon_state = "paper_words"
-				PR.forceMove(loc)
+				PR.force_move(loc)
 				busy_msg = null

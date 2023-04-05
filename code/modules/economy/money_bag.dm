@@ -85,7 +85,7 @@
 	if (istype(W, /obj/item/moneybag))
 		var/obj/item/moneybag/C = W
 		for (var/obj/O in C.contents)
-			O.forceMove(src)
+			O.force_move(src)
 		to_chat(user, "<font color=#4F49AF>You empty the [C.name] into the bag.</font>")
 
 /obj/item/moneybag/Topic(href, href_list)

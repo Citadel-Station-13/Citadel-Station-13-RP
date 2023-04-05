@@ -59,7 +59,7 @@
 /datum/component/slaved_atom_to_loc/proc/on_parent_move()
 	var/atom/movable/AM = parent
 	if(slaved)
-		slaved.forceMove(AM.loc)
+		slaved.force_move(AM.loc)
 	else
 		stack_trace("why are we still here?")
 		qdel(src)

@@ -36,7 +36,7 @@
 /obj/item/holder/micro/Destroy()
 	var/turf/here = get_turf(src)
 	for(var/atom/movable/A in src)
-		A.forceMove(here)
+		A.force_move(here)
 	return ..()
 
 /obj/item/holder/micro/sync(var/mob/living/M)

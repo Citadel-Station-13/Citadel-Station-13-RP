@@ -86,7 +86,7 @@ var/list/infomorph_emotions = list(
 /mob/living/silicon/infomorph/Initialize(mapload, obj/item/sleevecard/SC, name = "Unknown")
 	ASSERT(SC)
 	name = "[initial(name)] ([name])"
-	src.forceMove(SC)
+	src.force_move(SC)
 	card = SC
 	sradio = new(src)
 	translator = new(src)
@@ -161,7 +161,7 @@ var/list/infomorph_emotions = list(
 			src.loc = get_turf(card)
 			qdel(card)
 		if(card in src)
-			card.forceMove(get_turf(src))
+			card.force_move(get_turf(src))
 
 	card = null
 	..(gibbed,message)
@@ -240,8 +240,8 @@ var/list/infomorph_emotions = list(
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.eye = src
 	*/
-	forceMove(get_turf(card))
-	card.forceMove(src)
+	force_move(get_turf(card))
+	card.force_move(src)
 	card.screen_loc = null
 
 	var/turf/T = get_turf(src)
@@ -283,12 +283,12 @@ var/list/infomorph_emotions = list(
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		H.forceMove(get_turf(src))
-		forceMove(H.loc)
+		H.force_move(get_turf(src))
+		force_move(H.loc)
 
 	// Move us into the card and move the card to the ground.
-	card.forceMove(get_turf(src))
-	forceMove(card)
+	card.force_move(get_turf(src))
+	force_move(card)
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"

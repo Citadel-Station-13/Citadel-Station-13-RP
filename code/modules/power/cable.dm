@@ -143,7 +143,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 
 // Rotating cables requires d1 and d2 to be rotated
-/obj/structure/cable/setDir(new_dir)
+/obj/structure/cable/set_dir(new_dir)
 	SHOULD_CALL_PARENT(FALSE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
 	if(powernet)

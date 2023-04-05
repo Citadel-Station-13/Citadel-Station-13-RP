@@ -344,7 +344,7 @@
 
 		if("eject")
 			if(reagent_glass)
-				reagent_glass.forceMove(get_turf(src))
+				reagent_glass.force_move(get_turf(src))
 				reagent_glass = null
 			. = TRUE
 

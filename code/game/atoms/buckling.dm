@@ -175,14 +175,14 @@
 /atom/movable/proc/_buckle_mob(mob/M, flags, mob/user, semantic)
 	PRIVATE_PROC(TRUE)
 	if(M.loc != loc)
-		M.forceMove(loc)
+		M.force_move(loc)
 	if(M.buckled)
 		. = FALSE
 		CRASH("M already buckled?")
 	M.buckled = src
 	LAZYINITLIST(buckled_mobs)
 	buckled_mobs[M] = semantic
-	M.setDir(dir)
+	M.set_dir(dir)
 	M.update_canmove()
 	// todo: refactor the below
 	M.update_floating(M.Check_Dense_Object())

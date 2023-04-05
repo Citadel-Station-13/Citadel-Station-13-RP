@@ -44,7 +44,7 @@
 /obj/item/ammo_casing/proc/expend()
 	. = stored
 	stored = FALSE
-	setDir(pick(GLOB.cardinal)) //spin spent casings
+	set_dir(pick(GLOB.cardinal)) //spin spent casings
 	update_icon()
 
 /obj/item/ammo_casing/screwdriver_act(obj/item/I, mob/user, flags, hint)

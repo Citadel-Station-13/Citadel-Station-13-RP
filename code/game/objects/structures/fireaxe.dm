@@ -119,7 +119,7 @@
 
 /obj/structure/fireaxecabinet/attack_tk(mob/user as mob)
 	if(open && fireaxe)
-		fireaxe.forceMove(loc)
+		fireaxe.force_move(loc)
 		to_chat(user, "<span class='notice'>You telekinetically remove the fire axe.</span>")
 		fireaxe = null
 		update_icon()

@@ -4,14 +4,14 @@
 	/// Movable-level Z-Mimic flags. This uses ZMM_* flags, not ZM_* flags.
 	var/zmm_flags = NONE
 
-/atom/movable/forceMove(atom/dest)
+/atom/movable/force_move(atom/dest)
 	. = ..(dest)
 	if (. && bound_overlay)
 		// The overlay will handle cleaning itself up on non-openspace turfs.
 		if (isturf(dest))
-			bound_overlay.forceMove(get_step(src, UP))
+			bound_overlay.force_move(get_step(src, UP))
 			if (dir != bound_overlay.dir)
-				bound_overlay.setDir(dir)
+				bound_overlay.set_dir(dir)
 		else	// Not a turf, so we need to destroy immediately instead of waiting for the destruction timer to proc.
 			qdel(bound_overlay)
 
@@ -21,10 +21,10 @@
 		return
 
 	if (bound_overlay)
-		bound_overlay.forceMove(get_step(src, UP))
-		// forceMove could've deleted our overlay
+		bound_overlay.force_move(get_step(src, UP))
+		// force_move could've deleted our overlay
 		if (bound_overlay && bound_overlay.dir != dir)
-			bound_overlay.setDir(dir)
+			bound_overlay.set_dir(dir)
 
 	if (light_source_solo)
 		light_source_solo.source_atom.update_light()
@@ -35,10 +35,10 @@
 			L = thing
 			L.source_atom.update_light()
 
-/atom/movable/setDir(ndir)
+/atom/movable/set_dir(ndir)
 	. = ..()
 	if (. && bound_overlay)
-		bound_overlay.setDir(ndir)
+		bound_overlay.set_dir(ndir)
 
 /atom/movable/update_above()
 	if (!bound_overlay || !isturf(loc))
@@ -180,7 +180,7 @@
 	SHOULD_CALL_PARENT(FALSE)
 	. = associated_atom.examine(arglist(args))	// just pass all the args to the copied atom
 
-/atom/movable/openspace/mimic/forceMove(turf/dest)
+/atom/movable/openspace/mimic/force_move(turf/dest)
 	. = ..()
 	if (MOVABLE_IS_BELOW_ZTURF(associated_atom))
 		if (destruction_timer)

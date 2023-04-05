@@ -179,7 +179,7 @@
 			O = new recipe.result_type(user.drop_location(), recipe.use_material)
 		else
 			O = new recipe.result_type(user.drop_location())
-		O.setDir(user.dir)
+		O.set_dir(user.dir)
 		O.add_fingerprint(user)
 
 		if (istype(O, /obj/item/storage)) //BubbleWrap - so newly formed boxes are empty
@@ -442,7 +442,7 @@
 	F.copy_evidences(src)
 	if(user)
 		if(!user.put_in_hands(F, INV_OP_NO_MERGE_STACKS))
-			F.forceMove(user.drop_location())
+			F.force_move(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
 	zero_amount()

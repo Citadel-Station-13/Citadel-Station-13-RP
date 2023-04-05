@@ -111,7 +111,7 @@
 				Fail("could not find a space turf for testing")
 				return
 			else
-				pred.forceMove(T)
+				pred.force_move(T)
 
 		// Okay, we succeeded in eating them, now lets wait a bit
 		startLifeTick = pred.life_tick

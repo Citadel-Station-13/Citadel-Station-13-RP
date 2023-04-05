@@ -42,13 +42,13 @@
 		if(L.pulling)
 			var/atom/movable/P = L.pulling
 			L.stop_pulling()
-			P.forceMove(T)
-			L.forceMove(T)
+			P.force_move(T)
+			L.force_move(T)
 			L.start_pulling(P)
 		else
-			L.forceMove(T)
+			L.force_move(T)
 	else
-		AM.forceMove(T)
+		AM.force_move(T)
 
 /obj/effect/lavaland_exitportal // effect so it cant be removed by griefers
 	name = "Magmatic Rift Teleporter"
@@ -76,13 +76,13 @@
 		if(L.pulling)
 			var/atom/movable/P = L.pulling
 			L.stop_pulling()
-			P.forceMove(T)
-			L.forceMove(T)
+			P.force_move(T)
+			L.force_move(T)
 			L.start_pulling(P)
 		else
-			L.forceMove(T)
+			L.force_move(T)
 	else
-		AM.forceMove(T)
+		AM.force_move(T)
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

@@ -153,7 +153,7 @@
 		T2 = T
 		var/obj/machinery/shieldwall/CF = new/obj/machinery/shieldwall/(T, src, G) //(ref to this gen, ref to connected gen)
 		CF.loc = T
-		CF.setDir(field_dir)
+		CF.set_dir(field_dir)
 
 
 /obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user)

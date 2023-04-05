@@ -407,7 +407,7 @@
 				if(ismob(user) && isitem(result)) //In case the user is actually possessing a non mob like a machine
 					user.put_in_hands(result)
 				else
-					result.forceMove(user.drop_location())
+					result.force_move(user.drop_location())
 				to_chat(user, "<span class='notice'>[TR.name] constructed.</span>")
 			else
 				to_chat(user, "<span class='warning'>Construction failed[result]</span>")

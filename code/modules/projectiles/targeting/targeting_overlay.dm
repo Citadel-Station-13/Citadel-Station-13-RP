@@ -131,7 +131,7 @@
 	else
 		cancel_aim = 0
 
-	forceMove(get_turf(aiming_at))
+	force_move(get_turf(aiming_at))
 
 	if(cancel_aim)
 		cancel_aiming()
@@ -139,7 +139,7 @@
 
 	if(!owner.incapacitated() && owner.client)
 		spawn(0)
-			owner.setDir(get_dir(get_turf(owner), get_turf(src)))
+			owner.set_dir(get_dir(get_turf(owner), get_turf(src)))
 
 /obj/aiming_overlay/proc/aim_at(var/mob/target, var/obj/thing)
 
@@ -176,7 +176,7 @@
 	aiming_at = target
 	if(istype(aiming_with, /obj/item/gun))
 		playsound(get_turf(owner), 'sound/weapons/TargetOn.ogg', 50,1)
-	forceMove(get_turf(target))
+	force_move(get_turf(target))
 	START_PROCESSING(SSobj, src)
 
 	aiming_at.aimed |= src

@@ -69,11 +69,11 @@
 
 	// List of components always contains the circuit board used to build it.
 	// M.component_parts = list(src)
-	// forceMove(M)
+	// force_move(M)
 
 	// we're on shitty old code, circuit isn't part of component parts yet.
 	M.component_parts = list()
-	forceMove(M)
+	force_move(M)
 
 	if(M.circuit != src)
 		// This really shouldn't happen. If it somehow does, print out a stack trace and gracefully handle it.

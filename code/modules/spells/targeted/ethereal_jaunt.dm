@@ -33,7 +33,7 @@
 			if(target.buckled)
 				target.buckled = null
 			jaunt_disappear(animation, target)
-			target.forceMove(holder)
+			target.force_move(holder)
 			target.transforming=0 //mob is safely inside holder now, no need for protection.
 			jaunt_steam(mobloc)
 			sleep(duration)
@@ -45,11 +45,11 @@
 			sleep(20)
 			jaunt_reappear(animation, target)
 			sleep(5)
-			if(!target.forceMove(mobloc))
+			if(!target.force_move(mobloc))
 				for(var/direction in list(1,2,4,8,5,6,9,10))
 					var/turf/T = get_step(mobloc, direction)
 					if(T)
-						if(target.forceMove(T))
+						if(target.force_move(T))
 							break
 			target.update_perspective()
 			target.canmove = 1

@@ -139,22 +139,22 @@
 	if(helmet)
 		REMOVE_TRAIT(helmet, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 		if(helmet.loc != src)
-			helmet.forceMove(src)
+			helmet.force_move(src)
 
 	if(boots)
 		REMOVE_TRAIT(boots, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 		if(boots.loc != src)
-			boots.forceMove(src)
+			boots.force_move(src)
 
 	if(tank)
 		REMOVE_TRAIT(tank, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 		if(tank.loc != src)
-			tank.forceMove(src)
+			tank.force_move(src)
 
 	if(cooler)
 		REMOVE_TRAIT(cooler, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 		if(cooler.loc != src)
-			cooler.forceMove(src)
+			cooler.force_move(src)
 
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
@@ -180,7 +180,7 @@
 	if(H.head == helmet)
 		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
 		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
-		helmet.forceMove(src)
+		helmet.force_move(src)
 		REMOVE_TRAIT(helmet, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
 	else
 		if(H.head)
@@ -216,7 +216,7 @@
 	if(H.shoes == boots)
 		to_chat(H, "<span class='notice'>You retract your magboots.</span>")
 		REMOVE_TRAIT(boots, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
-		boots.forceMove(src)
+		boots.force_move(src)
 	else
 		if(H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
 			ADD_TRAIT(boots, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
@@ -260,7 +260,7 @@
 		cooler = null
 	to_chat(H, "<span class='info'>You press the emergency release, ejecting \the [removing] from your suit.</span>")
 	REMOVE_TRAIT(removing, TRAIT_ITEM_NODROP, TOGGLE_CLOTHING_TRAIT)
-	removing.forceMove(drop_location())
+	removing.force_move(drop_location())
 
 /obj/item/clothing/suit/space/void/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -280,25 +280,25 @@
 
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
-				tank.forceMove(get_turf(src))
+				tank.force_move(get_turf(src))
 				tank.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.tank = null
 			else if(choice == cooler)
 				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
-				cooler.forceMove(get_turf(src))
+				cooler.force_move(get_turf(src))
 				cooler.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
-				helmet.forceMove(get_turf(src))
+				helmet.force_move(get_turf(src))
 				helmet.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
 				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
-				boots.forceMove(get_turf(src))
+				boots.force_move(get_turf(src))
 				boots.clothing_flags &= ~CLOTHING_IGNORE_DELIMB
 				playsound(src, W.tool_sound, 50, 1)
 				src.boots = null

@@ -43,10 +43,10 @@
 
 		H.update_hud_med_all()
 
-		H.handcuffed?.forceMove(drop_location())
-		H.legcuffed?.forceMove(drop_location())
+		H.handcuffed?.force_move(drop_location())
+		H.legcuffed?.force_move(drop_location())
 		if(istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket))
-			H.wear_suit.forceMove(drop_location())
+			H.wear_suit.force_move(drop_location())
 
 	C.halloss = 0
 	C.shock_stage = 0 //Pain

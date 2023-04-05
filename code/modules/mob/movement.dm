@@ -41,7 +41,7 @@
 			if(!mob.control_object)	return
 			mob.control_object.dir = direct
 		else
-			mob.control_object.forceMove(get_step(mob.control_object,direct))
+			mob.control_object.force_move(get_step(mob.control_object,direct))
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -321,7 +321,7 @@
 	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(GLOB.reverse_dir[direct])
+			mob.set_dir(GLOB.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
@@ -356,7 +356,7 @@
 	if(.)
 		throwing?.terminate()
 	if(pulling && !ismob(pulling) && pulling.density)
-		setDir(turn(dir, 180))	// face pulling
+		set_dir(turn(dir, 180))	// face pulling
 
 ///Process_Incorpmove
 ///Called by client/Move()
@@ -369,8 +369,8 @@
 			var/turf/T = get_step(mob, direct)
 			if(!T)
 				return
-			mob.forceMove(get_step(mob, direct))
-			mob.setDir(direct)
+			mob.force_move(get_step(mob, direct))
+			mob.set_dir(direct)
 		if(2)
 			if(prob(50))
 				var/locx
@@ -398,7 +398,7 @@
 							return
 					else
 						return
-				mob.forceMove(locate(locx,locy,mobloc.z))
+				mob.force_move(locate(locx,locy,mobloc.z))
 				spawn(0)
 					var/limit = 2//For only two trailing shadows.
 					for(var/turf/T in getline(mobloc, mob.loc))
@@ -409,7 +409,7 @@
 			else
 				spawn(0)
 					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
-				mob.forceMove(get_step(mob, direct))
+				mob.force_move(get_step(mob, direct))
 			mob.dir = direct
 	// Crossed is always a bit iffy
 	for(var/obj/S in mob.loc)
@@ -543,7 +543,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	setDir(EAST)
+	set_dir(EAST)
 	last_turn = world.time
 	return TRUE
 
@@ -553,7 +553,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	setDir(WEST)
+	set_dir(WEST)
 	last_turn = world.time
 	return TRUE
 
@@ -563,7 +563,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	setDir(NORTH)
+	set_dir(NORTH)
 	last_turn = world.time
 	return TRUE
 
@@ -573,7 +573,7 @@
 	set src = usr
 	if(!canface())
 		return FALSE
-	setDir(SOUTH)
+	set_dir(SOUTH)
 	last_turn = world.time
 	return TRUE
 

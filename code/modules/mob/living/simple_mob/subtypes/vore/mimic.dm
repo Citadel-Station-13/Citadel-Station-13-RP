@@ -30,7 +30,7 @@
 		if(prob(mimic_chance))
 			var/mob/living/simple_mob/vore/aggressive/mimic/new_mimic = new(loc, src)
 			visible_message("<font color='red'><b>The [new_mimic] suddenly growls as it turns out to be a mimic!</b></font>") //Controls the vars of the mimic that spawns
-			forceMove(new_mimic)
+			force_move(new_mimic)
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
@@ -132,7 +132,7 @@
 /mob/living/simple_mob/vore/aggressive/mimic/death()
 	..()
 	if(real_crate)
-		real_crate.forceMove(loc)
+		real_crate.force_move(loc)
 	real_crate = null
 	qdel(src)
 
@@ -160,7 +160,7 @@
 		if(prob(mimic_chance))
 			var/mob/living/simple_mob/vore/aggressive/mimic/airlock/new_mimic = new(loc, src)
 			visible_message("<font color='red'><b>The [new_mimic] suddenly growls as it turns out to be a mimic!</b></font>") //Controls the vars of the mimic that spawns
-			forceMove(new_mimic)
+			force_move(new_mimic)
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
@@ -254,7 +254,7 @@
 		if(prob(mimic_chance))
 			var/mob/living/simple_mob/vore/aggressive/mimic/closet/new_mimic = new(loc, src)
 			visible_message("<font color='red'><b>The [new_mimic] suddenly growls as it turns out to be a mimic!</b></font>") //Controls the mimic that spawns
-			forceMove(new_mimic)
+			force_move(new_mimic)
 			new_mimic.real_crate = src
 			new_mimic.name = name
 			new_mimic.desc = desc
@@ -322,7 +322,7 @@
 /mob/living/simple_mob/vore/aggressive/mimic/closet/death()
 	..()
 	if(real_crate)
-		real_crate.forceMove(loc)
+		real_crate.force_move(loc)
 	real_crate = null
 	qdel(src)
 

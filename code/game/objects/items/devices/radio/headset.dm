@@ -502,11 +502,11 @@
 	if(istype(target,/mob/living/simple_mob))
 		var/mob/living/simple_mob/M = target
 		if(!M.mob_radio)
-			forceMove(M)
+			force_move(M)
 			M.mob_radio = src
 			return
 		if(M.mob_radio)
-			M.mob_radio.forceMove(M.loc)
+			M.mob_radio.force_move(M.loc)
 			M.mob_radio = null
 			return
 	..()

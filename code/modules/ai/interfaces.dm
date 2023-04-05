@@ -89,7 +89,7 @@
 
 		. = SelfMove(newloc) ? MOVEMENT_SUCCESSFUL : MOVEMENT_FAILED
 		if(. == MOVEMENT_SUCCESSFUL)
-			setDir(get_dir(old_T, newloc))
+			set_dir(get_dir(old_T, newloc))
 			// Apply movement delay.
 			// Player movement has more factors but its all in the client and fixing that would be its own project.
 			applyMoveCooldown(movement_delay())

@@ -110,7 +110,7 @@
 		update_icon()
 	if(inserted_id && !powered())
 		visible_message("<span class='notice'>The ID slot indicator light flickers on \the [src] as it spits out a card before powering down.</span>")
-		inserted_id.forceMove(get_turf(src))
+		inserted_id.force_move(get_turf(src))
 
 /obj/machinery/mineral/equipment_vendor/update_icon()
 	if(panel_open)
@@ -160,7 +160,7 @@
 					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
 				else
-					inserted_id.forceMove(get_turf(src))
+					inserted_id.force_move(get_turf(src))
 					inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()
@@ -219,7 +219,7 @@
 
 /obj/machinery/mineral/equipment_vendor/dismantle()
 	if(inserted_id)
-		inserted_id.forceMove(loc) //Prevents deconstructing the ORM from deleting whatever ID was inside it.
+		inserted_id.force_move(loc) //Prevents deconstructing the ORM from deleting whatever ID was inside it.
 	. = ..()
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)

@@ -43,7 +43,7 @@
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
-	setDir(SOUTH)
+	set_dir(SOUTH)
 	pixel_y = 0
 
 /obj/item/retail_scanner/attack_self(mob/user)

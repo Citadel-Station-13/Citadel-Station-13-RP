@@ -76,9 +76,9 @@
 
 /obj/item/flashlight/proc/set_flashlight()
 	if(light_wedge)
-		setDir(pick(NORTH, SOUTH, EAST, WEST))
+		set_dir(pick(NORTH, SOUTH, EAST, WEST))
 		if(spawn_dir)
-			setDir(spawn_dir)
+			set_dir(spawn_dir)
 	if (on)
 		if(brightness_level == "low")
 			set_light(flashlight_range/2, flashlight_power*0.75, light_color)

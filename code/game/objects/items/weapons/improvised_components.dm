@@ -182,7 +182,7 @@
 		if(put_in_hands)
 			user.put_in_hands_or_drop(sledge)
 		else
-			sledge.forceMove(drop_location())
+			sledge.force_move(drop_location())
 		qdel(src)
 		return
 

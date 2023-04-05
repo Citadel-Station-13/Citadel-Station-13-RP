@@ -41,7 +41,7 @@
 		return FALSE
 	if(!silent)
 		M.visible_message("<span class='notice'>[M] climbs into \the [src]!</span>")
-	M.forceMove(src)
+	M.force_move(src)
 	add_occupant(M)
 	return TRUE
 
@@ -54,7 +54,7 @@
 		return FALSE
 	remove_occupant(M)
 	if(!isAI(M))//This is the ONE mob we dont want to be moved to the vehicle that should be handeled when used
-		M.forceMove(exit_location(M))
+		M.force_move(exit_location(M))
 	if(randomstep)
 		var/turf/target_turf = get_step(exit_location(M), pick(GLOB.cardinal))
 		M.throw_at(target_turf, 5, 10)
@@ -73,7 +73,7 @@
 			return
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		if(inserted_key)	//just in case there's an invalid key
-			inserted_key.forceMove(drop_location())
+			inserted_key.force_move(drop_location())
 		inserted_key = I
 		return
 	return ..()
@@ -86,7 +86,7 @@
 		to_chat(user, "<span class='notice'>You must be driving [src] to remove [src]'s key!</span>")
 		return
 	to_chat(user, "<span class='notice'>You remove [inserted_key] from [src].</span>")
-	inserted_key.forceMove(drop_location())
+	inserted_key.force_move(drop_location())
 	user.put_in_hands(inserted_key)
 	inserted_key = null
 
@@ -114,8 +114,8 @@
 /obj/vehicle/sealed/AllowDrop()
 	return FALSE
 
-/obj/vehicle/sealed/setDir(newdir)
+/obj/vehicle/sealed/set_dir(newdir)
 	. = ..()
 	for(var/k in occupants)
 		var/mob/M = k
-		M.setDir(newdir)
+		M.set_dir(newdir)

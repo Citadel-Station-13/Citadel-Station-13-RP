@@ -110,7 +110,7 @@
 	// newly equipped
 	var/atom/oldLoc = I.loc
 	if(I.loc != src)
-		I.forceMove(src)
+		I.force_move(src)
 	if(I.loc != src)
 		return FALSE
 	I.pickup(src, flags, oldLoc)

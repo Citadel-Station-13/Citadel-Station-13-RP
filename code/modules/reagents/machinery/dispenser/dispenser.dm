@@ -377,7 +377,7 @@
 				user.action_feedback(SPAN_WARNING("[I] is stuck to your hand."), src)
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!insert_cartridge(I))
-				I.forceMove(drop_location())
+				I.force_move(drop_location())
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			user.visible_action_feedback(SPAN_NOTICE("[user] inserts [I] into [src]."), src, range = MESSAGE_RANGE_CONSTRUCTION)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
@@ -434,7 +434,7 @@
 		inserted = I
 		SStgui.update_uis(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
-		
+
 	return ..()
 
 /obj/machinery/chemical_dispenser/proc/check_reagent_id(id)
@@ -446,7 +446,7 @@
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart, atom/where = drop_location())
 	ASSERT(cart in cartridges)
 	LAZYREMOVE(cartridges, cart)
-	cart.forceMove(where)
+	cart.force_move(where)
 	update_static_data()
 
 /obj/machinery/chemical_dispenser/proc/insert_cartridge(obj/item/reagent_containers/cartridge/dispenser/cart)
@@ -456,7 +456,7 @@
 		if(other.label == cart.label)
 			CRASH("collision on label.")
 	LAZYADD(cartridges, cart)
-	cart.forceMove(src)
+	cart.force_move(src)
 	update_static_data()
 	return TRUE
 

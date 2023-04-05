@@ -52,7 +52,7 @@
 			return
 		var/mob/L = A
 		user.visible_message("<span class='notice'>[user] snatches [L] with \the [src].</span>", "<span class='notice'>You snatch [L] with \the [src].</span>")
-		L.forceMove(src)
+		L.force_move(src)
 		update_icon()
 		update_weight()
 		return
@@ -63,10 +63,10 @@
 	if(.)
 		return
 	for(var/mob/M in src)
-		M.forceMove(get_turf(src))
+		M.force_move(get_turf(src))
 		user.visible_message("<span class='notice'>[user] releases [M] from \the [src].</span>", "<span class='notice'>You release [M] from \the [src].</span>")
 	for(var/obj/item/I in src)
-		I.forceMove(get_turf(src))
+		I.force_move(get_turf(src))
 		user.visible_message("<span class='notice'>[user] dumps \the [I] out of \the [src].</span>", "<span class='notice'>You dump \the [I] out of \the [src].</span>")
 	update_icon()
 	update_weight()

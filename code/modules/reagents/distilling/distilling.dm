@@ -159,12 +159,12 @@
 
 		if("eject input")
 			if(InputBeaker)
-				InputBeaker.forceMove(get_turf(src))
+				InputBeaker.force_move(get_turf(src))
 				InputBeaker = null
 
 		if("eject output")
 			if(OutputBeaker)
-				OutputBeaker.forceMove(get_turf(src))
+				OutputBeaker.force_move(get_turf(src))
 				OutputBeaker = null
 
 		if("adjust temp")

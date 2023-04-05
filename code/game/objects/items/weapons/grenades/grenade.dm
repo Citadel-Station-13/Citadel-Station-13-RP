@@ -37,7 +37,7 @@
 		spawn(det_time)
 			detonate()
 			return
-		user.setDir(get_dir(user, target))
+		user.set_dir(get_dir(user, target))
 		user.drop_item()
 		var/t = (isturf(target) ? target : target.loc)
 		walk_towards(src, t, 3)

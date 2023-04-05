@@ -203,7 +203,7 @@
 			temp = null
 		if("scan")
 			if(scan)
-				scan.forceMove(loc)
+				scan.force_move(loc)
 				if(ishuman(usr) && !usr.get_active_held_item())
 					usr.put_in_hands(scan)
 				scan = null
@@ -241,7 +241,7 @@
 		switch(action)
 			if("logout")
 				if(scan)
-					scan.forceMove(loc)
+					scan.force_move(loc)
 					if(ishuman(usr) && !usr.get_active_held_item())
 						usr.put_in_hands(scan)
 					scan = null

@@ -47,10 +47,10 @@
 
 /obj/machinery/bomb_tester/dismantle()
 	if(tank1)
-		tank1.forceMove(get_turf(src))
+		tank1.force_move(get_turf(src))
 		tank1 = null
 	if(tank2)
-		tank2.forceMove(get_turf(src))
+		tank2.force_move(get_turf(src))
 		tank2 = null
 	simulation_finish(1)
 	return ..()
@@ -179,7 +179,7 @@
 					tank1 = null
 				if(T == tank2)
 					tank2 = null
-				T.forceMove(get_turf(src))
+				T.force_move(get_turf(src))
 				update_icon()
 			return TRUE
 

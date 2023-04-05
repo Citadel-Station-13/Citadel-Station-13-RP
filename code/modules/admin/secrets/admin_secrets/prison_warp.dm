@@ -21,7 +21,7 @@
 			//strip their stuff before they teleport into a cell :downs:
 			H.drop_inventory(TRUE, TRUE, TRUE)
 			//teleport person to cell
-			H.forceMove(pick(prisonwarp))
+			H.force_move(pick(prisonwarp))
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/color/prison(H), SLOT_ID_UNIFORM)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), SLOT_ID_SHOES)
 		else

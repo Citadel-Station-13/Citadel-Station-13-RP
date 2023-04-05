@@ -97,7 +97,7 @@
 		var/obj/item/stack/rods/R = W
 		R.use(1)
 		var/obj/item/flamethrower/F = new /obj/item/flamethrower(user.drop_location())
-		forceMove(F)
+		force_move(F)
 		F.weldtool = src
 		master = F
 		reset_plane_and_layer()

@@ -107,7 +107,7 @@
 
 	icon_state = icon_state_opened
 
-	H.forceMove(T)
+	H.force_move(T)
 
 	if(make_antag)
 		var/datum/antagonist/antag = GLOB.all_antag_types[make_antag]
@@ -227,7 +227,7 @@
 
 	icon_state = icon_state_opened
 
-	H.forceMove(T)
+	H.force_move(T)
 
 	if(make_antag)
 		var/datum/antagonist/antag = GLOB.all_antag_types[make_antag]

@@ -47,7 +47,7 @@
 			return 0
 
 		//Teleporting time.
-		user.forceMove(tele_target)
+		user.force_move(tele_target)
 		var/new_dir = get_dir(user, chosen_target)
 		user.dir = new_dir
 		sparks.start()

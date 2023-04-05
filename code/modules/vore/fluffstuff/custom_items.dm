@@ -1034,7 +1034,7 @@
 	phase_out(target,get_turf(target))
 
 	//Move them
-	target.forceMove(real_dest)
+	target.force_move(real_dest)
 
 	//Phase-in effect
 	phase_in(target,get_turf(target))
@@ -1047,7 +1047,7 @@
 			phase_out(G.affecting,get_turf(G.affecting))
 
 			//Move them, and televore if necessary
-			G.affecting.forceMove(real_dest)
+			G.affecting.force_move(real_dest)
 			if(televored)
 				to_chat(target,"<span class='warning'>\The [src] teleports you right into \a [lowertext(real_dest.name)]!</span>")
 

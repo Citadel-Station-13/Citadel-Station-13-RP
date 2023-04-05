@@ -83,15 +83,15 @@
 
 				if(movement_target)		//Not redundant due to sleeps, Item can be gone in 6 decisecomds
 					if (movement_target.loc.x < src.x)
-						setDir(WEST)
+						set_dir(WEST)
 					else if (movement_target.loc.x > src.x)
-						setDir(EAST)
+						set_dir(EAST)
 					else if (movement_target.loc.y < src.y)
-						setDir(SOUTH)
+						set_dir(SOUTH)
 					else if (movement_target.loc.y > src.y)
-						setDir(NORTH)
+						set_dir(NORTH)
 					else
-						setDir(SOUTH)
+						set_dir(SOUTH)
 
 					if(isturf(movement_target.loc) )
 						UnarmedAttack(movement_target)

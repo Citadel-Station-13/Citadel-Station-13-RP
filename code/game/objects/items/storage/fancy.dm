@@ -276,7 +276,7 @@
 		// UI updates.
 		remove_from_storage(cig, null)
 		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
-			cig.forceMove(user.drop_location())
+			cig.force_move(user.drop_location())
 
 		reagents.maximum_volume = 15 * contents.len
 		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")

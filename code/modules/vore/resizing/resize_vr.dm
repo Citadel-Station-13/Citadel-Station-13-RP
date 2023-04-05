@@ -356,7 +356,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 		if(INTENT_HARM)
 			// If bigger than them by at least 0.75, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.75)
-				forceMove(tmob.loc)
+				force_move(tmob.loc)
 
 				//Precalculate base damage
 				var/size_damage_multiplier = (src.size_multiplier - tmob.size_multiplier)
@@ -419,7 +419,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 			// If bigger than them by at least 0.50, move onto them and print message.
 			if((get_effective_size() - tmob.get_effective_size()) >= 0.50)
 				tmob.resting = 1
-				forceMove(tmob.loc)
+				force_move(tmob.loc)
 
 				//Not a human, or not a taur while wearing shoes = no grab
 				if(!H || (!isTaurTail(H.tail_style) && H.shoes))

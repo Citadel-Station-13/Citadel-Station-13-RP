@@ -23,7 +23,7 @@
 
 /obj/effect/overmap/bluespace_rift/proc/take_this(atom/movable/AM)
 	paused = TRUE
-	AM.forceMove(get_turf(src))
+	AM.force_move(get_turf(src))
 	paused = FALSE
 
 /obj/effect/overmap/bluespace_rift/Crossed(atom/movable/AM)
@@ -38,7 +38,7 @@
 		if(response == "Make Here")
 			new type(get_turf(user), src)
 	else if(partner)
-		user.forceMove(get_turf(partner))
+		user.force_move(get_turf(partner))
 		to_chat(user, SPAN_NOTICE("Your ghostly form is pulled through the rift!"))
 	else
 		return ..()

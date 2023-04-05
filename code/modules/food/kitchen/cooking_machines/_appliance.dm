@@ -273,14 +273,14 @@
 	if (istype(I, /obj/item/reagent_containers/cooking_container) && CI == 1)
 		var/obj/item/reagent_containers/cooking_container/CC = I
 		CI = new /datum/cooking_item/(CC)
-		I.forceMove(src)
+		I.force_move(src)
 		cooking_objs.Add(CI)
 		user.visible_message("<span class='notice'>\The [user] puts \the [I] into \the [src].</span>")
 		if (CC.check_contents() == 0)//If we're just putting an empty container in, then dont start any processing.
 			return
 	else
 		if (CI && istype(CI))
-			I.forceMove(CI.container)
+			I.force_move(CI.container)
 
 		else //Something went wrong
 			return
@@ -402,20 +402,20 @@
 		var/obj/temp = new /obj(src) //To prevent infinite loops, all results will be moved into a temporary location so they're not considered as inputs for other recipes
 
 		for (var/atom/movable/AM in results)
-			AM.forceMove(temp)
+			AM.force_move(temp)
 
 		//making multiple copies of a recipe from one container. For example, tons of fries
 		while (select_recipe(available_recipes,C) == recipe)
 			var/list/TR = list()
 			TR += recipe.make_food(C)
 			for (var/atom/movable/AM in TR) //Move results to buffer
-				AM.forceMove(temp)
+				AM.force_move(temp)
 			results += TR
 
 
 		for (var/r in results)
 			var/obj/item/reagent_containers/food/snacks/R = r
-			R.forceMove(C) //Move everything from the buffer back to the container
+			R.force_move(C) //Move everything from the buffer back to the container
 			if(!LAZYLEN(R.cooked))
 				R.cooked = list()
 			R.cooked |= cook_type
@@ -585,7 +585,7 @@
 	else//If the container is empty OR contains more than one thing, then we must extract the container
 		thing = CI.container
 	if (!user || !user.put_in_hands(thing))
-		thing.forceMove(get_turf(src))
+		thing.force_move(get_turf(src))
 
 	if (delete)
 		cooking_objs -= CI

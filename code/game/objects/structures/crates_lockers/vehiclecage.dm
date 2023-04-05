@@ -76,7 +76,7 @@
 							 "<span class='notice'>You load \the [V] into \the [src].</span>", \
 							 "<span class='notice'>You hear creaking metal.</span>")
 
-	V.forceMove(src)
+	V.force_move(src)
 
 	paint_color = V.paint_color
 
@@ -88,7 +88,7 @@
 
 	for(var/atom/movable/AM in contents)
 		if(!(AM.atom_flags & ATOM_ABSTRACT))
-			AM.forceMove(T)
+			AM.force_move(T)
 
 	my_vehicle = null
 	user.visible_message("<span class='notice'>[user] release \the [src].</span>", \

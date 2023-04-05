@@ -78,7 +78,7 @@
 
 /obj/mecha/combat/gygax/dark/add_cell(var/obj/item/cell/C=null)
 	if(C)
-		C.forceMove(src)
+		C.force_move(src)
 		cell = C
 		return
 	cell = new(src)

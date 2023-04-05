@@ -82,7 +82,7 @@
 			var/predir = AM.dir
 			step(AM, direction)
 			if(!facedir)
-				AM.setDir(predir)
+				AM.set_dir(predir)
 
 
 
@@ -119,13 +119,13 @@
 		if(L.pulling)
 			var/atom/movable/P = L.pulling
 			L.stop_pulling()
-			P.forceMove(T)
-			L.forceMove(T)
+			P.force_move(T)
+			L.force_move(T)
 			L.start_pulling(P)
 		else
-			L.forceMove(T)
+			L.force_move(T)
 	else
-		AM.forceMove(T)
+		AM.force_move(T)
 
 /* Moves things by an offset, useful for 'Bridges'. Uses dir and a distance var to work with maploader direction changes. */
 /obj/effect/step_trigger/teleporter/offset
@@ -166,7 +166,7 @@
 	if(teleport_x && teleport_y && teleport_z)
 		if(teleport_x_offset && teleport_y_offset && teleport_z_offset)
 			var/turf/T = locate(rand(teleport_x, teleport_x_offset), rand(teleport_y, teleport_y_offset), rand(teleport_z, teleport_z_offset))
-			A.forceMove(T)
+			A.force_move(T)
 
 /* Teleporter that sends objects stepping on it to a specific landmark. */
 
@@ -183,7 +183,7 @@
 
 /obj/effect/step_trigger/teleporter/landmark/Trigger(var/atom/movable/A)
 	if(the_landmark)
-		A.forceMove(get_turf(the_landmark))
+		A.force_move(get_turf(the_landmark))
 
 
 var/global/list/tele_landmarks = list() // Terrible, but the alternative is looping through world.
@@ -235,10 +235,10 @@ var/global/list/tele_landmarks = list() // Terrible, but the alternative is loop
 			return
 
 		if(isobserver(A))
-			A.forceMove(T) // Harmlessly move ghosts.
+			A.force_move(T) // Harmlessly move ghosts.
 			return
 
-		A.forceMove(T)
+		A.force_move(T)
 		// Living things should probably be logged when they fall...
 		if(isliving(A))
 			message_admins("\The [A] fell out of the sky.")

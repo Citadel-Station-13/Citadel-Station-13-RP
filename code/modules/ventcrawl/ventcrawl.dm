@@ -162,7 +162,7 @@ var/list/ventcrawl_machinery = list(
 
 			visible_message("<B>[src] scrambles into the ventilation ducts!</B>", "You climb into the ventilation system.")
 
-			forceMove(vent_found)
+			force_move(vent_found)
 			add_ventcrawl(vent_found)
 			update_perspective()
 

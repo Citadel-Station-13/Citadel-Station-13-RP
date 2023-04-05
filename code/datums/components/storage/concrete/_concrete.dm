@@ -53,7 +53,7 @@
 	if(transfer_contents_on_component_transfer)
 		for(var/i in _contents_limbo)
 			var/atom/movable/AM = i
-			AM.forceMove(parent)
+			AM.force_move(parent)
 		_contents_limbo = null
 	if(_user_limbo)
 		for(var/i in _user_limbo)
@@ -64,7 +64,7 @@
 	. = TRUE
 	var/atom/real_location = real_location()
 	if(I.loc != real_location)
-		I.forceMove(real_location)
+		I.force_move(real_location)
 	refresh_mob_views()
 
 /datum/component/storage/concrete/refresh_mob_views()
@@ -130,7 +130,7 @@
 	if(new_location)
 		//Reset the items values
 		_removal_reset(AM)
-		AM.forceMove(new_location)
+		AM.force_move(new_location)
 		//We don't want to call this if the item is being destroyed
 		AM.on_exit_storage(src)
 	else
@@ -169,9 +169,9 @@
 		if(moved)
 			if(M)
 				if(!M.put_in_active_hand(I))
-					I.forceMove(parent.drop_location())
+					I.force_move(parent.drop_location())
 			else
-				I.forceMove(parent.drop_location())
+				I.force_move(parent.drop_location())
 		return FALSE
 	I.on_enter_storage(master)
 	I.item_flags |= ITEM_IN_STORAGE

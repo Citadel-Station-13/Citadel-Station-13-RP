@@ -155,20 +155,20 @@
 	if(humanform)
 		// ckey transfer you dumb fuck
 		humanform.ckey = ckey
-		humanform.forceMove(drop_location())
+		humanform.force_move(drop_location())
 		humanform.death(gibbed = gibbed)
 		for(var/organ in humanform.internal_organs)
 			var/obj/item/organ/internal/O = organ
 			O.removed()
 			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
-				O.forceMove(drop_location())
+				O.force_move(drop_location())
 		var/list/items = humanform.get_equipped_items()
 		if(prev_left_hand)
 			items += prev_left_hand
 		if(prev_right_hand)
 			items += prev_right_hand
 		for(var/obj/object in items)
-			object.forceMove(drop_location())
+			object.force_move(drop_location())
 		QDEL_NULL(humanform) //Don't leave it just sitting in nullspace
 
 	animate(src, alpha = 0, time = 2 SECONDS)
@@ -209,7 +209,7 @@
 				if(istype(target) && vore_selected && allowed) //no more ooc-noncon vore, thanks
 					if(target.buckled)
 						target.buckled.unbuckle_mob(target, BUCKLE_OP_FORCE)
-					target.forceMove(vore_selected)
+					target.force_move(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] quickly engulfs you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
 /mob/living/simple_mob/protean_blob/attack_target(var/atom/A)
@@ -240,7 +240,7 @@
 				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 				return
 		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-		I.forceMove(vore_selected)
+		I.force_move(vore_selected)
 	else
 		return ..()
 
@@ -384,7 +384,7 @@
 	blob.vore_selected = vore_selected
 	for(var/belly in vore_organs)
 		var/obj/belly/B = belly
-		B.forceMove(blob)
+		B.force_move(blob)
 		B.owner = blob
 
 	var/datum/vore_preferences/P = blob.client?.prefs_vr
@@ -407,7 +407,7 @@
 	for(var/obj/item/I in src)
 		remove_micros(I, root) //Recursion. I'm honestly depending on there being no containment loop, but at the cost of performance that can be fixed too.
 		if(istype(I, /obj/item/holder))
-			I.forceMove(root.drop_location())
+			I.force_move(root.drop_location())
 
 /mob/living/simple_mob/protean_blob/proc/useradio()
 	set name = "Utilize Radio"
@@ -424,8 +424,8 @@
 
 	if(istype(loc, /obj/item/rig/protean))
 		var/obj/item/rig/protean/prig = loc
-		src.forceMove(get_turf(prig))
-		prig.forceMove(humanform)
+		src.force_move(get_turf(prig))
+		prig.force_move(humanform)
 		return
 
 	if(isturf(loc))
@@ -434,8 +434,8 @@
 			prig = O
 			break
 		if(prig)
-			prig.forceMove(get_turf(src))
-			src.forceMove(prig)
+			prig.force_move(get_turf(src))
+			src.force_move(prig)
 			return
 
 /mob/living/proc/usehardsuit()
@@ -483,7 +483,7 @@
 	resize(blob.size_multiplier, FALSE)
 
 	//Move them back where the blob was
-	forceMove(reform_spot)
+	force_move(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
 	ckey = blob.ckey
@@ -496,7 +496,7 @@
 	vore_selected = blob.vore_selected
 	for(var/belly in blob.vore_organs)
 		var/obj/belly/B = belly
-		B.forceMove(src)
+		B.force_move(src)
 		B.owner = src
 
 	if(blob.prev_left_hand) put_in_left_hand(blob.prev_left_hand) //The restore for when reforming.

@@ -44,7 +44,7 @@ var/datum/antagonist/traitor/infiltrator/infiltrators
 				else
 					R.keyslot1 = encrypt_key
 
-				encrypt_key.forceMove(R)
+				encrypt_key.force_move(R)
 				R.recalculateChannels()
 				to_chat(traitor_mob, "Your headset has had a special encryption key installed, which allows you to talk to your team privately, using \
 				<b>:t</b>")

@@ -85,7 +85,7 @@
 		if(victim.client)
 			victim.client.perspective = EYE_PERSPECTIVE
 			victim.client.eye = src
-		victim.forceMove(src)
+		victim.force_move(src)
 		src.occupant = victim
 		update_light_color()
 
@@ -133,12 +133,12 @@
 
 /obj/machinery/slime/extractor/proc/eject_slime()
 	if(occupant)
-		occupant.forceMove(loc)
+		occupant.force_move(loc)
 		occupant = null
 
 /obj/machinery/slime/extractor/proc/eject_core()
 	for(var/obj/thing in (contents - component_parts - circuit))
-		thing.forceMove(loc)
+		thing.force_move(loc)
 
 /obj/machinery/slime/extractor/proc/eject_contents()
 	eject_core()

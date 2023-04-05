@@ -336,7 +336,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	// offset 24 pixels in direction of dir
 	// this allows the APC to be embedded in a wall, yet still inside an area
 	if (building)
-		setDir(ndir)
+		set_dir(ndir)
 
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
@@ -364,7 +364,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	qdel(terminal)
 	terminal = null
 	if(cell)
-		cell.forceMove(loc)
+		cell.force_move(loc)
 		cell = null
 
 	// Malf AI, removes the APC from AI's hacked APCs list.
@@ -377,13 +377,13 @@ GLOBAL_LIST_EMPTY(apcs)
 	return cell
 
 // APCs are pixel-shifted, so they need to be updated.
-/obj/machinery/power/apc/setDir(new_dir)
+/obj/machinery/power/apc/set_dir(new_dir)
 	..()
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
 	if(terminal)
 		terminal.disconnect_from_network()
-		terminal.setDir(src.dir) // Terminal has same dir as master
+		terminal.set_dir(src.dir) // Terminal has same dir as master
 		terminal.connect_to_network() // Refresh the network the terminal is connected to.
 	return
 
@@ -394,7 +394,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	// create a terminal object at the same position as original turf loc
 	// wires will attach to this
 	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.setDir(dir)
+	terminal.set_dir(dir)
 	terminal.master = src
 
 /obj/machinery/power/apc/proc/autobuild()

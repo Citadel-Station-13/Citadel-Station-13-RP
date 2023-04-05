@@ -11,7 +11,7 @@
 	 * current item we're fitted in.
 	 */
 	var/obj/item/worn_inside
-	/// suppress auto inventory hooks in forceMove
+	/// suppress auto inventory hooks in force_move
 	var/worn_hook_suppressed = FALSE
 
 /obj/item/Destroy()
@@ -310,7 +310,7 @@
 	. = ..()
 	if(!. || (loc == M))
 		// kick them out
-		forceMove(M.drop_location())
+		force_move(M.drop_location())
 
 /**
  * checks if we're in inventory. if so, returns mob we're in

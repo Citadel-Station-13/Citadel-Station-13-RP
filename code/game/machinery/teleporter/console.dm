@@ -27,11 +27,11 @@
 
 	if(istype(projector))
 		projector.pad = pad
-		projector.setDir(dir)
+		projector.set_dir(dir)
 
 	if(istype(pad))
 		pad.com = src
-		pad.setDir(dir)
+		pad.set_dir(dir)
 
 /obj/machinery/computer/teleporter/examine(mob/user)
 	. = ..()

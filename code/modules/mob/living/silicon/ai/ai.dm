@@ -339,9 +339,9 @@ var/list/ai_verbs_default = list(
 	powered_ai = ai
 	powered_ai.psupply = src
 	if(istype(powered_ai,/mob/living/silicon/ai/announcer))	//Don't try to get a loc for a nullspace announcer mob, just put it into it
-		forceMove(powered_ai)
+		force_move(powered_ai)
 	else
-		forceMove(powered_ai.loc)
+		force_move(powered_ai.loc)
 
 	use_power(USE_POWER_IDLE) // Just incase we need to wake up the power system.
 

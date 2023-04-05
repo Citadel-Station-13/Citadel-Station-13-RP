@@ -30,7 +30,7 @@
 
 /obj/machinery/shield/Initialize(mapload)
 	. = ..()
-	setDir(pick(1,2,3,4))
+	set_dir(pick(1,2,3,4))
 	update_nearby_tiles()
 
 /obj/machinery/shield/Destroy()

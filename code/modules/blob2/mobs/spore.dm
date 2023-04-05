@@ -41,7 +41,7 @@
 		factory.spores -= src
 	factory = null
 	if(infested)
-		infested.forceMove(get_turf(src))
+		infested.force_move(get_turf(src))
 		visible_message("<span class='warning'>\The [infested] falls to the ground as the blob spore bursts.</span>")
 		infested = null
 	return ..()
@@ -100,7 +100,7 @@
 	emote_see = list("shambles around", "twitches", "stares")
 	attacktext = list("claws")
 
-	H.forceMove(src)
+	H.force_move(src)
 	infested = H
 
 	update_icons()

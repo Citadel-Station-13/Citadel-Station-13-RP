@@ -110,7 +110,7 @@
 		to_chat(usr, SPAN_WARNING("The subject cannot have abiotic items on."))
 		return
 	usr.stop_pulling()
-	usr.forceMove(src)
+	usr.force_move(src)
 	usr.update_perspective()
 	src.occupant = usr
 	src.icon_state = "scanner_1"
@@ -184,11 +184,11 @@
 	if(istype(occupant,/mob/living/carbon/brain))
 		for(var/obj/O in src)
 			if(istype(O,/obj/item/organ/internal/brain))
-				O.forceMove(loc)
-				occupant.forceMove(O)
+				O.force_move(loc)
+				occupant.force_move(O)
 				break
 	else
-		occupant.forceMove(loc)
+		occupant.force_move(loc)
 	occupant.update_perspective()
 	occupant = null
 	icon_state = "scanner_0"

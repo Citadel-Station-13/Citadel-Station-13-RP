@@ -14,7 +14,7 @@
 	if(W.is_wrench())
 		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(loc)
 		playsound(src, W.tool_sound, 50, 1)
-		C.setDir(dir)
+		C.set_dir(dir)
 		part.loc = loc
 		part.master = null
 		part = null

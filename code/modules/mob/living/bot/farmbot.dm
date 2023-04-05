@@ -34,7 +34,7 @@
 	if(!newTank)
 		newTank = new /obj/structure/reagent_dispensers/watertank(src)
 	tank = newTank
-	tank.forceMove(src)
+	tank.force_move(src)
 
 /mob/living/bot/farmbot/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -345,7 +345,7 @@
 		tank = new /obj/structure/reagent_dispensers/watertank(src)
 	else
 		tank = theTank
-		tank.forceMove(src)
+		tank.force_move(src)
 
 /obj/structure/reagent_dispensers/watertank/attackby(var/obj/item/robot_parts/S, mob/user as mob)
 	if ((!istype(S, /obj/item/robot_parts/l_arm)) && (!istype(S, /obj/item/robot_parts/r_arm)))

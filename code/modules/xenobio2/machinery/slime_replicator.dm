@@ -49,7 +49,7 @@
 		to_chat(user, "<span class='warning'>Close the panel first!</span>")
 	core = G
 	user.drop_from_inventory(G)
-	G.forceMove(src)
+	G.force_move(src)
 	update_light_color()
 
 /obj/machinery/slime/replicator/proc/update_light_color()
@@ -87,11 +87,11 @@
 
 /obj/machinery/slime/replicator/proc/eject_slime()
 	for(var/mob/thing in contents)
-		thing.forceMove(loc)
+		thing.force_move(loc)
 
 /obj/machinery/slime/replicator/proc/eject_core()
 	if(core)
-		core.forceMove(loc)
+		core.force_move(loc)
 		core = null
 
 /obj/machinery/slime/replicator/proc/eject_contents()

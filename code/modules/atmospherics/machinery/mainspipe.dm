@@ -139,9 +139,9 @@
 
 /obj/machinery/atmospherics/mains_pipe/simple/proc/normalize_dir()
 	if(dir==3)
-		setDir(1)
+		set_dir(1)
 	else if(dir==12)
-		setDir(4)
+		set_dir(4)
 
 /obj/machinery/atmospherics/mains_pipe/simple/update_icon_state()
 	. = ..()
@@ -151,7 +151,7 @@
 		//var/node1_direction = get_dir(src, node1)
 		//var/node2_direction = get_dir(src, node2)
 
-		//setDir(node1_direction|node2_direction)
+		//set_dir(node1_direction|node2_direction)
 
 	else
 		if(!nodes[1]&&!nodes[2])

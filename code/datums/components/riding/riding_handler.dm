@@ -201,7 +201,7 @@
 				offsets = rider_offsets(M, i, semantic, rider_offsets, dir)
 				dir_override = offsets[4] || dir
 				if(dir_override != M.dir)
-					M.setDir(offsets[4])
+					M.set_dir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
 				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
@@ -223,7 +223,7 @@
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
 				dir_override = offsets[4] || dir
 				if(dir_override != M.dir)
-					M.setDir(offsets[4])
+					M.set_dir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
 				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]
@@ -247,7 +247,7 @@
 				offsets = rider_offsets(M, i, semantic, relevant, dir)
 				dir_override = offsets[4] || dir
 				if(dir_override != M.dir)
-					M.setDir(offsets[4])
+					M.set_dir(offsets[4])
 				M.reset_pixel_shifting()
 				M.set_base_layer(offsets[3] + AM.layer)
 				M.pixel_x = ppx + M.get_standard_pixel_x_offset() - M.get_centering_pixel_x_offset(dir) + offsets[1]

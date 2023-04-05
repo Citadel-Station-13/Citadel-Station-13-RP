@@ -35,7 +35,7 @@
 		visible_message("<span class='notice'>[user] starts to climb into \the [src.name].</span>", \
 						"<span class='notice'>You start to lower yourself into \the [src.name].</span>")
 		if(do_after(user, 50))
-			user.forceMove(src.loc)
+			user.force_move(src.loc)
 			visible_message("<span class='notice'>[user] climbs into \the [src.name].</span>", \
 							"<span class='notice'>You climb into \the [src.name].</span>")
 		else

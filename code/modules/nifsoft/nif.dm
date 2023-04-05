@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		//Ok, nevermind then!
 		if(!istype(parent))
 			return FALSE
-		forceMove(parent)
+		force_move(parent)
 		parent.implants += src
 		spawn(0) //Let the character finish spawning yo.
 			if(!H) //Or letting them get deleted

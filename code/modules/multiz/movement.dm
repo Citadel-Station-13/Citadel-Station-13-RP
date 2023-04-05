@@ -35,7 +35,7 @@
 		return FALSE
 
 	if(is_incorporeal())
-		forceMove(destination)
+		force_move(destination)
 		return TRUE
 
 	var/atom/obstructing = start.z_exit_obstruction(src, direction)
@@ -101,7 +101,7 @@
 /mob/observer/zMove(direction)
 	var/turf/destination = (direction == UP) ? GetAbove(src) : GetBelow(src)
 	if(destination)
-		forceMove(destination)
+		force_move(destination)
 	else
 		to_chat(src, "<span class='notice'>There is nothing of interest in this direction.</span>")
 

@@ -290,7 +290,7 @@
 			to_chat(M, SPAN_CRITICAL("You feel a sharp pain as something digs into your flesh!"))
 
 		src.host = M
-		src.forceMove(M)
+		src.force_move(M)
 		if(ai_holder)
 			ai_holder.hostile = FALSE
 			ai_holder.lose_target()
@@ -327,7 +327,7 @@
 	host_bodypart.implants -= src
 	host_bodypart = null
 
-	forceMove(host.loc)
+	force_move(host.loc)
 	update_perspective()
 	host = null
 

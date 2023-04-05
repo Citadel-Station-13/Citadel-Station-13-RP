@@ -58,21 +58,21 @@
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
-				A.forceMove(src.loc)
+				A.force_move(src.loc)
 				legacy_ex_act(severity)
 			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
+					A.force_move(src.loc)
 					legacy_ex_act(severity)
 				qdel(src)
 				return
 		if(3.0)
 			if (prob(5))
 				for(var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
+					A.force_move(src.loc)
 					legacy_ex_act(severity)
 				qdel(src)
 				return
@@ -95,7 +95,7 @@
 /obj/structure/morgue/proc/close()
 	for(var/atom/movable/A as mob|obj in src.connected.loc)
 		if (!( A.anchored ))
-			A.forceMove(src)
+			A.force_move(src)
 	playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 	qdel(src.connected)
 	src.connected = null
@@ -111,9 +111,9 @@
 		src.connected.connected = src
 		src.icon_state = "morgue0"
 		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.connected.loc)
+			A.force_move(src.connected.loc)
 		src.connected.icon_state = "morguet"
-		src.connected.setDir(src.dir)
+		src.connected.set_dir(src.dir)
 	else
 		qdel(src.connected)
 		src.connected = null
@@ -177,7 +177,7 @@
 	if (src.connected)
 		for(var/atom/movable/A as mob|obj in src.loc)
 			if (!( A.anchored ))
-				A.forceMove(src.connected)
+				A.force_move(src.connected)
 			//Foreach goto(26)
 		src.connected.connected = null
 		src.connected.update()
@@ -194,7 +194,7 @@
 		return
 	if (!ismob(user) || user.stat || user.lying || user.stunned)
 		return
-	O.forceMove(src.loc)
+	O.force_move(src.loc)
 	if (user != O)
 		for(var/mob/B in viewers(user, 3))
 			if ((B.client && !( B.blinded )))
@@ -234,7 +234,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 	if ((src.connected) && (src.locked == 0))
 		for(var/atom/movable/A as mob|obj in src.connected.loc)
 			if (!( A.anchored ))
-				A.forceMove(src)
+				A.force_move(src)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		//src.connected = null
 		qdel(src.connected)
@@ -248,7 +248,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 			src.connected.connected = src
 			src.icon_state = "crema0"
 			for(var/atom/movable/A as mob|obj in src)
-				A.forceMove(src.connected.loc)
+				A.force_move(src.connected.loc)
 			src.connected.icon_state = "cremat"
 		else
 			//src.connected = null
@@ -282,7 +282,7 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 		src.connected.connected = src
 		src.icon_state = "crema0"
 		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.connected.loc)
+			A.force_move(src.connected.loc)
 		src.connected.icon_state = "cremat"
 	else
 		qdel(src.connected)

@@ -16,7 +16,7 @@
 		to_chat(src,"<span class='warning'>You need blood to shift between realities!</span>")
 		return FALSE
 
-	forceMove(T)
+	force_move(T)
 	var/original_canmove = canmove
 	SetStunned(0)
 	SetWeakened(0)
@@ -57,7 +57,7 @@
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
-					target.forceMove(vore_selected)
+					target.force_move(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
 		// Do this after the potential vore, so we get the belly
@@ -128,7 +128,7 @@
 		return FALSE
 
 	shift_state = AB_SHIFT_ACTIVE
-	forceMove(T)
+	force_move(T)
 	var/original_canmove = canmove
 	SetStunned(0)
 	SetWeakened(0)
@@ -195,7 +195,7 @@
 				var/turf/L = get_step(NT, direction)
 				if(L)
 					if(L.CanPass(src,L))
-						forceMove(L)
+						force_move(L)
 						break
 
 		//Potential phase-in vore
@@ -204,7 +204,7 @@
 			if(potentials.len)
 				var/mob/living/target = pick(potentials)
 				if(istype(target) && vore_selected)
-					target.forceMove(vore_selected)
+					target.force_move(vore_selected)
 					to_chat(target,"<span class='warning'>\The [src] phases in around you, [vore_selected.vore_verb]ing you into their [vore_selected.name]!</span>")
 
 		// Do this after the potential vore, so we get the belly

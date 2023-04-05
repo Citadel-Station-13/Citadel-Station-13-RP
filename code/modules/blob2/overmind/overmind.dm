@@ -74,7 +74,7 @@ var/list/overminds = list()
 	if(placed)
 		var/obj/structure/blob/B = locate() in range("3x3", NewLoc)
 		if(B)
-			forceMove(NewLoc)
+			force_move(NewLoc)
 			return TRUE
 		else
 			return FALSE
@@ -82,7 +82,7 @@ var/list/overminds = list()
 		var/area/A = get_area(NewLoc)
 		if(istype(NewLoc, /turf/space) || istype(A, /area/shuttle)) //if unplaced, can't go on shuttles or space tiles
 			return FALSE
-		forceMove(NewLoc)
+		force_move(NewLoc)
 		return TRUE
 
 /mob/observer/blob/proc/add_points(points)

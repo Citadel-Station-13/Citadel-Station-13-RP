@@ -57,7 +57,7 @@
 			cell = null
 
 		if(removing)
-			removing.forceMove(get_turf(src))
+			removing.force_move(get_turf(src))
 			user.put_in_hands(removing)
 			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
 			playsound(src, 'sound/machines/click.ogg', 10, 1)

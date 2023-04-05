@@ -29,5 +29,5 @@
 			AM.em_render = null
 	return ..()
 
-/atom/movable/emissive_render/forceMove(atom/destination)
+/atom/movable/emissive_render/force_move(atom/destination)
 	return FALSE	// nope.

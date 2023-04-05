@@ -66,8 +66,8 @@
 		return
 	if(breather)
 		if(tank)
-			tank.forceMove(src)
-		contained.forceMove(src)
+			tank.force_move(src)
+		contained.force_move(src)
 		visible_message(SPAN_NOTICE("\The [user] makes \the [contained] rapidly retract back into \the [src]!"))
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
@@ -82,7 +82,7 @@
 		if(!C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_FLUFFLESS | INV_OP_SUPPRESS_WARNING))
 			return
 		if(tank)
-			tank.forceMove(C)
+			tank.force_move(C)
 		breather = C
 		if(!breather.internal && tank)
 			breather.internal = tank
@@ -160,8 +160,8 @@
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)
-				tank.forceMove(src)
-			contained.forceMove(src)
+				tank.force_move(src)
+			contained.force_move(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
 			update_use_power(USE_POWER_IDLE)
@@ -282,8 +282,8 @@
 	if(breather)
 		if(!can_apply_to_target(breather))
 			if(tank)
-				tank.forceMove(src)
-			contained.forceMove(src)
+				tank.force_move(src)
+			contained.force_move(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
 			update_use_power(USE_POWER_IDLE)

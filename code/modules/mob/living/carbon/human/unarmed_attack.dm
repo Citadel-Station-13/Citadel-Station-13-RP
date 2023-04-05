@@ -73,7 +73,7 @@ var/global/list/sparring_attack_cache = list()
 					else
 						target.visible_message("<span class='danger'>[target] slams into [T]!</span>")
 					if(prob(50))
-						target.setDir(GLOB.reverse_dir[target.dir])
+						target.set_dir(GLOB.reverse_dir[target.dir])
 					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
 			if(BP_GROIN)
 				if(!target.isSynthetic())

@@ -40,9 +40,9 @@
 		anchored = 0
 	switch(start_dir)
 		if(NORTH, SOUTH, EAST, WEST)
-			setDir(start_dir)
+			set_dir(start_dir)
 		else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
-			setDir(NORTH)
+			set_dir(NORTH)
 	update_state()
 
 	update_nearby_tiles()
@@ -220,7 +220,7 @@
 						else
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
-					windoor.setDir(src.dir)
+					windoor.set_dir(src.dir)
 					windoor.density = 0
 					if(created_name)
 						windoor.name = created_name
@@ -229,7 +229,7 @@
 					windoor.req_access = electronics.conf_req_access?.Copy()
 					windoor.req_one_access = electronics.conf_req_one_access?.Copy()
 					windoor.electronics = electronics
-					electronics.forceMove(windoor)
+					electronics.force_move(windoor)
 					qdel(src)
 			else
 				..()
@@ -261,7 +261,7 @@
 	if(src.state != "01")
 		update_nearby_tiles() //Compel updates before
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 
 	if(src.state != "01")
 		update_nearby_tiles()

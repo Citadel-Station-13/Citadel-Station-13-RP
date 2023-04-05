@@ -128,7 +128,7 @@
 	if (usr.stat || usr.restrained() || anchored)
 		return
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 
 
 /obj/machinery/atmospherics/pipeturbine/verb/rotate_counterclockwise()
@@ -139,7 +139,7 @@
 	if (usr.stat || usr.restrained() || anchored)
 		return
 
-	src.setDir(turn(src.dir, 90))
+	src.set_dir(turn(src.dir, 90))
 
 //Goddamn copypaste from binary base class because atmospherics machinery API is not damn flexible
 /obj/machinery/atmospherics/pipeturbine/get_neighbor_nodes_for_init()
@@ -282,7 +282,7 @@
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 
 /obj/machinery/power/turbinemotor/verb/rotate_counterclockwise()
 	set name = "Rotate Motor Counterclockwise"
@@ -292,4 +292,4 @@
 	if (usr.stat || usr.restrained()  || anchored)
 		return
 
-	src.setDir(turn(src.dir, 90))
+	src.set_dir(turn(src.dir, 90))

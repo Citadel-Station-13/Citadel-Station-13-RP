@@ -3,7 +3,7 @@
  *
  * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
  */
-/atom/proc/setDir(newdir)
+/atom/proc/set_dir(newdir)
 	if(dir == newdir)
 		return FALSE
 	SHOULD_CALL_PARENT(TRUE)
@@ -25,7 +25,7 @@
 // the new move chain should be:
 // turf/atom Exit --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
 // turf/atom Enter --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
-// at this point, it's valid to move ; if it was a forceMove, we don't check at all
+// at this point, it's valid to move ; if it was a force_move, we don't check at all
 // if it wasn't, we need to check if the Bump changed the moving thing's location. Bump handlers should be able to handle this themselves too via unstoppable flag check.
 // Exited() called for new loc, signals, etc
 // Moved() called but only if Exited() didn't end up moving the atom.
@@ -33,7 +33,7 @@
 // pending changes.
 // regardless,
 // Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
-// also, rename forceMove to force_move because bay, and setDir to set_dir().
+// also, rename force_move to force_move because bay, and set_dir to set_dir().
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
@@ -46,7 +46,7 @@
 
 	if(!direct)
 		direct = get_dir(src, newloc)
-	setDir(direct)
+	set_dir(direct)
 
 	if(!loc.Exit(src, newloc))
 		return
@@ -112,7 +112,7 @@
 		else //Diagonal move, split it into cardinal moves
 			moving_diagonally = FIRST_DIAG_STEP
 			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a forceMove taking
+			// The `&& moving_diagonally` checks are so that a force_move taking
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
@@ -156,7 +156,7 @@
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
 				if(!.)
-					setDir(first_step_dir)
+					set_dir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
 					newtonian_move(direct)
@@ -165,7 +165,7 @@
 	else		// trying to move to the same place
 		if(direct)
 			last_move_dir = direct
-			setDir(direct)
+			set_dir(direct)
 		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
@@ -196,7 +196,7 @@
 
 	if(direct)
 		last_move_dir = direct
-		setDir(direct)
+		set_dir(direct)
 
 	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
 	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
@@ -214,15 +214,15 @@
 				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 				continue
 			else
-				forceMove(M.loc)
+				force_move(M.loc)
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
 			for(var/mob/resetting as anything in buckled_mobs)
 				if(resetting.loc != loc)
-					resetting.forceMove(loc)
+					resetting.force_move(loc)
 			return FALSE
 		else
-			M.setDir(dir)
+			M.set_dir(dir)
 	return TRUE
 
 /// Called after a successful Move(). By this point, we've already moved
@@ -279,7 +279,7 @@
 /**
  * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
  * if you want something to move onto a tile with a beartrap or recycler or tripmine or mouse without that object knowing about it at all, use this
- * most of the time you want forceMove()
+ * most of the time you want force_move()
  */
 /atom/movable/proc/abstract_move(atom/new_loc)
 	var/atom/old_loc = loc
@@ -294,7 +294,7 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
 	return CanPass(AM, src, TRUE)
 
-//oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
+//oldloc = old location on atom, inserted when force_move is called and ONLY when force_move is called!
 /atom/movable/Crossed(atom/movable/AM, oldloc)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
@@ -327,7 +327,7 @@
 	A.Bumped(src)
 
 /**
-  * forceMove but it brings along pulling/buckled stuff
+  * force_move but it brings along pulling/buckled stuff
   * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
   * Probably needs a better way of handling this in the future.
   */
@@ -380,7 +380,7 @@
 	if(!.)
 		return
 	for(var/mob/M in old_grabbed)
-		M.forceMove(loc)
+		M.force_move(loc)
 
 /**
   * Gets the atoms that we'd pull along with a locationTransitForceMove
@@ -407,19 +407,19 @@
 			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed) : M
 
 /**
-  * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
+  * Wrapper for force_move when we're called by a recursing locationTransitForceMove().
   */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
 	. = TRUE
-	forceMove(destination)
+	force_move(destination)
 
-/atom/movable/proc/forceMove(atom/destination)
+/atom/movable/proc/force_move(atom/destination)
 	. = FALSE
 	pulledby?.stop_pulling()
 	if(destination)
 		. = doMove(destination)
 	else
-		CRASH("No valid destination passed into forceMove")
+		CRASH("No valid destination passed into force_move")
 
 /atom/movable/proc/moveToNullspace()
 	return doMove(null)

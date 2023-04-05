@@ -14,5 +14,5 @@
 
 /obj/structure/ghost_role_spawner/lavaland_vet/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
-	S.setDir(dir)
+	S.set_dir(dir)
 	return ..()

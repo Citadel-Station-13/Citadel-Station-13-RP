@@ -356,7 +356,7 @@
 	if(!istype(W))
 		return 0
 
-	W.forceMove(src)
+	W.force_move(src)
 	W.on_enter_storage(src)
 	W.item_flags |= ITEM_IN_STORAGE
 	if(user)
@@ -396,9 +396,9 @@
 
 	if(do_move)
 		if(new_location)
-			W.forceMove(new_location)
+			W.force_move(new_location)
 		else
-			W.forceMove(get_turf(src))
+			W.force_move(get_turf(src))
 
 	if(usr?.s_active == src)
 		orient2hud(usr)

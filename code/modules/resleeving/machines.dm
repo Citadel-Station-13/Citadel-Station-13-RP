@@ -595,7 +595,7 @@
 /obj/machinery/transhuman/resleever/proc/go_out(mob/M)
 	if(!occupant)
 		return
-	occupant.forceMove(loc)
+	occupant.force_move(loc)
 	occupant.update_perspective()
 	occupant = null
 	icon_state = "implantchair"
@@ -609,7 +609,7 @@
 		to_chat(usr, SPAN_WARNING("\The [src] is already occupied!"))
 		return
 	M.stop_pulling()
-	M.forceMove(src)
+	M.force_move(src)
 	M.update_perspective()
 	occupant = M
 	add_fingerprint(usr)

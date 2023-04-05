@@ -31,7 +31,7 @@
 	if(hat)
 		return
 	hat = new_hat
-	new_hat.forceMove(src)
+	new_hat.force_move(src)
 	update_icons()
 
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)

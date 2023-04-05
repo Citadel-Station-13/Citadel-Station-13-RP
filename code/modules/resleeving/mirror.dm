@@ -65,7 +65,7 @@
 				if(!user.attempt_insert_item_for_installation(src, MT))
 					return
 			else
-				forceMove(MT)
+				force_move(MT)
 			MT.imp = src
 			MT.update_icon()
 		else
@@ -75,7 +75,7 @@
 					to_chat(usr, "The mirror tool already contains a mirror.")
 					return // It's full.
 				// dogborgs can't hold mirrors
-				forceMove(MT)
+				force_move(MT)
 				MT.imp = src
 
 /obj/item/implant/mirror/positronic

@@ -145,7 +145,7 @@
 	else
 		if(!silent)
 			to_chat(user, SPAN_NOTICE("You eject [beaker] from [src] onto the ground."))
-		beaker.forceMove(drop_location())
+		beaker.force_move(drop_location())
 
 	beaker = null
 	update_appearance()

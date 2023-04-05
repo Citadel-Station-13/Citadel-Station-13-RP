@@ -306,7 +306,7 @@
 
 
 		for (var/obj/item/reagent_containers/food/snacks/fortunecookie/being_cooked in .)
-			paper.forceMove(being_cooked)
+			paper.force_move(being_cooked)
 			being_cooked.trash = paper //so the paper is left behind as trash without special-snowflake(TM Nodrak) code ~carn
 			return
 

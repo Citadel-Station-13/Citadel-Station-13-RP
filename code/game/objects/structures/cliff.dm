@@ -101,7 +101,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 	bottom.density = density
 	bottom.update_icon()
 
-/obj/structure/cliff/setDir(new_dir)
+/obj/structure/cliff/set_dir(new_dir)
 	..()
 	update_icon()
 
@@ -181,7 +181,7 @@ two tiles on initialization, and which way a cliff is facing may change during m
 
 	if(istype(T))
 		visible_message(SPAN_DANGER("\The [L] falls off \the [src]!"))
-		L.forceMove(T)
+		L.force_move(T)
 
 		// Do the actual hurting. Double cliffs do halved damage due to them most likely hitting twice.
 		var/harm = !is_double_cliff ? 1 : 0.5

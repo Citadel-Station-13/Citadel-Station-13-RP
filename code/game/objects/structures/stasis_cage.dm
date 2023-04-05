@@ -26,10 +26,10 @@
 		return
 
 	contained = animal
-	animal.forceMove(src)
+	animal.force_move(src)
 	animal.in_stasis = 1
 	if(animal.buckled && istype(animal.buckled, /obj/effect/energy_net))
-		animal.buckled.forceMove(animal.loc)
+		animal.buckled.force_move(animal.loc)
 	icon_state = "critter"
 	desc = initial(desc) + " \The [contained] is kept inside."
 

@@ -150,7 +150,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	src.setDir(turn(src.dir, 90))
+	src.set_dir(turn(src.dir, 90))
 	update_icon()
 	return
 
@@ -169,7 +169,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 	update_icon()
 	return
 
@@ -194,7 +194,7 @@
 		return 0
 
 	src.loc = get_step(src, src.dir)
-	setDir(turn(dir, 180))
+	set_dir(turn(dir, 180))
 	update_icon()
 	return
 
@@ -249,9 +249,9 @@
 					return
 			else
 				if (get_turf(G.affecting) == get_turf(src))
-					G.affecting.forceMove(get_step(src, src.dir))
+					G.affecting.force_move(get_step(src, src.dir))
 				else
-					G.affecting.forceMove(get_turf(src))
+					G.affecting.force_move(get_turf(src))
 				G.affecting.Weaken(5)
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)

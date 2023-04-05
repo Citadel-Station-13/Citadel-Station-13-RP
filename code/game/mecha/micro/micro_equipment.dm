@@ -147,7 +147,7 @@
 								occupant_message("<span class='warning'>The ore compartment is full.</span>")
 								return 1
 							else
-								ore.forceMove(ore_box)
+								ore.force_move(ore_box)
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
 				LEGACY_EX_ACT(target, 2, null)
@@ -183,7 +183,7 @@
 						occupant_message("<span class='warning'>The ore compartment is full.</span>")
 						return 1
 					else
-						ore.forceMove(src)
+						ore.force_move(src)
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/micro/orescoop/Topic(href,href_list)

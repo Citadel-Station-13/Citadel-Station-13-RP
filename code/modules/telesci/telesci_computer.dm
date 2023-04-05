@@ -32,7 +32,7 @@
 /obj/machinery/computer/telescience/Destroy()
 	eject()
 	if(inserted_gps)
-		inserted_gps.forceMove(loc)
+		inserted_gps.force_move(loc)
 		inserted_gps = null
 	return ..()
 
@@ -155,7 +155,7 @@
 				for(var/i in 1 to rand(1,4))
 					var/chosen = pick(hostiles)
 					var/mob/living/simple_mob/hostile/H = new chosen(L)
-					H.forceMove(L)
+					H.force_move(L)
 			return
 		if(99)
 			sparks()
@@ -303,7 +303,7 @@
 
 /obj/machinery/computer/telescience/proc/eject()
 	for(var/obj/item/I in crystals)
-		I.forceMove(src.loc)
+		I.force_move(src.loc)
 		crystals -= I
 	distance = 0
 
@@ -335,7 +335,7 @@
 
 	if(href_list["ejectGPS"])
 		if(inserted_gps)
-			inserted_gps.forceMove(loc)
+			inserted_gps.force_move(loc)
 			inserted_gps = null
 
 	if(href_list["setMemory"])

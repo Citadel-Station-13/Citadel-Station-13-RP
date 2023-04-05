@@ -550,7 +550,7 @@
 	// If we've lost any parts, grab them back.
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		if(piece.loc != src && !(wearer && piece.loc == wearer))
-			piece.forceMove(src)
+			piece.force_move(src)
 	// Run through cooling
 	coolingProcess()
 
@@ -798,13 +798,13 @@
 
 	if(istype(M.back, /obj/item/rig) && istype(M.belt, /obj/item/rig))
 		to_chat(M, "<span class='notice'>You try to put on the [src], but it won't fit.</span>")
-		forceMove(get_turf(src))
+		force_move(get_turf(src))
 		return
 
 	if(seal_delay > 0 && istype(M) && (M.back == src || M.belt == src))
 		M.visible_message("<font color=#4F49AF>[M] starts putting on \the [src]...</font>", "<font color=#4F49AF>You start putting on \the [src]...</font>")
 		if(!do_after(M,seal_delay))
-			forceMove(get_turf(src))
+			force_move(get_turf(src))
 			return
 
 	if(istype(M) && (M.back == src || M.belt == src))
@@ -864,7 +864,7 @@
 					if(use_obj && check_slot == use_obj)
 						to_chat(H, "<font color=#4F49AF><b>Your [use_obj.name] [use_obj.gender == PLURAL ? "retract" : "retracts"] swiftly.</b></font>")
 						if(!holder.transfer_item_to_loc(use_obj, src, INV_OP_FORCE))
-							use_obj.forceMove(src)
+							use_obj.force_move(src)
 
 		else if (deploy_mode != ONLY_RETRACT)
 			if(check_slot && check_slot == use_obj)

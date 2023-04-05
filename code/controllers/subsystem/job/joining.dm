@@ -97,11 +97,11 @@
 				if(islist(tcg_cards[card_type]))
 					for(var/duplicate in tcg_cards[card_type])
 						var/obj/item/tcg_card/card = new(get_turf(H), card_type, duplicate)
-						card.forceMove(binder)
+						card.force_move(binder)
 						binder.cards.Add(card)
 				else
 					var/obj/item/tcg_card/card = new(get_turf(H), card_type, tcg_cards[card_type])
-					card.forceMove(binder)
+					card.force_move(binder)
 					binder.cards.Add(card)
 		binder.check_for_exodia()
 		if(length(tcg_decks))
@@ -185,7 +185,7 @@
 	S = SSjob.GetLatejoinSpawnpoint(C, job, faction, method)
 
 	if(S)
-		M.forceMove(S.GetSpawnLoc())
+		M.force_move(S.GetSpawnLoc())
 		S.OnSpawn(M, C)
 	else
 		var/error_message = "Unable to send [key_name(M)] to latejoin."
@@ -200,7 +200,7 @@
 		SendToLatejoin(M)
 	else
 		var/atom/A = S.GetSpawnLoc()
-		M.forceMove(A)
+		M.force_move(A)
 		S.OnSpawn(M, C)
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)

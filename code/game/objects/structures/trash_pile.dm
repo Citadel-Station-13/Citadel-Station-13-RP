@@ -73,11 +73,11 @@
 			if(choice == "Exit")
 				if(L == hider)
 					hider = null
-				L.forceMove(get_turf(src))
+				L.force_move(get_turf(src))
 		else if(!hider)
 			var/choice = alert("Do you want to hide in \the [src]?","Un-Hide?","Hide","Stay")
 			if(choice == "Hide" && !hider) //Check again because PROMPT
-				L.forceMove(src)
+				L.force_move(src)
 				hider = L
 	else
 		return ..()
@@ -96,7 +96,7 @@
 			//If there was a hider, chance to reveal them
 			if(hider && prob(50))
 				to_chat(hider,"<span class='danger'>You've been discovered!</span>")
-				hider.forceMove(get_turf(src))
+				hider.force_move(get_turf(src))
 				hider = null
 				to_chat(user,"<span class='danger'>Some sort of creature leaps out of \the [src]!</span>")
 
@@ -118,7 +118,7 @@
 				//We either have an item to hand over or we don't, at this point!
 				if(I)
 					searchedby += user.ckey
-					I.forceMove(get_turf(src))
+					I.force_move(get_turf(src))
 					to_chat(H,"<span class='notice'>You found \a [I]!</span>")
 
 	else

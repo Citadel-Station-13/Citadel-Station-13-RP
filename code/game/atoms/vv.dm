@@ -33,7 +33,7 @@
 				AM.moveToNullspace()
 			for(var/atom/movable/AM in N - O)
 				// these go in
-				AM.forceMove(src)
+				AM.force_move(src)
 
 	if(!isnull(.))
 		datum_flags |= DF_VAR_EDITED

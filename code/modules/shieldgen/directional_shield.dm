@@ -36,7 +36,7 @@
 		return
 	var/turf/new_pos = locate(T.x + x_offset, T.y + y_offset, T.z)
 	if(new_pos)
-		forceMove(new_pos)
+		force_move(new_pos)
 	else
 		qdel(src)
 
@@ -213,7 +213,7 @@
 			return
 		set_on(FALSE)
 	else
-		setDir(user.dir) // Needed for linear shields.
+		set_dir(user.dir) // Needed for linear shields.
 		set_on(TRUE)
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 
@@ -386,7 +386,7 @@
 /obj/item/shield_projector/line/exosuit/process()
 	..()
 	if((my_tool && loc != my_tool) && (my_mecha && loc != my_mecha))
-		forceMove(my_tool)
+		force_move(my_tool)
 	if(active)
 		my_tool.set_ready_state(0)
 		if(my_mecha.has_charge(my_tool.energy_drain * 50)) //Stops at around 1000 charge.
@@ -407,9 +407,9 @@
 		destroy_shields()
 	else
 		if(istype(user.loc, /obj/mecha))
-			setDir(user.loc.dir)
+			set_dir(user.loc.dir)
 		else
-			setDir(user.dir)
+			set_dir(user.dir)
 		create_shields()
 	visible_message("<span class='notice'>\The [user] [!active ? "de":""]activates \the [src].</span>")
 

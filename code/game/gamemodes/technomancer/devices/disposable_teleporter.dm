@@ -74,7 +74,7 @@
 		destination = pick(targets)
 
 		if(destination)
-			user.forceMove(destination)
+			user.force_move(destination)
 			to_chat(user, "<span class='notice'>You are teleported to \the [A].</span>")
 			uses--
 			if(uses <= 0)

@@ -513,7 +513,7 @@
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 				/// supercooled so we don't just maxcap the engine lol
 				Phoron.air_contents.adjust_gas_temp(/datum/gas/phoron, 350, 25)
-				Phoron.forceMove(Rad)
+				Phoron.force_move(Rad)
 				Rad.P = Phoron
 
 			if(!Rad.active)

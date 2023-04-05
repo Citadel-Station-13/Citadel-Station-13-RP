@@ -29,7 +29,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/Destroy()
 	chassis.cut_overlay(drone_overlay)
-	my_shield.forceMove(src)
+	my_shield.force_move(src)
 	my_shield.destroy_shields()
 	my_shield.my_tool = null
 	my_shield.my_mecha = null
@@ -49,7 +49,7 @@
 	if(chassis)
 		my_shield.shield_health = 0
 		my_shield.my_mecha = chassis
-		my_shield.forceMove(chassis)
+		my_shield.force_move(chassis)
 	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/detach()
@@ -58,7 +58,7 @@
 	my_shield.destroy_shields()
 	my_shield.my_mecha = null
 	my_shield.shield_health = my_shield.max_shield_health
-	my_shield.forceMove(src)
+	my_shield.force_move(src)
 	return
 
 /obj/item/mecha_parts/mecha_equipment/combat_shield/handle_movement_action()

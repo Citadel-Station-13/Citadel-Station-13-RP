@@ -131,7 +131,7 @@
 			to_chat(user, "<span class='warning'>There's already a stock!</span>")
 			return
 
-	A.forceMove(src)
+	A.force_move(src)
 	to_chat(user, "<span class='notice'>You install \the [A].</span>")
 
 	if(A.barrel && !src.barrel)

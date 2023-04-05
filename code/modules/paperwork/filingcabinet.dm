@@ -55,7 +55,7 @@
 			to_chat(user, SPAN_NOTICE("You take the [name] apart."))
 			new /obj/item/stack/material/steel( src.loc, 4 )
 			for(var/obj/item/I in contents)
-				I.forceMove(loc)
+				I.force_move(loc)
 			qdel(src)
 		return
 	else

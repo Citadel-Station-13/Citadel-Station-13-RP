@@ -434,7 +434,7 @@
 	else
 		user.drop_item(new_hat)
 		hat = new_hat
-		new_hat.forceMove(src)
+		new_hat.force_move(src)
 		to_chat(user, "<span class='notice'>You place \a [new_hat] on \the [src].  How adorable!</span>")
 		update_icon()
 		return
@@ -443,7 +443,7 @@
 	if(!hat)
 		to_chat(user, "<span class='warning'>\The [src] doesn't have a hat to remove.</span>")
 	else
-		hat.forceMove(get_turf(src))
+		hat.force_move(get_turf(src))
 		user.put_in_hands(hat)
 		to_chat(user, "<span class='warning'>You take away \the [src]'s [hat.name].  How mean.</span>")
 		hat = null
@@ -452,7 +452,7 @@
 /mob/living/simple_animal/slime/proc/drop_hat()
 	if(!hat)
 		return
-	hat.forceMove(get_turf(src))
+	hat.force_move(get_turf(src))
 	hat = null
 	update_icon()
 

@@ -110,7 +110,7 @@
 	return "\ref[src] aX [x] aY [y] aZ [z] pX [return_px()] pY [return_py()] mX [T.x] mY [T.y] mZ [T.z]"
 
 /datum/point/proc/move_atom_to_src(atom/movable/AM)
-	AM.forceMove(return_turf())
+	AM.force_move(return_turf())
 	AM.pixel_x = return_px()
 	AM.pixel_y = return_py()
 

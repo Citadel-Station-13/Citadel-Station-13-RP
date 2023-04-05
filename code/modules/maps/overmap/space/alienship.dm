@@ -154,22 +154,22 @@
 			var/obj/machinery/recharge_station/RS = L.loc
 			RS.go_out()
 
-		L.forceMove(pick(get_area_turfs(dump_area)))
+		L.force_move(pick(get_area_turfs(dump_area)))
 		if(!issilicon(L)) //Don't drop borg modules...
 			for(var/obj/item/I in L.get_equipped_items(TRUE, TRUE))
 				if(istype(I,/obj/item/holder))
 					var/obj/item/holder/H = I
 					var/mob/living/M = H.held_mob
-					H.forceMove(get_turf(L))
+					H.force_move(get_turf(L))
 					abduct(M)
 					continue
 				L.drop_item_to_ground(I, INV_OP_FORCE)
 			// second pass - NO HIDING, M*CROS
 			for(var/obj/item/holder/H in L.get_all_contents())
-				H.forceMove(get_turf(L))
+				H.force_move(get_turf(L))
 				abduct(H)
 		L.Unconscious(10)
-		L.forceMove(get_turf(pick(teleport_to)))
+		L.force_move(get_turf(pick(teleport_to)))
 		L << 'sound/effects/bamf.ogg'
 		to_chat(L,"<span class='warning'>You're starting to come to. You feel like you've been out for a few minutes, at least...</span>")
 

@@ -65,9 +65,9 @@
 	if(!verb_holder)
 		verb_holder = new(src)
 	if(integrated_ai)
-		verb_holder.forceMove(integrated_ai)
+		verb_holder.force_move(integrated_ai)
 	else
-		verb_holder.forceMove(src)
+		verb_holder.force_move(src)
 
 /obj/item/rig_module/ai_container/accepts_item(var/obj/item/input_device, var/mob/living/user)
 
@@ -176,7 +176,7 @@
 		else if(user)
 			user.put_in_hands(ai_card)
 		else
-			ai_card.forceMove(get_turf(src))
+			ai_card.force_move(get_turf(src))
 	ai_card = null
 	integrated_ai = null
 	update_verb_holder()

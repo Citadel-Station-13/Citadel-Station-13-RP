@@ -302,12 +302,12 @@
 /obj/mecha/Destroy()
 	src.go_out()
 	for(var/mob/M in src) //Be Extra Sure
-		M.forceMove(get_turf(src))
+		M.force_move(get_turf(src))
 		M.loc.Entered(M)
 		if(M != src.occupant)
 			step_rand(M)
 	for(var/atom/movable/A in src.cargo)
-		A.forceMove(get_turf(src))
+		A.force_move(get_turf(src))
 		var/turf/T = get_turf(A)
 		if(T)
 			T.Entered(A)
@@ -329,10 +329,10 @@
 		for(var/obj/item/mecha_parts/mecha_equipment/E in equipment)
 			if(E.salvageable && prob(30))
 				WR.crowbar_salvage += E
-				E.forceMove(WR)
+				E.force_move(WR)
 				E.equip_ready = TRUE
 			else
-				E.forceMove(loc)
+				E.force_move(loc)
 				E.destroy()
 
 		for(var/slot in internal_components)
@@ -341,15 +341,15 @@
 				C.damage_part(rand(10, 20))
 				C.detach()
 				WR.crowbar_salvage += C
-				C.forceMove(WR)
+				C.force_move(WR)
 
 		if(cell)
 			WR.crowbar_salvage += cell
-			cell.forceMove(WR)
+			cell.force_move(WR)
 			cell.charge = rand(0, cell.charge)
 		if(internal_tank)
 			WR.crowbar_salvage += internal_tank
-			internal_tank.forceMove(WR)
+			internal_tank.force_move(WR)
 	else
 		for(var/obj/item/mecha_parts/mecha_equipment/E in equipment)
 			E.detach(loc)
@@ -396,7 +396,7 @@
 
 /obj/mecha/proc/add_cell(var/obj/item/cell/C=null)
 	if(C)
-		C.forceMove(src)
+		C.force_move(src)
 		cell = C
 		return
 	cell = new /obj/item/cell/high(src)
@@ -656,7 +656,7 @@
 		if(istype(user,/mob/living/carbon/brain))
 			to_chat(user, "<span class='warning'>You try to move, but you are not the pilot! The exosuit doesn't respond.</span>")
 			return 0
-		user.forceMove(get_turf(src))
+		user.force_move(get_turf(src))
 		to_chat(user, "You climb out from [src]")
 		return 0
 
@@ -829,7 +829,7 @@
 	return
 
 /obj/mecha/proc/mechturn(direction)
-	setDir(direction)
+	set_dir(direction)
 	if(swivel_sound)
 		playsound(src,swivel_sound,40,1)
 	return 1
@@ -842,7 +842,7 @@
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
 	if(strafing)	//Also for strafing
-		setDir(current_dir)
+		set_dir(current_dir)
 	return result
 
 
@@ -1087,7 +1087,7 @@
 		temp_fail_penetration_value = round(ArmC.get_efficiency() * ArmC.fail_penetration_value)
 
 	if(istype(A, /obj/item/mecha_parts/mecha_tracking))
-		A.forceMove(src)
+		A.force_move(src)
 		src.visible_message("The [A] fastens firmly to [src].")
 		return
 	if(prob(temp_deflect_chance) || istype(A, /mob))
@@ -1449,7 +1449,7 @@
 			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
 			to_chat(user, "You repair the damaged temperature controller.")
 		else if(state==MECHA_CELL_OPEN && src.cell)
-			src.cell.forceMove(src.loc)
+			src.cell.force_move(src.loc)
 			src.cell = null
 			state = MECHA_CELL_OUT
 			to_chat(user, "You unscrew and pry out the powercell.")
@@ -1607,7 +1607,7 @@
 		brainmob.client.perspective = EYE_PERSPECTIVE
 	*/
 		occupant = brainmob
-		brainmob.forceMove(src)
+		brainmob.force_move(src)
 		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
 		mmi_as_oc.mecha = src
@@ -1615,7 +1615,7 @@
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
 		update_icon()
-		setDir(dir_in)
+		set_dir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")
 		if(!hasInternalDamage())
 			src.occupant << sound('sound/mecha/nominal.ogg',volume=50)
@@ -1874,7 +1874,7 @@
 /obj/mecha/proc/moved_inside(var/mob/living/carbon/human/H as mob)
 	if(H && H.client && (H in range(1)))
 		H.stop_pulling()
-		H.forceMove(src)
+		H.force_move(src)
 		H.update_perspective()
 		occupant = H
 		add_fingerprint(H)
@@ -1907,7 +1907,7 @@
 		occupant.in_enclosed_vehicle = 1	//Useful for when you need to know if someone is in a mecho.
 		update_cell_alerts()
 		update_damage_alerts()
-		setDir(dir_in)
+		set_dir(dir_in)
 		playsound(src, 'sound/machines/door/windowdoor.ogg', 50, 1)
 		if(occupant.client && cloaked_selfimage)
 			occupant.client.images += cloaked_selfimage
@@ -1982,7 +1982,7 @@
 		mob_container = brain.container
 	else
 		return
-	if(mob_container.forceMove(src.loc))//ejecting mob container
+	if(mob_container.force_move(src.loc))//ejecting mob container
 		log_message("[mob_container] moved out.")
 		occupant << browse(null, "window=exosuit")
 		if(occupant.client && cloaked_selfimage)
@@ -1990,7 +1990,7 @@
 		if(istype(mob_container, /obj/item/mmi))
 			var/obj/item/mmi/mmi = mob_container
 			if(mmi.brainmob)
-				occupant.forceMove(mmi)
+				occupant.force_move(mmi)
 			mmi.mecha = null
 			occupant.canmove = 0
 		occupant.clear_alert("charge")
@@ -1999,7 +1999,7 @@
 		occupant.reset_perspective()
 		occupant = null
 		update_appearance()
-		setDir(dir_in)
+		set_dir(dir_in)
 		remove_obj_verb(src, /obj/mecha/verb/eject)
 
 		// Doesn't seem needed.
@@ -2542,7 +2542,7 @@
 		var/obj/O = locate(href_list["drop_from_cargo"])
 		if(O && (O in src.cargo))
 			src.occupant_message("<span class='notice'>You unload [O].</span>")
-			O.forceMove(get_turf(src))
+			O.force_move(get_turf(src))
 			src.cargo -= O
 			var/turf/T = get_turf(O)
 			if(T)

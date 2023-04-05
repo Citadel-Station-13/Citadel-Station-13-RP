@@ -95,7 +95,7 @@
 					usr.put_in_hands_or_drop(inserted_id)
 					inserted_id = null
 				else
-					inserted_id.forceMove(get_turf(src))
+					inserted_id.force_move(get_turf(src))
 					inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()

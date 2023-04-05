@@ -33,7 +33,7 @@
 /obj/machinery/conveyor/Initialize(mapload, newdir, on = 0)
 	. = ..()
 	if(newdir)
-		setDir(newdir)
+		set_dir(newdir)
 
 	update_dir()
 
@@ -58,7 +58,7 @@
 		operating = OFF
 	update()
 
-/obj/machinery/conveyor/setDir()
+/obj/machinery/conveyor/set_dir()
 	. =..()
 	update_dir()
 

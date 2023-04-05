@@ -292,7 +292,7 @@
 	if(user.zone_selected == BP_TORSO)
 		if(voodoo_link)
 			target = null
-			voodoo_link.forceMove(drop_location())
+			voodoo_link.force_move(drop_location())
 			to_chat(user, "<span class='notice'>You remove the [voodoo_link] from the doll.</span>")
 			voodoo_link = null
 			update_targets()

@@ -755,7 +755,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 */
 //Hook, override it to run code when dir changes
 //Like for /atoms, but clients are their own snowflake FUCK
-/client/proc/setDir(newdir)
+/client/proc/set_dir(newdir)
 	dir = newdir
 
 /client/vv_edit_var(var_name, var_value)

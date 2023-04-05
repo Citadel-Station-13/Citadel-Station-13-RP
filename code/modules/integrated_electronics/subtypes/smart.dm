@@ -201,7 +201,7 @@
 /obj/item/integrated_circuit/input/mmi_tank/proc/RemoveBrain()
 	if(installed_brain)
 		can_be_asked_input = TRUE
-		installed_brain.forceMove(drop_location())
+		installed_brain.force_move(drop_location())
 		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
 		if(installed_brain.brainmob)
 			installed_brain.brainmob.remote_control = null
@@ -329,7 +329,7 @@
 /obj/item/integrated_circuit/input/pAI_connector/proc/RemovepAI()
 	if(installed_pai)
 		can_be_asked_input = TRUE
-		installed_pai.forceMove(drop_location())
+		installed_pai.force_move(drop_location())
 		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
 		installed_pai.pai.remote_control = null
 

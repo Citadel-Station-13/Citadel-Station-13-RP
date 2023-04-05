@@ -360,7 +360,7 @@
 	T.visible_message(SPAN_NOTICE("\The [src] vanishes!"))
 	s1.start()
 
-	forceMove(target_turf)
+	force_move(target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 50, 1)
 	to_chat(src, SPAN_NOTICE("You teleport to \the [target_turf]."))
 

@@ -68,7 +68,7 @@
 			visible_message("<span class='warning'>[user] appears to phase through \the [hit_atom]!</span>")
 			to_chat(user, "<span class='info'>You find a destination on the other side of \the [hit_atom], and phase through it.</span>")
 			spark_system.start()
-			user.forceMove(found_turf)
+			user.force_move(found_turf)
 			qdel(src)
 			return 1
 		else

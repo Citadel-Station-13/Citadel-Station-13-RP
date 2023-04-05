@@ -3,7 +3,7 @@
 	if(nif)
 		var/obj/item/nif/deadnif = nif //Unimplant removes the reference on the mob
 		deadnif.unimplant(src)
-		deadnif.forceMove(drop_location())
+		deadnif.force_move(drop_location())
 		deadnif.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/deadnif.w_class))
 		deadnif.wear(10) //Presumably it's gone through some shit if they got gibbed?
 
@@ -24,7 +24,7 @@
 
 	//mirror should drop on gib
 	if(mirror)
-		mirror.forceMove(drop_location())
+		mirror.force_move(drop_location())
 		mirror.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)), rand(1,3), round(30/mirror.w_class))
 
 	for(var/obj/item/organ/external/E in src.organs)
@@ -43,7 +43,7 @@
 
 	//mirror should drop on dust
 	if(mirror)
-		mirror.forceMove(drop_location())
+		mirror.force_move(drop_location())
 		mirror = null
 
 	if(species)
@@ -55,7 +55,7 @@
 
 	//mirror should drop on ash
 	if(mirror)
-		mirror.forceMove(drop_location())
+		mirror.force_move(drop_location())
 
 	if(species)
 		..(species.dusted_anim)

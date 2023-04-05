@@ -68,9 +68,9 @@
 		return
 
 	if(get_turf(user) == get_turf(src))
-		usr.forceMove(get_step(src, src.dir))
+		usr.force_move(get_step(src, src.dir))
 	else
-		usr.forceMove(get_turf(src))
+		usr.force_move(get_turf(src))
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	climbers -= user

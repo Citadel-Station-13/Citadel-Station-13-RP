@@ -155,7 +155,7 @@
 	if (do_after(user, BREAKER_WRENCH_DELAY, target = src))
 		current_action = 0
 		default_unfasten_wrench(user, I, 0)
-		setDir(SOUTH)
+		set_dir(SOUTH)
 		return TRUE
 	else
 		current_action = 0

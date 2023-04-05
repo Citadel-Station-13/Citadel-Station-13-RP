@@ -18,7 +18,7 @@
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
 
-/mob/living/forceMove(atom/destination)
+/mob/living/force_move(atom/destination)
 	if(buckled && (buckled.loc != destination))
 		unbuckle(BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 	return ..()
@@ -206,14 +206,14 @@
 	if(move_onto)
 		pass_flags |= ATOM_PASS_MOB
 		if(!Move(their_old_loc))
-			forceMove(src_old_loc)
+			force_move(src_old_loc)
 			move_failed = TRUE
 	else
 		pass_flags |= ATOM_PASS_MOB
 		them.pass_flags |= ATOM_PASS_MOB
 		if(!them.Move(src_old_loc) || !Move(their_old_loc))
-			forceMove(src_old_loc)
-			them.forceMove(their_old_loc)
+			force_move(src_old_loc)
+			them.force_move(their_old_loc)
 			move_failed = TRUE
 
 	// restore
@@ -361,4 +361,4 @@
 
 	// restore dir if needed
 	if(their_dir)
-		pushing.setDir(their_dir)
+		pushing.set_dir(their_dir)

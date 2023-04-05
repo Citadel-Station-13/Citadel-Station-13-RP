@@ -268,7 +268,7 @@
 		if(!user.incapacitated() && Adjacent(user) && !isrobot(user))
 			user.put_in_hands(beaker)
 		else
-			beaker.forceMove(drop_location())
+			beaker.force_move(drop_location())
 		beaker = null
 	if(new_beaker)
 		beaker = new_beaker

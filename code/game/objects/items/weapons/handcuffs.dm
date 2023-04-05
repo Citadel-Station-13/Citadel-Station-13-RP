@@ -94,7 +94,7 @@
 	if(dispenser)
 		cuffs = new(target)
 	if(!target.force_equip_to_slot(cuffs, SLOT_ID_HANDCUFFED, user = user))
-		forceMove(user.drop_location())
+		force_move(user.drop_location())
 	return 1
 
 /obj/item/handcuffs/equipped(mob/living/user, slot, accessory)
@@ -286,7 +286,7 @@ var/last_chew = 0
 	if(dispenser)
 		lcuffs = new(get_turf(user))
 	if(!target.force_equip_to_slot(lcuffs, SLOT_ID_LEGCUFFED, user = user))
-		forceMove(user.drop_location())
+		force_move(user.drop_location())
 	return 1
 
 /obj/item/handcuffs/legcuffs/equipped(var/mob/living/user,var/slot)

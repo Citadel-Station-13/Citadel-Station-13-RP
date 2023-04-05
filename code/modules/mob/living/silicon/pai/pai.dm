@@ -292,8 +292,8 @@
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
 
-	forceMove(card.loc)
-	card.forceMove(src)
+	force_move(card.loc)
+	card.force_move(src)
 	update_perspective()
 
 	card.screen_loc = null
@@ -414,12 +414,12 @@
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		H.forceMove(get_turf(src))
-		forceMove(get_turf(src))
+		H.force_move(get_turf(src))
+		force_move(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
-	card.forceMove(loc)
-	forceMove(card)
+	card.force_move(loc)
+	force_move(card)
 	update_perspective()
 	canmove = TRUE
 	resting = FALSE

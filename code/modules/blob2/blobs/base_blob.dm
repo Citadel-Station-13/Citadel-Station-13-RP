@@ -26,7 +26,7 @@ var/list/blobs = list()
 	update_icon()
 	if(!integrity)
 		integrity = max_integrity
-	setDir(pick(GLOB.cardinal))
+	set_dir(pick(GLOB.cardinal))
 	blobs += src
 	consume_tile()
 
@@ -170,7 +170,7 @@ var/list/blobs = list()
 		if(T.Enter(B,src)) //NOW we can attempt to move into the tile
 			sleep(1) // To have the slide animation work.
 			B.density = initial(B.density)
-			B.forceMove(T)
+			B.force_move(T)
 			B.update_icon()
 			if(B.overmind && expand_reaction)
 				B.overmind.blob_type.on_expand(src, B, T, B.overmind)
@@ -196,7 +196,7 @@ var/list/blobs = list()
 
 /obj/structure/blob/proc/blob_attack_animation(atom/A = null, controller) //visually attacks an atom
 	var/obj/effect/temporary_effect/blob_attack/O = new /obj/effect/temporary_effect/blob_attack(src.loc)
-	O.setDir(dir)
+	O.set_dir(dir)
 	if(controller)
 		var/mob/observer/blob/BO = controller
 		O.color = BO.blob_type.color
@@ -215,7 +215,7 @@ var/list/blobs = list()
 	if(controller)
 		B.overmind = controller
 	B.update_icon()
-	B.setDir(dir)
+	B.set_dir(dir)
 	qdel(src)
 	return B
 

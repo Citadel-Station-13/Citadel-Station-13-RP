@@ -271,7 +271,7 @@
 		state = FRAME_PLACED
 
 		if(dir)
-			setDir(dir)
+			set_dir(dir)
 
 		if(frame_type.x_offset)
 			pixel_x = (dir & 3)? 0 : (dir == EAST ? -frame_type.x_offset : frame_type.x_offset)
@@ -406,7 +406,7 @@
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.setDir(dir)
+				B.set_dir(dir)
 				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -420,7 +420,7 @@
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.setDir(dir)
+				B.set_dir(dir)
 				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -433,7 +433,7 @@
 				var/obj/machinery/B = new circuit.build_path(loc)
 				B.pixel_x = pixel_x
 				B.pixel_y = pixel_y
-				B.setDir(dir)
+				B.set_dir(dir)
 				circuit.after_construct(B)
 				circuit.loc = null
 				B.circuit = circuit
@@ -446,7 +446,7 @@
 				playsound(src, P.tool_sound, 50, TRUE)
 				to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				state = FRAME_PLACED
-				circuit.forceMove(loc)
+				circuit.force_move(loc)
 				circuit = null
 				if(frame_type.frame_class == FRAME_CLASS_MACHINE)
 					req_components = null
@@ -459,7 +459,7 @@
 				else
 					to_chat(user, SPAN_NOTICE("You remove the components."))
 					for(var/obj/item/W in components)
-						W.forceMove(loc)
+						W.force_move(loc)
 					check_components()
 					update_desc()
 					to_chat(user, desc)
@@ -613,7 +613,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return FALSE
 
-	src.setDir(turn(src.dir, 90))
+	src.set_dir(turn(src.dir, 90))
 
 	to_chat(usr, SPAN_NOTICE("You rotate \the [src] to face [dir2text(dir)]!"))
 
@@ -632,7 +632,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return FALSE
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 
 	to_chat(usr, SPAN_NOTICE("You rotate \the [src] to face [dir2text(dir)]!"))
 

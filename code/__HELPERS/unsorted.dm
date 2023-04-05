@@ -724,7 +724,7 @@
 					var/old_decals = T.decals ? T.decals.Copy() : null
 
 					X = B.PlaceOnTop(T.type)
-					X.setDir(old_dir1)
+					X.set_dir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1
 					X.copy_overlays(T, TRUE)
@@ -743,7 +743,7 @@
 					if(T.z != X.z)
 						z_level_change = TRUE
 
-					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
+					//Move the objects. Not force_move because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
 						O.update_light()
@@ -856,7 +856,7 @@
 
 					var/turf/X = B
 					X.ChangeTurf(T.type)
-					X.setDir(old_dir1)
+					X.set_dir(old_dir1)
 					X.icon_state = old_icon_state1
 					X.icon = old_icon1 //Shuttle floors are in shuttle.dmi while the defaults are floors.dmi
 					X.decals = old_decals

@@ -9,24 +9,24 @@
 		if("x")
 			var/turf/T = locate(var_value, y, z)
 			if(T)
-				forceMove(T)
+				force_move(T)
 				return TRUE
 			return FALSE
 		if("y")
 			var/turf/T = locate(x, var_value, z)
 			if(T)
-				forceMove(T)
+				force_move(T)
 				return TRUE
 			return FALSE
 		if("z")
 			var/turf/T = locate(x, y, var_value)
 			if(T)
-				forceMove(T)
+				force_move(T)
 				return TRUE
 			return FALSE
 		if("loc")
 			if(istype(var_value, /atom))
-				forceMove(var_value)
+				force_move(var_value)
 				return TRUE
 			else if(isnull(var_value))
 				moveToNullspace()

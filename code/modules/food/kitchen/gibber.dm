@@ -139,7 +139,7 @@
 	src.add_fingerprint(user)
 	if(do_after(user, 30) && victim.Adjacent(src) && user.Adjacent(src) && victim.Adjacent(user) && !occupant)
 		user.visible_message("<span class='danger'>[user] stuffs [victim] into the gibber!</span>")
-		victim.forceMove(src)
+		victim.force_move(src)
 		victim.update_perspective()
 		occupant = victim
 		update_icon()
@@ -159,8 +159,8 @@
 	if(operating || !src.occupant)
 		return
 	for(var/obj/O in src)
-		O.forceMove(loc)
-	occupant.forceMove(loc)
+		O.force_move(loc)
+	occupant.force_move(loc)
 	occupant.update_perspective()
 	occupant = null
 	update_icon()
@@ -225,7 +225,7 @@
 			if(istype(thing,/obj/item/organ) && prob(80))
 				qdel(thing)
 				continue
-			thing.forceMove(get_turf(thing)) // Drop it onto the turf for throwing.
+			thing.force_move(get_turf(thing)) // Drop it onto the turf for throwing.
 			thing.throw_at_old(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
 
 		update_icon()

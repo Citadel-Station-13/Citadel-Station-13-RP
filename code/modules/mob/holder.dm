@@ -41,7 +41,7 @@
 	else if(isturf(loc))
 		drop_items()
 		if(held_mob)
-			held_mob.forceMove(loc)
+			held_mob.force_move(loc)
 			held_mob = null
 		qdel(src)
 
@@ -49,7 +49,7 @@
 	for(var/atom/movable/M in contents)
 		if(M == held_mob)
 			continue
-		M.forceMove(get_turf(src))
+		M.force_move(get_turf(src))
 
 /obj/item/holder/onDropInto(var/atom/movable/AM)
 	if(ismob(loc))   // Bypass our holding mob and drop directly to its loc
@@ -95,10 +95,10 @@
 		if(holster.holstered == src)
 			holster.clear_holster()
 		to_chat(held, SPAN_WARNING("You extricate yourself from [holster]."))
-		held.forceMove(get_turf(held))
+		held.force_move(get_turf(held))
 	else if(isitem(loc))
 		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
-		held.forceMove(get_turf(held))
+		held.force_move(get_turf(held))
 
 /obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
 	if(M == held_mob)
@@ -110,7 +110,7 @@
 	return held_mob
 
 /obj/item/holder/throw_resolve_override(atom/movable/resolved, mob/user)
-	held_mob.forceMove(user.drop_location())
+	held_mob.force_move(user.drop_location())
 	held_mob = null
 	return TRUE
 
@@ -201,7 +201,7 @@
 
 	var/obj/item/holder/H = new holder_type(get_turf(src))
 	H.held_mob = src
-	src.forceMove(H)
+	src.force_move(H)
 	grabber.put_in_hands(H)
 
 	if(self_grab)

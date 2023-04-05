@@ -19,8 +19,8 @@
 	if (emote == src.activation_emote)
 		src.uses--
 		to_chat(source, "You feel a faint click.")
-		source.handcuffed?.forceMove(source.drop_location())
-		source.legcuffed?.forceMove(source.drop_location())
+		source.handcuffed?.force_move(source.drop_location())
+		source.legcuffed?.force_move(source.drop_location())
 
 /obj/item/implant/freedom/post_implant(mob/source)
 	source.mind.store_memory("Freedom implant can be activated by using the [src.activation_emote] emote, <B>say *[src.activation_emote]</B> to attempt to activate.", 0, 0)

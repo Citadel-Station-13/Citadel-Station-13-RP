@@ -15,7 +15,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/destroy()
 	for(var/atom/movable/AM in src)
-		AM.forceMove(get_turf(src))
+		AM.force_move(get_turf(src))
 		to_chat(AM, "<span class='danger'>You tumble out of the destroyed [src.name]!</span>")
 	return ..()
 
@@ -32,7 +32,7 @@
 			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY
 			//? THUS, SLEEP A SINGLE TICK.
 			spawn(world.tick_lag)
-				user.forceMove(src)
+				user.force_move(src)
 				user.update_perspective()
 			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant = user
@@ -54,7 +54,7 @@
 		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	if(src != pod.occupant)
-		forceMove(get_turf(pod))
+		force_move(get_turf(pod))
 		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
 	to_chat(src, "You climb out from \the [src].")
@@ -67,7 +67,7 @@
 	if(!occupant)
 		return
 	remove_verb(occupant, /mob/proc/verb_eject_mech_passenger)
-	occupant.forceMove(get_turf(src))
+	occupant.force_move(get_turf(src))
 	occupant.update_perspective()
 	occupant = null
 	return

@@ -1,15 +1,15 @@
 /mob/observer/dead/Move(NewLoc, direct)
 	if(updatedir)
-		setDir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
+		set_dir(direct)//only update dir if we actually need it, so overlays won't spin on base sprites that don't have directions of their own
 	var/oldloc = loc
 
 	if(NewLoc)
-		forceMove(NewLoc)
+		force_move(NewLoc)
 /*
 		update_parallax_contents()
 */
 	else
-		forceMove(get_turf(src))  //Get out of closets and such as a ghost
+		force_move(get_turf(src))  //Get out of closets and such as a ghost
 		if((direct & NORTH) && y < world.maxy)
 			y++
 		else if((direct & SOUTH) && y > 1)

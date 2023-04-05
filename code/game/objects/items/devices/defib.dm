@@ -91,7 +91,7 @@
 	else if(W.is_screwdriver())
 		if(bcell)
 			bcell.update_icon()
-			bcell.forceMove(get_turf(src.loc))
+			bcell.force_move(get_turf(src.loc))
 			bcell = null
 			to_chat(user, "<span class='notice'>You remove the cell from \the [src].</span>")
 			update_icon()
@@ -150,7 +150,7 @@
 
 	if(ismob(paddles.loc))
 		to_chat(paddles.loc, "<span class='notice'>\The [paddles] snap back into the main unit.</span>")
-	paddles.forceMove(src)
+	paddles.force_move(src)
 	update_icon()
 
 /*

@@ -433,7 +433,7 @@
 		return 1
 
 /obj/machinery/seed_storage/proc/add(var/obj/item/seeds/O as obj, var/contraband = 0)
-	O.forceMove(src)
+	O.force_move(src)
 	var/newID = 0
 
 	if(contraband)

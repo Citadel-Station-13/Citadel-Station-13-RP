@@ -183,7 +183,7 @@
 		if("eject_packet")
 			if(!seed)
 				return
-			seed.forceMove(get_turf(src))
+			seed.force_move(get_turf(src))
 
 			if(seed.seed.name == "new line" || isnull(SSplants.seeds[seed.seed.name]))
 				seed.seed.uid = SSplants.seeds.len + 1
@@ -199,7 +199,7 @@
 		if("eject_disk")
 			if(!loaded_disk)
 				return
-			loaded_disk.forceMove(get_turf(src))
+			loaded_disk.force_move(get_turf(src))
 			visible_message("[icon2html(src)] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 			return TRUE

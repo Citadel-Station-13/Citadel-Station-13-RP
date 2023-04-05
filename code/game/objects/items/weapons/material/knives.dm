@@ -191,7 +191,7 @@
 /obj/item/material/knife/machete/armblade/rig/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(storing_module)
-		src.forceMove(storing_module)
+		src.force_move(storing_module)
 		user.visible_message(
 			"<span class='notice'>[user] retracts [src], folding it away with a click and a hiss.</span>",
 			"<span class='notice'>You retract [src], folding it away with a click and a hiss.</span>",

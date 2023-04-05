@@ -112,7 +112,7 @@
 			to_chat(user, SPAN_NOTICE("You remove [cell] into [nickname]."))
 			playsound(src, I.tool_sound, 50, 1)
 			power_down()
-			cell.forceMove(get_turf(src))
+			cell.force_move(get_turf(src))
 			cell = null
 
 	else if(istype(I, /obj/item/cell) && !cell)
@@ -121,7 +121,7 @@
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			power_down()
 			user.remove_from_mob(I)
-			I.forceMove(src)
+			I.force_move(src)
 			cell = I
 
 	else if(istype(I, /obj/item/pen) || istype(I, /obj/item/flashlight/pen))

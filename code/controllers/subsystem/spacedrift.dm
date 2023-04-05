@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(spacedrift)
 		if (AM.loc == old_loc)
 			AM.inertia_dir = 0
 
-		AM.setDir(old_dir)
+		AM.set_dir(old_dir)
 		AM.inertia_last_loc = AM.loc
 		if (MC_TICK_CHECK)
 			return

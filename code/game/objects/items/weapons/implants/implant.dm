@@ -34,9 +34,9 @@
 			affected.implants |= src
 			part = affected
 	if(part)
-		forceMove(part)
+		force_move(part)
 	else
-		forceMove(source)
+		force_move(source)
 
 	listening_objects |= src
 

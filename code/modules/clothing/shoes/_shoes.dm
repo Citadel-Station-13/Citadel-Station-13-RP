@@ -99,7 +99,7 @@
 			var/obj/item/holder/micro/holder = I
 			if(holder.held_mob && (holder.held_mob in holder))
 				to_chat(holder.held_mob,"<span class='warning'>[user] stuffs you into \the [src]!</span>")
-				holder.held_mob.forceMove(src)
+				holder.held_mob.force_move(src)
 				to_chat(user,"<span class='notice'>You stuff \the [holder.held_mob] into \the [src]!</span>")
 	else
 		return ..()
@@ -109,7 +109,7 @@
 	if(.)
 		return //gtfo my shoe
 	for(var/mob/M in src)
-		M.forceMove(get_turf(user))
+		M.force_move(get_turf(user))
 		to_chat(M,"<span class='warning'>[user] shakes you out of \the [src]!</span>")
 		to_chat(user,"<span class='notice'>You shake [M] out of \the [src]!</span>")
 

@@ -31,5 +31,5 @@
 			AM.em_block = null
 	return ..()
 
-/atom/movable/emissive_blocker/forceMove(atom/destination)
+/atom/movable/emissive_blocker/force_move(atom/destination)
 	return FALSE	// nope.

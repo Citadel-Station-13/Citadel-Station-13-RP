@@ -233,7 +233,7 @@
 	if(affecting.lying && state != GRAB_KILL)
 		animate(affecting, pixel_x = initial(affecting.pixel_x), pixel_y = initial(affecting.pixel_y), 5, 1, LINEAR_EASING)
 		if(force_down)
-			affecting.setDir(SOUTH) //face up
+			affecting.set_dir(SOUTH) //face up
 		return
 	var/shift = 0
 	var/adir = get_dir(assailant, affecting)
@@ -243,19 +243,19 @@
 			shift = 8
 			if(dancing) //look at partner
 				shift = 10
-				assailant.setDir(get_dir(assailant, affecting))
+				assailant.set_dir(get_dir(assailant, affecting))
 		if(GRAB_AGGRESSIVE)
 			shift = 12
 		if(GRAB_NECK)
 			shift = -10
 			adir = assailant.dir
-			affecting.forceMove(assailant.loc)
-			affecting.setDir(assailant.dir)
+			affecting.force_move(assailant.loc)
+			affecting.set_dir(assailant.dir)
 		if(GRAB_KILL)
 			shift = 0
 			adir = 1
-			affecting.forceMove(assailant.loc)
-			affecting.setDir(SOUTH) //face up
+			affecting.force_move(assailant.loc)
+			affecting.set_dir(SOUTH) //face up
 
 	switch(adir)
 		if(NORTH)
@@ -305,7 +305,7 @@
 		assailant.visible_message("<span class='warning'>[assailant] has reinforced [TU.his] grip on [affecting] (now neck)!</span>")
 		state = GRAB_NECK
 		icon_state = "grabbed+1"
-		assailant.setDir(get_dir(assailant, affecting))
+		assailant.set_dir(get_dir(assailant, affecting))
 		add_attack_logs(assailant,affecting,"Neck grabbed")
 		hud.icon_state = "kill"
 		hud.name = "kill"
@@ -319,7 +319,7 @@
 		add_attack_logs(assailant,affecting,"Strangled")
 		affecting.setClickCooldown(10)
 		affecting.AdjustLosebreath(1)
-		affecting.setDir(WEST)
+		affecting.set_dir(WEST)
 	adjust_position()
 
 //This is used to make sure the victim hasn't managed to yackety sax away before using the grab.
@@ -589,8 +589,8 @@
 	target.Weaken(3)
 	target.lying = 1
 	step_to(attacker, target)
-	attacker.setDir(EAST) //face the victim
-	target.setDir(SOUTH) //face up
+	attacker.set_dir(EAST) //face the victim
+	target.set_dir(SOUTH) //face up
 
 /obj/item/grab/proc/devour(mob/target, mob/user)
 	var/can_eat

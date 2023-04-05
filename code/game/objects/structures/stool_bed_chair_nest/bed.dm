@@ -129,7 +129,7 @@
 			return
 		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
 		if(do_after(user, 20, G.affecting))
-			affecting.forceMove(loc)
+			affecting.force_move(loc)
 			spawn(0)
 				if(buckle_mob(affecting))
 					affecting.visible_message(\
@@ -294,7 +294,7 @@
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
 			to_chat(user, "<span class='notice'>You collect the roller bed.</span>")
-			forceMove(RH)
+			force_move(RH)
 			RH.held = src
 			return
 
@@ -342,7 +342,7 @@
 			var/mob/living/L = A
 
 			if(L.buckled == src)
-				L.forceMove(loc)
+				L.force_move(loc)
 
 /obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
 	. = ..()

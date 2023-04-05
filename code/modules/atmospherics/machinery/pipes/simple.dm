@@ -78,9 +78,9 @@
 
 /obj/machinery/atmospherics/pipe/simple/proc/normalize_dir()
 	if(dir==3)
-		setDir(1)
+		set_dir(1)
 	else if(dir==12)
-		setDir(4)
+		set_dir(4)
 
 /obj/machinery/atmospherics/pipe/simple/Destroy()
 	if(node1)

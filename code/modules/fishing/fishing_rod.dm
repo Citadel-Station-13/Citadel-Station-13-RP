@@ -41,7 +41,7 @@
 
 /obj/item/material/fishing_rod/CtrlClick(mob/user)
 	if((src.loc == user || Adjacent(user)) && Bait)
-		Bait.forceMove(get_turf(user))
+		Bait.force_move(get_turf(user))
 		to_chat(user, "<span class='notice'>You remove the bait from \the [src].</span>")
 		Bait = null
 	else

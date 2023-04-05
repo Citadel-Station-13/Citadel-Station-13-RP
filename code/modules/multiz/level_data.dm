@@ -21,7 +21,7 @@ INITIALIZE_IMMEDIATE(/obj/level_data)
 /obj/level_data/Initialize()
 	. = ..()
 	my_z = z
-	forceMove(null)
+	force_move(null)
 	if(GLOB.levels_by_z["[my_z]"])
 		stack_trace("Duplicate level data created for z[z].")
 	GLOB.levels_by_z["[my_z]"] = src

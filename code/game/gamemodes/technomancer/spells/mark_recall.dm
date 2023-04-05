@@ -35,7 +35,7 @@
 			mark_spell_ref = new(get_turf(user))
 			to_chat(user, "<span class='notice'>You mark \the [get_turf(user)] under you.</span>")
 		else
-			mark_spell_ref.forceMove(get_turf(user))
+			mark_spell_ref.force_move(get_turf(user))
 			to_chat(user, "<span class='notice'>Your mark is moved from its old position to \the [get_turf(user)] under you.</span>")
 		adjust_instability(5)
 		return 1
@@ -91,10 +91,10 @@
 
 			for(var/obj/item/grab/G in user.contents) // People the Technomancer is grabbing come along for the ride.
 				if(G.affecting)
-					G.affecting.forceMove(locate( target_turf.x+rand(-1,1), target_turf.y+rand(-1,1), target_turf.z))
+					G.affecting.force_move(locate( target_turf.x+rand(-1,1), target_turf.y+rand(-1,1), target_turf.z))
 					to_chat(G.affecting, "<span class='warning'>You are teleported along with [user]!</span>")
 
-			user.forceMove(target_turf)
+			user.force_move(target_turf)
 			to_chat(user, "<span class='notice'>You are teleported to your Mark.</span>")
 
 			playsound(target_turf, 'sound/effects/phasein.ogg', 25, 1)

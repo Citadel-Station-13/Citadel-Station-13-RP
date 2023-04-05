@@ -125,4 +125,4 @@
 	if(ismouse(usr) || (isobserver(usr) && !config_legacy.ghost_interaction))
 		return
 
-	setDir(turn(src.dir, 270))
+	set_dir(turn(src.dir, 270))

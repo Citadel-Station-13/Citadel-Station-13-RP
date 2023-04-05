@@ -11,7 +11,7 @@
 	new /obj/item/stack/material/steel(newloc, round(steel_sheet_cost/2))
 	for(var/obj/item/computer_hardware/H in get_all_components())
 		uninstall_component(null, H)
-		H.forceMove(newloc)
+		H.force_move(newloc)
 		if(prob(25))
 			H.take_damage(rand(10,30))
 	qdel()

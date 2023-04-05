@@ -413,7 +413,7 @@
 		//Actual escaping
 		absorbed = 0	//Make sure we're not absorbed
 		muffled = 0		//Removes Muffling
-		forceMove(get_turf(src)) //Just move me up to the turf, let's not cascade through bellies, there's been a problem, let's just leave.
+		force_move(get_turf(src)) //Just move me up to the turf, let's not cascade through bellies, there's been a problem, let's just leave.
 		for(var/mob/living/simple_mob/SA in range(10))
 			SA.prey_excludes[src] = world.time
 		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(B.owner)] ([B.owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[B.owner.x];Y=[B.owner.y];Z=[B.owner.z]'>JMP</a>" : "null"])")
@@ -573,7 +573,7 @@
 
 			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
-			forceMove(H.loc)
+			force_move(H.loc)
 
 		else //Being held by a human
 			to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
@@ -588,13 +588,13 @@
 				sleep(1)
 			to_chat(src,"<font color=#4F49AF>You manage to escape \the [C]!</font>")
 			to_chat(H,"<font color='red'>Somone has climbed out of your [C]!</font>")
-			forceMove(H.loc)
+			force_move(H.loc)
 
 	to_chat(src,"<font color=#4F49AF>You start to climb out of \the [C]!</font>")
 	sleep(50)
 	if(loc == C)
 		to_chat(src,"<font color=#4F49AF>You climb out of \the [C]!</font>")
-		forceMove(C.loc)
+		force_move(C.loc)
 	return
 
 /mob/living/proc/feed_grabbed_to_self_falling_nom(var/mob/living/user, var/mob/living/prey)
@@ -666,7 +666,7 @@
 						return
 					visible_message("<span class='warning'>[src] successfully makes [P] disappear!</span>")
 			to_chat(src, "<span class='notice'>You can taste the sweet flavor of delicious technology.</span>")
-			I.forceMove(vore_selected)
+			I.force_move(vore_selected)
 			updateVRPanel()
 			return
 		if(istype(I,/obj/item/clothing/shoes))

@@ -25,7 +25,7 @@
 
 /obj/item/grenade/supermatter/process(delta_time)
 	if(!isturf(loc))
-		forceMove(get_turf(src))
+		force_move(get_turf(src))
 	playsound(src, 'sound/effects/supermatter.ogg', 100)
 	supermatter_pull(src, world.view, STAGE_THREE)
 	if(world.time > implode_at)

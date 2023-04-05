@@ -61,7 +61,7 @@
 		pixel_x = 0
 		pixel_y = 0
 
-		setDir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
+		set_dir(tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE))
 
 		pixel_x = -32
 		pixel_y = -32
@@ -86,8 +86,8 @@
 			move_dir = get_dir(src,target)
 		var/turf/T = get_step(src, move_dir)
 		if(can_move(T))
-			forceMove(T)
-			setDir(move_dir)
+			force_move(T)
+			set_dir(move_dir)
 			for(var/mob/living/carbon/C in loc)
 				dust_mobs(C)
 			sleep(sleep_time) // So movement is smooth

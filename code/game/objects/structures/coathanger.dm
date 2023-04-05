@@ -38,7 +38,7 @@
 	if (can_hang && !coat)
 		src.visible_message("[mover] lands on \the [src].")
 		coat = mover
-		coat.forceMove(src)
+		coat.force_move(src)
 		update_icon()
 		return 0
 	else

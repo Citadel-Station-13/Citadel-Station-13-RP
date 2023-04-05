@@ -883,7 +883,7 @@
 		last_target = target
 		spawn()
 			popUp() //pop the turret up if it's not already up.
-		setDir(get_dir(src, target)) //even if you can't shoot, follow the target
+		set_dir(get_dir(src, target)) //even if you can't shoot, follow the target
 		shootAt(target)
 		return 1
 	return

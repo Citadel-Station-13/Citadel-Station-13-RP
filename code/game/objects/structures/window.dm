@@ -38,7 +38,7 @@
 	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
 	if (start_dir)
-		setDir(start_dir)
+		set_dir(start_dir)
 	//player-constructed windows
 	if (constructed)
 		anchored = 0
@@ -58,7 +58,7 @@
 /obj/structure/window/Move()
 	moving_right_now = dir
 	. = ..()
-	setDir(moving_right_now)
+	set_dir(moving_right_now)
 	moving_right_now = null
 
 /obj/structure/window/Moved(atom/oldloc)
@@ -212,7 +212,7 @@
 		return FALSE
 	return TRUE
 
-/obj/structure/window/setDir(newdir)
+/obj/structure/window/set_dir(newdir)
 	. = ..()
 	update_nearby_tiles()
 
@@ -385,7 +385,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	setDir(turn(dir, 90))
+	set_dir(turn(dir, 90))
 	updateSilicate()
 
 /obj/structure/window/verb/rotate_clockwise()
@@ -403,7 +403,7 @@
 		to_chat(usr, "It is fastened to the floor therefore you can't rotate it!")
 		return 0
 
-	setDir(turn(dir, 270))
+	set_dir(turn(dir, 270))
 	updateSilicate()
 
 //! Does this work? idk. Let's call it TBI.

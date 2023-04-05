@@ -11,7 +11,7 @@
 	set desc = "Move your camera to your core."
 
 	if(blob_core)
-		forceMove(blob_core.loc)
+		force_move(blob_core.loc)
 
 /mob/observer/blob/proc/createSpecial(price, blobType, nearEquals, needsNode, turf/T)
 	if(!T)
@@ -84,7 +84,7 @@
 		CHECK_TICK // Iterating over a list containing hundreds of blobs can get taxing.
 
 	if(B)
-		forceMove(B.loc)
+		force_move(B.loc)
 		return createSpecial(40, blob_type.resource_type, 4, 1, B.loc)
 
 
@@ -125,7 +125,7 @@
 		CHECK_TICK
 
 	if(B)
-		forceMove(B.loc)
+		force_move(B.loc)
 		return createSpecial(60, blob_type.factory_type, 7, 1, B.loc)
 
 
@@ -165,7 +165,7 @@
 		CHECK_TICK
 
 	if(B)
-		forceMove(B.loc)
+		force_move(B.loc)
 		return createSpecial(100, blob_type.node_type, 5, 0, B.loc)
 
 

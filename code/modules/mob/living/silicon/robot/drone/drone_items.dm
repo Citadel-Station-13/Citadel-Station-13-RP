@@ -46,7 +46,7 @@
 	if(wrapped)
 		remove_item(drop_location())
 	wrapped = I
-	I.forceMove(src)
+	I.force_move(src)
 	RegisterSignal(I, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_MOVED), .proc/unwrap_hook)
 
 /**
@@ -63,7 +63,7 @@
 			old.moveToNullspace()
 		if(FALSE)
 		else
-			old.forceMove(newloc)
+			old.force_move(newloc)
 
 /obj/item/gripper/proc/unwrap_hook(datum/source)
 	ASSERT(isitem(source))

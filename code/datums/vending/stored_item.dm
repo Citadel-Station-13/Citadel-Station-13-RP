@@ -40,14 +40,14 @@
 
 	var/atom/movable/product = instances[instances.len]	// Remove the last added product
 	instances -= product
-	product.forceMove(product_location)
+	product.force_move(product_location)
 	return product
 
 /datum/stored_item/proc/add_product(var/atom/movable/product)
 	if(product.type != item_path)
 		return 0
 	init_products()
-	product.forceMove(stored)
+	product.force_move(stored)
 	instances += product
 
 /datum/stored_item/proc/init_products()

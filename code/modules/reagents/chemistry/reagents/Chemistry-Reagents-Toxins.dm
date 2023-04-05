@@ -686,7 +686,7 @@
 					backup_implants += BI
 			if(backup_implants.len)
 				for(var/obj/item/implant/backup/BI in backup_implants)
-					BI.forceMove(src)
+					BI.force_move(src)
 
 			H.set_species(/datum/species/shapeshifter/promethean)
 			H.shapeshifter_set_colour("#05FF9B") //They can still change their color.
@@ -694,7 +694,7 @@
 			if(backup_implants.len)
 				var/obj/item/organ/external/torso = H.get_organ(BP_TORSO)
 				for(var/obj/item/implant/backup/BI in backup_implants)
-					BI.forceMove(torso)
+					BI.force_move(torso)
 					torso.implants += BI
 
 

@@ -3,7 +3,7 @@
 /obj/machinery/atmospherics/Destroy()
 	for(var/mob/living/M in src) //ventcrawling is serious business
 		M.remove_ventcrawl()
-		M.forceMove(get_turf(src))
+		M.force_move(get_turf(src))
 		M.update_perspective()
 	if(pipe_image)
 		for(var/mob/living/M in GLOB.player_list)
@@ -35,14 +35,14 @@
 	if(target_move)
 		if(is_type_in_list(target_move, ventcrawl_machinery) && target_move.can_crawl_through())
 			user.remove_ventcrawl()
-			user.forceMove(target_move.loc) //handles entering and so on
+			user.force_move(target_move.loc) //handles entering and so on
 			user.update_perspective()
 			user.visible_message("You hear something squeezing through the ducts.", "You climb out the ventilation system.")
 		else if(target_move.can_crawl_through())
 			if(target_move.return_network(target_move) != return_network(src))
 				user.remove_ventcrawl()
 				user.add_ventcrawl(target_move)
-			user.forceMove(target_move)
+			user.force_move(target_move)
 			user.update_perspective()
 			if(world.time > user.next_play_vent)
 				user.next_play_vent = world.time+30
@@ -50,7 +50,7 @@
 	else
 		if((direction & initialize_directions) || is_type_in_list(src, ventcrawl_machinery) && src.can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 			user.remove_ventcrawl()
-			user.forceMove(loc)
+			user.force_move(loc)
 			user.update_perspective()
 			user.visible_message("You hear something squeezing through the pipes.", "You climb out the ventilation system.")
 	user.canmove = 0

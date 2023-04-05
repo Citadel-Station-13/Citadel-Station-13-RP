@@ -139,7 +139,7 @@
 		var/mob/living/L = target
 		var/throwdir = get_dir(user,L)
 		var/destination = turn(throwdir, 180)
-		user.forceMove(destination)
+		user.force_move(destination)
 		user.emote("flip")
 */
 

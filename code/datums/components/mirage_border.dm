@@ -34,7 +34,7 @@
 /datum/component/mirage_border/PostTransfer()
 	if(!isturf(parent))
 		return COMPONENT_INCOMPATIBLE
-	holder.forceMove(parent)
+	holder.force_move(parent)
 
 /obj/effect/abstract/mirage_holder
 	name = "Mirage holder"

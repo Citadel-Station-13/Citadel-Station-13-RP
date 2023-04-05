@@ -55,7 +55,7 @@
 	if(!Adjacent(user))
 		..()
 	if(corptag)
-		corptag.forceMove(get_turf(user))
+		corptag.force_move(get_turf(user))
 		to_chat(user, "<span class='notice'>You remove \the [corptag] from \the [src].</span>")
 		corptag = null
 		update_icon()
@@ -65,7 +65,7 @@
 /obj/structure/closet/body_bag/cryobag/robobag/Destroy()
 	if(corptag && get_turf(src))
 		var/turf/T = get_turf(src)
-		corptag.forceMove(T)
+		corptag.force_move(T)
 		corptag = null
 	else
 		QDEL_NULL(corptag)
@@ -95,7 +95,7 @@
 				if(!user.attempt_void_item_for_installation(W))
 					return
 				var/old_tag = corptag
-				corptag.forceMove(get_turf(src))
+				corptag.force_move(get_turf(src))
 				corptag = W
 				to_chat(user, "<span class='notice'>You swap \the [old_tag] for \the [corptag].</span>")
 			else

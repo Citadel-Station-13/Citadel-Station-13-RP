@@ -281,11 +281,11 @@
 			SStranscore.core_dump(disk)
 			sleep(5)
 			visible_message("<span class='warning'>\The [src] spits out \the [disk].</span>")
-			disk.forceMove(get_turf(src))
+			disk.force_move(get_turf(src))
 			disk = null
 
 	else if (href_list["ejectdisk"])
-		disk.forceMove(get_turf(src))
+		disk.force_move(get_turf(src))
 		disk = null
 
 	else if (href_list["create"])

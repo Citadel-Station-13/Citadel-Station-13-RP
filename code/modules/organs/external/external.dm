@@ -284,7 +284,7 @@
 
 /obj/item/organ/external/replaced(var/mob/living/carbon/human/target)
 	owner = target
-	forceMove(owner)
+	force_move(owner)
 	if(istype(owner))
 		owner.organs_by_name[organ_tag] = src
 		owner.organs |= src
@@ -934,7 +934,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			new /obj/effect/debris/cleanable/ash(droploc)
 			for(var/obj/item/I in src)
 				if(I.w_class > ITEMSIZE_SMALL && !istype(I,/obj/item/organ))
-					I.forceMove(droploc)
+					I.force_move(droploc)
 			qdel(src)
 		if(DROPLIMB_BLUNT)
 			var/obj/effect/debris/cleanable/blood/gibs/gore
@@ -958,7 +958,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 				if(I.w_class <= ITEMSIZE_SMALL)
 					qdel(I)
 					continue
-				I.forceMove(droploc)
+				I.force_move(droploc)
 				I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			qdel(src)
@@ -1226,7 +1226,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	owner.embedded_flag = 1
 	add_verb(owner, /mob/proc/yank_out_object)
 	W.add_blood(owner)
-	W.forceMove(owner)
+	W.force_move(owner)
 
 /obj/item/organ/external/removed(var/mob/living/user, var/ignore_children = 0)
 	if(!owner)
@@ -1243,9 +1243,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		//large items and non-item objs fall to the floor, everything else stays
 		var/obj/item/I = implant
 		if(istype(I) && I.w_class < ITEMSIZE_NORMAL)
-			implant.forceMove(victim.drop_location())
+			implant.force_move(victim.drop_location())
 		else
-			implant.forceMove(src)
+			implant.force_move(src)
 	implants.Cut()
 
 	// Attached organs also fly off.
@@ -1253,14 +1253,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 		for(var/obj/item/organ/external/O in children)
 			O.removed()
 			if(O)
-				O.forceMove(src)
+				O.force_move(src)
 				for(var/obj/item/I in O.contents)
-					I.forceMove(src)
+					I.force_move(src)
 
 	// Grab all the internal giblets too.
 	for(var/obj/item/organ/organ in internal_organs)
 		organ.removed()
-		organ.forceMove(src)
+		organ.force_move(src)
 
 	// Remove parent references
 	parent?.children -= src

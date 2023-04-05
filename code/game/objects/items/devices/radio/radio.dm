@@ -873,7 +873,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 
 	if(ismob(handset.loc))
 		to_chat(handset.loc, "<span class='notice'>\The [handset] snaps back into the main unit.</span>")
-	handset.forceMove(src)
+	handset.force_move(src)
 
 //Subspace Radio Handset
 /obj/item/radio/bluespace_handset

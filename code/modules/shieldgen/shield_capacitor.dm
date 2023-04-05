@@ -153,5 +153,5 @@
 		to_chat(usr, "It is fastened to the floor!")
 		return
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 	return

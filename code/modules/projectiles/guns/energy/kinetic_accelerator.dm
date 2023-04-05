@@ -330,7 +330,7 @@
 				if(!user.attempt_insert_item_for_installation(src, KA))
 					return FALSE
 			else
-				forceMove(KA)
+				force_move(KA)
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src
@@ -343,7 +343,7 @@
 /obj/item/borg/upgrade/modkit/proc/uninstall(obj/item/gun/energy/kinetic_accelerator/KA, forcemove = TRUE)
 	KA.modkits -= src
 	if(forcemove)
-		forceMove(get_turf(KA))
+		force_move(get_turf(KA))
 
 /obj/item/borg/upgrade/modkit/proc/modify_projectile(obj/projectile/kinetic/K)
 

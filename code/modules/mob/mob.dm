@@ -868,7 +868,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		R.adjustBruteLoss(5)
 		R.adjustFireLoss(10)
 
-	selection.forceMove(get_turf(src))
+	selection.force_move(get_turf(src))
 	U.put_in_hands(selection)
 
 	for(var/obj/item/O in pinned)
@@ -914,14 +914,14 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			facing_dir = null
 		else
 			facing_dir = newdir
-			setDir(newdir)
+			set_dir(newdir)
 	else
 		if(facing_dir)
 			facing_dir = null
 		else
 			facing_dir = dir
 
-/mob/setDir()
+/mob/set_dir()
 	if(facing_dir)
 		if(!canface() || lying || buckled || restrained())
 			facing_dir = null

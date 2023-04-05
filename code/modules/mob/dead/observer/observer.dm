@@ -137,7 +137,7 @@
 
 	if(!T)
 		T = SSjob.get_latejoin_spawnpoint()
-	forceMove(T)
+	force_move(T)
 
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
@@ -349,7 +349,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!A)
 		return
 
-	usr.forceMove(pick(get_area_turfs(A)))
+	usr.force_move(pick(get_area_turfs(A)))
 
 /mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
 	set category = "Ghost"
@@ -379,7 +379,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	orbit(target, orbitsize)
 
 /mob/observer/dead/orbit()
-	setDir(2) //reset dir so the right directional sprites show up
+	set_dir(2) //reset dir so the right directional sprites show up
 	return ..()
 
 /mob/observer/dead/stop_orbit(datum/component/orbiter/orbits)
@@ -412,7 +412,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/turf/T = get_turf(M) //Turf of the destination mob
 
 		if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
-			forceMove(T)
+			force_move(T)
 		else
 			to_chat(src, "This mob is not located in the game world.")
 /*

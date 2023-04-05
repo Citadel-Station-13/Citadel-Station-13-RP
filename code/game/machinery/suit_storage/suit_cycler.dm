@@ -178,7 +178,7 @@
 			if(!G || !G.affecting)
 				return
 			var/mob/M = G.affecting
-			M.forceMove(src)
+			M.force_move(src)
 			M.update_perspective()
 			occupant = M
 
@@ -451,7 +451,7 @@
 	if(!occupant)
 		return
 
-	occupant.forceMove(loc)
+	occupant.force_move(loc)
 	occupant.update_perspective()
 	occupant = null
 

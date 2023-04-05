@@ -372,7 +372,7 @@
 		if(occupant)
 			to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 			return
-		M.forceMove(src)
+		M.force_move(src)
 		update_use_power(USE_POWER_ACTIVE)
 		occupant = M
 		update_icon()
@@ -381,7 +381,7 @@
 	if(!occupant || occupant.loc != src)
 		occupant = null // JUST IN CASE
 		return
-	occupant.forceMove(loc)
+	occupant.force_move(loc)
 	occupant.update_perspective()
 	occupant.Stasis(0)
 	occupant.loc = src.loc

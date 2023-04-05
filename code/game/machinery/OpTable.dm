@@ -67,7 +67,7 @@
 	else
 		visible_message(SPAN_NOTICE("\The [C] has been laid on \the [src] by [user]."))
 	C.resting = 1
-	C.forceMove(loc)
+	C.force_move(loc)
 	// now that we hold parts, this must be commented out to prevent dumping our parts onto our loc. not sure what this was intended to do when it was written.
 	/*for(var/obj/O in src)
 		O.loc = src.loc

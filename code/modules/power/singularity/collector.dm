@@ -197,7 +197,7 @@
 
 
 	if(do_after(O, 3 SECOND, src))
-		O.forceMove(src.loc)
+		O.force_move(src.loc)
 
 	if (get_turf(user) == get_turf(src))
 		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")

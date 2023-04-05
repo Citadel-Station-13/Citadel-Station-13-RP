@@ -240,7 +240,7 @@
 
 		var/turf/T = locate(new_x, new_y, new_z)
 		if(istype(T))
-			forceMove(T)
+			force_move(T)
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()

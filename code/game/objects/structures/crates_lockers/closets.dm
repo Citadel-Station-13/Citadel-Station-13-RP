@@ -55,7 +55,7 @@
 	var/obj/item/I
 	for(I in src.loc)
 		if(I.density || I.anchored || I == src) continue
-		I.forceMove(src)
+		I.force_move(src)
 	// adjust locker size to hold all items with 5 units of free store room
 	var/content_size = 0
 	for(I in src.contents)
@@ -110,13 +110,13 @@
 /obj/structure/closet/proc/dump_contents()
 	//Cham Projector Exception
 	for(var/obj/effect/dummy/chameleon/AD in src)
-		AD.forceMove(src.loc)
+		AD.force_move(src.loc)
 
 	for(var/obj/I in src)
-		I.forceMove(src.loc)
+		I.force_move(src.loc)
 
 	for(var/mob/M in src)
-		M.forceMove(loc)
+		M.force_move(loc)
 		M.update_perspective()
 
 /obj/structure/closet/proc/open()
@@ -166,7 +166,7 @@
 	for(var/obj/effect/dummy/chameleon/AD in src.loc)
 		if((stored_units + added_units) > storage_capacity)
 			break
-		AD.forceMove(src)
+		AD.force_move(src)
 		added_units++
 	return added_units
 
@@ -177,7 +177,7 @@
 		if(stored_units + added_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
-			I.forceMove(src)
+			I.force_move(src)
 			added_units += item_size
 	return added_units
 
@@ -188,7 +188,7 @@
 			continue
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
-		M.forceMove(src)
+		M.force_move(src)
 		M.update_perspective()
 		added_units += M.mob_size
 	return added_units
@@ -204,7 +204,7 @@
 			continue
 		if(stored_units + added_units + storage_cost > storage_capacity)
 			break
-		C.forceMove(src)
+		C.force_move(src)
 		added_units += storage_cost
 	return added_units
 
@@ -220,19 +220,19 @@
 	switch(severity)
 		if(1)
 			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
-				A.forceMove(src.loc)
+				A.force_move(src.loc)
 				LEGACY_EX_ACT(A, severity + 1, null)
 			qdel(src)
 		if(2)
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
+					A.force_move(src.loc)
 					LEGACY_EX_ACT(A, severity + 1, null)
 				qdel(src)
 		if(3)
 			if(prob(5))
 				for(var/atom/movable/A as mob|obj in src)
-					A.forceMove(src.loc)
+					A.force_move(src.loc)
 				qdel(src)
 
 /obj/structure/closet/blob_act()
@@ -242,7 +242,7 @@
 	health -= damage
 	if(health <= 0)
 		for(var/atom/movable/A in src)
-			A.forceMove(src.loc)
+			A.force_move(src.loc)
 		qdel(src)
 
 /obj/structure/closet/bullet_act(var/obj/projectile/Proj)

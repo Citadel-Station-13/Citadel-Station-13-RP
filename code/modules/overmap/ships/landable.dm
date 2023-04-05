@@ -46,7 +46,7 @@
 		map_z += world.maxz
 
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
-	landmark.forceMove(center_loc)
+	landmark.force_move(center_loc)
 
 	var/visitor_dir = fore_dir
 	for(var/landmark_name in list("FORE", "PORT", "AFT", "STARBOARD"))
@@ -189,12 +189,12 @@
 				break
 	if(!target || target == src)
 		return
-	forceMove(target)
+	force_move(target)
 	halt()
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_takeoff(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(!isturf(loc))
-		forceMove(get_turf(loc))
+		force_move(get_turf(loc))
 		unhalt()
 
 /obj/effect/overmap/visitable/ship/landable/get_landed_info()

@@ -59,7 +59,7 @@
 
 			docking_controller.docking_codes = location.docking_codes
 
-/obj/effect/shuttle_landmark/forceMove()
+/obj/effect/shuttle_landmark/force_move()
 	var/obj/effect/overmap/visitable/map_origin = get_overmap_sector(z)
 	. = ..()
 	var/obj/effect/overmap/visitable/map_destination = get_overmap_sector(z)

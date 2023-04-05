@@ -170,7 +170,7 @@
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
 		M.stop_pulling()
-		M.forceMove(src)
+		M.force_move(src)
 		M.update_perspective()
 		update_use_power(USE_POWER_ACTIVE)
 		occupant = M
@@ -190,7 +190,7 @@
 	avatar.exit_vr()
 	avatar = null
 
-	occupant.forceMove(loc)
+	occupant.force_move(loc)
 	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
@@ -243,7 +243,7 @@
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
 		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
-		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
+		avatar.force_move(get_turf(S))			// Put the mob on the landmark, instead of inside it
 		avatar.Sleeping(1)
 
 		occupant.enter_vr(avatar)

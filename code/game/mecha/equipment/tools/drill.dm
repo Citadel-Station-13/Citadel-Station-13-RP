@@ -48,7 +48,7 @@
 					if(ore_box)
 						for(var/obj/item/ore/ore in range(chassis,1))
 							if(get_dir(chassis,ore)&chassis.dir)
-								ore.forceMove(ore_box)
+								ore.force_move(ore_box)
 			else if(isliving(target))
 				drill_mob(target, chassis.occupant)
 				return 1
@@ -128,7 +128,7 @@
 					if(ore_box)
 						for(var/obj/item/ore/ore in range(chassis,1))
 							if(get_dir(chassis,ore)&chassis.dir)
-								ore.forceMove(ore_box)
+								ore.force_move(ore_box)
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
 				LEGACY_EX_ACT(target, 2, null)

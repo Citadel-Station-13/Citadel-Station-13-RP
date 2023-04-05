@@ -129,7 +129,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 	if(!istype(loc, /turf))
 		return INITIALIZE_HINT_QDEL
 
-	setDir(pick(GLOB.cardinal))
+	set_dir(pick(GLOB.cardinal))
 
 	var/datum/gas_mixture/air_contents = loc.return_air()
 	color = fire_color(air_contents.temperature)

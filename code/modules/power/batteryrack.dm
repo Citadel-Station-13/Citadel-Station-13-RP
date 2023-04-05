@@ -61,7 +61,7 @@
 					M.state = 2
 					M.icon_state = "machine_1"
 					for(var/obj/I in component_parts)
-						I.forceMove(drop_location())
+						I.force_move(drop_location())
 					qdel(src)
 					return 1
 				else

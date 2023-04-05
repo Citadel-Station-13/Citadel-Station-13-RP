@@ -60,7 +60,7 @@
 	RegisterSignal(I, COMSIG_MOVABLE_MOVED, .proc/on_item_moved)
 	RegisterSignal(I, COMSIG_ITEM_DROPPED, .proc/on_item_dropped)
 	if(I.loc != src)
-		I.forceMove(src)
+		I.force_move(src)
 	integrated_object = I
 
 /obj/item/organ/internal/augment/proc/unregister_item(obj/item/I)
@@ -82,7 +82,7 @@
 
 	var/obj/item/I = source
 	I.visible_message(SPAN_NOTICE("[I] snaps back into [src]!"))
-	I.forceMove(src)
+	I.force_move(src)
 	. = COMPONENT_ITEM_DROPPED_RELOCATE | COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND
 
 /obj/item/organ/internal/augment/proc/check_item_yank(obj/item/I)
@@ -94,7 +94,7 @@
 /obj/item/organ/cyberimp/arm/proc/add_item(obj/item/I)
 	if(I in items_list)
 		return
-	I.forceMove(src)
+	I.force_move(src)
 	items_list += I
 	// ayy only dropped signal for performance, we can't possibly have shitcode that doesn't call it when removing items from a mob, right?
 	// .. right??!
@@ -107,7 +107,7 @@
 		if(I in contents)		//already in us somehow? i probably shouldn't catch this so it's easier to spot bugs but eh..
 			return
 		I.visible_message("<span class='notice'>[I] snaps back into [src]!</span>")
-		I.forceMove(src)
+		I.force_move(src)
 		if(I == holder)
 			holder = nul
 */
@@ -128,7 +128,7 @@
 
 /obj/item/organ/internal/augment/handle_organ_mod_special(var/removed = FALSE)
 	if(removed && integrated_object && integrated_object.loc != src)
-		integrated_object.forceMove(src)
+		integrated_object.force_move(src)
 	..(removed)
 
 /obj/item/organ/internal/augment/proc/augment_action()
@@ -149,7 +149,7 @@
 
 	if(owner.is_in_inventory(integrated_object))
 		// retracting
-		integrated_object.forceMove(src)
+		integrated_object.force_move(src)
 		owner.visible_message(SPAN_NOTICE("[integrated_object] snaps back into [src]."))
 		return
 

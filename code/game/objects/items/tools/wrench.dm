@@ -150,8 +150,8 @@
 	playsound(get_turf(user),'sound/items/change_drill.ogg',50,1)
 	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	if(!user.put_in_active_hand(counterpart))
-		counterpart.forceMove(get_turf(user))
-	forceMove(counterpart)
+		counterpart.force_move(get_turf(user))
+	force_move(counterpart)
 	to_chat(user, "<span class='notice'>You attach the screw driver bit to [src].</span>")
 
 /obj/item/tool/wrench/crystal

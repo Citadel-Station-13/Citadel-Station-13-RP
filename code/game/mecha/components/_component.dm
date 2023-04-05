@@ -105,7 +105,7 @@
 			if(!user.attempt_insert_item_for_installation(src, target))
 				return
 			else
-				forceMove(target)
+				force_move(target)
 		chassis = target
 
 		if(internal_damage_flag)
@@ -130,7 +130,7 @@
 		if(internal_damage_flag && chassis.hasInternalDamage(internal_damage_flag))	// If the module has been removed, it's kind of unfair to keep it causing problems by being damaged. It's nonfunctional either way.
 			chassis.clearInternalDamage(internal_damage_flag)
 
-		forceMove(get_turf(chassis))
+		force_move(get_turf(chassis))
 	chassis = null
 	return TRUE
 

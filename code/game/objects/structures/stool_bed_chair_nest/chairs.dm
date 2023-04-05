@@ -76,9 +76,9 @@
 			return
 		var/obj/structure/bed/chair/e_chair/E = new (loc, material.name)
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-		E.setDir(dir)
+		E.set_dir(dir)
 		E.part = SK
-		SK.forceMove(E)
+		SK.force_move(E)
 		SK.master = E
 		qdel(src)
 
@@ -148,13 +148,13 @@
 	else
 		reset_plane_and_layer()
 
-/obj/structure/bed/chair/setDir()
+/obj/structure/bed/chair/set_dir()
 	..()
 	update_layer()
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
-			L.setDir(dir)
+			L.set_dir(dir)
 
 /obj/structure/bed/chair/verb/rotate_clockwise()
 	set name = "Rotate Chair Clockwise"
@@ -168,7 +168,7 @@
 	if(ismouse(usr) || (isobserver(usr) && !config_legacy.ghost_interaction))
 		return
 
-	src.setDir(turn(src.dir, 270))
+	src.set_dir(turn(src.dir, 270))
 
 /obj/structure/bed/chair/proc/stack_collapse()
 	visible_message(SPAN_DANGER("The stack of chairs collapses!!!"))
@@ -616,7 +616,7 @@
 			return
 	var/obj/O = new placed_object(T)
 	playsound(src, 'sound/machines/closet_open.ogg', 20, 1)
-	O.setDir(user.dir)
+	O.set_dir(user.dir)
 	qdel(src)
 	return CLICKCHAIN_DO_NOT_PROPAGATE // terminate click handling
 

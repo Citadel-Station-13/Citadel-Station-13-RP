@@ -17,7 +17,7 @@
 			if(notices > 4)
 				break
 			if(istype(I, /obj/item/paper))
-				I.forceMove(src)
+				I.force_move(src)
 				notices++
 	icon_state = "nboard0[notices]"
 	. = ..()

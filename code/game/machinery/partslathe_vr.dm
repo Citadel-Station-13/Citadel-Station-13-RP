@@ -321,7 +321,7 @@
 		if("ejectBoard")
 			if(copy_board)
 				visible_message(SPAN_NOTICE("[copy_board] is ejected from [src]'s circuit reader."))
-				copy_board.forceMove(src.loc)
+				copy_board.force_move(src.loc)
 				copy_board = null
 			return TRUE
 

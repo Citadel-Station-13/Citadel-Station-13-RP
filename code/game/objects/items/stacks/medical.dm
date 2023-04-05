@@ -400,7 +400,7 @@
 				var/obj/item/stack/medical/splint/S = split(1)
 				if(S)
 					if(affecting.apply_splint(S))
-						S.forceMove(affecting)
+						S.force_move(affecting)
 						if (M != user)
 							user.visible_message("<span class='danger'>\The [user] finishes applying [src] to [M]'s [limb].</span>", "<span class='danger'>You finish applying \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 						else
@@ -411,7 +411,7 @@
 				var/obj/item/stack/medical/splint/B = src
 				if(B)
 					if(affecting.apply_splint(B))
-						B.forceMove(affecting)
+						B.force_move(affecting)
 						user.visible_message("<span class='danger'>\The [user] finishes applying [src] to [M]'s [limb].</span>", "<span class='danger'>You finish applying \the [src] to [M]'s [limb].</span>", "<span class='danger'>You hear something being wrapped.</span>")
 						B.use(1)
 						return

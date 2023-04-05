@@ -95,7 +95,7 @@
 
 	if(user != load)
 		if(user in src)		//for handling players stuck in src - this shouldn't happen - but just in case it does
-			user.forceMove(T)
+			user.force_move(T)
 			return 1
 		return 0
 
@@ -121,7 +121,7 @@
 		return 0
 
 	if(user != load && (user in src))
-		user.forceMove(loc)			//for handling players stuck in src
+		user.force_move(loc)			//for handling players stuck in src
 	else if(load)
 		unload(user)			//unload if loaded
 	else if(!load && !user.buckled)
@@ -174,7 +174,7 @@
 	//latch with src as the follower
 	lead = T
 	T.tow = src
-	setDir(lead.dir)
+	set_dir(lead.dir)
 
 	if(user)
 		to_chat(user, "<font color=#4F49AF>You hitch [src] to [T].</font>")

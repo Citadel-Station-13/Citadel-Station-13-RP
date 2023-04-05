@@ -106,14 +106,14 @@
 
 /obj/structure/bigDelivery/Destroy()
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-		wrapped.forceMove(get_turf(src))
+		wrapped.force_move(get_turf(src))
 		if(istype(wrapped, /obj/structure/closet))
 			var/obj/structure/closet/O = wrapped
 			O.sealed = 0
 		wrapped = null
 	var/turf/T = get_turf(src)
 	for(var/atom/movable/AM in contents)
-		AM.forceMove(T)
+		AM.force_move(T)
 	return ..()
 
 /obj/item/smallDelivery
@@ -257,7 +257,7 @@
 				if(user.client)
 					user.client.screen -= O
 			P.wrapped = O
-			O.forceMove(P)
+			O.force_move(P)
 			P.w_class = O.w_class
 			var/i = round(O.w_class)
 			if(i in list(1,2,3,4,5))
