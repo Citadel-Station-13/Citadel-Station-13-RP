@@ -5,6 +5,12 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
+/obj/item/circuitboard/holopad
+	name = T_BOARD("holopad")
+	build_path = /obj/machinery/holopad
+	board_type = new /datum/frame/frame_types/holopad
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+
 /obj/machinery/holopad
 	name = "holopad"
 	desc = "It's a floor-mounted device for projecting holographic images."
@@ -717,7 +723,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/our_name = holocall_name()
 	voice_name = "[our_name] - [voice_name]"
 	// relay to whereever we're calling to
-	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language)
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, src)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
 		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
@@ -737,7 +743,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	// if it's the outgoing caller, send to other side
 	if(emoting == outgoing_call?.remoting)
-		outgoing_call?.hologram.relay_emote(visible_name, msg)
+		outgoing_call?.destination.relay_inbound_emote(emoting, visible_name, msg, outgoing_call.hologram, src)
 		return
 	// otherwise, anyone on our side can see it
 	for(var/datum/holocall/holocall as anything in incoming_calls)
@@ -752,7 +758,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /**
  * relays a say sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says")
+/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source)
 	. = TRUE
 	var/scrambled = stars(msg)
 	var/for_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
@@ -769,6 +775,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			if(O == src)
 				continue
 			O.hear_talk(src, msg, using_verb, using_language)
+	// conference calls!
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		if(holocall.source == source)
+			continue
+		holocall.source.relay_inbound_say(arglist(args))
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
@@ -778,11 +789,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			the_ai.show_message("(Holopad) [for_knowers]")
 		else
 			the_ai.show_message("(Holopad) [for_not_knowers]")
-
 /**
  * relays an emote sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo)
+/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo, obj/machinery/holopad/source)
 	. = TRUE
 	// attempt autodetect
 	if(!speaker_name)
@@ -795,6 +805,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		holo.relay_emote(speaker_name, msg)
 	else
 		visible_message("[SPAN_NAME(speaker_name)] [msg]")
+	// conference calls!
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		if(holocall.source == source)
+			continue
+		holocall.source.relay_inbound_emote(arglist(args))
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
@@ -818,11 +833,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
 	LAZYREMOVE(holograms, holo)
 
+/obj/item/circuitboard/holopad/ship
+	name = T_BOARD("sector holopad")
+	build_path = /obj/machinery/holopad/ship
+
 /obj/machinery/holopad/ship
 	name = "sector holopad"
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
+	circuit = /obj/item/circuitboard/holopad/ship
+	allow_unanchor = FALSE
+	allow_deconstruct = FALSE
 	long_range = TRUE
 
 /obj/machinery/holopad/ship/starts_inactive
