@@ -290,14 +290,14 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		last_failed_movement = direct
 		return 0
 
-/obj/singularity/proc/move(forceMove = 0)
+/obj/singularity/proc/move(force_move = 0)
 	if(!move_self)
 		return 0
 
 	var/movement_dir = pick(GLOB.alldirs - last_failed_movement)
 
-	if(forceMove)
-		movement_dir = forceMove
+	if(force_move)
+		movement_dir = force_move
 
 	if(target && prob(60))
 		movement_dir = get_dir(src,target) //moves to a singulo beacon, if there is one
