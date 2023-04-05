@@ -343,7 +343,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return FALSE // already being called / connected
 	if(!isnull(outgoing_call))
 		return FALSE // already calling someone
-	for(var/datum/holocall/holocall as anything in (other.ringing_calls | other.incoming_calls))
+	for(var/datum/holocall/holocall in (other.ringing_calls | other.incoming_calls))
 		if(holocall.source == src)
 			return FALSE
 	var/datum/holocall/holocall = new(src, other)
