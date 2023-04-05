@@ -19,6 +19,9 @@
 #define ITEM_CAREFUL_BLUDGEON   (1<<8)
 /// planted on the ground
 #define ITEM_GROUND_PLANTED     (1<<9)
+/// don't drop if incapacitated
+#define ITEM_DEATH_GRIP         (1<<10)
+#warn impl/hook
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -31,6 +34,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_MULTIHAND_WIELDED),
 	BITFIELD(ITEM_CAREFUL_BLUDGEON),
 	BITFIELD(ITEM_GROUND_PLANTED),
+	BITFIELD(ITEM_DEATH_GRIP),
 ))
 
 //! Flags for the clothing_flags var on /obj/item
