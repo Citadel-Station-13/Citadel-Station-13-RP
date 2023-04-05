@@ -723,7 +723,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/our_name = holocall_name()
 	voice_name = "[our_name] - [voice_name]"
 	// relay to whereever we're calling to
-	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, src)
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL , src)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
 		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
@@ -747,13 +747,13 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	// otherwise, anyone on our side can see it
 	for(var/datum/holocall/holocall as anything in incoming_calls)
-		holocall.remoting?.show_message("[SPAN_NAME(visible_name)] [msg]", 1)
+		holocall.remoting?.show_message("[msg]", 1)
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
 	var/list/relevant_ais = ais_projecting - emoting
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.show_message("(Holopad) [SPAN_NAME(visible_name)] [msg]")
+		the_ai.show_message("(Holopad) [msg]")
 
 /**
  * relays a say sent to us
