@@ -1613,7 +1613,7 @@
 		mmi_as_oc.mecha = src
 		add_obj_verb(src, /obj/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
-		src.Move(src.loc)
+		src.force_move(src.loc)
 		update_icon()
 		set_dir(dir_in)
 		src.log_message("[mmi_as_oc] moved in as pilot.")

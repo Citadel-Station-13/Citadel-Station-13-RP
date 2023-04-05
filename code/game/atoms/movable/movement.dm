@@ -20,10 +20,15 @@
 	. = FALSE
 	if(!newloc || newloc == loc)
 		return
-
+	if(get_dist(loc, newloc) > 1)
+		CRASH("attempted to move longer than 1 tile with Move(); please use force_move!")
+	#warn impl
 	if(!direct)
 		direct = get_dir(src, newloc)
+
 	set_dir(direct)
+
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 
 	if(!loc.Exit(src, newloc))
 		return
@@ -207,6 +212,15 @@
  * This is the home of multi-tile movement checks, and thus here be dragons. You are warned.
  */
 /atom/movable/proc/check_multi_tile_move_density_dir(stepdir)
+	var/list/checks
+	// check exits
+	if(isturF(loc))
+		switch(stepdir)
+
+	// check enters
+	switch(stepdir)
+
+	#warn impl
 	// warning: this proc doesn't respect Exit --> Enter, due to overhead
 	// if you have Exit() and Enter() have side effects it's a skill issue on your part anyways!
 	if(!isturf(loc))
@@ -417,11 +431,14 @@
 /atom/movable/proc/do_move(atom/destination)
 	. = FALSE
 	var/atom/oldloc = loc
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+
 	if(destination)
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
 
+		#warn impl
 		loc = destination
 		moving_diagonally = 0
 
@@ -460,12 +477,22 @@
 		pulledby?.stop_pulling()
 		if(pulling)
 			stop_pulling()
-		if (loc)
-			var/area/old_area = get_area(oldloc)
-			oldloc.Exited(src, null)
-			if(old_area)
+
+		if(is_multi_tile)
+			var/list/old_locs = locs // implicit Copy() due to locs being special byond list
+			var/area/old_area = get_area(src)
+			loc = null
+			if(!isnull(old_area))
 				old_area.Exited(src, null)
-		loc = null
+			for(var/atom/A as anything in old_locs)
+				A.Exited(src, null)
+		else
+			loc = null
+			if(!isnull(oldloc))
+				var/area/old_area = get_area(loc)
+				oldloc.Exited(src, null)
+				if(old_area)
+					old_area.Exited(src, null)
 
 	Moved(oldloc, NONE, TRUE)
 

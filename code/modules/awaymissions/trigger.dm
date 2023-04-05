@@ -19,7 +19,7 @@
 
 /obj/effect/step_trigger/teleport_fancy/Trigger(mob/M as mob)
 	var/dest = locate(locationx, locationy, z)
-	M.Move(dest)
+	M.force_move(dest)
 
 	if(entersparks)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread

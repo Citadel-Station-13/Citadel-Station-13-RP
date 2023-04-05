@@ -106,7 +106,7 @@
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 
@@ -122,7 +122,7 @@
 
 ///Moves the vehicle forward and if it lands on a table, repeats
 /obj/vehicle_old/skateboard/proc/grind()
-	Move(dir)
+	Move(get_step(src, dir))
 	if(has_buckled_mobs() && locate(/obj/structure/table) in loc.contents)
 		var/mob/living/L = buckled_mobs[1]
 		if (prob (15))
@@ -301,7 +301,7 @@
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 
@@ -330,7 +330,7 @@
 			H.Weaken(12)
 		else
 			var/backdir = turn(dir, 180)
-			Move(backdir)
+			Move(get_step(src, backdir))
 			H.spin(4, 1)
 	next_crash = world.time + 10
 

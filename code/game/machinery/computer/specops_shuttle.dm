@@ -77,7 +77,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 
@@ -226,7 +226,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_movew(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 

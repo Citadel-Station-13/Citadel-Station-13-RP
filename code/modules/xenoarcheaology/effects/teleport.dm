@@ -33,7 +33,7 @@
 				sparks.set_up(3, 0, get_turf(M))
 				sparks.start()
 
-				M.Move(pick(trange(50, T)))
+				M.force_move(pick(trange(50, T)))
 				sparks = new /datum/effect_system/spark_spread()
 				sparks.set_up(3, 0, M.loc)
 				sparks.start()
@@ -52,7 +52,7 @@
 				sparks.set_up(3, 0, get_turf(M))
 				sparks.start()
 
-				M.Move(pick(trange(50, T)))
+				M.force_move(pick(trange(50, T)))
 				sparks = new /datum/effect_system/spark_spread()
 				sparks.set_up(3, 0, M.loc)
 				sparks.start()

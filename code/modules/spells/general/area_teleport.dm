@@ -60,7 +60,7 @@
 	var/success = 0
 	while(L.len)
 		attempt = pick(L)
-		success = user.Move(attempt)
+		success = user.force_move(attempt)
 		if(!success)
 			L.Remove(attempt)
 		else

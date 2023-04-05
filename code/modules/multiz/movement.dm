@@ -80,6 +80,7 @@
 			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
 			return FALSE
 	var/old_z = get_z(src)
+	// todo: this should not use Move()
 	if(!Move(destination))
 		return FALSE
 	var/new_z = get_z(src)
@@ -318,6 +319,7 @@
 	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
+		// todo: this should not use Move
 		if(!Move(landing))
 			return 1
 
