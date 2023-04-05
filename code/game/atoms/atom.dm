@@ -1060,13 +1060,16 @@
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
  * get our pixel_x to reset to

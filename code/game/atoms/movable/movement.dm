@@ -1,25 +1,3 @@
-/**
- * Hook for running code when a dir change occurs
- *
- * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
- */
-/atom/proc/set_dir(newdir)
-	if(dir == newdir)
-		return FALSE
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
-	dir = newdir
-
-	if (light_source_solo)
-		if (light_source_solo.light_angle)
-			light_source_solo.source_atom.update_light()
-	else if (light_source_multi)
-		var/datum/light_source/L
-		for (var/thing in light_source_multi)
-			L = thing
-			if (L.light_angle)
-				L.source_atom.update_light()
-	return TRUE
 
 // todo:
 // the new move chain should be:
@@ -202,6 +180,7 @@
 	if(glide_size_override)
 		set_glide_size(glide_size_override, FALSE)
 
+	// legacy
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
@@ -224,54 +203,58 @@
 			M.set_dir(dir)
 	return TRUE
 
-/// Called after a successful Move(). By this point, we've already moved
-/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, dir, forced)
-
-	if (!inertia_moving)
-		inertia_next_move = world.time + inertia_move_delay
-		newtonian_move(movement_dir)
-
 /*
-	if (!inertia_moving && momentum_change)
-		newtonian_move(movement_dir)
+ * This is the home of multi-tile movement checks, and thus here be dragons. You are warned.
  */
+/atom/movable/proc/check_multi_tile_move_density_dir(stepdir)
+	// warning: this proc doesn't respect Exit --> Enter, due to overhead
+	// if you have Exit() and Enter() have side effects it's a skill issue on your part anyways!
+	if(!isturf(loc))
+		return TRUE
 
-	var/turf/old_turf = get_turf(old_loc)
-	var/turf/new_turf = get_turf(src)
+	var/list/moving_to = list()
+	for(var/turf/T as anything in locs)
+		var/turf/T2 = get_step(T, stepdir)
+		if(isnull(T2))
+			// bruh, edge of map
+			return FALSE
+		moving_to += T2
+		if(T2 in locs)
+			// still inside them
+			continue
+		else
+			// check enter
+			if(!T2.Enter(src, T))
+				return FALSE
 
-/*
-	if(old_loc)
-		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src, movement_dir)
-	if(loc)
-		SEND_SIGNAL(loc, COMSIG_ATOM_ABSTRACT_ENTERED, src, old_loc, old_locs)
- */
+	// uh oh, second loop, check exits
+	for(var/turf/T as anything in locs)
+		if(!(T in moving_to))
+			if(!T.Exit(src, get_step(T, stepdir)))
+				return FALSE
 
-	if (old_turf?.z != new_turf?.z)
-		on_changed_z_level(old_turf?.z, new_turf?.z)
-
-
+	return TRUE
 
 /**
  * Called after a successful Move(). By this point, we've already moved.
- * Arguments:
+ *
+ * @params
  * * old_loc is the location prior to the move. Can be null to indicate nullspace.
  * * movement_dir is the direction the movement took place. Can be NONE if it was some sort of teleport.
  * * The forced flag indicates whether this was a forced move, which skips many checks of regular movement.
  * * The old_locs is an optional argument, in case the moved movable was present in multiple locations before the movement.
  * * momentum_change represents whether this movement is due to a "new" force if TRUE or an already "existing" force if FALSE
  **/
-/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (!inertia_moving && momentum_change)
+	if (!inertia_moving)
+		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
-	// If we ain't moving diagonally right now, update our parallax
-	// We don't do this all the time because diag movements should trigger one call to this, not two
-	// Waste of cpu time, and it fucks the animate
-	if (!moving_diagonally && client_mobs_in_contents)
-		update_parallax_contents()
+
+
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(src)
 
 	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
 
@@ -280,28 +263,8 @@
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_ABSTRACT_ENTERED, src, old_loc, old_locs)
 
-	var/turf/old_turf = get_turf(old_loc)
-	var/turf/new_turf = get_turf(src)
-
 	if (old_turf?.z != new_turf?.z)
-		var/same_z_layer = (GET_TURF_PLANE_OFFSET(old_turf) == GET_TURF_PLANE_OFFSET(new_turf))
-		on_changed_z_level(old_turf, new_turf, same_z_layer)
-
-/*
-	if(HAS_SPATIAL_GRID_CONTENTS(src))
-		if(old_turf && new_turf && (old_turf.z != new_turf.z \
-			|| GET_SPATIAL_INDEX(old_turf.x) != GET_SPATIAL_INDEX(new_turf.x) \
-			|| GET_SPATIAL_INDEX(old_turf.y) != GET_SPATIAL_INDEX(new_turf.y)))
-
-			SSspatial_grid.exit_cell(src, old_turf)
-			SSspatial_grid.enter_cell(src, new_turf)
-
-		else if(old_turf && !new_turf)
-			SSspatial_grid.exit_cell(src, old_turf)
-
-		else if(new_turf && !old_turf)
-			SSspatial_grid.enter_cell(src, new_turf)
-*/
+		on_changed_z_level(old_turf?.z, new_turf?.z)
 
 	return TRUE
 
@@ -506,12 +469,6 @@
 
 	Moved(oldloc, NONE, TRUE)
 
-/atom/movable/proc/on_changed_z_level(old_z, new_z)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
-	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
-		var/atom/movable/AM = item
-		AM.on_changed_z_level(old_z, new_z)
-
 /atom/movable/can_allow_through(atom/movable/mover, turf/target)
 	. = ..()
 	if(mover in buckled_mobs)
@@ -565,38 +522,10 @@
 	SSspacedrift.processing[src] = src
 	return TRUE
 
-/**
-  * Sets our glide size
-  */
-/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
-	glide_size = new_glide_size
 
-	if(!recursive)
-		return
+//? Move Force
+// todo: this system is shit
 
-	for(var/m in buckled_mobs)
-		var/mob/buckled_mob = m
-		buckled_mob.set_glide_size(glide_size)
-		recursive_glidesize_update()
-
-/**
-  * Sets our glide size back to our standard glide size.
-  */
-
-/atom/movable/proc/reset_glide_size()
-	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)
-
-///Sets the anchored var and returns if it was sucessfully changed or not.
-/atom/movable/proc/set_anchored(anchorvalue)
-	SHOULD_CALL_PARENT(TRUE)
-	if(anchored == anchorvalue)
-		return
-	. = anchored
-	anchored = anchorvalue
-	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
-
-//? todo: this system is shit
 /**
  * return true to let something push through us
  */
@@ -619,13 +548,64 @@
 	if(!silent && .)
 		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
 
+//? Direction
+
+/**
+ * Hook for running code when a dir change occurs
+ */
+/atom/proc/set_dir(newdir)
+	if(dir == newdir)
+		return FALSE
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir
+
+	if (light_source_solo)
+		if (light_source_solo.light_angle)
+			light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		for (var/thing in light_source_multi)
+			L = thing
+			if (L.light_angle)
+				L.source_atom.update_light()
+	return TRUE
+
+//? Z Transit
+
+/atom/movable/proc/on_changed_z_level(old_z, new_z)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
+	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+		var/atom/movable/AM = item
+		AM.on_changed_z_level(old_z, new_z)
+
+//? Anchored
+
+/**
+ * Sets the anchored variable
+ *
+ * @params
+ * * anchorvalue - new anchored value
+ *
+ * @return TRUE / FALSE on if anchored changed from its value
+ */
+/atom/movable/proc/set_anchored(anchorvalue)
+	SHOULD_CALL_PARENT(TRUE)
+	if(anchored == anchorvalue)
+		return
+	. = anchored
+	anchored = anchorvalue
+	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
+
+//? Pass Flags
+
 /**
  * for regexing
  */
 /atom/movable/proc/check_pass_flags(flags)
 	return pass_flags & flags
 
-//? movement types
+//? Movement Types
 
 /atom/movable/proc/update_movement_type()
 	var/old_type = movement_type & MOVEMENT_TYPES
@@ -673,3 +653,27 @@
 /atom/movable/proc/remove_atom_floating(source)
 	REMOVE_TRAIT(src, TRAIT_ATOM_FLOATING, source)
 	update_movement_type()
+
+//? Glide Size
+
+/**
+  * Sets our glide size
+  */
+/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
+	glide_size = new_glide_size
+
+	if(!recursive)
+		return
+
+	for(var/m in buckled_mobs)
+		var/mob/buckled_mob = m
+		buckled_mob.set_glide_size(glide_size)
+		recursive_glidesize_update()
+
+/**
+  * Sets our glide size back to our standard glide size.
+  */
+
+/atom/movable/proc/reset_glide_size()
+	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)
