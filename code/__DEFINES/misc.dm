@@ -383,11 +383,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define IS_WIRECUTTER		"wirecutter"
 #define IS_WRENCH			"wrench"
 
-
-// Diagonal movement
-#define FIRST_DIAG_STEP 1
-#define SECOND_DIAG_STEP 2
-
 // RCD modes. Used on the RCD, and gets passed to an object's rcd_act() when an RCD is used on it, to determine what happens.
 /// Builds plating on space/ground/open tiles. Builds a wall when on floors. Finishes walls when used on girders.
 #define RCD_FLOORWALL		"Floor / Wall"

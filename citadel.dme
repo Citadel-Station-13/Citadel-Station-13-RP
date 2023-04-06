@@ -152,6 +152,7 @@
 #include "code\__DEFINES\dcs\signals\datums\signals_perspective.dm"
 #include "code\__DEFINES\dcs\signals\elements\conflict.dm"
 #include "code\__DEFINES\dcs\signals\items\signals_inducer.dm"
+#include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_appearance.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_attack.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_buckling.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_defense.dm"

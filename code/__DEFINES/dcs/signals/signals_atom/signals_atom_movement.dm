@@ -14,6 +14,10 @@
 #define COMSIG_ATOM_BUMPED "atom_bumped"
 /// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+/// From /atom/movable/Moved: (/atom/movable/entering, old_loc, old_locs)
+#define COMSIG_ATOM_ABSTRACT_ENTERED "atom_abstract_enter"
+/// From /atom/movable/Moved: (/atom/movable/exiting)
+#define COMSIG_ATOM_ABSTRACT_EXITED "atom_abstract_exit"
 
 //! ## Atom Area Signals.
 /// From base of area/Entered(): (/area)

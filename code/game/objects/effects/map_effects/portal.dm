@@ -79,7 +79,10 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	if(!counterpart)
 		return
 
-	go_through_portal(AM)
+	// yield
+	spawn(0)
+		if(AM.loc == src)
+			go_through_portal(AM)
 
 
 /obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM)

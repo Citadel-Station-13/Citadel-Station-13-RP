@@ -1,3 +1,5 @@
+//? Glide Size / Smooth Movement
+
 /// The minimum for glide_size to be clamped to.
 #define MIN_GLIDE_SIZE 1
 /// The maximum for glide_size to be clamped to.
@@ -17,9 +19,9 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 /// Not very readable but it works
 #define DELAY_TO_GLIDE_SIZE(delay) (clamp(((world.icon_size / max((delay) / world.tick_lag, 1)) * GLOB.glide_size_multiplier), MIN_GLIDE_SIZE, MAX_GLIDE_SIZE) + world.tick_lag * 2)
 
-//? tg's
+//* tg's
 // (clamp(((world.icon_size / max((delay) / world.tick_lag, 1)) * GLOB.glide_size_multiplier), MIN_GLIDE_SIZE, MAX_GLIDE_SIZE))
-//? lohikar's
+//* lohikar's
 // if (current_map.map_is_laggy || !config.use_movement_smoothing)
 //     mob.glide_size = 0
 // else
@@ -42,4 +44,19 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 	#define SMOOTH_GLIDE_SIZE(AM, size, args...)	AM.set_glide_size(GLOB.default_glide_size, args)
 #endif
 
-//? Don't even think about smooth movement until movespeed modification is done ~silicons
+//? Movement enums
+
+//* /atom/movable/var/in_move
+/// not moving
+#define MOVABLE_MOVING_NONE 0
+/// moving - normal move
+#define MOVABLE_MOVING_NORMAL 1
+/// moving - forced movement
+#define MOVABLE_MOVING_FORCED 2
+
+//? Helpers
+
+/// Is an atom in the middle of a diagonal move call stack?
+#define IS_MOVABLE_IN_DIAG_MOVE(_AM) (_AM.moving_diagonally != null)
+/// Is an atom in the middle of a move at all?
+#define IS_MOVABLE_IN_MOVE(_AM) (_AM.in_move != MOVABLE_MOVING_NONE)
