@@ -274,6 +274,12 @@
 	else
 		chem_effects[effect] = magnitude
 
+/mob/living/carbon/proc/ceiling_chemical_effect(var/effect, var/magnitude = 1)
+	if(effect in chem_effects)
+		chem_effects[effect] = max(magnitude, chem_effects[effect])
+	else
+		chem_effects[effect] = magnitude
+
 /mob/living/carbon/get_default_language()
 	if(default_language)
 		if(can_speak(default_language))
@@ -321,12 +327,12 @@
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
 	// 	if(head.inv_hide_flags & HIDEMASK)
-	// 		LAZYOR(., SLOT_MASK)
+	// 		LAZYDISTINCTADD(., SLOT_MASK)
 	// 	if(head.inv_hide_flags & HIDEEYES)
-	// 		LAZYOR(., SLOT_EYES)
+	// 		LAZYDISTINCTADD(., SLOT_EYES)
 	// 	if(head.inv_hide_flags & HIDEEARS)
-	// 		LAZYOR(., SLOT_EARS)
+	// 		LAZYDISTINCTADD(., SLOT_EARS)
 
 	if(wear_mask)
 		if(wear_mask.inv_hide_flags & HIDEEYES)
-			LAZYOR(., SLOT_EYES)
+			LAZYDISTINCTADD(., SLOT_EYES)

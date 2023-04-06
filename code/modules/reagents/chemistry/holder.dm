@@ -235,9 +235,9 @@
 	return
 
 /datum/reagents/proc/get_reagent(id)
-	for(var/datum/reagent/R in reagent_list)
-		if(R.id == id)
-			return R
+	for(var/datum/reagent/current in reagent_list)
+		if(current.id == id)
+			return current
 
 /datum/reagents/proc/get_reagent_amount(id)
 	for(var/datum/reagent/current in reagent_list)

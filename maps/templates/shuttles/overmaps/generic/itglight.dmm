@@ -2154,6 +2154,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/eris/dark/gray_platform,
 /area/itglight/cockpit)
 "oy" = (
@@ -6217,6 +6218,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
+"QD" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/wall/shull,
+/area/itglight/passengersleeping)
 "QF" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16931,7 +16936,7 @@ Xq
 Xq
 Xq
 AG
-Xq
+QD
 Xq
 Xq
 Xq

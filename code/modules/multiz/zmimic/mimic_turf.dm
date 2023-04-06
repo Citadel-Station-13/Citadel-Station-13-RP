@@ -86,8 +86,8 @@
 		below.above = null
 		below = null
 
-/turf/Entered(atom/movable/thing, turf/oldLoc)
-	. = ..()
+/turf/Entered(atom/movable/thing, atom/oldLoc)
+	..()
 	if (thing.bound_overlay || (thing.zmm_flags & ZMM_IGNORE) || thing.invisibility == INVISIBILITY_ABSTRACT || !TURF_IS_MIMICKING(above))
 		return
 	above.update_mimic()

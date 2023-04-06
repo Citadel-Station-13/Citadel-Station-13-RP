@@ -26,6 +26,7 @@
 		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, .proc/rad_attack)
 		// 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_OBJ, .proc/rad_attack)
 	else
+		. = COMPONENT_INCOMPATIBLE
 		CRASH("Something that wasn't an atom was given /datum/component/radioactive")
 
 	if(strength > RAD_MINIMUM_CONTAMINATION)
@@ -110,11 +111,7 @@
 	examine_list += out.Join()
 
 /datum/component/radioactive/proc/rad_attack(datum/source, atom/movable/target, mob/living/user)
-	radiation_pulse(parent, strength/20)
-	target.rad_act(strength/2)
-	if(!hl3_release_date)
-		return
-	strength -= strength / hl3_release_date
+	emit(1 SECONDS)
 
 /datum/component/radioactive/proc/clean(str, mul)
 	strength -= strength * mul + str
