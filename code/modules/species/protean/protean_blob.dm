@@ -538,6 +538,7 @@
 
 	var/mob/living/carbon/human/target
 	var/targeted_area
+	var/target_displayname
 
 	if(src.incapacitated())
 		to_chat(src,"<span class='warning'>You can't do this in your current state.</span>")
@@ -554,10 +555,10 @@
 	if(!istype(target))
 		return FALSE
 
-	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to launch at [target]!</span>")
-	if(do_after(src, 10 SECONDS, target)) //Ten seconds.
+	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
+	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
 		if(buckled || pinned.len)
-		return
+			return
 
 		var/obj/item/holder/H = new holder_type(get_turf(src))
 		H.held_mob = src
@@ -565,18 +566,24 @@
 
 		switch(src.zone_sel.selecting)
 			if(BP_GROIN)
-				targeted_area = SLOT_ICLOTHING //fetish_code.rtf
+				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
+				target_displayname = "body"
 			if(BP_TORSO)
-				targeted_area = SLOT_OCLOTHING
+				targeted_area = SLOT_ID_SUIT
+				target_displayname = "body"
+			if(BP_HEAD)
+				targeted_area = SLOT_ID_HEAD
+				target_displayname = "head"
 			if(O_MOUTH)
-				targeted_area = SLOT_MASK
-	
-		if(target.equip_to_slot_if_possible(H, targeted_area))
-			visible_message("<span class='danger'>[src] leaps at [target]'s! [targeted_area = SLOT_MASK ? "face" : "body"]!</span>")
+				targeted_area = SLOT_ID_MASK
+				target_displayname = "face"
+
+		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT)) 
+			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
 		else
-			visible_message("<span class='notice'>[src] leaps at [target]'s! [targeted_area = SLOT_MASK ? "face" : "body"] and bounces off harmlessly!</span>")
+			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")
 		H.sync(src)
-		return 
+		return
 
 /mob/living/simple_mob/protean_blob/Login()
 	..()
