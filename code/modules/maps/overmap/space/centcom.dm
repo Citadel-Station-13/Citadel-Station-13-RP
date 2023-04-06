@@ -1,8 +1,8 @@
 //Overmap Controller
 /obj/effect/overmap/visitable/sector/centcom
 	name = "NTS Demeter"
-	desc = "The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen, and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."
-	scanner_desc = @{"[i]Information[/i]: The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen, and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."}
+	desc = "The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."
+	scanner_desc = @{"[i]Information[/i]: The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."}
 	in_space = 1
 	known = TRUE
 	icon_state = "fueldepot"
