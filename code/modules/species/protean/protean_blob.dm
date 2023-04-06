@@ -71,6 +71,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
@@ -529,6 +530,53 @@
 		if("Plain")
 			icon_living = "puddle0"
 			update_icon()
+
+/mob/living/simple_mob/protean_blob/proc/leap_attack()
+	set name = "Pounce"
+	set desc = "Allows a protean blob to launch itself at people."
+	set category = "Abilities"
+
+	var/mob/living/carbon/human/target
+	var/targeted_area
+
+	if(src.incapacitated())
+		to_chat(src,"<span class='warning'>You can't do this in your current state.</span>")
+		return
+
+	var/list/choices = list()
+	for(var/mob/living/carbon/human/M in oviewers(1))
+		choices += M
+
+	if(!choices.len)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+
+	target = input(src,"Who do you wish to target?","Pounce Target") as null|anything in choices
+	if(!istype(target))
+		return FALSE
+
+	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to launch at [target]!</span>")
+	if(do_after(src, 10 SECONDS, target)) //Ten seconds.
+		if(buckled || pinned.len)
+		return
+
+		var/obj/item/holder/H = new holder_type(get_turf(src))
+		H.held_mob = src
+		src.forceMove(H)
+
+		switch(src.zone_sel.selecting)
+			if(BP_GROIN)
+				targeted_area = SLOT_ICLOTHING //fetish_code.rtf
+			if(BP_TORSO)
+				targeted_area = SLOT_OCLOTHING
+			if(O_MOUTH)
+				targeted_area = SLOT_MASK
+	
+		if(target.equip_to_slot_if_possible(H, targeted_area))
+			visible_message("<span class='danger'>[src] leaps at [target]'s! [targeted_area = SLOT_MASK ? "face" : "body"]!</span>")
+		else
+			visible_message("<span class='notice'>[src] leaps at [target]'s! [targeted_area = SLOT_MASK ? "face" : "body"] and bounces off harmlessly!</span>")
+		H.sync(src)
+		return 
 
 /mob/living/simple_mob/protean_blob/Login()
 	..()
