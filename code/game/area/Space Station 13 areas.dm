@@ -271,7 +271,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/courser/battery
 	name = "\improper Courser Vessel Battery"
 
+//Hammerhead
+/area/shuttle/hammerhead
+	requires_power = 1
+	icon_state = "shuttle"
 
+/area/shuttle/hammerhead/general
+	name = "\improper Hammerhead Barge"
+
+/area/shuttle/hammerhead/cockpit
+	name = "\improper Hammerhead Barge Cockpit"
+
+/area/shuttle/hammerhead/brig
+	name = "\improper Hammerhead Barge Brig"
 
 // Civilian Transport
 /area/shuttle/civvie
@@ -2553,6 +2565,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/security/vacantoffice2
 	name = "\improper Vacant Office"
 	icon_state = "security"
+
+/area/security/hammerhead_bay
+	name = "\improper Hammerhead Barge Hangar"
+	icon_state = "hangar"
 
 /area/janitor/
 	name = "\improper Custodial Closet"
