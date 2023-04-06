@@ -275,6 +275,7 @@
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	permit_ao = FALSE
 
 	/// The base iconstate to base sprites on
 	var/base_state = "light"
