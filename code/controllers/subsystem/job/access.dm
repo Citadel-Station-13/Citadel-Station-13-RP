@@ -199,8 +199,6 @@
 	// categories
 	for(var/cat in A.access_edit_category)
 		. |= access_ids_of_category(cat)
-	// types
-	. |= access_ids_of_type(A.access_edit_type)
-	// regions
-	. |= access_ids_of_region(A.access_edit_region)
+	// types / regions
+	. |= (access_ids_of_type(A.access_edit_type) & access_ids_of_region(A.access_edit_region))
 	cached_access_edit_lookup["[id]"] = .
