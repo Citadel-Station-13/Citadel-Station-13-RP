@@ -904,15 +904,6 @@
 "aFW" = (
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_5)
-"aGj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "aHb" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
@@ -943,18 +934,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
-"aHW" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	dir = 8;
-	frequency = 1380;
-	master_tag = "hammerhead_docker";
-	pixel_x = 8;
-	pixel_y = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "aIr" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -1140,6 +1119,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"aMx" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/effect/overmap/visitable/ship/landable/hammerhead,
+/obj/effect/shuttle_landmark/rift/deck2/hammerhead,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "aMU" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -3024,15 +3011,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"bZy" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/effect/overmap/visitable/ship/landable/hammerhead,
-/obj/effect/shuttle_landmark/rift/deck2/hammerhead,
-/obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "bZN" = (
 /obj/machinery/camera/network/security{
 	dir = 6
@@ -3095,6 +3073,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/security/interrogation)
+"cbV" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/alarm{
+	breach_detection = 0;
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "ccW" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -3359,21 +3348,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"cmH" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	dir = 8;
-	frequency = 1380;
-	master_tag = "hammerhead_docker";
-	pixel_x = 8;
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "cmI" = (
 /obj/machinery/suit_cycler/security,
 /obj/machinery/light_switch{
@@ -3470,6 +3444,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"cpr" = (
+/obj/machinery/light,
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "cqn" = (
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/techfloor,
@@ -3753,21 +3734,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
-"cAI" = (
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/camera/network/security{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "cAZ" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -5113,17 +5079,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/hammerhead/general)
-"dCv" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hammerbrigblast";
-	name = "Transit Brig Blast Doors";
-	opacity = 0
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/brig)
 "dCz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -5378,24 +5333,6 @@
 /obj/item/book/manual/robotics_cyborgs,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"dGY" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hammerbrigblast";
-	name = "Transit Brig Blast Doors";
-	opacity = 0
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/voidcraft/vertical{
-	name = "Transit Brig";
-	req_one_access = list(1,38)
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/brig)
 "dHg" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -5959,12 +5896,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
-"eap" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "eaK" = (
 /obj/item/deskbell,
 /obj/structure/table/steel,
@@ -6099,21 +6030,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"egZ" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	frequency = 1380;
-	master_tag = "hammerhead_docker";
-	pixel_x = -10;
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "ehd" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -6424,16 +6340,11 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/reading_room)
 "evB" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
+/obj/machinery/light,
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/obj/structure/cable/cyan{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/red,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "ewu" = (
 /obj/structure/cable/green{
@@ -6567,14 +6478,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "ezh" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
+/obj/machinery/camera/network/security{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
@@ -7633,15 +7538,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
-"fiQ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 1
-	},
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "fiW" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -8045,21 +7941,6 @@
 /obj/item/stool,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"fAi" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "fAD" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -8156,6 +8037,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
+"fEr" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "fGi" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -8296,6 +8186,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
+"fJM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "fJO" = (
 /obj/structure/table/rack/shelf,
 /obj/random/contraband,
@@ -8767,6 +8666,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
+"gan" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "gap" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/suit/storage/hooded/wintercoat,
@@ -8811,6 +8719,27 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/breakroom)
+"gbj" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
+"gbm" = (
+/obj/structure/closet/medical_wall{
+	pixel_y = -32
+	},
+/obj/item/storage/box/bodybags,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/o2,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "gbO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -9303,6 +9232,12 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"grT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "grW" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9570,22 +9505,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"gxp" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "gxI" = (
 /obj/effect/floor_decal/plaque,
 /obj/structure/cable/green{
@@ -9633,22 +9552,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
-"gym" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "hammerhead_dock_pump"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/airlock_sensor{
-	dir = 4;
-	frequency = 1380;
-	id_tag = "courser_docker";
-	pixel_x = -21
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/general)
 "gyG" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable/green{
@@ -9720,10 +9623,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"gBr" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "gCx" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/button/windowtint{
@@ -10116,6 +10015,13 @@
 "gRc" = (
 /turf/simulated/wall,
 /area/maintenance/research/xenobio)
+"gRv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "gSp" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hor)
@@ -10167,15 +10073,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"gUX" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 8
-	},
-/obj/structure/cable/cyan{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/general)
 "gUY" = (
 /obj/structure/table/steel,
 /obj/item/tool/crowbar,
@@ -10570,14 +10467,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"hnR" = (
-/obj/structure/cable/cyan,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
+"hnx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/brig)
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "hnY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11142,15 +11040,6 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
-"hIw" = (
-/obj/structure/closet/medical_wall{
-	pixel_y = -32
-	},
-/obj/item/storage/box/bodybags,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/firstaid/o2,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "hIX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11220,20 +11109,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
-"hKu" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1380;
-	id_tag = "hammerhead_dock_pump"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/docking_port{
-	frequency = 1380;
-	id_tag = "hammerhead_docker";
-	pixel_x = 25
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/general)
 "hKy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/dark,
@@ -11528,21 +11403,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
-"hRl" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/camera/network/security{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "hRG" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -11806,6 +11666,20 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"icv" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "hammerhead_docker";
+	pixel_x = 24;
+	pixel_y = -8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "idk" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -12720,6 +12594,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"iJG" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "iKd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12823,11 +12704,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "iNU" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
-	dir = 4
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/brig)
 "iOf" = (
 /obj/structure/closet{
 	name = "spare clothes"
@@ -14002,6 +13883,15 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"jJA" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "jLp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -14490,16 +14380,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "kaZ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
 "kbg" = (
@@ -14580,6 +14464,13 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
+"kdK" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/chair/bay/shuttle,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "kdW" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -14626,12 +14517,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"kfF" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/brig)
 "kfP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -15545,6 +15430,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"kHy" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "kIN" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -15575,6 +15466,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"kJk" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "kKd" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/security,
@@ -15912,21 +15812,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
-"kWQ" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/alarm{
-	breach_detection = 0;
-	dir = 1;
-	pixel_y = -22
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "kWU" = (
 /obj/structure/table/rack/shelf,
 /obj/item/suit_cooling_unit,
@@ -16133,6 +16018,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
+"laW" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "lbx" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -18290,6 +18181,20 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"mCi" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "hammerbrigblast";
+	name = "Transit Brig Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "mCk" = (
 /obj/structure/sign/department/robo{
 	pixel_x = 32;
@@ -19210,6 +19115,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"njk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "njX" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
@@ -19904,6 +19821,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep/Dorm_4)
+"nLz" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "hammerbrigblast";
+	name = "Transit Brig Blast Doors";
+	opacity = 0
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "nLI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -22309,6 +22237,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
+"pxC" = (
+/obj/structure/bed/chair/bay/shuttle,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/brig)
 "pxD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -22608,6 +22540,13 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_3)
+"pLd" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "pMR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -23030,6 +22969,26 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
+"qaK" = (
+/obj/machinery/access_button/airlock_interior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "hammerhead_docker";
+	pixel_x = -9;
+	pixel_y = -22
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 1;
+	frequency = 1380;
+	master_tag = "hammerhead_docker";
+	pixel_x = 8;
+	pixel_y = -22
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "qbw" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenobiodiv2";
@@ -23206,14 +23165,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/recreation_area)
-"qig" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "qiJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -24724,19 +24675,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/medical/reception)
-"rqt" = (
-/obj/machinery/light,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "rqy" = (
 /obj/machinery/light{
 	dir = 1
@@ -25000,15 +24938,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"rAS" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/brig)
 "rBj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -25915,6 +25844,18 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
+"spK" = (
+/obj/machinery/embedded_controller/radio/airlock/docking_port{
+	frequency = 1380;
+	id_tag = "hammerhead_docker";
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "spY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -26338,17 +26279,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
-"sHF" = (
-/obj/machinery/light,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/security/hammerhead_bay)
 "sHK" = (
 /obj/structure/railing{
 	dir = 1
@@ -27551,6 +27481,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
+"tCN" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "tCX" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -27693,6 +27635,24 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"tGD" = (
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "hammerbrigblast";
+	name = "Transit Brig Blast Doors";
+	opacity = 0
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Transit Brig";
+	req_one_access = list(1,38)
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/brig)
 "tGQ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -27762,6 +27722,15 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"tJa" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "tLc" = (
 /obj/structure/ladder/up,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -29131,6 +29100,12 @@
 /obj/machinery/atmospherics/pipe/cap/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
+"uQM" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/security/hammerhead_bay)
 "uRh" = (
 /obj/machinery/alarm{
 	desc = null;
@@ -30549,6 +30524,15 @@
 /obj/random/unidentified_medicine/scientific,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
+"vHt" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "vIc" = (
 /obj/structure/table/steel,
 /obj/effect/floor_decal/borderfloorblack{
@@ -30849,14 +30833,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "vTY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 4
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -28
 	},
-/obj/machinery/light{
-	dir = 1
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/brig)
 "vUk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -31572,6 +31558,20 @@
 /obj/item/storage/briefcase/inflatable,
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/pool/emergency_closet)
+"wrx" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 8
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/airlock_sensor{
+	dir = 1;
+	frequency = 1380;
+	id_tag = "courser_docker";
+	pixel_y = -24
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "wrZ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -31627,15 +31627,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/resleeving)
-"wte" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
-	dir = 6
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "wuw" = (
 /obj/structure/railing,
 /obj/random/trash,
@@ -31976,12 +31967,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
-"wGG" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/brig)
 "wGI" = (
 /obj/structure/grille,
 /turf/simulated/mineral/icerock/lythios43c,
@@ -32476,6 +32461,25 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"xci" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
+	frequency = 1380;
+	id_tag = "courser_exterior_sensor";
+	master_tag = "courser_docker";
+	pixel_x = 32;
+	pixel_y = -7
+	},
+/obj/map_helper/airlock/sensor/ext_sensor,
+/obj/machinery/access_button/airlock_interior{
+	frequency = 1380;
+	master_tag = "hammerhead_docker";
+	pixel_x = -25;
+	pixel_y = -8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "xco" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -33029,27 +33033,6 @@
 /obj/item/reagent_containers/dropper,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
-"xwB" = (
-/obj/machinery/door/airlock/voidcraft/vertical,
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/airlock_sensor/airlock_exterior/shuttle{
-	dir = 8;
-	frequency = 1380;
-	id_tag = "courser_exterior_sensor";
-	master_tag = "courser_docker";
-	pixel_x = -10;
-	pixel_y = -32
-	},
-/obj/map_helper/airlock/sensor/ext_sensor,
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	frequency = 1380;
-	master_tag = "hammerhead_docker";
-	pixel_x = -10;
-	pixel_y = 22
-	},
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
 "xwO" = (
 /obj/structure/closet/athletic_mixed,
 /obj/effect/floor_decal/steeldecal/steel_decals9{
@@ -33601,12 +33584,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/chargebay)
-"xRd" = (
-/obj/structure/bed/chair/bay/shuttle{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/brig)
 "xRB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -33804,6 +33781,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"xZl" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "xZq" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -34164,6 +34147,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"ymj" = (
+/obj/machinery/door/airlock/voidcraft/vertical,
+/obj/map_helper/airlock/door/int_door,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 
 (1,1,1) = {"
 rZg
@@ -48368,7 +48359,7 @@ pBj
 pBj
 pBj
 pBj
-pBj
+enB
 enB
 enB
 enB
@@ -48562,7 +48553,7 @@ pBj
 pBj
 pBj
 pBj
-pBj
+enB
 enB
 enB
 enB
@@ -48756,21 +48747,21 @@ pBj
 pBj
 pBj
 pBj
-kXA
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-whN
-kXA
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 enB
 enB
 kqN
@@ -48949,22 +48940,22 @@ pBj
 pBj
 pBj
 pBj
-pBj
-kXA
-jzd
-qUM
-qUM
-qUM
-qUM
-qUM
-qUM
-eCc
-qig
-qig
-qig
-qig
-cAI
-kXA
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 dVV
 pBj
 kqN
@@ -49143,22 +49134,22 @@ pBj
 enB
 pBj
 pBj
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
-kXA
-rqy
-ilr
-bFP
-bFP
-lrj
-xwB
-ilr
-egZ
-lrj
-bFP
-bFP
-ilr
-rqt
-kXA
 pBj
 pBj
 kqN
@@ -49337,22 +49328,22 @@ pBj
 enB
 pBj
 pBj
-pBj
-kXA
-jCg
-ilr
-dBM
-ran
-lrj
-wte
-gym
-bZy
-lrj
-ihf
-nLI
-ilr
-ezh
-kXA
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 kqN
@@ -49531,21 +49522,21 @@ pBj
 enB
 enB
 pBj
-pBj
 kXA
-jCg
-ilr
-sAH
-gdh
-tuA
-eap
-hKu
-tSM
-hFI
-uJa
-ksg
-ilr
-ezh
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
+whN
 kXA
 pBj
 pBj
@@ -49725,20 +49716,20 @@ pBj
 pBj
 enB
 pBj
-pBj
 kXA
-jCg
-ilr
-iuB
-aij
-ilr
-cmH
-ilr
-aHW
-ilr
-jEw
-rVV
-ilr
+jzd
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+qUM
+gan
 ezh
 kXA
 pBj
@@ -49919,21 +49910,21 @@ pBj
 pBj
 enB
 enB
-enB
 kXA
+rqy
+ilr
+bFP
+bFP
+lrj
+gmv
+gmv
+gmv
+lrj
+bFP
+bFP
+ilr
 jCg
-ilr
-ilr
-wJB
-lXc
-aGj
-gUX
-fiQ
-vDu
-kYb
-ilr
-ilr
-ezh
+gWp
 kXA
 pBj
 pBj
@@ -50113,21 +50104,21 @@ pBj
 pBj
 pBj
 enB
-enB
 kXA
-bCu
-jug
+jCg
 ilr
-ilr
-ilr
+dBM
+ran
+lrj
+kdK
 vTY
-fSv
-gBr
+cpr
+lrj
+ihf
+nLI
 ilr
-ilr
-ilr
-xdW
-kWQ
+jCg
+kXL
 kXA
 pBj
 pBj
@@ -50307,21 +50298,21 @@ pBj
 pBj
 pBj
 enB
-enB
 kXA
-qyb
-cDO
-sNY
+jCg
 ilr
-kEU
+sAH
+gdh
+tuA
+pxC
 iNU
-sPt
-hKy
-xfg
+kJk
+hFI
+uJa
+ksg
 ilr
-eBF
-sXr
-sHF
+jCg
+kXL
 kXA
 pBj
 pBj
@@ -50501,21 +50492,21 @@ pBj
 pBj
 pBj
 enB
-enB
 kXA
+jCg
+ilr
+iuB
+aij
+ilr
+nLz
+tGD
+mCi
+ilr
+jEw
+rVV
+ilr
+jCg
 kXL
-ilr
-ilr
-ilr
-ilr
-krD
-fSv
-hIw
-ilr
-ilr
-ilr
-ilr
-ezh
 kXA
 pBj
 pBj
@@ -50695,21 +50686,21 @@ pBj
 pBj
 pBj
 enB
-enB
 kXA
+jCg
+ilr
+ilr
+wJB
+lXc
+grT
+tCN
+njk
+vDu
+kYb
+ilr
+ilr
+jCg
 kXL
-oOw
-dda
-bJA
-qlB
-oUL
-fSv
-oUL
-dCv
-xRd
-rAS
-gmv
-ezh
 kXA
 pBj
 pBj
@@ -50889,21 +50880,21 @@ pBj
 pBj
 enB
 fwi
-pBj
 kXA
-bZN
-oOw
-aog
-blW
-uzX
-tmg
+bCu
+jug
+ilr
+ilr
+ilr
+laW
+fSv
 evB
-tmg
-dGY
-kfF
-hnR
-gmv
-hRl
+ilr
+ilr
+ilr
+xdW
+gRv
+kXL
 kXA
 pBj
 pBj
@@ -51083,21 +51074,21 @@ pBj
 pBj
 enB
 pBj
-pBj
 kXA
-kXL
-oOw
-qAA
-uZo
-qlB
-oUL
-nxS
-oUL
-dCv
-wGG
-wGG
-gmv
-gxp
+qyb
+cDO
+sNY
+ilr
+kEU
+hKy
+sPt
+vHt
+xfg
+ilr
+eBF
+sXr
+pLd
+gWp
 kXA
 pBj
 pBj
@@ -51277,20 +51268,20 @@ enB
 enB
 enB
 pBj
-pBj
 kXA
-vMM
+kXL
 ilr
 ilr
 ilr
 ilr
-haT
-haa
-haT
+krD
+fSv
+gbm
 ilr
 ilr
 ilr
 ilr
+jCg
 kaZ
 kXA
 kXA
@@ -51471,20 +51462,20 @@ enB
 enB
 enB
 pBj
-pBj
 kXA
 kXL
-kXL
-kXL
-ilr
-ybB
+oOw
+dda
+bJA
+qlB
 oUL
-nxS
-oUL
-aJI
-ilr
-kXL
-kXL
+fSv
+tJa
+xZl
+gbj
+jJA
+xci
+jCg
 ezh
 kXA
 wFi
@@ -51665,21 +51656,21 @@ enB
 dVV
 pBj
 pBj
-pBj
 kXA
-kXL
-bFP
+bZN
+oOw
+aog
+blW
+uzX
+tmg
+hnx
+qaK
 ilr
+spK
+wrx
 ilr
-rEL
-oUL
-nxS
-oUL
-vnt
-ilr
-ilr
-bFP
-fAi
+fJM
+eCc
 ugJ
 vxf
 aCU
@@ -51859,21 +51850,21 @@ enB
 pBj
 pBj
 pBj
-pBj
 kXA
 kXL
-dBM
-jhd
-jhd
-jhd
-mpD
-jwp
-mpD
-jhd
-jhd
-jhd
-nLI
-vyY
+oOw
+qAA
+uZo
+qlB
+oUL
+nxS
+tSM
+ymj
+kHy
+aMx
+icv
+uQM
+fEr
 kXA
 bQm
 dLp
@@ -52053,21 +52044,21 @@ pBj
 pBj
 pBj
 pBj
-pBj
 kXA
-bap
-kaH
-ayE
-ceM
-qDt
-oUL
-kCx
-oUL
-qDt
-ief
-xya
-kaH
-vyY
+vMM
+ilr
+ilr
+ilr
+ilr
+haT
+haa
+haT
+ilr
+ilr
+ilr
+ilr
+kXL
+iJG
 kXA
 kXA
 kXA
@@ -52247,23 +52238,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
 kXA
 kXL
-kaH
-ayE
-ief
-qDt
-kCx
-kCx
-kCx
-qDt
-ief
-ayE
-kaH
-rtk
+kXL
+kXL
+ilr
+ybB
+oUL
+nxS
+oUL
+aJI
+ilr
+kXL
+kXL
+kXL
+vyY
 kXA
-cUW
+uKm
 ske
 ske
 ske
@@ -52441,23 +52432,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
 kXA
-vMM
+kXL
+bFP
 ilr
 ilr
+rEL
+oUL
+nxS
+oUL
+vnt
 ilr
 ilr
-tBx
-tBx
-tBx
-ilr
-ilr
-ilr
-ilr
-gWp
+bFP
+kXL
+vyY
 kXA
-cUW
+uKm
 eRj
 dCO
 dCO
@@ -52635,23 +52626,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
 kXA
 kXL
+dBM
+jhd
+jhd
+jhd
+mpD
+jwp
+mpD
+jhd
+jhd
+jhd
+nLI
 kXL
-kXL
-qNg
-kXL
-kXL
-kXL
-kXL
-kXL
-qNg
-kXL
-kXL
-kXL
+cbV
 kXA
-cUW
+uKm
 tEZ
 tEZ
 tEZ
@@ -52829,23 +52820,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
 kXA
+bap
+kaH
+ayE
+ceM
+qDt
+oUL
+kCx
+oUL
+qDt
+ief
+xya
+kaH
+kXL
+vyY
 kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-kXA
-cUW
+uKm
 uhx
 uhx
 uhx
@@ -53023,23 +53014,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-cUW
+kXA
+kXL
+kaH
+ayE
+ief
+qDt
+kCx
+kCx
+kCx
+qDt
+ief
+ayE
+kaH
+kXL
+rtk
+kXA
+uKm
 eRj
 dCO
 dCO
@@ -53217,23 +53208,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-cUW
+kXA
+vMM
+ilr
+ilr
+ilr
+ilr
+tBx
+tBx
+tBx
+ilr
+ilr
+ilr
+ilr
+kXL
+gWp
+kXA
+uKm
 ske
 ske
 ske
@@ -53411,23 +53402,23 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-cUW
+kXA
+kXL
+kXL
+kXL
+qNg
+kXL
+kXL
+kXL
+kXL
+kXL
+qNg
+kXL
+kXL
+kXL
+kXL
+kXA
+uKm
 uKm
 uKm
 uKm
@@ -53605,22 +53596,22 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
+kXA
 pBj
 pBj
 pBj
