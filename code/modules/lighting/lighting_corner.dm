@@ -199,11 +199,14 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	else // Nothing above us that cares about below light.
 		T = null
 
-	if (TURF_IS_DYNAMICALLY_LIT(T))
-		if (!T.corners || !T.corners[Ti])
-			T.generate_missing_corners()
-		var/datum/lighting_corner/above = T.corners[Ti]
-		above.update_below_lumcount(delta_r, delta_g, delta_b, now)
+	if (T)
+		do
+			if (!T.corners || !T.corners[Ti])
+				T.generate_missing_corners(TRUE)
+
+			// These never get instant updates; they're less important, so better to avoid risk of lag.
+			T.corners[Ti].update_below_lumcount(delta_r, delta_g, delta_b)
+		while ((T = T.above) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 
 	// This needs to be down here instead of the above if so the lum values are properly updated.
 	if (needs_update)
@@ -215,7 +218,7 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 		needs_update = TRUE
 		SSlighting.corner_queue += src
 
-/datum/lighting_corner/proc/update_below_lumcount(delta_r, delta_g, delta_b, now = FALSE)
+/datum/lighting_corner/proc/update_below_lumcount(delta_r, delta_g, delta_b)
 	if (!(delta_r + delta_g + delta_b))
 		return
 
@@ -231,11 +234,8 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	if (needs_update)
 		return
 
-	if (!now)
-		needs_update = TRUE
-		SSlighting.corner_queue += src
-	else
-		update_overlays(TRUE)
+	needs_update = TRUE
+	SSlighting.corner_queue += src
 
 /datum/lighting_corner/proc/update_ambient_lumcount(delta_r, delta_g, delta_b, skip_update = FALSE)
 	ambient_r += delta_r

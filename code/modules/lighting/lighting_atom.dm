@@ -24,21 +24,26 @@
 
 /// The proc you should always use to set the light of this atom.
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE)
+	. = FALSE
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4
-	if (l_power != null)
+	if (l_power != null && light_power != l_power)
 		light_power = l_power
+		. = TRUE
 
-	if (l_range != null)
+	if (l_range != null && light_range != l_range)
 		light_range = l_range
+		. = TRUE
 
-	if (l_color != NONSENSICAL_VALUE)
+	if (l_color != NONSENSICAL_VALUE && light_color != l_color)
 		light_color = l_color
+		. = TRUE
 
-	if (angle != NONSENSICAL_VALUE)
+	if (angle != NONSENSICAL_VALUE && light_wedge != angle)
 		light_wedge = angle
+		. = TRUE
 
-	if (no_update)
+	if (!. || no_update)
 		return
 
 	update_light()
@@ -77,19 +82,11 @@
 	. = opacity
 	opacity = new_opacity
 
-// Should always be used to change the opacity of an atom.
-// It notifies (potentially) affected light sources so they can update (if needed).
-/atom/set_opacity(new_opacity)
-	. = ..()
-	if (!.)
-		return
-
-	opacity = new_opacity
 	var/turf/T = loc
 	if (!isturf(T))
 		return
 
-	if (new_opacity == TRUE)
+	if (new_opacity)
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
 #ifdef AO_USE_LIGHTING_OPACITY
