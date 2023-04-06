@@ -66,7 +66,7 @@
 				//update_mat_value()
 				return 1
 
-	return 0
+	return 
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
@@ -74,8 +74,8 @@
 		if(C.caliber != caliber)
 			to_chat(user, "<span class='warning'>[C] does not fit into [src].</span>")
 			return
-		if(stored_ammo.len >= max_ammo)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+		if(give_round(C, 1))
+			to_chat(user, "<span class='warning'>[src] can't fit [C]!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(C, src))
 			return

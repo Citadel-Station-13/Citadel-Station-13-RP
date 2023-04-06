@@ -114,3 +114,25 @@
 	. = ..()
 	if(!loaded())
 		. += "This one is spent."
+
+/obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
+    var/obj/item/ammo_magazine/box = W
+    if(istype(W, /obj/item/ammo_magazine))
+        if(isturf(loc))
+            var/boolets = 0
+            for(var/obj/item/ammo_casing/bullet in loc)
+                if(box.stored_ammo.len >= box.max_ammo)
+                    break
+                if(bullet.loaded())
+                    if(box.give_round(bullet, 0))
+                        boolets++
+                else
+                    continue
+            if(boolets > 0)
+                box.update_icon()
+                to_chat(user, "<span class='notice'>You collect [boolets] shell\s. [box] now contains [box.stored_ammo.len] shell\s.</span>")
+            else
+                to_chat(user, "<span class='warning'>You fail to collect anything!</span>")
+    else
+        if(W.is_screwdriver())
+            src.screwdriver_act(W,user,"","")
