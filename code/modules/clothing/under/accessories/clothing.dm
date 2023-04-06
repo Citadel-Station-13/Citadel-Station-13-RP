@@ -155,6 +155,16 @@
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
 
+/obj/item/clothing/accessory/poncho/rough_cloak_torn
+	name = "Rough Torn Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one has seen worse days."
+	icon_state = "rough_torn_cloak_color"
+	item_state = "rough_torn_cloak_color"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
+	icon_state = "rough_torn_cloak_brown"
+	item_state = "rough_torn_cloak_brown"
+
 //Just a little extra aesthetic for Goliath armor.
 /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
 	name = "goliath hide half cloak"

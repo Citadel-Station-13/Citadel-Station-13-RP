@@ -79,10 +79,11 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	if(!counterpart)
 		return
 
-	go_through_portal(AM)
+	SSdpc.queue_invoke(src, TYPE_PROC_REF(/obj/effect/map_effect/portal, go_through_portal), AM, TRUE)
 
-
-/obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM)
+/obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM, check)
+	if(AM.loc != loc && check)
+		return
 	// TODO: Find a way to fake the glide or something.
 	if(isliving(AM))
 		var/mob/living/L = AM
