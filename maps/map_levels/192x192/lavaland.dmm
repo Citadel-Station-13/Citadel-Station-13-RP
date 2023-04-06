@@ -3,7 +3,6 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "aN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
@@ -383,6 +382,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"kp" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled,
+/area/lavaland/central/base/common)
 "kq" = (
 /obj/machinery/power/generator{
 	anchored = 1
@@ -428,6 +434,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"lx" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "surtstage";
+	name = "Staging Area Shutters";
+	pixel_x = -28;
+	pixel_y = -28;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "lA" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -650,11 +667,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -663,23 +678,11 @@
 	dir = 4;
 	target_pressure = 15000
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "oO" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -696,32 +699,35 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pi" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pk" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/meter,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pq" = (
@@ -734,18 +740,19 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "pz" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/firealarm{
 	dir = 4;
 	layer = 3.3;
 	pixel_x = 26
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -756,12 +763,10 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "pJ" = (
-/obj/machinery/atmospherics/pipe/tank/air{
-	dir = 4
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/tank/oxygen,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pK" = (
@@ -781,12 +786,6 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
-"pQ" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/lavaland/central/base/common)
 "pW" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -794,7 +793,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -822,9 +820,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector{
-	dir = 4
+	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qw" = (
@@ -834,7 +832,6 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qz" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qA" = (
@@ -842,16 +839,13 @@
 /area/lavaland/central/base/common)
 "qF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
 	},
 /obj/machinery/camera/network/mining{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qU" = (
@@ -932,12 +926,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "sH" = (
-/obj/machinery/embedded_controller/radio/airlock/airlock_controller{
-	frequency = 1384;
-	id_tag = "mining_outpost";
-	pixel_y = 25;
-	req_one_access = list(48)
-	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "sJ" = (
@@ -957,7 +946,6 @@
 /turf/simulated/floor/tiled/white,
 /area/lavaland/central/base/common)
 "sN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -1242,7 +1230,6 @@
 	name = "Mining Engine Room";
 	req_access = list(48)
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
@@ -1339,9 +1326,6 @@
 "zd" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "zf" = (
@@ -1351,23 +1335,8 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/firealarm{
 	pixel_y = 24
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"zk" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
@@ -1465,33 +1434,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
-"AA" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
 "AG" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "AO" = (
 /turf/simulated/wall/r_wall,
-/area/lavaland/central/base/common)
-"Bp" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "BY" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -1639,9 +1587,6 @@
 "Ga" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "GE" = (
@@ -1695,7 +1640,7 @@
 /obj/machinery/camera/network/mining{
 	dir = 4
 	},
-/obj/machinery/washing_machine,
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Iq" = (
@@ -1805,12 +1750,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Lc" = (
@@ -1839,79 +1779,43 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
-"Mc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
 "Md" = (
 /turf/unsimulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "Mw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "MV" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/access_button{
-	dir = 4;
-	frequency = 1384;
-	master_tag = "mining_outpost";
-	pixel_x = -10;
-	pixel_y = 25;
-	req_one_access = list(48)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(48)
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "surtstage";
+	name = "Staging Area Blast Door"
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/lavaland/central/base/common)
 "MX" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/central/explored)
 "ND" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"NH" = (
-/obj/machinery/airlock_sensor{
-	dir = 1;
-	frequency = 1384;
-	id_tag = "mining_outpost";
-	pixel_y = -25
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"NN" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"NV" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(48)
-	},
-/turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "NW" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -2088,24 +1992,12 @@
 /turf/simulated/floor/carpet/oracarpet,
 /area/lavaland/central/base/common)
 "RE" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
+/obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/blast/regular{
+	id = "surtstage";
+	name = "Staging Area Blast Door"
 	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(48)
-	},
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"RJ" = (
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1384;
-	id_tag = "mining_outpost";
-	power_rating = 20000
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/lavaland/central/base/common)
 "RK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2135,34 +2027,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"Sm" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	frequency = 1384;
-	id_tag = "mining_outpost";
-	power_rating = 20000
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/turf/simulated/floor/tiled,
-/area/lavaland/central/base/common)
-"Ss" = (
-/obj/machinery/door/firedoor{
-	req_one_access = list(48)
-	},
-/obj/machinery/access_button{
-	dir = 8;
-	frequency = 1384;
-	master_tag = "mining_outpost";
-	pixel_x = 10;
-	pixel_y = -25;
-	req_one_access = list(48)
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/door/airlock/glass_external{
-	req_one_access = list(48)
-	},
-/turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "SH" = (
 /obj/machinery/light/small{
@@ -2261,9 +2125,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 22;
 	req_one_access = list(48)
@@ -2345,6 +2206,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "VX" = (
@@ -2367,27 +2229,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/airlock_sensor/airlock_exterior{
-	dir = 4;
-	frequency = 1384;
-	id_tag = "mining_outpost";
-	pixel_x = -22;
-	pixel_y = -4
-	},
-/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/central/base/common)
-"Wb" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Wd" = (
 /obj/machinery/door/airlock{
@@ -2639,6 +2481,23 @@
 "ZO" = (
 /obj/structure/curtain/open/shower/engineering,
 /turf/simulated/floor/tiled/old_tile,
+/area/lavaland/central/base/common)
+"ZY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "surtstage";
+	name = "Staging Area Shutters";
+	pixel_x = 26;
+	pixel_y = 26;
+	req_one_access = list(48)
+	},
+/turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "ZZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -10381,7 +10240,7 @@ kq
 mN
 oK
 pk
-pQ
+qz
 qz
 oj
 AO
@@ -10576,7 +10435,7 @@ mZ
 oO
 pn
 pW
-oj
+qz
 so
 AO
 AO
@@ -10969,7 +10828,7 @@ AO
 AO
 AO
 AO
-Bp
+zl
 Sa
 db
 FI
@@ -11163,7 +11022,7 @@ sP
 ZG
 OB
 db
-Wb
+WR
 ew
 db
 db
@@ -11939,10 +11798,10 @@ AO
 tv
 EX
 db
-zk
-AA
-AA
-AA
+ZZ
+QR
+QR
+QR
 La
 QR
 QR
@@ -12137,7 +11996,7 @@ zl
 ew
 db
 Hr
-Mc
+Zw
 VD
 ew
 Wh
@@ -12527,7 +12386,7 @@ db
 HA
 Mw
 ew
-ew
+mq
 AO
 AO
 AO
@@ -12719,7 +12578,7 @@ AO
 AO
 AO
 HU
-Mw
+ZY
 ew
 VT
 AO
@@ -13108,7 +12967,7 @@ gy
 NW
 Il
 ND
-RJ
+VD
 VX
 AO
 Kj
@@ -13301,9 +13160,9 @@ MX
 gy
 AO
 sH
-ND
-Sm
-NH
+Pv
+ew
+ew
 AO
 Wv
 VA
@@ -13494,9 +13353,9 @@ MX
 MX
 MX
 NW
-PZ
-NN
-Sm
+kp
+ub
+Ay
 sJ
 AO
 AO
@@ -13689,8 +13548,8 @@ MX
 MX
 AO
 AO
-NV
-Ss
+RE
+RE
 AO
 AO
 gy
@@ -13884,7 +13743,7 @@ MX
 gy
 Iq
 gy
-gy
+lx
 VY
 gy
 gy

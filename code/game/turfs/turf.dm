@@ -122,7 +122,11 @@
 	var/tmp/is_outside = OUTSIDE_AREA
 
 /turf/vv_edit_var(var_name, new_value)
-	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
+	var/static/list/banned_edits = list(
+		NAMEOF_STATIC(src, x),
+		NAMEOF_STATIC(src, y),
+		NAMEOF_STATIC(src, z),
+	)
 	if(var_name in banned_edits)
 		return FALSE
 	. = ..()
@@ -214,9 +218,17 @@
 		QDEL_NULL(mimic_proxy)
 
 	// clear vis contents here instead of in Init
-	vis_contents.len = 0
+	if(length(vis_contents))
+		vis_contents.len = 0
 
 	..()
+
+/// WARNING WARNING
+/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
+/turf/clear_signal_refs()
+	return
 
 /turf/legacy_ex_act(severity)
 	return FALSE

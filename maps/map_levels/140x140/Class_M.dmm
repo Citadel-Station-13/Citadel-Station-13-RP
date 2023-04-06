@@ -737,6 +737,10 @@
 /obj/machinery/icecream_vat,
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside)
+"qY" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/carpet,
+/area/class_m/inside)
 "qZ" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -6986,7 +6990,7 @@ Ne
 iY
 Zf
 Zf
-Zf
+qY
 Zf
 Zf
 iY

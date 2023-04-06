@@ -380,3 +380,54 @@
 	damage_type = TOX
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	icon_state = "SpearFlight"
+
+//Plasma Burst
+/obj/projectile/plasma
+	name ="plasma bolt"
+	icon_state= "fuel-tritium"
+	damage = 50
+	damage_type = BURN
+	damage_flag = ARMOR_ENERGY
+	light_range = 4
+	light_power = 3
+	light_color = "#00ccff"
+
+/obj/projectile/plasma/on_hit(var/atom/target, var/blocked = 0)
+	explosion(target, -1, 0, 1, 2)
+	..()
+
+/obj/projectile/plasma/on_impact(var/atom/A)
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+		var/blast_dir = src.dir
+		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
+		var/blastloc = get_step(A, blast_dir)
+		if(blastloc)
+			explosion(blastloc, -1, 0, 1, 2)
+	..()
+
+/obj/projectile/plasma/Bump(atom/A, forced=0)
+	if(istype(A, /obj/structure/window)) //It does not pass through windows. It pulverizes them.
+		var/obj/structure/window/W = A
+		W.shatter()
+		return 0
+	..()
+
+/obj/projectile/plasma/hot
+	name ="heavy plasma bolt"
+	damage = 75
+	light_range = 5
+	light_power = 4
+	light_color = "#00ccff"
+
+/obj/projectile/plasma/hot/on_hit(var/atom/target, var/blocked = 0)
+	explosion(target, -1, 0, 2, 3)
+	..()
+
+/obj/projectile/plasma/hot/on_impact(var/atom/A)
+	if(istype(A,/turf/simulated/shuttle/wall) || istype(A,/turf/simulated/wall) || (istype(A,/turf/simulated/mineral) && A.density) || istype(A,/obj/mecha) || istype(A,/obj/machinery/door))
+		var/blast_dir = src.dir
+		A.visible_message("<span class='danger'>\The [A] is engulfed in roiling plasma!</span>")
+		var/blastloc = get_step(A, blast_dir)
+		if(blastloc)
+			explosion(blastloc, -1, 0, 2, 3)
+	..()
