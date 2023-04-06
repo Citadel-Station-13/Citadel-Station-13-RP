@@ -216,3 +216,5 @@
 			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 			return TRUE
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor)

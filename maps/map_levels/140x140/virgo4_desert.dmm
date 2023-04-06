@@ -74,7 +74,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "qu" = (
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "se" = (
 /turf/simulated/floor/water/shoreline/corner{
@@ -98,7 +98,7 @@
 "vr" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "wb" = (
 /obj/item/pickaxe,
@@ -153,7 +153,7 @@
 /area/tether_away/beach/desert/explored)
 "zQ" = (
 /obj/item/bone/skull/tajaran,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "BS" = (
 /turf/simulated/floor/water/shoreline,
@@ -233,7 +233,7 @@
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "LF" = (
 /turf/simulated/floor/water/shoreline/classh{
@@ -248,7 +248,7 @@
 	},
 /area/tether_away/beach/desert/explored)
 "Ms" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "Mv" = (
 /turf/simulated/floor/water/shoreline{
@@ -271,12 +271,12 @@
 /area/tether_away/beach/desert/explored)
 "Ov" = (
 /obj/random/trash,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "OI" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "OO" = (
 /obj/structure/sign/securearea{

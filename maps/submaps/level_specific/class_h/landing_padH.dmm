@@ -14,7 +14,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 5
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "d" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -55,7 +55,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 6
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "k" = (
 /obj/effect/floor_decal/rust,
@@ -66,7 +66,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "m" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -84,10 +84,10 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "r" = (
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "s" = (
 /obj/effect/debris/cleanable/dirt,
@@ -169,7 +169,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "F" = (
 /obj/effect/wingrille_spawn/reinforced,
@@ -224,7 +224,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "N" = (
 /obj/machinery/door/airlock/glass_external/public,
@@ -240,7 +240,7 @@
 /area/class_h/POIs/landing_pad)
 "R" = (
 /obj/effect/floor_decal/techfloor/orange,
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "S" = (
 /obj/effect/floor_decal/rust,
@@ -259,7 +259,7 @@
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/class_h/POIs/landing_pad)
 "V" = (
 /obj/machinery/light/spot{

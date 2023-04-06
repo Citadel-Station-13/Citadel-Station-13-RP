@@ -168,7 +168,7 @@
 /obj/machinery/shipsensors{
 	dir = 1
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/bridge)
 "au" = (
 /obj/structure/cable{
@@ -2203,7 +2203,7 @@
 /area/ship/mercenary/hall1)
 "dY" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/med)
 "dZ" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -2820,7 +2820,7 @@
 /area/ship/mercenary/engine)
 "fj" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/barracks)
 "fk" = (
 /obj/structure/cable{
@@ -2941,7 +2941,7 @@
 /turf/simulated/floor,
 /area/ship/mercenary/southairlock)
 "fu" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/engineeringcntrl)
 "fv" = (
 /obj/structure/closet/crate,
@@ -3428,19 +3428,19 @@
 /area/ship/mercenary/engineering)
 "gk" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/bridge)
 "gl" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/engineeringcntrl)
 "gm" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/armoury)
 "gn" = (
 /obj/effect/decal/warning_stripes,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/ship/mercenary/engineering)
 "go" = (
 /obj/effect/floor_decal/borderfloorblack{

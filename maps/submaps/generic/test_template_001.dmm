@@ -1,0 +1,603 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/grass/default,
+/area/submap/generic/outside_open_air)
+"b" = (
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"c" = (
+/turf/simulated/floor/tiled/indoors,
+/area/submap/generic/outside_roofed)
+"d" = (
+/turf/template_noop,
+/area/submap/generic/outside_open_air)
+"e" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"f" = (
+/turf/simulated/wall,
+/area/submap/generic/outside_open_air)
+"g" = (
+/turf/simulated/floor/grass/outdoors,
+/area/submap/generic/outside_roofed)
+"h" = (
+/turf/simulated/floor/plating/outdoors,
+/area/submap/generic/outside_roofed)
+"k" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"o" = (
+/obj/machinery/light,
+/turf/simulated/floor/plating/overhang,
+/area/submap/generic/inside_breath_mix)
+"q" = (
+/obj/machinery/light,
+/turf/simulated/floor/plating/outdoors,
+/area/submap/generic/inside_breath_mix)
+"s" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 24
+	},
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"t" = (
+/turf/simulated/floor/tiled/indoors,
+/area/submap/generic/outside_open_air)
+"u" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"v" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"w" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating/outdoors,
+/area/submap/generic/inside_breath_mix)
+"x" = (
+/turf/simulated/floor/plating/overhang,
+/area/submap/generic/inside_breath_mix)
+"y" = (
+/turf/simulated/wall,
+/area/submap/generic/inside_breath_mix)
+"z" = (
+/turf/simulated/wall,
+/area/submap/generic/outside_roofed)
+"A" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"C" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes/magical,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"E" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/outside_open_air)
+"F" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/indoors,
+/area/submap/generic/outside_open_air)
+"G" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"H" = (
+/turf/simulated/floor/plating/default,
+/area/submap/generic/outside_roofed)
+"I" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/plating/overhang,
+/area/submap/generic/inside_breath_mix)
+"J" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"K" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/indoors,
+/area/submap/generic/outside_roofed)
+"L" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/outside_roofed)
+"M" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"N" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"P" = (
+/obj/structure/fans/tiny,
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"Q" = (
+/turf/simulated/floor/plating/outdoors,
+/area/submap/generic/inside_breath_mix)
+"S" = (
+/mob/living/simple_mob/animal/passive/crab{
+	real_name = "Mr. Crabs"
+	},
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"T" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+"U" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
+/turf/simulated/floor/plating/indoors,
+/area/submap/generic/inside_breath_mix)
+"W" = (
+/obj/effect/floor_decal/sign/ex,
+/turf/simulated/floor/grass/outdoors,
+/area/submap/generic/outside_roofed)
+"X" = (
+/turf/simulated/floor/tiled/default,
+/area/submap/generic/inside_breath_mix)
+
+(1,1,1) = {"
+z
+h
+h
+h
+h
+z
+z
+z
+z
+z
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+"}
+(2,1,1) = {"
+z
+h
+h
+h
+h
+z
+c
+c
+c
+c
+G
+X
+X
+M
+X
+b
+X
+X
+X
+y
+"}
+(3,1,1) = {"
+z
+h
+h
+h
+h
+K
+c
+c
+c
+c
+G
+X
+X
+X
+X
+b
+X
+X
+X
+y
+"}
+(4,1,1) = {"
+z
+h
+h
+h
+h
+z
+c
+c
+c
+c
+G
+X
+X
+X
+X
+b
+X
+X
+X
+y
+"}
+(5,1,1) = {"
+z
+z
+h
+h
+z
+z
+z
+L
+L
+z
+y
+J
+X
+X
+X
+y
+X
+X
+X
+y
+"}
+(6,1,1) = {"
+z
+g
+g
+g
+g
+z
+H
+H
+H
+H
+y
+U
+u
+S
+X
+k
+X
+X
+N
+y
+"}
+(7,1,1) = {"
+z
+g
+g
+g
+g
+H
+H
+H
+H
+H
+y
+s
+X
+X
+X
+k
+X
+X
+X
+y
+"}
+(8,1,1) = {"
+z
+g
+g
+W
+g
+H
+H
+H
+H
+H
+k
+v
+A
+X
+N
+y
+X
+X
+X
+y
+"}
+(9,1,1) = {"
+z
+g
+g
+g
+g
+z
+H
+H
+H
+H
+y
+C
+X
+X
+X
+y
+X
+X
+X
+y
+"}
+(10,1,1) = {"
+z
+g
+g
+g
+g
+z
+z
+L
+L
+z
+y
+e
+X
+X
+X
+k
+X
+X
+N
+y
+"}
+(11,1,1) = {"
+a
+a
+d
+d
+a
+f
+t
+t
+t
+t
+G
+X
+X
+X
+X
+k
+X
+X
+X
+y
+"}
+(12,1,1) = {"
+a
+a
+d
+d
+a
+f
+t
+t
+t
+t
+G
+X
+X
+X
+X
+y
+X
+X
+X
+y
+"}
+(13,1,1) = {"
+a
+a
+d
+d
+a
+F
+t
+t
+t
+t
+G
+X
+X
+X
+X
+y
+y
+P
+y
+y
+"}
+(14,1,1) = {"
+a
+a
+d
+d
+a
+f
+t
+t
+t
+t
+G
+X
+X
+T
+X
+y
+x
+x
+x
+y
+"}
+(15,1,1) = {"
+a
+d
+d
+d
+d
+f
+f
+E
+E
+f
+y
+y
+y
+y
+y
+y
+x
+x
+x
+y
+"}
+(16,1,1) = {"
+a
+d
+d
+d
+d
+a
+a
+a
+a
+a
+y
+Q
+Q
+Q
+q
+y
+x
+x
+o
+y
+"}
+(17,1,1) = {"
+a
+d
+d
+d
+d
+d
+d
+d
+d
+a
+w
+Q
+Q
+Q
+Q
+I
+x
+x
+x
+y
+"}
+(18,1,1) = {"
+a
+d
+d
+d
+d
+d
+d
+d
+d
+a
+w
+Q
+Q
+Q
+Q
+I
+x
+x
+o
+y
+"}
+(19,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+y
+Q
+Q
+Q
+q
+y
+x
+x
+x
+y
+"}
+(20,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+y
+y
+y
+y
+y
+y
+y
+y
+y
+y
+"}

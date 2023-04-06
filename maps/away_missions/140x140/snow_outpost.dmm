@@ -324,7 +324,7 @@
 /area/awaymission/snow_outpost/powered)
 "bh" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "bi" = (
 /obj/machinery/power/apc{
@@ -634,17 +634,17 @@
 /area/awaymission/snow_outpost/dark)
 "cg" = (
 /obj/structure/boulder,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "ch" = (
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/awaymission/snow_outpost/dark)
 "ci" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cj" = (
 /obj/item/ore,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "ck" = (
 /obj/structure/bed/alien,
@@ -696,7 +696,7 @@
 "cw" = (
 /obj/item/frame/apc,
 /obj/item/module/power_control,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cx" = (
 /obj/structure/table/steel,
@@ -715,13 +715,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cA" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cB" = (
 /obj/structure/bed/chair{
@@ -745,7 +745,7 @@
 /area/awaymission/snow_outpost/dark)
 "cF" = (
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cG" = (
 /obj/structure/table/steel,
@@ -768,7 +768,7 @@
 /area/awaymission/snow_outpost/dark)
 "cK" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/awaymission/snow_outpost/dark)
 "cL" = (
 /obj/structure/table/steel,

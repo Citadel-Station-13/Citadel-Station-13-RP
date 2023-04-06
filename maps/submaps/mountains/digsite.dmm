@@ -10,7 +10,7 @@
 /area/submap/cave/digsite)
 "d" = (
 /obj/structure/boulder,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "e" = (
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -19,11 +19,11 @@
 /turf/simulated/floor/tiled/kafel_full/yellow,
 /area/submap/cave/digsite)
 "g" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "h" = (
 /obj/item/ore,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "i" = (
 /obj/structure/bed/alien,
@@ -72,7 +72,7 @@
 "t" = (
 /obj/item/frame/apc,
 /obj/item/module/power_control,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "u" = (
 /obj/structure/table/steel,
@@ -91,13 +91,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "x" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "y" = (
 /obj/structure/bed/chair{
@@ -121,7 +121,7 @@
 /area/submap/cave/digsite)
 "C" = (
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "D" = (
 /obj/structure/table/steel,
@@ -144,7 +144,7 @@
 /area/submap/cave/digsite)
 "H" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/submap/cave/digsite)
 "I" = (
 /obj/structure/table/steel,

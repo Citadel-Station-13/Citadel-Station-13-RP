@@ -134,6 +134,7 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 	name = "floor"
 	icon_state = "monotile"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monotile
+CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 
 /turf/simulated/floor/tiled/monowhite
 	name = "floor"
@@ -485,12 +486,6 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled)
 /turf/simulated/floor/plating
 	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
 CREATE_STANDARD_TURFS(/turf/simulated/floor/plating)
-
-/turf/simulated/floor/plating/external
-	outdoors = TRUE
-
-/turf/simulated/floor/tiled/external
-	outdoors = TRUE
 
 //**** Here lives snow ****
 /turf/simulated/floor/snow

@@ -231,10 +231,10 @@
 /area/tether_away/beach/desert/unexplored)
 "Kt" = (
 /obj/item/bone/skull/tajaran,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "LF" = (
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "Mc" = (
 /obj/machinery/light/small/flicker{
@@ -252,12 +252,12 @@
 /area/tether_away/beach/desert/explored)
 "Mv" = (
 /obj/random/trash,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "Nx" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "NW" = (
 /obj/machinery/light/small,
@@ -274,12 +274,12 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/tether_away/beach/desert/explored)
 "OI" = (
-/turf/simulated/floor/tiled/external,
+/turf/simulated/floor/tiled/outdoors,
 /area/tether_away/beach/desert/explored)
 "OO" = (
 /obj/random/humanoidremains,
 /obj/effect/debris/cleanable/blood,
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "Rb" = (
 /obj/item/ammo_casing/spent{
@@ -300,7 +300,7 @@
 /obj/machinery/light/small/flicker{
 	dir = 4
 	},
-/turf/simulated/floor/plating/external,
+/turf/simulated/floor/plating/outdoors,
 /area/tether_away/beach/desert/explored)
 "ST" = (
 /obj/effect/map_effect/portal/master/side_b{
