@@ -5,7 +5,7 @@
 	item_state = "riotgun"
 	w_class = ITEMSIZE_LARGE
 	heavy = TRUE
-	force = 10
+	damage_force = 10
 	one_handed_penalty = 5
 
 	fire_sound = 'sound/weapons/grenade_launcher.ogg'
@@ -101,7 +101,7 @@
 	name = "underslung grenade launcher"
 	desc = "Not much more than a tube and a firing mechanism, this grenade launcher is designed to be fitted to a rifle."
 	w_class = ITEMSIZE_NORMAL
-	force = 5
+	damage_force = 5
 	max_grenades = 0
 
 /obj/item/gun/launcher/grenade/underslung/attack_self(mob/user)

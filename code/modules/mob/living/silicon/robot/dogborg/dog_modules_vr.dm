@@ -3,7 +3,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "jaws"
 	desc = "The jaws of the law."
-	force = 10
+	damage_force = 10
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -14,7 +14,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
-	force = 5
+	damage_force = 5
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -33,7 +33,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "jaws"
 			desc = "The jaws of the law."
-			force = 10
+			damage_force = 10
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -43,7 +43,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
-			force = 5
+			damage_force = 5
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -56,7 +56,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
@@ -323,7 +323,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "projgun"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/item/projectile/beam/disable
+	projectile_type = /obj/projectile/beam/disable
 	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
 	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
 	//cell_type = null //Same cell as a taser until edits are made.
@@ -333,7 +333,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
-	force = 20 //Takes 5 hits to 100-0
+	damage_force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
@@ -378,7 +378,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 

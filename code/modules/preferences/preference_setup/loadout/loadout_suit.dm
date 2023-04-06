@@ -206,7 +206,9 @@
 /datum/gear/suit/halfcloak
 	name = "Rough Half Cloak (Tan)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
-
+/datum/gear/suit/halfcloaktorn
+	name = "Rough Torn Half Cloak (Tan)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
 /datum/gear/suit/halfcloak/colorable
 	name = "Rough Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak
@@ -214,6 +216,9 @@
 /datum/gear/suit/halfcloak/colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+/datum/gear/suit/halfcloak/colorable/torn
+	name = "Rough Torn Half Cloak (Colorable)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
 
 /datum/gear/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
@@ -570,3 +575,15 @@
 /datum/gear/suit/onestar
 	name = "One Star Coat"
 	path = /obj/item/clothing/suit/storage/onestar
+
+/datum/gear/suit/overcoatdark
+	name = "Great Dark Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark
+
+/datum/gear/suit/overcoatdark/caped
+	name = "Great Dark Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark/caped
+
+/datum/gear/suit/overcoatbleached
+	name = "Great Bleached Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/bleached

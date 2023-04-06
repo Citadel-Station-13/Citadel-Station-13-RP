@@ -13,7 +13,7 @@
 		SLOT_ID_LEFT_HAND = "inducer_lefthand",
 		SLOT_ID_RIGHT_HAND = "inducer_righthand"
 	)
-	force = 7
+	damage_force = 7
 	/// transfer amount per second
 	var/transfer_rate = 1000
 	/// type of cell to spawn

@@ -257,7 +257,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rockfish)
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 90,
 		"bullet" = 50,
 		"laser" = -15,

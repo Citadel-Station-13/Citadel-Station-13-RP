@@ -11,7 +11,7 @@
 	item_state = "switchtool"
 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
 	siemens_coefficient = 1
-	force = 3
+	damage_force = 3
 	w_class = ITEMSIZE_SMALL
 	item_icons = list(
 		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_switchtool.dmi',

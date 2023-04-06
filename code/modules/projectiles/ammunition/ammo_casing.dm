@@ -16,7 +16,7 @@
 	/// projectile type
 	var/projectile_type
 	/// stored projectile - either null for un-init'd, FALSE for empty, or an instance
-	VAR_PRIVATE/obj/item/projectile/stored
+	VAR_PRIVATE/obj/projectile/stored
 
 	//! Icon
 	/// switch to "[initial(state)]-spent" after expenditure

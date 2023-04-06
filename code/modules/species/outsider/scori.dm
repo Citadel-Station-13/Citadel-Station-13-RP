@@ -5,10 +5,10 @@
 	category = SPECIES_CATEGORY_RESTRICTED
 	galactic_language = FALSE
 	default_language = LANGUAGE_ID_SCORI
-	intrinsic_languages = LANGUAGE_ID_SCORI
+	intrinsic_languages = list(LANGUAGE_ID_SCORI,LANGUAGE_ID_SIGN)
 	max_additional_languages = 0
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
-	rarity_value = 4
+	//rarity_value = 4
 
 	blurb = "The Scori are the native inhabitants of Surt. Much of their history has been lost,	save for artistic \
 	depictions sometimes recovered on archaeological digs. Insular and xenophobic, the Scori are more commonly \
@@ -41,7 +41,7 @@
 
 	//Physical resistances and weaknesses.
 	brute_mod = 0.85
-	burn_mod = 0.15
+	burn_mod = 0.25
 	radiation_mod = 0.5
 	toxins_mod = 0.5
 

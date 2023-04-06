@@ -5,7 +5,7 @@
 	icon_state = "camgrenade"
 	item_state = "empgrenade"
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -47,7 +47,7 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenadebroken"
 	item_state = "empgrenade"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15
@@ -64,7 +64,7 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	origin_tech = list(TECH_ENGINEERING = 1, TECH_ILLEGAL = 3) //crush it and you lose the data
-	force = 0
+	damage_force = 0
 	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
@@ -99,7 +99,7 @@
 		else
 			to_chat(user, "Error: The device is linked to another monitor.")
 	else
-		if(W.force >= 5)
+		if(W.damage_force >= 5)
 			visible_message("\The [src] lens shatters!")
 			new brokentype(get_turf(src))
 			if(linkedmonitor)

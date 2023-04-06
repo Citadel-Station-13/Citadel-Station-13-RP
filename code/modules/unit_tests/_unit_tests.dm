@@ -76,6 +76,7 @@
 
 #include "core/_core.dm"
 #include "datum/_datum.dm"
+#include "elements/_elements.dm"
 #include "human/_human.dm"
 #include "language/_language.dm"
 #include "mob/_mob.dm"

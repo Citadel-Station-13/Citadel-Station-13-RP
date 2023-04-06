@@ -574,6 +574,7 @@
 	icon_state = "horsepost"
 	base_icon = "horsepost"
 	picked_up_item = null
+	density = 1
 
 /obj/structure/bed/chair/post/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack) || W.is_wirecutter())
@@ -590,7 +591,7 @@
 	icon_state = "folding_chair0"
 	base_icon = "folding_chair"
 	attack_verb = list("bashed", "battered", "chaired")
-	force = 1
+	damage_force = 1
 	throw_force = 3
 	sharp = null
 	edge = 0

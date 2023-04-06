@@ -22,7 +22,7 @@
 
 	maxHealth = 200
 	deflect_chance = 30
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 30,
 				"bullet"	= 30,
 				"laser"		= 30,
@@ -31,5 +31,5 @@
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	projectiletype = /obj/item/projectile/energy/declone
+	projectiletype = /obj/projectile/energy/declone
 

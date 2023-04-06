@@ -22,7 +22,7 @@
 	faction = "mouse_army"
 
 	maxHealth = 150
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 25,
 				"bullet" = 20,
 				"laser" = 30,
@@ -32,7 +32,7 @@
 				"rad" = 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/pistol/medium
+	projectiletype = /obj/projectile/bullet/pistol/medium
 
 	movement_cooldown = 2
 	base_attack_cooldown = 8
@@ -61,7 +61,7 @@
 
 	maxHealth = 200
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 0,
 				"bullet" = 20,
 				"laser" = 50,
@@ -71,7 +71,7 @@
 				"rad" = 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/incendiary/flamethrower/large
+	projectiletype = /obj/projectile/bullet/incendiary/flamethrower/large
 
 	movement_cooldown = 3
 	base_attack_cooldown = 15
@@ -99,7 +99,7 @@
 
 	maxHealth = 300
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 20,
 				"bullet" = 50,
 				"laser" = 50,
@@ -109,7 +109,7 @@
 				"rad" = 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/gyro
+	projectiletype = /obj/projectile/bullet/gyro
 
 	movement_cooldown = 5
 	base_attack_cooldown = 15

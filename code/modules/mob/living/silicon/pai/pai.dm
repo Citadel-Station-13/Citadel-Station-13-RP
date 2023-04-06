@@ -329,10 +329,15 @@
 	var/finalized = "No"
 	while(finalized == "No" && src.client)
 
-		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in possible_chassis
-		if(!choice) return
+		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in (list("-- LOAD CHARACTER SLOT --") + possible_chassis)
+		if(!choice)
+			return
 
-		icon_state = possible_chassis[choice]
+		if(choice == "-- LOAD CHARACTER SLOT --")
+			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+		else
+			icon = 'icons/mob/pai.dmi'
+			icon_state = possible_chassis[choice]
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
@@ -370,9 +375,9 @@
 
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
+		src.adjustBruteLoss(W.damage_force)
 		src.updatehealth()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")

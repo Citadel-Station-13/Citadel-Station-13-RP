@@ -7,7 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 10
@@ -145,7 +145,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	name = "advanced mop"
 	icon_state = "advmop"
 	item_state = "mop"
-	force = 6
+	damage_force = 6
 	throw_force = 11
 	mopspeed = 15
 	var/refill_enabled = TRUE //Self-refill toggle for when a janitor decides to mop with something other than water.

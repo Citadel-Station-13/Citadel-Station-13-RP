@@ -115,3 +115,11 @@
 	id = "tail_fennix"
 	icon_state = "ketraitail"
 	ani_state = "ketraitail_w"
+
+/datum/sprite_accessory/tail/wolf_from_main
+	name = "Wolf (CitMain)"
+	id = "wolf_main"
+	icon_state = "wolf_citmain"
+	ani_state = "wolf_citmain_w"
+	do_colouration = TRUE
+	color_blend_mode = ICON_MULTIPLY

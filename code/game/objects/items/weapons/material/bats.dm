@@ -39,7 +39,7 @@
 	desc = "I won't dignify this one with a description."
 	icon_state = "penbat0"
 	base_icon = "penbat"
-	force = 10
+	damage_force = 10
 	throw_force = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
 	default_material = "plastic"
