@@ -66,7 +66,7 @@
 				//update_mat_value()
 				return 1
 
-	return 
+	return 0
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
