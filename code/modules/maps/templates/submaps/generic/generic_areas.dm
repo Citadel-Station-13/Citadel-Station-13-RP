@@ -12,4 +12,6 @@
 	is_outside = OUTSIDE_NO
 	initial_gas_mix = ATMOSPHERE_USE_OUTDOORS
 
-
+/area/submap/generic/inside_breath_mix
+	is_outside = OUTSIDE_NO
+	initial_gas_mix = GAS_STRING_STP
