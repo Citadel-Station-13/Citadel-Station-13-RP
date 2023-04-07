@@ -264,6 +264,21 @@
 	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
+/obj/mecha/combat/fighter/gunpod/sec
+	name = "Security Gunpod"
+	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This model is frequently used by NT Security forces during EVA patrols."
+
+/obj/mecha/combat/fighter/gunpod/sec/loaded/Initialize(mapload) //Loaded version with gans
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
+	ME.attach(src)
+
+/obj/mecha/combat/fighter/gunpod/recon
+	name = "Reconnaissance Gunpod"
+	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This stripped down model is used for long range reconnaissance ."
+
 /obj/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/teleporter(src)

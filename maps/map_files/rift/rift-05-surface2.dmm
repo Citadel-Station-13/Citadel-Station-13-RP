@@ -3159,7 +3159,7 @@
 /area/crew_quarters/pool)
 "ceM" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/loaded{
+/obj/mecha/combat/fighter/gunpod/sec/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3452,6 +3452,11 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -24
+	},
+/obj/structure/cable/cyan,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/brig)
 "cqn" = (
@@ -6246,6 +6251,14 @@
 "enB" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
+"enC" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerfighterexterior";
+	name = "Fighter Bay"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "enF" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -11464,9 +11477,6 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "hSS" = (
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/simulated/open,
 /area/maintenance/lower/medsec_maintenance)
 "hTe" = (
@@ -15602,6 +15612,20 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
+"kOM" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerbrigshutter";
+	name = "Brig Blast Door"
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerbrigblast";
+	name = "Brig Blast Door Control";
+	pixel_x = -8;
+	pixel_y = 33
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/hammerhead/brig)
 "kPd" = (
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -16363,6 +16387,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research/researchdivision)
+"lop" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerfighteraccess";
+	name = "Fighter Bay Access"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "lot" = (
 /obj/machinery/door/airlock/maintenance/sec,
 /turf/simulated/floor/plating,
@@ -18118,6 +18149,10 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"mzl" = (
+/obj/machinery/mech_recharger,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "mzx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -18693,15 +18728,6 @@
 /obj/structure/window/basic,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
-"mSI" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/maintenance/lower/medsec_maintenance)
 "mTq" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 6
@@ -19717,6 +19743,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"nFd" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/outside/outside2)
 "nFJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -21470,6 +21500,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"oXR" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerbrigshutter";
+	name = "Brig Blast Door"
+	},
+/turf/simulated/floor/plating,
+/area/shuttle/hammerhead/brig)
 "oXW" = (
 /obj/structure/railing{
 	dir = 8
@@ -25007,6 +25044,10 @@
 /area/security/hallway)
 "rEL" = (
 /obj/structure/bed/chair/bay/shuttle,
+/obj/structure/sign/warning/caution{
+	name = "\improper CAUTION - ZERO G AREA";
+	pixel_x = 32
+	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "rEO" = (
@@ -27433,7 +27474,7 @@
 	name = "EVA Breach"
 	},
 /obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "tBE" = (
 /obj/structure/railing{
@@ -29969,9 +30010,17 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
+"vnk" = (
+/obj/structure/marker_beacon/red,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "vnt" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
+	},
+/obj/structure/sign/warning/caution{
+	name = "\improper CAUTION - ZERO G AREA";
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
@@ -30845,13 +30894,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
 "vTY" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan{
-	icon_state = "0-4"
+	icon_state = "2-4"
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "hammerbrigblast";
+	name = "Brig Blast Door Control";
+	pixel_x = -24;
+	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/brig)
@@ -33102,8 +33153,8 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
 "xya" = (
-/obj/mecha/combat/fighter/baron/loaded,
-/turf/simulated/floor/tiled/techmaint,
+/obj/mecha/combat/fighter/gunpod/sec/loaded,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "xyC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -45078,7 +45129,7 @@ pPm
 pPm
 pPm
 pBj
-oLJ
+vnk
 oLJ
 oLJ
 oLJ
@@ -45090,7 +45141,7 @@ oLJ
 enB
 oLJ
 oLJ
-oLJ
+vnk
 oLJ
 oLJ
 oLJ
@@ -46242,7 +46293,7 @@ pPm
 pPm
 pBj
 pBj
-enB
+nFd
 enB
 oLJ
 oLJ
@@ -46254,7 +46305,7 @@ enB
 enB
 enB
 enB
-enB
+nFd
 enB
 dVV
 enB
@@ -47600,6 +47651,7 @@ kqN
 pBj
 pBj
 pBj
+nFd
 enB
 enB
 enB
@@ -47611,8 +47663,7 @@ enB
 enB
 enB
 enB
-enB
-enB
+nFd
 pBj
 tBl
 avF
@@ -49344,6 +49395,7 @@ pBj
 enB
 pBj
 pBj
+nFd
 enB
 enB
 enB
@@ -49358,8 +49410,7 @@ enB
 enB
 enB
 enB
-enB
-enB
+nFd
 pBj
 pBj
 kqN
@@ -49561,7 +49612,7 @@ xzS
 qiJ
 qiJ
 sLu
-mSI
+hSS
 hSS
 qUB
 qUB
@@ -49932,9 +49983,9 @@ ilr
 bFP
 bFP
 lrj
+oXR
 gmv
-gmv
-gmv
+kOM
 lrj
 bFP
 bFP
@@ -52845,10 +52896,10 @@ qDt
 oUL
 kCx
 oUL
-qDt
-ief
+lop
+mzl
 xya
-kaH
+enC
 kXL
 vyY
 kXA
@@ -53038,11 +53089,11 @@ ief
 qDt
 kCx
 kCx
-kCx
-qDt
-ief
-ayE
-kaH
+oUL
+lop
+mzl
+oUL
+enC
 kXL
 rtk
 kXA
