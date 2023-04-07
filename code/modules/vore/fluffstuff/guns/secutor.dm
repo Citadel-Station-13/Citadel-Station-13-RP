@@ -26,23 +26,8 @@
 
 /obj/item/gun/energy/secutor/update_overlays()
 	. = ..()
+	. = get_security_level()
 	cut_overlays()
-	var/alertlevel = get_security_level()
-	switch(alertlevel)
-		if("green")
-			. += "green"
-		if("blue")
-			. += "blue"
-		if("yellow")
-			. += "yellow"
-		if("violet")
-			. += "violet"
-		if("orange")
-			. += "orange"
-		if("red")
-			. += "red"
-		if("delta")
-			. += "delta"
 
 /obj/item/gun/energy/secutor/special_check(mob/user)
 	if(!emagged && mode_name == "low-power-lethal" && get_security_level() == "green")
