@@ -148,7 +148,7 @@
 	if(!id_slot || !id_type)
 		return
 
-	var/faction = H.mind?.original_background_faction().id
+	var/faction = H.mind?.original_background_faction()?.id
 	if(faction && !(faction == "nanotrasen"))
 		id_type = /obj/item/card/id/contractor
 
