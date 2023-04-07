@@ -47,6 +47,7 @@
 
 
 	add_overlay(overlays_to_add)
+	update_icon()
 
 /obj/item/gun/energy/fluff/secutor/special_check(mob/user)
 	if(!emagged && mode_name == "low-power-lethal" && get_security_level() == "green")
