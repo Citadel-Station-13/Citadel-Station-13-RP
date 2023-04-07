@@ -38,7 +38,7 @@
 	/// movement calls we're in
 	var/in_move = 0
 	/// a direction, or null
-	var/moving_diagonally
+	var/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.

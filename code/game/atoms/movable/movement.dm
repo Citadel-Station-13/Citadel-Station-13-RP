@@ -2,7 +2,7 @@
  * Internal Move() handling, called from the actual Move() implementation via override and ..()
  * This rewrites how we handle movement to avoid some BYOND-isms.
  */
-/atom/movable/Move(atom/newloc, direct)
+/atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
 	. = FALSE
 	if(newloc == loc)
 		return
@@ -181,7 +181,7 @@
  *
  * Only supports moves up to range 1, in any direction including diagonals.
  */
-/atom/movable/Move(atom/newloc, direct, glide_size_override)
+/atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
 	if(!isturf(loc) || !isturf(newloc))
 		return FALSE
 	if(get_dist(loc, newloc) > 1)

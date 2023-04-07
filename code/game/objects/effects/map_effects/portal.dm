@@ -81,7 +81,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 
 	// yield
 	spawn(0)
-		if(AM.loc == src)
+		if(AM.loc == loc)
 			go_through_portal(AM)
 
 
