@@ -10495,6 +10495,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "hnY" = (
@@ -25044,10 +25045,6 @@
 /area/security/hallway)
 "rEL" = (
 /obj/structure/bed/chair/bay/shuttle,
-/obj/structure/sign/warning/caution{
-	name = "\improper CAUTION - ZERO G AREA";
-	pixel_x = 32
-	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "rEO" = (
@@ -30017,10 +30014,6 @@
 "vnt" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
-	},
-/obj/structure/sign/warning/caution{
-	name = "\improper CAUTION - ZERO G AREA";
-	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
