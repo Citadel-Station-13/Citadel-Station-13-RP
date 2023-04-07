@@ -23241,15 +23241,17 @@
 /obj/item/gun/energy/taser{
 	pixel_y = 2
 	},
-/obj/item/gun/energy/taser{
-	pixel_y = -4
+/obj/item/gun/energy/secutor{
+	pixel_y = -5
 	},
-/obj/item/gun/energy/taser{
-	pixel_y = -2
+/obj/item/gun/energy/secutor{
+	pixel_y = -3
 	},
-/obj/item/gun/energy/taser,
-/obj/item/gun/energy/taser{
-	pixel_y = 2
+/obj/item/gun/energy/secutor{
+	pixel_y = -1
+	},
+/obj/item/gun/energy/secutor{
+	pixel_y = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
@@ -30446,7 +30448,6 @@
 	dir = 2
 	},
 /obj/machinery/camera/network/medbay,
-/turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "wwg" = (
