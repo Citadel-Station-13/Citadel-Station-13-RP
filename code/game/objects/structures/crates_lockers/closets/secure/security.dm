@@ -243,7 +243,7 @@
 		/obj/item/ammo_magazine/s44/rubber,
 		/obj/item/ammo_magazine/s44/rubber,
 		/obj/item/ammo_magazine/s44/rubber,
-		/obj/item/ammo_magazine/s44/empty
+		/obj/item/ammo_magazine/s44/empty,
 		/obj/item/melee/telebaton,
 
 		/obj/item/gps/command/blueshield,x
