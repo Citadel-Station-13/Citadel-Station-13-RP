@@ -16,7 +16,7 @@
 	modifystate = "secutorstun"
 
 	firemodes = list(
-	list(mode_name="stun", fire_delay=8, projectile_type=/obj/projectile/energy/electrode/strong/secutor, modifystate="secutorstun", charge_cost = 400),
+	list(mode_name="stun", fire_delay=8, projectile_type=/obj/projectile/energy/electrode/strong/secutor, modifystate="secutorstun", charge_cost = 240),
 	list(mode_name="phaser", fire_delay=8, projectile_type=/obj/projectile/energy/phase/secutor, modifystate="secutorphaser", charge_cost = 200),
 	list(mode_name="low-power-lethal", fire_delay=10, projectile_type=/obj/projectile/beam/secutor, modifystate="secutorkill", charge_cost = 300),
 	)
@@ -59,7 +59,7 @@
 	damage = 20
 
 //--------------- Projectiles ----------------
-/obj/projectile/energy/electrode/strong/secutor
+/obj/projectile/energy/electrode/secutor
 	name = "secutor electrode"
 	fire_sound = 'sound/weapons/Gunshot2.ogg'
 	icon_state = "energy4"
