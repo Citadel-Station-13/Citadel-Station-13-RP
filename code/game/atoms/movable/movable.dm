@@ -35,8 +35,8 @@
 	var/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
-	/// MOVABLE_MOVING_ enum
-	var/in_move = MOVABLE_MOVING_NONE
+	/// movement calls we're in
+	var/in_move = 0
 	/// a direction, or null
 	var/moving_diagonally
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.

@@ -46,17 +46,17 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 
 //? Movement enums
 
-//* /atom/movable/var/in_move
-/// not moving
-#define MOVABLE_MOVING_NONE 0
-/// moving - normal move
-#define MOVABLE_MOVING_NORMAL 1
-/// moving - forced movement
-#define MOVABLE_MOVING_FORCED 2
+//* /atom/movable/var/moving_diagonally
+/// not moving diagonally currently
+#define NOT_IN_DIAG_STEP 0
+/// first diag step
+#define FIRST_DIAG_STEP 1
+/// second diag step
+#define SECOND_DIAG_STEP 2
 
 //? Helpers
 
 /// Is an atom in the middle of a diagonal move call stack?
-#define IS_MOVABLE_IN_DIAG_MOVE(_AM) (_AM.moving_diagonally != null)
+#define IS_MOVABLE_IN_DIAG_MOVE(_AM) (_AM.moving_diagonally != NOT_IN_DIAG_STEP)
 /// Is an atom in the middle of a move at all?
-#define IS_MOVABLE_IN_MOVE(_AM) (_AM.in_move != MOVABLE_MOVING_NONE)
+#define IS_MOVABLE_IN_MOVE(_AM) (_AM.in_move)

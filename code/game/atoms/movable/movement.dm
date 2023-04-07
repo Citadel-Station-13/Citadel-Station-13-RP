@@ -111,6 +111,7 @@
 					)
 				)
 
+		var/atom/oldloc = loc
 		var/area/oldarea = get_area(loc)
 		var/area/newarea = get_area(newloc)
 
@@ -140,6 +141,7 @@
 				AM.Crossed(src)
 		if(oldarea != newarea)
 			newarea.Entered(src, oldloc)
+
 	else
 		//* single tile handling * //
 		// check
@@ -162,7 +164,6 @@
 		oldloc.Exited(src, newloc)
 		if(oldarea != newarea)
 			oldarea.Exited(src, newloc)
-
 		for(var/i in oldloc)
 			var/atom/movable/thing = i
 			thing.Uncrossed(src)
@@ -171,7 +172,6 @@
 		newloc.Entered(src, oldloc)
 		if(oldarea != newarea)
 			newarea.Entered(src, oldloc)
-
 		for(var/i in loc)
 			var/atom/movable/thing = i
 			thing.Crossed(src)
@@ -182,13 +182,11 @@
  * Only supports moves up to range 1, in any direction including diagonals.
  */
 /atom/movable/Move(atom/newloc, direct, glide_size_override)
-	if(IS_MOVABLE_IN_MOVE(src) && (direct != moving_diagonally))
-		CRASH("Move called during an ongoing move; please break up move-on-enter/exit intercepts with spawn(0)'s or other methods.")
 	if(!isturf(loc) || !isturf(newloc))
 		return FALSE
 	if(get_dist(loc, newloc) > 1)
 		CRASH("attempted to move longer than 1 get_dist with Move(); please use forceMove!")
-	in_move = MOVABLE_MOVING_NORMAL
+	++in_move
 
 	if(isnull(direct))
 		direct = get_dir(src, newloc)
@@ -206,68 +204,57 @@
 		if (!(direct & (direct - 1))) //Cardinal move
 			. = ..()
 		else //Diagonal move, split it into cardinal moves
+			moving_diagonally = FIRST_DIAG_STEP
 			var/first_step_dir
-			// The `&& IS_MOVABLE_IN_MOVE(src)` checks are so that a forceMove taking
+			// The `&& moving_diagonally` checks are so that a force_move taking
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
 			if (direct & NORTH)
 				if (direct & EAST)
-					moving_diagonally = NORTH
-					if (step(src, NORTH) && !isnull(moving_diagonally))
+					if (step(src, NORTH) && moving_diagonally)
 						first_step_dir = NORTH
-						moving_diagonally = EAST
+						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, EAST)
-					else
-						moving_diagonally = EAST
-						if (!isnull(moving_diagonally) && step(src, EAST))
-							first_step_dir = EAST
-							moving_diagonally = NORTH
-							. = step(src, NORTH)
+					else if (moving_diagonally && step(src, EAST))
+						first_step_dir = EAST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, NORTH)
 				else if (direct & WEST)
-					moving_diagonally = NORTH
-					if (step(src, NORTH) && !isnull(moving_diagonally))
+					if (step(src, NORTH) && moving_diagonally)
 						first_step_dir = NORTH
-						moving_diagonally = WEST
+						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, WEST)
-					else
-						moving_diagonally = WEST
-						if (!isnull(moving_diagonally) && step(src, WEST))
-							first_step_dir = WEST
-							moving_diagonally = NORTH
-							. = step(src, NORTH)
+					else if (moving_diagonally && step(src, WEST))
+						first_step_dir = WEST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, NORTH)
 			else if (direct & SOUTH)
 				if (direct & EAST)
-					moving_diagonally = SOUTH
-					if (step(src, SOUTH) && !isnull(moving_diagonally))
+					if (step(src, SOUTH) && moving_diagonally)
 						first_step_dir = SOUTH
-						moving_diagonally = EAST
+						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, EAST)
-					else
-						moving_diagonally = EAST
-						if (!isnull(moving_diagonally) && step(src, EAST))
-							first_step_dir = EAST
-							moving_diagonally = SOUTH
-							. = step(src, SOUTH)
+					else if (moving_diagonally && step(src, EAST))
+						first_step_dir = EAST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, SOUTH)
 				else if (direct & WEST)
-					moving_diagonally = SOUTH
-					if (step(src, SOUTH) && !isnull(moving_diagonally))
+					if (step(src, SOUTH) && moving_diagonally)
 						first_step_dir = SOUTH
-						moving_diagonally = WEST
+						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, WEST)
-					else
-						moving_diagonally = WEST
-						if (!isnull(moving_diagonally) && step(src, WEST))
-							first_step_dir = WEST
-							moving_diagonally = SOUTH
-							. = step(src, SOUTH)
-			if(!isnull(first_step_dir) && !isnull(moving_diagonally))
+					else if (moving_diagonally && step(src, WEST))
+						first_step_dir = WEST
+						moving_diagonally = SECOND_DIAG_STEP
+						. = step(src, SOUTH)
+			if(moving_diagonally == SECOND_DIAG_STEP)
 				if(!.)
 					setDir(first_step_dir)
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
 					newtonian_move(direct)
-			in_move = MOVABLE_MOVING_NONE
+			moving_diagonally = 0
 			return
 	else		// trying to move to the same place
 		if(direct)
@@ -277,7 +264,7 @@
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
-		in_move = MOVABLE_MOVING_NONE
+		--in_move
 		return
 
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
@@ -290,10 +277,9 @@
 		if(pulling.anchored)
 			stop_pulling()
 		else
-			var/pull_dir = get_dir(src, pulling)
 			//puller and pullee more than one tile away or in diagonal position
-			// if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
-			if(get_dist(src, pulling) > 1)
+			var/pull_dir = get_dir(src, pulling)
+			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
 				pulling.moving_from_pull = src
 				var/success = pulling.Move(T, get_dir(pulling, T), glide_size) //the pullee tries to reach our previous position
 				pulling.moving_from_pull = null
@@ -312,7 +298,7 @@
 	if(glide_size_override)
 		set_glide_size(glide_size_override, FALSE)
 
-	in_move = MOVABLE_MOVING_NONE
+	--in_move
 
 	// legacy
 	move_speed = world.time - l_move_time
@@ -326,7 +312,7 @@
 				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 				continue
 			else
-				in_move = MOVABLE_MOVING_NONE
+				--in_move
 				forceMove(M.loc)
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
@@ -544,9 +530,7 @@
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 
-	if(in_move != MOVABLE_MOVING_NONE)
-		CRASH("doMove called during an ongoing move; please break up move-on-enter/exit intercepts with spawn(0)'s or other methods.")
-	in_move = MOVABLE_MOVING_FORCED
+	++in_move
 
 	var/atom/oldloc = loc
 	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
@@ -647,7 +631,7 @@
 
 		Moved(oldloc, NONE, TRUE)
 
-	in_move = MOVABLE_MOVING_NONE
+	--in_move
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()

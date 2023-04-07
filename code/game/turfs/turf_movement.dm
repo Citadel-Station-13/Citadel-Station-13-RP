@@ -1,5 +1,6 @@
 /**
  * Checks if an atom can enter us.
+ * For multi tile objects, oldloc is the turf that they're moving to us from, meaning it's always adjacent, not their real loc.
  *
  * Side effects: calls Bump() on top-most blocker, if any, or all blocking objects if atom is MOVEMENT_UNSTOPPABLE.
  *
@@ -37,6 +38,7 @@
 
 /**
  * Checks if an atom can exit us.
+ * For multi tile objects, oldloc is the turf that they're moving from us to, meaning it's always adjacent, not their real loc.
  *
  * Side effects: calls Bump() on top-most blocker, if any, or all blocking objects if atom is MOVEMENT_UNSTOPPABLE.
  *
