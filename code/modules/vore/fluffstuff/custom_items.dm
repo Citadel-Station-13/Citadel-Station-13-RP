@@ -985,6 +985,9 @@
 
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
+	
+	if(user != target && !do_after(user, 5 SECONDS, target))
+		return
 
 	ready = FALSE
 	update_icon()
