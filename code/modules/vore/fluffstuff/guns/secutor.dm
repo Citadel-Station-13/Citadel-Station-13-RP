@@ -1,14 +1,14 @@
 // -------------- Secutor -------------
-/obj/item/gun/energy/fluff/secutor
+/obj/item/gun/energy/secutor
 	name = "\improper NT/HI-S-1 'Secutor'"
 	desc = "The Seuctor standard service sidearm was designed by NanoTrasen in conjunction with Hephaestus Industries. Following years of cooperative development, this weapon features NanoTrasen's superior neuro-disruptive electronic payload in a new frame heavily influenced by Hephaestus' more popular and ergonomic taser. Designed exclusively for NanoTrasen Security personnel, this weapon features three fire modes: a non-lethal stun bolt, a low power phaser medium, and an alert-locked lethal contingency. This state-of-the-art weapon serves as a symbolic representation of NanoTrasen and Hephaestus' lasting cooperative relationship - and it's an excellent sidearm to boot."
 
-	icon = 'icons/vore/custom_guns_vr.dmi'
+	icon = 'icons/obj/gun/secutor.dmi'
 	icon_state = "secutorstun100"
 
-	icon_override = 'icons/vore/custom_guns_vr.dmi'
+	icon_override = 'icons/obj/gun/secutor.dmi'
 	item_state = null
-	//item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/vore/custom_guns_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_guns_vr.dmi')
+	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER
 
 	projectile_type = /obj/projectile/energy/electrode/strong/secutor
 	fire_delay = 8
@@ -24,39 +24,34 @@
 	var/emagged = FALSE
 
 
-/obj/item/gun/energy/fluff/secutor/update_icon()
-	var/list/overlays_to_add = list()
+/obj/item/gun/energy/secutor/update_overlays()
+	. = ..()
+	cut_overlays()
 	var/alertlevel = get_security_level()
-	//cut_overlay ("green", "blue", "yellow", "violet", "orange", "red", "delta")
-
-	switch (alertlevel)
+	switch(alertlevel)
 		if("green")
-			overlays_to_add += "green"
+			. += "green"
 		if("blue")
-			overlays_to_add += "blue"
+			. += "blue"
 		if("yellow")
-			overlays_to_add += "yellow"
+			. += "yellow"
 		if("violet")
-			overlays_to_add += "violet"
+			. += "violet"
 		if("orange")
-			overlays_to_add += "orange"
+			. += "orange"
 		if("red")
-			overlays_to_add += "red"
+			. += "red"
 		if("delta")
-			overlays_to_add += "delta"
+			. += "delta"
 
-
-	add_overlay(overlays_to_add)
-	update_icon()
-
-/obj/item/gun/energy/fluff/secutor/special_check(mob/user)
+/obj/item/gun/energy/secutor/special_check(mob/user)
 	if(!emagged && mode_name == "low-power-lethal" && get_security_level() == "green")
 		to_chat(user,"<span class='warning'>The trigger refuses to depress while on the lethal setting and while under security level blue!</span>")
 		return FALSE
 
 	return ..()
 
-/obj/item/gun/energy/fluff/secutor/emag_act(var/remaining_charges,var/mob/user)
+/obj/item/gun/energy/secutor/emag_act(var/remaining_charges,var/mob/user)
 	..()
 	if(!emagged)
 		emagged = TRUE
