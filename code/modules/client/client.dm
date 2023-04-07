@@ -36,7 +36,7 @@
 	parent_type = /datum
 	show_verb_panel = FALSE
 
-	//! Intrinsics
+	//? Intrinsics
 	/// did New() finish?
 	var/initialized = FALSE
 	/// Persistent round-by-round data holder
@@ -44,17 +44,17 @@
 	/// Database data
 	var/datum/player_data/player
 
-	//! Rendering
+	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
 
-	//! Perspectives
+	//? Perspectives
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
 
-	//! Viewport
+	//? Viewport
 	/// what we *think* their current viewport size is in pixels
 	var/assumed_viewport_spx
 	/// what we *think* their current viewport size is in pixels
@@ -68,7 +68,7 @@
 	/// current view y - for fast access
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
-	var/viewport_rwlock = TRUE	//! default block so we can release it during init_viewport
+	var/viewport_rwlock = TRUE	//? default block so we can release it during init_viewport
 	/// viewport update queued?
 	var/viewport_queued = FALSE
 	/// forced temporary view
@@ -78,13 +78,13 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
-	//! Datum Menus
+	//? Datum Menus
 	/// menu button statuses
 	var/list/menu_buttons_checked = list()
 	/// menu group statuses
 	var/list/menu_group_status = list()
 
-	//! Statpanel
+	//? Statpanel
 	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
 	var/statpanel_tab
 	/// statpanel initialized
@@ -100,7 +100,7 @@
 	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
 	var/statpanel_for_turf = FALSE
 
-	//! throttling
+	//? throttling
 	/// block re-execution of expensive verbs
 	var/verb_throttle = 0
 

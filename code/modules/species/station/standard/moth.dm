@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	metabolic_rate = 0.5
 	gluttonous = 0
 	max_additional_languages = 3
-	rarity_value = 2
+	//rarity_value = 2
 	intrinsic_languages = LANGUAGE_ID_LUINIMMA
 	name_language = LANGUAGE_ID_LUINIMMA
 	// sensitive

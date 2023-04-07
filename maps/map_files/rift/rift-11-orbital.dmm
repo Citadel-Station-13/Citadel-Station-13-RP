@@ -8537,6 +8537,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"LR" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/specops/general)
 "LV" = (
 /obj/structure/table/rack,
 /obj/item/barrier_tape_roll/police,
@@ -23326,7 +23330,7 @@ XM
 Mm
 zi
 RN
-Lu
+LR
 SL
 XM
 GG

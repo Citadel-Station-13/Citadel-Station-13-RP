@@ -608,3 +608,68 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/pariah
+
+//The Covert/Overt Spec Ops Carrier - This is technically armor, but due to how it works I'm putting it here.
+/obj/item/clothing/suit/storage/hooded/covertcarrier
+	name = "advanced plate carrier"
+	desc = "The NT-COV/OV-4 plate carrier is an experimental system first utilized by covert field operatives employed by NanoTrasen. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	icon = 'icons/obj/clothing/modular_armor.dmi'
+	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
+	icon_state = "pcarrier"
+	inv_hide_flags = HIDEHOLSTER
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier
+	valid_accessory_slots = (\
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
+	restricted_accessory_slots = (\
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
+	blood_overlay_type = "armor"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/storage/pouches/large)
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/can_equip(mob/M, slot, mob/user, flags)
+	. = ..()
+	if(!.)
+		return
+
+	if(!ishuman(M))
+		return
+
+	var/mob/living/carbon/human/H = M
+
+	if(H.gloves)
+		if(H.gloves.body_cover_flags & ARMS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_cover_flags & ARMS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.gloves], they're in the way.</span>")
+					return FALSE
+	if(H.shoes)
+		if(H.shoes.body_cover_flags & LEGS)
+			for(var/obj/item/clothing/accessory/A in src)
+				if(A.body_cover_flags & LEGS)
+					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
+					return FALSE
+	return TRUE
+
+/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield
+	name = "experimental plate carrier"
+	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection."
+	icon_state = "pcarrier_navy"
+	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)

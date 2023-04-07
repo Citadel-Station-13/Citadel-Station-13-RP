@@ -1432,3 +1432,9 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "zone"
+/datum/sprite_accessory/hair/zone
+	name = "Halfcut"
+	id = "hair_halfcut"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut"

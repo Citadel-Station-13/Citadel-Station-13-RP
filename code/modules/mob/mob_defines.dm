@@ -32,6 +32,10 @@
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
+	//? Movement
+	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
+	var/datum/movement_intercept
+
 	//? Buckling
 	/// Atom we're buckled to
 	var/atom/movable/buckled
@@ -94,6 +98,7 @@
 
 	var/next_move = null // For click delay, despite the misleading name.
 
+	var/list/datum/action/actions = list()
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
 	var/atom/movable/screen/purged = null

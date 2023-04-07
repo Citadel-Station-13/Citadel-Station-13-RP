@@ -6,9 +6,9 @@
 
 /obj/item/card/id/contractor/dat()
 	. = ..()
-	. += text("Employing Company: [employing_coperation]")
-	. += text("External Job Title: [extern_title]")
-	//. += text("Expiration Date: [expiry_date]")
+	. += "Employing Company: [employing_coperation]"
+	. += "External Job Title: [extern_title]"
+	// . += "Expiration Date: [expiry_date]"
 
 /obj/item/card/id/contractor/update_icon()
 	return 0

@@ -244,6 +244,11 @@
 	else
 		icon_state = icon_on
 
+/obj/machinery/smartfridge/drying_rack/ashlander
+	name = "\improper Bone Drying Kiln"
+	desc = "A machine for drying plants and hides."
+	icon = 'icons/obj/lavaland.dmi'
+
 /*******************
 *   Item Adding
 ********************/

@@ -434,10 +434,10 @@
 		belly.go_out(src) //Just force-ejects from the borg as if they'd clicked the eject button.
 
 	//You're in an AI hologram!
-	else if(istype(loc, /obj/effect/overlay/aiholo))
-		var/obj/effect/overlay/aiholo/holo = loc
-		holo.drop_prey() //Easiest way
-		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(holo.master)] (AI HOLO) ([holo ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[holo.x];Y=[holo.y];Z=[holo.z]'>JMP</a>" : "null"])")
+	else if(istype(loc, /obj/effect/overlay/hologram/holopad/ai))
+		var/obj/effect/overlay/hologram/holopad/ai/holo = loc
+		holo.drop_vored()
+		log_and_message_admins("[key_name(src)] used the OOC escape button to get out of [key_name(holo.owner)] (AI HOLO) ([holo ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[holo.x];Y=[holo.y];Z=[holo.z]'>JMP</a>" : "null"])")
 
 	//Don't appear to be in a vore situation
 	else
