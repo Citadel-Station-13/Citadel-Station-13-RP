@@ -246,7 +246,7 @@
 		/obj/item/ammo_magazine/s44/empty,
 		/obj/item/melee/telebaton,
 
-		/obj/item/gps/command/blueshield,x
+		/obj/item/gps/command/blueshield,
 		/obj/item/tank/oxygen,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/accessory/badge/holo,
