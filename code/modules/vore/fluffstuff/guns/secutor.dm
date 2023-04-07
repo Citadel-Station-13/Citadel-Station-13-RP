@@ -10,13 +10,13 @@
 	item_state = null
 	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER
 
-	projectile_type = /obj/projectile/energy/electrode/strong/secutor
+	projectile_type = /obj/projectile/energy/electrode/secutor
 	fire_delay = 8
 
 	modifystate = "secutorstun"
 
 	firemodes = list(
-	list(mode_name="stun", fire_delay=8, projectile_type=/obj/projectile/energy/electrode/strong/secutor, modifystate="secutorstun", charge_cost = 240),
+	list(mode_name="stun", fire_delay=8, projectile_type=/obj/projectile/energy/electrode/secutor, modifystate="secutorstun", charge_cost = 240),
 	list(mode_name="phaser", fire_delay=8, projectile_type=/obj/projectile/energy/phase/secutor, modifystate="secutorphaser", charge_cost = 200),
 	list(mode_name="low-power-lethal", fire_delay=10, projectile_type=/obj/projectile/beam/secutor, modifystate="secutorkill", charge_cost = 300),
 	)
