@@ -4,10 +4,8 @@
  */
 /atom/movable/Move(atom/newloc, direct)
 	. = FALSE
-	if(!newloc || newloc == loc)
+	if(newloc == loc)
 		return
-	if(isnull(direct))
-		direct = get_dir(src, newloc)
 
 	setDir(direct)
 
@@ -17,12 +15,131 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
 		return
 
-	if(is_multi_tile)
+	if(is_multi_tile && isturf(loc) && isturf(newloc))
 		//* multi tile handling *//
-		if(!check_multi_tile_move_density_dir(direct, locs))	// We're big, and we can't move that way.
-			return
-		#warn impl
-		. = doMove(newloc)
+		var/list/leaving
+		var/list/entering
+		// this is the turf we can't directly access with either newloc or loc, for caching / speed.
+		var/turf/opposite
+		switch(direct)
+			if(NORTH)
+				opposite = locate(
+					newloc.x,
+					min(world.maxy, newloc.y + CEILING(bound_height / 32, 1) - 1),
+					newloc.z
+				)
+				leaving = block(
+					loc,
+					locate(
+						min(world.maxx, loc.x + CEILING(bound_width / 32, 1) - 1),
+						loc.y,
+						loc.z
+					)
+				)
+				entering = block(
+					opposite,
+					locate(
+						min(world.maxx, opposite.x + CEILING(bound_width / 32, 1) - 1),
+						opposite.y,
+						opposite.z
+					)
+				)
+			if(SOUTH)
+				opposite = locate(
+					loc.x,
+					min(world.maxy, loc.y + CEILING(bound_height / 32, 1) - 1),
+					loc.z
+				)
+				leaving = block(
+					opposite,
+					locate(
+						min(world.maxx, opposite.x + CEILING(bound_width / 32, 1) - 1),
+						opposite.y,
+						opposite.z
+					)
+				)
+				entering = block(
+					newloc,
+					locate(
+						min(world.maxx, newloc.x + CEILING(bound_width / 32, 1) - 1),
+						newloc.y,
+						newloc.z
+					)
+				)
+			if(EAST)
+				opposite = locate(
+					min(world.maxx, newloc.x + CEILING(bound_width / 32, 1) - 1),
+					newloc.y,
+					newloc.z
+				)
+				leaving = block(
+					loc,
+					locate(
+						loc.x,
+						min(world.maxy, loc.y + CEILING(bound_height / 32, 1) - 1),
+						loc.z
+					)
+				)
+				entering = block(
+					opposite,
+					locate(
+						opposite.x,
+						min(world.maxy, opposite.y + CEILING(bound_height / 32, 1) - 1),
+						opposite.z
+					)
+				)
+			if(WEST)
+				opposite = locate(
+					min(world.maxx, loc.x + CEILING(bound_width / 32, 1) - 1),
+					loc.y,
+					loc.z
+				)
+				leaving = block(
+					opposite,
+					locate(
+						opposite.x,
+						min(world.maxy, opposite.y + CEILING(bound_height / 32, 1) - 1),
+						opposite.z
+					)
+				)
+				entering = block(
+					newloc,
+					locate(
+						newloc.x,
+						min(world.maxy, newloc.y + CEILING(bound_height / 32, 1) - 1),
+						newloc.z
+					)
+				)
+
+		var/area/oldarea = get_area(loc)
+		var/area/newarea = get_area(newloc)
+
+		for(var/turf/T as anything in leaving)
+			if(!T.Exit(src, get_step(T, direct)))
+				return
+
+		var/reverse = turn(direct, 180)
+
+		for(var/turf/T as anything in entering)
+			if(!T.Enter(src, get_step(T, reverse)))
+				return
+
+		loc = newloc
+		. = TRUE
+
+		for(var/turf/T as anything in leaving)
+			T.Exited(src, get_step(T, direct))
+			for(var/atom/movable/AM as anything in T)
+				AM.Uncrossed(src)
+		if(oldarea != newarea)
+			oldarea.Exited(src, newloc)
+
+		for(var/turf/T as anything in entering)
+			T.Entered(src, get_step(T, reverse))
+			for(var/atom/movable/AM as anything in T)
+				AM.Crossed(src)
+		if(oldarea != newarea)
+			newarea.Entered(src, oldloc)
 	else
 		//* single tile handling * //
 		// check
@@ -47,8 +164,6 @@
 			oldarea.Exited(src, newloc)
 
 		for(var/i in oldloc)
-			if(i == src) // Multi tile objects
-				continue
 			var/atom/movable/thing = i
 			thing.Uncrossed(src)
 
@@ -58,8 +173,6 @@
 			newarea.Entered(src, oldloc)
 
 		for(var/i in loc)
-			if(i == src) // Multi tile objects
-				continue
 			var/atom/movable/thing = i
 			thing.Crossed(src)
 
@@ -223,52 +336,6 @@
 			return FALSE
 		else
 			M.setDir(dir)
-	return TRUE
-
-/*
- * This is the home of multi-tile movement checks, and thus here be dragons. You are warned.
- */
-/atom/movable/proc/check_multi_tile_move_density_dir(stepdir)
-	var/list/checks
-	// check exits
-	/*
-	if(isturF(loc))
-		switch(stepdir)
-			if(NORTH)
-			if(SOUTH)
-			if(EAST)
-			if(WEST)
-	// check enters
-	switch(stepdir)
-	*/
-
-	#warn impl
-	// warning: this proc doesn't respect Exit --> Enter, due to overhead
-	// if you have Exit() and Enter() have side effects it's a skill issue on your part anyways!
-	if(!isturf(loc))
-		return TRUE
-
-	var/list/moving_to = list()
-	for(var/turf/T as anything in locs)
-		var/turf/T2 = get_step(T, stepdir)
-		if(isnull(T2))
-			// bruh, edge of map
-			return FALSE
-		moving_to += T2
-		if(T2 in locs)
-			// still inside them
-			continue
-		else
-			// check enter
-			if(!T2.Enter(src, T))
-				return FALSE
-
-	// uh oh, second loop, check exits
-	for(var/turf/T as anything in locs)
-		if(!(T in moving_to))
-			if(!T.Exit(src, get_step(T, stepdir)))
-				return FALSE
-
 	return TRUE
 
 /**
