@@ -1,7 +1,7 @@
 // -------------- Secutor -------------
 /obj/item/gun/energy/secutor
-	name = "\improper NT/HI-S-1 'Secutor'"
-	desc = "The Seuctor standard service sidearm was designed by NanoTrasen in conjunction with Hephaestus Industries. Following years of cooperative development, this weapon features NanoTrasen's superior neuro-disruptive electronic payload in a new frame heavily influenced by Hephaestus' more popular and ergonomic taser. Designed exclusively for NanoTrasen Security personnel, this weapon features three fire modes: a non-lethal stun bolt, a low power phaser medium, and an alert-locked lethal contingency. This state-of-the-art weapon serves as a symbolic representation of NanoTrasen and Hephaestus' lasting cooperative relationship - and it's an excellent sidearm to boot."
+	name = "\improper Secutor sidearm"
+	desc = "The NT/HI-S-1 'Secutor' standard service sidearm was designed by NanoTrasen in conjunction with Hephaestus Industries. Following years of cooperative development, this weapon features NanoTrasen's superior neuro-disruptive electronic payload in a new frame heavily influenced by Hephaestus' more popular and ergonomic taser. Designed exclusively for NanoTrasen Security personnel, this weapon features three fire modes: a non-lethal stun bolt, a low power phaser medium, and an alert-locked lethal contingency. This state-of-the-art weapon serves as a symbolic representation of NanoTrasen and Hephaestus' lasting cooperative relationship - and it's an excellent sidearm to boot."
 
 	icon = 'icons/obj/gun/secutor.dmi'
 	icon_state = "secutorstun100"
