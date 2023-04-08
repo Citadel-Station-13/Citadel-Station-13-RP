@@ -550,10 +550,15 @@
 
 	if(!choices.len)
 		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
 
 	target = input(src,"Who do you wish to target?","Pounce Target") as null|anything in choices
 	if(!istype(target))
 		return FALSE
+
+	if(get_dist(src,target) > 1)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
 
 	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
 	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
