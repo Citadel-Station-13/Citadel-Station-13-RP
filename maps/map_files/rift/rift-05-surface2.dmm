@@ -3165,7 +3165,7 @@
 /area/crew_quarters/pool)
 "ceM" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/baron/loaded{
+/obj/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -15641,7 +15641,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	id = "hammerbrigblast";
+	id = "hammerbrigshutter";
 	name = "Brig Blast Door Control";
 	pixel_x = -8;
 	pixel_y = 33
@@ -30937,7 +30937,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	id = "hammerbrigblast";
+	id = "hammerbrigshutter";
 	name = "Brig Blast Door Control";
 	pixel_x = -24;
 	req_one_access = list(1,38)
@@ -33191,7 +33191,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
 "xya" = (
-/obj/mecha/combat/fighter/baron/loaded,
+/obj/mecha/combat/fighter/baron/sec/loaded,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/bay)
 "xyC" = (

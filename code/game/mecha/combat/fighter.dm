@@ -264,17 +264,6 @@
 	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
 	ME.attach(src)
 
-/obj/mecha/combat/fighter/gunpod/sec
-	name = "Security Gunpod"
-	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This model is frequently used by NT Security forces during EVA patrols."
-
-/obj/mecha/combat/fighter/gunpod/sec/loaded/Initialize(mapload) //Loaded version with gans
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
-	ME.attach(src)
-
 /obj/mecha/combat/fighter/gunpod/recon
 	name = "Reconnaissance Gunpod"
 	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This stripped down model is used for long range reconnaissance ."
@@ -358,6 +347,17 @@
 	icon_state = "baron-broken"
 	bound_width = 64
 	bound_height = 64
+
+/obj/mecha/combat/fighter/baron/sec
+	name = "Baron-SV"
+	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
+
+/obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with gans
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase
+	ME.attach(src)
 
 /datum/category_item/catalogue/technology/baron
 	name = "Voidcraft - Baron"
