@@ -6256,6 +6256,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
+"tt" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "tB" = (
 /obj/structure/table/rack,
 /obj/item/rig_module/mounted,
@@ -6347,6 +6353,18 @@
 /obj/item/chess/bbishop,
 /turf/simulated/floor/tiled/white,
 /area/holodeck/source_chess)
+"ve" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2
+	},
+/turf/unsimulated/floor/dark,
+/area/centcom/command)
+"vf" = (
+/obj/structure/bed/chair/backed_grey{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "vh" = (
 /obj/machinery/computer/pod{
 	id = "thunderdome";
@@ -6393,6 +6411,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"wA" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "wC" = (
 /obj/effect/wingrille_spawn/reinforced/crescent,
 /obj/effect/forcefield{
@@ -6414,6 +6438,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"xb" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "xg" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Teleporter";
@@ -6421,6 +6451,10 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"xh" = (
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "xi" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -6590,6 +6624,12 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
+"xW" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "xX" = (
 /obj/effect/floor_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security,
@@ -7767,6 +7807,12 @@
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c,
 /turf/simulated/sky/lythios43c/moving/west,
 /area/space)
+"CH" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "CK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8002,6 +8048,12 @@
 "Fv" = (
 /turf/unsimulated/floor/dark,
 /area/tdome)
+"Fx" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "Fy" = (
 /obj/structure/table/reinforced,
 /obj/item/material/knife/tacknife/combatknife,
@@ -8109,6 +8161,10 @@
 /obj/item/storage/firstaid/clotting,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Hb" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "Hg" = (
 /obj/structure/table/rack,
 /obj/item/rig/ert,
@@ -8150,6 +8206,18 @@
 /obj/structure/table/rack,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"HO" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
+"HS" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "HT" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8199,6 +8267,9 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/general)
+"IG" = (
+/turf/unsimulated/floor/dark,
+/area/centcom/command)
 "II" = (
 /obj/machinery/access_button/airlock_exterior{
 	dir = 4;
@@ -8251,6 +8322,12 @@
 /obj/item/storage/firstaid/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Jy" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "Jz" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -26
@@ -8303,6 +8380,12 @@
 /obj/item/material/knife/tacknife/combatknife,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
+"Kd" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "Kf" = (
 /obj/structure/table/rack,
 /obj/item/rig_module/mounted/taser,
@@ -8522,6 +8605,12 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"LB" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "LF" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/energy/gun/nuclear,
@@ -8718,6 +8807,12 @@
 /obj/item/gun/ballistic/shotgun/pump/combat,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"NV" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "NZ" = (
 /obj/structure/memorial{
 	icon = 'icons/obj/structures_vr.dmi';
@@ -8805,6 +8900,14 @@
 /obj/structure/table/reinforced,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"OY" = (
+/obj/structure/bed/chair/backed_grey,
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
+"Pf" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/centcom/command)
 "Ph" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/firstaid/insiderepair,
@@ -8820,6 +8923,10 @@
 /obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/specops/engine)
+"Pw" = (
+/obj/structure/table/bone,
+/turf/simulated/floor/tiled/dark,
+/area/centcom/command)
 "PA" = (
 /obj/machinery/vending/snack{
 	name = "hacked Getmore Chocolate Corp";
@@ -9097,6 +9204,12 @@
 	},
 /turf/unsimulated/wall,
 /area/centcom/specops/dock)
+"SF" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "SG" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -9225,6 +9338,9 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdome1)
+"TY" = (
+/turf/simulated/floor/reinforced,
+/area/centcom/command)
 "Uf" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -9240,6 +9356,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"Ui" = (
+/obj/structure/fake_stairs/south/bottom,
+/turf/simulated/floor/tiled/dark,
+/area/centcom/command)
 "Uj" = (
 /obj/structure/table/rack,
 /obj/item/clothing/under/color/red,
@@ -9259,6 +9379,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
+"Un" = (
+/obj/structure/bed/chair/backed_grey{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/centcom/command)
 "Uq" = (
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
@@ -9418,6 +9544,10 @@
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"VH" = (
+/obj/structure/fake_stairs/north/bottom,
+/turf/simulated/floor/tiled/dark,
+/area/centcom/command)
 "Wj" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
@@ -9530,6 +9660,9 @@
 /obj/item/reagent_containers/glass/beaker/large,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"XJ" = (
+/turf/simulated/floor/tiled/dark,
+/area/centcom/command)
 "XK" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/specops/cockpit)
@@ -28749,9 +28882,9 @@ Ha
 Cp
 ss
 Cw
-Ay
 Cw
-ss
+Cw
+vi
 Cv
 Cv
 UT
@@ -28942,9 +29075,9 @@ ss
 ss
 ss
 ss
-Fo
-ss
-Fo
+Cw
+Cw
+Cw
 ss
 JZ
 Hg
@@ -29131,21 +29264,21 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
 ss
-Ye
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
 ss
-Ye
+vi
+vi
+vi
 ss
 ss
 ss
-ss
-ss
-Bv
-Bv
 Bv
 Bv
 Bv
@@ -29325,21 +29458,21 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
 ss
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
 ss
-ss
-ss
-ss
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
 Bv
 Bv
 Bv
@@ -29519,21 +29652,21 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+ss
+Cw
+Cw
+Ay
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+ss
 Bv
 Bv
 Bv
@@ -29713,21 +29846,21 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+ss
+Fo
+ss
+Fo
+ss
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+ss
 Bv
 Bv
 Bv
@@ -29907,21 +30040,21 @@ hP
 hP
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+ss
+Ye
+ss
+Ye
+ss
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+ss
 Bv
 Bv
 Bv
@@ -30101,21 +30234,21 @@ hP
 hP
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+ss
+ss
+ss
+ss
+ss
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+Cw
+ss
 Bv
 Bv
 Bv
@@ -30299,17 +30432,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+yw
+IG
+ve
+yw
+yw
+yw
+IG
+ve
+yw
+yw
 Bv
 Bv
 Bv
@@ -30493,17 +30626,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+SF
+TY
+TY
+TY
+SF
+TY
+TY
+TY
+SF
+yw
 Bv
 Bv
 Bv
@@ -30687,17 +30820,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+yw
 Bv
 Bv
 Bv
@@ -30881,17 +31014,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+TY
+yw
 Bv
 Bv
 Bv
@@ -31075,17 +31208,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+OY
+TY
+LB
+HO
+Kd
+TY
+vf
+TY
+yw
 Bv
 Bv
 Bv
@@ -31269,17 +31402,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+OY
+TY
+wA
+Hb
+Pf
+TY
+vf
+TY
+yw
 Bv
 Bv
 Bv
@@ -31463,17 +31596,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+OY
+TY
+Fx
+HS
+NV
+TY
+vf
+TY
+yw
 Bv
 Bv
 Bv
@@ -31657,17 +31790,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+CH
+TY
+TY
+tt
+tt
+tt
+TY
+TY
+xh
+yw
 Bv
 Bv
 Bv
@@ -31851,17 +31984,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+tt
+xb
+Pw
+Pw
+Pw
+Jy
+tt
+TY
+yw
 Bv
 Bv
 Bv
@@ -32045,17 +32178,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+TY
+Ui
+Un
+Un
+Un
+VH
+TY
+TY
+yw
 Bv
 Bv
 Bv
@@ -32239,17 +32372,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+yw
+TY
+xW
+Ui
+XJ
+XJ
+XJ
+VH
+xW
+TY
+yw
 Bv
 Bv
 Bv
@@ -32433,17 +32566,17 @@ Bv
 Bv
 Bv
 Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
-Bv
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 Bv
 Bv
 Bv
