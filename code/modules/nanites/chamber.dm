@@ -12,6 +12,7 @@
 
 /obj/machinery/nanite_chamber
 	name = "nanite chamber"
+	anchored = TRUE
 	desc = "A nanoswarm servicing chamber."
 	icon = 'icons/modules/nanites/machinery/chamber.dmi'
 	icon_state = "chamber"
@@ -91,7 +92,7 @@
 	. = ..()
 	if(.)
 		return
-	toggle_open(user)
+	toggle_open(user, FALSE)
 	return TRUE
 
 /obj/machinery/nanite_chamber/proc/detect_connection()
@@ -177,8 +178,10 @@
 		return TRUE
 	return toggle_open(user)
 
-/obj/machinery/nanite_chamber/proc/toggle_open(mob/user)
+/obj/machinery/nanite_chamber/proc/toggle_open(mob/user, silent = TRUE)
 	if(is_locked())
+		if(!slient)
+			user.action_feedback(SPAN_WARNING("[src] is locked!"), src)
 		return FALSE
 	if(open)
 		take_contents()
@@ -195,7 +198,9 @@
 		AM.forceMove(where)
 	held_items = null
 	occupant?.forceMove(where)
+	occupant = null
 	protean_core?.forceMove(where)
+	protean_core = null
 	linked?.update_static_data()
 
 /obj/machinery/nanite_chamber/proc/take_contents()
@@ -258,8 +263,17 @@
 	for(var/obj/item/stack/material/matstack in held_items)
 		.[matstack.material.id] += matstack.amount * SHEET_MATERIAL_AMOUNT
 
+/obj/machinery/nanite_chamber/relaymove_from_contents(mob/user, direction)
+	if(open(user))
+		return TRUE
+	if(!(world.time % 5))
+		user.selfmove_feedback(SPAN_WARNING("[src] is locked!"))
+	return FALSE
+
 /obj/machinery/nanite_chamber/contents_resist(mob/escapee)
 	if(open(escapee))
+		return FALSE
+	if(!contents_resist_sequence(escapee, 1 MINUTE))
 		return FALSE
 	escapee.action_feedback(SPAN_WARNING("You start kicking at [src], trying to free yourself!"), src)
 	visible_message(
@@ -267,7 +281,6 @@
 		blind_message = SPAN_WARNING("You hear a loud thumping noise, as if someone was trying to break glass."),
 		range = MESSAGE_RANGE_COMBAT_LOUD,
 	)
-	contents_resist_sequence(escapee, 1 MINUTES)
 	return TRUE
 
 /obj/machinery/nanite_chamber/contents_resist_finish(mob/escapee)

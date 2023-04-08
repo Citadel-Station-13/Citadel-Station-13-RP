@@ -57,3 +57,9 @@
  */
 /mob/proc/innate_feedback(msg)
 	to_chat(src, msg)
+
+/**
+ * gives feedback for trying to move/whatever
+ */
+/mob/proc/selfmove_feedback(msg)
+	to_chat(src, msg)

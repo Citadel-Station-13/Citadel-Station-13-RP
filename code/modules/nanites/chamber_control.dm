@@ -53,6 +53,12 @@
 	RETURN_TYPE(/obj/machinery/nanite_chamber)
 	return locate(/obj/machinery/nanite_chamber) in orange(1, src)
 
+/obj/machinery/computer/nanite_chamber/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "NaniteChamberControl")
+		ui.open()
+
 /obj/machinery/computer/nanite_chamber/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	switch(action)
