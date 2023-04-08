@@ -142,7 +142,7 @@
 	operate_for(15 SECONDS, 7 SECONDS, CALLBACK(src, PROC_REF(refresh_protean)))
 
 /obj/machinery/nanite_chamber/proc/refresh_protean()
-	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in occupant
+	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in occupant.internal_organs
 	if(isnull(protean_refactory))
 		return
 	protean_refactory.materials[MAT_STEEL] = protean_refactory.max_storage

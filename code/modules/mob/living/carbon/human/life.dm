@@ -674,9 +674,9 @@
 			species.heat_level_1 = 400
 			species.heat_level_2 = 420 // haha nice
 			species.heat_level_3 = 1000
-			species.cold_level_1 = 275
-			species.cold_level_2 = 250
-			species.cold_level_3 = 200
+			species.cold_level_1 = 200
+			species.cold_level_2 = 140
+			species.cold_level_3 = 80
 			species.cold_discomfort_level = 290
 			species.heat_discomfort_level = 380
 			species.heat_discomfort_strings = list(
