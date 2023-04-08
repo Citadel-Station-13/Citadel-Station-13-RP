@@ -327,10 +327,6 @@
 		return 0
 	return -1
 
-/atom/proc/Bumped(atom/movable/bumped_atom)
-	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
-
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
 	return atom_flags & OPENCONTAINER
@@ -1065,13 +1061,16 @@
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
  * get our pixel_x to reset to

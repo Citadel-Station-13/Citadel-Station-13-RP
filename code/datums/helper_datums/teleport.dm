@@ -123,7 +123,7 @@
 		teleatom.forceMove(destturf)
 		playSpecials(destturf,effectout,soundout)
 	else
-		if(teleatom.Move(destturf))
+		if(teleatom.forceMove(destturf))
 			playSpecials(destturf,effectout,soundout)
 	if(C)
 		C.forceMove(destturf)

@@ -142,8 +142,8 @@
 /area/quartermaster/mining_airlock)
 "hP" = (
 /obj/machinery/door/airlock/maintenance/common{
-	name = "SM delam chamber";
-	locked = 1
+	locked = 1;
+	name = "SM delam chamber"
 	},
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/plating/lythios43c{
@@ -473,13 +473,6 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "zx" = (
-/obj/structure/sign/signnew/memetic{
-	pixel_y = -32;
-	pixel_x = -32
-	},
-/obj/structure/sign/signnew/danger{
-	pixel_y = -32
-	},
 /obj/structure/sign/warning/bomb_range{
 	pixel_x = -32
 	},
@@ -678,9 +671,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "NT" = (
-/obj/structure/sign/signnew/explosives{
-	pixel_y = 32
-	},
 /obj/structure/sign/signnew/radiation{
 	pixel_x = -32;
 	pixel_y = -32

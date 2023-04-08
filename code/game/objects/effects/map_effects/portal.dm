@@ -80,7 +80,10 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	if(!counterpart)
 		return
 
-	SSdpc.queue_invoke(src, TYPE_PROC_REF(/obj/effect/map_effect/portal, go_through_portal), AM, TRUE)
+	// yield
+	spawn(0)
+		if(AM.loc == loc)
+			go_through_portal(AM)
 
 /obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM, check)
 	if(AM.loc != loc && check)
