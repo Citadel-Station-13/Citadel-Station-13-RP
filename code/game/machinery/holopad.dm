@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
  * get hung up by a call
  */
 /obj/machinery/holopad/proc/hung_up(datum/holocall/disconnecting, we_hung_up)
-	SSdpc.queue_invoke(src, TYPE_PROC_REF(/atom, update_icon))
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_icon)), 0)
 
 //? UI
 

@@ -52,7 +52,10 @@
 /// When round completes but before reboot.
 #define RUNLEVEL_POSTGAME 8
 
+/// default runlevels for most subsystems
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+/// all valid runlevels - subsystems with this will run all the time after their MC init stage.
+#define RUNLEVELS_ALL (RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 /// Convert from the runlevel bitfield constants to index in runlevel_flags list.
@@ -178,6 +181,7 @@ DEFINE_BITFIELD(runlevels, list(
 // Probably not! Go to normal bracket instead!
 
 // DEFAULT PRIORITY IS HERE
+#define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
 
 //? Special
