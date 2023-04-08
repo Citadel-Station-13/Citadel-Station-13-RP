@@ -139,6 +139,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
+		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
