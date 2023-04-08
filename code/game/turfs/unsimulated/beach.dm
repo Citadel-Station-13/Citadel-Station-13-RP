@@ -31,6 +31,14 @@
 	edge_blending_priority = 1
 	smoothing_flags = NONE
 
+/turf/simulated/floor/outdoors/beach/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/shovel))
+		var/grave_type = /obj/structure/closet/grave/sand
+		do_after(user, 60)
+		to_chat(user, "<span class='warning'>You dig out a hole.</span>")
+		new grave_type(get_turf(src))
+		return
+
 /turf/simulated/floor/outdoors/beach/sand
 	name = "sand"
 	icon_state = "sand"

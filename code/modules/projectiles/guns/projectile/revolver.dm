@@ -326,7 +326,7 @@
 
 //NT SpecOps Revolver
 /obj/item/gun/ballistic/revolver/combat
-	name = "NT-SO combat revolver"
+	name = "NT-R-7 combat revolver"
 	desc = "A semiautomatic revolver tooled for NanoTrasen special operations. Chambered in .44 Magnum, it serves as the perfect sidearm for any off the books endeavor."
 	icon_state = "combatrevolver"
 	caliber = ".44"

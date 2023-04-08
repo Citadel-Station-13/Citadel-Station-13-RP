@@ -31,7 +31,7 @@
 	var/access_edit_region = NONE
 	/// access type flags this access can edit
 	var/access_edit_type = NONE
-	/// list of access datums by typepath that this access can also control
+	/// list of access datums by typepath or id that this access can also control
 	var/list/access_edit_list
 	/// a single access category that's set to allow easily setting categorical edit without edit_list
 	var/access_edit_category

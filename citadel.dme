@@ -1802,6 +1802,7 @@
 #include "code\game\turfs\simulated\floors\concrete.dm"
 #include "code\game\turfs\simulated\floors\dirt.dm"
 #include "code\game\turfs\simulated\floors\dungeon.dm"
+#include "code\game\turfs\simulated\floors\glass.dm"
 #include "code\game\turfs\simulated\floors\grass.dm"
 #include "code\game\turfs\simulated\floors\lava.dm"
 #include "code\game\turfs\simulated\floors\outdoors.dm"

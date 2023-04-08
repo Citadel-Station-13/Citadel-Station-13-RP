@@ -128,7 +128,7 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // COURSER SHUTTLE DATA
 
@@ -157,7 +157,35 @@
 /obj/machinery/computer/shuttle_control/explore/courser
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
+
+// Hammerhead Patrol Barge
+
+/datum/shuttle/autodock/overmap/hammerhead
+	name = "Hammerhead Patrol Barge"
+	warmup_time = 10
+	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general, /area/shuttle/hammerhead/brig, /area/shuttle/hammerhead/bay)
+	current_location = "rift_hammerhead_hangar"
+	docking_controller_tag = "hammerhead_docker"
+	landmark_transition = "nav_transit_hammerhead"
+	move_time = 15
+
+/obj/effect/overmap/visitable/ship/landable/hammerhead
+	name = "Hammerhead Patrol Barge"
+	desc = "To Detain and Enforce."
+	fore_dir = EAST
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Hammerhead Patrol Barge"
+
+/area/shuttle/hammerhead
+	name = "Hammerhead Patrol Barge"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/hammerhead
+	name = "short jump console"
+	shuttle_tag = "Hammerhead Patrol Barge"
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // Public Civilian Shuttle
 

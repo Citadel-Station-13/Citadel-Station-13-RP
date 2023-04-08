@@ -260,6 +260,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"hx" = (
+/obj/structure/statue/bone{
+	anchored = 1;
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "hA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 8
@@ -307,6 +314,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"is" = (
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/central/explored)
 "iu" = (
 /obj/machinery/button/remote/airlock{
 	id = "mine_purp";
@@ -351,6 +361,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"jO" = (
+/obj/structure/curtain/ashlander,
+/turf/simulated/floor/bone/lavaland,
+/area/lavaland/central/explored)
 "jP" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -508,6 +522,10 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
+"mb" = (
+/obj/structure/table/bench/sandstone,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/central/explored)
 "mh" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
@@ -837,6 +855,10 @@
 "qA" = (
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
+"qE" = (
+/obj/structure/curtain/ashlander,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/central/explored)
 "qF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
@@ -924,6 +946,9 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/central/explored)
+"sA" = (
+/turf/simulated/floor/bone/lavaland,
 /area/lavaland/central/explored)
 "sH" = (
 /obj/machinery/washing_machine,
@@ -1129,6 +1154,17 @@
 /obj/machinery/microwave,
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
+"vr" = (
+/obj/structure/table/bench/bone,
+/turf/simulated/floor/bone/lavaland,
+/area/lavaland/central/explored)
+"vt" = (
+/obj/structure/statue/bone{
+	anchored = 1;
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "vu" = (
 /obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
@@ -1225,6 +1261,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
+"wX" = (
+/obj/structure/catwalk/ashlander,
+/turf/simulated/floor/outdoors/lava/lavaland,
+/area/lavaland/central/explored)
 "wY" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Engine Room";
@@ -1589,6 +1629,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Go" = (
+/obj/structure/table/bone,
+/turf/simulated/floor/bone/lavaland,
+/area/lavaland/central/explored)
 "GE" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled,
@@ -2275,6 +2319,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Wq" = (
+/turf/simulated/wall/sandstone/lavaland,
+/area/lavaland/central/explored)
 "Wv" = (
 /obj/item/geiger_counter,
 /obj/item/geiger_counter,
@@ -2307,6 +2354,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"WM" = (
+/turf/simulated/wall/bone,
+/area/lavaland/central/explored)
 "WR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2372,6 +2422,10 @@
 	},
 /turf/simulated/floor/carpet/purcarpet,
 /area/lavaland/central/base/common)
+"XT" = (
+/obj/structure/closet/crate/ashlander,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/central/explored)
 "Yb" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Triage";
@@ -2409,6 +2463,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
+"Ze" = (
+/obj/structure/table/sandstone,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/central/explored)
 "Zg" = (
 /obj/machinery/shower{
 	dir = 4
@@ -7061,8 +7119,8 @@ MX
 MX
 MX
 RL
-xd
-xd
+RX
+RX
 RX
 RX
 RX
@@ -7245,18 +7303,18 @@ xd
 xd
 RL
 MX
-MX
-MX
-DG
-DG
-DG
-DG
-DG
+gy
+gy
+wX
+wX
+wX
+wX
+wX
 MX
 MX
 RL
-xd
-xd
+RX
+RX
 RX
 RX
 RX
@@ -7439,18 +7497,18 @@ xd
 xd
 RL
 MX
-MX
-MX
-DG
-DG
-DG
-DG
-DG
-DG
+gy
+gy
+wX
+wX
+wX
+wX
+wX
+wX
 MX
 RL
-xd
-xd
+RX
+RX
 RX
 RX
 RX
@@ -7632,19 +7690,19 @@ xd
 xd
 xd
 RL
-MX
-MX
+gy
+gy
 MX
 MX
 DG
 DG
-MX
-DG
-DG
+gy
+wX
+wX
 MX
 RL
-xd
-xd
+RX
+RX
 RX
 RX
 RX
@@ -7825,20 +7883,20 @@ RL
 xd
 xd
 xd
-RL
-MX
-MX
-MX
-MX
+Wq
+Wq
+qE
+Wq
+Wq
 DG
 DG
-MX
+gy
+wX
+wX
 DG
-DG
-DG
-RL
-xd
-xd
+gy
+RX
+RX
 RX
 RX
 RX
@@ -8019,18 +8077,18 @@ MX
 MX
 MX
 MX
-MX
-MX
-MX
-MX
-MX
+Wq
+Ze
+is
+XT
+Wq
 DG
 DG
-MX
-MX
-DG
-MX
-MX
+gy
+gy
+wX
+gy
+gy
 RX
 RX
 RX
@@ -8213,18 +8271,18 @@ DG
 MX
 MX
 MX
-MX
-MX
-MX
-MX
-MX
+Wq
+Ze
+is
+XT
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+gy
+gy
+gy
+gy
+gy
 RX
 RX
 RX
@@ -8407,18 +8465,18 @@ DG
 DG
 MX
 MX
-MX
-MX
-MX
-MX
-MX
+Wq
+Wq
+qE
+Wq
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+WM
+jO
+WM
+WM
 RX
 RX
 RX
@@ -8602,17 +8660,17 @@ DG
 DG
 MX
 MX
-MX
-MX
-MX
-MX
+Wq
+is
+Ze
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+sA
+sA
+sA
+WM
 RX
 RX
 RX
@@ -8796,17 +8854,17 @@ DG
 DG
 DG
 MX
-MX
-MX
-MX
-MX
+Wq
+is
+is
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+Go
+Go
+Go
+WM
 MX
 MX
 MX
@@ -8990,17 +9048,17 @@ DG
 DG
 DG
 DG
-MX
-MX
-MX
-MX
+Wq
+wX
+is
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+sA
+sA
+sA
+WM
 MX
 MX
 MX
@@ -9186,15 +9244,15 @@ DG
 DG
 DG
 DG
-MX
-MX
+mb
+Wq
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+vr
+sA
+sA
+WM
 MX
 MX
 MX
@@ -9384,11 +9442,11 @@ DG
 DG
 MX
 DG
-MX
-MX
-MX
-MX
-MX
+WM
+WM
+jO
+WM
+WM
 DG
 DG
 MX
@@ -9578,11 +9636,11 @@ DG
 DG
 DG
 DG
-DG
-DG
-MX
-MX
-DG
+gy
+gy
+gy
+gy
+gy
 DG
 DG
 MX
@@ -9772,10 +9830,10 @@ DG
 DG
 DG
 DG
-DG
-DG
-DG
-DG
+gy
+gy
+gy
+vt
 DG
 DG
 DG
@@ -9965,10 +10023,10 @@ DG
 DG
 DG
 DG
+gy
 DG
-DG
-DG
-DG
+gy
+gy
 DG
 DG
 DG
@@ -10159,10 +10217,10 @@ DG
 DG
 DG
 DG
+hx
 DG
-DG
-DG
-DG
+wX
+wX
 DG
 DG
 DG
@@ -10355,8 +10413,8 @@ DG
 DG
 DG
 DG
-DG
-DG
+wX
+wX
 DG
 DG
 DG
@@ -10549,8 +10607,8 @@ DG
 DG
 DG
 DG
-DG
-DG
+wX
+gy
 DG
 DG
 DG
@@ -10742,9 +10800,9 @@ MX
 DG
 DG
 DG
-DG
-DG
-DG
+wX
+wX
+gy
 DG
 DG
 DG
@@ -10935,10 +10993,10 @@ MX
 MX
 MX
 DG
-DG
-DG
-DG
-DG
+hx
+wX
+wX
+vt
 DG
 DG
 DG
@@ -11129,10 +11187,10 @@ MX
 MX
 MX
 DG
-DG
-DG
-DG
-DG
+gy
+wX
+wX
+wX
 DG
 DG
 DG
@@ -11323,9 +11381,9 @@ MX
 MX
 DG
 DG
-DG
-DG
-DG
+hx
+gy
+wX
 DG
 DG
 DG
@@ -11517,8 +11575,8 @@ MX
 MX
 DG
 DG
-DG
-DG
+wX
+gy
 DG
 DG
 DG
@@ -11711,8 +11769,8 @@ MX
 MX
 DG
 DG
-DG
-DG
+wX
+gy
 DG
 DG
 DG
@@ -11904,9 +11962,9 @@ MX
 MX
 MX
 DG
-DG
-DG
-DG
+wX
+wX
+wX
 DG
 DG
 DG
@@ -12098,9 +12156,9 @@ MX
 MX
 MX
 DG
-DG
-DG
-DG
+wX
+wX
+wX
 DG
 DG
 DG
@@ -12291,9 +12349,9 @@ MX
 MX
 MX
 MX
-MX
-MX
-DG
+gy
+gy
+wX
 DG
 DG
 DG
@@ -12483,12 +12541,12 @@ RX
 RX
 MX
 MX
-MX
-MX
-MX
-MX
-MX
-MX
+gy
+gy
+gy
+gy
+gy
+gy
 MX
 DG
 DG
@@ -12678,13 +12736,13 @@ RX
 MX
 MX
 MX
-MX
-MX
-MX
-MX
-MX
-MX
-MX
+gy
+gy
+gy
+gy
+gy
+gy
+gy
 MX
 DG
 DG
@@ -12873,11 +12931,11 @@ RX
 RX
 RX
 RX
+ax
+ax
 RX
-RX
-RX
-MX
-MX
+gy
+gy
 MX
 MX
 MX
@@ -13070,7 +13128,7 @@ RX
 RX
 RX
 RX
-MX
+gy
 MX
 MX
 MX
@@ -19396,8 +19454,8 @@ MX
 MX
 MX
 MX
-MX
-MX
+DG
+DG
 DG
 DG
 MX
@@ -19588,18 +19646,18 @@ DG
 MX
 MX
 MX
-MX
-MX
-MX
-MX
-MX
+DG
 DG
 DG
 MX
 DG
-MX
+DG
+DG
+DG
 DG
 MX
+DG
+DG
 MX
 DG
 MX
@@ -19782,19 +19840,19 @@ DG
 DG
 DG
 MX
-MX
-MX
-MX
-MX
-MX
-MX
+DG
+DG
+DG
 DG
 MX
 DG
-MX
 DG
-MX
-MX
+DG
+DG
+DG
+DG
+DG
+DG
 DG
 MX
 MX
@@ -19976,21 +20034,21 @@ MX
 MX
 DG
 DG
-MX
-MX
-MX
-MX
-MX
-MX
 DG
-MX
 DG
-MX
 DG
-MX
-MX
 DG
-MX
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
 DG
 DG
 MX
@@ -20167,8 +20225,8 @@ Md
 Md
 MX
 MX
-MX
-MX
+DG
+DG
 DG
 DG
 DG
@@ -20361,8 +20419,6 @@ Md
 Md
 MX
 MX
-MX
-MX
 DG
 DG
 DG
@@ -20379,7 +20435,9 @@ DG
 DG
 DG
 DG
-MX
+DG
+DG
+DG
 MX
 MX
 MX
@@ -20556,24 +20614,24 @@ Md
 DG
 DG
 MX
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
+DG
 MX
 DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-DG
-MX
-MX
 DG
 MX
 MX
@@ -20766,7 +20824,7 @@ DG
 DG
 DG
 DG
-MX
+DG
 DG
 DG
 MX
@@ -22902,8 +22960,8 @@ DG
 DG
 DG
 DG
-MX
-MX
+DG
+DG
 MX
 MX
 MX
@@ -23094,8 +23152,8 @@ DG
 DG
 DG
 DG
-MX
-MX
+DG
+DG
 DG
 DG
 MX
@@ -23289,8 +23347,8 @@ DG
 DG
 DG
 DG
-MX
-MX
+DG
+DG
 DG
 DG
 MX
@@ -23676,7 +23734,7 @@ DG
 DG
 DG
 DG
-MX
+DG
 DG
 DG
 MX
@@ -24047,8 +24105,8 @@ Md
 Md
 MX
 MX
-MX
-MX
+DG
+DG
 DG
 DG
 DG
@@ -24240,22 +24298,22 @@ Md
 (113,1,1) = {"
 Md
 MX
-MX
-MX
-MX
 DG
-MX
-MX
-MX
-MX
 MX
 MX
 DG
 MX
 DG
-MX
+DG
+DG
+DG
+DG
 DG
 MX
+DG
+DG
+DG
+DG
 MX
 DG
 DG
@@ -24439,15 +24497,15 @@ MX
 DG
 DG
 MX
-MX
-MX
-MX
+DG
+DG
 MX
 MX
 DG
-MX
 DG
 MX
+DG
+DG
 DG
 MX
 MX
@@ -24639,9 +24697,9 @@ MX
 MX
 DG
 DG
-MX
 DG
-MX
+DG
+DG
 DG
 DG
 MX
@@ -37555,7 +37613,7 @@ MX
 MX
 MX
 RL
-RL
+MX
 gy
 gy
 gy
@@ -37749,11 +37807,11 @@ MX
 RL
 MX
 MX
+MX
+MX
 gy
 gy
-gy
-gy
-gy
+MX
 RL
 RL
 RL
@@ -37946,7 +38004,7 @@ MX
 gy
 gy
 gy
-gy
+MX
 RL
 RL
 RL
@@ -38139,7 +38197,7 @@ MX
 gy
 gy
 gy
-RL
+MX
 RL
 RL
 xd
@@ -38329,11 +38387,11 @@ MX
 MX
 MX
 MX
+MX
+MX
 gy
-gy
-RL
-RL
-RL
+MX
+MX
 RL
 RL
 xd
@@ -38522,10 +38580,10 @@ MX
 RL
 MX
 MX
+gy
 MX
-MX
-MX
-MX
+gy
+gy
 MX
 RL
 RL
@@ -38715,10 +38773,10 @@ MX
 RL
 MX
 MX
-MX
-MX
-MX
-MX
+gy
+gy
+gy
+gy
 MX
 MX
 xd
@@ -38908,9 +38966,9 @@ MX
 MX
 MX
 MX
-MX
-MX
-MX
+gy
+gy
+gy
 MX
 MX
 MX
@@ -39101,9 +39159,9 @@ MX
 MX
 MX
 MX
-MX
-MX
-MX
+gy
+gy
+gy
 MX
 MX
 MX
@@ -39297,7 +39355,7 @@ MX
 MX
 MX
 MX
-MX
+gy
 MX
 MX
 MX

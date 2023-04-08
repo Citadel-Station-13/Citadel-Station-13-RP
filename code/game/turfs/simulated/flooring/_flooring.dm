@@ -725,3 +725,29 @@ var/list/flooring_types
 	name = "engraved bone floor"
 	desc = "A plate of solid bone with intricate symbols and patterns engraved into it."
 	icon_base = "bonecarve"
+
+/singleton/flooring/glass
+	name = "glass flooring"
+	desc = "A window to the world outside. Or the world beneath your feet, rather."
+	icon = 'icons/turf/flooring/glass.dmi'
+	icon_base = "glass"
+	build_type = /obj/item/stack/material/glass
+	build_cost = 1
+	build_time = 30
+	damage_temperature = T100C
+	flooring_flags = TURF_REMOVE_CROWBAR | TURF_ACID_IMMUNE
+	// can_engrave = FALSE
+	// color = GLASS_COLOR
+	mz_flags = MZ_MIMIC_DEFAULTS
+	// footstep_type = /decl/footsteps/plating
+
+/singleton/flooring/glass/reinforced
+	name = "reinforced glass flooring"
+	desc = "Heavily reinforced with steel rods."
+	icon = 'icons/turf/flooring/glass_reinf.dmi'
+	icon_base = "glass_reinf"
+	// build_type = /obj/item/stack/material/glass/reinforced
+	build_cost = 2
+	flooring_flags = TURF_REMOVE_WRENCH | TURF_ACID_IMMUNE
+
+	mz_flags = MZ_MIMIC_DEFAULTS

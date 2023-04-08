@@ -1124,6 +1124,7 @@
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
 				message = "[spread ? "extends" : "retracts"] their wings."
+				src.wing_spread_start()
 			else
 				return 1
 		if ("mlem")
@@ -1273,7 +1274,12 @@
 	return 1
 
 /mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style || !wing_style.spr_state)
+	if(!wing_style)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings!</span>")
+		return 0
+
+	if(!wing_style.spr_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
 		return 0

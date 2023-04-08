@@ -10,7 +10,7 @@
 		// The overlay will handle cleaning itself up on non-openspace turfs.
 		if (isturf(dest))
 			bound_overlay.forceMove(get_step(src, UP))
-			if (dir != bound_overlay.dir)
+			if (bound_overlay && dir != bound_overlay.dir)
 				bound_overlay.setDir(dir)
 		else	// Not a turf, so we need to destroy immediately instead of waiting for the destruction timer to proc.
 			qdel(bound_overlay)
@@ -69,6 +69,19 @@
 
 /atom/movable/openspace/can_fall()
 	return FALSE
+
+// No.
+/atom/movable/openspace/set_glide_size(new_glide_size, recursive)
+	return
+
+// This is an abstract object, we don't care about the move stack or throwing events.
+/atom/movable/openspace/Move()
+	if (bound_overlay)
+		bound_overlay.forceMove(get_step(src, UP))
+		// forceMove could've deleted our overlay
+		if (bound_overlay && bound_overlay.dir != dir)
+			bound_overlay.setDir(dir)
+	return TRUE
 
 // No blowing up abstract objects.
 /atom/movable/openspace/ex_act(ex_sev)
