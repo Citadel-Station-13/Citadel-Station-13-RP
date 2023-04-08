@@ -55,18 +55,25 @@ right now its not a big priority - Bloop 2022
 // Exclusive landmark for docking *inside* the station
 
 /obj/effect/shuttle_landmark/triumph/deck4/excursion
-	name = "NSV Triumph - Excursion Hanger"
+	name = "NSV Triumph - Excursion Hangar"
 	landmark_tag = "triumph_excursion_hangar"
 	docking_controller = "expshuttle_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/excursion_dock
 
 /obj/effect/shuttle_landmark/triumph/deck4/courser
-	name = "NSV Triumph - Courser Hanger"
+	name = "NSV Triumph - Courser Hangar"
 	landmark_tag = "triumph_courser_hangar"
 	docking_controller = "courser_dock"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
+
+/obj/effect/shuttle_landmark/triumph/deck4/hammerhead
+	name = "NSV Triumph - Hammerhead Hangar"
+	landmark_tag = "rift_hammerhead_hangar"
+	docking_controller = "hammerhead_docker"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/security/hammerhead_bay
 
 // ON STATION NAV POINTS
 
