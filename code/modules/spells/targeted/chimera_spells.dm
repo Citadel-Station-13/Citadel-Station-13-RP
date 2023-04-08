@@ -112,48 +112,6 @@
 		else
 			return
 
-
-////////////////
-//Regeneration//
-////////////////
-//Huge cooldown, huge cost, but will actually heal most of your issues.
-
-/spell/targeted/chimera/regenerate
-	name = "Regeneration"
-	desc = "We shed our skin, purging it of damage, regrowing limbs."
-
-	spell_flags = INCLUDEUSER
-	hud_state = "ling_fleshmend"
-	invocation = "none"
-	invocation_type = SpI_NONE
-	charge_max = 10 MINUTES
-	duration = 0
-	nutrition_cost_minimum = 500
-	nutrition_cost_proportional = 75
-	var/healing_amount = 60
-	var/delay = 1 MINUTE
-
-
-/spell/targeted/chimera/regenerate/cast_check(skipcharge = 0,mob/user = usr)
-	if(..())
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
-				to_chat(H,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
-				return FALSE
-			else return TRUE
-
-/spell/targeted/chimera/regenerate/cast(list/targets, mob/user = usr)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(do_after(H, delay, null, FALSE, TRUE, INCAPACITATION_DISABLED))
-			..()
-		else
-			to_chat(user,"<span class = 'warning'>We were interrupted!</span>")
-			charge_counter = 9.8 MINUTES
-
-#warn parse above
-
 ////////////////
 //Revive spell//
 ////////////////

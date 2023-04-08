@@ -661,22 +661,56 @@
 
 /datum/ability/species/xenochimera
 	abstract_type = /datum/ability/species/xenochimera
+	category = "Xenochimera"
 	ability_check_flags = NONE
 	always_bind = TRUE
 	action_icon = 'icons/screen/actions/changeling.dmi'
 
-#warn impl
+	var/nutrition_cost_minimum = 50
+	var/nutrition_cost_proportional = 20 //percentage of nutriment it should cost if it's higher than the minimum
+	var/nutrition_enforced = FALSE
 
-/datum/ability/species/xenochimera/on_trigger()
+
+/datum/ability/species/xenochimera/check_trigger(mob/user, toggling)
 	. = ..()
+	if(!.)
+		return
+	if(!ishuman(owner))
+		return FALSE
+	var/mob/living/carbon/human/H = owner
+	if(nutrition_enforced)
+		if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
+			to_chat(user,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
+			return FALSE
 
+
+/datum/ability/species/xenochimera/on_trigger(mob/user, toggling)
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	var/nut = (H.nutrition * nutrition_cost_proportional) / 100
+	var/final_cost
+	if(nut > nutrition_cost_minimum)
+		final_cost = nut
+	else
+		final_cost = nutrition_cost_minimum
+
+	if((H.nutrition - final_cost) >= 0)
+		H.nutrition -= final_cost
+	else
+		H.nutrition = 0		//We're already super starved, and feral, so cast it for free, you're likely using it to get food at this point.
 
 /datum/ability/species/xenochimera/regenerate
 	name = "Regeneration"
 	desc = "We shed our skin, purging it of damage, regrowing limbs."
 	action_state = "fleshmend"
-
-/datum/ability/species/xenochimera/regenerate/
+	nutrition_cost_minimum = 500
+	nutrition_cost_proportional = 75
+	nutrition_enforced = TRUE
+	cooldown = 1 MINUTE
+	windup = 10 SECONDS
+	var/healing_amount = 60
 
 /datum/ability/species/xenochimera/regenerate/on_trigger()
 	. = ..()

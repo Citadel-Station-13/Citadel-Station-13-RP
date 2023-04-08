@@ -14,11 +14,13 @@
 	/// desc
 	var/desc = "Some sort of ability."
 	/// category - used for tgui
-	var/category = "Abilities"
+	var/category = "Misc"
 
 	//? mob
 	/// owning mob - can be null if we aren't bound / granted to anyone.
 	var/mob/owner
+
+	//? binding
 	/// action datum
 	var/datum/action/action
 	/// action button icon
@@ -49,10 +51,14 @@
 	//? state
 	/// cooldown delay, if we have a cooldown
 	var/cooldown = 0
-	/// last use world.time
-	var/last_used
 	/// for toggled abilities, turning off incurs the cooldown - otherwise, cooldown begins on toggling off.
 	var/cooldown_for_deactivation = TRUE
+	/// windup delay, if we have a windup
+	var/windup = 0
+	/// windup requires standing still
+	var/windup_requires_still = TRUE
+	/// last use world.time
+	var/last_used
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
 
@@ -69,31 +75,40 @@
 	action = new(src)
 	action.button_icon = action_icon
 	action.button_icon_state = action_state
-	action.background_icon = backgronud_icon
+	action.background_icon = background_icon
 	action.background_icon_state = background_state
 	return action
 
 /datum/ability/proc/update_action()
 	#warn impl
 
-/datum/ability/proc/action_trigger()
-	attempt_trigger()
+/datum/ability/ui_action_click(datum/action/action, mob/user)
+	. = ..()
+	action_trigger(user)
+
+/datum/ability/proc/action_trigger(mob/user)
+	attempt_trigger(user)
 
 /**
  * called to try to trigger.
  *
  * @params
+ * * user - triggering user. this is usually owner, but sometimes isn't.
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/attempt_trigger(toggling)
+/datum/ability/proc/attempt_trigger(mob/user, toggling)
 	if(!check_trigger(toggling))
 		return
 	on_trigger(toggling)
 
 /**
  * called to check a trigger.
+ *
+ * @params
+ * * user - triggering user. this is usually owner, but sometimes isn't.
+ * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/check_trigger(toggling)
+/datum/ability/proc/check_trigger(mob/user, toggling)
 	#warn standard implements for cooldown/whatever.
 	return available_check()
 
@@ -101,9 +116,10 @@
  * called on trigger
  *
  * @params
+ * * user - triggering user. this is usually owner, but sometimes isn't.
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
-/datum/ability/proc/on_trigger(toggling)
+/datum/ability/proc/on_trigger(mob/user, toggling)
 	if(interact_type != ABILITY_INTERACT_TOGGLE)
 		return
 	if(!isnull(toggling) && toggling == enabled)
