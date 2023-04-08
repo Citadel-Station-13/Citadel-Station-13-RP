@@ -1,26 +1,36 @@
-/**
- * delayed procedure call, equivalent to addtimer 0
- */
+/*
+This is pretty much just an optimization for wait=0 timers. They're relatively common, but generally don't actually need the more
+ complex features of SStimer. SSdpc can handle these timers instead (and it's a lot simpler than SStimer is), but it can't handle
+ complex timers with flags. This doesn't need to be explicitly used, eligible timers are automatically converted.
+*/
+
 SUBSYSTEM_DEF(dpc)
-	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
+    name = "Delayed Procedure Call"
+    wait = 1
+    priority = SS_PRIORITY_DPC
+    flags = SS_FIRE_IN_LOBBY | SS_TICKER | SS_NO_INIT
 
-	/// are we queued?
-	var/primed = FALSE
-	/// targets - we do not check for qdels!
-	var/list/targets = list()
+    var/list/queued_calls = list()
+    var/list/avg = 0
 
-/datum/controller/subsystem/dpc/proc/queue_invoke(datum/target, procpath/callpath, ...)
-	targets[++targets.len] = args.Copy()
-	if(!primed)
-		prime()
+/datum/controller/subsystem/dpc/stat_entry(msg)
+    ..("Q: [queued_calls.len], AQ: ~[round(avg)]")
 
-/datum/controller/subsystem/dpc/proc/prime()
-	ASSERT(!primed)
-	primed = TRUE
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/dpc, invoke_calls)), 0)
+/datum/controller/subsystem/dpc/fire(resumed = FALSE)
+    var/list/qc = queued_calls
+    if (!resumed)
+        avg = MC_AVERAGE_FAST(avg, qc.len)
 
-/datum/controller/subsystem/dpc/proc/invoke_calls()
-	primed = FALSE
-	for(var/list/targlist as anything in targets)
-		call(targlist[1], targlist[2])(arglist(targlist.Copy(3)))
-	targets.len = 0
+    var/q_idex = 1
+
+    while (q_idex <= qc.len)
+        var/datum/callback/CB = qc[q_idex]
+        q_idex += 1
+
+        CB.InvokeAsync()
+
+        if (MC_TICK_CHECK)
+            break
+
+    if (q_idex > 1)
+        queued_calls.Cut(1, q_idex)

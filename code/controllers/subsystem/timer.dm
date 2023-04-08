@@ -664,6 +664,10 @@ SUBSYSTEM_DEF(timer)
 		stack_trace("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not \
 			be supported and may refuse to run or run with a 0 wait")
 
+	if (wait == 0 && !flags)
+		SSdpc.queued_calls += callback
+		return
+
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 
 	if(wait >= INFINITY)
