@@ -661,7 +661,9 @@
 
 /datum/ability/species/xenochimera
 	abstract_type = /datum/ability/species/xenochimera
+	ability_check_flags = NONE
 	always_bind = TRUE
+	action_icon = 'icons/screen/actions/changeling.dmi'
 
 #warn impl
 
@@ -669,3 +671,37 @@
 	. = ..()
 
 
+/datum/ability/species/xenochimera/regenerate
+	name = "Regeneration"
+	desc = "We shed our skin, purging it of damage, regrowing limbs."
+	action_state = "fleshmend"
+
+/datum/ability/species/xenochimera/regenerate/
+
+/datum/ability/species/xenochimera/regenerate/on_trigger()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	H.restore_blood()
+	H.species.create_organs(H)
+	H.restore_all_organs()
+	H.adjustBruteLoss(-healing_amount)
+	H.adjustFireLoss(-healing_amount)
+	H.adjustOxyLoss(-healing_amount)
+	H.adjustCloneLoss(-healing_amount)
+	H.adjustBrainLoss(-healing_amount)
+	H.blinded = FALSE
+	H.SetBlinded(FALSE)
+	H.eye_blurry = FALSE
+	H.ear_deaf = FALSE
+	H.ear_damage = FALSE
+
+	H.regenerate_icons()
+
+	playsound(H, 'sound/effects/blobattack.ogg', 30, 1)
+	var/T = get_turf(src)
+	new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
+	H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
+	"<span class='notice'>We reform our body.  We are whole once more.</span>",
+	"<span class='italics'>You hear organic matter ripping and tearing!</span>")

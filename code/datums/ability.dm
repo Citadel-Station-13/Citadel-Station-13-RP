@@ -19,8 +19,16 @@
 	//? mob
 	/// owning mob - can be null if we aren't bound / granted to anyone.
 	var/mob/owner
-	/// action button
-	var/datum/action/button
+	/// action datum
+	var/datum/action/action
+	/// action button icon
+	var/action_icon = 'icons/screen/actions/actions.dmi'
+	/// action button icon state
+	var/action_state = "default"
+	/// action button background icon
+	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
+	/// action button background icon state - the _on overlay will be added while active, automatically.
+	var/background_state = "alien"
 	/// currently hotbound?
 	var/bound = FALSE
 	/// automatically hotbound?
@@ -46,6 +54,21 @@
 
 #warn impl
 
+/**
+ * generates our action button if it doesn't exist
+ *
+ * @return our action button.
+ */
+/datum/ability/proc/generate_action()
+	if(!isnull(action))
+		return action
+	action = new(src)
+	action.button_icon = action_icon
+	action.button_icon_state = action_state
+	action.background_icon = backgronud_icon
+	action.background_icon_state = background_state
+	return action
+
 /datum/ability/proc/action_trigger()
 	#warn impl
 
@@ -68,16 +91,30 @@
 	return
 
 /datum/ability/proc/quickbind()
-	#warn impl
+	if(bound)
+		return
+	bound = TRUE
+	if(!isnull(owner))
+		action?.grant(owner)
 
 /datum/ability/proc/unbind()
-	#warn impl
+	bound = FALSE
+	if(!isnull(owner))
+		action?.remove(owner)
 
 /datum/ability/proc/associate(mob/M)
-	#warn impl
+	if(owner == M)
+		return
+	ASSERT(isnull(owner))
+	owner = M
+	if(bound)
+		action?.grant(M)
 
 /datum/ability/proc/disassociate(mob/M)
-	#warn impl
+	ASSERT(owner == M)
+	if(bound)
+		action?.remove(M)
+	owner = null
 
 /**
  * checks if we can be used
@@ -127,3 +164,10 @@
 		"name" = name,
 		"desc" = desc,
 	)
+
+/**
+ * action datums for abilities
+ */
+/datum/action/ability
+	abstract_type = /datum/action/ability
+	target_type = /datum/ability

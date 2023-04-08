@@ -147,33 +147,12 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(do_after(H, delay, null, FALSE, TRUE, INCAPACITATION_DISABLED))
-			H.restore_blood()
-			H.species.create_organs(H)
-			H.restore_all_organs()
-			H.adjustBruteLoss(-healing_amount)
-			H.adjustFireLoss(-healing_amount)
-			H.adjustOxyLoss(-healing_amount)
-			H.adjustCloneLoss(-healing_amount)
-			H.adjustBrainLoss(-healing_amount)
-			H.blinded = FALSE
-			H.SetBlinded(FALSE)
-			H.eye_blurry = FALSE
-			H.ear_deaf = FALSE
-			H.ear_damage = FALSE
-
-			H.regenerate_icons()
-
-			playsound(H, 'sound/effects/blobattack.ogg', 30, 1)
-			var/T = get_turf(src)
-			new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
-			H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
-			"<span class='notice'>We reform our body.  We are whole once more.</span>",
-			"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 			..()
 		else
 			to_chat(user,"<span class = 'warning'>We were interrupted!</span>")
 			charge_counter = 9.8 MINUTES
 
+#warn parse above
 
 ////////////////
 //Revive spell//

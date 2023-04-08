@@ -49,9 +49,12 @@
 	var/active = 0
 	var/atom/movable/screen/movable/action_button/button = null
 	var/button_icon = 'icons/screen/actions/actions.dmi'
+
 	var/button_icon_state = "default"
-	var/background_icon = 'icons/screen/actions/actions.dmi'
-	var/background_icon_state = "bg_default"
+
+	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
+	/// background icon state in [background_icon] - the state_on overlay will be added when this is active, automatically.
+	var/background_icon_state = "default"
 	var/mob/owner
 
 /datum/action/New(datum/target)
@@ -182,6 +185,17 @@
 		button.color = rgb(128,0,0,128)
 	else
 		button.color = rgb(255,255,255,255)
+
+#warn impl
+
+/**
+ * pushes immediate button update
+ *
+ * @params
+ * * availability - 0 to 1 of how ready we are
+ * * active - turned on?
+ */
+/datum/action/proc/push_button_update(availability, active)
 
 /atom/movable/screen/movable/action_button
 	var/datum/action/owner
