@@ -9,6 +9,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		pad.push_ui_connectivity_data()
+	GLOB.holopad_connectivity_rebuild_queued = FALSE
 
 GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
@@ -744,15 +745,15 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /**
  * relays a heard say
  */
-/obj/machinery/holopad/proc/relay_intercepted_say(atom/movable/speaking, voice_name, msg, datum/language/using_language, list/heard = list())
+/obj/machinery/holopad/proc/relay_intercepted_say(atom/movable/speaking, voice_name, msg, datum/language/using_language, sign_lang, list/heard = list())
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
 	if(istype(speaking, /obj/machinery/holopad))
 		return
 	// relay to whereever we're calling to
-	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src, heard = heard)
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, sign_lang, source = src, heard = heard)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
-		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src, heard = heard)
+		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language, sign_lang, source = src, heard = heard)
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
@@ -787,8 +788,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source, list/heard = list())
 	. = TRUE
 	var/scrambled = stars(msg)
-	var/for_knowers = "[source && "[SPAN_NOTICEALIEN(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
-	var/for_not_knowers = "[source && "[SPAN_NOTICEALIEN(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
+	var/for_knowers = "[source && "[SPAN_NOTICE(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
+	var/for_not_knowers = "[source && "[SPAN_NOTICE(source.holocall_name(src))]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
 	for(var/atom/movable/AM as anything in get_hearers_in_view(world.view, src))
 		if(heard[AM])
 			continue

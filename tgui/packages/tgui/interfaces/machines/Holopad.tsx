@@ -164,7 +164,7 @@ const HolopadCallOutgoing = (props, context) => {
             <Section title="Remote Presence">
               {
                 <Button
-                  disabled={callContext.remotingAllowed}
+                  disabled={!callContext.remotingAllowed}
                   content={callContext.remotingAllowed? (callContext.remoting? "Projecting" : "Not Projecting") : "Destination Disabled"}
                   selected={callContext.remoting}
                   onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
