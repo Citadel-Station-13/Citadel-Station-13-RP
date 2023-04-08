@@ -480,13 +480,6 @@
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 
-/datum/crafting_recipe/toyneb
-	name = "Non-Euplastic Blade"
-	reqs = list(/obj/item/light/tube = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/material/plastic = 4)
-	result = /obj/item/toy/sword/cx
-	subcategory = CAT_MISCELLANEOUS
-	category = CAT_MISCELLANEOUS
-
 /datum/crafting_recipe/catgirlplushie
 	name = "Catgirl Plushie"
 	reqs = list(/obj/item/toy/plush/hairball = 3)
@@ -494,6 +487,29 @@
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 */
+
+/datum/crafting_recipe/toy_energy_blade
+	name = "Toy Energy Blade"
+	reqs = list(/obj/item/light/tube = 1,
+				/obj/item/stack/cable_coil = 1,
+				/obj/item/stack/material/plastic = 4)
+	result = /obj/item/toy/sword
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/gnome
+	name = "Lawn Gnome"
+	reqs = list(/obj/item/stack/material/marble = 4)
+	result = /obj/item/toy/gnome
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/gnome_giant
+	name = "Lawn Gnome (Giant)"
+	reqs = list(/obj/item/stack/material/marble = 6)
+	result = /obj/item/toy/gnome/giant
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
 
 ////////////
 //Unsorted//
