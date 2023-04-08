@@ -2,6 +2,7 @@
  * delayed procedure call, equivalent to addtimer 0
  */
 SUBSYSTEM_DEF(dpc)
+	name = "DPC"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
 	/// are we queued?
