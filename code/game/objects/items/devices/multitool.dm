@@ -10,7 +10,7 @@
 	description_info = "You can use this on airlocks or APCs to try to hack them without cutting wires."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "multitool"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
 	throw_force = 5.0
 	throw_range = 15
@@ -119,3 +119,16 @@
 
 /obj/item/multitool/green
 	color_overlay = "multi_g"
+
+/obj/item/multitool/crystal
+	name = "crystalline multitool"
+	desc = "A crystalline energy patterning tool of an alien make."
+	icon_state = "crystal_multitool"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+
+/obj/item/multitool/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

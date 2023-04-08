@@ -88,6 +88,11 @@ DEFINE_BITFIELD(movable_flags, list(
 /// let buckled mobs pass always
 #define ATOM_PASS_BUCKLED			(1<<8)
 
+/// all actual pass flags / maximum pass
+#define ATOM_PASS_ALL (ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE | \
+ ATOM_PASS_BLOB | ATOM_PASS_MOB | ATOM_PASS_THROWN | ATOM_PASS_CLICK | \
+ ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_BUCKLED)
+
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
 	BITFIELD(ATOM_PASS_GLASS),

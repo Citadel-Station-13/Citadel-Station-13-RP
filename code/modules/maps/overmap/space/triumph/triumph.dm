@@ -18,6 +18,7 @@
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("triumph_excursion_hangar"),
 		"Courser Scouting Vessel" = list("triumph_courser_hangar"),
+		"Hammerhead Patrol Barge" = list("triumph_hammerhead_hangar"),
 		"Civilian Transport" = list("triumph_civvie_home"),
 		"Dart EMT Shuttle" = list("triumph_emt_dock"),
 		"Beruang Trade Ship" = list("triumph_annex_dock"),

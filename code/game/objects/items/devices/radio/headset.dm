@@ -242,6 +242,19 @@
 	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hos
 
+/obj/item/radio/headset/heads/blueshield
+	name = "blueshield's headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset"
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield/alt
+	name = "blueshield's bowman headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset_alt"
+	ear_protection = 2
+	ks2type = /obj/item/encryptionkey/heads/hos
+
 /obj/item/radio/headset/heads/ce
 	name = "chief engineer's headset"
 	desc = "The headset of the guy who is in charge of morons"

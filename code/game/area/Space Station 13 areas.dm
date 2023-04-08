@@ -271,7 +271,23 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/courser/battery
 	name = "\improper Courser Vessel Battery"
 
+//Hammerhead
+/area/shuttle/hammerhead
+	requires_power = 1
+	icon_state = "shuttle"
 
+/area/shuttle/hammerhead/general
+	name = "\improper Hammerhead Barge"
+
+/area/shuttle/hammerhead/cockpit
+	name = "\improper Hammerhead Barge Cockpit"
+
+/area/shuttle/hammerhead/brig
+	name = "\improper Hammerhead Barge Brig"
+
+/area/shuttle/hammerhead/bay
+	name = "\improper Hammerhead Launch Bay"
+	has_gravity = FALSE
 
 // Civilian Transport
 /area/shuttle/civvie
@@ -971,6 +987,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/research/xenoflora
 	name = "\improper Xenoflora Maintenance"
 
+/area/maintenance/research/xenobio
+	name = "\improper Xenobio Maintenance"
 /area/maintenance/security
 	name = "Security Maintenance"
 	icon_state = "security"
@@ -1302,6 +1320,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/heads/hop
 	name = "Command - HoP's Office"
+	icon_state = "head_quarters"
+
+/area/crew_quarters/heads/blueshield
+	name = "Command - Blueshield's Office"
 	icon_state = "head_quarters"
 
 /area/crew_quarters/heads/hor
@@ -2548,6 +2570,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vacant Office"
 	icon_state = "security"
 
+/area/security/hammerhead_bay
+	name = "\improper Hammerhead Barge Hangar"
+	icon_state = "hangar"
+
 /area/janitor/
 	name = "\improper Custodial Closet"
 	icon_state = "janitor"
@@ -2734,6 +2760,46 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/rnd/xenoarch_storage
 	name = "\improper Xenoarch Storage"
 	icon_state = "research"
+
+/**Telescience */
+/area/rnd/telescience_lab
+	name = "\improper Telescience Lab"
+	icon_state = "research"
+
+/area/rnd/telescience_lab/foyer
+	name = "\improper Telescience Lab Foyer"
+
+/area/rnd/telescience_lab/chamber
+	name = "\improper Telescience Teleportation Chamber"
+
+/area/rnd/telescience_lab/storage
+	name = "\improper Telescience Storage"
+
+/**Science Secure Storage */
+
+
+
+/area/rnd/secure_storage
+	name = "\improper Secure Science Storage"
+	icon_state = "research"
+
+/area/rnd/secure_storage/upper
+	name = "\improper Secure Science Storage Upper"
+
+/area/rnd/secure_storage/lower
+	name = "\improper Secure Science Storage Lower"
+
+/area/rnd/secure_storage/critical
+	name = "\improper Critical Science Storage"
+
+/area/rnd/secure_storage/critical/vault1
+	name = "\improper Critical Science Storage Vault 1"
+
+/area/rnd/secure_storage/critical/vault2
+	name = "\improper Critical Science Storage Vault 2"
+
+/area/rnd/secure_storage/critical/records
+	name = "\improper Critical Science Storage Records"
 
 // Research Outpost
 /area/rnd/outpost/airlock
@@ -3420,6 +3486,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/exploration/pathfinder_office
 	name = "\improper Pathfinder's Office"
+
+
+/area/station/protean_nanite_room
+	name = "\improper Nanite Chamber"
+	icon_state = "blue"
 
 
 //Elevator areas

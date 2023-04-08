@@ -33,6 +33,8 @@
 	contains = list(
 		/obj/item/reagent_synth/chemistry,
 	)
+	cost = 20
+	group = "Reagents"
 
 /datum/supply_pack/dispenser_cartridges
 	name = "Large Chemical Dispenser Cartridges"

@@ -158,7 +158,8 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_NANO             150
+#define FIRE_PRIORITY_TGUI             200
 #define FIRE_PRIORITY_STATPANELS       400
 #define FIRE_PRIORITY_OVERLAYS         500
 

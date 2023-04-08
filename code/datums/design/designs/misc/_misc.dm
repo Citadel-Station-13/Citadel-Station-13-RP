@@ -38,6 +38,13 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/light/bulb
 
+
+/datum/design/misc/light_fairy
+	identifier = "MiscLightFairy"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/light/bulb/fairy
+
 /datum/design/misc/glass_ashtray
 	identifier = "MiscGlassAshtray"
 	lathe_type = LATHE_TYPE_AUTOLATHE

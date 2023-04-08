@@ -8,7 +8,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 	item_state = "flamethrower_0"
-	force = 3.0
+	damage_force = 3.0
 	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5

@@ -5,7 +5,7 @@
  */
 /obj/item/light
 	icon = 'icons/obj/lighting.dmi'
-	force = 2
+	damage_force = 2
 	throw_force = 5
 	w_class = ITEMSIZE_TINY
 	materials = list(MAT_STEEL = 60)
@@ -250,7 +250,7 @@
 			SPAN_DANGER("You hear a small glass object shatter."),
 		)
 		status = LIGHT_BROKEN
-		force = 5
+		damage_force = 5
 		sharp = 1
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 		update_icon()

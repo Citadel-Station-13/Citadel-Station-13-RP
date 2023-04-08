@@ -299,11 +299,18 @@
 	else
 		return ..()
 
+/obj/item/reagent_containers/glass/bucket/afterattack()
+	.=..()
+	update_icon()
+
 /obj/item/reagent_containers/glass/bucket/update_icon()
 	cut_overlays()
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
+	if (is_open_container() && reagents.total_volume > 100)
+		var/image/water = image(icon, src, "water_[initial(icon_state)]")
+		add_overlay(water)
 
 /obj/item/reagent_containers/glass/bucket/wood
 	desc = "An old wooden bucket."

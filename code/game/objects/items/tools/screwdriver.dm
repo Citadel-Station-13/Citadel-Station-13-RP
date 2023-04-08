@@ -9,7 +9,7 @@
 	item_state = "screwdriver"
 	slot_flags = SLOT_BELT | SLOT_EARS
 	tool_behaviour = TOOL_SCREWDRIVER
-	force = 6
+	damage_force = 6
 	w_class = ITEMSIZE_TINY
 	throw_force = 5
 	throw_speed = 3
@@ -142,7 +142,7 @@
 	materials = list(MAT_STEEL = 150, MAT_SILVER = 50)
 	origin_tech = list(TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	slot_flags = SLOT_BELT
-	force = 8
+	damage_force = 8
 	w_class = ITEMSIZE_SMALL
 	throw_force = 8
 	throw_speed = 2
@@ -176,3 +176,18 @@
 		counterpart.forceMove(get_turf(src))
 	forceMove(counterpart)
 	to_chat(user, "<span class='notice'>You attach the bolt driver bit to [src].</span>")
+
+
+/obj/item/tool/screwdriver/crystal
+	name = "crystalline screwdriver"
+	desc = "A crystalline screwdriving tool of an alien make."
+	icon_state = "crystal_screwdriver"
+	item_state = "crystal_tool"
+	icon = 'icons/obj/crystal_tools.dmi'
+	matter = list(MATERIAL_CRYSTAL = 1250)
+	tool_speed = 0.2
+
+/obj/item/tool/screwdriver/crystal/Initialize()
+	. = ..()
+	icon_state = initial(icon_state)
+	item_state = initial(item_state)

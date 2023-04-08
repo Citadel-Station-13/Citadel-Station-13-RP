@@ -296,7 +296,7 @@
 
 /mob/living/proc/push_movable(atom/movable/AM, force = move_force)
 	// no crushing during diagonal moves
-	if(moving_diagonally)
+	if(IS_MOVABLE_IN_DIAG_MOVE(src))
 		return
 
 	var/dir_to_target = get_dir(src, AM)

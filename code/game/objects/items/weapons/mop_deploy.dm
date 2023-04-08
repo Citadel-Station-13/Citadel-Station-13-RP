@@ -2,7 +2,7 @@
 	name = "mop"
 	desc = "Deployable mop."
 	icon_state = "mop"
-	force = 3
+	damage_force = 3
 	anchored = 1    // Never spawned outside of inventory, should be fine.
 	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1

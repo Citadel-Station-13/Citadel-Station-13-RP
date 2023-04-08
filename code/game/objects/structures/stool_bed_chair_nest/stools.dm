@@ -6,7 +6,7 @@ var/global/list/stool_cache = list() //haha stool
 	desc = "Apply butt."
 	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	w_class = ITEMSIZE_HUGE
 	var/base_icon = "stool_base"
@@ -26,7 +26,7 @@ var/global/list/stool_cache = list() //haha stool
 	if(!istype(material))
 		qdel(src)
 		return
-	force = round(material.get_blunt_damage()*0.4)
+	damage_force = round(material.get_blunt_damage()*0.4)
 	update_icon()
 
 /obj/item/stool/padded/Initialize(mapload, new_material)

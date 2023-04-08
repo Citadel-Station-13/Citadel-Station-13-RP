@@ -9,7 +9,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
 	throw_force = 0
-	force = 0
+	damage_force = 0
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null

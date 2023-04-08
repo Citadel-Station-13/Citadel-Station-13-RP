@@ -54,9 +54,9 @@ Barricades
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 1
+				health -= W.damage_force * 1
 			if("brute")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 		if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
@@ -167,9 +167,9 @@ Barricades
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 			if("brute")
-				health -= W.force * 0.5
+				health -= W.damage_force * 0.5
 		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHealth()
 		..()

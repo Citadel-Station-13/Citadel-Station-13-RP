@@ -284,6 +284,14 @@
  * check if an alt title is available for a given set of backgrounds
  */
 /datum/role/job/proc/alt_title_check(alt_title, list/background_ids)
+	if(alt_title == title)
+		// check if any enforced datums are there that forces them to be certain titles, and if so,
+		// that our 'normal' title is in there.
+		var/list/enforced = list()
+		for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+			if(alt_datum.background_enforce && alt_datum.check_background_ids(background_ids))
+				enforced += alt_datum.title
+		return !length(enforced) || (alt_title in enforced)
 	var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
 	return alt_datum?.check_background_ids(background_ids)
 

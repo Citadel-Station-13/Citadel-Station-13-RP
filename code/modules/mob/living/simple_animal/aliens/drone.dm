@@ -30,12 +30,12 @@
 	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 	destroy_surroundings = 0
 	hovering = TRUE
 
-	armor = list(melee = 25, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 100, rad = 100)	// Some level of armor plating makes sense
+	armor_legacy_mob = list(melee = 25, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 100, rad = 100)	// Some level of armor plating makes sense
 	//Drones aren't affected by atmos.
 	min_oxy = 0
 	max_oxy = 0
@@ -62,7 +62,7 @@
 /mob/living/simple_mob/hostile/malf_drone/Initialize(mapload)
 	. = ..()
 	if(prob(5))
-		projectiletype = /obj/item/projectile/beam/pulse/drone
+		projectiletype = /obj/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'
 	ion_trail = new
 	ion_trail.set_up(src)
@@ -280,10 +280,10 @@
 
 	..()
 
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 15
 
-/obj/item/projectile/beam/pulse/drone
+/obj/projectile/beam/pulse/drone
 	damage = 10
 
 // A slightly easier drone, for POIs.

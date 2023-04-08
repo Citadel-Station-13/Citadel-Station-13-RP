@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		return
 	else if (W)
 		src.add_fingerprint(user)
-		src.health -= W.force
+		src.health -= W.damage_force
 		src.healthcheck()
 	..()
 

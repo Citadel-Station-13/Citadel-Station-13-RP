@@ -124,7 +124,7 @@
 	switch (severity)
 		if (1.0)
 			b_loss += 500
-			if (!prob(run_mob_armor(null, "bomb")))
+			if (!prob(legacy_mob_armor(null, "bomb")))
 				gib()
 				return
 			else
@@ -140,7 +140,7 @@
 
 			f_loss += 60
 
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/1.5
 				f_loss = f_loss/1.5
 
@@ -152,7 +152,7 @@
 
 		if(3.0)
 			b_loss += 30
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/2
 			if (!get_ear_protection() >= 2)
 				ear_damage += 15
@@ -1657,11 +1657,11 @@
 	. = ..()
 	if(wear_suit)
 		if(wear_suit.inv_hide_flags & HIDEGLOVES)
-			LAZYOR(., SLOT_GLOVES)
+			LAZYDISTINCTADD(., SLOT_GLOVES)
 		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
-			LAZYOR(., SLOT_ICLOTHING)
+			LAZYDISTINCTADD(., SLOT_ICLOTHING)
 		if(wear_suit.inv_hide_flags & HIDESHOES)
-			LAZYOR(., SLOT_FEET)
+			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)

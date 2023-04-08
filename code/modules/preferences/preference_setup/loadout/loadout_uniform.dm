@@ -650,7 +650,7 @@ Swimsuits
 	path = /obj/item/clothing/under/redcoatformal
 
 /datum/gear/uniform/vice
-	name = "Vice Officer's Jumpsuit"
+	name = "Vice Officers Jumpsuit"
 	path = /obj/item/clothing/under/rank/vice
 
 /datum/gear/uniform/saare
@@ -702,7 +702,7 @@ Swimsuits
 	path = /obj/item/clothing/under/laconic
 
 /datum/gear/uniform/bountyskin
-	name = "Bounty Hunter's Skinsuit"
+	name = "Bounty Hunters Skinsuit"
 	path = /obj/item/clothing/under/bountyskin
 
 /datum/gear/uniform/navy_jumpsuit
@@ -718,19 +718,19 @@ Swimsuits
 	path = /obj/item/clothing/under/chiming_dress
 
 /datum/gear/uniform/waiter
-	name = "Waiter's Outfit"
+	name = "Waiters Outfit"
 	path = /obj/item/clothing/under/waiter
 
 /datum/gear/uniform/waiter_fem
-	name = "Waiter's Outfit - Female"
+	name = "Waiters Outfit - Female"
 	path = /obj/item/clothing/under/waiter_fem
 
 /datum/gear/uniform/assistantformal
-	name = "Assistant's Formal Uniform"
+	name = "Assistants Formal Uniform"
 	path = /obj/item/clothing/under/assistantformal
 
 /datum/gear/uniform/assistantformal_fem
-	name = "Assistant's Formal Uniform - Female"
+	name = "Assistants Formal Uniform - Female"
 	path = /obj/item/clothing/under/assistantformal_fem
 
 /datum/gear/uniform/cropdress

@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(lying && !resting && !sleeping)
 		anim_time = 1 //Thud
 
-	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
+	if(lying) //Only rotate them if we're not drawing a specific icon for being prone. there are no prone icons
 		var/randn = rand(1, 2)
 		if(randn <= 1) // randomly choose a rotation
 			M.Turn(-90)
@@ -299,6 +299,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//tail
 	update_tail_showing()
+	//wing
 	update_wing_showing()
 
 /mob/living/carbon/human/proc/update_skin()
@@ -427,6 +428,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/ears_s = get_ears_overlay()
 	if(ears_s)
+		if(ears_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), ears_s.Height())
 		face_standing.Blend(ears_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
@@ -436,6 +439,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/horns_s = get_horns_overlay()
 	if(horns_s)
+		if(horns_s.Height() > face_standing.Height())
+			face_standing.Crop(1, 1, face_standing.Width(), horns_s.Height())
 		face_standing.Blend(horns_s, ICON_OVERLAY)
 	if(istype(head_organ,/obj/item/organ/external/head/vr))
 		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
@@ -1034,6 +1039,13 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
+
+/mob/living/carbon/human/proc/wing_spread_start()
+	if(QDESTROYING(src))
+		return
+
+	update_wing_showing("[species.get_wing(src)]_spr")
+
 
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))

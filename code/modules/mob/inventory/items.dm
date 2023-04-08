@@ -87,6 +87,8 @@
 
 	hud_unlayerise()
 	item_flags &= ~ITEM_IN_INVENTORY
+	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
+	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
 
@@ -110,6 +112,8 @@
 	pixel_y = initial(pixel_y)
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
+	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.
+	user.handle_actions()
 	if(isturf(oldLoc) && !(flags & (INV_OP_SILENT | INV_OP_DIRECTLY_EQUIPPING)))
 		playsound(src, pickup_sound, 20, ignore_walls = FALSE)
 
@@ -204,7 +208,7 @@
  * todo: non-singular-letter proc args
  */
 /obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, flags)
-	if(clothing_flags & EQUIP_IGNORE_BELTLINK)
+	if(clothing_flags & CLOTHING_IGNORE_BELTLINK)
 		return TRUE
 
 	if(!ishuman(M))

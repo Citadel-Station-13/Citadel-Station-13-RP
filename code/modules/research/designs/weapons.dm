@@ -404,12 +404,16 @@
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
 	build_path = /obj/item/gun/energy/modular/basic
 
+/*
+
 /datum/design/science/modweapon/adv
 	name = "advanced modular energy pistol"
 	identifier = "advmodpistol"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 3000, MAT_GOLD = 2000, MAT_URANIUM = 3000)
 	build_path = /obj/item/gun/energy/modular/advanced
+
+*/
 
 /datum/design/science/modweapon/carbine
 	name = "modular energy carbine"
@@ -432,6 +436,8 @@
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 1500)
 	build_path = /obj/item/gun/energy/modular/rifle/tribeam
 
+/*
+
 /datum/design/science/modweapon/compact
 	name = "compact modular energy pistol"
 	identifier = "modcompact"
@@ -452,6 +458,8 @@
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000)
 	build_path = /obj/item/gun/energy/modular/cannon
+
+*/
 
 /datum/design/science/modweapon/nuclear
 	name = "modular AEG"
@@ -477,12 +485,16 @@
 	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/stun/weak
 
+/*
+
 /datum/design/science/modweaponnodule/netmedium
 	name = "net projector medium"
 	identifier = "netmedium"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000, MAT_URANIUM = 2000)
 	build_path = /obj/item/modularlaser/lasermedium/net
+
+*/
 
 /datum/design/science/modweaponnodule/electrode
 	name = "electrode projector tube"
@@ -505,6 +517,8 @@
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/laser/weak
 
+/*
+
 /datum/design/science/modweaponnodule/sniper
 	name = "laser sniper medium"
 	identifier = "sniperlaser"
@@ -525,6 +539,8 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/cannon
+
+*/
 
 /datum/design/science/modweaponnodule/xraser
 	name = "xraser medium"
@@ -582,6 +598,8 @@
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_DURASTEEL = 2000)
 	build_path = /obj/item/modularlaser/lens/super
 
+/*
+
 /datum/design/science/modweaponnodule/scatterlens
 	name = "scatter lens"
 	identifier = "scatterlens"
@@ -595,6 +613,8 @@
 	req_tech = list(TECH_MATERIAL = 9)
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
 	build_path = /obj/item/modularlaser/lens/scatter/adv
+
+*/
 
 /datum/design/science/modweaponnodule/basiccap
 	name = "basic capacitor"
@@ -617,6 +637,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco/super
 
+/*
+
 /datum/design/science/modweaponnodule/quickcap
 	name = "high throughput capactior"
 	identifier = "quickcap"
@@ -630,6 +652,8 @@
 	req_tech = list(TECH_POWER = 8)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/capacitor/speed/advanced
+
+*/
 
 /datum/design/science/modweaponnodule/basicac
 	name = "cooling system"
@@ -652,6 +676,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/efficient/super
 
+/*
+
 /datum/design/science/modweaponnodule/superac
 	name = "supercharged cooling system"
 	identifier = "superac"
@@ -666,12 +692,16 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
 	build_path = /obj/item/modularlaser/cooling/speed/adv
 
+*/
+
 /datum/design/science/modweaponnodule/modcontrol
 	name = "controller"
 	identifier = "modcontrol"
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/basic
+
+/*
 
 /datum/design/science/modweaponnodule/an94
 	name = "AN-94 patterned fire controller"
@@ -680,6 +710,8 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/controller/twoburst
 
+*/
+
 /datum/design/science/modweaponnodule/threecontrol
 	name = "burst FCU"
 	identifier = "threecontrol"
@@ -687,12 +719,16 @@
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/threeburst
 
+/*
+
 /datum/design/science/modweaponnodule/fivecontrol
 	name = "quintburst FCU"
 	identifier = "fivecontrol"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/controller/fiveburst
+
+*/
 
 //Firing pins to shoot your guns with
 /datum/design/science/pin/generate_name(template)

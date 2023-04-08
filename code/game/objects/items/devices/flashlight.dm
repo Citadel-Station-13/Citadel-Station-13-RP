@@ -263,7 +263,7 @@
 	name = "maglight"
 	desc = "A very, very heavy duty flashlight."
 	icon_state = "maglight"
-	force = 10
+	damage_force = 10
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list ("smacked", "thwacked", "thunked")
@@ -287,7 +287,7 @@
 	name = "desk lamp"
 	desc = "A desk lamp with an adjustable mount."
 	icon_state = "lamp"
-	force = 10
+	damage_force = 10
 	brightness_on = 5
 	w_class = ITEMSIZE_LARGE
 	power_use = 0
@@ -353,7 +353,7 @@
 
 /obj/item/flashlight/flare/proc/turn_off()
 	on = FALSE
-	src.force = initial(src.force)
+	src.damage_force = initial(src.damage_force)
 	src.damtype = initial(src.damtype)
 	update_appearance()
 
@@ -370,14 +370,14 @@
 	// All good, turn it on.
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
-		src.force = on_damage
+		src.damage_force = on_damage
 		src.damtype = "fire"
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/flare/proc/ignite() //Used for flare launchers.
 	on = !on
 	update_appearance()
-	force = on_damage
+	damage_force = on_damage
 	damtype = "fire"
 	START_PROCESSING(SSobj, src)
 	return TRUE

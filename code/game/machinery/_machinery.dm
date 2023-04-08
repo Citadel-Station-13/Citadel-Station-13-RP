@@ -291,6 +291,10 @@
 		return TRUE
 	return ..()
 
+// todo: refactor tihs
+// todo: rendered_inoperable()
+// todo: rendered_operable()
+
 /obj/machinery/proc/operable(additional_flags = NONE)
 	return !inoperable(additional_flags)
 

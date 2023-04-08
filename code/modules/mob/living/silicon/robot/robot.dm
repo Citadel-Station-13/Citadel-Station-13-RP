@@ -526,7 +526,7 @@
 /mob/living/silicon/robot/restrained()
 	return 0
 
-/mob/living/silicon/robot/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/silicon/robot/bullet_act(var/obj/projectile/Proj)
 	..(Proj)
 	if(prob(75) && Proj.damage > 0)
 		spark_system.start()
@@ -758,7 +758,7 @@
 
 	else
 		if( !(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/healthanalyzer)) )
-			if(W.force > 0)
+			if(W.damage_force > 0)
 				spark_system.start()
 		return ..()
 
@@ -1444,7 +1444,7 @@
 			else
 				to_chat(src, "Insufficient water reserves.")
 
-/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+/mob/living/silicon/robot/on_changed_z_level(old_z, new_z)
 	if(shell)
 		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
 			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")

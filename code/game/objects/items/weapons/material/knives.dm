@@ -16,14 +16,14 @@
 	if(active)
 		edge = 1
 		sharp = 1
-		..() //Updates force.
-		throw_force = max(3,force-3)
+		..() //Updates damage_force.
+		throw_force = max(3,damage_force-3)
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		icon_state += "_open"
 		w_class = ITEMSIZE_NORMAL
 		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	else
-		force = 3
+		damage_force = 3
 		edge = 0
 		sharp = 0
 		hitsound = initial(hitsound)

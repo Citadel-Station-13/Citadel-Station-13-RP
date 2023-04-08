@@ -147,13 +147,17 @@
 /datum/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
 	if(!id_slot || !id_type)
 		return
+
+	var/faction = H.mind?.original_background_faction()?.id
+	if(faction && !(faction == "nanotrasen"))
+		id_type = /obj/item/card/id/contractor
+
 	var/obj/item/card/id/W = new id_type(H)
+
 	if(id_desc)
 		W.desc = id_desc
-	if(rank)
-		W.rank = rank
-	if(assignment)
-		W.assignment = assignment
+	if(rank && assignment)
+		W.set_registered_rank(rank, assignment)
 	if(H.equip_to_slot_or_del(W, id_slot))
 		return W
 
@@ -161,15 +165,20 @@
 	if(!pda_slot || !pda_type)
 		return
 	var/obj/item/pda/pda = new pda_type(H)
-	if(H.equip_to_slot_or_del(pda, pda_slot))
-		pda.owner = H.real_name
-		pda.ownjob = assignment
-		pda.ownrank = rank
-		pda.name = "PDA-[H.real_name] ([assignment])"
-		if(H.client.prefs.ringtone) // if null we use the job default
-			pda.ringtone = H.client.prefs.ringtone
-		tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	pda.owner = H.real_name
+	pda.ownjob = assignment
+	pda.ownrank = rank
+	pda.name = "PDA-[H.real_name] ([assignment])"
+	if(H.client.prefs.ringtone) // if null we use the job default
+		pda.ringtone = H.client.prefs.ringtone
+	tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
+	if(H.equip_to_slot_if_possible(pda, pda_slot))
 		return pda
+	if(H.force_equip_to_slot(pda, /datum/inventory_slot_meta/abstract/put_in_backpack))
+		return pda
+	if(H.equip_to_slot_or_del(pda, SLOT_ID_HANDS))
+		return pda
+
 
 /datum/outfit/dd_SortValue()
 	return name

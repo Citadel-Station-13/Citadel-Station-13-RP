@@ -32,6 +32,10 @@
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 
+	//? Movement
+	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
+	var/datum/movement_intercept
+
 	//? Buckling
 	/// Atom we're buckled to
 	var/atom/movable/buckled
@@ -52,6 +56,12 @@
 	/// Last world.time we turned in our spot without moving (see: facing directions)
 	var/last_turn = 0
 
+	//? Physiology
+	/// overall physiology - see physiology.dm
+	var/datum/physiology/physiology
+	/// physiology modifiers - see physiology.dm; set to list of paths at init to initialize into instances.
+	var/list/datum/physiology_modifier/physiology_modifiers
+
 	//? Actionspeed
 	/// List of action speed modifiers applying to this mob
 	var/list/actionspeed_modification				//Lazy list, see mob_movespeed.dm
@@ -67,6 +77,10 @@
 	var/shift_pixel_x = 0
 	/// shifted pixel y
 	var/shift_pixel_y = 0
+
+	//? Inventory
+	/// our inventory datum, if any.
+	var/datum/inventory/inventory
 
 	//! Size
 	//! todo kill this with fire it should just be part of icon_scale_x/y.
@@ -84,6 +98,7 @@
 
 	var/next_move = null // For click delay, despite the misleading name.
 
+	var/list/datum/action/actions = list()
 	var/atom/movable/screen/hands = null
 	var/atom/movable/screen/pullin = null
 	var/atom/movable/screen/purged = null

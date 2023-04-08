@@ -66,7 +66,7 @@
 	name = "clown shoes"
 	icon_state = "clown"
 	slowdown = SHOES_SLOWDOWN+1
-	force = 0
+	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
 
@@ -85,7 +85,7 @@
 	desc = "A pair of boots worn by the followers of Nar-Sie."
 	icon_state = "cult"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
-	force = 2
+	damage_force = 2
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
 
@@ -116,7 +116,7 @@
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
@@ -171,7 +171,7 @@
 	desc = "A roll of treated canvas used for wrapping claws or paws"
 	icon_state = "clothwrap"
 	item_state = "clothwrap"
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
 	drop_sound = 'sound/items/drop/clothing.ogg'

@@ -88,25 +88,29 @@
 				// Log-out during round-start? What a bad boy, no head position for you!
 				if(!V.client)
 					continue
-				var/age = V.client.prefs.age
 
-				if(age < job.minimum_character_age) // Nope.
+				var/age = V.client.prefs.age
+				var/min_job_age = job.minimum_character_age
+				var/ideal_job_age = job.ideal_character_age
+
+				if(age < min_job_age) // Nope.
 					continue
 
-				switch(age)
-					if(job.minimum_character_age to (job.minimum_character_age+10))
-						weightedCandidates[V] = 3 // Still a bit young.
-					if((job.minimum_character_age+10) to (job.ideal_character_age-10))
-						weightedCandidates[V] = 6 // Better.
-					if((job.ideal_character_age-10) to (job.ideal_character_age+10))
-						weightedCandidates[V] = 10 // Great.
-					if((job.ideal_character_age+10) to (job.ideal_character_age+20))
-						weightedCandidates[V] = 6 // Still good.
-					if((job.ideal_character_age+20) to INFINITY)
-						weightedCandidates[V] = 3 // Geezer.
-					else
-						// If there's ABSOLUTELY NOBODY ELSE
-						if(candidates.len == 1) weightedCandidates[V] = 1
+				// This used to be a switch, but non-static values are not allowed in switch cases circa 515. @Zandario
+				if((age >= min_job_age) && (age <= min_job_age+10))
+					weightedCandidates[V] = 3 // Still a bit young.
+				else if((age >= min_job_age+10) && (age <= ideal_job_age-10))
+					weightedCandidates[V] = 6 // Better.
+				else if((age >= ideal_job_age-10) && (age <= ideal_job_age+10))
+					weightedCandidates[V] = 10 // Great.
+				else if((age >= ideal_job_age+10) && (age <= ideal_job_age+20))
+					weightedCandidates[V] = 6 // Still good.
+				else if((age >= ideal_job_age+20) && (age <= INFINITY))
+					weightedCandidates[V] = 3 // Geezer.
+				else
+					// If there's ABSOLUTELY NOBODY ELSE
+					if(candidates.len == 1)
+						weightedCandidates[V] = 1
 
 
 			var/mob/new_player/candidate = pickweight(weightedCandidates)
@@ -122,7 +126,7 @@
 /datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 		var/datum/role/job/job = get_job(command_position)
-		if(!job)
+		if(!job || (job.current_positions >= job.spawn_positions))
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
 		if(!candidates.len)

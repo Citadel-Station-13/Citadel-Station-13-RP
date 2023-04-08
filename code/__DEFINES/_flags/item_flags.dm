@@ -66,11 +66,11 @@ DEFINE_BITFIELD(item_flags, list(
 /// Allows special survival food items to be eaten through it
 #define ALLOW_SURVIVALFOOD		(1<<12)
 /// ignores "is this limb here" for equip.
-#define EQUIP_IGNORE_DELIMB		(1<<13)
+#define CLOTHING_IGNORE_DELIMB		(1<<13)
 /// ignores "do we have a jumpsuit" for belt
-#define EQUIP_IGNORE_BELTLINK	(1<<14)
+#define CLOTHING_IGNORE_BELTLINK	(1<<14)
 /// for plural limbs, wearable with just one
-#define EQUIP_ALLOW_SINGLE_LIMB	(1<<15)
+#define CLOTHING_ALLOW_SINGLE_LIMB	(1<<15)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
@@ -80,9 +80,9 @@ DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(SCAN_REAGENTS),
 	BITFIELD(FLEXIBLEMATERIAL),
 	BITFIELD(ALLOW_SURVIVALFOOD),
-	BITFIELD(EQUIP_IGNORE_DELIMB),
-	BITFIELD(EQUIP_IGNORE_BELTLINK),
-	BITFIELD(EQUIP_ALLOW_SINGLE_LIMB),
+	BITFIELD(CLOTHING_IGNORE_DELIMB),
+	BITFIELD(CLOTHING_IGNORE_BELTLINK),
+	BITFIELD(CLOTHING_ALLOW_SINGLE_LIMB),
 ))
 
 //!# bitflags for the /obj/item/var/inv_hide_flags variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
@@ -144,7 +144,10 @@ DEFINE_BITFIELD(inv_hide_flags, list(
 #define HANDS       (HAND_LEFT | HAND_RIGHT)
 #define FULL_BODY   (ALL)
 
-DEFINE_BITFIELD(body_cover_flags, list(
+DEFINE_SHARED_BITFIELD(body_cover_flags, list(
+	"body_cover_flags",
+	"body_part_flags",
+), list(
 	BITFIELD(HEAD),
 	BITFIELD(FACE),
 	BITFIELD(EYES),

@@ -71,8 +71,6 @@
 			id = null
 	. = ..()
 
-/obj/item/card/
-
 /obj/item/card/id/digest_act(atom/item_storage)
 	return FALSE
 

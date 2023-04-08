@@ -13,8 +13,7 @@
 #define LAZYADD(L, I) if(!L) { L = list(); } L += I;
 /// Adds I to L, initalizing L if necessary, if I is not already in L
 #define LAZYDISTINCTADD(L, I) if(!L) { L = list(); } L |= I;
-/// please use LAZYDISTINCTADD instead, this is juts an alias for tgcode ports
-#define LAZYOR(L, I) LAZYDISTINCTADD(L, I)
+/// Calls L.Find(V) if L exists, otherwise evals to 0.
 #define LAZYFIND(L, V) (L ? L.Find(V) : 0)
 /// Reads I from L safely - Works with both associative and traditional lists.
 #define LAZYACCESS(L, I) (L ? (isnum(I) ? (I > 0 && I <= length(L) ? L[I] : null) : L[I]) : null)

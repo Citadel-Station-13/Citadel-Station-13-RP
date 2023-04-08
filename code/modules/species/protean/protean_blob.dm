@@ -71,6 +71,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
@@ -394,7 +395,6 @@
 		blob.devourable = P.devourable
 		blob.feeding = P.feeding
 		blob.digest_leave_remains = P.digest_leave_remains
-		blob.allowmobvore = P.allowmobvore
 		blob.vore_taste = P.vore_taste
 		blob.permit_healbelly = P.permit_healbelly
 		blob.can_be_drop_prey = P.can_be_drop_prey
@@ -530,6 +530,65 @@
 		if("Plain")
 			icon_living = "puddle0"
 			update_icon()
+
+/mob/living/simple_mob/protean_blob/proc/leap_attack()
+	set name = "Pounce"
+	set desc = "Allows a protean blob to launch itself at people."
+	set category = "Abilities"
+
+	var/mob/living/carbon/human/target
+	var/targeted_area
+	var/target_displayname
+
+	if(src.incapacitated())
+		to_chat(src,"<span class='warning'>You can't do this in your current state.</span>")
+		return
+
+	var/list/choices = list()
+	for(var/mob/living/carbon/human/M in oviewers(1))
+		choices += M
+
+	if(!choices.len)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
+
+	target = input(src,"Who do you wish to target?","Pounce Target") as null|anything in choices
+	if(!istype(target))
+		return FALSE
+
+	if(get_dist(src,target) > 1)
+		to_chat(src,"<span class='warning'>There's nobody nearby to use this on.</span>")
+		return
+
+	visible_message("<span class='warning'>[src] coils itself up like a spring, preparing to leap at [target]!</span>")
+	if(do_after(src, 7.5 SECONDS, target)) //7.5 seconds.
+		if(buckled || pinned.len)
+			return
+
+		var/obj/item/holder/H = new holder_type(get_turf(src))
+		H.held_mob = src
+		src.forceMove(H)
+
+		switch(src.zone_sel.selecting)
+			if(BP_GROIN)
+				targeted_area = SLOT_ID_UNIFORM //fetish_code.rtf
+				target_displayname = "body"
+			if(BP_TORSO)
+				targeted_area = SLOT_ID_SUIT
+				target_displayname = "body"
+			if(BP_HEAD)
+				targeted_area = SLOT_ID_HEAD
+				target_displayname = "head"
+			if(O_MOUTH)
+				targeted_area = SLOT_ID_MASK
+				target_displayname = "face"
+
+		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT)) 
+			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
+		else
+			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")
+		H.sync(src)
+		return
 
 /mob/living/simple_mob/protean_blob/Login()
 	..()

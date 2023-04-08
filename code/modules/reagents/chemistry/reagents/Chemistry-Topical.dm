@@ -32,7 +32,7 @@
 			affect_touch(M, alien, removed/10)
 
 /datum/reagent/topical/affect_touch(mob/living/carbon/M, alien, removed)
-	M.add_chemical_effect(CE_PAINKILLER, 1)//just so there is something here...
+	M.ceiling_chemical_effect(CE_PAINKILLER, 1)//just so there is something here...
 
 /datum/reagent/topical/bicarilaze
 	name = "Bicarilaze"
@@ -79,7 +79,7 @@
 /datum/reagent/topical/inaprovalaze/affect_touch(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 20)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.add_chemical_effect(CE_PAINKILLER, 40)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 40)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			for(var/obj/item/organ/external/O in H.bad_external_organs)
@@ -105,7 +105,7 @@
 
 /datum/reagent/topical/neurolaze/affect_touch(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_PAINKILLER, 100)//Half oxycodone
+		M.ceiling_chemical_effect(CE_PAINKILLER, 100)//Half oxycodone
 		M.make_jittery(50*removed)//Your nerves are itching
 		M.make_dizzy(80*removed)//Screenshake.
 		M.add_chemical_effect(CE_SPEEDBOOST, 1)
@@ -163,7 +163,7 @@
 
 /datum/reagent/topical/lotion/affect_touch(mob/living/carbon/M, alien, removed)
 	if (alien != IS_DIONA)
-		M.add_chemical_effect(CE_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
+		M.ceiling_chemical_effect(CE_PAINKILLER, 5)//Not really usefull but I guess a lotion would help alittle with pain
 		if(world.time > (data + (5*60*10)))
 			data = world.time
 			to_chat(M, "<span class='notice'>Your skin feels refreshed and sooth.</span>")
