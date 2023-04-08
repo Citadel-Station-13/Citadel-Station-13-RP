@@ -695,11 +695,11 @@
 
 /obj/structure/sign/department/cargo
 	name = "CARGO"
-	icon_state = "cargo"
+	icon_state = "cargo2"
 
 /obj/structure/sign/department/mail
 	name = "MAIL"
-	icon_state = "mail"
+	icon_state = "mail2"
 
 /obj/structure/sign/department/miner_dock
 	name = "MINING DOCK"
@@ -715,7 +715,7 @@
 
 /obj/structure/sign/department/engine
 	name = "ENGINE"
-	icon_state = "engine"
+	icon_state = "engine2"
 
 /obj/structure/sign/department/gravi
 	name = "GRAVGEN"
@@ -743,7 +743,7 @@
 
 /obj/structure/sign/department/armory
 	name = "ARMORY"
-	icon_state = "armory"
+	icon_state = "armory2"
 
 /obj/structure/sign/department/prison
 	name = "PRISON"

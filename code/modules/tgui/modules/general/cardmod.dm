@@ -294,7 +294,10 @@
 		var/datum/access/A = SSjob.access_lookup(id)
 		if(isnull(A.access_edit_list))
 			continue
-		. |= A.access_edit_list
+		var/list/built = list()
+		for(var/datum/access/building as anything in A.access_edit_list)
+			built += isnum(building)? building : initial(building.access_value)
+		. |= built
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE

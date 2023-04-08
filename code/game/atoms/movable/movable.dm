@@ -35,8 +35,10 @@
 	var/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
-	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
-	var/moving_diagonally = 0
+	/// movement calls we're in
+	var/in_move = 0
+	/// a direction, or null
+	var/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
