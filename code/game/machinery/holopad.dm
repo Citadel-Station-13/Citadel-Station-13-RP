@@ -5,6 +5,14 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 #define HOLO_NORMAL_ALPHA 140
 #define HOLO_VORE_ALPHA 210
 
+// todo: refresh connectivity / change status when something is taken offline / becoming invisible.
+
+/obj/item/circuitboard/holopad
+	name = T_BOARD("holopad")
+	build_path = /obj/machinery/holopad
+	board_type = new /datum/frame/frame_types/holopad
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
+
 /obj/machinery/holopad
 	name = "holopad"
 	desc = "It's a floor-mounted device for projecting holographic images."
@@ -194,7 +202,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	var/obj/effect/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
-		if(!pad.operable())
+		if(!pad.operable() || !pad.call_visibility)
 			continue
 		var/obj/effect/overmap/visitable/their_sector = get_overmap_sector(get_z(pad))
 		if(!our_sector || !their_sector)
@@ -212,11 +220,17 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 /**
  * our holopad name
+ *
+ * todo: this proc is shit and shouldn't exist because we keep requerying this mid-call, holocalls need eventual redesigning
  */
-/obj/machinery/holopad/proc/holocall_name()
+/obj/machinery/holopad/proc/holocall_name(obj/machinery/holopad/in_respects_to)
 	if(holopad_name)
 		return holopad_name
 	var/obj/effect/overmap/visitable/sector = get_overmap_sector(get_z(src))
+	if(in_respects_to && call_anonymous_sector)
+		var/obj/effect/overmap/visitable/other = get_overmap_sector(in_respects_to)
+		if(sector != other)
+			return "Anonymous"
 	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
 
 /**
@@ -337,7 +351,7 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return FALSE // already being called / connected
 	if(!isnull(outgoing_call))
 		return FALSE // already calling someone
-	for(var/datum/holocall/holocall as anything in (other.ringing_calls | other.incoming_calls))
+	for(var/datum/holocall/holocall in (other.ringing_calls | other.incoming_calls))
 		if(holocall.source == src)
 			return FALSE
 	var/datum/holocall/holocall = new(src, other)
@@ -714,19 +728,17 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	// no loops please - shame we can't have a room of 8 holopads acting as a council chamber though!
 	if(istype(speaking, /obj/machinery/holopad))
 		return
-	var/our_name = holocall_name()
-	voice_name = "[our_name] - [voice_name]"
 	// relay to whereever we're calling to
-	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language)
+	outgoing_call?.destination.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src)
 	// relay to whoever's calling us
 	for(var/datum/holocall/holocall as anything in incoming_calls)
-		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language)
+		holocall.source.relay_inbound_say(speaking, voice_name, msg, using_language, using_language?.language_flags & LANGUAGE_NONVERBAL, source = src)
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
 	var/list/relevant_ais = ais_projecting - speaking
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.hear_say(msg, "says ([our_name])", using_language, speaker = speaking)
+		the_ai.hear_say(msg, "says ([src])", using_language, speaker = speaking)
 
 /**
  * relays a seen emote
@@ -737,26 +749,26 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 		return
 	// if it's the outgoing caller, send to other side
 	if(emoting == outgoing_call?.remoting)
-		outgoing_call?.hologram.relay_emote(visible_name, msg)
+		outgoing_call?.destination.relay_inbound_emote(emoting, visible_name, msg, outgoing_call.hologram, source = src)
 		return
 	// otherwise, anyone on our side can see it
 	for(var/datum/holocall/holocall as anything in incoming_calls)
-		holocall.remoting?.show_message("[SPAN_NAME(visible_name)] [msg]", 1)
+		holocall.remoting?.show_message("[msg]", 1)
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
 	var/list/relevant_ais = ais_projecting - emoting
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.show_message("(Holopad) [SPAN_NAME(visible_name)] [msg]")
+		the_ai.show_message("(Holopad) [msg]")
 
 /**
  * relays a say sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says")
+/obj/machinery/holopad/proc/relay_inbound_say(atom/movable/speaker, speaker_name, msg, datum/language/using_language, sign_lang = FALSE, using_verb = "says", obj/machinery/holopad/source)
 	. = TRUE
 	var/scrambled = stars(msg)
-	var/for_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
-	var/for_not_knowers = "[SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
+	var/for_knowers = "[source && "[source.holocall_name(src)]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(msg, using_verb) : "[using_verb], [msg]"]"
+	var/for_not_knowers = "[source && "[source.holocall_name(src)]: "][SPAN_NAME(speaker_name)] [using_language? using_language.format_message(scrambled, using_verb) : "[using_verb], [scrambled]"]"
 	for(var/atom/movable/AM as anything in get_hearers_in_view(world.view, src))
 		if(ismob(AM))
 			var/mob/M = AM
@@ -769,6 +781,11 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			if(O == src)
 				continue
 			O.hear_talk(src, msg, using_verb, using_language)
+	// conference calls!
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		if(holocall.source == source)
+			continue
+		holocall.source.relay_inbound_say(arglist(args))
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
@@ -778,11 +795,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 			the_ai.show_message("(Holopad) [for_knowers]")
 		else
 			the_ai.show_message("(Holopad) [for_not_knowers]")
-
 /**
  * relays an emote sent to us
  */
-/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo)
+/obj/machinery/holopad/proc/relay_inbound_emote(atom/movable/speaker, speaker_name, msg, obj/effect/overlay/hologram/holo, obj/machinery/holopad/source)
 	. = TRUE
 	// attempt autodetect
 	if(!speaker_name)
@@ -794,13 +810,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 	if(holo)
 		holo.relay_emote(speaker_name, msg)
 	else
-		visible_message("[SPAN_NAME(speaker_name)] [msg]")
+		visible_message("[msg]")
+	// conference calls!
+	for(var/datum/holocall/holocall as anything in incoming_calls)
+		if(holocall.source == source)
+			continue
+		holocall.source.relay_inbound_emote(arglist(args))
 	// relay to relevant AIs too
 	if(!ais_projecting)
 		return
 	var/list/relevant_ais = ais_projecting - speaker
 	for(var/mob/living/silicon/ai/the_ai as anything in relevant_ais)
-		the_ai.show_message("(Holopad) [SPAN_NAME(speaker_name)] [msg]")
+		the_ai.show_message("(Holopad) [msg]")
 
 //? holograms
 
@@ -818,11 +839,18 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
 	LAZYREMOVE(holograms, holo)
 
+/obj/item/circuitboard/holopad/ship
+	name = T_BOARD("sector holopad")
+	build_path = /obj/machinery/holopad/ship
+
 /obj/machinery/holopad/ship
 	name = "sector holopad"
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
+	circuit = /obj/item/circuitboard/holopad/ship
+	allow_unanchor = FALSE
+	allow_deconstruct = FALSE
 	long_range = TRUE
 
 /obj/machinery/holopad/ship/starts_inactive

@@ -51,7 +51,7 @@
 	var/long_range = FALSE		// If true, can see farther, depending on get_map_levels().
 	var/local_mode = FALSE		// If true, only GPS signals of the same Z level are shown.
 	var/hide_signal = FALSE		// If true, signal is not visible to other GPS devices.
-	var/can_hide_signal = FALSE	// If it can toggle the above var.
+	var/can_hide_signal = TRUE	// If it can toggle the above var.
 
 /obj/item/gps/Initialize(mapload)
 	. = ..()

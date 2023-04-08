@@ -608,12 +608,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/dock)
-"fy" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/shuttle/pirate/bridge)
 "fz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -4177,6 +4171,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mining)
+"LS" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/red,
+/area/shuttle/pirate/bridge)
 "LT" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -4415,6 +4418,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/red,
 /area/piratebase/bunks)
+"Oe" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/shuttle/pirate/bridge)
 "Ol" = (
 /obj/structure/table/bench/steel,
 /obj/item/radio/intercom/raider{
@@ -26716,9 +26723,9 @@ Nn
 vS
 wi
 st
-fy
-st
-wi
+Zd
+LS
+wK
 RP
 Nn
 Tg
@@ -26910,9 +26917,9 @@ uY
 OQ
 wi
 Fl
-Zd
-gr
-wK
+Oe
+Fl
+tB
 RP
 RP
 Tg
