@@ -59,6 +59,8 @@
 	var/windup_requires_still = TRUE
 	/// last use world.time
 	var/last_used
+	/// timerid for cooldown finish action button update
+	var/cooldown_visual_timerid
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
 
@@ -87,6 +89,11 @@
 /datum/ability/proc/update_action()
 	#warn impl
 
+	recheck_queued_action_update()
+
+/datum/ability/proc/recheck_queued_action_update()
+	#warn impl
+
 /datum/ability/ui_action_click(datum/action/action, mob/user)
 	. = ..()
 	action_trigger(user)
@@ -102,9 +109,19 @@
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
 /datum/ability/proc/attempt_trigger(mob/user, toggling)
-	if(!check_trigger(toggling))
+	if(interact_type == ABILITY_INTERACT_TOGGLE)
+		if(!isnull(toggling) && toggling == enabled)
+			return
+		if(isnull(toggling))
+			toggling = !enabled
+	if(!check_trigger(user, feedback, TRUE))
 		return
-	on_trigger(toggling)
+	if(windup)
+		if(!do_after(user, windup, ignore_movement = !windup_requires_still))
+			return
+		if(!check_trigger(user, feedback, TRUE))
+			return
+	on_trigger(user, toggling)
 
 /**
  * called to check a trigger.
@@ -112,10 +129,16 @@
  * @params
  * * user - triggering user. this is usually owner, but sometimes isn't.
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
+ * * feedback - output feedback messages
  */
-/datum/ability/proc/check_trigger(mob/user, toggling)
-	#warn standard implements for cooldown/whatever.
-	return available_check()
+/datum/ability/proc/check_trigger(mob/user, toggling, feedback)
+	if((isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
+		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
+		return FALSE
+	if(!available_check())
+		to_chat(user, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	return TRUE
 
 /**
  * called on trigger
@@ -125,6 +148,7 @@
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
 /datum/ability/proc/on_trigger(mob/user, toggling)
+	last_used = world.time
 	if(interact_type != ABILITY_INTERACT_TOGGLE)
 		return
 	if(!isnull(toggling) && toggling == enabled)

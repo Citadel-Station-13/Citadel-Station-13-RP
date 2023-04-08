@@ -693,7 +693,6 @@
 		ASSERT(!(locate(ability) in abilities))
 		ability = new ability
 	abilities += ability
-	ability._owning_mind = src
 	if(current)
 		ability.associate(current)
 	return TRUE
