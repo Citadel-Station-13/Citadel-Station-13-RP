@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { useBackend } from "../../backend";
-import { Button, NoticeBox, Section } from "../../components";
+import { Button, LabeledList, NoticeBox, Section } from "../../components";
 import { Window } from "../../layouts";
 
 interface NaniteChamberControlData {
@@ -21,7 +21,7 @@ interface OccupantData {
 
 interface ProteanData {
   name: string;
-  organs: ProteanOrgans[];
+  organs: ProteanOrgans;
   materials: Record<string, number>;
 }
 
@@ -116,7 +116,38 @@ const NaniteChamberControlOccupant = (props, context) => {
   else if (data.hasProtean) {
     return (
       <Section title="Swarm Reconstruction">
-        test
+        <LabeledList>
+          <LabeledList.Item label="Swarm Intelligence">
+            {data.protean.name}
+          </LabeledList.Item>
+          {
+            data.protean.organs.missing.map((n) => (
+              <LabeledList.Item label={n} color="bad" key={n}>
+                Missing
+              </LabeledList.Item>
+            ))
+          }
+          {
+            data.protean.organs.intact.map((n) => (
+              <LabeledList.Item label={n} color="good" key={n}>
+                Present
+              </LabeledList.Item>
+            ))
+          }
+        </LabeledList>
+        <Section title="Materials Required">
+          <LabeledList>
+            {
+              Object.entries(data.protean.organs.cost).map(([k, v]) => (
+                <LabeledList.Item label={k} key={k}>
+                  {data.protean.materials[k] || 0} / {v}
+                </LabeledList.Item>
+              ))
+            }
+          </LabeledList>
+        </Section>
+        <Button icon="wrench" fluid fontSize="2em" content="Rebuild"
+          onClick={() => act('protean_reconstruct')} />
       </Section>
     );
   }
