@@ -45,12 +45,16 @@
 	var/ability_check_flags = NONE
 	/// mobility check flags
 	var/mobility_check_flags = NONE
+
+	//? state
 	/// cooldown delay, if we have a cooldown
 	var/cooldown = 0
 	/// last use world.time
 	var/last_used
 	/// for toggled abilities, turning off incurs the cooldown - otherwise, cooldown begins on toggling off.
-	var/cooldown_toggle_off = TRUE
+	var/cooldown_for_deactivation = TRUE
+	/// for toggle interacts: are we enabled?
+	var/enabled = FALSE
 
 #warn impl
 
@@ -69,8 +73,11 @@
 	action.background_icon_state = background_state
 	return action
 
-/datum/ability/proc/action_trigger()
+/datum/ability/proc/update_action()
 	#warn impl
+
+/datum/ability/proc/action_trigger()
+	attempt_trigger()
 
 /**
  * called to try to trigger.
@@ -79,7 +86,16 @@
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
 /datum/ability/proc/attempt_trigger(toggling)
-	#warn impl
+	if(!check_trigger(toggling))
+		return
+	on_trigger(toggling)
+
+/**
+ * called to check a trigger.
+ */
+/datum/ability/proc/check_trigger(toggling)
+	#warn standard implements for cooldown/whatever.
+	return available_check()
 
 /**
  * called on trigger
@@ -88,6 +104,31 @@
  * * toggling - null if not toggled ability / not toggling, TRUE / FALSE for on / off.
  */
 /datum/ability/proc/on_trigger(toggling)
+	if(interact_type != ABILITY_INTERACT_TOGGLE)
+		return
+	if(!isnull(toggling) && toggling == enabled)
+		return
+	if(isnull(toggling))
+		toggling = !enabled
+	if(enabled && !toggling)
+		disable()
+	else if(!enabled && toggling)
+		enable()
+
+/datum/ability/proc/enable()
+	enabled = TRUE
+	update_action()
+	on_enable()
+
+/datum/ability/proc/disable()
+	enabled = FALSE
+	update_action()
+	on_disable()
+
+/datum/ability/proc/on_enable()
+	return
+
+/datum/ability/proc/on_disable()
 	return
 
 /datum/ability/proc/quickbind()
