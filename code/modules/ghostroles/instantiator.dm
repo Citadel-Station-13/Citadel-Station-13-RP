@@ -2,7 +2,7 @@
  * Handles mob creation, equip, and ckey transfer.
  */
 /datum/ghostrole_instantiator
-	/// traits to add to mob : will be made with GHOSTROLE_TRAIT source
+	/// traits to add to mob : will be made with ROLE_TRAIT source
 	var/list/mob_traits
 
 /datum/ghostrole_instantiator/proc/Run(client/C, atom/location, list/params)
@@ -33,7 +33,7 @@
 		CRASH("Invalid path: [type_to_make]")
 	var/mob/living/L = new type_to_make(location)
 	for(var/trait in mob_traits)
-		ADD_TRAIT(L, trait, GHOSTROLE_TRAIT)
+		ADD_TRAIT(L, trait, ROLE_TRAIT)
 	return L
 
 /datum/ghostrole_instantiator/simple/proc/GetMobType(client/C, atom/location, list/params)
@@ -46,7 +46,7 @@
 /datum/ghostrole_instantiator/human/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = new(location)
 	for(var/trait in mob_traits)
-		ADD_TRAIT(H, trait, GHOSTROLE_TRAIT)
+		ADD_TRAIT(H, trait, ROLE_TRAIT)
 	return H
 
 /datum/ghostrole_instantiator/human/Equip(client/C, mob/M, list/params)

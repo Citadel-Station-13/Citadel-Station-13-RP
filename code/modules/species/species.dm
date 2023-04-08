@@ -432,6 +432,10 @@
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
 
+	//? Traits
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+
 	//? on death drops
 	/// The color of the species flesh.
 	var/flesh_color = "#FFC896"
@@ -528,6 +532,9 @@
 		var/datum/trait/T = all_traits[name]
 		T.apply(src, H)
 
+	for(var/trait in mob_traits)
+		ADD_TRAIT(H, trait, SPECIES_TRAIT)
+
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
@@ -548,6 +555,9 @@
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
+
+	for(var/trait in mob_traits)
+		REMOVE_TRAIT(H, trait, SPECIES_TRAIT)
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
