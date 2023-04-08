@@ -26,8 +26,9 @@
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
-	#warn init abilities
 	hook_vr("mob_new",list(src))
+	// abilities
+	init_abilities()
 	// inventory
 	init_inventory()
 	// rendering
@@ -84,7 +85,8 @@
 	if(mind && mind.current == src)
 		spellremove(src)
 		mind.disassociate(src)
-	#warn nuke abilities
+	// abilities
+	dispose_abilities()
 	// this kicks out client
 	ghostize()
 	if(hud_used)
@@ -1209,11 +1211,35 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 //? Abilities
 
-/mob/proc/register_ability(datum/ability/ability)
-	#warn impl
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
 
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
 /mob/proc/unregister_ability(datum/ability/ability)
-	#warn impl
+	LAZYREMOVE(abilities, ability)
 
 //! Misc
 /**

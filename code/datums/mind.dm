@@ -693,6 +693,7 @@
 		ASSERT(!(locate(ability) in abilities))
 		ability = new ability
 	abilities += ability
+	ability._owning_mind = src
 	if(current)
 		ability.associate(current)
 	return TRUE
@@ -708,7 +709,10 @@
 /datum/mind/proc/remove_ability(datum/ability/ability)
 	if(ispath(ability))
 		ability = locate(ability) in abilities
+	if(isnull(ability))
+		return FALSE
 	abilities -= ability
 	if(current)
 		ability.disassociate(current)
+	qdel(ability)
 	return TRUE

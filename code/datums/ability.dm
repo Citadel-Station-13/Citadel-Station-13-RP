@@ -62,7 +62,12 @@
 	/// for toggle interacts: are we enabled?
 	var/enabled = FALSE
 
-#warn impl
+/datum/ability/Destroy()
+	if(!isnull(owner))
+		disassociate(owner)
+	if(!isnull(action))
+		QDEL_NULL(action)
+	return ..()
 
 /**
  * generates our action button if it doesn't exist
@@ -164,13 +169,15 @@
 		return
 	ASSERT(isnull(owner))
 	owner = M
+	owner.register_ability(src)
 	if(bound)
 		action?.grant(M)
 
 /datum/ability/proc/disassociate(mob/M)
 	ASSERT(owner == M)
 	if(bound)
-		action?.remove(M)
+		action?.remove(owner)
+	owner.unregister_ability(src)
 	owner = null
 
 /**
