@@ -14,8 +14,8 @@ SUBSYSTEM_DEF(dpc)
 	var/list/queued_calls = list()
 	var/list/avg = 0
 
-/datum/controller/subsystem/dpc/stat_entry(msg)
-	..("Q: [queued_calls.len], AQ: ~[round(avg)]")
+/datum/controller/subsystem/dpc/stat_entry()
+	return ..() + " Q: [queued_calls.len], AQ: ~[round(avg)]"
 
 /datum/controller/subsystem/dpc/fire(resumed = FALSE)
 	var/list/qc = queued_calls
