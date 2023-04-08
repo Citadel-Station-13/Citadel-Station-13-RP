@@ -56,11 +56,18 @@ Need to turn all of these into proper initializers like this:
 // Exclusive landmark for docking *inside* the station
 
 /obj/effect/shuttle_landmark/rift/deck3/courser
-	name = "NSB Atlas - Courser Hanger"
+	name = "NSB Atlas - Courser Hangar"
 	landmark_tag = "rift_courser_hangar"
 	docking_controller = "courser_docker"
 	base_turf = /turf/simulated/floor/tiled/techfloor/grid
 	base_area = /area/exploration/courser_dock
+
+/obj/effect/shuttle_landmark/rift/deck2/hammerhead
+	name = "NSB Atlas - Hammerhead Hangar"
+	landmark_tag = "rift_hammerhead_hangar"
+	docking_controller = "hammerhead_dock"
+	base_turf = /turf/simulated/floor/tiled/techfloor/grid
+	base_area = /area/security/hammerhead_bay
 
 // ON STATION NAV POINTS
 
@@ -105,6 +112,10 @@ Need to turn all of these into proper initializers like this:
 /obj/effect/shuttle_landmark/transit/rift/courser
 	name = "In transit"
 	landmark_tag = "nav_transit_courser"
+
+/obj/effect/shuttle_landmark/transit/rift/hammerhead
+	name = "In transit"
+	landmark_tag = "nav_transit_hammerhead"
 
 /obj/effect/shuttle_landmark/transit/rift/pirate
 	name = "In transit"

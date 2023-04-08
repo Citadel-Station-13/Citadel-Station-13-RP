@@ -3196,6 +3196,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/sign/department/engine{
+	pixel_x = -32
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "js" = (
@@ -7151,6 +7154,9 @@
 	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor,
+/obj/structure/sign/department/eng{
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "uA" = (
@@ -7566,6 +7572,9 @@
 "wr" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/door/firedoor/glass/hidden,
+/obj/structure/sign/department/eng{
+	pixel_y = -32
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "ws" = (
@@ -12333,6 +12342,9 @@
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/machinery/camera/network/engineering{
 	dir = 5
+	},
+/obj/structure/sign/department/engine{
+	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)

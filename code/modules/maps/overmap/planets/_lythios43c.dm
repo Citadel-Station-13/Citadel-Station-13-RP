@@ -21,6 +21,7 @@
 	initial_restricted_waypoints = list(
 		"Excursion Shuttle" = list("rift_excursion_pad"),
 		"Courser Scouting Vessel" = list("rift_courser_hangar"),
+		"Hammerhead Patrol Barge" = list("rift_hammerhead_hangar"),
 		"Civilian Transport" = list("rift_civvie_pad"),
 		"Dart EMT Shuttle" = list("rift_emt_pad"),
 		"Beruang Trade Ship" = list("rift_trade_dock"),
