@@ -182,6 +182,9 @@
  * Only supports moves up to range 1, in any direction including diagonals.
  */
 /atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+	if(is_multi_tile && isturf(newloc))
+		newloc = locate(newloc.x + round(step_x / WORLD_ICON_SIZE), newloc.y + round(step_y / WORLD_ICON_SIZE), newloc.z)
 	if(!isturf(loc) || !isturf(newloc))
 		return FALSE
 	if(get_dist(loc, newloc) > 1)
@@ -189,7 +192,8 @@
 	++in_move
 
 	if(isnull(direct))
-		direct = get_dir(src, newloc)
+		// loc, not src, due to multitile.
+		direct = get_dir(loc, newloc)
 	var/atom/movable/pullee = pulling
 
 	var/turf/T = loc
