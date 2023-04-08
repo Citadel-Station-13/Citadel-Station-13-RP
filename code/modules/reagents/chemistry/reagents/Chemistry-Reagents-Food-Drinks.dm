@@ -266,33 +266,6 @@
 	nutriment_factor = 1
 	color = "#801E28"
 
-/* Begin Citadel Change - Removed due to Aurora cooking port
-/datum/reagent/nutriment/cornoil
-	name = "Corn Oil"
-	id = "cornoil"
-	description = "An oil derived from various types of corn."
-	taste_description = "slime"
-	taste_mult = 0.1
-	reagent_state = REAGENT_LIQUID
-	nutriment_factor = 20
-	color = "#302000"
-
-/datum/reagent/nutriment/cornoil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if(volume >= 3)
-		T.wet_floor()
-
-End Citadel Change */
 /datum/reagent/nutriment/peanutoil
 	name = "Peanut Oil"
 	id = "peanutoil"
@@ -5111,6 +5084,17 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
+/datum/reagent/drink/glue
+	name = "Glue"
+	id = "safeglue"
+	description = "A standard adhesive best used on paper. Or bread?"
+	taste_description = "a sticky classroom"
+	nutrition = 1
+	color = "#faf2e3"
+
+	glass_name = "Glue"
+	glass_desc = "A glass of glue. Wait, why did you put this into a glass?"
 
 // Unathi drinks
 

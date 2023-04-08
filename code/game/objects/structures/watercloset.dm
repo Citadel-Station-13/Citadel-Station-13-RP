@@ -119,6 +119,23 @@
 			else
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
+/obj/item/reagent_containers/food/urinalcake
+	name = "urinal cake"
+	desc = "A small, pleasant smelling air freshener keeping the bathroom smelling clean. It looks tasty... but, no, you shouldn't... Unless?"
+	icon = 'icons/obj/food_snacks.dmi'
+	icon_state = "urinalcake"
+	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/reagent_containers/food/urinalcake/New()
+	. = ..()
+	reagents.add_reagent("chlorine", 3)
+	reagents.add_reagent("ammonia", 1)
+
+/obj/item/reagent_containers/food/urinalcake/attack_self(mob/living/user)
+	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
+	icon_state = "urinalcake_squish"
+	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)
+
 /obj/machinery/shower
 	name = "shower"
 	desc = "The HS-451. Installed in the 2550s by the Hygiene Division."

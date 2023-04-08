@@ -35,7 +35,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	push_flags = ~HEAVY
 	swap_flags = ~HEAVY
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | RADIATION_GLOWS | HAS_UNDERWEAR
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
@@ -82,7 +82,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 
 	body_temperature = T20C	// Room temperature
 
-	rarity_value = 5
+	//rarity_value = 5
 	siemens_coefficient = 1 //As of writing, original was 0.4 (bad)
 
 	genders = list(MALE, FEMALE, NEUTER, PLURAL)

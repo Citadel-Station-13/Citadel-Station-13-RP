@@ -138,28 +138,28 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	//We do this here so anything that doesn't want to persist can clear itself
 	var/list/old_comp_lookup = comp_lookup?.Copy()
 	var/list/old_signal_procs = signal_procs?.Copy()
-	var/turf/W = new path(src)
+	var/turf/new_turf = new path(src)
 
-	W.above = old_above // Multiz ref tracking.
+	new_turf.above = old_above // Multiz ref tracking.
 
 	// WARNING WARNING
 	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
 	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
 	if(old_comp_lookup)
-		LAZYOR(W.comp_lookup, old_comp_lookup)
+		LAZYDISTINCTADD(new_turf.comp_lookup, old_comp_lookup)
 	if(old_signal_procs)
-		LAZYOR(W.signal_procs, old_signal_procs)
+		LAZYDISTINCTADD(new_turf.signal_procs, old_signal_procs)
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
-		callback.InvokeAsync(W)
+		callback.InvokeAsync(new_turf)
 
 	if(new_baseturfs)
-		W.baseturfs = baseturfs_string_list(new_baseturfs, W)
+		new_turf.baseturfs = baseturfs_string_list(new_baseturfs, new_turf)
 	else
-		W.baseturfs = baseturfs_string_list(old_baseturfs, W) //Just to be safe
+		new_turf.baseturfs = baseturfs_string_list(old_baseturfs, new_turf) //Just to be safe
 
 	if(!(flags & CHANGETURF_DEFER_CHANGE))
-		W.AfterChange(flags, old_type)
+		new_turf.AfterChange(flags, old_type)
 
 	// restore planet stuff
 	dangerous_objects = old_dangerous_objects
@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	queue_zone_update()
 
 	// restore lighting
-	W.ao_junction = old_ao_junction
+	new_turf.ao_junction = old_ao_junction
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_overlay = old_lighting_overlay
@@ -192,10 +192,12 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	// only queue for smoothing if initialized
+	if(atom_flags & ATOM_INITIALIZED)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
-	return W
+	return new_turf
 
 // todo: zas refactor
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)

@@ -659,7 +659,7 @@
 			M.heal_overall_damage(25 * removed, 25 * removed)
 			M.adjustToxLoss(rand(-30, -10) * removed)
 			M.druggy = max(M.druggy, 10)
-			M.add_chemical_effect(CE_PAINKILLER, 60)
+			M.ceiling_chemical_effect(CE_PAINKILLER, 60)
 	else
 		if(prob(10))
 			to_chat(M, "<span class='danger'>Your insides are burning!</span>")

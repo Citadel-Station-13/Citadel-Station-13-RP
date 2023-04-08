@@ -14,7 +14,6 @@
 	handle_vision()
 	handle_light()
 
-	handle_actions()
 	update_canmove()
 
 /mob/living/PhysicalLife(seconds, times_fired)

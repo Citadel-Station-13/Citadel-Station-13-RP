@@ -817,6 +817,24 @@
 	new /obj/item/stack/medical/poultice_burn(get_turf(holder.my_atom), created_volume)
 	return
 
+/datum/chemical_reaction/phlogiston
+	name = "Phlogiston"
+	id = "phlogiston"
+	result = "phlogiston"
+	required_reagents = list("gunpowder" = 2, "alchemybase" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/condensedphlogiston
+	name = "Condensed Phlogiston"
+	id = "condensedphlogiston"
+	result = null
+	required_reagents = list("phlogiston" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/condensedphlogiston/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////

@@ -425,6 +425,13 @@
 	amount = 1
 	splintable_organs = list(BP_L_ARM, BP_R_ARM, BP_L_LEG, BP_R_LEG)
 
+/obj/item/stack/medical/splint/primitive
+	name = "primitive splints"
+	singular_name = "makeshift splint"
+	desc = "For holding your limbs in place with hide and sinew."
+	icon_state = "primitive-splint"
+	amount = 5
+
 // Begin Citadel Changes - New advanced kit sprites
 /obj/item/stack/medical/advanced/Initialize(mapload)
 	. = ..()

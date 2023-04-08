@@ -35,8 +35,10 @@
 	var/generic_canpass = TRUE
 	/// Pass flags.
 	var/pass_flags = NONE
-	/// 0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
-	var/moving_diagonally = 0
+	/// movement calls we're in
+	var/in_move = 0
+	/// a direction, or null
+	var/moving_diagonally = NOT_IN_DIAG_STEP
 	/// attempt to resume grab after moving instead of before. This is what atom/movable is pulling us during move-from-pulling.
 	var/atom/movable/moving_from_pull
 	/// Direction of our last move.
@@ -475,8 +477,8 @@
 
 //? Emissives
 /atom/movable/proc/update_emissive_layers()
-	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
-	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
+	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
 	if(em_block)
@@ -494,7 +496,7 @@
 	if(!em_block)
 		return
 	// layer it BELOW us incase WE wanna be fuh-nee with our own emissives
-	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/remove_emissive_blocker()
 	if(!em_block)
@@ -525,7 +527,7 @@
 	if(!em_render)
 		return
 	// layer it at our layer
-	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer)
 
 /atom/movable/proc/remove_emissive_render()
 	if(!em_render)

@@ -134,6 +134,9 @@
 	// admin control (?)
 	if(mob.control_object)
 		return Move_object(direct)
+	//* movement intercept
+	if(mob.movement_intercept?.intercept_mob_move(mob, direct))
+		return
 	// nonliving get handled differently
 	if(!isliving(mob))
 		return mob.Move(n, direct)
@@ -606,3 +609,20 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
+
+//? Movement Intercepts
+
+/mob/proc/request_movement_intercept(datum/requesting)
+	if(movement_intercept)
+		if(requesting == movement_intercept)
+			return TRUE
+		return FALSE
+	movement_intercept = requesting
+	return TRUE
+
+/mob/proc/clear_movement_intercept()
+	movement_intercept = null
+	return TRUE
+
+/datum/proc/intercept_mob_move(mob/moving, dir)
+	return

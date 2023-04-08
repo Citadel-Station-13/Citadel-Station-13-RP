@@ -81,7 +81,8 @@
 	step(src, direction)
 	if(has_buckled_mobs()) // Make sure it stays beneath the occupant
 		var/mob/living/L = buckled_mobs[1]
-		Move(L.loc)
+		if(loc != L.loc)
+			forceMove(L.loc)
 	setDir(direction)
 	if(pulling_along) // Driver
 		if(pulling_along.loc == src.loc) // We moved onto the wheelchair? Revert!

@@ -15,7 +15,7 @@
  */
 /mob/Initialize(mapload)
 	GLOB.mob_list += src
-	set_focus(src)
+	set_key_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
@@ -158,6 +158,7 @@
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+// todo: refactor
 /mob/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
@@ -179,11 +180,11 @@
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		to_chat(src,"<I>... You can almost hear someone talking ...</I>")
+		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
-		to_chat(src,msg)
+		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
 		if(teleop)
-			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
+			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]", type = MESSAGE_TYPE_LOCALCHAT)
 	return
 
 /**
@@ -1056,7 +1057,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		else
 			registered_z = null
 
-/mob/onTransitZ(old_z, new_z)
+/mob/on_changed_z_level(old_z, new_z)
 	..()
 	update_client_z(new_z)
 

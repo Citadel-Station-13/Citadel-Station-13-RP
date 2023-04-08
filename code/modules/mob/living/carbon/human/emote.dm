@@ -1013,7 +1013,7 @@
 			var/bonus_number = text2num(bonus)
 			var/dc_number = text2num(copytext(dc, 3, length(dc) + 1))
 
-			var/die_result = rand(die_number)
+			var/die_result = rand(die_number - 1) + 1
 			var/die_total = die_result + bonus_number
 
 			if (die_number && bonus_number && dc_number)
@@ -1124,6 +1124,7 @@
 			if(toggle_wing_spread(message = 1))
 				m_type = 1
 				message = "[spread ? "extends" : "retracts"] their wings."
+				src.wing_spread_start()
 			else
 				return 1
 		if ("mlem")
@@ -1273,7 +1274,12 @@
 	return 1
 
 /mob/living/carbon/human/proc/toggle_wing_spread(var/folded,var/message = 0)
-	if(!wing_style || !wing_style.spr_state)
+	if(!wing_style)
+		if(message)
+			to_chat(src, "<span class='warning'>You don't have wings!</span>")
+		return 0
+
+	if(!wing_style.spr_state)
 		if(message)
 			to_chat(src, "<span class='warning'>You don't have wings that support this.</span>")
 		return 0

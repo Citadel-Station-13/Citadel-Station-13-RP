@@ -2,7 +2,7 @@
 	name = "Class D POIs"
 	desc = "Submaps for Class D Worlds"
 	allow_duplicates = FALSE
-	prefix = "_maps/submaps/level_specific/class_d/"
+	prefix = "maps/submaps/level_specific/class_d/"
 
 /datum/map_template/submap/level_specific/class_d/broken_reactor_D
 	name = "Broken Reactor"

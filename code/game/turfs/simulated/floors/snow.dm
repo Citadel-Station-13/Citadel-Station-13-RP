@@ -30,6 +30,12 @@
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		else
 			to_chat(user, "<span class='notice'>You decide to not finish removing \the [src].</span>")
+	if(istype(W, /obj/item/pickaxe))
+		var/grave_type = /obj/structure/closet/grave/snow
+		do_after(user, 60)
+		to_chat(user, "<span class='warning'>You dig out a hole.</span>")
+		new grave_type(get_turf(src))
+		return
 	else
 		..()
 

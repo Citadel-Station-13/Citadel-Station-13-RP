@@ -606,3 +606,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#5a5e3c"
 	taste_description = "sour ash"
+
+/datum/reagent/phlogiston
+	name = "Phlogiston"
+	id = "phlogiston"
+	description = "A solution of gunpowder and alchemical base, reduced into a sticky tar. It is immensely volatile."
+	reagent_state = REAGENT_LIQUID
+	color = "#522222"
+	taste_description = "sulphurous sand"

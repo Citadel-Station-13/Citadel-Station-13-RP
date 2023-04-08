@@ -496,6 +496,46 @@
 	icon_state = "capcarapace"
 	armor_type = /datum/armor/security/captain
 
+/obj/item/clothing/suit/storage/vest/formal
+	name = "formal armored wear"
+	desc = "this doesn't exist"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS			//big coats keep you big warm
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	icon = 'icons/clothing/suit/coats/dept_overcoats.dmi'
+	armor_type = /datum/armor/security/light_formalwear
+
+/obj/item/clothing/suit/storage/vest/formal/command
+	name = "Command Great Overcoat"
+	desc = "A special, light kevlar-woven overcoat meant for more formal, or warm, occasions. Comes with a free desire to oversee large train infrastructure systems."
+	icon_state = "ihc_coat_blue"
+
+/obj/item/clothing/suit/storage/vest/formal/command/caped
+	name = "Command Great Overcoat Caped"
+	desc = "A special, light kevlar-woven overcoat meant for more formal, or warm, occasions. This one has a cape attached, signifying the wearer's desire to be wrapped up in a comfy blanky."
+	icon_state = "ihc_coat_cloak_blue"
+
+/obj/item/clothing/suit/storage/vest/formal/cargo
+	name = "Cargo Great Overcoat"
+	desc = "A special, light armor-woven overcoat meant for more formal, or warm, occasions. It is not advisable to wear this if you aren't the Quartermaster, as that might get you extra crate duty for looking better than them."
+	icon_state = "greatcoat_brown"
+
+/obj/item/clothing/suit/storage/vest/formal/dark
+	name = "Military Surplus Dark Overcoat"
+	desc = "One of the many warm overcoats found in a washed up crate that bumped one of the Nanotrasen's cargo vessels in the dead of space. It has been bleached by solar radiation and you are sure it smells of space-mold. Has been dyed dark."
+	icon_state = "mc_coat"
+
+/obj/item/clothing/suit/storage/vest/formal/dark/caped
+	name = "Military Surplus Dark Overcoat Caped"
+	desc = "One of the many warm overcoats found in a washed up crate that bumped one of the Nanotrasen's cargo vessels in the dead of space. It has been bleached by solar radiation and you are sure it smells of space-mold. Has been dyed dark. Comes with a cape."
+	icon_state = "mc_coat_cloak"
+
+/obj/item/clothing/suit/storage/vest/formal/bleached
+	name = "Military Surplus Bleached Overcoat Caped"
+	desc = "One of the many warm overcoats found in a washed up crate that bumped one of the Nanotrasen's cargo vessels in the dead of space. It has been bleached by solar radiation and you are sure it smells of space-mold."
+	icon_state = "ihc_coat_cloak"
+
 //All of the armor below is mostly unused
 
 /obj/item/clothing/suit/armor/centcomm
@@ -568,19 +608,23 @@
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
 	valid_accessory_slots = (\
-		ACCESSORY_SLOT_INSIGNIA\
-		|ACCESSORY_SLOT_ARMOR_C\
-		|ACCESSORY_SLOT_ARMOR_A\
-		|ACCESSORY_SLOT_ARMOR_L\
-		|ACCESSORY_SLOT_ARMOR_S\
-		|ACCESSORY_SLOT_ARMOR_M)
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
 	restricted_accessory_slots = (\
-		ACCESSORY_SLOT_INSIGNIA\
-		|ACCESSORY_SLOT_ARMOR_C\
-		|ACCESSORY_SLOT_ARMOR_A\
-		|ACCESSORY_SLOT_ARMOR_L\
-		|ACCESSORY_SLOT_ARMOR_S\
-		|ACCESSORY_SLOT_ARMOR_M)
+		ACCESSORY_SLOT_OVER \
+		|ACCESSORY_SLOT_INSIGNIA \
+		|ACCESSORY_SLOT_ARMOR_C \
+		|ACCESSORY_SLOT_ARMOR_A \
+		|ACCESSORY_SLOT_ARMOR_L \
+		|ACCESSORY_SLOT_ARMOR_S \
+		|ACCESSORY_SLOT_ARMOR_M
+		)
 	blood_overlay_type = "armor"
 
 /obj/item/clothing/suit/armor/pcarrier/can_equip(mob/M, slot, mob/user, flags)

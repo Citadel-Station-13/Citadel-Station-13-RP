@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(lying && !resting && !is_sleeping())
 		anim_time = 1 //Thud
 
-	if(lying && !species.prone_icon) //Only rotate them if we're not drawing a specific icon for being prone.
+	if(lying) //Only rotate them if we're not drawing a specific icon for being prone. there are no prone icons
 		var/randn = rand(1, 2)
 		if(randn <= 1) // randomly choose a rotation
 			M.Turn(-90)
@@ -299,6 +299,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//tail
 	update_tail_showing()
+	//wing
 	update_wing_showing()
 
 /mob/living/carbon/human/proc/update_skin()
@@ -1038,6 +1039,13 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
+
+/mob/living/carbon/human/proc/wing_spread_start()
+	if(QDESTROYING(src))
+		return
+
+	update_wing_showing("[species.get_wing(src)]_spr")
+
 
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))

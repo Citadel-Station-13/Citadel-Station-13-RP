@@ -485,7 +485,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Couldn't get valid spawn location.")
 		return
 
+	// todo: this entire stack is awful and should be a ssjob thing maybe
+
 	new_character = new(spawnloc)
+	new_character.mind_initialize()
 
 	//We were able to spawn them, right?
 	if(!new_character)

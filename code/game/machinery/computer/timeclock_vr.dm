@@ -246,13 +246,6 @@
 	else
 		return TRUE
 
-/obj/item/card/id
-	var/last_job_switch
-
-/obj/item/card/id/Initialize(mapload)
-	. = ..()
-	last_job_switch = world.time
-
 //
 // Frame type for construction
 //
