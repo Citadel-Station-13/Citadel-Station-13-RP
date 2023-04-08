@@ -31,7 +31,6 @@
 	uniform = /obj/item/clothing/under/rank/hydroponics
 	suit = /obj/item/clothing/suit/storage/apron
 	suit_store = /obj/item/analyzer/plant_analyzer
-	belt = /obj/item/pda/botanist
 	gloves = /obj/item/clothing/gloves/botanic_leather
 
 	backpack = /obj/item/storage/backpack/hydroponics

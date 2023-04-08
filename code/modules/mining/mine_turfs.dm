@@ -355,6 +355,7 @@
 	if(!density)
 
 		var/valid_tool = 0
+		var/grave_digger = 0
 		var/digspeed = 40
 /*
 		var/list/usable_tools = list(
@@ -367,6 +368,7 @@
 		if(istype(W, /obj/item/shovel))
 			var/obj/item/shovel/S = W
 			valid_tool = 1
+			grave_digger = 1
 			digspeed = S.digspeed
 
 		if(istype(W, /obj/item/pickaxe))
@@ -377,8 +379,15 @@
 
 		if(valid_tool)
 			if(sand_dug)
-				to_chat(user, "<span class='warning'>This area has already been dug.</span>")
-				return
+				if(grave_digger)
+					var/grave_type = /obj/structure/closet/grave
+					do_after(user, 60)
+					to_chat(user, "<span class='warning'>You deepen the hole.</span>")
+					new grave_type(get_turf(src))
+					return
+				else
+					to_chat(user, "<span class='warning'>This area has already been dug.</span>")
+					return
 
 			var/turf/T = user.loc
 			if(!(istype(T)))
