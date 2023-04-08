@@ -713,7 +713,7 @@
 /area/security/brig)
 "ayE" = (
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "ayK" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -768,6 +768,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"azT" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "aAg" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/reading_room)
@@ -3159,11 +3165,11 @@
 /area/crew_quarters/pool)
 "ceM" = (
 /obj/machinery/mech_recharger,
-/obj/mecha/combat/fighter/gunpod/sec/loaded{
+/obj/mecha/combat/fighter/baron/loaded{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "cfz" = (
 /obj/structure/closet/crate/bin{
 	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
@@ -6258,7 +6264,7 @@
 	},
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "enF" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -7280,6 +7286,9 @@
 /obj/structure/filingcabinet/chestdrawer,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"fcW" = (
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/shuttle/hammerhead/bay)
 "fcX" = (
 /obj/structure/table/steel,
 /obj/item/book/manual/security_space_law,
@@ -11715,7 +11724,7 @@
 "ief" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "iek" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
@@ -13206,7 +13215,7 @@
 	dir = 1
 	},
 /turf/simulated/shuttle/wall/voidcraft/red,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "jho" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -13697,7 +13706,7 @@
 	},
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "jxx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14189,6 +14198,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/resleeving)
+"jTU" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/shuttle/hammerhead/bay)
 "jTV" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
@@ -14387,7 +14402,7 @@
 	},
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/plating,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "kaY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -14912,6 +14927,12 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
+"kqX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/shuttle/hammerhead/bay)
 "kqZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15379,7 +15400,7 @@
 /area/maintenance/security/upper)
 "kCx" = (
 /turf/simulated/floor/tiled/red,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "kCA" = (
 /obj/machinery/vending/cigarette,
 /obj/structure/extinguisher_cabinet{
@@ -16394,7 +16415,7 @@
 	name = "Fighter Bay Access"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "lot" = (
 /obj/machinery/door/airlock/maintenance/sec,
 /turf/simulated/floor/plating,
@@ -17922,7 +17943,7 @@
 	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "mpJ" = (
 /obj/structure/closet/emcloset,
 /obj/structure/railing,
@@ -18153,7 +18174,7 @@
 "mzl" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "mzx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -20875,6 +20896,9 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
+"oFw" = (
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/bay)
 "oFY" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Briefing Room";
@@ -23787,7 +23811,7 @@
 	name = "Fighter Bay Access"
 	},
 /turf/simulated/floor/tiled/techmaint,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "qDA" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/tinted/frosted{
@@ -25045,6 +25069,11 @@
 /area/security/hallway)
 "rEL" = (
 /obj/structure/bed/chair/bay/shuttle,
+/obj/structure/sign/warning/caution{
+	name = "\improper CAUTION - ZERO-G AREA";
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "rEO" = (
@@ -27472,7 +27501,7 @@
 	},
 /obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "tBE" = (
 /obj/structure/railing{
 	dir = 4
@@ -30015,6 +30044,13 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
+/obj/structure/sign/warning/caution{
+	name = "\improper CAUTION - ZERO-G AREA";
+	pixel_x = 32
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "vnE" = (
@@ -30622,6 +30658,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
+"vIN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "vJe" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -33146,9 +33191,9 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
 "xya" = (
-/obj/mecha/combat/fighter/gunpod/sec/loaded,
+/obj/mecha/combat/fighter/baron/loaded,
 /turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/general)
+/area/shuttle/hammerhead/bay)
 "xyC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
@@ -52498,9 +52543,9 @@ bFP
 ilr
 ilr
 rEL
-oUL
-nxS
-oUL
+azT
+vIN
+azT
 vnt
 ilr
 ilr
@@ -52688,7 +52733,7 @@ pBj
 pBj
 kXA
 kXL
-dBM
+jTU
 jhd
 jhd
 jhd
@@ -52698,7 +52743,7 @@ mpD
 jhd
 jhd
 jhd
-nLI
+kqX
 kXL
 cbV
 kXA
@@ -52886,9 +52931,9 @@ kaH
 ayE
 ceM
 qDt
-oUL
+oFw
 kCx
-oUL
+oFw
 lop
 mzl
 xya
@@ -53082,10 +53127,10 @@ ief
 qDt
 kCx
 kCx
-oUL
+oFw
 lop
 mzl
-oUL
+oFw
 enC
 kXL
 rtk
@@ -53270,17 +53315,17 @@ pBj
 pBj
 kXA
 vMM
-ilr
-ilr
-ilr
-ilr
+fcW
+fcW
+fcW
+fcW
 tBx
 tBx
 tBx
-ilr
-ilr
-ilr
-ilr
+fcW
+fcW
+fcW
+fcW
 kXL
 gWp
 kXA

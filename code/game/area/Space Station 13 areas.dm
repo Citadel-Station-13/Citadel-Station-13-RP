@@ -285,6 +285,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/hammerhead/brig
 	name = "\improper Hammerhead Barge Brig"
 
+/area/shuttle/hammerhead/bay
+	name = "\improper Hammerhead Launch Bay"
+	has_gravity = FALSE
+
 // Civilian Transport
 /area/shuttle/civvie
 	requires_power = 1

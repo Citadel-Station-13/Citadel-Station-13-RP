@@ -164,7 +164,7 @@
 /datum/shuttle/autodock/overmap/hammerhead
 	name = "Hammerhead Patrol Barge"
 	warmup_time = 10
-	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general, /area/shuttle/hammerhead/brig)
+	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general, /area/shuttle/hammerhead/brig, /area/shuttle/hammerhead/bay)
 	current_location = "rift_hammerhead_hangar"
 	docking_controller_tag = "hammerhead_docker"
 	landmark_transition = "nav_transit_hammerhead"
