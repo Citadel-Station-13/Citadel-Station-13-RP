@@ -37,9 +37,9 @@
 		datum.vars[var_name] = var_value
 
 /// flick() callback
-#define FLICK_CALLBACK(target, state) CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state)
+#define FLICK_CALLBACK(state, target) CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state)
 /// flick() using timer
-#define FLICK_IN(target, state, time) addtimer(CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state), time)
+#define FLICK_IN(state, target, time) addtimer(CALLBACK(GLOBAL_PROC, /proc/___callbackflick, target, state), time)
 
 /proc/___callbackflick(target, state)
 	flick(target, state)

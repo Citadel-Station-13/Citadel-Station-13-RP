@@ -849,7 +849,7 @@
 
 /**
  * called when we're hit by a radiation wave
- * 
+ *
  * this is only called on the top level atoms directly on a turf
  * for nested atoms, you need /datum/component/radiation_listener
  */
@@ -1025,6 +1025,11 @@
 	filters = null
 
 //? Layers
+
+/// Sets our plane
+/atom/proc/set_plane(new_plane)
+	ASSERT(isnum(new_plane))
+	plane = new_plane
 
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)

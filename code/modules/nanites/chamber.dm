@@ -13,6 +13,9 @@
 /obj/machinery/nanite_chamber
 	name = "nanite chamber"
 	anchored = TRUE
+	density = TRUE
+	plane = MOB_PLANE
+	layer = ABOVE_MOB_LAYER
 	desc = "A nanoswarm servicing chamber."
 	icon = 'icons/modules/nanites/machinery/chamber.dmi'
 	icon_state = "chamber"
@@ -32,6 +35,8 @@
 	var/locked = FALSE
 	/// operating?
 	var/operating = FALSE
+	/// cancelling operation?
+	var/cancelling = FALSE
 	/// occupant person
 	var/mob/living/occupant
 	/// occupant nanoswarm brain
@@ -109,35 +114,40 @@
 	set_locked(!locked)
 
 /obj/machinery/nanite_chamber/proc/is_locked()
-	return locked || operating
+	return locked || operating || cancelling
 
 /obj/machinery/nanite_chamber/proc/operate_for(time = 15 SECONDS, effects_in = 7 SECONDS, datum/callback/effects_callback)
 	if(operating)
 		return FALSE
 	operating = TRUE
-	flick(src, "[base_icon_state]_raising")
+	update_icon()
+	flick("[base_icon_state]_raising", src)
+	FLICK_IN("[base_icon_state]_falling", src, max(time - FALL_ANIMATE_TIME, 0))
 	addtimer(effects_callback, min(effects_in, time))
 	addtimer(CALLBACK(src, PROC_REF(finish_operating)), time)
-	FLICK_IN(src, "[base_icon_state]_falling", max(time - (RAISE_ANIMATE_TIME + FALL_ANIMATE_TIME), 0))
 
 /obj/machinery/nanite_chamber/proc/finish_operating()
 	operating = FALSE
+	update_icon()
 
 /obj/machinery/nanite_chamber/proc/cancel_operation(immediate)
-	if(!operating)
+	if(!operating || cancelling)
 		return
+	cancelling = TRUE
 	if(operation_timerid)
 		deltimer(operation_timerid)
 	if(operation_effects_timerid)
 		deltimer(operation_effects_timerid)
-	flick(src, "[base_icon_state]_falling")
+	flick("[base_icon_state]_falling", src)
 	if(!immediate)
-		addtimer(CALLBACK(src, PROC_REF(do_cancel_operation)))
+		addtimer(CALLBACK(src, PROC_REF(do_cancel_operation)), FALL_ANIMATE_TIME)
 	else
 		do_cancel_operation()
 
 /obj/machinery/nanite_chamber/proc/do_cancel_operation()
 	operating = FALSE
+	update_icon()
+	cancelling = FALSE
 
 /obj/machinery/nanite_chamber/proc/try_refresh_protean()
 	operate_for(15 SECONDS, 7 SECONDS, CALLBACK(src, PROC_REF(refresh_protean)))
@@ -180,7 +190,7 @@
 
 /obj/machinery/nanite_chamber/proc/toggle_open(mob/user, silent = TRUE)
 	if(is_locked())
-		if(!slient)
+		if(!silent)
 			user.action_feedback(SPAN_WARNING("[src] is locked!"), src)
 		return FALSE
 	if(open)
@@ -189,6 +199,9 @@
 		drop_contents()
 	open = !open
 	density = !open
+	set_plane(open? OBJ_PLANE : MOB_PLANE)
+	set_base_layer(open? OBJ_LAYER : MOB_LAYER)
+	linked?.update_static_data()
 	update_icon()
 	return TRUE
 

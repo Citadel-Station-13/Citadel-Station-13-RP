@@ -67,7 +67,13 @@ const NaniteChamberControlContent = (props, context) => {
             Chamber open
           </NoticeBox>
         ) : (
-          <NaniteChamberControlOccupant />
+          data.operating? (
+            <NoticeBox textAlign="center" fontSize="1.75em">
+              Operating...
+            </NoticeBox>
+          ) : (
+            <NaniteChamberControlOccupant />
+          )
         )
       }
     </Section>
@@ -93,7 +99,11 @@ const NaniteChamberControlOccupant = (props, context) => {
             {/* linter override comment as we will have more sections in the fragment later. */}
             {!!data.occupant.isProtean && (
               <Section title="Detected Swarm - Intrinsic">
-                test
+                <Button
+                  fluid
+                  icon="tint"
+                  content="Regenerate Swarm Volume"
+                  onClick={() => act('protean_refresh')} />
               </Section>
             )}
           </>
