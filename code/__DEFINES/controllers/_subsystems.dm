@@ -161,9 +161,15 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
 #define FIRE_PRIORITY_NANO             150
+#define FIRE_PRIORITY_AI               200
 #define FIRE_PRIORITY_TGUI             200
+#define FIRE_PRIORITY_PROJECTILES      200
+#define FIRE_PRIORITY_THROWING         200
 #define FIRE_PRIORITY_STATPANELS       400
 #define FIRE_PRIORITY_OVERLAYS         500
+#define FIRE_PRIORITY_SMOOTHING        500
+#define FIRE_PRIORITY_CHAT             500
+#define FIRE_PRIORITY_INPUT            1000
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -171,14 +177,8 @@ DEFINE_BITFIELD(runlevels, list(
 // Is your feature as important as movement, chat, or timers?
 // Probably not! Go to normal bracket instead!
 
-#define FIRE_PRIORITY_AI           10	 //! WHY IS THIS SSTICKER???
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PROJECTILES  150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_THROWING     150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_SMOOTHING    500   //! this probably shouldn't be ssticker
 #define FIRE_PRIORITY_TIMER        700
-#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
 
 //? Special
 
