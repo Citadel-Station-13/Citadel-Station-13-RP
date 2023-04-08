@@ -242,9 +242,6 @@
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
 
-/mob/proc/cannot_stand()
-	return incapacitated(INCAPACITATION_KNOCKDOWN)
-
 /mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
 	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_USE))
 		return 1
@@ -749,10 +746,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/show_viewers(message)
 	for(var/mob/M in viewers())
 		M.see(message)
-
-/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
-/mob/proc/can_stand_overridden()
-	return 0
 
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()

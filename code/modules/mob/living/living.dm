@@ -733,11 +733,6 @@ default behaviour is:
 			lastpuke = 0
 
 /mob/living/update_canmove()
-	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
-	if(restrained())
-		stop_pulling()
-		drop_all_held_items()
-	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
 		canmove = 1
@@ -756,11 +751,6 @@ default behaviour is:
 		update_water() // Submerges the mob.
 	else
 		density = initial(density)
-
-	for(var/obj/item/grab/G in grabbed_by)
-		if(G.state >= GRAB_AGGRESSIVE)
-			canmove = FALSE
-			break
 
 	if(lying != lying_prev)
 		lying_prev = lying

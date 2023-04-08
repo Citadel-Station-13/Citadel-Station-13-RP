@@ -1457,16 +1457,6 @@
 		return 1
 	return 0
 
-/mob/living/carbon/human/can_stand_overridden()
-	if(wearing_rig && wearing_rig.ai_can_move_suit(check_for_ai = 1))
-		// Actually missing a leg will screw you up. Everything else can be compensated for.
-		for(var/limbcheck in list("l_leg","r_leg"))
-			var/obj/item/organ/affecting = get_organ(limbcheck)
-			if(!affecting)
-				return 0
-		return 1
-	return 0
-
 /mob/living/carbon/human/verb/toggle_underwear()
 	set name = "Toggle Underwear"
 	set desc = "Shows/hides selected parts of your underwear."
