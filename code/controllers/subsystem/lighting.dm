@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(lighting)
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 	var/force_queued = TRUE
 	/// For admins.
-	var/force_override = FALSE
+	var/force_override = TRUE
 #endif
 
 /datum/controller/subsystem/lighting/stat_entry()
@@ -53,7 +53,6 @@ SUBSYSTEM_DEF(lighting)
 	return TRUE
 
 /datum/controller/subsystem/lighting/proc/handle_roundstart()
-	force_queued = FALSE
 	total_ss_updates = 0
 	total_instant_updates = 0
 
