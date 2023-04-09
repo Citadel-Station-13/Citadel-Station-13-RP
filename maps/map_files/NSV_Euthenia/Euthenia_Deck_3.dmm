@@ -322,7 +322,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "asC" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "asI" = (
@@ -667,7 +667,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "aFp" = (
@@ -1392,7 +1392,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "bnj" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
@@ -1509,7 +1509,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "bvj" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "bwF" = (
@@ -2641,7 +2641,7 @@
 /turf/simulated/floor/wood,
 /area/chapel/main)
 "cvD" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "cvF" = (
@@ -3143,7 +3143,7 @@
 "cVM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "cVW" = (
@@ -3424,7 +3424,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet,
 /area/security/detectives_office)
 "dkO" = (
@@ -3626,7 +3626,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "dwG" = (
@@ -5013,7 +5013,7 @@
 "eJn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_cargo/blue,
 /area/security/brig)
 "eJv" = (
@@ -6791,7 +6791,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "fZw" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/corner/green{
 	dir = 5
 	},
@@ -6896,7 +6896,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "gbW" = (
@@ -9125,7 +9125,7 @@
 /turf/simulated/floor/tiled/white,
 /area/space)
 "igD" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "ihc" = (
@@ -11081,7 +11081,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology)
 "jIc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -13810,7 +13810,7 @@
 /area/rnd/xenobiology)
 "lUV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/bluegrid{
 	initial_gas_mix = "n2=100;TEMP=80";
 	name = "Mainframe Base"
@@ -14688,7 +14688,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/brig)
 "mJk" = (
@@ -14841,7 +14841,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay3)
 "mON" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -15695,7 +15695,7 @@
 /turf/simulated/wall/r_wall,
 /area/ai_upload)
 "nzG" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "nAl" = (
@@ -16544,7 +16544,7 @@
 "ohZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/psych_ward)
 "oia" = (
@@ -16572,7 +16572,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai/foyer)
 "olv" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
 "olC" = (
@@ -16605,7 +16605,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "omL" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -17193,7 +17193,7 @@
 /turf/simulated/floor/plating,
 /area/medical/medbay_primary_storage)
 "oOq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
 	},
@@ -19046,7 +19046,7 @@
 	req_access = list(16)
 	},
 /obj/machinery/light/small,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/ai)
 "qDd" = (
@@ -19220,7 +19220,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "qMT" = (
@@ -21963,7 +21963,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/theatre)
 "sZO" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/medical/psych_ward)
 "sZZ" = (
@@ -22790,7 +22790,7 @@
 "tTe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "tTp" = (
@@ -23043,7 +23043,7 @@
 "ufg" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "ufV" = (
@@ -23349,7 +23349,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -23545,7 +23545,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "uyU" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/reinforced,
 /area/space)
 "uyV" = (
@@ -23758,7 +23758,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "uLh" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "uMc" = (
@@ -26116,7 +26116,7 @@
 /turf/simulated/open,
 /area/ai)
 "wPq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -26815,7 +26815,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
 "xtV" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/prison)
 "xui" = (

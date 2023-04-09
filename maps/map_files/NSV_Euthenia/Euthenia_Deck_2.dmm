@@ -1686,7 +1686,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/forward/starboard)
 "bdS" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
 "bek" = (
@@ -1740,7 +1740,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/crew_quarters/fitness)
 "bfm" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
@@ -8686,7 +8686,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
 "grM" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
 "gsb" = (
@@ -8942,7 +8942,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "gEf" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "gET" = (
@@ -10791,7 +10791,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/toilet)
 "ibO" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
@@ -11499,7 +11499,7 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_room)
 "iIV" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "iJx" = (
@@ -12230,7 +12230,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "jeL" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -12952,7 +12952,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
 "jHJ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "jHK" = (
@@ -15799,8 +15799,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "lGa" = (
-/obj/structure/catwalk,
-/turf/simulated/open,
+/turf/simulated/floor/glass/reinforced,
 /area/rnd/research/researchdivision)
 "lGb" = (
 /obj/structure/bed/chair/comfy/black{
@@ -17581,8 +17580,7 @@
 /turf/simulated/floor/reinforced,
 /area/engineering/atmos/processing)
 "mTO" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/monotile,
 /area/rnd/research/researchdivision)
 "mTS" = (
 /obj/machinery/door/firedoor/glass,
@@ -17614,7 +17612,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "mWO" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/medical/patient_wing)
 "mWW" = (
@@ -18322,7 +18320,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -19844,7 +19842,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "oJi" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -21294,7 +21292,7 @@
 /area/vacant/vacant_office)
 "pKV" = (
 /obj/machinery/computer/timeclock/premade/south,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -21720,7 +21718,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/medical)
 "qbl" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "qbn" = (
@@ -22517,7 +22515,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_smes)
 "qMD" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/maintenance/tool_storage)
 "qMJ" = (
@@ -23739,7 +23737,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/port)
 "rAO" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -27125,7 +27123,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "uib" = (
@@ -28462,7 +28460,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "uZK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -29187,7 +29185,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_gas)
 "vFA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "vFV" = (
@@ -31841,7 +31839,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "xmW" = (
@@ -31930,7 +31928,7 @@
 /turf/simulated/wall/r_wall,
 /area/engineering/atmos/processing)
 "xpI" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
@@ -44428,7 +44426,7 @@ cRD
 adB
 uXg
 unL
-mTO
+lGa
 mTO
 pkd
 kna
@@ -44622,7 +44620,7 @@ tKR
 adB
 xxt
 dDH
-mTO
+lGa
 mTO
 deT
 kna

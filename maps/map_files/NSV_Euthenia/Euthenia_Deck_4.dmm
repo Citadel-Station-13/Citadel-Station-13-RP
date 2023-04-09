@@ -1368,7 +1368,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/maintenance/deck_four/forward)
 "xg" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3092,7 +3092,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Wb" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
