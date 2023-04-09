@@ -597,9 +597,13 @@
 	gear_tweaks += gear_tweak_free_color_choice
 
 /datum/gear/suit/cropped_hoodie/croppier
-	name = "Cropped Hoodie (croppier)"
-	path = /obj/item/clothing/suit/croppier_hoodie
+	name = "Cropped Hoodie (high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+
+/datum/gear/suit/cropped_hoodie/veryhighcrop
+	name = "Cropped Hoodie (very high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
 
 /datum/gear/suit/cropped_hoodie/croppiest
 	name = "Cropped Hoodie (supercrop)"
-	path = /obj/item/clothing/suit/croppiest_hoodie
+	path = /obj/item/clothing/suit/cropped_hoodie/croppiest
