@@ -32,7 +32,7 @@
 	var/old_loc = get_turf(src)
 	if(..())
 		if(tow)
-			tow.Move(old_loc)
+			tow.forceMove(old_loc)
 		return 1
 	else
 		if(lead)

@@ -144,7 +144,7 @@
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
-	/// contamination insulation; null defaults to rad_insulation
+	/// contamination insulation; null defaults to rad_insulation, this is a multiplier. *never* set higher than 1!!
 	var/rad_stickiness
 
 	//? Overlays
@@ -326,10 +326,6 @@
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
 		return 0
 	return -1
-
-/atom/proc/Bumped(atom/movable/bumped_atom)
-	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
@@ -849,6 +845,9 @@
 
 /**
  * called when we're hit by a radiation wave
+ *
+ * this is only called on the top level atoms directly on a turf
+ * for nested atoms, you need /datum/component/radiation_listener
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
 	SHOULD_CALL_PARENT(TRUE)
@@ -1057,13 +1056,16 @@
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
  * get our pixel_x to reset to

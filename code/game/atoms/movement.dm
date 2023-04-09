@@ -9,15 +9,11 @@
 /**
   * An atom is attempting to exit this atom's contents
   *
-  * Default behaviour is to send the [COMSIG_ATOM_EXIT]
-  *
   * Return value should be set to FALSE if the moving atom is unable to leave,
   * otherwise leave value the result of the parent call
   */
 /atom/Exit(atom/movable/AM, atom/newLoc)
-	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_ATOM_EXIT, AM, newLoc) & COMPONENT_ATOM_BLOCK_EXIT)
-		return FALSE
+	return TRUE
 
 /**
   * An atom has exited this atom's contents
@@ -26,6 +22,8 @@
   */
 /atom/Exited(atom/movable/AM, atom/newLoc)
 	SEND_SIGNAL(src, COMSIG_ATOM_EXITED, AM, newLoc)
+
+//? collision
 
 /**
   * Check if an atom can exit us in movement.
@@ -55,6 +53,18 @@
 	if(mover.throwing && ((pass_flags_self & ATOM_PASS_THROWN) || !mover.throwing.can_hit(src, TRUE)))
 		return TRUE
 	return !density
+
+/**
+ * Called when a movable atom bumps into us.
+ *
+ * Avoid doing anything that will re-move the atom if you can help it.
+ * It's prefrred to use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ */
+/atom/proc/Bumped(atom/movable/bumped_atom)
+	set waitfor = FALSE
+	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
+
+//? pass flags
 
 /**
  * for regexing

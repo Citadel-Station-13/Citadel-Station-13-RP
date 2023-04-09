@@ -1375,7 +1375,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Breach Corp cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/unsimulated/floor{
 	icon_state = "cult";
@@ -3363,7 +3363,7 @@
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
@@ -3559,7 +3559,7 @@
 	},
 /obj/item/clothing/glasses/goggles,
 /obj/item/clothing/head/helmet/merc{
-	armor = list("melee" = 70, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=70,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "A pilot's flight helmet. It's not very well armored, but it's very well padded, making it resistant to melee attacks.";
 	name = "pilot helmet"
 	},
@@ -4305,6 +4305,12 @@
 	},
 /turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
+/area/shuttle/mercenary)
+"Xt" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/shuttle/floor{
+	icon_state = "floor_dred"
+	},
 /area/shuttle/mercenary)
 
 (1,1,1) = {"
@@ -5345,7 +5351,7 @@ fu
 fu
 fu
 fu
-fu
+Xt
 fu
 fu
 fu

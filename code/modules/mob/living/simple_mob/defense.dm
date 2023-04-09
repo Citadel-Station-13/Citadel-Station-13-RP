@@ -192,7 +192,7 @@
 		return armorval
 
 /mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
-	var/armorval = fetch_armor().raw(attack_flag) * 100
+	var/armorval = fetch_armor().soak(attack_flag) * 100
 	if(!armorval)
 		return 0
 	else

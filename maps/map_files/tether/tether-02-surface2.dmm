@@ -1722,7 +1722,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/centralhall)
 "acJ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -2179,7 +2179,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/detective)
 "adx" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/security/detective)
 "ady" = (
@@ -2301,7 +2301,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "adK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -3878,7 +3878,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/cmo)
 "agc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/white,
@@ -4552,7 +4552,7 @@
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/red/bordercorner,
 /obj/structure/table/bench/steel,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/security_officer,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/outfitting)
@@ -6702,7 +6702,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "akK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/uppersouthstairwell)
 "akL" = (
@@ -9702,7 +9702,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/middlehall)
 "apC" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -10201,7 +10201,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -15349,7 +15349,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fish_farm)
 "aAy" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fish_farm)
 "aAz" = (
@@ -15453,7 +15453,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aAN" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aAO" = (
@@ -15566,7 +15566,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/fish_farm)
 "aBd" = (
@@ -16402,7 +16402,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark{
 	name = "lightsout"
 	},
@@ -18497,7 +18497,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "aHL" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet/turcarpet,
 /area/bridge/meeting_room)
 "aHM" = (
@@ -20084,7 +20084,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "aLy" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -20178,7 +20178,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/rnd)
 "aLI" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/tether/surfacebase/surface_two_hall)
 "aLJ" = (
@@ -20628,7 +20628,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/server)
 "aMQ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "aMR" = (
@@ -21988,7 +21988,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -22086,7 +22086,7 @@
 /turf/simulated/floor/carpet,
 /area/engineering/lower/breakroom)
 "aPr" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/table/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24073,7 +24073,7 @@
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aTA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "aTB" = (
@@ -25534,7 +25534,7 @@
 /turf/simulated/floor/tiled,
 /area/janitor)
 "aWq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/janitor)
 "aWr" = (
@@ -26817,7 +26817,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)
 "aZn" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
@@ -26934,7 +26934,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "aZI" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -28527,7 +28527,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "beJ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
@@ -29349,7 +29349,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tcomsat)
 "bgJ" = (
@@ -30519,7 +30519,7 @@
 	},
 /area/tcommsat/chamber)
 "bjd" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -30900,7 +30900,7 @@
 "bjW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "bjX" = (
@@ -33681,7 +33681,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad{
+/obj/machinery/holopad{
 	layer = 4
 	},
 /turf/simulated/floor/tiled/white,
