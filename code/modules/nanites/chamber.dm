@@ -159,6 +159,7 @@
 
 /obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)
 	if(!check_reconstruction_costs())
+		user.ui_feedback(SPAN_WARNING("Insufficient materials."), src)
 		return
 	if(isnull(protean_core?.brainmob?.mind))
 		user.ui_feedback(SPAN_WARNING("No consciousness detected."), src)
