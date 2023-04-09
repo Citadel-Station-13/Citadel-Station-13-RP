@@ -74,7 +74,8 @@
 
 /obj/machinery/nanite_chamber/Destroy()
 	drop_contents()
-	linked?.unlink_chamber()
+	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+		controller.unlink_chamber()
 	return ..()
 
 /obj/machinery/nanite_chamber/update_overlays()
@@ -101,11 +102,8 @@
 	return TRUE
 
 /obj/machinery/nanite_chamber/proc/detect_connection()
-	if(linked)
-		return
-	var/obj/machinery/computer/nanite_chamber/chamber = locate() in orange(1, src)
-	if(chamber)
-		chamber?.relink()
+	for(var/obj/machinery/computer/nanite_chamber/controller in orange(1, src))
+		controller.relink()
 
 /obj/machinery/nanite_chamber/proc/set_locked(new_value)
 	locked = new_value
@@ -159,8 +157,17 @@
 	protean_refactory.materials[MAT_STEEL] = protean_refactory.max_storage
 	occupant.innate_feedback(SPAN_NOTICE("Your refactory chimes as your nanite reserves are refilled by the chamber."))
 
+/obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)
+	if(!check_reconstruction_costs())
+		return
+	if(isnull(protean_core?.brainmob?.mind))
+		user.ui_feedback(SPAN_WARNING("No consciousness detected."), src)
+		return
+	operate_for(30 SECONDS, 10 SECONDS, CALLBACK(src, PROC_REF(rebuild_protean)))
+
 /obj/machinery/nanite_chamber/proc/rebuild_protean()
-	if(isnull(protean_core))
+	if(isnull(protean_core?.brainmob?.mind))
+		cancel_operation()
 		return
 	consume_reconstruction_costs()
 	// for now we just delete old organs, after organ refactor we wanna make this proper
@@ -175,8 +182,13 @@
 	// todo: ORGAN AND CHARACTER SAVING REFACTOR AAAAAAAAAA
 	var/mob/living/carbon/human/new_protean = new(src)
 	new_protean.set_species(/datum/species/protean, force = TRUE)
-	new_protean.real_name = protean_core.brainmob.real_name
+	new_protean.real_name = protean_core.brainmob.mind.name
 	protean_core.brainmob.mind.transfer_to(new_protean)
+	// todo: organ / species rework
+	var/obj/item/organ/external/their_chest = new_protean.organs_by_name[BP_TORSO]
+	var/datum/robolimb/nt_path = /datum/robolimb/nanotrasen
+	their_chest?.robotize(GLOB.all_robolimbs[initial(nt_path.company)])
+	update_icon()
 
 /obj/machinery/nanite_chamber/proc/open(mob/user)
 	if(open)
@@ -201,7 +213,8 @@
 	density = !open
 	set_plane(open? OBJ_PLANE : MOB_PLANE)
 	set_base_layer(open? OBJ_LAYER : MOB_LAYER)
-	linked?.update_static_data()
+	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+		controller.update_static_data()
 	update_icon()
 	return TRUE
 
@@ -214,7 +227,8 @@
 	occupant = null
 	protean_core?.forceMove(where)
 	protean_core = null
-	linked?.update_static_data()
+	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+		controller.update_static_data()
 
 /obj/machinery/nanite_chamber/proc/take_contents()
 	if(!occupant)
@@ -235,7 +249,8 @@
 			if(QDELETED(M))
 				continue
 			LAZYADD(held_items, M)
-	linked?.update_static_data()
+	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+		controller.update_static_data()
 
 /obj/machinery/nanite_chamber/proc/check_reconstruction_costs()
 	var/list/avail = available_materials()

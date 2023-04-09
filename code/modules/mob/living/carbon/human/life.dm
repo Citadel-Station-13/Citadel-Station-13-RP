@@ -863,7 +863,7 @@
 	// FBPs will overheat when alive, prosthetic limbs are fine.
 	if(stat != DEAD && robobody_count)
 		if(!nif || !nif.flag_check(NIF_O_HEATSINKS,NIF_FLAGS_OTHER)) // NIF heatsinks prevent the base heat increase per tick if installed.
-			bodytemperature += round(robobody_count*0.3)
+			bodytemperature += round(robobody_count*1.15)
 		var/obj/item/organ/internal/robotic/heatsink/HS = internal_organs_by_name[O_HEATSINK]
 		if(!HS || HS.is_broken()) // However, NIF Heatsinks will not compensate for a core FBP component (your heatsink) being lost.
 			bodytemperature += round(robobody_count*0.5)
@@ -1642,7 +1642,7 @@
 /mob/living/carbon/human/proc/handle_changeling()
 	if(mind && mind.changeling)
 		mind.changeling.regenerate()
-		if(hud_used)
+		if(hud_used && ling_chem_display)
 			ling_chem_display.invisibility = 0
 //			ling_chem_display.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#dd66dd'>[round(mind.changeling.chem_charges)]</font></div>"
 			switch(mind.changeling.chem_storage)
@@ -1682,7 +1682,7 @@
 							ling_chem_display.icon_state = "ling_chems80e"
 	else
 		if(mind && hud_used)
-			ling_chem_display.invisibility = 101
+			ling_chem_display?.invisibility = 101
 
 /mob/living/carbon/human/handle_shock()
 	..()

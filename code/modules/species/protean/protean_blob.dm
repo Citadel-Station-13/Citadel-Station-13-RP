@@ -188,6 +188,7 @@
 			healing = humanform.add_modifier(/datum/modifier/protean/steelBlob, origin = refactory)
 		else if(humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health >= maxHealth)
 			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
+	humanform.normalize_bodytemperature(40, 0.5)
 
 /mob/living/simple_mob/protean_blob/lay_down()
 	..()
@@ -586,7 +587,7 @@
 				targeted_area = SLOT_ID_MASK
 				target_displayname = "face"
 
-		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT)) 
+		if(target.equip_to_slot_if_possible(H, targeted_area, INV_OP_IGNORE_DELAY | INV_OP_SILENT))
 			visible_message("<span class='danger'>[src] leaps at [target]'s [target_displayname]!</span>")
 		else
 			visible_message("<span class='notice'>[src] leaps at [target]'s [target_displayname] and bounces off harmlessly!</span>")

@@ -69,10 +69,10 @@
 			if(!linked.protean_core || !linked.check_reconstruction_costs())
 				return TRUE
 			linked.consume_reconstruction_costs()
-			linked.rebuild_protean()
+			linked.try_rebuild_protean()
 			return TRUE
 		if("protean_refresh")
-			linked.try_refresh_protean()
+			linked.try_refresh_protean(usr)
 			return TRUE
 
 /obj/machinery/computer/nanite_chamber/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -114,7 +114,7 @@
 			missing_organs += "orchestrator"
 		.["hasProtean"] = TRUE
 		.["protean"] = list(
-			"name" = linked.protean_core.name,
+			"name" = linked.protean_core.brainmob?.name,
 			"organs" = list(
 				"intact" = intact_organs,
 				"missing" = missing_organs,

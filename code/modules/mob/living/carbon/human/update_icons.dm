@@ -230,7 +230,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(part.robotic >= ORGAN_ROBOT)
 				icon_key += "2[part.model ? "-[part.model]": ""]"
 				robolimb_count++
-				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
+				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE || part.robotic == ORGAN_NANOFORM) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"

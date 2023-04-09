@@ -59,6 +59,12 @@
 	to_chat(src, msg)
 
 /**
+ * gives feedback for an ui click
+ */
+/mob/proc/ui_feedback(msg, datum/host, datum/tgui/ui)
+	to_chat(src, msg)
+
+/**
  * gives feedback for trying to move/whatever
  */
 /mob/proc/selfmove_feedback(msg)
