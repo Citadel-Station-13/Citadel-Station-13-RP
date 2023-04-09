@@ -11,8 +11,14 @@
 	},
 /turf/template_noop,
 /area/space)
+"P" = (
+/turf/simulated/floor/tiled/outdoors,
+/area/space)
 "T" = (
 /turf/simulated/wall/rshull,
+/area/space)
+"Y" = (
+/turf/simulated/floor/plating/outdoors,
 /area/space)
 
 (1,1,1) = {"
@@ -177,12 +183,12 @@ T
 T
 a
 a
-a
-a
-a
-a
-a
-a
+T
+T
+T
+T
+T
+T
 a
 a
 T
@@ -289,7 +295,7 @@ a
 a
 a
 a
-a
+Y
 a
 a
 a
@@ -567,7 +573,7 @@ F
 "}
 (26,1,1) = {"
 F
-F
+P
 F
 F
 F
