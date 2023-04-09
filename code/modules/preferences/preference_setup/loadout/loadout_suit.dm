@@ -587,3 +587,23 @@
 /datum/gear/suit/overcoatbleached
 	name = "Great Bleached Overcoat Caped"
 	path = /obj/item/clothing/suit/storage/vest/formal/bleached
+
+/datum/gear/suit/cropped_hoodie
+	name = "Cropped Hoodie"
+	path = /obj/item/clothing/suit/cropped_hoodie
+
+/datum/gear/suit/cropped_hoodie/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/cropped_hoodie/croppier
+	name = "Cropped Hoodie (high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+
+/datum/gear/suit/cropped_hoodie/veryhighcrop
+	name = "Cropped Hoodie (very high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
+
+/datum/gear/suit/cropped_hoodie/croppiest
+	name = "Cropped Hoodie (supercrop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppiest

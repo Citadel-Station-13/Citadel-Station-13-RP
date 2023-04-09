@@ -1479,6 +1479,28 @@
 	desc = "This crisp white hoodie bears a strange manufacturer's mark. The colorful red accents stand out against the snowy white cloth with evocative flair."
 	icon_state = "mekkyaku"
 
+/obj/item/clothing/suit/cropped_hoodie
+	name = "cropped hoodie"
+	desc = "This style of hoodie is sometimes worn by those who cannot fit, or choose not to hide their delectable bellies under the full, soft confines of a hoodie. The hood is cosmetic, and non-functional."
+	icon = 'icons/clothing/suit//misc/cropped.dmi'
+	icon_state = "cropped_hoodie"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/suit/cropped_hoodie/croppier
+	name = "high cropped hoodie"
+	desc = "This style of hoodie is worn by those that wish to display ample amounts of midriff, or never threw out their childhood apparel. The hood is cosmetic, and non-functional."
+	icon_state = "croppier_hoodie"
+
+/obj/item/clothing/suit/cropped_hoodie/croppierer
+	name = "very high cropped hoodie"
+	desc = "This style of hoodie is worn by those that wish to display ample amounts of underboob, and love the breeze. Comes with a free 'functionally_nude' sticker. The hood is cosmetic, and non-functional."
+	icon_state = "highcrop_hoodie"
+
+/obj/item/clothing/suit/cropped_hoodie/croppiest
+	name = "super cropped hoodie"
+	desc = "This style of hoodie is worn by those that have little respect for the concept of a hoodie. Often seen in Skrellian nightclubs and your daughter's wardrdobe. The hood is cosmetic, and non-functional."
+	icon_state = "cropped_hoodie_super"
+
 /obj/item/clothing/suit/storage/utility_fur_coat
 	name = "Utility Fur Coat"
 	desc = "A form fitting utilitarion coat with straps around the shoulders and holding a sash around the waist. The collar is lined with fur to help stay warm."
