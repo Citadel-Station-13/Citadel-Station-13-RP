@@ -109,19 +109,7 @@ GLOBAL_REAL_VAR(list/gzn_check) = list(NORTH, SOUTH, EAST, WEST)
 
 #undef GET_ZONE_NEIGHBOURS
 
-//helper for can_safely_remove_from_zone()
-/turf/simulated/proc/get_zone_neighbours(turf/simulated/T)
-	. = 0
-	if(istype(T) && T.zone)
-		#ifdef MULTIZAS
-		var/to_check = GLOB.cardinalz
-		#else
-		var/to_check = GLOB.cardinal
-		#endif
-		for(var/dir in to_check)
-			var/turf/simulated/other = get_step(T, dir)
-			if(istype(other) && other.zone == T.zone && !(other.CanAtmosPass(T, global.reverse_dir[dir]) == ATMOS_PASS_AIR_BLOCKED) && get_dist(src, other) <= 1)
-				. |= dir
+//* End *//
 
 /turf/simulated/update_air_properties()
 	#ifdef ZAS_BREAKPOINT_HOOKS
