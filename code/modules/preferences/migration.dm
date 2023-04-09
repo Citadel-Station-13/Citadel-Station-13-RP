@@ -177,6 +177,34 @@
 		WRITE_FILE(S["tail_style_id"], resolved_tail?.id)
 		WRITE_FILE(S["horn_style_id"], resolved_horns?.id)
 		WRITE_FILE(S["body_marking_ids"], resolved_markings)
+	if (current_version < 4)
+		var/old_species = character[CHARACTER_DATA_REAL_SPECIES]
+		var/datum/species/RS
+		switch (old_species)
+			if(SPECIES_ID_ZORREN_FLAT)
+				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_FLAT]"))
+				RS = SScharacters.resolve_species_path(/datum/species/custom)
+				WRITE_FILE(S["custom_base"], SPECIES_ZORREN_FLAT)
+			if(SPECIES_ID_ZORREN_HIGH)
+				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_ZORREN_HIGH]"))
+				RS = SScharacters.resolve_species_path(/datum/species/custom)
+				WRITE_FILE(S["custom_base"], SPECIES_ZORREN_HIGH)
+			if(SPECIES_ID_NEVREAN)
+				errors?.Add(SPAN_WARNING("[old_species] has been removed - Character species changed to custom species, icon base [SPECIES_NEVREAN]"))
+				RS = SScharacters.resolve_species_path(/datum/species/custom)
+				WRITE_FILE(S["custom_base"], SPECIES_NEVREAN)
+			else
+				RS = SScharacters.resolve_species_name(old_species)
+		if(!RS)
+			errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name ([old_species])"))
+			RS = SScharacters.resolve_species_path(/datum/species/human)
+
+		if(RS)
+			character[CHARACTER_DATA_REAL_SPECIES] = RS.uid
+			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
+		else
+			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
+
 
 
 /**
