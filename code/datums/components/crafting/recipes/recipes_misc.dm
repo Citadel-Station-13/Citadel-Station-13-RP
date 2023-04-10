@@ -466,13 +466,6 @@
 /////////
 
 /*
-/datum/crafting_recipe/toysword
-	name = "Toy Sword"
-	reqs = list(/obj/item/light/bulb = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/material/plastic = 4)
-	result = /obj/item/toy/sword
-	subcategory = CAT_MISCELLANEOUS
-	category = CAT_MISCELLANEOUS
-
 /datum/crafting_recipe/extendohand
 	name = "Extendo-Hand"
 	reqs = list(/obj/item/bodypart/r_arm/robot = 1, /obj/item/clothing/gloves/boxing = 1)
