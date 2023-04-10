@@ -60,7 +60,7 @@
 		if(istype(P, /obj/projectile/test)) // Turrets need to try to kill the shield and so their test bullet needs to penetrate.
 			return TRUE
 
-		var/bad_arc = REVERSE_DIR(dir) // Arc of directions from which we cannot block.
+		var/bad_arc = global.reverse_dir[dir] // Arc of directions from which we cannot block.
 		if(check_shield_arc(src, bad_arc, P)) // This is actually for mobs but it will work for our purposes as well.
 			return FALSE
 	return TRUE

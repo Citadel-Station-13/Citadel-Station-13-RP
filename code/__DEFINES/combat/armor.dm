@@ -28,7 +28,7 @@
 #define ARMOR_BIO "bio"
 #define ARMOR_RAD "rad"
 
-GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
+GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_MELEE,
 	ARMOR_MELEE_TIER,
 	ARMOR_MELEE_SOAK,
