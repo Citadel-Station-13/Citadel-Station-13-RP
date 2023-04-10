@@ -544,6 +544,7 @@
 #include "code\controllers\subsystem\processing\circuits.dm"
 #include "code\controllers\subsystem\processing\fastprocess.dm"
 #include "code\controllers\subsystem\processing\instruments.dm"
+#include "code\controllers\subsystem\processing\moving_cameras.dm"
 #include "code\controllers\subsystem\processing\obj.dm"
 #include "code\controllers\subsystem\processing\pathfinder.dm"
 #include "code\controllers\subsystem\processing\processing.dm"
