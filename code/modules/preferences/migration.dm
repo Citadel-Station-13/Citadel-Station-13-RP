@@ -194,7 +194,7 @@
 				RS = SScharacters.resolve_species_path(/datum/species/custom)
 				WRITE_FILE(S["custom_base"], SPECIES_NEVREAN)
 			else
-				RS = SScharacters.resolve_species_name(old_species)
+				RS = SScharacters.resolve_species_id(old_species)
 		if(!RS)
 			errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name ([old_species])"))
 			RS = SScharacters.resolve_species_path(/datum/species/human)
