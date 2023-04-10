@@ -641,6 +641,11 @@
 	else
 		. = ..()
 
+/obj/item/reagent_containers/food/snacks/egg/randomized/Initialize(mapload)
+	. = ..()
+	var/randeggicon = pick("egg-blue","egg-green","egg-orange","egg-purple","egg-red","egg-yellow","egg-rainbow")
+	icon_state = (randeggicon)
+
 /obj/item/reagent_containers/food/snacks/egg/blue
 	icon_state = "egg-blue"
 
