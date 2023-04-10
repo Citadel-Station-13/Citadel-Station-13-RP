@@ -80,6 +80,7 @@
 	if(!isnull(action))
 		return action
 	action = new(src)
+	action.button_managed = TRUE
 	action.button_icon = action_icon
 	action.button_icon_state = action_state
 	action.background_icon = background_icon
@@ -87,12 +88,21 @@
 	return action
 
 /datum/ability/proc/update_action()
-	#warn impl
-
+	var/availability = 1
+	if(cooldown)
+		availability = clamp((world.time - last_used) / cooldown, 0, 1)
+	action?.push_button_update(availability, (interact_type == ABILITY_INTERACT_TOGGLE) && enabled)
 	recheck_queued_action_update()
 
 /datum/ability/proc/recheck_queued_action_update()
-	#warn impl
+	if(cooldown_visual_timerid)
+		deltimer(cooldown_visual_timerid)
+		cooldown_visual_timerid = null
+	var/next_available = 0
+	if(cooldown && (world.time < last_used + cooldown))
+		next_available = max(next_available, (last_used + cooldown) - world.time)
+	if(next_available > 0)
+		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
 
 /datum/ability/ui_action_click(datum/action/action, mob/user)
 	. = ..()
@@ -114,12 +124,12 @@
 			return
 		if(isnull(toggling))
 			toggling = !enabled
-	if(!check_trigger(user, feedback, TRUE))
+	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
 		if(!do_after(user, windup, ignore_movement = !windup_requires_still))
 			return
-		if(!check_trigger(user, feedback, TRUE))
+		if(!check_trigger(user, toggling, TRUE))
 			return
 	on_trigger(user, toggling)
 
