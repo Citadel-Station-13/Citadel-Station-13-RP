@@ -370,15 +370,15 @@
 
 /datum/gear/suit/ronincoat
 	name = "Ronin Coat"
-	path = /obj/item/clothing/suit/storage/hooded/ronincoat
+	path = /obj/item/clothing/suit/storage/toggle/heated/ronincoat
 
 /datum/gear/suit/runnerjacket
 	name = "Runner Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner
+	path = /obj/item/clothing/suit/storage/toggle/heated
 
 /datum/gear/suit/halfpintjacket
 	name = "Half-Pint Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner/half_pint
+	path = /obj/item/clothing/suit/storage/toggle/heated/half_pint
 
 /datum/gear/suit/halfmoon
 	name = "Half Moon Jacket"
