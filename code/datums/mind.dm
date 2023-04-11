@@ -104,6 +104,8 @@
 	QDEL_LIST_NULL(abilities)
 	return ..()
 
+//? Characteristics
+
 /**
  * make sure we have a characteristics holder
  */
@@ -113,37 +115,30 @@
 		characteristics.associate_with_mind(src)
 	return characteristics
 
-#warn some way to handle transfer to null!
+//? Transfer
 
-/datum/mind/proc/transfer_to(mob/living/new_character)
-	if(!istype(new_character))
-		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn")
+/datum/mind/proc/disassociate()
+	ASSERT(!isnull(current))
 
-	//* remove from old
-	if(current)
-		// LEGACY: remove changeling
-		if(changeling)
-			current.remove_changeling_powers()
-			remove_verb(current, /datum/changeling/proc/EvolutionMenu)
-		// remove characteristics
-		characteristics?.disassociate_from_mob(current)
-		// remove abilities
-		for(var/datum/ability/ability as anything in abilities)
-			ability.disassociate(current)
-		// transfer uis
-		SStgui.on_transfer(current, new_character)
-		SSnanoui.user_transferred(current, new_character)
-		// null mind
-		current.mind = null
+	// LEGACY: remove changeling
+	if(changeling)
+		current.remove_changeling_powers()
+		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
+	// remove characteristics
+	characteristics?.disassociate_from_mob(current)
+	// remove abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(current)
+	// null mind
+	current.mind = null
 
-	//* handle mind internals
-	if(new_character.mind)		//remove any mind currently in our new body's mind variable
-		new_character.mind.current = null
-	current = new_character		//link ourself to our new body
+/datum/mind/proc/associate(mob/new_character)
+	ASSERT(isnull(current))
+	ASSERT(isnull(new_character.mind))
 
-	//* add to new
+	current = new_character
 	// set mind
-	new_character.mind = src	//and link our new body to ourself
+	new_character.mind = src
 	// add characteristics
 	characteristics?.associate_with_mob(new_character)
 	// add abilities
@@ -153,6 +148,26 @@
 	if(changeling)
 		new_character.make_changeling()
 
+/datum/mind/proc/transfer(mob/new_character)
+	if(isnull(current))
+		associate(new_character)
+		return
+
+	var/mob/old_character = current
+
+	disassociate()
+
+	if(!isnull(new_character.mind))
+		new_character.mind.disassociate()
+
+	SStgui.on_transfer(old_character, new_character)
+	SSnanoui.user_transferred(old_character, new_character)
+
+	associate(new_character)
+
+#warn some way to handle transfer to null!
+
+/datum/mind/proc/transfer_to(mob/living/new_character)
 	//* transfer player if necessary
 	if(active)
 		new_character.ckey = ckey //now transfer the ckey to link the client to our new body

@@ -654,7 +654,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 //   - Wirecutters : cut them duh !
 //   - Cable coil : merge cables
 
-/obj/item/stack/cable_coil/transfer_to(obj/item/stack/cable_coil/S)
+/obj/item/stack/cable_coil/transfer(obj/item/stack/cable_coil/S)
 	if(!istype(S))
 		return
 	..()

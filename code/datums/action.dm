@@ -209,7 +209,7 @@
  */
 /datum/action/proc/push_button_update(availability, active)
 	button_availability = availability
-	button_togged = active
+	button_toggled = active
 	update_button()
 
 /**

@@ -58,7 +58,7 @@
 	O.loc = M.loc
 
 	if(M.mind)
-		M.mind.transfer_to(O)	//transfer our mind to the cute little monkey
+		M.mind.transfer(O)	//transfer our mind to the cute little monkey
 
 	if (connected) //inside dna thing
 		var/obj/machinery/dna_scannernew/C = connected
@@ -129,7 +129,7 @@
 	O.loc = M.loc
 
 	if(M.mind)
-		M.mind.transfer_to(O) //transfer our mind to the human
+		M.mind.transfer(O) //transfer our mind to the human
 
 	if (connected) //inside dna thing
 		var/obj/machinery/dna_scannernew/C = connected

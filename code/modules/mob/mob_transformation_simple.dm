@@ -44,7 +44,7 @@
 		M.dna = src.dna.Clone()
 
 	if(mind)
-		mind.transfer_to(M)
+		mind.transfer(M)
 	else
 		M.key = key
 

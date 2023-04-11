@@ -2585,7 +2585,7 @@
 		O.updatehealth()
 		src.occupant = O
 		if(AI.mind)
-			AI.mind.transfer_to(O)
+			AI.mind.transfer(O)
 		AI.name = "Inactive AI"
 		AI.real_name = "Inactive AI"
 		AI.icon_state = "ai-empty"
@@ -2593,7 +2593,7 @@
 			AI.name = O.name
 			AI.real_name = O.real_name
 			if(O.mind)
-				O.mind.transfer_to(AI)
+				O.mind.transfer(AI)
 			AI.control_disabled = 0
 			AI.laws = O.laws
 			AI.oxyloss = O.getOxyLoss()
