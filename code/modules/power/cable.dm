@@ -351,7 +351,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 // merge with the powernets of power objects in the given direction
 /obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
 
-	var/fdir = direction ? GLOB.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
+	var/fdir = direction ? global.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
@@ -431,7 +431,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue
-		var/reverse = GLOB.reverse_dir[cable_dir]
+		var/reverse = global.reverse_dir[cable_dir]
 		T = get_zstep(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
@@ -579,7 +579,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
 			return
 
-		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
 				use(use_amt)

@@ -113,6 +113,8 @@
 	/// Can be anchored / unanchored by players without deconstructing by default
 	//  todo: proc for allow / disallow, refactor, unify with can_be_unanchored
 	var/allow_unanchor = FALSE
+	/// overlay state added when panel is open
+	var/panel_icon_state
 
 	//* unsorted
 	var/machine_stat = 0
@@ -186,6 +188,11 @@
 			else
 				qdel(A)
 	return ..()
+
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
 
 /obj/machinery/process()//If you dont use process or power why are you here
 	return PROCESS_KILL
@@ -261,6 +268,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/attack_ai(mob/user)
+	if(IsAdminGhost(user))
+		interact(user)
+		return
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.

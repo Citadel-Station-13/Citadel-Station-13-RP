@@ -1692,3 +1692,20 @@
 	name = "Red Checker King"
 	icon_state = "zoomba-crisis"
 	desc = "A Novelty checker piece in the image of the awe inspiring crisis zoomba."
+
+//Step 1: Add Gnomes. Step 2: ??? Step 3. Profit.
+/obj/item/toy/gnome
+	name = "lawn gnome"
+	icon_state = "gnome"
+	item_state = "gnome"
+	desc = "A ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."
+	attack_verb = list("gnomed", "bonked", "struck")
+	throw_force = 5
+	throw_speed = 4
+	throw_range = 7
+	damage_force = 5
+
+/obj/item/toy/gnome/giant
+	name = "giant lawn gnome"
+	icon_state = "gnome_giant"
+	desc = "A life-sized ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."

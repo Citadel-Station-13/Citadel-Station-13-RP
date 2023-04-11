@@ -61,6 +61,7 @@ type BaseCallContext = {
 type OutgoingCallContext = BaseCallContext & {
   target: HolopadId; // calling to id
   remoting: BooleanLike; // are we projecting to the other side?
+  remotingAllowed: BooleanLike; // is other side allowing remoting?
   ringing: BooleanLike; // are we connected or still ringing
   connected: [TargetHolopad]; // all pads connected
   destination: TargetHolopad;
@@ -163,7 +164,8 @@ const HolopadCallOutgoing = (props, context) => {
             <Section title="Remote Presence">
               {
                 <Button
-                  content={callContext.remoting? "Projecting" : "Not Projecting"}
+                  disabled={!callContext.remotingAllowed}
+                  content={callContext.remotingAllowed? (callContext.remoting? "Projecting" : "Not Projecting") : "Destination Disabled"}
                   selected={callContext.remoting}
                   onClick={() => act(callContext.remoting? 'stop_remote' : 'start_remote')} />
               }

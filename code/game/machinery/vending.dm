@@ -1180,6 +1180,7 @@
 	)
 	premium = list(
 		/obj/item/toy/waterflower = 1,
+		/obj/item/toy/gnome = 1,
 	)
 
 /**
@@ -1459,6 +1460,7 @@
 		/obj/item/toy/plushie/bear_space = 1,
 		/obj/item/toy/plushie/doll = 3,
 		/obj/item/storage/daki = 10,
+		/obj/item/toy/gnome = 4,
 	)
 	premium = list(
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
@@ -1501,6 +1503,7 @@
 		/obj/item/toy/plushie/bear_space = 50,
 		/obj/item/toy/plushie/doll = 50,
 		/obj/item/storage/daki = 100,
+		/obj/item/toy/gnome = 20,
 	)
 
 /obj/machinery/vending/fishing

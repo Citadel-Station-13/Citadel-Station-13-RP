@@ -3,8 +3,9 @@
 	desc = "This shouldn't appear"
 	density = 0
 	mobility_flags = NONE
+	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
 
-/mob/observer/updatE_mobility()
+/mob/observer/update_mobility()
 	return
 
 /mob/observer/dead

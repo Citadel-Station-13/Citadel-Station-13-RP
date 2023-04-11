@@ -51,3 +51,21 @@
  */
 /mob/proc/visible_action_feedback(others, atom/target, range = MESSAGE_RANGE_COMBAT_LOUD, self, them, blind)
 	visible_message(others, self, blind, range)
+
+/**
+ * gives feedback for something a mob can innately feel
+ */
+/mob/proc/innate_feedback(msg)
+	to_chat(src, msg)
+
+/**
+ * gives feedback for an ui click
+ */
+/mob/proc/ui_feedback(msg, datum/host, datum/tgui/ui)
+	to_chat(src, msg)
+
+/**
+ * gives feedback for trying to move/whatever
+ */
+/mob/proc/selfmove_feedback(msg)
+	to_chat(src, msg)

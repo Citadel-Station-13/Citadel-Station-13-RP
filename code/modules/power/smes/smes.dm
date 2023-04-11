@@ -214,7 +214,7 @@ GLOBAL_LIST_EMPTY(smeses)
 			tempDir = EAST
 		if (NORTHWEST, SOUTHWEST)
 			tempDir = WEST
-	var/turf/tempLoc = get_step(src, REVERSE_DIR(tempDir))
+	var/turf/tempLoc = get_step(src, global.reverse_dir[tempDir])
 	if (istype(tempLoc, /turf/space))
 		to_chat(user, "<span class='warning'>You can't build a terminal on space.</span>")
 		return 1
