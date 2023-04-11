@@ -289,7 +289,6 @@ var/list/infomorph_emotions = list(
 	// Move us into the card and move the card to the ground.
 	card.forceMove(get_turf(src))
 	forceMove(card)
-	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"
 
@@ -324,8 +323,6 @@ var/list/infomorph_emotions = list(
 	resting = !resting
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-
-	canmove = !resting
 
 ////////////////// ATTACKBY, HAND, SELF etc
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)

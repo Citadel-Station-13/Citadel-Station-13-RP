@@ -17,7 +17,6 @@
 		return FALSE
 
 	forceMove(T)
-	var/original_canmove = canmove
 	set_stunned(0)
 	set_paralyzed(0)
 	if(buckled)
@@ -25,7 +24,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
-	canmove = FALSE
 	is_shifting = TRUE
 
 	//Shifting in
@@ -49,7 +47,6 @@
 		custom_emote(1,"phases in!")
 		sleep(30) //The duration of the TP animation
 		is_shifting = FALSE
-		canmove = original_canmove
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -102,7 +99,6 @@
 		alpha = 127
 
 		is_shifting = FALSE
-		canmove = original_canmove
 		incorporeal_move = TRUE
 		density = FALSE
 		force_max_speed = TRUE
@@ -129,7 +125,6 @@
 
 	shift_state = AB_SHIFT_ACTIVE
 	forceMove(T)
-	var/original_canmove = canmove
 	set_stunned(0)
 	set_paralyzed(0)
 	if(buckled)
@@ -137,7 +132,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
-	canmove = FALSE
 	is_shifting = TRUE
 
 	shifted_out = TRUE
@@ -158,7 +152,6 @@
 	alpha = 127
 
 	is_shifting = FALSE
-	canmove = original_canmove
 	incorporeal_move = TRUE
 	density = FALSE
 	force_max_speed = TRUE
@@ -177,8 +170,6 @@
 		incorporeal_move = initial(incorporeal_move)
 		density = initial(density)
 		force_max_speed = initial(force_max_speed)
-		original_canmove = canmove
-		canmove = FALSE
 		is_shifting = TRUE
 
 		//Cosmetics mostly
@@ -186,7 +177,6 @@
 		custom_emote(1,"phases in!")
 		sleep(30) //The duration of the TP animation
 		is_shifting = FALSE
-		canmove = original_canmove
 
 		var/turf/NT = get_turf(src)
 

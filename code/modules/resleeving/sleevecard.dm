@@ -23,7 +23,7 @@
 	matter = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 
 /obj/item/sleevecard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))

@@ -179,7 +179,7 @@
 				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
 					return
 	// Added voice muffling for Issue 41.
-	if(stat == UNCONSCIOUS || sleeping > 0)
+	if(!IS_CONSCIOUS(src) && !IS_DEAD(src))
 		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
 		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
@@ -888,11 +888,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/updateicon()
 	return
-
-/// Please always use this proc, never just set the var directly.
-/mob/proc/set_stat(var/new_stat)
-	. = (stat != new_stat)
-	stat = new_stat
 
 /mob/verb/face_direction()
 

@@ -6,7 +6,6 @@
 		return FALSE
 
 	forceMove(T)
-	var/original_canmove = canmove
 	set_stunned(0)
 	set_paralyzed(0)
 	if(buckled)
@@ -14,7 +13,6 @@
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
-	canmove = FALSE
 
 	//Shifting in
 	if(ability_flags & AB_PHASE_SHIFTED)
@@ -37,7 +35,6 @@
 		flick("tp_in",src)
 		custom_emote(1,"phases in!")
 		sleep(5) //The duration of the TP animation
-		canmove = original_canmove
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -88,7 +85,6 @@
 		update_icon()
 		alpha = 127
 
-		canmove = original_canmove
 		incorporeal_move = TRUE
 		density = FALSE
 		force_max_speed = TRUE

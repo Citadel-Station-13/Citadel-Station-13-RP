@@ -821,7 +821,7 @@
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
 		return
 
-	if(usr == wearer && !CHECK_MOBILITY(user, MOBILITY_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
+	if(usr == wearer && !CHECK_MOBILITY(H, MOBILITY_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
 		return
 
 	if(trapSprung == 1)
@@ -1045,7 +1045,7 @@
 			return
 
 	//This is sota the goto stop mobs from moving var
-	if(wearer.transforming || !wearer.canmove)
+	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
 		return
 
 	if(locate(/obj/effect/stop/, wearer.loc))
