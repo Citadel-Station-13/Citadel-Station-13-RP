@@ -148,6 +148,10 @@
 	if(changeling)
 		new_character.make_changeling()
 
+	//* transfer player if necessary
+	if(active)
+		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
+
 /datum/mind/proc/transfer(mob/new_character)
 	if(isnull(current))
 		associate(new_character)
@@ -164,15 +168,6 @@
 	SSnanoui.user_transferred(old_character, new_character)
 
 	associate(new_character)
-
-#warn some way to handle transfer to null!
-
-/datum/mind/proc/transfer_to(mob/living/new_character)
-	//* transfer player if necessary
-	if(active)
-		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
-	// if(new_character.client) //TODO: Eye Contact
-	// 	LAZYCLEARLIST(new_character.client.recent_examines)
 
 /datum/mind/proc/store_memory(new_text)
 	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
