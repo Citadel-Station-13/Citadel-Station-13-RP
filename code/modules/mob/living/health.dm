@@ -7,15 +7,16 @@
 	else
 		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
 
-/mob/living/update_stat()
+/mob/living/update_stat(forced, update_mobility)
 	if(stat == DEAD)
 		return stat
 	if(is_unconscious() || is_sleeping() || (status_flags & STATUS_FAKEDEATH))
 		. = UNCONSCIOUS
 	else
 		. = CONSCIOUS
+	. = max(., forced)
 	if(. != stat)
-		set_stat(.)
+		set_stat(., update_mobility)
 
 //? Body Temperature
 

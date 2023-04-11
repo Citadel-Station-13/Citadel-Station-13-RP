@@ -26,7 +26,7 @@
 	if(..())
 		stop_aiming(no_message=1)
 
-/mob/living/update_mobility()
+/mob/living/update_mobility(blocked, forced)
 	. = ..()
 	if(lying)
 		stop_aiming(no_message=1)

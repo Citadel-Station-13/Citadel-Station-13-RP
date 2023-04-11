@@ -1170,8 +1170,9 @@
 	lawupdate = 0
 	lockcharge = 0
 	lockdown = 0
-	canmove = 1
 	scrambledcodes = 1
+	update_stat(update_mobility = FALSE)
+	update_mobility()
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.clear_all_networks()

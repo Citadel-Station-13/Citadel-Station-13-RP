@@ -359,7 +359,7 @@
 		CRASH("no worn mob")
 	if(!M.strip_interaction_prechecks(user))
 		return
-	if(!do_after(user, delay, M, FALSE))
+	if(!do_after(user, delay, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		return
 	if(slot != worn_slot || M != worn_mob())
 		return

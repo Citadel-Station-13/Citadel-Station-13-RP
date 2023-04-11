@@ -55,6 +55,29 @@
 
 	STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
+/**
+ * Does an action after a delay.
+ *
+ * @params
+ * * user - acting mob
+ * * delay - how long in deciseconds
+ * * target - targeted atom
+ * * flags - do_after flags as specified in [code/__DEFINES/procs/do_after.dm]
+ * * mobility_flags - required mobility flags
+ * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
+ * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ */
+/proc/do_after(mob/user, delay, atom/target, flags, mobility_flags = MOBILITY_USE, max_distance, datum/callback/additional_checks)
+	if(isnull(user))
+		return FALSE
+	if(!delay)
+		return \
+		(isnull(additional_checks) || additional_checks.Invoke(args)) && \
+		(isnull(max_distance) || get_dist(user, target) <= max_distance) && \
+		CHECK_ALL_MOBILITY(user, mobility_flags)
+
+	#warn impl
+
 /proc/do_after(mob/user, delay, atom/target, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_USE, ignore_movement = FALSE, max_distance = null, datum/callback/additional_checks)
 	if(!user)
 		return 0

@@ -1,4 +1,15 @@
-//? do_after
+//? do_after flags arg
+
+/// allow user movement
+#define DO_AFTER_IGNORE_USER_MOVEMENT (1<<0)
+/// allow target movement
+#define DO_AFTER_IGNORE_TARGET_MOVEMENT (1<<1)
+/// allow movement
+#define DO_AFTER_IGNORE_MOVEMENT (DO_AFTER_IGNORE_USER_MOVEMENT | DO_AFTER_IGNORE_TARGET_MOVEMENT)
+/// don't care about currently held item
+#define DO_AFTER_IGNORE_ACTIVE_ITEM (1<<3)
+/// no progress bar
+#define DO_AFTER_NO_PROGRESS (1<<23)
 
 //? Interaction Checks
 /// checks if we're interacting with an atom

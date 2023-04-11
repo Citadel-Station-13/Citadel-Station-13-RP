@@ -253,7 +253,7 @@
 	var/extra_time = MODULUS(time, interval)
 	var/i
 	for(i in 1 to round(time / interval))
-		if(!do_after(escapee, interval, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+		if(!do_after(escapee, interval, mobility_flags = MOBILITY_RESIST))
 			return FALSE
 		if(escapee.loc != src)
 			return FALSE
@@ -261,7 +261,7 @@
 			return FALSE
 		if(breakout_sound)
 			playsound(src, breakout_sound, breakout_volume, 1)
-	if(!do_after(escapee, extra_time, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+	if(!do_after(escapee, extra_time, mobility_flags = MOBILITY_RESIST))
 		return FALSE
 	if(!contents_resist_step(escapee, i + 1, TRUE))
 		return FALSE

@@ -164,7 +164,7 @@
 	if(!client && !teleop)	return
 
 	if (type)
-		if((type & 1) && (is_blind() || paralysis) )//Vision related
+		if((type & 1) && (is_blind()) )//Vision related
 			if (!( alt ))
 				return
 			else

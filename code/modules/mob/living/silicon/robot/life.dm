@@ -62,21 +62,17 @@
 /mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
-		if(src.stat == 2 || wires.is_cut(WIRE_BORG_CAMERA))
+		if(IS_DEAD(src) || wires.is_cut(WIRE_BORG_CAMERA))
 			src.camera.set_status(0)
 		else
 			src.camera.set_status(1)
 
 	update_health()
 
-	if(src.sleeping)
-		afflict_unconscious(20 * 3)
-		adjust_sleeping(20 * -1)
-
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
-	if (src.stat != 2) //Alive.
+	if (!IS_DEAD(src)) //Alive.
 		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
 			src.set_stat(UNCONSCIOUS)
 			if (src.paralysis > 0)
