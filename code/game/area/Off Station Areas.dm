@@ -340,11 +340,20 @@
 /area/class_m/inside/islandbeachhouse
 	name = "Class M World - Island Beach House"
 
+/area/class_m/inside/sauna
+	name = "Class M World - Main Sauna"
+
+/area/class_m/inside/sauna2
+	name = "Class M World - Beach Sauna"
+
+/area/class_m/inside/sauna3
+	name = "Class M World - Island Sauna"
+
 /area/class_m/inside/garage
 	name = "Class M World - Garage"
 
-/area/class_m/inside/caves
-	name = "Class M World - Caves"
+/area/class_m/inside/hotspringcaves
+	name = "Class M World - Hotspring Caves"
 
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
@@ -360,7 +369,11 @@
 
 /area/class_m/outside/island
 	name = "Class M World - Island"
-	icon_state = "yellow"
+	icon_state = "purple"
+
+/area/class_m/outside/island2
+	name = "Class M World - Island"
+	icon_state = "blue"
 
 /area/class_m/outside/docks
 	name = "Class M World - Docks"
