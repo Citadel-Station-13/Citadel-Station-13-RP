@@ -321,7 +321,8 @@
 /obj/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
+		if(hammer_synced.can_mark(L))
+			L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
 		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
 		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
 /*

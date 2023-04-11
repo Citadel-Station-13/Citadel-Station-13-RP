@@ -37,6 +37,10 @@
 /// from the CPR system
 #define CPR_TRAIT "cpr"
 
+//? species & traits
+
+#define SPECIES_SHADEKIN_PHASING_TRAIT "shadekin1"
+
 //? component source
 /// rad_insulation
 #define TRAIT_SOURCE_COMPONENT_RAD_INSULATION "c_rad_insulation"

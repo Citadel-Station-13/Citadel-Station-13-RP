@@ -69,11 +69,11 @@
 	stacks = min(stacks, maximum) // just in case
 	ASSERT(stacks > 0)
 	var/datum/status_effect/stacking/effect = has_status_effect(path)
-	if(!effect)
+	if(isnull(effect))
+		. = effect.adjust_stacks(clamp(stacks, 0, maximum - effect.stacks), FALSE)
+	else
 		effect = apply_status_effect(path, additional = list(stacks))
 		. = effect.stacks
-	else
-		. = effect.adjust_stacks(clamp(stacks, 0, maximum - effect.stacks), FALSE)
 
 /**
  * simple decrement to stacks of a stacking effect
@@ -85,8 +85,8 @@
 		CRASH("[path] is not a stacking effect.")
 	ASSERT(stacks > 0)
 	var/datum/status_effect/stacking/effect = has_status_effect(path)
-	if(!effect)
-		return 0
-	else
+	if(isnull(effect))
 		effect.adjust_stacks(-stacks, FALSE)
 		. = effect.stacks
+	else
+		return 0

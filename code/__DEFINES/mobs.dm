@@ -75,20 +75,18 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define STATUS_CAN_STUN     (1<<0)
-#define STATUS_CAN_WEAKEN   (1<<1)
-#define STATUS_CAN_PARALYZE (1<<2)
-#define STATUS_CAN_PUSH     (1<<3)
-#define STATUS_LEAPING     (1<<4)
-#define STATUS_HIDING      (1<<5)
-#define STATUS_GODMODE     (1<<6)
-/// Replaces stuff like changeling.changeling_fakedeath.
-#define STATUS_FAKEDEATH   (1<<7)
-#define STATUS_CAN_KNOCKDOWN (1<<8)
-#define STATUS_CAN_ROOT (1<<9)
-#define STATUS_CAN_STAGGER (1<<10)
+#define STATUS_CAN_STUN      (1<<0) //! Can Stun()
+#define STATUS_CAN_KNOCKDOWN (1<<1) //! Can Knockdown()
+#define STATUS_CAN_ROOT      (1<<2) //! Can Root()
+#define STATUS_CAN_STAGGER   (1<<3) //! Can Stagger()
+#define STATUS_CAN_PARALYZE  (1<<4) //! Can Paralyze()
+#define STATUS_CAN_PUSH      (1<<5) //! Can Push()
+#define STATUS_LEAPING       (1<<6) //! Is leaping (??? legacy)
+#define STATUS_HIDING        (1<<7) //! Is hiding  (??? legacy)
+#define STATUS_GODMODE       (1<<8) //! Godmode    (??? legacy)
+#define STATUS_FAKEDEATH     (1<<9) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
 
-#define STATUS_FLAGS_DEFAULT (STATUS_CAN_STUN | STATUS_CAN_WEAKEN | STATUS_CAN_PARALYZE | STATUS_CAN_PUSH \
+#define STATUS_FLAGS_DEFAULT (STATUS_CAN_STUN | STATUS_CAN_PARALYZE | STATUS_CAN_PUSH \
 | STATUS_CAN_KNOCKDOWN | STATUS_CAN_ROOT | STATUS_CAN_STAGGER)
 
 #define BORGMESON 0x1
