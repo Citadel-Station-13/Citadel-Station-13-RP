@@ -5,18 +5,18 @@
 		blocked |= MOBILITY_FLAGS_REAL | MOBILITY_IS_CONSCIOUS
 	else
 		if(restrained())
-			blocked |= MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_HOLD | MOBILITY_PULL | MOBILITY_STORAGE | MOBILITY_UI
+			blocked |= MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP | MOBILITY_CAN_HOLD | MOBILITY_CAN_PULL | MOBILITY_CAN_STORAGE | MOBILITY_CAN_UI
 			if(pulledby || buckled)
-				blocked |= MOBILITY_MOVE
+				blocked |= MOBILITY_CAN_MOVE
 		for(var/obj/item/grab/G as anything in grabbed_by)
 			if(G.stat >= GRAB_AGGRESSIVE)
-				blocked |= MOBILITY_MOVE | MOBILITY_USE | MOBILITY_HOLD | MOBILITY_PICKUP | MOBILITY_STORAGE | MOBILITY_UI
+				blocked |= MOBILITY_CAN_MOVE | MOBILITY_CAN_USE | MOBILITY_CAN_HOLD | MOBILITY_CAN_PICKUP | MOBILITY_CAN_STORAGE | MOBILITY_CAN_UI
 
 	. = ..()
 
-	if(!(mobility_flags & MOBILITY_HOLD))
+	if(!(mobility_flags & MOBILITY_CAN_HOLD))
 		drop_all_held_items()
-	if(!(mobility_flags & MOBILITY_PULL))
+	if(!(mobility_flags & MOBILITY_CAN_PULL))
 		stop_pulling()
 
 #warn impl

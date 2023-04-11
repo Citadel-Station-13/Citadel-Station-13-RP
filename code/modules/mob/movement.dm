@@ -102,7 +102,7 @@
   * * being grabbed
   * * being buckled  (relaymove() is called to the buckled atom instead)
   * * having your loc be some other mob (relaymove() is called on that mob instead)
-  * * Not having MOBILITY_MOVE
+  * * Not having MOBILITY_CAN_MOVE
   * * Failing Process_Spacemove() call
   *
   * At this point, if the mob is is confused, then a random direction and target turf will be calculated for you to travel to instead
@@ -194,12 +194,12 @@
 
 	// todo: move to mob
 	// mobility check
-	if(!CHECK_MOBILITY(mob, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(mob, MOBILITY_CAN_MOVE))
 		return
 
 	// new mobility flags check todo
 /*
-	if(!(L.mobility_flags & MOBILITY_MOVE))
+	if(!(L.mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 

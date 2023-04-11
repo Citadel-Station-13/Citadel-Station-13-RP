@@ -336,7 +336,7 @@
 		return
 	if(O.loc == user)
 		return
-	if(!CHECK_MOBILITY(user, MOBILITY_USE))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return
 	if((!( istype(O, /atom/movable) ) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O) || user.contents.Find(src)))
 		return
@@ -385,7 +385,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(ishuman(usr) || isrobot(usr))

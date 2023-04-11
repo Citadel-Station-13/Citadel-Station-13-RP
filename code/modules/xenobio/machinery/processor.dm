@@ -47,7 +47,7 @@
 	set name = "Eject Processor"
 	set src in oview(1)
 
-	if(CHECK_MOBILITY(usr, MOBILITY_USE))
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 	empty()
 	add_fingerprint(usr)

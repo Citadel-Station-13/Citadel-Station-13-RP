@@ -315,7 +315,7 @@ var/global/list/rnwords = list("ire","ego","nahlizet","certum","veri","jatkaa","
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if(!CHECK_MOBILITY(H, MOBILITY_USE))
+	if(!CHECK_MOBILITY(H, MOBILITY_CAN_USE))
 		return
 	if(!cultwords["travel"])
 		runerandom()

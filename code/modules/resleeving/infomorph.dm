@@ -209,7 +209,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Open"
 
-	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)

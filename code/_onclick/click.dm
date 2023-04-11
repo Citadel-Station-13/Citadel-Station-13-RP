@@ -113,7 +113,7 @@
 		RestrainedClickOn(A)
 		return 1
 
-	if(!CHECK_MOBILITY(src, MOBILITY_USE))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		to_chat(src, SPAN_WARNING("You can't do that right now."))
 		return
 
@@ -339,7 +339,7 @@
 /mob/proc/face_atom(var/atom/A)
 	if(!A || !x || !y || !A.x || !A.y)
 		return
-	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 	var/dx = A.x - x
 	var/dy = A.y - y

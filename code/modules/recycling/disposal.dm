@@ -153,7 +153,7 @@
 // mouse drop another mob or self
 //
 /obj/machinery/disposal/MouseDroppedOnLegacy(mob/target, mob/user)
-	if(!CHECK_MOBILITY(user, MOBILITY_USE) || !istype(target))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE) || !istype(target))
 		return
 	if(target.buckled || get_dist(user, src) > 1 || get_dist(user, target) > 1)
 		return
@@ -166,20 +166,20 @@
 	var/target_loc = target.loc
 	var/msg
 	for (var/mob/V in viewers(usr))
-		if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_MOVE | MOBILITY_USE))
+		if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 			V.show_message("[usr] starts climbing into the disposal.", 3)
-		if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_MOVE | MOBILITY_USE))
+		if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 			if(target.anchored) return
 			V.show_message("[usr] starts stuffing [target.name] into the disposal.", 3)
 	if(!do_after(usr, 20))
 		return
 	if(target_loc != target.loc)
 		return
-	if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_MOVE | MOBILITY_USE))	// if drop self, then climbed in
+	if(target == user && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))	// if drop self, then climbed in
 											// must be awake, not stunned or whatever
 		msg = "[user.name] climbs into the [src]."
 		to_chat(user, "You climb into the [src].")
-	else if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_MOVE | MOBILITY_USE))
+	else if(target != user && !user.restrained() && !user.stat && CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		msg = "[user.name] stuffs [target.name] into the [src]!"
 		to_chat(user, "You stuff [target.name] into the [src]!")
 

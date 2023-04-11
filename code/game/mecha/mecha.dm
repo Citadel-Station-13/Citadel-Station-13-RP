@@ -437,7 +437,7 @@
 
 	for(var/i = 0, i<numticks, i++)
 		sleep(delayfraction)
-		if(!src || !user || !CHECK_MOBILITY(user, MOBILITY_MOVE) || !(user.loc == T))
+		if(!src || !user || !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || !(user.loc == T))
 			return 0
 
 	return 1

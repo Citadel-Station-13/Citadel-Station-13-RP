@@ -229,7 +229,7 @@
 
 	//Blob form
 	if(!ishuman(src))
-		if(humanform.temporary_form.stat || !CHECK_MOBILITY(src, MOBILITY_USE) || restrained())
+		if(humanform.temporary_form.stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
 			to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
 		else
 			humanform.prommie_outofblob(src)

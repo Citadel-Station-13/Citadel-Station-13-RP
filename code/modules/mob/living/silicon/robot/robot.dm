@@ -782,7 +782,7 @@
 			visible_message( \
 				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
 				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
-			if(do_after(src, 1.5 MINUTES, src, mobility_flags = MOBILITY_RESIST))
+			if(do_after(src, 1.5 MINUTES, src, mobility_flags = MOBILITY_CAN_RESIST))
 				visible_message( \
 					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
 					SPAN_WARNING("You successfully break your [bolt]."))

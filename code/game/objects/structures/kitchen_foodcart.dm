@@ -26,7 +26,7 @@
 	if(contents.len)
 		var/obj/item/reagent_containers/food/choice = input("What would you like to grab from the cart?") as null|obj in contents
 		if(choice)
-			if(!CHECK_MOBILITY(usr, MOBILITY_USE) || !in_range(loc, usr))
+			if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !in_range(loc, usr))
 				return
 			if(ishuman(user))
 				if(!user.get_active_held_item())

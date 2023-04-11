@@ -267,7 +267,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -286,7 +286,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot leap in your current state.")
 		return
 
@@ -335,7 +335,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || !CHECK_MOBILITY(src, MOBILITY_USE) || lying)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying)
 		to_chat(src, "<span class='danger'>You cannot do that in your current state.</span>")
 		return
 

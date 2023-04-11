@@ -755,7 +755,7 @@
 		return 0
 
 	if(href_list["toggle_piece"])
-		if(ishuman(usr) && !CHECK_MOBILITY(usr, MOBILITY_STORAGE))
+		if(ishuman(usr) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 			return 0
 		toggle_piece(href_list["toggle_piece"], usr)
 	else if(href_list["toggle_seals"])
@@ -821,7 +821,7 @@
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
 		return
 
-	if(usr == wearer && !CHECK_MOBILITY(H, MOBILITY_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
+	if(usr == wearer && !CHECK_MOBILITY(H, MOBILITY_CAN_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
 		return
 
 	if(trapSprung == 1)
@@ -932,7 +932,7 @@
 /obj/item/rig/proc/shock(mob/user)
 	if (electrocute_mob(user, cell, src)) //electrocute_mob() handles removing charge from the cell, no need to do that here.
 		spark_system.start()
-		if(!CHECK_MOBILITY(user, MOBILITY_USE))
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -1045,7 +1045,7 @@
 			return
 
 	//This is sota the goto stop mobs from moving var
-	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 
 	if(locate(/obj/effect/stop/, wearer.loc))
@@ -1072,7 +1072,7 @@
 		if(wearer.restrained())//Why being pulled while cuffed prevents you from moving
 			for(var/mob/M in range(wearer, 1))
 				if(M.pulling == wearer)
-					if(CHECK_MOBILITY(M, MOBILITY_MOVE) && wearer.Adjacent(M))
+					if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && wearer.Adjacent(M))
 						to_chat(user, "<span class='notice'>Your host is restrained! They can't move!</span>")
 						return 0
 					else

@@ -36,7 +36,7 @@
 		CtrlClickOn(A)
 		return
 
-	if(!IS_CONSCIOUS(src) || !CHECK_MOBILITY(src, MOBILITY_USE))
+	if(!IS_CONSCIOUS(src) || !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return
 
 	if(!canClick())

@@ -278,9 +278,9 @@
 /mob/living/silicon/robot/update_mobility()
 	. = ..()
 	if(!is_component_functioning("actuator"))
-		mobility_flags &= ~MOBILITY_MOVE
+		mobility_flags &= ~MOBILITY_CAN_MOVE
 	if(lockdown)
-		mobility_flags &= ~(MOBILITY_FLAGS_ANY_INTERACTION | MOBILITY_MOVE | MOBILITY_PULL | MOBILITY_RESIST)
+		mobility_flags &= ~(MOBILITY_FLAGS_ANY_INTERACTION | MOBILITY_CAN_MOVE | MOBILITY_CAN_PULL | MOBILITY_CAN_RESIST)
 	return mobility_flags
 
 /mob/living/silicon/robot/update_fire()

@@ -154,7 +154,7 @@
 		to_chat(usr, "<span class='warning'>The suit is not initialized.</span>")
 		return 0
 
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		to_chat(usr, "<span class='warning'>You cannot use the suit in this state.</span>")
 		return 0
 

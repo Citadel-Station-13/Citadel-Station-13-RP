@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(!CHECK_MOBILITY(user, MOBILITY_USE))
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -631,7 +631,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	set category = "Object"
 	var/mob/M = usr
 
-	if(CHECK_MOBILITY(M, MOBILITY_USE))
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
 			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")

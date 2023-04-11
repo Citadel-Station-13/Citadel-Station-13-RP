@@ -308,7 +308,7 @@
 			SPAN_DANGER("[M] attempts to unbuckle themselves from [src]!"),
 			SPAN_WARNING("You attempt to unbuckle yourself. (This will take a little bit and you need to stand still.)")
 		)
-		if(!do_after(M, buckle_restrained_resist_time, src, mobility_flags = MOBILITY_RESIST))
+		if(!do_after(M, buckle_restrained_resist_time, src, mobility_flags = MOBILITY_CAN_RESIST))
 			return FALSE
 		M.visible_message(
 			SPAN_DANGER("[M] manages to unbuckle themselves."),

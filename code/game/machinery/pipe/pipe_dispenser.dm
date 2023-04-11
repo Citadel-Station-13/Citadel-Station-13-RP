@@ -63,7 +63,7 @@
 	if(..())
 		return TRUE
 
-	if(unwrenched || !CHECK_MOBILITY(usr, MOBILITY_UI) || !in_range(loc, usr))
+	if(unwrenched || !CHECK_MOBILITY(usr, MOBILITY_CAN_UI) || !in_range(loc, usr))
 		return TRUE
 
 	. = TRUE
@@ -149,7 +149,7 @@
 
 //Allow you to drag-drop disposal pipes into it
 /obj/machinery/pipedispenser/disposal/MouseDroppedOnLegacy(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(!CHECK_MOBILITY(usr, MOBILITY_UI))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_UI))
 		return
 
 	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )

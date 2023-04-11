@@ -40,7 +40,7 @@
 			mobloc = holder.last_valid_turf
 			animation.loc = mobloc
 			jaunt_steam(mobloc)
-			ADD_TRAIT(target, TRAIT_MOBILITY_MOVE_BLOCKED, "JAUNT")
+			ADD_TRAIT(target, TRAIT_MOBILITY_CAN_MOVE_BLOCKED, "JAUNT")
 			target.update_mobility()
 			holder.reappearing = 1
 			sleep(20)
@@ -53,7 +53,7 @@
 						if(target.forceMove(T))
 							break
 			target.update_perspective()
-			REMOVE_TRAIT(target, TRAIT_MOBILITY_MOVE_BLOCKED, "JAUNT")
+			REMOVE_TRAIT(target, TRAIT_MOBILITY_CAN_MOVE_BLOCKED, "JAUNT")
 			target.update_mobility()
 			qdel(animation)
 			qdel(holder)

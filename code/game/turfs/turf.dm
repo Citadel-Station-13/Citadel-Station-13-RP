@@ -259,7 +259,7 @@
 			FD.attack_hand(user)
 			return TRUE
 
-	if(!CHECK_MOBILITY(user, MOBILITY_MOVE) || user.restrained() || !(user.pulling))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
 		return 0
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
@@ -317,7 +317,7 @@
 		return
 	if(istype(O, /atom/movable/screen))
 		return
-	if(!CHECK_MOBILITY(user, MOBILITY_MOVE) || (!user.lying && !istype(user, /mob/living/silicon/robot)))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
 		return

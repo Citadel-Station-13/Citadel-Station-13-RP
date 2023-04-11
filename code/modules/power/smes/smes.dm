@@ -294,7 +294,7 @@ GLOBAL_LIST_EMPTY(smeses)
 						s.set_up(5, 1, src)
 						s.start()
 						building_terminal = 0
-						if(!CHECK_MOBILITY(usr, MOBILITY_USE))
+						if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 							return 0
 					new /obj/item/stack/cable_coil(loc,10)
 					user.visible_message(\

@@ -824,7 +824,7 @@
 					M = null
 
 				if (M)
-					if (CHECK_MOBILITY(M, MOBILITY_USE))
+					if (CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 						message = "shakes hands with [M]."
 					else
 						message = "holds out [T.his] hand to [M]."
@@ -1203,7 +1203,7 @@
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
-			if(!CHECK_MOBILITY(src, MOBILITY_MOVE) || involved_parts.len < 2)
+			if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || involved_parts.len < 2)
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else

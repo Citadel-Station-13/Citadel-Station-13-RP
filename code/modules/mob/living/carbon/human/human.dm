@@ -1531,7 +1531,7 @@
 /mob/living/carbon/human/proc/update_icon_special() //For things such as teshari hiding and whatnot.
 	if(status_flags & STATUS_HIDING) // Hiding? Carry on.
 		// Stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work.
-		if(!CHECK_MOBILITY(src, MOBILITY_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
+		if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 			reveal(null)
 		else
 			set_base_layer(HIDING_LAYER)

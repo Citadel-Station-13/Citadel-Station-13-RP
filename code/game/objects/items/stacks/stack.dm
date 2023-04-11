@@ -411,7 +411,7 @@
 
 /obj/item/stack/AltClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_PICKUP))
+	if(!istype(user) || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		return
 	attempt_split_stack(user)
 
@@ -427,7 +427,7 @@
 		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
 		max = get_amount() // Not sure why this is done twice but whatever.
 		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_PICKUP))
+		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 			return TRUE
 		else
 			change_stack(user, stackmaterial)

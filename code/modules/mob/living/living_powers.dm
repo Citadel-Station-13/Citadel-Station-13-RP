@@ -11,7 +11,7 @@
 	set category = "Abilities"
 
 	// Check for has_buckled_mobs() (taur riding)
-	if(!CHECK_MOBILITY(src, MOBILITY_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 		return
 
 	if(status_flags & STATUS_HIDING)

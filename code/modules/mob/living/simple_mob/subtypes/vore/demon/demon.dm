@@ -86,5 +86,5 @@
 // todo: better way
 /mob/living/simple_mob/vore/demon/update_mobility()
 	if(is_shifting)
-		return (mobility_flags = MOBILITY_MOVE)
+		return (mobility_flags = MOBILITY_CAN_MOVE)
 	return ..()

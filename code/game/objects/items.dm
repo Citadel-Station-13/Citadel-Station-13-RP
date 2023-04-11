@@ -282,7 +282,7 @@
 		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
 		return
 
-	if(!CHECK_MOBILITY(user, MOBILITY_PICKUP))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
@@ -455,7 +455,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!CHECK_MOBILITY(usr, MOBILITY_PICKUP) || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_PICKUP) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")

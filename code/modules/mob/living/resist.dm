@@ -5,11 +5,11 @@
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
 		setClickCooldown(20)
 		resist_grab()
-		if(CHECK_MOBILITY(src, MOBILITY_RESIST))
+		if(CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
 			process_resist()
 
 /mob/living/proc/process_resist()
-	if(!CHECK_MOBILITY(src, MOBILITY_RESIST))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
 		return
 
 	//unbuckling yourself

@@ -169,7 +169,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE) || !in_range(loc, usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !in_range(loc, usr))
 		return TRUE
 	var/playeffect = TRUE
 	switch(action)

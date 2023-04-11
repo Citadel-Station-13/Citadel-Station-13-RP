@@ -118,7 +118,7 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_MOVE | MOBILITY_USE))
+	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, mobility_flags = MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		climbers -= user
 		return
 
@@ -192,7 +192,7 @@
 	if (user.restrained() || user.buckled)
 		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
 		return 0
-	if (!CHECK_MOBILITY(user, MOBILITY_USE))
+	if (!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return 0
 	if (isAI(user))
 		to_chat(user, "<span class='notice'>You need hands for this.</span>")

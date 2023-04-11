@@ -31,6 +31,6 @@ GLOBAL_DATUM_INIT(not_incapacitated_turf_state, /datum/ui_state/not_incapacitate
 		return UI_CLOSE
 	if(user.incapacitated() || (turf_check && !isturf(user.loc)))
 		return UI_DISABLED
-	if(!CHECK_MOBILITY(user, MOBILITY_UI))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_UI))
 		return UI_DISABLED
 	return UI_INTERACTIVE

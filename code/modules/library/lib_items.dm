@@ -58,7 +58,7 @@
 	if(contents.len)
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
-			if(!CHECK_MOBILITY(user, MOBILITY_USE) || !in_range(loc, user))
+			if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE) || !in_range(loc, user))
 				return
 			if(ishuman(user))
 				if(!user.get_active_held_item())

@@ -26,7 +26,7 @@
 ///Checks mobility move as well as parent checks
 /mob/living/canface()
 /*
-	if(!(mobility_flags & MOBILITY_MOVE))
+	if(!(mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 	if(stat != CONSCIOUS)
@@ -136,19 +136,19 @@
 	// todo: crawling
 	//CIT CHANGES START HERE - makes it so resting stops you from moving through standing folks or over prone bodies without a short delay
 	/*
-		if(!CHECK_MOBILITY(src, MOBILITY_STAND))
+		if(!CHECK_MOBILITY(src, MOBILITY_IS_STANDING))
 			var/origtargetloc = L.loc
 			if(!pulledby)
 				if(combat_flags & COMBAT_FLAG_ATTEMPTING_CRAWL)
 					return TRUE
 				if(IS_STAMCRIT(src))
-					to_chat(src, "<span class='warning'>You're too exhausted to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>")
+					to_chat(src, "<span class='warning'>You're too exhausted to crawl [(CHECK_MOBILITY(L, MOBILITY_IS_STANDING)) ? "under": "over"] [L].</span>")
 					return TRUE
 				combat_flags |= COMBAT_FLAG_ATTEMPTING_CRAWL
-				visible_message("<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] [L].</span>",
-					"<span class='notice'>You are now attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>",
-					target = L, target_message = "<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] you.</span>")
-				if(!do_after(src, CRAWLUNDER_DELAY, target = src) || CHECK_MOBILITY(src, MOBILITY_STAND))
+				visible_message("<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_IS_STANDING)) ? "under" : "over"] [L].</span>",
+					"<span class='notice'>You are now attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_IS_STANDING)) ? "under": "over"] [L].</span>",
+					target = L, target_message = "<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_IS_STANDING)) ? "under" : "over"] you.</span>")
+				if(!do_after(src, CRAWLUNDER_DELAY, target = src) || CHECK_MOBILITY(src, MOBILITY_IS_STANDING))
 					combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
 					return TRUE
 			var/src_ATOM_PASS_mob = (pass_flags & ATOM_PASS_MOB)

@@ -33,7 +33,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 	set category = "Object"
 	set src in usr
 
-	if(CHECK_MOBILITY(usr, MOBILITY_MOVE))
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
 		src.code = t
 	if(!( src.code ))
 		src.code = "beacon"

@@ -244,10 +244,10 @@
 	return incapacitated(INCAPACITATION_DISABLED)
 
 /mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
-	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_USE))
+	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_STAND))
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_IS_STANDING))
 		return 1
 
 	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_IS_CONSCIOUS))
@@ -1204,7 +1204,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
  * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
  * need_hands - Whether you need hands to use this
- * floor_okay - Whether mobility flags should be checked for MOBILITY_UI to use.
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
  */
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return

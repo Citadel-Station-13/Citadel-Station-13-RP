@@ -83,7 +83,7 @@
 	set category = "Object"
 	set src in range(1)
 
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(!paperamount)

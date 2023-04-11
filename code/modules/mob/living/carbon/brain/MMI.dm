@@ -42,7 +42,7 @@
 	set category = "Object"
 	set src in usr
 	set popup_menu = 1
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if (radio.radio_enabled == 1)
@@ -154,7 +154,7 @@
 	return
 
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
-	if(!CHECK_MOBILITY(user, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(rig)

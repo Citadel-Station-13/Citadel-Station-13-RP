@@ -258,7 +258,7 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -310,7 +310,7 @@
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	if(!CHECK_MOBILITY(src, MOBILITY_MOVE))
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc == card)

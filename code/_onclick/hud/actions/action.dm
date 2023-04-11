@@ -148,7 +148,7 @@
 		if(owner.restrained())
 			return 0
 	if(check_flags & ACTION_CHECK_STUNNED)
-		if(!CHECK_MOBILITY(owner, MOBILITY_USE))
+		if(!CHECK_MOBILITY(owner, MOBILITY_CAN_USE))
 			return 0
 	if(check_flags & ACTION_CHECK_LYING)
 		if(owner.lying)

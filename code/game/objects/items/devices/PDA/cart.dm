@@ -539,7 +539,7 @@ var/list/civilian_cartridges = list(
 /obj/item/cartridge/Topic(href, href_list)
 	..()
 
-	if (!CHECK_MOBILITY(usr, MOBILITY_UI) || !in_range(loc, usr))
+	if (!CHECK_MOBILITY(usr, MOBILITY_CAN_UI) || !in_range(loc, usr))
 		usr.unset_machine()
 		usr << browse(null, "window=pda")
 		return

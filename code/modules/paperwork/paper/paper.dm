@@ -182,7 +182,7 @@
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
 								 	 "<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
-				if(do_after(user, 10, H, mobility_flags = MOBILITY_USE | (target.resting? MOBILITY_STAND : NONE)))	//user needs to keep their active hand, H does not.
+				if(do_after(user, 10, H, mobility_flags = MOBILITY_CAN_USE | (target.resting? MOBILITY_IS_STANDING : NONE)))	//user needs to keep their active hand, H does not.
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null

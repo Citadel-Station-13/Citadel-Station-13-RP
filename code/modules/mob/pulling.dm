@@ -3,7 +3,7 @@
 		return FALSE
 	if(!(AM.can_be_pulled(src)))
 		return FALSE
-	if(throwing || restrained())// || !(mobility_flags & MOBILITY_PULL))
+	if(throwing || restrained())// || !(mobility_flags & MOBILITY_CAN_PULL))
 		return FALSE
 
 	// vorecode start why isn't this move force

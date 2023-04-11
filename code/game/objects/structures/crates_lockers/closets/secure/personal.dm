@@ -92,8 +92,8 @@
 	set src in oview(1) // One square distance
 	set category = "Object"
 	set name = "Reset Lock"
-	
-	if(!CHECK_MOBILITY(usr, MOBILITY_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 	if(ishuman(usr))
 		src.add_fingerprint(usr)

@@ -44,7 +44,7 @@
 	//if we are being grabbed
 	if(isliving(mob))
 		var/mob/living/L = mob
-		if(!CHECK_MOBILITY(L, MOBILITY_MOVE) && L.grabbed_by.len)
+		if(!CHECK_MOBILITY(L, MOBILITY_CAN_MOVE) && L.grabbed_by.len)
 			L.resist() //shortcut for resisting grabs
 
 		//if we are grabbing someone
@@ -277,7 +277,7 @@
 		return
 	if(world.time < (last_action + UPGRADE_COOLDOWN))
 		return
-	if(!CHECK_ALL_MOBILITY(assailant, MOBILITY_USE | MOBILITY_STAND))
+	if(!CHECK_ALL_MOBILITY(assailant, MOBILITY_CAN_USE | MOBILITY_IS_STANDING))
 		qdel(src)
 		return
 
