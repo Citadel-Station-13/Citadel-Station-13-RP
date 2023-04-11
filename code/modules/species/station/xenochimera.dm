@@ -141,7 +141,6 @@
 	inherent_spells = list(
 		/spell/targeted/chimera/thermal_sight,
 		/spell/targeted/chimera/voice_mimic,
-		/spell/targeted/chimera/regenerate,
 		/spell/targeted/chimera/hatch,
 		/spell/targeted/chimera/no_breathe,
 	)
