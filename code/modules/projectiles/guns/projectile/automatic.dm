@@ -656,8 +656,8 @@
 
 //NT SpecOps SMG
 /obj/item/gun/ballistic/automatic/combat
-	name = "NT-SMG-8 submachine gun"
-	desc = "A compact submachine gun designed for close-quarters combat for NanoTrasen special operations. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
+	name = "\improper Harpy combat submachine gun"
+	desc = "The compact NT-SMG-8 'Harpy' submachine gun was designed for NanoTrasen special operations where close-quarters combat is likely. Chambered in 5.7x28mm with three fire modes, this gun is lethal to soft and armored targets alike."
 	icon_state = "combatsmg"
 	item_state = "combatsmg"
 	w_class = ITEMSIZE_NORMAL
