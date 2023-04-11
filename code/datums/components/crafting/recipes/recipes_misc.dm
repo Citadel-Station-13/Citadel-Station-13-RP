@@ -752,3 +752,30 @@
 	time = 5
 	category = CAT_FOOD
 	subcategory = CAT_BREAD
+
+/datum/crafting_recipe/candle_red
+	name = "Candle (Red)"
+	result = /obj/item/flame/candle
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/candle_white
+	name = "Candle (White)"
+	result = /obj/item/flame/candle/white
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/candle_black
+	name = "Candle (Black)"
+	result = /obj/item/flame/candle/black
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
