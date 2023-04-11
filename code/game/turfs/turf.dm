@@ -325,7 +325,7 @@
 		return
 	if(isanimal(user) && O != user)
 		return
-	if (do_after(user, 25, mobility_flags = MOBILITY_CONSCIOUS))
+	if (do_after(user, 25, mobility_flags = MOBILITY_IS_CONSCIOUS))
 		step_towards(O, src)
 		if(ismob(O))
 			animate(O, transform = turn(O.transform, 20), time = 2)

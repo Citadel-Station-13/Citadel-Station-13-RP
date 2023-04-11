@@ -2,7 +2,7 @@
 	// this proc looks mildly heretical and pyramid of doomy
 	// for micro-optimization purposes.
 	if(IS_DEAD(src))
-		blocked |= MOBILITY_FLAGS_REAL | MOBILITY_CONSCIOUS
+		blocked |= MOBILITY_FLAGS_REAL | MOBILITY_IS_CONSCIOUS
 	else
 		if(restrained())
 			blocked |= MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_HOLD | MOBILITY_PULL | MOBILITY_STORAGE | MOBILITY_UI

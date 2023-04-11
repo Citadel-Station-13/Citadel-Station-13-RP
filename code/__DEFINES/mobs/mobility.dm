@@ -12,10 +12,11 @@
 #define MOBILITY_PULL       (1<<6) //! Can pull things.
 #define MOBILITY_HOLD       (1<<7) //! Can hold non-nodropped items voluntarily.
 #define MOBILITY_RESIST     (1<<8) //! Can resist out of buckling, grabs, cuffs, etc, in the usual order (buckle --> cuffs --> grab)
-#define MOBILITY_CONSCIOUS  (1<<9) //! READ-ONLY - Set by update_stat() if we're conscious by any means. Used for checks.
+
+#define MOBILITY_IS_CONSCIOUS  (1<<23) //! READ-ONLY - Set by update_stat() if we're conscious by any means. Used for checks.
 
 #define MOBILITY_FLAGS_REAL (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_PICKUP | MOBILITY_USE | MOBILITY_UI | MOBILITY_STORAGE | MOBILITY_PULL | MOBILITY_HOLD | MOBILITY_RESIST)
-#define MOBILITY_FLAGS_VIRTUAL (MOBILITY_CONSCIOUS)
+#define MOBILITY_FLAGS_VIRTUAL (MOBILITY_IS_CONSCIOUS)
 #define MOBILITY_FLAGS_DEFAULT MOBILITY_FLAGS_REAL | MOBILITY_FLAGS_VIRTUAL
 #define MOBILITY_FLAGS_ANY_INTERACTION (MOBILITY_USE | MOBILITY_PICKUP | MOBILITY_UI | MOBILITY_STORAGE)
 
@@ -29,5 +30,5 @@ DEFINE_BITFIELD(mobility_flags, list(
 	"PULL" = MOBILITY_PULL,
 	"HOLD" = MOBILITY_HOLD,
 	"RESIST" = MOBILITY_RESIST,
-	"IS_CONSCIOUS" = MOBILITY_CONSCIOUS,
+	"IS_CONSCIOUS" = MOBILITY_IS_CONSCIOUS,
 ))

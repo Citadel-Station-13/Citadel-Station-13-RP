@@ -250,7 +250,7 @@
 	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_STAND))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_CONSCIOUS))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_IS_CONSCIOUS))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())
