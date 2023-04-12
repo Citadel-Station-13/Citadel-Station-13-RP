@@ -1,6 +1,18 @@
-/*
- * Defines the helmets, gloves and shoes for rigs.
- */
+/obj/item/rig/proc/helmet_deleted(obj/item/clothing/head/rig/helmet)
+	piece_deleted(helmet)
+
+/obj/item/rig/proc/chestpiece_deleted(obj/item/clothing/suit/rig/chestpiece)
+	piece_deleted(chestpiece)
+
+/obj/item/rig/proc/gauntlets_deleted(obj/item/clothing/gloves/rig/gauntlets)
+	piece_deleted(gauntlets)
+
+/obj/item/rig/proc/boots_deleted(obj/item/clothing/shoes/rig/boots)
+	piece_deleted(boots)
+
+/obj/item/rig/proc/piece_deleted(obj/item/piece)
+
+//? piece defs
 
 /obj/item/clothing/head/rig
 	name = "helmet"
@@ -15,6 +27,20 @@
 	max_pressure_protection = null
 	min_pressure_protection = null
 	damage_force = 3 // if you're headbutting someone with something meant to protect you from space...
+
+	/// host rig
+	var/obj/item/rig/rig
+
+/obj/item/clothing/head/rig/Initialize(mapload, obj/item/rig/rig)
+	src.rig = rig
+	return ..()
+
+/obj/item/clothing/head/rig/Destroy()
+	if(rig.helmet == src)
+		rig.helmet = null
+		rig.helmet_deleted(src)
+	rig = null
+	return ..()
 
 //TODO: move this to modules
 /obj/item/clothing/head/helmet/space/rig/proc/prevent_track()
@@ -44,6 +70,20 @@
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
+
+	/// host rig
+	var/obj/item/rig/rig
+
+/obj/item/clothing/suit/rig/Initialize(mapload, obj/item/rig/rig)
+	src.rig = rig
+	return ..()
+
+/obj/item/clothing/suit/rig/Destroy()
+	if(rig.chestpiece == src)
+		rig.chestpiece = null
+		rig.chestpiece_deleted(src)
+	rig = null
+	return ..()
 
 /obj/item/clothing/suit/space/rig/attack_hand(mob/user, list/params)
 	if(tacknife)
@@ -76,6 +116,20 @@
 	heat_protection    = HANDS
 	cold_protection    = HANDS
 
+	/// host rig
+	var/obj/item/rig/rig
+
+/obj/item/clothing/gloves/rig/Initialize(mapload, obj/item/rig/rig)
+	src.rig = rig
+	return ..()
+
+/obj/item/clothing/gloves/rig/Destroy()
+	if(rig.gauntlets == src)
+		rig.gauntlets = null
+		rig.gauntlets_deleted(src)
+	rig = null
+	return ..()
+
 /obj/item/clothing/gloves/gauntlets/rig/Touch(atom/A, proximity)
 
 	if(!A || !proximity)
@@ -106,3 +160,17 @@
 
 	icon_base = null
 	damage_force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
+
+	/// host rig
+	var/obj/item/rig/rig
+
+/obj/item/clothing/shoes/rig/Initialize(mapload, obj/item/rig/rig)
+	src.rig = rig
+	return ..()
+
+/obj/item/clothing/shoes/rig/Destroy()
+	if(rig.boots == src)
+		rig.boots = null
+		rig.boots_deleted(src)
+	rig = null
+	return ..()

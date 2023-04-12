@@ -38,6 +38,17 @@
 	/// last online, set in process()
 	var/last_online = FALSE
 
+	//? Components
+	/// all installed components
+	var/list/obj/item/rig_component/components
+
+
+	//? Maintenance
+	/// console
+	var/datum/rig_console/console
+	/// maint panel
+	var/datum/rig_maint_panel/maint_panel
+
 	//? Pieces
 	/// helmet
 	var/obj/item/clothing/head/rig/helmet
@@ -58,9 +69,6 @@
 
 	var/suit_state //The string used for the suit's icon_state.
 
-	var/interface_path = "hardsuit.tmpl"
-	var/ai_interface_path = "hardsuit.tmpl"
-	var/interface_title = "Hardsuit Controller"
 	var/wearer_move_delay //Used for AI moving.
 	var/ai_controlled_move_delay = 10
 
@@ -122,6 +130,8 @@
 	var/springtrapped = 0 //Will it cause severe bodily harm?
 	var/trapDelay = 300 //in deciseconds
 	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
+
+
 
 /obj/item/rig/get_cell()
 	return cell

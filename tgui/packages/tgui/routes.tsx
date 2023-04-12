@@ -77,6 +77,7 @@ const interfaceSubdirectories = [
   `./items`,
   `./machines`,
   `./modules`,
+  `./rigs`,
   `./ui`,
 ];
 
