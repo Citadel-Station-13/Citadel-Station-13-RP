@@ -2982,6 +2982,11 @@
 "cPf" = (
 /turf/simulated/wall,
 /area/chapel/main)
+"cPA" = (
+/obj/machinery/door/airlock/maintenance/cargo,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "cPJ" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -4070,8 +4075,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "dPy" = (
-/obj/structure/table/reinforced,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/cafeteria)
 "dPI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -5105,6 +5109,9 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/security/brig)
+"eMe" = (
+/turf/simulated/floor/glass/reinforced,
+/area/hallway/primary/central_three)
 "eMf" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -13769,6 +13776,10 @@
 	},
 /turf/simulated/floor/water/pool,
 /area/triumph/surfacebase/sauna)
+"lSL" = (
+/obj/structure/table/reinforced,
+/turf/simulated/floor/glass/reinforced,
+/area/crew_quarters/cafeteria)
 "lSM" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -18225,7 +18236,7 @@
 /area/hydroponics/garden)
 "pIZ" = (
 /obj/structure/table/bench/padded,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/glass/reinforced,
 /area/crew_quarters/cafeteria)
 "pJd" = (
 /obj/structure/table/steel,
@@ -23295,7 +23306,7 @@
 /area/medical/psych_ward)
 "umn" = (
 /obj/structure/memorial,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/glass/reinforced,
 /area/hallway/primary/central_three)
 "umB" = (
 /obj/machinery/door/airlock/maintenance/common,
@@ -44603,7 +44614,7 @@ vva
 vva
 sVT
 pID
-wFh
+vWE
 dJS
 pAF
 pAF
@@ -44797,7 +44808,7 @@ vva
 vva
 sVT
 wFh
-wFh
+vWE
 pAF
 jMZ
 jMZ
@@ -44990,8 +45001,8 @@ rtF
 vva
 vva
 sVT
-wFh
-wFh
+pVf
+vWE
 pAF
 jMZ
 jMZ
@@ -45184,8 +45195,8 @@ rtF
 vva
 vva
 sVT
-wFh
-wFh
+pVf
+vWE
 pAF
 jMZ
 jMZ
@@ -45378,8 +45389,8 @@ rtF
 vva
 vva
 sVT
-wFh
-wFh
+pVf
+vWE
 pAF
 jMZ
 jMZ
@@ -45572,8 +45583,8 @@ fkE
 vva
 vva
 sVT
-wFh
-wFh
+pVf
+vWE
 dJS
 pAF
 pAF
@@ -45766,10 +45777,10 @@ fkE
 vva
 vva
 sVT
-wFh
-wFh
-wFh
-wFh
+pVf
+pVf
+jMZ
+jMZ
 sVT
 wFh
 wFh
@@ -45961,7 +45972,7 @@ vva
 vva
 sVT
 sVT
-sVT
+cPA
 sVT
 sVT
 sVT
@@ -46396,7 +46407,7 @@ bYW
 wWQ
 kWe
 lWV
-ant
+eMe
 lWV
 kWe
 wWQ
@@ -46589,9 +46600,9 @@ kWe
 kWe
 kWe
 tot
-lWV
-ant
-lWV
+eMe
+eMe
+eMe
 tot
 kWe
 kWe
@@ -46782,11 +46793,11 @@ aCT
 lWV
 lWV
 lWV
-lWV
-ant
-ant
-ant
-lWV
+eMe
+eMe
+eMe
+eMe
+eMe
 lWV
 lWV
 lWV
@@ -46975,13 +46986,13 @@ lWV
 qFS
 lWV
 lWV
-ant
-ant
-ant
+eMe
+eMe
+eMe
 umn
-ant
-ant
-ant
+eMe
+eMe
+eMe
 lWV
 lWV
 qFS
@@ -47170,11 +47181,11 @@ aCT
 lWV
 lWV
 lWV
-lWV
-ant
-ant
-ant
-lWV
+eMe
+eMe
+eMe
+eMe
+eMe
 lWV
 lWV
 lWV
@@ -47365,9 +47376,9 @@ kWe
 kWe
 kWe
 tot
-lWV
-ant
-lWV
+eMe
+eMe
+eMe
 tot
 kWe
 kWe
@@ -47560,7 +47571,7 @@ bYW
 wWQ
 kWe
 lWV
-ant
+eMe
 lWV
 kWe
 wWQ
@@ -48122,9 +48133,9 @@ uzO
 uzO
 ygh
 ooV
-ooV
-ooV
-ooV
+lSL
+lSL
+lSL
 ooV
 ooV
 ooV
@@ -48315,7 +48326,7 @@ sVT
 uzO
 uzO
 ygh
-pIZ
+ooV
 pIZ
 pIZ
 pIZ
@@ -48509,7 +48520,7 @@ sVT
 cHY
 uzO
 ygh
-dPy
+ooV
 dPy
 dPy
 dPy
@@ -48703,7 +48714,7 @@ vva
 uzO
 vva
 ygh
-dPy
+ooV
 dPy
 dPy
 dPy
@@ -48724,7 +48735,7 @@ lzL
 lzL
 lzL
 lWV
-ant
+eMe
 lWV
 dHC
 gGa
@@ -48897,7 +48908,7 @@ uzO
 vva
 uzO
 ygh
-pIZ
+ooV
 pIZ
 pIZ
 pIZ
@@ -48918,7 +48929,7 @@ qIk
 jiL
 lzL
 lWV
-ant
+eMe
 lWV
 dHC
 lek
@@ -49092,9 +49103,9 @@ uzO
 vva
 ygh
 ooV
-ooV
-ooV
-ooV
+lSL
+lSL
+lSL
 cmh
 cmh
 cmh
@@ -49112,7 +49123,7 @@ jiL
 jiL
 rhu
 lWV
-ant
+eMe
 lWV
 dHC
 dUn

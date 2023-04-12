@@ -117,7 +117,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft/port)
 "afV" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple{
@@ -2507,7 +2507,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft/port)
 "bIt" = (
 /obj/structure/bed/chair/office/dark{
@@ -2558,6 +2558,7 @@
 /area/engineering/shield_gen)
 "bKo" = (
 /obj/machinery/door/airlock/maintenance/cargo,
+/obj/machinery/door/firedoor/border_only,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "bLr" = (
@@ -12195,7 +12196,8 @@
 /area/space)
 "jdU" = (
 /obj/machinery/door/airlock/maintenance/cargo,
-/turf/simulated/floor/plating,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/hallway)
 "jdZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -15030,7 +15032,7 @@
 /area/server)
 "lbH" = (
 /obj/machinery/camera/network/cargo,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/hallway)
 "lbZ" = (
 /obj/effect/floor_decal/techfloor/orange,
@@ -15837,7 +15839,8 @@
 /area/engineering/hallway)
 "lHa" = (
 /obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft/port)
 "lHr" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -23747,7 +23750,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
 "rAT" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/hallway)
 "rAX" = (
 /obj/structure/railing{
@@ -29728,7 +29731,8 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
+/obj/machinery/door/firedoor/border_only,
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "vUL" = (
 /obj/structure/stairs/spawner/west,
@@ -47834,7 +47838,7 @@ vnQ
 vnQ
 kMm
 vnQ
-vnQ
+qQp
 mRB
 oBb
 bhY
@@ -48028,7 +48032,7 @@ vnQ
 vnQ
 kMm
 vnQ
-vnQ
+qQp
 rHE
 mvr
 utK
@@ -48416,7 +48420,7 @@ vnQ
 vnQ
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -48610,7 +48614,7 @@ mRB
 mRB
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -48804,7 +48808,7 @@ hts
 hts
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -48998,9 +49002,9 @@ hts
 hts
 kMm
 vnQ
-vnQ
-vnQ
-vnQ
+qQp
+qQp
+qQp
 bKo
 xPY
 shp
@@ -49192,7 +49196,7 @@ kYt
 hts
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -49386,7 +49390,7 @@ eoB
 hts
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -49580,7 +49584,7 @@ qCN
 hts
 kMm
 wjf
-vnQ
+qQp
 vnQ
 vnQ
 hRL
@@ -49773,8 +49777,8 @@ efD
 ukt
 hts
 kMm
-vnQ
-vnQ
+qQp
+qQp
 vnQ
 vnQ
 mnk
@@ -49968,7 +49972,7 @@ tWA
 hts
 kMm
 jgr
-vnQ
+qQp
 tqn
 kqG
 kqG
@@ -50162,7 +50166,7 @@ kxT
 hts
 kMm
 jgr
-vnQ
+qQp
 kqG
 bRO
 bRO
@@ -50550,7 +50554,7 @@ fcA
 hts
 kMm
 vnQ
-vnQ
+qQp
 kqG
 bRO
 bRO
@@ -50744,7 +50748,7 @@ ghs
 hts
 kMm
 vnQ
-vnQ
+qQp
 kqG
 bRO
 bRO
@@ -50938,7 +50942,7 @@ flY
 hts
 kMm
 vnQ
-vnQ
+qQp
 tqn
 kqG
 kqG
@@ -51132,7 +51136,7 @@ hts
 hts
 kMm
 vnQ
-vnQ
+qQp
 vnQ
 mnk
 lbH
@@ -51326,8 +51330,8 @@ hts
 hts
 kMm
 vnQ
-vnQ
-vnQ
+qQp
+qQp
 jdU
 rAT
 nPo
