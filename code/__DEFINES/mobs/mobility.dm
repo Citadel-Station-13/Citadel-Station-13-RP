@@ -1,6 +1,7 @@
 //? /mob/var/mobility_flags
 /// any flag
 #define CHECK_MOBILITY(target, flags) (target.mobility_flags & flags)
+/// all flags
 #define CHECK_ALL_MOBILITY(target, flags) CHECK_MULTIPLE_BITFIELDS(target.mobility_flags, flags)
 
 #define MOBILITY_CAN_MOVE       (1<<0) //! Can move.

@@ -61,7 +61,7 @@
  * @params
  * * user - acting mob
  * * delay - how long in deciseconds
- * * target - targeted atom
+ * * target - targeted atom, if any
  * * flags - do_after flags as specified in [code/__DEFINES/procs/do_after.dm]
  * * mobility_flags - required mobility flags
  * * max_distance - if not null, the user is required to be get_dist() <= max_distance from target.
@@ -76,43 +76,70 @@
 		(isnull(max_distance) || get_dist(user, target) <= max_distance) && \
 		CHECK_ALL_MOBILITY(user, mobility_flags)
 
-	#warn impl
+	//* setup
 
-/proc/do_after(mob/user, delay, atom/target, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_CAN_USE, ignore_movement = FALSE, max_distance = null, datum/callback/additional_checks)
-	if(!user)
-		return 0
-	if(!delay)
-		return 1 //Okay. Done.
-	var/atom/target_loc = null
-	if(target)
+	//? legacy
+	if(ismecha(user.loc))
+		flags |= DO_AFTER_CHECK_USER_TURF
+	//? end
+
+	var/atom/user_loc = user.loc
+	var/turf/user_turf = (flags & DO_AFTER_CHECK_USER_TURF)? get_turf(user) : null
+	var/atom/target_loc
+	var/turf/target_turf
+
+	if(!isnull(target))
 		target_loc = target.loc
+		target_turf = (flags & DO_AFTER_CHECK_TARGET_TURF)? get_turf(target) : null
 		START_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
-	var/atom/original_loc = user.loc
+	var/obj/item/active_held_item = user.get_active_held_item()
 
-	var/obj/mecha/M = null
+	var/datum/progressbar/progress
+	var/original_delay = delay
+	var/delay_factor = 1
+	if(!(flags & DO_AFTER_NO_PROGRESS))
+		progress = new(user, delay, target)
+	var/start_time = world.time
 
-	if(ismecha(user.loc))
-		original_loc = get_turf(original_loc)
-		M = user.loc
+	//* loop
 
-	var/holding = user.get_active_held_item()
-
-	var/datum/progressbar/progbar
-	if (progress)
-		progbar = new(user, delay, target)
-
-	var/endtime = world.time + delay
-	var/starttime = world.time
-	. = 1
-	while (world.time < endtime)
+	. = TRUE
+	while(world.time < (start_time + delay))
 		stoplag(1)
-		if(progress)
-			progbar.update(world.time - starttime)
 
-		if(!user || !CHECK_ALL_MOBILITY(user, mobility_flags))
+		progress?.update((world.time - starttime) * delay_factor)
+
+		// check if deleted
+		if(QDELETED(user))
 			. = FALSE
 			break
+
+		// check mobility
+		if(!CHECK_ALL_MOBILITY(user, mobility_flags))
+			. = FALSE
+			break
+
+		// target checks
+		if(!isnull(target))
+
+			// check if deleted
+			if(QDELETED(target))
+				. = FALSE
+				break
+
+			// check if interrupted
+			if(!INTERACTING_WITH_FOR(user, target, INTERACTING_FOR_DO_AFTER))
+				. = FALSE
+				break
+
+			// check max distance - does NOT check z as of right now!
+			if(!isnull(max_distance) && get_dist(user, target) > max_distance)
+				. = FALSE
+				break
+
+
+	#warn below
 
 		if(M)
 			if(user.loc != M || (M.loc != original_loc && !ignore_movement)) // Mech coooooode.
@@ -131,27 +158,26 @@
 			. = FALSE
 			break
 
-		if(target && !INTERACTING_WITH_FOR(user, target, INTERACTING_FOR_DO_AFTER))
-			. = FALSE
-			break
 
 		if(needhand)
 			if(user.get_active_held_item() != holding)
 				. = FALSE
 				break
 
-		if(max_distance && target && get_dist(user, target) > max_distance)
-			. = FALSE
-			break
+	#warn above
 
-		if(!isnull(additional_checks) && !additional_checks.Invoke())
-			. = FALSE
-			break
+		if(!isnull(additional_checks))
+			if(!additional_checks.Invoke(args))
+				. = FALSE
+				break
+			// update delay factor incase they changed
+			delay_factor = original_delay / delay
 
-	if(!QDELETED(progbar))
-		qdel(progbar)
+	//* end
+	if(!QDELETED(progress))
+		qdel(progress)
 
-	if(target)
+	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
 /proc/do_self(mob/user, delay, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_CAN_USE, ignore_movement = FALSE, datum/callback/additional_checks)

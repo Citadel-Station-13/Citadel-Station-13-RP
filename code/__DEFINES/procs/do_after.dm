@@ -7,9 +7,13 @@
 /// allow movement
 #define DO_AFTER_IGNORE_MOVEMENT (DO_AFTER_IGNORE_USER_MOVEMENT | DO_AFTER_IGNORE_TARGET_MOVEMENT)
 /// don't care about currently held item
-#define DO_AFTER_IGNORE_ACTIVE_ITEM (1<<3)
+#define DO_AFTER_IGNORE_ACTIVE_ITEM (1<<2)
+/// check for user turf as well instead of just exact loc
+#define DO_AFTER_CHECK_USER_TURF (1<<3)
+/// check for target turf as well instead of just exact loc
+#define DO_AFTER_CHECK_TARGET_TURF (1<<4)
 /// no progress bar
-#define DO_AFTER_NO_PROGRESS (1<<23)
+#define DO_AFTER_NO_PROGRESS (1<<5)
 
 //? Interaction Checks
 /// checks if we're interacting with an atom
