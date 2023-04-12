@@ -25,7 +25,7 @@ export const TGUIAbility = (props: TGUIAbilityProps, context) => {
 
   return (
     <Modular>
-      test
+      Not Implemented
     </Modular>
   );
 };

@@ -80,11 +80,14 @@
 	if(!isnull(action))
 		return action
 	action = new(src)
+	action.name = hotbind_name()
+	action.desc = hotbind_desc()
 	action.button_managed = TRUE
 	action.button_icon = action_icon
 	action.button_icon_state = action_state
 	action.background_icon = background_icon
 	action.background_icon_state = background_state
+	update_action()
 	return action
 
 /datum/ability/proc/update_action()
@@ -110,6 +113,12 @@
 
 /datum/ability/proc/action_trigger(mob/user)
 	attempt_trigger(user)
+
+/datum/ability/proc/hotbind_name()
+	return "[category] - [name]"
+
+/datum/ability/proc/hotbind_desc()
+	return desc
 
 /**
  * called to try to trigger.
@@ -160,6 +169,7 @@
 /datum/ability/proc/on_trigger(mob/user, toggling)
 	last_used = world.time
 	if(interact_type != ABILITY_INTERACT_TOGGLE)
+		update_action()
 		return
 	if(!isnull(toggling) && toggling == enabled)
 		return
@@ -170,14 +180,16 @@
 	else if(!enabled && toggling)
 		enable()
 
-/datum/ability/proc/enable()
+/datum/ability/proc/enable(update_action)
 	enabled = TRUE
-	update_action()
+	if(update_action)
+		update_action()
 	on_enable()
 
-/datum/ability/proc/disable()
+/datum/ability/proc/disable(update_action)
 	enabled = FALSE
-	update_action()
+	if(update_action)
+		update_action()
 	on_disable()
 
 /datum/ability/proc/on_enable()
@@ -190,6 +202,7 @@
 	if(bound)
 		return
 	bound = TRUE
+	generate_action()
 	if(!isnull(owner))
 		action?.grant(owner)
 
@@ -206,6 +219,9 @@
 	owner.register_ability(src)
 	if(bound)
 		action?.grant(M)
+		update_action()
+	else if(always_bind)
+		quickbind()
 
 /datum/ability/proc/disassociate(mob/M)
 	ASSERT(owner == M)

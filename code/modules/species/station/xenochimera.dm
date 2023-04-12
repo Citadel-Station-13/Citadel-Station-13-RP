@@ -107,6 +107,10 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
+	abilities = list(
+		/datum/ability/species/xenochimera/regenerate,
+	)
+
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
