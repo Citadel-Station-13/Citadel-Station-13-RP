@@ -117,9 +117,19 @@
  * checks for shields
  * not always accurate
  *
- * todo: use pointers instead
- *
  * params are modified and then returned as a list.
+ *
+ * @params
+ * * damage - raw damage
+ * * tier - penetration / attack tier
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - damage_mode
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
+ * * retval - shieldcall flags passed through components. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
+ *
+ * @return modified args as list
  */
 /atom/proc/atom_shieldcheck(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
 	retval |= SHIELDCALL_JUST_CHECKING
@@ -130,9 +140,19 @@
  * runs an attack against shields
  * side effects are allowed
  *
- * todo: use pointers instead
- *
  * params are modified and then returned as a list
+ *
+ * @params
+ * * damage - raw damage
+ * * tier - penetration / attack tier
+ * * flag - armor flag as seen in [code/__DEFINES/combat/armor.dm]
+ * * mode - damage_mode
+ * * attack_type - (optional) attack type flags from [code/__DEFINES/combat/attack_types.dm]
+ * * weapon - (optional) attacking /obj/item for melee or thrown, /obj/projectile for ranged, /mob for unarmed
+ * * additional - a way to retrieve data out of the shieldcall, passed in by attacks. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
+ * * retval - shieldcall flags passed through components. [code/__DEFINES/dcs/signals/atoms/signals_atom_defense.dm]
+ *
+ * @return modified args as list
  */
 /atom/proc/atom_shieldcall(damage, tier, flag, mode, attack_type, datum/weapon, list/additional = list(), retval = NONE)
 	SEND_SIGNAL(src, COMSIG_ATOM_SHIELDCALL, args)

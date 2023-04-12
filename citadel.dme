@@ -243,6 +243,7 @@
 #include "code\__DEFINES\research\research.dm"
 #include "code\__DEFINES\research\xenoarcheaology.dm"
 #include "code\__DEFINES\rigs\balancing.dm"
+#include "code\__DEFINES\rigs\control.dm"
 #include "code\__DEFINES\rigs\rig.dm"
 #include "code\__DEFINES\rigs\zones.dm"
 #include "code\__DEFINES\sound\alias.dm"

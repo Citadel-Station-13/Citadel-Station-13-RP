@@ -125,6 +125,7 @@
 	var/datum/mini_hud/rig/minihud
 
 	//Traps, too.
+
 	var/isTrapped = 0 //Will it lock you in?
 	var/trapSprung = 0 //Don't define this one. It's if it's procced.
 	var/springtrapped = 0 //Will it cause severe bodily harm?
