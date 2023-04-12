@@ -9,6 +9,7 @@
 	icon_override = 'icons/vore/custom_guns_vr.dmi'
 	item_state = null
 	item_icons = null
+	worn_render_flags = WORN_RENDER_SLOT_NO_RENDER
 
 	fire_sound = 'sound/weapons/Taser.ogg'
 	projectile_type = /obj/projectile/beam/stun

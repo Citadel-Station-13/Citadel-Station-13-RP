@@ -1,106 +1,204 @@
 /**
- * Hook for running code when a dir change occurs
- *
- * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ * Internal Move() handling, called from the actual Move() implementation via override and ..()
+ * This rewrites how we handle movement to avoid some BYOND-isms.
  */
-/atom/proc/setDir(newdir)
-	if(dir == newdir)
-		return FALSE
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
-	dir = newdir
-
-	if (light_source_solo)
-		if (light_source_solo.light_angle)
-			light_source_solo.source_atom.update_light()
-	else if (light_source_multi)
-		var/datum/light_source/L
-		for (var/thing in light_source_multi)
-			L = thing
-			if (L.light_angle)
-				L.source_atom.update_light()
-	return TRUE
-
-// todo:
-// the new move chain should be:
-// turf/atom Exit --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
-// turf/atom Enter --> check, pure function, except for Bump. unstoppable movement lets us ignore Bump.
-// at this point, it's valid to move ; if it was a forceMove, we don't check at all
-// if it wasn't, we need to check if the Bump changed the moving thing's location. Bump handlers should be able to handle this themselves too via unstoppable flag check.
-// Exited() called for new loc, signals, etc
-// Moved() called but only if Exited() didn't end up moving the atom.
-// Entered() called for new loc, signals, etc, but only if Moved() didn't move the atom out of the new loc; otherwise we call Entered() on the actual new loc
-// pending changes.
-// regardless,
-// Crossed() and Uncrossed() need to go ASAP, and /tg/ abstract_move() need to be implemented.
-// also, rename forceMove to force_move because bay, and setDir to set_dir().
-
-////////////////////////////////////////
-// Here's where we rewrite how byond handles movement except slightly different
-// To be removed on step_ conversion
-// All this work to prevent a second bump
-/atom/movable/Move(atom/newloc, direct = NONE)
+/atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
 	. = FALSE
-	if(!newloc || newloc == loc)
+	if(newloc == loc)
 		return
 
-	if(!direct)
-		direct = get_dir(src, newloc)
 	setDir(direct)
 
-	if(!loc.Exit(src, newloc))
-		return
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
 
-	if(!newloc.Enter(src, src.loc))
-		return
-
+	// send one signal for single or multi tile because we don't want to just spam signals
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, newloc) & COMPONENT_MOVABLE_BLOCK_PRE_MOVE)
 		return
 
-	// Past this is the point of no return
-	if(length(locs) <= 1)	// We're not a multi-tile object.
+	if(is_multi_tile && isturf(loc) && isturf(newloc))
+		//* multi tile handling *//
+		var/list/leaving
+		var/list/entering
+		// this is the turf we can't directly access with either newloc or loc, for caching / speed.
+		var/turf/opposite
+		switch(direct)
+			if(NORTH)
+				opposite = locate(
+					newloc.x,
+					min(world.maxy, newloc.y + CEILING(bound_height / 32, 1) - 1),
+					newloc.z
+				)
+				leaving = block(
+					loc,
+					locate(
+						min(world.maxx, loc.x + CEILING(bound_width / 32, 1) - 1),
+						loc.y,
+						loc.z
+					)
+				)
+				entering = block(
+					opposite,
+					locate(
+						min(world.maxx, opposite.x + CEILING(bound_width / 32, 1) - 1),
+						opposite.y,
+						opposite.z
+					)
+				)
+			if(SOUTH)
+				opposite = locate(
+					loc.x,
+					min(world.maxy, loc.y + CEILING(bound_height / 32, 1) - 1),
+					loc.z
+				)
+				leaving = block(
+					opposite,
+					locate(
+						min(world.maxx, opposite.x + CEILING(bound_width / 32, 1) - 1),
+						opposite.y,
+						opposite.z
+					)
+				)
+				entering = block(
+					newloc,
+					locate(
+						min(world.maxx, newloc.x + CEILING(bound_width / 32, 1) - 1),
+						newloc.y,
+						newloc.z
+					)
+				)
+			if(EAST)
+				opposite = locate(
+					min(world.maxx, newloc.x + CEILING(bound_width / 32, 1) - 1),
+					newloc.y,
+					newloc.z
+				)
+				leaving = block(
+					loc,
+					locate(
+						loc.x,
+						min(world.maxy, loc.y + CEILING(bound_height / 32, 1) - 1),
+						loc.z
+					)
+				)
+				entering = block(
+					opposite,
+					locate(
+						opposite.x,
+						min(world.maxy, opposite.y + CEILING(bound_height / 32, 1) - 1),
+						opposite.z
+					)
+				)
+			if(WEST)
+				opposite = locate(
+					min(world.maxx, loc.x + CEILING(bound_width / 32, 1) - 1),
+					loc.y,
+					loc.z
+				)
+				leaving = block(
+					opposite,
+					locate(
+						opposite.x,
+						min(world.maxy, opposite.y + CEILING(bound_height / 32, 1) - 1),
+						opposite.z
+					)
+				)
+				entering = block(
+					newloc,
+					locate(
+						newloc.x,
+						min(world.maxy, newloc.y + CEILING(bound_height / 32, 1) - 1),
+						newloc.z
+					)
+				)
+
 		var/atom/oldloc = loc
-		var/area/oldarea = get_area(oldloc)
+		var/area/oldarea = get_area(loc)
 		var/area/newarea = get_area(newloc)
+
+		for(var/turf/T as anything in leaving)
+			if(!T.Exit(src, get_step(T, direct)))
+				return
+
+		var/reverse = turn(direct, 180)
+
+		for(var/turf/T as anything in entering)
+			if(!T.Enter(src, get_step(T, reverse)))
+				return
+
 		loc = newloc
 		. = TRUE
-		oldloc.Exited(src, newloc)
+
+		for(var/turf/T as anything in leaving)
+			T.Exited(src, get_step(T, direct))
+			for(var/atom/movable/AM as anything in T)
+				AM.Uncrossed(src)
 		if(oldarea != newarea)
 			oldarea.Exited(src, newloc)
 
-		// todo: remove uncrossed
-		for(var/i in oldloc)
-			if(i == src) // Multi tile objects
-				continue
-			var/atom/movable/thing = i
-			thing.Uncrossed(src)
-
-		newloc.Entered(src, oldloc)
+		for(var/turf/T as anything in entering)
+			T.Entered(src, get_step(T, reverse))
+			for(var/atom/movable/AM as anything in T)
+				AM.Crossed(src)
 		if(oldarea != newarea)
 			newarea.Entered(src, oldloc)
 
-		// todo: remove crossed
+	else
+		//* single tile handling * //
+		// check
+		if(!loc.Exit(src, newloc))
+			return
+
+		if(!newloc.Enter(src, src.loc))
+			return
+
+		// gather
+		var/atom/oldloc = loc
+		var/area/oldarea = get_area(oldloc)
+		var/area/newarea = get_area(newloc)
+
+		// move
+		loc = newloc
+		. = TRUE
+
+		// exit
+		oldloc.Exited(src, newloc)
+		if(oldarea != newarea)
+			oldarea.Exited(src, newloc)
+		for(var/i in oldloc)
+			var/atom/movable/thing = i
+			thing.Uncrossed(src)
+
+		// enter
+		newloc.Entered(src, oldloc)
+		if(oldarea != newarea)
+			newarea.Entered(src, oldloc)
 		for(var/i in loc)
-			if(i == src) // Multi tile objects
-				continue
 			var/atom/movable/thing = i
 			thing.Crossed(src)
 
-	else if(newloc)	// We're a multi-tile object.
-		if(!check_multi_tile_move_density_dir(direct, locs))	// We're big, and we can't move that way.
-			return
-		. = doMove(newloc)
+/**
+ * Move() implementation
+ *
+ * Only supports moves up to range 1, in any direction including diagonals.
+ */
+/atom/movable/Move(atom/newloc, direct, step_x, step_y, glide_size_override)
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+	if(is_multi_tile && isturf(newloc))
+		newloc = locate(newloc.x + round(step_x / WORLD_ICON_SIZE), newloc.y + round(step_y / WORLD_ICON_SIZE), newloc.z)
+	if(!isturf(loc) || !isturf(newloc))
+		return FALSE
+	if(get_dist(loc, newloc) > 1)
+		CRASH("attempted to move longer than 1 get_dist with Move(); please use forceMove!")
+	++in_move
 
-//
-////////////////////////////////////////
-
-/atom/movable/Move(atom/newloc, direct, glide_size_override)
+	if(isnull(direct))
+		// loc, not src, due to multitile.
+		direct = get_dir(loc, newloc)
 	var/atom/movable/pullee = pulling
+
 	var/turf/T = loc
 	if(!moving_from_pull)
 		check_pulling()
-	if(!loc || !newloc)
-		return FALSE
 	var/atom/oldloc = loc
 	//Early override for some cases like diagonal movement
 	if(glide_size_override)
@@ -112,7 +210,7 @@
 		else //Diagonal move, split it into cardinal moves
 			moving_diagonally = FIRST_DIAG_STEP
 			var/first_step_dir
-			// The `&& moving_diagonally` checks are so that a forceMove taking
+			// The `&& moving_diagonally` checks are so that a force_move taking
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
@@ -160,19 +258,23 @@
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
 					newtonian_move(direct)
-			moving_diagonally = 0
+			moving_diagonally = NOT_IN_DIAG_STEP
+			--in_move
 			return
 	else		// trying to move to the same place
 		if(direct)
 			last_move_dir = direct
 			setDir(direct)
+		--in_move
 		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
+		--in_move
 		return
 
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
+		--in_move
 		return FALSE
 
 	if(.)
@@ -182,8 +284,8 @@
 		if(pulling.anchored)
 			stop_pulling()
 		else
-			var/pull_dir = get_dir(src, pulling)
 			//puller and pullee more than one tile away or in diagonal position
+			var/pull_dir = get_dir(src, pulling)
 			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
 				pulling.moving_from_pull = src
 				var/success = pulling.Move(T, get_dir(pulling, T), glide_size) //the pullee tries to reach our previous position
@@ -203,6 +305,9 @@
 	if(glide_size_override)
 		set_glide_size(glide_size_override, FALSE)
 
+	--in_move
+
+	// legacy
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
@@ -225,56 +330,41 @@
 			M.setDir(dir)
 	return TRUE
 
-/// Called after a successful Move(). By this point, we've already moved
-/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced)
+/**
+ * Called after a successful Move(). By this point, we've already moved.
+ *
+ * Do not do anything that will re-move the atom, or bad things happen.
+ * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ *
+ * @params
+ * * old_loc is the location prior to the move. Can be null to indicate nullspace.
+ * * movement_dir is the direction the movement took place. Can be NONE if it was some sort of teleport.
+ * * The forced flag indicates whether this was a forced move, which skips many checks of regular movement.
+ * * The old_locs is an optional argument, in case the moved movable was present in multiple locations before the movement.
+ * * momentum_change represents whether this movement is due to a "new" force if TRUE or an already "existing" force if FALSE
+ **/
+/atom/movable/proc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, dir, forced)
 
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
 
-/*
-	if (!inertia_moving && momentum_change)
-		newtonian_move(movement_dir)
- */
-
-/*
-	if (length(client_mobs_in_contents))
-		update_parallax_contents()
- */
 
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
 
-/*
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old_loc, movement_dir, forced, old_locs, momentum_change)
+
 	if(old_loc)
-		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src, movement_dir)
+		SEND_SIGNAL(old_loc, COMSIG_ATOM_ABSTRACT_EXITED, src)
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_ABSTRACT_ENTERED, src, old_loc, old_locs)
- */
 
 	if (old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf?.z, new_turf?.z)
 
-/*
-	if(HAS_SPATIAL_GRID_CONTENTS(src))
-		if(old_turf && new_turf && (old_turf.z != new_turf.z \
-			|| GET_SPATIAL_INDEX(old_turf.x) != GET_SPATIAL_INDEX(new_turf.x) \
-			|| GET_SPATIAL_INDEX(old_turf.y) != GET_SPATIAL_INDEX(new_turf.y)))
-
-			SSspatial_grid.exit_cell(src, old_turf)
-			SSspatial_grid.enter_cell(src, new_turf)
-
-		else if(old_turf && !new_turf)
-			SSspatial_grid.exit_cell(src, old_turf)
-
-		else if(new_turf && !old_turf)
-			SSspatial_grid.enter_cell(src, new_turf)
- */
-
 	return TRUE
-
 
 /**
  * meant for movement with zero side effects. only use for objects that are supposed to move "invisibly" (like camera mobs or ghosts)
@@ -287,33 +377,52 @@
 	loc = new_loc
 	Moved(old_loc, direction, TRUE)
 
-/// Make sure you know what you're doing if you call this, this is intended to only be called by byond directly.
-/// You probably want CanPass()
+/**
+ * Make sure you know what you're doing if you override or call this.
+ *
+ * This *must* be a pure proc. You cannot act on the atom if you override this! Use Bump() for that.
+ *
+ * You probably want CanPass() if you're overriding.
+ */
 /atom/movable/Cross(atom/movable/AM)
 	. = TRUE
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSS, AM)
-	return CanPass(AM, src, TRUE)
+	return CanPass(AM, loc)
 
-//oldloc = old location on atom, inserted when forceMove is called and ONLY when forceMove is called!
+/**
+ * Called when something crosses us.
+ *
+ * Do not do anything that will re-move the atom, or bad things happen.
+ * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ */
 /atom/movable/Crossed(atom/movable/AM, oldloc)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
 	throwing?.crossed_by(AM)
 
+/**
+ * Make sure you know what you're doing if you override or call this.
+ *
+ * This *must* be a pure proc. You cannot act on the atom if you override this! Use Bump() for that.
+ */
 /atom/movable/Uncross(atom/movable/AM, atom/newloc)
-	. = ..()
+	. = TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSS, AM) & COMPONENT_MOVABLE_BLOCK_UNCROSS)
 		return FALSE
 	if(isturf(newloc) && !CheckExit(AM, newloc))
 		return FALSE
 
+/**
+ * Called when something uncrosses us.
+ *
+ * Do not do anything that will re-move the atom, or bad things happen.
+ * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ */
 /atom/movable/Uncrossed(atom/movable/AM)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UNCROSSED, AM)
 
 /atom/movable/Bump(atom/A)
-	if(!A)
-		CRASH("Bump was called with no argument.")
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUMP, A)
 
 	. = ..()
@@ -426,64 +535,109 @@
 
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
+
+	++in_move
+
 	var/atom/oldloc = loc
+	var/is_multi_tile = bound_width > world.icon_size || bound_height > world.icon_size
+
+	if(buckled_mobs)
+		unbuckle_all_mobs(BUCKLE_OP_FORCE)
+	pulledby?.stop_pulling()
+	if(pulling)
+		stop_pulling()
+
 	if(destination)
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
 
-		loc = destination
-		moving_diagonally = 0
+		moving_diagonally = NOT_IN_DIAG_STEP
 
 		if(!same_loc)
-			if(oldloc)
-				oldloc.Exited(src, destination)
+			if(is_multi_tile && isturf(destination))
+				// gather
+				var/list/old_locs = locs // implicit Copy() due to locs being special byond list
+				var/list/new_locs = block(
+					destination,
+					locate(
+						min(world.maxx, destination.x + ROUND_UP(bound_width / 32)),
+						min(world.maxy, destination.y + ROUND_UP(bound_height / 32)),
+						destination.z
+					)
+				)
+
+				// move
+				loc = destination
+
+				// exit
 				if(old_area && old_area != destarea)
-					old_area.Exited(src, destination)
+					old_area.Exited(src)
+				for(var/atom/left_loc as anything in old_locs - new_locs)
+					left_loc.Exited(src, oldloc)
+					for(var/atom/movable/AM as anything in left_loc)
+						AM.Uncrossed(src)
 
-			// todo: remove uncrossed
-			for(var/atom/movable/AM in oldloc)
-				AM.Uncrossed(src)
-			destination.Entered(src, oldloc)
-			if(destarea && old_area != destarea)
-				destarea.Entered(src, oldloc)
+				// enter
+				if(old_area && old_area != destarea)
+					destarea.Entered(src)
+				for(var/atom/entering_loc as anything in new_locs - old_locs)
+					entering_loc.Entered(src, oldloc)
+					for(var/atom/movable/AM as anything in entering_loc)
+						AM.Cross(src)
 
-			// todo: remove crossed
-			for(var/atom/movable/AM in destination)
-				if(AM == src)
-					continue
-				AM.Crossed(src, oldloc)
-		if(pulling)
-			check_pulling()
-		if(pulledby)
-			pulledby.check_pulling()
-		if(buckled_mobs)
-			handle_buckled_mob_movement(destination, dir, glide_size, TRUE)
+				// moved
+				Moved(oldloc, NONE, TRUE)
+
+			else
+				// move
+				loc = destination
+
+				// exit
+				if(!isnull(oldloc))
+					oldloc.Exited(src, destination)
+					if(old_area && old_area != destarea)
+						old_area.Exited(src)
+				for(var/atom/movable/AM in oldloc)
+					AM.Uncrossed(src)
+
+				// enter
+				destination.Entered(src, oldloc)
+				if(destarea && old_area != destarea)
+					destarea.Entered(src)
+				for(var/atom/movable/AM in destination)
+					if(AM == src)
+						continue
+					AM.Crossed(src, oldloc)
+
+				// moved
+				Moved(oldloc, NONE, TRUE)
+
 		. = TRUE
-
 
 	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
 	else
 		. = TRUE
-		if(buckled_mobs)
-			unbuckle_all_mobs(BUCKLE_OP_FORCE)
-		pulledby?.stop_pulling()
-		if(pulling)
-			stop_pulling()
-		if (loc)
-			var/area/old_area = get_area(oldloc)
-			oldloc.Exited(src, null)
-			if(old_area)
-				old_area.Exited(src, null)
-		loc = null
 
-	Moved(oldloc, NONE, TRUE)
+		if(is_multi_tile)
+			var/list/old_locs = locs // implicit Copy() due to locs being special byond list
+			var/area/old_area = get_area(src)
+			loc = null
+			if(!isnull(old_area))
+				old_area.Exited(src)
+			for(var/atom/A as anything in old_locs)
+				A.Exited(src, null)
+		else
+			loc = null
+			if(!isnull(oldloc))
+				var/area/old_area = get_area(loc)
+				oldloc.Exited(src, null)
+				if(old_area)
+					old_area.Exited(src)
 
-/atom/movable/proc/on_changed_z_level(old_z, new_z)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
-	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
-		var/atom/movable/AM = item
-		AM.on_changed_z_level(old_z, new_z)
+		Moved(oldloc, NONE, TRUE)
+
+	--in_move
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -538,38 +692,10 @@
 	SSspacedrift.processing[src] = src
 	return TRUE
 
-/**
-  * Sets our glide size
-  */
-/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
-	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
-	glide_size = new_glide_size
 
-	if(!recursive)
-		return
+//? Move Force
+// todo: this system is shit
 
-	for(var/m in buckled_mobs)
-		var/mob/buckled_mob = m
-		buckled_mob.set_glide_size(glide_size)
-		recursive_glidesize_update()
-
-/**
-  * Sets our glide size back to our standard glide size.
-  */
-
-/atom/movable/proc/reset_glide_size()
-	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)
-
-///Sets the anchored var and returns if it was sucessfully changed or not.
-/atom/movable/proc/set_anchored(anchorvalue)
-	SHOULD_CALL_PARENT(TRUE)
-	if(anchored == anchorvalue)
-		return
-	. = anchored
-	anchored = anchorvalue
-	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
-
-//? todo: this system is shit
 /**
  * return true to let something push through us
  */
@@ -592,13 +718,70 @@
 	if(!silent && .)
 		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
 
+//? Direction
+
+/**
+ * Hook for running code when a dir change occurs
+ */
+/atom/proc/setDir(newdir)
+	if(dir == newdir)
+		return FALSE
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir
+
+	if (light_source_solo)
+		if (light_source_solo.light_angle)
+			light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		for (var/thing in light_source_multi)
+			L = thing
+			if (L.light_angle)
+				L.source_atom.update_light()
+	return TRUE
+
+//? Z Transit
+
+/**
+ * Called when we change z-levels. This works while inside contents.
+ *
+ * Do not do anything that will re-move the atom, or bad things happen.
+ * Use spawn(0) to yield behavior until after the movement call stack is done if you want to do that.
+ */
+/atom/movable/proc/on_changed_z_level(old_z, new_z)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
+	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+		var/atom/movable/AM = item
+		AM.on_changed_z_level(old_z, new_z)
+
+//? Anchored
+
+/**
+ * Sets the anchored variable
+ *
+ * @params
+ * * anchorvalue - new anchored value
+ *
+ * @return TRUE / FALSE on if anchored changed from its value
+ */
+/atom/movable/proc/set_anchored(anchorvalue)
+	SHOULD_CALL_PARENT(TRUE)
+	if(anchored == anchorvalue)
+		return
+	. = anchored
+	anchored = anchorvalue
+	SEND_SIGNAL(src, COMSIG_MOVABLE_SET_ANCHORED, anchorvalue)
+
+//? Pass Flags
+
 /**
  * for regexing
  */
 /atom/movable/proc/check_pass_flags(flags)
 	return pass_flags & flags
 
-//? movement types
+//? Movement Types
 
 /atom/movable/proc/update_movement_type()
 	var/old_type = movement_type & MOVEMENT_TYPES
@@ -646,3 +829,27 @@
 /atom/movable/proc/remove_atom_floating(source)
 	REMOVE_TRAIT(src, TRAIT_ATOM_FLOATING, source)
 	update_movement_type()
+
+//? Glide Size
+
+/**
+  * Sets our glide size
+  */
+/atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
+	glide_size = new_glide_size
+
+	if(!recursive)
+		return
+
+	for(var/m in buckled_mobs)
+		var/mob/buckled_mob = m
+		buckled_mob.set_glide_size(glide_size)
+		recursive_glidesize_update()
+
+/**
+  * Sets our glide size back to our standard glide size.
+  */
+
+/atom/movable/proc/reset_glide_size()
+	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)

@@ -666,8 +666,6 @@
 
 	if(isSynthetic()) // synth specific temperature values in the absence of a synthetic species
 		var/mob/living/carbon/human/H = src
-		if(H.species.get_species_id() == SPECIES_ID_PROTEAN)
-			return // dont modify protean heat levels
 		//! I hate this, fuck you. Don't override shit in human life(). @Zandario
 		if(H.species.get_species_id() == SPECIES_ID_ADHERENT)
 			return // Don't modify Adherent heat levels ffs
@@ -676,9 +674,9 @@
 			species.heat_level_1 = 400
 			species.heat_level_2 = 420 // haha nice
 			species.heat_level_3 = 1000
-			species.cold_level_1 = 275
-			species.cold_level_2 = 250
-			species.cold_level_3 = 200
+			species.cold_level_1 = 200
+			species.cold_level_2 = 140
+			species.cold_level_3 = 80
 			species.cold_discomfort_level = 290
 			species.heat_discomfort_level = 380
 			species.heat_discomfort_strings = list(
@@ -692,7 +690,7 @@
 				"You feel uncomfortably cold.",
 				"You feel a chill within your wiring."
 				)
-			if(bodytemperature > species.heat_discomfort_level)
+			if(bodytemperature > species.heat_discomfort_level && !(H.species.get_species_id() == SPECIES_ID_PROTEAN))
 				if(world.time >= last_synthcooling_message || last_synthcooling_message == 0)
 					if(src.nutrition <= 50) // do they have enough energy for this?
 						to_chat(src, "<font color='red' face='fixedsys'>Warning: Temperature at critically high levels.</font>")
@@ -1644,7 +1642,7 @@
 /mob/living/carbon/human/proc/handle_changeling()
 	if(mind && mind.changeling)
 		mind.changeling.regenerate()
-		if(hud_used)
+		if(hud_used && ling_chem_display)
 			ling_chem_display.invisibility = 0
 //			ling_chem_display.maptext = "<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#dd66dd'>[round(mind.changeling.chem_charges)]</font></div>"
 			switch(mind.changeling.chem_storage)
@@ -1684,7 +1682,7 @@
 							ling_chem_display.icon_state = "ling_chems80e"
 	else
 		if(mind && hud_used)
-			ling_chem_display.invisibility = 101
+			ling_chem_display?.invisibility = 101
 
 /mob/living/carbon/human/handle_shock()
 	..()
