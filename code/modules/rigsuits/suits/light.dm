@@ -54,7 +54,7 @@
 	helm_type = /obj/item/clothing/head/helmet/space/rig/light/hacker
 	chest_type = /obj/item/clothing/suit/space/rig/light/hacker
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/light/hacker
-	boot_type = /obj/item/clothing/shoes/lightrig/hacker
+	boot_type = /obj/item/clothing/shoes/rig/light/hacker
 
 	initial_modules = list(
 		/obj/item/rig_module/ai_container,

@@ -38,6 +38,20 @@
 	/// last online, set in process()
 	var/last_online = FALSE
 
+	//? Pieces
+	/// helmet
+	var/obj/item/clothing/head/rig/helmet
+	/// chestpiece
+	var/obj/item/clothing/suit/rig/chestpiece
+	/// gauntlets
+	var/obj/item/clothing/gloves/rig/gauntlets
+	/// boots
+	var/obj/item/clothing/shoes/rig/boots
+	#warn check boots var as it wasn't renamed
+
+	//? Power
+
+
 	//? Theme
 	/// active theme - set to path to init
 	var/datum/rig_theme/theme
@@ -53,21 +67,12 @@
 	// Keeps track of what this rig should spawn with.
 	var/suit_type = "hardsuit"
 	var/list/initial_modules
-	var/chest_type = /obj/item/clothing/suit/space/rig
-	var/helm_type =  /obj/item/clothing/head/helmet/space/rig
-	var/boot_type =  /obj/item/clothing/shoes/magboots/rig
-	var/glove_type = /obj/item/clothing/gloves/gauntlets/rig
 	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
 
 	var/unremovable_cell = FALSE
 
 	//Component/device holders.
-	var/obj/item/tank/air_supply                       // Air tank, if any.
-	var/obj/item/clothing/shoes/boots = null                  // Deployable boots, if any.
-	var/obj/item/clothing/suit/space/rig/chest                // Deployable chestpiece, if any.
-	var/obj/item/clothing/head/helmet/space/rig/helmet = null // Deployable helmet, if any.
-	var/obj/item/clothing/gloves/gauntlets/rig/gloves = null  // Deployable gauntlets, if any.
 	var/obj/item/cell/cell                             // Power supply, if any.
 	var/obj/item/rig_module/selected_module = null            // Primary system (used with middle-click)
 	var/obj/item/rig_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
