@@ -32,11 +32,15 @@
 	unacidable = 1
 	preserve_item = 1
 
-	// Activation
+	//? Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
 	/// last online, set in process()
 	var/last_online = FALSE
+
+	//? Theme
+	/// active theme - set to path to init
+	var/datum/rig_theme/theme
 
 	var/suit_state //The string used for the suit's icon_state.
 
