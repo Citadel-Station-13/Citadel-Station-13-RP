@@ -114,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -133,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting

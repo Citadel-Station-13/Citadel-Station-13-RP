@@ -3118,7 +3118,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
 /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
-/obj/item/clothing/suit/storage/hooded/ronincoat,
+/obj/item/clothing/suit/storage/toggle/heated/ronincoat,
 /obj/item/clothing/suit/storage/hooded/wintercoat/ratvar,
 /obj/item/clothing/shoes/fake_brass,
 /obj/item/clothing/suit/storage/hooded/cloak/goliath,

@@ -2581,7 +2581,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/frame/computer{
+/obj/machinery/computer/nanite_chamber{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -13578,9 +13578,7 @@
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under1)
 "Xn" = (
-/obj/structure/frame{
-	dir = 4
-	},
+/obj/machinery/nanite_chamber,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/protean_nanite_room)
 "Xs" = (

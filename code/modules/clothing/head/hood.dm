@@ -125,13 +125,6 @@
 /obj/item/clothing/head/hood/winter/durathread
 	icon_state = "winterhood_durathread"
 
-//Ronin Coat Hood
-/obj/item/clothing/head/hood/ronin
-	name = "ronin heating coils"
-	desc = "Glowing coils designed to ward off cold temperatures."
-	icon_state = "ronin_hood"
-	inv_hide_flags = NONE
-
 //Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
 	name = "explorer hood"
@@ -228,15 +221,6 @@
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
 	inv_hide_flags = NONE
-
-/obj/item/clothing/head/hood/runner
-	name = "Runner Jacket hood"
-	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
-	icon_state = "empty_hood"
-	inv_hide_flags = NONE
-
-/obj/item/clothing/head/hood/runner/half_pint
-	name = "Half-Pint hood"
 
 /obj/item/clothing/head/hood/mercy
 	name = "Mercy Hood"

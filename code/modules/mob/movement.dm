@@ -139,6 +139,7 @@
 		return
 	// nonliving get handled differently
 	if(!isliving(mob))
+		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -321,7 +322,7 @@
 	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(GLOB.reverse_dir[direct])
+			mob.setDir(global.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()

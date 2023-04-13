@@ -193,6 +193,7 @@
 				qdel(A)
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/screwdriver_act(obj/item/I, mob/user, flags, hint)
 	if(!isnull(default_panel))
 		default_deconstruction_screwdriver(user, I)
@@ -238,6 +239,14 @@
 			return dyntool_image_forward(TOOL_SCREWDRIVER)
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
+=======
+/obj/machinery/update_overlays()
+	. = ..()
+	if(panel_open && panel_icon_state)
+		. += panel_icon_state
+
+/obj/machinery/process()//If you dont use process or power why are you here
+>>>>>>> citrp/master
 	return PROCESS_KILL
 
 /obj/machinery/emp_act(severity)
@@ -316,6 +325,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/attack_ai(mob/user)
+	if(IsAdminGhost(user))
+		interact(user)
+		return
 	if(isrobot(user))
 		// For some reason attack_robot doesn't work
 		// This is to stop robots from using cameras to remotely control machines.

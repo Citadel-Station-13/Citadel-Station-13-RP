@@ -1,17 +1,5 @@
 //? master file for balancing / efficiency tuning
 
-//* Machinery
-
-/// idle power usage of a lathe in watts
-#define POWER_USAGE_LATHE_IDLE 25
-/// active power usage of lathe scaling to decisecond work unit (e.g. 4x speed lathe is 4 for input) in watts
-#define POWER_USAGE_LATHE_ACTIVE_SCALE(factor) (factor * 1000)
-
-//* Equipment
-
-/// cost of shield difussion in cell units
-#define CELL_COST_SHIELD_DIFFUSION			120
-
 //* Cells
 
 /// the closest thing we'll get to a cvar - cellrate is kJ per cell unit. kJ to avoid float precision loss.
@@ -26,6 +14,29 @@ GLOBAL_VAR_INIT(cellrate, 0.5)
  */
 /// the closest thing we'll get to a cvar - affects cell use_scaled - higher = things use less energy. handheld devices usually use this.
 GLOBAL_VAR_INIT(cellefficiency, 1)
+
+//* Computers
+
+/// Idle usage of a mid-range control computer in watts
+#define POWER_USAGE_COMPUTER_MID_IDLE 50
+/// Active usage of a mid-range control computer in watts
+#define POWER_USAGE_COMPUTER_MID_ACTIVE 500
+
+//* Equipment
+
+/// cost of shield difussion in cell units
+#define CELL_COST_SHIELD_DIFFUSION			120
+
+//* Machinery
+
+/// idle power usage of a lathe in watts
+#define POWER_USAGE_LATHE_IDLE 25
+/// active power usage of lathe scaling to decisecond work unit (e.g. 4x speed lathe is 4 for input) in watts
+#define POWER_USAGE_LATHE_ACTIVE_SCALE(factor) (factor * 1000)
+/// Idle usage of a nanite chamber in watts
+#define POWER_USAGE_NANITE_CHAMBER_IDLE 100
+/// Active usage of a nanite chamber in watts
+#define POWER_USAGE_NANITE_CHAMBER_ACTIVE 5000
 
 //* Misc
 

@@ -1022,6 +1022,11 @@
 
 //? Layers
 
+/// Sets our plane
+/atom/proc/set_plane(new_plane)
+	ASSERT(isnum(new_plane))
+	plane = new_plane
+
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
 	ASSERT(isnum(new_layer))

@@ -1,7 +1,7 @@
 //NT Pulse Weapon Pinnacle Technology
 /obj/item/gun/energy/pulse_rifle
-	name = "\improper NT-PR-2 pulse rifle"
-	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, pulse rifles use advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
+	name = "\improper pulse rifle"
+	desc = "The absolute pinnacle of NanoTrasen's beam weaponry, the NT-PR2 pulse rifle uses advanced pulse-based beam generation technology to emit powerful laser blasts. Because of its complexity and cost, it is rarely seen in use except by specialists."
 	icon_state = "pulse"
 	item_state = null	//so the human update icon uses the icon_state instead.
 	slot_flags = SLOT_BELT|SLOT_BACK
@@ -24,8 +24,8 @@
 	use_external_power = 1
 
 /obj/item/gun/energy/pulse_rifle/destroyer
-	name = "\improper NT-PD-1 pulse destroyer"
-	desc = "A heavy-duty, pulse-based energy weapon. Because of its complexity and cost, it is rarely seen in use except by specialists."
+	name = "\improper pulse destroyer"
+	desc = "A heavy-duty, pulse-based energy weapon. Because of its complexity and cost, the NT-PD-1 pulse destroyer it is rarely seen in use except by specialists."
 	projectile_type=/obj/projectile/beam/pulse
 	charge_cost = 120
 
@@ -36,8 +36,8 @@
 	to_chat(user, "<span class='warning'>[src.name] has three settings, and they are all DESTROY.</span>")
 
 /obj/item/gun/energy/pulse_pistol
-	name = "\improper NT-PS-4 pulse pistol"
-	desc = "Compact pulse weapons are only issued to trained Central Command Officers for personal defense. They are sometimes selected by ERT or DDO operatives as a fallback sidearm."
+	name = "\improper pulse pistol"
+	desc = "Compact NT-PS-4 pulse pistols are only issued to trained Central Command Officers for personal defense. They are sometimes selected by ERT or DDO operatives as a fallback sidearm."
 	icon_state = "pulse_pistol"
 	item_state = null
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
