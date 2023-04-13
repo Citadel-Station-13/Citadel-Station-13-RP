@@ -29,7 +29,7 @@
 	if(resting == value)
 		return
 	resting = value
-	mobility_flags = (mobility_flags & MOBILITY_IS_STANDING) | (value? MOBILITY_IS_STANDING : NONE)
+	mobility_flags = (mobility_flags & ~(MOBILITY_IS_STANDING)) | (value? MOBILITY_IS_STANDING : NONE)
 	SEND_SIGNAL(src, COMSIG_MOB_ON_SET_RESTING, value)
 	update_lying()
 

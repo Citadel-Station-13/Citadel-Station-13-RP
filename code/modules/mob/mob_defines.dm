@@ -99,6 +99,9 @@
 	//  todo: move to /living level, things should be checking mobility flags anyways.
 	/// which way are we lying down right now? in degrees. 0 default since we're not laying down.
 	var/lying = 0
+	//  todo: ditto, move to /living later maybe
+	/// which way we were last lying? used by update_transform.
+	var/lying_prev = 0
 
 	//? Status Effects
 	/// A list of all status effects the mob has

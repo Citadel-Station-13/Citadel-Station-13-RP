@@ -131,5 +131,3 @@
 	var/resting_intentionally = FALSE
 	/// are we resisting out of a resting state?
 	var/getting_up = FALSE
-	#warn AAA
-	// todo: move resting here
