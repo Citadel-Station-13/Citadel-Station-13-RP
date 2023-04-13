@@ -169,10 +169,6 @@
 	/// The likelihood of a speech sound playing.
 	var/list/speech_chance = list()
 
-	//? Abilities
-	/// abilities - typepaths, new'd on init.
-	var/list/datum/ability/abilities
-
 	//? Age
 	/// The minimum age a species is allowed to be played as. For our purposes, this is global.
 	var/min_age = 18
@@ -316,6 +312,9 @@
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
 
+	//? Abilities + Legacy Verbs / Spells
+	/// abilities - typepaths, new'd on init.
+	var/list/datum/ability/abilities
 	/// Species-specific verbs.
 	var/list/inherent_verbs = list()
 	/// Species-specific spells.
