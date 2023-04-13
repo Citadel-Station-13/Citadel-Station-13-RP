@@ -343,14 +343,14 @@
 			if (!src.restrained())
 				message = "flaps [T.his] wings."
 				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
+				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
 
 		if ("aflap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings ANGRILY!"
 				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
+				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
 
 		if("ara")

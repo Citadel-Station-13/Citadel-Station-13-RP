@@ -7,6 +7,8 @@
 
 /// From species
 #define SPECIES_TRAIT "species"
+/// From species quirks
+#define QUIRK_TRAIT "quirk"
 /// status effect trait source
 #define STATUS_EFFECT_TRAIT(id) "status_effect_[id]"
 
@@ -26,22 +28,11 @@
 
 //? Unsorted / Legacy
 
-/*
-#define EYE_DAMAGE "eye_damage"
-#define GENETIC_MUTATION "genetic"
-#define OBESITY "obesity"
-*/
 #define MAGIC_TRAIT "magic"
-/*
-#define TRAUMA_TRAIT "trauma"
-#define DISEASE_TRAIT "disease"
-#define SPECIES_TRAIT "species"
-#define ORGAN_TRAIT "organ"
-*/
 
 #define HOLOGRAM_TRAIT "hologram"
 ///Mime trait.
-#define TRAIT_MIME "mime"
+#define MIME_TRAIT "mime"
 
 #define CLOTHING_TRAIT "clothing"
 #define RIG_TRAIT "rig"
@@ -66,7 +57,7 @@
 /// from the CPR system
 #define CPR_TRAIT "cpr"
 
-//? species & traits
+//? species specific source
 
 /// shadekin phasing ability
 #define SPECIES_SHADEKIN_PHASING_TRAIT "shadekin1"

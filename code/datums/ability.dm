@@ -136,7 +136,7 @@
 	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
-		if(!do_after(user, windup, ignore_movement = !windup_requires_still))
+		if(!do_after(user, windup, (windup_requires_still? NONE : DO_AFTER_IGNORE_MOVEMENT), mobility_check_flags))
 			return
 		if(!check_trigger(user, toggling, TRUE))
 			return
