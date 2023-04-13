@@ -102,7 +102,7 @@
 		qdel(src)
 
 /obj/item/sleevecard/see_emote(mob/living/M, text)
-	if(infomorph && infomorph.client && !infomorph.canmove)
+	if(infomorph && infomorph.client)
 		var/rendered = "<span class='message'>[text]</span>"
 		infomorph.show_message(rendered, 2)
 	..()

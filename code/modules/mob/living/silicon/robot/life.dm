@@ -75,8 +75,8 @@
 
 	AdjustConfused(-1)
 
-	else //Dead or just unconscious.
-		src.blinded = 1
+	blinded = !!IS_DEAD(src)
+
 
 	if (src.stuttering) src.stuttering--
 

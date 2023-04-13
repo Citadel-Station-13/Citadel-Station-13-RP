@@ -1079,7 +1079,7 @@
 				qdel(a)
 
 		//Brain damage from Oxyloss
-		if(should_have_organ("brain"))
+		if(should_have_organ(O_BRAIN))
 			var/brainOxPercent = 0.015		//Default 1.5% of your current oxyloss is applied as brain damage, 50 oxyloss is 1 brain damage
 			if(CE_STABLE in chem_effects)
 				brainOxPercent = 0.008		//Halved in effect
@@ -1092,21 +1092,16 @@
 			afflict_unconscious(20 * 10)
 			setHalLoss(species.total_health - 1)
 
-		if(paralysis || sleeping)
+		if(!IS_CONSCIOUS(src))
 			blinded = 1
-			set_stat(UNCONSCIOUS)
 			animate_tail_reset()
 			adjustHalLoss(-3)
 
-			if(sleeping)
-				handle_dreams()
-				if (mind)
-					//Are they SSD? If so we'll keep them asleep but work off some of that sleep var in case of stoxin or similar.
-					if(!was_ssd || sleeping > 3)
-						adjust_sleeping(20 * -1)
-				if( prob(2) && health && !hal_crit )
-					spawn(0)
-						emote("snore")
+		if(is_sleeping())
+			handle_dreams()
+			if( prob(2) && health > 0 && !hal_crit )
+				spawn(0)
+					emote("snore")
 		//CONSCIOUS
 		else
 			set_stat(CONSCIOUS)
@@ -1173,7 +1168,7 @@
 			ear_damage = max(ear_damage-0.05, 0)
 
 		//Resting
-		if(resting)
+		if(IS_PRONE(src))
 			dizziness = max(0, dizziness - 15)
 			jitteriness = max(0, jitteriness - 15)
 			adjustHalLoss(-3)
