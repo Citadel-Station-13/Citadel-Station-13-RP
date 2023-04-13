@@ -908,7 +908,7 @@
 			if(H.brainmob)
 				if(H.brainmob.real_name == src.real_name)
 					if(H.brainmob.mind)
-						H.brainmob.mind.transfer_to(src)
+						H.brainmob.mind.transfer(src)
 						qdel(H)
 
 	// Reapply markings/appearance from prefs for player mobs

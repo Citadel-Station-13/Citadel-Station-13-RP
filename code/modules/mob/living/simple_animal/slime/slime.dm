@@ -363,7 +363,7 @@
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
 			new_slime.universal_speak = universal_speak
 			if(src.mind)
-				src.mind.transfer_to(new_slime)
+				src.mind.transfer(new_slime)
 			else
 				new_slime.key = src.key
 			qdel(src)
