@@ -8374,6 +8374,10 @@
 "Xw" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
+"Xx" = (
+/obj/machinery/telecomms/allinone,
+/turf/simulated/floor/tiled/steel_dirty,
+/area/class_m/inside)
 "Xy" = (
 /obj/machinery/light/spot{
 	dir = 4;
@@ -42225,7 +42229,7 @@ hk
 aR
 oK
 hw
-xa
+Xx
 aR
 hk
 jo
