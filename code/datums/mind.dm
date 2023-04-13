@@ -30,7 +30,12 @@
 	var/ckey
 	/// Replaces mob/var/original_name
 	var/name
+	//  todo: /mob, not /living
+	/// the mob we're currently inhabiting. the mind can be referenced by many mobs, however, only one may be 'owned' by it.
+	/// this functionality is used for things like aghosting and astral projection, as even though the player is in another mob,
+	/// their actual mob is what owns their mind.
 	var/mob/living/current
+
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/active = FALSE
 
@@ -132,11 +137,16 @@
 	// null mind
 	current.mind = null
 
+	// done
+	current = null
+
 /datum/mind/proc/associate(mob/new_character)
 	ASSERT(isnull(current))
 	ASSERT(isnull(new_character.mind))
 
+	// start
 	current = new_character
+
 	// set mind
 	new_character.mind = src
 	// add characteristics

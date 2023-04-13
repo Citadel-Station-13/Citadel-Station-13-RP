@@ -82,9 +82,16 @@
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
-	if(mind?.current == src)
-		spellremove(src)
-	mind?.disassociate()
+	// mind
+	if(!isnull(mind))
+		if(mind.current == src)
+			// mind is ours, let it disassociate
+			// todo: legacy spell
+			spellremove(src)
+			mind?.disassociate()
+		else
+			// mind is not ours, null it out
+			mind = null
 	// abilities
 	dispose_abilities()
 	// this kicks out client
