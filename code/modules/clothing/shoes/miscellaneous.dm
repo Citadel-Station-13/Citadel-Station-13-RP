@@ -273,3 +273,10 @@
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "taushoe"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/ballet
+	name = "Antheia pointe shoes"
+	desc = "These shoes feature long lace straps and flattened off toes. They originate from the Old Earth art of ballet, which featured many acrobatic and technical moves assisted by these shoes."
+	icon = 'icons/clothing/shoes/ballet.dmi'
+	icon_state = "ballet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
