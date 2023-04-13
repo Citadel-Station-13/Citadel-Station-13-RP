@@ -107,6 +107,10 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
+	abilities = list(
+		/datum/ability/species/xenochimera/regenerate,
+	)
+
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
@@ -141,7 +145,6 @@
 	inherent_spells = list(
 		/spell/targeted/chimera/thermal_sight,
 		/spell/targeted/chimera/voice_mimic,
-		/spell/targeted/chimera/regenerate,
 		/spell/targeted/chimera/hatch,
 		/spell/targeted/chimera/no_breathe,
 	)
@@ -654,3 +657,86 @@
 				SPAN_DANGER("[src] pulls the tendrils out!"),
 				SPAN_WARNING("The sensation fades. You feel made anew."),
 			)
+
+//? Abilities
+
+/datum/ability/species/xenochimera
+	abstract_type = /datum/ability/species/xenochimera
+	category = "Xenochimera"
+	ability_check_flags = NONE
+	always_bind = TRUE
+	action_icon = 'icons/screen/actions/changeling.dmi'
+
+	var/nutrition_cost_minimum = 50
+	var/nutrition_cost_proportional = 20 //percentage of nutriment it should cost if it's higher than the minimum
+	var/nutrition_enforced = FALSE
+
+
+/datum/ability/species/xenochimera/check_trigger(mob/user, toggling)
+	. = ..()
+	if(!.)
+		return
+	if(!ishuman(owner))
+		return FALSE
+	var/mob/living/carbon/human/H = owner
+	if(nutrition_enforced)
+		if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
+			to_chat(user,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
+			return FALSE
+
+
+/datum/ability/species/xenochimera/on_trigger(mob/user, toggling)
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	var/nut = (H.nutrition * nutrition_cost_proportional) / 100
+	var/final_cost
+	if(nut > nutrition_cost_minimum)
+		final_cost = nut
+	else
+		final_cost = nutrition_cost_minimum
+
+	if((H.nutrition - final_cost) >= 0)
+		H.nutrition -= final_cost
+	else
+		H.nutrition = 0		//We're already super starved, and feral, so cast it for free, you're likely using it to get food at this point.
+
+/datum/ability/species/xenochimera/regenerate
+	name = "Regeneration"
+	desc = "We shed our skin, purging it of damage, regrowing limbs."
+	action_state = "fleshmend"
+	nutrition_cost_minimum = 500
+	nutrition_cost_proportional = 75
+	nutrition_enforced = TRUE
+	cooldown = 1 MINUTE
+	windup = 10 SECONDS
+	var/healing_amount = 60
+
+/datum/ability/species/xenochimera/regenerate/on_trigger()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	H.restore_blood()
+	H.species.create_organs(H)
+	H.restore_all_organs()
+	H.adjustBruteLoss(-healing_amount)
+	H.adjustFireLoss(-healing_amount)
+	H.adjustOxyLoss(-healing_amount)
+	H.adjustCloneLoss(-healing_amount)
+	H.adjustBrainLoss(-healing_amount)
+	H.blinded = FALSE
+	H.SetBlinded(FALSE)
+	H.eye_blurry = FALSE
+	H.ear_deaf = FALSE
+	H.ear_damage = FALSE
+
+	H.regenerate_icons()
+
+	playsound(H, 'sound/effects/blobattack.ogg', 30, 1)
+	var/T = get_turf(src)
+	new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
+	H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
+	"<span class='notice'>We reform our body.  We are whole once more.</span>",
+	"<span class='italics'>You hear organic matter ripping and tearing!</span>")

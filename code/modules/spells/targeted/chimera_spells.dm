@@ -112,69 +112,6 @@
 		else
 			return
 
-
-////////////////
-//Regeneration//
-////////////////
-//Huge cooldown, huge cost, but will actually heal most of your issues.
-
-/spell/targeted/chimera/regenerate
-	name = "Regeneration"
-	desc = "We shed our skin, purging it of damage, regrowing limbs."
-
-	spell_flags = INCLUDEUSER
-	hud_state = "ling_fleshmend"
-	invocation = "none"
-	invocation_type = SpI_NONE
-	charge_max = 10 MINUTES
-	duration = 0
-	nutrition_cost_minimum = 500
-	nutrition_cost_proportional = 75
-	var/healing_amount = 60
-	var/delay = 1 MINUTE
-
-
-/spell/targeted/chimera/regenerate/cast_check(skipcharge = 0,mob/user = usr)
-	if(..())
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
-				to_chat(H,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
-				return FALSE
-			else return TRUE
-
-/spell/targeted/chimera/regenerate/cast(list/targets, mob/user = usr)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(do_self(H, delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
-			H.restore_blood()
-			H.species.create_organs(H)
-			H.restore_all_organs()
-			H.adjustBruteLoss(-healing_amount)
-			H.adjustFireLoss(-healing_amount)
-			H.adjustOxyLoss(-healing_amount)
-			H.adjustCloneLoss(-healing_amount)
-			H.adjustBrainLoss(-healing_amount)
-			H.blinded = FALSE
-			H.SetBlinded(FALSE)
-			H.eye_blurry = FALSE
-			H.ear_deaf = FALSE
-			H.ear_damage = FALSE
-
-			H.regenerate_icons()
-
-			playsound(H, 'sound/effects/blobattack.ogg', 30, 1)
-			var/T = get_turf(src)
-			new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
-			H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
-			"<span class='notice'>We reform our body.  We are whole once more.</span>",
-			"<span class='italics'>You hear organic matter ripping and tearing!</span>")
-			..()
-		else
-			to_chat(user,"<span class = 'warning'>We were interrupted!</span>")
-			charge_counter = 9.8 MINUTES
-
-
 ////////////////
 //Revive spell//
 ////////////////

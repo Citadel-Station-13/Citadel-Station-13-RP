@@ -345,7 +345,7 @@
 	src.ckey = player.ckey
 
 	if(player.mob && player.mob.mind)
-		player.mob.mind.transfer_to(src)
+		player.mob.mind.transfer(src)
 
 	lawupdate = 0
 	to_chat(src, "<b>Systems rebooted</b>. Loading base pattern maintenance protocol... <b>loaded</b>.")

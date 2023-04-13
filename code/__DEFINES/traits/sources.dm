@@ -1,20 +1,48 @@
+//? Generic sources - use extremely sparingly.
+
 /// generic trait source
 #define GENERIC_TRAIT "generic"
+
+//? Mob Sources
+
+/// From species
+#define SPECIES_TRAIT "species"
+/// status effect trait source
+#define STATUS_EFFECT_TRAIT(id) "status_effect_[id]"
+
+//? Role / Jobs
+
 /// from your role
 #define ROLE_TRAIT(id) "role_[id]"
-/// status effect trait source
-#define STATUS_EFFECT_TRAIT "status_effect"
 /// from your ghostrole instantiator
 #define GHOSTROLE_TRAIT "ghostrole"
 
+//? Admin / Special Sources
+
+/// legacy: Cannot be removed without admin intervention
+#define ROUNDSTART_TRAIT "roundstart"
+/// From vv
+#define ADMIN_TRAIT "admin"
+
+//? Unsorted / Legacy
+
+/*
+#define EYE_DAMAGE "eye_damage"
+#define GENETIC_MUTATION "genetic"
+#define OBESITY "obesity"
+*/
 #define MAGIC_TRAIT "magic"
-/// from custom species quirks
-#define QUIRK_TRAIT "roundstart"
+/*
+#define TRAUMA_TRAIT "trauma"
+#define DISEASE_TRAIT "disease"
+#define SPECIES_TRAIT "species"
+#define ORGAN_TRAIT "organ"
+*/
+
 #define HOLOGRAM_TRAIT "hologram"
 ///Mime trait.
-#define MIME_TRAIT "mime"
-/// (B)admins only.
-#define ADMIN_TRAIT "admin"
+#define TRAIT_MIME "mime"
+
 #define CLOTHING_TRAIT "clothing"
 #define RIG_TRAIT "rig"
 #define MAGBOOT_TRAIT "magboot"
@@ -26,6 +54,7 @@
 #define MMI_TRAIT "mmi"
 #define STASIS_BAG_TRAIT "stasis_bag"
 #define GRIPPER_TRAIT "gripper"
+
 
 #define HAND_REPLACEMENT_TRAIT "magic-hand"
 
@@ -39,8 +68,10 @@
 
 //? species & traits
 
+/// shadekin phasing ability
 #define SPECIES_SHADEKIN_PHASING_TRAIT "shadekin1"
 
 //? component source
+
 /// rad_insulation
 #define TRAIT_SOURCE_COMPONENT_RAD_INSULATION "c_rad_insulation"

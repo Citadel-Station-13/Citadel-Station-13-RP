@@ -61,7 +61,7 @@
 //--------------- Projectiles ----------------
 /obj/projectile/energy/electrode/secutor
 	name = "secutor electrode"
-	fire_sound = 'sound/weapons/Gunshot2.ogg'
+	fire_sound = 'sound/weapons/secutortaser.ogg'
 	icon_state = "energy4"
 	light_range = 2
 	light_power = 0.6

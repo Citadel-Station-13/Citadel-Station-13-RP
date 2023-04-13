@@ -64,7 +64,7 @@
 	O.aiRestorePowerRoutine = 0
 
 	if(mind)
-		mind.transfer_to(O)
+		mind.transfer(O)
 		O.mind.original = O
 	else
 		O.key = key
@@ -120,7 +120,7 @@
 	O.invisibility = 0
 
 	if(mind)		//TODO
-		mind.transfer_to(O)
+		mind.transfer(O)
 		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
 			if(O.mind.role_alt_title == "Drone")

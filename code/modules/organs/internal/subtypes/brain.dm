@@ -93,7 +93,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 				brainmob.add_modifier(M.type)
 
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 
 	brainmob.languages = H.languages
 
@@ -131,7 +131,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	if(brainmob)
 		if(brainmob.mind)
-			brainmob.mind.transfer_to(target)
+			brainmob.mind.transfer(target)
 		else
 			target.ckey = brainmob.ckey
 	..()
@@ -265,7 +265,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 			qdel(E)
 			E = null
 	H.regenerate_icons()
-	clonemind.transfer_to(H)
+	clonemind.transfer(H)
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 

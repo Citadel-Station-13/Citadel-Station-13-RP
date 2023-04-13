@@ -105,7 +105,7 @@
 		I.loc = O
 		I.implanted = O
 
-	C.mind.transfer_to(O)
+	C.mind.transfer(O)
 	O.make_changeling()
 	O.changeling_update_languages(changeling.absorbed_languages)
 

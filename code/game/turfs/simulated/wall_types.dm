@@ -1,6 +1,7 @@
 /turf/simulated/wall/r_wall
 	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "rgeneric"
+	color = null
 	rad_insulation = RAD_INSULATION_SUPER
 
 	material        = /datum/material/plasteel

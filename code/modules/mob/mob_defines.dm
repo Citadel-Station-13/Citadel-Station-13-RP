@@ -78,6 +78,10 @@
 	/// shifted pixel y
 	var/shift_pixel_y = 0
 
+	//? Abilities
+	/// our abilities - set to list of paths to init to intrinsic abilities.
+	var/list/datum/ability/abilities
+
 	//? Inventory
 	/// our inventory datum, if any.
 	var/datum/inventory/inventory

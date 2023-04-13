@@ -12,6 +12,8 @@
 #define ACTION_CHECK_INSIDE (1<<4)
 #define ACTION_CHECK_CONSCIOUS (1<<5)
 
+//? Action Datum
+
 // todo: multiple owners
 // todo: ability datums? cooldown needs more checking
 /**
@@ -49,12 +51,24 @@
 	var/mobility_flags = NONE
 	var/processing = 0
 	var/active = 0
-	var/atom/movable/screen/movable/action_button/button = null
 	var/button_icon = 'icons/screen/actions/actions.dmi'
+
 	var/button_icon_state = "default"
-	var/background_icon = 'icons/screen/actions/actions.dmi'
-	var/background_icon_state = "bg_default"
+
+	var/background_icon = 'icons/screen/actions/backgrounds.dmi'
+	/// background icon state in [background_icon] - the state_on overlay will be added when this is active, automatically.
+	var/background_icon_state = "default"
 	var/mob/owner
+
+	//? Button
+	/// Our actual on-screen action button
+	var/atom/movable/screen/movable/action_button/button
+	/// last button availability
+	var/button_availability
+	/// last button toggle
+	var/button_toggled
+	/// are button updates managed? if so, we don't auto update.
+	var/button_managed = FALSE
 
 /datum/action/New(datum/target)
 	if(!target_compatible(target))
@@ -167,7 +181,12 @@
 /datum/action/proc/UpdateName()
 	return name
 
-/datum/action/proc/update_button(atom/movable/screen/movable/action_button/button)
+/**
+ * updates button state to match our stored state.
+ */
+/datum/action/proc/update_button()
+	auto_button_update(update = FALSE)
+
 	button.icon = background_icon
 	button.icon_state = background_icon_state
 
@@ -182,10 +201,37 @@
 	img.pixel_y = 0
 	button.add_overlay(img)
 
-	if(!IsAvailable())
+	if(button_availability < 1)
 		button.color = rgb(128,0,0,128)
 	else
 		button.color = rgb(255,255,255,255)
+
+/**
+ * pushes immediate button update
+ *
+ * @params
+ * * availability - 0 to 1 of how ready we are
+ * * active - turned on?
+ * * update - update button appearance?
+ */
+/datum/action/proc/push_button_update(availability, active, update = TRUE)
+	button_availability = availability
+	button_toggled = active
+	if(update)
+		update_button()
+
+/**
+ * automatically updates button
+ *
+ * @params
+ * * update - update button appearance?
+ */
+/datum/action/proc/auto_button_update(update)
+	if(button_managed)
+		return
+	push_button_update(IsAvailable()? 1 : 0, active, update)
+
+//? Action Button
 
 /atom/movable/screen/movable/action_button
 	var/datum/action/owner
@@ -204,7 +250,7 @@
 /atom/movable/screen/movable/action_button/proc/UpdateIcon()
 	if(!owner)
 		return
-	owner.update_button(src)
+	owner.update_button()
 
 //Hide/Show Action Buttons ... Button
 /atom/movable/screen/movable/action_button/hide_toggle

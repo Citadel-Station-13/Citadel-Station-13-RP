@@ -119,7 +119,7 @@
 	// Here let's calculate their health so the pod doesn't immediately eject them!!!
 	H.update_health()
 
-	clonemind.transfer_to(H)
+	clonemind.transfer(H)
 	H.ckey = R.ckey
 	to_chat(H, SPAN_BOLDDANGER("Consciousness slowly creeps over you as your body regenerates.<br>") + SPAN_USERDANGER("Your recent memories are fuzzy, and it's hard to remember anything from today...<br>") + SPAN_NOTICE(SPAN_ROSE("So this is what cloning feels like?")))
 

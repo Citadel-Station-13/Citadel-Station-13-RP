@@ -246,7 +246,7 @@
 	brainmob.timeofhostdeath = H.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 	return
 
 /obj/item/mmi/digital/attack_self(mob/user)

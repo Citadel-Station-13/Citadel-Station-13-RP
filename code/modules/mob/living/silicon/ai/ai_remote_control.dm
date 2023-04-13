@@ -43,7 +43,7 @@
 		soul_link(/datum/soul_link/shared_body, src, target)
 		deployed_shell = target
 		target.deploy_init(src)
-		mind.transfer_to(target)
+		mind.transfer(target)
 		teleop = target // So the AI 'hears' messages near its core.
 		target.post_deploy()
 

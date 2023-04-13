@@ -121,7 +121,6 @@
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/onionseed = 3,
 		/obj/item/seeds/peanutseed = 3,
-		/obj/item/seeds/peaseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
 		/obj/item/seeds/potatoseed = 3,
@@ -141,8 +140,9 @@
 		/obj/item/seeds/vanilla = 3,
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
-		/obj/item/seeds/whitebeetseed = 3
-		)
+		/obj/item/seeds/whitebeetseed = 3,
+		/obj/item/seeds/wabback = 2
+)
 
 /obj/machinery/seed_storage/xenobotany
 	name = "Xenobotany seed storage"
@@ -179,6 +179,7 @@
 		/obj/item/seeds/nettleseed = 2,
 		/obj/item/seeds/orangeseed = 3,
 		/obj/item/seeds/peanutseed = 3,
+		/obj/item/seeds/peaseed = 3,
 		/obj/item/seeds/plastiseed = 3,
 		/obj/item/seeds/plumpmycelium = 3,
 		/obj/item/seeds/poppyseed = 3,
@@ -202,7 +203,7 @@
 		/obj/item/seeds/watermelonseed = 3,
 		/obj/item/seeds/wheatseed = 3,
 		/obj/item/seeds/whitebeetseed = 3
-		)
+)
 
 /obj/machinery/seed_storage/attack_hand(mob/user, list/params)
 	if(machine_stat & (BROKEN|NOPOWER))

@@ -193,7 +193,7 @@ var/list/ai_verbs_default = list(
 			return
 		else
 			if (B.brainmob.mind)
-				B.brainmob.mind.transfer_to(src)
+				B.brainmob.mind.transfer(src)
 
 			on_mob_init()
 

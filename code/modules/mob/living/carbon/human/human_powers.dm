@@ -187,7 +187,7 @@
 	transfer_languages(src, S)
 
 	if(mind)
-		mind.transfer_to(S)
+		mind.transfer(S)
 
 	message_admins("\The [src] has split into nymphs; player now controls [key_name_admin(S)]")
 	log_admin("\The [src] has split into nymphs; player now controls [key_name(S)]")
