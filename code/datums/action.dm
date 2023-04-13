@@ -181,6 +181,8 @@
  * updates button state to match our stored state.
  */
 /datum/action/proc/update_button()
+	auto_button_update(update = FALSE)
+
 	button.icon = background_icon
 	button.icon_state = background_icon_state
 
@@ -206,19 +208,24 @@
  * @params
  * * availability - 0 to 1 of how ready we are
  * * active - turned on?
+ * * update - update button appearance?
  */
-/datum/action/proc/push_button_update(availability, active)
+/datum/action/proc/push_button_update(availability, active, update = TRUE)
 	button_availability = availability
 	button_toggled = active
-	update_button()
+	if(update)
+		update_button()
 
 /**
  * automatically updates button
+ *
+ * @params
+ * * update - update button appearance?
  */
-/datum/action/proc/auto_button_update()
+/datum/action/proc/auto_button_update(update)
 	if(button_managed)
 		return
-	push_button_update(IsAvailable()? 1 : 0, active)
+	push_button_update(IsAvailable()? 1 : 0, active, update)
 
 //? Action Button
 
