@@ -142,7 +142,7 @@
 	return
 
 /obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
-	var/exhaust_dir = REVERSE_DIR(dir)
+	var/exhaust_dir = global.reverse_dir[dir]
 	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
 	while(!(isspaceturf(T) || (T.mz_flags & (MZ_ATMOS_BOTH))))
 		var/turf/next = get_step(T, exhaust_dir)
@@ -170,7 +170,7 @@
 	if(network)
 		network.update = 1
 
-	var/exhaust_dir = REVERSE_DIR(dir)
+	var/exhaust_dir = global.reverse_dir[dir]
 	var/turf/T = get_step(src,exhaust_dir)
 	if(T)
 		T.assume_air(removed)

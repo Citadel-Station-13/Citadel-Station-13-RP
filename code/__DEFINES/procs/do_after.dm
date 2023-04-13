@@ -56,3 +56,5 @@
 #define INTERACTING_FOR_ATTACK_HAND "attack_hand"
 /// Generic 'something' in alt click
 #define INTERACTING_FOR_ALT_CLICK "alt_click"
+/// Attempting to resist out of something
+#define INTERACTING_FOR_RESIST "resist"
