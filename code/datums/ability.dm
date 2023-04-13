@@ -240,11 +240,9 @@
 		return TRUE
 	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
+	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
-		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
 		return FALSE
 	return TRUE
 

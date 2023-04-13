@@ -1112,7 +1112,7 @@
 	var/power_cost = 200
 	if(!ai_moving)
 		power_cost = 20
-	if(protean_shitcode_moment)	// fuck this kill me
+	if(!protean_shitcode_moment)	// fuck this kill me
 		cell.use(power_cost) //Arbitrary, TODO
 	wearer.Move(get_step(get_turf(wearer),direction),direction)
 

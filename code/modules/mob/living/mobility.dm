@@ -33,7 +33,17 @@
 	SEND_SIGNAL(src, COMSIG_MOB_ON_SET_RESTING, value)
 	update_lying()
 
+/**
+ * immediately toggles resting
+ * does not check mobility flags.
+ */
+/mob/living/proc/toggle_resting()
+	set_resting(!resting)
+
 /mob/living/proc/resist_a_rest(instant = FALSE)
+	#warn impl
+
+/mob/living/proc/_resist_a_rest()
 	#warn impl
 
 /mob/living/proc/set_intentionally_resting(value, instant)
@@ -89,13 +99,9 @@
 /mob/proc/cannot_stand()
 	return incapacitated(INCAPACITATION_KNOCKDOWN)
 
-
-#warn refactor
-
 /mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"
 
-	toggle_resting()
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-	update_canmove()
+	toggle_intentionally_resting()
