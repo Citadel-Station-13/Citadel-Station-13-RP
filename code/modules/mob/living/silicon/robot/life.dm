@@ -68,22 +68,12 @@
 			src.camera.set_status(1)
 
 	update_health()
+	update_stat()
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
-	if (!IS_DEAD(src)) //Alive.
-		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
-			src.set_stat(UNCONSCIOUS)
-			if (src.paralysis > 0)
-				src.blinded = 1
-			else
-				src.blinded = 0
-
-		else	//Not stunned.
-			src.set_stat(CONSCIOUS)
-
-		AdjustConfused(-1)
+	AdjustConfused(-1)
 
 	else //Dead or just unconscious.
 		src.blinded = 1

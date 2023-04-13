@@ -34,6 +34,7 @@
 /obj/item/proc/equipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_EQUIPPED, user, slot, flags)
 	worn_slot = slot
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -57,6 +58,7 @@
 /obj/item/proc/unequipped(mob/user, slot, flags)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot, flags)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_UNEQUIPPED, user, slot, flags)
 	worn_slot = null
 	if(!(flags & INV_OP_IS_ACCESSORY))
 		// todo: shouldn't be in here
@@ -91,6 +93,7 @@
 	user.handle_actions()
 
 	. = SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user, flags, newLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_DROPPED, src, flags, newLoc)
 
 	if(!(flags & INV_OP_SUPPRESS_SOUND) && isturf(newLoc) && !(. & COMPONENT_ITEM_DROPPED_SUPPRESS_SOUND))
 		playsound(src, drop_sound, 30, ignore_walls = FALSE)
@@ -108,6 +111,7 @@
 /obj/item/proc/pickup(mob/user, flags, atom/oldLoc)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
 	pixel_x = initial(pixel_x)
 	pixel_y = initial(pixel_y)
 	hud_layerise()

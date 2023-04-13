@@ -109,7 +109,7 @@
 	while(world.time < (start_time + delay))
 		stoplag(1)
 
-		progress?.update((world.time - starttime) * delay_factor)
+		progress?.update((world.time - start_time) * delay_factor)
 
 		// check if deleted
 		if(QDELETED(user))

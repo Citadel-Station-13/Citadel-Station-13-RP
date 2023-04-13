@@ -159,9 +159,8 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)

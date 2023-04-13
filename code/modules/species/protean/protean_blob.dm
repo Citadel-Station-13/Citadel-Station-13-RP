@@ -609,7 +609,8 @@
 
 /datum/modifier/protean/steelBlob/tick()
 	..()
-	if(holder.temporary_form?.resting)
+	var/mob/living/living_form = holder.temporary_form
+	if(istype(living_form) && living_form.resting)
 		return
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
