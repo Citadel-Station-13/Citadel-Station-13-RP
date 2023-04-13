@@ -707,10 +707,6 @@ default behaviour is:
 	else
 		density = initial(density)
 
-	if(lying != lying_prev)
-		lying_prev = lying
-		update_transform()
-		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
 	#warn redo
 
 // Mob holders in these slots will be spilled if the mob goes prone.

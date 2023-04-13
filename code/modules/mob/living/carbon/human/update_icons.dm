@@ -89,6 +89,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/matrix/M = matrix()
 	var/anim_time = 3
 
+	#warn lying stuff
+
 	//Due to some involuntary means, you're laying now
 	if(lying && !resting && !is_sleeping())
 		anim_time = 1 //Thud

@@ -375,7 +375,15 @@
  * get the buckle_lying field for a given mob.
  */
 /atom/movable/proc/buckle_lying(mob/M)
-	return buckle_lying
+	switch(buckle_lying)
+		if(null) // don't set
+			return null
+		if(0) // FALSE
+			return 0
+		if(1) // true
+			return M.lying || pick(90, -90) // don't change if already lying
+		else
+			return buckle_lying // explicitly est
 
 //! mob stuff
 /**
