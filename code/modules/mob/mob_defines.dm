@@ -96,6 +96,9 @@
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
 	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
 	var/stat = CONSCIOUS
+	//  todo: move to /living level, things should be checking mobility flags anyways.
+	/// which way are we lying down right now? in degrees. 0 default since we're not laying down.
+	var/lying = 0
 
 	//? Status Effects
 	/// A list of all status effects the mob has
@@ -189,9 +192,6 @@
 	var/confused = 0		//?Carbon
 	var/antitoxs = null
 	var/phoron = null
-	var/resting = 0			//?Carbon
-	var/lying = 0
-	var/lying_prev = 0
 
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.

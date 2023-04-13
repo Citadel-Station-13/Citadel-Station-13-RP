@@ -54,7 +54,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			ADD_TRAIT(M, TRAIT_MOBILITY_CAN_MOVE_BLOCKED, "__THROWER__")
+			ADD_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
 			M.update_mobility()
 
 	affecting.Add(AM)
@@ -91,7 +91,7 @@
 
 	if(ismob(AM))
 		var/mob/M = AM
-		REMOVE_TRAIT(M, TRAIT_MOBILITY_CAN_MOVE_BLOCKED, "__THROWER__")
+		REMOVE_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
 		if(immobilize)
 			M.update_mobility()
 

@@ -125,6 +125,8 @@
 	var/throw_impulse = THROW_FORCE_DEFAULT
 
 	//? mobility
+	/// are we resting either by will or by force
+	var/resting = FALSE
 	/// are we intentionally resting?
 	var/resting_intentionally = FALSE
 	/// are we resisting out of a resting state?

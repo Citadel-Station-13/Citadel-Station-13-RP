@@ -146,7 +146,7 @@
 /spell/targeted/chimera/regenerate/cast(list/targets, mob/user = usr)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(do_self(H, delay, needhand = FALSE, mobility_flags = NONE, ignore_movement = TRUE))
+		if(do_self(H, delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 			H.restore_blood()
 			H.species.create_organs(H)
 			H.restore_all_organs()

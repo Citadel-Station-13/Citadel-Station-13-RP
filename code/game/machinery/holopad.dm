@@ -1045,10 +1045,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /datum/holocall/proc/check_remoting()
 	if(!IS_CONSCIOUS(remoting))
 		return FALSE
-	if(remoting.lying)
+	if(remoting.resting)
 		return FALSE
-	if(remoting.stunned)
-		return TRUE
 	return TRUE
 
 /datum/holocall/proc/check()
@@ -1283,7 +1281,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		return FALSE
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
 	vored.forceMove(drop_location())
-	vored.Weaken(1)
+	vored.afflict_paralyze(20)
 	visible_message(SPAN_BOLDWARNING("[vored] flops out of [src]."))
 	vored = null
 	pass_flags = initial(pass_flags)

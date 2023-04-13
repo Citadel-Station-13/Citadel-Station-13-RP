@@ -1,7 +1,7 @@
 /mob/living/update_mobility(blocked, forced)
 	// this proc looks mildly heretical and pyramid of doomy
 	// for micro-optimization purposes.
-	if(IS_DEAD(src))
+	if(!IS_CONSCIOUS(src))
 		blocked |= MOBILITY_FLAGS_REAL | MOBILITY_IS_CONSCIOUS
 	else
 		if(restrained())

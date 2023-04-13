@@ -1,4 +1,5 @@
-// TODO: Refactor everything, add actionspeed support.
+// TODO: Refactor do_mob, add actionspeed support to do_mob, do_after, do_self.
+// (or don't for actionspeed, why are we checking it in the proc anyways...)
 
 /proc/do_mob(mob/user , mob/target, time = 30, target_zone = 0, uninterruptible = FALSE, progress = TRUE, ignore_movement = FALSE)
 	if(!user || !target)
@@ -120,6 +121,19 @@
 			. = FALSE
 			break
 
+		// check movement
+		if(!(flags & DO_AFTER_IGNORE_USER_MOVEMENT) && (user.loc != user_loc))
+			. = FALSE
+			break
+		if(!isnull(user_turf) && (get_turf(user) != user_turf))
+			. = FALSE
+			break
+
+		// check held
+		if(!(flags & DO_AFTER_IGNORE_ACTIVE_ITEM) && (active_held_item != user.get_active_held_item()))
+			. = FALSE
+			break
+
 		// target checks
 		if(!isnull(target))
 
@@ -133,38 +147,18 @@
 				. = FALSE
 				break
 
+			// check movement
+			if(!(flags & DO_AFTER_IGNORE_USER_MOVEMENT) && (target.loc != target_loc))
+				. = FALSE
+				break
+			if(!isnull(target_turf) && (get_turf(target) != target_turf))
+				. = FALSE
+				break
+
 			// check max distance - does NOT check z as of right now!
 			if(!isnull(max_distance) && get_dist(user, target) > max_distance)
 				. = FALSE
 				break
-
-
-	#warn below
-
-		if(M)
-			if(user.loc != M || (M.loc != original_loc && !ignore_movement)) // Mech coooooode.
-				. = FALSE
-				break
-
-		else if(user.loc != original_loc && !ignore_movement)
-			. = FALSE
-			break
-
-		if(target_loc && (QDELETED(target)))
-			. = FALSE
-			break
-
-		if(target && target_loc != target.loc && !ignore_movement)
-			. = FALSE
-			break
-
-
-		if(needhand)
-			if(user.get_active_held_item() != holding)
-				. = FALSE
-				break
-
-	#warn above
 
 		if(!isnull(additional_checks))
 			if(!additional_checks.Invoke(args))
@@ -180,5 +174,21 @@
 	if(!isnull(target))
 		STOP_INTERACTING_WITH(user, target, INTERACTING_FOR_DO_AFTER)
 
-/proc/do_self(mob/user, delay, needhand = TRUE, progress = TRUE, mobility_flags = MOBILITY_CAN_USE, ignore_movement = FALSE, datum/callback/additional_checks)
-	return do_after(user, delay, null, needhand, progress, mobility_flags, ignore_movement, null, additional_checks)
+/**
+ * Does an action to ourselves after a delay.
+ *
+ * @params
+ * * user - acting mob
+ * * delay - how long in deciseconds
+ * * flags - do_after flags as specified in [code/__DEFINES/procs/do_after.dm]
+ * * mobility_flags - required mobility flags
+ * * additional_checks - a callback that allows for custom checks. this is invoked with our args directly, allowing us to modify delay.
+ */
+/proc/do_self(mob/user, delay, flags, mobility_flags = MOBILITY_CAN_USE, datum/callback/additional_checks)
+	return do_after(
+		user,
+		delay,
+		flags = flags,
+		mobility_flags = mobility_flags,
+		additional_checks = additional_checks,
+	)
