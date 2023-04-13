@@ -8,6 +8,7 @@
 	base_icon_state = "window"
 
 	density = TRUE
+	can_be_unanchored = TRUE
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
@@ -55,18 +56,18 @@
 	//player-constructed windows
 	if (constructed)
 		set_anchored(FALSE)
-		construction_state = 0
+		construction_state = WINDOW_STATE_UNSECURED
 		update_verbs()
 	health = maxhealth
 	AIR_UPDATE_ON_INITIALIZE_AUTO
-	update_nearby_icons()
+
 
 /obj/structure/window/Destroy()
 	AIR_UPDATE_ON_DESTROY_AUTO
-	var/turf/location = loc
-	. = ..()
-	for (var/obj/structure/window/W in orange(location, 1))
-		W.update_icon()
+	set_density(FALSE)
+	update_nearby_icons()
+	return ..()
+
 
 /obj/structure/window/Move()
 	moving_right_now = dir
@@ -74,13 +75,30 @@
 	setDir(moving_right_now)
 	moving_right_now = null
 
+
 /obj/structure/window/Moved(atom/oldloc)
 	. = ..()
 	AIR_UPDATE_ON_MOVED_AUTO
 
+	// Makes sure the window doesn't keep it's smoothed state when moved.
+	if (smoothing_junction)
+		update_nearby_icons()
+
+
 /obj/structure/window/setDir(newdir)
 	. = ..()
 	update_nearby_tiles()
+
+
+/obj/structure/window/set_anchored(anchorvalue)
+	. = ..()
+	update_nearby_tiles() // Atmos update
+	if (anchorvalue)
+		smoothing_flags |= SMOOTH_OBJ
+	else
+		smoothing_flags &= ~SMOOTH_OBJ
+	update_nearby_icons() // Icon update
+
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -110,6 +128,10 @@
 
 
 /obj/structure/window/take_damage(damage, sound_effect = TRUE)
+	. = ..()
+	if(.) //received damage
+		update_nearby_icons()
+
 	var/initialhealth = health
 
 	if (silicate)
@@ -227,7 +249,6 @@
 	if (health - tforce <= 7 && !considered_reinforced)
 		set_anchored(FALSE)
 		update_verbs()
-		update_nearby_icons()
 		step(src, get_dir(AM, src))
 
 	take_damage(tforce)
@@ -362,7 +383,7 @@
 				P.maxhealth = maxhealth
 				P.health = health
 				P.construction_state = construction_state
-				P.anchored = anchored
+				P.set_anchored(anchored)
 				qdel(src)
 
 	else if (istype(object, /obj/item/frame) && anchored)
@@ -429,8 +450,12 @@
 
 		var/unsecuring = construction_state != WINDOW_STATE_UNSECURED
 		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
-		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
-		anchored = !unsecuring
+		if (unsecuring)
+			construction_state = WINDOW_STATE_UNSECURED
+			set_anchored(FALSE)
+		else
+			construction_state = WINDOW_STATE_SCREWED_TO_FLOOR
+			set_anchored(TRUE)
 		CanAtmosPass = anchored ? (fulltile ? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_PROC) : ATMOS_PASS_NOT_BLOCKED
 		update_verbs()
 		return
@@ -443,7 +468,7 @@
 
 	var/unsecuring = construction_state == WINDOW_STATE_SECURED_TO_FRAME
 	user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the window [unsecuring? "from" : "to"] the frame."), src)
-	construction_state = unsecuring? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
+	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 
 /obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
@@ -455,8 +480,8 @@
 	if (!use_crowbar(I, user, flags))
 		return
 	var/unsecuring = construction_state == WINDOW_STATE_CROWBRARED_IN
-	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring? "out of" : "into"] the frame."), src)
-	construction_state = unsecuring? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
+	user.action_feedback(SPAN_NOTICE("You pry [src] [unsecuring ? "out of" : "into"] the frame."), src)
+	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 
 /obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
@@ -514,7 +539,14 @@
 	return ..()
 
 
-/// Merges adjacent full-tile windows into one.
+//This proc is used to update the icons of nearby windows.
+/obj/structure/window/proc/update_nearby_icons()
+	update_appearance()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+
+
+//merges adjacent full-tile windows into one
 /obj/structure/window/update_overlays(updates=ALL)
 	. = ..()
 	if(QDELETED(src) || !fulltile)
@@ -527,23 +559,11 @@
 	// var/ratio = atom_integrity / max_integrity
 	var/ratio = health / maxhealth
 	ratio = CEILING(ratio*4, 1) * 25
-
 	cut_overlay(crack_overlay)
-
 	if(ratio > 75)
 		return
 	crack_overlay = mutable_appearance('icons/obj/structures/window_damage.dmi', "damage[ratio]", -(layer+0.1))
 	. += crack_overlay
-
-
-/**
- * This proc is used to update the icons of nearby windows.
- * It should not be confused with update_nearby_tiles(), which is an atmos proc!
- */
-/obj/structure/window/proc/update_nearby_icons()
-	update_appearance()
-	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
-		QUEUE_SMOOTH_NEIGHBORS(src)
 
 
 /obj/structure/window/proc/check_fullwindow()
