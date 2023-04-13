@@ -27,7 +27,7 @@
 /mob/living/proc/set_resting(value)
 	#warn impl
 
-/mob/living/proc/resist_a_rest()
+/mob/living/proc/resist_a_rest(instant = FALSE)
 	#warn impl
 
 /mob/living/proc/set_intentionally_resting(value, instant)
