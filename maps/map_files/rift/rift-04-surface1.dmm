@@ -10977,9 +10977,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/medical/virologyisolation)
 "hqy" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -10989,6 +10987,13 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
+/obj/item/deck/cards{
+	pixel_y = 8
+	},
+/obj/item/deck/cah/black{
+	pixel_y = 4
+	},
+/obj/item/deck/cah,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hqG" = (
@@ -12426,10 +12431,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "ikO" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/job/cargo_technician,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -12907,7 +12908,7 @@
 /area/library)
 "ixi" = (
 /obj/structure/bed/chair{
-	dir = 4
+	dir = 1
 	},
 /obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
@@ -15378,14 +15379,9 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "jZa" = (
-/obj/structure/disposaloutlet{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/machinery/conveyor{
-	tag = "mailroom"
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -16849,8 +16845,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "kSz" = (
-/turf/simulated/wall/r_wall,
-/area/maintenance/cargo)
+/obj/machinery/door/airlock/mining{
+	req_one_access = list(31);
+	name = "Cargo Airlock"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "kSV" = (
 /obj/structure/railing{
 	dir = 8
@@ -17620,9 +17625,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "lpK" = (
-/obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
+/obj/machinery/door/airlock/mining{
+	req_one_access = list(31);
+	name = "Cargo Airlock"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19160,14 +19165,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "mpr" = (
-/obj/structure/table/reinforced,
 /obj/item/material/ashtray/glass,
-/obj/machinery/recharger,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
@@ -20833,9 +20836,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "nnr" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -21102,7 +21102,9 @@
 	dir = 4
 	},
 /obj/machinery/door/window/southright,
-/obj/machinery/door/window/northleft,
+/obj/machinery/door/window/northleft{
+	req_one_access = list(31)
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -23094,10 +23096,16 @@
 /turf/simulated/wall/r_wall,
 /area/security/forensics)
 "ovr" = (
-/obj/machinery/conveyor{
-	tag = "mailroom"
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "cargo_line_shutter";
+	name = "Cargo Line shutter";
+	opacity = 0
 	},
-/obj/structure/disposalpipe/trunk,
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "ovz" = (
@@ -28175,11 +28183,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rJx" = (
-/obj/structure/bed/chair{
-	dir = 8
+/obj/structure/disposaloutlet{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/office)
+/obj/structure/disposalpipe/trunk,
+/turf/simulated/floor/plating,
+/area/quartermaster/delivery)
 "rJP" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -31591,13 +31600,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "tMw" = (
-/obj/structure/table/reinforced,
-/obj/item/deck/cah,
-/obj/item/deck/cah/black{
-	pixel_y = 4
-	},
-/obj/item/deck/cards{
-	pixel_y = 8
+/obj/structure/bed/chair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
@@ -31872,7 +31876,8 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/cargotech,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "tXc" = (
@@ -31964,6 +31969,10 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
+"tZG" = (
+/obj/structure/closet/secure_closet/cargotech,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "tZJ" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/blucarpet,
@@ -52216,7 +52225,7 @@ bFI
 ttp
 ezu
 ttp
-bFI
+rJx
 ovr
 jZa
 bXZ
@@ -55310,7 +55319,7 @@ sDf
 dMX
 dMX
 iFG
-kSz
+bXZ
 qeY
 bXZ
 quZ
@@ -55321,7 +55330,7 @@ klT
 oVJ
 lIR
 jeI
-vDU
+kSz
 phI
 eRF
 swF
@@ -55504,7 +55513,7 @@ kHH
 dMX
 dMX
 dMX
-kSz
+bXZ
 mWj
 bXZ
 bMC
@@ -55698,7 +55707,7 @@ kHH
 dMX
 dMX
 dMX
-kSz
+bXZ
 bXZ
 bXZ
 jnz
@@ -56675,7 +56684,7 @@ bXZ
 gim
 xTe
 qPe
-rJx
+rZs
 ikO
 rZs
 vRV
@@ -56871,7 +56880,7 @@ xTe
 vTw
 qXE
 pSp
-vRV
+tZG
 vRV
 pAz
 wQk
