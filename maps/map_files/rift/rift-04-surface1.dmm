@@ -13330,6 +13330,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
+"iIm" = (
+/obj/structure/closet/secure_closet/cargotech,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "iIv" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/key/quadbike,
@@ -16845,17 +16849,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "kSz" = (
-/obj/machinery/door/airlock/mining{
-	req_one_access = list(31);
-	name = "Cargo Airlock"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+/obj/structure/disposaloutlet{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/office)
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/conveyor{
+	tag = "mailroom"
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/delivery)
 "kSV" = (
 /obj/structure/railing{
 	dir = 8
@@ -28183,12 +28185,17 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rJx" = (
-/obj/structure/disposaloutlet{
+/obj/machinery/door/airlock/mining{
+	req_one_access = list(31);
+	name = "Cargo Airlock"
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/obj/structure/disposalpipe/trunk,
-/turf/simulated/floor/plating,
-/area/quartermaster/delivery)
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "rJP" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -31969,10 +31976,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
-"tZG" = (
-/obj/structure/closet/secure_closet/cargotech,
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/office)
 "tZJ" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet/blucarpet,
@@ -52225,7 +52228,7 @@ bFI
 ttp
 ezu
 ttp
-rJx
+kSz
 ovr
 jZa
 bXZ
@@ -55330,7 +55333,7 @@ klT
 oVJ
 lIR
 jeI
-kSz
+rJx
 phI
 eRF
 swF
@@ -56880,7 +56883,7 @@ xTe
 vTw
 qXE
 pSp
-tZG
+iIm
 vRV
 pAz
 wQk
