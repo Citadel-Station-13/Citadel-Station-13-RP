@@ -1068,6 +1068,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/substation/research // Research
 	name = "Research Substation"
 
+/area/maintenance/substation/research/telescience_lab
+	name = "Research Telescience Substation"
+
+/area/maintenance/substation/research/xenobiology_lab
+	name = "Research Xenobiology Substation"
+
+/area/maintenance/substation/research/docks
+	name = "Research Docks Substation"
+
 /area/maintenance/substation/cafeteria_dock // Hydro, kitchen, docks, hotel
 	name = "Cafeteria Dock Substation"
 
