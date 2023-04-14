@@ -44,7 +44,7 @@
 /datum/status_effect/grouped/proc/has_source(source)
 	return !isnull(sources[source])
 
-/datum/status_effect/grouped/proc/remove_source(source)
+/datum/status_effect/grouped/proc/remove_source(source, expiring)
 	if(!has_source(source))
 		return FALSE
 	sources -= source

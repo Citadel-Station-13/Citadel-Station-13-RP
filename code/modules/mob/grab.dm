@@ -34,6 +34,13 @@
 		if(G.affecting == M)
 			qdel(G)
 
+/**
+ * drops all grabs immediately
+ */
+/mob/proc/drop_grabs()
+	for(var/obj/item/grab/G in get_held_items())
+		qdel(G)
+
 #define UPGRADE_COOLDOWN	40
 #define UPGRADE_KILL_TIMER	100
 

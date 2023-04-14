@@ -17,7 +17,6 @@
 		process_killswitch()
 		process_locks()
 		process_queued_alarms()
-	update_canmove()
 
 /mob/living/silicon/robot/proc/clamp_values()
 	var/datum/status_effect/effect

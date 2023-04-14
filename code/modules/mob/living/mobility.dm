@@ -64,6 +64,13 @@
 	#warn impl
 	getting_up = FALSE
 
+/mob/living/proc/auto_resist_rest()
+	if(resting_intentionally || !resting)
+		return
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
+		return
+	resist_a_rest()
+
 /mob/living/proc/set_intentionally_resting(value, instant)
 	resting_intentionally = value
 	if(resting_intentionally && !resting)

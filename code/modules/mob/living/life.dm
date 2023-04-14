@@ -36,6 +36,7 @@
 	for(var/obj/item/grab/G in src)
 		G.process(2)
 
+	auto_resist_rest()
 
 /mob/living/BiologicalLife(seconds, times_fired)
 	if((. = ..()))

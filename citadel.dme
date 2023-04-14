@@ -2988,6 +2988,7 @@
 #include "code\modules\mob\pulling.dm"
 #include "code\modules\mob\say.dm"
 #include "code\modules\mob\say_vr.dm"
+#include "code\modules\mob\ssd.dm"
 #include "code\modules\mob\status_procs.dm"
 #include "code\modules\mob\throwing.dm"
 #include "code\modules\mob\transform_procs.dm"

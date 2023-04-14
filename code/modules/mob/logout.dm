@@ -20,6 +20,8 @@
 	// gc perspectives
 	if(using_perspective?.reset_on_logout)
 		reset_perspective()
+	// update ssd overlay
+	update_ssd_overlay(TRUE)
 
 	..()
 	return 1

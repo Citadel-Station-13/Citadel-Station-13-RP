@@ -99,6 +99,8 @@
 	reload_rendering()
 	// reset statpanel of any verbs/whatnot
 	client.statpanel_reload()
+	// update ssd overlay
+	update_ssd_overlay(FALSE)
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

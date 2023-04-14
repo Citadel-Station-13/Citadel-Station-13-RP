@@ -1191,7 +1191,7 @@
 		state = 1
 	lockdown = state
 	lockcharge = state
-	update_canmove()
+	update_mobility()
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"

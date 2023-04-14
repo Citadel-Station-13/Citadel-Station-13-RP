@@ -108,6 +108,10 @@
 	/// A list of all status effects the mob has
 	var/list/status_effects
 
+	//? SSD
+	/// current ssd overlay
+	var/image/ssd_overlay
+
 	//? unsorted / legacy
 	var/datum/mind/mind
 
