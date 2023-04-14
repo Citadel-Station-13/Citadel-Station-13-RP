@@ -21,7 +21,7 @@
 	R.adjustBruteLoss(rand(5, 30))
 	R.adjustFireLoss(rand(5, 10))
 	if(M.mind)
-		M.mind.transfer_to(R)
+		M.mind.transfer(R)
 	// Put this text here before ckey change so that their laws are shown below it, since borg login() shows it.
 	to_chat(M, "<span class='notice'>You are a <b>Lost Drone</b>, discovered inside the wreckage of your previous home. \
 	Something has reactivated you, with their intentions unknown to you, and yours unknown to them. They are a foreign entity, \
@@ -50,7 +50,7 @@
 	density = FALSE
 	var/mob/living/silicon/robot/gravekeeper/R = new(get_turf(src))
 	if(M.mind)
-		M.mind.transfer_to(R)
+		M.mind.transfer(R)
 	// Put this text here before ckey change so that their laws are shown below it, since borg login() shows it.
 	to_chat(M, "<span class='notice'>You are a <b>Gravekeeper Drone</b>, activated once again to tend to the restful dead.</span>")
 	to_chat(M, "<span class='notice'><b>Be sure to examine your currently loaded lawset closely.</b>  Remember, your \
@@ -74,7 +74,7 @@
 /obj/structure/ghost_pod/ghost_activated/swarm_drone/create_occupant(var/mob/M)
 	var/mob/living/silicon/robot/drone/swarm/R = new drone_type(get_turf(src))
 	if(M.mind)
-		M.mind.transfer_to(R)
+		M.mind.transfer(R)
 	to_chat(M, "<span class='cult'>You are <b>[R]</b>, the remnant of some distant species, mechanical or flesh, living or dead.</span>")
 	R.ckey = M.ckey
 	visible_message("<span class='cult'>As \the [src] shudders, it glows before lifting itself with three shimmering limbs!</span>")
@@ -118,7 +118,7 @@
 		R.adjustBruteLoss(rand(5, 30))
 		R.adjustFireLoss(rand(5, 10))
 		if(M.mind)
-			M.mind.transfer_to(R)
+			M.mind.transfer(R)
 		// Put this text here before ckey change so that their laws are shown below it, since borg login() shows it.
 		to_chat(M, "<span class='notice'>You are a <b>Stray Drone</b>, discovered inside the wreckage of your previous home. \
 		Something has reactivated you, with their intentions unknown to you, and yours unknown to them. They are a foreign entity, \

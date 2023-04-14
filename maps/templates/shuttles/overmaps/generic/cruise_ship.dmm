@@ -511,10 +511,10 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/shuttle/cruise_ship/bedroom)
 "Sx" = (
-/obj/machinery/power/apc/alarms_hidden/west_bump,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship)
 "Ub" = (
@@ -581,10 +581,10 @@
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "YT" = (
-/obj/machinery/power/apc/alarms_hidden/south_bump,
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/shuttle/cruise_ship/bedroom)
 "Za" = (

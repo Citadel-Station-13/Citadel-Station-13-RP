@@ -195,3 +195,9 @@
 
 /mob/proc/drop_right_held_item(flags)
 	return drop_held_item_of_index(2, flags)
+
+/**
+ * means if we have an empty hand able to accept an arbitrary item.
+ */
+/mob/proc/has_free_hand()
+	return FALSE

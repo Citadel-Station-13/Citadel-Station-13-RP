@@ -29,7 +29,7 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 		to_chat(src, client.getAlertDesc())
 
 	if(!mind)
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(ckey)
 		mind.active = 1
 		mind.current = src
 

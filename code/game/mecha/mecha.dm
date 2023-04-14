@@ -2196,7 +2196,6 @@
 						<div class='links'>
 						<a href='?src=\ref[src];toggle_id_upload=1'><span id='t_id_upload'>[add_req_access?"L":"Unl"]ock ID upload panel</span></a><br>
 						<a href='?src=\ref[src];toggle_maint_access=1'><span id='t_maint_access'>[maint_access?"Forbid":"Permit"] maintenance protocols</span></a><br>
-						<a href='?src=\ref[src];dna_lock=1'>DNA-lock</a><br>
 						<a href='?src=\ref[src];view_log=1'>View internal log</a><br>
 						<a href='?src=\ref[src];change_name=1'>Change exosuit name</a><br>
 						</div>
@@ -2513,18 +2512,6 @@
 		var/mob/user = top_filter.getMob("user")
 		user << browse(null,"window=exosuit_add_access")
 		return
-	if(href_list["dna_lock"])
-		if(usr != src.occupant)	return
-		if(istype(occupant, /mob/living/carbon/brain))
-			occupant_message("You are a brain. No.")
-			return
-		if(src.occupant)
-			src.dna = src.occupant.dna.unique_enzymes
-			src.occupant_message("You feel a prick as the needle takes your DNA sample.")
-		return
-	if(href_list["reset_dna"])
-		if(usr != src.occupant)	return
-		src.dna = null
 	if(href_list["repair_int_control_lost"])
 		if(usr != src.occupant)	return
 		src.occupant_message("Recalibrating coordination system.")
@@ -2585,7 +2572,7 @@
 		O.updatehealth()
 		src.occupant = O
 		if(AI.mind)
-			AI.mind.transfer_to(O)
+			AI.mind.transfer(O)
 		AI.name = "Inactive AI"
 		AI.real_name = "Inactive AI"
 		AI.icon_state = "ai-empty"
@@ -2593,7 +2580,7 @@
 			AI.name = O.name
 			AI.real_name = O.real_name
 			if(O.mind)
-				O.mind.transfer_to(AI)
+				O.mind.transfer(AI)
 			AI.control_disabled = 0
 			AI.laws = O.laws
 			AI.oxyloss = O.getOxyLoss()

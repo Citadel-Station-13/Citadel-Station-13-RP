@@ -860,3 +860,11 @@ Swimsuits
 		var/obj/item/clothing/under/altbodysuitfem_type = altbodysuitfem
 		altbodysuitfem_selection[initial(altbodysuitfem_type.name)] = altbodysuitfem_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(altbodysuitfem_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/ballet
+	name = "Antheia Tutu"
+	path = /obj/item/clothing/under/ballet
+
+/datum/gear/uniform/ballet/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
