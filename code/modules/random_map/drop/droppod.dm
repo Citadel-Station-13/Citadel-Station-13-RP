@@ -211,7 +211,7 @@
 	var/automatic_pod
 	if(spawned_mob && selected_player)
 		if(selected_player.mob.mind)
-			selected_player.mob.mind.transfer_to(spawned_mob)
+			selected_player.mob.mind.transfer(spawned_mob)
 		else
 			spawned_mob.ckey = selected_player.mob.ckey
 		spawned_mobs = list(spawned_mob)

@@ -460,16 +460,12 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/itglight/crew4)
 "cp" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew4)
 "cv" = (
@@ -515,11 +511,8 @@
 /obj/structure/bed/chair/bay/chair/padded/brown{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/pink,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/itglight/captain)
 "cU" = (
@@ -696,11 +689,8 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "ed" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/pink,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "ei" = (
@@ -1611,10 +1601,6 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "ky" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/pink,
 /obj/item/radio,
 /obj/structure/closet/walllocker/autolok_wall{
@@ -1624,6 +1610,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "kH" = (
@@ -1679,14 +1666,10 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "kU" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/white,
 /area/itglight/showers)
 "kY" = (
@@ -1708,14 +1691,10 @@
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "lh" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/afthall)
 "li" = (
@@ -1945,14 +1924,10 @@
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "mZ" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 8;
-	pixel_x = -25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/porthighsec)
 "na" = (
@@ -2264,11 +2239,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 6
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 8;
-	pixel_x = -25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
@@ -2279,6 +2249,7 @@
 /obj/fiftyspawner/phoron,
 /obj/fiftyspawner/phoron,
 /obj/structure/closet/crate,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor,
 /area/itglight/starboardengi)
 "pm" = (
@@ -2340,14 +2311,10 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "pL" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/eris/white/cargo,
 /area/itglight/medbay)
 "pU" = (
@@ -2667,14 +2634,10 @@
 /obj/structure/bed/chair/bay/chair{
 	dir = 1
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/itglightshuttle)
 "sQ" = (
@@ -3302,16 +3265,12 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "xE" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor,
 /area/itglight/portdocking)
 "xM" = (
@@ -3506,16 +3465,12 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/itglight/starboarddocking)
 "yY" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
 /obj/structure/catwalk,
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor,
 /area/itglight/starboarddocking)
 "yZ" = (
@@ -3603,14 +3558,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/itglight/portdocking)
 "zL" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "zM" = (
@@ -3740,14 +3691,10 @@
 /turf/simulated/floor/tiled/eris/white/techfloor_grid,
 /area/itglight/medbay)
 "AJ" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/forehall)
 "AK" = (
@@ -3802,14 +3749,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "Bj" = (
@@ -3907,16 +3850,12 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew4)
 "BU" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew1)
 "BW" = (
@@ -5057,14 +4996,10 @@
 /turf/simulated/wall/shull,
 /area/itglight/crew1)
 "IM" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/shuttlebay)
 "IN" = (
@@ -5093,14 +5028,10 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "Jc" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "Jg" = (
@@ -5228,16 +5159,12 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "JR" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew3)
 "JT" = (
@@ -5281,14 +5208,10 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "Kh" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardcargo)
 "Kj" = (
@@ -5343,14 +5266,10 @@
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/portcargo)
 "KB" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor,
 /area/itglight/portengi)
 "KG" = (
@@ -5519,16 +5438,12 @@
 /turf/simulated/floor/carpet,
 /area/itglight/readyroom)
 "Mk" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-8"
 	},
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/browndouble,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/carpet/turcarpet,
 /area/itglight/crew2)
 "Ml" = (
@@ -5834,12 +5749,8 @@
 /turf/simulated/floor/tiled/monotile,
 /area/itglight/lockers)
 "NY" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 4;
-	pixel_x = 25
-	},
 /obj/structure/cable/pink,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/eris/cafe,
 /area/itglight/kitchen)
 "Oc" = (
@@ -5849,11 +5760,7 @@
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/dark,
 /area/itglight/passengersleeping)
 "Oe" = (
@@ -6155,14 +6062,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 1;
-	pixel_y = 25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/metingroom)
 "Qi" = (
@@ -7027,11 +6930,8 @@
 "WG" = (
 /obj/structure/table/wooden_reinforced,
 /obj/random/plushie,
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	pixel_y = -25
-	},
 /obj/structure/cable/pink,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/eris/steel/brown_platform,
 /area/itglight/common)
 "WN" = (
@@ -7115,14 +7015,10 @@
 /turf/space,
 /area/space)
 "Xl" = (
-/obj/machinery/power/apc/hyper{
-	alarms_hidden = 1;
-	dir = 8;
-	pixel_x = -25
-	},
 /obj/structure/cable/pink{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/white,
 /area/itglight/restrooms)
 "Xn" = (

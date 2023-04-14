@@ -478,40 +478,6 @@
 		/obj/item/gun/magnetic/matfed
 		)
 
-//The Chippin' In Set -Cap
-/obj/item/clothing/suit/storage/hooded/ronincoat
-	name = "ronin coat"
-	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
-	icon_state = "ronin_coat"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/ronin
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-
-/obj/item/clothing/suit/storage/hooded/runner
-	name = "Runner Jacket"
-	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
-	icon_state = "runner_jacket"
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/runner
-	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
-	/obj/item/gun/ballistic, /obj/item/ammo_magazine, /obj/item/melee/baton)
-
-/obj/item/clothing/suit/storage/hooded/runner/half_pint
-	name = "Half-Pint Jacket"
-	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
-	icon_state = "half_pint"
-	hoodtype = /obj/item/clothing/head/hood/runner/half_pint
-
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch
 	name = "eldritch garment"
@@ -597,17 +563,6 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	hoodtype = /obj/item/clothing/head/hood/mercy
-
-//Donator jacket.
-/obj/item/clothing/suit/storage/hooded/pariah
-	name = "Springtime Pariah Moto Jacket"
-	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
-	icon_state = "pariah"
-	inv_hide_flags = HIDEHOLSTER
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	hoodtype = /obj/item/clothing/head/hood/pariah
 
 //The Covert/Overt Spec Ops Carrier - This is technically armor, but due to how it works I'm putting it here.
 /obj/item/clothing/suit/storage/hooded/covertcarrier

@@ -230,7 +230,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			if(part.robotic >= ORGAN_ROBOT)
 				icon_key += "2[part.model ? "-[part.model]": ""]"
 				robolimb_count++
-				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
+				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE || part.robotic == ORGAN_NANOFORM) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
@@ -299,6 +299,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//tail
 	update_tail_showing()
+	//wing
 	update_wing_showing()
 
 /mob/living/carbon/human/proc/update_skin()
@@ -1038,6 +1039,13 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[WING_LAYER] += vr_wing_image_2
 
 	apply_layer(WING_LAYER)
+
+/mob/living/carbon/human/proc/wing_spread_start()
+	if(QDESTROYING(src))
+		return
+
+	update_wing_showing("[species.get_wing(src)]_spr")
+
 
 /mob/living/carbon/human/update_modifier_visuals()
 	if(QDESTROYING(src))

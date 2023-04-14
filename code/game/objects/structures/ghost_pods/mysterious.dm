@@ -17,7 +17,7 @@
 	density = FALSE
 	var/mob/living/simple_mob/animal/passive/dog/corgi/R = new(get_turf(src))
 	if(M.mind)
-		M.mind.transfer_to(R)
+		M.mind.transfer(R)
 	to_chat(M, "<span class='notice'>You are a <b>Corgi</b>! Woof!</span>")
 	R.ckey = M.ckey
 	visible_message("<span class='warning'>With a bright flash of light, \the [src] disappears, and in its place stands a small corgi.</span>")

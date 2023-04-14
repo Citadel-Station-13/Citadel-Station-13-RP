@@ -106,7 +106,7 @@
 		))
 		if(!created)
 			CRASH("Couldn't make a valid golem, cancelling.")
-		user.mind.transfer_to(created)
+		user.mind.transfer(created)
 		user.death()
 		qdel(src)
 		return

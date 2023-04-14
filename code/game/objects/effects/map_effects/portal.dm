@@ -50,6 +50,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	opacity = TRUE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
+	zmm_flags = ZMM_IGNORE	// it ain't gonna work chief
 	SET_APPEARANCE_FLAGS(PIXEL_SCALE)
 
 	var/obj/effect/map_effect/portal/counterpart = null // The portal line or master that this is connected to, on the 'other side'.
@@ -79,7 +80,10 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	if(!counterpart)
 		return
 
-	SSdpc.queue_invoke(src, TYPE_PROC_REF(/obj/effect/map_effect/portal, go_through_portal), AM, TRUE)
+	// yield
+	spawn(0)
+		if(AM.loc == loc)
+			go_through_portal(AM)
 
 /obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM, check)
 	if(AM.loc != loc && check)

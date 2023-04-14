@@ -40,6 +40,12 @@
 	/// economic category for objects
 	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
 
+	//? Sounds
+	/// volume when breaking out using resist process
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
+	/// volume when breaking out using resist process
+	var/breakout_volume = 100
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -215,5 +221,75 @@
 		add_fingerprint(user)
 	..()
 
-/obj/proc/container_resist(var/mob/living)
+//? Resists
+
+/**
+ * called when something tries to resist out from inside us.
+ *
+ * @return TRUE if something was done to start to resist / as a resist actino, FALSE if something trivial was done / nothing was done.
+ */
+/obj/proc/contents_resist(mob/escapee)
+	SHOULD_NOT_SLEEP(TRUE)
+	return FALSE
+
+/**
+ * Invoke asynchronously from contents_resist.
+ *
+ * @return TRUE / FALSE based on if they started an action.
+ */
+/obj/proc/contents_resist_sequence(mob/escapee, time = 2 MINUTES, interval = 5 SECONDS)
+	set waitfor = FALSE
+	if(INTERACTING_WITH_FOR(escapee, src, INTERACTING_FOR_RESIST))
+		return FALSE
+	. = TRUE
+	_contents_resist_sequence(arglist(args))
+
+/obj/proc/_contents_resist_sequence(mob/escapee, time, interval)
+	START_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
+	if(!contents_resist_step(escapee, 0))
+		return FALSE
+	. = TRUE
+	// todo: mobility flags
+	var/extra_time = MODULUS(time, interval)
+	var/i
+	for(i in 1 to round(time / interval))
+		if(!do_after(escapee, interval, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+			return FALSE
+		if(escapee.loc != src)
+			return FALSE
+		if(!contents_resist_step(escapee, i))
+			return FALSE
+		if(breakout_sound)
+			playsound(src, breakout_sound, breakout_volume, 1)
+	if(!do_after(escapee, extra_time, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+		return FALSE
+	if(!contents_resist_step(escapee, i + 1, TRUE))
+		return FALSE
+	STOP_INTERACTING_WITH(escapee, src, INTERACTING_FOR_RESIST)
+	if(.)
+		contents_resist_finish(escapee)
+
+/**
+ * called on interval step of contents_request_sequence
+ * use this to cancel and open if we're already open / whatever.
+ *
+ * @return TRUE / FALSE to keep resisting or not
+ */
+/obj/proc/contents_resist_step(mob/escapee, iteration, finishing)
+	contents_resist_shake()
+	return TRUE
+
+/**
+ * Called when contents_resist_sequence finishes successfully.
+ */
+/obj/proc/contents_resist_finish(mob/escapee)
 	return
+
+/**
+ * called to shake during contents resist
+ */
+/obj/proc/contents_resist_shake()
+	var/init_px = pixel_x
+	var/shake_dir = pick(-1, 1)
+	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
