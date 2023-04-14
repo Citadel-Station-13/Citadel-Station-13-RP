@@ -83,7 +83,13 @@
 /datum/ability/proc/generate_action()
 	if(!isnull(action))
 		return action
-	action = new(src)
+	reubild_action()
+	return action
+
+/**
+ * full action button update including icon regeneration
+ */
+/datum/ability/proc/rebuild_action()
 	action.name = hotbind_name()
 	action.desc = hotbind_desc()
 	action.button_managed = TRUE
@@ -92,8 +98,10 @@
 	action.background_icon = background_icon
 	action.background_icon_state = background_state
 	update_action()
-	return action
 
+/**
+ * updates action button for availability / toggle status
+ */
 /datum/ability/proc/update_action()
 	var/availability = 1
 	if(cooldown && !isnull(last_used))
