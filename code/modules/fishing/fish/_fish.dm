@@ -41,7 +41,7 @@
 	var/status = FISH_ALIVE
 
 	/// Current fish health. Dies at 0.
-	var/health = 100
+	health = 100
 
 	/// Should this fish type show in fish catalog
 	var/show_in_catalog = TRUE

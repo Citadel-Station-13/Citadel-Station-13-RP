@@ -40,31 +40,10 @@
 
 	var/default_line_color = "gray"
 
-/obj/item/fishing_rod/Initialize(mapload)
-	. = ..()
-	register_context()
-	register_item_context()
-
-/obj/item/fishing_rod/add_context(atom/source, list/context, obj/item/held_item, mob/user)
-	if(src == held_item)
-		if(currently_hooked_item)
-			context[SCREENTIP_CONTEXT_LMB] = "Reel in"
-		context[SCREENTIP_CONTEXT_RMB] = "Modify"
-		return CONTEXTUAL_SCREENTIP_SET
-	return NONE
-
-/obj/item/fishing_rod/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
-	. = ..()
-	if(currently_hooked_item)
-		context[SCREENTIP_CONTEXT_LMB] = "Reel in"
-		return CONTEXTUAL_SCREENTIP_SET
-	return NONE
-
 /obj/item/fishing_rod/Destroy(force)
 	. = ..()
 	//Remove any leftover fishing lines
 	QDEL_LIST(fishing_lines)
-
 
 /**
  * Catch weight modifier for the given fish_type (or FISHING_DUD)
@@ -76,7 +55,6 @@
 
 	return hook.get_hook_bonus_multiplicative(fish_type)
 
-
 /**
  * Catch weight modifier for the given fish_type (or FISHING_DUD)
  * and source, additive. Called after `multiplicative_fish_bonus()`.
@@ -87,7 +65,6 @@
 
 	return hook.get_hook_bonus_additive(fish_type)
 
-
 /**
  * Is there a reason why this fishing rod couldn't fish in target_fish_source?
  * If so, return the denial reason as a string, otherwise return `null`.
@@ -96,20 +73,18 @@
  * * target_fish_source - The /datum/fish_source we're trying to fish in.
  */
 /obj/item/fishing_rod/proc/reason_we_cant_fish(datum/fish_source/target_fish_source)
-	if(!hook)
-		return null
-
-	return hook.reason_we_cant_fish(target_fish_source)
-
+	return hook?.reason_we_cant_fish(target_fish_source)
 
 /obj/item/fishing_rod/proc/consume_bait()
-	if(bait)
-		QDEL_NULL(bait)
-		update_icon()
+	if(isnull(bait))
+		return
+	QDEL_NULL(bait)
+	update_icon()
 
 /obj/item/fishing_rod/interact(mob/user)
-	if(currently_hooked_item)
-		reel(user)
+	if(isnull(currently_hooked_item))
+		return
+	reel(user)
 
 /obj/item/fishing_rod/proc/reel(mob/user)
 	//Could use sound here for feedback
@@ -421,8 +396,7 @@
 
 /obj/item/fishing_rod/tech
 	name = "advanced fishing rod"
-	desc = "An embedded universal constructor along with micro-fusion generator makes this marvel of technology never run out of bait. Interstellar treaties prevent using it outside of recreational fishing. And you can fish with this. "
-	ui_description = "This rod has an infinite supply of synthetic bait."
+	desc = "An embedded universal constructor along with micro-fusion generator makes this marvel of technology never run out of bait. Interstellar treaties prevent using it outside of recreational fishing."
 	icon_state = "fishing_rod_science"
 
 /obj/item/fishing_rod/tech/Initialize(mapload)
@@ -468,8 +442,6 @@
 	. = ..()
 	QDEL_NULL(our_line)
 	owner?.casting = FALSE
-
-
 
 /datum/beam/fishing_line
 	// Is the fishing rod held in left side hand
