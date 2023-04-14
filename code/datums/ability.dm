@@ -244,6 +244,8 @@
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return FALSE
+	if(!CHECK_MOBILITY(owner, mobility_check_flags))
+		return FALSE
 	return TRUE
 
 /**
@@ -260,7 +262,7 @@
 		return "You cannot do that while on the ground."
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return "You cannot do that without a free hand."
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
+	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return "You cannot do that while incapacitated."
 
 /**
