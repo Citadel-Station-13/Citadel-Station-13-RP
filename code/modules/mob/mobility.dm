@@ -60,6 +60,4 @@
 
 	mobility_flags = .
 
-	#warn resting?
-
 	SEND_SIGNAL(src, COMSIG_MOB_ON_UPDATE_MOBILITY, .)

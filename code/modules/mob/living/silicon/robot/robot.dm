@@ -893,11 +893,6 @@
 			return 1
 	return 0
 
-/mob/living/silicon/robot/update_canmove()
-	. = ..()
-	updateicon()
-
-
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
 

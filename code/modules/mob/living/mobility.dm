@@ -9,7 +9,7 @@
 			if(pulledby || buckled)
 				blocked |= MOBILITY_CAN_MOVE
 		for(var/obj/item/grab/G as anything in grabbed_by)
-			if(G.stat >= GRAB_AGGRESSIVE)
+			if(G.state >= GRAB_AGGRESSIVE)
 				blocked |= MOBILITY_CAN_MOVE | MOBILITY_CAN_USE | MOBILITY_CAN_HOLD | MOBILITY_CAN_PICKUP | MOBILITY_CAN_STORAGE | MOBILITY_CAN_UI
 
 	. = ..()
@@ -18,12 +18,13 @@
 		drop_all_held_items()
 	if(!(mobility_flags & MOBILITY_CAN_PULL))
 		stop_pulling()
-
-#warn impl
+	if(!(mobility_flags & MOBILITY_CAN_STAND))
+		set_resting(TRUE)
 
 /**
  * immediately sets whether or not we're prone.
  * does not check mobility flags.
+ * does not set other mobility flags or update mobility.
  */
 /mob/living/proc/set_resting(value)
 	if(resting == value)
@@ -42,17 +43,33 @@
 /mob/living/proc/toggle_resting()
 	set_resting(!resting)
 
+/**
+ * starts to resist up from a resting state
+ *
+ * @return TRUE / FALSE based on if we started a new resist operation.
+ */
 /mob/living/proc/resist_a_rest(instant = FALSE)
+	if(!resting) // already up
+		return FALSE
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
-		return //nah
-
-	#warn impl
+		return FALSE // nah
+	if(getting_up)
+		return FALSE // already doing so
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, _resist_a_rest), instant)
+	return TRUE
 
 /mob/living/proc/_resist_a_rest()
+	PRIVATE_PROC(TRUE)
+	getting_up = TRUE
 	#warn impl
+	getting_up = FALSE
 
 /mob/living/proc/set_intentionally_resting(value, instant)
-	#warn impl
+	resting_intentionally = value
+	if(resting_intentionally && !resting)
+		set_resting(TRUE)
+	else if(!resting_intentionally && resting)
+		resist_a_rest(instant)
 
 /mob/living/proc/toggle_intentionally_resting(instant)
 	set_intentionally_resting(!resting_intentionally, instant)

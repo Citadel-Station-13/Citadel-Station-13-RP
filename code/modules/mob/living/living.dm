@@ -837,7 +837,7 @@ default behaviour is:
 		return DIZZY
 	else if (confused)
 		return DIZZY
-	else if (sleeping)
+	else if (!IS_CONSCIOUS(src))
 		return UNDERWATER
 	else
 		return ..()

@@ -98,6 +98,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(lying < -45 || lying > 45)
 		M.Translate(1,-6)
 
+	// fall faster if incapacitated
+	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
+
 	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
 	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
 	update_icon_special() //May contain transform-altering things
