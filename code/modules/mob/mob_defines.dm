@@ -166,11 +166,9 @@
 	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
-	var/already_placed = 0.0
 	var/obj/machinery/machine = null
 	var/other_mobs = null
 	var/memory = ""
-	var/poll_answer = 0.0
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
@@ -287,9 +285,6 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	/// Set to TRUE to trigger update_icons() at the next life() call.
-	var/update_icon = TRUE
-
 	/// Bitflags defining which status effects can be inflicted. (replaces canweaken, canstun, etc)
 	var/status_flags = STATUS_FLAGS_DEFAULT
 
@@ -345,9 +340,7 @@
 	/// A mock client, provided by tests and friends
 	var/datum/client_interface/mock_client
 
-	//! ## Virgo Defines
-	/// Do I have the HUD enabled?
-	var/vantag_hud = FALSE
+	//? vorestation legacy
 	/// Allows flight.
 	var/flying = FALSE
 	/// For holding onto a temporary form.
@@ -358,6 +351,6 @@
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
 
-	//! Typing Indicator
+	//? Typing Indicator
 	var/typing = FALSE
 	var/mutable_appearance/typing_indicator
