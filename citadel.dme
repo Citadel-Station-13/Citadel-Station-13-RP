@@ -3152,6 +3152,7 @@
 #include "code\modules\mob\living\carbon\human\login.dm"
 #include "code\modules\mob\living\carbon\human\logout.dm"
 #include "code\modules\mob\living\carbon\human\MedicalSideEffects.dm"
+#include "code\modules\mob\living\carbon\human\mobility.dm"
 #include "code\modules\mob\living\carbon\human\npcs.dm"
 #include "code\modules\mob\living\carbon\human\pain.dm"
 #include "code\modules\mob\living\carbon\human\riding.dm"

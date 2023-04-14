@@ -29,9 +29,11 @@
 	if(resting == value)
 		return
 	resting = value
+	set_density(!resting)
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_STANDING)) | (value? MOBILITY_IS_STANDING : NONE)
 	SEND_SIGNAL(src, COMSIG_MOB_ON_SET_RESTING, value)
 	update_lying()
+	update_water()
 
 /**
  * immediately toggles resting
@@ -41,6 +43,9 @@
 	set_resting(!resting)
 
 /mob/living/proc/resist_a_rest(instant = FALSE)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
+		return //nah
+
 	#warn impl
 
 /mob/living/proc/_resist_a_rest()
@@ -81,20 +86,6 @@
 	lying = wanted
 	SEND_SIGNAL(src, COMSIG_MOB_ON_UPDATE_LYING, old, lying)
 	update_transform()
-
-/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
-/mob/proc/can_stand_overridden()
-	return 0
-
-/mob/living/carbon/human/can_stand_overridden()
-	if(wearing_rig && wearing_rig.ai_can_move_suit(check_for_ai = 1))
-		// Actually missing a leg will screw you up. Everything else can be compensated for.
-		for(var/limbcheck in list("l_leg","r_leg"))
-			var/obj/item/organ/affecting = get_organ(limbcheck)
-			if(!affecting)
-				return 0
-		return 1
-	return 0
 
 /mob/proc/cannot_stand()
 	return incapacitated(INCAPACITATION_KNOCKDOWN)

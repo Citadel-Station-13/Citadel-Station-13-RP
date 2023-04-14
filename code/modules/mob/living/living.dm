@@ -687,28 +687,6 @@ default behaviour is:
 		spawn(350)
 			lastpuke = 0
 
-/mob/living/update_canmove()
-	if(!resting && cannot_stand() && can_stand_overridden())
-		lying = 0
-		canmove = 1
-	else
-		if(buckled)
-			lying = buckled.buckle_lying(src)
-		else
-			lying = incapacitated(INCAPACITATION_KNOCKDOWN)
-			canmove = !incapacitated(INCAPACITATION_DISABLED)
-
-	if(lying)
-		density = FALSE
-		drop_all_held_items()
-		for(var/obj/item/holder/H in get_mob_riding_slots())
-			drop_item_to_ground(H)
-		update_water() // Submerges the mob.
-	else
-		density = initial(density)
-
-	#warn redo
-
 // Mob holders in these slots will be spilled if the mob goes prone.
 /mob/living/proc/get_mob_riding_slots()
 	return list(back)
