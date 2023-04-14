@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(preset_fish_sources,init_fishing_configurations())
 
 /// In case you want more complex rules for specific spots
 /datum/fish_source/proc/roll_reward(obj/item/fishing_rod/rod, mob/fisherman)
-	return pick_weight(get_modified_fish_table(rod,fisherman))
+	return pickweight(get_modified_fish_table(rod,fisherman))
 
 /// Gives out the reward if possible
 /datum/fish_source/proc/dispense_reward(reward_path, mob/fisherman)
@@ -97,13 +97,13 @@ GLOBAL_LIST_INIT(preset_fish_sources,init_fishing_configurations())
 				//fish caught signal if needed goes here and/or fishing achievements
 			//Try to put it in hand
 			fisherman.put_in_hands(reward)
-			fisherman.balloon_alert(fisherman, "caught [reward]!")
+			fisherman.bubble_action_feedback("caught [reward]!", fisherman)
 		else //If someone adds fishing out carp/chests/singularities or whatever just plop it down on the fisher's turf
-			fisherman.balloon_alert(fisherman, "caught something!")
+			fisherman.bubble_action_feedback("caught something!", fisherman)
 			new reward_path(get_turf(fisherman))
 	else if (reward_path == FISHING_DUD)
 		//baloon alert instead
-		fisherman.balloon_alert(fisherman,pick(duds))
+		fisherman.bubble_action_feedback(pick(duds), fisherman)
 
 /// Cached fish list properties so we don't have to initalize fish every time, init deffered
 GLOBAL_LIST(fishing_property_cache)

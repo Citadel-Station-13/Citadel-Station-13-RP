@@ -76,7 +76,7 @@
 	fishing_line = used_rod.create_fishing_line(lure, target_py = 5)
 	// If fishing line breaks los / rod gets dropped / deleted
 	RegisterSignal(fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(interrupt))
-	ADD_TRAIT(user, TRAIT_GONE_FISHING, REF(src))
+	ADD_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
 	user.add_mood_event("fishing", /datum/mood_event/fishing)
 	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	start_baiting_phase()
@@ -85,7 +85,7 @@
 
 /datum/fishing_challenge/proc/handle_click()
 	if(phase == WAIT_PHASE) //Reset wait
-		lure.balloon_alert(user, "miss!")
+		user.bubble_action_feedback("miss!", lure)
 		start_baiting_phase()
 	else if(phase == BITING_PHASE)
 		start_minigame_phase()
@@ -107,7 +107,7 @@
 	completed = TRUE
 	if(user)
 		UnregisterSignal(user, list(COMSIG_MOB_CLICKON, COMSIG_MOVABLE_MOVED))
-		REMOVE_TRAIT(user, TRAIT_GONE_FISHING, REF(src))
+		REMOVE_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
 	if(used_rod)
 		UnregisterSignal(used_rod, COMSIG_ITEM_DROPPED)
 		if(phase == MINIGAME_PHASE)

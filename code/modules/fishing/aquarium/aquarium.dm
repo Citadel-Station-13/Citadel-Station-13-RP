@@ -172,8 +172,8 @@
 
 ///Apply mood bonus depending on aquarium status
 /obj/structure/aquarium/proc/admire(mob/living/user)
-	to_chat(user,span_notice("You take a moment to watch [src]."))
-	if(do_after(user, 5 SECONDS, target = src))
+	to_chat(user, SPAN_NOTICE("You take a moment to watch [src]."))
+	if(do_after(user, 2 SECONDS, target = src))
 		var/alive_fish = 0
 		var/dead_fish = 0
 		for(var/obj/item/fish/fish in tracked_fish)
@@ -181,14 +181,10 @@
 				alive_fish++
 			else
 				dead_fish++
-		//Check if there are live fish - good mood
-		//All fish dead - bad mood.
-		//No fish - nothing.
 		if(alive_fish > 0)
-			user.add_mood_event("aquarium", /datum/mood_event/aquarium_positive)
+			to_chat(user, SPAN_NOTICE("Aww! There's living fish!"))
 		else if(dead_fish > 0)
-			user.add_mood_event("aquarium", /datum/mood_event/aquarium_negative)
-		// Could maybe scale power of this mood with number/types of fish
+			to_chat(user, SPAN_WARNING("The fish are all dead!"))
 
 /obj/structure/aquarium/ui_data(mob/user)
 	. = ..()
