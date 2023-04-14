@@ -730,6 +730,16 @@
 /obj/item/storage/box/donkpockets,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
+"ayL" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/rnd)
 "azd" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -1546,7 +1556,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2344,6 +2354,14 @@
 /obj/effect/mist,
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
+"bwK" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/maintenance/research/rnd)
 "bxf" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -2741,12 +2759,12 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -2773,6 +2791,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "bOb" = (
@@ -2920,6 +2940,9 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
@@ -4251,6 +4274,12 @@
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "cQJ" = (
@@ -4352,7 +4381,7 @@
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -4532,6 +4561,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop/loading)
 "dbM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "dcq" = (
@@ -4769,6 +4804,12 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "dnv" = (
@@ -4965,6 +5006,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
+"dtA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/rnd/research)
 "dtM" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -5860,6 +5910,18 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
+"dSA" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "dSZ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -6947,9 +7009,11 @@
 "eLN" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
@@ -7031,6 +7095,26 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"ePP" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/structure/curtain/open/bed{
+	name = "brown curtain"
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "eQx" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -7418,6 +7502,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"fbQ" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "fcb" = (
 /obj/structure/bed/chair/sofa/black{
 	dir = 4
@@ -8161,6 +8256,12 @@
 /obj/machinery/alarm{
 	dir = 1;
 	pixel_y = -24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -10260,6 +10361,12 @@
 "gSp" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hor)
+"gSq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "gSO" = (
 /obj/structure/disposalpipe/up{
 	dir = 1
@@ -11636,7 +11743,7 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 1
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -12038,6 +12145,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "ifi" = (
@@ -12526,6 +12635,13 @@
 "ixC" = (
 /turf/simulated/wall,
 /area/security/evidence_storage)
+"iyg" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/surfacetwo)
 "iys" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/newscaster{
@@ -14864,6 +14980,12 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "kaZ" = (
@@ -15862,7 +15984,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -17502,6 +17624,12 @@
 /obj/structure/sign/directions/science{
 	pixel_y = 24
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "lGh" = (
@@ -18680,6 +18808,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"mvC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "mvZ" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/lower/medsec_maintenance)
@@ -21052,6 +21186,12 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ogT" = (
@@ -22435,6 +22575,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"pdd" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/plating,
+/area/maintenance/research/rnd)
 "pdw" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/paleblue{
@@ -22654,6 +22800,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "pkT" = (
@@ -22827,11 +22976,14 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
@@ -22927,6 +23079,12 @@
 	dir = 9
 	},
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23126,6 +23284,9 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
 "pzU" = (
@@ -23253,7 +23414,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 4
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -23545,7 +23706,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/wood,
@@ -23566,6 +23727,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_6)
+"pSL" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/research/rnd)
 "pTn" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -24193,7 +24364,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "qrc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
@@ -24246,7 +24417,6 @@
 /turf/simulated/wall/r_wall,
 /area/security/tactical)
 "quS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
@@ -24256,6 +24426,9 @@
 /obj/structure/disposalpipe/sortjunction/flipped{
 	name = "Research";
 	sortType = "Research"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
@@ -24850,6 +25023,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"qTL" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/crew_quarters/coffee_shop)
 "qTP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -25410,6 +25595,17 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
+"rlw" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacetwo)
 "rlG" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -27071,6 +27267,12 @@
 	req_one_access = list(7)
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/rnd/research)
 "szg" = (
@@ -27084,7 +27286,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
@@ -27975,7 +28177,7 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/wood,
@@ -29674,12 +29876,12 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 8;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
@@ -29879,7 +30081,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
 "uMP" = (
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/wood,
@@ -30896,6 +31098,15 @@
 "vos" = (
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
+"voC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "vpB" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -32745,6 +32956,12 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "wCc" = (
@@ -34019,6 +34236,12 @@
 /obj/machinery/camera/network/civilian{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "xxw" = (
@@ -34514,7 +34737,6 @@
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -34694,7 +34916,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/structure/cable/green{
+/obj/structure/cable{
 	icon_state = "0-2"
 	},
 /turf/simulated/floor/wood,
@@ -46774,9 +46996,9 @@ wPX
 qrc
 gsZ
 gsZ
-neF
-neF
-neF
+mvC
+voC
+gSq
 neF
 eyX
 oFi
@@ -46969,7 +47191,7 @@ kBf
 wHa
 jYd
 wHa
-wHa
+qTL
 kvB
 sMm
 qGO
@@ -47163,7 +47385,7 @@ cUw
 tzd
 hyJ
 iga
-tzd
+ePP
 xPt
 xPt
 xPt
@@ -47551,7 +47773,7 @@ hPN
 bPt
 mcn
 egW
-bPt
+fbQ
 xPt
 wgd
 vWe
@@ -48516,7 +48738,7 @@ rqo
 ohC
 lBA
 lBA
-lBA
+dSA
 pzP
 oBz
 fln
@@ -48524,12 +48746,12 @@ jwj
 wCa
 bOa
 ieB
-xqy
-tyH
-tyH
-tyH
-tyH
-tyH
+bwK
+pdd
+pdd
+pdd
+pdd
+pSL
 tyH
 pbs
 tyH
@@ -48713,8 +48935,8 @@ pYQ
 ofT
 rPk
 dBs
-iru
-mJn
+rlw
+iyg
 kaY
 eBi
 ljf
@@ -48723,7 +48945,7 @@ rBB
 xmA
 gpc
 oiz
-tyH
+ayL
 rym
 aQG
 eCU
@@ -49305,7 +49527,7 @@ lvg
 hop
 puy
 puy
-puy
+dtA
 pkS
 iXg
 kAC
