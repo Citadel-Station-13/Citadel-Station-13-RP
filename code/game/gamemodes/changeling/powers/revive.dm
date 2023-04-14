@@ -50,7 +50,7 @@
 	C.halloss = 0
 	C.shock_stage = 0 //Pain
 	to_chat(C, "<span class='notice'>We have regenerated.</span>")
-	C.update_canmove()
+	C.update_mobility()
 	C.mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
 	C.set_stat(CONSCIOUS)

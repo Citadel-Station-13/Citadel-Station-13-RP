@@ -92,7 +92,7 @@ the artifact triggers the rage.
 	holder.set_paralyzed(0)
 	holder.setHalLoss(0)
 	holder.lying = 0
-	holder.update_canmove()
+	holder.update_mobility()
 
 	// Temporarily end pain.
 	if(ishuman(holder))

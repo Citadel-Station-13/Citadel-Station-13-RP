@@ -351,4 +351,4 @@
 	rejuvenate()
 	restore_blood()
 	fixblood()
-	update_canmove()
+	update_mobility()

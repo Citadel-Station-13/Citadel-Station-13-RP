@@ -14,7 +14,8 @@
 	handle_vision()
 	handle_light()
 
-	update_canmove()
+	// todo: is this necessary? probably but still..
+	update_mobility()
 
 /mob/living/PhysicalLife(seconds, times_fired)
 	if((. = ..()))

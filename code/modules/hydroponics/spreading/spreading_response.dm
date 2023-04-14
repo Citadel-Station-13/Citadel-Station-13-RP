@@ -69,15 +69,9 @@
 
 
 /obj/effect/plant/proc/unbuckle()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/L = A
-			if(L.buckled == src)
-				L.buckled = null
-				L.anchored = initial(L.anchored)
-				L.update_canmove()
-		buckled_mobs = list()
-	return
+	if(!has_buckled_mobs())
+		return
+	unbuckle_all_mobs(BUCKLE_OP_FORCE)
 
 /obj/effect/plant/proc/manual_unbuckle(mob/user as mob)
 	if(has_buckled_mobs())
