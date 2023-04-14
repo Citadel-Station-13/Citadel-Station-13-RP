@@ -39,8 +39,12 @@
 	//? interaction
 	/// default interaction mode
 	var/interact_type = ABILITY_INTERACT_NONE
+
+	//? ui
 	/// tgui id
 	var/tgui_id = "TGUIAbility"
+	/// is hidden on tgui panel?
+	var/tgui_hidden = FALSE
 
 	//? checks
 	/// check flags - see [code/__DEFINES/ability.dm]
@@ -57,7 +61,7 @@
 	var/windup = 0
 	/// windup requires standing still
 	var/windup_requires_still = TRUE
-	/// last use world.time
+	/// last use world.time; null if we haven't been used yet
 	var/last_used
 	/// timerid for cooldown finish action button update
 	var/cooldown_visual_timerid
@@ -92,7 +96,7 @@
 
 /datum/ability/proc/update_action()
 	var/availability = 1
-	if(cooldown)
+	if(cooldown && !isnull(last_used))
 		availability = clamp((world.time - last_used) / cooldown, 0, 1)
 	action?.push_button_update(availability, (interact_type == ABILITY_INTERACT_TOGGLE) && enabled)
 	recheck_queued_action_update()
@@ -102,7 +106,7 @@
 		deltimer(cooldown_visual_timerid)
 		cooldown_visual_timerid = null
 	var/next_available = 0
-	if(cooldown && (world.time < last_used + cooldown))
+	if(cooldown && !isnull(last_used) && (world.time < last_used + cooldown))
 		next_available = max(next_available, (last_used + cooldown) - world.time)
 	if(next_available > 0)
 		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
@@ -151,7 +155,7 @@
  * * feedback - output feedback messages
  */
 /datum/ability/proc/check_trigger(mob/user, toggling, feedback)
-	if((isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
+	if(!isnull(last_used) && (isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
 	if(!available_check())
