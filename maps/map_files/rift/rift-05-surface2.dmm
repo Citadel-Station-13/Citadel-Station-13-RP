@@ -858,6 +858,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
 "aDo" = (
@@ -1134,6 +1135,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "aMU" = (
@@ -3168,7 +3170,12 @@
 /obj/mecha/combat/fighter/baron/sec/loaded{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/techmaint,
+/area/shuttle/hammerhead/bay)
+"ceX" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/bay)
 "cfz" = (
 /obj/structure/closet/crate/bin{
@@ -6257,14 +6264,6 @@
 "enB" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
-"enC" = (
-/obj/machinery/door/blast/regular{
-	id = "hammerfighterexterior";
-	name = "Fighter Bay"
-	},
-/obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/bay)
 "enF" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -6627,6 +6626,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
 "eCq" = (
@@ -6718,6 +6718,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
+"eFE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "eFJ" = (
 /obj/machinery/shower{
 	pixel_y = 17
@@ -8219,6 +8225,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
@@ -10132,6 +10141,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "gWg" = (
@@ -10345,6 +10355,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/sleep)
+"hgm" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "hgu" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -10769,6 +10788,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"hyt" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "hyJ" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
@@ -11141,7 +11166,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
 "hKy" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "hKz" = (
@@ -11706,6 +11733,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "idk" = (
@@ -12687,6 +12715,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop/loading)
+"iLH" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerfighteraccess";
+	name = "Fighter Bay Access"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/bay)
 "iLI" = (
 /obj/structure/curtain/open/privacy,
 /turf/simulated/floor/tiled/freezer,
@@ -12894,6 +12930,18 @@
 "iTw" = (
 /turf/simulated/open,
 /area/rnd/telescience_lab/foyer)
+"iTA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "iTP" = (
 /obj/structure/table/standard,
 /obj/machinery/light{
@@ -13552,6 +13600,14 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"jsG" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerfighteraccess";
+	name = "Fighter Bay Access"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/hammerhead/bay)
 "jsK" = (
 /obj/effect/floor_decal/corner/green/diagonal,
 /obj/effect/floor_decal/corner/green/diagonal{
@@ -14475,6 +14531,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
 "kcv" = (
@@ -15004,6 +15061,9 @@
 /obj/item/gun/ballistic/shotgun/flare,
 /obj/item/storage/box/flashshells,
 /obj/item/duct_tape_roll,
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "krG" = (
@@ -15480,6 +15540,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "kIN" = (
@@ -16874,6 +16935,22 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_4)
+"lCD" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "lDe" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -17619,12 +17696,25 @@
 "mcs" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
+"mdE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/bay)
 "mea" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
 /obj/random/maintenance/research,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
+"mel" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "met" = (
 /obj/structure/closet/hydrant{
 	pixel_x = -32
@@ -18173,7 +18263,8 @@
 /area/crew_quarters/recreation_area)
 "mzl" = (
 /obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/bay)
 "mzx" = (
 /obj/structure/bed/chair/office/dark{
@@ -18422,6 +18513,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "mED" = (
@@ -18612,6 +18706,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"mMA" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/red,
+/area/shuttle/hammerhead/general)
 "mMZ" = (
 /obj/machinery/camera/network/research{
 	dir = 4
@@ -20545,6 +20646,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"opK" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
+/turf/simulated/floor/tiled/steel,
+/area/security/hallway)
 "opV" = (
 /obj/machinery/conveyor{
 	tag = "trade_load"
@@ -20897,6 +21008,9 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "oFw" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/purple{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/bay)
 "oFY" = (
@@ -22374,6 +22488,7 @@
 	name = "Hammerhead Hangar";
 	req_one_access = list(1,38)
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
 "pzq" = (
@@ -24388,6 +24503,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"rcY" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/hammerhead/bay)
 "rcZ" = (
 /obj/machinery/smartfridge/chemistry,
 /turf/simulated/wall/r_wall,
@@ -27097,6 +27216,9 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "tmi" = (
@@ -27976,6 +28098,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/purple{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 "tSV" = (
@@ -28292,6 +28417,7 @@
 	name = "Hammerhead Hangar";
 	req_one_access = list(1,38)
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
 "uhl" = (
@@ -29185,6 +29311,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/security/hammerhead_bay)
 "uRh" = (
@@ -30007,6 +30136,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
+"vkF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "vmd" = (
 /obj/machinery/shower{
 	pixel_y = 17
@@ -30351,6 +30486,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/steel,
 /area/security/hammerhead_bay)
 "vxg" = (
@@ -30465,6 +30601,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_5)
+"vAq" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Ready Room";
+	req_one_access = list(1,38)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/general)
 "vAF" = (
 /obj/machinery/vending/robotics,
 /turf/simulated/floor/tiled/dark,
@@ -33032,6 +33179,9 @@
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "xsA" = (
@@ -33193,7 +33343,10 @@
 /area/security/evidence_storage)
 "xya" = (
 /obj/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/bay)
 "xyC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -33982,6 +34135,20 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/open,
 /area/rift/trade_shop/loading)
+"ych" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Breaching Nose";
+	req_one_access = list(1,38)
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/bay)
 "ycW" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -34259,6 +34426,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/purple,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/general)
 
@@ -51574,7 +51742,7 @@ oOw
 dda
 bJA
 qlB
-oUL
+hyt
 fSv
 tJa
 xZl
@@ -51593,7 +51761,7 @@ dIf
 uVt
 cDU
 uVt
-uVt
+hnY
 dRc
 hnY
 uVt
@@ -51787,7 +51955,7 @@ fVx
 fVx
 aeX
 fVx
-fVx
+hgm
 fVx
 nog
 fVx
@@ -51962,8 +52130,8 @@ oOw
 qAA
 uZo
 qlB
-oUL
-nxS
+eFE
+mMA
 tSM
 ymj
 kHy
@@ -51978,10 +52146,10 @@ vrz
 kXA
 xsc
 gWc
-amk
-tyJ
-tyJ
-tyJ
+lCD
+opK
+opK
+iTA
 tyJ
 tyJ
 unX
@@ -52158,7 +52326,7 @@ ilr
 ilr
 haT
 haa
-haT
+vAq
 ilr
 ilr
 ilr
@@ -52352,7 +52520,7 @@ ilr
 ybB
 oUL
 nxS
-oUL
+vkF
 aJI
 ilr
 kXL
@@ -52546,7 +52714,7 @@ ilr
 rEL
 azT
 vIN
-azT
+mel
 vnt
 ilr
 ilr
@@ -52740,7 +52908,7 @@ jhd
 jhd
 mpD
 jwp
-mpD
+ych
 jhd
 jhd
 jhd
@@ -52929,16 +53097,16 @@ pBj
 kXA
 bap
 kaH
-ayE
+rcY
 ceM
-qDt
+jsG
+ceX
+mdE
 oFw
-kCx
-oFw
-lop
+iLH
 mzl
 xya
-enC
+kaH
 kXL
 vyY
 kXA
@@ -53130,9 +53298,9 @@ kCx
 kCx
 kCx
 lop
-mzl
-oFw
-enC
+ief
+ayE
+kaH
 kXL
 rtk
 kXA

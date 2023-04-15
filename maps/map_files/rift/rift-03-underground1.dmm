@@ -2516,9 +2516,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage6";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -3008,9 +3008,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage1";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -3057,9 +3057,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage12";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -3276,9 +3276,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage2";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -3791,9 +3791,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage5";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -3848,20 +3848,20 @@
 /area/rnd/secure_storage/upper)
 "lY" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage1";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = -5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage2";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = 5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
@@ -4623,20 +4623,20 @@
 /area/rift/surfacebase/underground/under1)
 "pa" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage3";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = -5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage4";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = 5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
@@ -5118,11 +5118,11 @@
 	id = "scistorage_sidedoor"
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage_sidedoor";
 	name = "Blast Door Controls";
 	pixel_x = -30;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
@@ -6192,9 +6192,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage3";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -6247,11 +6247,11 @@
 /area/security/prison)
 "vG" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	input_tag = "mix_in";
 	name = "Waste Tank Control";
 	output_tag = "mix_out";
-	sensors = list("mix_sensor"="Tank");
-	dir = 4
+	sensors = list("mix_sensor"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -6680,20 +6680,20 @@
 /area/storage/tech)
 "xm" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage6";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = -5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage7";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = 5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
@@ -6901,9 +6901,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage10";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -7130,9 +7130,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage4";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -7482,20 +7482,20 @@
 /area/maintenance/engineering)
 "zU" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "scistorage11";
 	name = "Blast Door Controls";
 	pixel_x = 30;
 	pixel_y = 5;
-	req_access = list(55);
-	dir = 8
+	req_access = list(55)
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "scistorage12";
 	name = "Blast Door Controls";
 	pixel_x = 30;
 	pixel_y = -5;
-	req_access = list(55);
-	dir = 8
+	req_access = list(55)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
@@ -7737,8 +7737,8 @@
 /obj/machinery/air_sensor{
 	frequency = 1443;
 	id_tag = "air_sensor";
-	output = 7;
-	name = "Air Mix Tank Sensor"
+	name = "Air Mix Tank Sensor";
+	output = 7
 	},
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
@@ -8038,12 +8038,12 @@
 /area/hallway/primary/underone)
 "Cn" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 4;
 	id = "scistorage5";
 	name = "Blast Door Controls";
 	pixel_x = -30;
 	pixel_y = -5;
-	req_access = list(47);
-	dir = 4
+	req_access = list(47)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
@@ -9007,9 +9007,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage9";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -10120,12 +10120,12 @@
 /area/maintenance/engineering)
 "Kg" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "scistorage10";
 	name = "Blast Door Controls";
 	pixel_x = 30;
 	pixel_y = -5;
-	req_access = list(55);
-	dir = 8
+	req_access = list(55)
 	},
 /obj/machinery/camera/network/research{
 	dir = 8
@@ -10562,9 +10562,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage7";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -10731,8 +10731,8 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/atmospherics/component/binary/heat_pump{
 	dir = 4;
-	use_power = 1;
-	target_temp = 80
+	target_temp = 80;
+	use_power = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -10932,11 +10932,11 @@
 	pixel_x = -24
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
 	output_tag = "o2_out";
-	sensors = list("o2_sensor"="Tank");
-	dir = 4
+	sensors = list("o2_sensor"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -12460,7 +12460,7 @@
 /area/engineering/atmos/hallway)
 "SH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/atmospherics/component/unary/outlet_injector{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -12961,9 +12961,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage8";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -13894,9 +13894,9 @@
 	req_access = list(47)
 	},
 /obj/machinery/door/blast/regular/open{
+	dir = 4;
 	id = "scistorage11";
-	name = "Blast Doors";
-	dir = 4
+	name = "Blast Doors"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
@@ -14248,20 +14248,20 @@
 /area/crew_quarters/pool)
 "ZY" = (
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "scistorage9";
 	name = "Blast Door Controls";
 	pixel_x = 30;
 	pixel_y = -5;
-	req_access = list(55);
-	dir = 8
+	req_access = list(55)
 	},
 /obj/machinery/button/remote/blast_door{
+	dir = 8;
 	id = "scistorage8";
 	name = "Blast Door Controls";
 	pixel_x = 30;
 	pixel_y = 5;
-	req_access = list(55);
-	dir = 8
+	req_access = list(55)
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/upper)
