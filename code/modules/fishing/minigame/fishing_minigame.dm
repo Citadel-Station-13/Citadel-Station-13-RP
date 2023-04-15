@@ -77,13 +77,13 @@
 	// If fishing line breaks los / rod gets dropped / deleted
 	RegisterSignal(fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(interrupt))
 	ADD_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
-	RegisterSignal(user_rod, COMSIG_FISHING_ROD_REEL, PROC_REF(handle_reel))
+	RegisterSignal(used_rod, COMSIG_FISHING_ROD_REEL, PROC_REF(handle_reel))
 	start_baiting_phase()
 	user.action_feedback(SPAN_NOTICE("You start fishing..."), src)
 	playsound(lure, 'sound/effects/splash.ogg', 100)
 
 /datum/fishing_challenge/proc/handle_reel()
-	SIGNAL_HANDLER
+	SIGNAL_HANDLER_DOES_SLEEP
 	if(phase == WAIT_PHASE) //Reset wait
 		user.bubble_action_feedback("miss!", lure)
 		start_baiting_phase()
