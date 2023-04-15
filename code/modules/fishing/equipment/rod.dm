@@ -210,6 +210,8 @@
 	return spot.try_start_fishing(src, user)
 
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
+	if(!isturf(target) && !isturf(target.loc))
+		return FALSE // NO
 	return user.Reachability(target, depth = 1, range = 5, tool = src)
 
 /obj/item/fishing_rod/ui_interact(mob/user, datum/tgui/ui)
