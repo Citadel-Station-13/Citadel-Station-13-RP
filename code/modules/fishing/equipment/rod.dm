@@ -146,7 +146,7 @@
 	SIGNAL_HANDLER
 	. = NONE
 
-	if(!CheckToolReach(src, source.target, cast_range))
+	if(!ismob(loc) || !check_fishing_reach(source.target, loc))
 		SEND_SIGNAL(source, COMSIG_FISHING_LINE_SNAPPED) //Stepped out of range or los interrupted
 		return BEAM_CANCEL_DRAW
 
@@ -203,7 +203,7 @@
 	return spot.try_start_fishing(src, user)
 
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
-	return user.Reachability(target, range = 5, tool = src)
+	return user.Reachability(target, depth = 0, range = 5, tool = src)
 
 /obj/item/fishing_rod/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

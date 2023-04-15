@@ -9,7 +9,7 @@
 /obj/item/fish_feed/Initialize(mapload)
 	. = ..()
 	create_reagents(5, OPENCONTAINER)
-	reagents.add_reagent(/datum/reagent/consumable/nutriment, 1) //Default fish diet
+	reagents.add_reagent(/datum/reagent/nutriment, 1) //Default fish diet
 
 /obj/item/aquarium_kit
 	name = "DIY Aquarium Construction Kit"

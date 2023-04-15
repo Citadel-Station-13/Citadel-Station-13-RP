@@ -11,7 +11,10 @@
 	icon = 'icons/obj/aquarium.dmi'
 	icon_state = "aquarium_base"
 
-	integrity_failure = 0.3
+	// todo: refactor on atom damage!!!
+	var/integrity_max = 100
+	var/integrity_failure = 0.3
+	var/broken = FALSE
 
 	var/fluid_type = AQUARIUM_FLUID_FRESHWATER
 	var/fluid_temp = DEFAULT_AQUARIUM_TEMP
@@ -118,33 +121,29 @@
 
 /obj/structure/aquarium/attackby(obj/item/I, mob/living/user, params)
 	if(broken)
-		var/obj/item/stack/sheet/glass/glass = I
+		var/obj/item/stack/material/glass/glass = I
 		if(istype(glass))
 			if(glass.get_amount() < 2)
-				to_chat(user, span_warning("You need two glass sheets to fix the case!"))
+				to_chat(user, SPAN_WARNING("You need two glass sheets to fix the case!"))
 				return
-			to_chat(user, span_notice("You start fixing [src]..."))
+			user.action_feedback(SPAN_NOTICE("You start fixing [src]..."), src)
 			if(do_after(user, 2 SECONDS, target = src))
 				glass.use(2)
 				broken = FALSE
-				atom_integrity = max_integrity
+				atom_integrity = integrity_max
 				update_appearance()
-			return TRUE
+			return CLICKCHAIN_DID_SOMETHING
 	else
+		if(istype(I, /obj/item/fish_feed))
+			user.action_feedback(SPAN_NOTICE("You feed the fish."), src)
+			return CLICKCHAIN_DID_SOMETHING
 		var/datum/component/aquarium_content/content_component = I.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src))
-			if(user.transferItemToLoc(I,src))
+			if(user.transfer_item_to_loc(I, src))
 				update_appearance()
-				return TRUE
-		else
-			return ..()
+				return CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-/obj/structure/aquarium/proc/feed_feedback(datum/source, obj/item/thing, mob/user, params)
-	SIGNAL_HANDLER
-	if(istype(thing, /obj/item/fish_feed))
-		to_chat(user,span_notice("You feed the fish."))
-	return NONE
 
 /obj/structure/aquarium/interact(mob/user)
 	if(!broken && user.pulling && isliving(user.pulling))
@@ -159,21 +158,23 @@
 
 /// Tries to put mob pulled by the user in the aquarium after a delay
 /obj/structure/aquarium/proc/try_to_put_mob_in(mob/user)
-	if(user.pulling && isliving(user.pulling))
-		var/mob/living/living_pulled = user.pulling
-		if(living_pulled.buckled || living_pulled.has_buckled_mobs())
-			to_chat(user, span_warning("[living_pulled] is attached to something!"))
-			return
-		user.visible_message(span_danger("[user] starts to put [living_pulled] into [src]!"))
-		if(do_after(user, 10 SECONDS, target = src))
-			if(QDELETED(living_pulled) || user.pulling != living_pulled || living_pulled.buckled || living_pulled.has_buckled_mobs())
-				return
-			var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
-			if(content_component || content_component.is_ready_to_insert(src))
-				return
-			user.visible_message(span_danger("[user] stuffs [living_pulled] into [src]!"))
-			living_pulled.forceMove(src)
-			update_appearance()
+	if(!isliving(user.pulling))
+		return
+	var/mob/living/living_pulled = user.pulling
+	if(living_pulled.buckled || living_pulled.has_buckled_mobs())
+		user.action_feedback(SPAN_WARNING("[living_pulled] is attached to something!"))
+		return
+	user.visible_action_feedback(SPAN_DANGER("[user] starts to put [living_pulled] into src!"), src)
+	if(!do_after(user, 10 SECONDS, target = src))
+		return
+	if(QDELETED(living_pulled) || user.pulling != living_pulled || living_pulled.buckled || living_pulled.has_buckled_mobs())
+		return
+	var/datum/component/aquarium_content/content_component = living_pulled.GetComponent(/datum/component/aquarium_content)
+	if(content_component || content_component.is_ready_to_insert(src))
+		return
+	user.visible_action_feedback(SPAN_DANGER("[user] stuffs [living_pulled] into [src]!"), src)
+	living_pulled.forceMove(src)
+	update_appearance()
 
 ///Apply mood bonus depending on aquarium status
 /obj/structure/aquarium/proc/admire(mob/living/user)
@@ -208,7 +209,7 @@
 	.["maxTemperature"] = max_fluid_temp
 	.["fluidTypes"] = fluid_types
 
-/obj/structure/aquarium/ui_act(action, params)
+/obj/structure/aquarium/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	if(.)
 		return
@@ -231,20 +232,21 @@
 			var/atom/movable/inside = locate(params["ref"]) in contents
 			if(inside)
 				if(isitem(inside))
-					user.put_in_hands(inside)
+					user.put_in_hands_or_drop(inside)
 				else
 					inside.forceMove(get_turf(src))
-				to_chat(user,span_notice("You take out [inside] from [src]."))
+				user.action_feedback(SPAN_NOTICE("You take out [inside] from [src]."), src)
 
-/obj/structure/aquarium/ui_interact(mob/user, datum/tgui/ui)
+/obj/structure/aquarium/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Aquarium", name)
 		ui.open()
 
-/obj/structure/aquarium/atom_break(damage_flag)
-	. = ..()
+// todo: refactor on atom damage!!
+/obj/structure/aquarium/proc/atom_break(damage_flag)
+	// . = ..()
 	if(!broken)
 		aquarium_smash()
 
@@ -268,7 +270,6 @@
 #undef AQUARIUM_LAYER_STEP
 #undef AQUARIUM_MIN_OFFSET
 #undef AQUARIUM_MAX_OFFSET
-
 
 /obj/structure/aquarium/prefilled/Initialize(mapload)
 	. = ..()

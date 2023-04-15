@@ -148,6 +148,8 @@
 
 /**
  * quick and dirty reachability check
+ *
+ * todo: range doesn't currently work
  */
 /atom/movable/proc/CheapReachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range, obj/item/tool)
 	var/turf/curr = target.loc
