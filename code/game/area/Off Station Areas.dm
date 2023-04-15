@@ -323,10 +323,60 @@
 	name = "Class M World - Inside (E)"
 	icon_state = "red"
 
+/area/class_m/inside/main
+	name = "Class M World - Main Facility"
+
+/area/class_m/inside/dorms
+	name = "Class M World - Dormitories"
+	icon_state = "green"
+
+/area/class_m/inside/bathroom
+	name = "Class M World - Bathrooms"
+	icon_state = "green"
+
+/area/class_m/inside/cabin
+	name = "Class M World - Cabin"
+
+/area/class_m/inside/islandbeachhouse
+	name = "Class M World - Island Beach House"
+
+/area/class_m/inside/sauna
+	name = "Class M World - Main Sauna"
+
+/area/class_m/inside/sauna2
+	name = "Class M World - Beach Sauna"
+
+/area/class_m/inside/sauna3
+	name = "Class M World - Island Sauna"
+
+/area/class_m/inside/garage
+	name = "Class M World - Garage"
+
+/area/class_m/inside/hotspringcaves
+	name = "Class M World - Hotspring Caves"
+
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
-	icon_state = "yellow"
+	icon_state = "bluenew"
 	is_outside = OUTSIDE_YES
+
+/area/class_m/outside/beach
+	name = "Class M World - Beach"
+	icon_state = "yellow"
+/area/class_m/outside/beachmiddle
+	name = "Class M World - Beach Center"
+	icon_state = "purple"
+
+/area/class_m/outside/island
+	name = "Class M World - Island"
+	icon_state = "purple"
+
+/area/class_m/outside/island2
+	name = "Class M World - Island"
+	icon_state = "blue"
+
+/area/class_m/outside/docks
+	name = "Class M World - Docks"
 
 // Frozen planet world areas
 /area/class_p

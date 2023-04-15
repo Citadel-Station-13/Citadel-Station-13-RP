@@ -62,7 +62,7 @@
 	initial_gas_mix = GAS_STRING_STP_HOT
 
 /turf/unsimulated/wall/planetary/desert/standard_temp
-	icon = 'icons/turf/desert.dmi'
+	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lowdesert"
 	initial_gas_mix = GAS_STRING_STP
 
