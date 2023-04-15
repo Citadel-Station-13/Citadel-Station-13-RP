@@ -10,7 +10,7 @@
 	/// What bait item it produces
 	var/bait_type
 	/// Time between bait retrievals
-	var/cooldown_time = 10 SECONDS
+	var/cooldown_time = 5 SECONDS
 	/// how much it has left; null for infinite
 	var/bait_left = 50
 

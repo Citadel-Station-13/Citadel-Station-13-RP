@@ -2522,7 +2522,7 @@
 	. = ..()
 	reagents.add_reagent("nutriment", 4)
 	bitesize = 4
-	ADD_TRAIT(src, bait_quality, INNATE_TRAIT)
+	ADD_TRAIT(src, GOOD_QUALITY_BAIT_TRAIT, INNATE_TRAIT)
 	ADD_TRAIT(src, FISHING_BAIT_TRAIT, INNATE_TRAIT)
 
 /////////////////////////////////////////////////Sliceable////////////////////////////////////////

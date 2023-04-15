@@ -209,7 +209,7 @@
 	return spot.try_start_fishing(src, user)
 
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
-	return user.Reachability(target, depth = 0, range = 5, tool = src)
+	return user.Reachability(target, depth = 1, range = 5, tool = src)
 
 /obj/item/fishing_rod/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -257,7 +257,7 @@
 		MA.overlays += mutable_appearance(icon_used, "hook_[slot_key]")
 	return ..()
 
-/obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(slot_check(attacking_item,ROD_SLOT_LINE))
 		use_slot(ROD_SLOT_LINE, user, attacking_item)
 		SStgui.update_uis(src)
@@ -272,12 +272,14 @@
 		return TRUE
 	else if(istype(attacking_item, /obj/item/bait_can)) //Quicker filling from bait can
 		var/obj/item/bait_can/can = attacking_item
-		var/bait = can.retrieve_bait(user)
+		var/obj/item/bait = can.retrieve_bait(user)
 		if(bait)
-			use_slot(ROD_SLOT_BAIT, user, bait)
+			user.put_in_hands_or_drop(bait)
+			if(use_slot(ROD_SLOT_BAIT, user, bait))
+				user.action_feedback(SPAN_NOTICE("You take a piece of bait out of [can] and hook it onto [src]."), src)
 			SStgui.update_uis(src)
 		return TRUE
-	. = ..()
+	return ..()
 
 /obj/item/fishing_rod/ui_data(mob/user)
 	. = ..()
@@ -347,7 +349,7 @@
 	if(new_item && !current_item)
 		if(!slot_check(new_item, slot))
 			return
-		if(user.transfer_item_to_loc(new_item, src))
+		if(user.is_holding(new_item)? user.transfer_item_to_loc(new_item, src) : new_item.forceMove(src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
 					bait = new_item
@@ -360,7 +362,7 @@
 	if(new_item && current_item)
 		if(!slot_check(new_item,slot))
 			return
-		if(user.transfer_item_to_loc(new_item, src))
+		if(user.is_holding(new_item)? user.transfer_item_to_loc(new_item, src) : new_item.forceMove(src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
 					bait = new_item

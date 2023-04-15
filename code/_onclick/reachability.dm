@@ -29,7 +29,7 @@
  *
  * @params
  * - target - the target
- * - depth - max depth
+ * - depth - max depth - should be at least 1 in most cases.
  * - range - max range
  * - tool - the item we're using to reach; not important
  */
