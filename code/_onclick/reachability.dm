@@ -80,38 +80,41 @@
 	// in the old system we used a closed_cache[thing] = true to prevent
 	// infinite loops, now it's built in, and iteration is just as fast!
 
-	// check cache
-	var/list/cc = list(target.loc = TRUE)
-	// current index in check cache
-	var/i = 1
 	// did we reach turf? turf heuristic - usually the first turf we found
 	var/turf/th
-	// current length
-	var/cl = 1
-	// reach *upwards* from the target
-	for(var/d in 1 to depth)
-		cl = length(cc)
-		if(i > cl)
-			// hit top, didn't find, break
-			break
-		for(i in i to cl)
-			l = cc[i]
-			// process the rest of checking
-			if(!l.CanReachIn(src, target, tool, cc))
-				// couldn't reach in, l is irrelevant
-				continue
-			if(dc[l])
-				// found
-				return TRUE
-			if(isturf(l) && !th)
-				// is turf; turf adjacency enabled
-				th = l
-			if(isarea(l.loc))
-				// don't recurse into areas
-				continue
-			cc[l.loc] = TRUE
-		// don't overlap
-		++i
+	if(isturf(target))
+		th = target
+	else
+		// check cache
+		var/list/cc = list(target.loc = TRUE)
+		// current index in check cache
+		var/i = 1
+		// current length
+		var/cl = 1
+		// reach *upwards* from the target
+		for(var/d in 1 to depth)
+			cl = length(cc)
+			if(i > cl)
+				// hit top, didn't find, break
+				break
+			for(i in i to cl)
+				l = cc[i]
+				// process the rest of checking
+				if(!l.CanReachIn(src, target, tool, cc))
+					// couldn't reach in, l is irrelevant
+					continue
+				if(dc[l])
+					// found
+					return TRUE
+				if(isturf(l) && !th)
+					// is turf; turf adjacency enabled
+					th = l
+				if(isarea(l.loc))
+					// don't recurse into areas
+					continue
+				cc[l.loc] = TRUE
+			// don't overlap
+			++i
 	if(!(tadj && th))
 		// didn't hit both, fail
 		return FALSE
