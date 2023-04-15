@@ -1,3 +1,21 @@
+/// cache of fish source datums
+GLOBAL_LIST_EMPTY(cached_fish_sources)
+
+/**
+ * returns an instance of a fish source path
+ *
+ * if it's cache-allowed, this is the global instance
+ * otherwise, makes a new one.
+ */
+/proc/fetch_fish_source(datum/fish_source/path)
+	RETURN_TYPE(/datum/fish_source)
+	ASSERT(ispath(path, /datum/fish_source))
+	if(!initial(path.is_globally_instanced))
+		return new path
+	if(isnull(GLOB.cached_fish_sources[path]))
+		GLOB.cached_fish_sources[path] = new path
+	return GLOB.cached_fish_sources[path]
+
 /// Keyed list of preset sources to configuration instance
 GLOBAL_LIST_INIT(preset_fish_sources,init_fishing_configurations())
 
@@ -14,12 +32,15 @@ GLOBAL_LIST_INIT(preset_fish_sources,init_fishing_configurations())
 	var/datum/fish_source/chasm/chasm_preset = new
 	.[FISHING_SPOT_PRESET_CHASM] = chasm_preset
 
+
 /// Where the fish actually come from - every fishing spot has one assigned but multiple fishing holes can share single source, ie single shared one for ocean/lavaland river
 /datum/fish_source
+	/// instanced? set to TRUE if you use fish_counts or other stateful vars and don't want it to be global.
+	var/is_globally_instanced = TRUE
 	/// Fish catch weight table - these are relative weights
 	var/list/fish_table = list()
 	/// If a key from fish_table is present here, that fish is availible in limited quantity and is reduced by one on successful fishing
-	var/list/fish_counts = list()
+	var/list/fish_counts
 	/// Text shown as baloon alert when you roll a dud in the table
 	var/duds = list("it was nothing", "the hook is empty")
 	/// Baseline difficulty for fishing in this spot

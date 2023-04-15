@@ -5,8 +5,12 @@
 
 	if(!check_rights(R_DEBUG))
 		return
-	var/datum/fishing_calculator/ui = new(usr)
-	ui.ui_interact(usr)
+
+	owner.open_fishing_calculator()
+
+/client/proc/open_fishing_calculator()
+	var/datum/fishing_calculator/ui = new
+	ui.ui_interact(mob)
 
 /datum/fishing_calculator
 	var/list/current_table
@@ -18,7 +22,7 @@
 		ui.open()
 
 /datum/fishing_calculator/ui_state(mob/user)
-	return GLOB.admin_state
+	return GLOB.always_state
 
 /datum/fishing_calculator/ui_close(mob/user)
 	qdel(src)

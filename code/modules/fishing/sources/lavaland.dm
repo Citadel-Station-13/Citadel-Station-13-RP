@@ -15,6 +15,7 @@
 	return rod.hook.chasm_detritus_type
 
 /datum/fish_source/lavaland
+	is_globally_instanced = FALSE
 	catalog_description = "Lava vents"
 	background = "fishing_background_lavaland"
 	fish_table = list(
