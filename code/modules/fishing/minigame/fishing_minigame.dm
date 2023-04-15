@@ -196,7 +196,7 @@
 
 /// The visual that appears over the fishing spot
 /obj/effect/fishing_lure
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/fishing.dmi'
 	icon_state = "lure_idle"
 
 #undef WAIT_PHASE

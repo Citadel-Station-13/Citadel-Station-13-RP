@@ -31,7 +31,6 @@
 /obj/item/reagent_containers/food/snacks/bait/doughball
 	name = "doughball"
 	desc = "Small piece of dough. Simple but effective fishing bait."
-	icon = 'icons/obj/fishing.dmi'
 	icon_state = "doughball"
 	// food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	// tastes = list("dough" = 1)

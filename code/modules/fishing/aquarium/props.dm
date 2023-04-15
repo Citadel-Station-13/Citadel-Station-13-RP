@@ -1,7 +1,7 @@
 /obj/item/aquarium_prop
 	name = "generic aquarium prop"
 	desc = "very boring"
-	icon = 'icons/obj/aquarium.dmi'
+	icon = 'icons/modules/fishing/aquarium.dmi'
 
 	w_class = WEIGHT_CLASS_TINY
 	var/layer_mode = AQUARIUM_LAYER_MODE_BOTTOM

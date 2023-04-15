@@ -42,7 +42,7 @@
 	/// Maximum possible temperature for the fish to live.
 	var/required_temperature_max = MAX_AQUARIUM_TEMP
 	/// What type of reagent this fish needs to be fed.
-	var/food = /datum/reagent/consumable/nutriment
+	var/food = /datum/reagent/nutriment
 	// todo: make this constant over time due to this being a rp server where people don't want to click every x minutes
 	/// How often the fish needs to be fed 1 unit of its food
 	var/feeding_frequency = 90 MINUTES

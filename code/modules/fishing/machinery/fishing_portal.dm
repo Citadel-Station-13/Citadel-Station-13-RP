@@ -2,7 +2,7 @@
 	name = "fish-porter 3000"
 	desc = "Fish anywhere, any-time! Wait, how does this even work..?"
 
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/fishing_portal.dmi'
 	icon_state = "portal_off"
 
 	idle_power_usage = 0

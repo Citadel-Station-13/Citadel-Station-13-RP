@@ -153,7 +153,7 @@
 	icon_state = "dwarf_moonfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	stable_population = 2
-	fillet_type = /obj/item/food/fishmeat/moonfish
+	// fillet_type = /obj/item/food/fishmeat/moonfish
 	average_size = 100
 	average_weight = 2000
 
@@ -163,7 +163,7 @@
 	icon_state = "gunner_jellyfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	stable_population = 4
-	fillet_type = /obj/item/food/fishmeat/gunner_jellyfish
+	// fillet_type = /obj/item/food/fishmeat/gunner_jellyfish
 
 /obj/item/fish/needlefish
 	name = "needlefish"
@@ -182,7 +182,7 @@
 	icon_state = "armorfish"
 	required_fluid_type = AQUARIUM_FLUID_SALTWATER
 	stable_population = 10
-	fillet_type = /obj/item/food/fishmeat/armorfish
+	// fillet_type = /obj/item/food/fishmeat/armorfish
 	fish_ai_type = FISH_AI_SLOW
 
 //Chasm fish
@@ -198,7 +198,7 @@
 	stable_population = 4
 	feeding_frequency = 180 MINUTES
 	random_case_rarity = FISH_RARITY_RARE
-	fillet_type = /obj/item/food/meat/slab/rawcrab
+	// fillet_type = /obj/item/food/meat/slab/rawcrab
 
 /obj/item/storage/box/fish_debug
 	name = "box full of fish"
@@ -214,7 +214,7 @@
 	random_case_rarity = FISH_RARITY_VERY_RARE
 	required_fluid_type = AQUARIUM_FLUID_FRESHWATER
 	stable_population = 4
-	fillet_type = /obj/item/food/fishmeat/donkfish
+	// fillet_type = /obj/item/food/fishmeat/donkfish
 
 /obj/item/fish/emulsijack
 	name = "toxic emulsijack"
@@ -246,7 +246,7 @@
 	random_case_rarity = FISH_RARITY_RARE
 	required_fluid_type = AQUARIUM_FLUID_FRESHWATER
 	stable_population = 10 //set by New, but this is the default config value
-	fillet_type = /obj/item/food/meat/slab/human/mutant/zombie //eww...
+	// fillet_type = /obj/item/food/meat/slab/human/mutant/zombie //eww...
 
 	fish_ai_type = FISH_AI_ZIPPY
 	/*

@@ -31,6 +31,5 @@
 /obj/item/fishing_line/sinew
 	name = "fishing sinew"
 	desc = "An all-natural fishing line made of stretched out sinew."
-	icon = 'icons/obj/fishing.dmi'
 	icon_state = "reel_sinew"
 	line_color = "#d1cca3"

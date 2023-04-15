@@ -158,6 +158,7 @@
 
 /obj/machinery/washing_machine/AltClick(mob/user)
 	if(!user.Reachability(src))
+		return
 	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
 		return
 

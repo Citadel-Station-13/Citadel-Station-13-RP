@@ -8,7 +8,7 @@
 	density = TRUE
 	anchored = TRUE
 
-	icon = 'icons/obj/aquarium.dmi'
+	icon = 'icons/modules/fishing/aquarium.dmi'
 	icon_state = "aquarium_base"
 
 	// todo: refactor on atom damage!!!
