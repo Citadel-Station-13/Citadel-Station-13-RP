@@ -167,6 +167,7 @@
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_movement.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_radiation.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_throwing.dm"
+#include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_visuals.dm"
 #include "code\__DEFINES\dcs\signals\signals_atom\signals_atom_x_act.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_economy.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_inventory.dm"

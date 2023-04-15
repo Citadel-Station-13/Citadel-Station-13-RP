@@ -155,6 +155,8 @@
 	else
 		if(istype(I, /obj/item/fish_feed))
 			user.action_feedback(SPAN_NOTICE("You feed the fish."), src)
+			for(var/obj/item/fish/fish in src)
+				fish.on_feeding(I.reagents)
 			return CLICKCHAIN_DID_SOMETHING
 		var/datum/component/aquarium_content/content_component = I.GetComponent(/datum/component/aquarium_content)
 		if(content_component && content_component.is_ready_to_insert(src))

@@ -52,9 +52,10 @@
 		return initial(bait_item.name)
 	if(islist(bait))
 		var/list/special_identifier = bait
-		switch(special_identifier["Type"])
-			if("Foodtype")
-				return jointext(bitfield_to_list(special_identifier["Value"], FOOD_FLAGS_IC),",")
+		switch(special_identifier[FISH_BAIT_SPECIAL_TYPE])
+			if(FISH_BAIT_SPECIAL_TYPE_FOOD)
+				return "SOMETHING NOT IMPLEMENTED (food)"
+				// return jointext(bitfield_to_list(special_identifier[FISH_BAIT_SPECIAL_VALUE], FOOD_FLAGS_IC),",")
 			else
 				stack_trace("Unknown bait identifier in fish favourite/disliked list")
 				return "SOMETHING VERY WEIRD"

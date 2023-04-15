@@ -133,10 +133,11 @@ GLOBAL_LIST(fishing_property_cache)
 		return istype(bait, identifier)
 	if(islist(identifier))
 		var/list/special_identifier = identifier
-		switch(special_identifier["Type"])
-			if("Foodtype")
-				var/obj/item/food/food_bait = bait
-				return istype(food_bait) && food_bait.foodtypes & special_identifier["Value"]
+		switch(special_identifier[FISH_BAIT_SPECIAL_TYPE])
+			if(FISH_BAIT_SPECIAL_TYPE_FOOD)
+				var/obj/item/reagent_containers/food/food_bait = bait
+				return istype(food_bait)
+				// return istype(food_bait) && food_bait.foodtypes & special_identifier[FISH_BAIT_SPECIAL_VALUE]
 			else
 				CRASH("Unknown bait identifier in fish favourite/disliked list")
 	else

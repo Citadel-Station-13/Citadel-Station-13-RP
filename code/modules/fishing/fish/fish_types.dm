@@ -9,7 +9,9 @@
 	stable_population = 3
 	average_size = 30
 	average_weight = 500
-	favorite_bait = list(/obj/item/reagent_containers/food/snacks/bait/worm)
+	favorite_bait = list(
+		/obj/item/reagent_containers/food/snacks/bait/worm,
+	)
 
 /obj/item/fish/angelfish
 	name = "angelfish"
@@ -53,12 +55,14 @@
 	average_size = 100
 	average_weight = 2000
 	stable_population = 3
+	/*
 	favorite_bait = list(
 		list(
-			"Type" = "Foodtype",
-			"Value" = JUNKFOOD
+			FISH_BAIT_SPECIAL_TYPE = FISH_BAIT_SPECIAL_TYPE_FOOD,
+			FISH_BAIT_SPECIAL_VALUE = JUNKFOOD
 		)
 	)
+	*/
 
 // Saltwater fish below
 
@@ -225,6 +229,7 @@
 	var/obj/structure/aquarium/aquarium = loc
 	if(istype(aquarium))
 		for(var/obj/item/fish/victim in aquarium)
+
 			if(istype(victim, /obj/item/fish/emulsijack))
 				continue //no team killing
 			victim.adjust_health((victim.health - 3) * seconds_per_tick) //the victim may heal a bit but this will quickly kill
@@ -244,14 +249,18 @@
 	fillet_type = /obj/item/food/meat/slab/human/mutant/zombie //eww...
 
 	fish_ai_type = FISH_AI_ZIPPY
+	/*
 	favorite_bait = list(
 		list(
-			"Type" = "Foodtype",
-			"Value" = DAIRY
+			FISH_BAIT_SPECIAL_TYPE = FISH_BAIT_SPECIAL_TYPE_FOOD,
+			FISH_BAIT_SPECIAL_VALUE = DAIRY
 		)
 	)
+	*/
 
+/* nah
 /obj/item/fish/ratfish/Initialize(mapload)
 	. = ..()
 	//stable pop reflects the config for how many mice migrate. powerful...
 	stable_population = CONFIG_GET(number/mice_roundstart)
+*/

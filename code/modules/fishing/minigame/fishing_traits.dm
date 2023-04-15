@@ -63,17 +63,23 @@
 
 /datum/fishing_trait/carnivore/catch_weight_mod(obj/item/fishing_rod/rod, mob/fisherman)
 	. = ..()
+// todo: food refactor
+/*
 	.[MULTIPLICATIVE_FISHING_MOD] = 0
 	if(rod.bait && istype(rod.bait, /obj/item/food))
 		var/obj/item/food/food_bait = rod.bait
 		if(food_bait.foodtypes & MEAT)
 			.[MULTIPLICATIVE_FISHING_MOD] = 1
+*/
 
 /datum/fishing_trait/vegan
 	catalog_description = "This fish can only be baited with fresh produce."
 
 /datum/fishing_trait/vegan/catch_weight_mod(obj/item/fishing_rod/rod, mob/fisherman)
 	. = ..()
+// todo: food refactor
+/*
 	.[MULTIPLICATIVE_FISHING_MOD] = 0
 	if(rod.bait && istype(rod.bait, /obj/item/food/grown))
 		.[MULTIPLICATIVE_FISHING_MOD] = 1
+*/

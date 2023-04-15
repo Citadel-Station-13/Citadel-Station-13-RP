@@ -1,5 +1,19 @@
+//? Fish table special keys
+
 /// Use in fish tables to denote miss chance.
 #define FISHING_DUD "dud"
+
+//? Fish table generics - Keys
+
+#define FISH_BAIT_SPECIAL_TYPE "Type"
+#define FISH_BAIT_SPECIAL_VALUE "Value"
+
+//? Fish table generics - Values
+
+#define FISH_BAIT_SPECIAL_TYPE_FOOD "Foodtype"
+
+//? Fish bait traits
+//  todo: maybe don't use traits?
 
 #define FISHING_BAIT_TRAIT "fishing_bait"
 #define BASIC_QUALITY_BAIT_TRAIT "removes_felinids_pr"

@@ -77,8 +77,8 @@
 
 // This hook can only fish in chasms.
 /obj/item/fishing_hook/rescue/reason_we_cant_fish(datum/fish_source/target_fish_source)
-	if(istype(target_fish_source, /datum/fish_source/chasm))
-		return ..()
+	// if(istype(target_fish_source, /datum/fish_source/chasm))
+		// return ..()
 	return "The hook on your fishing rod wasn't meant for traditional fishing, rendering it useless at doing so!"
 
 /obj/item/fishing_hook/rescue/get_hook_bonus_multiplicative(fish_type, datum/fish_source/source)

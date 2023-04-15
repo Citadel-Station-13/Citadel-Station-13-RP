@@ -20,9 +20,8 @@
 	 *  source_height/source_width is the size of the original icon (ideally only the non-empty parts)
 	 */
 
-	#warn icon shit lmao
 	/// Icon used for in aquarium sprite
-	var/icon = 'icons/obj/aquarium.dmi'
+	var/icon = 'icons/modules/fishing/fish.dmi'
 	/// If this is set this icon state will be used for the holder while icon_state will only be used for item/catalog. Transformation from source_width/height WON'T be applied.
 	var/icon_state
 	/// Applied to vc object only for use with greyscaled icons.

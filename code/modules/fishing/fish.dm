@@ -79,12 +79,12 @@
 	var/fishing_difficulty_modifier = 0
 	/**
 	 * Bait identifiers that make catching this fish easier and more likely
-	 * Bait identifiers: Path | Trait | list("Type"="Foodtype","Value"= Food Type Flag like [MEAT])
+	 * Bait identifiers: Path | Trait | list(FISH_BAIT_SPECIAL_TYPE=FISH_BAIT_SPECIAL_TYPE_FOOD,FISH_BAIT_SPECIAL_VALUE= Food Type Flag like [MEAT])
 	 */
 	var/list/favorite_bait = list()
 	/**
 	 * Bait identifiers that make catching this fish harder and less likely
-	 * Bait identifiers: Path | Trait | list("Type"="Foodtype","Value"= Food Type Flag like [MEAT])
+	 * Bait identifiers: Path | Trait | list(FISH_BAIT_SPECIAL_TYPE=FISH_BAIT_SPECIAL_TYPE_FOOD,FISH_BAIT_SPECIAL_VALUE= Food Type Flag like [MEAT])
 	 */
 	var/list/disliked_bait = list()
 
@@ -106,8 +106,6 @@
 
 /obj/item/fish/Initialize(mapload)
 	. = ..()
-	if(fillet_type)
-		AddElement(/datum/element/processable, TOOL_KNIFE, fillet_type, 1, 5, screentip_verb = "Cut")
 	AddComponent(/datum/component/aquarium_content, PROC_REF(get_aquarium_animation), list(COMSIG_FISH_STATUS_CHANGED,COMSIG_FISH_STIRRED))
 	RegisterSignal(src, COMSIG_ATOM_TEMPORARY_ANIMATION_START, PROC_REF(on_temp_animation))
 
@@ -152,7 +150,7 @@
 	if(isnull(last_feeding)) //Fish start fed.
 		last_feeding = world.time
 	RegisterSignal(aquarium, COMSIG_ATOM_EXITED, PROC_REF(aquarium_exited))
-	RegisterSignal(aquarium, COMSIG_AQUARIUM_DISTURB_FISH, PROC_REF(attack_reaction))
+	RegisterSignal(aquarium, COMSIG_AQUARIUM_DISTURB_FISH, PROC_REF(disturb_reaction))
 
 /obj/item/fish/proc/aquarium_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
@@ -161,19 +159,17 @@
 	UnregisterSignal(source,list(COMSIG_ATOM_EXITED, COMSIG_AQUARIUM_DISTURB_FISH))
 
 /// Our aquarium is hit with stuff
-/obj/item/fish/proc/attack_reaction(datum/source, obj/item/thing, mob/user, params)
+/obj/item/fish/proc/disturb_reaction(datum/source)
 	SIGNAL_HANDLER
-	if(is_food(thing))
-		on_feeding(thing.reagents)
-		return COMPONENT_NO_AFTERATTACK
-	else
-		//stirred effect
-		SEND_SIGNAL(src, COMSIG_FISH_STIRRED)
+	//stirred effect
+	SEND_SIGNAL(src, COMSIG_FISH_STIRRED)
 
 /obj/item/fish/proc/is_food(obj/item/thing)
 	return istype(thing, /obj/item/fish_feed)
 
 /obj/item/fish/proc/on_feeding(datum/reagents/feed_reagents)
+	if(isnull(feed_reagents))
+		return
 	if(feed_reagents.has_reagent(food))
 		last_feeding = world.time
 
@@ -213,6 +209,17 @@
 	if(ready_to_reproduce())
 		try_to_reproduce()
 
+/obj/item/fish/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.sharp)
+		user.action_feedback(SPAN_NOTICE("You start cutting [src] into fillets..."), src)
+		if(!do_after(user, 2 SECONDS, src))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		var/atom/dropping_where = drop_location()
+		for(var/i in 1 to min(50, fillet_amount))
+			new fillet_type(dropping_where)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
+
 /obj/item/fish/proc/set_status(new_status)
 	switch(new_status)
 		if(FISH_ALIVE)
@@ -223,7 +230,7 @@
 			status = FISH_DEAD
 			STOP_PROCESSING(SSobj, src)
 			stop_flopping()
-			var/message = SPAN_NOTiCE("\The [name] dies.")
+			var/message = SPAN_NOTICE("\The [name] dies.")
 			if(istype(loc,/obj/structure/aquarium))
 				loc.visible_message(message)
 			else
