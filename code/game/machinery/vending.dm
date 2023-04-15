@@ -1523,11 +1523,15 @@
 		/obj/item/fishing_line/bouncy = 10,
 		/obj/item/fishing_line/reinforced = 10,
 		/obj/item/bait_can/worm = 80,
+		/obj/item/aquarium_kit = 20,
+		/obj/item/storage/box/aquarium_props = 20,
 	)
 	price_default = 10
 	prices = list(
 		/obj/item/fishing_rod = 50,
 		/obj/item/bait_can/worm = 5,
+		/obj/item/aquarium_kit = 50,
+		/obj/item/storage/box/aquarium_props = 25,
 	)
 
 //Custom vendors

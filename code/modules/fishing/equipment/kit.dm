@@ -27,3 +27,11 @@
 	new /obj/item/fishing_line/bouncy(src)
 	new /obj/item/fishing_line/reinforced(src)
 	new /obj/item/fishing_line/cloaked(src)
+
+/obj/item/storage/box/aquarium_props
+	name = "aquarium props box"
+	desc = "All you need to make your aquarium look good."
+
+/obj/item/storage/box/aquarium_props/PopulateContents()
+	for(var/prop_type in subtypesof(/obj/item/aquarium_prop))
+		new prop_type(src)
