@@ -203,10 +203,6 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/effect/ebeam/reactive/on_drawn()
-	for(var/A in loc)
-		on_contact(A)
-
 /obj/effect/ebeam/reactive/Crossed(atom/A)
 	if(A.is_incorporeal())
 		return
