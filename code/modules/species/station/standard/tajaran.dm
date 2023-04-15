@@ -14,12 +14,12 @@
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
 	max_additional_languages = 3
-	name_language = /datum/language/tajaran
-	intrinsic_languages = /datum/language/tajaran
+	name_language = LANGUAGE_ID_TAJARAN
+	intrinsic_languages = LANGUAGE_ID_TAJARAN
 	whitelist_languages = list(
-		/datum/language/tajaran,
-		/datum/language/tajaranakhani,
-		/datum/language/tajsign,
+	LANGUAGE_ID_TAJARAN,
+	LANGUAGE_ID_TAJARAN_ALT,
+	LANGUAGE_ID_TAJARAN_SIGN
 	)
 
 	darksight = 8
