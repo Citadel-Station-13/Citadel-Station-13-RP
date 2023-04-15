@@ -88,8 +88,11 @@
 
 /**
  * full action button update including icon regeneration
+ * creates the action if it did not already exist.
  */
 /datum/ability/proc/rebuild_action()
+	if(isnull(action))
+		action = new(src)
 	action.name = hotbind_name()
 	action.desc = hotbind_desc()
 	action.button_managed = TRUE
