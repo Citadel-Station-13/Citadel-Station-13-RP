@@ -165,6 +165,7 @@
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
+
 	. |= AFTERATTACK_PROCESSED_ITEM
 
 	/// Reel in if able
@@ -188,6 +189,16 @@
 		cast_projectile.fire()
 
 	return .
+
+/obj/item/fishing_rod/proc/try_initiate_fishing(atom/target, mob/user)
+	if(!check_fishing_reach(target, user))
+		return FALSE
+	target.pre_fishing_query()
+	var/datum/component/fishing_spot/spot = target.is_fishing_spot()
+	if(isnull(spot))
+		user.bubble_action_feedback("can't fish there", src)
+		return FALSE
+	return spot.try_start_fishing(src, user)
 
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
 	return user.Reachability(target, range = 5, tool = src)
@@ -331,14 +342,14 @@
 		return
 	// Trying to remove the item
 	if(!new_item && current_item)
-		user.put_in_hands(current_item)
+		user.put_in_hands_or_drop(current_item)
 		update_icon()
 		return
 	// Trying to insert item into empty slot
 	if(new_item && !current_item)
 		if(!slot_check(new_item, slot))
 			return
-		if(user.transferItemToLoc(new_item,src))
+		if(user.transfer_item_to_loc(new_item, src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
 					bait = new_item
@@ -351,7 +362,7 @@
 	if(new_item && current_item)
 		if(!slot_check(new_item,slot))
 			return
-		if(user.transferItemToLoc(new_item,src))
+		if(user.transfer_item_to_loc(new_item, src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
 					bait = new_item
@@ -359,9 +370,8 @@
 					hook = new_item
 				if(ROD_SLOT_LINE)
 					line = new_item
-		user.put_in_hands(current_item)
+		user.put_in_hands_or_drop(current_item)
 		update_icon()
-
 
 /obj/item/fishing_rod/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -376,15 +386,6 @@
 	name = "bone fishing rod"
 	desc = "A humble rod, made with whatever happened to be on hand."
 	icon_state = "fishing_rod_bone"
-
-/datum/crafting_recipe/bone_rod
-	name = "Bone Fishing Rod"
-	result = /obj/item/fishing_rod/bone
-	time = 5 SECONDS
-	reqs = list(/obj/item/stack/sheet/leather = 1,
-				/obj/item/stack/sheet/sinew = 2,
-				/obj/item/stack/sheet/bone = 2)
-	category = CAT_TOOLS
 
 /obj/item/fishing_rod/master
 	name = "master fishing rod"
@@ -416,32 +417,6 @@
 #undef ROD_SLOT_BAIT
 #undef ROD_SLOT_LINE
 #undef ROD_SLOT_HOOK
-
-/obj/projectile/fishing_cast
-	name = "fishing hook"
-	icon = 'icons/obj/fishing.dmi'
-	icon_state = "hook_projectile"
-	damage = 0
-	range = 5
-	suppressed =  SUPPRESSED_VERY
-	can_hit_turfs = TRUE
-
-	var/obj/item/fishing_rod/owner
-	var/datum/beam/our_line
-
-/obj/projectile/fishing_cast/Impact(atom/hit_atom)
-	. = ..()
-	owner.hook_hit(hit_atom)
-	qdel(src)
-
-/obj/projectile/fishing_cast/fire(angle, atom/direct_target)
-	. = ..()
-	our_line = owner.create_fishing_line(src)
-
-/obj/projectile/fishing_cast/Destroy()
-	. = ..()
-	QDEL_NULL(our_line)
-	owner?.casting = FALSE
 
 /datum/beam/fishing_line
 	// Is the fishing rod held in left side hand

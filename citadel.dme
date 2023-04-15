@@ -338,6 +338,7 @@
 #include "code\__HELPERS\lists\traverse.dm"
 #include "code\__HELPERS\lists\types_typecaches.dm"
 #include "code\__HELPERS\lists\unique.dm"
+#include "code\__HELPERS\math\angles.dm"
 #include "code\__HELPERS\matrices\color_matrix.dm"
 #include "code\__HELPERS\matrices\transfor_matrix.dm"
 #include "code\__HELPERS\misc\sonar.dm"

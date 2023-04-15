@@ -16,16 +16,16 @@
 /datum/component/fishing_spot/proc/try_start_fishing(obj/item/possibly_rod, mob/user)
 	var/obj/item/fishing_rod/rod = possibly_rod
 	if(!istype(rod))
-		return
+		return FALSE
 	if(HAS_TRAIT(user,TRAIT_MOB_IS_FISHING) || rod.currently_hooked_item)
 		user.bubble_action_feedback("already fishing", possibly_rod)
-		return COMPONENT_NO_AFTERATTACK
+		return TRUE
 	var/denial_reason = fish_source.reason_we_cant_fish(rod, user)
 	if(denial_reason)
-		to_chat(user, span_warning(denial_reason))
-		return COMPONENT_NO_AFTERATTACK
+		to_chat(user, SPAN_WARNING(denial_reason))
+		return TRUE
 	start_fishing_challenge(rod, user)
-	return COMPONENT_NO_AFTERATTACK
+	return TRUE
 
 /datum/component/fishing_spot/proc/start_fishing_challenge(obj/item/fishing_rod/rod, mob/user)
 	/// Roll what we caught based on modified table
@@ -37,7 +37,6 @@
 	challenge.start(user)
 
 /datum/component/fishing_spot/proc/fishing_completed(datum/fishing_challenge/source, mob/user, success, perfect)
-	if(success)
-		var/obj/item/fish/caught = source.reward_path
-		user.add_mob_memory(/datum/memory/caught_fish, protagonist = user, deuteragonist = initial(caught.name))
-		fish_source.dispense_reward(source.reward_path, user)
+	if(!success)
+		return
+	fish_source.dispense_reward(source.reward_path, user)
