@@ -83,7 +83,7 @@
 /datum/ability/proc/generate_action()
 	if(!isnull(action))
 		return action
-	reubild_action()
+	rebuild_action()
 	return action
 
 /**
