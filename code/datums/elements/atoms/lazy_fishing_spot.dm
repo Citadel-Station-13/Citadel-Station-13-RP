@@ -13,14 +13,16 @@
 		CRASH("Lazy fishing spot had no configuration passed in.")
 	src.configuration = configuration
 
-	RegisterSignal(target, COMSIG_PRE_FISHING, PROC_REF(create_fishing_spot))
+	RegisterSignal(target, COMSIG_PRE_FISHING_QUERY, PROC_REF(create_fishing_spot))
 
 /datum/element/lazy_fishing_spot/Detach(datum/target)
-	UnregisterSignal(target, COMSIG_PRE_FISHING)
+	UnregisterSignal(target, COMSIG_PRE_FISHING_QUERY)
 	return ..()
 
 /datum/element/lazy_fishing_spot/proc/create_fishing_spot(datum/source)
 	SIGNAL_HANDLER
 
-	source.AddComponent(/datum/component/fishing_spot, configuration)
+	if(!source.GetComponent(/datum/component/fishing_spot))
+		source.AddComponent(/datum/component/fishing_spot, configuration)
+	// detach even on failure as we're clearly not needed anymore.
 	Detach(source)
