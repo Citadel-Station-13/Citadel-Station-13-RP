@@ -2,7 +2,7 @@
 /obj/item/fish_feed
 	name = "fish feed can"
 	desc = "Autogenerates nutritious fish feed based on sample inside."
-	icon = 'icons/obj/aquarium.dmi'
+	icon = 'icons/modules/fishing/aquarium.dmi'
 	icon_state = "fish_feed"
 	w_class = WEIGHT_CLASS_TINY
 
@@ -14,12 +14,10 @@
 /obj/item/aquarium_kit
 	name = "DIY Aquarium Construction Kit"
 	desc = "Everything you need to build your own aquarium. Raw materials sold separately."
-	icon = 'icons/obj/aquarium.dmi'
+	icon = 'icons/modules/fishing/aquarium.dmi'
 	icon_state = "construction_kit"
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/aquarium_kit/attack_self(mob/user)
 	. = ..()
-	to_chat(user,span_notice("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))
-
-
+	to_chat(user, SPAN_NOTICE("There's instruction and tools necessary to build aquarium inside. All you need is to start crafting."))

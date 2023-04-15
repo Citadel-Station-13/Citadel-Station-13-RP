@@ -2,7 +2,7 @@
 /obj/item/fish
 	name = "generic looking aquarium fish"
 	desc = "very bland"
-	icon = 'icons/obj/aquarium.dmi'
+	icon = 'icons/modules/fishing/fish.dmi'
 	icon_state = "bugfish"
 
 	w_class = WEIGHT_CLASS_TINY

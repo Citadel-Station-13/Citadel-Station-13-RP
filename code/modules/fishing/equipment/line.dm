@@ -1,7 +1,7 @@
 /obj/item/fishing_line
 	name = "fishing line reel"
 	desc = "Simple fishing line."
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/reel.dmi'
 	icon_state = "reel_blue"
 	var/fishing_line_traits = NONE
 	/// Color of the fishing line

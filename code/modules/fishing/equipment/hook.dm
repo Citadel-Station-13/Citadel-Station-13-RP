@@ -7,7 +7,7 @@
 /obj/item/fishing_hook
 	name = "simple fishing hook"
 	desc = "A simple fishing hook."
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/hook.dmi'
 	icon_state = "hook"
 	w_class = WEIGHT_CLASS_TINY
 
