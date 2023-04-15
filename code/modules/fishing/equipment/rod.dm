@@ -77,30 +77,19 @@
 	QDEL_NULL(bait)
 	update_icon()
 
-/obj/item/fishing_rod/interact(mob/user)
+/obj/item/fishing_rod/on_attack_self(mob/user)
 	if(isnull(currently_hooked_item))
 		return
 	reel(user)
 
 /obj/item/fishing_rod/proc/reel(mob/user)
 	//Could use sound here for feedback
-	if(do_after(user, 1 SECONDS, currently_hooked_item))
-		// Should probably respect and used force move later
-		step_towards(currently_hooked_item, get_turf(src))
-		if(get_dist(currently_hooked_item,get_turf(src)) < 1)
-			clear_hooked_item()
-
-/obj/item/fishing_rod/attack_self_secondary(mob/user, modifiers)
-	. = ..()
-	ui_interact(user)
-
-/obj/item/fishing_rod/pre_attack(atom/targeted_atom, mob/living/user, params)
-	. = ..()
-	/// Reel in if able
-	if(currently_hooked_item)
-		reel(user)
-		return TRUE
-	SEND_SIGNAL(targeted_atom, COMSIG_PRE_FISHING_QUERY, src, user)
+	if(!do_after(user, 1 SECONDS, currently_hooked_item))
+		return
+	// Should probably respect and used force move later
+	step_towards(currently_hooked_item, get_turf(src))
+	if(get_dist(currently_hooked_item, get_turf(src)) < 1)
+		clear_hooked_item()
 
 /// Generates the fishing line visual from the current user to the target and updates inhands
 /obj/item/fishing_rod/proc/create_fishing_line(atom/movable/target, target_py = null)
@@ -109,22 +98,20 @@
 		return
 	var/beam_color = line?.line_color || default_line_color
 	var/datum/beam/fishing_line/fishing_line_beam = new(user, target, icon_state = "fishing_line", beam_color = beam_color, override_target_pixel_y = target_py)
-	fishing_line_beam.lefthand = user.get_held_index_of_item(src) % 2 == 1
+	fishing_line_beam.lefthand = user.get_held_index(src) % 2 == 1
 	RegisterSignal(fishing_line_beam, COMSIG_BEAM_BEFORE_DRAW, PROC_REF(check_los))
 	RegisterSignal(fishing_line_beam, COMSIG_PARENT_QDELETING, PROC_REF(clear_line))
 	fishing_lines += fishing_line_beam
 	INVOKE_ASYNC(fishing_line_beam, TYPE_PROC_REF(/datum/beam/, Start))
-	user.update_held_items()
+	update_worn_icon()
 	return fishing_line_beam
 
 /obj/item/fishing_rod/proc/clear_line(datum/source)
 	SIGNAL_HANDLER
 	fishing_lines -= source
-	if(ismob(loc))
-		var/mob/user = loc
-		user.update_held_items()
+	update_worn_icon()
 
-/obj/item/fishing_rod/dropped(mob/user, silent)
+/obj/item/fishing_rod/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(currently_hooked_item)
 		clear_hooked_item()
@@ -166,52 +153,57 @@
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 
-	. |= AFTERATTACK_PROCESSED_ITEM
+	// break line if same target
+	if(target == currently_hooked_item)
+		clear_hooked_item()
+		return
 
-	/// Reel in if able
+	// Reel in if able
 	if(currently_hooked_item)
 		reel(user)
-		return .
+		return
 
-	/// If the line to whatever that is is clear and we're not already busy, try fishing in it
-	if(!casting && !currently_hooked_item && !proximity_flag && CheckToolReach(user, target, cast_range))
-		/// Annoyingly pre attack is only called in melee
-		SEND_SIGNAL(target, COMSIG_PRE_FISHING_QUERY, src, user)
-		casting = TRUE
-		var/obj/projectile/fishing_cast/cast_projectile = new(get_turf(src))
-		cast_projectile.range = cast_range
-		cast_projectile.owner = src
-		cast_projectile.original = target
-		cast_projectile.fired_from = src
-		cast_projectile.firer = user
-		cast_projectile.impacted = list(user = TRUE)
-		cast_projectile.preparePixelProjectile(target, user)
-		cast_projectile.fire()
+	// try to fish
+	if(try_initiate_fishing(target, user) != null)
+		return
 
-	return .
+	// try to hook item
+	if(isitem(target) && try_hook_item(target, user))
+		return
 
+	// not a fishing spot or an item
+	user.bubble_action_feedback("can't fish there", src)
+
+/**
+ * Automatically attempt to try to hook an item
+ *
+ * @return TRUE / FALSE on success / fail.
+ */
+/obj/item/fishing_rod/proc/try_hook_item(obj/item/target, mob/user)
+	if(!check_fishing_reach(target, user))
+		return FALSE
+	if(SEND_SIGNAL(target, COMSIG_FISHING_ROD_CAST, src, user) & FISHING_ROD_CAST_HANDLED)
+		return FALSE
+	return hook_item(user, target)
+
+/**
+ * Automatically attempt to start fishing somewhere.
+ *
+ * @return TRUE / FALSE on success / fail, null if not a fishing spot.
+ */
 /obj/item/fishing_rod/proc/try_initiate_fishing(atom/target, mob/user)
 	if(!check_fishing_reach(target, user))
+		return FALSE
+	if(SEND_SIGNAL(target, COMSIG_FISHING_ROD_CAST, src, user) & FISHING_ROD_CAST_HANDLED)
 		return FALSE
 	target.pre_fishing_query()
 	var/datum/component/fishing_spot/spot = target.is_fishing_spot()
 	if(isnull(spot))
-		user.bubble_action_feedback("can't fish there", src)
-		return FALSE
+		return null
 	return spot.try_start_fishing(src, user)
 
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
 	return user.Reachability(target, range = 5, tool = src)
-
-/// Called by hook projectile when hitting things
-/obj/item/fishing_rod/proc/hook_hit(atom/atom_hit_by_hook_projectile)
-	var/mob/user = loc
-	if(!istype(user))
-		return
-	if(SEND_SIGNAL(atom_hit_by_hook_projectile, COMSIG_FISHING_ROD_CAST, src, user) & FISHING_ROD_CAST_HANDLED)
-		return
-	/// If you can't fish in it, try hooking it
-	hook_item(user, atom_hit_by_hook_projectile)
 
 /obj/item/fishing_rod/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

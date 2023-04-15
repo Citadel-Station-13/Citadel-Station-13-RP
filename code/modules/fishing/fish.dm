@@ -176,11 +176,17 @@
 	if(feed_reagents.has_reagent(food))
 		last_feeding = world.time
 
+/**
+ * Checks if a location will put us in stasis.
+ */
+/obj/item/fish/proc/is_stasis_inside(atom/what)
+	return isnull(what) || istype(what, /obj/item/storage/fish_case) || HAS_TRAIT(what, TRAIT_FISH_SAFE_STORAGE)
+
 /obj/item/fish/proc/check_environment_after_movement()
 	if(QDELETED(src)) //we don't care anymore
 		return
 	// Apply/remove stasis as needed
-	if(loc && HAS_TRAIT(loc, TRAIT_FISH_SAFE_STORAGE))
+	if(loc && is_stasis_inside(loc))
 		enter_stasis()
 	else if(in_stasis)
 		exit_stasis()

@@ -15,11 +15,11 @@
 /// Sent by the target when you try to use a fishing rod on anything: (obj/item/fishing_rod/rod, mob/user)
 #define COMSIG_PRE_FISHING_QUERY "pre_fishing_query"
 
-/// Sent by the target of the fishing rod cast
+/// Sent by the target when a fishing rod is used on it.
 #define COMSIG_FISHING_ROD_CAST "fishing_rod_cast"
-	#define FISHING_ROD_CAST_HANDLED (1 << 0)
+	#define FISHING_ROD_CAST_HANDLED (1<<0)
 
-/// Sent when fishing line is snapped
+/// Sent by the fishing line /datum/beam when fishing line is snapped
 #define COMSIG_FISHING_LINE_SNAPPED "fishing_line_interrupted"
 
 //? Fish
