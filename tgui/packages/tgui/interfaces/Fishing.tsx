@@ -161,27 +161,27 @@ class FishingMinigame extends Component<
     const seconds = delta / 1000;
     const { fish: currentFishState } = this.state;
 
-    const longJumpChance =
-      this.baseLongJumpChancePerSecond * this.props.difficulty * seconds * 100;
+    const longJumpChance
+      = this.baseLongJumpChancePerSecond * this.props.difficulty * seconds * 100;
 
-    const shortJumpChance =
-      this.baseShortJumpChancePerSecond * this.props.difficulty * seconds * 100;
+    const shortJumpChance
+      = this.baseShortJumpChancePerSecond * this.props.difficulty * seconds * 100;
 
     const nextFishState = { ...currentFishState };
 
     // Switching to new long jump target can interrupt any other
     if (
-      (this.interruptMove || currentFishState.target === null) &&
-      randomProb(longJumpChance)
+      (this.interruptMove || currentFishState.target === null)
+      && randomProb(longJumpChance)
     ) {
       /*
        Move at least 0.75 to full of the availible bar in given direction,
        and more likely to move in the direction where there's more space
       */
       const distanceFromTop = 0 - currentFishState.position;
-      const distanceFromBottom =
-        this.area_height -
-        (currentFishState.position + currentFishState.height);
+      const distanceFromBottom
+        = this.area_height
+        - (currentFishState.position + currentFishState.height);
 
       const absTop = Math.abs(distanceFromTop);
       const absBottom = Math.abs(distanceFromBottom);
@@ -200,9 +200,9 @@ class FishingMinigame extends Component<
       this.currentVelocityLimit = this.longJumpVelocityLimit;
     }
 
-    const activeTarget =
-      currentFishState.target &&
-      Math.abs(currentFishState.target - currentFishState.position) > 5;
+    const activeTarget
+      = currentFishState.target
+      && Math.abs(currentFishState.target - currentFishState.position) > 5;
 
     if (activeTarget) {
       // Move towards target
@@ -212,22 +212,22 @@ class FishingMinigame extends Component<
       const diffCoeff = 0.3 * this.props.difficulty + 0.5;
       const targetAcceleration = distance * diffCoeff * seconds;
 
-      nextFishState.velocity =
-        currentFishState.velocity * friction + targetAcceleration;
+      nextFishState.velocity
+        = currentFishState.velocity * friction + targetAcceleration;
     } else {
       // If we have the target but we're close enough, mark as target reached
       if (
-        currentFishState.target &&
-        Math.abs(currentFishState.target - currentFishState.position) < 5
+        currentFishState.target
+        && Math.abs(currentFishState.target - currentFishState.position) < 5
       ) {
         nextFishState.target = null;
       }
       // Try to do a short jump - these can't really be interrupted
       if (randomProb(shortJumpChance)) {
         const distanceFromTop = 0 - currentFishState.position;
-        const distanceFromBottom =
-          this.area_height -
-          (currentFishState.position + currentFishState.height);
+        const distanceFromBottom
+          = this.area_height
+          - (currentFishState.position + currentFishState.height);
         let possibleMoves: number[] = [];
         if (Math.abs(distanceFromBottom) > 100) {
           possibleMoves.push(randomInteger(100, 200));
@@ -248,8 +248,8 @@ class FishingMinigame extends Component<
       this.currentVelocityLimit
     );
 
-    nextFishState.position =
-      currentFishState.position + seconds * currentFishState.velocity;
+    nextFishState.position
+      = currentFishState.position + seconds * currentFishState.velocity;
 
     // Top bound
     if (nextFishState.position < 0) {
@@ -301,8 +301,8 @@ class FishingMinigame extends Component<
       newVelocity = -bait.velocity * bounce_coeff;
     }
 
-    const acceleration =
-      this.reeling === ReelingState.Reeling
+    const acceleration
+      = this.reeling === ReelingState.Reeling
         ? acceleration_up
         : acceleration_down;
     const velocity_change = acceleration * seconds;

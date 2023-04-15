@@ -50,8 +50,8 @@ const FishingRodSlot = (props: FishingSlotProps, context) => {
             onClick={() => act('slot_action', { slot: props.slot })}>
             <Flex>
               <Flex.Item>
-                {!!props.current_item_icon &&
-                  icon_wrapper(props.current_item_icon)}
+                {!!props.current_item_icon
+                  && icon_wrapper(props.current_item_icon)}
               </Flex.Item>
               <Flex.Item grow align="center">
                 <Box textAlign="center">

@@ -93,8 +93,7 @@ export const FishingCalculator = (props, context) => {
                   'hook': hook,
                   'line': line,
                   'spot': spot,
-                })
-              }>
+                })}>
               Calculate
             </Button>
           </Stack.Item>
