@@ -80,6 +80,8 @@
 	// in the old system we used a closed_cache[thing] = true to prevent
 	// infinite loops, now it's built in, and iteration is just as fast!
 
+	// current index in check cache
+	var/i = 1
 	// did we reach turf? turf heuristic - usually the first turf we found
 	var/turf/th
 	if(isturf(target))
@@ -87,8 +89,6 @@
 	else
 		// check cache
 		var/list/cc = list(target.loc = TRUE)
-		// current index in check cache
-		var/i = 1
 		// current length
 		var/cl = 1
 		// reach *upwards* from the target
