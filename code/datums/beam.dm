@@ -188,8 +188,47 @@
 
 /obj/effect/ebeam/singularity_pull()
 	return
+
 /obj/effect/ebeam/singularity_act()
 	return
+
+// 'Reactive' beam parts do something when touched or stood in.
+/obj/effect/ebeam/reactive
+
+/obj/effect/ebeam/reactive/Initialize(mapload)
+	START_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/effect/ebeam/reactive/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/effect/ebeam/reactive/on_drawn()
+	for(var/A in loc)
+		on_contact(A)
+
+/obj/effect/ebeam/reactive/Crossed(atom/A)
+	if(A.is_incorporeal())
+		return
+	..()
+	on_contact(A)
+
+/obj/effect/ebeam/reactive/process(delta_time)
+	for(var/A in loc)
+		on_contact(A)
+
+// Override for things to do when someone touches the beam.
+/obj/effect/ebeam/reactive/proc/on_contact(atom/movable/AM)
+	return
+
+// Shocks things that touch it.
+/obj/effect/ebeam/reactive/electric
+	var/shock_amount = 25 // Be aware that high numbers may stun and result in dying due to not being able to get out of the beam.
+
+/obj/effect/ebeam/reactive/electric/on_contact(atom/movable/AM)
+	if(isliving(AM))
+		var/mob/living/L = AM
+		L.inflict_shock_damage(shock_amount)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**

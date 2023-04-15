@@ -113,7 +113,7 @@
 	reqs = list(
 		/obj/item/stack/material/leather = 1,
 		/obj/item/stack/sinew = 2,
-		/obj/item/stack/sheet/material/bone = 2,
+		/obj/item/stack/material/bone = 2,
 	)
 	category = CAT_PRIMAL
 
