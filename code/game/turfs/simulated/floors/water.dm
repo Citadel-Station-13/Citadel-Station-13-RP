@@ -89,6 +89,13 @@
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
+
 /turf/simulated/floor/water/deep
 	name = "deep water"
 	desc = "A body of water.  It seems quite deep."

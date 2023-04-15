@@ -49,10 +49,12 @@
 	return ..()
 
 /obj/machinery/fishing_portal/proc/activate()
+	active = TRUE
 	AddComponent(/datum/component/fishing_spot, fishing_source)
 	update_icon()
 
 /obj/machinery/fishing_portal/proc/deactivate()
+	active = FALSE
 	var/datum/component/fishing_spot/fishing_component = GetComponent(/datum/component/fishing_spot)
 	if(fishing_component)
 		QDEL_NULL(fishing_component)

@@ -3,6 +3,7 @@
 	name = "this is bait"
 	desc = "you got baited."
 	icon = 'icons/modules/fishing/bait.dmi'
+	bitesize = 1
 	/// Quality trait of this bait
 	var/bait_quality = BASIC_QUALITY_BAIT_TRAIT
 	/// Icon state added to main fishing rod icon when this bait is equipped
@@ -10,7 +11,9 @@
 
 /obj/item/reagent_containers/food/snacks/bait/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, bait_quality, INNATE_TRAIT)
+	ADD_TRAIT(src, GOOD_QUALITY_BAIT_TRAIT, INNATE_TRAIT)
+	ADD_TRAIT(src, FISHING_BAIT_TRAIT, INNATE_TRAIT)
+	reagents.add_reagent("protein", 1)
 
 /obj/item/reagent_containers/food/snacks/bait/worm
 	name = "worm"

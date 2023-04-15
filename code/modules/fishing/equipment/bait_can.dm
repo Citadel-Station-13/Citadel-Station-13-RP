@@ -18,7 +18,7 @@
 	. = ..()
 	var/fresh_bait = retrieve_bait(user)
 	if(fresh_bait)
-		user.put_in_hands(fresh_bait)
+		user.put_in_hands_or_drop(fresh_bait)
 
 /obj/item/bait_can/proc/retrieve_bait(mob/user)
 	if(!isnull(bait_left) && (bait_left <= 0))
