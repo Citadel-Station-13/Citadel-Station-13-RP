@@ -62,7 +62,7 @@
 
 /datum/fish_source/portal
 	fish_table = list(
-		FISHING_DUD = 5,
+		FISHING_DUD = 2.5,
 		/obj/item/fish/goldfish = 10,
 		/obj/item/fish/guppy = 10,
 	)

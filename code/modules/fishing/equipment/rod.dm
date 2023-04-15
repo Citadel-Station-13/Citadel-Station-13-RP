@@ -129,12 +129,13 @@
 /// Hooks the item
 /obj/item/fishing_rod/proc/hook_item(mob/user, atom/target_atom)
 	if(currently_hooked_item)
-		return
+		return FALSE
 	if(!can_be_hooked(target_atom))
-		return
+		return FALSE
 	currently_hooked_item = target_atom
 	hooked_item_fishing_line = create_fishing_line(target_atom)
 	RegisterSignal(hooked_item_fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(clear_hooked_item))
+	return TRUE
 
 /// Checks what can be hooked
 /obj/item/fishing_rod/proc/can_be_hooked(atom/movable/target)
@@ -161,7 +162,7 @@
 	. = ..()
 
 	// Reel in if able
-	if(reel(user))
+	if(reel(user, target))
 		return
 
 	// break line if same target and didn't reel
@@ -339,16 +340,16 @@
 		if(ROD_SLOT_LINE)
 			current_item = line
 	if(!new_item && !current_item)
-		return
+		return FALSE
 	// Trying to remove the item
 	if(!new_item && current_item)
 		user.put_in_hands_or_drop(current_item)
 		update_icon()
-		return
+		return TRUE
 	// Trying to insert item into empty slot
 	if(new_item && !current_item)
 		if(!slot_check(new_item, slot))
-			return
+			return FALSE
 		if(user.is_holding(new_item)? user.transfer_item_to_loc(new_item, src) : new_item.forceMove(src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
@@ -361,7 +362,7 @@
 	/// Trying to swap item
 	if(new_item && current_item)
 		if(!slot_check(new_item,slot))
-			return
+			return FALSE
 		if(user.is_holding(new_item)? user.transfer_item_to_loc(new_item, src) : new_item.forceMove(src))
 			switch(slot)
 				if(ROD_SLOT_BAIT)
@@ -372,6 +373,7 @@
 					line = new_item
 		user.put_in_hands_or_drop(current_item)
 		update_icon()
+	return TRUE
 
 /obj/item/fishing_rod/Exited(atom/movable/gone, direction)
 	. = ..()

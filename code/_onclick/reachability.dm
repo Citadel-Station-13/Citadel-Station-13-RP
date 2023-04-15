@@ -68,8 +68,8 @@
 		// 2. it would be expensive as shit and require a snowflake check
 		//    that i have no intention of writing right now
 		return tadj && (l.loc == target)
-	else if(isturf(target))
-		// turf checks are just an adjacency check
+	else if(isturf(target) && (range <= 1))
+		// adjacent turf checks are just an adjacency check
 		return tadj?.TurfAdjacency(target)
 
 	// now that cache is assembled and turf is set, go to main loop

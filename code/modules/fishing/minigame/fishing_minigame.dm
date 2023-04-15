@@ -127,7 +127,7 @@
 	animate(lure, pixel_y = 1, time = 1 SECONDS, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -1, time = 1 SECONDS, flags = ANIMATION_RELATIVE)
 	//Setup next phase
-	var/wait_time = rand(1 SECONDS, 30 SECONDS)
+	var/wait_time = rand(1 SECONDS, 15 SECONDS)
 	next_phase_timer = addtimer(CALLBACK(src, PROC_REF(start_biting_phase)), wait_time, TIMER_STOPPABLE)
 
 /datum/fishing_challenge/proc/start_biting_phase()
