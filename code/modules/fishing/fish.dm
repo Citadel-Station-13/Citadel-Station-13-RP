@@ -43,10 +43,11 @@
 	var/required_temperature_max = MAX_AQUARIUM_TEMP
 	/// What type of reagent this fish needs to be fed.
 	var/food = /datum/reagent/consumable/nutriment
+	// todo: make this constant over time due to this being a rp server where people don't want to click every x minutes
 	/// How often the fish needs to be fed 1 unit of its food
-	var/food_rate = 2 MINUTES
+	var/feeding_frequency = 90 MINUTES
 	/// last consumption of food
-	var/food_last
+	var/last_feeding
 
 	//? health
 
@@ -120,8 +121,8 @@
 /obj/item/fish/examine(mob/user)
 	. = ..()
 	// All spacemen have magic eyes of fish weight perception until fish scale (get it?) is implemented.
-	. += SPAN_NOTiCE("It's [size] cm long.")
-	. += SPAN_NOTiCE("It weighs [weight] g.")
+	. += SPAN_NOTICE("It's [size] cm long.")
+	. += SPAN_NOTICE("It weighs [weight] g.")
 
 /obj/item/fish/proc/randomize_weight_and_size(modifier = 0)
 	var/size_deviation = 0.2 * average_size
@@ -151,13 +152,13 @@
 	if(isnull(last_feeding)) //Fish start fed.
 		last_feeding = world.time
 	RegisterSignal(aquarium, COMSIG_ATOM_EXITED, PROC_REF(aquarium_exited))
-	RegisterSignal(aquarium, COMSIG_PARENT_ATTACKBY, PROC_REF(attack_reaction))
+	RegisterSignal(aquarium, COMSIG_AQUARIUM_DISTURB_FISH, PROC_REF(attack_reaction))
 
 /obj/item/fish/proc/aquarium_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
 	if(src != gone)
 		return
-	UnregisterSignal(source,list(COMSIG_ATOM_EXITED,COMSIG_PARENT_ATTACKBY))
+	UnregisterSignal(source,list(COMSIG_ATOM_EXITED, COMSIG_AQUARIUM_DISTURB_FISH))
 
 /// Our aquarium is hit with stuff
 /obj/item/fish/proc/attack_reaction(datum/source, obj/item/thing, mob/user, params)

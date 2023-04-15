@@ -16,7 +16,7 @@
 	name = "worm"
 	desc = "It's a wriggling worm from a can of fishing bait. You're not going to eat it are you ?"
 	icon_state = "worm"
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
+	// food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	// tastes = list("meat" = 1, "worms" = 1)
 	// foodtypes = GROSS | MEAT | BUGS
 	w_class = WEIGHT_CLASS_TINY
@@ -33,7 +33,7 @@
 	desc = "Small piece of dough. Simple but effective fishing bait."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "doughball"
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
+	// food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	// tastes = list("dough" = 1)
 	// foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY

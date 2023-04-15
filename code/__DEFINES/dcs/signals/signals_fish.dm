@@ -4,11 +4,19 @@
  * * All signals send the source datum of the signal as the first argument
  */
 
-// Aquarium related signals
+//? Aquarium
+
+/// Sent by aquarium on surface change
 #define COMSIG_AQUARIUM_SURFACE_CHANGED "aquarium_surface_changed"
+/// Sent by aquarium on fluid change
 #define COMSIG_AQUARIUM_FLUID_CHANGED "aquarium_fluid_changed"
-/// Fishing challenge completed
-#define COMSIG_FISHING_CHALLENGE_COMPLETED "fishing_completed"
+/// Sent to disturb fish
+#define COMSIG_AQUARIUM_DISTURB_FISH "aquarium_disturb_fish"
+
+//? Fishing Minigame
+
+/// Sent by the /datum/fishing_challenge on completion
+#define COMSIG_FISHING_CHALLENGE_COMPLETED "fishing_challenge_completed"
 
 //? Rods
 

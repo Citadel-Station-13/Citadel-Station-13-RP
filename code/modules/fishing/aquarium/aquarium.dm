@@ -12,7 +12,7 @@
 	icon_state = "aquarium_base"
 
 	// todo: refactor on atom damage!!!
-	var/integrity = 100
+	integrity = 100
 	var/integrity_max = 100
 	var/integrity_failure = 0.3
 	var/broken = FALSE
@@ -52,7 +52,6 @@
 /obj/structure/aquarium/Initialize(mapload)
 	. = ..()
 	update_appearance()
-	RegisterSignal(src,COMSIG_PARENT_ATTACKBY, PROC_REF(feed_feedback))
 
 /obj/structure/aquarium/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -139,6 +138,7 @@
 	return ..()
 
 /obj/structure/aquarium/attackby(obj/item/I, mob/living/user, params)
+	SEND_SIGNAL(src, COMSIG_AQUARIUM_DISTURB_FISH)
 	if(broken)
 		var/obj/item/stack/material/glass/glass = I
 		if(istype(glass))
@@ -162,7 +162,6 @@
 				update_appearance()
 				return CLICKCHAIN_DID_SOMETHING
 	return ..()
-
 
 /obj/structure/aquarium/interact(mob/user)
 	if(!broken && user.pulling && isliving(user.pulling))
@@ -280,10 +279,12 @@
 	playsound(src, 'sound/effects/glassbr3.ogg', 100, TRUE)
 	for(var/atom/movable/fish in contents)
 		fish.forceMove(pick(possible_destinations_for_fish))
+	/*
 	if(fluid_type != AQUARIUM_FLUID_AIR)
 		var/datum/reagents/reagent_splash = new()
 		reagent_splash.add_reagent(/datum/reagent/water, 30)
 		chem_splash(droploc, null, 3, list(reagent_splash))
+	*/
 	update_appearance()
 
 #undef AQUARIUM_LAYER_STEP

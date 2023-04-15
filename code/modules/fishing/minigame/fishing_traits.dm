@@ -42,7 +42,6 @@
 	if(!rod.bait || !(HAS_TRAIT(rod.bait, GOOD_QUALITY_BAIT_TRAIT) || HAS_TRAIT(rod.bait, GREAT_QUALITY_BAIT_TRAIT)))
 		.[MULTIPLICATIVE_FISHING_MOD] = 0
 
-
 /datum/fishing_trait/nocturnal
 	catalog_description = "This fish avoids bright lights, fishing in darkness recommended."
 
@@ -53,13 +52,11 @@
 	if(light_amount < LIGHT_THRESHOLD_SHADOWPERSON)
 		.[MULTIPLICATIVE_FISHING_MOD] = 0
 
-
 /datum/fishing_trait/heavy
 	catalog_description = "This fish tends to stay near the waterbed.";
 
 /datum/fishing_trait/heavy/minigame_mod(obj/item/fishing_rod/rod, mob/fisherman)
 	return list(FISHING_MINIGAME_RULE_HEAVY_FISH)
-
 
 /datum/fishing_trait/carnivore
 	catalog_description = "This fish can only be baited with meat."

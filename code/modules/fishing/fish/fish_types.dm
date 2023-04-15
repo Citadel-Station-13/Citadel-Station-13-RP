@@ -9,7 +9,7 @@
 	stable_population = 3
 	average_size = 30
 	average_weight = 500
-	favorite_bait = list(/obj/item/food/bait/worm)
+	favorite_bait = list(/obj/item/reagent_containers/food/snacks/bait/worm)
 
 /obj/item/fish/angelfish
 	name = "angelfish"
@@ -110,7 +110,7 @@
 	average_size = 30
 	average_weight = 500
 	stable_population = 3
-	disliked_bait = list(/obj/item/food/bait/worm, /obj/item/food/bait/doughball)
+	disliked_bait = list(/obj/item/reagent_containers/food/snacks/bait/worm, /obj/item/reagent_containers/food/snacks/bait/doughball)
 	fish_ai_type = FISH_AI_ZIPPY
 
 /obj/item/fish/pufferfish
@@ -192,7 +192,7 @@
 	source_height = 9
 	source_width = 8
 	stable_population = 4
-	food_rate = 5 MINUTES
+	feeding_frequency = 180 MINUTES
 	random_case_rarity = FISH_RARITY_RARE
 	fillet_type = /obj/item/food/meat/slab/rawcrab
 
