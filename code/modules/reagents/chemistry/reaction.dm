@@ -325,6 +325,13 @@
 
 //Psych Drugs and hallucination Treatment
 
+/datum/chemical_reaction/nicotine
+	name = "Nicotine"
+	id = "nicotine"
+	result = "nicotine"
+	required_reagents = list("carbon" = 1, "oxygen" = 1, "sulfur" = 1)
+	result_amount = 3
+
 /datum/chemical_reaction/synaptizine
 	name = "Synaptizine"
 	id = "synaptizine"
