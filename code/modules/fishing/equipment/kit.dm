@@ -1,6 +1,8 @@
 /obj/item/storage/toolbox/fishing
 	name = "fishing toolbox"
 	desc = "Contains everything you need for your fishing trip."
+	icon = 'icons/modules/fishing/storage.dmi'
+	icon_state = "toolbox"
 	// todo: properly port tg sprite
 	// todo: allow it to hold fishing rods properly
 
@@ -12,6 +14,9 @@
 
 /obj/item/storage/box/fishing_hooks
 	name = "fishing hook set"
+	icon = 'icons/modules/fishing/storage.dmi'
+	icon_state = "case"
+	dynamic_state = FALSE
 
 /obj/item/storage/box/fishing_hooks/PopulateContents()
 	. = ..()
@@ -21,6 +26,9 @@
 
 /obj/item/storage/box/fishing_lines
 	name = "fishing line set"
+	icon = 'icons/modules/fishing/storage.dmi'
+	icon_state = "case"
+	dynamic_state = FALSE
 
 /obj/item/storage/box/fishing_lines/PopulateContents()
 	. = ..()
@@ -31,6 +39,8 @@
 /obj/item/storage/box/aquarium_props
 	name = "aquarium props box"
 	desc = "All you need to make your aquarium look good."
+	icon = 'icons/modules/fishing/storage.dmi'
+	icon_state = "case"
 
 /obj/item/storage/box/aquarium_props/PopulateContents()
 	for(var/prop_type in subtypesof(/obj/item/aquarium_prop))

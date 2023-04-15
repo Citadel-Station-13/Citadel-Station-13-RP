@@ -50,7 +50,6 @@
 /obj/item/fishing_rod/proc/multiplicative_fish_bonus(fish_type, datum/fish_source/source)
 	if(!hook)
 		return FISHING_DEFAULT_HOOK_BONUS_MULTIPLICATIVE
-
 	return hook.get_hook_bonus_multiplicative(fish_type)
 
 /**
@@ -60,7 +59,6 @@
 /obj/item/fishing_rod/proc/additive_fish_bonus(fish_type, datum/fish_source/source)
 	if(!hook)
 		return FISHING_DEFAULT_HOOK_BONUS_ADDITIVE
-
 	return hook.get_hook_bonus_additive(fish_type)
 
 /**
@@ -191,6 +189,9 @@
 
 	return .
 
+/obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
+	return user.Reachability(target, range = 5, tool = src)
+
 /// Called by hook projectile when hitting things
 /obj/item/fishing_rod/proc/hook_hit(atom/atom_hit_by_hook_projectile)
 	var/mob/user = loc
@@ -234,17 +235,17 @@
 /obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	var/slot_key = slot_meta.render_key
 	var/line_color = line?.line_color || default_line_color
-	var/mutable_appearance/reel_overlay = mutable_appearance(icon_file, "reel_[slot_key]")
+	var/mutable_appearance/reel_overlay = mutable_appearance(icon_used, "reel_[slot_key]")
 	reel_overlay.appearance_flags |= RESET_COLOR
 	reel_overlay.color = line_color
 	MA.overlays += reel_overlay
 	/// if we don't have anything hooked show the dangling hook & line
 	if(inhands && length(fishing_lines) == 0)
-		var/mutable_appearance/line_overlay = mutable_appearance(icon_file, "line_[slot_key]")
+		var/mutable_appearance/line_overlay = mutable_appearance(icon_used, "line_[slot_key]")
 		line_overlay.appearance_flags |= RESET_COLOR
 		line_overlay.color = line_color
 		MA.overlays += line_overlay
-		MA.overlays += mutable_appearance(icon_file, "hook_[slot_key]")
+		MA.overlays += mutable_appearance(icon_used, "hook_[slot_key]")
 	return ..()
 
 /obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/user, params)

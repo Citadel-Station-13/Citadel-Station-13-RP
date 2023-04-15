@@ -2,7 +2,7 @@
 	abstract_type = /obj/item/bait_can
 	name = "can o bait"
 	desc = "there's a lot of them in there, getting them out takes a while though"
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/storage.dmi'
 	icon_state = "bait_can"
 	w_class = WEIGHT_CLASS_SMALL
 	/// Tracking until we can take out another bait item
@@ -48,7 +48,7 @@
 	abstract_type = /obj/item/food/bait
 	name = "this is bait"
 	desc = "you got baited."
-	icon = 'icons/obj/fishing.dmi'
+	icon = 'icons/modules/fishing/bait.dmi'
 	/// Quality trait of this bait
 	var/bait_quality = BASIC_QUALITY_BAIT_TRAIT
 	/// Icon state added to main fishing rod icon when this bait is equipped
@@ -61,7 +61,6 @@
 /obj/item/food/bait/worm
 	name = "worm"
 	desc = "It's a wriggling worm from a can of fishing bait. You're not going to eat it are you ?"
-	icon = 'icons/obj/fishing.dmi'
 	icon_state = "worm"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("meat" = 1, "worms" = 1)

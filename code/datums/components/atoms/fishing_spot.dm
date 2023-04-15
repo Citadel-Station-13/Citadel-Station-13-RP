@@ -6,41 +6,19 @@
 /datum/component/fishing_spot/Initialize(configuration)
 	if(!isatom(parent) || ((. = ..()) & COMPONENT_INCOMPATIBLE))
 		return COMPONENT_INCOMPATIBLE
-	if(ispath(configuration,/datum/fish_source))
-		//Create new one of the given type
-		fish_source = new configuration
-	else if(istype(configuration,/datum/fish_source))
-		//Use passed in instance
+	if(ispath(configuration, /datum/fish_source))
+		// Create new one of the given type
+		fish_source = fetch_fish_source(configuration)
+	else if(istype(configuration, /datum/fish_source))
+		// Use passed in instance
 		fish_source = configuration
-	else
-		/// Check if it's a preset key
-		var/datum/fish_source/preset_configuration = GLOB.preset_fish_sources[configuration]
-		if(!preset_configuration)
-			stack_trace("Invalid fishing spot configuration \"[configuration]\" passed down to fishing spot component.")
-			return COMPONENT_INCOMPATIBLE
-		fish_source = preset_configuration
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_attackby))
-	RegisterSignal(parent, COMSIG_FISHING_ROD_CAST, PROC_REF(handle_cast))
-
-/datum/component/fishing_spot/proc/handle_cast(datum/source, obj/item/fishing_rod/rod, mob/user)
-	SIGNAL_HANDLER
-	if(try_start_fishing(rod,user))
-		return FISHING_ROD_CAST_HANDLED
-	return NONE
-
-/datum/component/fishing_spot/proc/handle_attackby(datum/source, obj/item/item, mob/user, params)
-	SIGNAL_HANDLER
-	if(try_start_fishing(item,user))
-		return COMPONENT_NO_AFTERATTACK
-	return NONE
 
 /datum/component/fishing_spot/proc/try_start_fishing(obj/item/possibly_rod, mob/user)
-	SIGNAL_HANDLER
 	var/obj/item/fishing_rod/rod = possibly_rod
 	if(!istype(rod))
 		return
 	if(HAS_TRAIT(user,TRAIT_MOB_IS_FISHING) || rod.currently_hooked_item)
-		user.balloon_alert(user, "already fishing")
+		user.bubble_action_feedback("already fishing", possibly_rod)
 		return COMPONENT_NO_AFTERATTACK
 	var/denial_reason = fish_source.reason_we_cant_fish(rod, user)
 	if(denial_reason)

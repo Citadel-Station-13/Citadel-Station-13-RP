@@ -16,22 +16,6 @@ GLOBAL_LIST_EMPTY(cached_fish_sources)
 		GLOB.cached_fish_sources[path] = new path
 	return GLOB.cached_fish_sources[path]
 
-/// Keyed list of preset sources to configuration instance
-GLOBAL_LIST_INIT(preset_fish_sources,init_fishing_configurations())
-
-/// These are shared between their spots
-/proc/init_fishing_configurations()
-	. = list()
-
-	var/datum/fish_source/ocean/beach/beach_preset = new
-	.[FISHING_SPOT_PRESET_BEACH] = beach_preset
-
-	var/datum/fish_source/lavaland/lava_preset = new
-	.[FISHING_SPOT_PRESET_LAVALAND_LAVA] = lava_preset
-
-	var/datum/fish_source/chasm/chasm_preset = new
-	.[FISHING_SPOT_PRESET_CHASM] = chasm_preset
-
 
 /// Where the fish actually come from - every fishing spot has one assigned but multiple fishing holes can share single source, ie single shared one for ocean/lavaland river
 /datum/fish_source
