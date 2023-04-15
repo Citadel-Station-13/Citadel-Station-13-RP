@@ -2407,6 +2407,7 @@
 #include "code\modules\fishing\fish.dm"
 #include "code\modules\fishing\fish_source.dm"
 #include "code\modules\fishing\fishing.dm"
+#include "code\modules\fishing\legacy.dm"
 #include "code\modules\fishing\aquarium\aquarium.dm"
 #include "code\modules\fishing\aquarium\aquarium_kit.dm"
 #include "code\modules\fishing\aquarium\props.dm"
