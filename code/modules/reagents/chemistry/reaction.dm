@@ -329,7 +329,7 @@
 	name = "Nicotine"
 	id = "nicotine"
 	result = "nicotine"
-	required_reagents = list(MAT_CARBON = 1, "oxygen" = 1, "sulfur" = 1)
+	required_reagents = list("carbon" = 1, "oxygen" = 1, "sulfur" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/synaptizine
