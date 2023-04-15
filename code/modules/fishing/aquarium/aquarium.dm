@@ -12,6 +12,7 @@
 	icon_state = "aquarium_base"
 
 	// todo: refactor on atom damage!!!
+	var/integrity = 100
 	var/integrity_max = 100
 	var/integrity_failure = 0.3
 	var/broken = FALSE
@@ -106,7 +107,7 @@
 
 /obj/structure/aquarium/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to [panel_open ? "close" : "open"] the control panel.")
+	. += SPAN_NOTICE("Alt-click to [panel_open ? "close" : "open"] the control panel.")
 
 /obj/structure/aquarium/AltClick(mob/user)
 	if(!user.Reachability(src))
@@ -132,7 +133,7 @@
 /obj/structure/aquarium/wrench_act(obj/item/I, mob/user, flags, hint)
 	if(!allow_unanchor)
 		return ..()
-	if(default_unfasten_wrench(user, I, 4 SECONDS))
+	if(use_wrench(I, user, delay = 4 SECONDS))
 		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
 		return TRUE
 	return ..()
@@ -148,7 +149,7 @@
 			if(do_after(user, 2 SECONDS, target = src))
 				glass.use(2)
 				broken = FALSE
-				atom_integrity = integrity_max
+				integrity = integrity_max
 				update_appearance()
 			return CLICKCHAIN_DID_SOMETHING
 	else

@@ -50,7 +50,7 @@
 	. = ..()
 	var/turf/T = get_turf(fisherman)
 	var/light_amount = T.get_lumcount()
-	if(light_amount < SHADOW_SPECIES_LIGHT_THRESHOLD)
+	if(light_amount < LIGHT_THRESHOLD_SHADOWPERSON)
 		.[MULTIPLICATIVE_FISHING_MOD] = 0
 
 
