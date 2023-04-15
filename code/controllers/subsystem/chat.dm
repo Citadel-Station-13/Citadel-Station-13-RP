@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(chat)
 	name = "Chat"
 	subsystem_flags = NONE
 	wait = 0.25 // scale up to 40 fps
+	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_CHAT
 	init_order = INIT_ORDER_CHAT
 

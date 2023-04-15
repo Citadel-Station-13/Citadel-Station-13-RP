@@ -115,16 +115,16 @@
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	species_statpanel = TRUE
-	var/global/list/abilities = list()
+	var/global/list/protean_abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
 
 /datum/species/protean/New()
 	..()
-	if(!LAZYLEN(abilities))
+	if(!LAZYLEN(protean_abilities))
 		var/list/powertypes = subtypesof(/obj/effect/protean_ability)
 		for(var/path in powertypes)
-			abilities += new path()
+			protean_abilities += new path()
 
 /datum/species/protean/create_organs(var/mob/living/carbon/human/H)
 	var/obj/item/nif/saved_nif = H.nif
@@ -229,7 +229,7 @@
 		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
 
 	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
-	for(var/ability in abilities)
+	for(var/ability in protean_abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
 		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")

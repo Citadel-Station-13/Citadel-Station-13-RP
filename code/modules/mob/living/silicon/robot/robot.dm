@@ -292,7 +292,7 @@
 			else
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
-			mind.transfer_to(mmi.brainmob)
+			mind.transfer(mmi.brainmob)
 		else if(!shell) // Shells don't have brainmbos in their MMIs.
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
