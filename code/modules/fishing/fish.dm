@@ -217,6 +217,7 @@
 		var/atom/dropping_where = drop_location()
 		for(var/i in 1 to min(50, fillet_amount))
 			new fillet_type(dropping_where)
+		qdel(src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
