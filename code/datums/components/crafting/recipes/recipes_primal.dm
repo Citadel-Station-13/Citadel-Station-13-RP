@@ -92,6 +92,20 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/sinew_line
+	name = "Sinew Fishing Line Reel"
+	result = /obj/item/fishing_line/sinew
+	reqs = list(/obj/item/stack/sinew = 2)
+	time = 2 SECONDS
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_hook
+	name = "Goliath Bone Hook"
+	result = /obj/item/fishing_hook/bone
+	reqs = list(/obj/item/stack/sheet/bone = 1)
+	time = 2 SECONDS
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
 	time = 60
