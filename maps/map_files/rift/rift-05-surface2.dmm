@@ -4324,7 +4324,7 @@
 /obj/random/maintenance/security,
 /obj/random/coin,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "cSG" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -20696,7 +20696,7 @@
 /obj/random/cigarettes,
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "nND" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -23197,7 +23197,7 @@
 /obj/random/tetheraid,
 /obj/random/maintenance/security,
 /turf/simulated/floor/wood,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "pxC" = (
 /obj/structure/bed/chair/bay/shuttle,
 /turf/simulated/floor/tiled/dark,
@@ -24028,7 +24028,7 @@
 "qdL" = (
 /obj/random/junk,
 /turf/simulated/floor/wood,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "qey" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -28004,7 +28004,7 @@
 "tdt" = (
 /obj/random/toy,
 /turf/simulated/floor/wood,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "tdy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -33259,7 +33259,7 @@
 "wOG" = (
 /obj/random/trash,
 /turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
+/area/maintenance/security/upper)
 "wPl" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -58602,7 +58602,7 @@ pBj
 pBj
 pBj
 pBj
-tmJ
+fwK
 qdL
 wOG
 nNc
@@ -58796,7 +58796,7 @@ pBj
 pBj
 pBj
 pBj
-tmJ
+fwK
 pxj
 tdt
 cRT
@@ -58990,10 +58990,10 @@ pBj
 pBj
 pBj
 pBj
-tmJ
-tmJ
-tmJ
-tmJ
+fwK
+fwK
+fwK
+fwK
 fwK
 pCP
 ybv
