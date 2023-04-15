@@ -157,6 +157,7 @@
 	update_icon()
 
 /obj/machinery/washing_machine/AltClick(mob/user)
+	if(!user.Reachability(src))
 	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
 		return
 

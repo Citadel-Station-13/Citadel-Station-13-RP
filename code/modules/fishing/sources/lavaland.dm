@@ -1,3 +1,4 @@
+/*
 /datum/fish_source/chasm
 	catalog_description = "Chasm depths"
 	background = "fishing_background_lavaland"
@@ -13,7 +14,9 @@
 	if(!rod.hook || !ispath(rolled_reward, /obj/item/chasm_detritus))
 		return rolled_reward
 	return rod.hook.chasm_detritus_type
+*/
 
+/*
 /datum/fish_source/lavaland
 	is_globally_instanced = FALSE
 	catalog_description = "Lava vents"
@@ -36,3 +39,6 @@
 		return "There doesn't seem to be anything to catch here."
 	if(!rod.line || !(rod.line.fishing_line_traits & FISHING_LINE_REINFORCED))
 		return "You'll need reinforced fishing line to fish in there"
+*/
+
+// todo: we really need something for lava turfs

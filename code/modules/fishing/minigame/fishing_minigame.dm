@@ -77,10 +77,9 @@
 	// If fishing line breaks los / rod gets dropped / deleted
 	RegisterSignal(fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(interrupt))
 	ADD_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
-	user.add_mood_event("fishing", /datum/mood_event/fishing)
 	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	start_baiting_phase()
-	to_chat(user, span_notice("You start fishing..."))
+	user.action_feedback(SPAN_NOTICE("You start fishing..."), src)
 	playsound(lure, 'sound/effects/splash.ogg', 100)
 
 /datum/fishing_challenge/proc/handle_click()

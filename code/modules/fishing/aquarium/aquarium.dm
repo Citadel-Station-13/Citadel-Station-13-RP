@@ -109,15 +109,33 @@
 	. += span_notice("Alt-click to [panel_open ? "close" : "open"] the control panel.")
 
 /obj/structure/aquarium/AltClick(mob/user)
-	if(!user.can_perform_action(src))
+	if(!user.Reachability(src))
 		return ..()
+	if(user.incapacitated(INCAPACITATION_KNOCKDOWN))
+		user.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
+		return TRUE
 	panel_open = !panel_open
 	update_appearance()
+	return TRUE
 
-/obj/structure/aquarium/wrench_act(mob/living/user, obj/item/tool)
+/obj/structure/aquarium/dynamic_tool_functions(obj/item/I, mob/user)
 	. = ..()
-	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	if(allow_unanchor)
+		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+
+/obj/structure/aquarium/dynamic_tool_image(function, hint)
+	switch(function)
+		if(TOOL_WRENCH)
+			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
+	return ..()
+
+/obj/structure/aquarium/wrench_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_unanchor)
+		return ..()
+	if(default_unfasten_wrench(user, I, 4 SECONDS))
+		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
+		return TRUE
+	return ..()
 
 /obj/structure/aquarium/attackby(obj/item/I, mob/living/user, params)
 	if(broken)
