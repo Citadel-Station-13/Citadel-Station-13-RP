@@ -116,7 +116,7 @@
 		if(reward_path != FISHING_DUD)
 			playsound(lure, 'sound/effects/bigsplash.ogg', 100)
 	else
-		user.balloon_alert(user, "it got away")
+		user.bubble_action_feedback("it got away", lure)
 	SEND_SIGNAL(src, COMSIG_FISHING_CHALLENGE_COMPLETED, user, win, perfect_win)
 	qdel(src)
 
@@ -134,7 +134,7 @@
 	phase = BITING_PHASE
 	// Trashing animation
 	playsound(lure, 'sound/effects/fish_splash.ogg', 100)
-	lure.balloon_alert(user, "!!!")
+	user.bubble_action_feedback("!!!", lure)
 	animate(lure, pixel_y = 3, time = 5, loop = -1, flags = ANIMATION_RELATIVE)
 	animate(pixel_y = -3, time = 5, flags = ANIMATION_RELATIVE)
 	// Setup next phase
@@ -177,7 +177,6 @@
 /datum/fishing_challenge/ui_status(mob/user, datum/ui_state/state)
 	return min(
 		get_dist(user, lure) > max_distance ? UI_CLOSE : UI_INTERACTIVE,
-		ui_status_user_has_free_hands(user),
 		ui_status_user_is_abled(user, lure),
 	)
 

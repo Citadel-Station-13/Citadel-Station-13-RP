@@ -192,7 +192,7 @@
 	source_height = 9
 	source_width = 8
 	stable_population = 4
-	feeding_frequency = 5 MINUTES
+	food_rate = 5 MINUTES
 	random_case_rarity = FISH_RARITY_RARE
 	fillet_type = /obj/item/food/meat/slab/rawcrab
 
