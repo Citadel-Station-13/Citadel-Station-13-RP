@@ -129,7 +129,7 @@
 	return list("AI") // AI door!
 
 // Converts specific characters, like +, |, and _ to formatted output.
-/mob/proc/say_emphasis(input)
+/proc/say_emphasis(input)
 	var/static/regex/italics = regex("\\|(?=\\S)(.+?)(?=\\S)\\|", "g")
 	input = replacetext_char(input, italics, "<i>$1</i>")
 	var/static/regex/bold = regex("\\+(?=\\S)(.+?)(?=\\S)\\+", "g")
@@ -140,7 +140,7 @@
 	input = replacetext_char(input, strikethrough, "<s>$1</s>")
 	return input
 
-/mob/proc/say_emphasis_strip(input)
+/proc/say_emphasis_strip(input)
 	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
 	input = replacetext_char(input, italics, "$1")
 	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")

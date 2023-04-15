@@ -243,3 +243,11 @@
 /datum/gear/shoes/duty_alt/heel
 	name = "Duty Boots (Alternate), Heels"
 	path = /obj/item/clothing/shoes/boots/duty/alt/heel
+
+/datum/gear/shoes/ballet
+	name = "Antheia Pointe Shoes"
+	path = /obj/item/clothing/shoes/ballet
+
+/datum/gear/shoes/ballet/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
