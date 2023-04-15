@@ -20,4 +20,4 @@
 #define AQUARIUM_FLUID_AIR "Air"
 #define AQUARIUM_FLUID_ANADROMOUS "Adaptive to both Freshwater and Saltwater"
 
-#define AQUARIUM_COMPANY "Aquatech Ltd."
+#define AQUARIUM_COMPANY "Ward Takashi"
