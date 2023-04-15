@@ -78,11 +78,18 @@
 	update_icon()
 
 /obj/item/fishing_rod/on_attack_self(mob/user)
-	if(isnull(currently_hooked_item))
-		return
 	reel(user)
 
-/obj/item/fishing_rod/proc/reel(mob/user)
+/obj/item/fishing_rod/proc/reel(mob/user, atom/target)
+	// signal first for fishing minigame
+	if(SEND_SIGNAL(src, COMSIG_FISHING_ROD_REEL) & FISHING_ROD_REEL_HANDLED)
+		return TRUE
+	// don't reel if same target
+	if(target == currently_hooked_item)
+		return FALSE
+	if(isnull(currently_hooked_item))
+		return FALSE
+	. = TRUE
 	//Could use sound here for feedback
 	if(!do_after(user, 1 SECONDS, currently_hooked_item))
 		return
@@ -153,14 +160,13 @@
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 
-	// break line if same target
-	if(target == currently_hooked_item)
-		clear_hooked_item()
+	// Reel in if able
+	if(reel(user))
 		return
 
-	// Reel in if able
-	if(currently_hooked_item)
-		reel(user)
+	// break line if same target and didn't reel
+	if(target == currently_hooked_item)
+		clear_hooked_item()
 		return
 
 	// try to fish

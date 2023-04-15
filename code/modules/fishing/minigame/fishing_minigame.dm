@@ -77,18 +77,19 @@
 	// If fishing line breaks los / rod gets dropped / deleted
 	RegisterSignal(fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(interrupt))
 	ADD_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
-	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
+	RegisterSignal(user_rod, COMSIG_FISHING_ROD_REEL, PROC_REF(handle_reel))
 	start_baiting_phase()
 	user.action_feedback(SPAN_NOTICE("You start fishing..."), src)
 	playsound(lure, 'sound/effects/splash.ogg', 100)
 
-/datum/fishing_challenge/proc/handle_click()
+/datum/fishing_challenge/proc/handle_reel()
+	SIGNAL_HANDLER
 	if(phase == WAIT_PHASE) //Reset wait
 		user.bubble_action_feedback("miss!", lure)
 		start_baiting_phase()
 	else if(phase == BITING_PHASE)
 		start_minigame_phase()
-	return COMSIG_MOB_CANCEL_CLICKON
+	return FISHING_ROD_REEL_HANDLED
 
 /datum/fishing_challenge/proc/check_distance()
 	SIGNAL_HANDLER
@@ -105,10 +106,10 @@
 	deltimer(next_phase_timer)
 	completed = TRUE
 	if(user)
-		UnregisterSignal(user, list(COMSIG_MOB_CLICKON, COMSIG_MOVABLE_MOVED))
+		UnregisterSignal(user, list(COMSIG_MOVABLE_MOVED))
 		REMOVE_TRAIT(user, TRAIT_MOB_IS_FISHING, REF(src))
 	if(used_rod)
-		UnregisterSignal(used_rod, COMSIG_ITEM_DROPPED)
+		UnregisterSignal(used_rod, list(COMSIG_ITEM_DROPPED, COMSIG_FISHING_ROD_REEL))
 		if(phase == MINIGAME_PHASE)
 			used_rod.consume_bait()
 	if(win)

@@ -27,6 +27,10 @@
 #define COMSIG_FISHING_ROD_CAST "fishing_rod_cast"
 	#define FISHING_ROD_CAST_HANDLED (1<<0)
 
+/// sent by rod when attempting to reel, whether or not we have anything on the rod
+#define COMSIG_FISHING_ROD_REEL "fishing_rod_reel"
+	#define FISHING_ROD_REEL_HANDLED (1<<0)
+
 /// Sent by the fishing line /datum/beam when fishing line is snapped
 #define COMSIG_FISHING_LINE_SNAPPED "fishing_line_interrupted"
 
