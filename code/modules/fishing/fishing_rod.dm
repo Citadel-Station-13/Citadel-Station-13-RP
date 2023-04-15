@@ -5,14 +5,12 @@
 /obj/item/fishing_rod
 	name = "fishing rod"
 	desc = "You can fish with this."
-	icon = 'icons/obj/fishing.dmi'
-	icon_state = "fishing_rod"
-	lefthand_file = 'icons/mob/inhands/equipment/fishing_rod_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/fishing_rod_righthand.dmi'
-	inhand_icon_state = "rod"
+	icon = 'icons/modules/fishing/fishing_rod.dmi'
+	icon_state = "rod"
+	inhand_icon = 'icons/modules/fishing/fishing_rod_64x64.dmi'
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
-	force = 8
+	damage_force = 8
 	w_class = WEIGHT_CLASS_HUGE
 
 	/// How far can you cast this
@@ -214,39 +212,40 @@
 	. = ..()
 	var/line_color = line?.line_color || default_line_color
 	/// Line part by the rod, always visible
-	var/mutable_appearance/reel_overlay = mutable_appearance(icon, "reel_overlay")
+	var/mutable_appearance/reel_overlay = mutable_appearance(icon, "reel")
 	reel_overlay.color = line_color;
 	. += reel_overlay
 
 	// Line & hook is also visible when only bait is equipped but it uses default appearances then
 	if(hook || bait)
-		var/mutable_appearance/line_overlay = mutable_appearance(icon, "line_overlay")
+		var/mutable_appearance/line_overlay = mutable_appearance(icon, "line")
 		line_overlay.color = line_color;
 		. += line_overlay
-		var/mutable_appearance/hook_overlay = mutable_appearance(icon, hook?.rod_overlay_icon_state || "hook_overlay")
+		var/mutable_appearance/hook_overlay = mutable_appearance(icon, hook?.rod_overlay_icon_state || "hook")
 		. += hook_overlay
 
 	if(bait)
-		var/bait_state = "worm_overlay" //default to worm overlay for anything without specific one
+		var/bait_state = "worm" //default to worm overlay for anything without specific one
 		if(istype(bait, /obj/item/food/bait))
 			var/obj/item/food/bait/real_bait = bait
 			bait_state = real_bait.rod_overlay_icon_state
 		. += bait_state
 
-/obj/item/fishing_rod/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
+/obj/item/fishing_rod/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	var/slot_key = slot_meta.render_key
 	var/line_color = line?.line_color || default_line_color
-	var/mutable_appearance/reel_overlay = mutable_appearance(icon_file, "reel_overlay")
+	var/mutable_appearance/reel_overlay = mutable_appearance(icon_file, "reel_[slot_key]")
 	reel_overlay.appearance_flags |= RESET_COLOR
 	reel_overlay.color = line_color
-	. += reel_overlay
+	MA.overlays += reel_overlay
 	/// if we don't have anything hooked show the dangling hook & line
-	if(isinhands && length(fishing_lines) == 0)
-		var/mutable_appearance/line_overlay = mutable_appearance(icon_file, "line_overlay")
+	if(inhands && length(fishing_lines) == 0)
+		var/mutable_appearance/line_overlay = mutable_appearance(icon_file, "line_[slot_key]")
 		line_overlay.appearance_flags |= RESET_COLOR
 		line_overlay.color = line_color
-		. += line_overlay
-		. += mutable_appearance(icon_file, "hook_overlay")
+		MA.overlays += line_overlay
+		MA.overlays += mutable_appearance(icon_file, "hook_[slot_key]")
+	return ..()
 
 /obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/user, params)
 	if(slot_check(attacking_item,ROD_SLOT_LINE))
