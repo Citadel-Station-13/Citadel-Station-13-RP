@@ -56,6 +56,7 @@ GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/grass)
 GAIA_TURF_CREATE(/turf/simulated/floor/outdoors/dirt/classm)
 GAIA_TURF_CREATE(/turf/simulated/floor/wood)
 GAIA_TURF_CREATE(/turf/simulated/floor/tiled)
+GAIA_TURF_CREATE(/turf/simulated/floor/tiled/white)
 GAIA_TURF_CREATE(/turf/simulated/floor/tiled/monotile)
 GAIA_TURF_CREATE(/turf/simulated/floor)
 GAIA_TURF_CREATE(/turf/simulated/floor)
@@ -74,6 +75,9 @@ GAIA_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 //Exterior Turfs for weather effects.
 /turf/simulated/floor/tiled/classm/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/tiled/white/classm/outdoors
 	outdoors = TRUE
 
 /turf/simulated/floor/concrete/classm/outdoors

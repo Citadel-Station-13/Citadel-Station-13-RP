@@ -233,6 +233,18 @@
 /mob/living/simple_mob/animal/passive/bird/azure_tit/tweeter,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"bt" = (
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/item/oar,
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside/docks)
 "bu" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/tree/jungle_small,
@@ -452,6 +464,12 @@
 	name = "beach"
 	},
 /area/class_m/outside)
+"cE" = (
+/obj/structure/flora/rock,
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/mineral/floor/classm,
+/area/class_m/inside/hotspringcaves)
 "cG" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -482,6 +500,15 @@
 /turf/simulated/floor/water/beach{
 	dir = 10
 	},
+/area/class_m/outside)
+"cJ" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
 "cK" = (
 /obj/machinery/newscaster{
@@ -540,6 +567,18 @@
 /obj/machinery/vending/hydroseeds,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"cX" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
+"dc" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/seed_extractor,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "df" = (
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/island)
@@ -553,6 +592,13 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"dm" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/honey_extractor,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "dn" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -562,9 +608,10 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/class_m/inside/garage)
-"dr" = (
-/turf/simulated/floor/water/deep/indoors,
-/area/class_m/inside/hotspringcaves)
+"dw" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "dA" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -607,18 +654,11 @@
 "dN" = (
 /obj/structure/catwalk,
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "dO" = (
 /turf/simulated/floor/water/deep/classm,
-/area/class_m/outside/beachmiddle)
-"dP" = (
-/obj/structure/table/bench/wooden,
-/obj/machinery/reagentgrinder{
-	pixel_x = -1;
-	pixel_y = 8
-	},
-/turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
 "dR" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -629,6 +669,19 @@
 	},
 /turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside/hotspringcaves)
+"dS" = (
+/obj/structure/table/marble,
+/obj/machinery/computer/security/telescreen{
+	pixel_x = 16;
+	pixel_y = 7
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 17
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_m/inside/main)
 "dW" = (
 /obj/machinery/light/spot,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -688,13 +741,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/water/classm,
 /area/class_m/outside/beach)
-"ev" = (
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/turf/simulated/floor/outdoors/grass/classm,
-/area/class_m/outside)
 "ew" = (
 /mob/living/simple_mob/animal/passive/fish/javelin,
 /turf/simulated/floor/water/deep/classm,
@@ -709,6 +755,15 @@
 	icon_state = "concrete16"
 	},
 /area/class_m/outside/beachmiddle)
+"eI" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "eJ" = (
 /obj/structure/fence{
 	dir = 4
@@ -800,13 +855,23 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"eY" = (
+/obj/structure/table/rack/shelf,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/tiled/white,
+/area/class_m/inside/bathroom)
 "eZ" = (
 /turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside/hotspringcaves)
-"fb" = (
-/obj/machinery/vending/hydronutrients,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
 "fc" = (
 /obj/item/stool/padded,
 /turf/simulated/floor/wood/classm,
@@ -1027,6 +1092,20 @@
 "gG" = (
 /turf/simulated/floor/water/classm,
 /area/class_m/outside/beachmiddle)
+"gJ" = (
+/obj/item/radio/intercom/entertainment{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 4;
+	pixel_x = 3
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 8;
+	pixel_x = 4
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "gM" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors{
 	icon_state = "concrete18"
@@ -1060,6 +1139,11 @@
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna2)
+"gT" = (
+/obj/effect/mist,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "gW" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/light/flamp/noshade{
@@ -1068,6 +1152,15 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"gZ" = (
+/obj/structure/window/basic,
+/obj/structure/table/bench/wooden,
+/obj/machinery/reagentgrinder{
+	pixel_x = -1;
+	pixel_y = 8
+	},
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "ha" = (
 /obj/structure/flora/tree/jungle_small{
 	pixel_x = -44
@@ -1098,13 +1191,6 @@
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
-"hj" = (
-/obj/machinery/light/flamp/noshade{
-	light_range = 8;
-	nightshift_allowed = 0
-	},
-/turf/simulated/floor/wood/classm,
-/area/class_m/inside/dorms)
 "hk" = (
 /turf/simulated/floor/tiled/techfloor/grid{
 	outdoors = 1
@@ -1153,6 +1239,15 @@
 /mob/living/simple_mob/animal/passive/fish/koi,
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/main)
+"hC" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "hD" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -1178,6 +1273,16 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"hT" = (
+/obj/structure/table/woodentable,
+/obj/effect/floor_decal/industrial/warning/dust,
+/turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
+"hW" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "hX" = (
 /turf/simulated/floor/maglev{
@@ -1210,6 +1315,21 @@
 	name = "beach"
 	},
 /area/class_m/outside/beach)
+"ie" = (
+/obj/structure/table/woodentable,
+/obj/machinery/computer/security/telescreen{
+	pixel_x = -16;
+	pixel_y = 7
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/simulated/floor/wood{
+	outdoors = 1
+	},
+/area/class_m/outside)
 "ig" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -1272,6 +1392,15 @@
 	outdoors = 1
 	},
 /area/class_m/outside)
+"is" = (
+/obj/structure/window/basic,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "it" = (
 /obj/machinery/light/spot{
 	dir = 4;
@@ -1286,6 +1415,11 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_x = -16;
 	pixel_y = 7
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = 17
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
@@ -1304,13 +1438,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
-"iA" = (
-/obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/mineral/floor/classm,
-/area/class_m/inside/hotspringcaves)
 "iC" = (
 /turf/simulated/floor/water/beach{
 	dir = 9
@@ -1410,6 +1537,13 @@
 	outdoors = 1
 	},
 /area/class_m/outside)
+"ji" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside/beachmiddle)
 "jm" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -1507,7 +1641,9 @@
 	},
 /area/class_m/outside/beachmiddle)
 "jD" = (
-/obj/machinery/floor_light/changing/prebuilt,
+/obj/machinery/floor_light/changing/prebuilt{
+	on = 1
+	},
 /obj/machinery/light/spot{
 	alpha = 0;
 	dir = 1;
@@ -1550,6 +1686,10 @@
 /obj/structure/table/woodentable,
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 45
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 56
 	},
 /turf/simulated/floor/carpet,
 /area/class_m/inside/main)
@@ -1599,6 +1739,14 @@
 /obj/structure/closet/secure_closet/chemical,
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
+"jW" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 10
+	},
+/turf/simulated/floor/wood/classm/outdoors,
+/area/class_m/outside/docks)
 "jY" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -1612,6 +1760,11 @@
 	dir = 6
 	},
 /area/class_m/outside/beach)
+"kc" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete19"
+	},
+/area/class_m/outside/beachmiddle)
 "kd" = (
 /obj/structure/sign/warning/high_voltage,
 /turf/simulated/wall,
@@ -1695,6 +1848,19 @@
 /obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
+"kE" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 8;
+	pixel_x = -21
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/class_m/inside/hotspringcaves)
 "kF" = (
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
@@ -1859,6 +2025,15 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"lg" = (
+/obj/structure/bed/chair/sofa/black,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 25
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "lh" = (
 /obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/effect/mist,
@@ -1898,6 +2073,13 @@
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
+"ln" = (
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "lo" = (
 /obj/structure/table/bench/marble,
 /obj/effect/mist,
@@ -1909,6 +2091,10 @@
 	id = "sauna";
 	pixel_x = 5;
 	pixel_y = 30
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 36
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna2)
@@ -2140,7 +2326,7 @@
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside/beachmiddle)
 "mM" = (
-/obj/structure/window/basic/full,
+/obj/structure/window/basic,
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "mN" = (
@@ -2187,6 +2373,21 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/cabin)
+"mW" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/vending/hydroseeds,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
+"mX" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "na" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -2296,6 +2497,15 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/cabin)
+"nF" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "nG" = (
 /obj/effect/mist,
 /obj/machinery/light/small{
@@ -2305,13 +2515,6 @@
 /obj/item/reagent_containers/glass/bucket/wood,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna2)
-"nL" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/effect/map_effect/interval/effect_emitter/steam,
-/obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
-/area/class_m/inside/hotspringcaves)
 "nU" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/tree/jungle,
@@ -2439,6 +2642,7 @@
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
+/obj/effect/mist,
 /turf/simulated/floor/concrete/tile/indoors,
 /area/class_m/inside/hotspringcaves)
 "oB" = (
@@ -2480,6 +2684,10 @@
 /obj/item/stack/material/log{
 	amount = 50
 	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 21
+	},
 /turf/simulated/mineral/floor/classm,
 /area/class_m/inside/hotspringcaves)
 "oJ" = (
@@ -2492,11 +2700,6 @@
 /obj/structure/salvageable/server,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
-"oL" = (
-/obj/structure/catwalk,
-/obj/effect/mist,
-/turf/simulated/floor/water/indoors,
-/area/class_m/inside/hotspringcaves)
 "oO" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/rddouble,
@@ -2541,12 +2744,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
-"pa" = (
-/obj/structure/catwalk,
-/obj/effect/map_effect/interval/effect_emitter/steam,
-/obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
-/area/class_m/inside/hotspringcaves)
 "pd" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/classm,
@@ -2568,7 +2765,7 @@
 /obj/machinery/button/remote/airlock{
 	id = "room7";
 	name = "Room 7 Lock";
-	pixel_x = 26;
+	pixel_x = 7;
 	pixel_y = 26;
 	specialfunctions = 4
 	},
@@ -2634,6 +2831,12 @@
 	dir = 1
 	},
 /area/class_m/outside)
+"pL" = (
+/obj/item/beach_ball,
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
+/area/class_m/outside/beachmiddle)
 "pO" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -2651,6 +2854,10 @@
 	id = "sauna";
 	pixel_x = 5;
 	pixel_y = 30
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 36
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna3)
@@ -2736,6 +2943,14 @@
 	name = "beach"
 	},
 /area/class_m/outside/beachmiddle)
+"qo" = (
+/obj/effect/mist,
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/water/indoors,
+/area/class_m/inside/hotspringcaves)
 "qp" = (
 /obj/machinery/light/flamp/noshade{
 	light_range = 8;
@@ -2781,6 +2996,11 @@
 	dir = 9
 	},
 /area/class_m/outside/island2)
+"qD" = (
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/mineral/floor/classm,
+/area/class_m/inside/hotspringcaves)
 "qG" = (
 /obj/structure/table/rack,
 /obj/item/material/fishing_rod/modern/strong,
@@ -3006,6 +3226,23 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
+"rA" = (
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = -8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 1;
+	pixel_y = -4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals_central6{
+	dir = 1;
+	pixel_y = -7
+	},
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete20"
+	},
+/area/class_m/outside/beachmiddle)
 "rE" = (
 /obj/machinery/light/flamp/noshade{
 	light_range = 8;
@@ -3060,6 +3297,18 @@
 	name = "beach"
 	},
 /area/class_m/outside/island2)
+"rX" = (
+/obj/structure/table/rack/shelf,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/obj/item/towel/random,
+/turf/simulated/floor/tiled/white,
+/area/class_m/inside/bathroom)
 "sa" = (
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/inside/cabin)
@@ -3150,6 +3399,15 @@
 /obj/structure/bed/chair/sofa/black/corner,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"sI" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "sJ" = (
 /obj/structure/railing{
 	dir = 4
@@ -3446,6 +3704,14 @@
 	},
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"ue" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "uf" = (
 /mob/living/simple_mob/animal/passive/bird/goldcrest,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -3822,6 +4088,30 @@
 /obj/effect/floor_decal/corner_steel_grid/full,
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/main)
+"wL" = (
+/obj/item/bee_pack,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/honey_frame,
+/obj/item/tool/crowbar,
+/obj/item/bee_smoker,
+/obj/item/beehive_assembly,
+/obj/structure/closet/crate/hydroponics{
+	desc = "All you need to start your own honey farm.";
+	name = "beekeeping crate"
+	},
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/structure/window/basic{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "wM" = (
 /obj/machinery/door/airlock{
 	id_tag = "gaiarestroom1";
@@ -3842,6 +4132,14 @@
 /obj/effect/mist,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna)
+"wX" = (
+/obj/machinery/shower{
+	pixel_y = 29
+	},
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete15"
+	},
+/area/class_m/outside/beachmiddle)
 "wY" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
@@ -3872,13 +4170,6 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"xg" = (
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/obj/item/reagent_containers/glass/bucket/wood,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
 "xi" = (
 /obj/structure/fence,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -3892,6 +4183,14 @@
 	},
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/docks)
+"xm" = (
+/obj/machinery/light/spot{
+	alpha = 0;
+	dir = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "xn" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
@@ -3941,6 +4240,18 @@
 	},
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/docks)
+"xD" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/item/material/minihoe,
+/obj/item/material/minihoe,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/tool/wirecutters/clippers/trimmers,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "xE" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -4031,10 +4342,6 @@
 	name = "beach"
 	},
 /area/class_m/outside/beachmiddle)
-"yg" = (
-/obj/machinery/vending/hydroseeds,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
 "ym" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/water/deep/classm,
@@ -4060,6 +4367,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
+"yu" = (
+/obj/structure/table/marble,
+/obj/machinery/computer/security/telescreen{
+	pixel_x = -96;
+	pixel_y = -33
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/cabin)
 "yv" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/water/beach/corner{
@@ -4085,6 +4400,15 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass,
+/area/class_m/outside)
+"yz" = (
+/obj/structure/railing/grey{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black/diagonal{
+	alpha = 255
+	},
+/turf/simulated/floor/tiled/white/classm/outdoors,
 /area/class_m/outside)
 "yB" = (
 /obj/structure/railing{
@@ -4129,14 +4453,6 @@
 	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
-"yK" = (
-/obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
-/area/class_m/inside/hotspringcaves)
 "yM" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -4183,6 +4499,15 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"yW" = (
+/obj/structure/bed/chair/sofa/black,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = 25
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/main)
 "yX" = (
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -4400,9 +4725,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "Af" = (
 /turf/simulated/floor/water/deep/indoors,
@@ -4458,6 +4783,13 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/main)
+"Ap" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside/beachmiddle)
 "Ar" = (
 /obj/structure/sign/greencross{
 	name = "Authorized Medical Personnel Only";
@@ -4580,7 +4912,9 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
 "Bc" = (
-/obj/machinery/floor_light/changing/prebuilt,
+/obj/machinery/floor_light/changing/prebuilt{
+	on = 1
+	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
 "Be" = (
@@ -4588,6 +4922,11 @@
 	dir = 6
 	},
 /area/class_m/outside/island2)
+"Bf" = (
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "Bg" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/beach)
@@ -4609,6 +4948,19 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside/beachmiddle)
+"Bo" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 4;
+	pixel_x = 21
+	},
+/turf/simulated/floor/concrete/tile/indoors,
+/area/class_m/inside/hotspringcaves)
 "Bp" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -4697,6 +5049,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
+/obj/effect/mist,
 /turf/simulated/floor/water/indoors,
 /area/class_m/inside/hotspringcaves)
 "BQ" = (
@@ -4733,7 +5086,8 @@
 /obj/structure/catwalk,
 /obj/structure/railing,
 /obj/effect/mist,
-/turf/simulated/floor/water/deep/indoors,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "BZ" = (
 /obj/structure/railing{
@@ -4863,6 +5217,13 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"CN" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "CO" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass,
@@ -4932,7 +5293,7 @@
 	dir = 1
 	},
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "Dm" = (
 /turf/simulated/floor/carpet/turcarpet,
@@ -5166,6 +5527,10 @@
 	},
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
+"EE" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "EJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/leafybush,
@@ -5246,15 +5611,15 @@
 /mob/living/simple_mob/animal/passive/fish/koi,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
-"Ff" = (
-/obj/item/stool/padded,
-/obj/machinery/light/spot{
-	alpha = 0;
-	dir = 4;
-	nightshift_allowed = 0
+"Fg" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
 	},
-/turf/simulated/floor/wood/classm,
-/area/class_m/inside/main)
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside/beachmiddle)
 "Fk" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light/spot{
@@ -5320,6 +5685,13 @@
 /obj/structure/railing,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"FL" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "FN" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -5577,6 +5949,10 @@
 /area/class_m/outside/beachmiddle)
 "Hv" = (
 /obj/structure/bed/chair/sofa/black,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 24
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/class_m/inside/main)
 "Hw" = (
@@ -5611,6 +5987,15 @@
 /obj/structure/sink/puddle,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"HI" = (
+/obj/machinery/icecream_vat,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/freezer,
+/area/class_m/inside/main)
 "HJ" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/table/standard,
@@ -5638,6 +6023,13 @@
 	},
 /obj/structure/flora/pottedplant/bamboo{
 	pixel_x = 2
+	},
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
+"HX" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
@@ -5688,6 +6080,12 @@
 /obj/item/bedsheet/orangedouble,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/dorms)
+"Ik" = (
+/obj/effect/floor_decal/corner/black/diagonal{
+	alpha = 255
+	},
+/turf/simulated/floor/tiled/white/classm/outdoors,
+/area/class_m/outside)
 "Il" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -5800,6 +6198,14 @@
 	},
 /turf/simulated/floor/tiled/monotile/classm,
 /area/class_m/inside/garage)
+"IT" = (
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/floor/outdoors/dirt/classm/outdoors,
+/area/class_m/outside)
 "IU" = (
 /mob/living/simple_mob/animal/passive/fish/trout,
 /turf/simulated/floor/water/deep/classm,
@@ -5959,7 +6365,7 @@
 /obj/structure/catwalk,
 /obj/structure/railing,
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "Ka" = (
 /obj/structure/railing/grey{
@@ -5980,6 +6386,12 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"Kh" = (
+/obj/effect/mist,
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "Ki" = (
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
@@ -6005,6 +6417,19 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"Kr" = (
+/obj/structure/table/marble,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = -16;
+	pixel_y = 17
+	},
+/turf/simulated/floor/tiled/dark,
+/area/class_m/inside/main)
+"Ks" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "Kt" = (
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -6185,6 +6610,10 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
+"Li" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside/beachmiddle)
 "Lj" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -6277,6 +6706,13 @@
 "LF" = (
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/docks)
+"LG" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "LH" = (
 /obj/structure/flora/pottedplant/subterranean,
 /turf/simulated/floor/wood/classm,
@@ -6295,6 +6731,10 @@
 	id = "sauna";
 	pixel_x = 5;
 	pixel_y = 30
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 36
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/sauna)
@@ -6581,6 +7021,8 @@
 /turf/simulated/floor/water/classm,
 /area/class_m/outside/island2)
 "Nz" = (
+/obj/effect/mist,
+/obj/effect/mist,
 /turf/simulated/floor/water/indoors,
 /area/class_m/inside/hotspringcaves)
 "NA" = (
@@ -6589,10 +7031,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
-"NB" = (
-/obj/effect/map_effect/interval/effect_emitter/steam,
-/turf/simulated/floor/water/deep/indoors,
-/area/class_m/inside/hotspringcaves)
 "NF" = (
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
@@ -6618,6 +7056,9 @@
 /obj/item/packageWrap,
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
+"NJ" = (
+/turf/simulated/floor/concrete/classm/outdoors,
+/area/class_m/outside/beachmiddle)
 "NM" = (
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 45
@@ -6659,6 +7100,11 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_x = 16;
 	pixel_y = 7
+	},
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 17
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/main)
@@ -7159,6 +7605,13 @@
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/class_m/inside/main)
+"PB" = (
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/biogenerator,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "PE" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
@@ -7242,6 +7695,13 @@
 "Qh" = (
 /turf/simulated/wall/wood,
 /area/class_m/inside/sauna2)
+"Qi" = (
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_y = 23
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/cabin)
 "Ql" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -7461,6 +7921,14 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"RI" = (
+/obj/structure/window/basic,
+/obj/structure/window/basic{
+	dir = 4
+	},
+/obj/machinery/vending/hydronutrients,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "RJ" = (
 /obj/effect/floor_decal/corner/blue/border,
 /obj/structure/closet/medical_wall{
@@ -7559,9 +8027,8 @@
 /area/class_m/outside/beachmiddle)
 "Si" = (
 /obj/structure/catwalk,
-/obj/effect/map_effect/interval/effect_emitter/steam,
 /obj/effect/mist,
-/turf/simulated/floor/water/indoors,
+/turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
 "Sk" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -7662,6 +8129,13 @@
 /area/class_m/inside/main)
 "SQ" = (
 /turf/simulated/floor/water/beach/corner,
+/area/class_m/outside)
+"SS" = (
+/obj/structure/railing/grey,
+/obj/effect/floor_decal/corner/black/diagonal{
+	alpha = 255
+	},
+/turf/simulated/floor/tiled/white/classm/outdoors,
 /area/class_m/outside)
 "SU" = (
 /turf/simulated/floor/tiled/classm,
@@ -7838,6 +8312,13 @@
 	},
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
+"TR" = (
+/obj/structure/table/woodentable,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 6
+	},
+/turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "TS" = (
 /obj/structure/fence{
@@ -8049,6 +8530,17 @@
 	name = "beach"
 	},
 /area/class_m/outside)
+"VB" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/material/minihoe,
+/obj/item/material/minihoe,
+/obj/item/shovel/spade,
+/obj/item/shovel/spade,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/analyzer/plant_analyzer,
+/obj/item/tool/wirecutters/clippers/trimmers,
+/turf/simulated/floor/tiled/classm,
+/area/class_m/inside)
 "VF" = (
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
@@ -8064,6 +8556,10 @@
 	name = "beach"
 	},
 /area/class_m/outside)
+"VH" = (
+/obj/effect/mist,
+/turf/simulated/floor/concrete/indoors,
+/area/class_m/inside/hotspringcaves)
 "VJ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -8177,6 +8673,7 @@
 /area/class_m/inside/dorms)
 "Wl" = (
 /obj/structure/flora/rock,
+/obj/effect/mist,
 /turf/simulated/floor/water/indoors,
 /area/class_m/inside/hotspringcaves)
 "Wp" = (
@@ -8190,29 +8687,6 @@
 	},
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/island)
-"Wu" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/item/material/minihoe,
-/obj/item/material/minihoe,
-/obj/item/shovel/spade,
-/obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/outdoors/grass/classm,
-/area/class_m/outside/beachmiddle)
-"Wv" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/material/minihoe,
-/obj/item/material/minihoe,
-/obj/item/shovel/spade,
-/obj/item/shovel/spade,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/analyzer/plant_analyzer,
-/obj/item/tool/wirecutters/clippers/trimmers,
-/turf/simulated/floor/outdoors/grass/classm,
-/area/class_m/outside/beachmiddle)
 "Ww" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
@@ -8231,7 +8705,9 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "WA" = (
-/obj/machinery/floor_light/changing/prebuilt,
+/obj/machinery/floor_light/changing/prebuilt{
+	on = 1
+	},
 /obj/machinery/light/spot{
 	alpha = 0;
 	nightshift_allowed = 0
@@ -8253,19 +8729,6 @@
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "WO" = (
-/obj/item/bee_pack,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/honey_frame,
-/obj/item/tool/crowbar,
-/obj/item/bee_smoker,
-/obj/item/beehive_assembly,
-/obj/structure/closet/crate/hydroponics{
-	desc = "All you need to start your own honey farm.";
-	name = "beekeeping crate"
-	},
 /obj/machinery/light/spot{
 	dir = 1;
 	light_range = 8;
@@ -8318,14 +8781,15 @@
 /obj/structure/fence/door,
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
+"Xf" = (
+/turf/simulated/floor/concrete/tile/classm/outdoors{
+	icon_state = "concrete17"
+	},
+/area/class_m/outside/beachmiddle)
 "Xh" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
-"Xi" = (
-/obj/machinery/honey_extractor,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
 "Xm" = (
 /obj/machinery/light/flamp/noshade{
 	light_range = 8;
@@ -8415,14 +8879,24 @@
 	},
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/main)
+"XJ" = (
+/obj/structure/table/woodentable,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 10
+	},
+/turf/simulated/floor/concrete/tile/classm/outdoors,
+/area/class_m/outside)
 "XN" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
-"XV" = (
-/obj/machinery/seed_extractor,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
+"XW" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/turf/simulated/floor/tiled/classm/outdoors,
+/area/class_m/outside)
 "XY" = (
 /obj/structure/window/reinforced/full,
 /obj/structure/grille,
@@ -8458,10 +8932,6 @@
 	},
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/main)
-"Ye" = (
-/obj/machinery/biogenerator,
-/turf/simulated/floor/tiled/classm,
-/area/class_m/inside)
 "Yh" = (
 /mob/living/simple_mob/animal/passive/bird/black_bird,
 /turf/simulated/floor/outdoors/grass,
@@ -8536,6 +9006,7 @@
 /area/class_m/outside)
 "YI" = (
 /obj/structure/flora/rock,
+/obj/effect/mist,
 /turf/simulated/floor/water/deep/indoors,
 /area/class_m/inside/hotspringcaves)
 "YL" = (
@@ -8570,6 +9041,14 @@
 	dir = 1
 	},
 /area/class_m/outside/island2)
+"YP" = (
+/obj/effect/mist,
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/mineral/floor/classm,
+/area/class_m/inside/hotspringcaves)
 "YQ" = (
 /obj/structure/railing{
 	dir = 1
@@ -15638,19 +16117,19 @@ DO
 vd
 vd
 vd
-hj
+DO
 vr
 DO
 vd
 vd
 vd
-hj
+DO
 vr
 DO
 vd
 vd
 vd
-hj
+DO
 vr
 BE
 oT
@@ -17190,19 +17669,19 @@ ps
 vd
 vd
 vd
-hj
+DO
 vr
 ps
 vd
 vd
 vd
-hj
+DO
 vr
 ps
 vd
 vd
 vd
-hj
+DO
 vr
 tF
 lj
@@ -20811,7 +21290,7 @@ Da
 tF
 tF
 xy
-vl
+Qi
 vl
 vl
 fc
@@ -21008,7 +21487,7 @@ xy
 nc
 vl
 YT
-YT
+yu
 YT
 xy
 oQ
@@ -21203,8 +21682,8 @@ vl
 vl
 fc
 fc
-vl
-oB
+fc
+xy
 pl
 vl
 nD
@@ -21398,7 +21877,7 @@ ku
 ku
 ku
 vl
-xy
+oB
 vl
 wF
 Qr
@@ -23448,7 +23927,7 @@ gG
 cd
 dO
 PN
-LF
+bt
 LF
 Rf
 PN
@@ -24048,7 +24527,7 @@ LF
 Wd
 fo
 Io
-VQ
+jW
 VV
 VQ
 Ld
@@ -24353,7 +24832,7 @@ WN
 WN
 py
 CW
-IB
+vG
 oT
 oT
 oT
@@ -24384,7 +24863,7 @@ pI
 MW
 MW
 MW
-Sl
+HI
 Sl
 yN
 yN
@@ -24546,7 +25025,7 @@ WN
 WN
 WN
 py
-vG
+oT
 oT
 oT
 oT
@@ -24591,8 +25070,8 @@ jA
 jA
 mL
 lY
-jC
-jC
+TE
+Gl
 jC
 jC
 jC
@@ -24612,7 +25091,7 @@ gG
 cd
 gG
 Gx
-LF
+bt
 LF
 Vd
 PN
@@ -24786,7 +25265,7 @@ jA
 fq
 Cb
 jC
-jC
+Gl
 jC
 jC
 jC
@@ -24980,7 +25459,7 @@ mL
 lY
 Rp
 jC
-jC
+Gl
 jC
 jC
 jC
@@ -25165,7 +25644,7 @@ SN
 ac
 Ne
 pI
-Wu
+lY
 mL
 jA
 jA
@@ -25173,8 +25652,8 @@ jA
 mL
 Uy
 jC
-TE
-Gl
+jC
+VT
 jC
 jC
 jC
@@ -25350,7 +25829,7 @@ Hw
 Hw
 Hw
 mp
-Uz
+Kr
 NF
 NF
 Rb
@@ -25359,16 +25838,16 @@ Tg
 NF
 Ne
 pI
-Wv
+lY
 lY
 jA
 jA
 jA
-dP
+lY
 lY
 jC
 jC
-Gl
+bT
 jC
 jC
 jC
@@ -25544,7 +26023,7 @@ Hw
 Hw
 Hw
 mp
-ne
+dS
 NF
 NF
 Rm
@@ -25553,7 +26032,7 @@ Th
 NF
 Ng
 pI
-SU
+xD
 SU
 SU
 SU
@@ -25562,7 +26041,7 @@ mM
 Bu
 jC
 jC
-Gl
+om
 jC
 jC
 jC
@@ -25747,16 +26226,16 @@ Tt
 NF
 NA
 pI
+VB
 SU
 SU
 SU
 SU
-yg
-mM
+gZ
 lY
 jC
-jC
-VT
+TE
+AA
 jC
 jC
 jC
@@ -25909,7 +26388,7 @@ oT
 oT
 iP
 qk
-jZ
+rX
 jZ
 jZ
 fO
@@ -25943,15 +26422,15 @@ NF
 VU
 SU
 SU
-xg
 SU
-fb
-mM
+SU
+SU
+is
 lJ
 lY
 jC
-bT
 jC
+NJ
 jC
 jC
 jC
@@ -26103,7 +26582,7 @@ oT
 oT
 ra
 qk
-jZ
+eY
 Xy
 gl
 fO
@@ -26136,17 +26615,17 @@ TK
 TK
 pI
 WO
-Xi
-XV
-Ye
-mM
-mM
+SU
+SU
+SU
+SU
+mW
 lY
 Cb
 jC
-om
-jC
-jC
+eH
+oF
+Xf
 jC
 jC
 jC
@@ -26329,19 +26808,19 @@ pI
 pI
 pI
 pI
-mM
-mM
-mM
-mM
-mM
+wL
+dm
+dc
+PB
+RI
 oY
 lY
 Wp
-TE
-AA
-jC
-jC
-jC
+NJ
+rf
+wX
+Qp
+NJ
 jC
 jC
 jC
@@ -26532,9 +27011,9 @@ lY
 ao
 lY
 jC
-jC
-jC
-jC
+gM
+Sg
+kc
 jC
 jC
 jC
@@ -26727,7 +27206,7 @@ tH
 tH
 jC
 jC
-jC
+NJ
 jC
 jC
 jC
@@ -26908,18 +27387,18 @@ eo
 eo
 eo
 ZN
-Am
-tH
-tH
-tH
-tH
-tH
-tH
-tH
-tH
-tH
-tH
-tH
+Ap
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
+Fg
 jC
 jC
 jC
@@ -26927,7 +27406,7 @@ jC
 jC
 jC
 jC
-jC
+pL
 ZL
 jC
 jC
@@ -27110,7 +27589,7 @@ tH
 tH
 tH
 tH
-tH
+ji
 tH
 tH
 tH
@@ -27304,7 +27783,7 @@ xM
 xM
 bN
 tH
-tH
+Ap
 tH
 Rp
 lY
@@ -27498,7 +27977,7 @@ tH
 tH
 ba
 tH
-tH
+Ap
 tH
 lY
 lJ
@@ -27516,7 +27995,7 @@ jC
 jC
 jC
 jC
-jC
+pL
 jC
 Bi
 gG
@@ -27692,7 +28171,7 @@ tH
 tH
 ba
 tH
-tH
+Ap
 tH
 Bu
 jC
@@ -27886,7 +28365,7 @@ tH
 tH
 ba
 tH
-tH
+Ap
 tH
 Uy
 jC
@@ -27894,7 +28373,7 @@ Ee
 xX
 rf
 PS
-Qp
+rA
 ZU
 Tf
 oE
@@ -28080,7 +28559,7 @@ tH
 tH
 ba
 tH
-tH
+Ap
 tH
 lY
 jC
@@ -28274,7 +28753,7 @@ tH
 tH
 OA
 tH
-tH
+Ap
 tH
 Rp
 lY
@@ -28419,7 +28898,7 @@ tF
 Wb
 Wb
 hD
-Td
+XJ
 Zt
 WN
 WN
@@ -28468,7 +28947,7 @@ tH
 tH
 tH
 tH
-tH
+Ap
 tH
 tH
 iz
@@ -28482,7 +28961,7 @@ Tf
 jC
 jC
 jC
-jC
+pL
 jC
 jC
 jC
@@ -28613,12 +29092,12 @@ tF
 Wb
 Wb
 hm
-lT
-Zt
-WN
-WN
-WN
-py
+hT
+yz
+Ik
+Ik
+Ik
+SS
 CV
 oT
 oT
@@ -28638,7 +29117,7 @@ En
 Cp
 El
 Cp
-kV
+yW
 Kq
 Bc
 Bc
@@ -28661,9 +29140,9 @@ tH
 tH
 tH
 tH
-tH
-tH
-tH
+Li
+Ap
+Am
 tH
 tH
 jC
@@ -28807,7 +29286,7 @@ tF
 Wb
 Wb
 iY
-Zj
+TR
 Zt
 WN
 WN
@@ -28855,9 +29334,9 @@ tH
 tH
 tH
 tH
-tH
-tH
-tH
+Li
+Ap
+Am
 tH
 tH
 tH
@@ -29003,9 +29482,9 @@ Wb
 uG
 iP
 Zt
+dw
 WN
-WN
-WN
+dw
 py
 Ts
 oT
@@ -29026,7 +29505,7 @@ En
 Cp
 El
 Cp
-kV
+lg
 GL
 Bc
 Bc
@@ -29049,9 +29528,9 @@ tH
 tH
 tH
 tH
-tH
-tH
-tH
+Li
+Ap
+Am
 tH
 tH
 tH
@@ -29196,11 +29675,11 @@ Wb
 Wb
 PL
 bL
-Fa
+CN
 WN
+EE
 WN
-WN
-xH
+cX
 qZ
 oT
 oT
@@ -29244,7 +29723,7 @@ tH
 tH
 tH
 tH
-tH
+Ap
 tH
 tH
 lY
@@ -29329,7 +29808,7 @@ Lp
 Az
 Eg
 iq
-Ox
+ie
 iq
 Eg
 hn
@@ -29391,9 +29870,9 @@ Wb
 Wb
 uG
 Fa
+dw
 WN
-WN
-WN
+dw
 xH
 tT
 oT
@@ -29438,7 +29917,7 @@ tH
 tH
 rt
 tH
-tH
+Ap
 tH
 Rp
 lY
@@ -29584,11 +30063,11 @@ Wb
 Wb
 Wb
 uG
-Fa
+CN
 WN
+EE
 WN
-WN
-xH
+cX
 tT
 oT
 oT
@@ -29632,7 +30111,7 @@ tH
 tH
 VX
 tH
-tH
+Ap
 tH
 ao
 lY
@@ -29779,9 +30258,9 @@ Wb
 Wb
 uG
 Fa
+dw
 WN
-WN
-WN
+dw
 xH
 tT
 oT
@@ -29826,7 +30305,7 @@ tH
 tH
 VX
 tH
-tH
+Ap
 tH
 lY
 lY
@@ -29972,11 +30451,11 @@ Wb
 Wb
 Wb
 uG
-Fa
+CN
 WN
+EE
 WN
-WN
-xH
+cX
 tT
 oT
 oT
@@ -29999,14 +30478,14 @@ Hw
 Hw
 Hw
 Hw
-Ff
 mp
 mp
 mp
 mp
 mp
 mp
-Ff
+mp
+mp
 Hw
 Hw
 Hw
@@ -30020,7 +30499,7 @@ tH
 tH
 VX
 tH
-tH
+Ap
 tH
 lY
 lY
@@ -30167,9 +30646,9 @@ Wb
 Wb
 uG
 Fa
+dw
 WN
-WN
-WN
+dw
 xH
 tT
 oT
@@ -30214,7 +30693,7 @@ tH
 tH
 VX
 tH
-tH
+Ap
 tH
 Mx
 lY
@@ -30360,11 +30839,11 @@ Wb
 Wb
 Wb
 qJ
-Fa
+CN
 WN
+EE
 WN
-WN
-xH
+cX
 HB
 oT
 oT
@@ -30388,12 +30867,12 @@ Hw
 Hw
 Hw
 qS
+xm
 Hw
 Hw
 Hw
 Hw
-Hw
-Hw
+xm
 Rw
 Hw
 Hw
@@ -30408,7 +30887,7 @@ xM
 xM
 Bm
 tH
-tH
+Ap
 tH
 Rp
 ao
@@ -30555,9 +31034,9 @@ Wb
 Wb
 iP
 Zt
+dw
 WN
-WN
-WN
+dw
 py
 Ts
 oT
@@ -30602,7 +31081,7 @@ tF
 tF
 Bu
 tH
-tH
+Ap
 tH
 lY
 lY
@@ -30748,11 +31227,11 @@ Wb
 Wb
 hm
 BE
-Zt
+mX
 WN
+EE
 WN
-WN
-py
+hW
 tF
 yE
 oT
@@ -30779,7 +31258,7 @@ pI
 xK
 Hw
 Hw
-Hw
+gJ
 Hw
 Hw
 NG
@@ -30796,7 +31275,7 @@ vA
 BE
 GA
 tH
-tH
+Ap
 tH
 lY
 lY
@@ -30990,7 +31469,7 @@ vA
 vA
 UT
 tH
-tH
+Ap
 tH
 Uy
 lY
@@ -31184,7 +31663,7 @@ tL
 SV
 no
 oT
-tH
+Ap
 tH
 lY
 Wp
@@ -31377,9 +31856,9 @@ RW
 oV
 cb
 oT
-oT
-tH
-tH
+Ks
+Ap
+Am
 Bu
 lY
 ao
@@ -31571,9 +32050,9 @@ ik
 oV
 cb
 oT
-oT
-tH
-tH
+Ks
+Ap
+Am
 Rp
 lY
 tv
@@ -31765,9 +32244,9 @@ RW
 oV
 cb
 oT
-oT
-oT
-tH
+Ks
+XW
+Am
 lY
 lJ
 tv
@@ -31960,7 +32439,7 @@ tL
 SV
 no
 oT
-oT
+XW
 tH
 ao
 lY
@@ -32154,7 +32633,7 @@ vA
 vA
 ra
 oT
-oT
+HX
 tH
 lY
 lY
@@ -32348,7 +32827,7 @@ vA
 tF
 tF
 oT
-oT
+HX
 tH
 Cb
 lY
@@ -32542,7 +33021,7 @@ lj
 tF
 GA
 oT
-oT
+HX
 oT
 lY
 lY
@@ -32736,7 +33215,7 @@ tF
 tF
 tF
 oT
-oT
+HX
 oT
 lY
 lY
@@ -32930,7 +33409,7 @@ tF
 ON
 CV
 oT
-oT
+HX
 oT
 Rp
 oY
@@ -33124,7 +33603,7 @@ tF
 tF
 tF
 oT
-oT
+HX
 oT
 ao
 lY
@@ -33318,7 +33797,7 @@ ra
 tF
 ra
 oT
-oT
+HX
 oT
 GA
 lY
@@ -33512,7 +33991,7 @@ tF
 tF
 tF
 oT
-oT
+HX
 oT
 tF
 lY
@@ -33706,7 +34185,7 @@ GA
 Da
 tF
 oT
-oT
+HX
 oT
 tF
 Cb
@@ -33900,7 +34379,7 @@ Wb
 tF
 Xb
 oT
-oT
+HX
 oT
 iP
 tF
@@ -34094,7 +34573,7 @@ Wb
 Wb
 tS
 oT
-oT
+HX
 oT
 tF
 tF
@@ -34288,7 +34767,7 @@ WN
 Wb
 Wb
 oT
-oT
+HX
 oT
 ON
 tF
@@ -34482,7 +34961,7 @@ WN
 WN
 Wb
 oT
-oT
+HX
 oT
 iP
 tF
@@ -34676,7 +35155,7 @@ Wb
 Wb
 Wb
 oT
-oT
+HX
 oT
 tF
 tF
@@ -34870,7 +35349,7 @@ ef
 Pk
 DX
 oT
-oT
+HX
 oT
 ra
 tF
@@ -35064,7 +35543,7 @@ xe
 ty
 ap
 oT
-oT
+HX
 oT
 iP
 lj
@@ -35258,7 +35737,7 @@ he
 TQ
 kT
 oT
-oT
+HX
 oT
 tF
 tF
@@ -35452,7 +35931,7 @@ Wb
 Wb
 Wb
 oT
-oT
+HX
 oT
 BE
 tF
@@ -35646,7 +36125,7 @@ WN
 WN
 Wb
 oT
-oT
+HX
 oT
 iP
 tF
@@ -35840,7 +36319,7 @@ WN
 Wb
 Wb
 oT
-oT
+HX
 oT
 tF
 tF
@@ -36034,7 +36513,7 @@ Wb
 Wb
 UA
 oT
-oT
+HX
 oT
 GA
 UT
@@ -36228,7 +36707,7 @@ Wb
 ra
 tF
 oT
-oT
+HX
 oT
 iP
 tF
@@ -36422,7 +36901,7 @@ tF
 tF
 lj
 oT
-oT
+HX
 oT
 af
 tF
@@ -36616,7 +37095,7 @@ tF
 ra
 tF
 oT
-oT
+HX
 oT
 tF
 tF
@@ -36810,7 +37289,7 @@ zI
 tF
 CG
 oT
-oT
+HX
 oT
 CV
 tF
@@ -37004,7 +37483,7 @@ UT
 tF
 tF
 oT
-oT
+HX
 oT
 tF
 ON
@@ -37198,7 +37677,7 @@ tF
 tF
 ON
 oT
-oT
+HX
 oT
 lS
 tF
@@ -37392,7 +37871,7 @@ tF
 ra
 tF
 oT
-oT
+HX
 oT
 tF
 tF
@@ -37586,7 +38065,7 @@ tF
 tF
 iP
 oT
-oT
+HX
 oT
 MV
 tF
@@ -37780,7 +38259,7 @@ tF
 tF
 ra
 oT
-oT
+HX
 oT
 tF
 Xb
@@ -37974,7 +38453,7 @@ UT
 lS
 Xb
 oT
-oT
+HX
 oT
 tF
 ra
@@ -38168,7 +38647,7 @@ GA
 tF
 iP
 oT
-oT
+HX
 oT
 iP
 tF
@@ -38362,7 +38841,7 @@ tF
 ra
 tF
 oT
-oT
+HX
 oT
 ra
 tF
@@ -38556,7 +39035,7 @@ tF
 tF
 BE
 oT
-oT
+HX
 oT
 tF
 af
@@ -38750,7 +39229,7 @@ lj
 tF
 GA
 oT
-oT
+HX
 oT
 tF
 tF
@@ -38832,7 +39311,7 @@ tF
 tF
 ts
 TM
-TM
+IT
 Ci
 TM
 TM
@@ -38944,7 +39423,7 @@ lS
 ra
 CV
 oT
-oT
+HX
 oT
 CV
 tF
@@ -39138,7 +39617,7 @@ tF
 tF
 tF
 oT
-oT
+HX
 oT
 tF
 Pm
@@ -39332,7 +39811,7 @@ UT
 tF
 ra
 oT
-oT
+HX
 oT
 lj
 tF
@@ -39526,7 +40005,7 @@ tF
 ON
 lS
 oT
-oT
+HX
 oT
 tF
 tF
@@ -39720,7 +40199,7 @@ tF
 tF
 iP
 oT
-oT
+HX
 oT
 iP
 GA
@@ -39914,7 +40393,7 @@ tF
 tF
 ra
 oT
-oT
+HX
 oT
 tF
 ON
@@ -39999,7 +40478,7 @@ eU
 Yn
 tF
 en
-ev
+tF
 tF
 UT
 tF
@@ -40108,7 +40587,7 @@ Da
 GA
 tF
 oT
-oT
+HX
 oT
 ra
 tF
@@ -40302,7 +40781,7 @@ Xb
 tF
 iP
 oT
-oT
+HX
 oT
 iP
 tF
@@ -40496,7 +40975,7 @@ tF
 tF
 ON
 oT
-oT
+HX
 oT
 tF
 Xb
@@ -40598,7 +41077,7 @@ Mt
 Mt
 Mt
 Mt
-vt
+YP
 vt
 Of
 Of
@@ -40610,7 +41089,7 @@ vt
 vt
 Of
 Of
-iA
+bk
 Si
 JV
 uv
@@ -40690,7 +41169,7 @@ tF
 tF
 tF
 oT
-oT
+HX
 oT
 tF
 tF
@@ -40805,8 +41284,8 @@ uv
 gm
 uv
 Dg
-oL
-BY
+Si
+JV
 lh
 Dq
 Dq
@@ -40884,7 +41363,7 @@ tF
 Da
 tF
 oT
-oT
+HX
 oT
 tF
 lS
@@ -40999,8 +41478,8 @@ uv
 Dq
 Dq
 Ae
-dN
-BY
+Si
+JV
 Dq
 Dq
 Dq
@@ -41078,7 +41557,7 @@ lS
 tF
 CW
 oT
-oT
+HX
 oT
 UA
 tF
@@ -41186,17 +41665,17 @@ vt
 Mt
 Mt
 vt
-Nz
+uv
 uv
 Dq
 Dq
 Dq
 Dq
-yK
-dN
+Dg
+Si
 BY
 Dq
-NB
+lh
 Dq
 uv
 uv
@@ -41272,7 +41751,7 @@ tF
 tF
 GA
 oT
-oT
+HX
 oT
 tF
 tF
@@ -41386,9 +41865,9 @@ uv
 Dq
 Dq
 lh
-yK
-dN
-nL
+Dg
+Si
+JV
 Dq
 Dq
 uv
@@ -41466,7 +41945,7 @@ ra
 tF
 tF
 oT
-oT
+HX
 oT
 tF
 tF
@@ -41580,9 +42059,9 @@ uv
 gm
 uv
 Dq
-yK
+Dg
 dN
-BY
+JV
 lh
 uv
 uv
@@ -41660,7 +42139,7 @@ GA
 Xb
 Ts
 oT
-oT
+HX
 oT
 pk
 Zg
@@ -41775,8 +42254,8 @@ vt
 uv
 gm
 Dg
-pa
-BY
+Si
+JV
 uv
 uv
 gm
@@ -41854,7 +42333,7 @@ oT
 oT
 oT
 oT
-oT
+HX
 oT
 oT
 oT
@@ -41960,7 +42439,7 @@ Dq
 gm
 uv
 vt
-vt
+YP
 Mt
 Mt
 aO
@@ -41969,7 +42448,7 @@ vt
 vt
 Of
 Dg
-oL
+Si
 JV
 gm
 vt
@@ -42044,15 +42523,15 @@ WN
 WN
 Wf
 mA
-oT
-oT
-oT
-oT
-oT
-oT
-oT
-oT
-oT
+cJ
+cJ
+cJ
+cJ
+cJ
+nF
+nF
+nF
+nF
 mA
 xW
 WN
@@ -42147,7 +42626,7 @@ Mt
 Mt
 Mt
 Mt
-uv
+qo
 lh
 Dq
 Dq
@@ -42745,7 +43224,7 @@ cH
 cH
 dR
 gk
-dR
+Bo
 oP
 dR
 cH
@@ -42924,8 +43403,8 @@ WE
 xu
 pE
 xu
-xu
-xu
+FL
+sI
 xu
 pE
 xu
@@ -43116,12 +43595,12 @@ WE
 WE
 WE
 WE
-WE
-WE
-WE
-WE
-WE
-WE
+VH
+VH
+VH
+Bf
+VH
+VH
 WE
 WE
 WE
@@ -43309,15 +43788,15 @@ WE
 WE
 WE
 WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
+VH
+Bf
+Bf
+VH
+Bf
+Bf
+VH
+Bf
+VH
 WE
 WE
 WE
@@ -43502,18 +43981,18 @@ WE
 WE
 WE
 WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
-WE
+VH
+VH
+gT
+Bf
+Bf
+Kh
+ln
+Bf
+gT
+VH
+VH
+VH
 WE
 WE
 WE
@@ -43696,19 +44175,19 @@ Lr
 GS
 Lr
 Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
-Lr
+LG
+LG
+LG
+ue
+hC
+ue
+eI
+eI
+LG
+ue
+LG
+LG
+LG
 Lr
 Lr
 mD
@@ -43891,25 +44370,25 @@ Mt
 Mt
 Mt
 Mt
+uv
+BO
+uv
+uv
+uv
 Nz
 BO
-Nz
-Nz
-Nz
-Nz
-BO
-Of
-Of
-zs
-Of
-Of
-Of
+vt
+qD
+cE
+qD
+vt
+vt
 oA
 KX
 KX
 VJ
 wH
-VJ
+kE
 Pf
 VJ
 KX
@@ -44087,17 +44566,17 @@ Mt
 Mt
 Mt
 YI
-dr
-dr
-NB
+Dq
+Dq
+lh
 Wl
-Nz
-Nz
-Nz
+uv
+uv
+uv
 Mt
 Mt
 Mt
-zs
+vu
 Of
 eZ
 eZ
@@ -44283,12 +44762,12 @@ Mt
 Mt
 Mt
 YI
-dr
-dr
-dr
-NB
-Nz
-Nz
+Dq
+Dq
+Dq
+lh
+uv
+uv
 Wl
 Mt
 Mt
@@ -44476,15 +44955,15 @@ Mt
 Mt
 Mt
 Mt
-NB
-dr
-NB
+lh
+Dq
+lh
 YI
-dr
-dr
-NB
-dr
-NB
+Dq
+Dq
+lh
+Dq
+lh
 Mt
 Mt
 Mt
