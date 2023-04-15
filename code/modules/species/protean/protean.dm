@@ -49,43 +49,14 @@
 	toxins_mod =	0 // This is necessary to make them not instantly die to ions/low yield EMPs, also it makes sense as the refactory would reset or repurpose corrupted nanites
 
 	hunger_factor = 0.04 // Better power storage, perhaps? This is not additive. Whoops
- /*
-These values assume all limbs are hit by the damage. To get individual limb damages divide by 11.
-A worst-case sev 4 emp will do 88 damage pre-mitigation, and 114.4 post-mitigation (as resist is negative) spread out over all the limbs.
-A best case sev 4 emp will do 55 pre-mitigation damage. This is 71.5 damage.
-A worst case sev 3 emp will do 66 pre-mitigation damage. This is 85.8 damage.
-A best case sev 3 emp will do 44 pre-mitigation damage. This is 57.2 damage.
-A worst case sev 2 emp will do 55 pre-mitigation damage. This is 71.5 damage.
-A best case sev 2 emp will do 22 pre-mitigation damage. This is 28.6 damage.
-A worst case sev 1 emp will do 33 pre-mitigation damage.This is 42.9 damage.
-A best case sev 1 emp will do 11 pre-mitigation damage. This is 14.3 damage.
 
-I redid the calculations, as the burn weakness has been changed. This should be good. Hopefully
-*/
-/*	cold_level_1 = 280 //Default 260 - Lower is better
-	cold_level_2 = 220 //Default 200
-	cold_level_3 = 130 //Default 120
-
-	heat_level_1 = 320 //Default 360
-	heat_level_2 = 370 //Default 400
-	heat_level_3 = 600 //Default 1000
-
-	As the heat/cold levels are listed below, these aren't really necessary
-*/
 	//Space doesn't bother them
 	hazard_low_pressure = -1
 	hazard_high_pressure = INFINITY //Totally pressure immune - in human form (blobform is also completely pressure/heat immune, bringing them both in line with each other.)
 
 
-	//Cold/heat does affect them, but it's done in special ways below
-	cold_level_1 = -INFINITY
-	cold_level_2 = -INFINITY
-	cold_level_3 = -INFINITY
-	heat_level_1 = INFINITY
-	heat_level_2 = INFINITY
-	heat_level_3 = INFINITY
-
 	body_temperature =      290
+	item_slowdown_mod = 0.25 // temporary major hardy due to loss of other resistances
 
 	siemens_coefficient =   1.1 // Changed in accordance to the 'what to do now' section of the rework document
 
@@ -109,9 +80,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot/unbreakable/nano),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right/unbreakable/nano)
 		)
-
-	heat_discomfort_strings = list("You feel too warm.")
-	cold_discomfort_strings = list("You feel too cool.")
 
 	//These verbs are hidden, for hotkey use only
 	inherent_verbs = list(
@@ -147,16 +115,16 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	species_statpanel = TRUE
-	var/global/list/abilities = list()
+	var/global/list/protean_abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
 
 /datum/species/protean/New()
 	..()
-	if(!LAZYLEN(abilities))
+	if(!LAZYLEN(protean_abilities))
 		var/list/powertypes = subtypesof(/obj/effect/protean_ability)
 		for(var/path in powertypes)
-			abilities += new path()
+			protean_abilities += new path()
 
 /datum/species/protean/create_organs(var/mob/living/carbon/human/H)
 	var/obj/item/nif/saved_nif = H.nif
@@ -208,9 +176,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
-/datum/species/protean/hug(var/mob/living/carbon/human/H, var/mob/living/target)
-	return ..() //Wut
-
 /datum/species/protean/get_blood_colour(var/mob/living/carbon/human/H)
 	return rgb(80,80,80,230)
 
@@ -246,22 +211,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		if(protean_requires_healing(H) && refactory.get_stored_material(MAT_STEEL) >= METAL_PER_TICK)  //  Regen without blobform, though relatively slow compared to blob regen
 			H.add_modifier(/datum/modifier/protean/steel, origin = refactory)
 
-		//MHydrogen adds speeeeeed
-		if(refactory.get_stored_material(MAT_METALHYDROGEN) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/mhydrogen, origin = refactory)
-
-		//Uranium adds brute armor
-		if(refactory.get_stored_material(MAT_URANIUM) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/uranium, origin = refactory)
-
-		//Gold adds burn armor
-		if(refactory.get_stored_material(MAT_GOLD) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/gold, origin = refactory)
-
-		//Silver adds darksight
-		if(refactory.get_stored_material(MAT_SILVER) >= METAL_PER_TICK)
-			H.add_modifier(/datum/modifier/protean/silver, origin = refactory)
-
 	return ..()
 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
@@ -280,7 +229,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
 
 	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
-	for(var/ability in abilities)
+	for(var/ability in protean_abilities)
 		var/obj/effect/protean_ability/A = ability
 		A.atom_button_text()
 		STATPANEL_DATA_CLICK("[icon2html(A, C)] [A.ability_name]", "[A.name]", "\ref[A]")
@@ -314,51 +263,6 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	// stops you from consuming materials if the toggle is off
 	if(!refactory.use_stored_material(material_name,material_use) && refactory.processingbuffs == TRUE)
 		expire()
-
-/datum/modifier/protean/mhydrogen
-	name = "Protean Effect - M.Hydrogen"
-	desc = "You're affected by the presence of metallic hydrogen."
-
-	on_created_text = "<span class='notice'>You feel yourself accelerate, the metallic hydrogen increasing your speed temporarily.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the metallic hydrogen, and you return to normal speed.</span>"
-
-	material_name = MAT_METALHYDROGEN
-
-	slowdown = -1
-
-/datum/modifier/protean/uranium
-	name = "Protean Effect - Uranium"
-	desc = "You're affected by the presence of uranium."
-
-	on_created_text = "<span class='notice'>You feel yourself become nearly impervious to physical attacks as uranium is incorporated in your nanites.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the uranium, and you return to your normal nanites.</span>"
-
-	material_name = MAT_URANIUM
-
-	incoming_brute_damage_percent = 0.8
-
-/datum/modifier/protean/gold
-	name = "Protean Effect - Gold"
-	desc = "You're affected by the presence of gold."
-
-	on_created_text = "<span class='notice'>You feel yourself become more reflective, able to resist heat and fire better for a time.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the gold, and you return to your normal nanites.</span>"
-
-	material_name = MAT_GOLD
-
-	incoming_fire_damage_percent = 0.8
-
-/datum/modifier/protean/silver
-	name = "Protean Effect - Silver"
-	desc = "You're affected by the presence of silver."
-
-	on_created_text = "<span class='notice'>Your physical control is improved for a time, making it easier to hit targets, and avoid being hit.</span>"
-	on_expired_text = "<span class='notice'>Your refactory finishes consuming the silver, and your motor control returns to normal.</span>"
-
-	material_name = MAT_SILVER
-
-	accuracy = 30
-	evasion = 30
 
 /datum/modifier/protean/steel
 	name = "Protean Effect - Steel"

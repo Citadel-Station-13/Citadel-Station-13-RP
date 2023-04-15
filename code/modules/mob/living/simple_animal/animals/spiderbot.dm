@@ -195,7 +195,7 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(mind)	mind.transfer(mmi.brainmob)
 		mmi = null
 		real_name = initial(real_name)
 		name = real_name

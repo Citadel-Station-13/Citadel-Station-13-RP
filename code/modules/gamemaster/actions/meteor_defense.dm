@@ -63,7 +63,7 @@
 		while(waves)
 			message_admins("[waves] more wave\s of meteors remain.")
 			spawn(1) // Dir is reversed because the direction describes where meteors are going, not what side it's gonna hit.
-				spawn_meteors(rand(8, 12), meteors_threatening, GLOB.reverse_dir[direction])
+				spawn_meteors(rand(8, 12), meteors_threatening, global.reverse_dir[direction])
 			waves--
 			sleep(30 SECONDS)
 		announcement = "The station has cleared the incoming debris."

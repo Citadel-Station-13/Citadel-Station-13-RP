@@ -547,7 +547,7 @@
 	for(var/datum/language/L in MR.languages)
 		occupant.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
-	MR.mind_ref.transfer_to(occupant) //Does mind+ckey+client.
+	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.
 	occupant.identifying_gender = MR.id_gender
 	occupant.ooc_notes = MR.mind_oocnotes
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.

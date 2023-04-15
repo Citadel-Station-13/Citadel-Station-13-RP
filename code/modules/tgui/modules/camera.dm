@@ -61,6 +61,8 @@
 	cam_foreground.add_overlay(noise)
 
 /datum/tgui_module_old/camera/Destroy()
+	STOP_PROCESSING(SSmoving_cameras, src)
+
 	if(active_camera)
 		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
@@ -136,6 +138,7 @@
 		if(active_camera)
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
+		START_PROCESSING(SSmoving_cameras, src)
 		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
 		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
@@ -167,6 +170,11 @@
 				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
+
+/datum/tgui_module_old/camera/process()
+	if(isnull(active_camera))
+		return PROCESS_KILL
+	update_active_camera_screen()
 
 /datum/tgui_module_old/camera/proc/update_active_camera_screen()
 	// Show static if can't use the camera

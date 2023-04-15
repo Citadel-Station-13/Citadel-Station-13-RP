@@ -2,6 +2,7 @@
 	name = "observer"
 	desc = "This shouldn't appear"
 	density = 0
+	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
 
 /mob/observer/dead
 	name = "ghost"

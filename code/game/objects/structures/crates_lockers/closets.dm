@@ -16,7 +16,7 @@
 
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/breakout_time = 2 //2 minutes by default
-	var/breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
+	breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
 
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -419,7 +419,7 @@
 		return 0 //closed but not sealed...
 	return 1
 
-/obj/structure/closet/container_resist(mob/living/escapee)
+/obj/structure/closet/contents_resist(mob/escapee)
 	if(breakout)
 		return
 	if(!req_breakout() && !opened)

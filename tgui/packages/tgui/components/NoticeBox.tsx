@@ -4,10 +4,17 @@
  * @license MIT
  */
 
-import { classes, pureComponentHooks } from 'common/react';
-import { Box } from './Box';
+import { BooleanLike, classes, pureComponentHooks } from 'common/react';
+import { Box, BoxProps } from './Box';
 
-export const NoticeBox = props => {
+export type NoticeBoxProps = BoxProps & {
+  warning?: BooleanLike;
+  success?: BooleanLike;
+  danger?: BooleanLike;
+  info?: BooleanLike;
+}
+
+export const NoticeBox = (props: NoticeBoxProps) => {
   const {
     className,
     color,
