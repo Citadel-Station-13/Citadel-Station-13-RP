@@ -6,7 +6,7 @@
 	icon_state = "portal_off"
 
 	idle_power_usage = 0
-	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
+	active_power_usage = 0
 
 	allow_unanchor = TRUE
 	anchored = FALSE
@@ -50,12 +50,18 @@
 
 /obj/machinery/fishing_portal/proc/activate()
 	AddComponent(/datum/component/fishing_spot, fishing_source)
-	use_power = ACTIVE_POWER_USE
 	update_icon()
 
 /obj/machinery/fishing_portal/proc/deactivate()
 	var/datum/component/fishing_spot/fishing_component = GetComponent(/datum/component/fishing_spot)
 	if(fishing_component)
 		QDEL_NULL(fishing_component)
-	use_power = IDLE_POWER_USE
 	update_icon()
+
+/datum/fish_source/portal
+	fish_table = list(
+		FISHING_DUD = 5,
+		/obj/item/fish/goldfish = 10,
+		/obj/item/fish/guppy = 10,
+	)
+	catalog_description = "Fish dimension (Fishing portal generator)"

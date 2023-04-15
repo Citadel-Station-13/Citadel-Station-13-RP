@@ -20,6 +20,7 @@
 	 *  source_height/source_width is the size of the original icon (ideally only the non-empty parts)
 	 */
 
+	#warn icon shit lmao
 	/// Icon used for in aquarium sprite
 	var/icon = 'icons/obj/aquarium.dmi'
 	/// If this is set this icon state will be used for the holder while icon_state will only be used for item/catalog. Transformation from source_width/height WON'T be applied.
@@ -57,7 +58,6 @@
 
 	/// Signals of the parent that will trigger animation update
 	var/animation_update_signals
-
 
 /datum/component/aquarium_content/Initialize(animation_getter, animation_update_signals)
 	if(!ismovable(parent))

@@ -2,6 +2,8 @@
  * Fishing! Contains normal fishing rods and nets.
  */
 
+#warn parse everything
+
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
 		/mob/living/simple_mob/animal/passive/fish/solarfish = 0, // was 1, sif meat
 		/mob/living/simple_mob/animal/passive/fish/icebass = 0, // was 5, sif meat
@@ -119,50 +121,6 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 			fish_type = null
 	else
 		fish_type = null
-
-/turf/simulated/floor/water/attackby(obj/item/P as obj, mob/user as mob)
-//If you use a fishing rod on an open body of water that var/has_fish enabled
-	if(istype(P, /obj/item/material/fishing_rod) && !being_fished)
-		var/obj/item/material/fishing_rod/R = P
-		if(!R.strung)
-			to_chat(user, "<span class='notice'>It is hard to go fishing without any line!</span>")
-			return
-		if(R.cast)
-			to_chat(user, "<span class='notice'>You can only cast one line at a time!</span>")
-			return
-		playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
-		to_chat(user,"You cast \the [P.name] into \the [src].")
-		being_fished = TRUE
-		R.cast = TRUE
-		var/fishing_time = rand(min_fishing_time SECONDS,max_fishing_time SECONDS) * R.tool_speed
-		if(do_after(user,fishing_time,user))
-			playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
-			to_chat(user,"<span class='notice'>You feel a tug and begin pulling!</span>")
-			if(world.time >= last_fished + fishing_cooldown)
-				pick_fish()
-				last_fished = world.time
-			else
-				fish_type = null
-				if(prob(3))	// No fish left here..
-					has_fish = FALSE
-			//List of possible outcomes.
-			if(!fish_type)
-				to_chat(user,"You caught... nothing. How sad.")
-			else
-				var/fished = new fish_type(get_turf(user))
-				if(isliving(fished))
-					R.consume_bait()
-					var/mob/living/L = fished
-					if(prob(rand(L.mob_size) + 10) && R.line_break)
-						R.strung = FALSE
-						R.update_icon()
-						user.visible_message("<span class='danger'>\The [R]'s string snaps!</span>")
-					if(prob(33))	// Dead on hook. Good for food, not so much for live catch.
-						L.death()
-				to_chat(user,"<span class='notice'>You fish out \the [fished] from the water with [P.name]!</span>")
-		R.cast = FALSE
-		being_fished = FALSE
-	else ..()
 
 /turf/simulated/floor/water/indoors
 	outdoors = FALSE

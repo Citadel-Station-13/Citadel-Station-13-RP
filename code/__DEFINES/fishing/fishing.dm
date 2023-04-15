@@ -17,10 +17,6 @@
 
 #define FISH_TRAIT_MINOR_DIFFICULTY_BOOST 5
 
-// These define how the fish will behave in the minigame
-#define FISH_AI_DUMB "dumb"
-#define FISH_AI_ZIPPY "zippy"
-#define FISH_AI_SLOW "slow"
 
 #define ADDITIVE_FISHING_MOD "additive"
 #define MULTIPLICATIVE_FISHING_MOD "multiplicative"

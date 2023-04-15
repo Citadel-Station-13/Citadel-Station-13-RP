@@ -37,7 +37,7 @@
 	/// Time of last feedeing
 	var/last_feeding
 
-	/// Fish status
+	/// Fish status define
 	var/status = FISH_ALIVE
 
 	/// Current fish health. Dies at 0.
@@ -69,7 +69,7 @@
 	/// List of fishing trait types, these modify probabilty/difficulty depending on rod/user properties
 	var/list/fishing_traits = list()
 
-	/// Fishing behaviour
+	/// Fishing minigame AI behavior
 	var/fish_ai_type = FISH_AI_DUMB
 
 	/// Base additive modifier to fishing difficulty
@@ -128,7 +128,7 @@
 	var/weight_mod = modifier * average_weight
 	weight = max(1,gaussian(average_weight + weight_mod, weight_deviation))
 
-/obj/item/fish/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+/obj/item/fish/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	check_environment_after_movement()
 

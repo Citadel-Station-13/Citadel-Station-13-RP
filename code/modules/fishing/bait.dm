@@ -1,4 +1,5 @@
 /obj/item/bait_can
+	abstract_type = /obj/item/bait_can
 	name = "can o bait"
 	desc = "there's a lot of them in there, getting them out takes a while though"
 	icon = 'icons/obj/fishing.dmi'
@@ -10,6 +11,8 @@
 	var/bait_type
 	/// Time between bait retrievals
 	var/cooldown_time = 10 SECONDS
+	/// how much it has left; null for infinite
+	var/bait_left = 50
 
 /obj/item/bait_can/attack_self(mob/user, modifiers)
 	. = ..()
@@ -18,23 +21,31 @@
 		user.put_in_hands(fresh_bait)
 
 /obj/item/bait_can/proc/retrieve_bait(mob/user)
-	if(!COOLDOWN_FINISHED(src, bait_removal_cooldown))
-		user.balloon_alert(user, "wait a bit") //I can't think of generic ic reason.
+	if(!isnull(bait_left) && (bait_left <= 0))
+		user.bubble_action_feedback("it's empty", src)
 		return
+	if(!COOLDOWN_FINISHED(src, bait_removal_cooldown))
+		user.bubble_action_feedback("wait a bit", src)
+		return
+	if(!isnull(bait_left))
+		--bait_left
 	COOLDOWN_START(src, bait_removal_cooldown, cooldown_time)
 	return new bait_type(src)
 
 /obj/item/bait_can/worm
 	name = "can o' worm"
-	desc = "this can got worms."
+	desc = "A can of worms. Useful for fishing."
 	bait_type = /obj/item/food/bait/worm
 
 /obj/item/bait_can/worm/premium
 	name = "can o' worm deluxe"
-	desc = "this can got fancy worms."
+	desc = "A can of fancy worms. Useful for fishing, even more so."
 	bait_type = /obj/item/food/bait/worm/premium
 
+#warn below
+
 /obj/item/food/bait
+	abstract_type = /obj/item/food/bait
 	name = "this is bait"
 	desc = "you got baited."
 	icon = 'icons/obj/fishing.dmi'

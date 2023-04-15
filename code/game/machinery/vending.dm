@@ -1512,22 +1512,26 @@
 	product_ads = "Tired of trawling across the ocean floor? Get our loot!;Chum and rods.;Don't get baited into fishing without us!;Baby is your star-sign pisces? We'd make a perfect match.;Do not fear, plenty to catch around here.;Don't get reeled in helplessly, get your own rod today!"
 	icon_state = "fishvendor"
 	products = list(
-		/obj/item/material/fishing_rod/modern/cheap = 10,
-		/obj/item/storage/box/wormcan = 20,
-		/obj/item/material/fishing_net = 2,
-		/obj/item/stack/cable_coil/random = 10,
+		/obj/item/fishing_rod = 10,
+		/obj/item/fishing_hook = 20,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_hook/magnet = 10,
+		/obj/item/fishing_hook/rescue = 10,
+		/obj/item/fishing_hook/shiny = 10,
+		/obj/item/fishing_hook/weighted = 10,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_line/bouncy = 10,
+		/obj/item/fishing_line/reinforced = 10,
+		/obj/item/bait_can/worm = 80,
 	)
+	price_default = 10
 	prices = list(
-		/obj/item/material/fishing_rod/modern/cheap = 30,
-		/obj/item/storage/box/wormcan = 12,
-		/obj/item/material/fishing_net = 30,
-		/obj/item/stack/cable_coil/random = 4,
+		/obj/item/fishing_rod = 50,
+		/obj/item/bait_can/worm = 5,
 	)
 
 //Custom vendors
 
-
-//I want this not just as part of the zoo. ;v
 /obj/machinery/vending/food
 	name = "Food-O-Mat"
 	desc = "A technological marvel, supposedly able to cook or mix a large variety of food or drink."

@@ -102,7 +102,7 @@
 	if(currently_hooked_item)
 		reel(user)
 		return TRUE
-	SEND_SIGNAL(targeted_atom, COMSIG_PRE_FISHING)
+	SEND_SIGNAL(targeted_atom, COMSIG_PRE_FISHING_QUERY, src, user)
 
 /// Generates the fishing line visual from the current user to the target and updates inhands
 /obj/item/fishing_rod/proc/create_fishing_line(atom/movable/target, target_py = null)
@@ -177,7 +177,7 @@
 	/// If the line to whatever that is is clear and we're not already busy, try fishing in it
 	if(!casting && !currently_hooked_item && !proximity_flag && CheckToolReach(user, target, cast_range))
 		/// Annoyingly pre attack is only called in melee
-		SEND_SIGNAL(target, COMSIG_PRE_FISHING)
+		SEND_SIGNAL(target, COMSIG_PRE_FISHING_QUERY, src, user)
 		casting = TRUE
 		var/obj/projectile/fishing_cast/cast_projectile = new(get_turf(src))
 		cast_projectile.range = cast_range

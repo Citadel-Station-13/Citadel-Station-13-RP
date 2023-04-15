@@ -1,15 +1,8 @@
 /obj/item/storage/toolbox/fishing
 	name = "fishing toolbox"
 	desc = "Contains everything you need for your fishing trip."
-	icon_state = "fishing"
-	inhand_icon_state = "artistic_toolbox"
-	material_flags = NONE
-
-/obj/item/storage/toolbox/fishing/Initialize(mapload)
-	. = ..()
-	// Can hold fishing rod despite the size
-	var/static/list/exception_cache = typecacheof(/obj/item/fishing_rod)
-	atom_storage.exception_hold = exception_cache
+	// todo: properly port tg sprite
+	// todo: allow it to hold fishing rods properly
 
 /obj/item/storage/toolbox/fishing/PopulateContents()
 	new /obj/item/bait_can/worm(src)

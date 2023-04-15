@@ -3,7 +3,7 @@
 	name = "Fish Encyclopedia"
 	desc = "Indexes all fish known to mankind (and related species)."
 	icon_state = "fishbook"
-	starting_content = "Lot of fish stuff" //book wrappers could use cleaning so this is not necessary
+	dat = "Lot of fish stuff" //book wrappers could use cleaning so this is not necessary
 
 /obj/item/book/fish_catalog/on_read(mob/user)
 	ui_interact(user)
@@ -35,7 +35,7 @@
 			fish_data["size"] = initial(fish.average_size)
 			fish_data["weight"] = initial(fish.average_weight)
 			var/datum/reagent/food_type = initial(fish.food)
-			if(food_type != /datum/reagent/consumable/nutriment)
+			if(food_type != /datum/reagent/nutriment)
 				fish_data["feed"] = initial(food_type.name)
 			else
 				fish_data["feed"] = "[AQUARIUM_COMPANY] Fish Feed"
