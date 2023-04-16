@@ -27,7 +27,7 @@
  * If defined, instant updates will be used whenever server load permits.
  * Otherwise queued updates are always used.
  */
-#define USE_INTELLIGENT_LIGHTING_UPDATES
+// #define USE_INTELLIGENT_LIGHTING_UPDATES
 
 /// Maximum light_range before forced to always queue instead of using sync updates. Setting this too high will cause server stutter with moving large lights.
 #define LIGHTING_MAXIMUM_INSTANT_RANGE 8
