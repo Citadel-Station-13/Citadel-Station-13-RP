@@ -929,6 +929,14 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"fA" = (
+/obj/machinery/recharge_station,
+/obj/machinery/light/spot{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "fB" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/simulated/floor/outdoors/grass/classm,
@@ -1056,13 +1064,6 @@
 /mob/living/simple_mob/animal/passive/fish/javelin,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/beach)
-"gw" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "gy" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/island)
@@ -1112,16 +1113,12 @@
 	},
 /area/class_m/outside/beachmiddle)
 "gN" = (
-/obj/item/radio/intercom{
-	dir = 8;
-	name = "Station Intercom (General)";
-	pixel_x = -24
-	},
 /obj/machinery/light/spot{
 	dir = 8;
 	light_range = 8;
 	nightshift_allowed = 0
 	},
+/obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
 "gQ" = (
@@ -1253,6 +1250,11 @@
 	dir = 8
 	},
 /obj/structure/bed/chair,
+/obj/item/radio/intercom/entertainment{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 17
+	},
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "hI" = (
@@ -1277,6 +1279,7 @@
 "hT" = (
 /obj/structure/table/woodentable,
 /obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/computer/security/telescreen,
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
 "hW" = (
@@ -1845,7 +1848,6 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
-/obj/landmark/spawnpoint/latejoin/station/gateway,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "kE" = (
@@ -2058,19 +2060,9 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/obj/landmark/spawnpoint/latejoin/station/tram,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/obj/landmark/spawnpoint/latejoin/station/gateway,
-/obj/landmark/spawnpoint/latejoin/station/elevator,
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
-/obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "ln" = (
@@ -2207,7 +2199,6 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -2837,6 +2828,15 @@
 	name = "beach"
 	},
 /area/class_m/outside/beachmiddle)
+"pM" = (
+/obj/machinery/recharge_station,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "pO" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -3008,6 +3008,16 @@
 /obj/item/material/fishing_rod/modern/strong,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/cabin)
+"qH" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/beach/sand/desert/classm{
+	name = "beach"
+	},
+/area/class_m/outside/beach)
 "qJ" = (
 /obj/machinery/light/flamp/noshade{
 	light_range = 8;
@@ -3726,9 +3736,6 @@
 /area/class_m/outside)
 "ur" = (
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "uv" = (
@@ -4140,14 +4147,6 @@
 	icon_state = "concrete15"
 	},
 /area/class_m/outside/beachmiddle)
-"wY" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 1
-	},
-/obj/machinery/light/small,
-/obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "xa" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -5031,10 +5030,6 @@
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/dorms)
-"BI" = (
-/obj/machinery/washing_machine,
-/turf/simulated/floor/tiled/white,
-/area/class_m/inside/bathroom)
 "BK" = (
 /mob/living/simple_mob/animal/passive/fish/salmon,
 /turf/simulated/floor/water/classm,
@@ -5364,11 +5359,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/class_m/outside)
+"DF" = (
+/obj/machinery/gear_painter,
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside)
 "DL" = (
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark{
-	name = "JoinLateGateway"
-	},
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -5487,7 +5483,6 @@
 	dir = 1
 	},
 /obj/machinery/light/small,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "Er" = (
@@ -6002,16 +5997,6 @@
 /obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/class_m/outside)
-"HL" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/obj/landmark{
-	name = "JoinLateCyborg"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "HN" = (
 /obj/structure/flora/ausbushes/reedbush,
 /obj/structure/catwalk,
@@ -6183,7 +6168,6 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark/spawnpoint/latejoin/station/tram,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
@@ -6376,10 +6360,6 @@
 	},
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
-"Kb" = (
-/obj/machinery/recharge_station,
-/turf/simulated/floor/wood/classm,
-/area/class_m/inside)
 "Kc" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -6930,16 +6910,6 @@
 	},
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
-"MZ" = (
-/obj/structure/bed/chair/bay/comfy/black{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/station/cryogenics,
-/obj/landmark{
-	name = "JoinLateCryo"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "Na" = (
 /obj/structure/flora/tree/jungle,
 /mob/living/simple_mob/animal/passive/bird/black_bird,
@@ -6980,17 +6950,6 @@
 	},
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
-"Nj" = (
-/obj/structure/bed/chair/bay/comfy/black,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
-/obj/machinery/newscaster{
-	pixel_y = 32
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "Nk" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
@@ -7525,14 +7484,6 @@
 /obj/item/bedsheet/yellowdouble,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/dorms)
-"Pe" = (
-/obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
-/obj/landmark{
-	name = "JoinLateCryo"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "Pf" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -7622,7 +7573,6 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -7973,7 +7923,6 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "RW" = (
@@ -8091,14 +8040,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/bathroom)
-"SC" = (
-/obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark/spawnpoint/latejoin/station/tram,
-/obj/landmark{
-	name = "JoinLateCryo"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "SE" = (
 /obj/structure/flora/rock,
 /turf/simulated/floor/outdoors/beach/sand/desert/classm{
@@ -8336,19 +8277,6 @@
 /obj/structure/table/bench/marble,
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
-"TU" = (
-/obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark/spawnpoint/latejoin/station/tram,
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
-"TX" = (
-/obj/structure/bed/chair/bay/comfy/black,
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
-/obj/landmark{
-	name = "JoinLateCyborg"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "TZ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -8966,7 +8894,6 @@
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/class_m/inside)
 "Yr" = (
@@ -9016,7 +8943,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
@@ -10531,7 +10457,7 @@ vM
 vM
 fm
 Qh
-nB
+qH
 KI
 Sa
 Sa
@@ -11307,7 +11233,7 @@ vM
 vM
 fm
 Qh
-nB
+qH
 nB
 KI
 Sa
@@ -25811,7 +25737,7 @@ jZ
 jZ
 GX
 wd
-ff
+gN
 jZ
 gN
 jZ
@@ -26008,7 +25934,7 @@ wd
 jZ
 jZ
 jZ
-BI
+jZ
 qk
 bl
 IN
@@ -26202,7 +26128,7 @@ wd
 jZ
 jZ
 jZ
-BI
+jZ
 qk
 Hw
 IN
@@ -43105,7 +43031,7 @@ WN
 Wb
 CV
 tv
-XN
+pM
 kP
 kP
 kP
@@ -43113,7 +43039,7 @@ kP
 kP
 kP
 kP
-XN
+fA
 tv
 qp
 Wb
@@ -43496,9 +43422,9 @@ tv
 XN
 kP
 kP
-XN
+DF
 YN
-XN
+DF
 kP
 kP
 XN
@@ -43676,7 +43602,7 @@ WN
 uw
 hk
 aR
-TU
+ur
 DM
 Yp
 aR
@@ -43870,9 +43796,9 @@ WN
 uw
 hk
 aR
-SC
+ur
 DM
-HL
+Yp
 aR
 hk
 vX
@@ -44075,7 +44001,7 @@ WN
 Wb
 GA
 tv
-Kb
+pM
 kP
 zC
 XN
@@ -44083,7 +44009,7 @@ Zc
 XN
 cK
 kP
-Kb
+fA
 tv
 Lp
 Wb
@@ -44452,9 +44378,9 @@ WN
 uw
 hk
 aT
-Nj
+ll
 DM
-wY
+Eo
 aT
 Wb
 Wb
@@ -44646,9 +44572,9 @@ WN
 uw
 hk
 aR
-Pe
+ur
 DM
-MZ
+Yp
 aR
 hk
 vX
@@ -44840,9 +44766,9 @@ WN
 uw
 hk
 aR
-TX
+ur
 DM
-gw
+Yp
 aR
 hk
 Wb
