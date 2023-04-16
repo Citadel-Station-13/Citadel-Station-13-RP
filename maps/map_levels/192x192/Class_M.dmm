@@ -3502,12 +3502,6 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
-"td" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_4"
-	},
-/turf/simulated/floor/concrete/rng/classm/outdoors,
-/area/class_m/outside)
 "tm" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/water/deep/classm,
@@ -8040,12 +8034,6 @@
 "Sx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/grass/classm,
-/area/class_m/outside)
-"Sy" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_3"
-	},
-/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Sz" = (
 /obj/machinery/shower{
@@ -40170,7 +40158,7 @@ WN
 WN
 WN
 WN
-Sy
+WN
 WN
 WN
 WN
@@ -40351,19 +40339,19 @@ WN
 WN
 WN
 WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 xj
-WN
-WN
-WN
-WN
-WN
-WN
-WN
-WN
-WN
-WN
-WN
-WN
 WN
 WN
 WN
@@ -43653,7 +43641,7 @@ WN
 WN
 WN
 WN
-WN
+Oz
 WN
 WN
 WN
@@ -44633,7 +44621,7 @@ WN
 WN
 WN
 WN
-td
+WN
 WN
 WN
 WN
@@ -44813,7 +44801,7 @@ WN
 WN
 WN
 WN
-Oz
+WN
 WN
 WN
 WN
