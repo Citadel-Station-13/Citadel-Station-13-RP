@@ -7408,12 +7408,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"Oz" = (
-/obj/effect/shuttle_landmark/automatic{
-	docking_controller = "gaia_2"
-	},
-/turf/simulated/floor/concrete/rng/classm/outdoors,
-/area/class_m/outside)
 "OA" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -40351,7 +40345,7 @@ WN
 WN
 WN
 WN
-xj
+WN
 WN
 WN
 WN
@@ -40541,7 +40535,7 @@ WN
 WN
 WN
 WN
-WN
+xj
 WN
 WN
 WN
@@ -43641,7 +43635,7 @@ WN
 WN
 WN
 WN
-Oz
+WN
 WN
 WN
 WN
@@ -43839,7 +43833,7 @@ WN
 WN
 WN
 WN
-WN
+xj
 WN
 WN
 WN
