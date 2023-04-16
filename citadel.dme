@@ -332,6 +332,7 @@
 #include "code\__HELPERS\lists\copy.dm"
 #include "code\__HELPERS\lists\counter.dm"
 #include "code\__HELPERS\lists\json.dm"
+#include "code\__HELPERS\lists\merge.dm"
 #include "code\__HELPERS\lists\misc.dm"
 #include "code\__HELPERS\lists\pick.dm"
 #include "code\__HELPERS\lists\queue.dm"
