@@ -26,6 +26,8 @@
 
 	/// Currently hooked item for item reeling
 	var/obj/item/currently_hooked_item
+	/// hook EVERYTHING
+	var/adminbus_hooking = FALSE
 
 	/// Fishing line visual for the hooked item
 	var/datum/beam/hooked_item_fishing_line
@@ -75,6 +77,7 @@
 	if(isnull(bait))
 		return
 	QDEL_NULL(bait)
+	SStgui.update_uis(src)
 	update_icon()
 
 /obj/item/fishing_rod/on_attack_self(mob/user)
@@ -94,6 +97,8 @@
 	if(!do_after(user, 1 SECONDS, currently_hooked_item))
 		return
 	// Should probably respect and used force move later
+	if(currently_hooked_item.anchored)
+		return // nah
 	step_towards(currently_hooked_item, get_turf(src))
 	if(get_dist(currently_hooked_item, get_turf(src)) < 1)
 		clear_hooked_item()
@@ -134,19 +139,25 @@
 		return FALSE
 	currently_hooked_item = target_atom
 	hooked_item_fishing_line = create_fishing_line(target_atom)
+	RegisterSignal(currently_hooked_item, COMSIG_MOVABLE_MOVED, PROC_REF(hooked_item_moved))
 	RegisterSignal(hooked_item_fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(clear_hooked_item))
 	return TRUE
+
+/obj/item/fishing_rod/proc/hooked_item_moved(atom/movable/source)
+	if(!isturf(source.loc))
+		clear_hooked_item()
 
 /// Checks what can be hooked
 /obj/item/fishing_rod/proc/can_be_hooked(atom/movable/target)
 	// Could be made dependent on actual hook, ie magnet to hook metallic items
-	return isitem(target)
+	return hook?.can_hook_atom(target) || adminbus_hooking
 
 /obj/item/fishing_rod/proc/clear_hooked_item()
 	SIGNAL_HANDLER
 
 	if(!QDELETED(hooked_item_fishing_line))
 		QDEL_NULL(hooked_item_fishing_line)
+	UnregisterSignal(currently_hooked_item, COMSIG_MOVABLE_MOVED)
 	currently_hooked_item = null
 
 // Checks fishing line for interruptions and range

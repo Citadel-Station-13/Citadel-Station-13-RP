@@ -16,6 +16,8 @@
 	var/rod_overlay_icon_state = "hook_overlay"
 	/// What subtype of `/obj/item/chasm_detritus` do we fish out of chasms? Defaults to `/obj/item/chasm_detritus`.
 	// var/chasm_detritus_type = /obj/item/chasm_detritus
+	/// hook EVERYTHING
+	var/adminbus_hooking = FALSE
 
 /**
  * Simple getter proc for hooks to implement special hook bonuses for
@@ -43,6 +45,12 @@
 /obj/item/fishing_hook/proc/reason_we_cant_fish(datum/fish_source/target_fish_source)
 	return null
 
+/**
+ * can we hook an atom
+ */
+/obj/item/fishing_hook/proc/can_hook_atom(atom/movable/AM)
+	return isitem(AM) || adminbus_hooking
+
 /obj/item/fishing_hook/magnet
 	name = "magnetic hook"
 	desc = "Won't make catching fish any easier, but it might help with looking for other things."
@@ -55,6 +63,15 @@
 		return ..()
 	// We multiply the odds by five for everything that's not a fish nor a dud
 	return MAGNET_HOOK_BONUS_MULTIPLIER
+
+/obj/item/fishing_hook/magnet/can_hook_atom(atom/movable/AM)
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(H.isSynthetic())
+			return TRUE
+	if(ismachinery(AM) || isstructure(AM))
+		return TRUE
+	return ..()
 
 /obj/item/fishing_hook/shiny
 	name = "shiny lure hook"
@@ -80,6 +97,9 @@
 	// if(istype(target_fish_source, /datum/fish_source/chasm))
 		// return ..()
 	return "The hook on your fishing rod wasn't meant for traditional fishing, rendering it useless at doing so!"
+
+/obj/item/fishing_hook/rescue/can_hook_atom(atom/movable/AM)
+	return isliving(AM) || ..()
 
 /obj/item/fishing_hook/rescue/get_hook_bonus_multiplicative(fish_type, datum/fish_source/source)
 	// Sorry, you won't catch fish with this.
