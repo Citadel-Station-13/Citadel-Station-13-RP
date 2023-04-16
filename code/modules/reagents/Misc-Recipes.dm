@@ -1036,29 +1036,6 @@
 			else
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
 
-
-/datum/chemical_reaction/sizeoxadone
-	name = "sizeoxadone"
-	id = "sizeoxadone"
-	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, MAT_PHORON = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 5
-
-/datum/chemical_reaction/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	result = "macrocillin"
-	required_reagents = list("sizeoxadone" = 20, "diethylamine" = 20)
-	result_amount = 1
-
-/datum/chemical_reaction/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	result = "microcillin"
-	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
-	result_amount = 1
-
 /datum/chemical_reaction/gunpowder
 	name = "Gunpowder"
 	id = "gunpowder"

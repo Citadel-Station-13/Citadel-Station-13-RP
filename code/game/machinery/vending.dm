@@ -1167,6 +1167,7 @@
 		/obj/item/seeds/shrinkshroom = 3,
 		/obj/item/seeds/megashroom = 3,
 		/obj/item/seeds/peaseed = 3,
+		/obj/item/seeds/tobaccoseed = 3,
 	)
 	contraband = list(
 		/obj/item/seeds/amanitamycelium = 2,

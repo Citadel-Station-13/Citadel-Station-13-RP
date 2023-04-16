@@ -39,6 +39,10 @@
 	//? interaction
 	/// default interaction mode
 	var/interact_type = ABILITY_INTERACT_NONE
+	/// currently hidden?
+	var/hidden = FALSE
+
+	//? ui
 	/// tgui id
 	var/tgui_id = "TGUIAbility"
 
@@ -57,7 +61,7 @@
 	var/windup = 0
 	/// windup requires standing still
 	var/windup_requires_still = TRUE
-	/// last use world.time
+	/// last use world.time; null if we haven't been used yet
 	var/last_used
 	/// timerid for cooldown finish action button update
 	var/cooldown_visual_timerid
@@ -79,7 +83,16 @@
 /datum/ability/proc/generate_action()
 	if(!isnull(action))
 		return action
-	action = new(src)
+	rebuild_action()
+	return action
+
+/**
+ * full action button update including icon regeneration
+ * creates the action if it did not already exist.
+ */
+/datum/ability/proc/rebuild_action()
+	if(isnull(action))
+		action = new(src)
 	action.name = hotbind_name()
 	action.desc = hotbind_desc()
 	action.button_managed = TRUE
@@ -88,11 +101,13 @@
 	action.background_icon = background_icon
 	action.background_icon_state = background_state
 	update_action()
-	return action
 
+/**
+ * updates action button for availability / toggle status
+ */
 /datum/ability/proc/update_action()
 	var/availability = 1
-	if(cooldown)
+	if(cooldown && !isnull(last_used))
 		availability = clamp((world.time - last_used) / cooldown, 0, 1)
 	action?.push_button_update(availability, (interact_type == ABILITY_INTERACT_TOGGLE) && enabled)
 	recheck_queued_action_update()
@@ -102,7 +117,7 @@
 		deltimer(cooldown_visual_timerid)
 		cooldown_visual_timerid = null
 	var/next_available = 0
-	if(cooldown && (world.time < last_used + cooldown))
+	if(cooldown && !isnull(last_used) && (world.time < last_used + cooldown))
 		next_available = max(next_available, (last_used + cooldown) - world.time)
 	if(next_available > 0)
 		addtimer(CALLBACK(src, PROC_REF(update_action)), next_available, TIMER_STOPPABLE)
@@ -151,7 +166,7 @@
  * * feedback - output feedback messages
  */
 /datum/ability/proc/check_trigger(mob/user, toggling, feedback)
-	if((isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
+	if(!isnull(last_used) && (isnull(toggling) || toggling || (!toggling && cooldown_for_deactivation)) && (cooldown + last_used > world.time))
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
 	if(!available_check())
@@ -220,7 +235,7 @@
 	if(bound)
 		action?.grant(M)
 		update_action()
-	else if(always_bind)
+	else if(always_bind && !hidden)
 		quickbind()
 
 /datum/ability/proc/disassociate(mob/M)
@@ -264,6 +279,21 @@
 		return "You cannot do that without a free hand."
 	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
 		return "You cannot do that while incapacitated."
+
+/**
+ * sets us to hidden - no binding and not seen on panel
+ */
+/datum/ability/proc/hide()
+	hidden = TRUE
+	unbind()
+
+/**
+ * sets us to not hidden - bind if needed, seen on panel.
+ */
+/datum/ability/proc/unhide()
+	hidden = FALSE
+	if(always_bind)
+		quickbind()
 
 /**
  * static data for tgui panel
