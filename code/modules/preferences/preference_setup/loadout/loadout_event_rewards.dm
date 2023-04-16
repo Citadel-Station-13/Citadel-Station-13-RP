@@ -38,7 +38,7 @@
 	cost = 0
 	name = "Fishing Cap"
 	path = /obj/item/clothing/head/fishingcap
-	ckeywhitelist = list("biteroankles", "cawingcrow", "tzula", "doopytoots", "slybrowngote", "0roxas0", "g0atman", "kiroking", "gonepostal298", "silicons", "linzolle", "vapeon", "keekenox")
+	ckeywhitelist = list("biteroankles", "cawingcrow", "tzula", "doopytoots", "slybrowngote", "0roxas0", "g0atman", "kiroking", "gonepostal298", "silicons", "linzolle", "vapeon", "keekenox", "monara")
 
 /datum/gear/event_reward/toadplush
 	sort_category = "Event Rewards"

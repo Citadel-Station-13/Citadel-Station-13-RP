@@ -1265,10 +1265,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"hL" = (
-/obj/machinery/cryopod/robot/door/shuttle,
-/turf/simulated/floor/tiled/steel_dirty,
-/area/class_m/inside)
 "hQ" = (
 /obj/structure/catwalk,
 /obj/structure/railing{
@@ -3506,6 +3502,12 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"td" = (
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "gaia_4"
+	},
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "tm" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/water/deep/classm,
@@ -4174,6 +4176,12 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
+"xj" = (
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "gaia_1"
+	},
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "xl" = (
 /obj/machinery/light/flamp/noshade{
@@ -7406,6 +7414,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"Oz" = (
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "gaia_2"
+	},
+/turf/simulated/floor/concrete/rng/classm/outdoors,
+/area/class_m/outside)
 "OA" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -8026,6 +8040,12 @@
 "Sx" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/grass/classm,
+/area/class_m/outside)
+"Sy" = (
+/obj/effect/shuttle_landmark/automatic{
+	docking_controller = "gaia_3"
+	},
+/turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
 "Sz" = (
 /obj/machinery/shower{
@@ -40150,7 +40170,7 @@ WN
 WN
 WN
 WN
-WN
+Sy
 WN
 WN
 WN
@@ -40331,7 +40351,7 @@ WN
 WN
 WN
 WN
-WN
+xj
 WN
 WN
 WN
@@ -41467,7 +41487,7 @@ WN
 WN
 uw
 hk
-hL
+ou
 DM
 DM
 DM
@@ -44183,7 +44203,7 @@ WN
 WN
 uw
 hk
-hL
+ou
 DM
 DM
 DM
@@ -44613,7 +44633,7 @@ WN
 WN
 WN
 WN
-WN
+td
 WN
 WN
 WN
@@ -44793,7 +44813,7 @@ WN
 WN
 WN
 WN
-WN
+Oz
 WN
 WN
 WN
