@@ -2965,6 +2965,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"caZ" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/random/cutout,
+/turf/simulated/floor/plating,
+/area/maintenance/library)
 "cbA" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/structure/window/reinforced{
@@ -12871,10 +12878,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
-"ipK" = (
-/obj/random/cutout,
-/turf/simulated/floor/plating,
-/area/maintenance/library)
 "iqD" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/carpet,
@@ -60893,7 +60896,7 @@ dRL
 awP
 adq
 snT
-fiF
+caZ
 uoZ
 pcy
 pcy
@@ -61083,9 +61086,9 @@ snT
 fiF
 oZF
 snT
-ipK
-awP
 ryW
+awP
+awP
 gLM
 oZF
 nPu
