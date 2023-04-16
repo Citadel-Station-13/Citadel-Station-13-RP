@@ -223,7 +223,7 @@
 /obj/item/fishing_rod/proc/check_fishing_reach(atom/target, mob/user)
 	if(!isturf(target) && !isturf(target.loc))
 		return FALSE // NO
-	return user.Reachability(target, depth = 1, range = 5, tool = src)
+	return user.Reachability(target, depth = 1, range = cast_range, tool = src)
 
 /obj/item/fishing_rod/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
