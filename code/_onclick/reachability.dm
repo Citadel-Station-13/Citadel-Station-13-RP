@@ -29,7 +29,7 @@
  *
  * @params
  * - target - the target
- * - depth - max depth
+ * - depth - max depth - should be at least 1 in most cases.
  * - range - max range
  * - tool - the item we're using to reach; not important
  */
@@ -68,8 +68,8 @@
 		// 2. it would be expensive as shit and require a snowflake check
 		//    that i have no intention of writing right now
 		return tadj && (l.loc == target)
-	else if(isturf(target))
-		// turf checks are just an adjacency check
+	else if(isturf(target) && (range <= 1))
+		// adjacent turf checks are just an adjacency check
 		return tadj?.TurfAdjacency(target)
 
 	// now that cache is assembled and turf is set, go to main loop
@@ -80,38 +80,41 @@
 	// in the old system we used a closed_cache[thing] = true to prevent
 	// infinite loops, now it's built in, and iteration is just as fast!
 
-	// check cache
-	var/list/cc = list(target.loc = TRUE)
 	// current index in check cache
 	var/i = 1
 	// did we reach turf? turf heuristic - usually the first turf we found
 	var/turf/th
-	// current length
-	var/cl = 1
-	// reach *upwards* from the target
-	for(var/d in 1 to depth)
-		cl = length(cc)
-		if(i > cl)
-			// hit top, didn't find, break
-			break
-		for(i in i to cl)
-			l = cc[i]
-			// process the rest of checking
-			if(!l.CanReachIn(src, target, tool, cc))
-				// couldn't reach in, l is irrelevant
-				continue
-			if(dc[l])
-				// found
-				return TRUE
-			if(isturf(l) && !th)
-				// is turf; turf adjacency enabled
-				th = l
-			if(isarea(l.loc))
-				// don't recurse into areas
-				continue
-			cc[l.loc] = TRUE
-		// don't overlap
-		++i
+	if(isturf(target))
+		th = target
+	else
+		// check cache
+		var/list/cc = list(target.loc = TRUE)
+		// current length
+		var/cl = 1
+		// reach *upwards* from the target
+		for(var/d in 1 to depth)
+			cl = length(cc)
+			if(i > cl)
+				// hit top, didn't find, break
+				break
+			for(i in i to cl)
+				l = cc[i]
+				// process the rest of checking
+				if(!l.CanReachIn(src, target, tool, cc))
+					// couldn't reach in, l is irrelevant
+					continue
+				if(dc[l])
+					// found
+					return TRUE
+				if(isturf(l) && !th)
+					// is turf; turf adjacency enabled
+					th = l
+				if(isarea(l.loc))
+					// don't recurse into areas
+					continue
+				cc[l.loc] = TRUE
+			// don't overlap
+			++i
 	if(!(tadj && th))
 		// didn't hit both, fail
 		return FALSE
@@ -148,6 +151,8 @@
 
 /**
  * quick and dirty reachability check
+ *
+ * todo: range doesn't currently work
  */
 /atom/movable/proc/CheapReachability(atom/target, depth = DEFAULT_REACHABILITY_DEPTH, range, obj/item/tool)
 	var/turf/curr = target.loc

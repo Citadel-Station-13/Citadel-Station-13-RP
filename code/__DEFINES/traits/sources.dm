@@ -1,5 +1,7 @@
 /// Generic source - don't use this if at all possible.
 #define GENERIC_TRAIT "generic"
+/// Trait is from ourselves (src)
+#define INNATE_TRAIT "innate"
 
 //? Mob Sources
 
