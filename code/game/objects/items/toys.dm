@@ -1121,6 +1121,7 @@
 
 /obj/item/toy/plushie/toad
 	name = "\improper Toad plushie"
+	desc = "Not actually a replica of a toad, but a humanoid toadstool! It wont stop screaming (lovingly) when you poke and squeeze it, but somehow it's cute anyways. Reminds you of times spent racing."
 	icon_state = "toadplush"
 	pokephrase = "Waaah!!"
 
