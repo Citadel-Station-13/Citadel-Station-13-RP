@@ -46,3 +46,9 @@
 	name = "Toad Plushie"
 	path = /obj/item/toy/plushie/toad
 	ckeywhitelist = list("coreflame", "jacksontmurphy", "uncleburbon", "biteroankles", "athena14", "rezbit", "nik707", "0roxas0")
+
+/datum/gear/event_reward/cooking_pin
+	cost = 0
+	name = "Culinary Excellence Pin"
+	path = /obj/item/clothing/accessory/medal/cooking
+	ckeywhitelist = list("spessinquisitor")
