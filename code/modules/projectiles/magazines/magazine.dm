@@ -139,7 +139,7 @@
 		if(casing.caliber != caliber)
 			return FALSE
 	else
-		if(casing.type != ammo_Type)
+		if(casing.type != ammo_type)
 			return FALSE
 	if(length(stored_ammo) < max_ammo)
 		// add
@@ -189,7 +189,7 @@
 			break
 		if(!casing.loaded())
 			continue
-		if(!load_round(casing, FALSE))
+		if(!load_casing(casing, FALSE))
 			continue
 		++.
 	if(.)

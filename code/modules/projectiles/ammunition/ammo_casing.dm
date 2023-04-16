@@ -123,6 +123,6 @@
 /obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(istype(I, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/mag = I
-		I.quick_gather(get_turf(src), user)
+		mag.quick_gather(get_turf(src), user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
