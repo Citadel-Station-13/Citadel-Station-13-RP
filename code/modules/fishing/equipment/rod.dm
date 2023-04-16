@@ -25,7 +25,7 @@
 	var/obj/item/fishing_hook/hook
 
 	/// Currently hooked item for item reeling
-	var/obj/item/currently_hooked_item
+	var/atom/movable/currently_hooked_item
 	/// hook EVERYTHING
 	var/adminbus_hooking = FALSE
 
@@ -97,7 +97,7 @@
 	if(!do_after(user, 1 SECONDS, currently_hooked_item))
 		return
 	// Should probably respect and used force move later
-	if(currently_hooked_item.anchored)
+	if(currently_hooked_item.anchored || currently_hooked_item.pulledby)
 		return // nah
 	step_towards(currently_hooked_item, get_turf(src))
 	if(get_dist(currently_hooked_item, get_turf(src)) < 1)
@@ -137,11 +137,20 @@
 		return FALSE
 	if(!can_be_hooked(target_atom))
 		return FALSE
+	if(ismob(target_atom) && TIMER_COOLDOWN_CHECK(src, CD_INDEX_FISHING_ROD_MOB_HOOK))
+		user.action_feedback(SPAN_WARNING("You can't hook another mob so quickly."), src)
+		return TRUE
 	currently_hooked_item = target_atom
 	hooked_item_fishing_line = create_fishing_line(target_atom)
 	RegisterSignal(currently_hooked_item, COMSIG_MOVABLE_MOVED, PROC_REF(hooked_item_moved))
 	RegisterSignal(hooked_item_fishing_line, COMSIG_FISHING_LINE_SNAPPED, PROC_REF(clear_hooked_item))
+	if(ismob(currently_hooked_item))
+		RegisterSignal(currently_hooked_item, COMSIG_MOB_PROCESS_RESIST, PROC_REF(hooked_mob_resisted))
 	return TRUE
+
+/obj/item/fishing_rod/proc/hooked_mob_resisted()
+	clear_hooked_item()
+	TIMER_COOLDOWN_START(src, CD_INDEX_FISHING_ROD_MOB_HOOK, 5 SECONDS)
 
 /obj/item/fishing_rod/proc/hooked_item_moved(atom/movable/source)
 	if(!isturf(source.loc))
@@ -157,7 +166,10 @@
 
 	if(!QDELETED(hooked_item_fishing_line))
 		QDEL_NULL(hooked_item_fishing_line)
-	UnregisterSignal(currently_hooked_item, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(currently_hooked_item, list(
+		COMSIG_MOVABLE_MOVED,
+		COMSIG_MOB_PROCESS_RESIST,
+	))
 	currently_hooked_item = null
 
 // Checks fishing line for interruptions and range
