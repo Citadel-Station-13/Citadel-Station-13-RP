@@ -317,11 +317,11 @@
 			if(275 to 325)
 				message = SPAN_INFO("[T.He] [T.has] an especially plump body with a round potbelly and large hips.")
 			if(325 to 374)
-				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, squishy rolls of pudge, very wide hips, and plump set of jiggling thighs.")
+				message = SPAN_INFO("[T.He] [T.has] a very fat frame with a bulging potbelly, and very wide hips.")
 			if(375 to 474)
-				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.his] fat ass would probably require two chairs to sit down comfortably!")
+				message = SPAN_WARNING("[T.He] [T.is] incredibly obese. [T.His] massive potbelly sags over [T.his] waistline while [T.he] would likely require two chairs to sit down comfortably!")
 			else
-				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.  [T.He] can't get any fatter without being immobilized.")
+				message = SPAN_DANGER("[T.He] [T.is] so morbidly obese, you wonder how [T.he] can even stand, let alone waddle around the station.")
 		. += message
 //! End of the bs
 
