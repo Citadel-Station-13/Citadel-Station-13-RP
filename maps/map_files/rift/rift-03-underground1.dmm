@@ -2660,6 +2660,7 @@
 	},
 /obj/structure/railing,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/maintenance/elevator)
 "gT" = (

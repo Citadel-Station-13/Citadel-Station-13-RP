@@ -5474,6 +5474,24 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"anF" = (
+/obj/structure/cable/green{
+	icon_state = "32-1"
+	},
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/turf/simulated/open,
+/area/maintenance/station/exploration)
 "anH" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -6836,14 +6854,11 @@
 /area/rift/surfaceeva/aa/cliff_south)
 "are" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "arf" = (
@@ -7759,18 +7774,13 @@
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
 "atq" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/railing,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
 /obj/structure/foodcart,
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "atr" = (
@@ -9693,12 +9703,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "axW" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -9718,6 +9722,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
 "axX" = (
@@ -10472,16 +10477,13 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/cable/green,
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
 /obj/item/packageWrap,
 /obj/item/packageWrap,
+/obj/machinery/power/apc/direction_bump/south,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "azR" = (
@@ -15316,17 +15318,13 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/bar)
 "aMt" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/power/apc/direction_bump/west,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aMv" = (
@@ -18563,6 +18561,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply{
 	dir = 4
 	},
+/obj/structure/lattice,
 /turf/simulated/open,
 /area/rift/trade_shop/landing_pad)
 "aUx" = (
@@ -20713,6 +20712,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
+"bsC" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "buZ" = (
 /obj/structure/railing{
 	dir = 8
@@ -21166,6 +21175,13 @@
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"cWZ" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "cXK" = (
 /obj/structure/table/hardwoodtable,
 /obj/structure/disposalpipe/segment,
@@ -21562,6 +21578,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "eDa" = (
@@ -21816,14 +21835,10 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 26
 	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/direction_bump/west,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "fGK" = (
@@ -21969,6 +21984,9 @@
 	icon_state = "1-2"
 	},
 /obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "gbx" = (
@@ -22239,12 +22257,12 @@
 /obj/structure/bed/chair/sofa/black,
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
-"gNT" = (
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "gQu" = (
 /obj/machinery/light/small{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
@@ -22902,10 +22920,6 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals)
-"jfm" = (
-/obj/structure/railing,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "jhs" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -23257,9 +23271,6 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"kkJ" = (
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfaceeva/airlock/arrivals)
 "klx" = (
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
@@ -24190,14 +24201,10 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/direction_bump/west,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "nhm" = (
@@ -24436,6 +24443,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
+"nUU" = (
+/obj/random/trash,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "nXO" = (
 /obj/structure/cable/orange{
 	icon_state = "1-8"
@@ -24461,10 +24475,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "ocj" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
+/obj/machinery/power/apc/direction_bump/west,
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
@@ -24733,6 +24746,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "oZN" = (
@@ -25248,6 +25262,9 @@
 	},
 /obj/structure/table/standard,
 /obj/item/storage/laundry_basket,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "qTk" = (
@@ -25664,6 +25681,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/turbolift/maint)
+"skR" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "stq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -25871,6 +25898,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"tdX" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "tfU" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -26131,6 +26164,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
+"uaH" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "uaU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -26328,6 +26367,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"uSq" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/bar)
 "uTN" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/structure/cable/green{
@@ -26391,6 +26438,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"vex" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "veC" = (
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -26831,15 +26888,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
-"wuV" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "wxd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -27373,6 +27421,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
+"ygD" = (
+/obj/machinery/door/airlock/maintenance/common,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "ykb" = (
 /obj/machinery/door/airlock{
 	id_tag = "barbackdoor";
@@ -38317,7 +38372,7 @@ aOi
 aKW
 aIA
 aIA
-ahS
+afb
 aTq
 aTq
 aTq
@@ -38487,52 +38542,52 @@ amn
 aej
 acH
 acH
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-jfm
-wuV
-wuV
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
-gNT
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+aNk
+auz
+auz
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
+acH
 acH
 acH
 acH
@@ -38681,7 +38736,7 @@ amn
 aej
 acH
 acH
-gNT
+acH
 acH
 acH
 acH
@@ -38726,7 +38781,7 @@ aUZ
 aha
 aej
 acH
-gNT
+acH
 acH
 acH
 acH
@@ -38875,7 +38930,7 @@ amn
 aej
 acH
 acH
-gNT
+acH
 akr
 akr
 akr
@@ -38920,7 +38975,7 @@ aMk
 aus
 amj
 aej
-gNT
+acH
 acH
 acH
 acH
@@ -39069,7 +39124,7 @@ akr
 akr
 akr
 akr
-gNT
+acH
 akr
 aHs
 aHs
@@ -39114,7 +39169,7 @@ ajq
 aus
 amn
 aej
-gNT
+acH
 ail
 acH
 acH
@@ -39308,7 +39363,7 @@ ajq
 aus
 amn
 aej
-gNT
+acH
 acH
 acH
 acH
@@ -39502,7 +39557,7 @@ aMk
 aus
 amn
 aAF
-gNT
+vCA
 aBa
 aBa
 acH
@@ -39696,7 +39751,7 @@ apE
 aus
 aus
 apa
-gNT
+aIA
 aIA
 apa
 acH
@@ -40084,7 +40139,7 @@ aMk
 aus
 amn
 aeo
-gNT
+aIA
 qyQ
 agI
 agI
@@ -40278,7 +40333,7 @@ ajq
 aus
 amn
 acF
-gNT
+aIA
 wmZ
 agI
 aPN
@@ -40472,7 +40527,7 @@ ajq
 aus
 amn
 acF
-gNT
+aIA
 whH
 hhL
 jym
@@ -40666,8 +40721,8 @@ aMk
 aus
 atI
 acF
-gNT
-kkJ
+aIA
+arg
 ccD
 jeW
 ykQ
@@ -40687,7 +40742,7 @@ aRz
 ycI
 oOm
 gbu
-rLC
+uSq
 rLC
 obd
 vKD
@@ -48281,10 +48336,10 @@ ajL
 ayU
 ayU
 aKt
-aKt
+uaH
 gQu
-aKt
-aKt
+tdX
+anF
 eFy
 aif
 ydJ
@@ -48475,7 +48530,7 @@ ajo
 awv
 aKt
 rpd
-eHE
+bsC
 eHE
 eHE
 eHE
@@ -48665,11 +48720,11 @@ adf
 aFZ
 aKt
 aKt
-ajo
-aMP
-aif
-taZ
-ayE
+vex
+ygD
+cWZ
+skR
+nUU
 aKt
 aKt
 djv
