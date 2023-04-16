@@ -4466,6 +4466,7 @@
 /obj/machinery/camera/network/civilian{
 	dir = 10
 	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled/techfloor,
 /area/cryo)
 "my" = (
@@ -5409,6 +5410,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /turf/simulated/floor/tiled/techfloor,
 /area/cryo)
 "oT" = (
@@ -7450,6 +7452,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/secure_storage/lower)
+"vS" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
+/turf/simulated/floor/tiled/techfloor,
+/area/cryo)
 "vT" = (
 /obj/effect/floor_decal/chapel{
 	dir = 4
@@ -32140,9 +32149,9 @@ Ze
 Ze
 Kw
 jL
-kJ
+vS
 GP
-kJ
+vS
 pl
 Kw
 mu

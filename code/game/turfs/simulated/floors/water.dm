@@ -153,6 +153,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return

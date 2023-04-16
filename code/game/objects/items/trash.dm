@@ -200,3 +200,8 @@
 /obj/item/trash/brainsnaxtrash
 	name = "\improper BrainSnax can"
 	icon_state = "brainsnaxtrash"
+
+/obj/item/trash/fishingboot
+	name = "old boot"
+	desc = "The famous pair of Salmucci's that was dropped in here by none other than Mister Nanotrasen's 53rd secretary is still rumoured to be lying at the bottom of the pool. This.. is not it. The shoe is soggy, and seems about as comfortable as it was before being tossed in here."
+	icon_state = "fishingboot"

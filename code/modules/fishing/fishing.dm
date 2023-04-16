@@ -6,6 +6,7 @@
 /atom/proc/is_fishing_spot()
 	return GetComponent(/datum/component/fishing_spot)
 
+
 /**
  * called just as we're about to start fishing
  * use this to generate a fishing spot if needed.
