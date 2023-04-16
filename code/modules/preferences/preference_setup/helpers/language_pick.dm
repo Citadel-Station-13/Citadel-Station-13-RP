@@ -17,14 +17,16 @@
 		to_chat(user, SPAN_WARNING("You cannot select another language!"))
 		return TRUE
 	var/datum/character_species/CS = character_species_datum()
-	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in CS.whitelist_languages) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
-		to_chat(user, SPAN_WARNING("[L.name] is a whitelisted language!"))
+	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
+	if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in whitelisted_ids) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
+		to_chat(user, SPAN_WARNING("[L] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)
 	current += L.id
 	set_character_data(CHARACTER_DATA_LANGUAGES, current)
 	refresh(user)
 	return TRUE
+
 
 GLOBAL_LIST_EMPTY(language_picker_active)
 /datum/tgui_language_picker

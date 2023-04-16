@@ -64,9 +64,10 @@
 		return FALSE
 	var/list/extraneous = data
 	var/datum/character_species/CS = prefs.character_species_datum()
+	var/list/whitelisted_ids = CS.get_whitelisted_language_ids() // cache ids from character species for speed
 	for(var/id in extraneous)
 		var/datum/language/L = SScharacters.resolve_language_id(id)
-		if((L.language_flags & LANGUAGE_WHITELISTED) && !((L.id in CS.whitelist_languages) || config.check_alien_whitelist(ckey(L.name), prefs.client_ckey)))
+		if((L.language_flags & LANGUAGE_WHITELISTED) && (!(L.id in whitelisted_ids)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
 			errors?.Add(SPAN_WARNING("[L] is a whitelisted language."))
 			return FALSE
 	return TRUE
