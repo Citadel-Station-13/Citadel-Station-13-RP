@@ -1526,6 +1526,7 @@
 		/obj/item/aquarium_kit = 20,
 		/obj/item/storage/box/aquarium_props = 20,
 		/obj/item/storage/fish_case = 30,
+		/obj/item/book/fish_catalog = 20,
 	)
 	price_default = 10
 	prices = list(
