@@ -25,3 +25,9 @@
 	path = /obj/item/clothing/under/event_reward/foxmiko
 	slot = SLOT_ID_UNIFORM
 	ckeywhitelist = list("knouli")
+
+/datum/gear/event_reward/cooking_pin
+	cost = 0
+	name = "Culinary Excellence Pin"
+	path = /obj/item/clothing/accessory/medal/cooking
+	ckeywhitelist = list("spessinquisitor")

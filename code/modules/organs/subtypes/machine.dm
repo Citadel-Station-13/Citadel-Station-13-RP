@@ -89,7 +89,7 @@
 		. = stored_mmi
 		stored_mmi.forceMove(drop_location())
 		if(owner.mind)
-			owner.mind.transfer_to(stored_mmi.brainmob)
+			owner.mind.transfer(stored_mmi.brainmob)
 	..()
 
 	qdel(src)

@@ -1038,16 +1038,10 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aX" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aY" = (
@@ -1642,7 +1636,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bG" = (
-/obj/machinery/ion_engine,
+/obj/machinery/ion_engine{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/tabiranth)
 "bH" = (

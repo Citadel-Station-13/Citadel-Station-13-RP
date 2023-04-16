@@ -176,7 +176,7 @@
 
 	if(src.mind)
 		src.mind.special_role = "Borer Husk"
-		src.mind.transfer_to(host)
+		src.mind.transfer(host)
 
 	H.ChangeToHusk()
 

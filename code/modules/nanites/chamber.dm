@@ -184,7 +184,7 @@
 	var/mob/living/carbon/human/new_protean = new(src)
 	new_protean.set_species(/datum/species/protean, force = TRUE)
 	new_protean.real_name = protean_core.brainmob.mind.name
-	protean_core.brainmob.mind.transfer_to(new_protean)
+	protean_core.brainmob.mind.transfer(new_protean)
 	// todo: organ / species rework
 	var/obj/item/organ/external/their_chest = new_protean.organs_by_name[BP_TORSO]
 	var/datum/robolimb/nt_path = /datum/robolimb/nanotrasen

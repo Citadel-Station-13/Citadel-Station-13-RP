@@ -242,7 +242,8 @@ var/list/admin_verbs_debug = list(
 	/datum/admins/proc/change_time,
 	/client/proc/admin_give_modifier,
 	/client/proc/fucky_wucky,
-	/client/proc/simple_DPS
+	/client/proc/simple_DPS,
+	/datum/admins/proc/fishing_calculator,
 	)
 
 var/list/admin_verbs_paranoid_debug = list(

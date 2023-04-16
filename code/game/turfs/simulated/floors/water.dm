@@ -23,7 +23,6 @@
 	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
-	handle_fish()
 
 /turf/simulated/floor/water/update_icon()
 	..() // To get the edges.
@@ -89,6 +88,13 @@
 		if(!istype(newloc, /turf/simulated/floor/water))
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
+
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
 
 /turf/simulated/floor/water/deep
 	name = "deep water"

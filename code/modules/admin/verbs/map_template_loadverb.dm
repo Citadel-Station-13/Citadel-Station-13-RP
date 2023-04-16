@@ -10,7 +10,7 @@
 		return
 	template = SSmapping.map_templates[map]
 
-	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template.", "Orientation") as null|anything in list("North", "South", "East", "West"))
+	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template. SOUTH IS THE DEFAULT.", "Orientation") as null|anything in list("North", "South", "East", "West"))
 	if(!orientation)
 		return
 
@@ -46,7 +46,7 @@
 		return
 	template = SSmapping.map_templates[map]
 
-	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template.", "Orientation") as null|anything in list("North", "South", "East", "West"))
+	var/orientation = text2dir(input(usr, "Choose an orientation for this Map Template. SOUTH IS THE DEFAULT.", "Orientation") as null|anything in list("North", "South", "East", "West"))
 	if(!orientation)
 		return
 

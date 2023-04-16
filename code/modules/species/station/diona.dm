@@ -123,7 +123,7 @@
 	var/mob/living/carbon/alien/diona/S = new(get_turf(H))
 
 	if(H.mind)
-		H.mind.transfer_to(S)
+		H.mind.transfer(S)
 
 	if(H.isSynthetic())
 		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
