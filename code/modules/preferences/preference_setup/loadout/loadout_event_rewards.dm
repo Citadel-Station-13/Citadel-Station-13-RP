@@ -31,14 +31,14 @@
 	cost = 0
 	name = "All Purpose Non-Toxic Glue"
 	path = /datum/reagent/drink/glue
-	ckeywhitelist = list("trubus", "g0atman", "linzolle", "racobio", "oaklee", "askaris", "bluewildrose", "serinexxa", "ticklem0nster", "pixelthekitty", "kt0ma36", "keekenox", "nik707")
+	ckeywhitelist = list("trubus", "g0atman", "linzolle", "racobio", "oaklee", "askaris", "bluewildrose", "serinexxa", "ticklem0nster", "pixelthekitty", "ktoma36", "keekenox", "nik707")
 
 /datum/gear/event_reward/fishingcap
 	sort_category = "Event Rewards"
 	cost = 0
 	name = "Fishing Cap"
 	path = /obj/item/clothing/head/fishingcap
-	ckeywhitelist = list("biteroankles", "cawingcrow", "tzula", "doopytoots", "slybrowngote", "0roxas0", "g0atman", "kiroking", "gonepostal298", "silicons", "linzolle", "vapeon", "keekenox", "monara")
+	ckeywhitelist = list("biteroankles", "cawingcrow", "tzula", "doopytoots", "slybrowngote", "0roxas0", "g0atman", "kiroking", "gonepostal298", "silicons", "linzolle", "vapeon", "keekenox", "monara", "crystal9156")
 
 /datum/gear/event_reward/toadplush
 	sort_category = "Event Rewards"
