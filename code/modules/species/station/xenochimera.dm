@@ -109,6 +109,9 @@
 
 	abilities = list(
 		/datum/ability/species/xenochimera/regenerate,
+		/datum/ability/species/xenochimera/thermal_sight,
+		/datum/ability/species/xenochimera/voice_mimic,
+		/datum/ability/species/xenochimera/hatch,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
@@ -142,18 +145,9 @@
 		/mob/living/carbon/human/proc/commune,
 	)
 
-	inherent_spells = list(
-		/spell/targeted/chimera/thermal_sight,
-		/spell/targeted/chimera/voice_mimic,
-		/spell/targeted/chimera/hatch,
-		/spell/targeted/chimera/no_breathe,
+	var/list/feral_abilities = list(
+		/datum/ability/species/xenochimera/dissonant_shriek,
 	)
-
-	var/list/feral_spells = list(
-		/spell/aoe_turf/dissonant_shriek,
-	)
-
-	var/list/removable_spells = list()
 
 	var/has_feral_spells = FALSE
 
@@ -185,30 +179,11 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
-/datum/species/shapeshifter/xenochimera/add_inherent_spells(var/mob/living/carbon/human/H)
-	var/master_type = /atom/movable/screen/movable/spell_master/chimera
-	var/atom/movable/screen/movable/spell_master/chimera/new_spell_master = new master_type
-
-	if(!H.spell_masters)
-		H.spell_masters = list()
-
-	if(H.client)
-		H.client.screen += new_spell_master
-	new_spell_master.spell_holder = H
-	H.spell_masters.Add(new_spell_master)
-
-	for(var/spell_to_add in inherent_spells)
-		var/spell/S = new spell_to_add(H)
-		H.add_spell(S, "cult", master_type)
-
 /datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
 	if(!has_feral_spells)
 		var/check = FALSE
-		var/master_type = /atom/movable/screen/movable/spell_master/chimera
-		for(var/spell/S as anything in feral_spells)
-			var/spell/spell_to_add = new S(H)
-			check = H.add_spell(spell_to_add, "cult", master_type)
-			removable_spells += spell_to_add
+		for(var/datum/ability/A as anything in feral_abilities)
+			A.associate(H)
 		if(check)
 			has_feral_spells = TRUE
 		else
@@ -217,15 +192,14 @@
 		return
 
 /datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
-	for(var/spell/S as anything in removable_spells)
-		S.remove_self(H)
-	removable_spells.Cut()
+	for(var/datum/ability/A as anything in feral_abilities)
+		A.disassociate(H)
 	has_feral_spells = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
 	..()
-	for(var/spell/S as anything in feral_spells)
-		S = new S(H)
+	for(var/datum/ability/A as anything in feral_abilities)
+		A = new A(H)
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -667,11 +641,11 @@
 	category = "Xenochimera"
 	ability_check_flags = NONE
 	always_bind = TRUE
-	action_icon = 'icons/screen/actions/changeling.dmi'
+	action_icon = 'icons/screen/actions/actions.dmi'
 
 	var/nutrition_cost_minimum = 50
 	var/nutrition_cost_proportional = 20 //percentage of nutriment it should cost if it's higher than the minimum
-	var/nutrition_enforced = FALSE
+	var/nutrition_enforced = TRUE
 
 
 /datum/ability/species/xenochimera/check_trigger(mob/user, toggling)
@@ -704,10 +678,13 @@
 	else
 		H.nutrition = 0		//We're already super starved, and feral, so cast it for free, you're likely using it to get food at this point.
 
+		////////////////
+		//Regeneration//
+		////////////////
 /datum/ability/species/xenochimera/regenerate
 	name = "Regeneration"
 	desc = "We shed our skin, purging it of damage, regrowing limbs."
-	action_state = "fleshmend"
+	action_state = "ling_fleshmend"
 	nutrition_cost_minimum = 500
 	nutrition_cost_proportional = 75
 	nutrition_enforced = TRUE
@@ -742,3 +719,189 @@
 	H.visible_message("<span class='warning'>With a sickening squish, [src] reforms their whole body, casting their old parts on the floor!</span>",
 	"<span class='notice'>We reform our body.  We are whole once more.</span>",
 	"<span class='italics'>You hear organic matter ripping and tearing!</span>")
+
+////////////////////////
+//Timed thermal sight.//
+////////////////////////
+/datum/ability/species/xenochimera/thermal_sight
+	name = "Thermal Sight"
+	desc = "We focus ourselves, able to sense prey and threat through walls or mist. We cannot sustain this for long."
+	action_state = "ling_augmented_eyesight"
+	cooldown = 35 SECONDS
+	nutrition_cost_minimum = 15		//The hungrier you get the less it will cost
+	nutrition_cost_proportional = 10
+	var/active = FALSE
+	var/duration = 30 SECONDS
+
+/datum/ability/species/xenochimera/thermal_sight/on_trigger()
+	. = ..()
+	if(!ishuman(owner))
+		return
+	var/mob/living/carbon/human/H = owner
+	toggle_sight(owner)
+	addtimer(CALLBACK(src, .proc/toggle_sight,H), duration, TIMER_UNIQUE)
+
+/datum/ability/species/xenochimera/thermal_sight/proc/toggle_sight(mob/living/carbon/human/H)
+	if(!active)
+		to_chat(H, "<span class='notice'>We focus outward, gaining a keen sense of all those around us.</span>")
+		H.species.vision_flags |= SEE_MOBS
+		H.species.has_glowing_eyes = TRUE
+		active = TRUE
+	else
+		to_chat(H, "<span class='notice'>Our senses dull.</span>")
+		H.species.vision_flags &= ~SEE_MOBS
+		H.species.has_glowing_eyes = FALSE
+		active = FALSE
+	H.update_eyes()
+
+///////////////
+//Voice Mimic//
+///////////////
+//It's a toggle, but doesn't cost nutriment to be toggled off
+/datum/ability/species/xenochimera/voice_mimic
+	name = "Voice Mimicry"
+	desc = "We shape our throat and tongue to imitate a person, or a sound. This ability is a toggle."
+	action_state = "ling_mimic_voice"
+	cooldown = 5 SECONDS
+	nutrition_cost_minimum = 25
+	nutrition_cost_proportional = 5
+	var/active = FALSE
+
+/datum/ability/species/xenochimera/voice_mimic/on_trigger()
+	. = ..()
+	if(owner.stat != DEAD)
+		if(ishuman(owner))
+			var/mob/living/carbon/human/H = owner
+			if(!active)
+				var/mimic_voice = sanitize(input(usr, "Enter a name to mimic. Leave blank to cancel.", "Mimic Voice", null), MAX_NAME_LEN)
+				if(!mimic_voice)
+					return
+
+				to_chat(owner, "<span class='notice'>We shift and morph our tongues, ready to reverberate as: <b>[mimic_voice]</b>.</span>")
+				H.SetSpecialVoice(mimic_voice)
+				active = TRUE
+				..()	//Processes nutriment cost
+			else
+				to_chat(owner, "<span class='notice'>We return our voice to our normal identity.</span>")
+				H.UnsetSpecialVoice()
+				active = FALSE
+		else
+			return
+
+///////////////
+//EMP Shriek //
+///////////////
+//Only to be used during feral state, has a very long cooldown. Mostly to get away.
+
+/datum/ability/species/xenochimera/dissonant_shriek
+	name = "Dissonant Shriek"
+	desc = "We shift our vocal cords to release a high-frequency sound that overloads nearby electronics."
+	action_state = "ling_resonant_shriek"
+	var/range = 8
+	//Slightly more potent than an EMP grenade
+	var/emp_heavy = 3
+	var/emp_med = 6
+	var/emp_light = 9
+	var/emp_long = 12
+	var/smoke_spread = 1
+	var/smoke_amt = 1
+	cooldown = 5 MINUTES	//Let's not be able to spam this
+
+
+/datum/ability/species/xenochimera/dissonant_shriek/on_trigger()
+	. = ..()
+	for(var/mob/living/T in get_hearers_in_view(range, owner))
+		if(iscarbon(T))
+			if(T.mind)
+				if(T.get_ear_protection() >= 2 || T == owner)
+					continue
+				to_chat(T, "<span class='danger'>You hear an extremely loud screeching sound!  It slightly \
+				[pick("confuses","confounds","perturbs","befuddles","dazes","unsettles","disorients")] you.</span>")
+				T.Confuse(10)
+	playsound(get_turf(owner),'sound/effects/screech.ogg', 75, TRUE)
+
+	empulse(get_turf(owner), emp_heavy, emp_med, emp_light, emp_long)
+
+	owner.visible_message("<span class='danger'>[owner] vibrates and bubbles, letting out an inhuman shriek, reverberating through your ears!</span>")
+
+	add_attack_logs(owner,null,"Used dissonant shriek (Xenochimera) ")
+
+	for(var/obj/machinery/light/L in range(range, src))
+		L.on = TRUE
+		L.broken()
+
+////////////////
+//Revive spell//
+////////////////
+//Will incapacitate you for 10 minutes, and then you can revive.
+/datum/ability/species/xenochimera/hatch
+	name = "Hatch Stasis"
+	desc = "We attempt to grow an entirely new body from scratch, or death."
+	action_state = "ling_regenerative_stasis"
+	cooldown = 30 MINUTES
+	nutrition_cost_minimum = 1
+	nutrition_cost_proportional = 1
+
+/datum/ability/species/xenochimera/hatch/on_trigger()
+	. = ..()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.stat == DEAD)
+			H.visible_message("<span class = 'warning'> [H] lays eerily still. Something about them seems off, even when dead.</span>","<span class = 'notice'>We begin to gather up whatever is left to begin regrowth.</span>")
+		else
+			H.visible_message("<span class = 'warning'> [H] suddenly collapses, seizing up and going eerily still. </span>", "<span class = 'notice'>We begin the regrowth process to start anew.</span>")
+			H.SetUnconscious(8000) //admin style self-stun
+
+		//These are only messages to give the player and everyone around them an idea of which stage they're at
+		//visible_message doesn't seem to relay selfmessages if you're paralysed, so we use to_chat
+		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> [H]'s skin begins to ripple and move, as if something was crawling underneath.</span>"), 4 MINUTES)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>We begin to recycle the dead tissue.</span>"), 2 MINUTES)
+
+		addtimer(CALLBACK(H, /atom/.proc/visible_message,"<span class = 'warning'> <i>[H]'s body begins to lose its shape, skin sloughing off and melting, losing form and composure.</i></span>","<span class = 'notice'>There is little left. We will soon be ready.</span>"), 8 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat,H,"<span class = 'notice'>There is little left. We will soon be ready.</span>"), 4 MINUTES)
+
+		addtimer(CALLBACK(src, .proc/add_pop,H,), 5 MINUTES)
+
+/datum/ability/species/xenochimera/hatch/proc/add_pop()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.visible_message("<span class = 'warning'> <b>[H] looks ready to burst!</b></span>")
+		to_chat(H,"<span class = 'notice'><b>We are ready.</b></span>")
+		var/datum/ability/species/xenochimera/hatch_pop/pop = new()
+		pop.associate(owner)
+
+
+///////////////////////
+//Actual Revive Spell//
+///////////////////////
+//Not to be used normally. Given by the 'hatch' spell
+/datum/ability/species/xenochimera/hatch_pop
+	name = "Emerge"
+	desc = "We emerge in our new form."
+	action_state = "ling_revive"
+	cooldown = 10 SECONDS	//It gets removed after_cast anyway
+	nutrition_cost_minimum = 1
+	nutrition_cost_proportional = 1
+
+/datum/ability/species/xenochimera/hatch_pop/on_trigger()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+
+	H.revive()
+	LAZYREMOVE(H.mutations, MUTATION_HUSK)
+	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
+
+	//Drop everything
+	H.drop_inventory(TRUE, TRUE)
+	H.visible_message("<span class = 'warning'>[H] emerges from a cloud of viscera!</b>")
+	H.SetUnconscious(0)
+	//Unfreeze some things
+	H.does_not_breathe = FALSE
+	H.update_canmove()
+	H.weakened = 2
+	//Visual effects
+	var/T = get_turf(H)
+	new /obj/effect/gibspawner/human(T, H.dna,H.dna.blood_color,H.dna.blood_color)
+	playsound(T, 'sound/effects/splat.ogg')
+	disassociate(owner)
+	qdel(src)
