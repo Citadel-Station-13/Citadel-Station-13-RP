@@ -179,9 +179,23 @@
 /obj/item/fish/proc/is_stasis_inside(atom/what)
 	return isnull(what) || istype(what, /obj/item/storage/fish_case) || HAS_TRAIT(what, TRAIT_FISH_SAFE_STORAGE)
 
+/**
+ * checks if we should naturally submerge and disappear in a location
+ */
+/obj/item/fish/proc/is_deleted_inside(atom/what)
+	return istype(what, /turf/simulated/floor/water)
+
 /obj/item/fish/proc/check_environment_after_movement()
 	if(QDELETED(src)) //we don't care anymore
 		return
+
+	if(is_deleted_inside(loc))
+		visible_message(
+			status == FISH_ALIVE? SPAN_NOTICE("[src] quickly swims back into [loc]!") : SPAN_WARNING("[src] sadly floats for a moment on [loc], before sinking to the bottom. Poor thing."),
+		)
+		qdel(src)
+		return
+
 	// Apply/remove stasis as needed
 	if(loc && is_stasis_inside(loc))
 		enter_stasis()
