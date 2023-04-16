@@ -239,7 +239,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		engaging = null
 		return
 	engaging = target
-	var/Angle = round(Get_Angle(src,M))
+	var/Angle = round(get_visual_angle(src,M))
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)
 	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)

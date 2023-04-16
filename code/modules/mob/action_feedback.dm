@@ -21,7 +21,7 @@
  */
 /mob/proc/bubble_action_feedback(msg, atom/target)
 	// for now, just wrapper for chat action feedback
-	action_feedback("[target]: [SPAN_NOTICE(msg)]")
+	action_feedback("[icon2html(target, src)] [SPAN_NOTICE(msg)]")
 
 /**
  * gives feedback to us and someone else
