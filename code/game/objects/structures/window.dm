@@ -530,29 +530,30 @@
 
 /obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
 	if(construction_state == WINDOW_STATE_UNSECURED)
-		return list(
+		. = list(
 			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,
 			TOOL_WRENCH
 		)
 	if(!considered_reinforced)
-		return list(
+		. = list(
 			TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME
 		)
 	switch(construction_state)
 		if(WINDOW_STATE_SCREWED_TO_FLOOR)
-			return list(
+			. = list(
 				TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_FRAME,
 				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_IN
 			)
 		if(WINDOW_STATE_CROWBRARED_IN)
-			return list(
+			. = list(
 				TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_PANE,
 				TOOL_CROWBAR = TOOL_HINT_CROWBAR_WINDOW_OUT
 			)
 		if(WINDOW_STATE_SECURED_TO_FRAME)
-			return list(
+			. = list(
 				TOOL_SCREWDRIVER = TOOL_HINT_UNSCREWING_WINDOW_PANE
 			)
+	return merge_double_lazy_assoc_list(., ..())
 
 /obj/structure/window/dynamic_tool_image(function, hint)
 	switch(hint)

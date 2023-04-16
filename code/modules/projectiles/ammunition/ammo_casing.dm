@@ -62,7 +62,12 @@
 	stored.name = "[initial(stored.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/dynamic_tool_functions(obj/item/I, mob/user)
-	return list(TOOL_SCREWDRIVER)
+	. = list(
+		TOOL_SCREWDRIVER = list(
+			"etch"
+		)
+	)
+	return merge_double_lazy_assoc_list(., ..())
 
 /obj/item/ammo_casing/proc/newshot() //For energy weapons, syringe gun, shotgun shells and wands (!).
 	if(stored)
@@ -114,3 +119,10 @@
 	. = ..()
 	if(!loaded())
 		. += "This one is spent."
+
+/obj/item/ammo_casing/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/ammo_magazine))
+		var/obj/item/ammo_magazine/mag = I
+		I.quick_gather(get_turf(src), user)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
