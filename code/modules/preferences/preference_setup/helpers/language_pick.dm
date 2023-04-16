@@ -27,7 +27,6 @@
 	refresh(user)
 	return TRUE
 
-
 GLOBAL_LIST_EMPTY(language_picker_active)
 /datum/tgui_language_picker
 	/// user ref
