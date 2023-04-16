@@ -1306,6 +1306,25 @@
 	set_trait(TRAIT_PLANT_ICON,"tree2")
 	set_trait(TRAIT_PLANT_COLOUR,"#2F7D2D")
 
+/datum/seed/tobacco
+	name = "tobacco"
+	seed_name = "tobacco"
+	display_name = "tobacco"
+	kitchen_tag = "tobacco"
+	chems = list("nicotine" = list(5,10))
+
+/datum/seed/tobacco/New()
+	..()
+	set_trait(TRAIT_HARVEST_REPEAT,2)
+	set_trait(TRAIT_MATURATION,5)
+	set_trait(TRAIT_PRODUCTION,5)
+	set_trait(TRAIT_YIELD,5)
+	set_trait(TRAIT_POTENCY,10)
+	set_trait(TRAIT_PRODUCT_ICON,"nettles")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#3b2008")
+	set_trait(TRAIT_PLANT_COLOUR,"#124b04")
+	set_trait(TRAIT_PLANT_ICON,"bush2")
+
 /datum/seed/kudzu
 	name = "kudzu"
 	seed_name = "kudzu"
