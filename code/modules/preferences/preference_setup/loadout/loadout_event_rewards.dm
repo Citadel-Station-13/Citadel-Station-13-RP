@@ -51,4 +51,4 @@
 	cost = 0
 	name = "Culinary Excellence Pin"
 	path = /obj/item/clothing/accessory/medal/cooking
-	ckeywhitelist = list("spessinquisitor")
+	ckeywhitelist = list("spessinquisitor", "ktoma36", "ghxst_azy")
