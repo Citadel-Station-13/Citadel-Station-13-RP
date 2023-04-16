@@ -24,7 +24,7 @@
 	update_icon()
 
 // todo: this bad lol
-/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
 	for(var/obj/item/I in contents)

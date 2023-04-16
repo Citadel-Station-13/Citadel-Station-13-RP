@@ -138,3 +138,14 @@
 	container_type = /obj/structure/closet/crate/secure/gear
 	container_name = "Tyrmalin Mining crate"
 	access = ACCESS_SUPPLY_MINE
+
+/datum/supply_pack/misc/breathing_nitrogen
+	name = "Emergency Nitrogen Supplies"
+	contains = list(
+			/obj/item/tank/emergency/nitrogen = 2,
+			/obj/item/tank/emergency/nitrogen/double = 1,
+			/obj/item/clothing/mask/gas/opaque = 3
+			)
+	cost = 15
+	container_type = /obj/structure/closet/crate/unathi
+	container_name = "Emergency Nitrogen Supplies"

@@ -87,9 +87,6 @@
 		new /datum/data/mining_equipment("Defense Equipment - Sentry Drone Deployer",/obj/item/grenade/spawnergrenade/ward,			1500),
 		new /datum/data/mining_equipment("Defense Equipment - Plasteel Machete",	/obj/item/clothing/accessory/holster/machete/occupied,				500),
 		new /datum/data/mining_equipment("Defense Equipment - Kinetic Dagger",	/obj/item/kinetic_crusher/dagger,				1200),
-		new /datum/data/mining_equipment("Fishing Net",					/obj/item/material/fishing_net,								500),
-		new /datum/data/mining_equipment("Titanium Fishing Rod",		/obj/item/material/fishing_rod/modern,						1000),
-		new /datum/data/mining_equipment("Durasteel Fishing Rod",		/obj/item/material/fishing_rod/modern/strong,				7500),
 		new /datum/data/mining_equipment("Bar Shelter Capsule",		/obj/item/survivalcapsule/luxurybar,							10000)
 		)
 
