@@ -382,8 +382,15 @@
 //Ashlander Chem Master
 /obj/machinery/chem_master/ashlander
 	name = "advanced alchemical station"
-	desc = "A mildly obscured passage down into the deep warrens of Surt-nar-Cthardamz."
+	desc = "A finely carved bone cabinet designed to hold stone mortars for precise mixing and alchemical work."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "ashchem0"
+	base_icon_state = "ashchem"
 	use_power = USE_POWER_OFF
 	//primi = TRUE
+
+/obj/machinery/chem_master/ashlander/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemPrimi", name)
+		ui.open()
