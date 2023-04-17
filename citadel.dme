@@ -2181,6 +2181,7 @@
 #include "code\modules\client\verbs\ooc.dm"
 #include "code\modules\client\verbs\panic_bunker_player.dm"
 #include "code\modules\client\verbs\ping.dm"
+#include "code\modules\client\verbs\view.dm"
 #include "code\modules\clothing\chameleon.dm"
 #include "code\modules\clothing\clothing.dm"
 #include "code\modules\clothing\clothing_accessories.dm"

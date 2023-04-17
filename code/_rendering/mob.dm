@@ -7,10 +7,13 @@
  * loads screen rendering. call on mob login
  */
 /mob/proc/reload_rendering()
-	if(!client.parallax_holder)
+	if(isnull(client.parallax_holder))
 		client.CreateParallax()
 	else
 		client.parallax_holder.reset(force = TRUE)
+	if(isnull(client.global_planes))
+		client.global_planes = new
+	client.global_planes.apply(client)
 	reload_fullscreen()
 	client.update_clickcatcher()
 	client.using_perspective.reload(client, TRUE)

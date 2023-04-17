@@ -112,6 +112,10 @@
 /atom/movable/screen/plane_master/verticality
 	plane = VERTICALITY_PLANE
 	default_invisible = TRUE
+	special_managed = TRUE
+	client_global = TRUE
+
+#warn client verb
 
 /atom/movable/screen/plane_master/augmented
 	plane = AUGMENTED_PLANE

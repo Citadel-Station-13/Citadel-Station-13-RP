@@ -51,6 +51,9 @@
 	by_type(/atom/movable/screen/plane_master/objs).set_fake_ambient_occlusion(enabled)
 	by_type(/atom/movable/screen/plane_master/mobs).set_fake_ambient_occlusion(enabled)
 
+/**
+ * What the mob perspective is in charge of
+ */
 /datum/plane_holder/mob_perspective
 
 /datum/plane_holder/mob_perspective/generate()
@@ -63,6 +66,24 @@
 		var/atom/movable/screen/plane_master/creating = new path
 		masters[path] = creating
 
+/**
+ * Client global planes
+ */
+/datum/plane_holder/client_global
+
+/datum/plane_holder/client_global/generate()
+	masters = list()
+	for(var/atom/movable/screen/plane_master/path as anything in subtypesof(/atom/movable/screen/plane_master))
+		if(initial(path.abstract_type) == path)
+			continue
+		if(!initial(path.client_global))
+			continue
+		var/atom/movable/screen/plane_master/creating = new path
+		masters[path] = creating
+
+/**
+ * Parallax holder managed planes
+ */
 /datum/plane_holder/parallax
 
 /datum/plane_holder/parallax/generate()
@@ -70,6 +91,9 @@
 	masters[/atom/movable/screen/plane_master/parallax] = new /atom/movable/screen/plane_master/parallax
 	masters[/atom/movable/screen/plane_master/space] = new /atom/movable/screen/plane_master/space
 
+/**
+ * TGUI camera consoles make these
+ */
 /datum/plane_holder/tgui_camera
 
 /datum/plane_holder/tgui_camera/generate()
@@ -82,6 +106,9 @@
 		var/atom/movable/screen/plane_master/creating = new path
 		masters[path] = creating
 
+/**
+ * All planes
+ */
 /datum/plane_holder/everything
 
 /datum/plane_holder/everything/generate()

@@ -51,6 +51,8 @@
 	var/datum/parallax_holder/parallax_holder
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
+	/// Client global planes
+	var/datum/plane_holder/global_planes
 
 	//? Viewport
 	/// what we *think* their current viewport size is in pixels
