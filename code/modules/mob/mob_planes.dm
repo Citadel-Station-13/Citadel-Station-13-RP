@@ -5,38 +5,12 @@
 // todo: refactor all of this so we can use subtypesof like on main like on any SANE CODEBASE
 
 /datum/plane_holder
-	var/mob/my_mob
-	var/list/plane_masters[VIS_COUNT]
+
 
 /datum/plane_holder/New(mob/this_guy)
 	ASSERT(ismob(this_guy))
 	my_mob = this_guy
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
-
-	// 'Utility' planes
-	plane_masters[VIS_FULLBRIGHT] 	= new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	plane_masters[VIS_LIGHTING] 	= new /atom/movable/screen/plane_master/lighting						//Lighting system (but different
-	plane_masters[VIS_EMISSIVE]     = new /atom/movable/screen/plane_master/emissive
-	plane_masters[VIS_GHOSTS] 		= new /atom/movable/screen/plane_master/ghosts							//Ghosts!
-	plane_masters[VIS_AI_EYE]		= new /atom/movable/screen/plane_master{plane = OBSERVER_PLANE}			//AI Eye!
-
-	plane_masters[VIS_STATUS]		= new /atom/movable/screen/plane_master{plane = PLANE_STATUS}			//Status indicators that show over mob heads.
-
-	plane_masters[VIS_MESONS]		= new /atom/movable/screen/plane_master{plane = VERTICALITY_PLANE} 			//Meson-specific things like open ceilings.
-
-	// Real tangible stuff planes
-	plane_masters[VIS_TURFS]	= new /atom/movable/screen/plane_master/main{plane = TURF_PLANE}
-	plane_masters[VIS_OBJS]		= new /atom/movable/screen/plane_master/main{plane = OBJ_PLANE}
-	plane_masters[VIS_MOBS]		= new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
-	plane_masters[VIS_CLOAKED]	= new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
-
-	plane_masters[VIS_AUGMENTED]		= new /atom/movable/screen/plane_master/augmented(null, my_mob)					//Augmented reality
-
-	// this code disgusts me but we're stuck with it until we refactor planes :/
-	// i hate baycode
-	plane_masters[VIS_PARALLAX] = new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
-	plane_masters[VIS_SPACE] = new /atom/movable/screen/plane_master/parallax_white{plane = SPACE_PLANE}
-	plane_masters[VIS_SONAR] = new /atom/movable/screen/plane_master{plane = SONAR_PLANE}
 
 /datum/plane_holder/Destroy()
 	my_mob = null

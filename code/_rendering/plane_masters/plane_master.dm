@@ -44,6 +44,8 @@
 
 //* KEEP THESE SORTED
 
+/atom/movable/screen/plane_master/clickcatcher
+	plane = CLICKCATCHER_PLANE
 
 /atom/movable/screen/plane_master/space
 	plane = SPACE_PLANE
@@ -55,16 +57,44 @@
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
 
+/atom/movable/screen/plane_master/turfs
+	plane = TURF_PLANE
 
-/////////////////
-//Lighting is weird and has matrix shenanigans. Think of this as turning on/off darkness.
-/atom/movable/screen/plane_master/fullbright
-	plane = LIGHTING_PLANE
-	layer = HUD_LAYER_BASE+1 // This MUST be above the lighting plane_master
-	color = null //To break lighting when visible (this is sorta backwards)
-	alpha = 0 //Starts full opaque
-	invisibility = 101
-	invis_toggle = TRUE
+/atom/movable/screen/plane_master/objs
+	plane = OBJ_PLANE
+
+/atom/movable/screen/plane_master/mobs
+	plane = MOB_PLANE
+
+//Cloaked atoms are visible to ghosts (or for other reasons?)
+/atom/movable/screen/plane_master/cloaked
+	plane = CLOAKED_PLANE
+	desired_alpha = 80
+	color = "#0000FF"
+
+// todo: remove
+/atom/movable/screen/plane_master/above
+	plane = ABOVE_PLANE
+
+/atom/movable/screen/plane_master/byond
+	plane = BYOND_PLANE
+
+/atom/movable/screen/plane_master/weather
+	plane = WEATHER_PLANE
+
+/**
+ * Handles emissive overlays and emissive blockers.
+ */
+/atom/movable/screen/plane_master/emissive
+	name = "emissive plane master"
+	plane = EMISSIVE_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	render_target = EMISSIVE_RENDER_TARGET
+	alpha = 255
+
+/atom/movable/screen/plane_master/emissive/Initialize(mapload)
+	. = ..()
+	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
 /atom/movable/screen/plane_master/lighting
 	plane = LIGHTING_PLANE
@@ -85,30 +115,6 @@
 /atom/movable/screen/plane_master/lighting/Initialize(mapload)
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
-	// add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
-
-/**
- * Handles emissive overlays and emissive blockers.
- */
-/atom/movable/screen/plane_master/emissive
-	name = "emissive plane master"
-	plane = EMISSIVE_PLANE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	render_target = EMISSIVE_RENDER_TARGET
-	alpha = 255
-
-/atom/movable/screen/plane_master/emissive/Initialize(mapload)
-	. = ..()
-	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
-
-/////////////////
-//Cloaked atoms are visible to ghosts (or for other reasons?)
-/atom/movable/screen/plane_master/cloaked
-	plane = CLOAKED_PLANE
-	desired_alpha = 80
-	color = "#0000FF"
-
-
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
