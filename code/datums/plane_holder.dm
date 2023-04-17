@@ -45,7 +45,11 @@
 		CRASH("invalid fetch")
 
 /datum/plane_holder/proc/sync_owner(client/C)
-	#warn AO
+	set_fake_ambient_occlusion(C.is_preference_enabled(/datum/client_preference/ambient_occlusion))
+
+/datum/plane_holder/proc/set_fake_ambient_occlusion(enabled)
+	by_type(/atom/movable/screen/plane_master/objs).set_fake_ambient_occlusion(enabled)
+	by_type(/atom/movable/screen/plane_master/mobs).set_fake_ambient_occlusion(enabled)
 
 /datum/plane_holder/mob_perspective
 

@@ -269,17 +269,6 @@ var/list/_client_preferences_by_type
 	enabled_description = "Allow"
 	disabled_description = "Forbid"
 
-/datum/client_preference/status_indicators
-	description = "Status Indicators"
-	key = "SHOW_STATUS"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-
-/datum/client_preference/status_indicators/toggled(mob/preference_mob, enabled)
-	. = ..()
-	if(preference_mob.client)
-		preference_mob?.using_perspective?.planes?.sync_owner(preference_mob.client)
-
 /datum/client_preference/parallax
 	description = "Parallax (fancy space, disable for FPS issues"
 	key = "PARALLAX_ENABLED"

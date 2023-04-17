@@ -3009,7 +3009,6 @@
 #include "code\modules\mob\mob.dm"
 #include "code\modules\mob\mob_defines.dm"
 #include "code\modules\mob\mob_helpers.dm"
-#include "code\modules\mob\mob_planes.dm"
 #include "code\modules\mob\mob_pull.dm"
 #include "code\modules\mob\mob_transformation_simple.dm"
 #include "code\modules\mob\mobility.dm"

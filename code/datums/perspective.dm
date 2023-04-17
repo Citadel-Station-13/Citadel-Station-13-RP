@@ -74,6 +74,8 @@
 	//? planes
 	/// planes
 	var/datum/plane_holder/mob_perspective/planes
+	/// trait-like list for forcing planes on
+	var/list/planes_visible
 
 	//? view size
 	/// default view; if null, world.view
@@ -90,6 +92,10 @@
 	var/cached_view_height
 	/// view cache needs recompute
 	var/view_dirty = TRUE
+
+	//? lighting / nightvision
+	/// sorted list(list(sources) = val) of alpha for lighting plane. lowest first.
+	var/list/hard_darkvision
 
 /datum/perspective/Destroy()
 	KickAll()
@@ -346,7 +352,50 @@
 		for(var/client/C as anything in clients)
 			C.mob.see_invisible = see_invisible
 
-//! view size
+//? lighting - hard darkvision (limit lighting plane alpha)
+
+/datum/perspective/proc/set_hard_darkvision(amount, source)
+
+/datum/perspective/proc/unset_hard_darkvision(amount, source)
+
+#warn impl all
+
+//? plane visibility
+
+/datum/perspective/proc/set_plane_visible(key, source)
+	LAZYINITLIST(planes_visible)
+	var/was = planes_visible[key]
+	if(islist(was))
+		planes_visible[key] |= source
+	else
+		planes_visible[key] = list(source)
+		show_plane(key)
+
+/datum/perspective/proc/unset_plane_visible(key, source)
+	var/was = planes_visible[key]
+	if(islist(was))
+		was -= source
+		if(!length(was))
+			planes_visible -= key
+			hide_plane(key)
+
+/datum/perspective/proc/show_plane(key, force)
+	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
+	if(isnull(plane))
+		return
+	plane.alpha = plane.default_alpha
+
+/datum/perspective/proc/hide_plane(key, force)
+	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
+	if(isnull(plane))
+		return
+	if(!plane.default_invisible && !force)
+		return
+	plane.alpha = 0
+
+
+//? view size
+
 /**
  * Sets our default size.
  *

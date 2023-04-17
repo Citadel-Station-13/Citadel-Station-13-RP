@@ -46,7 +46,7 @@
 	src.forced_eye = forced_eye
 	planes = new
 	planes.map_id = secondary_map
-	resetw()
+	reset()
 
 /datum/parallax_holder/Destroy()
 	if(owner)

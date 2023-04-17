@@ -9,41 +9,16 @@
 	var/client_global = FALSE
 	/// special - managed, like parallax holders
 	var/special_managed = FALSE
+	/// defaults to disabled (aka invisible)
+	var/default_invisible = FALSE
+	/// default alpha
+	var/default_alpha = 255
 
-	var/desired_alpha = 255	//What we go to when we're enabled
-	var/invis_toggle = FALSE
-
-/atom/movable/screen/plane_master/proc/set_desired_alpha(var/new_alpha)
-	if(new_alpha != alpha && new_alpha > 0 && new_alpha <= 255)
-		desired_alpha = new_alpha
-		if(alpha) //If we're already visible, update it now.
-			alpha = new_alpha
-
-/atom/movable/screen/plane_master/proc/set_visibility(var/want = FALSE)
-	//Invisibility-managed
-	if(invis_toggle)
-		if(want && invisibility)
-			invisibility = 0 //Does not need a mouse_opacity toggle because these are for effects
-		else if(!want && !invisibility)
-			invisibility = 101
-	//Alpha-managed
-	else
-		if(want && !alpha)
-			alpha = desired_alpha
-			mouse_opacity = 1 //Not bool, don't replace with true/false
-		else if(!want && alpha)
-			alpha = 0
-			mouse_opacity = 0
-
-/atom/movable/screen/plane_master/proc/set_alpha(var/new_alpha = 255)
-	if(new_alpha != alpha)
-		new_alpha = sanitize_integer(new_alpha, 0, 255, 255)
-		alpha = new_alpha
-
-/atom/movable/screen/plane_master/proc/set_ambient_occlusion(var/enabled = FALSE)
-	filters -= AMBIENT_OCCLUSION
+/atom/movable/screen/plane_master/proc/set_fake_ambient_occlusion(enabled)
 	if(enabled)
 		filters += AMBIENT_OCCLUSION
+	else
+		filters -= AMBIENT_OCCLUSION
 
 //* KEEP THESE SORTED
 
@@ -128,16 +103,19 @@
 
 /atom/movable/screen/plane_master/sonar
 	plane = SONAR_PLANE
+	default_invisible = TRUE
 
 /atom/movable/screen/plane_master/observer
 	plane = OBSERVER_PLANE
-	desired_alpha = 127 //When enabled, they're like half-transparent
+	default_invisible = TRUE
 
 /atom/movable/screen/plane_master/verticality
 	plane = VERTICALITY_PLANE
+	default_invisible = TRUE
 
 /atom/movable/screen/plane_master/augmented
 	plane = AUGMENTED_PLANE
+	default_invisible = TRUE
 	var/state = FALSE //Saves cost with the lists
 	var/mob/my_mob
 
