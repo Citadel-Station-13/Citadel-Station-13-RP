@@ -30,6 +30,10 @@
 	if(resting == value)
 		return
 	resting = value
+	if(resting)
+		add_movespeed_modifier(/datum/movespeed_modifier/mob_crawling)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/mob_crawling)
 	set_density(!resting)
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_STANDING)) | (value? MOBILITY_IS_STANDING : NONE)
 	SEND_SIGNAL(src, COMSIG_MOB_ON_SET_RESTING, value)
