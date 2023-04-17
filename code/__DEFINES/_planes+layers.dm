@@ -193,10 +193,6 @@
  */
 #define BYOND_PLANE 0 //! Black tiles outisde of your vision render here.
 
-// I doubt these should be HERE, but they were here so they stay here until I can be bothered to move them. @Zandario
-#define HUD_LAYER_BASE    20 /// Above lighting, but below obfuscation. For in-game HUD effects (whereas HUD_LAYER_BASE is for abstract/OOC things like inventory slots)
-#define HUD_LAYER_BASE 22 /// Mob HUD/effects layer.
-
 /**
  *! -- Planet Lighting Plane
  *? Lighting on planets.
@@ -207,6 +203,7 @@
  *! -- Emissives Plane
  */
 #define EMISSIVE_PLANE 8
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 
 /**
  *! -- Lighting Plane

@@ -15,6 +15,8 @@
 	var/client/owner
 	/// The parallax object we're currently rendering
 	var/datum/parallax/parallax
+	/// our plane holder
+	var/datum/plane_holder/parallax/planes
 	/// Eye we were last anchored to - used to detect eye changes
 	var/atom/cached_eye
 	/// force this eye as the "real" eye - useful for secondary maps
@@ -45,6 +47,7 @@
 	src.secondary_map = secondary_map
 	src.forced_eye = forced_eye
 	src.planemaster_override = planemaster_override
+	planes = new
 	Reset()
 
 /datum/parallax_holder/Destroy()
@@ -166,38 +169,36 @@
 	if(QDELETED(C))
 		return
 	. = list()
-	if(!C.is_preference_enabled(/datum/client_preference/parallax))
-		return
-	for(var/atom/movable/screen/parallax_layer/L in layers)
-		// if(L.parallax_intensity > owner.prefs.parallax)
-		// 	continue
-		if(!L.ShouldSee(C, last))
-			continue
-		L.SetView(C.view, TRUE)
-		. |= L
-	if(vis_holder)
-		. |= vis_holder
+	if(C.is_preference_enabled(/datum/client_preference/parallax))
+		for(var/atom/movable/screen/parallax_layer/L in layers)
+			// if(L.parallax_intensity > owner.prefs.parallax)
+			// 	continue
+			if(!L.ShouldSee(C, last))
+				continue
+			L.SetView(C.view, TRUE)
+			. |= L
+		if(vis_holder)
+			. |= vis_holder
+		var/atom/movable/screen/plane_master/space/space_plane = planes.by_type(/atom/movable/screen/plane_master/space)
+		space_plane.color = list(
+			0, 0, 0, 0,
+			0, 0, 0, 0,
+			0, 0, 0, 0,
+			1, 1, 1, 1,
+			0, 0, 0, 0,
+		)
+	else
+		var/atom/movable/screen/plane_master/space/space_plane = planes.by_type(/atom/movable/screen/plane_master/space)
+		space_plane.color = initial(space_plane.color)
+	. |= planes.screens()
 	C.screen |= .
-	if(!secondary_map)
-		var/atom/movable/screen/plane_master/parallax_white/PM = locate() in C.screen
-		if(PM)
-			PM.color =  list(
-				0, 0, 0, 0,
-				0, 0, 0, 0,
-				0, 0, 0, 0,
-				1, 1, 1, 1,
-				0, 0, 0, 0
-			)
 
 /datum/parallax_holder/proc/Remove(client/C = owner)
 	if(QDELETED(C))
 		return
 	C.screen -= layers
 	C.screen -= vis_holder
-	if(!secondary_map)
-		var/atom/movable/screen/plane_master/parallax_white/PM = locate() in C.screen
-		if(PM)
-			PM.color =  initial(PM.color)
+	C.screen -= planes.screens()
 
 /datum/parallax_holder/proc/SetParallaxType(path)
 	if(!ispath(path, /datum/parallax))

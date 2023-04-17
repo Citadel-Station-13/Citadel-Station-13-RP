@@ -73,7 +73,7 @@
 
 	//? planes
 	/// planes
-	var/datum/plane_holder/planes
+	var/datum/plane_holder/mob_perspective/planes
 
 	//? view size
 	/// default view; if null, world.view
@@ -198,7 +198,14 @@
 	C.images |= images
 	update(C)
 
-/datum/perspective/proc/reload(client/C)
+/**
+ * fully reloads
+ *
+ * set owner to TRUE to apply prefs like AO.
+ */
+/datum/perspective/proc/reload(client/C, owner)
+	if(owner)
+		planes.sync_owner(C)
 	apply(C)
 
 /datum/perspective/proc/remove(client/C)

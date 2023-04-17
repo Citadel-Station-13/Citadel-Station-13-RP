@@ -13,7 +13,7 @@
 		client.parallax_holder.Reset(force = TRUE)
 	reload_fullscreen()
 	client.update_clickcatcher()
-	client.
+	client.using_perspective.reload(client, TRUE)
 	INVOKE_ASYNC(client, /client/proc/init_viewport_blocking)
 
 /**

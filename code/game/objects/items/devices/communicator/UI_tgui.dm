@@ -5,8 +5,9 @@
 	// Stuff needed to render the map
 	var/map_name
 	var/atom/movable/screen/map_view/cam_screen
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
+	/// plane holder
+	var/datum/plane_holder/tgui_camera/planes
 	/// parallax holder for camera
 	var/datum/parallax_holder/parallax
 

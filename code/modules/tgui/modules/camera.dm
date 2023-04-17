@@ -13,12 +13,14 @@
 	var/map_name
 	var/const/default_map_size = 15
 	var/atom/movable/screen/map_view/cam_screen
-	/// All the plane masters that need to be applied.
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/atom/movable/screen/background/cam_foreground
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
+	/// plane holder
+	var/datum/plane_holder/tgui_camera/planes
+	/// parallax holder for camera
+	var/datum/parallax_holder/parallax
 
 /datum/tgui_module_old/camera/New(host, list/network_computer)
 	. = ..()

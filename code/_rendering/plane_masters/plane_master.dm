@@ -4,6 +4,12 @@
 	appearance_flags = PLANE_MASTER
 	mouse_opacity = 0	//Normally unclickable
 	alpha = 0	//Hidden from view
+
+	/// only on clients
+	var/client_global = FALSE
+	/// special - managed, like parallax holders
+	var/special_managed = FALSE
+
 	var/desired_alpha = 255	//What we go to when we're enabled
 	var/invis_toggle = FALSE
 
@@ -48,11 +54,15 @@
 	plane = SPACE_PLANE
 	alpha = 255
 	mouse_opacity = 1
+	client_global = TRUE
+	special_managed = TRUE
 
 /atom/movable/screen/plane_master/parallax
 	plane = PARALLAX_PLANE
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
+	client_global = TRUE
+	special_managed = TRUE
 
 /atom/movable/screen/plane_master/turfs
 	plane = TURF_PLANE
