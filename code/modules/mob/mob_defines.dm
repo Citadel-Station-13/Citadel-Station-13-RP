@@ -130,12 +130,6 @@
 	var/atom/movable/screen/wizard/energy/wiz_energy_display = null
 	var/atom/movable/screen/wizard/instability/wiz_instability_display = null
 
-	var/datum/plane_holder/plane_holder = null
-	/// List of vision planes that should be graphically visible (list of their VIS_ indexes).
-	var/list/vis_enabled = null
-	/// List of atom planes that are logically visible/interactable (list of actual plane numbers).
-	var/list/planes_visible = null
-
 	/// Spells hud icons - this interacts with add_spell and remove_spell.
 	var/list/atom/movable/screen/movable/spell_master/spell_masters = null
 	/// Ability hud icons.

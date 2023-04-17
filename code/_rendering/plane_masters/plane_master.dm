@@ -39,9 +39,6 @@
 	if(enabled)
 		filters += AMBIENT_OCCLUSION
 
-/atom/movable/screen/plane_master/proc/alter_plane_values()
-	return //Stub
-
 //* KEEP THESE SORTED
 
 /atom/movable/screen/plane_master/clickcatcher

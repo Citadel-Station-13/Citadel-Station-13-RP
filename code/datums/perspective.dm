@@ -71,7 +71,11 @@
 	/// see_invisible
 	var/see_invisible = SEE_INVISIBLE_LIVING
 
-	//! view size
+	//? planes
+	/// planes
+	var/datum/plane_holder/planes
+
+	//? view size
 	/// default view; if null, world.view
 	var/default_view_size
 	/// view size increase x

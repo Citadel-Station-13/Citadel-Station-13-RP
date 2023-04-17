@@ -49,8 +49,6 @@
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
-
-	//? Perspectives
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
 
