@@ -25615,6 +25615,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
+"fLu" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/latejoin/station,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "fOF" = (
 /obj/structure/table/wooden_reinforced,
 /obj/effect/floor_decal/spline/plain{
@@ -42173,7 +42183,7 @@ aUu
 aUu
 aMw
 weY
-aRJ
+fLu
 anG
 aoX
 aly
@@ -42949,7 +42959,7 @@ aUu
 aUu
 aMw
 ggM
-aRJ
+fLu
 anG
 aoX
 aPw
