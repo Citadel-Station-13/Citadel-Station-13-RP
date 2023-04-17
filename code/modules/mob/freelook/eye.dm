@@ -17,7 +17,7 @@
 
 	see_in_dark = 7
 	status_flags = GODMODE
-	plane = PLANE_AI_EYE
+	plane = OBSERVER_PLANE
 
 	var/mob/owner = null
 	var/list/visibleChunks = list()

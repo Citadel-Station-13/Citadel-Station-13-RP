@@ -83,7 +83,6 @@
  */
 #define SPACE_PLANE -95 /// Reserved for use in space/parallax.
 
-
 /**
  *! -- Parallax Plane
  *? For the parallax background.
@@ -93,19 +92,6 @@
 #define PARALLAX_VIS_LAYER_BELOW -100 // Everything layering below.
 #define PARALLAX_LAYER_CENTER       0
 #define PARALLAX_VIS_LAYER_ABOVE  100 // Ditto
-
-
-/**
- *! -- LOOKING GLAS PLANE
- *? For the Looking Glass holodecks.
- */
-#define PLANE_LOOKINGGLASS     -77
-#define PLANE_LOOKINGGLASS_IMG -76
-
-
-// Openspace uses planes -80 through -70.
-#define OVER_OPENSPACE_PLANE -50
-
 
 /**
  *! -- Turfs Plane
@@ -158,8 +144,7 @@
 
 //! Obj/Mob layer boundary
 
-#define MIMICED_LIGHTING_LAYER      (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
-
+#define MIMICED_LIGHTING_LAYER_MAIN      (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
 
 /**
  *! -- Obj Plane
@@ -182,7 +167,6 @@
 #define ABOVE_WINDOW_LAYER (OBJ_LAYER+0.4) /// Above full tile windows so wall items are clickable.
 #define MID_LANDMARK_LAYER (OBJ_LAYER+0.5)
 
-
 /**
  *! -- Mob Plane
 */
@@ -197,140 +181,70 @@
  */
 #define CLOAKED_PLANE -15
 
-
 /**
  *! -- Above Plane
  *? In the sense that it's the highest in 'the world' and not a UI element.
  */
 #define ABOVE_PLANE -10
 
-
 /**
  *! -- World Plane
  *? BYOND's default value for plane, the "base plane"
  */
-#define PLANE_WORLD 0 //! Black tiles outisde of your vision render here.
+#define BYOND_PLANE 0 //! Black tiles outisde of your vision render here.
 
 // I doubt these should be HERE, but they were here so they stay here until I can be bothered to move them. @Zandario
-#define HUD_LAYER    20 /// Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots)
-#define SCREEN_LAYER 22 /// Mob HUD/effects layer.
-
-
-/**
- *! -- Status Plane
- *? Status Indicators that show over mobs' heads when certain things like stuns affect them.
- */
-#define PLANE_STATUS 2
-
-
-/**
- *! -- Admin1 Plane
- *? Purely for shenanigans (below lighting)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN1 3
-
+#define HUD_LAYER_BASE    20 /// Above lighting, but below obfuscation. For in-game HUD effects (whereas HUD_LAYER_BASE is for abstract/OOC things like inventory slots)
+#define HUD_LAYER_BASE 22 /// Mob HUD/effects layer.
 
 /**
  *! -- Planet Lighting Plane
  *? Lighting on planets.
  */
-#define PLANE_PLANETLIGHTING 4
-
-
-/**
- *! -- Emissive Blocker Plane
- */
-#define EMISSIVE_BLOCKER_PLANE 7
-
-#define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
-
-#define EMISSIVE_BLOCKER_LAYER 12
-
+#define WEATHER_PLANE 4
 
 /**
  *! -- Emissives Plane
  */
 #define EMISSIVE_PLANE 8
 
-#define EMISSIVE_LAYER 13
-
-
-/**
- *! -- Unblockable Emissives Plane
- */
-#define EMISSIVE_UNBLOCKABLE_PLANE 9
-
-#define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
-#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
-
-#define EMISSIVE_UNBLOCKABLE_LAYER 14
-#define EMISSIVE_LAYER_UNBLOCKABLE 14
-
-
 /**
  *! -- Lighting Plane
  *? Where the lighting (and darkness) lives (ignoring all other higher planes)
  */
 #define LIGHTING_PLANE 10
-
-#define LIGHTBULB_LAYER      0 // Unused.
-#define LIGHTING_LAYER       1
-#define ABOVE_LIGHTING_LAYER 2
-
+#define LIGHTING_LAYER_MAIN 1
 
 /**
  *! -- Lighting Plane
- *? For glowy eyes etc. that shouldn't be affected by darkness.
+ *? For effects etc. that shouldn't be affected by darkness.
  */
 #define ABOVE_LIGHTING_PLANE 15
-
-#define EYE_GLOW_LAYER         1
-#define BEAM_PROJECTILE_LAYER  2
-#define SUPERMATTER_WALL_LAYER 3
-
+#define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
  *! -- Sonar Plane
  */
 #define SONAR_PLANE 16
 
-
 /**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
  */
-#define PLANE_GHOSTS 20
-
-
-/**
- *! -- AI Eye Plane
- *? The AI eye lives here.
- */
-#define PLANE_AI_EYE 29
-
+#define OBSERVER_PLANE 20
 
 /**
- *! -- Meson Plane
- *? Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
+ *! -- Verticality Plane
+ *? Stuff that used to be seen only with mesons, like open ceilings.
  */
-#define PLANE_MESONS 30
-
-
-/**
- *! -- Admin2 Plane
- *? Purely for shenanigans (above lighting)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN2 33
-
+#define VERTICALITY_PLANE 30
 
 /**
  *! -- Augmented Plane
  *? Augmented-reality stuff.
  */
-#define PLANE_AUGMENTED 40
+#define AUGMENTED_PLANE 40
 
 /**
  *! -- Fullscreen Plane
@@ -338,50 +252,38 @@
  */
 #define FULLSCREEN_PLANE 90
 
-#define OBFUSCATION_LAYER 19.9
-#define FLASH_LAYER       20
-#define FULLSCREEN_LAYER  20.1
-#define UI_DAMAGE_LAYER   20.2
-#define BLIND_LAYER       20.3
-#define CRIT_LAYER        20.4
-#define CURSE_LAYER       20.5
-#define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
-
+#define FULLSCREEN_LAYER_OBFUSCATION 19.9
+#define FULLSCREEN_LAYER_MAIN 20.1
+#define FULLSCREEN_LAYER_DAMAGE 20.2
+#define FULLSCREEN_LAYER_BLIND 20.3
+#define FULLSCREEN_LAYER_CRIT 20.4
+#define FULLSCREEN_LAYER_CURSE 20.5
 
 /**
  *! -- Player HUD Plane
  *? Client UI HUD stuff.
  *? The character's UI is on this plane.
+ *
+ * todo: some layers are unused?
  */
-#define PLANE_PLAYER_HUD 95
+#define HUD_PLANE 95
 
-#define LAYER_HUD_UNDER 1 /// Under the HUD items.
-#define LAYER_HUD_BASE  2 /// The HUD items themselves.
-#define LAYER_HUD_ITEM  3 /// Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS).
-#define LAYER_HUD_ABOVE 4 /// Things that reside above items (highlights).
-
+#define HUD_LAYER_UNDER 1 /// Under the HUD items.
+#define HUD_LAYER_BASE  2 /// The HUD items themselves.
+#define HUD_LAYER_ITEM  3 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
+#define HUD_LAYER_ABOVE 4 /// Things that reside above items (highlights).
 
 /**
  *! -- Player HUD Items Plane
  *? Separate layer with which to apply colorblindness.
  */
-#define PLANE_PLAYER_HUD_ITEMS 96
-
+#define INVENTORY_PLANE 96
 
 /**
  *! -- Above HUD Plane
  *? Things above the player hud.
  */
-#define PLANE_PLAYER_HUD_ABOVE 97
-
-
-/**
- *! -- Admin3 Plane
- *? Purely for shenanigans (above HUD)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN3 99
-
+#define ABOVE_HUD_PLANE 97
 
 /// Highest plane. This should stay at 99. No, you don't need more than that.
 #define HIGHEST_PLANE 99
@@ -413,4 +315,4 @@
 #define MANGLE_PLANE_AND_LAYER(P, L) ((P - LOWEST_PLANE + 1) * (PLANE_MANGLING_FACTOR) + L * LAYER_MANGLING_FACTOR)
 // todo: optimize
 /// Check if a mob can "logically" see an atom plane
-#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
+#define MOB_CAN_SEE_PLANE(M, P) (P <= BYOND_PLANE || (P in M.planes_visible) || P >= HUD_PLANE)

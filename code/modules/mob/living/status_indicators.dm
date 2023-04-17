@@ -48,7 +48,7 @@
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
 		I.plane = PLANE_STATUS
-		I.layer = HUD_LAYER
+		I.layer = HUD_LAYER_UNDER
 		I.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		I.pixel_y = y_offset
 		I.pixel_x = current_x_position

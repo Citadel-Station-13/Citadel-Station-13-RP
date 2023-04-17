@@ -10,7 +10,7 @@
 	icon = 'icons/mob/ghost.dmi'
 	icon_state = "ghost"
 	layer = BELOW_MOB_LAYER
-	plane = PLANE_GHOSTS
+	plane = OBSERVER_PLANE
 	alpha = 127
 	stat = DEAD
 	canmove = FALSE
@@ -100,7 +100,7 @@
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
-	plane = PLANE_GHOSTS //Why doesn't the var above work...???
+	plane = OBSERVER_PLANE //Why doesn't the var above work...???
 	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
 	var/turf/T
@@ -620,7 +620,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	add_verb(src, /mob/observer/dead/proc/toggle_visibility)
 	add_verb(src, /mob/observer/dead/proc/ghost_whisper)
 	to_chat(src,"<font color='purple'>As you are now in the realm of the living, you can whisper to the living with the <b>Spectral Whisper</b> verb, inside the IC tab.</font>")
-	if(plane != PLANE_WORLD)
+	if(plane != BYOND_PLANE)
 		user.visible_message( \
 			"<span class='warning'>\The [user] drags ghost, [src], to our plane of reality!</span>", \
 			"<span class='warning'>You drag [src] to our plane of reality!</span>" \
@@ -653,18 +653,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Allows you to turn (in)visible (almost) at will."
 
 	var/toggled_invisible
-	if(!forced && plane == PLANE_GHOSTS && world.time < toggled_invisible + 600)
+	if(!forced && plane == OBSERVER_PLANE && world.time < toggled_invisible + 600)
 		to_chat(src, "You must gather strength before you can turn visible again...")
 		return
 
-	if(plane == PLANE_WORLD)
+	if(plane == BYOND_PLANE)
 		toggled_invisible = world.time
 		visible_message("<span class='emote'>It fades from sight...</span>", "<span class='info'>You are now invisible.</span>")
 	else
 		to_chat(src, "<span class='info'>You are now visible!</span>")
 
-	plane = (plane == PLANE_GHOSTS) ? PLANE_WORLD : PLANE_GHOSTS
-	invisibility = (plane == PLANE_WORLD) ? 0 : INVISIBILITY_OBSERVER
+	plane = (plane == OBSERVER_PLANE) ? BYOND_PLANE : OBSERVER_PLANE
+	invisibility = (plane == BYOND_PLANE) ? 0 : INVISIBILITY_OBSERVER
 
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")

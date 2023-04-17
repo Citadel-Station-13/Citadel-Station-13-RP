@@ -1282,7 +1282,7 @@
 				var/mutable_appearance/healths_ma = new(healths)
 				healths_ma.icon_state = "blank"
 				healths_ma.cut_overlays()
-				healths_ma.plane = PLANE_PLAYER_HUD
+				healths_ma.plane = HUD_PLANE
 
 				var/no_damage = 1
 				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.

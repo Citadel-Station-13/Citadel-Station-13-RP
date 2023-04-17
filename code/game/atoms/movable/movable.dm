@@ -406,7 +406,7 @@
 	G.maptext_width = 256
 	G.maptext_x = -128 + (world.icon_size * 0.5)
 	G.maptext_y = 32
-	G.plane = PLANE_GHOSTS
+	G.plane = OBSERVER_PLANE
 	G.loc = null		// lol
 	vis_contents += G
 	return G

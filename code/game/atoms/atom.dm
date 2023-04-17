@@ -1044,8 +1044,8 @@
 	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
+	plane = INVENTORY_PLANE
+	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()

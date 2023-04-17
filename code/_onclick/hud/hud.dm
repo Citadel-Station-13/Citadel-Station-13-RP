@@ -33,7 +33,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	screen.screen_loc = "CENTER-7,CENTER-7"
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
-	screen.layer = SCREEN_LAYER
+	screen.layer = HUD_LAYER_BASE
 	screen.plane = FULLSCREEN_PLANE
 	screen.mouse_opacity = 0
 

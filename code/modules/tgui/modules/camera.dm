@@ -48,10 +48,10 @@
 
 	var/mutable_appearance/scanlines = mutable_appearance('icons/effects/static.dmi', "scanlines")
 	scanlines.alpha = 50
-	scanlines.layer = FULLSCREEN_LAYER
+	scanlines.layer = FULLSCREEN_LAYER_MAIN
 
 	var/mutable_appearance/noise = mutable_appearance('icons/effects/static.dmi', "1 light")
-	noise.layer = FULLSCREEN_LAYER
+	noise.layer = FULLSCREEN_LAYER_MAIN
 
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name

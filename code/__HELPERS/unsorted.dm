@@ -1473,7 +1473,7 @@ var/list/WALLITEMS = list(
 	/// Ghosts!
 	. += new /atom/movable/screen/plane_master/ghosts
 	/// AI Eye!
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}
+	. += new /atom/movable/screen/plane_master{plane = OBSERVER_PLANE}
 
 	/// For admin use
 	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}
@@ -1483,7 +1483,7 @@ var/list/WALLITEMS = list(
 	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}
 
 	/// Meson-specific things like open ceilings.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS}
+	. += new /atom/movable/screen/plane_master{plane = VERTICALITY_PLANE}
 	/// Things that only show up while in build mode.
 	// . += new /atom/movable/screen/plane_master{plane = PLANE_BUILDMODE}
 
@@ -1496,5 +1496,5 @@ var/list/WALLITEMS = list(
 
 	//! Random other plane masters from Virgo
 	// Augmented reality.
-	. += new /atom/movable/screen/plane_master{plane = PLANE_AUGMENTED}
+	. += new /atom/movable/screen/plane_master{plane = AUGMENTED_PLANE}
 	. += new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
