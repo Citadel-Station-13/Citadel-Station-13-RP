@@ -464,6 +464,20 @@
 	name = "beach"
 	},
 /area/class_m/outside)
+"cz" = (
+/obj/machinery/door/airlock{
+	id_tag = "room11";
+	name = "Room 11"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
+"cB" = (
+/obj/machinery/door/airlock{
+	id_tag = "room7";
+	name = "Room 7"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "cE" = (
 /obj/structure/flora/rock,
 /obj/effect/mist,
@@ -806,6 +820,20 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/class_m/inside/garage)
+"eR" = (
+/obj/machinery/button/remote/airlock{
+	id = "room9";
+	name = "Room 9 Lock";
+	pixel_x = 25;
+	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "eS" = (
 /obj/effect/floor_decal/corner/blue/bordercorner{
 	dir = 1
@@ -2395,6 +2423,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
+"nf" = (
+/obj/machinery/door/airlock{
+	id_tag = "room13";
+	name = "Room 13"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "ng" = (
 /obj/structure/railing/grey,
 /obj/structure/railing/grey{
@@ -2999,9 +3034,6 @@
 /area/class_m/inside/hotspringcaves)
 "qG" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_rod/modern/strong,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_rod/modern/strong,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside/cabin)
 "qH" = (
@@ -3360,6 +3392,20 @@
 	name = "beach"
 	},
 /area/class_m/outside)
+"sl" = (
+/obj/machinery/button/remote/airlock{
+	id = "room14";
+	name = "Room 14 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "sm" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -4047,6 +4093,20 @@
 	},
 /turf/simulated/floor/outdoors/grass,
 /area/class_m/outside)
+"wA" = (
+/obj/machinery/button/remote/airlock{
+	id = "room11";
+	name = "Room 11 Lock";
+	pixel_x = -25;
+	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "wB" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -5727,6 +5787,20 @@
 "Gb" = (
 /turf/simulated/floor/carpet/turcarpet,
 /area/class_m/inside/cabin)
+"Gf" = (
+/obj/machinery/button/remote/airlock{
+	id = "room7";
+	name = "Room 7 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "Gj" = (
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/island2)
@@ -5984,6 +6058,20 @@
 /obj/structure/sink/puddle,
 /turf/simulated/floor/outdoors/dirt/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"HG" = (
+/obj/machinery/button/remote/airlock{
+	id = "room12";
+	name = "Room 12 Lock";
+	pixel_x = -25;
+	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "HI" = (
 /obj/machinery/icecream_vat,
 /obj/machinery/light/spot{
@@ -6124,6 +6212,20 @@
 	},
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
+"ID" = (
+/obj/machinery/button/remote/airlock{
+	id = "room15";
+	name = "Room 15 Lock";
+	pixel_x = 25;
+	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "IF" = (
 /obj/structure/fence{
 	dir = 4
@@ -6353,6 +6455,20 @@
 /obj/effect/mist,
 /turf/simulated/floor/concrete/indoors,
 /area/class_m/inside/hotspringcaves)
+"JX" = (
+/obj/machinery/door/airlock{
+	id_tag = "room10";
+	name = "Room 10"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
+"JY" = (
+/obj/machinery/door/airlock{
+	id_tag = "room12";
+	name = "Room 12"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "Ka" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -6479,6 +6595,13 @@
 	dir = 8
 	},
 /area/class_m/outside)
+"KF" = (
+/obj/machinery/door/airlock{
+	id_tag = "room8";
+	name = "Room 8"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "KG" = (
 /obj/machinery/door/airlock{
 	id_tag = "gaiarestroom2";
@@ -6526,6 +6649,13 @@
 "KS" = (
 /turf/simulated/floor/wood/classm/outdoors,
 /area/class_m/outside/beachmiddle)
+"KU" = (
+/obj/machinery/door/airlock{
+	id_tag = "room15";
+	name = "Room 15"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "KV" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/simulated/floor/water/deep/indoors,
@@ -7539,6 +7669,20 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
+"Pw" = (
+/obj/machinery/button/remote/airlock{
+	id = "room13";
+	name = "Room 13 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "Py" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -8203,6 +8347,20 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/class_m/inside/main)
+"Ty" = (
+/obj/machinery/button/remote/airlock{
+	id = "room10";
+	name = "Room 10 Lock";
+	pixel_x = -25;
+	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "Tz" = (
 /turf/simulated/floor/water/beach/corner{
 	dir = 1
@@ -8279,6 +8437,13 @@
 /obj/structure/table/bench/marble,
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/outside)
+"TX" = (
+/obj/machinery/door/airlock{
+	id_tag = "room9";
+	name = "Room 9"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "TZ" = (
 /obj/structure/railing/grey{
 	dir = 4
@@ -8520,19 +8685,9 @@
 /area/class_m/outside)
 "VT" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside/beachmiddle)
 "VU" = (
@@ -8561,6 +8716,13 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/concrete/rng/classm/outdoors,
 /area/class_m/outside)
+"VZ" = (
+/obj/machinery/door/airlock{
+	id_tag = "room14";
+	name = "Room 14"
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
 "Wb" = (
 /turf/simulated/floor/concrete/tile/classm/outdoors,
 /area/class_m/outside)
@@ -8593,6 +8755,20 @@
 	name = "Room 4 Lock";
 	pixel_x = -25;
 	pixel_y = -2;
+	specialfunctions = 4
+	},
+/obj/machinery/light/flamp/noshade{
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood/classm,
+/area/class_m/inside/dorms)
+"Wj" = (
+/obj/machinery/button/remote/airlock{
+	id = "room8";
+	name = "Room 8 Lock";
+	pixel_x = 26;
+	pixel_y = -4;
 	specialfunctions = 4
 	},
 /obj/machinery/light/flamp/noshade{
@@ -10417,19 +10593,19 @@ tF
 vr
 vr
 vr
-DC
+nf
 EN
 EN
 vr
 vr
 vr
-KC
+VZ
 EN
 EN
 vr
 vr
 vr
-OC
+KU
 EN
 EN
 vr
@@ -11386,19 +11562,19 @@ HA
 tF
 vr
 zf
-AS
+Pw
 DO
 EP
 Hj
 vr
 Ij
-Jc
+sl
 DO
 EP
 LH
 vr
 LY
-MR
+ID
 DO
 EP
 kO
@@ -11581,19 +11757,19 @@ gW
 vr
 vr
 vr
-DC
+nf
 vr
 vr
 vr
 vr
 vr
-KC
+VZ
 vr
 vr
 vr
 vr
 vr
-OC
+KU
 vr
 vr
 vr
@@ -12357,19 +12533,19 @@ CV
 vr
 vr
 vr
-kW
+JX
 vr
 vr
 vr
 vr
 vr
-za
+cz
 vr
 vr
 vr
 vr
 vr
-We
+JY
 vr
 vr
 vr
@@ -12550,19 +12726,19 @@ oT
 Xb
 vr
 qv
-Wi
+Ty
 DO
 Ai
 lO
 vr
 qv
-yD
+wA
 DO
 Ai
 HC
 vr
 qv
-BH
+HG
 DO
 Ai
 kY
@@ -13521,19 +13697,19 @@ tF
 vr
 vr
 vr
-kW
+JX
 aQ
 aQ
 vr
 vr
 vr
-za
+cz
 aQ
 aQ
 vr
 vr
 vr
-We
+JY
 aQ
 aQ
 vr
@@ -15267,19 +15443,19 @@ tF
 vr
 vr
 vr
-DC
+cB
 EN
 EN
 vr
 vr
 vr
-KC
+KF
 EN
 EN
 vr
 vr
 vr
-OC
+TX
 EN
 EN
 vr
@@ -16236,19 +16412,19 @@ oT
 GA
 vr
 zf
-AS
+Gf
 DO
 EP
 Hj
 vr
 Ij
-Jc
+Wj
 DO
 EP
 LH
 vr
 LY
-MR
+eR
 DO
 EP
 kO
@@ -16431,19 +16607,19 @@ UA
 vr
 vr
 vr
-DC
+cB
 vr
 vr
 vr
 vr
 vr
-KC
+KF
 vr
 vr
 vr
 vr
 vr
-OC
+TX
 vr
 vr
 vr

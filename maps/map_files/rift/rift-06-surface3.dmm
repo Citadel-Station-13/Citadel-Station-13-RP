@@ -13390,6 +13390,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aBk" = (
@@ -14124,6 +14125,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aCQ" = (
@@ -25797,16 +25799,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"hZy" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "idS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -26201,16 +26193,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"mic" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "mrO" = (
 /obj/machinery/holoposter{
 	pixel_x = 32
@@ -27047,6 +27029,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
+"wXZ" = (
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "xbo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -40234,7 +40220,7 @@ asG
 aWo
 alz
 asq
-ave
+wXZ
 axJ
 aRS
 aEu
@@ -42172,7 +42158,7 @@ aUu
 aUu
 aUu
 aMw
-hZy
+weY
 aRJ
 anG
 aoX
@@ -42948,7 +42934,7 @@ aUu
 aUu
 aUu
 aMw
-mic
+kXF
 aRJ
 anG
 aoX
@@ -44890,7 +44876,7 @@ aqB
 aGN
 asp
 aDI
-ave
+wXZ
 axJ
 aRS
 aEu
