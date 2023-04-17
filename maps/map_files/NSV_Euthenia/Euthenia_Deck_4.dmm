@@ -58,10 +58,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "aQ" = (
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -32
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -1343,12 +1339,6 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "vY" = (
-/obj/machinery/power/apc{
-	cell_type = /obj/item/cell/super;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -1456,10 +1446,6 @@
 "yc" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
@@ -1873,14 +1859,6 @@
 /area/maintenance/deck_four/aft/port)
 "Eq" = (
 /obj/structure/table/reinforced,
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -3256,9 +3234,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/forward)
 "Yk" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
