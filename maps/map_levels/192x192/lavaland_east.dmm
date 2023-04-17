@@ -157,6 +157,11 @@
 /obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
+"tF" = (
+/obj/structure/table/bone,
+/obj/item/reagent_containers/dropper/ashlander,
+/turf/simulated/floor/sandstone/lavaland,
+/area/lavaland/east/ashlander_village)
 "uE" = (
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
@@ -199,6 +204,12 @@
 /obj/structure/ashlander/brickmaker,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
+"AV" = (
+/obj/machinery/computer/cryopod/ashlander{
+	dir = 4
+	},
+/turf/simulated/floor/bone/engraved/lavaland,
+/area/lavaland/east/ashlander_village)
 "Cw" = (
 /obj/structure/fence/bone/corner{
 	dir = 1
@@ -225,8 +236,10 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/east/ashlander_village)
 "JG" = (
-/obj/item/reagent_containers/dropper/ashlander,
 /obj/structure/table/bone,
+/obj/machinery/reagentgrinder/ashlander{
+	pixel_y = 7
+	},
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "KA" = (
@@ -373,16 +386,14 @@
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/ashlander_village)
 "ZU" = (
-/obj/machinery/reagentgrinder/ashlander{
+/obj/structure/table/bone,
+/obj/machinery/chem_master/ashlander{
 	pixel_y = 7
 	},
-/obj/structure/table/bone,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "ZZ" = (
-/obj/machinery/computer/cryopod/ashlander{
-	pixel_y = 3
-	},
+/obj/machinery/computer/cryopod/ashlander,
 /turf/simulated/wall/bone,
 /area/lavaland/east/ashlander_village)
 
@@ -22452,7 +22463,7 @@ EA
 Qg
 Vj
 fV
-Vj
+AV
 fV
 Vj
 EA
@@ -25760,7 +25771,7 @@ DP
 DP
 pY
 JG
-ST
+tF
 mY
 pY
 DP

@@ -656,3 +656,22 @@
 				/obj/item/elderstone = 1)
 	category = CAT_PRIMAL
 	always_available = FALSE
+
+/datum/crafting_recipe/skull_mask
+	name = "Bone Mask (Skull)"
+	result = /obj/item/clothing/mask/skull
+	time = 20
+	reqs = list(/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/alchemy_bandolier
+	name = "Alchemy Bandolier"
+	result = /obj/item/storage/belt/ashlander
+	time = 40
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
+				/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 2)
+	category = CAT_PRIMAL
+	always_available = FALSE

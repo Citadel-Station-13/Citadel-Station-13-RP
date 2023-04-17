@@ -378,3 +378,12 @@
 	on_enter_occupant_message = "The goliath hide cloak flutters behind you as you begin to walk down the hand-carved stairs."
 	on_store_visible_message_1 = "echoes with fading footsteps"
 	on_store_visible_message_2 = "to the dark below."
+
+//Ashlander Chem Master
+/obj/machinery/chem_master/ashlander
+	name = "advanced alchemical station"
+	desc = "A mildly obscured passage down into the deep warrens of Surt-nar-Cthardamz."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "ashchem0"
+	use_power = USE_POWER_OFF
+	//primi = TRUE
