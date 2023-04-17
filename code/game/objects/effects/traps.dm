@@ -550,8 +550,9 @@ Add those other swinging traps you mentioned above!
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		M.apply_damage(damage, BRUTE)
-		M.get_organ(selected).droplimb()
+		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
 
@@ -605,8 +606,9 @@ if (istype(AM, /mob/living))
 		var/damage = rand(min_damage, max_damage)
 		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 		var/selected = pick(target_limbs)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		M.apply_damage(damage, BRUTE)
-		M.get_organ(selected).droplimb()
+		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
@@ -790,9 +792,10 @@ if (istype(AM, /mob/living))
 		var/damage = rand(min_damage, max_damage)
 		var/list/bone_sites = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND, BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
 		var/selected = pick(bone_sites)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		var/head_slot = SLOT_HEAD
-		M.get_organ(selected).fracture()
 		M.apply_damage(damage, BRUTE)
+		target.fracture()
 		M.throw_at_old(T2, 1, 1, src)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
