@@ -793,3 +793,12 @@
 			container.lefthand_file = style["lefthand_file"]
 			container.righthand_file = style["righthand_file"]
 	*/
+/obj/machinery/chem_master/primitive
+	name = "Ashlander Chem master"
+
+
+/obj/machinery/chem_master/primitive/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemPrimi", name)
+		ui.open()
