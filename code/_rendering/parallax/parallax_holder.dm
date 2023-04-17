@@ -39,22 +39,20 @@
 	var/scroll_speed
 	/// current scroll turn - applied after angle. if angle is 0 (picture moving north) and turn is 90, it would be like if you turned your viewport 90 deg clockwise.
 	var/scroll_turn
-	/// override planemaster we manipulate for turning and other effects
-	var/atom/movable/screen/plane_master/parallax/planemaster_override
 
-/datum/parallax_holder/New(client/C, secondary_map, forced_eye, planemaster_override)
+/datum/parallax_holder/New(client/C, secondary_map, forced_eye)
 	owner = C
 	src.secondary_map = secondary_map
 	src.forced_eye = forced_eye
-	src.planemaster_override = planemaster_override
 	planes = new
-	Reset()
+	planes.map_id = secondary_map
+	resetw()
 
 /datum/parallax_holder/Destroy()
 	if(owner)
 		if(owner.parallax_holder == src)
 			owner.parallax_holder = null
-		Remove()
+		remove()
 	HardResetAnimations()
 	QDEL_NULL(vis_holder)
 	QDEL_NULL(parallax)
@@ -93,12 +91,12 @@
 		return
 	if(cached_eye != Eye())
 		// eye mismatch, reset
-		Reset()
+		reset()
 		return
 	var/turf/T = get_turf(cached_eye)
 	if(!last || !T || T.z != last.z)
 		// z mismatch, reset
-		Reset()
+		reset()
 		return
 	// get rel offsets
 	var/rel_x = T.x - last.x
@@ -120,13 +118,7 @@
 	return forced_eye || owner?.eye
 
 /**
- * Gets the base parallax planemaster for things like turning
- */
-/datum/parallax_holder/proc/GetPlaneMaster()
-	return planemaster_override || (owner && (locate(/atom/movable/screen/plane_master/parallax) in owner?.screen))
-
-/**
- * Syncs us to our parallax objects. Does NOT check if we should have those objects, that's Reset()'s job.
+ * Syncs us to our parallax objects. Does NOT check if we should have those objects, that's reset()'s job.
  *
  * Doesn't move/update positions/screen locs either.
  *
@@ -193,7 +185,7 @@
 	. |= planes.screens()
 	C.screen |= .
 
-/datum/parallax_holder/proc/Remove(client/C = owner)
+/datum/parallax_holder/proc/remove(client/C = owner)
 	if(QDELETED(C))
 		return
 	C.screen -= layers
@@ -216,7 +208,7 @@
 	if(!parallax)
 		return
 	Sync(auto_z_change, force)
-	Apply()
+	apply()
 
 /**
  * Runs a modifier to parallax as an animation.
@@ -237,12 +229,6 @@
 	if(speed == 0)
 		StopScrolling(turn = turn, time = windup)
 		return
-	// if(turn != scroll_turn && GetPlaneMaster())
-	// 	// first handle turn. we turn the planemaster
-	// 	var/matrix/turn_transform = matrix()
-	// 	turn_transform.Turn(turn)
-	// 	scroll_turn = turn
-	// 	animate(GetPlaneMaster(), transform = turn_transform, time = turn_speed, easing = QUAD_EASING | EASE_IN, flags = ANIMATION_END_NOW | ANIMATION_LINEAR_TRANSFORM)
 	if(scroll_speed == speed && !force)
 		// we're done
 		return
@@ -270,11 +256,11 @@
  */
 /datum/parallax_holder/proc/StopScrolling(turn = 0, time = 30)
 	// reset turn
-	if(turn != scroll_turn && GetPlaneMaster())
+	if(turn != scroll_turn)
 		var/matrix/turn_transform = matrix()
 		turn_transform.Turn(turn)
 		scroll_turn = turn
-		animate(GetPlaneMaster(), transform = turn_transform, time = time, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_END_NOW | ANIMATION_LINEAR_TRANSFORM)
+		animate(planes.by_type(/atom/movable/screen/plane_master/parallax), transform = turn_transform, time = time, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_END_NOW | ANIMATION_LINEAR_TRANSFORM)
 	if(scroll_speed == 0)
 		// we're done
 		scrolling = FALSE
@@ -301,8 +287,7 @@
 	scroll_speed = 0
 	scrolling = FALSE
 	// reset turn
-	if(GetPlaneMaster())
-		animate(GetPlaneMaster(), transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
+	animate(planes.by_type(/atom/movable/screen/plane_master/parallax), transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
 	// reset objects
 	for(var/atom/movable/screen/parallax_layer/P in layers)
 		if(P.absolute)

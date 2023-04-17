@@ -10,7 +10,7 @@
 	if(!client.parallax_holder)
 		client.CreateParallax()
 	else
-		client.parallax_holder.Reset(force = TRUE)
+		client.parallax_holder.reset(force = TRUE)
 	reload_fullscreen()
 	client.update_clickcatcher()
 	client.using_perspective.reload(client, TRUE)
@@ -20,7 +20,7 @@
  * reloads rendering after screen viewport size change
  */
 /mob/proc/refit_rendering()
-	client?.parallax_holder?.Reset(force = TRUE)
+	client?.parallax_holder?.reset(force = TRUE)
 	reload_fullscreen()
 	client?.update_clickcatcher()
 

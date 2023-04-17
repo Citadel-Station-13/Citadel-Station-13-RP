@@ -238,7 +238,7 @@
 	else
 		C.eye = new_eye
 	if(changed != C.eye)
-		C.parallax_holder?.Reset(force = TRUE)
+		C.parallax_holder?.reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
 	update_view_size(C)
 
@@ -308,7 +308,7 @@
 		var/changed = C.eye
 		C.eye = GetEye(C)
 		if(changed != C.eye)
-			C.parallax_holder?.Reset(force = TRUE)
+			C.parallax_holder?.reset(force = TRUE)
 		C.perspective = GetEyeMode()
 
 /datum/perspective/proc/SetSight(flags)

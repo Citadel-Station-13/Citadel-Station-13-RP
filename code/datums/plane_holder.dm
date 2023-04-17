@@ -3,9 +3,22 @@
 /datum/plane_holder
 	/// plane masters by type
 	var/list/masters
+	/// map id, if not main map
+	var/map_id
+
+/datum/plane_holder/Destroy()
+	QDEL_LIST_ASSOC_VAL(masters)
+	return ..()
 
 /datum/plane_holder/proc/generate()
 	masters = list()
+
+/datum/plane_holder/proc/sync()
+	for(var/key in masters)
+		sync_plane(masters[key])
+
+/datum/plane_holder/proc/sync_plane(atom/movable/screen/plane_master/plane)
+	plane.screen_loc = "[map_id? "[map_id]:" : ""]CENTER"
 
 /datum/plane_holder/proc/screens()
 	. = list()
@@ -16,11 +29,20 @@
 /datum/plane_holder/proc/ensure()
 	if(isnull(masters))
 		generate()
+		sync()
+
+/datum/plane_holder/proc/apply(client/C)
+	C.screen |= screens()
+
+/datum/plane_holder/proc/remove(client/C)
+	C.screen -= screens()
 
 /datum/plane_holder/proc/by_type(path)
 	RETURN_TYPE(/atom/movable/screen/plane_master)
 	ensure()
-	return masters[path]
+	. = masters[path]
+	if(isnull(.))
+		CRASH("invalid fetch")
 
 /datum/plane_holder/proc/sync_owner(client/C)
 	#warn AO

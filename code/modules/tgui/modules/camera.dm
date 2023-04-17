@@ -36,8 +36,6 @@
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
 
-	cam_plane_masters = get_tgui_plane_masters()
-
 	for(var/plane in cam_plane_masters)
 		var/atom/movable/screen/instance = plane
 		instance.assigned_map = map_name
@@ -69,11 +67,19 @@
 		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
 	last_camera_turf = null
-	qdel(cam_screen)
-	QDEL_LIST(cam_plane_masters)
-	qdel(cam_background)
-	qdel(cam_foreground)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(cam_foreground)
+	QDEL_NULL(planes)
+	QDEL_NULL(parallax)
 	return ..()
+
+/datum/tgui_module_old/camera/ensure_tgui_camera()
+	if(isnull(planes))
+		planes = new
+		planes.map_id = map_name
+	if(isnull(parallax))
+		parallax = new(secondary_map = map_id, forced_eye = src)
 
 /datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -93,10 +99,11 @@
 			playsound(ui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
 		user.client.register_map_obj(cam_foreground)
+		ensure_tgui_camera()
+		planes.apply(user.client)
+		parallax.apply(user.client)
 		// Open UI
 		ui = new(user, src, tgui_id, name)
 		ui.open()
@@ -266,8 +273,10 @@
 	// living creature or not, we remove you anyway.
 	concurrent_users -= user_ref
 	// Unregister map objects
-	if(user.client)
+	if(!isnull(user.client))
 		user.client.clear_map(map_name)
+		parallax.remove(user.client)
+		planes.reomve(user.client)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		if(active_camera)
