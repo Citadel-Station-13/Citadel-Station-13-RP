@@ -1,6 +1,6 @@
 import { Color } from '../../common/color';
-import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
+import { useBackend } from '../backend';
+import { AnimatedNumber, Box, Button, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 type ChemMasterData = {
@@ -90,9 +90,6 @@ const ChemPrimiContent = (props, context) => {
     pill_bottle_current_amount,
     pill_bottle_max_amount,
   } = data;
-  if (screen === 'analyze') {
-    return <AnalysisResults />;
-  }
   return (
     <>
       <Section
