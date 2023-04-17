@@ -366,6 +366,8 @@
 
 /datum/perspective/proc/unset_hard_darkvision(amount, source)
 
+/datum/perspective/proc/has_hard_darkvision(amount, source)
+
 #warn impl all
 
 //? plane visibility
@@ -394,6 +396,13 @@
 		if(!length(was))
 			planes_visible -= key
 			hide_plane(key)
+
+/datum/perspective/proc/is_plane_visible(var/atom/movable/screen/plane_master/key, source)
+	if(!initial(key.default_invisible))
+		return TRUE
+	if(isnull(source))
+		return planes_visible[key]
+	return source in planes_visible[key]
 
 /datum/perspective/proc/show_plane(key, force)
 	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
