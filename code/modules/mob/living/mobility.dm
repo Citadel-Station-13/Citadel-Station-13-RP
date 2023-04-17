@@ -65,8 +65,26 @@
 /mob/living/proc/_resist_a_rest()
 	PRIVATE_PROC(TRUE)
 	getting_up = TRUE
-	#warn impl
+	getting_up_loc = loc
+	getting_up_last = world.time
+	getting_up_original = get_up_delay()
+	visible_message(
+		SPAN_NOTICE("[src] starts to get up off the ground."),
+		SPAN_NOTICE("You start pushing yourself off the ground."),
+	)
+	if(do_self(src, getting_up_original, flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, mobility_flags = MOBILITY_CAN_RESIST, additional_checks = CALLBACK(src, PROC_REF(_resisting_a_rest))))
+		visible_message(
+			SPAN_NOTICE("[src] gets up from the ground."),
+			SPAN_NOTICE("You get up."),
+		)
+		set_resting(FALSE)
 	getting_up = FALSE
+
+/mob/living/proc/get_up_delay()
+	#warn impl
+
+/mob/living/proc/_resisting_a_rest(list/do_after_args)
+	#warn move slow, etc
 
 /mob/living/proc/auto_resist_rest()
 	if(resting_intentionally || !resting)

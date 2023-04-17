@@ -39,4 +39,4 @@
 		// just update positoins
 		cut_overlay(ssd_overlay, TRUE)
 		#warn impl
-		add_overlay(ssd_overlay, TRUE)
+		add_overlay(ssd_overlay,)

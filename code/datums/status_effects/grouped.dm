@@ -25,34 +25,19 @@
 /datum/status_effect/grouped/rebuild_decay_timer()
 	return // we don't use this.
 
-#warn what
-
-/datum/status_effect/grouped/on_creation(mob/living/new_owner, source)
-	var/datum/status_effect/grouped/existing = new_owner.has_status_effect(type)
-	if(existing)
-		existing.sources |= source
-		qdel(src)
-		return FALSE
-	else
-		sources |= source
-		return ..()
-
-/datum/status_effect/grouped/before_remove(source)
-	sources -= source
-	return !length(sources)
-
 /datum/status_effect/grouped/proc/has_source(source)
 	return !isnull(sources[source])
 
 /datum/status_effect/grouped/proc/remove_source(source, expiring)
 	if(!has_source(source))
 		return FALSE
+	var/old = sources[source]
 	sources -= source
-	#warn impl timer stuff and whatever
 	if(expires[source])
 		expires -= source
 		deltimer(timers[source])
 		timers -= source
+	on_change(source, old, null)
 	if(!length(sources))
 		qdel(src)
 	return TRUE
@@ -61,11 +46,47 @@
 	// source can technically be any non-number value, but to enforce code durability
 	// we don't want any del'able reference types.
 	ASSERT(istext(source) && !isnull(value))
+	var/old = sources[source]
 	sources[source] = value
-	#warn impl timer stuff and whatever
+	var/old_expires = expires[source]
+	if(old_expires)
+		if((old_expires - world.time) < duration)
+			// refresh
+			deltimer(timers[source])
+			expires[source] = world.time + duration
+			timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
+	else if(old && (duration > 0))
+		// didn't exist, set
+		expires[source] = world.time + duration
+		timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
+	on_change(source, old, value)
 
+/datum/status_effect/grouped/proc/set_source(source, value, duration = src.duration)
+	// source can technically be any non-number value, but to enforce code durability
+	// we don't want any del'able reference types.
+	ASSERT(istext(source) && !isnull(value))
+	var/old = sources[source]
+	sources[source] = value
+	var/old_expires = expires[source]
+	if(old_expires)
+		deltimer(timers[source])
+		timers -= source
+		expires -= source
+	if(duration > 0)
+		expires[source] = world.time + duration
+		timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
+	on_change(source, old, value)
 
-#warn impl all
+/**
+ * called on a change of source or value.
+ *
+ * @params
+ * * source - source
+ * * old_value - what value was before ; null if we're adding the source for the first time.
+ * * new_value - what value is now ; null if we're removing the source.
+ */
+/datum/status_effect/grouped/proc/on_change(source, old_value, new_value)
+	return
 
 //? Mob procs
 

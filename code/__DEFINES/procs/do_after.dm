@@ -15,6 +15,16 @@
 /// no progress bar
 #define DO_AFTER_NO_PROGRESS (1<<5)
 
+//? do_after arg indices
+
+#define DO_AFTER_ARG_USER 1
+#define DO_AFTER_ARG_DELAY 2
+#define DO_AFTER_ARG_TARGET 3
+#define DO_AFTER_ARG_FLAGS 4
+#define DO_AFTER_ARG_MOBILITY 5
+#define DO_AFTER_ARG_DIST 6
+#define DO_AFTER_ARG_CALLBACK 7
+
 //? Interaction Checks
 /// checks if we're interacting with an atom
 #define INTERACTING_WITH(M, A) M.interacting_with?[A]
