@@ -485,6 +485,13 @@
 /atom/movable/proc/CanParachute()
 	return parachuting
 
+/obj/mecha/CanParachute()
+	if(special_equipment && isParachute())
+		handleParachute()
+		return TRUE
+	else
+		return parachuting
+
 /// For humans, this needs to be a wee bit more complicated.
 /mob/living/carbon/human/CanParachute()
 	// Certain slots don't really need to be checked for parachute ability, i.e. pockets, ears, etc. If this changes, just add them to the loop, I guess?

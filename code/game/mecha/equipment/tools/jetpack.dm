@@ -36,6 +36,8 @@
 	ion_trail.start()
 	occupant_message("Activated")
 	log_message("Activated")
+	softfall = TRUE
+	hovering = TRUE
 
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack/proc/turn_off()
 	set_ready_state(1)
@@ -43,6 +45,8 @@
 	ion_trail.stop()
 	occupant_message("Deactivated")
 	log_message("Deactivated")
+	softfall = FALSE
+	hovering = FALSE
 
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack/proc/dyndomove(direction)
 	if(!action_checks())
