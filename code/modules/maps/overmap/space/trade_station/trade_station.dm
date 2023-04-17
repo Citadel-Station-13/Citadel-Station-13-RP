@@ -40,12 +40,7 @@
 */
 
 ///////////////////////////
-//// Spawning and despawning
-
-/datum/spawnpoint/trade
-	display_name = "Beruang Trading Corp Cryo"
-	restrict_job = list("Trader")
-	announce_channel = "Trade"
+//// Despawning
 
 /obj/machinery/cryopod/trade
 	announce_channel = "Trade"
