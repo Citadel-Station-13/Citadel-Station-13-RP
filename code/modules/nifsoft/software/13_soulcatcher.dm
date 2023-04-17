@@ -358,11 +358,6 @@
 	var/datum/nifsoft/soulcatcher/soulcatcher
 	var/identifying_gender
 
-/mob/living/carbon/brain/caught_soul/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
-	identifying_gender = client.prefs.identifying_gender
-	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)

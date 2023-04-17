@@ -354,6 +354,14 @@
 
 //? lighting - hard darkvision (limit lighting plane alpha)
 
+/**
+ * sets hard darkvision that reduces lighting plane alpha
+ * lighting plane becomes more transparent if it wasn't more transparent already
+ *
+ * @params
+ * * amount - alpha value 0 to 255. 0 = fullbright, 255 = no change.
+ * * source - trait source enum
+ */
 /datum/perspective/proc/set_hard_darkvision(amount, source)
 
 /datum/perspective/proc/unset_hard_darkvision(amount, source)
@@ -362,6 +370,14 @@
 
 //? plane visibility
 
+/**
+ * sets a plane visible if it wasn't already
+ * source should be a trait source
+ *
+ * @params
+ * * key - path to plane
+ * * source - trait source enum
+ */
 /datum/perspective/proc/set_plane_visible(key, source)
 	LAZYINITLIST(planes_visible)
 	var/was = planes_visible[key]

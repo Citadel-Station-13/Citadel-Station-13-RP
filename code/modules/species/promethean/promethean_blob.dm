@@ -213,9 +213,9 @@
 	if(!QDELETED(src)) // Human's handle death should have taken us, but maybe we were adminspawned or something without a human counterpart
 		qdel(src)
 
-/mob/living/simple_mob/slime/promethean/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+/mob/living/simple_mob/slime/promethean/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /mob/living/simple_mob/slime/promethean/proc/prommie_blobform()
 	set name = "Toggle Blobform"

@@ -594,9 +594,9 @@
 		H.sync(src)
 		return
 
-/mob/living/simple_mob/protean_blob/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
+/mob/living/simple_mob/protean_blob/make_perspective()
+	. = ..()
+	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /datum/modifier/protean/steelBlob // Blob regen is stronger than non-blob to have some incentive other than erp
 	name = "Protean Blob Effect - Steel"
