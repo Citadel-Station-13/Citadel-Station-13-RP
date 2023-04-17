@@ -101,7 +101,7 @@
 		reset_perspective(using_perspective)
 		return
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
-	using_perspective?.Update(client)
+	using_perspective?.update(client)
 
 /**
  * we're considered to be viewing from some/something else's perspective

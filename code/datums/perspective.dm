@@ -113,7 +113,7 @@
 	LAZYADD(clients, C)
 	C.using_perspective = src
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_REGISTER, C)
-	Apply(C)
+	apply(C)
 
 /// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
 /// I DO NOT TRUST PEOPLE TO NOT SCREW THIS UP
@@ -123,7 +123,7 @@
 	if(!(C in clients))
 		return
 	LAZYREMOVE(clients, C)
-	Remove(C)
+	remove(C)
 	// if we're not doing this as part of a switch have them immediately switch to the mob
 	// oh and make sure they unregister
 	if(C.using_perspective != src)
@@ -191,13 +191,17 @@
 /**
  * applys screen objs, etc, stuff that shouldn't be updated regularly
  */
-/datum/perspective/proc/Apply(client/C)
+/datum/perspective/proc/apply(client/C)
 	SHOULD_CALL_PARENT(TRUE)
-	C.screen += screens
-	C.images += images
-	Update(C)
+	C.screen |= screens
+	C.screen |= planes.screens()
+	C.images |= images
+	update(C)
 
-/datum/perspective/proc/Remove(client/C)
+/datum/perspective/proc/reload(client/C)
+	apply(C)
+
+/datum/perspective/proc/remove(client/C)
 	C.screen -= screens
 	C.images -= images
 
@@ -217,7 +221,7 @@
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
  */
-/datum/perspective/proc/Update(client/C)
+/datum/perspective/proc/update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
 	var/changed = C.eye
 	var/new_eye = GetEye(C)
@@ -234,9 +238,9 @@
 /**
  * update all viewers
  */
-/datum/perspective/proc/UpdateAll()
+/datum/perspective/proc/update_all()
 	for(var/client/C as anything in clients)
-		Update(C)
+		update(C)
 
 /**
  * works with lists too
