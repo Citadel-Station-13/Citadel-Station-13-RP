@@ -63,7 +63,7 @@
 	owner = null
 	return ..()
 
-/datum/parallax_holder/proc/Reset(auto_z_change, force)
+/datum/parallax_holder/proc/reset(auto_z_change, force)
 	if(!(cached_eye = Eye()))
 		// if no eye, tear down
 		last = cached_eye = last_area = null
@@ -157,7 +157,7 @@
 		var/area/A = T.loc
 		Animation(A.parallax_move_speed, A.parallax_move_angle, auto_z_change? 0 : null, auto_z_change? 0 : null, force)
 
-/datum/parallax_holder/proc/Apply(client/C = owner)
+/datum/parallax_holder/proc/apply(client/C = owner)
 	if(QDELETED(C))
 		return
 	. = list()
@@ -200,7 +200,7 @@
 /datum/parallax_holder/proc/SetParallax(datum/parallax/P, delete_old = TRUE, auto_z_change, force)
 	if(P == parallax)
 		return
-	Remove()
+	remove()
 	if(delete_old && istype(parallax) && !QDELETED(parallax))
 		qdel(parallax)
 	HardResetAnimations()

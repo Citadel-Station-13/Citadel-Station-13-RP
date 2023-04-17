@@ -36,12 +36,6 @@
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
 
-	for(var/plane in cam_plane_masters)
-		var/atom/movable/screen/instance = plane
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		instance.screen_loc = "[map_name]:CENTER"
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
@@ -79,7 +73,7 @@
 		planes = new
 		planes.map_id = map_name
 	if(isnull(parallax))
-		parallax = new(secondary_map = map_id, forced_eye = src)
+		parallax = new(secondary_map = map_name, forced_eye = src)
 
 /datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -276,7 +270,7 @@
 	if(!isnull(user.client))
 		user.client.clear_map(map_name)
 		parallax.remove(user.client)
-		planes.reomve(user.client)
+		planes.remove(user.client)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		if(active_camera)

@@ -33,7 +33,7 @@
 		planes = new
 		planes.map_id = map_name
 	if(isnull(parallax))
-		parallax = new(secondary_map = map_id, forced_eye = src)
+		parallax = new(secondary_map = map_name, forced_eye = src)
 
 // Proc: update_active_camera_screen()
 // Parameters: None
@@ -114,7 +114,7 @@
 	if(isnull(user.client))
 		return // what???
 	parallax.remove(user.client)
-	planes.reomve(user.client)
+	planes.remove(user.client)
 
 // Proc: ui_data()
 // Parameters: User, UI, State
