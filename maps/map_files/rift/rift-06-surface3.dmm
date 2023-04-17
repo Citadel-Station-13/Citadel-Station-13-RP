@@ -13390,7 +13390,6 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aBk" = (
@@ -14125,7 +14124,6 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "aCQ" = (
@@ -26034,6 +26032,7 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
 "lcP" = (
@@ -26984,6 +26983,7 @@
 	dir = 4
 	},
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
 "wgh" = (
@@ -27029,10 +27029,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
-"wXZ" = (
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
 "xbo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -40220,7 +40216,7 @@ asG
 aWo
 alz
 asq
-wXZ
+ave
 axJ
 aRS
 aEu
@@ -44876,7 +44872,7 @@ aqB
 aGN
 asp
 aDI
-wXZ
+ave
 axJ
 aRS
 aEu
