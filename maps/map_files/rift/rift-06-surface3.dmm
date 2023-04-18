@@ -25394,7 +25394,9 @@
 	pixel_x = -28;
 	pixel_y = -24
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark{
+	name = "JoinLateTeleport"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
 "exb" = (
@@ -25615,16 +25617,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
-"fLu" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/obj/landmark/spawnpoint/latejoin/station,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
 "fOF" = (
 /obj/structure/table/wooden_reinforced,
 /obj/effect/floor_decal/spline/plain{
@@ -25652,16 +25644,6 @@
 /obj/machinery/smartfridge/food,
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
-"ggM" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "gjR" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -26349,7 +26331,9 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
+/obj/landmark{
+	name = "JoinLateRobotic"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "nSV" = (
@@ -26842,7 +26826,9 @@
 	pixel_x = -28;
 	pixel_y = 24
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark{
+	name = "JoinLateTeleport"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
 "uoG" = (
@@ -27004,16 +26990,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"weY" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "wgh" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -42182,8 +42158,8 @@ aUu
 aUu
 aUu
 aMw
-weY
-fLu
+iUa
+aRJ
 anG
 aoX
 aly
@@ -42958,8 +42934,8 @@ aUu
 aUu
 aUu
 aMw
-ggM
-fLu
+kXF
+aRJ
 anG
 aoX
 aPw
