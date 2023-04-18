@@ -18171,10 +18171,6 @@
 /obj/machinery/fitness/heavy/lifter,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"mzl" = (
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/dark,
-/area/shuttle/hammerhead/bay)
 "mzx" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -20800,6 +20796,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
+"oBA" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/hammerhead/bay)
 "oBU" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -33193,7 +33195,10 @@
 /area/security/evidence_storage)
 "xya" = (
 /obj/mecha/combat/fighter/baron/sec/loaded,
-/turf/simulated/floor/tiled/dark,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/bay)
 "xyC" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -52929,14 +52934,14 @@ pBj
 kXA
 bap
 kaH
-ayE
+oBA
 ceM
 qDt
 oFw
 kCx
 oFw
 lop
-mzl
+ief
 xya
 enC
 kXL
@@ -53130,8 +53135,8 @@ kCx
 kCx
 kCx
 lop
-mzl
-oFw
+ief
+ayE
 enC
 kXL
 rtk
