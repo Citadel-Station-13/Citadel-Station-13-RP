@@ -49,7 +49,13 @@
 
 /**
  * renders ssd overlay
+ *
+ * @return TRUE if anything changed, FALSE otherwise
  */
 /mob/proc/render_ssd_overlay()
+	. = FALSE
 	if(isnull(ssd_overlay))
 		ssd_overlay = new image(icon = 'icons/rendering/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
+		. = TRUE
+	#warn impl
+

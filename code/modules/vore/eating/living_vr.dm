@@ -396,7 +396,6 @@
 
 	return smell_message
 
-
 //
 // OOC Escape code for pref-breaking or AFK preds
 //

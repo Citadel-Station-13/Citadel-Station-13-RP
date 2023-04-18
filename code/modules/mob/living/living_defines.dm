@@ -104,6 +104,15 @@
 	// TODO: execute iamcrystalclear for making this var
 	var/last_blood_warn = -INFINITY
 
+	var/ooc_notes = null
+	var/obj/structure/mob_spawner/source_spawner = null
+
+//custom say verbs
+	var/custom_say = null
+	var/custom_ask = null
+	var/custom_exclaim = null
+	var/custom_whisper = null
+
 	//? inventory
 	var/hand = null
 	var/obj/item/l_hand = null

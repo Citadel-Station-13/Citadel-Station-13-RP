@@ -215,7 +215,6 @@
 
 /mob/proc/Blind(amount)
 	eye_blind = max(eye_blind, amount, 0)
-	return
 
 /mob/proc/SetBlinded(amount)
 	eye_blind = max(amount, 0)

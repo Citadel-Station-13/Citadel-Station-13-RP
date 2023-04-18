@@ -176,7 +176,6 @@
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/other = 0.0
 	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
@@ -226,7 +225,6 @@
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
-	var/charges = 0
 
 	var/nutrition = 400 //?Carbon
 	var/hydration = 400 //?Carbon
@@ -243,14 +241,6 @@
 	var/datum/hud/hud_used = null
 
 	var/list/grabbed_by = list(  )
-
-	var/list/mapobjs = list()
-
-	/// whether or not we're prepared to throw stuff.
-	var/in_throw_mode = THROW_MODE_OFF
-
-	// todo: nuke from orbit
-	var/music_lastplayed = "null"
 
 	// todo: nuke from orbit
 	var/job = null //?Living
@@ -341,8 +331,6 @@
 
 	var/last_radio_sound = -INFINITY
 
-	/// A mock client, provided by tests and friends
-	var/datum/client_interface/mock_client
 
 	//? vorestation legacy
 	/// Allows flight.
@@ -354,6 +342,16 @@
 
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
+
+	var/muffled = 0 					// Used by muffling belly
+
+	//? Unit Tests
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client
+
+	//? Throwing
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
 
 	//? Typing Indicator
 	var/typing = FALSE
