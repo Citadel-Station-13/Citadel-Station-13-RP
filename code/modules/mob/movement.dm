@@ -264,9 +264,13 @@
 			else if(mob.confused)
 				switch(mob.m_intent)
 					if("run")
-						if(prob(50))	direct = turn(direct, pick(90, -90))
+						if(prob(20))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 					if("walk")
-						if(prob(25))	direct = turn(direct, pick(90, -90))
+						if(prob(10))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 			add_delay += 2
 			return mob.buckled.relaymove(mob,direct)
 	//! oh god I hate this so much todo proper relaymove system for pulling fr fr

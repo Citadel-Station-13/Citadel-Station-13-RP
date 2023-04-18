@@ -339,15 +339,6 @@ default behaviour is:
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(confused > 0)
-		add_status_indicator("confused")
-
-/mob/living/SetConfused(amount)
-	..()
-	if(confused <= 0)
-		remove_status_indicator("confused")
-	else
-		add_status_indicator("confused")
 
 /mob/living/AdjustConfused(amount)
 	if(amount > 0)
@@ -355,10 +346,6 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(confused <= 0)
-		remove_status_indicator("confused")
-	else
-		add_status_indicator("confused")
 
 /mob/living/Blind(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -744,7 +731,6 @@ default behaviour is:
 	M.Scale(desired_scale_x, desired_scale_y)
 	M.Translate(0, 16*(desired_scale_y-1))
 	animate(src, transform = M, time = 10)
-	handle_status_indicators()
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.

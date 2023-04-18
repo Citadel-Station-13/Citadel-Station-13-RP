@@ -205,25 +205,20 @@
 //? legacy
 
 /mob/proc/Confuse(amount)
-	confused = max(max(confused,amount),0)
-	return
+	confused = max(confused, amount, 0)
 
 /mob/proc/SetConfused(amount)
-	confused = max(amount,0)
-	return
+	confused = max(amount, 0)
 
 /mob/proc/AdjustConfused(amount)
-	confused = max(confused + amount,0)
-	return
+	confused = max(confused + amount, 0)
 
 /mob/proc/Blind(amount)
-	eye_blind = max(max(eye_blind,amount),0)
+	eye_blind = max(eye_blind, amount, 0)
 	return
 
 /mob/proc/SetBlinded(amount)
-	eye_blind = max(amount,0)
-	return
+	eye_blind = max(amount, 0)
 
 /mob/proc/AdjustBlinded(amount)
-	eye_blind = max(eye_blind + amount,0)
-	return
+	eye_blind = max(eye_blind + amount, 0)

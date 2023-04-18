@@ -81,10 +81,11 @@
 #define STATUS_CAN_STAGGER   (1<<3) //! Can Stagger()
 #define STATUS_CAN_PARALYZE  (1<<4) //! Can Paralyze()
 #define STATUS_CAN_PUSH      (1<<5) //! Can Push()
-#define STATUS_LEAPING       (1<<6) //! Is leaping (??? legacy)
-#define STATUS_HIDING        (1<<7) //! Is hiding  (??? legacy)
-#define STATUS_GODMODE       (1<<8) //! Godmode    (??? legacy)
-#define STATUS_FAKEDEATH     (1<<9) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
+
+#define STATUS_LEAPING       (1<<20) //! Is leaping (??? legacy)
+#define STATUS_HIDING        (1<<21) //! Is hiding  (??? legacy)
+#define STATUS_GODMODE       (1<<22) //! Godmode    (??? legacy)
+#define STATUS_FAKEDEATH     (1<<23) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
 
 #define STATUS_FLAGS_DEFAULT (STATUS_CAN_STUN | STATUS_CAN_PARALYZE | STATUS_CAN_PUSH \
 | STATUS_CAN_KNOCKDOWN | STATUS_CAN_ROOT | STATUS_CAN_STAGGER)

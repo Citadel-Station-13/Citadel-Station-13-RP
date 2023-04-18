@@ -473,7 +473,7 @@
 	inflict_poison_damage(5)
 	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
 	adjustToxLoss(5)
-	confused = max(confused, 1)
+	Confuse(1)
 
 //Blood
 //Acid

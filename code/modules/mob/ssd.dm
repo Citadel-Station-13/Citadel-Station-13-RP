@@ -40,3 +40,16 @@
 		cut_overlay(ssd_overlay, TRUE)
 		#warn impl
 		add_overlay(ssd_overlay,)
+
+/**
+ * checks if we need a ssd overlay update
+ */
+/mob/proc/needs_ssd_overlay_update()
+	#warn impl
+
+/**
+ * renders ssd overlay
+ */
+/mob/proc/render_ssd_overlay()
+	if(isnull(ssd_overlay))
+		ssd_overlay = new image(icon = 'icons/mob/', icon_state = "eepy")

@@ -272,6 +272,7 @@
 #include "code\__DEFINES\traits\mob.dm"
 #include "code\__DEFINES\traits\sources.dm"
 #include "code\__DEFINES\traits\unsorted.dm"
+#include "code\__DEFINES\traits\specific\cpr.dm"
 #include "code\__DEFINES\turfs\change_turf.dm"
 #include "code\__DEFINES\turfs\type_generation.dm"
 #include "code\__HELPERS\_auxtools_api.dm"

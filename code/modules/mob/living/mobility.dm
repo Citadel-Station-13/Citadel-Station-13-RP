@@ -81,10 +81,17 @@
 	getting_up = FALSE
 
 /mob/living/proc/get_up_delay()
-	#warn impl
+	// todo: redo
+	return 5 + clamp(health / maxHealth, 0, 1) * 33 + min(halloss, 100) * 0.33
 
 /mob/living/proc/_resisting_a_rest(list/do_after_args)
-	#warn move slow, etc
+	var/current_delay = get_up_delay()
+	if(current_delay != getting_up_original)
+		do_after_args[DO_AFTER_ARG_DELAY] += current_delay - getting_up_original
+		getting_up_original = current_delay
+	if(getting_up_loc != loc)
+		#warn move slow
+		getting_up_loc = loc
 
 /mob/living/proc/auto_resist_rest()
 	if(resting_intentionally || !resting)
