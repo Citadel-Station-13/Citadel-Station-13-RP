@@ -768,6 +768,15 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
+	on_attack_self(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ */
+/obj/item/proc/on_attack_self(mob/user)
+	return
 
 //? Mob Armor
 

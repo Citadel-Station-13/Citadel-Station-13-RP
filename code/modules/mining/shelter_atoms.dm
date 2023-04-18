@@ -142,14 +142,8 @@
 	name = "pod window"
 	icon = 'icons/obj/survival_pod.dmi'
 	icon_state = "pwindow"
-	basestate = "pwindow"
+	fulltile = FALSE
 
-//The windows have diagonal versions, and will never be a full window
-/obj/structure/window/reinforced/survival_pod/is_fulltile()
-	return FALSE
-
-/obj/structure/window/reinforced/survival_pod/update_icon()
-	icon_state = basestate
 
 //Windoor
 /obj/machinery/door/window/survival_pod
@@ -165,7 +159,8 @@
 	can_reinforce = FALSE
 	can_plate = FALSE
 
-/obj/structure/table/survival_pod/update_icon()
+/obj/structure/table/survival_pod/update_icon_state()
+	. = ..()
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
@@ -185,11 +180,13 @@
 	icon_state = "sleeper"
 	stasis_level = 100 //Just one setting
 
-/obj/machinery/sleeper/survival_pod/update_icon()
+
+/obj/machinery/sleeper/survival_pod/update_overlays()
+	. = ..()
+	cut_overlays()
 	if(occupant)
-		add_overlay("sleeper_cover")
-	else
-		cut_overlays()
+		. += "sleeper_cover"
+
 
 //Computer
 /obj/item/gps/computer

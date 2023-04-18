@@ -94,6 +94,7 @@
 		if(owner == T)
 			return
 		remove(owner)
+	assert_button()
 	owner = T
 	owner.actions.Add(src)
 	owner.update_action_buttons()
@@ -106,6 +107,12 @@
 	T.actions.Remove(src)
 	T.update_action_buttons()
 	owner = null
+
+/datum/action/proc/assert_button()
+	if(!isnull(button))
+		return
+	button = new
+	button.owner = src
 
 /datum/action/proc/trigger(mob/user)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -185,6 +192,9 @@
  * updates button state to match our stored state.
  */
 /datum/action/proc/update_button()
+	if(isnull(button))
+		return
+
 	auto_button_update(update = FALSE)
 
 	button.icon = background_icon

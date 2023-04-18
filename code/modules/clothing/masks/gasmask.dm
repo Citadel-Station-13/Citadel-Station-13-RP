@@ -139,6 +139,14 @@
 	inv_hide_flags = HIDEEARS //semi-transparent
 	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
 
+/obj/item/clothing/mask/gas/opaque
+	name = "Opaque Mask"
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
+	icon_state = "opaque_mask"
+	inv_hide_flags = null
+	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/oxygen)
+
+
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."

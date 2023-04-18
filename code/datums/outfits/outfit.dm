@@ -149,7 +149,7 @@
 		return
 
 	var/faction = H.mind?.original_background_faction()?.id
-	if(faction && !(faction == "nanotrasen"))
+	if(faction && !(faction == "nanotrasen") && !ispath(id_type, /obj/item/card/id/external))
 		id_type = /obj/item/card/id/contractor
 
 	var/obj/item/card/id/W = new id_type(H)

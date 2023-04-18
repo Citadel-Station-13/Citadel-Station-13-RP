@@ -12,6 +12,9 @@
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_PROCESS_RESIST) & COMPONENT_MOB_RESIST_INTERRUPT)
+		return
+
 	//unbuckling yourself
 	if(buckled)
 		resist_buckle()

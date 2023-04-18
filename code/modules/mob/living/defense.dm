@@ -504,6 +504,8 @@
 			I.action.grant(src)
 
 /mob/living/update_action_buttons()
+	// todo: remove this, move to event driven
+	handle_actions()
 	if(!hud_used)
 		return
 	if(!client)
@@ -532,11 +534,6 @@
 	var/button_number = 0
 	for(var/datum/action/A in actions)
 		button_number++
-		if(A.button == null)
-			var/atom/movable/screen/movable/action_button/N = new(hud_used)
-			N.owner = A
-			A.button = N
-
 		var/atom/movable/screen/movable/action_button/B = A.button
 
 		B.UpdateIcon()

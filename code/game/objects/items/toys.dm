@@ -1119,6 +1119,12 @@
 	icon_state = "tuxedocat"
 	pokephrase = "Mrowww!!"
 
+/obj/item/toy/plushie/toad
+	name = "\improper Toad plushie"
+	desc = "Not actually a replica of a toad, but a humanoid toadstool! It wont stop screaming (lovingly) when you poke and squeeze it, but somehow it's cute anyways. Reminds you of times spent racing."
+	icon_state = "toadplush"
+	pokephrase = "Waaah!!"
+
 // nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green
 	name = "green squid plushie"

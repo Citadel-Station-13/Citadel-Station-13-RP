@@ -67,6 +67,7 @@
 	desc = "Warning: moustache is fake."
 	icon_state = "fake-moustache"
 	inv_hide_flags = HIDEFACE
+	w_class = ITEMSIZE_SMALL
 	body_cover_flags = 0
 
 /obj/item/clothing/mask/snorkel
