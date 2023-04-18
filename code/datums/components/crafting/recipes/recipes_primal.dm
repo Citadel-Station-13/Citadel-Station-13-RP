@@ -381,12 +381,23 @@
 	always_available = FALSE
 
 /datum/crafting_recipe/saddle
-	name = "Hide Saddle"
+	name = "Saddle (Goliath Hide)"
 	result = /obj/item/saddle/shank
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 6,
 				/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/saddle
+	name = "Saddle (Sinew Harness and Bone Bucket)"
+	result = /obj/item/saddle/stormdrifter
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 10,
+				/obj/item/stack/animalhide/goliath_hide = 5
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE

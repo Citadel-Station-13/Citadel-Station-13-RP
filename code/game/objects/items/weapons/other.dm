@@ -875,6 +875,11 @@
 	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
 	icon_state = "saddle_lavaland"
 
+/obj/item/saddle/stormdrifter
+	name = "sinew harness and bone bucket"
+	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed to be hung from a flying creature."
+	icon_state = "saddle_lavaland"
+
 //Ashlander Specific Crafting Items
 /datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
 	name = "Scorian Religion - Elder Stones"

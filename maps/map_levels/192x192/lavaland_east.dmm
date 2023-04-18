@@ -204,12 +204,6 @@
 /obj/structure/ashlander/brickmaker,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
-"AV" = (
-/obj/machinery/computer/cryopod/ashlander{
-	dir = 4
-	},
-/turf/simulated/floor/bone/engraved/lavaland,
-/area/lavaland/east/ashlander_village)
 "Cw" = (
 /obj/structure/fence/bone/corner{
 	dir = 1
@@ -22463,7 +22457,7 @@ EA
 Qg
 Vj
 fV
-AV
+Vj
 fV
 Vj
 EA
