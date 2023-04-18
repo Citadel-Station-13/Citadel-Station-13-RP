@@ -16,9 +16,10 @@
 	var/fishing_source = /datum/fish_source/portal
 
 /obj/machinery/fishing_portal/dynamic_tool_functions(obj/item/I, mob/user)
-	. = ..()
+	. = list()
 	if(allow_unanchor)
 		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
+	return merge_double_lazy_assoc_list(., ..())
 
 /obj/machinery/fishing_portal/dynamic_tool_image(function, hint)
 	switch(function)
