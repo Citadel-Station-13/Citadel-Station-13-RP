@@ -380,7 +380,7 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
-/datum/crafting_recipe/saddle
+/datum/crafting_recipe/saddle_shank
 	name = "Saddle (Goliath Hide)"
 	result = /obj/item/saddle/shank
 	time = 60
@@ -391,7 +391,7 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
-/datum/crafting_recipe/saddle
+/datum/crafting_recipe/saddle_stormdrifter
 	name = "Saddle (Sinew Harness and Bone Bucket)"
 	result = /obj/item/saddle/stormdrifter
 	time = 60

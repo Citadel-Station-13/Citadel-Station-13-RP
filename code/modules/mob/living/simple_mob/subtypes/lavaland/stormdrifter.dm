@@ -124,7 +124,6 @@
 	buckle_allowed = FALSE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF|BUCKLING_GROUND_HOIST
 
-
 	var/neutered = 0
 	var/rideable = 0
 
