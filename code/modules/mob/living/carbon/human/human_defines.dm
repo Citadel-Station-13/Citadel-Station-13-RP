@@ -34,7 +34,7 @@
 
 	hud_possible = list(
 		LIFE_HUD,
-		STATUS_HUD,
+		BIOLOGY_HUD,
 		ID_HUD,
 		WANTED_HUD,
 		IMPLOYAL_HUD,

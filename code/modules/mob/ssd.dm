@@ -52,4 +52,4 @@
  */
 /mob/proc/render_ssd_overlay()
 	if(isnull(ssd_overlay))
-		ssd_overlay = new image(icon = 'icons/mob/', icon_state = "eepy")
+		ssd_overlay = new image(icon = 'icons/rendering/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
