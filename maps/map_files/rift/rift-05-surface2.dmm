@@ -10504,7 +10504,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
 	},
-/obj/machinery/holopad/ship/starts_inactive,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/general)
 "hnY" = (
