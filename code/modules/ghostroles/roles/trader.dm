@@ -20,7 +20,7 @@
 
 /datum/ghostrole_instantiator/human/player_static/trader/GetOutfit(client/C, mob/M, list/params)
 	M.faction = "trader"
-	//var/datum/outfit/outfit = ..()
+	C.prefs.equip_loadout(M)
 	return /datum/outfit/trader
 
 /obj/structure/ghost_role_spawner/trader
