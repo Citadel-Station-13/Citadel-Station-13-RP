@@ -23,9 +23,9 @@
 		if(!isnull(M.slowdown))
 			tally += M.slowdown
 
-	var/health_deficiency = (getMaxHealth() - health)
-	if(health_deficiency >= 40)
-		tally += (health_deficiency / 35)
+	var/health_deficiency = 1 - clamp(health / getMaxHealth(), 0, 1)
+	if(health_deficiency >= 0.4)
+		tally += health_deficiency * (100 / 35)
 
 	if(can_feel_pain())
 		if(!(CE_SPEEDBOOST in chem_effects)) //Hyperzine stops pain slowdown
@@ -36,21 +36,13 @@
 	if (hungry >= 70)
 		tally += hungry/50
 
-	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
-		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
-		if(shock_stage >= 10) tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 	if(reagents.has_reagent("numbenzyme"))
 		tally += 1.5 //A tad bit of slowdown.
-	// if(riding_datum) //Bit of slowdown for taur rides if rider is bigger or fatter than mount.
-	// 	var/datum/riding/R = riding_datum
-	// 	var/mob/living/L = R.ridden
-	// 	for(var/mob/living/M in L.buckled_mobs)
-	// 		if(ishuman(M))
-	// 			var/mob/living/carbon/human/H = M
-	// 			if(H.size_multiplier > L.size_multiplier)
-	// 				tally += 1
-	// 			if(H.weight > L.weight)
-	// 				tally += 1
+
+	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
+		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
+		if(shock_stage >= 10)
+			tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -71,9 +63,11 @@
 			else if(E.status & ORGAN_BROKEN)
 				tally += 1.5
 
-	if(shock_stage >= 10) tally += 3
+	if(shock_stage >= 10)
+		tally += 3
 
-	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
+	if(aiming && aiming.aiming_at)
+		tally += 5 // Iron sights make you slower, it's a well-known fact.
 
 	if(MUTATION_FAT in src.mutations)
 		tally += 1.5
@@ -98,18 +92,6 @@
 			tally += item_tally // no hyperzine? slowed down by things
 	else
 		tally += item_tally // if it's less than 0 that means it speeds you up, theoretically, so, hit it
-
-	/* removed - kevinz000. A system will eventually be reintroduced to do this, but for the moment I'd rather this Not be a thing.
-	// Dragging heavy objects will also slow you down, similar to above.
-	if(pulling)
-		if(istype(pulling, /obj/item))
-			var/obj/item/pulled = pulling
-			item_tally += max(pulled.slowdown, 0)
-		else if(ishuman(pulling))
-			var/mob/living/carbon/human/H = pulling
-			var/their_slowdown = max(H.calculate_item_encumbrance(), 1)
-			item_tally = max(item_tally, their_slowdown) // If our slowdown is less than theirs, then we become as slow as them (before species modifires).
-	*/
 
 	if(CE_SLOWDOWN in chem_effects)
 		if (tally >= 0 )

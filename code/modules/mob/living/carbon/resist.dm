@@ -1,6 +1,8 @@
 /mob/living/carbon/resist_fire()
+	if(!on_fire)
+		return FALSE
 	adjust_fire_stacks(-1.2)
-	afflict_paralyze(20 * 3)
+	afflict_paralyze(20)
 	spin(32,2)
 	visible_message(
 		SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
@@ -24,7 +26,8 @@
 
 	if(I)
 		setClickCooldown(100)
-		cuff_resist(I, cuff_break = can_break_cuffs())
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, cuff_resist), I, cuff_break = can_break_cuffs())
+	return TRUE
 
 /mob/living/carbon/proc/reduce_cuff_time()
 	return FALSE

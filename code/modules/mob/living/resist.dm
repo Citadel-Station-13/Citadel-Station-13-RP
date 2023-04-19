@@ -26,13 +26,19 @@
 		C.contents_resist(src)
 		return TRUE
 
-	if(on_fire)
-		resist_fire() //stop, drop, and roll
-	else
-		resist_restraints()
+	if(resist_fire())
+		return
 
-	if(attempt_vr(src,"vore_process_resist",args))
-		return TRUE
+	if(resist_restraints())
+		return
+
+	if(isbelly(loc))
+		var/obj/belly/B = loc
+		B.relay_resist(src)
+		return
+
+	if(resist_a_rest())
+		return
 
 /mob/living/proc/resist_grab()
 	var/resisting = 0

@@ -37,14 +37,17 @@
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/mob_crawling)
 	set_density(!resting)
-	mobility_flags = (mobility_flags & ~(MOBILITY_IS_STANDING)) | (value? MOBILITY_IS_STANDING : NONE)
+	if(value)
+		mobility_flags &= ~(MOBILITY_IS_STANDING)
+	else
+		mobility_flags |= MOBILITY_IS_STANDING
 	SEND_SIGNAL(src, COMSIG_MOB_ON_SET_RESTING, value)
 	update_lying()
 	update_water()
 
 /**
  * immediately toggles resting
- * does not check mobility flags.
+ * does not check, or update mobility flags.
  */
 /mob/living/proc/toggle_resting()
 	set_resting(!resting)
@@ -80,11 +83,16 @@
 			SPAN_NOTICE("You get up."),
 		)
 		set_resting(FALSE)
+	else
+		visible_message(
+			SPAN_NOTICE("[src] falls back down."),
+			SPAN_NOTICE("You fall back down."),
+		)
 	getting_up = FALSE
 
 /mob/living/proc/get_up_delay()
 	// todo: redo
-	return 5 + clamp(health / maxHealth, 0, 1) * 33 + min(halloss, 100) * 0.33
+	return 5 + (1 - clamp(health / getMaxHealth(), 0, 1)) * 33 + min(halloss, 100) * 0.33
 
 #define PENALIZE_FACTOR 0.5
 
@@ -99,6 +107,7 @@
 		getting_up_loc = loc
 		// penalize up to 1.5 seconds retroactively
 		do_after_args[DO_AFTER_ARG_DELAY] += min(1.5 SECONDS, penalizing) * PENALIZE_FACTOR
+	return TRUE
 
 #undef PENALIZE_FACTOR
 
@@ -156,5 +165,5 @@
 	set name = "Rest"
 	set category = "IC"
 
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+	to_chat(src, "<span class='notice'>You are now [resting_intentionally ? "attempting to stay upright." : "resting intentionally."]</span>")
 	toggle_intentionally_resting()

@@ -125,6 +125,7 @@
 		if(!(flags & DO_AFTER_IGNORE_USER_MOVEMENT) && (user.loc != user_loc))
 			. = FALSE
 			break
+
 		if(!isnull(user_turf) && (get_turf(user) != user_turf))
 			. = FALSE
 			break
