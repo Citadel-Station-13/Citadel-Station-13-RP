@@ -30,6 +30,8 @@
 	nutrition = rand(200,400)
 	hydration = rand(200,400)
 
+	immune_system = new /datum/immune_system(src)
+
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
