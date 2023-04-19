@@ -142,7 +142,7 @@
 	var/getting_up = FALSE
 	/// last loc while getting up - used by resist_a_rest
 	var/atom/getting_up_loc
-	/// last check time while getting up - used by resist_a_rest
-	var/getting_up_last
+	/// last penalize time while getting up - used by resist_a_rest
+	var/getting_up_penalized
 	/// last delay before modifications while getting up - used by resist_a_rest, so reducing damage / whatever doesn't leave you with the same delay
 	var/getting_up_original
