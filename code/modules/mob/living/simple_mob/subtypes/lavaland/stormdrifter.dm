@@ -184,16 +184,16 @@
 /datum/component/riding_handler/stormdrifter_bull
 	rider_offsets = list(
 		list(
-			list(0, 7, 0.1, null),
-			list(7, 2, -0.1, null),
-			list(0, 2, -0.1, null),
-			list(-7, 2, 0.1, null)
+			list(0, 9, -0.1, null),
+			list(9, 10, -0.1, null),
+			list(0, 9, -0.1, null),
+			list(-7, 10, 0.1, null)
 		),
 		list(
-			list(0, 2, 0.2, null),
-			list(-7, 2, -0.2, null),
-			list(0, 9, -0.2, null),
-			list(7, 2, 0.2, null)
+			list(0, 9, 0.2, null),
+			list(-7, 9, -0.2, null),
+			list(0, 11, -0.2, null),
+			list(7, 10, 0.2, null)
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
