@@ -128,7 +128,7 @@
 	if(!n || !direct || mob.transforming) // i'm moving something ahead of that check
 		return FALSE
 	// commented out - not needed without momentum preservation
-	// var/old_delay = mob.move_delay
+	var/old_delay = mob.move_delay
 	// prevent more than one move per tick if we get interrupted from normal movement
 	mob.move_delay = world.time + world.tick_lag
 	// admin control (?)
@@ -336,9 +336,8 @@
 		add_delay *= SQRT_2
 
 	// round to tick to prevent lurching instead of preserving momentum
-	mob.move_delay = world.time + round(add_delay, world.tick_lag)
+	// mob.move_delay = world.time + round(add_delay, world.tick_lag)
 
-/*
 	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
 	// we need to store how much we're cheated out of our tick and carry it through
 	// make an intelligent guess at if they're trying to keep moving, tho!
@@ -346,7 +345,6 @@
 		mob.move_delay = old_delay + add_delay
 	else
 		mob.move_delay = world.time + add_delay
-*/
 
 	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
 
