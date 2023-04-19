@@ -1046,10 +1046,6 @@
 	if(status_flags & STATUS_GODMODE)	return 0
 
 	//SSD check, if a logged player is awake put them back to sleep!
-	var/was_ssd = FALSE
-	if(species.get_ssd(src) && !client && !teleop && !override_ssd && !temporary_form)
-		afflict_sleeping(20 * 2)
-		was_ssd = TRUE
 	if(stat == DEAD)	//DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
 		blinded = 1
 		silent = 0

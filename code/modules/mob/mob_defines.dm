@@ -110,7 +110,7 @@
 
 	//? SSD
 	/// current ssd overlay
-	var/image/ssd_overlay/ssd_overlay
+	var/image/ssd_overlay
 
 	//? unsorted / legacy
 	var/datum/mind/mind

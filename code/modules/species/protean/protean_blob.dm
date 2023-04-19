@@ -76,7 +76,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/proc/usehardsuit)
-		INVOKE_ASYNC(src, /mob/living/proc/update_health)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
 		update_icon()
 

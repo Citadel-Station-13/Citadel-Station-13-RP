@@ -47,10 +47,6 @@
 /mob/proc/needs_ssd_overlay_update()
 	return TRUE // no support for smart re-renders yet.
 
-/image/ssd_overlay
-	icon = 'icons/rendering/atom_hud/status_16x16_oversized.dmi'
-	icon_state = "eepy"
-
 /**
  * renders ssd overlay
  *
@@ -58,7 +54,7 @@
  */
 /mob/proc/render_ssd_overlay()
 	if(isnull(ssd_overlay))
-		ssd_overlay = new
+		ssd_overlay = image(icon = 'icons/screen/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
 	// flags
 	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART
 	// matrix
