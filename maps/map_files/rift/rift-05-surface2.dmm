@@ -4472,6 +4472,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/trade_shop/loading)
+"dim" = (
+/obj/machinery/door/blast/regular{
+	id = "hammerevabreach";
+	name = "EVA Breach"
+	},
+/obj/machinery/atmospheric_field_generator/perma,
+/turf/simulated/floor/tiled/dark,
+/area/shuttle/hammerhead/bay)
 "djg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -16414,7 +16422,7 @@
 	id = "hammerfighteraccess";
 	name = "Fighter Bay Access"
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/tiled/red,
 /area/shuttle/hammerhead/bay)
 "lot" = (
 /obj/machinery/door/airlock/maintenance/sec,
@@ -23807,13 +23815,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
-"qDt" = (
-/obj/machinery/door/blast/regular{
-	id = "hammerfighteraccess";
-	name = "Fighter Bay Access"
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/shuttle/hammerhead/bay)
 "qDA" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/tinted/frosted{
@@ -27499,11 +27500,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "tBx" = (
+/obj/machinery/atmospheric_field_generator/perma,
 /obj/machinery/door/blast/regular{
-	id = "evabreach";
+	id = "hammerevabreach";
 	name = "EVA Breach"
 	},
-/obj/machinery/atmospheric_field_generator/perma,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/bay)
 "tBE" = (
@@ -52936,7 +52937,7 @@ bap
 kaH
 oBA
 ceM
-qDt
+lop
 oFw
 kCx
 oFw
@@ -53130,7 +53131,7 @@ kXL
 kaH
 ayE
 ief
-qDt
+lop
 kCx
 kCx
 kCx
@@ -53325,7 +53326,7 @@ fcW
 fcW
 fcW
 fcW
-tBx
+dim
 tBx
 tBx
 fcW
