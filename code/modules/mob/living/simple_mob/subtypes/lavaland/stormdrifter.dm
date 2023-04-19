@@ -132,12 +132,18 @@
 	cooperative = TRUE
 	can_flee = FALSE
 
+/datum/ai_holder/simple_mob/stormdrifter/bull_neutered
+	hostile = FALSE
+	cooperative = FALSE
+	can_flee = FALSE
+
 /mob/living/simple_mob/animal/stormdrifter/bull/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/tool/wirecutters) || is_sharp(O))
 		to_chat(user, "<span class='danger'>You amputate the [src]'s stingers! It may now be domesticated!</span>")
 		neutered = 1
 		melee_damage_lower = 5
 		melee_damage_upper = 10
+		ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter/bull_neutered
 
 	if(istype(O, /obj/item/saddle/stormdrifter) && !rideable)
 		if(!neutered)
@@ -176,14 +182,17 @@
 		return 1
 
 /datum/component/riding_handler/stormdrifter_bull
+	rider_offsets = list(0, 9, 0, null)
+	/*
 	rider_offsets = list(
 		list(0, 9, 0.2, null),
 		list(0, 9, -0.2, null),
 		list(0, 9, -0.2, null),
 		list(0, 9, 0.2, null)
 		)
+	*/
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
-	vehicle_move_delay = 1
+	vehicle_move_delay = 2
 
 /mob/living/simple_mob/animal/stormdrifter/bull/update_icon()
 	if(neutered)

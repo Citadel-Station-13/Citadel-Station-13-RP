@@ -876,8 +876,8 @@
 	icon_state = "saddle_lavaland"
 
 /obj/item/saddle/stormdrifter
-	name = "sinew harness and bone bucket"
-	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed to be hung from a flying creature."
+	name = "harness and gondola"
+	desc = "A hardy gondola designed to be mounted on a floating creature. This one is fashioned out of shank chitin and Goliath bone."
 	icon_state = "saddle_lavaland"
 
 //Ashlander Specific Crafting Items
