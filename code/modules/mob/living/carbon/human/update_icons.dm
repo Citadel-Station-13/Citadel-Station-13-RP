@@ -104,6 +104,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
 	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
 	update_icon_special() //May contain transform-altering things
+	update_ssd_overlay()
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists

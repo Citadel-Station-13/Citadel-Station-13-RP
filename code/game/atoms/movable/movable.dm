@@ -261,6 +261,7 @@
 /atom/movable/proc/get_icon_scale_y()
 	return icon_scale_y
 
+// todo: refactor this shit
 /atom/movable/proc/update_transform()
 	var/matrix/M = matrix()
 	M.Scale(icon_scale_x, icon_scale_y)
@@ -291,12 +292,6 @@
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
 	// blood_act(null, 500, 50)
-
-/**
-  * Sets our movement type.
-  */
-/atom/movable/proc/set_movement_type(new_movetype)
-	movement_type = new_movetype
 
 /atom/movable/proc/Bump_vr(var/atom/A, yes)
 	return

@@ -15,13 +15,11 @@
 /**
  * basically, indicates that a player's gone, and there's no ai holder
  */
-/mob/proc/is_ghosted()
+/mob/proc/is_catatonic()
 	return !ckey
 
-/mob/living/is_ghosted()
+/mob/living/is_catatonic()
 	return !isnull(ai_holder) && ..()
-
-#warn this all is bad (above)
 
 /**
  * update ssd overlay
@@ -47,7 +45,11 @@
  * checks if we need a ssd overlay update
  */
 /mob/proc/needs_ssd_overlay_update()
-	return FALSE
+	return TRUE // no support for smart re-renders yet.
+
+/image/ssd_overlay
+	icon = 'icons/rendering/atom_hud/status_16x16_oversized.dmi'
+	icon_state = "eepy"
 
 /**
  * renders ssd overlay
@@ -55,9 +57,16 @@
  * @return TRUE if anything changed, FALSE otherwise
  */
 /mob/proc/render_ssd_overlay()
-	. = FALSE
 	if(isnull(ssd_overlay))
-		ssd_overlay = new image(icon = 'icons/rendering/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
-		. = TRUE
-	#warn impl
-
+		ssd_overlay = new
+	// flags
+	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART
+	// matrix
+	var/matrix/transforming_with = matrix()
+	// center above
+	transforming_with.Translate(8, 32)
+	// scale
+	transforming_with.Scale(1, transform.get_y_scale())
+	// modify transform to new
+	ssd_overlay.transform = transforming_with
+	return TRUE // no support for smart re-renders yet.
