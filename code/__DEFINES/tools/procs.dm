@@ -1,4 +1,4 @@
-//! Tool usage flags
+//? Tool usage flags
 /// do not make message
 #define TOOL_OP_NO_MESSAGE				(1<<0)
 /// do not make audio
@@ -20,7 +20,7 @@
 /// do not do standard feedback
 #define TOOL_OP_NO_STANDARD_FEEDBACK	(TOOL_OP_NO_STANDARD_MESSAGE | TOOL_OP_NO_STANDARD_AUDIO)
 
-//! Misc
+//? Misc
 // If delay between the start and the end of tool operation is less than MIN_TOOL_SOUND_DELAY,
 // tool sound is only played when op is started. If not, it's played twice.
 #define MIN_TOOL_SOUND_DELAY 20

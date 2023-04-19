@@ -38,14 +38,14 @@
 
 	return ..()
 
-/obj/item/clothing/suit/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/suit/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	if(taurized)
 		MA.pixel_x = -16
 		MA.layer = TAIL_LAYER + 1	// kick it over tail
 
 // todo: accesosries shouldn't be directly done on this proc, use a helper proc to override
-/obj/item/clothing/suit/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/suit/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	if(!inhands && LAZYLEN(accessories) && taurized)
 		for(var/obj/item/clothing/accessory/A in accessories)
 			var/image/I = new(A.get_mob_overlay())

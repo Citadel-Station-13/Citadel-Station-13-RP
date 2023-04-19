@@ -31,7 +31,7 @@
 				m_type = 1
 
 		//Machine-only emotes
-		if("ping", "beep", "buzz", "yes", "ye", "no", "dwoop", "scary", "rcough", "rsneeze", "honk", "buzz2", "warn", "chime", "startup", "shutdown", "error", "die")
+		if("beep", "buzz", "buzz2", "chime", "die", "dwoop", "error", "honk", "no", "ping", "rcough", "rsneeze", "scary", "shutdown","startup", "warn", "ye", "yes")
 
 			var/obj/item/organ/o = internal_organs_by_name[O_VOICE]
 			if(!isSynthetic() && (!o || !(o.robotic >= ORGAN_ASSISTED)))
@@ -1042,7 +1042,8 @@
 			to_chat(src, "nyaha, awoo, bark, blink, blink_r, blush, bow-(none)/mob, burp, chirp, choke, chuckle, clap, collapse, cough, cry, custom, deathgasp, drool, eyebrow, fastsway/qwag, \
 					flip, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hiss, hug-(none)/mob, laugh, look-(none)/mob, merp, moan, mumble, nod, nya, pale, peep, point-atom, \
 					raise, roll, salute, fullsalute, scream, sneeze, shake, shiver, shrug, sigh, signal-#1-10, slap-(none)/mob, smile, sneeze, sniff, snore, stare-(none)/mob, stopsway/swag, squeak, sway/wag, swish, tremble, twitch, \
-					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, yes, no, rcough, rsneeze, ping. Vox: shriekshort, shriekloud")
+					twitch_v, vomit, weh, whimper, wink, yawn. Moth: mchitter, mlaugh, mscream, msqueak. Synthetics: beep, buzz, buzz2, chime, die, dwoop, error, honk, no, ping, rcough, rsneeze, scary, \
+					shutdown, startup, warn, ye, yes. Vox: shriekshort, shriekloud")
 
 		else
 			to_chat(src, "<font color=#4F49AF>Unusable emote '[act]'. Say *help for a list.</font>")

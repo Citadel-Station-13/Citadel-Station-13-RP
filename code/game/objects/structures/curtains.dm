@@ -67,6 +67,12 @@
 	name = "privacy curtain"
 	color = "#B8F5E3"
 
+/obj/structure/curtain/open/ashlander
+	name = "hide curtains"
+	desc = "A curtain fasioned out of Goliath hide - frequently used to keep flying ash out of a building."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "goliath_open"
+
 /obj/structure/curtain/open/shower
 	name = "shower curtain"
 	color = "#ACD1E9"

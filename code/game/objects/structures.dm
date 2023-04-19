@@ -3,6 +3,9 @@
 	w_class = ITEMSIZE_NO_CONTAINER
 	pass_flags = ATOM_PASS_BUCKLED
 
+	// todo: rename to default_unanchor, allow generic structure unanchoring.
+	var/allow_unanchor = FALSE
+
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
 	var/breakable

@@ -82,17 +82,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"ao" = (
-/obj/machinery/door/airlock/glass_mining{
-	name = "Mining Operations";
-	req_access = list(31);
-	req_one_access = list()
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "ap" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3574,19 +3563,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
-"kd" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/sortjunction/flipped{
-	dir = 4;
-	name = "Mining";
-	sortType = "Mining"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/undertwo)
 "ke" = (
 /obj/structure/railing{
 	dir = 4
@@ -4453,15 +4429,6 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
-"mx" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 10
-	},
-/obj/machinery/camera/network/civilian{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/cryo)
 "my" = (
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -5399,12 +5366,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"oS" = (
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/cryo)
 "oT" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -5948,6 +5909,17 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
+"qy" = (
+/obj/machinery/door/airlock/glass_mining{
+	name = "Mining Operations";
+	req_access = list(31);
+	req_one_access = list()
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "qz" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -6065,16 +6037,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
-"qT" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
 "qU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -6196,17 +6158,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
-"rk" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/green,
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Underground Two Subgrid";
-	name_tag = "Underground Two Subgrid"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/atmos)
 "rl" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/common,
@@ -6520,6 +6471,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
+"sh" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "si" = (
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8298,6 +8256,20 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"yV" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Engineering";
+	output_attempt = 0
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor,
+/area/maintenance/substation/engineering)
 "yZ" = (
 /obj/machinery/button/remote/driver{
 	id = "enginecore";
@@ -8345,13 +8317,6 @@
 	},
 /obj/machinery/light/small{
 	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
-"zc" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -9065,14 +9030,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
-"Ct" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/cable/green,
-/obj/structure/cable/green{
-	icon_state = "16-0"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
 "CA" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/under2)
@@ -9381,6 +9338,13 @@
 	outdoors = 0
 	},
 /area/engineering/engine_core)
+"DM" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
+/turf/simulated/floor/tiled/techfloor,
+/area/cryo)
 "DO" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -9566,6 +9530,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
+"EE" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
+/turf/simulated/floor/tiled/techfloor,
+/area/cryo)
 "EG" = (
 /turf/simulated/wall,
 /area/engineering/hallway)
@@ -9862,25 +9833,6 @@
 /obj/effect/floor_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
-"FI" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
-	},
-/obj/machinery/light_switch{
-	pixel_y = 24
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "FK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -10572,6 +10524,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"IF" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/cable/green,
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "IG" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -10641,6 +10601,19 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/engineering/engine_gas)
+"IU" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Engineering Subgrid";
+	name_tag = "Engineering Subgrid"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
+/area/maintenance/substation/engineering)
 "IV" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /turf/simulated/floor/lino,
@@ -10678,19 +10651,6 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
-"Jj" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Engineering Subgrid";
-	name_tag = "Engineering Subgrid"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor,
-/area/maintenance/substation/engineering)
 "Jk" = (
 /obj/machinery/power/crypto_miner{
 	anchored = 0
@@ -11175,6 +11135,16 @@
 "Le" = (
 /turf/simulated/floor/tiled/white,
 /area/rnd/secure_storage/lower)
+"Lf" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 10
+	},
+/obj/landmark/spawnpoint/latejoin/station/cryogenics,
+/turf/simulated/floor/tiled/techfloor,
+/area/cryo)
 "Lg" = (
 /obj/effect/map_effect/portal/master/side_a{
 	dir = 4;
@@ -11695,6 +11665,16 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"Nb" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/mining)
 "Nc" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12448,12 +12428,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
-"PZ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/miningdock)
 "Qa" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /turf/simulated/floor/tiled,
@@ -12678,6 +12652,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/chief)
+"Rf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "Rh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13031,20 +13011,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"SM" = (
-/obj/structure/cable/cyan{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/cyan{
-	icon_state = "0-8"
-	},
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Engineering";
-	output_attempt = 0
-	},
-/obj/machinery/camera/network/engineering,
-/turf/simulated/floor,
-/area/maintenance/substation/engineering)
 "SP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14275,6 +14241,17 @@
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
+"XM" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green,
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Underground Two Subgrid";
+	name_tag = "Underground Two Subgrid"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/atmos)
 "XQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14579,6 +14556,25 @@
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
+"YY" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/light_switch{
+	pixel_y = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/miningdock)
 "YZ" = (
 /obj/machinery/light{
 	dir = 8
@@ -14598,6 +14594,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
+"Zb" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/sortjunction/flipped{
+	dir = 4;
+	name = "Mining";
+	sortType = "Mining"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/undertwo)
 "Ze" = (
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -26940,7 +26949,7 @@ oI
 ay
 pn
 re
-rk
+XM
 pV
 ay
 KF
@@ -28277,9 +28286,9 @@ xd
 Kw
 gO
 ZE
-oS
+EE
 ZE
-mx
+Lf
 Kw
 ms
 NL
@@ -30834,7 +30843,7 @@ ON
 eY
 ce
 Im
-Jj
+IU
 cX
 KY
 ES
@@ -31222,7 +31231,7 @@ vK
 TI
 ce
 Im
-SM
+yV
 HQ
 KY
 HX
@@ -32156,9 +32165,9 @@ Ze
 Ze
 Kw
 jL
-kJ
+DM
 GP
-kJ
+DM
 pl
 Kw
 mu
@@ -33525,10 +33534,10 @@ EQ
 XK
 XK
 EQ
-FI
-PZ
-ao
-kd
+YY
+Rf
+qy
+Zb
 ll
 ll
 ll
@@ -36038,8 +36047,8 @@ yb
 Ey
 Ff
 JK
-zc
-Ct
+sh
+IF
 RU
 Ur
 tN
@@ -36232,7 +36241,7 @@ zb
 xu
 ZN
 yb
-qT
+Nb
 TL
 RU
 RU
