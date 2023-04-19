@@ -21,7 +21,7 @@
 	if(using_perspective?.reset_on_logout)
 		reset_perspective()
 	// update ssd overlay
-	update_ssd_overlay(TRUE)
+	addtimer(CALLBACK(src, PROC_REF(/mob, update_ssd_overlay)), 0)
 
 	..()
 	return 1

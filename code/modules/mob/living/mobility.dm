@@ -11,6 +11,8 @@
 		for(var/obj/item/grab/G as anything in grabbed_by)
 			if(G.state >= GRAB_AGGRESSIVE)
 				blocked |= MOBILITY_CAN_MOVE | MOBILITY_CAN_USE | MOBILITY_CAN_HOLD | MOBILITY_CAN_PICKUP | MOBILITY_CAN_STORAGE | MOBILITY_CAN_UI
+	if(resting)
+		blocked |= MOBILITY_IS_STANDING
 
 	. = ..()
 

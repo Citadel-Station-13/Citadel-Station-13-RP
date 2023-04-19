@@ -64,6 +64,8 @@
  * @return stacks applied
  */
 /mob/proc/apply_stacking_effect(datum/status_effect/stacking/path, stacks, maximum)
+	if(isnull(maximum))
+		maximum = stacks // default no additional stacking
 	if(!ispath(path, /datum/status_effect/stacking))
 		CRASH("[path] is not a stacking effect.")
 	stacks = min(stacks, maximum) // just in case

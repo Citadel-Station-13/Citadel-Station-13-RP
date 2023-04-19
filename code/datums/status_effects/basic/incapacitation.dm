@@ -2,7 +2,7 @@
 	var/requires_mobility_update = TRUE
 	var/requires_stat_update = FALSE
 
-/datum/status_effect/incapacitation/on_apply()
+/datum/status_effect/incapacitation/on_apply(...)
 	. = ..()
 	if(requires_mobility_update)
 		owner.update_mobility()

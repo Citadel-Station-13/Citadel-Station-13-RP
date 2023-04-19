@@ -28,7 +28,8 @@
 	/// mob we're affecting
 	var/mob/owner
 
-/datum/status_effect/New(duration, list/arguments)
+/datum/status_effect/New(mob/owner, duration, list/arguments)
+	src.owner = owner
 	if(!isnull(duration))
 		src.duration = duration
 	started = world.time
@@ -188,7 +189,7 @@
 		existing.refresh(arglist(built))
 		return existing
 	else
-		var/datum/status_effect/making = new path(duration, additional)
+		var/datum/status_effect/making = new path(src, duration, additional)
 		status_effects[making.identifier] = making
 		return making
 

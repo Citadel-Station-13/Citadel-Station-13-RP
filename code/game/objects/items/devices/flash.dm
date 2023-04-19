@@ -193,6 +193,7 @@
 
 					if(flash_strength > 0)
 						H.Confuse(flash_strength + 5)
+						H.afflict_stagger(5)
 						H.Blind(flash_strength)
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()
