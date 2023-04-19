@@ -120,7 +120,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/stormdrifter/bull
 
 	buckle_lying = FALSE
-	buckle_max_mobs = 1
+	buckle_max_mobs = 2
 	buckle_allowed = FALSE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF|BUCKLING_GROUND_HOIST
 
@@ -182,15 +182,21 @@
 		return 1
 
 /datum/component/riding_handler/stormdrifter_bull
-	rider_offsets = list(0, 9, 0, null)
-	/*
 	rider_offsets = list(
-		list(0, 9, 0.2, null),
-		list(0, 9, -0.2, null),
-		list(0, 9, -0.2, null),
-		list(0, 9, 0.2, null)
+		list(
+			list(0, 7, 0.1, null),
+			list(7, 2, -0.1, null),
+			list(0, 2, -0.1, null),
+			list(-7, 2, 0.1, null)
+		),
+		list(
+			list(0, 2, 0.2, null),
+			list(-7, 2, -0.2, null),
+			list(0, 9, -0.2, null),
+			list(7, 2, 0.2, null)
 		)
-	*/
+	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 	vehicle_move_delay = 2
 

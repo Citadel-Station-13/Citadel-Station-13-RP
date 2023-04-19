@@ -396,7 +396,7 @@
 	result = /obj/item/saddle/stormdrifter
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 10,
-				/obj/item/stack/material/chitin = 5,
+				/obj/item/stack/chitin = 5,
 				/obj/item/stack/sinew = 10,
 				/obj/item/stack/animalhide/goliath_hide = 5
 				)
