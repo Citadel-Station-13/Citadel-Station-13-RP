@@ -906,3 +906,31 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "condensedphlogiston"
 	w_class = ITEMSIZE_SMALL
+
+/obj/item/bitterash
+	name = "poultice (bitter ash)"
+	desc = "A pungent poultice used primarily in Scorian religious rites. It is believed to provide protection from rampaging beasts."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "poulticeash"
+	w_class = ITEMSIZE_SMALL
+	var/use_sound = list('sound/effects/ointment.ogg')
+
+//Code isn't working. Figure it out tomorrow.
+/*
+/obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	if(user.a_intent == INTENT_HELP)
+		return ..()
+	if(!target.mind)
+		return ..()
+	if(!target.faction == "lavaland")
+		to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
+		target.faction = "lavaland"
+		playsound(src, pick(use_sound), 25)
+		qdel(src)
+	else if(target.faction == "lavaland")
+		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
+		playsound(src, pick(use_sound), 25)
+		qdel(src)
+		return
+*/
