@@ -90,7 +90,7 @@
 	if(..())
 		return FALSE
 
-	if(R.speed =< -0.5)
+	if(R.speed <= -0.5)
 		return FALSE
 
 	R.speed = -0.5
