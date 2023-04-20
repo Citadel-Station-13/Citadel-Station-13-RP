@@ -10,7 +10,7 @@
 	return ckey && isnull(client) && isnull(teleop) && !IS_DEAD(src)
 
 /mob/living/is_ssd()
-	return !isnull(ai_holder) && ..()
+	return isnull(ai_holder) && ..()
 
 /**
  * basically, indicates that a player's gone, and there's no ai holder
@@ -19,7 +19,7 @@
 	return !ckey
 
 /mob/living/is_catatonic()
-	return !isnull(ai_holder) && ..()
+	return isnull(ai_holder) && ..()
 
 /**
  * update ssd overlay

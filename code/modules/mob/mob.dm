@@ -172,32 +172,36 @@
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
 /mob/show_message(msg, type, alt, alt_type)
+	if(!client && !teleop)
+		return
 
-	if(!client && !teleop)	return
+	if(!saycode_type_eligible(type))
+		if(alt && saycode_type_eligible(alt_type))
+			msg = alt
+			type = alt_type
+		else
+			return
 
-	if (type)
-		if((type & 1) && (is_blind()) )//Vision related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-		if ((type & 2) && is_deaf())//Hearing related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
-					return
-	// Added voice muffling for Issue 41.
-	if(!IS_CONSCIOUS(src) && !IS_DEAD(src))
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
 		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
 		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
 		if(teleop)
 			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]", type = MESSAGE_TYPE_LOCALCHAT)
-	return
+
+/mob/proc/saycode_type_eligible(type)
+	switch(type)
+		if(SAYCODE_TYPE_VISIBLE)
+			return !is_blind()
+		if(SAYCODE_TYPE_AUDIBLE)
+			return !is_deaf()
+		if(SAYCODE_TYPE_CONSCIOUS)
+			return IS_CONSCIOUS(src)
+		if(SAYCODE_TYPE_LIVING)
+			return !IS_DEAD(src)
+		if(SAYCODE_TYPE_ALWAYS)
+			return TRUE
+	return TRUE
 
 /**
  * Show a message to all mobs in earshot of this one
