@@ -112,6 +112,8 @@
 		/datum/ability/species/xenochimera/thermal_sight,
 		/datum/ability/species/xenochimera/voice_mimic,
 		/datum/ability/species/xenochimera/hatch,
+		/datum/ability/species/xenochimera/commune,
+		/datum/ability/species/xenochimera/dissonant_shriek,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
@@ -142,14 +144,9 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-		/mob/living/carbon/human/proc/commune,
 	)
 
-	var/list/feral_abilities = list(
-		/datum/ability/species/xenochimera/dissonant_shriek,
-	)
-
-	var/has_feral_spells = FALSE
+	var/has_feral_abilities = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
 	//If they're KO'd/dead, they're probably not thinking a lot about much of anything.
@@ -179,27 +176,18 @@
 			H.eye_blurry = max(5,H.eye_blurry)
 	..()
 
-/datum/species/shapeshifter/xenochimera/proc/add_feral_spells(var/mob/living/carbon/human/H)
-	if(!has_feral_spells)
-		var/check = FALSE
-		for(var/datum/ability/A as anything in feral_abilities)
-			A.associate(H)
-		if(check)
-			has_feral_spells = TRUE
-		else
-			return
+/datum/species/shapeshifter/xenochimera/proc/add_feral_abilities(var/mob/living/carbon/human/H)
+	if(!has_feral_abilities)
+		has_feral_abilities = TRUE
 	else
 		return
 
 /datum/species/shapeshifter/xenochimera/proc/remove_feral_spells(var/mob/living/carbon/human/H)
-	for(var/datum/ability/A as anything in feral_abilities)
-		A.disassociate(H)
-	has_feral_spells = FALSE
+	if(has_feral_abilities)
+		has_feral_abilities = FALSE
+	else
+		return
 
-/datum/species/shapeshifter/xenochimera/handle_post_spawn(mob/living/carbon/human/H)
-	..()
-	for(var/datum/ability/A as anything in feral_abilities)
-		A = new A(H)
 
 /datum/species/shapeshifter/xenochimera/proc/handle_feralness(var/mob/living/carbon/human/H)
 
@@ -281,8 +269,8 @@
 		feral_state = TRUE
 
 		//We check if the current spell list already has feral spells.
-		if(!has_feral_spells)
-			add_feral_spells(H)
+		if(!has_feral_abilities)
+			add_feral_abilities(H)
 
 		//Shock due to mostly halloss. More feral.
 		if(shock && 2.5*H.halloss >= H.traumatic_shock)
@@ -312,7 +300,7 @@
 		//Did we just finish being feral?
 		if(!feral)
 			feral_state = FALSE
-			if(has_feral_spells)
+			if(has_feral_abilities)
 				remove_feral_spells(H)
 			to_chat(H,"<span class='info'>Your thoughts start clearing, your feral urges having passed - for the time being, at least.</span>")
 			log_and_message_admins("is no longer feral.", H)
@@ -646,7 +634,7 @@
 	var/nutrition_cost_minimum = 50
 	var/nutrition_cost_proportional = 20 //percentage of nutriment it should cost if it's higher than the minimum
 	var/nutrition_enforced = TRUE
-
+	var/is_feral = FALSE
 
 /datum/ability/species/xenochimera/check_trigger(mob/user, toggling)
 	. = ..()
@@ -654,11 +642,20 @@
 		return
 	if(!ishuman(owner))
 		return FALSE
+	if(istype(owner,/mob/living/carbon/human))		//is there seriously no better way
+		var/mob/living/carbon/human/H = owner
+		if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)
+			var/datum/species/shapeshifter/xenochimera/X = H.species
+			if(X.has_feral_abilities)
+				return TRUE	//hunger limits don't apply when feral
+
 	var/mob/living/carbon/human/H = owner
 	if(nutrition_enforced)
-		if((nutrition_cost_minimum > H.nutrition) || nutrition_cost_minimum > ((H.nutrition * nutrition_cost_proportional) / 100) )
-			to_chat(user,"<span class = 'notice'>We don't have enough nutriment. This ability is costly...</span>")
+		if(nutrition_cost_minimum > H.nutrition)
+			to_chat(user,"<span class = 'notice'>We don't have enough nutriment. This ability is costly.</span>")
 			return FALSE
+	else
+		return TRUE
 
 
 /datum/ability/species/xenochimera/on_trigger(mob/user, toggling)
@@ -685,8 +682,8 @@
 	name = "Regeneration"
 	desc = "We shed our skin, purging it of damage, regrowing limbs."
 	action_state = "ling_fleshmend"
-	nutrition_cost_minimum = 500
-	nutrition_cost_proportional = 75
+	nutrition_cost_minimum = 150
+	nutrition_cost_proportional = 30
 	nutrition_enforced = TRUE
 	cooldown = 1 MINUTE
 	windup = 10 SECONDS
@@ -805,7 +802,9 @@
 	var/emp_long = 12
 	var/smoke_spread = 1
 	var/smoke_amt = 1
-	cooldown = 5 MINUTES	//Let's not be able to spam this
+	cooldown = 3 MINUTES	//Let's not be able to spam this
+	nutrition_enforced = FALSE
+	is_feral = TRUE
 
 
 /datum/ability/species/xenochimera/dissonant_shriek/on_trigger()
@@ -829,6 +828,17 @@
 	for(var/obj/machinery/light/L in range(range, src))
 		L.on = TRUE
 		L.broken()
+
+/datum/ability/species/xenochimera/dissonant_shriek/available_check()
+	if(istype(owner,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = owner
+	if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)
+		var/datum/species/shapeshifter/xenochimera/X = H.species
+		if(X.has_feral_abilities)
+			return TRUE
+		else
+			..()
+	..()
 
 ////////////////
 //Revive spell//
@@ -880,6 +890,7 @@
 	desc = "We emerge in our new form."
 	action_state = "ling_revive"
 	cooldown = 10 SECONDS	//It gets removed after_cast anyway
+	nutrition_enforced = FALSE
 	nutrition_cost_minimum = 1
 	nutrition_cost_proportional = 1
 
@@ -905,3 +916,58 @@
 	playsound(T, 'sound/effects/splat.ogg')
 	disassociate(owner)
 	qdel(src)
+
+//////////////////////////////
+//Commune / Psychic Messages//
+//////////////////////////////
+
+/datum/ability/species/xenochimera/commune
+	name = "Commune"
+	desc = "Send a telepathic message to an unlucky recipient."
+	action_state = "gen_project"
+	nutrition_cost_minimum = 20
+	nutrition_cost_proportional = 5
+	cooldown = 20 SECONDS
+
+
+/datum/ability/species/xenochimera/commune/on_trigger()
+	. = ..()
+	var/list/targets = list()
+	var/target = null
+	var/text = null
+
+	for(var/datum/mind/possible_target in SSticker.minds)
+		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target)))
+			LAZYADD(targets,possible_target.current)
+
+	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
+	if(!target)
+		return
+
+	text = sanitize(input("What would you like to say or project?", "Speak to creature", null, null) as message|null)
+
+	if(!text)
+		return
+
+	var/mob/living/M = target
+	if(M.stat == DEAD)
+		to_chat(owner, "Not even a Xenochimera can speak to the dead.")
+		return
+
+	//The further the target is, the longer it takes.
+	var/distance = get_dist(M.loc,owner.loc)
+
+	var/delay = clamp((distance / 2), 1, 8) SECONDS //Half of distance worth of seconds, up to 8, Max: 8, min: 1.
+	owner.visible_message(SPAN_WARNING("[owner] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
+
+	if(do_after(owner, delay))
+		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", owner)
+
+		if(istype(M,/mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)	//thing to thing communication
+				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: <b>[text]</b>"))
+				return
+			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
+			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
+			H.drip(1)
