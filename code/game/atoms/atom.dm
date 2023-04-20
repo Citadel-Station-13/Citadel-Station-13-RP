@@ -249,7 +249,7 @@
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
 	//atom color stuff
-	if(color)
+	if(!isnull(color) && atom_colouration_system)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 	if(light_power && light_range)
