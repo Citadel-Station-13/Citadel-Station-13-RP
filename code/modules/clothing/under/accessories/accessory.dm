@@ -546,10 +546,10 @@
 	icon = 'icons/clothing/accessories/halos/projector.dmi'
 	icon_state = "offset"
 
-/obj/item/clothing/accessory/haloprojector/nanotransen
+/obj/item/clothing/accessory/haloprojector/nanotrasen
 	name = "corpo halo"
 	icon = 'icons/clothing/accessory/halos/projector.dmi'
-	icon_state = "nanotransen"
+	icon_state = "nanotrasen"
 
 //bracelets
 
