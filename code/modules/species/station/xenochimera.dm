@@ -830,8 +830,9 @@
 		L.broken()
 
 /datum/ability/species/xenochimera/dissonant_shriek/available_check()
+	var/mob/living/carbon/human/H
 	if(istype(owner,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = owner
+		H = owner
 	if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)
 		var/datum/species/shapeshifter/xenochimera/X = H.species
 		if(X.has_feral_abilities)
