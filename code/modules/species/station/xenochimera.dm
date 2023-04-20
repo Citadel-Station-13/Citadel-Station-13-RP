@@ -942,7 +942,7 @@
 		if (istype(possible_target.current, /mob/living) &&
 		possible_target != owner.mind &&
 		isStationLevel(get_z(possible_target)) &&
-		!possible_target.current.isSynthetic() &&)
+		!possible_target.current.isSynthetic())
 			LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
