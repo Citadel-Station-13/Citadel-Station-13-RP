@@ -456,10 +456,10 @@
 	icon = 'icons/clothing/accessories/halos/projector.dmi'
 	icon_state = "gabriel"
 
-/obj/item/clothing/accessory/haloprojector/3spike
+/obj/item/clothing/accessory/haloprojector/threespike
 	name = "triple starred halo"
 	icon = 'icons/clothing/accessories/halos/projector.dmi'
-	icon_state = "3spike"
+	icon_state = "threespike"
 
 /obj/item/clothing/accessory/haloprojector/brokenspike
 	name = "prophet's halo"
@@ -479,7 +479,7 @@
 /obj/item/clothing/accessory/haloprojector/thorns
 	name = "judge's halo"
 	icon = 'icons/clothing/accessories/halos/projector.dmi'
-	icons_state = "thorns"
+	icon_state = "thorns"
 
 /obj/item/clothing/accessory/haloprojector/cross
 	name = "faithful halo"
@@ -548,7 +548,7 @@
 
 /obj/item/clothing/accessory/haloprojector/nanotrasen
 	name = "corpo halo"
-	icon = 'icons/clothing/accessory/halos/projector.dmi'
+	icon = 'icons/clothing/accessories/halos/projector.dmi'
 	icon_state = "nanotrasen"
 
 //bracelets
