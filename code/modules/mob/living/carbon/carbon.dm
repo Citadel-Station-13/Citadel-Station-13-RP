@@ -147,10 +147,9 @@
 			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
 			if(istype(H))
 				show_ssd = H.species.show_ssd
-			if(show_ssd && !client && !teleop && (!istype(H) || !H.override_ssd))
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
-					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
-			else if(lying || !IS_CONSCIOUS(src))
+			if(IS_PRONE(src) || !IS_CONSCIOUS(src))
+				if(!resting_intentionally && IS_PRONE(src) && CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
+					set_resting(FALSE)
 				adjust_sleeping(-5 SECONDS)
 				adjust_unconscious(-2 SECONDS)
 				if(H)
