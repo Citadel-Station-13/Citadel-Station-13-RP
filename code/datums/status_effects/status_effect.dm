@@ -29,7 +29,9 @@
 	var/mob/owner
 
 /datum/status_effect/New(mob/owner, duration, list/arguments)
+	ASSERT(isnull(owner.status_effects[identifier]))
 	src.owner = owner
+	owner.status_effects[identifier] = src
 	if(!isnull(duration))
 		src.duration = duration
 	started = world.time
@@ -37,8 +39,7 @@
 	on_apply(arglist(arguments))
 
 /datum/status_effect/Destroy()
-	if(owner)
-		owner.status_effects?.Remove(identifier)
+	owner?.status_effects?.Remove(identifier)
 	on_remove()
 	owner = null
 	if(decay_timer)
@@ -190,7 +191,6 @@
 		return existing
 	else
 		var/datum/status_effect/making = new path(src, duration, additional)
-		status_effects[making.identifier] = making
 		return making
 
 /**
