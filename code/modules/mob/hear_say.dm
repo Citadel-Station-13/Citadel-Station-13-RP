@@ -20,7 +20,7 @@
 			italics = 1
 			sound_vol *= 0.5 //muffle the sound a bit, so it's like we're actually talking through contact
 
-	if(IS_ALIVE_BUT_UNCONSCOIUS(src))
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
 		hear_sleep(message)
 		return
 
@@ -159,7 +159,7 @@
 		playsound(loc, 'sound/effects/radiochatter.ogg', 10, 0, -1, falloff = -3)
 		last_radio_sound = world.time
 
-	if(IS_ALIVE_BUT_UNCONSCOIUS(src)) //If unconscious or sleeping
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src)) //If unconscious or sleeping
 		hear_sleep(message)
 		return
 
