@@ -852,6 +852,7 @@
 	cooldown = 30 MINUTES
 	nutrition_cost_minimum = 1
 	nutrition_cost_proportional = 1
+	nutrition_enforced = FALSE
 
 /datum/ability/species/xenochimera/hatch/on_trigger()
 	. = ..()
@@ -937,15 +938,18 @@
 	var/target = null
 	var/text = null
 
-	for(var/datum/mind/possible_target in SSticker.minds)
-		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target)))
+	for(var/datum/mind/possible_target in SSticker.minds)	//not us, on the station and not a synthetic
+		if (istype(possible_target.current, /mob/living) &&
+		possible_target != owner.mind &&
+		isStationLevel(get_z(possible_target)) &&
+		!possible_target.current.isSynthetic() &&)
 			LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
 	if(!target)
 		return
 
-	text = sanitize(input("What would you like to say or project?", "Speak to creature", null, null) as message|null)
+	text = sanitize(input("What would you like to say or project?", "Commune to creature", null, null) as message|null)
 
 	if(!text)
 		return
@@ -958,7 +962,7 @@
 	//The further the target is, the longer it takes.
 	var/distance = get_dist(M.loc,owner.loc)
 
-	var/delay = clamp((distance / 2), 1, 8) SECONDS //Half of distance worth of seconds, up to 8, Max: 8, min: 1.
+	var/delay = clamp((distance / 2), 1, 8) SECONDS
 	owner.visible_message(SPAN_WARNING("[owner] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
 
 	if(do_after(owner, delay))
