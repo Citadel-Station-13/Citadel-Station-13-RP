@@ -154,6 +154,9 @@
 
 /atom/movable/Initialize(mapload)
 	. = ..()
+	//atom color stuff
+	if(!isnull(color) && atom_colouration_system)
+		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 	if (!mapload && loc)
 		loc.Entered(src, null)
 	switch(blocks_emissive)
