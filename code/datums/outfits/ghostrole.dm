@@ -93,15 +93,14 @@
 	name = "Trader"
 	shoes = /obj/item/clothing/shoes/black
 	gloves = /obj/item/clothing/gloves/brown
-	back = /obj/item/storage/backpack/satchel
+	back = /obj/item/storage/backpack/satchel/withwallet/trader
 	l_ear = /obj/item/radio/headset/trader
 	glasses = /obj/item/clothing/glasses/sunglasses
 	uniform = /obj/item/clothing/under/trader_coveralls
 	id_slot = SLOT_ID_WORN_ID
 	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
-	pda_slot = SLOT_ID_RIGHT_POCKET
-	pda_type = /obj/item/pda/chef //cause I like the look
-	id_pda_assignment = "Trader"
+	belt = /obj/item/gun/ballistic/automatic/wt274
+	l_pocket = /obj/item/ammo_magazine/m45uzi/wt274
 
 /datum/outfit/trader/vox //This needs to be updated.
 	name = "Trader - Vox"

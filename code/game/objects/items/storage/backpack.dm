@@ -272,6 +272,9 @@
 /obj/item/storage/backpack/satchel/withwallet
 	starts_with = list(/obj/item/storage/wallet/random)
 
+/obj/item/storage/backpack/satchel/withwallet/trader
+	starts_with = list(/obj/item/storage/wallet/poly/trader)
+
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy looking satchel."

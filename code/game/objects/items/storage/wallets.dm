@@ -129,6 +129,10 @@
 			icon_state = original_state
 			update_icon()
 
+/obj/item/storage/wallet/poly/trader
+	//Identical to polychrome, but with more cash at the start.
+	starts_with = list(/obj/item/spacecash/c1000 = 2)
+
 /obj/item/storage/wallet/womens
 	name = "women's wallet"
 	desc = "A stylish wallet typically used by women."
