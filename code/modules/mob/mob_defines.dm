@@ -9,6 +9,7 @@
 	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
+	atom_colouration_system = TRUE
 
 	//? Core
 	/// mobs use ids as ref tags instead of actual refs.

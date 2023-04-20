@@ -127,6 +127,8 @@
 	 * its inherent color, the colored paint applied on it, special color effect etc...
 	 */
 	var/list/atom_colours
+	/// use expensive color priority system
+	var/atom_colouration_system = FALSE
 
 	//? Emissives
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
@@ -564,12 +566,20 @@
  * copies from other
  */
 /atom/movable/copy_atom_colour(atom/other, colour_priority)
-	add_atom_colour(other.get_atom_colour(), colour_priority)
+	if(!atom_colouration_system)
+		var/others = other.get_atom_colour()
+		if(isnull(others))
+			return
+		color = others
+		return
+	add_atom_colour(other.get_atom_colour(), colour_priority || FIXED_COLOUR_PRIORITY)
 
 /**
  * copies all from another movable
  */
 /atom/movable/proc/copy_atom_colours(atom/movable/other)
+	if(!atom_colouration_system)
+		return copy_atom_colour(other)
 	if(isnull(other.atom_colours))
 		return
 	atom_colours = other.atom_colours.Copy()
@@ -577,22 +587,31 @@
 
 /// Adds an instance of colour_type to the atom's atom_colours list
 /atom/movable/add_atom_colour(coloration, colour_priority)
+	if(!coloration)
+		return
+	if(!atom_colouration_system)
+		color = coloration
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
+		return
 	if(!atom_colours || !atom_colours.len)
 		atom_colours = list()
 		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(!coloration)
-		return
-	if(colour_priority > atom_colours.len)
-		return
 	atom_colours[colour_priority] = coloration
 	update_atom_colour()
 
 /// Removes an instance of colour_type from the atom's atom_colours list
 /atom/movable/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(colour_priority > atom_colours.len)
+	if(!atom_colouration_system)
+		if(coloration && color != coloration)
+			return
+		if(isnull(color))
+			return
+		color = null
+		return
+	if(!islist(atom_colours))
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
 		return
 	if(coloration && atom_colours[colour_priority] != coloration)
 		return //if we don't have the expected color (for a specific priority) to remove, do nothing
@@ -601,9 +620,10 @@
 
 /// Resets the atom's color to null, and then sets it to the highest priority colour available
 /atom/movable/update_atom_colour()
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
+	if(!atom_colouration_system)
+		return
+	if(!islist(atom_colours))
+		return
 	color = null
 	for(var/C in atom_colours)
 		if(islist(C))
