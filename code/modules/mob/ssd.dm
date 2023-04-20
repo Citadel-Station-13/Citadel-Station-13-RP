@@ -61,9 +61,7 @@
 	// matrix
 	var/matrix/transforming_with = matrix()
 	// center above
-	transforming_with.Translate(8, 32)
-	// scale
-	transforming_with.Scale(1, transform.get_y_scale())
+	transforming_with.Translate(8, 32 * transform.get_y_scale())
 	// modify transform to new
 	ssd_overlay.transform = transforming_with
 	return TRUE // no support for smart re-renders yet.

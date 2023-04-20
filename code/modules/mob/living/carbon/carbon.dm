@@ -142,11 +142,8 @@
 				var/mob/living/carbon/human/H = src
 				H.w_uniform.add_fingerprint(M)
 
-			var/show_ssd
 			var/mob/living/carbon/human/H = src
 			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
-			if(istype(H))
-				show_ssd = H.species.show_ssd
 			if(IS_PRONE(src) || !IS_CONSCIOUS(src))
 				if(!resting_intentionally && IS_PRONE(src) && CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
 					set_resting(FALSE)
