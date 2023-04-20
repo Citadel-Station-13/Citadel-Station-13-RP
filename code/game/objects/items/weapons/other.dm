@@ -916,21 +916,19 @@
 	var/use_sound = list('sound/effects/ointment.ogg')
 
 //Code isn't working. Figure it out tomorrow.
-/*
+
 /obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	. = ..()
-	if(user.a_intent == INTENT_HELP)
+	if(user.a_intent == INTENT_HARM)
 		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
 	if(!target.mind)
-		return ..()
-	if(!target.faction == "lavaland")
-		to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
-		target.faction = "lavaland"
-		playsound(src, pick(use_sound), 25)
-		qdel(src)
-	else if(target.faction == "lavaland")
-		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
-		playsound(src, pick(use_sound), 25)
-		qdel(src)
 		return
-*/
+	if(target.faction == user.faction)
+		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
+
+	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
+	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
+	target.faction = user.faction
+	playsound(src, pick(use_sound), 25)
+	qdel(src)
