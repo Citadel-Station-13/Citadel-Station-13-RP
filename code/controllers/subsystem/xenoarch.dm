@@ -36,9 +36,6 @@ SUBSYSTEM_DEF(xenoarch)
 		if(!M.density || faster[M.z])
 			continue
 
-		if(isnull(M.geologic_data))
-			M.geologic_data = new /datum/geosample(M)
-
 		if(!prob(XENOARCH_SPAWN_CHANCE))
 			continue
 

@@ -18,8 +18,6 @@
 
 /obj/structure/boulder/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/core_sampler))
-		src.geological_data.artifact_distance = rand(-100,100) / 100
-		src.geological_data.artifact_id = artifact_find.artifact_id
 
 		var/obj/item/core_sampler/C = I
 		C.sample_item(src, user)
