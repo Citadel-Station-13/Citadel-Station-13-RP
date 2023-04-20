@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
+	atom_colouration_system = FALSE
 
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
