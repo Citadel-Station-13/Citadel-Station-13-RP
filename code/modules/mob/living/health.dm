@@ -14,7 +14,7 @@
 		. = UNCONSCIOUS
 	else
 		. = CONSCIOUS
-	. = max(., forced)
+	. = max(., isnull(forced)? initial(stat) : forced)
 	if(. != stat)
 		set_stat(., update_mobility)
 

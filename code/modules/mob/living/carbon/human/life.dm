@@ -1098,9 +1098,6 @@
 			if( prob(2) && health > 0 && !hal_crit )
 				spawn(0)
 					emote("snore")
-		//CONSCIOUS
-		else
-			set_stat(CONSCIOUS)
 
 		//Periodically double-check embedded_flag
 		if(embedded_flag && !(life_tick % 10))

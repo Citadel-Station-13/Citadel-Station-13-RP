@@ -207,15 +207,31 @@
 /mob/living/carbon/human/handle_footstep(turf/T)
 	if(is_incorporeal())
 		return
+
+	// if buckled, don't bother
+	if(buckled)
+		return
+
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
 		return
+
+	// if down
+	if(IS_PRONE(src))
+		// if grabbed, don't bother
+		if(length(grabbed_by))
+			return
+		// play crawling sound
+		playsound(T, 'sound/effects/footstep/crawl1.ogg', 25, TRUE, -4)
+
+	// todo: REFACTOR EVERYTHING.
 	// Future Upgrades - Multi species support
 	var/list/footstep_sounds = T.footstep_sounds["human"]
 	if(!footstep_sounds)
 		return
 
 	var/S = pick(footstep_sounds)
-	if(!S) return
+	if(!S)
+		return
 
 	// Play every 20 steps while walking, for the sneak
 	if(m_intent == "walk" && step_count++ % 20 != 0)

@@ -29,17 +29,18 @@
  */
 /mob/proc/update_ssd_overlay(forced_state)
 	var/want = isnull(forced_state)? is_ssd() : forced_state
-	if(want && isnull(ssd_overlay))
-		render_ssd_overlay()
-		add_overlay(ssd_overlay, TRUE)
+	if(want)
+		if(isnull(ssd_overlay))
+			render_ssd_overlay()
+			add_overlay(ssd_overlay, TRUE)
+		else if(needs_ssd_overlay_update())
+			// just update
+			cut_overlay(ssd_overlay, TRUE)
+			render_ssd_overlay()
+			add_overlay(ssd_overlay, TRUE)
 	else if(!want && !isnull(ssd_overlay))
 		cut_overlay(ssd_overlay, TRUE)
 		ssd_overlay = null
-	else if(needs_ssd_overlay_update())
-		// just update
-		cut_overlay(ssd_overlay, TRUE)
-		render_ssd_overlay()
-		add_overlay(ssd_overlay, TRUE)
 
 /**
  * checks if we need a ssd overlay update

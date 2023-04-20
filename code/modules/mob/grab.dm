@@ -594,7 +594,6 @@
 /obj/item/grab/proc/apply_pinning(mob/target, mob/attacker)
 	force_down = 1
 	target.afflict_paralyze(20 * 3)
-	target.lying = 1
 	step_to(attacker, target)
 	attacker.setDir(EAST) //face the victim
 	target.setDir(SOUTH) //face up

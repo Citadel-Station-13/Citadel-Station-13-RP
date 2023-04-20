@@ -38,7 +38,7 @@
 
 /datum/status_effect/Destroy()
 	if(owner)
-		owner.status_effects?[identifier] = null
+		owner.status_effects?.Remove(identifier)
 	on_remove()
 	owner = null
 	if(decay_timer)

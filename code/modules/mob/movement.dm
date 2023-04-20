@@ -264,7 +264,7 @@
 			else if(mob.confused)
 				switch(mob.m_intent)
 					if("run")
-						if(prob(20))
+						if(prob(25))
 							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 							direct = turn(direct, pick(90, -90))
 					if("walk")
@@ -310,14 +310,17 @@
 						M.animate_movement = 2
 						return
 	else
-		if(mob.confused)
+
+		if(mob.confused && !IS_PRONE(mob))
 			switch(mob.m_intent)
-				if("run")
-					if(prob(75))
+				if(MOVE_INTENT_RUN)
+					if(prob(20))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
-				if("walk")
-					if(prob(25))
+				if(MOVE_INTENT_WALK)
+					if(prob(10))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
 		. = mob.SelfMove(n, direct)

@@ -9,6 +9,13 @@
 	if(requires_stat_update)
 		owner.update_stat()
 
+/datum/status_effect/incapacitation/on_remove()
+	. = ..()
+	if(requires_mobility_update)
+		owner.update_mobility()
+	if(requires_stat_update)
+		owner.update_stat()
+
 /datum/status_effect/incapacitation/stun
 	identifier = "stun"
 	requires_mobility_update = TRUE

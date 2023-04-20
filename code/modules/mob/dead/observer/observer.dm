@@ -178,14 +178,8 @@
 	. = ..()
 	return TRUE
 
-/mob/observer/dead/set_stat(var/new_stat)
-	if(new_stat != DEAD)
-		CRASH("It is best if observers stay dead, thank you.")
-
-/*
-Transfer_mind is there to check if mob is being deleted/not going to have a body.
-Works together with spawning an observer, noted above.
-*/
+/mob/observer/dead/set_stat(new_stat, update_mobility = TRUE)
+	CRASH("It is best if observers stay dead, thank you.")
 
 /mob/observer/dead/Life(seconds, times_fired)
 	if((. = ..()))
