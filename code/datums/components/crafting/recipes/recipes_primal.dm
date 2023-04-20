@@ -380,13 +380,25 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
-/datum/crafting_recipe/saddle
-	name = "Hide Saddle"
+/datum/crafting_recipe/saddle_shank
+	name = "Saddle (Goliath Hide)"
 	result = /obj/item/saddle/shank
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 6,
 				/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/saddle_stormdrifter
+	name = "Saddle (Harness and Gondola)"
+	result = /obj/item/saddle/stormdrifter
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/chitin = 5,
+				/obj/item/stack/sinew = 10,
+				/obj/item/stack/animalhide/goliath_hide = 5
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
@@ -654,5 +666,24 @@
 				/obj/item/stack/material/bone = 2,
 				/obj/item/pen/charcoal = 1,
 				/obj/item/elderstone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/skull_mask
+	name = "Bone Mask (Skull)"
+	result = /obj/item/clothing/mask/skull
+	time = 20
+	reqs = list(/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/alchemy_bandolier
+	name = "Alchemy Bandolier"
+	result = /obj/item/storage/belt/ashlander
+	time = 40
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
+				/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE
