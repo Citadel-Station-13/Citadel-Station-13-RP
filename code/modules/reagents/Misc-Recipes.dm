@@ -835,6 +835,17 @@
 	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
 	return
 
+/datum/chemical_reaction/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	result = null
+	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////

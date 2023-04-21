@@ -552,3 +552,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#522222"
 	taste_description = "sulphurous sand"
+
+/datum/reagent/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	description = "A finely granulated mixture of ash and pokalea, rendered into a pungent slurry by alchemical base."
+	reagent_state = REAGENT_SOLID
+	color = "#302f2f"
+	taste_description = "sour wax and sulphur"

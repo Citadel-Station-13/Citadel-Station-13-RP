@@ -384,7 +384,7 @@
 
 			if(valid_target(Target))
 				if(!MyBeam)
-					MyBeam = chassis.Beam(Target,icon='icons/effects/beam.dmi',icon_state=beam_state,time=3 SECONDS,maxdistance=max_distance,beam_type = /obj/effect/ebeam,beam_sleep_time=2)
+					MyBeam = chassis.Beam(Target,icon='icons/effects/beam.dmi',icon_state=beam_state,time=3 SECONDS,maxdistance=max_distance,beam_type = /obj/effect/ebeam)
 				heal_target(Target)
 
 	else
