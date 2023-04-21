@@ -88,7 +88,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/man_up,
 	/client/proc/global_man_up,
 	/client/proc/response_team, // Response Teams admin verb
-	/client/proc/trader_ship, // Trader ship admin verb
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
@@ -144,7 +143,6 @@ var/list/admin_verbs_fun = list(
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
-	/client/proc/smite_vr,
 	/client/proc/smite,
 	/client/proc/admin_lightning_strike
 	)

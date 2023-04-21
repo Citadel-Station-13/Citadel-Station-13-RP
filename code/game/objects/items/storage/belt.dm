@@ -634,3 +634,16 @@
 	new /obj/item/weldingtool/electric/crystal(src)
 	update_icon()
 	. = ..()
+
+//Ashlander Potion Bandolier
+/obj/item/storage/belt/ashlander
+	name = "hide bandolier"
+	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
+	icon_state = "bandolier_ash"
+	can_hold = list(
+		/obj/item/reagent_containers/glass/stone,
+		/obj/item/stack/medical/poultice_brute,
+		/obj/item/stack/medical/poultice_burn,
+		/obj/item/grenade/explosive/ashlander,
+		/obj/item/flame/lighter
+		)

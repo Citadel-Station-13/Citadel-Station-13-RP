@@ -28,5 +28,6 @@ jobs:
         days-before-issue-stale: -1
         stale-issue-label: 'Cleanup Flagged'
         remove-issue-stale-when-updated: false
+        exempt-draft-pr: true
         exempt-pr-labels: 'Good First PR,Work in Progress,Do Not Merge,Stale Exempt'
         operations-per-run: 300
