@@ -184,8 +184,8 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	exotic_type = /obj/item/stack/material/chitin
-	exotic_amount = 5
+	bone_type = /obj/item/stack/chitin
+	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")

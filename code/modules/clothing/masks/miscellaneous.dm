@@ -358,3 +358,11 @@
 /obj/item/clothing/mask/paper/mark
 	name = "mark paper mask"
 	icon_state = "markmask"
+
+/obj/item/clothing/mask/skull
+	name = "totemic skull mask"
+	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or another's, you do feel a little more intimidating with this on."
+	icon_state = "skull"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
+	body_cover_flags = 0
+	inv_hide_flags = 0
