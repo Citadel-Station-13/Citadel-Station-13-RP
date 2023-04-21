@@ -382,7 +382,7 @@
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 
 /obj/item/warpwhistle/attack_self(mob/user)
 	. = ..()
@@ -401,7 +401,7 @@
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 	new /obj/effect/temp_visual/tornado(T)
 	sleep(20)
 	if(interrupted(user))

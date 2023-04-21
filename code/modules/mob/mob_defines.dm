@@ -98,6 +98,10 @@
 	//? Mobility / Stat
 	/// mobility flags from [code/__DEFINES/mobs/mobility.dm], updated by update_mobility(). use traits to remove these.
 	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+	/// force-enabled mobility flags, usually updated by traits
+	var/mobility_flags_forced = NONE
+	/// force-blocked mobility flags, usually updated by traits
+	var/mobility_flags_blocked = NONE
 	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
 	var/stat = CONSCIOUS
 	//  todo: move to /living level, things should be checking mobility flags anyways.

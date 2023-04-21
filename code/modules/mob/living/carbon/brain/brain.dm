@@ -62,7 +62,7 @@
 		return ..(blocked, forced)
 	else
 		use_me = FALSE
-		return ..(ALL, forced)
+		return ..(MOBILITY_FLAGS_REAL, forced)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)

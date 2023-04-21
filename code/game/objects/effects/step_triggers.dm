@@ -55,7 +55,7 @@
 		var/mob/M = AM
 		if(immobilize)
 			ADD_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
-			M.update_mobility()
+			M.update_mobility_blocked()
 
 	affecting.Add(AM)
 	while(AM && !stopthrow)
@@ -93,7 +93,7 @@
 		var/mob/M = AM
 		REMOVE_TRAIT(M, TRAIT_MOBILITY_MOVE_BLOCKED, "__THROWER__")
 		if(immobilize)
-			M.update_mobility()
+			M.update_mobility_blocked()
 
 /* Stops things thrown by a thrower, doesn't do anything */
 

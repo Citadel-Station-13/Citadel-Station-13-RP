@@ -41,7 +41,7 @@
 			animation.loc = mobloc
 			jaunt_steam(mobloc)
 			ADD_TRAIT(target, TRAIT_MOBILITY_MOVE_BLOCKED, "JAUNT")
-			target.update_mobility()
+			target.update_mobility_blocked()
 			holder.reappearing = 1
 			sleep(20)
 			jaunt_reappear(animation, target)
@@ -54,7 +54,7 @@
 							break
 			target.update_perspective()
 			REMOVE_TRAIT(target, TRAIT_MOBILITY_MOVE_BLOCKED, "JAUNT")
-			target.update_mobility()
+			target.update_mobility_blocked()
 			qdel(animation)
 			qdel(holder)
 
