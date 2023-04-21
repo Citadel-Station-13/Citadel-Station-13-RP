@@ -188,6 +188,7 @@
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
+		L.update_lying()
 		L.update_water()
 	// end
 	M.reset_pixel_shifting()
@@ -222,6 +223,7 @@
 	M.update_floating(M.Check_Dense_Object())
 	if(isliving(M))
 		var/mob/living/L = M
+		L.update_lying()
 		L.update_water()
 	// end
 	M.reset_pixel_offsets()

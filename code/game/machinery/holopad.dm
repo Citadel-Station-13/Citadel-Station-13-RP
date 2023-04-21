@@ -1051,9 +1051,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 			cleanup_remote_presence()
 
 /datum/holocall/proc/check_remoting()
-	if(!IS_CONSCIOUS(remoting))
-		return FALSE
-	if(IS_STANDING(remoting))
+	if(remoting?.loc != source.loc)
 		return FALSE
 	return TRUE
 

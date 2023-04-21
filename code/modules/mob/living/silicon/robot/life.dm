@@ -137,8 +137,10 @@
 		seemeson = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
+		fullbright = TRUE
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
+		fullbright = TRUE
 
 	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
 	plane_holder?.set_vis(VIS_MESONS, seemeson)

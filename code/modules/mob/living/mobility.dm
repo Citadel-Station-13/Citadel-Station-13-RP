@@ -146,6 +146,8 @@
 					wanted = 90
 				if(WEST)
 					wanted = -90
+		else
+			wanted = lying
 	// allow buckled override
 	var/overriding = buckled?.buckle_lying()
 	if(!isnull(overriding))
