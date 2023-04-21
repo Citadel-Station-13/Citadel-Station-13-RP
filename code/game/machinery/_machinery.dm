@@ -215,7 +215,7 @@
 	. = ..()
 	if(!isnull(default_unanchor))
 		COERCE_OPTIONS_LIST_IN(.[TOOL_WRENCH])
-		.[TOOL_WRENCH] += anchored? "unfasten" : "fastne"
+		.[TOOL_WRENCH] += anchored? "unfasten" : "fasten"
 	if(!isnull(default_deconstruct) && panel_open)
 		COERCE_OPTIONS_LIST_IN(.[TOOL_CROWBAR])
 		.[TOOL_CROWBAR] += "deconstruct"

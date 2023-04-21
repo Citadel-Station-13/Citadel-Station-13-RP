@@ -31,6 +31,12 @@
 	/// key = material id
 	var/list/material_defaults
 
+	//? Sounds
+	/// volume when breaking out using resist process
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
+	/// volume when breaking out using resist process
+	var/breakout_volume = 100
+
 	//? misc / legacy
 	/// Set when a player renames a renamable object.
 	var/renamed_by_player = FALSE
@@ -50,29 +56,6 @@
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
 
-<<<<<<< HEAD
-=======
-	//? Access - see [modules/jobs/access.dm]
-	/// If set, all of these accesses are needed to access this object.
-	var/list/req_access
-	/// If set, at least one of these accesses are needed to access this object.
-	var/list/req_one_access
-
-	//? Economy
-	/// economic category for objects
-	var/economic_category_obj = ECONOMIC_CATEGORY_OBJ_DEFAULT
-
-	//? Sounds
-	/// volume when breaking out using resist process
-	var/breakout_sound = 'sound/effects/grillehit.ogg'
-	/// volume when breaking out using resist process
-	var/breakout_volume = 100
-
-	//? misc / legacy
-	/// Set when a player renames a renamable object.
-	var/renamed_by_player = FALSE
-
->>>>>>> citrp/master
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
