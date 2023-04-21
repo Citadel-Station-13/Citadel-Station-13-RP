@@ -296,7 +296,15 @@
 /obj/proc/contents_resist_finish(mob/escapee)
 	return
 
-<<<<<<< HEAD
+/**
+ * called to shake during contents resist
+ */
+/obj/proc/contents_resist_shake()
+	var/init_px = pixel_x
+	var/shake_dir = pick(-1, 1)
+	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
+	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
+
 //? materials
 
 /obj/get_materials()
@@ -320,13 +328,3 @@
  */
 /obj/proc/set_material_parts(list/parts)
 	return
-=======
-/**
- * called to shake during contents resist
- */
-/obj/proc/contents_resist_shake()
-	var/init_px = pixel_x
-	var/shake_dir = pick(-1, 1)
-	animate(src, transform=turn(matrix(), 8*shake_dir), pixel_x=init_px + 2*shake_dir, time=1)
-	animate(transform=null, pixel_x=init_px, time=6, easing=ELASTIC_EASING)
->>>>>>> citrp/master
