@@ -512,68 +512,6 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#62764E"
 
-////////////////////////////
-/// NW's shrinking serum ///
-////////////////////////////
-//Moved from Chemistry-Reagents-Medicine_vr.dm
-/datum/reagent/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	description = "Glowing yellow liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#FFFF00" // rgb: 255, 255, 0
-	metabolism = 0.01
-	mrate_static = TRUE
-
-/datum/reagent/macrocillin/affect_blood(mob/living/carbon/M, alien, removed)
-	if(M.size_multiplier < RESIZE_HUGE)
-		M.resize(M.size_multiplier+0.01)//Incrrease 1% per tick.
-	return
-
-/datum/reagent/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	description = "Murky purple liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#800080"
-	metabolism = 0.01
-	mrate_static = TRUE
-
-/datum/reagent/microcillin/affect_blood(mob/living/carbon/M, alien, removed)
-	if(M.size_multiplier > RESIZE_TINY)
-		M.resize(M.size_multiplier-0.01) //Decrease 1% per tick.
-	return
-
-/datum/reagent/normalcillin
-	name = "Normalcillin"
-	id = "normalcillin"
-	description = "Translucent cyan liquid."
-	reagent_state = REAGENT_LIQUID
-	color = "#00FFFF"
-	metabolism = 0.01 //One unit will be just enough to bring someone from 200% to 100%
-	mrate_static = TRUE
-
-/datum/reagent/normalcillin/affect_blood(mob/living/carbon/M, alien, removed)
-	if(M.size_multiplier > RESIZE_NORMAL)
-		M.resize(M.size_multiplier-0.01) //Decrease by 1% size per tick.
-	else if(M.size_multiplier < RESIZE_NORMAL)
-		M.resize(M.size_multiplier+0.01) //Increase 1% per tick.
-	return
-
-/datum/reagent/sizeoxadone
-	name = "Sizeoxadone"
-	id = "sizeoxadone"
-	description = "A volatile liquid used as a precursor to size-altering chemicals. Causes dizziness if taken unprocessed."
-	reagent_state = REAGENT_LIQUID
-	color = "#1E90FF"
-	overdose = REAGENTS_OVERDOSE
-
-/datum/reagent/sizeoxadone/affect_blood(mob/living/carbon/M, alien, removed)
-	M.make_dizzy(1)
-	if(!M.confused) M.confused = 1
-	M.confused = max(M.confused, 20)
-	return
-
 /datum/reagent/crude_oil
 	name = "Oil"
 	id = "oil"
@@ -614,3 +552,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#522222"
 	taste_description = "sulphurous sand"
+
+/datum/reagent/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	description = "A finely granulated mixture of ash and pokalea, rendered into a pungent slurry by alchemical base."
+	reagent_state = REAGENT_SOLID
+	color = "#302f2f"
+	taste_description = "sour wax and sulphur"

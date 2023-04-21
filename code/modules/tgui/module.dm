@@ -19,6 +19,8 @@
  *
  * if you're doing anything that will require more than a few modules (hello rigsuits/cyborgs/species),
  * do not use the module system as is. make your own synchronization and update system ontop.
+ *
+ * /datum/tgui_module is just a wrapper. the $tgui and $src data keys are what powers a module.
  */
 /datum/tgui_module
 	/// root datum - only one for the moment, sorry

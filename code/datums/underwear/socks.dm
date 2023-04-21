@@ -21,6 +21,10 @@
 	name = "Thigh (Shorter)"
 	icon_state = "socks_thigh_short"
 
+/datum/category_item/underwear/socks/thigh/shortest
+	name = "Thigh (Shortest)"
+	icon_state = "socks_thigh_shortest"
+
 /datum/category_item/underwear/socks/knee
 	name = "Knee"
 	icon_state = "socks_knee"
@@ -48,6 +52,11 @@
 /datum/category_item/underwear/socks/thin_thigh/shorter
 	name = "Thigh, thin (Shorter)"
 	icon_state = "thin_thigh_short"
+
+/datum/category_item/underwear/socks/thin_thigh/shortest
+	name = "Thigh, thin (Shortest)"
+	icon_state = "thin_thigh_shortest"
+
 /datum/category_item/underwear/socks/thin_knee
 	name = "Knee, thin"
 	icon_state = "thin_knee"
@@ -115,6 +124,11 @@
 /datum/category_item/underwear/socks/thigh_stirrup/shorter
 	name = "Thigh (Stirrup) (Shorter)"
 	icon_state = "socks_thigh_short-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup/shortest
+	name = "Thigh (Stirrup) (Shortest)"
+	icon_state = "socks_thigh_shortest-stir"
 	has_color = TRUE
 
 /datum/category_item/underwear/socks/leggings_stirrup

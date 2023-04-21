@@ -659,14 +659,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 	..()
 
-/obj/item/stack/cable_coil/use()
+/obj/item/stack/cable_coil/use(used)
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 ///////////////////////////////////////////////

@@ -59,7 +59,7 @@
 	for(var/datum/language/L in MR.languages)
 		infomorph.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
-	MR.mind_ref.transfer_to(infomorph) //Does mind+ckey+client.
+	MR.mind_ref.transfer(infomorph) //Does mind+ckey+client.
 	infomorph.ooc_notes = MR.mind_oocnotes
 	infomorph.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 

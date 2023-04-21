@@ -835,6 +835,17 @@
 	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
 	return
 
+/datum/chemical_reaction/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	result = null
+	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////
@@ -1035,29 +1046,6 @@
 					H.visible_message("<span class='info'>[H] stirs faintly, but doesn't appear to be ready to wake up yet.</span>")
 			else
 				H.visible_message("<span class='info'>[H] twitches for a moment, but remains still.</span>") // no nutriment
-
-
-/datum/chemical_reaction/sizeoxadone
-	name = "sizeoxadone"
-	id = "sizeoxadone"
-	result = "sizeoxadone"
-	required_reagents = list("clonexadone" = 1, "tramadol" = 3, MAT_PHORON = 1)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 5
-
-/datum/chemical_reaction/macrocillin
-	name = "Macrocillin"
-	id = "macrocillin"
-	result = "macrocillin"
-	required_reagents = list("sizeoxadone" = 20, "diethylamine" = 20)
-	result_amount = 1
-
-/datum/chemical_reaction/microcillin
-	name = "Microcillin"
-	id = "microcillin"
-	result = "microcillin"
-	required_reagents = list("sizeoxadone" = 20, "sodiumchloride" = 20)
-	result_amount = 1
 
 /datum/chemical_reaction/gunpowder
 	name = "Gunpowder"

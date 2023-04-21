@@ -51,9 +51,9 @@
 					user_mind.current = null
 					prey_mind.current = null
 					user_mind.active = TRUE //If they are 'active', their client is automatically pushed to the mob
-					user_mind.transfer_to(M) //This works. Transfers mind & Ckey.
+					user_mind.transfer(M) //This works. Transfers mind & Ckey.
 					prey_mind.active = TRUE
-					prey_mind.transfer_to(user)
+					prey_mind.transfer(user)
 					M.ooc_notes = user_ooc_notes //Let's keep their OOC notes over to their new body.
 					user.ooc_notes = target_ooc_notes
 					user.sleeping = 10 //Device knocks out both the user and the target.

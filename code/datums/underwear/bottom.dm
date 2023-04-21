@@ -40,6 +40,11 @@
 	icon_state = "lacy_thong_alt"
 	has_color = TRUE
 
+/datum/category_item/underwear/bottom/lacy_thong_color
+	name = "Lacy thong, colorable"
+	icon_state = "lacy_thong_color"
+	has_color = TRUE
+
 /datum/category_item/underwear/bottom/panties_alt
 	name = "Panties, alt"
 	icon_state = "panties_alt"

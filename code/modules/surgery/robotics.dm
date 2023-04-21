@@ -460,7 +460,7 @@
 	holder.update_from_mmi()
 
 	if(M.brainmob && M.brainmob.mind)
-		M.brainmob.mind.transfer_to(target)
+		M.brainmob.mind.transfer(target)
 		target.languages = M.brainmob.languages
 
 	spawn(0) //Name yourself on your own damn time
@@ -551,7 +551,7 @@
 	user.drop_item_to_ground(tool, INV_OP_FORCE)
 
 	if(D && D.mind)
-		D.mind.transfer_to(target)
+		D.mind.transfer(target)
 		target.languages |= D.languages
 
 	qdel(D)

@@ -198,6 +198,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_SMOOTHED_ICON)
 	update_appearance(~UPDATE_SMOOTHING)
 
+
 /atom/proc/custom_smooth()
 	CRASH("based custom_smooth called on atom")
 
@@ -342,8 +343,7 @@
 			return ADJ_FOUND
 
 	if(smoothing_flags & SMOOTH_OBJ)
-		for(var/am in target_turf)
-			var/atom/movable/thing = am
+		for(var/atom/movable/thing as anything in target_turf)
 			if(!thing.anchored || isnull(thing.smoothing_groups))
 				continue
 			for(var/target in canSmoothWith)
@@ -395,61 +395,66 @@
 	icon_state = "[base_icon_state]-[smoothing_junction]"
 
 /turf/set_smoothed_icon_state(new_junction)
-	. = ..()
-	// We only do underlays for walls atm.
-	if(!density)
-		return
-	if(smoothing_flags & SMOOTH_DIAGONAL_CORNERS)
-		switch(new_junction)
-			if(
-				NORTH_JUNCTION|WEST_JUNCTION,
-				NORTH_JUNCTION|EAST_JUNCTION,
-				SOUTH_JUNCTION|WEST_JUNCTION,
-				SOUTH_JUNCTION|EAST_JUNCTION,
-				NORTH_JUNCTION|WEST_JUNCTION|NORTHWEST_JUNCTION,
-				NORTH_JUNCTION|EAST_JUNCTION|NORTHEAST_JUNCTION,
-				SOUTH_JUNCTION|WEST_JUNCTION|SOUTHWEST_JUNCTION,
-				SOUTH_JUNCTION|EAST_JUNCTION|SOUTHEAST_JUNCTION,
-			)
-				icon_state = "[base_icon_state]-[smoothing_junction]-d"
-				if(!fixed_underlay && new_junction != .) // Mutable underlays?
-					var/junction_dir = reverse_ndir(smoothing_junction)
-					var/turned_adjacency = global.reverse_dir[junction_dir]
-					var/turf/neighbor_turf = get_step(src, turned_adjacency & (NORTH|SOUTH))
-					var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+	// Avoid calling ..() here to avoid setting icon_state twice, which is expensive given how hot this proc is
+	. = smoothing_junction
+	smoothing_junction = new_junction
+
+	if (!(smoothing_flags & SMOOTH_DIAGONAL_CORNERS))
+		icon_state = "[base_icon_state]-[smoothing_junction]"
+		return .
+
+	switch(new_junction)
+		if(
+			NORTH_JUNCTION|WEST_JUNCTION,
+			NORTH_JUNCTION|EAST_JUNCTION,
+			SOUTH_JUNCTION|WEST_JUNCTION,
+			SOUTH_JUNCTION|EAST_JUNCTION,
+			NORTH_JUNCTION|WEST_JUNCTION|NORTHWEST_JUNCTION,
+			NORTH_JUNCTION|EAST_JUNCTION|NORTHEAST_JUNCTION,
+			SOUTH_JUNCTION|WEST_JUNCTION|SOUTHWEST_JUNCTION,
+			SOUTH_JUNCTION|EAST_JUNCTION|SOUTHEAST_JUNCTION,
+		)
+			icon_state = "[base_icon_state]-[smoothing_junction]-d"
+			if(new_junction == . || fixed_underlay) // Mutable underlays?
+				return .
+
+			var/junction_dir = reverse_ndir(smoothing_junction)
+			var/turned_adjacency = global.reverse_dir[junction_dir]
+			var/turf/neighbor_turf = get_step(src, turned_adjacency & (NORTH|SOUTH))
+			var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+			if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
+				neighbor_turf = get_step(src, turned_adjacency & (EAST|WEST))
+
+				if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
+					neighbor_turf = get_step(src, turned_adjacency)
+
 					if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
-						neighbor_turf = get_step(src, turned_adjacency & (EAST|WEST))
+						if(!get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency)) //if all else fails, ask our own turf
+							underlay_appearance.icon = DEFAULT_UNDERLAY_ICON
+							underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
+			underlays += underlay_appearance
+		else
+			icon_state = "[base_icon_state]-[smoothing_junction]"
 
-						if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
-							neighbor_turf = get_step(src, turned_adjacency)
-
-							if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
-								if(!get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency)) //if all else fails, ask our own turf
-									underlay_appearance.icon = DEFAULT_UNDERLAY_ICON
-									underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
-					underlays += underlay_appearance
 
 /**
  * Icon smoothing helpers.
  */
 /proc/smooth_zlevel(zlevel, now = FALSE)
 	var/list/away_turfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
-	for(var/V in away_turfs)
-		var/turf/T = V
-		if(IS_SMOOTH(T))
+	for(var/turf/turf_to_smooth as anything in away_turfs)
+		if(IS_SMOOTH(turf_to_smooth))
 			if(now)
-				T.smooth_icon()
+				turf_to_smooth.smooth_icon()
 			else
-				QUEUE_SMOOTH(T)
+				QUEUE_SMOOTH(turf_to_smooth)
 		CHECK_TICK
-		for(var/R in T)
-			var/atom/A = R
-			if(IS_SMOOTH(A))
+		for(var/atom/movable/movable_to_smooth as anything in turf_to_smooth)
+			if(IS_SMOOTH(movable_to_smooth))
 				if(now)
-					A.smooth_icon()
+					movable_to_smooth.smooth_icon()
 				else
-					QUEUE_SMOOTH(A)
-
+					QUEUE_SMOOTH(movable_to_smooth)
 
 /atom/proc/clear_smooth_overlays()
 	// cut_overlay() is efficient with single calls, but we might as well just pay proc-call overhead once given that we always have 4.

@@ -5086,10 +5086,10 @@
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
 
 /datum/reagent/drink/glue
-	name = "Glue"
+	name = "\improper AP-NT:G 'Glue'"
 	id = "safeglue"
-	description = "A standard adhesive best used on paper. Or bread?"
-	taste_description = "a sticky classroom"
+	description = "A bottle codenamed AP-NT:G by nanotrasen's brightest minds, standing for 'All Purpose Non-Toxic Glue', this type being best used on paper. ..Or microwaved bread, if you're daring."
+	taste_description = "dull sticky glue"
 	nutrition = 1
 	color = "#faf2e3"
 

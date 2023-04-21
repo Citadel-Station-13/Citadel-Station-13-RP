@@ -111,6 +111,20 @@
 	nightshift_range = 4
 	nightshift_power = 0.4
 
+/obj/item/light/bulb/strong
+	name = "light bulb"
+	desc = "A replacement light bulb."
+	icon_state = "lbulb"
+	base_icon_state = "lbulb"
+	item_state = "contvapour"
+	matter = list(MAT_GLASS = 100)
+	brightness_color = LIGHT_COLOR_TUNGSTEN
+
+	brightness_range = 8
+
+	nightshift_range = 8
+	nightshift_power = 0.8
+
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
 	shatter()
