@@ -11,7 +11,6 @@
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
-	var/list/accessories
 	var/list/valid_accessory_slots
 	var/list/restricted_accessory_slots
 	var/list/starting_accessories
@@ -38,12 +37,26 @@
 	/// is considered wizard garb?
 	var/wizard_garb = FALSE
 
-	//? accessory system
+	//? accessory system - used as accessory
+	/// are we an accessory?
+	var/is_accessory = FALSE
 	/// accessory render as _acc slot key instead of obeying worn render.
 	/// accessories will use one for all if flagged as such, otherwise they'll inherit the real slot of where they are.
 	var/accessory_render_specific = FALSE
-	/// use legacy system
+	/// use legacy system - only works for /obj/item/clothing/accessory.
 	var/accessory_render_legacy = FALSE
+	/// FALSE for no render at all when accessory - /obj/item has this by default as it doesn't have clothing procs.
+	var/accessory_renders = TRUE
+	/// what we're attached to if we're an accessory
+	var/obj/item/clothing/accessory_host
+	/// what state we render as for the inventory overlay, *not* worn overlay. defaults to icon_state.
+	var/accessory_inv_state
+	/// currently cached inv state
+	var/mutable_appearance/accessory_inv_cached
+
+	//? accessory system - attached to by accessories
+	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
+	var/list/accessories
 
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()

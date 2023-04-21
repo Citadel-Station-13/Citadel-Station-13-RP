@@ -223,6 +223,12 @@
 	CONSTRUCT_BODYTYPES(worn_bodytypes_invisible)
 	CONSTRUCT_BODYTYPES(worn_bodytypes_fallback)
 
+/**
+ * Renders either a list, or a single image or mutable appearance of what we should be applied to a mob with.
+ *
+ * @params
+ * * M - the mob we're rendering
+ */
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
@@ -242,7 +248,7 @@
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
-	var/list/additional = render_additional(icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
+	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
 	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || CHECK_BODYTYPE(worn_bodytypes_invisible, bodytype))
@@ -288,7 +294,7 @@
 /**
  * override to include additional appearances while rendering
  */
-/obj/item/proc/render_additional(icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
 

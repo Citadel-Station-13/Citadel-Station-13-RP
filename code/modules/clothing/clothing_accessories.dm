@@ -4,6 +4,12 @@
 	. = ..()
 	return islist(.)? (. + accessories) : (list(.) + accessories)
 
+/obj/item/clothing/proc/is_accessory()
+	return is_accessory
+
+/obj/item/clothing/worn_mob()
+	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
@@ -35,6 +41,68 @@
 	if(!(flags & INV_OP_IS_ACCESSORY) && LAZYLEN(accessories))
 		for(var/obj/item/I as anything in accessories)
 			I.dropped(user, flags | INV_OP_IS_ACCESSORY, newLoc)
+
+/obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	var/list/accessory_overlays = render_worn_accessories(M, inhands, slot_meta, bodytype)
+	if(!isnull(accessory_overlays))
+		. += accessory_overlays
+
+/**
+ * Renders accessories. Returns a list of mutable appearances or images, or null.
+ *
+ * @params
+ * * M - wearer (optional)
+ * * inhands - are we rendering for inhands?
+ * * slot_meta - slot
+ * * bodytype - bodytype
+ */
+/obj/item/clothing/proc/render_worn_accessories(mob/M, inhands, datum/inventory_slot_meta/slot_meta, bodytype)
+	RETURN_TYPE(/list)
+	if(!length(accessories))
+		return
+	if(inhands)
+		return // no support for now
+	. = list()
+	for(var/obj/item/clothing/C in accessories)
+		if(!C.accessory_renders)
+			continue
+		var/overlays = C.render_accessory_worn(M, inhands, slot_meta, layer_used, bodytype)
+		if(!overlays)
+			continue
+		. += overlays
+
+/**
+ * renders the overlay we apply to an item we're an accessory of.
+ */
+/obj/item/clothing/proc/render_accessory_inv()
+	if(accessory_render_legacy)
+		var/old
+		if(istype(src, /obj/item/clothing/accessory))
+			var/obj/item/clothing/accessory/A = src
+			old = A.get_inv_overlay()
+		return old
+	var/mutable_appearance/MA = mutable_appearance(icon, accessory_inv_state || icon_state)
+	MA.dir = SOUTH
+	return MA
+
+/obj/item/clothing/proc/cache_accessory_inv()
+	if(!isnull(accessory_inv_cached))
+		return
+	accessory_inv_cached = render_accessory_inv()
+
+/**
+ * Renders mob appearance for us as an accessory. Returns an image, or list of images.
+ */
+/obj/item/clothing/proc/render_accessory_worn(mob/M, inhands, datum/inventory_slot_meta/slot_meta, layer_used, bodytype)
+	if(accessory_render_legacy)
+		var/old
+		if(istype(src, /obj/item/clothing/accessory))
+			var/obj/item/clothing/accessory/A = src
+			old = A.get_mob_overlay()
+			#warn uhh?? for /accessory subtype
+		return old
+	. = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
