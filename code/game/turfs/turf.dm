@@ -313,11 +313,12 @@
 /turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
+	if(!ismob(O))
+		return
+	var/mob/M = O
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
 		return
-	if(istype(O, /atom/movable/screen))
-		return
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || (!user.lying && !istype(user, /mob/living/silicon/robot)))
+	if(user.resting)
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
 		return
@@ -325,16 +326,21 @@
 		return
 	if(isanimal(user) && O != user)
 		return
-	if (do_after(user, 25, mobility_flags = MOBILITY_IS_CONSCIOUS))
-		step_towards(O, src)
-		if(ismob(O))
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			animate(O, transform = turn(O.transform, -40), time = 4)
-			sleep(4)
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			O.update_transform()
+	if(M.pulledby || M.is_grabbed())
+		return
+	if(!CHECK_MOBILITY(user, user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		return
+	if (do_after(user, 2.5 SECONDS, mobility_flags = user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		if(M.pulledby || M.is_grabbed())
+			return
+		step_towards(M, src)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		animate(M, transform = turn(O.transform, -40), time = 4)
+		sleep(4)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		M.update_transform()
 
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
