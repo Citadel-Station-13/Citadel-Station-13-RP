@@ -67,27 +67,36 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living, _resist_a_rest), instant)
 	return TRUE
 
-/mob/living/proc/_resist_a_rest()
+/mob/living/proc/_resist_a_rest(instant)
 	PRIVATE_PROC(TRUE)
 	getting_up = TRUE
 	getting_up_loc = loc
 	getting_up_penalized = world.time
 	getting_up_original = get_up_delay()
-	visible_message(
-		SPAN_NOTICE("[src] starts to get up off the ground."),
-		SPAN_NOTICE("You start pushing yourself off the ground."),
-	)
-	if(do_self(src, getting_up_original, flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, mobility_flags = MOBILITY_CAN_RESIST, additional_checks = CALLBACK(src, PROC_REF(_resisting_a_rest))))
+	if(isturf(loc) && !instant)
 		visible_message(
-			SPAN_NOTICE("[src] gets up from the ground."),
-			SPAN_NOTICE("You get up."),
+			SPAN_NOTICE("[src] starts to get up off the ground."),
+			SPAN_NOTICE("You start pushing yourself off the ground."),
 		)
+	else
+		innate_feedback(SPAN_NOTICE("You start pushing yourself off the ground."))
+	if(instant || do_self(src, getting_up_original, flags = DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, mobility_flags = MOBILITY_CAN_RESIST, additional_checks = CALLBACK(src, PROC_REF(_resisting_a_rest))))
+		if(isturf(loc))
+			visible_message(
+				SPAN_NOTICE("[src] gets up from the ground."),
+				SPAN_NOTICE("You get up."),
+			)
+		else
+			innate_feedback(SPAN_NOTICE("You get up."))
 		set_resting(FALSE)
 	else
-		visible_message(
-			SPAN_NOTICE("[src] falls back down."),
-			SPAN_NOTICE("You fall back down."),
-		)
+		if(isturf(loc))
+			visible_message(
+				SPAN_NOTICE("[src] falls back down."),
+				SPAN_NOTICE("You fall back down."),
+			)
+		else
+			innate_feedback(SPAN_NOTICE("You get up."))
 	getting_up = FALSE
 
 /mob/living/proc/get_up_delay()
