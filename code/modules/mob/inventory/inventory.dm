@@ -43,7 +43,7 @@
 		slot = resolve_inventory_slot_meta(slot)?.type
 		if(!ispath(slot, /datum/inventory_slot_meta/abstract))
 			stack_trace("invalid slot: [slot]")
-		else
+		else if(slot != /datum/inventory_slot_meta/abstract/put_in_hands)
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
