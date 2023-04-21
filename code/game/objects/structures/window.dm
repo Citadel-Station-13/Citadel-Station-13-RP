@@ -183,7 +183,7 @@
 	take_damage(50)
 
 
-/obj/structure/window/CanAllowThrough(atom/movable/mover, border_dir)
+/obj/structure/window/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(.)
 		return
@@ -191,7 +191,8 @@
 	if(fulltile)
 		return FALSE
 
-	if(border_dir == dir)
+	// Check direction of movement, get the opposite direction, and check if it's blocked.
+	if(get_dir(mover, target) & global.reverse_dir[dir])
 		return FALSE
 
 	if(istype(mover, /obj/structure/window))
@@ -221,13 +222,11 @@
 	return TRUE
 
 
-/obj/structure/window/CheckExit(atom/movable/AM, turf/target)
-	if (fulltile)
+/obj/structure/window/CheckExit(atom/movable/mover, turf/target)
+	if(istype(mover) && (check_standard_flag_pass(mover)))
 		return TRUE
-	if (check_standard_flag_pass(AM))
-		return TRUE
-	if (get_dir(src, target) & dir)
-		return FALSE
+	if(!fulltile && get_dir(src, target) & dir)
+		return !density
 	return TRUE
 
 
