@@ -21,7 +21,7 @@
 /mob/living/silicon/robot/proc/clamp_values()
 	var/datum/status_effect/effect
 	effect = is_unconscious()
-	if(effect.time_left() > 20 SECONDS)
+	if(effect?.time_left() > 20 SECONDS)
 		effect.set_duration_from_now(20 SECONDS)
 
 	set_sleeping(0)
