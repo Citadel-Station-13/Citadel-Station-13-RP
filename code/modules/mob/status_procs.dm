@@ -173,6 +173,8 @@
 /mob/proc/adjust_unconscious(amount)
 	var/datum/status_effect/incapacitation/unconscious/effect = is_unconscious()
 	if(isnull(effect))
+		if(amount < 0)
+			return
 		apply_status_effect(/datum/status_effect/incapacitation/unconscious, amount)
 	else
 		effect.adjust_duration(amount)
@@ -197,6 +199,8 @@
 /mob/proc/adjust_sleeping(amount)
 	var/datum/status_effect/incapacitation/sleeping/effect = is_sleeping()
 	if(isnull(effect))
+		if(amount < 0)
+			return
 		apply_status_effect(/datum/status_effect/incapacitation/sleeping, amount)
 	else
 		effect.adjust_duration(amount)
