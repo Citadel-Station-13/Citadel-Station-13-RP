@@ -117,7 +117,7 @@
 	toxins_mod = 1.05
 
 	total_health = 115
-	hunger_factor =  0.075//50% more hungry
+	hunger_factor =  0.035
 
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
