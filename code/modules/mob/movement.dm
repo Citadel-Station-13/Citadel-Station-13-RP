@@ -45,6 +45,8 @@
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
+	if(.)
+		return
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
@@ -53,7 +55,7 @@
 		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
-	if(!mover.density && !mover.throwing)
+	if(can_cross_under(mover))
 		return TRUE
 
 /mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
@@ -62,6 +64,9 @@
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
 			return TRUE
 	return ..()
+
+/mob/proc/can_cross_under(atom/movable/mover)
+	return !mover.density && !mover.throwing
 
 /**
   * Toggle the move intent of the mob
@@ -360,7 +365,9 @@
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
+	in_selfmove = TRUE
 	. = Move(T, dir)
+	in_selfmove = FALSE
 	if(.)
 		throwing?.terminate()
 	if(pulling && !ismob(pulling) && pulling.density)

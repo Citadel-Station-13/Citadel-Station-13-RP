@@ -40,4 +40,4 @@ DEFINE_BITFIELD(mobility_flags, list(
 //? Helpers
 
 #define IS_STANDING(M) CHECK_MOBILITY(M, MOBILITY_IS_STANDING)
-#define IS_PRONE(M) !IS_STANDING(M)
+#define IS_PRONE(M) (!IS_STANDING(M))

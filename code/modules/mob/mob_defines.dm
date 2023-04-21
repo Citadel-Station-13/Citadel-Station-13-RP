@@ -356,3 +356,7 @@
 	//? Typing Indicator
 	var/typing = FALSE
 	var/mutable_appearance/typing_indicator
+
+	//? Movement
+	/// Is self-moving.
+	var/in_selfmove

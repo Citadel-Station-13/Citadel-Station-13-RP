@@ -127,7 +127,7 @@
 
 	//? movement
 	/// are we currently pushing (or trying to push) (or otherwise inside Bump() handling that deals with this crap) another atom?
-	var/_pushing_bumped_atom = FALSE
+	var/pushing_bumped_atom = FALSE
 
 	//? throwing
 	/// the force we use when we throw things

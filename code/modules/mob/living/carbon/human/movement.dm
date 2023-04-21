@@ -262,10 +262,33 @@
 
 	playsound(T, S, volume, FALSE)
 
-/mob/living/carbon/human/can_stumble_into(obj/O)
-	//? nah this was fun for no one.
-	/*
-	if(flying && species.id != SPECIES_ADHERENT)
+//? crawling
+
+/mob/living/carbon/human/try_crawl_under(mob/living/other)
+	if(!in_selfmove) // we're being shoved under
+		bump_position_swap(other, TRUE)
 		return TRUE
-	*/
-	return ..()
+	if(crawling_under_someone)
+		return
+	crawling_under_someone = other
+	if(is_grabbed())
+		selfmove_feedback(SPAN_WARNING("You can't crawl under [other] while grabbed!"))
+		crawling_under_someone = null
+		return FALSE
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		selfmove_feedback(SPAN_WARNING("You can't crawl under [other] right now!"))
+		crawling_under_someone = null
+		return FALSE
+	visible_message(
+		SPAN_NOTICE("[src] is attempting to crawl under [other]."),
+		SPAN_NOTICE("You are now attempting to crawl under [other].")
+	)
+	if(!do_self(src, 2 SECONDS, DO_AFTER_IGNORE_ACTIVE_ITEM, MOBILITY_CAN_MOVE))
+		crawling_under_someone = null
+		return FALSE
+	bump_position_swap(other, TRUE)
+	crawling_under_someone = null
+	return TRUE
+
+/mob/living/carbon/human/should_crawl_under(mob/living/other)
+	return IS_PRONE(src) && !IS_PRONE(other)

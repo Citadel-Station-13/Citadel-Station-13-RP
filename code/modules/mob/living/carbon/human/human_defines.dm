@@ -263,3 +263,7 @@
 
 	// ignore ssd status
 	var/override_ssd = FALSE
+
+	//? movement
+	/// are we trying to crawl under someone? mob if true
+	var/mob/crawling_under_someone

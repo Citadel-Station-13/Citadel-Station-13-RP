@@ -19,13 +19,13 @@
 
 /**
  * check the grab state of us to someone
+ *
+ * @return grab state, or null
  */
 /mob/proc/check_grab(mob/M)
 	for(var/obj/item/grab/G in get_held_items())
 		if(G.affecting == M)
 			return G.state
-	// CRASH("in grabbed by but no grab item?")
-
 /**
  * drops our grab to someone immediately
  */
@@ -40,6 +40,22 @@
 /mob/proc/drop_grabs()
 	for(var/obj/item/grab/G in get_held_items())
 		qdel(G)
+
+/**
+ * are we being grabbed
+ *
+ * @return TRUE / FALSE
+ */
+/mob/proc/is_grabbed()
+	return length(grabbed_by)
+
+/**
+ * are we being grabbed by someone
+ *
+ * @return null, or state
+ */
+/mob/proc/is_grabbed_by(mob/M)
+	return (M in grabbed_by)? M.check_grab(src) : null
 
 #define UPGRADE_COOLDOWN	40
 #define UPGRADE_KILL_TIMER	100

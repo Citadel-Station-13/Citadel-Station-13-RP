@@ -189,7 +189,6 @@
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
 			. = TRUE
-	return .
 
 //Overlays
 /atom/movable/overlay
