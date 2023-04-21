@@ -313,16 +313,15 @@
 	//* icon_override
 	if(icon_override)
 		data[WORN_DATA_ICON] = icon_override
-		if(inhands)
-			switch(slot_meta.id)
-				if(SLOT_ID_LEFT_HAND)
-					data[WORN_DATA_STATE] += "_l"
-				if(SLOT_ID_RIGHT_HAND)
-					data[WORN_DATA_STATE] += "_r"
-				if(SLOT_ID_LEFT_EAR)
-					data[WORN_DATA_STATE] += "_l"
-				if(SLOT_ID_RIGHT_EAR)
-					data[WORN_DATA_STATE] += "_l"
+		switch(slot_meta.id)
+			if(SLOT_ID_LEFT_HAND)
+				data[WORN_DATA_STATE] += "_l"
+			if(SLOT_ID_RIGHT_HAND)
+				data[WORN_DATA_STATE] += "_r"
+			if(SLOT_ID_LEFT_EAR)
+				data[WORN_DATA_STATE] += "_l"
+			if(SLOT_ID_RIGHT_EAR)
+				data[WORN_DATA_STATE] += "_l"
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 

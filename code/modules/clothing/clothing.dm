@@ -5,6 +5,9 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+	//? legacy
+
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
@@ -34,6 +37,13 @@
 
 	/// is considered wizard garb?
 	var/wizard_garb = FALSE
+
+	//? accessory system
+	/// accessory render as _acc slot key instead of obeying worn render.
+	/// accessories will use one for all if flagged as such, otherwise they'll inherit the real slot of where they are.
+	var/accessory_render_specific = FALSE
+	/// use legacy system
+	var/accessory_render_legacy = FALSE
 
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
