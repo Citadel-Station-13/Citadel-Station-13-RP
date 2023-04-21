@@ -17,6 +17,14 @@
 	icon_state = "socks_thigh"
 	has_color = TRUE
 
+/datum/category_item/underwear/socks/thigh/shorter
+	name = "Thigh (Shorter)"
+	icon_state = "socks_thigh_short"
+
+/datum/category_item/underwear/socks/thigh/shortest
+	name = "Thigh (Shortest)"
+	icon_state = "socks_thigh_shortest"
+
 /datum/category_item/underwear/socks/knee
 	name = "Knee"
 	icon_state = "socks_knee"
@@ -41,6 +49,14 @@
 	icon_state = "thin_thigh"
 	has_color = TRUE
 
+/datum/category_item/underwear/socks/thin_thigh/shorter
+	name = "Thigh, thin (Shorter)"
+	icon_state = "thin_thigh_short"
+
+/datum/category_item/underwear/socks/thin_thigh/shortest
+	name = "Thigh, thin (Shortest)"
+	icon_state = "thin_thigh_shortest"
+
 /datum/category_item/underwear/socks/thin_knee
 	name = "Knee, thin"
 	icon_state = "thin_knee"
@@ -61,6 +77,7 @@
 /datum/category_item/underwear/socks/leggings
 	name = "Leggings"
 	icon_state = "leggings"
+	has_color = TRUE
 
 /datum/category_item/underwear/socks/cfishnet
 	name = "Dyed Fishnet"
@@ -104,9 +121,20 @@
 	icon_state = "socks_thigh-stir"
 	has_color = TRUE
 
+/datum/category_item/underwear/socks/thigh_stirrup/shorter
+	name = "Thigh (Stirrup) (Shorter)"
+	icon_state = "socks_thigh_short-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup/shortest
+	name = "Thigh (Stirrup) (Shortest)"
+	icon_state = "socks_thigh_shortest-stir"
+	has_color = TRUE
+
 /datum/category_item/underwear/socks/leggings_stirrup
 	name = "Leggings (Stirrup)"
 	icon_state = "leggings-stir"
+	has_color = TRUE
 /datum/category_item/underwear/socks/pantyhose_rip_stirrup
 	name = "Ripped Pantyhose (Stirrup)"
 	icon_state = "pantyhose_ripped-stir"

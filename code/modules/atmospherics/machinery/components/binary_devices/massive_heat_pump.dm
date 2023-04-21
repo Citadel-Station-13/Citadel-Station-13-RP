@@ -47,7 +47,7 @@
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_GREY
 	overlays_to_add += I
-	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = GLOB.reverse_dir[dir])
+	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = global.reverse_dir[dir])
 	I.color = PIPE_COLOR_GREY
 	overlays_to_add += I
 	add_overlay(overlays_to_add)

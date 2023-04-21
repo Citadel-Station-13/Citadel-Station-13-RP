@@ -6960,7 +6960,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Breach Corp cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -8376,6 +8376,10 @@
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
+"Qz" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/space,
+/area/space)
 "QD" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
@@ -8866,7 +8870,7 @@
 	dir = 8;
 	name = "Breach Corp cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
@@ -8902,6 +8906,11 @@
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
+"Tj" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techfloor,
+/area/ship/manta/bridge)
 "Tk" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/sinpockets,
@@ -14272,7 +14281,7 @@ yz
 yz
 yz
 yz
-yz
+Qz
 yz
 yz
 yz
@@ -20232,7 +20241,7 @@ Yj
 uk
 wU
 do
-et
+Tj
 fx
 gR
 Jw

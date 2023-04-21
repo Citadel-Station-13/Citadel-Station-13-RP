@@ -292,7 +292,7 @@
 			else
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
-			mind.transfer_to(mmi.brainmob)
+			mind.transfer(mmi.brainmob)
 		else if(!shell) // Shells don't have brainmbos in their MMIs.
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
@@ -1444,7 +1444,7 @@
 			else
 				to_chat(src, "Insufficient water reserves.")
 
-/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+/mob/living/silicon/robot/on_changed_z_level(old_z, new_z)
 	if(shell)
 		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
 			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")

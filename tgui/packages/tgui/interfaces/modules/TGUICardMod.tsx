@@ -3,8 +3,8 @@
  * @license MIT
  */
 
-import { BooleanLike } from "common/react";
-import { capitalize } from "common/string";
+import { BooleanLike } from "../../../common/react";
+import { capitalize } from "../../../common/string";
 import { ModuleProps, ModuleData, useModule, useLocalState } from "../../backend";
 import { Button, Flex, Input, LabeledList, Section, Tabs } from "../../components";
 import { SectionProps } from "../../components/Section";

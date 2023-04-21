@@ -195,13 +195,43 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	return output
 
 /**
+ * Force a matrix to be a full 20 value rgba matrix.
+ */
+/proc/color_matrix_expand(list/M)
+	var/list/expanding = M.Copy()
+	. = expanding
+	switch(length(M))
+		if(20) // rgba full with constant
+		if(9) // rgb without constant
+			expanding.Insert(4, null) // inject ra
+			expanding.Insert(8, null) // inject ga
+			expanding.Insert(12, null) // inject ba
+			expanding.Insert(13, null, null, null, 1) // inject ar to aa
+			expanding.Insert(17, null, null, null, null) // inject cr to ca
+		if(12) // rgb with constant			expanding.Insert(4, null)
+			expanding.Insert(4, null) // insert ra
+			expanding.Insert(8, null) // inject ga
+			expanding.Insert(12, null) // inject ba
+			expanding.Insert(13, null, null, null, 1) // inject ar to aa
+			expanding.Insert(20, null) // inject ca
+		if(16) // rgba without constant
+			expanding.Insert(17, null, null, null, null) // inject cr to ca
+		else
+			. = color_matrix_identity()
+			CRASH("what?")
+
+/**
  * Returns a matrix multiplication of A with B.
+ *
+ * todo: support rgb instead of rgba.
  */
 /proc/color_matrix_multiply(list/A, list/B)
 	if(!istype(A) || !istype(B))
 		return color_matrix_identity()
-	if(A.len != 20 || B.len != 20)
-		return color_matrix_identity()
+	if(A.len < 20)
+		A = color_matrix_expand(A)
+	if(B.len < 20)
+		B = color_matrix_expand(B)
 	var/list/output = list()
 	output.len = 20
 	var/x = 1
@@ -216,25 +246,40 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /**
  * Assembles a color matrix, defaulting to identity.
  */
-/proc/rgb_construct_color_matrix(rr = 1, rg, rb, gr, gg = 1, gb, br, bg, bb = 1, cr, cg, cb)
+/proc/construct_rgb_color_matrix(rr = 1, rg, rb, gr, gg = 1, gb, br, bg, bb = 1, cr, cg, cb)
 	return list(rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb)
 
 /**
  * Assembles a color matrix, defaulting to identity.
  */
-/proc/rgba_construct_color_matrix(rr = 1, rg, rb, ra, gr, gg = 1, gb, ga, br, bg, bb = 1, ba, ar, ag, ab, aa = 1, cr, cg, cb, ca)
+/proc/construct_rgba_color_matrix(rr = 1, rg, rb, ra, gr, gg = 1, gb, ga, br, bg, bb = 1, ba, ar, ag, ab, aa = 1, cr, cg, cb, ca)
 	return list(rr, rg, rb, ra, gr, gg, gb, ga, br, bg, bb, ba, ar, ag, ab, aa, cr, cg, cb, ca)
 
 /**
+ * Assemble a color matrix from a rgb(a) string.
+ */
+/proc/color_matrix_from_rgb(color)
+	var/list/L1 = ReadRGB(color)
+	if(length(L1) == 3) // rgb
+		return construct_rgb_color_matrix(
+			rr = L1[1] / 255,
+			gg = L1[2] / 255,
+			bb = L1[3] / 255,
+		)
+	else // rgba
+		return construct_rgba_color_matrix(
+			rr = L1[1] / 255,
+			gg = L1[2] / 255,
+			bb = L1[3] / 255,
+			aa = L1[4] / 255,
+		)
+
+/**
  * Constructs a colored greyscale matrix.
- * WARNING: Bad math up ahead.
+ * WARNING: Bad math up ahead. please redo this proc.
  */
 /proc/rgba_auto_greyscale_matrix(rgba_string)
-	// process rgb(a)
-	var/list/L1 = ReadRGB(rgba_string)
-	ASSERT(L1.len)
-	if(L1.len == 3)
-		return rgba_construct_color_matrix(0.39, 0.39, 0.39, 0, 0.5, 0.5, 0.5, 0, 0.11, 0.11, 0.11, 0, 0, 0, 0, 1, max(-0.5, (L1[1] - 255) / 255), max(-0.5, (L1[2] - 255) / 255), max(-0.5, (L1[3] - 255) / 255), 0)
-	else
-		// alpha
-		return rgba_construct_color_matrix(0.39, 0.39, 0.39, 0, 0.5, 0.5, 0.5, 0, 0.11, 0.11, 0.11, 0, 0, 0, 0, 0, max(-0.5, (L1[1] - 255) / 255), max(-0.5, (L1[2] - 255) / 255), max(-0.5, (L1[3] - 255) / 255), L1[4] / 255)
+	return color_matrix_multiply(
+		color_matrix_greyscale(),
+		color_matrix_from_rgb(rgba_string)
+	)

@@ -1899,7 +1899,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eB" = (
@@ -9086,6 +9086,10 @@
 	name = "plating"
 	},
 /area/centcom/security)
+"AR" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/unsimulated/wall,
+/area/centcom/bathroom)
 "AY" = (
 /obj/machinery/status_display{
 	pixel_x = -31
@@ -10525,7 +10529,7 @@
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
@@ -12701,6 +12705,10 @@
 	icon_state = "dark"
 	},
 /area/centcom/security)
+"Ox" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/unsimulated/floor/steel,
+/area/centcom/control)
 "Oz" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "HoSdoor";
@@ -20007,7 +20015,7 @@ ac
 ac
 ry
 vN
-ry
+AR
 wM
 ry
 xO
@@ -25664,7 +25672,7 @@ gI
 hg
 em
 em
-em
+Ox
 em
 iW
 dm

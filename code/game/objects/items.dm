@@ -476,7 +476,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/proc/ui_action_click()
+/obj/item/ui_action_click(datum/action/action, mob/user)
 	attack_self(usr)
 
 //RETURN VALUES
@@ -764,12 +764,21 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
+	on_attack_self(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ */
+/obj/item/proc/on_attack_self(mob/user)
+	return
 
 //? Mob Armor
 
 /**
  * called to be checked for mob armor
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
@@ -779,7 +788,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /**
  * called to be used as mob armor
  * side effects are allowed
- * 
+ *
  * @returns copy of args with modified values
  */
 /obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)

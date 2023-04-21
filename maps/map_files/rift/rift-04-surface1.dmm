@@ -889,7 +889,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
 "aJU" = (
@@ -1000,7 +1000,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "aRL" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
 "aRZ" = (
@@ -1197,7 +1197,7 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/mauve/bordercorner2,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/testingroom)
 "aZL" = (
@@ -1933,7 +1933,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "bvj" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
@@ -2709,7 +2709,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/outpost/xenobiology/outpost_storage)
 "cba" = (
@@ -2763,7 +2763,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora)
 "cbX" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -4073,7 +4073,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/junction{
 	dir = 1
 	},
@@ -5406,7 +5406,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "dFq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/camera/network/research/xenobio,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_stairs)
@@ -5421,7 +5421,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "dFP" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/patient_wing)
 "dFT" = (
@@ -9796,7 +9796,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "gMS" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "gMY" = (
@@ -10347,8 +10347,8 @@
 /turf/simulated/wall,
 /area/rnd/xenobiology/xenoflora)
 "hax" = (
-/mob/living/simple_mob/animal/passive/honkpet,
 /obj/effect/floor_decal/rust,
+/mob/living/simple_mob/animal/passive/honkpet,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/funny/clownoffice)
 "haC" = (
@@ -10986,9 +10986,7 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/medical/virologyisolation)
 "hqy" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
+/obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -10998,6 +10996,13 @@
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
 	},
+/obj/item/deck/cards{
+	pixel_y = 8
+	},
+/obj/item/deck/cah/black{
+	pixel_y = 4
+	},
+/obj/item/deck/cah,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "hqG" = (
@@ -11034,7 +11039,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenoarch_storage)
 "hsz" = (
@@ -12376,7 +12381,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/hallway)
 "iiu" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -12435,10 +12440,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
 "ikO" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/job/cargo_technician,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -12916,7 +12917,7 @@
 /area/library)
 "ixi" = (
 /obj/structure/bed/chair{
-	dir = 4
+	dir = 1
 	},
 /obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor/tiled/monotile,
@@ -13244,7 +13245,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "iFF" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -13338,6 +13339,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
+"iIm" = (
+/obj/structure/closet/secure_closet/cargotech,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/office)
 "iIv" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/key/quadbike,
@@ -13492,7 +13497,7 @@
 "iNl" = (
 /obj/machinery/door/airlock/command{
 	id_tag = "cmodoor";
-	name = "CMO's Office";
+	name = "Chief Medical Officer";
 	req_access = list(40)
 	},
 /obj/structure/cable/green{
@@ -15188,7 +15193,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -15383,14 +15388,9 @@
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
 "jZa" = (
-/obj/structure/disposaloutlet{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/machinery/conveyor{
-	tag = "mailroom"
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
@@ -16231,7 +16231,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "kyN" = (
@@ -16773,7 +16773,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
 "kQj" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
@@ -16850,8 +16850,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
 "kSz" = (
-/turf/simulated/wall/r_wall,
-/area/maintenance/cargo)
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/conveyor{
+	tag = "mailroom"
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/delivery)
 "kSV" = (
 /obj/structure/railing{
 	dir = 8
@@ -17492,7 +17499,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "lkP" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -17621,9 +17628,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "lpK" = (
-/obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Airlock";
-	req_one_access = list(31)
+/obj/machinery/door/airlock/mining{
+	req_one_access = list(31);
+	name = "Cargo Airlock"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -19157,14 +19164,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "mpr" = (
-/obj/structure/table/reinforced,
 /obj/item/material/ashtray/glass,
-/obj/machinery/recharger,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
@@ -20480,7 +20485,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "ncK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfaceone)
 "ncU" = (
@@ -20582,7 +20587,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "ngz" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -20826,9 +20831,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "nnr" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
@@ -21095,7 +21097,9 @@
 	dir = 4
 	},
 /obj/machinery/door/window/southright,
-/obj/machinery/door/window/northleft,
+/obj/machinery/door/window/northleft{
+	req_one_access = list(31)
+	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -21209,7 +21213,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "nyh" = (
@@ -23077,17 +23081,23 @@
 /turf/simulated/floor/plating,
 /area/medical/patient_b)
 "ovh" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenobiology/xenoflora)
 "ovn" = (
 /turf/simulated/wall/r_wall,
 /area/security/forensics)
 "ovr" = (
-/obj/machinery/conveyor{
-	tag = "mailroom"
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 2;
+	icon_state = "shutter0";
+	id = "cargo_line_shutter";
+	name = "Cargo Line shutter";
+	opacity = 0
 	},
-/obj/structure/disposalpipe/trunk,
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "ovz" = (
@@ -23215,7 +23225,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/chemistry_lab)
 "oBW" = (
@@ -25098,7 +25108,6 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rnd/xenoarch_storage)
 "pFz" = (
-/mob/living/simple_mob/animal/passive/mimepet,
 /obj/machinery/power/apc{
 	dir = 8;
 	name = "west bump";
@@ -25107,6 +25116,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/mob/living/simple_mob/animal/passive/mimepet,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tether/surfacebase/funny/mimeoffice)
 "pFA" = (
@@ -26962,7 +26972,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "qTZ" = (
@@ -27473,7 +27483,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virologytransitwest)
 "rnz" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -28165,10 +28175,16 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "rJx" = (
-/obj/structure/bed/chair{
-	dir = 8
+/obj/machinery/door/airlock/mining{
+	req_one_access = list(31);
+	name = "Cargo Airlock"
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "rJP" = (
 /obj/machinery/portable_atmospherics/powered/scrubber,
@@ -28305,7 +28321,7 @@
 	dir = 3;
 	pixel_y = 24
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "rNz" = (
@@ -29961,7 +29977,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/junction{
 	dir = 1;
 	icon_state = "pipe-j2"
@@ -31068,7 +31084,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "tyR" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
@@ -31583,13 +31599,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "tMw" = (
-/obj/structure/table/reinforced,
-/obj/item/deck/cah,
-/obj/item/deck/cah/black{
-	pixel_y = 4
-	},
-/obj/item/deck/cards{
-	pixel_y = 8
+/obj/structure/bed/chair{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
@@ -31600,7 +31611,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/hallway)
 "tPc" = (
@@ -31709,7 +31720,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenoarch_storage)
 "tSq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -31864,7 +31875,8 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 10
 	},
-/obj/structure/closet/secure_closet/cargotech,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "tXc" = (
@@ -31953,7 +31965,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "tZJ" = (
@@ -32967,7 +32979,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/patient_wing)
@@ -34012,7 +34024,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "vkl" = (
@@ -35311,7 +35323,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/evahallway)
 "weE" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/camera/network/research/xenobio{
 	dir = 9
 	},
@@ -35493,8 +35505,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "wkj" = (
-/obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/holopad/ship,
 /turf/simulated/floor/wood,
 /area/library)
 "wkp" = (
@@ -36519,7 +36531,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
 "wOB" = (
@@ -36934,13 +36946,13 @@
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/blue/border,
 /obj/machinery/light,
+/obj/machinery/computer/card{
+	dir = 1
+	},
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /mob/living/simple_mob/animal/passive/cat/runtime,
-/obj/machinery/computer/card{
-	dir = 1
-	},
-/obj/machinery/computer/card{
-	dir = 1
-	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "xcD" = (
@@ -37061,7 +37073,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "xgU" = (
@@ -37510,7 +37522,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
 "xwp" = (
@@ -37599,7 +37611,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
 "xzS" = (
@@ -52205,7 +52217,7 @@ bFI
 ttp
 ezu
 ttp
-bFI
+kSz
 ovr
 jZa
 bXZ
@@ -55299,7 +55311,7 @@ sDf
 dMX
 dMX
 iFG
-kSz
+bXZ
 qeY
 bXZ
 quZ
@@ -55310,7 +55322,7 @@ klT
 oVJ
 lIR
 jeI
-vDU
+rJx
 phI
 eRF
 swF
@@ -55493,7 +55505,7 @@ kHH
 dMX
 dMX
 dMX
-kSz
+bXZ
 mWj
 bXZ
 bMC
@@ -55687,7 +55699,7 @@ kHH
 dMX
 dMX
 dMX
-kSz
+bXZ
 bXZ
 bXZ
 jnz
@@ -56664,7 +56676,7 @@ bXZ
 gim
 xTe
 qPe
-rJx
+rZs
 ikO
 rZs
 vRV
@@ -56860,7 +56872,7 @@ xTe
 vTw
 qXE
 pSp
-vRV
+iIm
 vRV
 pAz
 wQk

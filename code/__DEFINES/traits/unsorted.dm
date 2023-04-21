@@ -157,3 +157,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ORGAN_PRESERVED "organ_preserved"
 /// preserve all organs in us
 #define TRAIT_PRESERVE_ALL_ORGANS "preserve_organs"
+
+//? Fishing
+
+/// Fish in this won't die
+#define TRAIT_FISH_SAFE_STORAGE "fish_case"
+/// Stuff that can go inside fish cases
+#define TRAIT_FISH_CASE_COMPATIBILE "fish_case_compatibile"

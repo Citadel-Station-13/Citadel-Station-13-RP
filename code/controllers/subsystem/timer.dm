@@ -29,6 +29,7 @@ SUBSYSTEM_DEF(timer)
 	name = "Timer"
 	wait = 1 // SS_TICKER subsystem, so wait is in ticks
 	init_order = INIT_ORDER_TIMER
+	runlevels = RUNLEVELS_ALL
 	priority = FIRE_PRIORITY_TIMER
 	subsystem_flags = SS_TICKER|SS_NO_INIT
 
@@ -663,6 +664,10 @@ SUBSYSTEM_DEF(timer)
 	if (callback.object != GLOBAL_PROC && QDELETED(callback.object) && !QDESTROYING(callback.object))
 		stack_trace("addtimer called with a callback assigned to a qdeleted object. In the future such timers will not \
 			be supported and may refuse to run or run with a 0 wait")
+
+	if (wait == 0 && !flags)
+		SSdpc.queued_calls += callback
+		return
 
 	wait = max(CEILING(wait, world.tick_lag), world.tick_lag)
 

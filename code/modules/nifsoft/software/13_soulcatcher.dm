@@ -114,7 +114,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -133,7 +133,7 @@
 	message = trim(message)
 	if(!length(message))
 		return
-	message = sender.say_emphasis(message)
+	message = say_emphasis(message)
 	var/sender_name = eyeobj ? eyeobj.name : sender.name
 
 	//AR Projecting
@@ -302,7 +302,7 @@
 
 	//Put the mind and player into the mob
 	// login should handle the perspective reset, now that nif is set.
-	M.mind.transfer_to(brainmob)
+	M.mind.transfer(brainmob)
 	brainmob.name = brainmob.mind.name
 	brainmob.real_name = brainmob.mind.name
 

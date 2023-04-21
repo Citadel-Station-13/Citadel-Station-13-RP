@@ -530,14 +530,6 @@
 	body_cover_flags = 0
 	inv_hide_flags = BLOCKHAIR
 
-/obj/item/clothing/head/skull
-	name = "totemic skull hat"
-	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or anothers, you do feel a little more intimidating with this on."
-	icon_state = "skull"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
-	body_cover_flags = 0
-	inv_hide_flags = 0
-
 /obj/item/clothing/head/bunny
 	name = "bunny costume head"
 	desc = "Popular with both mascots and heartbroken Japanese highschool girls."
@@ -691,3 +683,39 @@
 	icon = 'icons/clothing/head/bard.dmi'
 	icon_state = "bardhat"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/head/cowl
+	name = "cloth cowl"
+	desc = "A loose cowl fashioned from cloth. Designed to cover the head and potentially conceal one's identity."
+	icon = 'icons/clothing/head/cowl.dmi'
+	icon_state = "golhood"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	action_button_name = "Toggle Hood"
+
+/obj/item/clothing/head/cowl/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]1"
+		to_chat(user, "You raise the [src].")
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You lower the [src].")
+	update_worn_icon()	//so our mob-overlays update"
+
+/obj/item/clothing/head/cowl/goliath
+	name = "goliath hide cowl"
+	desc = "A loose cowl fashioned from Goliath hide. Designed to cover the head and potentially conceal one's identity."
+	icon = 'icons/clothing/head/cowl.dmi'
+	icon_state = "golhood"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	body_cover_flags = HEAD|FACE
+	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
+	action_button_name = "Toggle Hood"
+
+/obj/item/clothing/head/fishingcap
+	name = "Fishing Cap"
+	desc = "The lettering on this hat is phenominal. It reads: 'Women fear me. Fish fear me. Men turn their eyes away from me as I walk. No beast dare makes a sound in my presence. I am alone in this barren space.' There is a patch of an extra large Monkfish sewn on beneath these words. Only the most prestegious fishers in the universe must own a hat like this..."
+	icon_state = "fishingcap"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "fishingcap", SLOT_ID_LEFT_HAND = "fishingcap")

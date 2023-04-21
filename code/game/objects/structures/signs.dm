@@ -695,11 +695,11 @@
 
 /obj/structure/sign/department/cargo
 	name = "CARGO"
-	icon_state = "cargo"
+	icon_state = "cargo2"
 
 /obj/structure/sign/department/mail
 	name = "MAIL"
-	icon_state = "mail"
+	icon_state = "mail2"
 
 /obj/structure/sign/department/miner_dock
 	name = "MINING DOCK"
@@ -715,7 +715,7 @@
 
 /obj/structure/sign/department/engine
 	name = "ENGINE"
-	icon_state = "engine"
+	icon_state = "engine2"
 
 /obj/structure/sign/department/gravi
 	name = "GRAVGEN"
@@ -743,7 +743,7 @@
 
 /obj/structure/sign/department/armory
 	name = "ARMORY"
-	icon_state = "armory"
+	icon_state = "armory2"
 
 /obj/structure/sign/department/prison
 	name = "PRISON"
@@ -814,3 +814,8 @@
 	name = "I.C.V."
 	desc = "The charred name of a cargo ship of some description."
 	icon_state = "poi_engine2"
+
+/obj/structure/sign/senator
+	name = "Senator Painting"
+	desc = "A painting of some human senator. On the bottom there is a mostly faded phrase in which only the end can be made out. '-Can't fret over every egg' "
+	icon_state = "senator"

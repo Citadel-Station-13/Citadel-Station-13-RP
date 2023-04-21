@@ -875,8 +875,12 @@
 	desc = "A portable seat designed to be mounted on trained animals. This one is fashioned out of goliath hide and bone, and seems to be designed for a very angular beast."
 	icon_state = "saddle_lavaland"
 
-//Ashlander Specific Crafting Item - I'll eventually just make an item .dm for these guys at this rate.
-//This item will replace soulstones in Lavaland recipes/features.
+/obj/item/saddle/stormdrifter
+	name = "harness and gondola"
+	desc = "A hardy gondola designed to be mounted on a floating creature. This one is fashioned out of shank chitin and Goliath bone."
+	icon_state = "saddle_lavaland"
+
+//Ashlander Specific Crafting Items
 /datum/category_item/catalogue/anomalous/scorian_religion/elder_stone
 	name = "Scorian Religion - Elder Stones"
 	desc = "Originally depicted in Scorian carvings and cave paintings discovered at various dig sites around Surt, \
@@ -891,7 +895,40 @@
 /obj/item/elderstone
 	name = "elder stone"
 	desc = "This strange gem is considered sacred by the inhabitants of Surt. Jealously protected by the tribes, these stones exhibit anomalous properties - primarily a faintly audible chiming ring."
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "elderstone"
 	w_class = ITEMSIZE_SMALL
 	catalogue_data = list(/datum/category_item/catalogue/anomalous/scorian_religion/elder_stone)
+
+/obj/item/condensedphlogiston
+	name = "condensed phlogiston"
+	desc = "Phlogiston stabilized into a putty-like solid. It is less volatile than raw phlogiston, requiring special circumstances to detonate."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "condensedphlogiston"
+	w_class = ITEMSIZE_SMALL
+
+/obj/item/bitterash
+	name = "poultice (bitter ash)"
+	desc = "A pungent poultice used primarily in Scorian religious rites. It is believed to provide protection from rampaging beasts."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "poulticeash"
+	w_class = ITEMSIZE_SMALL
+	var/use_sound = list('sound/effects/ointment.ogg')
+
+//Code isn't working. Figure it out tomorrow.
+
+/obj/item/bitterash/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!target.mind)
+		return
+	if(target.faction == user.faction)
+		to_chat(target, "<span class='notice'>You are graced by the familiar gaze of the Mother for a brief moment.</span>")
+
+	to_chat(user, "<span class='notice'>You smear the Mark of the Mother on [target]'s forehead using the [src].</span>")
+	to_chat(target, "<span class='notice'>You sense an unfamiliar presence looming over you. It encases you in a gentle, all-encompassing warmth.</span>")
+	target.faction = user.faction
+	playsound(src, pick(use_sound), 25)
+	qdel(src)

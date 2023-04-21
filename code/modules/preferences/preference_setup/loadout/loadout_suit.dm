@@ -206,7 +206,9 @@
 /datum/gear/suit/halfcloak
 	name = "Rough Half Cloak (Tan)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
-
+/datum/gear/suit/halfcloaktorn
+	name = "Rough Torn Half Cloak (Tan)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
 /datum/gear/suit/halfcloak/colorable
 	name = "Rough Half Cloak (Colorable)"
 	path = /obj/item/clothing/accessory/poncho/rough_cloak
@@ -214,6 +216,9 @@
 /datum/gear/suit/halfcloak/colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+/datum/gear/suit/halfcloak/colorable/torn
+	name = "Rough Torn Half Cloak (Colorable)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak_torn
 
 /datum/gear/suit/black_lawyer_jacket
 	name = "Suit Jacket - Black"
@@ -365,15 +370,15 @@
 
 /datum/gear/suit/ronincoat
 	name = "Ronin Coat"
-	path = /obj/item/clothing/suit/storage/hooded/ronincoat
+	path = /obj/item/clothing/suit/storage/toggle/heated/ronincoat
 
 /datum/gear/suit/runnerjacket
 	name = "Runner Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner
+	path = /obj/item/clothing/suit/storage/toggle/heated
 
 /datum/gear/suit/halfpintjacket
 	name = "Half-Pint Jacket"
-	path = /obj/item/clothing/suit/storage/hooded/runner/half_pint
+	path = /obj/item/clothing/suit/storage/toggle/heated/half_pint
 
 /datum/gear/suit/halfmoon
 	name = "Half Moon Jacket"
@@ -570,3 +575,35 @@
 /datum/gear/suit/onestar
 	name = "One Star Coat"
 	path = /obj/item/clothing/suit/storage/onestar
+
+/datum/gear/suit/overcoatdark
+	name = "Great Dark Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark
+
+/datum/gear/suit/overcoatdark/caped
+	name = "Great Dark Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/dark/caped
+
+/datum/gear/suit/overcoatbleached
+	name = "Great Bleached Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/bleached
+
+/datum/gear/suit/cropped_hoodie
+	name = "Cropped Hoodie"
+	path = /obj/item/clothing/suit/cropped_hoodie
+
+/datum/gear/suit/cropped_hoodie/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/cropped_hoodie/croppier
+	name = "Cropped Hoodie (high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppier
+
+/datum/gear/suit/cropped_hoodie/veryhighcrop
+	name = "Cropped Hoodie (very high crop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppierer
+
+/datum/gear/suit/cropped_hoodie/croppiest
+	name = "Cropped Hoodie (supercrop)"
+	path = /obj/item/clothing/suit/cropped_hoodie/croppiest

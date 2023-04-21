@@ -204,7 +204,7 @@
 			O.updatename("Default")
 
 			if(M.brainmob)
-				M.brainmob.mind.transfer_to(O)
+				M.brainmob.mind.transfer(O)
 				if(O.mind && O.mind.special_role)
 					O.mind.store_memory("In case you look at this after being borged, the objectives are only here until I find a way to make them not show up for you, as I can't simply delete them without screwing up round-end reporting. --NeoFite")
 				for(var/datum/language/L in M.brainmob.languages)

@@ -52,7 +52,10 @@
 /// When round completes but before reboot.
 #define RUNLEVEL_POSTGAME 8
 
+/// default runlevels for most subsystems
 #define RUNLEVELS_DEFAULT (RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
+/// all valid runlevels - subsystems with this will run all the time after their MC init stage.
+#define RUNLEVELS_ALL (RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME)
 
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 /// Convert from the runlevel bitfield constants to index in runlevel_flags list.
@@ -160,9 +163,16 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_INSTRUMENTS      90
 #define FIRE_PRIORITY_ASSET_LOADING    100
 #define FIRE_PRIORITY_MACHINES         100
-#define FIRE_PRIORITY_TGUI             110
+#define FIRE_PRIORITY_NANO             150
+#define FIRE_PRIORITY_AI               200
+#define FIRE_PRIORITY_TGUI             200
+#define FIRE_PRIORITY_PROJECTILES      200
+#define FIRE_PRIORITY_THROWING         200
 #define FIRE_PRIORITY_STATPANELS       400
 #define FIRE_PRIORITY_OVERLAYS         500
+#define FIRE_PRIORITY_SMOOTHING        500
+#define FIRE_PRIORITY_CHAT             500
+#define FIRE_PRIORITY_INPUT            1000
 
 //? Ticker Subsystems - Highest priority
 // Any subsystem flagged with SS_TICKER is here!
@@ -170,14 +180,9 @@ DEFINE_BITFIELD(runlevels, list(
 // Is your feature as important as movement, chat, or timers?
 // Probably not! Go to normal bracket instead!
 
-#define FIRE_PRIORITY_AI           10	 //! WHY IS THIS SSTICKER???
 // DEFAULT PRIORITY IS HERE
-#define FIRE_PRIORITY_PROJECTILES  150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_THROWING     150   //! this probably shouldn't be ssticker
-#define FIRE_PRIORITY_CHAT         400
-#define FIRE_PRIORITY_SMOOTHING    500   //! this probably shouldn't be ssticker
+#define FIRE_PRIORITY_DPC          700
 #define FIRE_PRIORITY_TIMER        700
-#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
 
 //? Special
 

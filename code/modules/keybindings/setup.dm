@@ -8,14 +8,27 @@
  	/// On next move, subtract this dir from the move that would otherwise be done
 	var/next_move_dir_sub
 
-// Set a client's focus to an object and override these procs on that object to let it handle keypresses
-/datum/proc/key_down(key, client/user) // Called when a key is pressed down initially
+/**
+ * called when a key is pressed down initially
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/key_down(key, client/user)
 	return
 
+/**
+ * called when a key is released
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
 /datum/proc/key_up(key, client/user) // Called when a key is released
 	return
-
-/datum/proc/keyLoop(client/user) // Called once every frame
+/**
+ * called every frame
+ *
+ * @return TRUE to stop propagation (useful if we're a focus intercept)
+ */
+/datum/proc/keyLoop(client/user)
 	set waitfor = FALSE
 	return
 
@@ -60,6 +73,12 @@
 	apply_macro_set(SKIN_MACROSET_HOTKEYS, SSinput.macroset_hotkey)
 	apply_macro_set(SKIN_MACROSET_CLASSIC_HOTKEYS, SSinput.macroset_classic_hotkey)
 	apply_macro_set(SKIN_MACROSET_CLASSIC_INPUT, SSinput.macroset_classic_input)
+
+	//Reactivate any active tgui windows mouse passthroughs macros
+	for(var/datum/tgui_window/window in tgui_windows)
+		if(window.mouse_event_macro_set)
+			window.mouse_event_macro_set = FALSE
+			window.set_mouse_macro()
 
 	set_hotkeys_preference()
 	set_hotkeys_button(prefs_override.hotkeys)

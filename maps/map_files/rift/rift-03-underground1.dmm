@@ -1253,6 +1253,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"cR" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "cS" = (
 /obj/machinery/light{
 	dir = 1
@@ -1725,6 +1733,16 @@
 "dP" = (
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"dQ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/direction_bump/north,
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "dR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -2170,6 +2188,11 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
+"fs" = (
+/obj/machinery/light/small,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "ft" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -2551,6 +2574,18 @@
 "gH" = (
 /turf/simulated/floor/reinforced,
 /area/maintenance/engineering)
+"gI" = (
+/obj/structure/sign/senator{
+	pixel_y = 32
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/computer/nanite_chamber{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "gK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -2779,6 +2814,12 @@
 /obj/effect/blocker,
 /turf/simulated/open/lythios43c/indoors,
 /area/security/prison)
+"hF" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/meter{
@@ -4181,6 +4222,12 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"nw" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "nx" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4449,6 +4496,12 @@
 	},
 /turf/simulated/wall,
 /area/hallway/primary/underone)
+"oC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "oE" = (
 /obj/machinery/atmospherics/component/binary/algae_farm,
 /turf/simulated/floor/tiled/monotile,
@@ -5828,6 +5881,13 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
+"um" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "un" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -6138,6 +6198,21 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
+"vv" = (
+/obj/machinery/door/airlock/glass{
+	desc = "A room dedicated for the maintanence of nanite conglamorate crew members.";
+	name = "Nanite Reconstitution"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "vw" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/white,
@@ -6499,6 +6574,19 @@
 /obj/machinery/telecomms/hub/preset/rift,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"wW" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "wX" = (
 /obj/structure/railing{
 	dir = 1
@@ -7456,6 +7544,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
+"Ak" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "Al" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/floor_decal/borderfloorblack{
@@ -7605,6 +7697,19 @@
 "AO" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
+"AP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "AQ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/ladder{
@@ -8721,6 +8826,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Fz" = (
+/obj/effect/floor_decal/techfloor,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "FA" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/steel,
@@ -9576,6 +9688,13 @@
 "Iv" = (
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/security/prison)
+"Iw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "Ix" = (
 /obj/structure/railing{
 	dir = 4
@@ -9878,6 +9997,17 @@
 /obj/machinery/atmospherics/valve/digital,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"JI" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "JO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -10545,6 +10675,24 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"LZ" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "Ma" = (
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/tiled/kafel_full/white,
@@ -10799,6 +10947,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"MY" = (
+/turf/simulated/wall,
+/area/station/protean_nanite_room)
 "MZ" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/white,
@@ -10886,7 +11037,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "Nt" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -11277,6 +11428,12 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
+"Oy" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "Oz" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -11830,6 +11987,12 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"QQ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "QT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
@@ -12372,6 +12535,12 @@
 /obj/item/digestion_remains/skull/teshari,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Td" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "Te" = (
 /obj/structure/table/steel,
 /obj/item/deck/cah,
@@ -13408,6 +13577,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under1)
+"Xn" = (
+/obj/machinery/nanite_chamber,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/station/protean_nanite_room)
 "Xs" = (
 /turf/simulated/wall/r_wall,
 /area/tcommsat/chamber)
@@ -13889,6 +14062,12 @@
 /obj/structure/snowman/borg,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Zm" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/station/protean_nanite_room)
 "Zn" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -22932,10 +23111,10 @@ Vh
 Fv
 eg
 rY
-bA
-sa
-sa
-sa
+MY
+MY
+MY
+MY
 pT
 sS
 my
@@ -23126,11 +23305,11 @@ BX
 Nb
 eg
 rT
-bA
-aa
-aa
-sa
-sa
+MY
+gI
+Xn
+MY
+MY
 Gr
 my
 sR
@@ -23320,12 +23499,12 @@ BX
 zZ
 Aw
 Zz
-bA
-aa
-aa
-aa
-sa
-sa
+MY
+Oy
+nw
+Td
+MY
+MY
 my
 sR
 sa
@@ -23514,12 +23693,12 @@ BX
 xv
 eg
 rT
-bA
-aa
-aa
-aa
-aa
-sa
+MY
+dQ
+oC
+Fz
+cR
+MY
 my
 sR
 sa
@@ -23705,15 +23884,15 @@ RH
 MC
 lc
 WT
-Cl
-eg
-rT
-bA
-aa
-aa
-aa
-aa
-sa
+LZ
+AP
+JI
+vv
+wW
+Iw
+um
+fs
+MY
 NB
 sa
 sa
@@ -23902,12 +24081,12 @@ WT
 Cl
 eg
 rT
-bA
-aa
-aa
-aa
-aa
-sa
+MY
+hF
+Zm
+QQ
+Ak
+MY
 my
 sR
 sa

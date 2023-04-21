@@ -2,7 +2,7 @@
  * Handles mob creation, equip, and ckey transfer.
  */
 /datum/ghostrole_instantiator
-	/// traits to add to mob : will be made with GHOSTROLE_TRAIT source
+	/// traits to add to mob : will be made with ROLE_TRAIT source
 	var/list/mob_traits
 
 /datum/ghostrole_instantiator/proc/Run(client/C, atom/location, list/params)
@@ -33,7 +33,7 @@
 		CRASH("Invalid path: [type_to_make]")
 	var/mob/living/L = new type_to_make(location)
 	for(var/trait in mob_traits)
-		ADD_TRAIT(L, trait, GHOSTROLE_TRAIT)
+		ADD_TRAIT(L, trait, ROLE_TRAIT)
 	return L
 
 /datum/ghostrole_instantiator/simple/proc/GetMobType(client/C, atom/location, list/params)
@@ -46,7 +46,7 @@
 /datum/ghostrole_instantiator/human/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = new(location)
 	for(var/trait in mob_traits)
-		ADD_TRAIT(H, trait, GHOSTROLE_TRAIT)
+		ADD_TRAIT(H, trait, ROLE_TRAIT)
 	return H
 
 /datum/ghostrole_instantiator/human/Equip(client/C, mob/M, list/params)
@@ -155,13 +155,21 @@
 	var/equip_loadout = TRUE
 	/// equip traits
 	var/equip_traits = TRUE
+	/// Allows the selection of specific species for ghost roles.
+	var/species_required = null
+	/// Allows the blacklisting of specific species from ghost roles.
+	//var/species_restricted = null
 
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
 	var/list/errors = list()
 	// todo: respect warnings; we ignore them right now so we don't block joins.
-	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE, errors))
+	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE | PREF_COPY_TO_NO_CHECK_SPECIES, errors))
 		to_chat(C, SPAN_WARNING("<h3><center>--- Character Setup Errors - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
+		return
+
+	if(!isnull(species_required) && species_required != C.prefs.real_species_datum().type)
+		to_chat(C, SPAN_WARNING("<h3><center>--- Character Species Is Not Allowed In This Role - Please resolve these to continue ---</center></h3><br><b>-&nbsp;&nbsp;&nbsp;&nbsp;[jointext(errors, "<br>-&nbsp;&nbsp;&nbsp;&nbsp;")]</b>"))
 		return
 
 	LoadSavefile(C, H)
@@ -169,8 +177,3 @@
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	SSjob.EquipRank(H, USELESS_JOB)
-	// if(equip_loadout)
-	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
-	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))
-	// 	SSquirks.AssignQuirks(H, C, TRUE, FALSE, null, FALSE, C)

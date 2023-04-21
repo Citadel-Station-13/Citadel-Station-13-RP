@@ -191,14 +191,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit)
 "eP" = (
@@ -939,16 +935,12 @@
 /area/shuttle/gecko_cr_engineering)
 "sV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
 /obj/machinery/meter,
 /obj/effect/catwalk_plated/dark,
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "te" = (
@@ -1194,9 +1186,7 @@
 /obj/structure/fuel_port/heavy{
 	pixel_y = 28
 	},
-/obj/structure/closet/crate{
-	dir = 2
-	},
+/obj/structure/closet/crate,
 /obj/item/tool/crowbar/red,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
@@ -1379,6 +1369,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/catwalk_plated,
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "Br" = (
@@ -1893,6 +1884,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_cockpit)
 "JL" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/gecko_cr_cockpit)
 "JV" = (
@@ -2030,14 +2022,10 @@
 /area/shuttle/gecko_cr_engineering)
 "LW" = (
 /obj/structure/handrail,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/gecko_cr_engineering)
 "Mf" = (

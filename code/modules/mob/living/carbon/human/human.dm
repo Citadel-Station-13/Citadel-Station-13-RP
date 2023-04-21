@@ -908,7 +908,7 @@
 			if(H.brainmob)
 				if(H.brainmob.real_name == src.real_name)
 					if(H.brainmob.mind)
-						H.brainmob.mind.transfer_to(src)
+						H.brainmob.mind.transfer(src)
 						qdel(H)
 
 	// Reapply markings/appearance from prefs for player mobs
@@ -1657,11 +1657,11 @@
 	. = ..()
 	if(wear_suit)
 		if(wear_suit.inv_hide_flags & HIDEGLOVES)
-			LAZYOR(., SLOT_GLOVES)
+			LAZYDISTINCTADD(., SLOT_GLOVES)
 		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
-			LAZYOR(., SLOT_ICLOTHING)
+			LAZYDISTINCTADD(., SLOT_ICLOTHING)
 		if(wear_suit.inv_hide_flags & HIDESHOES)
-			LAZYOR(., SLOT_FEET)
+			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)

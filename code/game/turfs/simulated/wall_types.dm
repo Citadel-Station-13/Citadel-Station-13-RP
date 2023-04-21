@@ -1,6 +1,7 @@
 /turf/simulated/wall/r_wall
 	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "rgeneric"
+	color = null
 	rad_insulation = RAD_INSULATION_SUPER
 
 	material        = /datum/material/plasteel
@@ -275,6 +276,7 @@
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
+	permit_ao = FALSE
 
 	/// The base iconstate to base sprites on
 	var/base_state = "light"

@@ -134,8 +134,12 @@
 	// admin control (?)
 	if(mob.control_object)
 		return Move_object(direct)
+	//* movement intercept
+	if(mob.movement_intercept?.intercept_mob_move(mob, direct))
+		return
 	// nonliving get handled differently
 	if(!isliving(mob))
+		mob.move_delay = world.time + mob.cached_multiplicative_slowdown
 		return mob.Move(n, direct)
 	// autoghost if needed
 	if((mob.stat == DEAD) && isliving(mob) && !mob.forbid_seeing_deadchat)
@@ -318,7 +322,7 @@
 	//! WARNING: MORE LEGACY CODE
 	for (var/obj/item/grab/G in mob)
 		if (G.state == GRAB_NECK)
-			mob.setDir(GLOB.reverse_dir[direct])
+			mob.setDir(global.reverse_dir[direct])
 		G.adjust_position()
 	for (var/obj/item/grab/G in mob.grabbed_by)
 		G.adjust_position()
@@ -606,3 +610,20 @@
 		return FALSE
 	if(shift_pixel_y > -16)
 		adjust_pixel_shift_y(-1)
+
+//? Movement Intercepts
+
+/mob/proc/request_movement_intercept(datum/requesting)
+	if(movement_intercept)
+		if(requesting == movement_intercept)
+			return TRUE
+		return FALSE
+	movement_intercept = requesting
+	return TRUE
+
+/mob/proc/clear_movement_intercept()
+	movement_intercept = null
+	return TRUE
+
+/datum/proc/intercept_mob_move(mob/moving, dir)
+	return

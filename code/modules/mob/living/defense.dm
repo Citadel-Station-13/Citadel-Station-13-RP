@@ -106,7 +106,7 @@
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
 	if(wave)
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count, TRUE)
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 	else
 		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
@@ -485,24 +485,27 @@
 /mob/living/proc/reagent_permeability()
 	return 1
 
-/mob/living/proc/handle_actions()
+/mob/proc/handle_actions()
+
+/mob/living/handle_actions()
+	// todo: kill this, move to event driven.
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
 	for(var/datum/action/A in actions)
 		if(A.CheckRemoval(src))
-			A.Remove(src)
+			A.remove(src)
 	for(var/obj/item/I in src)
 		if(I.action_button_name)
 			if(!I.action)
 				if(I.action_button_is_hands_free)
-					I.action = new/datum/action/item_action/hands_free
+					I.action = new/datum/action/item_action/hands_free(I)
 				else
-					I.action = new/datum/action/item_action
+					I.action = new/datum/action/item_action(I)
 				I.action.name = I.action_button_name
-				I.action.target = I
-			I.action.Grant(src)
-	return
+			I.action.grant(src)
 
 /mob/living/update_action_buttons()
+	// todo: remove this, move to event driven
+	handle_actions()
 	if(!hud_used)
 		return
 	if(!client)
@@ -531,11 +534,6 @@
 	var/button_number = 0
 	for(var/datum/action/A in actions)
 		button_number++
-		if(A.button == null)
-			var/atom/movable/screen/movable/action_button/N = new(hud_used)
-			N.owner = A
-			A.button = N
-
 		var/atom/movable/screen/movable/action_button/B = A.button
 
 		B.UpdateIcon()

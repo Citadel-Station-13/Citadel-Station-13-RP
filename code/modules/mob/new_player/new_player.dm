@@ -566,7 +566,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (GetAssignment(character) || rank)))
 
 	qdel(src)
 
@@ -629,7 +629,7 @@
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
 		//! Preferences shim: transfer stuff over
 		client.prefs.imprint_mind(mind)
-		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
+		mind.transfer(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)

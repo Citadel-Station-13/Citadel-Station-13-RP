@@ -15,7 +15,7 @@
  */
 /mob/Initialize(mapload)
 	GLOB.mob_list += src
-	set_focus(src)
+	set_key_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
@@ -27,6 +27,8 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	hook_vr("mob_new",list(src))
+	// abilities
+	init_abilities()
 	// inventory
 	init_inventory()
 	// rendering
@@ -80,8 +82,18 @@
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
-	if(mind && mind.current == src)
-		spellremove(src)
+	// mind
+	if(!isnull(mind))
+		if(mind.current == src)
+			// mind is ours, let it disassociate
+			// todo: legacy spell
+			spellremove(src)
+			mind?.disassociate()
+		else
+			// mind is not ours, null it out
+			mind = null
+	// abilities
+	dispose_abilities()
 	// this kicks out client
 	ghostize()
 	if(hud_used)
@@ -152,6 +164,7 @@
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+// todo: refactor
 /mob/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
@@ -173,11 +186,11 @@
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
-		to_chat(src,"<I>... You can almost hear someone talking ...</I>")
+		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
-		to_chat(src,msg)
+		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
 		if(teleop)
-			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]")
+			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]", type = MESSAGE_TYPE_LOCALCHAT)
 	return
 
 /**
@@ -1057,7 +1070,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		else
 			registered_z = null
 
-/mob/onTransitZ(old_z, new_z)
+/mob/on_changed_z_level(old_z, new_z)
 	..()
 	update_client_z(new_z)
 
@@ -1118,7 +1131,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
 
-//! Pixel Offsets
+//? Pixel Offsets
+
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
@@ -1185,20 +1199,54 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	pixel_y += val
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//! Reachability
+//? Reachability
+
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
-//! Radioactivity
+//? Radioactivity
+
 /mob/clean_radiation(str, mul, cheap)
 	. = ..()
 	if(cheap)
 		return
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
+
+//? Abilities
+
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
+
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
+/mob/proc/unregister_ability(datum/ability/ability)
+	LAZYREMOVE(abilities, ability)
 
 //! Misc
 /**

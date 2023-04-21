@@ -540,8 +540,8 @@
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
-		flick_overlay_view("[base_icon_state]-load-paper", src, 10)
-		flick_overlay_view("[base_icon_state]-active", src, 12)
+		flick_overlay_view("[base_icon_state]-load-paper", 10)
+		flick_overlay_view("[base_icon_state]-active", 12)
 		visible_message("[src] begins to hum as it warms up its printing drums.")
 		sleep(rand(200,400))
 		visible_message("[src] whirs as it prints and binds a new book.")
