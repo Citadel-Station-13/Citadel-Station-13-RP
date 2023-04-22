@@ -16,26 +16,6 @@
 	var/active = FALSE
 	var/fishing_source = /datum/fish_source/portal
 
-/obj/machinery/fishing_portal/dynamic_tool_functions(obj/item/I, mob/user)
-	. = list()
-	if(allow_unanchor)
-		.[TOOL_WRENCH] = anchored? "anchor" : "unanchor"
-	return merge_double_lazy_assoc_list(., ..())
-
-/obj/machinery/fishing_portal/dynamic_tool_image(function, hint)
-	switch(function)
-		if(TOOL_WRENCH)
-			return anchored? dyntool_image_backward(TOOL_WRENCH) : dyntool_image_forward(TOOL_WRENCH)
-	return ..()
-
-/obj/machinery/fishing_portal/wrench_act(obj/item/I, mob/user, flags, hint)
-	if(!allow_unanchor)
-		return ..()
-	if(default_unfasten_wrench(user, I, 4 SECONDS))
-		user.visible_message(SPAN_NOTICE("[user] [anchored? "fastens [src] to the ground" : "unfastens [src] from the ground"]."), range = MESSAGE_RANGE_CONSTRUCTION)
-		return TRUE
-	return ..()
-
 /obj/machinery/fishing_portal/interact(mob/user, special_state)
 	. = ..()
 	if(active)
