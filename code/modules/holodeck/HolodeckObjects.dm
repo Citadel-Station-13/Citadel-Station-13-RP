@@ -164,60 +164,14 @@
 
 	return TRUE
 
-/obj/structure/window/reinforced/holowindow/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W))
-		return//I really wish I did not need this
-	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
-		var/obj/item/grab/G = W
-		if(istype(G.affecting,/mob/living))
-			var/mob/living/M = G.affecting
-			var/state = G.state
-			qdel(W)	//gotta delete it here because if window breaks, it won't get deleted
-			switch (state)
-				if(1)
-					M.visible_message("<span class='warning'>[user] slams [M] against \the [src]!</span>")
-					M.apply_damage(7)
-					hit(10)
-				if(2)
-					M.visible_message("<span class='danger'>[user] bashes [M] against \the [src]!</span>")
-					if (prob(50))
-						M.afflict_paralyze(20 * 1)
-					M.apply_damage(10)
-					hit(25)
-				if(3)
-					M.visible_message("<span class='danger'><big>[user] crushes [M] against \the [src]!</big></span>")
-					M.afflict_paralyze(20 * 5)
-					M.apply_damage(20)
-					hit(50)
-			return
+/obj/structure/window/reinforced/holowindow
+	allow_deconstruct = FALSE
 
-	if(W.item_flags & ITEM_NOBLUDGEON)
-		return
-
-	if(W.is_screwdriver())
-		to_chat(user, "<span class='notice'>It's a holowindow, you can't unfasten it!</span>")
-	else if(W.is_crowbar() && considered_reinforced && construction_state <= 1)
-		to_chat(user, "<span class='notice'>It's a holowindow, you can't pry it!</span>")
-	else if(W.is_wrench() && !anchored && (!construction_state || !considered_reinforced))
-		to_chat(user, "<span class='notice'>It's a holowindow, you can't dismantle it!</span>")
-	else
-		if(W.damtype == BRUTE || W.damtype == BURN)
-			hit(W.damage_force)
-			if(health <= 7)
-				anchored = 0
-				update_nearby_icons()
-				step(src, get_dir(user, src))
-		else
-			playsound(loc, 'sound/effects/Glasshit.ogg', 75, 1)
-		..()
+/obj/structure/window/reinforced/holowindow/drop_products(method)
 	return
-
-/obj/structure/window/reinforced/holowindow/shatter(var/display_message = 1)
+/obj/structure/window/reinforced/holowindow/shatter_feedback()
 	playsound(src, "shatter", 70, 1)
-	if(display_message)
-		visible_message("[src] fades away as it shatters!")
-	qdel(src)
-	return
+	visible_message("[src] fades away as it shatters!")
 
 /obj/machinery/door/window/holowindoor/attackby(obj/item/I as obj, mob/user as mob)
 

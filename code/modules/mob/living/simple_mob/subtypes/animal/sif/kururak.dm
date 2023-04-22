@@ -273,7 +273,7 @@
 	else if(istype(A, /obj/mecha))
 		visible_message(SPAN_DANGER("\The [src] rakes its claws against \the [A]."))
 		var/obj/mecha/M = A
-		M.take_damage(damage_to_apply)
+		M.take_damage_legacy(damage_to_apply)
 		if(prob(3) && do_after(src, 5))
 			visible_message(SPAN_CRITICAL("\The [src]'s strike ripped \the [M]'s access hatch open, allowing it to drag [M.occupant] out!"))
 			M.go_out()

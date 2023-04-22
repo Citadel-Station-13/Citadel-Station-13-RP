@@ -206,15 +206,13 @@
 	if(prob(10))
 		for(var/obj/structure/window/window in range(5, src))
 			if(prob(50))
-				window.shatter()
+				window.atom_destruction()
 	if(prob(20))
 		for(var/obj/machinery/door/firedoor/door in range(14, src)) //double viewrange
 			if(prob(5))
 				visible_message("<span class='danger'>Emergency Shutter malfunction!</span>")
 				door.blocked = 0
 				door.open(1)
-
 	spawn(100)
 		nospampls = 0
-
 

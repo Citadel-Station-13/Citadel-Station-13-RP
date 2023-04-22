@@ -13,6 +13,7 @@
 
 	integrity = 150
 	integrity_max = 150
+	hit_sound = 'sound/effects/grillehit.ogg'
 
 	var/broken = FALSE
 	var/check = 0
@@ -49,25 +50,6 @@
 	if(!(get_dir(src, newLoc) & dir))
 		return TRUE
 	return !density
-
-/obj/structure/railing/examine(mob/user)
-	. = ..()
-	if(health < maxhealth)
-		switch(health / maxhealth)
-			if(0.0 to 0.5)
-				. += "<span class='warning'>It looks severely damaged!</span>"
-			if(0.25 to 0.5)
-				. += "<span class='warning'>It looks damaged!</span>"
-			if(0.5 to 1.0)
-				. += "<span class='notice'>It has a few scrapes and dents.</span>"
-
-/obj/structure/railing/take_damage_legacy(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0

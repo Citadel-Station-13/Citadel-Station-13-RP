@@ -5,10 +5,15 @@
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
 
+	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = CAN_BE_HIT
 	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_EMAGGED;!CAN_BE_HIT" to set OBJ_EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
+
+	//? Integrity
+	/// Standard integrity examine
+	var/integrity_examine = TRUE
 
 	//? misc / legacy
 	//Used to store information about the contents of the object.
@@ -197,8 +202,20 @@
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
 
+/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	return
+
+/obj/attack_hand(mob/user, list/params)
+	if(Adjacent(user))
+		add_fingerprint(user)
+	..()
+
+//? Examine
+
 /obj/examine(mob/user)
 	. = ..()
+	if(integrity_examine)
+		. += examine_integrity(user)
 	if(matter)
 		if(!matter.len)
 			return
@@ -212,13 +229,20 @@
 		. += "<u>It is made out of [materials_list]</u>."
 	return
 
-/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	return
-
-/obj/attack_hand(mob/user, list/params)
-	if(Adjacent(user))
-		add_fingerprint(user)
-	..()
+/obj/examine_integrity(mob/user)
+	. = list()
+	if(integrity == integrity_max)
+		. += SPAN_NOTICE("It looks fully intact.")
+	else
+		var/perc = percent_integrity()
+		if(perc > 0.75)
+			. += SPAN_NOTICE("It looks a bit dented.")
+		else if(perc > 0.5)
+			. += SPAN_WARNING("It looks damaged.")
+		else if(perc > 0.25)
+			. += SPAN_RED("It looks severely damaged.")
+		else
+			. += SPAN_BOLDWARNING("It's falling apart!")
 
 //? Resists
 

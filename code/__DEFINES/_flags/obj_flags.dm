@@ -9,6 +9,8 @@
 #define OBJ_MELEE_TARGETABLE        (1<<3)
 /// can be targeted by projectiles
 #define OBJ_RANGE_TARGETABLE        (1<<4)
+/// Is a hologram
+#define OBJ_HOLOGRAM                (1<<5)
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_EMAGGED),
@@ -16,4 +18,5 @@ DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(OBJ_ON_BLUEPRINTS),
 	BITFIELD(OBJ_MELEE_TARGETABLE),
 	BITFIELD(OBJ_RANGE_TARGETABLE),
+	BITFIELD(OBJ_HOLOGRAM),
 ))

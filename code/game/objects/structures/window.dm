@@ -23,12 +23,16 @@
 	integrity_max = 20
 	integrity_failure = 0
 
+	hit_sound = 'sound/effects/Glasshit.ogg'
+
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE
 	/// construction state
 	var/construction_state = WINDOW_STATE_SECURED_TO_FRAME
 	/// determines if we're a full tile window, NOT THE ICON STATE.
 	var/fulltile = FALSE
+	/// can deconstruct at all
+	var/allow_deconstruct = TRUE
 	/// i'm so sorry we have to do this - set to dir for allowthrough purposes
 	var/moving_right_now
 	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
@@ -75,8 +79,8 @@
 	if (smoothing_junction)
 		update_nearby_icons()
 
-/obj/structure/window/examine(mob/user)
-	. = ..()
+/obj/structure/window/examine_integrity(mob/user)
+	. = list()
 
 	if(integrity == integrity_max)
 		. += "<span class='notice'>It looks fully intact.</span>"
@@ -104,7 +108,6 @@
 	if(gradual)
 		update_appearance(UPDATE_ICON)
 		return
-	playsound(src, 'sound/effects/Glasshit.ogg', 75, 1)
 	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
 		visible_message("[src] looks like it's about to shatter!" )
 		update_appearance(UPDATE_ICON)
@@ -125,16 +128,12 @@
 		update_appearance()
 
 /obj/structure/window/atom_destruction()
+	shatter_feedback()
+	return ..()
+
+/obj/structure/window/proc/shatter_feedback()
 	playsound(src, "shatter", 70, 1)
 	visible_message("[src] shatters!")
-	new shardtype(loc)
-	if(considered_reinforced)
-		new /obj/item/stack/rods(loc)
-	if(is_fulltile())
-		new shardtype(loc) //todo pooling?
-		if(considered_reinforced)
-			new /obj/item/stack/rods(loc)
-	return ..()
 
 /obj/structure/window/blob_act()
 	take_damage(50)
@@ -364,8 +363,8 @@
 				if (fulltile)
 					P.fulltile = TRUE
 					P.icon_state = "fwindow"
-				P.maxhealth = maxhealth
-				P.health = health
+				P.integrity_max = integrity_max
+				P.set_integrity(integrity_max)
 				P.construction_state = construction_state
 				P.set_anchored(anchored)
 				qdel(src)
@@ -410,17 +409,21 @@
 		take_damage(damage_per_fire_tick)
 
 /obj/structure/window/drop_products(method)
+	var/atom/where = drop_location()
 	if (method == ATOM_DECONSTRUCT_DISASSEMBLED)
 		if (glasstype)
-			new glasstype(drop_location(), fulltile? 2 : 1)
+			new glasstype(where, fulltile? 2 : 1)
 		return
 	if (shardtype)
-		new shardtype(drop_location())
+		new shardtype(where)
 		if (fulltile)
 			// nah no for loop
-			new shardtype(drop_location())
+			new shardtype(where)
 
 /obj/structure/window/screwdriver_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_deconstruct)
+		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		return FALSE
 	. = TRUE
 
 	if (construction_state == WINDOW_STATE_UNSECURED || construction_state == WINDOW_STATE_SCREWED_TO_FLOOR || !considered_reinforced)
@@ -450,6 +453,9 @@
 	construction_state = unsecuring ? WINDOW_STATE_CROWBRARED_IN : WINDOW_STATE_SECURED_TO_FRAME
 
 /obj/structure/window/crowbar_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_deconstruct)
+		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		return FALSE
 	. = TRUE
 	if (!considered_reinforced)
 		return
@@ -462,6 +468,9 @@
 	construction_state = unsecuring ? WINDOW_STATE_SCREWED_TO_FLOOR : WINDOW_STATE_CROWBRARED_IN
 
 /obj/structure/window/wrench_act(obj/item/I, mob/user, flags, hint)
+	if(!allow_deconstruct)
+		user.action_feedback(SPAN_NOTICE("This can't be deconstructed."), src)
+		return FALSE
 	. = TRUE
 	if (construction_state != WINDOW_STATE_UNSECURED)
 		user.action_feedback(SPAN_WARNING("[src] has to be entirely unfastened from the floor before you can disasemble it!"))
@@ -472,6 +481,8 @@
 	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
 
 /obj/structure/window/dynamic_tool_functions(obj/item/I, mob/user)
+	if(!allow_deconstruct)
+		return
 	if (construction_state == WINDOW_STATE_UNSECURED)
 		. = list(
 			TOOL_SCREWDRIVER = TOOL_HINT_SCREWING_WINDOW_FRAME,

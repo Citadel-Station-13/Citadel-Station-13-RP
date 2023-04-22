@@ -11,8 +11,6 @@
 #define ATOM_ABSTRACT       (1<<4)
 /// uses integrity, and is broken
 #define ATOM_BROKEN			(1<<5)
-/// We are an holographic atom from a holodeck/AR system
-#define HOLOGRAM            (1<<6) // TODO: should this be an atom flag?
 /// Used for items if they don't want to get a blood overlay.
 #define NOBLOODY            (1<<7) // TODO: item flag
 /// Reagents don't react inside this container.
@@ -49,7 +47,6 @@ DEFINE_BITFIELD(atom_flags, list(
 	BITFIELD(ATOM_HEAR),
 	BITFIELD(ATOM_OVERLAY_QUEUED),
 	BITFIELD(ATOM_ABSTRACT),
-	BITFIELD(HOLOGRAM),
 	BITFIELD(NOBLOODY),
 	BITFIELD(NOREACT),
 	BITFIELD(NOCONDUCT),
