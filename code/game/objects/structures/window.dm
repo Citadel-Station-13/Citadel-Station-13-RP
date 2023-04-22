@@ -98,27 +98,27 @@
 		else
 			. += "<span class='notice'>There is a thick layer of silicate covering it.</span>"
 
-/obj/structure/window/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
+/obj/structure/window/damage_integrity(amount, gradual)
 	var/initial_integrity = integrity
 	. = ..()
 	if(gradual)
-		update_icon()
+		update_appearance(UPDATE_ICON)
 		return
 	playsound(src, 'sound/effects/Glasshit.ogg', 75, 1)
 	if(integrity < integrity_max / 4 && initial_integrity >= integrity_max / 4)
 		visible_message("[src] looks like it's about to shatter!" )
-		update_icon()
+		update_appearance(UPDATE_ICON)
 	else if(integrity < integrity_max / 2 && initial_integrity >= integrity_max / 2)
 		visible_message("[src] looks seriously damaged!" )
-		update_icon()
+		update_appearance(UPDATE_ICON)
 	else if(integrity < integrity_max * 3/4 && initial_integrity >= integrity_max * 3/4 && integrity > 0)
 		visible_message("Cracks begin to appear in [src]!" )
-		update_icon()
+		update_appearance(UPDATE_ICON)
 
-/obj/structure/window/proc/apply_silicate(var/amount)
-	if(health < maxhealth) // Mend the damage
-		health = min(health + amount * 3, maxhealth)
-		if(health == maxhealth)
+/obj/structure/window/proc/apply_silicate(amount)
+	if(integrity < integrity_max)
+		heal_integrity(amount * 3)
+		if(integrity == integrity_max)
 			visible_message("[src] looks fully repaired." )
 	else // Reinforce
 		silicate = min(silicate + amount, 100)
@@ -151,60 +151,6 @@
 	else
 		smoothing_flags &= ~SMOOTH_OBJ
 	update_nearby_icons() // Icon update
-
-/obj/structure/window/examine(mob/user)
-	. = ..()
-
-	if (health == maxhealth)
-		. += SPAN_NOTICE("It looks fully intact.")
-	else
-		var/perc = health / maxhealth
-		switch (perc)
-			if (0 to 0.25)
-				. += SPAN_DANGER("It looks heavily damaged!")
-			if (0.25 to 0.5)
-				. += SPAN_WARNING("It looks moderately damaged.")
-			if (0.5 to 0.75)
-				. += SPAN_WARNING("It looks slightly damaged.")
-			if (0.75 to 1)
-				. += SPAN_NOTICE("It looks slightly damaged.")
-
-	if (silicate)
-		switch (silicate)
-			if (0 to 30)
-				. += SPAN_NOTICE("It has a thin layer of silicate.")
-			if (30 to 70)
-				. += SPAN_NOTICE("It is covered in silicate.")
-			else
-				. += SPAN_NOTICE("There is a thick layer of silicate covering it.")
-
-/obj/structure/window/take_damage(damage, sound_effect = TRUE)
-	. = ..()
-	if(.) //received damage
-		update_nearby_icons()
-
-	var/initialhealth = health
-
-	if (silicate)
-		damage *= (1 - silicate / 200)
-
-	health = max(0, health - damage)
-
-	if (health <= 0)
-		shatter()
-	else
-		if (sound_effect)
-			playsound(loc, 'sound/effects/Glasshit.ogg', 100, TRUE)
-		if (health < (maxhealth / 4) && initialhealth >= (maxhealth / 4))
-			visible_message("[src] looks like it's about to shatter!")
-			update_appearance()
-		else if (health < (maxhealth / 2) && initialhealth >= (maxhealth / 2))
-			visible_message("[src] looks seriously damaged!")
-			update_appearance()
-		else if (health < (maxhealth * 3/4) && initialhealth >= (maxhealth * 3/4))
-			visible_message("Cracks begin to appear in [src]!")
-			update_appearance()
-	return
 
 /obj/structure/window/bullet_act(obj/projectile/Proj)
 

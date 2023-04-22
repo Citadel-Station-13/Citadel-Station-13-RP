@@ -54,7 +54,7 @@
 	/// Fish status define
 	var/status = FISH_ALIVE
 	/// Current fish health. Dies at 0.
-	health = 100
+	var/health = 100
 	/// flopping?
 	var/flopping = FALSE
 	/// stasis (won't die)?

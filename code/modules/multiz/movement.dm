@@ -564,7 +564,7 @@
 
 	// And now to hurt the mech.
 	if(!planetary)
-		take_damage(rand(damage_min, damage_max))
+		take_damage_legacy(rand(damage_min, damage_max))
 	else
 		for(var/atom/movable/A in src.contents)
 			A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)

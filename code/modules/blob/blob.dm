@@ -20,7 +20,6 @@
 
 /obj/effect/blob/Initialize(mapload)
 	. = ..()
-	health = maxHealth
 	update_icon()
 
 /obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
@@ -29,28 +28,22 @@
 /obj/effect/blob/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
-			take_damage(rand(100, 120) / brute_resist)
+			damage_integrity(rand(100, 120) / brute_resist)
 		if(2)
-			take_damage(rand(60, 100) / brute_resist)
+			damage_integrity(rand(60, 100) / brute_resist)
 		if(3)
-			take_damage(rand(20, 60) / brute_resist)
+			damage_integrity(rand(20, 60) / brute_resist)
 
-/obj/effect/blob/update_icon()
-	if(health > maxHealth / 2)
-		icon_state = "blob"
-	else
-		icon_state = "blob_damaged"
+/obj/effect/blob/damage_integrity(amount, gradual)
+	. = ..()
+	if(!. || !gradual)
+		playsound(src, 'sound/effects/splat.ogg', 50, 1)
+	update_icon()
 
-/obj/effect/blob/take_damage_legacy(damage)
-	health -= damage
-	if(health < 0)
-		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
-		qdel(src)
-	else
-		update_icon()
-
-/obj/effect/blob/proc/regen()
-	health = min(health + 1, maxHealth)
+/obj/effect/blob/heal_integrity(amount, gradual)
+	. = ..()
+	if(!.)
+		return
 	update_icon()
 
 /obj/effect/blob/proc/expand(var/turf/T)

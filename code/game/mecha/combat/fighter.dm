@@ -177,7 +177,7 @@
 		stop_hover()
 	else if(moved && gravity && !ground_capable)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
-		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
+		take_damage_legacy(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 /obj/mecha/combat/fighter/handle_equipment_movement()
@@ -232,7 +232,7 @@
 	if(istype(obstacle, /obj) || istype(obstacle, /turf))
 		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
 		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
-		take_damage(20, "brute")
+		take_damage_legacy(20, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
 
 ////////////// Gunpod //////////////

@@ -171,12 +171,16 @@
  * @params
  * * amount - how much
  * * gradual - burst or gradual? if you want to play a sound or something, you usually want to check this.
+ *
+ * @return amount healed
  */
 /atom/proc/heal_integrity(amount, gradual)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	var/was_failing = integrity <= integrity_failure
+	. = integrity
 	integrity = min(integrity_max, integrity + amount)
+	. = integrity - .
 	if(was_failing && integrity > integrity_failure)
 		atom_fix()
 

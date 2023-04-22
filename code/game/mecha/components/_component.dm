@@ -61,7 +61,7 @@
 
 	severity = clamp(severity + emp_resistance, 1, 4)
 
-	take_damage((4 - severity) * round(integrity * 0.1, 0.1))
+	take_damage_legacy((4 - severity) * round(integrity * 0.1, 0.1))
 
 /obj/item/mecha_parts/component/proc/adjust_integrity_mecha(var/amt = 0)
 	integrity = clamp(integrity + amt, 0, integrity_max)

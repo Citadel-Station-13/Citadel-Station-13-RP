@@ -991,7 +991,7 @@
 
 /obj/mecha/airlock_crush(var/crush_damage)
 	..()
-	take_damage(crush_damage)
+	take_damage_legacy(crush_damage)
 	if(prob(50))	//Try to avoid that.
 		check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return 1
@@ -1025,7 +1025,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(user))
 			if(!prob(temp_deflect_chance))
-				src.take_damage(15)	//The take_damage() proc handles armor values
+				src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
 				if(prob(25))	//Why would they get free internal damage. At least make it a bit RNG.
 					src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 				playsound(src, 'sound/weapons/slash.ogg', 50, 1, -1)
@@ -1042,7 +1042,7 @@
 			src.log_append_to_last("Armor saved.")
 		return
 	else if ((MUTATION_HULK in user.mutations) && !prob(temp_deflect_chance))
-		src.take_damage(15)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(15)	//The take_damage_legacy() proc handles armor values
 		if(prob(25))	//Hulks punch hard but lets not give them consistent internal damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		user.visible_message("<font color='red'><b>[user] hits [src.name], doing some damage.</b></font>", "<font color='red'><b>You hit [src.name] with all your might. The metal creaks and bends.</b></font>")
@@ -1114,7 +1114,7 @@
 				pass_damage = ME.handle_ranged_contact(A, pass_damage)
 
 			pass_damage = (pass_damage*pass_damage_reduc_mod)//Applying damage reduction
-			src.take_damage(pass_damage)	//The take_damage() proc handles armor values
+			src.take_damage_legacy(pass_damage)	//The take_damage_legacy() proc handles armor values
 			if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 				src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -1186,7 +1186,7 @@
 			pass_damage_reduc_mod = 1
 
 		pass_damage = (pass_damage_reduc_mod*pass_damage)//Apply damage reduction before usage.
-		src.take_damage(pass_damage, Proj.damage_flag)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(pass_damage, Proj.damage_flag)	//The take_damage_legacy() proc handles armor values
 		if(prob(25))
 			spark_system.start()
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
@@ -1230,18 +1230,18 @@
 		src.log_append_to_last("Armor saved, changing severity to [severity].")
 	switch(severity)
 		if(1.0)
-			src.take_damage(initial(src.integrity), "bomb")
+			src.take_damage_legacy(initial(src.integrity), "bomb")
 		if(2.0)
 			if (prob(30))
-				src.take_damage(initial(src.integrity), "bomb")
+				src.take_damage_legacy(initial(src.integrity), "bomb")
 			else
-				src.take_damage(initial(src.integrity)/2, "bomb")
+				src.take_damage_legacy(initial(src.integrity)/2, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 		if(3.0)
 			if (prob(5))
 				qdel(src)
 			else
-				src.take_damage(initial(src.integrity)/5, "bomb")
+				src.take_damage_legacy(initial(src.integrity)/5, "bomb")
 				src.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
 	return
 
@@ -1249,7 +1249,7 @@
 /obj/mecha/attack_blob(mob/user as mob)
 	src.log_message("Attack by blob. Attacker - [user].",1)
 	if(!prob(src.deflect_chance))
-		src.take_damage(6)
+		src.take_damage_legacy(6)
 		src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		playsound(src, 'sound/effects/blobattack.ogg', 50, 1, -1)
 		to_chat(user, "<span class='danger'>You smash at the armored suit!</span>")
@@ -1270,7 +1270,7 @@
 /obj/mecha/emp_act(severity)
 	if(get_charge())
 		use_power((cell.charge/2)/severity)
-		take_damage(50 / severity,"energy")
+		take_damage_legacy(50 / severity,"energy")
 	src.log_message("EMP detected",1)
 	if(prob(80))
 		check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_CONTROL_LOST,MECHA_INT_SHORT_CIRCUIT),1)
@@ -1282,7 +1282,7 @@
 /obj/mecha/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>src.max_temperature)
 		src.log_message("Exposed to dangerous temperature.",1)
-		src.take_damage(5,"fire")	//The take_damage() proc handles armor values
+		src.take_damage_legacy(5,"fire")	//The take_damage_legacy() proc handles armor values
 		src.check_for_internal_damage(list(MECHA_INT_FIRE, MECHA_INT_TEMP_CONTROL))
 	return
 
@@ -1334,7 +1334,7 @@
 		pass_damage = (pass_damage*pass_damage_reduc_mod)	//Apply the reduction of damage from not having enough armor penetration. This is not regular armor values at play.
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 			pass_damage = ME.handle_projectile_contact(W, user, pass_damage)
-		src.take_damage(pass_damage,W.damtype)	//The take_damage() proc handles armor values
+		src.take_damage_legacy(pass_damage,W.damtype)	//The take_damage_legacy() proc handles armor values
 		if(pass_damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	return
@@ -1533,7 +1533,7 @@
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-			src.take_damage(W.force,W.damtype)
+			src.take_damage_legacy(W.force,W.damtype)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 */
 	return
@@ -2670,7 +2670,7 @@
 		return
 
 	else
-		src.take_damage(damage)	//Apply damage - The take_damage() proc handles armor values
+		src.take_damage_legacy(damage)	//Apply damage - The take_damage_legacy() proc handles armor values
 		if(damage > internal_damage_minimum)	//Only decently painful attacks trigger a chance of mech damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		visible_message("<span class='danger'>[user] [attack_message] [src]!</span>")
@@ -2754,7 +2754,7 @@
 		if(mecha.cabin_air && mecha.cabin_air.volume>0)
 			mecha.cabin_air.temperature = min(6000+T0C, mecha.cabin_air.temperature+rand(10,15))
 			if(mecha.cabin_air.temperature>mecha.max_temperature/2)
-				mecha.take_damage(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")	//The take_damage() proc handles armor values
+				mecha.take_damage_legacy(4/round(mecha.max_temperature/mecha.cabin_air.temperature,0.1),"fire")	//The take_damage_legacy() proc handles armor values
 	if(mecha.hasInternalDamage(MECHA_INT_TEMP_CONTROL)) //stop the mecha_preserve_temp loop datum
 		mecha.pr_int_temp_processor.stop()
 	if(mecha.hasInternalDamage(MECHA_INT_TANK_BREACH)) //remove some air from internal tank
