@@ -119,7 +119,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "sk" = (
-/obj/machinery/portable_atmospherics/hydroponics/soil,
+/obj/machinery/portable_atmospherics/hydroponics/soil/ashlander,
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/ashlander_village)
 "sw" = (
