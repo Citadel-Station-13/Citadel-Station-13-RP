@@ -593,3 +593,11 @@
 	assignment = "Pathfinder"
 	rank = "Pathfinder"
 	job_access_type = /datum/role/job/station/pathfinder
+
+/obj/item/card/id/external/biolab // For the Biolab on the rift, will be used to get into the facility and to navigate it
+	name = "external identification card"
+	desc = "An identification card of some sort. It does not look like it is issued by NT."
+	icon_state = "generic"
+	primary_color = rgb(66, 2, 2)
+	secondary_color = rgb(0, 0, 0)
+	access = list(250, 13)
