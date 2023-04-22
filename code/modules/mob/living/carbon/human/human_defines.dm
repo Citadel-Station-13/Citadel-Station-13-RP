@@ -5,6 +5,7 @@
 	icon = 'icons/effects/effects.dmi' //We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
 	low_priority = FALSE	// UH YEA MAYBE STILL TICK THIS?
+	ssd_visible = TRUE
 	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE | KEEP_TOGETHER)
 

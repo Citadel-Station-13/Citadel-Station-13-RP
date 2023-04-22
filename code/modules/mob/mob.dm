@@ -41,10 +41,12 @@
 	init_physiology()
 	// movespeed
 	update_movespeed(TRUE)
+	update_config_movespeed()
 	// actionspeed
 	initialize_actionspeed()
-	. = ..()
-	update_config_movespeed()
+	// ssd overlay
+	update_ssd_overlay()
+	return ..()
 
 /**
  * Delete a mob

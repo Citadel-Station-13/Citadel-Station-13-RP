@@ -115,6 +115,8 @@
 	//? SSD
 	/// current ssd overlay
 	var/image/ssd_overlay
+	/// do we use ssd overlays?
+	var/ssd_visible = FALSE
 
 	//? unsorted / legacy
 	var/datum/mind/mind

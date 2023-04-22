@@ -28,7 +28,7 @@
  * * forced_state - if set, adds on TRUE and removes on FALSE, ignoring client status.
  */
 /mob/proc/update_ssd_overlay(forced_state)
-	var/want = isnull(forced_state)? is_ssd() : forced_state
+	var/want = isnull(forced_state)? (is_catatonic() || is_ssd()) : forced_state
 	if(want)
 		if(isnull(ssd_overlay))
 			render_ssd_overlay()
