@@ -8,7 +8,8 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-	allow_unanchor = TRUE
+	default_unanchor = 3 SECONDS
+
 	anchored = FALSE
 	density = TRUE
 

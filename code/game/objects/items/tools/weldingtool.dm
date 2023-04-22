@@ -707,7 +707,7 @@
 	icon_state = "crystal_welder"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 	cell_type = null
 	charge_cost = null
 	tool_speed = 0.2

@@ -170,7 +170,7 @@
 
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts)
 	if(!stored_materials.has(instance.materials))
-		return FALES
+		return FALSE
 	#warn variable material parts
 	#warn reagents
 	#warn items

@@ -477,7 +477,7 @@
 	heavy = TRUE
 	damage_force = 10
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 2000)
 	one_handed_penalty = 50
 	var/overheating = 0
 
@@ -520,7 +520,7 @@
 	heavy = FALSE
 	damage_force = 5
 	origin_tech = list(TECH_COMBAT = 6, TECH_ENGINEERING = 5, TECH_MAGNET = 5)
-	matter = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
+	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 	one_handed_penalty = 10
 
 /obj/item/gun/energy/plasma/pistol/update_icon()

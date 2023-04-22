@@ -126,7 +126,7 @@
 	icon_state = "crystal_multitool"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	matter = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 
 /obj/item/multitool/crystal/Initialize()
 	. = ..()

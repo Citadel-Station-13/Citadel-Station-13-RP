@@ -13,11 +13,10 @@ GLOBAL_LIST_EMPTY(holopad_lookup)
 
 GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
-/obj/item/circuitboard/holopad
+/obj/item/circuitboard/machine/holopad
 	name = T_BOARD("holopad")
 	build_path = /obj/machinery/holopad
 	board_type = new /datum/frame/frame_types/holopad
-	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /obj/machinery/holopad
 	name = "holopad"
@@ -28,7 +27,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	anchored = TRUE
 	atom_flags = ATOM_HEAR
 	show_messages = TRUE
-	circuit = /obj/item/circuitboard/holopad
+	circuit = /obj/item/circuitboard/machine/holopad
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	use_power = USE_POWER_IDLE
@@ -863,7 +862,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/unregister_hologram(obj/effect/overlay/hologram/holopad/holo)
 	LAZYREMOVE(holograms, holo)
 
-/obj/item/circuitboard/holopad/ship
+/obj/item/circuitboard/machine/holopad/ship
 	name = T_BOARD("sector holopad")
 	build_path = /obj/machinery/holopad/ship
 
@@ -872,9 +871,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	desc = "An expensive and immobile holopad used for long range ship-to-ship communications."
 	icon_state = "shippad"
 	base_icon_state = "shippad"
-	circuit = /obj/item/circuitboard/holopad/ship
-	allow_unanchor = FALSE
-	allow_deconstruct = FALSE
+	circuit = /obj/item/circuitboard/machine/holopad/ship
+	default_unanchor = 5 SECONDS
+	default_deconstruct = 5 SECONDS
 	long_range = TRUE
 
 /obj/machinery/holopad/ship/starts_inactive

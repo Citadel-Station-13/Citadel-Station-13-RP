@@ -117,7 +117,7 @@
 	icon_state = "lbulb"
 	base_icon_state = "lbulb"
 	item_state = "contvapour"
-	matter = list(MAT_GLASS = 100)
+	materials = list(MAT_GLASS = 100)
 	brightness_color = LIGHT_COLOR_TUNGSTEN
 
 	brightness_range = 8

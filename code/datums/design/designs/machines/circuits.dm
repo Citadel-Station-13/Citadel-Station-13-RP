@@ -54,7 +54,7 @@
 	identifier = "CircuitHolopad"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/circuitboard/holopad
+	build_path = /obj/item/circuitboard/machine/holopad
 
 /datum/design/machine_circuit/guestpass
 	identifier = "CircuitGuestpass"

@@ -1324,7 +1324,7 @@
 		/obj/item/circuitboard/status_display = 2,
 		/obj/item/circuitboard/ai_status_display = 2,
 		/obj/item/circuitboard/newscaster = 2,
-		/obj/item/circuitboard/holopad = 2,
+		/obj/item/circuitboard/machine/holopad = 2,
 		/obj/item/circuitboard/intercom = 4,
 		/obj/item/circuitboard/security/telescreen/entertainment = 4,
 		/obj/item/stock_parts/motor = 2,
