@@ -1,5 +1,5 @@
-import { BooleanLike } from "../../../common/react";
-import { Window } from "../../layouts";
+import { BooleanLike } from "../../common/react";
+import { Window } from "../layouts";
 
 interface DynamicReskinComponentData {
   mapRef: string;
@@ -11,6 +11,7 @@ interface DynamicReskinComponentData {
 export const DynamicReskinComponent = (props, context) => {
   return (
     <Window>
+
       test
     </Window>
   );
