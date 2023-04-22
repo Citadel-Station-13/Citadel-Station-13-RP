@@ -155,7 +155,7 @@
 	if(istype(user,/mob/living/carbon/alien/diona))
 		var/mob/living/carbon/alien/diona/nymph = user
 
-		if(nymph.stat == DEAD || nymph.paralysis || nymph.weakened || nymph.stunned || nymph.restrained())
+		if(!CHECK_MOBILITY(nymph, MOBILITY_CAN_USE))
 			return
 
 		if(weedlevel > 0)

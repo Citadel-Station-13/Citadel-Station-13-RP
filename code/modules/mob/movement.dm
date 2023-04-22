@@ -45,6 +45,8 @@
 
 /mob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
+	if(.)
+		return
 	if(ismob(mover))
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
@@ -53,7 +55,7 @@
 		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
 	// thrown things still hit us even when nondense
-	if(!mover.density && !mover.throwing)
+	if(can_cross_under(mover))
 		return TRUE
 
 /mob/CanPassThrough(atom/blocker, turf/target, blocker_opinion)
@@ -62,6 +64,9 @@
 		if(AM.pass_flags & ATOM_PASS_BUCKLED)
 			return TRUE
 	return ..()
+
+/mob/proc/can_cross_under(atom/movable/mover)
+	return !mover.density && !mover.throwing
 
 /**
   * Toggle the move intent of the mob
@@ -102,7 +107,7 @@
   * * being grabbed
   * * being buckled  (relaymove() is called to the buckled atom instead)
   * * having your loc be some other mob (relaymove() is called on that mob instead)
-  * * Not having MOBILITY_MOVE
+  * * Not having MOBILITY_CAN_MOVE
   * * Failing Process_Spacemove() call
   *
   * At this point, if the mob is is confused, then a random direction and target turf will be calculated for you to travel to instead
@@ -192,14 +197,14 @@
 	if(mob.buckled)
 		return mob.buckled.relaymove_from_buckled(mob, direct)
 
-	// todo: mobility refactor & move to mob
+	// todo: move to mob
 	// mobility check
-	if(!mob.canmove)
+	if(!CHECK_MOBILITY(mob, MOBILITY_CAN_MOVE))
 		return
 
 	// new mobility flags check todo
 /*
-	if(!(L.mobility_flags & MOBILITY_MOVE))
+	if(!(L.mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 
@@ -264,9 +269,13 @@
 			else if(mob.confused)
 				switch(mob.m_intent)
 					if("run")
-						if(prob(50))	direct = turn(direct, pick(90, -90))
+						if(prob(25))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 					if("walk")
-						if(prob(25))	direct = turn(direct, pick(90, -90))
+						if(prob(10))
+							to_chat(src, SPAN_WARNING("You stumble around confusedly."))
+							direct = turn(direct, pick(90, -90))
 			add_delay += 2
 			return mob.buckled.relaymove(mob,direct)
 	//! oh god I hate this so much todo proper relaymove system for pulling fr fr
@@ -306,14 +315,17 @@
 						M.animate_movement = 2
 						return
 	else
-		if(mob.confused)
+
+		if(mob.confused && !IS_PRONE(mob))
 			switch(mob.m_intent)
-				if("run")
-					if(prob(75))
+				if(MOVE_INTENT_RUN)
+					if(prob(20))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
-				if("walk")
-					if(prob(25))
+				if(MOVE_INTENT_WALK)
+					if(prob(10))
+						to_chat(src, SPAN_WARNING("You stumble around confusedly."))
 						direct = turn(direct, pick(90, -90))
 						n = get_step(mob, direct)
 		. = mob.SelfMove(n, direct)
@@ -351,7 +363,9 @@
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
+	in_selfmove = TRUE
 	. = Move(T, dir)
+	in_selfmove = FALSE
 	if(.)
 		throwing?.terminate()
 	if(pulling && !ismob(pulling) && pulling.density)

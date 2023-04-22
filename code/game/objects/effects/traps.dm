@@ -280,7 +280,7 @@ Add those other swinging traps you mentioned above!
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, TOX)
-		M.SetStunned(15)
+		M.set_stunned(20 * 15)
 		M.visible_message("<span class='danger'>[M] falls into a writhing mass of tentacles!</span>", \
 						"<span class='userdanger'>You are entwined by a writhing mass of tentacles!</span>")
 
@@ -682,11 +682,11 @@ if (istype(AM, /mob/living))
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
-			M.updatehealth()
+			M.update_health()
 		update_icon()
 		playsound(src, 'sound/effects/bang.ogg', 100, 1)
 		visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
-		M.Weaken(12)
+		M.afflict_paralyze(20 * 12)
 
 /obj/effect/trap/pop_up/thrower/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/rods))
@@ -799,10 +799,10 @@ if (istype(AM, /mob/living))
 		M.throw_at_old(T2, 1, 1, src)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
-			M.updatehealth()
+			M.update_health()
 		playsound(src, 'sound/effects/bang.ogg', 100, 1)
 		visible_message("<span class='danger'>The falling log slams into [M], sending them flying!</span>")
-		M.Weaken(12)
+		M.afflict_paralyze(20 * 12)
 
 /obj/effect/trap/falling/log/Reset()
 	broken = FALSE

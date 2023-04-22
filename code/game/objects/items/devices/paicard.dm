@@ -16,7 +16,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	var/mob/living/silicon/pai/pai
 
 /obj/item/paicard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))
@@ -347,7 +347,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 		qdel(src)
 
 /obj/item/paicard/see_emote(mob/living/M, text)
-	if(pai && pai.client && !pai.canmove)
+	if(pai && pai.client && (pai in contents))
 		var/rendered = "<span class='message'>[text]</span>"
 		pai.show_message(rendered, 2)
 	..()

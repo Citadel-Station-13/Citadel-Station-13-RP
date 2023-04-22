@@ -134,14 +134,14 @@
 					accurate = 1
 				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
-					if(src.canmove && src!=H && prob(20))
+					if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
 						block = 1
 
 			if (L.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
 				rand_damage = max(1, rand_damage - 2)
 
-			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H)
+			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 5
 
@@ -313,7 +313,7 @@
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
 	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
-	updatehealth()
+	update_health()
 	return TRUE
 
 //Used to attack a joint through grabbing
