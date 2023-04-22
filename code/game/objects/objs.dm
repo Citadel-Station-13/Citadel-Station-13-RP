@@ -7,7 +7,7 @@
 
 	//? Flags
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
-	var/obj_flags = CAN_BE_HIT
+	var/obj_flags = OBJ_MELEE_TARGETABLE | OBJ_RANGE_TARGETABLE
 	/// ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_EMAGGED;!CAN_BE_HIT" to set OBJ_EMAGGED and clear CAN_BE_HIT.
 	var/set_obj_flags
 

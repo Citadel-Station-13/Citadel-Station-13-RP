@@ -61,6 +61,7 @@
  * @return did the hit process? a miss is still a process, return FALSE if we shouldn't be acted against at all.
  */
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
+	return
 
 //? Damage API
 

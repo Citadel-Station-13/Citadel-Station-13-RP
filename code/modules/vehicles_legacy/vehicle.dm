@@ -18,6 +18,9 @@
 	buckle_flags = BUCKLING_PASS_PROJECTILES_UPWARDS
 	buckle_lying = 0
 
+	var/health
+	var/maxhealth
+
 	var/mechanical = TRUE // If false, doesn't care for things like cells, engines, EMP, keys, etc.
 	var/attack_log = null
 	var/on = 0
