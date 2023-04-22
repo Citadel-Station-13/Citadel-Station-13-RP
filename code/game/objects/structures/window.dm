@@ -31,29 +31,15 @@
 	var/fulltile = FALSE
 	/// i'm so sorry we have to do this - set to dir for allowthrough purposes
 	var/moving_right_now
-
-<<<<<<< HEAD
 	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 // Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
-=======
-	var/maxhealth = 14.0
-	/// Maximal heat before this window begins taking damage from fire
-	var/maximal_heat = T0C + 100
-	/// Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
-	var/damage_per_fire_tick = 2.0
-	var/health
->>>>>>> citrp/master
-	var/force_threshold = 0
 	var/shardtype = /obj/item/material/shard
-
 	/// Set this in subtypes. Null is assumed strange osr otherwise impossible to dismantle, such as for shuttle glass.
 	var/glasstype = null
 	/// number of units of silicate.
 	var/silicate = 0
-
 	/// Holder for the crack overlay.
 	var/mutable_appearance/crack_overlay
-
 
 /obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
 	. = ..(mapload)
@@ -69,7 +55,6 @@
 		update_verbs()
 	AIR_UPDATE_ON_INITIALIZE_AUTO
 
-
 /obj/structure/window/Destroy()
 	AIR_UPDATE_ON_DESTROY_AUTO
 	set_density(FALSE)
@@ -81,7 +66,6 @@
 	. = ..()
 	setDir(moving_right_now)
 	moving_right_now = null
-
 
 /obj/structure/window/Moved(atom/oldloc)
 	. = ..()
@@ -155,7 +139,6 @@
 /obj/structure/window/blob_act()
 	take_damage(50)
 
-
 /obj/structure/window/setDir(newdir)
 	. = ..()
 	update_nearby_tiles()
@@ -168,7 +151,6 @@
 	else
 		smoothing_flags &= ~SMOOTH_OBJ
 	update_nearby_icons() // Icon update
-
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -224,7 +206,6 @@
 			update_appearance()
 	return
 
-
 /obj/structure/window/bullet_act(obj/projectile/Proj)
 
 	var/proj_damage = Proj.get_structure_damage()
@@ -245,7 +226,6 @@
 			if (prob(50))
 				shatter(FALSE)
 	return
-
 
 /obj/structure/window/blob_act()
 	take_damage(50)
@@ -271,12 +251,10 @@
 
 	return TRUE
 
-
 /obj/structure/window/CanAtmosPass(turf/T, d)
 	if (fulltile || (d == dir))
 		return anchored? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_NOT_BLOCKED
 	return ATMOS_PASS_NOT_BLOCKED
-
 
 //? Does this work? idk. Let's call it TBI.
 /obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
@@ -288,14 +266,12 @@
 
 	return TRUE
 
-
 /obj/structure/window/CheckExit(atom/movable/mover, turf/target)
 	if(istype(mover) && (check_standard_flag_pass(mover)))
 		return TRUE
 	if(!fulltile && get_dir(src, target) & dir)
 		return !density
 	return TRUE
-
 
 /obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
@@ -361,7 +337,6 @@
 		)
 	return
 
-
 /obj/structure/window/attack_generic(mob/user, damage)
 	user.setClickCooldown(user.get_attack_speed())
 	if (!damage)
@@ -378,7 +353,6 @@
 	user.do_attack_animation(src)
 
 	return TRUE
-
 
 /obj/structure/window/attackby(obj/item/object, mob/user)
 	if (!istype(object))
@@ -684,8 +658,6 @@
 	damage_per_fire_tick = 2.0
 	integrity = 20
 	integrity_max = 20
-	force_threshold = 3
-
 
 /obj/structure/window/basic/full
 	icon = 'icons/obj/structures/window_full.dmi'
@@ -698,7 +670,6 @@
 	integrity_max = 40
 	fulltile = TRUE
 
-
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A borosilicate alloy window. It seems to be quite strong."
@@ -710,8 +681,6 @@
 	damage_per_fire_tick = 1.0
 	integrity = 80
 	integrity_max = 80
-	force_threshold = 5
-
 
 /obj/structure/window/phoronbasic/full
 	icon = 'icons/obj/structures/window_full_phoron.dmi'
@@ -735,7 +704,6 @@
 	integrity = 120
 	integrity_max = 120
 
-	force_threshold = 10
 	considered_reinforced = TRUE
 	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
@@ -753,7 +721,6 @@
 	integrity_max = 240
 	fulltile = TRUE
 
-
 /obj/structure/window/reinforced
 	name = "reinforced window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
@@ -766,7 +733,6 @@
 	considered_reinforced = TRUE
 	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
-
 
 /obj/structure/window/reinforced/full
 	icon = 'icons/obj/structures/window_full_reinforced.dmi'
@@ -781,27 +747,16 @@
 	integrity_max = 160
 	fulltile = TRUE
 
-
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
-
 	opacity = TRUE
-
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
 	icon_state = "fwindow"
-<<<<<<< HEAD
-	basestate = "fwindow"
-=======
-
-	maxhealth = 30
->>>>>>> citrp/master
-	force_threshold = 5
-
 
 // TODO: Recreate this.
 /obj/structure/window/shuttle
@@ -817,7 +772,6 @@
 
 	integrity = 160
 	integrity_max = 160
-	force_threshold = 7
 	considered_reinforced = TRUE
 	fulltile = TRUE
 
@@ -826,7 +780,6 @@
 	desc = "Adjusts its tint with voltage. Might take a few good hits to shatter it."
 
 	var/id
-
 
 /obj/structure/window/reinforced/polarized/full
 	icon = 'icons/obj/structures/window_full_reinforced.dmi'
@@ -840,7 +793,6 @@
 	integrity = 160
 	integrity_max = 160
 	fulltile = TRUE
-
 
 /obj/structure/window/reinforced/polarized/attackby(obj/item/object, mob/user)
 	if (istype(object, /obj/item/multitool) && !anchored) // Only allow programming if unanchored!
@@ -889,7 +841,6 @@
 	desc = "A remote control switch for polarized windows."
 	var/range = 7
 
-
 /obj/machinery/button/windowtint/attack_hand(mob/user, list/params)
 	if (..())
 		return TRUE
@@ -905,9 +856,6 @@
 	for (var/obj/structure/window/reinforced/polarized/target_window in range(src, range))
 		if (target_window.id == id || !target_window.id)
 			INVOKE_ASYNC(target_window, TYPE_PROC_REF(/obj/structure/window/reinforced/polarized, toggle))
-
-	return
-
 
 /obj/machinery/button/windowtint/power_change()
 	..()
@@ -937,8 +885,7 @@
 			MT.connectable = src
 			MT.update_appearance()
 		return TRUE
-
-	. = ..()
+	return ..()
 
 /obj/structure/window/wooden
 	name = "wooden panel"
@@ -951,5 +898,4 @@
 	damage_per_fire_tick = 2.0
 	integrity = 40
 	integrity_max = 40
-	force_threshold = 3
 	opacity = TRUE
