@@ -1,6 +1,3 @@
-/turf/simulated/floor/proc/adjacent_fire_act_vr(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
-	for(var/obj/machinery/door/D in src) //makes doors next to fire affected by fire
-		D.fire_act(adj_air, adj_temp, adj_volume)
 
 /obj/machinery/door
 	var/reinforcing = 0
