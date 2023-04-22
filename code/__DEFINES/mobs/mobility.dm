@@ -23,7 +23,11 @@
 #define MOBILITY_FLAGS_ANY_INTERACTION (MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP | MOBILITY_CAN_UI | MOBILITY_CAN_STORAGE)
 #define MOBILITY_FLAGS_ANY_MOVEMENT (MOBILITY_CAN_MOVE)
 
-DEFINE_BITFIELD(mobility_flags, list(
+DEFINE_SHARED_BITFIELD(mobility_flags, list(
+	"mobility_flags",
+	"mobility_flags_blocked",
+	"mobility_flags_forced",
+), list(
 	"MOVE" = MOBILITY_CAN_MOVE,
 	"STAND" = MOBILITY_CAN_STAND,
 	"PICKUP" = MOBILITY_CAN_PICKUP,
