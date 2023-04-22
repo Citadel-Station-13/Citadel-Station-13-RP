@@ -359,10 +359,6 @@
 			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 
-		if("amoan")
-			message = "moans in a rather lewd manner"
-			playsound(src.loc, 'sound/voice/anime_moan.ogg', 50, 0)
-
 		if("uwu")
 			message = "lets out a devious noise"
 			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
@@ -1140,7 +1136,7 @@
 			message = "lets out a nya."
 			m_type = 2
 			var/use_sound
-			use_sound = pick('sound/voice/nya.ogg','sound/voice/nya1.ogg','sound/voice/nya2.ogg')
+			use_sound = pick('sound/voice/nya.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 		if ("nyaha")
 			if(!spam_flag)
