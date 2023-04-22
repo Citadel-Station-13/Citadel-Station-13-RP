@@ -54,37 +54,13 @@
 	speak_chance = 0
 	wander = FALSE
 
-/*
-/datum/ai_holder/simple_mob/statue/walk_to_destination()
-	. = ..()
-	var/turf/T = get_turf(src)
-	if(T && destination && T.lighting_overlay)
-		if(T.get_lumcount()<0.1 && destination.get_lumcount()<0.1) // No one can see us in the darkness, right?
-			return null
-		if(T == destination)
-			destination = null
-
-/datum/ai_holder/simple_mob/statue/can_attack(atom/movable/the_target)
-	. = ..()
-	var/turf/T = get_turf(src)
-	if(T.get_lumcount()<0.1)
-		if(isliving(the_target))
-			var/mob/living/L = the_target
-			if(!L.client && !L.ckey)
-				return 0
-		else
-			return 1
-	else
-		return ..()
-*/
-
 // No movement while seen code.
 
 /mob/living/simple_mob/living_statue/Initialize(mapload, var/mob/living/creator)
 	. = ..()
 	// Give spells
-	//src.add_spell(/spell/noclothes)
-	//src.add_spell(/spell/aoe_turf/flicker_lights)
+	src.add_spell(/spell/noclothes)
+	src.add_spell(/spell/aoe_turf/flicker_lights)
 	//src.add_spell(/spell/aoe_turf/blindness)
 
 	// Set creator
@@ -153,7 +129,6 @@
 			return 0
 	return
 
-/*
 // Don't attack your creator if there is one
 
 /mob/living/simple_mob/living_statue/proc/ListTargets()
@@ -175,6 +150,7 @@
 			L.flicker()
 	return
 
+/*
 //Blind AOE
 /spell/aoe_turf/blindness
 	name = "Blindness"
