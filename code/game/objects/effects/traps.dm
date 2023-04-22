@@ -174,7 +174,11 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	if (istype(AM, /mob/living))
+
+	if(!tripped)
+		return
+
+	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, BRUTE)
@@ -209,8 +213,12 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	if (istype(AM, /mob/living))
-		break_legs()
+
+	if(!tripped)
+		return
+
+	else if(istype(AM, /mob/living))
+		break_legs(AM)
 		AM.visible_message("<span class='danger'>[AM] falls into the path of the piston!</span>", \
 						"<span class='userdanger'>Your leg is crushed by the piston!</span>")
 
@@ -264,11 +272,15 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	if (istype(AM, /mob/living))
+
+	if(!tripped)
+		return
+
+	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, TOX)
-		M.SetStunned(15)
+		M.set_stunned(20 * 15)
 		M.visible_message("<span class='danger'>[M] falls into a writhing mass of tentacles!</span>", \
 						"<span class='userdanger'>You are entwined by a writhing mass of tentacles!</span>")
 
@@ -283,6 +295,10 @@ Add those other swinging traps you mentioned above!
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
+
+/obj/effect/trap/pit/tentacle/safe //C'mon, you know why.
+	min_damage = 0
+	max_damage = 0
 
 //////////////////
 // Launcher Traps
@@ -456,8 +472,6 @@ Add those other swinging traps you mentioned above!
 	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.damage_force / 4.0
 
-
-
 	src.health -= damage
 	healthcheck()
 
@@ -469,7 +483,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
 		icon_state = "[initial(icon_state)]"
-	else if (tripped && !broken)
+	else if(tripped && !broken)
 		icon_state = "[initial(icon_state)]_visible"
 	else if (tripped && broken)
 		icon_state = "[initial(icon_state)]_broken"
@@ -492,10 +506,13 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	else if(broken)
+
+	if(broken)
 		return
-	else if (!tripped)
+
+	if(!tripped)
 		return
+
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
@@ -523,14 +540,21 @@ Add those other swinging traps you mentioned above!
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	else if(broken)
+
+	if(broken)
 		return
-	else if (!tripped)
+
+	if(!tripped)
 		return
+
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
+		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+		var/selected = pick(target_limbs)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		M.apply_damage(damage, BRUTE)
+		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is slashed by the spinning blades!</span>", \
 						"<span class='userdanger'>You are slashed by the spinning blades!</span>")
 
@@ -572,14 +596,21 @@ if (istype(AM, /mob/living))
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	else if(broken)
+
+	if(broken)
 		return
-	else if (!tripped)
+
+	if(!tripped)
 		return
+
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
+		var/list/target_limbs = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
+		var/selected = pick(target_limbs)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		M.apply_damage(damage, BRUTE)
+		target.droplimb()
 		M.visible_message("<span class='danger'>[M] is ripped by the whirling sawblades!</span>", \
 						"<span class='userdanger'>You are ripped open by the whirling sawblades!</span>")
 
@@ -603,10 +634,13 @@ if (istype(AM, /mob/living))
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	else if(broken)
+
+	if(broken)
 		return
-	else if (!tripped)
+
+	if(!tripped)
 		return
+
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/damage = rand(min_damage, max_damage)
@@ -635,10 +669,13 @@ if (istype(AM, /mob/living))
 	. = ..()
 	if(AM.is_incorporeal())
 		return
-	else if(broken)
+
+	if(broken)
 		return
-	else if (!tripped)
+
+	if (!tripped)
 		return
+
 	else if(istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
@@ -647,11 +684,11 @@ if (istype(AM, /mob/living))
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
-			M.updatehealth()
+			M.update_health()
 		update_icon()
 		playsound(src, 'sound/effects/bang.ogg', 100, 1)
 		visible_message("<span class='danger'>[src] slams into [M], sending them flying!</span>")
-		M.Weaken(12)
+		M.afflict_paralyze(20 * 12)
 
 /obj/effect/trap/pop_up/thrower/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/rods))
@@ -706,12 +743,12 @@ if (istype(AM, /mob/living))
 			M.use(5)
 			Reset()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
-			qdel(src)
 
-	if(istype(W,/obj/item/tool/wirecutters))
+	if(istype(W,/obj/item/tool/wirecutters) || is_sharp(W))
 		if(!broken)
 			Break()
 			to_chat(user, "<span class='notice'>You cut the ropes suspending the [src], breaking it.</span>")
+			update_icon()
 
 /obj/effect/trap/falling/update_icon()
 	if(!tripped)
@@ -741,10 +778,13 @@ if (istype(AM, /mob/living))
 	. = ..()
 	if(AM.is_incorporeal())
 		return
+
 	if(broken)
 		return
+
 	if(tripped)
 		return
+
 	if(istype(AM, /mob/living))
 		fire()
 		update_icon()
@@ -752,22 +792,26 @@ if (istype(AM, /mob/living))
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
 		var/damage = rand(min_damage, max_damage)
-		M.apply_damage(damage, BRUTE)
-		M.throw_at_old(T2, 1, 1, src)
+		var/list/bone_sites = list(BP_HEAD, BP_TORSO, BP_GROIN, BP_L_ARM, BP_L_HAND, BP_R_ARM, BP_R_HAND, BP_L_LEG, BP_L_FOOT, BP_R_LEG, BP_R_FOOT)
+		var/selected = pick(bone_sites)
+		var/obj/item/organ/external/target = M.get_organ(selected)
 		var/head_slot = SLOT_HEAD
+		M.apply_damage(damage, BRUTE)
+		target.fracture()
+		M.throw_at_old(T2, 1, 1, src)
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
-			M.updatehealth()
+			M.update_health()
 		playsound(src, 'sound/effects/bang.ogg', 100, 1)
 		visible_message("<span class='danger'>The falling log slams into [M], sending them flying!</span>")
-		M.Weaken(12)
+		M.afflict_paralyze(20 * 12)
 
 /obj/effect/trap/falling/log/Reset()
-	update_icon()
 	broken = FALSE
 	tripped = FALSE
 	name = "wavering tile"
 	desc = "There's something strange about the lighting around this tile."
+	update_icon()
 
 /obj/effect/trap/falling/log/update_icon()
 	if(!tripped)

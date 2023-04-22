@@ -50,7 +50,7 @@
 		var/mob/observer/dead/ghost = victim.ghostize(0)
 		ghost.spell_list += victim.spell_list//If they have spells, transfer them. Now we basically have a backup mob.
 
-		caster.mind.transfer_to(victim)
+		caster.mind.transfer(victim)
 		for(var/spell/S in victim.spell_list) //get rid of spells the new way
 			victim.remove_spell(S) //This will make it so that players will not get the HUD and all that spell bugginess that caused copies of spells and stuff of that nature.
 
@@ -62,7 +62,7 @@
 			for(var/V in caster.mind.special_verbs)//Not too important but could come into play.
 				add_verb(caster, V)
 
-		ghost.mind.transfer_to(caster)
+		ghost.mind.transfer(caster)
 		caster.key = ghost.key	//have to transfer the key since the mind was not active
 		for(var/spell/S in ghost.spell_list)
 			caster.add_spell(S)
@@ -74,7 +74,7 @@
 		//MIND TRANSFER END
 
 		//Target is handled in ..(), so we handle the caster here
-		caster.Unconscious(amt_paralysis)
+		caster.afflict_unconscious(20 * amt_paralysis)
 
 		//After a certain amount of time the victim gets a message about being in a different body.
 		spawn(msg_wait)

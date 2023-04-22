@@ -1,6 +1,8 @@
 /mob/living/carbon/resist_fire()
+	if(!on_fire)
+		return FALSE
 	adjust_fire_stacks(-1.2)
-	Weaken(3)
+	afflict_paralyze(20)
 	spin(32,2)
 	visible_message(
 		SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
@@ -24,7 +26,8 @@
 
 	if(I)
 		setClickCooldown(100)
-		cuff_resist(I, cuff_break = can_break_cuffs())
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, cuff_resist), I, cuff_break = can_break_cuffs())
+	return TRUE
 
 /mob/living/carbon/proc/reduce_cuff_time()
 	return FALSE
@@ -46,7 +49,7 @@
 			SPAN_DANGER("[src] is trying to break [I]!"),
 			SPAN_WARNING("You attempt to break your [I]. (This will take around 5 seconds and you need to stand still)"))
 
-		if(do_after(src, 5 SECONDS, target = src, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(src, 5 SECONDS, target = src, mobility_flags = MOBILITY_CAN_RESIST))
 			if(!I || buckled)
 				return
 			visible_message(
@@ -71,7 +74,7 @@
 	visible_message(
 		SPAN_DANGER("[src] attempts to remove [I]!"),
 		SPAN_WARNING("You attempt to remove [I]. (This will take around [displaytime] seconds and you need to stand still)"))
-	if(do_after(src, breakouttime, target = src, incapacitation_flags = INCAPACITATION_DISABLED & INCAPACITATION_KNOCKDOWN))
+	if(do_after(src, breakouttime, target = src, mobility_flags = MOBILITY_CAN_RESIST))
 		visible_message(
 			SPAN_DANGER("[src] manages to remove [I]!"),
 			SPAN_NOTICE("You successfully remove [I]."))

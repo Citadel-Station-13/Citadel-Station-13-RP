@@ -64,7 +64,7 @@
 					qdel(src)
 					return
 
-				L.Weaken(3)
+				L.afflict_paralyze(20 * 3)
 				user.visible_message("<span class='warning'><b>\The [user]</b> seizes [L]!</span>")
 
 				var/obj/item/grab/G = new(user,L)

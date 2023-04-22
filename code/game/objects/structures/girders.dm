@@ -1,11 +1,14 @@
 /obj/structure/girder
+	icon = 'icons/obj/structures/girder.dmi'
 	icon_state = "girder"
-	anchored = 1
-	density = 1
+
+	anchored = TRUE
+	density = TRUE
 	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
 	integrity = 200
 	integrity_max = 200
+
 	var/state = 0
 	var/displaced_health = 50
 	var/current_damage = 0
@@ -21,7 +24,7 @@
 	if(!material_key)
 		material_key = default_material
 	set_material(material_key)
-	update_icon()
+	update_appearance()
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
@@ -60,7 +63,8 @@
 /obj/structure/girder/get_material()
 	return girder_material
 
-/obj/structure/girder/update_icon()
+/obj/structure/girder/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = initial(icon_state)
 	else
@@ -327,7 +331,8 @@
 	girder_material = "cult"
 	applies_material_colour = 0
 
-/obj/structure/girder/cult/update_icon()
+/obj/structure/girder/cult/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = "cultgirder"
 	else

@@ -33,7 +33,7 @@
 #define ARMOR_FIRE "fire"
 #define ARMOR_ACID "acid"
 
-GLOBAL_REAL_LIST_MANAGED(armor_enums) = list(
+GLOBAL_REAL_LIST(armor_enums) = list(
 	ARMOR_MELEE,
 	ARMOR_MELEE_TIER,
 	ARMOR_MELEE_SOAK,

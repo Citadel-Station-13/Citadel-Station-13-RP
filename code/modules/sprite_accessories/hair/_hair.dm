@@ -1432,3 +1432,23 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "zone"
+/datum/sprite_accessory/hair/halfcut
+	name = "Halfcut"
+	id = "hair_halfcut"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut"
+
+/datum/sprite_accessory/hair/halfcut_smooth
+	name = "Halfcut Smooth"
+	id = "hair_halfcutsmooth"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut_smooth"
+
+/datum/sprite_accessory/hair/halfcut_rough
+	name = "Halfcut Rough"
+	id = "hair_halfcutrough"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "halfcut_rough"

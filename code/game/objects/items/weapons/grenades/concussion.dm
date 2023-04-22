@@ -37,7 +37,7 @@
 						H.Confuse(2)
 					else
 						H.Confuse(8)
-						H.Weaken(1)
+						H.afflict_paralyze(20 * 1)
 						if ((prob(14) || (H == src.loc && prob(70))))
 							H.ear_damage += rand(1, 10)
 						else

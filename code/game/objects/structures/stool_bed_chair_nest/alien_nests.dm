@@ -28,7 +28,7 @@
 		"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
 		"<span class='notice'>You hear squelching...</span>")
 	add_fingerprint(L)
-	if(!do_after(L, NEST_RESIST_TIME, src, FALSE))
+	if(!do_after(L, NEST_RESIST_TIME, src, DO_AFTER_IGNORE_ACTIVE_ITEM, MOBILITY_CAN_RESIST))
 		L.visible_message(
 			SPAN_WARNING("[L] fails to break out of [src]!"),
 			SPAN_WARNING("You fail to break out of [src].")

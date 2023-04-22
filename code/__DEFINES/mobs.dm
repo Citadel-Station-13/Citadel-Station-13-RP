@@ -75,19 +75,20 @@
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
-#define CANSTUN     0x1
-#define CANWEAKEN   0x2
-#define CANPARALYSE 0x4
-#define CANPUSH     0x8
-#define LEAPING     0x10
-#define HIDING      0x20
-/// Mob has a cortical borer or holders inside of it that need to see emotes.
-#define PASSEMOTES  0x40
-#define GODMODE     0x1000
-/// Replaces stuff like changeling.changeling_fakedeath.
-#define FAKEDEATH   0x2000
-/// Set but never checked. Remove this sometime and replace occurences with the appropriate organ code
-#define DISFIGURED  0x4000
+#define STATUS_CAN_STUN      (1<<0) //! Can Stun()
+#define STATUS_CAN_KNOCKDOWN (1<<1) //! Can Knockdown()
+#define STATUS_CAN_ROOT      (1<<2) //! Can Root()
+#define STATUS_CAN_STAGGER   (1<<3) //! Can Stagger()
+#define STATUS_CAN_PARALYZE  (1<<4) //! Can Paralyze()
+#define STATUS_CAN_PUSH      (1<<5) //! Can Push()
+
+#define STATUS_LEAPING       (1<<20) //! Is leaping (??? legacy)
+#define STATUS_HIDING        (1<<21) //! Is hiding  (??? legacy)
+#define STATUS_GODMODE       (1<<22) //! Godmode    (??? legacy)
+#define STATUS_FAKEDEATH     (1<<23) //! In fakedeath - SLATED FOR REMOVAL, THIS SHOULD BE TRAIT
+
+#define STATUS_FLAGS_DEFAULT (STATUS_CAN_STUN | STATUS_CAN_PARALYZE | STATUS_CAN_PUSH \
+| STATUS_CAN_KNOCKDOWN | STATUS_CAN_ROOT | STATUS_CAN_STAGGER)
 
 #define BORGMESON 0x1
 #define BORGTHERM 0x2

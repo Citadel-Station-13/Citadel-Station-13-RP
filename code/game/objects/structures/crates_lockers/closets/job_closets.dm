@@ -74,7 +74,9 @@
 		/obj/item/lightreplacer,
 		/obj/item/storage/bag/trash,
 		/obj/item/storage/belt/janitor,
-		/obj/item/clothing/shoes/galoshes)
+		/obj/item/clothing/shoes/galoshes,
+		/obj/item/reagent_containers/food/urinalcake,
+		/obj/item/reagent_containers/food/urinalcake)
 
 /*
  * Lawyer

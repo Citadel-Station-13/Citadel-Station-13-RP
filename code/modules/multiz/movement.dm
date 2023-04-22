@@ -80,11 +80,12 @@
 			to_chat(src, SPAN_WARNING("Gravity stops you from moving upward."))
 			return FALSE
 	var/old_z = get_z(src)
+	// todo: this should not use Move()
 	if(!Move(destination))
 		return FALSE
 	var/new_z = get_z(src)
 	if(old_z != new_z)
-		onTransitZ(old_z, new_z)
+		on_changed_z_level(old_z, new_z)
 	return TRUE
 
 /mob/proc/can_overcome_gravity()
@@ -318,6 +319,7 @@
 	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
+		// todo: this should not use Move
 		if(!Move(landing))
 			return 1
 
@@ -447,8 +449,8 @@
 		// Hits 10 times, because apparently targeting individual limbs lets certain species survive the fall from atmosphere
 		for(var/i = 1 to 10)
 			adjustBruteLoss(rand(damage_min, damage_max))
-		Weaken(4)
-		updatehealth()
+		afflict_paralyze(20 * 4)
+		update_health()
 
 /mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
 	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
@@ -522,7 +524,7 @@
 	for(var/mob/living/L in hit_atom.contents)
 		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
 		L.adjustBruteLoss(rand(70, 100))
-		L.Weaken(8)
+		L.afflict_paralyze(20 * 8)
 
 	var/turf/landing = get_turf(hit_atom)
 

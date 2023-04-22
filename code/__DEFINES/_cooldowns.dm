@@ -68,13 +68,16 @@
 //? General
 
 #define CD_INDEX_SONAR_PULSE				"sonar_pulse"
-#define CD_INDEX_SONAR_NOISE			"sonar_noise"
+#define CD_INDEX_SONAR_NOISE				"sonar_noise"
 #define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
 
 //? Items
 //* /obj/item/tape_recorder
 #define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
 #define CD_INDEX_TAPE_PRINT					"tape_print"
+
+//* /obj/item/fishing_rod
+#define CD_INDEX_FISHING_ROD_MOB_HOOK		"fishing_rod_mob_hook"
 
 //? Machinery
 //* /obj/machinery/computer/card

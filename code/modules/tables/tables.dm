@@ -435,7 +435,7 @@ var/list/table_icon_cache = list()
 
 	var/list/blocked_dirs = list()
 	for(var/obj/structure/window/W in get_turf(src))
-		if(W.is_fulltile())
+		if(W.fulltile)
 			connections = list("0", "0", "0", "0")
 			return
 		blocked_dirs |= W.dir
@@ -443,7 +443,7 @@ var/list/table_icon_cache = list()
 	for(var/D in list(NORTH, SOUTH, EAST, WEST) - blocked_dirs)
 		var/turf/T = get_step(src, D)
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir == GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir == global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 			else
@@ -454,7 +454,7 @@ var/list/table_icon_cache = list()
 		var/turf/T = get_step(src, D)
 
 		for(var/obj/structure/window/W in T)
-			if(W.is_fulltile() || W.dir & GLOB.reverse_dir[D])
+			if(W.fulltile || W.dir & global.reverse_dir[D])
 				blocked_dirs |= D
 				break
 

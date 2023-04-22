@@ -404,7 +404,7 @@
 		else
 			G.stun_effect_act(10 , 50, BP_TORSO, src)
 			G.take_organ_damage(10)
-			G.Unconscious(20)
+			G.afflict_unconscious(20 * 20)
 			playsound(src.loc, "sparks", 50, 1)
 			return
 */

@@ -99,7 +99,7 @@
 	/// default culture
 	var/default_culture = /datum/lore/character_background/culture/custom
 
-	//! Languages - IDs only, as typepaths are too expensive to resolve
+	//! Languages - IDs and typepaths
 	/// has galactic common? you better not disable this unless you know what you're doing
 	var/galactic_language = TRUE
 	/// additional languages we always have, regardless of background - list or ID

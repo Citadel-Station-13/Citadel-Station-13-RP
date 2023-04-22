@@ -353,3 +353,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/ashlander/cersut
 	seed_type = "cersut"
+
+/obj/item/seeds/ashlander/shimash
+	seed_type = "shimash"
+
+/obj/item/seeds/ashlander/pokalea
+	seed_type = "pokalea"

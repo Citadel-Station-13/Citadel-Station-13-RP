@@ -10,7 +10,7 @@
 	icon_living = "morph"
 	icon_dead = "morph_dead"
 	movement_cooldown = 1
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
 

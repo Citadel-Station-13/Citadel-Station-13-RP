@@ -2,7 +2,7 @@
 	name = "Surface Content - Virgo 2"
 	desc = "For seeding submaps on Virgo 2"
 	allow_duplicates = FALSE
-	prefix = "_maps/submaps/level_specific/virgo2/"
+	prefix = "maps/submaps/level_specific/virgo2/"
 
 /datum/map_template/submap/level_specific/virgo2/Flake
 	name = "Forest Lake"

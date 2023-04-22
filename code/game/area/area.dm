@@ -11,7 +11,7 @@
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-	//! intrinsics
+	//? intrinsics
 	/// area flags
 	var/area_flags = NONE
 	/// stores the next uid to use
@@ -24,13 +24,17 @@
 	 */
 	var/unique = TRUE
 
-	//! defaults
+	//? defaults
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
 	var/initial_gas_mix = GAS_STRING_STP
 
-	//! unsorted
+	//? tracking lists for machinery
+	/// holopads - lazyinit'd
+	var/list/obj/machinery/holopad/holopads
+
+	//? unsorted
 	var/fire = null
 	var/atmos = 1
 	var/atmosalm = 0
@@ -585,11 +589,11 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
-			H.AdjustStunned(6)
-			H.AdjustWeakened(6)
+			H.adjust_stunned(20 * 6)
+			H.adjust_paralyzed(20 * 6)
 		else
-			H.AdjustStunned(3)
-			H.AdjustWeakened(3)
+			H.adjust_stunned(20 * 3)
+			H.adjust_paralyzed(20 * 3)
 		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 

@@ -45,8 +45,8 @@
 			damaged_organ = E
 			maxdam = dam
 	if(damaged_organ && chem_effects[CE_PAINKILLER] < maxdam)
-		if(maxdam > 10 && paralysis)
-			AdjustUnconscious(-round(maxdam/10))
+		if(maxdam > 10 && is_unconscious())
+			adjust_unconscious(20 * -round(maxdam/10))
 		if(maxdam > 50 && prob(maxdam / 5))
 			drop_active_held_item()
 		var/burning = damaged_organ.burn_dam > damaged_organ.brute_dam
@@ -90,9 +90,9 @@
 	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
 		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
 		if(has_genitals() || get_pain() + agony_amount > max_damage)
-			owner.Weaken(6)
+			owner.afflict_paralyze(20 * 6)
 		else
-			owner.Stun(6)
+			owner.afflict_stun(20 * 6)
 			owner.drop_l_hand()
 			owner.drop_r_hand()
 		return 1

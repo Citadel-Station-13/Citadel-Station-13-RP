@@ -52,7 +52,7 @@
 	return 0
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
-	if(status_flags & GODMODE)
+	if(status_flags & STATUS_GODMODE)
 		return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
 		if(species.species_flags & IS_PLANT)
@@ -79,13 +79,13 @@
 	if(stun)
 		switch(shock_damage)
 			if(16 to 20)
-				Stun(2)
+				afflict_stun(20 * 2)
 			if(21 to 25)
-				Weaken(2)
+				afflict_paralyze(20 * 2)
 			if(26 to 30)
-				Weaken(5)
+				afflict_paralyze(20 * 5)
 			if(31 to INFINITY)
-				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
+				afflict_paralyze(20 * 10) //This should work for now, more is really silly and makes you lay there forever
 
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, loc)

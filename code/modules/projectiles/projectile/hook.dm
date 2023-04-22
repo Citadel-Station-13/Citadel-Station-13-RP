@@ -33,7 +33,7 @@
 	target_distance = expected_distance
 	if(firer)	// Needed to ensure later checks in impact and on hit function.
 		launcher_intent = firer.a_intent
-		firer.Beam(src,icon_state=beam_state,icon='icons/effects/beam.dmi',time=60, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=1)
+		firer.Beam(src,icon_state=beam_state,icon='icons/effects/beam.dmi',time=60, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(launcher_intent)
 		switch(launcher_intent)

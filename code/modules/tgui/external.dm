@@ -165,6 +165,14 @@
 	return GLOB.default_state
 
 /**
+ * public
+ *
+ * checks if UIs are open
+ */
+/datum/proc/has_open_ui()
+	return length(SStgui.open_uis_by_src[REF(src)])
+
+/**
  * global
  *
  * Associative list of JSON-encoded shared states that were set by

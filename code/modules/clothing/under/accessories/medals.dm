@@ -61,3 +61,9 @@
 	desc = "United Sol Defense Force Standard Issue Dogtags, these ones in particular are rusted and worn from years or wear. They read: \"Nikolai Volkov, DOB 12/12/2537, Blood Type O+\". The serial number has faded away."
 	icon_state = "donator_usdf_dogtags"
 */
+
+//This one is an Event Reward item.
+/obj/item/clothing/accessory/medal/cooking
+	name = "culinary excellence pin"
+	desc = "An enamel pin given out to members of the Service Department for exemplary service and demonstration of technical knowledge."
+	icon_state = "cooking_pin"

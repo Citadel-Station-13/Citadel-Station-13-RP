@@ -41,7 +41,7 @@
 
 /obj/machinery/cash_register/attack_hand(mob/user, list/params)
 	// Don't be accessible from the wrong side of the machine
-	if(get_dir(src, user) & GLOB.reverse_dir[src.dir]) return
+	if(get_dir(src, user) & global.reverse_dir[src.dir]) return
 
 	if(cash_open)
 		if(cash_stored)

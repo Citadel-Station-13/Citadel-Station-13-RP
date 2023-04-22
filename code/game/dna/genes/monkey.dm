@@ -23,8 +23,8 @@
 			if (W==H.w_uniform) // will be teared
 				continue
 			H.drop_from_inventory(W)
-		M.transforming = 1
-		M.canmove = 0
+		M.transforming = TRUE
+		M.update_mobility()
 		M.icon = null
 		M.invisibility = 101
 		var/atom/movable/overlay/animation = new( M.loc )
@@ -58,7 +58,7 @@
 	O.loc = M.loc
 
 	if(M.mind)
-		M.mind.transfer_to(O)	//transfer our mind to the cute little monkey
+		M.mind.transfer(O)	//transfer our mind to the cute little monkey
 
 	if (connected) //inside dna thing
 		var/obj/machinery/dna_scannernew/C = connected
@@ -91,8 +91,8 @@
 	if(!connected)
 		for(var/obj/item/W in (Mo.contents-implants))
 			Mo.drop_from_inventory(W)
-		M.transforming = 1
-		M.canmove = 0
+		M.transforming = TRUE
+		M.update_mobility()
 		M.icon = null
 		M.invisibility = 101
 		var/atom/movable/overlay/animation = new( M.loc )
@@ -129,7 +129,7 @@
 	O.loc = M.loc
 
 	if(M.mind)
-		M.mind.transfer_to(O) //transfer our mind to the human
+		M.mind.transfer(O) //transfer our mind to the human
 
 	if (connected) //inside dna thing
 		var/obj/machinery/dna_scannernew/C = connected

@@ -68,7 +68,7 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 			burn_skin(0.75)
 			if(prob(20))
 				to_chat(src, SPAN_USERDANGER("Your skin burns!"))
-			updatehealth()
+			update_health()
 
 	//Burn eyes if exposed.
 	if(eye_burns && species.breath_type && (species.breath_type != /datum/gas/phoron))

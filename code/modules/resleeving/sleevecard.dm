@@ -23,7 +23,7 @@
 	matter = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 
 /obj/item/sleevecard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))
@@ -59,7 +59,7 @@
 	for(var/datum/language/L in MR.languages)
 		infomorph.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
-	MR.mind_ref.transfer_to(infomorph) //Does mind+ckey+client.
+	MR.mind_ref.transfer(infomorph) //Does mind+ckey+client.
 	infomorph.ooc_notes = MR.mind_oocnotes
 	infomorph.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.
 
@@ -102,7 +102,7 @@
 		qdel(src)
 
 /obj/item/sleevecard/see_emote(mob/living/M, text)
-	if(infomorph && infomorph.client && !infomorph.canmove)
+	if(infomorph && infomorph.client)
 		var/rendered = "<span class='message'>[text]</span>"
 		infomorph.show_message(rendered, 2)
 	..()

@@ -5,7 +5,7 @@
 
 /obj/effect/wingrille_spawn
 	name = "window grille spawner"
-	icon = 'icons/obj/structures.dmi'
+	icon = 'icons/obj/structures/window_spawners.dmi'
 	icon_state = "wingrille"
 	density = TRUE
 	anchored = 1.0

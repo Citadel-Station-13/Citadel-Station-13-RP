@@ -35,7 +35,7 @@
 
 	set_typing_indicator(FALSE)
 	if(use_me)
-		usr.emote("me",usr.emote_type,message)
+		usr.emote("me",SAYCODE_TYPE_ALWAYS,message)
 	else
 		usr.emote(message)
 

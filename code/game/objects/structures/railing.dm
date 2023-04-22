@@ -241,7 +241,7 @@
 				return
 			if (G.state < 2)
 				if(user.a_intent == INTENT_HARM)
-					if (prob(15))	M.Weaken(5)
+					if (prob(15))	M.afflict_paralyze(20 * 5)
 					M.apply_damage(8,def_zone = "head")
 					take_damage(8)
 					visible_message("<span class='danger'>[G.assailant] slams [G.affecting]'s face against \the [src]!</span>")
@@ -254,7 +254,7 @@
 					G.affecting.forceMove(get_step(src, src.dir))
 				else
 					G.affecting.forceMove(get_turf(src))
-				G.affecting.Weaken(5)
+				G.affecting.afflict_paralyze(20 * 5)
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)
 			return

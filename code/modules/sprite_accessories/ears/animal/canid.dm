@@ -89,3 +89,9 @@
 	id = "ears_wolf_grey"
 	icon_state = "wolf-grey"
 
+/datum/sprite_accessory/ears/labrador
+	name = "Labrador Ears"
+	id = "lab_ears"
+	icon_state = "lab"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY

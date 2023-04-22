@@ -35,7 +35,7 @@
 			continue
 		to_chat(S, "<span class='warning'>Your integrated sensors detect an ionospheric anomaly. Your systems will be impacted as you begin a partial restart.</span>")
 		var/ionbug = rand(3, 9)
-		S.confused += ionbug
+		S.Confuse(ionbug)
 		S.eye_blurry += (ionbug - 1)
 
 	// Ionize silicon mobs

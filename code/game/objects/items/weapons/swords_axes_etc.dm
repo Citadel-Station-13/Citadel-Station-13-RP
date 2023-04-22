@@ -23,7 +23,7 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50) && isliving(user))
 		var/mob/living/L = user
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-		user.Weaken(3 * damage_force)
+		user.afflict_paralyze(20 * 3 * damage_force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2*damage_force, BRUTE, BP_HEAD)
@@ -99,7 +99,7 @@
 	if(on)
 		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
-			user.Weaken(3 * damage_force)
+			user.afflict_paralyze(20 * 3 * damage_force)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.apply_damage(2*damage_force, BRUTE, BP_HEAD)

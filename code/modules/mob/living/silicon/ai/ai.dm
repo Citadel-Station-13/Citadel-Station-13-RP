@@ -57,7 +57,7 @@ var/list/ai_verbs_default = list(
 	anchored = TRUE
 	density = TRUE
 	can_be_antagged = TRUE
-	status_flags = CANSTUN|CANPARALYSE|CANPUSH
+	status_flags = STATUS_CAN_STUN|STATUS_CAN_PARALYZE|STATUS_CAN_PUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -67,8 +67,6 @@ var/list/ai_verbs_default = list(
 	var/obj/machinery/camera/camera = null
 	var/aiRestorePowerRoutine = 0 //? ENUM
 	var/viewalerts = FALSE
-	/// Default is assigned when AI is created.
-	var/icon/holo_icon
 	var/list/mob/living/silicon/robot/connected_robots = list()
 	var/obj/item/pda/ai/aiPDA = null
 	var/obj/item/communicator/aiCommunicator = null
@@ -126,6 +124,14 @@ var/list/ai_verbs_default = list(
 	/// Whether the AI is inside a AI Card or not.
 	var/carded
 
+	//? holopads
+	/// current holopad
+	var/obj/machinery/holopad/holopad
+	/// current hologram
+	var/obj/effect/overlay/hologram/holopad/ai/hologram
+	/// hologram setting - either an id/path of a hologram datum, an icon, an appearancelike we can clone, etc
+	var/holomodel = /datum/hologram/general/holo_female
+
 /mob/living/silicon/ai/proc/add_ai_verbs()
 	add_verb(src, ai_verbs_default)
 	add_verb(src, silicon_subsystems)
@@ -153,14 +159,11 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
-
-	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
 
 	if(L)
 		if (istype(L, /datum/ai_laws))
@@ -190,7 +193,7 @@ var/list/ai_verbs_default = list(
 			return
 		else
 			if (B.brainmob.mind)
-				B.brainmob.mind.transfer_to(src)
+				B.brainmob.mind.transfer(src)
 
 			on_mob_init()
 
@@ -485,7 +488,7 @@ var/list/ai_verbs_default = list(
 	if (href_list["showalerts"])
 		subsystem_alarm_monitor()
 	if (href_list["jumptoholopad"])
-		var/obj/machinery/hologram/holopad/H = locate(href_list["jumptoholopad"])
+		var/obj/machinery/holopad/H = locate(href_list["jumptoholopad"])
 		if(stat == CONSCIOUS)
 			if(H)
 				H.attack_ai(src) //may as well recycle
@@ -571,148 +574,6 @@ var/list/ai_verbs_default = list(
 
 	set_ai_status_displays(src)
 	return
-
-//I am the icon meister. Bow fefore me.	//>fefore
-/mob/living/silicon/ai/proc/ai_hologram_change()
-	set name = "Change Hologram"
-	set desc = "Change the default hologram available to AI to something else."
-	set category = "AI Settings"
-
-	if(check_unable())
-		return
-
-	var/input
-	var/choice = alert("Would you like to select a hologram based on a (visible) crew member, switch to unique avatar, or load your character from your character slot?",,"Crew Member","Unique","My Character")
-
-	switch(choice)
-		if("Crew Member") //A seeable crew member (or a dog)
-			var/list/targets = trackable_mobs()
-			if(targets.len)
-				input = input("Select a crew member:") as null|anything in targets //The definition of "crew member" is a little loose...
-				//This is torture, I know. If someone knows a better way...
-				if(!input) return
-				var/new_holo = getHologramIcon(get_compound_icon(targets[input]))
-				qdel(holo_icon)
-				holo_icon = new_holo
-
-			else
-				alert("No suitable records found. Aborting.")
-
-		if("My Character") //Loaded character slot
-			if(!client || !client.prefs) return
-			var/mob/living/carbon/human/dummy/dummy = new ()
-			//This doesn't include custom_items because that's ... hard.
-			client.prefs.dress_preview_mob(dummy)
-			sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
-			dummy.regenerate_icons()
-
-			var/new_holo = getHologramIcon(get_compound_icon(dummy))
-			qdel(holo_icon)
-			qdel(dummy)
-			holo_icon = new_holo
-
-		else //A premade list from the dmi
-			var/icon_list[] = list(
-				"synthetic male",
-				"synthetic female",
-				"watcher",
-				"overseer",
-				"carp",
-				"corgi",
-				"mothman",
-				"unnerving creature",
-				"assistance core",
-				"void horror",
-				"lucky leaves",
-				"true captain",
-				"male human",
-				"female human",
-				"male unathi",
-				"female unathi",
-				"male tajaran",
-				"female tajaran",
-				"male tesharii",
-				"female tesharii",
-				"male skrell",
-				"female skrell",
-				"pun pun",
-				"singularity",
-				"drone",
-				"spider",
-				"bear",
-				"slime",
-				"runtime",
-				"polly",
-				"gondola"
-
-			)
-			input = input("Please select a hologram:") as null|anything in icon_list //Holoprojection list
-			if(input)
-				qdel(holo_icon)
-				switch(input)
-					if("synthetic male")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-male"))
-					if("synthetic female")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-female"))
-					if("watcher")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-watcher"))
-					if("overseer")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-overseer"))
-					if("carp")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-carp"))
-					if("corgi")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-corgi"))
-					if("mothman")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-moth"))
-					if("unnerving creature")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-creature"))
-					if("assistance core")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-core"))
-					if("void horror")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-horror"))
-					if("lucky leaves")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-leaves"))
-					if("true captain")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo-truecaptain"))
-					if("male human")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holohumm"))
-					if("female human")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holohumf"))
-					if("male unathi")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holounam"))
-					if("female unathi")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holounaf"))
-					if("male tajaran")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holotajm"))
-					if("female tajaran")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holotajf"))
-					if("male tesharii")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holotesm"))
-					if("female tesharii")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holotesf"))
-					if("male skrell")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holoskrm"))
-					if("female skrell")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holoskrf"))
-					if("pun pun")
-						holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"punpun"))
-					if("singularity")
-						holo_icon = getHologramIcon(icon('icons/obj/singularity.dmi',"singularity_s1"))
-					if("drone")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"drone0"))
-					if("spider")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"nurse"))
-					if("bear")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"brownbear"))
-					if("slime")
-						holo_icon = getHologramIcon(icon('icons/mob/slimes.dmi',"cerulean adult slime"))
-					if("runtime")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"cat"))
-					if("polly")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"parrot_fly"))
-					if("gondola")
-						holo_icon = getHologramIcon(icon('icons/mob/animal.dmi',"gondola"))
-
 
 //Toggles the luminosity and applies it by re-entereing the camera.
 /mob/living/silicon/ai/proc/toggle_camera_light()
@@ -818,9 +679,7 @@ var/list/ai_verbs_default = list(
 
 	hologram_follow = !hologram_follow
 	// Required to stop movement because we use walk_to(wards) in hologram.dm
-	if(holo)
-		var/obj/effect/overlay/aiholo/hologram = holo.masters[src]
-		walk(hologram, 0)
+	stop_moving_hologram()
 	to_chat(usr, "Your hologram will [hologram_follow ? "follow" : "no longer follow"] you now.")
 
 

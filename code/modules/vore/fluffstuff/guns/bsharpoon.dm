@@ -47,6 +47,8 @@
 	if(get_area(A).area_flags & AREA_FLAG_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return
+	if(!do_after(user, 5 SECONDS, src))
+		return
 
 	last_fire = current_fire
 	playsound(user, 'sound/weapons/wave.ogg', 60, 1)

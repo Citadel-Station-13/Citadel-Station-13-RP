@@ -42,7 +42,7 @@
 	set category = "Object"
 	set src in usr
 	set popup_menu = 1
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if (radio.radio_enabled == 1)
@@ -154,7 +154,7 @@
 	return
 
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(rig)
@@ -246,7 +246,7 @@
 	brainmob.timeofhostdeath = H.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 	return
 
 /obj/item/mmi/digital/attack_self(mob/user)

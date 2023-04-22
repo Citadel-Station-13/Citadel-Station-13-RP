@@ -29,22 +29,6 @@
 		textr = text("0[]", textb)
 	return text("#[][][]", textr, textg, textb)
 
-/// Calculate the angle between two points and the west|east coordinate.
-/proc/Get_Angle(atom/movable/start, atom/movable/end) //For beams.
-	if(!start || !end)
-		return 0
-	var/dy
-	var/dx
-	dy=(32 * end.y + end.pixel_y) - (32 * start.y + start.pixel_y)
-	dx=(32 * end.x + end.pixel_x) - (32 * start.x + start.pixel_x)
-	if(!dy)
-		return (dx >= 0) ? 90 : 270
-	. = arctan(dx/dy)
-	if(dy < 0)
-		. += 180
-	else if(dx < 0)
-		. += 360
-
 /**
  * Returns location.  Returns null if no location was found.
  *
@@ -748,7 +732,7 @@
 						O.loc = X
 						O.update_light()
 						if(z_level_change) // The objects still need to know if their z-level changed.
-							O.onTransitZ(T.z, X.z)
+							O.on_changed_z_level(T.z, X.z)
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
@@ -757,7 +741,7 @@
 						M.loc = X
 
 						if(z_level_change) // Same goes for mobs.
-							M.onTransitZ(T.z, X.z)
+							M.on_changed_z_level(T.z, X.z)
 
 					if(turftoleave)
 						T.ChangeTurf(turftoleave)
@@ -1374,7 +1358,7 @@ var/list/WALLITEMS = list(
  * N, NNE, NE, ENE, E, ESE, SE, SSE, S, SSW, SW, WSW, W, WNW, NW, NNW
  */
 /proc/get_adir(turf/A, turf/B)
-	var/degree = Get_Angle(A, B)
+	var/degree = get_visual_angle(A, B)
 	switch(round(degree%360, 22.5))
 		if(0)
 			return "North"

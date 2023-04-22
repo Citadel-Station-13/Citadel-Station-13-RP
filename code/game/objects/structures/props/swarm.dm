@@ -95,7 +95,7 @@
 				break
 
 		if(!has_beam)
-			active_beams |= Beam(S,icon='icons/effects/beam.dmi',icon_state="holo_beam",time=3 SECONDS,maxdistance=3,beam_type = /obj/effect/ebeam,beam_sleep_time=2)
+			active_beams |= Beam(S,icon='icons/effects/beam.dmi',icon_state="holo_beam",time=3 SECONDS,maxdistance=3,beam_type = /obj/effect/ebeam)
 
 		if(S.cell)
 			S.cell.give(rand(5, 30))

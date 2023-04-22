@@ -125,10 +125,10 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/nutriment/mayo
@@ -266,33 +266,6 @@
 	nutriment_factor = 1
 	color = "#801E28"
 
-/* Begin Citadel Change - Removed due to Aurora cooking port
-/datum/reagent/nutriment/cornoil
-	name = "Corn Oil"
-	id = "cornoil"
-	description = "An oil derived from various types of corn."
-	taste_description = "slime"
-	taste_mult = 0.1
-	reagent_state = REAGENT_LIQUID
-	nutriment_factor = 20
-	color = "#302000"
-
-/datum/reagent/nutriment/cornoil/touch_turf(turf/simulated/T)
-	if(!istype(T))
-		return
-
-	var/hotspot = (locate(/atom/movable/fire) in T)
-	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
-		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
-		lowertemp.react()
-		T.assume_air(lowertemp)
-		qdel(hotspot)
-
-	if(volume >= 3)
-		T.wet_floor()
-
-End Citadel Change */
 /datum/reagent/nutriment/peanutoil
 	name = "Peanut Oil"
 	id = "peanutoil"
@@ -615,8 +588,8 @@ End Citadel Change */
 		to_chat(M, "<span class='warning'>Your [safe_thing] protects you from most of the pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 3)
 		M.Blind(effective_strength)
-		M.Stun(5)
-		M.Weaken(5)
+		M.afflict_stun(20 * 5)
+		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	else if(mouth_covered) // Mouth cover is better than eye cover
@@ -628,8 +601,8 @@ End Citadel Change */
 		to_chat(M, "<span class='warning'>You're sprayed directly in the eyes with pepperspray!</span>")
 		M.eye_blurry = max(M.eye_blurry, effective_strength * 5)
 		M.Blind(effective_strength * 2)
-		M.Stun(5)
-		M.Weaken(5)
+		M.afflict_stun(20 * 5)
+		M.afflict_paralyze(20 * 5)
 		if(alien != IS_SLIME)
 			return
 	if(alien == IS_SLIME)
@@ -704,7 +677,7 @@ End Citadel Change */
 	M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
-	M.AdjustSleeping(adj_sleepy)
+	M.adjust_sleeping(20 * adj_sleepy)
 
 	if(adj_temp > 0 && M.bodytemperature < 310) // 310 is the normal bodytemp. 310.055
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
@@ -788,10 +761,10 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/drink/juice/lemon
@@ -1507,10 +1480,10 @@ End Citadel Change */
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 /datum/reagent/drink/milkshake/chocoshake
@@ -2350,7 +2323,7 @@ End Citadel Change */
 	..()
 	M.dizziness = max(0, M.dizziness - 5)
 	M.drowsyness = max(0, M.drowsyness - 3)
-	M.AdjustSleeping(-2)
+	M.adjust_sleeping(20 * -2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
 
@@ -2721,7 +2694,7 @@ End Citadel Change */
 
 /datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.Stun(2)
+	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/bilk
 	name = "Bilk"
@@ -3090,7 +3063,7 @@ End Citadel Change */
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.Weaken(3)
+	M.afflict_paralyze(20 * 3)
 
 /datum/reagent/ethanol/patron
 	name = "Patron"
@@ -3360,7 +3333,7 @@ End Citadel Change */
 		drug_strength = drug_strength * 0.8
 
 	M.druggy = max(M.druggy, drug_strength)
-	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
+	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
 
 /datum/reagent/ethanol/sakebomb
@@ -4691,7 +4664,7 @@ End Citadel Change */
 
 /datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	M.Stun(2)
+	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
@@ -5111,6 +5084,17 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
+/datum/reagent/drink/glue
+	name = "\improper AP-NT:G 'Glue'"
+	id = "safeglue"
+	description = "A bottle codenamed AP-NT:G by nanotrasen's brightest minds, standing for 'All Purpose Non-Toxic Glue', this type being best used on paper. ..Or microwaved bread, if you're daring."
+	taste_description = "dull sticky glue"
+	nutrition = 1
+	color = "#faf2e3"
+
+	glass_name = "Glue"
+	glass_desc = "A glass of glue. Wait, why did you put this into a glass?"
 
 // Unathi drinks
 

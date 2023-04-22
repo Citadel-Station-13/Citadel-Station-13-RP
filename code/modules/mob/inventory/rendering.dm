@@ -254,9 +254,9 @@
 	// temporary - until coloration
 	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
-	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
-	MA = render_apply_blood(MA, bodytype, inhands, slot_meta)
-	MA = render_apply_custom(MA, bodytype, inhands, slot_meta)
+	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta, icon_used)
+	MA = render_apply_blood(MA, bodytype, inhands, slot_meta, icon_used)
+	MA = render_apply_custom(MA, bodytype, inhands, slot_meta, icon_used)
 	return length(additional)? (additional + MA) : MA
 
 /**
@@ -264,7 +264,7 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	return MA
 
 /**
@@ -272,7 +272,17 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	return MA
+
+/**
+ * override to apply overlays to our current mutable appearance; called first
+ */
+/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	if(addblends)
+		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
+		adding.blend_mode = BLEND_ADD
+		MA.add_overlay(adding)
 	return MA
 
 /**
@@ -281,16 +291,6 @@
 /obj/item/proc/render_additional(icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
-
-/**
- * override to apply overlays to our current mutable appearance; called first
- */
-/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
-	if(addblends)
-		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
-		adding.blend_mode = BLEND_ADD
-		MA.add_overlay(adding)
-	return MA
 
 /**
  * returns a tuple of (icon, state, layer, size_x, size_y)

@@ -20,7 +20,7 @@
 		if(INTENT_GRAB)
 			if (L == src)
 				return
-			if (!(status_flags & CANPUSH))
+			if (!(status_flags & STATUS_CAN_PUSH))
 				return
 			if(!incapacitated(INCAPACITATION_ALL) && prob(grab_resist))
 				L.visible_message("<span class='warning'>\The [L] tries to grab \the [src] but fails!</span>")
@@ -192,7 +192,7 @@
 		return armorval
 
 /mob/living/simple_mob/legacy_mob_soak(def_zone, attack_flag)
-	var/armorval = fetch_armor().raw(attack_flag) * 100
+	var/armorval = fetch_armor().soak(attack_flag) * 100
 	if(!armorval)
 		return 0
 	else
@@ -205,7 +205,7 @@
 	// If the damage is fatal, it is turned to ash.
 	if(!client)
 		inflict_shock_damage(200) // Mobs that are very beefy or resistant to shock may survive getting struck.
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] disintegrates into ash!"))
 			ash()
@@ -217,7 +217,7 @@
 	// Similar to lightning, the mob is turned to ash if the lava tick was fatal and it isn't a player.
 	// Unlike lightning, we don't add an additional damage spike (since lava already hurts a lot).
 	if(!client)
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] flashes into ash as the lava consumes them!"))
 			ash()
@@ -230,7 +230,7 @@
 	if(!client)
 		inflict_heat_damage(30)
 		inflict_poison_damage(10)
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			visible_message(SPAN_CRITICAL("\The [src] melts into slurry!"))
 			gib()

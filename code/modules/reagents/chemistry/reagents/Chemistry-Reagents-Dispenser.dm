@@ -127,8 +127,8 @@
 	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
-		M.Unconscious(60)
-		M.Sleeping(90)
+		M.afflict_unconscious(20 * 60)
+		M.afflict_sleeping(20 * 90)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy*3)
@@ -175,8 +175,8 @@
 	if(dose * strength_mod >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
 	if(dose * strength_mod >= strength * 7) // Pass out
-		M.Unconscious(20)
-		M.Sleeping(30)
+		M.afflict_unconscious(20 * 20)
+		M.afflict_sleeping(20 * 30)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy)
@@ -250,7 +250,7 @@
 
 /datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
@@ -265,7 +265,7 @@
 
 /datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
@@ -411,7 +411,6 @@
 				if(prob(100 * removed / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
-					H.status_flags |= DISFIGURED
 		else
 			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
@@ -470,10 +469,10 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants

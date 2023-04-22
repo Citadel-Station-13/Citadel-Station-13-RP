@@ -41,7 +41,7 @@
 	var/dir_to = get_dir(src, adj_turf)
 
 	for(var/obj/structure/window/W in src)
-		if(W.dir == dir_to || W.is_fulltile()) //Same direction or diagonal (full tile)
+		if(W.dir == dir_to || W.fulltile) //Same direction or diagonal (full tile)
 			W.fire_act(adj_air, adj_temp, adj_volume)
 
 	for(var/obj/machinery/door/D in src) //makes doors next to fire affected by fire

@@ -11,7 +11,7 @@
 /datum/map_template/lateload/planets/away_g_world
 	name = "ExoPlanet - Z1 Planet"
 	desc = "A mineral rich planet."
-	mappath = "_maps/map_levels/192x192/Class_G.dmm"
+	mappath = "maps/map_levels/192x192/Class_G.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_g_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -31,7 +31,7 @@
 /datum/map_template/lateload/planets/away_d_world
 	name = "ExoPlanet - Z2 Planet"
 	desc = "The previously nuked planet Class D away mission"
-	mappath = "_maps/map_levels/192x192/Class_D.dmm"
+	mappath = "maps/map_levels/192x192/Class_D.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_d_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -53,7 +53,7 @@
 /datum/map_template/lateload/planets/away_h_world
 	name = "ExoPlanet - Z3 Planet"
 	desc = "A random unknown planet."
-	mappath = "_maps/map_levels/192x192/Class_H.dmm"
+	mappath = "maps/map_levels/192x192/Class_H.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_h_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -75,7 +75,7 @@
 /datum/map_template/lateload/planets/away_m_world
 	name = "ExoPlanet - Z4 Planet"
 	desc = "A lush Gaia Class Planet."
-	mappath = "_maps/map_levels/192x192/Class_M.dmm"
+	mappath = "maps/map_levels/192x192/Class_M.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_m_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -97,7 +97,7 @@
 /datum/map_template/lateload/planets/away_p_world
 	name = "ExoPlanet - Z5 Planet"
 	desc = "A Cold Frozen Planet."
-	mappath = "_maps/map_levels/192x192/Class_P.dmm"
+	mappath = "maps/map_levels/192x192/Class_P.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_p_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
@@ -117,7 +117,7 @@
 /datum/map_template/lateload/planets/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
-	mappath = "_maps/map_levels/192x192/miaphus_beach.dmm"
+	mappath = "maps/map_levels/192x192/miaphus_beach.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach
 
 /datum/map_z_level/planets_lateload/away_beach
@@ -127,7 +127,7 @@
 /datum/map_template/lateload/planets/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
-	mappath = "_maps/map_levels/192x192/miaphus_cave.dmm"
+	mappath = "maps/map_levels/192x192/miaphus_cave.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach_cave
 
 /datum/map_template/lateload/planets/away_beach_cave/on_map_loaded(z)
@@ -146,7 +146,7 @@
 /datum/map_template/lateload/planets/away_desert
 	name = "Desert Planet - Z3 Desert"
 	desc = "The inland desert of V-4."
-	mappath = "_maps/map_levels/192x192/miaphus_desert.dmm"
+	mappath = "maps/map_levels/192x192/miaphus_desert.dmm"
 	associated_map_datum = /datum/map_template/submap/level_specific/class_h
 
 /datum/map_template/lateload/planets/away_desert/on_map_loaded(z)
@@ -168,7 +168,7 @@
 /datum/map_template/lateload/planets/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
-	mappath = "_maps/map_levels/140x140/virgo2_aerostat.dmm"
+	mappath = "maps/map_levels/140x140/virgo2_aerostat.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_aerostat
 
 /datum/map_z_level/planets_lateload/away_aerostat
@@ -178,7 +178,7 @@
 /datum/map_template/lateload/planets/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
-	mappath = "_maps/map_levels/140x140/virgo2_surface.dmm"
+	mappath = "maps/map_levels/140x140/virgo2_surface.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_aerostat_surface
 
 /datum/map_template/lateload/planets/away_aerostat_surface/on_map_loaded(z)

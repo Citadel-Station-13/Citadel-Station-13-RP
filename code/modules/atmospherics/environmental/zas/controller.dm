@@ -132,7 +132,7 @@ Class Procs:
 			return
 
 	var/a_to_b = given_dir || get_dir_multiz(A, B)
-	var/b_to_a = REVERSE_DIR(a_to_b)
+	var/b_to_a = global.reverse_dir[a_to_b]
 
 	if(!A.connections)
 		A.connections = new

@@ -3,9 +3,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
-	stunned = 1
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -18,9 +17,8 @@
 	sleep(48)
 	//animation = null
 
-	transforming = 0
-	stunned = 0
-	update_canmove()
+	transforming = FALSE
+	update_mobility()
 	invisibility = initial(invisibility)
 
 	if(!species.primitive_form) //If the creature in question has no primitive set, this is going to be messy.
@@ -52,8 +50,8 @@
 	if (transforming)
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	return ..()
@@ -66,7 +64,7 @@
 	O.aiRestorePowerRoutine = 0
 
 	if(mind)
-		mind.transfer_to(O)
+		mind.transfer(O)
 		O.mind.original = O
 	else
 		O.key = key
@@ -103,8 +101,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -122,7 +120,7 @@
 	O.invisibility = 0
 
 	if(mind)		//TODO
-		mind.transfer_to(O)
+		mind.transfer(O)
 		if(O.mind && O.mind.assigned_role == "Cyborg")
 			O.mind.original = O
 			if(O.mind.role_alt_title == "Drone")
@@ -160,8 +158,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)
@@ -183,8 +181,8 @@
 		return
 	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 	for(var/t in organs)	//this really should not be necessary
@@ -213,8 +211,8 @@
 	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
-	transforming = 1
-	canmove = 0
+	transforming = TRUE
+	update_mobility()
 	icon = null
 	invisibility = 101
 
