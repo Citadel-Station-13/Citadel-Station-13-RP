@@ -245,7 +245,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return
 	var/turf/target_turf = get_turf(A)
-	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
+	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
 	if(power_supply && power_supply.charge >= charge_cost) //Do a delay for pointblanking too.
@@ -273,7 +273,7 @@
 
 	var/turf/target_turf = get_turf(A)
 
-	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=3)
+	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(beameffect)
 		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
@@ -464,8 +464,8 @@
 
 //Plasma Guns Plasma Guns!
 /obj/item/gun/energy/plasma
-	name = "NT-PLR-EX plasma rifle"
-	desc = "This bulky weapon fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
+	name = "\improper Balrog plasma rifle"
+	desc = "This bulky weapon, the experimental NT-PLR-EX 'Balrog', fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "prifle"
 	item_state = null
 	projectile_type = /obj/projectile/plasma
@@ -512,8 +512,8 @@
 				return ..()
 
 /obj/item/gun/energy/plasma/pistol
-	name = "NT-PLP-EX plasma pistol"
-	desc = "This scaled down plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
+	name = "\improper Wyrm plasma pistol"
+	desc = "This scaled down NT-PLP-EX 'Wyrm' plasma pistol fires magnetically contained balls of plasma at high velocity. Due to the volatility of the round, the weapon is known to overheat and fail catastrophically if fired too frequently."
 	icon_state = "ppistol"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	w_class = ITEMSIZE_NORMAL

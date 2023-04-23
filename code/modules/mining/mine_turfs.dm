@@ -443,7 +443,6 @@
 
 	else
 		if (istype(W, /obj/item/core_sampler))
-			geologic_data.UpdateNearbyArtifactInfo(src)
 			var/obj/item/core_sampler/C = W
 			C.sample_item(src, user)
 			return
@@ -519,8 +518,6 @@
 					while(next_rock > 50)
 						next_rock -= 50
 						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
-						O.geologic_data = geologic_data
 				return
 			else
 				return
@@ -574,7 +571,6 @@
 					while(next_rock > 50)
 						next_rock -= 50
 						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
 						O.geologic_data = geologic_data
 				return
 			else
@@ -639,9 +635,6 @@
 		return
 	clear_ore_effects()
 	var/obj/item/ore/O = new mineral.ore (src)
-	if(geologic_data && istype(O))
-		geologic_data.UpdateNearbyArtifactInfo(src)
-		O.geologic_data = geologic_data
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -695,7 +688,7 @@
 			else
 				M.flash_eyes()
 				if(prob(50))
-					M.Stun(5)
+					M.afflict_stun(20 * 5)
 		new /obj/item/artifact_shards(src, 1000, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
 		if(prob(25))
 			excavate_find(prob(5), finds[1])
@@ -723,7 +716,6 @@
 		X = new /obj/item/archaeological_find(src, F.find_type)
 	else
 		X = new /obj/item/strangerock(src, F.find_type)
-		geologic_data.UpdateNearbyArtifactInfo(src)
 		var/obj/item/strangerock/SR = X
 		SR.geologic_data = geologic_data
 

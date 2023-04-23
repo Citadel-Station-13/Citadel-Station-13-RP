@@ -93,8 +93,8 @@
 
 	//Apply damage
 	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
-	H.Unconscious(4)
-	H.updatehealth()
+	H.afflict_unconscious(20 * 4)
+	H.update_health()
 
 	//Grower specific mutations
 	if(heal_level < 60)
@@ -308,7 +308,7 @@
 	//Apply damage
 	H.adjustBruteLoss(brute_value)
 	H.adjustFireLoss(burn_value)
-	H.updatehealth()
+	H.update_health()
 
 	//Update appearance, remake icons
 	H.UpdateAppearance()
@@ -547,7 +547,7 @@
 	for(var/datum/language/L in MR.languages)
 		occupant.add_language(L.name)
 	MR.mind_ref.active = 1 //Well, it's about to be.
-	MR.mind_ref.transfer_to(occupant) //Does mind+ckey+client.
+	MR.mind_ref.transfer(occupant) //Does mind+ckey+client.
 	occupant.identifying_gender = MR.id_gender
 	occupant.ooc_notes = MR.mind_oocnotes
 	occupant.apply_vore_prefs() //Cheap hack for now to give them SOME bellies.

@@ -1167,6 +1167,7 @@
 		/obj/item/seeds/shrinkshroom = 3,
 		/obj/item/seeds/megashroom = 3,
 		/obj/item/seeds/peaseed = 3,
+		/obj/item/seeds/tobaccoseed = 3,
 	)
 	contraband = list(
 		/obj/item/seeds/amanitamycelium = 2,
@@ -1180,6 +1181,7 @@
 	)
 	premium = list(
 		/obj/item/toy/waterflower = 1,
+		/obj/item/toy/gnome = 1,
 	)
 
 /**
@@ -1459,6 +1461,7 @@
 		/obj/item/toy/plushie/bear_space = 1,
 		/obj/item/toy/plushie/doll = 3,
 		/obj/item/storage/daki = 10,
+		/obj/item/toy/gnome = 4,
 	)
 	premium = list(
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 1,
@@ -1501,6 +1504,7 @@
 		/obj/item/toy/plushie/bear_space = 50,
 		/obj/item/toy/plushie/doll = 50,
 		/obj/item/storage/daki = 100,
+		/obj/item/toy/gnome = 20,
 	)
 
 /obj/machinery/vending/fishing
@@ -1509,22 +1513,32 @@
 	product_ads = "Tired of trawling across the ocean floor? Get our loot!;Chum and rods.;Don't get baited into fishing without us!;Baby is your star-sign pisces? We'd make a perfect match.;Do not fear, plenty to catch around here.;Don't get reeled in helplessly, get your own rod today!"
 	icon_state = "fishvendor"
 	products = list(
-		/obj/item/material/fishing_rod/modern/cheap = 10,
-		/obj/item/storage/box/wormcan = 20,
-		/obj/item/material/fishing_net = 2,
-		/obj/item/stack/cable_coil/random = 10,
+		/obj/item/fishing_rod = 10,
+		/obj/item/fishing_hook = 20,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_hook/magnet = 10,
+		/obj/item/fishing_hook/rescue = 10,
+		/obj/item/fishing_hook/shiny = 10,
+		/obj/item/fishing_hook/weighted = 10,
+		/obj/item/fishing_line = 20,
+		/obj/item/fishing_line/bouncy = 10,
+		/obj/item/fishing_line/reinforced = 10,
+		/obj/item/bait_can/worm = 80,
+		/obj/item/aquarium_kit = 20,
+		/obj/item/storage/box/aquarium_props = 20,
+		/obj/item/storage/fish_case = 30,
+		/obj/item/book/fish_catalog = 20,
 	)
+	price_default = 10
 	prices = list(
-		/obj/item/material/fishing_rod/modern/cheap = 30,
-		/obj/item/storage/box/wormcan = 12,
-		/obj/item/material/fishing_net = 30,
-		/obj/item/stack/cable_coil/random = 4,
+		/obj/item/fishing_rod = 50,
+		/obj/item/bait_can/worm = 5,
+		/obj/item/aquarium_kit = 50,
+		/obj/item/storage/box/aquarium_props = 25,
 	)
 
 //Custom vendors
 
-
-//I want this not just as part of the zoo. ;v
 /obj/machinery/vending/food
 	name = "Food-O-Mat"
 	desc = "A technological marvel, supposedly able to cook or mix a large variety of food or drink."

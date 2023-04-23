@@ -143,7 +143,7 @@
 	/// Used to specify the icon file to be used when the item is worn. If not set the default icon for that slot will be used.
 	/// If icon_override or sprite_sheets are set they will take precendence over this, assuming they apply to the slot in question.
 	/// Only slot_l_hand/slot_r_hand are implemented at the moment. Others to be implemented as needed.
-	var/list/item_icons = list()
+	var/list/item_icons
 
 	/// Used to override hardcoded clothing dmis in human clothing proc. //TODO: Get rid of this crap -Zandario
 	var/icon_override = null
@@ -161,11 +161,11 @@
 	 * 	)
 	 * If index term exists and icon_override is not set, this sprite sheet will be used.
 	*/
-	var/list/sprite_sheets = list()
+	var/list/sprite_sheets
 
 	/// Species-specific sprite sheets for inventory sprites
 	/// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
-	var/list/sprite_sheets_obj = list()
+	var/list/sprite_sheets_obj
 
 	// todo: remove
 	/// worn icon file
@@ -254,9 +254,9 @@
 	// temporary - until coloration
 	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
-	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
-	MA = render_apply_blood(MA, bodytype, inhands, slot_meta)
-	MA = render_apply_custom(MA, bodytype, inhands, slot_meta)
+	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta, icon_used)
+	MA = render_apply_blood(MA, bodytype, inhands, slot_meta, icon_used)
+	MA = render_apply_custom(MA, bodytype, inhands, slot_meta, icon_used)
 	return length(additional)? (additional + MA) : MA
 
 /**
@@ -264,7 +264,7 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	return MA
 
 /**
@@ -272,7 +272,17 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	return MA
+
+/**
+ * override to apply overlays to our current mutable appearance; called first
+ */
+/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	if(addblends)
+		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
+		adding.blend_mode = BLEND_ADD
+		MA.add_overlay(adding)
 	return MA
 
 /**
@@ -281,16 +291,6 @@
 /obj/item/proc/render_additional(icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
-
-/**
- * override to apply overlays to our current mutable appearance; called first
- */
-/obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
-	if(addblends)
-		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
-		adding.blend_mode = BLEND_ADD
-		MA.add_overlay(adding)
-	return MA
 
 /**
  * returns a tuple of (icon, state, layer, size_x, size_y)

@@ -182,21 +182,6 @@
 	return FALSE
 
 //
-// Our custom resist catches for /mob/living
-//
-/mob/living/proc/vore_process_resist()
-
-	//Are we resisting from inside a belly?
-	if(isbelly(loc))
-		var/obj/belly/B = loc
-		B.relay_resist(src)
-		return TRUE //resist() on living does this TRUE thing.
-
-	//Other overridden resists go here
-
-	return FALSE
-
-//
 //	Verb for saving vore preferences to save file
 //
 /mob/living/proc/save_vore_prefs()
@@ -395,7 +380,6 @@
 			smell_message += "a plain old normal [src]"
 
 	return smell_message
-
 
 //
 // OOC Escape code for pref-breaking or AFK preds

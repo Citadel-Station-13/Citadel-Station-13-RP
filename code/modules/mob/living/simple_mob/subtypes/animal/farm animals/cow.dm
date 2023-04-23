@@ -68,7 +68,7 @@
 		return
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
 		M.visible_message("<span class='warning'>[M] tips over [src].</span>","<span class='notice'>You tip over [src].</span>")
-		Weaken(30)
+		afflict_paralyze(20 * 30)
 		icon_state = icon_dead
 		spawn(rand(20,50))
 			if(!stat && M)

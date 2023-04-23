@@ -304,7 +304,7 @@
 	data["scan_ticks"] = scan_ticks
 	data["degrees"] = null
 	if(target_radio)
-		data["degrees"] = round(Get_Angle(get_turf(src), get_turf(target_radio)))
+		data["degrees"] = round(get_visual_angle(get_turf(src), get_turf(target_radio)))
 
 	data["rawfreq"] = frequency
 	data["minFrequency"] = RADIO_LOW_FREQ

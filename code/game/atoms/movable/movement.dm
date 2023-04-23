@@ -258,12 +258,14 @@
 				else if (!inertia_moving)
 					inertia_next_move = world.time + inertia_move_delay
 					newtonian_move(direct)
-			moving_diagonally = 0
+			moving_diagonally = NOT_IN_DIAG_STEP
+			--in_move
 			return
 	else		// trying to move to the same place
 		if(direct)
 			last_move_dir = direct
 			setDir(direct)
+		--in_move
 		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
@@ -272,6 +274,7 @@
 		return
 
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
+		--in_move
 		return FALSE
 
 	if(.)
@@ -316,7 +319,6 @@
 				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
 				continue
 			else
-				--in_move
 				forceMove(M.loc)
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
@@ -550,7 +552,7 @@
 		var/area/old_area = get_area(oldloc)
 		var/area/destarea = get_area(destination)
 
-		moving_diagonally = null
+		moving_diagonally = NOT_IN_DIAG_STEP
 
 		if(!same_loc)
 			if(is_multi_tile && isturf(destination))

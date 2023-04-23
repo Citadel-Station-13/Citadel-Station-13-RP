@@ -117,6 +117,9 @@
 	// end
 	if(item_flags & ITEM_NOBLUDGEON)
 		return NONE
+	// todo: not hardcoding this
+	if(IS_PRONE(user))
+		mult *= 0.66
 	// is mob, go to that
 	// todo: signals for both
 	if(ismob(target))

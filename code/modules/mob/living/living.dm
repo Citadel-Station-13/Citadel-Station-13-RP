@@ -23,13 +23,6 @@
 	update_hud_med_all()
 
 /mob/living/Destroy()
-	if(LAZYLEN(status_effects))
-		for(var/s in status_effects)
-			var/datum/status_effect/S = s
-			if(S.on_remove_on_mob_delete) //the status effect calls on_remove when its mob is deleted
-				qdel(S)
-			else
-				S.be_replaced()
 	if(dsoverlay)
 		dsoverlay.loc = null
 		dsoverlay = null
@@ -74,7 +67,7 @@
 /mob/living/pointed(atom/A as mob|obj|turf in view())
 	if(src.stat || src.restrained())
 		return 0
-	if(src.status_flags & FAKEDEATH)
+	if(src.status_flags & STATUS_FAKEDEATH)
 		return 0
 	if(!..())
 		return 0
@@ -114,13 +107,6 @@ default behaviour is:
 	else
 		to_chat(src, "<font color=#4F49AF>You are not injured enough to succumb to death!</font>")
 
-/mob/living/proc/updatehealth()
-	if(status_flags & GODMODE)
-		health = 100
-		set_stat(CONSCIOUS)
-	else
-		health = getMaxHealth() - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss() - getCloneLoss() - halloss
-
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
 /mob/living/proc/calculate_affecting_pressure(var/pressure)
@@ -141,7 +127,7 @@ default behaviour is:
 			if(!affecting)	continue
 			if(affecting.take_damage(0, divided_damage+extradam))	//TODO: fix the extradam stuff. Or, ebtter yet...rewrite this entire proc ~Carn
 				H.UpdateDamageIcon()
-		H.updatehealth()
+		H.update_health()
 		return 1
 	else if(istype(src, /mob/living/silicon/ai))
 		return 0
@@ -182,7 +168,7 @@ default behaviour is:
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/proc/adjustBruteLoss(var/amount,var/include_robo)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -196,13 +182,13 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	bruteloss = min(max(bruteloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/getOxyLoss()
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -216,17 +202,17 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	oxyloss = min(max(oxyloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setOxyLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	oxyloss = amount
 
 /mob/living/proc/getToxLoss()
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -240,10 +226,10 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	toxloss = min(max(toxloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setToxLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	toxloss = amount
 
 /mob/living/proc/getFireLoss()
@@ -257,7 +243,7 @@ default behaviour is:
 
 //'include_robo' only applies to healing, for legacy purposes, as all damage typically hurts both types of organs
 /mob/living/proc/adjustFireLoss(var/amount,var/include_robo)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.incoming_damage_percent))
@@ -270,13 +256,13 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	fireloss = min(max(fireloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/getCloneLoss()
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
@@ -290,28 +276,28 @@ default behaviour is:
 				amount *= M.incoming_healing_percent
 
 	cloneloss = min(max(cloneloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setCloneLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	cloneloss = amount
 
 /mob/living/proc/getBrainLoss()
 	return brainloss
 
 /mob/living/proc/adjustBrainLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	brainloss = min(max(brainloss + amount, 0),(getMaxHealth()*2))
 
 /mob/living/proc/setBrainLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	brainloss = amount
 
 /mob/living/proc/getHalLoss()
 	return halloss
 
 /mob/living/proc/adjustHalLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.incoming_damage_percent))
@@ -325,10 +311,10 @@ default behaviour is:
 			if(!isnull(M.incoming_healing_percent))
 				amount *= M.incoming_healing_percent
 	halloss = min(max(halloss + amount, 0),(getMaxHealth()*2))
-	updatehealth()
+	update_health()
 
 /mob/living/proc/setHalLoss(var/amount)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	halloss = amount
 
 // Use this to get a mob's max health whenever possible.  Reading maxHealth directly will give inaccurate results if any modifiers exist.
@@ -347,124 +333,12 @@ default behaviour is:
 	health = (health/maxHealth) * (newMaxHealth) // Adjust existing health
 	maxHealth = newMaxHealth
 
-/mob/living/Stun(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(stunned > 0)
-		add_status_indicator("stunned")
-
-/mob/living/SetStunned(amount)
-	..()
-	if(stunned <= 0)
-		remove_status_indicator("stunned")
-	else
-		add_status_indicator("stunned")
-
-/mob/living/AdjustStunned(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(stunned <= 0)
-		remove_status_indicator("stunned")
-	else
-		add_status_indicator("stunned")
-
-/mob/living/Weaken(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(weakened > 0)
-		add_status_indicator("weakened")
-
-/mob/living/SetWeakened(amount)
-	..()
-	if(weakened <= 0)
-		remove_status_indicator("weakened")
-	else
-		add_status_indicator("weakened")
-
-/mob/living/AdjustWeakened(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(weakened <= 0)
-		remove_status_indicator("weakened")
-	else
-		add_status_indicator("weakened")
-
-/mob/living/Unconscious(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(paralysis > 0)
-		add_status_indicator("paralysis")
-
-/mob/living/SetUnconscious(amount)
-	..()
-	if(paralysis <= 0)
-		remove_status_indicator("paralysis")
-	else
-		add_status_indicator("paralysis")
-
-/mob/living/AdjustUnconscious(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(paralysis <= 0)
-		remove_status_indicator("paralysis")
-	else
-		add_status_indicator("paralysis")
-
-/mob/living/Sleeping(amount)
-	for(var/datum/modifier/M in modifiers)
-		if(!isnull(M.disable_duration_percent))
-			amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(sleeping > 0)
-		add_status_indicator("sleeping")
-
-/mob/living/SetSleeping(amount)
-	..()
-	if(sleeping <= 0)
-		remove_status_indicator("sleeping")
-	else
-		add_status_indicator("sleeping")
-
-/mob/living/AdjustSleeping(amount)
-	if(amount > 0)
-		for(var/datum/modifier/M in modifiers)
-			if(!isnull(M.disable_duration_percent))
-				amount = round(amount * M.disable_duration_percent)
-	..(amount)
-	if(sleeping <= 0)
-		remove_status_indicator("sleeping")
-	else
-		add_status_indicator("sleeping")
 
 /mob/living/Confuse(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(confused > 0)
-		add_status_indicator("confused")
-
-/mob/living/SetConfused(amount)
-	..()
-	if(confused <= 0)
-		remove_status_indicator("confused")
-	else
-		add_status_indicator("confused")
 
 /mob/living/AdjustConfused(amount)
 	if(amount > 0)
@@ -472,10 +346,6 @@ default behaviour is:
 			if(!isnull(M.disable_duration_percent))
 				amount = round(amount * M.disable_duration_percent)
 	..(amount)
-	if(confused <= 0)
-		remove_status_indicator("confused")
-	else
-		add_status_indicator("confused")
 
 /mob/living/Blind(amount)
 	for(var/datum/modifier/M in modifiers)
@@ -589,27 +459,27 @@ default behaviour is:
 /mob/living/proc/heal_organ_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
-	src.updatehealth()
+	src.update_health()
 
 // damage ONE external organ, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_organ_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/edge = 0, var/emp = 0)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
-	src.updatehealth()
+	src.update_health()
 
 // heal MANY external organs, in random order
 /mob/living/proc/heal_overall_damage(var/brute, var/burn)
 	adjustBruteLoss(-brute)
 	adjustFireLoss(-burn)
-	src.updatehealth()
+	src.update_health()
 
 // damage MANY external organs, in random order
 /mob/living/proc/take_overall_damage(var/brute, var/burn, var/used_weapon = null)
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 	adjustBruteLoss(brute)
 	adjustFireLoss(burn)
-	src.updatehealth()
+	src.update_health()
 
 /mob/living/proc/restore_all_organs()
 	return
@@ -640,9 +510,9 @@ default behaviour is:
 	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
-	SetUnconscious(0)
-	SetStunned(0)
-	SetWeakened(0)
+	set_unconscious(0)
+	set_stunned(0)
+	set_paralyzed(0)
 
 	// shut down ongoing problems
 	radiation = 0
@@ -699,65 +569,6 @@ default behaviour is:
 /mob/living/proc/handle_footstep(turf/T)
 	return FALSE
 
-/mob/living/verb/resist()
-	set name = "Resist"
-	set category = "IC"
-
-	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
-		setClickCooldown(20)
-		resist_grab()
-		if(!weakened)
-			process_resist()
-
-/mob/living/proc/process_resist()
-	//unbuckling yourself
-	if(buckled)
-		resist_buckle()
-		return TRUE
-
-	//Breaking out of a locker?
-	if(isobj(loc))
-		var/obj/C = loc
-		C.container_resist(src)
-		return TRUE
-
-	else if(canmove)
-		if(on_fire)
-			resist_fire() //stop, drop, and roll
-		else
-			resist_restraints()
-
-	else if(canmove)
-		if(on_fire)
-			resist_fire() //stop, drop, and roll
-		else
-			resist_restraints()
-
-	if(attempt_vr(src,"vore_process_resist",args))
-		return TRUE
-
-/mob/living/proc/resist_grab()
-	var/resisting = 0
-	for(var/obj/item/grab/G in grabbed_by)
-		resisting++
-		G.handle_resist()
-	if(resisting)
-		visible_message("<span class='danger'>[src] resists!</span>")
-
-/mob/living/proc/resist_fire()
-	return
-
-/mob/living/proc/resist_restraints()
-	return
-
-/mob/living/verb/lay_down()
-	set name = "Rest"
-	set category = "IC"
-
-	resting = !resting
-	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
-	update_canmove()
-
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	if(override_blindness_check || !(disabilities & SDISABILITY_NERVOUS))
@@ -802,6 +613,8 @@ default behaviour is:
 		ear_deaf = deaf
 
 /mob/living/proc/vomit(var/skip_wait, var/blood_vomit)
+	if(IS_DEAD(src))
+		return
 	if(!check_has_mouth())
 		return
 
@@ -809,11 +622,11 @@ default behaviour is:
 		lastpuke = 1
 		if(isSynthetic())
 			to_chat(src, "<span class='danger'>A sudden, dizzying wave of internal feedback rushes over you!</span>")
-			src.Weaken(5)
+			src.afflict_paralyze(20 * 5)
 		else
 			if (nutrition <= 100)
 				to_chat(src, "<span class='danger'>You gag as you want to throw up, but there's nothing in your stomach!</span>")
-				src.Weaken(10)
+				src.afflict_paralyze(20 * 10)
 			else
 				to_chat(src, "<span class='warning'>You feel nauseous...</span>")
 
@@ -840,7 +653,7 @@ default behaviour is:
 								if(!L || L.is_broken())
 									blood_vomit = 1
 
-					Stun(5)
+					afflict_stun(20 * 5)
 					src.visible_message("<span class='warning'>[src] throws up!</span>","<span class='warning'>You throw up!</span>")
 					playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 
@@ -860,43 +673,6 @@ default behaviour is:
 
 		spawn(350)
 			lastpuke = 0
-
-/mob/living/update_canmove()
-	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
-	if(restrained())
-		stop_pulling()
-		drop_all_held_items()
-	// End
-	if(!resting && cannot_stand() && can_stand_overridden())
-		lying = 0
-		canmove = 1
-	else
-		if(buckled)
-			lying = buckled.buckle_lying(src)
-		else
-			lying = incapacitated(INCAPACITATION_KNOCKDOWN)
-			canmove = !incapacitated(INCAPACITATION_DISABLED)
-
-	if(lying)
-		density = FALSE
-		drop_all_held_items()
-		for(var/obj/item/holder/H in get_mob_riding_slots())
-			drop_item_to_ground(H)
-		update_water() // Submerges the mob.
-	else
-		density = initial(density)
-
-	for(var/obj/item/grab/G in grabbed_by)
-		if(G.state >= GRAB_AGGRESSIVE)
-			canmove = FALSE
-			break
-
-	if(lying != lying_prev)
-		lying_prev = lying
-		update_transform()
-		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_LYING, lying)
-
-	return canmove
 
 // Mob holders in these slots will be spilled if the mob goes prone.
 /mob/living/proc/get_mob_riding_slots()
@@ -954,8 +730,8 @@ default behaviour is:
 	var/matrix/M = matrix()
 	M.Scale(desired_scale_x, desired_scale_y)
 	M.Translate(0, 16*(desired_scale_y-1))
+	update_ssd_overlay()
 	animate(src, transform = M, time = 10)
-	handle_status_indicators()
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.
@@ -1048,7 +824,7 @@ default behaviour is:
 		return DIZZY
 	else if (confused)
 		return DIZZY
-	else if (sleeping)
+	else if (!IS_CONSCIOUS(src))
 		return UNDERWATER
 	else
 		return ..()

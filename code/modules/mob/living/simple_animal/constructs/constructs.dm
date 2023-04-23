@@ -27,7 +27,7 @@
 	a_intent = INTENT_HARM
 	stop_automated_movement = 1
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 
 	universal_speak = 0
 	universal_understand = 1
@@ -452,7 +452,7 @@
 
 		silence_spells(purge)
 
-/mob/living/simple_animal/construct/updatehealth() //Special icons.
+/mob/living/simple_animal/construct/update_health() //Special icons.
 	health = getMaxHealth() - getToxLoss() - getFireLoss() - getBruteLoss()
 
 	//Alive, becoming dead

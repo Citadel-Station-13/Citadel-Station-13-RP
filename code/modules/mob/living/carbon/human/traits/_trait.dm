@@ -13,7 +13,7 @@
 	/// Trait only available for custom species.
 	var/custom_only = TRUE
 
-	/// list of TRAIT_*'s to apply, using ROUNDSTART_TRAIT
+	/// list of TRAIT_*'s to apply, using QUIRK_TRAIT
 	var/list/traits
 
 /// Proc can be overridden lower to include special changes, make sure to call up though for the vars changes
@@ -21,7 +21,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	for(var/trait in traits)
-		ADD_TRAIT(H, trait, ROUNDSTART_TRAIT)
+		ADD_TRAIT(H, trait, QUIRK_TRAIT)
 
 	// todo: why does this depend on species? screw you, this is awful
 	ASSERT(S)

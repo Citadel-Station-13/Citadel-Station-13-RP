@@ -235,8 +235,8 @@
 /mob/living/bot/mulebot/Bump(var/mob/living/M)
 	if(!safety && istype(M))
 		visible_message("<span class='warning'>[src] knocks over [M]!</span>")
-		M.Stun(8)
-		M.Weaken(5)
+		M.afflict_stun(20 * 8)
+		M.afflict_paralyze(20 * 5)
 	..()
 
 /mob/living/bot/mulebot/proc/runOver(var/mob/living/M)

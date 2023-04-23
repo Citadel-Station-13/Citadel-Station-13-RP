@@ -292,7 +292,7 @@
 			else
 				mmi.brainmob.languages = languages
 			mmi.brainmob.remove_language("Robot Talk")
-			mind.transfer_to(mmi.brainmob)
+			mind.transfer(mmi.brainmob)
 		else if(!shell) // Shells don't have brainmbos in their MMIs.
 			to_chat(src, "<span class='danger'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
 			ghostize()
@@ -591,7 +591,7 @@
 		if (WT.remove_fuel(0))
 			user.setClickCooldown(user.get_attack_speed(WT))
 			adjustBruteLoss(-30)
-			updatehealth()
+			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
@@ -607,7 +607,7 @@
 		if (coil.use(1))
 			user.setClickCooldown(user.get_attack_speed(W))
 			adjustFireLoss(-30)
-			updatehealth()
+			update_health()
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
 
@@ -782,7 +782,7 @@
 			visible_message( \
 				SPAN_DANGER("[src] is trying to break their [bolt]!"), \
 				SPAN_WARNING("You attempt to break your [bolt]. (This will take around 90 seconds and you need to stand still)"))
-			if(do_after(src, 1.5 MINUTES, src, incapacitation_flags = INCAPACITATION_DISABLED))
+			if(do_after(src, 1.5 MINUTES, src, mobility_flags = MOBILITY_CAN_RESIST))
 				visible_message( \
 					SPAN_DANGER("[src] manages to break \the [bolt]!"), \
 					SPAN_WARNING("You successfully break your [bolt]."))
@@ -892,11 +892,6 @@
 		if(req in access_found) //have one of the required accesses
 			return 1
 	return 0
-
-/mob/living/silicon/robot/update_canmove()
-	. = ..()
-	updateicon()
-
 
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
@@ -1170,8 +1165,9 @@
 	lawupdate = 0
 	lockcharge = 0
 	lockdown = 0
-	canmove = 1
 	scrambledcodes = 1
+	update_stat(update_mobility = FALSE)
+	update_mobility()
 	//Disconnect it's camera so it's not so easily tracked.
 	if(src.camera)
 		src.camera.clear_all_networks()
@@ -1195,7 +1191,7 @@
 		state = 1
 	lockdown = state
 	lockcharge = state
-	update_canmove()
+	update_mobility()
 
 /mob/living/silicon/robot/mode()
 	set name = "Activate Held Object"

@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 		return
 	if(message)
 		to_chat(src, SPAN_NOTICE(message))
-	mind.transfer_to(mainframe)
+	mind.transfer(mainframe)
 	deployed = FALSE
 	updateicon()
 	mainframe.teleop = null

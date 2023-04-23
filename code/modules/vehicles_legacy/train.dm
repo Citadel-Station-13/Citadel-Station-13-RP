@@ -106,7 +106,7 @@
 	return 1
 
 /obj/vehicle_old/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE)))
 		return
 	if(istype(C,/obj/vehicle_old/train))
 		latch(C, user)
@@ -138,7 +138,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !Adjacent(usr))
 		return
 
 	unattach(usr)
@@ -204,7 +204,7 @@
 
 	if(dir == T_dir) 	//if car is ahead
 		src.attach_to(T, user)
-	else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
+	else if(global.reverse_dir[dir] == T_dir)	//else if car is behind
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train

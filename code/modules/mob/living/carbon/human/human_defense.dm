@@ -4,7 +4,6 @@ Contains most of the procs that are called when a mob is attacked by something
 bullet_act
 legacy_ex_act
 meteor_act
-emp_act
 
 */
 
@@ -360,7 +359,7 @@ emp_act
 		var/obj/O = AM
 
 		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
-			if(canmove && !restrained())
+			if(CHECK_ALL_MOBILITY(src, MOBILITY_CAN_USE | MOBILITY_CAN_PICKUP))
 				if(isturf(O.loc))
 					if(can_catch(O))
 						put_in_active_hand(O)

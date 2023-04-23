@@ -31,9 +31,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.icon_state = icon_state
 	if(T.icon != icon)
 		T.icon = icon
-	if(color)
-		T.atom_colours = atom_colours.Copy()
-		T.update_atom_colour()
+	T.copy_atom_colour(src)
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
@@ -201,14 +199,14 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 // todo: zas refactor
 /turf/simulated/ChangeTurf(path, list/new_baseturfs, flags)
+	// invalidate zone
+	if(has_valid_zone())
+		if(can_safely_remove_from_zone())
+			zone.remove(src)
+			queue_zone_update()
+		else
+			zone.rebuild()
 	if((flags & CHANGETURF_INHERIT_AIR) && ispath(path, /turf/simulated))
-		// invalidate zone
-		if(has_valid_zone())
-			if(can_safely_remove_from_zone())
-				zone.remove(src)
-				queue_zone_update()
-			else
-				zone.rebuild()
 		// store air
 		var/datum/gas_mixture/GM = remove_cell_volume()
 		. = ..()
@@ -219,14 +217,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		// restore air
 		air = GM
 	else
-		// if we're not doing so,
-		if(has_valid_zone())
-			// remove and rebuild zone
-			if(can_safely_remove_from_zone())
-				zone.remove(src)
-				queue_zone_update()
-			else
-				zone.rebuild()
 		// at this point the zone does not have our gas mixture in it, and is invalidated
 		. = ..()
 		if(!.)

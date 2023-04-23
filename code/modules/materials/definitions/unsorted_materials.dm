@@ -325,7 +325,7 @@
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
-		if(check_window.is_fulltile())
+		if(check_window.fulltile)
 			possible_directions -= GLOB.cardinal
 		else
 			possible_directions -= check_window.dir

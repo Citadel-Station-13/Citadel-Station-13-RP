@@ -18,11 +18,10 @@
  * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
  */
 /datum/species
-	/// Abstract type.
 	abstract_type = /datum/species
-	/////////////////////////////////////////////////////////////
-	//// Basic info, should always be at the top of the file ////
-	/////////////////////////////////////////////////////////////
+
+	//? Intrinsic Information
+
 	/// uid - **must be unique** - Identifies the exact species you are using
 	var/uid
 	/// id usually identical to uid, if we are a subspecies we use the parent species id/uid here
@@ -41,7 +40,7 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
-	//// Additional info
+	//? Additional info
 	/// what you see on tooltip/examine
 	var/examine_name
 	/// what you see on health analyzers/IC
@@ -55,16 +54,14 @@
 	/// descriptors - Bay's height and fitness difference system
 	var/list/descriptors = list()
 
-	//// Gender stuff
+	//? Gender stuff
 	var/list/genders = list(MALE, FEMALE)
 	/// If true, people examining a member of this species whom are not also the same species will see them as gender neutral.	Because aliens.
 	var/ambiguous_genders = FALSE
-
 	/// Organ tag where they are located if they can be kicked for increased pain.
 	var/sexybits_location = BP_GROIN // Come on... You know it's there for most of them.
 
-	//// HUD
-	//! ## HUD data vars.
+	//? HUD
 	var/datum/hud_data/hud
 	var/hud_type
 	/// This modifies how intensely the health hud is colored.
@@ -72,7 +69,7 @@
 	/// do we have a species statpanel?
 	var/species_statpanel = FALSE
 
-	//// Icons
+	//? Icons
 	/// Normal icon set.
 	var/icobase      = 'icons/mob/species/human/body.dmi'
 	/// Mutated icon set.
@@ -83,15 +80,22 @@
 	var/husk_icon    = 'icons/mob/species/default_husk.dmi'
 	/// Used for mob icon generation for non-32x32 species.
 	var/icon_template = 'icons/mob/species/template.dmi'
+	/// Makes the icon wider/thinner.
+	var/icon_scale_x = 1
+	/// Makes the icon taller/shorter.
+	var/icon_scale_y = 1
+	/// Used for offsetting large icons.
+	var/pixel_offset_x = 0
+	/// Used for offsetting large icons.
+	var/pixel_offset_y = 0
 
-	//// Overlays
+	//? Overlays
 	/// Used by changelings. Should also be used for icon previews.
 	var/base_color
 	/// This is used in character setup preview generation (prefences_setup.dm) and human mob rendering (update_icons.dm)
 	var/color_mult = 0
 	/// force non greyscale icons to greyscale before multiplying? WARNING :CITADEL JANK, REPLACE ASAP
 	var/color_force_greyscale = FALSE
-
 	var/damage_overlays = 'icons/mob/species/human/damage_overlay.dmi'
 	var/damage_mask     = 'icons/mob/species/human/damage_mask.dmi'
 	var/blood_mask      = 'icons/mob/species/human/blood_mask.dmi'
@@ -100,22 +104,11 @@
 	/// Icons used for worn items in suit storage slot.
 	var/suit_storage_icon = 'icons/mob/clothing/belt_mirror.dmi'
 
-	//// Scale
-	/// Makes the icon wider/thinner.
-	var/icon_scale_x = 1
-	/// Makes the icon taller/shorter.
-	var/icon_scale_y = 1
-	//// Offset
-	/// Used for offsetting large icons.
-	var/pixel_offset_x = 0
-	/// Used for offsetting large icons.
-	var/pixel_offset_y = 0
-
-	//// Alternate appearance
+	//? Alternate appearance
 	/// The basic skin colours this species uses.
 	var/list/base_skin_colours
 
-	//// Tail
+	//? Tail
 	/// Name of tail state in species effects icon file.
 	var/tail
 	/// If set, the icon to obtain tail animation states from.
@@ -124,13 +117,13 @@
 	/// This is for overriding tail rendering with a specific icon in icobase, for static tails only, since tails would wag when dead if you used this.
 	var/icobase_tail = 0
 
-	//// Wing
+	//? Wing
 	var/wing_hair
 	var/wing
 	var/wing_animation
 	var/icobase_wing
 
-	//// Organs
+	//? Organs
 	/// Determines the organs that the species spawns with and which required-organ checks are conducted.
 	var/list/has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,
@@ -158,11 +151,11 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right)
 	)
 
-	//// Speech
+	//? Speech
 	/// Part of icon_state to use for speech bubbles when talking.	See talk.dmi for available icons.
 	var/speech_bubble_appearance = "normal"
 
-	//// Sounds
+	//? Sounds
 	var/scream_verb = "screams"
 	var/male_scream_sound   = list('sound/voice/screams/sound_voice_scream_scream_m1.ogg', 'sound/voice/screams/sound_voice_scream_scream_m2.ogg')
 	var/female_scream_sound = list('sound/voice/screams/sound_voice_scream_scream_f1.ogg', 'sound/voice/screams/sound_voice_scream_scream_f2.ogg', 'sound/voice/screams/sound_voice_scream_scream_f3.ogg')
@@ -176,13 +169,13 @@
 	/// The likelihood of a speech sound playing.
 	var/list/speech_chance = list()
 
-	//// Age
+	//? Age
 	/// The minimum age a species is allowed to be played as. For our purposes, this is global.
 	var/min_age = 18
 	/// The maximum age a species is allowed to be played as. This is generally determined by lifespan.
 	var/max_age = 70
 
-	//// Languages
+	//? Languages
 	/// default language used when speaking - typepaths are allowed
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
@@ -201,7 +194,7 @@
 	/// This list is a guess at things that no one other than the parent species should be able to speak
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	//// Cultures
+	//? Cultures
 	/// default origin
 	var/default_origin = /datum/lore/character_background/origin/custom
 	/// default citizenship
@@ -213,7 +206,7 @@
 	/// default culture
 	var/default_culture = /datum/lore/character_background/culture/custom
 
-	//// Flags
+	//? Flags
 	/// Various specific features.
 	var/species_flags = NONE
 	/// Flags that specify who can spawn as this species
@@ -239,8 +232,7 @@
 
 	var/pass_flags = 0
 
-
-	//// Stats
+	//? Stats
 	/// Point at which the mob will enter crit.
 	var/total_health = 100
 	/// Physical damage multiplier.
@@ -265,7 +257,7 @@
 	var/siemens_coefficient = 1
 	var/virus_immune
 
-	//// Blood
+	//? Blood
 	/// What marks are left when walking
 	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints
 
@@ -301,7 +293,7 @@
 	/// Can eat some mobs. 1 for mice, 2 for monkeys, 3 for people.
 	var/gluttonous
 
-	//// Sight
+	//? Sight
 	/// Native darksight distance.
 	var/darksight = 2
 	/// Permanent weldervision.
@@ -311,7 +303,7 @@
 	/// If set, the species will be affected by flashbangs regardless if they have eyes or not, as they see in large areas.
 	var/dispersed_eyes
 
-	//// Attacks
+	//? Attacks
 	/// Possible unarmed attacks that the mob will use in combat,
 	var/list/unarmed_types = list(
 		/datum/unarmed_attack,
@@ -320,12 +312,15 @@
 	/// For empty hand harm-intent attack
 	var/list/unarmed_attacks = null
 
+	//? Abilities + Legacy Verbs / Spells
+	/// abilities - typepaths, new'd on init.
+	var/list/datum/ability/abilities
 	/// Species-specific verbs.
 	var/list/inherent_verbs = list()
 	/// Species-specific spells.
 	var/list/inherent_spells = list()
 
-	//// Movement
+	//? Movement
 	/// Passive movement speed malus (or boost, if negative)
 	var/slowdown = 0
 	/// How much faster or slower the species is in water
@@ -335,17 +330,17 @@
 	/// How affected by item slowdown the species is.
 	var/item_slowdown_mod = 1
 
-	//// Special condition
+	//? Special condition
 	/// Multiplier for 'Regenerate' power speed, in human_powers.dm
 	var/active_regen_mult = 1
 	/// If set, mob will be damaged in light over this value and heal in light below its negative.
 	var/light_dam
 
-	//// Special Traits
+	//? Special Traits
 	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
 	var/is_cyberpsycho = FALSE // If you turn this to true, the person's capacity stat decreases. (aka - Their symptoms worsen)
 
-	//// Breath
+	//? Breath
 	/// Non-oxygen gas breathed, if any.
 	var/breath_type = /datum/gas/oxygen
 	/// Poisonous air.
@@ -358,7 +353,7 @@
 	/// Species will gain this much temperature every second
 	var/passive_temp_gain = 0
 
-	//// Cold Air
+	//? Cold Air
 	/// Cold damage level 1 below this point.
 	var/cold_level_1 = 260
 	/// Cold damage level 2 below this point.
@@ -381,7 +376,7 @@
 		"Your chilly flesh stands out in goosebumps."
 	)
 
-	//// Hot Air
+	//? Hot Air
 	/// Heat damage level 1 above this point.
 	var/heat_level_1 = 360
 	/// Heat damage level 2 above this point.
@@ -404,7 +399,7 @@
 		"Your skin prickles in the heat."
 	)
 
-	//// Pressure
+	//? Pressure
 	/// Dangerously high pressure.
 	var/hazard_high_pressure = HAZARD_HIGH_PRESSURE
 	/// High pressure warning.
@@ -420,7 +415,7 @@
 	/// Minimum required pressure for breath, in kPa
 	var/minimum_breath_pressure = 16
 
-	//// Custom species stuff
+	//? Custom species stuff
 	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.
 	var/base_species = null // Unused outside of a few species
@@ -430,13 +425,17 @@
 	/// traits
 	var/list/traits = list()
 
-	//// Misc
+	//? Misc
 	var/mob_size = MOB_MEDIUM
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
 
-	//// on death drops
+	//? Traits
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+
+	//? on death drops
 	/// The color of the species flesh.
 	var/flesh_color = "#FFC896"
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
@@ -445,7 +444,7 @@
 	var/exotic_type = /obj/item/stack/sinew
 	var/remains_type = /obj/effect/decal/remains/xeno
 
-	//// Dying
+	//? Dying
 	var/gibbed_anim = "gibbed-h"
 	var/dusted_anim = "dust-h"
 	var/death_sound
@@ -453,7 +452,7 @@
 	var/knockout_message = "has been knocked unconscious!"
 	var/cloning_modifier = /datum/modifier/cloning_sickness
 
-	//// Primitive species
+	//? Primitive species
 	/// Lesser form, if any (ie. monkey for humans)
 	var/primitive_form
 	/// Greater form, if any, ie. human for monkeys.
@@ -461,11 +460,9 @@
 	/// Can use small items.
 	var/has_fine_manipulation = TRUE
 
-	////// OLD Vars
-
+	//? OLD Vars
 	/// Whether the species can infect wounds, only works with claws / bites
 	var/infect_wounds = 0
-
 
 /datum/species/New()
 	if(hud_type)
@@ -494,6 +491,16 @@
 		if(!inherent_verbs)
 			inherent_verbs = list()
 		inherent_verbs |= /mob/living/carbon/human/proc/regurgitate
+
+	if(abilities)
+		var/list/built = list()
+		for(var/path in abilities)
+			if(istype(path, /datum/ability))
+				built += path
+			else if(!ispath(path))
+				continue
+			built += new path
+		abilities = built
 
 /**
  * called when we apply to a mob
@@ -524,6 +531,12 @@
 		var/datum/trait/T = all_traits[name]
 		T.apply(src, H)
 
+	for(var/trait in mob_traits)
+		ADD_TRAIT(H, trait, SPECIES_TRAIT)
+
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(H)
+
 /**
  * called when we are removed from a mob
  */
@@ -541,6 +554,12 @@
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
 		T.remove(src, H)
+
+	for(var/trait in mob_traits)
+		REMOVE_TRAIT(H, trait, SPECIES_TRAIT)
+
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(H)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)
@@ -769,9 +788,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat == CONSCIOUS && H.ai_holder)
 		if(H.resting)
-			H.resting = FALSE
-			H.update_canmove()
-	return
+			H.set_intentionally_resting(FALSE)
 
 // Called when lying down on a water tile.
 /datum/species/proc/can_breathe_water()

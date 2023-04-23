@@ -27,6 +27,8 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	hook_vr("mob_new",list(src))
+	// abilities
+	init_abilities()
 	// inventory
 	init_inventory()
 	// rendering
@@ -39,10 +41,12 @@
 	init_physiology()
 	// movespeed
 	update_movespeed(TRUE)
+	update_config_movespeed()
 	// actionspeed
 	initialize_actionspeed()
-	. = ..()
-	update_config_movespeed()
+	// ssd overlay
+	update_ssd_overlay()
+	return ..()
 
 /**
  * Delete a mob
@@ -67,6 +71,12 @@
  * Returns QDEL_HINT_HARDDEL (don't change this)
  */
 /mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
+	// status effects
+	for(var/id in status_effects)
+		var/datum/status_effect/effect = status_effects[id]
+		qdel(effect)
+	status_effects = null
+	// mob lists
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
@@ -80,8 +90,18 @@
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
-	if(mind && mind.current == src)
-		spellremove(src)
+	// mind
+	if(!isnull(mind))
+		if(mind.current == src)
+			// mind is ours, let it disassociate
+			// todo: legacy spell
+			spellremove(src)
+			mind?.disassociate()
+		else
+			// mind is not ours, null it out
+			mind = null
+	// abilities
+	dispose_abilities()
 	// this kicks out client
 	ghostize()
 	if(hud_used)
@@ -154,32 +174,36 @@
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
 /mob/show_message(msg, type, alt, alt_type)
+	if(!client && !teleop)
+		return
 
-	if(!client && !teleop)	return
+	if(!saycode_type_eligible(type))
+		if(alt && saycode_type_eligible(alt_type))
+			msg = alt
+			type = alt_type
+		else
+			return
 
-	if (type)
-		if((type & 1) && (is_blind() || paralysis) )//Vision related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-		if ((type & 2) && is_deaf())//Hearing related
-			if (!( alt ))
-				return
-			else
-				msg = alt
-				type = alt_type
-				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
-					return
-	// Added voice muffling for Issue 41.
-	if(stat == UNCONSCIOUS || sleeping > 0)
+	if(IS_ALIVE_BUT_UNCONSCIOUS(src))
 		to_chat(src,"<I>... You can almost hear someone talking ...</I>", type = MESSAGE_TYPE_LOCALCHAT)
 	else
 		to_chat(src,msg, type = MESSAGE_TYPE_LOCALCHAT)
 		if(teleop)
 			to_chat(teleop, create_text_tag("body", "BODY:", teleop) + "[msg]", type = MESSAGE_TYPE_LOCALCHAT)
-	return
+
+/mob/proc/saycode_type_eligible(type)
+	switch(type)
+		if(SAYCODE_TYPE_VISIBLE)
+			return !is_blind()
+		if(SAYCODE_TYPE_AUDIBLE)
+			return !is_deaf()
+		if(SAYCODE_TYPE_CONSCIOUS)
+			return IS_CONSCIOUS(src)
+		if(SAYCODE_TYPE_LIVING)
+			return !IS_DEAD(src)
+		if(SAYCODE_TYPE_ALWAYS)
+			return TRUE
+	return TRUE
 
 /**
  * Show a message to all mobs in earshot of this one
@@ -237,17 +261,14 @@
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
 
-/mob/proc/cannot_stand()
-	return incapacitated(INCAPACITATION_KNOCKDOWN)
-
 /mob/proc/incapacitated(var/incapacitation_flags = INCAPACITATION_DEFAULT)
-	if ((incapacitation_flags & INCAPACITATION_STUNNED) && stunned)
+	if ((incapacitation_flags & INCAPACITATION_STUNNED) && !CHECK_MOBILITY(src, MOBILITY_CAN_USE))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && (weakened || resting))
+	if ((incapacitation_flags & INCAPACITATION_FORCELYING) && !CHECK_MOBILITY(src, MOBILITY_IS_STANDING))
 		return 1
 
-	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && (stat || paralysis || sleeping || (status_flags & FAKEDEATH)))
+	if ((incapacitation_flags & INCAPACITATION_KNOCKOUT) && !CHECK_MOBILITY(src, MOBILITY_IS_CONSCIOUS))
 		return 1
 
 	if((incapacitation_flags & INCAPACITATION_RESTRAINED) && restrained())
@@ -745,10 +766,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
-/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
-/mob/proc/can_stand_overridden()
-	return 0
-
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
@@ -889,11 +906,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/proc/updateicon()
 	return
-
-/// Please always use this proc, never just set the var directly.
-/mob/proc/set_stat(var/new_stat)
-	. = (stat != new_stat)
-	stat = new_stat
 
 /mob/verb/face_direction()
 
@@ -1119,7 +1131,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return TRUE
 
-//! Pixel Offsets
+//? Pixel Offsets
+
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
 		return 0
@@ -1186,20 +1199,54 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	pixel_y += val
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
-//! Reachability
+//? Reachability
+
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
 
-//! Radioactivity
+//? Radioactivity
+
 /mob/clean_radiation(str, mul, cheap)
 	. = ..()
 	if(cheap)
 		return
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
+
+//? Abilities
+
+/mob/proc/init_abilities()
+	var/list/built = list()
+	var/list/registering = list()
+	for(var/datum/ability/ability_path as anything in abilities)
+		if(istype(ability_path))
+			built += ability_path // don't re-associate existing ones.
+		else if(ispath(ability_path, /datum/ability))
+			registering += new ability_path
+	abilities = built
+	for(var/datum/ability/ability as anything in registering)
+		ability.associate(src)
+
+/mob/proc/dispose_abilities()
+	for(var/datum/ability/ability in abilities)
+		ability.disassociate(src)
+	abilities = null
+
+/**
+ * mob side registration of abilities. must be called from /datum/ability/proc/associate!
+ */
+/mob/proc/register_ability(datum/ability/ability)
+	LAZYINITLIST(abilities)
+	abilities += ability
+
+/**
+ * mob side unregistration of abilities. must be called from /datum/ability/proc/disassociate!
+ */
+/mob/proc/unregister_ability(datum/ability/ability)
+	LAZYREMOVE(abilities, ability)
 
 //! Misc
 /**
@@ -1210,7 +1257,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
  * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
  * need_hands - Whether you need hands to use this
- * floor_okay - Whether mobility flags should be checked for MOBILITY_UI to use.
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_CAN_UI to use.
  */
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return

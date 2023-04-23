@@ -16,7 +16,7 @@
 	var/slowdown = 1			//people said this was too fast. meh.
 
 	see_in_dark = 7
-	status_flags = GODMODE
+	status_flags = STATUS_GODMODE
 	plane = PLANE_AI_EYE
 
 	var/mob/owner = null

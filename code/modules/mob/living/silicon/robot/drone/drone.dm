@@ -269,8 +269,8 @@
 //DRONE LIFE/DEATH
 
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.
-/mob/living/silicon/robot/drone/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/robot/drone/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = maxHealth
 		set_stat(CONSCIOUS)
 		return
@@ -345,7 +345,7 @@
 	src.ckey = player.ckey
 
 	if(player.mob && player.mob.mind)
-		player.mob.mind.transfer_to(src)
+		player.mob.mind.transfer(src)
 
 	lawupdate = 0
 	to_chat(src, "<b>Systems rebooted</b>. Loading base pattern maintenance protocol... <b>loaded</b>.")

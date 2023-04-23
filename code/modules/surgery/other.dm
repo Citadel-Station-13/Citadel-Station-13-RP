@@ -341,7 +341,6 @@
 	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
 	target.op_stage.dehusk = 0
 	target.mutations.Remove(MUTATION_HUSK)
-	target.status_flags &= ~DISFIGURED
 	target.update_icons_body()
 	..()
 

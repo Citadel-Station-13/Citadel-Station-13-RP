@@ -277,8 +277,6 @@
 		dat += "<span style='[toxcolor]'>\t-Toxin Content %: [patient.getToxLoss()]</span><BR>"
 		dat += "<span style='[burncolor]'>\t-Burn Severity %: [patient.getFireLoss()]</span><BR>"
 
-		if(round(patient.paralysis / 4) >= 1)
-			dat += text("<HR>Patient paralyzed for: []<BR>", round(patient.paralysis / 4) >= 1 ? "[round(patient.paralysis / 4)] seconds" : "None")
 		if(patient.getBrainLoss())
 			dat += "<div class='line'><span class='average'>Significant brain damage detected.</span></div><br>"
 		if(patient.getCloneLoss())
@@ -521,7 +519,7 @@
 		var/volume = 0
 		for(var/mob/living/T in (touchable_items))
 			touchable_items -= T //Exclude mobs from loose item picking.
-			if((T.status_flags & GODMODE) || !T.digestable)
+			if((T.status_flags & STATUS_GODMODE) || !T.digestable)
 				items_preserved |= T
 			else
 				var/old_brute = T.getBruteLoss()
@@ -636,10 +634,10 @@
 		update_patient()
 		if(patient.health < 0)
 			patient.adjustOxyLoss(-1) //Heal some oxygen damage if they're in critical condition
-			patient.updatehealth()
+			patient.update_health()
 			drain()
-		patient.AdjustStunned(-4)
-		patient.AdjustWeakened(-4)
+		patient.adjust_stunned(20 * -4)
+		patient.adjust_paralyzed(20 * -4)
 		drain(1)
 		return
 

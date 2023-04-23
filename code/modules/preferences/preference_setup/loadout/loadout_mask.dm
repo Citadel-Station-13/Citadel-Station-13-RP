@@ -57,3 +57,7 @@
 /datum/gear/mask/fox
 	name = "Fox mask" //capitalisation because everything else here is capitalised
 	path = /obj/item/clothing/mask/gas/fox
+
+/datum/gear/mask/opaque
+	name = "Opaque Mask"
+	path = /obj/item/clothing/mask/gas/opaque
