@@ -63,8 +63,7 @@
 				else
 					hood.atom_flags &= ~PHORONGUARD
 				hood.set_armor(armor)
-				hood.atom_colours = atom_colours?.Copy()
-				hood.update_atom_colour()
+				hood.copy_atom_colour(src)
 				// equip after armor / color changes
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				hood_up = TRUE

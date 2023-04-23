@@ -5,6 +5,7 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
+	atom_colouration_system = TRUE
 
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = CAN_BE_HIT

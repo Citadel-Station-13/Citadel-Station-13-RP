@@ -16,6 +16,7 @@
 	desc = "A pneumatic waste disposal unit."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "disposal"
+	atom_colouration_system = FALSE
 	anchored = TRUE
 	density = TRUE
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
