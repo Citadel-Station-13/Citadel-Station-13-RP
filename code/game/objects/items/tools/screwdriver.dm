@@ -184,7 +184,7 @@
 	icon_state = "crystal_screwdriver"
 	item_state = "crystal_tool"
 	icon = 'icons/obj/crystal_tools.dmi'
-	materials =s = list(MATERIAL_CRYSTAL = 1250)
+	materials = list(MATERIAL_CRYSTAL = 1250)
 	tool_speed = 0.2
 
 /obj/item/tool/screwdriver/crystal/Initialize()

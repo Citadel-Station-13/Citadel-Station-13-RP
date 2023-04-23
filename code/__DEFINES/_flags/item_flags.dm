@@ -17,7 +17,7 @@
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
-/// don't allow lathe deconstruction
+/// don't allow easy lathe deconstruction
 #define ITEM_NO_LATHE_DECONSTRUCT (1<<9)
 
 DEFINE_BITFIELD(item_flags, list(

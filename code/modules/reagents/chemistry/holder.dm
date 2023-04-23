@@ -220,12 +220,12 @@
 				return 0
 	return 0
 
-/datum/reagents/proc/has_all_reagents(list/check_reagents)
+/datum/reagents/proc/has_all_reagents(list/check_reagents, multiplier = 1)
 	//this only works if check_reagents has no duplicate entries... hopefully okay since it expects an associative list
 	var/missing = check_reagents.len
 	for(var/datum/reagent/current in reagent_list)
 		if(current.id in check_reagents)
-			if(current.volume >= check_reagents[current.id])
+			if(current.volume >= check_reagents[current.id] * multiplier)
 				missing--
 	return !missing
 

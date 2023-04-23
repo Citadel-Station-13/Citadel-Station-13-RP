@@ -18,14 +18,6 @@
 
 #warn  wires?
 
-	var/datum/wires/autolathe/wires = null
-
-/obj/machinery/autolathe/Initialize(mapload)
-	. = ..()
-	if(!autolathe_recipes)
-		autolathe_recipes = new()
-	wires = new(src)
-
 /obj/machinery/autolathe/Destroy()
 	QDEL_NULL(wires)
 	return ..()
@@ -52,7 +44,6 @@
 	if(busy)
 		to_chat(user, SPAN_NOTICE("\The [src] is busy. Please wait for completion of previous operation."))
 		return
-
 
 	if(panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
@@ -159,18 +150,7 @@
 			busy = making.name
 			update_use_power(USE_POWER_ACTIVE)
 
-			//Check if we still have the materials.
-			var/coeff = (making.no_scale ? 1 : mat_efficiency) //Stacks are unaffected by production coefficient
-			for(var/material in making.resources)
-				if(!isnull(stored_material[material]))
-					if(stored_material[material] < round(making.resources[material] * coeff) * multiplier)
-						return
-
-			//Consume materials.
-			for(var/material in making.resources)
-				if(!isnull(stored_material[material]))
-					stored_material[material] = max(0, stored_material[material] - round(making.resources[material] * coeff) * multiplier)
-
+			// ...
 			update_icon() //So lid closes
 
 			sleep(build_time)

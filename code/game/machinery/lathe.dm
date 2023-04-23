@@ -23,8 +23,10 @@
 
 	/// icon state when printing, if any
 	var/active_icon_state
-	/// icon state to flick when inserting sheets, if any
+	/// icon state to flick when inserting sheets
 	var/insert_icon_state
+	/// specific icon states for specific materials
+	var/list/insert_icon_state_specific
 	/// icon state to flick when recycling, if any
 	var/recycle_icon_state
 
@@ -82,6 +84,8 @@
 /obj/machinery/lathe/Initialize(mapload)
 	. = ..()
 	create_storages()
+	if(!isnull(insert_icon_state_specific))
+		insert_icon_state_specific = typelist(NAMEOF(src, insert_icon_state_specific), insert_icon_state_specific)
 
 /obj/machinery/lathe/Destroy()
 	delete_storages()
@@ -132,9 +136,21 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(istype(I, /obj/item/stack/material))
-		#warn insert
+		var/used = stored_materials.insert_sheets(I)
+		var/obj/item/stack/material/M = I
+		if(used)
+			user.action_feedback(SPAN_NOTICE("You insert [used] sheets of [I]."), src)
+		else
+			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
+		if(insert_icon_state_specific?[M.material.id])
+			flick(insert_icon_state_specific[M.materia.id], src)
+		else if(insert_icon_state)
+			flick(insert_icon_state, src)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(I, /obj/item/reagent_containers))
 		#warn insert
+	else if(isitem(I))
+		#warn insert?
 	return ..()
 
 /obj/machinery/lathe/proc/create_storages()
@@ -168,19 +184,37 @@
 /obj/machinery/lathe/proc/has_capabilities_for(datum/design/instance)
 	return lathe_type & instance.lathe_type
 
-/obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts)
-	if(!stored_materials.has(instance.materials))
+/obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/item_parts)
+	if(!stored_materials.has(instance.materials, efficiency_multiplier))
 		return FALSE
-	#warn variable material parts
-	#warn reagents
+	if(!stored_reagents.has_all_reagents(instance.reagents, efficiency_multiplier))
+		return FALSE
 	#warn items
 	return TRUE
 
-/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts)
-	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts)
+/obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/items, multiplier = efficiency_multiplier)
+	stored_materials.use(materials, multiplier)
+	for(var/key in reagents)
+		stored_reagents.remove_reagent(key, reagents[key] * multiplier)
+	for(var/obj/item/I as anything in items)
+		if(I.loc != src)
+			continue // moved
+		qdel(src)
 
-/obj/machinery/lathe/proc/do_print(datum/design/instance, list/material_parts)
-	return instance.lathe_print(drop_location(), material_parts, src)
+/obj/machinery/lathe/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(isitem(AM) && (AM in stored_items))
+		stored_items -= AM
+
+/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts, list/item_parts)
+	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts, item_parts)
+
+/obj/machinery/lathe/proc/do_print(datum/design/instance, list/material_parts, list/item_parts)
+	var/list/materials_used = instance.materials.Copy()
+	for(var/key in material_parts)
+		materials_used[material_parts[key]] += instance.material_parts[key]
+	use_resources(materials_used, instance.reagents, item_parts)
+	. = instance.lathe_print(drop_location(), material_parts, item_parts, src)
 
 /obj/machinery/lathe/process(delta_time)
 
@@ -188,14 +222,26 @@
 	#warn impl
 
 /obj/machinery/lathe/proc/reconsider_queue()
+	if(!length(queue))
+		stop_printing()
+		return
+
 	#warn impl
+
+/obj/machinery/lathe/proc/start_printing()
+	#warn impl
+	update_use_power(USE_POWER_ACTIVE)
+
+/obj/machinery/lathe/proc/stop_printing()
+	#warn impl
+	update_use_power(USE_POWER_IDLE)
 
 /**
  * enqueues an instance with given material_parts
  *
  * amount variable is reserved but unused at this given time.
  */
-/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts)
+/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/item_parts)
 	#warn amount inject check
 	if(length(queue) >= queue_max)
 		return FALSE
@@ -274,3 +320,5 @@
 	var/amount = 1
 	/// material parts to use, key to id
 	var/list/material_parts
+	/// items to use for design - order matters! uses weakref's.
+	var/list/item_parts
