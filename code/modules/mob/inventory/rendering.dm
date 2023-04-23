@@ -250,7 +250,7 @@
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
 	// determine if in hands
-	var/inhands = isnum(slot_id_or_hand_index)
+	var/inhands = isnum(slot_id_or_hand_index)? slot_id_or_hand_index : null
 	var/datum/inventory_slot_meta/slot_meta
 	// resolve slot
 	if(inhands)
@@ -265,7 +265,7 @@
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
-	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
+	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
 	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || CHECK_BODYTYPE(worn_bodytypes_invisible, bodytype))
@@ -277,6 +277,7 @@
 	// temporary - until coloration
 	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
+	MA.pixel_y += align_y
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta, icon_used)
 	MA = render_apply_blood(MA, bodytype, inhands, slot_meta, icon_used)
 	MA = render_apply_custom(MA, bodytype, inhands, slot_meta, icon_used)
@@ -311,7 +312,7 @@
 /**
  * override to include additional appearances while rendering
  */
-/obj/item/proc/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
 

@@ -36,6 +36,7 @@
 
 /datum/element/clothing/dynamic_recolor/proc/recolor(mob/user, obj/item/clothing/gear, queried)
 	gear.color = queried
+	gear.update_worn_icon()
 
 /obj/item/clothing/proc/dynamic_recolor_verb()
 	set name = "Set Color Style"

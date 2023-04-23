@@ -42,7 +42,7 @@
 		for(var/obj/item/I as anything in accessories)
 			I.dropped(user, flags | INV_OP_IS_ACCESSORY, newLoc)
 
-/obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	. = ..()
 	var/list/accessory_overlays = render_worn_accessories(M, inhands, slot_meta, layer_used, bodytype)
 	if(!isnull(accessory_overlays))
