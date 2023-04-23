@@ -38,7 +38,7 @@
 
 	return ..()
 
-/obj/item/clothing/suit/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/clothing/suit/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	if(taurized)
 		MA.pixel_x = -16
