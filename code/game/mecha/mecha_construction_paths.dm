@@ -3008,7 +3008,7 @@
 							"backkey"=IS_CROWBAR,
 							"desc"="The SMES coil is installed."),
 					//10
-					list("key"=/obj/item/smes_coil/super_capacity,
+					list("key"=/obj/item/stock_parts/capacitor/adv,
 							"backkey"=IS_SCREWDRIVER,
 							"desc"="The targeting module is secured."),
 					//11
@@ -3148,7 +3148,7 @@
 				holder.icon_state = "pinnace12"
 			else
 				user.visible_message("[user] removes the SMES coil from [holder].", "You remove the SMES coil from [holder].")
-				new /obj/item/smes_coil/super_capacity(get_turf(holder))
+				new /obj/item/stock_parts/capacitor/adv(get_turf(holder))
 				holder.icon_state = "pinnace10"
 		if(8)
 			if(diff==FORWARD)
