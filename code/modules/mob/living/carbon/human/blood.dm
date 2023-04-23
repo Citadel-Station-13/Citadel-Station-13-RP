@@ -125,7 +125,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				adjustOxyLoss(10 * dmg_coef)
 			adjustOxyLoss(1 * dmg_coef)
 			if(prob(15))
-				Unconscious(rand(1,3))
+				afflict_unconscious(20 * rand(1,3))
 				var/word = pick("dizzy","woozy","faint","disoriented","unsteady")
 				to_chat(src, SPAN_USERDANGER("You feel dangerously [word]"))
 		else if(blood_volume_raw >= species.blood_volume*species.blood_level_fatal)
@@ -139,7 +139,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 				pale = 1
 				update_icons_body()
 			eye_blurry = max(eye_blurry,6)
-			Unconscious(3)
+			afflict_unconscious(20 * 3)
 			adjustToxLoss(3 * dmg_coef)
 			adjustOxyLoss(75 * dmg_coef) // 15 more than dexp fixes (also more than dex+dexp+tricord)
 

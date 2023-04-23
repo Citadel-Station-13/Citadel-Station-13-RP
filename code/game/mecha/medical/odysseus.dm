@@ -107,7 +107,7 @@
 				holder.icon_state = RoundHealth((patient.health-config.health_threshold_crit)/(patient.getMaxHealth()-config.health_threshold_crit)*100)
 				C.images += holder
 
-			holder = patient.hud_list[STATUS_HUD]
+			holder = patient.hud_list[BIOLOGY_HUD]
 			if(patient.isSynthetic())
 				holder.icon_state = "hudrobo"
 			else if(patient.stat == DEAD)

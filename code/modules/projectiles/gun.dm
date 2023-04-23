@@ -164,6 +164,7 @@
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
+			LAZYINITLIST(item_state_slots)
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
 				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
 				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
@@ -664,6 +665,8 @@
 			forcespread = rand(50, 50)
 		else if(mob.shock_stage > 70)
 			forcespread = rand(-25, 25)
+		else if(IS_PRONE(mob))
+			forcespread = rand(-15, 15)
 	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
 
 	if(launched)

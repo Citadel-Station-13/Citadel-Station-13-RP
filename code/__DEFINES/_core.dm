@@ -4,3 +4,4 @@
 /// stack trace without messing with file/line - kudos lohikar c:
 #define STACK_TRACE(msg) try { CRASH("trace: [msg]"); } catch(var/exception/___E) {___rethrow_exception(___E); };
 /proc/___rethrow_exception(exception/E)
+	throw E

@@ -17,14 +17,14 @@
 		process_killswitch()
 		process_locks()
 		process_queued_alarms()
-	update_canmove()
 
 /mob/living/silicon/robot/proc/clamp_values()
+	var/datum/status_effect/effect
+	effect = is_unconscious()
+	if(effect?.time_left() > 20 SECONDS)
+		effect.set_duration_from_now(20 SECONDS)
 
-//	SetStunned(min(stunned, 30))
-	SetUnconscious(min(paralysis, 30))
-//	SetWeakened(min(weakened, 20))
-	SetSleeping(0)
+	set_sleeping(0)
 	adjustBruteLoss(0)
 	adjustToxLoss(0)
 	adjustOxyLoss(0)
@@ -61,40 +61,21 @@
 /mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
-		if(src.stat == 2 || wires.is_cut(WIRE_BORG_CAMERA))
+		if(IS_DEAD(src) || wires.is_cut(WIRE_BORG_CAMERA))
 			src.camera.set_status(0)
 		else
 			src.camera.set_status(1)
 
-	updatehealth()
-
-	if(src.sleeping)
-		Unconscious(3)
-		AdjustSleeping(-1)
+	update_health()
+	update_stat()
 
 	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
 		death()
 
-	if (src.stat != 2) //Alive.
-		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
-			src.set_stat(UNCONSCIOUS)
-			if (src.stunned > 0)
-				AdjustStunned(-1)
-			if (src.weakened > 0)
-				AdjustWeakened(-1)
-			if (src.paralysis > 0)
-				AdjustUnconscious(-1)
-				src.blinded = 1
-			else
-				src.blinded = 0
+	AdjustConfused(-1)
 
-		else	//Not stunned.
-			src.set_stat(CONSCIOUS)
+	blinded = !!IS_DEAD(src)
 
-		AdjustConfused(-1)
-
-	else //Dead or just unconscious.
-		src.blinded = 1
 
 	if (src.stuttering) src.stuttering--
 
@@ -156,8 +137,10 @@
 		seemeson = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
+		fullbright = TRUE
 	if(sight_mode & BORGTHERM)
 		AddSightSelf(SEE_MOBS)
+		fullbright = TRUE
 
 	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
 	plane_holder?.set_vis(VIS_MESONS, seemeson)
@@ -282,11 +265,14 @@
 			weapon_lock = 0
 			weaponlock_time = 120
 
-/mob/living/silicon/robot/update_canmove()
-	..() // Let's not reinvent the wheel.
-	if(lockdown || !is_component_functioning("actuator"))
-		canmove = FALSE
-	return canmove
+// todo: better way
+/mob/living/silicon/robot/update_mobility()
+	. = ..()
+	if(!is_component_functioning("actuator"))
+		mobility_flags &= ~MOBILITY_CAN_MOVE
+	if(lockdown)
+		mobility_flags &= ~(MOBILITY_FLAGS_ANY_INTERACTION | MOBILITY_CAN_MOVE | MOBILITY_CAN_PULL | MOBILITY_CAN_RESIST)
+	return mobility_flags
 
 /mob/living/silicon/robot/update_fire()
 	cut_overlay(image("icon"='icons/mob/OnFire.dmi', "icon_state" = get_fire_icon_state()))

@@ -136,7 +136,7 @@
 	// allow it so they can do buckle interactions at all
 	buckle_allowed = TRUE
 	buckle_mob(L, BUCKLE_OP_FORCE)
-	L.Stun(stun_length)
+	L.afflict_stun(20 * stun_length)
 	to_chat(L, "<span class='danger'>The steel jaws of \the [src] bite into you, trapping you in place!</span>")
 	deployed = FALSE
 

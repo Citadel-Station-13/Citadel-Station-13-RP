@@ -211,11 +211,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 /obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
-		R.status_flags &= ~CANPUSH
+		R.status_flags &= ~STATUS_CAN_PUSH
 
 /obj/item/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
-		R.status_flags |= CANPUSH
+		R.status_flags |= STATUS_CAN_PUSH
 
 /// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
 /obj/item/robot_module/proc/is_dog()

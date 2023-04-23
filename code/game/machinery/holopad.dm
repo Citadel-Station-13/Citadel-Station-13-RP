@@ -959,6 +959,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		return FALSE
 	remoting = user
 	RegisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE, .proc/cleanup_remote_presence)
+	RegisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED, .proc/on_item_equipped)
 	action_hang_up.grant(remoting)
 	action_swap_view.grant(remoting)
 	if(isAI(user))
@@ -978,10 +979,17 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	hologram_last_move = world.time
 	hologram.hologram_step(dir)
 
+/datum/holocall/proc/on_item_equipped(mob/source)
+	if(source != remoting)
+		UnregisterSignal(source, COMSIG_MOB_ITEM_EQUIPPED)
+		CRASH("how")
+	hologram.from_appearance(remoting)
+
 /datum/holocall/proc/cleanup_remote_presence()
 	if(!remoting)
 		return
 	UnregisterSignal(remoting, COMSIG_MOB_RESET_PERSPECTIVE)
+	UnregisterSignal(remoting, COMSIG_MOB_ITEM_EQUIPPED)
 	remoting.unshunt_perspective()
 	remoting.clear_movement_intercept()
 	action_hang_up.remove(remoting)
@@ -1042,12 +1050,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 			cleanup_remote_presence()
 
 /datum/holocall/proc/check_remoting()
-	if(!IS_CONSCIOUS(remoting))
+	if(remoting?.loc != source.loc)
 		return FALSE
-	if(remoting.lying)
-		return FALSE
-	if(remoting.stunned)
-		return TRUE
 	return TRUE
 
 /datum/holocall/proc/check()
@@ -1282,7 +1286,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		return FALSE
 	playsound('sound/effects/stealthoff.ogg', 50, 0)
 	vored.forceMove(drop_location())
-	vored.Weaken(1)
+	vored.afflict_paralyze(20)
 	visible_message(SPAN_BOLDWARNING("[vored] flops out of [src]."))
 	vored = null
 	pass_flags = initial(pass_flags)

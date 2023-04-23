@@ -40,7 +40,7 @@
 				if (MUTATION_HULK in L.mutations)
 					damage += 5
 					spawn(0)
-						Unconscious(1)
+						afflict_unconscious(20 * 1)
 						step_away(src,L,15)
 						sleep(3)
 						step_away(src,L,15)
@@ -49,12 +49,12 @@
 					if ((O.client && !( O.blinded )))
 						O.show_message(text("<font color='red'><B>[] has punched []!</B></font>", L, src), 1)
 				if (damage > 4.9)
-					Weaken(rand(10,15))
+					afflict_paralyze(20 * rand(10,15))
 					for(var/mob/O in viewers(L, null))
 						if ((O.client && !( O.blinded )))
 							O.show_message(text("<font color='red'><B>[] has weakened []!</B></font>", L, src), 1, "<font color='red'>You hear someone fall.</font>", 2)
 				adjustBruteLoss(damage)
-				updatehealth()
+				update_health()
 			else
 				playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 				for(var/mob/O in viewers(src, null))

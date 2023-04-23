@@ -64,7 +64,7 @@
 		if("[tmp_icon_state]_mob" in icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_mob"
 		mob_overlay = image("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
-	else if(wearer && sprite_sheets[bodytype_to_string(wearer.species.get_effective_bodytype(wearer, src, has_suit.worn_slot))]) //Teshari can finally into webbing, too!
+	else if(wearer && sprite_sheets?[bodytype_to_string(wearer.species.get_effective_bodytype(wearer, src, has_suit.worn_slot))]) //Teshari can finally into webbing, too!
 		mob_overlay = image("icon" = sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
 	else
 		mob_overlay = image("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")
@@ -219,7 +219,7 @@
 				var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 				if(heart && !(heart.robotic >= ORGAN_ROBOT))
 					heartbeat = 1
-				if(H.stat == DEAD || (H.status_flags&FAKEDEATH))
+				if(H.stat == DEAD || (H.status_flags&STATUS_FAKEDEATH))
 					sound_strength = "cannot hear"
 					sound = "anything"
 				else
@@ -723,7 +723,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
-		M.Weaken(10)
+		M.afflict_paralyze(20 * 10)
 	return
 
 /obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)

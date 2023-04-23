@@ -46,7 +46,7 @@
 	if(!base_state)
 		base_state = icon_state
 
-	if(usr.canmove && !usr.stat && !usr.restrained())
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		if(src.up)
 			src.up = !src.up
 			body_cover_flags |= (EYES|FACE)

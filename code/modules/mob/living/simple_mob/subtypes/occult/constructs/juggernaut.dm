@@ -56,7 +56,7 @@
 				"rad" = 100)
 
 /mob/living/simple_mob/construct/juggernaut/Life(seconds, times_fired)
-	SetWeakened(0)
+	set_paralyzed(0)
 	return ..()
 
 /mob/living/simple_mob/construct/juggernaut/Initialize(mapload)

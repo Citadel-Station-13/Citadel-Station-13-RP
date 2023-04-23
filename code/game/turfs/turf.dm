@@ -259,7 +259,7 @@
 			FD.attack_hand(user)
 			return TRUE
 
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
 		return 0
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
@@ -313,11 +313,10 @@
 /turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
+	if(!ismob(O))
+		return
+	var/mob/M = O
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
-		return
-	if(istype(O, /atom/movable/screen))
-		return
-	if(user.restrained() || user.stat || user.stunned || user.paralysis || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
 		return
@@ -325,16 +324,21 @@
 		return
 	if(isanimal(user) && O != user)
 		return
-	if (do_after(user, 25 + (5 * user.weakened)) && !(user.stat))
-		step_towards(O, src)
-		if(ismob(O))
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			animate(O, transform = turn(O.transform, -40), time = 4)
-			sleep(4)
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			O.update_transform()
+	if(M.pulledby || M.is_grabbed())
+		return
+	if(!CHECK_MOBILITY(user, user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		return
+	if (do_after(user, 2.5 SECONDS, mobility_flags = user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		if(M.pulledby || M.is_grabbed())
+			return
+		step_towards(M, src)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		animate(M, transform = turn(O.transform, -40), time = 4)
+		sleep(4)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		M.update_transform()
 
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
@@ -562,3 +566,22 @@
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1
+
+//? atom color - we don't use the expensive system.
+
+/turf/get_atom_colour()
+	return color
+
+/turf/add_atom_colour(coloration, colour_priority)
+	color = coloration
+
+/turf/remove_atom_colour(colour_priority, coloration)
+	color = null
+
+/turf/update_atom_colour()
+	return
+
+/turf/copy_atom_colour(atom/other, colour_priority)
+	if(isnull(other.color))
+		return
+	color = other.color
