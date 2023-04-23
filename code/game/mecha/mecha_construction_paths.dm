@@ -3002,11 +3002,11 @@
 					//8
 					list("key"=/obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="The SMES coil is secured."),
+							"desc"="The advanced capacitor is secured."),
 					//9
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="The SMES coil is installed."),
+							"desc"="The advanced capacitor is installed."),
 					//10
 					list("key"=/obj/item/stock_parts/capacitor/adv,
 							"backkey"=IS_SCREWDRIVER,
@@ -3136,7 +3136,7 @@
 				holder.icon_state = "pinnace8"
 		if(10)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the SMES coil into [holder].", "You install the SMES coil into [holder].")
+				user.visible_message("[user] installs the advanced capacitor into [holder].", "You install the advanced capacitor into [holder].")
 				qdel(I)
 				holder.icon_state = "pinnace11"
 			else
@@ -3144,10 +3144,10 @@
 				holder.icon_state = "pinnace9"
 		if(9)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the SMES coil.", "You secure the SMES coil.")
+				user.visible_message("[user] secures the advanced capacitor.", "You secure the advanced capacitor.")
 				holder.icon_state = "pinnace12"
 			else
-				user.visible_message("[user] removes the SMES coil from [holder].", "You remove the SMES coil from [holder].")
+				user.visible_message("[user] removes the advanced capacitor from [holder].", "You remove the advanced capacitor from [holder].")
 				new /obj/item/stock_parts/capacitor/adv(get_turf(holder))
 				holder.icon_state = "pinnace10"
 		if(8)
@@ -3156,7 +3156,7 @@
 				qdel(I)
 				holder.icon_state = "pinnace13"
 			else
-				user.visible_message("[user] unfastens the SMES coil.", "You unfasten the SMES coil.")
+				user.visible_message("[user] unfastens the advanced capacitor.", "You unfasten the advanced capacitor.")
 				holder.icon_state = "pinnace11"
 		if(7)
 			if(diff==FORWARD)
