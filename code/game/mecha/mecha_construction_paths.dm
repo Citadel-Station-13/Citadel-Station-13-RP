@@ -2941,11 +2941,12 @@
 /datum/construction/mecha/fighter/pinnace_chassis
 	result = "/obj/mecha/combat/fighter/pinnace"
 	steps = list(list("key"=/obj/item/mecha_parts/fighter/part/pinnace_core),//1
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_left_wing),//2
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_right_wing),//3
+					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_cockpit),//2
+					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_main_engine),//3
 					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_left_engine),//4
 					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_right_engine),//5
-					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_cockpit)
+					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_left_wing),//6
+					 list("key"=/obj/item/mecha_parts/fighter/part/pinnace_right_wing)//final
 					)
 
 /datum/construction/mecha/fighter/pinnace_chassis/custom_action(step, obj/item/I, mob/user)
@@ -2973,7 +2974,7 @@
 					//1
 					list("key"=/obj/item/weldingtool,
 							"backkey"=IS_WRENCH,
-							"desc"="External armor is wrenched."),
+							"desc"="External armor is bolted into place."),
 					//2
 					list("key"=IS_WRENCH,
 							"backkey"=IS_CROWBAR,
@@ -2981,74 +2982,74 @@
 					//3
 					list("key"=/obj/item/stack/material/plasteel,
 							"backkey"=/obj/item/weldingtool,
-							"desc"="Internal armor is welded."),
+							"desc"="The internal armor is welded into place."),
 					//4
 					list("key"=/obj/item/weldingtool,
 							"backkey"=IS_WRENCH,
-							"desc"="Internal armor is wrenched"),
+							"desc"="The internal armor is bolted into place."),
 					//5
 					list("key"=IS_WRENCH,
 							"backkey"=IS_CROWBAR,
-							"desc"="Internal armor is installed"),
+							"desc"="The internal armor is installed."),
 					//6
 					list("key"=/obj/item/stack/material/steel,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="Hand teleporter is secured"),
+							"desc"="The manual flight control instruments are secured."),
 					//7
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="Hand teleporter is installed"),
+							"desc"="The manual flight control instruments are installed."),
 					//8
-					list("key"=/obj/item/hand_tele,
+					list("key"=/obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="SMES coil is secured"),
+							"desc"="The SMES coil is secured."),
 					//9
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="SMES coil is installed"),
+							"desc"="The SMES coil is installed."),
 					//10
 					list("key"=/obj/item/smes_coil/super_capacity,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="Targeting module is secured"),
+							"desc"="The targeting module is secured."),
 					//11
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="Targeting module is installed"),
+							"desc"="The targeting module is installed."),
 					//12
-					list("key"=/obj/item/circuitboard/mecha/phazon/targeting,
+					list("key"=/obj/item/circuitboard/mecha/fighter/pinnace/targeting,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="Peripherals control module is secured"),
+							"desc"="The flight control module is secured."),
 					//13
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="Peripherals control module is installed"),
+							"desc"="The flight control module is installed."),
 					//14
-					list("key"=/obj/item/circuitboard/mecha/phazon/peripherals,
+					list("key"=/obj/item/circuitboard/mecha/fighter/pinnace/flight,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="Central control module is secured"),
+							"desc"="The central control module is secured."),
 					//15
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_CROWBAR,
-							"desc"="Central control module is installed"),
+							"desc"="The central control module is installed."),
 					//16
-					list("key"=/obj/item/circuitboard/mecha/phazon/main,
+					list("key"=/obj/item/circuitboard/mecha/fighter/pinnace/main,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="The wiring is adjusted"),
+							"desc"="The internal wiring is adjusted."),
 					//17
 					list("key"=/obj/item/tool/wirecutters,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="The wiring is added"),
+							"desc"="The internal wiring is added."),
 					//18
 					list("key"=/obj/item/stack/cable_coil,
 							"backkey"=IS_SCREWDRIVER,
-							"desc"="The hydraulic systems are active."),
+							"desc"="The hydraulic landing gear are deployed."),
 					//19
 					list("key"=IS_SCREWDRIVER,
 							"backkey"=IS_WRENCH,
-							"desc"="The hydraulic systems are connected."),
+							"desc"="The hydraulic landing gear are attached."),
 					//20
 					list("key"=IS_WRENCH,
-							"desc"="The hydraulic systems are disconnected.")
+							"desc"="The hydraulic landing gear are detached.")
 					)
 
 /datum/construction/reversible/mecha/fighter/pinnace/action(obj/item/I,mob/user as mob)
@@ -3060,159 +3061,159 @@
 
 	switch(index)
 		if(20)
-			user.visible_message("[user] connects [holder] hydraulic systems", "You connect [holder] hydraulic systems.")
-			holder.icon_state = "phazon1"
+			user.visible_message("[user] attaches [holder]'s hydraulic landing gear.", "You attach [holder]'s hydraulic landing gear.")
+			holder.icon_state = "pinnace1"
 		if(19)
 			if(diff==FORWARD)
-				user.visible_message("[user] activates [holder] hydraulic systems.", "You activate [holder] hydraulic systems.")
-				holder.icon_state = "phazon2"
+				user.visible_message("[user] deploys [holder]'s hydraulic landing gear.", "You deploy [holder]'s hydraulic landing gear.")
+				holder.icon_state = "pinnace2"
 			else
-				user.visible_message("[user] disconnects [holder] hydraulic systems", "You disconnect [holder] hydraulic systems.")
-				holder.icon_state = "phazon0"
+				user.visible_message("[user] removes [holder]'s hydraulic landing gear.", "You remove [holder]'s hydraulic landing gear.")
+				holder.icon_state = "pinnace0"
 		if(18)
 			if(diff==FORWARD)
-				user.visible_message("[user] adds the wiring to [holder].", "You add the wiring to [holder].")
-				holder.icon_state = "phazon3"
+				user.visible_message("[user] adds the internal wiring to [holder].", "You add the internal wiring to [holder].")
+				holder.icon_state = "pinnace3"
 			else
-				user.visible_message("[user] deactivates [holder] hydraulic systems.", "You deactivate [holder] hydraulic systems.")
-				holder.icon_state = "phazon1"
+				user.visible_message("[user] retracts [holder]'s hydraulic landing gear.", "You retract [holder]'s hydraulic landing gear.")
+				holder.icon_state = "pinnace1"
 		if(17)
 			if(diff==FORWARD)
-				user.visible_message("[user] adjusts the wiring of [holder].", "You adjust the wiring of [holder].")
-				holder.icon_state = "phazon4"
+				user.visible_message("[user] adjusts the internal wiring of [holder].", "You adjust the internal wiring of [holder].")
+				holder.icon_state = "pinnace4"
 			else
-				user.visible_message("[user] removes the wiring from [holder].", "You remove the wiring from [holder].")
+				user.visible_message("[user] removes the internal wiring from [holder].", "You remove the internal wiring from [holder].")
 				var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil(get_turf(holder))
 				coil.amount = 4
-				holder.icon_state = "phazon2"
+				holder.icon_state = "pinnace2"
 		if(16)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the central control module into [holder].", "You install the central computer mainboard into [holder].")
+				user.visible_message("[user] installs the central control module into [holder].", "You install the central control module into [holder].")
 				qdel(I)
-				holder.icon_state = "phazon5"
+				holder.icon_state = "pinnace5"
 			else
 				user.visible_message("[user] disconnects the wiring of [holder].", "You disconnect the wiring of [holder].")
-				holder.icon_state = "phazon3"
+				holder.icon_state = "pinnace3"
 		if(15)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the mainboard.", "You secure the mainboard.")
-				holder.icon_state = "phazon6"
+				user.visible_message("[user] secures the central control module.", "You secure the central control module.")
+				holder.icon_state = "pinnace6"
 			else
-				user.visible_message("[user] removes the central control module from [holder].", "You remove the central computer mainboard from [holder].")
-				new /obj/item/circuitboard/mecha/phazon/main(get_turf(holder))
-				holder.icon_state = "phazon4"
+				user.visible_message("[user] removes the central control module from [holder].", "You remove the central control module from [holder].")
+				new /obj/item/circuitboard/mecha/fighter/pinnace/main(get_turf(holder))
+				holder.icon_state = "pinnace4"
 		if(14)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the peripherals control module into [holder].", "You install the peripherals control module into [holder].")
+				user.visible_message("[user] installs the flight control module into [holder].", "You install the flight control module into [holder].")
 				qdel(I)
-				holder.icon_state = "phazon7"
+				holder.icon_state = "pinnace7"
 			else
-				user.visible_message("[user] unfastens the mainboard.", "You unfasten the mainboard.")
-				holder.icon_state = "phazon5"
+				user.visible_message("[user] unfastens the central control module.", "You unfasten the central control module.")
+				holder.icon_state = "pinnace5"
 		if(13)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the peripherals control module.", "You secure the peripherals control module.")
-				holder.icon_state = "phazon8"
+				user.visible_message("[user] secures the flight control module.", "You secure the flight control module.")
+				holder.icon_state = "pinnace8"
 			else
-				user.visible_message("[user] removes the peripherals control module from [holder].", "You remove the peripherals control module from [holder].")
-				new /obj/item/circuitboard/mecha/phazon/peripherals(get_turf(holder))
-				holder.icon_state = "phazon6"
+				user.visible_message("[user] removes the flight control module from [holder].", "You remove the flight control module from [holder].")
+				new /obj/item/circuitboard/mecha/fighter/pinnace/flight(get_turf(holder))
+				holder.icon_state = "pinnace6"
 		if(12)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the weapon control module into [holder].", "You install the weapon control module into [holder].")
+				user.visible_message("[user] installs the targeting control module into [holder].", "You install the targeting control module into [holder].")
 				qdel(I)
-				holder.icon_state = "phazon9"
+				holder.icon_state = "pinnace9"
 			else
 				user.visible_message("[user] unfastens the peripherals control module.", "You unfasten the peripherals control module.")
-				holder.icon_state = "phazon7"
+				holder.icon_state = "pinnace7"
 		if(11)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the weapon control module.", "You secure the weapon control module.")
-				holder.icon_state = "phazon10"
+				user.visible_message("[user] secures the targeting control module.", "You secure the targeting control module.")
+				holder.icon_state = "pinnace10"
 			else
-				user.visible_message("[user] removes the weapon control module from [holder].", "You remove the weapon control module from [holder].")
-				new /obj/item/circuitboard/mecha/phazon/targeting(get_turf(holder))
-				holder.icon_state = "phazon8"
+				user.visible_message("[user] removes the targeting control module from [holder].", "You remove the targeting control module from [holder].")
+				new /obj/item/circuitboard/mecha/fighter/pinnace/targeting(get_turf(holder))
+				holder.icon_state = "pinnace8"
 		if(10)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the SMES coil to [holder].", "You install the SMES coil to [holder].")
+				user.visible_message("[user] installs the SMES coil into [holder].", "You install the SMES coil into [holder].")
 				qdel(I)
-				holder.icon_state = "phazon11"
+				holder.icon_state = "pinnace11"
 			else
-				user.visible_message("[user] unfastens the weapon control module.", "You unfasten the weapon control module.")
-				holder.icon_state = "phazon9"
+				user.visible_message("[user] unfastens the targeting control module.", "You unfasten the targeting control module.")
+				holder.icon_state = "pinnace9"
 		if(9)
 			if(diff==FORWARD)
 				user.visible_message("[user] secures the SMES coil.", "You secure the SMES coil.")
-				holder.icon_state = "phazon12"
+				holder.icon_state = "pinnace12"
 			else
 				user.visible_message("[user] removes the SMES coil from [holder].", "You remove the SMES coil from [holder].")
 				new /obj/item/smes_coil/super_capacity(get_turf(holder))
-				holder.icon_state = "phazon10"
+				holder.icon_state = "pinnace10"
 		if(8)
 			if(diff==FORWARD)
-				user.visible_message("[user] installs the hand teleporter to [holder].", "You install the hand teleporter to [holder].")
+				user.visible_message("[user] installs the manual flight controls to [holder].", "You install the manual flight controls to [holder].")
 				qdel(I)
-				holder.icon_state = "phazon13"
+				holder.icon_state = "pinnace13"
 			else
 				user.visible_message("[user] unfastens the SMES coil.", "You unfasten the SMES coil.")
-				holder.icon_state = "phazon11"
+				holder.icon_state = "pinnace11"
 		if(7)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the hand teleporter.", "You secure the hand teleporter.")
-				holder.icon_state = "phazon14"
+				user.visible_message("[user] secures the manual flight controls.", "You secure the manual flight controls.")
+				holder.icon_state = "pinnace14"
 			else
-				user.visible_message("[user] removes the hand teleporter from [holder].", "You remove the hand teleporter from [holder].")
-				new /obj/item/hand_tele(get_turf(holder))
-				holder.icon_state = "phazon12"
+				user.visible_message("[user] removes the manual flight controls from [holder].", "You remove the manual flight controls from [holder].")
+				new /obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard(get_turf(holder))
+				holder.icon_state = "pinnace12"
 		if(6)
 			if(diff==FORWARD)
 				user.visible_message("[user] installs the internal armor layer to [holder].", "You install the internal armor layer to [holder].")
-				holder.icon_state = "phazon19"
+				holder.icon_state = "pinnace19"
 			else
-				user.visible_message("[user] unfastens the hand teleporter.", "You unfasten the hand teleporter.")
-				holder.icon_state = "phazon13"
+				user.visible_message("[user] unfastens the manual flight controls.", "You unfasten the manual flight controls.")
+				holder.icon_state = "pinnace13"
 		if(5)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures the internal armor layer.", "You secure the internal armor layer.")
-				holder.icon_state = "phazon20"
+				user.visible_message("[user] bolts the internal armor layer.", "You bolt the internal armor layer.")
+				holder.icon_state = "pinnace20"
 			else
 				user.visible_message("[user] pries the internal armor layer from [holder].", "You pry the internal armor layer from [holder].")
 				var/obj/item/stack/material/steel/MS = new /obj/item/stack/material/steel(get_turf(holder))
 				MS.amount = 5
-				holder.icon_state = "phazon14"
+				holder.icon_state = "pinnace14"
 		if(4)
 			if(diff==FORWARD)
-				user.visible_message("[user] welds the internal armor layer to [holder].", "You weld the internal armor layer to [holder].")
-				holder.icon_state = "phazon21"
+				user.visible_message("[user] welds the internal armor layer into place on [holder].", "You weld the internal armor layer into place on [holder].")
+				holder.icon_state = "pinnace21"
 			else
-				user.visible_message("[user] unfastens the internal armor layer.", "You unfasten the internal armor layer.")
-				holder.icon_state = "phazon19"
+				user.visible_message("[user] unbolt the internal armor layer.", "You unbolt the internal armor layer.")
+				holder.icon_state = "pinnace19"
 		if(3)
 			if(diff==FORWARD)
 				user.visible_message("[user] installs the external reinforced armor layer to [holder].", "You install the external reinforced armor layer to [holder].")
-				holder.icon_state = "phazon22"
+				holder.icon_state = "pinnace22"
 			else
 				user.visible_message("[user] cuts internal armor layer from [holder].", "You cut the internal armor layer from [holder].")
-				holder.icon_state = "phazon20"
+				holder.icon_state = "pinnace20"
 		if(2)
 			if(diff==FORWARD)
-				user.visible_message("[user] secures external armor layer.", "You secure external reinforced armor layer.")
-				holder.icon_state = "phazon23"
+				user.visible_message("[user] bolts external armor layer.", "You bolt external reinforced armor layer.")
+				holder.icon_state = "pinnace23"
 			else
 				user.visible_message("[user] pries the external armor layer from [holder].", "You pry external armor layer from [holder].")
 				var/obj/item/stack/material/plasteel/MS = new /obj/item/stack/material/plasteel(get_turf(holder))
 				MS.amount = 5
-				holder.icon_state = "phazon21"
+				holder.icon_state = "pinnace21"
 		if(1)
 			if(diff==FORWARD)
 				user.visible_message("[user] welds the external armor layer to [holder].", "You weld the external armor layer to [holder].")
 			else
-				user.visible_message("[user] unfastens the external armor layer.", "You unfasten the external armor layer.")
-				holder.icon_state = "phazon22"
+				user.visible_message("[user] unbolts the external armor layer.", "You unbolt the external armor layer.")
+				holder.icon_state = "pinnace22"
 	return 1
 
 /datum/construction/reversible/mecha/fighter/pinnace/spawn_result()
 	..()
-	feedback_inc("mecha_phazon_created",1)
+	feedback_inc("mecha_fighter_pinnace_created",1)
 	return

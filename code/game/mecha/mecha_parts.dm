@@ -451,7 +451,11 @@
 	icon_state = "reticent_armour"
 	origin_tech = list(TECH_MATERIAL = 6, TECH_COMBAT = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 5)
 
+
 ///Fighters///
+
+/obj/item/mecha_parts/fighter
+	icon = 'icons/mecha/fighters_construct64x64.dmi'
 
 /obj/item/mecha_parts/fighter/chassis
 	name="Fighter Chassis"
@@ -468,10 +472,10 @@
 
 
 //! Pinnace
-/obj/item/mecha_parts/fighter
-	icon = 'icons/mecha/fighters_construction64x64.dmi'
+
 /obj/item/mecha_parts/fighter/chassis/pinnace
-	name = "Pinnace Chassis"
+	name = "\improper Pinnace Chassis"
+	icon_state = "pinnace_chassis"
 
 	origin_tech = list(TECH_MATERIAL = 2)
 
@@ -481,31 +485,36 @@
 
 
 /obj/item/mecha_parts/fighter/part/pinnace_core
-	name="Pinnace Core"
+	name="\improper Pinnace Core"
 	icon_state = "pinnace_core"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_cockpit
-	name="Pinnace Cockpit"
+	name="\improper Pinnace Cockpit"
 	icon_state = "pinnace_cockpit"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_left_wing
-	name="Pinnace Left Wing"
+	name="\improper Pinnace Left Wing"
 	icon_state = "pinnace_l_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_right_wing
-	name="Pinnace Right Wing"
+	name="\improper Pinnace Right Wing"
 	icon_state = "pinnace_r_wing"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
+/obj/item/mecha_parts/fighter/part/pinnace_main_engine
+	name="\improper Pinnace Main Engine"
+	icon_state = "pinnace_m_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+
 /obj/item/mecha_parts/fighter/part/pinnace_left_engine
-	name="Pinnace Left Engine"
+	name="\improper Pinnace Left Engine"
 	icon_state = "pinnace_l_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_right_engine
-	name="Pinnace Right Engine"
+	name="\improper Pinnace Right Engine"
 	icon_state = "pinnace_r_engine"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)

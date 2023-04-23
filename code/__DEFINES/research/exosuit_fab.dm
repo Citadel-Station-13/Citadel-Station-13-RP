@@ -20,7 +20,7 @@
 /// Module is compatible with Phazon Exosuit models
 #define EXOSUIT_MODULE_PHAZON		(1<<4)
 /// Module is compatible with Pinnace Fighter models
-#define EXOSUIT_MODULE_PINNACE		(1<<4)
+#define EXOSUIT_MODULE_PINNACE		(1<<5)
 
 /// Module is compatible with "Working" Exosuit models - Ripley
 #define EXOSUIT_MODULE_WORKING		EXOSUIT_MODULE_RIPLEY
