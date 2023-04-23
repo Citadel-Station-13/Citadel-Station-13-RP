@@ -74,7 +74,7 @@
 	access = ACCESS_SCIENCE_MAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_ID_JOB)
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_SCIENCE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_OMNI_AR)
 
