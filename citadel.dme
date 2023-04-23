@@ -243,6 +243,7 @@
 #include "code\__DEFINES\rendering\alert.dm"
 #include "code\__DEFINES\rendering\ao.dm"
 #include "code\__DEFINES\rendering\atom_huds.dm"
+#include "code\__DEFINES\rendering\darksight.dm"
 #include "code\__DEFINES\rendering\dview.dm"
 #include "code\__DEFINES\rendering\lighting.dm"
 #include "code\__DEFINES\rendering\lighting_powers.dm"

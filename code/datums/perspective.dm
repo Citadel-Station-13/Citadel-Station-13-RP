@@ -103,7 +103,7 @@
 	images = null
 	screens = null
 	clients = null
-	eye = null
+	set_eye(null)
 	virtual_eye = null
 	return ..()
 
@@ -218,34 +218,21 @@
 	C.screen -= screens
 	C.images -= images
 
-/datum/perspective/proc/GetEye(client/C)
-	return eye
-
-/**
- * get perspective var for a client
- */
-/datum/perspective/proc/GetEyeMode(client/C)
-	// necessary for smooth transitions when calling update_perspective
-	// we default to eye perspectivie
-	// also this is honestly pointless but theoretically mob perspective should always be used while on mob
-	// this is stupid and i'm stupid
-	return ((eye == C.mob) && MOB_PERSPECTIVE) || perspective
-
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
  */
 /datum/perspective/proc/update(client/C)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_UPDATE, C)
 	var/changed = C.eye
-	var/new_eye = GetEye(C)
+	var/new_eye = get_eye(C)
 	if(!new_eye)
-		stack_trace("got null on GetEye, this shouldn't be possible")
+		stack_trace("got null on get_eye, this shouldn't be possible")
 		C.eye = C.mob
 	else
 		C.eye = new_eye
 	if(changed != C.eye)
 		C.parallax_holder?.reset(force = TRUE)
-	C.perspective = GetEyeMode(C)
+	C.perspective = get_eye_mode(C)
 	update_view_size(C)
 
 /**
@@ -297,26 +284,6 @@
 		for(var/client/C as anything in clients)
 			C.screen -= AM
 
-/datum/perspective/proc/SetEyeMode(perspective)
-	var/change = src.perspective != perspective
-	if(!change)
-		return
-	src.perspective = perspective
-	for(var/client/C as anything in clients)
-		C.perspective = GetEyeMode()
-
-/datum/perspective/proc/SetEye(atom/movable/AM)
-	var/change = src.eye != AM
-	if(!change)
-		return
-	src.eye = AM
-	for(var/client/C as anything in clients)
-		var/changed = C.eye
-		C.eye = GetEye(C)
-		if(changed != C.eye)
-			C.parallax_holder?.reset(force = TRUE)
-		C.perspective = GetEyeMode()
-
 /datum/perspective/proc/SetSight(flags)
 	var/change = sight ^ flags
 	sight = flags
@@ -351,6 +318,49 @@
 	if(change)
 		for(var/client/C as anything in clients)
 			C.mob.see_invisible = see_invisible
+
+//? Eye
+
+/datum/perspective/proc/set_eye_mode(perspective)
+	var/change = src.perspective != perspective
+	if(!change)
+		return
+	src.perspective = perspective
+	for(var/client/C as anything in clients)
+		C.perspective = get_eye_mode(C)
+
+/datum/perspective/proc/set_eye(atom/movable/AM)
+	var/change = src.eye != AM
+	if(!change)
+		return
+	detach_from_eye(src.eye)
+	src.eye = AM
+	attach_to_eye(src.eye)
+	for(var/client/C as anything in clients)
+		var/changed = C.eye
+		C.eye = get_eye(C)
+		if(changed != C.eye)
+			C.parallax_holder?.reset(force = TRUE)
+		C.perspective = get_eye_mode(C)
+
+/datum/perspective/proc/attach_to_eye(atom/movable/AM)
+	return
+
+/datum/perspective/proc/detach_from_eye(atom/movable/AM)
+	return
+
+/datum/perspective/proc/get_eye(client/C)
+	return eye
+
+/**
+ * get perspective var for a client
+ */
+/datum/perspective/proc/get_eye_mode(client/C)
+	// necessary for smooth transitions when calling update_perspective
+	// we default to eye perspectivie
+	// also this is honestly pointless but theoretically mob perspective should always be used while on mob
+	// this is stupid and i'm stupid
+	return eye == C.mob? MOB_PERSPECTIVE : perspective
 
 //? lighting - hard darkvision (limit lighting plane alpha)
 
@@ -540,7 +550,7 @@
  */
 /datum/perspective/self
 
-/datum/perspective/self/GetEye(client/C)
+/datum/perspective/self/get_eye(client/C)
 	return get_top_atom(eye)
 
 /datum/perspective/self/proc/get_top_atom(atom/movable/where)
