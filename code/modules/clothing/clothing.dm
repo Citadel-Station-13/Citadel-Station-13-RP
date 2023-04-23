@@ -236,8 +236,8 @@
 	set desc = "Wear this piece of clothing in a different style."
 	set src in usr
 
-	// todo: mobility flags
-	if(!IS_CONSCIOUS(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
+		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
 		return
 
 	pick_style(usr)
