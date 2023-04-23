@@ -123,6 +123,16 @@
  * ! TODO: GAGS, polychromatic overlays with _1, _2, _3, _..., and RED/BLUE, RED/GREEN, GREEN/BLUE matrices.
  * ! TODO: For most of these, it will require mutating the icon states used.
  *
+ * * Alignment
+ *
+ * Mobs are usually able to be shifted left/right, but are always aligned so that their bottom pixels
+ * are on the first pixel of their 'real' tile.
+ *
+ * With that in mind, we allow using the x_mob_y_align variable to shift sprites up, to avoid
+ * needing entirely centered sprites.
+ *
+ * That said, x alignment shifting will never happen due to limitations, so x still has to use centering.
+ *
  * * Why mutable appearances?
  * Rendering of equipment changes regularly. They're quite literally built to be changed.
  * Since items always have the same direction as wearer, this means we don't have to use images.
@@ -172,6 +182,9 @@
 	var/icon/default_worn_icon
 
 	//! NEW RENDERING SYSTEM (to be used by all new content tm); read comment section at top
+	//? for when base icon is used for render
+	/// icon alignment y shift
+	var/icon_mob_y_align = 0
 	//? for equipment slots: prioritized over icon, icon_state, icon dimensions
 	/// state to use; icon_state is used if this isn't set
 	var/worn_state
@@ -181,6 +194,8 @@
 	var/worn_x_dimension = 32
 	/// dimensions of our worn icon file if different from icon
 	var/worn_y_dimension = 32
+	/// worn icon alignment y shift
+	var/worn_mob_y_align = 0
 	//? for hands: prioritized over icon, icon_state, icon dimensions
 	/// state to use; worn_state, then icon_state is used if this isn't set
 	var/inhand_state
@@ -190,6 +205,8 @@
 	var/inhand_x_dimension = 32
 	/// dimensions of inhand sprites if different from icon
 	var/inhand_y_dimension = 32
+	/// inhnad icon alignment y shift
+	var/inhand_mob_y_align = 0
 	/// inhand default domain aka which icon we grab to check for state
 	var/inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	//? for belts
@@ -243,9 +260,9 @@
 
 	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
-	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y])
+	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y], resolved[WORN_DATA_ALIGN_Y])
 
-/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
+/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y, align_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
 	var/list/additional = render_additional(M, icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
@@ -310,7 +327,7 @@
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	if(istext(slot_meta))
 		slot_meta = resolve_inventory_slot_meta(slot_meta)
-	var/list/data = new /list(WORN_DATA_LIST_SIZE)	// 5 tuple
+	var/list/data = new /list(WORN_DATA_LIST_SIZE)
 
 	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
 	data[WORN_DATA_STATE] = resolve_legacy_state(M, slot_meta, inhands, bodytype)
@@ -373,16 +390,19 @@
 			data[WORN_DATA_ICON] = inhand_icon
 			data[WORN_DATA_SIZE_X] = inhand_x_dimension
 			data[WORN_DATA_SIZE_Y] = inhand_y_dimension
+			data[WORN_DATA_ALIGN_Y] = inhand_mob_y_align
 			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) ?(slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else if(!inhands && worn_icon)
 			data[WORN_DATA_ICON] = worn_icon
 			data[WORN_DATA_SIZE_X] = worn_x_dimension
 			data[WORN_DATA_SIZE_Y] = worn_y_dimension
+			data[WORN_DATA_ALIGN_Y] = worn_mob_y_align
 			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else
 			data[WORN_DATA_ICON] = icon
 			data[WORN_DATA_SIZE_X] = icon_x_dimension
 			data[WORN_DATA_SIZE_Y] = icon_y_dimension
+			data[WORN_DATA_ALIGN_Y] = icon_mob_y_align
 			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 
 	//? layer ; worn_layer --> slot defaults for the item in question

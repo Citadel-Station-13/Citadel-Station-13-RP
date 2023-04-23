@@ -3,12 +3,7 @@
 	desc = "A small grey device that projects a holographic image."
 	icon = 'icons/clothing/accessories/halo_projector.dmi'
 	icon_state = "projector"
-	icon_x_dimension = 48
-	icon_y_dimension = 48
-	base_pixel_x = -8
-	base_pixel_y = -8
-	pixel_x = -8
-	pixel_y = -8
+	icon_mob_y_align = 24
 	slot_flags = SLOT_HEAD | SLOT_EARS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	accessory_render_legacy = FALSE
@@ -32,6 +27,12 @@
 		return
 	icon_state = global_halo_styles[style]
 	update_worn_icon()
+
+/obj/item/clothing/accessory/halo_projector/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+	. = ..()
+
+/obj/item/clothing/accessory/halo_projector/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
 
 /obj/item/clothing/accessory/halo_projector/proc/generate_styles()
 	var/obj/item/clothing/accessory/halo_projector/parsing
