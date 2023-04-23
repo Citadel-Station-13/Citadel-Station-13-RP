@@ -3,18 +3,42 @@
 	desc = "A small grey device that projects a holographic image."
 	icon = 'icons/clothing/accessories/halo_projector.dmi'
 	icon_state = "projector"
+	icon_x_dimension = 48
+	icon_y_dimension = 48
+	base_pixel_x = -8
+	base_pixel_y = -8
+	pixel_x = -8
+	pixel_y = -8
+	slot_flags = SLOT_HEAD | SLOT_EARS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	accessory_render_legacy = FALSE
+
+	var/static/list/global_halo_styles
 
 /obj/item/clothing/accessory/halo_projector/Initialize(mapload)
 	. = ..()
+	if(isnull(global_halo_styles))
+		generate_styles()
 	AddElement(/datum/element/clothing/dynamic_recolor)
 
 /obj/item/clothing/accessory/halo_projector/available_styles(mob/user)
 	. = ..()
+	for(var/halo_name in global_halo_styles)
+		.[halo_name] = global_halo_styles[halo_name]
+
+/obj/item/clothing/accessory/halo_projector/set_style(style, mob/user)
+	. = ..()
+	if(.)
+		return
+	icon_state = global_halo_styles[style]
+	update_worn_icon()
+
+/obj/item/clothing/accessory/halo_projector/proc/generate_styles()
 	var/obj/item/clothing/accessory/halo_projector/parsing
-	var/static/list/parsing_types = tim_sort(subtypesof(/obj/item/clothing/accessory/halo_projector), /proc/cmp_initial_name_asc)
+	var/list/parsing_types = tim_sort(subtypesof(/obj/item/clothing/accessory/halo_projector), /proc/cmp_initial_name_asc)
+	global_halo_styles = list()
 	for(parsing as anything in parsing_types)
-		.[initial(parsing.name)] = initial(parsing.icon_state)
+		global_halo_styles[initial(parsing.name)] = initial(parsing.icon_state)
 
 /obj/item/clothing/accessory/halo_projector/gabriel
 	name = "messenger's halo"

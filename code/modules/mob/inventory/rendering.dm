@@ -381,8 +381,8 @@
 			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else
 			data[WORN_DATA_ICON] = icon
-			data[WORN_DATA_SIZE_X] = icon_dimension_x
-			data[WORN_DATA_SIZE_Y] = icon_dimension_y
+			data[WORN_DATA_SIZE_X] = icon_x_dimension
+			data[WORN_DATA_SIZE_Y] = icon_y_dimension
 			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 
 	//? layer ; worn_layer --> slot defaults for the item in question
@@ -392,8 +392,8 @@
 	if(LAZYACCESS(worn_icon_override, slot_meta.id))
 		data[WORN_DATA_ICON] = worn_icon_override[slot_meta.id]
 		// if you fuck this up, Skill Issue. We have to align somehow.
-		data[WORN_DATA_SIZE_X] = icon_dimension_x
-		data[WORN_DATA_SIZE_Y] = icon_dimension_y
+		data[WORN_DATA_SIZE_X] = icon_x_dimension
+		data[WORN_DATA_SIZE_Y] = icon_y_dimension
 	if(LAZYACCESS(worn_state_override, slot_meta.id))
 		data[WORN_DATA_STATE] = worn_state_override[slot_meta.id]
 

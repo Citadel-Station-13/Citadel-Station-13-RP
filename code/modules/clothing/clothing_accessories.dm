@@ -108,7 +108,8 @@
 		var/obj/item/clothing/suit/S = accessory_host
 		if(S.taurized)
 			MA.pixel_x += 16
-	return ..()
+
+	return MA
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay

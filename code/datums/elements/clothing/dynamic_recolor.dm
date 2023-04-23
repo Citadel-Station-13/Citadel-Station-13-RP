@@ -29,7 +29,7 @@
 		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
 		return
 
-	recolor(user, gear)
+	recolor(user, gear, queried)
 
 /datum/element/clothing/dynamic_recolor/proc/query_recolor(mob/user, obj/item/clothing/gear)
 	return input(user, "Choose a new color", "Recolor - [gear]", istext(gear.color)? gear.color : null) as color|null

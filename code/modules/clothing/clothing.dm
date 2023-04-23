@@ -219,13 +219,17 @@
 	for(var/name in available)
 		var/using = available[name]
 		if(istext(using))
-			assembled[name] = image(icon, icon_state = using)
+			assembled[name] = image(icon,
+					icon_state = using,
+					pixel_x = -((icon_x_dimension - WORLD_ICON_SIZE) / 2),
+					pixel_y = -((icon_y_dimension - WORLD_ICON_SIZE) / 2),
+				)
 		else if(isimage(using) || ismutableappearance(using))
 			assembled[name] = using
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return
-	var/choice = show_radial_menu(user, src, assembled)
+	var/choice = show_radial_menu(user, src, assembled, radius = 48)
 	if(isnull(choice))
 		return
 	set_style(choice, user)
