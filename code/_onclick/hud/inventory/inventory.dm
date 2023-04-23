@@ -4,7 +4,7 @@
 /atom/movable/screen/inventory/proc/check_inventory_usage(mob/user)
 	if(!user.canClick())
 		return FALSE
-	if(user.stunned || user.paralysis || user.weakened || user.stat)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_STORAGE) || user.stat)
 		return FALSE
 	return TRUE
 

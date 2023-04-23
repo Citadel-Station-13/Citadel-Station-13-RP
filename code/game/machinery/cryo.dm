@@ -231,8 +231,8 @@
 		occupant.set_stat(UNCONSCIOUS)
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
-			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
-			occupant.Unconscious(max(5, (1/occupant.bodytemperature)*3000))
+			occupant.afflict_sleeping(20 * max(5, (1/occupant.bodytemperature)*2000))
+			occupant.afflict_unconscious(20 * max(5, (1/occupant.bodytemperature)*3000))
 			if(air_contents.gas[/datum/gas/oxygen] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else
@@ -307,7 +307,7 @@
 		return
 	M.forceMove(src)
 	M.ExtinguishMob()
-	if(M.health > -100 && (M.health < 0 || M.sleeping))
+	if(!IS_DEAD(M))
 		to_chat(M, SPAN_USERDANGER("You feel a cold liquid surround you. Your skin starts to freeze up."))
 	occupant = M
 	occupant.update_perspective()

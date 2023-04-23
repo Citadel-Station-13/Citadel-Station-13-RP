@@ -16,8 +16,8 @@
 	var/slowdown = 1			//people said this was too fast. meh.
 
 	see_in_dark = 7
-	status_flags = GODMODE
 	plane = OBSERVER_PLANE
+	status_flags = STATUS_GODMODE
 
 	var/mob/owner = null
 	var/list/visibleChunks = list()

@@ -213,7 +213,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Open"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -255,7 +255,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Close"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!IS_CONSCIOUS(src))
 		return
 
 	if(src.loc == card)
@@ -293,7 +293,6 @@ var/list/infomorph_emotions = list(
 	// Move us into the card and move the card to the ground.
 	card.forceMove(get_turf(src))
 	forceMove(card)
-	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"
 
@@ -329,14 +328,12 @@ var/list/infomorph_emotions = list(
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
-	canmove = !resting
-
 ////////////////// ATTACKBY, HAND, SELF etc
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
 		src.adjustBruteLoss(W.damage_force)
-		src.updatehealth()
+		src.update_health()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
@@ -590,8 +587,8 @@ var/global/list/default_infomorph_software = list()
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
 
-/mob/living/silicon/infomorph/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/infomorph/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = 100
 		set_stat(CONSCIOUS)
 	else

@@ -28,7 +28,7 @@
 		return FALSE
 	if(occupant_amount() >= max_occupants)
 		return FALSE
-	if(do_after(M, get_enter_delay(M), FALSE, src, TRUE))
+	if(do_after(M, get_enter_delay(M), src, FALSE, TRUE))
 		mob_enter(M)
 		return TRUE
 	return FALSE
@@ -101,7 +101,7 @@
 		mob_exit(i, null, randomstep)
 		if(iscarbon(i))
 			var/mob/living/carbon/Carbon = i
-			Carbon.DefaultCombatKnockdown(40)
+			Carbon.default_combat_knockdown(40)
 
 /obj/vehicle/sealed/proc/DumpSpecificMobs(flag, randomstep = TRUE)
 	for(var/i in occupants)
@@ -109,7 +109,7 @@
 			mob_exit(i, null, randomstep)
 			if(iscarbon(i))
 				var/mob/living/carbon/C = i
-				C.DefaultCombatKnockdown(40)
+				C.default_combat_knockdown(40)
 
 /obj/vehicle/sealed/AllowDrop()
 	return FALSE

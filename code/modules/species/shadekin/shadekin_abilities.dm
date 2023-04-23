@@ -77,15 +77,11 @@
 	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
 	forceMove(T)
-	var/original_canmove = canmove
-	SetStunned(0)
-	SetWeakened(0)
-	if(buckled)
-		buckled.unbuckle_mob()
-	if(pulledby)
-		pulledby.stop_pulling()
+	set_stunned(0)
+	set_paralyzed(0)
+	unbuckle(BUCKLE_OP_FORCE)
+	break_pull()
 	stop_pulling()
-	canmove = FALSE
 
 	//Shifting in
 	if(ability_flags & AB_PHASE_SHIFTED)
@@ -112,11 +108,10 @@
 		remove_a_modifier_of_type(/datum/modifier/shadekin_phase_vision)
 		RemoveSightSelf(SEE_THRU)
 		sleep(5) //The duration of the TP animation
-		canmove = original_canmove
 		alpha = initial(alpha)
 
 		// probably replace with a trait later.
-		set_movement_type(MOVEMENT_GROUND)
+		remove_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -161,9 +156,8 @@
 		alpha = 127
 
 		// probably replace with a trait later.
-		set_movement_type(MOVEMENT_PHASING)
+		add_atom_phasing(SPECIES_SHADEKIN_PHASING_TRAIT)
 
-		canmove = original_canmove
 		incorporeal_move = TRUE
 		density = FALSE
 		force_max_speed = TRUE

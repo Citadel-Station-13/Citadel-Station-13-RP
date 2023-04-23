@@ -37,7 +37,7 @@
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)
 	if(D.stat != CONSCIOUS)
 		return
-	if(prob(33) && D.canmove && isturf(D.loc) && !D.pulledby) //won't move if being pulled
+	if(prob(33) && CHECK_MOBILITY(D, MOBILITY_CAN_MOVE) && isturf(D.loc) && !D.pulledby) //won't move if being pulled
 		step(D, pick(GLOB.cardinal))
 	if(prob(1))
 		D.emote(pick("scratch","jump","chirp","roll"))

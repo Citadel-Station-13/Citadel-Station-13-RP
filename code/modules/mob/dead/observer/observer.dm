@@ -2,7 +2,11 @@
 	name = "observer"
 	desc = "This shouldn't appear"
 	density = 0
+	mobility_flags = NONE
 	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
+
+/mob/observer/update_mobility()
+	return
 
 /mob/observer/dead
 	name = "ghost"
@@ -13,7 +17,7 @@
 	plane = OBSERVER_PLANE
 	alpha = 127
 	stat = DEAD
-	canmove = FALSE
+	mobility_flags = NONE
 	blinded = FALSE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
@@ -174,14 +178,8 @@
 	. = ..()
 	return TRUE
 
-/mob/observer/dead/set_stat(var/new_stat)
-	if(new_stat != DEAD)
-		CRASH("It is best if observers stay dead, thank you.")
-
-/*
-Transfer_mind is there to check if mob is being deleted/not going to have a body.
-Works together with spawning an observer, noted above.
-*/
+/mob/observer/dead/set_stat(new_stat, update_mobility = TRUE)
+	CRASH("It is best if observers stay dead, thank you.")
 
 /mob/observer/dead/Life(seconds, times_fired)
 	if((. = ..()))

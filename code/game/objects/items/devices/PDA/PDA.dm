@@ -475,7 +475,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return 0
 
 	var/mob/M = loc
-	if(M.stat || M.restrained() || M.paralysis || M.stunned || M.weakened)
+	if(!CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		return 0
 	if((src in M.contents) || ( istype(loc, /turf) && in_range(src, M) ))
 		return 1
@@ -1369,7 +1369,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						), 1)
 				user.show_message("<span class='notice'>    Key: Suffocation/Toxin/Burns/Brute</span>", 1)
 				user.show_message("<span class='notice'>    Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)</span>", 1)
-				if(C.tod && (C.stat == DEAD || (C.status_flags & FAKEDEATH)))
+				if(C.tod && (C.stat == DEAD || (C.status_flags & STATUS_FAKEDEATH)))
 					user.show_message("<span class='notice'>    Time of Death: [C.tod]</span>")
 				if(istype(C, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = C

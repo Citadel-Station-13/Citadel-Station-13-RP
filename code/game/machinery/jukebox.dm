@@ -239,13 +239,13 @@
 			//for(var/mob/living/carbon/M in ohearers(6, src))
 				//if(M.get_ear_protection() >= 2)
 					//continue
-				//M.SetSleeping(0)
+				//M.set_sleeping(0)
 				//M.stuttering += 20
 				//M.ear_deaf += 30
-				//M.Weaken(3)
+				//M.afflict_paralyze(20 * 3)
 				//if(prob(30))
-					//M.Stun(10)
-					//M.Unconscious(4)
+					//M.afflict_stun(20 * 10)
+					//M.afflict_unconscious(20 * 4)
 				//else
 					//M.make_jittery(500)
 			//spawn(15)

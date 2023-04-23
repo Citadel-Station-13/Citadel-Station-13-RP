@@ -114,10 +114,10 @@
 
 	// Get the clone body ready
 	H.adjustCloneLoss(150) // New damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
-	H.Unconscious(4)
+	H.afflict_unconscious(20 * 4)
 
 	// Here let's calculate their health so the pod doesn't immediately eject them!!!
-	H.updatehealth()
+	H.update_health()
 
 	clonemind.transfer(H)
 	H.ckey = R.ckey
@@ -186,7 +186,7 @@
 			return
 
 		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
-			occupant.Unconscious(4)
+			occupant.afflict_unconscious(20 * 4)
 
 			 //Slowly get that clone healed and finished.
 			occupant.adjustCloneLoss(-2 * heal_rate)
@@ -197,7 +197,7 @@
 			//So clones don't die of oxyloss in a running pod.
 			if(occupant.reagents.get_reagent_amount("inaprovaline") < 30)
 				occupant.reagents.add_reagent("inaprovaline", 60)
-			occupant.Sleeping(30)
+			occupant.afflict_sleeping(20 * 30)
 			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
 			occupant.adjustOxyLoss(-4)
 
