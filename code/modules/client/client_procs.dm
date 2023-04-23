@@ -810,7 +810,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
  */
 /client/proc/set_perspective(datum/perspective/P)
 	if(using_perspective)
-		using_perspective.RemoveClient(src, TRUE)
+		using_perspective.remove_client(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear")
 			using_perspective = null
@@ -819,7 +819,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		lazy_eye = 0
 		perspective = EYE_PERSPECTIVE
 		return
-	P.AddClient(src)
+	P.add_client(src)
 	if(using_perspective != P)
 		stack_trace("using perspective didn't set")
 

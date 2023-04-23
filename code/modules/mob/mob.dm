@@ -94,7 +94,7 @@
 		QDEL_NULL(hud_used)
 	dispose_rendering()
 	// perspective
-	using_perspective?.RemoveMob(src, TRUE)
+	using_perspective?.remove_mobs(src, TRUE)
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
 	..()

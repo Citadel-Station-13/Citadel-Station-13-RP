@@ -98,8 +98,8 @@
 	var/list/hard_darkvision
 
 /datum/perspective/Destroy()
-	KickAll()
-	ClearMobs()
+	clear_clients()
+	clear_mobs()
 	images = null
 	screens = null
 	clients = null
@@ -109,7 +109,7 @@
 
 /// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
 /// I DO NOT TRUST PEOPLE TO NOT SCREW THIS UP
-/datum/perspective/proc/AddClient(client/C)
+/datum/perspective/proc/add_client(client/C)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(C in clients)
@@ -123,7 +123,7 @@
 
 /// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
 /// I DO NOT TRUST PEOPLE TO NOT SCREW THIS UP
-/datum/perspective/proc/RemoveClient(client/C, switching = FALSE)
+/datum/perspective/proc/remove_client(client/C, switching = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(C in clients))
@@ -142,28 +142,28 @@
 /**
  * gets all clients viewing us
  */
-/datum/perspective/proc/GetClients()
+/datum/perspective/proc/get_clients()
 	return isnull(clients)? list() : clients.Copy()
 
 /**
  * kicks all clients off us
  */
-/datum/perspective/proc/KickAll()
+/datum/perspective/proc/clear_clients()
 	for(var/client/C as anything in clients)
-		RemoveClient(C)
+		remove_client(C)
 
 /**
  * kicks all obs off of us
  */
-/datum/perspective/proc/ClearMobs()
+/datum/perspective/proc/clear_mobs()
 	for(var/mob/M as anything in mobs)
-		RemoveMob(M)
+		remove_mobs(M)
 
 /**
  * registers as a mob's current perspective
  * sets mob vars as necessary
  */
-/datum/perspective/proc/AddMob(mob/M)
+/datum/perspective/proc/add_mob(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
 	if(M.using_perspective)
 		CRASH("mob already had perspective")
@@ -180,7 +180,7 @@
  * unregisters as a mob's current perspective
  * resets mob vars to initial() values
  */
-/datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
+/datum/perspective/proc/remove_mobs(mob/M, switching = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	M.sight = initial(M.sight)
 	M.see_in_dark = initial(M.see_in_dark)
@@ -559,7 +559,7 @@
  */
 /datum/perspective/self/temporary
 
-/datum/perspective/self/temporary/RemoveMob(mob/M, switching)
+/datum/perspective/self/temporary/remove_mobs(mob/M, switching)
 	. = ..()
 	if(!mobs.len)
 		qdel(src)

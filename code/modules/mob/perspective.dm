@@ -30,17 +30,17 @@
 	/// first of all if we are already on the right perspective we really don't care!
 	if(!client)		// this is way easier if no client, and microoptimization
 		if(using_perspective)
-			using_perspective.RemoveMob(src, TRUE)
+			using_perspective.remove_mobs(src, TRUE)
 			if(using_perspective)
 				stack_trace("using perspective didn't clear us")
 				using_perspective = null
 		P = P || get_perspective()
-		P.AddMob(src)
+		P.add_mob(src)
 		return
 	var/old = using_perspective
 	// get old perspective first
 	if(using_perspective)
-		using_perspective.RemoveMob(src, TRUE)
+		using_perspective.remove_mobs(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear us")
 			using_perspective = null
@@ -53,7 +53,7 @@
 			P = get_perspective()
 	// great, P exists
 	// tell it to add us
-	P.AddMob(src)
+	P.add_mob(src)
 	// signal
 	SEND_SIGNAL(src, COMSIG_MOB_RESET_PERSPECTIVE, P)
 	// if client exists and we want to apply
