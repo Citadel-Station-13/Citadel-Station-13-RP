@@ -44,7 +44,7 @@
 
 /obj/item/clothing/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	. = ..()
-	var/list/accessory_overlays = render_worn_accessories(M, inhands, slot_meta, bodytype)
+	var/list/accessory_overlays = render_worn_accessories(M, inhands, slot_meta, layer_used, bodytype)
 	if(!isnull(accessory_overlays))
 		. += accessory_overlays
 
@@ -57,7 +57,7 @@
  * * slot_meta - slot
  * * bodytype - bodytype
  */
-/obj/item/clothing/proc/render_worn_accessories(mob/M, inhands, datum/inventory_slot_meta/slot_meta, bodytype)
+/obj/item/clothing/proc/render_worn_accessories(mob/M, inhands, datum/inventory_slot_meta/slot_meta, layer_used, bodytype)
 	RETURN_TYPE(/list)
 	if(!length(accessories))
 		return
