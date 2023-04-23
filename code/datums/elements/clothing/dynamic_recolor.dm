@@ -4,11 +4,11 @@
 	. = ..()
 	if(. & ELEMENT_INCOMPATIBLE)
 		return
-	add_obj_verb(target, /obj/item/cltohing/proc/dynamic_recolor_verb)
+	add_obj_verb(target, /obj/item/clothing/proc/dynamic_recolor_verb)
 
 /datum/element/clothing/dynamic_recolor/Detach(obj/item/clothing/target)
 	. = ..()
-	remove_obj_verb(target, /obj/item/cltohing/proc/dynamic_recolor_verb)
+	remove_obj_verb(target, /obj/item/clothing/proc/dynamic_recolor_verb)
 
 // todo: support matrix
 // todo: support hsv

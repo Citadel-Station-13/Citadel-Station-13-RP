@@ -100,9 +100,15 @@
 		if(istype(src, /obj/item/clothing/accessory))
 			var/obj/item/clothing/accessory/A = src
 			old = A.get_mob_overlay()
-			#warn uhh?? for /accessory subtype
 		return old
-	. = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
+	var/mutable_appearance/MA = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
+
+	// sigh, legacy shit
+	if(istype(accessory_host, /obj/item/clothing/suit))
+		var/obj/item/clothing/suit/S = accessory_host
+		if(S.taurized)
+			MA.pixel_x += 16
+	return ..()
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
