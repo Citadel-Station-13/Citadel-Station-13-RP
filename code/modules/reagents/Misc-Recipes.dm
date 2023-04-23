@@ -364,7 +364,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Weaken(15)
+				M.afflict_paralyze(20 * 15)
 
 			if(4 to 5)
 				if(hasvar(M, "glasses"))
@@ -372,7 +372,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Stun(5)
+				M.afflict_stun(20 * 5)
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -1013,7 +1013,7 @@
 		C.adjustOxyLoss(-25)
 		C.adjustBrainLoss(-25)
 		C.adjustCloneLoss(-25)
-		C.updatehealth()
+		C.update_health()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"

@@ -184,7 +184,8 @@
 
 	var/mob/source = mob.get_looc_source()
 	var/turf/T = get_turf(source)
-	if(!T) return
+	if(!T)
+		return
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 

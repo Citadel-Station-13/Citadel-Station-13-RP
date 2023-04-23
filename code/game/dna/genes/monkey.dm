@@ -23,8 +23,8 @@
 			if (W==H.w_uniform) // will be teared
 				continue
 			H.drop_from_inventory(W)
-		M.transforming = 1
-		M.canmove = 0
+		M.transforming = TRUE
+		M.update_mobility()
 		M.icon = null
 		M.invisibility = 101
 		var/atom/movable/overlay/animation = new( M.loc )
@@ -91,8 +91,8 @@
 	if(!connected)
 		for(var/obj/item/W in (Mo.contents-implants))
 			Mo.drop_from_inventory(W)
-		M.transforming = 1
-		M.canmove = 0
+		M.transforming = TRUE
+		M.update_mobility()
 		M.icon = null
 		M.invisibility = 101
 		var/atom/movable/overlay/animation = new( M.loc )

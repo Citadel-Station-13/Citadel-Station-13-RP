@@ -93,8 +93,8 @@
 
 	//Apply damage
 	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
-	H.Unconscious(4)
-	H.updatehealth()
+	H.afflict_unconscious(20 * 4)
+	H.update_health()
 
 	//Grower specific mutations
 	if(heal_level < 60)
@@ -308,7 +308,7 @@
 	//Apply damage
 	H.adjustBruteLoss(brute_value)
 	H.adjustFireLoss(burn_value)
-	H.updatehealth()
+	H.update_health()
 
 	//Update appearance, remake icons
 	H.UpdateAppearance()

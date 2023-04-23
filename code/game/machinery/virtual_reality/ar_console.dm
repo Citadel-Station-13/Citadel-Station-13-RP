@@ -97,7 +97,7 @@
 		avatar = new(src, produce_species)
 		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
-		avatar.Sleeping(6)
+		avatar.afflict_sleeping(20 * 6)
 
 		occupant.enter_vr(avatar)
 
