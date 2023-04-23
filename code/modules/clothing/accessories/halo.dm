@@ -30,9 +30,14 @@
 
 /obj/item/clothing/accessory/halo_projector/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
+	MA.filters += drop_shadow_filter(size = 3, color = color)
 
 /obj/item/clothing/accessory/halo_projector/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	. = ..()
+	// todo: mob emissives, emissive renderer.
+	var/mutable_appearance/emissive = emissive_appearance(icon_used, state_used)
+	emissive.filters += drop_shadow_filter(size = 5, color = "#ffffff")
+	. += emissive
 
 /obj/item/clothing/accessory/halo_projector/proc/generate_styles()
 	var/obj/item/clothing/accessory/halo_projector/parsing
