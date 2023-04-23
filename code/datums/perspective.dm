@@ -55,15 +55,15 @@
 	/// client perspective var
 	var/perspective = EYE_PERSPECTIVE
 	/// images
-	var/list/image/images = list()
+	var/list/image/images
 	/// screen objects
-	var/list/atom/movable/screens = list()
+	var/list/atom/movable/screens
 	/// sight var
 	var/sight = SIGHT_FLAGS_DEFAULT
 	/// active clients - this is not the same as mobs because a client can be looking somewhere that isn't their mob
 	var/list/client/clients
 	/// mobs that are using this - required for clean gcs
-	var/list/mob/mobs = list()
+	var/list/mob/mobs
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE
 	/// see in dark
@@ -199,9 +199,12 @@
  */
 /datum/perspective/proc/apply(client/C)
 	SHOULD_CALL_PARENT(TRUE)
-	C.screen |= screens
+	if(!isnull(screens))
+		C.screen |= screens
+	assert_planes()
 	C.screen |= planes.screens()
-	C.images |= images
+	if(!isnull(images))
+		C.images |= images
 	update(C)
 
 /**
@@ -210,13 +213,16 @@
  * set owner to TRUE to apply prefs like AO.
  */
 /datum/perspective/proc/reload(client/C, owner)
+	assert_planes()
 	if(owner)
 		planes.sync_owner(C)
 	apply(C)
 
 /datum/perspective/proc/remove(client/C)
-	C.screen -= screens
-	C.images -= images
+	if(!isnull(screens))
+		C.screen -= screens
+	if(!isnull(images))
+		C.images -= images
 
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
@@ -246,7 +252,9 @@
  * works with lists too
  */
 /datum/perspective/proc/AddImage(image/I)
-	var/change = images.len
+	var/change = length(images)
+	if(!change)
+		images = list()
 	images |= I
 	change = images.len - change
 	if(images.len != change)
@@ -257,7 +265,9 @@
  * works with lists too
  */
 /datum/perspective/proc/RemoveImage(image/I)
-	var/change = images.len
+	var/change = length(images)
+	if(!change)
+		return
 	images -= I
 	if(images.len != change)
 		for(var/client/C as anything in clients)
@@ -267,7 +277,9 @@
  * works with lists too
  */
 /datum/perspective/proc/AddScreen(atom/movable/AM)
-	var/change = screens.len
+	var/change = length(screens)
+	if(!change)
+		screens = list()
 	screens |= AM
 	if(screens.len != change)
 		for(var/client/C as anything in clients)
@@ -278,7 +290,9 @@
  * works with lists too
  */
 /datum/perspective/proc/RemoveScreen(atom/movable/AM)
-	var/change = screens.len
+	var/change = legnth(screens)
+	if(!change)
+		return
 	screens -= AM
 	if(change != screens.len)
 		for(var/client/C as anything in clients)
@@ -389,7 +403,12 @@
 
 #warn impl all
 
-//? plane visibility
+//? plane holder
+
+/datum/perspective/assert_planes()
+	if(!isnull(planes))
+		return
+	planes = new /datum/plane_holder/mob_perspective
 
 /**
  * sets a plane visible if it wasn't already
@@ -440,12 +459,14 @@
 	return source in planes_visible[key]
 
 /datum/perspective/proc/show_plane(key, force)
+	assert_planes()
 	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
 	if(isnull(plane))
 		return
 	plane.alpha = plane.default_alpha
 
 /datum/perspective/proc/hide_plane(key, force)
+	assert_planes()
 	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
 	if(isnull(plane))
 		return

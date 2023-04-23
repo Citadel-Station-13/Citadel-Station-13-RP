@@ -49,7 +49,7 @@
 
 /atom/movable/screen/plane_master/mobs
 	plane = MOB_PLANE
-	render_target = MOB_PLANE_RENDER_TARGET
+	render_target = PLANE_RENDER_TARGET
 
 //Cloaked atoms are visible to ghosts (or for other reasons?)
 /atom/movable/screen/plane_master/cloaked
