@@ -650,7 +650,7 @@ About the new airlock wires panel:
 		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
 			to_chat(user, "<span class='danger'>You feel a powerful shock course through your body!</span>")
 			user.halloss += 10
-			user.stunned += 10
+			user.afflict_stun(5 SECONDS)
 			return
 	..(user)
 
@@ -1330,8 +1330,8 @@ About the new airlock wires panel:
 /mob/living/airlock_crush(var/crush_damage)
 	. = ..()
 	adjustBruteLoss(crush_damage)
-	SetStunned(5)
-	SetWeakened(5)
+	set_stunned(20 * 5)
+	set_paralyzed(20 * 5)
 	var/turf/T = get_turf(src)
 	T.add_blood(src)
 

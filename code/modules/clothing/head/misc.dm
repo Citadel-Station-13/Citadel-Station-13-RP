@@ -530,14 +530,6 @@
 	body_cover_flags = 0
 	inv_hide_flags = BLOCKHAIR
 
-/obj/item/clothing/head/skull
-	name = "totemic skull hat"
-	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or anothers, you do feel a little more intimidating with this on."
-	icon_state = "skull"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
-	body_cover_flags = 0
-	inv_hide_flags = 0
-
 /obj/item/clothing/head/bunny
 	name = "bunny costume head"
 	desc = "Popular with both mascots and heartbroken Japanese highschool girls."

@@ -116,9 +116,9 @@
 		death()
 		return TRUE
 
-	SetWeakened(0)
-	SetStunned(0)
-	SetUnconscious(0)
+	set_paralyzed(0)
+	set_stunned(0)
+	set_unconscious(0)
 
 	if(on && !client && !busy)
 		spawn(0)
@@ -127,8 +127,8 @@
 		spawn(0)
 			handleAI()
 
-/mob/living/bot/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/bot/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
 		set_stat(CONSCIOUS)
 	else
@@ -174,7 +174,7 @@
 					fireloss = 0
 				else
 					fireloss = fireloss - 10
-				updatehealth()
+				update_health()
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
 				playsound(src, O.tool_sound, 50, 1)
 			else

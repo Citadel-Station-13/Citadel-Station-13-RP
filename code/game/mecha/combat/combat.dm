@@ -64,7 +64,7 @@
 					var/update = 0
 					switch(damtype)
 						if("brute")
-							H.Unconscious(1)
+							H.afflict_unconscious(20 * 1)
 							update |= temp.take_damage(rand(force/2, force), 0)
 						if("fire")
 							update |= temp.take_damage(0, rand(force/2, force))
@@ -79,12 +79,12 @@
 						else
 							return
 					if(update)	H.UpdateDamageIcon()
-				H.updatehealth()
+				H.update_health()
 
 			else
 				switch(damtype)
 					if("brute")
-						M.Unconscious(1)
+						M.afflict_unconscious(20 * 1)
 						M.take_overall_damage(rand(force/2, force))
 					if("fire")
 						M.take_overall_damage(0, rand(force/2, force))
@@ -96,7 +96,7 @@
 								M.reagents.add_reagent("cryptobiolin", force)
 					else
 						return
-				M.updatehealth()
+				M.update_health()
 			src.occupant_message("You hit [T].")
 			src.visible_message("<font color='red'><b>[src.name] hits [T].</b></font>")
 		else

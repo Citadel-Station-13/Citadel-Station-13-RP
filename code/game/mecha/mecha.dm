@@ -431,7 +431,7 @@
 
 	for(var/i = 0, i<numticks, i++)
 		sleep(delayfraction)
-		if(!src || !user || !user.canmove || !(user.loc == T))
+		if(!src || !user || !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || !(user.loc == T))
 			return 0
 
 	return 1
@@ -1536,7 +1536,7 @@
 		else
 			src.occupant_message("<font color='red'><b>[user] hits [src] with [W].</b></font>")
 			user.visible_message("<font color='red'><b>[user] hits [src] with [W].</b></font>", "<font color='red'><b>You hit [src] with [W].</b></font>")
-			src.take_damage(W.damage_force,W.damtype)
+			src.take_damage(W.force,W.damtype)
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 */
 	return
@@ -1603,7 +1603,7 @@
 		occupant = brainmob
 		brainmob.forceMove(src)
 		brainmob.reset_perspective(src)
-		brainmob.canmove = 1
+		brainmob.mobility_flags = MOBILITY_FLAGS_DEFAULT
 		mmi_as_oc.mecha = src
 		add_obj_verb(src, /obj/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
@@ -1986,7 +1986,7 @@
 			if(mmi.brainmob)
 				occupant.forceMove(mmi)
 			mmi.mecha = null
-			occupant.canmove = 0
+			occupant.mobility_flags = NONE
 		occupant.clear_alert("charge")
 		occupant.clear_alert("mech damage")
 		occupant.in_enclosed_vehicle = 0
@@ -2563,7 +2563,7 @@
 		O.fireloss = AI.getFireLoss()
 		O.bruteloss = AI.getBruteLoss()
 		O.toxloss = AI.toxloss
-		O.updatehealth()
+		O.update_health()
 		src.occupant = O
 		if(AI.mind)
 			AI.mind.transfer(O)
@@ -2581,7 +2581,7 @@
 			AI.fireloss = O.getFireLoss()
 			AI.bruteloss = O.getBruteLoss()
 			AI.toxloss = O.toxloss
-			AI.updatehealth()
+			AI.update_health()
 			qdel(O)
 			if (!AI.stat)
 				AI.icon_state = "ai"

@@ -164,8 +164,6 @@
 
 	//While regenerating
 	if(H.revive_ready == REVIVING_NOW || H.revive_ready == REVIVING_DONE)
-		H.weakened = 5
-		H.canmove = 0
 		H.does_not_breathe = TRUE
 
 	//Cold/pressure effects when not regenerating

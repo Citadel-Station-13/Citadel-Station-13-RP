@@ -25394,7 +25394,9 @@
 	pixel_x = -28;
 	pixel_y = -24
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark{
+	name = "JoinLateTeleport"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
 "exb" = (
@@ -25797,16 +25799,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"hZy" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "idS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -25886,6 +25878,16 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"iUa" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
+/turf/simulated/floor/tiled/steel_grid,
+/area/hallway/secondary/docking_hallway)
 "jbR" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -26041,7 +26043,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
+/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/docking_hallway)
 "lcP" = (
@@ -26201,16 +26203,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
-"mic" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/landmark/spawnpoint/latejoin/station/shuttle_dock,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "mrO" = (
 /obj/machinery/holoposter{
 	pixel_x = 32
@@ -26339,7 +26331,9 @@
 	},
 /obj/effect/floor_decal/techfloor,
 /obj/machinery/light,
-/obj/landmark/spawnpoint/latejoin/station/cyborg,
+/obj/landmark{
+	name = "JoinLateRobotic"
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_server_room)
 "nSV" = (
@@ -26832,7 +26826,9 @@
 	pixel_x = -28;
 	pixel_y = 24
 	},
-/obj/landmark/spawnpoint/latejoin/station/gateway,
+/obj/landmark{
+	name = "JoinLateTeleport"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
 "uoG" = (
@@ -26994,16 +26990,6 @@
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"weY" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle,
-/turf/simulated/floor/tiled/steel_grid,
-/area/hallway/secondary/docking_hallway)
 "wgh" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -42172,7 +42158,7 @@ aUu
 aUu
 aUu
 aMw
-hZy
+iUa
 aRJ
 anG
 aoX
@@ -42948,7 +42934,7 @@ aUu
 aUu
 aUu
 aMw
-mic
+kXF
 aRJ
 anG
 aoX
@@ -43142,7 +43128,7 @@ aUu
 aUu
 aUu
 aMw
-weY
+iUa
 aRJ
 anG
 aoX

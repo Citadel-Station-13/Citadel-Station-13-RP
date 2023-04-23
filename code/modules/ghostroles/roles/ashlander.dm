@@ -81,12 +81,13 @@
 		/datum/crafting_recipe/primalretractor, /datum/crafting_recipe/primalhemostat, /datum/crafting_recipe/primalcautery, /datum/crafting_recipe/primalscalpel, /datum/crafting_recipe/primalsaw,
 		/datum/crafting_recipe/primalsetter, /datum/crafting_recipe/bone_crowbar, /datum/crafting_recipe/bone_screwdriver, /datum/crafting_recipe/bone_wrench, /datum/crafting_recipe/bone_wirecutters,
 		/datum/crafting_recipe/bone_welder, /datum/crafting_recipe/munition_box, /datum/crafting_recipe/powder_horn, /datum/crafting_recipe/bonesword, /datum/crafting_recipe/bonesword_elder,
-		/datum/crafting_recipe/saddle, /datum/crafting_recipe/bonepickaxe, /datum/crafting_recipe/alchemy_station, /datum/crafting_recipe/calcinator, /datum/crafting_recipe/cooking_spit,
+		/datum/crafting_recipe/saddle_shank, /datum/crafting_recipe/bonepickaxe, /datum/crafting_recipe/alchemy_station, /datum/crafting_recipe/calcinator, /datum/crafting_recipe/cooking_spit,
 		/datum/crafting_recipe/stone_dropper, /datum/crafting_recipe/goliath_gloves, /datum/crafting_recipe/stone_mortar, /datum/crafting_recipe/bone_arrow, /datum/crafting_recipe/hard_bone_arrow,
 		/datum/crafting_recipe/goliath_mining_satchel, /datum/crafting_recipe/ashlander_armor, /datum/crafting_recipe/ashlander_helmet, /datum/crafting_recipe/ashlander_tunic,
 		/datum/crafting_recipe/ashlander_tunic_fem, /datum/crafting_recipe/tying_post, /datum/crafting_recipe/goliath_curtain, /datum/crafting_recipe/goliath_plant_bag, /datum/crafting_recipe/goliath_halfcloak,
 		/datum/crafting_recipe/sand_whetstone, /datum/crafting_recipe/ashen_vestment, /datum/crafting_recipe/ashen_tabard, /datum/crafting_recipe/heaven_shaker, /datum/crafting_recipe/heaven_shaker_frag,
-		/datum/crafting_recipe/goliathcowl, /datum/crafting_recipe/primitive_splint, /datum/crafting_recipe/bone_pipe, /datum/crafting_recipe/spark_striker
+		/datum/crafting_recipe/goliathcowl, /datum/crafting_recipe/primitive_splint, /datum/crafting_recipe/bone_pipe, /datum/crafting_recipe/spark_striker, /datum/crafting_recipe/skull_mask,
+		/datum/crafting_recipe/alchemy_bandolier, /datum/crafting_recipe/saddle_stormdrifter
 		)
 
 /datum/ghostrole_instantiator/human/player_static/ashlander/GetOutfit(client/C, mob/M, list/params)

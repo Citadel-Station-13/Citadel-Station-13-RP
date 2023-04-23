@@ -308,7 +308,7 @@
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
 		occupant.forceMove(loc)
-		occupant.resting = 1
+		occupant.update_perspective()
 	return ..()
 
 /obj/machinery/cryopod/Initialize(mapload)

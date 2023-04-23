@@ -257,8 +257,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	H.nutrition = 260 //Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
-	H.Unconscious(4)
-	H.updatehealth()
+	H.afflict_unconscious(20 * 4)
+	H.update_health()
 	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
 			E.removed()

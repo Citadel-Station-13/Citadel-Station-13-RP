@@ -26,7 +26,7 @@
 	hologram.visible_message("[hologram] starts forming around [prey]!")
 	to_chat(src, SPAN_NOTICE("You begin forming hardlight holograms around [prey]."))
 
-	if(!do_after(eyeobj, 50, prey, needhand = FALSE))
+	if(!do_after(eyeobj, 50, prey, DO_AFTER_IGNORE_ACTIVE_ITEM ))
 		return
 
 	if(!hologram || hologram.vored)

@@ -31,7 +31,7 @@
 
 /obj/landmark/spawnpoint/latejoin/station/cryogenics
 	method = LATEJOIN_METHOD_CRYOGENIC_STORAGE
-	announce_template = "%NAME%, %JOB%, has complated cryogenic revival."
+	announce_template = "%NAME%, %JOB%, has completed cryogenic revival."
 
 /obj/landmark/spawnpoint/latejoin/station/cyborg
 	method = LATEJOIN_METHOD_ROBOT_STORAGE

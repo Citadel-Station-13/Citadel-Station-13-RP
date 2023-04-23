@@ -26,13 +26,12 @@
 ///Checks mobility move as well as parent checks
 /mob/living/canface()
 /*
-	if(!(mobility_flags & MOBILITY_MOVE))
+	if(!(mobility_flags & MOBILITY_CAN_MOVE))
 		return FALSE
 */
 	if(stat != CONSCIOUS)
 		return FALSE
 	return ..()
-
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
 	if(ismob(mover))
@@ -43,6 +42,13 @@
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
+	return ..()
+
+/mob/living/can_cross_under(atom/movable/mover)
+	if(isliving(mover))
+		var/mob/living/L = mover
+		if(IS_PRONE(L) && IS_STANDING(src))
+			return FALSE
 	return ..()
 
 //Called when something steps onto us. This allows for mulebots and vehicles to run things over. <3
@@ -88,21 +94,21 @@
 
 /mob/living/proc/_handle_atom_bumping(atom/A)
 	set waitfor = FALSE
-	if(_pushing_bumped_atom)
+	if(pushing_bumped_atom)
 		return
 	if(buckled)		// nope!
 		return
-	_pushing_bumped_atom = TRUE
+	pushing_bumped_atom = TRUE
 	if(isliving(A) && handle_living_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
 	if(isobj(A) && handle_obj_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
 	if(ismovable(A) && handle_movable_bump(A))
-		_pushing_bumped_atom = FALSE
+		pushing_bumped_atom = FALSE
 		return
-	_pushing_bumped_atom = FALSE
+	pushing_bumped_atom = FALSE
 
 /**
  * handles mob bumping/fire spread/pushing/etc
@@ -133,33 +139,10 @@
 				to_chat(src, SPAN_WARNING("[L] is restraining [M], you cannot push past."))
 			return TRUE
 
-	// todo: crawling
-	//CIT CHANGES START HERE - makes it so resting stops you from moving through standing folks or over prone bodies without a short delay
-	/*
-		if(!CHECK_MOBILITY(src, MOBILITY_STAND))
-			var/origtargetloc = L.loc
-			if(!pulledby)
-				if(combat_flags & COMBAT_FLAG_ATTEMPTING_CRAWL)
-					return TRUE
-				if(IS_STAMCRIT(src))
-					to_chat(src, "<span class='warning'>You're too exhausted to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>")
-					return TRUE
-				combat_flags |= COMBAT_FLAG_ATTEMPTING_CRAWL
-				visible_message("<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] [L].</span>",
-					"<span class='notice'>You are now attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under": "over"] [L].</span>",
-					target = L, target_message = "<span class='notice'>[src] is attempting to crawl [(CHECK_MOBILITY(L, MOBILITY_STAND)) ? "under" : "over"] you.</span>")
-				if(!do_after(src, CRAWLUNDER_DELAY, target = src) || CHECK_MOBILITY(src, MOBILITY_STAND))
-					combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
-					return TRUE
-			var/src_ATOM_PASS_mob = (pass_flags & ATOM_PASS_MOB)
-			pass_flags |= ATOM_PASS_MOB
-			Move(origtargetloc)
-			if(!src_ATOM_PASS_mob)
-				pass_flags &= ~ATOM_PASS_MOB
-			combat_flags &= ~(COMBAT_FLAG_ATTEMPTING_CRAWL)
-			return TRUE
-	*/
-	//END OF CIT CHANGES
+	// can crawl under
+	if(should_crawl_under(L))
+		try_crawl_under(L)
+		return TRUE
 
 	// we can either push past or swap
 	if(can_bump_position_swap(L))
@@ -170,7 +153,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.species.lightweight && prob(50))
-			H.Weaken(5)
+			H.afflict_paralyze(20 * 5)
 			H.visible_message(SPAN_WARNING("[src] bumps into [H], knocking them to the floor!"))
 			return TRUE
 
@@ -257,7 +240,7 @@
  */
 /mob/living/proc/can_bump_push_mob(mob/living/them)
 	// check status flags
-	if(!(them.status_flags & CANPUSH))
+	if(!(them.status_flags & STATUS_CAN_PUSH))
 		return FALSE
 	//? TRAIT_PUSHIMMUNE checked in movable bump
 	//! this isn't active until we get mobility flags, right click, and shoving
@@ -274,6 +257,18 @@
 	if(!can_move_mob(them, FALSE))
 		return FALSE
 	return TRUE
+
+/**
+ * can try to crawl under; mostly for subtypes
+ */
+/mob/living/proc/should_crawl_under(mob/living/other)
+	return FALSE
+
+/**
+ * try to crawl under
+ */
+/mob/living/proc/try_crawl_under(mob/living/other)
+	return FALSE
 
 /**
  * handles obj bumping/fire spread/pushing/etc

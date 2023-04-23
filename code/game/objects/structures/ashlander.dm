@@ -378,3 +378,19 @@
 	on_enter_occupant_message = "The goliath hide cloak flutters behind you as you begin to walk down the hand-carved stairs."
 	on_store_visible_message_1 = "echoes with fading footsteps"
 	on_store_visible_message_2 = "to the dark below."
+
+//Ashlander Chem Master
+/obj/machinery/chem_master/ashlander
+	name = "advanced alchemical station"
+	desc = "A finely carved bone cabinet designed to hold stone mortars for precise mixing and alchemical work."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "ashchem0"
+	base_icon_state = "ashchem"
+	use_power = USE_POWER_OFF
+	//primi = TRUE
+
+/obj/machinery/chem_master/ashlander/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChemPrimi", name)
+		ui.open()

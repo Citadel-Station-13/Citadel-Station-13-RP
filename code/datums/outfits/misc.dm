@@ -37,6 +37,28 @@
 	id_type = /obj/item/card/id/centcom	//station
 	id_pda_assignment = "Admiral"
 
+/datum/outfit/merchant
+	name = "Nebula Gas Merchant"
+	shoes = /obj/item/clothing/shoes/black
+	gloves = /obj/item/clothing/gloves/brown
+	back = /obj/item/storage/backpack/satchel
+	l_ear = /obj/item/radio/headset/trader
+	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/trader_coveralls
+	id_slot = SLOT_ID_WORN_ID
+	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
+	pda_slot = SLOT_ID_RIGHT_POCKET
+	pda_type = /obj/item/pda/chef //cause I like the look
+	id_pda_assignment = "Merchant"
+
+/datum/outfit/merchant/vox //This needs to be updated.
+	name = "Nebula Gas Merchant - Vox"
+	shoes = /obj/item/clothing/shoes/boots/jackboots/toeless
+	back = /obj/item/tank/vox
+	uniform = /obj/item/clothing/under/vox/vox_robes
+	suit = /obj/item/clothing/suit/armor/vox_scrap
+	mask = /obj/item/clothing/mask/breath
+
 /datum/outfit/zaddat
 	name = "Zaddat Suit"
 	suit = /obj/item/clothing/suit/space/void/zaddat/

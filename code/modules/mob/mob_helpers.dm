@@ -416,10 +416,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 				A.add_overlay(alert_overlay)
 
 /mob/proc/switch_to_camera(obj/machinery/camera/C)
-	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded || !canmove))
-		return FALSE
-	check_eye(src)
-	return TRUE
+	return FALSE
 
 /mob/living/silicon/ai/switch_to_camera(obj/machinery/camera/C)
 	if(!C.can_use() || !is_in_chassis())

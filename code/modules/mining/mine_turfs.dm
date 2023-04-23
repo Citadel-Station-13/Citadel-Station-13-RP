@@ -695,7 +695,7 @@
 			else
 				M.flash_eyes()
 				if(prob(50))
-					M.Stun(5)
+					M.afflict_stun(20 * 5)
 		new /obj/item/artifact_shards(src, 1000, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
 		if(prob(25))
 			excavate_find(prob(5), finds[1])

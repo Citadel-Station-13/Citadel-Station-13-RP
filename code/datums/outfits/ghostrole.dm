@@ -87,26 +87,3 @@
 	belt = /obj/item/gun/energy/zip
 	r_pocket = /obj/item/melee/energy/sword/pirate
 	r_hand = /obj/item/shield/makeshift
-
-//Traders
-/datum/outfit/trader
-	name = "Trader"
-	shoes = /obj/item/clothing/shoes/black
-	gloves = /obj/item/clothing/gloves/brown
-	back = /obj/item/storage/backpack/satchel
-	l_ear = /obj/item/radio/headset/trader
-	glasses = /obj/item/clothing/glasses/sunglasses
-	uniform = /obj/item/clothing/under/trader_coveralls
-	id_slot = SLOT_ID_WORN_ID
-	id_type = /obj/item/card/id/external/merchant	//created a new ID so merchant can open their doors
-	pda_slot = SLOT_ID_RIGHT_POCKET
-	pda_type = /obj/item/pda/chef //cause I like the look
-	id_pda_assignment = "Trader"
-
-/datum/outfit/trader/vox //This needs to be updated.
-	name = "Trader - Vox"
-	shoes = /obj/item/clothing/shoes/boots/jackboots/toeless
-	back = /obj/item/tank/vox
-	uniform = /obj/item/clothing/under/vox/vox_robes
-	suit = /obj/item/clothing/suit/armor/vox_scrap
-	mask = /obj/item/clothing/mask/breath
