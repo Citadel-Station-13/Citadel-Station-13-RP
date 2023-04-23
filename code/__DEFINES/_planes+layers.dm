@@ -98,6 +98,7 @@
  *? Turfs themselves, most flooring.
  */
 #define TURF_PLANE -45
+#define TURF_PLANE_RENDER_TARGET "TURF_PLANE"
 
 #define PLATING_LAYER               (AREA_LAYER)
 #define PLATING_DECAL_LAYER         (AREA_LAYER+0.01) //! Used for decals on plating and for map editors.
@@ -150,6 +151,7 @@
  *! -- Obj Plane
  */
 #define OBJ_PLANE -35
+#define OBJ__PLANE_RENDER_TARGET "OBJ_PLANE"
 
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
@@ -171,6 +173,7 @@
  *! -- Mob Plane
 */
 #define MOB_PLANE -25
+#define MOB_PLANE_RENDER_TARGET "MOB_PLANE"
 
 #define BELOW_MOB_LAYER (OBJ_LAYER+0.9)
 #define ABOVE_MOB_LAYER (MOB_LAYER+0.1)
@@ -211,6 +214,27 @@
  */
 #define LIGHTING_PLANE 10
 #define LIGHTING_LAYER_MAIN 1
+#define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
+
+/**
+ *! -- Soft Darkvision Plane - Dumb
+ *? This plane does not get cut by the lighting plane, and renders additively.
+ *? You render directly onto this plane with **additive blending**, usually by
+ *? putting a render source on the main planes.
+ *?
+ *? This plane is used for oversaturation effects from overtuned NVGs.
+ */
+#define DUMB_DARKVISION_PLANE 11
+#define DUMB_DARKVISION_LAYER_MAIN 11
+
+/**
+ *! -- Soft Darkvision Plane - Smart
+ *? This plane gets cut by the lighting plane automatically, so you don't see its effects in unlit areas.
+ *? You render directly onto this plane with **additive blending**, usually by
+ *? putting a render source on the main planes.
+ */
+#define SMART_DARKVISION_PLANE 12
+#define SMART_DARKVISION_LAYER_MAIN 1
 
 /**
  *! -- Lighting Plane

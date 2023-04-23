@@ -41,12 +41,15 @@
 
 /atom/movable/screen/plane_master/turfs
 	plane = TURF_PLANE
+	render_target = TURF_PLANE_RENDER_TARGET
 
 /atom/movable/screen/plane_master/objs
 	plane = OBJ_PLANE
+	render_target = OBJ_PLANE_RENDER_TARGET
 
 /atom/movable/screen/plane_master/mobs
 	plane = MOB_PLANE
+	render_target = MOB_PLANE_RENDER_TARGET
 
 //Cloaked atoms are visible to ghosts (or for other reasons?)
 /atom/movable/screen/plane_master/cloaked
@@ -81,6 +84,7 @@
 /atom/movable/screen/plane_master/lighting
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
+	render_target = LIGHTING_RENDER_TARGET
 	alpha = 255
 
 /*!
@@ -97,6 +101,13 @@
 /atom/movable/screen/plane_master/lighting/Initialize(mapload)
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
+
+/atom/movable/screen/plane_master/dumb_darkvision
+	plane = DUMB_DARKVISION_PLANE
+	render_target = DUMB_DARKVISION_RENDER_TARGET
+
+/atom/movable/screen/plane_master/smart_darkvision
+	plane = SMART_DARKVISION_PLANE
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
