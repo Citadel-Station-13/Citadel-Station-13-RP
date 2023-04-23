@@ -418,7 +418,6 @@
 		return
 	plane.alpha = 0
 
-
 //? view size
 
 /**

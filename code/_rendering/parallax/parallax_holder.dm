@@ -295,10 +295,6 @@
 		P.CancelAnimation()
 		animate(P, transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
 
-/client/proc/CreateParallax()
-	if(!parallax_holder)
-		parallax_holder = new(src)
-
 /atom/movable/screen/parallax_vis
 	screen_loc = "LEFT,BOTTOM"
 	icon = null

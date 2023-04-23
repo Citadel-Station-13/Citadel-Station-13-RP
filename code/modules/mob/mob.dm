@@ -14,18 +14,21 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
+	// mob lists
 	GLOB.mob_list += src
 	set_key_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
+	// atom HUDs
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
+	// todo: remove hooks
 	hook_vr("mob_new",list(src))
 	// abilities
 	init_abilities()
@@ -48,29 +51,7 @@
 	update_ssd_overlay()
 	return ..()
 
-/**
- * Delete a mob
- *
- * Removes mob from the following global lists
- * * GLOB.mob_list
- * * dead_mob_list
- * * living_mob_list
- *
- * Unsets the focus var
- *
- * Clears alerts for this mob
- *
- * Resets all the observers perspectives to the tile this mob is on
- *
- * qdels any client colours in place on this mob
- *
- * Ghostizes the client attached to this mob
- *
- * Parent call
- *
- * Returns QDEL_HINT_HARDDEL (don't change this)
- */
-/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
+/mob/Destroy()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
@@ -80,9 +61,13 @@
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
+	// todo: remove machine
 	unset_machine()
+	// movespeed
 	movespeed_modification = null
+	// actionspeed
 	actionspeed_modification = null
+	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
@@ -104,15 +89,14 @@
 	dispose_abilities()
 	// this kicks out client
 	ghostize()
+	// rendering
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	if(plane_holder)
-		QDEL_NULL(plane_holder)
-	// with no client, we can safely remove perspective this way snow-flakily
-	if(using_perspective)
-		using_perspective.RemoveMob(src)
-		using_perspective = null
+	// perspective
+	using_perspective?.RemoveMob(src, TRUE)
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	..()
 	return QDEL_HINT_HARDDEL
 

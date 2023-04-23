@@ -51,7 +51,7 @@
 //Cloaked atoms are visible to ghosts (or for other reasons?)
 /atom/movable/screen/plane_master/cloaked
 	plane = CLOAKED_PLANE
-	desired_alpha = 80
+	default_alpha = 80
 	color = "#0000FF"
 
 // todo: remove
@@ -115,43 +115,9 @@
 	special_managed = TRUE
 	client_global = TRUE
 
-#warn client verb
-
 /atom/movable/screen/plane_master/augmented
 	plane = AUGMENTED_PLANE
 	default_invisible = TRUE
-	var/state = FALSE //Saves cost with the lists
-	var/mob/my_mob
-
-/atom/movable/screen/plane_master/augmented/Initialize(mapload, mob/new_mob)
-	. = ..()
-	my_mob = new_mob
-
-/atom/movable/screen/plane_master/augmented/Destroy()
-	my_mob = null
-	return ..()
-
-/atom/movable/screen/plane_master/augmented/set_visibility(var/want = FALSE)
-	. = ..()
-	state = want
-	apply()
-
-/atom/movable/screen/plane_master/augmented/proc/apply()
-	// if(!my_mob.client)
-	// 	return
-
-	/**
-	 * preserving this for when we get generic augmented hud
-	 */
-	// if(state)
-	// 	entopic_users |= my_mob
-	// 	if(my_mob.client)
-	// 		my_mob.client.images |= entopic_images
-	// else
-	// 	entopic_users -= my_mob
-	// 	if(my_mob.client)
-	// 		my_mob.client.images -= entopic_images
-
 
 /atom/movable/screen/plane_master/fullscreen
 	plane = FULLSCREEN_PLANE

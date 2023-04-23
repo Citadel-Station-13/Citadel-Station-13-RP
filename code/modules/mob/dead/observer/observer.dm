@@ -690,7 +690,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
 	set category = "Ghost"
 	ghostvision = !ghostvision
-	updateghostsight()
+	update_ghost_sight()
 	to_chat(src,"You [ghostvision ? "now" : "no longer"] have ghost vision.")
 
 /mob/observer/dead/verb/toggle_darkness()
@@ -698,12 +698,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles your ability to see lighting overlays, and the darkness they create."
 	set category = "Ghost"
 	seedarkness = !seedarkness
-	updateghostsight()
+	update_ghost_sight()
 	to_chat(src,"You [seedarkness ? "now" : "no longer"] see darkness.")
-
-/mob/observer/dead/proc/updateghostsight()
-	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness) //Inversion, because "not seeing" the darkness is "seeing" the lighting plane master.
-	plane_holder.set_vis(VIS_GHOSTS, ghostvision)
 
 /mob/observer/dead/MayRespawn(var/feedback = 0)
 	if(!client)
@@ -829,11 +825,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src, "<span class='ghostalert'><a href=?src=[REF(src)];reenter=1>(Click to re-enter)</a></span>")
 	if(sound)
 		SEND_SOUND(src, sound(sound))
-
-/mob/observer/dead/make_perspective()
-	var/datum/perspective/P = ..()
-	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
-	P.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
 
 /mob/dead/observer/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return isAdminGhostAI(usr)

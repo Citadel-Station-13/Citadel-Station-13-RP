@@ -8,7 +8,7 @@
  */
 /mob/proc/reload_rendering()
 	if(isnull(client.parallax_holder))
-		client.CreateParallax()
+		client.create_parallax()
 	else
 		client.parallax_holder.reset(force = TRUE)
 	if(isnull(client.global_planes))
