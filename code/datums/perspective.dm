@@ -366,6 +366,7 @@
 
 /**
  * removes a source from hard darkvision.
+ * all darkvision from that source will be removed.
  */
 /datum/perspective/proc/unset_hard_darkvision(source)
 
@@ -397,7 +398,23 @@
 		planes_visible[key] = list(source)
 		show_plane(key)
 
+/**
+ * removes a plane's visibility if it was forced to be visible
+ * source should be a trait source
+ *
+ * @params
+ * * key - path to plane (optional); if not specified, all planes from that source is removed.
+ * * source - trait source enum.
+ */
 /datum/perspective/proc/unset_plane_visible(key, source)
+	if(isnull(key))
+		for(key in planes_visible)
+			if(source in planes_visible[key])
+				planes_visible[key] -= source
+				if(!length(planes_visible[key]))
+					planes_visible -= key
+					hide_plane(key)
+		return
 	var/was = planes_visible[key]
 	if(islist(was))
 		was -= source

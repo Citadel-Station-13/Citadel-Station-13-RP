@@ -160,7 +160,7 @@
 	return FBP_NONE
 
 /mob/living/carbon/human/recalculate_vis()
-	if(!vis_enabled || !plane_holder)
+	if(!self_perspective)
 		return
 
 	/**
@@ -198,23 +198,10 @@
 	if(hard_darkvision < 255)
 		self_perspective.set_hard_darkvision(hard_darkvision, CLOTHING_TRAIT)
 
-	if(!compiled_vis.len && !vis_enabled.len)
-		// Nothin' doin'.
-		return
+	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
+	for(var/vis in compiled_vis)
 
-	var/list/oddities = vis_enabled ^ compiled_vis
-
-	if(!oddities.len)
-		// Same thing in both lists!
-		return
-
-	var/list/to_enable = oddities - vis_enabled
-	var/list/to_disable = oddities - compiled_vis
-
-	for(var/vis in to_enable)
 		self_perspective.set_plane_visible(vis, CLOTHING_TRAIT)
-	for(var/vis in to_disable)
-		self_perspective.unset_plane_visible(vis, CLOTHING_TRAIT)
 
 /mob/living/carbon/human/get_restraining_bolt()
 	var/obj/item/implant/restrainingbolt/RB

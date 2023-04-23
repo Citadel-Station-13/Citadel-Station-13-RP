@@ -310,6 +310,3 @@
  * oh yeah and this does NOT work well with FLOAT_LAYER.
  */
 #define MANGLE_PLANE_AND_LAYER(P, L) ((P - LOWEST_PLANE + 1) * (PLANE_MANGLING_FACTOR) + L * LAYER_MANGLING_FACTOR)
-// todo: optimize
-/// Check if a mob can "logically" see an atom plane
-#define MOB_CAN_SEE_PLANE(M, P) (P <= BYOND_PLANE || (P in M.planes_visible) || P >= HUD_PLANE)

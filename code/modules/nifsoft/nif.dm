@@ -619,7 +619,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/add_hard_darkvision(amount)
 	hard_darkvision = amount
 
-/obj/item/nif/proc/remove_hard_darkvision(amount)
+/obj/item/nif/proc/del_hard_darkvision(amount)
 	hard_darkvision = null
 
 /obj/item/nif/proc/vis_update()

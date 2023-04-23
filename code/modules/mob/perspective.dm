@@ -201,3 +201,8 @@
  */
 /mob/proc/GetSeeInDarkSelf()
 	return self_perspective? self_perspective.see_in_dark : see_in_dark
+
+//? Helpers
+
+/mob/proc/can_see_plane(val)
+	return val <= BYOND_PLANE || val >= HUD_PLANE || self_perspective.is_plane_visible(val)
