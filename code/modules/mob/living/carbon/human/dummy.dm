@@ -1,6 +1,7 @@
 /mob/living/carbon/human/dummy
 	real_name = "Test Dummy"
-	status_flags = GODMODE|CANPUSH
+	status_flags = STATUS_GODMODE | STATUS_CAN_PUSH
+	ssd_visible = FALSE
 	no_vore = TRUE //Dummies don't need bellies.
 
 // NO STOP USING THESE FOR ANYTHING BUT PREFS SETUP

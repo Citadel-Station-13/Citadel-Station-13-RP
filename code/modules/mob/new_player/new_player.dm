@@ -12,7 +12,7 @@
 
 	density = 0
 	stat = DEAD
-	canmove = 0
+	mobility_flags = NONE
 
 	anchored = 1	// Don't get pushed around
 
@@ -174,6 +174,9 @@
 				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
+
+/mob/new_player/update_mobility()
+	return
 
 /mob/new_player/Topic(href, href_list[])
 	if(src != usr)

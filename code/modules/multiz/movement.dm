@@ -449,8 +449,8 @@
 		// Hits 10 times, because apparently targeting individual limbs lets certain species survive the fall from atmosphere
 		for(var/i = 1 to 10)
 			adjustBruteLoss(rand(damage_min, damage_max))
-		Weaken(4)
-		updatehealth()
+		afflict_paralyze(20 * 4)
+		update_health()
 
 /mob/living/carbon/human/fall_impact(atom/hit_atom, damage_min, damage_max, silent, planetary)
 	if(!species?.handle_falling(src, hit_atom, damage_min, damage_max, silent, planetary))
@@ -524,7 +524,7 @@
 	for(var/mob/living/L in hit_atom.contents)
 		L.visible_message(SPAN_DANGER("\The [src] crushes \the [L] as it lands on them!"))
 		L.adjustBruteLoss(rand(70, 100))
-		L.Weaken(8)
+		L.afflict_paralyze(20 * 8)
 
 	var/turf/landing = get_turf(hit_atom)
 

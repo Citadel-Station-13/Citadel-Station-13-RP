@@ -272,7 +272,7 @@
 
 /obj/item/shockpaddles/proc/can_revive(mob/living/carbon/human/H) //This is checked right before attempting to revive
 
-	H.updatehealth()
+	H.update_health()
 
 	if(H.isSynthetic())
 		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
@@ -481,8 +481,8 @@
 	M.reload_fullscreen()
 
 	M.emote("gasp")
-	M.Weaken(rand(10,25))
-	M.updatehealth()
+	M.afflict_paralyze(20 * rand(10,25))
+	M.update_health()
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")

@@ -11,7 +11,7 @@
 		if((T && (T in GLOB.using_map.admin_levels)) || prisonwarped.Find(H))
 		//don't warp them if they aren't ready or are already there
 			continue
-		H.Unconscious(5)
+		H.afflict_unconscious(20 * 5)
 		if(H.wear_id)
 			var/obj/item/card/id/id = H.get_idcard()
 			for(var/A in id.access)

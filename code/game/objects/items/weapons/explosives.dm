@@ -56,7 +56,7 @@
 	to_chat(user, "Planting explosives...")
 	user.do_attack_animation(target)
 
-	if(do_after(user, 50) && in_range(user, target))
+	if(do_after(user, 50, target, max_distance = 1))
 		if(!user.attempt_void_item_for_installation(src))
 			return
 		src.target = target

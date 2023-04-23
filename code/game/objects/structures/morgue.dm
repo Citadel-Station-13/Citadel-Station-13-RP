@@ -192,7 +192,7 @@
 		return
 	if (!ismob(O) && !istype(O, /obj/structure/closet/body_bag))
 		return
-	if (!ismob(user) || user.stat || user.lying || user.stunned)
+	if (!ismob(user) || !CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return
 	O.forceMove(src.loc)
 	if (user != O)

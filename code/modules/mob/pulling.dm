@@ -3,7 +3,7 @@
 		return FALSE
 	if(!(AM.can_be_pulled(src)))
 		return FALSE
-	if(throwing || restrained())// || !(mobility_flags & MOBILITY_PULL))
+	if(throwing || restrained())// || !(mobility_flags & MOBILITY_CAN_PULL))
 		return FALSE
 
 	// vorecode start why isn't this move force
@@ -137,3 +137,10 @@
 
 /mob/proc/update_pull_hud_icon()
 	pullin?.icon_state = pulling? "pull1" : "pull0"
+
+/mob/on_start_pulled_by(atom/movable/puller)
+	update_mobility()
+
+/mob/on_stop_pulled_by(atom/movable/puller)
+	. = ..()
+	update_mobility()

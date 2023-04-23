@@ -255,7 +255,7 @@
 			if (input2 == "Visible")
 				m_type = 1
 			else if (input2 == "Hearable")
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 					return
 				m_type = 2
 			else
@@ -316,7 +316,7 @@
 
 
 		if ("choke")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "clutches [T.his] throat desperately!"
 				m_type = 1
 			else
@@ -343,14 +343,14 @@
 			if (!src.restrained())
 				message = "flaps [T.his] wings."
 				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
 
 		if ("aflap")
 			if (!src.restrained())
 				message = "flaps [T.his] wings ANGRILY!"
 				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				if(HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT))
 					m_type = 1
 
 		if("ara")
@@ -376,7 +376,7 @@
 			m_type = 1
 
 		if ("chuckle")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to chuckle."
 				m_type = 1
 			else
@@ -397,13 +397,13 @@
 
 		if ("faint")
 			message = "faints."
-			if(src.sleeping)
+			if(!IS_CONSCIOUS(src))
 				return //Can't faint while asleep
-			Sleeping(10) //Short-short nap
+			afflict_sleeping(20 * 10) //Short-short nap
 			m_type = 1
 
 		if("cough", "coughs")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to cough!"
 				m_type = 1
 			else
@@ -435,7 +435,7 @@
 					m_type = 2
 
 		if("bcough")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to cough up blood!"
 				m_type = 1
 			else
@@ -473,7 +473,7 @@
 			m_type = 1
 
 		if ("gasp")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to be gasping!"
 				m_type = 1
 			else
@@ -489,7 +489,7 @@
 			m_type = 1
 
 		if ("giggle")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "giggles silently!"
 				m_type = 1
 			else
@@ -552,7 +552,7 @@
 			m_type = 1
 
 		if ("cry")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "cries."
 				m_type = 1
 			else
@@ -564,7 +564,7 @@
 					m_type = 2
 
 		if ("sigh")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "sighs."
 				m_type = 1
 			else
@@ -576,7 +576,7 @@
 					m_type = 2
 
 		if ("laugh")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "acts out a laugh."
 				m_type = 1
 			else
@@ -601,11 +601,11 @@
 		if ("mumble")
 			message = "mumbles!"
 			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				m_type = 1
 
 		if ("grumble")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "grumbles!"
 				m_type = 1
 			if (!muzzled)
@@ -616,7 +616,7 @@
 				m_type = 2
 
 		if ("groan")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to groan!"
 				m_type = 1
 			else
@@ -628,7 +628,7 @@
 					m_type = 2
 
 		if ("moan")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears to moan!"
 				m_type = 1
 			else
@@ -642,7 +642,7 @@
 			if (!M)
 				param = null
 			else
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 					message = "takes a drag from a cigarette and blows \"[M]\" out in smoke."
 					m_type = 1
 				else
@@ -704,7 +704,7 @@
 		if ("shiver")
 			message = "shivers."
 			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				m_type = 1
 
 		if ("pale")
@@ -716,7 +716,7 @@
 			m_type = 1
 
 		if("sneeze", "sneezes")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "sneezes."
 				m_type = 1
 			else
@@ -749,11 +749,11 @@
 		if ("sniff")
 			message = "sniffs."
 			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				m_type = 1
 
 		if ("snore")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "sleeps soundly."
 				m_type = 1
 			else
@@ -765,7 +765,7 @@
 					m_type = 2
 
 		if ("whimper")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "appears hurt."
 				m_type = 1
 			else
@@ -784,14 +784,14 @@
 			if (!muzzled)
 				message = "yawns."
 				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+				if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 					m_type = 1
 
 		if ("collapse")
-			Unconscious(2)
+			afflict_unconscious(20 * 2)
 			message = "collapses!"
 			m_type = 2
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				m_type = 1
 
 		if("hug")
@@ -824,7 +824,7 @@
 					M = null
 
 				if (M)
-					if (M.canmove && !M.r_hand && !M.restrained())
+					if (CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 						message = "shakes hands with [M]."
 					else
 						message = "holds out [T.his] hand to [M]."
@@ -901,7 +901,7 @@
 					//adding damage for aslaps to stop the spam
 
 		if("scream", "screams")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "acts out a scream!"
 				m_type = 1
 			else
@@ -923,7 +923,7 @@
 					message = "makes a very loud noise."
 					m_type = 2
 		if("squeak","squeaks")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "acts out a soft squeak."
 				m_type = 1
 			else
@@ -933,7 +933,7 @@
 					playsound(loc, "sound/effects/mouse_squeak.ogg", 50, 1)
 
 		if("meow", "meows")
-			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
+			if HAS_TRAIT_FROM(src, TRAIT_MUTE, MIME_TRAIT)
 				message = "acts out a soft mrowl."
 				m_type = 1
 			else
@@ -1204,7 +1204,7 @@
 		if ("flip")
 			var/list/involved_parts = list(BP_L_LEG, BP_R_LEG, BP_L_FOOT, BP_R_FOOT)
 			//Check if they are physically capable
-			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained() || involved_parts.len < 2)
+			if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || involved_parts.len < 2)
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else
@@ -1216,7 +1216,7 @@
 					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
 				else
 					if(prob(30)) // Little known fact: HRP is /tg/ + 10
-						src.Weaken(2)
+						src.afflict_paralyze(20 * 2)
 						if(prob(50))
 							src.adjustBruteLoss(1)
 							message = "attempts to do a flip and falls on their face. Ouch!"

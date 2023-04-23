@@ -83,9 +83,8 @@
 	else
 		return .=..()
 
-/mob/living/simple_mob/vore/demon/update_canmove()
+// todo: better way
+/mob/living/simple_mob/vore/demon/update_mobility()
 	if(is_shifting)
-		canmove = FALSE
-		return canmove
-	else
-		return ..()
+		return (mobility_flags = MOBILITY_CAN_MOVE)
+	return ..()

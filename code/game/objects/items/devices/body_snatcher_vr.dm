@@ -56,11 +56,11 @@
 					prey_mind.transfer(user)
 					M.ooc_notes = user_ooc_notes //Let's keep their OOC notes over to their new body.
 					user.ooc_notes = target_ooc_notes
-					user.sleeping = 10 //Device knocks out both the user and the target.
+					user.afflict_sleeping(10 SECONDS)
 					user.eye_blurry = 30 //Blurry vision while they both get used to their new body's vision
 					user.slurring = 50 //And let's also have them slurring while they attempt to get used to using their new body.
 					if(ishuman(M)) //Let's not have the AI slurring, even though its downright hilarious.
-						M.sleeping = 10
+						M.afflict_sleeping(10 SECONDS)
 						M.eye_blurry = 30
 						M.slurring = 50
 
