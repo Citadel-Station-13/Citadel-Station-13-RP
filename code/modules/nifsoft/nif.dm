@@ -89,6 +89,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/list/save_data
 
 	var/list/planes_visible = list()
+	var/hard_darkvision
 
 //Constructor comes with a free AR HUD
 /obj/item/nif/Initialize(mapload, wear, list/load_data)
@@ -614,6 +615,12 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	if(!planeid)
 		return
 	planes_visible -= planeid
+
+/obj/item/nif/proc/add_hard_darkvision(amount)
+	hard_darkvision = amount
+
+/obj/item/nif/proc/remove_hard_darkvision(amount)
+	hard_darkvision = null
 
 /obj/item/nif/proc/vis_update()
 	if(human)

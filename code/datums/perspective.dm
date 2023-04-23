@@ -364,9 +364,17 @@
  */
 /datum/perspective/proc/set_hard_darkvision(amount, source)
 
-/datum/perspective/proc/unset_hard_darkvision(amount, source)
+/**
+ * removes a source from hard darkvision.
+ */
+/datum/perspective/proc/unset_hard_darkvision(source)
 
-/datum/perspective/proc/has_hard_darkvision(amount, source)
+/**
+ * returns amount of hard darkvision we have from a source, null if not
+ *
+ * if we have multiple, this returns the lowest one.
+ */
+/datum/perspective/proc/has_hard_darkvision(source)
 
 #warn impl all
 

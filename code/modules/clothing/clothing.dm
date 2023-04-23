@@ -15,7 +15,9 @@
 
 	var/flash_protection = FLASH_PROTECTION_NONE
 	var/tint = TINT_NONE
+	// todo: probably refactor these two
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
+	var/hard_darkvision // hard darkvision, same as enables planes, respects plane slots
 	var/list/plane_slots		//But only if it's equipped into this specific slot
 
 	// todo: kill this stupid shit lmao

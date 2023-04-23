@@ -59,6 +59,8 @@
 
 	/// List of vision planes this nifsoft enables when active
 	var/list/planes_enabled = null
+	/// if this gives hard darkvision
+	var/hard_darkvision
 	/// Whether or not this NIFSoft provides exclusive vision modifier
 	var/vision_exclusive = FALSE
 	/// List of NIFSofts that are disabled when this one is enabled
@@ -111,6 +113,8 @@
 		if(planes_enabled)
 			nif.add_plane(planes_enabled)
 			nif.vis_update()
+		if(hard_darkvision)
+			nif.add_hard_darkvision(hard_darkvision)
 
 		//If we have other NIFsoft we need to turn off
 		if(incompatible_with)
@@ -143,6 +147,8 @@
 		if(planes_enabled)
 			nif.del_plane(planes_enabled)
 			nif.vis_update()
+		if(hard_darkvision)
+			nif.del_hard_darkvision(hard_darkvision)
 
 		//Clear all our activation flags
 		nif.clear_flag(vision_flags,NIF_FLAGS_VISION)

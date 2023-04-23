@@ -62,7 +62,7 @@
 	var/datum/tgui_module_old/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 	plane_slots = list(SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
@@ -141,7 +141,7 @@
 	action_button_name = "AR Console (Crew Monitor)"
 	prescription = 1
 	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
@@ -160,7 +160,7 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
@@ -248,7 +248,7 @@
 	icon_state = "pf_goggles"
 	prescription = 1
 	action_button_name = "Toggle Zoom"
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
 	zoom(wornslot = SLOT_ID_GLASSES)
@@ -260,7 +260,7 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
 	. = ..()
@@ -272,7 +272,7 @@
     icon_state = "hudpatch"
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
     body_cover_flags = 0
-    enables_planes = list(VIS_AUGMENTED)
+    enables_planes = list(/atom/movable/screen/plane_master/augmented)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -333,4 +333,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_cover_flags = 0
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)

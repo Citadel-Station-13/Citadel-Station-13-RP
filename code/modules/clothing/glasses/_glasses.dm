@@ -159,7 +159,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	vision_flags = SEE_TURFS
 	body_cover_flags = EYES //cit change
-	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
+	hard_darkvision = 0
 
 /obj/item/clothing/glasses/meson/Initialize(mapload)
 	. = ..()
@@ -231,7 +231,7 @@ BLIND     // can't see anything
 	body_cover_flags = EYES // Cit change
 	off_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
-	enables_planes = list(VIS_FULLBRIGHT)
+	hard_darkvision = 0
 
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
@@ -306,7 +306,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
 	body_cover_flags = EYES //cit change
-	enables_planes = list(VIS_FULLBRIGHT)
+	hard_darkvision = 0
 
 /obj/item/clothing/glasses/material/Initialize(mapload)
 	. = ..()
@@ -329,7 +329,7 @@ BLIND     // can't see anything
 	vision_flags = SEE_OBJS | SEE_TURFS
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
-	enables_planes = list(VIS_FULLBRIGHT, VIS_MESONS)
+	hard_darkvision = 0
 
 /obj/item/clothing/glasses/graviton/Initialize(mapload)
 	. = ..()
@@ -605,7 +605,8 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
-	enables_planes = list(VIS_FULLBRIGHT, VIS_CLOAKED)
+	hard_darkvision = 0
+	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
 
 /obj/item/clothing/glasses/thermal/emp_act(severity)

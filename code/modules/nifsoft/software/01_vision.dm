@@ -25,7 +25,7 @@
 	list_pos = NIF_CIVILIAN_AR
 	cost = 50
 	a_drain = 0.01
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_CIVILIAN)
 	data_huds = list(DATA_HUD_ID_JOB)
 	incompatible_with = list(NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
@@ -37,7 +37,7 @@
 	cost = 150
 	access = ACCESS_MEDICAL_MAIN
 	a_drain = 0.01
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	data_huds = list(DATA_HUD_MEDICAL)
 	vision_flags = (NIF_V_AR_MEDICAL)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
@@ -50,7 +50,7 @@
 	access = ACCESS_SECURITY_EQUIPMENT
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED)
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_SECURITY)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
@@ -62,7 +62,7 @@
 	access = ACCESS_ENGINEERING_MAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_ID_JOB)
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_ENGINE)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_SCIENCE_AR,NIF_OMNI_AR)
 
@@ -86,7 +86,7 @@
 	access = ACCESS_COMMAND_CAPTAIN
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL)
-	planes_enabled = list(VIS_AUGMENTED)
+	planes_enabled = list(/atom/movable/screen/plane_master/augmented)
 	vision_flags = (NIF_V_AR_OMNI)
 	incompatible_with = list(NIF_CIVILIAN_AR,NIF_MEDICAL_AR,NIF_SECURITY_AR,NIF_ENGINE_AR,NIF_SCIENCE_AR)
 
@@ -127,7 +127,7 @@
 	a_drain = 0.1
 	access = ACCESS_ENGINEERING_MAIN
 	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT, VIS_MESONS)
+	hard_darkvision = 0
 	vision_flags = (NIF_V_MESONS)
 	vision_flags_mob = SEE_TURFS
 	incompatible_with = list(NIF_MATERIAL,NIF_THERMALS,NIF_NIGHTVIS)
@@ -141,7 +141,7 @@
 	a_drain = 0.1
 	access = ACCESS_SCIENCE_MAIN
 	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT)
+	hard_darkvision = 0
 	vision_flags = (NIF_V_MATERIAL)
 	vision_flags_mob = SEE_OBJS
 	incompatible_with = list(NIF_MESONS,NIF_THERMALS,NIF_NIGHTVIS)
@@ -156,22 +156,9 @@
 	illegal = TRUE
 	access = 999
 	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT, VIS_CLOAKED)
+	hard_darkvision = 0
+	planes_enabled = list(/atom/movable/screen/plane_master/cloaked)
 	vision_flags = (NIF_V_THERMALS)
 	vision_flags_mob = SEE_MOBS
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_NIGHTVIS)
-	vision_exclusive = TRUE
-
-/datum/nifsoft/nightvis
-	name = "Low-Light Amp"
-	desc = "Similar to the worn Night Vision Goggles, these allow you to see in complete darkness."
-	list_pos = NIF_NIGHTVIS
-	cost = 300 // op as shit
-	a_drain = 0.1
-	access = ACCESS_SECURITY_EQUIPMENT
-	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT)
-	vision_flags = (NIF_V_NIGHTVIS)
-	darkness_view = 7
-	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
 	vision_exclusive = TRUE

@@ -142,8 +142,10 @@
 		AddSightSelf(SEE_MOBS)
 		fullbright = TRUE
 
-	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
-	plane_holder?.set_vis(VIS_MESONS, seemeson)
+	if(fullbright)
+		self_perspective.set_hard_darkvision(0, INNATE_TRAIT)
+	else
+		self_perspective.unset_hard_darkvision(source = INNATE_TRAIT)
 
 	if (src.healths)
 		if (src.stat != 2)

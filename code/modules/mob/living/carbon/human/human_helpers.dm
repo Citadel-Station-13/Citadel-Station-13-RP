@@ -169,12 +169,15 @@
 	 */
 	var/list/slots = list(SLOT_ID_GLASSES,SLOT_ID_HEAD)
 	var/list/compiled_vis = list()
+	var/hard_darkvision = 255
 
 	for(var/slot in slots)
 		// Change this type if you move the vision stuff to item or something.
 		var/obj/item/clothing/O = item_by_slot(slot)
 		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
 			compiled_vis |= O.enables_planes
+		if(!isnull(O.hard_darkvision))
+			hard_darkvision = min(hard_darkvision, O.hard_darkvision)
 
 	// Check to see if we have a rig (ugh, blame rigs, desnowflake this).
 	var/obj/item/rig/rig = back
@@ -183,16 +186,21 @@
 			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
 				var/obj/item/clothing/glasses/V = rig.visor.vision.glasses
 				compiled_vis |= V.enables_planes
+				if(!isnull(V.hard_darkvision))
+					hard_darkvision = min(hard_darkvision, V.hard_darkvision)
 
 	// NIF Support.
 	if(nif)
 		compiled_vis |= nif.planes_visible()
+		hard_darkvision = min(hard_darkvision, isnull(nif.hard_darkvision)? 255 : nif.hard_darkvision)
 
+	self_perspective.unset_hard_darkvision(source = CLOTHING_TRAIT)
+	if(hard_darkvision < 255)
+		self_perspective.set_hard_darkvision(hard_darkvision, CLOTHING_TRAIT)
 
 	if(!compiled_vis.len && !vis_enabled.len)
 		// Nothin' doin'.
 		return
-
 
 	var/list/oddities = vis_enabled ^ compiled_vis
 
@@ -204,11 +212,9 @@
 	var/list/to_disable = oddities - compiled_vis
 
 	for(var/vis in to_enable)
-		plane_holder.set_vis(vis,TRUE)
-		vis_enabled += vis
+		self_perspective.set_plane_visible(vis, CLOTHING_TRAIT)
 	for(var/vis in to_disable)
-		plane_holder.set_vis(vis,FALSE)
-		vis_enabled -= vis
+		self_perspective.unset_plane_visible(vis, CLOTHING_TRAIT)
 
 /mob/living/carbon/human/get_restraining_bolt()
 	var/obj/item/implant/restrainingbolt/RB
