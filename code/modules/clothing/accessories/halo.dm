@@ -32,7 +32,8 @@
 	. = ..()
 	if(inhands)
 		return
-	MA.filters += filter(type = "drop_shadow", size = 3, color = src.color? src.color : "#ffffff")
+	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3, color = src.color? src.color : "#ffffff")
+	MA.filters += filter(arglist(applying))
 	MA.appearance_flags |= KEEP_APART
 	if(M)
 		MA.transform = M.transform
@@ -44,8 +45,9 @@
 	// todo: mob emissives, emissive renderer.
 	var/mutable_appearance/emissive = emissive_appearance(icon_used, state_used)
 	emissive.pixel_y += align_y
-	emissive.filters += filter(type = "drop_shadow", size = 5, color = "#ffffff77")
-	emissive.appearance_flags |= KEEP_APART
+	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3.5, offset = 1, color = "#ffffff")
+	emissive.filters += filter(arglist(applying))
+	emissive.appearance_flags |= (KEEP_APART | KEEP_TOGETHER)
 	if(M)
 		emissive.transform = M.transform
 	. += emissive
