@@ -416,7 +416,7 @@ STANDARD_ACCESS_DATUM(ACCESS_FACTION_TALON, faction/talon, "Talon")
 //? Biolab
 
 #define ACCESS_FACTION_BIOLAB 250
-STANDARD_ACCESS_DATUM(ACCESS_FACTION_TALON, faction/biolab, "Biolab")
+STANDARD_ACCESS_DATUM(ACCESS_FACTION_BIOLAB, faction/biolab, "Biolab")
 
 
 //? Misc
