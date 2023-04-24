@@ -45,7 +45,7 @@
 	// todo: mob emissives, emissive renderer.
 	var/mutable_appearance/emissive = emissive_appearance(icon_used, state_used)
 	emissive.pixel_y += align_y
-	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3.5, offset = 1, color = "#ffffff")
+	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3.5, offset = 1, color = "#ffffff77")
 	emissive.filters += filter(arglist(applying))
 	emissive.appearance_flags |= (KEEP_APART | KEEP_TOGETHER)
 	if(M)
