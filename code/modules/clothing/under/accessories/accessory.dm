@@ -7,6 +7,8 @@
 	appearance_flags = RESET_COLOR	// Stops accessory_host's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
 	w_class = ITEMSIZE_SMALL
+	accessory_render_legacy = TRUE
+	accessory_render_specific = FALSE
 	var/slot = ACCESSORY_SLOT_DECOR
 	var/image/mob_overlay = null
 	var/overlay_state = null
@@ -92,7 +94,7 @@
 
 	// inventory handling end
 
-	cache_accessory_inv()
+	accessory_inv_cached = render_accessory_inv()
 	if(accessory_inv_cached)
 		accessory_host.add_overlay(accessory_inv_cached)
 
@@ -115,6 +117,7 @@
 
 	if(accessory_inv_cached)
 		accessory_host.cut_overlay(accessory_inv_cached)
+		accessory_inv_cached = null
 	accessory_host = null
 
 	if(user)

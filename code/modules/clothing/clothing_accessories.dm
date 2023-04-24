@@ -10,6 +10,11 @@
 /obj/item/clothing/worn_mob()
 	return isnull(accessory_host)? ..() : accessory_host.worn_mob()
 
+/obj/item/clothing/update_worn_icon()
+	if(accessory_host)
+		return accessory_host.update_worn_icon()
+	return ..()
+
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
 	// propagate through accessories
@@ -85,11 +90,6 @@
 	var/mutable_appearance/MA = mutable_appearance(icon, accessory_inv_state || icon_state)
 	MA.dir = SOUTH
 	return MA
-
-/obj/item/clothing/proc/cache_accessory_inv()
-	if(!isnull(accessory_inv_cached))
-		return
-	accessory_inv_cached = render_accessory_inv()
 
 /**
  * Renders mob appearance for us as an accessory. Returns an image, or list of images.
