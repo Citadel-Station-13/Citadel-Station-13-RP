@@ -31696,9 +31696,6 @@
 /obj/machinery/disposal,
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
