@@ -19,7 +19,7 @@
 	whitelist_languages = list(
 		/datum/language/tajaran,
 		/datum/language/tajaranakhani,
-		/datum/language/tajsign,
+		/datum/language/tajsign
 	)
 
 	darksight = 8

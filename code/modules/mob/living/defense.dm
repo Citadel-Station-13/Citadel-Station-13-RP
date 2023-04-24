@@ -172,8 +172,8 @@
 	flash_pain()
 
 	if (stun_amount)
-		Stun(stun_amount)
-		Weaken(stun_amount)
+		afflict_stun(20 * stun_amount)
+		afflict_paralyze(20 * stun_amount)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 
@@ -363,7 +363,7 @@
 		ai_holder.react_to_attack(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
-	spawn(1) updatehealth()
+	spawn(1) update_health()
 	return 1
 
 /mob/living/proc/IgniteMob()
@@ -452,7 +452,7 @@
 // Called when struck by lightning.
 /mob/living/proc/lightning_act()
 	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
-	Unconscious(5)
+	afflict_unconscious(20 * 5)
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
@@ -473,7 +473,7 @@
 	inflict_poison_damage(5)
 	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
 	adjustToxLoss(5)
-	confused = max(confused, 1)
+	Confuse(1)
 
 //Blood
 //Acid

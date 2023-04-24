@@ -158,7 +158,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(prob(10))
-			L.Stun(2)
+			L.afflict_stun(20 * 2)
 
 //Roach Types
 /obj/item/holder/roach

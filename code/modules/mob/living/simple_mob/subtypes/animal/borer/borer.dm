@@ -30,7 +30,7 @@
 	attacktext = list("nipped")
 	friendly = list("prods")
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 

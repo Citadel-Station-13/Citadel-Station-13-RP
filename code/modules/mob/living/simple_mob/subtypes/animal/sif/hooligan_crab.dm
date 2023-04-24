@@ -86,7 +86,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		var/was_stunned = L.incapacitated(INCAPACITATION_DISABLED)
-		L.Weaken(weaken_amount)
+		L.afflict_paralyze(20 * weaken_amount)
 
 		playsound(L, 'sound/effects/break_stone.ogg', 75, 1)
 		if(was_stunned) // Try to prevent chain-stuns by having them thrown.

@@ -41,7 +41,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
@@ -60,7 +60,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle in your current state.")
 		return
 
@@ -68,13 +68,13 @@
 
 	var/failed
 	if(prob(75))
-		T.Weaken(rand(0.5,3))
+		T.afflict_paralyze(20 * rand(0.5,3))
 	else
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 	if(failed)
-		src.Weaken(rand(2,4))
+		src.afflict_paralyze(20 * rand(2,4))
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))

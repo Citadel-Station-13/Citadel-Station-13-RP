@@ -74,7 +74,7 @@
 		//MIND TRANSFER END
 
 		//Target is handled in ..(), so we handle the caster here
-		caster.Unconscious(amt_paralysis)
+		caster.afflict_unconscious(20 * amt_paralysis)
 
 		//After a certain amount of time the victim gets a message about being in a different body.
 		spawn(msg_wait)

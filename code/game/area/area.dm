@@ -589,11 +589,11 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
-			H.AdjustStunned(6)
-			H.AdjustWeakened(6)
+			H.adjust_stunned(20 * 6)
+			H.adjust_paralyzed(20 * 6)
 		else
-			H.AdjustStunned(3)
-			H.AdjustWeakened(3)
+			H.adjust_stunned(20 * 3)
+			H.adjust_paralyzed(20 * 3)
 		to_chat(mob, "<span class='notice'>The sudden appearance of gravity makes you fall to the floor!</span>")
 		playsound(get_turf(src), "bodyfall", 50, 1)
 

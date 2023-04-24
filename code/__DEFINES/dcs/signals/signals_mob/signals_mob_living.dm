@@ -53,19 +53,6 @@
 
 //! ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS! !//
 
-/// From base of mob/living/Stun() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_STUN "living_stun"
-/// From base of mob/living/Knockdown() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_KNOCKDOWN "living_knockdown"
-/// From base of mob/living/Paralyze() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_PARALYZE "living_paralyze"
-/// From base of mob/living/Immobilize() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_IMMOBILIZE "living_immobilize"
-/// From base of mob/living/Unconscious() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_UNCONSCIOUS "living_unconscious"
-/// From base of mob/living/Sleeping() (amount, ignore_canstun)
-////#define COMSIG_LIVING_STATUS_SLEEP "living_sleeping"
-	////#define COMPONENT_NO_STUN (1<<0) //For all of them
 /// From base of /mob/living/can_track(): (mob/user)
 ////#define COMSIG_LIVING_CAN_TRACK "mob_cantrack"
 	////#define COMPONENT_CANT_TRACK (1<<0)

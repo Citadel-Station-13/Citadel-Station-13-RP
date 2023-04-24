@@ -85,12 +85,12 @@
 	..()
 	if(H)
 		humanform = H
-		updatehealth()
+		update_health()
 
 	else
 		qdel(src)
 
-/mob/living/simple_mob/slime/promethean/updatehealth()
+/mob/living/simple_mob/slime/promethean/update_health()
 	if(!humanform)
 		return ..()
 
@@ -112,7 +112,6 @@
 	//Grab any other interesting values
 	confused = humanform.confused
 	radiation = humanform.radiation
-	paralysis = humanform.paralysis
 
 	//Update our hud if we have one
 	if(healths)
@@ -230,7 +229,7 @@
 
 	//Blob form
 	if(!ishuman(src))
-		if(humanform.temporary_form.stat || paralysis || stunned || weakened || restrained())
+		if(humanform.temporary_form.stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())
 			to_chat(src,"<span class='warning'>You can only do this while not stunned.</span>")
 		else
 			humanform.prommie_outofblob(src)
@@ -372,7 +371,7 @@
 	if(r_hand) blob.prev_right_hand = r_hand
 
 	//Put our owner in it (don't transfer var/mind)
-	blob.Weaken(2)
+	blob.afflict_paralyze(20 * 2)
 	blob.transforming = TRUE
 	blob.ckey = ckey
 	blob.ooc_notes = ooc_notes
@@ -440,7 +439,7 @@
 	forceMove(reform_spot)
 
 	//Put our owner in it (don't transfer var/mind)
-	Weaken(2)
+	afflict_paralyze(20 * 2)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
 	transforming = TRUE
 	ckey = blob.ckey

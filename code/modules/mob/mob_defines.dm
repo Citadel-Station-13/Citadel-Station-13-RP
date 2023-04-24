@@ -9,6 +9,7 @@
 	generic_canpass = FALSE
 	sight = SIGHT_FLAGS_DEFAULT
 	rad_flags = NONE
+	atom_colouration_system = TRUE
 
 	//? Core
 	/// mobs use ids as ref tags instead of actual refs.
@@ -95,10 +96,31 @@
 	/// What we're interacting with right now, associated to list of reasons and the number of concurrent interactions for that reason.
 	var/list/interacting_with
 
+	//? Mobility / Stat
+	/// mobility flags from [code/__DEFINES/mobs/mobility.dm], updated by update_mobility(). use traits to remove these.
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+	/// force-enabled mobility flags, usually updated by traits
+	var/mobility_flags_forced = NONE
+	/// force-blocked mobility flags, usually updated by traits
+	var/mobility_flags_blocked = NONE
+	/// Super basic information about a mob's stats - flags are in [code/__DEFINES/mobs/stat.dm], this is updated by update_stat().
+	var/stat = CONSCIOUS
+	//  todo: move to /living level, things should be checking mobility flags anyways.
+	/// which way are we lying down right now? in degrees. 0 default since we're not laying down.
+	var/lying = 0
+
+	//? Status Effects
+	/// A list of all status effects the mob has
+	var/list/status_effects
+
+	//? SSD
+	/// current ssd overlay
+	var/image/ssd_overlay
+	/// do we use ssd overlays?
+	var/ssd_visible = FALSE
+
 	//? unsorted / legacy
 	var/datum/mind/mind
-	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak
-	var/stat = CONSCIOUS
 
 	var/next_move = null // For click delay, despite the misleading name.
 
@@ -155,15 +177,12 @@
 	var/use_me = 1
 	var/damageoverlaytemp = 0
 	var/computer_id = null
-	var/already_placed = 0.0
 	var/obj/machinery/machine = null
 	var/other_mobs = null
 	var/memory = ""
-	var/poll_answer = 0.0
 	var/sdisabilities = 0	//?Carbon
 	var/disabilities = 0	//?Carbon
 	var/transforming = null	//?Carbon
-	var/other = 0.0
 	var/eye_blind = null	//?Carbon
 	var/eye_blurry = null	//?Carbon
 	var/ear_deaf = null		//?Carbon
@@ -185,12 +204,7 @@
 	var/confused = 0		//?Carbon
 	var/antitoxs = null
 	var/phoron = null
-	var/sleeping = 0		//?Carbon
-	var/resting = 0			//?Carbon
-	var/lying = 0
-	var/lying_prev = 0
 
-	var/canmove = 1
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
 	var/unacidable = 0
@@ -218,16 +232,12 @@
 
 	var/bodytemperature = 310.055 //98.7 F
 	var/drowsyness = 0 //?Carbon
-	var/charges = 0
 
 	var/nutrition = 400 //?Carbon
 	var/hydration = 400 //?Carbon
 
 	/// How long this guy is overeating. //?Carbon
 	var/overeatduration = 0
-	var/paralysis = 0
-	var/stunned = 0
-	var/weakened = 0
 	var/losebreath = 0 //?Carbon
 	var/shakecamera = 0
 	var/m_int = null //?Living
@@ -238,14 +248,6 @@
 	var/datum/hud/hud_used = null
 
 	var/list/grabbed_by = list(  )
-
-	var/list/mapobjs = list()
-
-	/// whether or not we're prepared to throw stuff.
-	var/in_throw_mode = THROW_MODE_OFF
-
-	// todo: nuke from orbit
-	var/music_lastplayed = "null"
 
 	// todo: nuke from orbit
 	var/job = null //?Living
@@ -284,11 +286,8 @@
 
 	mouse_drag_pointer = MOUSE_ACTIVE_POINTER
 
-	/// Set to TRUE to trigger update_icons() at the next life() call.
-	var/update_icon = TRUE
-
 	/// Bitflags defining which status effects can be inflicted. (replaces canweaken, canstun, etc)
-	var/status_flags = CANSTUN|CANWEAKEN|CANPARALYSE|CANPUSH
+	var/status_flags = STATUS_FLAGS_DEFAULT
 
 	var/area/lastarea = null
 
@@ -339,12 +338,8 @@
 
 	var/last_radio_sound = -INFINITY
 
-	/// A mock client, provided by tests and friends
-	var/datum/client_interface/mock_client
 
-	//! ## Virgo Defines
-	/// Do I have the HUD enabled?
-	var/vantag_hud = FALSE
+	//? vorestation legacy
 	/// Allows flight.
 	var/flying = FALSE
 	/// For holding onto a temporary form.
@@ -355,6 +350,20 @@
 	var/atom/movable/screen/shadekin/shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
 
-	//! Typing Indicator
+	var/muffled = 0 					// Used by muffling belly
+
+	//? Unit Tests
+	/// A mock client, provided by tests and friends
+	var/datum/client_interface/mock_client
+
+	//? Throwing
+	/// whether or not we're prepared to throw stuff.
+	var/in_throw_mode = THROW_MODE_OFF
+
+	//? Typing Indicator
 	var/typing = FALSE
 	var/mutable_appearance/typing_indicator
+
+	//? Movement
+	/// Is self-moving.
+	var/in_selfmove

@@ -27,7 +27,7 @@
 		}; \
 		if (_L && _L[trait]) { \
 			for (var/_T in _L[trait]) { \
-				if ((!_S && (_T != ROUNDSTART_TRAIT)) || (_T in _S)) { \
+				if ((!_S) || (_T in _S)) { \
 					_L[trait] -= _T \
 				} \
 			};\

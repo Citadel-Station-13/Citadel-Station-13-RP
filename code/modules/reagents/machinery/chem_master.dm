@@ -36,6 +36,8 @@
 	var/mode = 1
 	/// Decides what UI to show. If TRUE shows UI of CondiMaster, if FALSE - ChemMaster
 	var/condi = FALSE
+	/// The same as the above, but for the Primitive UI, instead of the CondiMaster.
+	//var/primi = FALSE
 
 	/// Currently selected pill style.
 	var/chosen_pill_style = 1
