@@ -566,3 +566,22 @@
 
 /turf/proc/update_rad_insulation()
 	rad_insulation_contents = 1
+
+//? atom color - we don't use the expensive system.
+
+/turf/get_atom_colour()
+	return color
+
+/turf/add_atom_colour(coloration, colour_priority)
+	color = coloration
+
+/turf/remove_atom_colour(colour_priority, coloration)
+	color = null
+
+/turf/update_atom_colour()
+	return
+
+/turf/copy_atom_colour(atom/other, colour_priority)
+	if(isnull(other.color))
+		return
+	color = other.color

@@ -165,6 +165,7 @@
 			species_restricted = list(target_species)
 
 	//Set icon
+	LAZYINITLIST(sprite_sheets)
 	if (sprite_sheets_refit && (target_species in sprite_sheets_refit))
 		sprite_sheets[target_species] = sprite_sheets_refit[target_species]
 

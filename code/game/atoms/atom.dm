@@ -63,14 +63,6 @@
 	 */
 	var/worth_dynamic = FALSE
 
-	//? Colors
-	/**
-	 * used to store the different colors on an atom
-	 *
-	 * its inherent color, the colored paint applied on it, special color effect etc...
-	 */
-	var/list/atom_colours
-
 	//? Health
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
@@ -255,10 +247,6 @@
 
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
-
-	//atom color stuff
-	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 	if(light_power && light_range)
 		update_light()
@@ -841,6 +829,44 @@
 /atom/proc/GenerateTag()
 	return
 
+/**
+ * Returns true if this atom has gravity for the passed in turf
+ *
+ * Gravity situations:
+ * * No gravity if you're not in a turf
+ * * No gravity if this atom is in is a space turf
+ * * Gravity if the area it's in always has gravity
+ * * Gravity if there's a gravity generator on the z level
+ * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
+ * * otherwise no gravity
+ */
+/atom/proc/has_gravity(turf/T = get_turf(src))
+	if(!T)
+		return FALSE
+
+	return T.has_gravity()
+
+/atom/proc/is_incorporeal()
+	return FALSE
+
+/atom/proc/CheckParts(list/parts_list)
+	for(var/A in parts_list)
+		if(istype(A, /datum/reagent))
+			if(!reagents)
+				reagents = new()
+			reagents.reagent_list.Add(A)
+			reagents.conditional_update()
+		else if(ismovable(A))
+			var/atom/movable/M = A
+			M.forceMove(src)
+
+/atom/proc/is_drainable()
+	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
+
+
+/atom/proc/get_cell()
+	return
+
 //? Radiation
 
 /**
@@ -880,83 +906,29 @@
  * "whichever was set last is displayed"
  */
 
+/**
+ * getter for current color
+ */
+/atom/proc/get_atom_colour()
+	CRASH("base proc hit")
+
+/**
+ * copies from other
+ */
+/atom/proc/copy_atom_colour(atom/other, colour_priority)
+	CRASH("base proc hit")
+
 /// Adds an instance of colour_type to the atom's atom_colours list
 /atom/proc/add_atom_colour(coloration, colour_priority)
-	if(!atom_colours || !atom_colours.len)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(!coloration)
-		return
-	if(colour_priority > atom_colours.len)
-		return
-	atom_colours[colour_priority] = coloration
-	update_atom_colour()
+	CRASH("base proc hit")
 
 /// Removes an instance of colour_type from the atom's atom_colours list
 /atom/proc/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(colour_priority > atom_colours.len)
-		return
-	if(coloration && atom_colours[colour_priority] != coloration)
-		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colours[colour_priority] = null
-	update_atom_colour()
+	CRASH("base proc hit")
 
 /// Resets the atom's color to null, and then sets it to the highest priority colour available
 /atom/proc/update_atom_colour()
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	color = null
-	for(var/C in atom_colours)
-		if(islist(C))
-			var/list/L = C
-			if(L.len)
-				color = L
-				return
-		else if(C)
-			color = C
-			return
-
-/**
- * Returns true if this atom has gravity for the passed in turf
- *
- * Gravity situations:
- * * No gravity if you're not in a turf
- * * No gravity if this atom is in is a space turf
- * * Gravity if the area it's in always has gravity
- * * Gravity if there's a gravity generator on the z level
- * * Gravity if the Z level has an SSMappingTrait for ZTRAIT_GRAVITY
- * * otherwise no gravity
- */
-/atom/proc/has_gravity(turf/T = get_turf(src))
-	if(!T)
-		return FALSE
-
-	return T.has_gravity()
-
-/atom/proc/is_incorporeal()
-	return FALSE
-
-/atom/proc/CheckParts(list/parts_list)
-	for(var/A in parts_list)
-		if(istype(A, /datum/reagent))
-			if(!reagents)
-				reagents = new()
-			reagents.reagent_list.Add(A)
-			reagents.conditional_update()
-		else if(ismovable(A))
-			var/atom/movable/M = A
-			M.forceMove(src)
-
-/atom/proc/is_drainable()
-	return reagents && (reagents.reagents_holder_flags & DRAINABLE)
-
-
-/atom/proc/get_cell()
-	return
+	CRASH("base proc hit")
 
 //? Filters
 

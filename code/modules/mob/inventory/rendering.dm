@@ -153,7 +153,7 @@
 	/// Used to specify the icon file to be used when the item is worn. If not set the default icon for that slot will be used.
 	/// If icon_override or sprite_sheets are set they will take precendence over this, assuming they apply to the slot in question.
 	/// Only slot_l_hand/slot_r_hand are implemented at the moment. Others to be implemented as needed.
-	var/list/item_icons = list()
+	var/list/item_icons
 
 	/// Used to override hardcoded clothing dmis in human clothing proc. //TODO: Get rid of this crap -Zandario
 	var/icon_override = null
@@ -171,11 +171,11 @@
 	 * 	)
 	 * If index term exists and icon_override is not set, this sprite sheet will be used.
 	*/
-	var/list/sprite_sheets = list()
+	var/list/sprite_sheets
 
 	/// Species-specific sprite sheets for inventory sprites
 	/// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
-	var/list/sprite_sheets_obj = list()
+	var/list/sprite_sheets_obj
 
 	// todo: remove
 	/// worn icon file

@@ -305,17 +305,7 @@
 
 		//work out data
 		var/data = " - Mundane object: [scanned_item.desc ? scanned_item.desc : "No information on record."]<br>"
-		var/datum/geosample/G
 		switch(scanned_item.type)
-			if(/obj/item/ore)
-				var/obj/item/ore/O = scanned_item
-				if(O.geologic_data)
-					G = O.geologic_data
-
-			if(/obj/item/rocksliver)
-				var/obj/item/rocksliver/O = scanned_item
-				if(O.geological_data)
-					G = O.geological_data
 
 			if(/obj/item/archaeological_find)
 				data = " - Mundane object (archaic xenos origins)<br>"
@@ -325,25 +315,6 @@
 					data = " - Exhibits properties consistent with sonic reproduction and audio capture technologies.<br>"
 
 		var/anom_found = 0
-		if(G)
-			data = " - Spectometric analysis on mineral sample has determined type [finds_as_strings[responsive_carriers.Find(G.source_mineral)]]<br>"
-			if(G.age_billion > 0)
-				data += " - Radiometric dating shows age of [G.age_billion].[G.age_million] billion years<br>"
-			else if(G.age_million > 0)
-				data += " - Radiometric dating shows age of [G.age_million].[G.age_thousand] million years<br>"
-			else
-				data += " - Radiometric dating shows age of [G.age_thousand * 1000 + G.age] years<br>"
-			data += " - Chromatographic analysis shows the following materials present:<br>"
-			for(var/carrier in G.find_presence)
-				if(G.find_presence[carrier])
-					var/index = responsive_carriers.Find(carrier)
-					if(index > 0 && index <= finds_as_strings.len)
-						data += "	> [100 * G.find_presence[carrier]]% [finds_as_strings[index]]<br>"
-
-			if(G.artifact_id && G.artifact_distance >= 0)
-				anom_found = 1
-				data += " - Hyperspectral imaging reveals exotic energy wavelength detected with ID: [G.artifact_id]<br>"
-				data += " - Fourier transform analysis on anomalous energy absorption indicates energy source located inside emission radius of [G.artifact_distance]m<br>"
 
 		if(!anom_found)
 			data += " - No anomalous data<br>"
