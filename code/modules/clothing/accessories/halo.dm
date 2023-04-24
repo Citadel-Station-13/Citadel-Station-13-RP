@@ -3,7 +3,7 @@
 	desc = "A small grey device that projects a holographic image."
 	icon = 'icons/clothing/accessories/halo_projector.dmi'
 	icon_state = "projector"
-	icon_mob_y_align = 14
+	icon_mob_y_align = 15
 	slot_flags = SLOT_HEAD | SLOT_EARS
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	accessory_render_legacy = FALSE
