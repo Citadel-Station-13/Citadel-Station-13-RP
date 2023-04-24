@@ -28,16 +28,17 @@
 
 // todo: refactor entirely, we shouldn't have /obj/item/clothing/accessory
 /obj/item/clothing/accessory/proc/get_inv_overlay()
-	var/image/inv_overlay
+	var/mutable_appearance/inv_overlay
 	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
 	if(icon_override)
 		if("[tmp_icon_state]_tie" in icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_tie"
-		inv_overlay = image(icon = icon_override, icon_state = tmp_icon_state, dir = SOUTH)
+		inv_overlay = mutable_appearance(icon = icon_override, icon_state = tmp_icon_state)
 	else
-		inv_overlay = image(icon = INV_ACCESSORIES_DEF_ICON, icon_state = tmp_icon_state, dir = SOUTH)
+		inv_overlay = mutable_appearance(icon = INV_ACCESSORIES_DEF_ICON, icon_state = tmp_icon_state)
 
 	inv_overlay.color = src.color
+	inv_overlay.dir = SOUTH
 	inv_overlay.appearance_flags = appearance_flags	// Stops accessory_host's color from being multiplied onto the accessory
 	return inv_overlay
 
@@ -60,18 +61,18 @@
 	if(icon_override)
 		if("[tmp_icon_state]_mob" in icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_mob"
-		mob_overlay = image("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
+		mob_overlay = mutable_appearance("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
 	else if(wearer && sprite_sheets?[bodytype_to_string(wearer.species.get_effective_bodytype(wearer, src, accessory_host.worn_slot))]) //Teshari can finally into webbing, too!
-		mob_overlay = image("icon" = sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
+		mob_overlay = mutable_appearance("icon" = sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
 	else
-		mob_overlay = image("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")
+		mob_overlay = mutable_appearance("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")
 	if(addblends)
 		var/icon/base = new/icon("icon" = mob_overlay.icon, "icon_state" = mob_overlay.icon_state)
 		var/addblend_icon = new/icon("icon" = mob_overlay.icon, "icon_state" = src.addblends)
 		if(color)
 			base.Blend(src.color, ICON_MULTIPLY)
 		base.Blend(addblend_icon, ICON_ADD)
-		mob_overlay = image(base)
+		mob_overlay = mutable_appearance(base)
 	else
 		mob_overlay.color = src.color
 

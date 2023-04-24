@@ -101,15 +101,25 @@
 			var/obj/item/clothing/accessory/A = src
 			old = A.get_mob_overlay()
 		return old
-	var/mutable_appearance/MA = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
+	var/list/mutable_appearance/rendered = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
 
-	// sigh, legacy shit
-	if(istype(accessory_host, /obj/item/clothing/suit))
-		var/obj/item/clothing/suit/S = accessory_host
-		if(S.taurized)
-			MA.pixel_x += 16
+	// sigh, fixup
+	if(isnull(rendered))
+		return
+	else if(!islist(rendered))
+		rendered = list(rendered)
 
-	return MA
+	for(var/mutable_appearance/MA in rendered)
+		// fixup layer, but only if it's attached to mob; this is shitcode but the auril players have snipers outside my house, i'll refactor this later.
+		if(MA.plane == FLOAT_PLANE)
+			MA.layer = layer_used  // ughhh, need way to override later.
+		// sigh, legacy shit
+		if(istype(accessory_host, /obj/item/clothing/suit))
+			var/obj/item/clothing/suit/S = accessory_host
+			if(S.taurized)
+				MA.pixel_x += 16
+
+	return rendered
 
 /obj/item/clothing/proc/can_attach_accessory(obj/item/clothing/accessory/A)
 	//Just no, okay
