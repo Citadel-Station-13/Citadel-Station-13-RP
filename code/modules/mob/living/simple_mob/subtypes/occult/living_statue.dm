@@ -42,7 +42,21 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/statue
 
-//Mob AI Code.
+
+
+//# Statue Subtypes
+
+/mob/living/simple_mob/living_statue/female
+	name = "statue"
+	desc = "An incredibly lifelike marble carving. Its eyes seem to follow you.."
+	icon = 'icons/obj/statue.dmi'
+	icon_state = "human_female"
+	gender = NEUTER
+
+
+
+//# Mob AI Code.
+
 /datum/ai_holder/simple_mob/statue
 	hostile = TRUE
 	retaliate = FALSE
@@ -52,6 +66,10 @@
 	speak_chance = 0
 	wander = FALSE
 
+
+
+//# Mob Code.
+
 /mob/living/simple_mob/living_statue/Initialize(mapload)
 	. = ..()
 
@@ -59,33 +77,40 @@
 	ADD_TRAIT(src, TRAIT_UNOBSERVANT, INNATE_TRAIT)
 
 	// Give spells
-	//src.add_spell(/spell/noclothes)
-	//src.add_spell(/spell/aoe_turf/flicker_lights)
-	//src.add_spell(/spell/aoe_turf/blindness)
+	// add_spell(new/spell/aoe_turf/flicker_lights)
+	// add_spell(new/spell/aoe_turf/blindness)
 
-// Cannot talk
-/mob/living/simple_mob/living_statue/say(whispering = 0)
-	return 0
+
+//? Cannot talk
+/mob/living/simple_mob/living_statue/say(whispering = FALSE)
+	return FALSE
+
 
 // Turn to dust when gibbed
-
 /mob/living/simple_mob/living_statue/gib()
 	dust()
 
-// Statue powers
 
-// Flicker lights
+
+//# Statue powers
+
+/// Flicker lights AOE Spell
 /spell/aoe_turf/flicker_lights
 	name = "Flicker Lights"
 	desc = "You will trigger a large amount of lights around you to flicker."
 
+	override_base = "grey"
+	hud_state = "blackout"
+
+	cooldown_min = 1 MINUTE // Overkill but by request.
 	charge_max = 300
 	range = 14
 
+
 /spell/aoe_turf/flicker_lights/choose_targets(mob/user = usr)
 	var/list/things = list()
-	var/turf/our_loc = get_turf(user)
-	for(var/obj/machinery/light/nearby_light in range(our_loc, range))
+	var/turf/center = get_turf(user)
+	for(var/obj/machinery/light/nearby_light in range(center, range))
 		if(!nearby_light.on)
 			continue
 
@@ -97,25 +122,32 @@
 	for(var/obj/machinery/light/victim as anything in targets)
 		victim.flicker()
 
-/*
-//Blind AOE
+
+/// Blind AOE Spell
 /spell/aoe_turf/blindness
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
 
+	override_base = "grey"
+	hud_state = "wiz_blind"
+
 	message = "<span class='notice'>You glare your eyes.</span>"
+
+	cooldown_min = 2 MINUTE // Overkill but by request.
 	range = 10
 
-/spell/aoe_turf/blindness/cast(list/targets,mob/user = usr)
-	for(var/mob/living/L)
-		var/turf/T = get_turf(L.loc)
-		if(T && (T in targets))
-			L.Blind(4)
-	return
-*/
-/mob/living/simple_mob/living_statue/female
-	name = "statue"
-	desc = "An incredibly lifelike marble carving. Its eyes seem to follow you.."
-	icon = 'icons/obj/statue.dmi'
-	icon_state = "human_female"
-	gender = NEUTER
+/spell/aoe_turf/blindness/choose_targets(mob/user = usr)
+	var/list/things = list()
+	var/turf/center = get_turf(user)
+	for(var/mob/living/nearby_mob in range(center, range))
+		if(nearby_mob == user || nearby_mob == center)
+			continue
+
+		things += nearby_mob
+
+	return things
+
+
+/spell/aoe_turf/blindness/cast(list/targets, mob/user = usr)
+	for(var/mob/living/victim as anything in targets)
+		victim.Blind(4)
