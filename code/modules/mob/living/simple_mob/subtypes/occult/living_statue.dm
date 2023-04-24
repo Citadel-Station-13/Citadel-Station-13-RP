@@ -77,8 +77,8 @@
 	ADD_TRAIT(src, TRAIT_UNOBSERVANT, INNATE_TRAIT)
 
 	// Give spells
-	// add_spell(new/spell/aoe_turf/flicker_lights)
-	// add_spell(new/spell/aoe_turf/blindness)
+	add_spell(new/spell/aoe_turf/flicker_lights)
+	add_spell(new/spell/aoe_turf/blindness)
 
 
 //? Cannot talk
