@@ -35,7 +35,7 @@ interface LatheQueueEntryProps {
   design: string; // design id
   amount: number; // how many
   materials?: Record<string, string>; // key to id
-  items?: any[]; // dataset from Ingredients.tsx
+  ingredients?: any[]; // dataset from Ingredients.tsx
 }
 
 const LatheQueueEntry = (props: LatheQueueEntryProps, context) => {

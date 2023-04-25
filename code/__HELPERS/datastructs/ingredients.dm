@@ -1,16 +1,16 @@
-/**
- * holds needed *item* ingredients, including sheets
- *
- * this does not support 1/nth of a sheet, due to this being optimized for
- * getting number of paths available!
- *
- * material sheets *must* be material ids!
- */
-/datum/ingredients
-	/// ingredients
-	var/list/ingredients
+//* INGREDIENTS SYSTEM - Check [code/__DEFINES/ingredients.dm] *//
 
-/datum/ingredients/proc/ui_ingredients_needed()
+/// Ingredients are specially formatted lists.
+/// These procs allow standardized operations on them.
+/// Make sure these sync to Ingredients.tsx
+
+/proc/check_ingredients(list/ingredients, list/selection, list/obj/item/items)
+	#warn impl
+
+/proc/use_ingredients(list/ingredients, list/selection, list/obj/item/items)
+	#warn impl
+
+/proc/ui_ingredients_needed(list/ingredients)
 	return ingredients
 
 /proc/ui_ingredients_available(list/obj/item/items)

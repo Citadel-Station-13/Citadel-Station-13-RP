@@ -1,5 +1,5 @@
 import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Flex } from '../../components';
+import { Box, Button, NumberInput, Flex, Section } from '../../components';
 import { classes } from 'common/react';
 import { formatMoney, formatSiUnit } from '../../format';
 import { useSharedState } from '../../backend';
@@ -24,6 +24,27 @@ export interface Material {
 export interface DetailedMaterial extends Material {
 
 }
+
+interface MaterialStorageProps {
+  horizontal: BooleanLike;
+  stored: Record<string, number>; // id to number
+  context: MaterialsContext;
+}
+
+export const MaterialStorage = (props: MaterialStorageProps, context) => {
+  const [fancy, setFancy] = useSharedState(context, 'matStoreFancy', true);
+  return props.horizontal? (
+    <Section>
+      test
+    </Section>
+  ) : (
+    <Section>
+      test
+    </Section>
+  );
+};
+
+// * legacy below * //
 
 export const MATERIAL_KEYS = {
   "iron": "sheet-metal_3",

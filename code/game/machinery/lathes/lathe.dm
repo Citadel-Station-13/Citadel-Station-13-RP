@@ -235,37 +235,41 @@
 /obj/machinery/lathe/proc/has_capabilities_for(datum/design/instance)
 	return lathe_type & instance.lathe_type
 
-/obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/item_parts)
+/obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
 	if(!stored_materials.has(instance.materials, efficiency_multiplier))
+		return FALSE
+	var/list/mat_parts = list()
+	for(var/key in instance.material_parts)
+		var/id = material_parts[key]
+		mat_parts[id] += instance.material_parts[key]
+	if(!stored_materials.has(mat_parts, efficiency_multiplier))
 		return FALSE
 	if(!stored_reagents.has_all_reagents(instance.reagents, efficiency_multiplier))
 		return FALSE
-	#warn items
+	if(!check_ingredients(instance.ingredients, ingredient_parts, stored_items))
+		return FALSE
 	return TRUE
 
-/obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/items, multiplier = efficiency_multiplier)
+/obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/ingredients, list/ingredient_parts, multiplier = efficiency_multiplier)
 	stored_materials.use(materials, multiplier)
 	for(var/key in reagents)
 		stored_reagents.remove_reagent(key, reagents[key] * multiplier)
-	for(var/obj/item/I as anything in items)
-		if(I.loc != src)
-			continue // moved
-		qdel(src)
+	use_ingredients(ingredients, ingredient_parts, stored_items)
 
 /obj/machinery/lathe/Exited(atom/movable/AM, atom/newLoc)
 	. = ..()
 	if(isitem(AM) && (AM in stored_items))
 		stored_items -= AM
 
-/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts, list/item_parts)
-	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts, item_parts)
+/obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts, list/ingredients, list/ingredient_parts)
+	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts, ingredients, ingredient_parts)
 
-/obj/machinery/lathe/proc/do_print(datum/design/instance, list/material_parts, list/item_parts)
+/obj/machinery/lathe/proc/do_print(datum/design/instance, list/material_parts, list/ingredient_parts)
 	var/list/materials_used = instance.materials.Copy()
 	for(var/key in material_parts)
 		materials_used[material_parts[key]] += instance.material_parts[key]
-	use_resources(materials_used, instance.reagents, item_parts)
-	. = instance.lathe_print(drop_location(), material_parts, item_parts, src)
+	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts)
+	. = instance.lathe_print(drop_location(), material_parts, ingredient_parts, src)
 	if(!isnull(print_icon_state))
 		flick(print_icon_state, src)
 
@@ -303,7 +307,7 @@
  *
  * amount variable is reserved but unused at this given time.
  */
-/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/item_parts, start_immediately)
+/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
 	if(!isnull(last) && last.design_id == instance.identifier)
 		var/adding = min(last.amount - queue_max_entry, amount)
@@ -316,7 +320,7 @@
 	var/datum/lathe_queue_entry/inserting = new
 	inserting.design_id = instance.identifier
 	inserting.material_parts = material_parts
-	inserting.item_parts = item_parts
+	inserting.ingredient_parts = ingredient_parts
 	inserting.amount = 1
 	LAZYINITLIST(queue)
 	queue += inserting
@@ -397,12 +401,12 @@
 	/// material parts to use, key to id
 	var/list/material_parts
 	/// items to use for design - order matters! uses weakref's.
-	var/list/item_parts
+	var/list/ingredient_parts
 
 /datum/lathe_queue_entry/proc/ui_data()
 	return list(
 		"design" = design_id,
 		"amount" = amount,
 		"materials" = material_parts,
-		"items" = item_parts,
+		"ingredients" = ingredient_parts,
 	)
