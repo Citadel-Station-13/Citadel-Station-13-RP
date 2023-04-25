@@ -231,7 +231,21 @@
 		return 1
 
 /datum/component/riding_handler/shank
-	rider_offsets = list(0, 11, 1, null)
+	rider_offsets = list(
+		list(
+			list(0, 11, 0.1, null),
+			list(0, 11, 0.1, null),
+			list(0, 11, -0.1, null),
+			list(0, 11, 0.1, null)
+		),
+		list(
+			list(0, 11, 0.2, null),
+			list(-7, 11, 0.2, null),
+			list(0, 11, -0.2, null),
+			list(7, 11, 0.2, null)
+		)
+	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 	vehicle_move_delay = 1.5
 

@@ -44,7 +44,7 @@
 	exotic_amount = 2
 
 	buckle_lying = FALSE
-	buckle_max_mobs = 1
+	buckle_max_mobs = 2
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 
@@ -64,11 +64,19 @@
 
 /datum/component/riding_handler/horse
 	rider_offsets = list(
-				list(0, 8, 0.1, null),
-				list(9, 8, 1, null),
-				list(0, 8, 1, null),
-				list(-7, 8, 0.1, null)
-				)
+		list(
+			list(0, 8, 0.1, null),
+			list(0, 8, 0.1, null),
+			list(0, 8, -0.1, null),
+			list(0, 8, 0.1, null)
+		),
+		list(
+			list(0, 8, 0.2, null),
+			list(-7, 8, 0.2, null),
+			list(0, 8, -0.2, null),
+			list(7, 8, 0.2, null)
+		)
+	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
