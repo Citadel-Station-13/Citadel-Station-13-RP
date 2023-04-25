@@ -9,7 +9,6 @@
 	accessory_render_legacy = FALSE
 
 	var/static/list/global_halo_styles
-	var/aura_color = "#ffffff"
 
 /obj/item/clothing/accessory/halo_projector/Initialize(mapload)
 	. = ..()
@@ -45,16 +44,14 @@
 	. = ..()
 	if(inhands)
 		return
-	var/list/applying
-	applying = drop_shadow_filter(x = 0, y = 0, size = -2, color = aura_color)
+	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3, color = istext(src.color)? src.color : "#ffffff")
 	MA.filters += filter(arglist(applying))
-	applying = drop_shadow_filter(x = 0, y = 0, size = 3, color = aura_color)
-	MA.filters += filter(arglist(applying))
-	MA.appearance_flags |= (KEEP_APART | KEEP_TOGETHER)
+	MA.appearance_flags |= (KEEP_APART | KEEP_TOGETHER | RESET_TRANSFORM)
 	var/matrix/tform = matrix()
-	if(M)
-		tform *= M.transform
 	tform.Translate(0, align_y)
+	if(M)
+		tform.Multiply(M.transform)
+	MA.pixel_y -= align_y
 	MA.transform = tform
 
 /obj/item/clothing/accessory/halo_projector/render_additional(mob/M, icon/icon_used, state_used, layer_used, dim_x, dim_y, align_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
@@ -63,13 +60,13 @@
 		return
 	// todo: mob emissives, emissive renderer.
 	var/mutable_appearance/emissive = emissive_appearance(icon_used, state_used)
-	var/matrix/tform = matrix()
-	tform.Translate(0, align_y)
 	var/list/applying = drop_shadow_filter(x = 0, y = 0, size = 3.5, offset = 1, color = "#ffffff77")
 	emissive.filters += filter(arglist(applying))
-	emissive.appearance_flags |= (KEEP_APART | KEEP_TOGETHER)
+	emissive.appearance_flags |= (KEEP_APART | KEEP_TOGETHER | RESET_TRANSFORM)
+	var/matrix/tform = matrix()
+	tform.Translate(0, align_y)
 	if(M)
-		tform *= M.transform
+		tform.Multiply(M.transform)
 	emissive.transform = tform
 	. += emissive
 
@@ -79,30 +76,6 @@
 	global_halo_styles = list()
 	for(parsing as anything in parsing_types)
 		global_halo_styles[initial(parsing.name)] = initial(parsing.icon_state)
-
-/obj/item/clothing/accessory/halo_projector/verb/set_aura_recolor()
-	set name = "Set Aura Color"
-	set category = "IC"
-	set src in usr
-
-	var/mob/user = usr
-
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
-		user.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
-		return
-
-	var/selected = input(user, "Select aura color", "Aura color", aura_color) as color|null
-
-	if(isnull(selected))
-		return
-	if(worn_mob() != user)
-		return
-	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
-		user.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
-		return
-
-	aura_color = selected
-	update_worn_icon()
 
 /obj/item/clothing/accessory/halo_projector/gabriel
 	name = "messenger's halo"
