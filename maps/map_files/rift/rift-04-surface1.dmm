@@ -27552,8 +27552,8 @@
 /area/tether/surfacebase/entertainment)
 "rdT" = (
 /obj/machinery/door/airlock/mining{
-	req_one_access = list(31);
-	name = "Cargo Airlock"
+	name = "Cargo Airlock";
+	req_one_access = list(31)
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -31266,6 +31266,9 @@
 	},
 /obj/structure/toilet{
 	dir = 8
+	},
+/obj/machinery/computer/cryopod/gateway{
+	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
@@ -38133,8 +38136,8 @@
 /area/medical/psych)
 "xsn" = (
 /obj/machinery/door/airlock/mining{
-	req_one_access = list(31);
-	name = "Cargo Airlock"
+	name = "Cargo Airlock";
+	req_one_access = list(31)
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
