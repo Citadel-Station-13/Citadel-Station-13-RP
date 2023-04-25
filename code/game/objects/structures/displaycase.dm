@@ -5,63 +5,24 @@
 	desc = "A display case for prized possessions. It taunts you to kick it."
 	density = 1
 	anchored = 1
-	integrity = 60
-	integrity_max = 60
+	integrity = 160
+	integrity_max = 160
+	integrity_failure = 100
 	var/occupied = 1
-	var/destroyed = 0
 
-/obj/structure/displaycase/legacy_ex_act(severity)
-	switch(severity)
-		if (1)
-			new /obj/item/material/shard( src.loc )
-			if (occupied)
-				new /obj/item/gun/energy/captain( src.loc )
-				occupied = 0
-			qdel(src)
-		if (2)
-			if (prob(50))
-				src.health -= 15
-				src.healthcheck()
-		if (3)
-			if (prob(50))
-				src.health -= 5
-				src.healthcheck()
+/obj/structure/displaycase/atom_break()
+	. = ..()
+	playsound(src, "shatter", 70, 1)
+	new /obj/item/material/shard(drop_location())
+	update_icon()
 
-
-/obj/structure/displaycase/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.get_structure_damage()
-	..()
-	src.healthcheck()
-	return
-
-/obj/structure/displaycase/proc/healthcheck()
-	if (src.health <= 0)
-		if (!( src.destroyed ))
-			src.density = 0
-			src.destroyed = 1
-			new /obj/item/material/shard( src.loc )
-			playsound(src, "shatter", 70, 1)
-			update_icon()
-	else
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-	return
 
 /obj/structure/displaycase/update_icon()
-	if(src.destroyed)
+	if(atom_flags & ATOM_BROKEN)
 		src.icon_state = "glassboxb[src.occupied]"
 	else
 		src.icon_state = "glassbox[src.occupied]"
-	return
 
-
-/obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
-	user.setClickCooldown(user.get_attack_speed(W))
-	user.do_attack_animation(src)
-	playsound(loc, 'sound/effects/Glasshit.ogg', 50, 1)
-	src.health -= W.damage_force
-	src.healthcheck()
-	..()
-	return
 
 /obj/structure/displaycase/attack_hand(mob/user, list/params)
 	if (src.destroyed && src.occupied)
@@ -71,11 +32,4 @@
 		src.add_fingerprint(user)
 		update_icon()
 		return
-	else
-		to_chat(usr, text("<span class='warning'>You kick the display case.</span>"))
-		for(var/mob/O in oviewers())
-			if ((O.client && !( O.blinded )))
-				to_chat(O, "<span class='warning'>[usr] kicks the display case.</span>")
-		src.health -= 2
-		healthcheck()
-		return
+	return ..()

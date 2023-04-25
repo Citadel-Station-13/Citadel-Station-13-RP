@@ -16,6 +16,7 @@
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/hybrid_resin
+	armor_type = /datum/armor/none
 
 /obj/item/stack/material/hybrid_resin
 	name = "resin compound"
@@ -78,6 +79,7 @@
 	color = "#321a49"
 	material = "resin compound"
 	padding_material = "resin compound"
+	hit_sound = 'sound/effects/attackblob.ogg'
 
 	integrity = 100
 	integrity_max = 100
@@ -117,23 +119,6 @@
 		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
 		"<span class='notice'>You hear squelching...</span>")
 
-/obj/structure/bed/hybrid_nest/attackby(obj/item/W as obj, mob/user as mob)
-	var/aforce = W.damage_force
-	health = max(0, health - aforce)
-	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	for(var/mob/M in viewers(src, 7))
-		M.show_message("<span class='warning'>[user] hits [src] with [W]!</span>", 1)
-	healthcheck()
-
-/obj/structure/bed/hybrid_nest/proc/healthcheck()
-	if(health <=0)
-		density = 0
-		qdel(src)
-	return
-
-/*
- * Resin
- */
 /obj/structure/alien/hybrid_resin
 	name = "resin"
 	desc = "Looks like some kind of slimy growth."
@@ -147,7 +132,7 @@
 	integrity = 200
 	integrity_max = 200
 
-	//var/mob/living/affecting = null
+	hit_sound = 'sound/effects/attackblob.ogg'
 
 /obj/structure/alien/hybrid_resin/wall
 	name = "resin wall"
@@ -172,97 +157,13 @@
 	T.thermal_conductivity = initial(T.thermal_conductivity)
 	..()
 
-/obj/structure/alien/hybrid_resin/proc/healthcheck()
-	if(health <=0)
-		density = 0
-		qdel(src)
-	return
-
-/obj/structure/alien/hybrid_resin/bullet_act(var/obj/projectile/Proj)
-	health -= Proj.damage
-	..()
-	healthcheck()
-	return
-
-/obj/structure/alien/hybrid_resin/attack_generic(var/mob/user, var/damage, var/attack_verb)
-	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	user.do_attack_animation(src)
-	health -= damage
-	healthcheck()
-	return
-
-/obj/structure/alien/hybrid_resin/take_damage_legacy(var/damage)
-	health -= damage
-	healthcheck()
-	return
-
-/obj/structure/alien/hybrid_resin/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			health-=50
-		if(2.0)
-			health-=50
-		if(3.0)
-			if (prob(50))
-				health-=50
-			else
-				health-=25
-	healthcheck()
-	return
-
-/obj/structure/alien/hybrid_resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
-	. = ..()
-	for(var/mob/O in viewers(src, null))
-		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
-	var/tforce = 0
-	if(ismob(AM))
-		tforce = 10
-	else
-		tforce = AM.throw_force
-	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	health = max(0, health - tforce)
-	healthcheck()
-
 /obj/structure/alien/hybrid_resin/attack_hand(mob/user, list/params)
-	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (MUTATION_HULK in usr.mutations)
-		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
-		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
-		health = 0
-	else
-
-		// Aliens can get straight through these.
-		if(istype(usr,/mob/living/carbon))
-			var/mob/living/carbon/M = usr
-			if(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs)
-				for(var/mob/O in oviewers(src))
-					O.show_message("<span class='warning'>[usr] strokes the [name] and it melts away!</span>", 1)
-				health = 0
-				healthcheck()
-				return
-
-		to_chat(usr, "<span class='notice'>You claw at the [name].</span>")
-		for(var/mob/O in oviewers(src))
-			O.show_message("<span class='warning'>[usr] claws at the [name]!</span>", 1)
-		health -= rand(5,10)
-	healthcheck()
-	return
-
-/obj/structure/alien/hybrid_resin/attackby(obj/item/W as obj, mob/user as mob)
-
-	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.damage_force
-	health = max(0, health - aforce)
-	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	healthcheck()
-	..()
-	return
-
-/obj/structure/alien/hybrid_resin/CanAllowThrough(atom/movable/mover, turf/target)
-	if(check_standard_flag_pass(mover))
-		return TRUE
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(locate(/obj/item/organ/internal/xenos/hivenode) in C.internal_organs)
+			visible_message(SPAN_WARNING("[C] strokes the [name], and it melts away!"))
+			qdel(src)
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 #define WEED_NORTH_EDGING "north"

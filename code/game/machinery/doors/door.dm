@@ -6,9 +6,10 @@
 	desc = "It opens and closes."
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door1"
-	anchored = 1
-	opacity = 1
-	density = 1
+	armor_type = /datum/armor/object/airlock
+	anchored = TRUE
+	opacity = TRUE
+	density = TRUE
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
 	rad_flags = RAD_BLOCK_CONTENTS
@@ -32,8 +33,6 @@
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
-	var/destroy_hits = 10 //How many strong hits it takes to destroy the door
-	var/min_force = 10 //minimum amount of force needed to damage the door with a melee weapon
 	var/repairing = 0
 	var/block_air_zones = 1 //If set, air zones cannot merge across the door even when it is opened.
 	var/close_door_at = 0 //When to automatically close the door, if possible
@@ -275,21 +274,6 @@
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
 			playsound(src, I.tool_sound, 100, 1)
-			return
-
-		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
-		if(src.density && istype(I, /obj/item) && user.a_intent == INTENT_HARM && !istype(I, /obj/item/card))
-			var/obj/item/W = I
-			user.setClickCooldown(user.get_attack_speed(W))
-			if(W.damtype == BRUTE || W.damtype == BURN)
-				user.do_attack_animation(src)
-				if(W.damage_force < min_force)
-					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
-				else
-					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
-					playsound(src.loc, hit_sound, 100, 1)
-					take_damage(W.damage_force)
-			return
 
 	if(src.operating > 0 || isrobot(user))
 		return //borgs can't attack doors open because it conflicts with their AI-like interaction with them.

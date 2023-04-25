@@ -12,6 +12,9 @@
 	var/set_obj_flags
 
 	//? Integrity
+	integrity = 200
+	integrity_max = 200
+	integrity_failure = 50
 	/// Standard integrity examine
 	var/integrity_examine = TRUE
 

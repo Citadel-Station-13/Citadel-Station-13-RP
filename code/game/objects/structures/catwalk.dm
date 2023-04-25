@@ -94,9 +94,6 @@
 			to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [C.name].</span>")
 			if(do_after(user, 20, src))
 				health = maxhealth
-	else
-		take_damage(C.damage_force)
-		user.setClickCooldown(user.get_attack_speed(C))
 	return ..()
 
 /obj/structure/catwalk/Crossed()
@@ -110,14 +107,6 @@
 	if(target && target.z < src.z)
 		return FALSE
 	return TRUE
-
-/obj/structure/catwalk/take_damage_legacy(amount)
-	health -= amount
-	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
-		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
 
 /obj/structure/catwalk/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
 	return fall_flags | FALL_BLOCKED

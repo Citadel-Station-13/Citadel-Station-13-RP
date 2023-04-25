@@ -22,7 +22,7 @@
 #define LEGACY_EXPLOSION_DEVASTATE_INTEGRITY 1000
 #define LEGACY_EXPLOSION_SEVERE_INTEGRITY 180
 #define LEGACY_EXPLOSION_MINOR_INTEGRITY 50
-#define LEGACY_EXPLOSION_INTEGRITY_MULT (0.01 * rand(70, 130))
+#define LEGACY_EXPLOSION_INTEGRITY_MULT (0.01 * rand(50, 200))
 
 // why the extra numbers? so if someone does weird math we don't out of bounds
 GLOBAL_REAL(_legacy_expowers, /list) = list(

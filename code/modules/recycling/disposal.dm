@@ -819,8 +819,7 @@
 			H.vent_gas(T)	// all gas vent to turf
 			qdel(H)
 
-	return
-
+#warn convert to destruction
 // call to break the pipe
 // will expel any holder inside at the time
 // then delete the pipe
@@ -854,32 +853,6 @@
 
 	spawn(2)	// delete pipe after 2 ticks to ensure expel proc finished
 		qdel(src)
-
-
-// pipe affected by explosion
-/obj/structure/disposalpipe/legacy_ex_act(severity)
-
-	switch(severity)
-		if(1.0)
-			broken(0)
-			return
-		if(2.0)
-			health -= rand(5,15)
-			healthcheck()
-			return
-		if(3.0)
-			health -= rand(0,15)
-			healthcheck()
-			return
-
-
-// test health for brokenness
-/obj/structure/disposalpipe/proc/healthcheck()
-	if(health < -2)
-		broken(0)
-	else if(health<1)
-		broken(1)
-	return
 
 //attack by item
 //weldingtool: unfasten and convert to obj/disposalconstruct

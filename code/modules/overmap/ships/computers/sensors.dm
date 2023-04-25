@@ -138,9 +138,11 @@
 	desc = "Long range gravity scanner with various other sensors, used to detect irregularities in surrounding space. Can only run in vacuum to protect delicate quantum BS elements."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "sensors"
-	anchored = 1
-	integrity = 200
-	integrity_max = 200
+	anchored = TRUE
+	integrity_flags = INTEGRITY_INDESTRUCTIBLE
+
+	var/health = 200
+	var/max_health = 200
 
 	var/critical_heat = 50 // sparks and takes damage when active & above this heat
 	var/heat_reduction = 1.5 // mitigates this much heat per tick

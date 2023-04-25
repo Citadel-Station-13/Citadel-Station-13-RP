@@ -71,7 +71,7 @@
 	 */
 	var/list/atom_colours
 
-	//? Health
+	//? Integrity
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
 	/// max health

@@ -111,7 +111,7 @@
 /obj/effect/shield/proc/diffuse(var/duration)
 	// The shield is trying to counter diffusers. Cause lasting stress on the shield.
 	if(gen?.check_flag(MODEFLAG_BYPASS) && !disabled_for)
-		take_damage(duration * rand(8, 12), SHIELD_DAMTYPE_EM)
+		take_damage_legacy(duration * rand(8, 12), SHIELD_DAMTYPE_EM)
 		return
 
 	diffused_for = max(duration, 0)
@@ -123,7 +123,7 @@
 	update_explosion_resistance()
 
 /obj/effect/shield/attack_generic(var/source, var/damage, var/emote)
-	take_damage(damage, SHIELD_DAMTYPE_PHYSICAL)
+	take_damage_legacy(damage, SHIELD_DAMTYPE_PHYSICAL)
 	if(gen.check_flag(MODEFLAG_OVERCHARGE) && istype(source, /mob/living/))
 		overcharge_shock(source)
 	..(source, damage, emote)
@@ -171,7 +171,7 @@
 		return
 
 	if(!damtype)
-		crash_with("CANARY: shield.take_damage() callled without damtype.")
+		crash_with("CANARY: shield.take_damage_legacy() callled without damtype.")
 
 	if(!damage)
 		return
@@ -223,29 +223,29 @@
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.
 /obj/effect/shield/emp_act(var/severity)
 	if(!disabled_for)
-		take_damage(rand(30,60) / severity, SHIELD_DAMTYPE_EM)
+		take_damage_legacy(rand(30,60) / severity, SHIELD_DAMTYPE_EM)
 
 
 // Explosions
 /obj/effect/shield/legacy_ex_act(var/severity)
 	if(!disabled_for)
-		take_damage(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
+		take_damage_legacy(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 
 
 // Fire
 /obj/effect/shield/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(!disabled_for)
-		take_damage(rand(5,10), SHIELD_DAMTYPE_HEAT)
+		take_damage_legacy(rand(5,10), SHIELD_DAMTYPE_HEAT)
 
 
 // Projectiles
 /obj/effect/shield/bullet_act(var/obj/projectile/proj)
 	if(proj.damage_type == BURN)
-		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
+		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
-		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
+		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
 	else //TODO - This will never happen because of get_structure_damage() only returning values for BRUTE and BURN damage types
-		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
+		take_damage_legacy(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
 
 
 // Attacks with hand tools. Blocked by Hyperkinetic flag.
@@ -256,11 +256,11 @@
 	if(gen.check_flag(MODEFLAG_HYPERKINETIC))
 		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
 		if(I.damtype == BURN)
-			take_damage(I.damage_force, SHIELD_DAMTYPE_HEAT)
+			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_HEAT)
 		else if (I.damtype == BRUTE)
-			take_damage(I.damage_force, SHIELD_DAMTYPE_PHYSICAL)
+			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_PHYSICAL)
 		else
-			take_damage(I.damage_force, SHIELD_DAMTYPE_EM)
+			take_damage_legacy(I.damage_force, SHIELD_DAMTYPE_EM)
 	else
 		user.visible_message("<span class='danger'>\The [user] tries to attack \the [src] with \the [I], but it passes through!</span>")
 
@@ -282,7 +282,7 @@
 	M.adjustFireLoss(rand(20, 40))
 	M.afflict_paralyze(20 * 5)
 	to_chat(M, "<span class='danger'>As you come into contact with \the [src] a surge of energy paralyses you!</span>")
-	take_damage(10, SHIELD_DAMTYPE_EM)
+	take_damage_legacy(10, SHIELD_DAMTYPE_EM)
 
 // Called when a flag is toggled. Can be used to add on-toggle behavior, such as visual changes.
 /obj/effect/shield/proc/flags_updated()
@@ -358,7 +358,7 @@
 /obj/effect/meteor/shield_impact(var/obj/effect/shield/S)
 	if(!S.gen.check_flag(MODEFLAG_HYPERKINETIC))
 		return
-	S.take_damage(get_shield_damage(), SHIELD_DAMTYPE_PHYSICAL, src)
+	S.take_damage_legacy(get_shield_damage(), SHIELD_DAMTYPE_PHYSICAL, src)
 	visible_message("<span class='danger'>\The [src] breaks into dust!</span>")
 	make_debris()
 	qdel(src)

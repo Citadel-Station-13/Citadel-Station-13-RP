@@ -10,8 +10,8 @@
 	name = "fission core"
 	icon_state = "engine"
 
-	integrity = 200
-	integrity_max = 200
+	var/health = 200
+	var/max_health = 200
 
 	var/announce = 1
 	var/decay_archived = 0

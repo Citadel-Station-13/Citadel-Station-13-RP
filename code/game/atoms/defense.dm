@@ -63,6 +63,24 @@
 /atom/proc/melee_act(mob/user, obj/item/weapon, target_zone, mult = 1)
 	return
 
+/**
+ * called on unarmed melee hit
+ *
+ * @params
+ * * user - person attacking
+ * * style - unarmed attack datum
+ * * target_zone - zone targeted
+ * * mult - damage multiplier
+ *
+ * @return did the hit process? a miss is still a process, return FALSE if we shouldn't be acted against at all.
+ */
+/atom/proc/unarmed_act(mob/attacker, datum/unarmed_attack/style, target_zone, mult = 1)
+	return
+
+	#warn ipl
+
+
+
 //? Damage API
 
 /**
@@ -84,6 +102,8 @@
 /atom/proc/inflict_atom_damage(damage, tier, flag, mode, attack_type, datum/weapon, gradual)
 	if(!integrity_enabled)
 		CRASH("attempted to take_atom_damage without [NAMEOF(src, integrity_enabled)] being on.")
+	if(integrity_flags & INTEGRITY_INDESTRUCTIBLE)
+		return 0
 	if(flag)
 		var/list/returned = run_armor(arglist(args))
 		damage = returned[1]

@@ -241,7 +241,6 @@
 	hit_sound = 'sound/effects/Glasshit.ogg'
 	open_sound_powered = 'sound/machines/door/hall1o.ogg'
 	close_sound_powered = 'sound/machines/door/hall1c.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	glass = 1
@@ -309,7 +308,6 @@
 	name = "Command Airlock"
 	icon = 'icons/obj/doors/Doorcomglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_com
@@ -323,7 +321,6 @@
 	name = "Engineering Airlock"
 	icon = 'icons/obj/doors/Doorengglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eng
@@ -336,7 +333,6 @@
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Doorengatmoglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_eat
@@ -349,7 +345,6 @@
 	name = "Security Airlock"
 	icon = 'icons/obj/doors/Doorsecglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
@@ -362,7 +357,6 @@
 	name = "Medical Airlock"
 	icon = 'icons/obj/doors/Doormedglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
@@ -398,7 +392,6 @@
 	name = "Research Airlock"
 	icon = 'icons/obj/doors/Doorresearchglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_research
@@ -411,7 +404,6 @@
 	name = "Mining Airlock"
 	icon = 'icons/obj/doors/Doorminingglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_min
@@ -424,7 +416,6 @@
 	name = "Atmospherics Airlock"
 	icon = 'icons/obj/doors/Dooratmoglass.dmi'
 	hit_sound = 'sound/effects/Glasshit.ogg'
-	maxhealth = 300
 	explosion_resistance = 5
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_atmo
