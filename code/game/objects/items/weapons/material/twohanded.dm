@@ -126,18 +126,10 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
-	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
-			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
-		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
-			P.die_off()
+/obj/item/material/twohanded/fireaxe/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+	if(istype(target, /obj/structure/window))
+		mult *= 2
+	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
 	attack_verb = list("bonked","whacked")

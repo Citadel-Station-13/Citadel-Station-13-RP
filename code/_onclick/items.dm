@@ -203,23 +203,17 @@
  * * intent - action intent that was attempted
  */
 /obj/item/proc/melee_mob_miss(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	// too complciated to be put in proc header
-	if(isnull(target_zone))
-		target_zone = user.zone_sel?.selecting
-	if(isnull(intent))
-		intent = user.a_intent
-	// end
 	//? legacy: decloak
 	user.break_cloak()
 	//? legacy: for now no attacking nonliving
 	if(!isliving(target))
-		return
+		return CLICKCHAIN_ATTACK_MISSED
 	var/mob/living/L = target
 	// todo: proper weapon sound ranges/rework
 	playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	// feedback
 	visible_message("<span class='danger'>\The [user] misses [L] with \the [src]!</span>")
-	return NONE
+	return CLICKCHAIN_ATTACK_MISSED
 
 /**
  * called at base of attack_mob after standard melee attack resolves
@@ -237,12 +231,6 @@
  */
 /obj/item/proc/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
 	SHOULD_CALL_PARENT(TRUE)
-	// too complciated to be put in proc header
-	if(isnull(target_zone))
-		target_zone = user.zone_sel?.selecting
-	if(isnull(intent))
-		intent = user.a_intent
-	// end
 	//? legacy: decloak
 	user.break_cloak()
 	//? legacy: for now no attacking nonliving
@@ -293,12 +281,6 @@
  * @return clickchain flags to append
  */
 /obj/item/proc/finalize_mob_melee(mob/target, mob/user, clickchain_flags, list/params, mult = 1, target_zone, intent)
-	// too complciated to be put in proc header
-	if(isnull(target_zone))
-		target_zone = user.zone_sel?.selecting
-	if(isnull(intent))
-		intent = user.a_intent
-	// end
 	return NONE
 
 /**
@@ -313,7 +295,7 @@
  *
  * @return clickchain flags to append
  */
-/obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/proc/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
 	PROTECTED_PROC(TRUE)	// route via standard_melee_attack please.
 	if((item_flags & ITEM_CAREFUL_BLUDGEON) && user.a_intent == INTENT_HELP)
 		user.action_feedback(SPAN_WARNING("You refrain from hitting [target] because your intent is set to help."), src)
@@ -322,6 +304,22 @@
 	// ... yet >:)
 	visible_message(SPAN_WARNING("[user] bashes [target] with [src]."))
 	return melee_object_hit(target, user, clickchain_flags, params, 1)
+
+/**
+ * called at base of attack_object after standard melee attack misses
+ *
+ * @return clickchain flags to append
+ *
+ * @params
+ * * target - atom being attacked
+ * * user - person attacking
+ * * clickchain_flags - __DEFINES/procs/clickcode.dm flags
+ * * params - list of click params
+ * * mult - damage multiplier
+ */
+/obj/item/proc/melee_object_miss(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
+	SHOULD_CALL_PARENT(TRUE)
+	return CLICKCHAIN_ATTACK_MISSED
 
 /**
  * called at base of attack_object after standard melee attack resolves

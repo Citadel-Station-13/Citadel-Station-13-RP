@@ -24,3 +24,23 @@
 	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
 	var/stupid_fucking_shim = list2params(params)
 	RangedAttack(target, stupid_fucking_shim)
+
+/**
+ * called to try to hit something in melee
+ */
+/mob/proc/standard_melee_attack(atom/what, datum/unarmed_attack/style = /datum/unarmed_attack/default, clickchain_flags, list/params, mult = 1)
+
+
+/mob/proc/melee_object(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+
+/mob/proc/melee_object_hit(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+
+/mob/proc/melee_object_miss(atom/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult)
+
+/mob/proc/melee_mob(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+
+/mob/proc/melee_mob_hit(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+
+/mob/proc/melee_mob_miss(mob/target, datum/unarmed_attack/style, clickchain_flags, list/params, mult = 1)
+
+#warn impl all

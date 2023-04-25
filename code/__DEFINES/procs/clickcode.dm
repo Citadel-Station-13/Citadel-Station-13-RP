@@ -31,6 +31,8 @@
 #define CLICKCHAIN_FROM_HREF				(1<<4)
 /// did something in the proc, logically should stop using it (the user should anyways)
 #define CLICKCHAIN_DID_SOMETHING			(1<<5)
+/// attack missed
+#define CLICKCHAIN_ATTACK_MISSED			(1<<6)
 
 //! Reachability Depths - checked from level of DirectAccess and turf adjacency.
 /// default reachability depth

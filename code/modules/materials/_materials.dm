@@ -107,7 +107,11 @@
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
 
-	//! Attributes
+	//? Attributes
+	#warn todo: integrity to multiplier
+
+
+	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
 	var/cut_delay = 0
 	/// Radiation var. Used in wall and object processing to irradiate surroundings.
