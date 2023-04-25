@@ -1,12 +1,24 @@
-var/global/list/sparring_attack_cache = list()
+GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 
-//Species unarmed attacks
+/proc/cached_unarmed_attack_datum(datum/unarmed_attack/path)
+	if(isnull(GLOB.unarmed_attack_cache[path]))
+		GLOB.unarmed_attack_cache[path] = new path
+	return GLOB.unarmed_attack_cache[path]
+
+/**
+ * Unarmed attacks for mobs
+ */
 /datum/unarmed_attack
+	//? Sounds
+	/// sound when attacking
+	var/attack_sound = "punch"
+	/// sound when missing
+	var/miss_sound = 'sound/weapons/punchmiss.ogg'
+
+	//? legacy
 	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
 	var/damage = 0						// Extra empty hand attack damage.
-	var/attack_sound = "punch"
-	var/miss_sound = 'sound/weapons/punchmiss.ogg'
 	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
 	var/sharp = 0
 	var/edge = 0
@@ -21,10 +33,7 @@ var/global/list/sparring_attack_cache = list()
 #warn refactor damage shit.
 
 /datum/unarmed_attack/proc/get_sparring_variant()
-	if(sparring_variant_type)
-		if(!sparring_attack_cache[sparring_variant_type])
-			sparring_attack_cache[sparring_variant_type] = new sparring_variant_type()
-		return sparring_attack_cache[sparring_variant_type]
+	return cached_unarmed_attack_datum(sparring_variant_type)
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone)
 	if(user.restrained())

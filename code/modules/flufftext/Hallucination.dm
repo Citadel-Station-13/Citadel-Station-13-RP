@@ -225,8 +225,7 @@ proc/check_panel(mob/M)
 	density = 0
 	anchored = 1
 	opacity = 0
-	integrity = 100
-	integrity_max = 100
+	var/health = 100
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null

@@ -46,7 +46,14 @@
 /atom/proc/blob_act()
 	return
 
-/atom/proc/fire_act()
+/**
+ * called when being burned in a fire
+ *
+ * this is explicitly for ZAS only
+ *
+ * todo: make params (air, temperature, dt), so this is more generic
+ */
+/atom/proc/fire_act(datum/gas_mixture/air, temperature, volume)
 	return
 
 /**
@@ -164,8 +171,11 @@
 		else
 			return "swing_hit"
 
-/atom/proc/hitsound_unarmed(mob/M)
-	#warn impl
+/atom/proc/hitsound_unarmed(mob/M, datum/unarmed_attack/style)
+	. = hitsound_override(M, style.damage_mode, ATTACK_TYPE_UNARMED, style)
+	if(.)
+		return
+	. = hit_sound || style.attack_sound
 
 //? Direct Integrity
 
