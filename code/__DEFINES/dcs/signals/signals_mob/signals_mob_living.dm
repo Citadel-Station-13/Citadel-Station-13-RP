@@ -9,9 +9,6 @@
 	///? Can't pick up
 	////#define COMPONENT_LIVING_CANT_PUT_IN_HAND (1<<0)
 
-/// From base of mob/update_transform()
-////#define COMSIG_LIVING_POST_UPDATE_TRANSFORM "living_post_update_transform"
-
 /// From /obj/structure/door/crush(): (mob/living/crushed, /obj/machinery/door/crushing_door)
 ////#define COMSIG_LIVING_DOORCRUSHED "living_doorcrush"
 /// From base of mob/living/resist() (/mob/living)

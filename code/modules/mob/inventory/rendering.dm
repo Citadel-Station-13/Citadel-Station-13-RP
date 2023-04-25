@@ -280,7 +280,7 @@
 	MA.pixel_y += align_y
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta, icon_used)
 	MA = render_apply_blood(MA, bodytype, inhands, slot_meta, icon_used)
-	MA = render_apply_custom(M, MA, bodytype, inhands, slot_meta, icon_used)
+	MA = render_apply_custom(M, MA, bodytype, inhands, slot_meta, icon_used, align_y)
 	return length(additional)? (additional + MA) : MA
 
 /**
@@ -288,7 +288,7 @@
  *
  * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
+/obj/item/proc/render_apply_custom(mob/M, mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used, align_y)
 	return MA
 
 /**
