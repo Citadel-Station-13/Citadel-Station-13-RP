@@ -8,7 +8,7 @@
 	possible."
 	value = CATALOGUER_REWARD_TRIVIAL
 
-/mob/living/simple_mob/vore/horse
+/mob/living/simple_mob/horse
 	name = "horse"
 	desc = "Don't look it in the mouth."
 	tt_desc = "Equus ferus caballus"
@@ -17,7 +17,7 @@
 	icon_state = "horse"
 	icon_living = "horse"
 	icon_dead = "horse-dead"
-	icon = 'icons/mob/vore.dmi'
+	icon = 'icons/mob/animal.dmi'
 
 	faction = "horse"
 	maxHealth = 60
@@ -51,12 +51,9 @@
 	say_list_type = /datum/say_list/horse
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-	vore_active = 1
-	vore_icons = SA_ICON_LIVING
-
 	var/rideable = 0
 
-/mob/living/simple_mob/vore/horse/Initialize(mapload)
+/mob/living/simple_mob/horse/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/riding_filter/mob/animal/horse)
 
@@ -80,7 +77,7 @@
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
-/mob/living/simple_mob/vore/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_mob/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/saddle/horse) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1
@@ -94,7 +91,7 @@
 		new /obj/item/saddle/horse(T)
 	update_icon()
 
-/mob/living/simple_mob/vore/horse/update_icon()
+/mob/living/simple_mob/horse/update_icon()
 	if(rideable)
 		add_overlay("horse_saddled")
 	else if(!rideable)
