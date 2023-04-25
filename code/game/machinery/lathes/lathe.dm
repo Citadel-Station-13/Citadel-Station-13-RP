@@ -161,7 +161,7 @@
 		else
 			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
 		if(!isnull(insert_icon_state_specific?[M.material.id]))
-			flick(insert_icon_state_specific[M.materia.id], src)
+			flick(insert_icon_state_specific[M.material.id], src)
 		else if(!isnull(insert_icon_state))
 			flick(insert_icon_state, src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
@@ -296,7 +296,7 @@
 	update_icon()
 
 /obj/machinery/lathe/proc/full_design_update()
-	ui_controller?.ui_design_push()
+	ui_controller?.ui_design_update()
 
 /**
  * enqueues an instance with given material_parts
@@ -373,10 +373,18 @@
 	tgui_controller().ui_interact(user, ui, parent_ui)
 
 /obj/machinery/lathe/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
-	#warn impl
-	return ..()
-
-#warn recycling / clickdrag
+	if(!user.Adjacent(src))
+		return ..()
+	if(!isitem(dropping))
+		return ..()
+	var/obj/item/I = dropping
+	if(!user.is_holding(I) && !user.Reachability(I))
+		return ..()
+	if(I.item_flags & ITEM_NO_LATHE_DECONSTRUCT)
+		user.action_feedback(SPAN_WARNING("[I] cannot be deconstructed."), src)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	recycle_item(I, user)
+	return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /**
  * holder datum for queue data

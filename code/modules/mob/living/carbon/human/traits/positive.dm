@@ -57,8 +57,6 @@
 	cost = 2
 	var_changes = list("darksight" = 7, "flash_mod" = 3.0)
 
-#warn darksight
-
 /datum/trait/positive/melee_attack
 	name = "Sharp Melee"
 	desc = "Provides sharp melee attacks that do slightly more damage."
