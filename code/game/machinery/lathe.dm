@@ -268,14 +268,14 @@
 /obj/machinery/lathe/proc/start_printing()
 	if(queue_active)
 		return
-	#warn impl
 	update_use_power(USE_POWER_ACTIVE)
+	update_icon()
 
 /obj/machinery/lathe/proc/stop_printing()
 	if(!queue_active)
 		return
-	#warn impl
 	update_use_power(USE_POWER_IDLE)
+	update_icon()
 
 /obj/machinery/lathe/proc/full_design_update()
 	ui_controller?.ui_design_push()

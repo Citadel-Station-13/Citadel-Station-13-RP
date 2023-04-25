@@ -11,35 +11,6 @@
 	clicksound = "keyboard"
 	clickvol = 30
 
-	var/hacked = FALSE
-	var/disabled = FALSE
-	var/shocked = FALSE
-	var/busy = FALSE
-
-#warn  wires?
-
-/obj/machinery/autolathe/Destroy()
-	QDEL_NULL(wires)
-	return ..()
-
-/obj/machinery/autolathe/ui_status(mob/user)
-	if(disabled)
-		return UI_CLOSE
-	return ..()
-
-/obj/machinery/autolathe/interact(mob/user)
-	if(panel_open)
-		return wires.Interact(user)
-
-	if(disabled)
-		to_chat(user, SPAN_DANGER("\The [src] is disabled!"))
-		return
-
-	if(shocked)
-		shock(user, 50)
-
-	ui_interact(user)
-
 /obj/machinery/autolathe/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
