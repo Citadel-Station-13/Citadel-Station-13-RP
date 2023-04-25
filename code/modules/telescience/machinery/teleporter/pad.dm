@@ -19,6 +19,11 @@
 	#warn impl
 	return ..()
 
+/obj/machinery/bluespace_pad/proc/generate_field()
+
+#warn impl all
+
+
 #warn teleport_pad
 /obj/machinery/tele_pad
 	name = "teleporter pad"

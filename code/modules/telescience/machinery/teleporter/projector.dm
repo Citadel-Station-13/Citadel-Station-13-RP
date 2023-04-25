@@ -13,6 +13,12 @@
 	/// linked remotes
 	var/list/obj/item/bluespace_remote/remotes
 
+/obj/machinery/bluespace_projector/proc/draw(kilojoules)
+	return capacitor?.use(kilojoules)
+
+/obj/machinery/bluespace_projector/drain_energy(datum/actor, amount, flags)
+	return draw(amount)
+
 #warn teleport_projector
 /obj/machinery/tele_projector
 	name = "projector"
