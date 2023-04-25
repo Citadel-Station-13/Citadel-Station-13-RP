@@ -910,6 +910,7 @@
 	icon = 'icons/clothing/suit/ashlander.dmi'
 	icon_state = "lamellar"
 	armor_type = /datum/armor/lavaland/ashlander
+	allowed = list(/obj/item/clothing/head/helmet/ashlander, /obj/item/melee)
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 
 //More Warhammer Fun
