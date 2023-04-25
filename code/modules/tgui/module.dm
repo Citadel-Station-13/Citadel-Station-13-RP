@@ -53,7 +53,7 @@
 /datum/tgui_module/ui_host(mob/user, datum/tgui_module/module)
 	return isnull(host)? src : host.ui_host(user, src)
 
-/datum/tgui_module/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_module/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	. = ..()
 	host?.ui_close(user, src)
 	if(ephemeral)

@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	data["categories"] = categories
 	return data
 
-/datum/tgui_language_picker/ui_close(mob/user, datum/tgui_module/module)
+/datum/tgui_language_picker/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	. = ..()
 	if(!QDELING(src))
 		qdel(src)

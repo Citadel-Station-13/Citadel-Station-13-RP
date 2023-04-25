@@ -71,6 +71,8 @@
 		parent_ui.children += src
 
 /datum/tgui/Destroy()
+	if(!closing)
+		close()
 	user = null
 	src_object = null
 	return ..()
@@ -112,6 +114,7 @@
 		flush_queue |= window.send_asset(asset)
 	if (flush_queue)
 		user.client.browse_queue_flush()
+	src_object.ui_open(user, src)
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE,
@@ -141,12 +144,13 @@
 		window.release_lock()
 		window.close(can_be_suspended)
 		src_object.ui_close(user)
-		SStgui.on_close(src)
+		SStgui.on_close(user, src)
 	state = null
 	if(parent_ui)
 		parent_ui.children -= src
 	parent_ui = null
-	qdel(src)
+	if(!QDELING(src))
+		qdel(src)
 
 /**
  * public

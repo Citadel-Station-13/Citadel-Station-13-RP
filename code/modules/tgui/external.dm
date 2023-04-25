@@ -196,14 +196,28 @@
 /**
  * public
  *
+ * Called on a UI's object when an UI is opened, before data is sent.
+ *
+ * @params
+ * * user - opening mob
+ * * ui - the tgui instance opened
+ * * module - (optional) the module it came from, if any
+ */
+/datum/proc/ui_open(mob/user, datum/tgui/ui, datum/tgui_module/module)
+	SIGNAL_HANDLER
+
+/**
+ * public
+ *
  * Called on a UI's object when the UI is closed, not to be confused with
  * client/verb/uiclose(), which closes the ui window
  *
  * @params
  * * user - closing mob
+ * * ui - the tgui instance closed
  * * module - (optional) the module it came from, if any
  */
-/datum/proc/ui_close(mob/user, datum/tgui_module/module)
+/datum/proc/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	SIGNAL_HANDLER
 
 /**

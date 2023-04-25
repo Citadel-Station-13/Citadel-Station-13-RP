@@ -108,7 +108,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 			on_confirm()
 			SStgui.close_uis(src)
 
-/datum/color_matrix_editor/ui_close(mob/user, datum/tgui_module/module)
+/datum/color_matrix_editor/ui_close(mob/user, datum/tgui/ui, datum/tgui_module/module)
 	. = ..()
 	closed = TRUE
 
