@@ -1,9 +1,12 @@
 /obj/structure/girder
+	icon = 'icons/obj/structures/girder.dmi'
 	icon_state = "girder"
-	anchored = 1
-	density = 1
+
+	anchored = TRUE
+	density = TRUE
 	plane = TURF_PLANE
 	w_class = ITEMSIZE_HUGE
+
 	var/state = 0
 	var/health = 200
 	var/max_health = 200
@@ -21,7 +24,7 @@
 	if(!material_key)
 		material_key = default_material
 	set_material(material_key)
-	update_icon()
+	update_appearance()
 
 /obj/structure/girder/Destroy()
 	if(girder_material.products_need_process())
@@ -60,7 +63,8 @@
 /obj/structure/girder/get_material()
 	return girder_material
 
-/obj/structure/girder/update_icon()
+/obj/structure/girder/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = initial(icon_state)
 	else
@@ -91,7 +95,7 @@
 	spawn(1) dismantle()
 	return 1
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/girder/bullet_act(var/obj/projectile/Proj)
 	//Girders only provide partial cover. There's a chance that the projectiles will just pass through. (unless you are trying to shoot the girder)
 	if(Proj.original != src && !prob(cover))
 		return PROJECTILE_CONTINUE //pass through
@@ -100,7 +104,7 @@
 	if(!damage)
 		return
 
-	if(!istype(Proj, /obj/item/projectile/beam))
+	if(!istype(Proj, /obj/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
 
 	else if(girder_material && girder_material.reflectivity >= 0.5) // Reflect lasers.
@@ -327,7 +331,8 @@
 	girder_material = "cult"
 	applies_material_colour = 0
 
-/obj/structure/girder/cult/update_icon()
+/obj/structure/girder/cult/update_icon_state()
+	. = ..()
 	if(anchored)
 		icon_state = "cultgirder"
 	else

@@ -13,11 +13,11 @@
 	desc = "Now you can throw around lightning like it's nobody's business."
 	cast_methods = CAST_RANGED
 	aspect = ASPECT_SHOCK
-	spell_projectile = /obj/item/projectile/beam/chain_lightning
+	spell_projectile = /obj/projectile/beam/chain_lightning
 	energy_cost_per_shot = 1000
 	instability_per_shot = 5
 	cooldown = 10
 
-/obj/item/projectile/beam/chain_lightning/lesser
+/obj/projectile/beam/chain_lightning/lesser
 	bounces = 2
 	power = 20

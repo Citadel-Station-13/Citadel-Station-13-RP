@@ -99,7 +99,7 @@
 			touchable_mobs += L
 
 			if(L.absorbed)
-				L.Weaken(5)
+				L.afflict_paralyze(20 * 5)
 
 			//Handle 'human'
 			if(ishuman(L))

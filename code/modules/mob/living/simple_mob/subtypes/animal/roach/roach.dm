@@ -39,6 +39,10 @@
 		/datum/category_item/catalogue/fauna/roach/fuhrer
 		)
 
+/datum/armor/physiology/roach
+	melee = 0.05
+	rad = 1.0
+
 /mob/living/simple_mob/animal/roach
 	name = "roach"
 	real_name = "roach"
@@ -54,9 +58,7 @@
 	health = 15
 	randomized = TRUE
 
-	armor = list(
-				"melee" = 5,
-				"rad" = 100)
+	armor_type = /datum/armor/physiology/roach
 
 	see_in_dark = 6
 	universal_understand = 1
@@ -115,7 +117,7 @@
 /mob/living/simple_mob/animal/roach/Greta
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
@@ -162,7 +164,7 @@
 
 	melee_damage_lower = 2
 	melee_damage_upper = 3
-	
+
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
@@ -201,6 +203,10 @@
 	but formidable in numbers, these creatures require more than a boot to dispatch effectively."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/armor/physiology/roach/panzer
+	melee = 0.2
+	bullet = 0.15
+
 /mob/living/simple_mob/animal/roach/panzer
 	name = "armored roach"
 	real_name = "armored roach"
@@ -219,10 +225,10 @@
 
 	movement_cooldown = 7
 
-	armor = list(
-				"melee" = 20,
-				"bullet" = 15,
-				"rad" = 100)
+	armor_type = /datum/armor/physiology/roach/panzer
+
+/datum/armor/physiology/roach/jaegar
+	melee = 0.1
 
 //Sie Sind Das Essen Und Wir Sind Die Jager
 /datum/category_item/catalogue/fauna/roach/jaeger
@@ -253,10 +259,7 @@
 
 	movement_cooldown = 4
 
-	armor = list(
-				"melee" = 10
-				)
-
+	armor_type = /datum/armor/physiology/roach/jaegar
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
 
 //When I said roaches made me sick, this isn't what I meant.
@@ -268,6 +271,9 @@
 	often fatal, disases as their immune systems are compromised. Such creatures are often hotbeds of disease,\
 	and should be handled with extreme care."
 	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/armor/physiology/roach/seuche
+	bio = 1.0
 
 /mob/living/simple_mob/animal/roach/seuche
 	name = "diseased roach"
@@ -284,10 +290,7 @@
 	health = 15
 
 	taser_kill = 0
-
-	armor = list(
-				"bio" = 100
-				)
+	armor_type = /datum/armor/physiology/roach/seuche
 
 	var/poison_chance = 50
 	var/poison_per_bite = 5
@@ -318,6 +321,10 @@
 	ripping off chunks of diseased flesh and throwing it at percieved threats in an attempt to ward them off."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/armor/physiology/roach/atomar
+	energy = 0.4
+	rad = 0.1
+
 /mob/living/simple_mob/animal/roach/atomar
 	name = "cancerous roach"
 	real_name = "cancerous roach"
@@ -337,13 +344,10 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 
-	armor = list(
-				"energy" = 40,
-				"rad" = 10
-				)
+	armor_type = /datum/armor/physiology/roach/atomar
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/energy/blob/toxic
+	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
@@ -359,6 +363,11 @@
 	attack their victim on a molecular level. Terminate with extreme prejudice."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/armor/physiology/roach/uberfallen
+	melee = 0.2
+	bullet = 0.5
+	bio = 1.0
+
 /mob/living/simple_mob/animal/roach/uberfallen
 	name = "infested roach"
 	real_name = "infested roach"
@@ -370,25 +379,17 @@
 	icon_dead = "uberfallen_dead"
 	faction = "synthtide"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/uberfallen)
-
 	maxHealth = 30
 	health = 30
-
 	taser_kill = 0
-
 	movement_cooldown = 8
 
 	melee_damage_lower = 5
 	melee_damage_upper = 10
-
-	armor = list(
-				"melee" = 20,
-				"bullet" = 50,
-				"bio" = 100
-				)
+	armor_type = /datum/armor/physiology/roach/uberfallen
 
 	base_attack_cooldown = 8
-	projectiletype = /obj/item/projectile/energy/declone
+	projectiletype = /obj/projectile/energy/declone
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
@@ -401,6 +402,11 @@
 	material to become passively radioactive themselves. This property transfer to their spit,\
 	which these roaches are not afraid to use to deter assailants, or, rarely, to wound prey."
 	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/armor/physiology/roach/strahland
+	melee = 0.2
+	laser = 0.2
+	energy = 0.2
 
 /mob/living/simple_mob/animal/roach/strahlend
 	name = "glowing roach"
@@ -417,15 +423,10 @@
 	health = 20
 
 	taser_kill = 0
-
-	armor = list(
-				"melee" = 20,
-				"laser" = 20,
-				"energy" = 20
-				)
+	armor_type = /datum/armor/physiology/roach/strahland
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/energy/dart
+	projectiletype = /obj/projectile/energy/dart
 
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
@@ -439,6 +440,11 @@
 	possess a natural stealthing mechanism, similar to other mutant species. No roaches are known to\
 	genuinely infest Bluespace at this time."
 	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/armor/physiology/roach/zeitraum
+	melee = 0.2
+	laser = 0.2
+	energy = 0.2
 
 /mob/living/simple_mob/animal/roach/zeitraum
 	name = "bluespace roach"
@@ -461,11 +467,7 @@
 
 	movement_cooldown = 3
 
-	armor = list(
-				"melee" = 20,
-				"laser" = 20,
-				"energy" = 20
-				)
+	armor_type = /datum/armor/physiology/roach/zeitraum
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
@@ -528,14 +530,14 @@
 	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(stealthed_weaken_amount)
+			L.afflict_paralyze(20 * stealthed_weaken_amount)
 			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.
 
 // Force unstealthing if attacked.
-/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/animal/roach/zeitraum/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 
@@ -550,6 +552,14 @@
 	Its nickname comes from its intimidating presence. Naturally resilient, the King Roach is slow, meaty,\
 	and its powerful mandibles can deliver a painful bite."
 	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/armor/physiology/roach/fuhrer
+	melee = 0.25
+	bullet = 0.15
+	laser = 0.25
+	energy = 0.25
+	bomb = 0.25
+	bio = 0.15
 
 /mob/living/simple_mob/animal/roach/fuhrer
 	name = "king roach"
@@ -572,11 +582,4 @@
 
 	movement_cooldown = 6
 
-	armor = list(
-				"melee" = 25,
-				"bullet" = 15,
-				"laser" = 25,
-				"energy" = 25,
-				"bomb" = 25,
-				"bio" = 15
-				)
+	armor_type = /datum/armor/physiology/roach/fuhrer

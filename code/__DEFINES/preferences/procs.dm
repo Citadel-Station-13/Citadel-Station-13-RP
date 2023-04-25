@@ -9,6 +9,8 @@
 #define PREF_COPY_TO_FOR_RENDER (1<<3)
 /// ignore species checks; you should check the species yourself!
 #define PREF_COPY_TO_NO_CHECK_SPECIES (1<<4)
+/// ignore most loadout restrictions, and spawn loadout. do not use in spawn procs, SSjob/SSticker will do it instead!
+#define PREF_COPY_TO_UNRESTRICTED_LOADOUT (1<<5)
 
 /// DO NOT update icons
 #define PREF_COPY_TO_DO_NOT_RENDER (1<<23)

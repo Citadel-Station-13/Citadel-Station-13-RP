@@ -9,7 +9,7 @@
 	throw_range = 7
 	throw_force = 10
 	damtype = BURN
-	force = 10
+	damage_force = 10
 	hitsound = 'sound/items/welder2.ogg'
 
 /obj/item/scrying/attack_self(mob/user)
@@ -37,7 +37,7 @@
 	item_state = "knife"
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
-	force = 15
+	damage_force = 15
 	throw_force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -259,7 +259,7 @@
 			GiveHint(target)
 		else if(I.get_sharpness())
 			to_chat(target, "<span class='userdanger'>You feel a stabbing pain in [parse_zone(user.zone_selected)]!</span>")
-			target.DefaultCombatKnockdown(40)
+			target.default_combat_knockdown(40)
 			GiveHint(target)
 		else if(istype(I, /obj/item/bikehorn))
 			to_chat(target, "<span class='userdanger'>HONK</span>")
@@ -378,11 +378,11 @@
 
 /obj/item/warpwhistle/proc/end_effect(mob/living/carbon/user)
 	user.invisibility = initial(user.invisibility)
-	user.status_flags &= ~GODMODE
+	user.status_flags &= ~STATUS_GODMODE
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	REMOVE_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 
 /obj/item/warpwhistle/attack_self(mob/user)
 	. = ..()
@@ -401,13 +401,13 @@
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOMOVE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOUSE, src)
 	ADD_TRAIT(user, TRAIT_MOBILITY_NOPICKUP, src)
-	user.update_mobility()
+	user.update_mobility_blocked()
 	new /obj/effect/temp_visual/tornado(T)
 	sleep(20)
 	if(interrupted(user))
 		return
 	user.invisibility = INVISIBILITY_MAXIMUM
-	user.status_flags |= GODMODE
+	user.status_flags |= STATUS_GODMODE
 	sleep(20)
 	if(interrupted(user))
 		end_effect(user)

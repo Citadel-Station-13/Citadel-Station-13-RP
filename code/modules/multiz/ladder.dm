@@ -50,9 +50,11 @@
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
-	if(!(M.loc == loc) && !M.Move(get_turf(src)))
-		to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
-		return
+	if(M.loc != loc)
+		step_towards(M, loc)
+		if(M.loc != loc)
+			to_chat(M, "<span class='notice'>You fail to reach \the [src].</span>")
+			return
 
 	climbLadder(M, target_ladder)
 

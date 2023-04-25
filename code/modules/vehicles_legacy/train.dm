@@ -32,7 +32,7 @@
 	var/old_loc = get_turf(src)
 	if(..())
 		if(tow)
-			tow.Move(old_loc)
+			tow.forceMove(old_loc)
 		return 1
 	else
 		if(lead)
@@ -61,7 +61,7 @@
 				add_attack_logs(D,M,"Ran over with [src.name]")
 
 //trains are commonly open topped, so there is a chance the projectile will hit the mob riding the train instead
-/obj/vehicle_old/train/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/train/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
@@ -106,7 +106,7 @@
 	return 1
 
 /obj/vehicle_old/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE)))
 		return
 	if(istype(C,/obj/vehicle_old/train))
 		latch(C, user)
@@ -138,7 +138,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !Adjacent(usr))
 		return
 
 	unattach(usr)
@@ -204,7 +204,7 @@
 
 	if(dir == T_dir) 	//if car is ahead
 		src.attach_to(T, user)
-	else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
+	else if(global.reverse_dir[dir] == T_dir)	//else if car is behind
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train

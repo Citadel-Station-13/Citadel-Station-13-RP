@@ -1,3 +1,4 @@
+
 /datum/weather/classm/rain
 	name = "rain"
 	icon_state = "rain"
@@ -5,15 +6,17 @@
 	wind_low = 1
 	light_modifier = 0.5
 	effect_message = "<span class='warning'>Rain falls on you.</span>"
+	outdoor_sounds_type = /datum/looping_sound/weather/wind
+	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
 	transition_chances = list(
 		WEATHER_OVERCAST = 40,
 		WEATHER_RAIN = 55,
 		WEATHER_STORM = 5
 		)
-	observed_message = "It is raining."
+	observed_message = "The sky is dark, and rain falls down upon you."
 	transition_messages = list(
-		"The sky is dark, and rain falls down upon you."
+		"The sky grows dark, and rain falls down upon you."
 	)
 
 /datum/weather/classm/rain/process_effects()
@@ -50,13 +53,15 @@
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	effect_message = "<span class='warning'>Rain falls on you, drenching you in water.</span>"
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
+	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
 	var/next_lightning_strike = 0 // world.time when lightning will strike.
 	var/min_lightning_cooldown = 5 SECONDS
 	var/max_lightning_cooldown = 1 MINUTE
 	observed_message = "An intense storm pours down over the region."
 	transition_messages = list(
-		"You feel intense winds hit you as the weather takes a turn for the worst.",
+		"You feel intense winds hit you as the weather takes a turn for the worse.",
 		"Loud thunder is heard in the distance.",
 		"A bright flash heralds the approach of a storm."
 	)

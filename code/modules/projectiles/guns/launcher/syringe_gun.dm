@@ -7,7 +7,7 @@
 	matter = list(MAT_STEEL = 125, MAT_GLASS = 375)
 	slot_flags = SLOT_BELT | SLOT_EARS
 	throw_force = 3
-	force = 3
+	damage_force = 3
 	w_class = ITEMSIZE_TINY
 	var/obj/item/reagent_containers/syringe/syringe
 
@@ -70,7 +70,7 @@
 	icon_state = "syringegun"
 	item_state = "syringegun"
 	w_class = ITEMSIZE_NORMAL
-	force = 7
+	damage_force = 7
 	matter = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT
 

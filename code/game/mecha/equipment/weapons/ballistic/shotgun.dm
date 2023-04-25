@@ -3,7 +3,7 @@
 	desc = "A massive shotgun designed to fill a large area with pellets."
 	icon_state = "mecha_scatter"
 	equip_cooldown = 20
-	projectile = /obj/item/projectile/bullet/pellet/shotgun/flak
+	projectile = /obj/projectile/bullet/pellet/shotgun/flak
 	fire_sound = 'sound/weapons/Gunshot_shotgun.ogg'
 	fire_volume = 80
 	projectiles = 40

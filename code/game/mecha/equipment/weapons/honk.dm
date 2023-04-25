@@ -26,11 +26,11 @@
 				return
 		to_chat(M, "<span class='warning'>Your ears feel like they're bleeding!</span>")
 		playsound(M, 'sound/items/airhorn.ogg', 100, 1, 30)
-		M.SetSleeping(0)
+		M.set_sleeping(0)
 		M.ear_deaf += 30
 		M.ear_damage += rand(5, 20)
-		M.Weaken(3)
-		M.Stun(5)
+		M.afflict_paralyze(20 * 3)
+		M.afflict_stun(20 * 5)
 	chassis.use_power(energy_drain)
 	log_message("Used a sound emission device.")
 	do_after_cooldown()

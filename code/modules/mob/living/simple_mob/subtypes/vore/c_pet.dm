@@ -28,16 +28,7 @@
 	melee_damage_upper = 0
 	attacktext = list("honked")
 
-	armor = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,
@@ -77,16 +68,7 @@
 	melee_damage_upper = 0
 	attacktext = list("...")
 
-	armor = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,

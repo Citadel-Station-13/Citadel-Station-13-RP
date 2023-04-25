@@ -18,14 +18,13 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 	item_flags = ITEM_NOBLUDGEON
-	force = 10
+	damage_force = 10
 	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
 	matter = list(MAT_STEEL = 50000, MAT_GLASS = 25000)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0)
 	///Sparks system used when changing device in the UI
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	///Direction of the device we are going to spawn, set up in the UI
@@ -170,7 +169,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !in_range(loc, usr))
 		return TRUE
 	var/playeffect = TRUE
 	switch(action)

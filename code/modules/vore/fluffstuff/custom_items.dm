@@ -83,7 +83,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "joanariamob"
 	origin_tech = "materials=7"
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -291,7 +291,7 @@
 
 	atom_flags = NOBLOODY
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
@@ -300,7 +300,7 @@
 //General use
 /obj/item/melee/fluff/holochain/mass
 	desc = "A mass produced version of the original. It has faux leather and an aluminium base, but still stings like the original."
-	force = 8
+	damage_force = 8
 	attack_verb = list("flogged", "whipped", "lashed", "flayed")
 
 
@@ -539,7 +539,7 @@
 	icon_state = "browncane"
 	item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
-	force = 5.0
+	damage_force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 50)
@@ -558,7 +558,7 @@
     icon_state = "alexiswand"
     item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
-    force = 1.0
+    damage_force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
     matter = list(MAT_STEEL = 50)
@@ -985,6 +985,9 @@
 
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
+	
+	if(user != target && !do_after(user, 5 SECONDS, target))
+		return
 
 	ready = FALSE
 	update_icon()
@@ -1385,7 +1388,7 @@
 	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
-	force = 5
+	damage_force = 5
 	sharp = 0
 	edge = 0
 	throw_force = 7
@@ -1408,12 +1411,12 @@
 	var/mob/living/M = loc
 	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
-		force = 15
+		damage_force = 15
 		name = "[base_name] (wielded)"
 		update_icon()
 	else
 		wielded = 0
-		force = 8
+		damage_force = 8
 		name = "[base_name]"
 	update_icon()
 	..()
@@ -1493,7 +1496,7 @@
 		return
 	active = 1
 	embed_chance = active_embed_chance
-	force = active_force
+	damage_force = active_force
 	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
@@ -1506,7 +1509,7 @@
 	playsound(user, 'sound/weapons/sparkle.ogg', 50, 1)
 	active = 0
 	embed_chance = initial(embed_chance)
-	force = initial(force)
+	damage_force = initial(damage_force)
 	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
@@ -1550,7 +1553,7 @@
 	active_force = 15
 	active_throwforce = 7
 	active_w_class = ITEMSIZE_LARGE
-	force = 1
+	damage_force = 1
 	throw_force = 1
 	throw_speed = 1
 	throw_range = 5

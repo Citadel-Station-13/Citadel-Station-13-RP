@@ -69,9 +69,6 @@
 	update_icon()
 
 /obj/item/gun/ballistic/cell_loaded/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!chambered)
 		return
 
@@ -219,7 +216,7 @@
 	caliber = "nsfw"
 	var/type_color = null
 	var/type_name = null
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 
 /obj/item/ammo_casing/microbattery/Initialize(mapload)
 	. = ..()

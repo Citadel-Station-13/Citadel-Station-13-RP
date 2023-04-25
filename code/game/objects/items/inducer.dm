@@ -13,9 +13,9 @@
 		SLOT_ID_LEFT_HAND = "inducer_lefthand",
 		SLOT_ID_RIGHT_HAND = "inducer_righthand"
 	)
-	force = 7
+	damage_force = 7
 	/// transfer amount per second
-	var/transfer_rate = 500
+	var/transfer_rate = 1000
 	/// type of cell to spawn
 	var/cell_type = /obj/item/cell/high
 	/// our cell
@@ -142,7 +142,7 @@
 		var/datum/current = targets[1]
 		targets.Cut(1, 2)
 
-		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist) && !QDELETED(cell))
+		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, DO_AFTER_IGNORE_MOVEMENT, max_distance = recharge_dist) && !QDELETED(cell))
 			var/amount = min(cell.charge, transfer_rate * 2)	// transfer rate is per second, we do this every 2 seconds
 			var/charged = current.inducer_act(src, amount, inducer_flags)
 			spark_system.start()
@@ -197,7 +197,7 @@
 	icon_state = "inducer-sci"
 	item_state = "inducer-sci"
 	cell_type = null
-	transfer_rate = 1000
+	transfer_rate = 500
 	opened = TRUE
 
 /obj/item/inducer/syndicate
@@ -205,7 +205,7 @@
 	desc = "A tool for inductively charging internal power cells. This one has a suspicious colour scheme, and seems to be rigged to transfer charge at a much faster rate."
 	icon_state = "inducer-syndi"
 	item_state = "inducer-syndi"
-	transfer_rate = 1000
+	transfer_rate = 2000
 	cell_type = /obj/item/cell/super
 	inducer_flags = NONE
 

@@ -10,9 +10,9 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
+	armor_type = /datum/armor/mask/gas
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide)
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
 	var/datum/gas_mixture/gas_filtered = new
@@ -46,13 +46,12 @@
 	siemens_coefficient = 0.7
 	body_cover_flags = FACE
 	w_class = ITEMSIZE_SMALL
-	armor = list(melee = 10, bullet = 10, laser = 10, energy = 0, bomb = 0, bio = 55, rad = 0)
 	var/hanging = FALSE
 	inv_hide_flags = HIDEFACE
 	action_button_name = "Adjust Face Mask"
 
 /obj/item/clothing/mask/gas/half/proc/adjust_mask(mob/user)
-	if(usr.canmove && !usr.stat)
+	if(CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		src.hanging = !src.hanging
 		if (src.hanging)
 			gas_transfer_coefficient = 1
@@ -60,7 +59,7 @@
 			body_cover_flags = body_cover_flags & ~FACE
 			clothing_flags &= ~(BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS)
 			inv_hide_flags = 0
-			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+			set_armor(/datum/armor/none)
 			icon_state = "halfgas_up"
 			to_chat(usr, "Your mask is now hanging on your neck.")
 		else
@@ -69,7 +68,7 @@
 			body_cover_flags = initial(body_cover_flags)
 			clothing_flags = initial(clothing_flags)
 			inv_hide_flags = initial(inv_hide_flags)
-			armor = initial(armor)
+			reset_armor()
 			icon_state = initial(icon_state)
 			to_chat(usr, "You pull the mask up to cover your face.")
 		update_worn_icon()
@@ -92,7 +91,6 @@
 	desc = "A modernised version of the classic design, this mask will not only filter out phoron but it can also be connected to an air supply."
 	icon_state = "plaguedoctor"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas", SLOT_ID_LEFT_HAND = "gas")
-	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 90, rad = 0)
 	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/mask/gas/swat
@@ -114,7 +112,7 @@
 	action_button_name = "Toggle Feeding Port"
 
 /obj/item/clothing/mask/gas/swat/vox/proc/feeding_port(mob/user)
-	if(user.canmove && !user.stat)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		mask_open = !mask_open
 		if(mask_open)
 			body_cover_flags = EYES
@@ -141,6 +139,14 @@
 	inv_hide_flags = HIDEEARS //semi-transparent
 	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
 
+/obj/item/clothing/mask/gas/opaque
+	name = "Opaque Mask"
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
+	icon_state = "opaque_mask"
+	inv_hide_flags = null
+	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/oxygen)
+
+
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."
@@ -152,7 +158,6 @@
 	desc = "A military-grade gas mask that can be connected to an air supply."
 	icon_state = "explorer"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas", SLOT_ID_LEFT_HAND = "gas")
-	armor = list(melee = 10, bullet = 5, laser = 5,energy = 5, bomb = 0, bio = 50, rad = 0)
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/mask/gas/commando

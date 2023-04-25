@@ -5,7 +5,7 @@
  */
 /obj/item/light
 	icon = 'icons/obj/lighting.dmi'
-	force = 2
+	damage_force = 2
 	throw_force = 5
 	w_class = ITEMSIZE_TINY
 	matter = list(MAT_STEEL = 60)
@@ -110,6 +110,20 @@
 
 	nightshift_range = 4
 	nightshift_power = 0.4
+
+/obj/item/light/bulb/strong
+	name = "light bulb"
+	desc = "A replacement light bulb."
+	icon_state = "lbulb"
+	base_icon_state = "lbulb"
+	item_state = "contvapour"
+	matter = list(MAT_GLASS = 100)
+	brightness_color = LIGHT_COLOR_TUNGSTEN
+
+	brightness_range = 8
+
+	nightshift_range = 8
+	nightshift_power = 0.8
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
@@ -250,7 +264,7 @@
 			SPAN_DANGER("You hear a small glass object shatter."),
 		)
 		status = LIGHT_BROKEN
-		force = 5
+		damage_force = 5
 		sharp = 1
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 		update_icon()

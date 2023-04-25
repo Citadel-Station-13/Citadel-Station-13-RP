@@ -3,7 +3,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "jaws"
 	desc = "The jaws of the law."
-	force = 10
+	damage_force = 10
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -14,7 +14,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "smalljaws"
 	desc = "The jaws of a small dog."
-	force = 5
+	damage_force = 5
 	throw_force = 0
 	hitsound = 'sound/weapons/bite.ogg'
 	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -33,7 +33,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "jaws"
 			desc = "The jaws of the law."
-			force = 10
+			damage_force = 10
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
@@ -43,7 +43,7 @@
 			icon = 'icons/mob/dogborg_vr.dmi'
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
-			force = 5
+			damage_force = 5
 			throw_force = 0
 			hitsound = 'sound/weapons/bite.ogg'
 			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
@@ -56,7 +56,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "nose"
 	desc = "The BOOP module, a simple reagent and atmosphere sniffer."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 	attack_verb = list("nuzzled", "nosed", "booped")
@@ -268,8 +268,8 @@
 			var/mob/living/L = target
 			if(R.cell.charge <= 666)
 				return
-			L.Stun(1)
-			L.Weaken(1)
+			L.afflict_stun(20 * 1)
+			L.afflict_paralyze(20 * 1)
 			L.apply_effect(STUTTER, 1)
 			L.visible_message("<span class='danger'>[user] has shocked [L] with its tongue!</span>", \
 								"<span class='userdanger'>[user] has shocked you with its tongue! You can feel the betrayal.</span>")
@@ -281,7 +281,7 @@
 			water.use_charge(5)
 			var/mob/living/carbon/human/H = target
 			if(H.species.lightweight == 1)
-				H.Weaken(3)
+				H.afflict_paralyze(20 * 3)
 	else
 		user.visible_message("[user] begins to lick [target] clean...", "<span class='notice'>You begin to lick [target] clean...</span>")
 		if(do_after(user, 50, target = target))
@@ -323,7 +323,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "projgun"
 	fire_sound = 'sound/weapons/eLuger.ogg'
-	projectile_type = /obj/item/projectile/beam/disable
+	projectile_type = /obj/projectile/beam/disable
 	charge_cost = 240 //Normal cost of a taser. It used to be 1000, but after some testing it was found that it would sap a borg's battery to quick
 	recharge_time = 10 //Takes ten ticks to recharge a shot, so don't waste them all!
 	//cell_type = null //Same cell as a taser until edits are made.
@@ -333,7 +333,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "swordtail"
 	desc = "A glowing pink dagger normally attached to the end of a cyborg's tail. It appears to be extremely sharp."
-	force = 20 //Takes 5 hits to 100-0
+	damage_force = 20 //Takes 5 hits to 100-0
 	sharp = 1
 	edge = 1
 	throw_force = 0 //This shouldn't be thrown in the first place.
@@ -378,7 +378,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "pounce"
 	desc = "Leap at your target to momentarily stun them."
-	force = 0
+	damage_force = 0
 	item_flags = ITEM_NOBLUDGEON
 	throw_force = 0
 
@@ -422,7 +422,7 @@
 		return
 
 	last_special = world.time + 10
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	pixel_y = pixel_y + 10
 
 	src.visible_message("<span class='danger'>\The [src] leaps at [T]!</span>")
@@ -433,7 +433,7 @@
 
 	sleep(5)
 
-	if(status_flags & LEAPING) status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING) status_flags &= ~STATUS_LEAPING
 
 	if(!src.Adjacent(T))
 		to_chat(src, "<span class='warning'>You miss!</span>")
@@ -442,7 +442,7 @@
 	if(ishuman(T))
 		var/mob/living/carbon/human/H = T
 		if(H.species.lightweight == 1)
-			H.Weaken(3)
+			H.afflict_paralyze(20 * 3)
 			return
 	var/armor_block = run_armor_check(T, "melee")
 	var/armor_soak = get_armor_soak(T, "melee")

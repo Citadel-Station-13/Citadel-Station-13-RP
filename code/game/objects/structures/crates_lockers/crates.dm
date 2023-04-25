@@ -38,7 +38,7 @@
 				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 				s.set_up(5, 1, src)
 				s.start()
-				if(usr.stunned)
+				if(!CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
 					return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1, -3)
@@ -184,7 +184,7 @@
 	set category = "Object"
 	set name = "Toggle Lock"
 
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 
 	if(ishuman(usr) || isrobot(usr))
@@ -251,7 +251,7 @@
 			req_access += pick(get_all_station_access())
 	..()
 
-/obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/crate/secure/bullet_act(var/obj/projectile/Proj)
 	if(!(Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		return
 
@@ -742,6 +742,14 @@
 	icon_state = "oss"
 	icon_opened = "ossopen"
 	icon_closed = "oss"
+
+//Ashie Crate - Sprite isn't stellar, maybe some day we can do a better one.
+/obj/structure/closet/crate/ashlander
+	name = "bonemold crate"
+	desc = "A crate shaped out of fused bone plates. It is held shut by a sturdy hide strap."
+	icon_state = "ashcrate"
+	icon_opened = "ashcrateopen"
+	icon_closed = "ashcrate"
 
 //Secure crates
 

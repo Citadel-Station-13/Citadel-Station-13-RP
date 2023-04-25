@@ -124,7 +124,7 @@
 	switch (severity)
 		if (1.0)
 			b_loss += 500
-			if (!prob(run_mob_armor(null, "bomb")))
+			if (!prob(legacy_mob_armor(null, "bomb")))
 				gib()
 				return
 			else
@@ -140,7 +140,7 @@
 
 			f_loss += 60
 
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/1.5
 				f_loss = f_loss/1.5
 
@@ -148,17 +148,17 @@
 				ear_damage += 30
 				ear_deaf += 120
 			if (prob(70) && !shielded)
-				Unconscious(10)
+				afflict_unconscious(20 * 10)
 
 		if(3.0)
 			b_loss += 30
-			if (prob(run_mob_armor(null, "bomb")))
+			if (prob(legacy_mob_armor(null, "bomb")))
 				b_loss = b_loss/2
 			if (!get_ear_protection() >= 2)
 				ear_damage += 15
 				ear_deaf += 60
 			if (prob(50) && !shielded)
-				Unconscious(10)
+				afflict_unconscious(20 * 10)
 
 	var/update = 0
 
@@ -304,7 +304,7 @@
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(var/shock_damage, var/obj/source, var/base_siemens_coeff = 1.0, var/def_zone = null)
 
-	if(status_flags & GODMODE)	return 0	//godmode
+	if(status_flags & STATUS_GODMODE)	return 0	//godmode
 
 	if (!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -908,7 +908,7 @@
 			if(H.brainmob)
 				if(H.brainmob.real_name == src.real_name)
 					if(H.brainmob.mind)
-						H.brainmob.mind.transfer_to(src)
+						H.brainmob.mind.transfer(src)
 						qdel(H)
 
 	// Reapply markings/appearance from prefs for player mobs
@@ -1052,7 +1052,7 @@
 	if(istype(O, /obj/item/melee/spike))
 		organ.take_damage(rand(3,9), 0, 0) // it has spikes on it it's going to stab you
 		to_chat(src, "<span class='danger'>The edges of [O] in your [organ.name] are not doing you any favors.</span>")
-		Weaken(2) // having a very jagged stick jammed into your bits is Bad for your health
+		afflict_paralyze(20 * 2) // having a very jagged stick jammed into your bits is Bad for your health
 	organ.take_damage(rand(1,3), 0, 0)
 	if(!(organ.robotic >= ORGAN_ROBOT) && (should_have_organ(O_HEART))) //There is no blood in protheses.
 		organ.status |= ORGAN_BLEEDING
@@ -1166,7 +1166,7 @@
 	species.create_blood(src)
 	species.handle_post_spawn(src)
 	species.update_attack_types() // Required for any trait that updates unarmed_types in setup.
-	updatehealth()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
+	update_health()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()
@@ -1268,12 +1268,16 @@
 	if(isSynthetic())
 		switch(severity)
 			if(1)
+				afflict_stagger(20, 30)
 				Confuse(10)
 			if(2)
+				afflict_stagger(10, 15)
 				Confuse(7)
 			if(3)
+				afflict_stagger(5, 10)
 				Confuse(5)
 			if(4)
+				afflict_stagger(2)
 				Confuse(2)
 		flash_eyes()
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
@@ -1457,16 +1461,6 @@
 		return 1
 	return 0
 
-/mob/living/carbon/human/can_stand_overridden()
-	if(wearing_rig && wearing_rig.ai_can_move_suit(check_for_ai = 1))
-		// Actually missing a leg will screw you up. Everything else can be compensated for.
-		for(var/limbcheck in list("l_leg","r_leg"))
-			var/obj/item/organ/affecting = get_organ(limbcheck)
-			if(!affecting)
-				return 0
-		return 1
-	return 0
-
 /mob/living/carbon/human/verb/toggle_underwear()
 	set name = "Toggle Underwear"
 	set desc = "Shows/hides selected parts of your underwear."
@@ -1539,9 +1533,9 @@
 		equip_to_appropriate_slot(permit) // If for some reason it can't find room, it'll still be on the floor.
 
 /mob/living/carbon/human/proc/update_icon_special() //For things such as teshari hiding and whatnot.
-	if(status_flags & HIDING) // Hiding? Carry on.
+	if(status_flags & STATUS_HIDING) // Hiding? Carry on.
 		// Stunned/knocked down by something that isn't the rest verb? Note: This was tried with INCAPACITATION_STUNNED, but that refused to work.
-		if(stat == DEAD || paralysis || weakened || stunned || restrained() || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
+		if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || buckled || LAZYLEN(grabbed_by) || has_buckled_mobs())
 			reveal(null)
 		else
 			set_base_layer(HIDING_LAYER)
@@ -1657,11 +1651,11 @@
 	. = ..()
 	if(wear_suit)
 		if(wear_suit.inv_hide_flags & HIDEGLOVES)
-			LAZYOR(., SLOT_GLOVES)
+			LAZYDISTINCTADD(., SLOT_GLOVES)
 		if(wear_suit.inv_hide_flags & HIDEJUMPSUIT)
-			LAZYOR(., SLOT_ICLOTHING)
+			LAZYDISTINCTADD(., SLOT_ICLOTHING)
 		if(wear_suit.inv_hide_flags & HIDESHOES)
-			LAZYOR(., SLOT_FEET)
+			LAZYDISTINCTADD(., SLOT_FEET)
 
 //! Pixel Offsets
 /mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)

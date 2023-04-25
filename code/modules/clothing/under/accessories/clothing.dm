@@ -51,7 +51,7 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/emergency/oxygen)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	siemens_coefficient = 0.9
@@ -154,6 +154,16 @@
 /obj/item/clothing/accessory/poncho/rough_cloak/tan
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn
+	name = "Rough Torn Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one has seen worse days."
+	icon_state = "rough_torn_cloak_color"
+	item_state = "rough_torn_cloak_color"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
+	icon_state = "rough_torn_cloak_brown"
+	item_state = "rough_torn_cloak_brown"
 
 //Just a little extra aesthetic for Goliath armor.
 /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
@@ -289,7 +299,7 @@
 	name = "flower-pattern shirt"
 	desc = "You probably need some welder googles to look at this."
 	icon_state = "hawaii"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
@@ -316,7 +326,7 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
@@ -368,7 +378,7 @@
 	icon_override = 'icons/mob/clothing/ties.dmi'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/none
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	siemens_coefficient = 0.9
@@ -562,3 +572,22 @@
 	name = "Stirrup Sleeve"
 	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
 	icon_state = "armsock_right"
+
+/obj/item/clothing/accessory/poncho/dust_cloak
+	name = "Dust Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime."
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "terrandress"
+	item_state = "terrandress"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/dark
+	name = "Dust Cloak -- Embroidered"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is embroidered."
+	icon_state = "terrandress_off"
+	item_state = "terrandress_off"
+
+/obj/item/clothing/accessory/poncho/dust_cloak/white
+	name = "Dust Cloak --  White"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one is white."
+	icon_state = "terrandress_comm"
+	item_state = "terrandress_comm"

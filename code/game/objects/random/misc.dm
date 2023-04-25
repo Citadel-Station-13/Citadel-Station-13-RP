@@ -816,6 +816,8 @@
 		prob(2);/obj/item/material/twohanded/fireaxe,
 		prob(2);/obj/item/gun/ballistic/luger/brown,
 		prob(2);/obj/item/gun/launcher/crossbow,
+		prob(1);/obj/item/gun/energy/plasma,
+		prob(1);/obj/item/gun/energy/plasma/pistol,
 		// prob(1);/obj/item/gun/ballistic/automatic/battlerifle, // Too OP
 		prob(1);/obj/item/gun/ballistic/deagle/gold,
 		prob(1);/obj/item/gun/ballistic/automatic/lmg/mg42,

@@ -25,7 +25,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 
 
 /*
@@ -36,7 +36,7 @@
 	desc = "A translucent balloon. There's nothing in it."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "waterballoon-e"
-	force = 0
+	damage_force = 0
 
 /obj/item/toy/balloon/Initialize(mapload)
 	. = ..()
@@ -92,7 +92,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "syndballoon"
 	w_class = ITEMSIZE_LARGE
@@ -103,7 +103,7 @@
 	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
-	force = 0
+	damage_force = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "ntballoon"
 	w_class = ITEMSIZE_LARGE
@@ -206,7 +206,7 @@
 
 		return
 	else if (bullets == 0)
-		user.Weaken(5)
+		user.afflict_paralyze(20 * 5)
 		for(var/mob/O in viewers(world.view, user))
 			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
@@ -231,7 +231,7 @@
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
 				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
-		user.Weaken(5)
+		user.afflict_paralyze(20 * 5)
 
 /obj/item/toy/ammo/crossbow
 	name = "foam dart"
@@ -300,7 +300,7 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 	slot_flags = SLOT_BELT | SLOT_BACK
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
@@ -358,7 +358,7 @@
 	item_state = "sunflower"
 	var/empty = 0
 	slot_flags = SLOT_HOLSTER
-	force = 0
+	damage_force = 0
 
 /obj/item/toy/waterflower/Initialize(mapload)
 	. = ..()
@@ -1119,6 +1119,12 @@
 	icon_state = "tuxedocat"
 	pokephrase = "Mrowww!!"
 
+/obj/item/toy/plushie/toad
+	name = "\improper Toad plushie"
+	desc = "Not actually a replica of a toad, but a humanoid toadstool! It wont stop screaming (lovingly) when you poke and squeeze it, but somehow it's cute anyways. Reminds you of times spent racing."
+	icon_state = "toadplush"
+	pokephrase = "Waaah!!"
+
 // nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green
 	name = "green squid plushie"
@@ -1547,7 +1553,7 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "tinyxmastree"
 	w_class = ITEMSIZE_TINY
-	force = 1
+	damage_force = 1
 	throw_force = 1
 
 //Dakimakuras, ported from Main.
@@ -1692,3 +1698,20 @@
 	name = "Red Checker King"
 	icon_state = "zoomba-crisis"
 	desc = "A Novelty checker piece in the image of the awe inspiring crisis zoomba."
+
+//Step 1: Add Gnomes. Step 2: ??? Step 3. Profit.
+/obj/item/toy/gnome
+	name = "lawn gnome"
+	icon_state = "gnome"
+	item_state = "gnome"
+	desc = "A ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."
+	attack_verb = list("gnomed", "bonked", "struck")
+	throw_force = 5
+	throw_speed = 4
+	throw_range = 7
+	damage_force = 5
+
+/obj/item/toy/gnome/giant
+	name = "giant lawn gnome"
+	icon_state = "gnome_giant"
+	desc = "A life-sized ceramic gnome statue, often used in lawn displays. For a brief while, carrying a gnome safely through hazardous areas was seen as a popular challenge."

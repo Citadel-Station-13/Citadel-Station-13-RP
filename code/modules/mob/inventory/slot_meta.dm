@@ -629,6 +629,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
 		BODYTYPE_STRING_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/mask.dmi',
 	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_",
+	)
 	render_layer = FACEMASK_LAYER
 
 /datum/inventory_slot_meta/restraints

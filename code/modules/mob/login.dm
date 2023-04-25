@@ -101,6 +101,8 @@
 	client.statpanel_reload()
 	// world sectors hook
 	reconsider_sector_relevance()
+	// update ssd overlay
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

@@ -4,7 +4,7 @@
 	icon_state = "hardhat0_yellow"
 	brightness_on = 4 //luminosity when on
 	light_overlay = "hardhat_light"
-	armor = list(melee = 30, bullet = 5, laser = 20,energy = 10, bomb = 20, bio = 10, rad = 20)
+	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = 0
 	siemens_coefficient = 0.9
 	action_button_name = "Toggle Head-light"

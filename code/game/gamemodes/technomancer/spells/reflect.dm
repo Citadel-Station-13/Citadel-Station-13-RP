@@ -42,11 +42,11 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = REVERSE_DIR(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 
-		if(istype(damage_source, /obj/item/projectile))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile))
+			var/obj/projectile/P = damage_source
 
 			if(P.starting && !P.reflected)
 				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")

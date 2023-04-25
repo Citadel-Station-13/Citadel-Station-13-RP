@@ -239,7 +239,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		engaging = null
 		return
 	engaging = target
-	var/Angle = round(Get_Angle(src,M))
+	var/Angle = round(get_visual_angle(src,M))
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(Angle)
 	addtimer(CALLBACK(src, .proc/finish_shot, target), rotation_speed)
@@ -265,7 +265,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		flick(src, "[initial(icon_state)]_off")
 		return
 	//We throw a laser but it doesnt have to hit for meteor to explode
-	var/obj/item/projectile/beam/pointdefense/beam = new(get_turf(src))
+	var/obj/projectile/beam/pointdefense/beam = new(get_turf(src))
 	playsound(src, 'sound/weapons/mandalorian.ogg', 75, 1)
 	beam.launch_projectile(target = M.loc, user = src)
 

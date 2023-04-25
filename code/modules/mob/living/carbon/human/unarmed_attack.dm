@@ -73,7 +73,7 @@ var/global/list/sparring_attack_cache = list()
 					else
 						target.visible_message("<span class='danger'>[target] slams into [T]!</span>")
 					if(prob(50))
-						target.setDir(GLOB.reverse_dir[target.dir])
+						target.setDir(global.reverse_dir[target.dir])
 					target.apply_effect(attack_damage * 0.4, WEAKEN, armour)
 			if(BP_GROIN)
 				if(!target.isSynthetic())
@@ -226,7 +226,7 @@ var/global/list/sparring_attack_cache = list()
 	var/obj/item/clothing/shoes = user.shoes
 	if(!istype(shoes))
 		return damage
-	return damage + (shoes ? shoes.force : 0)
+	return damage + (shoes ? shoes.damage_force : 0)
 
 /datum/unarmed_attack/kick/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
@@ -271,7 +271,7 @@ var/global/list/sparring_attack_cache = list()
 
 /datum/unarmed_attack/stomp/get_unarmed_damage(var/mob/living/carbon/human/user)
 	var/obj/item/clothing/shoes = user.shoes
-	return damage + (shoes ? shoes.force : 0)
+	return damage + (shoes ? shoes.damage_force : 0)
 
 /datum/unarmed_attack/stomp/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)

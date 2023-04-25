@@ -215,8 +215,8 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		if(!sleevemate_mob)
 			sleevemate_mob = new()
 
-		stored_mind.active = TRUE //Setting this causes transfer_to, to key them into the mob
-		stored_mind.transfer_to(sleevemate_mob)
+		stored_mind.active = TRUE //Setting this causes transfer, to key them into the mob
+		stored_mind.transfer(sleevemate_mob)
 		SC.catch_mob(sleevemate_mob)
 		stored_mind = null
 		to_chat(usr,"<span class='notice'>Mind transferred into Soulcatcher!</span>")
@@ -242,7 +242,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				to_chat(usr,"<span class='warning'>\The [src] no longer has a stored mind.</span>")
 				return
 			stored_mind.active = TRUE
-			stored_mind.transfer_to(target)
+			stored_mind.transfer(target)
 			stored_mind = null
 			to_chat(usr,"<span class='notice'>Mind transferred into [target]!</span>")
 			update_icon()

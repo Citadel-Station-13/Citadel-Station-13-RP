@@ -1,3 +1,6 @@
+//? This is here because the linter will explode if this isn't here. Don't believe me? Remove it. I dare you.
+/datum/language_server_error_blocker
+
 //## Core settings
 //! Fastboot flags - useful for debugging
 /// Disable automatic roundstart icon smoothing.
@@ -126,7 +129,7 @@
 
 
 #ifdef LOWMEMORYMODE
-	#define FORCE_MAP "_maps/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
+	#define FORCE_MAP "_mapload/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
 #endif
 
 

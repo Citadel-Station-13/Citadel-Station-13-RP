@@ -13,7 +13,7 @@
 	layer = 3.3 //3.3 so its above windows, not the same as them. anything below 3.3 puts the curtain beneath the window sprite in current build
 	opacity = 0
 
-/obj/structure/curtain/bullet_act(obj/item/projectile/P, def_zone)
+/obj/structure/curtain/bullet_act(obj/projectile/P, def_zone)
 	if(!P.nodamage)
 		visible_message("<span class='warning'>[P] tears [src] down!</span>")
 		qdel(src)
@@ -66,6 +66,12 @@
 /obj/structure/curtain/open/privacy
 	name = "privacy curtain"
 	color = "#B8F5E3"
+
+/obj/structure/curtain/open/ashlander
+	name = "hide curtains"
+	desc = "A curtain fasioned out of Goliath hide - frequently used to keep flying ash out of a building."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "goliath_open"
 
 /obj/structure/curtain/open/shower
 	name = "shower curtain"

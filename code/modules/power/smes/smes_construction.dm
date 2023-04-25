@@ -177,7 +177,7 @@
 			else
 				to_chat(h_user, "A small electrical arc sparks and burns your hand as you touch the [src]!")
 				h_user.adjustFireLossByPart(rand(5,10), used_hand)
-				h_user.Weaken(2)
+				h_user.afflict_paralyze(20 * 2)
 
 		if (16 to 35)
 			// Medium overcharge
@@ -188,7 +188,7 @@
 			else
 				to_chat(h_user, "A medium electrical arc sparks as you touch the [src], severely burning your hand!")
 				h_user.adjustFireLossByPart(rand(10,25), used_hand)
-				h_user.Weaken(5)
+				h_user.afflict_paralyze(20 * 5)
 			spawn()
 				empulse(get_turf(src), 1, 2, 3, 4)
 
@@ -199,7 +199,7 @@
 			if (user_protected)
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], ignoring your gloves and burning your hand!")
 				h_user.adjustFireLossByPart(rand(25,60), used_hand)
-				h_user.Weaken(8)
+				h_user.afflict_paralyze(20 * 8)
 			else
 				to_chat(h_user, "A strong electrical arc sparks between you and [src], knocking you out for a while!")
 				h_user.electrocute_act(rand(35,75), src, def_zone = BP_TORSO)
@@ -324,9 +324,10 @@
 
 		// Superconducting Magnetic Coil - Upgrade the SMES
 		else if(istype(W, /obj/item/smes_coil))
-			if(!user.attempt_insert_item_for_installation(W, src))
-				return
 			if (cur_coils < max_coils)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+					return
 				if (failure_probability && prob(failure_probability))
 					total_system_failure(failure_probability, user)
 					return

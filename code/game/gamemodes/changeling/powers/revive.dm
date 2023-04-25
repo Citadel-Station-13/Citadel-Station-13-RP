@@ -21,9 +21,9 @@
 	C.setToxLoss(0)
 	C.setOxyLoss(0)
 	C.setCloneLoss(0)
-	C.SetUnconscious(0)
-	C.SetStunned(0)
-	C.SetWeakened(0)
+	C.set_unconscious(0)
+	C.set_stunned(0)
+	C.set_paralyzed(0)
 	C.radiation = 0
 	C.heal_overall_damage(C.getBruteLoss(), C.getFireLoss())
 	C.reagents.clear_reagents()
@@ -33,7 +33,6 @@
 		H.restore_all_organs(ignore_prosthetic_prefs=1) //Covers things like fractures and other things not covered by the above.
 		H.restore_blood()
 		H.mutations.Remove(MUTATION_HUSK)
-		H.status_flags &= ~DISFIGURED
 		H.update_icons_body()
 		for(var/limb in H.organs_by_name)
 			var/obj/item/organ/external/current_limb = H.organs_by_name[limb]
@@ -51,7 +50,7 @@
 	C.halloss = 0
 	C.shock_stage = 0 //Pain
 	to_chat(C, "<span class='notice'>We have regenerated.</span>")
-	C.update_canmove()
+	C.update_mobility()
 	C.mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
 	C.set_stat(CONSCIOUS)

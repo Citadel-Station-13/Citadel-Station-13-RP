@@ -8,6 +8,9 @@
 /obj/item/clothing/accessory/oricon/department/security/crew
 	desc = "An insignia denoting assignment to the security department. These fit crew uniforms."
 
+/obj/item/clothing/accessory/oricon/department/blueshield/crew
+	desc = "An insignia denoting assignment to the Blueshields. These fit crew uniforms."
+
 /obj/item/clothing/accessory/oricon/department/medical/crew
 	desc = "An insignia denoting assignment to the medical department. These fit crew uniforms."
 

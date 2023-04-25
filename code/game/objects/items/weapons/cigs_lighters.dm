@@ -311,9 +311,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
 /obj/item/clothing/mask/smokable/cigarette/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] drops and treads on the lit [src], putting it out instantly.</span>")
@@ -321,7 +318,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			user.visible_message("<span class='notice'>[user] puts out \the [src].</span>")
 			quench()
-	return ..()
 
 /obj/item/clothing/mask/smokable/cigarette/import
 	name = "cigarette"
@@ -448,9 +444,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "empty [initial(name)]"
 
 /obj/item/clothing/mask/smokable/pipe/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(lit == 1)
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message("<span class='notice'>[user] empties the lit [src] on the floor!.</span>")
@@ -503,6 +496,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cobpipe"
 	item_state = "cobpipe"
 	chem_volume = 35
+
+/obj/item/clothing/mask/smokable/pipe/bonepipe
+	name = "bone pipe"
+	desc = "A fragile pipe, masterfully carved by hand from the bone of an unknown creature."
+	icon_state = "bonepipe"
+	item_state = "bonepipe"
+	chem_volume = 25
 
 ///////////////
 //CUSTOM CIGS//
@@ -601,9 +601,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	base_state = icon_state
 
 /obj/item/flame/lighter/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(!base_state)
 		base_state = icon_state
 	if(!lit)
@@ -736,3 +733,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	name = "\improper Adhomai lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
+
+//Ashlander Lighters
+/obj/item/flame/lighter/ashlander
+	name = "spark striker"
+	desc = "A fragment of elder stone and a chunk of charcoal, bound together by sinew and bone to easily create sparks."
+	icon = 'icons/obj/items.dmi'
+	icon_state = "striker"
+	item_state = "lighter-r"

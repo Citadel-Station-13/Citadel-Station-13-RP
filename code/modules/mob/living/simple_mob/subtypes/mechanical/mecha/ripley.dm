@@ -47,7 +47,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 20,
 				"laser"		= 50,
@@ -84,7 +84,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 30,
 				"bullet"	= 40,
 				"laser"		= 50,
@@ -94,7 +94,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/pistol
+	projectiletype = /obj/projectile/bullet/pistol
 	base_attack_cooldown = 0.5 SECONDS
 	needs_reload = TRUE
 	reload_max = 30

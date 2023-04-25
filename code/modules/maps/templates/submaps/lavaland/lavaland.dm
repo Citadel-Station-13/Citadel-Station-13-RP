@@ -3,7 +3,7 @@
 	desc = "Submaps for Lava Land"
 	allow_duplicates = FALSE // TRUE means the same submap can spawn twice
 	annihilate = TRUE
-	prefix = "_maps/submaps/level_specific/lavaland/"
+	prefix = "maps/submaps/level_specific/lavaland/"
 
 /datum/map_template/submap/level_specific/lavaland/horrors
 	name = "Lava Land - Shrine"

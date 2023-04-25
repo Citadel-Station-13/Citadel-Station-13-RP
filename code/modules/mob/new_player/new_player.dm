@@ -12,7 +12,7 @@
 
 	density = 0
 	stat = DEAD
-	canmove = 0
+	mobility_flags = NONE
 
 	anchored = 1	// Don't get pushed around
 
@@ -174,6 +174,9 @@
 				STATPANEL_DATA_ENTRY("[player.key]", (player.ready)?("(Playing)"):(""))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
+
+/mob/new_player/update_mobility()
+	return
 
 /mob/new_player/Topic(href, href_list[])
 	if(src != usr)
@@ -475,7 +478,8 @@
 	return timer - world.time
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
+		return
 	if (src != usr)
 		return 0
 	if(SSticker.current_state != GAME_STATE_PLAYING)
@@ -565,7 +569,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (GetAssignment(character) || rank)))
 
 	qdel(src)
 
@@ -628,7 +632,7 @@
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
 		//! Preferences shim: transfer stuff over
 		client.prefs.imprint_mind(mind)
-		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
+		mind.transfer(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)

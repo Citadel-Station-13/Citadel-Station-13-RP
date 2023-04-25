@@ -9,9 +9,9 @@
 	. = ..()
 	reagents.add_reagent("coolant", 1000)
 
-/obj/structure/reagent_dispensers/coolanttank/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/reagent_dispensers/coolanttank/bullet_act(var/obj/projectile/Proj)
 	if(Proj.get_structure_damage())
-		if(!istype(Proj ,/obj/item/projectile/beam/lasertag) && !istype(Proj ,/obj/item/projectile/beam/practice) ) // TODO: make this not terrible
+		if(!istype(Proj ,/obj/projectile/beam/lasertag) && !istype(Proj ,/obj/projectile/beam/practice) ) // TODO: make this not terrible
 			explode()
 
 /obj/structure/reagent_dispensers/coolanttank/legacy_ex_act()
@@ -34,6 +34,5 @@
 		else
 			env.temperature -= 50
 
-	sleep(10)
-	if(src)
-		qdel(src)
+	// NOW.
+	qdel(src)

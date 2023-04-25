@@ -1,4 +1,4 @@
-/obj/item/projectile/magic
+/obj/projectile/magic
 	name = "bolt of nothing"
 	icon_state = "energy"
 	damage = 0
@@ -8,11 +8,11 @@
 	var/magic = TRUE
 	var/checks_antimagic = TRUE
 
-/obj/item/projectile/magic/death
+/obj/projectile/magic/death
 	name = "bolt of death"
 	icon_state = "pulse1_bl"
 
-/obj/item/projectile/magic/death/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/death/on_hit(target, var/mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -21,14 +21,14 @@
 			return blocked
 		M.death(0)
 
-/obj/item/projectile/magic/resurrection
+/obj/projectile/magic/resurrection
 	name = "bolt of resurrection"
 	icon_state = "ion"
 	damage = 0
 	damage_type = OXY
 	nodamage = 1
 
-/obj/item/projectile/magic/resurrection/on_hit(mob/living/carbon/target)
+/obj/projectile/magic/resurrection/on_hit(mob/living/carbon/target)
 	. = ..()
 	if(isliving(target))
 		if(target.anti_magic_check())
@@ -39,7 +39,7 @@
 		else if(target.stat != DEAD)
 			to_chat(target, "<span class='notice'>You feel great!</span>")
 
-/obj/item/projectile/magic/teleport
+/obj/projectile/magic/teleport
 	name = "bolt of teleportation"
 	icon_state = "bluespace"
 	damage = 0
@@ -48,7 +48,7 @@
 	var/inner_tele_radius = 0
 	var/outer_tele_radius = 6
 
-/obj/item/projectile/magic/teleport/on_hit(mob/target, var/mob/living/L)
+/obj/projectile/magic/teleport/on_hit(mob/target, var/mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -67,7 +67,7 @@
 				smoke.set_up(max(round(4 - teleammount),0), stuff.loc) //Smoke drops off if a lot of stuff is moved for the sake of sanity
 				smoke.start()
 
-/obj/item/projectile/magic/door
+/obj/projectile/magic/door
 	name = "bolt of door creation"
 	icon_state = "energy"
 	damage = 0
@@ -75,7 +75,7 @@
 	nodamage = 1
 	var/list/door_types = list(/obj/structure/simple_door/wood, /obj/structure/simple_door/iron, /obj/structure/simple_door/silver, /obj/structure/simple_door/gold, /obj/structure/simple_door/uranium, /obj/structure/simple_door/sandstone, /obj/structure/simple_door/phoron, /obj/structure/simple_door/diamond)
 
-/obj/item/projectile/magic/door/on_hit(atom/target)
+/obj/projectile/magic/door/on_hit(atom/target)
 	. = ..()
 	if(istype(target, /obj/machinery/door))
 		OpenDoor(target)
@@ -83,27 +83,27 @@
 		var/turf/T = get_turf(target)
 		CreateDoor(T)
 
-/obj/item/projectile/magic/door/proc/CreateDoor(turf/T)
+/obj/projectile/magic/door/proc/CreateDoor(turf/T)
 	var/door_type = pick(door_types)
 	var/obj/structure/simple_door/D = new door_type(T)
 	T.ChangeTurf(/turf/simulated/floor/plating)
 	D.Open()
 
-/obj/item/projectile/magic/door/proc/OpenDoor(var/obj/machinery/door/D)
+/obj/projectile/magic/door/proc/OpenDoor(var/obj/machinery/door/D)
 	if(istype(D, /obj/machinery/door/airlock))
 		var/obj/machinery/door/airlock/A = D
 		A.locked = FALSE
 		D.open()
 
 /* //Needs more work.
-/obj/item/projectile/magic/change
+/obj/projectile/magic/change
 	name = "bolt of change"
 	icon_state = "ice_1"
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
 
-/obj/item/projectile/magic/change/on_hit(atom/change)
+/obj/projectile/magic/change/on_hit(atom/change)
 	. = ..()
 	if(ismob(change))
 		var/mob/M = change
@@ -115,7 +115,7 @@
 	qdel(src)
 
 /proc/wabbajack(mob/living/M)
-	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (GODMODE & M.status_flags))
+	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (STATUS_GODMODE & M.status_flags))
 		return
 
 	M.mob_transforming = TRUE
@@ -245,14 +245,14 @@
 	qdel(M)
 	return new_mob
 
-/obj/item/projectile/magic/animate
+/obj/projectile/magic/animate
 	name = "bolt of animation"
 	icon_state = "red_1"
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
 
-/obj/item/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/magic/animate/on_hit(atom/target, blocked = FALSE)
 	target.animate_atom_living(firer)
 	. = ..()
 
@@ -272,7 +272,7 @@
 				S.color = P.color
 				S.atom_colours = P.atom_colours.Copy()
 				if(L.mind)
-					L.mind.transfer_to(S)
+					L.mind.transfer(S)
 					if(owner)
 						to_chat(S, "<span class='userdanger'>You are an animated statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
 				P.forceMove(S)
@@ -290,7 +290,7 @@
 		if(owner)
 			C.ChangeOwner(owner)
 */
-/obj/item/projectile/magic/spellblade
+/obj/projectile/magic/spellblade
 	name = "blade energy"
 	icon_state = "lavastaff"
 	damage = 15
@@ -298,7 +298,7 @@
 	sharp = TRUE
 	magic = TRUE
 
-/obj/item/projectile/magic/spellblade/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/spellblade/on_hit(target, var/mob/living/L)
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
@@ -307,7 +307,7 @@
 			return
 	. = ..()
 
-/obj/item/projectile/magic/arcane_barrage
+/obj/projectile/magic/arcane_barrage
 	name = "arcane bolt"
 	icon_state = "arcane_barrage"
 	damage = 20
@@ -317,7 +317,7 @@
 	magic = TRUE
 	hitsound = 'sound/weapons/barragespellhit.ogg'
 
-/obj/item/projectile/magic/arcane_barrage/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/arcane_barrage/on_hit(target, var/mob/living/L)
 	if(ismob(target))
 		var/mob/M = target
 		if(L.anti_magic_check())
@@ -327,7 +327,7 @@
 	. = ..()
 
 
-/obj/item/projectile/magic/locker
+/obj/projectile/magic/locker
 	name = "locker bolt"
 	icon_state = "locker"
 	nodamage = TRUE
@@ -337,7 +337,7 @@
 	var/locker_suck = TRUE
 
 /*
-/obj/item/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
+/obj/projectile/magic/locker/proc/prehit(atom/A, var/mob/living/L)
 	if(ismob(A) && locker_suck)
 		var/mob/M = A
 		if(L.anti_magic_check())
@@ -351,7 +351,7 @@
 	return ..()
 */
 
-/obj/item/projectile/magic/locker/on_hit(target)
+/obj/projectile/magic/locker/on_hit(target)
 	if(created)
 		return ..()
 	var/obj/structure/closet/decay/C = new(get_turf(src))
@@ -361,7 +361,7 @@
 	created = TRUE
 	return ..()
 
-/obj/item/projectile/magic/locker/Destroy()
+/obj/projectile/magic/locker/Destroy()
 	locker_suck = FALSE
 	for(var/atom/movable/AM in contents)
 		AM.forceMove(get_turf(src))
@@ -396,13 +396,13 @@
 	update_icon()
 	addtimer(CALLBACK(src, .proc/decay), 15 SECONDS)
 
-/obj/item/projectile/magic/aoe
+/obj/projectile/magic/aoe
 	name = "Area Bolt"
 	desc = "What the fuck does this do?!"
 	damage = 0
 	var/proxdet = TRUE
 
-/obj/item/projectile/magic/aoe/Range()
+/obj/projectile/magic/aoe/Range()
 	if(proxdet)
 		for(var/mob/living/L in range(1, get_turf(src)))
 			if(L.stat != DEAD && L != firer && !L.anti_magic_check())
@@ -410,7 +410,7 @@
 	..()
 
 
-/obj/item/projectile/magic/aoe/lightning
+/obj/projectile/magic/aoe/lightning
 	name = "lightning bolt"
 	icon_state = "tesla_projectile"	//Better sprites are REALLY needed and appreciated!~
 	damage = 15
@@ -423,12 +423,12 @@
 	var/chain
 	var/mob/living/caster
 
-/obj/item/projectile/magic/aoe/lightning/fire(setAngle)
+/obj/projectile/magic/aoe/lightning/fire(setAngle)
 	if(caster)
 		chain = caster.Beam(src, icon_state = "lightning[rand(1, 12)]", time = INFINITY, maxdistance = INFINITY)
 	..()
 
-/obj/item/projectile/magic/aoe/lightning/on_hit(target, var/mob/living/L)
+/obj/projectile/magic/aoe/lightning/on_hit(target, var/mob/living/L)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -439,11 +439,11 @@
 	tesla_zap(src, zap_range, zap_power)
 	qdel(src)
 
-/obj/item/projectile/magic/aoe/lightning/Destroy()
+/obj/projectile/magic/aoe/lightning/Destroy()
 	qdel(chain)
 	. = ..()
 
-/obj/item/projectile/magic/aoe/fireball
+/obj/projectile/magic/aoe/fireball
 	name = "bolt of fireball"
 	icon_state = "fireball"
 	damage = 10
@@ -456,7 +456,7 @@
 	var/exp_flash = 3
 	var/exp_fire = 2
 
-/obj/item/projectile/magic/aoe/fireball/on_hit(target)
+/obj/projectile/magic/aoe/fireball/on_hit(target)
 	. = ..()
 	if(ismob(target))
 		var/mob/living/M = target
@@ -467,14 +467,14 @@
 	var/turf/T = get_turf(target)
 	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0)//, flame_range = exp_fire)
 
-/obj/item/projectile/magic/aoe/fireball/infernal
+/obj/projectile/magic/aoe/fireball/infernal
 	name = "infernal fireball"
 	exp_heavy = -1
 	exp_light = -1
 	exp_flash = 4
 	exp_fire= 5
 
-/obj/item/projectile/magic/aoe/fireball/infernal/on_hit(target)
+/obj/projectile/magic/aoe/fireball/infernal/on_hit(target)
 	. = ..()
 	if(ismob(target))
 		var/mob/living/M = target
@@ -484,14 +484,14 @@
 	for(var/i=0, i<50, i+=10)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, T, -1, exp_heavy, exp_light, exp_flash, FALSE, FALSE, exp_fire), i)
 
-/obj/item/projectile/magic/nuclear
+/obj/projectile/magic/nuclear
 	name = "\proper blazing manliness"
 	icon_state = "nuclear"
 	nodamage = TRUE
 	var/mob/living/victim = null
 	var/used = 0
 
-/obj/item/projectile/magic/nuclear/on_hit(target)
+/obj/projectile/magic/nuclear/on_hit(target)
 	if(used)
 		return
 	if(ismob(target))
@@ -506,21 +506,21 @@
 		explosion(src, -1, -1, -1, -1, FALSE, FALSE, 5)
 	return
 
-/obj/item/projectile/magic/nuclear/Destroy()
+/obj/projectile/magic/nuclear/Destroy()
 	for(var/atom/movable/AM in contents)
 		AM.forceMove(get_turf(src))
 	. = ..()
 
 //Spellcards
 
-/obj/item/projectile/spellcard
+/obj/projectile/spellcard
 	name = "enchanted card"
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
 	icon_state = "spellcard"
 	damage_type = BURN
 	damage = 2
 
-/obj/item/projectile/magic/spellcard/book
+/obj/projectile/magic/spellcard/book
 	nodamage = FALSE
 	name = "enchanted page"
 	desc = "A piece of paper enchanted to give it extreme durability and stiffness, along with a very hot burn to anyone unfortunate enough to get hit by a charged one."
@@ -529,11 +529,11 @@
 	damage = 12
 	magic = TRUE
 
-/obj/item/projectile/magic/spellcard/book/spark
+/obj/projectile/magic/spellcard/book/spark
 	damage = 4
 	var/fire_stacks = 4
 
-/obj/item/projectile/magic/spellcard/book/spark/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/magic/spellcard/book/spark/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/mob/living/carbon/M = target
 	if(ismob(target))
@@ -548,18 +548,18 @@
 	else
 		damage = 20 //If we are a simplemob we deal 5x damage
 
-/obj/item/projectile/magic/spellcard/book/shock
+/obj/projectile/magic/spellcard/book/shock
 	damage = 0
 	stutter = 5
 	agony = 20
 	stun = 10
 
 /* //Still need help on healing procs.
-/obj/item/projectile/magic/spellcard/book/heal
+/obj/projectile/magic/spellcard/book/heal
 	damage = 0
 	nodamage  = TRUE
 
-/obj/item/projectile/magic/spellcard/book/heal/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/magic/spellcard/book/heal/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/mob/living/carbon/M = target
 	if(ismob(target))

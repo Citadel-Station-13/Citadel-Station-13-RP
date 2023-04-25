@@ -42,7 +42,7 @@
 	set category = "Object"
 	set src in usr
 	set popup_menu = 1
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 0
 
 	if (radio.radio_enabled == 1)
@@ -154,7 +154,7 @@
 	return
 
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(rig)
@@ -246,13 +246,10 @@
 	brainmob.timeofhostdeath = H.timeofdeath
 	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 	return
 
 /obj/item/mmi/digital/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	if(brainmob && !brainmob.key && searching == 0)
 		//Start the process of searching for a new user.
 		to_chat(user, "<font color=#4F49AF>You carefully locate the manual activation switch and start the [src]'s boot process.</font>")

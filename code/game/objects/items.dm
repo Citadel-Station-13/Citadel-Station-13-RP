@@ -33,6 +33,18 @@
 	/// economic category for items
 	var/economic_category_item = ECONOMIC_CATEGORY_ITEM_DEFAULT
 
+	//? Combat
+	/// Amount of damage we do on melee.
+	var/damage_force = 0
+	/// armor flag for melee attacks
+	var/damage_flag = ARMOR_MELEE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_DEFAULT
+	/// damage_mode bitfield - see [code/__DEFINES/combat/damage.dm]
+	var/damage_mode = NONE
+	// todo: port over damtype
+
+
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -55,7 +67,6 @@
 	 * Either a list() with equal chances or a single verb.
 	 */
 	var/list/attack_verb = "attacked"
-	var/force = 0
 
 	/// Flags which determine which body parts are protected from heat. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/heat_protection = 0
@@ -88,8 +99,6 @@
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
 	var/slowdown = 0
-	var/list/armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	var/list/armorsoak = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	/// Suit storage stuff.
 	var/list/allowed = null
 	/// All items can have an uplink hidden inside, just remember to add the triggers.
@@ -137,9 +146,9 @@
 	//Potential memory optimization: Making embed chance a getter if unset.
 	if(embed_chance == EMBED_CHANCE_UNSET)
 		if(sharp)
-			embed_chance = max(5, round(force/w_class))
+			embed_chance = max(5, round(damage_force/w_class))
 		else
-			embed_chance = max(5, round(force/(w_class*3)))
+			embed_chance = max(5, round(damage_force/(w_class*3)))
 	if(hitsound == HITSOUND_UNSET)
 		if(damtype == "fire")
 			hitsound = 'sound/items/welder.ogg'
@@ -270,7 +279,11 @@
 		return
 
 	if(anchored)
-		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
+		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
+		return
+
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
 	if (hasorgans(user))
@@ -442,7 +455,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_PICKUP) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
@@ -467,7 +480,7 @@
  *This proc is executed when someone clicks the on-screen UI button.
  *The default action is attack_self().
  */
-/obj/item/proc/ui_action_click()
+/obj/item/ui_action_click(datum/action/action, mob/user)
 	attack_self(usr)
 
 //RETURN VALUES
@@ -549,8 +562,8 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Unconscious(1)
-				M.Weaken(4)
+				M.afflict_unconscious(20 * 1)
+				M.afflict_paralyze(20 * 4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")
@@ -755,3 +768,33 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 	if(interaction_flags_item & INTERACT_ITEM_ATTACK_SELF)
 		interact(user)
+	on_attack_self(user)
+
+/**
+ * Called after we attack self
+ * Used to allow for attack_self to be interrupted by signals in nearly all cases.
+ * You should usually override this instead of attack_self.
+ */
+/obj/item/proc/on_attack_self(mob/user)
+	return
+
+//? Mob Armor
+
+/**
+ * called to be checked for mob armor
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/checking_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()
+
+/**
+ * called to be used as mob armor
+ * side effects are allowed
+ *
+ * @returns copy of args with modified values
+ */
+/obj/item/proc/running_mob_armor(damage, tier, flag, mode, attack_type, datum/weapon, target_zone)
+	damage = fetch_armor().resultant_damage(damage, tier, flag)
+	return args.Copy()

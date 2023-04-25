@@ -30,7 +30,7 @@
 			to_chat(user, "<span class='warning'>You need to have something in your active hand, to use this verb.</span>")
 			return
 		var/weapon_attack_speed = user.get_attack_speed(I) / 10
-		var/weapon_damage = I.force
+		var/weapon_damage = I.damage_force
 		var/modified_damage_percent = 1
 
 		for(var/datum/modifier/M in user.modifiers)
@@ -40,7 +40,7 @@
 
 		if(istype(I, /obj/item/gun))
 			var/obj/item/gun/G = I
-			var/obj/item/projectile/P
+			var/obj/projectile/P
 
 			if(istype(I, /obj/item/gun/energy))
 				var/obj/item/gun/energy/energy_gun = G

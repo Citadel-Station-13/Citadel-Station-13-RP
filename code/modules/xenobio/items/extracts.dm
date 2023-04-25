@@ -4,7 +4,7 @@
 	desc = "Goo extracted from a slime, which can do different things depending on its color and what it is injected with."
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey slime extract"
-	force = 1
+	damage_force = 1
 	w_class = ITEMSIZE_TINY
 	throw_force = 0
 	throw_speed = 3
@@ -78,7 +78,7 @@
 /datum/chemical_reaction/slime/grey_new_slime/on_reaction(var/datum/reagents/holder)
 	holder.my_atom.visible_message("<span class='warning'>Infused with phoron, the core begins to quiver and grow, and soon a new baby slime emerges from it!</span>")
 	var/mob/living/simple_mob/slime/xenobio/S = new(get_turf(holder.my_atom))
-	S.Weaken(10)
+	S.afflict_paralyze(20 * 10)
 	..()
 
 /datum/chemical_reaction/slime/grey_monkey

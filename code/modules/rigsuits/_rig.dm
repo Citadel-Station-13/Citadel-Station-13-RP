@@ -2,6 +2,15 @@
 #define ONLY_RETRACT 2
 #define SEAL_DELAY 30
 
+/datum/armor/rig
+	melee = 0.4
+	bullet = 0.05
+	laser = 0.2
+	energy = 0.05
+	bomb = 0.35
+	bio = 1.0
+	rad = 0.2
+
 /*
  * Defines the behavior of hardsuits/rigs/power armour.
  */
@@ -15,7 +24,7 @@
 	action_button_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
-	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
+	armor_type = /datum/armor/rig
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.2
@@ -180,8 +189,7 @@
 			piece.siemens_coefficient = siemens_coefficient
 		piece.permeability_coefficient = permeability_coefficient
 		piece.unacidable = unacidable
-		if(islist(armor)) piece.armor = armor.Copy()
-		if(islist(armorsoak)) piece.armorsoak = armorsoak.Copy()
+		piece.set_armor(fetch_armor())
 
 	update_icon(1)
 
@@ -351,7 +359,7 @@
 
 				if(!failed_to_seal && (M.back == src || M.belt == src) && piece == compare_piece)
 
-					if(seal_delay && !instant && !do_after(M,seal_delay,needhand=0))
+					if(seal_delay && !instant && !do_self(M, seal_delay, DO_AFTER_IGNORE_ACTIVE_ITEM | DO_AFTER_IGNORE_MOVEMENT, NONE))
 						failed_to_seal = 1
 
 					piece.icon_state = "[suit_state][is_sealing ? "_sealed" : ""]"
@@ -370,10 +378,9 @@
 
 					//sealed pieces become airtight, protecting against diseases
 					if (is_sealing)
-						piece.armor["bio"] = 100
+						piece.set_armor(piece.fetch_armor().boosted(list(ARMOR_BIO = 100)))
 					else
-						piece.armor["bio"] = src.armor["bio"]
-
+						piece.set_armor(piece.fetch_armor().overwritten(list(ARMOR_BIO = fetch_armor().raw(ARMOR_BIO))))
 				else
 					failed_to_seal = 1
 
@@ -748,7 +755,7 @@
 		return 0
 
 	if(href_list["toggle_piece"])
-		if(ishuman(usr) && (usr.stat || usr.stunned || usr.lying))
+		if(ishuman(usr) && !CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 			return 0
 		toggle_piece(href_list["toggle_piece"], usr)
 	else if(href_list["toggle_seals"])
@@ -814,7 +821,7 @@
 	if(!istype(wearer) || (!wearer.back == src && !wearer.belt == src))
 		return
 
-	if(usr == wearer && (usr.stat||usr.paralysis||usr.stunned)) // If the usr isn't wearing the suit it's probably an AI.
+	if(usr == wearer && !CHECK_MOBILITY(H, MOBILITY_CAN_MOVE)) // If the usr isn't wearing the suit it's probably an AI.
 		return
 
 	if(trapSprung == 1)
@@ -925,7 +932,7 @@
 /obj/item/rig/proc/shock(mob/user)
 	if (electrocute_mob(user, cell, src)) //electrocute_mob() handles removing charge from the cell, no need to do that here.
 		spark_system.start()
-		if(user.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -1038,7 +1045,7 @@
 			return
 
 	//This is sota the goto stop mobs from moving var
-	if(wearer.transforming || !wearer.canmove)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 
 	if(locate(/obj/effect/stop/, wearer.loc))
@@ -1065,7 +1072,7 @@
 		if(wearer.restrained())//Why being pulled while cuffed prevents you from moving
 			for(var/mob/M in range(wearer, 1))
 				if(M.pulling == wearer)
-					if(!M.restrained() && M.stat == 0 && M.canmove && wearer.Adjacent(M))
+					if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && wearer.Adjacent(M))
 						to_chat(user, "<span class='notice'>Your host is restrained! They can't move!</span>")
 						return 0
 					else
@@ -1105,7 +1112,7 @@
 	var/power_cost = 200
 	if(!ai_moving)
 		power_cost = 20
-	if(protean_shitcode_moment)	// fuck this kill me
+	if(!protean_shitcode_moment)	// fuck this kill me
 		cell.use(power_cost) //Arbitrary, TODO
 	wearer.Move(get_step(get_turf(wearer),direction),direction)
 

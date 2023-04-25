@@ -10,6 +10,7 @@
 /obj/structure/closet/coffin/comfy
 	name = "extra comfortable coffin"
 	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
+	icon = 'icons/obj/closets/coffin.dmi'
 
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)
@@ -29,6 +30,7 @@
 	anchored = 1
 	max_closets = 1
 	opened = 1
+	color = "#c2b29f"
 
 /obj/structure/closet/grave/attack_hand(mob/user, list/params)
 	if(opened)
@@ -68,7 +70,7 @@
 	return TRUE	//Everything else can move over the graves
 
 /obj/structure/closet/grave/proc/fall_in(mob/living/L)	//Only called on humans for now, but still
-	L.Weaken(5)
+	L.afflict_paralyze(20 * 5)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		var/limb_damage = rand(5,25)
@@ -152,7 +154,7 @@
 	.=..()
 	alpha = 255	// Needed because of grave hiding
 
-/obj/structure/closet/grave/bullet_act(var/obj/item/projectile/P)
+/obj/structure/closet/grave/bullet_act(var/obj/projectile/P)
 	return PROJECTILE_CONTINUE	// It's a hole in the ground, doesn't usually stop or even care about bullets
 
 /obj/structure/closet/grave/return_air_for_internal_lifeform(var/mob/living/L)
@@ -166,3 +168,13 @@
 	grave_breath.adjust_gas(gasid, BREATH_MOLES)
 	grave_breath.temperature = (above_air.temperature) - 30	//Underground
 	return grave_breath
+
+/obj/structure/closet/grave/sand
+	name = "grave"
+	desc = "Sand."
+	color = "#fde39b"
+
+/obj/structure/closet/grave/snow
+	name = "grave"
+	desc = "Snow."
+	color = "#e6f3fc"

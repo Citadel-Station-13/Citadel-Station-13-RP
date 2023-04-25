@@ -14,31 +14,8 @@
 /datum/reagent/inaprovaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
 		M.add_chemical_effect(CE_STABLE, 15)//Reduces bleeding rate, and allowes the patient to breath even when in shock
-		M.add_chemical_effect(CE_PAINKILLER, 10)
-/*
-/datum/reagent/inaprovaline/topical//Main way to obtain is destiller
-	name = "Inaprovalaze"
-	id = "inaprovalaze"
-	description = "Inaprovalaze is a topical variant of Inaprovaline."
-	taste_description = "bitterness"
-	reagent_state = REAGENT_LIQUID
-	color = "#00BFFF"
-	overdose = REAGENTS_OVERDOSE * 2
-	metabolism = REM * 0.5
-	scannable = 1
-	touch_met = REM * 0.75
-	can_overdose_touch = TRUE
+		M.ceiling_chemical_effect(CE_PAINKILLER, 10)
 
-/datum/reagent/inaprovaline/topical/affect_blood(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		..()
-		M.adjustToxLoss(2 * removed)
-
-/datum/reagent/inaprovaline/topical/affect_touch(mob/living/carbon/M, alien, removed)
-	if(alien != IS_DIONA)
-		M.add_chemical_effect(CE_STABLE, 20)
-		M.add_chemical_effect(CE_PAINKILLER, 12)
-*/
 /datum/reagent/bicaridine
 	name = "Bicaridine"
 	id = "bicaridine"
@@ -264,11 +241,11 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 10) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 15)
-		M.add_chemical_effect(CE_PAINKILLER, 15)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 15)
 		if(prob(15))
 			to_chat(M, "<span class='notice'>You have a moment of clarity as you collapse.</span>")
 			M.adjustBrainLoss(-20 * removed) //Deals braindamage to promethians
-			M.Weaken(6)
+			M.afflict_paralyze(20 * 6)
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-60 * removed) //Heals alot of oxyloss damage/but
 		//keep in mind that Dexaline has a metabolism rate of 0.25*REM meaning only 0.25 units are removed every tick(if your metabolism takes usuall 1u per tick)
@@ -290,11 +267,11 @@
 	if(alien == IS_ALRAUNE)
 		M.adjustToxLoss(removed * 5) //cit change: oxygen is waste for plants
 	else if(alien == IS_SLIME && dose >= 10)
-		M.add_chemical_effect(CE_PAINKILLER, 25)
+		M.ceiling_chemical_effect(CE_PAINKILLER, 25)
 		if(prob(25))
 			to_chat(M, "<span class='notice'>You have a moment of clarity, as you feel your tubes lose pressure rapidly.</span>")
 			M.adjustBrainLoss(-8 * removed)//deals less braindamage than Dex
-			M.Weaken(3)
+			M.afflict_paralyze(20 * 3)
 	else if(alien != IS_DIONA)
 		M.adjustOxyLoss(-150 * removed)//Heals more oxyloss than Dex and has no metabolism reduction
 
@@ -375,7 +352,7 @@
 		if(alien == IS_SLIME)
 			chem_effective = 0.25
 			to_chat(M, "<span class='danger'>It's cold. Something causes your cellular mass to harden occasionally, resulting in vibration.</span>")
-			M.Weaken(10)
+			M.afflict_paralyze(20 * 10)
 			M.silent = max(M.silent, 10)
 			M.make_jittery(4)
 		M.adjustCloneLoss(-10 * removed * chem_effective)//Clone damage, either occured during cloning or from xenobiology slimes.
@@ -401,7 +378,7 @@
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.Weaken(20)
+			M.afflict_paralyze(20 * 20)
 			M.silent = max(M.silent, 20)
 			M.make_jittery(4)
 		M.adjustCloneLoss(-30 * removed * chem_effective)//Better version of cryox, but they can work at the same time
@@ -435,7 +412,7 @@
 			if(prob(10))
 				to_chat(M, "<span class='danger'>It's so cold. Something causes your cellular mass to harden sporadically, resulting in seizure-like twitching.</span>")
 			chem_effective = 0.5
-			M.Weaken(20)
+			M.afflict_paralyze(20 * 20)
 			M.silent = max(M.silent, 20)
 			M.make_jittery(4)
 		if(M.stat != DEAD)
@@ -460,7 +437,7 @@
 	var/chem_effective = 1
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
-	M.add_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
+	M.ceiling_chemical_effect(CE_PAINKILLER, 25 * chem_effective)//kinda weak painkilling, for non life threatening injuries
 
 /datum/reagent/paracetamol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -485,7 +462,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.8
 		M.add_chemical_effect(CE_SLOWDOWN, 1)
-	M.add_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
+	M.ceiling_chemical_effect(CE_PAINKILLER, 80 * chem_effective)//more potent painkilling, for close to fatal injuries
 
 /datum/reagent/tramadol/overdose(mob/living/carbon/M, alien)
 	..()
@@ -508,7 +485,7 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.75
 		M.stuttering = min(50, max(0, M.stuttering + 5)) //If you can't feel yourself, and your main mode of speech is resonation, there's a problem.
-	M.add_chemical_effect(CE_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
+	M.ceiling_chemical_effect(CE_PAINKILLER, 200 * chem_effective)//Bad boy painkiller, for you and the fact that she left you
 	M.add_chemical_effect(CE_SLOWDOWN, 1)
 	M.eye_blurry = min(M.eye_blurry + 10, 250 * chem_effective)
 
@@ -530,7 +507,7 @@
 	scannable = 0 //Let's not have medical mechs able to make an extremely strong organic painkiller
 
 /datum/reagent/numbing_enzyme/affect_blood(mob/living/carbon/M, alien, removed)
-	M.add_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
+	M.ceiling_chemical_effect(CE_PAINKILLER, 200)//Similar to Oxycodone
 	if(prob(0.01)) //1 in 10000 chance per tick. Extremely rare.
 		to_chat(M,"<span class='warning'>Your body feels numb as a light, tingly sensation spreads throughout it, like some odd warmth.</span>")
 	//Not noted here, but a movement debuff of 1.5 is handed out in human_movement.dm when numbing_enzyme is in a person's bloodstream!
@@ -541,7 +518,7 @@
 		var/mob/living/carbon/human/H = M
 		if(prob(1))
 			to_chat(H,"<span class='warning'>Your entire body feels numb and the sensation of pins and needles continually assaults you. You blink and the next thing you know, your legs give out momentarily!</span>")
-			H.AdjustWeakened(5) //Fall onto the floor for a few moments.
+			H.adjust_paralyzed(20 * 5) //Fall onto the floor for a few moments.
 			H.Confuse(15) //Be unable to walk correctly for a bit longer.
 		if(prob(1))
 			if(H.losebreath <= 1 && H.oxyloss <= 20) //Let's not suffocate them to the point that they pass out.
@@ -584,13 +561,13 @@
 			M.adjustFireLoss(-1 * removed)
 		chem_effective = 0.5
 	M.drowsyness = max(M.drowsyness - 5, 0)
-	M.AdjustUnconscious(-1)
-	M.AdjustStunned(-1)
-	M.AdjustWeakened(-1)
+	M.adjust_unconscious(20 * -1)
+	M.adjust_stunned(20 * -1)
+	M.adjust_paralyzed(20 * -1)
 	holder.remove_reagent("mindbreaker", 5)
 	M.hallucination = max(0, M.hallucination - 10)//Primary use
 	M.adjustToxLoss(5 * removed * chem_effective) // It used to be incredibly deadly due to an oversight. Not anymore!
-	M.add_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 20 * chem_effective)
 
 /datum/reagent/hyperzine
 	name = "Hyperzine"
@@ -632,11 +609,11 @@
 	if(alien == IS_SLIME)
 		chem_effective = 0.25
 		if(M.brainloss >= 10)
-			M.Weaken(5)
-		if(dose >= 10 && M.paralysis < 40)
-			M.AdjustUnconscious(1) //Messing with the core with a simple chemical probably isn't the best idea.
+			M.afflict_paralyze(20 * 5)
+		if(dose >= 10 && M.is_unconscious())
+			M.adjust_unconscious(20 * 1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
-	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
 
 /datum/reagent/imidazoline
 	name = "Imidazoline"
@@ -685,7 +662,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.add_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -710,7 +687,7 @@
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
 				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
-			H.add_chemical_effect(CE_PAINKILLER, 20)
+			H.ceiling_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
 				H.Confuse(10)
 
@@ -734,7 +711,7 @@
 			if(O.status & ORGAN_BROKEN)
 				O.mend_fracture()		//Only works if the bone won't rebreak, as usual
 				H.custom_pain("You feel a terrible agony tear through your bones!",60)
-				H.AdjustWeakened(1)		//Bones being regrown will knock you over
+				H.adjust_paralyzed(20 * 1)		//Bones being regrown will knock you over
 
 /datum/reagent/myelamine
 	name = "Myelamine"
@@ -792,7 +769,7 @@
 				H.Confuse(2)
 		if(M.reagents.has_reagent("gastirodaxon") || M.reagents.has_reagent("peridaxon"))
 			if(H.losebreath >= 15 && prob(H.losebreath))
-				H.Stun(2)
+				H.afflict_stun(20 * 2)
 			else
 				H.losebreath = clamp(H.losebreath + 3, 0, 20)
 		else
@@ -1163,9 +1140,9 @@
 			if(prob(25))
 				if(prob(25))
 					to_chat(M, "<span class='danger'>Your pneumatic fluids seize for a moment.</span>")
-				M.Stun(2)
+				M.afflict_stun(20 * 2)
 				spawn(30)
-					M.Weaken(2)
+					M.afflict_paralyze(20 * 2)
 		if(dose >= 10 || M.toxloss >= 25) //Internal skeletal tubes are rupturing, allowing the chemical to breach them.
 			M.adjustToxLoss(removed * 4)
 			M.make_jittery(5)
@@ -1183,7 +1160,7 @@
 	if(prob(20))
 		M.Confuse(5)
 	if(prob(20))
-		M.Weaken(5)
+		M.afflict_paralyze(20 * 5)
 	if(prob(20))
 		M.make_dizzy(5)
 	if(prob(20))
@@ -1209,7 +1186,7 @@
 	can_overdose_touch = TRUE
 
 /datum/reagent/spacomycaze/affect_blood(mob/living/carbon/M, alien, removed)
-	M.add_chemical_effect(CE_PAINKILLER, 10)
+	M.ceiling_chemical_effect(CE_PAINKILLER, 10)
 	M.adjustToxLoss(3 * removed)
 
 /datum/reagent/spacomycaze/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -1228,7 +1205,7 @@
 				to_chat(M, "<span class='warning'>Your skin itches.</span>")
 
 	M.add_chemical_effect(CE_ANTIBIOTIC, dose >= overdose ? ANTIBIO_OD : ANTIBIO_NORM)
-	M.add_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
+	M.ceiling_chemical_effect(CE_PAINKILLER, 20) // 5 less than paracetamol.
 
 /datum/reagent/spacomycaze/touch_obj(obj/O)
 	if(istype(O, /obj/item/stack/medical/crude_pack) && round(volume) >= 1)
@@ -1343,8 +1320,6 @@
 	M.adjustOxyLoss(-2 * removed)
 	M.heal_organ_damage(20 * removed, 20 * removed)
 	M.adjustToxLoss(-20 * removed)
-	if(dose > 3)
-		M.status_flags &= ~DISFIGURED
 	if(dose > 10)
 		M.make_dizzy(5)
 		M.make_jittery(5)

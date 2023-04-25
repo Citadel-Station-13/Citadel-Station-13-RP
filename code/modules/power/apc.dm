@@ -748,7 +748,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
-					if(user.stunned)
+					if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 						return
 				C.use(10)
 				user.visible_message(\
@@ -770,7 +770,7 @@ GLOBAL_LIST_EMPTY(apcs)
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(5, 1, src)
 					s.start()
-					if(usr.stunned)
+					if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 						return
 				new /obj/item/stack/cable_coil(loc,10)
 				to_chat(user,"<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
@@ -843,7 +843,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		if ((machine_stat & BROKEN) \
 				&& !opened \
-				&& W.force >= 5 \
+				&& W.damage_force >= 5 \
 				&& W.w_class >= ITEMSIZE_SMALL )
 			user.visible_message("<span class='danger'>The [src.name] has been hit with the [W.name] by [user.name]!</span>", \
 				"<span class='danger'>You hit the [src.name] with your [W.name]!</span>", \

@@ -27,7 +27,6 @@
 	. = ..()
 	if(air_contents.gas[/datum/gas/oxygen] < 10)
 		. += "<span class='warning'>The meter on the [src] indicates you are almost out of oxygen!</span>"
-		playsound(usr, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/oxygen/yellow
 	desc = "A tank of oxygen, this one is yellow."
@@ -140,7 +139,7 @@
 	gauge_cap = 3
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	force = 4
+	damage_force = 4
 	distribute_pressure = ONE_ATMOSPHERE*O2STANDARD
 	volume = 2 //Tiny. Real life equivalents only have 21 breaths of oxygen in them. They're EMERGENCY tanks anyway -errorage (dangercon 2011)
 
@@ -191,9 +190,9 @@
 
 /obj/item/tank/emergency/nitrogen
 	name = "emergency nitrogen tank"
-	desc = "An emergency air tank hastily painted red."
+	desc = "An emergency air tank, it's coloured red with 'Nitrogen' being spelled in bold letters on it's side ."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_nitrogen"
 	gauge_icon = "indicator_emergency"
 	gauge_cap = 3
 
@@ -247,7 +246,6 @@
 /obj/item/tank/nitrogen/examine(mob/user)
 	if(air_contents.gas[/datum/gas/nitrogen] < 10)
 		. += "<span class='danger'>The meter on \the [src] indicates you are almost out of nitrogen!</span>"
-		playsound(user, 'sound/effects/alert.ogg', 50, 1)
 
 /obj/item/tank/stasis/nitro_cryo // Synthmorph bags need to have initial pressure within safe bounds for human atmospheric pressure, but low temperature to stop unwanted degredation.
 	name = "stasis cryogenic nitrogen tank"

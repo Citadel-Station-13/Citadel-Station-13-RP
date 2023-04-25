@@ -216,7 +216,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		..()
 
 /obj/structure/bed/chair/janicart/relaymove(mob/living/user, direction)
-	if(user.stat || user.stunned || user.weakened || user.paralysis)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		unbuckle_mob()
 	if(user.get_held_item_of_type(/obj/item/key))
 		step(src, direction)
@@ -277,7 +277,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 					L.pixel_x = -13
 					L.pixel_y = 7
 
-/obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/bed/chair/janicart/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs())
 		if(prob(85))
 			var/mob/living/L = pick(buckled_mobs)

@@ -66,7 +66,7 @@
 	name = "clown shoes"
 	icon_state = "clown"
 	slowdown = SHOES_SLOWDOWN+1
-	force = 0
+	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
 
@@ -85,7 +85,7 @@
 	desc = "A pair of boots worn by the followers of Nar-Sie."
 	icon_state = "cult"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
-	force = 2
+	damage_force = 2
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
 
@@ -116,7 +116,7 @@
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
@@ -171,7 +171,7 @@
 	desc = "A roll of treated canvas used for wrapping claws or paws"
 	icon_state = "clothwrap"
 	item_state = "clothwrap"
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
 	drop_sound = 'sound/items/drop/clothing.ogg'
@@ -272,4 +272,11 @@
 	desc = "These shoes seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
 	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
 	icon_state = "taushoe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/ballet
+	name = "Antheia pointe shoes"
+	desc = "These shoes feature long lace straps and flattened off toes. They originate from the Old Earth art of ballet, which featured many acrobatic and technical moves assisted by these shoes."
+	icon = 'icons/clothing/shoes/ballet.dmi'
+	icon_state = "ballet"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

@@ -5,7 +5,7 @@
 	singular_name = "empty sandbag"
 	icon_state = "sandbag_empty"
 	w_class = ITEMSIZE_NORMAL
-	force = 1
+	damage_force = 1
 	throw_force = 1
 	throw_speed = 5
 	throw_range = 20
@@ -49,10 +49,10 @@
 /obj/item/stack/sandbags
 	name = "sandbag"
 	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular name = "sandbag"
+	singular_name = "sandbag"
 	icon_state = "sandbags"
 	w_class = ITEMSIZE_NORMAL
-	force = 10
+	damage_force = 10
 	throw_force = 15
 	throw_speed = 3
 	throw_range = 10
@@ -166,9 +166,9 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	else
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * 1
+				health -= W.damage_force * 1
 			if("brute")
-				health -= W.force * 0.75
+				health -= W.damage_force * 0.75
 		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
 		CheckHealth()
 		..()

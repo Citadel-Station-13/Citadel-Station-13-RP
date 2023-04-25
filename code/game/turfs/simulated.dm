@@ -89,11 +89,16 @@
 				dirtoverlay = new/obj/effect/debris/cleanable/dirt(src)
 			dirtoverlay.alpha = min((dirt - 50) * 5, 255)
 
-/turf/simulated/Entered(atom/A, atom/OL)
+/turf/simulated/Entered(atom/movable/AM, atom/oldLoc)
 	..()
+	if(AM.rad_insulation != 1)
+		rad_insulation_contents *= AM.rad_insulation
+		if(isturf(oldLoc))
+			var/turf/T = oldLoc
+			T.rad_insulation_contents /= AM.rad_insulation
 
-	if (istype(A,/mob/living))
-		var/mob/living/M = A
+	if (istype(AM, /mob/living))
+		var/mob/living/M = AM
 		if(M.lying)
 			return
 
@@ -122,7 +127,7 @@
 
 			if (bloodDNA)
 				src.AddTracks(H.species.get_move_trail(H),bloodDNA,H.dir,0,bloodcolor) // Coming
-				var/turf/simulated/from = get_step(H,REVERSE_DIR(H.dir))
+				var/turf/simulated/from = get_step(H,global.reverse_dir[H.dir])
 				if(istype(from) && from)
 					from.AddTracks(H.species.get_move_trail(H),bloodDNA,0,H.dir,bloodcolor) // Going
 
@@ -183,3 +188,10 @@
 
 /turf/simulated/floor/plating
 	can_start_dirty = TRUE	// But let maints and decrepit areas have some randomness
+
+//? Radiation
+
+/turf/simulated/update_rad_insulation()
+	. = ..()
+	for(var/atom/movable/AM as anything in contents)
+		rad_insulation_contents *= AM.rad_insulation

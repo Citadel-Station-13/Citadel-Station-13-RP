@@ -3,8 +3,8 @@
 #define UPDATE_OO_IF_PRESENT CHECK_OO_EXISTENCE(bound_overlay); if (bound_overlay) { update_above(); }
 
 // I do not apologize.
-#define MOVABLE_IS_BELOW_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:above?:mz_flags & MZ_MIMIC_BELOW) || (loc:above?:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:above?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
-#define MOVABLE_IS_ON_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:mz_flags & MZ_MIMIC_BELOW) || (loc:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, GLOB.reverse_dir[M:dir])?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
+#define MOVABLE_IS_BELOW_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:above?:mz_flags & MZ_MIMIC_BELOW) || (loc:above?:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, global.reverse_dir[M:dir])?:above?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
+#define MOVABLE_IS_ON_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:mz_flags & MZ_MIMIC_BELOW) || (loc:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, global.reverse_dir[M:dir])?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
 
 //# Turf Multi-Z flags.
 #define MZ_MIMIC_BELOW     (1<<0)  //! If this turf should mimic the turf on the Z below.

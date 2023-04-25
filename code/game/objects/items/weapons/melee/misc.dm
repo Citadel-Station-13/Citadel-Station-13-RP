@@ -4,7 +4,7 @@
 	icon_state = "chain"
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	throw_force = 7
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
@@ -21,7 +21,7 @@
 	hitsound = "swing_hit"
 	icon_state = "sabre"
 	hitsound = 'sound/weapons/rapierhit.ogg'
-	force = 35
+	damage_force = 35
 	throw_force = 15
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 4)
@@ -39,7 +39,7 @@
 	icon_state = "umbrella_closed"
 	addblends = "umbrella_closed_a"
 	slot_flags = SLOT_BELT
-	force = 5
+	damage_force = 5
 	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	var/open = FALSE
@@ -75,7 +75,7 @@
 	desc = "The red crystal blade's polished surface glints in the light, giving off a faint glow."
 	icon_state = "soulblade"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	force = 30
+	damage_force = 30
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
@@ -114,7 +114,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	w_class = ITEMSIZE_HUGE
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	throw_force = 7
 	var/board_item_type = null
 
@@ -131,7 +131,7 @@
 	icon_state = "skateboard"
 	icon = 'icons/obj/weapons.dmi'
 	slot_flags = SLOT_BELT
-	force = 10
+	damage_force = 10
 	board_item_type = /obj/vehicle_old/skateboard/improv
 	throw_force = 7
 
@@ -172,7 +172,7 @@
 	desc = "This deadly halberd is wielded by Columbina's melee specialists. The curved blade at the end has been painted to look like a banana, disguising its deadly edge."
 	icon_state = "clownstaff"
 	slot_flags = SLOT_BELT | SLOT_BACK
-	force = 30
+	damage_force = 30
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
@@ -199,7 +199,7 @@
 	icon_state = "writhing"
 	item_state = "knife"
 	slot_flags = SLOT_BELT
-	force = 30
+	damage_force = 30
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
@@ -242,7 +242,7 @@
 	desc = "A sharp sword crafted from knapped bone. In spite of its primitive appearance, it is still incredibly deadly."
 	icon_state = "bonesword"
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	force = 20
+	damage_force = 20
 	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	slot_flags = SLOT_BELT
@@ -300,7 +300,7 @@
 /obj/item/melee/ashlander/elder/proc/activate(mob/living/user)
 	to_chat(user, "<span class='notice'>You ignite the [src]'s sacred flame.</span>")
 	playsound(loc, 'sound/weapons/gun_flamethrower3.ogg', 50, 1)
-	src.force = 20
+	src.damage_force = 20
 	src.damtype = "fire"
 	src.w_class = ITEMSIZE_LARGE
 	src.hitsound = 'sound/weapons/gun_flamethrower2.ogg'
@@ -310,7 +310,7 @@
 /obj/item/melee/ashlander/elder/proc/deactivate(mob/living/user)
 	to_chat(user, "<span class='notice'>You douse \the [src]'s sacred flame.</span>")
 	playsound(loc, 'sound/weapons/gun_flamethrower1.ogg', 50, 1)
-	src.force = 20
+	src.damage_force = 20
 	src.damtype = "brute"
 	src.w_class = initial(src.w_class)
 	src.hitsound = initial(src.hitsound)
@@ -330,7 +330,7 @@
 	item_state = "knife"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "sliced", "diced", "cut")
-	force = 8
+	damage_force = 8
 	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	sharp = 1
@@ -379,7 +379,7 @@
 	desc = "A long, heavy hammer. This weapons crackles with barely contained energy."
 	icon_state = "mjollnir"
 	hitsound = 'sound/effects/lightningbolt.ogg'
-	force = 0
+	damage_force = 0
 	throw_force = 30
 	force_wielded = 75
 	force_unwielded = 50
@@ -404,7 +404,7 @@
 		else
 			G.stun_effect_act(10 , 50, BP_TORSO, src)
 			G.take_organ_damage(10)
-			G.Unconscious(20)
+			G.afflict_unconscious(20 * 20)
 			playsound(src.loc, "sparks", 50, 1)
 			return
 */
@@ -550,7 +550,7 @@
 			else if(T)
 				T.visible_message("<span class='danger'>\The [src] turns on.</span>")
 			playsound(loc, acti_sound, 50, 1)
-			src.force = 15
+			src.damage_force = 15
 			src.damtype = "fire"
 			src.w_class = ITEMSIZE_LARGE
 			src.hitsound = 'sound/items/welder.ogg'
@@ -569,7 +569,7 @@
 		else if(T)
 			T.visible_message("<span class='warning'>\The [src] turns off.</span>")
 		playsound(loc, deac_sound, 50, 1)
-		src.force = 3
+		src.damage_force = 3
 		src.damtype = "brute"
 		src.w_class = initial(src.w_class)
 		src.active = 0

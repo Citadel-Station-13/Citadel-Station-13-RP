@@ -74,6 +74,15 @@
 	storage_name = "Travel Oversight Control"
 	allow_items = TRUE
 
+/obj/machinery/computer/cryopod/ashlander
+	name = "protective warrens token"
+	desc = "A hand carved fetish meant to be hung near entrances to the Warrens, to ward off evil spirits."
+	icon = 'icons/obj/lavaland.dmi'
+	icon_state = "cryocomputer"
+	storage_type = "Scori"
+	storage_name = "Surt-nar-Cthardamz"
+	allow_items = TRUE
+
 /obj/machinery/computer/cryopod/attack_ai()
 	attack_hand()
 
@@ -299,7 +308,7 @@
 /obj/machinery/cryopod/Destroy()
 	if(occupant)
 		occupant.forceMove(loc)
-		occupant.resting = 1
+		occupant.update_perspective()
 	return ..()
 
 /obj/machinery/cryopod/Initialize(mapload)

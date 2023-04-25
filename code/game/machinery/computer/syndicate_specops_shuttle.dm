@@ -162,7 +162,7 @@ var/syndicate_elite_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 

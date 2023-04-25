@@ -86,7 +86,7 @@
 
 /*
 //cargo trains are open topped, so there is a chance the projectile will hit the mob ridding the train instead
-/obj/vehicle_old/train/cargo/bullet_act(var/obj/item/projectile/Proj)
+/obj/vehicle_old/train/cargo/bullet_act(var/obj/projectile/Proj)
 	if(has_buckled_mobs() && prob(70))
 		var/mob/living/L = pick(buckled_mobs)
 		L.bullet_act(Proj)
@@ -185,7 +185,7 @@
 		return 0
 
 	if(is_train_head())
-		if(direction == REVERSE_DIR(dir) && tow)
+		if(direction == global.reverse_dir[dir] && tow)
 			return 0
 		if(Move(get_step(src, direction), direction))
 			return 1
@@ -352,7 +352,7 @@
 
 		if(dir == T_dir) 	//if car is ahead
 			src.attach_to(T, user)
-		else if(REVERSE_DIR(dir) == T_dir)	//else if car is behind
+		else if(global.reverse_dir[dir] == T_dir)	//else if car is behind
 			T.attach_to(src, user)
 
 //-------------------------------------------------------
