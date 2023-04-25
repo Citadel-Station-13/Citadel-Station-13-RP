@@ -8,3 +8,5 @@
 
 /datum/design_holder/autolathe/available_ids()
 	return SSresearch.autolathe_design_ids | ..()
+
+#warn impl all
