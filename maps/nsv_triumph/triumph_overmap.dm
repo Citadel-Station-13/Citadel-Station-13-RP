@@ -5,7 +5,7 @@
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
-	color = "#ba00f2" //Purple
+	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
@@ -31,7 +31,7 @@
 /obj/effect/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
-	color = "#f200f2" //Pinkish Purple
+	color = "#af3e97" //Pinkish Purple
 	fore_dir = EAST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
@@ -65,7 +65,7 @@
 /obj/effect/overmap/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
-	color = "#7c3902" //Brown
+	color = "#754116" //Brown
 	fore_dir = WEST
 	vessel_mass = 25000
 	vessel_size = SHIP_SIZE_SMALL
