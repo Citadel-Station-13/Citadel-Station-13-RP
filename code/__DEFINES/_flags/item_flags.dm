@@ -17,8 +17,10 @@
 #define ITEM_MULTIHAND_WIELDED	(1<<7)
 /// don't allow help intent attacking
 #define ITEM_CAREFUL_BLUDGEON	(1<<8)
-/// don't allow easy lathe deconstruction
-#define ITEM_NO_LATHE_DECONSTRUCT (1<<9)
+/// allow easy lathe deconstruction
+#define ITEM_EASY_LATHE_DECONSTRUCT (1<<9)
+/// do not allow lathe deconstruction
+#define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -30,6 +32,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_NO_TOOL_ATTACK),
 	BITFIELD(ITEM_MULTIHAND_WIELDED),
 	BITFIELD(ITEM_CAREFUL_BLUDGEON),
+	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
 ))
 

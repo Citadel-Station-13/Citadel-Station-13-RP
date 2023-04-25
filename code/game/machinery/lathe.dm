@@ -57,9 +57,11 @@
 
 	/// max queue length in items
 	var/queue_max = 20
+	/// max amount per queue entry
+	var/queue_max_entry = 200
 	/// maximum items we can print per tick - for stacks this is the item itself, not the stack amount.
 	var/max_items_per_tick = 4
-	/// queued of /datum/lathe_queue_entry's.
+	/// queued of /datum/lathe_queue_entry's. 1 is top of queue.
 	var/list/datum/lathe_queue_entry/queue
 	/// currently printing design
 	var/datum/design/printing
@@ -92,6 +94,13 @@
 	if(design_holder?.owner == src)
 		QDEL_NULL(design_holder)
 	return ..()
+
+/obj/machinery/lathe/examine(mob/user)
+	. = ..()
+	if(recycle)
+		. += SPAN_NOTICE("You can recycle items in this by dragging a deconstructable item to it. Some items can furthermore be deconstructed by just clicking on the lathe while being held inhand.")
+	if(!has_interface)
+		. += SPAN_NOTICE("This one doesn't seem to have an interface, and is likely controlled elsewhere.")
 
 /obj/machinery/lathe/drop_products(method)
 	. = ..()
@@ -149,9 +158,35 @@
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(I, /obj/item/reagent_containers))
 		#warn insert
-	else if(isitem(I))
-		#warn insert?
+	else if(isitem(I) && (user.a_intent == INTENT_HELP))
+		if(I.item_flags & ITEM_NO_LATHE_DECONSTRUCT)
+			return ..()
+		if(recycle_item(I, user))
+			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
+
+/obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, efficiency_multiplier = 1)
+	efficiency_multiplier *= recycle_efficiency
+	var/list/materials = I.materials.Copy()
+	if(!isnull(user) && !user.temporarily_remove_from_inventory(I))
+		user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+		return FALSE
+	if(!length(materials))
+		user?.action_feedback(SPAN_NOTICE("You trivially recycle \the [I] in [src]."))
+		qdel(I)
+		if(insert_icon_state)
+			flick(insert_icon_state, src)
+		return TRUE
+	if(!stored_materials?.has_space(materials, efficiency_multiplier))
+		user?.action_feedback(SPAN_WARNING("[src] has no space to store the materials in [I]."), src)
+		return FALSE
+	stored_materials.add(materials, efficiency_multiplier)
+	user?.action_feedback(SPAN_NOTICE("You recycle [I] in [src]."), src)
+	qdel(I)
+	if(insert_icon_state)
+		flick(insert_icon_state, src)
+	return TRUE
 
 /obj/machinery/lathe/proc/create_storages()
 	if(isnull(stored_materials))
@@ -217,49 +252,64 @@
 	. = instance.lathe_print(drop_location(), material_parts, item_parts, src)
 
 /obj/machinery/lathe/process(delta_time)
+	if(!queue_active)
+		return
+	#warn impl
 
 /obj/machinery/lathe/proc/progress_queue(time)
 	#warn impl
 
-/obj/machinery/lathe/proc/reconsider_queue()
+/obj/machinery/lathe/proc/reconsider_queue(autostart)
 	if(!length(queue))
 		stop_printing()
-		return
-
-	#warn impl
+	else if(length(queue) && autostart)
+		start_printing()
 
 /obj/machinery/lathe/proc/start_printing()
+	if(queue_active)
+		return
 	#warn impl
 	update_use_power(USE_POWER_ACTIVE)
 
 /obj/machinery/lathe/proc/stop_printing()
+	if(!queue_active)
+		return
 	#warn impl
 	update_use_power(USE_POWER_IDLE)
+
+/obj/machinery/lathe/proc/full_design_update()
+	ui_controller?.ui_design_push()
 
 /**
  * enqueues an instance with given material_parts
  *
  * amount variable is reserved but unused at this given time.
  */
-/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/item_parts)
-	#warn amount inject check
+/obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/item_parts, start_immediately)
+	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
+	if(!isnull(last) && last.design_id == instance.identifier)
+		var/adding = min(last.amount - queue_max_entry, amount)
+		last.amount += adding
+		amount -= adding
+		if(!amount)
+			return TRUE
 	if(length(queue) >= queue_max)
 		return FALSE
 	var/datum/lathe_queue_entry/inserting = new
 	inserting.design_id = instance.identifier
 	inserting.material_parts = material_parts
+	inserting.item_parts = item_parts
 	inserting.amount = 1
 	LAZYINITLIST(queue)
 	queue += inserting
-	reconsider_queue()
+	reconsider_queue(start_immediately)
 	return TRUE
 
 /**
  * dequeues the instance with the given position
  */
-/obj/machinery/lathe/proc/dequeue(position, amount)
+/obj/machinery/lathe/proc/dequeue(position)
 	if(position > 0 && position < length(queue))
-		#warn amount / extract check
 		queue.Cut(position, position + 1)
 	else
 		return FALSE
@@ -322,3 +372,11 @@
 	var/list/material_parts
 	/// items to use for design - order matters! uses weakref's.
 	var/list/item_parts
+
+/datum/lathe_queue_entry/proc/ui_data()
+	return list(
+		"design" = design_id,
+		"amount" = amount,
+		"materials" = material_parts,
+		"items" = item_parts,
+	)

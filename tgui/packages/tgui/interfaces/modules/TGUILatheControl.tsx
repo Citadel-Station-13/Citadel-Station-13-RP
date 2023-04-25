@@ -21,11 +21,6 @@ interface TGUILatheControlData extends ModuleData {
   printing: string;
 }
 
-interface LatheQueueEntry {
-  id: string;
-  material_parts: Record<string, string>;
-}
-
 export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   const { data, act } = useModule<TGUILatheControlData>(context);
 
@@ -33,5 +28,40 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
     <Modular>
       test
     </Modular>
+  );
+};
+
+interface LatheQueueEntryProps {
+  design: string; // design id
+  amount: number; // how many
+  materials?: Record<string, string>; // key to id
+  items?: any[]; // dataset from Ingredients.tsx
+}
+
+const LatheQueueEntry = (props: LatheQueueEntryProps, context) => {
+  return (
+    <>
+      test
+    </>
+  );
+};
+
+
+
+
+
+interface LatheDesignEntryProps {
+  design: Design;
+  materialsContext: MaterialsContext;
+  printButtonAct?: Function;
+  printButtonText?: string;
+}
+
+const LatheDesignEntry = (props: LatheDesignEntryProps, context) => {
+
+  return (
+    <>
+      test
+    </>
   );
 };

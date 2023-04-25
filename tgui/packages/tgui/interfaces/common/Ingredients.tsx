@@ -8,7 +8,9 @@ type ReagentID = string
 
 export interface IngredientsAvailable {
   materials: Record<MaterialID, number>; // id to sheets
+  materialLookup: Record<MaterialID, string>; // id to name
   reagents: Record<ReagentID, number>; // id to units
+  reagentLookup: Record<ReagentID, string>; // id to name
   stacks: Record<IngredientPath, number>; // type to amount
   stackLookup: Record<IngredientPath, string>; // name lookup
   items: IngredientItem[]; // structs
@@ -30,6 +32,7 @@ export interface IngredientNeed {
   type: IngredientType;
   amt: number;
   allow: any;
+  name: string;
 }
 
 interface IngredientsDisplayProps {
@@ -46,11 +49,18 @@ export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
   );
 };
 
-
 interface IngredientsProps {
   need: IngredientsNeeded;
   available: IngredientsAvailable;
-  selected: IngredientsSelected;
+  selection: BooleanLike;
+  selected?: IngredientsSelected;
   select: (number, string) => void; // called with (index, data).
 }
 
+export const Ingredients = (props: IngredientsProps, context) => {
+  return (
+    <Section>
+      test
+    </Section>
+  );
+};

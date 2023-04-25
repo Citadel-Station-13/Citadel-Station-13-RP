@@ -3,6 +3,7 @@
 #define INGREDIENT_DATA_TYPE "type"
 #define INGREDIENT_DATA_AMOUNT "amt"
 #define INGREDIENT_DATA_ALLOW "allow"
+#define INGREDIENT_DATA_NAME "name"
 
 /// datatype: material id; amount: sheets; allowed: id, list of ids, null for any
 #define INGREDIENT_TYPE_MATERIAL "material"

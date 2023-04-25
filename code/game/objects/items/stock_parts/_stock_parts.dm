@@ -4,6 +4,7 @@
 	gender = PLURAL
 	icon = 'icons/obj/stock_parts.dmi'
 	w_class = ITEMSIZE_SMALL
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	var/rating = 1
 
 /obj/item/stock_parts/Initialize(mapload)

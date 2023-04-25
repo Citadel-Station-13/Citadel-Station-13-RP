@@ -1,4 +1,3 @@
-import { MaterialsContext } from "./Materials";
 
 export interface Design {
   name: string;
@@ -17,18 +16,3 @@ export interface DesignItem {
   iconPath?: string; // direct access if sheet not provided, if sheet provided we use the spritesheet
 }
 
-export interface LatheDesignEntryProps {
-  design: Design;
-  materialsContext: MaterialsContext;
-  printButtonAct?: Function;
-  printButtonText?: string;
-}
-
-export const LatheDesignEntry = (props: LatheDesignEntryProps, context) => {
-
-  return (
-    <>
-      test
-    </>
-  );
-};

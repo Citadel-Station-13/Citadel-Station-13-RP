@@ -4,6 +4,7 @@
 	desc = "A magazine for some kind of gun."
 	icon_state = ".357"
 	icon = 'icons/obj/ammo.dmi'
+	item_flags = ITEM_EASY_LATHE_DECONSTRUCT
 	slot_flags = SLOT_BELT
 	item_state = "syringe_kit"
 	materials = list(MAT_STEEL = 500)

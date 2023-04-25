@@ -29,6 +29,8 @@
  * * where - where to put everything
  */
 /datum/material_container/proc/dump_everything(atom/where)
+	if(isnull(stored))
+		return
 	for(var/mat_id in stored)
 		var/datum/material/M = SSmaterials.get_material(mat_id)
 		if(isnull(M))
@@ -68,6 +70,7 @@
 /datum/material_container/proc/insert_sheets(obj/item/stack/material/inserting, amount = INFINITY, force = FALSE)
 	if(!istype(inserting))
 		return 0
+	LAZYINITLIST(stored)
 	var/datum/material/mat = inserting.material
 	var/allowed = capacity_material_sheets(mat)
 	var/inserted = min(allowed, inserting.amount)
@@ -126,6 +129,8 @@
  */
 /datum/material_container/proc/total_stored()
 	. = 0
+	if(isnull(stored))
+		return
 	for(var/key in stored)
 		. += stored[key]
 
@@ -151,6 +156,8 @@
  * * multiplier - multiplier to actual amount, for convenience
  */
 /datum/material_container/proc/use(list/using, multiplier = 1)
+	if(isnull(stored))
+		return
 	for(var/key in using)
 		if(isnull(stored[key]))
 			continue
@@ -165,7 +172,24 @@
  * * multiplier - multiplier to actual amount, for convenience
  */
 /datum/material_container/proc/has(list/wanted, multiplier = 1)
+	if(isnull(stored))
+		return
 	for(var/key in wanted)
-		if(stored?[key] < wanted[key] * multiplier)
+		if(stored[key] < wanted[key] * multiplier)
 			return FALSE
 	return TRUE
+
+/datum/material_container/proc/has_space(list/materials, multiplier = 1)
+	LAZYINITLIST(stored)
+	if(isnull(capacity))
+		return TRUE
+	if(isnum(capacity))
+		var/tally = 0
+		for(var/key in materials)
+			tally += materials[key]
+		return (capacity - (tally * multiplier + total_stored())) > 0
+
+/datum/material_container/proc/add(list/materials, multiplier = 1)
+	LAZYINITLIST(stored)
+	for(var/key in materials)
+		stored[key] += materials[key] * multiplier
