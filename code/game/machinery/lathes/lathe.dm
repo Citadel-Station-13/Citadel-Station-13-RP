@@ -12,7 +12,10 @@
 /obj/machinery/lathe
 	abstract_type = /obj/machinery/lathe
 	name = "lathe"
-	#warn sprite including base_icon_state
+	icon = 'icons/machinery/lathe/autolathe.dmi'
+	icon_state = "base"
+	base_icon_state = "base"
+	panel_icon_state = "panel"
 	atom_flags = OPENCONTAINER
 	use_power = USE_POWER_IDLE
 	idle_power_usage = POWER_USAGE_LATHE_IDLE
@@ -23,6 +26,10 @@
 
 	/// icon state when printing, if any
 	var/active_icon_state
+	/// icon state when there's stuff in queue but we're not printing, if any; otherwise uses base
+	var/paused_icon_state
+	/// icon state to flick when finishing a print
+	var/print_icon_state
 	/// icon state to flick when inserting sheets
 	var/insert_icon_state
 	/// specific icon states for specific materials
@@ -107,8 +114,10 @@
 	dump_storages()
 
 /obj/machinery/lathe/update_icon_state()
-	if(active_icon_state && queue_active)
+	if(!isnull(active_icon_state) && queue_active)
 		icon_state = active_icon_state
+	else if(length(queue) && !isnull(paused_icon_state))
+		icon_state = paused_icon_state
 	else
 		// todo: unified machinery base icon state
 		icon_state = base_icon_state
@@ -151,9 +160,9 @@
 			user.action_feedback(SPAN_NOTICE("You insert [used] sheets of [I]."), src)
 		else
 			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
-		if(insert_icon_state_specific?[M.material.id])
+		if(!isnull(insert_icon_state_specific?[M.material.id]))
 			flick(insert_icon_state_specific[M.materia.id], src)
-		else if(insert_icon_state)
+		else if(!isnull(insert_icon_state))
 			flick(insert_icon_state, src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(istype(I, /obj/item/reagent_containers/glass) && !isnull(stored_reagents))
@@ -257,6 +266,8 @@
 		materials_used[material_parts[key]] += instance.material_parts[key]
 	use_resources(materials_used, instance.reagents, item_parts)
 	. = instance.lathe_print(drop_location(), material_parts, item_parts, src)
+	if(!isnull(print_icon_state))
+		flick(print_icon_state, src)
 
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
