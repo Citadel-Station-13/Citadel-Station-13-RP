@@ -74,6 +74,15 @@
 	storage_name = "Travel Oversight Control"
 	allow_items = TRUE
 
+/obj/machinery/computer/cryopod/psych_ward
+	name = "psych ward oversight console"
+	desc = "An interface between patients and the cryo pod oversight systems tasked with keeping track of all patients who enter deep storage."
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
+
+	storage_type = "patients"
+	storage_name = "Patient Storage Control"
+	allow_items = TRUE
+
 /obj/machinery/computer/cryopod/ashlander
 	name = "protective warrens token"
 	desc = "A hand carved fetish meant to be hung near entrances to the Warrens, to ward off evil spirits."

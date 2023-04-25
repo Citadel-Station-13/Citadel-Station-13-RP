@@ -31267,7 +31267,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/machinery/computer/cryopod/gateway{
+/obj/machinery/computer/cryopod/psych_ward{
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/white,
