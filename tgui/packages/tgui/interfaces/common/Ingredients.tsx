@@ -1,25 +1,56 @@
+import { BooleanLike } from "common/react";
+import { Section } from "../../components";
 
-export interface IngredientsNeeded {
-
-}
+type IngredientRef = string;
+type IngredientPath = string;
+type MaterialID = string;
+type ReagentID = string
 
 export interface IngredientsAvailable {
-
+  materials: Record<MaterialID, number>; // id to sheets
+  reagents: Record<ReagentID, number>; // id to units
+  stacks: Record<IngredientPath, number>; // type to amount
+  stackLookup: Record<IngredientPath, string>; // name lookup
+  items: IngredientItem[]; // structs
 }
 
-export interface IngredientsDisplayProps {
-  available: IngredientsAvailable;
+export interface IngredientItem {
+  ref: IngredientRef;
+  name: string;
+  path: IngredientPath;
 }
 
-export interface IngredientsRequirementProps {
-  available: IngredientsAvailable;
-  needed: IngredientsNeeded;
+export type IngredientsNeeded = IngredientNeed[];
+
+export type IngredientsSelected = any[];
+
+export type IngredientType = "material" | "reagent" | "item" | "stack";
+
+export interface IngredientNeed {
+  type: IngredientType;
+  amt: number;
+  allow: any;
+}
+
+interface IngredientsDisplayProps {
+  ingredients: IngredientsAvailable;
+  lazy: BooleanLike;
+  title?: string;
 }
 
 export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
-
+  return (
+    <Section title={props.title || "Ingredients"}>
+      test
+    </Section>
+  );
 };
 
-export const IngredientsRequirement = (props: IngredientsRequirementProps, context) => {
 
-};
+interface IngredientsProps {
+  need: IngredientsNeeded;
+  available: IngredientsAvailable;
+  selected: IngredientsSelected;
+  select: (number, string) => void; // called with (index, data).
+}
+
