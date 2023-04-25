@@ -6800,21 +6800,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/turretid{
-	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
-	gl_uid = "exploration";
-	pixel_x = -32;
-	req_access = null;
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
 	},
 /obj/item/storage/toolbox/mechanical,
 /obj/item/tank/phoron,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/cockpit)
 "anx" = (
@@ -12320,11 +12315,16 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/turretid{
+	check_access = 0;
+	control_area = /area/shuttle/excursion/general;
+	gl_uid = "exploration";
+	pixel_x = 32;
+	req_access = null;
+	req_one_access = list(19,43,62,67);
+	uid = "exploration"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "ayS" = (
@@ -24592,15 +24592,6 @@
 	pixel_y = -32
 	},
 /obj/machinery/mineral/equipment_vendor/survey,
-/obj/machinery/turretid{
-	check_access = 0;
-	control_area = /area/shuttle/excursion/general;
-	gl_uid = "exploration";
-	pixel_x = 32;
-	req_access = null;
-	req_one_access = list(19,43,62,67);
-	uid = "exploration"
-	},
 /obj/machinery/light{
 	dir = 4
 	},
