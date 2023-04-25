@@ -156,8 +156,15 @@
 		else if(insert_icon_state)
 			flick(insert_icon_state, src)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
-	else if(istype(I, /obj/item/reagent_containers))
-		#warn insert
+	else if(istype(I, /obj/item/reagent_containers/glass) && !isnull(stored_reagents))
+		var/obj/item/reagent_containers/RC = I
+		if(RC.is_open_container())
+			var/amt = RC.reagents?.trans_to_holder(stored_reagents, RC.amount_per_transfer_from_this)
+			if(amt)
+				user.action_feedback(SPAN_NOTICE("You transfer [amt] units of the solution from \the [I] to [src]."), src)
+			else
+				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
 		if(I.item_flags & ITEM_NO_LATHE_DECONSTRUCT)
 			return ..()
