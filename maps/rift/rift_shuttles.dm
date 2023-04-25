@@ -120,6 +120,7 @@
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The Mk2 Excursion Shuttle. NT Approved!"
+	color = "#ba00f2" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
@@ -145,6 +146,7 @@
 /obj/effect/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
+	color = "#f200f2" //Pinkish Purple
 	fore_dir = EAST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
@@ -173,6 +175,7 @@
 /obj/effect/overmap/visitable/ship/landable/hammerhead
 	name = "Hammerhead Patrol Barge"
 	desc = "To Detain and Enforce."
+	color = "#d20700" //Vibrant Red
 	fore_dir = EAST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
@@ -229,6 +232,7 @@
 /obj/effect/overmap/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
+	color = "#7c3902" //Brown
 	fore_dir = WEST
 	vessel_mass = 25000
 	vessel_size = SHIP_SIZE_SMALL
@@ -257,6 +261,7 @@
 /obj/effect/overmap/visitable/ship/landable/emt
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
+	color = "#00a5f2" //Light Blue
 	fore_dir = NORTH
 	vessel_mass = 9000
 	vessel_size = SHIP_SIZE_SMALL

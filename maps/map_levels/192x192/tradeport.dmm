@@ -1904,9 +1904,6 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "hs" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1;
 	req_access = list(160);
