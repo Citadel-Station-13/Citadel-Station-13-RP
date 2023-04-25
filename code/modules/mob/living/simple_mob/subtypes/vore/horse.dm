@@ -62,21 +62,29 @@
 
 /datum/component/riding_filter/mob/animal/horse
 
-/datum/component/riding_handler/mob/animal/horse
+/datum/component/riding_handler/horse
+	rider_offsets = list(
+				list(0, 8, 0.1, null),
+				list(9, 8, 1, null),
+				list(0, 8, 1, null),
+				list(-7, 8, 0.1, null)
+				)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 
 /mob/living/simple_mob/vore/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/saddle/horse) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1
-		AddComponent(/datum/component/riding_handler/mob/animal/horse)
+		AddComponent(/datum/component/riding_handler/horse)
 		qdel(O)
 	if(istype(O, /obj/item/tool/wirecutters) && rideable)
 		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
 		rideable = 0
-		DelComponent(/datum/component/riding_handler/mob/animal/horse)
+		DelComponent(/datum/component/riding_handler/horse)
 		var/turf/T = get_turf(src)
 		new /obj/item/saddle/horse(T)
+	update_icon()
 
 /mob/living/simple_mob/vore/horse/update_icon()
 	if(rideable)
