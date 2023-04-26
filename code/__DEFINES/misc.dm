@@ -41,6 +41,8 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 /// default mob sight flags
 #define SIGHT_FLAGS_DEFAULT (SEE_SELF)
 
+#warn what we want is (SEE_SELF | SEE_BLACKNESS)
+
 /// For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200
 

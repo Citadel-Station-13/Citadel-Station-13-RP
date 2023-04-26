@@ -15,7 +15,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/whitense
 	var/list/darkMask
 	var/atom/movable/screen/centermarker
-	var/atom/movable/screen/darksight
 	var/atom/movable/screen/nvg
 	var/atom/movable/screen/thermal
 	var/atom/movable/screen/meson
@@ -49,12 +48,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	whitense = new /atom/movable/screen/global_screen()
 	whitense.icon = 'icons/effects/static.dmi'
 	whitense.icon_state = "1 light"
-
-	//darksight 'hanger' for attached icons
-	darksight = new /atom/movable/screen()
-	darksight.icon = null
-	darksight.screen_loc = "CENTER-7,CENTER-7"
-	darksight.plane = LIGHTING_PLANE
 
 	//Marks the center of the screen, for things like ventcrawl
 	centermarker = new /atom/movable/screen()

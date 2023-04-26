@@ -151,7 +151,7 @@
  *! -- Obj Plane
  */
 #define OBJ_PLANE -35
-#define OBJ__PLANE_RENDER_TARGET "OBJ_PLANE"
+#define OBJ_PLANE_RENDER_TARGET "OBJ_PLANE"
 
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
@@ -226,6 +226,7 @@
  */
 #define DUMB_DARKVISION_PLANE 11
 #define DUMB_DARKVISION_LAYER_MAIN 11
+#define DUMB_DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
 /**
  *! -- Soft Darkvision Plane - Smart

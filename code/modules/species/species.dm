@@ -40,6 +40,12 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//? Traits / Physiology
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+	/// A physiology modifier we apply to our mob
+	var/datum/physiology_modifier/mob_physiology
+
 	//? Additional info
 	/// what you see on tooltip/examine
 	var/examine_name
@@ -431,10 +437,6 @@
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
 
-	//? Traits
-	/// Intrinsic datum traits to apply to the mob
-	var/list/mob_traits
-
 	//? on death drops
 	/// The color of the species flesh.
 	var/flesh_color = "#FFC896"
@@ -537,6 +539,9 @@
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
+	if(!isnull(mob_physiology))
+		H.add_physiology_modifier(mob_physiology)
+
 /**
  * called when we are removed from a mob
  */
@@ -560,6 +565,9 @@
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
+
+	if(!isnull(mob_physiology))
+		H.remove_physiology_modifier(mob_physiology)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

@@ -49,7 +49,7 @@
 
 /atom/movable/screen/plane_master/mobs
 	plane = MOB_PLANE
-	render_target = PLANE_RENDER_TARGET
+	render_target = MOB_PLANE_RENDER_TARGET
 
 //Cloaked atoms are visible to ghosts (or for other reasons?)
 /atom/movable/screen/plane_master/cloaked
@@ -106,8 +106,22 @@
 	plane = DUMB_DARKVISION_PLANE
 	render_target = DUMB_DARKVISION_RENDER_TARGET
 
+/atom/movable/screen/plane_master/dumb_darkvision/Initialize(mapload)
+	. = ..()
+	add_filter("turf_render", 1, layering_filter(rendering_source = TURF_PLANE_RENDER_TARGET))
+	add_filter("obj_render", 2, layering_filter(rendering_source = OBJ_PLANE_RENDER_TARGET))
+	add_filter("mob_render", 3, layering_filter(rendering_source = MOB_PLANE_RENDER_TARGET))
+
 /atom/movable/screen/plane_master/smart_darkvision
 	plane = SMART_DARKVISION_PLANE
+
+/atom/movable/screen/plane_master/smart_darkvision/Initialize(mapload)
+	. = ..()
+	add_filter("turf_render", 1, layering_filter(rendering_source = TURF_PLANE_RENDER_TARGET))
+	add_filter("obj_render", 2, layering_filter(rendering_source = OBJ_PLANE_RENDER_TARGET))
+	add_filter("mob_render", 3, layering_filter(rendering_source = MOB_PLANE_RENDER_TARGET))
+
+/atom/movable/screen/plane_master/
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE

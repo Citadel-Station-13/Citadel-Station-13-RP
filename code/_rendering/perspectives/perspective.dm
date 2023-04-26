@@ -94,12 +94,16 @@
 	var/view_dirty = TRUE
 
 	//? lighting / nightvision
+	/// darksight overlay that we maintain
+	var/image/darksight_overlay
 	/// sorted list(list(sources) = val) of alpha for lighting plane. lowest first.
 	var/list/hard_darkvision
+	/// soft darksight alpha
 
 /datum/perspective/Destroy()
 	clear_clients()
 	clear_mobs()
+	QDEL_NULL(darksight_overlay)
 	images = null
 	screens = null
 	clients = null
@@ -205,6 +209,8 @@
 	C.screen |= planes.screens()
 	if(!isnull(images))
 		C.images |= images
+	if(!isnull(darksight_overlay))
+		C.images |= darksight_overlay
 	update(C)
 
 /**
@@ -223,6 +229,8 @@
 		C.screen -= screens
 	if(!isnull(images))
 		C.images -= images
+	if(!isnull(darksight_overlay))
+		C.images -= darksight_overlay
 
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
@@ -290,7 +298,7 @@
  * works with lists too
  */
 /datum/perspective/proc/RemoveScreen(atom/movable/AM)
-	var/change = legnth(screens)
+	var/change = length(screens)
 	if(!change)
 		return
 	screens -= AM
@@ -319,19 +327,21 @@
 		for(var/client/C as anything in clients)
 			C.mob.sight = sight
 
-/datum/perspective/proc/SetDarksight(see_in_dark)
-	var/change = src.see_in_dark != see_in_dark
-	src.see_in_dark = see_in_dark
-	if(change)
-		for(var/client/C as anything in clients)
-			C.mob.see_in_dark = see_in_dark
-
 /datum/perspective/proc/SetSeeInvis(see_invisible)
 	var/change = src.see_invisible != see_invisible
 	src.see_invisible = see_invisible
 	if(change)
 		for(var/client/C as anything in clients)
 			C.mob.see_invisible = see_invisible
+
+//? Abstraction - see_in_dark
+
+/datum/perspective/proc/update_see_in_dark()
+	var/wanted = INFINITY
+	if(wanted != see_in_dark)
+		see_in_dark = wanted
+		for(var/mob/M as anything in mobs)
+			M.see_in_dark = see_in_dark
 
 //? Eye
 
@@ -358,10 +368,10 @@
 		C.perspective = get_eye_mode(C)
 
 /datum/perspective/proc/attach_to_eye(atom/movable/AM)
-	return
+	darksight_overlay.loc = AM
 
 /datum/perspective/proc/detach_from_eye(atom/movable/AM)
-	return
+	darksight_overlay.loc = null
 
 /datum/perspective/proc/get_eye(client/C)
 	return eye
@@ -376,7 +386,7 @@
 	// this is stupid and i'm stupid
 	return eye == C.mob? MOB_PERSPECTIVE : perspective
 
-//? lighting - hard darkvision (limit lighting plane alpha)
+//? lighting
 
 /**
  * sets hard darkvision that reduces lighting plane alpha
@@ -403,12 +413,28 @@
 
 #warn impl all
 
+/datum/perspective/proc/check_hard_darkvision()
+	return length(hard_darkvision)? hard_darkvision[hard_darkvision[1]] : 255
+
+/datum/perspective/proc/update_hard_darkvision()
+	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)
+	lighting_plane.alpha = check_hard_darkvision()
+
+/datum/perspective/proc/assert_darksight_overlay()
+	if(!isnull(darksight_overlay))
+		return
+	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
+	darksight_overlay.plane = LIGHTING_PLANE
+	darksight_overlay.alpha = 0
+	darksight_overlay.blend_mode = BLEND_ADD
+
 //? plane holder
 
 /datum/perspective/assert_planes()
 	if(!isnull(planes))
 		return
 	planes = new /datum/plane_holder/mob_perspective
+	update_hard_darkvision()
 
 /**
  * sets a plane visible if it wasn't already

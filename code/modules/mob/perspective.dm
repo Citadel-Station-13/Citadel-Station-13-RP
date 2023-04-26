@@ -114,7 +114,6 @@
  */
 /mob/make_perspective()
 	. = ..()
-	self_perspective.see_in_dark = see_in_dark
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
 
@@ -188,19 +187,6 @@
 /mob/proc/SetSeeInvisibleSelf(see_invisible)
 	ensure_self_perspective()
 	self_perspective.SetSeeInvis(see_invisible)
-
-/**
- * ditto
- */
-/mob/proc/SetSeeInDarkSelf(see_invisible)
-	ensure_self_perspective()
-	self_perspective.SetDarksight(see_invisible)
-
-/**
- * ditto
- */
-/mob/proc/GetSeeInDarkSelf()
-	return self_perspective? self_perspective.see_in_dark : see_in_dark
 
 //? Helpers
 
