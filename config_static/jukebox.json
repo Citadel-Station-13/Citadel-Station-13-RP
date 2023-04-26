@@ -8509,8 +8509,8 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Rock"
-}
-]
+},
+{
 "url": "https://files.catbox.moe/rdujhc",
 "title": "Beneath The Mask",
 "duration": 2830,
@@ -8519,3 +8519,5 @@
 "lobby": false,
 "jukebox": true,
 "genre": "Jazz"
+}
+]
