@@ -3511,9 +3511,6 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "nr" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1;
 	req_access = list(160);
