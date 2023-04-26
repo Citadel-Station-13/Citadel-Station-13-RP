@@ -188,6 +188,20 @@
 	ensure_self_perspective()
 	self_perspective.SetSeeInvis(see_invisible)
 
+//? Darksight
+
+/**
+ * get our innate darksight
+ */
+/mob/proc/innate_darksight()
+	return GLOB.default_darksight
+
+/**
+ * updates our darksight data and pushes it to perspective
+ */
+/mob/proc/update_innate_darksight()
+	#warn impl
+
 //? Helpers
 
 /mob/proc/can_see_plane(val)

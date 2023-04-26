@@ -20,3 +20,7 @@
 		src.soft_darksight_alpha = soft_darksight_alpha
 	if(!isnull(soft_matrix))
 		src.soft_darksight_matrix = soft_matrix
+
+GLOBAL_DATUM_INIT(default_darksight, /datum/darksight/default, new)
+
+/datum/darksight/default

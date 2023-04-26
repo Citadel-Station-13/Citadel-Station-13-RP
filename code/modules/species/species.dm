@@ -300,8 +300,8 @@
 	var/gluttonous
 
 	//? Sight
-	/// Native darksight distance.
-	var/darksight = 2
+	/// darksight datum - set to typepath, initialized at init
+	var/datum/darksight/innate_darksight
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -918,3 +918,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.dna.ready_dna(H)
 	else
 		src.traits = traits
+
+//? Darksight
+
+/**
+ * Makes sure innate darksight is there
+ */
+/datum/species/proc/assert_innate_darksight()
+	if(ispath(innate_darksight))
+		innate_darksight = new innate_darksight

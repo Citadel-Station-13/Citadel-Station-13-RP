@@ -14,6 +14,10 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY
 
+	//? Darksight
+	/// our innate darksight
+	var/datum/darksight/innate_darksight = /datum/darksight/default
+
 	///Tooltip description
 	var/tt_desc = null
 
