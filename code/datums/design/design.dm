@@ -33,14 +33,8 @@
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
 	var/list/material_parts
-	/// Items needed. The way this works is:
-	/// An entry can either be a path, or a list.
-	/// If it's a path, the path and all subtypes can be used.
-	/// If it's a list, only those exact paths can be used.
-	/// Each entry is 1 entry.
-	/// This does mean you might need to spam a bit, but, frankly, if you do,
-	/// maybe reconsider what you're doing.
-	#warn items
+	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
+	var/list/ingredients
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/reagents
 	// todo: reagent_parts?

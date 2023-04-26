@@ -149,6 +149,7 @@
 	efficiency_multiplier = efficiency_factor
 	update_active_power_usage(POWER_USAGE_LATHE_ACTIVE_SCALE(speed_factor))
 	stored_materials.set_multiplied_capacity(materials_max, storage_factor)
+	ui_controller?.update_static_data()
 
 /obj/machinery/lathe/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
 	if(user.a_intent == INTENT_HARM)
@@ -276,19 +277,44 @@
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
 		return
+	progress_queue(delta_time, speed_multiplier)
+
+/obj/machinery/lathe/proc/progress_queue(time, mult)
+	if(!length(queue))
+		stop_printing()
+		return
+	var/total = time * mult
+	var/datum/lathe_queue_entry/head = queue[1]
+	var/datum/design/D = SSresearch.fetch_design(head.design_id)
+	while(!isnull(head))
+		var/remaining = D.work - progress
+		if(remaining <= 0)
+			progress = remaining < 0? -remaining : 0
+		#warn impl
+
 	#warn impl
 
-/obj/machinery/lathe/proc/progress_queue(time)
-	#warn impl
-
-/obj/machinery/lathe/proc/reconsider_queue(autostart)
+/obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))
 		stop_printing()
 	else if(length(queue) && autostart)
-		start_printing()
+		start_printing(silent)
 
-/obj/machinery/lathe/proc/start_printing()
+/obj/machinery/lathe/proc/queue_head_design()
+	RETURN_TYPE(/datum/design)
+	return length(queue)? (SSresearch.fetch_design(queue[1].design_id)) : null
+
+/obj/machinery/lathe/proc/check_queue_head(silent)
+	var/datum/design/D = queue_head_design()
+	if(isnull(D))
+		return FALSE
+	#warn warn loudly
+	return can_print(D)
+
+/obj/machinery/lathe/proc/start_printing(silent)
 	if(queue_active)
+		return
+	if(!check_queue_head(silent))
 		return
 	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
@@ -310,7 +336,11 @@
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
 	if(!isnull(last) && last.design_id == instance.identifier)
-		var/adding = min(last.amount - queue_max_entry, amount)
+		var/adding
+		if(instance.is_stack)
+			adding = amount // no limit on stacks
+		else
+			adding = min(last.amount - queue_max_entry, amount)
 		last.amount += adding
 		amount -= adding
 		if(!amount)
@@ -344,22 +374,6 @@
 	queue = null
 	reconsider_queue()
 	return TRUE
-
-/obj/machinery/lathe/ui_module_route(action, list/params, datum/tgui/ui, id)
-	. = ..()
-	if(.)
-		return
-	switch(id)
-		if("control")
-			return ui_controller?.ui_act(action, params, ui)
-
-/obj/machinery/lathe/ui_module_static(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	.["control"] = ui_controller.data(user)
-
-/obj/machinery/lathe/ui_module_data(mob/user, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	.["control"] = ui_controller.data(user)
 
 /obj/machinery/lathe/proc/tgui_controller()
 	RETURN_TYPE(/datum/tgui_module)

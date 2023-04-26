@@ -2,7 +2,9 @@ import { BooleanLike } from "common/react";
 import { ModuleData, useModule } from "../../backend";
 import { Modular } from "../../layouts/Modular";
 import { Design } from "../common/Design";
+import { IngredientsAvailable } from "../common/Ingredients";
 import { MaterialsContext } from "../common/Materials";
+import { ReagentContentsData } from "../common/Reagents";
 
 interface TGUILatheControlProps {
 
@@ -10,15 +12,16 @@ interface TGUILatheControlProps {
 
 interface TGUILatheControlData extends ModuleData {
   designs: Record<string, Design>;
-  queue_active: BooleanLike;
+  queueActive: BooleanLike;
   queue: Array<LatheQueueEntry>;
-  speed_multiplier: number;
-  power_multiplier: number;
-  efficiency_multiplier: number;
+  speedMultiplier: number;
+  powerMultiplier: number;
+  efficiencyMultiplier: number;
   materials: Record<string, number>;
-  materials_context: MaterialsContext;
-  reagents: Record<string, number>;
+  materialsContext: MaterialsContext;
+  reagents: ReagentContentsData;
   printing: string;
+  ingredients: IngredientsAvailable;
 }
 
 export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
@@ -31,14 +34,18 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   );
 };
 
-interface LatheQueueEntryProps {
+interface LatheQueueEntry {
   design: string; // design id
   amount: number; // how many
   materials?: Record<string, string>; // key to id
   ingredients?: any[]; // dataset from Ingredients.tsx
 }
 
-const LatheQueueEntry = (props: LatheQueueEntryProps, context) => {
+interface LatheQueuedProps {
+  entry: LatheQueueEntry
+}
+
+const LatheQueued = (props: LatheQueuedProps, context) => {
   return (
     <>
       test
@@ -46,18 +53,14 @@ const LatheQueueEntry = (props: LatheQueueEntryProps, context) => {
   );
 };
 
-
-
-
-
-interface LatheDesignEntryProps {
+interface LatheDesignProps {
   design: Design;
   materialsContext: MaterialsContext;
   printButtonAct?: Function;
   printButtonText?: string;
 }
 
-const LatheDesignEntry = (props: LatheDesignEntryProps, context) => {
+const LatheDesign = (props: LatheDesignProps, context) => {
 
   return (
     <>

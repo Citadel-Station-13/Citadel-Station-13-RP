@@ -10,15 +10,25 @@
 /datum/tgui_module/lathe_control
 	tgui_id = "TGUILatheControl"
 	expected_type = /obj/machinery/lathe
+	var/design_update_queued = FALSE
 
 /datum/tgui_module/lathe_control/data(mob/user, ...)
 	. = ..()
 	var/obj/machinery/lathe/lathe = host
-
+	.["printing"] = lathe.queue_head_design()?.design_id
 
 /datum/tgui_module/lathe_control/static_data(mob/user, ...)
 	. = ..()
 	var/obj/machinery/lathe/lathe = host
+	.["materialsContext"] = SSmaterials.tgui_materials_context()
+	.["speedMultiplier"] = lathe.speed_multiplier
+	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
+	.["powerMultiplier"] = lathe.power_multiplier
+	.["designs"] = ui_design_data(lathe.design_holder.available_designs())
+	.["materials"] = lathe.stored_materials?.ui_storage_data() || list()
+	.["reagents"] = lathe.stored_reagents?.tgui_reagent_contents() || list()
+	.["queue"] = ui_queue_data()
+	.["ingredients"] = isnull(lathe.stored_items)? list() : ui_ingredients_available(lathe.stored_items)
 
 /datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
@@ -80,30 +90,44 @@
 		design = list(design)
 
 /datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)
-	#warn impl
+	if(design_update_queued)
+		return
+	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)
+
+	design_update_queued = TRUE
 
 /datum/tgui_module/lathe_control/proc/ui_design_remove(list/datum/design/designs)
-	#warn impl
+	if(design_update_queued)
+		return
+	addtimer(CALLBACK(src, PROC_REF(ui_design_update), 1), 0)
+	design_update_queued = TRUE
 
 /**
  * performs a full update of designs.
  */
-/datum/tgui_module/lathe_control/proc/ui_design_update()
+/datum/tgui_module/lathe_control/proc/ui_design_update(queued)
+	if(queued && !design_update_queued)
+		return
+	design_update_queued = FALSE
 	var/obj/machinery/lathe/lathe = host
-	#warn impl
+	push_ui_data(data = list("designs" = ui_design_data(lathe.design_holder.available_designs())))
 
 /datum/tgui_module/lathe_control/proc/ui_ingredients_update()
 	var/obj/machinery/lathe/lathe = host
-	#warn impl
+	push_ui_data(data = list("ingredients" = isnull(lathe.stored_items)? list() : ui_ingredients_available(lathe.stored_items)))
+
+/datum/tgui_module/lathe_control/proc/ui_materials_update()
+	var/obj/machinery/lathe/lathe = host
+	push_ui_data(data = list("materials" = lathe.stored_materials?.ui_storage_data() || list()))
+
+/datum/tgui_module/lathe_control/proc/ui_reagents_update()
+	var/obj/machinery/lathe/lathe = host
+	push_ui_data(data = list("reagents" = lathe.stored_reagents?.tgui_reagent_contents() || list()))
 
 /datum/tgui_module/lathe_control/proc/ui_queue_update()
 	var/obj/machinery/lathe/lathe = host
 	#warn impl
 
-/datum/tgui_module/lathe_control/proc/ui_materials_update()
-	var/obj/machinery/lathe/lathe = host
-	#warn impl
-
-/datum/tgui_module/lathe_control/proc/ui_reagents_update()
+/datum/tgui_module/lathe_control/proc/ui_queue_data()
 	var/obj/machinery/lathe/lathe = host
 	#warn impl

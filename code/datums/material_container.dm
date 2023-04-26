@@ -193,3 +193,6 @@
 	LAZYINITLIST(stored)
 	for(var/key in materials)
 		stored[key] += materials[key] * multiplier
+
+/datum/material_container/proc/ui_storage_data()
+	. = isnull(stored)? list() : stored.Copy()
