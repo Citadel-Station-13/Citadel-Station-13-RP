@@ -1,7 +1,15 @@
 #define INIT_ANNOUNCE(X) to_chat(world, "<span class='boldannounce'>[X]</span>"); log_world(X)
 
 GLOBAL_VAR_INIT(used_engine, "None")
-// Handles map-related tasks, mostly here to ensure it does so after the MC initializes.
+
+/**
+ * Handles map / world things.
+ *
+ * Never fires, except to process map maintenance tasks like sector clearing and
+ * other systems.
+ *
+ * Maintains a cohesive world structure and lookup lists for various systems.
+ */
 SUBSYSTEM_DEF(mapping)
 	name = "Mapping"
 	init_order = INIT_ORDER_MAPPING

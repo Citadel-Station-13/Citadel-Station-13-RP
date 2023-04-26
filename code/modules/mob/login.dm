@@ -99,6 +99,8 @@
 	reload_rendering()
 	// reset statpanel of any verbs/whatnot
 	client.statpanel_reload()
+	// world sectors hook
+	reconsider_sector_relevance()
 	// update ssd overlay
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 

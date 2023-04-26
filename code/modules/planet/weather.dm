@@ -1,22 +1,10 @@
 /datum/weather_holder
-	/// Reference to the planet datum that holds this datum.
-	var/datum/planet/our_planet = null
-	/// The current weather that is affecting the planet.
-	var/datum/weather/current_weather = null
 	/// The temperature to set planetary walls to.
 	var/temperature = T20C
 	/// The direction the wind is blowing. Moving against the wind slows you down, while moving with it speeds you up.
 	var/wind_dir = 0
 	/// How fast or slow a mob can be due to wind acting on them.
 	var/wind_speed = 0
-	/// Assoc list of weather identifiers, containing the actual weather datum.
-	var/list/allowed_weather_types = list()
-	/// Assoc list of weather identifiers and their odds of being picked to happen at roundstart.
-	var/list/roundstart_weather_chances = list()
-	/// world.time when the weather subsystem will advance the forecast.
-	var/next_weather_shift = null
-	/// A list of what the weather will be in the future. This allows it to be pre-determined and planned around.
-	var/list/forecast = list()
 
 	// Holds the weather icon, using vis_contents. Documentation says an /atom/movable is required for placing inside another atom's vis_contents.
 	var/atom/movable/weather_visuals/visuals = null
@@ -25,11 +13,6 @@
 
 /datum/weather_holder/New(source)
 	..()
-	our_planet = source
-	for(var/A in allowed_weather_types)
-		var/datum/weather/W = allowed_weather_types[A]
-		if(istype(W))
-			W.holder = src
 	visuals = new()
 	special_visuals = new()
 
@@ -78,33 +61,6 @@
 	else
 		current_weather.process_effects()
 		current_weather.process_sounds()
-
-
-// Should only have to be called once.
-/datum/weather_holder/proc/initialize_weather()
-	if(!current_weather)
-		change_weather(get_next_weather())
-		build_forecast()
-
-
-/**
- * Used to determine what the weather will be soon, in a semi-random fashion.
- * The forecast is made by calling this repeatively, from the bottom (highest index) of the forecast list.
- */
-/datum/weather_holder/proc/get_next_weather(datum/weather/W)
-	// At roundstart, choose a suitable initial weather.
-	if(!current_weather)
-		return pickweight(roundstart_weather_chances)
-	return pickweight(W?.transition_chances)
-
-
-/datum/weather_holder/proc/advance_forecast()
-	var/new_weather = forecast[1]
-	// Remove what we just took out, shortening the list.
-	forecast.Cut(1, 2)
-	change_weather(new_weather)
-	// To fill the forecast to the desired length.
-	build_forecast()
 
 
 /**
@@ -172,10 +128,6 @@
 			to_chat(M, message)
 
 
-/datum/weather_holder/proc/get_weather_datum(desired_type)
-	return allowed_weather_types[desired_type]
-
-
 /datum/weather_holder/proc/show_transition_message()
 	if(!current_weather.transition_messages.len)
 		return
@@ -184,55 +136,6 @@
 	message_all_outdoor_players(message)
 
 /datum/weather
-	var/name = "weather base"
-	var/icon = 'icons/effects/weather.dmi'
-	/// Icon to apply to turf undergoing weather.
-	var/icon_state = null
-	/// Temperature to apply when at noon.
-	var/temp_high = T20C
-	/// Temperature to apply when at midnight.
-	var/temp_low = T0C
-	/// Upper bound for mob slowdown when walking against the wind, and speedup when walking with it. Randomized between this and wind_low.
-	var/wind_high = 0
-	/// Lower bound for above.
-	var/wind_low = 0
-	/// Lower numbers means more darkness.
-	var/light_modifier = 1.0
-	/// If set, changes how the day/night light looks.
-	var/light_color = null
-	/// Some types of weather make flying harder, and therefore make crashes more likely. (This is not implemented)
-	var/flight_failure_modifier = 0
-	/// Assoc list of weather identifiers and the odds to shift to a specific type of weather. Can contain its own identifier to prolong it.
-	var/transition_chances = list()
-	/// Reference to the datum that manages the planet's weather.
-	var/datum/weather_holder/holder = null
-	/// How long this weather must run before it tries to change, in minutes
-	var/timer_low_bound = 5
-	/// How long this weather can run before it tries to change, in minutes
-	var/timer_high_bound = 10
-	/// If the sky can be clearly seen while this is occuring, used for flavor text when looking up.
-	var/sky_visible = FALSE
-
-	/// We are a list now! yay variety!
-	var/list/effect_message = list()
-	/// Keeps track of when the weather last tells EVERY player it's hitting them
-	var/last_message = 0
-	/// Delay in between weather hit messages
-	var/message_delay = 900
-	/// Is set to TRUE and plays the messsage every [message_delay]
-	var/show_message = FALSE
-
-	/// List of messages shown to all outdoor mobs when this weather is transitioned to, for flavor. Not shown if already this weather.
-	var/list/transition_messages = list()
-	/// What is shown to a player 'examining' the weather.
-	var/observed_message = null
-
-	// Looping sound datums for weather sounds, both inside and outside.
-	var/datum/looping_sound/outdoor_sounds = null
-	var/datum/looping_sound/indoor_sounds = null
-	var/outdoor_sounds_type = null
-	var/indoor_sounds_type = null
-
 
 /datum/weather/New()
 	if(outdoor_sounds_type)

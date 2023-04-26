@@ -1,4 +1,4 @@
-/datum/atmosphere/planet/classp
+/datum/atmosphere/planet/class_p
 	base_gases = list(
 	/datum/gas/oxygen = 0.23,
 	/datum/gas/nitrogen = 0.77

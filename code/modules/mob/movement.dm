@@ -38,7 +38,9 @@
 	if(mob && mob.control_object)
 		if(mob.control_object.density)
 			step(mob.control_object,direct)
-			if(!mob.control_object)	return
+			if(QDELETED(mob.control_object))
+				mob.control_object = null
+				return
 			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))

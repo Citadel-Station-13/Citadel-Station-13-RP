@@ -20,6 +20,8 @@
 	// gc perspectives
 	if(using_perspective?.reset_on_logout)
 		reset_perspective()
+	// world sectors hook
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, reconsider_sector_relevance)), 0)
 	// update ssd overlay
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
 

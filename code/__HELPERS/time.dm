@@ -1,4 +1,30 @@
+//? standard timestamps for logging
+/**
+ * ISO 8601 complaint time stamp.
+ *
+ * Use for any official logging/etc
+ */
+/proc/time_stamp()
+	var/date_portion = time2text(world.timeofday, "YYYY-MM-DDThh:mm:ss")
 
+//? general conversions
+/**
+ * returns approximate week of the month we're (or a specific date number is) on
+ */
+/proc/day_to_week_of_month(DD = text2num(time2text(world.timeofday, "DD")))
+	switch(DD)
+		if(8 to 13)
+			return 2
+		if(14 to 20)
+			return 3
+		if(21 to 27)
+			return 4
+		if(28 to INFINITY)
+			return 5
+		else
+			return 1
+
+//? misc / unsorted
 #define TimeOfGame (get_game_time())
 #define TimeOfTick (TICK_USAGE*0.01*world.tick_lag)
 
@@ -40,12 +66,6 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 		var/timeofday = world.timeofday + extra_days
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
-
-/// ISO 8601
-/proc/time_stamp()
-	var/date_portion = time2text(world.timeofday, "YYYY-MM-DD")
-	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
-	return "[date_portion]T[time_portion]"
 
 /proc/get_timezone_offset()
 	var/midnight_gmt_here = text2num(time2text(0,"hh")) * 36000
@@ -117,21 +137,6 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
 		return midnight_rollovers++
 	return midnight_rollovers
-
-/proc/weekdayofthemonth()
-	/// Get the current day.
-	var/DD = text2num(time2text(world.timeofday, "DD"))
-	switch(DD)
-		if(8 to 13)
-			return 2
-		if(14 to 20)
-			return 3
-		if(21 to 27)
-			return 4
-		if(28 to INFINITY)
-			return 5
-		else
-			return 1
 
 /**
  * Takes a value of time in deciseconds.

@@ -1,16 +1,11 @@
 SUBSYSTEM_DEF(planets)
 	name = "Planets"
-	init_order = INIT_ORDER_PLANETS
-	priority = FIRE_PRIORITY_PLANETS
 	wait = 2 SECONDS
 	subsystem_flags = SS_BACKGROUND
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/static/list/new_outdoor_turfs = list()
 	var/static/list/new_outdoor_walls = list()
-
-	var/static/list/planets = list()
-	var/static/list/z_to_planet = list()
 
 	var/static/list/currentrun = list()
 

@@ -271,6 +271,13 @@ var/list/all_maps = list()
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
 	var/holomap_legend_y = 96	// y position of the holomap legend for this z
 
+	/// world sector type **or** template type to init
+	var/world_sectorization
+	/// grouping - we will be put in any levels with the same gruping and sectorization
+	var/world_sectorgroup = "default"
+
+	#warn sectorization/sectorgroup implementation
+
 // Default constructor applies itself to the parent map datum
 /datum/map_z_level/New(var/datum/map/map, _z)
 	if(_z)
