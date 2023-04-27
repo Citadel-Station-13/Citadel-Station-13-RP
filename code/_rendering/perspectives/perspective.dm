@@ -426,6 +426,7 @@
 	if(!isnull(darksight_overlay))
 		return
 	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
+	darksight_overlay.icon_state = "fade-circle"
 	darksight_overlay.plane = LIGHTING_PLANE
 	darksight_overlay.alpha = 0
 	darksight_overlay.blend_mode = BLEND_ADD
