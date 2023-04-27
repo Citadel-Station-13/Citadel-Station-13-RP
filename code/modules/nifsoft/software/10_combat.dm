@@ -55,7 +55,7 @@ var/global/datum/unarmed_attack/hardclaws/unarmed_hardclaws = new()
 /datum/unarmed_attack/hardclaws
 	attack_verb = list("claws")
 	attack_noun = list("talons")
-	damage = 15
+	damage = 20
 	attack_sound = "punch"
 	miss_sound = 'sound/weapons/punchmiss.ogg'
 	sharp = 1

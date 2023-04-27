@@ -9,6 +9,16 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
  * Unarmed attacks for mobs
  */
 /datum/unarmed_attack
+	//? Damage
+	/// damage amount
+	var/damage = 5
+	/// damage mode flags
+	var/damage_mode = NONE
+	/// damage tier
+	var/damage_tier = MELEE_TIER_DEFAULT
+	/// damage type
+	var/damage_type = BRUTE
+
 	//? Sounds
 	/// sound when attacking
 	var/attack_sound = "punch"
@@ -18,19 +28,14 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 	//? legacy
 	var/attack_verb = list("attack")	// Empty hand hurt intent verb.
 	var/attack_noun = list("fist")
-	var/damage = 0						// Extra empty hand attack damage.
-	var/shredding = 0 // Calls the old attack_alien() behavior on objects/mobs when on harm intent.
-	var/sharp = 0
-	var/edge = 0
 	var/infected_wound_probability = 10
 
-	var/damage_type = BRUTE
 	var/sparring_variant_type = /datum/unarmed_attack/light_strike
 
 	var/eye_attack_text
 	var/eye_attack_text_victim
 
-#warn refactor damage shit.
+#warn refactor variants maybe
 
 /datum/unarmed_attack/proc/get_sparring_variant()
 	return cached_unarmed_attack_datum(sparring_variant_type)

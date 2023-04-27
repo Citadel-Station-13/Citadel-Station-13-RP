@@ -55,29 +55,29 @@
 
 /datum/unarmed_attack/claws/strong
 	attack_verb = list("slashed")
-	damage = 5
-	shredding = 1
+	damage = 10
+	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP | DAMAGE_MODE_EDGE
 
 /datum/unarmed_attack/claws/strong/xeno
 	attack_verb = list("slashed", "gouged", "stabbed")
-	damage = 10
+	damage = 20
 
 /datum/unarmed_attack/claws/strong/xeno/queen
 	attack_verb = list("slashed", "gouged", "stabbed", "gored")
-	damage = 15
+	damage = 25
 
 /datum/unarmed_attack/bite/strong
 	attack_verb = list("mauled")
-	damage = 8
-	shredding = 1
+	damage = 12
+	damage_mode = DAMAGE_MODE_SHRED | DAMAGE_MODE_SHARP
 
 /datum/unarmed_attack/bite/strong/xeno
-	damage = 10
+	damage = 17
 
 /datum/unarmed_attack/slime_glomp
 	attack_verb = list("glomped")
 	attack_noun = list("body")
-	damage = 2
+	damage = 7
 
 /datum/unarmed_attack/slime_glomp/apply_effects(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/armour,var/attack_damage,var/zone)
 	..()
@@ -98,9 +98,7 @@
 	attack_verb = list("bit")
 	attack_noun = list("fangs")
 	attack_sound = 'sound/weapons/bite.ogg'
-	shredding = 0
-	sharp = 1
-	edge = 1
+	damage_mode = DAMAGE_MODE_SHARP
 
 /datum/unarmed_attack/bite/sharp/numbing/show_attack(var/mob/living/carbon/human/user, var/mob/living/carbon/human/target, var/zone, var/attack_damage)
 	var/obj/item/organ/external/affecting = target.get_organ(zone)
