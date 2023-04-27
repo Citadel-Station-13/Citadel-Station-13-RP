@@ -58,11 +58,10 @@
 
 /mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
-		use_me = TRUE
-		return ..(blocked, forced)
+		. = ..(blocked, forced)
 	else
-		use_me = FALSE
-		return ..(MOBILITY_FLAGS_REAL, forced)
+		. = ..(MOBILITY_FLAGS_REAL, forced)
+	use_me = !!(. & MOBILITY_IS_CONSCIOUS)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)
