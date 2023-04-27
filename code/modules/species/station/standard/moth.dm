@@ -22,7 +22,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	wing = "moth_plain"
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 
-	darksight = 7
+	innate_darksight = /datum/darksight/baseline/species_tier_2
+
 	// i'd like to see oyu move in water with wings
 	water_movement = 0.3
 	// TODO: slightly brittle because i can't give them brittle bones on this rotten species backend until we make species backend more Fun

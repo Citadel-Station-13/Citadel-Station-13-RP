@@ -106,6 +106,8 @@
 	var/list/darkvision_matrix
 	/// do we use smart darkvision?
 	var/darkvision_smart
+	/// is soft darkvision in global (infinite range) mode?
+	var/darkvision_unlimited
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -402,9 +404,11 @@
 	darkvision_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
 	darkvision_matrix = construct_rgb_color_matrix()
 	darkvision_smart = TRUE
+	darkvision_unlimited = FALSE
 	// push holders
 	for(var/datum/darksight/holder as anything in holders)
 		holder.push(src)
+	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
 	update_darksight_rendering()
 

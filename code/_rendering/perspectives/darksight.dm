@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	/// soft darksight color multiplication matrix, if any. null is baseline matrix.
 	var/list/soft_darksight_matrix
 	/// do we use smart darkvision, or dumb?
-	var/soft_darksight_smartness = FALSE
+	var/soft_darksight_smartness =
 
 /datum/darksight/baseline/New(hard, soft_range, soft_alpha, soft_matrix, soft_smart)
 	if(!isnull(hard))
@@ -122,3 +122,13 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 GLOBAL_DATUM_INIT(default_darksight, /datum/darksight/baseline/default, new)
 
 /datum/darksight/baseline/default
+
+//? species
+
+/datum/darksight/baseline/species_tier_1
+
+/datum/darksight/baseline/species_tier_2
+
+/datum/darksight/baseline/species_tier_3
+
+#warn impl all

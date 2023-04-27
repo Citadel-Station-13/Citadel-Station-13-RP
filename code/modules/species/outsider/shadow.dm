@@ -15,7 +15,7 @@
 	assisted_langs = list()
 
 	light_dam = 2
-	darksight = 8
+	innate_darksight = /datum/darksight/baseline/species_tier_3
 	has_organ = list()
 	siemens_coefficient = 0
 
