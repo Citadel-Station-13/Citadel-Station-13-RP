@@ -20,7 +20,7 @@
 
 			//make vine zero start off fully matured
 			var/obj/effect/plant/vine = new(T,seed)
-			vine.health = vine.max_health
+			vine.integrity = vine.integrity_max
 			vine.mature_time = 0
 			vine.process()
 
@@ -55,7 +55,7 @@
 	mouse_opacity = 2
 
 	integrity = 15
-	integrity_max = 95
+	integrity_max = 110
 
 	var/growth_threshold = 0
 	var/growth_type = 1
@@ -98,14 +98,14 @@
 		return
 
 	name = seed.display_name
-	max_health = round(seed.get_trait(TRAIT_ENDURANCE)/2)
+	integrity_max = round(seed.get_trait(TRAIT_ENDURANCE)/2)
 	if(seed.get_trait(TRAIT_SPREAD)==2)
 		max_growth = VINE_GROWTH_STAGES
-		growth_threshold = max_health/VINE_GROWTH_STAGES
+		growth_threshold = integrity_max / VINE_GROWTH_STAGES
 		icon = 'icons/obj/hydroponics_vines.dmi'
 	else
 		max_growth = seed.growth_stages
-		growth_threshold = max_health/seed.growth_stages
+		growth_threshold = integrity_max / seed.growth_stages
 
 	if(max_growth > 2 && prob(50))
 		max_growth-- //Ensure some variation in final sprite, makes the carpet of crap look less wonky.
@@ -114,6 +114,19 @@
 	spread_chance = seed.get_trait(TRAIT_POTENCY)
 	spread_distance = ((growth_type>0) ? round(spread_chance*0.77) : round(spread_chance*0.6))
 	update_icon()
+
+/obj/effect/plant/heal_integrity(amount, gradual)
+	. = ..()
+	refresh_icon()
+
+/obj/effect/plant/damage_integrity(amount, gradual)
+	. = ..()
+	refresh_icon()
+	SSplants.add_plant(src)
+
+/obj/effect/plant/atom_destruction()
+	die_off(TRUE)
+	return ..()
 
 // Plants will sometimes be spawned in the turf adjacent to the one they need to end up in, for the sake of correct dir/etc being set.
 /obj/effect/plant/proc/finish_spreading()
@@ -156,7 +169,7 @@
 		set_light(0)
 
 /obj/effect/plant/proc/refresh_icon()
-	var/growth = min(max_growth,round(health/growth_threshold))
+	var/growth = min(max_growth,round(integrity / growth_threshold))
 	var/at_fringe = get_dist(src,parent)
 	if(spread_distance > 5)
 		if(at_fringe >= (spread_distance-3))
@@ -165,14 +178,15 @@
 			max_growth--
 	max_growth = max(1,max_growth)
 	if(growth_type > 0)
-		if(max_health > 40)
-			icon_state = "vines-[growth]"
-		else if(max_health <= 40 > 30)
-			icon_state = "mass-[growth]"
-		else if(max_health <= 30 > 20)
-			icon_state = "worms"
-		else
-			icon_state = "mold-[growth]"
+		switch(percent_integrity())
+			if(0.5 to 1)
+				icon_state = "vines-[growth]"
+			if(0.35 to 0.5)
+				icon_state = "mass-[growth]"
+			if(0.15 to 0.35)
+				icon_state = "worms"
+			else
+				icon_state = "mold-[growth]"
 	else
 		icon_state = "[seed.get_trait(TRAIT_PLANT_ICON)]-[growth]"
 
@@ -222,12 +236,11 @@
 	floor = 1
 	return 1
 
-/obj/effect/plant/attackby(var/obj/item/W, var/mob/user)
-
-	user.setClickCooldown(user.get_attack_speed(W))
-	SSplants.add_plant(src)
-
+/obj/effect/plant/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 	if(W.is_wirecutter() || istype(W, /obj/item/surgical/scalpel))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(sampled)
 			to_chat(user, "<span class='warning'>\The [src] has already been sampled recently.</span>")
 			return
@@ -243,13 +256,10 @@
 		if(prob(70))
 			sampled = 1
 		seed.harvest(user,0,1)
-		health -= (rand(3,5)*5)
+		damage_integrity(rand(3, 5) * 5)
 		sampled = 1
-	else
-		..()
-		if(W.damage_force)
-			health -= W.damage_force
-	check_health()
+		return
+	return ..()
 
 //handles being overrun by vines - note that attacker_parent may be null in some cases
 /obj/effect/plant/proc/vine_overrun(datum/seed/attacker_seed, obj/effect/plant/attacker_parent)
@@ -274,28 +284,7 @@
 	aggression -= resiliance
 
 	if(aggression > 0)
-		health -= aggression*5
-		check_health()
-
-/obj/effect/plant/legacy_ex_act(severity)
-	switch(severity)
-		if(1.0)
-			die_off()
-			return
-		if(2.0)
-			if (prob(50))
-				die_off()
-				return
-		if(3.0)
-			if (prob(5))
-				die_off()
-				return
-		else
-	return
-
-/obj/effect/plant/proc/check_health()
-	if(health <= 0)
-		die_off()
+		damage_integrity(aggression * 5)
 
 /obj/effect/plant/proc/is_mature()
-	return (health >= (max_health/3) && world.time > mature_time)
+	return percent_integrity() >= (1/3) && world.time > mature_time

@@ -94,7 +94,7 @@
 				unbuckle()
 		else
 			user.setClickCooldown(user.get_attack_speed())
-			health -= rand(1,5)
+			damage_integrity(rand(1, 5))
 			var/text = pick("rip","tear","pull", "bite", "tug")
 			user.visible_message(\
 			"<span class='warning'>\The [user] [text]s at \the [src].</span>",\

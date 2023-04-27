@@ -212,8 +212,7 @@
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
 		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
-			W.shatter()
+			A.atom_destruction()
 		else if(istype(A,/obj/structure/grille))
 			new /obj/structure/grille/broken(A.loc)
 			new /obj/item/stack/rods(A.loc)

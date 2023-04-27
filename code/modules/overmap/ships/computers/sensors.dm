@@ -165,7 +165,7 @@
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			if(do_after(user, max(5, damage / 5), src) && WT && WT.isOn())
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
-				take_damage(-damage)
+				take_damage_legacy(-damage)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 			return
@@ -200,7 +200,7 @@
 		. += "It shows signs of damage!"
 
 /obj/machinery/shipsensors/bullet_act(var/obj/projectile/Proj)
-	take_damage(Proj.get_structure_damage())
+	take_damage_legacy(Proj.get_structure_damage())
 	..()
 
 /obj/machinery/shipsensors/proc/toggle()
@@ -221,7 +221,7 @@
 			s.set_up(3, 1, src)
 			s.start()
 
-			take_damage(rand(10,50))
+			take_damage_legacy(rand(10,50))
 			toggle()
 		heat += idle_power_usage/15000
 
@@ -243,10 +243,10 @@
 /obj/machinery/shipsensors/emp_act(severity)
 	if(!use_power)
 		return
-	take_damage(20/severity)
+	take_damage_legacy(20/severity)
 	toggle()
 
-/obj/machinery/shipsensors/take_damage_legacy(value)
+/obj/machinery/shipsensors/take_damage_legacy_legacy(value)
 	health = min(max(health - value, 0),max_health)
 	if(use_power && health == 0)
 		toggle()
