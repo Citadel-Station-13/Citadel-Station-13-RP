@@ -1603,12 +1603,14 @@
 		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
-
+	/*
+	//Commented out for now to determine how well it fits in on Cit.
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() <= 0)
 			playsound_local(src,pick(scarySounds),50, 1, -1)
+	*/
 
 /mob/living/carbon/human/handle_stomach()
 	spawn(0)
