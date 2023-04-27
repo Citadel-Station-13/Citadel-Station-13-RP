@@ -11,7 +11,7 @@
 	tail = "tail" // Spider tail.
 	icobase_tail = 1
 
-	darksight = 8      // Can see completely in the dark. They are spiders, after all. Not that any of this matters because people will be using custom race.
+	innate_darksight = /datum/darksight/baseline/species_tier_2
 	slowdown  = -0.15  // Small speedboost, as they've got a bunch of legs. Or something. I dunno.
 	brute_mod = 0.8    // 20% brute damage reduction
 	burn_mod  = 1.15   // 15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.

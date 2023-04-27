@@ -108,18 +108,20 @@
 
 /atom/movable/screen/plane_master/dumb_darkvision/Initialize(mapload)
 	. = ..()
-	add_filter("turf_render", 1, layering_filter(rendering_source = TURF_PLANE_RENDER_TARGET))
-	add_filter("obj_render", 2, layering_filter(rendering_source = OBJ_PLANE_RENDER_TARGET))
-	add_filter("mob_render", 3, layering_filter(rendering_source = MOB_PLANE_RENDER_TARGET))
+	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
+	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
+	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/smart_darkvision
 	plane = SMART_DARKVISION_PLANE
 
 /atom/movable/screen/plane_master/smart_darkvision/Initialize(mapload)
 	. = ..()
-	add_filter("turf_render", 1, layering_filter(rendering_source = TURF_PLANE_RENDER_TARGET))
-	add_filter("obj_render", 2, layering_filter(rendering_source = OBJ_PLANE_RENDER_TARGET))
-	add_filter("mob_render", 3, layering_filter(rendering_source = MOB_PLANE_RENDER_TARGET))
+	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
+	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
+	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
+
+#warn redo this shit
 
 /atom/movable/screen/plane_master/
 

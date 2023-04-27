@@ -156,7 +156,6 @@
 		return FALSE
 	..()
 
-	handle_darksight()
 	handle_hud_icons()
 
 	return TRUE

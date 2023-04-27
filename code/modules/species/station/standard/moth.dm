@@ -160,7 +160,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// darksight, but weak to light
-	darksight = 7
+	innate_darksight = /datum/darksight/baseline/species_tier_2
 	flash_burn = 5
 	flash_mod = 1.2
 
@@ -170,6 +170,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// hardy, but no darksight
-	darksight = 2
+	innate_darksight = /datum/darksight/baseline/species_tier_0
 	flash_mod = 0.5
 	item_slowdown_mod = 0.5
