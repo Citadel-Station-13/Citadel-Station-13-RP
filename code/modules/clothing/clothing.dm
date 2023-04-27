@@ -5,10 +5,12 @@
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
+
+	//? legacy
+
 	var/list/species_restricted = null //Only these species can wear this kit.
 	var/gunshot_residue //Used by forensics.
 
-	var/list/accessories
 	var/list/valid_accessory_slots
 	var/list/restricted_accessory_slots
 	var/list/starting_accessories
@@ -36,6 +38,27 @@
 
 	/// is considered wizard garb?
 	var/wizard_garb = FALSE
+
+	//? accessory system - used as accessory
+	/// are we an accessory?
+	var/is_accessory = FALSE
+	/// accessory render as _acc slot key instead of obeying worn render.
+	/// accessories will use one for all if flagged as such, otherwise they'll inherit the real slot of where they are.
+	var/accessory_render_specific = FALSE
+	/// use legacy system - only works for /obj/item/clothing/accessory.
+	var/accessory_render_legacy = FALSE
+	/// FALSE for no render at all when accessory - /obj/item has this by default as it doesn't have clothing procs.
+	var/accessory_renders = TRUE
+	/// what we're attached to if we're an accessory
+	var/obj/item/clothing/accessory_host
+	/// what state we render as for the inventory overlay, *not* worn overlay. defaults to icon_state.
+	var/accessory_inv_state
+	/// currently cached inv state
+	var/mutable_appearance/accessory_inv_cached
+
+	//? accessory system - attached to by accessories
+	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
+	var/list/accessories
 
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
@@ -144,6 +167,7 @@
 			species_restricted = list(target_species)
 
 	//Set icon
+	LAZYINITLIST(sprite_sheets)
 	if (sprite_sheets_refit && (target_species in sprite_sheets_refit))
 		sprite_sheets[target_species] = sprite_sheets_refit[target_species]
 
@@ -198,13 +222,17 @@
 	for(var/name in available)
 		var/using = available[name]
 		if(istext(using))
-			assembled[name] = image(icon, icon_state = using)
+			assembled[name] = image(icon,
+					icon_state = using,
+					pixel_x = -((icon_x_dimension - WORLD_ICON_SIZE) / 2),
+					pixel_y = -((icon_y_dimension - WORLD_ICON_SIZE) / 2),
+				)
 		else if(isimage(using) || ismutableappearance(using))
 			assembled[name] = using
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return
-	var/choice = show_radial_menu(user, src, assembled)
+	var/choice = show_radial_menu(user, src, assembled, radius = 48)
 	if(isnull(choice))
 		return
 	set_style(choice, user)
@@ -215,8 +243,8 @@
 	set desc = "Wear this piece of clothing in a different style."
 	set src in usr
 
-	// todo: mobility flags
-	if(!IS_CONSCIOUS(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
+		usr.action_feedback(SPAN_WARNING("You can't do that right now!"), src)
 		return
 
 	pick_style(usr)

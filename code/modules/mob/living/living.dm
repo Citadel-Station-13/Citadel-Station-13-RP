@@ -712,6 +712,7 @@ default behaviour is:
 			. *= M.icon_scale_y_percent
 
 /mob/living/update_transform()
+	var/matrix/old_matrix = transform
 	// First, get the correct size.
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
@@ -722,6 +723,7 @@ default behaviour is:
 	M.Translate(0, 16*(desired_scale_y-1))
 	update_ssd_overlay()
 	animate(src, transform = M, time = 10)
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 
 // This handles setting the client's color variable, which makes everything look a specific color.
 // This proc is here so it can be called without needing to check if the client exists, or if the client relogs.

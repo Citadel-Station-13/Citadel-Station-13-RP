@@ -561,6 +561,36 @@ CIRCUITS BELOW
 	build_path = /obj/item/circuitboard/mecha/reticent/targeting
 	sort_string = "NAAFC"
 
+///Fighters///
+
+/datum/design/circuit/mecha/fighter/pinnace_main
+	name = "Pinnace central control board"
+	id = "pinnace_main"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
+	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/main
+	sort_string = "NAAGA"
+
+/datum/design/circuit/mecha/fighter/pinnace_flight
+	name = "Pinnace flight control board"
+	id = "pinnace_flight"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
+	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/flight
+	sort_string = "NAAGB"
+
+/datum/design/circuit/mecha/fighter/pinnace_targeting
+	name = "Pinnace weapon control and targeting board"
+	id = "pinnace_targeting"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 2)
+	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/targeting
+	sort_string = "NAAGC"
+
+/datum/design/circuit/mecha/fighter/pinnace_cockpit_control
+	name = "Pinnace manual flight control instruments"
+	id = "pinnace_cockpit_control"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 2)
+	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard
+	sort_string = "NAAGD"
+
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
