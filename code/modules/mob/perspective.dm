@@ -116,6 +116,7 @@
 	. = ..()
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
+	update_innate_darksight()
 
 //? Perspective - Shunting / Remote Viewing
 
@@ -194,13 +195,23 @@
  * get our innate darksight
  */
 /mob/proc/innate_darksight()
+	RETURN_TYPE(/datum/darksight/baseline)
 	return GLOB.default_darksight
+
+/**
+ * get all darksight datums, ordered. 1 (front of list) is applied first.
+ */
+/mob/proc/query_darksight()
+	RETURN_TYPE(/list)
+	#warn inventory lmfao
+	return list(innate_darksight())
 
 /**
  * updates our darksight data and pushes it to perspective
  */
 /mob/proc/update_innate_darksight()
-	#warn impl
+	ensure_self_perspective()
+	self_perspective.push_darksight_stack(query_darksight())
 
 //? Helpers
 

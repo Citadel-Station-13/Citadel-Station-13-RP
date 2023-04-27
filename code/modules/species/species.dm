@@ -43,8 +43,7 @@
 	//? Traits / Physiology
 	/// Intrinsic datum traits to apply to the mob
 	var/list/mob_traits
-	/// A physiology modifier we apply to our mob
-	var/datum/physiology_modifier/mob_physiology
+	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
 
 	//? Additional info
 	/// what you see on tooltip/examine
@@ -301,7 +300,7 @@
 
 	//? Sight
 	/// darksight datum - set to typepath, initialized at init
-	var/datum/darksight/innate_darksight
+	var/datum/darksight/baseline/innate_darksight
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -539,9 +538,6 @@
 	for(var/datum/ability/ability as anything in abilities)
 		ability.associate(H)
 
-	if(!isnull(mob_physiology))
-		H.add_physiology_modifier(mob_physiology)
-
 /**
  * called when we are removed from a mob
  */
@@ -565,9 +561,6 @@
 
 	for(var/datum/ability/ability as anything in abilities)
 		ability.disassociate(H)
-
-	if(!isnull(mob_physiology))
-		H.remove_physiology_modifier(mob_physiology)
 
 /datum/species/proc/sanitize_species_name(var/name)
 	return sanitizeName(name, MAX_NAME_LEN)

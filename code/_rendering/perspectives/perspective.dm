@@ -96,9 +96,16 @@
 	//? lighting / nightvision
 	/// darksight overlay that we maintain
 	var/image/darksight_overlay
-	/// sorted list(list(sources) = val) of alpha for lighting plane. lowest first.
+	/// lighting plane alpha
 	var/list/hard_darkvision
+	/// soft darksight range
+	var/darkvision_range
 	/// soft darksight alpha
+	var/darkvision_alpha
+	/// soft darksight matrix
+	var/list/darkvision_matrix
+	/// do we use smart darkvision?
+	var/darkvision_smart
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -337,7 +344,7 @@
 //? Abstraction - see_in_dark
 
 /datum/perspective/proc/update_see_in_dark()
-	var/wanted = INFINITY
+	var/wanted = INFINITY // show everything
 	if(wanted != see_in_dark)
 		see_in_dark = wanted
 		for(var/mob/M as anything in mobs)
@@ -388,33 +395,24 @@
 
 //? lighting
 
-/**
- * sets hard darkvision that reduces lighting plane alpha
- * lighting plane becomes more transparent if it wasn't more transparent already
- *
- * @params
- * * amount - alpha value 0 to 255. 0 = fullbright, 255 = no change.
- * * source - trait source enum
- */
-/datum/perspective/proc/set_hard_darkvision(amount, source)
+/datum/perspective/proc/push_darksight_stack(list/datum/darksight/holders)
+	// reset to default
+	hard_darkvision = 0
+	darkvision_range = SOFT_DARKSIGHT_RANGE_DEFAULT
+	darkvision_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
+	darkvision_matrix = construct_rgb_color_matrix()
+	darkvision_smart = TRUE
+	// push holders
+	for(var/datum/darksight/holder as anything in holders)
+		holder.compound_onto(src)
+	// update
+	update_darksight_rendering()
 
-/**
- * removes a source from hard darkvision.
- * all darkvision from that source will be removed.
- */
-/datum/perspective/proc/unset_hard_darkvision(source)
-
-/**
- * returns amount of hard darkvision we have from a source, null if not
- *
- * if we have multiple, this returns the lowest one.
- */
-/datum/perspective/proc/has_hard_darkvision(source)
-
-#warn impl all
+/datum/perspective/proc/update_darksight_rendering()
+	#warn impl
 
 /datum/perspective/proc/check_hard_darkvision()
-	return length(hard_darkvision)? hard_darkvision[hard_darkvision[1]] : 255
+	return hard_darkvision
 
 /datum/perspective/proc/update_hard_darkvision()
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)

@@ -31,6 +31,8 @@
 	//? Perspectives
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
+	/// current darksight modifiers.
+	var/list/datum/darksight/darksight_modifiers
 
 	//? Movement
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.
