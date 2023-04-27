@@ -280,7 +280,6 @@
 	icon_state = "randompile"
 	spawn_types = list(/mob/living/simple_mob/animal/passive/mouse)
 	simultaneous_spawns = 1
-	destructible = 1
 	spawn_delay = 1 HOUR
 
 /obj/structure/mob_spawner/pest_nest/Initialize(mapload)

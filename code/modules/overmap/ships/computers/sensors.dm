@@ -246,7 +246,7 @@
 	take_damage_legacy(20/severity)
 	toggle()
 
-/obj/machinery/shipsensors/take_damage_legacy_legacy(value)
+/obj/machinery/shipsensors/proc/take_damage_legacy(value)
 	health = min(max(health - value, 0),max_health)
 	if(use_power && health == 0)
 		toggle()

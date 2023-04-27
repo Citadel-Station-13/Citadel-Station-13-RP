@@ -36,7 +36,18 @@ GLOBAL_REAL_VAR(_dyntool_image_states) = list(
 
 //? Tool usage flags
 
-//* None yet! Waiting on skill-system design.
+/// repairing
+#define TOOL_USAGE_REPAIR (1<<0)
+/// initial construction
+#define TOOL_USAGE_CONSTRUCT (1<<1)
+/// deconstruct
+#define TOOL_USAGE_DECONSTRUCT (1<<2)
+/// superstructure, making / breaking turfs, etc
+#define TOOL_USAGE_BUILDING_SUPERSTRUCTURE (1<<3)
+/// making railings, catwalks, wires, etc
+#define TOOL_USAGE_BUILDING_FRAMEWORK (1<<4)
+/// making tables, detailed furnishings, etc
+#define TOOL_USAGE_BUILDING_FURNISHINGS (1<<5)
 
 //? Tool hints - make these human readable!
 
