@@ -132,3 +132,26 @@
 	icon_state = "laconic"
 	slot = ACCESSORY_SLOT_UTILITY
 	slots = 5
+
+/obj/item/clothing/accessory/storage/laconic
+	name = "laconic field pouch system"
+	desc = "This lightweight webbing system supports a hardened leather case designed to sit comfortably on the wearer's hip."
+	icon_state = "laconic"
+	slot = ACCESSORY_SLOT_UTILITY
+	slots = 5
+
+//Ashlander Potion Bandolier
+/obj/item/clothing/accessory/storage/ashlander_alchemy
+	name = "hide bandolier"
+	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
+	icon_state = "bandolier_ash"
+	slots = 5
+
+/obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
+	. = ..()
+	hold.can_hold = list(
+		/obj/item/reagent_containers/glass/stone,\
+		/obj/item/stack/medical/poultice_brute,\
+		/obj/item/stack/medical/poultice_burn,\
+		/obj/item/grenade/explosive/ashlander,\
+		/obj/item/flame/lighter)

@@ -10,7 +10,7 @@
 
 /obj/structure/ashlander/forge
 	name = "magma forge"
-	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
+	desc = "A primitive forge of Scorian design. It is used primarily to convert copper and lead into more workable shapes."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "forge"
 
@@ -26,11 +26,6 @@
 		qdel(O)
 		var/turf/T = get_turf(src)
 		new /obj/item/stack/material/copper(T)
-	if(istype(O, /obj/item/ore/iron))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It starts feed through the extruder.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/rods(T)
 	if(istype(O, /obj/item/ore/glass))
 		to_chat(user, "<span class='danger'>You pour [O] into the [src]! It starts to melt in the crucible.</span>")
 		qdel(O)
