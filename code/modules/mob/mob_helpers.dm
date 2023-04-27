@@ -612,6 +612,9 @@ var/list/global/organ_rel_size = list(
 		item.screen_loc = null
 		return
 
+	if(item.base_pixel_x || item.base_pixel_y)
+		screen_place = pixel_shift_screen_loc(screen_place, item.base_pixel_x, item.base_pixel_y)
+
 	item.screen_loc = screen_place
 
 /mob/proc/can_see_reagents()

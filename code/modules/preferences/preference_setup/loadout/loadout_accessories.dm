@@ -421,3 +421,14 @@
 /datum/gear/accessory/disenchanted_talisman
 	name = "Disenchanted Bone Talisman"
 	path = /obj/item/clothing/accessory/disenchanted_talisman
+
+/datum/gear/accessory/halo_projector
+	name = "Holographic Halo Projector"
+	path = /obj/item/clothing/accessory/halo_projector
+
+/datum/gear/accessory/halo_projector/New()
+	..()
+	var/list/halos = list()
+	for(var/obj/item/clothing/accessory/halo_projector/halo as anything in typesof(/obj/item/clothing/accessory/halo_projector))
+		halos[initial(halo.name)] = halo
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(halos, /proc/cmp_text_asc))

@@ -112,8 +112,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user, flags, oldLoc)
 	SEND_SIGNAL(user, COMSIG_MOB_ITEM_PICKUP, src, flags, oldLoc)
-	pixel_x = initial(pixel_x)
-	pixel_y = initial(pixel_y)
+	reset_pixel_offsets()
 	hud_layerise()
 	item_flags |= ITEM_IN_INVENTORY
 	// TODO: THIS IS SHITCODE, MOVE TO EVENT DRIVEN.

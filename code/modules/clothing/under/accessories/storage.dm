@@ -20,7 +20,7 @@
 		on_rolled["down"] = icon_state
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
-	if (has_suit)	//if we are part of a suit
+	if (accessory_host)	//if we are part of a suit
 		hold.open(user)
 		return
 
@@ -28,7 +28,7 @@
 		..(user)
 
 /obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
-	if (has_suit)
+	if (accessory_host)
 		return
 
 	if (hold.handle_mousedrop(usr, over_object))

@@ -157,9 +157,9 @@
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
-	var/icon_dimension_x = 32
+	var/icon_x_dimension = 32
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
-	var/icon_dimension_y = 32
+	var/icon_y_dimension = 32
 
 	//? Filters
 	/// For handling persistent filters
@@ -1075,7 +1075,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
+	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1084,7 +1084,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
+	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

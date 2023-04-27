@@ -80,6 +80,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
+	var/matrix/old_matrix = transform
 	var/matrix/M = matrix()
 
 	// handle scaling first, we don't want to have massive mobs still shift to align to tile
@@ -103,6 +104,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
 	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 	update_icon_special() //May contain transform-altering things
 	update_ssd_overlay()
 

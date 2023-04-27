@@ -55,9 +55,9 @@
  */
 /mob/proc/render_ssd_overlay()
 	if(isnull(ssd_overlay))
-		ssd_overlay = image(icon = 'icons/screen/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
+		ssd_overlay = mutable_appearance(icon = 'icons/screen/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
 	// flags
-	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART
+	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART | RESET_TRANSFORM
 	// matrix
 	var/matrix/transforming_with = matrix()
 	// center above
