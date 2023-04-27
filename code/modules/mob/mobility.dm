@@ -41,8 +41,9 @@
 		if(is_knockdown())
 			. &= ~MOBILITY_CAN_STAND
 
+	// set, return, and signal.
 	mobility_flags = (. & ~(blocked | mobility_flags_blocked)) | (forced | mobility_flags_forced)
-
+	. = mobility_flags
 	SEND_SIGNAL(src, COMSIG_MOB_ON_UPDATE_MOBILITY, .)
 
 /mob/proc/update_mobility_blocked()
