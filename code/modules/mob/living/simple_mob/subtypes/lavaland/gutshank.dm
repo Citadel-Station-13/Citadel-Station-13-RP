@@ -63,8 +63,8 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	exotic_type = /obj/item/stack/material/chitin
-	exotic_amount = 5
+	bone_type = /obj/item/stack/chitin
+	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")
@@ -201,6 +201,7 @@
 	var/rideable = 0
 
 /mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	. = ..()
 	if(istype(O, /obj/item/saddle/shank) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1

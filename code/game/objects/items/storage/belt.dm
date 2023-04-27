@@ -616,7 +616,7 @@
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow/ash = 15
+		/obj/item/ammo_casing/arrow/bone = 15
 		)
 
 /obj/item/storage/belt/utility/crystal
