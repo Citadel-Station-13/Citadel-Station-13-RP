@@ -203,15 +203,35 @@
  */
 /mob/proc/query_darksight()
 	RETURN_TYPE(/list)
-	#warn inventory lmfao
+	var/list/built = darksight_modifiers.Copy()
+	built.Insert(innate_darksight(), 1)
+	return built
 	return list(innate_darksight())
 
 /**
  * updates our darksight data and pushes it to perspective
  */
-/mob/proc/update_innate_darksight()
+/mob/proc/update_darksight()
 	ensure_self_perspective()
 	self_perspective.push_darksight_stack(query_darksight())
+
+/mob/proc/sort_darksight_modifiers()
+	if(isnull(darksight_modifiers))
+		return
+	tim_sort(darksight_modifiers)
+
+/mob/proc/add_darksight_modifier(datum/darksight/modifier)
+	if(ispath(modifier))
+		modifier = cached_darksight_holder(modifier)
+	LAZYINITLIST(darksight_modifiers)
+	BINARY_INSERT(modifier, darksight_modifiers, /datum/darksight, modifier, priority, COMPARE_KEY)
+	update_innate_darksight()
+
+/mob/proc/remove_darksight_modifier(datum/darksight/modifier)
+	if(ispath(modifier))
+		modifier = cached_darksight_holder(modifier)
+	LAZYREMOVE(darksight_modifiers, modifier)
+	update_innate_darksight()
 
 //? Helpers
 

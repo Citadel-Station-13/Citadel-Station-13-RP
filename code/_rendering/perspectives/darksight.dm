@@ -1,11 +1,24 @@
+GLOBAL_LIST_EMPTY(cached_darksight_holders)
+
+/proc/cached_darksight_holder(datum/darksight/path_or_instance)
+	if(istype(path_or_instance))
+		return path_or_instance
+	if(isnull(GLOB.cached_darksight_holders[path_or_instance]))
+		GLOB.cached_darksight_holders += new path_or_instance
+	return GLOB.cached_darksight_holders[path_or_instance]
+
 /**
  * holder data for darksight
  */
 /datum/darksight
-	#warn priority, binary insert, modifier time woo yea
+	/// priority - lower is higher
+	var/priority = DARKSIGHT_PRIORITY_DEFAULT
 
 /datum/darksight/proc/push(datum/perspective/perspective)
 	return
+
+/proc/cmp_darksight_holders(datum/darksight/A, datum/darksight/B)
+	return A.priority - B.priority
 
 /**
  * baseline darksight holder - overwrites everything when applied
@@ -36,10 +49,10 @@
 
 /datum/darksight/baseline/push(datum/perspective/perspective)
 	perspective.hard_darkvision = hard_darksight
-	perspective.darkvision_alpha = soft_darkvision_alpha
-	perspective.darkvision_range = soft_darkvision_range
-	perspective.darkvision_matrix = soft_darkvision_matrix?.Copy() || construct_rgb_color_matrix()
-	perspective.darkvision_smart = soft_darkvision_smartness
+	perspective.darkvision_alpha = soft_darksight_alpha
+	perspective.darkvision_range = soft_darksight_range
+	perspective.darkvision_matrix = soft_darksight_matrix?.Copy() || construct_rgb_color_matrix()
+	perspective.darkvision_smart = soft_darksight_smartness
 	return ..()
 
 /**
@@ -54,11 +67,11 @@
 	var/disable_soft_smartness
 
 /datum/darksight/augmenting/push(datum/perspective/perspective)
-	perspective.hard_darksight = min(perspective.hard_darksight, hard_alpha)
+	perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
 	perspective.darkvision_alpha = min(perspective.darkvision_alpha, soft_alpha)
 	perspective.darkvision_range = max(perspective.darkvision_range, soft_range)
 	if(!isnull(soft_matrix))
-		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrx)
+		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrix)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
 	return ..()
@@ -75,11 +88,11 @@
 	var/disable_soft_smartness
 
 /datum/darksight/multiplicative/push(datum/perspective/perspective)
-	perspective.hard_darksight += hard_alpha
+	perspective.hard_darkvision += hard_alpha
 	perspective.darkvision_alpha += soft_alpha
 	perspective.darkvision_range += soft_range
 	if(!isnull(soft_matrix))
-		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrx)
+		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrix)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
 	return ..()
@@ -95,11 +108,11 @@
 	var/disable_soft_smartness
 
 /datum/darksight/multiplicative/push(datum/perspective/perspective)
-	perspective.hard_darksight *= hard_alpha
+	perspective.hard_darkvision *= hard_alpha
 	perspective.darkvision_alpha *= soft_alpha
 	perspective.darkvision_range *= soft_range
 	if(!isnull(soft_matrix))
-		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrx)
+		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrix)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
 	return ..()

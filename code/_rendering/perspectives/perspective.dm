@@ -404,7 +404,7 @@
 	darkvision_smart = TRUE
 	// push holders
 	for(var/datum/darksight/holder as anything in holders)
-		holder.compound_onto(src)
+		holder.push(src)
 	// update
 	update_darksight_rendering()
 
