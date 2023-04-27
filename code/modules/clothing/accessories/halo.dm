@@ -165,6 +165,6 @@
 	name = "trauma response halo"
 	icon_state = "traumaresponse"
 
-/obj/item/clothing/accessory/halo_projector/aesclepian
-	name = "aesclepian halo"
-	icon_state = "aesclepian"
+/obj/item/clothing/accessory/halo_projector/aesculapian
+	name = "aesculapian halo"
+	icon_state = "aesculapian"
