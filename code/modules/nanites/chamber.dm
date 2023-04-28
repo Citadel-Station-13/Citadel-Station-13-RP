@@ -159,11 +159,12 @@
 
 /obj/machinery/nanite_chamber/proc/try_rebuild_protean(mob/user)
 	if(!check_reconstruction_costs())
-		user.ui_feedback(SPAN_WARNING("Insufficient materials."), src)
+		user?.ui_feedback(SPAN_WARNING("Insufficient materials."), src)
 		return
 	if(isnull(protean_core?.brainmob?.mind))
-		user.ui_feedback(SPAN_WARNING("No consciousness detected."), src)
+		user?.ui_feedback(SPAN_WARNING("No consciousness detected."), src)
 		return
+	consume_reconstruction_costs()
 	operate_for(30 SECONDS, 10 SECONDS, CALLBACK(src, PROC_REF(rebuild_protean)))
 
 /obj/machinery/nanite_chamber/proc/rebuild_protean()
@@ -191,6 +192,7 @@
 	new_protean.set_species(/datum/species/protean, force = TRUE)
 	new_protean.real_name = protean_core.brainmob.mind.name
 	protean_core.brainmob.mind.transfer(new_protean)
+	QDEL_NULL(protean_core)
 	// todo: organ / species rework
 	var/obj/item/organ/external/their_chest = new_protean.organs_by_name[BP_TORSO]
 	var/datum/robolimb/nt_path = /datum/robolimb/nanotrasen
@@ -233,7 +235,7 @@
 	occupant?.forceMove(where)
 	occupant = null
 	protean_core?.forceMove(where)
-	protean_core =
+	protean_core = null
 	if(update)
 		for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
 			controller.update_static_data()

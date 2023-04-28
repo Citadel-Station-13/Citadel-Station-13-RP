@@ -156,16 +156,20 @@
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
-	humanform.forceMove(loc)
-	humanform.ckey = ckey
-	humanform.death()
+	if(!QDELETED(humanform))
+		humanform.forceMove(loc)
+		humanform.ckey = ckey
+		humanform.gib()
 	humanform = null
 	. = ..()
-	if(!QDELETED(src))
-		qdel(src)
+	ASYNC
+		if(!QDELETED(src))
+			qdel(src)
 
 /mob/living/simple_mob/protean_blob/BiologicalLife()
 	if((. = ..()))
+		return
+	if(isnull(humanform))
 		return
 	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
