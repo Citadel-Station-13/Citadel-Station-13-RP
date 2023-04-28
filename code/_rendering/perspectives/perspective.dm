@@ -108,6 +108,8 @@
 	var/darkvision_smart
 	/// is soft darkvision in global (infinite range) mode?
 	var/darkvision_unlimited
+	/// soft darkvision fov cone
+	var/darkvision_fov
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -405,6 +407,7 @@
 	darkvision_matrix = construct_rgb_color_matrix()
 	darkvision_smart = TRUE
 	darkvision_unlimited = FALSE
+	darkvision_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 	// push holders
 	for(var/datum/darksight/holder as anything in holders)
 		holder.push(src)

@@ -34,18 +34,8 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	var/list/soft_darksight_matrix
 	/// do we use smart darkvision, or dumb?
 	var/soft_darksight_smartness = TRUE
-
-/datum/darksight/baseline/New(hard, soft_range, soft_alpha, soft_matrix, soft_smart)
-	if(!isnull(hard))
-		src.hard_darksight = hard
-	if(!isnull(soft_range))
-		src.soft_darksight_range = soft_range
-	if(!isnull(soft_alpha))
-		src.soft_darksight_alpha = soft_darksight_alpha
-	if(!isnull(soft_matrix))
-		src.soft_darksight_matrix = soft_matrix
-	if(!isnull(soft_smart))
-		src.soft_darksight_smartness = soft_smart
+	/// VISION CONES LETS GOOOO - enum for angle
+	var/soft_darksight_fov = SOFT_DARKSIGHT_FOV_90
 
 /datum/darksight/baseline/push(datum/perspective/perspective)
 	perspective.hard_darkvision = hard_darksight
@@ -53,6 +43,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	perspective.darkvision_range = soft_darksight_range
 	perspective.darkvision_matrix = soft_darksight_matrix?.Copy() || construct_rgb_color_matrix()
 	perspective.darkvision_smart = soft_darksight_smartness
+	perspective.darkvision_fov = soft_darksight_fov
 	return ..()
 
 /**
@@ -65,6 +56,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	var/soft_alpha
 	var/list/soft_matrix
 	var/disable_soft_smartness
+	var/soft_darksight_fov
 
 /datum/darksight/augmenting/push(datum/perspective/perspective)
 	perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
@@ -74,6 +66,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrix)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
+	perspective.darkvision_fov = max(perspective.darkvision_fov, soft_darksight_fov)
 	return ..()
 
 /**
@@ -122,17 +115,23 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 GLOBAL_DATUM_INIT(default_darksight, /datum/darksight/baseline/default, new)
 
 /datum/darksight/baseline/default
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
 //? species
 
 /datum/darksight/baseline/species_tier_0
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
 /datum/darksight/baseline/species_tier_1
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_1
 
 /datum/darksight/baseline/species_tier_2
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_2
 
 /datum/darksight/baseline/species_tier_3
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_3
 
 /datum/darksight/baseline/species_super
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
 
 #warn impl all
