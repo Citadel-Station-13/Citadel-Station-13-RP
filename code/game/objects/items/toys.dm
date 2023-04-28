@@ -1125,6 +1125,12 @@
 	icon_state = "toadplush"
 	pokephrase = "Waaah!!"
 
+/obj/item/toy/plushie/petrock
+	name = "\improper Rock"
+	desc = "A large boulder the size of a small boulder."
+	icon_state = "petrock"
+	pokephrase = ". . ."
+
 // nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green
 	name = "green squid plushie"
