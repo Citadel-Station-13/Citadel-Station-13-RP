@@ -102,20 +102,20 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 
-/atom/movable/screen/plane_master/dumb_darkvision
-	plane = DUMB_DARKVISION_PLANE
-	render_target = DUMB_DARKVISION_RENDER_TARGET
+/atom/movable/screen/plane_master/darkvision_plate
+	plane = DARKVISION_PLATE_PLANE
+	render_target = DARKVISION_PLATE_RENDER_TARGET
 
-/atom/movable/screen/plane_master/dumb_darkvision/Initialize(mapload)
+/atom/movable/screen/plane_master/darkvision_plate/Initialize(mapload)
 	. = ..()
 	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
 	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
 	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
 
-/atom/movable/screen/plane_master/smart_darkvision
-	plane = SMART_DARKVISION_PLANE
+/atom/movable/screen/plane_master/darkvision
+	plane = _DARKVISION_PLANE
 
-/atom/movable/screen/plane_master/smart_darkvision/Initialize(mapload)
+/atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()
 	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
 	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))

@@ -217,25 +217,22 @@
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
 
 /**
- *! -- Soft Darkvision Plane - Dumb
- *? This plane does not get cut by the lighting plane, and renders additively.
- *? You render directly onto this plane with **additive blending**, usually by
- *? putting a render source on the main planes.
- *?
- *? This plane is used for oversaturation effects from overtuned NVGs.
+ *! -- Soft Darkvision Render --
+ *? Game world is projected onto this plane.
  */
-#define DUMB_DARKVISION_PLANE 11
-#define DUMB_DARKVISION_LAYER_MAIN 11
-#define DUMB_DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
+#define DARKVISION_PLATE_PLANE 11
+#define DARKVISION_PLATE_LAYER_TURFS 1
+#define DARKVISION_PLATE_LAYER_OBJS 2
+#define DARKVISION_PLATE_LAYER_MOBS 3
+#define DARKVISION_PLATE_LAYER_MAIN 4
+#define DARKVISION_PLATE_RENDER_TARGET "*DARKVISION_PLATE_PLANE"
 
 /**
- *! -- Soft Darkvision Plane - Smart
- *? This plane gets cut by the lighting plane automatically, so you don't see its effects in unlit areas.
- *? You render directly onto this plane with **additive blending**, usually by
- *? putting a render source on the main planes.
+ *! -- Soft Darkvision Plane --
+ *? This plane is what darkvision gets kicked onto.
  */
-#define SMART_DARKVISION_PLANE 12
-#define SMART_DARKVISION_LAYER_MAIN 1
+#define DARKVISION_PLANE 12
+#define DARKVISION_LAYER_MAIN 1
 
 /**
  *! -- Lighting Plane
