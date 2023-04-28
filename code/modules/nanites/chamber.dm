@@ -24,7 +24,7 @@
 
 	idle_power_usage = POWER_USAGE_NANITE_CHAMBER_IDLE
 	active_power_usage = POWER_USAGE_NANITE_CHAMBER_ACTIVE
-	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON
+	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE
 
 	/// linked computer
 	var/obj/machinery/computer/nanite_chamber/linked
@@ -167,6 +167,9 @@
 	operate_for(30 SECONDS, 10 SECONDS, CALLBACK(src, PROC_REF(rebuild_protean)))
 
 /obj/machinery/nanite_chamber/proc/rebuild_protean()
+	if(!isnull(occupant))
+		cancel_operation()
+		return
 	if(isnull(protean_core?.brainmob?.mind))
 		cancel_operation()
 		return
@@ -175,13 +178,16 @@
 	var/obj/item/organ/internal/nano/refactory/protean_refactory = locate() in held_items
 	var/obj/item/organ/internal/nano/orchestrator/protean_orchestrator = locate() in held_items
 	if(protean_refactory)
+		held_items -= protean_refactory
 		QDEL_NULL(protean_refactory)
 	if(protean_orchestrator)
+		held_items -= protean_orchestrator
 		QDEL_NULL(protean_orchestrator)
 	// do the human thing :D
 	// todo: this doesn't transfer markings / naything because brains and minds are fucking stupid kill me please
 	// todo: ORGAN AND CHARACTER SAVING REFACTOR AAAAAAAAAA
 	var/mob/living/carbon/human/new_protean = new(src)
+	occupant = new_protean
 	new_protean.set_species(/datum/species/protean, force = TRUE)
 	new_protean.real_name = protean_core.brainmob.mind.name
 	protean_core.brainmob.mind.transfer(new_protean)
@@ -207,9 +213,9 @@
 			user.action_feedback(SPAN_WARNING("[src] is locked!"), src)
 		return FALSE
 	if(open)
-		take_contents()
+		take_contents(FALSE)
 	else
-		drop_contents()
+		drop_contents(FALSE)
 	open = !open
 	density = !open
 	set_plane(open? OBJ_PLANE : MOB_PLANE)
@@ -219,7 +225,7 @@
 	update_icon()
 	return TRUE
 
-/obj/machinery/nanite_chamber/proc/drop_contents()
+/obj/machinery/nanite_chamber/proc/drop_contents(update)
 	var/atom/where = drop_location()
 	for(var/atom/movable/AM as anything in held_items)
 		AM.forceMove(where)
@@ -227,11 +233,12 @@
 	occupant?.forceMove(where)
 	occupant = null
 	protean_core?.forceMove(where)
-	protean_core = null
-	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
-		controller.update_static_data()
+	protean_core =
+	if(update)
+		for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+			controller.update_static_data()
 
-/obj/machinery/nanite_chamber/proc/take_contents()
+/obj/machinery/nanite_chamber/proc/take_contents(update)
 	if(!occupant)
 		var/mob/living/new_mob = locate() in loc
 		if(new_mob)
@@ -250,8 +257,9 @@
 			if(QDELETED(M))
 				continue
 			LAZYADD(held_items, M)
-	for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
-		controller.update_static_data()
+	if(update)
+		for(var/obj/machinery/computer/nanite_chamber/controller as anything in linked)
+			controller.update_static_data()
 
 /obj/machinery/nanite_chamber/proc/check_reconstruction_costs()
 	var/list/avail = available_materials()

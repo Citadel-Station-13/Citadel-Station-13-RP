@@ -184,6 +184,10 @@
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
 	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
+	// force eject inv
+	H.drop_inventory(TRUE, TRUE, TRUE)
+	// force eject v*re
+	H.release_vore_contents(TRUE, TRUE)
 	// force eject brain
 	var/obj/item/organ/internal/the_brain = H.internal_organs_by_name[O_BRAIN]
 	if(the_brain)
