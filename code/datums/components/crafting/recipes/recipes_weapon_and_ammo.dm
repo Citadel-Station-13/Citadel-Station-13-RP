@@ -310,17 +310,6 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
-/datum/crafting_recipe/tyrmalin_heavy
-	name = "Tyrmalin Heavy-Duty Mining Charge"
-	result = /obj/item/grenade/explosive/ied/tyrmalin/large
-	reqs = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
-				/obj/item/duct_tape_piece = 4)
-	parts = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
-				/obj/item/duct_tape_piece = 4)
-	time = 15
-	category = CAT_WEAPONRY
-	subcategory = CAT_OTHER
-
 //////////////////
 ///GUNS CRAFTING//
 //////////////////
