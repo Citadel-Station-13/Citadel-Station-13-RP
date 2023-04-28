@@ -1130,6 +1130,8 @@
 	desc = "A large boulder the size of a small boulder."
 	icon_state = "petrock"
 	pokephrase = ". . ."
+	drop_sound = 'sound/items/drop/screwdriver.ogg'
+	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
 
 // nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green
