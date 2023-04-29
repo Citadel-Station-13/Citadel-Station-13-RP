@@ -335,30 +335,37 @@
 	else
 		to_chat(src, "<span class='warning'>You're out of energy!  You need food!</span>")
 
-// Simple helper to face what you clicked on, in case it should be needed in more than one place
-/mob/proc/face_atom(var/atom/A)
-	if(!A || !x || !y || !A.x || !A.y)
+
+/// Simple helper to face what you clicked on, in case it should be needed in more than one place.
+/mob/proc/face_atom(var/atom/atom_to_face)
+	if(buckled || stat != CONSCIOUS || !atom_to_face || !x || !y || !atom_to_face.x || !atom_to_face.y)
 		return
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
-	var/dx = A.x - x
-	var/dy = A.y - y
-	if(!dx && !dy)
+
+	var/dx = atom_to_face.x - x
+	var/dy = atom_to_face.y - y
+	if(!dx && !dy) // Wall items are graphically shifted but on the floor
+		if(atom_to_face.pixel_y > 16)
+			setDir(NORTH)
+		else if(atom_to_face.pixel_y < -16)
+			setDir(SOUTH)
+		else if(atom_to_face.pixel_x > 16)
+			setDir(EAST)
+		else if(atom_to_face.pixel_x < -16)
+			setDir(WEST)
 		return
 
-	var/direction
 	if(abs(dx) < abs(dy))
 		if(dy > 0)
-			direction = NORTH
+			setDir(NORTH)
 		else
-			direction = SOUTH
+			setDir(SOUTH)
 	else
 		if(dx > 0)
-			direction = EAST
+			setDir(EAST)
 		else
-			direction = WEST
-	if(direction != dir)
-		setDir(direction)
+			setDir(WEST)
 
 /atom/movable/screen/click_catcher
 	icon = 'icons/mob/screen_gen.dmi'

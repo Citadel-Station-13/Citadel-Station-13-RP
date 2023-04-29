@@ -160,7 +160,7 @@
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
 	base_icon = "psychbed"
-	icon_dimension_y = 32
+	icon_y_dimension = 32
 
 /obj/structure/bed/psych/Initialize(mapload)
 	. = ..(mapload, "wood", "leather")
@@ -173,7 +173,7 @@
 	icon_state = "doublebed"
 	base_icon = "doublebed"
 	buckle_max_mobs = 2
-	icon_dimension_y = 32
+	icon_y_dimension = 32
 
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")

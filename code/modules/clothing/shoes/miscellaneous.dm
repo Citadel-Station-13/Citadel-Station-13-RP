@@ -254,6 +254,12 @@
 	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
 	icon_state = "antediluvian"
 
+/obj/item/clothing/shoes/antediluvian/heels
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "ante"
+	icon = 'icons/clothing/shoes/ante.dmi'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 // The things folks do for fashion...
 /obj/item/clothing/shoes/galoshes/black
 	name = "black galoshes"

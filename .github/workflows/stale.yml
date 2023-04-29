@@ -23,7 +23,7 @@ jobs:
         days-before-stale: 14
         days-before-close: 14
         stale-pr-label: 'Stale'
-        closed-pr-label: 'Closed By Stale'
+        close-pr-label: 'Closed By Stale'
         close-pr-message: 'This PR was closed due to inactivity, if you feel this was done in error, please request a maintainer remove the stale label on your PR, to reset the stale timer.'
         days-before-issue-stale: -1
         stale-issue-label: 'Cleanup Flagged'

@@ -238,7 +238,7 @@
 ////////////// Gunpod //////////////
 
 /obj/mecha/combat/fighter/gunpod
-	name = "Gunpod"
+	name = "\improper Gunpod"
 	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "gunpod"
@@ -265,7 +265,7 @@
 	ME.attach(src)
 
 /obj/mecha/combat/fighter/gunpod/recon
-	name = "Reconnaissance Gunpod"
+	name = "\improper Reconnaissance Gunpod"
 	desc = "Small mounted weapons platform capable of space and surface combat. More like a flying tank than a dedicated fightercraft. This stripped down model is used for long range reconnaissance ."
 
 /obj/mecha/combat/fighter/gunpod/recon/Initialize(mapload) //Blinky
@@ -322,7 +322,7 @@
 ////////////// Baron //////////////
 
 /obj/mecha/combat/fighter/baron
-	name = "Baron"
+	name = "\improper Baron"
 	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "baron"
@@ -349,7 +349,7 @@
 	bound_height = 64
 
 /obj/mecha/combat/fighter/baron/sec
-	name = "Baron-SV"
+	name = "\improper Baron-SV"
 	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
 
 /obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with gans
@@ -370,7 +370,7 @@
 ////////////// Scoralis //////////////
 
 /obj/mecha/combat/fighter/scoralis
-	name = "scoralis"
+	name = "\improper Scoralis"
 	desc = "An imported space fighter with integral cloaking device. Beware the power consumption, though. Not capable of ground operations."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "scoralis"
@@ -406,8 +406,8 @@
 ////////////// Allure //////////////
 
 /obj/mecha/combat/fighter/allure
-	name = "allure"
-	desc = "A fighter of Zorren design, it's blocky appearance is made up for by it's stout armor and finely decorated hull paint."
+	name = "\improper Allure"
+	desc = "A fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "allure"
 	initial_icon = "allure"
@@ -443,7 +443,7 @@
 ////////////// Pinnace //////////////
 
 /obj/mecha/combat/fighter/pinnace
-	name = "pinnace"
+	name = "\improper Pinnace"
 	desc = "A cramped ship's boat, capable of atmospheric and space flight. Not capable of mounting traditional weapons. Capable of fitting one pilot and one passenger."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "pinnace"
@@ -485,7 +485,7 @@
 ////////////// Cludge //////////////
 
 /obj/mecha/combat/fighter/cludge
-	name = "Cludge"
+	name = "\improper Cludge"
 	desc = "A heater, nozzle, and fuel tank strapped together. There are exposed wires strewn about it."
 	icon = 'icons/mecha/fighters64x64.dmi'
 	icon_state = "cludge"

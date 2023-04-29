@@ -64,6 +64,6 @@
 		: FALSE)
 #define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
 
-// trait registration defines
-// due to how defines work, this goes AFTER the trait define!
+/// trait registration defines
+/// due to how defines work, this goes AFTER the trait define!
 #define DATUM_TRAIT(TYPE, TRAIT)

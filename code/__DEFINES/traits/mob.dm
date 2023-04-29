@@ -54,3 +54,7 @@ DATUM_TRAIT(/mob, TRAIT_MIMING)
 /// Tracks if we're fishing right now
 #define TRAIT_MOB_IS_FISHING "mob_fishing"
 DATUM_TRAIT(/mob, TRAIT_MOB_IS_FISHING)
+
+/// This mob doesn't count as looking at you if you can only act while unobserved
+#define TRAIT_UNOBSERVANT "trait_unobservant"
+DATUM_TRAIT(/mob, TRAIT_UNOBSERVANT)

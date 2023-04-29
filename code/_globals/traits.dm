@@ -99,6 +99,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_UNSTABLE" = TRAIT_UNSTABLE,
 		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED,
 		*/
+		"TRAIT_UNOBSERVANT" = TRAIT_UNOBSERVANT,
 	),
 	/*
 	/obj/item/bodypart = list(

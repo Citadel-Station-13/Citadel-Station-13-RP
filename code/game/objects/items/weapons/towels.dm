@@ -14,6 +14,7 @@
 
 /obj/item/towel/equipped(var/M, var/slot)
 	..()
+	LAZYINITLIST(sprite_sheets)
 	switch(slot)
 		if(SLOT_ID_HEAD)
 			sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi')

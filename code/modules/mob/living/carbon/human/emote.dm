@@ -359,10 +359,6 @@
 			use_sound = pick('sound/voice/ara_ara1.ogg','sound/voice/ara_ara2.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 
-		if("amoan")
-			message = "moans in a rather lewd manner"
-			playsound(src.loc, 'sound/voice/anime_moan.ogg', 50, 0)
-
 		if("uwu")
 			message = "lets out a devious noise"
 			playsound(src.loc, 'sound/voice/uwu.ogg', 50, 0)
@@ -1018,13 +1014,13 @@
 
 			if (die_number && bonus_number && dc_number)
 				if (die_total >= dc_number)
-					message = SPAN_GREEN("tries something. They succed, beating a difficulty check of [dc_number] with a roll of [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!")
+					message = SPAN_GREEN("tries something. They succeed, beating a difficulty check of [dc_number] with a roll of [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!")
 				if (die_total < dc_number)
 					message = SPAN_RED("tries something. They fail, losing to a difficulty check of [dc_number] with a roll of [die_result] + [bonus_number] for a total of [die_total] out of a possible [die_number + bonus_number]!")
 
 			else if (die_number && dc_number)
 				if (die_result >= dc_number)
-					message = SPAN_GREEN("tries something. They succed, beating a difficulty check of [dc_number] with a roll of [die_total] out of [die_number]!")
+					message = SPAN_GREEN("tries something. They succeed, beating a difficulty check of [dc_number] with a roll of [die_total] out of [die_number]!")
 				if (die_result < dc_number)
 					message = SPAN_RED("tries something. They fail, losing to a difficulty check of [dc_number] with a roll of [die_total] out of [die_number]!")
 
@@ -1140,7 +1136,7 @@
 			message = "lets out a nya."
 			m_type = 2
 			var/use_sound
-			use_sound = pick('sound/voice/nya.ogg','sound/voice/nya1.ogg','sound/voice/nya2.ogg')
+			use_sound = pick('sound/voice/nya.ogg')
 			playsound(src.loc, use_sound, 50, 0)
 		if ("nyaha")
 			if(!spam_flag)

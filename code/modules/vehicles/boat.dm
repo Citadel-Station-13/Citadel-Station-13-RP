@@ -6,8 +6,8 @@
 	integrity = 100
 	integrity_max = 100
 	base_pixel_x = -2
-	icon_dimension_x = 36
-	icon_dimension_y = 32
+	icon_x_dimension = 36
+	icon_y_dimension = 32
 	buckle_max_mobs = 2
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small
 	var/datum/material/material = null
