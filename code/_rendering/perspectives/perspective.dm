@@ -110,6 +110,8 @@
 	var/darkvision_unlimited
 	/// soft darkvision fov cone
 	var/darkvision_fov
+	//  todo: legacy: stuff like mesons that require hard darkvision use this to cap see_in_dark
+	var/darkvision_legacy_throttle
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -348,7 +350,7 @@
 //? Abstraction - see_in_dark
 
 /datum/perspective/proc/update_see_in_dark()
-	var/wanted = INFINITY // show everything
+	var/wanted = min(darkvision_legacy_throttle, INFINITY) // show everything
 	if(wanted != see_in_dark)
 		see_in_dark = wanted
 		for(var/mob/M as anything in mobs)
@@ -407,6 +409,7 @@
 	darkvision_matrix = construct_rgb_color_matrix()
 	darkvision_smart = TRUE
 	darkvision_unlimited = FALSE
+	darkvision_legacy_throttle = INFINITY
 	darkvision_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 	// push holders
 	for(var/datum/darksight/holder as anything in holders)
@@ -416,6 +419,7 @@
 	update_darksight_rendering()
 
 /datum/perspective/proc/update_darksight_rendering()
+	update_see_in_dark()
 	#warn impl
 
 /datum/perspective/proc/check_hard_darkvision()

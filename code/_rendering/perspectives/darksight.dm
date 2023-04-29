@@ -36,6 +36,8 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	var/soft_darksight_smartness = TRUE
 	/// VISION CONES LETS GOOOO - enum for angle
 	var/soft_darksight_fov = SOFT_DARKSIGHT_FOV_90
+	//  todo: this makes mesons / matscanners not be op by limiting see_in_dark while it's active.
+	var/legacy_throttle = INFINITY
 
 /datum/darksight/baseline/push(datum/perspective/perspective)
 	perspective.hard_darkvision = hard_darksight
@@ -44,6 +46,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	perspective.darkvision_matrix = soft_darksight_matrix?.Copy() || construct_rgb_color_matrix()
 	perspective.darkvision_smart = soft_darksight_smartness
 	perspective.darkvision_fov = soft_darksight_fov
+	perspective.darkvision_legacy_throttle = legacy_throttle
 	return ..()
 
 /**
@@ -57,6 +60,8 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	var/list/soft_matrix
 	var/disable_soft_smartness
 	var/soft_darksight_fov
+	//  todo: this makes mesons / matscanners not be op by limiting see_in_dark while it's active.
+	var/legacy_throttle = INFINITY
 
 /datum/darksight/augmenting/push(datum/perspective/perspective)
 	perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
@@ -67,6 +72,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
 	perspective.darkvision_fov = max(perspective.darkvision_fov, soft_darksight_fov)
+	perspective.darkvision_legacy_throttle = min(perspective.darkvision_legacy_throttle, legacy_throttle)
 	return ..()
 
 /**
@@ -141,3 +147,9 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/darksight/baseline/silicons, new)
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
 
 #warn impl all
+
+//? misc
+
+/datum/darksight/augmenting/legacy_ghetto_nvgs
+	hard_alpha = 140
+	legacy_throttle = 3

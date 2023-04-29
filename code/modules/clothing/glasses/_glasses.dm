@@ -16,17 +16,29 @@ BLIND     // can't see anything
 	icon = 'icons/obj/clothing/glasses.dmi'
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_EYES
-	plane_slots = list(SLOT_ID_GLASSES)
+	active_slots = list(SLOT_ID_GLASSES)
 	var/vision_flags = 0
 	var/prescription = 0
 	var/toggleable = 0
-	var/off_state = "degoggles"
+	var/inactive_icon_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
 	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
+
+	//? Glasses - Toggling
+	/// Uses toggle system
+	var/toggleable = FALSE
+	/// On?
+	var/active = TRUE
+	/// icon state when off
+	var/inactive_icon_state
+	/// Darksight modifier when on
+	var/datum/darksight/active_darksight_modifier
+
+	#warn impl all
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	. = ..()
@@ -35,7 +47,7 @@ BLIND     // can't see anything
 	if(toggleable)
 		if(active)
 			active = 0
-			icon_state = off_state
+			icon_state = inactive_icon_state
 			user.update_inv_glasses()
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
@@ -157,7 +169,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	vision_flags = SEE_TURFS
 	body_cover_flags = EYES //cit change
-	hard_darkvision = 0
+	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/meson/Initialize(mapload)
 	. = ..()
@@ -171,7 +183,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/meson/aviator
 	name = "engineering aviators"
 	icon_state = "aviator_eng"
-	off_state = "aviator"
+	inactive_icon_state = "aviator"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	action_button_name = "Toggle HUD"
 	activation_sound = 'sound/effects/pop.ogg'
@@ -185,7 +197,7 @@ BLIND     // can't see anything
 	name = "medical HUD aviators"
 	desc = "Modified aviator glasses with a toggled health HUD."
 	icon_state = "aviator_med"
-	off_state = "aviator"
+	inactive_icon_state = "aviator"
 	action_button_name = "Toggle Mode"
 	toggleable = 1
 	activation_sound = 'sound/effects/pop.ogg'
@@ -227,7 +239,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	body_cover_flags = EYES // Cit change
-	off_state = "denight"
+	inactive_icon_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
 	hard_darkvision = 0
 
@@ -304,7 +316,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
 	body_cover_flags = EYES //cit change
-	hard_darkvision = 0
+	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/material/Initialize(mapload)
 	. = ..()
@@ -323,11 +335,11 @@ BLIND     // can't see anything
 	darkness_view = 5
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
-	off_state = "denight"
+	inactive_icon_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
-	hard_darkvision = 0
+	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/graviton/Initialize(mapload)
 	. = ..()
@@ -546,7 +558,7 @@ BLIND     // can't see anything
 	name = "security HUD aviators"
 	desc = "Modified aviator glasses that can be switch between HUD and flash protection modes."
 	icon_state = "aviator_sec"
-	off_state = "aviator"
+	inactive_icon_state = "aviator"
 	action_button_name = "Toggle Mode"
 	var/on = 1
 	toggleable = 1
@@ -578,7 +590,7 @@ BLIND     // can't see anything
 	if(on)
 		icon_state = initial(icon_state)
 	else
-		icon_state = off_state
+		icon_state = inactive_icon_state
 
 /obj/item/clothing/glasses/sunglasses/sechud/aviator/prescription
 	name = "prescription security HUD aviators"
@@ -603,7 +615,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
-	hard_darkvision = 0
+	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
 
@@ -713,7 +725,7 @@ BLIND     // can't see anything
 	name = "augmented shades"
 	desc = "A pair of retractable sunglasses lenses."
 	icon_state = "jensenshades"
-	off_state = "jensenshades_off"
+	inactive_icon_state = "jensenshades_off"
 	toggleable = 1
 	action_button_name = "Toggle Out/In"
 
@@ -838,7 +850,7 @@ BLIND     // can't see anything
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
-	off_state = "tajblind"
+	inactive_icon_state = "tajblind"
 	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/material/prescription/tajblind
@@ -848,7 +860,7 @@ BLIND     // can't see anything
 	icon_override = 'icons/mob/clothing/eyes.dmi'
 	icon_state = "tajblind_meson"
 	item_state = "tajblind_meson"
-	off_state = "tajblind"
+	inactive_icon_state = "tajblind"
 	body_cover_flags = EYES
 
 /obj/item/clothing/glasses/welding/laconic

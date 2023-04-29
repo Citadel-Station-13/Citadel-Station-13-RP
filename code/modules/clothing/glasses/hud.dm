@@ -62,7 +62,7 @@
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
 	enables_planes = list(/atom/movable/screen/plane_master/augmented)
-	plane_slots = list(SLOT_ID_GLASSES)
+	active_slots = list(SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -202,7 +202,7 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "projector"
-	off_state = "projector-off"
+	inactive_icon_state = "projector-off"
 	body_cover_flags = 0
 	toggleable = 1
 	prescription = 1
@@ -226,7 +226,7 @@
 	if(toggleable)
 		if(active)
 			active = 0
-			icon_state = off_state
+			icon_state = inactive_icon_state
 			item_state = "[initial(item_state)]-off"
 			usr.update_inv_glasses()
 			to_chat(usr, "You deactivate the retinal projector on the [src].")
@@ -291,7 +291,7 @@
 	name = "meson eyeHUD"
 	desc = "A eyepatch equipped with a scanning lens and mounted retinal projector. For when you take style over smarts."
 	icon_state = "mesonpatch"
-	off_state = "eyepatch"
+	inactive_icon_state = "eyepatch"
 	body_cover_flags = 0
 	toggleable = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
@@ -313,7 +313,7 @@
 	if(toggleable)
 		if(active)
 			active = 0
-			icon_state = off_state
+			icon_state = inactive_icon_state
 			item_state = "[initial(item_state)]-off"
 			usr.update_inv_glasses()
 			to_chat(usr, "You deactivate the retinal projector on the [src].")
