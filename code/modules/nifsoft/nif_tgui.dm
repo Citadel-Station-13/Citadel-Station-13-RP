@@ -76,7 +76,7 @@
 	icon_state = "nif"
 	screen_loc = ui_smallquad
 
-/atom/movable/screen/nif_menu/Click(location, control, params)
+/atom/movable/screen/nif/Click(location, control, params)
 	..()
 	var/datum/component/nif_menu/N = usr.GetComponent(/datum/component/nif_menu)
 	N?.nif_menu_click(usr)
