@@ -18,8 +18,6 @@ BLIND     // can't see anything
 	slot_flags = SLOT_EYES
 	plane_slots = list(SLOT_ID_GLASSES)
 	var/vision_flags = 0
-	var/darkness_view = 0//Base human is 2
-	var/see_invisible = -1
 	var/prescription = 0
 	var/toggleable = 0
 	var/off_state = "degoggles"

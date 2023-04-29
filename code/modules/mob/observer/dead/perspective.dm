@@ -1,6 +1,4 @@
 /mob/observer/dead/make_perspective()
-	assert_innate_darksight()
-	darksight_innate.hard_darksight = seedarkness? 255 : 0
 	. = ..()
 	self_perspective.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
 	self_perspective.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
@@ -9,12 +7,24 @@
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /mob/observer/dead/proc/update_ghost_sight()
-	assert_innate_darksight()
-	var/old = darksight_innate.hard_darksight
-	darksight_innate.hard_darksight = seedarkness? 255 : 0
-	if(old != darksight_innate.hard_darksight)
-		update_darksight()
 	if(ghostvision)
 		self_perspective.set_plane_visible(/atom/movable/screen/plane_master/observer, INNATE_TRAIT)
 	else
 		self_perspective.unset_plane_visible(/atom/movable/screen/plane_master/observer, INNATE_TRAIT)
+
+/datum/darksight/augmenting/observer
+	hard_alpha = 0
+
+/mob/observer/dead/verb/toggle_darkness()
+	set name = "Toggle Darkness"
+	set desc = "Toggles your ability to see lighting overlays, and the darkness they create."
+	set category = "Ghost"
+
+	var/now
+	if(has_darksight_modifier(/datum/darksight/augmenting/observer))
+		now = FALSE
+		remove_darksight_modifier(/datum/darksight/augmenting/observer)
+	else
+		now = TRUE
+		add_darksight_modifier(/datum/darksight/augmenting/observer)
+	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")

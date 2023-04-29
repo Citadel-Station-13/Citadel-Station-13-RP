@@ -46,7 +46,6 @@
 	icon_state = "jensenshades"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	vision_flags = SEE_MOBS
-	see_invisible = SEE_INVISIBLE_NOLIGHTING
 
 //Port of _vr files.
 /obj/item/clothing/glasses/omnihud
@@ -161,7 +160,6 @@
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
 	enables_planes = list(/atom/movable/screen/plane_master/augmented)
-
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()

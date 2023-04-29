@@ -1,3 +1,6 @@
+/datum/darksight/baseline/demon
+	hard_darksight = 0
+
 /mob/living/simple_mob/vore/demon
 	name = "Rift Walker"
 	desc = "A large bipedal creature, body a mix of dark fur and scales. Marks on the creatures body pulse slowly with red light"
@@ -13,8 +16,7 @@
 	health = 30
 	movement_cooldown = 0
 
-	see_in_dark = 10
-	seedarkness = FALSE
+	darksight_innate = /datum/darksight/baseline/demon
 
 	min_oxy = 0
 	max_oxy = 0

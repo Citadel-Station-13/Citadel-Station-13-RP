@@ -6,6 +6,9 @@
 	genomecost = 0
 	verbpath = /mob/proc/changeling_darksight
 
+/datum/darksight/augmenting/changeling
+	hard_alpha = 0
+
 /mob/proc/changeling_darksight()
 	set category = "Changeling"
 	set name = "Toggle Darkvision"
@@ -15,12 +18,13 @@
 	if(!changeling)
 		return 0
 
-	if(istype(src,/mob/living/carbon))
-		var/mob/living/carbon/C = src
-		C.seedarkness = !C.seedarkness
-		if(C.seedarkness)
-			to_chat(C, "<span class='notice'>We allow the shadows to return.</span>")
-		else
-			to_chat(C, "<span class='notice'>We no longer need light to see.</span>")
+	var/now
+	if(has_darksight_modifier(/datum/darksight/augmenting/observer))
+		now = FALSE
+		remove_darksight_modifier(/datum/darksight/augmenting/observer)
+	else
+		now = TRUE
+		add_darksight_modifier(/datum/darksigh/taugmenting/observer)
+	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")
 
 	return 0

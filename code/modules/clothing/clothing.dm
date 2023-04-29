@@ -19,7 +19,6 @@
 	var/tint = TINT_NONE
 	// todo: probably refactor these two
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
-	var/hard_darkvision // hard darkvision, same as enables planes, respects plane slots
 	var/list/plane_slots		//But only if it's equipped into this specific slot
 
 	// todo: kill this stupid shit lmao
@@ -33,7 +32,6 @@
 	var/ear_protection = 0
 	var/blood_sprite_state
 
-	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
 	/// is considered wizard garb?

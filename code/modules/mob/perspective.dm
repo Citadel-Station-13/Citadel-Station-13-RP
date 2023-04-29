@@ -222,6 +222,7 @@
 /mob/proc/add_darksight_modifier(datum/darksight/modifier)
 	if(ispath(modifier))
 		modifier = cached_darksight_holder(modifier)
+	ASSERT(!(modifier in darksight_modifiers))
 	LAZYINITLIST(darksight_modifiers)
 	BINARY_INSERT(modifier, darksight_modifiers, /datum/darksight, modifier, priority, COMPARE_KEY)
 	update_darksight()
@@ -231,6 +232,15 @@
 		modifier = cached_darksight_holder(modifier)
 	LAZYREMOVE(darksight_modifiers, modifier)
 	update_darksight()
+
+/**
+ * returns if we have this exact modifier
+ * usually you use this with paths / cached ones.
+ */
+/mob/proc/has_darksight_modifier(datum/darksight/modifier)
+	if(ispath(modifier))
+		modifier = cached_darksight_holder(modifier)
+	return modifier in darksight_modifiers
 
 //? Helpers
 

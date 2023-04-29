@@ -1563,22 +1563,11 @@
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
 	. = FALSE
 	if(G && G.active)
-		if(G.darkness_view)
-			#warn ugh
-			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + G.darkness_view)
-			. = TRUE
 		if(G.overlay && client)
 			client.screen |= G.overlay
 		if(G.vision_flags)
 			AddSightSelf(G.vision_flags)
 			. = TRUE
-		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
-			SetSeeInvisibleSelf(SEE_INVISIBLE_MINIMUM)
-		if(G.see_invisible >= 0)
-			SetSeeInvisibleSelf(G.see_invisible)
-			. = TRUE
-		else if(!druggy && !seer)
-			SetSeeInvisibleSelf(see_invisible_default)
 
 /mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
 	. = FALSE
