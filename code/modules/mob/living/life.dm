@@ -162,17 +162,12 @@
 
 /mob/living/proc/update_sight()
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
-	if(!seedarkness)
-		SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
-	else
-		SetSeeInvisibleSelf(initial(see_invisible))
 
 	sight = initial(sight)
 
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.vision_flags))
 			AddSightSelf(M.vision_flags)
-
 	return
 
 /mob/living/proc/handle_hud_icons()

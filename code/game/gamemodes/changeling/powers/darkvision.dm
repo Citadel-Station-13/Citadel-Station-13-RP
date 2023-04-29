@@ -19,12 +19,12 @@
 		return 0
 
 	var/now
-	if(has_darksight_modifier(/datum/darksight/augmenting/observer))
+	if(has_darksight_modifier(/datum/darksight/augmenting/changeling))
 		now = FALSE
-		remove_darksight_modifier(/datum/darksight/augmenting/observer)
+		remove_darksight_modifier(/datum/darksight/augmenting/changeling)
 	else
 		now = TRUE
-		add_darksight_modifier(/datum/darksigh/taugmenting/observer)
+		add_darksight_modifier(/datum/darksight/augmenting/changeling)
 	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")
 
 	return 0

@@ -176,8 +176,6 @@
 		var/obj/item/clothing/O = item_by_slot(slot)
 		if(istype(O) && O.enables_planes && (slot in O.active_slots))
 			compiled_vis |= O.enables_planes
-		if(!isnull(O.hard_darkvision))
-			hard_darkvision = min(hard_darkvision, O.hard_darkvision)
 
 	// Check to see if we have a rig (ugh, blame rigs, desnowflake this).
 	var/obj/item/rig/rig = back
@@ -186,17 +184,11 @@
 			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
 				var/obj/item/clothing/glasses/V = rig.visor.vision.glasses
 				compiled_vis |= V.enables_planes
-				if(!isnull(V.hard_darkvision))
-					hard_darkvision = min(hard_darkvision, V.hard_darkvision)
 
 	// NIF Support.
 	if(nif)
 		compiled_vis |= nif.planes_visible()
 		hard_darkvision = min(hard_darkvision, isnull(nif.hard_darkvision)? 255 : nif.hard_darkvision)
-
-	self_perspective.unset_hard_darkvision(source = CLOTHING_TRAIT)
-	if(hard_darkvision < 255)
-		self_perspective.set_hard_darkvision(hard_darkvision, CLOTHING_TRAIT)
 
 	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
 	for(var/vis in compiled_vis)
