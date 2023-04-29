@@ -224,9 +224,9 @@
 
 	for(var/obj/item/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/stock_parts/micro_laser))
-			harvest_speed += P.rating * 2
+			harvest_speed += P.rating * 3
 		if(istype(P, /obj/item/stock_parts/matter_bin))
-			capacity = 200 * P.rating
+			capacity = 300 * P.rating
 		if(istype(P, /obj/item/stock_parts/capacitor))
 			charge_use -= 5 * P.rating
 	charge_use = max(charge_use, 0)
@@ -263,17 +263,13 @@
 	need_update_field = 0
 
 	var/turf/T = get_turf(src)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 
-	var/tx = T.x - 7
-	var/ty = T.y - 7
-	var/turf/simulated/mine_turf
-	for(var/iy = 0,iy < 15, iy++)
-		for(var/ix = 0, ix < 15, ix++)
-			mine_turf = locate(tx + ix, ty + iy, T.z)
-			if(!istype(mine_turf, /turf/space/))
-				if(mine_turf && mine_turf.has_resources)
-					resource_field += mine_turf
+	for(var/turf/simulated/mining_turf in RANGE_TURFS(7, T))
+		if(!mining_turf.has_resources)
+			continue
+		resource_field += mining_turf
 
 	if(!resource_field.len)
 		system_error("Resources depleted.")
