@@ -170,7 +170,6 @@
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_economy.dm"
 #include "code\__DEFINES\dcs\signals\signals_item\signals_item_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_appearance.dm"
-#include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_carbon.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_combat.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_inventory.dm"
 #include "code\__DEFINES\dcs\signals\signals_mob\signals_mob_main.dm"
