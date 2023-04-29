@@ -18,8 +18,6 @@
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "passive vent"
 
-	var/build_killswitch = 1
-
 /obj/machinery/atmospherics/pipe/vent/init_dir()
 	initialize_directions = dir
 
@@ -28,14 +26,7 @@
 	volume = 1000
 
 /obj/machinery/atmospherics/pipe/vent/process(delta_time)
-	if(!parent)
-		if(build_killswitch <= 0)
-			. = PROCESS_KILL
-		else
-			build_killswitch--
-		..()
-		return
-	else
+	if(parent)
 		parent.mingle_with_turf(loc, volume)
 
 /obj/machinery/atmospherics/pipe/vent/Destroy()
