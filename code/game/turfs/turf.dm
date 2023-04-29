@@ -316,6 +316,8 @@
 	if(!ismob(O))
 		return
 	var/mob/M = O
+	if(user == M && IS_STANDING(user))
+		return
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
