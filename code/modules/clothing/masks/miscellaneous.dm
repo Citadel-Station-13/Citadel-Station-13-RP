@@ -205,7 +205,7 @@
 	desc = "A fine black bandana with nanotech lining. Can be worn on the head or face."
 	w_class = ITEMSIZE_TINY
 	inv_hide_flags = HIDEFACE
-	slot_flags = SLOT_MASK
+	slot_flags = SLOT_MASK|SLOT_HEAD
 	body_cover_flags = FACE
 	icon_state = "bandblack"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
@@ -215,11 +215,12 @@
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You fold the bandana into a cap.")
-		slot_flags = SLOT_HEAD
+		body_cover_flags = HEAD
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You untie the bandana and spread it out.")
-		slot_flags = "initial(slot_flags)"
+		slot_flags = "[initial(slot_flags)]"
+		body_cover_flags = "[initial(body_cover_flags)]"
 	update_worn_icon()	//so our mob-overlays update
 
 /*
