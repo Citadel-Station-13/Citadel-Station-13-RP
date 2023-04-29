@@ -14,5 +14,6 @@
 		"phoron" = 8,
 		"lead" = 3,
 		"verdantium" = 1,
+		"copper" = 4,
 	)
 	return pickweight(probabilities)
