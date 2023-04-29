@@ -28,26 +28,16 @@
 		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
 		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal
+		MAT_CARBON = /obj/item/ore/coal,
+		MAT_MARBLE = /obj/item/ore/marble,
+		MAT_LEAD = /obj/item/ore/lead,
 		)
 
 	//Upgrades
 	var/harvest_speed
 	var/capacity
 	var/charge_use
-	var/exotic_drilling
 	var/obj/item/cell/cell = null
-
-	// Found with an advanced laser. exotic_drilling >= 1
-	var/list/ore_types_uncommon = list(
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead
-		)
-
-	// Found with an ultra laser. exotic_drilling >= 2
-	var/list/ore_types_rare = list(
-		MAT_VERDANTIUM = /obj/item/ore/verdantium
-		)
 
 	//Flags
 	var/need_update_field = 0
@@ -123,7 +113,8 @@
 			if(contents.len + total_harvest >= capacity)
 				total_harvest = capacity - contents.len
 
-			if(total_harvest <= 0) break
+			if(total_harvest <= 0)
+				break
 			if(harvesting.resources[metal])
 
 				found_resource  = 1
@@ -229,23 +220,16 @@
 	..()
 	harvest_speed = 0
 	capacity = 0
-	charge_use = 50
+	charge_use = 25
 
 	for(var/obj/item/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/stock_parts/micro_laser))
-			harvest_speed = P.rating
-			exotic_drilling = P.rating - 1
-			if(exotic_drilling >= 1)
-				ore_types |= ore_types_uncommon
-				if(exotic_drilling >= 2)
-					ore_types |= ore_types_rare
-			else
-				ore_types -= ore_types_uncommon
-				ore_types -= ore_types_rare
+			harvest_speed += P.rating * 2
 		if(istype(P, /obj/item/stock_parts/matter_bin))
 			capacity = 200 * P.rating
 		if(istype(P, /obj/item/stock_parts/capacitor))
-			charge_use -= 10 * P.rating
+			charge_use -= 5 * P.rating
+	charge_use = max(charge_use, 0)
 	cell = locate(/obj/item/cell) in component_parts
 
 /obj/machinery/mining/drill/proc/check_supports()
@@ -281,11 +265,11 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T)) return
 
-	var/tx = T.x - 2
-	var/ty = T.y - 2
+	var/tx = T.x - 7
+	var/ty = T.y - 7
 	var/turf/simulated/mine_turf
-	for(var/iy = 0,iy < 5, iy++)
-		for(var/ix = 0, ix < 5, ix++)
+	for(var/iy = 0,iy < 15, iy++)
+		for(var/ix = 0, ix < 15, ix++)
 			mine_turf = locate(tx + ix, ty + iy, T.z)
 			if(!istype(mine_turf, /turf/space/))
 				if(mine_turf && mine_turf.has_resources)
