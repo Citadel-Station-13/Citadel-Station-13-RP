@@ -176,12 +176,33 @@
 				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
-		if(I.item_flags & ITEM_NO_LATHE_DECONSTRUCT)
-			return ..()
+		if(!(I.item_flags & ITEM_EASY_LATHE_DECONSTRUCT))
+			if(!insert_item(I, user))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 		if(recycle_item(I, user))
 			return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
+
+/obj/machinery/lathe/proc/insert_item(obj/item/I, mob/user)
+	if(LAZYLEN(stored_items) >= items_max)
+		user.action_feedback(SPAN_WARNING("[src] can't hold [items_max && "more"] items for machining."), src)
+		return FALSE
+	if(!isnull(user))
+		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))
+			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
+			return FALSE
+		user.action_feedback(SPAN_NOTICE("You insert [I] into [src].]"), src)
+	I.forceMove(src)
+	LAZYADD(stored_items, I)
+	ui_controller?.ui_ingredients_update()
+	return TRUE
+
+/obj/machinery/lathe/proc/eject_item(obj/item/I)
+	I.forceMove(drop_location())
+	LAZYREMOVE(stored_items, I)
+	ui_controller?.ui_ingredients_update()
 
 /obj/machinery/lathe/proc/recycle_item(obj/item/I, mob/user, efficiency_multiplier = 1)
 	efficiency_multiplier *= recycle_efficiency
@@ -316,12 +337,14 @@
 		return
 	if(!check_queue_head(silent))
 		return
+	queue_active = TRUE
 	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
 
 /obj/machinery/lathe/proc/stop_printing()
 	if(!queue_active)
 		return
+	queue_active = FALSE
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 

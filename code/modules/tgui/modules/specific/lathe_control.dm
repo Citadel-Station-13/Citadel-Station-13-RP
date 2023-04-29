@@ -51,10 +51,10 @@
 			#warn impl
 			return TRUE
 		if("start")
-			#warn impl
+			lathe.start_printing()
 			return TRUE
 		if("stop")
-			#warn impl
+			lathe.stop_printing()
 			return TRUE
 		if("ejectMaterial")
 			var/id = params["id"]
@@ -63,19 +63,14 @@
 			return TRUE
 		if("disposeReagent")
 			var/amount = text2num(params["amount"]) || INFINITY
-			#warn impl
-			ui_reagents_update()
-			return TRUE
-		if("disposeReagents")
-			#warn impl
+			lathe.reagents.remove_reagent(params["id"], amount)
 			ui_reagents_update()
 			return TRUE
 		if("ejectItem")
 			var/obj/item/I = locate(params["ref"]) in lathe.stored_items
 			if(isnull(I))
-				ui_ingredients_update()
 				return TRUE
-			#warn impl
+			lathe.eject_item(I)
 			return TRUE
 
 /datum/tgui_module/lathe_control/ui_assets(mob/user)
