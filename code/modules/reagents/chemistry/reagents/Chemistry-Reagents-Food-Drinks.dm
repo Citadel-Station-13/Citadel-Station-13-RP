@@ -2181,7 +2181,7 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/ethanol/rootbeerfloat
+/datum/reagent/drink/soda/rootbeerfloat
 	name = "Root Beer Float"
 	id = "rootbeerfloat"
 	description = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
