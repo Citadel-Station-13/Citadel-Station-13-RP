@@ -1481,13 +1481,13 @@
 						break
 
 	else //We aren't dead
-		SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
-
 		if(MUTATION_XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-			SetSeeInDarkSelf(8)
-			if(!druggy)
-				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+			// todo: legacy, remove
+			self_perspective.hard_darkvision = 0
+			self_perspective.update_darksight_rendering()
+		else
+			self_perspective.update_hard_darkvision()
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1497,14 +1497,7 @@
 				see_invisible = see_invisible_default
 				seer = 0
 
-		if(!seedarkness)
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(8)
-			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
-		else
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+		SetSightSelf(species.get_vision_flags(src))
 
 		var/glasses_processed = 0
 		var/obj/item/rig/rig = back
@@ -1518,9 +1511,12 @@
 
 		if(MUTATION_XRAY in mutations)
 			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-			SetSeeInDarkSelf(8)
-			if(!druggy)
-				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+			RemoveSightSelf(SEE_BLACKNESS)
+			// todo: legacy, remove
+			self_perspective.hard_darkvision = 0
+			self_perspective.update_darksight_rendering()
+		else
+			self_perspective.update_hard_darkvision()
 
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.vision_flags))
@@ -1537,8 +1533,6 @@
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
 			AddSightSelf(species.get_vision_flags(src))
-		if(!seer && !glasses_processed && seedarkness)
-			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
 			var/viewflags = machine.check_eye(src, TRUE)

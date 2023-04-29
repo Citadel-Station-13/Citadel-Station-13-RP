@@ -143,9 +143,11 @@
 		fullbright = TRUE
 
 	if(fullbright)
-		self_perspective.set_hard_darkvision(0, INNATE_TRAIT)
+		// todo: legacy, remove
+		self_perspective.hard_darkvision = 0
+		self_perspective.update_darksight_rendering()
 	else
-		self_perspective.unset_hard_darkvision(source = INNATE_TRAIT)
+		self_perspective.update_hard_darkvision()
 
 	if (src.healths)
 		if (src.stat != 2)
