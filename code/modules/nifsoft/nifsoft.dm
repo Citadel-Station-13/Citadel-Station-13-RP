@@ -54,7 +54,8 @@
 	var/combat_flags = 0
 	var/other_flags = 0
 
-	var/vision_flags_mob = 0
+	var/vision_flags_mob = NONE
+	var/vision_flags_mob_remove = NONE
 	var/darkness_view = 0
 
 	/// List of vision planes this nifsoft enables when active

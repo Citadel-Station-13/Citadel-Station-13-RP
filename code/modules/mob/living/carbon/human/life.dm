@@ -1567,6 +1567,7 @@
 			client.screen |= G.overlay
 		if(G.vision_flags)
 			AddSightSelf(G.vision_flags)
+			RemoveSightSelf(G.vision_flags_remove)
 			. = TRUE
 
 /mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
@@ -1578,6 +1579,7 @@
 			. = TRUE
 		if(NS.vision_flags_mob)
 			AddSightSelf(NS.vision_flags_mob)
+			RemoveSightSelf(NS.vision_flags_mob_remove)
 			. = TRUE
 
 /mob/living/carbon/human/handle_random_events()

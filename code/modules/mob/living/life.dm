@@ -155,9 +155,7 @@
 	if(!client)
 		return FALSE
 	..()
-
 	handle_hud_icons()
-
 	return TRUE
 
 /mob/living/proc/update_sight()
@@ -168,7 +166,6 @@
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.vision_flags))
 			AddSightSelf(M.vision_flags)
-	return
 
 /mob/living/proc/handle_hud_icons()
 	handle_hud_icons_health()

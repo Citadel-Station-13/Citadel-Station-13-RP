@@ -130,6 +130,7 @@
 	hard_darkvision = 0
 	vision_flags = (NIF_V_MESONS)
 	vision_flags_mob = SEE_TURFS
+	vision_flags_mob_remove = SEE_BLACKNESS
 	incompatible_with = list(NIF_MATERIAL,NIF_THERMALS,NIF_NIGHTVIS)
 	vision_exclusive = TRUE
 
@@ -144,6 +145,7 @@
 	hard_darkvision = 0
 	vision_flags = (NIF_V_MATERIAL)
 	vision_flags_mob = SEE_OBJS
+	vision_flags_mob_remove = SEE_BLACKNESS
 	incompatible_with = list(NIF_MESONS,NIF_THERMALS,NIF_NIGHTVIS)
 	vision_exclusive = TRUE
 
@@ -160,5 +162,6 @@
 	planes_enabled = list(/atom/movable/screen/plane_master/cloaked)
 	vision_flags = (NIF_V_THERMALS)
 	vision_flags_mob = SEE_MOBS
+	vision_flags_mob_remove = SEE_BLACKNESS
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_NIGHTVIS)
 	vision_exclusive = TRUE

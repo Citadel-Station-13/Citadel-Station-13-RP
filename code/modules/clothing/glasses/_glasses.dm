@@ -17,7 +17,8 @@ BLIND     // can't see anything
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_EYES
 	active_slots = list(SLOT_ID_GLASSES)
-	var/vision_flags = 0
+	var/vision_flags = NONE
+	var/vision_flags_remove = NONE
 	var/prescription = 0
 	var/toggleable = 0
 	var/inactive_icon_state = "degoggles"
@@ -168,6 +169,7 @@ BLIND     // can't see anything
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
 	vision_flags = SEE_TURFS
+	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
 	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 
@@ -315,6 +317,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_OBJS
+	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
 	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 
@@ -337,6 +340,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	inactive_icon_state = "denight"
 	vision_flags = SEE_OBJS | SEE_TURFS
+	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
@@ -615,6 +619,7 @@ BLIND     // can't see anything
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
+	vision_flags_remove = SEE_BLACKNESS
 	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
 	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
