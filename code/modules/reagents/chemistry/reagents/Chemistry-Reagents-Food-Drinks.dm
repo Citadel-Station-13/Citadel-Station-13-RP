@@ -1314,6 +1314,7 @@
 	cup_desc = "Made with love! And cocoa beans."
 
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
 			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
