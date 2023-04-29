@@ -34,6 +34,8 @@
 	var/datum/perspective/using_perspective
 	/// current darksight modifiers.
 	var/list/datum/darksight/darksight_modifiers
+	/// override darksight datum - adminbus only
+	var/datum/darksight/darksight_override
 
 	//? Movement
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.

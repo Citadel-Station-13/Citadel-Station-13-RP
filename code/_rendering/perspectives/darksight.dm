@@ -117,6 +117,12 @@ GLOBAL_DATUM_INIT(default_darksight, /datum/darksight/baseline/default, new)
 /datum/darksight/baseline/default
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
+//? silicons baseline
+
+GLOBAL_DATUM_INIT(silicon_darksight, /datum/darksight/baseline/silicons, new)
+/datum/darksight/baseline/silicons
+	hard_darksight = 0
+
 //? species
 
 /datum/darksight/baseline/species_tier_0

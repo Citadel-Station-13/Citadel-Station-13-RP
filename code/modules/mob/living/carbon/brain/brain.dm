@@ -32,6 +32,8 @@
 
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
+// todo: this should be like, /mob/brain or something, this doesn't simulate /living stuff at all.
+
 /mob/living/carbon/brain
 	var/obj/item/container = null
 	var/timeofhostdeath = 0

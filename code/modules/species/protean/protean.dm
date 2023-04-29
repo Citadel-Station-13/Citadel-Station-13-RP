@@ -28,7 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	innate_darksight = /datum/darksight/baseline/species_tier_1
+	darksight_innate = /datum/darksight/baseline/species_tier_1
 
 	breath_type = null
 	poison_type = null

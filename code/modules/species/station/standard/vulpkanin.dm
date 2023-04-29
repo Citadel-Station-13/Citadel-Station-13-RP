@@ -18,7 +18,7 @@
 	name_language   = LANGUAGE_ID_VULPKANIN
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
-	innate_darksight = /datum/darksight/baseline/species_tier_1
+	darksight_innate = /datum/darksight/baseline/species_tier_1
 
 	color_mult = 1
 

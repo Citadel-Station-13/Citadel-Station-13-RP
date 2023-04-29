@@ -419,7 +419,7 @@
 	#warn impl
 
 /datum/perspective/proc/check_hard_darkvision()
-	return hard_darkvision
+	return isnull(hard_darkvision)? 255 : hard_darkvision
 
 /datum/perspective/proc/update_hard_darkvision()
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)

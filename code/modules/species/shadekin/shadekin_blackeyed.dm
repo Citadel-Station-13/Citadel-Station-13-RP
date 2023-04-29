@@ -32,7 +32,7 @@
 	//rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
 	siemens_coefficient = 1 // Mirroring the shockproof removal of Shadekin
-	innate_darksight = /datum/darksight/baseline/species_tier_3
+	darksight_innate = /datum/darksight/baseline/species_tier_3
 
 	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
 	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.

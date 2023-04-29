@@ -196,7 +196,7 @@
  */
 /mob/proc/innate_darksight()
 	RETURN_TYPE(/datum/darksight/baseline)
-	return GLOB.default_darksight
+	return darksight_override || GLOB.default_darksight
 
 /**
  * get all darksight datums, ordered. 1 (front of list) is applied first.

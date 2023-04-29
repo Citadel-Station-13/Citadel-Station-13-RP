@@ -35,7 +35,7 @@
 	)
 
 	siemens_coefficient = 1
-	innate_darksight = /datum/darksight/baseline/species_super
+	darksight_innate = /datum/darksight/baseline/species_super
 
 	slowdown = -0.5
 	item_slowdown_mod = 0.5

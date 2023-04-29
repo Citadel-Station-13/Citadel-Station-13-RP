@@ -113,7 +113,7 @@
 	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/darkvision
-	plane = _DARKVISION_PLANE
+	plane = DARKVISION_PLANE
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()

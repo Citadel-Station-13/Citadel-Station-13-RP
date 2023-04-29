@@ -79,7 +79,7 @@
 	blood_color = "#27173D"
 	base_color  = "#580412"
 
-	innate_darksight = /datum/darksight/baseline/species_tier_1
+	darksight_innate = /datum/darksight/baseline/species_tier_1
 
 	//Demons glow in the dark.
 	has_glowing_eyes = TRUE

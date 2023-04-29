@@ -300,7 +300,7 @@
 
 	//? Sight
 	/// darksight datum - set to typepath, initialized at init
-	var/datum/darksight/baseline/innate_darksight
+	var/datum/darksight/baseline/darksight_innate
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -918,5 +918,5 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * Makes sure innate darksight is there
  */
 /datum/species/proc/assert_innate_darksight()
-	if(ispath(innate_darksight))
-		innate_darksight = new innate_darksight
+	if(ispath(darksight_innate))
+		darksight_innate = new darksight_innate

@@ -180,11 +180,13 @@
 
 	if (stat == 2 || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(8)
+		self_perspective?.hard_darkvision = 0
+		self_perspective?.update_hard_darkvision()
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_ONE)
 	else if (stat != 2)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(2)
+		self_perspective?.hard_darkvision = 255
+		self_perspective?.update_hard_darkvision()
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (stat != 2)

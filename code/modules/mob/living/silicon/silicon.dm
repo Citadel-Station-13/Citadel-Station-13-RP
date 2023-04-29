@@ -92,7 +92,6 @@
 
 /mob/living/silicon/handle_regular_hud_updates()
 	. = ..()
-	SetSeeInDarkSelf(8)
 	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 	SetSightSelf(SIGHT_FLAGS_DEFAULT)
 	if(bodytemp)
