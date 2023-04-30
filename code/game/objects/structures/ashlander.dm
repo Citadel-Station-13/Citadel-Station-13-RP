@@ -60,6 +60,7 @@
 		if (istype(O, ty))
 			var/target_type = ore_mapping[ty]
 			new target_type(get_turf(src))
+			qdel(O)
 			return TRUE
 
 	return FALSE
