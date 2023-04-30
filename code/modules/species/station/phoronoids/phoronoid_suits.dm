@@ -10,13 +10,6 @@
 /// the actual suit parts
 /// a system that prevents you from taking the suit off
 ///	a system that handles settings, like vacuum seals
-/// 
-///
-///
-///
-///
-///
-///
 ///
 
 /datum/armor/omnicasket
@@ -32,8 +25,8 @@
 	name = "OmniCasket Main Controller"
 	desc = "The central piece of an OmniCasket, an highly advanced suit designed to keep the wearers Gentic material from falling apart,\
 			while also offering a modular platform to assist in all sorts of tasks. So far only Phoronoids have been adapted for the biointerface."
-	icon = ''//TODO
-	icon_state = ''//TODO
+	icon = 'icons/mob/species/phoronoid/omnicasket/bulky.dmi'
+	icon_state = "item_backpack"
 	slot_flags = SLOT_BACK
 	w_class = ITEM_SIZE_GARGANTUAN
 	armor_type = /datum/armor/omnicasket
@@ -46,13 +39,10 @@
 	var/obj/item/clothing/shoes/omnicasket/boots //covers feet and legs
 	var/obj/item/clothing/gloves/omnicasket/gauntlets //Covers hands and arms
 
+/obj/item/omnicasket_controller/set_armor(what)
+	. = ..()
+	torso.set_armor(what)
+	helmet.set_armor(what)
+	boots.set_armor(what)
+	gauntlets.set_armor(what)
 
-/obj/item/clothing/suit/omnicasket
-
-/obj/item/clothing/head/omnicasket
-
-/obj/item/clothing/shoes/omnicasket
-
-/obj/item/clothing/gloves/omnicasket
-
-/obj/item/clothing/glasses/omnicasket

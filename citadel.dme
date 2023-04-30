@@ -4201,6 +4201,7 @@
 #include "code\modules\species\station\vasilissan.dm"
 #include "code\modules\species\station\werebeast.dm"
 #include "code\modules\species\station\xenochimera.dm"
+#include "code\modules\species\station\phoronoids\omnicasaket_parts.dm"
 #include "code\modules\species\station\phoronoids\phoronoid_suits.dm"
 #include "code\modules\species\station\phoronoids\phoronoids.dm"
 #include "code\modules\species\station\standard\akula.dm"
