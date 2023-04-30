@@ -142,7 +142,7 @@
 		var/datum/current = targets[1]
 		targets.Cut(1, 2)
 
-		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, ignore_movement = TRUE, max_distance = recharge_dist) && !QDELETED(cell))
+		while(!QDELETED(A) && do_after(user, 2 SECONDS, A, DO_AFTER_IGNORE_MOVEMENT, max_distance = recharge_dist) && !QDELETED(cell))
 			var/amount = min(cell.charge, transfer_rate * 2)	// transfer rate is per second, we do this every 2 seconds
 			var/charged = current.inducer_act(src, amount, inducer_flags)
 			spark_system.start()

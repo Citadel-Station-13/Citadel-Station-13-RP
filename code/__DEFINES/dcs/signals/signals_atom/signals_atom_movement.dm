@@ -12,8 +12,13 @@
 #define COMSIG_ATOM_EXITED "atom_exited"
 /// From base of atom/Bumped(): (/atom/movable)
 #define COMSIG_ATOM_BUMPED "atom_bumped"
+
+/// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes
+#define COMSIG_ATOM_PRE_DIR_CHANGE "mob_pre_face_atom"
+	#define COMPONENT_ATOM_BLOCK_DIR_CHANGE (1<<0)
 /// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+
 /// From /atom/movable/Moved: (/atom/movable/entering, old_loc, old_locs)
 #define COMSIG_ATOM_ABSTRACT_ENTERED "atom_abstract_enter"
 /// From /atom/movable/Moved: (/atom/movable/exiting)

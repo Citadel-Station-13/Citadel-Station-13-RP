@@ -48,13 +48,12 @@
 		use(1, user)
 
 // Generic use
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/kit))
-		var/obj/item/kit/K = W
+/obj/item/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/kit))
+		var/obj/item/kit/K = I
 		K.customize(src, user)
-		return
-
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 // Root hardsuit kit defines.
 // Icons for modified hardsuits need to be in the proper .dmis because suit cyclers may cock them up.

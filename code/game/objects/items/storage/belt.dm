@@ -24,7 +24,7 @@
 	update_icon()
 
 // todo: this bad lol
-/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
 	for(var/obj/item/I in contents)
@@ -616,7 +616,7 @@
 		/obj/item/ammo_casing/arrow
 		)
 	starts_with = list(
-		/obj/item/ammo_casing/arrow/ash = 15
+		/obj/item/ammo_casing/arrow/bone = 15
 		)
 
 /obj/item/storage/belt/utility/crystal
@@ -634,3 +634,16 @@
 	new /obj/item/weldingtool/electric/crystal(src)
 	update_icon()
 	. = ..()
+
+//Ashlander Potion Bandolier
+/obj/item/storage/belt/ashlander
+	name = "hide bandolier"
+	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
+	icon_state = "bandolier_ash"
+	can_hold = list(
+		/obj/item/reagent_containers/glass/stone,
+		/obj/item/stack/medical/poultice_brute,
+		/obj/item/stack/medical/poultice_burn,
+		/obj/item/grenade/explosive/ashlander,
+		/obj/item/flame/lighter
+		)

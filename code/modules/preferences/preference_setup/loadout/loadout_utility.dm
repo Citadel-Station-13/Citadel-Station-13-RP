@@ -224,6 +224,12 @@ modular computers
 	name = "Dufflebag - Black"
 	path = /obj/item/storage/backpack/dufflebag/fluff
 
+/datum/gear/utility/rigbag
+	name = "Rig Storage Unit"
+	path = /obj/item/storage/backpack/rig
+	slot = SLOT_ID_BACK
+	cost = 0
+
 /datum/gear/utility/welding_helmet
 	name = "Welding Helmet"
 	path = /obj/item/clothing/head/welding

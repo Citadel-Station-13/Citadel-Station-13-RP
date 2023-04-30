@@ -107,7 +107,7 @@
 			message = "<B>The [src.name]</B> hisses softly."
 			m_type = 1
 		if("collapse")
-			Unconscious(2)
+			afflict_unconscious(20 * 2)
 			message = text("<B>[]</B> collapses!", src)
 			m_type = 2
 		if("chirp")

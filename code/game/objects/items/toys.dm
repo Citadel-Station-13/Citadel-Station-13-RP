@@ -206,7 +206,7 @@
 
 		return
 	else if (bullets == 0)
-		user.Weaken(5)
+		user.afflict_paralyze(20 * 5)
 		for(var/mob/O in viewers(world.view, user))
 			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
@@ -231,7 +231,7 @@
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
 				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
-		user.Weaken(5)
+		user.afflict_paralyze(20 * 5)
 
 /obj/item/toy/ammo/crossbow
 	name = "foam dart"
@@ -1118,6 +1118,20 @@
 	name = "tuxedo cat plushie"
 	icon_state = "tuxedocat"
 	pokephrase = "Mrowww!!"
+
+/obj/item/toy/plushie/toad
+	name = "\improper Toad plushie"
+	desc = "Not actually a replica of a toad, but a humanoid toadstool! It wont stop screaming (lovingly) when you poke and squeeze it, but somehow it's cute anyways. Reminds you of times spent racing."
+	icon_state = "toadplush"
+	pokephrase = "Waaah!!"
+
+/obj/item/toy/plushie/petrock
+	name = "\improper Rock"
+	desc = "A large boulder the size of a small boulder."
+	icon_state = "petrock"
+	pokephrase = ". . ."
+	drop_sound = 'sound/items/drop/screwdriver.ogg'
+	pickup_sound = 'sound/items/pickup/screwdriver.ogg'
 
 // nah, squids are better than foxes :>	//there are no squidgirls on citadel this is factually false
 /obj/item/toy/plushie/squid/green

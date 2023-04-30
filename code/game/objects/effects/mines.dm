@@ -95,7 +95,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 	if(M)
-		M.Stun(30)
+		M.afflict_stun(20 * 30)
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	spawn(0)
 		qdel(s)

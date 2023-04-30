@@ -47,6 +47,8 @@
 	var/action_type = ACTION_TYPE_ITEM
 	var/procname = null
 	var/check_flags = 0
+	/// required mobility flags
+	var/mobility_flags = NONE
 	var/processing = 0
 	var/active = 0
 	var/button_icon = 'icons/screen/actions/actions.dmi'
@@ -92,6 +94,7 @@
 		if(owner == T)
 			return
 		remove(owner)
+	assert_button()
 	owner = T
 	owner.actions.Add(src)
 	owner.update_action_buttons()
@@ -104,6 +107,12 @@
 	T.actions.Remove(src)
 	T.update_action_buttons()
 	owner = null
+
+/datum/action/proc/assert_button()
+	if(!isnull(button))
+		return
+	button = new
+	button.owner = src
 
 /datum/action/proc/trigger(mob/user)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -154,11 +163,13 @@
 /datum/action/proc/Checks()// returns 1 if all checks pass
 	if(!owner)
 		return 0
+	if(mobility_flags && !CHECK_MOBILITY(owner, mobility_flags))
+		return FALSE
 	if(check_flags & ACTION_CHECK_RESTRAINED)
 		if(owner.restrained())
 			return 0
 	if(check_flags & ACTION_CHECK_STUNNED)
-		if(owner.stunned)
+		if(!CHECK_MOBILITY(owner, MOBILITY_CAN_USE))
 			return 0
 	if(check_flags & ACTION_CHECK_LYING)
 		if(owner.lying)
@@ -181,6 +192,9 @@
  * updates button state to match our stored state.
  */
 /datum/action/proc/update_button()
+	if(isnull(button))
+		return
+
 	auto_button_update(update = FALSE)
 
 	button.icon = background_icon

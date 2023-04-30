@@ -24,7 +24,7 @@
 	rad = 1.0
 
 /obj/item/rig/protean/relaymove(mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	forced_move(direction, user, FALSE, TRUE)
 

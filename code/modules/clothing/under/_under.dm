@@ -292,7 +292,7 @@
 				SPAN_WARNING("[user] is trying to set your sensors!")
 			)
 			var/mob/M = worn_mob()
-			if(do_after(user, HUMAN_STRIP_DELAY, M, FALSE))
+			if(do_after(user, HUMAN_STRIP_DELAY, M, DO_AFTER_IGNORE_ACTIVE_ITEM))
 				. = strip_menu_sensor_interact(user, M)
 
 /obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = worn_mob())

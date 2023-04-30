@@ -1,15 +1,25 @@
-/// Generic source - don't use this if at all possible.
+//? Generic sources - use extremely sparingly.
+
+/// generic trait source
 #define GENERIC_TRAIT "generic"
+/// Trait is from ourselves (src)
+#define INNATE_TRAIT "innate"
 
 //? Mob Sources
 
 /// From species
 #define SPECIES_TRAIT "species"
+/// From species quirks
+#define QUIRK_TRAIT "quirk"
+/// status effect trait source
+#define STATUS_EFFECT_TRAIT(id) "status_effect_[id]"
 
 //? Role / Jobs
 
-/// Roles
-#define ROLE_TRAIT "role"
+/// from your role
+#define ROLE_TRAIT(id) "role_[id]"
+/// from your ghostrole instantiator
+#define GHOSTROLE_TRAIT "ghostrole"
 
 //? Admin / Special Sources
 
@@ -20,22 +30,11 @@
 
 //? Unsorted / Legacy
 
-/*
-#define EYE_DAMAGE "eye_damage"
-#define GENETIC_MUTATION "genetic"
-#define OBESITY "obesity"
-*/
 #define MAGIC_TRAIT "magic"
-/*
-#define TRAUMA_TRAIT "trauma"
-#define DISEASE_TRAIT "disease"
-#define SPECIES_TRAIT "species"
-#define ORGAN_TRAIT "organ"
-*/
 
 #define HOLOGRAM_TRAIT "hologram"
 ///Mime trait.
-#define TRAIT_MIME "mime"
+#define MIME_TRAIT "mime"
 
 #define CLOTHING_TRAIT "clothing"
 #define RIG_TRAIT "rig"
@@ -48,10 +47,24 @@
 #define MMI_TRAIT "mmi"
 #define STASIS_BAG_TRAIT "stasis_bag"
 #define GRIPPER_TRAIT "gripper"
-#define HAND_REPLACEMENT_TRAIT "magic-hand"
 
+
+#define HAND_REPLACEMENT_TRAIT "magic-hand"
 
 #define CHANGELING_TRAIT "changeling"
 #define TECHNOMANCER_TRAIT "technomancer"
 
+//? specific mechanics sources
+
+/// from the CPR system
 #define CPR_TRAIT "cpr"
+
+//? species specific source
+
+/// shadekin phasing ability
+#define SPECIES_SHADEKIN_PHASING_TRAIT "shadekin1"
+
+//? component source
+
+/// rad_insulation
+#define TRAIT_SOURCE_COMPONENT_RAD_INSULATION "c_rad_insulation"

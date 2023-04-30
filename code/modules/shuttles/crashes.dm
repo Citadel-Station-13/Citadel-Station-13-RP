@@ -55,7 +55,7 @@
 	for(var/living in victims)
 		var/mob/living/L = living
 		victims[L] = get_turf(L)
-		L.Sleeping(rand(10,20))
+		L.afflict_sleeping(20 * rand(10,20))
 		L.Life(1, SSmobs.times_fired)
 		L.loc = null
 

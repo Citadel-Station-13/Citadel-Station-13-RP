@@ -23,7 +23,6 @@
 	var/singleton/flooring/F = get_flooring_data(/singleton/flooring/water)
 	footstep_sounds = F?.footstep_sounds
 	update_icon()
-	handle_fish()
 
 /turf/simulated/floor/water/update_icon()
 	..() // To get the edges.
@@ -90,6 +89,13 @@
 			to_chat(L, "<span class='warning'>You climb out of \the [src].</span>")
 	..()
 
+/turf/simulated/floor/water/pre_fishing_query(obj/item/fishing_rod/rod, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!GetComponent(/datum/component/fishing_spot))
+		AddComponent(/datum/component/fishing_spot, /datum/fish_source/ocean)
+
 /turf/simulated/floor/water/deep
 	name = "deep water"
 	desc = "A body of water.  It seems quite deep."
@@ -98,6 +104,9 @@
 	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
+	
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -147,6 +156,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return
@@ -200,6 +211,9 @@ var/list/shoreline_icon_cache = list()
 		poisonlevel *= 1 - L.get_water_protection()
 		if(poisonlevel > 0)
 			L.adjustToxLoss(poisonlevel)
+
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
 
 //Supernatural/Horror Pool Turfs
 

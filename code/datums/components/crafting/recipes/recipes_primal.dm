@@ -92,6 +92,31 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
+/datum/crafting_recipe/sinew_line
+	name = "Sinew Fishing Line Reel"
+	result = /obj/item/fishing_line/sinew
+	reqs = list(/obj/item/stack/sinew = 2)
+	time = 2 SECONDS
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_hook
+	name = "Goliath Bone Hook"
+	result = /obj/item/fishing_hook/bone
+	reqs = list(/obj/item/stack/material/bone = 1)
+	time = 2 SECONDS
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_rod
+	name = "Bone Fishing Rod"
+	result = /obj/item/fishing_rod/bone
+	time = 5 SECONDS
+	reqs = list(
+		/obj/item/stack/material/leather = 1,
+		/obj/item/stack/sinew = 2,
+		/obj/item/stack/material/bone = 2,
+	)
+	category = CAT_PRIMAL
+
 /datum/crafting_recipe/bonfire
 	name = "Bonfire"
 	time = 60
@@ -355,13 +380,25 @@
 	category = CAT_PRIMAL
 	always_available = FALSE
 
-/datum/crafting_recipe/saddle
-	name = "Hide Saddle"
+/datum/crafting_recipe/saddle_shank
+	name = "Saddle (Goliath Hide)"
 	result = /obj/item/saddle/shank
 	time = 60
 	reqs = list(/obj/item/stack/material/bone = 5,
 				/obj/item/stack/sinew = 6,
 				/obj/item/stack/animalhide/goliath_hide = 4
+				)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/saddle_stormdrifter
+	name = "Saddle (Harness and Gondola)"
+	result = /obj/item/saddle/stormdrifter
+	time = 60
+	reqs = list(/obj/item/stack/material/bone = 10,
+				/obj/item/stack/chitin = 5,
+				/obj/item/stack/sinew = 10,
+				/obj/item/stack/animalhide/goliath_hide = 5
 				)
 	category = CAT_PRIMAL
 	always_available = FALSE
@@ -629,5 +666,41 @@
 				/obj/item/stack/material/bone = 2,
 				/obj/item/pen/charcoal = 1,
 				/obj/item/elderstone = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/skull_mask
+	name = "Bone Mask (Skull)"
+	result = /obj/item/clothing/mask/skull
+	time = 20
+	reqs = list(/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 1)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/alchemy_bandolier
+	name = "Alchemy Bandolier"
+	result = /obj/item/storage/belt/ashlander
+	time = 40
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
+				/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 2)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_sandals
+	name = "Leather Sandals"
+	result = /obj/item/clothing/shoes/ashwalker
+	time = 20
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+//Make this one cloth once I give Ashies a cloth plant? If I do??
+/datum/crafting_recipe/ashlander_wraps
+	name = "Hide Footwraps"
+	result = /obj/item/clothing/shoes/footwraps
+	time = 10
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE

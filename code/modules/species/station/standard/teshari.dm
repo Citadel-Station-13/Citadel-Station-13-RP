@@ -217,6 +217,6 @@
 	if(!silent)
 		to_chat(H, SPAN_NOTICE("You catch the air in your wings and greatly slow your fall."))
 		H.visible_message(SPAN_NOTICE("\The [H] glides down from above, landing safely."))
-		H.Stun(2)
+		H.afflict_stun(20 * 2)
 		playsound(H, "rustle", 25, 1)
 	return TRUE
