@@ -14,6 +14,7 @@
 /obj/effect/overmap/visitable/ship/landable/pirate
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
+	color = "#751713" //Dark Red
 	fore_dir = WEST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL

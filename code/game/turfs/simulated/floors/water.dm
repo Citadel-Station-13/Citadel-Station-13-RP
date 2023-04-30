@@ -104,6 +104,9 @@
 	slowdown = 8
 	depth = 2
 
+/turf/simulated/floor/water/deep/indoors
+	outdoors = FALSE
+	
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -153,6 +156,8 @@ var/list/shoreline_icon_cache = list()
 	desc = "The waves look calm and inviting."
 	icon_state = "beach"
 	depth = 0
+	//smoothing_groups = null
+	edge_blending_priority = 0
 
 /turf/simulated/floor/water/beach/update_icon()
 	return
@@ -206,6 +211,9 @@ var/list/shoreline_icon_cache = list()
 		poisonlevel *= 1 - L.get_water_protection()
 		if(poisonlevel > 0)
 			L.adjustToxLoss(poisonlevel)
+
+/turf/simulated/floor/water/indoors
+	outdoors = FALSE
 
 //Supernatural/Horror Pool Turfs
 

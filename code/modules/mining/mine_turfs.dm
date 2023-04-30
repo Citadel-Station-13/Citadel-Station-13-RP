@@ -443,7 +443,6 @@
 
 	else
 		if (istype(W, /obj/item/core_sampler))
-			geologic_data.UpdateNearbyArtifactInfo(src)
 			var/obj/item/core_sampler/C = W
 			C.sample_item(src, user)
 			return
@@ -519,8 +518,6 @@
 					while(next_rock > 50)
 						next_rock -= 50
 						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
-						O.geologic_data = geologic_data
 				return
 			else
 				return
@@ -574,7 +571,6 @@
 					while(next_rock > 50)
 						next_rock -= 50
 						var/obj/item/ore/O = new(src)
-						geologic_data.UpdateNearbyArtifactInfo(src)
 						O.geologic_data = geologic_data
 				return
 			else
@@ -639,9 +635,6 @@
 		return
 	clear_ore_effects()
 	var/obj/item/ore/O = new mineral.ore (src)
-	if(geologic_data && istype(O))
-		geologic_data.UpdateNearbyArtifactInfo(src)
-		O.geologic_data = geologic_data
 	return O
 
 /turf/simulated/mineral/proc/excavate_turf()
@@ -695,7 +688,7 @@
 			else
 				M.flash_eyes()
 				if(prob(50))
-					M.Stun(5)
+					M.afflict_stun(20 * 5)
 		new /obj/item/artifact_shards(src, 1000, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
 		if(prob(25))
 			excavate_find(prob(5), finds[1])
@@ -723,7 +716,6 @@
 		X = new /obj/item/archaeological_find(src, F.find_type)
 	else
 		X = new /obj/item/strangerock(src, F.find_type)
-		geologic_data.UpdateNearbyArtifactInfo(src)
 		var/obj/item/strangerock/SR = X
 		SR.geologic_data = geologic_data
 
@@ -773,77 +765,9 @@
 	if(mineral || ignore_mapgen || ignore_oregen)
 		return
 
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 20,
-			MAT_CARBON = 20,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 1))
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 3,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 70,
-			MAT_CARBON = 70,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 2,
-			MAT_VERDANTIUM = 1))
+	var/mineral_name = standard_mineral_roll(rare_ore)
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-
-/turf/simulated/mineral/rich/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 7,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 10,
-			MAT_CARBON = 10,
-			MAT_DIAMOND = 4,
-			MAT_GOLD = 15,
-			MAT_SILVER = 15,
-			MAT_COPPER = 10,
-			MAT_PHORON = 10,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 2))
-
-
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 7,
-			MAT_PLATINUM = 7,
-			MAT_HEMATITE = 28,
-			MAT_CARBON = 28,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 7,
-			MAT_SILVER = 7,
-			MAT_COPPER = 7,
-			MAT_PHORON = 7,
-			MAT_LEAD = 4,
-			MAT_VERDANTIUM = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
+		if(atom_flags & ATOM_INITIALIZED)
+			UpdateMineral()

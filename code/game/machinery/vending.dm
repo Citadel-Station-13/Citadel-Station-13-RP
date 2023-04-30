@@ -1517,7 +1517,7 @@
 		/obj/item/fishing_hook = 20,
 		/obj/item/fishing_line = 20,
 		/obj/item/fishing_hook/magnet = 10,
-		// /obj/item/fishing_hook/rescue = 10,
+		/obj/item/fishing_hook/rescue = 10,
 		/obj/item/fishing_hook/shiny = 10,
 		/obj/item/fishing_hook/weighted = 10,
 		/obj/item/fishing_line = 20,

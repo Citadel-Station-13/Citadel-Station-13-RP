@@ -5,6 +5,7 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 	rad_flags = NONE
+	atom_colouration_system = TRUE
 
 	/// object flags, see __DEFINES/_flags/obj_flags.dm
 	var/obj_flags = CAN_BE_HIT
@@ -72,10 +73,10 @@
 	SSnanoui.close_uis(src)
 	return ..()
 
-/obj/Moved(atom/oldloc)
+/obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(register_as_dangerous_object)
-		var/turf/old_turf = get_turf(oldloc)
+		var/turf/old_turf = get_turf(old_loc)
 		var/turf/new_turf = get_turf(src)
 
 		if(old_turf != new_turf)
@@ -253,7 +254,7 @@
 	var/extra_time = MODULUS(time, interval)
 	var/i
 	for(i in 1 to round(time / interval))
-		if(!do_after(escapee, interval, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+		if(!do_after(escapee, interval, mobility_flags = MOBILITY_CAN_RESIST))
 			return FALSE
 		if(escapee.loc != src)
 			return FALSE
@@ -261,7 +262,7 @@
 			return FALSE
 		if(breakout_sound)
 			playsound(src, breakout_sound, breakout_volume, 1)
-	if(!do_after(escapee, extra_time, incapacitation_flags = INCAPACITATION_KNOCKOUT))
+	if(!do_after(escapee, extra_time, mobility_flags = MOBILITY_CAN_RESIST))
 		return FALSE
 	if(!contents_resist_step(escapee, i + 1, TRUE))
 		return FALSE

@@ -76,7 +76,7 @@
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
 		add_verb(src, /mob/living/simple_mob/protean_blob/proc/leap_attack)
 		add_verb(src, /mob/living/proc/usehardsuit)
-		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, update_health))
 	else
 		update_icon()
 
@@ -97,7 +97,7 @@
 	if(humanform && C.statpanel_tab("Species", TRUE))
 		. += humanform.species.statpanel_status(C, humanform)
 
-/mob/living/simple_mob/protean_blob/updatehealth()
+/mob/living/simple_mob/protean_blob/update_health()
 	if(humanform)
 		//Set the max
 		maxHealth = humanform.getMaxHealth() + 100 // +100 for crit threshold so you don't die from trying to blob to heal, ironically
@@ -156,32 +156,20 @@
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
-	if(humanform)
-		// ckey transfer you dumb fuck
+	if(!QDELETED(humanform))
+		humanform.forceMove(loc)
 		humanform.ckey = ckey
-		humanform.forceMove(drop_location())
-		humanform.death(gibbed = gibbed)
-		for(var/organ in humanform.internal_organs)
-			var/obj/item/organ/internal/O = organ
-			O.removed()
-			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
-				O.forceMove(drop_location())
-		var/list/items = humanform.get_equipped_items()
-		if(prev_left_hand)
-			items += prev_left_hand
-		if(prev_right_hand)
-			items += prev_right_hand
-		for(var/obj/object in items)
-			object.forceMove(drop_location())
-		QDEL_NULL(humanform) //Don't leave it just sitting in nullspace
-
-	animate(src, alpha = 0, time = 2 SECONDS)
-	QDEL_IN(src, 2 SECONDS)
-
-	return ..()
+		humanform.gib()
+	humanform = null
+	. = ..()
+	ASYNC
+		if(!QDELETED(src))
+			qdel(src)
 
 /mob/living/simple_mob/protean_blob/BiologicalLife()
 	if((. = ..()))
+		return
+	if(isnull(humanform))
 		return
 	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
@@ -239,13 +227,14 @@
 			to_chat(src, "<span class='warning'>You can't eat this.</span>")
 			return
 
-		if(is_type_in_list(I,edible_trash) | adminbus_trash)
+		if(is_type_in_list(I, edible_trash) || adminbus_trash)
 			if(I.hidden_uplink)
 				to_chat(src, "<span class='warning'>You really should not be eating this.</span>")
 				message_admins("[key_name(src)] has attempted to ingest an uplink item. ([src ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>" : "null"])")
 				return
-		visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
-		I.forceMove(vore_selected)
+			visible_message("<b>[name]</b> stretches itself over the [I], engulfing it whole!")
+			I.forceMove(vore_selected)
+			return
 	else
 		return ..()
 
@@ -609,7 +598,8 @@
 
 /datum/modifier/protean/steelBlob/tick()
 	..()
-	if(holder.temporary_form?.resting)
+	var/mob/living/living_form = holder.temporary_form
+	if(istype(living_form) && living_form.resting)
 		return
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder

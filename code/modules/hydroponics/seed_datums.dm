@@ -1736,7 +1736,7 @@
 	seed_name = "pokalea"
 	display_name = "pokalea"
 	kitchen_tag = "pokalea"
-	chems = list("nicotine" = list(5,10))
+	chems = list("nicotine" = list(5,10), "leporazine" = list(5,10))
 
 /datum/seed/pokalea/New()
 	..()

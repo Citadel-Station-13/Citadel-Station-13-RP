@@ -1,7 +1,7 @@
 /obj/structure/grille
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
-	icon = 'icons/obj/structures_vr.dmi'
+	icon = 'icons/obj/structures/grille.dmi'
 	icon_state = "grille"
 	density = TRUE
 	anchored = TRUE
@@ -190,7 +190,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			if(user.stunned)
+			if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 				return 1
 		else
 			return 0

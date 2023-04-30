@@ -785,3 +785,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_UNIFORMS = 'icons/mob/items/righthand_uniforms.dmi',
 		INHAND_DEFAULT_ICON_64X64 = 'icons/mob/items/64x64_righthand.dmi',
 	)
+
+/datum/inventory_slot_meta/abstract/use_one_for_accessory
+	render_key = "acc"
+
+/datum/inventory_slot_meta/abstract/use_one_for_all
+	render_key = "all"

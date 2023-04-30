@@ -26,7 +26,7 @@
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
-	if(do_after(user, 40, needhand=0))
+	if(do_after(user, 40, chassis, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		if(!src.occupant)
 			//? WARNING WARNING SHITCODE ALERT
 			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY

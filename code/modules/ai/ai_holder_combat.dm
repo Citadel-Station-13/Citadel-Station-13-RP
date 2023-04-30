@@ -305,7 +305,7 @@
 				ai_log("destroy_surroundings() : Attacking side window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 
-			else if(W.is_fulltile())
+			else if(W.fulltile)
 				ai_log("destroy_surroundings() : Attacking full tile window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 

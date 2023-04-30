@@ -28,16 +28,10 @@
 	for(var/obj/vehicle_old/train/T in orange(1, src))
 		latch(T)
 
-/obj/vehicle_old/train/Move()
-	var/old_loc = get_turf(src)
-	if(..())
-		if(tow)
-			tow.forceMove(old_loc)
-		return 1
-	else
-		if(lead)
-			unattach()
-		return 0
+/obj/vehicle_old/train/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	if(tow && ((get_dist(tow, old_loc) > 1) || !tow.Move(old_loc)))
+		tow.unattach()
 
 /obj/vehicle_old/train/Bump(atom/Obstacle)
 	if(!istype(Obstacle, /atom/movable))
@@ -106,7 +100,7 @@
 	return 1
 
 /obj/vehicle_old/train/MouseDroppedOnLegacy(var/atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+	if(user.buckled || user.stat || user.restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !CHECK_MOBILITY(user, MOBILITY_CAN_MOVE)))
 		return
 	if(istype(C,/obj/vehicle_old/train))
 		latch(C, user)
@@ -138,7 +132,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE) || !Adjacent(usr))
 		return
 
 	unattach(usr)

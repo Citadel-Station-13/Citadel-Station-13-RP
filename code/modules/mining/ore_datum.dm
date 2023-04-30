@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	display_name = "pitchblende"
 	smelts_to = "uranium"
 	result_amount = 5
-	spread_chance = 10
+	spread_chance = 15
 	ore = /obj/item/ore/uranium
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "iron"
 	alloy = 1
 	result_amount = 5
-	spread_chance = 30
+	spread_chance = 25
 	ore = /obj/item/ore/iron
 	scan_icon = "mineral_common"
 
@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	smelts_to = "plastic"
 	alloy = 1
 	result_amount = 5
-	spread_chance = 30
+	spread_chance = 25
 	ore = /obj/item/ore/coal
 	scan_icon = "mineral_common"
 
@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	compresses_to = "phoron"
 	//smelts_to = something that explodes violently on the conveyor, huhuhuhu
 	result_amount = 8
-	spread_chance = 25
+	spread_chance = 15
 	ore = /obj/item/ore/phoron
 	scan_icon = "mineral_uncommon"
 	xarch_ages = list(
@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	display_name = "crystalline verdantite"
 	compresses_to = MAT_VERDANTIUM
 	result_amount = 4
-	spread_chance = 5
+	spread_chance = 13
 	ore = /obj/item/ore/verdantium
 	scan_icon = "mineral_rare"
 	xarch_ages = list(
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	display_name = "lead glance"
 	smelts_to = "lead"
 	result_amount = 4
-	spread_chance = 20
+	spread_chance = 17
 	ore = /obj/item/ore/lead
 	scan_icon = "mineral_rare"
 

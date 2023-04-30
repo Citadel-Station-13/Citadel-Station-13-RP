@@ -110,7 +110,7 @@
 
 /obj/item/grenade/explosive/ied/tyrmalin/on_explosion(var/turf/O)
 	if(explosion_size)
-		explosion(O, 2, 4, explosion_size, round(explosion_size/2), 0)
+		explosion(O, 0, 2, 4, 0)
 
 /obj/item/grenade/explosive/ied/tyrmalin/large
 	name = "\improper Tyrmalin heavy-duty mining charge"

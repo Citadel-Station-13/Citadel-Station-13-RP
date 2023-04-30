@@ -364,7 +364,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Weaken(15)
+				M.afflict_paralyze(20 * 15)
 
 			if(4 to 5)
 				if(hasvar(M, "glasses"))
@@ -372,7 +372,7 @@
 						continue
 
 				M.flash_eyes()
-				M.Stun(5)
+				M.afflict_stun(20 * 5)
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"
@@ -835,6 +835,17 @@
 	new /obj/item/condensedphlogiston(get_turf(holder.my_atom), created_volume)
 	return
 
+/datum/chemical_reaction/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	result = null
+	required_reagents = list("nicotine" = 1, "ash" = 1, "alchemybase" = 1)
+	result_amount = 1
+
+/datum/chemical_reaction/bitterash/on_reaction(var/datum/reagents/holder, var/created_volume)
+	new /obj/item/bitterash(get_turf(holder.my_atom), created_volume)
+	return
+
 ///////////////////////////////
 //SLIME CORES BELOW HERE///////
 ///////////////////////////////
@@ -1002,7 +1013,7 @@
 		C.adjustOxyLoss(-25)
 		C.adjustBrainLoss(-25)
 		C.adjustCloneLoss(-25)
-		C.updatehealth()
+		C.update_health()
 
 /datum/chemical_reaction/slimejelly
 	name = "Slime Jam"

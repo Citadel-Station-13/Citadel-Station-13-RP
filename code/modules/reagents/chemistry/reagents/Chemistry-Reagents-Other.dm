@@ -213,15 +213,15 @@
 	M.sdisabilities = 0
 	M.eye_blurry = 0
 	M.SetBlinded(0)
-	M.SetWeakened(0)
-	M.SetStunned(0)
-	M.SetUnconscious(0)
+	M.set_paralyzed(0)
+	M.set_stunned(0)
+	M.set_unconscious(0)
 	M.silent = 0
 	M.dizziness = 0
 	M.drowsyness = 0
 	M.stuttering = 0
 	M.SetConfused(0)
-	M.SetSleeping(0)
+	M.set_sleeping(0)
 	M.jitteriness = 0
 	M.radiation = 0
 	M.ExtinguishMob()
@@ -306,8 +306,8 @@
 /datum/reagent/adrenaline/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
-	M.SetUnconscious(0)
-	M.SetWeakened(0)
+	M.set_unconscious(0)
+	M.set_paralyzed(0)
 	M.adjustToxLoss(rand(3))
 
 /datum/reagent/water/holywater
@@ -552,3 +552,11 @@
 	reagent_state = REAGENT_LIQUID
 	color = "#522222"
 	taste_description = "sulphurous sand"
+
+/datum/reagent/bitterash
+	name = "Bitter Ash"
+	id = "bitterash"
+	description = "A finely granulated mixture of ash and pokalea, rendered into a pungent slurry by alchemical base."
+	reagent_state = REAGENT_SOLID
+	color = "#302f2f"
+	taste_description = "sour wax and sulphur"

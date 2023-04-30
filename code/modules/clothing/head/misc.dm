@@ -530,14 +530,6 @@
 	body_cover_flags = 0
 	inv_hide_flags = BLOCKHAIR
 
-/obj/item/clothing/head/skull
-	name = "totemic skull hat"
-	desc = "This bleached skull has been fitted with a band allowing it to be worn. Whether the foe was yours, or anothers, you do feel a little more intimidating with this on."
-	icon_state = "skull"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_white", SLOT_ID_LEFT_HAND = "beret_white")
-	body_cover_flags = 0
-	inv_hide_flags = 0
-
 /obj/item/clothing/head/bunny
 	name = "bunny costume head"
 	desc = "Popular with both mascots and heartbroken Japanese highschool girls."
@@ -721,3 +713,9 @@
 	body_cover_flags = HEAD|FACE
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	action_button_name = "Toggle Hood"
+
+/obj/item/clothing/head/fishingcap
+	name = "Fishing Cap"
+	desc = "The lettering on this hat is phenominal. It reads: 'Women fear me. Fish fear me. Men turn their eyes away from me as I walk. No beast dare makes a sound in my presence. I am alone in this barren space.' There is a patch of an extra large Monkfish sewn on beneath these words. Only the most prestegious fishers in the universe must own a hat like this..."
+	icon_state = "fishingcap"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "fishingcap", SLOT_ID_LEFT_HAND = "fishingcap")
