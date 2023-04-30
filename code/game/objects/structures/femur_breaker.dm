@@ -15,7 +15,7 @@
 	can_buckle = TRUE
 	anchored = TRUE
 	density = TRUE
-	max_buckled_mobs = 1
+	buckle_max_mobs = 1
 	buckle_lying = TRUE
 	buckle_prevents_pull = TRUE
 	layer = ABOVE_MOB_LAYER
@@ -94,7 +94,7 @@
 			return
 
 		playsound(src, 'sound/effects/femur_breaker.ogg', 100, FALSE)
-		H.Stun(BREAKER_ANIMATION_LENGTH)
+		H.afflict_stun(20 * BREAKER_ANIMATION_LENGTH)
 		addtimer(CALLBACK(src, .proc/damage_leg, H), BREAKER_ANIMATION_LENGTH, TIMER_UNIQUE)
 		log_combat(user, H, "femur broke", src)
 

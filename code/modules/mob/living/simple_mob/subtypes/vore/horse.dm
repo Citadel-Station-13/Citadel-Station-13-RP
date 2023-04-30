@@ -43,30 +43,46 @@
 	hide_amount = 4
 	exotic_amount = 2
 
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
 	buckle_lying = FALSE
-	mount_offset_x = 0
+	buckle_max_mobs = 1
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 
 	say_list_type = /datum/say_list/horse
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-// Activate Noms!
-/mob/living/simple_mob/vore/horse
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
 
-/* //VOREStation AI Temporary Removal
-/mob/living/simple_animal/horse/Login()
-	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
+	var/rideable = 0
 
-/mob/living/simple_animal/horse/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-*/
+/mob/living/simple_mob/vore/horse/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/riding_filter/mob/animal/horse)
+
+/datum/component/riding_filter/mob/animal/horse
+
+/datum/component/riding_handler/mob/animal/horse
+	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
+
+/mob/living/simple_mob/vore/horse/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	if(istype(O, /obj/item/saddle/horse) && !rideable)
+		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
+		rideable = 1
+		AddComponent(/datum/component/riding_handler/mob/animal/horse)
+		qdel(O)
+	if(istype(O, /obj/item/tool/wirecutters) && rideable)
+		to_chat(user, "<span class='danger'>You nip the straps of the [O]! It falls off of the [src].</span>")
+		rideable = 0
+		DelComponent(/datum/component/riding_handler/mob/animal/horse)
+		var/turf/T = get_turf(src)
+		new /obj/item/saddle/horse(T)
+
+/mob/living/simple_mob/vore/horse/update_icon()
+	if(rideable)
+		add_overlay("horse_saddled")
+	else if(!rideable)
+		cut_overlays()
 
 /datum/say_list/horse
 	speak = list("NEHEHEHEHEH","Neh?")

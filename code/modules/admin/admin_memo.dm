@@ -1,6 +1,7 @@
-#define MEMOFILE "data/memo.sav"	//where the memos are saved
-#define ENABLE_MEMOS 1				//using a define because screw making a config variable for it. This is more efficient and purty.
-
+///where the memos are saved
+#define MEMOFILE "data/memo.sav"
+///using a define because screw making a config variable for it. This is more efficient and purty.
+#define ENABLE_MEMOS 1
 //switch verb so we don't spam up the verb lists with like, 3 verbs for this feature.
 /client/proc/admin_memo(task in list("write","show","delete"))
 	set name = "Memo"

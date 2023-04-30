@@ -26,6 +26,11 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
+/// The reagents gases give mobs when breathed
+GLOBAL_LIST_INIT(meta_gas_reagent_id, meta_gas_reagent_id_list())
+/// The amount of the reagents gases give mobs
+GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
+
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -53,7 +58,12 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if(initial(gas.moles_visible) != null)
 			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
 			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				.[gas_path][i] = new /obj/effect/overlay/gas(initial(gas.gas_overlay), i * 255 / FACTOR_GAS_VISIBLE_MAX)
+				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLOAT_LAYER + i)
+				I.plane = FLOAT_PLANE
+				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
+				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+				I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
+				.[gas_path][i] = I
 
 /proc/meta_gas_danger_list()
 	. = subtypesof(/datum/gas)
@@ -116,7 +126,21 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if (!initial(gasvar.gas_overlay))
 			.[gastype] = TRUE
 
+/proc/meta_gas_reagent_id_list()
+	. = list()
+	for(var/gastype in subtypesof(/datum/gas))
+		var/datum/gas/gasvar = gastype
+		if(initial(gasvar.gas_reagent_id))
+			.[gastype] = initial(gasvar.gas_reagent_id)
+
+/proc/meta_gas_reagent_amount_list()
+	. = list()
+	for(var/gastype in subtypesof(/datum/gas))
+		var/datum/gas/gasvar = gastype
+		if(initial(gasvar.gas_reagent_amount))
+			.[gastype] = initial(gasvar.gas_reagent_amount)
 // Visual overlay
+/*
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -129,6 +153,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	. = ..()
 	icon_state = state
 	alpha = alph
+*/
 
 /*||||||||||||||/----------\||||||||||||||*\
 ||||||||||||||||[GAS DATUMS]||||||||||||||||
@@ -159,6 +184,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/molar_mass = 0
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
+
+	var/gas_reagent_id //What is the ID of the reagent we want to apply
+	var/gas_reagent_amount = 0//How much of the reagent is applied
+	//For a gas that makes up 21% of the atmos you need to be above 1.39, for it to instill any reagents, for lower percentages the number needs to be higher,and viceversa
 
 /datum/gas/oxygen
 	id = "o2"
@@ -226,7 +255,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
-datum/gas/carbon_monoxide
+/datum/gas/carbon_monoxide
 	id = "carbon monoxide"
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
@@ -238,7 +267,7 @@ datum/gas/carbon_monoxide
 	//taste_description = "stale air"
 	//metabolism = 0.05 // As with helium.
 
-datum/gas/methyl_bromide
+/datum/gas/methyl_bromide
 	id = "methyl bromide"
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
@@ -248,11 +277,11 @@ datum/gas/methyl_bromide
 	//gas_symbol = "CH3Br"
 	//taste_description = "pestkiller"
 	/*vapor_products = list(
-		/decl/material/gas/methyl_bromide = 1
+		/singleton/material/gas/methyl_bromide = 1
 	)
 	value = 0.25*/
 
-datum/gas/nitrodioxide
+/datum/gas/nitrodioxide
 	id = "nitrogen dioxide"
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
@@ -262,7 +291,7 @@ datum/gas/nitrodioxide
 	//gas_symbol_html = "NO<sub>2</sub>"
 	//gas_symbol = "NO2"
 
-datum/gas/nitricoxide
+/datum/gas/nitricoxide
 	id = "nitric oxide"
 	name = "Nitric Oxide"
 	specific_heat = 10
@@ -271,7 +300,7 @@ datum/gas/nitricoxide
 	//gas_symbol_html = "NO"
 	//gas_symbol = "NO"
 
-datum/gas/methane
+/datum/gas/methane
 	id = "methane"
 	name = "Methane"
 	specific_heat = 30
@@ -280,7 +309,7 @@ datum/gas/methane
 	//gas_symbol_html = "CH<sub>4</sub>"
 	//gas_symbol = "CH4"
 
-datum/gas/argon
+/datum/gas/argon
 	id = "argon"
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
@@ -291,7 +320,7 @@ datum/gas/argon
 	//value = 0.25
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
-datum/gas/krypton
+/datum/gas/krypton
 	id = "krypton"
 	name = "Krypton"
 	specific_heat = 5
@@ -300,7 +329,7 @@ datum/gas/krypton
 	//gas_symbol = "Kr"
 	//value = 0.25
 
-datum/gas/neon
+/datum/gas/neon
 	id = "neon"
 	name = "Neon"
 	specific_heat = 20
@@ -309,7 +338,7 @@ datum/gas/neon
 	//gas_symbol = "Ne"
 	//value = 0.25
 
-datum/gas/ammonia
+/datum/gas/ammonia
 	id = "Ammonia"
 	name = "ammonia"
 	specific_heat = 20
@@ -324,7 +353,7 @@ datum/gas/ammonia
 	//metabolism = REM * 0.5
 	//overdose = 5
 
-datum/gas/xenon
+/datum/gas/xenon
 	id = "Xenon"
 	name = "xenon"
 	specific_heat = 3
@@ -333,7 +362,7 @@ datum/gas/xenon
 	//gas_symbol = "Xe"
 	//value = 0.25
 
-datum/gas/chlorine
+/datum/gas/chlorine
 	id = "chlorine"
 	name = "Chlorine"
 	//color = "#c5f72d"
@@ -348,8 +377,14 @@ datum/gas/chlorine
 	heating_point = null
 	heating_products = null
 	toxicity = 15*/
+	gas_overlay = "chlorine"
+	moles_visible = 1
 
-datum/gas/sulfur_dioxide
+	gas_reagent_id = "sacid"
+	gas_reagent_amount = 10
+
+
+/datum/gas/sulfur_dioxide
 	id = "sulfur dioxide"
 	name = "Sulfur Dioxide"
 	specific_heat = 30
@@ -357,11 +392,11 @@ datum/gas/sulfur_dioxide
 	/*gas_symbol_html = "SO<sub>2</sub>"
 	gas_symbol = "SO2"
 	dissolves_into = list(
-		/decl/material/solid/sulfur = 0.5,
-		/decl/material/gas/oxygen = 0.5
+		/singleton/material/solid/sulfur = 0.5,
+		/singleton/material/gas/oxygen = 0.5
 	)*/
 
-datum/gas/hydrogen
+/datum/gas/hydrogen
 	id = "hydrogen"
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
@@ -371,15 +406,15 @@ datum/gas/hydrogen
 	specific_heat = 100
 	molar_mass = 0.002
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL
-	/*burn_product = /decl/material/liquid/water
+	/*burn_product = /singleton/material/liquid/water
 	gas_symbol_html = "H<sub>2</sub>"
 	gas_symbol = "H2"
 	dissolves_into = list(
-		/decl/material/liquid/fuel/hydrazine = 1
+		/singleton/material/liquid/fuel/hydrazine = 1
 	)
 	value = 0.4*/
 
-datum/gas/hydrogen/tritium
+/datum/gas/hydrogen/tritium
 	id = "tritium"
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
@@ -390,7 +425,7 @@ datum/gas/hydrogen/tritium
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
 
-datum/gas/hydrogen/deuterium
+/datum/gas/hydrogen/deuterium
 	id = "Deuterium"
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
@@ -406,7 +441,17 @@ datum/gas/hydrogen/deuterium
 		INTERACTION_ABSORPTION = 1250
 	)
 	absorption_products = list(
-		/decl/material/gas/hydrogen/tritium = 1
+		/singleton/material/gas/hydrogen/tritium = 1
 	)
 	neutron_absorption = 5
 	neutron_cross_section = 3*/
+
+//Special gas type that are very powerful and shouldnt be avaiable in large portions
+/datum/gas/vimur
+	id = "vimur"
+	name = "Vimur"
+	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
+	molar_mass = 0.054 // Standard Mass of xenon
+
+	gas_overlay = "vimur"
+	moles_visible = 0.1

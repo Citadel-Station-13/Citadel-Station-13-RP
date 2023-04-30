@@ -4,7 +4,7 @@
 	desc = "A perfectly generic plant."
 
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
+	plane = TURF_PLANE
 	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE
@@ -100,7 +100,7 @@
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(istype(W, /obj/item/shovel))
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
 			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)
@@ -394,7 +394,7 @@
 /obj/structure/flora/sif
 	icon = 'icons/obj/flora/sifflora.dmi'
 
-/obj/structure/flora/sif/attack_hand(mob/user)
+/obj/structure/flora/sif/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HARM)
 		if(do_after(user, 5 SECONDS))
 			user.visible_message("\The [user] digs up \the [src.name].", "You dig up \the [src.name].")
@@ -471,12 +471,12 @@
 	desc = "A healthy, fat pumpkin. It looks as if it was freshly plucked from its vines and shows no signs of decay."
 	icon_state = "decor-pumpkin"
 
-/obj/effect/landmark/carved_pumpkin_spawn
+/obj/landmark/carved_pumpkin_spawn
 	name = "jack o'lantern spawn"
 	icon = 'icons/obj/flora/pumpkins.dmi'
 	icon_state = "spawner-jackolantern"
 
-/obj/effect/landmark/carved_pumpkin_spawn/New()
+/obj/landmark/carved_pumpkin_spawn/New()
     var/new_pumpkin = pick(
 		prob(70);/obj/structure/flora/pumpkin,
         prob(60);/obj/structure/flora/pumpkin/carved,
@@ -515,7 +515,7 @@
 	var/gift_type = /obj/item/b_gift
 	var/list/ckeys_that_took = list()
 
-/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/living/user)
+/obj/structure/flora/pumpkin/pumpkin_patch/presents/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -523,9 +523,9 @@
 		return
 
 	if(ckeys_that_took[user.ckey])
-		to_chat(user, span("warning", "There are no pumpkins that look familiar to you."))
+		to_chat(user, SPAN_WARNING( "There are no pumpkins that look familiar to you."))
 		return
-	to_chat(user, span("notice", "After a bit of searching, you locate a pumpkin with your face carved into it!"))
+	to_chat(user, SPAN_NOTICE("After a bit of searching, you locate a pumpkin with your face carved into it!"))
 	ckeys_that_took[user.ckey] = TRUE
 	var/obj/item/G = new gift_type(src)
 	user.put_in_hands(G)

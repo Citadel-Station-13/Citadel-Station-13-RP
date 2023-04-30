@@ -32,11 +32,10 @@
 	singular_name = "grass floor tile"
 	desc = "A patch of grass like they often use on golf courses."
 	icon_state = "tile_grass"
-	force = 1.0
-	throwforce = 1.0
+	damage_force = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	origin_tech = list(TECH_BIO = 1)
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/herb.ogg'
@@ -73,11 +72,10 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "wood floor tile"
 	desc = "An easy to fit wooden floor tile."
 	icon_state = "tile-wood"
-	force = 1.0
-	throwforce = 1.0
+	damage_force = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -104,11 +102,10 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "carpet"
 	desc = "A piece of carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet"
-	force = 1.0
-	throwforce = 1.0
+	damage_force = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
@@ -121,20 +118,44 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	no_variants = FALSE
 
 /obj/item/stack/tile/carpet/bcarpet
-	icon_state = "tile-carpet"
+	name = "black carpet"
+	singular_name = "black carpet"
+	desc = "A piece of black carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-bcarpet"
 /obj/item/stack/tile/carpet/blucarpet
-	icon_state = "tile-carpet"
+	name = "blue carpet"
+	singular_name = "blue carpet"
+	desc = "A piece of blue carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-blucarpet"
 /obj/item/stack/tile/carpet/turcarpet
-	icon_state = "tile-carpet"
+	name = "tur carpet"
+	singular_name = "tur carpet"
+	desc = "A piece of turquoise carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-turcarpet"
 /obj/item/stack/tile/carpet/sblucarpet
-	icon_state = "tile-carpet"
+	name = "silver-blue carpet"
+	singular_name = "silver-blue carpet"
+	desc = "A piece of silver-blue carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-sblucarpet"
 /obj/item/stack/tile/carpet/gaycarpet
-	icon_state = "tile-carpet"
+	name = "funny carpet"
+	singular_name = "funny carpet"
+	desc = "A piece of funny carpet. Perfect for clowning around on."
+	icon_state = "tile-gaycarpet"
 /obj/item/stack/tile/carpet/purcarpet
-	icon_state = "tile-carpet"
+	name = "purple carpet"
+	singular_name = "purple carpet"
+	desc = "A piece of purple carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-purcarpet"
 /obj/item/stack/tile/carpet/oracarpet
-	icon_state = "tile-carpet"
+	name = "orange carpet"
+	singular_name = "orange carpet"
+	desc = "A piece of orange carpet. It is the same size as a normal floor tile!"
+	icon_state = "tile-oracarpet"
 /obj/item/stack/tile/carpet/arcadecarpet
+	name = "arcadey carpet"
+	singular_name = "arcadey carpet"
+	desc = "A piece of arcadey carpet. It is the same size as a normal floor tile!"
 	icon_state = "tile-carpet-arcade"
 
 /obj/item/stack/tile/floor
@@ -142,9 +163,9 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "floor tile"
 	desc = "A metal tile fit for covering a section of floor."
 	icon_state = "tile"
-	force = 6.0
-	matter = list(DEFAULT_WALL_MATERIAL = SHEET_MATERIAL_AMOUNT / 4)
-	throwforce = 15.0
+	damage_force = 6.0
+	matter = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT / 4)
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
 	no_variants = FALSE
@@ -172,21 +193,21 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/steel
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/white
 	name = "white floor tile"
 	singular_name = "white floor tile"
 	icon_state = "tile_white"
-	matter = list("plastic" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/yellow
@@ -200,14 +221,14 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	name = "dark floor tile"
 	singular_name = "dark floor tile"
 	icon_state = "tile_steel"
-	matter = list("plasteel" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/freezer
 	name = "freezer floor tile"
 	singular_name = "freezer floor tile"
 	icon_state = "tile_freezer"
-	matter = list("plastic" = SHEET_MATERIAL_AMOUNT / 4)
+	matter = list(MAT_PLASTIC = SHEET_MATERIAL_AMOUNT / 4)
 	no_variants = FALSE
 
 /obj/item/stack/tile/floor/cyborg
@@ -220,16 +241,23 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	stacktype = /obj/item/stack/tile/floor
 	build_type = /obj/item/stack/tile/floor
 
+/obj/item/stack/tile/floor/sandstone
+	name = "sandstone tile"
+	singular_name = "sandstone tile"
+	desc = "Hardened sand compacted into a brick akin to stone in toughness."
+	icon_state = "tile-sandstone"
+	matter = list("sandstone" = SHEET_MATERIAL_AMOUNT / 4)
+	no_variants = FALSE
+
 /obj/item/stack/tile/linoleum
 	name = "linoleum"
 	singular_name = "linoleum"
 	desc = "A piece of linoleum. It is the same size as a normal floor tile!"
 	icon_state = "tile-linoleum"
-	force = 1.0
-	throwforce = 1.0
+	damage_force = 1.0
+	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/wmarble
@@ -237,11 +265,10 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "light marble tile"
 	desc = "Some white marble tiles used for flooring."
 	icon_state = "tile-wmarble"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/bmarble
@@ -249,11 +276,10 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "dark marble tile"
 	desc = "Some black marble tiles used for flooring."
 	icon_state = "tile-bmarble"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/roofing
@@ -270,16 +296,25 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	stacktype = /obj/item/stack/tile/roofing
 	build_type = /obj/item/stack/tile/roofing
 
+/obj/item/stack/tile/roofing/wood
+	name = "wood roofing"
+	singular_name = "wood roofing"
+	icon_state = "tile-wood"
+
+/obj/item/stack/tile/roofing/bone
+	name = "bone roofing"
+	singular_name = "bone roofing"
+	icon_state = "tile-white"
+
 /obj/item/stack/tile/bananium
 	name = "bananium tile"
 	singular_name = "bananium tile"
 	desc = "The pinnacle of trolling."
 	icon_state = "tile-bananium"
-	force = 6.0
-	throwforce = 10.0
+	damage_force = 6.0
+	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/silencium
@@ -287,97 +322,108 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "silencium tile"
 	desc = "If a tear falls off a mime, and no one's around to see it, does it still not make a sound?"
 	icon_state = "tile-silencium"
-	force = 6.0
-	throwforce = 10.0
+	damage_force = 6.0
+	throw_force = 10.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/plasteel
 	name = "plasteel tile"
 	singular_name = "plasteel tile"
 	icon_state = "tile-plasteel"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/durasteel
 	name = "durasteel tile"
 	singular_name = "durasteel tile"
 	icon_state = "tile-durasteel"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/silver
 	name = "silver tile"
 	singular_name = "silver tile"
 	icon_state = "tile-silver"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/gold
 	name = "gold tile"
 	singular_name = "gold tile"
 	icon_state = "tile-gold"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/phoron
 	name = "phoron tile"
 	singular_name = "phoron tile"
 	icon_state = "tile-phoron"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/uranium
 	name = "uranium tile"
 	singular_name = "uranium tile"
 	icon_state = "tile-uranium"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/diamond
 	name = "diamond tile"
 	singular_name = "diamond tile"
 	icon_state = "tile-diamond"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
 	no_variants = FALSE
 
 /obj/item/stack/tile/brass
 	name = "brass tile"
 	singular_name = "brass tile"
 	icon_state = "tile-brass"
-	force = 6.0
-	throwforce = 15.0
+	damage_force = 6.0
+	throw_force = 15.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
+	no_variants = FALSE
+
+/obj/item/stack/tile/wax
+	name = "wax tile"
+	singular_name = "wax tile"
+	icon_state = "tile-wax"
+	damage_force = 1
+	throw_force = 1
+	throw_speed = 5
+	throw_range = 20
+	no_variants = FALSE
+
+/obj/item/stack/tile/honeycomb
+	name = "honeycomb tile"
+	singular_name = "honeycomb tile"
+	icon_state = "tile-honeycomb"
+	damage_force = 1
+	throw_force = 1
+	throw_speed = 5
+	throw_range = 20
 	no_variants = FALSE

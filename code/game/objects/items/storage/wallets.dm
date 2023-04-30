@@ -46,16 +46,16 @@
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
-/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location)
-	. = ..(W, new_location)
+/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location, do_move = TRUE)
+	. = ..()
 	if(.)
 		if(W == front_id)
 			front_id = null
 			name = initial(name)
 			update_icon()
 
-/obj/item/storage/wallet/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	. = ..(W, prevent_warning)
+/obj/item/storage/wallet/handle_item_insertion(obj/item/W as obj, mob/user, prevent_warning = 0)
+	. = ..()
 	if(.)
 		if(!front_id && istype(W, /obj/item/card/id))
 			front_id = W
@@ -63,14 +63,14 @@
 			update_icon()
 
 /obj/item/storage/wallet/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(front_id)
 		var/tiny_state = "id-generic"
 		if(("id-"+front_id.icon_state) in icon_states(icon))
 			tiny_state = "id-"+front_id.icon_state
 		var/image/tiny_image = new/image(icon, icon_state = tiny_state)
 		tiny_image.appearance_flags = RESET_COLOR
-		overlays += tiny_image
+		add_overlay(tiny_image)
 
 /obj/item/storage/wallet/GetID()
 	return front_id
@@ -133,4 +133,4 @@
 	name = "women's wallet"
 	desc = "A stylish wallet typically used by women."
 	icon_state = "girl_wallet"
-	item_state_slots = list(slot_r_hand_str = "wowallet", slot_l_hand_str = "wowallet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wowallet", SLOT_ID_LEFT_HAND = "wowallet")

@@ -1,7 +1,7 @@
 //Gas nozzle engine
 /datum/ship_engine/gas_thruster
 	name = "gas thruster"
-	var/obj/machinery/atmospherics/unary/engine/nozzle
+	var/obj/machinery/atmospherics/component/unary/engine/nozzle
 
 /datum/ship_engine/gas_thruster/New(var/obj/machinery/_holder)
 	..()
@@ -42,7 +42,7 @@
 			if(nozzle.check_blockage())
 				return
 		nozzle.update_use_power(USE_POWER_IDLE)
-		if(nozzle.stat & NOPOWER)//try again
+		if(nozzle.machine_stat & NOPOWER)//try again
 			nozzle.power_change()
 		if(nozzle.is_on())//if everything is in working order, start booting!
 			nozzle.next_on = world.time + nozzle.boot_time
@@ -52,17 +52,17 @@
 
 //Actual thermal nozzle engine object
 
-/obj/machinery/atmospherics/unary/engine
+/obj/machinery/atmospherics/component/unary/engine
 	name = "rocket nozzle"
 	desc = "Simple rocket nozzle, expelling gas at hypersonic velocities to propell the ship."
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
 	opacity = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
-	// construct_state = /decl/machine_construction/default/panel_closed
+	// construct_state = /singleton/machine_construction/default/panel_closed
 	// maximum_component_parts = list(/obj/item/stock_parts = 6)//don't want too many, let upgraded component shine
 	// uncreated_component_parts = list(/obj/item/stock_parts/power/apc/buildable = 1)
 
@@ -79,14 +79,21 @@
 	var/blockage
 	var/linked = FALSE
 
-/obj/machinery/atmospherics/unary/engine/Initialize(mapload)
+/obj/machinery/atmospherics/component/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
-	update_nearby_tiles(need_rebuild=1)
-	if(SSshuttle.subsystem_initialized)
+	update_nearby_tiles()
+	SSshuttle.unary_engines += src
+	if(SSshuttle.initialized)
 		link_to_ship()
 
-/obj/machinery/atmospherics/unary/engine/proc/link_to_ship()
+/obj/machinery/atmospherics/component/unary/engine/Destroy()
+	QDEL_NULL(controller)
+	SSshuttle.unary_engines -= src
+	update_nearby_tiles()
+	. = ..()
+
+/obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
 		var/obj/effect/overmap/visitable/ship/S = ship
 		if(S.check_ownership(src))
@@ -97,19 +104,14 @@
 				set_broken(FALSE)
 			linked = TRUE
 
-/obj/machinery/atmospherics/unary/engine/Destroy()
-	QDEL_NULL(controller)
-	update_nearby_tiles()
-	. = ..()
-
-/obj/machinery/atmospherics/unary/engine/proc/get_status()
+/obj/machinery/atmospherics/component/unary/engine/proc/get_status()
 	. = list()
 	.+= "Location: [get_area(src)]."
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		.+= list(list("Insufficient power to operate.", "bad"))
 	if(!check_fuel())
 		.+= list(list("Insufficient fuel for a burn.", "bad"))
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		.+= list(list("Inoperable engine configuration.", "bad"))
 	if(blockage)
 		.+= list(list("Obstruction of airflow detected.", "bad"))
@@ -118,38 +120,41 @@
 	.+= "Propellant used per burn: [round(air_contents.get_mass() * volume_per_burn * thrust_limit / air_contents.volume,0.01)] kg."
 	.+= "Propellant pressure: [round(air_contents.return_pressure()/1000,0.1)] MPa."
 
-/obj/machinery/atmospherics/unary/engine/power_change()
+/obj/machinery/atmospherics/component/unary/engine/legacy_ex_act()
+	return
+
+/obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		update_use_power(USE_POWER_OFF)
 
-/obj/machinery/atmospherics/unary/engine/proc/is_on()
+/obj/machinery/atmospherics/component/unary/engine/proc/is_on()
 	return use_power && operable() && (next_on < world.time)
 
-/obj/machinery/atmospherics/unary/engine/proc/check_fuel()
+/obj/machinery/atmospherics/component/unary/engine/proc/check_fuel()
 	return air_contents.total_moles > 5 // minimum fuel usage is five moles, for EXTREMELY hot mix or super low pressure
 
-/obj/machinery/atmospherics/unary/engine/proc/get_thrust()
+/obj/machinery/atmospherics/component/unary/engine/proc/get_thrust()
 	if(!is_on() || !check_fuel())
 		return 0
 	var/used_part = volume_per_burn * thrust_limit / air_contents.volume
 	. = calculate_thrust(air_contents, used_part)
 	return
 
-/obj/machinery/atmospherics/unary/engine/proc/check_blockage()
-	blockage = FALSE
-	var/exhaust_dir = reverse_direction(dir)
-	var/turf/A = get_step(src, exhaust_dir)
-	var/turf/B = A
-	while(isturf(A) && !(istype(A, /turf/space) || isopenspace(A)))
-		if((B.c_airblock(A)) & AIR_BLOCKED)
-			blockage = TRUE
-			break
-		B = A
-		A = get_step(A, exhaust_dir)
-	return blockage
+/obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
+	var/exhaust_dir = global.reverse_dir[dir]
+	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
+	while(!(isspaceturf(T) || (T.mz_flags & (MZ_ATMOS_BOTH))))
+		var/turf/next = get_step(T, exhaust_dir)
+		if(!next)
+			// not found
+			return TRUE
+		if(T.CheckAirBlock(next) == ATMOS_PASS_AIR_BLOCKED)
+			// couldn't go past
+			return TRUE
+	return FALSE
 
-/obj/machinery/atmospherics/unary/engine/proc/burn()
+/obj/machinery/atmospherics/component/unary/engine/proc/burn()
 	if(!is_on())
 		return 0
 	if(!check_fuel() || (use_power_oneoff(charge_per_burn) < charge_per_burn) || check_blockage())
@@ -165,16 +170,16 @@
 	if(network)
 		network.update = 1
 
-	var/exhaust_dir = reverse_direction(dir)
+	var/exhaust_dir = global.reverse_dir[dir]
 	var/turf/T = get_step(src,exhaust_dir)
 	if(T)
 		T.assume_air(removed)
 		new/obj/effect/engine_exhaust(T, exhaust_dir, air_contents.check_combustability() && air_contents.temperature >= PHORON_MINIMUM_BURN_TEMPERATURE)
 
-/obj/machinery/atmospherics/unary/engine/proc/calculate_thrust(datum/gas_mixture/propellant, used_part = 1)
+/obj/machinery/atmospherics/component/unary/engine/proc/calculate_thrust(datum/gas_mixture/propellant, used_part = 1)
 	return round((propellant.get_mass() * used_part * (air_contents.return_pressure()/200) ** 0.5) ** 0.85,0.1)
 
-/obj/machinery/atmospherics/unary/engine/RefreshParts()
+/obj/machinery/atmospherics/component/unary/engine/RefreshParts()
 	..()
 	//allows them to upgrade the max limit of fuel intake (which only gives diminishing returns) for increase in max thrust but massive reduction in fuel economy
 	var/bin_upgrade = 5 * clamp(total_component_rating_of_type(/obj/item/stock_parts/matter_bin), 0, 6)//5 litre per rank
@@ -207,7 +212,7 @@
 /obj/item/circuitboard/unary_atmos/engine //why don't we move this elsewhere?
 	name = T_BOARD("gas thruster")
 	icon_state = "mcontroller"
-	build_path = /obj/machinery/atmospherics/unary/engine
+	build_path = /obj/machinery/atmospherics/component/unary/engine
 	origin_tech = list(TECH_POWER = 1, TECH_ENGINEERING = 2)
 	req_components = list(
 		/obj/item/stack/cable_coil = 30,
@@ -216,7 +221,7 @@
 		/obj/item/stock_parts/capacitor = 2)
 
 // Not Implemented - Variant that pulls power from cables.  Too complicated without bay's power components.
-// /obj/machinery/atmospherics/unary/engine/terminal
-// 	base_type = /obj/machinery/atmospherics/unary/engine
-// 	stock_part_presets = list(/decl/stock_part_preset/terminal_setup)
+// /obj/machinery/atmospherics/component/unary/engine/terminal
+// 	base_type = /obj/machinery/atmospherics/component/unary/engine
+// 	stock_part_presets = list(/singleton/stock_part_preset/terminal_setup)
 // 	uncreated_component_parts = list(/obj/item/stock_parts/power/terminal/buildable = 1)

@@ -1,11 +1,15 @@
-import { Fragment } from 'inferno';
-import { useBackend } from "../backend";
-import { AnimatedNumber, Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import { AnimatedNumber, Button, LabeledList, ProgressBar, Section } from '../components';
+import { BeakerContents } from './common/BeakerContents';
+import { Window } from '../layouts';
 
 const damageTypes = [
   {
-    label: "Resp.",
+    label: "Brute",
+    type: "bruteLoss",
+  },
+  {
+    label: "Respiratory",
     type: "oxyLoss",
   },
   {
@@ -13,28 +17,17 @@ const damageTypes = [
     type: "toxLoss",
   },
   {
-    label: "Brute",
-    type: "bruteLoss",
-  },
-  {
     label: "Burn",
     type: "fireLoss",
   },
 ];
 
-const statNames = [
-  ["good", "Conscious"],
-  ["average", "Unconscious"],
-  ["bad", "DEAD"],
-];
-
-export const Cryo = (props, context) => {
+export const Cryo = () => {
   return (
     <Window
-      width={520}
-      height={470}
-      resizeable>
-      <Window.Content className="Layout__content--flexColumn">
+      width={400}
+      height={550}>
+      <Window.Content scrollable>
         <CryoContent />
       </Window.Content>
     </Window>
@@ -43,142 +36,89 @@ export const Cryo = (props, context) => {
 
 const CryoContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    isOperating,
-    hasOccupant,
-    occupant = [],
-    cellTemperature,
-    cellTemperatureStatus,
-    isBeakerLoaded,
-  } = data;
   return (
-    <Fragment>
-      <Section
-        title="Occupant"
-        flexGrow="1"
-        buttons={(
-          <Button
-            icon="user-slash"
-            onClick={() => act('ejectOccupant')}
-            disabled={!hasOccupant}>
-            Eject
-          </Button>
-        )}>
-        {hasOccupant ? (
-          <LabeledList>
-            <LabeledList.Item label="Occupant">
-              {occupant.name || "Unknown"}
-            </LabeledList.Item>
-            <LabeledList.Item label="Health">
-              <ProgressBar
-                min={occupant.health}
-                max={occupant.maxHealth}
-                value={occupant.health / occupant.maxHealth}
-                color={occupant.health > 0 ? 'good' : 'average'}>
-                <AnimatedNumber
-                  value={Math.round(occupant.health)} />
-              </ProgressBar>
-            </LabeledList.Item>
-            <LabeledList.Item
-              label="Status"
-              color={statNames[occupant.stat][0]}>
-              {statNames[occupant.stat][1]}
-            </LabeledList.Item>
-            <LabeledList.Item label="Temperature">
-              <AnimatedNumber
-                value={Math.round(occupant.bodyTemperature)} />
-              {' K'}
-            </LabeledList.Item>
-            <LabeledList.Divider />
-            {(damageTypes.map(damageType => (
+    <>
+      <Section title="Occupant">
+        <LabeledList>
+          <LabeledList.Item label="Occupant">
+            {data.occupant.name || 'No Occupant'}
+          </LabeledList.Item>
+          {!!data.hasOccupant && (
+            <>
               <LabeledList.Item
-                key={damageType.id}
-                label={damageType.label}>
+                label="State"
+                color={data.occupant.statstate}>
+                {data.occupant.stat}
+              </LabeledList.Item>
+              <LabeledList.Item
+                label="Temperature"
+                color={data.occupant.temperaturestatus}>
+                <AnimatedNumber
+                  value={data.occupant.bodyTemperature} />
+                {' K'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Health">
                 <ProgressBar
-                  value={occupant[damageType.type]/100}
-                  ranges={{ bad: [0.01, Infinity] }}>
+                  value={data.occupant.health / data.occupant.maxHealth}
+                  color={data.occupant.health > 0 ? 'good' : 'average'}>
                   <AnimatedNumber
-                    value={Math.round(occupant[damageType.type])} />
+                    value={data.occupant.health} />
                 </ProgressBar>
               </LabeledList.Item>
-            )))}
-          </LabeledList>
-        ) : (
-          <Flex height="100%" textAlign="center">
-            <Flex.Item grow="1" align="center" color="label">
-              <Icon
-                name="user-slash"
-                mb="0.5rem"
-                size="5"
-              /><br />
-              No occupant detected.
-            </Flex.Item>
-          </Flex>
-        )}
+              {(damageTypes.map(damageType => (
+                <LabeledList.Item
+                  key={damageType.id}
+                  label={damageType.label}>
+                  <ProgressBar
+                    value={data.occupant[damageType.type]/100}>
+                    <AnimatedNumber
+                      value={data.occupant[damageType.type]} />
+                  </ProgressBar>
+                </LabeledList.Item>
+              )))}
+            </>
+          )}
+        </LabeledList>
       </Section>
-      <Section
-        title="Cell"
-        buttons={(
-          <Button
-            icon="eject"
-            onClick={() => act('ejectBeaker')}
-            disabled={!isBeakerLoaded}>
-            Eject Beaker
-          </Button>
-        )}>
+      <Section title="Cell">
         <LabeledList>
           <LabeledList.Item label="Power">
             <Button
-              icon="power-off"
-              onClick={() => act(isOperating ? 'switchOff' : 'switchOn')}
-              selected={isOperating}>
-              {isOperating ? "On" : "Off"}
+              icon={data.isOperating ? "power-off" : "times"}
+              disabled={data.isOpen}
+              onClick={() => act('power')}
+              color={data.isOperating && 'green'}>
+              {data.isOperating ? "On" : "Off"}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Temperature" color={cellTemperatureStatus}>
-            <AnimatedNumber value={cellTemperature} /> K
+          <LabeledList.Item label="Temperature">
+            <AnimatedNumber value={data.cellTemperature} /> K
           </LabeledList.Item>
-          <LabeledList.Item label="Beaker">
-            <CryoBeaker />
+          <LabeledList.Item label="Door">
+            <Button
+              icon={data.isOpen ? "unlock" : "lock"}
+              onClick={() => act('door')}
+              content={data.isOpen ? "Open" : "Closed"} />
+            <Button
+              icon={data.autoEject ? "sign-out-alt" : "sign-in-alt"}
+              onClick={() => act('autoeject')}
+              content={data.autoEject ? "Auto" : "Manual"} />
           </LabeledList.Item>
         </LabeledList>
       </Section>
-    </Fragment>
+      <Section
+        title="Beaker"
+        buttons={(
+          <Button
+            icon="eject"
+            disabled={!data.isBeakerLoaded}
+            onClick={() => act('ejectbeaker')}
+            content="Eject" />
+        )}>
+        <BeakerContents
+          beakerLoaded={data.isBeakerLoaded}
+          beakerContents={data.beakerContents} />
+      </Section>
+    </>
   );
-};
-
-const CryoBeaker = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    isBeakerLoaded,
-    beakerLabel,
-    beakerVolume,
-  } = data;
-  if (isBeakerLoaded) {
-    return (
-      <Fragment>
-        {beakerLabel
-          ? beakerLabel
-          : (
-            <Box color="average">
-              No label
-            </Box>
-          )}
-        <Box color={!beakerVolume && "bad"}>
-          {beakerVolume ? (
-            <AnimatedNumber
-              value={beakerVolume}
-              format={v => Math.round(v) + " units remaining"}
-            />
-          ) : "Beaker is empty"}
-        </Box>
-      </Fragment>
-    );
-  } else {
-    return (
-      <Box color="average">
-        No beaker loaded
-      </Box>
-    );
-  }
 };

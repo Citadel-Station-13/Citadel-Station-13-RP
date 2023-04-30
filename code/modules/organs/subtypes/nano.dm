@@ -94,7 +94,7 @@
 /obj/item/organ/internal/nano/orchestrator
 	name = "orchestrator module"
 	desc = "A small computer, designed for highly parallel workloads."
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "orchestrator"
 	organ_tag = O_ORCH
 	parent_organ = BP_TORSO
@@ -103,12 +103,12 @@
 /obj/item/organ/internal/nano/refactory
 	name = "refactory module"
 	desc = "A miniature metal processing unit and nanite factory."
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "refactory"
 	organ_tag = O_FACT
 	parent_organ = BP_TORSO
 
-	var/list/materials = list(DEFAULT_WALL_MATERIAL = 0)
+	var/list/materials = list(MAT_STEEL = 0)
 	var/max_storage = 10000
 	var/processingbuffs = FALSE
 
@@ -149,7 +149,7 @@
 /obj/item/organ/internal/mmi_holder/posibrain/nano
 	name = "protean posibrain"
 	desc = "A more advanced version of the standard posibrain, typically found in protean bodies."
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "posi"
 	parent_organ = BP_TORSO
 
@@ -176,7 +176,7 @@
 /obj/item/mmi/digital/posibrain/nano
 	name = "protean posibrain"
 	desc = "A more advanced version of the standard posibrain, typically found in protean bodies."
-	icon = 'icons/mob/species/protean/protean.dmi'
+	icon = 'icons/mob/clothing/species/protean/protean.dmi'
 	icon_state = "posi"
 
 /obj/item/mmi/digital/posibrain/nano/Initialize(mapload)

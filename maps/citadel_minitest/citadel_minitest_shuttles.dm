@@ -51,15 +51,15 @@
 /obj/effect/shuttle_landmark/ferrydemo_space
 	name = "Ferry-Demo Space Hover Point"
 	landmark_tag = "nav_ferrydemo_space"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /obj/effect/shuttle_landmark/transit/ferrydemo_transit
 	name = "Ferry-Demo Transient Point"
 	landmark_tag = "nav_ferrydemo_transit"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 // /obj/machinery/computer/shuttle_control/power_change()
-// 	log_debug("[src].power_change() - area=[get_area(src)] powered=[powered(power_channel)]")
+// 	log_debug(SPAN_DEBUG("[src].power_change() - area=[get_area(src)] powered=[powered(power_channel)]"))
 // 	. = ..()
 
 
@@ -90,12 +90,12 @@
 /obj/effect/shuttle_landmark/multidemo_nearby
 	name = "Multi-Demo Nearby"
 	landmark_tag = "nav_multidemo_nearby"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /obj/effect/shuttle_landmark/transit/multidemo_transit
 	name = "Multi-Demo Transient Point"
 	landmark_tag = "nav_multidemo_transit"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 
 //
@@ -154,7 +154,7 @@
 /obj/effect/shuttle_landmark/transit/webdemo_transit
 	name = "Web-Demo Transient Point"
 	landmark_tag = "nav_webdemo_transit"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /datum/shuttle_destination/webdemo/nearby_bridge
 	name = "nearby the Bridge"
@@ -169,7 +169,7 @@
 /obj/effect/shuttle_landmark/webdemo_faraway
 	name = "\"Deep\" Space"
 	landmark_tag = "nav_webdemo_faraway"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 /datum/shuttle_destination/webdemo/faraway
 	name = "far away"

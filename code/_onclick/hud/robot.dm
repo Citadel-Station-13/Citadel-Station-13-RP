@@ -177,8 +177,8 @@ var/atom/movable/screen/robot_inventory
 	mymob.zone_sel = new /atom/movable/screen/zone_sel()
 	mymob.zone_sel.icon = ui_style
 	mymob.zone_sel.alpha = ui_alpha
-	mymob.zone_sel.overlays.Cut()
-	mymob.zone_sel.overlays += image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]")
+	mymob.zone_sel.cut_overlays()
+	mymob.zone_sel.add_overlay(image('icons/mob/zone_sel.dmi', "[mymob.zone_sel.selecting]"))
 
 	//Handle the gun settings buttons
 	mymob.gun_setting_icon = new /atom/movable/screen/gun/mode(null)
@@ -198,10 +198,8 @@ var/atom/movable/screen/robot_inventory
 
 	mymob.client.screen += list( mymob.throw_icon, mymob.zone_sel, mymob.oxygen, mymob.fire, mymob.hands, mymob.healths, using, mymob.pullin, robot_inventory, mymob.gun_setting_icon)
 	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
 
-	return
-
+	mymob.reload_rendering()
 
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!isrobot(mymob))
@@ -281,10 +279,8 @@ var/atom/movable/screen/robot_inventory
 		hands.icon_state = lowertext(modtype)
 	..()
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /mob/living/silicon/robot/update_hud()
-	if(ui_style_vr)
-		hands.icon = 'icons/mob/screen1_robot_vr.dmi'
 	if(modtype)
 		hands.icon_state = lowertext(modtype)
 	..()

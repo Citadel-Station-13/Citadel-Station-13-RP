@@ -116,6 +116,10 @@
 	path =/obj/item/light/bulb
 	is_stack = TRUE
 
+/datum/category_item/autolathe/general/bulb/fairy
+	name = "fairy light bulb"
+	path = "/obj/item/light/bulb/fairy"
+
 /datum/category_item/autolathe/general/ashtray_glass
 	name = "glass ashtray"
 	path =/obj/item/material/ashtray/glass
@@ -138,7 +142,7 @@
 	path = /obj/item/melee/spike
 	hidden = 1
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/category_item/autolathe/general/holocollar
 	name = "Holo-collar"

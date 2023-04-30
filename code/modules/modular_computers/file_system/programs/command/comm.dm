@@ -11,7 +11,7 @@
 	program_menu_icon = "flag"
 	nanomodule_path = /datum/nano_module/program/comm
 	extended_desc = "Used to command and control. Can relay long-range communications. This program can not be run on tablet computers."
-	required_access = access_heads
+	required_access = ACCESS_COMMAND_BRIDGE
 	requires_ntnet = 1
 	size = 12
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP
@@ -32,7 +32,7 @@
 	var/msg_line2 = ""
 	var/centcomm_message_cooldown = 0
 	var/announcment_cooldown = 0
-	var/datum/announcement/priority/crew_announcement = new
+	var/datum/legacy_announcement/priority/crew_announcement = new
 	var/current_viewing_message_id = 0
 	var/current_viewing_message = null
 
@@ -62,8 +62,8 @@
 	data["state"] = current_status
 	data["isAI"] = issilicon(usr)
 	data["authenticated"] = get_authentication_level(user)
-	data["current_security_level"] = security_level
-	data["current_security_level_title"] = num2seclevel(security_level)
+	data["current_security_level"] = GLOB.security_level
+	data["current_security_level_title"] = num2seclevel(GLOB.security_level)
 
 	data["def_SEC_LEVEL_DELTA"] = SEC_LEVEL_DELTA
 	data["def_SEC_LEVEL_YELLOW"] = SEC_LEVEL_YELLOW
@@ -97,7 +97,7 @@
 
 /datum/nano_module/program/comm/proc/get_authentication_level(var/mob/user)
 	if(program)
-		if(program.can_run(user, 0, access_captain))
+		if(program.can_run(user, 0, ACCESS_COMMAND_CAPTAIN))
 			return 2
 		else
 			return program.can_run(user)
@@ -150,7 +150,7 @@
 						var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)
 						if(!input || !can_still_topic())
 							return 1
-						Syndicate_announce(input, usr)
+						message_syndicate(input, usr)
 						to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 						log_say("[key_name(usr)] has made an illegal announcement: [input]")
 						centcomm_message_cooldown = 1
@@ -168,7 +168,7 @@
 					var/input = sanitize(input("Please choose a message to transmit to Centcomm via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", "") as null|text)
 					if(!input || !can_still_topic())
 						return 1
-					CentCom_announce(input, usr)
+					message_centcom(input, usr)
 					to_chat(usr, "<span class='notice'>Message transmitted.</span>")
 					log_say("[key_name(usr)] has made an IA Centcomm announcement: [input]")
 					centcomm_message_cooldown = 1
@@ -210,15 +210,15 @@
 				var/current_level = text2num(href_list["target"])
 				var/confirm = alert("Are you sure you want to change alert level to [num2seclevel(current_level)]?", name, "No", "Yes")
 				if(confirm == "Yes" && can_still_topic())
-					var/old_level = security_level
+					var/old_level = GLOB.security_level
 					if(!current_level) current_level = SEC_LEVEL_GREEN
 					if(current_level < SEC_LEVEL_GREEN) current_level = SEC_LEVEL_GREEN
 					if(current_level > SEC_LEVEL_BLUE) current_level = SEC_LEVEL_BLUE //Cannot engage delta with this
 					set_security_level(current_level)
-					if(security_level != old_level)
+					if(GLOB.security_level != old_level)
 						log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 						message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-						switch(security_level)
+						switch(GLOB.security_level)
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
 							if(SEC_LEVEL_YELLOW)
@@ -291,11 +291,11 @@ var/list/comm_message_listeners = list() //We first have to initialize list then
 var/datum/comm_message_listener/global_message_listener = new //May be used by admins
 var/last_message_id = 0
 
-proc/get_comm_message_id()
+/proc/get_comm_message_id()
 	last_message_id = last_message_id + 1
 	return last_message_id
 
-proc/post_comm_message(var/message_title, var/message_text)
+/proc/post_comm_message(var/message_title, var/message_text)
 	var/list/message = list()
 	message["id"] = get_comm_message_id()
 	message["title"] = message_title
@@ -305,8 +305,8 @@ proc/post_comm_message(var/message_title, var/message_text)
 		l.Add(message)
 
 	//Old console support
-	for (var/obj/machinery/computer/communications/comm in machines)
-		if (!(comm.stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
+	for (var/obj/machinery/computer/communications/comm in GLOB.machines)
+		if (!(comm.machine_stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
 			var/obj/item/paper/intercept = new /obj/item/paper( comm.loc )
 			intercept.name = message_title
 			intercept.info = message_text

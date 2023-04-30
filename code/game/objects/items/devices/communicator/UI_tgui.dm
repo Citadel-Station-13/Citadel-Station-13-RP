@@ -7,7 +7,8 @@
 	var/atom/movable/screen/map_view/cam_screen
 	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
-	var/atom/movable/screen/skybox/local_skybox
+	/// parallax holder for camera
+	var/datum/parallax_holder/parallax
 
 // Proc: setup_tgui_camera()
 // Parameters: None
@@ -30,11 +31,7 @@
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
 
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
+	parallax = new(null, map_name, src, locate(/atom/movable/screen/plane_master/parallax) in cam_plane_masters)
 
 	cam_background = new
 	cam_background.assigned_map = map_name
@@ -49,9 +46,6 @@
 		return
 
 	var/newturf = get_turf(video_source)
-	if(!is_on_same_plane_or_station(get_z(newturf), get_z(src)))
-		show_static()
-		return
 
 	var/obj/item/communicator/communicator = video_source.loc
 	if(istype(communicator))
@@ -63,7 +57,6 @@
 				cam_screen.vis_contents = list(communicator)
 			cam_background.fill_rect(1, 1, 1, 1)
 			cam_background.icon_state = "clear"
-			local_skybox.cut_overlays()
 			return
 
 	// If we're not forcing an update for some reason and the cameras are in the same location,
@@ -74,10 +67,6 @@
 	// We get a new turf in case they've moved in the last half decisecond (it's BYOND, it might happen)
 	last_camera_turf = get_turf(video_source)
 
-	if(!is_on_same_plane_or_station(get_z(last_camera_turf), get_z(src)))
-		show_static()
-		return
-
 	var/list/visible_turfs = list()
 	var/list/visible_things = view(video_range, last_camera_turf)
 	for(var/turf/visible_turf in visible_things)
@@ -87,21 +76,17 @@
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, (video_range * 2), (video_range * 2))
 
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(last_camera_turf)))
-	local_skybox.scale_to_view(video_range * 2)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - last_camera_turf.x, (world.maxy>>1) - last_camera_turf.y)
+	parallax.Update(TRUE)
 
 /obj/item/communicator/proc/show_static()
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, (video_range * 2), (video_range * 2))
-	local_skybox.cut_overlays()
 
 // Proc: ui_state()
 // Parameters: User
 // Description: This tells TGUI to only allow us to be interacted with while in a mob inventory.
-/obj/item/communicator/ui_state(mob/user)
+/obj/item/communicator/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.inventory_state
 
 // Proc: ui_interact()
@@ -117,6 +102,7 @@
 		for(var/plane in cam_plane_masters)
 			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
+		parallax.Apply(user.client)
 		// Setup UI
 		ui = new(user, src, "Communicator", name)
 		if(custom_state)
@@ -124,6 +110,10 @@
 		ui.open()
 	if(custom_state) // Just in case
 		ui.set_state(custom_state)
+
+/obj/item/communicator/ui_close(mob/user, datum/tgui_module/module)
+	. = ..()
+	parallax.Remove(user.client)
 
 // Proc: ui_data()
 // Parameters: User, UI, State
@@ -320,7 +310,7 @@
 // Proc: tgui-act()
 // Parameters: 4 (standard ui_act arguments)
 // Description: Responds to UI button presses.
-/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/item/communicator/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -382,7 +372,7 @@
 				exonet.send_message(their_address, "text", text)
 				im_list += list(list("address" = exonet.address, "to_address" = their_address, "im" = text))
 				log_pda("(COMM: [src]) sent \"[text]\" to [exonet.get_atom_from_address(their_address)]", usr)
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 						if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 							continue

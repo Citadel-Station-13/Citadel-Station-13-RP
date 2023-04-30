@@ -45,7 +45,7 @@
 		else
 			return
 	else
-		imp_in.verbs -= assigned_proc
+		remove_verb(imp_in, assigned_proc)
 		return
 
 	if(reagents)
@@ -74,7 +74,7 @@
 	if(user.incapacitated() || user.stat > CONSCIOUS)
 		return
 
-	var/obj/item/reagent_containers/container = user.get_active_hand()
+	var/obj/item/reagent_containers/container = user.get_active_held_item()
 	if(!container)
 		to_chat(user,"<span class='notice'>You need an open container to do this!</span>")
 		return

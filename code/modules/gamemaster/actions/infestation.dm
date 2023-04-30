@@ -25,12 +25,12 @@
 	has_skybox_image = TRUE
 
 /datum/gm_action/infestation/get_skybox_image()
-	if(!cloud_hueshift)
-		cloud_hueshift = color_rotation(rand(-3, 3) * 15)
-	var/image/res = image('icons/skybox/caelus.dmi', "rats")
-	res.color = cloud_hueshift
+	var/color1 = color_matrix_multiply(color_matrix_rotate_hue(rand(-3, 3) * 15), rgba_auto_greyscale_matrix("#8888ff"))
+	var/color2 = color_matrix_multiply(color_matrix_rotate_hue(rand(-3, 3) * 15), rgba_auto_greyscale_matrix("#88ff88"))
+	var/image/res = image('icons/skybox/caelus.dmi', "aurora")
 	res.appearance_flags = RESET_COLOR
 	res.blend_mode = BLEND_ADD
+	animate_color_shift(res, color1, color2, 1080 * 0.5, 1080 * 0.5)
 	return res
 
 /datum/gm_action/infestation/setup()
@@ -90,7 +90,7 @@
 	var/list/vents = list()
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in A.contents)
+		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
 			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
 				vents += temp_vent
 
@@ -117,7 +117,7 @@
 		var/num = spawncount
 		var/spawn_type = pick(spawn_types)
 		while(vents.len > 0 && num > 0)
-			var/obj/machinery/atmospherics/unary/vent_pump/V = pick(vents)
+			var/obj/machinery/atmospherics/component/unary/vent_pump/V = pick(vents)
 			num--
 			new spawn_type(V.loc)
 

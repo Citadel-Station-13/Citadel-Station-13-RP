@@ -49,26 +49,25 @@
 /obj/machinery/computer/telescience/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/ore/bluespace_crystal))
 		if(crystals.len >= max_crystals)
-			to_chat(user, "<span class='warning'>There are not enough crystal slots.</span>")
+			to_chat(user, SPAN_WARNING("There are not enough crystal slots."))
 			return
-		if(!user.unEquip(W))
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		crystals += W
-		W.forceMove(src)
-		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", "<span class='notice'>You insert [W] into \the [src]'s crystal slot.</span>")
+		user.visible_message("[user] inserts [W] into \the [src]'s crystal slot.", SPAN_NOTICE("You insert [W] into \the [src]'s crystal slot."))
 		updateDialog()
 	else if(istype(W, /obj/item/gps))
 		if(!inserted_gps)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			inserted_gps = W
-			user.unEquip(W)
-			W.forceMove(src)
-			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", "<span class='notice'>You insert [W] into \the [src]'s GPS device slot.</span>")
+			user.visible_message("[user] inserts [W] into \the [src]'s GPS device slot.", SPAN_NOTICE("You insert [W] into \the [src]'s GPS device slot."))
 	else if(istype(W, /obj/item/multitool))
 		var/obj/item/multitool/M = W
 		if(M.connectable && istype(M.connectable, /obj/machinery/telepad))
 			telepad = M.connectable
 			M.connectable = null
-			to_chat(user, "<span class='caution'>You upload the data from the [W.name]'s buffer.</span>")
+			to_chat(user, SPAN_CAUTION("You upload the data from the [W.name]'s buffer."))
 	else
 		return ..()
 
@@ -78,7 +77,7 @@
 /obj/machinery/computer/telescience/attack_ai(mob/user)
 	src.attack_hand(user)
 
-/obj/machinery/computer/telescience/attack_hand(mob/user)
+/obj/machinery/computer/telescience/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	nano_ui_interact(user)
@@ -88,7 +87,7 @@
 
 	var/data[0]
 	if(!telepad)
-		in_use = 0     //Yeah so if you deconstruct teleporter while its in the process of shooting it wont disable the console
+		in_use = 0 //Yeah so if you deconstruct teleporter while its in the process of shooting it wont disable the console
 		data["noTelepad"] = 1
 	else
 		data["insertedGps"] = inserted_gps
@@ -139,7 +138,7 @@
 			return
 		if(86 to 90)
 			// Irradiate everyone in telescience!
-			for(var/obj/machinery/telepad/E in machines)
+			for(var/obj/machinery/telepad/E in GLOB.machines)
 				var/L = get_turf(E)
 				sparks()
 				for(var/mob/living/carbon/human/M in viewers(L, null))
@@ -214,7 +213,7 @@
 			S.set_up(5, 1, get_turf(telepad))
 			S.start()
 
-			if(!A || (A.flags & BLUE_SHIELDED))
+			if(!A || (A.area_flags & AREA_FLAG_BLUE_SHIELDED))
 				telefail()
 				temp_msg = "ERROR!<BR>Target is shielded from bluespace intersection!"
 				return

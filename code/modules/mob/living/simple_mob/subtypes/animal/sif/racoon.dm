@@ -31,7 +31,7 @@
 	has_hands = TRUE
 	humanoid_hands = TRUE
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	universal_understand = 1
 
@@ -42,7 +42,7 @@
 	base_attack_cooldown = 1 SECOND
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
-	armor = list(
+	armor_legacy_mob = list(
 		"melee" = 15,
 		"bullet" = 5,
 		"laser" = 5,
@@ -50,16 +50,6 @@
 		"bomb" = 10,
 		"bio" = 100,
 		"rad" = 100
-		)
-
-	armor_soak = list(
-		"melee" = 2,
-		"bullet" = 2,
-		"laser" = 0,
-		"energy" = 0,
-		"bomb" = 0,
-		"bio" = 0,
-		"rad" = 0
 		)
 
 	say_list_type = /datum/say_list/sakimm
@@ -111,24 +101,24 @@
 		to_chat(user, "<span class='notice'>\The [src] already has a hat!</span>")
 	else
 		if(user == src)
-			if(istype(get_active_hand(), /obj/item/clothing/head))
-				hat = get_active_hand()
-				drop_from_inventory(hat, src)
-				hat.forceMove(src)
-				to_chat(user, "<span class='notice'>You put on the hat.</span>")
+			if(istype(get_active_held_item(), /obj/item/clothing/head))
+				hat = get_active_held_item()
+				transfer_item_to_loc(hat, src, INV_OP_FORCE)
+				to_chat(src, "<span class='notice'>You put on the hat.</span>")
 				update_icon()
 			return
 		else if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 
-			if(istype(H.get_active_hand(), /obj/item/clothing/head) && !get_active_hand())
-				var/obj/item/clothing/head/newhat = H.get_active_hand()
-				H.drop_from_inventory(newhat, get_turf(src))
+			if(istype(H.get_active_held_item(), /obj/item/clothing/head) && !get_active_held_item())
+				var/obj/item/clothing/head/newhat = H.get_active_held_item()
+				if(!H.attempt_insert_item_for_installation(newhat, get_turf(src)))
+					return
 				if(!stat)
 					a_intent = INTENT_HELP
 					newhat.attack_hand(src)
-			else if(src.get_active_hand())
-				to_chat(user, "<span class='notice'>\The [src] seems busy with \the [get_active_hand()] already!</span>")
+			else if(src.get_active_held_item())
+				to_chat(user, "<span class='notice'>\The [src] seems busy with \the [get_active_held_item()] already!</span>")
 
 			else
 				to_chat(user, "<span class='warning'>You aren't holding a hat...</span>")
@@ -144,20 +134,18 @@
 	..()
 
 /mob/living/simple_mob/animal/sif/sakimm/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image('icons/mob/head.dmi', src, hat_state)
-		I.pixel_y = -15 // Sakimm are tiny!
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_STRING_DEFAULT)
+		MA.appearance_flags = RESET_COLOR
+		add_overlay(MA)
 
 /mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(randomize_size)
 		adjust_scale(rand(8, 11) / 10)
@@ -171,7 +159,7 @@
 
 	if(!.)
 		var/has_loot = FALSE
-		var/obj/item/I = H.get_active_hand()
+		var/obj/item/I = H.get_active_held_item()
 		if(I)
 			for(var/item_type in friend_loot_list)
 				if(istype(I, item_type))
@@ -182,8 +170,8 @@
 /datum/ai_holder/simple_mob/retaliate/cooperative/sakimm/handle_special_strategical()	// Just needs to take hats.
 	var/mob/living/simple_mob/animal/sif/sakimm/S = holder
 
-	if(holder.get_active_hand() && istype(holder.get_active_hand(), /obj/item/clothing/head) && !S.hat)
-		var/obj/item/I = holder.get_active_hand()
+	if(holder.get_active_held_item() && istype(holder.get_active_held_item(), /obj/item/clothing/head) && !S.hat)
+		var/obj/item/I = holder.get_active_held_item()
 		S.take_hat(S)
 		holder.visible_message("<span class='notice'>\The [holder] wears \the [I]</span>")
 
@@ -212,7 +200,7 @@
 	original_home_distance = max_home_distance
 
 /datum/ai_holder/simple_mob/intentional/sakimm/post_melee_attack(atom/A)
-	if(istype(A, /obj/item) && !holder.get_active_hand() && holder.Adjacent(A))
+	if(istype(A, /obj/item) && !holder.get_active_held_item() && holder.Adjacent(A))
 		var/obj/item/I = A
 		I.attack_hand(holder)
 		lose_target()
@@ -230,7 +218,7 @@
 		if(can_see(holder, HM, vision_range))
 			. += HM
 
-	if(holder.get_active_hand())	// We don't want item targets if we have an item!
+	if(holder.get_active_held_item())	// We don't want item targets if we have an item!
 		return .
 
 	if(world.time <= last_search + search_delay)	// Don't spam searching for item targets, since they can be in areas with a -lot- of items.
@@ -281,8 +269,8 @@
 /datum/ai_holder/simple_mob/intentional/sakimm/pre_melee_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
-		if(holder.get_active_hand())	// Are we holding something? If so, drop it, we have a new target to kill, and we shouldn't use their weapons.
-			holder.drop_from_inventory(holder.get_active_hand(), get_turf(holder))
+		// Are we holding something? If so, drop it, we have a new target to kill, and we shouldn't use their weapons.
+		holder.drop_active_held_item()
 
 		if(ishuman(L))
 			if(L.incapacitated(INCAPACITATION_DISABLED))	// Is our target on the ground? If so, let's scratch!
@@ -310,7 +298,7 @@
 		holder.a_intent = INTENT_HARM
 
 /datum/ai_holder/simple_mob/intentional/sakimm/should_go_home()
-	if((!returns_home && !holder.get_active_hand()) || !home_turf)	// If we have an item, we want to go home.
+	if((!returns_home && !holder.get_active_held_item()) || !home_turf)	// If we have an item, we want to go home.
 		return FALSE
 	if(get_dist(holder, home_turf) > max_home_distance)
 		if(!home_low_priority)
@@ -330,9 +318,9 @@
 	var/mob/living/simple_mob/animal/sif/sakimm/S = holder
 	var/carrying_item = FALSE
 
-	if(holder.get_active_hand())	// Do we have loot?
-		if(istype(holder) && istype(holder.get_active_hand(), /obj/item/clothing/head) && !S.hat)
-			var/obj/item/I = holder.get_active_hand()
+	if(holder.get_active_held_item())	// Do we have loot?
+		if(istype(holder) && istype(holder.get_active_held_item(), /obj/item/clothing/head) && !S.hat)
+			var/obj/item/I = holder.get_active_held_item()
 			S.take_hat(S)
 			holder.visible_message("<span class='notice'>\The [holder] wears \the [I]</span>")
 		carrying_item = TRUE
@@ -345,15 +333,15 @@
 		greed = min(95, greed)
 	else
 		greed = 0
-	if(!target && prob(5 + greed) && !holder.get_active_hand())
+	if(!target && prob(5 + greed) && !holder.get_active_held_item())
 		find_target()
-	if(holder.get_active_hand() && hoard_items)
+	if(holder.get_active_held_item() && hoard_items)
 		lose_target()
 		max_home_distance = 1
 	if(get_dist(holder, home_turf) <= max_home_distance)
-		holder.drop_from_inventory(holder.get_active_hand(), get_turf(holder))
-	if(!holder.get_active_hand())
+		holder.drop_active_held_item()
+	if(!holder.get_active_held_item())
 		max_home_distance = original_home_distance
 
 /datum/ai_holder/simple_mob/intentional/sakimm/special_flee_check()
-	return holder.get_active_hand()
+	return holder.get_active_held_item()

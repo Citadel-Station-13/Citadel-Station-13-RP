@@ -132,6 +132,5 @@
 
 	mymob.client.screen = list()
 	mymob.client.screen += adding + other
-	mymob.client.screen += mymob.client.void
 
-	return
+	mymob.reload_rendering()

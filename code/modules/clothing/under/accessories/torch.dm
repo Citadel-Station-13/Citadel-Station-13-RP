@@ -147,6 +147,9 @@ specialty pins
 	icon_state = "marinerank_command"
 	slot = ACCESSORY_SLOT_INSIGNIA
 
+/obj/item/clothing/accessory/oricon/specialty/get_fibers()
+	return null
+
 /obj/item/clothing/accessory/oricon/specialty/janitor
 	name = "custodial blazes"
 	desc = "Purple blazes denoting a custodial technician."
@@ -222,7 +225,7 @@ badges
 	if(!istype(H))
 		return
 	var/religion = "Unset"
-	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species()])\nReligion: [religion]\nBlood type: [H.b_type]"
+	desc = "[initial(desc)]\nName: [H.real_name] ([H.get_species_name()])\nReligion: [religion]\nBlood type: [H.b_type]"
 
 /obj/item/clothing/accessory/badge/oricon/representative
 	name = "representative's badge"
@@ -338,6 +341,11 @@ department tags
 	desc = "Insignia denoting assignment to the security department. These fit Expeditionary Corps uniforms."
 	color = "#bf0000"
 
+/obj/item/clothing/accessory/oricon/department/blueshield
+	name = "blueshield insignia"
+	desc = "Insignia denoting assignment as a Blueshield. These fit utility uniforms."
+	color = "#404090"
+
 /obj/item/clothing/accessory/oricon/department/security/service
 	icon_state = "dept_exped_service"
 
@@ -443,6 +451,9 @@ ranks - ec
 	slot = ACCESSORY_SLOT_DECOR
 	gender = PLURAL
 	//high_visibility = 1
+
+/obj/item/clothing/accessory/oricon/rank/get_fibers()
+	return null
 
 /obj/item/clothing/accessory/oricon/rank/ec
 	name = "explorer ranks"

@@ -4,7 +4,7 @@
 /obj/random/great_helm
 	name = "random great helm"
 	desc = "This is a random great helm."
-	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon = 'icons/clothing/suit/armor/medieval/crusader.dmi'
 	icon_state = "crusader"
 
 /obj/random/great_helm/item_to_spawn()
@@ -16,7 +16,7 @@
 /obj/random/crusader_armor
 	name = "random crusader armour"
 	desc = "This is a random crusader armour."
-	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon = 'icons/clothing/suit/armor/medieval/crusader.dmi'
 	icon_state = "crusader"
 
 /obj/random/crusader_armor/item_to_spawn()
@@ -29,7 +29,7 @@
 /obj/random/great_helm_replica
 	name = "random great helm replica"
 	desc = "This is a replica of random great helm."
-	icon = 'icons/obj/clothing/medieval_helmet.dmi'
+	icon = 'icons/clothing/suit/armor/medieval/crusader.dmi'
 	icon_state = "crusader"
 
 /obj/random/great_helm_replica/item_to_spawn()
@@ -41,7 +41,7 @@
 /obj/random/crusader_armor_replica
 	name = "random crusader armour replica"
 	desc = "This is a replica of random crusader armour."
-	icon = 'icons/obj/clothing/medieval_armor.dmi'
+	icon = 'icons/clothing/suit/armor/medieval/crusader.dmi'
 	icon_state = "crusader"
 
 /obj/random/crusader_armor_replica/item_to_spawn()
@@ -54,7 +54,7 @@
 /obj/random/crusader_cloak
 	name = "random crusader cloak"
 	desc = "This is a random crusader cloak."
-	icon = 'icons/obj/clothing/ties_cit.dmi'
+	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "cloak_crusader"
 
 /obj/random/crusader_cloak/item_to_spawn()

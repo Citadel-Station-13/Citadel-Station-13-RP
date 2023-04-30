@@ -4,108 +4,125 @@
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bluetie"
 	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
-	appearance_flags = RESET_COLOR	// Stops has_suit's color from being multiplied onto the accessory
+	appearance_flags = RESET_COLOR	// Stops accessory_host's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
 	w_class = ITEMSIZE_SMALL
+	accessory_render_legacy = TRUE
+	accessory_render_specific = FALSE
 	var/slot = ACCESSORY_SLOT_DECOR
-	var/obj/item/clothing/has_suit = null		// The suit the tie may be attached to
-	var/image/inv_overlay = null				// Overlay used when attached to clothing.
 	var/image/mob_overlay = null
 	var/overlay_state = null
 	var/concealed_holster = 0
 	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
 	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ties.dmi', //Teshari can into webbing, too!
-		SPECIES_VOX = 'icons/mob/species/vox/ties.dmi')
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi', //Teshari can into webbing, too!
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
 /obj/item/clothing/accessory/Destroy()
+	accessory_host?.accessories -= src
 	on_removed()
 	return ..()
 
-/obj/item/clothing/accessory/MouseDrop(mob/user as mob)
-	if(ismob(src.loc))
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
-		if(!M.unEquip(src))
-			return
-		src.add_fingerprint(usr)
-		M.put_in_active_hand(src)
-
-
+// todo: refactor entirely, we shouldn't have /obj/item/clothing/accessory
 /obj/item/clothing/accessory/proc/get_inv_overlay()
-	if(!inv_overlay)
-		var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
-		if(icon_override)
-			if("[tmp_icon_state]_tie" in icon_states(icon_override))
-				tmp_icon_state = "[tmp_icon_state]_tie"
-			inv_overlay = image(icon = icon_override, icon_state = tmp_icon_state, dir = SOUTH)
-		else
-			inv_overlay = image(icon = INV_ACCESSORIES_DEF_ICON, icon_state = tmp_icon_state, dir = SOUTH)
+	var/mutable_appearance/inv_overlay
+	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
+	if(icon_override)
+		if("[tmp_icon_state]_tie" in icon_states(icon_override))
+			tmp_icon_state = "[tmp_icon_state]_tie"
+		inv_overlay = mutable_appearance(icon = icon_override, icon_state = tmp_icon_state)
+	else
+		inv_overlay = mutable_appearance(icon = INV_ACCESSORIES_DEF_ICON, icon_state = tmp_icon_state)
 
-		inv_overlay.color = src.color
-		inv_overlay.appearance_flags = appearance_flags	// Stops has_suit's color from being multiplied onto the accessory
+	inv_overlay.color = src.color
+	inv_overlay.dir = SOUTH
+	inv_overlay.appearance_flags = appearance_flags	// Stops accessory_host's color from being multiplied onto the accessory
 	return inv_overlay
 
 /obj/item/clothing/accessory/proc/get_mob_overlay()
 	if(!istype(loc,/obj/item/clothing/))	//don't need special handling if it's worn as normal item.
 		return
 	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
-	if(ishuman(has_suit.loc))
-		wearer = has_suit.loc
+	if(ishuman(accessory_host.loc))
+		wearer = accessory_host.loc
 	else
 		wearer = null
 
 	if(istype(loc,/obj/item/clothing/under))
 		var/obj/item/clothing/under/C = loc
-		if(on_rolled["down"] && C.rolled_down > 0)
+		if(on_rolled["down"] && C.worn_rolled_down == UNIFORM_ROLL_TRUE)
 			tmp_icon_state = on_rolled["down"]
-		else if(on_rolled["rolled"] && C.rolled_sleeves > 0)
+		else if(on_rolled["rolled"] && C.worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
 			tmp_icon_state = on_rolled["rolled"]
 
 	if(icon_override)
 		if("[tmp_icon_state]_mob" in icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_mob"
-		mob_overlay = image("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
-	else if(wearer && sprite_sheets[wearer.species.get_bodytype(wearer)]) //Teshari can finally into webbing, too!
-		mob_overlay = image("icon" = sprite_sheets[wearer.species.get_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
+		mob_overlay = mutable_appearance("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
+	else if(wearer && sprite_sheets?[bodytype_to_string(wearer.species.get_effective_bodytype(wearer, src, accessory_host.worn_slot))]) //Teshari can finally into webbing, too!
+		mob_overlay = mutable_appearance("icon" = sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
 	else
-		mob_overlay = image("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")
+		mob_overlay = mutable_appearance("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")
 	if(addblends)
 		var/icon/base = new/icon("icon" = mob_overlay.icon, "icon_state" = mob_overlay.icon_state)
 		var/addblend_icon = new/icon("icon" = mob_overlay.icon, "icon_state" = src.addblends)
 		if(color)
 			base.Blend(src.color, ICON_MULTIPLY)
 		base.Blend(addblend_icon, ICON_ADD)
-		mob_overlay = image(base)
+		mob_overlay = mutable_appearance(base)
 	else
 		mob_overlay.color = src.color
 
-	mob_overlay.appearance_flags = appearance_flags	// Stops has_suit's color from being multiplied onto the accessory
+	mob_overlay.appearance_flags = appearance_flags	// Stops accessory_host's color from being multiplied onto the accessory
 	return mob_overlay
 
 //when user attached an accessory to S
 /obj/item/clothing/accessory/proc/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(!istype(S))
 		return
-	has_suit = S
-	src.forceMove(S)
-	has_suit.add_overlay(get_inv_overlay())
+	accessory_host = S
+	forceMove(S)
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
+	if(S.worn_slot)
+		pickup(S.worn_mob(), INV_OP_IS_ACCESSORY)
+		equipped(S.worn_mob(), S.worn_slot, INV_OP_IS_ACCESSORY)
+
+	// inventory handling end
+
+	accessory_inv_cached = render_accessory_inv()
+	if(accessory_inv_cached)
+		accessory_host.add_overlay(accessory_inv_cached)
 
 	if(user)
-		to_chat(user, "<span class='notice'>You attach \the [src] to \the [has_suit].</span>")
+		to_chat(user, "<span class='notice'>You attach \the [src] to \the [accessory_host].</span>")
 		add_fingerprint(user)
 
-/obj/item/clothing/accessory/proc/on_removed(var/mob/user)
-	if(!has_suit)
+/obj/item/clothing/accessory/proc/on_removed(mob/user)
+	if(!accessory_host)
 		return
-	has_suit.cut_overlay(get_inv_overlay())
-	has_suit = null
+
+	// inventory handling start
+
+	// todo: don't call dropped/pickup if going to same person
+	if(accessory_host.worn_slot)
+		unequipped(accessory_host.worn_mob(), accessory_host.worn_slot, INV_OP_IS_ACCESSORY)
+		dropped(accessory_host.worn_mob(), INV_OP_IS_ACCESSORY)
+
+	// inventory handling stop
+
+	if(accessory_inv_cached)
+		accessory_host.cut_overlay(accessory_inv_cached)
+		accessory_inv_cached = null
+	accessory_host = null
+
 	if(user)
-		usr.put_in_hands(src)
+		user.put_in_hands_or_drop(src)
 		add_fingerprint(user)
 	else if(get_turf(src))		//We actually exist in space
 		forceMove(get_turf(src))
@@ -115,8 +132,8 @@
 	..()
 
 //default attack_hand behaviour
-/obj/item/clothing/accessory/attack_hand(mob/user as mob)
-	if(has_suit)
+/obj/item/clothing/accessory/attack_hand(mob/user, list/params)
+	if(accessory_host)
 		return	//we aren't an object on the ground so don't call parent
 	..()
 
@@ -183,26 +200,28 @@
 /obj/item/clothing/accessory/stethoscope/do_surgery(mob/living/carbon/human/M, mob/living/user)
 	if(user.a_intent != INTENT_HELP) //in case it is ever used as a surgery tool
 		return ..()
-	attack(M, user) //default surgery behaviour is just to scan as usual
-	return 1
+	return TRUE
 
-/obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
-	if(ishuman(M) && isliving(user))
+/obj/item/clothing/accessory/stethoscope/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(ishuman(target) && isliving(user))
+		var/mob/living/carbon/human/H = target
 		if(user.a_intent == INTENT_HELP)
 			var/body_part = parse_zone(user.zone_sel.selecting)
 			if(body_part)
 				var/their = "their"
-				switch(M.gender)
+				switch(H.gender)
 					if(MALE)	their = "his"
 					if(FEMALE)	their = "her"
 
 				var/sound = "heartbeat"
 				var/sound_strength = "cannot hear"
 				var/heartbeat = 0
-				var/obj/item/organ/internal/heart/heart = M.internal_organs_by_name[O_HEART]
+				var/obj/item/organ/internal/heart/heart = H.internal_organs_by_name[O_HEART]
 				if(heart && !(heart.robotic >= ORGAN_ROBOT))
 					heartbeat = 1
-				if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
+				if(H.stat == DEAD || (H.status_flags&STATUS_FAKEDEATH))
 					sound_strength = "cannot hear"
 					sound = "anything"
 				else
@@ -211,15 +230,15 @@
 							sound_strength = "hear"
 							sound = "no heartbeat"
 							if(heartbeat)
-								if(heart.is_bruised() || M.getOxyLoss() > 50)
+								if(heart.is_bruised() || H.getOxyLoss() > 50)
 									sound = "[pick("odd noises in","weak")] heartbeat"
 								else
 									sound = "healthy heartbeat"
 
-							var/obj/item/organ/internal/heart/L = M.internal_organs_by_name[O_LUNGS]
-							if(!L || M.losebreath)
+							var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_LUNGS]
+							if(!L || H.losebreath)
 								sound += " and no respiration"
-							else if(M.is_lung_ruptured() || M.getOxyLoss() > 50)
+							else if(H.is_lung_ruptured() || H.getOxyLoss() > 50)
 								sound += " and [pick("wheezing","gurgling")] sounds"
 							else
 								sound += " and healthy respiration"
@@ -231,9 +250,9 @@
 								sound_strength = "hear a weak"
 								sound = "pulse"
 
-				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
+				user.visible_message("[user] places [src] against [H]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
 				return
-	return ..(M,user)
+	return ..()
 
 //Medals
 /obj/item/clothing/accessory/medal
@@ -366,14 +385,17 @@
 	slot = ACCESSORY_SLOT_DECOR
 	action_button_name = "Adjust Gaiter"
 
-/obj/item/clothing/accessory/gaiter/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/gaiter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You pull the gaiter up over your nose.")
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You tug the gaiter down around your neck.")
-	update_clothing_icon()	//so our mob-overlays update
+	update_worn_icon()	//so our mob-overlays update
 
 /obj/item/clothing/accessory/gaiter/tan
 	name = "neck gaiter (tan)"
@@ -414,14 +436,13 @@
 		to_chat(M, "You dedicate the bracelet to [input], remembering the times you've had together.")
 		return 1
 
-
 /obj/item/clothing/accessory/bracelet/material
 	icon_state = "materialbracelet"
 
 /obj/item/clothing/accessory/bracelet/material/Initialize(mapload, new_material)
 	. = ..(mapload)
 	if(!new_material)
-		new_material = DEFAULT_WALL_MATERIAL
+		new_material = MAT_STEEL
 	material = get_material_by_name(new_material)
 	if(!istype(material))
 		return INITIALIZE_HINT_QDEL
@@ -520,13 +541,16 @@
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	desc = "A simple, plain choker. Or maybe it's a collar? Use in-hand to customize it."
 	icon = 'icons/obj/clothing/collars.dmi'
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "choker_cst"
 	item_state = "choker_cst_overlay"
 	overlay_state = "choker_cst_overlay"
 	var/customized = 0
 
-/obj/item/clothing/accessory/choker/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/choker/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!customized)
 		var/design = input(user,"Descriptor?","Pick descriptor","") in list("plain","simple","ornate","elegant","opulent")
 		var/material = input(user,"Material?","Pick material","") in list("leather","velvet","lace","fabric","latex","plastic","metal","chain","silver","gold","platinum","steel","bead","ruby","sapphire","emerald","diamond")
@@ -541,7 +565,7 @@
 /obj/item/clothing/accessory/collar
 	slot_flags = SLOT_TIE | SLOT_OCLOTHING
 	icon = 'icons/obj/clothing/collars.dmi'
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/icon_previous_override
 	var/writtenon = 0
 
@@ -550,30 +574,46 @@
 	. = ..()
 	icon_previous_override = icon_override
 
+/obj/item/clothing/accessory/collar/attackby(obj/item/P as obj, mob/user as mob)
+	if(istype(P, /obj/item/pen))
+		to_chat(user,"<span class='notice'>You write on [name]'s tag.</span>")
+		var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
+
+		if(!str || !length(str))
+			to_chat(user,"<span class='notice'>[name]'s tag set to be blank.</span>")
+			name = initial(name)
+			desc = initial(desc)
+		else
+			to_chat(user,"<span class='notice'>You set the [name]'s tag to '[str]'.</span>")
+			name = initial(name) + " ([str])"
+			desc = initial(desc) + " The tag says \"[str]\"."
+		return CLICKCHAIN_DID_SOMETHING
+	return ..()
+
 // Solution for race-specific sprites for an accessory which is also a suit.
 // Suit icons break if you don't use icon override which then also overrides race-specific sprites.
-/obj/item/clothing/accessory/collar/equipped()
+/obj/item/clothing/accessory/collar/equipped(mob/user, slot, flags)
 	..()
 	setUniqueSpeciesSprite()
 
 /obj/item/clothing/accessory/collar/proc/setUniqueSpeciesSprite()
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H))
-		if(istype(has_suit) && ishuman(has_suit.loc))
-			H = has_suit.loc
+		if(istype(accessory_host) && ishuman(accessory_host.loc))
+			H = accessory_host.loc
 	if(istype(H))
-		if(H.species.name == SPECIES_TESHARI)
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
-		update_clothing_icon()
+		if(H.species.get_species_id() == SPECIES_ID_TESHARI)
+			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
+		update_worn_icon()
 
 /obj/item/clothing/accessory/collar/on_attached(var/obj/item/clothing/S, var/mob/user)
 	if(!istype(S))
 		return
-	has_suit = S
+	accessory_host = S
 	setUniqueSpeciesSprite()
 	..(S, user)
 
-/obj/item/clothing/accessory/collar/dropped()
+/obj/item/clothing/accessory/collar/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	icon_override = icon_previous_override
 
@@ -701,7 +741,7 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)
 		s.start()
-		M.Weaken(10)
+		M.afflict_paralyze(20 * 10)
 	return
 
 /obj/item/clothing/accessory/collar/shock/attack_self(mob/user as mob, flag1)
@@ -750,7 +790,7 @@
 	icon_state = "collar_holo"
 	item_state = "collar_holo_overlay"
 	overlay_state = "collar_holo_overlay"
-	matter = list(DEFAULT_WALL_MATERIAL = 50)
+	matter = list(MAT_STEEL = 50)
 
 /obj/item/clothing/accessory/collar/silvercolor
 	name = "Dyeable Silver tag collar"
@@ -777,7 +817,10 @@
 /obj/item/clothing/accessory/collar/holo/indigestible/digest_act(var/atom/movable/item_storage = null)
 	return FALSE
 
-/obj/item/clothing/accessory/collar/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/collar/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(istype(src,/obj/item/clothing/accessory/collar/holo))
 		to_chat(user,"<span class='notice'>[name]'s interface is projected onto your hand.</span>")
 	else
@@ -820,7 +863,7 @@
 	to_chat(user,"<span class='notice'>You need a pen or a screwdriver to edit the tag on this collar.</span>")
 
 /obj/item/clothing/accessory/collar/proc/update_collartag(mob/user, obj/item/I, var/erasemethod, var/erasing, var/writemethod)
-	if(!(istype(user.get_active_hand(),I)) || !(istype(user.get_inactive_hand(),src)) || (user.stat))
+	if(!(istype(user.get_active_held_item(),I)) || !(istype(user.get_inactive_held_item(),src)) || (user.stat))
 		return
 
 	var/str = copytext(reject_bad_text(input(user,"Tag text?","Set tag","")),1,MAX_NAME_LEN)
@@ -852,18 +895,26 @@
 //Primal
 /obj/item/clothing/accessory/talisman
 	name = "bone talisman"
-	desc = "A hunter's talisman, some say the old gods smile on those who wear it."
+	desc = "A Scori religious talisman. Some say the Buried Ones smile on those who wear it."
 	icon_state = "talisman"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	armor_type = /datum/armor/lavaland/trinket
+	slot = ACCESSORY_SLOT_TIE
+
+/obj/item/clothing/accessory/disenchanted_talisman
+	name = "disenchanted bone talisman"
+	desc = "A Scori religious talisman, perhaps given as a gift. Whatever protections such an item may have once brought have since faded away."
+	icon_state = "talisman"
+	slot = ACCESSORY_SLOT_TIE
 
 /obj/item/clothing/accessory/skullcodpiece
 	name = "skull codpiece"
 	desc = "A skull shaped ornament, intended to protect the important things in life."
 	icon_state = "skull"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
+	armor_type = /datum/armor/lavaland/trinket
+	slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/skullcodpiece/fake
 	name = "false codpiece"
 	desc = "A plastic ornament, intended to protect the important things in life. It's not very good at it."
 	icon_state = "skull"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor_type = /datum/armor/none

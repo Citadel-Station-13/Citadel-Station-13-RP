@@ -149,7 +149,7 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 		return 0
 
-	if (!(access_heads in access))
+	if (!(ACCESS_COMMAND_BRIDGE in access))
 		src.visible_message("\The [src] buzzes, rejecting [ident].")
 		playsound(src.loc, 'sound/machines/deniedbeep.ogg', 50, 0)
 		return 0

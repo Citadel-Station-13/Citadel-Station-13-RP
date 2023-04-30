@@ -1,11 +1,9 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
 /obj/item/assembly/infra
 	name = "infrared emitter"
 	desc = "Emits a visible or invisible beam and is triggered when the beam is interrupted."
 	icon_state = "infrared"
 	origin_tech = list(TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 500)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 500)
 
 	wires = WIRE_PULSE
 
@@ -23,11 +21,7 @@
 	var/dirty = FALSE
 	/// current atom listening to
 	var/atom/movable/listening
-
-/obj/item/assembly/infra/Destroy()
-	if(on)
-		turn_off()
-	return ..()
+	var/hearing_range = 3
 
 /obj/item/assembly/infra/activate()
 	. = ..()
@@ -67,11 +61,11 @@
 	STOP_PROCESSING(SSfastprocess, src)
 
 /obj/item/assembly/infra/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	attached_overlays = list()
 	if(on)
-		overlays += "infrared_on"
-		attached_overlays += "infrared_on"
+		add_overlay("infrared_on")
+		attached_overlays += "infrared_on" // TODO: Investigate???
 	if(holder)
 		holder.update_icon()
 
@@ -159,45 +153,44 @@
 		return FALSE
 	pulse(0)
 	if(!holder)
-		visible_message("[icon2html(thing = src, target = world)] *beep* *beep*")
+		audible_message(SPAN_INFOPLAIN("[icon2html(src, hearers(src))] *beep* *beep* *beep*"), null, hearing_range)
+		for(var/mob/hearing_mob in get_hearers_in_view(hearing_range, src))
+			hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	cooldown = 2
 	addtimer(CALLBACK(src, /obj/item/assembly/proc/process_cooldown), 10)
 
-/obj/item/assembly/infra/interact(mob/user as mob)//TODO: change this this to the wire control panel
+/obj/item/assembly/infra/ui_interact(mob/user, datum/tgui/ui)
 	if(!secured)
-		return
-	user.set_machine(src)
-	var/dat = text("<TT><B>Infrared Laser</B>\n<B>Status</B>: []<BR>\n<B>Visibility</B>: []<BR>\n</TT>", (on ? text("<A href='?src=\ref[];state=0'>On</A>", src) : text("<A href='?src=\ref[];state=1'>Off</A>", src)), (src.visible ? text("<A href='?src=\ref[];visible=0'>Visible</A>", src) : text("<A href='?src=\ref[];visible=1'>Invisible</A>", src)))
-	dat += "<BR><BR><A href='?src=\ref[src];refresh=1'>Refresh</A>"
-	dat += "<BR><BR><A href='?src=\ref[src];close=1'>Close</A>"
-	user << browse(dat, "window=infra")
-	onclose(user, "infra")
+		to_chat(user, SPAN_WARNING("[src] is unsecured!"))
+		return FALSE
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AssemblyInfrared", name)
+		ui.open()
 
-/obj/item/assembly/infra/Topic(href, href_list, state = deep_inventory_state)
-	. = ..()
-	if(.)
-		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
-		usr << browse(null, "window=infra")
-		onclose(usr, "infra")
-		return
+/obj/item/assembly/infra/ui_data(mob/user)
+	var/list/data = ..()
 
-	if(href_list["state"])
-		if(on)
-			turn_off()
-		else
-			turn_on()
-		interact(usr)
-		return
+	data["on"] = on
+	data["visible"] = visible
 
-	if(href_list["visible"])
-		toggle_visible()
-		interact(usr)
-		return
+	return data
 
-	if(href_list["close"])
-		usr << browse(null, "window=infra")
-		return
+/obj/item/assembly/infra/ui_act(action, list/params, datum/tgui/ui)
+	if(..())
+		return TRUE
+
+	switch(action)
+		if("state")
+			activate()
+			return TRUE
+		if("visible")
+			visible = !visible
+			for(var/ibeam in head)
+				var/obj/effect/beam/i_beam/I = ibeam
+				I.visible = visible
+				CHECK_TICK
+			return TRUE
 
 /obj/item/assembly/infra/verb/rotate_clockwise()
 	set name = "Rotate Infrared Laser Clockwise"
@@ -213,7 +206,7 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "ibeam"
 	anchored = TRUE
-	pass_flags = PASSTABLE|PASSGLASS|PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE|ATOM_PASS_GLASS|ATOM_PASS_GRILLE
 	/// the next beam
 	var/obj/effect/beam/i_beam/next
 	/// the previous beam
@@ -226,6 +219,7 @@
 	var/propagate = 0
 
 /obj/effect/beam/i_beam/Initialize(mapload, _master, _propagate, _visible, _prev)
+	. = ..()
 	if(_propagate)
 		src.propagate = min(100, _propagate)
 	if(_master)

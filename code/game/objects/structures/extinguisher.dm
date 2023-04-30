@@ -25,8 +25,8 @@
 		return
 	if(istype(O, /obj/item/extinguisher))
 		if(!has_extinguisher && opened)
-			user.remove_from_mob(O)
-			contents += O
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			has_extinguisher = O
 			to_chat(user, "<span class='notice'>You place [O] in [src].</span>")
 		else
@@ -34,8 +34,8 @@
 	if(O.is_wrench())
 		if(!has_extinguisher)
 			to_chat(user, "<span class='notice'>You start to unwrench the extinguisher cabinet.</span>")
-			playsound(src.loc, O.usesound, 50, 1)
-			if(do_after(user, 15 * O.toolspeed))
+			playsound(src.loc, O.tool_sound, 50, 1)
+			if(do_after(user, 15 * O.tool_speed))
 				to_chat(user, "<span class='notice'>You unwrench the extinguisher cabinet.</span>")
 				new /obj/item/frame/extinguisher_cabinet( src.loc )
 				qdel(src)
@@ -45,13 +45,13 @@
 	update_icon()
 
 
-/obj/structure/extinguisher_cabinet/attack_hand(mob/living/user)
+/obj/structure/extinguisher_cabinet/attack_hand(mob/user, list/params)
 	if(isrobot(user))
 		return
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
-		if (user.hand)
+		if (H.hand)
 			temp = H.organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			to_chat(user, "<span class='notice'>You try to move your [temp.name], but cannot!</span>")

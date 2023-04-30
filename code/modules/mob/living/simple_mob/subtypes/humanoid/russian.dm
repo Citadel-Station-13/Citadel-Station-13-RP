@@ -34,16 +34,16 @@
 
 	loot_list = list(/obj/item/material/knife = 100)
 
-	corpse = /obj/effect/landmark/mobcorpse/russian
+	corpse = /obj/spawner/corpse/russian
 
 /mob/living/simple_mob/humanoid/russian/ranged
 	icon_state = "russianranged"
 	icon_living = "russianranged"
 
-	projectiletype = /obj/item/projectile/bullet
+	projectiletype = /obj/projectile/bullet
 	casingtype = /obj/item/ammo_casing/spent
 	projectilesound = 'sound/weapons/Gunshot4.ogg'
 
-	loot_list = list(/obj/item/gun/projectile/revolver/mateba = 100)
+	loot_list = list(/obj/item/gun/ballistic/revolver/mateba = 100)
 
-	corpse = /obj/effect/landmark/mobcorpse/russian/ranged
+	corpse = /obj/spawner/corpse/russian/ranged

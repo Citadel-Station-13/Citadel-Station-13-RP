@@ -1,15 +1,13 @@
-//TODO: Make this match current lore
-
 //S'randarr
 
 /datum/locations/s_randarr
 	name = "S'randarr"
-	desc = "An orange star, associated with the Tajaran god of life and mercy."
+	desc = "A yellow-orange Ib supergiant (spectral type-M), which provides most of Adhomai's heat, and serves as the system's primary body. \
+	It is also an object of great religious significance in the two largest Tajaran religions."
 
 /datum/locations/s_randarr/New(var/creator)
 	contents.Add(
 		new /datum/locations/ahdomai(src),
-		new /datum/locations/sranjir(src),
 		new /datum/locations/messa(src),
 		new /datum/locations/al_benj_sri(src)
 		)
@@ -19,8 +17,8 @@
 
 /datum/locations/ahdomai
 	name = "Ahdomai"
-	desc = "The Tajaran home planet. It is the smaller of its twin-planet alignment.  Its atmosphere is not dissimilar to that of Earth. \
-	Its geography is largely mountainous, with a number of tundras, frozen plains, semi-frozen lakes, and icy seas."
+	desc = "The Tajaran home planet. It is the fourth planet from S'rand'marr.  Its atmosphere is not dissimilar to that of Earth. \
+	It is a cold and icy world, suffering from almost perpetual snowfall and extremely low temperatures."
 
 /datum/locations/ahdomai/New(var/creator)
 	contents.Add(
@@ -36,25 +34,24 @@
 /datum/locations/ahdomai_northern_plains/New(var/creator)
 	contents.Add(
 		new /datum/locations/mijri_peninsula(src),
-		new /datum/locations/the_slavemaster_strip(src)
+		new /datum/locations/the_noble_strip(src)
 		)
 	..(creator)
 
 /datum/locations/mijri_peninsula
 	name = "Mi'jri Peninsula"
-	desc = "The peninsula is an area that remains sloped down to the shores due to freezing and thawing constantly chewing away at the land. \
-	Much of the sediment is then collected to the shore lines which most of the year are frozen beaches. This area is popular for fishing for \
-	the Nazkiin, and is a major source of most of their food."
+	desc = "The peninsula is an area that remains sloped down to the shores due to decades freezing and thawing constantly \
+	chewing away at the land prior to the Frost. This area is popular for ice-fishing for the Nazkiin, and is a major source of most of their food."
 
-/datum/locations/the_slavemaster_strip
-	name = "The Slavemaster Strip"
+/datum/locations/the_noble_strip
+	name = "The Noble Strip"
 	desc = "Previously referred to as the Overseer Artery. Much of this area is composed of more rugged plain lands, with a few craters \
-	and small mountains dotting the landscape. One specific area of note is what is referred to as the \"Crater of Light.\" In the Slavemaster era, \
-	the Crater was used as a mine for most of the raw minerals the Slavemaster's had, and was the main site of the Nothern Plains Mining Network. \
-	Since the fall of the Slavemasters, the Hadii have fought tooth and nail to preserve hold of it, believing S'randarr gave it to them, \
-	and those of Tajr-kii S'randarr must keep it away from the followers of Messa."
+	and small mountains dotting the landscape, all covered in dozens of layers of snow. One specific area of note is what is referred to as \
+	the \"Crater of Light.\" In the pre-Frost era, the Crater was used as a mine for most of the raw minerals the nobility had, and \
+	was the main site of the Nothern Plains Mining Network. Since the Frost, the Hadii have fought tooth and \
+	nail to preserve hold of it, believing S'randarr gave it to them, and those of Tajr-kii S'randarr must keep it away from the Shards of Messa."
 
-/datum/locations/the_slavemaster_strip/New(var/creator)
+/datum/locations/the_noble_strip/New(var/creator)
 	contents.Add(
 		new /datum/locations/northern_plains_mining_network(src),
 		new /datum/locations/mi_dynh_al_manq(src),
@@ -64,8 +61,8 @@
 
 /datum/locations/northern_plains_mining_network
 	name = "Northern Plains Mining Network"
-	desc = "A Slavemaster-era mining complex, now owned, operated, and supplied by NT. The Slavemasters cleared out a large portion of the area's \
-	mineral wealth, but not all was depleted prior to their leaving.  Tajaran employed from nearby towns hail mostly from those days and are glad to \
+	desc = "A pre-Frost mining complex, now owned, operated, and supplied by NT. Before the Frost, the nobility cleared out a large portion of the area's \
+	mineral wealth, but not all was depleted prior to their leaving.  Tajara employed from nearby towns hail mostly from those days and are glad to \
 	see the improvements, safety regulations, and supplies provided by NT (which is to say, any)."
 
 /datum/locations/mi_dynh_al_manq
@@ -75,7 +72,7 @@
 
 /datum/locations/contai
 	name = "Contai"
-	desc = "a smaller village whose miners all remember the slave days. The relative size of the village is such that they have no local \
+	desc = "a smaller village whose miners all remember the Frost. The relative size of the village is such that they have no local \
 	school, and must attend academy in the nearby city of Mi'dynh Al'Manq."
 
 /datum/locations/ahdomai_snowy_mountains
@@ -111,24 +108,18 @@
 /datum/locations/ahdomai_ruined_land
 	name = "Ruined Land"
 	desc = "The area in the northeast corner of the main continent of Ahdomai is a barren, almost lifeless strip of land. Flora and \
-	fauna on the surface are hard to find, even with most of the land flat and white as far as the eye can see, when heavy fogs and \
-	blizzards are not present."
+	fauna on the surface are hard to find, even with most of the land flat and white as far as the eye can see, that is if the heavy fogs and \
+	blizzards ever stopped."
 
 //END AHDOMAI
 
-
-/datum/locations/sranjir
-	name = "S'ranjir"
-	desc = "The larger world that Ahdomai orbits. It is often mythologically associated as S'randarr's Shield, and is informally known \
-	as Shield among the Tajaran and formally among the humans. It is uninhabitable, as it has a largely methane atmosphere and lacks water \
-	or other features necessary to life. Nonetheless, a domed, underdeveloped colony exists, called Hran'vasa, heavily funded by Osiris Atmospherics, \
-	practically the only non-Ahdomain official holding for the Tajaran race. It is incredibly dependant on outside support and imports for life, \
-	but has a high export of noble gasses for corporate use."
-
 /datum/locations/messa
 	name = "Messa"
-	desc = "The blue unstably-ringed gas planet, associated with the Tajaran goddess of death and change. By the superstitious and religious, \
-	it is considered a bad omen when Messa is the only one in the sky. It is also said the rings are the souls Messa has clung on to, and is consuming."
+	desc = "An abnormal white dwarf (spectral type-B) with a very high magnitude for its size, associated with the Tajaran goddess of death and change. \
+	Messa orbits S'rrendarr at an inclination that is almost parallel compared to other bodies in the system. \
+	It orbits close enough to S'rrendarr that its gravitational effects are barely tangible to the other bodies in the system, \
+	holding a minor tidal influence at the most. By the superstitious and religious, it is considered a bad omen when Messa is the \
+	only one in the sky. It is also said the rings are the souls Messa has clung on to, and is consuming."
 
 /datum/locations/al_benj_sri
 	name = "Al-Benj S'ri"

@@ -6,7 +6,7 @@ var/list/fuel_injectors = list()
 	icon_state = "injector0"
 	density = 1
 	anchored = 0
-	req_access = list(access_engine)
+	req_access = list(ACCESS_ENGINEERING_MAIN)
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
@@ -21,7 +21,6 @@ var/list/fuel_injectors = list()
 /obj/machinery/fusion_fuel_injector/Initialize(mapload)
 	. = ..()
 	fuel_injectors += src
-	default_apply_parts()
 
 /obj/machinery/fusion_fuel_injector/Destroy()
 	if(cur_assembly)
@@ -35,7 +34,7 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector/process(delta_time)
 	if(injecting)
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			StopInjecting()
 		else
 			Inject()
@@ -53,18 +52,15 @@ var/list/fuel_injectors = list()
 		if(injecting)
 			to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 
-		if(cur_assembly)
-			cur_assembly.forceMove(get_turf(src))
-			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
-		else
-			visible_message("<span class='notice'>\The [user] inserts \a [W] into \the [src].</span>")
-
-		user.drop_from_inventory(W)
-		W.forceMove(src)
 		if(cur_assembly)
 			cur_assembly.forceMove(get_turf(src))
 			user.put_in_hands(cur_assembly)
+			visible_message("<span class='notice'>\The [user] swaps \the [src]'s [cur_assembly] for \a [W].</span>")
+		else
+			visible_message("<span class='notice'>\The [user] inserts \a [W] into \the [src].</span>")
 		cur_assembly = W
 		return
 
@@ -83,7 +79,7 @@ var/list/fuel_injectors = list()
 
 	return ..()
 
-/obj/machinery/fusion_fuel_injector/attack_hand(mob/user)
+/obj/machinery/fusion_fuel_injector/attack_hand(mob/user, list/params)
 
 	if(injecting)
 		to_chat(user, "<span class='warning'>Shut \the [src] off before playing with the fuel rod!</span>")

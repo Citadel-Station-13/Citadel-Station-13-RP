@@ -11,7 +11,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/id.dmi')
+	rad_flags = RAD_BLOCK_CONTENTS
+	item_flags = ITEM_NOBLUDGEON
 
 	//Main variables
 	var/pdachoice = 1
@@ -149,6 +150,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	default_cartridge = /obj/item/cartridge/hos
 	icon_state = "pda-hos"
 
+/obj/item/pda/heads/blueshield
+	default_cartridge = /obj/item/cartridge/security
+	icon_state = "pda-hop"
+
 /obj/item/pda/heads/ce
 	default_cartridge = /obj/item/cartridge/ce
 	icon_state = "pda-ce"
@@ -188,8 +193,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/syndicate
 	default_cartridge = /obj/item/cartridge/syndicate
 	icon_state = "pda-syn"
-//	name = "Military PDA" // Vorestation Edit
-//	owner = "John Doe"
 	hidden = 1
 
 /obj/item/pda/chaplain
@@ -270,7 +273,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		to_chat(usr, "You can't send PDA messages because you are dead!")
 		return
 	var/list/plist = available_pdas()
-	sortTim(plist, cmp = /proc/cmp_text_asc)
+	tim_sort(plist, cmp = /proc/cmp_text_asc)
 	if (plist)
 		var/c = input(usr, "Please select a PDA") as null|anything in plist
 		if (!c) // if the user hasn't selected a PDA file we can't send a message
@@ -319,7 +322,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return 1
 
 
-/obj/item/pda/ai/attack_self(mob/user as mob)
+/obj/item/pda/ai/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if ((honkamt > 0) && (prob(60)))//For clown virus.
 		honkamt--
 		playsound(loc, 'sound/items/bikehorn.ogg', 30, 1)
@@ -430,7 +436,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/Initialize(mapload)
 	. = ..()
 	GLOB.PDAs += src
-	sortTim(GLOB.PDAs, cmp = /proc/cmp_name_asc)
+	tim_sort(GLOB.PDAs, cmp = /proc/cmp_name_asc)
 	if(default_cartridge)
 		cartridge = new default_cartridge(src)
 	new /obj/item/pen(src)
@@ -448,19 +454,20 @@ GLOBAL_LIST_EMPTY(PDAs)
 				icon = 'icons/obj/pda_wrist.dmi'
 				item_state = icon_state
 				item_icons = list(
-					slot_belt_str = 'icons/mob/pda_wrist.dmi',
-					slot_wear_id_str = 'icons/mob/pda_wrist.dmi',
-					slot_gloves_str = 'icons/mob/pda_wrist.dmi'
+					SLOT_ID_BELT = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_WORN_ID = 'icons/mob/clothing/pda_wrist.dmi',
+					SLOT_ID_GLOVES = 'icons/mob/clothing/pda_wrist.dmi'
 				)
 				desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a wrist-bound version."
 				slot_flags = SLOT_ID | SLOT_BELT | SLOT_GLOVES
+				LAZYINITLIST(sprite_sheets)
 				sprite_sheets = list(
-				SPECIES_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
-				SPECIES_VR_TESHARI = 'icons/mob/species/teshari/pda_wrist.dmi',
+				SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
+				SPECIES_VR_TESHARI = 'icons/mob/clothing/species/teshari/pda_wrist.dmi',
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
-				log_debug("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen.")
+				log_debug(SPAN_DEBUG("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen."))
 
 
 /obj/item/pda/proc/can_use()
@@ -469,7 +476,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return 0
 
 	var/mob/M = loc
-	if(M.stat || M.restrained() || M.paralysis || M.stunned || M.weakened)
+	if(!CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		return 0
 	if((src in M.contents) || ( istype(loc, /turf) && in_range(src, M) ))
 		return 1
@@ -485,7 +492,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/GetID()
 	return id
 
-/obj/item/pda/MouseDrop(obj/over_object as obj, src_location, over_location)
+/obj/item/pda/OnMouseDropLegacy(obj/over_object as obj, src_location, over_location)
 	var/mob/M = usr
 	if((!istype(over_object, /atom/movable/screen)) && can_use())
 		return attack_self(M)
@@ -667,7 +674,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	ui.set_auto_update(auto_update)
 
 //NOTE: graphic resources are loaded on client login
-/obj/item/pda/attack_self(mob/user as mob)
+/obj/item/pda/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	user.set_machine(src)
 
@@ -700,7 +710,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 			ui.close()
 		return 0
 
-	add_fingerprint(U)
 	U.set_machine(src)
 
 	switch(href_list["choice"])
@@ -894,7 +903,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		if("Toggle Door")
 			if(cartridge && cartridge.access_remote_door)
-				for(var/obj/machinery/door/blast/M in machines)
+				for(var/obj/machinery/door/blast/M in GLOB.machines)
 					if(M.id == cartridge.remote_door_id)
 						if(M.density)
 							M.open()
@@ -988,9 +997,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/update_icon()
 	..()
 
-	overlays.Cut()
+	cut_overlays()
 	if(new_message || new_news)
-		overlays += image(icon, "pda-r")
+		add_overlay(image(icon, "pda-r"))
 
 /obj/item/pda/proc/detonate_act(var/obj/item/pda/P)
 	//TODO: sometimes these attacks show up on the message server
@@ -1060,10 +1069,10 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if (id)
 		if (ismob(loc))
 			var/mob/M = loc
-			M.put_in_hands(id)
+			M.put_in_hands_or_drop(id)
 			to_chat(usr, "<span class='notice'>You remove the ID from the [name].</span>")
 		else
-			id.loc = get_turf(src)
+			id.forceMove(drop_location())
 		id = null
 
 /obj/item/pda/proc/remove_pen()
@@ -1071,7 +1080,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(O)
 		if(istype(loc, /mob))
 			var/mob/M = loc
-			if(M.get_active_hand() == null)
+			if(M.get_active_held_item() == null)
 				M.put_in_hands(O)
 				to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
 				return
@@ -1118,7 +1127,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 		tnote.Add(list(list("sent" = 1, "owner" = "[P.owner]", "job" = "[P.ownjob]", "message" = "[t]", "target" = "\ref[P]")))
 		P.tnote.Add(list(list("sent" = 0, "owner" = "[owner]", "job" = "[ownjob]", "message" = "[t]", "target" = "\ref[src]")))
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.stat == DEAD && M.client && (M.is_preference_enabled(/datum/client_preference/ghost_ears))) // src.client is so that ghosts don't have to listen to mice
 				if(istype(M, /mob/new_player))
 					continue
@@ -1278,18 +1287,21 @@ GLOBAL_LIST_EMPTY(PDAs)
 			remove_id()
 			return 1
 		else
-			var/obj/item/I = user.get_active_hand()
-			if (istype(I, /obj/item/card/id) && user.unEquip(I))
-				I.loc = src
+			var/obj/item/I = user.get_active_held_item()
+			if (istype(I, /obj/item/card/id))
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				id = I
 			return 1
 	else
-		var/obj/item/card/I = user.get_active_hand()
-		if (istype(I, /obj/item/card/id) && I:registered_name && user.unEquip(I))
+		var/obj/item/card/I = user.get_active_held_item()
+		if (istype(I, /obj/item/card/id) && I:registered_name)
 			var/obj/old_id = id
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			id = I
-			user.put_in_hands(old_id)
+			if(old_id && !user.put_in_hands(old_id))
+				return
 			return 1
 	return 0
 
@@ -1297,9 +1309,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/attackby(obj/item/C as obj, mob/user as mob)
 	..()
 	if(istype(C, /obj/item/cartridge) && !cartridge)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		cartridge = C
-		user.drop_item()
-		cartridge.loc = src
 		to_chat(usr, "<span class='notice'>You insert [cartridge] into [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
 		if(cartridge.radio)
@@ -1324,9 +1336,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 					updateSelfDialog()//Update self dialog on success.
 			return	//Return in case of failed check or when successful.
 		updateSelfDialog()//For the non-input related code.
-	else if(istype(C, /obj/item/paicard) && !src.pai)
-		user.drop_item()
-		C.loc = src
+	else if(istype(C, /obj/item/paicard) && !pai)
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		pai = C
 		to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
 		SSnanoui.update_uis(src) // update all UIs attached to src
@@ -1335,12 +1347,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(O)
 			to_chat(user, "<span class='notice'>There is already a pen in \the [src].</span>")
 		else
-			user.drop_item()
-			C.loc = src
+			if(!user.attempt_insert_item_for_installation(C, src))
+				return
 			to_chat(user, "<span class='notice'>You slot \the [C] into \the [src].</span>")
-	return
 
-/obj/item/pda/attack(mob/living/C as mob, mob/living/user as mob)
+/obj/item/pda/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/carbon/C = target
 	if (istype(C, /mob/living/carbon))
 		switch(scanmode)
 			if(1)
@@ -1358,7 +1370,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 						), 1)
 				user.show_message("<span class='notice'>    Key: Suffocation/Toxin/Burns/Brute</span>", 1)
 				user.show_message("<span class='notice'>    Body Temperature: [C.bodytemperature-T0C]&deg;C ([C.bodytemperature*1.8-459.67]&deg;F)</span>", 1)
-				if(C.tod && (C.stat == DEAD || (C.status_flags & FAKEDEATH)))
+				if(C.tod && (C.stat == DEAD || (C.status_flags & STATUS_FAKEDEATH)))
 					user.show_message("<span class='notice'>    Time of Death: [C.tod]</span>")
 				if(istype(C, /mob/living/carbon/human))
 					var/mob/living/carbon/human/H = C
@@ -1410,7 +1422,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user,"<span class='notice'>No active chemical agents found in [A].</span>")
 			else
-				to_chat(user,"<span class='notice'>No significantchemical agents found in [A].</span>")
+				to_chat(user,"<span class='notice'>No significant chemical agents found in [A].</span>")
 
 		if(5)
 			analyze_gases(A, user)
@@ -1475,7 +1487,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/Destroy()
 	GLOB.PDAs -= src
-	if (src.id && prob(100)) //IDs are kept in 90% of the cases //VOREStation Edit - 100% of the cases
+	if (src.id && prob(100)) //IDs are kept in 100% of the cases //TODO: WHY?
 		src.id.forceMove(get_turf(src.loc))
 	else
 		QDEL_NULL(src.id)
@@ -1530,20 +1542,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-	New()
-		..()
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/cartridge/head(src)
+/obj/item/storage/box/PDAs/New()
+	..()
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/cartridge/head(src)
 
-		var/newcart = pick(	/obj/item/cartridge/engineering,
-							/obj/item/cartridge/security,
-							/obj/item/cartridge/medical,
-							/obj/item/cartridge/signal/science,
-							/obj/item/cartridge/quartermaster)
-		new newcart(src)
+	var/newcart = pick(
+		/obj/item/cartridge/engineering,
+		/obj/item/cartridge/medical,
+		/obj/item/cartridge/quartermaster,
+		/obj/item/cartridge/security,
+		/obj/item/cartridge/signal/science,
+	)
+	new newcart(src)
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)
@@ -1584,7 +1598,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		results = list(list("entry" = "pressure", "units" = "kPa", "val" = "0", "bad_high" = 120, "poor_high" = 110, "poor_low" = 95, "bad_low" = 80))
 	return results
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/item/pda/centcom
 	default_cartridge = /obj/item/cartridge/captain
 	icon_state = "pda-h"
@@ -1593,7 +1607,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/pathfinder
 	default_cartridge = /obj/item/cartridge/signal/science
-	icon_state = "pda-lawyer-old"
+	icon_state = "pda-lawyer"
 
 /obj/item/pda/explorer
 	default_cartridge = /obj/item/cartridge/signal/science

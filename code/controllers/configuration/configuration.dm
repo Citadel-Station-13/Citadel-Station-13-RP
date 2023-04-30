@@ -23,6 +23,9 @@
 
 	var/motd
 
+	/// If the configuration is loaded
+	var/loaded = FALSE
+
 /datum/controller/configuration/proc/admin_reload()
 	if(IsAdminAdvancedProcCall())
 		return
@@ -42,7 +45,7 @@
 	// LoadModes()
 	// storyteller_cache = typecacheof(/datum/dynamic_storyteller, TRUE)
 	if(fexists("[directory]/config.txt") && LoadEntries("config.txt") <= 1)
-		var/list/legacy_configs = list("game_options.txt", "dbconfig.txt", "comms.txt")
+		var/list/legacy_configs = list("legacy/game_options.txt", "legacy/dbconfig.txt")
 		for(var/I in legacy_configs)
 			if(fexists("[directory]/[I]"))
 				log_config("No $include directives found in config.txt! Loading legacy [legacy_configs.Join("/")] files...")
@@ -50,7 +53,10 @@
 					LoadEntries(J)
 				break
 	loadmaplist(CONFIG_MAPS_FILE)
+	LoadWhitelists()
 	LoadMOTD()
+
+	loaded = TRUE
 
 	if (Master)
 		Master.OnConfigLoad()
@@ -145,6 +151,16 @@
 				++.
 			continue
 
+		// Reset directive, used for setting a config value back to defaults. Useful for string list config types
+		if (entry == "$reset")
+			var/datum/config_entry/resetee = _entries[lowertext(value)]
+			if (!value || !resetee)
+				log_config("Warning: invalid $reset directive: [value]")
+				continue
+			resetee.set_default()
+			log_config("Reset configured value for [value] to original defaults")
+			continue
+
 		var/datum/config_entry/E = _entries[entry]
 		if(!E)
 			log_config("LINE [linenumber]: Unknown setting in configuration: '[entry]'")
@@ -195,9 +211,7 @@
 	return !(var_name in banned_edits) && ..()
 
 /datum/controller/configuration/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Edit", src)
-	stat("[name]:", statclick)
+	return "Edit"
 
 /datum/controller/configuration/proc/Get(entry_type)
 	var/datum/config_entry/E = GetEntryDatum(entry_type)
@@ -299,7 +313,7 @@
 
 		switch (command)
 			if ("map")
-				currentmap = load_map_config("_maps/[data].json")
+				currentmap = load_map_config("_mapload/[data].json")
 				if(currentmap.defaulted)
 					log_config("Failed to load map config for [data]!")
 					currentmap = null

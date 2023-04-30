@@ -21,7 +21,7 @@
 	var/obj/machinery/alarm/A = holder
 	. = ..()
 	. += "The Air Alarm is [A.locked ? "locked." : "unlocked."]"
-	. += "The Air Alarm is [(A.shorted || (A.stat & (NOPOWER|BROKEN))) ? "offline." : "working properly!"]"
+	. += "The Air Alarm is [(A.shorted || (A.machine_stat & (NOPOWER|BROKEN))) ? "offline." : "working properly!"]"
 	. += "The 'AI control allowed' light is [A.aidisabled ? "off" : "on"]."
 
 /datum/wires/alarm/on_cut(wire, mend)

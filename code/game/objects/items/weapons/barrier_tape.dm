@@ -5,7 +5,7 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
 
-	toolspeed = 3 //You can use it in surgery. It's stupid, but you can.
+	tool_speed = 3 //You can use it in surgery. It's stupid, but you can.
 
 	var/turf/start
 	var/turf/end
@@ -71,7 +71,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/medical
 	name = "medical tape"
 	desc = "A length of medical tape.  Do not cross."
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	color = COLOR_WHITE
 
 /obj/item/barrier_tape_roll/police
@@ -83,7 +83,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/police
 	name = "police tape"
 	desc = "A length of police tape.  Do not cross."
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	color = COLOR_RED_LIGHT
 
 /obj/item/barrier_tape_roll/engineering
@@ -98,7 +98,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/engineering
 	name = "engineering tape"
 	desc = "A length of engineering tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_YELLOW
 
 /obj/item/barrier_tape_roll/atmos
@@ -110,11 +110,11 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
-	req_one_access = list(access_engine,access_atmospherics)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_ENGINEERING_ATMOS)
 	color = COLOR_DEEP_SKY_BLUE
 
 /obj/item/barrier_tape_roll/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/image/overlay = image(icon = src.icon)
 	overlay.appearance_flags = RESET_COLOR
 	if(ismob(loc))
@@ -122,22 +122,25 @@ var/list/tape_roll_applications = list()
 			overlay.icon_state = "start"
 		else
 			overlay.icon_state = "stop"
-		overlays += overlay
+		add_overlay(overlay)
 
 
-/obj/item/barrier_tape_roll/dropped(mob/user)
+/obj/item/barrier_tape_roll/dropped(mob/user, flags, atom/newLoc)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/pickup(mob/user)
+/obj/item/barrier_tape_roll/pickup(mob/user, flags, atom/oldLoc)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_hand()
+/obj/item/barrier_tape_roll/attack_hand(mob/user, list/params)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/attack_self(mob/user as mob)
+/obj/item/barrier_tape_roll/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!start)
 		start = get_turf(src)
 		to_chat(user, "<span class='notice'>You place the first end of \the [src].</span>")
@@ -160,10 +163,10 @@ var/list/tape_roll_applications = list()
 					possible_dirs |= dir
 				else
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[dir])
+						if(W.fulltile || W.dir == global.reverse_dir[dir])
 							possible_dirs |= dir
 			for(var/obj/structure/window/window in start)
-				if(istype(window) && !window.is_fulltile())
+				if(istype(window) && !window.fulltile)
 					possible_dirs |= window.dir
 			if(!possible_dirs)
 				start = null
@@ -204,7 +207,7 @@ var/list/tape_roll_applications = list()
 				for(var/obj/O in cur)
 					if(istype(O, /obj/structure/window))
 						var/obj/structure/window/window = O
-						if(window.is_fulltile())
+						if(window.fulltile)
 							can_place = 0
 							break
 						if(cur == start)
@@ -214,12 +217,12 @@ var/list/tape_roll_applications = list()
 							else
 								continue
 						else if(cur == end)
-							if(window.dir == GLOB.reverse_dir[orientation])
+							if(window.dir == global.reverse_dir[orientation])
 								can_place = 0
 								break
 							else
 								continue
-						else if (window.dir == GLOB.reverse_dir[orientation] || window.dir == orientation)
+						else if (window.dir == global.reverse_dir[orientation] || window.dir == orientation)
 							can_place = 0
 							break
 						else
@@ -243,24 +246,24 @@ var/list/tape_roll_applications = list()
 			tapetest = 0
 			tape_dir = dir
 			if(cur == start)
-				var/turf/T = get_step(start, GLOB.reverse_dir[orientation])
+				var/turf/T = get_step(start, global.reverse_dir[orientation])
 				if(T && !T.density)
 					tape_dir = orientation
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == orientation)
+						if(W.fulltile || W.dir == orientation)
 							tape_dir = dir
 				for(var/obj/structure/window/window in cur)
-					if(istype(window) && !window.is_fulltile() && window.dir == GLOB.reverse_dir[orientation])
+					if(istype(window) && !window.fulltile && window.dir == global.reverse_dir[orientation])
 						tape_dir = dir
 			else if(cur == end)
 				var/turf/T = get_step(end, orientation)
 				if(T && !T.density)
-					tape_dir = GLOB.reverse_dir[orientation]
+					tape_dir = global.reverse_dir[orientation]
 					for(var/obj/structure/window/W in T)
-						if(W.is_fulltile() || W.dir == GLOB.reverse_dir[orientation])
+						if(W.fulltile || W.dir == global.reverse_dir[orientation])
 							tape_dir = dir
 				for(var/obj/structure/window/window in cur)
-					if(istype(window) && !window.is_fulltile() && window.dir == orientation)
+					if(istype(window) && !window.fulltile && window.dir == orientation)
 						tape_dir = dir
 			for(var/obj/item/barrier_tape_segment/T in cur)
 				if((T.tape_dir == tape_dir) && (T.icon_base == icon_base))
@@ -303,11 +306,11 @@ var/list/tape_roll_applications = list()
 
 		if(tape_roll_applications[F] & direction) // hazard_overlay in F.overlays wouldn't work.
 			user.visible_message("\The [user] uses the adhesive of \the [src] to remove area markings from \the [F].", "You use the adhesive of \the [src] to remove area markings from \the [F].")
-			F.overlays -= hazard_overlay
+			F.cut_overlay(hazard_overlay)
 			tape_roll_applications[F] &= ~direction
 		else
 			user.visible_message("\The [user] applied \the [src] on \the [F] to create area markings.", "You apply \the [src] on \the [F] to create area markings.")
-			F.overlays |= hazard_overlay
+			F.add_overlay(hazard_overlay)
 			tape_roll_applications[F] |= direction
 		return
 
@@ -323,7 +326,7 @@ var/list/tape_roll_applications = list()
 		var/mob/living/M = AM //so that ghosts don't get spammed
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
-			to_chat(M, span("warning", "You are not supposed to go past \the [src]..."))
+			to_chat(M, SPAN_WARNING( "You are not supposed to go past \the [src]..."))
 			if(M.a_intent == INTENT_HELP && !(istype(M, /mob/living/simple_mob)))
 				return FALSE
 			crumple()
@@ -331,7 +334,7 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment/attackby(obj/item/W as obj, mob/user as mob)
 	breaktape(user)
 
-/obj/item/barrier_tape_segment/attack_hand(mob/user as mob)
+/obj/item/barrier_tape_segment/attack_hand(mob/user, list/params)
 	if (user.a_intent == INTENT_HELP && src.allowed(user))
 		user.show_viewers("<span class='notice'>\The [user] lifts \the [src], allowing passage.</span>")
 		for(var/obj/item/barrier_tape_segment/T in gettapeline())

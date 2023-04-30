@@ -50,8 +50,8 @@
 
 	return data
 
-/obj/machinery/computer/telecomms/monitor/attack_hand(mob/user)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/computer/telecomms/monitor/attack_hand(mob/user, list/params)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
@@ -64,8 +64,6 @@
 /obj/machinery/computer/telecomms/monitor/ui_act(action, params)
 	if(..())
 		return TRUE
-
-	add_fingerprint(usr)
 
 	switch(action)
 		if("view")

@@ -21,7 +21,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 	for(var/attribute in preloader_local.attributes)
 		var/value = preloader_local.attributes[attribute]
 		if(islist(value))
-			value = deepCopyList(value)
+			value = deep_copy_list(value)
 		#ifdef TESTING
 		if(what.vars[attribute] == value)
 			var/message = "<font color=green>[what.type]</font> at [AREACOORD(what)] - <b>VAR:</b> <font color=red>[attribute] = [isnull(value) ? "null" : (isnum(value) ? value : "\"[value]\"")]</font>"
@@ -32,17 +32,17 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 
 /area/template_noop
 	name = "Area Passthrough"
-	icon = 'icons/map/maploader_objects.dmi'
+	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "area_noop"
 
 /turf/template_noop
 	name = "Turf Passthrough"
-	icon = 'icons/map/maploader_objects.dmi'
+	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "turf_noop"
 
 /*		No sane way to implement.
 /atom/template_no_annihilate
 	name = "Block In-Load Tile Annihilation"
-	icon = 'icons/map/maploader_objects.dmi'
+	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "no_annihilate"
 */

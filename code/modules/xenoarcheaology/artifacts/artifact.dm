@@ -4,7 +4,7 @@
 	icon = 'icons/obj/xenoarchaeology.dmi'
 	icon_state = "ano00"
 	var/icon_num = 0
-	density = 1
+	density = TRUE
 	var/datum/artifact_effect/my_effect
 	var/datum/artifact_effect/secondary_effect
 	var/being_used = 0
@@ -86,20 +86,20 @@
 	var/trigger_nitro = 0
 	if( (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) || (my_effect.trigger >= TRIGGER_HEAT && my_effect.trigger <= TRIGGER_NITRO) )
 		var/turf/T = get_turf(src)
-		var/datum/gas_mixture/env = T.return_air()
+		var/datum/gas_mixture/env = T.copy_cell_volume()
 		if(env)
 			if(env.temperature < 225)
 				trigger_cold = 1
 			else if(env.temperature > 375)
 				trigger_hot = 1
 
-			if(env.gas[/datum/gas/phoron] >= 10)
+			if(env.gas[/datum/gas/phoron] >= 2)
 				trigger_phoron = 1
-			if(env.gas[/datum/gas/oxygen] >= 10)
+			if(env.gas[/datum/gas/oxygen] >= 2)
 				trigger_oxy = 1
-			if(env.gas[/datum/gas/carbon_dioxide] >= 10)
+			if(env.gas[/datum/gas/carbon_dioxide] >= 2)
 				trigger_co2 = 1
-			if(env.gas[/datum/gas/nitrogen] >= 10)
+			if(env.gas[/datum/gas/nitrogen] >= 2)
 				trigger_nitro = 1
 
 	//COLD ACTIVATION
@@ -174,7 +174,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_NITRO && !secondary_effect.activated)
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/attack_hand(var/mob/user as mob)
+/obj/machinery/artifact/attack_hand(mob/user, list/params)
 	if (get_dist(user, src) > 1)
 		to_chat(user, "<font color='red'>You can't reach [src] from here.</font>")
 		return
@@ -240,7 +240,7 @@
 			secondary_effect.ToggleActivate(0)
 	else
 		..()
-		if (my_effect.trigger == TRIGGER_FORCE && W.force >= 10)
+		if (my_effect.trigger == TRIGGER_FORCE && W.damage_force >= 10)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
@@ -248,7 +248,7 @@
 /obj/machinery/artifact/Bumped(M as mob|obj)
 	..()
 	if(istype(M,/obj))
-		if(M:throwforce >= 10)
+		if(M:throw_force >= 10)
 			if(my_effect.trigger == TRIGGER_FORCE)
 				my_effect.ToggleActivate()
 			if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
@@ -274,22 +274,22 @@
 			to_chat(M, "<b>You accidentally touch [src].</b>")
 	..()
 
-/obj/machinery/artifact/bullet_act(var/obj/item/projectile/P)
-	if(istype(P,/obj/item/projectile/bullet))
+/obj/machinery/artifact/bullet_act(var/obj/projectile/P)
+	if(istype(P,/obj/projectile/bullet))
 		if(my_effect.trigger == TRIGGER_FORCE)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_FORCE && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-	else if(istype(P,/obj/item/projectile/beam) ||\
-		istype(P,/obj/item/projectile/ion) ||\
-		istype(P,/obj/item/projectile/energy))
+	else if(istype(P,/obj/projectile/beam) ||\
+		istype(P,/obj/projectile/ion) ||\
+		istype(P,/obj/projectile/energy))
 		if(my_effect.trigger == TRIGGER_ENERGY)
 			my_effect.ToggleActivate()
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/ex_act(severity)
+/obj/machinery/artifact/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0) qdel(src)
 		if(2.0)

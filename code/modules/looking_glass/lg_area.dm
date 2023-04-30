@@ -1,7 +1,7 @@
 /area/looking_glass
 	name = "make a subtype"
 
-	var/obj/effect/landmark/looking_glass/our_landmark
+	var/obj/landmark/looking_glass/our_landmark
 	var/list/our_turfs = list()
 	var/list/our_optional_turfs = list()
 
@@ -9,7 +9,7 @@
 
 	var/active = FALSE
 
-/area/looking_glass/Initialize()
+/area/looking_glass/Initialize(mapload)
 	. = ..()
 	our_landmark = locate() in src
 	if(!our_landmark)

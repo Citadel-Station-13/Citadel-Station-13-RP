@@ -54,7 +54,7 @@
 
 	move_into_extractor(user,G.affecting)
 
-/obj/machinery/slime/extractor/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/slime/extractor/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_extractor(user,target)
@@ -145,7 +145,7 @@
 	eject_slime()
 
 //Here lies the UI
-/obj/machinery/slime/extractor/attack_hand(mob/user as mob)
+/obj/machinery/slime/extractor/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 

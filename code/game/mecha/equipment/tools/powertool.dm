@@ -13,11 +13,11 @@
 	var/obj/item/my_tool = null
 	var/tooltype = /obj/item/tool/wrench/power
 
-/obj/item/mecha_parts/mecha_equipment/tool/powertool/Initialize()
+/obj/item/mecha_parts/mecha_equipment/tool/powertool/Initialize(mapload)
 	my_tool = new tooltype(src)
 	my_tool.name = name
 	my_tool.anchored = TRUE
-	my_tool.canremove = FALSE
+	ADD_TRAIT(my_tool, TRAIT_ITEM_NODROP, GENERIC_TRAIT)
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/powertool/Destroy()
@@ -29,7 +29,7 @@
 		return FALSE
 
 	if(isliving(target))
-		my_tool.attack(target, chassis.occupant, BP_TORSO)
+		my_tool.melee_attack_chain(target, chassis.occupant, BP_TORSO)
 
 	target.attackby(my_tool,chassis.occupant)
 

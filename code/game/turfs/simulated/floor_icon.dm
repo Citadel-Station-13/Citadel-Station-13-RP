@@ -1,22 +1,36 @@
+GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
+
+/proc/generate_no_ceiling_image()
+	var/image/I = image(icon = 'icons/turf/open_space.dmi', icon_state = "no_ceiling")
+	I.plane = PLANE_MESONS
+	return I
+
+/turf/simulated/floor/calculate_adjacencies()
+	if (smoothing_flags & SMOOTH_CUSTOM)
+		return NONE
+	return ..()
+
+GLOBAL_LIST_EMPTY(turf_edge_cache)
+
 var/list/flooring_cache = list()
 
-var/image/no_ceiling_image = null
-
-/hook/startup/proc/setup_no_ceiling_image()
-	cache_no_ceiling_image()
-	return TRUE
-
-/proc/cache_no_ceiling_image()
-	no_ceiling_image = image(icon = 'icons/turf/open_space.dmi', icon_state = "no_ceiling")
-	no_ceiling_image.plane = PLANE_MESONS
-
-/turf/simulated/floor/update_icon(var/update_neighbors)
-
-	if(lava)
-		return
-
+/turf/simulated/floor/update_appearance(updates)
 	cut_overlays()
 
+	// Re-apply floor decals
+	if(LAZYLEN(decals))
+		add_overlay(decals)
+
+	// Show 'ceilingless' overlay.
+	var/turf/above = Above(src)
+	if(isopenturf(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
+		add_overlay(GLOB.no_ceiling_image)
+
+	update_border_spillover() // sigh
+
+	. = ..()
+
+/turf/simulated/floor/custom_smooth()
 	if(flooring)
 		// Set initial icon and strings.
 		name = flooring.name
@@ -31,107 +45,104 @@ var/image/no_ceiling_image = null
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
 				flooring_override = icon_state
 
-		// Apply edges, corners, and inner corners.
-		var/has_border = 0
-		if(flooring.flags & TURF_HAS_EDGES)
-			for(var/step_dir in GLOB.cardinal)
-				var/turf/simulated/floor/T = get_step(src, step_dir)
-				if(!flooring.test_link(src, T))
-					has_border |= step_dir
-					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[step_dir]", "[flooring.icon_base]_edges", step_dir))
-
-			//Note: Doesn't actually check northeast, this is bitmath to check if we're edge'd (aka not smoothed) to NORTH and EAST
-			//North = 0001, East = 0100, Northeast = 0101, so (North|East) == Northeast, therefore (North|East)&Northeast == Northeast
-			if((has_border & NORTHEAST) == NORTHEAST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHEAST]", "[flooring.icon_base]_edges", NORTHEAST))
-			if((has_border & NORTHWEST) == NORTHWEST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHWEST]", "[flooring.icon_base]_edges", NORTHWEST))
-			if((has_border & SOUTHEAST) == SOUTHEAST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHEAST]", "[flooring.icon_base]_edges", SOUTHEAST))
-			if((has_border & SOUTHWEST) == SOUTHWEST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHWEST]", "[flooring.icon_base]_edges", SOUTHWEST))
-
-			if(flooring.flags & TURF_HAS_CORNERS)
-				//Like above but checking for NO similar bits rather than both similar bits.
-				if((has_border & NORTHEAST) == 0) //Are connected NORTH and EAST
-					var/turf/simulated/floor/T = get_step(src, NORTHEAST)
-					if(!flooring.test_link(src, T)) //But not NORTHEAST
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHEAST]", "[flooring.icon_base]_corners", NORTHEAST))
-				if((has_border & NORTHWEST) == 0)
-					var/turf/simulated/floor/T = get_step(src, NORTHWEST)
+			// Apply edges, corners, and inner corners.
+			if(flooring.flooring_flags & TURF_HAS_EDGES)
+				var/has_border = 0
+				for(var/step_dir in GLOB.cardinal)
+					var/turf/simulated/floor/T = get_step(src, step_dir)
 					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHWEST]", "[flooring.icon_base]_corners", NORTHWEST))
-				if((has_border & SOUTHEAST) == 0)
-					var/turf/simulated/floor/T = get_step(src, SOUTHEAST)
-					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHEAST]", "[flooring.icon_base]_corners", SOUTHEAST))
-				if((has_border & SOUTHWEST) == 0)
-					var/turf/simulated/floor/T = get_step(src, SOUTHWEST)
-					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHWEST]", "[flooring.icon_base]_corners", SOUTHWEST))
+						has_border |= step_dir
+						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[step_dir]", "[flooring.icon_base]_edges", step_dir))
 
-	// Re-apply floor decals
-	if(LAZYLEN(decals))
-		add_overlay(decals)
+				//Note: Doesn't actually check northeast, this is bitmath to check if we're edge'd (aka not smoothed) to NORTH and EAST
+				//North = 0001, East = 0100, Northeast = 0101, so (North|East) == Northeast, therefore (North|East)&Northeast == Northeast
+				if((has_border & NORTHEAST) == NORTHEAST)
+					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHEAST]", "[flooring.icon_base]_edges", NORTHEAST))
+				if((has_border & NORTHWEST) == NORTHWEST)
+					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHWEST]", "[flooring.icon_base]_edges", NORTHWEST))
+				if((has_border & SOUTHEAST) == SOUTHEAST)
+					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHEAST]", "[flooring.icon_base]_edges", SOUTHEAST))
+				if((has_border & SOUTHWEST) == SOUTHWEST)
+					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHWEST]", "[flooring.icon_base]_edges", SOUTHWEST))
 
-	if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
-		icon = 'icons/turf/flooring/plating.dmi'
-		icon_state = "dmg[rand(1,4)]"
-	else if(flooring)
-		if(!isnull(broken) && (flooring.flags & TURF_CAN_BREAK))
-			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-broken-[broken]","broken[broken]"))
-		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
-			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","burned[burnt]"))
+				if(flooring.flooring_flags & TURF_HAS_CORNERS)
+					//Like above but checking for NO similar bits rather than both similar bits.
+					if((has_border & NORTHEAST) == 0) //Are connected NORTH and EAST
+						var/turf/simulated/floor/T = get_step(src, NORTHEAST)
+						if(!flooring.test_link(src, T)) //But not NORTHEAST
+							add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHEAST]", "[flooring.icon_base]_corners", NORTHEAST))
+					if((has_border & NORTHWEST) == 0)
+						var/turf/simulated/floor/T = get_step(src, NORTHWEST)
+						if(!flooring.test_link(src, T))
+							add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHWEST]", "[flooring.icon_base]_corners", NORTHWEST))
+					if((has_border & SOUTHEAST) == 0)
+						var/turf/simulated/floor/T = get_step(src, SOUTHEAST)
+						if(!flooring.test_link(src, T))
+							add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHEAST]", "[flooring.icon_base]_corners", SOUTHEAST))
+					if((has_border & SOUTHWEST) == 0)
+						var/turf/simulated/floor/T = get_step(src, SOUTHWEST)
+						if(!flooring.test_link(src, T))
+							add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHWEST]", "[flooring.icon_base]_corners", SOUTHWEST))
 
-	if(update_neighbors)
-		for(var/turf/simulated/floor/F in range(src, 1))
-			if(F == src)
-				continue
-			F.update_icon()
+			if(!isnull(broken) && (flooring.flooring_flags & TURF_CAN_BREAK))
+				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-broken-[broken]","broken[broken]"))
+			if(!isnull(burnt) && (flooring.flooring_flags & TURF_CAN_BURN))
+				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","burned[burnt]"))
+	else
+		// no flooring - just handle plating stuff
+		if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
+			icon = 'icons/turf/flooring/plating.dmi'
+			icon_state = "dmg[rand(1,4)]"
 
-	// Show 'ceilingless' overlay.
-	var/turf/above = GetAbove(src)
-	if(above && isopenspace(above) && !istype(src, /turf/simulated/floor/outdoors)) // This won't apply to outdoor turfs since its assumed they don't have a ceiling anyways.
-		add_overlay(no_ceiling_image)
+/**
+ * welcome to the less modular but more sensical and efficient way to do icon edges
+ * instead of having every turf check, we only have turfs tha can spill onto others check, and apply their edges to other turfs
+ * now only on /turf/simulated/floor, because let's be honest,
+ * 1. no one used borders on walls
+ * 2. if you want a floor to spill onto a wall, go ahead and reconsider your life/design choices
+ * 3. i can think of a reason but honestly performance is better than some niche case of floor resin creeping onto walls or something, use objs for that.
+ */
+/turf/simulated/floor/proc/update_border_spillover()
+	if(!edge_blending_priority)
+		return		// not us
+	for(var/d in GLOB.cardinal)
+		var/turf/simulated/F = get_step(src, d)
+		// todo: BETTER ICON SYSTEM BUT HEY I GUESS WE'LL CHECK DENSITY
+		if(!istype(F) || F.density)
+			continue
+		// check that their priority is lower than ours, and we don't have the same icon state
+		if(F.edge_blending_priority < edge_blending_priority && icon_state != F.icon_state)
+			var/key = "[icon_state || edge_icon_state]-[d]"
+			add_overlay(GLOB.turf_edge_cache[key] || generate_border_cache_for(icon_state || edge_icon_state, d))
 
-	// Update our 'them-to-us' edges, aka edges from external turfs we feel should spill onto us
-	if(edge_blending_priority && !forbid_turf_edge())
-		update_icon_edge()
+// todo: better system
+/proc/generate_border_cache_for(state, dir)
+	// make it
+	var/static/list/states = icon_states('icons/turf/outdoors_edge.dmi')
+	var/actual
+	if(state in states)
+		actual = state
+	else if("[state]-edge" in states)
+		actual = "[state]-edge"
+	var/image/I = image('icons/turf/outdoors_edge.dmi', icon_state = actual, layer = FLOOR_DECAL_LAYER, dir = turn(dir, 180))
+	// I.layer = flooring.decal_layer
+	switch(dir)
+		if(NORTH)
+			I.pixel_y = 32
+		if(SOUTH)
+			I.pixel_y = -32
+		if(EAST)
+			I.pixel_x = 32
+		if(WEST)
+			I.pixel_x = -32
+	GLOB.turf_edge_cache["[state]-[dir]"] = I
+	return I
 
-// This updates an edge from an adjacent turf onto us, not our own 'internal' edges.
-// For e.g. we might be outdoor metal plating, and we want to find sand next to us to have it 'spill onto' our turf with an overlay.
-/turf/simulated/proc/update_icon_edge()
-	for(var/checkdir in GLOB.cardinal) // Check every direction
-		var/turf/simulated/T = get_step(src, checkdir) // Get the turf in that direction
-		// Our conditions:
-		// Has to be a /turf/simulated
-		// Has to have it's own edge_blending_priority
-		// Has to have a higher priority than us
-		// Their icon_state is not our icon_state
-		// They don't forbid_turf_edge
-		if(istype(T) && T.edge_blending_priority && edge_blending_priority < T.edge_blending_priority && icon_state != T.icon_state && !T.forbid_turf_edge())
-			var/cache_key = "[T.get_edge_icon_state()]-[checkdir]" // Usually [icon_state]-[dirnum]
-			if(!turf_edge_cache[cache_key])
-				var/image/I = image(icon = 'icons/turf/outdoors_edge.dmi', icon_state = "[T.get_edge_icon_state()]-edge", dir = checkdir, layer = ABOVE_TURF_LAYER) // Icon should be abstracted out
-				I.plane = TURF_PLANE
-				turf_edge_cache[cache_key] = I
-			add_overlay(turf_edge_cache[cache_key])
-
-// We will take this state and use it for a cache key, and append '-edge' to it to get the edge overlay (edges *from other turfs*, not our own internal edges)
-/turf/simulated/proc/get_edge_icon_state()
-	return icon_state
-
-// Tests if we shouldn't apply a turf edge.
-// Returns the blocker if one exists.
-/turf/simulated/proc/forbid_turf_edge()
-	for(var/obj/structure/S in contents)
-		if(S.block_turf_edges)
-			return S
-	return null
+// wip - turf icon stuff needs to be refactored
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour
-/decl/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
+/singleton/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
 
 	var/is_linked = FALSE
 	if (countercheck)
@@ -145,7 +156,7 @@ var/image/no_ceiling_image = null
 				is_linked = TRUE
 
 		//If it's space or openspace, use the space_smooth setting
-		else if(isspaceturf(T) || isopenspace(T))
+		else if(isspaceturf(T) || isopenturf(T))
 			if(space_smooth == SMOOTH_ALL)
 				is_linked = TRUE
 

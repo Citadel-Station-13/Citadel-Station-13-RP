@@ -1,4 +1,4 @@
-/datum/tgui_module/uav
+/datum/tgui_module_old/uav
 	name = "UAV Control"
 	tgui_id = "UAV"
 	ntos = TRUE
@@ -8,16 +8,16 @@
 	var/list/viewers //Who's viewing a UAV through us
 	var/adhoc_range = 30 //How far we can operate on a UAV without NTnet
 
-/datum/tgui_module/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	if(current_uav)
 		if(QDELETED(current_uav))
-			set_current(null)
+			clear_current()
 		else if(signal_test_counter-- <= 0)
 			signal_strength = get_signal_to(current_uav)
 			if(!signal_strength)
-				set_current(null)
+				clear_current()
 			else // Don't reset counter until we find a UAV that's actually in range we can stay connected to
 				signal_test_counter = 20
 
@@ -38,7 +38,7 @@
 	data["paired_uavs"] = paired_map
 	return data
 
-/datum/tgui_module/uav/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/uav/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -89,27 +89,44 @@
 							unlook(M)
 				return TRUE
 
-/datum/tgui_module/uav/proc/set_current(var/obj/item/uav/U)
+/datum/tgui_module_old/uav/proc/set_current(var/obj/item/uav/U)
 	if(current_uav == U)
 		return
 
 	signal_strength = 0
 	current_uav = U
+	RegisterSignal(U, COMSIG_MOVABLE_Z_CHANGED, .proc/current_uav_changed_z)
 
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
 			if(M)
-				if(current_uav)
-					to_chat(M, "<span class='warning'>You're disconnected from the UAV's camera!</span>")
-					unlook(M)
-				else
-					look(M)
+				look(M)
+
+/datum/tgui_module_old/uav/proc/clear_current()
+	if(!current_uav)
+		return
+
+	UnregisterSignal(current_uav, COMSIG_MOVABLE_Z_CHANGED)
+	signal_strength = 0
+	current_uav = null
+
+	if(LAZYLEN(viewers))
+		for(var/weakref/W in viewers)
+			var/M = W.resolve()
+			if(M)
+				to_chat(M, "<span class='warning'>You're disconnected from the UAV's camera!</span>")
+				unlook(M)
+
+/datum/tgui_module_old/uav/proc/current_uav_changed_z(old_z, new_z)
+	signal_strength = get_signal_to(current_uav)
+	if(!signal_strength)
+		clear_current()
 
 ////
 //// Finding signal strength between us and the UAV
 ////
-/datum/tgui_module/uav/proc/get_signal_to(atom/movable/AM)
+/datum/tgui_module_old/uav/proc/get_signal_to(atom/movable/AM)
 	// Following roughly the ntnet signal levels
 	// 0 is none
 	// 1 is weak
@@ -130,6 +147,7 @@
 	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
 	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
 	var/their_signal = 0
+	// Measure z-distance between the AM passed in and the nearest relay
 	for(var/relay in ntnet_global.relays)
 		var/obj/machinery/ntnet_relay/R = relay
 		if(!R.operable())
@@ -144,7 +162,8 @@
 			their_signal = 1
 			break
 
-	if(!their_signal) //They have no NTnet at all
+	//AM passed in has no NTnet at all
+	if(!their_signal)
 		if(get_z(host) == their_z && (get_dist(host, AM) < adhoc_range))
 			return 1 //We can connect (with weak signal) in same z without ntnet, within 30 turfs
 		else
@@ -153,7 +172,7 @@
 		return max(our_signal, their_signal)
 
 /* All handling viewers */
-/datum/tgui_module/uav/Destroy()
+/datum/tgui_module_old/uav/Destroy()
 	if(LAZYLEN(viewers))
 		for(var/datum/weakref/W in viewers)
 			var/M = W.resolve()
@@ -161,7 +180,7 @@
 				unlook(M)
 	. = ..()
 
-/datum/tgui_module/uav/ui_status(mob/user)
+/datum/tgui_module_old/uav/ui_status(mob/user)
 	. = ..()
 	if(. > UI_DISABLED)
 		if(viewing_uav(user))
@@ -169,14 +188,14 @@
 		return
 	unlook(user)
 
-/datum/tgui_module/uav/ui_close(mob/user)
+/datum/tgui_module_old/uav/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	unlook(user)
 
-/datum/tgui_module/uav/proc/viewing_uav(mob/user)
+/datum/tgui_module_old/uav/proc/viewing_uav(mob/user)
 	return (weakref(user) in viewers)
 
-/datum/tgui_module/uav/proc/look(mob/user)
+/datum/tgui_module_old/uav/proc/look(mob/user)
 	if(issilicon(user)) //Too complicated for me to want to mess with at the moment
 		to_chat(user, "<span class='warning'>Regulations prevent you from controlling several corporeal forms at the same time!</span>")
 		return
@@ -190,14 +209,14 @@
 	current_uav.add_master(user)
 	LAZYDISTINCTADD(viewers, weakref(user))
 
-/datum/tgui_module/uav/proc/unlook(mob/user)
+/datum/tgui_module_old/uav/proc/unlook(mob/user)
 	user.unset_machine()
 	user.reset_view()
 	if(current_uav)
 		current_uav.remove_master(user)
 	LAZYREMOVE(viewers, weakref(user))
 
-/datum/tgui_module/uav/check_eye(mob/user)
+/datum/tgui_module_old/uav/check_eye(mob/user)
 	if(get_dist(user, ui_host()) > 1 || user.blinded || !current_uav)
 		unlook(user)
 		return -1
@@ -212,28 +231,28 @@
 ////
 //// Relaying movements to the UAV
 ////
-/datum/tgui_module/uav/relaymove(var/mob/user, direction)
+/datum/tgui_module_old/uav/relaymove(var/mob/user, direction)
 	if(current_uav)
 		return current_uav.relaymove(user, direction, signal_strength)
 
 ////
 ////  The effects when looking through a UAV
 ////
-/datum/tgui_module/uav/apply_visual(mob/M)
+/datum/tgui_module_old/uav/apply_visual(mob/M)
 	if(!M.client)
 		return
 	if(weakref(M) in viewers)
 		M.overlay_fullscreen("fishbed",/atom/movable/screen/fullscreen/fishbed)
-		M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/scanline)
+		M.overlay_fullscreen("scanlines",/atom/movable/screen/fullscreen/tiled/scanline)
 
 		if(signal_strength <= 1)
-			M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/noise)
+			M.overlay_fullscreen("whitenoise",/atom/movable/screen/fullscreen/tiled/noise)
 		else
 			M.clear_fullscreen("whitenoise", 0)
 	else
 		remove_visual(M)
 
-/datum/tgui_module/uav/remove_visual(mob/M)
+/datum/tgui_module_old/uav/remove_visual(mob/M)
 	if(!M.client)
 		return
 	M.clear_fullscreen("fishbed",0)

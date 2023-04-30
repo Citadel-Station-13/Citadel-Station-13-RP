@@ -61,7 +61,7 @@
 /datum/feed_network/New()
 	CreateFeedChannel("Station Announcements", "SS13", 1, 1, "New Station Announcement Available")
 
-/datum/feed_network/proc/CreateFeedChannel(var/channel_name, var/author, var/locked, var/adminChannel = 0, var/announcement_message)
+/datum/feed_network/proc/CreateFeedChannel(channel_name, author, locked, adminChannel = 0, announcement_message)
 	var/datum/feed_channel/newChannel = new /datum/feed_channel
 	newChannel.channel_name = channel_name
 	newChannel.author = author
@@ -73,7 +73,7 @@
 		newChannel.announcement = "Breaking news from [channel_name]!"
 	network_channels += newChannel
 
-/datum/feed_network/proc/SubmitArticle(var/msg, var/author, var/channel_name, var/obj/item/photo/photo, var/adminMessage = 0, var/message_type = "")
+/datum/feed_network/proc/SubmitArticle(msg, author, channel_name, obj/item/photo/photo, adminMessage = 0, message_type = "")
 	var/datum/feed_message/newMsg = new /datum/feed_message
 	newMsg.author = author
 	newMsg.body = msg
@@ -90,13 +90,13 @@
 			insert_message_in_channel(FC, newMsg) //Adding message to the network's appropriate feed_channel
 			break
 
-/datum/feed_network/proc/insert_message_in_channel(var/datum/feed_channel/FC, var/datum/feed_message/newMsg)
+/datum/feed_network/proc/insert_message_in_channel(datum/feed_channel/FC, datum/feed_message/newMsg)
 	FC.messages += newMsg
 	newMsg.parent_channel = FC
 	FC.update()
 	alert_readers(FC.announcement)
 
-/datum/feed_network/proc/alert_readers(var/annoncement)
+/datum/feed_network/proc/alert_readers(annoncement)
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters)
 		NEWSCASTER.newsAlert(annoncement)
 		NEWSCASTER.update_icon()
@@ -129,11 +129,15 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	icon_state = "newscaster_normal"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	var/isbroken = 0  //1 if someone banged it with something heavy
-	var/ispowered = 1 //starts powered, changes with power_change()
+	anchored = TRUE
+
+	/// TRUE if someone banged it with something heavy.
+	var/isbroken = FALSE
+	/// Starts powered, changes with power_change()
+	var/ispowered = 1
 	//var/list/datum/feed_channel/channel_list = list() //This list will contain the names of the feed channels. Each name will refer to a data region where the messages of the feed channels are stored.
 	//OBSOLETE: We're now using a global news network
-	var/screen = 0                  //Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
+	var/screen = 0 //Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
 		// 0 = welcome screen - main menu
 		// 1 = view feed channels
 		// 2 = create feed channel
@@ -168,18 +172,17 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	var/hitstaken = 0      //Death at 3 hits from an item with force>=15
 	var/datum/feed_channel/viewing_channel = null
 	light_range = 0
-	anchored = 1
 	var/obj/machinery/exonet_node/node = null
 	circuit = /obj/item/circuitboard/newscaster
 
-/obj/machinery/newscaster/security_unit                   //Security unit
+/obj/machinery/newscaster/security_unit //Security unit
 	name = "Security Newscaster"
 	securityCaster = 1
 
 /obj/machinery/newscaster/Initialize(mapload, newdir)
 	. = ..()
 	allCasters += src
-	paper_remaining = 15            // Will probably change this to something better
+	paper_remaining = 15 // Will probably change this to something better
 	for(var/obj/machinery/newscaster/NEWSCASTER in allCasters) // Let's give it an appropriate unit number
 		unit_no++
 	update_icon() //for any custom ones on the map...
@@ -197,21 +200,20 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(!ispowered || isbroken)
 		icon_state = "newscaster_off"
 		if(isbroken) //If the thing is smashed, add crack overlay on top of the unpowered sprite.
-			overlays.Cut()
-			overlays += image(icon, "crack3")
+			set_overlays("crack3")
 		return
 
-	overlays.Cut() //reset overlays
+	cut_overlays() //reset overlays
 
 	if(news_network.wanted_issue) //wanted icon state, there can be no overlays on it as it's a priority message
 		icon_state = "newscaster_wanted"
 		return
 
 	if(alert) //new message alert overlay
-		overlays += "newscaster_alert"
+		add_overlay("newscaster_alert")
 
 	if(hitstaken > 0) //Cosmetic damage overlay
-		overlays += image(icon, "crack[hitstaken]")
+		add_overlay("crack[hitstaken]")
 
 	icon_state = "newscaster_normal"
 	return
@@ -220,15 +222,15 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	if(isbroken) //Broken shit can't be powered.
 		return
 	..()
-	if(!(stat & NOPOWER))
-		ispowered = 1
+	if(!(machine_stat & NOPOWER))
+		ispowered = TRUE
 		update_icon()
 	else
 		spawn(rand(0, 15))
-			ispowered = 0
+			ispowered = FALSE
 			update_icon()
 
-/obj/machinery/newscaster/ex_act(severity)
+/obj/machinery/newscaster/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -245,10 +247,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				isbroken=1
 			update_icon()
 
-/obj/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/machinery/newscaster/attack_ai(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/newscaster/attack_hand(mob/user as mob)            //########### THE MAIN BEEF IS HERE! And in the proc below this...############
+/obj/machinery/newscaster/attack_hand(mob/user, list/params) //########### THE MAIN BEEF IS HERE! And in the proc below this...############
 	if(!ispowered || isbroken)
 		return
 
@@ -256,12 +258,12 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		node = get_exonet_node()
 
 	if(!node || !node.on || !node.allow_external_newscasters)
-		to_chat(user, "<span class='danger'>Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
-		contact the system administrator.</span>")
-		return 0
+		to_chat(user, SPAN_DANGER("Error: Cannot connect to external content.  Please try again in a few minutes.  If this error persists, please \
+		contact the system administrator."))
+		return FALSE
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon))
 		var/mob/living/human_or_robot_user = user
@@ -751,21 +753,21 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 		else if(href_list["refresh"])
 			updateUsrDialog()
 
-/obj/machinery/newscaster/attackby(I as obj, user as mob)
+/obj/machinery/newscaster/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))
 		return
 	else
 		attack_hand(user)
 	return
 
-/obj/machinery/newscaster/attack_ai(mob/user as mob)
+/obj/machinery/newscaster/attack_ai(mob/user)
 	return attack_hand(user) //or maybe it'll have some special functions? No idea.
 
 /datum/news_photo
 	var/is_synth = 0
 	var/obj/item/photo/photo = null
 
-/datum/news_photo/New(var/obj/item/photo/p, var/synth)
+/datum/news_photo/New(obj/item/photo/p, synth)
 	is_synth = synth
 	photo = p
 
@@ -777,17 +779,16 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 				user.put_in_inactive_hand(photo_data.photo)
 		qdel(photo_data)
 
-	if(istype(user.get_active_hand(), /obj/item/photo))
-		var/obj/item/photo = user.get_active_hand()
-		user.drop_item()
-		photo.loc = src
+	if(istype(user.get_active_held_item(), /obj/item/photo))
+		var/obj/item/photo = user.get_active_held_item()
+		if(!user.attempt_insert_item_for_installation(photo, src))
+			return
 		photo_data = new(photo, 0)
 	else if(istype(user,/mob/living/silicon))
 		var/mob/living/silicon/tempAI = user
 		var/obj/item/photo/selection = tempAI.GetPicture()
 		if(!selection)
 			return
-
 		photo_data = new(selection, 1)
 
 //########################################################################################################################
@@ -811,7 +812,10 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-obj/item/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/dat
@@ -890,7 +894,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 	else
 		to_chat(user, "The paper is full of intelligible symbols!")
 
-obj/item/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if((src in U.contents) || (istype(loc, /turf) && in_range(src, U)))
@@ -921,7 +925,7 @@ obj/item/newspaper/Topic(href, href_list)
 		if(istype(src.loc, /mob))
 			attack_self(src.loc)
 
-obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/newspaper/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		if(scribble_page == curr_page)
 			to_chat(user, "<font color=#4F49AF>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")
@@ -939,7 +943,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 
 ////////////////////////////////////helper procs
 
-/obj/machinery/newscaster/proc/scan_user(mob/living/user as mob)
+/obj/machinery/newscaster/proc/scan_user(mob/living/user)
 	if(istype(user,/mob/living/carbon/human))                       //User is a human
 		var/mob/living/carbon/human/human_user = user
 		var/obj/item/card/id/I = human_user.GetIdCard()
@@ -962,7 +966,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 	paper_remaining--
 	return
 
-/obj/machinery/newscaster/proc/newsAlert(var/news_call)
+/obj/machinery/newscaster/proc/newsAlert(news_call)
 	if(!node || !node.on || !node.allow_external_newscasters) //The messages will still be there once the connection returns.
 		return
 	var/turf/T = get_turf(src)

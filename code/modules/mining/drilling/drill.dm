@@ -18,17 +18,17 @@
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
 
 	var/list/ore_types = list(
-		"hematite" = /obj/item/ore/iron,
-		"uranium" = /obj/item/ore/uranium,
-		"gold" = /obj/item/ore/gold,
-		"silver" = /obj/item/ore/silver,
-		"copper" = /obj/item/ore/copper,
-		"diamond" = /obj/item/ore/diamond,
-		"phoron" = /obj/item/ore/phoron,
-		"osmium" = /obj/item/ore/osmium,
+		MAT_HEMATITE = /obj/item/ore/iron,
+		MAT_URANIUM = /obj/item/ore/uranium,
+		MAT_GOLD = /obj/item/ore/gold,
+		MAT_SILVER = /obj/item/ore/silver,
+		MAT_COPPER = /obj/item/ore/copper,
+		MAT_DIAMOND = /obj/item/ore/diamond,
+		MAT_PHORON = /obj/item/ore/phoron,
+		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
 		"silicates" = /obj/item/ore/glass,
-		"carbon" = /obj/item/ore/coal
+		MAT_CARBON = /obj/item/ore/coal
 		)
 
 	//Upgrades
@@ -91,7 +91,7 @@
 	//Drill through the flooring, if any.
 	if(istype(get_turf(src), /turf/simulated))
 		var/turf/simulated/T = get_turf(src)
-		T.ex_act(2.0)
+		LEGACY_EX_ACT(T, 2, null)
 
 	//Dig out the tasty ores.
 	if(resource_field.len)
@@ -175,15 +175,15 @@
 		if(cell)
 			to_chat(user, "The drill already has a cell installed.")
 		else
-			user.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			cell = O
 			component_parts += O
 			to_chat(user, "You install \the [O].")
 		return
 	..()
 
-/obj/machinery/mining/drill/attack_hand(mob/user as mob)
+/obj/machinery/mining/drill/attack_hand(mob/user, list/params)
 	check_supports()
 
 	if (panel_open && cell && user.Adjacent(src))
@@ -344,7 +344,7 @@
 			to_chat(user, "<span class='notice'>You can't anchor something to empty space. Idiot.</span>")
 			return
 
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]anchor the brace.</span>")
 
 		anchored = !anchored

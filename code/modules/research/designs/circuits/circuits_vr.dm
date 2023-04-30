@@ -111,13 +111,6 @@
 	build_path = /obj/item/circuitboard/resleeving_control
 	sort_string = "HAADE"
 
-/datum/design/circuit/body_designer
-	name = "Body design console"
-	id = "body_designer"
-	req_tech = list(TECH_DATA = 5)
-	build_path = /obj/item/circuitboard/body_designer
-	sort_string = "HAADF"
-
 /datum/design/circuit/partslathe
 	name = "Parts lathe"
 	id = "partslathe"

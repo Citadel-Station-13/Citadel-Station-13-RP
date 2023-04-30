@@ -26,18 +26,18 @@
 			return 0
 	return 1
 
-/obj/machinery/door/blast/puzzle/bullet_act(var/obj/item/projectile/Proj)
-	if(!istype(Proj, /obj/item/projectile/test))
+/obj/machinery/door/blast/puzzle/bullet_act(var/obj/projectile/Proj)
+	if(!istype(Proj, /obj/projectile/test))
 		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
 	qdel(Proj) //No piercing. No.
 
-/obj/machinery/door/blast/puzzle/ex_act(severity)
+/obj/machinery/door/blast/puzzle/legacy_ex_act(severity)
 	visible_message("<span class='cult'>\The [src] is completely unaffected by the blast.</span>")
 	return
 
 /obj/machinery/door/blast/puzzle/Initialize(mapload)
 	. = ..()
-	implicit_material = get_material_by_name("dungeonium")
+	implicit_material = SSmaterials.get_material(/datum/material/alienalloy/dungeonium)
 	if(locks.len)
 		return
 	var/check_range = world.view * checkrange_mult
@@ -53,7 +53,7 @@
 			locks -= L
 	..()
 
-/obj/machinery/door/blast/puzzle/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/puzzle/attack_hand(mob/user, list/params)
 	if(check_locks())
 		force_toggle(1, user)
 	else
@@ -61,7 +61,7 @@
 
 /obj/machinery/door/blast/puzzle/attackby(obj/item/C as obj, mob/user as mob)
 	if(istype(C, /obj/item))
-		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (stat & BROKEN)))
+		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN)))
 			if(istype(C,/obj/item/material/twohanded/fireaxe))
 				var/obj/item/material/twohanded/fireaxe/F = C
 				if(!F.wielded)

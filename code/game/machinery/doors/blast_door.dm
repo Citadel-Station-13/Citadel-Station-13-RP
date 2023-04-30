@@ -16,6 +16,18 @@
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
+	rad_flags = RAD_NO_CONTAMINATE
+	rad_insulation = RAD_INSULATION_SUPER
+	dir = NORTH
+	explosion_resistance = 25
+	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
+
+	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
+	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
+	block_air_zones = 0
+
+	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+
 	var/datum/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
@@ -23,14 +35,8 @@
 	var/icon_state_closed = null
 	var/icon_state_closing = null
 
-	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
 	var/id = 1.0
-	dir = 1
-	explosion_resistance = 25
 
-	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
-	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
-	block_air_zones = 0
 
 /obj/machinery/door/blast/Initialize(mapload)
 	. = ..()
@@ -56,8 +62,6 @@
 		icon_state = icon_state_closed
 	else
 		icon_state = icon_state_open
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
 
 // Has to be in here, comment at the top is older than the emag_act code on doors proper
 /obj/machinery/door/blast/emag_act()
@@ -79,6 +83,7 @@
 	src.set_opacity(0)
 	sleep(15)
 	src.layer = open_layer
+	rad_insulation = RAD_INSULATION_NONE
 	src.operating = 0
 
 // Proc: force_close()
@@ -93,6 +98,7 @@
 	src.update_icon()
 	src.set_opacity(initial(opacity))
 	sleep(15)
+	rad_insulation = initial(rad_insulation)
 	src.operating = 0
 
 // Proc: force_toggle()
@@ -109,7 +115,7 @@
 
 //Proc: attack_hand
 //Description: Attacked with empty hand. Only to allow special attack_bys.
-/obj/machinery/door/blast/attack_hand(mob/user as mob)
+/obj/machinery/door/blast/attack_hand(mob/user, list/params)
 	if(istype(user, /mob/living/carbon/human))
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
@@ -123,9 +129,9 @@
 // Description: If we are clicked with crowbar, wielded fire axe, or armblade, try to manually open the door.
 // This only works on broken doors or doors without power. Also allows repair with Plasteel.
 /obj/machinery/door/blast/attackby(obj/item/C as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, C)
 	if(istype(C, /obj/item)) // For reasons unknown, sometimes C is actually not what it is advertised as, like a mob.
-		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
+		if(C.pry == 1 && (user.a_intent != INTENT_HARM || (machine_stat & BROKEN))) // Can we pry it open with something, like a crowbar/fireaxe/lingblade?
 			if(istype(C,/obj/item/material/twohanded/fireaxe)) // Fireaxes need to be in both hands to pry.
 				var/obj/item/material/twohanded/fireaxe/F = C
 				if(!F.wielded)
@@ -133,7 +139,7 @@
 					return
 
 			// If we're at this point, it's a fireaxe in both hands or something else that doesn't care for twohanding.
-			if(((stat & NOPOWER) || (stat & BROKEN)) && !( src.operating ))
+			if(((machine_stat & NOPOWER) || (machine_stat & BROKEN)) && !( src.operating ))
 				force_toggle(1, user)
 
 			else
@@ -146,12 +152,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force*0.35) //it's a blast door, it should take a while. -Luke
+					take_damage(W.damage_force*0.35) //it's a blast door, it should take a while. -Luke
 				return
 
 	else if(istype(C, /obj/item/stack/material) && C.get_material_name() == "plasteel") // Repairing.
@@ -176,12 +182,12 @@
 		user.setClickCooldown(user.get_attack_speed(W))
 		if(W.damtype == BRUTE || W.damtype == BURN)
 			user.do_attack_animation(src)
-			if(W.force < min_force) //No actual non-weapon item shouls have a force greater than the min_force, but let's include this just in case.
+			if(W.damage_force < min_force) //No actual non-weapon item shouls have a force greater than the min_force, but let's include this just in case.
 				user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 			else
 				user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 				playsound(src.loc, hitsound, 100, 1)
-				take_damage(W.force*0.15) //If the item isn't a weapon, let's make this take longer than usual to break it down.
+				take_damage(W.damage_force*0.15) //If the item isn't a weapon, let's make this take longer than usual to break it down.
 			return
 
 // Proc: attack_alien()
@@ -192,13 +198,13 @@
 		var/mob/living/carbon/human/X = user
 		if(istype(X.species, /datum/species/xenos))
 			if(src.density)
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] open!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] open!</span>")
 				if(do_after(user, 15 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
 					force_open(1)
 			else
-				visible_message("<span class='alium'>\The [user] begins forcing \the [src] closed!</span>")
+				visible_message("<span class='green'>\The [user] begins forcing \the [src] closed!</span>")
 				if(do_after(user, 5 SECONDS,src))
 					playsound(src.loc, 'sound/machines/airlock_creaking.ogg', 100, 1)
 					visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")
@@ -212,7 +218,7 @@
 // Parameters: Attacking simple mob, incoming damage.
 // Description: Checks the power or integrity of the blast door, if either have failed, chekcs the damage to determine if the creature would be able to open the door by force. Otherwise, super.
 /obj/machinery/door/blast/attack_generic(mob/living/user, damage)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		if(damage >= STRUCTURE_MIN_DAMAGE_THRESHOLD)
 			user.set_AI_busy(TRUE) // If the mob doesn't have an AI attached, this won't do anything.
 			if(src.density)
@@ -239,11 +245,11 @@
 		force_open()
 		return 1
 	else
-		if (src.operating || (stat & BROKEN || stat & NOPOWER))
+		if (src.operating || (machine_stat & BROKEN || machine_stat & NOPOWER))
 			return 1
 		force_open()
 
-	if(autoclose && src.operating && !(stat & BROKEN || stat & NOPOWER))
+	if(autoclose && src.operating && !(machine_stat & BROKEN || machine_stat & NOPOWER))
 		spawn(150)
 			close()
 	return 1
@@ -252,7 +258,7 @@
 // Parameters: None
 // Description: Closes the door. Does necessary checks.
 /obj/machinery/door/blast/close()
-	if (src.operating || (stat & BROKEN || stat & NOPOWER))
+	if (src.operating || (machine_stat & BROKEN || machine_stat & NOPOWER))
 		return
 	force_close()
 
@@ -262,8 +268,8 @@
 // Description: Fully repairs the blast door.
 /obj/machinery/door/blast/proc/repair()
 	health = maxhealth
-	if(stat & BROKEN)
-		stat &= ~BROKEN
+	if(machine_stat & BROKEN)
+		machine_stat &= ~BROKEN
 
 /*
 // This replicates the old functionality coded into CanPass() for this object, however it appeared to have made blast doors not airtight.
@@ -276,7 +282,7 @@
 
 // SUBTYPE: Regular
 // Your classical blast door, found almost everywhere.
-obj/machinery/door/blast/regular
+/obj/machinery/door/blast/regular
 	icon_state_open = "pdoor0"
 	icon_state_opening = "pdoorc0"
 	icon_state_closed = "pdoor1"
@@ -284,7 +290,7 @@ obj/machinery/door/blast/regular
 	icon_state = "pdoor1"
 	maxhealth = 600
 
-obj/machinery/door/blast/regular/open
+/obj/machinery/door/blast/regular/open
 	icon_state = "pdoor0"
 	density = 0
 	opacity = 0

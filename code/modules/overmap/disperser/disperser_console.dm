@@ -2,7 +2,7 @@
 
 /obj/machinery/computer/ship/disperser
 	name = "obstruction removal ballista control"
-	icon = 'icons/obj/computer_vr.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "disperser"
 	light_color = "#7faaff"
@@ -27,7 +27,7 @@
 	var/next_shot = 0 //round time where the next shot can start from
 	var/const/coolinterval = 2 MINUTES //time to wait between safe shots in deciseconds
 
-/obj/machinery/computer/ship/disperser/Initialize()
+/obj/machinery/computer/ship/disperser/Initialize(mapload)
 	. = ..()
 	link_parts()
 	reset_calibration()
@@ -40,7 +40,7 @@
 	if(is_valid_setup())
 		return TRUE
 
-	for(var/obj/machinery/disperser/front/F in global.machines)
+	for(var/obj/machinery/disperser/front/F in GLOB.machines)
 		if(get_dist(src, F) >= link_range)
 			continue
 		var/backwards = turn(F.dir, 180)
@@ -60,7 +60,7 @@
 			return TRUE
 	return FALSE
 
-obj/machinery/computer/ship/disperser/proc/is_valid_setup()
+/obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 	if(front && middle && back)
 		var/everything_in_range = (get_dist(src, front) < link_range) && (get_dist(src, middle) < link_range) && (get_dist(src, back) < link_range)
 		var/everything_in_order = (middle.Adjacent(front) && middle.Adjacent(back)) && (front.dir == middle.dir && middle.dir == back.dir)
@@ -150,7 +150,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 		data["range"] = range
 		data["next_shot"] = round(get_next_shot_seconds())
 		data["nopower"] = !data["faillink"] && (!front.powered() || !middle.powered() || !back.powered())
-		data["skill"] = user.get_skill_value(core_skill) > skill_offset
+		data["skill"] = TRUE // todo: skills
 
 		var/charge = "UNKNOWN ERROR"
 		if(get_charge_type() == OVERMAP_WEAKNESS_NONE)
@@ -162,7 +162,7 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 
 	return data
 
-/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/disperser/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -183,20 +183,21 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 			. = TRUE
 
 		if("skill_calibration")
-			for(var/i = 1 to min(caldigit, usr.get_skill_value(core_skill) - skill_offset))
+			// todo: skills
+			for(var/i in 1 to 2)
 				calibration[i] = calexpected[i]
 			. = TRUE
 
 		if("strength")
 			var/input = input("1-5", "disperser strength", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				strength = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE
 
 		if("range")
 			var/input = input("1-5", "disperser radius", 1) as num|null
-			if(input && ui_status(usr, state) == UI_INTERACTIVE)
+			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				range = sanitize_integer(input, 1, 5, 1)
 				middle.update_idle_power_usage(strength * range * 100)
 			. = TRUE
@@ -206,4 +207,4 @@ obj/machinery/computer/ship/disperser/proc/is_valid_setup()
 			. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)

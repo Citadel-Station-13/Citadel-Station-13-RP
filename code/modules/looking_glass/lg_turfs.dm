@@ -1,4 +1,4 @@
-/decl/flooring/looking_glass
+/singleton/flooring/looking_glass
 	name = "looking glass surface"
 	desc = "Too expensive to replace. Don't break it!"
 	icon = 'icons/turf/flooring/lg_origin.dmi'
@@ -11,7 +11,7 @@
 	name = "looking glass surface"
 	icon = 'icons/turf/flooring/lg_origin.dmi'
 	icon_state = "origin_arrow"
-	initial_flooring = /decl/flooring/looking_glass
+	initial_flooring = /singleton/flooring/looking_glass
 	appearance_flags = TILE_BOUND
 	dynamic_lighting = FALSE
 
@@ -85,4 +85,3 @@
 	animate(src, color = null, time = 3 SECONDS)
 	sleep(3 SECONDS)
 	icon_state = "origin"
-

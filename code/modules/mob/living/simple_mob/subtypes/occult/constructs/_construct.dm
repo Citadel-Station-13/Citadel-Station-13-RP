@@ -71,7 +71,7 @@
 	shock_resist = 0.1 //Electricity isn't very effective on stone, especially that from hell.
 	poison_resist = 1.0
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 10,
 				"laser" = 10,
@@ -163,7 +163,7 @@
 
 /mob/living/simple_mob/construct/examine(mob/user)
 	..(user)
-	var/msg = "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
+	var/msg = "<span cass='info'>This is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		msg += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -171,7 +171,6 @@
 		else
 			msg += "<B>It looks severely dented!</B>\n"
 		msg += "</span>"
-	msg += "*---------*</span>"
 
 	to_chat(user, msg)
 
@@ -183,9 +182,9 @@
 //Glowing Procs
 /mob/living/simple_mob/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
-	eye_glow.plane = PLANE_LIGHTING_ABOVE
-	overlays += eye_glow
+	eye_glow.plane = ABOVE_LIGHTING_PLANE
+	add_overlay(eye_glow)
 	set_light(2, -2, l_color = "#FFFFFF")
 
 /mob/living/simple_mob/construct/proc/remove_glow()
-	overlays.Cut()
+	cut_overlays()

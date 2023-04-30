@@ -1,23 +1,3 @@
-var/list/mob_hat_cache = list()
-/proc/get_hat_icon(var/obj/item/hat, var/offset_x = 0, var/offset_y = 0)
-	var/t_state = hat.icon_state
-	if(hat.item_state_slots && hat.item_state_slots[slot_head_str])
-		t_state = hat.item_state_slots[slot_head_str]
-	else if(hat.item_state)
-		t_state = hat.item_state
-	var/key = "[t_state]_[offset_x]_[offset_y]"
-	if(!mob_hat_cache[key])            // Not ideal as there's no guarantee all hat icon_states
-		var/t_icon = INV_HEAD_DEF_ICON // are unique across multiple dmis, but whatever.
-		if(hat.icon_override)
-			t_icon = hat.icon_override
-		else if(hat.item_icons && (slot_head_str in hat.item_icons))
-			t_icon = hat.item_icons[slot_head_str]
-		var/image/I = image(icon = t_icon, icon_state = t_state)
-		I.pixel_x = offset_x
-		I.pixel_y = offset_y
-		mob_hat_cache[key] = I
-	return mob_hat_cache[key]
-
 /mob/living/silicon/robot/drone
 	name = "maintenance drone"
 	real_name = "drone"
@@ -29,11 +9,11 @@ var/list/mob_hat_cache = list()
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
-	req_access = list(access_engine, access_robotics)
+	req_access = list(ACCESS_ENGINEERING_MAIN, ACCESS_SCIENCE_ROBOTICS)
 	integrated_light_power = 3
 	local_transmit = 1
 
@@ -48,7 +28,7 @@ var/list/mob_hat_cache = list()
 	mob_always_swap = 1
 
 	mob_size = MOB_SMALL // pulled here from a _vr file
-	
+
 	//Used for self-mailing.
 	var/mail_destination = ""
 	var/obj/machinery/drone_fabricator/master_fabricator
@@ -59,6 +39,9 @@ var/list/mob_hat_cache = list()
 	var/hat_y_offset = -13
 	var/serial_number = 0
 	var/name_override = 0
+	var/datum/drone_matrix/master_matrix
+	var/upgrade_cooldown = 0
+	var/list/matrix_upgrades
 
 	var/foreign_droid = FALSE
 
@@ -87,7 +70,16 @@ var/list/mob_hat_cache = list()
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
-
+	//holder_type = /obj/item/holder/drone/heavy
+/mob/living/silicon/robot/drone/construction/matriarch
+	name = "matriarch drone"
+	module_type = /obj/item/robot_module/drone/construction/matriarch
+	law_type = /datum/ai_laws/matriarch_drone
+	maxHealth = 50
+	health = 50
+	integrated_light_power = 4
+	name_override = 1
+	var/matrix_tag
 /mob/living/silicon/robot/drone/mining
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
@@ -99,8 +91,8 @@ var/list/mob_hat_cache = list()
 
 /mob/living/silicon/robot/drone/Initialize(mapload)
 	. = ..()
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)
 	add_language("Drone Talk", 1)
@@ -118,7 +110,7 @@ var/list/mob_hat_cache = list()
 		var/datum/robot_component/C = components[V]
 		C.max_damage = 10
 
-	verbs -= /mob/living/silicon/robot/verb/Namepick
+	remove_verb(src, /mob/living/silicon/robot/verb/Namepick)
 	updateicon()
 	updatename()
 
@@ -133,6 +125,19 @@ var/list/mob_hat_cache = list()
 	playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
 
 //Redefining some robot procs...
+
+/mob/living/silicon/robot/drone/construction/matriarch/Namepick()
+	set category = "Robot Commands"
+	if(custom_name)
+		return 0
+
+	spawn(0)
+		var/drone_name = sanitizeSafe(input(src, "Select a first-name suffix for your maintenance drone, for example, 'Bishop' would appear as 'matriach maintenance drone (Bishop)'. (Max length: 16 Characters)", "Name Suffix Selection"), 16)
+		if(!drone_name)
+			drone_name = pick("Ripley", "Tano", "Data")
+		real_name = "[initial(name)] ([drone_name])"
+		name = real_name
+
 /mob/living/silicon/robot/drone/SetName(pickedName as text)
 	// Would prefer to call the grandparent proc but this isn't possible, so..
 	real_name = pickedName
@@ -147,13 +152,19 @@ var/list/mob_hat_cache = list()
 
 /mob/living/silicon/robot/drone/updateicon()
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(stat == 0)
-		overlays += "eyes-[icon_state]"
+		overlays_to_add += "eyes-[icon_state]"
 	else
-		overlays -= "eyes"
+		overlays_to_add -= "eyes"
 	if(hat) // Let the drones wear hats.
-		overlays |= get_hat_icon(hat, hat_x_offset, hat_y_offset)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_DEFAULT)
+		MA.pixel_x = hat_x_offset
+		MA.pixel_y = hat_y_offset
+		overlays_to_add += MA
+
+	add_overlay(overlays_to_add)
 
 /mob/living/silicon/robot/drone/choose_icon()
 	return
@@ -175,7 +186,8 @@ var/list/mob_hat_cache = list()
 		if(hat)
 			to_chat(user, "<span class='warning'>\The [src] is already wearing \the [hat].</span>")
 			return
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
 		return
@@ -188,7 +200,7 @@ var/list/mob_hat_cache = list()
 		return
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		if(stat == 2)
 
 			if(!config_legacy.allow_drone_spawn || emagged || health < -35) //It's dead, Dave.
@@ -201,7 +213,7 @@ var/list/mob_hat_cache = list()
 
 			user.visible_message("<span class='danger'>\The [user] swipes [TU.his] ID card through \the [src], attempting to reboot it.</span>", "<span class='danger'>>You swipe your ID card through \the [src], attempting to reboot it.</span>")
 			var/drones = 0
-			for(var/mob/living/silicon/robot/drone/D in player_list)
+			for(var/mob/living/silicon/robot/drone/D in GLOB.player_list)
 				drones++
 			if(drones < config_legacy.max_maint_drones)
 				request_player()
@@ -246,7 +258,7 @@ var/list/mob_hat_cache = list()
 	clear_supplied_laws()
 	clear_inherent_laws()
 	laws = new /datum/ai_laws/syndicate_override
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 
 	to_chat(src, "<b>Obey these laws:</b>")
@@ -257,10 +269,10 @@ var/list/mob_hat_cache = list()
 //DRONE LIFE/DEATH
 
 //For some goddamn reason robots have this hardcoded. Redefining it for our fragile friends here.
-/mob/living/silicon/robot/drone/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/robot/drone/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = maxHealth - (getBruteLoss() + getFireLoss())
 	return
@@ -308,7 +320,7 @@ var/list/mob_hat_cache = list()
 //Reboot procs.
 
 /mob/living/silicon/robot/drone/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(jobban_isbanned(O, "Cyborg"))
 			continue
 		if(O.client)
@@ -333,7 +345,7 @@ var/list/mob_hat_cache = list()
 	src.ckey = player.ckey
 
 	if(player.mob && player.mob.mind)
-		player.mob.mind.transfer_to(src)
+		player.mob.mind.transfer(src)
 
 	lawupdate = 0
 	to_chat(src, "<b>Systems rebooted</b>. Loading base pattern maintenance protocol... <b>loaded</b>.")
@@ -347,10 +359,10 @@ var/list/mob_hat_cache = list()
 	to_chat(src, "Use <b>say ;Hello</b> to talk to other drones and <b>say Hello</b> to speak silently to your nearby fellows.")
 
 /mob/living/silicon/robot/drone/add_robot_verbs()
-	src.verbs |= silicon_subsystems
+	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/drone/remove_robot_verbs()
-	src.verbs -= silicon_subsystems
+	remove_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/drone/construction/welcome_drone()
 	to_chat(src, "<b>You are a construction drone, an autonomous engineering and fabrication system.</b>.")
@@ -365,3 +377,38 @@ var/list/mob_hat_cache = list()
 /mob/living/silicon/robot/drone/mining/init()
 	..()
 	flavor_text = "It's a bulky mining drone stamped with a Grayson logo."
+
+/mob/living/silicon/robot/drone/construction/matriarch/init()
+	..()
+	add_verb(src, /mob/living/silicon/robot/verb/Namepick)
+	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Heart Of The Swarm!'"
+
+/mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()
+	to_chat(src, "<b>You are a matriarch maintenance drone, a tiny-brained robotic repair machine</b>.")
+	to_chat(src, "You have no individual will, no personality, and no drives or urges other than your laws.")
+	to_chat(src, "Remember,  you are <b>lawed against interference with the crew</b>. Also remember, <b>you DO NOT take orders from the AI.</b>")
+	to_chat(src, "Use <b>say ;Hello</b> to talk to other drones and <b>say Hello</b> to speak silently to your nearby fellows.")
+
+/mob/living/silicon/robot/drone/construction/matriarch/Initialize()
+	. = ..()
+	matrix_tag = "[GLOB.using_map.company_name]"
+
+/mob/living/silicon/robot/drone/construction/matriarch/shut_down()
+	return
+
+/mob/living/silicon/robot/drone/construction/matriarch/transfer_personality(client/player)
+	. = ..()
+	assign_drone_to_matrix(src, matrix_tag)
+	master_matrix.message_drones(SPAN_NOTICE("Energy surges through your circuits. The matriarch has come online."))
+
+/mob/living/silicon/robot/drone/construction/matriarch/ghostize(can_reenter_corpse, should_set_timer)
+	. = ..()
+	if(can_reenter_corpse || stat == DEAD)
+		return
+	if(src in living_mob_list) // needs to exist to reopen spawn atom
+		if(master_matrix)
+			master_matrix.remove_drone(WEAKREF(src))
+			master_matrix.message_drones(SPAN_NOTICE("Your circuits dull. The matriarch has gone offline."))
+			master_matrix = null
+		updatename(initial(name))
+		request_player()

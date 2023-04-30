@@ -19,7 +19,7 @@
 	vendingMachines.Cut()
 	infectedVendingMachines.Cut()
 
-	for(var/obj/machinery/vending/V in machines)
+	for(var/obj/machinery/vending/V in GLOB.machines)
 		if(isNotStationLevel(V.z))	continue
 		vendingMachines.Add(V)
 

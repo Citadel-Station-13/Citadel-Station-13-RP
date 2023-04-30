@@ -34,7 +34,7 @@ export const ResleevingPod = (model, context) => {
                   {(stat === 2)
                     ? (<Box color="bad">DEAD</Box>)
                     : (stat === 1)
-                      ? (<Box color="average">Unconscious</Box>) 
+                      ? (<Box color="average">Unconscious</Box>)
                       : (
                         <ProgressBar
                           ranges={{

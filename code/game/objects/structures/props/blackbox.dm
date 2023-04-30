@@ -8,7 +8,7 @@
 	icon_state = "blackbox_off"
 
 // Black boxes are resistant to explosions.
-/obj/structure/prop/blackbox/ex_act(severity)
+/obj/structure/prop/blackbox/legacy_ex_act(severity)
 	..(++severity)
 
 
@@ -130,7 +130,7 @@
 		<B>A repeating ping, before silence.</B><BR>
 		<B>End of second log.</B>
 	"}
-//VOREStation additions below this line - Killian's wrecks
+
 /obj/structure/prop/blackbox/mackerel_wreck
 	catalogue_data = list(/datum/category_item/catalogue/information/blackbox/mackerel_wreck)
 

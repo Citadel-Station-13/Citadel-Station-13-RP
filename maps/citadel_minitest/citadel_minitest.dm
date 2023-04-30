@@ -8,6 +8,11 @@
 	#include "citadel_minitest_shuttles.dm"
 	#include "citadel_minitest_sectors.dm"
 
+
+	#include "../../maps/map_files/mini_test/citadel_minitest-1.dmm"
+	#include "../../maps/map_files/mini_test/citadel_minitest-sector-2.dmm"
+	#include "../../maps/map_files/mini_test/citadel_minitest-sector-3.dmm"
+
 	#define USING_MAP_DATUM /datum/map/citadel_minitest
 
 	#warning Please uncheck citadel_minitest.dm before committing.

@@ -18,11 +18,9 @@
 		if(L.buckled)
 			L.buckled = 0
 			L.anchored = 0
-		if(L.client)
-			L.client.perspective = EYE_PERSPECTIVE
-			L.client.eye = src
-		L.loc = src
-		L.sdisabilities |= MUTE
+		L.forceMove(src)
+		L.update_perspective()
+		L.sdisabilities |= SDISABILITY_MUTE
 		health = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
 		intialTox = L.getToxLoss()
 		intialFire = L.getFireLoss()
@@ -60,17 +58,14 @@
 		qdel(src)
 
 /obj/structure/closet/statue/dump_contents()
-
 	for(var/obj/O in src)
-		O.loc = src.loc
+		O.forceMove(loc)
 
 	for(var/mob/living/M in src)
-		M.loc = src.loc
-		M.sdisabilities &= ~MUTE
+		M.forceMove(loc)
+		M.update_perspective()
+		M.sdisabilities &= ~SDISABILITY_MUTE
 		M.take_overall_damage((M.health - health - 100),0) //any new damage the statue incurred is transfered to the mob
-		if(M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
 
 /obj/structure/closet/statue/open()
 	return
@@ -86,7 +81,7 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/statue/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.get_structure_damage()
 	check_health()
 
@@ -97,25 +92,25 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/ex_act(severity)
+/obj/structure/closet/statue/legacy_ex_act(severity)
 	for(var/mob/M in src)
-		M.ex_act(severity)
+		LEGACY_EX_ACT(M, severity, null)
 		health -= 60 / severity
 		check_health()
 
 /obj/structure/closet/statue/attackby(obj/item/I as obj, mob/user as mob)
-	health -= I.force
+	health -= I.damage_force
 	user.do_attack_animation(src)
 	visible_message("<span class='danger'>[user] strikes [src] with [I].</span>")
 	check_health()
 
-/obj/structure/closet/statue/MouseDrop_T()
+/obj/structure/closet/statue/MouseDroppedOnLegacy()
 	return
 
 /obj/structure/closet/statue/relaymove()
 	return
 
-/obj/structure/closet/statue/attack_hand()
+/obj/structure/closet/statue/attack_hand(mob/user, list/params)
 	return
 
 /obj/structure/closet/statue/verb_toggleopen()

@@ -1,34 +1,34 @@
-/*
-Exonet Protocol Version 2
-
-This is designed to be a fairly simple fake-networking system, allowing you to send and receive messages
-between the exonet_protocol datums, and for atoms to react to those messages, based on the contents of the message.
-Hopefully, this can evolve to be a more robust fake-networking system and allow for some devious network hacking in the future.
-
-Version 1 never existed.
-
-*Setting up*
-
-To set up the exonet link, define a variable on your desired atom it is like this;
-	var/datum/exonet_protocol/exonet = null
-Afterwards, before you want to do networking, call exonet = New(src), then exonet.make_address(string), and give it a string to hash into the new IP.
-The reason it needs a string is so you can have the addresses be persistant, assuming no-one already took it first.
-
-When you're no longer wanting to use the address and want to free it up, like when you want to Destroy() it, you need to call remove_address()
-
-*Sending messages*
-
-To send a message to another datum, you need to know it's EPv2 (fake IP) address.  Once you know that, call send_message(), place your
-intended address in the first argument, then the message in the second.  For example, send_message(exonet.address, "ping") will make you
-ping yourself.
-
-*Receiving messages*
-You don't need to do anything special to receive the messages, other than give your target exonet datum an address as well.  Once something hits
-your datum with send_message(), receive_message() is called, and the default action is to call receive_exonet_message() on the datum's holder.
-You'll want to override receive_exonet_message() on your atom, and define what will occur when the message is received.
-The receiving atom will receive the origin atom (the atom that sent the message), the origin address, and finally the message itself.
-It's suggested to start with an if or switch statement for the message, to determine what to do.
-*/
+/**
+ *! Exonet Protocol Version 2
+ *
+ * This is designed to be a fairly simple fake-networking system, allowing you to send and receive messages
+ * between the exonet_protocol datums, and for atoms to react to those messages, based on the contents of the message.
+ * Hopefully, this can evolve to be a more robust fake-networking system and allow for some devious network hacking in the future.
+ *
+ * Version 1 never existed.
+ *
+ * *Setting up*
+ *
+ * To set up the exonet link, define a variable on your desired atom it is like this;
+ * 	var/datum/exonet_protocol/exonet = null
+ * Afterwards, before you want to do networking, call exonet = New(src), then exonet.make_address(string), and give it a string to hash into the new IP.
+ * The reason it needs a string is so you can have the addresses be persistant, assuming no-one already took it first.
+ *
+ * When you're no longer wanting to use the address and want to free it up, like when you want to Destroy() it, you need to call remove_address()
+ *
+ * *Sending messages*
+ *
+ * To send a message to another datum, you need to know it's EPv2 (fake IP) address.  Once you know that, call send_message(), place your
+ * intended address in the first argument, then the message in the second.  For example, send_message(exonet.address, "ping") will make you
+ * ping yourself.
+ *
+ * *Receiving messages*
+ * You don't need to do anything special to receive the messages, other than give your target exonet datum an address as well.  Once something hits
+ * your datum with send_message(), receive_message() is called, and the default action is to call receive_exonet_message() on the datum's holder.
+ * You'll want to override receive_exonet_message() on your atom, and define what will occur when the message is received.
+ * The receiving atom will receive the origin atom (the atom that sent the message), the origin address, and finally the message itself.
+ * It's suggested to start with an if or switch statement for the message, to determine what to do.
+ */
 
 var/global/list/all_exonet_connections = list()
 

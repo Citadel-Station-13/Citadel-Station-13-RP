@@ -1,0 +1,43 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/wall/lythios43c,
+/area/space)
+"W" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/space)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+W
+W
+W
+a
+"}
+(3,1,1) = {"
+a
+W
+W
+W
+a
+"}
+(4,1,1) = {"
+a
+W
+W
+W
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+"}

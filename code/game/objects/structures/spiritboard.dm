@@ -22,7 +22,7 @@
 
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
-/obj/structure/spirit_board/attack_ghost(mob/dead/observer/user)
+/obj/structure/spirit_board/attack_ghost(mob/observer/dead/user)
 	spirit_board_pick_letter(user)
 	return ..()
 

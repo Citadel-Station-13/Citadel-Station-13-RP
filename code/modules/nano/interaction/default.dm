@@ -12,7 +12,10 @@
 /mob/observer/dead/nano_default_can_use_topic(var/src_object)
 	if(can_admin_interact())
 		return UI_INTERACTIVE							// Admins are more equal
-	if(!client || get_dist(src_object, src)	> client.view)	// Preventing ghosts from having a million windows open by limiting to objects in range
+	if(!client)
+		return UI_CLOSE
+	// todo: in view range for zooming
+	if(get_dist(src, src_object) > min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_CLOSE
 	return UI_UPDATE									// Ghosts can view updates
 
@@ -28,7 +31,7 @@
 		return
 
 	// robots can interact with things they can see within their view range
-	if((src_object in view(src)) && get_dist(src_object, src) <= src.client.view)
+	if((src_object in view(src)) && get_dist(src_object, src) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE	// interactive (green visibility)
 	return UI_DISABLED			// no updates, completely disabled (red visibility)
 
@@ -50,7 +53,7 @@
 	// If we're installed in a chassi, rather than transfered to an inteliCard or other container, then check if we have camera view
 	if(is_in_chassis())
 		//stop AIs from leaving windows open and using then after they lose vision
-		if(cameranet && !cameranet.checkTurfVis(get_turf(src_object)))
+		if(GLOB.cameranet && !GLOB.cameranet.checkTurfVis(get_turf(src_object)))
 			return UI_CLOSE
 		return UI_INTERACTIVE
 	else if(get_dist(src_object, src) <= client.view)	// View does not return what one would expect while installed in an inteliCard
@@ -89,5 +92,5 @@
 	. = shared_nano_interaction(src_object)
 	if(. != UI_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))
-		if(. == UI_UPDATE && (TK in mutations))	// If we have telekinesis and remain close enough, allow interaction.
+		if(. == UI_UPDATE && (MUTATION_TELEKINESIS in mutations))	// If we have telekinesis and remain close enough, allow interaction.
 			return UI_INTERACTIVE

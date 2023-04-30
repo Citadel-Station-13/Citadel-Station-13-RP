@@ -3,19 +3,16 @@
 	set name = "Join Into Soulcatcher"
 	set desc = "Select a player with a working NIF + Soulcatcher NIFSoft to join into it."
 
-	var/list/filtered_list = player_list.Copy()
-	for(var/i in filtered_list)
-		var/mob/living/carbon/human/H = i
-		if(!istype(H))
-			filtered_list -= i
+	var/list/filtered = list()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(!H.nif?.imp_check(NIF_SOULCATCHER))
 			continue
-		if(!H.nif)
-			filtered_list -= i
+		var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
+		if(!SC.visibility_check(ckey))
 			continue
-		if(!H.nif.imp_check(NIF_SOULCATCHER))
-			filtered_list -= i
-			continue
-	var/picked = input("Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher (you can't see them in this list if so).","Select a player") as null|anything in filtered_list
+		filtered += H
+
+	var/picked = tgui_input_list(usr, "Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher.","Select a player", filtered)
 
 	//Didn't pick anyone or picked a null
 	if(!picked)
@@ -37,7 +34,7 @@
 		return
 
 	var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
-	if(!SC)
+	if(!SC?.visibility_check(ckey))
 		to_chat(src,"<span class='warning'>[H] doesn't have the Soulcatcher NIFSoft installed, or their NIF is unpowered.</span>")
 		return
 
@@ -48,7 +45,7 @@
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")
 	sleep(15) //So if they are typing they get interrupted by sound and message, and don't type over the box
-	var/response = alert(H,"[src] ([src.key]) wants to join into your Soulcatcher.","Soulcatcher Request","Deny","Allow")
+	var/response = tgui_alert(H,"[src] ([src.key]) wants to join into your Soulcatcher.","Soulcatcher Request",list("Deny","Allow"))
 
 	if(response == "Deny")
 		to_chat(src,"<span class='warning'>[H] denied your request.</span>")

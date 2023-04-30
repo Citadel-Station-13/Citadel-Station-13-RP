@@ -84,7 +84,7 @@
 	maxHealth = 450
 	deflect_chance = 25
 	has_repair_droid = TRUE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 50,
 				"laser"		= 50,
@@ -97,7 +97,7 @@
 	special_attack_min_range = 1
 	special_attack_max_range = 7
 	special_attack_cooldown = 10 SECONDS
-	projectiletype = /obj/item/projectile/energy/homing_bolt // We're now a bullet hell game.
+	projectiletype = /obj/projectile/energy/homing_bolt // We're now a bullet hell game.
 	projectilesound = 'sound/weapons/wave.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/intentional/adv_dark_gygax
 	var/obj/effect/overlay/energy_ball/energy_ball = null
@@ -118,19 +118,19 @@
 		if(INTENT_GRAB) // Micro-singulo
 			launch_microsingularity(A)
 
-/obj/item/projectile/energy/homing_bolt
+/obj/projectile/energy/homing_bolt
 	name = "homing bolt"
 	icon_state = "force_missile"
 	damage = 20
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 
-/obj/item/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/energy/homing_bolt/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	..()
 	if(target)
 		set_homing_target(target)
 
-/obj/item/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
+/obj/projectile/energy/homing_bolt/fire(angle, atom/direct_target)
 	..()
 	set_pixel_speed(0.5)
 
@@ -150,7 +150,7 @@
 	energy_ball.adjust_scale(0.5)
 	energy_ball.orbit(src, 32, TRUE, 1 SECOND)
 
-	visible_message(span("warning", "\The [src] creates \an [energy_ball] around itself!"))
+	visible_message(SPAN_WARNING( "\The [src] creates \an [energy_ball] around itself!"))
 
 	playsound(src.loc, 'sound/effects/lightning_chargeup.ogg', 100, 1, extrarange = 30)
 
@@ -178,7 +178,7 @@
 		sleep(1 SECOND)
 
 	// Shoot a tesla bolt, and flashes people who are looking at the mecha without sufficent eye protection.
-	visible_message(span("warning", "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
+	visible_message(SPAN_WARNING( "\The [energy_ball] explodes in a flash of light, sending a shock everywhere!"))
 	playsound(src.loc, 'sound/effects/lightningbolt.ogg', 100, 1, extrarange = 30)
 	tesla_zap(src.loc, 5, ELECTRIC_ZAP_POWER, FALSE)
 	for(var/mob/living/L in viewers(src))
@@ -186,7 +186,7 @@
 			continue
 		var/dir_towards_us = get_dir(L, src)
 		if(L.dir && L.dir & dir_towards_us)
-			to_chat(L, span("danger", "The flash of light blinds you briefly."))
+			to_chat(L, SPAN_DANGER("The flash of light blinds you briefly."))
 			L.flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = TRUE)
 
 	// Get rid of our energy ball.
@@ -204,7 +204,7 @@
 
 	// Telegraph our next move.
 	Beam(target, icon_state = "sat_beam", time = 3.5 SECONDS, maxdistance = INFINITY)
-	visible_message(span("warning", "\The [src] deploys a missile rack!"))
+	visible_message(SPAN_WARNING( "\The [src] deploys a missile rack!"))
 	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
 	sleep(0.5 SECONDS)
 
@@ -212,41 +212,41 @@
 		if(target) // Might get deleted in the meantime.
 			var/turf/T = get_turf(target)
 			if(T)
-				visible_message(span("warning", "\The [src] fires a rocket into the air!"))
+				visible_message(SPAN_WARNING( "\The [src] fires a rocket into the air!"))
 				playsound(src, 'sound/weapons/rpg.ogg', 70, 1)
 				face_atom(T)
-				var/obj/item/projectile/arc/explosive_rocket/rocket = new(loc)
+				var/obj/projectile/arc/explosive_rocket/rocket = new(loc)
 				rocket.old_style_target(T, src)
 				rocket.fire()
 				sleep(1 SECOND)
 
-	visible_message(span("warning", "\The [src] retracts the missile rack."))
+	visible_message(SPAN_WARNING( "\The [src] retracts the missile rack."))
 	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
 
 // Arcing rocket projectile that produces a weak explosion when it lands.
 // Shouldn't punch holes in the floor, but will still hurt.
-/obj/item/projectile/arc/explosive_rocket
+/obj/projectile/arc/explosive_rocket
 	name = "rocket"
 	icon_state = "mortar"
 
-/obj/item/projectile/arc/explosive_rocket/on_impact(turf/T)
+/obj/projectile/arc/explosive_rocket/on_impact(turf/T)
 	new /obj/effect/explosion(T) // Weak explosions don't produce this on their own, apparently.
 	explosion(T, 0, 0, 2, adminlog = FALSE)
 
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced/proc/launch_microsingularity(atom/target)
 	var/turf/T = get_turf(target)
-	visible_message(span("warning", "\The [src] fires an energetic sphere into the air!"))
+	visible_message(SPAN_WARNING( "\The [src] fires an energetic sphere into the air!"))
 	playsound(src, 'sound/weapons/Laser.ogg', 50, 1)
 	face_atom(T)
-	var/obj/item/projectile/arc/microsingulo/sphere = new(loc)
+	var/obj/projectile/arc/microsingulo/sphere = new(loc)
 	sphere.old_style_target(T, src)
 	sphere.fire()
 
-/obj/item/projectile/arc/microsingulo
+/obj/projectile/arc/microsingulo
 	name = "micro singularity"
 	icon_state = "bluespace"
 
-/obj/item/projectile/arc/microsingulo/on_impact(turf/T)
+/obj/projectile/arc/microsingulo/on_impact(turf/T)
 	new /obj/effect/temporary_effect/pulse/microsingulo(T)
 
 

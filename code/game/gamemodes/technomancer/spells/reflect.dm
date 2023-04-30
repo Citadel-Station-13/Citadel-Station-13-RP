@@ -16,7 +16,7 @@
 	var/damage_to_energy_multiplier = 60.0 //Determines how much energy to charge for blocking, e.g. 20 damage attack = 1200 energy cost
 	var/datum/effect_system/spark_spread/spark_system = null
 
-/obj/item/spell/reflect/Initialize()
+/obj/item/spell/reflect/Initialize(mapload)
 	. = ..()
 	set_light(3, 2, l_color = "#006AFF")
 	spark_system = new /datum/effect_system/spark_spread()
@@ -42,11 +42,11 @@
 		return 0
 
 	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	var/bad_arc = global.reverse_dir[user.dir] //arc of directions from which we cannot block
 	if(check_shield_arc(user, bad_arc, damage_source, attacker))
 
-		if(istype(damage_source, /obj/item/projectile))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile))
+			var/obj/projectile/P = damage_source
 
 			if(P.starting && !P.reflected)
 				visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
@@ -75,7 +75,7 @@
 		else if(istype(damage_source, /obj/item))
 			var/obj/item/W = damage_source
 			if(attacker)
-				W.attack(attacker)
+				W.melee_attack_chain(attacker)
 				to_chat(attacker, "<span class='danger'>Your [damage_source.name] goes through \the [src] in one location, comes out \
 				on the same side, and hits you!</span>")
 

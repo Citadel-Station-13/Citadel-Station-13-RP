@@ -46,8 +46,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_heat_damage(is_adult ? 10 : 5)
-		to_chat(src, span("span", "You burn \the [L]."))
-		to_chat(L, span("danger", "You've been burned by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You burn \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been burned by \the [src]!"))
 		L.adjust_fire_stacks(1)
 		if(prob(12))
 			L.IgniteMob()
@@ -88,7 +88,7 @@
 
 	// The sloped armor.
 	// It's resistant to most weapons (but a spraybottle still kills it rather fast).
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 25,
 				"bullet" = 25,
 				"laser" = 25,
@@ -96,16 +96,6 @@
 				"bomb" = 80,
 				"bio" = 100,
 				"rad" = 100
-				)
-
-	armor_soak = list(
-				"melee" = 5,
-				"bullet" = 5,
-				"laser" = 5,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
 				)
 
 	slime_mutation = list(
@@ -132,7 +122,7 @@
 	melee_damage_upper = 5
 	shock_resist = 1
 
-	projectiletype = /obj/item/projectile/beam/lightning/slime
+	projectiletype = /obj/projectile/beam/lightning/slime
 	projectilesound = 'sound/effects/lightningbolt.ogg'
 	glow_toggle = TRUE
 
@@ -154,8 +144,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		L.inflict_shock_damage(is_adult ? 10 : 5)
-		to_chat(src, span("span", "You shock \the [L]."))
-		to_chat(L, span("danger", "You've been shocked by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You shock \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been shocked by \the [src]!"))
 
 /mob/living/simple_mob/slime/xenobio/yellow/handle_special()
 	if(stat == CONSCIOUS)
@@ -163,7 +153,7 @@
 			power_charge = between(0, power_charge + 1, 10)
 	..()
 
-/obj/item/projectile/beam/lightning/slime
+/obj/projectile/beam/lightning/slime
 	power = 10
 	fire_sound = 'sound/effects/lightningbolt.ogg'
 
@@ -188,7 +178,7 @@
 		)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/ignite()
-	visible_message(span("critical", "\The [src] erupts in an inferno!"))
+	visible_message(SPAN_CRITICAL("\The [src] erupts in an inferno!"))
 	for(var/turf/simulated/target_turf in get_ignition_turfs(25, 2))
 		target_turf.assume_gas(/datum/gas/phoron, 30, 1500+T0C)
 		spawn(0)
@@ -196,26 +186,12 @@
 	qdel(src)
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/proc/get_ignition_turfs(amt = 25, maxrad = 2)
-	. = list()
 	var/turf/T = get_turf(src)
 	if(!T)
-		return
-	var/list/processing = list(T)
-	var/list/processed = list()
-	while(processing.len)
-		var/turf/check = processing[1]
-		processing.Cut(1, 2)
-		processed[check] = TRUE
-		if(get_dist(check, T) > maxrad)
-			continue
-		. += check
-		for(var/d in GLOB.cardinal)
-			var/turf/enemy = get_step(check, d)
-			if(!enemy || !check.CanZASPass(enemy) || !enemy.CanZASPass(check) || processed[enemy])
-				continue
-			processing += enemy
+		return list()
+	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/dark_purple/legacy_ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
 	ignite()
 
@@ -223,7 +199,7 @@
 	log_and_message_admins("[src] ignited due to exposure to fire.")
 	ignite()
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/item/projectile/P, var/def_zone)
+/mob/living/simple_mob/slime/xenobio/dark_purple/bullet_act(var/obj/projectile/P, var/def_zone)
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] ignited due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		ignite()
@@ -231,7 +207,7 @@
 		return ..()
 
 /mob/living/simple_mob/slime/xenobio/dark_purple/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W) && W.force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == BURN)
 		log_and_message_admins("[src] ignited due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		ignite()
 	else
@@ -275,15 +251,15 @@
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(-10 * 1000)
+		env.adjust_thermal_energy(-10 * 1000)
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/apply_melee_effects(atom/A)
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
 		chill(L)
-		to_chat(src, span("span", "You chill \the [L]."))
-		to_chat(L, span("danger", "You've been chilled by \the [src]!"))
+		to_chat(src, SPAN_NOTICE("You chill \the [L]."))
+		to_chat(L, SPAN_DANGER("You've been chilled by \the [src]!"))
 
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/proc/chill(mob/living/L)
@@ -309,9 +285,9 @@
 			/mob/living/simple_mob/slime/xenobio/amber
 		)
 
-/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/item/projectile/P, var/def_zone)
-	if(istype(P,/obj/item/projectile/beam) || istype(P, /obj/item/projectile/energy))
-		visible_message(span("danger", "\The [src] reflects \the [P]!"))
+/mob/living/simple_mob/slime/xenobio/silver/bullet_act(var/obj/projectile/P, var/def_zone)
+	if(istype(P,/obj/projectile/beam) || istype(P, /obj/projectile/energy))
+		visible_message(SPAN_DANGER("\The [src] reflects \the [P]!"))
 
 		// Find a turf near or on the original location to bounce to
 		var/new_x = P.starting.x + pick(0, 0, 0, -1, 1, -2, 2)
@@ -351,7 +327,7 @@
 /mob/living/simple_mob/slime/xenobio/bluespace/do_special_attack(atom/A)
 	// Teleport attack.
 	if(!A)
-		to_chat(src, span("warning", "There's nothing to teleport to."))
+		to_chat(src, SPAN_WARNING( "There's nothing to teleport to."))
 		return FALSE
 
 	var/list/nearby_things = range(1, A)
@@ -372,7 +348,7 @@
 	var/turf/target_turf = pick(valid_turfs)
 
 	if(!target_turf)
-		to_chat(src, span("warning", "There wasn't an unoccupied spot to teleport to."))
+		to_chat(src, SPAN_WARNING( "There wasn't an unoccupied spot to teleport to."))
 		return FALSE
 
 	var/datum/effect_system/spark_spread/s1 = new /datum/effect_system/spark_spread
@@ -381,14 +357,14 @@
 	s2.set_up(5, 1, target_turf)
 
 
-	T.visible_message(span("notice", "\The [src] vanishes!"))
+	T.visible_message(SPAN_NOTICE("\The [src] vanishes!"))
 	s1.start()
 
 	forceMove(target_turf)
 	playsound(target_turf, 'sound/effects/phasein.ogg', 50, 1)
-	to_chat(src, span("notice", "You teleport to \the [target_turf]."))
+	to_chat(src, SPAN_NOTICE("You teleport to \the [target_turf]."))
 
-	target_turf.visible_message(span("warning", "\The [src] appears!"))
+	target_turf.visible_message(SPAN_WARNING( "\The [src] appears!"))
 	s2.start()
 
 	if(Adjacent(A))
@@ -427,13 +403,13 @@
 	if(isliving(A) && a_intent == INTENT_HARM)
 		var/mob/living/L = A
 		if(L.mob_size <= MOB_MEDIUM)
-			visible_message(span("danger", "\The [src] sends \the [L] flying with the impact!"))
+			visible_message(SPAN_DANGER("\The [src] sends \the [L] flying with the impact!"))
 			playsound(src, "punch", 50, 1)
-			L.Weaken(1)
+			L.afflict_paralyze(20 * 1)
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
-			to_chat(L, span("warning", "\The [src] hits you with incredible force, but you remain in place."))
+			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
 
 
 /mob/living/simple_mob/slime/xenobio/amber
@@ -524,7 +500,7 @@
 	coretype = /obj/item/slime_extract/green
 	glow_toggle = TRUE
 	reagent_injected = "radium"
-	var/rads = 25
+	var/rads = RAD_INTENSITY_GREEN_SLIME_TICK
 
 	description_info = "This slime will irradiate anything nearby passively, and will inject radium on attack.  \
 	A radsuit or other thick and radiation-hardened armor can protect from this.  It will only radiate while alive."
@@ -544,9 +520,7 @@
 	..()
 
 /mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
-	SSradiation.radiate(src, rads)
-
-
+	radiation_pulse(src, RAD_INTENSITY_GREEN_SLIME_TICK)
 
 /mob/living/simple_mob/slime/xenobio/pink
 	desc = "This slime has regenerative properties."
@@ -622,7 +596,7 @@
 /mob/living/simple_mob/slime/xenobio/gold/slimebatoned(mob/living/user, amount)
 	power_charge = between(0, power_charge + amount, 10)
 
-/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction() // So it doesn't say to use a baton on them.
+/mob/living/simple_mob/slime/xenobio/gold/get_description_interaction(mob/user) // So it doesn't say to use a baton on them.
 	return list()
 
 
@@ -672,7 +646,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/slime/xenobio/oil/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/oil/legacy_ex_act(severity)
 	log_and_message_admins("[src] exploded due to a chain reaction with another explosion.")
 	explode()
 
@@ -680,7 +654,7 @@
 	log_and_message_admins("[src] exploded due to exposure to fire.")
 	explode()
 
-/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/item/projectile/P, def_zone)
+/mob/living/simple_mob/slime/xenobio/oil/bullet_act(obj/projectile/P, def_zone)
 	if(P.damage_type && P.damage_type == BURN && P.damage) // Most bullets won't trigger the explosion, as a mercy towards Security.
 		log_and_message_admins("[src] exploded due to bring hit by a burning projectile[P.firer ? " by [key_name(P.firer)]" : ""].")
 		explode()
@@ -688,7 +662,7 @@
 		return ..()
 
 /mob/living/simple_mob/slime/xenobio/oil/attackby(obj/item/W, mob/living/user)
-	if(istype(W) && W.force && W.damtype == BURN)
+	if(istype(W) && W.damage_force && W.damtype == BURN)
 		log_and_message_admins("[src] exploded due to being hit with a burning weapon ([W]) by [key_name(user)].")
 		explode()
 	else

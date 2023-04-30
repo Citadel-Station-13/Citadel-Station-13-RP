@@ -1,4 +1,4 @@
-/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster //what is that noise? A BAWWW from TK mutants.
+/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster //what is that noise? A BAWWW from MUTATION_TELEKINESIS mutants.
 	name = "\improper CCW armor booster"
 	desc = "Close-combat armor booster. Boosts exosuit armor against armed melee attacks. Requires energy to operate."
 	icon_state = "mecha_abooster_ccw"
@@ -63,7 +63,7 @@
 	else
 		chassis.occupant_message("<span class='danger'>\The [user] hits [chassis] with [W].</span>")
 		user.visible_message("<span class='danger'>\The [user] hits [chassis] with [W].</span>", "<span class='danger'>You hit [src] with [W].</span>")
-		chassis.take_damage(round(W.force*damage_coeff),W.damtype)
+		chassis.take_damage(round(W.damage_force*damage_coeff),W.damtype)
 		chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
 	chassis.use_power(energy_drain)

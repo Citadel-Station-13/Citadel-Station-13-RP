@@ -1,22 +1,22 @@
-/datum/tgui_module/crew_monitor
+/datum/tgui_module_old/crew_monitor
 	name = "Crew monitor"
 	tgui_id = "CrewMonitor"
 
-/datum/tgui_module/crew_monitor/ui_assets(mob/user)
+/datum/tgui_module_old/crew_monitor/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/simple/nanomaps),
 	)
 
-/datum/tgui_module/crew_monitor/ui_act(action, params, datum/tgui/ui)
+/datum/tgui_module_old/crew_monitor/ui_act(action, params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(ui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	var/turf/T = get_turf(usr)
 	if(!T || !(T.z in GLOB.using_map.player_levels))
-		to_chat(usr, "<span class='warning'><b>Unable to establish a connection</b>: You're too far away from the station!</span>")
+		to_chat(usr, SPAN_WARNING("<b>Unable to establish a connection</b>: You're too far away from the station!"))
 		return FALSE
 
 	switch(action)
@@ -27,16 +27,13 @@
 				if(hassensorlevel(H, SUIT_SENSOR_TRACKING))
 					AI.ai_actual_track(H)
 			return TRUE
-		if("setZLevel")
-			ui.set_map_z_level(params["mapZLevel"])
-			return TRUE
 
-/datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
+/datum/tgui_module_old/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)
 	var/list/map_levels = GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 	if(!map_levels.len)
-		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
+		to_chat(user, SPAN_WARNING("The crew monitor doesn't seem like it'll work here."))
 		if(ui)
 			ui.close()
 		return null
@@ -48,7 +45,7 @@
 		ui.open()
 
 
-/datum/tgui_module/crew_monitor/ui_data(mob/user)
+/datum/tgui_module_old/crew_monitor/ui_data(mob/user)
 	var/data[0]
 
 	data["isAI"] = isAI(user)
@@ -69,20 +66,20 @@
 
 	return data
 
-/datum/tgui_module/crew_monitor/ntos
+/datum/tgui_module_old/crew_monitor/ntos
 	ntos = TRUE
 
 // Subtype for glasses_state
-/datum/tgui_module/crew_monitor/glasses
-/datum/tgui_module/crew_monitor/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+/datum/tgui_module_old/crew_monitor/glasses
+/datum/tgui_module_old/crew_monitor/glasses/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.glasses_state
 
 // Subtype for self_state
-/datum/tgui_module/crew_monitor/robot
-/datum/tgui_module/crew_monitor/robot/ui_state(mob/user)
+/datum/tgui_module_old/crew_monitor/robot
+/datum/tgui_module_old/crew_monitor/robot/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.self_state
 
 // Subtype for nif_state
-/datum/tgui_module/crew_monitor/nif
-/datum/tgui_module/crew_monitor/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_state
+/datum/tgui_module_old/crew_monitor/nif
+/datum/tgui_module_old/crew_monitor/nif/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.nif_state

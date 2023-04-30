@@ -4,7 +4,7 @@
 	name = "Commlink"
 	desc = "An internal communicator for keeping in touch with people."
 	list_pos = NIF_COMMLINK
-	cost = 250
+	cost = 25
 	wear = 0
 	p_drain = 0.01
 	other_flags = (NIF_O_COMMLINK)
@@ -21,7 +21,7 @@
 /datum/nifsoft/commlink/activate()
 	if((. = ..()))
 		nif.comm.initialize_exonet(nif.human)
-		nif.comm.ui_interact(nif.human, custom_state = GLOB.tgui_commlink_state)
+		nif.comm.ui_interact(nif.human, custom_state = GLOB.ui_commlink_state)
 		spawn(0)
 			deactivate()
 

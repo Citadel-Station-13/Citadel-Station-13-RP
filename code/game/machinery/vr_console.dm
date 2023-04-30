@@ -1,34 +1,26 @@
 /obj/machinery/vr_sleeper
 	name = "virtual reality sleeper"
 	desc = "A fancy bed with built-in sensory I/O ports and connectors to interface users' minds with their bodies in virtual reality."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "syndipod_0"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/vr_sleeper
 	var/mob/living/carbon/human/occupant = null
 	var/mob/living/carbon/human/avatar = null
 	var/datum/mind/vr_mind = null
 
-	use_power = 1
+	use_power = TRUE
 	idle_power_usage = 15
 	active_power_usage = 200
 	light_color = "#FF0000"
 
 /obj/machinery/vr_sleeper/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
-
-	RefreshParts()
-
-/obj/machinery/vr_sleeper/Initialize(mapload)
-	. = ..()
 	update_icon()
 
 /obj/machinery/vr_sleeper/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 /obj/machinery/vr_sleeper/update_icon()
@@ -36,7 +28,7 @@
 
 /obj/machinery/vr_sleeper/Topic(href, href_list)
 	if(..())
-		return 1
+		return TRUE
 
 	if(usr == occupant)
 		to_chat(usr, "<span class='warning'>You can't reach the controls from the inside.</span>")
@@ -49,7 +41,7 @@
 
 	return 1
 
-/obj/machinery/vr_sleeper/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/vr_sleeper/attackby(obj/item/I, mob/user)
 	add_fingerprint(user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
@@ -61,14 +53,14 @@
 		return
 
 
-/obj/machinery/vr_sleeper/MouseDrop_T(var/mob/target, var/mob/user)
+/obj/machinery/vr_sleeper/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !isliving(target))
 		return
 	go_in(target, user)
 
 
 
-/obj/machinery/sleeper/relaymove(var/mob/user)
+/obj/machinery/sleeper/relaymove(mob/user)
 	..()
 	if(usr.incapacitated())
 		return
@@ -76,8 +68,8 @@
 
 
 
-/obj/machinery/vr_sleeper/emp_act(var/severity)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/vr_sleeper/emp_act(severity)
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 
@@ -115,15 +107,15 @@
 	go_in(usr, usr)
 	add_fingerprint(usr)
 
-/obj/machinery/vr_sleeper/relaymove(mob/user as mob)
+/obj/machinery/vr_sleeper/relaymove(mob/user)
 	if(user.incapacitated())
 		return 0 //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
-/obj/machinery/vr_sleeper/proc/go_in(var/mob/M, var/mob/user)
+/obj/machinery/vr_sleeper/proc/go_in(mob/M, mob/user)
 	if(!M)
 		return
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
@@ -196,24 +188,24 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break
 
-		avatar = new(S, "Virtual Reality Avatar")
+		avatar = new(S, SPECIES_VR)
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human")
+		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
-		avatar.Sleeping(1)
+		avatar.afflict_sleeping(20 * 1)
 
 		occupant.enter_vr(avatar)
 
@@ -224,4 +216,3 @@
 
 	else
 		occupant.enter_vr(avatar)
-

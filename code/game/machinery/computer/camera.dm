@@ -8,12 +8,11 @@
 	light_color = "#a91515"
 	circuit = /obj/item/circuitboard/security
 
-	var/mapping = 0//For the overview file, interesting bit of code.
 	var/list/network = list()
 
-	var/datum/tgui_module/camera/camera
+	var/datum/tgui_module_old/camera/camera
 
-/obj/machinery/computer/security/Initialize()
+/obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(network))
 		network = get_default_networks()
@@ -29,9 +28,9 @@
 /obj/machinery/computer/security/ui_interact(mob/user, datum/tgui/ui = null)
 	camera.ui_interact(user, ui)
 
-/obj/machinery/computer/security/attack_hand(mob/user)
+/obj/machinery/computer/security/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
@@ -77,7 +76,7 @@
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
 	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/Initialize()
+/obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE
@@ -89,7 +88,7 @@
 /obj/machinery/computer/security/telescreen/entertainment/power_change()
 	..()
 	if(radio)
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			radio.on = FALSE
 		else
 			radio.on = TRUE

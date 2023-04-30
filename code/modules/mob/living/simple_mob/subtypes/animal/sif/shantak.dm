@@ -34,15 +34,6 @@
 
 	maxHealth = 75
 	randomized = TRUE
-	armor_soak = list(
-				"melee" = 5,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
 
 	movement_cooldown = 5
 
@@ -99,7 +90,6 @@
 /mob/living/simple_mob/animal/sif/shantak/retaliate
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-//Vorestation Addition
 /mob/living/simple_mob/animal/sif/shantak/scruffy
 	name = "Scruffy"
 	ai_holder_type = /datum/ai_holder/simple_mob/passive

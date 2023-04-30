@@ -1,5 +1,5 @@
 /datum/category_item/catalogue/fauna/alien
-	name = "Xenomorph"
+	name = SPECIES_XENO
 	desc = "Xenomorphs are a widely recognized and rightfully feared scourge \
 	across the Frontier. Although the origin of these creatures remains unknown, \
 	their violence and their teriffying method of procreation makes them a universally \
@@ -33,7 +33,7 @@
 	desc = "What IS that?"
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "alien"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	health = 100
 	maxHealth = 100
 	mob_size = 4
@@ -53,8 +53,8 @@
 /mob/living/carbon/alien/Initialize(mapload)
 	time_of_birth = world.time
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	instance_num = rand(1, 1000)
 	name = "[initial(name)] ([instance_num])"
@@ -68,18 +68,16 @@
 
 	return ..()
 
-/mob/living/carbon/alien/u_equip(obj/item/W as obj)
-	return
-
-/mob/living/carbon/alien/Stat()
-	..()
-	stat(null, "Progress: [amount_grown]/[max_grown]")
+/mob/living/carbon/alien/statpanel_data(client/C)
+	. = ..()
+	STATPANEL_DATA_LINE("")
+	STATPANEL_DATA_LINE("Progress: [amount_grown]/[max_grown]")
 
 /mob/living/carbon/alien/restrained()
 	return 0
 
-/mob/living/carbon/alien/show_inv(mob/user as mob)
-	return //Consider adding cuffs and hats to this, for the sake of fun.
+/mob/living/carbon/alien/request_strip_menu(mob/user, ignore_adjacency = FALSE, ignore_incapacitation = FALSE)
+	return FALSE
 
 /mob/living/carbon/alien/cannot_use_vents()
 	return

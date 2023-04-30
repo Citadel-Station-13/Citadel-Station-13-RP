@@ -5,15 +5,15 @@
  */
 
 import { BooleanLike, classes, pureComponentHooks } from 'common/react';
-import { createVNode, InfernoNode } from 'inferno';
+import { createVNode } from 'inferno';
 import { ChildFlags, VNodeFlags } from 'inferno-vnode-flags';
 import { CSS_COLORS } from '../constants';
+import { ComponentProps } from './Component';
 
-export interface BoxProps {
+export type BoxProps = ComponentProps & {
   [key: string]: any;
   as?: string;
-  className?: string | BooleanLike;
-  children?: InfernoNode;
+  className?: string | undefined;
   position?: string | BooleanLike;
   overflow?: string | BooleanLike;
   overflowX?: string | BooleanLike;
@@ -38,6 +38,7 @@ export interface BoxProps {
   bold?: BooleanLike;
   italic?: BooleanLike;
   nowrap?: BooleanLike;
+  preserveWhitespace?: BooleanLike;
   m?: string | BooleanLike;
   mx?: string | BooleanLike;
   my?: string | BooleanLike;
@@ -55,7 +56,7 @@ export interface BoxProps {
   color?: string | BooleanLike;
   textColor?: string | BooleanLike;
   backgroundColor?: string | BooleanLike;
-  fillPositionedParent?: boolean;
+  fillPositionedParent?: BooleanLike;
 }
 
 /**
@@ -92,9 +93,7 @@ export const halfUnit = (value: unknown): string | undefined => {
 const isColorCode = (str: unknown) => !isColorClass(str);
 
 const isColorClass = (str: unknown): boolean => {
-  if (typeof str === 'string') {
-    return CSS_COLORS.includes(str);
-  }
+  return typeof str === "string" && CSS_COLORS.includes(str);
 };
 
 const mapRawPropTo = attrName => (style, value) => {
@@ -163,6 +162,7 @@ const styleMapperByPropName = {
   bold: mapBooleanPropTo('font-weight', 'bold'),
   italic: mapBooleanPropTo('font-style', 'italic'),
   nowrap: mapBooleanPropTo('white-space', 'nowrap'),
+  preserveWhitespace: mapBooleanPropTo('white-space', 'pre-wrap'),
   // Margins
   m: mapDirectionalUnitPropTo('margin', halfUnit, [
     'top', 'bottom', 'left', 'right',
@@ -208,7 +208,7 @@ const styleMapperByPropName = {
 };
 
 export const computeBoxProps = (props: BoxProps) => {
-  const computedProps: HTMLAttributes<any> = {};
+  const computedProps: any = {};
   const computedStyles = {};
   // Compute props
   for (let propName of Object.keys(props)) {
@@ -278,7 +278,9 @@ export const Box = (props: BoxProps) => {
     computedClassName,
     children,
     ChildFlags.UnknownChildren,
-    computedProps);
+    computedProps,
+    undefined,
+  );
 };
 
 Box.defaultHooks = pureComponentHooks;

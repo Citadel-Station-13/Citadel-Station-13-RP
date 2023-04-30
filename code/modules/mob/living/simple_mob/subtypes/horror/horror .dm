@@ -36,6 +36,8 @@
 	hide_type = /obj/item/stack/hairlesshide
 	exotic_type = /obj/item/stack/sinew
 
+	mob_class = MOB_CLASS_ABERRATION
+
 /datum/ai_holder/simple_mob/horror
 	hostile = TRUE // The majority of simplemobs are hostile, gaslamps are nice.
 	cooperative = FALSE

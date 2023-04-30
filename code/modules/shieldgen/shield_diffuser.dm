@@ -16,10 +16,6 @@
 
 /obj/machinery/shield_diffuser/Initialize(mapload)
 	. = ..()
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 
 	var/turf/T = get_turf(src)
 	hide(!T.is_plating())
@@ -54,12 +50,12 @@
 	if(alarm)
 		icon_state = "fdiffuser_emergency"
 		return
-	if((stat & (NOPOWER | BROKEN)) || !enabled)
+	if((machine_stat & (NOPOWER | BROKEN)) || !enabled)
 		icon_state = "fdiffuser_off"
 	else
 		icon_state = "fdiffuser_on"
 
-/obj/machinery/shield_diffuser/attack_hand(mob/user as mob)
+/obj/machinery/shield_diffuser/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(alarm)

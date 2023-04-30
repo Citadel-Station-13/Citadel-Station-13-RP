@@ -2,6 +2,8 @@
 // These planemaster objects are created on mobs when a client logs into them (lazy). We'll use them to adjust the visibility of objects, among other things.
 //
 
+// todo: refactor all of this so we can use subtypesof like on main like on any SANE CODEBASE
+
 /datum/plane_holder
 	var/mob/my_mob
 	var/list/plane_masters[VIS_COUNT]
@@ -9,25 +11,14 @@
 /datum/plane_holder/New(mob/this_guy)
 	ASSERT(ismob(this_guy))
 	my_mob = this_guy
-
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
 
 	// 'Utility' planes
 	plane_masters[VIS_FULLBRIGHT] 	= new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
-	plane_masters[VIS_LIGHTING] 	= new /atom/movable/screen/plane_master/lighting							//Lighting system (but different!)
+	plane_masters[VIS_LIGHTING] 	= new /atom/movable/screen/plane_master/lighting						//Lighting system (but different
+	plane_masters[VIS_EMISSIVE]     = new /atom/movable/screen/plane_master/emissive
 	plane_masters[VIS_GHOSTS] 		= new /atom/movable/screen/plane_master/ghosts							//Ghosts!
 	plane_masters[VIS_AI_EYE]		= new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
-
-	plane_masters[VIS_CH_STATUS] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS}			//Status is the synth/human icon left side of medhuds
-	plane_masters[VIS_CH_HEALTH] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_HEALTH}			//Health bar
-	plane_masters[VIS_CH_LIFE] 		= new /atom/movable/screen/plane_master{plane = PLANE_CH_LIFE}			//Alive-or-not icon
-	plane_masters[VIS_CH_ID] 		= new /atom/movable/screen/plane_master{plane = PLANE_CH_ID}				//Job ID icon
-	plane_masters[VIS_CH_WANTED] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_WANTED}			//Wanted status
-	plane_masters[VIS_CH_IMPLOYAL] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPLOYAL}		//Loyalty implants
-	plane_masters[VIS_CH_IMPTRACK] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPTRACK}		//Tracking implants
-	plane_masters[VIS_CH_IMPCHEM] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_IMPCHEM}		//Chemical implants
-	plane_masters[VIS_CH_SPECIAL] 	= new /atom/movable/screen/plane_master{plane = PLANE_CH_SPECIAL}		//"Special" role stuff
-	plane_masters[VIS_CH_STATUS_OOC]= new /atom/movable/screen/plane_master{plane = PLANE_CH_STATUS_OOC}		//OOC status HUD
 
 	plane_masters[VIS_STATUS]		= new /atom/movable/screen/plane_master{plane = PLANE_STATUS}			//Status indicators that show over mob heads.
 
@@ -43,7 +34,13 @@
 	plane_masters[VIS_MOBS]		= new /atom/movable/screen/plane_master/main{plane = MOB_PLANE}
 	plane_masters[VIS_CLOAKED]	= new /atom/movable/screen/plane_master/cloaked								//Cloaked atoms!
 
-	..()
+	plane_masters[VIS_AUGMENTED]		= new /atom/movable/screen/plane_master/augmented(null, my_mob)					//Augmented reality
+
+	// this code disgusts me but we're stuck with it until we refactor planes :/
+	// i hate baycode
+	plane_masters[VIS_PARALLAX] = new /atom/movable/screen/plane_master/parallax{plane = PARALLAX_PLANE}
+	plane_masters[VIS_SPACE] = new /atom/movable/screen/plane_master/parallax_white{plane = SPACE_PLANE}
+	plane_masters[VIS_SONAR] = new /atom/movable/screen/plane_master{plane = SONAR_PLANE}
 
 /datum/plane_holder/Destroy()
 	my_mob = null
@@ -109,7 +106,7 @@
 // The Plane Master
 ////////////////////
 /atom/movable/screen/plane_master
-	screen_loc = "1,1"
+	screen_loc = "CENTER"
 	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
 	appearance_flags = PLANE_MASTER
 	mouse_opacity = 0	//Normally unclickable
@@ -160,7 +157,7 @@
 /////////////////
 //Lighting is weird and has matrix shenanigans. Think of this as turning on/off darkness.
 /atom/movable/screen/plane_master/fullbright
-	plane = PLANE_LIGHTING
+	plane = LIGHTING_PLANE
 	layer = LAYER_HUD_BASE+1 // This MUST be above the lighting plane_master
 	color = null //To break lighting when visible (this is sorta backwards)
 	alpha = 0 //Starts full opaque
@@ -168,9 +165,39 @@
 	invis_toggle = TRUE
 
 /atom/movable/screen/plane_master/lighting
-	plane = PLANE_LIGHTING
+	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
+
+/*!
+ * This system works by exploiting BYONDs color matrix filter to use layers to handle emissive blockers.
+ *
+ * Emissive overlays are pasted with an atom color that converts them to be entirely some specific color.
+ * Emissive blockers are pasted with an atom color that converts them to be entirely some different color.
+ * Emissive overlays and emissive blockers are put onto the same plane.
+ * The layers for the emissive overlays and emissive blockers cause them to mask eachother similar to normal BYOND objects.
+ * A color matrix filter is applied to the emissive plane to mask out anything that isn't whatever the emissive color is.
+ * This is then used to alpha mask the lighting plane.
+ */
+
+/atom/movable/screen/plane_master/lighting/Initialize(mapload)
+	. = ..()
+	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
+	// add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
+
+/**
+ * Handles emissive overlays and emissive blockers.
+ */
+/atom/movable/screen/plane_master/emissive
+	name = "emissive plane master"
+	plane = EMISSIVE_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	render_target = EMISSIVE_RENDER_TARGET
+	alpha = 255
+
+/atom/movable/screen/plane_master/emissive/Initialize(mapload)
+	. = ..()
+	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
 /////////////////
 //Ghosts has a special alpha level
@@ -185,8 +212,58 @@
 	desired_alpha = 80
 	color = "#0000FF"
 
+////////////////
+// parallax
+/atom/movable/screen/plane_master/parallax
+	plane = PARALLAX_PLANE
+	blend_mode = BLEND_MULTIPLY
+	alpha = 255
+
+////////////////
+// space
+/atom/movable/screen/plane_master/parallax_white
+	plane = SPACE_PLANE
+	alpha = 255
+	mouse_opacity = 1
+
 /////////////////
 //The main game planes start normal and visible
 /atom/movable/screen/plane_master/main
 	alpha = 255
 	mouse_opacity = 1
+
+/////////////////
+//AR planemaster does some special image handling
+/atom/movable/screen/plane_master/augmented
+	plane = PLANE_AUGMENTED
+	var/state = FALSE //Saves cost with the lists
+	var/mob/my_mob
+
+/atom/movable/screen/plane_master/augmented/Initialize(mapload, mob/new_mob)
+	. = ..()
+	my_mob = new_mob
+
+/atom/movable/screen/plane_master/augmented/Destroy()
+	my_mob = null
+	return ..()
+
+/atom/movable/screen/plane_master/augmented/set_visibility(var/want = FALSE)
+	. = ..()
+	state = want
+	apply()
+
+/atom/movable/screen/plane_master/augmented/proc/apply()
+	// if(!my_mob.client)
+	// 	return
+
+	/**
+	 * preserving this for when we get generic augmented hud
+	 */
+	// if(state)
+	// 	entopic_users |= my_mob
+	// 	if(my_mob.client)
+	// 		my_mob.client.images |= entopic_images
+	// else
+	// 	entopic_users -= my_mob
+	// 	if(my_mob.client)
+	// 		my_mob.client.images -= entopic_images

@@ -10,32 +10,34 @@ if [[ $# -eq 2 ]] ; then
 fi
 
 mkdir -p \
-    $1/_maps \
+	$1/_mapload \
+    $1/maps \
     $1/icons/runtime \
     $1/sound/runtime \
-    $1/strings
+    $1/strings \
+    $1/tgui/public \
+    $1/tgui/packages/tgfont/dist
 
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
   cp -r .git/logs/* $1/.git/logs/
 fi
 
-cp vorestation.dmb vorestation.rsc $1/
-cp -r _maps/* $1/_maps/
-cp -r icons/* $1/icons/
-cp -r sound/* $1/sound/
-mkdir $1/config_static
-cp -r config_static/* $1/config_static/
-# cp -r icons/runtime/* $1/icons/runtime/
-# cp -r sound/runtime/* $1/sound/runtime/
-# cp -r strings/* $1/strings/
-
-#remove .dm files from _maps
+cp citadel.dmb citadel.rsc $1/
+# todo: remove _mapload after .jsons are removed.
+cp -r _mapload/* $1/_mapload/
+# todo: filter out .dm files
+cp -r maps/* $1/maps/
+cp -r icons/runtime/* $1/icons/runtime/
+cp -r sound/runtime/* $1/sound/runtime/
+cp -r strings/* $1/strings/
+cp -r tgui/public/* $1/tgui/public/
+cp -r tgui/packages/tgfont/dist/* $1/tgui/packages/tgfont/dist/
 
 #this regrettably doesn't work with windows find
-#find $1/_maps -name "*.dm" -type f -delete
+#find $1/maps -name "*.dm" -type f -delete
 
 #dlls on windows
-if [ "$(uname -o)" = "Msys"  ]; then
+if [ "$(uname -o)" = "Msys" ]; then
 	cp ./*.dll $1/
 fi

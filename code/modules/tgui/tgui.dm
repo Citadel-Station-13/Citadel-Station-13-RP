@@ -1,6 +1,6 @@
-/*!
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+/**
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /**
@@ -17,8 +17,6 @@
 	var/datum/tgui_window/window
 	/// Key that is used for remembering the window geometry.
 	var/window_key
-	/// Deprecated: Window size.
-	var/window_size
 	/// The interface (template) to be used for this UI.
 	var/interface
 	/// Update the UI every MC tick.
@@ -31,10 +29,18 @@
 	var/closing = FALSE
 	/// The status/visibility of the UI.
 	var/status = UI_INTERACTIVE
+	/// Timed refreshing state
+	var/refreshing = UI_NOT_REFRESHING
 	/// Topic state used to determine status/interactability.
 	var/datum/ui_state/state = null
-	// The map z-level to display.
-	var/map_z_level = 1
+	/// Rate limit client refreshes to prevent DoS.
+	COOLDOWN_DECLARE(refresh_cooldown)
+	/// Are byond mouse events beyond the window passed in to the ui
+	var/mouse_hooked = FALSE
+	/// The Parent UI
+	var/datum/tgui/parent_ui
+	/// Children of this UI
+	var/list/children = list()
 
 /**
  * public
@@ -45,12 +51,11 @@
  * required src_object datum The object or datum which owns the UI.
  * required interface string The interface used to render the UI.
  * optional title string The title of the UI.
- * optional ui_x int Deprecated: Window width.
- * optional ui_y int Deprecated: Window height.
+ * optional parent_ui datum/tgui The parent of this UI.
  *
  * return datum/tgui The requested UI.
  */
-/datum/tgui/New(mob/user, datum/src_object, interface, title, ui_x, ui_y)
+/datum/tgui/New(mob/user, datum/src_object, interface, title, datum/tgui/parent_ui)
 	log_tgui(user,
 		"new [interface] fancy [user?.client?.prefs.tgui_fancy]",
 		src_object = src_object)
@@ -60,10 +65,15 @@
 	src.interface = interface
 	if(title)
 		src.title = title
-	src.state = src_object.ui_state()
-	// Deprecated
-	if(ui_x && ui_y)
-		src.window_size = list(ui_x, ui_y)
+	src.state = src_object.ui_state(user)
+	src.parent_ui = parent_ui
+	if(parent_ui)
+		parent_ui.children += src
+
+/datum/tgui/Destroy()
+	user = null
+	src_object = null
+	return ..()
 
 /**
  * public
@@ -87,9 +97,9 @@
 	window.acquire_lock(src)
 	if(!window.is_ready())
 		window.initialize(
+			strict_mode = TRUE,
 			fancy = user.client.prefs.tgui_fancy,
-			inline_assets = list(
-				get_asset_datum(/datum/asset/simple/tgui_common),
+			assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
 			))
 	else
@@ -104,9 +114,11 @@
 		user.client.browse_queue_flush()
 	window.send_message("update", get_payload(
 		with_data = TRUE,
-		with_static_data = TRUE))
+		with_static_data = TRUE,
+	))
+	if(mouse_hooked)
+		window.set_mouse_macro()
 	SStgui.on_open(src)
-
 	return TRUE
 
 /**
@@ -131,6 +143,9 @@
 		src_object.ui_close(user)
 		SStgui.on_close(src)
 	state = null
+	if(parent_ui)
+		parent_ui.children -= src
+	parent_ui = null
 	qdel(src)
 
 /**
@@ -142,6 +157,17 @@
  */
 /datum/tgui/proc/set_autoupdate(autoupdate)
 	src.autoupdate = autoupdate
+
+/**
+ * public
+ *
+ * Enable/disable passing through byond mouse events to the window
+ *
+ * required value bool Enable/disable hooking.
+ */
+/datum/tgui/proc/set_mouse_hook(value)
+	src.mouse_hooked = value
+	// TODO: handle unhooking/hooking on already open windows ?
 
 /**
  * public
@@ -172,33 +198,59 @@
  *
  * Send a full update to the client (includes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
+ * optional hard_refresh block the ui entirely while this is refreshing. use if you don't want users to see an ui during a queued refresh.
  */
-/datum/tgui/proc/send_full_update(custom_data, force)
-	if(!user.client || !initialized || closing)
+/datum/tgui/proc/send_full_update(force, hard_refresh)
+	if(!initialized || closing || !user.client)
 		return
+	if(!COOLDOWN_FINISHED(src, refresh_cooldown))
+		refreshing = max(refreshing, hard_refresh? UI_HARD_REFRESHING : UI_SOFT_REFRESHING)
+		addtimer(CALLBACK(src, .proc/send_full_update), TGUI_REFRESH_FULL_UPDATE_COOLDOWN, TIMER_UNIQUE)
+		return
+	refreshing = UI_NOT_REFRESHING
 	var/should_update_data = force || status >= UI_UPDATE
-	window.send_message("update", get_payload(
-		custom_data,
+	window.send_message(
+		"update",
+		get_payload(
 		with_data = should_update_data,
-		with_static_data = TRUE))
+		with_static_data = TRUE,
+		),
+	)
+	COOLDOWN_START(src, refresh_cooldown, TGUI_REFRESH_FULL_UPDATE_COOLDOWN)
 
 /**
  * public
  *
  * Send a partial update to the client (excludes static data).
  *
- * optional custom_data list Custom data to send instead of ui_data.
  * optional force bool Send an update even if UI is not interactive.
  */
-/datum/tgui/proc/send_update(custom_data, force)
+/datum/tgui/proc/send_update(force)
 	if(!user.client || !initialized || closing)
 		return
 	var/should_update_data = force || status >= UI_UPDATE
 	window.send_message("update", get_payload(
-		custom_data,
-		with_data = should_update_data))
+		with_data = should_update_data,
+	))
+
+/**
+ * public
+ *
+ * Send a partial update to the client of only the provided data lists
+ * Does not update config at all
+ *
+ * WARNING: Do not use this unless you know what you are doing
+ *
+ * required data The data to send
+ * optional force bool Send an update even if UI is not interactive.
+ */
+/datum/tgui/proc/push_data(data, force)
+	if(!user.client || !initialized || closing)
+		return
+	if(!force && status < UI_UPDATE)
+		return
+	window.send_message("data", data)
 
 /**
  * private
@@ -207,15 +259,15 @@
  *
  * return list
  */
-/datum/tgui/proc/get_payload(custom_data, with_data, with_static_data)
+/datum/tgui/proc/get_payload(with_data, with_static_data)
 	var/list/json_data = list()
 	json_data["config"] = list(
 		"title" = title,
 		"status" = status,
 		"interface" = interface,
+		"refreshing" = refreshing,
 		"window" = list(
 			"key" = window_key,
-			"size" = window_size,
 			"fancy" = user.client.prefs.tgui_fancy,
 			"locked" = user.client.prefs.tgui_lock,
 		),
@@ -229,12 +281,16 @@
 			"observer" = isobserver(user),
 		),
 	)
-	var/data = custom_data || with_data && src_object.ui_data(user)
-	if(data)
-		json_data["data"] = data
-	var/static_data = with_static_data && src_object.ui_static_data(user)
-	if(static_data)
-		json_data["static_data"] = static_data
+	var/list/modules
+	// static first
+	if(with_static_data)
+		json_data["static"] = src_object.ui_static_data(user, src, state)
+		modules = src_object.ui_module_static(user, src, state)
+	if(with_data)
+		json_data["data"] = src_object.ui_data(user, src, state)
+		modules = (modules || list()) | src_object.ui_module_data(user, src, state)
+	if(modules)
+		json_data["modules"] = modules
 	if(src_object.tgui_shared_states)
 		json_data["shared"] = src_object.tgui_shared_states
 	return json_data
@@ -250,7 +306,7 @@
 		return
 	var/datum/host = src_object.ui_host(user)
 	// If the object or user died (or something else), abort.
-	if(!src_object || !host || !user || !window)
+	if(QDELETED(src_object) || QDELETED(host) || QDELETED(user) || QDELETED(window))
 		close(can_be_suspended = FALSE)
 		return
 	// Validate ping
@@ -262,7 +318,7 @@
 		return
 	// Update through a normal call to ui_interact
 	if(status != UI_DISABLED && (autoupdate || force))
-		src_object.ui_interact(user, src)
+		src_object.ui_interact(user, src, parent_ui)
 		return
 	// Update status only
 	var/needs_update = process_status()
@@ -272,15 +328,6 @@
 	if(needs_update)
 		window.send_message("update", get_payload())
 
-
-/**
-	Sets the current map z level of the tgui window (so we know which Z we need to be interacting with.)
- */
-
-/datum/tgui/proc/set_map_z_level(nz)
-	map_z_level = nz
-
-
 /**
  * private
  *
@@ -289,6 +336,8 @@
 /datum/tgui/proc/process_status()
 	var/prev_status = status
 	status = src_object.ui_status(user, state)
+	if(parent_ui)
+		status = min(status, parent_ui.status)
 	return prev_status != status
 
 /**
@@ -297,20 +346,43 @@
  * Callback for handling incoming tgui messages.
  */
 /datum/tgui/proc/on_message(type, list/payload, list/href_list)
-	// Pass act type messages to ui_act
-	if(type && copytext(type, 1, 5) == "act/")
-		var/act_type = copytext(type, 5)
-		log_tgui(user, "Action: [act_type] [href_list["payload"]]",
-			window = window,
-			src_object = src_object)
-		process_status()
-		if(src_object.ui_act(act_type, payload, src, state))
-			SStgui.update_uis(src_object)
-		return FALSE
+	if(type)
+		// micro opt in that these routes are same length so we only copytext once
+		switch(copytext(type, 1, 5))
+			if("act/")	// normal act
+				var/action = copytext(type, 5)
+				log_tgui(user, "Action: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				if(src_object.ui_act(action, payload, src))
+					SStgui.update_uis(src_object)
+				return FALSE
+			if("mod/")	// module act
+				var/action = copytext(type, 5)
+				var/id = payload["$m_id"]
+				// log, update status
+				log_tgui(user, "Module: [action] [href_list["payload"]]",
+					window = window,
+					src_object = src_object)
+				process_status()
+				// tell it to route the call
+				// note: this is pretty awful code because raw locate()'s are
+				// almost never a good idea
+				// however given we don't have a way of just tracking a ui module list (yet)
+				// we're kind of stuck doing this
+				// maybe in the future we'll just have ui modules list but for now
+				// eh.
+				if(src_object.ui_module_route(action, payload, src, id))
+					SStgui.update_uis(src_object)
+				return FALSE
 	switch(type)
 		if("ready")
+			// Send a full update when the user manually refreshes the UI
+			if(initialized)
+				send_full_update()
 			initialized = TRUE
-		if("pingReply")
+		if("ping/reply")
 			initialized = TRUE
 		if("suspend")
 			close(can_be_suspended = TRUE)

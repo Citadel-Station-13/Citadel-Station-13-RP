@@ -2,7 +2,6 @@ import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
 import { Box, Button, Dimmer, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section, Tabs } from "../components";
-import { COLORS } from '../constants';
 import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
 import { Window } from "../layouts";
 
@@ -362,7 +361,7 @@ const ResleevingConsolePodGrowers = (props, context) => {
           <Box
             bold
             color={pod.biomass >= 150 ? "good" : "bad"}
-            display="inline">
+            inline>
             <Icon
               name={pod.biomass >= 150 ? "circle" : "circle-o"}
             />&nbsp;
@@ -488,7 +487,7 @@ const ResleevingConsolePodSpods = (props, context) => {
           <Box
             bold
             color={pod.steel >= 15000 ? "good" : "bad"}
-            display="inline">
+            inline>
             <Icon
               name={pod.steel >= 15000 ? "circle" : "circle-o"}
             />&nbsp;
@@ -497,7 +496,7 @@ const ResleevingConsolePodSpods = (props, context) => {
           <Box
             bold
             color={pod.glass >= 15000 ? "good" : "bad"}
-            display="inline">
+            inline>
             <Icon
               name={pod.glass >= 15000 ? "circle" : "circle-o"}
             />&nbsp;

@@ -13,7 +13,7 @@
 	..()
 	return
 
-/obj/item/assembly/shock_kit/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/assembly/shock_kit/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_wrench() && !status)
 		var/turf/T = loc
 		if(ismob(T))
@@ -29,11 +29,14 @@
 	if(W.is_screwdriver())
 		status = !status
 		to_chat(user, "<span class='notice'>[src] is now [status ? "secured" : "unsecured"]!</span>")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 	add_fingerprint(user)
 	return
 
-/obj/item/assembly/shock_kit/attack_self(mob/user as mob)
+/obj/item/assembly/shock_kit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	part1.attack_self(user, status)
 	part2.attack_self(user, status)
 	add_fingerprint(user)

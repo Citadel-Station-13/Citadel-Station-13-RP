@@ -1,4 +1,4 @@
-
+//! gasmixtures
 #define THERMAL_ENERGY(gas) (gas.temperature * gas.heat_capacity())
 /// Atmospherics quantization define.
 #define QUANTIZE(variable)		(round(variable,0.0000001))/*I feel the need to document what happens here. Basically this is used to catch most rounding errors, however it's previous value made it so that
@@ -27,3 +27,23 @@
 #define ARCHIVE_GASMIX(gas) gas.temperature_archived=gas.temperature;gas.gas_archive=gas.gases.Copy()
 #define ARCHIVE_GASMIX_GASES(gas) gas.gas_archive=gas.gases.Copy()
 #define ARCHIVE_GASMIX_TEMPERATURE(gas) gas.temperature_archived=gas.temperature
+
+//! proc hooks
+
+//? Initialize()
+/// call air update self on loc on Initialize() if we potentially block air horizontally
+#define AIR_UPDATE_ON_INITIALIZE_AUTO if(CanAtmosPass != ATMOS_PASS_NOT_BLOCKED) {loc?.air_update_self()}
+/// call air update self on loc on Initialize() unconditionally
+#define AIR_UPDATE_ON_INITIALIZE_FORCED loc?.air_update_self()
+
+//? Destroy()
+/// call air update self on loc before ..() of Destroy() if we potentially block air horizontally
+#define AIR_UPDATE_ON_DESTROY_AUTO if(CanAtmosPass != ATMOS_PASS_NOT_BLOCKED) {CanAtmosPass = ATMOS_PASS_NOT_BLOCKED; loc?.air_update_self()}
+/// call air update self on loc before ..() of Destroy() unconditionally
+#define AIR_UPDATE_ON_DESTROY_FORCED CanAtmosPass = ATMOS_PASS_NOT_BLOCKED; loc?.air_update_self()
+
+//? Moved()
+/// call air update self on old and new locs if we potentially block air horizontally
+#define AIR_UPDATE_ON_MOVED_AUTO if(CanAtmosPass != ATMOS_PASS_NOT_BLOCKED) {oldloc?.air_update_self(); loc?.air_update_self()}
+/// call air update self on old and new locs unconditionally
+#define AIR_UPDATE_ON_MOVED_FORCED oldloc?.air_update_self(); loc?.air_update_self()

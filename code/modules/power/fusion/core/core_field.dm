@@ -1,6 +1,6 @@
-#define FUSION_ENERGY_PER_K 20
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
-
+#define FUSION_ENERGY_KW_PER_K 0.02
+///radiation divisior. plasma temp / divisor = radiation.
+#define PLASMA_TEMP_RADIATION_DIVISIOR 10
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
@@ -42,8 +42,8 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	. = ..()
 	ignore_types = typecacheof(list(
 		/obj/effect,
-		/obj/item/projectile,
-		/obj/fire,
+		/obj/projectile,
+		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_PER_K * plasma_temperature)
+	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)
@@ -321,7 +321,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	radiation += plasma_temperature/2
 	plasma_temperature = 0
 
-	SSradiation.radiate(src, radiation)
+	radiation_pulse(src, clamp(radiation, 0, 50000), RAD_FALLOFF_ENGINE_FUSION)
 	Radiate()
 
 /obj/effect/fusion_em_field/proc/Radiate()
@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		var/empsev = max(1, min(3, CEILING(size/2, 1)))
 		for(var/atom/movable/AM in range(max(1,FLOOR(size/2, 1)), loc))
 
-			if(AM == src || AM == owned_core || !AM.simulated)
+			if(AM == src || AM == owned_core || (AM.atom_flags & ATOM_ABSTRACT))
 				continue
 			if(ignore_types[AM.type])
 				continue
@@ -400,7 +400,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			for(var/cur_s_react in possible_s_reacts)
 				if(possible_s_reacts[cur_s_react] < 1)
 					continue
-				var/decl/fusion_reaction/cur_reaction = get_fusion_reaction(cur_p_react, cur_s_react)
+				var/singleton/fusion_reaction/cur_reaction = get_fusion_reaction(cur_p_react, cur_s_react)
 				if(cur_reaction && plasma_temperature >= cur_reaction.minimum_energy_level)
 					possible_reactions.Add(cur_reaction)
 
@@ -410,7 +410,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 			//split up the reacting atoms between the possible reactions
 			while(possible_reactions.len)
-				var/decl/fusion_reaction/cur_reaction = pick(possible_reactions)
+				var/singleton/fusion_reaction/cur_reaction = pick(possible_reactions)
 				possible_reactions.Remove(cur_reaction)
 
 				//set the randmax to be the lower of the two involved reactants
@@ -488,7 +488,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
-/obj/effect/fusion_em_field/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/fusion_em_field/bullet_act(var/obj/projectile/Proj)
 	AddEnergy(Proj.damage)
 	update_icon()
 	return 0
@@ -511,14 +511,14 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()
-	SSradiation.radiate(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
+	radiation_pulse(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
 
 //Somehow fixing the radiation issue managed to break this, but moving it to it's own proc seemed to have fixed it. I don't know.
 /obj/effect/fusion_em_field/proc/temp_dump()
 	if(owned_core && owned_core.loc)
 		var/datum/gas_mixture/environment = owned_core.loc.return_air()
 		if(environment && environment.temperature < (GLOB.max_fusion_air_heat))
-			environment.add_thermal_energy(plasma_temperature*5000)
+			environment.adjust_thermal_energy(plasma_temperature*5000)
 			check_instability()
 
 //Temperature changes depending on color. Now, the visibility of the field increases with temperature, along with the glow.

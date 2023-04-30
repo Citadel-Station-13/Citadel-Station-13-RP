@@ -2,20 +2,12 @@
 
 // TURFS
 
-/proc/updateVisibility(atom/A, var/opacity_check = 1)
-	if(SSticker)
-		for(var/datum/visualnet/VN in visual_nets)
-			VN.updateVisibility(A, opacity_check)
+/proc/updateVisibility(atom/A, opacity_check = 1)
+	for(var/datum/visualnet/VN in GLOB.visual_nets)
+		VN.updateVisibility(A, opacity_check)
 
 /turf
 	var/list/image/obfuscations
-
-/turf/drain_power()
-	return -1
-
-/turf/simulated/Destroy()
-	updateVisibility(src)
-	return ..()
 
 // STRUCTURES
 
@@ -35,13 +27,14 @@
 
 /obj/effect/Initialize(mapload)
 	. = ..()
-	updateVisibility(src)
+	if(!mapload)
+		updateVisibility(src)
 
 // DOORS
 
 // Simply updates the visibility of the area when it opens/closes/destroyed.
-/obj/machinery/door/update_nearby_tiles(need_rebuild)
-	. = ..(need_rebuild)
+/obj/machinery/door/update_nearby_tiles()
+	. = ..()
 	// Glass door glass = 1
 	// don't check then?
 	if(!glass)

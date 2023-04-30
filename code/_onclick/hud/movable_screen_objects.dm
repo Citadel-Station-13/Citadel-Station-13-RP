@@ -19,7 +19,7 @@
 	snap2grid = TRUE
 
 
-/atom/movable/screen/movable/MouseDrop(over_object, src_location, over_location, src_control, over_control, params)
+/atom/movable/screen/movable/OnMouseDropLegacy(over_object, src_location, over_location, src_control, over_control, params)
 	var/list/PM = params2list(params)
 
 	//No screen-loc information? abort.
@@ -49,9 +49,9 @@
 	if(view_dist)
 		view_dist = view_dist
 	if(X > view_dist+1)
-		. = "EAST-[view_dist *2 + 1-X]"
+		. = "RIGHT-[view_dist *2 + 1-X]"
 	else if(X < view_dist +1)
-		. = "WEST+[X-1]"
+		. = "LEFT+[X-1]"
 	else
 		. = "CENTER"
 
@@ -59,14 +59,14 @@
 	var/view_dist = world.view
 	if(view_dist)
 		view_dist = view_dist
-	//Find EAST/WEST implementations
-	if(findtext(X,"EAST-"))
-		var/num = text2num(copytext(X,6)) //Trim EAST-
+	//Find RIGHT/LEFT implementations
+	if(findtext(X,"RIGHT-"))
+		var/num = text2num(copytext(X,6)) //Trim RIGHT-
 		if(!num)
 			num = 0
 		. = view_dist*2 + 1 - num
-	else if(findtext(X,"WEST+"))
-		var/num = text2num(copytext(X,6)) //Trim WEST+
+	else if(findtext(X,"LEFT+"))
+		var/num = text2num(copytext(X,6)) //Trim LEFT+
 		if(!num)
 			num = 0
 		. = num+1
@@ -78,9 +78,9 @@
 	if(view_dist)
 		view_dist = view_dist
 	if(Y > view_dist+1)
-		. = "NORTH-[view_dist*2 + 1-Y]"
+		. = "TOP-[view_dist*2 + 1-Y]"
 	else if(Y < view_dist+1)
-		. = "SOUTH+[Y-1]"
+		. = "BOTTOM+[Y-1]"
 	else
 		. = "CENTER"
 
@@ -88,13 +88,13 @@
 	var/view_dist = world.view
 	if(view_dist)
 		view_dist = view_dist
-	if(findtext(Y,"NORTH-"))
-		var/num = text2num(copytext(Y,7)) //Trim NORTH-
+	if(findtext(Y,"TOP-"))
+		var/num = text2num(copytext(Y,7)) //Trim TOP-
 		if(!num)
 			num = 0
 		. = view_dist*2 + 1 - num
-	else if(findtext(Y,"SOUTH+"))
-		var/num = text2num(copytext(Y,7)) //Time SOUTH+
+	else if(findtext(Y,"BOTTOM+"))
+		var/num = text2num(copytext(Y,7)) //Time BOTTOM+
 		if(!num)
 			num = 0
 		. = num+1

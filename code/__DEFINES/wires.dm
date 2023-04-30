@@ -60,26 +60,36 @@
 #define WIRE_BEACON_RX "Beacon Receiver"
 
 // Explosives, bombs
-#define WIRE_EXPLODE "Explode" // Explodes if pulsed or cut while active, defuses a bomb that isn't active on cut.
-#define WIRE_EXPLODE_DELAY "Explode Delay" // Explodes immediately if cut, explodes 3 seconds later if pulsed.
-#define WIRE_DISARM "Disarm" // Explicit "disarming" wire.
-#define WIRE_BADDISARM "Bad Disarm" // Disarming wire, except it blows up anyways.
-#define WIRE_BOMB_UNBOLT "Unbolt" // Unbolts the bomb if cut, hint on pulsed.
-#define WIRE_BOMB_DELAY "Delay" // Raises the timer on pulse, does nothing on cut.
-#define WIRE_BOMB_PROCEED "Proceed" // Lowers the timer, explodes if cut while the bomb is active.
-#define WIRE_BOMB_ACTIVATE "Activate" // Will start a bombs timer if pulsed, will hint if pulsed while already active, will stop a timer a bomb on cut.
-
+/// Explodes if pulsed or cut while active, defuses a bomb that isn't active on cut.
+#define WIRE_EXPLODE "Explode"
+/// Explodes immediately if cut, explodes 3 seconds later if pulsed.
+#define WIRE_EXPLODE_DELAY "Explode Delay"
+/// Explicit "disarming" wire.
+#define WIRE_DISARM "Disarm"
+/// Disarming wire, except it blows up anyways.
+#define WIRE_BADDISARM "Bad Disarm"
+/// Unbolts the bomb if cut, hint on pulsed.
+#define WIRE_BOMB_UNBOLT "Unbolt"
+/// Raises the timer on pulse, does nothing on cut.
+#define WIRE_BOMB_DELAY "Delay"
+/// Lowers the timer, explodes if cut while the bomb is active.
+#define WIRE_BOMB_PROCEED "Proceed"
+/// Will start a bombs timer if pulsed, will hint if pulsed while already active, will stop a timer a bomb on cut.
+#define WIRE_BOMB_ACTIVATE "Activate"
 // Nuclear bomb
 #define WIRE_BOMB_LIGHT "Bomb Light"
 #define WIRE_BOMB_TIMING "Bomb Timing"
 #define WIRE_BOMB_SAFETY "Bomb Safety"
 
 // Particle accelerator
-#define WIRE_PARTICLE_POWER "Power Toggle" // Toggles whether the PA is on or not.
-#define WIRE_PARTICLE_STRENGTH "Strength" // Determines the strength of the PA.
-#define WIRE_PARTICLE_INTERFACE "Interface" // Determines the interface showing up.
-#define WIRE_PARTICLE_POWER_LIMIT "Maximum Power" // Determines how strong the PA can be.
-
+/// Toggles whether the PA is on or not.
+#define WIRE_PARTICLE_POWER "Power Toggle"
+/// Determines the strength of the PA.
+#define WIRE_PARTICLE_STRENGTH "Strength"
+/// Determines the interface showing up.
+#define WIRE_PARTICLE_INTERFACE "Interface"
+/// Determines how strong the PA can be.
+#define WIRE_PARTICLE_POWER_LIMIT "Maximum Power"
 // Autolathe
 #define WIRE_AUTOLATHE_HACK "Hack"
 #define WIRE_AUTOLATHE_DISABLE "Disable"
@@ -99,15 +109,19 @@
 #define WIRE_SEED_LOCKDOWN "Lockdown"
 
 // Shield Generator
-#define WIRE_SHIELD_CONTROL "Shield Controls" // Cut to lock most shield controls. Mend to unlock them. Pulse does nothing.
-
+/// Cut to lock most shield controls. Mend to unlock them. Pulse does nothing.
+#define WIRE_SHIELD_CONTROL "Shield Controls"
 // SMES
-#define WIRE_SMES_RCON "RCon"		// Remote control (AI and consoles), cut to disable
-#define WIRE_SMES_INPUT "Input"		// Input wire, cut to disable input, pulse to disable for 60s
-#define WIRE_SMES_OUTPUT "Output"		// Output wire, cut to disable output, pulse to disable for 60s
-#define WIRE_SMES_GROUNDING "Grounding"	// Cut to quickly discharge causing sparks, pulse to only create few sparks
-#define WIRE_SMES_FAILSAFES "Failsafes"	// Cut to disable failsafes, mend to reenable
-
+/// Remote control (AI and consoles), cut to disable
+#define WIRE_SMES_RCON "RCon"
+/// Input wire, cut to disable input, pulse to disable for 60s
+#define WIRE_SMES_INPUT "Input"
+/// Output wire, cut to disable output, pulse to disable for 60s
+#define WIRE_SMES_OUTPUT "Output"
+/// Cut to quickly discharge causing sparks, pulse to only create few sparks
+#define WIRE_SMES_GROUNDING "Grounding"
+/// Cut to disable failsafes, mend to reenable
+#define WIRE_SMES_FAILSAFES "Failsafes"
 // Suit storage unit
 #define WIRE_SSU_UV "UV wire"
 

@@ -19,8 +19,8 @@
 	return wtime + (time_offset + wusage) * world.tick_lag
 
 GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
-var/station_date = ""
-var/next_station_date_change = 1 DAY
+/var/station_date = ""
+/var/next_station_date_change = 1 DAY
 
 #define duration2stationtime(time) time2text(station_time_in_ds + time, "hh:mm")
 #define worldtime2stationtime(time) time2text(GLOB.roundstart_hour HOURS + time, "hh:mm")
@@ -41,7 +41,7 @@ var/next_station_date_change = 1 DAY
 		station_date = num2text((text2num(time2text(timeofday, "YYYY"))+544)) + "-" + time2text(timeofday, "MM-DD")
 	return station_date
 
-//ISO 8601
+/// ISO 8601
 /proc/time_stamp()
 	var/date_portion = time2text(world.timeofday, "YYYY-MM-DD")
 	var/time_portion = time2text(world.timeofday, "hh:mm:ss")
@@ -59,30 +59,36 @@ var/next_station_date_change = 1 DAY
 		wtime = world.time
 	return time2text(wtime - GLOB.timezoneOffset, format)
 
-/* This is used for displaying the "station time" equivelent of a world.time value
- Calling it with no args will give you the current time, but you can specify a world.time-based value as an argument
- - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
-   which is much more useful for a player)*/
+/**
+ * This is used for displaying the "station time" equivelent of a world.time value
+ * Calling it with no args will give you the current time, but you can specify a world.time-based value as an argument.
+ * - You can use this, for example, to do "This will expire at [station_time_at(world.time + 500)]" to display a "station time" expiration date
+ *   which is much more useful for a player).
+ */
 /proc/station_time(time=world.time, display_only=FALSE)
 	return ((((time - SSticker.round_start_time)) + GLOB.gametime_offset) % 864000) - (display_only ? GLOB.timezoneOffset : 0)
 
 /proc/station_time_timestamp(format = "hh:mm:ss", time=world.time)
 	return time2text(station_time(time, TRUE), format)
 
-/* Returns 1 if it is the selected month and day */
-proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))
-		var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
-		var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
+/**
+ * Returns 1 if it is the selected month and day.
+ */
+/proc/isDay(var/month, var/day)
+	if(isnum(month) && isnum(day))\
+		/// Get the current month.
+		var/MM = text2num(time2text(world.timeofday, "MM"))
+		/// Get the current day.
+		var/DD = text2num(time2text(world.timeofday, "DD"))
 		if(month == MM && day == DD)
-			return 1
+			return TRUE
 
 		// Uncomment this out when debugging!
-		//else
-			//return 1
+		// else
+		// 	return TRUE
 
-var/next_duration_update = 0
-var/last_round_duration = 0
+/var/next_duration_update = 0
+/var/last_round_duration = 0
 
 /proc/roundduration2text()
 	if(!SSticker.round_start_time)
@@ -90,8 +96,10 @@ var/last_round_duration = 0
 	if(last_round_duration && world.time < next_duration_update)
 		return last_round_duration
 
-	var/mills = round_duration_in_ds // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
+	/// 1/10 of a second, not real milliseconds but whatever.
+	var/mills = round_duration_in_ds
+	/// Not really needed, but I'll leave it here for refrence.. or something.
+	//var/secs = ((mills % 36000) % 600) / 10
 	var/mins = round((mills % 36000) / 600)
 	var/hours = round(mills / 36000)
 
@@ -104,13 +112,15 @@ var/last_round_duration = 0
 
 /var/midnight_rollovers = 0
 /var/rollovercheck_last_timeofday = 0
+
 /proc/update_midnight_rollover()
 	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
 		return midnight_rollovers++
 	return midnight_rollovers
 
 /proc/weekdayofthemonth()
-	var/DD = text2num(time2text(world.timeofday, "DD")) 	// get the current day
+	/// Get the current day.
+	var/DD = text2num(time2text(world.timeofday, "DD"))
 	switch(DD)
 		if(8 to 13)
 			return 2
@@ -123,8 +133,10 @@ var/last_round_duration = 0
 		else
 			return 1
 
-//Takes a value of time in deciseconds.
-//Returns a text value of that number in hours, minutes, or seconds.
+/**
+ * Takes a value of time in deciseconds.
+ * Returns a text value of that number in hours, minutes, or seconds.
+ */
 /proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
 	var/second = round(time_value * 0.1, round_seconds_to)
 	if(!second)

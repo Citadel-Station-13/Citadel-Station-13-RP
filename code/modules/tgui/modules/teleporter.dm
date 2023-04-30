@@ -1,12 +1,12 @@
-/datum/tgui_module/teleport_control
+/datum/tgui_module_old/teleport_control
 	name = "Teleporter Control"
 	tgui_id = "Teleporter"
 	var/locked_name = "Not Locked"
 	var/obj/item/locked = null
-	var/obj/machinery/teleport/station/station = null
-	var/obj/machinery/teleport/hub/hub = null
+	var/obj/machinery/tele_projector/station = null
+	var/obj/machinery/tele_pad/hub = null
 
-/datum/tgui_module/teleport_control/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/teleport_control/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/list/data = ..()
 
 	data["locked_name"] = locked_name || "No Target"
@@ -17,7 +17,7 @@
 
 	return data
 
-/datum/tgui_module/teleport_control/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
+/datum/tgui_module_old/teleport_control/ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
 		return TRUE
 
@@ -26,7 +26,7 @@
 			var/list/L = list()
 			var/list/areaindex = list()
 
-			for(var/obj/item/radio/beacon/R in all_beacons)
+			for(var/obj/item/radio/beacon/R in  GLOB.all_beacons)
 				var/turf/T = get_turf(R)
 				if(!T)
 					continue
@@ -39,7 +39,7 @@
 					areaindex[tmpname] = 1
 				L[tmpname] = R
 
-			for(var/obj/item/implant/tracking/I in all_tracking_implants)
+			for(var/obj/item/implant/tracking/I in GLOB.all_tracking_implants)
 				if(!I.implanted || !ismob(I.loc))
 					continue
 				else

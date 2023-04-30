@@ -24,7 +24,7 @@
 	for(var/mob/M in T)
 		if(istype(M,/mob/living/simple_mob/animal/passive/lizard) || istype(M,/mob/living/simple_mob/animal/passive/mouse))
 			src.loc.visible_message("<span class='danger'>[src.loc] sucks [M] into its decompiler. There's a horrible crunching noise.</span>","<span class='danger'>It's a bit of a struggle, but you manage to suck [M] into your decompiler. It makes a series of visceral crunching noises.</span>")
-			new/obj/effect/decal/cleanable/blood/splatter(get_turf(src))
+			new/obj/effect/debris/cleanable/blood/splatter(get_turf(src))
 			qdel(M)
 			if(wood)
 				wood.add_charge(2000)
@@ -49,7 +49,7 @@
 
 			to_chat(D, "<span class='danger'>You carefully and thoroughly decompile [M], storing as much of its resources as you can within yourself.</span>")
 			qdel(M)
-			new/obj/effect/decal/cleanable/blood/oil(get_turf(src))
+			new/obj/effect/debris/cleanable/blood/oil(get_turf(src))
 
 			if(metal)
 				metal.add_charge(15000)
@@ -146,15 +146,15 @@
 	icon_state = "xray"
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
-	projectile_type = /obj/item/projectile/beam/shock
+	projectile_type = /obj/projectile/beam/shock
 	charge_cost = 175
 
 	self_recharge = TRUE
 	use_external_power = TRUE
 
 	firemodes = list(
-		list(mode_name="kill", projectile_type=/obj/item/projectile/beam/gamma, charge_cost = 300),
-		list(mode_name="deter", projectile_type=/obj/item/projectile/beam/shock, charge_cost = 175),
+		list(mode_name="kill", projectile_type=/obj/projectile/beam/gamma, charge_cost = 300),
+		list(mode_name="deter", projectile_type=/obj/projectile/beam/shock, charge_cost = 175),
 		)
 
 /obj/item/gun/energy/xray/swarm/Initialize(mapload)

@@ -26,7 +26,8 @@
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
-#define NETWORK_TCOMMS "Telecommunications" //Using different from Polaris one for better name
+///Using different from Polaris one for better name
+#define NETWORK_TCOMMS "Telecommunications"
 #define NETWORK_OUTSIDE "Outside"
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
@@ -221,31 +222,10 @@
 	icon_state = "space5"
 	use_stars = FALSE
 
-// Overmap represetation of tether
+// Overmap stuff. Main file is under code/modules/maps/overmap/_virgo3b.dm
+// Todo, find a way to populate this list automatically without having to do this
 /obj/effect/overmap/visitable/sector/virgo3b
-	name = "Virgo 3B"
-	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
-	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
-[i]Class[/i]: Installation
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Base, authorized personnel only"}
-	base = 1
-	icon_state = "globe"
-	color = "#d35b5b"
-	initial_generic_waypoints = list(
-		"tether_dockarm_d2a", //Top left
-		"tether_dockarm_d2b", //Bottom left,
-		"tether_dockarm_d2r", //Right,
-		"tether_dockarm_d2l", //End of arm,
-		"tether_space_SE", //station1, bottom right of space,
-		"tether_space_SE", //station1, bottom right of space,
-		"tether_space_NE", //station1, top right of space,
-		"tether_space_SW", //station2, bottom left of space,
-		"tether_excursion_hangar", //Excursion shuttle hangar,
-		"tether_medivac_dock", //Medical shuttle dock,
-		"tourbus_dock" //Surface large hangar
-		)
-	//Despite not being in the multi-z complex, these levels are part of the overmap sector
+
 	extra_z_levels = list(
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SOLARS,
@@ -262,28 +242,6 @@
 		Z_LEVEL_CLASS_D
 		)
 
-//Port of Triumph Overmap Visitable Effects
-/obj/effect/overmap/visitable/sector/debrisfield
-	name = "Debris Field"
-	desc = "Space junk galore."
-	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
-	color = "#BBBBBB"
-	known = FALSE
-	in_space = 1
-	initial_generic_waypoints = list("triumph_excursion_debrisfield")
-
-/* Updated and now handled in classd.dm
-/obj/effect/overmap/visitable/sector/class_d
-	name = "Unidentified Planet"
-	desc = "ASdlke ERROR%%%% UNABLE TO----."
-	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#882933"
-*/
-
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
@@ -298,7 +256,7 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 
 
 /obj/effect/overmap/visitable/sector/pirate_base
-	name = "Vox Pirate Base"
+	name = "Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]
 Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
@@ -306,7 +264,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	known = FALSE
 	icon_state = "piratebase"
 	color = "#FF3333"
-	initial_generic_waypoints = list("piratebase_hanger")
+	initial_generic_waypoints = list("pirate_docking_arm")
 
 /obj/effect/overmap/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
@@ -348,28 +306,6 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
-/*
-/obj/effect/overmap/visitable/sector/trade_post
-	name = "Nebula Gas Food Mart"
-	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
-	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
-	in_space = 1
-	known = TRUE
-	icon_state = "fueldepot"
-	color = "#8F6E4C"
-
-	initial_generic_waypoints = list("nebula_space_SW")
-
-	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Mining Shuttle" = list("nebula_pad_2"),
-		"Excursion Shuttle" = list("nebula_pad_3"),
-		"Pirate Skiff" = list("nebula_pad_4"),
-		"Dart EMT Shuttle" = list("nebula_pad_5"),
-		"Civilian Transport" = list("nebula_pad_6")
-		)
-
-*/
 
 /obj/effect/overmap/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
 	. = ..()
@@ -396,12 +332,18 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		GLOB.lore_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets
-#define TETHER_MAP_SIZE 140 // Width and height of compiled in tether z levels.
-#define TETHER_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2) // 80
-#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2) // 30
-
+/// Width and height of compiled in tether z levels.
+#define TETHER_MAP_SIZE 140
+/// 40px central gutter between columns
+#define TETHER_HOLOMAP_CENTER_GUTTER 40
+/// 80
+#define TETHER_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TETHER_MAP_SIZE) - TETHER_HOLOMAP_CENTER_GUTTER) / 2)
+/// 30
+#define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
+/datum/map_z_level/tether
+	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
 /datum/map_z_level/tether/station
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
@@ -463,3 +405,140 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	name = "Solar Field"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
+
+/////////////////////
+/// Step Triggers ///
+/////////////////////
+
+/obj/effect/step_trigger/teleporter/to_mining/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_MINE
+
+/obj/effect/step_trigger/teleporter/from_mining/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
+	. = ..()
+	teleport_x = world.maxx - 1
+	teleport_y = src.y
+	teleport_z = Z_LEVEL_SOLARS
+
+/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
+	. = ..()
+	teleport_x = 2
+	teleport_y = src.y
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
+	. = ..()
+
+	//If starting on east/west edges.
+	if (src.x == 1)
+		teleport_x = world.maxx - 1
+	else if (src.x == world.maxx)
+		teleport_x = 2
+	else
+		teleport_x = src.x
+	//If starting on north/south edges.
+	if (src.y == 1)
+		teleport_y = world.maxy - 1
+	else if (src.y == world.maxy)
+		teleport_y = 2
+	else
+		teleport_y = src.y
+
+/obj/effect/step_trigger/teleporter/to_underdark
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Underdark")
+			teleport_z = Z.z
+
+/obj/effect/step_trigger/teleporter/from_underdark
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Mining Outpost")
+			teleport_z = Z.z
+
+/obj/effect/step_trigger/teleporter/to_plains/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_PLAINS
+
+/obj/effect/step_trigger/teleporter/from_plains/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
+	planet = planet_virgo3b
+
+
+// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
+/obj/machinery/power/supermatter/touch_map_edge()
+	qdel(src)
+
+
+
+
+
+/// Z level dropper. Todo, make something generic so we dont have to copy pasta this
+
+/obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
+	affect_ghosts = 1
+
+/obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
+	. = ..()
+
+	if(istype(get_turf(src), /turf/simulated/floor))
+		src:target_z = z
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
+	if(!src:target_z)
+		return
+
+	var/attempts = 100
+	var/turf/simulated/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),src:target_z)
+		if(candidate.density)
+			attempts--
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	if(isobserver(A))
+		A.forceMove(T) // Harmlessly move ghosts.
+		return
+
+	A.forceMove(T)
+	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
+		message_admins("\The [A] fell out of the sky.")
+		var/mob/living/L = A
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.

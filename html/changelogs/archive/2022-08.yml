@@ -1,0 +1,97 @@
+2022-08-02:
+  Captain277:
+  - bugfix: Fixes Skyfall.
+  LordPapalus:
+  - rscadd: '*achime'
+  - rscadd: achime.ogg
+  Zandario:
+  - bugfix: Adherent work as they should.
+  - bugfix: Fixed some Teshari markings that were using the incorrect blending method
+      and bodypart targets.
+  - bugfix: Teshari Heterochromia also works properly now.
+2022-08-04:
+  TheLordME:
+  - bugfix: fixed spawning issues from local
+  lectronyx:
+  - rscadd: closed eyes pattern to eye_stuff.dm
+  - imageadd: closed eyes state to eye_stuff.dmi
+2022-08-09:
+  Captain277:
+  - bugfix: Fixes Baseturfs.
+  TheLordME:
+  - bugfix: fixed burned paper spawning ash in the wrong spot
+  silicons:
+  - bugfix: flags
+  - bugfix: clothing disappearing
+  - bugfix: rigs not rendering properly
+  - bugfix: grabs not forcemoving
+  - bugfix: orbiting ai eyes
+  - bugfix: qdel loops in grab/holder, dropped grabs
+  - bugfix: ai eye examine runtime
+  - bugfix: grabs making sounds on drop
+  - bugfix: DROPDEL flag works properly now
+  - bugfix: augment items making sounds when unequipping
+  - bugfix: augmented shades
+2022-08-11:
+  CharlesWedge:
+  - rscadd: Adds Holodeck on Surface 2 At Last
+  - rscadd: Adds new friendly friend in Xenobio cave.
+  - bugfix: The Cabin outside the station now has a roof
+  - tweak: firelocks added in addition spots on Surface 2 near dorms
+  - tweak: maint around the gantry has been adjusted to make gantry more interconnected.
+  Funkeronipasta:
+  - rscadd: Added LectroNyx's donator fluffitem
+  - imageadd: Added icons for LectroNyx's donator fluffitem
+  TheLordME:
+  - bugfix: fixed radiation glow on creatures
+2022-08-12:
+  Captain277:
+  - bugfix: Fixes ash storm timers.
+  TheLordME:
+  - rscadd: Added Supermatter monitor console
+  - bugfix: fixed Engineers having to have/by modular computers for SM monitoring
+2022-08-15:
+  Captain277:
+  - rscdel: Removes Vetala race options.
+  TheLordME:
+  - bugfix: fixed people in mechs not loading the z they are on
+  silicons:
+  - bugfix: admins can unban people again
+  - admin: oops
+  - rscadd: CPR now has a use! It will stabilize people who are in crit properly and
+      prevent brain decay while dead. Furthermore, people being CPR'd slowly metabolize
+      reagents, even when dead.
+  - rscdel: Defib sickness removed until rework
+  - refactor: organs have been refactored a bit
+  - balance: organs now decay while dead
+  - refactor: most inv slot booleans are now flags instead of vars
+  - refactor: stripping is now a loop/enumeration instead of snowflaking
+  - rscadd: pocket slots are now able to be interacted with other than empty! plant
+      a grenade on someone you don't like. be warned, however, you won't know what's
+      in their pocket until you take it out, since you only see if it's full or not!
+  - tweak: pickpocketing! pocket slot stripping no longer makes messages unless you
+      move.
+  - tweak: stripping now puts stripped items directly into your hands.
+  - bugfix: long running loop in smes decon
+  - bugfix: vore smite breaking the game
+  - code_imp: removed useless code in structs
+2022-08-20:
+  TheLordME:
+  - rscadd: Added new title screen
+2022-08-27:
+  CharlesWedge:
+  - bugfix: Vents on the civ shuttle cycle air rather than phoron.
+  - bugfix: Vulpakin Suit Sprites now have all four directions.
+  Knightfall5:
+  - rscadd: Added phase pistols to SecTech
+  TheLordME:
+  - rscadd: Added xhiss, xgrowl and xroar emotes, with sounds from TGMC
+  - rscadd: Added soundless Kiss emote
+  nik707:
+  - rscadd: smacked a stamp up in that cargo locker bruh
+2022-08-30:
+  TheKnightofAura:
+  - rscadd: Added new things
+2022-08-31:
+  Captain277:
+  - bugfix: Fixes bad naming on RIG and Duffle Bag selections.

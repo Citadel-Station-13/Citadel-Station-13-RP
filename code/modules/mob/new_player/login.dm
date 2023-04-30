@@ -1,11 +1,9 @@
-///var/atom/movable/lobby_image = new /atom/movable{icon = 'icons/misc/title.dmi'; icon_state = lobby_image_state; screen_loc = "1,1"; name = "Polaris"}
-
-var/obj/effect/lobby_image = new /obj/effect/lobby_image
+GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 
 /obj/effect/lobby_image
 	name = "Citadel Station 13"
 	desc = "How are you reading this?"
-	screen_loc = "1,1"
+	screen_loc = "CENTER-7,CENTER-7"
 
 /obj/effect/lobby_image/Initialize(mapload)
 	icon = GLOB.using_map.lobby_icon
@@ -21,31 +19,26 @@ var/obj/effect/lobby_image = new /obj/effect/lobby_image
 		icon_state = known_icon_states[1]
 	. = ..()
 
-/mob/new_player
-	var/client/my_client // Need to keep track of this ourselves, since by the time Logout() is called the client has already been nulled
-
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 
 	var/motd = config.motd
 	if(motd)
-		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
+		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
+	if(client)
+		to_chat(src, client.getAlertDesc())
 
 	if(!mind)
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(ckey)
 		mind.active = 1
 		mind.current = src
 
 	loc = null
-	client.screen += lobby_image
-	my_client = client
-	sight |= SEE_TURFS
-	player_list |= src
+	GLOB.player_list |= src
 
 	new_player_panel()
 	spawn(40)
 		if(client)
 			handle_privacy_poll()
 			client.playtitlemusic()
-
-	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
+	return ..()

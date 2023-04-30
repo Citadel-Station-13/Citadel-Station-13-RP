@@ -4,14 +4,10 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/ears.dmi'
-		)
 
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -54,10 +50,10 @@
 /obj/item/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")
 		if (translate_binary)
-			var/datum/language/binary = GLOB.all_languages["Robot Talk"]
+			var/datum/language/binary = SScharacters.resolve_language_id(LANGUAGE_ID_SILICON_BINARY)
 			binary.broadcast(M, message)
 		if (translate_hive)
-			var/datum/language/hivemind = GLOB.all_languages["Hivemind"]
+			var/datum/language/hivemind = SScharacters.resolve_language_name("Hivemind")
 			hivemind.broadcast(M, message)
 		return null
 
@@ -72,16 +68,8 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/get_worn_icon_state(var/slot_name)
-	var/append = ""
-	if(icon_override)
-		switch(slot_name)
-			if(slot_l_ear_str)
-				append = "_l"
-			if(slot_r_ear_str)
-				append = "_r"
-
-	return "[..()][append]"
+/obj/item/radio/headset/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
@@ -96,9 +84,9 @@
 	ks1type = /obj/item/encryptionkey/syndicate
 
 /obj/item/radio/headset/raider
-	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
-	ks1type = /obj/item/encryptionkey/raider
+	icon_state = "pirate_headset"
+	adhoc_fallback = TRUE
+	ks2type = /obj/item/encryptionkey/raider
 
 /obj/item/radio/headset/raider/Initialize(mapload)
 	. = ..()
@@ -107,7 +95,7 @@
 /obj/item/radio/headset/trader
 	name = "trade headset"
 	origin_tech = list(TECH_ILLEGAL = 2)
-	syndie = 1
+	syndie = 0
 	adhoc_fallback = TRUE
 	ks1type = /obj/item/encryptionkey/trader
 
@@ -254,6 +242,19 @@
 	ear_protection = 2
 	ks2type = /obj/item/encryptionkey/heads/hos
 
+/obj/item/radio/headset/heads/blueshield
+	name = "blueshield's headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset"
+	ks2type = /obj/item/encryptionkey/heads/hos
+
+/obj/item/radio/headset/heads/blueshield/alt
+	name = "blueshield's bowman headset"
+	desc = "The headset of the person who protects command's valuable lives."
+	icon_state = "com_headset_alt"
+	ear_protection = 2
+	ks2type = /obj/item/encryptionkey/heads/hos
+
 /obj/item/radio/headset/heads/ce
 	name = "chief engineer's headset"
 	desc = "The headset of the guy who is in charge of morons"
@@ -388,7 +389,7 @@
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption keys in the headset!")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 
 		else
 			to_chat(user, "This headset doesn't have any encryption keys!  How useless...")
@@ -397,24 +398,16 @@
 		if(keyslot1 && keyslot2)
 			to_chat(user, "The headset can't hold another key!")
 			return
-
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		if(!keyslot1)
-			user.drop_item()
-			W.loc = src
 			keyslot1 = W
-
 		else
-			user.drop_item()
-			W.loc = src
 			keyslot2 = W
-
 
 		recalculateChannels()
 
-	return
-
-
-/obj/item/radio/headset/proc/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0
@@ -490,11 +483,6 @@
 	icon_state = "nt_headset"
 	centComm = 1
 	ks2type = /obj/item/encryptionkey/ert
-
-/obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi',
-						SPECIES_VOX = 'icons/mob/species/vox/ears.dmi')
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"

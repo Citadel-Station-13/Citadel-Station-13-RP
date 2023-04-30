@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table, Divider } from "../components";
+import { Box, Button, Flex, LabeledList, Section } from "../components";
 import { Window } from "../layouts";
 import { decodeHtmlEntities } from 'common/string';
 import { formatPower } from "../format";
@@ -15,6 +14,7 @@ export const ICCircuit = (props, context) => {
     displayed_name,
     removable,
     complexity,
+    cooldown_per_use,
     power_draw_idle,
     power_draw_per_use,
     extended_desc,
@@ -36,6 +36,9 @@ export const ICCircuit = (props, context) => {
           <LabeledList>
             <LabeledList.Item label="Complexity">
               {complexity}
+            </LabeledList.Item>
+            <LabeledList.Item label="Cooldown Per Use">
+              {cooldown_per_use / 10} secs
             </LabeledList.Item>
             {power_draw_idle && (
               <LabeledList.Item label="Power Draw (Idle)">

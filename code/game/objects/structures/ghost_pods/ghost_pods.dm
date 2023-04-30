@@ -43,7 +43,7 @@
 /obj/structure/ghost_pod/manual
 	var/confirm_before_open = FALSE // Recommended to be TRUE if the pod contains a surprise.
 
-/obj/structure/ghost_pod/manual/attack_hand(var/mob/living/user)
+/obj/structure/ghost_pod/manual/attack_hand(mob/user, list/params)
 	if(!used)
 		if(confirm_before_open)
 			if(alert(user, "Are you sure you want to touch \the [src]?", "Confirm", "No", "Yes") == "No")
@@ -79,6 +79,7 @@
 	description_info = "A ghost can click on this to return to the round as whatever is contained inside this object."
 
 /obj/structure/ghost_pod/ghost_activated/attack_ghost(var/mob/observer/dead/user)
+	. = ..()
 	if(used)
 		to_chat(user, "<span class='warning'>Another spirit appears to have gotten to \the [src] before you.  Sorry.</span>")
 		return

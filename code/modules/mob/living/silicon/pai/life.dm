@@ -1,4 +1,6 @@
-/mob/living/silicon/pai/Life()
+/mob/living/silicon/pai/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if (src.stat == 2)
 		return
@@ -26,10 +28,9 @@
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
 
-
-/mob/living/silicon/pai/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/pai/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getBruteLoss() - getFireLoss()

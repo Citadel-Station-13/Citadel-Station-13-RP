@@ -120,7 +120,7 @@
 
 /obj/item/integrated_circuit/output/text_to_speech
 	name = "text-to-speech circuit"
-	desc = "A miniature speaker is attached to this component. It is able to transpose any valid text to speech."
+	desc = "A miniature speaker is attached to this component.  It is able to transpose any valid text to speech."
 	extended_desc = "This will emit an audible message to anyone who can hear the assembly."
 	icon_state = "speaker"
 	complexity = 12
@@ -139,7 +139,7 @@
 
 /obj/item/integrated_circuit/output/text_to_speech/advanced
 	name = "advanced text-to-speech circuit"
-	desc = "A miniature speaker is attached to this component. It is able to transpose any valid text to speech, matching a scanned target's voice."
+	desc = "A miniature speaker is attached to this component.  It is able to transpose any valid text to speech, matching a scanned target's voice."
 	complexity = 15
 	cooldown_per_use = 6 SECONDS
 	inputs = list("text" = IC_PINTYPE_STRING, "mimic target" = IC_PINTYPE_REF)
@@ -183,9 +183,9 @@
 /obj/item/integrated_circuit/output/sound/Initialize(mapload)
 	. = ..()
 	extended_desc = list()
-	extended_desc += "The first input pin determines which sound is used. The choices are; "
+	extended_desc += "The first input pin determines which sound is used.  The choices are; "
 	extended_desc += jointext(sounds, ", ")
-	extended_desc += ". The second pin determines the volume of sound that is played"
+	extended_desc += ".  The second pin determines the volume of sound that is played"
 	extended_desc += ", and the third determines if the frequency of the sound will vary with each activation."
 	extended_desc = jointext(extended_desc, null)
 
@@ -197,7 +197,7 @@
 		var/selected_sound = sounds[ID]
 		if(!selected_sound)
 			return
-		vol = between(0, vol, 100)
+		vol = clamp( vol, 0,  100)
 		playsound(get_turf(src), selected_sound, vol, freq, -1)
 
 /obj/item/integrated_circuit/output/sound/beeper
@@ -233,25 +233,25 @@
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_ILLEGAL = 1)
 
-/obj/item/integrated_circuit/output/sound/medbot
-	name = "medbot sound circuit"
-	desc = "A miniature speaker is attached to this component, used to annoy patients while they get pricked by a medbot."
+/obj/item/integrated_circuit/output/sound/medibot
+	name = "medibot sound circuit"
+	desc = "A miniature speaker is attached to this component, used to annoy patients while they get pricked by a medibot."
 	sounds = list(
-		"surgeon"		= 'sound/voice/medbot/msurgeon.ogg',
-		"radar"			= 'sound/voice/medbot/mradar.ogg',
-		"feel better"	= 'sound/voice/medbot/mfeelbetter.ogg',
-		"patched up"	= 'sound/voice/medbot/mpatchedup.ogg',
-		"injured"		= 'sound/voice/medbot/minjured.ogg',
-		"insult"		= 'sound/voice/medbot/minsult.ogg',
-		"coming"		= 'sound/voice/medbot/mcoming.ogg',
-		"help"			= 'sound/voice/medbot/mhelp.ogg',
-		"live"			= 'sound/voice/medbot/mlive.ogg',
-		"lost"			= 'sound/voice/medbot/mlost.ogg',
-		"flies"			= 'sound/voice/medbot/mflies.ogg',
-		"catch"			= 'sound/voice/medbot/mcatch.ogg',
-		"delicious"		= 'sound/voice/medbot/mdelicious.ogg',
-		"apple"			= 'sound/voice/medbot/mapple.ogg',
-		"no"			= 'sound/voice/medbot/mno.ogg',
+		"surgeon"		= 'sound/voice/medibot/msurgeon.ogg',
+		"radar"			= 'sound/voice/medibot/mradar.ogg',
+		"feel better"	= 'sound/voice/medibot/mfeelbetter.ogg',
+		"patched up"	= 'sound/voice/medibot/mpatchedup.ogg',
+		"injured"		= 'sound/voice/medibot/minjured.ogg',
+		"insult"		= 'sound/voice/medibot/minsult.ogg',
+		"coming"		= 'sound/voice/medibot/mcoming.ogg',
+		"help"			= 'sound/voice/medibot/mhelp.ogg',
+		"live"			= 'sound/voice/medibot/mlive.ogg',
+		"lost"			= 'sound/voice/medibot/mlost.ogg',
+		"flies"			= 'sound/voice/medibot/mflies.ogg',
+		"catch"			= 'sound/voice/medibot/mcatch.ogg',
+		"delicious"		= 'sound/voice/medibot/mdelicious.ogg',
+		"apple"			= 'sound/voice/medibot/mapple.ogg',
+		"no"			= 'sound/voice/medibot/mno.ogg',
 		)
 	spawn_flags = IC_SPAWN_RESEARCH
 	origin_tech = list(TECH_ENGINEERING = 2, TECH_DATA = 2, TECH_BIO = 1)
@@ -382,7 +382,7 @@
 	The assembly must be able to see the object to make a holographic copy of it.<br>\
 	Scaling is capped between -2 and 2.<br>\
 	The rotation pin uses degrees.<br>\
-	Imitated object cannot be changed while projecting. Position, \
+	Imitated object cannot be changed while projecting.  Position, \
 	scale, and rotation can be updated without restarting by pulsing the update hologram pin."
 	complexity = 40
 	icon_state = "holo_projector"
@@ -445,7 +445,7 @@
 	if(!isnum(holo_scale) || !isnum(holo_rotation) )
 		return FALSE // Invalid.
 
-	hologram.adjust_scale(between(-2, holo_scale, 2) )
+	hologram.adjust_scale(clamp( holo_scale, -2,  2) )
 	hologram.adjust_rotation(holo_rotation)
 	update_hologram_position()
 
@@ -458,8 +458,8 @@
 	if(!isnum(holo_x) || !isnum(holo_y) )
 		return FALSE
 
-	holo_x = between(-7, holo_x, 7)
-	holo_y = between(-7, holo_y, 7)
+	holo_x = clamp( holo_x, -7,  7)
+	holo_y = clamp( holo_y, -7,  7)
 
 	var/turf/T = get_turf(src)
 	if(T)
@@ -479,7 +479,7 @@
 	if(istype(AM) && assembly)
 		if(AM in view(get_turf(src))) // It must be able to 'see' the object it will copy.
 			hologram = new(src)
-			var/icon/holo_icon = getHologramIcon(getFlatIcon(AM))
+			var/icon/holo_icon = getHologramIcon(get_flat_icon(AM))
 		//	holo_icon.GrayScale() // So it looks better colored.
 			if(holo_color) // The color pin should ensure that it is a valid hex.
 				holo_icon.ColorTone(holo_color)

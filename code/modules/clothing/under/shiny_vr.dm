@@ -1,6 +1,6 @@
 /obj/item/clothing/under/shiny
-	icon_override = 'icons/mob/modular_shiny_vr.dmi'
-	icon = 'icons/obj/clothing/modular_shiny_vr.dmi'
+	icon_override = 'icons/mob/clothing/modular_latex.dmi'
+	icon = 'icons/obj/clothing/modular_shiny.dmi'
 	desc = "You can be a super-hero in this! Just don't forget your mask!"
 
 /obj/item/clothing/under/shiny/catsuit

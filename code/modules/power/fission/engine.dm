@@ -1,5 +1,5 @@
-#define REACTOR_RADIATION_MULTIPLIER 20
-#define BREACH_RADIATION_MULTIPLIER 0.1
+#define REACTOR_RADIATION_MULTIPLIER 200
+#define BREACH_RADIATION_MULTIPLIER 1
 #define REACTOR_TEMPERATURE_CUTOFF 10000
 #define REACTOR_RADS_TO_MJ 10000
 
@@ -87,7 +87,7 @@
 		announce_warning(meltedrods, meltingrods, temperature >= max_temp ? 1 : 0)
 
 	decay_archived = decay_heat
-	add_thermal_energy(decay_heat * activerods)
+	adjust_thermal_energy(decay_heat * activerods)
 	equalize(loc.return_air(), envefficiency)
 	equalize_all()
 
@@ -98,15 +98,15 @@
 
 	if(temperature > max_temp && health > 0 && max_temp > 0) // Overheating, reduce structural integrity, emit more rads.
 		health = max(0, health - (temperature / max_temp))
-		health = between(0, health, max_health)
+		health = clamp( health, 0,  max_health)
 		if(health < 1)
 			go_nuclear()
 
 	var/healthmul = (((health / max_health) - 1) / -1)
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
-	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
+	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
-/obj/machinery/power/fission/attack_hand(mob/user)
+/obj/machinery/power/fission/attack_hand(mob/user, list/params)
 	nano_ui_interact(user)
 
 /obj/machinery/power/fission/attack_robot(mob/user)
@@ -159,8 +159,8 @@
 			var/roddata[0]
 			roddata["rod"] = "\ref[rod]"
 			roddata["name"] = rod.name
-			roddata["integrity_percentage"] = round(between(0, rod.integrity, 100))
-			roddata["life_percentage"] = round(between(0, rod.life, 100))
+			roddata["integrity_percentage"] = round(clamp( rod.integrity, 0,  100))
+			roddata["life_percentage"] = round(clamp( rod.life, 0,  100))
 			roddata["heat"] = round(rod.temperature)
 			roddata["melting_point"] = rod.melting_point
 			roddata["insertion"] = round(rod.insertion * 100)
@@ -183,11 +183,11 @@
 		var/obj/item/fuelrod/rod = locate(href_list["rod_insertion"])
 		if(istype(rod) && rod.loc == src)
 			var/new_insersion = input(usr,"Enter new insertion (0-100)%","Insertion control",rod.insertion * 100) as num
-			rod.insertion = between(0, new_insersion / 100, 1)
+			rod.insertion = clamp( new_insersion / 100, 0,  1)
 
 	if(href_list["cutoff_point"])
 		var/new_cutoff = input(usr,"Enter new cutoff point in Kelvin","Cutoff point",cutoff_temp) as num
-		cutoff_temp = between(0, new_cutoff, max_temp)
+		cutoff_temp = clamp( new_cutoff, 0,  max_temp)
 		if(cutoff_temp == 0)
 			message_admins("[key_name(usr)] switched off auto shutdown on [src]",0,1)
 			log_game("[src] auto shutdown was switched off by [key_name(usr)]")
@@ -224,11 +224,10 @@
 			user.visible_message("[user.name] carefully starts to load \the [W] into to \the [src].", \
 				"You carefully start loading \the [W] into to \the [src].", \
 				"You hear a metallic rattling.")
-			if(do_after(user, 40))
-				user.drop_from_inventory(rod)
-				rod.loc = src
+			if(do_after(user, 20))
+				if(!user.attempt_insert_item_for_installation(rod, src))
+					return
 				rods += rod
-
 				rod.insertion = 0
 		return
 
@@ -254,11 +253,11 @@
 			to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task.</span>")
 			return
 		repairing = 1
-		playsound(src.loc, WT.usesound, 50, 1)
+		playsound(src.loc, WT.tool_sound, 50, 1)
 		user.visible_message("<span class='warning'>\The [user.name] begins repairing \the [src].</span>", \
 			"<span class='notice'>You start repairing \the [src].</span>")
-		if(do_after(user, 20 * WT.toolspeed, target = src) && WT.isOn())
-			health = between(1, health + 10, max_health)
+		if(do_after(user, 20 * WT.tool_speed, target = src) && WT.isOn())
+			health = clamp( health + 10, 1,  max_health)
 		repairing = 0
 		return
 
@@ -269,8 +268,8 @@
 		to_chat(user, "<span class='warning'>You cannot unwrench \the [src], while it contains fuel rods.</span>")
 		return 1
 
-	playsound(src, W.usesound, 75, 1)
-	if(!anchored || do_after(user, 40 * W.toolspeed))
+	playsound(src, W.tool_sound, 75, 1)
+	if(!anchored || do_after(user, 40 * W.tool_speed))
 		anchor()
 		user.visible_message("\The [user.name] [anchored ? "secures" : "unsecures"] the bolts holding \the [src.name] to the floor.", \
 				"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
@@ -281,12 +280,12 @@
 	var/our_heatcap = heat_capacity()
 	var/share_heatcap = sharer.heat_capacity()
 
-	if((abs(temperature-sharer.temperature)>MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER) && our_heatcap + share_heatcap)
+	if((abs(temperature-sharer.temperature)>MINIMUM_MEANINGFUL_TEMPERATURE_DELTA) && our_heatcap + share_heatcap)
 		var/new_temperature = ((temperature * our_heatcap) + (sharer.temperature * share_heatcap)) / (our_heatcap + share_heatcap)
 		temperature += (new_temperature - temperature)
-		temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+		temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 		sharer.temperature += (new_temperature - sharer.temperature)
-		sharer.temperature = between(0, sharer.temperature, REACTOR_TEMPERATURE_CUTOFF)
+		sharer.temperature = clamp( sharer.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	env.merge(sharer)
 
@@ -309,7 +308,7 @@
 		return
 	var/new_temperature = total_energy / total_heatcap
 	temperature += (new_temperature - temperature) * gasefficiency // Add efficiency here, since there's no gas.remove for non-gas objects.
-	temperature = between(0, temperature, REACTOR_TEMPERATURE_CUTOFF)
+	temperature = clamp( temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 
 	for(var/i=1,i<=pipes.len,i++)
 		var/obj/machinery/atmospherics/pipe/pipe = pipes[i]
@@ -319,10 +318,10 @@
 				var/datum/gas_mixture/removed = env.remove(gasefficiency * env.total_moles)
 				if(!isnull(removed))
 					removed.temperature += (new_temperature - removed.temperature)
-					removed.temperature = between(0, removed.temperature, REACTOR_TEMPERATURE_CUTOFF)
+					removed.temperature = clamp( removed.temperature, 0,  REACTOR_TEMPERATURE_CUTOFF)
 				env.merge(removed)
 
-/obj/machinery/power/fission/proc/add_thermal_energy(var/thermal_energy)
+/obj/machinery/power/fission/adjust_thermal_energy(var/thermal_energy)
 	if(mass < 1)
 		return 0
 
@@ -425,7 +424,7 @@
 		if(announce)
 			var/sound = sound('sound/effects/nuclear_meltdown.ogg')
 			if(!off_station)
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					SEND_SOUND(M,sound)
 			spawn(1 SECONDS)
 				radio.autosay("DANGER! FISSION CORE HAS BREACHED!", "Nuclear Monitor")
@@ -437,40 +436,7 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			SSradiation.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
-			for(var/mob/living/mob in living_mob_list)
-				var/turf/T = get_turf(mob)
-				if(T && (L.z == T.z))
-					var/root_distance = sqrt(1 / (get_dist(mob, src) + 1))
-					var/rads = rad_power * root_distance
-					if(mob.loc != T) // Not on turf, ergo, sheltered.
-						rads = rads / 2
-					var/eye_safety = 3 // Don't stun unless they have the correct eye organs.
-					if(iscarbon(mob))
-						var/mob/living/carbon/M = mob
-						eye_safety = M.eyecheck()
-					if(eye_safety < 3) // You've got a welding helmet over sunglasses? Congratulations, you're not blind.
-						mob.Stun(2)
-						mob.Weaken(10)
-						mob.flash_eyes()
-					if(istype(mob, /mob/living/carbon/human))
-						var/mob/living/carbon/human/H = mob
-						if(eye_safety < 2)
-							var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
-							if(istype(E))
-								E.damage += root_distance * 100
-								if(E.damage >= E.min_broken_damage)
-									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
-									H.sdisabilities |= BLIND
-								else if(E.damage >= E.min_bruised_damage)
-									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
-									H.eye_blind = 5
-									H.eye_blurry = 5
-								else if(E.damage > 10)
-									to_chat(H, "<span class='warning'>Your eyes burn.</span>")
-						if(!H.isSynthetic())
-							H.radiation += max(rads / 10, 0) // Not even a radsuit can save you now.
-						H.apply_damage(max((rads / 10) * H.species.radiation_mod, 0), BURN) // Flash burns
+			z_radiation(get_turf(src), null, rad_power * BREACH_RADIATION_MULTIPLIER / RAD_MOB_ACT_COEFFICIENT, RAD_FALLOFF_ZLEVEL_FISSION_MELTDOWN)
 
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)

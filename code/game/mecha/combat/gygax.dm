@@ -1,8 +1,8 @@
 /obj/mecha/combat/gygax
 	desc = "A lightweight, security exosuit. Popular among private and corporate security."
 	name = "Gygax"
-	icon_state = "gygax"
-	initial_icon = "gygax"
+	icon_state = "gygax_adv"
+	initial_icon = "gygax_adv"
 	step_in = 3
 	dir_in = 1 //Facing North.
 	health = 250
@@ -11,7 +11,7 @@
 	damage_absorption = list("brute"=0.75,"fire"=1,"bullet"=0.8,"laser"=0.7,"energy"=0.85,"bomb"=1)
 	max_temperature = 25000
 	infra_luminosity = 6
-	wreckage = /obj/effect/decal/mecha_wreckage/gygax
+	wreckage = /obj/effect/decal/mecha_wreckage/gygax/adv
 	internal_damage_threshold = 35
 	max_equip = 3
 
@@ -50,15 +50,15 @@
 /obj/mecha/combat/gygax/dark
 	desc = "A lightweight exosuit used by Heavy Asset Protection. A significantly upgraded Gygax security mech."
 	name = "Dark Gygax"
-	icon_state = "darkgygax"
-	initial_icon = "darkgygax"
+	icon_state = "darkgygax_adv"
+	initial_icon = "darkgygax_adv"
 	health = 400
 	maxhealth = 400
 	deflect_chance = 25
 	damage_absorption = list("brute"=0.6,"fire"=0.8,"bullet"=0.6,"laser"=0.5,"energy"=0.65,"bomb"=0.8)
 	max_temperature = 45000
 	overload_coeff = 1
-	wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark
+	wreckage = /obj/effect/decal/mecha_wreckage/gygax/dark_adv
 	max_equip = 4
 	step_energy_drain = 5
 	mech_faction = MECH_FACTION_SYNDI
@@ -117,7 +117,7 @@
 
 	var/obj/item/clothing/glasses/hud/health/mech/hud
 
-/obj/mecha/combat/gygax/serenity/Initialize()
+/obj/mecha/combat/gygax/serenity/Initialize(mapload)
 	. = ..()
 	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
 

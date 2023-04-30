@@ -1,9 +1,12 @@
 //Config stuff
-#define SPECOPS_MOVETIME 600	//Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
-#define SPECOPS_STATION_AREATYPE "/area/shuttle/specops/station" //Type of the spec ops shuttle area for station
-#define SPECOPS_DOCK_AREATYPE "/area/shuttle/specops/centcom"	//Type of the spec ops shuttle area for dock
-#define SPECOPS_RETURN_DELAY 600 //Time between the shuttle is capable of moving.
-
+///Time to station is milliseconds. 60 seconds, enough time for everyone to be on the shuttle before it leaves.
+#define SPECOPS_MOVETIME 600
+///Type of the spec ops shuttle area for station
+#define SPECOPS_STATION_AREATYPE "/area/shuttle/specops/station"
+///Type of the spec ops shuttle area for dock
+#define SPECOPS_DOCK_AREATYPE "/area/shuttle/specops/centcom"
+///Time between the shuttle is capable of moving.
+#define SPECOPS_RETURN_DELAY 600
 var/specops_shuttle_moving_to_station = 0
 var/specops_shuttle_moving_to_centcom = 0
 var/specops_shuttle_at_station = 0
@@ -16,7 +19,7 @@ var/specops_shuttle_timeleft = 0
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
 	light_color = "#00ffff"
-	req_access = list(access_cent_specops)
+	req_access = list(ACCESS_CENTCOM_ERT)
 //	req_access = list(ACCESS_CENT_SPECOPS)
 	var/temp = null
 	var/hacked = 0
@@ -74,7 +77,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 
@@ -92,7 +95,7 @@ var/specops_shuttle_timeleft = 0
 
 	specops_shuttle_at_station = 0
 
-	for(var/obj/machinery/computer/specops_shuttle/S in machines)
+	for(var/obj/machinery/computer/specops_shuttle/S in GLOB.machines)
 		S.specops_shuttle_timereset = world.time + SPECOPS_RETURN_DELAY
 
 	qdel(announcer)
@@ -159,10 +162,10 @@ var/specops_shuttle_timeleft = 0
 		sleep(10)
 
 		var/spawn_marauder[] = new()
-		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
+		for(var/obj/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Entry")
 				spawn_marauder.Add(L)
-		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
+		for(var/obj/landmark/L in GLOB.landmarks_list)
 			if(L.name == "Marauder Exit")
 				var/obj/effect/portal/P = new(L.loc)
 				P.invisibility = 101//So it is not seen by anyone.
@@ -223,7 +226,7 @@ var/specops_shuttle_timeleft = 0
 		var/turf/D = locate(T.x, throwy - 1, 1)
 					//var/turf/E = get_step(D, SOUTH)
 		for(var/atom/movable/AM as mob|obj in T)
-			AM.Move(D)
+			AM.abstract_move(D)
 		if(istype(T, /turf/simulated))
 			qdel(T)
 
@@ -233,7 +236,7 @@ var/specops_shuttle_timeleft = 0
 		var/mob/M = locate(/mob) in T
 		to_chat(M, "<span class='notice'>You have arrived to [station_name()]. Commence operation!</span>")
 
-	for(var/obj/machinery/computer/specops_shuttle/S in machines)
+	for(var/obj/machinery/computer/specops_shuttle/S in GLOB.machines)
 		S.specops_shuttle_timereset = world.time + SPECOPS_RETURN_DELAY
 
 	qdel(announcer)
@@ -241,7 +244,7 @@ var/specops_shuttle_timeleft = 0
 /proc/specops_can_move()
 	if(specops_shuttle_moving_to_station || specops_shuttle_moving_to_centcom)
 		return 0
-	for(var/obj/machinery/computer/specops_shuttle/S in machines)
+	for(var/obj/machinery/computer/specops_shuttle/S in GLOB.machines)
 		if(world.timeofday <= S.specops_shuttle_timereset)
 			return 0
 	return 1
@@ -252,7 +255,7 @@ var/specops_shuttle_timeleft = 0
 /obj/machinery/computer/specops_shuttle/emag_act(var/remaining_charges, var/mob/user)
 	to_chat(user, "<span class='notice'>The electronic systems in this console are far too advanced for your primitive hacking peripherals.</span>")
 
-/obj/machinery/computer/specops_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/specops_shuttle/attack_hand(mob/user, list/params)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return

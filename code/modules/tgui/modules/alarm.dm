@@ -1,69 +1,71 @@
-/datum/tgui_module/alarm_monitor
+/datum/tgui_module_old/alarm_monitor
 	name = "Alarm monitor"
 	tgui_id = "StationAlertConsole"
-	var/list_cameras = 0						// Whether or not to list camera references. A future goal would be to merge this with the enginering/security camera console. Currently really only for AI-use.
-	var/list/datum/alarm_handler/alarm_handlers // The particular list of alarm handlers this alarm monitor should present to the user.
+	/// Whether or not to list camera references. A future goal would be to merge this with the enginering/security camera console. Currently really only for AI-use.
+	var/list_cameras = 0
+	/// The particular list of alarm handlers this alarm monitor should present to the user.
+	var/list/datum/alarm_handler/alarm_handlers
 
-/datum/tgui_module/alarm_monitor/New()
+/datum/tgui_module_old/alarm_monitor/New()
 	..()
 	alarm_handlers = list()
 
-/datum/tgui_module/alarm_monitor/all
-/datum/tgui_module/alarm_monitor/all/New()
+/datum/tgui_module_old/alarm_monitor/all
+/datum/tgui_module_old/alarm_monitor/all/New()
 	..()
-	alarm_handlers = SSalarm.all_handlers
+	alarm_handlers = SSalarms.all_handlers
 
 // Subtype for glasses_state
-/datum/tgui_module/alarm_monitor/all/glasses
-/datum/tgui_module/alarm_monitor/all/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+/datum/tgui_module_old/alarm_monitor/all/glasses
+/datum/tgui_module_old/alarm_monitor/all/glasses/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.glasses_state
 
-/datum/tgui_module/alarm_monitor/all/robot
-/datum/tgui_module/alarm_monitor/all/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+/datum/tgui_module_old/alarm_monitor/all/robot
+/datum/tgui_module_old/alarm_monitor/all/robot/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.self_state
 
-/datum/tgui_module/alarm_monitor/engineering
-/datum/tgui_module/alarm_monitor/engineering/New()
+/datum/tgui_module_old/alarm_monitor/engineering
+/datum/tgui_module_old/alarm_monitor/engineering/New()
 	..()
 	alarm_handlers = list(atmosphere_alarm, fire_alarm, power_alarm)
 
 // Subtype for glasses_state
-/datum/tgui_module/alarm_monitor/engineering/glasses
-/datum/tgui_module/alarm_monitor/engineering/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+/datum/tgui_module_old/alarm_monitor/engineering/glasses
+/datum/tgui_module_old/alarm_monitor/engineering/glasses/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.glasses_state
 
 // Subtype for nif_state
-/datum/tgui_module/alarm_monitor/engineering/nif
-/datum/tgui_module/alarm_monitor/engineering/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_state
+/datum/tgui_module_old/alarm_monitor/engineering/nif
+/datum/tgui_module_old/alarm_monitor/engineering/nif/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.nif_state
 
 // Subtype for NTOS
-/datum/tgui_module/alarm_monitor/engineering/ntos
+/datum/tgui_module_old/alarm_monitor/engineering/ntos
 	ntos = TRUE
 
-/datum/tgui_module/alarm_monitor/security
-/datum/tgui_module/alarm_monitor/security/New()
+/datum/tgui_module_old/alarm_monitor/security
+/datum/tgui_module_old/alarm_monitor/security/New()
 	..()
 	alarm_handlers = list(camera_alarm, motion_alarm)
 
 // Subtype for glasses_state
-/datum/tgui_module/alarm_monitor/security/glasses
-/datum/tgui_module/alarm_monitor/security/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+/datum/tgui_module_old/alarm_monitor/security/glasses
+/datum/tgui_module_old/alarm_monitor/security/glasses/ui_state(mob/user, datum/tgui_module/module)
+	return GLOB.glasses_state
 
 // Subtype for NTOS
-/datum/tgui_module/alarm_monitor/security/ntos
+/datum/tgui_module_old/alarm_monitor/security/ntos
 	ntos = TRUE
 
-/datum/tgui_module/alarm_monitor/proc/register_alarm(var/object, var/procName)
+/datum/tgui_module_old/alarm_monitor/proc/register_alarm(var/object, var/procName)
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		AH.register_alarm(object, procName)
 
-/datum/tgui_module/alarm_monitor/proc/unregister_alarm(var/object)
+/datum/tgui_module_old/alarm_monitor/proc/unregister_alarm(var/object)
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		AH.unregister_alarm(object)
 
-/datum/tgui_module/alarm_monitor/proc/all_alarms()
+/datum/tgui_module_old/alarm_monitor/proc/all_alarms()
 	var/z = get_z(ui_host())
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
@@ -71,7 +73,7 @@
 
 	return all_alarms
 
-/datum/tgui_module/alarm_monitor/proc/major_alarms()
+/datum/tgui_module_old/alarm_monitor/proc/major_alarms()
 	var/z = get_z(ui_host())
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
@@ -80,15 +82,14 @@
 	return all_alarms
 
 // Modified version of above proc that uses slightly less resources, returns 1 if there is a major alarm, 0 otherwise.
-/datum/tgui_module/alarm_monitor/proc/has_major_alarms()
+/datum/tgui_module_old/alarm_monitor/proc/has_major_alarms()
 	var/z = get_z(ui_host())
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		if(AH.has_major_alarms(z))
-			return 1
+			return TRUE
+	return FALSE
 
-	return 0
-
-/datum/tgui_module/alarm_monitor/proc/minor_alarms()
+/datum/tgui_module_old/alarm_monitor/proc/minor_alarms()
 	var/z = get_z(ui_host())
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
@@ -96,7 +97,7 @@
 
 	return all_alarms
 
-/datum/tgui_module/alarm_monitor/ui_act(action, params)
+/datum/tgui_module_old/alarm_monitor/ui_act(action, params)
 	if(..())
 		return TRUE
 
@@ -107,14 +108,14 @@
 
 	switch(action)
 		if("switchTo")
-			var/obj/machinery/camera/C = locate(params["camera"]) in cameranet.cameras
+			var/obj/machinery/camera/C = locate(params["camera"]) in GLOB.cameranet.cameras
 			if(!C)
 				return
 
 			usr.switch_to_camera(C)
 			return 1
 
-/datum/tgui_module/alarm_monitor/ui_data(mob/user)
+/datum/tgui_module_old/alarm_monitor/ui_data(mob/user)
 	var/list/data = list()
 
 	var/categories[0]
@@ -127,7 +128,7 @@
 
 			if(isAI(user))
 				for(var/obj/machinery/camera/C in A.cameras())
-					cameras[++cameras.len] = C.tgui_structure()
+					cameras[++cameras.len] = C.ui_structure()
 			for(var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name

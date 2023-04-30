@@ -2,8 +2,6 @@
 	config_legacy = new /datum/configuration_legacy()
 	config_legacy.load("config/legacy/config.txt")
 	config_legacy.load("config/legacy/game_options.txt","game_options")
-	config_legacy.loadsql("config/legacy/dbconfig.txt")
-	config_legacy.loadforumsql("config/legacy/forumdbconfig.txt")
 
 /datum/configuration_legacy
 	var/server_name = null				// server name (for world name / status)
@@ -30,8 +28,6 @@
 	var/log_runtime = 0					// logs world.log to a file
 	var/log_world_output = 0			// log world.log << messages
 	var/log_topic = TRUE
-	var/sql_enabled = 0					// for sql switching
-	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
 	var/ert_admin_call_only = 0
 	var/allow_vote_mode = 0				// allow votes to change mode
@@ -52,7 +48,6 @@
 	var/objectives_disabled = 0 			//if objectives are disabled or not
 	var/protect_roles_from_antagonist = 0// If security and such can be traitor/cult/other
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
-	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
@@ -134,20 +129,6 @@
 	var/rulesurl
 	var/mapurl
 
-	//Alert level description
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity in the local area. Security staff may have weapons visible. Privacy laws are still in effect."
-	var/alert_desc_blue_downto = "Code Blue procedures are now in effect: The immediate threat has passed. Security staff may not have weapons drawn, but may still have weapons visible. Privacy laws are once again fully enforced."
-	var/alert_desc_yellow_upto = "The station has confirmed hostile activity in the local area. Security staff may have weapons visible. Random searches are permitted."
-	var/alert_desc_yellow_downto = "Code Yellow procedures are now in effect: The immediate security threat has been downgraded. Security staff may not have weapons drawn, but may still have weapons visible. Random searches are still permitted."
-	var/alert_desc_violet_upto = "A major medical emergency has been reported. Medical personnel are required to report to the Medbay immediately. Non-medical personnel are required to obey all relevant instructions from medical staff."
-	var/alert_desc_violet_downto = "Code Violet procedures are now in effect: Medical personnel are required to report to the Medbay immediately. Non-medical personnel are required to obey all relevant instructions from medical staff."
-	var/alert_desc_orange_upto = "A major engineering emergency has been reported. Engineering personnel are required to report to the affected area immediately. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff."
-	var/alert_desc_orange_downto = "Code Orange procedures are now in effect: Engineering personnel are required to report to the affected area immediately. Non-engineering personnel are required to evacuate any affected areas and obey relevant instructions from engineering staff."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "Code Red procedures are now in effect: The station is no longer under threat of imminent destruction, but there is still an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
-
 	var/forbid_singulo_possession = 0
 
 	//game_options.txt configs
@@ -158,7 +139,6 @@
 
 	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 1
-	var/organs_decay
 	var/default_brain_health = 400
 	var/allow_headgibs = FALSE
 
@@ -268,6 +248,11 @@
 
 	var/list/gamemode_cache = list()
 
+	var/lock_client_view_x
+	var/lock_client_view_y
+	var/max_client_view_x
+	var/max_client_view_y
+
 
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)
@@ -289,7 +274,7 @@
 	src.votable_modes += "secret"
 
 /datum/configuration_legacy/proc/load(filename, type = "config") //the type can also be game_options, in which case it uses a different switch. not making it separate to not copypaste code - Urist
-	var/list/Lines = file2list(filename)
+	var/list/Lines = world.file2list(filename)
 
 	for(var/t in Lines)
 		if(!t)	continue
@@ -348,9 +333,6 @@
 				if ("log_access")
 					config_legacy.log_access = 1
 
-				if ("sql_enabled")
-					config_legacy.sql_enabled = 1
-
 				if ("log_say")
 					config_legacy.log_say = 1
 
@@ -404,9 +386,6 @@
 
 				if ("no_click_cooldown")
 					config_legacy.no_click_cooldown = 1
-
-				if("allow_admin_ooccolor")
-					config_legacy.allow_admin_ooccolor = 1
 
 				if ("allow_vote_restart")
 					config_legacy.allow_vote_restart = 1
@@ -536,9 +515,6 @@
 				if ("feature_object_spell_system")
 					config_legacy.feature_object_spell_system = 1
 
-				if ("allow_metadata")
-					config_legacy.allow_Metadata = 1
-
 				if ("traitor_scaling")
 					config_legacy.traitor_scaling = 1
 
@@ -620,24 +596,6 @@
 
 				if("load_jobs_from_txt")
 					load_jobs_from_txt = 1
-
-				if("alert_red_upto")
-					config_legacy.alert_desc_red_upto = value
-
-				if("alert_red_downto")
-					config_legacy.alert_desc_red_downto = value
-
-				if("alert_blue_downto")
-					config_legacy.alert_desc_blue_downto = value
-
-				if("alert_blue_upto")
-					config_legacy.alert_desc_blue_upto = value
-
-				if("alert_green")
-					config_legacy.alert_desc_green = value
-
-				if("alert_delta")
-					config_legacy.alert_desc_delta = value
 
 				if("forbid_singulo_possession")
 					forbid_singulo_possession = 1
@@ -892,8 +850,6 @@
 					config_legacy.organ_regeneration_multiplier = value / 100
 				if("organ_damage_spillover_multiplier")
 					config_legacy.organ_damage_spillover_multiplier = value / 100
-				if("organs_can_decay")
-					config_legacy.organs_decay = 1
 				if("default_brain_health")
 					config_legacy.default_brain_health = text2num(value)
 					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
@@ -931,94 +887,6 @@
 
 				else
 					log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				sqladdress = value
-			if ("port")
-				sqlport = value
-			if ("database")
-				sqldb = value
-			if ("login")
-				sqllogin = value
-			if ("password")
-				sqlpass = value
-			if ("feedback_database")
-				sqlfdbkdb = value
-			if ("feedback_login")
-				sqlfdbklogin = value
-			if ("feedback_password")
-				sqlfdbkpass = value
-			if ("enable_stat_tracking")
-				sqllogging = 1
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
-
-/datum/configuration_legacy/proc/loadforumsql(filename)  // -- TLE
-	var/list/Lines = file2list(filename)
-	for(var/t in Lines)
-		if(!t)	continue
-
-		t = trim(t)
-		if (length(t) == 0)
-			continue
-		else if (copytext(t, 1, 2) == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/name = null
-		var/value = null
-
-		if (pos)
-			name = lowertext(copytext(t, 1, pos))
-			value = copytext(t, pos + 1)
-		else
-			name = lowertext(t)
-
-		if (!name)
-			continue
-
-		switch (name)
-			if ("address")
-				forumsqladdress = value
-			if ("port")
-				forumsqlport = value
-			if ("database")
-				forumsqldb = value
-			if ("login")
-				forumsqllogin = value
-			if ("password")
-				forumsqlpass = value
-			if ("activatedgroup")
-				forum_activated_group = value
-			if ("authenticatedgroup")
-				forum_authenticated_group = value
-			else
-				log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up

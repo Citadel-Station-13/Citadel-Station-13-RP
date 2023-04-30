@@ -6,10 +6,10 @@
 
 #define MODE_NONE			0
 #define MODE_SERVER			1
-#define MODE_CLIENT			2	//The one who initiated the docking, and who can initiate the undocking. The server cannot initiate undocking, and is the one responsible for deciding to accept a docking request and signals when docking and undocking is complete. (Think server == station, client == shuttle)
-
-#define MESSAGE_RESEND_TIME 5	//how long (in seconds) do we wait before resending a message
-
+///The one who initiated the docking, and who can initiate the undocking. The server cannot initiate undocking, and is the one responsible for deciding to accept a docking request and signals when docking and undocking is complete. (Think server == station, client == shuttle)
+#define MODE_CLIENT			2
+///how long (in seconds) do we wait before resending a message
+#define MESSAGE_RESEND_TIME 5
 /*
 	*** STATE TABLE ***
 
@@ -117,7 +117,7 @@
 				if(docking_codes)
 					var/code = signal.data["code"]
 					if(code != docking_codes)
-						log_debug("Controller [id_tag] got request_dock but code:[code] != docking_codes:[docking_codes]")
+						log_debug(SPAN_DEBUG("Controller [id_tag] got request_dock but code:[code] != docking_codes:[docking_codes]"))
 						return
 
 				control_mode = MODE_SERVER
@@ -259,7 +259,7 @@
 	received_confirm = 0
 
 /datum/computer/file/embedded_program/docking/proc/force_undock()
-	//to_world("[id_tag]: forcing undock")
+	//TO_WORLD("[id_tag]: forcing undock")
 	if (tag_target)
 		send_docking_command(tag_target, "dock_error")
 	reset()

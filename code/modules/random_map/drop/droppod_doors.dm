@@ -23,7 +23,7 @@
 /obj/structure/droppod_door/attack_generic(var/mob/user)
 	attack_hand(user)
 
-/obj/structure/droppod_door/attack_hand(var/mob/user)
+/obj/structure/droppod_door/attack_hand(mob/user, list/params)
 	if(deploying) return
 	to_chat(user, "<span class='danger'>You prime the explosive bolts. Better get clear!</span>")
 	sleep(30)
@@ -53,19 +53,19 @@
 
 	// Destroy turf contents.
 	for(var/obj/O in origin)
-		if(!O.simulated)
+		if((O.atom_flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 	for(var/obj/O in T)
-		if(!O.simulated)
+		if((O.atom_flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 
 	// Hurl the mobs away.
 	for(var/mob/living/M in T)
-		M.throw_at(get_edge_target_turf(T,src.dir),rand(0,3),50)
+		M.throw_at_old(get_edge_target_turf(T,src.dir),rand(0,3),50)
 	for(var/mob/living/M in origin)
-		M.throw_at(get_edge_target_turf(origin,src.dir),rand(0,3),50)
+		M.throw_at_old(get_edge_target_turf(origin,src.dir),rand(0,3),50)
 
 	// Create a decorative ramp bottom and flatten out our current ramp.
 	density = 0

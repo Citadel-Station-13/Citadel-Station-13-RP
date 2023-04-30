@@ -54,7 +54,7 @@
 		..()
 
 /mob/living/simple_mob/animal/passive/dog/regenerate_icons()
-	overlays = list()
+	cut_overlays()
 
 	if(inventory_head)
 		var/head_icon_state = inventory_head.icon_state
@@ -63,7 +63,7 @@
 
 		var/icon/head_icon = image('icons/mob/corgi_head.dmi',head_icon_state)
 		if(head_icon)
-			overlays += head_icon
+			add_overlay(head_icon)
 
 	if(inventory_back)
 		var/back_icon_state = inventory_back.icon_state
@@ -72,7 +72,7 @@
 
 		var/icon/back_icon = image('icons/mob/corgi_back.dmi',back_icon_state)
 		if(back_icon)
-			overlays += back_icon
+			add_overlay(back_icon)
 
 	return
 
@@ -140,8 +140,10 @@
 	var/obj/movement_target
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
@@ -196,11 +198,12 @@
 	desc = "This is the HoP's trusty corgi. He does the best he can."
 	var/turns_since_scan = 0
 	var/obj/movement_target
-	makes_dirt = FALSE	//VOREStation edit: no more dirt
+	makes_dirt = FALSE
 	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 
@@ -271,8 +274,10 @@
 		return
 	..()
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	if(!stat && !resting && !buckled)
 		turns_since_scan++

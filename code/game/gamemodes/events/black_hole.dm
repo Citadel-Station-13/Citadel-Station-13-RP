@@ -23,11 +23,9 @@
 		qdel(M)
 	for(var/obj/O in orange(1,src))
 		qdel(O)
-	var/base_turf = get_base_turf_by_area(src)
-	for(var/turf/simulated/ST in orange(1,src))
-		if(ST.type == base_turf)
-			continue
-		ST.ChangeTurf(base_turf)
+
+	for(var/turf/simulated/ST in orange(1, src))
+		ST.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 	switch(++process_step)
 		if(1)
@@ -73,11 +71,11 @@
 	var/turf/T = locate(x, y, z)
 	if(isnull(T))	return
 
-	//Pulling and/or ex_act-ing movable atoms in that turf
+	//Pulling and/or legacy_ex_act-ing movable atoms in that turf
 	if( prob(pull_chance) )
 		for(var/obj/O in T.contents)
 			if(O.anchored)
-				O.ex_act(ex_act_force)
+				LEGACY_EX_ACT(O, ex_act_force, null)
 			else
 				step_towards(O,src)
 		for(var/mob/living/M in T.contents)
@@ -86,6 +84,4 @@
 	//Destroying the turf
 	if( T && istype(T,/turf/simulated) && prob(turf_removal_chance) )
 		var/turf/simulated/ST = T
-		var/base_turf = get_base_turf_by_area(src)
-		if(ST.type != base_turf)
-			ST.ChangeTurf(base_turf)
+		ST.ScrapeAway()

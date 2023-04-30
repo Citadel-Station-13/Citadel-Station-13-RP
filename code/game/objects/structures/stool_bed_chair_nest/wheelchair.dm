@@ -2,8 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 	var/last_active_move = 0
 	var/driving = 0
@@ -16,9 +15,9 @@
 
 /obj/structure/bed/chair/wheelchair/setDir()
 	..()
-	overlays = null
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
-	overlays += O
+	add_overlay(O)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A
@@ -30,19 +29,18 @@
 	..()
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
-	// Redundant check?
-
 	if(world.time < last_active_move + move_delay)
 		return
+	last_active_move = world.time
 
-	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_HOLD))
 		if(user==pulling_along)
 			pulling_along = null
 			user.pulledby = null
 			to_chat(user, "<span class='warning'>You lost your grip!</span>")
 		return
 	if(has_buckled_mobs() && pulling_along && (user in buckled_mobs))
-		if(pulling_along.stat || pulling_along.stunned || pulling_along.weakened || pulling_along.paralysis || pulling_along.lying || pulling_along.restrained())
+		if(!CHECK_ALL_MOBILITY(pulling_along, MOBILITY_CAN_MOVE | MOBILITY_IS_STANDING))
 			pulling_along.pulledby = null
 			pulling_along = null
 	if((user.pulling != src) && (user == pulling_along))
@@ -64,8 +62,6 @@
 			to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
 			return
 
- 	last_active_move = world.time
-
 	// Let's roll
 	driving = 1
 	var/turf/T = null
@@ -85,7 +81,8 @@
 	step(src, direction)
 	if(has_buckled_mobs()) // Make sure it stays beneath the occupant
 		var/mob/living/L = buckled_mobs[1]
-		Move(L.loc)
+		if(loc != L.loc)
+			forceMove(L.loc)
 	setDir(direction)
 	if(pulling_along) // Driver
 		if(pulling_along.loc == src.loc) // We moved onto the wheelchair? Revert!
@@ -100,41 +97,10 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/Move()
-	..()
-	if(world.time < last_active_move + move_delay)
-		return
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/occupant = A
-			if(!driving)
-				occupant.buckled = null
-				occupant.Move(src.loc)
-				occupant.buckled = src
-				if (occupant && (src.loc != occupant.loc))
-					if (propelled)
-						for (var/mob/O in src.loc)
-							if (O != occupant)
-								Bump(O)
-					else
-						unbuckle_mob()
-				if (pulling_along && (get_dist(src, pulling_along) > 1))
-					pulling_along.pulledby = null
-					to_chat(pulling_along, "<span class='warning'>You lost your grip!</span>")
-					pulling_along = null
-			else
-				if (occupant && (src.loc != occupant.loc))
-					src.forceMove(occupant.loc) // Failsafe to make sure the wheelchair stays beneath the occupant after driving
-		last_active_move = world.time
-
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
+/obj/structure/bed/chair/wheelchair/attack_hand(mob/user, list/params)
 	if (pulling_along)
 		MouseDrop(usr)
-	else
-		if(has_buckled_mobs())
-			for(var/A in buckled_mobs)
-				user_unbuckle_mob(A, user)
-	return
+	return ..()
 
 /obj/structure/bed/chair/wheelchair/CtrlClick(var/mob/user)
 	if(in_range(src, user))
@@ -163,14 +129,14 @@
 		var/mob/living/occupant = unbuckle_mob()
 
 		if (pulling_along && (pulling_along.a_intent == INTENT_HARM))
-			occupant.throw_at(A, 3, 3, pulling_along)
+			occupant.throw_at_old(A, 3, 3, pulling_along)
 		else if (propelled)
-			occupant.throw_at(A, 3, propelled)
+			occupant.throw_at_old(A, 3, propelled)
 
 		var/def_zone = ran_zone()
 		var/blocked = occupant.run_armor_check(def_zone, "melee")
 		var/soaked = occupant.get_armor_soak(def_zone, "melee")
-		occupant.throw_at(A, 3, propelled)
+		occupant.throw_at_old(A, 3, propelled)
 		occupant.apply_effect(6, STUN, blocked)
 		occupant.apply_effect(6, WEAKEN, blocked)
 		occupant.apply_effect(6, STUTTER, blocked)
@@ -193,7 +159,7 @@
 			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
 
 /obj/structure/bed/chair/wheelchair/proc/create_track()
-	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
+	var/obj/effect/debris/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
 		B.setDir(newdir)
@@ -206,14 +172,19 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(issilicon(M))	// No abusing wheelchairs.
-		return
-	if(M == pulling_along)
-		pulling_along = null
-		usr.pulledby = null
+/obj/structure/bed/chair/wheelchair/can_buckle_mob(mob/M, flags, mob/user, semantic)
+	if(issilicon(M))
+		return FALSE
 	return ..()
 
+/obj/structure/bed/chair/wheelchair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	if(M == pulling_along)
+		pulling_along = null
+		if(M.pulledby == src)
+			M.pulledby = null
+
+/*
 /obj/item/wheelchair
 	name = "wheelchair"
 	desc = "A folded wheelchair that can be carried around."
@@ -225,13 +196,16 @@
 	var/unfolded_type = /obj/structure/bed/chair/wheelchair
 
 /obj/item/wheelchair/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 		var/obj/structure/bed/chair/wheelchair/R = new /obj/structure/bed/chair/wheelchair(user.loc)
 		R.add_fingerprint(user)
 		R.name = src.name
 		R.color = src.color
 		qdel(src)
 
-/obj/structure/bed/chair/wheelchair/MouseDrop(over_object, src_location, over_location)
+/obj/structure/bed/chair/wheelchair/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return
@@ -243,6 +217,7 @@
 		spawn(0)
 			qdel(src)
 		return
+*/
 
 //Dolly Below
 
@@ -253,9 +228,9 @@
 
 /obj/structure/bed/chair/wheelchair/dolly/setDir()
 	..()
-	overlays = null
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
-	overlays += O
+	add_overlay(O)
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
 			var/mob/living/L = A

@@ -19,7 +19,7 @@
 
 	var/lg_id = "change_me"
 
-/obj/machinery/computer/looking_glass/Initialize()
+/obj/machinery/computer/looking_glass/Initialize(mapload)
 	. = ..()
 	for(var/area/looking_glass/lga in world)
 		if(lga.lg_id == lg_id)
@@ -52,7 +52,7 @@
 /obj/machinery/computer/looking_glass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/looking_glass/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/looking_glass/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -85,7 +85,7 @@
 
 	return data
 
-/obj/machinery/computer/looking_glass/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/looking_glass/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -157,12 +157,12 @@
 	unload_program()
 	..()
 
-/obj/machinery/computer/looking_glass/ex_act(severity)
+/obj/machinery/computer/looking_glass/legacy_ex_act(severity)
 	unload_program()
 	..()
 
 /obj/machinery/computer/looking_glass/power_change()
-	var/oldstat = stat
+	var/oldstat = machine_stat
 	..()
-	if (stat != oldstat && (stat & NOPOWER))
+	if (machine_stat != oldstat && (machine_stat & NOPOWER))
 		unload_program()

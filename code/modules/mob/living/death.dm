@@ -1,5 +1,5 @@
 /mob/living/death(gibbed)
-	clear_fullscreens()
+	wipe_fullscreens()
 	if(ai_holder)
 		ai_holder.go_sleep()
 

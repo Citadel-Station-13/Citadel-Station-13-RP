@@ -21,14 +21,15 @@
 			. += I.id
 
 /datum/instrument
+	/// Used for categorization subtypes.
+	abstract_type = /datum/instrument
+
 	/// Name of the instrument
 	var/name = "Generic instrument"
 	/// Uniquely identifies this instrument so runtime changes are possible as opposed to paths. If this is unset, things will use path instead.
 	var/id
 	/// Category
 	var/category = "Unsorted"
-	/// Used for categorization subtypes
-	var/abstract_type = /datum/instrument
 	/// Write here however many samples, follow this syntax: "%note num%"='%sample file%' eg. "27"='synthesizer/e2.ogg'. Key must never be lower than 0 and higher than 127
 	var/list/real_samples
 	/// assoc list key = /datum/instrument_key. do not fill this yourself!
@@ -55,14 +56,14 @@
 		id = "[type]"
 
 /datum/instrument/proc/Initialize()
-	if(CHECK_BITFIELD(instrument_flags, INSTRUMENT_LEGACY | INSTRUMENT_DO_NOT_AUTOSAMPLE))
+	if(instrument_flags & (INSTRUMENT_LEGACY | INSTRUMENT_DO_NOT_AUTOSAMPLE))
 		return
 	calculate_samples()
 
 /datum/instrument/proc/ready()
-	if(CHECK_BITFIELD(instrument_flags, INSTRUMENT_LEGACY))
+	if(instrument_flags & INSTRUMENT_LEGACY)
 		return legacy_instrument_path && legacy_instrument_ext
-	else if(CHECK_BITFIELD(instrument_flags, INSTRUMENT_DO_NOT_AUTOSAMPLE))
+	else if(instrument_flags & INSTRUMENT_DO_NOT_AUTOSAMPLE)
 		return length(samples)
 	return (length(samples) >= 128)
 
@@ -83,7 +84,7 @@
 	samples = list()
 	for(var/key in real_samples)
 		real_keys += text2num(key)
-	sortTim(real_keys, /proc/cmp_numeric_asc, associative = FALSE)
+	tim_sort(real_keys, /proc/cmp_numeric_asc, associative = FALSE)
 
 	for(var/i in 1 to (length(real_keys) - 1))
 		var/from_key = real_keys[i]

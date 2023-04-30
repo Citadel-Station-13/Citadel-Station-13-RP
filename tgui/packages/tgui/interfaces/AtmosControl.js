@@ -1,7 +1,7 @@
 import { sortBy } from 'common/collections';
 import { Window } from '../layouts';
 import { Fragment } from 'inferno';
-import { Button, Box, NumberInput, Tabs, Icon, Section, NanoMap } from '../components';
+import { Button, Box, Tabs, Icon, Section, NanoMap } from '../components';
 import { useBackend, useLocalState } from '../backend';
 import { createLogger } from '../logging';
 const logger = createLogger("fuck");
@@ -84,12 +84,12 @@ export const AtmosControlContent = (props, context) => {
           onClick={() => setTabIndex(0)}>
           <Icon name="table" /> Alarm View
         </Tabs.Tab>
-        {/* <Tabs.Tab
+        <Tabs.Tab
           key="MapView"
           selected={1 === tabIndex}
           onClick={() => setTabIndex(1)}>
           <Icon name="map-marked-alt" /> Map View
-        </Tabs.Tab> */}
+        </Tabs.Tab>
       </Tabs>
       <Box m={2}>
         {body}

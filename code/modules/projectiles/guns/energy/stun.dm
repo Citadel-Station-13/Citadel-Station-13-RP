@@ -6,12 +6,12 @@
 
 	fire_delay = 4
 
-	projectile_type = /obj/item/projectile/energy/electrode
+	projectile_type = /obj/projectile/energy/electrode
 	modifystate = "taser"
 
 	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
-		list(mode_name="disable", projectile_type=/obj/item/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
+		list(mode_name="stun", projectile_type=/obj/projectile/energy/electrode, modifystate="taser", charge_cost = 240),
+		list(mode_name="disable", projectile_type=/obj/projectile/beam/disabler/weak, modifystate="taserblue", charge_cost = 160),
 		)
 
 /obj/item/gun/energy/taser/mounted
@@ -23,7 +23,6 @@
 	self_recharge = 1
 	use_external_power = 0
 	use_organic_power = TRUE
-	canremove = FALSE
 
 /obj/item/gun/energy/taser/mounted/cyborg
 	name = "taser gun"
@@ -33,7 +32,7 @@
 /obj/item/gun/energy/taser/mounted/cyborg/swarm
 	name = "disabler"
 	desc = "An archaic device which attacks the target's nervous-system or control circuits."
-	projectile_type = /obj/item/projectile/beam/stun/disabler
+	projectile_type = /obj/projectile/beam/stun/disabler
 	charge_cost = 200
 	recharge_time = 0.5 SECONDS
 
@@ -43,7 +42,7 @@
 	icon_state = "stunrevolver"
 	item_state = "stunrevolver"
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	projectile_type = /obj/item/projectile/energy/electrode/strong
+	projectile_type = /obj/projectile/energy/electrode/strong
 	charge_cost = 400
 
 /obj/item/gun/energy/crossbow
@@ -53,10 +52,10 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "crossbow"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MAGNET = 2, TECH_ILLEGAL = 5)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	silenced = 1
-	projectile_type = /obj/item/projectile/energy/bolt
+	projectile_type = /obj/projectile/energy/bolt
 	charge_cost = 480
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -64,16 +63,16 @@
 
 /obj/item/gun/energy/crossbow/ninja
 	name = "energy dart thrower"
-	projectile_type = /obj/item/projectile/energy/dart
+	projectile_type = /obj/projectile/energy/dart
 
 /obj/item/gun/energy/crossbow/largecrossbow
 	name = "energy crossbow"
 	desc = "A weapon favored by mercenary infiltration teams."
 	w_class = ITEMSIZE_LARGE
-	force = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 200000)
+	damage_force = 10
+	matter = list(MAT_STEEL = 200000)
 	slot_flags = SLOT_BELT
-	projectile_type = /obj/item/projectile/energy/bolt/large
+	projectile_type = /obj/projectile/energy/bolt/large
 
 /obj/item/gun/energy/plasmastun
 	name = "plasma pulse projector"
@@ -83,7 +82,7 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_POWER = 3)
 	fire_delay = 20
 	charge_cost = 600
-	projectile_type = /obj/item/projectile/energy/plasmastun
+	projectile_type = /obj/projectile/energy/plasmastun
 	one_handed_penalty = 5
 
 /obj/item/gun/energy/civtas
@@ -92,7 +91,7 @@
 	icon_state = "civtas"
 	item_state = "concealed"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 3, TECH_POWER = 3)
-	projectile_type = /obj/item/projectile/energy/electrode/stunshot
+	projectile_type = /obj/projectile/energy/electrode/stunshot
 	fire_delay = 4
 	charge_cost = 1500
 	cell_type = /obj/item/cell/device/weapon

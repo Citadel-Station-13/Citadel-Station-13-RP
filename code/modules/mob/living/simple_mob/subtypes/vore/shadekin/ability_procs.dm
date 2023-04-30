@@ -6,25 +6,24 @@
 		return FALSE
 
 	forceMove(T)
-	var/original_canmove = canmove
-	SetStunned(0)
-	SetWeakened(0)
+	set_stunned(0)
+	set_paralyzed(0)
 	if(buckled)
 		buckled.unbuckle_mob()
 	if(pulledby)
 		pulledby.stop_pulling()
 	stop_pulling()
-	canmove = FALSE
 
 	//Shifting in
 	if(ability_flags & AB_PHASE_SHIFTED)
 		ability_flags &= ~AB_PHASE_SHIFTED
+		mouse_opacity = 2
 		name = real_name
 		for(var/belly in vore_organs)
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		overlays.Cut()
+		cut_overlays()
 		alpha = initial(alpha)
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)
@@ -36,7 +35,6 @@
 		flick("tp_in",src)
 		custom_emote(1,"phases in!")
 		sleep(5) //The duration of the TP animation
-		canmove = original_canmove
 
 		//Potential phase-in vore
 		if(can_be_drop_pred) //Toggleable in vore panel
@@ -57,7 +55,7 @@
 		if(eye_state == PURPLE_EYES)
 			destroy_lights = 25
 
-		for(var/obj/machinery/light/L in machines)
+		for(var/obj/machinery/light/L in GLOB.machines)
 			if(L.z != z || get_dist(src,L) > 10)
 				continue
 
@@ -70,6 +68,7 @@
 	//Shifting out
 	else
 		ability_flags |= AB_PHASE_SHIFTED
+		mouse_opacity = 0
 		custom_emote(1,"phases out!")
 		real_name = name
 		name = "Something"
@@ -78,7 +77,7 @@
 			var/obj/belly/B = belly
 			B.escapable = FALSE
 
-		overlays.Cut()
+		cut_overlays()
 		flick("tp_out",src)
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO
@@ -86,7 +85,6 @@
 		update_icon()
 		alpha = 127
 
-		canmove = original_canmove
 		incorporeal_move = TRUE
 		density = FALSE
 		force_max_speed = TRUE

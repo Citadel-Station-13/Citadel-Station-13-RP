@@ -7,13 +7,12 @@ export const TankDispenser = (props, context) => {
   return (
     <Window
       width={275}
-      height={103}
-      resizable>
+      height={103}>
       <Window.Content>
         <Section>
           <LabeledList>
             <LabeledList.Item
-              label="Phoron"
+              label="Plasma"
               buttons={(
                 <Button
                   icon={data.plasma ? 'square' : 'square-o'}

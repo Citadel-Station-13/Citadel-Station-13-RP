@@ -19,7 +19,7 @@
 /obj/machinery/door/airlock/alien/blue/public // Entry to UFO.
 	req_one_access = list()
 	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
-	hackProof = TRUE //VOREStation Edit - No borgos
+	hackProof = TRUE // No borgs
 
 /obj/machinery/door/airlock/glass_security/polarized
 	name = "Electrochromic Security Airlock"

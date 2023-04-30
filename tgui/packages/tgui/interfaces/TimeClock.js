@@ -1,7 +1,7 @@
 import { toFixed } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, NoticeBox } from "../components";
+import { Box, Button, Flex, LabeledList, Section, NoticeBox } from "../components";
 import { Window } from "../layouts";
 import { RankIcon } from "./common/RankIcon";
 
@@ -23,7 +23,8 @@ export const TimeClock = (props, context) => {
       <Window.Content scrollable>
         <Section title="OOC">
           <NoticeBox>
-            OOC Note: PTO acquired is account-wide and shared across all characters.
+            OOC Note:
+            PTO acquired is account-wide and shared across all characters.
             Info listed below is not IC information.
           </NoticeBox>
           <Section level={2} title={"Time Off Balance for " + user_name}>
@@ -112,11 +113,13 @@ export const TimeClock = (props, context) => {
                 </Button>
               ) || (
                 <Box color="bad">
-                  Warning: You do not have enough accrued time off to go off-duty.
+                  Warning:
+                  You do not have enough accrued time off to go off-duty.
                 </Box>
               )
             ) || (
-              Object.keys(job_choices).length && Object.keys(job_choices).map(job => {
+              Object.keys(job_choices).length
+              && Object.keys(job_choices).map(job => {
                 let alt_titles = job_choices[job];
 
                 return alt_titles.map(title => (

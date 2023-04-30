@@ -5,11 +5,11 @@
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_magic.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
-	throwforce = 0
-	force = 0
+	throw_force = 0
+	damage_force = 0
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
 	var/mob/living/owner = null
@@ -147,9 +147,9 @@
 /obj/item/spell/update_icon()
 	if(toggled)
 		var/image/new_overlay = image('icons/obj/spells.dmi',"toggled")
-		overlays |= new_overlay
+		add_overlay(new_overlay)
 	else
-		overlays.Cut()
+		cut_overlays()
 	..()
 
 // Proc: run_checks()
@@ -198,9 +198,11 @@
 // Parameters: 1 (user - the Technomancer that invoked this proc)
 // Description: Tries to call on_use_cast() if it is allowed to do so.  Don't override this, override on_use_cast() instead.
 /obj/item/spell/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(run_checks() && (cast_methods & CAST_USE))
 		on_use_cast(user)
-	..()
 
 // Proc: attackby()
 // Parameters: 2 (W - the item this spell object is hitting, user - the technomancer who clicked the other object)
@@ -284,7 +286,7 @@
 // Proc: dropped()
 // Parameters: 0
 // Description: Deletes the spell object immediately.
-/obj/item/spell/dropped()
+/obj/item/spell/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

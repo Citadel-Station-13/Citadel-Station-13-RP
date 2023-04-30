@@ -51,8 +51,8 @@
 		if(M.uses_charge)
 			to_chat(user, "<span class='notice'>You cannot fill \the [src] with a synthesizer!</span>")
 			return
-		user.drop_from_inventory(M, src)
-		M.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(M, src))
+			return
 		target = M
 		user.visible_message("[user] slots \the [target] into [src].")
 		update_icon()
@@ -60,19 +60,15 @@
 		if(reagent_container)
 			to_chat(user, "<span class='notice'>\The [src] already has a container attached.</span>")
 			return
-		if(isrobot(user) && istype(W.loc, /obj/item/gripper))
-			var/obj/item/gripper/G = W.loc
-			G.drop_item()
-		else
-			user.drop_from_inventory(W)
+		if(!user.transfer_item_to_loc(W, src))
+			return
 		reagent_container = W
-		reagent_container.forceMove(src)
 		to_chat(user, "<span class='notice'>You add \the [reagent_container] to \the [src].</span>")
 		update_icon()
 		return
 	else if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		if(anchored)
 			user.visible_message("[user.name] secures [src.name] to the floor.", \
 				"You secure the [src.name] to the floor.", \
@@ -86,13 +82,9 @@
 	else if(istype(W, /obj/item/card/id))
 		to_chat(user, "<span class='notice'>Swiping \the [W] on \the [src] doesn't seem to do anything...</span>")
 		return ..()
-	else if(((isrobot(user) && istype(W.loc, /obj/item/gripper)) || (!isrobot(user) && W.canremove)) && storage.len < max_storage)
-		if(isrobot(user) && istype(W.loc, /obj/item/gripper))
-			var/obj/item/gripper/G = W.loc
-			G.drop_item()
-		else
-			user.drop_from_inventory(W)
-		W.forceMove(src)
+	else if(storage.len < max_storage)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		storage += W
 	else
 		return ..()
@@ -103,7 +95,7 @@
 		material_layer = image(icon, "[initial(icon_state)]-material")
 	if(!material_glow)
 		material_glow = image(icon, "[initial(icon_state)]-material-glow")
-		material_glow.plane = PLANE_LIGHTING_ABOVE
+		material_glow.plane = ABOVE_LIGHTING_PLANE
 	if(!reagent_layer)
 		reagent_layer = image(icon, "[initial(icon_state)]-reagent")
 	if(anchored)
@@ -135,8 +127,8 @@
 	else
 		set_light(0, 0, "#FFFFFF")
 
-/obj/machinery/particle_smasher/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/beam))
+/obj/machinery/particle_smasher/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/beam))
 		if(Proj.damage >= 50)
 			TryCraft()
 	return 0
@@ -144,16 +136,13 @@
 /obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.
 		if(energy)
-			SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))
+			radiation_pulse(src, RAD_INTENSITY_PARTICLE_SMASHER_ENERGY_LOSS(30))
 			energy = max(0, energy - 30)
 			update_icon()
-		return
 
 	if(energy)
-		SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))
+		radiation_pulse(src, RAD_INTENSITY_PARTICLE_SMASHER_ENERGY_LOSS(5))
 		energy = clamp(energy - 5, 0, max_energy)
-
-	return
 
 /obj/machinery/particle_smasher/proc/prepare_recipes()
 	if(!recipes)
@@ -344,8 +333,162 @@
 	required_atmos_temp_max = 8000
 	probability = 50
 
+/datum/particle_smasher_recipe/steel_plasteel
+	reagents = list(MAT_PHORON = 60) //three sheet of phoron and one sheet of steel
+
+	result = /obj/item/stack/material/plasteel
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 100
+	required_energy_max = 250
+
+	probability = 50
+
+/datum/particle_smasher_recipe/plasteel_durasteel
+	reagents = list(MAT_PHORON = 40, "pacid" = 20)
+
+	result = /obj/item/stack/material/durasteel
+	required_material = /obj/item/stack/material/plasteel
+
+	required_energy_min = 590
+	required_energy_max = 650
+
+	required_atmos_temp_min = 888
+	required_atmos_temp_max = 896 //more temperature CBT either setup a cooler and heater array to hold or coordinate with your fellow scientists
+	probability = 50
+
+/datum/particle_smasher_recipe/plastic_diamond
+	reagents = list(MAT_CARBON = 100, "ethanol" = 50) //read a paper sometime ago that some guys grew industrial diamonds from various alcoholic drinks
+
+	result = /obj/item/stack/material/diamond
+	required_material = /obj/item/stack/material/plastic //eh close enough to graphite
+
+	required_energy_min = 550
+	required_energy_max = 600 //As we have no way to set ambient pressure we use the emitter to provide pressure for industrial diamonds think of compressing a Hohlraum to start fusion
+
+	required_atmos_temp_min = 7800 //extreme temperature assuming the focus can be set to inert conditions and ambient atmosphere cannot react with what is basically hot carbon
+	required_atmos_temp_max = 7830
+	probability = 10
+
+/datum/particle_smasher_recipe/copper_silver
+	reagents = list("chlorine" = 25, "fluorine" = 25)
+
+	result = /obj/item/stack/material/silver
+	required_material = /obj/item/stack/material/copper
+
+	required_energy_min = 100
+	required_energy_max = 150
+
+	required_atmos_temp_min = 130
+	required_atmos_temp_max = 140
+	probability = 20
+
+/datum/particle_smasher_recipe/deuterium_mhydrogen
+	reagents = list("potassium" = 10, "chlorine" = 10, "sacid" = 10 )
+
+	result = /obj/item/stack/material/mhydrogen
+	required_material = /obj/item/stack/material/deuterium
+
+	required_energy_min = 500
+	required_energy_max = 600
+
+	required_atmos_temp_min = 20
+	required_atmos_temp_max = 25
+	probability = 90
+
+/datum/particle_smasher_recipe/steel_uranium
+	reagents = list("uranium" = 10, "fluorine")
+
+	result = /obj/item/stack/material/uranium
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 400
+	required_energy_max = 500
+
+	required_atmos_temp_min = 369
+	required_atmos_temp_max = 388
+	probability = 50
+
+/datum/particle_smasher_recipe/plasteel_titanium
+	reagents = list("potassium" = 5, "chlorine" = 5, "sacid" = 5) // :')
+
+	result = /obj/item/stack/material/titanium
+	required_material = /obj/item/stack/material/plasteel
+
+	required_energy_min = 300
+	required_energy_max = 325
+
+	required_atmos_temp_min = 555
+	required_atmos_temp_max = 566
+	probability = 50
+
+/datum/particle_smasher_recipe/platinum_osmium
+	reagents = list("hydrogen" = 25)
+
+	result = /obj/item/stack/material/osmium
+	required_material = /obj/item/stack/material/platinum
+
+	required_energy_min = 500
+	required_energy_max = 600
+
+	required_atmos_temp_min = 500
+	required_atmos_temp_max = 1000
+	probability = 20
+
+/datum/particle_smasher_recipe/osmium_platinum
+	reagents = list("hydrogen" = 25, MAT_PHORON = 5)
+
+	result = /obj/item/stack/material/platinum
+	required_material = /obj/item/stack/material/osmium
+
+	required_energy_min = 200
+	required_energy_max = 300
+
+	required_atmos_temp_min = 30
+	required_atmos_temp_max = 60
+	probability = 20
+
+/datum/particle_smasher_recipe/steel_gold
+	reagents = list(MAT_PHORON = 5)
+
+	result = /obj/item/stack/material/gold
+	required_material = /obj/item/stack/material/steel
+
+	required_energy_min = 550
+	required_energy_max = 600
+
+	required_atmos_temp_min = 5200
+	required_atmos_temp_max = 5250
+	probability = 5
+
+/datum/particle_smasher_recipe/gold_platinum
+	reagents = list("hydrogen" = 20)
+
+	result = /obj/item/stack/material/platinum
+	required_material = /obj/item/stack/material/gold
+
+	required_energy_min = 570
+	required_energy_max = 600
+
+	required_atmos_temp_min = 555
+	required_atmos_temp_max = 777
+	probability = 10
+
+/datum/particle_smasher_recipe/gold_copper
+	reagents = list("hydrogen" = 50)
+
+	result = /obj/item/stack/material/copper
+	required_material = /obj/item/stack/material/gold
+
+	required_energy_min = 300
+	required_energy_max = 400
+
+	required_atmos_temp_min = 293
+	required_atmos_temp_max = 298
+	probability = 15
+
 /datum/particle_smasher_recipe/phoron_valhollide
-	reagents = list("phoron" = 10, "pacid" = 10)
+	reagents = list(MAT_PHORON = 10, "pacid" = 10)
 
 	result = /obj/item/stack/material/valhollide
 	required_material = /obj/item/stack/material/phoron
@@ -358,7 +501,7 @@
 	probability = 10
 
 /datum/particle_smasher_recipe/valhollide_supermatter
-	reagents = list("phoron" = 300)
+	reagents = list(MAT_PHORON = 300)
 
 	result = /obj/item/stack/material/supermatter
 	required_material = /obj/item/stack/material/valhollide

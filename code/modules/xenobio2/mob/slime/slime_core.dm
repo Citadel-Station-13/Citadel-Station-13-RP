@@ -1,6 +1,6 @@
-/*
-Slime core lives here.
-*/
+/**
+ * Slime core lives here.
+ */
 /obj/item/xenoproduct/slime/core
 	name = "slime core"
 	desc = "Gooey."
@@ -8,5 +8,3 @@ Slime core lives here.
 	icon_state = "slime extract"
 	source = "Slime"
 	product = "core"
-
-

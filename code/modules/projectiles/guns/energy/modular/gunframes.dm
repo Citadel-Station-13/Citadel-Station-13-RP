@@ -62,6 +62,7 @@
 	cell_type = /obj/item/cell/device/weapon/modcannon
 	icon_state = "mod_cannon"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 
 /obj/item/gun/energy/modular/cannon/Initialize(mapload)
 	. = ..()
@@ -80,7 +81,7 @@
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	icon_state = "modnuc"
 	w_class = ITEMSIZE_HUGE
-
+	heavy = TRUE
 
 /obj/item/gun/energy/modular/nuke/Initialize(mapload)
 	. = ..()

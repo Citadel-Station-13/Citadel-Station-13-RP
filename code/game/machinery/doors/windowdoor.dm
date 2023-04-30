@@ -3,6 +3,7 @@
 	desc = "A strong door."
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "left"
+	pass_flags_self = ATOM_PASS_GLASS
 	var/base_state = "left"
 	min_force = 4
 	hitsound = 'sound/effects/Glasshit.ogg'
@@ -10,7 +11,7 @@
 	health = 150
 	visible = 0.0
 	use_power = USE_POWER_OFF
-	flags = ON_BORDER
+	atom_flags = ATOM_BORDER
 	opacity = 0
 	var/obj/item/airlock_electronics/electronics = null
 	explosion_resistance = 5
@@ -39,13 +40,8 @@
 
 		if(!src.req_access)    //This apparently has side effects that might
 			src.check_access() //update null r_a's? Leaving it just in case.
-
-		if(src.req_access)
-			ae.conf_access = src.req_access
-
-		else if(src.req_one_access)
-			ae.conf_access = src.req_one_access
-			ae.one_access = 1
+		ae.conf_req_access = req_access?.Copy()
+		ae.conf_req_one_access = req_one_access?.Copy()
 	else
 		ae = electronics
 		electronics = null
@@ -87,32 +83,29 @@
 		addtimer(CALLBACK(src, .proc/close), check_access(null)? 50 : 20)
 
 /obj/machinery/door/window/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	if(!(get_dir(mover, loc) & turn(dir, 180)))
 		return TRUE
-	if(get_dir(mover, loc) == turn(dir, 180)) //Make sure looking at appropriate border
-		return !density
-	return TRUE
+	return ..()
 
-/obj/machinery/door/window/CanZASPass(turf/T, is_zone)
-	if(get_dir(T, loc) == turn(dir, 180))
-		if(is_zone) // No merging allowed.
-			return ATMOS_PASS_NO
-		return ..() // Air can flow if open (density == FALSE).
-	return ATMOS_PASS_YES // Windoors don't block if not facing the right way.
+/obj/machinery/door/window/CanAtmosPass(turf/T, d)
+	if(d != dir)
+		return ATMOS_PASS_NOT_BLOCKED
+	return density? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_ZONE_BLOCKED
 
-/obj/machinery/door/window/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return 1
-	if(get_dir(loc, target) == dir)
-		return !density
-	else
-		return 1
+//used in the AStar algorithm to determinate if the turf the door is on is passable
+// todo: astar sucks
+/obj/machinery/door/window/CanAStarPass(obj/item/card/id/ID, to_dir)
+	return ..() || (check_access(ID) && inoperable()) || (dir != to_dir)
+
+/obj/machinery/door/window/CheckExit(atom/movable/AM, atom/newLoc)
+	if(!(get_dir(src, newLoc) & dir))
+		return TRUE
+	if(check_standard_flag_pass(AM))
+		return TRUE
+	return !density
 
 /obj/machinery/door/window/open()
 	if (operating == 1 || !density) //doors can still open when emag-disabled
-		return 0
-	if (!SSticker)
 		return 0
 	if (!operating) //in case of emag
 		operating = 1
@@ -154,7 +147,7 @@
 /obj/machinery/door/window/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/window/attack_hand(mob/user as mob)
+/obj/machinery/door/window/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 
 	if(istype(user,/mob/living/carbon/human))
@@ -199,8 +192,8 @@
 			if(health < maxhealth)
 				if(WT.remove_fuel(1 ,user))
 					to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-					playsound(src, WT.usesound, 50, 1)
-					if(do_after(user, 40 * WT.toolspeed, target = src))
+					playsound(src, WT.tool_sound, 50, 1)
+					if(do_after(user, 40 * WT.tool_speed, target = src))
 						health = maxhealth
 						update_icon()
 						to_chat(user, "<span class='notice'>You repair [src].</span>")
@@ -221,9 +214,9 @@
 
 		//If it's opened/emagged, crowbar can pry it out of its frame.
 		if (!density && I.is_crowbar())
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			user.visible_message("[user] begins prying the windoor out of the frame.", "You start to pry the windoor out of the frame.")
-			if (do_after(user,40 * I.toolspeed))
+			if (do_after(user,40 * I.tool_speed))
 				to_chat(user,"<span class='notice'>You pried the windoor out of the frame!</span>")
 
 				var/obj/structure/windoor_assembly/wa = new/obj/structure/windoor_assembly(src.loc)
@@ -245,11 +238,8 @@
 						wa.electronics = new/obj/item/airlock_electronics()
 						if(!src.req_access)
 							src.check_access()
-						if(src.req_access.len)
-							wa.electronics.conf_access = src.req_access
-						else if (src.req_one_access.len)
-							wa.electronics.conf_access = src.req_one_access
-							wa.electronics.one_access = 1
+						wa.electronics.conf_req_access = req_access?.Copy()
+						wa.electronics.conf_req_one_access = req_one_access?.Copy()
 					else
 						wa.electronics = electronics
 						electronics = null
@@ -260,7 +250,7 @@
 		//If it's a weapon, smash windoor. Unless it's an id card, agent card, ect.. then ignore it (Cards really shouldnt damage a door anyway)
 		if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
 			user.setClickCooldown(user.get_attack_speed(I))
-			var/aforce = I.force
+			var/aforce = I.damage_force
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 			visible_message("<span class='danger'>[src] was hit by [I].</span>")
 			if(I.damtype == BRUTE || I.damtype == BURN)
@@ -268,7 +258,7 @@
 			return
 
 
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if (src.allowed(user))
 		if (src.density)
@@ -286,7 +276,7 @@
 	icon = 'icons/obj/doors/windoor.dmi'
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	var/id = null
 	maxhealth = 300
 	health = 300.0 //Stronger doors for prison (regular window door health is 150)

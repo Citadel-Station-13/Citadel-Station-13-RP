@@ -2,9 +2,14 @@
 	var/list/cables = list()	// all cables & junctions
 	var/list/nodes = list()		// all connected machines
 
+	/**
+	 * Power tracking
+	 * Units: Kilowatts
+	 */
 	var/load = 0				// the current load on the powernet, increased by each machine at processing
 	var/newavail = 0			// what available power was gathered last tick, then becomes...
 	var/avail = 0				//...the current available power in the powernet
+	var/viewavail = 0			// the availability as it appears on the power console (gradually updated)
 	var/viewload = 0			// the load as it appears on the power console (gradually updated)
 	var/number = 0				// Unused //TODEL
 
@@ -34,7 +39,7 @@
 	return max(avail - load, 0)
 
 /datum/powernet/proc/draw_power(var/amount)
-	var/draw = between(0, amount, avail - load)
+	var/draw = clamp( amount, 0,  avail - load)
 	load += draw
 	return draw
 
@@ -86,7 +91,6 @@
 /datum/powernet/proc/trigger_warning(var/duration_ticks = 20)
 	problem = max(duration_ticks, problem)
 
-
 //handles the power changes in the powernet
 //called every ticks by the powernet controller
 /datum/powernet/proc/reset()
@@ -118,7 +122,8 @@
 			S.restore()				// and restore some of the power that was used
 
 	//updates the viewed load (as seen on power computers)
-	viewload = round(load)
+	viewavail = round(0.8 * viewavail + 0.2 * avail)
+	viewload = round(0.8 * viewload + 0.2 * load)
 
 	//reset the powernet
 	load = 0
@@ -127,18 +132,24 @@
 
 /datum/powernet/proc/get_electrocute_damage()
 	switch(avail)
-		if (1000000 to INFINITY)
+		if (1000 to INFINITY)
 			return min(rand(50,160),rand(50,160))
-		if (200000 to 1000000)
+		if (200 to 1000)
 			return min(rand(25,80),rand(25,80))
-		if (100000 to 200000)//Ave powernet
+		if (100 to 200)//Ave powernet
 			return min(rand(20,60),rand(20,60))
-		if (50000 to 100000)
+		if (50 to 100)
 			return min(rand(15,40),rand(15,40))
-		if (1000 to 50000)
+		if (1 to 50)
 			return min(rand(10,20),rand(10,20))
 		else
 			return 0
+
+/datum/powernet/proc/drain_energy_handler(datum/actor, amount, flags)
+	// amount is in kj so no conversion needed
+	. = draw_power(amount)
+	if(flags & ENERGY_DRAIN_SURGE)
+		trigger_warning()
 
 ////////////////////////////////////////////////
 // Misc.

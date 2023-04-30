@@ -48,6 +48,11 @@
 	max_n2 = 0
 	minbodytemp = 0
 
+/mob/living/simple_mob/faithless/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
+
 /mob/living/simple_mob/faithless/Process_Spacemove(var/check_drift = 0)
 	return 1
 
@@ -55,7 +60,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(12))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message("<span class='danger'>\the [src] knocks down \the [L]!</span>")
 
 // Strong Variant

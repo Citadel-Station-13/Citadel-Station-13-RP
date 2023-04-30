@@ -70,10 +70,10 @@ Note: Must be placed within 3 tiles of the R&D Console
 		if(O.origin_tech.len == 0)
 			to_chat(user, "<span class='notice'>You cannot deconstruct this item.</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		busy = 1
 		loaded_item = O
-		user.drop_item()
-		O.loc = src
 		to_chat(user, "<span class='notice'>You add \the [O] to \the [src].</span>")
 		flick("d_analyzer_la", src)
 		spawn(10)
@@ -82,7 +82,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 		return 1
 	return
 
-/obj/machinery/r_n_d/destructive_analyzer/MouseDrop_T(atom/dropping, mob/living/user)
+/obj/machinery/r_n_d/destructive_analyzer/MouseDroppedOnLegacy(atom/dropping, mob/living/user)
 	if(istype(dropping, /obj/item/storage/part_replacer))
 		var/obj/item/storage/part_replacer/replacer = dropping
 		replacer.hide_from(user)

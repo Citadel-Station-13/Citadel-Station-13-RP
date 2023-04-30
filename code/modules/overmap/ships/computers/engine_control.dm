@@ -6,6 +6,13 @@
 	icon_screen = "engines"
 	circuit = /obj/item/circuitboard/engine
 
+// fancy sprite
+/obj/machinery/computer/ship/engines/adv
+	icon_keyboard = null
+	icon_state = "adv_engines"
+	icon_screen = "adv_engines_screen"
+	light_color = "#05A6A8"
+
 /obj/machinery/computer/ship/engines/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
 		display_reconnect_dialog(user, "ship control systems")
@@ -42,7 +49,7 @@
 	data["total_thrust"] = total_thrust
 	return data
 
-/obj/machinery/computer/ship/engines/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/engines/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -56,7 +63,7 @@
 
 		if("set_global_limit")
 			var/newlim = input("Input new thrust limit (0..100%)", "Thrust limit", linked.thrust_limit*100) as num
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return FALSE
 			linked.thrust_limit = clamp(newlim/100, 0, 1)
 			for(var/datum/ship_engine/E in linked.engines)
@@ -72,7 +79,7 @@
 		if("set_limit")
 			var/datum/ship_engine/E = locate(params["engine"])
 			var/newlim = input("Input new thrust limit (0..100)", "Thrust limit", E.get_thrust_limit()) as num
-			if(ui_status(usr, state) != UI_INTERACTIVE)
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 				return FALSE
 			var/limit = clamp(newlim/100, 0, 1)
 			if(istype(E))
@@ -93,4 +100,4 @@
 			. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)

@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
@@ -24,14 +24,6 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/head/helmet/space
 		)
-
-/obj/machinery/washing_machine/Initialize(mapload, newdir)
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	RefreshParts()
 
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
@@ -54,6 +46,7 @@
 	sleep(200)
 	for(var/atom/A in washing)
 		A.clean_blood()
+		A.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER_WASHING_MACHINE, RAD_CONTAMINATION_CLEANSE_FACTOR_WASHING_MACHINE)
 
 	for(var/obj/item/I in washing)
 		I.decontaminate()
@@ -91,9 +84,9 @@
 	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)
-				user.drop_item()
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				crayon = W
-				crayon.loc = src
 			else
 				..()
 		else
@@ -115,8 +108,8 @@
 	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
 		if(washing.len < 5)
 			if(state in list(1, 3))
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				washing += W
 				state = 3
 			else
@@ -127,7 +120,7 @@
 		..()
 	update_icon()
 
-/obj/machinery/washing_machine/attack_hand(mob/user as mob)
+/obj/machinery/washing_machine/attack_hand(mob/user, list/params)
 	switch(state)
 		if(1)
 			state = 2
@@ -164,6 +157,8 @@
 	update_icon()
 
 /obj/machinery/washing_machine/AltClick(mob/user)
+	if(!user.Reachability(src))
+		return
 	if(!istype(usr, /mob/living)) //ew ew ew usr, but it's the only way to check.
 		return
 

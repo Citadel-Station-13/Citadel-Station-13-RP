@@ -66,7 +66,7 @@
 	minbodytemp = 0
 	heat_damage_per_tick = 0 //Even if the atmos stuff doesn't work, at least it won't take any damage.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = -50,
 				"bullet" = 0,
 				"laser" = 50,
@@ -84,8 +84,8 @@
 		if(prob(shock_chance))
 			A.emp_act(4) //The weakest strength of EMP
 			playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
-			L.Weaken(4)
-			L.Stun(4)
+			L.afflict_paralyze(20 * 4)
+			L.afflict_stun(20 * 4)
 			L.stuttering = max(L.stuttering, 4)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, L)
@@ -103,28 +103,28 @@
 		to_chat(L, "<span class='warning'>You feel a small shock rushing through your veins.</span>")
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
-/mob/living/simple_mob/vore/solarmoth/Life()
-	. = ..()
-	if(icon_state != icon_dead) //I mean on death() Life() should disable but i guess doesnt hurt to make sure -shark
+/mob/living/simple_mob/vore/solarmoth/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
 		var/datum/gas_mixture/env = loc.return_air() //Gets all the information on the local air.
 		var/transfer_moles = 0.25 * env.total_moles //The bigger the room, the harder it is to heat the room.
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature < T0C + 200)	//This should start heating the room at a moderate pace up to 200 degrees celsius.
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer > 0 && env.temperature < set_temperature) //Set temperature is 450 degrees celsius. Heating rate should increase between 200 and 450 C.
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power) //limit by the power rating of the heater. Except it's hot, so yeah.
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return
 
 		env.merge(removed)
-
-
 
 	//Since I'm changing hyper mode to be variable we need to store old power
 	original_temp = heating_power //We remember our old goal, for use in non perpetual heating level increase
@@ -171,21 +171,23 @@
 	//light
 	mycolour = COLOR_BLUE
 
-/mob/living/simple_mob/vore/solarmoth/lunarmoth/Life()
-	. = ..()
-	if(icon_state != icon_dead)
+/mob/living/simple_mob/vore/solarmoth/lunarmoth/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
 		var/datum/gas_mixture/env = loc.return_air()
 		var/transfer_moles = 0.35 * env.total_moles
 		var/datum/gas_mixture/removed = env.remove(transfer_moles)
 		var/heat_transfer = removed.get_thermal_energy_change(set_temperature)
 		if(heat_transfer > 0 && env.temperature > T0C - 275)
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else if(heat_transfer < 0 && env.temperature > set_temperature)
 			heating_power = original_temp*100
 			heat_transfer = min(heat_transfer , heating_power)
-			removed.add_thermal_energy(heat_transfer)
+			removed.adjust_thermal_energy(heat_transfer)
 
 		else
 			return

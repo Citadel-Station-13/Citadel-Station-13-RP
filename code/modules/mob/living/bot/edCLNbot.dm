@@ -11,19 +11,19 @@
 	name = "ED-CLN Cleaning Robot"
 	desc = "A large cleaning robot. It looks rather efficient."
 	icon_state = "edCLN0"
-	req_one_access = list(access_robotics, access_janitor)
-	botcard_access = list(access_janitor, access_maint_tunnels)
+	req_one_access = list(ACCESS_SCIENCE_ROBOTICS, ACCESS_GENERAL_JANITOR)
+	botcard_access = list(ACCESS_GENERAL_JANITOR, ACCESS_ENGINEERING_MAINT)
 	catalogue_data = list(/datum/category_item/catalogue/technology/bot/cleanbot/edCLN)
 
-	locked = 0 // Start unlocked so roboticist can set them to patrol.
-	wait_if_pulled = 0 // One big boi.
+	locked = FALSE //Starts unlocked so roboticist can set them to patrol.
+	wait_if_pulled = FALSE //One big boi.
 	min_target_dist = 0
 
 	patrol_speed = 3
 	target_speed = 6
 
-	cleaning = 0
-	blood = 0
+	cleaning = FALSE
+	blood = FALSE
 	var/red_switch = 0
 	var/blue_switch = 0
 	var/green_switch = 0
@@ -81,53 +81,34 @@
 	qdel(src)
 	return
 
-/mob/living/bot/cleanbot/edCLN/attack_hand(var/mob/user)
-	var/dat
-	usr.set_machine(src)
-	add_fingerprint(usr)
+/mob/living/bot/cleanbot/edCLN/ui_data(mob/user)
+	var/list/data = ..()
+	data["version"] = "v3.0"
+	data["rgbpanel"] = TRUE
+	data["red_switch"] = red_switch
+	data["green_switch"] = green_switch
+	data["blue_switch"] = blue_switch
+	return data
 
-	dat += "<TT><B>Automatic Station Cleaner v2.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];operation=start'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
-	dat += "Maintenance panel is [open ? "opened" : "closed"]"
-	if(!locked || issilicon(user))
-		dat += "<BR>Cleans Blood: <A href='?src=\ref[src];operation=blood'>[blood ? "Yes" : "No"]</A><BR>"
-		if(GLOB.using_map.bot_patrolling)
-			dat += "<BR>Patrol station: <A href='?src=\ref[src];operation=patrol'>[will_patrol ? "Yes" : "No"]</A><BR>"
-	if(open && !locked)
-		dat += "<BR>Red Switch: <A href='?src=\ref[src];operation=red_switch'>[red_switch ? "On" : "Off"]</A><BR>"
-		dat += "<BR>Green Switch: <A href='?src=\ref[src];operation=green_switch'>[green_switch ? "On" : "Off"]</A><BR>"
-		dat += "<BR>Blue Switch: <A href='?src=\ref[src];operation=blue_switch'>[blue_switch ? "On" : "Off"]</A>"
+/mob/living/bot/cleanbot/edCLN/ui_act(action, list/params, datum/tgui/ui)
+	if(..())
+		return TRUE
 
-	user << browse("<HEAD><TITLE>Cleaner v2.0 controls</TITLE></HEAD>[dat]", "window=autocleaner")
-	onclose(user, "autocleaner")
-	return
-
-/mob/living/bot/cleanbot/edCLN/Topic(href, href_list)
-	usr.set_machine(src)
-	add_fingerprint(usr)
-	switch(href_list["operation"])
-		if("start")
-			if(on)
-				turn_off()
-			else
-				turn_on()
-		if("blood")
-			blood = !blood
-			get_targets()
-		if("patrol")
-			will_patrol = !will_patrol
-			patrol_path = null
+	switch(action)
 		if("red_switch")
 			red_switch = !red_switch
-			to_chat(usr, "<span class='notice'>You flip the red switch [red_switch ? "on" : "off"].</span>")
+			to_chat(usr, SPAN_NOTICE("You flip the red switch [red_switch ? "on" : "off"]."))
+			. = TRUE
+
 		if("green_switch")
-			green_switch = !blue_switch
-			to_chat(usr, "<span class='notice'>You flip the green switch [green_switch ? "on" : "off"].</span>")
+			green_switch = !green_switch
+			to_chat(usr, SPAN_NOTICE("You flip the green switch [green_switch ? "on" : "off"]."))
+			. = TRUE
+
 		if("blue_switch")
 			blue_switch = !blue_switch
-			to_chat(usr, "<span class='notice'>You flip the blue switch [blue_switch ? "on" : "off"].</span>")
-	attack_hand(usr)
+			to_chat(usr, SPAN_NOTICE("You flip the blue switch [blue_switch ? "on" : "off"]."))
+			. = TRUE
 
 /mob/living/bot/cleanbot/edCLN/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
@@ -163,8 +144,8 @@
 	switch(build_step)
 		if(0, 1)
 			if(istype(W, /obj/item/robot_parts/l_leg) || istype(W, /obj/item/robot_parts/r_leg) || (istype(W, /obj/item/organ/external/leg) && ((W.name == "robotic right leg") || (W.name == "robotic left leg"))))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "legs/frame assembly"
@@ -175,8 +156,8 @@
 
 		if(2)
 			if(istype(W, /obj/item/reagent_containers/glass/bucket))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "bucket/legs/frame assembly"
@@ -192,8 +173,8 @@
 					to_chat(user, "<span class='notice'>You welded the bucket to \the [src].</span>")
 		if(4)
 			if(isprox(W))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				name = "proximity bucket ED assembly"
@@ -216,17 +197,17 @@
 
 		if(6)
 			if(istype(W, /obj/item/mop))
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				name = "mop ED-CLN assembly"
 				build_step++
 				to_chat(user, "<span class='notice'>You add \the [W] to \the [src].</span>")
 				item_state = "edCLN_mop"
 				icon_state = "edCLN_mop"
-				user.drop_item()
-				qdel(W)
 
 		if(7)
 			if(W.is_screwdriver())
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				var/turf/T = get_turf(user)
 				to_chat(user, "<span class='notice'>Attatching the mop to the frame...</span>")
 				if(do_after(user, 40) && get_turf(user) == T)
@@ -236,11 +217,10 @@
 
 		if(8)
 			if(istype(W, /obj/item/cell))
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You complete the ED-CLN.</span>")
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/cleanbot/edCLN(T,created_name)
-				user.drop_item()
-				qdel(W)
-				user.drop_from_inventory(src)
 				qdel(src)

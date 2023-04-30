@@ -1,7 +1,7 @@
 //Here you find the wonderfull code for suitcyclers
 //I did not write this, I just copied it to this page to take it from suit_storage_unit.dm
 
-
+// TODO: UNIFY WITH SUIT STORAGE UNITS WHY ARE THESE SEPARATE
 /obj/machinery/suit_cycler
 
 	name = "suit cycler"
@@ -12,7 +12,7 @@
 	icon = 'icons/obj/suitstorage.dmi'
 	icon_state = "suitstorage000000100"
 
-	req_access = list(access_captain,access_heads)
+	req_access = list(ACCESS_COMMAND_CAPTAIN,ACCESS_COMMAND_BRIDGE)
 
 	var/active = 0          // PLEASE HOLD.
 	var/safeties = 1        // The cycler won't start with a living thing inside it unless safeties are off.
@@ -26,7 +26,7 @@
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security", "No Change")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	var/target_department
 	var/target_species
@@ -53,58 +53,63 @@
 /obj/machinery/suit_cycler/engineering
 	name = "Engineering suit cycler"
 	model_text = "Engineering"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 	departments = list("Engineering","Atmos","HAZMAT","Construction", "No Change")
 
 /obj/machinery/suit_cycler/mining
 	name = "Mining suit cycler"
 	model_text = "Mining"
-	req_access = list(access_mining)
+	req_access = list(ACCESS_SUPPLY_MINE)
 	departments = list("Mining", "No Change")
 
 /obj/machinery/suit_cycler/security
 	name = "Security suit cycler"
 	model_text = "Security"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	departments = list("Security","Crowd Control", "No Change")
 
 /obj/machinery/suit_cycler/medical
 	name = "Medical suit cycler"
 	model_text = "Medical"
-	req_access = list(access_medical)
+	req_access = list(ACCESS_MEDICAL_MAIN)
 	departments = list("Medical","Biohazard","Emergency Medical Response", "No Change")
 
 /obj/machinery/suit_cycler/syndicate
 	name = "Nonstandard suit cycler"
 	model_text = "Nonstandard"
-	req_access = list(access_syndicate)
+	req_access = list(ACCESS_FACTION_SYNDICATE)
 	departments = list("Mercenary", "Charring", "No Change")
 	can_repair = 1
 
 /obj/machinery/suit_cycler/exploration
 	name = "Explorer suit cycler"
 	model_text = "Exploration"
-	req_access = list(access_explorer) //Old Exploration needs fixing up
+	req_access = list(ACCESS_GENERAL_EXPLORER) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
+/obj/machinery/suit_cycler/pathfinder
+	name = "Pathfinder suit cycler"
+	model_text = "Pathfinder"
+	req_access = list(ACCESS_GENERAL_PATHFINDER)
+	departments = list("Pathfinder", "No Change")
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
 	model_text = "Pilot"
-	req_access = list(access_pilot)
+	req_access = list(ACCESS_GENERAL_PILOT)
 	departments = list("Pilot", "No Change") //Pilot Blue needs fixing up
 
 /obj/machinery/suit_cycler/director
 	name = "Director suit cycler"
 	model_text = "Director"
-	req_access = list(access_captain)
+	req_access = list(ACCESS_COMMAND_CAPTAIN)
 	departments = list("Director", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_SKRELL,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 
 /obj/machinery/suit_cycler/headofsecurity
 	name = "Head of Security suit cycler"
 	model_text = "Head of Security"
-	req_access = list(access_hos)
+	req_access = list(ACCESS_SECURITY_HOS)
 	departments = list("Head of Security", "No Change")
 	species = list(SPECIES_HUMAN,SPECIES_UNATHI,SPECIES_TAJ, SPECIES_VULPKANIN)
 
@@ -134,7 +139,7 @@
 	model_text = "Vintage Master"
 	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
 
-/obj/machinery/suit_cycler/vintage/Initialize()
+/obj/machinery/suit_cycler/vintage/Initialize(mapload)
 	species -= SPECIES_TESHARI
 	return ..()
 
@@ -170,12 +175,11 @@
 		visible_message("<span class='notice'>[user] starts putting [G.affecting.name] into the suit cycler.</span>", 3)
 
 		if(do_after(user, 20))
-			if(!G || !G.affecting) return
+			if(!G || !G.affecting)
+				return
 			var/mob/M = G.affecting
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-			M.loc = src
+			M.forceMove(src)
+			M.update_perspective()
 			occupant = M
 
 			add_fingerprint(user)
@@ -187,7 +191,7 @@
 	else if(I.is_screwdriver())
 
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		to_chat(user, "You [panel_open ?  "open" : "close"] the maintenance panel.")
 		updateUsrDialog()
 		return
@@ -206,9 +210,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		helmet = I
 
 		update_icon()
@@ -229,9 +233,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		suit = I
 
 		update_icon()
@@ -248,7 +252,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring", "No Change")
-	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	emagged = 1
 	safeties = 0
@@ -256,11 +260,11 @@
 	updateUsrDialog()
 	return 1
 
-/obj/machinery/suit_cycler/attack_hand(mob/user as mob)
+/obj/machinery/suit_cycler/attack_hand(mob/user, list/params)
 
 	add_fingerprint(user)
 
-	if(..() || stat & (BROKEN|NOPOWER))
+	if(..() || machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!user.IsAdvancedToolUser())
@@ -389,7 +393,7 @@
 	if(!active)
 		return
 
-	if(active && stat & (BROKEN|NOPOWER))
+	if(active && machine_stat & (BROKEN|NOPOWER))
 		active = 0
 		irradiating = 0
 		electrified = 0
@@ -403,12 +407,13 @@
 	irradiating--
 
 	if(occupant)
-		if(prob(radiation_level*2)) occupant.emote("scream")
+		if(prob(radiation_level*2))
+			occupant.emote("scream")
 		if(radiation_level > 2)
 			occupant.take_organ_damage(0,radiation_level*2 + rand(1,3))
 		if(radiation_level > 1)
 			occupant.take_organ_damage(0,radiation_level + rand(1,3))
-		occupant.apply_effect(radiation_level*10, IRRADIATE)
+		occupant.apply_effect(radiation_level * 200, IRRADIATE)
 
 /obj/machinery/suit_cycler/proc/finished_job()
 	var/turf/T = get_turf(src)
@@ -446,11 +451,8 @@
 	if(!occupant)
 		return
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-
-	occupant.loc = get_turf(occupant)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
 
 	add_fingerprint(usr)
@@ -533,6 +535,9 @@
 		if("Old Exploration")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/alt
 			parent_suit = /obj/item/clothing/suit/space/void/exploration/alt
+		if("Pathfinder")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
+			parent_suit = /obj/item/clothing/suit/space/void/exploration/pathfinder
 		if("Pilot")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/pilot
 			parent_suit = /obj/item/clothing/suit/space/void/pilot
@@ -555,8 +560,6 @@
 		if("Head of Security")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
 			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
-		//BEGIN: Space for additional downstream variants
-		//VOREStation Addition Start
 		if("Manager")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/captain
 			parent_suit = /obj/item/clothing/suit/space/void/captain
@@ -596,8 +599,6 @@
 		if("Talon Mercenary")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
-		//VOREStation Addition End
-		//END: downstream variant space
 	if(target_species)
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))
@@ -656,35 +657,42 @@
 /obj/machinery/suit_cycler/vintage/tcrew
 	name = "Talon crew suit cycler"
 	model_text = "Talon crew"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Crew","No Change")
 
 /obj/machinery/suit_cycler/vintage/tpilot
 	name = "Talon pilot suit cycler"
 	model_text = "Talon pilot"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Pilot (Bubble Helm)","Talon Pilot (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tengi
 	name = "Talon engineer suit cycler"
 	model_text = "Talon engineer"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Engineering","No Change")
 
 /obj/machinery/suit_cycler/vintage/tguard
 	name = "Talon guard suit cycler"
 	model_text = "Talon guard"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Marine","Talon Mercenary","No Change")
 
 /obj/machinery/suit_cycler/vintage/tmedic
 	name = "Talon doctor suit cycler"
 	model_text = "Talon doctor"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Medical (Bubble Helm)","Talon Medical (Closed Helm)","No Change")
 
 /obj/machinery/suit_cycler/vintage/tcaptain
 	name = "Talon captain suit cycler"
 	model_text = "Talon captain"
-	req_access = list(access_talon)
+	req_access = list(ACCESS_FACTION_TALON)
 	departments = list("Talon Officer","No Change")
+
+//Pirate
+/obj/machinery/suit_cycler/pirate
+	name = "Black Market suit cycler"
+	model_text = "Pirate"
+	req_access = list(ACCESS_FACTION_PIRATE)
+	departments = list("No Change")

@@ -1,6 +1,6 @@
-/*!
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+/**
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /**
@@ -17,5 +17,5 @@ GLOBAL_DATUM_INIT(human_adjacent_state, /datum/ui_state/human_adjacent_state, ne
 
 	var/dist = get_dist(src_object, user)
 	if((dist > 1) || (!ishuman(user)))
-		// Can't be used unless adjacent and human, even with TK
+		// Can't be used unless adjacent and human, even with MUTATION_TELEKINESIS
 		. = min(., UI_UPDATE)

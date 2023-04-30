@@ -10,8 +10,8 @@
 
 /obj/structure/table/rack/Initialize(mapload)
 	. = ..()
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 
 /obj/structure/table/rack/update_connections()
 	return
@@ -20,7 +20,7 @@
 	return
 
 /obj/structure/table/rack/update_icon()
-	if(material) //VOREStation Add for rack colors based on materials
+	if(material)
 		color = material.icon_colour
 	return
 

@@ -194,7 +194,7 @@
 
 	/// New org_type flag replaces lawful/hostile/sysdef, valid standard options are neutral (default), corporate, government, system defense, smuggler, pirate, military, retired
 	var/org_type = "neutral"
-	
+
 	/// Is this part of the fleet/station makeup? fleet system currently disabled
 	var/fleet = FALSE
 
@@ -285,7 +285,7 @@
 	work = "research giant"
 	headquarters = "Creon, Thebes"
 	fleet = TRUE
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("NTV" = "a general operations", "NEV" = "an exploration", "NSV" = "a research", "NGV" = "a hauling", "NDV" = "a patrol", "NRV" = "an emergency response", "NDV" = "an asset protection")
@@ -328,7 +328,7 @@
 	non-corporate bulk contractors."
 	work = "arms manufacturer"
 	headquarters = "Orlov IV, Vitalya"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("HIV" = "a general operations", "HTV" = "a freight", "HLV" = "a munitions resupply", "HDV" = "an asset protection", "HDV" = "a preemptive deployment")
@@ -368,7 +368,7 @@
 	resulting in what is functionally considered an alliance."
 	work = "medical equipment supplier"
 	headquarters = "Toledo, New Ohio"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("VMV" = "a general operations", "VTV" = "a transportation", "VHV" = "a medical resupply", "VSV" = "a research", "VRV" = "an emergency medical support")
@@ -402,7 +402,7 @@
 	constant economic speculation."
 	work = "pharmaceuticals company"
 	headquarters = "Bashe, Shang-Yang"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("ZHV" = "a general operations", "ZTV" = "a transportation", "ZMV" = "a medical resupply", "ZRV" = "a medical research")
@@ -430,7 +430,7 @@
 	consumer electronics market."
 	work = "electronics manufacturer"
 	headquarters = "KT-985, Ridley Minor"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("WTV" = "a general operations", "WTFV" = "a freight", "WTGV" = "a transport", "WTDV" = "an asset protection")
@@ -455,7 +455,7 @@
 	Positronic Rights Group. Following a series of disastrous investments in advanced sleeving tech, Bishop was acquired by \
 	their long time competitor Vey-Medical."
 	work = "cybernetics and augmentation manufacturer"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("BCV" = "a general operations", "BCTV" = "a transportation", "BCSV" = "a research exchange")
@@ -485,7 +485,7 @@
 	work = "cybernetics manufacturer"
 	headquarters = "Shelf"
 	motto = ""
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("MCV" = "a general operations", "MTV" = "a freight", "MDV" = "a market protection", "MSV" = "an outreach")
@@ -523,7 +523,7 @@
 	work = "industrial equipment manufacturer"
 	headquarters = ""
 	motto = ""
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("XMV" = "a general operations", "XTV" = "a hauling", "XFV" = "a bulk transport", "XIV" = "a resupply")
@@ -554,7 +554,7 @@
 	work = "cybernetics manufacturer"
 	headquarters = ""
 	motto = ""
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("AGV" = "a general operations", "ATV" = "a transport", "ARV" = "a research", "ADV" = "a routine patrol", "AEV" = "a raw materials acquisition")
@@ -594,7 +594,7 @@
 	in the FTU. At the same time, the Free Trade Union started to popularize tradeband in the galaxy as the language of business. Around 2500, \
 	the majority of independent merchants were part of the FTU with significant influence on the galactic scale. They have started to invest in \
 	colonization efforts in order to take early claim of the frontier systems as the best choice for frontier traders."
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("FTV" = "a general operations", "FTRP" = "a trade protection", "FTRR" = "a piracy suppression", "FTLV" = "a logistical support", "FTTV" = "a mercantile", "FTDV" = "a market establishment")
@@ -623,7 +623,7 @@
 	work = "courier and passenger transit"
 	headquarters = "Defunct"
 	motto = "With Major Bill's, you won't pay major bills!"
-		
+
 	org_type = "retired"
 
 	// Retained for lore purposes.
@@ -655,7 +655,7 @@
 	<br><br>Grayson may maintain a neutral stance towards their fellow TSCs, but can be quite aggressive in the markets that it already holds. A steady stream \
 	of rumors suggests they're not shy about engaging in industrial sabotage or calling in strikebreakers, either."
 	headquarters = "Mars, Sol"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("GMV" = "a general operations", "GMT" = "a transport", "GMR" = "a resourcing", "GMS" = "a surveying", "GMH" = "a bulk transit")
@@ -719,7 +719,7 @@
 	work = ""
 	headquarters = ""
 	motto = "Dum spiro spero"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("AARV" = "a general operations", "AARE" = "a resource extraction", "AARG" = "a gas transport", "AART" = "a transport")
@@ -771,7 +771,7 @@
 	work = ""
 	headquarters = ""
 	motto = ""
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("FPV" = "a general operations", "FPH" = "a transport", "FPC" = "an energy relay", "FPT" = "a fuel transport")
@@ -833,7 +833,7 @@
 	work = "luxury, business, and economy passenger flights"
 	headquarters = "Spin Aerostat, Jupiter"
 	motto = "Sic itur ad astra"
-		
+
 	org_type = "corporate"
 
 	ship_prefixes = list("SFI-X" = "a VIP liner", "SFI-L" = "a luxury liner", "SFI-B" = "a business liner", "SFI-E" = "an economy liner", "SFI-M" = "a mixed class liner", "SFI-S" = "a sightseeing", "SFI-M" = "a wedding", "SFI-O" = "a marketing", "SFI-S" = "a safari", "SFI-A" = "an aquatic adventure")
@@ -896,7 +896,7 @@
 	work = "news media"
 	headquarters = ""
 	motto = "News from all across the spectrum"
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("OBV" = "an investigation", "OBV" = "a distribution", "OBV" = "a journalism", "OBV" = "a general operations")
 	destination_names = list(
@@ -915,7 +915,7 @@
 	work = "catering, food, drinks"
 	headquarters = "Alpha Centauri"
 	motto = "The largest brands of food and drink - most of them are Centauri."
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("CPTV" = "a transport", "CPCV" = "a catering", "CPRV" = "a resupply", "CPV" = "a general operations")
 	destination_names = list(
@@ -934,7 +934,7 @@
 	work = "catering, food, drinks"
 	headquarters = ""
 	motto = "Engine designs, emergency generators, and old memories"
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("EETV" = "a transport", "EERV" = "a research", "EEV" = "a general operations")
 	destination_names = list(
@@ -952,7 +952,7 @@
 	work = "starship construction"
 	headquarters = ""
 	motto = "We build it - you fly it"
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("WATV" = "a transport", "WARV" = "a repair", "WAV" = "a general operations")
 	destination_names = list(
@@ -975,7 +975,7 @@
 	work = "luxury goods"
 	headquarters = ""
 	motto = ""
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("GETV" = "a transport", "GECV" = "a luxury catering", "GEV" = "a general operations")
 	//precious stones
@@ -1056,7 +1056,7 @@
 	work = "salvage and shipbreaking"
 	headquarters = "N/A"
 	motto = "one man's trash is another man's treasure"
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("CSV" = "a salvage", "CRV" = "a recovery", "CTV" = "a transport", "CSV" = "a shipbreaking", "CHV" = "a towing")
 	//mostly-original, maybe some references, and more than a few puns
@@ -1128,7 +1128,7 @@
 	work = "designer bodies and bioforms"
 	headquarters = "Moreau III, Jiang Shie"
 	motto = "the whole is greater than the sum of its parts"
-		
+
 	org_type = "corporate"
 	ship_prefixes = list("CGV" = "a general operations", "CGT" = "a transport", "CGT" = "a delivery", "CGH" = "a medical")
 	//edgy mythological critters!
@@ -1152,7 +1152,7 @@
 			"Daemon",
 			"Echidna",
 			"Goblin",
-			"Golem",
+			SPECIES_GOLEM,
 			"Griffin",
 			"Hobgoblin",
 			"Hydra",
@@ -1218,7 +1218,7 @@
 	headquarters = ""
 	motto = "Serve, Protect, Survive"
 	autogenerate_destination_names = FALSE
-		
+
 	org_type = "system defense"
 
 	ship_prefixes = list ("SDB" = "a patrol", "SDF" = "a patrol", "SDV" = "a patrol", "SDB" = "an escort", "SDF" = "an escort", "SDV" = "an escort", "SAR" = "a search and rescue", "SDT" = "a logistics", "SDT" = "a resupply", "SDJ" = "a prisoner transport") //b = boat, f = fleet, v = vessel, t = tender
@@ -1313,7 +1313,7 @@
 	headquarters = ""
 	motto = ""
 	autogenerate_destination_names = TRUE //the events we get called for don't fire a destination, but we need entries to avoid runtimes.
-		
+
 	org_type = "smugglers"
 
 	ship_prefixes = list ("suspected smuggler" = "an illegal smuggling", "possible smuggler" = "an illegal smuggling", "suspected bootlegger" = "a contraband smuggling") //as assigned by control, second part shouldn't even come up
@@ -1492,7 +1492,7 @@
 	headquarters = ""
 	motto = "What\'s yours is mine."
 	autogenerate_destination_names = TRUE //the events we get called for don't fire a destination, but we need entries to avoid runtimes.
-		
+
 	org_type = "pirate"
 
 	ship_prefixes = list ("known pirate" = "a piracy", "suspected pirate" = "a piracy", "rogue privateer" = "a piracy", "Cartel enforcer" = "a piracy", "known outlaw" = "a piracy", "bandit" = "a piracy", "roving corsair" = "a piracy", "illegal salvager" = "an illegal salvage", "rogue mercenary" = "a mercenary") //as assigned by control, second part shouldn't even come up, but it exists to avoid hiccups/weirdness just in case
@@ -1671,7 +1671,7 @@
 	work = ""
 	motto = ""
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "pirate"
 
 	ship_prefixes = list("Ue-Katish pirate" = "a raiding", "Ue-Katish bandit" = "a raiding", "Ue-Katish raider" = "a raiding", "Ue-Katish enforcer" = "an enforcement", "Ue-Katish corsair" = "a raiding")
@@ -1709,7 +1709,7 @@
 	headquarters = "Nowhere"
 	motto = "(unintelligible screeching)"
 	autogenerate_destination_names = TRUE //the events we get called for don't fire a destination, but we need *some* entries to avoid runtimes.
-		
+
 	org_type = "pirate"
 
 	ship_prefixes = list("vox marauder" = "a marauding", "vox raider" = "a raiding", "vox ravager" = "a raiding", "vox corsair" = "a raiding") //as assigned by control, second part shouldn't even come up
@@ -1783,7 +1783,7 @@
 	headquarters = "Luna, Sol"
 	motto = "Nil Mortalibus Ardui Est" // Latin, because latin.  Says 'Nothing is too steep for mortals'
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "government"
 
 	ship_prefixes = list("TOC-A" = "an administrative", "TOC-T" = "a transportation", "TOC-D" = "a diplomatic", "TOC-F" = "a freight", "TOC-J" = "a prisoner transfer")
@@ -1883,7 +1883,7 @@
 	headquarters = "Qerr'balak, Qerr'valis"
 	motto = ""
 	autogenerate_destination_names = TRUE //big list of own holdings to come
-		
+
 	org_type = "government"
 
 	//the tesh expeditionary fleet's closest analogue in modern terms would be the US Army Corps of Engineers, just with added combat personnel as well
@@ -1934,7 +1934,7 @@
 	headquarters = "Paris, Earth"
 	motto = "Si Vis Pacem Para Bellum"
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "military"
 
 	ship_prefixes = list ("JSDF" = "a logistical", "JSDF" = "a training", "JSDF" = "a patrol", "JSDF" = "a piracy suppression", "JSDF" = "a peacekeeping", "JSDF" = "a relief", "JSDF" = "an escort", "JSDF" = "a search and rescue", "JSDF" = "a classified")
@@ -2025,7 +2025,7 @@
 	headquarters = "Proxima Centauri"
 	motto = ""
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "military"
 
 	ship_prefixes = list("PCRC" = "a risk control", "PCRC" = "a private security")
@@ -2087,7 +2087,7 @@
 	headquarters = ""
 	motto = "Strength in Numbers"
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "military"
 
 	ship_prefixes = list("HPF" = "a secure freight", "HPT" = "a training", "HPS" = "a logistics", "HPV" = "a patrol", "HPH" = "a bounty hunting", "HPX" = "an experimental", "HPC" = "a command", "HPI" = "a mercy")
@@ -2174,7 +2174,7 @@
 	headquarters = ""
 	motto = "Neca Ne Necaris"
 	autogenerate_destination_names = TRUE
-		
+
 	org_type = "military"
 
 	ship_prefixes = list("BSF" = "a secure freight", "BST" = "a training", "BSS" = "a logistics", "BSV" = "a patrol", "BSH" = "a security", "BSX" = "an experimental", "BSC" = "a command", "BSK" = "a classified")
@@ -2207,7 +2207,7 @@
 			"Daemon",
 			"Echidna",
 			"Goblin",
-			"Golem",
+			SPECIES_GOLEM,
 			"Griffin",
 			"Hobgoblin",
 			"Hydra",
@@ -2303,56 +2303,36 @@
 			"an active incident site"
 			)
 
-// Space Alien Rats.
-/datum/lore/organization/gov/altevian_hegemony
-	name = "The Altevian Hegemony" 
-	short_name = "Altevian Hegemony"
-	acronym = "AH"
-	desc = "The Altevians are a space-faring race of rodents that resemble Earth-like rats. They do not have a place they call home in terms of a planet, and instead have massive multiple-kilometer-long colony-ships that are constantly on the move and typically keep operations outside of known populated systems to not eat the resources from others. Their primary focus is trade and slavage operations and can be expected to be seen around both densely populated and empty systems for their work."
-	history = ""
-	work = "salvage and trade operators"
-	headquarters = "AH-CV Migrant"
-	motto = ""
-	org_type = "government"
+//Cheeses
+/datum/lore/organization/gov/naramadi_ascendancy
+    name = "The Naramadi Ascendancy"
+    short_name = "Naramadi Ascendancy "
+    acronym = "NA"
+    desc = "The Naramadi Ascendancy is a member-state of the Moghes Hegemony, though operating largely independant in matters of diplomacy and Trade, often sending Traders and Diplomats out to establish relations."
+    history = ""
+    work = "trade and diplmacy"
+    headquarters = "Verkihar Minor"
+    motto = ""
+    org_type = "government"
 
-	ship_prefixes = list("AH-DV" = "a diplomatic", "AH-EV" = "an exploration", "AH-FV" = "a fueling", "AH-FV" = "a cargo", "AH-SV" = "a research", "AH-TV" = "a colony-transporter", "AH-RV" = "an emergency response", "AH-RV" = "a response", "AH-MV" = "a medical")
-	ship_names = list(
-			"Platinum",
-			"Warson",
-			"Mane",
-			"Holland",
-			"Arauz",
-			"Diamond",
-			"Gold",
-			"Steam",
-			"Boiler",
-			"Slip",
-			"Lavender",
-			"Wheel",
-			"Stuntson",
-			"Desto",
-			"Palos",
-			"Matterson",
-			"Mill",
-			"Smoke",
-			"Squeakson",
-			"Rabion",
-			"Strikedown",
-			"Cluster",
-			"Ratling",
-			"Archaeologist",
-			"Beaker"
-			)
-	destination_names = list(
-			"the AH-CV Migrant flagship",
-			"one of our research colony-ships",
-			"the AH-CV Lotus",
-			"the AH-CV Anvil",
-			"the AH-CV Generations",
-			"the AH-CV Galley",
-			"the AH-CV Prosperity",
-			"the AH-CV Kitsap",
-			"the AH-CV Diamondback",
-			"one of our colony-ships",
-			"one of our production fleets"
-			) 
+    ship_prefixes = list("NA-DV" = "a diplomatic", "NA-RV" = "a quick response", "NA-TV" = "a trade", "NA-CV" = "a cargo", "NA-HV" = "a hunting")
+    ship_names = list(
+            "Seat of Power",
+            "Tools of Trade",
+            "Knowledge of Elders",
+            "Return What Is Taken",
+            "High and Mighty",
+            "Moral High Ground",
+            "Voice That Speaks",
+            "Map That Guides",
+            "Hand That Strikes",
+            "Hand That Feeds",
+            "Of Artificers Aplenty"
+            )
+    destination_names = list(
+            "the Moghes Hegemony",
+            "the Vikara Combine",
+            "Verkihar Major",
+            "Onkhera Synthetic Solutions production site",
+            "a distress beacon"
+            )

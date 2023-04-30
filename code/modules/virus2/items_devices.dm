@@ -7,12 +7,15 @@
 	w_class = ITEMSIZE_SMALL
 	item_state = "electronic"
 
-/obj/item/antibody_scanner/attack(mob/M as mob, mob/user as mob)
-	if(!istype(M,/mob/living/carbon/))
+/obj/item/antibody_scanner/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(!iscarbon(target))
 		report("Scan aborted: Incompatible target.", user)
 		return
 
-	var/mob/living/carbon/C = M
+	var/mob/living/carbon/C = target
 	if (istype(C,/mob/living/carbon/human/))
 		var/mob/living/carbon/human/H = C
 		if(!H.should_have_organ(O_HEART))
@@ -23,7 +26,7 @@
 		report("Scan Complete: No antibodies detected.", user)
 		return
 
-	if (CLUMSY in user.mutations && prob(50))
+	if (MUTATION_CLUMSY in user.mutations && prob(50))
 		// I was tempted to be really evil and rot13 the output.
 		report("Antibodies detected: [reverse_text(antigens2string(C.antibodies))]", user)
 	else

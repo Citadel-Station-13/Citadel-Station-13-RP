@@ -22,7 +22,6 @@
 
 /obj/machinery/power/quantumpad/Initialize(mapload)
 	. = ..()
-	default_apply_parts()
 	connect_to_network()
 	if(map_pad_id)
 		mapped_quantum_pads[map_pad_id] = src
@@ -46,7 +45,7 @@
 	teleport_cooldown = initial(teleport_cooldown)
 	teleport_cooldown -= (E * 100)
 
-/obj/machinery/power/quantumpad/attackby(obj/item/I, mob/user, params)
+/obj/machinery/power/quantumpad/attackby(obj/item/I, mob/user)
 	if(default_deconstruction_screwdriver(user, I))
 		return
 
@@ -79,7 +78,7 @@
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/power/quantumpad/attack_hand(mob/user)
+/obj/machinery/power/quantumpad/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -146,8 +145,8 @@
 		last_teleport = world.time
 
 		// use a lot of power
-		var/power_to_use = 10000 / power_efficiency
-		if(draw_power(power_to_use) != power_to_use)
+		var/power_to_use = 10 / power_efficiency
+		if((draw_power(power_to_use)) != power_to_use)
 			to_chat(user, "<span class='warning'>Power is not sufficient to complete a teleport. Teleport aborted.</span>")
 			return
 

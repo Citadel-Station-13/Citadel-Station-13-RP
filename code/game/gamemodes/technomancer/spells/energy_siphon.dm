@@ -18,7 +18,7 @@
 	aspect = ASPECT_SHOCK
 	var/atom/movable/siphoning = null // What the spell is currently draining.  Does nothing if null.
 	var/list/things_to_siphon = list() //Things which are actually drained as a result of the above not being null.
-	var/flow_rate = 1000 // Limits how much electricity can be drained per second.  Measured by default in god knows what.
+	var/flow_rate = 2000 // Limits how much electricity can be drained per second.  Measured in W.
 
 /obj/item/spell/energy_siphon/Initialize(mapload)
 	. = ..()
@@ -46,8 +46,6 @@
 		return
 	siphon(siphoning, owner)
 
-
-
 /obj/item/spell/energy_siphon/on_ranged_cast(atom/hit_atom, mob/user)
 	if(istype(hit_atom, /atom/movable) && within_range(hit_atom, 4))
 		var/atom/movable/AM = hit_atom
@@ -70,7 +68,7 @@
 			var/mob/living/carbon/human/H = AM
 			if(H.isSynthetic())
 				continue
-		if(AM.drain_power(1) <= 0) // This checks if whatever's in the list can be drained from.
+		if(!AM.can_drain_energy(src, NONE))
 			things_to_siphon.Remove(AM)
 
 /obj/item/spell/energy_siphon/proc/stop_siphoning()
@@ -102,14 +100,13 @@
 	if(things_to_drain.len)
 		// Don't bother with empty stuff.
 		for(var/atom/movable/AM in things_to_drain)
-			if(AM.drain_power(1) <= 0)
+			if(!AM.can_drain_energy(src, NONE))
 				things_to_drain.Remove(AM)
 		if(!things_to_drain.len)
 			return
-		var/charge_to_steal = round(flow_remaining / things_to_drain.len) // This is to drain all the cells evenly.
 		for(var/atom/movable/AM in things_to_drain)
-			var/big_number = AM.drain_power(0,0,charge_to_steal / CELLRATE) // This drains the cell, and leaves us with a big number.
-			flow_remaining = flow_remaining - (big_number * CELLRATE) // Which we reduce to our needed number by multiplying.
+			var/big_number = AM.drain_energy(user, flow_rate * 0.001) * 1000 // This drains the cell, and leaves us with a big number.
+			flow_remaining = flow_remaining - big_number // Which we reduce to our needed number by multiplying.
 			AM.update_icon() // So guns and batteries will display correctly.
 		charge_to_give = charge_to_give + (flow_rate - flow_remaining) * SIPHON_CELL_TO_ENERGY
 	// If we have 'leftover' flow, let's try to do more.
@@ -137,14 +134,14 @@
 	// Now we can actually fill up the core.
 	if(core.energy < core.max_energy)
 		give_energy(charge_to_give)
-		to_chat(user, "<span class='notice'>Stolen [charge_to_give * CELLRATE] kJ and converted to [charge_to_give] Core energy.</span>")
+		to_chat(user, "<span class='notice'>Stolen [charge_to_give * 0.001] kJ and converted to [charge_to_give] Core energy.</span>")
 		if( (core.max_energy - core.energy) < charge_to_give ) // We have some overflow, if this is true.
 			if(user.isSynthetic()) // Let's do something with it, if we're a robot.
 				charge_to_give = charge_to_give - (core.max_energy - core.energy)
 				user.nutrition =  min(user.nutrition + (charge_to_give / SIPHON_FBP_TO_ENERGY), 400)
 				to_chat(user, "<span class='notice'>Redirected energy to internal microcell.</span>")
 	else
-		to_chat(user, "<span class='notice'>Stolen [charge_to_give * CELLRATE] kJ.</span>")
+		to_chat(user, "<span class='notice'>Stolen [charge_to_give * 0.001] kJ.</span>")
 	adjust_instability(2)
 
 	if(flow_remaining == flow_rate) // We didn't drain anything.
@@ -163,21 +160,21 @@
 		spawn(0)
 			var/i = 7 // process() takes two seconds to tick, this ensures the appearance of a ongoing beam.
 			while(i)
-				var/obj/item/projectile/beam/lightning/energy_siphon/lightning = new(get_turf(source))
+				var/obj/projectile/beam/lightning/energy_siphon/lightning = new(get_turf(source))
 				lightning.firer = user
 				lightning.old_style_target(user)
 				lightning.fire()
 				i--
 				sleep(3)
 
-/obj/item/projectile/beam/lightning/energy_siphon
+/obj/projectile/beam/lightning/energy_siphon
 	name = "energy stream"
 	icon_state = "lightning"
 	range = 6 // Backup plan in-case the effect somehow misses the Technomancer.
 	power = 5 // This fires really fast, so this may add up if someone keeps standing in the beam.
 	penetrating = 5
 
-/obj/item/projectile/beam/lightning/energy_siphon/Bump(atom/A as mob|obj|turf|area, forced=0)
+/obj/projectile/beam/lightning/energy_siphon/Bump(atom/A as mob|obj|turf|area, forced=0)
 	if(A == firer) // For this, you CAN shoot yourself.
 		on_impact(A)
 
@@ -188,7 +185,7 @@
 		return 1
 	..()
 
-/obj/item/projectile/beam/lightning/energy_siphon/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
+/obj/projectile/beam/lightning/energy_siphon/projectile_attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier=0)
 	if(target_mob == firer) // This shouldn't actually occur due to Bump(), but just in-case.
 		return 1
 	if(ishuman(target_mob)) // Otherwise someone else stood in the beam and is going to pay for it.

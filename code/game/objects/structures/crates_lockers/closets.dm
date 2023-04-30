@@ -16,7 +16,7 @@
 
 	var/breakout = 0 //if someone is currently breaking out. mutex
 	var/breakout_time = 2 //2 minutes by default
-	var/breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
+	breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
 
 	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
 							  //then open it in a populated area to crash clients.
@@ -49,7 +49,7 @@
 
 /obj/structure/closet/proc/take_contents()
 	// if(istype(loc, /mob/living))
-	//	return //VOREStation Edit - No collecting mob organs if spawned inside mob
+	//	return // No collecting mob organs if spawned inside mob
 	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
 	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
 	var/obj/item/I
@@ -64,8 +64,8 @@
 		storage_capacity = content_size + 5
 
 /**
-  * The proc that fills the closet with its initial contents.
-  */
+ * The proc that fills the closet with its initial contents.
+ */
 /obj/structure/closet/proc/PopulateContents()
 	return
 
@@ -116,10 +116,8 @@
 		I.forceMove(src.loc)
 
 	for(var/mob/M in src)
-		M.forceMove(src.loc)
-		if(M.client)
-			M.client.eye = M.client.mob
-			M.client.perspective = MOB_PERSPECTIVE
+		M.forceMove(loc)
+		M.update_perspective()
 
 /obj/structure/closet/proc/open()
 	if(src.opened)
@@ -190,10 +188,8 @@
 			continue
 		if(stored_units + added_units + M.mob_size > storage_capacity)
 			break
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
 		M.forceMove(src)
+		M.update_perspective()
 		added_units += M.mob_size
 	return added_units
 
@@ -220,18 +216,18 @@
 	update_icon()
 
 // this should probably use dump_contents()
-/obj/structure/closet/ex_act(severity)
+/obj/structure/closet/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
 				A.forceMove(src.loc)
-				A.ex_act(severity + 1)
+				LEGACY_EX_ACT(A, severity + 1, null)
 			qdel(src)
 		if(2)
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
 					A.forceMove(src.loc)
-					A.ex_act(severity + 1)
+					LEGACY_EX_ACT(A, severity + 1, null)
 				qdel(src)
 		if(3)
 			if(prob(5))
@@ -249,7 +245,7 @@
 			A.forceMove(src.loc)
 		qdel(src)
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(var/obj/projectile/Proj)
 	var/proj_damage = Proj.get_structure_damage()
 	if(!proj_damage)
 		return
@@ -263,7 +259,7 @@
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
@@ -275,7 +271,7 @@
 				else
 					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
-			playsound(src, WT.usesound, 50)
+			playsound(src, WT.tool_sound, 50)
 			new /obj/item/stack/material/steel(src.loc)
 			for(var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
@@ -294,9 +290,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, opened? loc : src))
+			return
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
@@ -313,10 +308,10 @@
 					else
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
-			if(do_after(user, 20 * S.toolspeed))
+			if(do_after(user, 20 * S.tool_speed))
 				if(opened)
 					return
-				playsound(src, S.usesound, 50)
+				playsound(src, S.tool_sound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
 				for(var/mob/M in viewers(src))
@@ -327,8 +322,8 @@
 				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-			playsound(src, W.usesound, 50)
-			if(do_after(user, 20 * W.toolspeed))
+			playsound(src, W.tool_sound, 50)
+			if(do_after(user, 20 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
@@ -336,12 +331,12 @@
 		src.attack_hand(user)
 	return
 
-/obj/structure/closet/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/obj/structure/closet/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	if(istype(O, /atom/movable/screen))	//fix for HUD elements making their way into the world	-Pete
 		return
 	if(O.loc == user)
 		return
-	if(user.restrained() || user.stat || user.weakened || user.stunned || user.paralysis)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		return
 	if((!( istype(O, /atom/movable) ) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O) || user.contents.Find(src)))
 		return
@@ -368,7 +363,7 @@
 	if(!src.open())
 		to_chat(user, "<span class='notice'>It won't budge!</span>")
 
-/obj/structure/closet/attack_hand(mob/user as mob)
+/obj/structure/closet/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	src.toggle(user)
 
@@ -379,6 +374,7 @@
 		to_chat(usr, "<span class='notice'>It won't budge!</span>")
 
 /obj/structure/closet/attack_ghost(mob/ghost)
+	. = ..()
 	if(ghost.client && ghost.client.inquisitive_ghost)
 		ghost.examinate(src)
 		if (!src.opened)
@@ -389,7 +385,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(ishuman(usr) || isrobot(usr))
@@ -399,11 +395,11 @@
 		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
 
 /obj/structure/closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
-	overlays.Cut()
+	cut_overlays()
 	if(!opened)
 		icon_state = icon_closed
 		if(sealed)
-			overlays += "welded"
+			add_overlay("welded")
 	else
 		icon_state = icon_opened
 
@@ -423,7 +419,7 @@
 		return 0 //closed but not sealed...
 	return 1
 
-/obj/structure/closet/proc/mob_breakout(var/mob/living/escapee)
+/obj/structure/closet/contents_resist(mob/escapee)
 	if(breakout)
 		return
 	if(!req_breakout() && !opened)
@@ -437,30 +433,31 @@
 
 	visible_message("<span class='danger'>\The [src] begins to shake violently!</span>")
 
-	breakout = 1 //can't think of a better way to do this right now.
-	for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
-		if(!do_after(escapee, 50)) //5 seconds
-			breakout = 0
-			return
-		if(!escapee || escapee.incapacitated() || escapee.loc != src)
-			breakout = 0
-			return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
-		//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
-		if(!req_breakout())
-			breakout = 0
-			return
+	spawn(0)
+		breakout = 1 //can't think of a better way to do this right now.
+		for(var/i in 1 to (6*breakout_time * 2)) //minutes * 6 * 5seconds * 2
+			if(!do_after(escapee, 50)) //5 seconds
+				breakout = 0
+				return
+			if(!escapee || escapee.incapacitated() || escapee.loc != src)
+				breakout = 0
+				return //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened
+			//Perform the same set of checks as above for weld and lock status to determine if there is even still a point in 'resisting'...
+			if(!req_breakout())
+				breakout = 0
+				return
 
+			playsound(src.loc, breakout_sound, 100, 1)
+			animate_shake()
+			add_fingerprint(escapee)
+
+		//Well then break it!
+		breakout = 0
+		to_chat(escapee, SPAN_WARNING("You successfully break out!"))
+		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
-		add_fingerprint(escapee)
-
-	//Well then break it!
-	breakout = 0
-	to_chat(escapee, "<span class='warning'>You successfully break out!</span>")
-	visible_message("<span class='danger'>\The [escapee] successfully broke out of \the [src]!</span>")
-	playsound(src.loc, breakout_sound, 100, 1)
-	break_open()
-	animate_shake()
+		break_open()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0
@@ -481,7 +478,7 @@
 	return
 
 /obj/structure/closet/AllowDrop()
-	return TRUE
+	return !opened
 
 /obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
 	if(src.loc)
@@ -495,3 +492,9 @@
 	dump_contents()
 	spawn(1) qdel(src)
 	return 1
+
+/obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

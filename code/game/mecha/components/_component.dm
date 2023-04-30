@@ -15,9 +15,9 @@
 
 	var/list/required_type = null	// List, if it exists. Exosuits meant to use the component (Unique var changes / effects)
 
-	var/integrity
+	integrity = 100
 	var/integrity_danger_mod = 0.5	// Multiplier for comparison to max_integrity before problems start.
-	var/max_integrity = 100
+	max_integrity = 100
 
 	var/step_delay = 0
 
@@ -42,7 +42,7 @@
 		if(0 to 1)
 			. += "<span class='warning'><b>It is completely destroyed.</b></span>"
 
-/obj/item/mecha_parts/component/Initialize()
+/obj/item/mecha_parts/component/Initialize(mapload)
 	. = ..()
 	integrity = max_integrity
 
@@ -101,10 +101,12 @@
 			if(user)
 				to_chat(user, "<span class='notice'>\The [target] already has a [component_type] installed!</span>")
 			return FALSE
-		chassis = target
 		if(user)
-			user.drop_from_inventory(src)
-		forceMove(target)
+			if(!user.attempt_insert_item_for_installation(src, target))
+				return
+			else
+				forceMove(target)
+		chassis = target
 
 		if(internal_damage_flag)
 			if(integrity > (max_integrity * integrity_danger_mod))

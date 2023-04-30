@@ -1,4 +1,4 @@
-/obj/item/projectile/spell_projectile
+/obj/projectile/spell_projectile
 	name = "spell"
 	icon = 'icons/obj/projectiles.dmi'
 
@@ -15,16 +15,16 @@
 	var/proj_trail_icon_state = "trail"
 	var/list/trails = new()
 
-/obj/item/projectile/spell_projectile/Destroy()
+/obj/projectile/spell_projectile/Destroy()
 	for(var/trail in trails)
 		qdel(trail)
 	carried = null
 	return ..()
 
-/obj/item/projectile/spell_projectile/ex_act()
+/obj/projectile/spell_projectile/legacy_ex_act()
 	return
 
-/obj/item/projectile/spell_projectile/before_move()
+/obj/projectile/spell_projectile/before_move()
 	if(proj_trail && src && src.loc) //pretty trails
 		var/obj/effect/overlay/trail = new /obj/effect/overlay(src.loc)
 		trails += trail
@@ -35,21 +35,21 @@
 			trails -= trail
 			qdel(trail)
 
-/obj/item/projectile/spell_projectile/proc/prox_cast(var/list/targets)
+/obj/projectile/spell_projectile/proc/prox_cast(var/list/targets)
 	if(loc)
 		carried.prox_cast(targets, src)
 		qdel(src)
 	return
 
-/obj/item/projectile/spell_projectile/Bump(var/atom/A)
+/obj/projectile/spell_projectile/Bump(var/atom/A)
 	if(loc && carried)
 		prox_cast(carried.choose_prox_targets(user = carried.holder, spell_holder = src))
 	return 1
 
-/obj/item/projectile/spell_projectile/on_impact()
+/obj/projectile/spell_projectile/on_impact()
 	if(loc && carried)
 		prox_cast(carried.choose_prox_targets(user = carried.holder, spell_holder = src))
 	return 1
 
-/obj/item/projectile/spell_projectile/seeking
+/obj/projectile/spell_projectile/seeking
 	name = "seeking spell"

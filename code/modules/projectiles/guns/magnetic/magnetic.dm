@@ -16,7 +16,7 @@
 
 	var/obj/item/loaded                                        // Currently loaded object, for retrieval/unloading.
 	var/load_type = /obj/item/stack/rods                       // Type of stack to load with.
-	projectile_type = /obj/item/projectile/bullet/magnetic 	   // Actual fire type, since this isn't throw_at rod launcher.
+	projectile_type = /obj/projectile/bullet/magnetic 	   // Actual fire type, since this isn't throw_at_old rod launcher.
 
 	var/power_cost = 950                                       // Cost per fire, should consume almost an entire basic cell.
 	var/power_per_tick                                         // Capacitor charge per process(). Updated based on capacitor rating.
@@ -63,7 +63,7 @@
 	if(loaded)
 		overlays_to_add += image(icon, "[icon_state]_loaded")
 
-	overlays = overlays_to_add
+	add_overlay(overlays_to_add)
 	..()
 
 /obj/item/gun/magnetic/proc/show_ammo(var/mob/user)
@@ -94,10 +94,10 @@
 			if(cell)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			cell = thing
-			user.drop_from_inventory(cell)
-			cell.forceMove(src)
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
 			update_icon()
 			return
@@ -106,10 +106,9 @@
 			if(!capacitor)
 				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
 				return
-			capacitor.forceMove(get_turf(src))
-			user.put_in_hands(capacitor)
+			user.grab_item_from_interacted_with(capacitor, src)
 			user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
-			playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 			capacitor = null
 			update_icon()
 			return
@@ -118,10 +117,10 @@
 			if(capacitor)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [capacitor] installed.</span>")
 				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			capacitor = thing
-			user.drop_from_inventory(capacitor)
-			capacitor.forceMove(src)
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			power_per_tick = (power_cost*0.15) * capacitor.rating
 			user.visible_message("<span class='notice'>\The [user] slots \the [capacitor] into \the [src].</span>")
 			update_icon()
@@ -137,21 +136,21 @@
 		// specific ammo types may exist down the track.
 		var/obj/item/stack/ammo = thing
 		if(!istype(ammo))
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			loaded = thing
-			user.drop_from_inventory(thing)
-			thing.forceMove(src)
 		else
 			loaded = new load_type(src, 1)
 			ammo.use(1)
 
 		user.visible_message("<span class='notice'>\The [user] loads \the [src] with \the [loaded].</span>")
-		playsound(loc, 'sound/weapons/flipblade.ogg', 50, 1)
+		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return
 	. = ..()
 
-/obj/item/gun/magnetic/attack_hand(var/mob/user)
-	if(user.get_inactive_hand() == src)
+/obj/item/gun/magnetic/attack_hand(mob/user, list/params)
+	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
 		if(loaded)
@@ -165,7 +164,7 @@
 			removing.forceMove(get_turf(src))
 			user.put_in_hands(removing)
 			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			update_icon()
 			return
 	. = ..()
@@ -209,7 +208,7 @@
 	gun_unreliable = 0
 
 	load_type = /obj/item/fuel_assembly
-	projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+	projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 
 	power_cost = 500
 
@@ -221,20 +220,20 @@
 		if(istype(loaded, /obj/item/fuel_assembly))
 			var/obj/item/fuel_assembly/rod = loaded
 			if(rod.fuel_type == "composite" || rod.fuel_type == "deuterium") //Safety check for rods spawned in without a fueltype.
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 			else if(rod.fuel_type == "tritium")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/tritium
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/tritium
 			else if(rod.fuel_type == "phoron")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/phoron
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/phoron
 			else if(rod.fuel_type == "supermatter")
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod/supermatter
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod/supermatter
 				visible_message("<span class='danger'>The barrel of \the [src] glows a blinding white!</span>")
 				spawn(5)
 					visible_message("<span class='danger'>\The [src] begins to rattle, its acceleration chamber collapsing in on itself!</span>")
 					removable_components = FALSE
 					spawn(15)
 						audible_message("<span class='critical'>\The [src]'s power supply begins to overload as the device crumples!</span>") //Why are you still holding this?
-						playsound(loc, 'sound/effects/grillehit.ogg', 10, 1)
+						playsound(src, 'sound/effects/grillehit.ogg', 10, 1)
 						var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 						var/turf/T = get_turf(src)
 						sparks.set_up(2, 1, T)
@@ -244,7 +243,7 @@
 							explosion(src.loc, -1, 1, 2, 3)
 							qdel(src)
 			else
-				projectile_type = /obj/item/projectile/bullet/magnetic/fuelrod
+				projectile_type = /obj/projectile/bullet/magnetic/fuelrod
 
 	use_ammo()
 	capacitor.use(power_cost)

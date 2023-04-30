@@ -1,5 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 29/05/2012 15:03:04
-
 /datum/game_mode/var/list/memes = list()
 
 /datum/game_mode/meme
@@ -80,7 +78,7 @@
 	for(var/datum/mind/meme in memes)
 		var/mob/living/parasite/meme/M = new
 		var/mob/original = meme.current
-		meme.transfer_to(M)
+		meme.transfer(M)
 		M.clearHUD()
 
 		// get the host for this meme

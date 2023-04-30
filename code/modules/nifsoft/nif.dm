@@ -35,27 +35,45 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	/// For savefiles
 	var/id = NIF_ID_BASIC
 
-	var/durability = 100					// Durability remaining
-	var/bioadap = FALSE						// If it'll work in fancy species
+	/// Durability remaining
+	var/durability = 100
+	/// If it'll work in fancy species
+	var/bioadap = FALSE
 
-	var/tmp/power_usage = 0						// Nifsoft adds to this
-	var/tmp/mob/living/carbon/human/human		// Our owner!
-	var/tmp/list/nifsofts[TOTAL_NIF_SOFTWARE]	// All our nifsofts
-	var/tmp/list/nifsofts_life = list()			// Ones that want to be talked to on life()
-	var/owner									// Owner character name
-	var/examine_msg								//Message shown on examine.
-
-	var/tmp/vision_flags = 0		// Flags implants set for faster lookups
+	/// Nifsoft adds to this
+	var/tmp/power_usage = 0
+	/// Our owner!
+	var/tmp/mob/living/carbon/human/human
+	/// All our nifsofts
+	var/tmp/list/nifsofts[TOTAL_NIF_SOFTWARE]
+	/// Ones that want to be talked to on life()
+	var/tmp/list/nifsofts_life = list()
+	/// Owner character name
+	var/owner
+	/// Message shown on examine.
+	var/examine_msg
+	/// Flags implants set for faster lookups
+	var/tmp/vision_flags = 0
 	var/tmp/health_flags = 0
 	var/tmp/combat_flags = 0
 	var/tmp/other_flags = 0
+	/// Status of the NIF
+	var/tmp/stat = NIF_PREINSTALL
+	/// Time when install will finish
+	var/tmp/install_done
+	/// If it's open for maintenance (1-3)
+	var/tmp/open = FALSE
+	/// Organ we're supposed to be held in
+	var/tmp/should_be_in = BP_HEAD
 
-	var/tmp/stat = NIF_PREINSTALL		// Status of the NIF
-	var/tmp/install_done				// Time when install will finish
-	var/tmp/open = FALSE				// If it's open for maintenance (1-3)
-	var/tmp/should_be_in = BP_HEAD		// Organ we're supposed to be held in
+	/// The commlink requires this
+	var/obj/item/communicator/commlink/comm
 
-	var/obj/item/communicator/commlink/comm		// The commlink requires this
+	var/list/starting_software = list(
+		/datum/nifsoft/commlink,
+		/datum/nifsoft/soulcatcher,
+		/datum/nifsoft/hud/ar_civ
+	)
 
 	var/global/icon/big_icon
 	var/global/click_sound = 'sound/items/nif_click.ogg'
@@ -96,11 +114,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			spawn(0)
 				qdel(src)
 			return FALSE
-		else
-			addtimer(CALLBACK(src, .proc/install_free_return_software), 0)
-
-	//Free civilian AR included
-	new /datum/nifsoft/ar_civ(src)
 
 	//If given wear (like when spawned) then done
 	if(wear)
@@ -109,15 +122,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Draw me yo.
 	update_icon()
-
-// Creates software after the mob is hopefully loaded in
-/obj/item/nif/proc/install_free_return_software()
-	var/old = durability
-	//Free commlink and soulcatcher for return customers
-	new /datum/nifsoft/commlink(src)
-	new /datum/nifsoft/soulcatcher(src)
-	durability = old
-	wear(0)
 
 //Destructor cleans up references
 /obj/item/nif/Destroy()
@@ -134,13 +138,18 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		should_be_in = brain.parent_organ
 
 	if(istype(H) && !H.nif && H.species && (loc == H.get_organ(should_be_in)))
-		if(!bioadap && (H.species.flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
+		if(!bioadap && (H.species.species_flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
 			return FALSE
 
 		human = H
 		human.nif = src
 		stat = NIF_INSTALLING
-		H.verbs |= /mob/living/carbon/human/proc/set_nif_examine
+		add_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
+		menu = H.AddComponent(/datum/component/nif_menu)
+		if(starting_software)
+			for(var/path in starting_software)
+				new path(src)
+			starting_software = null
 		return TRUE
 
 	return FALSE
@@ -161,6 +170,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		forceMove(parent)
 		parent.implants += src
 		spawn(0) //Let the character finish spawning yo.
+			if(!H) //Or letting them get deleted
+				return
 			if(H.mind)
 				owner = H.mind.name
 			implant(H)
@@ -176,7 +187,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
+	QDEL_NULL(menu)
 	H.nif = null
 	human = null
 	install_done = null
@@ -205,19 +217,29 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	wear *= (rand(85,115) / 100) //Apparently rand() only takes integers.
 	durability -= wear
 
+	if(human)
+		persist_nif_data(human)
+
 	if(durability <= 0)
 		stat = NIF_TEMPFAIL
 		update_icon()
 
 		if(human)
 			notify("Danger! General system insta#^!($",TRUE)
-			to_chat(human,"<span class='danger'>Your NIF vision overlays disappear and your head suddenly seems very quiet...</span>")
+			to_chat(human, SPAN_BOLDDANGER("Your NIF vision overlays disappear and your head suddenly seems very quiet..."))
+
+//Repair update/check proc
+/obj/item/nif/proc/repair(var/repair = 0)
+	durability = min(durability + repair, initial(durability))
+
+	if(human)
+		persist_nif_data(human)
 
 //Attackby proc, for maintenance
 /obj/item/nif/attackby(obj/item/W, mob/user as mob)
 	if(open == 0 && W.is_screwdriver())
 		if(do_after(user, 4 SECONDS, src) && open == 0)
-			user.visible_message("[user] unscrews and pries open \the [src].","<span class='notice'>You unscrew and pry open \the [src].</span>")
+			user.visible_message("[user] unscrews and pries open \the [src].", SPAN_NOTICE("You unscrew and pry open \the [src]."))
 			playsound(user, 'sound/items/Screwdriver.ogg', 50, 1)
 			open = 1
 			update_icon()
@@ -310,10 +332,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 					human.adjustHalLoss(35)
 					human.custom_pain(message,35)
 				if(2)
-					human.Weaken(5)
+					human.afflict_paralyze(20 * 5)
 					to_chat(human,"<span class='danger'>A wave of weakness rolls over you.</span>")
 				if(3)
-					human.Sleeping(5)
+					human.afflict_sleeping(20 * 5)
 					to_chat(human,"<span class='danger'>You suddenly black out!</span>")
 
 		//Finishing up
@@ -330,7 +352,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			notify("Calibration complete! User data stored! Welcome to your Nanite Implant Framework!")
 
 //Called each life() tick on the mob
-/obj/item/nif/proc/life()
+/obj/item/nif/proc/on_life()
 	if(!human || loc != human.get_organ(should_be_in))
 		unimplant(human)
 		return FALSE
@@ -348,9 +370,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 			//nif_hud.process_hud(human,1) //TODO VIS
 
 			//Process all the ones that want that
-			for(var/S in nifsofts_life)
-				var/datum/nifsoft/nifsoft = S
-				nifsoft.life(human)
+			for(var/datum/nifsoft/nifsoft as anything in nifsofts_life)
+				nifsoft.on_life(human)
 
 		if(NIF_POWFAIL)
 			if(human && human.nutrition < 100)
@@ -372,8 +393,10 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 /obj/item/nif/proc/notify(var/message,var/alert = 0)
 	if(!human || stat == NIF_TEMPFAIL) return
 
+	last_notification = message //TGUI Hook
+
 	to_chat(human,"<b>\[[icon2html(thing = src.big_icon, target = human)]NIF\]</b> displays, \"<span class='[alert ? "danger" : "notice"]'>[message]</span>\"")
-	if(prob(1)) human.visible_message("<span class='notice'>\The [human.real_name] [pick(look_messages)].</span>")
+	if(prob(1)) human.visible_message(SPAN_NOTICE("\The [human.real_name] [pick(look_messages)]."))
 	if(alert)
 		SEND_SOUND(human, bad_sound)
 	else
@@ -393,6 +416,29 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 	//Was enough, reduce and return.
 	human.nutrition -= use_charge
+	return TRUE
+
+// This operates on a nifsoft *path*, not an instantiation.
+// It tells the nifsoft shop if it's installation will succeed, to prevent it
+// from charging the user for incompatible software.
+/obj/item/nif/proc/can_install(var/datum/nifsoft/path)
+	if(stat == NIF_TEMPFAIL)
+		return FALSE
+
+	if(nifsofts[initial(path.list_pos)])
+		notify("The software \"[initial(path.name)]\" is already installed.", TRUE)
+		return FALSE
+
+	if(human)
+		var/applies_to = initial(path.applies_to)
+		var/synth = human.isSynthetic()
+		if(synth && !(applies_to & NIF_SYNTHETIC))
+			notify("The software \"[initial(path.name)]\" is not supported on your chassis type.",TRUE)
+			return FALSE
+		if(!synth && !(applies_to & NIF_ORGANIC))
+			notify("The software \"[initial(path.name)]\" is not supported in organic life.",TRUE)
+			return FALSE
+
 	return TRUE
 
 //Install a piece of software
@@ -578,6 +624,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	name = "bootleg NIF"
 	desc = "A copy of a copy of a copy of a copy of... this can't be any good, right? Surely?"
 	durability = 10
+	starting_software = null
 	id = NIF_ID_BOOTLEG
 
 /obj/item/nif/authentic
@@ -597,14 +644,15 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 ////////////////////////////////
 // Special Promethean """surgery"""
-/obj/item/nif/attack(mob/living/M, mob/living/user, var/target_zone)
-	if(!ishuman(M) || !ishuman(user) || (M == user))
+/obj/item/nif/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target) || !ishuman(user) || (target == user))
 		return ..()
 
 	var/mob/living/carbon/human/U = user
-	var/mob/living/carbon/human/T = M
+	var/mob/living/carbon/human/T = target
 
-	if(istype(T.species,/datum/species/shapeshifter/promethean) && target_zone == BP_TORSO)
+	if(istype(T.species,/datum/species/shapeshifter/promethean) && U.zone_sel.selecting == BP_TORSO)
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(T.w_uniform || T.wear_suit)
 			to_chat(user,"<span class='warning'>Remove any clothing they have on, as it might interfere!</span>")
 			return
@@ -616,8 +664,8 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		"<span class='notice'>You begin installing [src] into [T]'s chest by just stuffing it in.</span>",
 		"There's a wet SQUISH noise.")
 		if(do_mob(user = user, target = T, time = 200, target_zone = BP_TORSO))
-			user.unEquip(src)
-			forceMove(eo)
+			if(!user.attempt_insert_item_for_installation(src, eo))
+				return
 			eo.implants |= src
 			implant(T)
 			playsound(T,'sound/effects/slime_squish.ogg',50,1)
@@ -630,7 +678,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		verbs -= /mob/living/carbon/human/proc/set_nif_examine
+		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

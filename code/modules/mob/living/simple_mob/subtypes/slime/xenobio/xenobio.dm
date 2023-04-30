@@ -164,20 +164,20 @@
 	set desc = "This will let you evolve from baby to adult slime."
 
 	if(stat)
-		to_chat(src, span("warning", "I must be conscious to do this..."))
+		to_chat(src, SPAN_WARNING( "I must be conscious to do this..."))
 		return
 
 	if(harmless)
-		to_chat(src, span("warning", "I have been pacified. I cannot evolve..."))
+		to_chat(src, SPAN_WARNING( "I have been pacified. I cannot evolve..."))
 		return
 
 	if(!is_adult)
 		if(amount_grown >= 10)
 			make_adult()
 		else
-			to_chat(src, span("warning", "I am not ready to evolve yet..."))
+			to_chat(src, SPAN_WARNING( "I am not ready to evolve yet..."))
 	else
-		to_chat(src, span("warning", "I have already evolved..."))
+		to_chat(src, SPAN_WARNING( "I have already evolved..."))
 
 
 /mob/living/simple_mob/slime/xenobio/verb/reproduce()
@@ -185,11 +185,11 @@
 	set desc = "This will make you split into four new slimes."
 
 	if(stat)
-		to_chat(src, span("warning", "I must be conscious to do this..."))
+		to_chat(src, SPAN_WARNING( "I must be conscious to do this..."))
 		return
 
 	if(harmless)
-		to_chat(src, span("warning", "I have been pacified. I cannot reproduce..."))
+		to_chat(src, SPAN_WARNING( "I have been pacified. I cannot reproduce..."))
 		return
 
 	if(is_adult)
@@ -210,7 +210,7 @@
 					free_tiles++
 
 			if(free_tiles < 3) // Three free tiles are needed, as four slimes are made and the 4th tile is from the center tile that the current slime occupies.
-				to_chat(src, span("warning", "It is too cramped here to reproduce..."))
+				to_chat(src, SPAN_WARNING( "It is too cramped here to reproduce..."))
 				return
 
 			var/list/babies = list()
@@ -220,14 +220,14 @@
 			var/mob/living/simple_mob/slime/new_slime = pick(babies)
 			new_slime.universal_speak = universal_speak
 			if(src.mind)
-				src.mind.transfer_to(new_slime)
+				src.mind.transfer(new_slime)
 			else
 				new_slime.key = src.key
 			qdel(src)
 		else
-			to_chat(src, span("warning", "I am not ready to reproduce yet..."))
+			to_chat(src, SPAN_WARNING( "I am not ready to reproduce yet..."))
 	else
-		to_chat(src, span("warning", "I have not evolved enough to reproduce yet..."))
+		to_chat(src, SPAN_WARNING( "I have not evolved enough to reproduce yet..."))
 
 // Used when reproducing or dying.
 /mob/living/simple_mob/slime/xenobio/proc/make_new_slime(var/desired_type)
@@ -252,11 +252,11 @@
 	step_away(baby, src)
 	return baby
 
-/mob/living/simple_mob/slime/xenobio/get_description_interaction()
+/mob/living/simple_mob/slime/xenobio/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!stat)
-		results += "[desc_panel_image("slimebaton")]to stun the slime, if it's being bad."
+		results += "[desc_panel_image("slimebaton", user)]to stun the slime, if it's being bad."
 
 	results += ..()
 

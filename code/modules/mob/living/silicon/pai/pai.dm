@@ -47,9 +47,9 @@
 		"Fox" = "pai-fox",
 		"Parrot" = "pai-parrot",
 		"Rabbit" = "pai-rabbit",
-		"Bear" = "pai-bear",  //VOREStation Edit
-		"Fennec" = "pai-fen",  // VOREStation Edit - Rykka
-		"Fennec" = "pai-typezero"  //VOREStation Edit
+		"Bear" = "pai-bear",
+		"Fennec" = "pai-fen",
+		"Fennec" = "pai-typezero",
 		)
 
 	var/global/list/possible_say_verbs = list(
@@ -58,10 +58,11 @@
 		"Beep" = list("beeps","beeps loudly","boops"),
 		"Chirp" = list("chirps","chirrups","cheeps"),
 		"Feline" = list("purrs","yowls","meows"),
-		"Canine" = list("yaps","barks","woofs")
+		"Canine" = list("yaps","barks","woofs"),
 		)
 
-	var/obj/item/pai_cable/cable		// The cable we produce and use when door or camera jacking
+	/// The cable we produce and use when door or camera jacking.
+	var/obj/item/pai_cable/cable
 
 	var/master				// Name of the one who commands us
 	var/master_dna			// DNA string for owner verification
@@ -110,16 +111,8 @@
 			card.radio = new /obj/item/radio(src.card)
 		radio = card.radio
 
-	//Default languages without universal translator software
-	add_language(LANGUAGE_SOL_COMMON, 1)
-	add_language(LANGUAGE_TRADEBAND, 1)
-	add_language(LANGUAGE_GUTTER, 1)
-	add_language(LANGUAGE_EAL, 1)
-	add_language(LANGUAGE_TERMINUS, 1)
-	add_language(LANGUAGE_SIGN, 0)
-
-	verbs += /mob/living/silicon/pai/proc/choose_chassis
-	verbs += /mob/living/silicon/pai/proc/choose_verbs
+	add_verb(src, /mob/living/silicon/pai/proc/choose_chassis)
+	add_verb(src, /mob/living/silicon/pai/proc/choose_verbs)
 
 	//PDA
 	pda = new(src)
@@ -128,27 +121,24 @@
 		pda.owner = text("[]", src)
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
-	..()
 
 /mob/living/silicon/pai/Login()
 	..()
-	// Vorestation Edit: Meta Info for pAI
-	if (client.prefs)
+	// Meta Info for pAI
+	if(client.prefs)
 		ooc_notes = client.prefs.metadata
-
 
 // this function shows the information about being silenced as a pAI in the Status panel
 /mob/living/silicon/pai/proc/show_silenced()
+	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
+/mob/living/silicon/pai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		. += show_silenced()
 
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
@@ -193,16 +183,17 @@
 
 /mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C)
-		src.unset_machine()
-		src.reset_view(null)
+		unset_machine()
+		reset_perspective()
 		return 0
-	if (stat == 2 || !C.status || !(src.network in C.network)) return 0
+	if (stat == 2 || !C.status || !(src.network in C.network))
+		return 0
 
 	// ok, we're alive, camera is good and in our network...
 
-	src.set_machine(src)
-	src.current = C
-	src.reset_view(C)
+	set_machine(src)
+	current = C
+	reset_perspective(C)
 	return 1
 
 /mob/living/silicon/pai/verb/reset_record_view()
@@ -218,12 +209,9 @@
 	SSnanoui.update_uis(src)
 	to_chat(usr, "<span class='notice'>You reset your record-viewing software.</span>")
 
-/mob/living/silicon/pai/cancel_camera()
-	set category = "pAI Commands"
-	set name = "Cancel Camera View"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
+/mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
+	. = ..()
+	cameraFollow = null
 
 //Addition by Mord_Sith to define AI's network change ability
 /*
@@ -270,7 +258,7 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -287,10 +275,10 @@
 		return 0
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
-		var/datum/belly/inside_belly = check_belly(card) //VOREStation edit.
-		if(inside_belly) //VOREStation edit.
-			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>") //VOREStation edit.
-			return 0 //VOREStation edit.
+		var/datum/belly/inside_belly = check_belly(card)
+		if(inside_belly)
+			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
+			return 0
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
@@ -299,29 +287,30 @@
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
+		holder.drop_item_to_ground(card, INV_OP_FORCE)
 	else if(istype(card.loc,/obj/item/pda))
 		var/obj/item/pda/holder = card.loc
 		holder.pai = null
 
-	src.client.perspective = EYE_PERSPECTIVE
-	src.client.eye = src
-	src.forceMove(get_turf(card))
-
+	forceMove(card.loc)
 	card.forceMove(src)
+	update_perspective()
+
 	card.screen_loc = null
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
-	verbs += /mob/living/silicon/pai/proc/pai_nom //VOREStation edit
-	verbs += /mob/living/proc/set_size //VOREStation edit
-	verbs += /mob/living/proc/shred_limb //VORREStation edit
+	if(istype(T))
+		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+
+	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/shred_limb)
 
 /mob/living/silicon/pai/verb/fold_up()
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc == card)
@@ -340,14 +329,19 @@
 	var/finalized = "No"
 	while(finalized == "No" && src.client)
 
-		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in possible_chassis
-		if(!choice) return
+		choice = input(usr,"What would you like to use for your mobile chassis icon?") as null|anything in (list("-- LOAD CHARACTER SLOT --") + possible_chassis)
+		if(!choice)
+			return
 
-		icon_state = possible_chassis[choice]
+		if(choice == "-- LOAD CHARACTER SLOT --")
+			icon = render_hologram_icon(usr.client.prefs.render_to_appearance(PREF_COPY_TO_FOR_RENDER | PREF_COPY_TO_NO_CHECK_SPECIES | PREF_COPY_TO_UNRESTRICTED_LOADOUT), 210)
+		else
+			icon = 'icons/mob/pai.dmi'
+			icon_state = possible_chassis[choice]
 		finalized = alert("Look at your sprite. Is this what you wish to use?",,"No","Yes")
 
 	chassis = possible_chassis[choice]
-	verbs |= /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/hide)
 
 /mob/living/silicon/pai/proc/choose_verbs()
 	set category = "pAI Commands"
@@ -367,31 +361,31 @@
 
 	// Pass lying down or getting up to our pet human, if we're in a rig.
 	if(istype(src.loc,/obj/item/paicard))
-		resting = 0
+		set_resting(FALSE)
 		var/obj/item/rig/rig = src.get_rig()
 		if(istype(rig))
 			rig.force_rest(src)
 	else
-		resting = !resting
+		toggle_resting()
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"
-		update_icon() //VOREStation edit
-		to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
+		update_icon()
+		to_chat(src, SPAN_NOTICE("You are now [resting ? "resting" : "getting up"]"))
 
-	canmove = !resting
+	update_mobility()
 
 //Overriding this will stop a number of headaches down the track.
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
-		src.updatehealth()
+		src.adjustBruteLoss(W.damage_force)
+		src.update_health()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/pai/attack_hand(mob/user as mob)
+/mob/living/silicon/pai/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_HELP)
 		visible_message("<span class='notice'>[user.name] pats [src].</span>")
 	else
@@ -406,15 +400,13 @@
 	if(src.loc == card)
 		return
 
-	release_vore_contents() //VOREStation Add
+	release_vore_contents()
 
 	var/turf/T = get_turf(src)
-	if(istype(T)) T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+	if(istype(T))
+		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
 
-	if(client)
-		src.stop_pulling()
-		src.client.perspective = EYE_PERSPECTIVE
-		src.client.eye = card
+	stop_pulling()
 
 	//stop resting
 	resting = 0
@@ -422,21 +414,17 @@
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(get_turf(src))
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
-	canmove = 1
-	resting = 0
+	card.forceMove(loc)
+	forceMove(card)
+	update_perspective()
+	set_resting(FALSE)
+	update_mobility()
 	icon_state = "[chassis]"
-	verbs -= /mob/living/silicon/pai/proc/pai_nom //VOREStation edit. Let's remove their nom verb
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()
@@ -499,3 +487,8 @@
 	visible_message("<b>[src]</b> fades away from the screen, the pAI device goes silent.")
 	card.removePersonality()
 	clear_client()
+
+// See software.dm for Topic()
+/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
+	// Resting is just an aesthetic feature for them.
+	return ..(movable, be_close, no_dexterity, no_tk)

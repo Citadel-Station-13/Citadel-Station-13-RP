@@ -19,16 +19,16 @@
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-	if (has_suit)	//if we are part of a suit
+/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
+	if (accessory_host)	//if we are part of a suit
 		hold.open(user)
 		return
 
 	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
 		..(user)
 
-/obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
-	if (has_suit)
+/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
+	if (accessory_host)
 		return
 
 	if (hold.handle_mousedrop(usr, over_object))
@@ -41,7 +41,10 @@
 	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You empty [src].</span>")
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)
@@ -110,7 +113,7 @@
 	desc = "Sturdy mess of black synthcotton belts and buckles."
 	icon_state = "pilot_webbing2"
 	sprite_sheets = list(
-			"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 			)
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)

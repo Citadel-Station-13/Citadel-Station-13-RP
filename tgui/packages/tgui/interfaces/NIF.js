@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Modal, Section, Dropdown, AnimatedNumber, NoticeBox, Table } from "../components";
 import { Window } from "../layouts";
 
 const NIF_WORKING = 0;
@@ -13,12 +12,14 @@ const NIF_PREINSTALL = 4;
 const validThemes = [
   "abductor",
   "cardtable",
+  // "clockcult", //We can rebuild you... STRONGER! //aka this on my TODO -Zan
   "hackerman",
   "malfunction",
   "ntos",
   "paper",
   "retro",
   "syndicate",
+  // "wizard",
 ];
 
 export const NIF = (props, context) => {
@@ -94,11 +95,12 @@ export const NIF = (props, context) => {
           <Button
             icon="cogs"
             tooltip="Settings"
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-end"
             selected={settingsOpen}
             onClick={() => setSettingsOpen(!settingsOpen)} />
         }>
-          {settingsOpen && <NIFSettings /> || <NIFMain setViewing={setViewing} />}
+          {settingsOpen && <NIFSettings />
+          || <NIFMain setViewing={setViewing} />}
         </Section>
       </Window.Content>
     </Window>
@@ -174,7 +176,8 @@ const NIFMain = (props, context) => {
               average: [25, 50],
               bad: [-Infinity, 0],
             }}>
-            {getNifCondition(nif_stat, nif_percent)} (<AnimatedNumber value={nif_percent} />%)
+            {getNifCondition(nif_stat, nif_percent)}
+            (<AnimatedNumber value={nif_percent} />%)
           </ProgressBar>
         </LabeledList.Item>
         <LabeledList.Item label={"NIF Power"}>

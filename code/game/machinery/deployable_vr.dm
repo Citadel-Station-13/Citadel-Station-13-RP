@@ -5,7 +5,7 @@
 	icon_state = "cutout_basic"
 
 	maxhealth = 15 //Weaker than normal barricade
-	anchored = 0
+	anchored = FALSE
 
 	var/fake_name = "unknown"
 	var/fake_desc = "You have to be closer to examine this creature."
@@ -36,43 +36,43 @@
 		return
 	toppled = TRUE
 	icon_state = "cutout_pushed_over"
-	density = 0	
+	density = FALSE
 	name = initial(name)
 	desc = initial(desc)
-	visible_message("<span class='warning'>[src] topples over!</span>")
+	visible_message(SPAN_WARNING("[src] topples over!"))
 
 /obj/structure/barricade/cutout/proc/untopple()
 	if(!toppled)
 		return
 	toppled = FALSE
 	icon_state = initial(icon_state)
-	density = 1
+	density = TRUE
 	name = fake_name
 	desc = fake_desc
-	visible_message("<span class='warning'>[src] is uprighted to their proper position.</span>")
+	visible_message(SPAN_WARNING("[src] is uprighted to their proper position."))
 
 /obj/structure/barricade/cutout/CheckHealth()
 	if(!toppled && (health < (maxhealth/2)))
 		topple()
 	..()
 
-/obj/structure/barricade/cutout/attack_hand(var/mob/user)
+/obj/structure/barricade/cutout/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 
 	if(toppled)
 		untopple()
 
-/obj/structure/barricade/cutout/examine(var/mob/user)
+/obj/structure/barricade/cutout/examine(mob/user)
 	. = ..()
 
 	if(Adjacent(user))
-		. += "<span class='notice'>... from this distance, they seem to be made of [material.name] ...</span>"
+		. += SPAN_NOTICE("... from this distance, they seem to be made of [material.name] ...")
 
-/obj/structure/barricade/cutout/attackby(var/obj/I, var/mob/user)
+/obj/structure/barricade/cutout/attackby(obj/I, mob/user)
 	if(is_type_in_list(I, painters))
-		var/choice = input(user, "What would you like to paint the cutout as?", "Cutout Painting") as null|anything in cutout_types
-		if(!choice || !Adjacent(user, src) || I != user.get_active_hand())
+		var/choice = tgui_input_list(user, "What would you like to paint the cutout as?", "Cutout Painting", cutout_types)
+		if(!choice || !Adjacent(user, src) || I != user.get_active_held_item())
 			return TRUE
 		if(do_after(user, 10 SECONDS, src))
 			var/picked_type = cutout_types[choice]

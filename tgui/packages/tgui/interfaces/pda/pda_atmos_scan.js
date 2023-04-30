@@ -1,8 +1,7 @@
 import { filter } from 'common/collections';
-import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../../components";
+import { decodeHtmlEntities } from 'common/string';
+import { useBackend } from "../../backend";
+import { Box, LabeledList } from "../../components";
 
 const getItemColor = (value, min2, min1, max1, max2) => {
   if (value < min2) {
@@ -34,7 +33,13 @@ export const pda_atmos_scan = (props, context) => {
             <LabeledList.Item
               key={item.entry}
               label={item.entry}
-              color={getItemColor(item.val, item.bad_low, item.poor_low, item.poor_high, item.bad_high)}>
+              color={getItemColor(
+                item.val,
+                item.bad_low,
+                item.poor_low,
+                item.poor_high,
+                item.bad_high,
+              )}>
               {item.val}{decodeHtmlEntities(item.units)}
             </LabeledList.Item>
           ))}

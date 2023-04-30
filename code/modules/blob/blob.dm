@@ -25,7 +25,7 @@
 /obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
-/obj/effect/blob/ex_act(severity)
+/obj/effect/blob/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)
@@ -40,7 +40,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/take_damage(var/damage)	// VOREStation Edit
+/obj/effect/blob/take_damage(damage)
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -73,11 +73,11 @@
 		qdel(GR)
 		return
 	for(var/obj/structure/reagent_dispensers/fueltank/Fuel in T)
-		Fuel.ex_act(2)
+		LEGACY_EX_ACT(Fuel, 2, null)
 		return
 	for(var/obj/machinery/door/D in T) // There can be several - and some of them can be open, locate() is not suitable
 		if(D.density)
-			D.ex_act(2)
+			LEGACY_EX_ACT(D, 2, null)
 			return
 	var/obj/structure/foamedmetal/F = locate() in T
 	if(F)
@@ -88,9 +88,9 @@
 		I.deflate(1)
 		return
 
-	var/obj/vehicle/V = locate() in T
+	var/obj/vehicle_old/V = locate() in T
 	if(V)
-		V.ex_act(2)
+		LEGACY_EX_ACT(V, 2, null)
 		return
 	var/obj/mecha/M = locate() in T
 	if(M)
@@ -122,7 +122,7 @@
 		return
 	B.pulse(forceLeft - 1, dirs)
 
-/obj/effect/blob/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/blob/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)
 		return
 
@@ -140,11 +140,11 @@
 	var/damage = 0
 	switch(W.damtype)
 		if("fire")
-			damage = (W.force / fire_resist)
+			damage = (W.damage_force / fire_resist)
 			if(istype(W, /obj/item/weldingtool))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 		if("brute")
-			damage = (W.force / brute_resist)
+			damage = (W.damage_force / brute_resist)
 
 	take_damage(damage)
 	return

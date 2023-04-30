@@ -22,26 +22,22 @@
 
 /mob/living/carbon/alien/diona/Initialize(mapload)
 	. = ..()
-	species = GLOB.all_species[SPECIES_DIONA]
+	species = SScharacters.resolve_species_path(/datum/species/diona)
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
-	verbs += /mob/living/carbon/alien/diona/proc/merge
-
-/mob/living/carbon/alien/diona/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
-	I.forceMove(drop_location())
-	return TRUE
+	add_verb(src, /mob/living/carbon/alien/diona/proc/diona_merge)
 
 /mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
 	if(hat)
 		return
 	hat = new_hat
-	new_hat.loc = src
+	new_hat.forceMove(src)
 	update_icons()
 
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)
 	if(D.stat != CONSCIOUS)
 		return
-	if(prob(33) && D.canmove && isturf(D.loc) && !D.pulledby) //won't move if being pulled
+	if(prob(33) && CHECK_MOBILITY(D, MOBILITY_CAN_MOVE) && isturf(D.loc) && !D.pulledby) //won't move if being pulled
 		step(D, pick(GLOB.cardinal))
 	if(prob(1))
 		D.emote(pick("scratch","jump","chirp","roll"))

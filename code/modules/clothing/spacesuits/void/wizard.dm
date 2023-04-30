@@ -3,9 +3,9 @@
 	name = "gem-encrusted voidsuit helmet"
 	desc = "A bizarre gem-encrusted helmet that radiates magical energies."
 	icon_state = "rig0-wiz"
-	item_state_slots = list(slot_r_hand_str = "wiz_helm", slot_l_hand_str = "wiz_helm")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wiz_helm", SLOT_ID_LEFT_HAND = "wiz_helm")
 	unacidable = 1 //No longer shall our kind be foiled by lone chemists with spray bottles!
-	armor = list(melee = 40, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
+	armor_type = /datum/armor/wizard
 	siemens_coefficient = 0.7
 	sprite_sheets_refit = null
 	sprite_sheets_obj = null
@@ -15,11 +15,11 @@
 	icon_state = "rig-wiz"
 	name = "gem-encrusted voidsuit"
 	desc = "A bizarre gem-encrusted suit that radiates magical energies."
-	item_state_slots = list(slot_r_hand_str = "wiz_voidsuit", slot_l_hand_str = "wiz_voidsuit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wiz_voidsuit", SLOT_ID_LEFT_HAND = "wiz_voidsuit")
 	slowdown = 1
 	w_class = ITEMSIZE_NORMAL
 	unacidable = 1
-	armor = list(melee = 40, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
+	armor_type = /datum/armor/wizard
 	siemens_coefficient = 0.7
 	sprite_sheets_refit = null
 	sprite_sheets_obj = null
@@ -30,13 +30,13 @@
 	name = "berserk knight helmet"
 	desc = "A bulky helmet that radiates ravenous magical energies."
 	icon_state = "knight_berserker"
-	item_state_slots = list(slot_r_hand_str = "syndie_helm", slot_l_hand_str = "syndie_helm")
-	armor = list(melee = 70, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_helm", SLOT_ID_LEFT_HAND = "syndie_helm")
+	armor_type = /datum/armor/wizard/beserk
 	light_overlay = "bk_overlay"
 
 /obj/item/clothing/suit/space/void/wizard/berserk_knight
 	name = "berserk knight voidsuit"
 	desc = "A bloodsoaked suit that emits a nauseating aura of hatred."
 	icon_state = "knight_berserker"
-	item_state_slots = list(slot_r_hand_str = "syndie_voidsuit", slot_l_hand_str = "syndie_voidsuit")
-	armor = list(melee = 70, bullet = 20, laser = 20,energy = 20, bomb = 35, bio = 100, rad = 60)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndie_voidsuit", SLOT_ID_LEFT_HAND = "syndie_voidsuit")
+	armor_type = /datum/armor/wizard/beserk

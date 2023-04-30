@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Box, Button, LabeledList, ProgressBar, Section, NumberInput } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";
 
 export const Farmbot = (props, context) => {
@@ -22,7 +22,7 @@ export const Farmbot = (props, context) => {
   return (
     <Window width={450} height={540}>
       <Window.Content scrollable>
-        <Section title="Automatic Hyrdoponic Assisting Unit v2.0" buttons={
+        <Section title="Automatic Hydroponic Assistance Unit v2.0" buttons={
           <Button
             icon="power-off"
             selected={on}

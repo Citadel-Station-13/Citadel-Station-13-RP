@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, NumberInput } from "../components";
+import { Box, Button, LabeledList, Section, NumberInput } from "../components";
 import { TemporaryNotice } from './common/TemporaryNotice';
 import { Window } from "../layouts";
 
@@ -87,7 +86,9 @@ const TelecommsMultitoolMenuStatus = (props, context) => {
         {multitool ? (
           <LabeledList.Item label="Multitool Buffer">
             {multitool_buffer ? (
-              <Fragment>{multitool_buffer.name} ({multitool_buffer.id})</Fragment>
+              <Fragment>{multitool_buffer.name}
+                ({multitool_buffer.id})
+              </Fragment>
             ) : null}
             <Button
               color={multitool_buffer ? "green" : null}

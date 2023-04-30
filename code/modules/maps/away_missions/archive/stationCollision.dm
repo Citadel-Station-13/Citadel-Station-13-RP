@@ -43,11 +43,11 @@
 /*
  * Landmarks - Instead of spawning a new object type, I'll spawn the bible using a landmark!
  */
-/obj/effect/landmark/sc_bible_spawner
+/obj/landmark/sc_bible_spawner
 	name = "Safecode hint spawner"
 	delete_me = TRUE
 
-/obj/effect/landmark/sc_bible_spawner/Initialize()
+/obj/landmark/sc_bible_spawner/Initialize(mapload)
 	. = ..()
 	var/obj/item/storage/bible/B = new /obj/item/storage/bible/booze(src.loc)
 	B.name = "The Holy book of the Geometer"
@@ -66,32 +66,32 @@ obj/item/gun/energy/laser/retro/sc_retro
 	name ="retro laser"
 	icon_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by NanoTrasen's security or military forces."
-	projectile_type = "/obj/item/projectile/practice"
+	projectile_type = "/obj/projectile/practice"
 	//clumsy_check = 0 //No sense in having a harmless gun blow up in the clowns face
 
 //Syndicate silenced pistol. This definition is not necessary, it's just habit.
-/obj/item/gun/projectile/silenced/sc_silenced
+/obj/item/gun/ballistic/silenced/sc_silenced
 
 //Make it so that these guns only spawn with a couple bullets... if any
-/obj/item/gun/projectile/silenced/sc_silenced/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/silenced/sc_silenced/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Syndicate sub-machine guns.
-/obj/item/gun/projectile/automatic/c20r/sc_c20r
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r
 
-/obj/item/gun/projectile/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
 			loaded -= ammo
 
 //Barman's shotgun
-/obj/item/gun/projectile/shotgun/pump/sc_pump
+/obj/item/gun/ballistic/shotgun/pump/sc_pump
 
-/obj/item/gun/projectile/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
+/obj/item/gun/ballistic/shotgun/pump/sc_pump/Initialize(mapload, starts_loaded)
 	. = ..()
 	for(var/ammo in loaded)
 		if(prob(95)) //95% chance
@@ -198,7 +198,7 @@ var/sc_safecode5 = "[rand(0,9)]"
 		L.gib()
 	else if(istype(A,/obj/))
 		var/obj/O = A
-		O.ex_act(1.0)
+		O.legacy_ex_act(1.0)
 		if(O) qdel(O)
 	else if(isturf(A))
 		var/turf/T = A
@@ -211,6 +211,6 @@ var/sc_safecode5 = "[rand(0,9)]"
 		T.ChangeTurf(/turf/space)
 	return
 
-/obj/machinery/singularity/narsie/sc_Narsie/ex_act()
+/obj/machinery/singularity/narsie/sc_Narsie/legacy_ex_act()
 	return
 */

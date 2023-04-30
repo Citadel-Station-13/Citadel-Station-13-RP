@@ -39,15 +39,15 @@
 			command_announcement.Announce("The station has passed the radiation belt. Please allow for up to one minute while radiation levels dissipate, and report to medbay if you experience any unusual symptoms. Maintenance will lose all access again shortly.", "Anomaly Alert")
 
 /datum/gm_action/radiation_storm/proc/radiate()
-	var/radiation_level = rand(15, 35)
+	var/radiation_level = rand(50, 200)
 	for(var/z in GLOB.using_map.station_levels)
-		SSradiation.z_radiate(locate(1, 1, z), radiation_level, 1)
+		z_radiation(null, z, radiation_level, z_radiate_flags = Z_RADIATE_CHECK_AREA_SHIELD)
 
 	for(var/mob/living/carbon/C in living_mob_list)
 		var/area/A = get_area(C)
 		if(!A)
 			continue
-		if(A.flags & RAD_SHIELDED)
+		if(A.area_flags & AREA_RAD_SHIELDED)
 			continue
 		if(istype(C,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = C

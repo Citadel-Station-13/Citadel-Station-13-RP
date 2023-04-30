@@ -44,6 +44,10 @@
 	exotic_amount = 3
 	exotic_type = /obj/item/stack/sinew
 
+/mob/living/simple_mob/creature/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
 // Strong Variant
 /mob/living/simple_mob/creature/strong
 	maxHealth = 160

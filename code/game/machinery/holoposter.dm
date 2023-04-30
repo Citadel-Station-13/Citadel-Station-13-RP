@@ -4,8 +4,8 @@ GLOBAL_LIST_EMPTY(holoposters)
 	desc = "A wall-mounted holographic projector displaying advertisements by all manner of factions. How much do they pay to advertise here?"
 	icon = 'icons/obj/holoposter_vr.dmi'
 	icon_state = "off"
-	anchored = 1
-	use_power = 1
+	anchored = TRUE
+	use_power = TRUE
 	idle_power_usage = 80
 	power_channel = ENVIRON
 	var/icon_forced = FALSE
@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 		"moebius" = list(LIGHT_COLOR_PURPLE, "Moebius. One of the few companies worth merit beyond their local bubble staffed completely by synthetics. 'For synths, by synths.'")
 	)
 
-/obj/machinery/holoposter/Initialize()
+/obj/machinery/holoposter/Initialize(mapload)
 	. = ..()
 	set_rand_sprite()
 	GLOB.holoposters += src
@@ -42,23 +42,23 @@ GLOBAL_LIST_EMPTY(holoposters)
 	. += examine_addon
 
 /obj/machinery/holoposter/update_icon()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "off"
 		examine_addon = "It appears to be powered off."
 		set_light(0)
 		return
 	var/new_color = LIGHT_COLOR_HALOGEN
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "glitch"
 		examine_addon = "It appears to be malfunctioning."
 		new_color = "#6A6C71"
 	else
-		if((z in GLOB.using_map.station_levels) && global.security_level) // 0 is fine, everything higher is alert levels
+		if((z in GLOB.using_map.station_levels) && GLOB.security_level) // 0 is fine, everything higher is alert levels
 			icon_state = "attention"
 			examine_addon = "It warns you to remain calm and contact your supervisor as soon as possible."
 			new_color =  "#AA7039"
 			alerting = TRUE
-		else if(alerting && !global.security_level) // coming out of alert
+		else if(alerting && !GLOB.security_level) // coming out of alert
 			alerting = FALSE
 			set_rand_sprite()
 			return
@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 
 /obj/machinery/holoposter/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		return
 	if (W.is_multitool())
 		playsound(src, 'sound/items/penclick.ogg', 60, 1)
@@ -88,7 +88,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 		if(!Adjacent(user))
 			return
 		if(icon_state == "random")
-			stat &= ~BROKEN
+			machine_stat &= ~BROKEN
 			icon_forced = FALSE
 			if(!mytimer)
 				mytimer = addtimer(CALLBACK(src, .proc/set_rand_sprite), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
@@ -97,20 +97,19 @@ GLOBAL_LIST_EMPTY(holoposters)
 		icon_forced = TRUE
 		if(mytimer)
 			deltimer(mytimer)
-		stat &= ~BROKEN
+		machine_stat &= ~BROKEN
 		update_icon()
 		return
 
-/obj/machinery/holoposter/attack_ai(mob/user as mob)
+/obj/machinery/holoposter/attack_ai(mob/user)
 	return attack_hand(user)
 
 /obj/machinery/holoposter/power_change()
-	var/wasUnpowered = stat & NOPOWER
+	var/wasUnpowered = machine_stat & NOPOWER
 	..()
-	if(wasUnpowered != (stat & NOPOWER))
+	if(wasUnpowered != (machine_stat & NOPOWER))
 		update_icon()
 
 /obj/machinery/holoposter/emp_act()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
-

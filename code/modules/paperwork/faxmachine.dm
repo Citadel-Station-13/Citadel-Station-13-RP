@@ -1,15 +1,15 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Virgo-Prime Governmental Authority", "Supply") // Vorestation Edit
+var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Hadii's Folly Governmental Authority", "Supply")
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
-	icon = 'icons/obj/library.dmi'
+	icon = 'icons/modules/paperwork/machinery/fax.dmi'
 	icon_state = "fax"
 	insert_anim = "faxsend"
-	req_one_access = list(access_lawyer, access_heads, access_armory, access_qm)
+	req_one_access = list(ACCESS_COMMAND_IAA, ACCESS_COMMAND_BRIDGE, ACCESS_SECURITY_ARMORY, ACCESS_SUPPLY_QM)
 
 	density = 0
 	use_power = USE_POWER_IDLE
@@ -31,7 +31,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
 
-/obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/faxmachine/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)
@@ -92,16 +92,17 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		if (scan)
 			if(ishuman(usr))
 				scan.loc = usr.loc
-				if(!usr.get_active_hand())
-					usr.put_in_hands(scan)
+				if(!usr.get_active_held_item())
+					usr.put_in_hands_or_drop(scan)
 				scan = null
 			else
 				scan.loc = src.loc
 				scan = null
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-				I.loc = src
+			var/obj/item/I = usr.get_active_held_item()
+			if (istype(I, /obj/item/card/id))
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				scan = I
 		authenticated = 0
 
@@ -120,8 +121,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 
 	SSnanoui.update_uis(src)
 
-/obj/machinery/photocopier/faxmachine/proc/sendfax(var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/sendfax(destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)
@@ -137,8 +138,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
-/obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/receivefax(obj/item/incoming)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return 0
 
 	if(department == "Unknown")
@@ -163,8 +164,8 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	use_power(active_power_usage)
 	return 1
 
-/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	use_power(200)
@@ -187,7 +188,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	//message badmins that a fax has arrived
 	if (destination == GLOB.using_map.boss_name)
 		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
-	else if (destination == "Virgo-Prime Governmental Authority") // Vorestation Edit
+	else if (destination == "Virgo-Prime Governmental Authority")
 		message_admins(sender, "VIRGO GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
 	else if (destination == "Supply")
 		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
@@ -205,12 +206,10 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	msg += "(<a href='?_src_=holder;FaxReply=\ref[sender];originfax=\ref[src];replyorigin=[reply_type]'>REPLY</a>)</b>: "
 	msg += "Receiving '[sent.name]' via secure connection ... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a></span>"
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(check_rights((R_ADMIN|R_MOD),0,C))
 			to_chat(C, msg)
 			SEND_SOUND(C, sound('sound/machines/printer.ogg'))
 
-	// VoreStation Edit Start
 	var/faxid = export_fax(sent)
 	message_chat_admins(sender, faxname, sent, faxid, font_colour)
-	// VoreStation Edit End

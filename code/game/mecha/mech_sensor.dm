@@ -3,9 +3,9 @@
 	icon_state = "airlock_sensor_off"
 	name = "mechatronic sensor"
 	desc = "Regulates mech movement."
-	anchored = 1
-	density = 1
-	throwpass = 1
+	anchored = TRUE
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	use_power = USE_POWER_IDLE
 	layer = ON_WINDOW_LAYER
 	power_channel = EQUIP
@@ -15,26 +15,27 @@
 	var/frequency = 1379
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/mech_sensor/CanPass(atom/movable/mover, turf/target)
-	. = ..()
+/obj/machinery/mech_sensor/CanAllowThrough(atom/movable/mover, turf/target)
 	if(!enabled())
 		return TRUE
+	if(!(get_dir(src, target) & dir))
+		return TRUE
+	if(!is_blocked(mover))
+		return TRUE
+	give_feedback(mover)
+	return FALSE
 
-	if((get_dir(loc, target) & dir) && src.is_blocked(mover))
-		src.give_feedback(mover)
-		return FALSE
-	return TRUE
-
-/obj/machinery/mech_sensor/proc/is_blocked(O as obj)
-	if(istype(O, /obj/mecha/medical/odysseus))
-		var/obj/mecha/medical/odysseus/M = O
-		for(var/obj/item/mecha_parts/mecha_equipment/ME in M.equipment)
-			if(istype(ME, /obj/item/mecha_parts/mecha_equipment/tool/sleeper))
-				var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S = ME
-				if(S.occupant != null)
-					return 0
-
-	return istype(O, /obj/mecha) || istype(O, /obj/vehicle)
+/obj/machinery/mech_sensor/proc/is_blocked(atom/movable/AM)
+	if(ismecha(AM))
+		var/obj/mecha/M = AM
+		if(istype(M, /obj/mecha/medical/odysseus))
+			for(var/obj/item/mecha_parts/mecha_equipment/tool/sleeper/S in M.equipment)
+				if(S.occupant)
+					return FALSE
+		return TRUE
+	if(isvehicle(AM))
+		return TRUE
+	return FALSE
 
 /obj/machinery/mech_sensor/proc/give_feedback(O as obj)
 	var/block_message = "<span class='warning'>Movement control overridden. Area denial active.</span>"
@@ -46,8 +47,8 @@
 		var/obj/mecha/R = O
 		if(R && R.occupant)
 			to_chat(R.occupant,block_message)
-	else if(istype(O, /obj/vehicle/train/engine))
-		var/obj/vehicle/train/engine/E = O
+	else if(istype(O, /obj/vehicle_old/train/engine))
+		var/obj/vehicle_old/train/engine/E = O
 		if(E && E.load && E.is_train_head())
 			to_chat(E.load,block_message)
 
@@ -56,12 +57,12 @@
 		feedback_timer = 0
 
 /obj/machinery/mech_sensor/proc/enabled()
-	return on && !(stat & NOPOWER)
+	return on && !(machine_stat & NOPOWER)
 
 /obj/machinery/mech_sensor/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/mech_sensor/update_icon(var/safety = 0)
@@ -70,7 +71,7 @@
 	else
 		icon_state = "airlock_sensor_off"
 
-/obj/machinery/mech_sensor/Initialize()
+/obj/machinery/mech_sensor/Initialize(mapload)
 	. = ..()
 	set_frequency(frequency)
 
@@ -82,7 +83,7 @@
 		radio_connection = radio_controller.add_object(src, frequency)
 
 /obj/machinery/mech_sensor/receive_signal(datum/signal/signal)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!signal.data["tag"] || (signal.data["tag"] != id_tag))

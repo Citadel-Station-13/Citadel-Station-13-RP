@@ -1,6 +1,6 @@
 import { useBackend } from "../backend";
 import { NtosWindow } from "../layouts";
-import { IdentificationComputerRegions } from "./IdentificationComputer";
+import { IdentificationComputerRegions } from "./computers/IdentificationComputer";
 import { NoticeBox, Box, Section, Button } from "../components";
 
 export const NtosAccessDecrypter = (props, context) => {
@@ -38,7 +38,8 @@ export const NtosAccessDecrypter = (props, context) => {
           <NoticeBox>{message}</NoticeBox>
         ) || running && (
           <Section>
-            Attempting to decrypt network access codes. Please wait. Rate: {rate} PHash/s
+            Attempting to decrypt network access codes. Please wait.
+            Rate: {rate} PHash/s
             <Box>
               {/* I don't care anymore */}
               {generate10String(lineLength)}

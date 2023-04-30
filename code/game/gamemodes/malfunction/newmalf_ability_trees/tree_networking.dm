@@ -106,7 +106,7 @@
 			announce_hack_failure(user, "quantum message relay")
 		return
 
-	var/datum/announcement/priority/command/AN = new/datum/announcement/priority/command()
+	var/datum/legacy_announcement/priority/command/AN = new/datum/legacy_announcement/priority/command()
 	AN.title = title
 	AN.Announce(text)
 
@@ -203,7 +203,7 @@
 	user.hack_can_fail = 0
 	user.hacking = 0
 	user.system_override = 2
-	user.verbs += new/datum/game_mode/malfunction/verb/ai_destroy_station()
+	add_verb(user, /datum/game_mode/malfunction/verb/ai_destroy_station)
 
 
 // END ABILITY VERBS

@@ -4,22 +4,22 @@ var/global/list/map_sectors = list()
 /area/overmap
 	name = "System Map"
 	icon_state = "start"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	base_turf = /turf/unsimulated/map
 
 /turf/unsimulated/map
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
+	permit_ao = FALSE
 //	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
 
 /turf/unsimulated/map/edge
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	var/map_is_to_my
 	var/turf/unsimulated/map/edge/wrap_buddy
 
-/turf/unsimulated/map/edge/Initialize()
+/turf/unsimulated/map/edge/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -50,7 +50,7 @@ var/global/list/map_sectors = list()
 	else
 		. = ..()
 
-/turf/unsimulated/map/Initialize()
+/turf/unsimulated/map/Initialize(mapload)
 	. = ..()
 	name = "[x]-[y]"
 	var/list/numbers = list()
@@ -77,7 +77,6 @@ var/global/list/map_sectors = list()
 		if(x == GLOB.using_map.overmap_size)
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
-	AddElement(/datum/element/turf_z_transparency)
 
 /turf/unsimulated/map/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
@@ -88,20 +87,3 @@ var/global/list/map_sectors = list()
 	..()
 	if(istype(O, /obj/effect/overmap/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)
-
-// List used to track which zlevels are being 'moved' by the proc below
-var/list/moving_levels = list()
-// Proc to 'move' stars in spess
-// Yes it looks ugly, but it should only fire when state actually change.
-// Null direction stops movement
-proc/toggle_move_stars(zlevel, direction)
-	if(!zlevel)
-		return
-
-	if (moving_levels["[zlevel]"] != direction)
-		moving_levels["[zlevel]"] = direction
-
-		var/list/spaceturfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
-		for(var/turf/space/T in spaceturfs)
-			T.toggle_transit(direction)
-			CHECK_TICK

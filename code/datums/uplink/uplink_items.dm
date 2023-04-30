@@ -5,7 +5,7 @@ var/datum/uplink/uplink = new()
 	var/list/datum/uplink_item/items
 	var/list/datum/uplink_category/categories
 
-/datum/uplink/New(var/type)
+/datum/uplink/New(type)
 	items_assoc = list()
 	items = init_subtypes(/datum/uplink_item)
 	categories = init_subtypes(/datum/uplink_category)
@@ -29,8 +29,10 @@ var/datum/uplink/uplink = new()
 	var/name
 	var/desc
 	var/item_cost = 0
-	var/datum/uplink_category/category		// Item category
-	var/list/datum/antagonist/antag_roles	// Antag roles this item is displayed to. If empty, display to all.
+	/// Item category.
+	var/datum/uplink_category/category
+	/// Antag roles this item is displayed to. If empty, display to all.
+	var/list/datum/antagonist/antag_roles
 	var/blacklisted = 0
 
 /datum/uplink_item/item
@@ -43,7 +45,7 @@ var/datum/uplink/uplink = new()
 
 
 
-/datum/uplink_item/proc/buy(var/obj/item/uplink/U, var/mob/user)
+/datum/uplink_item/proc/buy(obj/item/uplink/U, mob/user)
 	var/extra_args = extra_args(user)
 	if(!extra_args)
 		return
@@ -65,8 +67,8 @@ var/datum/uplink/uplink = new()
 	U.used_TC += cost
 	return goods
 
-// Any additional arguments you wish to send to the get_goods
-/datum/uplink_item/proc/extra_args(var/mob/user)
+/// Any additional arguments you wish to send to the get_goods.
+/datum/uplink_item/proc/extra_args(mob/user)
 	return 1
 
 /datum/uplink_item/proc/can_buy(obj/item/uplink/U)
@@ -91,7 +93,7 @@ var/datum/uplink/uplink = new()
 				return 1
 	return 0
 
-/datum/uplink_item/proc/cost(var/telecrystals, obj/item/uplink/U)
+/datum/uplink_item/proc/cost(telecrystals, obj/item/uplink/U)
 	. = item_cost
 	if(U)
 		. = U.get_item_cost(src, .)
@@ -99,8 +101,8 @@ var/datum/uplink/uplink = new()
 /datum/uplink_item/proc/description()
 	return desc
 
-// get_goods does not necessarily return physical objects, it is simply a way to acquire the uplink item without paying
-/datum/uplink_item/proc/get_goods(var/obj/item/uplink/U, var/loc)
+/// get_goods does not necessarily return physical objects, it is simply a way to acquire the uplink item without paying.
+/datum/uplink_item/proc/get_goods(obj/item/uplink/U, loc)
 	return 0
 
 /datum/uplink_item/proc/log_icon()
@@ -111,7 +113,7 @@ var/datum/uplink/uplink = new()
 	log_and_message_admins("used \the [U.loc] to buy \a [src]")
 	U.purchase_log[src] = U.purchase_log[src] + 1
 
-datum/uplink_item/dd_SortValue()
+/datum/uplink_item/dd_SortValue()
 	return cost(INFINITY)
 
 /********************************
@@ -119,7 +121,7 @@ datum/uplink_item/dd_SortValue()
 *	Physical Uplink Entries		*
 *                           	*
 ********************************/
-/datum/uplink_item/item/buy(var/obj/item/uplink/U, var/mob/user)
+/datum/uplink_item/item/buy(obj/item/uplink/U, mob/user)
 	var/obj/item/I = ..()
 	if(!I)
 		return
@@ -130,10 +132,10 @@ datum/uplink_item/dd_SortValue()
 
 	if(istype(I) && ishuman(user))
 		var/mob/living/carbon/human/A = user
-		A.put_in_any_hand_if_possible(I)
+		A.put_in_hands(I)
 	return I
 
-/datum/uplink_item/item/get_goods(var/obj/item/uplink/U, var/loc)
+/datum/uplink_item/item/get_goods(obj/item/uplink/U, loc)
 	var/obj/item/I = new path(loc)
 	return I
 
@@ -165,7 +167,7 @@ datum/uplink_item/dd_SortValue()
 /****************
 * Support procs *
 ****************/
-/proc/get_random_uplink_items(var/obj/item/uplink/U, var/remaining_TC, var/loc)
+/proc/get_random_uplink_items(obj/item/uplink/U, remaining_TC, loc)
 	var/list/bought_items = list()
 	while(remaining_TC)
 		var/datum/uplink_item/I = default_uplink_selection.get_random_item(remaining_TC, U, bought_items)
@@ -176,7 +178,7 @@ datum/uplink_item/dd_SortValue()
 
 	return bought_items
 
-/proc/get_surplus_items(var/obj/item/uplink/U, var/remaining_TC, var/loc)
+/proc/get_surplus_items(obj/item/uplink/U, remaining_TC, loc)
 	var/list/bought_items = list()
 	var/override = 1
 	while(remaining_TC)

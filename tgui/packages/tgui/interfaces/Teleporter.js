@@ -1,53 +1,67 @@
-import { useBackend } from "../backend";
-import { Button, LabeledList, Section } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import { Box, Button, LabeledList, Section } from '../components';
+import { Window } from '../layouts';
 
 export const Teleporter = (props, context) => {
   const { act, data } = useBackend(context);
-
   const {
-    locked_name,
-    station_connected,
-    hub_connected,
     calibrated,
-    teleporter_on,
+    calibrating,
+    power_station,
+    regime_set,
+    teleporter_hub,
+    target,
   } = data;
-
   return (
-    <Window width={300} height={200} resizable>
+    <Window
+      width={360}
+      height={130}>
       <Window.Content>
         <Section>
-          <LabeledList>
-            <LabeledList.Item label="Target">
-              <Button
-                fluid
-                icon="bullseye"
-                onClick={() => act("select_target")}
-                content={locked_name} />
-            </LabeledList.Item>
-            <LabeledList.Item label="Calibrated">
-              <Button.Checkbox
-                fluid
-                checked={calibrated}
-                color={calibrated ? "good" : "bad"}
-                onClick={() => act("test_fire")}
-                content={calibrated ? "Accurate" : "Test Fire"} />
-            </LabeledList.Item>
-            <LabeledList.Item label="Teleporter">
-              <Button.Checkbox
-                fluid
-                checked={teleporter_on}
-                color={teleporter_on ? "good" : "bad"}
-                onClick={() => act("toggle_on")}
-                content={teleporter_on ? "Online" : "OFFLINE"} />
-            </LabeledList.Item>
-            <LabeledList.Item label="Station">
-              {station_connected ? "Connected" : "Not Connected"}
-            </LabeledList.Item>
-            <LabeledList.Item label="Hub">
-              {hub_connected ? "Connected" : "Not Connected"}
-            </LabeledList.Item>
-          </LabeledList>
+          {!power_station && (
+            <Box color="bad" textAlign="center">
+              No power station linked.
+            </Box>
+          ) || (!teleporter_hub && (
+            <Box color="bad" textAlign="center">
+              No hub linked.
+            </Box>
+          )) || (
+            <LabeledList>
+              <LabeledList.Item label="Regime">
+                <Button
+                  content={regime_set}
+                  onClick={() => act('regimeset')} />
+              </LabeledList.Item>
+              <LabeledList.Item label="Target">
+                <Button
+                  icon="edit"
+                  content={target}
+                  onClick={() => act('settarget')} />
+              </LabeledList.Item>
+              <LabeledList.Item label="Calibration"
+                buttons={(
+                  <Button
+                    icon="tools"
+                    content="Calibrate"
+                    onClick={() => act('calibrate')} />
+                )}>
+                {calibrating && (
+                  <Box color="average">
+                    In Progress
+                  </Box>
+                ) || (calibrated && (
+                  <Box color="good">
+                    Optimal
+                  </Box>
+                ) || (
+                  <Box color="bad">
+                    Sub-Optimal
+                  </Box>
+                ))}
+              </LabeledList.Item>
+            </LabeledList>
+          )}
         </Section>
       </Window.Content>
     </Window>

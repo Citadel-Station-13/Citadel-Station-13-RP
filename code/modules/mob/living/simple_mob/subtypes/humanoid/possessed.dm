@@ -36,7 +36,7 @@
 	melee_damage_upper = 25
 	attacktext = list("punched", "kicked", "smacked")
 	attack_sound = "punch"
-	armor = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
+	armor_legacy_mob = list(melee = 30, bullet = 10, laser = 20,energy = 25, bomb = 20, bio = 100, rad = 100) //This should be the same as the base RIG.
 
 	has_hands = 1
 	humanoid_hands = 1
@@ -49,7 +49,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/merc
 	say_list_type = /datum/say_list/possessed //Set to Null on silenced.
 
-//	corpse = /obj/effect/landmark/mobcorpse/possessed
+//	corpse = /obj/spawner/corpse/possessed
 // Will eventually leave a full corpse with an activated RIG on it. But not yet.
 
 //Miasma Cloud "Item"
@@ -83,7 +83,10 @@
 		playsound(src, pick('sound/h_sounds/headcrab.ogg', 'sound/h_sounds/holla.ogg', 'sound/h_sounds/lynx.ogg', 'sound/h_sounds/mumble.ogg', 'sound/h_sounds/yell.ogg'), 50, 1)
 
 //Plays the sound every ~4 seconds.
-/mob/living/simple_mob/humanoid/possessed/Life()
+/mob/living/simple_mob/humanoid/possessed/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(idle <= 0 && silenced == 0)
 		playsound(src, 'sound/h_sounds/breathing.ogg', 60, 1)
 		idle = 4
@@ -93,7 +96,7 @@
 /mob/living/simple_mob/humanoid/possessed/Destroy()
 	var/droploc = get_turf(src)
 	playsound(src, 'sound/effects/blobattack.ogg', 40, 1)
-	visible_message(span("critical", pick("\The The horrid screech of metal grating metal cuts through the air as the suit's interlocking joints grind and fold inwards upon itself. A putrid wash of decayed flesh spills forwards, staining the ground dark with the contents of the collapsing RIG's long expired pilot.",
+	visible_message(SPAN_CRITICAL(pick("\The The horrid screech of metal grating metal cuts through the air as the suit's interlocking joints grind and fold inwards upon itself. A putrid wash of decayed flesh spills forwards, staining the ground dark with the contents of the collapsing RIG's long expired pilot.",
 	"\The The [src] shudders as some hurt living thing, reeling as screaming servos overcompensate beneath the weight of that debilitating strike - the horrid sounds of shattered metal resonate as the RIG rips itself apart. Limbs flung about in distinctly inhuman motions in a final failed effort at balance before buckling inwards at the joints, hydraulic fluid jettisoned as blood from a severed artery as the long liquidized contents of the suit's ex-pilot spill from its chassis in a thick slurry.",
 	"\The Hissing atmosphereic valves pop and snap, breaking the ageless seal as the putrid stench of rot and carrion assaults the senses in debilitating waves. The damaged RIG's visor alight with warnings of hazardous atmospheric conditions as a final distorted scream echos from within the damaged chassis. The fetid miasma that breeches through those wheezing seals overtaken by a wet burble and plop as the suit is bathed in the liquid contents of its passenger, blackened flesh fed through those narrow seals as rotten grounds.",
 	"\The The timeworn suit's seals finally crack open with a hiss - spilling forth a thick fungal mist. The control module ejects from the rig as it loses all control impulses - leaving behind but a pile of bones and the rotten sludge it had been swimming in for heaven knows how long.",
@@ -121,6 +124,7 @@
 
 //What about if someone's in it? Well here you go.
 /mob/living/simple_mob/humanoid/possessed/Login()
+	. = ..()
 	to_chat(src,"<b>Why are you in this [src]? Why can't you say more than a few phrases? Why. What. Kill. Kill. Kill. Kill. KILL! KILL! KILL!</b> [player_msg]")
 
 /obj/item/rig/eva/old
@@ -138,7 +142,7 @@
 	icon_state = "industrial-rig"
 	rig1 = /obj/item/rig/industrial/old
 	rig2 = /obj/item/rig/industrial/old/spring
-	armor = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 60, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 100, rad = 100)
 
 /obj/item/rig/industrial/old
 	name = "old Industrial hardsuit"
@@ -154,7 +158,7 @@
 	icon_state = "merc-rig"
 	rig1 = /obj/item/rig/merc/old
 	rig2 = /obj/item/rig/merc/old/spring
-	armor = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
+	armor_legacy_mob = list(melee = 80, bullet = 65, laser = 50, energy = 15, bomb = 80, bio = 100, rad = 60)
 
 /obj/item/rig/merc/old
 	name = "old crimson hardsuit control module"

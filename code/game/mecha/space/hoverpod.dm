@@ -26,7 +26,7 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/hoverpod/Initialize()
+/obj/mecha/working/hoverpod/Initialize(mapload)
 	. = ..()
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
@@ -79,7 +79,10 @@
 
 // No falling if we've got our boosters on
 /obj/mecha/working/hoverpod/can_fall()
-	return (stabilization_enabled && has_charge(step_energy_drain))
+	if(stabilization_enabled && has_charge(step_energy_drain))
+		return FALSE
+	else
+		return TRUE
 
 /*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech
 //these three procs overriden to play different sounds
@@ -117,7 +120,7 @@
 	max_universal_equip = 1
 	max_special_equip = 1
 
-/obj/mecha/working/hoverpod/combatpod/Initialize()
+/obj/mecha/working/hoverpod/combatpod/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -128,7 +131,7 @@
 /obj/mecha/working/hoverpod/shuttlepod
 	desc = "Who knew a tiny ball could fit three people?"
 
-/obj/mecha/working/hoverpod/shuttlepod/Initialize()
+/obj/mecha/working/hoverpod/shuttlepod/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
 	ME.attach(src)

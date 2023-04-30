@@ -4,7 +4,7 @@
 // connected: Machine we're in, type unchecked so I doubt it's used beyond monkeying
 // flags: See below, bitfield.
 #define MUTCHK_FORCED        1
-/proc/domutcheck(var/mob/living/M, var/connected=null, var/flags=0)
+/proc/domutcheck(mob/living/M, connected=null, flags=0)
 	for(var/datum/gene/gene in dna_genes)
 		if(!M || !M.dna)
 			return
@@ -33,11 +33,11 @@
 				gene.activate(M,connected,flags)
 				if(M)
 					M.active_genes |= gene.type
-					M.update_icon = 1
+					M.update_mutations()
 			// If Gene is NOT active:
 			else
 				testing("[gene.name] deactivated!")
 				gene.deactivate(M,connected,flags)
 				if(M)
 					M.active_genes -= gene.type
-					M.update_icon = 1
+					M.update_mutations()

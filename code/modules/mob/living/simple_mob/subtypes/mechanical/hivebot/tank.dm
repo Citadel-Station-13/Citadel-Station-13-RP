@@ -56,102 +56,73 @@
 	// Note that armor effectively makes lasers do about 9 damage instead of 30,
 	// so it has an effective health of ~16.6 LASERS_TO_KILL if regular lasers are used.
 	// Xrays will do much better against this.
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 40,
+				"melee_soak" = 15,
 				"bullet"	= 40,
+				"bullet_soak" = 10,
 				"laser"		= 40,
+				"laser_soak" = 15,
 				"energy"	= 30,
 				"bomb"		= 30,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 15,
-				"bullet"	= 10,
-				"laser"		= 15,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_melee
 	name = "riot hivebot"
 	desc = "A robot specialized in close quarters combat."
 	player_msg = "You are heavily armored against close quarters combat."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 70,
+				"melee_soak" = 20,
 				"bullet"	= 0,
 				"laser"		= 0,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 20,
-				"bullet"	= 0,
-				"laser"		= 0,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_bullet
 	name = "bulletproof hivebot"
 	desc = "A robot specialized in ballistic defense."
 	player_msg = "You are heavily armored against ballistic weapons."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 70,
+				"bullet_soak" = 20,
 				"laser"		= 0,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
-				)
-	armor_soak = list(
-				"melee"		= 0,
-				"bullet"	= 20,
-				"laser"		= 0,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
 				)
 
 /mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser
 	name = "ablative hivebot"
 	desc = "A robot specialized in photonic defense."
 	player_msg = "You are heavily armored against laser weapons."
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 0,
 				"laser"		= 70,
+				"laser_soak" = 20,
 				"energy"	= 0,
 				"bomb"		= 0,
 				"bio"		= 100,
 				"rad"		= 100
 				)
-	armor_soak = list(
-				"melee"		= 0,
-				"bullet"	= 0,
-				"laser"		= 20,
-				"energy"	= 0,
-				"bomb"		= 0,
-				"bio"		= 0,
-				"rad"		= 0
-				)
+				
 	var/reflect_chance = 40 // Same as regular ablative.
 
 // Ablative Hivebots can reflect lasers just like humans.
-/mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser/bullet_act(obj/item/projectile/P)
-	if(istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam))
+/mob/living/simple_mob/mechanical/hivebot/tank/armored/anti_laser/bullet_act(obj/projectile/P)
+	if(istype(P, /obj/projectile/energy) || istype(P, /obj/projectile/beam))
 		var/reflect_prob = reflect_chance - round(P.damage/3)
 		if(prob(reflect_prob))
-			visible_message(span("danger", "The [P.name] gets reflected by [src]'s armor!"), \
-							span("userdanger", "The [P.name] gets reflected by [src]'s armor!"))
+			visible_message(SPAN_DANGER("The [P.name] gets reflected by [src]'s armor!"), \
+							SPAN_USERDANGER("The [P.name] gets reflected by [src]'s armor!"))
 
 			// Find a turf near or on the original location to bounce to
 			if(P.starting)

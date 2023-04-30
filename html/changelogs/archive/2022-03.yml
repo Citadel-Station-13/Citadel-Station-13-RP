@@ -1,0 +1,137 @@
+2022-03-01:
+  TheLordME:
+  - balance: Reworks the burnchamber and gives it a minimalistic guide.
+2022-03-04:
+  Captain277:
+  - bugfix: Fixes Explo locker icon state.
+  CharlesWedge:
+  - bugfix: Class H, Gaia Worlds, Frozen Planet, and LAvaland, now have weather and
+      Day/Night Cycles. Dynamic Lighting now enabled to take advantage of day night
+      cycles.
+  MalricB:
+  - rscadd: 18 songs to jukebox config
+2022-03-07:
+  Ghostcoffeee:
+  - rscadd: Added wooden panels made from 1 plank
+  Zandario:
+  - bugfix: Re-cleaning Teshari Sprites
+2022-03-09:
+  Captain277:
+  - rscadd: Adds a new Z-level map and some related items for an upcoming event.
+  CharlesWedge:
+  - bugfix: Exploration Worlds should have dynamic lighting now.
+2022-03-11:
+  Captain277:
+  - bugfix: Fixes autoinjector bug.
+  - bugfix: Fixes Class D atmos.
+2022-03-13:
+  Fuckeronipasta:
+  - code_imp: Connected pleated skirts to role-restricted and uniform loadout tabs.
+      These can now be used.
+  - code_imp: 'Connected department jumpjeans to the role-restricted loadout tab.
+      These can now be used. tweak: Made it so that the feminine black jumpsuit is
+      an actual jumpsuit, rather than jumpshorts. tweak: Adjusted the sprite for the
+      virgin killer sweater in ties. Sprite now fits on the body correctly. tweak:
+      Gave a large amount of what seem to be tg-ported pleated skirts sprite fixes/adjustments.
+      You can now see your hands. tweak: Fixed the Western Suit so that it can now
+      be worn/seen. Yee-haw. tweak: Cleaned up the arm sprites in r_human_vr that
+      was giving human sprites the ''ass dot''.'
+  - spellcheck: Corrected some descriptions/spacing that I found odd throughout the
+      loadout pages I was working on. Definitely didn't find everything, but I got
+      some of it.
+  Ghostcoffeee:
+  - bugfix: Fixes some drinks defaulting to Ethanol when put into metamorphic glasses
+  TheLordME:
+  - bugfix: Fixed solar space suits not being able to be refitted
+2022-03-14:
+  Captain277:
+  - rscadd: Adds latex swimsuit.
+  - rscadd: Adds mimics.
+  - rscdel: Removes all corrupt maint drone spawns.
+  - rscadd: Adds a Community Theater.
+  TheLordME:
+  - rscadd: Added resin structure building to hybrids
+  - rscadd: Added weed planting to hybrids
+  - rscadd: Hybrids now have a phoron organ for xenomorph abilities.
+  - rscadd: Hybrids can now trade nutrition for a faster healing rate.
+2022-03-15:
+  Captain277:
+  - rscadd: 'Adds more coins. tweak: Updates the Mint.'
+  - rscadd: Adds a coin bank machine.
+  - rscadd: Adds the RIG backpack.
+  Fuckeronipasta:
+  - rscadd: Female gendered sprites for many outfits.
+  - rscadd: Some outfits not connected to the loadout (with the gendered variation
+      as well).
+  - rscadd: Dropdown selections for the baggy turtlenecks, female scrubs, branded
+      jumpsuits, and futuristic jumpsuits.
+  - spellcheck: Some more misspellings/bad grammar I found while working.
+  Ghostcoffeee:
+  - rscadd: Gave solarmoffs the ability to drain synths
+2022-03-17:
+  Captain277:
+  - rscadd: Adds the Vainglorious hoodie.
+  - rscadd: Adds colored and neon light packs.
+2022-03-18:
+  Ghostcoffeee:
+  - bugfix: Fixed the pleated skirt not showing up
+  TheKnightofAura:
+  - rscadd: my new donator item, complete with better code
+  - rscadd: the code my donator item works off of, pending some balance discussion.
+  - rscdel: my old donator item
+  - bugfix: sillycon's silly
+  TheLordME:
+  - bugfix: Fixed Lizard infestions being the laughing stock of the server.
+  - bugfix: Fixed Maintdrones not indicating that they have been abandond when the
+      player inside ghosts.
+2022-03-19:
+  Captain277:
+  - bugfix: CI breaking errors.
+  - bugfix: Fixes bad Class D shuttle landmarks.
+  - bugfix: 'Fixes bad Class H paths. tweak: Rearranges poorly nested map datums.'
+  - rscadd: 'New Dungeon POI. tweak: Changes Gaia and Mining to Class M and G.'
+2022-03-21:
+  Captain277:
+  - balance: Removes a significant portion of Exploration's round-start medical gear.
+  - rscdel: Removes graviton goggles from R&D printer.
+  - bugfix: Brass alloying fixed.
+2022-03-23:
+  Captain277:
+  - rscadd: Adds new premium cigarette brand.
+  - rscadd: Adds new drink.
+  Zandario:
+  - rscadd: TGUI Wires
+  - rscadd: Bay's Point Defense Batteries
+  - rscadd: Bay's Advanced Shield Generators
+  - soundadd: Grabbed some sound files we didn't have which will be used it further
+      ports
+  - rscadd: Added SSnightshift
+  - refactor: Converted time_in_ticks to time_in_ds
+2022-03-26:
+  TheLordME:
+  - rscadd: Adds engine type info to round info
+2022-03-27:
+  Captain277:
+  - rscadd: Adds Water Movement to Akula.
+  - rscdel: Removes vestigial Vore Wiki links.
+  - bugfix: Fixes Water Breathing.
+2022-03-28:
+  Captain277:
+  - rscadd: Adds thirteen new recipes.
+2022-03-29:
+  Captain277:
+  - rscadd: Adds - Raincoat, Two Hoodies, Two Half Cloaks, Backpack Type, and one
+      hat.
+  - rscadd: Adds the Antediluvian set.
+  - rscadd: Adds the Hasie set.
+  - rscadd: 'Adds the Umbral Duster. tweak: Adds 5 points to Loadout Budget. tweak:
+      Morgue Trays can now be unwrenched.'
+  - rscadd: 'Adds a craftable plastic poncho. tweak: Tweaks the obj icon for the backpack
+      RIG.'
+  CrystalClearCC:
+  - rscadd: Blunt rolling papers have been added. Anyone for a zoot?
+2022-03-30:
+  TheLordME:
+  - rscadd: Adds a Crypto Mining server that turns power into engineering points
+  - rscadd: Adds a vendor to spend Engineering points.
+  - bugfix: Fixes subtypes of the equipment vendor trying to vend twice

@@ -2,12 +2,12 @@
 /obj/item/clothing/suit/storage/teshari/cloak
 	name = "black cloak"
 	desc = "It drapes over a Teshari's shoulders and closes at the neck with pockets convienently placed inside."
-	icon = 'icons/mob/species/teshari/teshari_cloak.dmi'
-	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
+	icon = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesh_cloak_bn"
 	item_state = "tesh_cloak_bn"
 	species_restricted = list(SPECIES_TESHARI)
-	body_parts_covered = UPPER_TORSO|ARMS
+	body_cover_flags = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/storage/teshari/cloak/standard/black_red
 	name = "black and red cloak"
@@ -123,23 +123,23 @@
 	name = "dark aesthetic cloak"
 	icon_state = "tesh_cloak_dretrowave"
 	item_state = "tesh_cloak_dretrowave"
-	icon = 'icons/mob/species/teshari/teshari_cloak.dmi'
-	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
+	icon = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 
 /obj/item/clothing/suit/storage/teshari/cloak/standard/black_glow
 	name = "black and glowing cloak"
 	icon_state = "tesh_cloak_bglowing"
 	item_state = "tesh_cloak_bglowing"
-	icon = 'icons/mob/species/teshari/teshari_cloak.dmi'
-	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
+	icon = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 
 
 // Job Cloaks
 /obj/item/clothing/suit/storage/teshari/cloak/jobs
 	name = "facility director cloak"
 	desc = "A soft Teshari cloak made for the Facility Director"
-	icon = 'icons/mob/species/teshari/deptcloak.dmi'
-	icon_override = 'icons/mob/species/teshari/deptcloak.dmi'
+	icon = 'icons/mob/clothing/species/teshari/deptcloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/deptcloak.dmi'
 	icon_state = "tesh_cloak_cap"
 	item_state = "tesh_cloak_cap"
 
@@ -286,8 +286,8 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/teshari
 	name = "Teshari labcoat"
 	desc = "A small suit that protects against minor chemical spills. This one is a good fit on Teshari."
-	icon = 'icons/mob/species/teshari/suit.dmi'
-	icon_override = 'icons/mob/species/teshari/suit.dmi'
+	icon = 'icons/mob/clothing/species/teshari/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
 	icon_state = "tesh_labcoat"
 	species_restricted = list(SPECIES_TESHARI)
 
@@ -295,18 +295,18 @@
 	name = "small black coat"
 	desc = "A coat that seems too small to fit a human."
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
-	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoat"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
 
 /obj/item/clothing/suit/storage/toggle/tesharicoatwhite
 	name = "small coat"
 	desc = "A coat that seems too small to fit a human."
 	icon = 'icons/obj/clothing/species/teshari/suits.dmi'
-	icon_override = 'icons/mob/species/teshari/teshari_cloak.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_cloak.dmi'
 	icon_state = "tesharicoatwhite"
-	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
+	body_cover_flags = UPPER_TORSO|ARMS|LOWER_TORSO|LEGS
 	species_restricted = list(SPECIES_TESHARI)
 
 
@@ -314,16 +314,16 @@
 /obj/item/clothing/suit/storage/hooded/teshari
 	name = "Hooded Teshari Cloak"
 	desc = "A soft teshari cloak with an added hood."
-	icon_override = 'icons/mob/species/teshari/teshari_hood.dmi'
-	icon = 'icons/mob/species/teshari/teshari_hood.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
+	icon = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hcloak_bo"
-	item_state_slots = list(slot_r_hand_str = "tesh_hcloak_bo", slot_l_hand_str = "tesh_hcloak_bo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hcloak_bo", SLOT_ID_LEFT_HAND = "tesh_hcloak_bo")
 	species_restricted = list(SPECIES_TESHARI)
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	flags_inv = HIDEHOLSTER|HIDETIE
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
+	inv_hide_flags = HIDEHOLSTER|HIDETIE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	armor_type = /datum/armor/teshari/hood_cloak
 	action_button_name = "Toggle Cloak Hood"
 	hoodtype = /obj/item/clothing/head/tesh_hood
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
@@ -332,12 +332,14 @@
 /obj/item/clothing/head/tesh_hood
 	name = "Cloak Hood"
 	desc = "A hood attached to a teshari cloak."
-	icon_override = 'icons/mob/species/teshari/teshari_hood.dmi'
-	icon = 'icons/mob/species/teshari/teshari_hood.dmi'
+	icon_override = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
+	icon = 'icons/mob/clothing/species/teshari/teshari_hood.dmi'
 	icon_state = "tesh_hood_bo"
-	item_state_slots = list(slot_r_hand_str = "tesh_hood_bo", slot_l_hand_str = "tesh_hood_bo")
-	flags_inv = BLOCKHAIR
-	body_parts_covered = HEAD
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tesh_hood_bo", SLOT_ID_LEFT_HAND = "tesh_hood_bo")
+	inv_hide_flags = BLOCKHAIR
+	body_cover_flags = HEAD
+	cold_protection = HEAD|FACE
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
 /obj/item/clothing/suit/storage/hooded/teshari/standard/black_orange
 	name = "black and orange hooded cloak"

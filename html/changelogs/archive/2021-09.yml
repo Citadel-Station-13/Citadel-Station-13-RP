@@ -1,0 +1,81 @@
+2021-09-06:
+  zeroisthebiggay:
+  - rscadd: sevensune tail from hyperstation
+2021-09-12:
+  Captain277:
+  - rscadd: 'Re-adds the listed items: Bible selection and High Class swimsuit. Adds
+      trash spawners that drops Glukoz to levels 1, 2, and 3. Adds maid headbands
+      to costume vendors. Adds TGMC style craftable med lollipops. Adds a wheelchair
+      to Robotics so I can stop wheeling patients around in chairs. tweak: Tweaks
+      the Ronin Coat storage. Tweaks the Level 1 cafe based on user submission. Tweaks
+      Level 1 gas masks to the full face clear versions.'
+  - rscadd: Mantis thorax and arms.
+  - rscadd: Bandages as a bra option.
+2021-09-17:
+  Captain277:
+  - rscadd: Keycard scanners to HoP/Cap's room.
+  - rscadd: Reporter gear to Librarian Alt.
+  - bugfix: Skateboard faults/duping.
+  - bugfix: Lizard tail coloration.
+  - bugfix: Typo correction in flight suit and construction void.
+  - rscdel: Removes all Virgo screens.
+  Ghostcoffeee:
+  - bugfix: Windows can now melt.
+2021-09-19:
+  Ghostcoffeee:
+  - rscadd: Added flora construction, deconstruction and names
+  TheLordME:
+  - balance: Neomorphs are now immune to phoron contamination.
+  - bugfix: Wearing gloves prevents you from taking toxin damage when picking up contaminated
+      Items.
+2021-09-20:
+  Captain277:
+  - bugfix: Vermin Infestation now functions.
+  - balance: Rebalances loadout costs for implants.
+  - rscdel: 'Removes MULE Bots from orderable supply list. tweak: tweaked a few things'
+  - bugfix: Fixes icon for the Security gun box.
+  - rscadd: Adds Bee race to the game. Adds vampire race. Formalizes Angel and Demon
+      races.
+  Solaris-Shade:
+  - bugfix: fixed the direction the fire cabinet by the sauna opens towards.
+2021-09-21:
+  Solaris-Shade:
+  - rscadd: Adds four hats to the armory.
+  - rscadd: Adds two phase rifles to the armory.
+2021-09-22:
+  Captain277:
+  - rscadd: 'Adds or ticks multiple overmaps related files. tweak: Edits multiple
+      files to match dependencies.'
+  TheKnightofAura:
+  - rscadd: greebles
+  - rscadd: intercoms
+  - rscadd: camera.
+  TheLordME:
+  - admin: All names can now contain numbers and a few other specieal characters.
+2021-09-23:
+  TheLordME:
+  - bugfix: Off-Duty command no longer spawns with a command headset.
+2021-09-24:
+  Captain277:
+  - rscadd: New Armory layout for QOL.
+  - balance: Swaps specialized armor sets out for plate carrier patterns of equivalent
+      design.
+  - rscadd: 'Glowsticks to vendor/Sec lockers. tweak: Tweaks Gaiters'
+  - bugfix: Fixes the Traveller's Hat.
+2021-09-28:
+  AnalWerewolf:
+  - rscadd: Head of Security Protosuit to his office
+  yourdoom9898:
+  - rscadd: Tallow, a new oil subtype
+  - balance: Changed fryer oil to tallow from corn oil
+2021-09-29:
+  Captain277:
+  - rscadd: Adds the ability to wear mouse plushes on your head, and also adds white
+      and grey versions.
+  - rscadd: Adds Catalogue blurbs for any empty mobs.
+  - rscdel: Removes all mentions of SolGov in code.
+  TheLordME:
+  - bugfix: Research doesnt need copper anymore.
+  rpilcrow:
+  - bugfix: Fixed 'sticky limb' bug in the character creation preview. Prosthetic/Amputated
+      limb states won't end up stuck.

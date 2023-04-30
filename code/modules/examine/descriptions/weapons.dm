@@ -48,7 +48,7 @@
 	then click where you want to fire.  Most energy weapons can fire through windows harmlessly.  To recharge this weapon, use a weapon recharger. \
 	To use the scope, use the appropriate verb in the object tab."
 
-/obj/item/gun/projectile
+/obj/item/gun/ballistic
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  To reload, click the weapon in your hand to unload (if needed), then add the appropriate ammo.  The description \
 	will tell you what caliber you need."
@@ -64,12 +64,12 @@
 	var/obj/O = gun_choices[picked]
 	description_info = initial(O.description_info)
 
-/obj/item/gun/projectile/shotgun/pump
+/obj/item/gun/ballistic/shotgun/pump
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  After firing, you will need to pump the gun, by clicking on the gun in your hand.  To reload, load more shotgun \
 	shells into the gun."
 
-/obj/item/gun/projectile/heavysniper
+/obj/item/gun/ballistic/heavysniper
 	description_info = "This is a ballistic weapon.  To fire the weapon, ensure your intent is *not* set to 'help', have your gun mode set to 'fire', \
 	then click where you want to fire.  The gun's chamber can be opened or closed by using it in your hand.  To reload, open the chamber, add a new bullet \
 	then close it.  To use the scope, use the appropriate verb in the object tab."

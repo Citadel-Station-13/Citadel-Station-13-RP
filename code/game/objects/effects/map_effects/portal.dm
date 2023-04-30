@@ -50,7 +50,8 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	opacity = TRUE
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER // Removed TILE_BOUND so things not visible on the other side stay hidden from the viewer.
+	zmm_flags = ZMM_IGNORE	// it ain't gonna work chief
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE)
 
 	var/obj/effect/map_effect/portal/counterpart = null // The portal line or master that this is connected to, on the 'other side'.
 
@@ -79,25 +80,15 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	if(!counterpart)
 		return
 
-	go_through_portal(AM)
+	// yield
+	spawn(0)
+		if(AM.loc == loc)
+			go_through_portal(AM)
 
-
-/obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM)
-	// TODO: Find a way to fake the glide or something.
-	if(isliving(AM))
-		var/mob/living/L = AM
-		if(L.pulling)
-			var/atom/movable/pulled = L.pulling
-			L.stop_pulling()
-			// For some reason, trying to put the pulled object behind the person makes the drag stop and it doesn't even move to the other side.
-		//	pulled.forceMove(get_turf(counterpart))
-			pulled.forceMove(counterpart.get_focused_turf())
-			L.forceMove(counterpart.get_focused_turf())
-			L.start_pulling(pulled)
-		else
-			L.forceMove(counterpart.get_focused_turf())
-	else
-		AM.forceMove(counterpart.get_focused_turf())
+/obj/effect/map_effect/portal/proc/go_through_portal(atom/movable/AM, check)
+	if(AM.loc != loc && check)
+		return
+	AM.locationTransitForceMove(counterpart.get_focused_turf())
 
 // 'Focused turf' is the turf directly in front of a portal,
 // and it is used both as the destination when crossing, as well as the PoV for visuals.
@@ -149,7 +140,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	var/portal_id = "test" // For a portal to be made, both the A and B sides need to share the same ID value.
 	var/list/portal_lines = list()
 
-/obj/effect/map_effect/portal/master/Initialize()
+/obj/effect/map_effect/portal/master/Initialize(mapload)
 	GLOB.all_portal_masters += src
 	find_lines()
 	..()

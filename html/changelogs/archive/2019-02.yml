@@ -1,0 +1,74 @@
+2019-02-14:
+  Buffalowing:
+  - rscadd: Revived the changelog system. If your derelict changelog was not added,
+      press F in the chat.
+  - tweak: Improved simple mob interactions
+  - tweak: Added consequences for spamming *awoo and *nya
+  Chaoko99:
+  - rscadd: Prometheans can now wear underwear.
+  Hubblenaut:
+  - tweak: If a cycling airlock is already near the target pressure, pressing the
+      buttons will toggle the doors instead of making it reenter the cycle process.
+  KasparoVv:
+  - rscadd: You can now change the order of your body markings at character creation
+      with the push of a button. Shift markings up or down layers at will to design
+      the character you've always wanted, more easily than ever before.
+  KasparoVy:
+  - rscadd: Hiding mobs are now revealed when grabbed, buckled and/or killed.
+  - rscadd: You cannot hide if you grab something, are grabbed yourself or are buckled.
+  - rscadd: Adds some fluff messages for when hiding mobs are revealed.
+  LBnesquik:
+  - rscadd: Remplaced the plant clippers with a reskinned pair of hedgetrimmers.
+  Lbnesquik:
+  - rscadd: 'General biogenerator improvements:'
+  - rscadd: Added feedback noise to the processing.
+  - rscadd: Allow for cream dispensing.
+  - rscadd: Allow for plant bag creation.
+  - rscadd: Allow for 5 units of meat to be dispensed at once.
+  - rscadd: Allow for 5 units of liquids to be dispensed at once totalling 50u.
+  - rscadd: Add and allow the creation of larger plant bags for easier ferrying of
+      plants..
+  - rscadd: Add a description to the machine itself.
+  - bugfix: Fix a typo.
+  Leshana:
+  - rscadd: Enables round-to-round persistence of a few aspects of characters.  More
+      accurately, it automates updating your character setup.  None of this code does
+      anything you could not already do manually on the Character Setup screen, it
+      simply does it automatically for you. ALL of these changes are optional, toggled
+      on the VORE tab of character setup.
+  - rscadd: Your late-join spawn location is determined by which cryo/elevator/etc
+      you used to leave last time.  Departing thru the elevators will set your spawn
+      location to elevators etc.
+  - rscadd: Your weight is saved (also any extra or deficient nutrition is resolved
+      into weight gain/loss)
+  - rscadd: Your limbs settings are updated based on your status at end of round (whether
+      limbs are normal, missing, robotic, etc)
+  - rscadd: Your markings are saved so they will be the same as when they were at
+      end of round.
+  - tweak: Replaced hard coded numbers for weight gain with constant defines.
+  - rscadd: Added admin verbs for debugging the scheduled process controllers.
+  Leshana and mustafakalash:
+  - rscadd: A new 'planetary' mode for airlocks which makes them purge the chamber
+      contents to the exterior atmosphere before filling with clean air, and vice
+      versa.
+  Mechoid:
+  - rscadd: Added a RIG customization kit.
+  - tweak: RIGs now use a var called suit_state to determine the basis for their component
+      icons, rather than the rig's icon state.
+  - rscadd: Added the Gigaphone. Currently unused in any PoIs or elsewhere.
+  - rscadd: Adds a new surgical procedure for fixing brute and burn on limbs.
+  - tweak: Prometheans are no longer murdered by blood, and instead process it like
+      a weak nutrient. Will slow the regeneration of toxins due to water content.
+  Mewchild:
+  - rscadd: Ports several AI core sprites from ages and places past
+  Neerti:
+  - rscadd: RCDs can now build grilles and windows, with a new mode. They can also
+      finish walls when used on girders on floor/wall mode.
+  - rscadd: Adds various new RCDs that are not obtainable at the moment.
+  PrismaticGynoid:
+  - tweak: pAIs can now be picked up while unfolded, and can display more than 9 emotions.
+  Woodrat:
+  - rscadd: Xenoflora and Xenobio Addition to station, first deck.
+  - bugfix: Minor bugfixes including mislabeled lockers in robotics and floor decals.
+  chaoko99:
+  - rscadd: "Added mapmerge PY to the \tools directory of the Vorestation repository."

@@ -32,3 +32,27 @@
 /mob/living/simple_mob/animal/wolf
 	vore_active = 1
 	vore_icons = SA_ICON_LIVING
+
+
+// Adds Phoron Wolf
+/mob/living/simple_mob/animal/wolf/phoron
+
+	faction = "underdark"
+	movement_cooldown = 0
+
+	harm_intent_damage = 5
+	melee_damage_lower = 5
+	melee_damage_upper = 12
+
+	minbodytemp = 200
+
+// Lazy way of making sure wolves survive outside.
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+

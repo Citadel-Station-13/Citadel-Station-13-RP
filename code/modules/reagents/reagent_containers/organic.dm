@@ -4,14 +4,14 @@
 	var/base_name = " "
 	desc = " "
 	var/base_desc = " "
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "null"
 	item_state = "null"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
 	w_class = ITEMSIZE_SMALL
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	unacidable = 0 //tissues does dissolve in acid
 	drop_sound = 'sound/effects/splat.ogg'
 	pickup_sound = 'sound/effects/squelch1.ogg'
@@ -44,49 +44,48 @@
 	base_name = name
 	base_desc = desc
 
-/obj/item/reagent_containers/organic/pickup(mob/user)
-	..()
+/obj/item/reagent_containers/organic/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/dropped()
-	..()
+/obj/item/reagent_containers/organic/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/attack_hand()
+/obj/item/reagent_containers/organic/attack_hand(mob/user, list/params)
 	..()
 	update_icon()
 
 
 /obj/item/reagent_containers/organic/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")
-		user.drop_item(src)
 		playsound(loc, 'sound/effects/slime_squish.ogg', 50, 1)
-		qdel()
+		qdel(src)
 		var/crushed_organic_container = /obj/item/stack/material/wax
 		new crushed_organic_container(get_turf(user))
 	else
 		to_chat(usr, "<span class = 'notice'>You peel the wax layer off \the [src].</span>")
 		playsound(loc, 'sound/effects/pageturn2.ogg', 50, 1)
-		flags |= OPENCONTAINER
+		atom_flags |= OPENCONTAINER
 	update_icon()
 
 /obj/item/reagent_containers/organic/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		overlays += lid
+		add_overlay(lid)
 
-/obj/item/reagent_containers/organic/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+/obj/item/reagent_containers/organic/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
 		return	..()
 
-	if(standard_feed_mob(user, M))
-		return
-
-	return 0
+	standard_feed_mob(user, target)
 
 /obj/item/reagent_containers/organic/standard_feed_mob(var/mob/user, var/mob/target)
 	if(!is_open_container())
@@ -135,7 +134,7 @@
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
-	if(W && W.w_class <= w_class && (flags & OPENCONTAINER))
+	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
 

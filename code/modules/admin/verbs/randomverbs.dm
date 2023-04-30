@@ -9,8 +9,8 @@
 	if(confirm != "Yes")
 		return
 
-	for(var/obj/item/W in M)
-		M.drop_from_inventory(W)
+	for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+		M.drop_item_to_ground(I, INV_OP_FORCE)
 
 	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)
@@ -27,16 +27,16 @@
 			alert("The AI can't be sent to prison you jerk!", null, null, null, null, null)
 			return
 		//strip their stuff before they teleport into a cell :downs:
-		for(var/obj/item/W in M)
-			M.drop_from_inventory(W)
+		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
+			M.drop_item_to_ground(I, INV_OP_FORCE)
 		//teleport person to cell
-		M.Paralyse(5)
+		M.afflict_unconscious(20 * 5)
 		sleep(5)	//so they black out before warping
 		M.loc = pick(prisonwarp)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/prison(prisoner), slot_w_uniform)
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), slot_shoes)
+			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/prison(prisoner), SLOT_ID_UNIFORM)
+			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), SLOT_ID_SHOES)
 		spawn(50)
 			to_chat(M, "<font color='red'>You have been sent to the prison station!</font>")
 		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
@@ -125,7 +125,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in player_list
+		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
 
 	if(!M)
 		return
@@ -169,17 +169,17 @@
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	M.status_flags ^= GODMODE
-	to_chat(usr, "<font color=#4F49AF> Toggled [(M.status_flags & GODMODE) ? "ON" : "OFF"]</font>")
+	M.status_flags ^= STATUS_GODMODE
+	to_chat(usr, "<font color=#4F49AF> Toggled [(M.status_flags & STATUS_GODMODE) ? "ON" : "OFF"]</font>")
 
-	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]")
-	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & GODMODE) ? "On" : "Off"]"
+	log_admin("[key_name(usr)] has toggled [key_name(M)]'s nodamage to [(M.status_flags & STATUS_GODMODE) ? "On" : "Off"]")
+	var/msg = "[key_name_admin(usr)] has toggled [ADMIN_LOOKUPFLW(M)]'s nodamage to [(M.status_flags & STATUS_GODMODE) ? "On" : "Off"]"
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","GOD") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
-proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
+/proc/cmd_admin_mute(mob/M as mob, mute_type, automute = 0)
 	if(automute)
 		if(!config_legacy.automute_on)
 			return
@@ -326,7 +326,7 @@ Ccomp's first proc.
 	if(config_legacy.antag_hud_allowed)
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				g.verbs -= /mob/observer/dead/verb/toggle_antagHUD
+				remove_verb(g, /mob/observer/dead/verb/toggle_antagHUD)
 			if(g.antagHUD)
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn
@@ -337,7 +337,7 @@ Ccomp's first proc.
 	else
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						// Add the verb back for all non-admin ghosts
-				g.verbs += /mob/observer/dead/verb/toggle_antagHUD
+				add_verb(g, /mob/observer/dead/verb/toggle_antagHUD)
 			to_chat(g, "<font color=#4F49AF><B>The Administrator has enabled AntagHUD </B></font>")	// Notify all observers they can now use AntagHUD
 		config_legacy.antag_hud_allowed = 1
 		action = "enabled"
@@ -424,8 +424,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		var/samejob = alert(src,"Found [picked_client.prefs.real_name] in data core. They were [record_found.fields["real_rank"]] this round. Assign same job? They will not be re-added to the manifest/records, either way.","Previously spawned","Yes","Assistant","No")
 		if(samejob == "Yes")
 			charjob = record_found.fields["real_rank"]
-		else if(samejob == USELESS_JOB) //VOREStation Edit - Visitor not Assistant
-			charjob = USELESS_JOB //VOREStation Edit - Visitor not Assistant
+		else if(samejob == USELESS_JOB)
+			charjob = USELESS_JOB
 	else
 		records = alert(src,"No data core entry detected. Would you like add them to the manifest, and sec/med/HR records?","Records","Yes","No","Cancel")
 		if(records == "Cancel")
@@ -437,7 +437,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	//Well you're not reloading their job or they never had one.
 	if(!charjob)
-		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in joblist + "-No Job-"
+		var/pickjob = input(src,"Pick a job to assign them (or none).","Job Select","-No Job-") as null|anything in SSjob.all_job_titles() + "-No Job-"
 		if(!pickjob)
 			return
 		if(pickjob != "-No Job-")
@@ -457,10 +457,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//For logging later
 	var/admin = key_name_admin(src)
 	var/player_key = picked_client.key
-	//VOREStation Add - Needed for persistence
+	// Needed for persistence
 	var/picked_ckey = picked_client.ckey
 	var/picked_slot = picked_client.prefs.default_slot
-	//VOREStation Add End
 
 	var/mob/living/carbon/human/new_character
 	var/spawnloc
@@ -475,7 +474,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			spawnloc = get_turf(src.mob)
 
 		if("Arrivals") //Spawn them at a latejoin spawnpoint
-			spawnloc = pick(latejoin)
+			spawnloc = SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION)?.GetSpawnLoc()
 
 		else //I have no idea how you're here
 			to_chat(src, "Invalid spawn location choice.")
@@ -486,7 +485,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Couldn't get valid spawn location.")
 		return
 
+	// todo: this entire stack is awful and should be a ssjob thing maybe
+
 	new_character = new(spawnloc)
+	new_character.mind_initialize()
 
 	//We were able to spawn them, right?
 	if(!new_character)
@@ -507,28 +509,26 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				antag_data.add_antagonist(new_character.mind)
 				antag_data.place_mob(new_character)
 
-	//VOREStation Add - Required for persistence
+	// Required for persistence
 	if(new_character.mind)
 		new_character.mind.loaded_from_ckey = picked_ckey
 		new_character.mind.loaded_from_slot = picked_slot
-	//VOREStation Add End
 
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			job_master.EquipRank(new_character, charjob, 1)
-		//equip_custom_items(new_character)	//VOREStation Removal
+			SSjob.EquipRank(new_character, charjob, 1)
 
 	//If desired, add records.
 	if(records)
 		data_core.manifest_inject(new_character)
 
 	//A redraw for good measure
-	new_character.update_icons_all()
+	new_character.regenerate_icons()
 
 	//If we're announcing their arrival
 	if(announce)
-		AnnounceArrival(new_character, new_character.mind.assigned_role)
+		AnnounceArrival(new_character, new_character.mind.assigned_role, "[new_character], [new_character.mind.assigned_role], will arrive shortly.")
 
 	log_admin("[admin] has spawned [player_key]'s character [new_character.real_name].")
 	message_admins("[admin] has spawned [player_key]'s character [new_character.real_name].", 1)
@@ -633,7 +633,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 	if(SSjob)
-		for(var/datum/job/job in SSjob.occupations)
+		for(var/datum/role/job/job in SSjob.occupations)
 			to_chat(src, "[job.title]: [job.total_positions]")
 	feedback_add_details("admin_verb","LFS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -737,7 +737,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	switch(alert("How would you like to ban someone today?", "Manual Ban", "Key List", "Enter Manually", "Cancel"))
 		if("Key List")
 			var/list/keys = list()
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				keys += M.client
 			var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in keys
 			if(!selection)
@@ -791,7 +791,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 /client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.mob_list)
 	set category = "Special Verbs"
 	set name = "Check Contents"
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 
 	var/list/L = M.get_contents()
 	for(var/t in L)
@@ -834,12 +834,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Change View Range"
 	set desc = "switches between 1x and custom views"
 
-	var/view = src.view
-	if(view == world.view)
-		view = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128)
+	if(!using_temporary_viewsize)
+		var/number = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,22,24,26,28,30,32,34)
+		set_temporary_view(number * 2 + 1, number * 2 + 1)
 	else
-		view = world.view
-	mob.set_viewsize(view)
+		reset_temporary_view()
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins("<font color=#4F49AF>[key_name_admin(usr)] changed their view range to [view].</font>", 1)	//why? removed by order of XSI
@@ -991,7 +990,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/list/human_cryopods = list()
 	var/list/robot_cryopods = list()
 
-	for(var/obj/machinery/cryopod/CP in machines)
+	for(var/obj/machinery/cryopod/CP in GLOB.machines)
 		if(!CP.control_computer)
 			continue //Broken pod w/o computer, move on.
 
@@ -1016,7 +1015,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else if(issilicon(M))
 		if(isAI(M))
 			var/mob/living/silicon/ai/ai = M
-			empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
+			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
 			GLOB.global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 			ai.clear_client()
 			return
@@ -1055,4 +1054,3 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins(msg)
 	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","ICS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-

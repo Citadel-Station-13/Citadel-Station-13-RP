@@ -1,18 +1,22 @@
-#define TECHNOMANCER_INSTABILITY_DECAY				0.97	// Multipler for how much instability is lost per Life() tick.
+/// Multipler for how much instability is lost per Life() tick.
+#define TECHNOMANCER_INSTABILITY_DECAY				0.97
 // Numbers closer to 1.0 make instability decay slower.  Instability will never decay if it's at 1.0.
 // When set to 0.98, it has a half life of roughly 35 Life() ticks, or 1.1 minutes.
 // For 0.97, it has a half life of about 23 ticks, or 46 seconds.
 // For 0.96, it is 17 ticks, or 34 seconds.
 // 0.95 is 14 ticks.
-#define TECHNOMANCER_INSTABILITY_MIN_DECAY			0.1 	// Minimum removed every Life() tick, always.
-#define TECHNOMANCER_INSTABILITY_PRECISION			0.1 	// Instability is rounded to this.
-#define TECHNOMANCER_INSTABILITY_MIN_GLOW			10		// When above this number, the entity starts glowing, affecting others.
-
-
+/// Minimum removed every Life() tick, always.
+#define TECHNOMANCER_INSTABILITY_MIN_DECAY			0.1
+/// Instability is rounded to this.
+#define TECHNOMANCER_INSTABILITY_PRECISION			0.1
+/// When above this number, the entity starts glowing, affecting others.
+#define TECHNOMANCER_INSTABILITY_MIN_GLOW			10
 /mob/living
 	var/instability = 0
 	var/last_instability = 0 // Used to calculate instability delta.
 	var/last_instability_event = null // most recent world.time that something bad happened due to instability.
+
+// todo: convert to status effect
 
 // Proc: adjust_instability()
 // Parameters: 0
@@ -44,11 +48,9 @@
 			if(100 to 200)
 				wiz_instability_display.icon_state = "instability3"
 
-// Proc: Life()
-// Parameters: 0
-// Description: Makes instability tick along with Life().
-/mob/living/Life()
-	. = ..()
+/mob/living/PhysicalLife()
+	if((. = ..()))
+		return
 	handle_instability()
 
 // Proc: handle_instability()
@@ -90,9 +92,9 @@
 	last_instability_event = world.time
 	spawn(1)
 		var/image/instability_flash = image('icons/obj/spells.dmi',"instability")
-		overlays |= instability_flash
+		add_overlay(instability_flash)
 		sleep(4)
-		overlays.Remove(instability_flash)
+		cut_overlay(instability_flash)
 		qdel(instability_flash)
 
 /mob/living/silicon/instability_effects()
@@ -179,12 +181,11 @@
 						qdel(sparks)
 					if(1)
 						return
-
 			if(30 to 50) //Moderate
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.3, IRRADIATE)
+						afflict_radiation(instability * 0.3, FALSE)
 					if(1)
 						return
 					if(2)
@@ -212,7 +213,7 @@
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.7, IRRADIATE)
+						afflict_radiation(instability * 0.7, FALSE)
 					if(1)
 						return
 					if(2)
@@ -237,11 +238,11 @@
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability, IRRADIATE)
+						afflict_radiation(instability, FALSE)
 					if(1)
 						visible_message("<span class='warning'>\The [src] suddenly collapses!</span>",
 						"<span class='danger'>You suddenly feel very light-headed, and faint!</span>")
-						Paralyse(instability * 0.1)
+						afflict_unconscious(20 * instability * 0.1)
 					if(2)
 						if(can_feel_pain())
 							apply_effect(instability, AGONY)
@@ -277,7 +278,7 @@
 // This should only be used for EXTERNAL sources of instability, such as from someone or something glowing.
 /mob/living/proc/receive_radiated_instability(amount)
 	// Energy armor like from the AMI RIG can protect from this.
-	var/armor = getarmor(null, "energy")
+	var/armor = legacy_mob_armor(null, "energy")
 	var/armor_factor = abs( (armor - 100) / 100)
 	amount = amount * armor_factor
 	if(amount && prob(10))
@@ -286,4 +287,3 @@
 		else
 			to_chat(src, "<span class='cult'><font size='4'>The purple glow makes you feel strange...</font></span>")
 	adjust_instability(amount)
-

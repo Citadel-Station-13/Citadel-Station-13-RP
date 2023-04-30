@@ -56,7 +56,7 @@
 		visitor_dir = turn(visitor_dir, 90)
 
 	if(multiz)
-		new /obj/effect/landmark/map_data(center_loc, (multiz + 1))
+		new /obj/landmark/map_data(center_loc, (multiz + 1))
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
@@ -84,7 +84,7 @@
 /obj/effect/shuttle_landmark/ship
 	name = "Open Space"
 	landmark_tag = "ship"
-	flags = SLANDMARK_FLAG_ZERO_G // *Not* AUTOSET, these must be world.turf and world.area for lazy loading to work.
+	shuttle_landmark_flags = SLANDMARK_FLAG_ZERO_G // *Not* AUTOSET, these must be world.turf and world.area for lazy loading to work.
 	var/shuttle_name
 	var/list/visitors // landmark -> visiting shuttle stationed there
 
@@ -117,18 +117,16 @@
 //
 
 /obj/effect/shuttle_landmark/visiting_shuttle
-	flags = SLANDMARK_FLAG_AUTOSET | SLANDMARK_FLAG_ZERO_G
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET | SLANDMARK_FLAG_ZERO_G
 	var/obj/effect/shuttle_landmark/ship/core_landmark
 
 /obj/effect/shuttle_landmark/visiting_shuttle/Initialize(mapload, obj/effect/shuttle_landmark/ship/master, _name)
 	core_landmark = master
 	name = _name
 	landmark_tag = master.shuttle_name + _name
-	RegisterSignal(master, COMSIG_PARENT_QDELETING, .proc/qdel_self)
+	RegisterSignal(master, COMSIG_PARENT_QDELETING, /datum/proc/qdel_self)
 	. = ..()
 
-/obj/effect/shuttle_landmark/visiting_shuttle/proc/qdel_self()
-	qdel(src)
 
 /obj/effect/shuttle_landmark/visiting_shuttle/Destroy()
 	UnregisterSignal(core_landmark, COMSIG_PARENT_QDELETING)

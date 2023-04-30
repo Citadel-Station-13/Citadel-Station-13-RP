@@ -17,7 +17,7 @@
 	open = round(rand(0, 1))
 	update_icon()
 
-/obj/structure/toilet/attack_hand(mob/living/user as mob)
+/obj/structure/toilet/attack_hand(mob/user, list/params)
 	if(swirlie)
 		usr.setClickCooldown(user.get_attack_speed())
 		usr.visible_message("<span class='danger'>[user] slams the toilet seat onto [swirlie.name]'s head!</span>", "<span class='notice'>You slam the toilet seat onto [swirlie.name]'s head!</span>", "You hear reverberating porcelain.")
@@ -46,8 +46,9 @@
 
 /obj/structure/toilet/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(I.is_crowbar())
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(user, "<span class='notice'>You start to [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"].</span>")
-		playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 50, 1)
+		playsound(src, 'sound/effects/stonedoor_openclose.ogg', 50, 1)
 		if(do_after(user, 30))
 			user.visible_message("<span class='notice'>[user] [cistern ? "replaces the lid on the cistern" : "lifts the lid off the cistern"]!</span>", "<span class='notice'>You [cistern ? "replace the lid on the cistern" : "lift the lid off the cistern"]!</span>", "You hear grinding porcelain.")
 			cistern = !cistern
@@ -55,6 +56,7 @@
 			return
 
 	if(istype(I, /obj/item/grab))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		user.setClickCooldown(user.get_attack_speed(I))
 		var/obj/item/grab/G = I
 
@@ -80,19 +82,20 @@
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
 	if(cistern && !istype(user,/mob/living/silicon/robot)) //STOP PUTTING YOUR MODULES IN THE TOILET.
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(I.w_class > 3)
 			to_chat(user, "<span class='notice'>\The [I] does not fit.</span>")
 			return
 		if(w_items + I.w_class > 5)
 			to_chat(user, "<span class='notice'>The cistern is full.</span>")
 			return
-		user.drop_item()
-		I.loc = src
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		w_items += I.w_class
 		to_chat(user, "You carefully place \the [I] into the cistern.")
 		return
 
-
+	return ..()
 
 /obj/structure/urinal
 	name = "urinal"
@@ -116,7 +119,22 @@
 			else
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
+/obj/item/reagent_containers/food/urinalcake
+	name = "urinal cake"
+	desc = "A small, pleasant smelling air freshener keeping the bathroom smelling clean. It looks tasty... but, no, you shouldn't... Unless?"
+	icon = 'icons/obj/food_snacks.dmi'
+	icon_state = "urinalcake"
+	w_class = WEIGHT_CLASS_TINY
 
+/obj/item/reagent_containers/food/urinalcake/New()
+	. = ..()
+	reagents.add_reagent("chlorine", 3)
+	reagents.add_reagent("ammonia", 1)
+
+/obj/item/reagent_containers/food/urinalcake/attack_self(mob/living/user)
+	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
+	icon_state = "urinalcake_squish"
+	addtimer(VARSET_CALLBACK(src, icon_state, "urinalcake"), 8)
 
 /obj/machinery/shower
 	name = "shower"
@@ -154,7 +172,10 @@
 	anchored = 1
 	mouse_opacity = 0
 
-/obj/machinery/shower/attack_hand(mob/M as mob)
+/obj/machinery/shower/attack_hand(mob/user, list/params)
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	on = !on
 	update_icon()
 	if(on)
@@ -173,20 +194,20 @@
 	if(I.is_wrench())
 		var/newtemp = input(user, "What setting would you like to set the temperature valve to?", "Water Temperature Valve") in temperature_settings
 		to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I].</span>")
-		playsound(src.loc, I.usesound, 50, 1)
-		if(do_after(user, 50 * I.toolspeed))
+		playsound(src.loc, I.tool_sound, 50, 1)
+		if(do_after(user, 50 * I.tool_speed))
 			watertemp = newtemp
 			user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I].</span>")
 			add_fingerprint(user)
 
 /obj/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
-	overlays.Cut()					//once it's been on for a while, in addition to handling the water overlay.
+	cut_overlays()					//once it's been on for a while, in addition to handling the water overlay.
 	if(mymist)
 		qdel(mymist)
 		mymist = null
 
 	if(on)
-		overlays += image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir)
+		add_overlay(image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir))
 		if(temperature_settings[watertemp] < T20C)
 			return //no mist for cold water
 		if(!ismist)
@@ -208,7 +229,10 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
+
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER, RAD_CONTAMINATION_CLEANSE_FACTOR)
 
 	if(isliving(O))
 		var/mob/living/L = O
@@ -239,19 +263,19 @@
 			var/washglasses = 1
 
 			if(H.wear_suit)
-				washgloves = !(H.wear_suit.flags_inv & HIDEGLOVES)
-				washshoes = !(H.wear_suit.flags_inv & HIDESHOES)
+				washgloves = !(H.wear_suit.inv_hide_flags & HIDEGLOVES)
+				washshoes = !(H.wear_suit.inv_hide_flags & HIDESHOES)
 
 			if(H.head)
-				washmask = !(H.head.flags_inv & HIDEMASK)
-				washglasses = !(H.head.flags_inv & HIDEEYES)
-				washears = !(H.head.flags_inv & HIDEEARS)
+				washmask = !(H.head.inv_hide_flags & HIDEMASK)
+				washglasses = !(H.head.inv_hide_flags & HIDEEYES)
+				washears = !(H.head.inv_hide_flags & HIDEEARS)
 
 			if(H.wear_mask)
 				if (washears)
-					washears = !(H.wear_mask.flags_inv & HIDEEARS)
+					washears = !(H.wear_mask.inv_hide_flags & HIDEEARS)
 				if (washglasses)
-					washglasses = !(H.wear_mask.flags_inv & HIDEEYES)
+					washglasses = !(H.wear_mask.inv_hide_flags & HIDEEYES)
 
 			if(H.head)
 				if(H.head.clean_blood())
@@ -295,7 +319,7 @@
 	if(isturf(loc))
 		var/turf/tile = loc
 		for(var/obj/effect/E in tile)
-			if(istype(E,/obj/effect/rune) || istype(E,/obj/effect/decal/cleanable) || istype(E,/obj/effect/overlay))
+			if(istype(E,/obj/effect/rune) || istype(E,/obj/effect/debris/cleanable) || istype(E,/obj/effect/overlay))
 				qdel(E)
 
 	reagents.splash(O, 10)
@@ -305,12 +329,12 @@
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && AM.simulated)
+		if(istype(AM) && !(AM.atom_flags & ATOM_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)
 	wash_floor()
-	reagents.add_reagent("water", reagents.get_free_space())
+	reagents.add_reagent("water", reagents.available_volume())
 
 /obj/machinery/shower/proc/wash_floor()
 	if(!ismist && is_washing)
@@ -350,7 +374,7 @@
 	anchored = 1
 	var/busy = 0 	//Something's being washed at the moment
 
-/obj/structure/sink/MouseDrop_T(var/obj/item/thing, var/mob/user)
+/obj/structure/sink/MouseDroppedOnLegacy(var/obj/item/thing, var/mob/user)
 	..()
 	if(!istype(thing) || !thing.is_open_container())
 		return ..()
@@ -364,7 +388,7 @@
 	thing.reagents.clear_reagents()
 	thing.update_icon()
 
-/obj/structure/sink/attack_hand(mob/user as mob)
+/obj/structure/sink/attack_hand(mob/user, list/params)
 	if (ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
@@ -414,15 +438,15 @@
 		if(B.bcell)
 			if(B.bcell.charge > 0 && B.status == 1)
 				flick("baton_active", src)
-				user.Stun(10)
+				user.afflict_stun(20 * 10)
 				user.stuttering = 10
-				user.Weaken(10)
+				user.afflict_paralyze(20 * 10)
 				if(isrobot(user))
 					var/mob/living/silicon/robot/R = user
 					R.cell.charge -= 20
 				else
 					B.deductcharge(B.hitcost)
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message( \
 					"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")
@@ -457,7 +481,7 @@
 
 	if(user.loc != location) return				//User has moved
 	if(!I) return 								//Item's been destroyed while washing
-	if(user.get_active_hand() != I) return		//Person has switched hands or the item in their hands
+	if(user.get_active_held_item() != I) return		//Person has switched hands or the item in their hands
 
 	O.clean_blood()
 	user.visible_message( \
@@ -473,7 +497,7 @@
 	icon_state = "puddle"
 	desc = "A small pool of some liquid, ostensibly water."
 
-/obj/structure/sink/puddle/attack_hand(mob/M as mob)
+/obj/structure/sink/puddle/attack_hand(mob/user, list/params)
 	icon_state = "puddle-splash"
 	..()
 	icon_state = "puddle"
@@ -489,15 +513,15 @@
 	desc = "A bubbling pool of oil.This would probably be valuable, had bluespace technology not destroyed the need for fossil fuels 200 years ago."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "puddle-oil"
-	var/dispensedreagent = /datum/reagent/oil
+	var/dispensedreagent = /datum/reagent/crude_oil
 
-/obj/structure/sink/oil_well/Initialize()
+/obj/structure/sink/oil_well/Initialize(mapload)
 	.=..()
 	create_reagents(20)
 	reagents.add_reagent(dispensedreagent, 20)
 
 /* Okay, just straight up, I tried to code this like blood overlays, but I just do NOT understand the system. If someone wants to sort it, enable this too.
-/obj/structure/sink/oil_well/attack_hand(mob/M)
+/obj/structure/sink/oil_well/attack_hand(mob/user, list/params)
 	flick("puddle-oil-splash",src)
 	reagents.reaction(M, 20) //Covers target in 20u of oil.
 	to_chat(M, "<span class='notice'>You touch the pool of oil, only to get oil all over yourself. It would be wise to wash this off with water.</span>")
@@ -530,9 +554,13 @@
 	var/plunge_mod = 1 //time*plunge_mod = total time we take to plunge an object
 	var/reinforced = FALSE //whether we do heavy duty stuff like geysers
 
-/obj/item/plunger/attack(obj/O, mob/living/user)
-	if(!O.plunger_act(src, user, reinforced))
+/obj/item/plunger/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!isobj(target))
 		return ..()
+	var/obj/O = target
+	if(O.plunger_act(src, user, reinforced))
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/plunger/throw_impact(atom/hit_atom, mob/living/carbon/human/target, target_zone)
 	. = ..()
@@ -541,7 +569,7 @@
 	if(iscarbon(hit_atom))
 		var/mob/living/carbon/H = hit_atom
 		if(!H.wear_mask)
-			H.equip_to_slot_if_possible(src, SLOT_MASK)
+			H.equip_to_slot_if_possible(src, SLOT_MASK, INV_OP_SUPPRESS_WARNING)
 			H.visible_message("<span class='warning'>The plunger slams into [H]'s face!</span>", "<span class='warning'>The plunger suctions to your face!</span>")
 
 /obj/item/plunger/reinforced
@@ -598,7 +626,7 @@
 	erupting_state = null
 	var/list/options = list(/datum/reagent/clf3 = 10, /datum/reagent/water/hollowwater = 10, /datum/reagent/medicine/omnizine/protozine = 6, /datum/reagent/wittel = 1)
 
-/obj/structure/geyser/random/Initialize()
+/obj/structure/geyser/random/Initialize(mapload)
 	. = ..()
 	reagent_id = pickweight(options)
 */

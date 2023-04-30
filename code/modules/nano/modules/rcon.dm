@@ -109,16 +109,15 @@
 	var/z = get_z(nano_host())
 	var/list/map_levels = using_map.get_map_levels(z)
 
-	for(var/obj/machinery/power/smes/buildable/SMES in machines)
+	for(var/obj/machinery/power/smes/buildable/SMES in GLOB.machines)
 		if(!(SMES.z in map_levels))
 			continue
 		if(SMES.RCon_tag && (SMES.RCon_tag != "NO_TAG") && SMES.RCon)
 			known_SMESs.Add(SMES)
 
 	known_breakers = new /list()
-	for(var/obj/machinery/power/breakerbox/breaker in machines)
+	for(var/obj/machinery/power/breakerbox/breaker in GLOB.machines)
 		if(!(breaker.z in map_levels))
 			continue
 		if(breaker.RCon_tag != "NO_TAG")
 			known_breakers.Add(breaker)
-

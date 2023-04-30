@@ -1,9 +1,12 @@
+## Max distance for clients to view with widescren mode enabled. Maximum: 35 in either dimension.
+MAX_VIEWPORT_SIZE 19x15
+## Effective distance used for world.view, affects stuff like AI target aquisition. Maximum: 35 in either dimension.
+## GAME_VIEWPORT_SIZE 15x19
+## AT THE CURRENT TIME, BYOND WORLD.VIEW IS READ-ONLY
+## THIS CONFIGURATION IS LEFT HERE AS A TODO.
+
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
-
-## Starlight for exterior walls and breaches. Uncomment for starlight!
-## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
-#STARLIGHT
 
 ## Engine submap probabilities
 ## Supermatter
@@ -14,6 +17,3 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
-
-## Comment this out if you don't want to use the 'nightshift lighting' subsystem to adjust lights based on ingame time.
-NIGHTSHIFTS_ENABLED

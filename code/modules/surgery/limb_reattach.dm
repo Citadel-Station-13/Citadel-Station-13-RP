@@ -53,12 +53,13 @@
 
 /datum/surgery_step/limb/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/E = tool
+	if(!user.attempt_void_item_for_installation(E))
+		return
 	user.visible_message("<span class='notice'>[user] has attached [target]'s [E.name] to the [E.amputation_point].</span>",	\
 	"<span class='notice'>You have attached [target]'s [E.name] to the [E.amputation_point].</span>")
-	user.drop_from_inventory(E)
 	E.replaced(target)
 	target.update_icons_body(FALSE)
-	target.updatehealth()
+	target.update_health()
 	target.UpdateDamageIcon()
 
 /datum/surgery_step/limb/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -98,7 +99,7 @@
 	"<span class='notice'>You have connected tendons and muscles in [target]'s [E.amputation_point] with [tool].</span>")
 	E.status &= ~ORGAN_CUT_AWAY
 	target.update_icons_body()
-	target.updatehealth()
+	target.update_health()
 	target.UpdateDamageIcon()
 
 /datum/surgery_step/limb/connect/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
@@ -148,7 +149,7 @@
 				new_limb.sabotaged = 1
 
 	target.update_icons_body(FALSE)
-	target.updatehealth()
+	target.update_health()
 	target.UpdateDamageIcon()
 
 	qdel(tool)

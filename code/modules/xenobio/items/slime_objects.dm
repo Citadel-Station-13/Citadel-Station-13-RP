@@ -7,7 +7,10 @@
 	description_info = "Use in your hand to attempt to create a Promethean.  It functions similarly to a positronic brain, in that a ghost is needed to become the Promethean."
 	var/searching = 0
 
-/obj/item/slime_cube/attack_self(mob/user as mob)
+/obj/item/slime_cube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!searching)
 		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		icon_state = "slime cube active"
@@ -18,7 +21,7 @@
 
 // Sometime down the road it would be great to make all of these 'ask ghosts if they want to be X' procs into a generic datum.
 /obj/item/slime_cube/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.MayRespawn())
 			continue
 		if(O.client)
@@ -53,8 +56,8 @@
 	var/mob/living/carbon/human/S = new(get_turf(src))
 	S.client = candidate.client
 	to_chat(S, "<b>You are a promethean, brought into existence on [station_name()].</b>")
-	S.mind.assigned_role = "Promethean"
-	S.set_species("Promethean")
+	S.mind.assigned_role = SPECIES_PROMETHEAN
+	S.set_species(/datum/species/shapeshifter/promethean)
 	S.shapeshifter_set_colour("#2398FF")
 	visible_message("<span class='warning'>The monkey cube suddenly takes the shape of a humanoid!</span>")
 	var/newname = sanitize(input(S, "You are a Promethean. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
@@ -78,14 +81,22 @@
 	icon_state = "slime_crystal_small"
 	w_class = ITEMSIZE_TINY
 	origin_tech = list(TECH_MAGNET = 6, TECH_BLUESPACE = 3)
-	force = 1 //Needs a token force to ensure you can attack because for some reason you can't attack with 0 force things
+	damage_force = 1 //Needs a token damage_force to ensure you can attack because for some reason you can't attack with 0 damage_force things
 
-/obj/item/slime_crystal/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	target.visible_message("<span class='warning'>\The [target] has been teleported with \the [src] by \the [user]!</span>")
-	safe_blink(target, 14)
+/obj/item/slime_crystal/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/L = target
+	if(!istype(L))
+		return
+	L.visible_message("<span class='warning'>\The [L] has been teleported with \the [src] by \the [user]!</span>")
+	safe_blink(L, 14)
 	qdel(src)
+	return . | CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/slime_crystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>\The [user] teleports themselves with \the [src]!</span>")
 	safe_blink(user, 14)
 	qdel(src)

@@ -22,7 +22,7 @@
 		/datum/category_item/catalogue/technology/bot/ed209/slime,
 		/datum/category_item/catalogue/technology/bot/farmbot,
 		/datum/category_item/catalogue/technology/bot/floorbot,
-		/datum/category_item/catalogue/technology/bot/medbot,
+		/datum/category_item/catalogue/technology/bot/medibot,
 		/datum/category_item/catalogue/technology/bot/mulebot,
 		/datum/category_item/catalogue/technology/bot/secbot,
 		/datum/category_item/catalogue/technology/bot/secbot/slime
@@ -34,20 +34,23 @@
 	maxHealth = 20
 	icon = 'icons/obj/aibots.dmi'
 	layer = MOB_LAYER
-	universal_speak = 1
-	density = 0
+	universal_speak = TRUE
+	density = FALSE
 	silicon_privileges = PRIVILEGES_BOT
 
-	makes_dirt = FALSE	// No more dirt from Beepsky
+	makes_dirt = FALSE //? No more dirt from Beepsky
 
 	var/obj/item/card/id/botcard = null
 	var/list/botcard_access = list()
-	var/on = 1
-	var/open = 0
-	var/locked = 1
-	var/emagged = 0
+
+	var/on = TRUE
+	var/open = FALSE
+	var/locked = TRUE
+	var/emagged = FALSE
 	var/light_strength = 3
-	var/busy = 0
+
+	/// Are they doing something?
+	var/busy = FALSE
 
 	var/obj/access_scanner = null
 	var/list/req_access = list()
@@ -59,24 +62,36 @@
 	var/list/target_path = list()
 	var/turf/obstacle = null
 
-	var/wait_if_pulled = 0 // Only applies to moving to the target
-	var/will_patrol = 0 // If set to 1, will patrol, duh
-	var/patrol_speed = 1 // How many times per tick we move when patrolling
-	var/target_speed = 2 // Ditto for chasing the target
-	var/panic_on_alert = FALSE	// Will the bot go faster when the alert level is raised?
-	var/min_target_dist = 1 // How close we try to get to the target
-	var/max_target_dist = 50 // How far we are willing to go
+	/// Only applies to moving to the target.
+	var/wait_if_pulled = FALSE
+	/// If set to TRUE, will patrol.
+	var/will_patrol = FALSE
+	/// How many times per tick we move when patrolling.
+	var/patrol_speed = 1
+	/// Ditto for chasing the target.
+	var/target_speed = 2
+	/// Will the bot go faster when the alert level is raised?
+	var/panic_on_alert = FALSE
+	/// How close we try to get to the target.
+	var/min_target_dist = 1
+	/// How far we are willing to go.
+	var/max_target_dist = 50
 	var/max_patrol_dist = 250
 
 	var/target_patience = 5
 	var/frustration = 0
 	var/max_frustration = 0
+	var/robot_arm = /obj/item/robot_parts/r_arm
+
+	//! Appearance Vars
+	/// For variants of a bot, like Burn medkit Medibots!
+	var/skin = null
 
 /mob/living/bot/Initialize(mapload)
 	. = ..()
 	update_icons()
 
-	default_language = GLOB.all_languages[LANGUAGE_GALCOM]
+	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
 
 	botcard = new /obj/item/card/id(src)
 	botcard.access = botcard_access.Copy()
@@ -94,14 +109,16 @@
 	if(on)
 		turn_on() // Update lights and other stuff
 
-/mob/living/bot/Life()
-	..()
+/mob/living/bot/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 	if(health <= 0)
 		death()
-		return
-	SetWeakened(0)
-	SetStunned(0)
-	SetParalysis(0)
+		return TRUE
+
+	set_paralyzed(0)
+	set_stunned(0)
+	set_unconscious(0)
 
 	if(on && !client && !busy)
 		spawn(0)
@@ -110,10 +127,10 @@
 		spawn(0)
 			handleAI()
 
-/mob/living/bot/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/bot/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = getMaxHealth() - getFireLoss() - getBruteLoss()
 	oxyloss = 0
@@ -142,7 +159,7 @@
 		if(!locked)
 			open = !open
 			to_chat(user, "<span class='notice'>Maintenance panel is now [open ? "opened" : "closed"].</span>")
-			playsound(src, O.usesound, 50, 1)
+			playsound(src, O.tool_sound, 50, 1)
 		else
 			to_chat(user, "<span class='notice'>You need to unlock the controls first.</span>")
 		return
@@ -157,9 +174,9 @@
 					fireloss = 0
 				else
 					fireloss = fireloss - 10
-				updatehealth()
+				update_health()
 				user.visible_message("<span class='notice'>[user] repairs [src].</span>","<span class='notice'>You repair [src].</span>")
-				playsound(src, O.usesound, 50, 1)
+				playsound(src, O.tool_sound, 50, 1)
 			else
 				to_chat(user, "<span class='notice'>Unable to repair with the maintenance panel closed.</span>")
 		else
@@ -190,7 +207,8 @@
 /mob/living/bot/Bump(var/atom/A)
 	if(on && botcard && istype(A, /obj/machinery/door))
 		var/obj/machinery/door/D = A
-		if(!istype(D, /obj/machinery/door/firedoor) && !istype(D, /obj/machinery/door/blast) && !istype(D, /obj/machinery/door/airlock/lift) && D.check_access(botcard))	//VOREStation Edit: Elevator safety precaution
+		// Elevator safety precaution
+		if(!istype(D, /obj/machinery/door/firedoor) && !istype(D, /obj/machinery/door/blast) && !istype(D, /obj/machinery/door/airlock/lift) && D.check_access(botcard))
 			D.open()
 	else
 		..()
@@ -245,31 +263,32 @@
 /mob/living/bot/proc/handleRangedTarget()
 	return
 
-/mob/living/bot/proc/handlePanic()	// Speed modification based on alert level.
-	. = 0
+/// Speed modification based on alert level.
+/mob/living/bot/proc/handlePanic()
 	switch(get_security_level())
-		if("green")
-			. = 0
+		if(SEC_LEVEL_GREEN)
+			return 0
 
-		if("yellow")
-			. = 0
+		if(SEC_LEVEL_BLUE)
+			return 0
 
-		if("violet")
-			. = 0
+		if(SEC_LEVEL_YELLOW)
+			return 1
 
-		if("orange")
-			. = 0
+		if(SEC_LEVEL_VIOLET)
+			return 1
 
-		if("blue")
-			. = 1
+		if(SEC_LEVEL_ORANGE)
+			return 2
 
-		if("red")
-			. = 2
+		if(SEC_LEVEL_RED)
+			return 3
 
-		if("delta")
-			. = 2
+		if(SEC_LEVEL_DELTA) //FAST AS FUCK BOOOYYEEEE
+			return 4
+		else
+			return 0
 
-	return .
 
 /mob/living/bot/proc/stepToTarget()
 	if(!target || !target.loc)
@@ -443,7 +462,7 @@
 		return 1
 
 	for(var/obj/O in B)
-		if(O.density && !istype(O, /obj/machinery/door) && !(O.flags & ON_BORDER))
+		if(O.density && !istype(O, /obj/machinery/door) && !(O.atom_flags & ATOM_BORDER))
 			return 1
 
 	return 0

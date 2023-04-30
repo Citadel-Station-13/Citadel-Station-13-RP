@@ -9,8 +9,6 @@
 	var/obj/effect/overmap/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
-	var/skill_needed = SKILL_BASIC
-	var/operator_skill = SKILL_BASIC
 
 /datum/shuttle/autodock/overmap/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
@@ -51,13 +49,6 @@
 
 /datum/shuttle/autodock/overmap/can_force()
 	return ..() && can_go()
-
-/datum/shuttle/autodock/overmap/process_launch()
-	if(prob(10*max(0, skill_needed - operator_skill)))
-		var/places = get_possible_destinations()
-		var/place = pick(places)
-		set_destination(places[place])
-	..()
 
 /datum/shuttle/autodock/overmap/proc/set_destination(var/obj/effect/shuttle_landmark/A)
 	if(A != current_location)
@@ -143,7 +134,7 @@
 	opened = 1	//shows open so you can diagnose 'oops, no gas' easily
 	icon_state = "fuel_port_empty"	//set the default state just to be safe
 
-/obj/structure/fuel_port/attack_hand(mob/user as mob)
+/obj/structure/fuel_port/attack_hand(mob/user, list/params)
 	if(!opened)
 		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
 		return
@@ -176,7 +167,9 @@
 			to_chat(user, "<spawn class='warning'>\The [src] door is still closed!")
 			return
 		if(contents.len == 0)
-			user.unEquip(W, target = src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
 	update_icon()
 
 // Walls hide stuff inside them, but we want to be visible.

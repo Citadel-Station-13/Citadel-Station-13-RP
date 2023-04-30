@@ -1,14 +1,14 @@
 /obj/item/radio/intercom
 	name = "station intercom (General)"
 	desc = "Talk through this."
-	icon = 'icons/obj/radio_vr.dmi' //VOREStation Edit - New Icon
+	icon = 'icons/obj/radio.dmi'
 	icon_state = "intercom"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	w_class = ITEMSIZE_LARGE
 	canhear_range = 2
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	var/circuit = /obj/item/circuitboard/intercom
 	var/number = 0
 	var/last_tick //used to delay the powercheck
@@ -72,7 +72,7 @@
 	. = ..()
 	internal_channels = list(
 		num2text(PUB_FREQ) = list(),
-		num2text(SEC_I_FREQ) = list(access_security)
+		num2text(SEC_I_FREQ) = list(ACCESS_SECURITY_EQUIPMENT)
 	)
 
 /obj/item/radio/intercom/entertainment/Initialize(mapload)
@@ -91,18 +91,18 @@
 
 /obj/item/radio/intercom/syndicate/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(SYND_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(SYND_FREQ)] = list(ACCESS_FACTION_SYNDICATE)
 
 /obj/item/radio/intercom/raider
 	name = "illicit intercom"
 	desc = "Pirate radio, but not in the usual sense of the word."
 	frequency = RAID_FREQ
-	subspace_transmission = 1
-	syndie = 1
+	subspace_transmission = 0
+	syndie = 0
 
 /obj/item/radio/intercom/raider/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(RAID_FREQ)] = list(access_syndicate)
+	internal_channels[num2text(RAID_FREQ)] = list(ACCESS_FACTION_PIRATE)
 
 /obj/item/radio/intercom/trader
 	name = "commercial intercom"
@@ -113,7 +113,7 @@
 
 /obj/item/radio/intercom/trader/Initialize(mapload)
 	. = ..()
-	internal_channels[num2text(TRADE_FREQ)] = list(access_trader)
+	internal_channels[num2text(TRADE_FREQ)] = list(ACCESS_FACTION_TRADER)
 
 /obj/item/radio/intercom/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -124,7 +124,7 @@
 	spawn (0)
 		attack_self(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user as mob)
+/obj/item/radio/intercom/attack_hand(mob/user, list/params)
 	src.add_fingerprint(user)
 	spawn (0)
 		attack_self(user)
@@ -134,7 +134,7 @@
 	if(W.is_screwdriver())  // Opening the intercom up.
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		if(wiresexposed)
 			if(!on)
 				icon_state = "intercom-p_open"
@@ -145,7 +145,7 @@
 		return
 	if(wiresexposed && W.is_wirecutter())
 		user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		new/obj/item/stack/cable_coil(get_turf(src), 5)
 		var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
 		var/obj/item/circuitboard/M = circuit
@@ -157,7 +157,7 @@
 		A.anchored = 1
 		A.state = 2
 		A.update_icon()
-		M.deconstruct(src)
+		M.after_deconstruct(src)
 		qdel(src)
 	else
 		src.attack_hand(user)

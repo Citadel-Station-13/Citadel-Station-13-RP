@@ -1,8 +1,7 @@
 import { decodeHtmlEntities } from 'common/string';
 import { filter } from 'common/collections';
-import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../../components";
+import { Box, Button, LabeledList, Section } from "../../components";
 
 export const pda_messenger = (props, context) => {
   const { act, data } = useBackend(context);
@@ -58,7 +57,7 @@ const ActiveConversation = (props, context) => {
           icon="eye"
           selected={clipboardMode}
           tooltip="Enter Clipboard Mode"
-          tooltipPosition="bottom-left"
+          tooltipPosition="bottom-start"
           onClick={() => setClipboardMode(!clipboardMode)} />
       }
       height="450px"
@@ -67,19 +66,21 @@ const ActiveConversation = (props, context) => {
         "height": "97%",
         "overflow-y": "auto",
       }}>
-        {filter(im => im.target === active_conversation)(messages).map((im, i, filterArr) => (
-          <Box
-            textAlign={im.sent ? "right" : "left"}
-            mb={1}
-            key={i}>
+        {filter(
+          im => im.target === active_conversation)(messages).map(
+          (im, i, filterArr) => (
             <Box
-              maxWidth="75%"
-              className={findClassMessage(im, i - 1, filterArr)}
-              inline>
-              {decodeHtmlEntities(im.message)}
+              textAlign={im.sent ? "right" : "left"}
+              mb={1}
+              key={i}>
+              <Box
+                maxWidth="75%"
+                className={findClassMessage(im, i - 1, filterArr)}
+                inline>
+                {decodeHtmlEntities(im.message)}
+              </Box>
             </Box>
-          </Box>
-        ))}
+          ))}
       </Section>
       <Button
         icon="comment"
@@ -98,7 +99,7 @@ const ActiveConversation = (props, context) => {
             icon="eye"
             selected={clipboardMode}
             tooltip="Exit Clipboard Mode"
-            tooltipPosition="bottom-left"
+            tooltipPosition="bottom-start"
             onClick={() => setClipboardMode(!clipboardMode)} />
         }
         height="450px"
@@ -107,13 +108,23 @@ const ActiveConversation = (props, context) => {
           "height": "97%",
           "overflow-y": "auto",
         }}>
-          {filter(im => im.target === active_conversation)(messages).map((im, i) => (
-            <Box
-              key={i}
-              className={im.sent ? "ClassicMessage_Sent" : "ClassicMessage_Received"}>
-              {im.sent ? "You:" : "Them:"} {decodeHtmlEntities(im.message)}
-            </Box>
-          ))}
+          {
+            filter(
+              im => im.target === active_conversation)(messages).map(
+              (im, i) => (
+                <Box
+                  key={i}
+                  className={
+                    im.sent ? "ClassicMessage_Sent" : "ClassicMessage_Received"
+                  }>
+                  {
+                    m.sent ? "You:" : "Them:"
+                  } {
+                    decodeHtmlEntities(im.message)
+                  }
+                </Box>
+              ))
+          }
         </Section>
         <Button
           icon="comment"

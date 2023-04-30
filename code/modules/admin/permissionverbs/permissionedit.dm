@@ -2,17 +2,21 @@
 	set category = "Admin"
 	set name = "Permissions Panel"
 	set desc = "Edit admin permissions"
-	if(!check_rights(R_PERMISSIONS))	return
+	if(!check_rights(R_PERMISSIONS))
+		return
 	usr.client.holder.edit_admin_permissions()
 
 /datum/admins/proc/edit_admin_permissions()
-	if(!check_rights(R_PERMISSIONS))	return
+	if(!check_rights(R_PERMISSIONS))
+		return
+	var/datum/asset/asset_cache_datum = get_asset_datum(/datum/asset/group/permissions)
+	asset_cache_datum.send(usr)
 
 	var/output = {"<!DOCTYPE html>
 <html>
 <head>
 <title>Permissions Panel</title>
-<script type='text/javascript' src='search.js'></script>
+<script type='text/javascript' src='[SSassets.transport.get_asset_url("search.js")]'></script>
 <link rel='stylesheet' type='text/css' href='panels.css'>
 </head>
 <body onload='selectTextField();updateSearch();'>
@@ -54,9 +58,8 @@
 		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
-	establish_db_connection()
 
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
 		return
 
@@ -71,8 +74,12 @@
 	if(!istext(adm_ckey) || !istext(new_rank))
 		return
 
-	var/DBQuery/select_query = dbcon.NewQuery("SELECT id FROM erro_admin WHERE ckey = '[adm_ckey]'")
-	select_query.Execute()
+	var/datum/db_query/select_query = SSdbcore.RunQuery(
+		"SELECT id FROM [format_table_name("admin")] WHERE ckey = :ckey",
+		list(
+			"ckey" = adm_ckey
+		)
+	)
 
 	var/new_admin = 1
 	var/admin_id
@@ -81,17 +88,39 @@
 		admin_id = text2num(select_query.item[1])
 
 	if(new_admin)
-		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO `erro_admin` (`id`, `ckey`, `rank`, `level`, `flags`) VALUES (null, '[adm_ckey]', '[new_rank]', -1, 0)")
-		insert_query.Execute()
-		var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `test`.`erro_admin_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Added new admin [adm_ckey] to rank [new_rank]');")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin")] (id, ckey, rank, level, flags) VALUES (null, :ckey, :rank, -1, 0)",
+			list(
+				"ckey" = adm_ckey,
+				"rank" = new_rank
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, NOW(), :ckey, :ip, :logstr)",
+			list(
+				"ckey" = sanitizeSQL(usr.ckey),
+				"ip" = sanitizeSQL(usr.client.address),
+				"Added new admin [adm_ckey] to rank [new_rank]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>New admin added.</font>")
 	else
 		if(!isnull(admin_id) && isnum(admin_id))
-			var/DBQuery/insert_query = dbcon.NewQuery("UPDATE `erro_admin` SET rank = '[new_rank]' WHERE id = [admin_id]")
-			insert_query.Execute()
-			var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `test`.`erro_admin_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Edited the rank of [adm_ckey] to [new_rank]');")
-			log_query.Execute()
+			SSdbcore.RunQuery(
+				"UPDATE [format_table_name("admin")] SET rank = :rank WHERE id = :id",
+				list(
+					"rank" = new_rank,
+					"id" = admin_id
+				)
+			)
+			SSdbcore.RunQuery(
+				"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+				list(
+					"ckey" = usr.ckey,
+					"addr" = usr.client.address,
+					"log" = "Edited the rank of [adm_ckey] to [new_rank]"
+				)
+			)
 			to_chat(usr, "<font color=#4F49AF>Admin rank changed.</font>")
 
 /datum/admins/proc/log_admin_permission_modification(var/adm_ckey, var/new_permission)
@@ -104,8 +133,7 @@
 		to_chat(usr, "<font color='red'>You do not have permission to do this!</font>")
 		return
 
-	establish_db_connection()
-	if(!dbcon.IsConnected())
+	if(!SSdbcore.Connect())
 		to_chat(usr, "<font color='red'>Failed to establish database connection</font>")
 		return
 
@@ -123,8 +151,12 @@
 	if(!istext(adm_ckey) || !isnum(new_permission))
 		return
 
-	var/DBQuery/select_query = dbcon.NewQuery("SELECT id, flags FROM erro_admin WHERE ckey = '[adm_ckey]'")
-	select_query.Execute()
+	var/datum/db_query/select_query = SSdbcore.RunQuery(
+		"SELECT id, flags FROM [format_table_name("admin")] WHERE ckey = :ckey",
+		list(
+			"ckey" = adm_ckey
+		)
+	)
 
 	var/admin_id
 	var/admin_rights
@@ -136,14 +168,36 @@
 		return
 
 	if(admin_rights & new_permission) //This admin already has this permission, so we are removing it.
-		var/DBQuery/insert_query = dbcon.NewQuery("UPDATE `erro_admin` SET flags = [admin_rights & ~new_permission] WHERE id = [admin_id]")
-		insert_query.Execute()
-		var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `test`.`erro_admin_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Removed permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]');")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("admin")] SET flags = :flags WHERE id = :id",
+			list(
+				"flags" = admin_rights & ~new_permission,
+				"id" = admin_id
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+			list(
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"log" = "Removed permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>Permission removed.</font>")
 	else //This admin doesn't have this permission, so we are adding it.
-		var/DBQuery/insert_query = dbcon.NewQuery("UPDATE `erro_admin` SET flags = '[admin_rights | new_permission]' WHERE id = [admin_id]")
-		insert_query.Execute()
-		var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `test`.`erro_admin_log` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Added permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]')")
-		log_query.Execute()
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("admin")] SET flags = :flags WHERE id = :id",
+			list(
+				"flags" = admin_rights | new_permission,
+				"id" = admin_id
+			)
+		)
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("admin_log")] (id, datetime, adminckey, adminip, log) VALUES (NULL, Now(), :ckey, :addr, :log)",
+			list(
+				"ckey" = usr.ckey,
+				"addr" = usr.client.address,
+				"log" = "Added permission [rights2text(new_permission)] (flag = [new_permission]) to admin [adm_ckey]"
+			)
+		)
 		to_chat(usr, "<font color=#4F49AF>Permission added.</font>")

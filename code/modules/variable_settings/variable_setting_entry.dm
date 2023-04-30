@@ -19,13 +19,13 @@
 	if(!islist(_value))
 		value = initial_value = _value
 	else
-		value = deepCopyList(_value)
-		initial_value = deepCopyList(_value)
+		value = deep_copy_list(_value)
+		initial_value = deep_copy_list(_value)
 	// we do not handle datums yet.
 
 /datum/variable_setting_entry/proc/reset_to_default()
 	if(islist(initial_value))
-		value = deepCopyList(initial_value)
+		value = deep_copy_list(initial_value)
 	else
 		value = initial_value
 

@@ -1,3 +1,5 @@
+// TODO: KILL THIS SHIT FOR ACTION BUTTONS
+// TODO: NEW SCREEN LOC DECODING PROCS.
 /atom/movable/screen/movable/spell_master
 	name = "Spells"
 	icon = 'icons/mob/screen_spells.dmi'
@@ -9,6 +11,8 @@
 	var/closed_state = "master_closed"
 
 	screen_loc = ui_spell_master
+	var/opens_to_left = TRUE
+	var/opens_downwards = TRUE
 
 	var/mob/spell_holder
 
@@ -23,7 +27,7 @@
 			spell_holder.client.screen -= src
 		spell_holder = null
 
-/atom/movable/screen/movable/spell_master/MouseDrop()
+/atom/movable/screen/movable/spell_master/OnMouseDropLegacy()
 	if(showing)
 		return
 
@@ -36,21 +40,20 @@
 
 	toggle_open()
 
-/atom/movable/screen/movable/spell_master/proc/toggle_open(var/forced_state = 0)
+/atom/movable/screen/movable/spell_master/proc/toggle_open(forced_state = 0)
+	cut_overlays()
 	if(showing && (forced_state != 2))
 		for(var/atom/movable/screen/spell/O in spell_objects)
 			if(spell_holder && spell_holder.client)
 				spell_holder.client.screen -= O
 			O.handle_icon_updates = 0
 		showing = 0
-		overlays.len = 0
-		overlays.Add(closed_state)
+		add_overlay(closed_state)
 	else if(forced_state != 1)
 		open_spellmaster()
 		update_spells(1)
 		showing = 1
-		overlays.len = 0
-		overlays.Add(open_state)
+		add_overlay(open_state)
 
 /atom/movable/screen/movable/spell_master/proc/open_spellmaster()
 	var/list/screen_loc_xy = splittext(screen_loc,",")
@@ -58,17 +61,19 @@
 	//Create list of X offsets
 	var/list/screen_loc_X = splittext(screen_loc_xy[1],":")
 	var/x_position = decode_screen_X(screen_loc_X[1])
-	var/x_pix = screen_loc_X[2]
+	var/x_pix = text2num(screen_loc_X[2])
 
 	//Create list of Y offsets
 	var/list/screen_loc_Y = splittext(screen_loc_xy[2],":")
 	var/y_position = decode_screen_Y(screen_loc_Y[1])
-	var/y_pix = screen_loc_Y[2]
+	var/y_pix = text2num(screen_loc_Y[2])
 
 	for(var/i = 1; i <= spell_objects.len; i++)
 		var/atom/movable/screen/spell/S = spell_objects[i]
-		var/xpos = x_position + (x_position < 8 ? 1 : -1)*(i%7)
-		var/ypos = y_position + (y_position < 8 ? round(i/7) : -round(i/7))
+		// TODO: WARNING THIS IS SHITCODE AND MONKEY PATCHED AND WILL BREAK VERY SOON
+		// Pray we finish abilities refactor by then!
+		var/xpos = x_position + (opens_to_left? -1 : 1) * ((i % 7) + 1) - 1
+		var/ypos = y_position + (opens_downwards? -1 : 1) * (round(i / 7) + 0) - 1
 		if(spell_holder && spell_holder.client)
 			S.screen_loc = "[encode_screen_X(xpos)]:[x_pix],[encode_screen_Y(ypos)]:[y_pix]"
 			spell_holder.client.screen += S
@@ -181,7 +186,7 @@
 	if((last_charge == spell.charge_counter || !handle_icon_updates) && !forced_update)
 		return //nothing to see here
 
-	overlays -= spell.hud_state
+	cut_overlay(spell.hud_state)
 
 	if(spell.charge_type == Sp_RECHARGE || spell.charge_type == Sp_CHARGES)
 		if(spell.charge_counter < spell.charge_max)
@@ -189,27 +194,27 @@
 			if(spell.charge_counter > 0)
 				var/icon/partial_charge = icon(src.icon, "[spell_base]_spell_ready")
 				partial_charge.Crop(1, 1, partial_charge.Width(), round(partial_charge.Height() * spell.charge_counter / spell.charge_max))
-				overlays += partial_charge
+				add_overlay(partial_charge)
 				if(last_charged_icon)
-					overlays -= last_charged_icon
+					cut_overlay(last_charged_icon)
 				last_charged_icon = partial_charge
 			else if(last_charged_icon)
-				overlays -= last_charged_icon
+				cut_overlay(last_charged_icon)
 				last_charged_icon = null
 		else
 			icon_state = "[spell_base]_spell_ready"
 			if(last_charged_icon)
-				overlays -= last_charged_icon
+				cut_overlay(last_charged_icon)
 	else
 		icon_state = "[spell_base]_spell_ready"
 
-	overlays += spell.hud_state
+	add_overlay(spell.hud_state)
 
 	last_charge = spell.charge_counter
 
-	overlays -= "silence"
+	cut_overlay("silence")
 	if(spell.silenced)
-		overlays += "silence"
+		add_overlay("silence")
 
 /atom/movable/screen/spell/Click()
 	if(!usr || !spell)

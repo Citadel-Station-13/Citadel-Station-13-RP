@@ -6,8 +6,8 @@
 	desc = "It's a blue ballcap in Orion Confederation Government colors."
 	icon_state = "orionsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "lightbluesoft",
-		slot_r_hand_str = "lightbluesoft",
+		SLOT_ID_LEFT_HAND = "lightbluesoft",
+		SLOT_ID_RIGHT_HAND = "lightbluesoft",
 		)
 
 /obj/item/clothing/head/soft/orion/expedition
@@ -15,8 +15,8 @@
 	desc = "It's a black ballcap bearing a Sif Defense Force crest."
 	icon_state = "expeditionsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "blacksoft",
-		slot_r_hand_str = "blacksoft",
+		SLOT_ID_LEFT_HAND = "blacksoft",
+		SLOT_ID_RIGHT_HAND = "blacksoft",
 		)
 
 /obj/item/clothing/head/soft/orion/fleet
@@ -24,8 +24,8 @@
 	desc = "It's a navy blue ballcap with a CNA Fleet crest."
 	icon_state = "fleetsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "darkbluesoft",
-		slot_r_hand_str = "darkbluesoft",
+		SLOT_ID_LEFT_HAND = "darkbluesoft",
+		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
 
 /obj/item/clothing/head/utility
@@ -33,24 +33,23 @@
 	desc = "An eight-point utility cover."
 	icon_state = "greyutility"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
+	armor_type = /datum/armor/uniform/utility
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/utility/fleet
 	name = "fleet utility cover"
 	desc = "A navy blue utility cover bearing the crest of a OCG Fleet."
 	icon_state = "navyutility"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/head/utility/marine
 	name = "marine utility cover"
 	desc = "A grey utility cover bearing the crest of the OCG Marine Corps."
 	icon_state = "greyutility"
-	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/head/utility/marine/tan
 	name = "tan utility cover"
@@ -69,11 +68,11 @@
 	desc = "A service uniform cover."
 	icon_state = "greenwheelcap"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/service/marine
 	name = "marine wheel cover"
@@ -107,11 +106,11 @@
 	desc = "A dress uniform cover."
 	icon_state = "greenwheelcap"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 /obj/item/clothing/head/dress/expedition
 	name = "\improper SifGuard dress cap"
@@ -274,8 +273,7 @@
 	name = "\improper officer's cap"
 	desc = "A green utility cover bearing the crest of the JSDF Marine Corps. This one has an officer's emblem."
 	icon_state = "UNSCsoft"
-	icon = 'icons/obj/clothing/hats_vr.dmi'
-	icon_override = 'icons/mob/head_vr.dmi'
+	icon = 'icons/obj/clothing/hats.dmi'
 
 //Service
 

@@ -24,7 +24,7 @@
 	var/input_cap = 1 MEGAWATTS         // Currently set input limit. Set to 0 to disable limits altogether. The shield will try to input this value per tick at most
 	var/upkeep_power_usage = 0          // Upkeep power usage last tick.
 	var/upkeep_multiplier = 1           // Multiplier of upkeep values.
-	var/power_coefficient = 1			// Multiplier of overall power usage (for mappers, subtypes, etc)
+	var/power_coefficient = 1           // Multiplier of overall power usage (for mappers, subtypes, etc)
 	var/power_usage = 0                 // Total power usage last tick.
 	var/overloaded = 0                  // Whether the field has overloaded and shut down to regenerate.
 	var/hacked = 0                      // Whether the generator has been hacked by cutting the safety wire.
@@ -50,14 +50,10 @@
 		set_light(0)
 
 
-/obj/machinery/power/shield_generator/Initialize()
+/obj/machinery/power/shield_generator/Initialize(mapload)
 	. = ..()
 	if(!wires)
 		wires = new(src)
-	// TODO - Remove this bit once machines are converted to Initialize
-	if(ispath(circuit))
-		circuit = new circuit(src)
-	default_apply_parts()
 	connect_to_network()
 
 	mode_list = list()
@@ -78,14 +74,14 @@
 	max_energy = 0
 	full_shield_strength = 0
 	for(var/obj/item/smes_coil/S in component_parts)
-		full_shield_strength += (S.ChargeCapacity * 5)
+		full_shield_strength += (KWH_TO_WM(S.charge_capacity) * 5)
 	max_energy = full_shield_strength * 20
-	current_energy = between(0, current_energy, max_energy)
+	current_energy = clamp( current_energy, 0,  max_energy)
 
 	mitigation_max = MAX_MITIGATION_BASE + MAX_MITIGATION_RESEARCH * total_component_rating_of_type(/obj/item/stock_parts/capacitor)
-	mitigation_em = between(0, mitigation_em, mitigation_max)
-	mitigation_physical = between(0, mitigation_physical, mitigation_max)
-	mitigation_heat = between(0, mitigation_heat, mitigation_max)
+	mitigation_em = clamp( mitigation_em, 0,  mitigation_max)
+	mitigation_physical = clamp( mitigation_physical, 0,  mitigation_max)
+	mitigation_heat = clamp( mitigation_heat, 0,  mitigation_max)
 	..()
 
 
@@ -102,16 +98,11 @@
 	update_icon()
 
 
+// TODO: Make this use TG Smoothing.
 // Generates the field objects. Deletes existing field, if applicable.
 /obj/machinery/power/shield_generator/proc/regenerate_field()
-	if(field_segments.len)
-		for(var/obj/effect/shield/S in field_segments)
-			qdel(S)
-
-	// The generator is not turned on, so don't generate any new tiles.
-	if(!running)
-		return
-
+	for(var/obj/effect/shield/S in field_segments)
+		qdel(S)
 	var/list/shielded_turfs
 
 	if(check_flag(MODEFLAG_HULL))
@@ -124,8 +115,172 @@
 		S.gen = src
 		S.flags_updated()
 		field_segments |= S
+
+	//Hull shield chaos icon generation
+	if(check_flag(MODEFLAG_HULL))
+		var/list/midsections = list()
+		var/list/startends = list()
+		var/list/corners = list()
+		var/list/horror = list()
+
+		for(var/obj/effect/shield/SE in field_segments)
+			var/adjacent_fields = 0
+			for(var/direction in GLOB.cardinal)
+				var/turf/T = get_step(SE, direction)
+				var/obj/effect/shield/S = locate() in T
+				if(S)
+					adjacent_fields |= direction
+
+			//What?
+			if(!adjacent_fields)
+				horror += SE
+				testing("Solo shield turf at [SE.x], [SE.y], [SE.z]")
+				continue
+
+			//Middle section or corner (multiple bits set)
+			if((adjacent_fields & (adjacent_fields - 1)) != 0)
+				//'Impossible' directions
+				if(adjacent_fields == (NORTH|SOUTH) || adjacent_fields == (EAST|WEST))
+					midsections[SE] = adjacent_fields
+				//It's a simple corner
+				else //if (adjacent_fields in cornerdirs)
+					corners[SE] = adjacent_fields
+
+			//Not 0, not multiple bits, it's a start or an end
+			else
+				startends[SE] = adjacent_fields
+
+		//Midsections go first
+		for(var/obj/effect/shield/SE in midsections)
+			var/adjacent = midsections[SE]
+			var/turf/L = get_step(SE, ~adjacent & (SOUTH|WEST))
+			var/turf/R = get_step(SE, ~adjacent & (NORTH|EAST))
+			if(!isspaceturf(L) && !isspaceturf(R))	// Squished in a single tile gap of space!
+				switch(adjacent)
+					if(NORTH|SOUTH) //Middle vertical section
+						if(SE.x < src.x) //Left of generator goes north
+							SE.setDir(NORTH)
+						else
+							SE.setDir(SOUTH)
+					if(EAST|WEST) //Middle horizontal section
+						if(SE.y < src.y) //South of generator goes left
+							SE.setDir(WEST)
+						else
+							SE.setDir(EAST)
+			else if(isspaceturf(L))
+				SE.setDir(turn(~adjacent & (SOUTH|WEST), -90))
+			else
+				SE.setDir(turn(~adjacent & (NORTH|EAST), -90))
+
+			midsections -= SE
+
+		//Some unhandled error state
+		for(var/obj/effect/shield/SE in midsections)
+			SE.enabled_icon_state = "arrow" //Error state/unhandled
+
+		//Corners
+		for(var/obj/effect/shield/S in corners)
+			var/adjacent = corners[S]
+			if(adjacent in GLOB.cornerdirs)
+				do_corner_shield(S, adjacent) //Dir is adjacent fields direction
+			else
+				// Okay first a quick hack. If only one nonshield...
+				var/nonshield = adjacent ^ (NORTH|SOUTH|EAST|WEST)
+				if((nonshield & (nonshield - 1)) == 0)
+					if(!isspaceturf(get_step(S, nonshield)))
+						S.setDir(turn(nonshield, 90)) // We're basically a normal midsection just with another touching. Ignore it.
+						//What's this mysterious 3rd shield touching us?
+						var/dir_to_them = turn(nonshield, 180)
+						var/turf/T = get_step(S, dir_to_them)
+						var/obj/effect/shield/SO = locate() in T
+						//They are a corner
+						if((SO.dir & (SO.dir - 1)) != 0)
+							continue
+						else if(dir_to_them & SO.dir) //They're facing away from us, so we're their start
+							S.add_overlay(image(icon, icon_state = "shield_start" , dir = SO.dir))
+						else if(SO.dir & nonshield) //They're facing us (and the wall)
+							S.add_overlay(image(icon, icon_state = "shield_end" , dir = SO.dir))
+
+					else
+						var/list/touchnonshield = list()
+						for(var/direction in GLOB.cornerdirs)
+							var/turf/T = get_step(S, direction)
+							if(!isspaceturf(T))
+								touchnonshield += T
+						if(touchnonshield.len == 1)
+							do_corner_shield(S, get_dir(S, touchnonshield[1]))
+						else
+							S.enabled_icon_state = "capacitor"
+				else
+					// Not actually a corner... It has MULTIPLE!
+					S.enabled_icon_state = "arrow" //Error state/unhandled
+
+		for(var/obj/effect/shield/S in startends)
+			var/adjacent = startends[S]
+			log_debug(SPAN_DEBUGINFO("Processing startend [S] at [S?.x],[S?.y] adjacent=[adjacent]"))
+			var/turf/T = get_step(S, adjacent)
+			var/obj/effect/shield/SO = locate() in T
+			S.setDir(SO.dir)
+			if(S.dir == adjacent) //Flowing into them
+				S.enabled_icon_state = "shield_start"
+			else
+				S.enabled_icon_state = "shield_end"
+	else
+		var/turf/gen_turf = get_turf(src)
+		for(var/obj/effect/shield/SE in field_segments)
+			var/new_dir = 0
+			if(SE.x == gen_turf.x - field_radius)
+				new_dir |= NORTH
+			else if(SE.x == gen_turf.x + field_radius)
+				new_dir |= SOUTH
+			if(SE.y == gen_turf.y + field_radius)
+				new_dir |= EAST
+			else if(SE.y == gen_turf.y - field_radius)
+				new_dir |= WEST
+			if((new_dir & (new_dir - 1)) == 0)
+				SE.setDir(new_dir) // Only one bit set means we are an edge not corner.
+			else
+				do_corner_shield(SE, turn(new_dir, -90), TRUE) // All our corners are outside, don't check turf type.
+
+	for(var/obj/effect/shield/SE in field_segments)
+		SE.update_visuals()
+
+	//Phew, update our own icon
 	update_icon()
 
+/obj/machinery/power/shield_generator/proc/do_corner_shield(var/obj/effect/shield/S, var/new_dir, var/force_outside)
+	S.enabled_icon_state = "blank"
+	S.setDir(new_dir)
+	var/inside = force_outside ? FALSE : isspaceturf(get_step(S, new_dir))
+	// TODO - Obviously this can be more elegant
+	if(inside)
+		switch(new_dir)
+			if(NORTHEAST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = SOUTH))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = EAST))
+			if(NORTHWEST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = EAST))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = NORTH))
+			if(SOUTHEAST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = WEST))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = SOUTH))
+			if(SOUTHWEST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = NORTH))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = WEST))
+	else
+		switch(new_dir)
+			if(NORTHEAST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = WEST))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = NORTH))
+			if(NORTHWEST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = SOUTH))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = WEST))
+			if(SOUTHEAST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = NORTH))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = EAST))
+			if(SOUTHWEST)
+				S.add_overlay(image(S.icon, icon_state = "shield_end", dir = EAST))
+				S.add_overlay(image(S.icon, icon_state = "shield_start", dir = SOUTH))
 
 // Recalculates and updates the upkeep multiplier
 /obj/machinery/power/shield_generator/proc/update_upkeep_multiplier()
@@ -159,9 +314,9 @@
 			running = SHIELD_RUNNING
 			regenerate_field()
 
-	mitigation_em = between(0, mitigation_em - MITIGATION_LOSS_PASSIVE, mitigation_max)
-	mitigation_heat = between(0, mitigation_heat - MITIGATION_LOSS_PASSIVE, mitigation_max)
-	mitigation_physical = between(0, mitigation_physical - MITIGATION_LOSS_PASSIVE, mitigation_max)
+	mitigation_em = clamp( mitigation_em - MITIGATION_LOSS_PASSIVE, 0,  mitigation_max)
+	mitigation_heat = clamp( mitigation_heat - MITIGATION_LOSS_PASSIVE, 0,  mitigation_max)
+	mitigation_physical = clamp( mitigation_physical - MITIGATION_LOSS_PASSIVE, 0,  mitigation_max)
 
 	if(running == SHIELD_RUNNING)
 		upkeep_power_usage = round((field_segments.len - damaged_segments.len) * ENERGY_UPKEEP_PER_TILE * upkeep_multiplier)
@@ -170,7 +325,7 @@
 
 	if(powernet && (running >= SHIELD_RUNNING) && !input_cut)
 		var/energy_buffer = 0
-		energy_buffer = draw_power(min(upkeep_power_usage, input_cap))
+		energy_buffer = draw_power(min(upkeep_power_usage, input_cap) * 0.001) * 1000
 		power_usage += round(energy_buffer)
 
 		if(energy_buffer < upkeep_power_usage)
@@ -179,10 +334,10 @@
 		// Now try to recharge our internal energy.
 		var/energy_to_demand
 		if(input_cap)
-			energy_to_demand = between(0, max_energy - current_energy, input_cap - energy_buffer)
+			energy_to_demand = clamp( max_energy - current_energy, 0,  input_cap - energy_buffer)
 		else
 			energy_to_demand = max(0, max_energy - current_energy)
-		energy_buffer = draw_power(energy_to_demand)
+		energy_buffer = draw_power(energy_to_demand * 0.001) * 1000
 		power_usage += energy_buffer
 		current_energy += round(energy_buffer)
 	else
@@ -223,7 +378,7 @@
 		shutdown_field()
 	else
 		current_energy = 0
-		overloaded = 1
+		overloaded = TRUE
 		for(var/obj/effect/shield/S in field_segments)
 			S.fail(1)
 
@@ -241,8 +396,14 @@
 		spinup_counter = round(spinup_delay / idle_multiplier)
 	update_icon()
 
-/obj/machinery/power/shield_generator/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
+/obj/machinery/power/shield_generator/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "OvermapShieldGenerator", name) // 500, 800
+		ui.open()
+
+/obj/machinery/power/shield_generator/ui_data(mob/user)
+	var/list/data = list()
 
 	data["running"] = running
 	data["modes"] = get_flag_descriptions()
@@ -268,117 +429,112 @@
 	data["idle_valid_values"] = idle_valid_values
 	data["spinup_counter"] = spinup_counter
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "shield_generator.tmpl", src.name, 500, 800)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
+	return data
 
-/obj/machinery/power/shield_generator/attack_hand(mob/user)
+/obj/machinery/power/shield_generator/attack_hand(mob/user, list/params)
 	if((. = ..()))
 		return
 	if(panel_open && Adjacent(user))
 		wires.Interact(user)
 		return
-	if(CanUseTopic(user, global.default_state) > UI_CLOSE)
-		ui_interact(user)
-		return TRUE
+	ui_interact(user)
 
-/obj/machinery/power/shield_generator/CanUseTopic(var/mob/user)
+/obj/machinery/power/shield_generator/ui_status(mob/user)
 	if(issilicon(user) && !Adjacent(user) && ai_control_disabled)
 		return UI_UPDATE
 	if(panel_open)
 		return min(..(), UI_DISABLED)
 	return ..()
 
-/obj/machinery/power/shield_generator/Topic(href, href_list, datum/topic_state/state = default_state)
-	if((. = ..()))
-		return
+/obj/machinery/power/shield_generator/ui_act(action, list/params, datum/tgui/ui)
+	if(..())
+		return TRUE
 
-	if(href_list["begin_shutdown"])
-		if(running < SHIELD_RUNNING) // Discharging or off
-			return
-		var/alert = alert(usr, "Are you sure you wish to do this? It will drain the power inside the internal storage rapidly.", "Are you sure?", "Yes", "No")
-		if(!CanInteract(usr, state))
-			return
-		if(running < SHIELD_RUNNING)
-			return
-		if(alert == "Yes")
-			set_idle(TRUE) // do this first to clear the field
-			running = SHIELD_DISCHARGING
-		return TOPIC_REFRESH
+	switch(action)
+		if("begin_shutdown")
+			if(running < SHIELD_RUNNING) // Discharging or off
+				return
+			var/alert = alert(usr, "Are you sure you wish to do this? It will drain the power inside the internal storage rapidly.", "Are you sure?", "Yes", "No")
+			if(ui_status(usr, ui.state) != UI_INTERACTIVE)
+				return
+			if(running < SHIELD_RUNNING)
+				return
+			if(alert == "Yes")
+				set_idle(TRUE) // do this first to clear the field
+				running = SHIELD_DISCHARGING
+			return TRUE
 
-	if(href_list["start_generator"])
-		if(offline_for)
-			return
-		set_idle(TRUE)
-		return TOPIC_REFRESH
+		if("start_generator")
+			if(offline_for)
+				return
+			set_idle(TRUE)
+			return TRUE
 
-	if(href_list["toggle_idle"])
-		if(running < SHIELD_RUNNING)
-			return TOPIC_HANDLED
-		set_idle(text2num(href_list["toggle_idle"]))
-		return TOPIC_REFRESH
+		if("toggle_idle")
+			if(running < SHIELD_RUNNING)
+				return TRUE
+			set_idle(text2num(params["toggle_idle"]))
+			return TRUE
 
-	// Instantly drops the shield, but causes a cooldown before it may be started again. Also carries a risk of EMP at high charge.
-	if(href_list["emergency_shutdown"])
-		if(!running)
-			return TOPIC_HANDLED
+		// Instantly drops the shield, but causes a cooldown before it may be started again. Also carries a risk of EMP at high charge.
+		if("emergency_shutdown")
+			if(!running)
+				return TRUE
 
-		var/choice = input(usr, "Are you sure that you want to initiate an emergency shield shutdown? This will instantly drop the shield, and may result in unstable release of stored electromagnetic energy. Proceed at your own risk.") in list("Yes", "No")
-		if((choice != "Yes") || !running)
-			return TOPIC_HANDLED
+			var/choice = input(usr, "Are you sure that you want to initiate an emergency shield shutdown? This will instantly drop the shield, and may result in unstable release of stored electromagnetic energy. Proceed at your own risk.") in list("Yes", "No")
+			if((choice != "Yes") || !running)
+				return TRUE
 
-		// If the shield would take 5 minutes to disperse and shut down using regular methods, it will take x1.5 (7 minutes and 30 seconds) of this time to cool down after emergency shutdown
-		offline_for = round(current_energy / (SHIELD_SHUTDOWN_DISPERSION_RATE / 1.5))
-		var/old_energy = current_energy
-		shutdown_field()
-		log_and_message_admins("has triggered \the [src]'s emergency shutdown!", usr)
-		spawn()
-			empulse(src, old_energy / 60000000, old_energy / 32000000, 1) // If shields are charged at 450 MJ, the EMP will be 7.5, 14.0625. 90 MJ, 1.5, 2.8125
-		old_energy = 0
+			// If the shield would take 5 minutes to disperse and shut down using regular methods, it will take x1.5 (7 minutes and 30 seconds) of this time to cool down after emergency shutdown
+			offline_for = round(current_energy / (SHIELD_SHUTDOWN_DISPERSION_RATE / 1.5))
+			var/old_energy = current_energy
+			shutdown_field()
+			log_and_message_admins("has triggered \the [src]'s emergency shutdown!", usr)
+			spawn()
+				empulse(src, old_energy / 60000000, old_energy / 32000000, 1) // If shields are charged at 450 MJ, the EMP will be 7.5, 14.0625. 90 MJ, 1.5, 2.8125
+			old_energy = 0
 
-		return TOPIC_REFRESH
+			return TRUE
 
 	if(mode_changes_locked)
-		return TOPIC_REFRESH
+		return TRUE
 
-	if(href_list["set_range"])
-		var/new_range = input(usr, "Enter new field range (1-[world.maxx]). Leave blank to cancel.", "Field Radius Control", field_radius) as num
-		if(!new_range)
-			return TOPIC_HANDLED
-		target_radius = between(1, new_range, world.maxx)
-		return TOPIC_REFRESH
+	switch(action)
+		if("set_range")
+			var/new_range = input(usr, "Enter new field range (1-[world.maxx]). Leave blank to cancel.", "Field Radius Control", field_radius) as num
+			if(!new_range)
+				return TRUE
+			target_radius = clamp( new_range, 1,  world.maxx)
+			return TRUE
 
-	if(href_list["set_input_cap"])
-		var/new_cap = round(input(usr, "Enter new input cap (in kW). Enter 0 or nothing to disable input cap.", "Generator Power Control", round(input_cap / 1000)) as num)
-		if(!new_cap)
-			input_cap = 0
-			return
-		input_cap = max(0, new_cap) * 1000
-		return TOPIC_REFRESH
+		if("set_input_cap")
+			var/new_cap = round(input(usr, "Enter new input cap (in kW). Enter 0 or nothing to disable input cap.", "Generator Power Control", round(input_cap / 1000)) as num)
+			if(!new_cap)
+				input_cap = 0
+				return
+			input_cap = max(0, new_cap) * 1000
+			return TRUE
 
-	if(href_list["toggle_mode"])
-		// Toggling hacked-only modes requires the hacked var to be set to 1
-		if((text2num(href_list["toggle_mode"]) & (MODEFLAG_BYPASS | MODEFLAG_OVERCHARGE)) && !hacked)
-			return TOPIC_HANDLED
+		if("toggle_mode")
+			// Toggling hacked-only modes requires the hacked var to be set to 1
+			if((text2num(params["toggle_mode"]) & (MODEFLAG_BYPASS | MODEFLAG_OVERCHARGE)) && !hacked)
+				return TRUE
 
-		toggle_flag(text2num(href_list["toggle_mode"]))
-		return TOPIC_REFRESH
+			toggle_flag(text2num(params["toggle_mode"]))
+			return TRUE
 
-	if(href_list["switch_idle"])
-		if(running == SHIELD_SPINNING_UP)
-			return TOPIC_REFRESH
-		var/new_idle = text2num(href_list["switch_idle"])
-		if(new_idle in idle_valid_values)
-			idle_multiplier = new_idle
-		return TOPIC_REFRESH
+		if("switch_idle")
+			if(running == SHIELD_SPINNING_UP)
+				return TRUE
+			var/new_idle = text2num(params["switch_idle"])
+			if(new_idle in idle_valid_values)
+				idle_multiplier = new_idle
+			return TRUE
 
 /obj/machinery/power/shield_generator/proc/field_integrity()
 	if(full_shield_strength)
 		return round(CLAMP01(current_energy / full_shield_strength) * 100)
-	return 0
+	return FALSE
 
 
 // Takes specific amount of damage
@@ -400,9 +556,9 @@
 				mitigation_heat += MITIGATION_HIT_LOSS + MITIGATION_HIT_GAIN
 				energy_to_use *= 1 - (mitigation_heat / 100)
 
-		mitigation_em = between(0, mitigation_em, mitigation_max)
-		mitigation_heat = between(0, mitigation_heat, mitigation_max)
-		mitigation_physical = between(0, mitigation_physical, mitigation_max)
+		mitigation_em = clamp( mitigation_em, 0,  mitigation_max)
+		mitigation_heat = clamp( mitigation_heat, 0,  mitigation_max)
+		mitigation_physical = clamp( mitigation_physical, 0,  mitigation_max)
 
 	current_energy -= energy_to_use
 
@@ -535,12 +691,12 @@
 
 
 // Starts fully charged
-/obj/machinery/power/shield_generator/charged/Initialize()
+/obj/machinery/power/shield_generator/charged/Initialize(mapload)
 	. = ..()
 	current_energy = max_energy
 
 // Starts with the best SMES coil and capacitor (and fully charged)
-/obj/machinery/power/shield_generator/upgraded/Initialize()
+/obj/machinery/power/shield_generator/upgraded/Initialize(mapload)
 	. = ..()
 	for(var/obj/item/smes_coil/sc in component_parts)
 		component_parts -= sc

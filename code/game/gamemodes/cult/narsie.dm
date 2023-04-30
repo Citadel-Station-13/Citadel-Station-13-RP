@@ -46,7 +46,7 @@ var/global/list/narsie_list = list()
 		to_chat(world, "<font size='15' color='red'><b>[uppertext(name)] HAS RISEN</b></font>")
 		SEND_SOUND(world, sound('sound/effects/weather/wind/wind_5_1.ogg'))
 
-	narsie_spawn_animation()
+	INVOKE_ASYNC(src, .proc/narsie_spawn_animation)
 
 	if(!narsie_cometh)//so we don't initiate Hell more than one time.
 		if(cause_hell)
@@ -76,7 +76,7 @@ var/global/list/narsie_list = list()
 /obj/singularity/narsie/mezzer()
 	for(var/mob/living/carbon/M in oviewers(8, src))
 		if(M.stat == CONSCIOUS)
-			if(M.status_flags & GODMODE)
+			if(M.status_flags & STATUS_GODMODE)
 				continue
 			if(!iscultist(M))
 				to_chat(M, "<span class='danger'> You feel your sanity crumble away in an instant as you gaze upon [src.name]...</span>")
@@ -129,13 +129,13 @@ var/global/list/narsie_list = list()
 	spawn(0)
 		step(src, movement_dir)
 		narsiefloor(get_turf(loc))
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.client)
 				M.see_narsie(src,movement_dir)
 	spawn(10)
 		step(src, movement_dir)
 		narsiefloor(get_turf(loc))
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M.client)
 				M.see_narsie(src,movement_dir)
 	return 1
@@ -170,7 +170,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/) && (get_dist(A, src) <= 7))
 		var/mob/M = A
 
-		if(M.status_flags & GODMODE)
+		if(M.status_flags & STATUS_GODMODE)
 			return 0
 
 		M.cultify()
@@ -202,7 +202,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
-		if(C2.status_flags & GODMODE)
+		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
 		C2.dust() // Changed from gib(), just for less lag.
@@ -223,9 +223,9 @@ var/global/list/narsie_list = list()
 				consume(AM2)
 				continue
 
-		if (dist <= consume_range && !istype(A, get_base_turf_by_area(A)))
+		if (dist <= consume_range)
 			var/turf/T2 = A
-			T2.ChangeTurf(get_base_turf_by_area(A))
+			T2.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 /obj/singularity/narsie/consume(const/atom/A) //This one is for the small ones.
 	if(!(A.singuloCanEat()))
@@ -234,7 +234,7 @@ var/global/list/narsie_list = list()
 	if (istype(A, /mob/living/))
 		var/mob/living/C2 = A
 
-		if(C2.status_flags & GODMODE)
+		if(C2.status_flags & STATUS_GODMODE)
 			return 0
 
 		C2.dust() // Changed from gib(), just for less lag.
@@ -265,11 +265,11 @@ var/global/list/narsie_list = list()
 				spawn (0)
 					AM2.singularity_pull(src, src.current_size)
 
-		if (dist <= consume_range && !istype(A, get_base_turf_by_area(A)))
+		if (dist <= consume_range)
 			var/turf/T2 = A
-			T2.ChangeTurf(get_base_turf_by_area(A))
+			T2.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-/obj/singularity/narsie/ex_act(severity) //No throwing bombs at it either. --NEO
+/obj/singularity/narsie/legacy_ex_act(severity) //No throwing bombs at it either. --NEO
 	return
 
 /obj/singularity/narsie/proc/pickcultist() //Narsie rewards his cultists with being devoured first, then picks a ghost to follow. --NEO
@@ -298,7 +298,7 @@ var/global/list/narsie_list = list()
 		acquire(pick(cultists))
 		return
 		//no living cultists, pick a living human instead.
-	for(var/mob/observer/dead/ghost in player_list)
+	for(var/mob/observer/dead/ghost in GLOB.player_list)
 		if(!ghost.client)
 			continue
 		var/turf/pos = get_turf(ghost)

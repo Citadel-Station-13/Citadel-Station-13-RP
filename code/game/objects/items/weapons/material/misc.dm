@@ -2,7 +2,7 @@
 	name = "harpoon"
 	sharp = 1
 	edge = 0
-	desc = "Tharr she blows!"
+	desc = "A common design throughout the galaxy, this is a metal spear used for hunting fish (or people in voidsuits, to devestating effect)."
 	icon_state = "harpoon"
 	item_state = "harpoon"
 	force_divisor = 0.3 // 18 with hardness 60 (steel)
@@ -16,7 +16,7 @@
 
 /obj/item/material/knife/machete/hatchet
 	name = "hatchet"
-	desc = "A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood."
+	desc = "A one-handed axe, with a short fibremetal handle. There's an infinite amount of variations in the galaxy, but this one's used for chopping wood."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hatchet"
 	force_divisor = 0.2 // 12 with hardness 60 (steel)
@@ -34,10 +34,11 @@
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
+	default_material = "bone"
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	desc = "Though honor duels have fallen out of fashion in this new era, that doesn't stop some Unathi from carrying these wooden duelling blades as a status symbol. Or Vox from using these for their intended purpose in 'quill duels'."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "unathiknife"
 	attack_verb = list("ripped", "torn", "cut")
@@ -50,15 +51,13 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/durasteel
 	default_material = "durasteel"
 
-/obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
+/obj/item/material/knife/machete/hatchet/unathiknife/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(hits > 0)
 		return
-	var/obj/item/I = user.get_inactive_hand()
+	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
-		var/obj/item/W = I
-		W.attack(M, user)
-		W.afterattack(M, user)
+		I.melee_attack_chain(target, user, CLICKCHAIN_REDIRECTED, params)
 	..()
 
 /obj/item/material/knife/machete/hatchet/unathiknife/afterattack(mob/M as mob, mob/user as mob)
@@ -67,7 +66,7 @@
 
 /obj/item/material/minihoe // -- Numbers
 	name = "mini hoe"
-	desc = "It's used for removing weeds or scratching your back."
+	desc = "It's used for removing weeds and tilling soil."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "hoe"
 	force_divisor = 0.25 // 5 with weight 20 (steel)
@@ -82,6 +81,12 @@
 /obj/item/material/minihoe/durasteel
 	default_material = "durasteel"
 
+/obj/item/material/minihoe/bone
+	name = "primitive mini hoe"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "cultivator_bone"
+	default_material = "bone"
+
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
 	desc = "A fun snowball. Throw it at your friends!"
@@ -95,7 +100,10 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("mushed", "splatted", "splooshed", "splushed") // Words that totally exist.
 
-/obj/item/material/snow/snowball/attack_self(mob/user as mob)
+/obj/item/material/snow/snowball/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		visible_message("[user] has smashed the snowball in their hand!", "You smash the snowball in your hand.")
 		var/atom/S = new /obj/item/stack/material/snow(user.loc)
@@ -111,7 +119,7 @@
 /obj/item/material/snow/snowball/reinforced
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
-	//icon_state = "reinf-snowball"
+	//icon_state = "considered_reinforced-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
 
@@ -121,8 +129,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sawcleaver"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/64x64_lefthand.dmi',
-			slot_r_hand_str = 'icons/mob/items/64x64_righthand.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/64x64_lefthand.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/64x64_righthand.dmi',
 			)
 	item_state = "cleaving_saw"
 	active = 0

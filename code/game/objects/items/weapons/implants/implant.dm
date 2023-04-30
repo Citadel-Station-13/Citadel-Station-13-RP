@@ -83,14 +83,12 @@
 		var/obj/item/implanter/implanter = I
 		if(implanter.imp)
 			return // It's full.
-		user.drop_from_inventory(src)
-		forceMove(implanter)
+		if(!user.attempt_insert_item_for_installation(src, implanter))
+			return
 		implanter.imp = src
 		implanter.update()
 	else
 		..()
-
-
 
 //////////////////////////////
 //	Tracking Implant
@@ -256,7 +254,7 @@ Implant Specifics:<BR>"}
 					if (istype(part,/obj/item/organ/external/chest) ||	\
 						istype(part,/obj/item/organ/external/groin) ||	\
 						istype(part,/obj/item/organ/external/head))
-						part.createwound(BRUISE, 80)	//mangle them instead
+						part.create_wound(BRUISE, 80)	//mangle them instead
 						explosion(get_turf(imp_in), -1, -1, 1, 3)
 						qdel(src)
 					else
@@ -332,7 +330,7 @@ Implant Specifics:<BR>"}
 				if (istype(part,/obj/item/organ/external/chest) ||	\
 					istype(part,/obj/item/organ/external/groin) ||	\
 					istype(part,/obj/item/organ/external/head))
-					part.createwound(BRUISE, 80)	//mangle them instead
+					part.create_wound(BRUISE, 80)	//mangle them instead
 				else
 					part.droplimb(0,DROPLIMB_BLUNT)
 			explosion(get_turf(imp_in), -1, -1, 1, 3)
@@ -471,9 +469,9 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	if (emote == "pale")
 		src.uses--
 		to_chat(source, "<span class='notice'>You feel a sudden surge of energy!</span>")
-		source.SetStunned(0)
-		source.SetWeakened(0)
-		source.SetParalysis(0)
+		source.set_stunned(0)
+		source.set_paralyzed(0)
+		source.set_unconscious(0)
 
 	return
 
@@ -614,13 +612,13 @@ the implant may become unstable and either pre-maturely inject the subject or si
 /obj/item/implant/compressed/islegal()
 	return 0
 
-//VR FILE MERGE
-/obj/item/implant/vrlanguage
+//! ## VR FILE MERGE ## !//
+/obj/item/implant/uni_translator
 	name = "language"
 	desc = "Allows the user to understand and speak almost all known languages.."
 	var/uses = 1
 
-/obj/item/implant/vrlanguage/get_data()
+/obj/item/implant/uni_translator/get_data()
 	var/dat = {"
 		<b>Implant Specifications:</b><BR>
 		<b>Name:</b> Language Implant<BR>
@@ -633,7 +631,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		<b>Integrity:</b> Implant can only be used once before the nanobots are depleted."}
 	return dat
 
-/obj/item/implant/vrlanguage/trigger(emote, mob/source as mob)
+/obj/item/implant/uni_translator/trigger(emote, mob/source as mob)
 	if (src.uses < 1)
 		return 0
 	if (emote == "smile")
@@ -653,7 +651,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		source.add_language(LANGUAGE_SLAVIC)
 		source.add_language(LANGUAGE_SOL_COMMON) //In case they're giving a xenomorph an implant or something.
 
-/obj/item/implant/vrlanguage/post_implant(mob/source)
+/obj/item/implant/uni_translator/post_implant(mob/source)
 	source.mind.store_memory("A implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.", 0, 0)
 	to_chat(source,"The implanted language implant can be activated by using the smile emote, <B>say *smile</B> to attempt to activate.")
 	return 1

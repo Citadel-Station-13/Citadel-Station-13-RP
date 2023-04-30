@@ -22,7 +22,7 @@
 	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	can_pull_size = ITEMSIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -56,8 +56,8 @@
 /mob/living/simple_mob/animal/passive/mouse/Initialize(mapload)
 	. = ..()
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	if(name == initial(name))
 		name = "[name] ([rand(1, 1000)])"
@@ -94,7 +94,7 @@
 
 /mob/living/simple_mob/animal/passive/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER
@@ -145,14 +145,20 @@
 	emote_hear = list("squeeks","squeaks","squiks")
 	emote_see = list("runs in a circle", "shakes", "scritches at something")
 
-/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/living/hander)
+/mob/living/simple_mob/animal/passive/mouse/attack_hand(mob/user, list/params)
+	var/mob/living/hander = user
+	if(!istype(hander))
+		return
 	if(hander.a_intent == INTENT_HELP) //if lime intent
 		get_scooped(hander) //get scooped
 	else
 		..()
 
-/obj/item/holder/mouse/attack_self(var/mob/U)
+/obj/item/holder/mouse/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	for(var/mob/living/simple_mob/M in src.contents)
-		if((INTENT_HELP) && U.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
-			U.setClickCooldown(U.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
-			U.visible_message("<span class='notice'>[U] [M.response_help] \the [M].</span>")
+		if((INTENT_HELP) && user.canClick()) //a little snowflakey, but makes it use the same cooldown as interacting with non-inventory objects
+			user.setClickCooldown(user.get_attack_speed()) //if there's a cleaner way in baycode, I'll change this
+			user.visible_message("<span class='notice'>[user] [M.response_help] \the [M].</span>")

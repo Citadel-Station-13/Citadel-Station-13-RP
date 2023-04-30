@@ -28,7 +28,7 @@ var/datum/antagonist/cultist/cult
 	hard_cap_round = 6
 	initial_spawn_req = 4
 	initial_spawn_target = 6
-	antaghud_indicator = "hudcultist"
+	antaghud_indicator = "cultist"
 
 	var/allow_narsie = 1
 	var/datum/mind/sacrifice_target
@@ -58,25 +58,18 @@ var/datum/antagonist/cultist/cult
 	global_objectives |= sacrifice
 
 /datum/antagonist/cultist/equip(var/mob/living/carbon/human/player)
-
 	if(!..())
 		return 0
 
-	var/obj/item/paper/talisman/supply/T = new(get_turf(player))
-	var/list/slots = list (
-		"backpack" = slot_in_backpack,
-		"left pocket" = slot_l_store,
-		"right pocket" = slot_r_store,
-		"left hand" = slot_l_hand,
-		"right hand" = slot_r_hand,
-	)
-	for(var/slot in slots)
-		player.equip_to_slot(T, slot)
-		if(T.loc == player)
-			break
-	var/obj/item/storage/S = locate() in player.contents
-	if(S && istype(S))
-		T.loc = S
+	var/obj/item/paper/talisman/supply/T = new(player)
+	if(player.equip_to_slots_if_possible(T, list(
+		SLOT_ID_LEFT_POCKET,
+		SLOT_ID_RIGHT_POCKET,
+		SLOT_ID_HANDS
+	)))
+		return
+	if(!player.force_equip_to_slot_or_del(T, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
+		to_chat(player, SPAN_WARNING("Failed to equip you with a talismen. Ahelp."))
 
 /datum/antagonist/cultist/greet(var/datum/mind/player)
 	if(!..())

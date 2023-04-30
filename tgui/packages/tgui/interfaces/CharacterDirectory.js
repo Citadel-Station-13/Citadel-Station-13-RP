@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, Modal, ProgressBar, Section, Table } from "../components";
+import { Box, Button, Icon, LabeledList, Section, Table } from "../components";
 import { Window } from "../layouts";
 
 const getTagColor = erptag => {
@@ -10,10 +9,10 @@ const getTagColor = erptag => {
       return "label";
     case "Top":
       return "red";
+    case "Switch":
+      return "orange";
     case "Bottom":
       return "blue";
-    case "Switch":
-      return "purple";
     case "No ERP":
       return "green";
   }
@@ -83,6 +82,11 @@ const ViewCharacter = (props, context) => {
         content="Back"
         onClick={() => setOverlay(null)} />
     }>
+      <Section level={2} title="Species">
+        <Box>
+          {overlay.species}
+        </Box>
+      </Section>
       <Section level={2} title="ERP Tag">
         <Box p={1} backgroundColor={getTagColor(overlay.erptag)}>
           {overlay.erptag}
@@ -94,18 +98,18 @@ const ViewCharacter = (props, context) => {
         </Box>
       </Section>
       <Section level={2} title="Character Ad">
-        <Box style={{ "word-break": "break-all" }}>
-          {overlay.character_ad ? overlay.character_ad.split("\n").map((c, i) => <Box key={i}>{c}</Box>) : "Unset."}
+        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+          {overlay.character_ad || "Unset."}
         </Box>
       </Section>
       <Section level={2} title="OOC Notes">
-        <Box style={{ "word-break": "break-all" }}>
-          {overlay.ooc_notes ? overlay.ooc_notes.split("\n").map((c, i) => <Box key={i}>{c}</Box>) : "Unset."}
+        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+          {overlay.ooc_notes || "Unset."}
         </Box>
       </Section>
       <Section level={2} title="Flavor Text">
-        <Box style={{ "word-break": "break-all" }}>
-          {overlay.flavor_text ? overlay.flavor_text.split("\n").map((c, i) => <Box key={i}>{c}</Box>) : "Unset."}
+        <Box style={{ "word-break": "break-all" }} preserveWhitespace>
+          {overlay.flavor_text || "Unset."}
         </Box>
       </Section>
     </Section>
@@ -133,6 +137,7 @@ const CharacterDirectoryList = (props, context) => {
       <Table>
         <Table.Row bold>
           <SortButton id="name">Name</SortButton>
+          <SortButton id="species">Species</SortButton>
           <SortButton id="erptag">ERP Tag</SortButton>
           <SortButton id="tag">Vore Tag</SortButton>
           <Table.Cell collapsing textAlign="right">View</Table.Cell>
@@ -145,6 +150,7 @@ const CharacterDirectoryList = (props, context) => {
           .map((character, i) => (
             <Table.Row key={i} backgroundColor={getTagColor(character.erptag)}>
               <Table.Cell p={1}>{character.name}</Table.Cell>
+              <Table.Cell>{character.species}</Table.Cell>
               <Table.Cell>{character.erptag}</Table.Cell>
               <Table.Cell>{character.tag}</Table.Cell>
               <Table.Cell collapsing textAlign="right">

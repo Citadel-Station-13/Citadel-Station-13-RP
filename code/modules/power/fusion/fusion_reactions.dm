@@ -1,6 +1,6 @@
 var/list/fusion_reactions
 
-/decl/fusion_reaction
+/singleton/fusion_reaction
 	var/p_react = "" // Primary reactant.
 	var/s_react = "" // Secondary reactant.
 	var/minimum_energy_level = 1
@@ -11,14 +11,14 @@ var/list/fusion_reactions
 	var/list/products = list()
 	var/minimum_reaction_temperature = 100
 
-/decl/fusion_reaction/proc/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
+/singleton/fusion_reaction/proc/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
 	return 0
 
-proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
+/proc/get_fusion_reaction(p_react, s_react, m_energy)
 	if(!fusion_reactions)
 		fusion_reactions = list()
-		for(var/rtype in typesof(/decl/fusion_reaction) - /decl/fusion_reaction)
-			var/decl/fusion_reaction/cur_reaction = new rtype()
+		for(var/rtype in typesof(/singleton/fusion_reaction) - /singleton/fusion_reaction)
+			var/singleton/fusion_reaction/cur_reaction = new rtype()
 			if(!fusion_reactions[cur_reaction.p_react])
 				fusion_reactions[cur_reaction.p_react] = list()
 			fusion_reactions[cur_reaction.p_react][cur_reaction.s_react] = cur_reaction
@@ -43,20 +43,20 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 //  boron-11
 
 // Basic power production reactions.
-/decl/fusion_reaction/deuterium_deuterium
+/singleton/fusion_reaction/deuterium_deuterium
 	p_react = "deuterium"
 	s_react = "deuterium"
 	energy_consumption = 1
 	energy_production = 2
 // Advanced production reactions (todo)
 
-/decl/fusion_reaction/deuterium_helium
+/singleton/fusion_reaction/deuterium_helium
 	p_react = "deuterium"
 	s_react = "helium-3"
 	energy_consumption = 1
 	energy_production = 5
 
-/decl/fusion_reaction/deuterium_tritium
+/singleton/fusion_reaction/deuterium_tritium
 	p_react = "deuterium"
 	s_react = "tritium"
 	energy_consumption = 1
@@ -64,7 +64,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	products = list("helium-3" = 1)
 	instability = 0.5
 
-/decl/fusion_reaction/deuterium_lithium
+/singleton/fusion_reaction/deuterium_lithium
 	p_react = "deuterium"
 	s_react = "lithium"
 	energy_consumption = 2
@@ -74,7 +74,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	instability = 1
 
 // Unideal/material production reactions
-/decl/fusion_reaction/oxygen_oxygen
+/singleton/fusion_reaction/oxygen_oxygen
 	p_react = "oxygen"
 	s_react = "oxygen"
 	energy_consumption = 10
@@ -83,16 +83,16 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	radiation = 5
 	products = list("silicon"= 1)
 
-/decl/fusion_reaction/iron_iron
+/singleton/fusion_reaction/iron_iron
 	p_react = "iron"
 	s_react = "iron"
-	products = list("silver" = 1, "gold" = 1, "platinum" = 1) // Not realistic but w/e
+	products = list(MAT_SILVER = 1, MAT_GOLD = 1, MAT_PLATINUM = 1) // Not realistic but w/e
 	energy_consumption = 10
 	energy_production = 0
 	instability = 2
 	minimum_reaction_temperature = 10000
 
-/decl/fusion_reaction/phoron_hydrogen
+/singleton/fusion_reaction/phoron_hydrogen
 	p_react = "hydrogen"
 	s_react = "phoron"
 	energy_consumption = 10
@@ -102,7 +102,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	minimum_reaction_temperature = 8000
 
 // VERY UNIDEAL REACTIONS.
-/decl/fusion_reaction/phoron_supermatter
+/singleton/fusion_reaction/phoron_supermatter
 	p_react = "supermatter"
 	s_react = "phoron"
 	energy_consumption = 0
@@ -110,17 +110,15 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	radiation = 20
 	instability = 20
 
-/decl/fusion_reaction/phoron_supermatter/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
+/singleton/fusion_reaction/phoron_supermatter/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
 
 	wormhole_event()
 
 	var/turf/origin = get_turf(holder)
 	holder.Rupture()
 	qdel(holder)
-	var/radiation_level = 200
 
-	// Copied from the SM for proof of concept. //Not any more --Cirra //Use the whole z proc --Leshana
-	SSradiation.z_radiate(locate(1, 1, holder.z), radiation_level, 1)
+	radiation_pulse(holder, 7500, RAD_FALLOFF_ENGINE_FUSION)
 
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)
@@ -142,7 +140,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	return 1
 
 // High end reactions.
-/decl/fusion_reaction/boron_hydrogen
+/singleton/fusion_reaction/boron_hydrogen
 	p_react = "boron"
 	s_react = "hydrogen"
 	minimum_energy_level = FUSION_HEAT_CAP * 0.5
@@ -151,7 +149,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 	radiation = 3
 	instability = 3
 
-/decl/fusion_reaction/hydrogen_hydrogen
+/singleton/fusion_reaction/hydrogen_hydrogen
 	p_react = "hydrogen"
 	s_react = "hydrogen"
 	minimum_energy_level = FUSION_HEAT_CAP * 0.75

@@ -14,7 +14,7 @@ var/datum/antagonist/loyalists/loyalists
 	loss_text = "The heads of staff did not stop the revolution!"
 	victory_feedback_tag = "win - rev heads killed"
 	loss_feedback_tag = "loss - heads killed"
-	antaghud_indicator = "hudloyalist"
+	antaghud_indicator = "loyalist"
 	flags = 0
 
 	hard_cap = 2

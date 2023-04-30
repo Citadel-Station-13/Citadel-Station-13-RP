@@ -18,17 +18,20 @@
 
 /obj/machinery/computer/id_restorer/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id) && !(istype(I,/obj/item/card/id/guest)))
-		if(!inserted && user.unEquip(I))
-			I.forceMove(src)
+		if(!inserted)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			inserted = I
 		else if(inserted)
 			to_chat(user, "<span class='warning'>There is already ID card inside.</span>")
 		return
 	..()
 
-/obj/machinery/computer/id_restorer/attack_hand(mob/user)
-	if(..()) return
-	if(stat & (NOPOWER|BROKEN)) return
+/obj/machinery/computer/id_restorer/attack_hand(mob/user, list/params)
+	if(..())
+		return
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
 
 	var/choice = alert(user,"What do you want to do?","[src]","Restore ID access","Eject ID","Cancel")
 	if(user.incapacitated() || (get_dist(src, user) > 1))
@@ -43,7 +46,7 @@
 				to_chat(user, "<span class='warning'>Invalid user detected. Access denied.</span>")
 				flick(icon_fail, src)
 				return
-			else if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	//Face hiding bad
+			else if((H.wear_mask && (H.wear_mask.inv_hide_flags & HIDEFACE)) || (H.head && (H.head.inv_hide_flags & HIDEFACE)))	//Face hiding bad
 				to_chat(user, "<span class='warning'>Facial recognition scan failed due to physical obstructions. Access denied.</span>")
 				flick(icon_fail, src)
 				return
@@ -71,7 +74,7 @@
 				return
 			if(ishuman(user))
 				inserted.forceMove(get_turf(src))
-				if(!user.get_active_hand())
+				if(!user.get_active_held_item())
 					user.put_in_hands(inserted)
 				inserted = null
 			else

@@ -1,14 +1,14 @@
 /**
-  * Call back when an atom enters an area
-  *
-  * Sends signals COMSIG_AREA_ENTERED and COMSIG_ENTER_AREA (to the atom)
-  *
-  * If the area has ambience, then it plays some ambience music to the ambience channel
-  */
+ * Call back when an atom enters an area
+ *
+ * Sends signals COMSIG_AREA_ENTERED (to the area) and COMSIG_ATOM_ENTER_AREA (to the atom)
+ *
+ * If the area has ambience, then it plays some ambience music to the ambience channel
+ */
 /area/Entered(atom/movable/M)
 	set waitfor = FALSE
 	SEND_SIGNAL(src, COMSIG_AREA_ENTERED, M)
-	SEND_SIGNAL(M, COMSIG_ENTER_AREA, src) //The atom that enters the area
+	SEND_SIGNAL(M, COMSIG_ATOM_ENTER_AREA, src) //The atom that enters the area
 	if(!isliving(M))
 		return
 
@@ -48,9 +48,8 @@
 /**
   * Called when an atom exits an area
   *
-  * Sends signals COMSIG_AREA_EXITED and COMSIG_EXIT_AREA (to the atom)
+  * Sends signals COMSIG_AREA_EXITED and COMSIG_ATOM_EXIT_AREA (to the atom)
   */
 /area/Exited(atom/movable/M)
 	SEND_SIGNAL(src, COMSIG_AREA_EXITED, M)
-	SEND_SIGNAL(M, COMSIG_EXIT_AREA, src) //The atom that exits the area
-
+	SEND_SIGNAL(M, COMSIG_ATOM_EXIT_AREA, src) //The atom that exits the area

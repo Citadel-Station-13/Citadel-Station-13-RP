@@ -41,7 +41,6 @@
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\triumph\triumph_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -75,9 +74,9 @@
 	company_short	= "NT"
 	starsys_name	= "Sigmar Concord"
 
-	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triupmh. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
+	shuttle_docked_message = "This is the %dock_name% calling to the NSV Triumph. The scheduled crew transfer shuttle has docked with the NSV Triumph. Departing crew should board the shuttle within %ETD%."
 	shuttle_leaving_dock = "The transfer shuttle has left the ship. Estimate %ETA% until the shuttle arrives at the %dock_name%."
-	shuttle_called_message = "This is the %dock_name% calling to the NSV Triupmh. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
+	shuttle_called_message = "This is the %dock_name% calling to the NSV Triumph. A scheduled crew transfer to the %dock_name% is commencing. Those departing should proceed to the shuttle bay within %ETA%."
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 	shuttle_name = "Crew Hands Transfer"
 	emergency_shuttle_docked_message = "The evacuation shuttle has arrived at the ship. You have approximately %ETD% to board the shuttle."
@@ -117,14 +116,12 @@
 
 	bot_patrolling = FALSE
 
-	allowed_spawns = list("Shuttle Station","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
+	allowed_spawns = list("Shuttle Bay","Gateway","Cryogenic Storage","Cyborg Storage","Beruang Trading Corp Cryo")
 	spawnpoint_died = /datum/spawnpoint/shuttle
 	spawnpoint_left = /datum/spawnpoint/shuttle
 	spawnpoint_stayed = /datum/spawnpoint/cryo
 
 	meteor_strike_areas = null
-
-	default_skybox = /datum/skybox_settings/triumph
 
 	unit_test_exempt_areas = list(
 		/area/vacant/vacant_site,
@@ -149,7 +146,7 @@
 	lateload_z_levels = list(
 		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
 		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
+		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
 		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
 		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
@@ -189,17 +186,15 @@
 /datum/map/triumph/perform_map_generation()
 	return 1
 
-/datum/skybox_settings/triumph/New()
-	icon_state = "space1" // This is set again to a static state until a proper RNG of a static backdrop for every new round is set-up.
-	return icon_state
-
 // For making the 4-in-1 holomap, we calculate some offsets
-#define TRIUMPH_MAP_SIZE 140 // Width and height of compiled in triumph z levels.
-#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40 // 40px central gutter between columns
-#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2) // 100
-#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2) // 60
-
-
+/// Width and height of compiled in triumph z levels.
+#define TRIUMPH_MAP_SIZE 140
+/// 40px central gutter between columns
+#define TRIUMPH_HOLOMAP_CENTER_GUTTER 40
+/// 100
+#define TRIUMPH_HOLOMAP_MARGIN_X ((HOLOMAP_ICON_SIZE - (2*TRIUMPH_MAP_SIZE) - TRIUMPH_HOLOMAP_CENTER_GUTTER) / 2)
+/// 60
+#define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
 /datum/map_z_level/triumph/ship
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
@@ -256,3 +251,58 @@
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
+
+// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
+/obj/machinery/power/supermatter/touch_map_edge()
+	qdel(src)
+
+
+/// Z level dropper. Todo, make something generic so we dont have to copy pasta this
+/obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
+	affect_ghosts = 1
+
+/obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
+	. = ..()
+
+	if(istype(get_turf(src), /turf/simulated/floor))
+		src:target_z = z
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
+	if(!src:target_z)
+		return
+
+	if(isobserver(A) || A.anchored)
+		return
+	if(A.throwing)
+		return
+	if(!A.can_fall())
+		return
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.is_floating || L.flying)
+			return //Flyers/nograv can ignore it
+
+	var/attempts = 100
+	var/turf/simulated/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),src:target_z)
+		if(candidate.density)
+			attempts--
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	if(isobserver(A))
+		A.forceMove(T) // Harmlessly move ghosts.
+		return
+
+	A.forceMove(T)
+	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
+		message_admins("\The [A] fell out of the sky.")
+		var/mob/living/L = A
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.

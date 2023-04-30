@@ -9,18 +9,25 @@
 
 
 /area/triumph/surfacebase
-	icon = 'icons/turf/areas.dmi'
+	name = "Surface Base"
+
 /area/triumph/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/triumph/surfacebase/outside/outside1
 	icon_state = "outside1"
+
 /area/triumph/surfacebase/outside/outside2
 	icon_state = "outside2"
+
 /area/triumph/surfacebase/outside/outside3
 	icon_state = "outside3"
+
 /area/triumph/surfacebase/outside/empty
 	name = "Outside - Empty Area"
+
 /area/triumph/surfacebase/outside/wilderness
 	name = "Outside - Wilderness"
 	icon_state = "invi"
@@ -118,6 +125,7 @@
 // Solars map areas
 /area/triumph/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/triumph/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 //Surface med
@@ -155,17 +163,14 @@
 /area/shuttle/triumph/crash1
 	name = "\improper Crash Site 1"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt
 /area/shuttle/triumph/crash2
 	name = "\improper Crash Site 2"
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/floor/outdoors/dirt
 
 // Class D world areas
 /area/class_d
 	name = "Class D World"
 	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/classd
 	requires_power = 1
 	dynamic_lighting = 1
 
@@ -178,10 +183,8 @@
 	icon_state = "unexplored"
 
 /area/class_d/unexplored/underground // Caves would be protected from weather. Still valid for POI generation do to being a dependent of /area/poi_d/unexplored
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/explored/underground
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/wildcat_mining_base
 	name = "Abandoned Facility"
@@ -201,7 +204,6 @@
 	name = "Exterior Workshop"
 
 /area/class_d/wildcat_mining_base/interior
-	base_turf = /turf/simulated/floor/classd/indoors
 
 /area/class_d/wildcat_mining_base/interior/main_room
 	name = "Main Room"
@@ -217,42 +219,33 @@
 
 /area/class_d/POIs/ship
 	name = "Crashed Ship Fragment"
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/plains
 	name = "Plains"
-	base_turf = /turf/simulated/mineral/floor/classd
 
 /area/class_d/crater
 	name = "Crater"
-	base_turf = /turf/simulated/mineral/floor/classd
 
 /area/class_d/Mountain
 	name = "Mountain"
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/Crevices
 	name = "Crevices"
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 /area/class_d/POIs/solar_farm
 	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/mineral/floor/classd
 
 /area/class_d/POIs/landing_pad
 	name = "Prefab Homestead"
-	base_turf = /turf/simulated/mineral/floor/classd
 	requires_power = FALSE
 
 /area/class_d/POIs/reactor
 	name = "Prefab Reactor"
-	base_turf = /turf/simulated/mineral/floor/classd/indoors
 
 // Class G world areas
 /area/class_g
 	name = "Class G World"
 	icon_state = "away"
-	base_turf = /turf/simulated/mineral/floor/
 	requires_power = 1
 	dynamic_lighting = 1
 
@@ -268,62 +261,48 @@
 // Desert Planet world areas
 /area/class_h
 	name = "Class H World"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 	requires_power = 1
 	dynamic_lighting = 1
 	icon_state = "away"
 
 /area/class_h/POIs/WW_Town
 	name = "Ghost Town"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/landing_pad
 	name = "Prefab Homestead"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/solar_farm
 	name = "Prefab Solar Farm"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/dirt_farm
 	name = "Abandoned Farmstead"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/graveyard
 	name = "Desert Graveyard"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/goldmine
 	name = "Desert Goldmine"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/ranch
 	name = "Abandoned Ranch"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/saloon
 	name = "Saloon"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/temple
 	name = "Old Temple"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/tomb
 	name = "Old Tomb"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/AuxiliaryResearchFacility
 	name = "Research Facility"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/vault
 	name = "Desert Bunker"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/POIs/covert_post
 	name = "Clown Listening Post"
-	base_turf = /turf/simulated/floor/outdoors/beach/sand/desert/classh
 
 /area/class_h/explored
 	name = "Class H World - Explored (E)"
@@ -337,7 +316,6 @@
 /area/class_m
 	name = "Class M World"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 1
 	dynamic_lighting = 1
 
@@ -345,15 +323,65 @@
 	name = "Class M World - Inside (E)"
 	icon_state = "red"
 
+/area/class_m/inside/main
+	name = "Class M World - Main Facility"
+
+/area/class_m/inside/dorms
+	name = "Class M World - Dormitories"
+	icon_state = "green"
+
+/area/class_m/inside/bathroom
+	name = "Class M World - Bathrooms"
+	icon_state = "green"
+
+/area/class_m/inside/cabin
+	name = "Class M World - Cabin"
+
+/area/class_m/inside/islandbeachhouse
+	name = "Class M World - Island Beach House"
+
+/area/class_m/inside/sauna
+	name = "Class M World - Main Sauna"
+
+/area/class_m/inside/sauna2
+	name = "Class M World - Beach Sauna"
+
+/area/class_m/inside/sauna3
+	name = "Class M World - Island Sauna"
+
+/area/class_m/inside/garage
+	name = "Class M World - Garage"
+
+/area/class_m/inside/hotspringcaves
+	name = "Class M World - Hotspring Caves"
+
 /area/class_m/outside
 	name = "Class M World - Outside (UE)"
+	icon_state = "bluenew"
+	is_outside = OUTSIDE_YES
+
+/area/class_m/outside/beach
+	name = "Class M World - Beach"
 	icon_state = "yellow"
+/area/class_m/outside/beachmiddle
+	name = "Class M World - Beach Center"
+	icon_state = "purple"
+
+/area/class_m/outside/island
+	name = "Class M World - Island"
+	icon_state = "purple"
+
+/area/class_m/outside/island2
+	name = "Class M World - Island"
+	icon_state = "blue"
+
+/area/class_m/outside/docks
+	name = "Class M World - Docks"
 
 // Frozen planet world areas
 /area/class_p
 	name = "Class P World"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/dirt
 	requires_power = 1
 	dynamic_lighting = 1
 
@@ -402,7 +430,6 @@
 
 /area/space/debrisfield/asteroids/rocks
 	icon_state = "debrisexplored"
-	base_turf = /turf/simulated/mineral/floor/vacuum
 
 /area/space/debrisfield/oldshuttle
 	name = "POI - Old Shuttle"
@@ -433,14 +460,58 @@
 	name = "\improper Excursion Shuttle - Pirate Base"
 
 /area/piratebase
-	name = "Away Mission - Pirate Base"
+	name = "Pirate Base"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
-
-/area/piratebase/facility
-	icon_state = "debrisexplored"
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/horror.ogg')
-	requires_power = FALSE
+
+/area/piratebase/dock
+	name = "Pirate Base - Dock"
+	icon_state = "debrisexplored"
+
+/area/piratebase/sickbay
+	name = "Pirate Base - Sickbay"
+	icon_state = "debrisexplored"
+
+/area/piratebase/mess
+	name = "Pirate Base - Mess Hall"
+	icon_state = "debrisexplored"
+
+/area/piratebase/bunks
+	name = "Pirate Base - Bunks"
+	icon_state = "debrisexplored"
+
+/area/piratebase/captain
+	name = "Pirate Base - Captain's Quarters"
+	icon_state = "debrisexplored"
+
+/area/piratebase/vault
+	name = "Pirate Base - Vault"
+	icon_state = "debrisexplored"
+
+/area/piratebase/atmospherics
+	name = "Pirate Base - Atmospherics"
+	icon_state = "debrisexplored"
+
+/area/piratebase/construction
+	name = "Pirate Base - Construction Zone"
+	icon_state = "debrisexplored"
+
+/area/piratebase/mining
+	name = "Pirate Base - Mining Operations"
+	icon_state = "debrisexplored"
+
+/area/piratebase/power
+	name = "Pirate Base - Power Management"
+	icon_state = "debrisexplored"
+
+/area/piratebase/halls
+	name = "Pirate Base - Halls"
+	icon_state = "debrisexplored"
+
+/area/piratebase/brig
+	name = "Pirate Base - Brig"
+	icon_state = "debrisexplored"
 
 ////////////////////////////////////
 //// END TRIUMPH SPECIFIC AREAS ////
@@ -450,10 +521,8 @@
 
 /area/mine/unexplored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/virgo3b
 /area/mine/explored/underdark
 	name = "\improper Mining Underdark"
-	base_turf = /turf/simulated/mineral/floor/virgo3b
 
 // Mining outpost areas
 /area/outpost/mining_main/passage
@@ -468,23 +537,29 @@
 	name = "Away Mission - Trade Port"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 1
+	ambience = AMBIENCE_GENERIC
 
 /area/tradeport/facility
 	icon_state = "red"
 
 /area/tradeport/engineering
 	icon_state = "yellow"
+	ambience = AMBIENCE_ENGINEERING
 
 /area/tradeport/commons
 	icon_state = "green"
 
 /area/tradeport/dock
 	icon_state = "blue"
+	ambience = AMBIENCE_HANGAR
+	sound_env = LARGE_ENCLOSED
 
 /area/tradeport/pads
 	icon_state = "purple"
+	ambience = AMBIENCE_HANGAR
+	sound_env = LARGE_ENCLOSED
 
 /area/tradeport/spine
 	name = "\improper Commerce Spine"
@@ -512,9 +587,11 @@
 
 /area/tradeport/medical
 	icon_state = "blue"
+	sound_env = SMALL_ENCLOSED
 
 /area/tradeport/atmospherics
 	icon_state = "yellow"
+	ambience = AMBIENCE_ATMOS
 
 /area/tradeport/exterior
 
@@ -527,8 +604,7 @@
 //////// Mothership areas ////////
 /area/mothership
 	requires_power = 1
-	flags = RAD_SHIELDED
-	base_turf = /turf/space
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "blue-red2"
 /area/mothership/breakroom
 	name = "Warship - Breakroom"
@@ -560,7 +636,7 @@
 	name = "Warship - Surgery"
 /area/mothership/vault
 	name = "Warship - Vault"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/teleporter
 	name = "Warship - Teleporter Room"
 /area/mothership/security
@@ -585,7 +661,7 @@
 	name = "Warship - Warden"
 /area/mothership/armory
 	name = "Warship - Armory"
-	flags = RAD_SHIELDED | BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 /area/mothership/bridge
 	name = "Warship - Bridge"
 /area/mothership/holodeck
@@ -611,12 +687,11 @@
 	icon_state = "yellow"
 	requires_power = 0
 	dynamic_lighting = 0
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/skipjack_station/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/north
 /area/skipjack_station/orbit
 	name = "near the Tether"
 	icon_state = "northwest"
@@ -630,7 +705,7 @@
 	name = "\improper Ninja Base"
 	icon_state = "green"
 	requires_power = 0
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/ninja_dojo/dojo
 	name = "\improper Clan Dojo"
@@ -638,14 +713,12 @@
 /area/ninja_dojo/start
 	name = "\improper Clan Dojo"
 	icon_state = "shuttlered"
-	base_turf = /turf/simulated/floor/plating
 /area/ninja_dojo/orbit
 	name = "near the Tether"
 	icon_state = "south"
 /area/ninja_dojo/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/north
 /area/ninja_dojo/arrivals_dock
 	name = "\improper docked with Tether"
 	icon_state = "shuttle"
@@ -655,31 +728,28 @@
 // Lavaland
 /area/shuttle/excursion/lavaland
 	name = "Shuttle Landing Point"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/lavaland
 	name = "Lava Land"
 	icon_state = "away"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 1
 	dynamic_lighting = 1
 
 /area/lavaland/horrors
 	name = "Lava Land - Horrors"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/lavaland/dogs
 	name = "Lava Land - Dogs"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
 
 /area/lavaland/idleruins
 	name = "Lava Land - Idle Ruins"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
+
+/area/lavaland/ashlander_camp
+	name = "Lava Land - Ashlander Camp"
 
 /area/lavaland/bosses
 	name = "Lava Land - Boss"
-	base_turf = /turf/simulated/floor/outdoors/lavaland
 	requires_power = 0
 
 /area/lavaland/central/base
@@ -693,10 +763,12 @@
 /area/lavaland/central/explored
 	name = "Lava Land (Center) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/unexplored
 	name = "Lava Land (Center) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/central/transit
 	name = "Lava Land (Center) - Transit"
@@ -705,33 +777,50 @@
 /area/lavaland/north/explored
 	name = "Lava Land (North) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/north/unexplored
 	name = "Lava Land (North) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/explored
 	name = "Lava Land (South) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/south/unexplored
 	name = "Lava Land (South) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/explored
 	name = "Lava Land (East) - Thoroughfare"
 	icon_state = "red"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/unexplored
 	name = "Lava Land (East) - Unknown"
 	icon_state = "yellow"
-
-/area/lavaland/east/colony
-	name = "Lava Land (East) - Colony"
-	icon_state = "blue"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/east/transit
 	name = "Lava Land (East) - Transit"
+	icon_state = "blue"
+
+/area/lavaland/east/ashlander_village
+	name = "Lava Land (East) - Ashlander Village"
+	icon_state = "blue"
+
+/area/lavaland/west/explored
+	name = "Lava Land (West) - Thoroughfare"
+	icon_state = "red"
+	ambience = AMBIENCE_LAVA
+
+//These were from the Colony Event. Just holding onto them for now.
+/*
+/area/lavaland/east/colony
+	name = "Lava Land (East) - Colony"
 	icon_state = "blue"
 
 /area/lavaland/east/lab
@@ -748,14 +837,12 @@
 /area/lavaland/east/lab/bunker
 	name = "Lava Land (East) - S4 Bunker"
 	icon_state = "blue"
-
-/area/lavaland/west/explored
-	name = "Lava Land (West) - Thoroughfare"
-	icon_state = "red"
+*/
 
 /area/lavaland/west/unexplored
 	name = "Lava Land (West) - Unknown"
 	icon_state = "yellow"
+	ambience = AMBIENCE_LAVA
 
 /area/lavaland/dungeon/exterior
 	name = "Lava Land (Dungeon) - Unknown"
@@ -768,43 +855,39 @@
 // Aerostat
 /area/shuttle/excursion/away_aerostat
 	name = "\improper Excursion Shuttle - Aerostat"
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 
 // The aerostat shuttle
 /area/shuttle/aerostat/docked
 	name = "\improper Aerostat Shuttle - Dock"
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 
 /area/shuttle/aerostat/landed
 	name = "\improper Aerostat Shuttle - Surface"
-	base_turf = /turf/simulated/floor/plating/virgo2
 
 // The aerostat itself
 /area/aerostat
 	name = "\improper Away Mission - Aerostat Outside"
 	icon_state = "away"
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky
 	requires_power = FALSE
 	dynamic_lighting = FALSE
+	is_outside = OUTSIDE_YES
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
 	icon_state = "crew_quarters"
-	base_turf = /turf/simulated/floor/plating/virgo2
 	requires_power = TRUE
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/solars
 	name = "\improper Away Mission - Aerostat Solars"
 	icon_state = "crew_quarters"
-	base_turf = /turf/simulated/floor/plating/virgo2
 	dynamic_lighting = TRUE
+	is_outside = OUTSIDE_NO
 
 /area/aerostat/surface
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/virgo2
 
 /area/aerostat/surface/explored
 	name = "Away Mission - Aerostat Surface (E)"
@@ -937,15 +1020,14 @@
 /area/awaymission/snow_outpost
 	icon_state = "blank"
 	requires_power = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/music/main.ogg', 'sound/ambience/maintenance/maintenance4.ogg', 'sound/ambience/sif/sif1.ogg', 'sound/ambience/ruins/ruins1.ogg')
-	base_turf = /turf/simulated/floor/snow/snow2
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -977,15 +1059,14 @@
 /area/awaymission/snowfield
 	icon_state = "blank"
 //	requires_power = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
-	base_turf = /turf/simulated/floor/snow/snow2
 
 /area/awaymission/snowfield/outside
 	icon_state = "green"
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 1
+	is_outside = OUTSIDE_YES
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

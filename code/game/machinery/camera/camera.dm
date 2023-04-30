@@ -1,7 +1,7 @@
 /obj/machinery/camera
 	name = "security camera"
 	desc = "It's used to monitor rooms."
-	icon = 'icons/obj/monitors_vr.dmi' //VOREStation Edit - New Icons
+	icon = 'icons/obj/monitors_vr.dmi'
 	icon_state = "camera"
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
@@ -49,7 +49,7 @@
 	client_huds |= GLOB.global_hud.whitense
 
 	/* // Use this to look for cameras that have the same c_tag.
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
 			log_world("[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]")
@@ -61,12 +61,11 @@
 			log_world("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
 		ASSERT(src.network.len > 0)
-	// VOREStation Edit Start - Make mapping with cameras easier
+	// Make mapping with cameras easier
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
 	return ..()
-	// VOREStation Edit End
 
 /obj/machinery/camera/Destroy()
 	deactivate(null, 0) //kick anyone viewing out
@@ -78,8 +77,8 @@
 	return ..()
 
 /obj/machinery/camera/process(delta_time)
-	if((stat & EMPED) && world.time >= affected_by_emp_until)
-		stat &= ~EMPED
+	if((machine_stat & EMPED) && world.time >= affected_by_emp_until)
+		machine_stat &= ~EMPED
 		cancelCameraAlarm()
 		update_icon()
 		update_coverage()
@@ -92,17 +91,17 @@
 	if(!isEmpProof() && prob(100/severity))
 		if(!affected_by_emp_until || (world.time > affected_by_emp_until))
 			affected_by_emp_until = max(affected_by_emp_until, world.time + (90 SECONDS / severity))
-			stat |= EMPED
+			machine_stat |= EMPED
 			set_light(0)
 			triggerCameraAlarm()
 			update_icon()
 			update_coverage()
 			START_PROCESSING(SSobj, src)
 
-/obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
+/obj/machinery/camera/bullet_act(var/obj/projectile/P)
 	take_damage(P.get_structure_damage())
 
-/obj/machinery/camera/ex_act(severity)
+/obj/machinery/camera/legacy_ex_act(severity)
 	if(src.invuln)
 		return
 
@@ -113,33 +112,34 @@
 	..() //and give it the regular chance of being deleted outright
 
 /obj/machinery/camera/blob_act()
-	if((stat & BROKEN) || invuln)
+	if((machine_stat & BROKEN) || invuln)
 		return
 	destroy()
 
-/obj/machinery/camera/hitby(AM as mob|obj)
-	..()
+/obj/machinery/camera/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if (istype(AM, /obj))
 		var/obj/O = AM
-		if (O.throwforce >= src.toughness)
+		if (O.throw_force >= src.toughness)
 			visible_message("<span class='warning'><B>[src] was hit by [O].</B></span>")
-		take_damage(O.throwforce)
+		take_damage(O.throw_force)
 
 /obj/machinery/camera/proc/setViewRange(var/num = 7)
 	src.view_range = num
-	cameranet.updateVisibility(src, 0)
+	GLOB.cameranet.updateVisibility(src, 0)
 
-/obj/machinery/camera/attack_hand(mob/living/carbon/human/user as mob)
-	if(!istype(user))
+/obj/machinery/camera/attack_hand(mob/user, list/params)
+	var/mob/living/carbon/human/L = user
+	if(!istype(L))
 		return
 
-	if(user.species.can_shred(user))
+	if(L.species.can_shred(L))
 		set_status(0)
-		user.do_attack_animation(src)
-		user.setClickCooldown(user.get_attack_speed())
-		visible_message("<span class='warning'>\The [user] slashes at [src]!</span>")
+		L.do_attack_animation(src)
+		L.setClickCooldown(L.get_attack_speed())
+		visible_message("<span class='warning'>\The [L] slashes at [src]!</span>")
 		playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
-		add_hiddenprint(user)
+		add_hiddenprint(L)
 		destroy()
 
 /obj/machinery/camera/attack_generic(mob/user as mob)
@@ -163,12 +163,12 @@
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] screws the camera's panel [panel_open ? "open" : "closed"]!</span>",
 		"<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 
 	else if((W.is_wirecutter() || istype(W, /obj/item/multitool)) && panel_open)
 		interact(user)
 
-	else if(istype(W, /obj/item/weldingtool) && (wires.CanDeconstruct() || (stat & BROKEN)))
+	else if(istype(W, /obj/item/weldingtool) && (wires.CanDeconstruct() || (machine_stat & BROKEN)))
 		if(weld(W, user))
 			if(assembly)
 				assembly.loc = src.loc
@@ -177,7 +177,7 @@
 				assembly.camera_network = english_list(network, NETWORK_DEFAULT, ",", ",")
 				assembly.update_icon()
 				assembly.dir = src.dir
-				if(stat & BROKEN)
+				if(machine_stat & BROKEN)
 					assembly.state = 2
 					to_chat(user, "<span class='notice'>You repaired \the [src] frame.</span>")
 				else
@@ -210,28 +210,16 @@
 			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U];trackname=[U.name]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
 
-
-	else if (istype(W, /obj/item/camera_bug))
-		if (!src.can_use())
-			to_chat(user, "<span class='warning'>Camera non-functional.</span>")
-			return
-		if (src.bugged)
-			to_chat(user, "<span class='notice'>Camera bug removed.</span>")
-			src.bugged = 0
-		else
-			to_chat(user, "<span class='notice'>Camera bugged.</span>")
-			src.bugged = 1
-
 	else if(W.damtype == BRUTE || W.damtype == BURN) //bashing cameras
 		user.setClickCooldown(user.get_attack_speed(W))
-		if (W.force >= src.toughness)
+		if (W.damage_force >= src.toughness)
 			user.do_attack_animation(src)
-			visible_message("<span class='warning'><b>[src] has been [W.attack_verb.len? pick(W.attack_verb) : "attacked"] with [W] by [user]!</b></span>")
+			visible_message("<span class='warning'><b>[src] has been [W.get_attack_verb(src, user)] with [W] by [user]!</b></span>")
 			if (istype(W, /obj/item)) //is it even possible to get into attackby() with non-items?
 				var/obj/item/I = W
 				if (I.hitsound)
 					playsound(loc, I.hitsound, 50, 1, -1)
-		take_damage(W.force)
+		take_damage(W.damage_force)
 
 	else
 		..()
@@ -262,14 +250,14 @@
 		icon_state = initial(icon_state)
 		add_hiddenprint(user)
 
-/obj/machinery/camera/take_damage(var/force, var/message)
+/obj/machinery/camera/take_damage(force, message)
 	//prob(25) gives an average of 3-4 hits
 	if (force >= toughness && (force > toughness*4 || prob(25)))
 		destroy()
 
 //Used when someone breaks a camera
 /obj/machinery/camera/proc/destroy()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	wires.cut_all()
 
 	triggerCameraAlarm()
@@ -292,30 +280,36 @@
 	if(isXRay()) return SEE_TURFS|SEE_MOBS|SEE_OBJS
 	return 0
 
+/obj/machinery/camera/temporary_perspective()
+	var/datum/perspective/P = ..()
+	. = P
+	if(isXRay())
+		P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+
 /obj/machinery/camera/update_icon()
-	if (!status || (stat & BROKEN))
+	if (!status || (machine_stat & BROKEN))
 		icon_state = "[initial(icon_state)]1"
-	else if (stat & EMPED)
+	else if (machine_stat & EMPED)
 		icon_state = "[initial(icon_state)]emp"
 	else
 		icon_state = initial(icon_state)
 
-/obj/machinery/camera/proc/triggerCameraAlarm(var/duration = 0)
+/obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)
 	alarm_on = 1
-	SSalarms.camera_alarm.triggerAlarm(loc, src, duration)
+	camera_alarm.triggerAlarm(loc, src, duration)
 
 /obj/machinery/camera/proc/cancelCameraAlarm()
 	if(wires.is_cut(WIRE_CAM_ALARM))
 		return
 
 	alarm_on = 0
-	SSalarms.camera_alarm.clearAlarm(loc, src)
+	camera_alarm.clearAlarm(loc, src)
 
 //if false, then the camera is listed as DEACTIVATED and cannot be used
 /obj/machinery/camera/proc/can_use()
 	if(!status)
 		return FALSE
-	if(stat & (EMPED|BROKEN))
+	if(machine_stat & (EMPED|BROKEN))
 		return FALSE
 	return TRUE
 
@@ -370,10 +364,10 @@
 
 	// Do after stuff here
 	to_chat(user, "<span class='notice'>You start to weld [src]..</span>")
-	playsound(src.loc, WT.usesound, 50, 1)
+	playsound(src.loc, WT.tool_sound, 50, 1)
 	WT.eyecheck(user)
 	busy = 1
-	if(do_after(user, 100 * WT.toolspeed))
+	if(do_after(user, 100 * WT.tool_speed))
 		busy = 0
 		if(!WT.isOn())
 			return 0
@@ -385,7 +379,7 @@
 	if(!panel_open || istype(user, /mob/living/silicon/ai))
 		return
 
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		to_chat(user, "<span class='warning'>\The [src] is broken.</span>")
 		return
 
@@ -437,7 +431,7 @@
 		network.Cut()
 		update_coverage(1)
 
-/obj/machinery/camera/proc/nano_structure()
+/obj/machinery/camera/proc/ui_structure()
 	var/cam[0]
 	cam["name"] = sanitize(c_tag)
 	cam["deact"] = !can_use()
@@ -452,12 +446,12 @@
 		var/list/open_networks = difflist(network, restricted_camera_networks)
 		// Add or remove camera from the camera net as necessary
 		if(on_open_network && !open_networks.len)
-			cameranet.removeCamera(src)
+			GLOB.cameranet.removeCamera(src)
 		else if(!on_open_network && open_networks.len)
 			on_open_network = 1
-			cameranet.addCamera(src)
+			GLOB.cameranet.addCamera(src)
 	else
-		cameranet.updateVisibility(src, 0)
+		GLOB.cameranet.updateVisibility(src, 0)
 
 
 
@@ -465,8 +459,8 @@
 /obj/machinery/camera/proc/reset_wires()
 	if(!wires)
 		return
-	if (stat & BROKEN) // Fix the camera
-		stat &= ~BROKEN
+	if (machine_stat & BROKEN) // Fix the camera
+		machine_stat &= ~BROKEN
 	wires.repair()
 	update_icon()
 	update_coverage()

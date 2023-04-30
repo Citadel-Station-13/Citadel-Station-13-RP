@@ -3,6 +3,8 @@ GLOBAL_VAR_INIT(sound_env_wet, -1500)
 GLOBAL_VAR_INIT(sound_env_dry, 0)
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency = null, channel = 0, pressure_affected = TRUE, ignore_walls = TRUE, preference = null, soundenvwet, soundenvdry)
+	if(!soundin)
+		return
 	if(isnull(soundenvwet))
 		soundenvwet = GLOB.sound_env_wet
 	if(isnull(soundenvdry))
@@ -23,7 +25,7 @@ GLOBAL_VAR_INIT(sound_env_dry, 0)
 	var/sound/S = sound(get_sfx(soundin))
 	var/maxdistance = (world.view + extrarange) * GLOB.sound_extrarange_multiplier
 	var/z = turf_source.z
-	var/list/listeners = player_list		//SSmobs.clients_by_zlevel[z]
+	var/list/listeners = GLOB.player_list		//SSmobs.clients_by_zlevel[z]
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 	for(var/P in listeners)
@@ -45,7 +47,32 @@ GLOBAL_VAR_INIT(sound_pressure_environment, FALSE)
 GLOBAL_VAR_INIT(sound_offscreen_falloff_factor, 5)
 GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
-/mob/proc/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff, is_global, channel = 0, pressure_affected = TRUE, sound/S, preference, envwet, envdry, manual_x, manual_y, distance_multiplier = 1)
+/mob/proc/playsound_local(
+		turf/turf_source,
+		soundin,
+		vol,
+		vary,
+		frequency,
+		falloff,
+		is_global,
+		channel = 0,
+		pressure_affected = TRUE,
+		sound/S, preference,
+		envwet,
+		envdry,
+		manual_x,
+		manual_y,
+		distance_multiplier = 1,
+		wait = FALSE
+	) {
+	/**
+	 * Yes, this proc is insane. I hate it too. There's nothing we can do about it unless someone wants to go through the work of splitting this proc up.
+	 * We'll do that later, I promise.
+	 */
+
+	if(!client)
+		return
+
 	if(isnull(envwet))
 		envwet = GLOB.sound_env_wet
 	if(isnull(envdry))
@@ -61,7 +88,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		return
 */
 
-	if(!client || ear_deaf > 0)
+	if(ear_deaf > 0)
 		return
 
 	if(preference && !client.is_preference_enabled(preference))
@@ -70,7 +97,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 	if(!S)
 		S = sound(get_sfx(soundin))
 
-	S.wait = 0 //No queue
+	S.wait = wait
 	S.channel = channel || SSsounds.random_available_channel()
 	S.volume = vol
 	// TG EDIT
@@ -146,9 +173,11 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
 	SEND_SOUND(src, S)
 
+}
+
 /proc/sound_to_playing_players(sound, volume = 100, vary)
 	sound = get_sfx(sound)
-	for(var/M in player_list)
+	for(var/M in GLOB.player_list)
 		if(ismob(M) && !isnewplayer(M))
 			var/mob/MO = M
 			MO.playsound_local(get_turf(MO), sound, volume, vary, pressure_affected = FALSE)
@@ -171,19 +200,23 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 		media.push_music(T.url, world.time, 0.85)
 		to_chat(src,"<span class='notice'>Lobby music: <b>[T.title]</b> by <b>[T.artist]</b>.</span>")
 
+/**
+ * Directly returns an ogg for a given id.
+ * todo: convert ALL of these to soundbytes.
+ */
 /proc/get_sfx(soundin)
 	if(istext(soundin))
 		switch(soundin)
 			if ("shatter")
 				soundin = pick('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg')
-			if ("explosion")
-				soundin = pick('sound/effects/Explosion1.ogg','sound/effects/Explosion2.ogg','sound/effects/Explosion3.ogg','sound/effects/Explosion4.ogg','sound/effects/Explosion5.ogg','sound/effects/Explosion6.ogg')
 			if ("sparks")
 				soundin = pick('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks5.ogg','sound/effects/sparks6.ogg','sound/effects/sparks7.ogg')
 			if ("rustle")
 				soundin = pick('sound/effects/rustle1.ogg','sound/effects/rustle2.ogg','sound/effects/rustle3.ogg','sound/effects/rustle4.ogg','sound/effects/rustle5.ogg')
 			if ("punch")
 				soundin = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+			if ("thud")
+				soundin = pick('sound/effects/impacts/thud1.ogg','sound/effects/impacts/thud2.ogg','sound/effects/impacts/thud3.ogg')
 			if ("clownstep")
 				soundin = pick('sound/effects/clownstep1.ogg','sound/effects/clownstep2.ogg')
 			if ("swing_hit")
@@ -214,7 +247,9 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 				soundin = pick('sound/weapons/hf_machete/hfmachete_throw01.ogg', 'sound/weapons/hf_machete/hfmachete_throw02.ogg', 'sound/weapons/hf_machete/hfmachete_throw03.ogg')
 			if ("machete_throw_hit_sound")
 				soundin = pick('sound/weapons/hf_machete/hfmachete_throw_hit01.ogg', 'sound/weapons/hf_machete/hfmachete_throw_hit02.ogg', 'sound/weapons/hf_machete/hfmachete_throw_hit03.ogg')
-			//VORESTATION EDIT - vore sounds for better performance
+
+
+//! ## VORE SOUNDS
 			if ("hunger_sounds") soundin = pick('sound/vore/growl1.ogg','sound/vore/growl2.ogg','sound/vore/growl3.ogg','sound/vore/growl4.ogg','sound/vore/growl5.ogg')
 
 			if("classic_digestion_sounds") soundin = pick(
@@ -258,14 +293,10 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 				soundin = pick('sound/machines/sm/accent/normal/1.ogg', 'sound/machines/sm/accent/normal/2.ogg', 'sound/machines/sm/accent/normal/3.ogg', 'sound/machines/sm/accent/normal/4.ogg', 'sound/machines/sm/accent/normal/5.ogg', 'sound/machines/sm/accent/normal/6.ogg', 'sound/machines/sm/accent/normal/7.ogg', 'sound/machines/sm/accent/normal/8.ogg', 'sound/machines/sm/accent/normal/9.ogg', 'sound/machines/sm/accent/normal/10.ogg', 'sound/machines/sm/accent/normal/11.ogg', 'sound/machines/sm/accent/normal/12.ogg', 'sound/machines/sm/accent/normal/13.ogg', 'sound/machines/sm/accent/normal/14.ogg', 'sound/machines/sm/accent/normal/15.ogg', 'sound/machines/sm/accent/normal/16.ogg', 'sound/machines/sm/accent/normal/17.ogg', 'sound/machines/sm/accent/normal/18.ogg', 'sound/machines/sm/accent/normal/19.ogg', 'sound/machines/sm/accent/normal/20.ogg', 'sound/machines/sm/accent/normal/21.ogg', 'sound/machines/sm/accent/normal/22.ogg', 'sound/machines/sm/accent/normal/23.ogg', 'sound/machines/sm/accent/normal/24.ogg', 'sound/machines/sm/accent/normal/25.ogg', 'sound/machines/sm/accent/normal/26.ogg', 'sound/machines/sm/accent/normal/27.ogg', 'sound/machines/sm/accent/normal/28.ogg', 'sound/machines/sm/accent/normal/29.ogg', 'sound/machines/sm/accent/normal/30.ogg', 'sound/machines/sm/accent/normal/31.ogg', 'sound/machines/sm/accent/normal/32.ogg', 'sound/machines/sm/accent/normal/33.ogg', 'sound/machines/sm/supermatter1.ogg', 'sound/machines/sm/supermatter2.ogg', 'sound/machines/sm/supermatter3.ogg')
 			if("smdelam")
 				soundin = pick('sound/machines/sm/accent/delam/1.ogg', 'sound/machines/sm/accent/normal/2.ogg', 'sound/machines/sm/accent/normal/3.ogg', 'sound/machines/sm/accent/normal/4.ogg', 'sound/machines/sm/accent/normal/5.ogg', 'sound/machines/sm/accent/normal/6.ogg', 'sound/machines/sm/accent/normal/7.ogg', 'sound/machines/sm/accent/normal/8.ogg', 'sound/machines/sm/accent/normal/9.ogg', 'sound/machines/sm/accent/normal/10.ogg', 'sound/machines/sm/accent/normal/11.ogg', 'sound/machines/sm/accent/normal/12.ogg', 'sound/machines/sm/accent/normal/13.ogg', 'sound/machines/sm/accent/normal/14.ogg', 'sound/machines/sm/accent/normal/15.ogg', 'sound/machines/sm/accent/normal/16.ogg', 'sound/machines/sm/accent/normal/17.ogg', 'sound/machines/sm/accent/normal/18.ogg', 'sound/machines/sm/accent/normal/19.ogg', 'sound/machines/sm/accent/normal/20.ogg', 'sound/machines/sm/accent/normal/21.ogg', 'sound/machines/sm/accent/normal/22.ogg', 'sound/machines/sm/accent/normal/23.ogg', 'sound/machines/sm/accent/normal/24.ogg', 'sound/machines/sm/accent/normal/25.ogg', 'sound/machines/sm/accent/normal/26.ogg', 'sound/machines/sm/accent/normal/27.ogg', 'sound/machines/sm/accent/normal/28.ogg', 'sound/machines/sm/accent/normal/29.ogg', 'sound/machines/sm/accent/normal/30.ogg', 'sound/machines/sm/accent/normal/31.ogg', 'sound/machines/sm/accent/normal/32.ogg', 'sound/machines/sm/accent/normal/33.ogg', 'sound/machines/sm/supermatter1.ogg', 'sound/machines/sm/supermatter2.ogg', 'sound/machines/sm/supermatter3.ogg')
-
-			if ("terminal_type")
-				soundin = pick('sound/machines/terminal_button01.ogg', 'sound/machines/terminal_button02.ogg', 'sound/machines/terminal_button03.ogg', \
-								'sound/machines/terminal_button04.ogg', 'sound/machines/terminal_button05.ogg', 'sound/machines/terminal_button06.ogg', \
-								'sound/machines/terminal_button07.ogg', 'sound/machines/terminal_button08.ogg')
-
-			//END VORESTATION EDIT
-	return soundin
+	// do global lookup
+	var/sfx = __sfx_lookup[soundin]
+	// || makes us go to soundin, like previous behavior, if it wasn't there
+	return islist(sfx)? pick(sfx) : (sfx || soundin)
 
 //Are these even used?
 // answer is apparently not, chief

@@ -14,7 +14,7 @@
 	var/category = /datum/shuttle
 	var/multiz = 0	// How many multiz levels, starts at 0  TODO Leshana - Are we porting this?
 
-	var/ceiling_type	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
+	var/ceiling_type = /turf/simulated/shuttle_ceiling	// Type path of turf to roof over the shuttle when at multi-z landmarks.  Ignored if null.
 
 	var/sound_takeoff = 'sound/effects/shuttles/shuttle_takeoff.ogg'
 	var/sound_landing = 'sound/effects/shuttles/shuttle_landing.ogg'
@@ -40,11 +40,25 @@
 	var/list/areas = list()
 	if(!islist(shuttle_area))
 		shuttle_area = list(shuttle_area)
-	for(var/T in shuttle_area)
-		var/area/A = locate(T)
+	for(var/path in shuttle_area)
+		var/area/A = locate(path)
 		if(!istype(A))
-			CRASH("Shuttle \"[name]\" couldn't locate area [T].")
+			CRASH("Shuttle \"[name]\" couldn't locate area [path].")
 		areas += A
+		// todo: less shit shuttle system
+		for(var/turf/T in A.contents)
+			// inject ceiling
+			if(ceiling_type)
+				var/turf/above = GetAbove(T)
+				if(above && !(above.loc in shuttle_area))
+					above.PlaceBelowLogicalBottom(ceiling_type)
+			// inject floor
+			// but only if we are.. floor
+			if(GLOB.multiz_hole_baseturfs[T.type])
+				// don't bother
+				continue
+			T.PlaceBelowLogicalTop(/turf/simulated/floor/plating, CHANGETURF_INHERIT_AIR)
+
 	shuttle_area = areas
 
 	if(initial_location)
@@ -52,17 +66,17 @@
 	else
 		current_location = SSshuttle.get_landmark(current_location)
 	if(!istype(current_location))
-		log_debug("UM whoops, no initial? [src]")
+		log_debug(SPAN_DEBUGERROR("UM whoops, no initial? [src]"))
 		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
 
 	if(src.name in SSshuttle.shuttles)
-		CRASH("A shuttle with the name '[name]' is already defined.")
+		CRASH(SPAN_DEBUGERROR("A shuttle with the name '[name]' is already defined."))
 	SSshuttle.shuttles[src.name] = src
 	if(flags & SHUTTLE_FLAGS_PROCESS)
 		SSshuttle.process_shuttles += src
 	if(flags & SHUTTLE_FLAGS_SUPPLY)
 		if(SSsupply.shuttle)
-			CRASH("A supply shuttle is already defined.")
+			CRASH(SPAN_DEBUGERROR("A supply shuttle is already defined."))
 		SSsupply.shuttle = src
 
 /datum/shuttle/Destroy()
@@ -144,7 +158,7 @@
 
 // TODO - Far Future - Would be great if this was driven by process too.
 /datum/shuttle/proc/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
-	//to_world("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
+	//TO_WORLD("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
 	if(moving_status != SHUTTLE_IDLE)
 		return
 
@@ -283,7 +297,7 @@
 	// If shuttle has no internal gravity, update our gravity with destination gravity
 	if((flags & SHUTTLE_FLAGS_ZERO_G))
 		var/new_grav = 1
-		if(destination.flags & SLANDMARK_FLAG_ZERO_G)
+		if(destination.shuttle_landmark_flags & SLANDMARK_FLAG_ZERO_G)
 			var/area/new_area = get_area(destination)
 			new_grav = new_area.has_gravity
 		for(var/area/our_area in shuttle_area)
@@ -300,7 +314,7 @@
 				//if(AM.movable_flags & MOVABLE_FLAG_DEL_SHUTTLE)
 				//	qdel(AM)
 				//	continue
-				if(!AM.simulated)
+				if((AM.atom_flags & ATOM_ABSTRACT))
 					continue
 				if(isliving(AM))
 					var/mob/living/bug = AM
@@ -314,8 +328,7 @@
 		if(ceiling_type && HasAbove(current_location.z))
 			for(var/turf/TO in A.contents)
 				var/turf/TA = GetAbove(TO)
-				if(istype(TA, ceiling_type))
-					TA.ChangeTurf(get_base_turf_by_area(TA), 1, 1)
+				TA.ScrapeFromLogicalBottom(CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS, ceiling_type)
 		if(knockdown)
 			for(var/mob/living/M in A)
 				spawn(0)
@@ -326,14 +339,10 @@
 						to_chat(M, "<font color='red'>The floor lurches beneath you!</font>")
 						shake_camera(M, 10, 1)
 						// TODO - tossing?
-						//M.visible_message("<span class='warning'>[M.name] is tossed around by the sudden acceleration!</span>")
-						//M.throw_at_random(FALSE, 4, 1)
 						if(istype(M, /mob/living/carbon))
-							M.Weaken(3)
-							//VOREStation Add
+							M.afflict_paralyze(20 * 3)
 							if(move_direction)
 								throw_a_mob(M,move_direction)
-							//VOREStation Add End
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.
 		for(var/obj/structure/cable/C in A)
 			powernets |= C.powernet
@@ -347,10 +356,9 @@
 		for(var/area/A in shuttle_area)
 			for(var/turf/TD in A.contents)
 				var/turf/TA = GetAbove(TD)
-				if(istype(TA, get_base_turf_by_area(TA)) || isopenspace(TA))
-					if(get_area(TA) in shuttle_area)
-						continue
-					TA.ChangeTurf(ceiling_type, TRUE, TRUE, TRUE)
+				if(TA.loc in shuttle_area)
+					continue
+				TA.PlaceBelowLogicalBottom(ceiling_type, CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 
 	// Power-related checks. If shuttle contains power related machinery, update powernets.
 	// Note: Old way was to rebuild ALL powernets: if(powernets.len) SSmachines.makepowernets()

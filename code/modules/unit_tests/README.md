@@ -6,40 +6,42 @@ Unit tests are automated code to verify that parts of the game work exactly as t
 
 On their most basic level, when `UNIT_TESTS` is defined, all subtypes of `/datum/unit_test` will have their `Run` proc executed. From here, if `Fail` is called at any point, then the tests will report as failed.
 
-## How do I write one?
+## How do I write one
+
 1. Find a relevant file.
 
-All unit test related code is in `code/modules/unit_tests`. If you are adding a new test for a surgery, for example, then you'd open `surgeries.dm`. If a relevant file does not exist, simply create one in this folder, then `#include` it in `_unit_tests.dm`.
+    All unit test related code is in `code/modules/unit_tests`. If you are adding a new test for a surgery, for example, then you'd open `surgeries.dm`. If a relevant file does not exist, simply create one in this folder, then `#include` it in `_unit_tests.dm`.
 
 2. Create the unit test.
 
-To make a new unit test, you simply need to define a `/datum/unit_test`.
+    To make a new unit test, you simply need to define a `/datum/unit_test`.
 
-For example, let's suppose that we are creating a test to make sure a proc `square` correctly raises inputs to the power of two. We'd start with first:
+    For example, let's suppose that we are creating a test to make sure a proc `square` correctly raises inputs to the power of two. We'd start with first:
 
-```
-/datum/unit_test/square/Run()
-```
+    ```dm
+    /datum/unit_test/square/Run()
+    ```
 
-This defines our new unit test, `/datum/unit_test/square`. Inside this function, we're then going to run through whatever we want to check. Tests provide a few assertion functions to make this easy. For now, we're going to use `TEST_ASSERT_EQUAL`.
+     This defines our new unit test, `/datum/unit_test/square`. Inside this function, we're then going to run through whatever we want to check. Tests provide a few  assertion functions to make this easy. For now, we're going to use `TEST_ASSERT_EQUAL`.
 
-```
-/datum/unit_test/square/Run()
-    TEST_ASSERT_EQUAL(square(3), 9, "square(3) did not return 9")
-    TEST_ASSERT_EQUAL(square(4), 16, "square(4) did not return 16")
-```
+    ```dm
+    /datum/unit_test/square/Run()
+        TEST_ASSERT_EQUAL(square(3), 9, "square(3) did not return 9")
+        TEST_ASSERT_EQUAL(square(4), 16, "square(4) did not return 16")
+    ```
 
-As you can hopefully tell, we're simply checking if the output of `square` matches the output we are expecting. If the test fails, it'll report the error message given as well as whatever the actual output was.
+    As you can hopefully tell, we're simply checking if the output of `square` matches the output we are expecting. If the test fails, it'll report the error message given as well as whatever the actual output was.
 
 3. Run the unit test
 
-Open `code/_compile_options.dm` and uncomment the following line.
+    Open `code/_compile_options.dm` and uncomment the following line.
 
-```
-//#define UNIT_TESTS			//If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
-```
+    ```dm
+    ///If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
+    //#define UNIT_TESTS
+    ```
 
-Then, run vorestation.dmb in Dream Daemon. Don't bother trying to connect, you won't need to. You'll be able to see the outputs of all the tests. You'll get to see which tests failed and for what reason. If they all pass, you're set!
+    Then, run citadel.dmb in Dream Daemon. Don't bother trying to connect, you won't need to. You'll be able to see the outputs of all the tests. You'll get to see which tests failed and for what reason. If they all pass, you're set!
 
 ## How to think about tests
 

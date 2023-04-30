@@ -1,44 +1,50 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
 	desc = "A heads-up display that provides important info in (almost) real time."
-	flags = 0 //doesn't protect eyes because it's a monocle, duh
+	atom_flags = NONE//doesn't protect eyes because it's a monocle, duh
 	origin_tech = list(TECH_MAGNET = 3, TECH_BIO = 2)
 
 /obj/item/clothing/glasses/hud/health
 	name = "Health Scanner HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
-	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
+	body_cover_flags = 0
+
+/obj/item/clothing/glasses/hud/health/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
 	desc = "A medical HUD integrated with a set of prescription glasses"
 	prescription = 1
 	icon_state = "healthhudpresc"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/hud/security
 	name = "Security HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
-	body_parts_covered = 0
-	enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
+	body_cover_flags = 0
+
+/obj/item/clothing/glasses/hud/security/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "Prescription Security HUD"
 	desc = "A security HUD integrated with a set of prescription glasses"
 	prescription = 1
 	icon_state = "sechudpresc"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "Augmented shades"
 	desc = "Polarized bioneural eyewear, designed to augment your vision."
 	icon_state = "jensenshades"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 
@@ -53,11 +59,15 @@
 	icon_state = "glasses"
 	var/datum/nano_module/arscreen
 	var/arscreen_path
-	var/datum/tgui_module/tgarscreen
+	var/datum/tgui_module_old/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED,VIS_CH_BACKUP)
-	plane_slots = list(slot_glasses)
+	enables_planes = list(VIS_AUGMENTED)
+	plane_slots = list(SLOT_ID_GLASSES)
+
+/obj/item/clothing/glasses/omnihud/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -71,7 +81,7 @@
 	QDEL_NULL(tgarscreen)
 	. = ..()
 
-/obj/item/clothing/glasses/omnihud/dropped()
+/obj/item/clothing/glasses/omnihud/dropped(mob/user, flags, atom/newLoc)
 	if(arscreen)
 		SSnanoui.close_uis(src)
 	if(tgarscreen)
@@ -103,6 +113,9 @@
 		user.visible_message("[user] deletes the prescription data on the [src.name].")
 
 /obj/item/clothing/glasses/omnihud/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!ishuman(user))
 		return
 
@@ -127,8 +140,12 @@
 	mode = "med"
 	action_button_name = "AR Console (Crew Monitor)"
 	prescription = 1
-	tgarscreen_path = /datum/tgui_module/crew_monitor/glasses
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_AUGMENTED)
+	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
+	enables_planes = list(VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)
@@ -143,8 +160,12 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
 	action_button_name = "AR Console (Security Alerts)"
-	arscreen_path = /datum/nano_module/alarm_monitor/security
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_WANTED,VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
+
+
+/obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
@@ -184,13 +205,16 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "projector"
 	off_state = "projector-off"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	toggleable = 1
 	prescription = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
 
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		toggleprojector()
 	..()
@@ -224,10 +248,10 @@
 	icon_state = "pf_goggles"
 	prescription = 1
 	action_button_name = "Toggle Zoom"
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
 
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
-	zoom(wornslot = slot_glasses)
+	zoom(wornslot = SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/all
 	name = "\improper AR-B glasses"
@@ -236,15 +260,19 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_CH_ID,VIS_CH_HEALTH_VR,VIS_CH_STATUS_R,VIS_CH_BACKUP,VIS_CH_WANTED, VIS_AUGMENTED)
+	enables_planes = list(VIS_AUGMENTED)
+
+/obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
     desc = "An eyepatch with built in scanners, that analyzes those in view and provides accurate data about their ID status and security records."
     icon_state = "hudpatch"
-    item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
-    body_parts_covered = 0
-    enables_planes = list(VIS_CH_ID,VIS_CH_WANTED,VIS_CH_IMPTRACK,VIS_CH_IMPLOYAL,VIS_CH_IMPCHEM, VIS_AUGMENTED)
+    item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
+    body_cover_flags = 0
+    enables_planes = list(VIS_AUGMENTED)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -259,18 +287,21 @@
 		icon_state = "[icon_state]_1"
 	else
 		icon_state = initial(icon_state)
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/hud/engi/eyepatch
 	name = "meson eyeHUD"
 	desc = "A eyepatch equipped with a scanning lens and mounted retinal projector. For when you take style over smarts."
 	icon_state = "mesonpatch"
 	off_state = "eyepatch"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	toggleable = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
 
 /obj/item/clothing/glasses/omnihud/eng/meson/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		toggleprojector()
 	..()
@@ -300,6 +331,6 @@
 	name = "Health Scanner Patch"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one's an eyepatch."
 	icon_state = "medpatch"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
-	body_parts_covered = 0
-	enables_planes = list(VIS_CH_STATUS,VIS_CH_HEALTH,VIS_CH_BACKUP, VIS_AUGMENTED)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
+	body_cover_flags = 0
+	enables_planes = list(VIS_AUGMENTED)

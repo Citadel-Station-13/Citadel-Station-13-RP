@@ -39,7 +39,10 @@
 	to_chat(usr, "<span class='notice'>Issuing reason: [reason].</span>")
 	return
 
-/obj/item/card/id/guest/attack_self(mob/living/user as mob)
+/obj/item/card/id/guest/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		if(icon_state == "guest_invalid")
 			to_chat(user, "<span class='warning'>This guest pass is already deactivated!</span>")
@@ -52,7 +55,6 @@
 			icon_state = "guest_invalid"
 			expiration_time = world.time
 			expired = 1
-	return ..()
 
 /obj/item/card/id/guest/Initialize(mapload)
 	. = ..()
@@ -100,8 +102,9 @@
 
 /obj/machinery/computer/guestpass/attackby(obj/I, mob/user)
 	if(istype(I, /obj/item/card/id))
-		if(!giver && user.unEquip(I))
-			I.forceMove(src)
+		if(!giver)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			giver = I
 			SSnanoui.update_uis(src)
 		else if(giver)
@@ -112,7 +115,7 @@
 /obj/machinery/computer/guestpass/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/guestpass/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/guestpass/attack_hand(mob/user, list/params)
 	if(..())
 		return
 
@@ -189,14 +192,14 @@
 						accesses.Add(A)
 					else
 						to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
-						log_debug("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option.")
+						log_debug(SPAN_DEBUG("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option."))
 	if (href_list["action"])
 		switch(href_list["action"])
 			if ("id")
 				if (giver)
 					if(ishuman(usr))
 						giver.loc = usr.loc
-						if(!usr.get_active_hand())
+						if(!usr.get_active_held_item())
 							usr.put_in_hands(giver)
 						giver = null
 					else
@@ -204,9 +207,10 @@
 						giver = null
 					accesses.Cut()
 				else
-					var/obj/item/I = usr.get_active_hand()
-					if (istype(I, /obj/item/card/id) && usr.unEquip(I))
-						I.loc = src
+					var/obj/item/I = usr.get_active_held_item()
+					if (istype(I, /obj/item/card/id))
+						if(!usr.attempt_insert_item_for_installation(I, src))
+							return
 						giver = I
 
 			if ("print")

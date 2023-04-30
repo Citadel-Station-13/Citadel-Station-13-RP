@@ -1,30 +1,7 @@
-/mob/living/carbon/human/process_resist()
-	//drop && roll
-	if(on_fire && !buckled)
-		adjust_fire_stacks(-1.2)
-		Weaken(3)
-		spin(32,2)
-		visible_message(
-			"<span class='danger'>[src] rolls on the floor, trying to put themselves out!</span>",
-			"<span class='notice'>You stop, drop, and roll!</span>"
-			)
-		sleep(30)
-		if(fire_stacks <= 0)
-			visible_message(
-				"<span class='danger'>[src] has successfully extinguished themselves!</span>",
-				"<span class='notice'>You extinguish yourself.</span>"
-				)
-			ExtinguishMob()
-		return TRUE
-
-	if(handcuffed)
-		spawn() escape_handcuffs()
-	else if(legcuffed)
-		spawn() escape_legcuffs()
-	else if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
-		spawn() escape_straight_jacket()
-	else
-		..()
+/mob/living/carbon/human/resist_restraints()
+	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
+		return escape_straight_jacket()
+	return ..()
 
 #define RESIST_ATTACK_DEFAULT	0
 #define RESIST_ATTACK_CLAWS		1
@@ -74,21 +51,21 @@
 			"<span class='warning'>You gnaw on \the [SJ]. (This will take around [round(breakouttime / 600)] minutes and you need to stand still.)</span>"
 			)
 
-	if(do_after(src, breakouttime, incapacitation_flags = INCAPACITATION_DISABLED & INCAPACITATION_KNOCKDOWN))
+	if(do_after(src, breakouttime, mobility_flags = MOBILITY_CAN_RESIST))
 		if(!wear_suit)
 			return
 		visible_message(
 			"<span class='danger'>\The [src] manages to remove \the [wear_suit]!</span>",
 			"<span class='notice'>You successfully remove \the [wear_suit].</span>"
 			)
-		drop_from_inventory(wear_suit)
+		drop_item_to_ground(wear_suit, INV_OP_FORCE)
 
 #undef RESIST_ATTACK_DEFAULT
 #undef RESIST_ATTACK_CLAWS
 #undef RESIST_ATTACK_BITE
 
 /mob/living/carbon/human/proc/can_break_straight_jacket()
-	if((HULK in mutations) || species.can_shred(src,1))
+	if((MUTATION_HULK in mutations) || species.can_shred(src,1))
 		return TRUE
 	return FALSE
 
@@ -98,7 +75,7 @@
 		"<span class='warning'>You attempt to rip your [wear_suit.name] apart. (This will take around 5 seconds and you need to stand still)</span>"
 		)
 
-	if(do_after(src, 20 SECONDS, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))	// Same scaling as breaking cuffs, 5 seconds to 120 seconds, 20 seconds to 480 seconds.
+	if(do_after(src, 20 SECONDS, mobility_flags = MOBILITY_CAN_RESIST))	// Same scaling as breaking cuffs, 5 seconds to 120 seconds, 20 seconds to 480 seconds.
 		if(!wear_suit || buckled)
 			return
 
@@ -111,8 +88,7 @@
 
 		qdel(wear_suit)
 		wear_suit = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
+		buckled?.buckled_reconsider_restraints(src)
 
 /mob/living/carbon/human/can_break_cuffs()
 	if(species.can_shred(src,1))

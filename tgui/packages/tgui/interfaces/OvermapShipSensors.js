@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../components";
+import { Box, Button, LabeledList, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";
 
 export const OvermapShipSensors = (props, context) => {
@@ -83,7 +82,9 @@ export const OvermapShipSensorsContent = (props, context) => {
               ) || heat < critical_heat * 0.75 && (
                 <Box>Sensor temperature high!</Box>
               ) || (
-                <Box>TEMPERATURE CRITICAL: Disable or reduce power immediately!</Box>
+                <Box>
+                  TEMPERATURE CRITICAL: Disable or reduce power immediately!
+                </Box>
               )}
             </ProgressBar>
           </LabeledList.Item>

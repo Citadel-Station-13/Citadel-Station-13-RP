@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs, NoticeBox, Table, Input } from "../components";
+import { useBackend, useSharedState } from "../backend";
+import { Button, LabeledList, Section, Tabs, NoticeBox, Table, Input } from "../components";
 import { Window } from "../layouts";
 
 export const LawManager = (props, context) => {
@@ -14,7 +13,8 @@ export const LawManager = (props, context) => {
   return (
     <Window width={800} height={600} resizable>
       <Window.Content scrollable>
-        {isSlaved && <NoticeBox info>Law-synced to {isSlaved}</NoticeBox> || null}
+        {isSlaved
+        && <NoticeBox info>Law-synced to {isSlaved}</NoticeBox> || null}
         <LawManagerContent />
       </Window.Content>
     </Window>
@@ -69,7 +69,8 @@ const LawManagerLaws = (props, context) => {
     channels,
   } = data;
 
-  let allLaws = zeroth_laws.map(law => { law.zero = true; return law; }).concat(inherent_laws);
+  let allLaws = zeroth_laws.map(
+    law => { law.zero = true; return law; }).concat(inherent_laws);
 
   return (
     <Section>
@@ -277,46 +278,41 @@ const LawManagerLawSets = (props, context) => {
   } = data;
 
   return (
-    <Fragment>
-      <NoticeBox>
-        Remember: Stating laws other than those currently loaded may be grounds for decommissioning! - NanoTrasen
-      </NoticeBox>
-      {law_sets.length && law_sets.map(laws => (
-        <Section key={laws.name} title={laws.name} buttons={
-          <Fragment>
-            <Button
-              disabled={!isMalf}
-              icon="sync"
-              onClick={() => act("transfer_laws", { transfer_laws: laws.ref })}>
-              Load Laws
-            </Button>
-            <Button
-              icon="volume-up"
-              onClick={() => act("state_law_set", { state_law_set: laws.ref })}>
-              State Laws
-            </Button>
-          </Fragment>
-        }>
-          {laws.laws.has_ion_laws && (
-            <LawsTable
-              noButtons
-              laws={laws.laws.ion_laws}
-              title={laws.laws.ion_law_nr + " Laws:"} />
-          ) || null}
-          {(laws.laws.has_zeroth_laws || laws.laws.has_inherent_laws) && (
-            <LawsTable
-              noButtons
-              laws={laws.laws.zeroth_laws.concat(laws.laws.inherent_laws)}
-              title={laws.header} />
-          ) || null}
-          {laws.laws.has_supplied_laws && (
-            <LawsTable
-              noButtons
-              laws={laws.laws.supplied_laws}
-              title="Supplied Laws" />
-          ) || null}
-        </Section>
-      )) || null}
-    </Fragment>
+    law_sets.length && law_sets.map(laws => (
+      <Section key={laws.name} title={laws.name} buttons={
+        <Fragment>
+          <Button
+            disabled={!isMalf}
+            icon="sync"
+            onClick={() => act("transfer_laws", { transfer_laws: laws.ref })}>
+            Load Laws
+          </Button>
+          <Button
+            icon="volume-up"
+            onClick={() => act("state_law_set", { state_law_set: laws.ref })}>
+            State Laws
+          </Button>
+        </Fragment>
+      }>
+        {laws.laws.has_ion_laws && (
+          <LawsTable
+            noButtons
+            laws={laws.laws.ion_laws}
+            title={laws.laws.ion_law_nr + " Laws:"} />
+        ) || null}
+        {(laws.laws.has_zeroth_laws || laws.laws.has_inherent_laws) && (
+          <LawsTable
+            noButtons
+            laws={laws.laws.zeroth_laws.concat(laws.laws.inherent_laws)}
+            title={laws.header} />
+        ) || null}
+        {laws.laws.has_supplied_laws && (
+          <LawsTable
+            noButtons
+            laws={laws.laws.supplied_laws}
+            title="Supplied Laws" />
+        ) || null}
+      </Section>
+    )) || null
   );
 };

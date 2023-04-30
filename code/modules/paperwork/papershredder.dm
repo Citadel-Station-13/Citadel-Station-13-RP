@@ -41,7 +41,7 @@
 		empty_bin(user, W)
 		return
 	else if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 		return
@@ -62,9 +62,9 @@
 			if(paperamount == max_paper)
 				to_chat(user, "<span class='warning'>\The [src] is full; please empty it before you continue.</span>")
 				return
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			paperamount += paper_result
-			user.drop_from_inventory(W)
-			qdel(W)
 			playsound(src.loc, 'sound/items/pshred.ogg', 75, 1)
 			flick(shred_anim, src)
 			if(paperamount > max_paper)
@@ -72,7 +72,7 @@
 				for(var/i=(paperamount-max_paper);i>0;i--)
 					var/obj/item/shreddedp/SP = get_shredded_paper()
 					SP.loc = get_turf(src)
-					SP.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),1,5)
+					SP.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),1,5)
 				paperamount = max_paper
 			update_icon()
 			return
@@ -83,7 +83,7 @@
 	set category = "Object"
 	set src in range(1)
 
-	if(usr.stat || usr.restrained() || usr.weakened || usr.paralysis || usr.lying || usr.stunned)
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 
 	if(!paperamount)
@@ -106,7 +106,7 @@
 		var/obj/item/shreddedp/SP = get_shredded_paper()
 		if(!SP) break
 		if(empty_into)
-			empty_into.handle_item_insertion(SP)
+			empty_into.handle_item_insertion(SP, user)
 			if(empty_into.contents.len >= empty_into.storage_slots)
 				break
 	if(empty_into)
@@ -131,15 +131,19 @@
 		update_icon()
 
 /obj/machinery/papershredder/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(operable())
 		icon_state = "shredder-on"
 	else
 		icon_state = "shredder-off"
 	// Fullness overlay
-	overlays += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
+	overlays_to_add += "shredder-[max(0,min(5,FLOOR(paperamount/max_paper*5, 1)))]"
 	if (panel_open)
-		overlays += "panel_open"
+		overlays_to_add += "panel_open"
+
+	add_overlay(overlays_to_add)
 
 //
 // Shredded Paper Item
@@ -149,7 +153,7 @@
 	name = "shredded paper"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "shredp"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_range = 3
 	throw_speed = 1
@@ -168,7 +172,7 @@
 		..()
 
 /obj/item/shreddedp/proc/burnpaper(var/obj/item/flame/lighter/P, var/mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(user.restrained())
 		return
 	if(!P.lit)
@@ -184,8 +188,5 @@
 	FireBurn()
 
 /obj/item/shreddedp/proc/FireBurn()
-	var/mob/living/M = loc
-	if(istype(M))
-		M.drop_from_inventory(src)
-	new /obj/effect/decal/cleanable/ash(get_turf(src))
+	new /obj/effect/debris/cleanable/ash(get_turf(src))
 	qdel(src)

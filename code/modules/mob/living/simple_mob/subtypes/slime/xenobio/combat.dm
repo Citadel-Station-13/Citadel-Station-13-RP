@@ -17,12 +17,12 @@
 				if(prob(stun_power * 10)) // Try an electric shock.
 					power_charge = max(0, power_charge - 3)
 					L.visible_message(
-						span("danger", "\The [src] has shocked \the [L]!"),
-						span("danger", "\The [src] has shocked you!")
+						SPAN_DANGER("\The [src] has shocked \the [L]!"),
+						SPAN_DANGER("\The [src] has shocked you!")
 						)
 					playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
-					L.Weaken(4)
-					L.Stun(4)
+					L.afflict_paralyze(20 * 4)
+					L.afflict_stun(20 * 4)
 					do_attack_animation(L)
 					if(L.buckled)
 						L.buckled.unbuckle_mob() // To prevent an exploit where being buckled prevents slimes from jumping on you.
@@ -38,11 +38,11 @@
 
 				else if(prob(20)) // Try to do a regular disarm attack.
 					L.visible_message(
-						span("danger", "\The [src] has pounced at \the [L]!"),
-						span("danger", "\The [src] has pounced at you!")
+						SPAN_DANGER("\The [src] has pounced at \the [L]!"),
+						SPAN_DANGER("\The [src] has pounced at you!")
 						)
 					playsound(src, 'sound/weapons/thudswoosh.ogg', 75, 1)
-					L.Weaken(2)
+					L.afflict_paralyze(20 * 2)
 					do_attack_animation(L)
 					if(L.buckled)
 						L.buckled.unbuckle_mob() // To prevent an exploit where being buckled prevents slimes from jumping on you.
@@ -50,8 +50,8 @@
 
 				else // Failed to do anything this time.
 					L.visible_message(
-						span("warning", "\The [src] has tried to pounce at \the [L]!"),
-						span("warning", "\The [src] has tried to pounce at you!")
+						SPAN_WARNING( "\The [src] has tried to pounce at \the [L]!"),
+						SPAN_WARNING( "\The [src] has tried to pounce at you!")
 						)
 					playsound(src, 'sound/weapons/punchmiss.ogg', 75, 1)
 					do_attack_animation(L)

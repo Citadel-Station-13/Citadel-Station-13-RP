@@ -1,8 +1,10 @@
 #define SOLAR_MAX_DIST 40
-#define SOLAR_AUTO_START_NO     0 // Will never start itself.
-#define SOLAR_AUTO_START_YES    1 // Will always start itself.
-#define SOLAR_AUTO_START_CONFIG 2 // Will start itself if config allows it (default is no).
-
+/// Will never start itself.
+#define SOLAR_AUTO_START_NO     0
+/// Will always start itself.
+#define SOLAR_AUTO_START_YES    1
+/// Will start itself if config allows it (default is no).
+#define SOLAR_AUTO_START_CONFIG 2
 GLOBAL_VAR_INIT(solar_gen_rate, 1500)
 GLOBAL_LIST_EMPTY(solars_list)
 
@@ -25,8 +27,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/turn_angle = 0
 	var/obj/machinery/power/solar_control/control = null
 
-/obj/machinery/power/solar/drain_power()
-	return -1
+/obj/machinery/power/solar/can_drain_energy(datum/actor, flags)
+	return FALSE
 
 /obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
 	. = ..()
@@ -78,14 +80,14 @@ GLOBAL_LIST_EMPTY(solars_list)
 		return
 	else if (W)
 		src.add_fingerprint(user)
-		src.health -= W.force
+		src.health -= W.damage_force
 		src.healthcheck()
 	..()
 
 
 /obj/machinery/power/solar/proc/healthcheck()
 	if (src.health <= 0)
-		if(!(stat & BROKEN))
+		if(!(machine_stat & BROKEN))
 			broken()
 		else
 			new /obj/item/material/shard(src.loc)
@@ -97,12 +99,12 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar/update_icon()
 	..()
-	overlays.Cut()
-	if(stat & BROKEN)
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER)
+	cut_overlays()
+	if(machine_stat & BROKEN)
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel-b", layer = FLY_LAYER))
 	else
-		overlays += image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER)
-		src.setDir(angle2dir(adir))
+		add_overlay(image('icons/obj/power.dmi', icon_state = "solar_panel", layer = FLY_LAYER))
+		setDir(angle2dir(adir))
 	return
 
 //calculates the fraction of the SSsun.sunlight that the panel recieves
@@ -124,7 +126,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	//isn't the power recieved from the incoming light proportionnal to cos(p_angle) (Lambert's cosine law) rather than cos(p_angle)^2 ?
 
 /obj/machinery/power/solar/process(delta_time)//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		return
 	if(!SSsun.sun || !control) //if there's no SSsun.sun or the panel is not linked to a solar control computer, no need to proceed
 		return
@@ -134,19 +136,19 @@ GLOBAL_LIST_EMPTY(solars_list)
 			if(obscured) //get no light from the SSsun.sun, so don't generate power
 				return
 			var/sgen = GLOB.solar_gen_rate * sunfrac
-			add_avail(sgen)
+			add_avail(sgen * 0.001)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()
 
 /obj/machinery/power/solar/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	unset_control()
 	update_icon()
 	return
 
 
-/obj/machinery/power/solar/ex_act(severity)
+/obj/machinery/power/solar/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(15))
@@ -214,7 +216,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	var/tracker = 0
 	var/glass_type = null
 
-/obj/item/solar_assembly/attack_hand(var/mob/user)
+/obj/item/solar_assembly/attack_hand(mob/user, list/params)
 	if(!anchored || !isturf(loc)) // You can't pick it up
 		..()
 
@@ -233,13 +235,13 @@ GLOBAL_LIST_EMPTY(solars_list)
 		if(W.is_wrench())
 			anchored = 1
 			user.visible_message("<span class='notice'>[user] wrenches the solar assembly into place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 	else
 		if(W.is_wrench())
 			anchored = 0
 			user.visible_message("<span class='notice'>[user] unwrenches the solar assembly from it's place.</span>")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			return 1
 
 		if(istype(W, /obj/item/stack/material) && (W.get_material_name() == "glass" || W.get_material_name() == "rglass"))
@@ -260,9 +262,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	if(!tracker)
 		if(istype(W, /obj/item/tracker_electronics))
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			tracker = 1
-			user.drop_item()
-			qdel(W)
 			user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 			return 1
 	else
@@ -337,8 +339,8 @@ GLOBAL_LIST_EMPTY(solars_list)
 		SC.auto_start()
 	return TRUE
 
-/obj/machinery/power/solar_control/drain_power()
-	return -1
+/obj/machinery/power/solar_control/can_drain_energy(datum/actor, flags)
+	return FALSE
 
 /obj/machinery/power/solar_control/disconnect_from_network()
 	..()
@@ -350,7 +352,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 		GLOB.solars_list |= src //... add it
 	return to_return
 
-//search for unconnected panels and trackers in the computer powernet and connect them
+/// Search for unconnected panels and trackers in the computer powernet and connect them
 /obj/machinery/power/solar_control/proc/search_for_connected()
 	if(powernet)
 		for(var/obj/machinery/power/M in powernet.nodes)
@@ -366,9 +368,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 						connected_tracker = T
 						T.set_control(src)
 
-//called by the SSsun.sun controller, update the facing angle (either manually or via tracking) and rotates the panels accordingly
+/// Called by the SSsun.sun controller, update the facing angle (either manually or via tracking) and rotates the panels accordingly
 /obj/machinery/power/solar_control/proc/update()
-	if(stat & (NOPOWER | BROKEN))
+	if(machine_stat & (NOPOWER | BROKEN))
 		return
 
 	switch(track)
@@ -383,21 +385,19 @@ GLOBAL_LIST_EMPTY(solars_list)
 	updateDialog()
 
 /obj/machinery/power/solar_control/update_icon()
-	if(stat & BROKEN)
+	cut_overlays()
+	if(machine_stat & BROKEN)
 		icon_state = "broken"
-		overlays.Cut()
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "c_unpowered"
-		overlays.Cut()
 		return
 	icon_state = "solar"
-	overlays.Cut()
 	if(cdir > -1)
-		overlays += image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir))
+		add_overlay(image('icons/obj/computer.dmi', "solcon-o", FLY_LAYER, angle2dir(cdir)))
 	return
 
-/obj/machinery/power/solar_control/attack_hand(mob/user)
+/obj/machinery/power/solar_control/attack_hand(mob/user, list/params)
 	if(!..())
 		interact(user)
 
@@ -433,9 +433,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 /obj/machinery/power/solar_control/attackby(obj/item/I, user as mob)
 	if(I.is_screwdriver())
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 20))
-			if (src.stat & BROKEN)
+			if (src.machine_stat & BROKEN)
 				to_chat(user, "<font color=#4F49AF>The broken glass falls out.</font>")
 				var/obj/structure/frame/A = new /obj/structure/frame/computer( src.loc )
 				new /obj/item/material/shard( src.loc )
@@ -466,7 +466,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	lastgen = gen
 	gen = 0
 
-	if(stat & (NOPOWER | BROKEN))
+	if(machine_stat & (NOPOWER | BROKEN))
 		return
 
 	if(connected_tracker) //NOTE : handled here so that we don't add trackers to the processing list
@@ -539,11 +539,11 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 
 /obj/machinery/power/solar_control/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 
-/obj/machinery/power/solar_control/ex_act(severity)
+/obj/machinery/power/solar_control/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null

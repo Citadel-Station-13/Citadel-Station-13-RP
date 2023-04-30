@@ -22,36 +22,42 @@ var/global/list/ashtray_cache = list()
 
 /obj/item/material/ashtray/update_icon()
 	color = null
-	overlays.Cut()
+
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	var/cache_key = "base-[material.name]"
 	if(!ashtray_cache[cache_key])
 		var/image/I = image('icons/obj/objects.dmi',"ashtray")
 		I.color = material.icon_colour
 		ashtray_cache[cache_key] = I
-	overlays |= ashtray_cache[cache_key]
+	overlays_to_add += ashtray_cache[cache_key]
 
 	if (contents.len == max_butts)
 		if(!ashtray_cache["full"])
 			ashtray_cache["full"] = image('icons/obj/objects.dmi',"ashtray_full")
-		overlays |= ashtray_cache["full"]
+		overlays_to_add += ashtray_cache["full"]
 		desc = "It's stuffed full."
 	else if (contents.len > max_butts/2)
 		if(!ashtray_cache["half"])
 			ashtray_cache["half"] = image('icons/obj/objects.dmi',"ashtray_half")
-		overlays |= ashtray_cache["half"]
+		overlays_to_add += ashtray_cache["half"]
 		desc = "It's half-filled."
 	else
 		desc = "An ashtray made of [material.display_name]."
 
+	add_overlay(overlays_to_add)
+
 /obj/item/material/ashtray/attackby(obj/item/W as obj, mob/user as mob)
 	if (health <= 0)
-		return
+		return ..()
 	if (istype(W,/obj/item/cigbutt) || istype(W,/obj/item/clothing/mask/smokable/cigarette) || istype(W, /obj/item/flame/match))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if (contents.len >= max_butts)
 			to_chat(user, "\The [src] is full.")
 			return
-		user.remove_from_mob(W)
-		W.loc = src
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 
 		if (istype(W,/obj/item/clothing/mask/smokable/cigarette))
 			var/obj/item/clothing/mask/smokable/cigarette/cig = W
@@ -67,17 +73,16 @@ var/global/list/ashtray_cache = list()
 			else if (cig.lit == 0)
 				to_chat(user, "You place [cig] in [src] without even smoking it. Why would you do that?")
 
-		src.visible_message("[user] places [W] in [src].")
-		user.update_inv_l_hand()
-		user.update_inv_r_hand()
+		visible_message("[user] places [W] in [src].")
 		add_fingerprint(user)
 		update_icon()
 	else
-		health = max(0,health - W.force)
+		health = max(0,health - W.damage_force)
 		to_chat(user, "You hit [src] with [W].")
 		if (health < 1)
 			shatter()
-	return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/material/ashtray/throw_impact(atom/hit_atom)
 	if (health > 0)

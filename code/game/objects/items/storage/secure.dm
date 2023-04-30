@@ -41,9 +41,9 @@
 			playsound(src.loc, "sparks", 50, 1)
 			return
 		if (W.is_screwdriver())
-			if (do_after(user, 20 * W.toolspeed))
+			if (do_after(user, 20 * W.tool_speed))
 				src.open =! src.open
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
 			return
 		if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))
@@ -70,14 +70,17 @@
 	..()
 
 
-/obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
+/obj/item/storage/secure/OnMouseDropLegacy(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
 		return
 	..()
 
 
-/obj/item/storage/secure/attack_self(mob/user as mob)
+/obj/item/storage/secure/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.set_machine(src)
 	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
@@ -95,44 +98,43 @@
 
 /obj/item/storage/secure/Topic(href, href_list)
 	if ((usr.stat || usr.restrained()) || (get_dist(src, usr) > 1))
-		..()
-		return
+		return ..()
+
 	if (href_list["type"])
 		if (href_list["type"] == "E")
-			if ((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
-				src.l_code = src.code
-				src.l_set = 1
-			else if ((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
-				src.locked = 0
-				src.overlays = null
-				overlays += image('icons/obj/storage.dmi', icon_opened)
-				src.code = null
+			if ((l_set == 0) && (length(code) == 5) && (!l_setshort) && (code != "ERROR"))
+				l_code = code
+				l_set = 1
+			else if ((code == l_code) && (emagged == 0) && (l_set == 1))
+				locked = 0
+				set_overlays(icon_opened)
+				code = null
 			else
-				src.code = "ERROR"
+				code = "ERROR"
 		else
-			if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
-				src.locked = 1
-				src.overlays = null
-				src.code = null
-				src.close(usr)
+			if ((href_list["type"] == "R") && (emagged == 0) && (!l_setshort))
+				locked = 1
+				cut_overlays()
+				code = null
+				close(usr)
 			else
-				src.code += text("[]", href_list["type"])
+				code += text("[]", href_list["type"])
 				if (length(src.code) > 5)
-					src.code = "ERROR"
-		src.add_fingerprint(usr)
-		for(var/mob/M in viewers(1, src.loc))
+					code = "ERROR"
+
+		for(var/mob/M in viewers(1, loc))
 			if ((M.client && M.machine == src))
-				src.attack_self(M)
+				attack_self(M)
 			return
 	return
 
-/obj/item/storage/secure/emag_act(var/remaining_charges, var/mob/user, var/feedback)
+/obj/item/storage/secure/emag_act(remaining_charges, mob/user, feedback)
 	if(!emagged)
 		emagged = 1
-		src.overlays += image('icons/obj/storage.dmi', icon_sparking)
+		add_overlay(icon_sparking)
+		compile_overlays()
 		sleep(6)
-		src.overlays = null
-		overlays += image('icons/obj/storage.dmi', icon_locking)
+		set_overlays(icon_locking)
 		locked = 0
 		to_chat(user, (feedback ? feedback : "You short out the lock of \the [src]."))
 		return 1
@@ -144,39 +146,27 @@
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
-	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	damage_force = 8.0
 	throw_speed = 1
 	throw_range = 4
 	max_w_class = ITEMSIZE_NORMAL
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-	attack_hand(mob/user as mob)
-		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-		else if ((src.loc == user) && (!src.locked))
-			src.open(usr)
-		else
-			..()
-			for(var/mob/M in range(1))
-				if (M.s_active == src)
-					src.close(M)
-		src.add_fingerprint(user)
-		return
-
-/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
-	if(ismob(src.loc))
-		if ((src.loc == user) && (src.locked == 1))
-			return
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
-		if(!M.unEquip(src))
-			return
-		src.add_fingerprint(usr)
-		M.put_in_active_hand(src)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user, list/params)
+	if ((src.loc == user) && (src.locked == 1))
+		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+	else if ((src.loc == user) && (!src.locked))
+		src.open(usr)
+	else
+		..()
+		for(var/mob/M in range(1))
+			if (M.s_active == src)
+				src.close(M)
+	src.add_fingerprint(user)
+	return
 
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable
@@ -198,9 +188,9 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"
-	item_state_slots = list(slot_r_hand_str = "securev", slot_l_hand_str = "securev")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
-	force = 0
+	damage_force = 0
 	throw_speed = 1
 	throw_range = 4
 
@@ -215,7 +205,7 @@
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	force = 8.0
+	damage_force = 8.0
 	w_class = ITEMSIZE_NO_CONTAINER
 	max_w_class = ITEMSIZE_LARGE // This was 8 previously...
 	anchored = 1.0
@@ -226,5 +216,5 @@
 		/obj/item/pen
 	)
 
-/obj/item/storage/secure/safe/attack_hand(mob/user as mob)
+/obj/item/storage/secure/safe/attack_hand(mob/user, list/params)
 	return attack_self(user)

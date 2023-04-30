@@ -14,24 +14,17 @@
 
 	var/mob/living/silicon/ai/carded_ai
 
-/obj/item/aicard/aitater
-	name = "intelliTater"
-	desc = "A stylish upgrade (?) to the intelliCard."
-	icon_state = "aitater"
-
-/obj/item/aicard/aispook
-	name = "intelliLantern"
-	desc = "A spoOoOoky upgrade to the intelliCard."
-	icon_state = "aispook"
-
-/obj/item/aicard/attack(mob/living/silicon/decoy/M as mob, mob/user as mob)
-	if (!istype (M, /mob/living/silicon/decoy))
+/obj/item/aicard/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!istype(target, /mob/living/silicon/decoy))
 		return ..()
-	else
-		M.death()
-		to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	target.death()
+	to_chat(user, "<b>ERROR ERROR ERROR</b>")
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/aicard/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	nano_ui_interact(user)
 
@@ -79,7 +72,7 @@
 				if(carded_ai.deployed_shell && prob(carded_ai.oxyloss)) //You feel it creeping? Eventually will reach 100, resulting in the second half of the AI's remaining life being lonely.
 					carded_ai.disconnect_shell("Disconnecting from remote shell due to insufficent power.")
 				carded_ai.adjustOxyLoss(2)
-				carded_ai.updatehealth()
+				carded_ai.update_health()
 				sleep(10)
 			flush = 0
 	if (href_list["radio"])
@@ -96,10 +89,10 @@
 	return 1
 
 /obj/item/aicard/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(carded_ai)
 		if (!carded_ai.control_disabled)
-			overlays += image('icons/obj/pda.dmi', "aicard-on")
+			add_overlay("aicard-on")
 		if(carded_ai.stat)
 			icon_state = "aicard-404"
 		else
@@ -108,10 +101,6 @@
 		icon_state = "aicard"
 
 /obj/item/aicard/proc/grab_ai(var/mob/living/silicon/ai/ai, var/mob/living/user)
-	if(!ai.client && !ai.deployed_shell)
-		to_chat(user, "<span class='danger'>ERROR:</span> AI [ai.name] is offline. Unable to transfer.")
-		return 0
-
 	if(carded_ai)
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
 		return 0
@@ -122,7 +111,7 @@
 			return 0
 
 	user.visible_message("\The [user] starts transferring \the [ai] into \the [src]...", "You start transferring \the [ai] into \the [src]...")
-	show_message(span("critical", "\The [user] is transferring you into \the [src]!"))
+	show_message(SPAN_CRITICAL("\The [user] is transferring you into \the [src]!"))
 
 	if(do_after(user, 100))
 		if(istype(ai.loc, /turf/))
@@ -132,7 +121,7 @@
 		add_attack_logs(user,ai,"Extracted into AI Card")
 		src.name = "[initial(name)] - [ai.name]"
 
-		ai.loc = src
+		ai.forceMove(src)
 		ai.destroy_eyeobj(src)
 		ai.cancel_camera()
 		ai.control_disabled = 1
@@ -145,13 +134,14 @@
 		if(user.client)
 			to_chat(ai, "<span class='notice'><b>Transfer successful:</b></span> [ai.name] extracted from current device and placed within mobile core.")
 
-		ai.canmove = 1
+		ai.mobility_flags = initial(ai.mobility_flags)
 		update_icon()
-	return 1
+		return TRUE
+	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))
-		carded_ai.canmove = 0
+		carded_ai.mobility_flags = NONE
 		carded_ai.carded = 0
 	name = initial(name)
 	carded_ai = null
@@ -170,8 +160,43 @@
 	..()
 
 /obj/item/aicard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
 	var/obj/item/rig/rig = src.get_rig()
 	if(istype(rig))
 		rig.forced_move(direction, user)
+
+//Subtypes
+/obj/item/aicard/aitater
+	name = "intelliTater"
+	desc = "A stylish upgrade (?) to the intelliCard."
+	icon_state = "aitater"
+
+/obj/item/aicard/aitater/update_icon()
+	cut_overlays()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			add_overlay("aitater-on")
+		if(carded_ai.stat)
+			icon_state = "aitater-404"
+		else
+			icon_state = "aitater-full"
+	else
+		icon_state = "aitater"
+
+/obj/item/aicard/aispook
+	name = "intelliLantern"
+	desc = "A spoOoOoky upgrade to the intelliCard."
+	icon_state = "aispook"
+
+/obj/item/aicard/aispook/update_icon()
+	cut_overlays()
+	if(carded_ai)
+		if (!carded_ai.control_disabled)
+			add_overlay("aispook-on")
+		if(carded_ai.stat)
+			icon_state = "aispook-404"
+		else
+			icon_state = "aispook-full"
+	else
+		icon_state = "aispook"

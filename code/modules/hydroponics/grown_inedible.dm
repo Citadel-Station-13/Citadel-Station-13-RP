@@ -17,7 +17,7 @@
 	//Handle some post-spawn var stuff.
 	if(planttype)
 		plantname = planttype
-		var/datum/seed/S = plant_controller.seeds[plantname]
+		var/datum/seed/S = SSplants.seeds[plantname]
 		if(!S || !S.chems)
 			return
 
@@ -35,9 +35,9 @@
 	desc = "A reminder of meals gone by."
 	icon = 'icons/obj/trash.dmi'
 	icon_state = "corncob"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 
@@ -54,8 +54,8 @@
 	desc = "A peel from a banana."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "banana_peel"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20

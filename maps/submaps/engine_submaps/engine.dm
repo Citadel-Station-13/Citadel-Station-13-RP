@@ -18,60 +18,60 @@
 /datum/map_template/engine/rust
 	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
-	mappath = "_maps/templates/engines/triumph/triumph_engine_rust.dmm"
+	mappath = "maps/templates/engines/triumph/triumph_engine_rust.dmm"
 	display_name = "Budget Star"
 
 /*
 /datum/map_template/engine/singulo
 	name = "Singularity Engine"
 	desc = "Lord Singuloth"
-	mappath = '_maps/templates/engines/triumph/engine_singulo.dmm'
+	mappath = 'maps/templates/engines/triumph/engine_singulo.dmm'
 */
 
 /datum/map_template/engine/supermatter
 	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
-	mappath = "_maps/templates/engines/triumph/triumph_engine_sme.dmm"
+	mappath = "maps/templates/engines/triumph/triumph_engine_sme.dmm"
 	display_name = "Angry Rock"
 
 /*
 /datum/map_template/engine/tesla
 	name = "Edison's Bane"
 	desc = "The Telsa Engine"
-	mappath = '_maps/templates/engines/triumph/engine_tesla.dmm'
+	mappath = 'maps/templates/engines/triumph/engine_tesla.dmm'
 */
 
 /datum/map_template/engine/burnchamber
 	name = "EngineSubmap_Burn"
 	desc = "Burn Chamber Engine"
-	mappath = "_maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
+	mappath = "maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
 	display_name = "Toxins Lab"
 
 /datum/map_template/engine/fission
 	name = "EngineSubmap_Fission"
 	desc = "The Fission Reactor"
-	mappath = "_maps/templates/engines/triumph/triumph_engine_fission.dmm"
+	mappath = "maps/templates/engines/triumph/triumph_engine_fission.dmm"
 	display_name = "Nuclear Bomb"
 
 // Landmark for where to load in the engine on permament map
-/obj/effect/landmark/engine_loader
+/obj/landmark/engine_loader
 	name = "Engine Loader"
 	var/clean_turfs // A list of lists, where each list is (x, )
 
-/obj/effect/landmark/engine_loader/New()
+/obj/landmark/engine_loader/Initialize(mapload)
+	. = ..()
 	if(SSmapping.engine_loader)
 		warning("Duplicate engine_loader landmarks: [log_info_line(src)] and [log_info_line(SSmapping.engine_loader)]")
-		delete_me = TRUE
+		return INITIALIZE_HINT_QDEL
 	SSmapping.engine_loader = src
-	return ..()
 
-/obj/effect/landmark/engine_loader/proc/get_turfs_to_clean()
+/obj/landmark/engine_loader/proc/get_turfs_to_clean()
 	. = list()
 	if(clean_turfs)
 		for(var/list/coords in clean_turfs)
 			. += block(locate(coords[1], coords[2], src.z), locate(coords[3], coords[4], src.z))
 
-/obj/effect/landmark/engine_loader/proc/annihilate_bounds()
+/obj/landmark/engine_loader/proc/annihilate_bounds()
 	var/deleted_atoms = 0
 	admin_notice("<span class='danger'>Annihilating objects in engine loading locatation.</span>", R_DEBUG)
 	var/list/turfs_to_clean = get_turfs_to_clean()

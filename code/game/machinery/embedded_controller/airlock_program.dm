@@ -9,9 +9,10 @@
 #define TARGET_INOPEN		-1
 #define TARGET_OUTOPEN		-2
 
-#define MIN_TARGET_PRESSURE (ONE_ATMOSPHERE * 0.05) // Never try to pump to pure vacuum, its not happening.
-#define SKIPCYCLE_MARGIN	1 // Skip cycling airlock (just open the doors) if pressures are within this range.
-
+/// Never try to pump to pure vacuum, its not happening.
+#define MIN_TARGET_PRESSURE (ONE_ATMOSPHERE * 0.05)
+/// Skip cycling airlock (just open the doors) if pressures are within this range.
+#define SKIPCYCLE_MARGIN	1
 /datum/computer/file/embedded_program/airlock
 	var/tag_exterior_door
 	var/tag_interior_door
@@ -210,7 +211,7 @@
 					//purge apparently means clearing the airlock chamber to vacuum (then refilling, handled later)
 					target_pressure = 0
 					state = STATE_DEPRESSURIZE
-					playsound(master, 'sound/AI/airlockout.ogg', 100, 0) //VOREStation Add - TTS
+					playsound(master, 'sound/AI/airlockout.ogg', 100, 0) //TODO: Remove all of Virgo's TTS. Doesn't match anything.
 					if(!cycle_to_external_air || target_state == TARGET_OUTOPEN) // if going outside, pump internal air into air tank
 						signalPump(tag_airpump, 1, 0, target_pressure)	//send a signal to start depressurizing
 					else
@@ -219,7 +220,7 @@
 
 				else if(chamber_pressure <= target_pressure)
 					state = STATE_PRESSURIZE
-					playsound(master, 'sound/AI/airlockin.ogg', 100, 0) //VOREStation Add - TTS
+					playsound(master, 'sound/AI/airlockin.ogg', 100, 0)
 					if(!cycle_to_external_air || target_state == TARGET_INOPEN) // if going inside, pump air into airlock
 						signalPump(tag_airpump, 1, 1, target_pressure)	//send a signal to start pressurizing
 					else
@@ -229,7 +230,7 @@
 				else if(chamber_pressure > target_pressure)
 					if(!cycle_to_external_air)
 						state = STATE_DEPRESSURIZE
-						playsound(master, 'sound/AI/airlockout.ogg', 100, 0) //VOREStation Add - TTS
+						playsound(master, 'sound/AI/airlockout.ogg', 100, 0)
 						signalPump(tag_airpump, 1, 0, target_pressure)	//send a signal to start depressurizing
 					else
 						memory["purge"] = 1 // should always purge first if using external air, chamber pressure should never be higher than target pressure here
@@ -237,7 +238,7 @@
 				memory["target_pressure"] = max(target_pressure, MIN_TARGET_PRESSURE)
 
 		if(STATE_PRESSURIZE)
-			playsound(master, 'sound/machines/2beep.ogg', 100, 0) //VOREStation Add - TTS
+			playsound(master, 'sound/machines/2beep.ogg', 100, 0)
 			if(memory["chamber_sensor_pressure"] >= memory["target_pressure"] * 0.95)
 				//not done until the pump has reported that it's off
 				if(memory["pump_status"] != "off")
@@ -249,11 +250,11 @@
 					cycleDoors(target_state)
 					state = STATE_IDLE
 					target_state = TARGET_NONE
-					playsound(master, 'sound/AI/airlockdone.ogg', 100, 0) //VOREStation Add - TTS
+					playsound(master, 'sound/AI/airlockdone.ogg', 100, 0)
 
 
 		if(STATE_DEPRESSURIZE)
-			playsound(master, 'sound/machines/2beep.ogg', 100, 0) //VOREStation Add - TTS
+			playsound(master, 'sound/machines/2beep.ogg', 100, 0)
 			if(memory["chamber_sensor_pressure"] <= max(memory["target_pressure"] * 1.05, MIN_TARGET_PRESSURE))
 				if(memory["pump_status"] != "off")
 					signalPump(tag_airpump, 0)
@@ -269,7 +270,7 @@
 					cycleDoors(target_state)
 					state = STATE_IDLE
 					target_state = TARGET_NONE
-					playsound(master, 'sound/AI/airlockdone.ogg', 100, 0) //VOREStation Add - TTS
+					playsound(master, 'sound/AI/airlockdone.ogg', 100, 0)
 
 
 	memory["processing"] = (state != target_state)
@@ -348,7 +349,7 @@
 			signalDoor(tag_exterior_door, command)
 			signalDoor(tag_interior_door, command)
 
-datum/computer/file/embedded_program/airlock/proc/signal_mech_sensor(var/command, var/sensor)
+/datum/computer/file/embedded_program/airlock/proc/signal_mech_sensor(command, sensor)
 	var/datum/signal/signal = new
 	signal.data["tag"] = sensor
 	signal.data["command"] = command

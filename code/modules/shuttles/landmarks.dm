@@ -1,13 +1,13 @@
-// Making this separate from /obj/effect/landmark until that mess can be dealt with
+// Making this separate from /obj/landmark until that mess can be dealt with
 /obj/effect/shuttle_landmark
 	name = "Nav Point"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 	anchored = 1
 	unacidable = 1
-	simulated = 0
+	atom_flags = ATOM_ABSTRACT
 	invisibility = 101
-	flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
+	var/shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET	// We generally want to use current area/turf as base.
 
 	// ID of the landmark
 	var/landmark_tag
@@ -29,7 +29,7 @@
 	if(docking_controller)
 		. = INITIALIZE_HINT_LATELOAD
 
-	if(flags & SLANDMARK_FLAG_AUTOSET)
+	if(shuttle_landmark_flags & SLANDMARK_FLAG_AUTOSET)
 		if(ispath(base_area))
 			var/area/A = locate(base_area)
 			if(!istype(A))
@@ -56,6 +56,7 @@
 	if(GLOB.using_map.use_overmap)
 		var/obj/effect/overmap/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
+
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()
@@ -122,7 +123,7 @@
 /obj/effect/shuttle_landmark/automatic
 	name = "Navpoint"
 	landmark_tag = "navpoint"
-	flags = SLANDMARK_FLAG_AUTOSET
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 	var/original_name = null // Save our mapped-in name so we can rebuild our name when moving sectors.
 
 /obj/effect/shuttle_landmark/automatic/Initialize(mapload)
@@ -146,8 +147,7 @@
 	..()
 	for(var/turf/T in range(radius, src))
 		if(T.density)
-			T.ChangeTurf(get_base_turf_by_area(T))
-
+			T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
 // Subtype that also queues a shuttle datum (for shuttles starting on maps loaded at runtime)
 /obj/effect/shuttle_landmark/shuttle_initializer
@@ -167,7 +167,10 @@
 	light_color = "#3728ff"
 	var/active
 
-/obj/item/spaceflare/attack_self(var/mob/user)
+/obj/item/spaceflare/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		visible_message("<span class='notice'>[user] pulls the cord, activating the [src].</span>")
 		activate()
@@ -177,7 +180,7 @@
 		return
 	var/turf/T = get_turf(src)
 	var/mob/M = loc
-	if(istype(M) && !M.unEquip(src, T))
+	if(istype(M) && !M.drop_item_to_ground(src))
 		return
 
 	active = 1

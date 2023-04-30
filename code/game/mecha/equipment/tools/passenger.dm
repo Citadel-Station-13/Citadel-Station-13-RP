@@ -26,9 +26,15 @@
 	if (chassis)
 		chassis.visible_message("<span class='notice'>[user] starts to climb into [chassis].</span>")
 
-	if(do_after(user, 40, needhand=0))
+	if(do_after(user, 40, chassis, DO_AFTER_IGNORE_ACTIVE_ITEM))
 		if(!src.occupant)
-			user.forceMove(src)
+			//? WARNING WARNING SHITCODE ALERT
+			//? BYOND WILL REFUSE TO PROPERLY UPDATE STUFF IF WE MOVE IN IMMEDIATELY
+			//? THUS, SLEEP A SINGLE TICK.
+			spawn(world.tick_lag)
+				user.forceMove(src)
+				user.update_perspective()
+			add_verb(user, /mob/proc/verb_eject_mech_passenger)
 			occupant = user
 			log_message("[user] boarded.")
 			occupant_message("[user] boarded.")
@@ -37,37 +43,39 @@
 	else
 		to_chat(user, "You stop entering the exosuit.")
 
-/obj/item/mecha_parts/mecha_equipment/tool/passenger/verb/eject()
-	set name = "Eject"
+// todo: action
+/mob/proc/verb_eject_mech_passenger()
+	set name = "Eject Passenger"
 	set category = "Exosuit Interface"
-	set src = usr.loc
-	set popup_menu = 0
+	set src = usr
 
-	if(usr != occupant)
+	var/obj/item/mecha_parts/mecha_equipment/tool/passenger/pod = loc
+	if(!istype(pod))
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
 		return
-	to_chat(occupant, "You climb out from \the [src].")
-	go_out()
-	occupant_message("[occupant] disembarked.")
-	log_message("[occupant] disembarked.")
-	add_fingerprint(usr)
+	if(src != pod.occupant)
+		forceMove(get_turf(pod))
+		remove_verb(src, /mob/proc/verb_eject_mech_passenger)
+		return
+	to_chat(src, "You climb out from \the [src].")
+	pod.go_out()
+	pod.occupant_message("[pod.occupant] disembarked.")
+	pod.log_message("[pod.occupant] disembarked.")
+	pod.add_fingerprint(src)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/proc/go_out()
 	if(!occupant)
 		return
+	remove_verb(occupant, /mob/proc/verb_eject_mech_passenger)
 	occupant.forceMove(get_turf(src))
-	occupant.reset_view()
-	/*
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	*/
+	occupant.update_perspective()
 	occupant = null
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/attach()
 	..()
 	if (chassis)
-		chassis.verbs |= /obj/mecha/proc/move_inside_passenger
+		add_obj_verb(chassis, /obj/mecha/proc/move_inside_passenger)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/detach()
 	if(occupant)
@@ -77,7 +85,7 @@
 	var/obj/mecha/M = chassis
 	..()
 	if (M && !(locate(/obj/item/mecha_parts/mecha_equipment/tool/passenger) in M))
-		M.verbs -= /obj/mecha/proc/move_inside_passenger
+		remove_verb(M, /obj/mecha/proc/move_inside_passenger)
 
 /obj/item/mecha_parts/mecha_equipment/tool/passenger/get_equip_info()
 	return "[..()] <br />[occupant? "\[Occupant: [occupant]\]|" : ""]Exterior Hatch: <a href='?src=\ref[src];toggle_lock=1'>Toggle Lock</a>"
@@ -119,7 +127,7 @@
 	if(isliving(usr))
 		var/mob/living/L = usr
 		if(L.has_buckled_mobs())
-			to_chat(L, span("warning", "You have other entities attached to yourself. Remove them first."))
+			to_chat(L, SPAN_WARNING( "You have other entities attached to yourself. Remove them first."))
 			return
 
 	//search for a valid passenger compartment

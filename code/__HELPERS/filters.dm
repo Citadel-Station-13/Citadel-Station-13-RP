@@ -138,8 +138,10 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 
 #undef ICON_NOT_SET
 
-//Helpers to generate lists for filter helpers
-//This is the only practical way of writing these that actually produces sane lists
+/**
+ * Helpers to generate lists for filter helpers.
+ * This is the only practical way of writing these that actually produces sane lists.
+ */
 /proc/alpha_mask_filter(x, y, icon/icon, render_source, flags)
 	. = list("type" = "alpha")
 	if(!isnull(x))
@@ -296,7 +298,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 
 /proc/apply_wibbly_filters(atom/in_atom, length)
 	for(var/i in 1 to 7)
-		//This is a very baffling and strange way of doing this but I am just preserving old functionality
+		// This is a very baffling and strange way of doing this but I am just preserving old functionality.
 		var/X
 		var/Y
 		var/rsq
@@ -304,7 +306,8 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			X = 60*rand() - 30
 			Y = 60*rand() - 30
 			rsq = X*X + Y*Y
-		while(rsq<100 || rsq>900) // Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
+		// Yeah let's just loop infinitely due to bad luck what's the worst that could happen?
+		while(rsq<100 || rsq>900)
 		var/random_roll = rand()
 		in_atom.add_filter("wibbly-[i]", 5, wave_filter(x = X, y = Y, size = rand() * 2.5 + 0.5, offset = random_roll))
 		var/filter = in_atom.get_filter("wibbly-[i]")

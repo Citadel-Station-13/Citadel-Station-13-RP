@@ -1,5 +1,5 @@
 /mob/living/carbon/human/proc/get_unarmed_attack(var/mob/living/carbon/human/target, var/hit_zone)
-	// VOREStation Edit - Begin
+
 	if(nif && nif.flag_check(NIF_C_HARDCLAWS,NIF_FLAGS_COMBAT)){return unarmed_hardclaws}
 	if(src.default_attack && src.default_attack.is_usable(src, target, hit_zone))
 		if(pulling_punches)
@@ -7,7 +7,7 @@
 			if(soft_type)
 				return soft_type
 		return src.default_attack
-	// VOREStation Edit - End
+
 	if(src.gloves)
 		var/obj/item/clothing/gloves/G = src.gloves
 		if(istype(G) && G.special_attack && G.special_attack.is_usable(src, target, hit_zone))
@@ -25,9 +25,9 @@
 			return u_attack
 	return null
 
-/mob/living/carbon/human/attack_hand(mob/living/M as mob)
-	var/datum/gender/TT = gender_datums[M.get_visible_gender()]
-	var/mob/living/carbon/human/H = M
+/mob/living/carbon/human/attack_hand(mob/user, list/params)
+	var/datum/gender/TT = GLOB.gender_datums[user.get_visible_gender()]
+	var/mob/living/carbon/human/H = user
 	if(istype(H))
 		var/obj/item/organ/external/temp = H.organs_by_name["r_hand"]
 		if(H.hand)
@@ -37,9 +37,11 @@
 			return
 	if(H.lying)
 		return
-	M.break_cloak()
+	user.break_cloak()
 
-	..()
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 	// Should this all be in Touch()?
 	if(istype(H))
@@ -55,93 +57,60 @@
 			H.do_attack_animation(src)
 			return FALSE
 
-	if(istype(M,/mob/living/carbon))
-		var/mob/living/carbon/C = M
+	if(istype(user,/mob/living/carbon))
+		var/mob/living/carbon/C = user
 		C.spread_disease_to(src, "Contact")
 
-	switch(M.a_intent)
-		if(INTENT_HELP)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 
-			// VOREStation Edit - Begin
+	switch(L.a_intent)
+		if(INTENT_HELP)
 			if (istype(H) && attempt_to_scoop(H))
 				return 0;
-			// VOREStation Edit - End
-			if(istype(H) && health < config_legacy.health_threshold_crit)
-				if(!H.check_has_mouth())
-					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if(!check_has_mouth())
-					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove your mask!</span>")
-					return 0
-				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
-					return 0
-
-				if (!cpr_time)
-					return 0
-
-				cpr_time = 0
-				spawn(30)
-					cpr_time = 1
-
-				H.visible_message("<span class='danger'>\The [H] is trying to perform CPR on \the [src]!</span>")
-
-				if(!do_after(H, 30))
-					return
-
-				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
-				to_chat(H, "<span class='warning'>Repeat at least every 7 seconds.</span>")
-
-				if(istype(H) && health > config_legacy.health_threshold_dead)
-					adjustOxyLoss(-(min(getOxyLoss(), 5)))
-					updatehealth()
-					to_chat(src, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
-
-			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
-				help_shake_act(M)
+			if(iscarbon(L) && attempt_cpr_interaction(L))
+				return TRUE
+			else if(!(L == src && apply_pressure(L, L.zone_sel.selecting)))
+				help_shake_act(L)
 			return TRUE
 
 		if(INTENT_GRAB)
-			if(M == src || anchored)
+			if(L == src || anchored)
 				return 0
 			for(var/obj/item/grab/G in src.grabbed_by)
-				if(G.assailant == M)
-					to_chat(M, "<span class='notice'>You already grabbed [src].</span>")
+				if(G.assailant == L)
+					to_chat(L, "<span class='notice'>You already grabbed [src].</span>")
 					return
 			if(w_uniform)
-				w_uniform.add_fingerprint(M)
+				w_uniform.add_fingerprint(L)
 
-			var/obj/item/grab/G = new /obj/item/grab(M, src)
+			var/obj/item/grab/G = new /obj/item/grab(L, src)
 			if(buckled)
-				to_chat(M, "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>")
+				to_chat(L, "<span class='notice'>You cannot grab [src], [TT.he] is buckled in!</span>")
 				return
 			if(!G)	//the grab will delete itself in New if affecting is anchored
 				return
-			M.put_in_active_hand(G)
+			L.put_in_active_hand(G)
 			G.synch()
-			LAssailant = M
+			LAssailant = L
 
 			H.do_attack_animation(src)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-			//VORESTATION EDIT
-			visible_message("<span class='warning'>[M] has grabbed [src] [(M.zone_sel.selecting == BP_L_HAND || M.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
-			//VORESTATION END END
+			visible_message("<span class='warning'>[L] has grabbed [src] [(L.zone_sel.selecting == BP_L_HAND || L.zone_sel.selecting == BP_R_HAND)? "by [(gender==FEMALE)? "her" : ((gender==MALE)? "his": "their")] hands": "passively"]!</span>")
 
 			return TRUE
 
 		if(INTENT_HARM)
 
-			if(M.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
+			if(L.zone_sel.selecting == "mouth" && wear_mask && istype(wear_mask, /obj/item/grenade))
 				var/obj/item/grenade/G = wear_mask
 				if(!G.active)
-					visible_message("<span class='danger'>\The [M] pulls the pin from \the [src]'s [G.name]!</span>")
-					G.activate(M)
+					visible_message("<span class='danger'>\The [L] pulls the pin from \the [src]'s [G.name]!</span>")
+					G.activate(L)
 					update_inv_wear_mask()
 				else
-					to_chat(M, "<span class='warning'>\The [G] is already primed! Run!</span>")
+					to_chat(L, "<span class='warning'>\The [G] is already primed! Run!</span>")
 				return
 
 			if(!istype(H))
@@ -155,7 +124,7 @@
 			var/obj/item/organ/external/affecting = get_organ(hit_zone)
 
 			if(!affecting || affecting.is_stump())
-				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
+				to_chat(L, "<span class='danger'>They are missing that limb!</span>")
 				return TRUE
 
 			switch(src.a_intent)
@@ -165,14 +134,14 @@
 					accurate = 1
 				if(INTENT_HARM, INTENT_GRAB)
 					// We're in a fighting stance, there's a chance we block
-					if(src.canmove && src!=H && prob(20))
+					if(CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) && src!=H && prob(20))
 						block = 1
 
-			if (M.grabbed_by.len)
+			if (L.grabbed_by.len)
 				// Someone got a good grip on them, they won't be able to do much damage
 				rand_damage = max(1, rand_damage - 2)
 
-			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H)
+			if(src.grabbed_by.len || src.buckled || !CHECK_MOBILITY(src, MOBILITY_CAN_MOVE) || src==H)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 5
 
@@ -256,7 +225,7 @@
 						hit_dam_type = AGONY
 			real_damage *= damage_multiplier
 			rand_damage *= damage_multiplier
-			if(HULK in H.mutations)
+			if(MUTATION_HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
 				rand_damage *= 2
 			real_damage = max(1, real_damage)
@@ -272,13 +241,13 @@
 		if(INTENT_DISARM)
 			add_attack_logs(H,src,"Disarmed")
 
-			M.do_attack_animation(src)
+			L.do_attack_animation(src)
 
 			if(w_uniform)
-				w_uniform.add_fingerprint(M)
-			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
+				w_uniform.add_fingerprint(L)
+			var/obj/item/organ/external/affecting = get_organ(ran_zone(L.zone_sel.selecting))
 
-			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
+			var/list/holding = list(get_active_held_item() = 40, get_inactive_held_item = 20)
 
 			//See if they have any guns that might go off
 			for(var/obj/item/gun/W in holding)
@@ -292,40 +261,39 @@
 						return W.afterattack(target,src)
 
 			if(last_push_time + 30 > world.time)
-				visible_message("<span class='warning'>[M] has weakly pushed [src]!</span>")
+				visible_message("<span class='warning'>[L] has weakly pushed [src]!</span>")
 				return
 
 			var/randn = rand(1, 100)
 			last_push_time = world.time
-			if(!(species.flags & NO_SLIP) && randn <= 25)
+			if(!(species.species_flags & NO_SLIP) && randn <= 25)
 				var/armor_check = run_armor_check(affecting, "melee")
 				apply_effect(3, WEAKEN, armor_check)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
-					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
-						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
+					if(L.zone_sel.selecting == BP_L_LEG || L.zone_sel.selecting == BP_R_LEG || L.zone_sel.selecting == BP_L_FOOT || L.zone_sel.selecting == BP_R_FOOT)
+						visible_message("<span class='danger'>[L] has leg swept [src]!</span>")
 					else
-						visible_message("<span class='danger'>[M] has pushed [src]!</span>")
+						visible_message("<span class='danger'>[L] has pushed [src]!</span>")
 				else
-					visible_message("<span class='warning'>[M] attempted to push [src]!</span>")
+					visible_message("<span class='warning'>[L] attempted to push [src]!</span>")
 				return
 
 			if(randn <= 60)
 				//See about breaking grips or pulls
-				if(break_all_grabs(M))
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				if(break_all_grabs(L))
+					playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					return
 
 				//Actually disarm them
-				for(var/obj/item/I in holding)
-					if(I)
-						drop_from_inventory(I)
-						visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
-						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-						return
+				drop_all_held_items()
 
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-			visible_message("<font color='red'> <B>[M] attempted to disarm [src]!</B></font>")
+				visible_message("<span class='danger'>[L] has disarmed [src]!</span>")
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				return
+
+			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+			visible_message("<font color='red'> <B>[L] attempted to disarm [src]!</B></font>")
 	return
 
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
@@ -345,7 +313,7 @@
 	var/armor_block = run_armor_check(affecting, armor_type, armor_pen)
 	var/armor_soak = get_armor_soak(affecting, armor_type, armor_pen)
 	apply_damage(damage, BRUTE, affecting, armor_block, armor_soak, sharp = a_sharp, edge = a_edge)
-	updatehealth()
+	update_health()
 	return TRUE
 
 //Used to attack a joint through grabbing
@@ -414,7 +382,7 @@
 		to_chat(user, "<span class='warning'>Someone is already applying pressure to [user == src? "your [organ.name]" : "[src]'s [organ.name]"].</span>")
 		return FALSE
 
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	if(user == src)
 		user.visible_message("\The [user] starts applying pressure to [TU.his] [organ.name]!", "You start applying pressure to your [organ.name]!")
@@ -484,17 +452,30 @@
 /datum/unarmed_attack
 	var/attack_name = "fist"
 
-/datum/unarmed_attack
-	bite/attack_name = "bite"
-	bite/sharp/attack_name = "sharp bite"
-	bite/strong/attack_name = "strong bite"
-	punch/attack_name = "punch"
-	kick/attack_name = "kick"
-	stomp/attack_name = "stomp"
-	stomp/weak/attack_name = "weak stomp"
-	light_strike/attack_name = "light hit"
-	diona attack_name = "tendrils"
-	claws/attack_name = "claws"
-	claws/strong/attack_name = "strong claws"
-	slime_glomp/attack_name = "glomp"
-	bite/sharp/numbing/attack_name = "numbing bite"
+
+/datum/unarmed_attack/bite
+	attack_name = "bite"
+/datum/unarmed_attack/bite/sharp
+	attack_name = "sharp bite"
+/datum/unarmed_attack/bite/strong
+	attack_name = "strong bite"
+/datum/unarmed_attack/punch
+	attack_name = "punch"
+/datum/unarmed_attack/kick
+	attack_name = "kick"
+/datum/unarmed_attack/stomp
+	attack_name = "stomp"
+/datum/unarmed_attack/stomp/weak
+	attack_name = "weak stomp"
+/datum/unarmed_attack/light_strike
+	attack_name = "light hit"
+/datum/unarmed_attack/diona
+	attack_name = "tendrils"
+/datum/unarmed_attack/claws
+	attack_name = "claws"
+/datum/unarmed_attack/claws/strong
+	attack_name = "strong claws"
+/datum/unarmed_attack/slime_glomp
+	attack_name = "glomp"
+/datum/unarmed_attack/bite/sharp/numbing
+	attack_name = "numbing bite"

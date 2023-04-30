@@ -1,12 +1,6 @@
 /datum/mind
 	var/list/learned_spells
 
-/mob/Life()
-	..()
-	if(spell_masters && spell_masters.len)
-		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
-			spell_master.update_spells(0, src)
-
 /mob/Login()
 	..()
 	if(spell_masters)
@@ -14,19 +8,43 @@
 			spell_master.toggle_open(1)
 			client.screen -= spell_master
 
-/mob/Stat()
+/mob/statpanel_data(client/C)
 	. = ..()
-	if(. && spell_list && spell_list.len)
-		for(var/spell/S in spell_list)
-			if((!S.connected_button) || !statpanel(S.panel))
-				continue //Not showing the noclothes spell
-			switch(S.charge_type)
-				if(Sp_RECHARGE)
-					statpanel(S.panel,"[S.charge_counter/10.0]/[S.charge_max/10]",S.connected_button)
-				if(Sp_CHARGES)
-					statpanel(S.panel,"[S.charge_counter]/[S.charge_max]",S.connected_button)
-				if(Sp_HOLDVAR)
-					statpanel(S.panel,"[S.holder_var_type] [S.holder_var_amount]",S.connected_button)
+	//! WARNING
+	//! NO, SERIOUSLY, READ THIS
+	// DO NOT COPY PASTE THE FOLLOWING CODE.
+	// THIS IS ALREADY SNOWFLAKED CODE; YOU *WILL* BREAK EVERYTHING IF YOU DO BY OVERWRITING DATA!!
+
+	// i'm going to trust people aren't stupid and won't put the name of a regular panel in spells.
+	if(!length(spell_list))
+		if(C.statpanel_spell_last)
+			// dispose
+			for(var/tab in C.statpanel_spell_last)
+				C.statpanel_tab(tab, FALSE)
+			C.statpanel_spell_last = null
+		return
+	LAZYINITLIST(C.statpanel_spell_last)
+	var/list/collected = list()
+	for(var/spell/S in spell_list)
+		if(!S.panel || !S.connected_button)
+			continue
+		collected[S.panel] = TRUE
+		if(!C.statpanel_tab(S.panel))
+			continue
+		switch(S.charge_type)
+			if(Sp_RECHARGE)
+				STATPANEL_DATA_CLICK("[S.charge_counter/10.0]/[S.charge_max/10]", "[S.connected_button]", "\ref[S.connected_button]")
+			if(Sp_CHARGES)
+				STATPANEL_DATA_CLICK("[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
+			if(Sp_HOLDVAR)
+				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]")
+	// process tabs
+	var/list/removing = C.statpanel_spell_last - collected
+	var/list/adding = collected - C.statpanel_spell_last
+	for(var/tab in adding)
+		C.statpanel_tab(adding, TRUE)
+	for(var/tab in removing)
+		C.statpanel_tab(removing, TRUE)
 
 /hook/clone/proc/restore_spells(var/mob/H)
 	if(H.mind && H.mind.learned_spells)

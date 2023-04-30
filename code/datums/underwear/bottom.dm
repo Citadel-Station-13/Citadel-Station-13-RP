@@ -40,6 +40,11 @@
 	icon_state = "lacy_thong_alt"
 	has_color = TRUE
 
+/datum/category_item/underwear/bottom/lacy_thong_color
+	name = "Lacy thong, colorable"
+	icon_state = "lacy_thong_color"
+	has_color = TRUE
+
 /datum/category_item/underwear/bottom/panties_alt
 	name = "Panties, alt"
 	icon_state = "panties_alt"
@@ -106,4 +111,45 @@
 /datum/category_item/underwear/bottom/leotard_turt
 	name = "Colorable Leotard - Turtleneck"
 	icon_state = "leotard_turt_color"
+	has_color = TRUE
+
+/datum/category_item/underwear/bottom/panties_beekini
+	name = "Bee Panties"
+	icon_state = "panties_beekini"
+
+/datum/category_item/underwear/bottom/panties_assblastusa
+	name = "USA Panties"
+	icon_state = "panties_assblastusa"
+
+/datum/category_item/underwear/bottom/panties_uk
+	name = "UK Panties"
+	icon_state = "panties_uk"
+
+/datum/category_item/underwear/bottom/panties_kinky
+	name = "Lingere Panties"
+	icon_state = "panties_kinky"
+
+/datum/category_item/underwear/bottom/panties_thin
+	name = "Thin Panties"
+	icon_state = "panties_thin"
+
+/datum/category_item/underwear/bottom/bee_shorts
+	name = "Bee Boxers"
+	icon_state = "bee_shorts"
+
+/datum/category_item/underwear/bottom/boxers_commie
+	name = "Communist Boxers"
+	icon_state = "boxers_commie"
+
+/datum/category_item/underwear/bottom/boxers_uk
+	name = "UK Boxers"
+	icon_state = "boxers_uk"
+
+/datum/category_item/underwear/bottom/boxers_assblastusa
+	name = "USA Boxers"
+	icon_state = "boxers_assblastusa"
+
+/datum/category_item/underwear/bottom/mankini
+	name = "Mankini"
+	icon_state = "mankini"
 	has_color = TRUE

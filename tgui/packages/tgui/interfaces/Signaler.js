@@ -4,6 +4,7 @@ import { Button, Grid, NumberInput, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Signaler = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
     <Window
       width={280}
@@ -23,6 +24,8 @@ export const SignalerContent = (props, context) => {
     minFrequency,
     maxFrequency,
   } = data;
+  const color = 'rgba(13, 13, 213, 0.7)';
+  const backColor = 'rgba(0, 0, 69, 0.5)';
   return (
     <Section>
       <Grid>

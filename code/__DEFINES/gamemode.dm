@@ -1,11 +1,11 @@
 // Security levels.
-#define SEC_LEVEL_GREEN 0
-#define SEC_LEVEL_BLUE  1
-#define SEC_LEVEL_YELLOW  2
-#define SEC_LEVEL_VIOLET  3
-#define SEC_LEVEL_ORANGE  4
-#define SEC_LEVEL_RED   5
-#define SEC_LEVEL_DELTA 6
+#define SEC_LEVEL_GREEN  0
+#define SEC_LEVEL_BLUE   1
+#define SEC_LEVEL_YELLOW 2
+#define SEC_LEVEL_VIOLET 3
+#define SEC_LEVEL_ORANGE 4
+#define SEC_LEVEL_RED    5
+#define SEC_LEVEL_DELTA  6
 
 #define BE_TRAITOR    (1<<0)
 #define BE_OPERATIVE  (1<<1)
@@ -45,18 +45,28 @@ var/list/be_special_flags = list(
 
 
 // Antagonist datum flags.
-#define ANTAG_OVERRIDE_JOB      (1<<0) // Assigned job is set to MODE when spawning.
-#define ANTAG_OVERRIDE_MOB      (1<<1) // Mob is recreated from datum mob_type var when spawning.
-#define ANTAG_CLEAR_EQUIPMENT   (1<<2) // All preexisting equipment is purged.
-#define ANTAG_CHOOSE_NAME       (1<<3) // Antagonists are prompted to enter a name.
-#define ANTAG_IMPLANT_IMMUNE    (1<<4) // Cannot be loyalty implanted.
-#define ANTAG_SUSPICIOUS        (1<<5) // Shows up on roundstart report.
-#define ANTAG_HAS_LEADER        (1<<6) // Generates a leader antagonist.
-#define ANTAG_HAS_NUKE          (1<<7) // Will spawn a nuke at supplied location.
-#define ANTAG_RANDSPAWN         (1<<8) // Potentially randomly spawns due to events.
-#define ANTAG_VOTABLE           (1<<9) // Can be voted as an additional antagonist before roundstart.
-#define ANTAG_SET_APPEARANCE    (1<<10) // Causes antagonists to use an appearance modifier on spawn.
-
+/// Assigned job is set to MODE when spawning.
+#define ANTAG_OVERRIDE_JOB      (1<<0)
+/// Mob is recreated from datum mob_type var when spawning.
+#define ANTAG_OVERRIDE_MOB      (1<<1)
+/// All preexisting equipment is purged.
+#define ANTAG_CLEAR_EQUIPMENT   (1<<2)
+/// Antagonists are prompted to enter a name.
+#define ANTAG_CHOOSE_NAME       (1<<3)
+/// Cannot be loyalty implanted.
+#define ANTAG_IMPLANT_IMMUNE    (1<<4)
+/// Shows up on roundstart report.
+#define ANTAG_SUSPICIOUS        (1<<5)
+/// Generates a leader antagonist.
+#define ANTAG_HAS_LEADER        (1<<6)
+/// Will spawn a nuke at supplied location.
+#define ANTAG_HAS_NUKE          (1<<7)
+/// Potentially randomly spawns due to events.
+#define ANTAG_RANDSPAWN         (1<<8)
+/// Can be voted as an additional antagonist before roundstart.
+#define ANTAG_VOTABLE           (1<<9)
+/// Causes antagonists to use an appearance modifier on spawn.
+#define ANTAG_SET_APPEARANCE    (1<<10)
 // Mode/antag template macros.
 #define MODE_BORER "borer"
 #define MODE_XENOMORPH "xeno"
@@ -91,23 +101,34 @@ var/list/be_special_flags = list(
 /////////////////
 
 /*		WIZARD SPELL FLAGS		*/
-#define GHOSTCAST		(1<<0)		//can a ghost cast it?
-#define NEEDSCLOTHES	(1<<1)		//does it need the wizard garb to cast? Nonwizard spells should not have this
-#define NEEDSHUMAN		(1<<2)		//does it require the caster to be human?
-#define Z2NOCAST		(1<<3)		//if this is added, the spell can't be cast at CentCom
-#define STATALLOWED		(1<<4)	//if set, the user doesn't have to be conscious to cast. Required for ghost spells
-#define IGNOREPREV		(1<<5)	//if set, each new target does not overlap with the previous one
+///can a ghost cast it?
+#define GHOSTCAST		(1<<0)
+///does it need the wizard garb to cast? Nonwizard spells should not have this
+#define NEEDSCLOTHES	(1<<1)
+///does it require the caster to be human?
+#define NEEDSHUMAN		(1<<2)
+///if this is added, the spell can't be cast at CentCom
+#define Z2NOCAST		(1<<3)
+///if set, the user doesn't have to be conscious to cast. Required for ghost spells
+#define STATALLOWED		(1<<4)
+///if set, each new target does not overlap with the previous one
+#define IGNOREPREV		(1<<5)
 //The following flags only affect different types of spell, and therefore overlap
 //Targeted spells
-#define INCLUDEUSER		(1<<6)	//does the spell include the caster in its target selection?
-#define SELECTABLE		(1<<7)	//can you select each target for the spell?
+///does the spell include the caster in its target selection?
+#define INCLUDEUSER		(1<<6)
+///can you select each target for the spell?
+#define SELECTABLE		(1<<7)
 //AOE spells
-#define IGNOREDENSE		(1<<6)	//are dense turfs ignored in selection?
-#define IGNORESPACE		(1<<7)	//are space turfs ignored in selection?
+///are dense turfs ignored in selection?
+#define IGNOREDENSE		(1<<6)
+///are space turfs ignored in selection?
+#define IGNORESPACE		(1<<7)
 //End split flags
-#define CONSTRUCT_CHECK	(1<<8)	//used by construct spells - checks for nullrods
-#define NO_BUTTON		(1<<9)	//spell won't show up in the HUD with this
-
+///used by construct spells - checks for nullrods
+#define CONSTRUCT_CHECK	(1<<8)
+///spell won't show up in the HUD with this
+#define NO_BUTTON		(1<<9)
 //invocation
 #define SpI_SHOUT	"shout"
 #define SpI_WHISPER	"whisper"

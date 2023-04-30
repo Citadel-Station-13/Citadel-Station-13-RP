@@ -25,14 +25,14 @@
 /obj/effect/temp_visual/singularity_pull()
 	return
 
-/obj/effect/temp_visual/ex_act()
+/obj/effect/temp_visual/legacy_ex_act()
 	return
 
 /obj/effect/temp_visual/dir_setting
 	randomdir = FALSE
 
-/obj/effect/temp_visual/dir_setting/Initialize(loc, setDir)
+/obj/effect/temp_visual/dir_setting/New(loc, setDir)
 	if(setDir)
 		dir = setDir
-	. = ..()
+	return ..()
 

@@ -1,0 +1,75 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/mineral/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"h" = (
+/turf/template_noop,
+/area/template_noop)
+"z" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+
+(1,1,1) = {"
+h
+h
+a
+a
+a
+a
+h
+"}
+(2,1,1) = {"
+h
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+h
+a
+a
+z
+z
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+z
+z
+z
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+z
+z
+a
+a
+h
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+a
+a
+h
+"}
+(7,1,1) = {"
+h
+h
+a
+a
+a
+h
+h
+"}

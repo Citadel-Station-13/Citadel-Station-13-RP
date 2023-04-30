@@ -7,7 +7,7 @@
 	var/list/valid_actions = list()
 	var/on = 1
 
-/obj/machinery/embedded_controller/Initialize()
+/obj/machinery/embedded_controller/Initialize(mapload)
 	if(ispath(program))
 		program = new program(src)
 	return ..()
@@ -48,7 +48,7 @@
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
 	ui_interact(user)
 
-/obj/machinery/embedded_controller/attack_hand(mob/user as mob)
+/obj/machinery/embedded_controller/attack_hand(mob/user, list/params)
 	if(!user.IsAdvancedToolUser())
 		return 0
 
@@ -77,7 +77,7 @@
 	var/radio_filter = null
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/embedded_controller/radio/Initialize()
+/obj/machinery/embedded_controller/radio/Initialize(mapload)
 	set_frequency(frequency) // Set it before parent instantiates program
 	. = ..()
 

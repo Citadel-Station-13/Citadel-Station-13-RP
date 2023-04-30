@@ -29,8 +29,7 @@
  */
 /atom/proc/ConflictElementCount(id)
 	. = 0
-	for(var/i in GetAllContents())
+	for(var/i in get_all_contents())
 		var/atom/movable/AM = i
 		if(SEND_SIGNAL(AM, COMSIG_CONFLICT_ELEMENT_CHECK, id) & ELEMENT_CONFLICT_FOUND)
 			++.
-

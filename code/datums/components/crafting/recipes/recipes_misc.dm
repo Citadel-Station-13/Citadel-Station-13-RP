@@ -229,7 +229,8 @@
 				/obj/item/reagent_containers/glass/beaker)
 	reqs = list(/obj/item/stack/material/cardboard = 1, //so we dont null items in crafting
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/gold = 1)
+				/obj/item/stack/material/gold = 1,
+				/datum/reagent/water = 15)
 	time = 40
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
@@ -280,7 +281,8 @@
 	result = /obj/item/tool/screwdriver/brass
 	reqs = list(/obj/item/tool/screwdriver = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -294,7 +296,8 @@
 	result = /obj/item/weldingtool/brass
 	reqs = list(/obj/item/weldingtool = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -308,7 +311,8 @@
 	result = /obj/item/tool/wirecutters/brass
 	reqs = list(/obj/item/tool/wirecutters = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -322,7 +326,8 @@
 	result = /obj/item/tool/crowbar/brass
 	reqs = list(/obj/item/tool/crowbar = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
@@ -336,12 +341,23 @@
 	result = /obj/item/tool/wrench/brass
 	reqs = list(/obj/item/tool/wrench = 1,
 				/obj/item/stack/cable_coil = 10,
-				/obj/item/stack/material/brass = 1
+				/obj/item/stack/material/brass = 1,
+				/datum/reagent/water = 15
 				)
 	time = 40
 	//always_available = FALSE
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/welder_spear
+	name = "Welder Spear"
+	result = /obj/item/weldingtool/welder_spear
+	reqs = list(/obj/item/handcuffs/cable = 1,
+				/obj/item/stack/rods = 1,
+				/obj/item/weldingtool/mini = 1)
+	time = 40
+	category = CAT_TOOL
+	subcategory = CAT_MISCELLANEOUS
 
 /* Not gonna code this right now. This is bound to be nuts.
 /datum/crafting_recipe/rcl
@@ -415,7 +431,7 @@
 /*
 /datum/crafting_recipe/motorized_wheelchair
 	name = "Hoverchair"
-	result = /obj/vehicle/ridden/wheelchair/motorized
+	result = /obj/vehicle_old/ridden/wheelchair/motorized
 	reqs = list(/obj/item/stack/material/plasteel = 10,
 		/obj/item/stack/rods = 8,
 		/obj/item/stock_parts/manipulator = 2,
@@ -429,7 +445,7 @@
 */
 /datum/crafting_recipe/skateboard
 	name = "Skateboard"
-	result = /obj/vehicle/skateboard
+	result = /obj/vehicle_old/skateboard
 	time = 60
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 10)
@@ -438,7 +454,7 @@
 
 /datum/crafting_recipe/scooter
 	name = "Scooter"
-	result = /obj/vehicle/skateboard/scooter
+	result = /obj/vehicle_old/skateboard/scooter
 	time = 65
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/rods = 12)
@@ -450,24 +466,10 @@
 /////////
 
 /*
-/datum/crafting_recipe/toysword
-	name = "Toy Sword"
-	reqs = list(/obj/item/light/bulb = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/material/plastic = 4)
-	result = /obj/item/toy/sword
-	subcategory = CAT_MISCELLANEOUS
-	category = CAT_MISCELLANEOUS
-
 /datum/crafting_recipe/extendohand
 	name = "Extendo-Hand"
 	reqs = list(/obj/item/bodypart/r_arm/robot = 1, /obj/item/clothing/gloves/boxing = 1)
 	result = /obj/item/extendohand
-	subcategory = CAT_MISCELLANEOUS
-	category = CAT_MISCELLANEOUS
-
-/datum/crafting_recipe/toyneb
-	name = "Non-Euplastic Blade"
-	reqs = list(/obj/item/light/tube = 1, /obj/item/stack/cable_coil = 1, /obj/item/stack/material/plastic = 4)
-	result = /obj/item/toy/sword/cx
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 
@@ -478,6 +480,29 @@
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 */
+
+/datum/crafting_recipe/toy_energy_blade
+	name = "Toy Energy Blade"
+	reqs = list(/obj/item/light/tube = 1,
+				/obj/item/stack/cable_coil = 1,
+				/obj/item/stack/material/plastic = 4)
+	result = /obj/item/toy/sword
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/gnome
+	name = "Lawn Gnome"
+	reqs = list(/obj/item/stack/material/marble = 4)
+	result = /obj/item/toy/gnome
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/gnome_giant
+	name = "Lawn Gnome (Giant)"
+	reqs = list(/obj/item/stack/material/marble = 6)
+	result = /obj/item/toy/gnome/giant
+	subcategory = CAT_MISCELLANEOUS
+	category = CAT_MISCELLANEOUS
 
 ////////////
 //Unsorted//
@@ -688,3 +713,69 @@
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_MISCELLANEOUS
 	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/scanning_array
+	name = "Geothermal Scanning Array"
+	result = /obj/item/scanning_array
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_adv
+	name = "Advanced Geothermal Scanning Array"
+	result = /obj/item/scanning_array/adv
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/adv = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_phasic
+	name = "Phasic Geothermal Scanning Array"
+	result = /obj/item/scanning_array/phasic
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/phasic = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/glue_toast
+	name = "Glue on Toast"
+	result = /obj/item/reagent_containers/food/snacks/gluetoast
+	reqs = list(/datum/reagent/drink/glue = 5,
+				/obj/item/reagent_containers/food/snacks/slice/bread = 1)
+	time = 5
+	category = CAT_FOOD
+	subcategory = CAT_BREAD
+
+/datum/crafting_recipe/candle_red
+	name = "Candle (Red)"
+	result = /obj/item/flame/candle
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/candle_white
+	name = "Candle (White)"
+	result = /obj/item/flame/candle/white
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+
+/datum/crafting_recipe/candle_black
+	name = "Candle (Black)"
+	result = /obj/item/flame/candle/black
+	time = 20
+	reqs = list(/obj/item/stack/material/cloth = 1,
+				/obj/item/stack/material/wax = 2)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS

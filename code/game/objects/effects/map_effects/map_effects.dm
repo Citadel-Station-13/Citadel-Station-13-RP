@@ -12,7 +12,7 @@
 	var/ignore_afk = TRUE				// If true, AFK people (5 minutes) won't satisfy it as well.
 	var/retry_delay = 3 SECONDS			// How long until we check for players again.
 
-/obj/effect/map_effect/ex_act()
+/obj/effect/map_effect/legacy_ex_act()
 	return
 
 /obj/effect/map_effect/singularity_pull()
@@ -61,8 +61,8 @@
 	if(!proximity_to)
 		return FALSE
 
-	for(var/thing in player_list)
-		var/mob/M = thing // Avoiding typechecks for more speed, player_list will only contain mobs anyways.
+	for(var/thing in GLOB.player_list)
+		var/mob/M = thing // Avoiding typechecks for more speed, GLOB.player_list will only contain mobs anyways.
 		if(ignore_ghosts && isobserver(M))
 			continue
 		if(ignore_afk && M.client && M.client.is_afk(5 MINUTES))

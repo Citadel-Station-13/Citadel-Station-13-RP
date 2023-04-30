@@ -16,35 +16,37 @@
 	var/skybox_offset_x = 0
 	var/skybox_offset_y = 0
 
-/obj/effect/overmap/visitable/planet/Initialize()
+/obj/effect/overmap/visitable/planet/Initialize(mapload)
 	. = ..()
 
 /obj/effect/overmap/visitable/planet/get_skybox_representation()
 	var/image/skybox_image = image('icons/skybox/planet.dmi', "")
 
-	skybox_image.overlays += get_base_image()
+	var/list/overlays_to_add = list()
+
+	overlays_to_add += (get_base_image())
 
 //	for(var/datum/exoplanet_theme/theme in themes)
-//		skybox_image.overlays += theme.get_planet_image_extra()
+//		overlays_to_add += theme.get_planet_image_extra()
 
 	if(mountain_color)
 		var/image/mountains = image('icons/skybox/planet.dmi', "mountains")
 		mountains.color = mountain_color
 		mountains.appearance_flags = PIXEL_SCALE
-		skybox_image.overlays += mountains
+		overlays_to_add += mountains
 
 	if(water_color)
 		var/image/water = image('icons/skybox/planet.dmi', "water")
 		water.color = water_color
 		water.appearance_flags = PIXEL_SCALE
 //		water.transform = water.transform.Turn(rand(0,360))
-		skybox_image.overlays += water
+		overlays_to_add += water
 
 	if(icecaps)
 		var/image/ice = image('icons/skybox/planet.dmi', icecaps)
 		ice.color = ice_color
 		ice.appearance_flags = PIXEL_SCALE
-		skybox_image.overlays += ice
+		overlays_to_add += ice
 
 	if(atmosphere && atmosphere.return_pressure() > SOUND_MINIMUM_PRESSURE)
 
@@ -55,20 +57,20 @@
 		var/image/clouds = image('icons/skybox/planet.dmi', "weak_clouds")
 
 		if(water_color)
-			clouds.overlays += image('icons/skybox/planet.dmi', "clouds")
+			clouds.add_overlay(image('icons/skybox/planet.dmi', "clouds"))
 
 		clouds.color = atmo_color
-		skybox_image.overlays += clouds
+		overlays_to_add += clouds
 
 		var/image/atmo = image('icons/skybox/planet.dmi', "atmoring")
 		skybox_image.underlays += atmo
 
 	var/image/shadow = image('icons/skybox/planet.dmi', "shadow")
 	shadow.blend_mode = BLEND_MULTIPLY
-	skybox_image.overlays += shadow
+	overlays_to_add += shadow
 
 	var/image/light = image('icons/skybox/planet.dmi', "lightrim")
-	skybox_image.overlays += light
+	overlays_to_add += light
 
 	if(has_rings)
 		var/image/rings = image('icons/skybox/planet_rings.dmi')
@@ -79,7 +81,9 @@
 			rings.color = ring_color
 		rings.pixel_x = -128
 		rings.pixel_y = -128
-		skybox_image.overlays += rings
+		overlays_to_add += rings
+
+	skybox_image.add_overlay(overlays_to_add)
 
 	skybox_image.pixel_x = rand(0,64)    + skybox_offset_x
 	skybox_image.pixel_y = rand(128,256) + skybox_offset_y

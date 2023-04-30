@@ -73,18 +73,19 @@
 			to_chat(user, "<span class='warning'>You need more fuel to complete this task.</span>")
 			return
 		user.visible_message("[user] starts to disassemble \the [src].", "You start to disassemble \the [src].")
-		playsound(src, WT.usesound, 50, 1)
-		if(do_after(user,15 * W.toolspeed))
+		playsound(src, WT.tool_sound, 50, 1)
+		if(do_after(user,15 * W.tool_speed))
 			if(!src || !user || !WT.remove_fuel(5, user)) return
 			to_chat(user, "<span class='notice'>You fully disassemble \the [src]. There were no salvageable parts.</span>")
 			qdel(src)
 		return
 
-/obj/machinery/atmospheric_field_generator/perma/Initialize()
+/obj/machinery/atmospheric_field_generator/perma/Initialize(mapload)
+	. = ..()
 	generate_field()
 
 /obj/machinery/atmospheric_field_generator/update_icon()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "arfg_broken"
 	else if(hatch_open && wires_intact)
 		icon_state = "arfg_open_wires"
@@ -98,13 +99,13 @@
 /obj/machinery/atmospheric_field_generator/power_change()
 	var/oldstat
 	..()
-	if(!(stat & NOPOWER))
-		ispowered = 1
+	if(!(machine_stat & NOPOWER))
+		ispowered = TRUE
 		update_icon()
 		if(alwaysactive || wasactive)	//reboot our field if we were on or are supposed to be always-on
 			generate_field()
-	if(stat != oldstat && isactive && (stat & NOPOWER))
-		ispowered = 0
+	if(machine_stat != oldstat && isactive && (machine_stat & NOPOWER))
+		ispowered = FALSE
 		disable_field()
 		update_icon()
 
@@ -115,14 +116,14 @@
 		spawn(rand(reboot_delay_min,reboot_delay_max))
 			generate_field()
 
-/obj/machinery/atmospheric_field_generator/ex_act(severity)
+/obj/machinery/atmospheric_field_generator/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			disable_field()
 			qdel(src)
 			return
 		if(2)
-			stat |= BROKEN
+			machine_stat |= BROKEN
 			update_icon()
 			src.visible_message("The ARF-G cracks and shatters!","You hear an uncomfortable metallic crunch.")
 			disable_field()
@@ -151,12 +152,12 @@
 		isactive = 0
 	return
 
-/obj/machinery/atmospheric_field_generator/Initialize()
+/obj/machinery/atmospheric_field_generator/Initialize(mapload)
 	. = ..()
 	//Delete ourselves if we find extra mapped in arfgs
 	for(var/obj/machinery/atmospheric_field_generator/F in loc)
 		if(F != src)
-			log_debug("Duplicate ARFGS at [x],[y],[z]")
+			log_debug(SPAN_DEBUG("Duplicate ARFGS at [x],[y],[z]"))
 			return INITIALIZE_HINT_QDEL
 
 	var/area/A = get_area(src)
@@ -182,7 +183,7 @@
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	//mouse_opacity = 0
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/basestate = "arfg_field"
 
 	//light_range = 3
@@ -191,7 +192,7 @@
 	//light_on = TRUE
 
 /obj/structure/atmospheric_retention_field/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	var/list/dirs = list()
 	for(var/obj/structure/atmospheric_retention_field/F in orange(src,1))
 		dirs += get_dir(src, F)
@@ -201,11 +202,11 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
+		add_overlay(I)
 
 	return
 
-/obj/structure/atmospheric_retention_field/Initialize()
+/obj/structure/atmospheric_retention_field/Initialize(mapload)
 	. = ..()
 	update_nearby_tiles() //Force ZAS update
 	update_connections(1)
@@ -217,13 +218,13 @@
 	update_nearby_tiles() //Force ZAS update
 	. = ..()
 
-/obj/structure/atmospheric_retention_field/attack_hand(mob/user as mob)
+/obj/structure/atmospheric_retention_field/attack_hand(mob/user, list/params)
 	if(density)
 		visible_message("You touch the retention field, and it crackles faintly. Tingly!")
 	else
 		visible_message("You try to touch the retention field, but pass through it like it isn't even there.")
 
-/obj/structure/atmospheric_retention_field/ex_act()
+/obj/structure/atmospheric_retention_field/legacy_ex_act()
 	return
 
 /obj/structure/atmospheric_retention_field/impassable

@@ -1,80 +1,182 @@
+/// Any floor or wall. What makes up the station and the rest of the map.
 /turf
+	abstract_type = /turf
+
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+
+	//? Flags
+	/// turf flags
+	var/turf_flags = NONE
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
+
 	var/holy = 0
 
-	// Atmospherics / ZAS Environmental
-	/// Initial air contents, as a specially formatted gas string.
+	//? atmospherics
+	/**
+	 * the gas we start out as
+	 * can be:
+	 * - a gas string (will be parsed)
+	 * - an atmosphere id (use defines please)
+	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	// End
+
+	//? outdoors
+	/**
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
+	 */
+	var/outdoors = FALSE
+
+	//? Radiation
+	/// cached rad insulation of contents
+	var/rad_insulation_contents = 1
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
 
 	// Properties for both
-	var/temperature = T20C		// Initial turf temperature.
-	var/blocks_air = 0			// Does this turf contain air/let air through?
+	/// Initial turf temperature.
+	var/temperature = T20C
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
 
+	/**
+	 * Baseturfs
+	 *
+	 * Baseturfs can either be a list or a single turf type.
+	 * In class definitions it should always be a single type.
+	 * A de-duplicated/cached list will be created in init that builds the
+	 * baseturf "stack", so that we can access in runtime
+	 *
+	 * If this is a list, it's bottom first top last (so [1] is bottommost and [length] is topmost)
+	 *
+	 * To facilitate fast direct reads, we are not putting VAR_PRIVATE on this.
+	 *
+	 * ? Do not, under any circumstances, attempt to modify this list directly.
+	 * ? Helper procs will do that for you. Modfiying the list directly
+	 * ? WILL cause cache corruption and mess up the round.
+	 */
+	var/list/baseturfs = /turf/baseturf_bottom
+	/// are we mid changeturf?
 	var/changing_turf = FALSE
+	// End
 
-	///Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
+	/**
+	 * Automata
+	 */
+	/// acted automata - automata associated to power, act_cross() will be called when something enters us while this is set
+	var/list/acting_automata
+
+	/// Icon-smoothing variable to map a diagonal wall corner with a fixed underlay.
 	var/list/fixed_underlay = null
 
 	// General properties.
 	var/icon_old = null
-	var/pathweight = 1			// How much does it cost to pathfind over this turf?
-	var/blessed = 0				// Has the turf been blessed?
+	/// Has the turf been blessed?
+	var/blessed = FALSE
 
 	var/list/decals
 
-	var/movement_cost = 0		// How much the turf slows down movement, if any.
+	/// How much the turf slows down movement, if any.
+	var/slowdown = 0
+	/// Pathfinding cost; null defaults to slowdown
+	var/pathweight
 
 	var/list/footstep_sounds = null
 
-	var/block_tele = FALSE			 // If true, most forms of teleporting to or from this turf tile will fail.
-	var/can_build_into_floor = FALSE // Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
-	var/list/dangerous_objects		 // List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
-	var/noshield = 0				// For if you explicitly want a turf to not be affected by shield generators
+	/// If true, most forms of teleporting to or from this turf tile will fail.
+	var/block_tele = FALSE
+	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
+	var/can_build_into_floor = FALSE
+	/// List of 'dangerous' objs that the turf holds that can cause something bad to happen when stepped on, used for AI mobs.
+	var/list/dangerous_objects
+	/// For if you explicitly want a turf to not be affected by shield generators
+	var/noshield = FALSE
 
-/turf/Initialize(mapload)
-	if(flags & INITIALIZED)
+	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
+	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
+	// roofing tile). By default, it will ask the area for the state to use, and will update on
+	// area change. When dealing with weather, it will check the entire z-column for interruptions
+	// that will prevent it from using its own state, so a floor above a level will generally
+	// override both area is_outside, and turf is_outside. The only time the base value will be used
+	// by itself is if you are dealing with a non-multiz level, or the top level of a multiz chunk.
+
+	// Weather relies on is_outside to determine if it should apply to a turf or not and will be
+	// automatically updated on ChangeTurf set_outside etc. Don't bother setting it manually, it will
+	// get overridden almost immediately.
+
+	// TL;DR: just leave these vars alone.
+	// var/tmp/obj/abstract/weather_system/weather
+	var/tmp/is_outside = OUTSIDE_AREA
+
+/turf/vv_edit_var(var_name, new_value)
+	var/static/list/banned_edits = list(
+		NAMEOF_STATIC(src, x),
+		NAMEOF_STATIC(src, y),
+		NAMEOF_STATIC(src, z),
+	)
+	if(var_name in banned_edits)
+		return FALSE
+	. = ..()
+
+/**
+ * Turf Initialize
+ *
+ * Doesn't call parent, see [/atom/proc/Initialize]
+ */
+/turf/Initialize(mapload, ...)
+	SHOULD_CALL_PARENT(FALSE)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.Cut()
+	assemble_baseturfs()
+
+	SETUP_SMOOTHING()
+
+	// queue if necessary; QUEUE_SMOOTH implicitly checks IS_SMOOTH so don't check again
+	QUEUE_SMOOTH(src)
 
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
-/*
-	if (canSmoothWith)
-		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
-*/
-
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
 	var/area/A = loc
-	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+	if(!TURF_IS_DYNAMICALLY_LIT_UNSAFE(src))
 		add_overlay(/obj/effect/fullbright)
 
 	if (light_power && light_range)
 		update_light()
 
+	if (!mapload)
+		SSambient_lighting.queued += src
+
 	if (opacity)
 		has_opaque_atom = TRUE
 
-	//Pathfinding related
-	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
-		pathweight = movement_cost
+	if (mapload && permit_ao)
+		queue_ao()
 
-	ComponentInitialize()
+	if (mz_flags & MZ_MIMIC_BELOW)
+		setup_zmimic(mapload)
+
+	if(isnull(outdoors))
+		outdoors = A.initial_outdoors
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -94,6 +196,7 @@
 	if(force)
 		..()
 		//this will completely wipe turf state
+		vis_contents.len = 0
 		var/turf/B = new world.turf(src)
 		for(var/A in B.contents)
 			qdel(A)
@@ -101,24 +204,49 @@
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
 	// QDEL_LIST(blueprint_data)
-	flags &= ~INITIALIZED
+	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
+
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (mz_flags & MZ_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (mimic_proxy)
+		QDEL_NULL(mimic_proxy)
+
+	// clear vis contents here instead of in Init
+	if(length(vis_contents))
+		vis_contents.len = 0
+
 	..()
 
-/turf/ex_act(severity)
-	return 0
+/// WARNING WARNING
+/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
+/turf/clear_signal_refs()
+	return
+
+/turf/legacy_ex_act(severity)
+	return FALSE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
+
+/turf/proc/is_open()
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
 // Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
-/turf/attack_hand(mob/user)
+/turf/attack_hand(mob/user, list/params)
 	. = ..()
 	//QOL feature, clicking on turf can toggle doors, unless pulling something
 	if(!user.pulling)
@@ -131,7 +259,7 @@
 			FD.attack_hand(user)
 			return TRUE
 
-	if(!(user.canmove) || user.restrained() || !(user.pulling))
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE) || user.restrained() || !(user.pulling))
 		return 0
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
 		return 0
@@ -142,7 +270,7 @@
 		var/atom/movable/t = M.pulling
 		M.stop_pulling()
 		step(user.pulling, get_dir(user.pulling.loc, src))
-		M.start_pulling(t)
+		M.start_pulling(t, suppress_message = TRUE)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 	return 1
@@ -182,14 +310,13 @@
 		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 	return success
 
-/turf/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	var/turf/T = get_turf(user)
 	var/area/A = T.loc
+	if(!ismob(O))
+		return
+	var/mob/M = O
 	if((istype(A) && !(A.has_gravity)) || (istype(T,/turf/space)))
-		return
-	if(istype(O, /atom/movable/screen))
-		return
-	if(user.restrained() || user.stat || user.stunned || user.paralysis || (!user.lying && !istype(user, /mob/living/silicon/robot)))
 		return
 	if((!(istype(O, /atom/movable)) || O.anchored || !Adjacent(user) || !Adjacent(O) || !user.Adjacent(O)))
 		return
@@ -197,16 +324,21 @@
 		return
 	if(isanimal(user) && O != user)
 		return
-	if (do_after(user, 25 + (5 * user.weakened)) && !(user.stat))
-		step_towards(O, src)
-		if(ismob(O))
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			animate(O, transform = turn(O.transform, -40), time = 4)
-			sleep(4)
-			animate(O, transform = turn(O.transform, 20), time = 2)
-			sleep(2)
-			O.update_transform()
+	if(M.pulledby || M.is_grabbed())
+		return
+	if(!CHECK_MOBILITY(user, user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		return
+	if (do_after(user, 2.5 SECONDS, mobility_flags = user == M? MOBILITY_IS_CONSCIOUS : MOBILITY_CAN_USE))
+		if(M.pulledby || M.is_grabbed())
+			return
+		step_towards(M, src)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		animate(M, transform = turn(O.transform, -40), time = 4)
+		sleep(4)
+		animate(M, transform = turn(O.transform, 20), time = 2)
+		sleep(2)
+		M.update_transform()
 
 
 /turf/proc/adjacent_fire_act(turf/simulated/floor/source, temperature, volume)
@@ -240,7 +372,7 @@
 /turf/proc/Distance(turf/t)
 	if(get_dist(src,t) == 1)
 		var/cost = (src.x - t.x) * (src.x - t.x) + (src.y - t.y) * (src.y - t.y)
-		cost *= (pathweight+t.pathweight)/2
+		cost *= ((isnull(pathweight)? slowdown : pathweight) + (isnull(t.pathweight)? t.slowdown : t.pathweight))/2
 		return cost
 	else
 		return get_dist(src,t)
@@ -257,7 +389,7 @@
 	if(density)
 		return 1
 	for(var/atom/A in src)
-		if(A.density && !(A.flags & ON_BORDER))
+		if(A.density && !(A.atom_flags & ATOM_BORDER))
 			return 1
 	return 0
 
@@ -269,7 +401,7 @@
 			var/turf/simulated/T = src
 			T.dirt = 0
 		for(var/obj/effect/O in src)
-			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/decal/cleanable) || istype(O,/obj/effect/overlay))
+			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/debris/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
 		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
@@ -279,13 +411,14 @@
 	return
 
 // Called when turf is hit by a thrown object
-/turf/hitby(atom/movable/AM as mob|obj, var/speed)
+/turf/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(src.density)
 		spawn(2)
-			step(AM, turn(AM.last_move, 180))
-		if(isliving(AM))
+			step(AM, turn(AM.last_move_dir, 180))
+		if(isliving(AM) && !(TT.throw_flags & THROW_AT_IS_GENTLE))
 			var/mob/living/M = AM
-			M.turf_collision(src, speed)
+			M.turf_collision(src, TT.speed)
 
 /turf/AllowDrop()
 	return TRUE
@@ -334,8 +467,8 @@
 
 /turf/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, span("notice", "You build a floor."))
-		ChangeTurf(/turf/simulated/floor/airless, preserve_outdoors = TRUE)
+		to_chat(user, SPAN_NOTICE("You build a floor."))
+		PlaceOnTop(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
 		return TRUE
 	return FALSE
 
@@ -351,3 +484,104 @@
 // We were the the B-side in a turf translation
 /turf/proc/post_translate_B(var/turf/A)
 	return
+
+/turf/has_gravity()
+	if(loc.has_gravity(src))
+		return TRUE
+/*
+	else
+		// There's a gravity generator on our z level
+		if(GLOB.gravity_generators["[z]"])
+			//? length check
+			return TRUE
+*/
+	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+
+/* // TODO: Implement this. @Zandario
+/turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)
+
+	if(isnull(new_weather))
+		new_weather = global.weather_by_z["[z]"]
+
+	// We have a weather system and we are exposed to it; update our vis contents.
+	if(istype(new_weather) && is_outside())
+		if(weather != new_weather)
+			if(weather)
+				remove_vis_contents(src, weather.vis_contents_additions)
+			weather = new_weather
+			add_vis_contents(src, weather.vis_contents_additions)
+			. = TRUE
+
+	// We are indoors or there is no local weather system, clear our vis contents.
+	else if(weather)
+		remove_vis_contents(src, weather.vis_contents_additions)
+		weather = null
+		. = TRUE
+
+	// Propagate our weather downwards if we permit it.
+	if(force_update_below || (is_open() && .))
+		var/turf/below = GetBelow(src)
+		if(below)
+			below.update_weather(new_weather)
+*/
+
+/turf/proc/is_outside()
+
+	// Can't rain inside or through solid walls.
+	// TODO: dense structures like full windows should probably also block weather.
+	if(density)
+		return OUTSIDE_NO
+
+	// What would we like to return in an ideal world?
+	if(is_outside == OUTSIDE_AREA)
+		var/area/A = get_area(src)
+		. = A ? A.is_outside : OUTSIDE_NO
+	else
+		. = is_outside
+
+	// Notes for future self when confused: is_open() on higher
+	// turfs must match effective is_outside value if the turf
+	// should get to use the is_outside value it wants to. If it
+	// doesn't line up, we invert the outside value (roof is not
+	// open but turf wants to be outside, invert to OUTSIDE_NO).
+
+	// Do we have a roof over our head? Should we care?
+	if(HasAbove(z))
+		var/turf/top_of_stack = src
+		while(HasAbove(top_of_stack.z))
+			top_of_stack = GetAbove(top_of_stack)
+			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+				return !.
+
+/turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
+	if(is_outside != new_outside)
+		is_outside = new_outside
+		// if(!skip_weather_update)
+		// 	update_weather()
+		SSambient_lighting.queued += src
+		return TRUE
+	return FALSE
+
+//? Radiation
+
+/turf/proc/update_rad_insulation()
+	rad_insulation_contents = 1
+
+//? atom color - we don't use the expensive system.
+
+/turf/get_atom_colour()
+	return color
+
+/turf/add_atom_colour(coloration, colour_priority)
+	color = coloration
+
+/turf/remove_atom_colour(colour_priority, coloration)
+	color = null
+
+/turf/update_atom_colour()
+	return
+
+/turf/copy_atom_colour(atom/other, colour_priority)
+	if(isnull(other.color))
+		return
+	color = other.color

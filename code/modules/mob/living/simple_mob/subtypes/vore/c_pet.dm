@@ -28,16 +28,7 @@
 	melee_damage_upper = 0
 	attacktext = list("honked")
 
-	armor = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,
@@ -49,7 +40,7 @@
 
 	has_langs = list("Coulrian")
 
-/mob/living/simple_mob/animal/passive/honkpet/attack_hand(mob/living/user as mob)
+/mob/living/simple_mob/animal/passive/honkpet/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_DISARM)
 		return icon_state = pick("c_pet", "m_pet")
 	.=..()
@@ -77,16 +68,7 @@
 	melee_damage_upper = 0
 	attacktext = list("...")
 
-	armor = list(
-				"melee" = 80,
-				"bullet" = 20,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
+	armor_legacy_mob = list(
 				"melee" = 80,
 				"bullet" = 20,
 				"laser" = 0,
@@ -96,7 +78,7 @@
 				"rad" = 0
 				)
 
-/mob/living/simple_mob/animal/passive/mimepet/attack_hand(mob/living/user as mob)
+/mob/living/simple_mob/animal/passive/mimepet/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_DISARM)
 		icon_state = pick("dave1", "dave2", "dave3", "dave5" , "dave6" , "dave7" , "dave8" , "dave9" , "dave10")
 	.=..()

@@ -7,6 +7,13 @@
 	extra_view = 4
 	var/obj/machinery/shipsensors/sensors
 
+// fancy sprite
+/obj/machinery/computer/ship/sensors/adv
+	icon_keyboard = null
+	icon_state = "adv_sensors"
+	icon_screen = "adv_sensors_screen"
+	light_color = "#05A6A8"
+
 /obj/machinery/computer/ship/sensors/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
 	if(!(. = ..()))
 		return
@@ -15,7 +22,7 @@
 /obj/machinery/computer/ship/sensors/proc/find_sensors()
 	if(!linked)
 		return
-	for(var/obj/machinery/shipsensors/S in global.machines)
+	for(var/obj/machinery/shipsensors/S in GLOB.machines)
 		if(linked.check_ownership(S))
 			sensors = S
 			break
@@ -72,7 +79,7 @@
 
 	return data
 
-/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/sensors/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 
@@ -95,6 +102,7 @@
 				var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 				P.name = "paper (Sensor Scan - [O])"
 				P.info = O.get_scan_data(usr)
+				// TODO: strangle whoever made this, DO NOT MANUALLY CALL INIT
 				P.Initialize() // has to be called because the scanner desc uses a combination of html and markdown for some reason
 				playsound(src, "sound/machines/printer.ogg", 30, 1)
 			. = TRUE
@@ -103,7 +111,7 @@
 		switch(action)
 			if("range")
 				var/nrange = input("Set new sensors range", "Sensor range", sensors.range) as num|null
-				if(ui_status(usr, state) != UI_INTERACTIVE)
+				if(ui_status(usr, ui.state) != UI_INTERACTIVE)
 					return FALSE
 				if(nrange)
 					sensors.set_range(clamp(nrange, 1, world.view))
@@ -113,7 +121,7 @@
 				. = TRUE
 
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)
 
 /obj/machinery/computer/ship/sensors/process()
 	..()
@@ -164,7 +172,8 @@
 	var/turf/T=get_turf(src)
 	if(istype(T))
 		var/datum/gas_mixture/environment = T.return_air()
-		if(environment && environment.return_pressure() > MINIMUM_PRESSURE_DIFFERENCE_TO_SUSPEND)
+		// this is a hardcoded constant now
+		if(environment && environment.return_pressure() > MINIMUM_MEANINGFUL_PRESSURE_VACUUM)
 			return 0
 	return 1
 
@@ -186,7 +195,7 @@
 	else if(health < max_health * 0.75)
 		. += "It shows signs of damage!"
 
-/obj/machinery/shipsensors/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shipsensors/bullet_act(var/obj/projectile/Proj)
 	take_damage(Proj.get_structure_damage())
 	..()
 
@@ -214,6 +223,9 @@
 
 	if (heat > 0)
 		heat = max(0, heat - heat_reduction)
+
+/obj/machinery/shipsensors/legacy_ex_act()
+	return
 
 /obj/machinery/shipsensors/power_change()
 	. = ..()

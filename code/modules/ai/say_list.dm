@@ -15,9 +15,9 @@
 	return ..()
 
 /mob/living/Destroy()
-	QDEL_NULL(say_list)
+	if(say_list)
+		QDEL_NULL(say_list)
 	return ..()
-
 
 /datum/say_list
 	var/list/speak = list()				// Things the mob might say if it talks while idle.

@@ -1,5 +1,5 @@
 /obj/machinery/status_display/supply_display
-	ignore_friendc = 1
+	ignore_friendc = TRUE
 
 /obj/machinery/status_display/supply_display/update()
 	if(!..() && mode == STATUS_DISPLAY_CUSTOM)
@@ -24,10 +24,10 @@
 			else
 				message1 = ""
 		update_display(message1, message2)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
-/obj/machinery/status_display/supply_display/receive_signal/(datum/signal/signal)
+/obj/machinery/status_display/supply_display/receive_signal(datum/signal/signal)
 	if(signal.data["command"] == "supply")
 		mode = STATUS_DISPLAY_CUSTOM
 	else

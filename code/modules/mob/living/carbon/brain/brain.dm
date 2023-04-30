@@ -40,7 +40,7 @@
 	use_me = 0 //Can't use the me verb, it's a freaking immobile brain
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "brain1"
-	no_vore = TRUE //VOREStation Edit - PLEASE. lol.
+	no_vore = TRUE
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/organic)
 
 /mob/living/carbon/brain/Initialize(mapload)
@@ -56,13 +56,13 @@
 		ghostize()		//Ghostize checks for key so nothing else is necessary.
 	return ..()
 
-/mob/living/carbon/brain/update_canmove()
+/mob/living/carbon/brain/update_mobility(blocked, forced)
 	if(in_contents_of(/obj/mecha) || istype(loc, /obj/item/mmi))
-		canmove = 1
-		use_me = 1
+		use_me = TRUE
+		return ..(blocked, forced)
 	else
-		canmove = 0
-	return canmove
+		use_me = FALSE
+		return ..(MOBILITY_FLAGS_REAL, forced)
 
 /mob/living/carbon/brain/isSynthetic()
 	return istype(loc, /obj/item/mmi)

@@ -130,6 +130,18 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
+/datum/crafting_recipe/kanabo
+	name = "Kanabo"
+	result = /obj/item/melee/kanabo
+	tools = list(TOOL_SCREWDRIVER, TOOL_WRENCH)
+	reqs = list(/obj/item/kanabo_shaft = 1,
+				/obj/item/kanabo_studs = 1,
+				/obj/item/stack/material/cloth = 3,
+				/obj/item/stack/material/leather = 2)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
+
 /datum/crafting_recipe/knuckle_dusters
 	name = "Brass Knuckles"
 	result = /obj/item/clothing/gloves/knuckledusters
@@ -158,6 +170,18 @@
 	time = 20//15 faster than crafting them by hand!
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/dataknife
+	name = "Data Knife"
+	result = /obj/item/material/knife/tacknife/dataknife
+	tools = list(TOOL_SCREWDRIVER, TOOL_WELDER)
+	reqs = list(/obj/item/stack/cable_coil = 10,
+				/obj/item/multitool = 1,
+				/obj/item/assembly/igniter = 1,
+				/obj/item/storage/box/survival_knife = 1)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_MELEE
 
 /* We don't have amputation features for this yet?
 /datum/crafting_recipe/tailclub
@@ -267,10 +291,10 @@
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/explosive/ied
-	reqs = list(/obj/item/stack/cable_coil = 1,
+	reqs = list(/datum/reagent/fuel = 50,
+				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
 				/obj/item/trash/punctured_can = 1)
-	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER
@@ -286,13 +310,24 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
 
+/datum/crafting_recipe/tyrmalin_heavy
+	name = "Tyrmalin Heavy-Duty Mining Charge"
+	result = /obj/item/grenade/explosive/ied/tyrmalin/large
+	reqs = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
+				/obj/item/duct_tape_piece = 4)
+	parts = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
+				/obj/item/duct_tape_piece = 4)
+	time = 15
+	category = CAT_WEAPONRY
+	subcategory = CAT_OTHER
+
 //////////////////
 ///GUNS CRAFTING//
 //////////////////
 
 /datum/crafting_recipe/pipebow
 	name = "Pipe Bow"
-	result =  /obj/item/gun/projectile/bow/pipe
+	result =  /obj/item/gun/ballistic/bow/pipe
 	reqs = list(/obj/item/pipe = 5,
 	/obj/item/stack/material/plastic = 15,
 	/obj/item/weaponcrafting/string = 5)
@@ -301,8 +336,8 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/dartgun
-	name = "prototype dart gun"
-	result =  /obj/item/gun/projectile/dartgun/research
+	name = "Prototype Dart Gun"
+	result =  /obj/item/gun/ballistic/dartgun/research
 	reqs = list(/obj/item/stack/material/steel = 10,
 	/obj/item/stack/material/glass = 5,
 	/obj/item/tank/emergency/oxygen = 1,
@@ -314,7 +349,7 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/smartdart
-	name = "dart gun magazine"
+	name = "Prototype Dart Gun Magazine"
 	result =  /obj/item/ammo_magazine/chemdart
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/material/glass = 2,
@@ -324,8 +359,8 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/rapiddartgun
-	name = "dart gun"
-	result = /obj/item/gun/projectile/dartgun
+	name = "Protoype Dart Gun (Rapid)"
+	result = /obj/item/gun/ballistic/dartgun
 	reqs = list(
 		/obj/item/ammo_casing/chemdart = 1,
 		/obj/item/stack/material/plastic = 5,
@@ -378,8 +413,8 @@
 */
 
 /datum/crafting_recipe/piperifle
-	name = "pipe rifle"
-	result = /obj/item/gun/projectile/contender/pipegun
+	name = "Pipe Rifle"
+	result = /obj/item/gun/ballistic/contender/pipegun
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
 				/obj/item/weaponcrafting/stock = 1,
@@ -404,17 +439,6 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
-/datum/crafting_recipe/bone_arrow
-	name = "Bone Arrow"
-	result = /obj/item/ammo_casing/arrow/bone
-	time = 5
-	//always_available = FALSE
-	reqs = list(/obj/item/stack/material/bone = 1,
-				 /obj/item/stack/sinew = 1,
-				 /obj/item/ammo_casing/arrow/ash = 1)
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
-
 /datum/crafting_recipe/ashen_arrow
 	name = "Ashen Arrow"
 	result = /obj/item/ammo_casing/arrow/ash
@@ -425,9 +449,32 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
+/datum/crafting_recipe/bone_arrow
+	name = "Bone Arrow"
+	result = /obj/item/ammo_casing/arrow/bone
+	time = 5
+	//always_available = FALSE
+	reqs = list(/obj/item/stack/material/bone = 1,
+				 /obj/item/stack/sinew = 1)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+	always_available = FALSE
+
+/datum/crafting_recipe/hard_bone_arrow
+	name = "Hardened Bone Arrow"
+	result = /obj/item/ammo_casing/arrow/bone_ap
+	tools = list(TOOL_WELDER)
+	time = 5
+	//always_available = FALSE
+	reqs = list(/obj/item/stack/material/bone = 1,
+				 /obj/item/ammo_casing/arrow/bone = 1)
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+	always_available = FALSE
+
 //Munitions
 /datum/crafting_recipe/smartdart
-	name = "chemical dart"
+	name = "Chemical Dart"
 	result =  /obj/item/ammo_casing/chemdart
 	reqs = list(/obj/item/stack/material/steel = 1,
 				/obj/item/stack/material/glass = 1,
@@ -514,6 +561,15 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_AMMO
 
+/datum/crafting_recipe/leadball
+	name = "Lead Ball"
+	result = /obj/item/ammo_casing/musket
+	reqs = list(/obj/item/stack/material/lead = 1)
+	tools = list(TOOL_WELDER, TOOL_WIRECUTTER)
+	time = 30
+	category = CAT_WEAPONRY
+	subcategory = CAT_AMMO
+
 ////////////////////
 // PARTS CRAFTING //
 ////////////////////
@@ -563,5 +619,24 @@
 	reqs = list(/obj/item/stack/material/wood = 5,
 				/obj/item/stack/material/cloth = 2)
 	time = 20
+	category = CAT_WEAPONRY
+	subcategory = CAT_PARTS
+
+// KANABO CRAFTING
+/datum/crafting_recipe/kanabo_shaft
+	name = "Kanabo Shaft"
+	result = /obj/item/kanabo_shaft
+	tools = list(/obj/item/material/knife/machete/hatchet)
+	reqs = list(/obj/item/stack/material/wood = 20,
+				/obj/item/stack/material/cloth = 2)
+	time = 30
+	category = CAT_WEAPONRY
+	subcategory = CAT_PARTS
+
+/datum/crafting_recipe/kanabo_studs
+	name = "Kanabo Studs"
+	result = /obj/item/kanabo_studs
+	reqs = list(/obj/item/stack/material/steel = 5)
+	time = 10
 	category = CAT_WEAPONRY
 	subcategory = CAT_PARTS

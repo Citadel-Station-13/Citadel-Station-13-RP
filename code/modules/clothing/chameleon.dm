@@ -13,8 +13,8 @@
 	icon_state = copy.icon_state
 	color = copy.color
 	item_state = copy.item_state
-	body_parts_covered = copy.body_parts_covered
-	flags_inv = copy.flags_inv
+	body_cover_flags = copy.body_cover_flags
+	inv_hide_flags = copy.inv_hide_flags
 	gender = copy.gender
 
 	if(copy.item_icons)
@@ -56,13 +56,13 @@
 		if(name in .)    // STILL?
 			name += " \[[++i]\]"
 		.[name] = path
- 	sortTim(., /proc/cmp_text_asc)
+ 	tim_sort(., /proc/cmp_text_asc)
 
 /obj/item/clothing/under/chameleon
 //starts off as black
 	name = "black jumpsuit"
 	icon_state = "black"
-	worn_state = "black"
+	snowflake_worn_state = "black"
 	desc = "It's a plain jumpsuit. It seems to have a small dial on the wrist."
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/global/list/clothing_choices
@@ -77,9 +77,9 @@
 	name = "psychedelic"
 	desc = "Groovy!"
 	icon_state = "psyche"
-	item_state_slots[slot_w_uniform_str] = "psyche"
+	item_state_slots[SLOT_ID_UNIFORM] = "psyche"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/under/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Jumpsuit Appearance"
@@ -90,7 +90,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //*****************
 //**Chameleon Hat**
@@ -101,7 +101,7 @@
 	icon_state = "greysoft"
 	desc = "It looks like a plain hat, but upon closer inspection, there's an advanced holographic array installed inside. It seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
-	body_parts_covered = 0
+	body_cover_flags = 0
 	var/global/list/clothing_choices
 
 /obj/item/clothing/head/chameleon/Initialize(mapload)
@@ -115,7 +115,7 @@
 	desc = "It's a baseball hat in a tasteful grey colour."
 	icon_state = "greysoft"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/head/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Hat/Helmet Appearance"
@@ -126,7 +126,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //******************
 //**Chameleon Suit**
@@ -153,7 +153,7 @@
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Oversuit Appearance"
@@ -164,7 +164,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //*******************
 //**Chameleon Shoes**
@@ -187,7 +187,7 @@
 	desc = "A pair of black shoes."
 	icon_state = "black"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/shoes/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Footwear Appearance"
@@ -198,7 +198,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //**********************
 //**Chameleon Backpack**
@@ -261,7 +261,7 @@
 	desc = "It looks like a pair of gloves, but it seems to have a small dial inside."
 	icon_state = "black"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/gloves/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Gloves Appearance"
@@ -272,7 +272,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //******************
 //**Chameleon Mask**
@@ -295,7 +295,7 @@
 	desc = "It's a gas mask."
 	icon_state = "gas_alt"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/mask/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Mask Appearance"
@@ -306,7 +306,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //*********************
 //**Chameleon Glasses**
@@ -315,7 +315,7 @@
 /obj/item/clothing/glasses/chameleon
 	name = "Optical Meson Scanner"
 	icon_state = "meson"
-	item_state_slots = list(slot_r_hand_str = "meson", slot_l_hand_str = "meson")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "meson", SLOT_ID_LEFT_HAND = "meson")
 	desc = "It looks like a plain set of mesons, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/global/clothing_choices
@@ -330,7 +330,7 @@
 	desc = "It's a set of mesons."
 	icon_state = "meson"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/glasses/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Glasses Appearance"
@@ -341,7 +341,7 @@
 		return
 
 	disguise(clothing_choices[picked])
-	update_clothing_icon()	//so our overlays update.
+	update_worn_icon()	//so our overlays update.
 
 //******************
 //**Chameleon Belt**
@@ -406,7 +406,7 @@
 	desc = "Looks like a black tie, but his one also has a dial inside."
 	icon_state = "blacktie"
 	update_icon()
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/accessory/chameleon/verb/change(picked in clothing_choices)
 	set name = "Change Accessory Appearance"
@@ -432,12 +432,12 @@
 	matter = list()
 
 	fire_sound = 'sound/weapons/Gunshot1.ogg'
-	projectile_type = /obj/item/projectile/chameleon
+	projectile_type = /obj/projectile/chameleon
 	charge_meter = 0
 	charge_cost = 48 //uses next to no power, since it's just holograms
 	battery_lock = 1
 
-	var/obj/item/projectile/copy_projectile
+	var/obj/projectile/copy_projectile
 	var/global/list/gun_choices
 
 /obj/item/gun/energy/chameleon/Initialize(mapload)
@@ -450,7 +450,7 @@
 			src.gun_choices[initial(G.name)] = gun_type
 
 /obj/item/gun/energy/chameleon/consume_next_projectile()
-	var/obj/item/projectile/P = ..()
+	var/obj/projectile/P = ..()
 	if(P && ispath(copy_projectile))
 		P.name = initial(copy_projectile.name)
 		P.icon = initial(copy_projectile.icon)
@@ -477,7 +477,7 @@
 /obj/item/gun/energy/chameleon/disguise(var/newtype)
 	var/obj/item/gun/copy = ..()
 
-	flags_inv = copy.flags_inv
+	inv_hide_flags = copy.inv_hide_flags
 	if(copy.fire_sound)
 		fire_sound = copy.fire_sound
 	else

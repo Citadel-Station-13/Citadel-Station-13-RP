@@ -15,12 +15,14 @@
 	pixel_y = rand(-5, 5)
 
 /obj/item/ore/bluespace_crystal/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='warning'>[user] crushes [src]!</span>", "<span class='danger'>You crush [src]!</span>")
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()
 	s.set_up(5, 1, get_turf(src))
 	s.start()
 	blink_mob(user)
-	user.unEquip(src)
 	qdel(src)
 
 /obj/item/ore/bluespace_crystal/proc/blink_mob(mob/living/L)

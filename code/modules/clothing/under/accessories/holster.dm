@@ -5,8 +5,8 @@
 	slot = ACCESSORY_SLOT_TORSO //Legacy/balance purposes
 	concealed_holster = 1
 	var/obj/item/holstered = null
-	var/list/can_hold //VOREStation Add
-	var/list/cant_hold // cit add
+	var/list/can_hold
+	var/list/cant_hold
 	var/sound_in = 'sound/effects/holster/holsterin.ogg'
 	var/sound_out = 'sound/effects/holster/holsterout.ogg'
 	var/holster_verb = "holster"
@@ -15,22 +15,22 @@
 	if(holstered && istype(user))
 		to_chat(user, "<span class='warning'>There is already \a [holstered] holstered here!</span>")
 		return
-	//VOREStation Edit - Machete scabbard support
 	if (LAZYLEN(can_hold))
 		if(!is_type_in_list(I, can_hold) && !is_type_in_list(I, cant_hold))
 			to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 			return
 
 	else if (!(I.slot_flags & SLOT_HOLSTER))
-	//VOREStation Edit End
 		to_chat(user, "<span class='warning'>[I] won't fit in [src]!</span>")
 		return
 
 	if(istype(user))
 		user.stop_aiming(no_message=1)
+
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
 	holstered = I
-	user.drop_from_inventory(holstered)
-	holstered.forceMove(src)
 	holstered.add_fingerprint(user)
 	w_class = max(w_class, holstered.w_class)
 	user.visible_message("<span class='notice'>[user] [holster_verb]s \the [holstered].</span>", "<span class='notice'>You [holster_verb] \the [holstered].</span>")
@@ -45,14 +45,16 @@
 	if(!holstered)
 		return
 
-	if(istype(user.get_active_hand(),/obj) && istype(user.get_inactive_hand(),/obj))
+	if(istype(user.get_active_held_item(),/obj) && istype(user.get_inactive_held_item(),/obj))
 		to_chat(user, "<span class='warning'>You need an empty hand to draw \the [holstered]!</span>")
 	else
 		if(user.a_intent == INTENT_HARM)
 			user.visible_message(
-				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>", //VOREStation Edit
-				"<span class='warning'>You draw \the [holstered], ready to go!</span>" //VOREStation Edit
-				)
+				"<span class='danger'>[user] draws \the [holstered], ready to go!</span>",				"<span class='warning'>You draw \the [holstered], ready to go!</span>"				)
+			if(istype(holstered, /obj/item/gun))
+				var/obj/item/gun/G = holstered
+				if(G.check_safety()) //Reflex un-safetying if we are drawing our gun with intent to harm
+					G.toggle_safety(user)
 		else
 			user.visible_message(
 				"<span class='notice'>[user] draws \the [holstered], pointing it at the ground.</span>",
@@ -64,8 +66,8 @@
 		w_class = initial(w_class)
 		clear_holster()
 
-/obj/item/clothing/accessory/holster/attack_hand(mob/user as mob)
-	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))
+/obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
+	if (accessory_host && (slot & ACCESSORY_SLOT_UTILITY))
 		if(holstered)
 			unholster(user)
 	..(user)
@@ -87,12 +89,12 @@
 
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
-	if(has_suit)
-		has_suit.verbs += /obj/item/clothing/accessory/holster/verb/holster_verb
+	if(accessory_host)
+		add_obj_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
 
 /obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
-	if(has_suit)
-		has_suit.verbs -= /obj/item/clothing/accessory/holster/verb/holster_verb
+	if(accessory_host)
+		remove_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
 	..()
 
 //For the holster hotkey
@@ -116,7 +118,7 @@
 		to_chat(usr, "<span class='warning'>Something is very wrong.</span>")
 
 	if(!H.holstered)
-		var/obj/item/W = usr.get_active_hand()
+		var/obj/item/W = usr.get_active_held_item()
 		if(!istype(W, /obj/item))
 			to_chat(usr, "<span class='warning'>You need your weapon equipped to holster it.</span>")
 			return
@@ -157,7 +159,8 @@
 	desc = "A handsome synthetic leather scabbard with matching belt."
 	icon_state = "holster_machete"
 	concealed_holster = 0
-	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete)
+	can_hold = list(/obj/item/material/knife/machete, /obj/item/melee/energy/hfmachete, /obj/item/reagent_containers/spray, /obj/item/soap,
+		/obj/item/c_tube, /obj/item/bikehorn)
 	cant_hold = list(/obj/item/material/knife/machete/armblade)
 	sound_in = 'sound/effects/holster/sheathin.ogg'
 	sound_out = 'sound/effects/holster/sheathout.ogg'

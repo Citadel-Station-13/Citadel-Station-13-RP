@@ -98,7 +98,7 @@
 		if(chassis.occupant.a_intent == INTENT_HARM || istype(chassis.occupant,/mob/living/carbon/brain)) //No tactile feedback for brains
 			M.take_overall_damage(dam_force)
 			M.adjustOxyLoss(round(dam_force/2))
-			M.updatehealth()
+			M.update_health()
 			occupant_message("<span class='warning'>You squeeze [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 5, 1, -2) //CRACK
 			chassis.visible_message("<span class='warning'>[chassis] squeezes [target].</span>")
@@ -106,11 +106,11 @@
 			playsound(src, 'sound/mecha/hydraulic.ogg', 10, 1, -2)
 			M.take_overall_damage(dam_force/2)
 			M.adjustOxyLoss(round(dam_force/3))
-			M.updatehealth()
+			M.update_health()
 			occupant_message("<span class='warning'>You slam [target] with [src.name]. Something cracks.</span>")
 			playsound(src, "fracture", 3, 1, -2) //CRACK 2
 			chassis.visible_message("<span class='warning'>[chassis] slams [target].</span>")
-			M.throw_at(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
+			M.throw_at_old(get_step(M,get_dir(src, M)), 14, 1.5, chassis)
 		else
 			step_away(M,chassis)
 			occupant_message("You push [target] out of the way.")

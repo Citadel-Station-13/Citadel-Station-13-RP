@@ -5,12 +5,12 @@
 	for(var/area/A in world)
 		GLOB.sortedAreas.Add(A)
 
-	sortTim(GLOB.sortedAreas, /proc/cmp_name_asc)
+	tim_sort(GLOB.sortedAreas, /proc/cmp_name_asc)
 	setupTeleportLocs()		// shitcode patch to make vorecode work until we get rid of this shit meme or refactor it entirely
 
 /area/proc/addSorted()
 	GLOB.sortedAreas.Add(src)
-	sortTim(GLOB.sortedAreas, /proc/cmp_name_asc)
+	tim_sort(GLOB.sortedAreas, /proc/cmp_name_asc)
 
 //Takes: Area type as a text string from a variable.
 //Returns: Instance for the area in the world.

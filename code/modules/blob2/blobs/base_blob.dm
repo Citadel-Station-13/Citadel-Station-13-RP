@@ -6,12 +6,13 @@ var/list/blobs = list()
 	desc = "A thick wall of writhing tendrils."
 	light_range = 2
 	density = FALSE // This is false because blob mob AI's walk_to() proc appears to never attempt to move onto dense objects even if allowed by CanPass().
+	pass_flags_self = ATOM_PASS_BLOB
 	opacity = FALSE
 	anchored = TRUE
 	layer = MOB_LAYER + 0.1
-	var/integrity = 0
+	integrity = 0
 	var/point_return = 0 //How many points the blob gets back when it removes a blob of that type. If less than 0, blob cannot be removed.
-	var/max_integrity = 30
+	max_integrity = 30
 	var/health_regen = 2 //how much health this blob regens when pulsed
 	var/pulse_timestamp = 0 //we got pulsed when?
 	var/heal_timestamp = 0 //we got healed when?
@@ -47,15 +48,15 @@ var/list/blobs = list()
 
 // Blob tiles are not actually dense so we need Special Code(tm).
 /obj/structure/blob/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSBLOB))
+	// density is false, can't trust parent procs
+	if(check_standard_flag_pass(mover))
 		return TRUE
 	else if(istype(mover, /mob/living))
 		var/mob/living/L = mover
 		if(L.faction == "blob")
 			return TRUE
-	else if(istype(mover, /obj/item/projectile))
-		var/obj/item/projectile/P = mover
+	else if(istype(mover, /obj/projectile))
+		var/obj/projectile/P = mover
 		if(istype(P.firer) && P.firer.faction == "blob")
 			return TRUE
 	return FALSE
@@ -222,7 +223,7 @@ var/list/blobs = list()
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	playsound(loc, 'sound/effects/attackblob.ogg', 50, 1)
 	visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force
+	var/damage = W.damage_force
 	switch(W.damtype)
 		if(BURN)
 			if(overmind)
@@ -249,7 +250,7 @@ var/list/blobs = list()
 	adjust_integrity(-damage)
 	return
 
-/obj/structure/blob/bullet_act(var/obj/item/projectile/P)
+/obj/structure/blob/bullet_act(var/obj/projectile/P)
 	if(!P)
 		return
 
@@ -280,7 +281,7 @@ var/list/blobs = list()
 		overmind.blob_type.on_water(src, amount)
 
 /obj/structure/blob/proc/adjust_integrity(amount)
-	integrity = between(0, integrity + amount, max_integrity)
+	integrity = clamp( integrity + amount, 0,  max_integrity)
 	if(integrity == 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		if(overmind)

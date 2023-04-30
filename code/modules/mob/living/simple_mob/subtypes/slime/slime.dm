@@ -27,7 +27,7 @@
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	mob_class = MOB_CLASS_SLIME
 
@@ -79,7 +79,7 @@
 	emote_hear = list("squishes")
 
 /mob/living/simple_mob/slime/Initialize(mapload)
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 	update_mood()
 	glow_color = color
 	handle_light()
@@ -106,6 +106,7 @@
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.
 
+	cut_overlays()
 	if(stat != DEAD)
 		// General slime shine.
 		var/image/I = image(icon, src, "slime light")
@@ -125,11 +126,10 @@
 
 	// Hat simulator.
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image('icons/mob/head.dmi', src, hat_state)
-		I.pixel_y = -7 // Slimes are small.
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_y = -7
+		MA.appearance_flags |= RESET_COLOR
+		add_overlay(MA)
 
 // Controls the 'mood' overlay. Overrided in subtypes for specific behaviour.
 /mob/living/simple_mob/slime/proc/update_mood()
@@ -161,7 +161,10 @@
 	adjustBruteLoss(-1)
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/slime/attack_hand(mob/living/L)
+/mob/living/simple_mob/slime/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && hat)
 		remove_hat(L)
 	else
@@ -173,17 +176,15 @@
 		give_hat(I, user)
 		return
 
-	//VOREStation Edit Start
 	var/can_miss = TRUE
 	for(var/item_type in allowed_attack_types)
 		if(istype(I, item_type))
 			can_miss = FALSE
 			break
-	//VOREStation Edit End
 
 	// Otherwise they're probably fighting the slime.
-	if(prob(25) && can_miss)	//VOREStation Edit
-		visible_message(span("warning", "\The [user]'s [I] passes right through \the [src]!"))
+	if(prob(25) && can_miss)
+		visible_message(SPAN_WARNING( "\The [user]'s [I] passes right through \the [src]!"))
 		user.setClickCooldown(user.get_attack_speed(I))
 		return
 	..()
@@ -196,16 +197,16 @@
 // Hat simulator
 /mob/living/simple_mob/slime/proc/give_hat(var/obj/item/clothing/head/new_hat, var/mob/living/user)
 	if(!istype(new_hat))
-		to_chat(user, span("warning", "\The [new_hat] isn't a hat."))
+		to_chat(user, SPAN_WARNING( "\The [new_hat] isn't a hat."))
 		return
 	if(hat)
-		to_chat(user, span("warning", "\The [src] is already wearing \a [hat]."))
+		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [hat]."))
 		return
 	else
-		user.drop_item(new_hat)
+		if(!user.attempt_insert_item_for_installation(new_hat, src))
+			return
 		hat = new_hat
-		new_hat.forceMove(src)
-		to_chat(user, span("notice", "You place \a [new_hat] on \the [src].  How adorable!"))
+		to_chat(user, SPAN_NOTICE("You place \a [new_hat] on \the [src].  How adorable!"))
 		update_icon()
 		return
 

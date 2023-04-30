@@ -54,7 +54,7 @@
 		sleep(3)
 		return NANOMAP_TERMINALERR
 
-	Tile.Scale((endX - startX + 1) * NANOMAP_ICON_SIZE, (endY - startY + 1) * NANOMAP_ICON_SIZE) // VOREStation Edit - Scale image to actual size mapped.
+	Tile.Scale((endX - startX + 1) * NANOMAP_ICON_SIZE, (endY - startY + 1) * NANOMAP_ICON_SIZE) // Scale image to actual size mapped.
 
 	log_world("NanoMapGen: <B>GENERATE MAP ([startX],[startY],[currentZ]) to ([endX],[endY],[currentZ])</B>")
 	to_chat(usr, "NanoMapGen: <B>GENERATE MAP ([startX],[startY],[currentZ]) to ([endX],[endY],[currentZ])</B>")

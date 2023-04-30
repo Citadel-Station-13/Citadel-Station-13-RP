@@ -1,3 +1,4 @@
+//? interaction_flags_atom on /atom
 /// whether can_interact() checks for anchored. only works on movables.
 #define INTERACT_ATOM_REQUIRES_ANCHORED (1<<0)
 /*
@@ -14,14 +15,27 @@
 /// incapacitated check checks grab
 #define INTERACT_ATOM_CHECK_GRAB (1<<6)
 */
-/// prevents leaving fingerprints automatically on attack_hand
-#define INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND (1<<7)
+/// prevents leaving fingerprints automatically on attack_hand, put in hands, other touch procs
+#define INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH (1<<7)
 /// adds hiddenprints instead of fingerprints on interact
 #define INTERACT_ATOM_NO_FINGERPRINT_INTERACT (1<<8)
+
+DEFINE_BITFIELD(interaction_flags_atom, list(
+	BITFIELD(INTERACT_ATOM_REQUIRES_ANCHORED),
+	BITFIELD(INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH),
+	BITFIELD(INTERACT_ATOM_NO_FINGERPRINT_INTERACT),
+))
+
+//? interaction_flags_item on /obj/item
+/// on attack self, pass to interact
+#define INTERACT_ITEM_ATTACK_SELF (1<<0)
 
 /*
 /// attempt pickup on attack_hand for items
 #define INTERACT_ITEM_ATTACK_HAND_PICKUP (1<<0)
+*/
+
+//? interaction_flags_machine on /obj/machinery
 
 /// can_interact() while open
 #define INTERACT_MACHINE_OPEN (1<<0)
@@ -41,4 +55,14 @@
 #define INTERACT_MACHINE_SET_MACHINE (1<<6)
 /// the user must have vision to interact (blind people need not apply)
 #define INTERACT_MACHINE_REQUIRES_SIGHT (1<<7)
-*/
+
+DEFINE_BITFIELD(interaction_flags_machine, list(
+	BITFIELD(INTERACT_MACHINE_OPEN),
+	BITFIELD(INTERACT_MACHINE_OFFLINE),
+	BITFIELD(INTERACT_MACHINE_WIRES_IF_OPEN),
+	BITFIELD(INTERACT_MACHINE_ALLOW_SILICON),
+	BITFIELD(INTERACT_MACHINE_OPEN_SILICON),
+	BITFIELD(INTERACT_MACHINE_REQUIRES_SILICON),
+	BITFIELD(INTERACT_MACHINE_SET_MACHINE),
+	BITFIELD(INTERACT_MACHINE_REQUIRES_SIGHT),
+))

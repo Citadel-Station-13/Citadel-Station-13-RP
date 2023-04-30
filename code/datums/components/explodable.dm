@@ -56,10 +56,10 @@
 	detonate()
 
 /datum/component/explodable/proc/on_equip(datum/source, mob/equipper, slot)
-	RegisterSignal(equipper, COMSIG_MOB_APPLY_DAMGE,  .proc/explodable_attack_zone)
+	RegisterSignal(equipper, COMSIG_MOB_APPLY_DAMAGE,  .proc/explodable_attack_zone)
 
 /datum/component/explodable/proc/on_drop(datum/source, mob/user)
-	UnregisterSignal(user, COMSIG_MOB_APPLY_DAMGE)
+	UnregisterSignal(user, COMSIG_MOB_APPLY_DAMAGE)
 
 /// Checks if we're hitting the zone this component is covering
 /datum/component/explodable/proc/is_hitting_zone(def_zone)
@@ -84,7 +84,7 @@
 			continue
 
 		var/obj/item/I = bp
-		if(I.body_parts_covered & bodypart.body_part)
+		if(I.body_cover_flags & bodypart.body_part_flags)
 			return TRUE
 	return FALSE
 
@@ -103,5 +103,3 @@
 	var/atom/A = parent
 	explosion(A, devastation_range, heavy_impact_range, light_impact_range, flash_range) //epic explosion time
 	qdel(A)
-
-

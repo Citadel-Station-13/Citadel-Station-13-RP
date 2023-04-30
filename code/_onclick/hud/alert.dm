@@ -35,6 +35,8 @@
 	else
 		alert = new type
 
+	alert.owner = src
+
 	if(new_master)
 		alert.icon_state = "itembased"
 		var/image/I = image(icon = new_master.icon, icon_state = new_master.icon_state, dir = SOUTH)
@@ -82,15 +84,18 @@
 	var/severity = 0
 	var/alerttooltipstyle = ""
 	var/no_underlay // Don't underlay the UI style's blank template icon under this
+	/// mob that owns us
+	var/mob/owner
 
+/atom/movable/screen/alert/Destroy()
+	owner = null
+	return ..()
 
 /atom/movable/screen/alert/MouseEntered(location,control,params)
 	openToolTip(usr, src, params, title = name, content = desc, theme = alerttooltipstyle)
 
-
 /atom/movable/screen/alert/MouseExited()
 	closeToolTip(usr)
-
 
 //Gas alerts
 /atom/movable/screen/alert/not_enough_oxy
@@ -373,6 +378,32 @@ so as to remain in compliance with the most up-to-date laws."
 	var/mob/observer/dead/G = usr
 	G.reenter_corpse()
 
+/atom/movable/screen/alert/notify_action
+	name = "Body created"
+	desc = "A body was created. You can enter it."
+	icon_state = "template"
+	timeout = 300
+	var/atom/target = null
+	var/action = NOTIFY_JUMP
+
+/atom/movable/screen/alert/notify_action/Click()
+	if(!usr || !usr.client || usr != owner)
+		return
+	if(!target)
+		return
+	var/mob/observer/dead/G = usr
+	if(!istype(G))
+		return
+	switch(action)
+		if(NOTIFY_ATTACK)
+			target.attack_ghost(G)
+		if(NOTIFY_JUMP)
+			var/turf/T = get_turf(target)
+			if(T && isturf(T))
+				G.forceMove(T)
+		if(NOTIFY_ORBIT)
+			G.ManualFollow(target)
+
 // /atom/movable/screen/alert/notify_jump
 // 	name = "Body created"
 // 	desc = "A body was created. You can enter it."
@@ -384,7 +415,7 @@ so as to remain in compliance with the most up-to-date laws."
 // /atom/movable/screen/alert/notify_jump/Click()
 // 	if(!usr || !usr.client) return
 // 	if(!jump_target) return
-// 	var/mob/dead/observer/G = usr
+// 	var/mob/observer/dead/G = usr
 // 	if(!istype(G)) return
 // 	if(attack_not_jump)
 // 		jump_target.attack_ghost(G)
@@ -449,8 +480,7 @@ so as to remain in compliance with the most up-to-date laws."
 		mymob?.client?.screen |= alert
 	return 1
 
-/mob
-	var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
+/mob/var/list/alerts = list() // contains /atom/movable/screen/alert only // On /mob so clientless mobs will throw alerts properly
 
 /atom/movable/screen/alert/Click(location, control, params)
 	if(!usr || !usr.client)

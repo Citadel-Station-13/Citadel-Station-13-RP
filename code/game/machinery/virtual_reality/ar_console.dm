@@ -6,7 +6,7 @@
 /obj/machinery/vr_sleeper/alien
 	name = "strange pod"
 	desc = "A strange machine with what appears to be a comfortable, if quite vertical, bed. Numerous mechanical cylinders dot the ceiling, their purpose uncertain."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "alienpod_0"
 	base_state = "alienpod_"
 
@@ -22,7 +22,7 @@
 		produce_species = pick(possible_species)
 
 /obj/machinery/vr_sleeper/alien/process(delta_time)
-	if(stat & (BROKEN))
+	if(machine_stat & (BROKEN))
 		if(occupant)
 			go_out()
 			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
@@ -35,7 +35,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.attack(occupant, user)
+		I.melee_attack_chain(occupant, user)
 	return
 
 /obj/machinery/vr_sleeper/alien/eject()
@@ -47,7 +47,7 @@
 
 	var/forced = FALSE
 
-	if(stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
+	if(machine_stat & (BROKEN) || (eject_dead && occupant && occupant.stat == DEAD))
 		forced = TRUE
 
 	go_out(forced)
@@ -62,10 +62,8 @@
 
 	avatar.exit_vr()
 
-	if(occupant && occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
+	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
 		if(A == circuit)
@@ -97,9 +95,9 @@
 	if(!avatar)
 		var/turf/T = get_turf(src)
 		avatar = new(src, produce_species)
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human" && mirror_first_occupant)
+		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
-		avatar.Sleeping(6)
+		avatar.afflict_sleeping(20 * 6)
 
 		occupant.enter_vr(avatar)
 
@@ -108,7 +106,7 @@
 			avatar.real_name = newname
 
 		avatar.forceMove(T)
-		visible_message("<span class='alium'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
+		visible_message("<span class='green'>\The [src] [pick("gurgles", "churns", "sloshes")] before spitting out \the [avatar]!</span>")
 
 	else
 

@@ -15,7 +15,7 @@
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 
 /obj/item/grenade/proc/clown_check(var/mob/living/user)
-	if((CLUMSY in user.mutations) && prob(50))
+	if((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>Huh? How does this thing work?</span>")
 
 		activate(user)
@@ -29,7 +29,7 @@
 /*/obj/item/grenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
 	if (istype(target, /obj/item/storage)) return ..() // Trying to put it in a full container
 	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
-	if((user.get_active_hand() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
+	if((user.get_active_held_item() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)
 		to_chat(user, "<span class='warning'>You prime the [name]! [det_time/10] seconds!</span>")
 		active = 1
 		icon_state = initial(icon_state) + "_active"
@@ -53,7 +53,10 @@
 		. += "<span class = 'danger'>The [src] is set for instant detonation.</span>"
 
 
-/obj/item/grenade/attack_self(mob/user as mob)
+/obj/item/grenade/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!active)
 		if(clown_check(user))
 			to_chat(user, "<span class='warning'>You prime \the [name]! [det_time/10] seconds!</span>")
@@ -108,7 +111,7 @@
 	..()
 	return
 
-/obj/item/grenade/attack_hand()
+/obj/item/grenade/attack_hand(mob/user, list/params)
 	walk(src, null, null)
 	..()
 	return

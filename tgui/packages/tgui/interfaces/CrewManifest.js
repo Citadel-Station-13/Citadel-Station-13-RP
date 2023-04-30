@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useBackend } from "../backend";
 import { Box, Section, Table } from "../components";
 import { Window } from "../layouts";
@@ -9,11 +10,12 @@ import { decodeHtmlEntities } from "common/string";
  * - Communicator.js
  * - IdentificationComputer.js
  * - pda/pda_manifest.js
- * In order to fuel this UI, you must use the following code in your ui_data (or static data, doesn't really matter)
+ * In order to fuel this UI, you must use the following code in your ui_data
+ * (or static data, doesn't really matter)
  * ```dm
 if(data_core)
     data_core.get_manifest_list()
-data["manifest"] = PDA_Manifest
+data["manifest"] = GLOB.PDA_Manifest
  * ```
  */
 

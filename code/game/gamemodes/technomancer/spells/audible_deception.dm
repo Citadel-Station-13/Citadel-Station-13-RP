@@ -18,8 +18,8 @@
 	var/list/available_sounds = list(
 		"Blade Slice"			=	'sound/weapons/bladeslice.ogg',
 		"Energy Blade Slice"	=	'sound/weapons/blade1.ogg',
-		"Explosions"			=	"explosion",
-		"Distant Explosion"		=	'sound/effects/explosionfar.ogg',
+		"Explosions"			=	SFX_ALIAS_EXPLOSION,
+		"Distant Explosion"		=	'sound/soundbytes/effects/explosion/explosionfar.ogg',
 		"Sparks"				=	"sparks",
 		"Punches"				=	"punch",
 		"Glass Shattering"		=	"shatter",
@@ -83,13 +83,13 @@
 			for(var/mob/living/carbon/M in ohearers(6, T))
 				if(M.get_ear_protection() >= 2)
 					continue
-				M.SetSleeping(0)
+				M.set_sleeping(0)
 				M.stuttering += 20
 				M.ear_deaf += 30
-				M.Weaken(3)
+				M.afflict_paralyze(20 * 3)
 				if(prob(30))
-					M.Stun(10)
-					M.Paralyse(4)
+					M.afflict_stun(20 * 10)
+					M.afflict_unconscious(20 * 4)
 				else
 					M.make_jittery(50)
 				to_chat(M, "<font color='red' size='7'><b>HONK</b></font>")

@@ -1,7 +1,7 @@
 /obj/structure/closet/secure_closet/personal
 	name = "personal closet"
 	desc = "It's a secure locker for personnel. The first card swiped gains control."
-	req_access = list(access_all_personal_lockers)
+	req_access = list(ACCESS_COMMAND_LOCKERS)
 	var/registered_name = null
 
 /obj/structure/closet/secure_closet/personal/PopulateContents()
@@ -47,9 +47,8 @@
 	if (src.opened)
 		if (istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
-		user.drop_item()
-		if (W) W.forceMove(src.loc)
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
+		user.transfer_item_to_loc(W, loc)
 	else if(W.GetID())
 		var/obj/item/card/id/I = W.GetID()
 
@@ -93,7 +92,8 @@
 	set src in oview(1) // One square distance
 	set category = "Object"
 	set name = "Reset Lock"
-	if(!usr.canmove || usr.stat || usr.restrained()) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
+
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE)) // Don't use it if you're not able to! Checks for stuns, ghost and restrain
 		return
 	if(ishuman(usr))
 		src.add_fingerprint(usr)

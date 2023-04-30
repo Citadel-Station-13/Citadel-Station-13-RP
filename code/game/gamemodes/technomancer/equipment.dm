@@ -188,12 +188,18 @@
 	desc = "It's a purple gem, attached to a rod and a handle, along with small wires.  It looks like it would make a good club."
 	icon = 'icons/obj/technomancer.dmi'
 	icon_state = "scepter"
-	force = 15
+	damage_force = 15
 	slot_flags = SLOT_BELT
 	attack_verb = list("beaten", "smashed", "struck", "whacked")
 
-/obj/item/scepter/attack_self(mob/living/carbon/human/user)
-	var/obj/item/item_to_test = user.get_other_hand(src)
+/obj/item/scepter/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/human/H = user
+	if(!istype(H))
+		return
+	var/obj/item/item_to_test = H.get_other_hand(src)
 	if(istype(item_to_test, /obj/item/spell))
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_use_cast(user)

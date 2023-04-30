@@ -1,5 +1,5 @@
 // The Gun //
-/obj/item/gun/projectile/cell_loaded //this one can load both medical and security cells! for ERT/admin use.
+/obj/item/gun/ballistic/cell_loaded //this one can load both medical and security cells! for ERT/admin use.
 	name = "multipurpose cell-loaded revolver"
 	desc = "Variety is the spice of life! This weapon is a hybrid of the NT-102b 'Nanotech Selectable-Fire Weapon' and the Vey-Med ML-3 'Medigun', dubbed the 'NSFW-ML3M'. \
 	It can fire both harmful and healing cells with an internal nanite fabricator and energy weapon cell loader. Up to three combinations of \
@@ -27,7 +27,7 @@
 	var/max_charge = 0
 	charge_sections = 5
 
-/obj/item/gun/projectile/cell_loaded/consume_next_projectile()
+/obj/item/gun/ballistic/cell_loaded/consume_next_projectile()
 	if(chambered && ammo_magazine)
 		var/obj/item/ammo_casing/microbattery/batt = chambered
 		if(batt.shots_left)
@@ -39,7 +39,7 @@
 					switch_to(other_batt)
 					return new chambered.projectile_type()
 
-/obj/item/gun/projectile/cell_loaded/proc/update_charge()
+/obj/item/gun/ballistic/cell_loaded/proc/update_charge()
 	charge_left = 0
 	max_charge = 0
 
@@ -57,7 +57,7 @@
 				charge_left += bullet.shots_left
 				max_charge += initial(bullet.shots_left)
 
-/obj/item/gun/projectile/cell_loaded/proc/switch_to(obj/item/ammo_casing/microbattery/new_batt)
+/obj/item/gun/ballistic/cell_loaded/proc/switch_to(obj/item/ammo_casing/microbattery/new_batt)
 	if(ishuman(loc))
 		if(chambered && new_batt.type == chambered.type)
 			to_chat(loc,"<span class='warning'>\The [src] is now using the next [new_batt.type_name] power cell.</span>")
@@ -68,7 +68,7 @@
 	update_charge()
 	update_icon()
 
-/obj/item/gun/projectile/cell_loaded/attack_self(mob/user)
+/obj/item/gun/ballistic/cell_loaded/attack_self(mob/user)
 	if(!chambered)
 		return
 
@@ -87,7 +87,7 @@
 			switch_to(next_batt)
 			break
 /*
-/obj/item/gun/projectile/cell_loaded/special_check(mob/user)
+/obj/item/gun/ballistic/cell_loaded/special_check(mob/user)
 	if(!chambered)
 		return
 
@@ -97,19 +97,20 @@
 
 	return TRUE
 */
-/obj/item/gun/projectile/cell_loaded/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/ballistic/cell_loaded/load_ammo(var/obj/item/A, mob/user)
 	. = ..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
 		switch_to(ammo_magazine.stored_ammo[1])
 
-/obj/item/gun/projectile/cell_loaded/unload_ammo(mob/user, var/allow_dump=1)
+/obj/item/gun/ballistic/cell_loaded/unload_ammo(mob/user, var/allow_dump=1)
 	chambered = null
 	return ..()
 
-/obj/item/gun/projectile/cell_loaded/update_icon()
+/obj/item/gun/ballistic/cell_loaded/update_overlays()
+	. = ..()
+
 	update_charge()
 
-	cut_overlays()
 	if(!chambered)
 		return
 
@@ -119,13 +120,13 @@
 	//Mode bar
 	var/image/mode_bar = image(icon, icon_state = "[initial(icon_state)]_type")
 	mode_bar.color = batt_color
-	add_overlay(mode_bar)
+	. += mode_bar
 
 	//Barrel color
 	var/image/barrel_color = image(icon, icon_state = "[initial(icon_state)]_barrel")
 	barrel_color.alpha = 150
 	barrel_color.color = batt_color
-	add_overlay(barrel_color)
+	. += barrel_color
 
 	//Charge bar
 	var/ratio = CEILING(((charge_left / max_charge) * charge_sections), 1)
@@ -133,8 +134,7 @@
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i
 		charge_bar.color = batt_color
-		add_overlay(charge_bar)
-
+		. += charge_bar
 
 // The Magazine //
 /obj/item/ammo_magazine/cell_mag
@@ -163,8 +163,8 @@
 		if(stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(B)
-		B.loc = src
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		stored_ammo.Add(B)
 		update_icon()
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
@@ -208,7 +208,7 @@
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	var/shots_left = 4
 
@@ -216,7 +216,7 @@
 	caliber = "nsfw"
 	var/type_color = null
 	var/type_name = null
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 
 /obj/item/ammo_casing/microbattery/Initialize(mapload)
 	. = ..()
@@ -243,7 +243,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid/PopulateContents()
-	new /obj/item/gun/projectile/cell_loaded(src)
+	new /obj/item/gun/ballistic/cell_loaded(src)
 	new /obj/item/ammo_magazine/cell_mag/advanced(src)
 	new /obj/item/ammo_casing/microbattery/combat/stun(src)
 	new /obj/item/ammo_casing/microbattery/combat/stun(src)
@@ -263,7 +263,7 @@
 	max_w_class = ITEMSIZE_NORMAL
 
 /obj/item/storage/secure/briefcase/nsfw_pack_hybrid_combat/PopulateContents()
-	new /obj/item/gun/projectile/cell_loaded(src)
+	new /obj/item/gun/ballistic/cell_loaded(src)
 	new /obj/item/ammo_magazine/cell_mag/advanced(src)
 	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)
 	new /obj/item/ammo_casing/microbattery/combat/shotstun(src)

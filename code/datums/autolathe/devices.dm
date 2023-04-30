@@ -37,9 +37,9 @@
 
 /datum/category_item/autolathe/devices/geiger
 	name = "geiger counter"
-	path =/obj/item/geiger
+	path =/obj/item/geiger_counter
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/category_item/autolathe/devices/sleevecard
 	name = "sleevecard"

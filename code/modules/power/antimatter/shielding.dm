@@ -1,5 +1,5 @@
-//like orange but only checks north/south/east/west for one step
-proc/cardinalrange(var/center)
+/// Like orange but only checks north/south/east/west for one step.
+/proc/cardinalrange(var/center)
 	var/list/things = list()
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(center, direction)
@@ -13,8 +13,8 @@ proc/cardinalrange(var/center)
 
 	icon = 'icons/obj/machines/antimatter.dmi'
 	icon_state = "shield"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	dir = 1
 	use_power = USE_POWER_OFF //Living things generally dont use power
 	idle_power_usage = 0
@@ -87,7 +87,7 @@ proc/cardinalrange(var/center)
 	return 0
 
 
-/obj/machinery/am_shielding/ex_act(severity)
+/obj/machinery/am_shielding/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			stability -= 80
@@ -99,29 +99,34 @@ proc/cardinalrange(var/center)
 	return
 
 
-/obj/machinery/am_shielding/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.check_armour != "bullet")
-		stability -= Proj.force/2
+/obj/machinery/am_shielding/bullet_act(var/obj/projectile/Proj)
+	if(Proj.damage_flag != "bullet")
+		stability -= Proj.damage/2
 	return 0
 
 
 /obj/machinery/am_shielding/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	for(var/direction in GLOB.alldirs)
 		var/machine = locate(/obj/machinery, get_step(loc, direction))
 		if((istype(machine, /obj/machinery/am_shielding) && machine:control_unit == control_unit)||(istype(machine, /obj/machinery/power/am_control_unit) && machine == control_unit))
-			overlays += "shield_[direction]"
+			overlays_to_add += "shield_[direction]"
 
 	if(core_check())
-		overlays += "core"
-		if(!processing) setup_core()
-	else if(processing) shutdown_core()
+		overlays_to_add += "core"
+		if(!processing)
+			setup_core()
+	else if(processing)
+		shutdown_core()
 
+	add_overlay(overlays_to_add)
 
 /obj/machinery/am_shielding/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return
-	if(W.force > 10)
-		stability -= W.force/2
+	if(W.damage_force > 10)
+		stability -= W.damage_force/2
 		check_stability()
 	..()
 	return
@@ -189,10 +194,10 @@ proc/cardinalrange(var/center)
 	icon_state = "box"
 	item_state = "electronic"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
-	matter = list(DEFAULT_WALL_MATERIAL = 100)
+	matter = list(MAT_STEEL = 100)
 
 /obj/item/am_shielding_container/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/multitool) && istype(src.loc,/turf))

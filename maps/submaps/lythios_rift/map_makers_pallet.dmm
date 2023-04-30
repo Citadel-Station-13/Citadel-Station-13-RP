@@ -1,0 +1,674 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"br" = (
+/turf/simulated/wall,
+/area/space)
+"bx" = (
+/turf/simulated/floor/water/deep/indoors/lythios43c,
+/area/space)
+"dv" = (
+/turf/simulated/floor/bluegrid/lythios43c,
+/area/space)
+"eO" = (
+/turf/simulated/mineral/floor/lythios43c,
+/area/space)
+"eQ" = (
+/obj/random/underdark,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"gc" = (
+/obj/structure/sandbag,
+/turf/space/basic,
+/area/space)
+"gw" = (
+/obj/random/triumph,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"hj" = (
+/turf/simulated/floor/tiled/monotile/lythios43c,
+/area/space)
+"jK" = (
+/obj/structure/girder,
+/turf/space/basic,
+/area/space)
+"mC" = (
+/obj/machinery/crystal/lava,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"mX" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_base)
+"mZ" = (
+/obj/random/crystal/normal_ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"nc" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/space)
+"nv" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_deep)
+"pm" = (
+/turf/simulated/floor/water/indoors/lythios43c,
+/area/space)
+"pZ" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/space)
+"qi" = (
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/space)
+"qU" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c/indoors,
+/area/space)
+"su" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c,
+/area/space)
+"sB" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/space)
+"tO" = (
+/obj/random/mre,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"tV" = (
+/obj/structure/lattice,
+/turf/space/basic,
+/area/space)
+"ug" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
+/area/space)
+"um" = (
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
+/area/space)
+"vj" = (
+/obj/random/empty_or_lootable_crate,
+/obj/random,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"wG" = (
+/obj/item/storage/briefcase/inflatable{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"xi" = (
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"xu" = (
+/turf/space/basic,
+/area/space)
+"xA" = (
+/obj/effect/overlay/snow/airlock,
+/obj/machinery/door/airlock/external,
+/turf/space/basic,
+/area/space)
+"yQ" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c,
+/area/space)
+"yR" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/space)
+"zL" = (
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/space)
+"Au" = (
+/turf/simulated/floor/tiled/lythios43c,
+/area/space)
+"AA" = (
+/turf/simulated/floor/lythios43c,
+/area/space)
+"AF" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/space)
+"AG" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"AP" = (
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/space)
+"Dv" = (
+/obj/machinery/crystal,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"EU" = (
+/obj/random/crystal,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"GQ" = (
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/space)
+"HG" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west_caves)
+"HI" = (
+/turf/simulated/mineral/lythios43c,
+/area/space)
+"JQ" = (
+/turf/simulated/mineral/floor/lythios43c/indoors,
+/area/space)
+"Kb" = (
+/turf/simulated/floor/wood/lythios43c,
+/area/space)
+"Md" = (
+/obj/structure/window/wooden{
+	dir = 5
+	},
+/turf/space/basic,
+/area/space)
+"Mh" = (
+/turf/template_noop,
+/area/template_noop)
+"NF" = (
+/obj/effect/overlay/snow/airlock,
+/turf/space/basic,
+/area/space)
+"NN" = (
+/obj/random/multiple/minevault,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"PH" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/space/basic,
+/area/space)
+"PK" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"QA" = (
+/obj/structure/largecrate,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"Rr" = (
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/space)
+"RW" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/simulated/wall/wood,
+/area/space)
+"Td" = (
+/turf/simulated/wall/lythios43c,
+/area/space)
+"Tx" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/space)
+"Uq" = (
+/obj/random/turf/lava,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"UM" = (
+/turf/simulated/floor/carpet/lythios43c,
+/area/space)
+"Vl" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/space)
+"VC" = (
+/obj/random/roguemineloot,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+"VU" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/space)
+"XP" = (
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/space)
+"XQ" = (
+/turf/space/basic,
+/area/rift/surfacebase/outside/west)
+"YH" = (
+/obj/structure/girder/displaced,
+/turf/space/basic,
+/area/space)
+"YR" = (
+/obj/effect/overlay/snow/floor,
+/turf/space/basic,
+/area/space)
+"ZZ" = (
+/obj/random/outcrop,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/space)
+
+(1,1,1) = {"
+Mh
+Mh
+um
+um
+AG
+AG
+HI
+HI
+HI
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+"}
+(2,1,1) = {"
+Mh
+Mh
+um
+um
+vj
+gw
+HI
+JQ
+JQ
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+"}
+(3,1,1) = {"
+Mh
+Mh
+um
+um
+tO
+eQ
+HI
+JQ
+JQ
+HI
+xu
+xu
+xu
+xu
+xu
+xu
+JQ
+xu
+xu
+eO
+"}
+(4,1,1) = {"
+Mh
+Mh
+um
+um
+NN
+VC
+HI
+HI
+HI
+HI
+xu
+YR
+xu
+xu
+xu
+xu
+JQ
+xu
+xu
+eO
+"}
+(5,1,1) = {"
+Mh
+Mh
+um
+um
+ZZ
+AG
+tV
+tV
+tV
+tV
+xu
+YR
+xu
+xu
+xu
+Td
+JQ
+xu
+br
+eO
+"}
+(6,1,1) = {"
+Mh
+Mh
+um
+um
+AG
+AG
+tV
+tV
+tV
+tV
+xu
+NF
+XQ
+XQ
+xu
+Td
+Tx
+xu
+br
+AA
+"}
+(7,1,1) = {"
+Mh
+Mh
+um
+um
+QA
+wG
+tV
+tV
+tV
+tV
+xu
+xA
+XQ
+XQ
+xu
+Td
+Tx
+xu
+br
+AA
+"}
+(8,1,1) = {"
+Mh
+Mh
+um
+um
+AG
+AG
+Md
+xu
+xu
+RW
+xu
+xu
+HG
+HG
+xu
+Td
+Tx
+xu
+br
+AA
+"}
+(9,1,1) = {"
+Mh
+Mh
+um
+um
+Uq
+AG
+PH
+xu
+xu
+RW
+xu
+xu
+HG
+HG
+xu
+Td
+qU
+xu
+br
+su
+"}
+(10,1,1) = {"
+Mh
+Mh
+xu
+xu
+EU
+AG
+gc
+xu
+xu
+RW
+xu
+xu
+nv
+nv
+xu
+Td
+qU
+xu
+br
+su
+"}
+(11,1,1) = {"
+Mh
+Mh
+xu
+xu
+xi
+AG
+gc
+xu
+jK
+RW
+xu
+xu
+nv
+nv
+xu
+Td
+qU
+xu
+br
+su
+"}
+(12,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+mZ
+AG
+xu
+xu
+YH
+RW
+xu
+xu
+mX
+mX
+xu
+Td
+yR
+xu
+br
+Vl
+"}
+(13,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+xu
+xu
+xu
+RW
+xu
+xu
+mX
+mX
+xu
+Td
+yR
+xu
+br
+Vl
+"}
+(14,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+xu
+Td
+yR
+xu
+br
+Vl
+"}
+(15,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+bx
+bx
+pm
+pm
+Kb
+Kb
+xu
+xu
+xu
+Td
+nc
+xu
+br
+VU
+"}
+(16,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+bx
+bx
+pm
+pm
+Kb
+Kb
+xu
+xu
+xu
+Td
+nc
+xu
+br
+VU
+"}
+(17,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+AG
+AG
+dv
+dv
+Rr
+Rr
+Au
+Au
+hj
+qi
+ug
+Td
+nc
+xu
+br
+VU
+"}
+(18,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+PK
+AG
+dv
+dv
+Rr
+Rr
+Au
+Au
+xu
+zL
+sB
+Td
+AF
+xu
+br
+AP
+"}
+(19,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+mC
+AG
+Tx
+Tx
+UM
+UM
+XP
+XP
+xu
+yQ
+GQ
+Td
+AF
+xu
+br
+AP
+"}
+(20,1,1) = {"
+Mh
+Mh
+pZ
+pZ
+Dv
+AG
+Tx
+Tx
+UM
+UM
+XP
+XP
+xu
+AF
+AG
+Td
+AF
+xu
+br
+AP
+"}

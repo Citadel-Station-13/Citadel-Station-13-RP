@@ -1,7 +1,6 @@
+//! Construct Spells
 
-//////////////////////////////Construct Spells/////////////////////////
-
-proc/findNullRod(var/atom/target)
+/proc/findNullRod(atom/target)
 	if(istype(target,/obj/item/nullrod))
 		return 1
 	else if(target.contents)
@@ -427,11 +426,11 @@ proc/findNullRod(var/atom/target)
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_magic.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
-	throwforce = 0
-	force = 0
+	throw_force = 0
+	damage_force = 0
 	show_examine = FALSE
 	owner = null
 	del_for_null_core = FALSE
@@ -504,14 +503,14 @@ proc/findNullRod(var/atom/target)
 	icon_state = "generic"
 	desc = "This is a generic template that shoots projectiles.  If you can read this, the game broke!"
 	cast_methods = CAST_RANGED
-	var/obj/item/projectile/spell_projectile = null
+	var/obj/projectile/spell_projectile = null
 	var/pre_shot_delay = 0
 	var/fire_sound = null
 	var/energy_cost_per_shot = 5
 
 /obj/item/spell/construct/projectile/on_ranged_cast(atom/hit_atom, mob/living/user)
 	if(set_up(hit_atom, user))
-		var/obj/item/projectile/new_projectile = make_projectile(spell_projectile, user)
+		var/obj/projectile/new_projectile = make_projectile(spell_projectile, user)
 		new_projectile.old_style_target(hit_atom)
 		new_projectile.fire()
 		log_and_message_admins("has casted [src] at \the [hit_atom].")
@@ -520,8 +519,8 @@ proc/findNullRod(var/atom/target)
 		return 1
 	return 0
 
-/obj/item/spell/construct/projectile/proc/make_projectile(obj/item/projectile/projectile_type, mob/living/user)
-	var/obj/item/projectile/P = new projectile_type(get_turf(user))
+/obj/item/spell/construct/projectile/proc/make_projectile(obj/projectile/projectile_type, mob/living/user)
+	var/obj/projectile/P = new projectile_type(get_turf(user))
 	return P
 
 /obj/item/spell/construct/projectile/proc/set_up(atom/hit_atom, mob/living/user)
@@ -530,7 +529,7 @@ proc/findNullRod(var/atom/target)
 			if(pre_shot_delay)
 				var/image/target_image = image(icon = 'icons/obj/spells.dmi', loc = get_turf(hit_atom), icon_state = "target")
 				SEND_IMAGE(user, target_image)
-				user.Stun(pre_shot_delay / 10)
+				user.afflict_stun(20 * pre_shot_delay / 10)
 				sleep(pre_shot_delay)
 				qdel(target_image)
 				if(owner)
@@ -561,18 +560,18 @@ proc/findNullRod(var/atom/target)
 	icon_state = "generic"
 	desc = "Your manipulators fire searing beams of inverted light."
 	cast_methods = CAST_RANGED
-	spell_projectile = /obj/item/projectile/beam/inversion
+	spell_projectile = /obj/projectile/beam/inversion
 	pre_shot_delay = 0
 	cooldown = 5
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 
-/obj/item/projectile/beam/inversion
+/obj/projectile/beam/inversion
 	name = "inversion beam"
 	icon_state = "invert"
 	fire_sound = 'sound/weapons/spiderlunge.ogg'
 	damage = 15
 	damage_type = BURN
-	check_armour = "laser"
+	damage_flag = ARMOR_LASER
 	armor_penetration = 60
 	light_range = 2
 	light_power = -2
@@ -658,10 +657,10 @@ proc/findNullRod(var/atom/target)
 		var/mob/living/L = hit_atom
 		L.visible_message("<span class='danger'>\The [user] [attack_message] \the [L], sending them flying!</span>")
 		playsound(src, "punch", 50, 1)
-		L.Weaken(2)
+		L.afflict_paralyze(20 * 2)
 		L.adjustBruteLoss(rand(30, 50))
 		var/throwdir = get_dir(src, L)
-		L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+		L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 	if(istype(hit_atom, /turf/simulated/wall))
 		var/turf/simulated/wall/W = hit_atom
 		user.visible_message("<span class='warning'>\The [user] rears its fist, preparing to hit \the [W]!</span>")

@@ -1252,7 +1252,7 @@ datum
 			proc/find_target()
 				..()
 				if(target && target.current)
-					var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
+					var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
 					explanation_text = "[target.current.real_name], the [target.role_alt_title ? target.role_alt_title : target.assigned_role], has defied us for the last time.  Make an example of [T.him], and bring us [T.his] severed head."
 				else
 					explanation_text = "Free Objective"
@@ -1262,7 +1262,7 @@ datum
 			find_target_by_role(role, role_type=0)
 				..(role, role_type)
 				if(target && target.current)
-					var/datum/gender/T = gender_datums[target.current.get_visible_gender()]
+					var/datum/gender/T = GLOB.gender_datums[target.current.get_visible_gender()]
 					explanation_text = "[target.current.real_name], the [target.role_alt_title ? target.role_alt_title : (!role_type ? target.assigned_role : target.special_role)], has defied us for the last time.  Make an example of [T.him], and bring us [T.his] severed head."
 				else
 					explanation_text = "Free Objective"

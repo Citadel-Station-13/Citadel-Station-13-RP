@@ -2,7 +2,7 @@
  * File containing special 'hook' projectiles. Function is dictated by the launcher's intent.
  */
 
-/obj/item/projectile/energy/hook
+/obj/projectile/energy/hook
 	name = "graviton sphere"
 	icon_state = "bluespace"
 
@@ -11,7 +11,7 @@
 	damage = 5
 	speed = 2
 	damage_type = BURN
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 	armor_penetration = 15
 
 	var/impact_sound = 'sound/effects/uncloak.ogg'
@@ -27,26 +27,26 @@
 	var/list/help_messages = list("slaps", "pokes", "nudges", "bumps", "pinches")
 	var/done_mob_unique = FALSE	// Has the projectile already done something to a mob?
 
-/obj/item/projectile/energy/hook/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
+/obj/projectile/energy/hook/launch_projectile(atom/target, target_zone, mob/user, params, angle_override, forced_spread = 0)
 	var/expected_distance = get_dist(target, loc)
 	range = expected_distance // So the hook hits the ground if no mob is hit.
 	target_distance = expected_distance
 	if(firer)	// Needed to ensure later checks in impact and on hit function.
 		launcher_intent = firer.a_intent
-		firer.Beam(src,icon_state=beam_state,icon='icons/effects/beam.dmi',time=60, maxdistance=10,beam_type=/obj/effect/ebeam,beam_sleep_time=1)
+		firer.Beam(src,icon_state=beam_state,icon='icons/effects/beam.dmi',time=60, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(launcher_intent)
 		switch(launcher_intent)
 			if(INTENT_HARM)
-				check_armour = "bullet"
+				damage_flag = ARMOR_BULLET
 				damage *= 3
 				sharp = 1
 				agony = 20
 			if(INTENT_GRAB)
-				check_armour = "melee"
+				damage_flag = ARMOR_MELEE
 				damage_type = HALLOSS
 			if(INTENT_DISARM)
-				check_armour = "melee"
+				damage_flag = ARMOR_MELEE
 				if(prob(30))	// A chance for a successful hit to either knock someone down, or cause minor disorientation.
 					weaken = 1
 				else
@@ -58,16 +58,16 @@
 
 	..() // Does the regular launching stuff.
 
-/obj/item/projectile/energy/hook/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
+/obj/projectile/energy/hook/on_hit(var/atom/target, var/blocked = 0, var/def_zone = null)
 	if(..())
 		perform_intent_unique(target)
 
-/obj/item/projectile/energy/hook/on_impact(var/atom/A)
+/obj/projectile/energy/hook/on_impact(var/atom/A)
 	perform_intent_unique(get_turf(A))
 
-/obj/item/projectile/energy/hook/proc/ranged_disarm(var/mob/living/carbon/human/H)
+/obj/projectile/energy/hook/proc/ranged_disarm(var/mob/living/carbon/human/H)
 	if(istype(H))
-		var/list/holding = list(H.get_active_hand() = 60, H.get_inactive_hand() = 40)
+		var/list/holding = list(H.get_active_held_item() = 60, H.get_inactive_held_item() = 40)
 
 		for(var/obj/item/gun/W in holding)	// Guns are complex devices, both of a mechanical and electronic nature. A weird gravity ball or other type of object trying to pull or grab it is likely not safe.
 			if(W && prob(holding[W]))
@@ -79,7 +79,7 @@
 					visible_message("<span class='danger'>[H]'s [W] goes off due to \the [src]!</span>")
 					return W.afterattack(target,H)
 
-		if(!(H.species.flags & NO_SLIP) && prob(50))
+		if(!(H.species.species_flags & NO_SLIP) && prob(50))
 			var/armor_check = H.run_armor_check(def_zone, "melee")
 			H.apply_effect(3, WEAKEN, armor_check)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -94,14 +94,12 @@
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				return
 
-			for(var/obj/item/I in holding)
-				if(I)
-					H.drop_from_inventory(I)
-					visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-					return
+			H.drop_all_held_items()
+			visible_message("<span class='danger'>\The [src] has disarmed [H]!</span>")
+			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+			return
 
-/obj/item/projectile/energy/hook/proc/perform_intent_unique(atom/target)
+/obj/projectile/energy/hook/proc/perform_intent_unique(atom/target)
 	playsound(src, impact_sound, 40, 1)
 	var/success = FALSE
 	if(istype(target,/turf))
@@ -137,7 +135,7 @@
 				spawn(2)
 					playsound(target, crack_sound, 40, 1)
 				visible_message("<span class='notice'>\The [T] is snatched by \the [src]!</span>")
-				T.throw_at(get_turf(firer), 7, 1, src)
+				T.throw_at_old(get_turf(firer), 7, 1, src)
 				success = TRUE
 	else if(isliving(target) && !done_mob_unique)
 		var/mob/living/L = target
@@ -162,7 +160,7 @@
 						ranged_disarm(L)
 					else
 						L.visible_message("<span class='danger'>\The [src] sends \the [L] stumbling backwards.</span>")
-						L.throw_at(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
+						L.throw_at_old(get_turf(get_step(L,get_dir(firer,L))), 1, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 				if(INTENT_GRAB)
@@ -170,13 +168,13 @@
 					spawn(2)
 						playsound(STurf, crack_sound, 60, 1)
 					L.visible_message("<span class='critical'>\The [src] rips [L] towards \the [firer]!</span>")
-					L.throw_at(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
+					L.throw_at_old(get_turf(get_step(firer,get_dir(firer,L))), 6, 1, src)
 					done_mob_unique = TRUE
 					success = TRUE
 	else if(istype(target, /obj/structure))
 		var/obj/structure/S = target
 		if(!S.anchored)
-			S.throw_at(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src)
+			S.throw_at_old(get_turf(get_step(firer,get_dir(firer,S))), 4, 1, src)
 			success = TRUE
 	qdel(my_tracking_beam)
 	return success
@@ -185,7 +183,7 @@
  * Hook subtypes.
  */
 
-/obj/item/projectile/energy/hook/ring
+/obj/projectile/energy/hook/ring
 	name = "green orb"
 	icon_state = "green_laser"
 	beam_state = "n_beam"

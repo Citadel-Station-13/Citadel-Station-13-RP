@@ -26,7 +26,7 @@
 
 /datum/modifier/trait/phobia/proc/adjust_fear(var/amount)
 	var/last_fear = current_fear
-	current_fear = between(0, current_fear + amount, max_fear)
+	current_fear = clamp( current_fear + amount, 0,  max_fear)
 
 	// Handle messages.  SAFEPICK() is used so that if no messages are defined, it just does nothing, verses runtiming.
 	var/message = null
@@ -105,11 +105,11 @@
 	var/fear_amount = 0
 	for(var/atom/thing in view(5, holder)) // It's 5 and not 7 so players have a chance to go away before getting the prompts, and for performance.
 		// Blood stains are bad.
-		if(istype(thing, /obj/effect/decal/cleanable/blood))
-			var/obj/effect/decal/cleanable/blood/B = thing
+		if(istype(thing, /obj/effect/debris/cleanable/blood))
+			var/obj/effect/debris/cleanable/blood/B = thing
 			// Tracks are special, apparently.
-			if(istype(thing, /obj/effect/decal/cleanable/blood/tracks))
-				var/obj/effect/decal/cleanable/blood/tracks/T = B
+			if(istype(thing, /obj/effect/debris/cleanable/blood/tracks))
+				var/obj/effect/debris/cleanable/blood/tracks/T = B
 				for(var/datum/fluidtrack/F in T.stack)
 					if(F.basecolor != SYNTH_BLOOD_COLOUR)
 						fear_amount++
@@ -195,7 +195,7 @@
 
 	var/fear_amount = 0
 	for(var/atom/thing in view(5, holder)) // See haemophobia for why this is 5.
-		if(istype(thing, /obj/effect/decal/cleanable/spiderling_remains)) // Dead spiderlings are a bit spooky.
+		if(istype(thing, /obj/effect/debris/cleanable/spiderling_remains)) // Dead spiderlings are a bit spooky.
 			fear_amount += 1
 
 		if(istype(thing, /obj/effect/spider/spiderling)) // Live spiderlings are also spooky.
@@ -288,7 +288,7 @@
 				fear_amount += 1
 
 	var/turf/T = get_turf(holder)
-	if(T.get_lumcount() <= LIGHTING_SOFT_THRESHOLD) // Standing in complete darkness.
+	if(T.get_lumcount() <= 0) // Standing in complete darkness.
 		fear_amount += 5
 
 	return fear_amount
@@ -410,7 +410,7 @@
 		if(istype(thing, /obj/item/weed_extract))
 			fear_amount += 1
 
-		if(istype(thing, /obj/effect/decal/cleanable/mucus)) // Blennophobia apparently includes mucus, so!
+		if(istype(thing, /obj/effect/debris/cleanable/mucus)) // Blennophobia apparently includes mucus, so!
 			fear_amount += 2
 
 		if(istype(thing, /obj/item/slime_extract)) // Gooey.
@@ -496,7 +496,7 @@
 
 		if(istype(thing, /obj/machinery/iv_drip))
 			var/obj/machinery/iv_drip/I = thing
-			if(I.beaker)
+			if(I.reagent_container)
 				fear_amount += 8
 			else
 				fear_amount += 6
@@ -670,4 +670,3 @@
 		"WetSkrell was a mistake."
 		)
 	return pick(generic_responses)
-

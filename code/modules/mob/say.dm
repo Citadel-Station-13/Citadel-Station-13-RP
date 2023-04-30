@@ -1,6 +1,7 @@
 /mob/proc/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	return
 
+
 /mob/proc/whisper_wrapper()
 	var/message = input("","whisper (text)") as text|null
 	if(message)
@@ -28,27 +29,17 @@
 	set name = "Me"
 	set category = "IC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<font color='red'>Speech is currently admin-disabled.</font>")
-		return
-
-	//VOREStation Edit Start
 	if(muffled)
 		return me_verb_subtle(message)
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages (within reason)
-	//VOREStation Edit End
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages (within reason)
 
 	set_typing_indicator(FALSE)
 	if(use_me)
-		usr.emote("me",usr.emote_type,message)
+		usr.emote("me",SAYCODE_TYPE_ALWAYS,message)
 	else
 		usr.emote(message)
 
 /mob/proc/say_dead(var/message)
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-
 	if(!client)
 		return // Clientless mobs shouldn't be trying to talk in deadchat.
 
@@ -58,7 +49,11 @@
 			return
 
 	if(!is_preference_enabled(/datum/client_preference/show_dsay))
-		to_chat(usr, "<span class='danger'>You have deadchat muted.</span>")
+		to_chat(src, "<span class='danger'>You have deadchat muted.</span>")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
 		return
 
 	message = emoji_parse(say_emphasis(message))
@@ -86,7 +81,7 @@
 			return 1
 		return 0
 
-	if(speaking.flags & INNATE)
+	if(speaking.language_flags & LANGUAGE_INNATE)
 		return 1
 
 	//Language check.
@@ -153,19 +148,22 @@
 	var/prefix = copytext_char(message,1,2)
 	// This is for audible emotes
 	if(length_char(message) >= 1 && prefix == "!")
-		return GLOB.all_languages["Noise"]
+		return SScharacters.resolve_language_name("Noise")
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)
-		var/datum/language/L = GLOB.language_keys[language_prefix]
+		var/datum/language/L = SScharacters.resolve_language_key(language_prefix)
 		if (can_speak(L))
 			return L
 		else
-			var/alert_result = alert(src, "You dont know the langauge you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
-			if(alert_result == "Yes")
-				return GLOB.all_languages[LANGUAGE_GIBBERISH]
-			else
-				if(isliving(src))
-					var/mob/living/caller = src
-					return GLOB.all_languages[caller.default_language]
+			var/alert_result = alert(src, "You don't know that language. Would you rather speak your default language, gibberish, or nothing?", "Unknown Language Alert","Default Language","Gibberish", "Whoops I made a typo!")
+			switch(alert_result)
+				if("Default Language")
+					if(isliving(src))
+						var/mob/living/caller = src
+						return SScharacters.resolve_language_name(caller.default_language)
+				if("Gibberish")
+					return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+				if("Whoops I made a typo!")
+					return -1
 	return null

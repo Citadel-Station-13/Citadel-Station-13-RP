@@ -1,11 +1,12 @@
 {
 	"recommendations": [
-		"gbasood.byond-dm-language-support",
 		"platymuus.dm-langclient",
-		"EditorConfig.EditorConfig",
+		"editorconfig.editorconfig",
 		"arcanis.vscode-zipfs",
 		"dbaeumer.vscode-eslint",
 		"stylemistake.auto-comment-blocks",
-		"Donkie.vscode-tgstation-test-adapter"
+		"donkie.vscode-tgstation-test-adapter",
+		"anturk.dmi-editor",
+		"aaron-bond.better-comments"
 	]
 }

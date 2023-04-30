@@ -57,8 +57,8 @@
 /mob/living/proc/IGetID()
 
 /mob/living/simple_mob/IGetID()
-	if(myid)
-		return myid.GetID()
+	if(access_card)
+		return access_card.GetID()
 
 /mob/living/proc/instasis()
 

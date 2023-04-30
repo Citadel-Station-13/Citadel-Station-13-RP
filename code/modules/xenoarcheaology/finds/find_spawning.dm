@@ -23,7 +23,7 @@
 
 	if(prob(40))
 		material_descriptor = pick("rusted ","dusty ","archaic ","fragile ")
-	source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+	source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 
 	var/talkative = 0
 	if(prob(5))
@@ -37,7 +37,7 @@
 			item_type = "bowl"
 			if(prob(33))
 				new_item = new /obj/item/reagent_containers/glass/replenishing(src.loc)
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 			else
 				new_item = new /obj/item/reagent_containers/glass/beaker(src.loc)
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
@@ -51,11 +51,11 @@
 			item_type = "urn"
 			if(prob(33))
 				new_item = new /obj/item/reagent_containers/glass/replenishing(src.loc)
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 			else
 				new_item = new /obj/item/reagent_containers/glass/beaker(src.loc)
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
-			new_item.icon_state = "urn[rand(1,2)]"
+			new_item.icon_state = "urn[rand(1,3)]"
 			apply_image_decorations = 1
 			if(prob(20))
 				additional_desc = "It [pick("whispers faintly","makes a quiet roaring sound","whistles softly","thrums quietly","throbs")] if you put it to your ear."
@@ -68,7 +68,7 @@
 			else
 				new_item = new /obj/item/material/kitchen/utensil/spoon(src.loc)
 			if(prob(60))
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 			additional_desc = "[pick("It's like no [item_type] you've ever seen before",\
 			"It's a mystery how anyone is supposed to eat with this",\
 			"You wonder what the creator's mouth was shaped like")]."
@@ -76,13 +76,13 @@
 			name = "statuette"
 			icon = 'icons/obj/xenoarchaeology.dmi'
 			item_type = "statuette"
-			icon_state = "statuette[rand(1,3)]"
+			icon_state = "statuette[rand(1,4)]"
 			additional_desc = "It depicts a [pick("small","ferocious","wild","pleasing","hulking")] \
 			[pick("alien figure","rodent-like creature","reptilian alien","primate","unidentifiable object")] \
 			[pick("performing unspeakable acts","posing heroically","in a fetal position","cheering","sobbing","making a plaintive gesture","making a rude gesture")]."
 			if(prob(25))
 				new_item = new /obj/item/vampiric(src.loc)
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 		if(5)
 			name = "instrument"
 			icon = 'icons/obj/xenoarchaeology.dmi'
@@ -143,7 +143,7 @@
 			var/storage_amount = 2**(new_box.max_w_class-1)
 			new_box.max_storage_space = rand(storage_amount, storage_amount * 10)
 			if(prob(30))
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 				apply_image_decorations = 1
 		if(12)
 			item_type = "[pick("cylinder","tank","chamber")]"
@@ -195,7 +195,7 @@
 			if(prob(30))
 				icon = 'icons/obj/xenoarchaeology.dmi'
 				icon_state = "pen1"
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 				apply_image_decorations = 1
 		if(16)
 			apply_prefix = 0
@@ -220,7 +220,7 @@
 				new_item = new /obj/item/soulstone(src.loc)
 				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
 				new_item.icon_state = icon_state
-				new_item.origin_tech[TECH_ARCANE] = 2
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 2)
 		if(17)
 			//cultblade
 			apply_prefix = 0
@@ -236,7 +236,7 @@
 		if(19)
 			apply_prefix = 0
 			new_item = new /obj/item/material/sword(src.loc)
-			new_item.force = 10
+			new_item.damage_force = 10
 			item_type = new_item.name
 			if(prob(30))
 				new_item.icon = 'icons/obj/xenoarchaeology.dmi'
@@ -251,14 +251,14 @@
 
 			var/new_type = pick(possible_spawns)
 			new_item = new new_type(src.loc)
-			new_item.origin_tech[TECH_ARCANE] = 1
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 		if(21)
 			//soulstone
 			apply_prefix = 0
 			new_item = new /obj/item/soulstone(src.loc)
 			item_type = new_item.name
 			apply_material_decorations = 0
-			new_item.origin_tech[TECH_ARCANE] = 2
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 2)
 		if(22)
 			if(prob(50))
 				new_item = new /obj/item/material/shard(src.loc)
@@ -284,7 +284,7 @@
 		if(25)
 			apply_prefix = 0
 			new_item = new /obj/item/material/sword/katana(src.loc)
-			new_item.force = 10
+			new_item.damage_force = 10
 			item_type = new_item.name
 		if(26)
 			//energy gun
@@ -306,17 +306,17 @@
 					new_gun.power_supply.rigged = 1
 				if(prob(10))
 					new_gun.power_supply.maxcharge = 0
-					new_gun.origin_tech[TECH_ARCANE] = rand(0, 1)
+					LAZYSET(new_gun.origin_tech, TECH_ARCANE, rand(0, 1))
 				if(prob(15))
 					new_gun.power_supply.charge = rand(0, new_gun.power_supply.maxcharge)
-					new_gun.origin_tech[TECH_ARCANE] = 1
+					LAZYSET(new_gun.origin_tech, TECH_ARCANE, 1)
 				else
 					new_gun.power_supply.charge = 0
 
 			item_type = "gun"
 		if(27)
 			//revolver
-			var/obj/item/gun/projectile/new_gun = new /obj/item/gun/projectile/revolver(src.loc)
+			var/obj/item/gun/ballistic/new_gun = new /obj/item/gun/ballistic/revolver(src.loc)
 			new_item = new_gun
 			new_item.icon_state = "gun[rand(1,4)]"
 			new_item.icon = 'icons/obj/xenoarchaeology.dmi'
@@ -434,7 +434,7 @@
 			//gas mask
 			if(prob(25))
 				new_item = new /obj/item/clothing/mask/gas/poltergeist(src.loc)
-				new_item.origin_tech[TECH_ARCANE] = 1
+				LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
 			else
 				new_item = new /obj/item/clothing/mask/gas(src.loc)
 			if(prob(40))
@@ -468,8 +468,8 @@
 
 			var/new_type = pick(alien_stuff)
 			new_item = new new_type(src.loc)
-			new_item.origin_tech[TECH_ARCANE] = 2
-			new_item.origin_tech[TECH_PRECURSOR] = 1
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 2)
+			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)
 			item_type = new_item.name
 
 		if(37)
@@ -478,7 +478,7 @@
 			var/new_boat_mat = pickweight(list(
 				MAT_WOOD = 100,
 				MAT_SIFWOOD = 200,
-				DEFAULT_WALL_MATERIAL = 60,
+				MAT_STEEL = 60,
 				MAT_URANIUM = 14,
 				MAT_MARBLE = 16,
 				MAT_GOLD = 20,
@@ -494,8 +494,8 @@
 				MAT_SUPERMATTER = 1
 				))
 			var/list/alien_stuff = list(
-				/obj/vehicle/boat,
-				/obj/vehicle/boat/dragon
+				/obj/vehicle/ridden/boat,
+				/obj/vehicle/ridden/boat/dragon
 				)
 			if(prob(30))
 				new /obj/item/oar(src.loc, new_boat_mat)
@@ -526,7 +526,7 @@
 
 	if(istype(new_item, /obj/item/material))
 		var/new_item_mat = pickweight(list(
-			DEFAULT_WALL_MATERIAL = 80,
+			MAT_STEEL = 80,
 			MAT_WOOD = 20,
 			MAT_SIFWOOD = 40,
 			MAT_URANIUM = 14,
@@ -551,11 +551,11 @@
 			TH.force_unwielded *= 0.7
 			TH.force_wielded *= 0.5
 		else
-			MW.force *= 0.3
+			MW.damage_force *= 0.3
 
 	var/decorations = ""
 	if(apply_material_decorations)
-		source_material = pick("cordite","quadrinium",DEFAULT_WALL_MATERIAL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
+		source_material = pick("cordite","quadrinium",MAT_STEEL,"titanium","aluminium","ferritic-alloy","plasteel","duranium")
 		if(istype(new_item, /obj/item/material))
 			var/obj/item/material/MW = new_item
 			source_material = MW.material.display_name
@@ -615,8 +615,9 @@
 
 		if(talkative)
 			new_item.talking_atom = new(new_item)
-			new_item.origin_tech[TECH_ARCANE] = 1
-			new_item.origin_tech[TECH_PRECURSOR] = 1
+			LAZYINITLIST(new_item.origin_tech)
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
+			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)
 
 		var/turf/simulated/mineral/T = get_turf(new_item)
 		if(istype(T))
@@ -626,5 +627,6 @@
 
 	else if(talkative)
 		src.talking_atom = new(src)
-		new_item.origin_tech[TECH_ARCANE] = 1
-		new_item.origin_tech[TECH_PRECURSOR] = 1
+		if(new_item)
+			LAZYSET(new_item.origin_tech, TECH_ARCANE, 1)
+			LAZYSET(new_item.origin_tech, TECH_PRECURSOR, 1)

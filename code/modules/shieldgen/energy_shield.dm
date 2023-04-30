@@ -5,7 +5,7 @@
 	name = "energy shield"
 	desc = "An impenetrable field of energy, capable of blocking anything as long as it's active."
 	icon = 'icons/obj/machines/shielding_vr.dmi'
-	icon_state = "shield_normal"
+	icon_state = "shield"
 	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
@@ -14,35 +14,63 @@
 	var/obj/machinery/power/shield_generator/gen = null // Owning generator
 	var/disabled_for = 0
 	var/diffused_for = 0
-	can_atmos_pass = ATMOS_PASS_YES
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
+	var/enabled_icon_state
+	var/list/pending_overlays
 
-/obj/effect/shield/update_icon()
-	if(gen && gen.check_flag(MODEFLAG_PHOTONIC) && !disabled_for && !diffused_for)
-		set_opacity(1)
+/obj/effect/shield/proc/update_visuals()
+	update_iconstate()
+	update_color()
+	update_glow()
+	update_opacity()
+
+/obj/effect/shield/proc/update_iconstate()
+	if(!enabled_icon_state)
+		enabled_icon_state = icon_state
+
+	// This logic is attempting to toggle visibility of overlays.
+	if(disabled_for || diffused_for)
+		icon_state = "shield_broken"
+		// Not cutting priority overlays, so only grab the main list.
+		if (our_overlays)
+			pending_overlays = our_overlays.Copy()
+		cut_overlays()
 	else
-		set_opacity(0)
+		icon_state = enabled_icon_state
+		if (pending_overlays)
+			set_overlays(pending_overlays)
+			pending_overlays = null
 
-	if(gen && gen.check_flag(MODEFLAG_OVERCHARGE))
-		icon_state = "shield_overcharged"
+/obj/effect/shield/proc/update_color()
+	if(disabled_for || diffused_for)
+		color = "#FFA500"
+	else if(gen?.check_flag(MODEFLAG_OVERCHARGE))
+		color = "#FE6666"
 	else
-		icon_state = "shield_normal"
+		color = "#00AAFF"
 
+/obj/effect/shield/proc/update_glow()
 	if(density)
 		set_light(3, 3, "#66FFFF")
 	else
 		set_light(0)
 
+/obj/effect/shield/proc/update_opacity()
+	if(gen?.check_flag(MODEFLAG_PHOTONIC) && !disabled_for && !diffused_for)
+		set_opacity(1)
+	else
+		set_opacity(0)
 
 // Prevents singularities and pretty much everything else from moving the field segments away.
 // The only thing that is allowed to move us is the Destroy() proc.
 /obj/effect/shield/forceMove()
 	if(QDELING(src))
 		return ..()
-	return 0
+	return FALSE
 
 /obj/effect/shield/Destroy()
-	if(can_atmos_pass != ATMOS_PASS_YES)
-		update_nearby_tiles()
+	if(CanAtmosPass != ATMOS_PASS_NOT_BLOCKED)
+		update_nearby_tiles() //Force ZAS update
 	. = ..()
 	if(gen)
 		if(src in gen.field_segments)
@@ -59,12 +87,11 @@
 	if(gen)
 		gen.damaged_segments |= src
 	disabled_for += duration
-	set_density(0)
-	set_invisibility(INVISIBILITY_MAXIMUM)
-	update_nearby_tiles()
-	update_icon()
-	update_explosion_resistance()
 
+	set_density(0)
+	update_visuals()
+	update_nearby_tiles() //Force ZAS update
+	update_explosion_resistance()
 
 // Regenerates this shield segment.
 /obj/effect/shield/proc/regenerate()
@@ -76,25 +103,23 @@
 
 	if(!disabled_for && !diffused_for)
 		set_density(1)
-		set_invisibility(0)
-		update_nearby_tiles()
-		update_icon()
+		update_visuals()
+		update_nearby_tiles() //Force ZAS update
 		update_explosion_resistance()
 		gen.damaged_segments -= src
 
-
 /obj/effect/shield/proc/diffuse(var/duration)
 	// The shield is trying to counter diffusers. Cause lasting stress on the shield.
-	if(gen.check_flag(MODEFLAG_BYPASS) && !disabled_for)
+	if(gen?.check_flag(MODEFLAG_BYPASS) && !disabled_for)
 		take_damage(duration * rand(8, 12), SHIELD_DAMTYPE_EM)
 		return
 
 	diffused_for = max(duration, 0)
-	gen.damaged_segments |= src
+	gen?.damaged_segments |= src
+
 	set_density(0)
-	set_invisibility(INVISIBILITY_MAXIMUM)
-	update_nearby_tiles()
-	update_icon()
+	update_visuals()
+	update_nearby_tiles() //Force ZAS update
 	update_explosion_resistance()
 
 /obj/effect/shield/attack_generic(var/source, var/damage, var/emote)
@@ -137,7 +162,7 @@
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
 
 // Just for fun
-/obj/effect/shield/attack_hand(var/user)
+/obj/effect/shield/attack_hand(mob/user, list/params)
 	flash_adjacent_segments(3)
 
 /obj/effect/shield/take_damage(var/damage, var/damtype, var/hitby)
@@ -189,10 +214,10 @@
 	return 1
 
 /obj/effect/shield/proc/set_can_atmos_pass(var/new_value)
-	if(new_value == can_atmos_pass)
+	if(new_value == CanAtmosPass)
 		return
-	can_atmos_pass = new_value
-	update_nearby_tiles()
+	CanAtmosPass = new_value
+	update_nearby_tiles() //Force ZAS update
 
 
 // EMP. It may seem weak but keep in mind that multiple shield segments are likely to be affected.
@@ -202,7 +227,7 @@
 
 
 // Explosions
-/obj/effect/shield/ex_act(var/severity)
+/obj/effect/shield/legacy_ex_act(var/severity)
 	if(!disabled_for)
 		take_damage(rand(10,15) / severity, SHIELD_DAMTYPE_PHYSICAL)
 
@@ -214,12 +239,12 @@
 
 
 // Projectiles
-/obj/effect/shield/bullet_act(var/obj/item/projectile/proj)
+/obj/effect/shield/bullet_act(var/obj/projectile/proj)
 	if(proj.damage_type == BURN)
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_HEAT)
 	else if (proj.damage_type == BRUTE)
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_PHYSICAL)
-	else
+	else //TODO - This will never happen because of get_structure_damage() only returning values for BRUTE and BURN damage types
 		take_damage(proj.get_structure_damage(), SHIELD_DAMTYPE_EM)
 
 
@@ -231,11 +256,11 @@
 	if(gen.check_flag(MODEFLAG_HYPERKINETIC))
 		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [I]!</span>")
 		if(I.damtype == BURN)
-			take_damage(I.force, SHIELD_DAMTYPE_HEAT)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_HEAT)
 		else if (I.damtype == BRUTE)
-			take_damage(I.force, SHIELD_DAMTYPE_PHYSICAL)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_PHYSICAL)
 		else
-			take_damage(I.force, SHIELD_DAMTYPE_EM)
+			take_damage(I.damage_force, SHIELD_DAMTYPE_EM)
 	else
 		user.visible_message("<span class='danger'>\The [user] tries to attack \the [src] with \the [I], but it passes through!</span>")
 
@@ -244,7 +269,7 @@
 /obj/effect/shield/Bumped(var/atom/movable/mover)
 	if(!gen)
 		qdel(src)
-		return 0
+		return FALSE
 	mover.shield_impact(src)
 	return ..()
 
@@ -255,7 +280,7 @@
 
 /obj/effect/shield/proc/overcharge_shock(var/mob/living/M)
 	M.adjustFireLoss(rand(20, 40))
-	M.Weaken(5)
+	M.afflict_paralyze(20 * 5)
 	to_chat(M, "<span class='danger'>As you come into contact with \the [src] a surge of energy paralyses you!</span>")
 	take_damage(10, SHIELD_DAMTYPE_EM)
 
@@ -266,8 +291,8 @@
 		return
 
 	// Update airflow - If atmospheric we block air as long as we're enabled (density works for this)
-	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_YES)
-	update_icon()
+	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_NOT_BLOCKED)
+	update_visuals()
 	update_explosion_resistance()
 
 /obj/effect/shield/proc/update_explosion_resistance()
@@ -317,7 +342,7 @@
 	return !gen.check_flag(MODEFLAG_HYPERKINETIC)
 
 // Beams
-/obj/item/projectile/beam/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
+/obj/projectile/beam/can_pass_shield(var/obj/machinery/power/shield_generator/gen)
 	return !gen.check_flag(MODEFLAG_PHOTONIC)
 
 

@@ -5,7 +5,7 @@
 /obj/item/clothing/accessory/armor
 	name = "armor accessory"
 	desc = "You should never see this description. Ahelp this, please."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -14,15 +14,15 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.wear_suit == S)
-			if((body_parts_covered & ARMS) && istype(H.gloves, /obj/item/clothing))
+			if((body_cover_flags & ARMS) && istype(H.gloves, /obj/item/clothing))
 				var/obj/item/clothing/G = H.gloves
-				if(G.body_parts_covered & ARMS)
+				if(G.body_cover_flags & ARMS)
 					to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [G], it's in the way.</span>")
 					S.accessories -= src
 					return
-			else if((body_parts_covered & LEGS) && istype(H.shoes, /obj/item/clothing))
+			else if((body_cover_flags & LEGS) && istype(H.shoes, /obj/item/clothing))
 				var/obj/item/clothing/Sh = H.shoes
-				if(Sh.body_parts_covered & LEGS)
+				if(Sh.body_cover_flags & LEGS)
 					to_chat(H, "<span class='warning'>You can't wear \the [src] with \the [Sh], it's in the way.</span>")
 					S.accessories -= src
 					return
@@ -34,7 +34,7 @@
 /obj/item/clothing/accessory/storage/pouches
 	name = "storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to two items."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -88,42 +88,43 @@
 	name = "light armor plate"
 	desc = "A basic armor plate made of steel-reinforced synthetic fibers. Attaches to a plate carrier."
 	icon_state = "armor_light"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	armor = list(melee = 30, bullet = 15, laser = 40, energy = 10, bomb = 25, bio = 0, rad = 0)
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO
+	armor_type = /datum/armor/security/low
 	slot = ACCESSORY_SLOT_ARMOR_C
+
+/obj/item/clothing/accessory/armorplate/get_fibers()
+	return null	//Plates do not shed
 
 /obj/item/clothing/accessory/armor/armorplate/stab
 	name = "mesh armor plate"
 	desc = "A mesh armor plate made of steel-reinforced synthetic fibers, great for dealing with small blades. Attaches to a plate carrier."
 	icon_state = "armor_stab"
-	armor = list(melee = 25, bullet = 5, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
-	armorsoak = list(melee = 7, bullet = 5, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/accessory/armor/armorplate/medium
 	name = "medium armor plate"
 	desc = "A plasteel-reinforced synthetic armor plate, providing good protection. Attaches to a plate carrier."
 	icon_state = "armor_medium"
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/high
 
 /obj/item/clothing/accessory/armor/armorplate/tactical
 	name = "tactical armor plate"
 	desc = "A medium armor plate with additional ablative coating. Attaches to a plate carrier."
 	icon_state = "armor_tactical"
-	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/accessory/armor/armorplate/merc
 	name = "heavy armor plate"
 	desc = "A ceramics-reinforced synthetic armor plate, providing state of of the art protection. Attaches to a plate carrier."
 	icon_state = "armor_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armorplate/bulletproof
 	name = "ballistic armor plate"
 	desc = "A woven armor plate with additional plating, providing good protection against high-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_ballistic"
 	slowdown = 0.6
-	armor = list(melee = 10, bullet = 70, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 0, bullet = 10, laser = 0, energy = 5, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/riot
@@ -131,8 +132,7 @@
 	desc = "A thick armor plate with additional padding, providing good protection against low-velocity trauma. Attaches to a plate carrier."
 	icon_state = "armor_riot"
 	slowdown = 0.6
-	armor = list(melee = 70, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 10, bullet = 0, laser = 0, energy = 5, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/accessory/armor/armorplate/laserproof
@@ -140,13 +140,12 @@
 	desc = "A durasteel-scaled synthetic armor plate, providing good protection against lasers. Attaches to a plate carrier."
 	icon_state = "armor_ablative"
 	slowdown = 0.6
-	armor = list(melee = 10, bullet = 10, laser = 70, energy = 50, bomb = 0, bio = 0, rad = 0)
-	armorsoak = list(melee = 0, bullet = 0, laser = 10, energy = 15, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/accessory/armor/armorplate/ablative/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
-		var/obj/item/projectile/P = damage_source
+	if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
+		var/obj/projectile/P = damage_source
 
 		if(P.reflected)
 			return ..()
@@ -173,11 +172,11 @@
 /obj/item/clothing/accessory/armor/armguards
 	name = "arm guards"
 	desc = "A pair of black arm pads reinforced with armor plating. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
-	body_parts_covered = ARMS
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	body_cover_flags = ARMS
+	armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_A
 
 /obj/item/clothing/accessory/armor/armguards/blue
@@ -200,31 +199,31 @@
 	name = "heavy arm guards"
 	desc = "A pair of red-trimmed black arm pads reinforced with heavy armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/armguards/laserproof
 	name = "ablative arm guards"
 	desc = "These arm guards will protect your arms from energy weapons."
 	icon_state = "armguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
-	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/armguards/bulletproof
 	name = "bullet resistant arm guards"
 	desc = "These arm guards will protect your arms from ballistic weapons."
 	icon_state = "armguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/armguards/riot
 	name = "riot arm guards"
 	desc = "These arm guards will protect your arms from close combat weapons."
 	icon_state = "armguards_riot"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/riot
 
 //////////////
 //Leg guards
@@ -232,11 +231,11 @@
 /obj/item/clothing/accessory/armor/legguards
 	name = "leg guards"
 	desc = "A pair of armored leg pads in black. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
-	body_parts_covered = LEGS
-	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
+	body_cover_flags = LEGS
+	armor_type = /datum/armor/security/high
 	slot = ACCESSORY_SLOT_ARMOR_L
 
 /obj/item/clothing/accessory/armor/legguards/blue
@@ -259,31 +258,31 @@
 	name = "heavy leg guards"
 	desc = "A pair of heavily armored leg pads in red-trimmed black. Attaches to a plate carrier."
 	icon_state = "legguards_merc"
-	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
+	armor_type = /datum/armor/merc/heavy
 
 /obj/item/clothing/accessory/armor/legguards/laserproof
 	name = "ablative leg guards"
 	desc = "These will protect your legs from energy weapons."
 	icon_state = "legguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
-	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/accessory/armor/legguards/bulletproof
 	name = "bullet resistant leg guards"
 	desc = "These will protect your legs from ballistic weapons."
 	icon_state = "legguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
-	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/legguards/riot
 	name = "riot leg guards"
 	desc = "These will protect your legs from close combat weapons."
 	icon_state = "legguards_riot"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
-	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/station/riot
 
 //////////////////////////
 //Decorative attachments
@@ -291,7 +290,7 @@
 /obj/item/clothing/accessory/armor/tag
 	name = "\improper SCG Flag"
 	desc = "An emblem depicting the Solar Confederate Government's flag."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL
@@ -375,10 +374,10 @@
 // Helmet Covers
 /////////////////
 
-obj/item/clothing/accessory/armor/helmcover
+/obj/item/clothing/accessory/armor/helmcover
 	name = "helmet cover"
 	desc = "A fabric cover for armored helmets."
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "helmcover_blue"
 	slot = ACCESSORY_SLOT_HELM_C
@@ -417,3 +416,59 @@ obj/item/clothing/accessory/armor/helmcover
 	name = "\improper SAARE helmet cover"
 	desc = "A fabric cover for armored helmets. This one has SAARE's colors."
 	icon_state = "helmcover_saare"
+
+//Lightweight Limb Plating - These are incompatible with plate carriers.
+
+//Debug variant
+/obj/item/clothing/accessory/armor/limb_plate
+	name = "armor plating"
+	desc = "You shouldn't be seeing this. Contact a Maintainer."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "bronze"
+	armor_type = /datum/armor/security/jumpsuit
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_l
+	name = "left shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_C
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r
+	name = "right shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_A
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l
+	name = "left thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_L
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r
+	name = "right thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_M
+
+//EMT Subtypes
+/obj/item/clothing/accessory/armor/limb_plate/arm_l/emt
+	name = "left shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r/emt
+	name = "right shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_r"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l/emt
+	name = "left thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r/emt
+	name = "right thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_r"

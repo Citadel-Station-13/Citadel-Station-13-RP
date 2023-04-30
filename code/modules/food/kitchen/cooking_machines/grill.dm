@@ -13,7 +13,7 @@
 
 	optimal_power = 1.2 // Things on the grill cook .6 faster - this is now the fastest appliance to heat and to cook on. BURGERS GO SIZZLE.
 
-	stat = POWEROFF // Starts turned off.
+	machine_stat = POWEROFF // Starts turned off.
 
 	// Grill is faster to heat and setup than the rest.
 	optimal_temp = 120 + T0C
@@ -32,7 +32,7 @@
 	return ..()
 
 /obj/machinery/appliance/cooker/grill/update_icon() // TODO: Cooking icon
-	if(!stat)
+	if(!machine_stat)
 		icon_state = on_icon
 		if(cooking == TRUE)
 			if(grill_loop)
@@ -44,6 +44,14 @@
 		icon_state = off_icon
 		if(grill_loop)
 			grill_loop.stop(src)
+
+/obj/machinery/appliance/cooker/grill/stand
+	desc = "These static grills are a mainstay of any open air get-together. Modern variants use heating elements instead of charcoal."
+	icon_state = "standgrill_off"
+	food_color = "#8b3b13"
+	on_icon = "standgrill_on"
+	off_icon = "standgrill_off"
+	max_contents = 1
 
 /* // Test Comment this out too, /cooker does this for us, and this path '/obj/machinery/appliance/grill' is invalid anyways, meaning it does jack shit. - Updated the paths, but I'm basically commenting all this shit out and if the grill works as-normal, none of this stuff is needed.
 

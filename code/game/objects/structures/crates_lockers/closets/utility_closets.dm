@@ -141,7 +141,7 @@
 	if(prob(40))
 		starts_with += /obj/item/clothing/head/hardhat
 	if(prob(30))
-		starts_with += /obj/item/reagent_containers/spray/windowsealant //VOREStation Add
+		starts_with += /obj/item/reagent_containers/spray/windowsealant
 	return ..()
 
 /*
@@ -153,11 +153,12 @@
 	icon_state = "radsuitcloset"
 	icon_opened = "toolclosetopen"
 	icon_closed = "radsuitcloset"
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	starts_with = list(
 		/obj/item/clothing/suit/radiation = 2,
 		/obj/item/clothing/head/radiation = 2,
-		/obj/item/geiger = 2)
+		/obj/item/geiger_counter = 2)
 
 /*
  * Bombsuit closet

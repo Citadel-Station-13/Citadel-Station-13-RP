@@ -8,7 +8,10 @@ Slime cube lives here.
 	icon_state = "slime cube"
 	var/searching = 0
 
-/obj/item/slime_cube/attack_self(mob/user as mob)
+/obj/item/slime_cube/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!searching)
 		to_chat(user, "<span class='warning'>You stare at the slimy cube, watching as some activity occurs.</span>")
 		request_player()
@@ -39,8 +42,8 @@ Slime cube lives here.
 	var/mob/living/carbon/human/S = new(get_turf(src))
 	S.client = candidate.client
 	to_chat(S., "<b>You are a promethean, brought into existence on [station_name()].</b>")
-	S.mind.assigned_role = "Promethean"
-	S.set_species("Promethean")
+	S.mind.assigned_role = SPECIES_PROMETHEAN
+	S.set_species(SPECIES_PROMETHEAN)
 	S.shapeshifter_set_colour("#05FF9B")
 	for(var/mob/M in viewers(get_turf_or_move(loc)))
 		M.show_message("<span class='warning'>The monkey cube suddenly takes the shape of a humanoid!</span>")

@@ -23,10 +23,10 @@
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "resin"
 
-	density = 1
-	opacity = 1
-	anchored = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/health = 200
 	//var/mob/living/affecting = null
 
@@ -39,7 +39,7 @@
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = FALSE
 	health = 120
 
 /obj/effect/alien/resin/Initialize(mapload)
@@ -58,7 +58,7 @@
 		qdel(src)
 	return
 
-/obj/effect/alien/resin/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/resin/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -77,7 +77,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/ex_act(severity)
+/obj/effect/alien/resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -91,24 +91,22 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/hitby(AM as mob|obj)
-	..()
+/obj/effect/alien/resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	for(var/mob/O in viewers(src, null))
 		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		tforce = AM:throw_force
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
 	healthcheck()
-	..()
-	return
 
-/obj/effect/alien/resin/attack_hand()
+/obj/effect/alien/resin/attack_hand(mob/user, list/params)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
@@ -135,7 +133,7 @@
 /obj/effect/alien/resin/attackby(obj/item/W as obj, mob/user as mob)
 
 	user.setClickCooldown(user.get_attack_speed(W))
-	var/aforce = W.force
+	var/aforce = W.damage_force
 	health = max(0, health - aforce)
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	healthcheck()
@@ -143,11 +141,9 @@
 	return
 
 /obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
+	return ..()
 
 /*
  * Weeds
@@ -205,7 +201,7 @@
 	STOP_PROCESSING(SSobj, src)
 	..()
 
-/obj/effect/alien/weeds/Initialize(pos, node)
+/obj/effect/alien/weeds/Initialize(mapload, node)
 	. = ..()
 	if(istype(loc, /turf/space))
 		qdel(src)
@@ -218,7 +214,8 @@
 
 /obj/effect/alien/weeds/proc/updateWeedOverlays()
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(!weedImageCache || !weedImageCache.len)
 		weedImageCache = list()
@@ -234,16 +231,18 @@
 	var/turf/W = get_step(src, WEST)
 	if(!locate(/obj/effect/alien) in N.contents)
 		if(istype(N, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_SOUTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_SOUTH_EDGING]
 	if(!locate(/obj/effect/alien) in S.contents)
 		if(istype(S, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_NORTH_EDGING]
+			overlays_to_add += weedImageCache[WEED_NORTH_EDGING]
 	if(!locate(/obj/effect/alien) in E.contents)
 		if(istype(E, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_WEST_EDGING]
+			overlays_to_add += weedImageCache[WEED_WEST_EDGING]
 	if(!locate(/obj/effect/alien) in W.contents)
 		if(istype(W, /turf/simulated/floor))
-			overlays += weedImageCache[WEED_EAST_EDGING]
+			overlays_to_add += weedImageCache[WEED_EAST_EDGING]
+
+	add_overlay(overlays_to_add)
 
 /obj/effect/alien/weeds/proc/fullUpdateWeedOverlays()
 	for (var/obj/effect/alien/weeds/W in range(1,src))
@@ -276,23 +275,18 @@ Alien plants should do something if theres a lot of poison
 	if(linked_node != src)
 		color = linked_node.set_color
 
-	direction_loop:
-		for(var/dirn in GLOB.cardinal)
-			var/turf/T = get_step(src, dirn)
+	for(var/dirn in GLOB.cardinal)
+		var/turf/T = get_step(src, dirn)
 
-			if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
-				continue
+		if (!istype(T) || T.density || locate(/obj/effect/alien/weeds) in T || istype(T.loc, /area/arrival) || istype(T, /turf/space))
+			continue
 
-	//		if (locate(/obj/movable, T)) // don't propogate into movables
-	//			continue
+		if(U.CheckAirBlock(T) == ATMOS_PASS_AIR_BLOCKED)
+			continue
 
-			for(var/obj/O in T)
-				if(!O.CanZASPass(U))
-					continue direction_loop
+		var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
 
-			var/obj/effect/E = new /obj/effect/alien/weeds(T, linked_node)
-
-			E.color = color
+		E.color = color
 
 	if(istype(src, /obj/effect/alien/weeds/node))
 		var/obj/effect/alien/weeds/node/N = src
@@ -316,7 +310,7 @@ Alien plants should do something if theres a lot of poison
 				W.process()
 
 
-/obj/effect/alien/weeds/ex_act(severity)
+/obj/effect/alien/weeds/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -330,12 +324,9 @@ Alien plants should do something if theres a lot of poison
 
 /obj/effect/alien/weeds/attackby(var/obj/item/W, var/mob/user)
 	user.setClickCooldown(user.get_attack_speed(W))
-	if(W.attack_verb.len)
-		visible_message("<span class='danger'>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		visible_message("<span class='danger'>\The [src] have been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
+	visible_message("<span class='danger'>\The [src] have been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
 
-	var/damage = W.force / 4.0
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -412,7 +403,7 @@ Alien plants should do something if theres a lot of poison
 	if(ticks >= target_strength)
 
 		for(var/mob/O in hearers(src, null))
-			O.show_message("<span class='alium'>[src.target] collapses under its own weight into a puddle of goop and undigested debris!</span>", 1)
+			O.show_message("<span class='green'>[src.target] collapses under its own weight into a puddle of goop and undigested debris!</span>", 1)
 
 		if(istype(target, /turf/simulated/wall)) // I hate turf code.
 			var/turf/simulated/wall/W = target
@@ -424,13 +415,13 @@ Alien plants should do something if theres a lot of poison
 
 	switch(target_strength - ticks)
 		if(6)
-			visible_message("<span class='alium'>[src.target] is holding up against the acid!</span>")
+			visible_message("<span class='green'>[src.target] is holding up against the acid!</span>")
 		if(4)
-			visible_message("<span class='alium'>[src.target]\s structure is being melted by the acid!</span>")
+			visible_message("<span class='green'>[src.target]\s structure is being melted by the acid!</span>")
 		if(2)
-			visible_message("<span class='alium'>[src.target] is struggling to withstand the acid!</span>")
+			visible_message("<span class='green'>[src.target] is struggling to withstand the acid!</span>")
 		if(0 to 1)
-			visible_message("<span class='alium'>[src.target] begins to crumble under the acid!</span>")
+			visible_message("<span class='green'>[src.target] begins to crumble under the acid!</span>")
 	spawn(rand(150, 200)) tick()
 
 /*
@@ -455,16 +446,15 @@ Alien plants should do something if theres a lot of poison
 
 	var/health = 100
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
-	flags = PROXMOVE
-
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	new /datum/proxfield/basic/square(src, 1)
 	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
 		if((status == GROWING) && (BURST == 0))
 			Grow()
 
-/obj/effect/alien/egg/attack_hand(user as mob)
+/obj/effect/alien/egg/attack_hand(mob/user, list/params)
 
 	var/mob/living/carbon/M = user
 	if(!istype(M) || !(locate(/obj/item/organ/internal/xenos/hivenode) in M.internal_organs))
@@ -512,7 +502,7 @@ Alien plants should do something if theres a lot of poison
 						break
 		return 1
 
-/obj/effect/alien/egg/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/alien/egg/bullet_act(var/obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	healthcheck()
@@ -536,11 +526,8 @@ Alien plants should do something if theres a lot of poison
 	if((health <= 0) && (BURST == 0))
 		Burst()
 		return
-	if(W.attack_verb.len)
-		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
-	else
-		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
-	var/damage = W.force / 4.0
+	visible_message("<span class='danger'>\The [src] has been [W.get_attack_verb(src, user)] with \the [W][(user ? " by [user]." : ".")]</span>")
+	var/damage = W.damage_force / 4.0
 
 	if(istype(W, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -563,6 +550,7 @@ Alien plants should do something if theres a lot of poison
 		healthcheck()
 
 /*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return

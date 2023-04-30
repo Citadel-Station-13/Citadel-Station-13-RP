@@ -22,9 +22,9 @@
 		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/glasses/thermal/syndi,
 		/obj/item/gun/energy/netgun,
-		/obj/item/gun/projectile/pirate,
+		/obj/item/gun/ballistic/pirate,
 		/obj/item/clothing/accessory/permit/gun,
-		/obj/item/gun/projectile/dartgun
+		/obj/item/gun/ballistic/dartgun
 		)
 
 	var/global/list/allocated_gamma = list()
@@ -53,9 +53,9 @@
 /obj/structure/trash_pile/attackby(obj/item/W as obj, mob/user as mob)
 	var/w_type = W.type
 	if(w_type in allocated_gamma)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user,"<span class='notice'>You feel \the [W] slip from your hand, and disappear into the trash pile.</span>")
-		user.unEquip(W)
-		W.forceMove(src)
 		allocated_gamma -= w_type
 		unique_gamma += w_type
 		qdel(W)
@@ -82,7 +82,7 @@
 	else
 		return ..()
 
-/obj/structure/trash_pile/attack_hand(mob/user)
+/obj/structure/trash_pile/attack_hand(mob/user, list/params)
 	//Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

@@ -51,7 +51,7 @@
 		var/perspective = input("Select a perspective type.",
                       "Client perspective",
                       occupant.client.perspective) in list(MOB_PERSPECTIVE,EYE_PERSPECTIVE)
-		to_world("[perspective]")
+		TO_WORLD("[perspective]")
 		occupant.client.perspective = perspective
 		return
 
@@ -63,7 +63,7 @@
 			occupant.client.eye = src
 		else
 			occupant.client.eye = occupant
-		to_world("[occupant.client.eye]")
+		TO_WORLD("[occupant.client.eye]")
 		return
 */
 
@@ -74,15 +74,15 @@
 
 //	process_hud(var/mob/M) //TODO VIS
 /*
-		to_world("view(M)")
+		TO_WORLD("view(M)")
 		for(var/mob/mob in view(M))
-			to_world("[mob]")
-		to_world("view(M.client)")
+			TO_WORLD("[mob]")
+		TO_WORLD("view(M.client)")
 		for(var/mob/mob in view(M.client))
-			to_world("[mob]")
-		to_world("view(M.loc)")
+			TO_WORLD("[mob]")
+		TO_WORLD("view(M.loc)")
 		for(var/mob/mob in view(M.loc))
-			to_world("[mob]")
+			TO_WORLD("[mob]")
 
 
 		if(!M || M.stat || !(M in view(M)))	return
@@ -107,7 +107,7 @@
 				holder.icon_state = RoundHealth((patient.health-config.health_threshold_crit)/(patient.getMaxHealth()-config.health_threshold_crit)*100)
 				C.images += holder
 
-			holder = patient.hud_list[STATUS_HUD]
+			holder = patient.hud_list[BIOLOGY_HUD]
 			if(patient.isSynthetic())
 				holder.icon_state = "hudrobo"
 			else if(patient.stat == DEAD)
@@ -125,7 +125,7 @@
 
 			C.images += holder
 */
-/obj/mecha/medical/odysseus/loaded/Initialize()
+/obj/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	ME.attach(src)
@@ -138,7 +138,7 @@
 /obj/mecha/medical/odysseus/old
 	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms. This one is particularly worn looking and likely isn't as sturdy."
 
-/obj/mecha/medical/odysseus/old/Initialize()
+/obj/mecha/medical/odysseus/old/Initialize(mapload)
 	. = ..()
 	health = 25
 	maxhealth = 50	//Just slightly worse.

@@ -35,7 +35,7 @@
 /obj/machinery/smartfridge/chemistry/chemvator/down
 	name = "\improper Smart Chemavator - Lower"
 
-/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize()
+/obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload)
 // /obj/machinery/smartfridge/chemistry/chemvator/down/Initialize(mapload) // Triumph variant had initialize at mapload. Dont know why, leaving this here for reference -Bloop
 	. = ..()
 	var/obj/machinery/smartfridge/chemistry/chemvator/above = locate(/obj/machinery/smartfridge/chemistry/chemvator,get_zstep(src,UP))
@@ -60,7 +60,7 @@
 
 	var/area/shock_area = /area/tether/surfacebase/tram
 
-/turf/simulated/floor/maglev/Initialize()
+/turf/simulated/floor/maglev/Initialize(mapload)
 	. = ..()
 	shock_area = locate(shock_area)
 
@@ -68,7 +68,7 @@
 /turf/simulated/floor/maglev/Entered(var/atom/movable/AM, var/atom/old_loc)
 	if(isliving(AM) && prob(50))
 		track_zap(AM)
-/turf/simulated/floor/maglev/attack_hand(var/mob/user)
+/turf/simulated/floor/maglev/attack_hand(mob/user, list/params)
 	if(prob(75))
 		track_zap(user)
 /turf/simulated/floor/maglev/proc/track_zap(var/mob/living/user)

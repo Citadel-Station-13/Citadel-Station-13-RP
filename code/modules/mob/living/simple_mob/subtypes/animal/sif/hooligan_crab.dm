@@ -45,19 +45,12 @@
 	movement_shake_radius = 5
 
 	taser_kill = FALSE
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 40,
+				"melee_soak" = 10,
 				"bullet" = 20,
+				"bullet_soak" = 5,
 				"laser" = 10,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
-	armor_soak = list(
-				"melee" = 10,
-				"bullet" = 5,
-				"laser" = 0,
 				"energy" = 0,
 				"bomb" = 0,
 				"bio" = 0,
@@ -93,15 +86,15 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		var/was_stunned = L.incapacitated(INCAPACITATION_DISABLED)
-		L.Weaken(weaken_amount)
+		L.afflict_paralyze(20 * weaken_amount)
 
 		playsound(L, 'sound/effects/break_stone.ogg', 75, 1)
 		if(was_stunned) // Try to prevent chain-stuns by having them thrown.
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 5, 1, src)
-			visible_message(span("danger", "\The [src] hurls \the [L] away!"))
+			L.throw_at_old(get_edge_target_turf(L, throwdir), 5, 1, src)
+			visible_message(SPAN_DANGER("\The [src] hurls \the [L] away!"))
 		else
-			visible_message(span("danger", "\The [src] crushes \the [L]!"))
+			visible_message(SPAN_DANGER("\The [src] crushes \the [L]!"))
 
 // The AI for hooligan crabs. Follows people for awhile.
 /datum/ai_holder/simple_mob/melee/hooligan

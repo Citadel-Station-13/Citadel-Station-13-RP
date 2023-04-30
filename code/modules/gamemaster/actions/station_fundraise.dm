@@ -8,7 +8,7 @@
 
 /datum/gm_action/station_fund_raise/get_weight()
 	var/weight_modifier = 0.5
-	if(station_account.money <= 80000)
+	if(GLOB.station_account.money <= 80000)
 		weight_modifier = 1
 
 	return (max(-20, 10 + gm.staleness) + ((metric.count_people_in_department(DEPARTMENT_SECURITY) + (metric.count_people_in_department(DEPARTMENT_CARGO))) * 5) + (metric.count_people_in_department(DEPARTMENT_EVERYONE) * 3)) * weight_modifier

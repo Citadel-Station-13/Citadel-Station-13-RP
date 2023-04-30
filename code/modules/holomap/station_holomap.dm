@@ -35,7 +35,7 @@
 	holomap_datum = new
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
-	flags |= ON_BORDER // Why? It doesn't help if its not density
+	atom_flags |= ATOM_BORDER // Why? It doesn't help if its not density
 	if(SSholomaps.holomaps_initialized)
 		setup_holomap()
 	return ..()
@@ -65,10 +65,10 @@
 	floor_markings = image('icons/obj/machines/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
-	// floor_markings.layer = DECAL_LAYER
+	// floor_markings.layer = FLOOR_DECAL_LAYER
 	update_icon()
 
-/obj/machinery/station_map/attack_hand(var/mob/user)
+/obj/machinery/station_map/attack_hand(mob/user, list/params)
 	if(watching_mob && (watching_mob != user))
 		to_chat(user, "<span class='warning'>Someone else is currently watching the holomap.</span>")
 		return
@@ -86,7 +86,7 @@
 // couldn't really walk into us anyway.  But in reality we are on the turf in front of the wall, so bumping
 // against where we seem is actually trying to *exit* our real loc
 /obj/machinery/station_map/CheckExit(atom/movable/mover as mob|obj, turf/target as turf)
-	// log_debug("[src] (dir=[dir]) CheckExit([mover], [target])  get_dir() = [get_dir(target, loc)]")
+	// log_debug(SPAN_DEBUG("[src] (dir=[dir]) CheckExit([mover], [target])  get_dir() = [get_dir(target, loc)]"))
 	if(get_dir(target, loc) == dir) // Opposite of "normal" since we are visually in the next turf over
 		return FALSE
 	else
@@ -107,7 +107,7 @@
 	// EH JUST HACK IT FOR NOW SO WE CAN SEE HOW IT LOOKS! STOP OBSESSING, ITS BEEN AN HOUR NOW!
 
 	// TODO - This part!! ~Leshana
-	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
+	if(isliving(user) && anchored && !(machine_stat & (NOPOWER|BROKEN)))
 		if(user.client)
 			holomap_datum.station_map.loc = GLOB.global_hud.holomap  // Put the image on the holomap hud
 			holomap_datum.station_map.alpha = 0 // Set to transparent so we can fade in
@@ -133,7 +133,7 @@
 	// user.station_holomap.toggleHolomap(user, isAI(user))
 
 /obj/machinery/station_map/process(delta_time)
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+	if((machine_stat & (NOPOWER|BROKEN)) || !anchored)
 		stopWatching()
 
 /obj/machinery/station_map/proc/checkPosition()
@@ -157,20 +157,21 @@
 	. = ..()
 	update_icon()
 	// TODO - Port use_auto_lights from /vg - For now implement it manually here
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		set_light(0)
 	else
 		set_light(light_range_on, light_power_on)
 
 /obj/machinery/station_map/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update_icon()
 
 /obj/machinery/station_map/update_icon()
-	overlays.Cut()
-	if(stat & BROKEN)
+	cut_overlays()
+	var/list/overlays_to_add = list()
+	if(machine_stat & BROKEN)
 		icon_state = "station_mapb"
-	else if((stat & NOPOWER) || !anchored)
+	else if((machine_stat & NOPOWER) || !anchored)
 		icon_state = "station_map0"
 	else
 		icon_state = "station_map"
@@ -179,20 +180,22 @@
 			holomap_datum.initialize_holomap_bogus()
 		else
 			small_station_map.icon = SSholomaps.extraMiniMaps["[HOLOMAP_EXTRA_STATIONMAPSMALL]_[original_zLevel]"]
-			overlays |= small_station_map
+			overlays_to_add += small_station_map
 			holomap_datum.initialize_holomap(get_turf(src))
 
 	// Put the little "map" overlay down where it looks nice
 	if(floor_markings)
-		floor_markings.dir = src.dir
-		floor_markings.pixel_x = -src.pixel_x
-		floor_markings.pixel_y = -src.pixel_y
-		overlays += floor_markings
+		floor_markings.dir = dir
+		floor_markings.pixel_x = -pixel_x
+		floor_markings.pixel_y = -pixel_y
+		overlays_to_add += floor_markings
 
 	if(panel_open)
-		overlays += "station_map-panel"
+		overlays_to_add += "station_map-panel"
 	else
-		overlays -= "station_map-panel"
+		overlays_to_add -= "station_map-panel"
+
+	add_overlay(overlays_to_add)
 
 /obj/machinery/station_map/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -202,7 +205,7 @@
 		return
 	return ..()
 
-/obj/machinery/station_map/ex_act(severity)
+/obj/machinery/station_map/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

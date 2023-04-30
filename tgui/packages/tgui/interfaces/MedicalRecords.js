@@ -6,7 +6,6 @@ import { Window } from "../layouts";
 import { LoginInfo } from './common/LoginInfo';
 import { LoginScreen } from './common/LoginScreen';
 import { TemporaryNotice } from './common/TemporaryNotice';
-import { decodeHtmlEntities } from 'common/string';
 
 const severities = {
   "Minor": "good",
@@ -98,8 +97,8 @@ export const MedicalRecords = (_properties, context) => {
     body = <MedicalRecordsView />;
   } else if (screen === 5) { // Virus Database
     body = <MedicalRecordsViruses />;
-  } else if (screen === 6) { // Medbot Tracking
-    body = <MedicalRecordsMedbots />;
+  } else if (screen === 6) { // Medibot Tracking
+    body = <MedicalRecordsMedibots />;
   }
 
   return (
@@ -230,8 +229,8 @@ const MedicalRecordsViewGeneral = (_properties, context) => {
         <LabeledList>
           {general.fields.map((field, i) => (
             <LabeledList.Item key={i} label={field.field}>
-              <Box height="20px" display="inline-block">
-                {field.value.split("\n").map(m => <Box key={m}>{m}</Box>)}
+              <Box height="20px" display="inline-block" preserveWhitespace>
+                {field.value}
               </Box>
               {!!field.edit && (
                 <Button
@@ -293,8 +292,8 @@ const MedicalRecordsViewMedical = (_properties, context) => {
         {medical.fields.map((field, i) => (
           <LabeledList.Item
             key={i}
-            label={field.field}>
-            {field.value.split("\n").map(m => <Box key={m}>{m}</Box>)}
+            label={field.field} preserveWhitespace>
+            {field.value}
             <Button
               icon="pen"
               ml="0.5rem"
@@ -304,6 +303,9 @@ const MedicalRecordsViewMedical = (_properties, context) => {
           </LabeledList.Item>
         ))}
       </LabeledList>
+      <Section title="Medical Notes Summary" level={2} preserveWhitespace>
+        {medical.notes || "No data found."}
+      </Section>
       <Section title="Comments/Log" level={2}>
         {medical.comments.length === 0 ? (
           <Box color="label">
@@ -312,7 +314,7 @@ const MedicalRecordsViewMedical = (_properties, context) => {
         )
           : medical.comments.map((comment, i) => (
             <Box key={i}>
-              <Box color="label" display="inline">
+              <Box color="label" inline>
                 {comment.header}
               </Box><br />
               {comment.text}
@@ -357,38 +359,38 @@ const MedicalRecordsViruses = (_properties, context) => {
   ));
 };
 
-const MedicalRecordsMedbots = (_properties, context) => {
+const MedicalRecordsMedibots = (_properties, context) => {
   const { data } = useBackend(context);
   const {
-    medbots,
+    medibots,
   } = data;
-  if (medbots.length === 0) {
+  if (medibots.length === 0) {
     return (
       <Box color="label">
-        There are no Medbots.
+        There are no Medibots.
       </Box>
     );
   }
-  return medbots.map((medbot, i) => (
+  return medibots.map((medibot, i) => (
     <Collapsible
       key={i}
       open
-      title={medbot.name}>
+      title={medibot.name}>
       <Box px="0.5rem">
         <LabeledList>
           <LabeledList.Item label="Location">
-            {medbot.area || 'Unknown'} ({medbot.x}, {medbot.y})
+            {medibot.area || 'Unknown'} ({medibot.x}, {medibot.y})
           </LabeledList.Item>
           <LabeledList.Item label="Status">
-            {medbot.on ? (
+            {medibot.on ? (
               <Fragment>
                 <Box color="good">
                   Online
                 </Box>
                 <Box mt="0.5rem">
-                  {medbot.use_beaker
+                  {medibot.use_beaker
                     ? ("Reservoir: "
-                    + medbot.total_volume + "/" + medbot.maximum_volume)
+                    + medibot.total_volume + "/" + medibot.maximum_volume)
                     : "Using internal synthesizer."}
                 </Box>
               </Fragment>
@@ -427,7 +429,7 @@ const MedicalRecordsNavigation = (_properties, context) => {
         selected={screen === 6}
         onClick={() => act('screen', { screen: 6 })}>
         <Icon name="plus-square" />
-        Medbot Tracking
+        Medibot Tracking
       </Tabs.Tab>
       <Tabs.Tab
         selected={screen === 3}

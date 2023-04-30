@@ -1,14 +1,4 @@
-var/global/list/empty_playable_ai_cores = list()
-
-/hook/roundstart/proc/spawn_empty_ai()
-	for(var/obj/effect/landmark/start/S in GLOB.landmarks_list)
-		if(S.name != "AI")
-			continue
-		if(locate(/mob/living) in S.loc)
-			continue
-		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
-
-	return 1
+GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 
 /mob/living/silicon/ai/verb/store_core()
 	set name = "Store Core"
@@ -25,7 +15,7 @@ var/global/list/empty_playable_ai_cores = list()
 		return
 
 	// We warned you.
-	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	GLOB.global_announcer.autosay("[src] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 
 	//Handle job slot/tater cleanup.

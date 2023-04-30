@@ -12,7 +12,8 @@ var/list/marker_beacon_colors = list(
 "Indigo" = LIGHT_COLOR_DARK_BLUE,
 "Purple" = LIGHT_COLOR_PURPLE,
 "Violet" = LIGHT_COLOR_LAVENDER,
-"Fuchsia" = LIGHT_COLOR_PINK
+"Fuchsia" = LIGHT_COLOR_PINK,
+"Green" = LIGHT_COLOR_GREEN,
 )
 
 /obj/item/stack/marker_beacon
@@ -50,6 +51,9 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]"
 
 /obj/item/stack/marker_beacon/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!isturf(user.loc))
 		to_chat(user, "<span class='warning'>You need more space to place a [singular_name] here.</span>")
 		return
@@ -87,7 +91,7 @@ var/list/marker_beacon_colors = list(
 	var/remove_speed = 15
 	var/picked_color
 
-/obj/structure/marker_beacon/Initialize(newloc, set_color)
+/obj/structure/marker_beacon/Initialize(mapload, set_color)
 	. = ..()
 	picked_color = set_color
 	update_icon()
@@ -102,14 +106,14 @@ var/list/marker_beacon_colors = list(
 	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
 	set_light(light_range, light_power, marker_beacon_colors[picked_color])
 
-/obj/structure/marker_beacon/attack_hand(mob/living/user)
+/obj/structure/marker_beacon/attack_hand(mob/user, list/params)
 	to_chat(user, "<span class='notice'>You start picking [src] up...</span>")
 	if(do_after(user, remove_speed, target = src))
 		var/obj/item/stack/marker_beacon/M = new(loc)
 		M.picked_color = picked_color
 		M.update_icon()
 		transfer_fingerprints_to(M)
-		if(user.put_in_hands(M, TRUE)) //delete the beacon if it fails
+		if(user.put_in_hands(M, INV_OP_FORCE)) //delete the beacon if it fails
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			qdel(src) //otherwise delete us
 
@@ -137,3 +141,26 @@ var/list/marker_beacon_colors = list(
 	if(input_color)
 		picked_color = input_color
 		update_icon()
+
+/obj/structure/marker_beacon/red
+	picked_color = "Burgundy"
+
+/obj/structure/marker_beacon/red/update_icon()
+	while(!picked_color || !marker_beacon_colors[picked_color])
+		picked_color = "Burgundy"
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])
+
+/obj/structure/marker_beacon/yellow
+	picked_color = "Yellow"
+
+/obj/structure/marker_beacon/yellow/update_icon()
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])
+
+/obj/structure/marker_beacon/green
+	picked_color = "Green"
+
+/obj/structure/marker_beacon/green/update_icon()
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])

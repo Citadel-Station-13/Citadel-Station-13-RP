@@ -7,7 +7,7 @@
 	name = "\improper Tram Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
 	desc = "The tram station you might've came in from.  You could leave the base easily using this."
@@ -41,25 +41,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-// Tram arrival point landmarks and datum
-var/global/list/latejoin_tram   = list()
-
-/obj/effect/landmark/tram
-	name = "JoinLateTram"
-	delete_me = 1
-
-/obj/effect/landmark/tram/New()
-	latejoin_tram += loc // Register this turf as tram latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	..()
-
 /datum/spawnpoint/tram
 	display_name = "Tram Station"
-	msg = "has arrived on the tram"
-
-/datum/spawnpoint/tram/New()
-	..()
-	turfs = latejoin_tram
+	method = LATEJOIN_METHOD_TRAM
 
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
@@ -72,7 +56,7 @@ var/global/list/latejoin_tram   = list()
 	name = "\improper Shuttle Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
 	desc = "The shuttle bay you might've came in from.  You could leave the base easily using this.<br><span class='userdanger'>Drag-drop yourself onto it while adjacent to leave.</span>"
@@ -106,28 +90,19 @@ var/global/list/latejoin_tram   = list()
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-// shuttle arrival point landmarks and datum
-var/global/list/latejoin_shuttle   = list()
-
-/obj/effect/landmark/shuttle
-	name = "JoinLateShuttle"
-	delete_me = 1
-
-/obj/effect/landmark/shuttle/New()
-	latejoin_shuttle += loc // Register this turf as shuttle latejoin.
-	latejoin += loc // Also register this turf as fallback latejoin, since we won't have any arrivals shuttle landmarks.
-	return ..()
-
 /datum/spawnpoint/shuttle
 	display_name = "Shuttle Bay"
-	msg = "has arrived on the shuttle"
-
-/datum/spawnpoint/shuttle/New()
-	. = ..()
-	turfs = latejoin_shuttle
+	method = LATEJOIN_METHOD_SHUTTLE_DOCK
 
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Rift Shuttle variant with slightly different messages //
+/obj/machinery/cryopod/robot/door/shuttle/rift
+	on_store_message = "has departed on an automated shuttle."
+	on_store_name = "Travel Oversight"
+	on_store_visible_message_2 = "to the orbital relay"
+

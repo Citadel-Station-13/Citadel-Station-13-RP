@@ -6,11 +6,11 @@
 	name = "service jacket"
 	desc = "A uniform service jacket, plain and undecorated."
 	icon_state = "blackservice"
-	item_state_slots = list(slot_r_hand_str = "suit_black", slot_l_hand_str = "suit_black")
-	body_parts_covered = UPPER_TORSO|ARMS
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
+	body_cover_flags = UPPER_TORSO|ARMS
+	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
-	flags_inv = HIDEHOLSTER //VOREStation Add - These obviously do.
+	inv_hide_flags = HIDEHOLSTER
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/pen,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/storage/fancy/cigarettes,/obj/item/flame/lighter,/obj/item/tape_recorder,/obj/item/analyzer,/obj/item/radio,/obj/item/barrier_tape_roll)
 
 /obj/item/clothing/suit/storage/service/sysguard
@@ -62,7 +62,7 @@
 	name = "marine coat"
 	desc = "An OCG Marine Corps service coat. Green and undecorated."
 	icon_state = "greenservice"
-	item_state_slots = list(slot_r_hand_str = "suit_olive", slot_l_hand_str = "suit_olive")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_olive", SLOT_ID_LEFT_HAND = "suit_olive")
 
 /obj/item/clothing/suit/storage/service/marine/medical
 	name = "marine medical jacket"
@@ -110,8 +110,8 @@
 	name = "dress jacket"
 	desc = "A uniform dress jacket, fancy."
 	icon_state = "greydress"
-	body_parts_covered = UPPER_TORSO|ARMS
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	body_cover_flags = UPPER_TORSO|ARMS
+	armor_type = /datum/armor/none
 	siemens_coefficient = 0.9
 	allowed = list(/obj/item/tank/emergency/oxygen,/obj/item/flashlight,/obj/item/clothing/head/soft,/obj/item/clothing/head/beret,/obj/item/radio,/obj/item/pen)
 
@@ -147,7 +147,7 @@
 	name = "marine dress jacket"
 	desc = "A tailored black OCG Marine Corps dress jacket with red trim. So sexy it hurts."
 	icon_state = "blackdress"
-	item_state_slots = list(slot_r_hand_str = "suit_black", slot_l_hand_str = "suit_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
 
 /obj/item/clothing/suit/dress/marine/command
 	name = "marine command dress jacket"
@@ -159,8 +159,8 @@
 	name = "colonial marshal jacket"
 	desc = "A black synthleather jacket. The word 'MARSHAL' is stenciled onto the back in gold lettering."
 	icon_state = "marshal_jacket"
-	item_state_slots = list(slot_r_hand_str = "suit_black", slot_l_hand_str = "suit_black")
-	body_parts_covered = UPPER_TORSO|ARMS
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "suit_black", SLOT_ID_LEFT_HAND = "suit_black")
+	body_cover_flags = UPPER_TORSO|ARMS
 
 //OriCon Uniform Suits
 
@@ -267,7 +267,7 @@
 	name = "head of security's dress jacket"
 	desc = "A sleek, buttoned coat with gold trim. The fabric feels sturdy, could come in handy"
 	icon_state = "blackdress_com"
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
+	armor_type = /datum/armor/security/hos
 
 /obj/item/clothing/suit/dress/expedition/command/cd
 	name = "Facility Director's dress jacket"

@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Tabs } from "../components";
+import { Box, Button, LabeledList, Section, Tabs } from "../components";
 import { Window } from "../layouts";
 import { filter } from 'common/collections';
 
@@ -30,7 +29,8 @@ const ResearchControllerContent = (props, context) => {
   let realServer = servers.find(s => s.id === selectedServer);
 
   if (realServer) {
-    return <ResearchServer setSelectedServer={setSelectedServer} server={realServer} />;
+    return (<ResearchServer setSelectedServer={setSelectedServer}
+      server={realServer} />);
   }
 
   return (
@@ -90,7 +90,8 @@ const ResearchServer = (props, context) => {
       </Tabs>
       {tab === 0 && <ResearchServerAccess server={server} /> || null}
       {tab === 1 && <ResearchServerData server={server} /> || null}
-      {tab === 2 && badmin && <ResearchServerTransfer server={server} /> || null}
+      {tab === 2 && badmin && <ResearchServerTransfer
+        server={server} /> || null}
     </Section>
   );
 };
@@ -111,7 +112,7 @@ const ResearchServerAccess = (props, context) => {
     }
     return false;
   };
-  
+
   const hasDownloadAccess = (server, console) => {
     if (server.id_with_download.indexOf(console.id) !== -1) {
       return true;
@@ -203,7 +204,8 @@ const ResearchServerTransfer = (props, context) => {
           <Button.Confirm
             fluid
             color="bad"
-            content={(<Box>Transfer from {server.name} To {newserver.name}</Box>)}
+            content={(<Box>Transfer from {server.name} To {newserver.name}</Box>
+            )}
             onClick={() => act("transfer_data", { server: server.ref, target: newserver.ref })} />
         </Box>
       ))}

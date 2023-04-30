@@ -13,6 +13,7 @@
 	maxHealth = 200
 	health = 200
 	movement_cooldown = 0
+	movement_sound = 'sound/effects/sand_step.ogg'
 
 	faction = "worm"
 
@@ -29,7 +30,7 @@
 
 	attacktext = list("slammed")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/inert
+	ai_holder_type = /datum/ai_holder/simple_mob/inert //Segments dont need AI
 
 	mob_class = MOB_CLASS_ABERRATION	// It's a monster.
 
@@ -67,7 +68,7 @@
 	process similar to plant photosynthesis, although this is yet to be confirmed. \
 	The curious nature of the Space Worm's biology has made the capture and study \
 	of corpses difficult. Samples and scans are considered especially valuable."
-	value = CATALOGUER_REWARD_MEDIUM
+	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/animal/space/space_worm/head
 	name = "space worm"
@@ -92,6 +93,18 @@
 	animate_movement = SLIDE_STEPS
 
 	var/segment_count = 6
+
+	ai_holder_type = /datum/ai_holder/simple_mob/worm
+
+/datum/ai_holder/simple_mob/worm
+	hostile = TRUE
+	retaliate = TRUE
+	cooperative = TRUE // Worm teammates
+	returns_home = FALSE // Hungry, not territorial
+	can_flee = FALSE
+	speak_chance = 1 // Nothing until a saylist is added
+	wander = TRUE
+	base_wander_delay = 3 // Lil faster idle wandering
 
 /mob/living/simple_mob/animal/space/space_worm/head/severed
 	segment_count = 0
@@ -196,7 +209,7 @@
 
 	if(istype(mover, /mob/living/simple_mob/animal/space/space_worm))	// Worms don't run over worms. That's weird. And also really annoying.
 		return TRUE
-	else if(src.stat == DEAD && !istype(mover, /obj/item/projectile))	// Projectiles need to do their normal checks.
+	else if(src.stat == DEAD && !istype(mover, /obj/projectile))	// Projectiles need to do their normal checks.
 		return TRUE
 	return ..()
 
@@ -291,7 +304,7 @@
 						objectOrMob = null
 						break
 
-					if(D && (D.stat & BROKEN|NOPOWER))
+					if(D && (D.machine_stat & BROKEN|NOPOWER))
 						D.open(TRUE)
 						break
 
@@ -309,7 +322,7 @@
 					EF.visible_message("<span class='danger'>\The [EF] reverberates as it returns to normal.</span>")
 
 			if(objectOrMob)
-				objectOrMob.update_nearby_tiles(need_rebuild=1)
+				objectOrMob.update_nearby_tiles()
 				objectOrMob.forceMove(src)
 				return 1
 

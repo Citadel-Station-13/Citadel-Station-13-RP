@@ -16,10 +16,6 @@
 		// /mob/living/silicon/robot/platform
 	)
 
-/obj/machinery/mech_recharger/Initialize()
-	. = ..()
-	default_apply_parts()
-
 /obj/machinery/mech_recharger/Crossed(var/atom/movable/M)
 	. = ..()
 	if(charging == M)
@@ -91,7 +87,7 @@
 /obj/machinery/mech_recharger/proc/start_charging(var/atom/movable/M)
 
 	var/obj/mecha/mech = M
-	if(stat & (NOPOWER | BROKEN))
+	if(machine_stat & (NOPOWER | BROKEN))
 		if(istype(mech))
 			mech.occupant_message(SPAN_WARNING("Power port not responding. Terminating."))
 		else

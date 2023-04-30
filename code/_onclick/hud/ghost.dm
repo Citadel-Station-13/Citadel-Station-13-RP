@@ -1,5 +1,5 @@
 /atom/movable/screen/ghost
-	icon = 'icons/mob/screen_ghost.dmi'
+	icon = 'icons/screen/hud/common/observer.dmi'
 
 /atom/movable/screen/ghost/MouseEntered(location,control,params)
 	flick(icon_state + "_anim", src)
@@ -91,6 +91,16 @@
 	var/mob/observer/dead/G = usr
 	G.zMove(DOWN)
 
+/atom/movable/screen/ghost/spawners
+	name = "Ghost Roles/Spawners"
+	desc = "Open the ghostrole/spawner menu."
+	icon_state = "spawners"
+
+/atom/movable/screen/ghost/spawners/Click()
+	. = ..()
+	GLOB.ghostrole_menu.ui_interact(usr)
+
+// TODO; /datum/hud refactor
 /datum/hud/proc/ghost_hud(apply_to_client = TRUE)
 
 	var/list/adding = list()
@@ -136,15 +146,21 @@
 	using.hud = src
 	adding += using
 
+	using = new /atom/movable/screen/ghost/spawners
+	using.screen_loc = ui_ghost_spawners
+	using.hud = src
+	adding += using
+
 	if(mymob.client && apply_to_client)
 		mymob.client.screen = list()
 		mymob.client.screen += adding
-		mymob.client.screen += mymob.client.void
+
+		mymob.reload_rendering()
 
 /* I wish we had this. Not yet, though.
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
 	// don't show this HUD if observing; show the HUD of the observee
-	var/mob/dead/observer/O = mymob
+	var/mob/observer/dead/O = mymob
 	if (istype(O) && O.observetarget)
 		plane_masters_update()
 		return FALSE
@@ -160,7 +176,7 @@
 
 //We should only see observed mob alerts.
 /datum/hud/ghost/reorganize_alerts(mob/viewmob)
-	var/mob/dead/observer/O = mymob
+	var/mob/observer/dead/O = mymob
 	if (istype(O) && O.observetarget)
 		return
 	. = ..()

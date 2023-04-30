@@ -39,6 +39,24 @@ var/global/ntnet_card_uid = 1
 	icon_state = "netcard_advanced"
 	hardware_size = 1
 
+/obj/item/computer_hardware/network_card/quantum
+	name = "quantum NTNet network card"
+	desc = "A network card that can connect to NTnet from anywhere, using quantum entanglement."
+	long_range = 1
+	origin_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 7)
+	power_usage = 200 // Infinite range but higher power usage.
+	icon_state = "netcard_advanced"
+	hardware_size = 1
+
+/obj/item/computer_hardware/network_card/quantum/get_signal(var/specific_action = 0)
+	if(!holder2)
+		return 0
+	if(!enabled)
+		return 0
+	if(!check_functionality() || !ntnet_global || is_banned())
+		return 0
+	return 2
+
 /obj/item/computer_hardware/network_card/wired
 	name = "wired NTNet network card"
 	desc = "An advanced network card for usage with standard NTNet frequencies. This one also supports wired connection."

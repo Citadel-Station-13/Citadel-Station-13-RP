@@ -1,20 +1,24 @@
-/*
-While these computers can be placed anywhere, they will only function if placed on either a non-space, non-shuttle turf
-with an /obj/effect/overmap/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /obj/effect/overmap/visitable/ship
-somewhere on that shuttle. Subtypes of these can be then used to perform ship overmap movement functions.
-*/
+/**
+ * While these computers can be placed anywhere, they will only function if placed on either a non-space, non-shuttle turf
+ * with an /obj/effect/overmap/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /obj/effect/overmap/visitable/ship
+ * somewhere on that shuttle. Subtypes of these can be then used to perform ship overmap movement functions.
+ */
 /obj/machinery/computer/ship
 	var/obj/effect/overmap/visitable/ship/linked
-	var/list/viewers // Weakrefs to mobs in direct-view mode.
-	var/extra_view = 0 // how much the view is increased by when the mob is in overmap mode.
+	/// Weakrefs to mobs in direct-view mode.
+	var/list/viewers
+	/// how much the view is increased by when the mob is in overmap mode.
+	var/extra_view = 0
+	/// Has been emagged, no access restrictions.
+	var/hacked = 0
 
-// A late init operation called in SSshuttle, used to attach the thing to the right ship.
+/// A late init operation called in SSshuttle, used to attach the thing to the right ship.
 /obj/machinery/computer/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(src))
 		linked = sector
-		return 1
+		return TRUE
 
 /obj/machinery/computer/ship/proc/sync_linked(var/user = null)
 	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(z)
@@ -22,8 +26,8 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 		return
 	. = attempt_hook_up_recursive(sector)
 	if(. && linked && user)
-		to_chat(user, "<span class='notice'>[src] reconnected to [linked]</span>")
-		user << browse(null, "window=[src]")	// Close reconnect dialog
+		to_chat(user, SPAN_NOTICE("[src] reconnected to [linked]"))
+		user << browse(null, "window=[src]") // Close reconnect dialog
 
 /obj/machinery/computer/ship/proc/attempt_hook_up_recursive(obj/effect/overmap/visitable/ship/sector)
 	if(attempt_hook_up(sector))
@@ -50,7 +54,7 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 // 	ui_interact(user)
 // 	return TRUE
 
-/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+/obj/machinery/computer/ship/ui_act(action, list/params, datum/tgui/ui)
 	if(..())
 		return TRUE
 	switch(action)
@@ -65,31 +69,32 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 
 // Management of mob view displacement. look to shift view to the ship on the overmap; unlook to shift back.
 
-/obj/machinery/computer/ship/proc/look(var/mob/user)
-	if(linked)
-		apply_visual(user)
-		user.reset_view(linked)
-	user.set_machine(src)
-	if(isliving(user))
-		var/mob/living/L = user
-		L.looking_elsewhere = 1
-		L.handle_vision()
-	user.set_viewsize(world.view + extra_view)
+/obj/machinery/computer/ship/proc/look(mob/user)
 	var/WR = WEAKREF(user)
 	if(WR in viewers)
 		return
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	// TODO GLOB.stat_set_event.register(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYDISTINCTADD(viewers, WR)
+	if(linked)
+		user.reset_perspective(linked)
+	user.set_machine(src)
+	if(isliving(user))
+		var/mob/living/L = user
+		L.looking_elsewhere = 1
+		L.handle_vision()
+	var/list/view_size = decode_view_size(world.view)
+	user.client?.set_temporary_view(view_size[1] + extra_view, view_size[2] + extra_view)
 
-/obj/machinery/computer/ship/proc/unlook(var/mob/user)
-	user.reset_view()
-	user.set_viewsize()	// Reset to default
+/obj/machinery/computer/ship/proc/unlook(mob/user, vis_update)
+	user.reset_perspective()
+	user.client?.reset_temporary_view()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user
 		L.looking_elsewhere = 0
-		L.handle_vision()
+		if(!vis_update)
+			L.handle_vision()
 	// TODO GLOB.stat_set_event.unregister(user, src, /obj/machinery/computer/ship/proc/unlook)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
@@ -104,14 +109,14 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 		return
 	unlook(user)
 
-/obj/machinery/computer/ship/ui_close(mob/user)
+/obj/machinery/computer/ship/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	user.unset_machine()
 	unlook(user)
 
-/obj/machinery/computer/ship/check_eye(var/mob/user)
+/obj/machinery/computer/ship/check_eye(mob/user, vis_update)
 	if(!get_dist(user, src) > 1 || user.blinded || !linked)
-		unlook(user)
+		unlook(user, vis_update)
 		return -1
 	else
 		return 0
@@ -124,3 +129,11 @@ somewhere on that shuttle. Subtypes of these can be then used to perform ship ov
 			if(M)
 				unlook(M)
 	. = ..()
+
+/obj/machinery/computer/ship/emag_act(remaining_charges, mob/user)
+	if (!hacked)
+		req_access = list()
+		req_one_access = list()
+		hacked = TRUE
+		to_chat(user, "You short out the console's ID checking system. It's now available to everyone!")
+		return TRUE

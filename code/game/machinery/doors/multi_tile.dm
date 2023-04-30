@@ -7,7 +7,7 @@
 	open_sound_powered = 'sound/machines/door/WideOpen.ogg'
 	close_sound_powered = 'sound/machines/door/WideClose.ogg'
 
-/obj/machinery/door/airlock/multi_tile/Initialize()
+/obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()
 	SetBounds()
 	if(opacity)
@@ -82,4 +82,4 @@
 
 /obj/machinery/door/airlock/multi_tile/metal/mait
 	icon = 'icons/obj/doors/Door2x1_Maint.dmi'
-	//req_one_access = list(access_maint_tunnels) //VOREStaiton Edit - Maintenance is open access
+	//req_one_access = list(ACCESS_ENGINEERING_MAINT) //VOREStaiton Edit - Maintenance is open access

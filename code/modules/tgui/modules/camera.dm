@@ -1,4 +1,4 @@
-/datum/tgui_module/camera
+/datum/tgui_module_old/camera
 	name = "Security Cameras"
 	tgui_id = "CameraConsole"
 
@@ -17,11 +17,10 @@
 	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/atom/movable/screen/background/cam_foreground
-	var/atom/movable/screen/skybox/local_skybox
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
-/datum/tgui_module/camera/New(host, list/network_computer)
+/datum/tgui_module_old/camera/New(host, list/network_computer)
 	. = ..()
 	if(!LAZYLEN(network_computer))
 		access_based = TRUE
@@ -43,12 +42,6 @@
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
 
-	local_skybox = new()
-	local_skybox.assigned_map = map_name
-	local_skybox.del_on_map_removal = FALSE
-	local_skybox.screen_loc = "[map_name]:CENTER,CENTER"
-	cam_plane_masters += local_skybox
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
@@ -63,11 +56,13 @@
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name
 	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = PLANE_FULLSCREEN
+	cam_foreground.plane = FULLSCREEN_PLANE
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 
-/datum/tgui_module/camera/Destroy()
+/datum/tgui_module_old/camera/Destroy()
+	STOP_PROCESSING(SSmoving_cameras, src)
+
 	if(active_camera)
 		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
@@ -78,7 +73,7 @@
 	qdel(cam_foreground)
 	return ..()
 
-/datum/tgui_module/camera/ui_interact(mob/user, datum/tgui/ui = null)
+/datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 	// Show static if can't use the camera
@@ -104,7 +99,7 @@
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/datum/tgui_module/camera/ui_data()
+/datum/tgui_module_old/camera/ui_data()
 	var/list/data = list()
 	data["activeCamera"] = null
 	if(active_camera)
@@ -114,7 +109,7 @@
 		)
 	return data
 
-/datum/tgui_module/camera/ui_static_data(mob/user)
+/datum/tgui_module_old/camera/ui_static_data(mob/user)
 	var/list/data = ..()
 	data["mapRef"] = map_name
 	var/list/cameras = get_available_cameras(user)
@@ -129,12 +124,12 @@
 		data["allNetworks"] |= C.network
 	return data
 
-/datum/tgui_module/camera/ui_act(action, params)
+/datum/tgui_module_old/camera/ui_act(action, params)
 	if(..())
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(ui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	if(action == "switch_camera")
 		var/c_tag = params["name"]
@@ -143,8 +138,9 @@
 		if(active_camera)
 			UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 		active_camera = C
+		START_PROCESSING(SSmoving_cameras, src)
 		RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-		playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+		playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 		update_active_camera_screen()
 		return TRUE
 
@@ -171,11 +167,16 @@
 					UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 				active_camera = target
 				RegisterSignal(active_camera, COMSIG_MOVABLE_MOVED, .proc/update_active_camera_screen)
-				playsound(ui_host(), get_sfx("terminal_type"), 25, FALSE)
+				playsound(ui_host(), get_sfx(SFX_ALIAS_TERMINAL), 25, FALSE)
 				update_active_camera_screen()
 				. = TRUE
 
-/datum/tgui_module/camera/proc/update_active_camera_screen()
+/datum/tgui_module_old/camera/process()
+	if(isnull(active_camera))
+		return PROCESS_KILL
+	update_active_camera_screen()
+
+/datum/tgui_module_old/camera/proc/update_active_camera_screen()
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		show_camera_static()
@@ -207,16 +208,11 @@
 
 	cam_foreground.fill_rect(1, 1, size_x, size_y)
 
-	local_skybox.cut_overlays()
-	local_skybox.add_overlay(SSskybox.get_skybox(get_z(newturf)))
-	local_skybox.scale_to_view(size_x)
-	local_skybox.set_position("CENTER", "CENTER", (world.maxx>>1) - newturf.x, (world.maxy>>1) - newturf.y)
-
 // Returns the list of cameras accessible from this computer
 // This proc operates in two distinct ways depending on the context in which the module is created.
 // It can either return a list of cameras sharing the same the internal `network` variable, or
 // It can scan all station networks and determine what cameras to show based on the access of the user.
-/datum/tgui_module/camera/proc/get_available_cameras(mob/user)
+/datum/tgui_module_old/camera/proc/get_available_cameras(mob/user)
 	var/list/all_networks = list()
 	// Access Based
 	if(access_based)
@@ -234,7 +230,7 @@
 		all_networks += additional_networks
 
 	var/list/D = list()
-	for(var/obj/machinery/camera/C in cameranet.cameras)
+	for(var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
@@ -246,23 +242,22 @@
 			D["[ckey(C.c_tag)]"] = C
 	return D
 
-/datum/tgui_module/camera/proc/can_access_network(mob/user, network_access, station_network = 0)
+/datum/tgui_module_old/camera/proc/can_access_network(mob/user, network_access, station_network = 0)
 	// No access passed, or 0 which is considered no access requirement. Allow it.
 	if(!network_access)
 		return 1
 
 	if(station_network)
-		return check_access(user, network_access) || check_access(user, access_security) || check_access(user, access_heads)
+		return check_access(user, network_access) || check_access(user, ACCESS_SECURITY_EQUIPMENT) || check_access(user, ACCESS_COMMAND_BRIDGE)
 	else
 		return check_access(user, network_access)
 
-/datum/tgui_module/camera/proc/show_camera_static()
+/datum/tgui_module_old/camera/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
 	cam_background.fill_rect(1, 1, default_map_size, default_map_size)
-	local_skybox.cut_overlays()
 
-/datum/tgui_module/camera/ui_close(mob/user)
+/datum/tgui_module_old/camera/ui_close(mob/user, datum/tgui_module/module)
 	. = ..()
 	var/user_ref = REF(user)
 	var/is_living = isliving(user)
@@ -282,17 +277,17 @@
 // Please note, this isn't a very good replacement for converting modular computers 100% to TGUI
 // If/when that is done, just move all the PC_ specific data and stuff to the modular computers themselves
 // instead of copying this approach here.
-/datum/tgui_module/camera/ntos
+/datum/tgui_module_old/camera/ntos
 	ntos = TRUE
 
 // ERT Version provides some additional networks.
-/datum/tgui_module/camera/ntos/ert
+/datum/tgui_module_old/camera/ntos/ert
 	additional_networks = list(NETWORK_ERT, NETWORK_CRESCENT)
 
 // Hacked version also provides some additional networks,
 // but we want it to show *all* the networks 24/7, so we convert it into a non-access-based UI.
-/datum/tgui_module/camera/ntos/hacked
+/datum/tgui_module_old/camera/ntos/hacked
 	additional_networks = list(NETWORK_MERCENARY, NETWORK_ERT, NETWORK_CRESCENT)
 
-/datum/tgui_module/camera/ntos/hacked/New(host)
+/datum/tgui_module_old/camera/ntos/hacked/New(host)
 	. = ..(host, GLOB.using_map.station_networks.Copy())

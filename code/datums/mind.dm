@@ -1,105 +1,183 @@
-/*	Note from Carnie:
-		The way datum/mind stuff works has been changed a lot.
-		Minds now represent IC characters rather than following a client around constantly.
-
-	Guidelines for using minds properly:
-
-	-	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
-		ghost.mind is however used as a reference to the ghost's corpse
-
-	-	When creating a new mob for an existing IC character (e.g. cloning a dead guy or borging a brain of a human)
-		the existing mind of the old mob should be transfered to the new mob like so:
-
-			mind.transfer_to(new_mob)
-
-	-	You must not assign key= or ckey= after transfer_to() since the transfer_to transfers the client for you.
-		By setting key or ckey explicitly after transfering the mind with transfer_to you will cause bugs like DCing
-		the player.
-
-	-	IMPORTANT NOTE 2, if you want a player to become a ghost, use mob.ghostize() It does all the hard work for you.
-
-	-	When creating a new mob which will be a new IC character (e.g. putting a shade in a construct or randomly selecting
-		a ghost to become a xeno during an event). Simply assign the key or ckey like you've always done.
-
-			new_mob.key = key
-
-		The Login proc will handle making a new mob for that mobtype (including setting up stuff like mind.name). Simple!
-		However if you want that mind to have any special properties like being a traitor etc you will have to do that
-		yourself.
-
-*/
+/**
+ *!	Note from Carnie:
+ * 	The way datum/mind stuff works has been changed a lot.
+ * 	Minds now represent IC characters rather than following a client around constantly.
+ *
+ *? Guidelines for using minds properly:
+ * -	Never mind.transfer_to(ghost). The var/current and var/original of a mind must always be of type mob/living!
+ * 	ghost.mind is however used as a reference to the ghost's corpse
+ *
+ * -	When creating a new mob for an existing IC character (e.g. cloning a dead guy or borging a brain of a human)
+ * 	the existing mind of the old mob should be transfered to the new mob like so: mind.transfer_to(new_mob)
+ *
+ * -	You must not assign key= or ckey= after transfer_to() since the transfer_to transfers the client for you.
+ * 	By setting key or ckey explicitly after transfering the mind with transfer_to you will cause bugs like DCing
+ * 	the player.
+ *
+ * -	IMPORTANT NOTE 2, if you want a player to become a ghost, use mob.ghostize() It does all the hard work for you.
+ *
+ * -	When creating a new mob which will be a new IC character (e.g. putting a shade in a construct or randomly selecting
+ * 	a ghost to become a xeno during an event). Simply assign the key or ckey like you've always done.
+ * 	new_mob.key = key
+ *
+ * 	The Login proc will handle making a new mob for that mobtype (including setting up stuff like mind.name). Simple!
+ * 	However if you want that mind to have any special properties like being a traitor etc you will have to do that
+ * 	yourself.
+ */
 
 /datum/mind
-	var/key
-	var/name				//replaces mob/var/original_name
+	/// ckey of mind
+	var/ckey
+	/// Replaces mob/var/original_name
+	var/name
+	//  todo: /mob, not /living
+	/// the mob we're currently inhabiting. the mind can be referenced by many mobs, however, only one may be 'owned' by it.
+	/// this functionality is used for things like aghosting and astral projection, as even though the player is in another mob,
+	/// their actual mob is what owns their mind.
 	var/mob/living/current
+
 	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
-	var/active = 0
+	var/active = FALSE
+
+	//? Characteristics
+	/// characteristics holder
+	var/datum/characteristics_holder/characteristics
+
+	//? Abilities
+	/// mind-level abilities
+	var/list/datum/ability/abilities
+
+	//? Preferences
+	/**
+	 * original save data
+	 * ! TODO: REMOVE THIS; we shouldn't keep this potentially big list all round. !
+	 * todo: don't actually remove it, just only save relevant data (?)
+	 */
+	var/list/original_save_data
+	/// original economic modifier from backgrounds
+	var/original_pref_economic_modifier = 1
 
 	var/memory
 	var/list/learned_recipes
 
+	// todo: id, not title
 	var/assigned_role
+	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
 	var/special_role
 
 	var/role_alt_title
 
-	var/datum/job/assigned_job
+	var/datum/role/job/assigned_job
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()
 
-	var/has_been_rev = 0//Tracks if this mind has been a rev or not
+	/// Tracks if this mind has been a rev or not.
+	var/has_been_rev = 0
 
-	var/datum/faction/faction 			//associated faction
-	var/datum/changeling/changeling		//changeling holder
+	/// Associated faction.
+	var/datum/faction/faction
+	/// Changeling holder.
+	var/datum/changeling/changeling
 
-	var/isholy = FALSE //is this person a chaplain or admin role allowed to use bibles
+	/// Is this person a chaplain or admin role allowed to use bibles.
+	var/isholy = FALSE
 
 	var/rev_cooldown = 0
 	var/tcrystals = 0
 
-	// the world.time since the mob has been brigged, or -1 if not at all
+	/// The world.time since the mob has been brigged, or -1 if not at all.
 	var/brigged_since = -1
 
-	//put this here for easier tracking ingame
+	/// Put this here for easier tracking ingame.
 	var/datum/money_account/initial_account
 
-	//used for antag tcrystal trading, more info in code\game\objects\items\telecrystals.dm
+	/// Used for antag tcrystal trading, more info in code\game\objects\items\telecrystals.dm
 	var/accept_tcrystals = 0
 
-	//used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
+	/// Used for optional self-objectives that antagonists can give themselves, which are displayed at the end of the round.
 	var/ambitions
 
-	//used to store what traits the player had picked out in their preferences before joining, in text form.
+	/// Used to store what traits the player had picked out in their preferences before joining, in text form.
 	var/list/traits = list()
 
-/datum/mind/New(var/key)
-	src.key = key
+/datum/mind/New(ckey)
+	src.ckey = ckey
 
-	..()
+/datum/mind/Destroy()
+	QDEL_NULL(characteristics)
+	QDEL_LIST_NULL(abilities)
+	return ..()
 
-/datum/mind/proc/transfer_to(mob/living/new_character)
-	if(!istype(new_character))
-		log_world("## DEBUG: transfer_to(): Some idiot has tried to transfer_to() a non mob/living mob. Please inform Carn")
-	if(current)					//remove ourself from our old body's mind variable
-		if(changeling)
-			current.remove_changeling_powers()
-			current.verbs -= /datum/changeling/proc/EvolutionMenu
-		current.mind = null
+//? Characteristics
 
-		SSnanoui.user_transferred(current, new_character) // transfer active NanoUI instances to new user
-	if(new_character.mind)		//remove any mind currently in our new body's mind variable
-		new_character.mind.current = null
+/**
+ * make sure we have a characteristics holder
+ */
+/datum/mind/proc/characteristics_holder()
+	if(!characteristics)
+		characteristics = new
+		characteristics.associate_with_mind(src)
+	return characteristics
 
-	current = new_character		//link ourself to our new body
-	new_character.mind = src	//and link our new body to ourself
+//? Transfer
 
+/datum/mind/proc/disassociate()
+	ASSERT(!isnull(current))
+
+	// LEGACY: remove changeling
+	if(changeling)
+		current.remove_changeling_powers()
+		remove_verb(current, /datum/changeling/proc/EvolutionMenu)
+	// remove characteristics
+	characteristics?.disassociate_from_mob(current)
+	// remove abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.disassociate(current)
+	// null mind
+	current.mind = null
+
+	// done
+	current = null
+
+/datum/mind/proc/associate(mob/new_character)
+	ASSERT(isnull(current))
+	ASSERT(isnull(new_character.mind))
+
+	// start
+	current = new_character
+
+	// set mind
+	new_character.mind = src
+	// add characteristics
+	characteristics?.associate_with_mob(new_character)
+	// add abilities
+	for(var/datum/ability/ability as anything in abilities)
+		ability.associate(new_character)
+	// LEGACY: add changeling
 	if(changeling)
 		new_character.make_changeling()
 
+	//* transfer player if necessary
 	if(active)
-		new_character.key = key		//now transfer the key to link the client to our new body
+		new_character.ckey = ckey //now transfer the ckey to link the client to our new body
+
+/datum/mind/proc/transfer(mob/new_character)
+	if(isnull(current))
+		associate(new_character)
+		return
+
+	var/mob/old_character = current
+
+	disassociate()
+
+	if(!isnull(new_character.mind))
+		new_character.mind.disassociate()
+
+	SStgui.on_transfer(old_character, new_character)
+	SSnanoui.user_transferred(old_character, new_character)
+
+	associate(new_character)
 
 /datum/mind/proc/store_memory(new_text)
 	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
@@ -127,7 +205,7 @@
 		return
 
 	var/out = "<B>[name]</B>[(current&&(current.real_name!=name))?" (as [current.real_name])":""]<br>"
-	out += "Mind currently owned by key: [key] [active?"(synced)":"(not synced)"]<br>"
+	out += "Mind currently owned by ckey: [ckey] [active?"(synced)":"(not synced)"]<br>"
 	out += "Assigned role: [assigned_role]. <a href='?src=\ref[src];role_edit=1'>Edit</a><br>"
 	out += "<hr>"
 	out += "Factions and special roles:<br><table>"
@@ -184,7 +262,7 @@
 		if(antag) antag.place_mob(src.current)
 
 	else if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in joblist
+		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in SSjob.all_job_titles()
 		if (!new_role) return
 		assigned_role = new_role
 
@@ -339,8 +417,6 @@
 	else if(href_list["implant"])
 		var/mob/living/carbon/human/H = current
 
-		BITSET(H.hud_updateflag, IMPLOYAL_HUD)   // updates that players HUD images so secHUD's pick up they are implanted or not.
-
 		switch(href_list["implant"])
 			if("remove")
 				for(var/obj/item/implant/loyalty/I in H.contents)
@@ -354,9 +430,9 @@
 				to_chat(H, "<span class='danger'><font size =3>You somehow have become the recepient of a loyalty transplant, and it just activated!</font></span>")
 				H.implant_loyalty(override = TRUE)
 				log_admin("[key_name_admin(usr)] has loyalty implanted [current].")
-			else
+		H.update_hud_sec_implants()
 	else if (href_list["silicon"])
-		BITSET(current.hud_updateflag, SPECIALROLE_HUD)
+		current.update_hud_antag()
 		switch(href_list["silicon"])
 
 			if("unemag")
@@ -398,8 +474,7 @@
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
-				for(var/obj/item/W in current)
-					current.drop_from_inventory(W)
+				current.drop_inventory(TRUE, TRUE)
 			if("takeuplink")
 				take_uplink()
 				memory = null//Remove any memory they may have had.
@@ -408,7 +483,7 @@
 				//	var/obj/item/uplink/hidden/suplink = find_syndicate_uplink() No longer needed, uses stored in mind
 					var/crystals
 					crystals = tcrystals
-					crystals = input("Amount of telecrystals for [key]", crystals) as null|num
+					crystals = input("Amount of telecrystals for [ckey]", crystals) as null|num
 					if (!isnull(crystals))
 						tcrystals = crystals
 
@@ -485,11 +560,11 @@
 		return 0
 
 //Initialisation procs
-/mob/living/proc/mind_initialize()
+/mob/proc/mind_initialize()
 	if(mind)
-		mind.key = key
+		mind.ckey = ckey
 	else
-		mind = new /datum/mind(key)
+		mind = new /datum/mind(ckey)
 		mind.original = src
 		if(SSticker)
 			SSticker.minds += mind
@@ -499,13 +574,13 @@
 		mind.name = real_name
 	mind.current = src
 	if(player_is_antag(mind))
-		src.client.verbs += /client/proc/aooc
+		add_verb(client, /client/proc/aooc)
 
 //HUMAN
 /mob/living/carbon/human/mind_initialize()
 	..()
 	if(!mind.assigned_role)
-		mind.assigned_role = USELESS_JOB	//defualt //VOREStation Edit - Visitor not Assistant
+		mind.assigned_role = USELESS_JOB
 
 //slime
 /mob/living/simple_mob/slime/mind_initialize()
@@ -560,3 +635,103 @@
 	. = ..()
 	mind.assigned_role = "Juggernaut"
 	mind.special_role = "Cultist"
+
+//? Preferences Checks
+
+/datum/mind/proc/original_background_religion()
+	RETURN_TYPE(/datum/lore/character_background/religion)
+	var/id = original_save_data?[CHARACTER_DATA_RELIGION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_religion(id)
+
+/datum/mind/proc/original_background_citizenship()
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
+	var/id = original_save_data?[CHARACTER_DATA_CITIZENSHIP]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_citizenship(id)
+
+/datum/mind/proc/original_background_origin()
+	RETURN_TYPE(/datum/lore/character_background/origin)
+	var/id = original_save_data?[CHARACTER_DATA_ORIGIN]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_origin(id)
+
+/datum/mind/proc/original_background_faction()
+	RETURN_TYPE(/datum/lore/character_background/faction)
+	var/id = original_save_data?[CHARACTER_DATA_FACTION]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_faction(id)
+
+/datum/mind/proc/original_background_culture()
+	RETURN_TYPE(/datum/lore/character_background/culture)
+	var/id = original_save_data?[CHARACTER_DATA_CULTURE]
+	if(isnull(id))
+		return
+	return SScharacters.resolve_culture(id)
+
+/datum/mind/proc/original_background_datums()
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_background_citizenship(),
+		original_background_faction(),
+		original_background_origin(),
+		original_background_religion(),
+		original_background_culture(),
+	)
+	listclearnulls(.)
+
+/datum/mind/proc/original_background_ids()
+	if(isnull(original_save_data))
+		return list()
+	. = list(
+		original_save_data[CHARACTER_DATA_CITIZENSHIP],
+		original_save_data[CHARACTER_DATA_ORIGIN],
+		original_save_data[CHARACTER_DATA_FACTION],
+		original_save_data[CHARACTER_DATA_CULTURE],
+		original_save_data[CHARACTER_DATA_RELIGION],
+	)
+	listclearnulls(.)
+
+//? Abilities
+
+/**
+ * adds an ability to us
+ *
+ * @params
+ * * ability - a datum or path. once passed in, this datum is owned by the mind, and the mind can delete it at any time! if a path is passed in, this will runtime on duplicates - paths must always be unique if used in this way.
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/add_ability(datum/ability/ability)
+	if(ispath(ability))
+		. = FALSE
+		ASSERT(!(locate(ability) in abilities))
+		ability = new ability
+	abilities += ability
+	if(current)
+		ability.associate(current)
+	return TRUE
+
+/**
+ * removes, and deletes, an ability on us
+ *
+ * @params
+ * * ability - a datum or path. paths should only be used if it's an unique ability nothing else should grant!
+ *
+ * @return TRUE / FALSE success or failure
+ */
+/datum/mind/proc/remove_ability(datum/ability/ability)
+	if(ispath(ability))
+		ability = locate(ability) in abilities
+	if(isnull(ability))
+		return FALSE
+	abilities -= ability
+	if(current)
+		ability.disassociate(current)
+	qdel(ability)
+	return TRUE

@@ -71,7 +71,8 @@ const UplinkHeader = (props, context) => {
       <Section title="Item Discount" level={2}>
         {discount_amount < 100 && (
           <Box>
-            {discount_name} - {discount_amount}% off. Offer expires at: {offer_expiry}
+            {discount_name} - {discount_amount}% off.
+            Offer expires at: {offer_expiry}
           </Box>
         ) || (
           <Box>

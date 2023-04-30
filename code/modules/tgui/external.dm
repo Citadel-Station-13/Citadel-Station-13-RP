@@ -1,8 +1,8 @@
-/*!
+/**
  * External tgui definitions, such as src_object APIs.
  *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /**
@@ -13,8 +13,11 @@
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
+ *
+ *! ## To-Be-Deprecated.
+ * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	return FALSE // Not implemented.
 
 /**
@@ -27,7 +30,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list() // Not implemented.
 
 /**
@@ -44,7 +47,7 @@
  *
  * return list Statuic Data to be sent to the UI.
  */
-/datum/proc/ui_static_data(mob/user)
+/datum/proc/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list()
 
 /**
@@ -53,14 +56,57 @@
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
- * required user the mob currently interacting with the ui
- * optional ui ui to be updated
+ * If no user is provided, every user will be updated.
+ *
+ * optional user the mob currently interacting with the ui
+ * optional ui tgui to be updated
+ * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
  */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui)
+/datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_full_update(hard_refresh = hard_refresh)
+		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update()
+		ui.send_full_update(hard_refresh = hard_refresh)
+
+/**
+ * immediately shunts this data to either an user, an ui, or all users.
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ */
+/datum/proc/push_ui_data(mob/user, datum/tgui/ui, list/data)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.push_data(data)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.push_data(data)
+
+/**
+ * immediately pushes module updates to user, an ui, or all users
+ *
+ * @params
+ * * user - when specified, only pushes this user. else, pushes to all windows.
+ * * ui - when specified, only pushes this ui for a given user.
+ * * updates - list(id = list(data...), ...) for modules. the reducer on tgui-side will only overwrite provided data keys.
+ */
+/datum/proc/push_ui_modules(mob/user, datum/tgui/ui, list/updates)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.push_modules(updates)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.push_modules(updates)
 
 /**
  * public
@@ -73,8 +119,9 @@
  *
  * return bool If the user's input has been handled and the UI should update.
  */
-/datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	// SHOULD_CALL_PARENT(TRUE)
+/datum/proc/ui_act(action, list/params, datum/tgui/ui)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params, ui)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE
@@ -97,7 +144,7 @@
  * This allows modules/datums to have the UI attached to them,
  * and be a part of another object.
  */
-/datum/proc/ui_host(mob/user)
+/datum/proc/ui_host(mob/user, datum/tgui_module/module)
 	return src // Default src.
 
 /**
@@ -106,8 +153,16 @@
  * The UI's state controller to be used for created uis
  * This is a proc over a var for memory reasons
  */
-/datum/proc/ui_state(mob/user)
+/datum/proc/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.default_state
+
+/**
+ * public
+ *
+ * checks if UIs are open
+ */
+/datum/proc/has_open_ui()
+	return length(SStgui.open_uis_by_src[REF(src)])
 
 /**
  * global
@@ -143,8 +198,13 @@
  *
  * Called on a UI's object when the UI is closed, not to be confused with
  * client/verb/uiclose(), which closes the ui window
+ *
+ * @params
+ * * user - closing mob
+ * * module - (optional) the module it came from, if any
  */
-/datum/proc/ui_close(mob/user)
+/datum/proc/ui_close(mob/user, datum/tgui_module/module)
+	SIGNAL_HANDLER
 
 /**
  * verb
@@ -183,8 +243,7 @@
 			context = context)
 	// Reload all tgui windows
 	if(type == "cacheReloaded")
-		if(!check_rights(R_ADMIN) || usr.client.tgui_cache_reloaded)
-			return TRUE
+		log_tgui(usr, context = "debug/reload")
 		// Mark as reloaded
 		usr.client.tgui_cache_reloaded = TRUE
 		// Notify windows
