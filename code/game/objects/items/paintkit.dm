@@ -169,17 +169,17 @@
 		piece.desc = "It seems to be part of a [HARDSUIT.name]."
 		piece.icon_state = "[HARDSUIT.suit_state]"
 		if(istype(piece, /obj/item/clothing/shoes))
-			piece.icon = 'icons/mob/clothing/custom_items_hardsuit_boots.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_hardsuit_boots.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 		if(istype(piece, /obj/item/clothing/suit))
-			piece.icon = 'icons/mob/clothing/custom_items_hardsuit_suits.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_hardsuit_suits.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_suits.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suits.dmi'
 		if(istype(piece, /obj/item/clothing/head))
-			piece.icon = 'icons/mob/clothing/custom_items_hardsuit_helmet.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_hardsuit_helmet.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
 		if(istype(piece, /obj/item/clothing/gloves))
-			piece.icon = 'icons/mob/clothing/custom_items_hardsuit_gloves.dmi'
-			piece.icon_override = 'icons/mob/clothing/custom_items_hardsuit_gloves.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
 	if(HARDSUIT.helmet && istype(HARDSUIT.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
 		var/obj/item/clothing/head/helmet/H = HARDSUIT.helmet
 		H.light_overlay = new_light_overlay
