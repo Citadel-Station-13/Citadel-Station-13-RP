@@ -21,6 +21,8 @@
 #define ITEM_EASY_LATHE_DECONSTRUCT (1<<9)
 /// do not allow lathe deconstruction
 #define ITEM_NO_LATHE_DECONSTRUCT (1<<10)
+/// stack-like handling for ingredients
+#define ITEM_MASS_INGREDIENT (1<<11)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_IN_INVENTORY),
@@ -34,6 +36,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(ITEM_CAREFUL_BLUDGEON),
 	BITFIELD(ITEM_EASY_LATHE_DECONSTRUCT),
 	BITFIELD(ITEM_NO_LATHE_DECONSTRUCT),
+	BITFIELD(ITEM_MASS_INGREDIENT),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

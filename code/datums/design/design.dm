@@ -7,26 +7,37 @@
 	/// Abstract type.
 	abstract_type = /datum/design
 
+	//? Design Data - Core
 	/// Must be unique - identifier of design in CamelCase.
 	var/identifier
-	/// design flags - see [code/__DEFINES/machines/lathe.dm]
+	/// design flags - see [code/__DEFINES/datums/design.dm]
 	var/design_flags = NONE
-	/// types of lathes that can print us
-	var/lathe_type = NONE
-	/// how are we unlocked
+	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]
 	var/design_unlock = NONE
-	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
-	var/work = 5 SECONDS
 	/// is stack? autodetected.
 	var/is_stack = FALSE
 
+	//? Design Data - UI
+	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
+	var/name
+	/// desc of design, shows in UIs. if null, it'll be auto-detected from the build_path if possible.
+	var/desc
+	/// category - string or list, or null; null results in undefined behavior depending on UI.
+	var/category = "Misc"
+
+	//? Build Data
 	/// name of item before any name-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
 	var/build_name
 	/// desc of item before any desc-generation is done. also shown in ui. if null, it'll be auto-detected from the build_path if possible.
 	var/build_desc
 	/// type of what we build
 	var/build_path
+	/// types of lathes that can print us
+	var/lathe_type = NONE
+	/// time needed in deciseconds - for stacks, this is time *PER SHEET*.
+	var/work = 5 SECONDS
 
+	//? Build Costs
 	/// list of materials needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/materials
 	/// for variable-material designs: assoc list of key to amounts
@@ -38,13 +49,6 @@
 	/// list of reagents needed - typepath or id to amount. null to auto-detect from the object in question. list() for no cost (DANGEROUS).
 	var/list/reagents
 	// todo: reagent_parts?
-
-	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
-	var/name
-	/// desc of design, shows in UIs. if null, it'll be auto-detected from the build_path if possible.
-	var/desc
-	/// category - string or list, or null; null results in undefined behavior depending on UI.
-	var/category = "Misc"
 
 	//? legacy
 	///IDs of that techs the object originated from and the minimum level requirements.
@@ -88,6 +92,9 @@
 /datum/design/proc/generate_desc(template)
 	return template
 
+/**
+ * Encodes data for [tgui/packages/tgui/interfaces/common/Design.tsx]
+ */
 /datum/design/proc/ui_data_list()
 	return list(
 		"name" = name,
@@ -96,6 +103,7 @@
 		"materials" = materials,
 		"material_parts" = material_parts,
 		"reagents" = reagents,
+		"ingredients" = ingredients,
 		"resultItem" = list(
 			"name" = build_name,
 			"desc" = build_desc,

@@ -11,5 +11,5 @@
 #define INGREDIENT_TYPE_REAGENT "reagent"
 /// datatype: stack path; amount: sheets; allowed: path, list of paths, null for any
 #define INGREDIENT_TYPE_STACK "stack"
-/// datatype :typepath; amount: items; allowed: path, list of paths, null for any - associate TRUE in list to enforce exact typepath.
+/// datatype: typepath; amount: items; allowed: path, list of paths, null for any - associate TRUE in list to enforce exact typepath.
 #define INGREDIENT_TYPE_ITEM "item"

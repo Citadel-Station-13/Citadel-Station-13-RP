@@ -14,6 +14,8 @@ export interface IngredientsAvailable {
   stacks: Record<IngredientPath, number>; // type to amount
   stackLookup: Record<IngredientPath, string>; // name lookup
   items: IngredientItem[]; // structs
+  massItems: Record<IngredientPath, number>; // type to amount
+  massItemLookup: Record<IngredientPath, string>; // type to name
 }
 
 export interface IngredientItem {

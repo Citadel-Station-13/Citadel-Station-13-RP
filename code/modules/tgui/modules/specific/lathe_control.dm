@@ -58,7 +58,10 @@
 			return TRUE
 		if("ejectMaterial")
 			var/id = params["id"]
-			#warn impl
+			var/amt = params["amount"]
+			if(!amt || isnull(id))
+				return
+			lathe.stored_materials.eject_sheets(id, amt)
 			ui_materials_update()
 			return TRUE
 		if("disposeReagent")
@@ -79,10 +82,11 @@
 
 /datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)
 	var/list/datum/design/designs = islist(design)? design : list(design)
-	. = list()
-	#warn impl ???
+	var/list/built = list()
 	if(!islist(designs))
 		design = list(design)
+	for(var/datum/design/D as anything in designs)
+		built[++built.len] = D.ui_data_list()
 
 /datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)
 	if(design_update_queued)

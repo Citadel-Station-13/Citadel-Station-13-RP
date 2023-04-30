@@ -1,3 +1,4 @@
+import { IngredientsNeeded } from "./Ingredients";
 
 export interface Design {
   name: string;
@@ -5,6 +6,7 @@ export interface Design {
   materials?: Record<string, number>;
   material_parts?: Record<string, number>;
   reagents?: Record<string, number>;
+  ingredients?: IngredientsNeeded;
   resultItem: DesignItem;
   id: string;
 }

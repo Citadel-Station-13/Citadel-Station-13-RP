@@ -54,6 +54,33 @@
 		stored[mat_id] += sheets * SHEET_MATERIAL_AMOUNT
 
 /**
+ * dumps x sheets of y material
+ *
+ * @params
+ * * where - where to dump
+ * * material - material id or instance
+ * * amount - sheets to dump; defaults to as many as possible
+ *
+ * @return sheets dumped
+ */
+/datum/material_container/proc/dump(atom/where, datum/material/material, amount = INFINITY)
+	if(ispath(material))
+		material = initial(material.id)
+	var/dumping = min(amount, round(stored[material] / SHEET_MATERIAL_AMOUNT))
+	var/safety = 50
+	. = 0
+	var/obj/item/stack/stack_type = material.stack_type
+	if(!stack_type)
+		return 0
+	while(dumping > 0)
+		var/wanted = min(stack_size, dumping)
+		material.place_sheet(where, wanted)
+		dumping -= wanted
+		. += wanted
+		if(!--safety)
+			break
+
+/**
  * Inserts sheets
  *
  * Will use() / delete the sheets as needed

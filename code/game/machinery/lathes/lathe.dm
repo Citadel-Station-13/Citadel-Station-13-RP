@@ -408,6 +408,9 @@
 /obj/machinery/lathe/proc/available_designs()
 	return design_holder.available_designs()
 
+/obj/machinery/lathe/proc/eject_sheets(id, amount)
+	return stored_materials.dump(drop_location(), id, amount)
+
 /obj/machinery/lathe/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	if(!has_interface)
 		return
