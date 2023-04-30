@@ -1,29 +1,29 @@
-GLOBAL_LIST_EMPTY(cached_darksight_holders)
+GLOBAL_LIST_EMPTY(cached_vision_holders)
 
-/proc/cached_darksight_holder(datum/darksight/path_or_instance)
+/proc/cached_vision_holder(datum/vision/path_or_instance)
 	if(istype(path_or_instance))
 		return path_or_instance
-	if(isnull(GLOB.cached_darksight_holders[path_or_instance]))
-		GLOB.cached_darksight_holders += new path_or_instance
-	return GLOB.cached_darksight_holders[path_or_instance]
+	if(isnull(GLOB.cached_vision_holders[path_or_instance]))
+		GLOB.cached_vision_holders += new path_or_instance
+	return GLOB.cached_vision_holders[path_or_instance]
 
 /**
  * holder data for darksight
  */
-/datum/darksight
+/datum/vision
 	/// priority - lower is higher
 	var/priority = DARKSIGHT_PRIORITY_DEFAULT
 
-/datum/darksight/proc/push(datum/perspective/perspective)
+/datum/vision/proc/push(datum/perspective/perspective)
 	return
 
-/proc/cmp_darksight_holders(datum/darksight/A, datum/darksight/B)
+/proc/cmp_vision_holders(datum/vision/A, datum/vision/B)
 	return A.priority - B.priority
 
 /**
  * baseline darksight holder - overwrites everything when applied
  */
-/datum/darksight/baseline
+/datum/vision/baseline
 	/// hard darksight? null for none, otherwise alpha of lighting plane.
 	var/hard_darksight
 	/// soft darksight radius
@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	//  todo: this makes mesons / matscanners not be op by limiting see_in_dark while it's active.
 	var/legacy_throttle = INFINITY
 
-/datum/darksight/baseline/push(datum/perspective/perspective)
+/datum/vision/baseline/push(datum/perspective/perspective)
 	perspective.hard_darkvision = hard_darksight
 	perspective.darkvision_alpha = soft_darksight_alpha
 	perspective.darkvision_range = soft_darksight_range
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
  * min/max-augmenting darksight provider
  * matrix is always multiplied.
  */
-/datum/darksight/augmenting
+/datum/vision/augmenting
 	var/hard_alpha
 	var/soft_range
 	var/soft_alpha
@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 	//  todo: this makes mesons / matscanners not be op by limiting see_in_dark while it's active.
 	var/legacy_throttle = INFINITY
 
-/datum/darksight/augmenting/push(datum/perspective/perspective)
+/datum/vision/augmenting/push(datum/perspective/perspective)
 	perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
 	perspective.darkvision_alpha = min(perspective.darkvision_alpha, soft_alpha)
 	perspective.darkvision_range = max(perspective.darkvision_range, soft_range)
@@ -79,14 +79,14 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
  * add-augmenting darksight provider
  * matrix is always multiplied.
  */
-/datum/darksight/additive
+/datum/vision/additive
 	var/hard_alpha = 0
 	var/soft_range = 0
 	var/soft_alpha = 0
 	var/list/soft_matrix
 	var/disable_soft_smartness
 
-/datum/darksight/multiplicative/push(datum/perspective/perspective)
+/datum/vision/multiplicative/push(datum/perspective/perspective)
 	perspective.hard_darkvision += hard_alpha
 	perspective.darkvision_alpha += soft_alpha
 	perspective.darkvision_range += soft_range
@@ -99,14 +99,14 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 /**
  * multiply-augmenting darksight provider
  */
-/datum/darksight/multiplicative
+/datum/vision/multiplicative
 	var/hard_alpha = 1
 	var/soft_range = 1
 	var/soft_alpha = 1
 	var/list/soft_matrix
 	var/disable_soft_smartness
 
-/datum/darksight/multiplicative/push(datum/perspective/perspective)
+/datum/vision/multiplicative/push(datum/perspective/perspective)
 	perspective.hard_darkvision *= hard_alpha
 	perspective.darkvision_alpha *= soft_alpha
 	perspective.darkvision_range *= soft_range
@@ -118,38 +118,38 @@ GLOBAL_LIST_EMPTY(cached_darksight_holders)
 
 //? default baseline
 
-GLOBAL_DATUM_INIT(default_darksight, /datum/darksight/baseline/default, new)
+GLOBAL_DATUM_INIT(default_darksight, /datum/vision/baseline/default, new)
 
-/datum/darksight/baseline/default
+/datum/vision/baseline/default
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
 //? silicons baseline
 
-GLOBAL_DATUM_INIT(silicon_darksight, /datum/darksight/baseline/silicons, new)
-/datum/darksight/baseline/silicons
+GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
+/datum/vision/baseline/silicons
 	hard_darksight = 0
 
 //? species
 
-/datum/darksight/baseline/species_tier_0
+/datum/vision/baseline/species_tier_0
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
-/datum/darksight/baseline/species_tier_1
+/datum/vision/baseline/species_tier_1
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_1
 
-/datum/darksight/baseline/species_tier_2
+/datum/vision/baseline/species_tier_2
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_2
 
-/datum/darksight/baseline/species_tier_3
+/datum/vision/baseline/species_tier_3
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_3
 
-/datum/darksight/baseline/species_super
+/datum/vision/baseline/species_super
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
 
 #warn impl all
 
 //? misc
 
-/datum/darksight/augmenting/legacy_ghetto_nvgs
+/datum/vision/augmenting/legacy_ghetto_nvgs
 	hard_alpha = 140
 	legacy_throttle = 3

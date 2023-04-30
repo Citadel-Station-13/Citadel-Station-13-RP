@@ -22,7 +22,7 @@
 	metabolic_rate = 2
 	item_slowdown_mod = 0.25
 	hunger_factor = 0.4
-	darksight_innate = /datum/darksight/baseline/species_tier_3
+	vision_innate = /datum/vision/baseline/species_tier_3
 	mob_size  = MOB_LARGE
 
 	max_age = 200

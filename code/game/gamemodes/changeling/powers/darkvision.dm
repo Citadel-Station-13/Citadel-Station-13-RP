@@ -6,7 +6,7 @@
 	genomecost = 0
 	verbpath = /mob/proc/changeling_darksight
 
-/datum/darksight/augmenting/changeling
+/datum/vision/augmenting/changeling
 	hard_alpha = 0
 
 /mob/proc/changeling_darksight()
@@ -19,12 +19,12 @@
 		return 0
 
 	var/now
-	if(has_darksight_modifier(/datum/darksight/augmenting/changeling))
+	if(has_vision_modifier(/datum/vision/augmenting/changeling))
 		now = FALSE
-		remove_darksight_modifier(/datum/darksight/augmenting/changeling)
+		remove_vision_modifier(/datum/vision/augmenting/changeling)
 	else
 		now = TRUE
-		add_darksight_modifier(/datum/darksight/augmenting/changeling)
+		add_vision_modifier(/datum/vision/augmenting/changeling)
 	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")
 
 	return 0

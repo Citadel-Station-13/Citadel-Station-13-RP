@@ -1,9 +1,9 @@
 //? Darksight
 
 /mob/observer/proc/assert_innate_darksight()
-	if(ispath(darksight_innate))
-		darksight_innate = new darksight_innate
+	if(ispath(vision_innate))
+		vision_innate = new vision_innate
 
 /mob/observer/innate_darksight()
 	assert_innate_darksight()
-	return darksight_override || darksight_innate
+	return vision_override || vision_innate

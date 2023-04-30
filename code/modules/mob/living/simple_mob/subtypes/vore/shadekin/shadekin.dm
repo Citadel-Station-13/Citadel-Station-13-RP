@@ -1,4 +1,4 @@
-/datum/darksight/baseline/shadekin
+/datum/vision/baseline/shadekin
 	hard_darksight = 0
 
 /mob/living/simple_mob/shadekin //Spawning the prototype spawns a random one, see initialize()
@@ -17,7 +17,7 @@
 	health = 200
 
 	movement_cooldown = 2
-	darksight_innate = /datum/darksight/baseline/shadekin
+	vision_innate = /datum/vision/baseline/shadekin
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	has_langs = list(LANGUAGE_GALCOM,LANGUAGE_SHADEKIN)
 

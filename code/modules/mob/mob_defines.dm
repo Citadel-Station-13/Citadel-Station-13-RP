@@ -33,9 +33,9 @@
 	/// using perspective - if none, it'll be self - when client logs out, if using_perspective has reset_on_logout, this'll be unset.
 	var/datum/perspective/using_perspective
 	/// current darksight modifiers.
-	var/list/datum/darksight/darksight_modifiers
+	var/list/datum/vision/vision_modifiers
 	/// override darksight datum - adminbus only
-	var/datum/darksight/darksight_override
+	var/datum/vision/vision_override
 
 	//? Movement
 	/// current datum that's entirely intercepting our movements. only can have one - this is usually used with perspective.

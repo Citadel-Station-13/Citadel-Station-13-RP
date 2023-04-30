@@ -7,4 +7,4 @@
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
 
 /mob/living/silicon/innate_darksight()
-	return darksight_override || GLOB.silicon_darksight
+	return vision_override || GLOB.silicon_darksight

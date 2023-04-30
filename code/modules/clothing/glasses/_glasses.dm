@@ -37,7 +37,7 @@ BLIND     // can't see anything
 	/// icon state when off
 	var/inactive_icon_state
 	/// Darksight modifier when on
-	var/datum/darksight/active_darksight_modifier
+	var/datum/vision/active_vision_modifier
 
 	#warn impl all
 
@@ -171,7 +171,7 @@ BLIND     // can't see anything
 	vision_flags = SEE_TURFS
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
-	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
+	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/meson/Initialize(mapload)
 	. = ..()
@@ -319,7 +319,7 @@ BLIND     // can't see anything
 	vision_flags = SEE_OBJS
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
-	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
+	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/material/Initialize(mapload)
 	. = ..()
@@ -343,7 +343,7 @@ BLIND     // can't see anything
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
-	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
+	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/graviton/Initialize(mapload)
 	. = ..()
@@ -620,7 +620,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
 	vision_flags_remove = SEE_BLACKNESS
-	active_darksight_modifier = /datum/darksight/augmenting/legacy_ghetto_nvgs
+	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
 

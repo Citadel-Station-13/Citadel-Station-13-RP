@@ -401,7 +401,7 @@
 
 //? lighting
 
-/datum/perspective/proc/push_darksight_stack(list/datum/darksight/holders)
+/datum/perspective/proc/push_vision_stack(list/datum/vision/holders)
 	// reset to default
 	hard_darkvision = 0
 	darkvision_range = SOFT_DARKSIGHT_RANGE_DEFAULT
@@ -412,13 +412,13 @@
 	darkvision_legacy_throttle = INFINITY
 	darkvision_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 	// push holders
-	for(var/datum/darksight/holder as anything in holders)
+	for(var/datum/vision/holder as anything in holders)
 		holder.push(src)
 	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
-	update_darksight_rendering()
+	update_vision_rendering()
 
-/datum/perspective/proc/update_darksight_rendering()
+/datum/perspective/proc/update_vision_rendering()
 	update_see_in_dark()
 	#warn impl
 
@@ -429,7 +429,7 @@
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)
 	lighting_plane.alpha = check_hard_darkvision()
 
-/datum/perspective/proc/assert_darksight_overlay()
+/datum/perspective/proc/assert_vision_overlay()
 	if(!isnull(darksight_overlay))
 		return
 	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())

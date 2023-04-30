@@ -1,4 +1,4 @@
-/datum/darksight/baseline/demon
+/datum/vision/baseline/demon
 	hard_darksight = 0
 
 /mob/living/simple_mob/vore/demon
@@ -16,7 +16,7 @@
 	health = 30
 	movement_cooldown = 0
 
-	darksight_innate = /datum/darksight/baseline/demon
+	vision_innate = /datum/vision/baseline/demon
 
 	min_oxy = 0
 	max_oxy = 0

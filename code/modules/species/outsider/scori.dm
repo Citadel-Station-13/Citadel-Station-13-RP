@@ -40,7 +40,7 @@
 	radiation_mod = 1.5
 	toxins_mod = 1.5
 
-	darksight_innate = /datum/darksight/baseline/species_tier_3
+	vision_innate = /datum/vision/baseline/species_tier_3
 
 	//Adapted to overcast skies and caverns.
 	flash_mod = 3.0

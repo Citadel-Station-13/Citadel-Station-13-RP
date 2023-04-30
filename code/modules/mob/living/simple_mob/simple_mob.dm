@@ -16,7 +16,7 @@
 
 	//? Darksight
 	/// our innate darksight
-	var/datum/darksight/baseline/darksight_innate = /datum/darksight/baseline/default
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/default
 
 	///Tooltip description
 	var/tt_desc = null

@@ -195,15 +195,15 @@
  * get our innate darksight
  */
 /mob/proc/innate_darksight()
-	RETURN_TYPE(/datum/darksight/baseline)
-	return darksight_override || GLOB.default_darksight
+	RETURN_TYPE(/datum/vision/baseline)
+	return vision_override || GLOB.default_darksight
 
 /**
  * get all darksight datums, ordered. 1 (front of list) is applied first.
  */
 /mob/proc/query_darksight()
 	RETURN_TYPE(/list)
-	var/list/built = darksight_modifiers.Copy()
+	var/list/built = vision_modifiers.Copy()
 	built.Insert(innate_darksight(), 1)
 	return built
 
@@ -212,35 +212,35 @@
  */
 /mob/proc/update_darksight()
 	ensure_self_perspective()
-	self_perspective.push_darksight_stack(query_darksight())
+	self_perspective.push_vision_stack(query_darksight())
 
-/mob/proc/sort_darksight_modifiers()
-	if(isnull(darksight_modifiers))
+/mob/proc/sort_vision_modifiers()
+	if(isnull(vision_modifiers))
 		return
-	tim_sort(darksight_modifiers)
+	tim_sort(vision_modifiers)
 
-/mob/proc/add_darksight_modifier(datum/darksight/modifier)
+/mob/proc/add_vision_modifier(datum/vision/modifier)
 	if(ispath(modifier))
-		modifier = cached_darksight_holder(modifier)
-	ASSERT(!(modifier in darksight_modifiers))
-	LAZYINITLIST(darksight_modifiers)
-	BINARY_INSERT(modifier, darksight_modifiers, /datum/darksight, modifier, priority, COMPARE_KEY)
+		modifier = cached_vision_holder(modifier)
+	ASSERT(!(modifier in vision_modifiers))
+	LAZYINITLIST(vision_modifiers)
+	BINARY_INSERT(modifier, vision_modifiers, /datum/vision, modifier, priority, COMPARE_KEY)
 	update_darksight()
 
-/mob/proc/remove_darksight_modifier(datum/darksight/modifier)
+/mob/proc/remove_vision_modifier(datum/vision/modifier)
 	if(ispath(modifier))
-		modifier = cached_darksight_holder(modifier)
-	LAZYREMOVE(darksight_modifiers, modifier)
+		modifier = cached_vision_holder(modifier)
+	LAZYREMOVE(vision_modifiers, modifier)
 	update_darksight()
 
 /**
  * returns if we have this exact modifier
  * usually you use this with paths / cached ones.
  */
-/mob/proc/has_darksight_modifier(datum/darksight/modifier)
+/mob/proc/has_vision_modifier(datum/vision/modifier)
 	if(ispath(modifier))
-		modifier = cached_darksight_holder(modifier)
-	return modifier in darksight_modifiers
+		modifier = cached_vision_holder(modifier)
+	return modifier in vision_modifiers
 
 //? Helpers
 

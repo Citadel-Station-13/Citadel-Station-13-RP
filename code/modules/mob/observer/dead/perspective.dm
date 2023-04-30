@@ -12,7 +12,7 @@
 	else
 		self_perspective.unset_plane_visible(/atom/movable/screen/plane_master/observer, INNATE_TRAIT)
 
-/datum/darksight/augmenting/observer
+/datum/vision/augmenting/observer
 	hard_alpha = 0
 
 /mob/observer/dead/verb/toggle_darkness()
@@ -21,10 +21,10 @@
 	set category = "Ghost"
 
 	var/now
-	if(has_darksight_modifier(/datum/darksight/augmenting/observer))
+	if(has_vision_modifier(/datum/vision/augmenting/observer))
 		now = FALSE
-		remove_darksight_modifier(/datum/darksight/augmenting/observer)
+		remove_vision_modifier(/datum/vision/augmenting/observer)
 	else
 		now = TRUE
-		add_darksight_modifier(/datum/darksight/augmenting/observer)
+		add_vision_modifier(/datum/vision/augmenting/observer)
 	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")

@@ -4,4 +4,4 @@
 	if(isnull(species))
 		return GLOB.default_darksight
 	species.assert_innate_darksight()
-	return darksight_override || species.darksight_innate
+	return vision_override || species.vision_innate
