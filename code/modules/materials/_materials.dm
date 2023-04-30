@@ -108,6 +108,10 @@
 	var/pass_stack_colors = FALSE
 
 	//? Attributes
+	/// relative HP multiplier for something made out of this
+	var/regex_this_integrity = 1
+	/// How permeable this material is, naturally. Range: 0 to 1, inclusive. Anything above 0 is not entirely sealed.
+	var/permeability = 0
 	#warn todo: integrity to multiplier
 
 
@@ -120,8 +124,6 @@
 	var/ignition_point
 	/// K, walls will take damage if they're next to a fire hotter than this
 	var/melting_point = 1800
-	/// General-use HP value for products.
-	var/integrity = 150
 	/// How well this material works as armor.  Higher numbers are better, diminishing returns applies.
 	var/protectiveness = 10
 	/// Is the material transparent? 0.5< makes transparent walls/doors.
