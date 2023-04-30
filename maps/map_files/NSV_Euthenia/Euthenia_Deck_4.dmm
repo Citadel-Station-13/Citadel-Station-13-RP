@@ -501,6 +501,13 @@
 "ha" = (
 /turf/simulated/floor/wood,
 /area/maintenance/deck_four/forward)
+"hf" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/starboard)
 "hn" = (
 /turf/simulated/wall,
 /area/maintenance/deck_four/starboard)
@@ -950,9 +957,6 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/ai)
-"oW" = (
-/turf/simulated/floor/reinforced/airless,
-/area/library)
 "oX" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable/green{
@@ -1381,9 +1385,6 @@
 "uX" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/research/testingrange)
-"uZ" = (
-/turf/simulated/floor/reinforced/airless,
-/area/library/study)
 "vp" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -1430,9 +1431,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
-"wW" = (
-/turf/simulated/floor/reinforced/airless,
-/area/maintenance/deck_four/forward)
 "xg" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1461,9 +1459,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/aft/port)
-"xo" = (
-/turf/space/basic,
-/area/maintenance/deck_four)
 "xp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
@@ -1633,6 +1628,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/aft/starboard)
+"zZ" = (
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/forward)
 "Aa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
@@ -2848,9 +2853,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/shunt)
-"Ry" = (
-/turf/simulated/floor/reinforced/airless,
-/area/maintenance/deck_four)
 "Rz" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air,
@@ -3289,6 +3291,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"WR" = (
+/obj/structure/stairs/spawner/west,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_four/starboard)
 "WX" = (
 /turf/simulated/floor/tiled/monotile,
 /area/space)
@@ -19779,7 +19789,7 @@ Od
 Od
 Od
 Od
-Od
+hn
 Od
 Od
 Od
@@ -19973,7 +19983,7 @@ Od
 Od
 Od
 Od
-Od
+WR
 Od
 Od
 Od
@@ -20167,7 +20177,7 @@ Od
 Od
 Od
 Od
-Od
+hf
 Od
 Od
 Od
@@ -21294,11 +21304,11 @@ Zx
 lD
 lD
 lD
-Ry
+Ji
 lD
 lD
 lD
-Ry
+Ji
 lD
 lD
 lD
@@ -21487,13 +21497,13 @@ ts
 mf
 po
 lD
-qA
-qA
-qA
-qA
-qA
-qA
-xo
+Za
+Za
+Za
+Za
+Za
+Za
+Dz
 lD
 po
 po
@@ -21681,13 +21691,13 @@ ts
 lD
 lD
 lD
-qA
-qA
-qA
-qA
-qA
-qA
-xo
+Za
+Za
+Za
+Za
+Za
+Za
+Dz
 lD
 lD
 lD
@@ -21875,13 +21885,13 @@ po
 lD
 lD
 lD
-xo
-qA
-qA
-qA
-qA
-qA
-xo
+Dz
+Za
+Za
+Za
+Za
+Za
+Dz
 lD
 lD
 lD
@@ -22069,13 +22079,13 @@ ts
 lD
 lD
 lD
-xo
-qA
-qA
-qA
-qA
-qA
-xo
+Dz
+Za
+Za
+Za
+Za
+Za
+Dz
 lD
 lD
 lD
@@ -22262,15 +22272,15 @@ po
 po
 po
 lD
-Ry
-qA
-qA
-qA
-qA
-qA
-qA
-xo
-Ry
+Ji
+Za
+Za
+Za
+Za
+Za
+Za
+Dz
+Ji
 lD
 po
 po
@@ -22457,13 +22467,13 @@ ts
 lD
 lD
 lD
-qA
-qA
-qA
-qA
-qA
-qA
-qA
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 lD
 lD
 po
@@ -22651,13 +22661,13 @@ ts
 lD
 lD
 lD
-qA
-qA
-qA
-qA
-qA
-qA
-qA
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 lD
 lD
 po
@@ -22844,14 +22854,14 @@ ts
 ts
 mf
 lD
-Ry
-qA
-qA
-qA
-qA
-qA
-qA
-qA
+Ji
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 lD
 lD
 po
@@ -23039,13 +23049,13 @@ ts
 lD
 lD
 lD
-qA
-qA
-qA
-qA
-qA
-qA
-qA
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 lD
 lD
 lD
@@ -23620,7 +23630,6 @@ Es
 Es
 Es
 Gp
-wW
 Ji
 Ji
 Ji
@@ -23628,7 +23637,8 @@ Ji
 Ji
 Ji
 Ji
-oW
+Ji
+Ji
 rA
 pc
 aD
@@ -24396,7 +24406,7 @@ Es
 Es
 Es
 Gp
-wW
+Ji
 Za
 Za
 Za
@@ -24404,7 +24414,7 @@ Za
 Za
 Za
 Za
-oW
+Ji
 rA
 QW
 aD
@@ -25172,7 +25182,6 @@ Es
 Es
 Es
 Gp
-wW
 Ji
 Ji
 Ji
@@ -25180,7 +25189,8 @@ Ji
 Ji
 Ji
 Ji
-oW
+Ji
+Ji
 rA
 Xp
 en
@@ -25948,7 +25958,7 @@ Es
 Es
 Es
 Gp
-wW
+Ji
 Za
 Za
 Za
@@ -25956,7 +25966,7 @@ Za
 Za
 Za
 Za
-oW
+Ji
 rA
 QW
 Xp
@@ -26724,7 +26734,6 @@ Es
 Es
 Es
 Gp
-wW
 Ji
 Ji
 Ji
@@ -26732,7 +26741,8 @@ Ji
 Ji
 Ji
 Ji
-uZ
+Ji
+Ji
 mY
 ul
 ON
@@ -26740,7 +26750,7 @@ ul
 RM
 ul
 Es
-Do
+zZ
 HX
 yQ
 Es
@@ -27500,7 +27510,7 @@ xK
 xK
 Es
 If
-wW
+Ji
 Za
 Za
 Za
@@ -27508,7 +27518,7 @@ Za
 Za
 Za
 Za
-uZ
+Ji
 RM
 Cx
 Mp
@@ -27694,7 +27704,7 @@ Es
 Es
 Es
 If
-wW
+Ji
 Za
 Za
 Za
@@ -27702,7 +27712,7 @@ Za
 Za
 Za
 Za
-uZ
+Ji
 RM
 Cx
 wU
@@ -27890,11 +27900,11 @@ If
 If
 If
 If
-wW
+Ji
 If
 If
 If
-wW
+Ji
 If
 mY
 mY
@@ -28278,11 +28288,11 @@ If
 If
 If
 If
-wW
+Es
 If
 If
 If
-wW
+Es
 If
 If
 If
@@ -28470,15 +28480,15 @@ Es
 Es
 Es
 If
-wW
-Za
-Za
-Za
-Za
-Za
-Za
-Za
-wW
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 Es
 Es
@@ -28665,13 +28675,13 @@ Es
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -28859,13 +28869,13 @@ xK
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -29053,13 +29063,13 @@ xK
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -29246,15 +29256,15 @@ Es
 xK
 Es
 If
-wW
-Za
-Za
-Za
-Za
-Za
-Za
-Za
-wW
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 Es
 xK
@@ -29441,13 +29451,13 @@ xK
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -29635,13 +29645,13 @@ xK
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -29829,13 +29839,13 @@ xK
 If
 If
 If
-Za
-Za
-Za
-Za
-Za
-Za
-Za
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 If
 If
@@ -30022,15 +30032,15 @@ Es
 xK
 Es
 If
-Ji
-Za
-Za
-Za
-Za
-Za
-Za
-Za
-wW
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
+Es
 If
 Es
 xK
@@ -30218,11 +30228,11 @@ If
 If
 If
 If
-wW
+Es
 If
 If
 If
-wW
+Es
 If
 If
 If

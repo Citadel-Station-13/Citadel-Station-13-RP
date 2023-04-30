@@ -506,6 +506,27 @@
 "HN" = (
 /turf/simulated/shuttle/floor/black,
 /area/space)
+"If" = (
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "Jj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled/techfloor,
@@ -579,6 +600,12 @@
 	name = "Brewster"
 	},
 /turf/simulated/floor/wood,
+/area/space)
+"Nu" = (
+/obj/structure/railing/grey{
+	dir = 4
+	},
+/turf/simulated/open,
 /area/space)
 "NT" = (
 /turf/space,
@@ -751,6 +778,13 @@
 /obj/machinery/power/apc/critical/west_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
+"XX" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/space)
 "Yd" = (
 /obj/machinery/door/airlock/glass{
 	name = "Helm";
@@ -758,6 +792,12 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"Ym" = (
+/obj/structure/railing/grey{
+	dir = 8
+	},
+/turf/simulated/open,
 /area/space)
 "Ys" = (
 /obj/structure/bed/chair/bay/comfy,
@@ -13533,9 +13573,9 @@ Fp
 Fp
 Fp
 Fp
-Fp
-Fp
-Fp
+wJ
+wJ
+wJ
 Fp
 Fp
 Fp
@@ -13726,12 +13766,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+wJ
+wJ
+wJ
+wJ
+Fp
 VJ
 VJ
 VJ
@@ -13920,12 +13960,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+wJ
+wJ
+wJ
+wJ
+Fp
 VJ
 VJ
 VJ
@@ -14114,12 +14154,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+wJ
+wJ
+wJ
+wJ
+Fp
 VJ
 VJ
 VJ
@@ -14308,12 +14348,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+wJ
+XX
+wJ
+wJ
+Fp
 VJ
 VJ
 VJ
@@ -14502,12 +14542,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+wJ
+XX
+wJ
+If
+Fp
 VJ
 VJ
 VJ
@@ -14696,12 +14736,12 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
+Fp
+Fp
+Fp
+Fp
+Fp
+Fp
 VJ
 VJ
 VJ
@@ -19509,10 +19549,10 @@ VJ
 VJ
 VJ
 VJ
-Hj
-Hj
-Hj
-Hj
+VJ
+VJ
+VJ
+VJ
 Hj
 Hj
 Hj
@@ -19703,10 +19743,10 @@ VJ
 VJ
 VJ
 VJ
-Hj
-Hj
-Hj
-Hj
+VJ
+VJ
+VJ
+VJ
 Hj
 Hj
 Hj
@@ -19897,16 +19937,16 @@ VJ
 VJ
 VJ
 VJ
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-wJ
-wJ
+VJ
+VJ
+VJ
+VJ
+Ti
+Ti
+Ti
+Ti
+Ti
+Ti
 Fp
 oE
 oE
@@ -20091,16 +20131,16 @@ VJ
 VJ
 VJ
 VJ
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-Hj
-Ox
-Ox
+VJ
+VJ
+VJ
+VJ
+Hu
+Hu
+Hu
+Hu
+Ym
+Ym
 Fp
 oE
 oE
@@ -20284,17 +20324,17 @@ VJ
 VJ
 VJ
 VJ
-Ti
-Ti
-Ti
+VJ
+VJ
+VJ
+VJ
+VJ
 Hu
 Hu
-Ti
-Ti
-Ti
-Hj
-Ox
-Ox
+Hu
+Hu
+Nu
+Nu
 Fp
 oE
 oE
@@ -20478,17 +20518,17 @@ VJ
 VJ
 VJ
 VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 Ti
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
 Ti
-Hj
-wJ
-wJ
+Ti
+Ti
+Ti
+Ti
 Fp
 oE
 oE
@@ -20672,15 +20712,15 @@ VJ
 VJ
 VJ
 VJ
-Ti
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Ti
-Hj
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 wJ
 wJ
 Fp
@@ -20866,15 +20906,15 @@ VJ
 VJ
 VJ
 VJ
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Hj
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 wJ
 wJ
 Fp
@@ -21060,15 +21100,15 @@ VJ
 VJ
 VJ
 VJ
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-wJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 Fp
 Fp
 Fp
@@ -21254,14 +21294,14 @@ VJ
 VJ
 VJ
 VJ
-Ti
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Ti
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 VJ
 VJ
 VJ
@@ -21448,14 +21488,14 @@ VJ
 VJ
 VJ
 VJ
-Ti
-Hu
-Hu
-Hu
-Hu
-Hu
-Hu
-Ti
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 VJ
 VJ
 VJ
@@ -21642,14 +21682,14 @@ VJ
 VJ
 VJ
 VJ
-Ti
-Ti
-Ti
-Hu
-Hu
-Ti
-Ti
-Ti
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
+VJ
 VJ
 VJ
 VJ
