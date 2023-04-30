@@ -10,7 +10,7 @@
 
 /obj/structure/ashlander/forge
 	name = "magma forge"
-	desc = "A primitive forge of Scorian design. It is used primarily to convert copper and lead into more workable shapes."
+	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "forge"
 
