@@ -57,6 +57,7 @@
 	qdel(src)
 
 /mob/proc/death(gibbed, deathmessage = "seizes up and falls limp...")
+	SHOULD_CALL_PARENT(true)
 
 	if(stat == DEAD)
 		return 0
@@ -69,6 +70,7 @@
 
 	set_stat(DEAD)
 
+	update_ssd_overlay()
 	update_mobility()
 
 	dizziness = 0
