@@ -156,32 +156,20 @@
 
 // citadel hack - FUCK YOU DIE CORRECTLY THIS ENTIRE FETISH RACE IS A SORRY MISTAKE
 /mob/living/simple_mob/protean_blob/death(gibbed, deathmessage = "dissolves away, leaving only a few spare parts!")
-	if(humanform)
-		// ckey transfer you dumb fuck
+	if(!QDELETED(humanform))
+		humanform.forceMove(loc)
 		humanform.ckey = ckey
-		humanform.forceMove(drop_location())
-		humanform.death(gibbed = gibbed)
-		for(var/organ in humanform.internal_organs)
-			var/obj/item/organ/internal/O = organ
-			O.removed()
-			if(!QDELETED(O))		// MMI_HOLDERS ARE ABSTRACT and qdel themselves :)
-				O.forceMove(drop_location())
-		var/list/items = humanform.get_equipped_items()
-		if(prev_left_hand)
-			items += prev_left_hand
-		if(prev_right_hand)
-			items += prev_right_hand
-		for(var/obj/object in items)
-			object.forceMove(drop_location())
-		QDEL_NULL(humanform) //Don't leave it just sitting in nullspace
-
-	animate(src, alpha = 0, time = 2 SECONDS)
-	QDEL_IN(src, 2 SECONDS)
-
-	return ..()
+		humanform.gib()
+	humanform = null
+	. = ..()
+	ASYNC
+		if(!QDELETED(src))
+			qdel(src)
 
 /mob/living/simple_mob/protean_blob/BiologicalLife()
 	if((. = ..()))
+		return
+	if(isnull(humanform))
 		return
 	if(istype(refactory) && humanform)
 		if(!humanform.has_modifier_of_type(/datum/modifier/protean/steelBlob) && health < maxHealth && refactory.get_stored_material(MAT_STEEL) >= 100 && refactory.processingbuffs)
