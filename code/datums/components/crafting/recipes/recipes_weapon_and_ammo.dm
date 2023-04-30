@@ -424,6 +424,34 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+/datum/crafting_recipe/musket_ashlander
+	name = "Musket (Tribal)"
+	result = /obj/item/gun/ballistic/musket/tribal
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+				/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/lead = 10,
+				/obj/item/elderstone = 3)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	always_available = FALSE
+
+/datum/crafting_recipe/flintlock_ashlander
+	name = "Flintlock (Tribal)"
+	result = /obj/item/gun/ballistic/musket/pistol/tribal
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+				/obj/item/stack/material/bone = 5,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/lead = 5,
+				/obj/item/elderstone = 2)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	always_available = FALSE
+
 //////////////////
 ///AMMO CRAFTING//
 //////////////////

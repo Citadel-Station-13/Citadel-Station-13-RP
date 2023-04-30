@@ -680,7 +680,7 @@
 
 /datum/crafting_recipe/alchemy_bandolier
 	name = "Alchemy Bandolier"
-	result = /obj/item/storage/belt/ashlander
+	result = /obj/item/clothing/accessory/storage/ashlander_alchemy
 	time = 40
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
 				/obj/item/stack/material/bone = 2,
