@@ -32,38 +32,55 @@
 	unacidable = 1
 	preserve_item = 1
 
-	// Activation
+	//? Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
 	/// last online, set in process()
 	var/last_online = FALSE
 
+	//? Components
+	/// all installed components
+	var/list/obj/item/hardsuit_component/components
+
+
+	//? Maintenance
+	/// console
+	var/datum/rig_console/console
+	/// maint panel
+	var/datum/rig_maint_panel/maint_panel
+
+	//? Pieces
+	/// helmet
+	var/obj/item/clothing/head/hardsuit/helmet
+	/// chestpiece
+	var/obj/item/clothing/suit/hardsuit/chestpiece
+	/// gauntlets
+	var/obj/item/clothing/gloves/hardsuit/gauntlets
+	/// boots
+	var/obj/item/clothing/shoes/hardsuit/boots
+	#warn check boots var as it wasn't renamed
+
+	//? Power
+
+
+	//? Theme
+	/// active theme - set to path to init
+	var/datum/rig_theme/theme
+
 	var/suit_state //The string used for the suit's icon_state.
 
-	var/interface_path = "hardsuit.tmpl"
-	var/ai_interface_path = "hardsuit.tmpl"
-	var/interface_title = "Hardsuit Controller"
 	var/wearer_move_delay //Used for AI moving.
 	var/ai_controlled_move_delay = 10
 
 	// Keeps track of what this hardsuit should spawn with.
 	var/suit_type = "hardsuit"
 	var/list/initial_modules
-	var/chest_type = /obj/item/clothing/suit/space/hardsuit
-	var/helm_type =  /obj/item/clothing/head/helmet/space/hardsuit
-	var/boot_type =  /obj/item/clothing/shoes/magboots/hardsuit
-	var/glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit
 	var/cell_type =  /obj/item/cell/high
 	var/air_type =   /obj/item/tank/oxygen
 
 	var/unremovable_cell = FALSE
 
 	//Component/device holders.
-	var/obj/item/tank/air_supply                       // Air tank, if any.
-	var/obj/item/clothing/shoes/boots = null                  // Deployable boots, if any.
-	var/obj/item/clothing/suit/space/hardsuit/chest                // Deployable chestpiece, if any.
-	var/obj/item/clothing/head/helmet/space/hardsuit/helmet = null // Deployable helmet, if any.
-	var/obj/item/clothing/gloves/gauntlets/hardsuit/gloves = null  // Deployable gauntlets, if any.
 	var/obj/item/cell/cell                             // Power supply, if any.
 	var/obj/item/hardsuit_module/selected_module = null            // Primary system (used with middle-click)
 	var/obj/item/hardsuit_module/vision/visor                      // Kinda shitty to have a var for a module, but saves time.
@@ -108,11 +125,14 @@
 	var/datum/mini_hud/hardsuit/minihud
 
 	//Traps, too.
+
 	var/isTrapped = 0 //Will it lock you in?
 	var/trapSprung = 0 //Don't define this one. It's if it's procced.
 	var/springtrapped = 0 //Will it cause severe bodily harm?
 	var/trapDelay = 300 //in deciseconds
 	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
+
+
 
 /obj/item/hardsuit/get_cell()
 	return cell

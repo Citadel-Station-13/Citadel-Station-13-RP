@@ -1063,8 +1063,8 @@
 	dir = 10
 	},
 /obj/structure/table/rack,
-/obj/item/rig/merc/empty,
-/obj/item/rig/merc/empty,
+/obj/item/hardsuit/merc/empty,
+/obj/item/hardsuit/merc/empty,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},

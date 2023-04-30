@@ -196,7 +196,7 @@
 		updateUsrDialog()
 		return
 
-	else if(istype(I,/obj/item/clothing/head/helmet/space) && !istype(I, /obj/item/clothing/head/helmet/space/rig))
+	else if(istype(I,/obj/item/clothing/head/helmet/space) && !istype(I, /obj/item/clothing/head/helmet/space/hardsuit))
 
 		if(locked)
 			to_chat(user, "<span class='danger'>The suit cycler is locked.</span>")

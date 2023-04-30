@@ -182,15 +182,15 @@
 #define ui_ghost_updown "CENTER+3:24,BOTTOM:6"
 #define ui_ghost_spawners "CENTER+4:24,BOTTOM:6"
 
-// Rig panel
-#define ui_rig_deco1 "LEFT:-7,BOTTOM+5"
-#define ui_rig_deco2 "LEFT:-7,BOTTOM+6"
-#define ui_rig_pwr "LEFT+1:-7,BOTTOM+6"
-#define ui_rig_health "LEFT+1:-7,BOTTOM+6"
-#define ui_rig_air "LEFT+1:-7,BOTTOM+5"
-#define ui_rig_airtoggle "LEFT+1:-7,BOTTOM+5"
-#define ui_rig_deco1_f "LEFT+2:-7,BOTTOM+5"
-#define ui_rig_deco2_f "LEFT+2:-7,BOTTOM+6"
+// Hardsuit panel
+#define ui_hardsuit_deco1 "LEFT:-7,BOTTOM+5"
+#define ui_hardsuit_deco2 "LEFT:-7,BOTTOM+6"
+#define ui_hardsuit_pwr "LEFT+1:-7,BOTTOM+6"
+#define ui_hardsuit_health "LEFT+1:-7,BOTTOM+6"
+#define ui_hardsuit_air "LEFT+1:-7,BOTTOM+5"
+#define ui_hardsuit_airtoggle "LEFT+1:-7,BOTTOM+5"
+#define ui_hardsuit_deco1_f "LEFT+2:-7,BOTTOM+5"
+#define ui_hardsuit_deco2_f "LEFT+2:-7,BOTTOM+6"
 
 // Mech panel
 #define ui_mech_deco1 "LEFT:-7,BOTTOM+8"

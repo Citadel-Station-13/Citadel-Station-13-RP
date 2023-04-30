@@ -283,7 +283,7 @@
 
 // Helpers - Unsafe, WILL perform change.
 /mob/living/carbon/human/proc/nano_intoblob()
-	if(loc == /obj/item/rig/protean)
+	if(loc == /obj/item/hardsuit/protean)
 		return
 	handle_grasp() //It's possible to blob out before some key parts of the life loop. This results in things getting dropped at null. TODO: Fix the code so this can be done better.
 	remove_micros(src, src) //Living things don't fare well in roblobs.
@@ -313,7 +313,7 @@
 	things_to_drop -= organs //Mah armbs
 	things_to_drop -= internal_organs //Mah sqeedily spooch
 
-	for(var/obj/item/rig/protean/O in things_to_drop)
+	for(var/obj/item/hardsuit/protean/O in things_to_drop)
 		things_to_drop -= O
 
 	for(var/obj/item/I in things_to_drop) //rip hoarders
@@ -416,15 +416,15 @@
 	set desc = "Allows a protean blob to solidify its form into one extremely similar to a hardsuit."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		src.forceMove(get_turf(prig))
 		prig.forceMove(humanform)
 		return
 
 	if(isturf(loc))
-		var/obj/item/rig/protean/prig
-		for(var/obj/item/rig/protean/O in humanform.contents)
+		var/obj/item/hardsuit/protean/prig
+		for(var/obj/item/hardsuit/protean/O in humanform.contents)
 			prig = O
 			break
 		if(prig)
@@ -437,17 +437,17 @@
 	set desc = "Allows a protean blob to open hardsuit interface."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		to_chat(src, "You attempt to interface with the [prig].")
 		prig.nano_ui_interact(src, nano_state = interactive_state)
 	else
-		to_chat(src, "You are not in RIG form.")
+		to_chat(src, "You are not in hardsuit form.")
 
 /mob/living/carbon/human/proc/nano_outofblob(var/mob/living/simple_mob/protean_blob/blob)
 	if(!istype(blob))
 		return
-	if(blob.loc == /obj/item/rig/protean)
+	if(blob.loc == /obj/item/hardsuit/protean)
 		return
 
 	buckled?.unbuckle_mob(src, BUCKLE_OP_FORCE)
