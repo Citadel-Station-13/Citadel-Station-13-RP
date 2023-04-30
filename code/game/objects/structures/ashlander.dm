@@ -16,26 +16,43 @@
 
 /obj/structure/ashlander/forge/attackby(obj/item/O, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/ore/lead))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It begins to melt in the crucible.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/lead(T)
-	if(istype(O, /obj/item/ore/copper))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It begins to melt in the crucible.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/copper(T)
-	if(istype(O, /obj/item/ore/iron))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It starts feed through the extruder.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/rods(T)
-	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour [O] into the [src]! It starts to melt in the crucible.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/ore/slag(T)
+	var/obj/item/I
+	if(istype(I, /obj/item/storage/bag))
+		var/obj/item/storage/bag/B = I
+		var/inserted = 0
+		for(I as anything in B)
+			if(attempt_consume(I, user))
+				inserted++
+		if(inserted)
+			user.action_feedback(SPAN_NOTICE("You insert [inserted] pieces of ore from [I] into [src]."), src)
+		else
+			user.action_feedback(SPAN_WARNING("You fail to insert anything from [I] into [src]."), src)
+	else if(attempt_consume(I, user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/**
+ * Attempts to consume a piece of ore
+ *
+ * @params
+ * * inserting - what they're trying to put into us
+ * * user - optional: the user doing it
+ *
+ * @return TRUE / FALSE based on success / failure.
+ */
+
+/obj/structure/ashlander/forge/proc/attempt_consume(obj/item/inserting, mob/user)
+	var/obj/item/ore/O = inserting
+	if(!istype(inserting, /obj/item/ore))
+		return FALSE
+	//* VALIDATE THE ORE IS ALLOWED HERE *//
+	/// Ensure the ore is able to be put in if it's being held / in inventory
+	if(!isnull(user) && user.is_holding(inserting) && !user.transfer_item_to_loc(inserting, src))
+		user.action_feedback(SPAN_WARNING("[inserting] is stuck to your hand!"), src)
+		return FALSE
+	//* DO PROCESSING ACTIONS HERE *//
+	qdel(O) // delete ore once done
+	return TRUE
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press
