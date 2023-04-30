@@ -1032,13 +1032,11 @@
 	M.stuttering = 0
 	M.SetConfused(0)
 	if(M.ingested)
-		for(var/datum/reagent/R in M.ingested.reagent_list)
-			if(istype(R, /datum/reagent/ethanol))
-				R.remove_self(removed * 30)
+		for(var/datum/reagent/ethanol/R in M.ingested.reagent_list)
+			R.remove_self(removed * 30)
 	if(M.bloodstr)
-		for(var/datum/reagent/R in M.bloodstr.reagent_list)
-			if(istype(R, /datum/reagent/ethanol))
-				R.remove_self(removed * 20)
+		for(var/datum/reagent/ethanol/R in M.bloodstr.reagent_list)
+			R.remove_self(removed * 20)
 
 /datum/reagent/hyronalin
 	name = "Hyronalin"
