@@ -1107,7 +1107,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/substation/surface_atmos
 	name = "\improper Surface Atmos Substation"
 
+/area/maintenance/substation/service
+	name = "\improper Service Substation"
 
+/area/maintenance/substation/hanger
+	name = "\improper Hanger Substation"
 //Hallway
 
 /area/hallway/primary/

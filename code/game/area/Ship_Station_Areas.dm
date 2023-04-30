@@ -159,3 +159,61 @@
 /area/maintenance/deck_four/aft/starboard
 	name = "\improper Deck 4 Aft Starboard Maintenance"
 	icon_state = "asmaint"
+
+
+/**
+ * Panic Bunkers
+ */
+
+/area/maintenance/panic_bunker
+	name = "\improper Panic Bunker One"
+
+/area/maintenance/panic_bunker/two
+	name = "\improper Panic Bunker Two"
+
+/area/maintenance/panic_bunker/three
+	name = "\improper Panic Bunker Three"
+
+/area/maintenance/panic_bunker/four
+	name = "\improper Panic Bunker Four"
+
+/area/maintenance/panic_bunker/five
+	name = "\improper Panic Bunker Five"
+
+
+/**
+ * Atomspheric Substation
+ */
+
+/area/maintenance/atmospheric_substation
+	name = "\improper Atmospheric Substation"
+	icon_state = "substation"
+	sound_env = SMALL_ENCLOSED
+	ambience = AMBIENCE_ATMOS
+
+/area/maintenance/atmospheric_substation/medical
+	name = "\improper Medical Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/cargo
+	name = "\improper Cargo Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/security
+	name = "\improper Security Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/command
+	name = "\improper Command Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/service
+	name = "\improper Service Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/civilian
+	name = "\improper Civilian Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/hanger_bay
+	name = "\improper Hanger Bay Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/research
+	name = "\improper Research Atmospheric Substation"
+
+/area/maintenance/atmospheric_substation/ai
+	name = "\improper AI Atmospheric Substation"
