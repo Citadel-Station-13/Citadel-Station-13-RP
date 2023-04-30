@@ -145,7 +145,7 @@
 	if(fullbright)
 		// todo: legacy, remove
 		self_perspective.hard_darkvision = 0
-		self_perspective.update_vision_rendering()
+		self_perspective.update_vision()
 	else
 		self_perspective.update_hard_darkvision()
 

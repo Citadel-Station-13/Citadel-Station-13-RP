@@ -93,7 +93,7 @@
 	/// view cache needs recompute
 	var/view_dirty = TRUE
 
-	//? lighting / nightvision
+	//? vision - lighting / nightvision
 	/// darksight overlay that we maintain
 	var/image/darksight_overlay
 	/// lighting plane alpha
@@ -416,9 +416,9 @@
 		holder.push(src)
 	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
-	update_vision_rendering()
+	update_vision()
 
-/datum/perspective/proc/update_vision_rendering()
+/datum/perspective/proc/update_vision()
 	update_see_in_dark()
 	#warn impl
 
@@ -429,7 +429,7 @@
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)
 	lighting_plane.alpha = check_hard_darkvision()
 
-/datum/perspective/proc/assert_vision_overlay()
+/datum/perspective/proc/assert_vision_overlays()
 	if(!isnull(darksight_overlay))
 		return
 	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
