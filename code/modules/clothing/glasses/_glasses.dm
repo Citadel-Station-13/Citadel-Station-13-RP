@@ -335,7 +335,6 @@ BLIND     // can't see anything
 	icon_state = "grav"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2, TECH_BLUESPACE = 1)
-	darkness_view = 5
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	inactive_icon_state = "denight"
@@ -445,7 +444,6 @@ BLIND     // can't see anything
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
 	icon_state = "sun"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
-	darkness_view = -1
 	flash_protection = FLASH_PROTECTION_MODERATE
 
 /obj/item/clothing/glasses/sunglasses/aviator
@@ -550,7 +548,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/sechud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/sunglasses/sechud/tactical
 	name = "tactical HUD"
@@ -608,7 +606,7 @@ BLIND     // can't see anything
 
 /obj/item/clothing/glasses/sunglasses/medhud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/thermal
 	name = "optical thermal scanner"

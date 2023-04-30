@@ -89,7 +89,6 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/list/save_data
 
 	var/list/planes_visible = list()
-	var/hard_darkvision
 
 //Constructor comes with a free AR HUD
 /obj/item/nif/Initialize(mapload, wear, list/load_data)
@@ -182,6 +181,13 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 //Being removed from some mob
 /obj/item/nif/proc/unimplant(var/mob/living/carbon/human/H)
+	for(var/i in 1 to length(nifsofts))
+		var/datum/nifsoft/NS = nifsofts[i]
+		if(!NS)
+			continue
+		if(!NS.active)
+			continue
+		NS.deactivate(TRUE)
 	var/datum/nifsoft/soulcatcher/SC = imp_check(NIF_SOULCATCHER)
 	if(SC) //Clean up stored people, this is dirty but the easiest way.
 		QDEL_LIST_NULL(SC.brainmobs)
@@ -473,6 +479,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	var/datum/nifsoft/NS = nifsofts[old_soft.list_pos]
 	if(!NS || NS != old_soft)
 		return FALSE //what??
+
+	if(NS.active)
+		NS.deactivate(TRUE)
 
 	nifsofts[old_soft.list_pos] = null
 	power_usage -= old_soft.p_drain

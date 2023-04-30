@@ -56,12 +56,11 @@
 
 	var/vision_flags_mob = NONE
 	var/vision_flags_mob_remove = NONE
-	var/darkness_view = 0
 
 	/// List of vision planes this nifsoft enables when active
 	var/list/planes_enabled = null
-	/// if this gives hard darkvision
-	var/hard_darkvision
+	/// vision holder to push
+	var/datum/vision/vision_holder
 	/// Whether or not this NIFSoft provides exclusive vision modifier
 	var/vision_exclusive = FALSE
 	/// List of NIFSofts that are disabled when this one is enabled

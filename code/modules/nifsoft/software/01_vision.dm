@@ -165,3 +165,19 @@
 	vision_flags_mob_remove = SEE_BLACKNESS
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_NIGHTVIS)
 	vision_exclusive = TRUE
+
+/datum/nifsoft/nightvis
+	name = "Low-Light Amp"
+	desc = "Similar to the worn Night Vision Goggles, these allow you to see in complete darkness."
+	list_pos = NIF_NIGHTVIS
+	cost = 300 // op as shit
+	a_drain = 0.1
+	access = ACCESS_SECURITY_EQUIPMENT
+	tick_flags = NIF_ACTIVETICK
+	planes_enabled = list(VIS_FULLBRIGHT)
+	vision_flags = (NIF_V_NIGHTVIS)
+	darkness_view = 7
+	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
+	vision_exclusive = TRUE
+
+#warn vision holders lmao
