@@ -49,7 +49,7 @@
 	icon_state = "lizard_tail_spiked"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
-	
+
 /datum/sprite_accessory/tail/lizard_tail_smooth_digitigrade
 	name = "Digitigrade Lizard Tail (Smooth)"
 	id = "tail_lizard_smooth_digitigrade"
@@ -61,13 +61,6 @@
 	name = "Digitigrade Lizard Tail (Spiked)"
 	id = "tail_lizard_spiked_digitigrade"
 	icon_state = "lizard_tail_spiked_digitigrade"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-
-/datum/sprite_accessory/tail/lizard_tail_smooth
-	name = "Digitigrade Lizard Tail (Smooth)"
-	id = "tail_lizard_smooth_digitigrade"
-	icon_state = "lizard_tail_smooth_digitigrade"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
