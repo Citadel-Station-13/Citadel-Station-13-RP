@@ -76,11 +76,11 @@
 	inherent_verbs = list(
 		/mob/living/carbon/human/proc/nectar_select,
 		/mob/living/carbon/human/proc/nectar_pick,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 // Did you know it's actually called a honey stomach? I didn't!
 /obj/item/organ/internal/honey_stomach
 	icon = 'icons/obj/surgery.dmi'

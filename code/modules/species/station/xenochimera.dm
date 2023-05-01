@@ -124,8 +124,6 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
@@ -145,7 +143,9 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	var/has_feral_abilities = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
@@ -925,6 +925,7 @@
 	name = "Commune"
 	desc = "Send a telepathic message to an unlucky recipient."
 	action_state = "gen_project"
+	nutrition_enforced = FALSE
 	nutrition_cost_minimum = 20
 	nutrition_cost_proportional = 5
 	cooldown = 20 SECONDS
