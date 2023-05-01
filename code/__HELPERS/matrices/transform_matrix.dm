@@ -71,12 +71,6 @@
 /matrix/proc/get_y_shift()
 	. = f
 
-/matrix/proc/get_x_scale()
-	return a
-
-/matrix/proc/get_y_scale()
-	return e
-
 /matrix/proc/get_x_skew()
 	. = b
 

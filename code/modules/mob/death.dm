@@ -57,7 +57,6 @@
 	qdel(src)
 
 /mob/proc/death(gibbed, deathmessage = "seizes up and falls limp...")
-
 	if(stat == DEAD)
 		return 0
 	if(istype(loc, /obj/belly) || istype(loc, /obj/item/dogborg/sleeper))
@@ -69,6 +68,7 @@
 
 	set_stat(DEAD)
 
+	update_ssd_overlay()
 	update_mobility()
 
 	dizziness = 0
