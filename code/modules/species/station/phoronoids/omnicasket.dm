@@ -53,24 +53,7 @@
 	boots.set_armor(what)
 	gauntlets.set_armor(what)
 
-/obj/item/omnicasket_module
-	name = "blank OmniCasket Module"
-	desc =  "A blank OmniCasket Module, this one isnt even configured to fit any slots."
-	// How to define the changes done to the suit...
-	// 1. foreach(module in installed) module.change_breathing()
-	// 2. each module could contain a list of datums that are refered to by the relevant functions
-	// 3. a variable with bitflags, MODULE_GAS_FILTER (24 bitflags might not be enough)
-	// example: /datum/changes_breathing -> when the suit is using a mask it the filter_gas proc of the mask calls the changes_breathing.behaviour_changed() proc
 
-/obj/item/omnicasket_module/utility
-	name = "blank OmniCasket Utility Module"
-	desc =  "A blank OmniCasket Module, this one is configured to fit into utility slots."
-
-
-/obj/item/omnicasket_kit
-	name = "blank OmniCasket Kit"
-	desc = "A blank Kit of OmniCasket Modules, neatly arranged in a single casing. This one seems to be emtpy..."
-	var/list/obj/item/omnicasket_module/part_of_this = list()
 
 
 
