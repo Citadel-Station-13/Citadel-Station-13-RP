@@ -10,10 +10,15 @@
 	var/name
 	/// cost
 	var/cost
+	/// arbitrary category to group under
+	var/category = "Unsorted"
 
-
+/datum/supply_pack/New()
+	auto_set_price()
 
 #warn impl
+
+
 
 /datum/supply_pack/proc/instantiate_contents(atom/inside)
 	RETURN_TYPE(/list)
@@ -37,6 +42,20 @@
  */
 /datum/supply_pack/proc/preprocess_contents_list()
 	return contains.Copy()
+
+/datum/supply_pack/proc/ui_data_list()
+	#warn impl
+
+/datum/supply_pack/proc/auto_set_price()
+	var/list/paths = preprocess_contents_list()
+	. = initial(cost)
+	for(var/atom/path as anything in paths)
+		if(!ispath(path, /atom))
+			CRASH("invalid path: [path]")
+		if(initial(path.worth_dynamic))
+			continue
+		. += get_worth_static(path, GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING, TRUE)
+	cost = .
 
 /**
  * randomized supplypacks

@@ -1,42 +1,5 @@
-/**
- * supplypacks
- * these are the "bundle buys" of cargo
- * they usually ship in a crate and is used by the main
- * cargo system, as opposed to trading, but is perfectly usable
- * by anything using the spawn procs.
- */
-
-//SUPPLY PACKS
-//NOTE: only secure crate types use the access var (and are lockable)
-//NOTE: hidden packs only show up when the computer has been hacked.
-//ANOTER NOTE: Contraband is obtainable through modified supplycomp circuitboards.
-//BIG NOTE: Don't add living things to crates, that's bad, it will break the shuttle.
-//NEW NOTE: Do NOT set the price of any crates below 7 points. Doing so allows infinite points.
-//NOTE NOTE: Hidden var is now deprecated, whoever removed support for it should've removed the var altogether
-
-var/list/all_supply_groups = list("Atmospherics",
-								  "Costumes",
-								  "Engineering",
-								  "Hospitality",
-								  "Hydroponics",
-								  "Materials",
-								  "Medical",
-								  "Miscellaneous",
-								  "Munitions",
-								  "Reagents",
-								  "Reagent Cartridges",
-								  "Recreation",
-								  "Robotics",
-								  "Science",
-								  "Security",
-								  "Supplies",
-								  "Voidsuits",
-								  "Vehicles")
 
 /datum/supply_pack
-	var/name
-	var/cost
-
 	// the container
 	/// the type of the containier we spawn at - our contained objects will spawn in this.
 	var/container_type = /obj/structure/closet/crate/plastic
@@ -52,7 +15,6 @@ var/list/all_supply_groups = list("Atmospherics",
 	var/access
 	var/one_access = FALSE
 	var/contraband = 0
-	var/group = "Miscellaneous"
 
 /**
  * creates our container

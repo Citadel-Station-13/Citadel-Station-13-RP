@@ -498,3 +498,6 @@
 
 /obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
+
+/obj/structure/closet/export_recurse()
+	return contents
