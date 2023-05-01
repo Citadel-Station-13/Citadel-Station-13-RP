@@ -221,6 +221,7 @@
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	starts_with = list(
+		/obj/item/disk/nifsoft/medical
 		/obj/item/radio/headset/heads/blueshield,
 		/obj/item/radio/headset/heads/blueshield/alt,
 		/obj/item/clothing/glasses/sunglasses/medhud,
@@ -234,7 +235,6 @@
 		/obj/item/storage/belt/security,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
-
 		/obj/item/gun/ballistic/revolver/consul,
 		/obj/item/ammo_magazine/s44,
 		/obj/item/ammo_magazine/s44,
