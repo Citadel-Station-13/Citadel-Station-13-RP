@@ -55,15 +55,6 @@ var/list/all_supply_groups = list("Atmospherics",
 	var/group = "Miscellaneous"
 
 /**
- * instance the supply pack at a location. returns the container used.
- */
-/datum/supply_pack/proc/Instantiate(atom/loc)
-	RETURN_TYPE(/atom/movable)
-	. = InstanceContainer(loc)
-	SetupContainer(.)
-	SpawnContents(.)
-
-/**
  * creates our container
  */
 /datum/supply_pack/proc/InstanceContainer(atom/loc)
@@ -95,13 +86,6 @@ var/list/all_supply_groups = list("Atmospherics",
 				log_debug(SPAN_DEBUGERROR("Supply pack with invalid access restriction [access] encountered!"))
 
 /**
- * spawn an object of a certain type
- */
-/datum/supply_pack/proc/InstanceObject(path, atom/loc, ...)
-	RETURN_TYPE(/atom/movable)
-	return new path(arglist(args.Copy(2)))
-
-/**
  * spawwns our contents into a container. if you need special behavior like randomization, besure to modify default manifest too!
  */
 /datum/supply_pack/proc/SpawnContents(atom/loc)
@@ -119,12 +103,6 @@ var/list/all_supply_groups = list("Atmospherics",
 				// ~silicons
 				CRASH("Ran out of safety during SpawnContents")
 			InstanceObject(path, loc)
-
-/**
- * used to preprocess the contained list for spawning
- */
-/datum/supply_pack/proc/preprocess_contents_list()
-	return contains.Copy()
 
 /**
  * generates our HTML manifest as a **list**
@@ -168,18 +146,6 @@ var/list/all_supply_groups = list("Atmospherics",
 		var/name = initial(AM.name)
 		. += "[amount > 1? "[amount] [name](s)" : "[name]"]"
 
-/**
- * randomized supplypacks
- * only x items can be ever spawned
- * weighting is equal - the list of typepaths normally spawned is treated as pick-and-take-one-of.
- *
- * maybe we should roll this into default functionality
- * question for another day, not like we aren't modular enough with this system now to do it easily.
- */
-/datum/supply_pack/randomised
-	/// how many of our items at random to spawn
-	var/num_contained = 1
-
 /datum/supply_pack/randomised/get_html_manifest(atom/movable/container)
 	var/list/lines = list()
 	lines += "Contains any [num_contained] of the following:<br>"
@@ -192,16 +158,6 @@ var/list/all_supply_groups = list("Atmospherics",
 	lines += "</ul>"
 	return lines
 
-/datum/supply_pack/randomised/preprocess_contents_list()
-	var/list/L = list()
-	// first, flatten list
-	for(var/path in contains)
-		L[path] = contains[path] || 1
-	// pick and take
-	. = list()
-	for(var/i in 1 to num_contained)
-		var/path = pickweight(L)
-		.[path]++
 
 /datum/supply_pack/randomised/is_random()
 	return num_contained
