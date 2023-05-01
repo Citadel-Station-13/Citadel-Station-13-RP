@@ -1,0 +1,451 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"b" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"f" = (
+/obj/structure/girder,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 6
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"g" = (
+/turf/simulated/floor/plating,
+/area/space)
+"i" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/structure/inflatable,
+/turf/simulated/floor/plating,
+/area/space)
+"j" = (
+/obj/machinery/computer/ship/helm{
+	req_one_access = list()
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"k" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"m" = (
+/obj/item/storage/toolbox/electrical,
+/turf/simulated/floor/plating,
+/area/space)
+"n" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 10
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"o" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/turf/simulated/wall,
+/area/space)
+"q" = (
+/obj/machinery/atmospherics/portables_connector/fuel{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/plating,
+/area/space)
+"r" = (
+/obj/structure/table/rack/steel,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/stack/material/tritium{
+	amount = 25
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"s" = (
+/obj/structure/girder,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"t" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/floor/plating,
+/area/space)
+"u" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"v" = (
+/obj/machinery/atmospherics/component/unary/engine/bigger{
+	dir = 1
+	},
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"w" = (
+/obj/item/tank/oxygen,
+/obj/structure/table/rack/steel,
+/obj/item/clothing/suit/space/emergency/russian,
+/obj/item/clothing/head/helmet/space/emergency/russian{
+	pixel_y = -12
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"y" = (
+/obj/structure/cable/pink,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
+/turf/simulated/floor/plating,
+/area/space)
+"z" = (
+/obj/structure/inflatable,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"A" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/space)
+"B" = (
+/turf/simulated/wall,
+/area/space)
+"C" = (
+/obj/structure/inflatable/door,
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"D" = (
+/obj/item/inflatable/torn,
+/obj/machinery/portable_atmospherics/canister/phoron,
+/turf/simulated/floor/plating,
+/area/space)
+"G" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"H" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/plating,
+/area/space)
+"I" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/item/inflatable/door,
+/turf/simulated/floor/plating,
+/area/space)
+"K" = (
+/obj/structure/lattice,
+/turf/simulated/shuttle/plating/airless/carry,
+/area/space)
+"L" = (
+/obj/machinery/computer/shuttle_control/explore/gecko_cr,
+/turf/simulated/floor/plating,
+/area/space)
+"M" = (
+/obj/item/inflatable/torn,
+/obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"N" = (
+/obj/item/storage/briefcase/inflatable,
+/turf/simulated/floor/plating,
+/area/space)
+"P" = (
+/obj/item/inflatable/door/torn,
+/turf/simulated/floor/plating,
+/area/space)
+"Q" = (
+/obj/machinery/power/port_gen/pacman/mrs{
+	anchored = 1
+	},
+/obj/structure/cable/pink{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"S" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/space)
+"T" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/plating,
+/area/space)
+"V" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/plating,
+/area/space)
+"Y" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/plating/outdoors,
+/area/space)
+"Z" = (
+/turf/space,
+/area/space)
+
+(1,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+"}
+(2,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+f
+o
+a
+v
+Z
+Z
+Z
+Z
+"}
+(3,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+A
+s
+B
+a
+a
+Z
+Z
+Z
+Z
+"}
+(4,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+K
+C
+B
+k
+k
+Z
+Z
+Z
+Z
+"}
+(5,1,1) = {"
+Z
+Z
+Z
+k
+k
+K
+V
+i
+V
+V
+k
+k
+Z
+Z
+Z
+"}
+(6,1,1) = {"
+Z
+Z
+K
+k
+Y
+Y
+B
+I
+V
+D
+V
+k
+k
+Z
+Z
+"}
+(7,1,1) = {"
+Z
+K
+K
+V
+V
+Q
+y
+G
+w
+S
+V
+V
+V
+V
+Z
+"}
+(8,1,1) = {"
+Z
+k
+a
+V
+j
+g
+g
+G
+g
+g
+P
+H
+g
+H
+Z
+"}
+(9,1,1) = {"
+Z
+k
+k
+V
+L
+u
+g
+G
+m
+T
+V
+V
+V
+V
+Z
+"}
+(10,1,1) = {"
+Z
+Z
+k
+V
+t
+r
+N
+M
+q
+V
+V
+K
+K
+Z
+Z
+"}
+(11,1,1) = {"
+Z
+Z
+Z
+V
+V
+V
+V
+z
+V
+V
+K
+K
+Z
+Z
+Z
+"}
+(12,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+K
+K
+z
+B
+B
+B
+Z
+Z
+Z
+Z
+"}
+(13,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+K
+n
+b
+a
+v
+Z
+Z
+Z
+Z
+"}
+(14,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+K
+K
+a
+a
+Z
+Z
+Z
+Z
+"}
+(15,1,1) = {"
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+"}
