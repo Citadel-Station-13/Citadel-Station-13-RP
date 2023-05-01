@@ -119,12 +119,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/ai_upload)
-"bN" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/bluegrid,
-/area/ai)
 "bO" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/item/barrier_tape_segment/engineering,
@@ -214,10 +208,6 @@
 "cB" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
-"cE" = (
-/obj/machinery/light,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/ftl)
 "cN" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/forward/starboard)
@@ -1032,13 +1022,6 @@
 "pQ" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/deck_four/forward)
-"pT" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/techfloor,
-/area/rnd/research)
 "pW" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood,
@@ -1236,19 +1219,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
-"sO" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/ftl)
 "sP" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_y = 26
-	},
-/obj/machinery/light{
-	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/space)
@@ -1391,12 +1365,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/maintenance/deck_four/aft/port)
-"vJ" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/shunt)
 "vU" = (
 /obj/structure/stairs/spawner/west,
 /turf/simulated/floor/tiled,
@@ -1496,10 +1464,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"yb" = (
-/obj/machinery/light,
-/turf/simulated/floor/bluegrid,
-/area/ai)
 "yc" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1555,12 +1519,6 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_four/forward)
-"zj" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/bluegrid,
-/area/ai)
 "zo" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/deck_four/starboard)
@@ -1594,12 +1552,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library/study)
-"zH" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research/testingrange)
 "zJ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1689,7 +1641,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "AI" = (
-/obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -1705,9 +1656,6 @@
 	},
 /obj/effect/floor_decal/corner/mauve/border{
 	dir = 9
-	},
-/obj/machinery/light{
-	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
 	dir = 1;
@@ -1982,9 +1930,6 @@
 	info = "This is a direct notice to anyone using firing range: All tests involving destruction of testing facilities MUST be run through Research Director or Central Command before anyone even so much as thinks about going through with this, or be moved outside to where test cannot affect any existing facility. This is both to maintain a professional environment, and ensure nobody else is harmed during these experiments. Nobody wants another 'two SM shards going nuclear in the firing range' incident again, especially not the people handling your paychecks.";
 	name = "note to science staff"
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
@@ -2054,9 +1999,6 @@
 /turf/simulated/floor/wood,
 /area/library)
 "FK" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -2209,21 +2151,8 @@
 	dir = 1;
 	id = "mining_interior"
 	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
 /turf/simulated/floor/tiled,
 /area/space)
-"HB" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/floor_decal/techfloor{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/rnd/research)
 "HQ" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
@@ -2542,12 +2471,6 @@
 "MI" = (
 /turf/simulated/wall,
 /area/maintenance/deck_four)
-"ML" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/grass/heavy/interior,
-/area/rnd/research)
 "MP" = (
 /turf/simulated/floor/tiled/monotile,
 /area/maintenance/deck_four/aft/port)
@@ -2727,12 +2650,6 @@
 /obj/machinery/ai_slipper,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
-"PK" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rnd/research/testingrange)
 "PS" = (
 /obj/machinery/power/apc/direction_bump/north,
 /turf/simulated/floor/carpet/bcarpet,
@@ -3093,12 +3010,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
-"UC" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/bluegrid,
-/area/ai)
 "UY" = (
 /turf/simulated/shuttle/plating/airless/carry,
 /area/space)
@@ -3264,12 +3175,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_four/forward)
-"WC" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/engineering/shunt)
 "WG" = (
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
 	dir = 8
@@ -5028,7 +4933,7 @@ gt
 gt
 gK
 gK
-vJ
+gK
 gK
 Tg
 Nt
@@ -5038,7 +4943,7 @@ Za
 JJ
 yp
 XZ
-sO
+XZ
 XZ
 XZ
 aC
@@ -5414,7 +5319,7 @@ Za
 Za
 gt
 gt
-WC
+gK
 gK
 gK
 gK
@@ -5428,7 +5333,7 @@ zQ
 XZ
 XZ
 XZ
-cE
+XZ
 aC
 aC
 Za
@@ -13781,7 +13686,7 @@ dg
 kw
 IJ
 IJ
-HB
+Qa
 HQ
 Qa
 MA
@@ -14090,7 +13995,7 @@ KJ
 KJ
 jr
 tZ
-Va
+MP
 MP
 MP
 MP
@@ -14366,7 +14271,7 @@ Bh
 na
 Yy
 EF
-ML
+EF
 lo
 EF
 yH
@@ -14491,7 +14396,7 @@ Ji
 mX
 mR
 mR
-bN
+mR
 mR
 qg
 qg
@@ -14500,7 +14405,7 @@ oN
 qg
 qg
 qg
-bN
+mR
 mR
 mR
 mX
@@ -14877,7 +14782,7 @@ MP
 tZ
 py
 mX
-zj
+mR
 oi
 OV
 AI
@@ -14890,7 +14795,7 @@ mR
 Zu
 dc
 Kg
-yb
+mR
 mX
 py
 py
@@ -14948,7 +14853,7 @@ Ce
 rz
 eW
 dk
-pT
+dk
 Am
 dk
 dk
@@ -15080,7 +14985,7 @@ mX
 gj
 xP
 qg
-UC
+mR
 mR
 fD
 FC
@@ -15275,7 +15180,7 @@ mX
 mX
 mX
 mX
-zj
+mR
 fD
 FC
 qg
@@ -15927,7 +15832,7 @@ cu
 rv
 cW
 cW
-zH
+cW
 cW
 cW
 cW
@@ -16044,7 +15949,7 @@ mX
 qg
 FC
 mR
-yb
+mR
 mX
 mX
 mX
@@ -16239,7 +16144,7 @@ Hv
 FC
 mR
 mR
-bN
+mR
 qg
 My
 Kc
@@ -16429,7 +16334,7 @@ iH
 tZ
 py
 mX
-zj
+mR
 oi
 uJ
 Vj
@@ -16442,7 +16347,7 @@ mX
 FK
 zL
 Kg
-yb
+mR
 FB
 gT
 FB
@@ -16819,7 +16724,7 @@ Ji
 mX
 mR
 mR
-UC
+mR
 qg
 qg
 qg
@@ -16828,7 +16733,7 @@ qg
 qg
 qg
 qg
-UC
+mR
 mR
 mR
 mX
@@ -17479,7 +17384,7 @@ sH
 aM
 cW
 cW
-PK
+cW
 cW
 cW
 cW
