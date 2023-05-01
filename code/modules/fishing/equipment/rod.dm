@@ -198,7 +198,7 @@
 		return
 
 	// try to hook item
-	if(isitem(target) && try_hook_item(target, user))
+	if(try_hook_item(target, user))
 		return
 
 	// not a fishing spot or an item
@@ -209,7 +209,7 @@
  *
  * @return TRUE / FALSE on success / fail.
  */
-/obj/item/fishing_rod/proc/try_hook_item(obj/item/target, mob/user)
+/obj/item/fishing_rod/proc/try_hook_item(atom/movable/target, mob/user)
 	if(!check_fishing_reach(target, user))
 		return FALSE
 	if(SEND_SIGNAL(target, COMSIG_FISHING_ROD_CAST, src, user) & FISHING_ROD_CAST_HANDLED)
@@ -455,6 +455,7 @@
 	RegisterSignal(origin, COMSIG_ATOM_DIR_CHANGE, PROC_REF(handle_dir_change))
 
 /datum/beam/fishing_line/Destroy()
+	SEND_SIGNAL(src, COMSIG_FISHING_LINE_SNAPPED)
 	UnregisterSignal(origin, COMSIG_ATOM_DIR_CHANGE)
 	. = ..()
 

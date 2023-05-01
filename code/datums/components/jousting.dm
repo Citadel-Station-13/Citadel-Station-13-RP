@@ -55,7 +55,7 @@
 			msg += " and knocks [target] [target_buckled? "off of [target.buckled]" : "down"]"
 			if(target_buckled)
 				target.buckled.unbuckle_mob(target)
-			L.SetUnconscious(knockdown_time)
+			L.set_unconscious(20 * knockdown_time)
 		if(length(msg))
 			user.visible_message("<span class='danger'>[msg]!</span>")
 

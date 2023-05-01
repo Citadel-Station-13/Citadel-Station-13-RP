@@ -74,6 +74,7 @@
 
 /obj/item/clothing/suit/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
 
 /obj/item/clothing/head/helmet/space/void/explorer
@@ -104,8 +105,8 @@
 
 /obj/item/clothing/head/helmet/space/void/explorer/Initialize(mapload)
 	. = ..()
+	LAZYINITLIST(sprite_sheets)
 	sprite_sheets += sprite_sheets_refit
-
 
 /obj/item/clothing/suit/space/void/autolok
 	name = "AutoLok pressure suit"

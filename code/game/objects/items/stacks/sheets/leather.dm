@@ -169,6 +169,12 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
 
+/obj/item/stack/chitin
+	name = "chitin plates"
+	desc = "Sheets of hardened chitin, usually harvested from insectile beasts."
+	singular_name = "chitin plate"
+	icon_state = "chitin"
+
 /obj/item/stack/wetleather
 	name = "wet leather"
 	desc = "This leather has been cleaned but still needs to be dried."

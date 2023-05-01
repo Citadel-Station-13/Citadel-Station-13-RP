@@ -63,8 +63,8 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	exotic_type = /obj/item/stack/material/chitin
-	exotic_amount = 5
+	bone_type = /obj/item/stack/chitin
+	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")
@@ -184,8 +184,8 @@
 	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
-	exotic_type = /obj/item/stack/material/chitin
-	exotic_amount = 5
+	bone_type = /obj/item/stack/chitin
+	bone_amount = 5
 
 	faction = "lavaland"
 	speak_emote = list("chatters")
@@ -201,6 +201,7 @@
 	var/rideable = 0
 
 /mob/living/simple_mob/animal/shank/attackby(var/obj/item/O as obj, var/mob/user as mob)
+	. = ..()
 	if(istype(O, /obj/item/saddle/shank) && !rideable)
 		to_chat(user, "<span class='danger'>You sling the [O] onto the [src]! It may now be ridden safely!</span>")
 		rideable = 1
@@ -231,7 +232,21 @@
 		return 1
 
 /datum/component/riding_handler/shank
-	rider_offsets = list(0, 11, 1, null)
+	rider_offsets = list(
+		list(
+			list(0, 11, 0.1, null),
+			list(0, 11, 0.1, null),
+			list(0, 11, -0.1, null),
+			list(0, 11, 0.1, null)
+		),
+		list(
+			list(0, 11, 0.2, null),
+			list(-7, 11, 0.2, null),
+			list(0, 11, -0.2, null),
+			list(7, 11, 0.2, null)
+		)
+	)
+	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	riding_handler_flags = CF_RIDING_HANDLER_IS_CONTROLLABLE
 	vehicle_move_delay = 1.5
 

@@ -33,8 +33,8 @@
 	friendly = list("nuzzles", "licks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 32
+	icon_x_dimension = 64
+	icon_y_dimension = 32
 
 	vore_active = TRUE
 	vore_capacity = 1

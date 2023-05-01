@@ -256,6 +256,15 @@
 	..(S,H)
 	add_verb(H, /mob/living/proc/set_size)
 
+/datum/trait/neutral/nitrogen_breathing
+	name = "Nitrogen Breathing"
+	desc = "You require Nitrogen instead of Oxygen to breathe, be it through genetic modification or evolution."
+	cost = 0
+	custom_only = FALSE
+	var_changes = list(
+		"breath_type" = /datum/gas/nitrogen
+	)
+
 /datum/trait/neutral/cyberpsycho
 	name = "Cybernetic Rejection Syndrome"
 	desc = "In a transhuman society there are always those few who lack the ability to interface safely with cybernetics. Whether it exhibits itself as an allergy during their first implant, or as gradual mental degradation, those who are poorly adapted to cybernetics have only two futures to look forward to."
@@ -268,3 +277,10 @@
 /datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.AddComponent(/datum/component/cyberpsychosis)
+
+/datum/trait/neutral/alcohol_intolerance
+	name = "Alcohol Intolerance"
+	desc = "You cannot metabolize alcohol; ingesting it will cause vomiting, toxin build-up, liver damage, pain and other unpleasantness."
+	cost = 0
+	custom_only = FALSE
+	traits = list(TRAIT_ALCOHOL_INTOLERANT)

@@ -525,7 +525,6 @@
 	H.maxHealth = total_health
 
 	add_inherent_verbs(H)
-	add_inherent_spells(H)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
@@ -788,9 +787,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat == CONSCIOUS && H.ai_holder)
 		if(H.resting)
-			H.resting = FALSE
-			H.update_canmove()
-	return
+			H.set_intentionally_resting(FALSE)
 
 // Called when lying down on a water tile.
 /datum/species/proc/can_breathe_water()

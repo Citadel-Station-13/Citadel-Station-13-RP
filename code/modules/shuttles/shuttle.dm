@@ -340,7 +340,7 @@
 						shake_camera(M, 10, 1)
 						// TODO - tossing?
 						if(istype(M, /mob/living/carbon))
-							M.Weaken(3)
+							M.afflict_paralyze(20 * 3)
 							if(move_direction)
 								throw_a_mob(M,move_direction)
 		// We only need to rebuild powernets for our cables.  No need to check machines because they are on top of cables.

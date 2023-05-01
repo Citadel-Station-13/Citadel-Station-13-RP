@@ -120,6 +120,24 @@
 	 */
 	var/throw_speed_scaling_exponential = THROW_SPEED_SCALING_CONSTANT_DEFAULT
 
+	//? Colors
+	/**
+	 * used to store the different colors on an atom
+	 *
+	 * its inherent color, the colored paint applied on it, special color effect etc...
+	 */
+	var/list/atom_colours
+	/// use expensive color priority system
+	var/atom_colouration_system = FALSE
+
+	//? Emissives
+	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = FALSE
+	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
+	var/atom/movable/emissive_blocker/em_block
+	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
+	var/atom/movable/emissive_render/em_render
+
 	//? Icon Scale
 	/// Used to scale icons up or down horizonally in update_transform().
 	var/icon_scale_x = 1
@@ -134,16 +152,11 @@
 	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
 	var/buckle_pixel_y = 0
 
-	//? Emissives
-	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
-	var/blocks_emissive = FALSE
-	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
-	var/atom/movable/emissive_blocker/em_block
-	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
-	var/atom/movable/emissive_render/em_render
-
 /atom/movable/Initialize(mapload)
 	. = ..()
+	//atom color stuff
+	if(!isnull(color) && atom_colouration_system)
+		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 	if (!mapload && loc)
 		loc.Entered(src, null)
 	switch(blocks_emissive)
@@ -189,7 +202,6 @@
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)
 			. = TRUE
-	return .
 
 //Overlays
 /atom/movable/overlay
@@ -261,6 +273,7 @@
 /atom/movable/proc/get_icon_scale_y()
 	return icon_scale_y
 
+// todo: refactor this shit
 /atom/movable/proc/update_transform()
 	var/matrix/M = matrix()
 	M.Scale(icon_scale_x, icon_scale_y)
@@ -291,12 +304,6 @@
 //Called when touching a blood pool.
 /atom/movable/proc/blood_act()
 	// blood_act(null, 500, 50)
-
-/**
-  * Sets our movement type.
-  */
-/atom/movable/proc/set_movement_type(new_movetype)
-	movement_type = new_movetype
 
 /atom/movable/proc/Bump_vr(var/atom/A, yes)
 	return
@@ -427,6 +434,14 @@
 /atom/movable/proc/get_bullet_impact_effect_type()
 	return BULLET_IMPACT_NONE
 
+// todo: we should probably have a way to just copy an appearance clone or something without render-targeting
+
+/**
+ * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ */
+/atom/movable/proc/is_avoiding_ground()
+    return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing
+
 //? Perspectives
 /**
  * get perspective to use when shifting eye to us,
@@ -536,10 +551,83 @@
 	qdel(em_render)
 	em_render = null
 
-// todo: we should probably have a way to just copy an appearance clone or something without render-targeting
+//? atom colors
 
 /**
- * Checks if we can avoid things like landmine, lava, etc, whether beneficial or harmful.
+ * getter for current color
  */
-/atom/movable/proc/is_avoiding_ground()
-    return ((movement_type & MOVEMENT_TYPES) != MOVEMENT_GROUND) || throwing
+/atom/movable/get_atom_colour()
+	return color
+
+/**
+ * copies from other
+ */
+/atom/movable/copy_atom_colour(atom/other, colour_priority)
+	if(!atom_colouration_system)
+		var/others = other.get_atom_colour()
+		if(isnull(others))
+			return
+		color = others
+		return
+	add_atom_colour(other.get_atom_colour(), colour_priority || FIXED_COLOUR_PRIORITY)
+
+/**
+ * copies all from another movable
+ */
+/atom/movable/proc/copy_atom_colours(atom/movable/other)
+	if(!atom_colouration_system)
+		return copy_atom_colour(other)
+	if(isnull(other.atom_colours))
+		return
+	atom_colours = other.atom_colours.Copy()
+	update_atom_colour()
+
+/// Adds an instance of colour_type to the atom's atom_colours list
+/atom/movable/add_atom_colour(coloration, colour_priority)
+	if(!coloration)
+		return
+	if(!atom_colouration_system)
+		color = coloration
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
+		return
+	if(!atom_colours || !atom_colours.len)
+		atom_colours = list()
+		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
+	atom_colours[colour_priority] = coloration
+	update_atom_colour()
+
+/// Removes an instance of colour_type from the atom's atom_colours list
+/atom/movable/remove_atom_colour(colour_priority, coloration)
+	if(!atom_colouration_system)
+		if(coloration && color != coloration)
+			return
+		if(isnull(color))
+			return
+		color = null
+		return
+	if(!islist(atom_colours))
+		return
+	if(colour_priority > COLOUR_PRIORITY_AMOUNT)
+		return
+	if(coloration && atom_colours[colour_priority] != coloration)
+		return //if we don't have the expected color (for a specific priority) to remove, do nothing
+	atom_colours[colour_priority] = null
+	update_atom_colour()
+
+/// Resets the atom's color to null, and then sets it to the highest priority colour available
+/atom/movable/update_atom_colour()
+	if(!atom_colouration_system)
+		return
+	if(!islist(atom_colours))
+		return
+	color = null
+	for(var/C in atom_colours)
+		if(islist(C))
+			var/list/L = C
+			if(L.len)
+				color = L
+				return
+		else if(C)
+			color = C
+			return

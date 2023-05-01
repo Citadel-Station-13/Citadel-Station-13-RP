@@ -7,7 +7,7 @@
 
 	/// name
 	var/name = "Unknown"
-	/// id - **must be unique on subtypes
+	/// id - **must be unique on subtypes**, use CamelCase
 	var/id
 	/// category
 	var/category = "Misc"

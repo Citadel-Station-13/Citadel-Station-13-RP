@@ -51,7 +51,7 @@
 	if(!usr.canClick())
 		return
 
-	if(usr.stat || usr.restrained() || usr.stunned || usr.lying)
+	if(usr.stat || usr.restrained() || !CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return 1
 
 	if(!(owner in usr))
@@ -81,7 +81,7 @@
 /atom/movable/screen/storage/Click()
 	if(!usr.canClick())
 		return 1
-	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_STORAGE))
 		return 1
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
@@ -243,7 +243,7 @@
 		if("internal")
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = usr
-				if(!C.stat && !C.stunned && !C.paralysis && !C.restrained())
+				if(CHECK_MOBILITY(C, MOBILITY_CAN_USE))
 					if(C.internal)
 						C.internal = null
 						to_chat(C, "<span class='notice'>No longer running on internals.</span>")

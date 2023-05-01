@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
+	atom_colouration_system = FALSE
 
 	plane = TURF_PLANE
 	layer = EXPOSED_WIRE_LAYER
@@ -273,7 +274,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(usr.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
@@ -631,7 +632,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	set category = "Object"
 	var/mob/M = usr
 
-	if(ishuman(M) && !M.restrained() && !M.stat && !M.paralysis && ! M.stunned)
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
 			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")
@@ -659,14 +660,14 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return
 	..()
 
-/obj/item/stack/cable_coil/use()
+/obj/item/stack/cable_coil/use(used)
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 ///////////////////////////////////////////////

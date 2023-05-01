@@ -159,6 +159,7 @@
 		set_armor(armor.overwritten(built))
 		log_admin("[key_name(usr)] modified the armor on [src] ([type]) to [armor.log_string()]")
 		message_admins(SPAN_NOTICE("[key_name_admin(usr)] modified the armor on [src] ([type]) to [armor.log_string()]"))
+		// todo: proper tgui for armor mods
 
 /atom/vv_get_header()
 	. = ..()

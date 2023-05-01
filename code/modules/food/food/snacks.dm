@@ -641,6 +641,11 @@
 	else
 		. = ..()
 
+/obj/item/reagent_containers/food/snacks/egg/randomized/Initialize(mapload)
+	. = ..()
+	var/randeggicon = pick("egg-blue","egg-green","egg-orange","egg-purple","egg-red","egg-yellow","egg-rainbow")
+	icon_state = (randeggicon)
+
 /obj/item/reagent_containers/food/snacks/egg/blue
 	icon_state = "egg-blue"
 
@@ -762,14 +767,16 @@
 	toxin_type = "neurotoxic_protein"
 	toxin_amount = 2
 
-/obj/item/reagent_containers/food/snacks/carpmeat/sif/murkfish
-	toxin_type = "murk_protein"
-
 /obj/item/reagent_containers/food/snacks/carpmeat/fish // Removed toxin and added a bit more oomph
 	desc = "A fillet of fish meat."
 	toxin_amount = 0
 	toxin_type = null
 	nutriment_amt = 2
+
+/obj/item/reagent_containers/food/snacks/carpmeat/fish/murkfish
+	desc = "A fillet of murkfish meat."
+	filling_color = "#4d331a"
+	color = "#4d331a"
 
 /obj/item/reagent_containers/food/snacks/carpmeat/fish/Initialize(mapload)
 	. = ..()

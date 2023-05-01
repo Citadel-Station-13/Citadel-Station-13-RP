@@ -26,8 +26,36 @@
 	slot = SLOT_ID_UNIFORM
 	ckeywhitelist = list("knouli")
 
+/datum/gear/event_reward/glue
+	sort_category = "Event Rewards"
+	cost = 0
+	name = "All Purpose Non-Toxic Glue"
+	path = /datum/reagent/drink/glue
+	ckeywhitelist = list("trubus", "g0atman", "linzolle", "racobio", "oaklee", "askaris", "bluewildrose", "serinexxa", "ticklem0nster", "pixelthekitty", "ktoma36", "keekenox", "nik707")
+
+/datum/gear/event_reward/fishingcap
+	sort_category = "Event Rewards"
+	cost = 0
+	name = "Fishing Cap"
+	path = /obj/item/clothing/head/fishingcap
+	ckeywhitelist = list("biteroankles", "cawingcrow", "tzula", "doopytoots", "slybrowngote", "0roxas0", "g0atman", "kiroking", "gonepostal298", "silicons", "linzolle", "vapeon", "keekenox", "monara", "crystal9156")
+
+/datum/gear/event_reward/toadplush
+	sort_category = "Event Rewards"
+	cost = 0
+	name = "Toad Plushie"
+	path = /obj/item/toy/plushie/toad
+	ckeywhitelist = list("coreflare", "jacksontmurphy", "uncleburbon", "biteroankles", "athena14", "rezbit", "nik707", "0roxas0")
+
 /datum/gear/event_reward/cooking_pin
 	cost = 0
 	name = "Culinary Excellence Pin"
 	path = /obj/item/clothing/accessory/medal/cooking
-	ckeywhitelist = list("spessinquisitor")
+	ckeywhitelist = list("spessinquisitor", "ktoma36", "ghxst_azy")
+
+/datum/gear/event_reward/petrock
+	sort_category = "Event Rewards"
+	cost = 0
+	name = "Pet Rock"
+	path = /obj/item/toy/plushie/petrock
+	ckeywhitelist = list("cawingcrow")

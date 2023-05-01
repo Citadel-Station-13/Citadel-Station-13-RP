@@ -174,10 +174,10 @@
 			M.sleeping = 0
 			M.stuttering += 20
 			M.ear_deaf += 30
-			M.Weaken(3)
+			M.afflict_paralyze(20 * 3)
 			if(prob(30))
-				M.Stun(10)
-				M.Unconscious(4)
+				M.afflict_stun(20 * 10)
+				M.afflict_unconscious(20 * 4)
 			else
 				M.make_jittery(500)
 		chassis.use_power(energy_drain)
@@ -292,7 +292,7 @@
 	melee_damage_upper = 1
 	attacktext = "honked"
 	attack_sound = 'sound/items/bikehorn.ogg'
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	min_oxy = 5
 	max_oxy = 0
 	min_tox = 0

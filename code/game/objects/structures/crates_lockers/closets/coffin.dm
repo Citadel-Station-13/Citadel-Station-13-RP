@@ -70,7 +70,7 @@
 	return TRUE	//Everything else can move over the graves
 
 /obj/structure/closet/grave/proc/fall_in(mob/living/L)	//Only called on humans for now, but still
-	L.Weaken(5)
+	L.afflict_paralyze(20 * 5)
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		var/limb_damage = rand(5,25)

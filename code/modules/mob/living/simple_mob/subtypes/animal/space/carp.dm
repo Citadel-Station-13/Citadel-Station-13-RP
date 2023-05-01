@@ -64,7 +64,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 // Subtypes.
@@ -88,7 +88,7 @@
 	mob_size = MOB_LARGE
 
 	base_pixel_x = -16
-	icon_dimension_x = 64
+	icon_x_dimension = 64
 
 	meat_amount = 5
 	bone_amount = 4
@@ -114,8 +114,8 @@
 
 	pixel_y = -16
 	base_pixel_y = -16
-	icon_dimension_x = 64
-	icon_dimension_y = 64
+	icon_x_dimension = 64
+	icon_y_dimension = 64
 
 	meat_amount = 10
 	bone_amount = 7

@@ -132,8 +132,6 @@
 	desc = "A flintlock pistol cased in bone and sinew. It uses an obsidian striking mechanism, perhaps it should be called an obsidian-lock?"
 	icon_state = "flintlock-scor"
 
-
-
 /obj/item/gun/ballistic/musket/blunderbuss
 	name = "blunderbuss"
 	desc = "The precursor to the modern shotgun. It uses blackpowder to shoot a spread of shrapnel."

@@ -1,4 +1,5 @@
 /*
+
  FUN ZONE OF ADMIN LISTINGS
  Try to keep this in sync with __DEFINES/traits.dm
  quirks have it's own panel so we don't need them here.
@@ -30,7 +31,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_DISFIGURED" = TRAIT_DISFIGURED,
 	*/
 		"TRAIT_XENO_HOST" = TRAIT_XENO_HOST,
-		"TRAIT_MIME" = TRAIT_MIME,
+		"MIME_TRAIT" = MIME_TRAIT,
 	/*
 		"TRAIT_STUNIMMUNE" = TRAIT_STUNIMMUNE,
 		"TRAIT_SLEEPIMMUNE" = TRAIT_SLEEPIMMUNE,
@@ -98,6 +99,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_UNSTABLE" = TRAIT_UNSTABLE,
 		"TRAIT_OIL_FRIED" = TRAIT_OIL_FRIED,
 		*/
+		"TRAIT_UNOBSERVANT" = TRAIT_UNOBSERVANT,
 	),
 	/*
 	/obj/item/bodypart = list(
