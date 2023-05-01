@@ -178,8 +178,13 @@
 			humanform.remove_a_modifier_of_type(/datum/modifier/protean/steelBlob)
 	humanform.normalize_bodytemperature(40, 0.5)
 
+/mob/living/simple_mob/protean_blob/update_mobility(blocked, forced)
+	if(resting)
+		blocked |= MOBILITY_FLAGS_REAL
+	return ..()
+
 /mob/living/simple_mob/protean_blob/lay_down()
-	..()
+	toggle_resting()
 	if(resting)
 		to_chat(src, "<span class='warning'>You blend into the floor beneath you. <b>You will not be able to heal while doing so.</b></span>")
 		animate(src,alpha = 40,time = 1 SECOND)
