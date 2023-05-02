@@ -451,6 +451,7 @@
 #include "code\_rendering\perspectives\vision.dm"
 #include "code\_rendering\plane_masters\plane_holder.dm"
 #include "code\_rendering\plane_masters\plane_master.dm"
+#include "code\_rendering\plane_masters\plane_render.dm"
 #include "code\controllers\communications.dm"
 #include "code\controllers\controller.dm"
 #include "code\controllers\failsafe.dm"

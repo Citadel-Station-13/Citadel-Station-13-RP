@@ -22,9 +22,6 @@
 
 //* KEEP THESE SORTED
 
-/atom/movable/screen/plane_master/clickcatcher
-	plane = CLICKCATCHER_PLANE
-
 /atom/movable/screen/plane_master/space
 	plane = SPACE_PLANE
 	alpha = 255
@@ -114,12 +111,11 @@
 
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
+	blend_mode = BLEND_ADD
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()
-	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
-	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
-	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
+	add_filter("plate", 1, layering_filter(render_source = DARKVISION_PLATE_RENDER_TARGET))
 
 #warn redo this shit
 

@@ -237,13 +237,12 @@ BLIND     // can't see anything
 	icon_state = "night"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2)
-	darkness_view = 7
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	body_cover_flags = EYES // Cit change
 	inactive_icon_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
-	hard_darkvision = 0
+	active_vision_modifier = /datum/vision/augmenting/nvg_lowtech
 
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"

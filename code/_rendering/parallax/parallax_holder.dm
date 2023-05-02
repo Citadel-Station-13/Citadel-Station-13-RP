@@ -171,7 +171,7 @@
 			. |= L
 		if(vis_holder)
 			. |= vis_holder
-		var/atom/movable/screen/plane_master/space/space_plane = planes.by_type(/atom/movable/screen/plane_master/space)
+		var/atom/movable/screen/plane_master/space/space_plane = planes.by_plane_type(/atom/movable/screen/plane_master/space)
 		space_plane.color = list(
 			0, 0, 0, 0,
 			0, 0, 0, 0,
@@ -180,7 +180,7 @@
 			0, 0, 0, 0,
 		)
 	else
-		var/atom/movable/screen/plane_master/space/space_plane = planes.by_type(/atom/movable/screen/plane_master/space)
+		var/atom/movable/screen/plane_master/space/space_plane = planes.by_plane_type(/atom/movable/screen/plane_master/space)
 		space_plane.color = initial(space_plane.color)
 	. |= planes.screens()
 	C.screen |= .
@@ -260,7 +260,7 @@
 		var/matrix/turn_transform = matrix()
 		turn_transform.Turn(turn)
 		scroll_turn = turn
-		animate(planes.by_type(/atom/movable/screen/plane_master/parallax), transform = turn_transform, time = time, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_END_NOW | ANIMATION_LINEAR_TRANSFORM)
+		animate(planes.by_plane_type(/atom/movable/screen/plane_master/parallax), transform = turn_transform, time = time, easing = QUAD_EASING | EASE_OUT, flags = ANIMATION_END_NOW | ANIMATION_LINEAR_TRANSFORM)
 	if(scroll_speed == 0)
 		// we're done
 		scrolling = FALSE
@@ -287,7 +287,7 @@
 	scroll_speed = 0
 	scrolling = FALSE
 	// reset turn
-	animate(planes.by_type(/atom/movable/screen/plane_master/parallax), transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
+	animate(planes.by_plane_type(/atom/movable/screen/plane_master/parallax), transform = matrix(), time = 0, flags = ANIMATION_END_NOW)
 	// reset objects
 	for(var/atom/movable/screen/parallax_layer/P in layers)
 		if(P.absolute)

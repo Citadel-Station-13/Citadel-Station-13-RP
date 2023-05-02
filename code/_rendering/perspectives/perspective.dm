@@ -420,13 +420,26 @@
 
 /datum/perspective/proc/update_vision()
 	update_see_in_dark()
+	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
+	if(!isnull(darkvision_plate))
+	var/atom/movable/screen/plane_master/darkvision_main = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
+	if(!isnull(darkvision_main))
+		if(darkvision_smart && !darkvision_main.has_filter("smart_mask"))
+			darkvision_main.add_filter(
+				"smart_mask",
+				5,
+				alpha_mask_filter(0, 0, render_source = LIGHTING_ALPHA_FORWARD_TARGET),
+			)
+		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
+			darkvision_main.remove_filter("smart_mask")
+
 	#warn impl
 
 /datum/perspective/proc/check_hard_darkvision()
 	return isnull(hard_darkvision)? 255 : hard_darkvision
 
 /datum/perspective/proc/update_hard_darkvision()
-	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_type(/atom/movable/screen/plane_master/lighting)
+	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
 	lighting_plane.alpha = check_hard_darkvision()
 
 /datum/perspective/proc/assert_vision_overlays()
@@ -496,14 +509,14 @@
 
 /datum/perspective/proc/show_plane(key, force)
 	assert_planes()
-	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
+	var/atom/movable/screen/plane_master/plane = planes.by_plane_type(key)
 	if(isnull(plane))
 		return
 	plane.alpha = plane.default_alpha
 
 /datum/perspective/proc/hide_plane(key, force)
 	assert_planes()
-	var/atom/movable/screen/plane_master/plane = planes.by_type(key)
+	var/atom/movable/screen/plane_master/plane = planes.by_plane_type(key)
 	if(isnull(plane))
 		return
 	if(!plane.default_invisible && !force)

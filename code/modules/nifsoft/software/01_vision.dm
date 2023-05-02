@@ -127,7 +127,7 @@
 	a_drain = 0.1
 	access = ACCESS_ENGINEERING_MAIN
 	tick_flags = NIF_ACTIVETICK
-	hard_darkvision = 0
+	vision_holder = /datum/vision/augmenting/legacy_ghetto_nvgs
 	vision_flags = (NIF_V_MESONS)
 	vision_flags_mob = SEE_TURFS
 	vision_flags_mob_remove = SEE_BLACKNESS
@@ -142,7 +142,7 @@
 	a_drain = 0.1
 	access = ACCESS_SCIENCE_MAIN
 	tick_flags = NIF_ACTIVETICK
-	hard_darkvision = 0
+	vision_holder = /datum/vision/augmenting/legacy_ghetto_nvgs
 	vision_flags = (NIF_V_MATERIAL)
 	vision_flags_mob = SEE_OBJS
 	vision_flags_mob_remove = SEE_BLACKNESS
@@ -158,7 +158,7 @@
 	illegal = TRUE
 	access = 999
 	tick_flags = NIF_ACTIVETICK
-	hard_darkvision = 0
+	vision_holder = /datum/vision/augmenting/legacy_ghetto_nvgs
 	planes_enabled = list(/atom/movable/screen/plane_master/cloaked)
 	vision_flags = (NIF_V_THERMALS)
 	vision_flags_mob = SEE_MOBS
@@ -176,8 +176,6 @@
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)
-	darkness_view = 7
+	vision_holder = /datum/vision/augmenting/nvg_lowtech
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
 	vision_exclusive = TRUE
-
-#warn vision holders lmao

@@ -113,8 +113,9 @@
 		if(planes_enabled)
 			nif.add_plane(planes_enabled)
 			nif.vis_update()
-		if(hard_darkvision)
-			nif.add_hard_darkvision(hard_darkvision)
+
+		if(!isnull(vision_holder))
+			nif.human.add_vision_modifier(vision_holder)
 
 		//If we have other NIFsoft we need to turn off
 		if(incompatible_with)
@@ -147,8 +148,9 @@
 		if(planes_enabled)
 			nif.del_plane(planes_enabled)
 			nif.vis_update()
-		if(hard_darkvision)
-			nif.del_hard_darkvision(hard_darkvision)
+
+		if(!isnull(vision_holder))
+			nif.human.remove_vision_modifier(vision_holder)
 
 		//Clear all our activation flags
 		nif.clear_flag(vision_flags,NIF_FLAGS_VISION)

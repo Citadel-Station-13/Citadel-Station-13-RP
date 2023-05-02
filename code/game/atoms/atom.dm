@@ -988,6 +988,9 @@
 	if(update)
 		update_filters()
 
+/atom/proc/has_filter(name)
+	return !isnull(filter_data?[name])
+
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null

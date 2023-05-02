@@ -148,6 +148,14 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 
 #warn impl all
 
+//? gear
+
+/datum/vision/augmenting/nvg_lowtech
+
+/datum/vision/augmenting/nvg_hightech
+
+#warn impl all
+
 //? misc
 
 /datum/vision/augmenting/legacy_ghetto_nvgs

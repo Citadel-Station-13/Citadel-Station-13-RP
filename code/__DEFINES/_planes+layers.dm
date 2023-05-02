@@ -71,10 +71,20 @@
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
 /**
+ *! -- Render Holder Plane
+ *? Screen objects that act as an intermediate for render targets.
+ *? Everything on this plane should use * to not be rendered.
+ *? This plane has NO plane master.
+ */
+#define RENDER_INTERMEDIATE_PLANE -99
+
+
+/**
  *! -- Click Catcher Plane
  *? For the click catcher. It catches clicks... Who would've guessed.
+ *? This plane has NO plane master.
  */
-#define CLICKCATCHER_PLANE -99
+#define CLICKCATCHER_PLANE -98
 
 
 /**
@@ -215,6 +225,7 @@
 #define LIGHTING_PLANE 10
 #define LIGHTING_LAYER_MAIN 1
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
+#define LIGHTING_ALPHA_FORWARD_TARGET "*LIGHTING_PLANE_ALPHA"
 
 /**
  *! -- Soft Darkvision Render --
@@ -226,6 +237,7 @@
 #define DARKVISION_PLATE_LAYER_MOBS 3
 #define DARKVISION_PLATE_LAYER_MAIN 4
 #define DARKVISION_PLATE_RENDER_TARGET "*DARKVISION_PLATE_PLANE"
+#define DARKVISION_PLATE_FORWARD_TARGET "*DARKVISION_PLATE_PROCESSED"
 
 /**
  *! -- Soft Darkvision Plane --

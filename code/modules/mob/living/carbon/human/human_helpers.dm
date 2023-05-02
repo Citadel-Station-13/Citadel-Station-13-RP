@@ -169,7 +169,6 @@
 	 */
 	var/list/slots = list(SLOT_ID_GLASSES,SLOT_ID_HEAD)
 	var/list/compiled_vis = list()
-	var/hard_darkvision = 255
 
 	for(var/slot in slots)
 		// Change this type if you move the vision stuff to item or something.
@@ -188,7 +187,6 @@
 	// NIF Support.
 	if(nif)
 		compiled_vis |= nif.planes_visible()
-		hard_darkvision = min(hard_darkvision, isnull(nif.hard_darkvision)? 255 : nif.hard_darkvision)
 
 	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
 	for(var/vis in compiled_vis)

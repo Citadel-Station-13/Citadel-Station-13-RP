@@ -537,6 +537,27 @@ SUBSYSTEM_DEF(zmimic)
 
 	// Don't fixup the root object's plane.
 	if (depth > 0)
+		// * silicons edit *
+		// on citrp, everything above BYOND_PLANE (0) are vfx of some kind, like
+		// lighting and whatever.
+		// technically, ghosts are too, but, while it would be funny to see orbiting ghosts  on the floor
+		// above, it's not feasible to do this right now.
+		// everything that's meant to be abstract / non zm *below* plane 0 is not in the world map,
+		// so it won't be picked up by zm anyways.
+		// furthermore, there are things on atoms that go above 0, but they're really just not needed
+		// to be mirrored. things like HUD elements / whatever.
+		// if we need this later, we can always edit this.
+		if(appearance:plane >= BYOND_PLANE)
+			obliterate = TRUE
+		else
+			switch(appearance:plane)
+				if(TURF_PLANE, FLOAT_PLANE)
+					// fine
+				else
+					plane_needs_fix = TRUE
+
+		//** original code **//
+		/*
 		switch (appearance:plane)
 			if (TURF_PLANE, FLOAT_PLANE)
 				// fine
@@ -544,6 +565,7 @@ SUBSYSTEM_DEF(zmimic)
 				obliterate = TRUE
 			else
 				plane_needs_fix = TRUE
+		*/
 
 	// Scan & fix overlays
 	var/list/fixed_overlays
