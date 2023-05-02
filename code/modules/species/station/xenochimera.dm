@@ -936,7 +936,7 @@
 	var/text = null
 
 	for(var/datum/mind/possible_target in SSticker.minds)	//not us, on the station and not a synthetic
-		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target)) && !possible_target.current.isSynthetic())
+		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target.current)) && !possible_target.current.isSynthetic())
 			LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
@@ -965,8 +965,8 @@
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)	//thing to thing communication
-				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: <b>[text]</b>"))
+				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: " + SPAN_NOTICE("<b>[text]</b>")))
 				return
-			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
+			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: ") + SPAN_NOTICE("<b>[text]</b>"))
 			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 			H.drip(1)
