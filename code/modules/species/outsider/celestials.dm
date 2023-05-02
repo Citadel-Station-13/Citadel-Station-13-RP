@@ -157,4 +157,3 @@
 	name = "Toggle Advanced Flight"
 	action_state = "flight_enhanced"
 	windup = 0
-	slowdown = 0	//Aurils don't get any extra slowdown

@@ -45,17 +45,16 @@
 
 /datum/ability/species/toggle_agility/on_enable()
 	. = ..()
-	H.visible_message(
+	owner.visible_message(
 	SPAN_NOTICE("[owner] seems to gain a lithe, agile gait."),
 	SPAN_NOTICE("You focus on your movement. You're able to walk over tables and similar easily.")
 	)
-	H.pass_flags |= ATOM_PASS_TABLE
+	owner.pass_flags |= ATOM_PASS_TABLE
 
 /datum/ability/species/toggle_agility/on_disable()
 	. = ..()
-	H.visible_message(
+	owner.visible_message(
 	SPAN_NOTICE("[owner] seems to relax their stance, no longer seeming as agile."),
 	SPAN_NOTICE("Your legs tire. Tables are an obstacle once more.")
 	)
-	H.pass_flags &= ~ATOM_PASS_TABLE
-	active = FALSE
+	owner.pass_flags &= ~ATOM_PASS_TABLE
