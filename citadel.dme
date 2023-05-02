@@ -4391,6 +4391,7 @@
 #include "code\modules\stockmarket\logs.dm"
 #include "code\modules\stockmarket\stockmarket.dm"
 #include "code\modules\stockmarket\stocks.dm"
+#include "code\modules\supply\bounty.dm"
 #include "code\modules\supply\export.dm"
 #include "code\modules\supply\exports.dm"
 #include "code\modules\supply\handler.dm"
