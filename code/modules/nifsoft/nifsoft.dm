@@ -267,6 +267,7 @@
 	if(!laws)
 		to_chat(user,"<span class='warning'>You haven't set any laws yet. Use the disk in-hand first.</span>")
 		return
+	return ..()
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)
 	. = ..()
