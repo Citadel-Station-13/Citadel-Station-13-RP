@@ -24,7 +24,6 @@ BLIND     // can't see anything
 	var/inactive_icon_state = "degoggles"
 	var/active = 1
 	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/atom/movable/screen/overlay = null
 	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
@@ -76,18 +75,10 @@ BLIND     // can't see anything
 	icon_state = "glasses"
 	body_cover_flags = EYES
 
-/obj/item/clothing/glasses/tinted/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.material
-
 /obj/item/clothing/glasses/tinted/color/yellow
 	name = "yellow tinted glasses"
 	desc = "A pair of glasses with a yellow tint on the inside to change your whole worldview."
 	icon_state = "glasses_yellow"
-
-/obj/item/clothing/glasses/tinted/color/yellow/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.yellow
 
 /obj/item/clothing/glasses/tinted/color/blue
 	name = "blue tinted glasses"
@@ -95,19 +86,11 @@ BLIND     // can't see anything
 	icon_state = "glasses_blue"
 	item_state = "glasses_blue"
 
-/obj/item/clothing/glasses/tinted/color/blue/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.blue
-
 /obj/item/clothing/glasses/tinted/color/pink
 	name = "pink tinted glasses"
 	desc = "A pair of glasses with a pink tint on the inside to change your whole worldview."
 	icon_state = "glasses_pink"
 	item_state = "glasses_pink"
-
-/obj/item/clothing/glasses/tinted/color/pink/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.pink
 
 /obj/item/clothing/glasses/tinted/color/beige
 	name = "beige tinted glasses"
@@ -115,19 +98,11 @@ BLIND     // can't see anything
 	icon_state = "glasses_beige"
 	item_state = "glasses_beige"
 
-/obj/item/clothing/glasses/tinted/color/beige/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.beige
-
 /obj/item/clothing/glasses/tinted/color/orange
 	name = "orange tinted glasses"
 	desc = "A pair of glasses with a orange tint on the inside to change your whole worldview."
 	icon_state = "glasses_orange"
 	item_state = "glasses_orange"
-
-/obj/item/clothing/glasses/tinted/color/orange/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.orange
 
 /obj/item/clothing/glasses/tinted/color/green
 	name = "green tinted glasses"
@@ -135,29 +110,17 @@ BLIND     // can't see anything
 	icon_state = "glasses_green"
 	item_state = "glasses_green"
 
-/obj/item/clothing/glasses/tinted/color/green/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.nvg
-
 /obj/item/clothing/glasses/tinted/color/red
 	name = "red tinted glasses"
 	desc = "A pair of glasses with a red tint on the inside to change your whole worldview."
 	icon_state = "glasses_red"
 	item_state = "glasses_red"
 
-/obj/item/clothing/glasses/tinted/color/red/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.thermal
-
 /obj/item/clothing/glasses/tinted/color/purple
 	name = "purple tinted glasses"
 	desc = "A pair of glasses with a purple tint on the inside to change your whole worldview."
 	icon_state = "glasses_purple"
 	item_state = "glasses_purple"
-
-/obj/item/clothing/glasses/tinted/color/purple/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.science
 
 /*---The rest of the normal stuff---*/
 /obj/item/clothing/glasses/meson
@@ -172,10 +135,6 @@ BLIND     // can't see anything
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
 	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
-
-/obj/item/clothing/glasses/meson/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.meson
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"
@@ -219,10 +178,6 @@ BLIND     // can't see anything
 	body_cover_flags = EYES
 	clothing_flags = SCAN_REAGENTS
 
-/obj/item/clothing/glasses/science/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.science
-
 /obj/item/clothing/glasses/goggles
 	name = "goggles"
 	desc = "Just some plain old goggles."
@@ -248,10 +203,6 @@ BLIND     // can't see anything
 	name = "Alien Optics"
 	species_restricted = list(SPECIES_VOX)
 	atom_flags = PHORONGUARD
-
-/obj/item/clothing/glasses/night/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.nvg
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
@@ -320,10 +271,6 @@ BLIND     // can't see anything
 	body_cover_flags = EYES //cit change
 	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
-/obj/item/clothing/glasses/material/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.material
-
 /obj/item/clothing/glasses/material/prescription
 	name = "prescription optical material scanner"
 	prescription = 1
@@ -342,10 +289,6 @@ BLIND     // can't see anything
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
 	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
-
-/obj/item/clothing/glasses/graviton/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.material
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
@@ -634,10 +577,6 @@ BLIND     // can't see anything
 				spawn(100)
 					M.disabilities &= ~DISABILITY_NEARSIGHTED
 	..()
-
-/obj/item/clothing/glasses/thermal/Initialize(mapload)
-	. = ..()
-	overlay = GLOB.global_hud.thermal
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
 	name = "optical meson scanner"

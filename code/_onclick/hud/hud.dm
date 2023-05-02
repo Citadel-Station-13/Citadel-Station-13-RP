@@ -15,28 +15,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/atom/movable/screen/whitense
 	var/list/darkMask
 	var/atom/movable/screen/centermarker
-	var/atom/movable/screen/nvg
-	var/atom/movable/screen/thermal
-	var/atom/movable/screen/meson
-	var/atom/movable/screen/science
-	var/atom/movable/screen/material
-	var/atom/movable/screen/yellow
-	var/atom/movable/screen/blue
-	var/atom/movable/screen/pink
-	var/atom/movable/screen/beige
-	var/atom/movable/screen/orange
 	var/atom/movable/screen/holomap
-
-/datum/global_hud/proc/setup_overlay(var/icon_state)
-	var/atom/movable/screen/screen = new /atom/movable/screen()
-	screen.screen_loc = "CENTER-7,CENTER-7"
-	screen.icon = 'icons/obj/hud_full.dmi'
-	screen.icon_state = icon_state
-	screen.layer = HUD_LAYER_BASE
-	screen.plane = FULLSCREEN_PLANE
-	screen.mouse_opacity = 0
-
-	return screen
 
 /atom/movable/screen/global_screen
 	screen_loc = ui_entire_screen
@@ -60,17 +39,6 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	centermarker.icon = 'icons/mob/screen1.dmi'
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
-
-	nvg = setup_overlay("nvg_hud")
-	thermal = setup_overlay("thermal_hud")
-	meson = setup_overlay("meson_hud")
-	science = setup_overlay("science_hud")
-	material = setup_overlay("material_hud")
-	yellow = setup_overlay("yellow_hud")
-	blue = setup_overlay("blue_hud")
-	pink = setup_overlay("pink_hud")
-	beige = setup_overlay("beige_hud")
-	orange = setup_overlay("orange_hud")
 
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not
