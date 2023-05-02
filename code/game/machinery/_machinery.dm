@@ -366,6 +366,9 @@
 			var/obj/machinery/power/apc/temp_apc = temp_area.get_apc()
 
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
+				temp_apc.toggle_breaker()
+
+			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
 		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
