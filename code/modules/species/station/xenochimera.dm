@@ -114,6 +114,7 @@
 		/datum/ability/species/xenochimera/hatch,
 		/datum/ability/species/xenochimera/commune,
 		/datum/ability/species/xenochimera/dissonant_shriek,
+		/datum/ability/species/toggle_flight,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
@@ -142,9 +143,6 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
-	)
-	abilities = list(
-		/datum/ability/species/toggle_flight
 	)
 	var/has_feral_abilities = FALSE
 
