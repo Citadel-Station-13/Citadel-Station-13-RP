@@ -158,7 +158,7 @@
 		else
 			wanted = lying
 	// allow buckled override
-	var/overriding = buckled?.buckle_lying()
+	var/overriding = buckled?.buckle_lying(src)
 	if(!isnull(overriding))
 		wanted = overriding
 	// check if we need to update
