@@ -20,3 +20,10 @@
 #define SUP_ORDER_APPROVED  "Approved"
 #define SUP_ORDER_DENIED    "Denied"
 #define SUP_ORDER_SHIPPED   "Shipped"
+
+//? supply order status
+#define SUPPLY_ORDER_ERRORED 0
+#define SUPPLY_ORDER_REQUESTED 1
+#define SUPPLY_ORDER_APPROVED 2
+#define SUPPLY_ORDER_DENIED 3
+#define SUPPLY_ORDER_SHIPPED 4

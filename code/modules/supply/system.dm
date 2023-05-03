@@ -21,6 +21,12 @@
 	/// price of exports as multiplier - 2 = exports sell twice as high
 	var/mult_exports = 1
 
+	/// pending orders
+	var/list/datum/supply_order/pending
+	/// accepted orders
+	var/list/datum/supply_order/accepted
+
+
 /datum/supply_system/New(id, datum/supply_handler/handler)
 	#warn impl
 
