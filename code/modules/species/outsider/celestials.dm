@@ -98,7 +98,7 @@
 	max_additional_languages = 5
 
 	abilities = list(
-		/datum/ability/species/toggle_flight
+		/datum/ability/species/toggle_flight/auril,
 	)
 
 /datum/species/dremachir

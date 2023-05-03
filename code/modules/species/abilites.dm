@@ -5,10 +5,11 @@
 //Toggle Flight Ability
 /datum/ability/species/toggle_flight
 	name = "Toggle Flight"
-	desc = "Flying allows you to cross various hazards and pits safely, while being able to ascend, and descend. Equipment slows you down more while in-flight."
-	cooldown = 3 SECONDS
-	windup = 1 SECOND
+	desc = "Flying allows you to cross various hazards and pits safely, while being able to ascend, and descend."
+	cooldown = 0
+	windup = 0.5 SECONDS
 	interact_type = ABILITY_INTERACT_TOGGLE
+	windup_requires_still = FALSE
 	action_state = "flight"
 	always_bind = TRUE
 
