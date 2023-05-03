@@ -37,7 +37,6 @@
 					as an Officer, such as if they need to make an arrest or handle a station threat. When functioning as part of a larger team, Cadets are \
 					often meant to observe and assist rather than take initiative."
 
-
 /datum/prototype/alt_title/security_officer/guard
 	title = "Security Guard"
 
