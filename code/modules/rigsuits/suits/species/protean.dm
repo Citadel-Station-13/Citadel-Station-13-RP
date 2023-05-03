@@ -20,6 +20,11 @@
 	glove_type = /obj/item/clothing/gloves/gauntlets/rig/protean
 
 /datum/armor/rig/protean
+	melee = 0.0
+	bullet = 0.0
+	laser = 0.0
+	energy = 0.0
+	bomb = 0.0
 	bio = 1.0
 	rad = 1.0
 
