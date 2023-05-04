@@ -8,34 +8,93 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/structure/ashlander/forge
-	name = "magma forge"
-	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
+/obj/structure/ashlander/production
+	name = "abstract machine"
+	desc = "You shouldn't be able to see this. Contact an admin."
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "forge"
+	var/list/ore_mapping = list()
+	var/default_message = "..."
+	var/list/insert_msg_override = list()
 
-/obj/structure/ashlander/forge/attackby(obj/item/O, mob/user)
+/obj/structure/ashlander/production/attackby(var/obj/item/I, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/ore/lead))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It begins to melt in the crucible.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/lead(T)
-	if(istype(O, /obj/item/ore/copper))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It begins to melt in the crucible.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/copper(T)
-	if(istype(O, /obj/item/ore/iron))
-		to_chat(user, "<span class='danger'>You drop the [O] into the [src]! It starts feed through the extruder.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/rods(T)
+	var/msg = insert_msg_override[I.type] || default_message
+	if(istype(I, /obj/item/ore))
+		to_chat(user, "<span class='danger'>You pour the [I] into the [src]! [msg]</span>")
+		attempt_consume()
+	if(istype(I, /obj/item/storage/bag))
+		var/obj/item/storage/bag/B = I
+		var/inserted = 0
+		for(I in B)
+			if(attempt_consume(I, user))
+				inserted++
+		if(inserted)
+			user.action_feedback(SPAN_NOTICE("You insert [inserted] units of material from [B] into [src]. [msg]"), src)
+		else
+			user.action_feedback(SPAN_WARNING("You fail to insert anything from [B] into [src]."), src)
+	else if(attempt_consume(I, user))
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
+
+/**
+ * Attempts to consume a piece of ore
+ *
+ * @params
+ * * inserting - what they're trying to put into us
+ * * user - optional: the user doing it
+ *
+ * @return TRUE / FALSE based on success / failure.
+ */
+
+/obj/structure/ashlander/production/proc/attempt_consume(obj/item/ore/O, mob/user)
+	if (!istype(O))
+		return FALSE
+
+    /// Ensure the ore is able to be put in if it's being held / in inventory
+	if(!isnull(user) && user.is_holding(O) && !user.transfer_item_to_loc(O, src))
+		user.action_feedback(SPAN_WARNING("[O] is stuck to your hand!"), src)
+		return FALSE
+
+	for (var/ty in ore_mapping)
+		if (istype(O, ty))
+			var/target_type = ore_mapping[ty]
+			new target_type(get_turf(src))
+			qdel(O)
+			return TRUE
+
+	return FALSE
+
+/obj/structure/ashlander/production/forge
+	name = "magma forge"
+	desc = "A primitive forge of Scorian design. It is used primarily to convert iron and lead into more workable shapes."
+	default_message = "It begins to melt in the crucible."
+	ore_mapping = list(
+		/obj/item/ore/lead = /obj/item/stack/material/lead,
+        /obj/item/ore/copper = /obj/item/stack/material/copper,
+		/obj/item/ore/iron = /obj/item/stack/rods,
+		/obj/item/ore/glass = /obj/item/ore/slag
+    )
+	insert_msg_override = list(
+		/obj/item/ore/iron = "It slowly feeds through the extruder."
+	)
+
+/obj/structure/ashlander/production/brickmaker
+	name = "brick press"
+	desc = "Scori have been observed using this device to compress sand and clay into hardened bricks."
+	icon_state = "brickmaker"
+	default_message = "It is slowly compacted by the press."
+	ore_mapping = list(
+		/obj/item/ore/glass = /obj/item/stack/material/sandstone
+	)
+
+/obj/structure/ashlander/production/brickmaker/attackby(obj/item/O, mob/user)
+	. = ..()
 	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour [O] into the [src]! It starts to melt in the crucible.</span>")
+		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! After some work you compress it into a sturdy brick.</span>")
 		qdel(O)
 		var/turf/T = get_turf(src)
-		new /obj/item/ore/slag(T)
+		new /obj/item/stack/material/sandstone(T)
 
 //This is a child of the Hydroponics seed extractor, and was originally in that file. But I've moved it here since it's an Ashlander "machine".
 /obj/machinery/seed_extractor/press
@@ -44,20 +103,6 @@
 	icon = 'icons/obj/lavaland.dmi'
 	icon_state = "press"
 	use_power = USE_POWER_OFF
-
-/obj/structure/ashlander/brickmaker
-	name = "brick press"
-	desc = "Scorians have been observed using this device to compress sand and clay into hardened bricks."
-	icon = 'icons/obj/lavaland.dmi'
-	icon_state = "brickmaker"
-
-/obj/structure/ashlander/brickmaker/attackby(obj/item/O, mob/user)
-	. = ..()
-	if(istype(O, /obj/item/ore/glass))
-		to_chat(user, "<span class='danger'>You pour the [O] into the [src]! After some work you compress it into a sturdy brick.</span>")
-		qdel(O)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/material/sandstone(T)
 
 //This is a child of the juicer/all-in-one grinder/reagent grinder. Just for some fun alchemy.
 
