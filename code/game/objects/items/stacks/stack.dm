@@ -50,15 +50,6 @@
 				merge(S)
 	update_icon()
 
-/obj/item/stack/proc/safety_check()
-	if(amount > max_amount)
-		to_chat(usr, "The [name] spills on the [get_area_name(src)]!")
-		amount -= max_amount
-		var/obj/item/stack/newstack = new type(get_turf(usr))
-		newstack.amount = max_amount
-		return TRUE
-	return FALSE
-
 /obj/item/stack/Destroy()
 	if (src && usr && usr.machine == src)
 		usr << browse(null, "window=stack")
@@ -87,8 +78,6 @@
 /obj/item/stack/attack_self(mob/user)
 	. = ..()
 	if(.)
-		return
-	if(safety_check())
 		return
 	list_recipes(user)
 
@@ -365,8 +354,6 @@
 			break
 
 /obj/item/stack/attack_hand(mob/user, list/params)
-	if(safety_check())
-		return
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else

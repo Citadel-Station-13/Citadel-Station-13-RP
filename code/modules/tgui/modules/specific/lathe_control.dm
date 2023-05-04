@@ -15,11 +15,17 @@
 /datum/tgui_module/lathe_control/data(mob/user, ...)
 	. = ..()
 	var/obj/machinery/lathe/lathe = host
+	if(isnull(lathe))
+		return
 	.["printing"] = lathe.queue_head_design()?.design_id
+	.["progress"] = lathe.progress
 
 /datum/tgui_module/lathe_control/static_data(mob/user, ...)
 	. = ..()
 	var/obj/machinery/lathe/lathe = host
+	if(isnull(lathe))
+		return
+	.["latheName"] = lathe.name
 	.["materialsContext"] = SSmaterials.tgui_materials_context()
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier

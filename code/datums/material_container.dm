@@ -70,6 +70,7 @@
 	var/safety = 50
 	. = 0
 	var/obj/item/stack/stack_type = material.stack_type
+	var/stack_size = initial(stack_type.max_amount)
 	if(!stack_type)
 		return 0
 	while(dumping > 0)

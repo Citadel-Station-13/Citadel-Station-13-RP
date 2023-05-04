@@ -118,8 +118,19 @@
  * * where - where to put the finished product
  * * fabricator - the lathe printing the product
  */
-/datum/design/proc/print(atom/where, list/material_parts)
+/datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, efficiency_multiplier = 1)
+	if(is_stack)
+		. = new build_path(where, amount)
+	for(var/i in 1 to min(amount, 50))
+		return new build_path(where, amount)
 	return new build_path(where)
+	#warn stacks
+
+/datum/design/proc/on_print(atom/created, atom/where, list/material_parts, list/ingredient_parts, list/reagent_parts, efficiency_multiplier = 1)
+	if(isobj(created))
+		var/obj/O = created
+		var/list/
+
 
 /**
  * called when a lathe prints a design, instead of print()
@@ -129,8 +140,8 @@
  * * fabricator - the lathe printing the product
  * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
-/datum/design/proc/lathe_print(atom/where, list/material_parts, obj/machinery/lathe/fabricator)
-	return print(where)
+/datum/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, efficiency = 1)
+	return print(where, amount, material_parts, ingredient_parts, reagent_parts, efficiency_multiplier)
 
 //? legacy below
 

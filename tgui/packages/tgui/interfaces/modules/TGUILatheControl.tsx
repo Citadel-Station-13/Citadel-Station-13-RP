@@ -1,6 +1,7 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, useModule } from "../../backend";
 import { Modular } from "../../layouts/Modular";
+import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable } from "../common/Ingredients";
 import { MaterialsContext } from "../common/Materials";
@@ -14,6 +15,7 @@ interface TGUILatheControlData extends ModuleData {
   designs: Record<string, Design>;
   queueActive: BooleanLike;
   queue: Array<LatheQueueEntry>;
+  latheName: string;
   speedMultiplier: number;
   powerMultiplier: number;
   efficiencyMultiplier: number;
@@ -27,8 +29,12 @@ interface TGUILatheControlData extends ModuleData {
 export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   const { data, act } = useModule<TGUILatheControlData>(context);
 
+  const windowProps: WindowProps = {
+    title: data.latheName,
+  };
+
   return (
-    <Modular>
+    <Modular window={windowProps}>
       test
     </Modular>
   );
@@ -42,7 +48,8 @@ interface LatheQueueEntry {
 }
 
 interface LatheQueuedProps {
-  entry: LatheQueueEntry
+  entry: LatheQueueEntry;
+  design: Design;
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {

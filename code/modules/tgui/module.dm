@@ -12,6 +12,9 @@
  *
  * todo: there's no way to push custom data at the moment, which makes modules not too advantageous in certain cases.
  *
+ * todo: /datum/tgui_module/push_ui_data() should route to host automatically if host registers modules.
+ * todo: rework module registration system. /datum procs: register_ui_module(), unregister_ui_module() hooked to model del, for automatic inclusion in ui.
+ *
  * warning: the tgui module system is inherently not cheap to run.
  * you should not expect including too many modules to bode well for performance.
  * if you want fast modules, please, design your own modules, and minimize per-tick data sent.
