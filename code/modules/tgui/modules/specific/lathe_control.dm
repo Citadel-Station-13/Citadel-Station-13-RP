@@ -17,7 +17,7 @@
 	var/obj/machinery/lathe/lathe = host
 	if(isnull(lathe))
 		return
-	.["printing"] = lathe.queue_head_design()?.design_id
+	.["printing"] = lathe.queue_head_design()?.identifier
 	.["progress"] = lathe.progress
 
 /datum/tgui_module/lathe_control/static_data(mob/user, ...)
@@ -41,20 +41,32 @@
 	var/obj/machinery/lathe/lathe = host
 	switch(action)
 		if("enqueue")
+			var/id = params["id"]
 			var/amount = text2num(params["amount"])
 			var/immediate = text2num(params["start"])
 			var/list/material_parts = params["materials"]
 			var/list/item_parts = params["items"]
-			#warn impl
+			lathe.enqueue(SSresearch.fetch_design(id), amount, material_parts, item_parts, immediate)
 			return TRUE
 		if("dequeue")
 			var/index = text2num(params["index"])
-			#warn impl
+			var/datum/lathe_queue_entry/entry = SAFEINDEXACCESS(lathe.queue, index)
+			if(isnull(entry))
+				return TRUE
+			lathe.queue.Cut(index, index + 1)
 			return TRUE
 		if("modqueue")
 			var/index = text2num(params["index"])
 			var/new_amount = text2num(params["amount"])
+			var/datum/lathe_queue_entry/entry = SAFEINDEXACCESS(lathe.queue, index)
+			var/datum/design/D = SSresearch.fetch_design(entry.design_id)
+			if(isnull(entry))
+				return
+			if(isnull(new_amount))
+				return
+			entry.amount = clamp(new_amount, 0, D.is_stack? lathe.queue_max_entry_stack : lathe.queue_max_entry)
 			#warn impl
+			ui_controller?.ui_design_update()
 			return TRUE
 		if("start")
 			lathe.start_printing()
@@ -67,7 +79,7 @@
 			var/amt = params["amount"]
 			if(!amt || isnull(id))
 				return
-			lathe.stored_materials.eject_sheets(id, amt)
+			lathe.eject_sheets(id, amt)
 			ui_materials_update()
 			return TRUE
 		if("disposeReagent")
@@ -131,6 +143,7 @@
 
 /datum/tgui_module/lathe_control/proc/ui_queue_update()
 	var/obj/machinery/lathe/lathe = host
+	push_ui_data(data = list("queue" = ui_queue_data()))
 	#warn impl
 
 /datum/tgui_module/lathe_control/proc/ui_queue_data()

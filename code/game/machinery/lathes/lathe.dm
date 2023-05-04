@@ -64,8 +64,10 @@
 
 	/// max queue length in items
 	var/queue_max = 20
+	/// max amount per queue entry for stacks
+	var/queue_max_entry_stack = 200
 	/// max amount per queue entry
-	var/queue_max_entry = 200
+	var/queue_max_entry = 10
 	/// maximum items we can print per tick - for stacks this is the item itself, not the stack amount.
 	var/max_items_per_tick = 4
 	/// queued of /datum/lathe_queue_entry's. 1 is top of queue.
@@ -312,6 +314,8 @@
 		return "Out of materials"
 
 /obj/machinery/lathe/proc/do_print(datum/design/instance, amount, list/material_parts, list/ingredient_parts)
+	if(!amount)
+		return
 	#warn impl amount
 	var/list/materials_used = instance.materials.Copy()
 	for(var/key in material_parts)
@@ -340,7 +344,7 @@
 		var/printed = min(head.amount, round(D.work / progress), has_resources_for(D, head.material_parts, head.ingredient_parts))
 		progress -= printed * D.work
 		head.amount -= printed
-		do_print(D, head.amount, head.material_parts, head.ingredient_parts)
+		do_print(D, printed, head.material_parts, head.ingredient_parts)
 		if(!head.amount)
 			queue.Cut(1, 2)
 			head = queue[1]
@@ -362,7 +366,7 @@
 	var/datum/lathe_queue_entry/head = length(queue)? queue[1] : null
 	if(isnull(head))
 		return FALSE
-	. = round(can_print(D, head.material_parts, head.ingredient_parts) > 0)
+	. = round(can_print(SSresearch.fetch_design(head.design_id), head.material_parts, head.ingredient_parts) > 0)
 	if(!.)
 		atom_say("Unable to continue printing - [why_cant_print(D)].")
 
@@ -412,6 +416,7 @@
 	LAZYINITLIST(queue)
 	queue += inserting
 	reconsider_queue(start_immediately)
+	ui_controller?.ui_queue_update()
 	return TRUE
 
 /**
@@ -423,6 +428,7 @@
 	else
 		return FALSE
 	reconsider_queue()
+	ui_controller?.ui_queue_update()
 	return TRUE
 
 /obj/machinery/lathe/proc/clear_queue()

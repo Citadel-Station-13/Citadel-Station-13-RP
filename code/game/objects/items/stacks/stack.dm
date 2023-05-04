@@ -40,7 +40,6 @@
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
 		amount = new_amount
-	safety_check()
 	if(!stacktype)
 		stacktype = type
 	. = ..()
