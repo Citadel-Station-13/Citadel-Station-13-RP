@@ -114,6 +114,7 @@
 		/datum/ability/species/xenochimera/hatch,
 		/datum/ability/species/xenochimera/commune,
 		/datum/ability/species/xenochimera/dissonant_shriek,
+		/datum/ability/species/toggle_flight,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
@@ -124,8 +125,6 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/eat_trash,
 		/mob/living/proc/glow_toggle,
@@ -145,7 +144,6 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/carbon/human/proc/shapeshifter_select_shape,
 	)
-
 	var/has_feral_abilities = FALSE
 
 /datum/species/shapeshifter/xenochimera/handle_environment_special(mob/living/carbon/human/H)
@@ -925,6 +923,7 @@
 	name = "Commune"
 	desc = "Send a telepathic message to an unlucky recipient."
 	action_state = "gen_project"
+	nutrition_enforced = FALSE
 	nutrition_cost_minimum = 20
 	nutrition_cost_proportional = 5
 	cooldown = 20 SECONDS
@@ -937,7 +936,7 @@
 	var/text = null
 
 	for(var/datum/mind/possible_target in SSticker.minds)	//not us, on the station and not a synthetic
-		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target)) && !possible_target.current.isSynthetic())
+		if (istype(possible_target.current, /mob/living) && possible_target != owner.mind && isStationLevel(get_z(possible_target.current)) && !possible_target.current.isSynthetic())
 			LAZYADD(targets,possible_target.current)
 
 	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
@@ -966,8 +965,8 @@
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.get_species_id() == SPECIES_ID_XENOCHIMERA)	//thing to thing communication
-				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: <b>[text]</b>"))
+				to_chat(H, SPAN_DANGER("You feel an alien, yet familiar thought seep into your collective consciousness: " + SPAN_NOTICE("<b>[text]</b>")))
 				return
-			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
+			to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: ") + SPAN_NOTICE("<b>[text]</b>"))
 			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
 			H.drip(1)

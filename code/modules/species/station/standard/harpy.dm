@@ -13,11 +13,11 @@
 	name_language = null
 	color_mult = 1
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair
 		)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	max_age = 80
 
 	base_color = "#EECEB3"
