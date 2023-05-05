@@ -363,6 +363,7 @@
 	if(electrocute_mob(user, get_area(src), src, 0.7))
 		var/area/temp_area = get_area(src)
 		if(temp_area)
+			var/obj/machinery/power/apc/temp_apc = temp_area.get_apc()
 			if(temp_apc && temp_apc.terminal && temp_apc.terminal.powernet)
 				temp_apc.terminal.powernet.trigger_warning()
 				temp_apc.toggle_breaker()
