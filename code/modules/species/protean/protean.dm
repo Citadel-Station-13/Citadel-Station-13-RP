@@ -106,8 +106,6 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
@@ -116,7 +114,9 @@
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
 	species_statpanel = TRUE
 	var/global/list/protean_abilities = list()
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	var/monochromatic = FALSE //IGNORE ME
 
 /datum/species/protean/New()

@@ -140,7 +140,6 @@
 	desc = "Pieces of a goliath's rocky hide, these might be able to make your suit a bit more durable to attack from the local fauna."
 	icon_state = "sheet-goliath_hide"
 	singular_name = "hide plate"
-	max_amount = 6
 	item_flags = ITEM_NOBLUDGEON
 	w_class = WEIGHT_CLASS_NORMAL
 	layer = MOB_LAYER
