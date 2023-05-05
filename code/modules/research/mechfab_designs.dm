@@ -623,7 +623,7 @@
 
 /datum/design/item/mecha/weapon/rigged_grenade_launcher
 	name = "Jury-Rigged Pneumatic Flashlauncher"
-	id = "mech_grenade_launcher-rig"
+	id = "mech_grenade_launcher-hardsuit"
 	req_tech = list(TECH_COMBAT = 3)
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/rigged
 	materials = list(MAT_STEEL = 5000, MAT_GOLD = 2000, MAT_PLASTIC = 2000)

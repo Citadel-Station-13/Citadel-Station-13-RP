@@ -156,10 +156,10 @@
 /obj/item/mmi/relaymove(var/mob/user, var/direction)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/rig/rig = src.get_rig()
-	if(rig)
-		if(istype(rig,/obj/item/rig))
-			rig.forced_move(direction, user)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(hardsuit)
+		if(istype(hardsuit,/obj/item/hardsuit))
+			hardsuit.forced_move(direction, user)
 
 /obj/item/mmi/Destroy()
 	if(isrobot(loc))

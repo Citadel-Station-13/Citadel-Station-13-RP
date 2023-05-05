@@ -566,7 +566,7 @@ var/global/list/all_objectives = list()
 		return FALSE
 
 	var/current_amount
-	var/obj/item/rig/S
+	var/obj/item/hardsuit/S
 	if(istype(owner.current,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner.current
 		S = H.back
@@ -574,7 +574,7 @@ var/global/list/all_objectives = list()
 	if(!istype(S) || !S.installed_modules || !S.installed_modules.len)
 		return FALSE
 
-	var/obj/item/rig_module/datajack/stolen_data = locate() in S.installed_modules
+	var/obj/item/hardsuit_module/datajack/stolen_data = locate() in S.installed_modules
 	if(!istype(stolen_data))
 		return FALSE
 
@@ -594,7 +594,7 @@ var/global/list/all_objectives = list()
 
 /datum/objective/capture/check_completion()//Basically runs through all the mobs in the area to determine how much they are worth.
 	CRASH("This function wants to use a rarety value for the mobs, which was removed.")
-	
+
 /datum/objective/absorb/proc/gen_amount_goal(lowbound = 4, highbound = 6)
 	target_amount = rand (lowbound,highbound)
 	if (SSticker)

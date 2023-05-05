@@ -458,15 +458,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 
 /*
-/obj/item/storage/backpack/rig/Initialize(mapload)
+/obj/item/storage/backpack/hardsuit/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/storage/backpack/rig/process(mob/living/M)
+/obj/item/storage/backpack/hardsuit/process(mob/living/M)
 	if(M.health <= M.maxHealth)
 		update_icon()
 
-/obj/item/storage/backpack/rig/update_icon(mob/living/M)
+/obj/item/storage/backpack/hardsuit/update_icon(mob/living/M)
 	if(M.stat > 1) // Dead
 		icon_state = "[initial(icon_state)]_0"
 		item_state = "[initial(icon_state)]_0"

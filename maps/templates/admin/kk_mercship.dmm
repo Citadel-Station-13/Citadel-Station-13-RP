@@ -985,7 +985,7 @@
 /area/ship/manta/hallways_port)
 "eJ" = (
 /obj/structure/table/rack,
-/obj/item/rig/merc/empty,
+/obj/item/hardsuit/merc/empty,
 /obj/effect/floor_decal/techfloor{
 	dir = 9
 	},
@@ -1007,7 +1007,7 @@
 /area/ship/manta/barracks)
 "eR" = (
 /obj/structure/table/rack,
-/obj/item/rig/merc/empty,
+/obj/item/hardsuit/merc/empty,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
