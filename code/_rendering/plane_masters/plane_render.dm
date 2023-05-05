@@ -17,7 +17,10 @@
 #warn uhh
 
 /atom/movable/screen/plane_render/lighting_as_alpha
+	plane = RENDER_INTERMEDIATE_PLANE
+	render_source = LIGHTING_RENDER_TARGET
 	render_target = LIGHTING_ALPHA_FORWARD_TARGET
+	relevant_plane_path = /atom/movable/screen/plane_master/lighting
 	// convert all color to alpha
 	color = list(
 

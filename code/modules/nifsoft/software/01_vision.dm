@@ -174,7 +174,6 @@
 	a_drain = 0.1
 	access = ACCESS_SECURITY_EQUIPMENT
 	tick_flags = NIF_ACTIVETICK
-	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_NIGHTVIS)
 	vision_holder = /datum/vision/augmenting/nvg_lowtech
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)

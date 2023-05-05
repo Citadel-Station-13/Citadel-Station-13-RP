@@ -1565,10 +1565,6 @@
 /mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
 	. = FALSE
 	if(NS && NS.active)
-		if(NS.darkness_view)
-			#warn ugh
-			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + NS.darkness_view)
-			. = TRUE
 		if(NS.vision_flags_mob)
 			AddSightSelf(NS.vision_flags_mob)
 			RemoveSightSelf(NS.vision_flags_mob_remove)

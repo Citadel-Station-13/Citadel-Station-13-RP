@@ -17,14 +17,7 @@ BLIND     // can't see anything
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_EYES
 	active_slots = list(SLOT_ID_GLASSES)
-	var/vision_flags = NONE
-	var/vision_flags_remove = NONE
 	var/prescription = 0
-	var/toggleable = 0
-	var/inactive_icon_state = "degoggles"
-	var/active = 1
-	var/activation_sound = 'sound/items/goggles_charge.ogg'
-	var/list/away_planes //Holder for disabled planes
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
@@ -34,21 +27,36 @@ BLIND     // can't see anything
 	/// On?
 	var/active = TRUE
 	/// icon state when off
-	var/inactive_icon_state
-	/// Darksight modifier when on
-	var/datum/vision/active_vision_modifier
+	var/inactive_icon_state = "degoggles"
+	var/activation_sound = 'sound/items/goggles_charge.ogg'
+	var/list/away_planes //Holder for disabled planes
 
-	#warn impl all
+	//? Glasses - Modify
+	/// Sight Modifiers - applies in active slots. This should be unique to the glasses!
+	var/datum/vision/vision_modifier
+	var/vision_flags = NONE
+	var/vision_flags_remove = NONE
+
+/obj/item/clothing/glasses/equipped(mob/user, slot, flags)
+	. = ..()
+	if((!toggleable || active) && (slot in active_slots))
+		user.add_vision_modifier(vision_modifier)
+
+/obj/item/clothing/glasses/unequipped(mob/user, slot, flags)
+	. = ..()
+	user.remove_vision_modifier(vision_modifier)
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	. = ..()
 	if(.)
 		return
 	if(toggleable)
+		var/mob/wearer = worn_mob()
 		if(active)
 			active = 0
 			icon_state = inactive_icon_state
 			user.update_inv_glasses()
+			wearer.remove_vision_modifier(vision_modifier)
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			away_planes = enables_planes
@@ -58,6 +66,7 @@ BLIND     // can't see anything
 			active = 1
 			icon_state = initial(icon_state)
 			user.update_inv_glasses()
+			wearer.add_vision_modifier(vision_modifier)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
 			enables_planes = away_planes
@@ -134,7 +143,7 @@ BLIND     // can't see anything
 	vision_flags = SEE_TURFS
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
-	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/meson/prescription
 	name = "prescription mesons"
@@ -197,7 +206,7 @@ BLIND     // can't see anything
 	body_cover_flags = EYES // Cit change
 	inactive_icon_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
-	active_vision_modifier = /datum/vision/augmenting/nvg_lowtech
+	vision_modifier = /datum/vision/augmenting/nvg_lowtech
 
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
@@ -269,7 +278,7 @@ BLIND     // can't see anything
 	vision_flags = SEE_OBJS
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES //cit change
-	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/material/prescription
 	name = "prescription optical material scanner"
@@ -288,7 +297,7 @@ BLIND     // can't see anything
 	vision_flags_remove = SEE_BLACKNESS
 	body_cover_flags = EYES // Cit change
 	flash_protection = FLASH_PROTECTION_REDUCED
-	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
@@ -560,7 +569,7 @@ BLIND     // can't see anything
 	action_button_name = "Toggle Goggles"
 	vision_flags = SEE_MOBS
 	vision_flags_remove = SEE_BLACKNESS
-	active_vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
+	vision_modifier = /datum/vision/augmenting/legacy_ghetto_nvgs
 	enables_planes = list(/atom/movable/screen/plane_master/cloaked)
 	flash_protection = FLASH_PROTECTION_REDUCED
 

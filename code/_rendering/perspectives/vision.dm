@@ -121,43 +121,70 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
 GLOBAL_DATUM_INIT(default_darksight, /datum/vision/baseline/default, new)
 
 /datum/vision/baseline/default
+	priority = DARKSIGHT_PRIORITY_INNATE
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
 
 //? silicons baseline
 
 GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 /datum/vision/baseline/silicons
-	hard_darksight = 0
+	priority = DARKSIGHT_PRIORITY_INNATE
 
 //? species
 
 /datum/vision/baseline/species_tier_0
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_DEFAULT
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
+	soft_darksight_smartness = TRUE
 
 /datum/vision/baseline/species_tier_1
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_1
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_1
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_1
+	soft_darksight_smartness = TRUE
 
 /datum/vision/baseline/species_tier_2
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_2
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_2
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_2
+	soft_darksight_smartness = TRUE
 
 /datum/vision/baseline/species_tier_3
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_3
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_3
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_3
+	soft_darksight_smartness = TRUE
 
 /datum/vision/baseline/species_super
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
-
-#warn impl all
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_SUPER
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_SUPER
+	soft_darksight_smartness = TRUE
 
 //? gear
 
-/datum/vision/augmenting/nvg_lowtech
+/datum/vision/baseline/nvg_lowtech
+	priority = DARKSIGHT_PRIORITY_GLASSES
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_NVGS
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_NVGS
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_NVGS
+	soft_darksight_smartness = FALSE
 
-/datum/vision/augmenting/nvg_hightech
-
-#warn impl all
+/datum/vision/baseline/nvg_hightech
+	priority = DARKSIGHT_PRIORITY_GLASSES
+	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_NVGS
+	soft_darksight_range = SOFT_DARKSIGHT_RANGE_NVGS
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_NVGS
 
 //? misc
 
 /datum/vision/augmenting/legacy_ghetto_nvgs
+	priority = DARKSIGHT_PRIORITY_GLASSES
 	hard_alpha = 140
 	legacy_throttle = 3
