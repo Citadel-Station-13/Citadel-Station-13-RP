@@ -10,7 +10,7 @@
 #define RIG_CONTROL_DEPLOYMENT (1<<3)
 /// can control all modules, including changing hotbinds
 #define RIG_CONTROL_MODULES (1<<4)
-/// can use hotbinds only
+/// can use hotbinds
 #define RIG_CONTROL_HOTBINDS (1<<5)
 /// can speak as the rig using its voicebox
 #define RIG_CONTROL_SPEECH (1<<6)

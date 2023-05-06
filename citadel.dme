@@ -4121,6 +4121,7 @@
 #include "code\modules\rigsuits\activation.dm"
 #include "code\modules\rigsuits\component.dm"
 #include "code\modules\rigsuits\console.dm"
+#include "code\modules\rigsuits\core.dm"
 #include "code\modules\rigsuits\defense.dm"
 #include "code\modules\rigsuits\maintenance.dm"
 #include "code\modules\rigsuits\pieces.dm"

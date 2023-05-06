@@ -30,53 +30,61 @@
 	siemens_coefficient = 0.2
 	permeability_coefficient = 0.1
 	unacidable = 1
-	preserve_item = 1
+
+	//? -- Core --
+	/// Current wearer
+	var/mob/living/carbon/human/wearer
+	/// Are we operating in remote control mode?
+	var/wearer_virtual = FALSE
 
 	//? Activation
 	/// activation state
 	var/activation_state = RIG_ACTIVATION_OFF
-	/// last online, set in process()
-	var/last_online = FALSE
 
 	//? Components
 	/// all installed components
 	var/list/obj/item/rig_component/components
 
+	//? Life Support
+	/// installed oxygen tank - set to path to make on initialize
+	var/obj/item/tank/tank
 
 	//? Maintenance
 	/// console
 	var/datum/rig_console/console
 	/// maint panel
 	var/datum/rig_maint_panel/maint_panel
+	#warn uhh
 
 	//? Pieces
 	/// helmet
 	var/obj/item/clothing/head/rig/helmet
+	/// helmet status
+	var/helmet_state
 	/// chestpiece
 	var/obj/item/clothing/suit/rig/chestpiece
+	/// chestpiece status
+	var/chestpiece_state
 	/// gauntlets
 	var/obj/item/clothing/gloves/rig/gauntlets
+	/// gauntlets status
+	var/gauntlets_state
 	/// boots
 	var/obj/item/clothing/shoes/rig/boots
-	#warn check boots var as it wasn't renamed
+	/// boots status
+	var/boots_state
 
 	//? Power
-
+	/// rig core - set to path to init on initialize
+	var/obj/item/rig_core/power_core
+	/// innate high power routing capacity in kj
+	var/power_routing = 50
+	/// power cell - set to path to init on initialize
+	var/obj/item/cell/power_cell
 
 	//? Theme
-	/// active theme - set to path to init
+	/// active theme - set to path to apply on init.
 	var/datum/rig_theme/theme
-
-	var/suit_state //The string used for the suit's icon_state.
-
-	var/wearer_move_delay //Used for AI moving.
-	var/ai_controlled_move_delay = 10
-
-	// Keeps track of what this rig should spawn with.
-	var/suit_type = "hardsuit"
-	var/list/initial_modules
-	var/cell_type =  /obj/item/cell/high
-	var/air_type =   /obj/item/tank/oxygen
 
 	var/unremovable_cell = FALSE
 
@@ -125,11 +133,6 @@
 	var/datum/mini_hud/rig/minihud
 
 	//Traps, too.
-
-	var/isTrapped = 0 //Will it lock you in?
-	var/trapSprung = 0 //Don't define this one. It's if it's procced.
-	var/springtrapped = 0 //Will it cause severe bodily harm?
-	var/trapDelay = 300 //in deciseconds
 	var/warn = 1 //If the suit will warn you if it can't deploy a part. Will always end back at 1.
 
 
