@@ -61,6 +61,8 @@
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()
 	. = ..()
+	if(!isnull(materials))
+		materials = typelist(NAMEOF(src, materials), materials)
 	if(!isnull(material_parts))
 		material_parts = typelist(NAMEOF(src, material_parts), material_parts)
 	if(!isnull(material_defaults))

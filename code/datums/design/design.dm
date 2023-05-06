@@ -43,6 +43,7 @@
 	/// for variable-material designs: assoc list of key to amounts
 	/// the key will be fed into print() during creation with the material id the user picked
 	/// autodetected if null.
+	/// this should obviously match material_parts on the /obj in question.
 	var/list/material_parts
 	/// Items needed, as ingredients list - see [code/__HELPERS/datastructs/ingredients.dm]
 	var/list/ingredients
@@ -117,20 +118,53 @@
  * @params
  * * where - where to put the finished product
  * * fabricator - the lathe printing the product
+ *
+ * @return created atom, or list of created atoms.
  */
 /datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(is_stack)
-		. = new build_path(where, amount)
-	for(var/i in 1 to min(amount, 50))
-		return new build_path(where, amount)
-	return new build_path(where)
-	#warn stacks
+		var/obj/item/stack/S = build_path
+		var/stack_size = initial(S.max_amount)
+		if(stack_size >= amount)
+			. = new build_path(where, amount)
+			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+		else
+			. = list()
+			var/safety = 0
+			var/left = amount
+			var/atom/made
+			while(left)
+				if(++safety > 50)
+					CRASH("way too high")
+				var/making = min(left, stack_size)
+				made = new build_path(where, making)
+				left -= making
+				. += made
+				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+	else
+		if(amount > 50)
+			STACK_TRACE("way too high")
+		if(amount == 1)
+			. = new build_path(where)
+		else
+			. = list()
+			var/atom/made
+			for(var/i in 1 to min(amount, 50))
+				made = new build_path(where)
+				on_print(made, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+				. += made
 
-/datum/design/proc/on_print(atom/created, atom/where, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
+/datum/design/proc/on_print(atom/created, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(isobj(created))
 		var/obj/O = created
-		var/list/
-
+		var/list/effective_materials = materials.Copy()
+		for(var/key in material_parts)
+			effective_materials[material_parts[key]] += src.material_parts[key]
+		if(cost_multiplier != 1)
+			for(var/key in effective_materials)
+				effective_materials[key] *= cost_multiplier
+		O.materials = effective_materials
+		O.set_material_parts(material_parts)
 
 /**
  * called when a lathe prints a design, instead of print()
@@ -141,7 +175,7 @@
  * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
 /datum/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
-	return print(where, amount, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
+	return print(where, amount, material_parts, ingredient_parts, reagent_parts, efficiency_multiplier)
 
 //? legacy below
 
