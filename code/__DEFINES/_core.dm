@@ -7,6 +7,6 @@
 	throw E
 
 /// increments a static numerically incrementing id up to and beyond SHORT_REAL_LIMIT
-#define STORE_AND_INCREMENT_ASCENDING_UID(idvar, idnext) idvar = num2text(idnext > SHORT_REAL_LIMIT? (idnext += min(1, 2 ** round(idnext / SHORT_REAL_LIMIT)) : 1), 100)
+#define STORE_AND_INCREMENT_ASCENDING_UID(idvar, idnext) ##idvar = num2text(##idnext > SHORT_REAL_LIMIT? (##idnext += min(1, 2 ** round(##idnext / SHORT_REAL_LIMIT))) : (idnext += 1), 100)
 /// what id_next on things that use the above should start on
 #define FIRST_ASCENDING_UID 0

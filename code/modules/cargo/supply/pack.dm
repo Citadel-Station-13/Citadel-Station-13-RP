@@ -50,7 +50,7 @@
 				// hence, self-proofing
 				// ~silicons
 				CRASH("Ran out of safety during SpawnContents")
-			instance_object(path, loc)
+			instance_object(path, inside)
 
 /datum/supply_pack/proc/instantiate_container(atom/where)
 	RETURN_TYPE(/atom/movable)
@@ -58,13 +58,14 @@
 	. = created // runtime guard
 	if(!isnull(container_name))
 		created.name = container_name
-	if(!isnull(ontainer_desc))
+	if(!isnull(container_desc))
 		created.desc = container_desc
 	if(isobj(created))
+		var/obj/O = created
 		if(!isnull(container_access))
-			created.req_access = container_access.Copy()
+			O.req_access = container_access.Copy()
 		if(!isnull(container_one_access))
-			created.req_one_access = container_one_access.Copy()
+			O.req_one_access = container_one_access.Copy()
 
 /datum/supply_pack/proc/instantiate(atom/where)
 	RETURN_TYPE(/atom/movable)
