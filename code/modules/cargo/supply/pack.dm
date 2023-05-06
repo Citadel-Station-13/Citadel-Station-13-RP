@@ -15,7 +15,7 @@
 	/// flags
 	var/supply_pack_flags = NONE
 
-	/// contains - typepath = amount
+	/// contains - typepath = amount. if empty, ui will display the container type's name instead.
 	var/list/contains
 	/// contains x of contains rather than all, and contains is treated as a weight list
 	var/contains_is_random = FALSE
@@ -90,6 +90,10 @@
 		if(!ispath(path))
 			continue
 		assembled_contents[initial(path.name)] = contains[path]
+	var/detected_container_name = "???"
+	if(ispath(container_type))
+		var/atom/movable/container_path = container_type
+		detected_container_name = initial(container_path)
 	return list(
 		"name" = name,
 		"cost" = cost,
@@ -98,6 +102,7 @@
 		"ref" = ref(src),
 		"isRandom" = contains_is_random,
 		"contains" = assembled_contents,
+		"containerName" = container_name || detected_container_name,
 	)
 
 /datum/supply_pack/proc/auto_set_price()

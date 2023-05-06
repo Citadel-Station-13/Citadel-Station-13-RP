@@ -6,12 +6,12 @@
 /datum/event/money_lotto/start()
 	winner_sum = pick(5000, 10000, 50000, 100000, 500000, 1000000, 1500000)
 	if(GLOB.all_money_accounts.len)
-		var/datum/money_account/D = pick(GLOB.all_money_accounts)
+		var/datum/economy_account/D = pick(GLOB.all_money_accounts)
 		winner_name = D.owner_name
 		if(!D.suspended)
 			D.money += winner_sum
 
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = "The [GLOB.using_map.starsys_name] Times Grand Slam -Stellar- Lottery"
 			T.purpose = "Winner!"
 			T.amount = winner_sum

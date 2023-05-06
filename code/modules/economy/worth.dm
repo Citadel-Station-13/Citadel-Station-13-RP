@@ -76,6 +76,7 @@
 
 /**
  * estimate a typepath's worth
+ * for stacks / other plural-types, this should be per unit.
  *
  * @params
  * * path - typepath to estimate
@@ -94,6 +95,7 @@
 
 /**
  * estimates a typepath's raw materials worth
+ * for stacks / other plural-types, this should be per unit.
  *
  * @params
  * * path - typepath to estimate
@@ -108,6 +110,7 @@
 
 /**
  * estimates a typepath's contents worth
+ * for stacks / other plural-types, this should be per unit.
  *
  * @params
  * * path - typepath to estimate

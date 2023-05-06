@@ -19,12 +19,14 @@
 	var/name = "Unknown Faction"
 	/// destination
 	var/tmp/assigned_destination
-	/// normal singular-buy goodies: list(category = list(typepaths))
-	var/list/normal_catalog = list()
-	/// contraband singular-buy goodies: list(category = list(typepaths))
-	var/list/contraband_catalog = list()
+	/// normal singular-buy goodies: list(category = list(typepaths)). automatically translated into items.
+	var/list/generate_normal_items
+	/// contraband singular-buy goodies: list(category = list(typepaths)). automatically translated into items.
+	var/list/generate_contraband_items
 	/// supply_pack datums; list of typepaths, init'd on register.
 	var/list/datum/supply_pack/packs = list()
+	/// supply_item datums; list of typepaths, init'd on register.
+	var/list/datum/supply_item/items = list()
 
 /datum/supply_faction/New()
 	STORE_AND_INCREMENT_ASCENDING_UID(id, id_next)

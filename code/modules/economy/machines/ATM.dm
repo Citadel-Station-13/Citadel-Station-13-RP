@@ -25,7 +25,7 @@ log transactions
 	circuit =  /obj/item/circuitboard/atm
 	/// can accept deposits using these payment types
 	var/deposit_payment_types = PAYMENT_TYPE_CASH | PAYMENT_TYPE_HOLOCHIPS | PAYMENT_TYPE_CHARGE_CARD
-	var/datum/money_account/authenticated_account
+	var/datum/economy_account/authenticated_account
 	var/number_incorrect_tries = 0
 	var/previous_account_number = 0
 	var/max_pin_attempts = 3
@@ -113,7 +113,7 @@ log transactions
 				playsound(src, 'sound/items/polaroid2.ogg', 50, 1)
 
 			//create a transaction log entry
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = authenticated_account.owner_name
 			T.purpose = "Credit deposit"
 			T.amount = amount
@@ -177,7 +177,7 @@ log transactions
 							dat += "<td><b>Value</b></td>"
 							dat += "<td><b>Source terminal ID</b></td>"
 							dat += "</tr>"
-							for(var/datum/transaction/T in authenticated_account.transaction_log)
+							for(var/datum/economy_transaction/T in authenticated_account.transaction_log)
 								dat += "<tr>"
 								dat += "<td>[T.date]</td>"
 								dat += "<td>[T.time]</td>"
@@ -242,7 +242,7 @@ log transactions
 							authenticated_account.money -= transfer_amount
 
 							//create an entry in the account transaction log
-							var/datum/transaction/T = new()
+							var/datum/economy_transaction/T = new()
 							T.target_name = "Account #[target_account_number]"
 							T.purpose = transfer_purpose
 							T.source_terminal = machine_id
@@ -282,9 +282,9 @@ log transactions
 								playsound(src, 'sound/machines/buzz-two.ogg', 50, 1)
 
 								//create an entry in the account transaction log
-								var/datum/money_account/failed_account = get_account(tried_account_num)
+								var/datum/economy_account/failed_account = get_account(tried_account_num)
 								if(failed_account)
-									var/datum/transaction/T = new()
+									var/datum/economy_transaction/T = new()
 									T.target_name = failed_account.owner_name
 									T.purpose = "Unauthorised login attempt"
 									T.source_terminal = machine_id
@@ -304,7 +304,7 @@ log transactions
 						view_screen = NO_SCREEN
 
 						//create a transaction log entry
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Remote terminal access"
 						T.source_terminal = machine_id
@@ -331,7 +331,7 @@ log transactions
 						spawn_ewallet(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
@@ -356,7 +356,7 @@ log transactions
 						spawn_money(amount,src.loc,usr)
 
 						//create an entry in the account transaction log
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
@@ -408,7 +408,7 @@ log transactions
 					R.info += "<td><b>Value</b></td>"
 					R.info += "<td><b>Source terminal ID</b></td>"
 					R.info += "</tr>"
-					for(var/datum/transaction/T in authenticated_account.transaction_log)
+					for(var/datum/economy_transaction/T in authenticated_account.transaction_log)
 						R.info += "<tr>"
 						R.info += "<td>[T.date]</td>"
 						R.info += "<td>[T.time]</td>"
@@ -468,7 +468,7 @@ log transactions
 					to_chat(human_user, "<font color=#4F49AF>[icon2html(thing = src, target = human_user)] Access granted. Welcome user '[authenticated_account.owner_name].</font>'")
 
 					//create a transaction log entry
-					var/datum/transaction/T = new()
+					var/datum/economy_transaction/T = new()
 					T.target_name = authenticated_account.owner_name
 					T.purpose = "Remote terminal access"
 					T.source_terminal = machine_id

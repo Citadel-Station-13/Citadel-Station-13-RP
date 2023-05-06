@@ -1,19 +1,25 @@
 /datum/faction
 	abstract_type = /datum/faction
+	/// lazy? we only init on request if so
+	var/lazy = TRUE
 	/// unique id
 	var/identifier
 	/// faction name
-	var/name
+	var/name = "NAME UNSET"
 	/// faction desc
-	var/desc
+	var/desc = "DESC UNSET"
 	/// registered with game?
 	var/registered = FALSE
 	/// supply faction - set to path to init on new
 	var/datum/supply_faction/supply
+	/// economy faction - set to path to init on new
+	var/datum/economy_faction/economy
 
 /datum/faction/New()
 	if(ispath(supply))
 		supply = new supply
+	if(ispath(economy))
+		economy = new economy
 
 /datum/faction/Destroy()
 	if(registered)

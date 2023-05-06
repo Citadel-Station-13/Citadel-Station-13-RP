@@ -19,7 +19,7 @@
 
 	var/cash_stored = 0
 	var/obj/item/confirm_item
-	var/datum/money_account/linked_account
+	var/datum/economy_account/linked_account
 	var/account_to_connect = null
 
 
@@ -225,7 +225,7 @@
 
 	// Access account for transaction
 	if(check_account())
-		var/datum/money_account/D = get_account(I.associated_account_number)
+		var/datum/economy_account/D = get_account(I.associated_account_number)
 		var/attempt_pin = ""
 		if(D && D.security_level)
 			attempt_pin = input("Enter PIN", "Transaction") as num
@@ -246,7 +246,7 @@
 					linked_account.money += transaction_amount
 
 					// Create log entry in client's account
-					var/datum/transaction/T = new()
+					var/datum/economy_transaction/T = new()
 					T.target_name = "[linked_account.owner_name]"
 					T.purpose = transaction_purpose
 					T.amount = "([transaction_amount])"
@@ -294,7 +294,7 @@
 			linked_account.money += transaction_amount
 
 			// Create log entry in owner's account
-			var/datum/transaction/T = new()
+			var/datum/economy_transaction/T = new()
 			T.target_name = E.owner_name
 			T.purpose = transaction_purpose
 			T.amount = "[transaction_amount]"

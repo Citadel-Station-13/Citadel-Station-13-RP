@@ -542,7 +542,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 					"access_clown" = cartridge.access_clown,\
 					"access_mime" = cartridge.access_mime,\
 					"access_janitor" = cartridge.access_janitor,\
-					"access_quartermaster" = cartridge.access_quartermaster,\
+					"access_quartermaster" = FALSE,\
 					"access_hydroponics" = cartridge.access_hydroponics,\
 					"access_reagent_scanner" = cartridge.access_reagent_scanner,\
 					"access_remote_door" = cartridge.access_remote_door,\

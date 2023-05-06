@@ -35,6 +35,8 @@ SUBSYSTEM_DEF(factions)
 	for(var/datum/faction/path as anything in subtypesof(/datum/faction))
 		if(path == initial(path.abstract_type))
 			continue
+		if(initial(path.lazy))
+			continue
 		var/datum/faction/F = new path
 		if(!F.register())
 			qdel(F)

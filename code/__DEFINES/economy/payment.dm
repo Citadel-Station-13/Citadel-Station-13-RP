@@ -1,4 +1,5 @@
 // payment_type bitflags
+
 /// coin
 #define PAYMENT_TYPE_COIN				(1<<0)
 /// cash

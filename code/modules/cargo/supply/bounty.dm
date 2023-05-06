@@ -11,13 +11,10 @@
 	/// assigned destination
 	var/tmp/assigned_destination
 	/// are we registered?
-	var/registered = FALSE
-	/// the faction we're from
-	var/datum/supply_faction/parent
+	var/registered = FALS
 
 /datum/supply_bounty/New(datum/supply_faction/parent)
-	src.parent = parent
-	generate()
+	generate(parent)
 
 /datum/supply_bounty/Destroy()
 	if(registered)
@@ -43,5 +40,5 @@
 /**
  * generates name & desc
  */
-/datum/supply_bounty/proc/generate()
+/datum/supply_bounty/proc/generate(datum/supply_faction/faction)
 	#warn impl

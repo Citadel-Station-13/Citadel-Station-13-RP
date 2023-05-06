@@ -9,8 +9,12 @@
  * * handler
  */
 /datum/supply_system
-	/// the handler
-	var/datum/supply_handler/handler
+	/// registered?
+	var/registered = FALSE
+	/// unique id
+	var/id
+	/// the handler used by default
+	var/datum/supply_handler/default_handler
 
 	/// markup on crates as multiplier
 	var/mult_packs = 1
@@ -30,7 +34,20 @@
 	var/list/datum/supply_shipment/shipped
 
 
-/datum/supply_system/New(id, datum/supply_handler/handler)
+/datum/supply_system/New(id, datum/supply_handler/default_handler)
+	src.default_handler = default_handler
+	src.id = id
+	register()
+
+/datum/supply_system/Destroy()
+	if(registered)
+		unregister()
+	return ..()
+
+/datum/supply_system/proc/register()
+	#warn impl
+
+/datum/supply_system/proc/unregister()
 	#warn impl
 
 /datum/supply_system/proc/credits()

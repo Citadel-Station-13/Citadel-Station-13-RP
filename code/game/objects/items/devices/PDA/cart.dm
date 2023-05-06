@@ -421,49 +421,6 @@ var/list/civilian_cartridges = list(
 		values["mulebotcount"] = count
 		values["mulebots"] = mulebotsData
 
-
-
-	/*	Supply Shuttle Requests Menu (Mode: 47)		*/
-
-	if(mode==47)
-		var/supplyData[0]
-		var/datum/shuttle/autodock/ferry/supply/shuttle = SSsupply.shuttle
-		if (shuttle)
-			supplyData["shuttle_moving"] = shuttle.has_arrive_time()
-			supplyData["shuttle_eta"] = shuttle.eta_minutes()
-			supplyData["shuttle_loc"] = shuttle.at_station() ? "Station" : "Dock"
-		var/supplyOrderCount = 0
-		var/supplyOrderData[0]
-		for(var/S in SSsupply.shoppinglist)
-			var/datum/supply_order/SO = S
-
-			supplyOrderData[++supplyOrderData.len] = list("Number" = SO.ordernum, "Name" = html_encode(SO.object.name), "ApprovedBy" = SO.ordered_by, "Comment" = html_encode(SO.comment))
-		if(!supplyOrderData.len)
-			supplyOrderData[++supplyOrderData.len] = list("Number" = null, "Name" = null, "OrderedBy"=null)
-
-		supplyData["approved"] = supplyOrderData
-		supplyData["approved_count"] = supplyOrderCount
-
-		var/requestCount = 0
-		var/requestData[0]
-		for(var/S in SSsupply.order_history)
-			var/datum/supply_order/SO = S
-			if(SO.status != SUP_ORDER_REQUESTED)
-				continue
-
-			requestCount++
-			requestData[++requestData.len] = list("Number" = SO.ordernum, "Name" = html_encode(SO.object.name), "OrderedBy" = SO.ordered_by, "Comment" = html_encode(SO.comment))
-		if(!requestData.len)
-			requestData[++requestData.len] = list("Number" = null, "Name" = null, "orderedBy" = null, "Comment" = null)
-
-		supplyData["requests"] = requestData
-		supplyData["requests_count"] = requestCount
-
-
-		values["supply"] = supplyData
-
-
-
 	/*		Janitor Supplies Locator (Mode: 49)		*/
 	if(mode==49)
 		var/JaniData[0]

@@ -10,7 +10,7 @@
 	var/transaction_amount = 0
 	var/transaction_purpose = "Default charge"
 	var/access_code = 0
-	var/datum/money_account/linked_account
+	var/datum/economy_account/linked_account
 
 /obj/item/eftpos/Initialize(mapload)
 	. = ..()
@@ -139,7 +139,7 @@
 						linked_account.money += transaction_amount
 
 						//create entry in the EFTPOS linked account transaction log
-						var/datum/transaction/T = new()
+						var/datum/economy_transaction/T = new()
 						T.target_name = E.owner_name //D.owner_name
 						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
 						T.amount = transaction_amount
@@ -243,7 +243,7 @@
 			if(linked_account)
 				if(!linked_account.suspended)
 					var/attempt_pin = ""
-					var/datum/money_account/D = get_account(C.associated_account_number)
+					var/datum/economy_account/D = get_account(C.associated_account_number)
 					if(D.security_level)
 						attempt_pin = input("Enter pin code", "EFTPOS transaction") as num
 						D = null
@@ -260,7 +260,7 @@
 								linked_account.money += transaction_amount
 
 								//create entries in the two account transaction logs
-								var/datum/transaction/T = new()
+								var/datum/economy_transaction/T = new()
 								T.target_name = "[linked_account.owner_name] (via [eftpos_name])"
 								T.purpose = transaction_purpose
 								if(transaction_amount > 0)
