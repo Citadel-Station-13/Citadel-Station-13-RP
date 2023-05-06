@@ -2866,6 +2866,7 @@
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
 #include "code\modules\lore_hardcoded\religion\hegemony\_hegemony.dm"
 #include "code\modules\lore_hardcoded\religion\hegemony\unathi.dm"
+#include "code\modules\lore_hardcoded\species\auril.dm"
 #include "code\modules\lore_hardcoded\species\species.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\_base.dm"
 #include "code\modules\lore_hardcoded\species\tajaran\citizenship.dm"

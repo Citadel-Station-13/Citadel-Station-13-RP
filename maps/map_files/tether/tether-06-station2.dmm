@@ -4985,7 +4985,7 @@
 	layer = 2.9
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/eva/equipped{
+/obj/item/hardsuit/eva/equipped{
 	req_access = list(10)
 },
 /turf/simulated/floor/tiled/dark,

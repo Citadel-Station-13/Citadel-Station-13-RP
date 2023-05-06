@@ -4,6 +4,7 @@
 	name = "Earmuffs"
 	path = /obj/item/clothing/ears/earmuffs
 	sort_category = "Earwear"
+	slot = SLOT_ID_RIGHT_EAR
 
 /datum/gear/ears/headphones
 	name = "Headphones"
