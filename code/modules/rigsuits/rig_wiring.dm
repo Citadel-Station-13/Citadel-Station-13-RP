@@ -1,60 +1,60 @@
-/datum/wires/hardsuit
+/datum/wires/rig
 	randomize = TRUE
-	holder_type = /obj/item/hardsuit
+	holder_type = /obj/item/rig
 	wire_count = 5
 
-/datum/wires/hardsuit/New(atom/_holder)
+/datum/wires/rig/New(atom/_holder)
 	wires = list(WIRE_RIG_SECURITY, WIRE_RIG_AI_OVERRIDE, WIRE_RIG_SYSTEM_CONTROL, WIRE_RIG_INTERFACE_LOCK, WIRE_RIG_INTERFACE_SHOCK)
 	return ..()
 /*
- * hardsuit security can be snipped to disable ID access checks on hardsuit.
- * hardsuit AI override can be pulsed to toggle whether or not the AI can take control of the suit.
+ * Rig security can be snipped to disable ID access checks on rig.
+ * Rig AI override can be pulsed to toggle whether or not the AI can take control of the suit.
  * System control can be pulsed to toggle some malfunctions.
  * Interface lock can be pulsed to toggle whether or not the interface can be accessed.
  */
 
-/datum/wires/hardsuit/on_cut(wire, mend)
-	var/obj/item/hardsuit/hardsuit = holder
+/datum/wires/rig/on_cut(wire, mend)
+	var/obj/item/rig/rig = holder
 	switch(wire)
 		if(WIRE_RIG_SECURITY)
 			if(mend)
-				hardsuit.req_access = initial(hardsuit.req_access)
-				hardsuit.req_one_access = initial(hardsuit.req_one_access)
+				rig.req_access = initial(rig.req_access)
+				rig.req_one_access = initial(rig.req_one_access)
 		if(WIRE_RIG_SYSTEM_CONTROL)
 			if(!mend)
-				hardsuit.shock(usr,100) // Intended to keep players from trying to mend in the middle of combat. Second way of getting shocked as pulsing this wire ALSO shocks you.
+				rig.shock(usr,100) // Intended to keep players from trying to mend in the middle of combat. Second way of getting shocked as pulsing this wire ALSO shocks you.
 			else if(mend)
-				hardsuit.malfunctioning = 0
-				hardsuit.malfunction_delay = 0
+				rig.malfunctioning = 0
+				rig.malfunction_delay = 0
 		if(WIRE_RIG_INTERFACE_SHOCK)
-			hardsuit.electrified = mend ? 0 : -1
-			hardsuit.shock(usr,100)
+			rig.electrified = mend ? 0 : -1
+			rig.shock(usr,100)
 
-/datum/wires/hardsuit/on_pulse(wire)
-	var/obj/item/hardsuit/hardsuit = holder
+/datum/wires/rig/on_pulse(wire)
+	var/obj/item/rig/rig = holder
 	switch(wire)
 		if(WIRE_RIG_SECURITY)
-			hardsuit.security_check_enabled = !hardsuit.security_check_enabled
-			hardsuit.visible_message("\The [hardsuit] twitches as several suit locks [hardsuit.security_check_enabled?"close":"open"].")
+			rig.security_check_enabled = !rig.security_check_enabled
+			rig.visible_message("\The [rig] twitches as several suit locks [rig.security_check_enabled?"close":"open"].")
 		if(WIRE_RIG_AI_OVERRIDE)
-			hardsuit.ai_override_enabled = !hardsuit.ai_override_enabled
-			hardsuit.visible_message("A small red light on [hardsuit] [hardsuit.ai_override_enabled?"goes dead":"flickers on"].")
+			rig.ai_override_enabled = !rig.ai_override_enabled
+			rig.visible_message("A small red light on [rig] [rig.ai_override_enabled?"goes dead":"flickers on"].")
 		if(WIRE_RIG_SYSTEM_CONTROL)
-			hardsuit.malfunctioning += 10
-			if(hardsuit.malfunction_delay <= 0)
-				hardsuit.malfunction_delay = 20
-			hardsuit.shock(usr,100)
-			hardsuit.visible_message("\The [hardsuit] beeps stridently as a surge of power runs through it.") // Hints to the fact that if you pulse this while wearing it you get zappoed.
+			rig.malfunctioning += 10
+			if(rig.malfunction_delay <= 0)
+				rig.malfunction_delay = 20
+			rig.shock(usr,100)
+			rig.visible_message("\The [rig] beeps stridently as a surge of power runs through it.") // Hints to the fact that if you pulse this while wearing it you get zappoed.
 		if(WIRE_RIG_INTERFACE_LOCK)
-			hardsuit.interface_locked = !hardsuit.interface_locked
-			hardsuit.visible_message("\The [hardsuit] clicks audibly as the software interface [hardsuit.interface_locked?"darkens":"brightens"].")
+			rig.interface_locked = !rig.interface_locked
+			rig.visible_message("\The [rig] clicks audibly as the software interface [rig.interface_locked?"darkens":"brightens"].")
 		if(WIRE_RIG_INTERFACE_SHOCK)
-			if(hardsuit.electrified != -1)
-				hardsuit.electrified = 30
-			hardsuit.shock(usr,100)
+			if(rig.electrified != -1)
+				rig.electrified = 30
+			rig.shock(usr,100)
 
-/datum/wires/hardsuit/interactable(mob/user)
-	var/obj/item/hardsuit/hardsuit = holder
-	if(hardsuit.open)
+/datum/wires/rig/interactable(mob/user)
+	var/obj/item/rig/rig = holder
+	if(rig.open)
 		return TRUE
 	return FALSE

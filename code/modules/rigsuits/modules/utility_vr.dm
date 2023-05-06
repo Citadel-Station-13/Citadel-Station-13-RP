@@ -1,4 +1,4 @@
-/obj/item/hardsuit_module/pat_module
+/obj/item/rig_module/pat_module
 	name = "\improper P.A.T. module"
 	desc = "A \'Pre-emptive Access Tunneling\' module, for opening every door in a hurry."
 	icon_state = "cloak"
@@ -32,7 +32,7 @@
 	qdel(a)
 */
 
-/obj/item/hardsuit_module/pat_module/activate()
+/obj/item/rig_module/pat_module/activate()
 	if(!..(TRUE)) //Skip the engage() call, that's for the override and is 'spensive.
 		return 0
 
@@ -40,7 +40,7 @@
 	to_chat(H,"<span class='notice'>You activate the P.A.T. module.</span>")
 	RegisterSignal(H, COMSIG_MOVABLE_MOVED, .proc/boop)
 
-/obj/item/hardsuit_module/pat_module/deactivate()
+/obj/item/rig_module/pat_module/deactivate()
 	if(!..())
 		return 0
 
@@ -48,7 +48,7 @@
 	to_chat(H,"<span class='notice'>Your disable the P.A.T. module.</span>")
 	UnregisterSignal(H, COMSIG_MOVABLE_MOVED)
 
-/obj/item/hardsuit_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
+/obj/item/rig_module/pat_module/proc/boop(var/mob/living/carbon/human/user,var/turf/To,var/turf/Tn)
 	if(!istype(user) || !istype(To) || !istype(Tn))
 		deactivate() //They were picked up or something, or put themselves in a locker, who knows. Just turn off.
 		return
@@ -65,7 +65,7 @@
 		if(A.allowed(user) && A.operable())
 			A.open()
 
-/obj/item/hardsuit_module/pat_module/engage()
+/obj/item/rig_module/pat_module/engage()
 	var/mob/living/carbon/human/H = holder.wearer
 	if(!istype(H))
 		return 0
@@ -87,7 +87,7 @@
 	GLOB.global_announcer.autosay(message, "Security Subsystem", "Security")
 	return 1
 
-/obj/item/hardsuit_module/rescue_pharm
+/obj/item/rig_module/rescue_pharm
 	name = "micro-pharmacy"
 	desc = "A small chemical dispenser with integrated micro cartridges."
 	usable = 0
@@ -114,7 +114,7 @@
 		list("dexalin",  "dexalin",      0, 20)
 		)
 
-/obj/item/hardsuit_module/rescue_pharm/process(delta_time)
+/obj/item/rig_module/rescue_pharm/process(delta_time)
 	. = ..()
 	if(active)
 		var/did_work = 0
@@ -131,7 +131,7 @@
 		if (!did_work)
 			deactivate() //All done
 
-/obj/item/hardsuit_module/rescue_pharm/engage(atom/target)
+/obj/item/rig_module/rescue_pharm/engage(atom/target)
 	if(!target)
 		return 1 //You're just toggling the module on, not clicking someone.
 
