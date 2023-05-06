@@ -99,8 +99,8 @@
 			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
-		if(back && istype(back,/obj/item/rig))
-			var/obj/item/rig/suit = back
+		if(back && istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/suit = back
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
@@ -1643,7 +1643,7 @@
 	return BULLET_IMPACT_MEAT
 
 /mob/living/carbon/human/reduce_cuff_time()
-	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/hardsuit))
 		return 2
 	return ..()
 

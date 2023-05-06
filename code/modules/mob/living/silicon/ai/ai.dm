@@ -727,15 +727,15 @@ var/list/ai_verbs_default = list(
 		icon_state = selected_sprite.alive_icon
 		set_light(1, 1, selected_sprite.alive_light)
 
-// Pass lying down or getting up to our pet human, if we're in a rig.
+// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 /mob/living/silicon/ai/lay_down()
 	set name = "Rest"
 	set category = "IC"
 
 	resting = 0
-	var/obj/item/rig/rig = src.get_rig()
-	if(rig)
-		rig.force_rest(src)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(hardsuit)
+		hardsuit.force_rest(src)
 
 /mob/living/silicon/ai/is_sentient()
 	// AI cores don't store what brain was used to build them so we're just gonna assume they can think to some degree.

@@ -544,7 +544,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "Ad" = (
-/turf/simulated/mineral/icerock/lythios43c/rich,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "Ae" = (
 /turf/unsimulated/mineral,

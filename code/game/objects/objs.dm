@@ -80,10 +80,10 @@
 	SSnanoui.close_uis(src)
 	return ..()
 
-/obj/Moved(atom/oldloc)
+/obj/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
 	. = ..()
 	if(register_as_dangerous_object)
-		var/turf/old_turf = get_turf(oldloc)
+		var/turf/old_turf = get_turf(old_loc)
 		var/turf/new_turf = get_turf(src)
 
 		if(old_turf != new_turf)

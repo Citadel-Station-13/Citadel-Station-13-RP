@@ -17652,7 +17652,7 @@
 /area/medical/psych_ward)
 "pai" = (
 /obj/structure/table/rack,
-/obj/item/rig/hazmat/equipped{
+/obj/item/hardsuit/hazmat/equipped{
 	req_access = list(65)
 },
 /obj/machinery/light_switch{

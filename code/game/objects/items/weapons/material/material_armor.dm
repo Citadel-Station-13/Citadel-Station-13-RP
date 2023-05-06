@@ -160,8 +160,7 @@ Protectiveness | Armor %
 	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
 	result = result * 100
 	result = abs(result - 100)
-	return round(result)
-
+	return round(result) * 0.01
 
 /obj/item/clothing/proc/update_armor()
 	if(material)

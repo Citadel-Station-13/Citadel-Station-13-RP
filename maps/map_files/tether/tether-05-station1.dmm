@@ -14258,7 +14258,7 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/ce/equipped{
+/obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 },
 /turf/simulated/floor/tiled,

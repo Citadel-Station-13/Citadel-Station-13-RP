@@ -1,14 +1,14 @@
-/obj/item/rig/hazmat
+/obj/item/hardsuit/hazmat
 	name = "AMI control module"
 	suit_type = "hazmat hardsuit"
 	desc = "An Anomalous Material Interaction hardsuit that protects against the strangest energies the universe can throw at it."
 	icon_state = "science_rig"
-	armor_type = /datum/armor/rig/ami
+	armor_type = /datum/armor/hardsuit/ami
 	slowdown = 1
 	offline_vision_restriction = 1
 	siemens_coefficient= 0.75
 
-	helm_type = /obj/item/clothing/head/helmet/space/rig/hazmat
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/hazmat
 
 	allowed = list(
 		/obj/item/flashlight,
@@ -31,7 +31,7 @@
 		/obj/item/bluespace_radio,
 	)
 
-/datum/armor/rig/ami
+/datum/armor/hardsuit/ami
 	melee = 0.45
 	bullet = 0.2
 	laser = 0.45
@@ -40,14 +40,14 @@
 	bio = 1.0
 	rad = 0.9
 
-/obj/item/rig/hazmat/equipped
+/obj/item/hardsuit/hazmat/equipped
 	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/anomaly_scanner,
-		/obj/item/rig_module/device/drill,
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/maneuvering_jets,
+		/obj/item/hardsuit_module/device/anomaly_scanner,
+		/obj/item/hardsuit_module/device/drill,
 		)
 
-/obj/item/clothing/head/helmet/space/rig/hazmat
+/obj/item/clothing/head/helmet/space/hardsuit/hazmat
 	light_overlay = "hardhat_light"
 	camera_networks = list(NETWORK_RESEARCH,NETWORK_COMMAND)

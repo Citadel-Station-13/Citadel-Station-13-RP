@@ -108,12 +108,12 @@
 	. = ..()
 	air_contents.adjust_gas(/datum/gas/carbon_dioxide, (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 
-/obj/item/tank/jetpack/rig
+/obj/item/tank/jetpack/hardsuit
 	name = "jetpack"
 	desc = "It's a jetpack. This description should not see the light of day (well, space-day.). If you can see this, report it on the bug tracker."
-	var/obj/item/rig/holder
+	var/obj/item/hardsuit/holder
 
-/obj/item/tank/jetpack/rig/allow_thrust(num, mob/living/user as mob)
+/obj/item/tank/jetpack/hardsuit/allow_thrust(num, mob/living/user as mob)
 
 	if(!(src.on))
 		return 0

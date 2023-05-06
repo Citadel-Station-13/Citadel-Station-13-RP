@@ -380,7 +380,7 @@
 			if(do_mob(src, H, 60))
 				if(!H.handcuffed)
 					var/type
-					if(istype(H.back, /obj/item/rig) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig))
+					if(istype(H.back, /obj/item/hardsuit) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/hardsuit))
 						type = /obj/item/handcuffs/cable // Better to be cable cuffed than stun-locked
 					else
 						type = /obj/item/handcuffs

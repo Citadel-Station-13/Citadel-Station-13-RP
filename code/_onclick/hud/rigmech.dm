@@ -36,16 +36,16 @@
 	return screenobjs
 
 // Specific types
-/datum/mini_hud/rig
-	var/obj/item/rig/owner_rig
-	var/atom/movable/screen/rig/power/power
-	var/atom/movable/screen/rig/health/health
-	var/atom/movable/screen/rig/air/air
-	var/atom/movable/screen/rig/airtoggle/airtoggle
+/datum/mini_hud/hardsuit
+	var/obj/item/hardsuit/owner_rig
+	var/atom/movable/screen/hardsuit/power/power
+	var/atom/movable/screen/hardsuit/health/health
+	var/atom/movable/screen/hardsuit/air/air
+	var/atom/movable/screen/hardsuit/airtoggle/airtoggle
 
 	needs_processing = TRUE
 
-/datum/mini_hud/rig/New(var/datum/hud/other, var/obj/item/rig/owner)
+/datum/mini_hud/hardsuit/New(var/datum/hud/other, var/obj/item/hardsuit/owner)
 	owner_rig = owner
 	power = new ()
 	health = new ()
@@ -53,23 +53,23 @@
 	airtoggle = new ()
 
 	screenobjs = list(power, health, air, airtoggle)
-	screenobjs += new /atom/movable/screen/rig/deco1
-	screenobjs += new /atom/movable/screen/rig/deco2
-	screenobjs += new /atom/movable/screen/rig/deco1_f
-	screenobjs += new /atom/movable/screen/rig/deco2_f
+	screenobjs += new /atom/movable/screen/hardsuit/deco1
+	screenobjs += new /atom/movable/screen/hardsuit/deco2
+	screenobjs += new /atom/movable/screen/hardsuit/deco1_f
+	screenobjs += new /atom/movable/screen/hardsuit/deco2_f
 
 	for(var/scr in screenobjs)
 		var/atom/movable/screen/S = scr
 		S.master = owner_rig
 	..()
 
-/datum/mini_hud/rig/Destroy()
+/datum/mini_hud/hardsuit/Destroy()
 	if(owner_rig)
 		//owner_rig.minihud = null
 		owner_rig = null
 	return ..()
 
-/datum/mini_hud/rig/process(delta_time)
+/datum/mini_hud/hardsuit/process(delta_time)
 	if(!owner_rig)
 		qdel(src)
 		return
@@ -138,54 +138,54 @@
 	airtoggle.icon_state = "airon[air_on]"
 
 // Screen objects
-/atom/movable/screen/rig
+/atom/movable/screen/hardsuit
 	icon = 'icons/mob/screen_rigmech.dmi'
 
-/atom/movable/screen/rig/deco1
+/atom/movable/screen/hardsuit/deco1
 	name = "RIG Status"
 	icon_state = "frame1_1"
-	screen_loc = ui_rig_deco1
+	screen_loc = ui_hardsuit_deco1
 
-/atom/movable/screen/rig/deco2
+/atom/movable/screen/hardsuit/deco2
 	name = "RIG Status"
 	icon_state = "frame1_2"
-	screen_loc = ui_rig_deco2
+	screen_loc = ui_hardsuit_deco2
 
-/atom/movable/screen/rig/deco1_f
+/atom/movable/screen/hardsuit/deco1_f
 	name = "RIG Status"
 	icon_state = "frame1_1_far"
-	screen_loc = ui_rig_deco1_f
+	screen_loc = ui_hardsuit_deco1_f
 
-/atom/movable/screen/rig/deco2_f
+/atom/movable/screen/hardsuit/deco2_f
 	name = "RIG Status"
 	icon_state = "frame1_2_far"
-	screen_loc = ui_rig_deco2_f
+	screen_loc = ui_hardsuit_deco2_f
 
-/atom/movable/screen/rig/power
+/atom/movable/screen/hardsuit/power
 	name = "Charge Level"
 	icon_state = "pwr5"
-	screen_loc = ui_rig_pwr
+	screen_loc = ui_hardsuit_pwr
 
-/atom/movable/screen/rig/health
+/atom/movable/screen/hardsuit/health
 	name = "Integrity Level"
 	icon_state = "health5"
-	screen_loc = ui_rig_health
+	screen_loc = ui_hardsuit_health
 
-/atom/movable/screen/rig/air
+/atom/movable/screen/hardsuit/air
 	name = "Air Storage"
 	icon_state = "air5"
-	screen_loc = ui_rig_air
+	screen_loc = ui_hardsuit_air
 
-/atom/movable/screen/rig/airtoggle
+/atom/movable/screen/hardsuit/airtoggle
 	name = "Toggle Air"
 	icon_state = "airoff"
-	screen_loc = ui_rig_airtoggle
+	screen_loc = ui_hardsuit_airtoggle
 
-/atom/movable/screen/rig/airtoggle/Click()
+/atom/movable/screen/hardsuit/airtoggle/Click()
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user) || user.stat || user.incapacitated())
 		return
-	var/obj/item/rig/owner_rig = master
+	var/obj/item/hardsuit/owner_rig = master
 	if(user != owner_rig.wearer)
 		return
 	user.toggle_internals()

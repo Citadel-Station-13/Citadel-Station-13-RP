@@ -277,3 +277,10 @@
 /datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.AddComponent(/datum/component/cyberpsychosis)
+
+/datum/trait/neutral/alcohol_intolerance
+	name = "Alcohol Intolerance"
+	desc = "You cannot metabolize alcohol; ingesting it will cause vomiting, toxin build-up, liver damage, pain and other unpleasantness."
+	cost = 0
+	custom_only = FALSE
+	traits = list(TRAIT_ALCOHOL_INTOLERANT)

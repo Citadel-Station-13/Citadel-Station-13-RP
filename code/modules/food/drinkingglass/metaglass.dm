@@ -893,7 +893,7 @@ Drinks Data
 /datum/reagent/ethanol/lastcactus
 	glass_icon_state = "lastcactus"
 
-/datum/reagent/ethanol/rootbeerfloat
+/datum/reagent/drink/soda/rootbeerfloat
 	glass_icon_state = "rootbeerfloat"
 
 /datum/reagent/ethanol/thebestboy

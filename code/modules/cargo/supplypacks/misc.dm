@@ -199,7 +199,7 @@
 /datum/supply_pack/misc/eva_rig
 	name = "eva hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/eva = 1
+			/obj/item/hardsuit/eva = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
@@ -213,7 +213,7 @@
 /datum/supply_pack/misc/mining_rig
 	name = "industrial hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/industrial = 1
+			/obj/item/hardsuit/industrial = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/grayson
@@ -225,7 +225,7 @@
 /datum/supply_pack/misc/medical_rig
 	name = "medical hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/medical = 1
+			/obj/item/hardsuit/medical = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/veymed
@@ -246,7 +246,7 @@
 /datum/supply_pack/misc/security_rig
 	name = "hazard hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/hazard = 1
+			/obj/item/hardsuit/hazard = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
@@ -256,7 +256,7 @@
 /datum/supply_pack/misc/science_rig
 	name = "ami hardsuit (empty)"
 	contains = list(
-			/obj/item/rig/hazmat = 1
+			/obj/item/hardsuit/hazmat = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/gear
@@ -266,7 +266,7 @@
 /datum/supply_pack/misc/ce_rig
 	name = "advanced voidsuit (empty)"
 	contains = list(
-			/obj/item/rig/ce = 1
+			/obj/item/hardsuit/ce = 1
 			)
 	cost = 150
 	container_type = /obj/structure/closet/crate/secure/aether
