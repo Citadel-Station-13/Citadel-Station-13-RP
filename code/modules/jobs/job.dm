@@ -9,7 +9,7 @@
 	var/title = "NOPE"
 	/// Description of the job
 	var/desc = "No description provided."
-	/// Faction this job is considered part of, for the future considerations of "offmap"/offstation jobs
+	/// Faction this job is considered part of. Set to a typepath or ID. Resolved to ID on new.
 	var/faction
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
@@ -88,6 +88,9 @@
 /datum/role/job/New()
 	. = ..()
 	department_accounts = department_accounts || departments_managed
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 
 //? Availability
 
@@ -336,6 +339,7 @@
 	return economy_payscale * (istype(D)? D.economy_payscale : 1)
 
 /datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
+	#warn uh oh
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 

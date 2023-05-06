@@ -15,7 +15,8 @@
 	var/economy_account_flags = NONE
 	/// account type
 	var/account_type = ECONOMY_ACCOUNT_TYPE_PERSONAL
-
+	/// the faction id this account is associated to, if any
+	var/faction_id
 
 /proc/charge_to_account(var/attempt_account_number, var/source_name, var/purpose, var/terminal_id, var/amount)
 	for(var/datum/economy_account/D in GLOB.all_money_accounts)

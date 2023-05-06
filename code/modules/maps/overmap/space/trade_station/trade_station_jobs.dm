@@ -25,7 +25,7 @@
 	outfit_type = /datum/outfit/trade
 
 	offmap_spawn = TRUE
-	faction = "Station" //Required for SSjob to allow people to join as it
+	faction = /datum/faction/trader
 	departments = list(DEPARTMENT_TRADE)
 	total_positions = 3
 	spawn_positions = 3

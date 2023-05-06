@@ -22,6 +22,7 @@
 		C.access = J.get_access()
 	if(H.mind)
 		var/datum/mind/M = H.mind
+		#warn this
 		if(M.initial_account)
 			var/datum/economy_account/A = M.initial_account
 			C.associated_account_number = A.account_number

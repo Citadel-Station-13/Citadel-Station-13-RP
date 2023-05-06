@@ -3,4 +3,3 @@
 	name = "NanoTrasen"
 	lazy = FALSE
 	supply = /datum/supply_faction/nanotrasen
-	economy = /datum/economy_faction/nanotrasen

@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(factions)
 	init_order = INIT_ORDER_FACTIONS
 
 	/// all factions by id
-	var/list/factions = list()
+	var/list/faction_lookup = list()
 
 /datum/controller/subsystem/factions/Initialize()
 	initialize_factions()
@@ -15,23 +15,23 @@ SUBSYSTEM_DEF(factions)
 		..()
 		return FALSE
 	. = ..()
-	if(islist(SSfactions.factions))
-		factions = SSfactions.factions
-		for(var/id in factions)
+	if(islist(SSfactions.faction_lookup))
+		faction_lookup = SSfactions.faction_lookup
+		for(var/id in faction_lookup)
 			if(!id)
-				factions -= id
+				faction_lookup -= id
 				. = FALSE
-			var/datum/faction/faction = factions[id]
+			var/datum/faction/faction = faction_lookup[id]
 			if(!istype(faction))
-				factions -= id
+				faction_lookup -= id
 				. = FALSE
 	else
 		. = FALSE
 
 /datum/controller/subsystem/factions/proc/initialize_factions()
-	if(islist(factions))
-		QDEL_LIST(factions)
-	factions = list()
+	if(islist(faction_lookup))
+		QDEL_LIST(faction_lookup)
+	faction_lookup = list()
 	for(var/datum/faction/path as anything in subtypesof(/datum/faction))
 		if(path == initial(path.abstract_type))
 			continue
@@ -40,3 +40,13 @@ SUBSYSTEM_DEF(factions)
 		var/datum/faction/F = new path
 		if(!F.register())
 			qdel(F)
+
+/datum/controller/subsystem/factions/proc/fetch_faction(datum/faction/id_or_path)
+	if(ispath(id_or_path))
+		var/translating = initial(id_or_path.identifier)
+		if(isnull(faction_lookup[translating]) && initial(id_or_path.lazy))
+			var/datum/faction/creating = new id_or_path
+			creating.register()
+		id_or_path = translating
+	return faction_lookup[translating]
+

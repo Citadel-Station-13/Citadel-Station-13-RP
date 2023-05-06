@@ -17,6 +17,9 @@
 	return name_occupations[title]
 
 /datum/controller/subsystem/job/proc/all_job_ids(faction)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
@@ -29,6 +32,9 @@
 			. += id
 
 /datum/controller/subsystem/job/proc/all_job_types(faction)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
@@ -42,6 +48,9 @@
 
 // todo: avoid doing this where possible, id/type is better
 /datum/controller/subsystem/job/proc/all_job_titles(faction)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
@@ -54,6 +63,9 @@
 			. += title
 
 /datum/controller/subsystem/job/proc/all_jobs(faction)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)

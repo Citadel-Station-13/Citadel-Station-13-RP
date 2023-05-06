@@ -1,3 +1,3 @@
 /datum/role/job/station
-	faction = JOB_FACTION_STATION
+	faction = /datum/faction/station
 	abstract_type = /datum/role/job/station

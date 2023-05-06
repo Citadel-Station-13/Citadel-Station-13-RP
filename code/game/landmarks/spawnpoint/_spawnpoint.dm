@@ -164,6 +164,12 @@
 	/// Method - if there's more than one registered method available, a player may choose which one to use
 	var/method = LATEJOIN_METHOD_DEFAULT
 
+/obj/landmark/spawnpoint/latejoin/Initialize(mapload)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
+	return ..()
+
 /obj/landmark/spawnpoint/latejoin/Register()
 	. = ..()
 	if(!faction)
@@ -195,8 +201,14 @@
  */
 /obj/landmark/spawnpoint/overflow
 	name = "unknown overflow spawnpoint"
-	/// Faction
+	/// Faction - id or path
 	var/faction
+
+/obj/landmark/spawnpoint/overflow/Initialize(mapload)
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
+	return ..()
 
 /obj/landmark/spawnpoint/overflow/Register()
 	. = ..()

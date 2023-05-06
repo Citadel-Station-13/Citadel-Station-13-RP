@@ -48,10 +48,10 @@ SUBSYSTEM_DEF(job)
 		var/datum/role/job/J = job_lookup[id]
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
-		var/faction = J.faction
-		LAZYINITLIST(job_pref_ui_cache[faction])
+		var/datum/faction/faction = SSfactions.fetch_faction(J.faction)
+		LAZYINITLIST(job_pref_ui_cache[faction.name])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
-		LAZYADD(job_pref_ui_cache[faction][department], id)
+		LAZYADD(job_pref_ui_cache[faction.name][department], id)
 	// todo: why
 	for(var/fname in job_pref_ui_cache)
 		var/list/faction = job_pref_ui_cache[fname]

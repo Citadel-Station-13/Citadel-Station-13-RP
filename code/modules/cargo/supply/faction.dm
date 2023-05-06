@@ -15,6 +15,8 @@
 	var/registered = FALSE
 	/// initialized?
 	var/initalized = FALSE
+	/// orderable? if not, we won't appear on supply consoles.
+	var/orderable = TRUE
 	/// name
 	var/name = "Unknown Faction"
 	/// destination

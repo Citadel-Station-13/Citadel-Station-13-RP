@@ -46,20 +46,22 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	// make
 	for(var/datum/role/job/J as anything in eligible)	// already type filtered
 		// faction
+		var/datum/faction/their_faction = SSfactions.fetch_faction(J.faction)
+		var/faction_name = their_faction?.name || "Misc"
 		var/list/faction
-		if(!jobs[J.faction])
-			jobs[J.faction] = faction = list()
+		if(!jobs[faction_name])
+			jobs[faction_name] = faction = list()
 		else
-			faction = jobs[J.faction]
+			faction = jobs[faction_name]
 		// department
 		var/list/department
 		// todo: this is awful
 		var/department_name = LAZYACCESS(J.departments, 1)
 		department_name = capitalize(department_name)
-		if(!jobs[J.faction][department_name])
-			jobs[J.faction][department_name] = department = list()
+		if(!jobs[faction_name][department_name])
+			jobs[faction_name][department_name] = department = list()
 		else
-			department = jobs[J.faction][department_name]
+			department = jobs[faction_name][department_name]
 		// finally, add job data
 		var/slots = J.slots_remaining(TRUE)
 		var/list/job_data = list(
