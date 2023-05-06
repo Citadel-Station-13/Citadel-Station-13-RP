@@ -1,6 +1,6 @@
 /obj/landmark/spawnpoint/latejoin/talon
 	name = "Talon Latejoin"
-	faction = JOB_FACTION_TALON
+	faction = /datum/faction/talon
 
 /obj/landmark/spawnpoint/job/talon_engineer
 	name = "Talon Engineer"
