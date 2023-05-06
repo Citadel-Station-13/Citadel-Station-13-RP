@@ -14,9 +14,11 @@
 
 /**
  * basically, indicates that a player's gone, and there's no ai holder
+ *
+ * people who are dead do not count
  */
 /mob/proc/is_catatonic()
-	return !ckey
+	return !ckey && !IS_DEAD(src)
 
 /mob/living/is_catatonic()
 	return isnull(ai_holder) && ..()
@@ -55,13 +57,15 @@
  */
 /mob/proc/render_ssd_overlay()
 	if(isnull(ssd_overlay))
-		ssd_overlay = image(icon = 'icons/screen/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
+		ssd_overlay = mutable_appearance(icon = 'icons/screen/atom_hud/status_16x16_oversized.dmi', icon_state = "eepy")
 	// flags
-	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART
+	ssd_overlay.appearance_flags = RESET_COLOR | PIXEL_SCALE | KEEP_APART | RESET_TRANSFORM
 	// matrix
 	var/matrix/transforming_with = matrix()
+	var/matrix/ours = transform
 	// center above
-	transforming_with.Translate(8, 32 * transform.get_y_scale())
+	// todo: atom-level procs for overall x/y scales.
+	transforming_with.Translate(8, 32 * (size_multiplier * icon_scale_y) + ours.get_y_shift())
 	// modify transform to new
 	ssd_overlay.transform = transforming_with
 	return TRUE // no support for smart re-renders yet.

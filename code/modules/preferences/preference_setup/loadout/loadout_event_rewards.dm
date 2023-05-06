@@ -52,3 +52,10 @@
 	name = "Culinary Excellence Pin"
 	path = /obj/item/clothing/accessory/medal/cooking
 	ckeywhitelist = list("spessinquisitor", "ktoma36", "ghxst_azy")
+
+/datum/gear/event_reward/petrock
+	sort_category = "Event Rewards"
+	cost = 0
+	name = "Pet Rock"
+	path = /obj/item/toy/plushie/petrock
+	ckeywhitelist = list("cawingcrow")

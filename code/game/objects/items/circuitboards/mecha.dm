@@ -2,6 +2,11 @@
 #error T_BOARD_MECHA already defined elsewhere, we can't use it.
 #endif
 #define T_BOARD_MECHA(name)	"exosuit module circuit board (" + (name) + ")"
+#ifdef T_BOARD_FIGHTER
+#error T_BOARD_FIGHTER already defined elsewhere, we can't use it.
+#endif
+#define T_BOARD_FIGHTER(name)	"fightercraft circuit board (" + (name) + ")"
+
 
 /obj/item/circuitboard/mecha
 	name = "exosuit circuit board"
@@ -140,3 +145,29 @@
 
 //Undef the macro, shouldn't be needed anywhere else
 #undef T_BOARD_MECHA
+
+///fighters///
+/obj/item/circuitboard/mecha/fighter/pinnace
+
+/obj/item/circuitboard/mecha/fighter/pinnace/main
+	name = T_BOARD_FIGHTER("Pinnace central control")
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+	icon_state = "mainboard"
+
+/obj/item/circuitboard/mecha/fighter/pinnace/flight
+	name = T_BOARD_FIGHTER("Pinnace flight control")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 3)
+
+/obj/item/circuitboard/mecha/fighter/pinnace/targeting
+	name = T_BOARD_FIGHTER("Pinnace weapon control and targeting")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_COMBAT = 5)
+
+/obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard
+	name = T_BOARD_FIGHTER("Pinnace manual flight control instruments")
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+	icon_state = "card_mod"
+
+//Undef the macro, shouldn't be needed outside of fighter construction
+#undef T_BOARD_FIGHTER

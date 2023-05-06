@@ -348,12 +348,12 @@
 /area/ship/ert/barracks)
 "dp" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/barracks)
@@ -372,7 +372,7 @@
 "ds" = (
 /obj/structure/table/rack,
 /obj/item/storage/backpack/ert/commander,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /obj/item/clothing/head/helmet/ert/command,
 /obj/item/clothing/suit/armor/vest/ert/command,
 /turf/simulated/floor/wood,
@@ -604,7 +604,7 @@
 /area/ship/ert/dock_star)
 "fx" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -615,49 +615,49 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/rescue_pharm,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/rescue_pharm,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fE" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fP" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fU" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "fZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "ga" = (
@@ -1885,9 +1885,9 @@
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
 /obj/item/storage/backpack/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
 /obj/item/clothing/head/helmet/ert/engineer,
@@ -1930,9 +1930,9 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/medical,
@@ -1964,9 +1964,9 @@
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
 /obj/item/storage/backpack/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/medical,
 /obj/item/clothing/head/helmet/ert/medical,
@@ -2056,7 +2056,7 @@
 /obj/item/mop,
 /obj/item/mop,
 /obj/item/mop,
-/obj/item/rig/ert/janitor,
+/obj/item/hardsuit/ert/janitor,
 /obj/item/lightreplacer,
 /obj/item/lightreplacer,
 /obj/item/storage/box/lights/mixed,
@@ -2083,9 +2083,9 @@
 /area/ship/ert/mech_bay)
 "pM" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -2093,9 +2093,9 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "pN" = (
@@ -2148,18 +2148,18 @@
 /area/ship/ert/mech_bay)
 "qa" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qd" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "ql" = (
@@ -2173,10 +2173,10 @@
 /area/ship/ert/med)
 "qo" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/mech_bay)
 "qt" = (
@@ -2400,9 +2400,9 @@
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /obj/machinery/light,
 /obj/effect/floor_decal/industrial/outline/grey,
 /obj/item/clothing/head/helmet/ert/security,
@@ -3908,9 +3908,9 @@
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
 /obj/item/storage/backpack/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -5869,7 +5869,7 @@
 /area/shuttle/ert_ship_boat)
 "QY" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /obj/item/cell/slime,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)

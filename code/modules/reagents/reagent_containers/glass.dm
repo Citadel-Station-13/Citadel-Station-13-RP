@@ -360,6 +360,14 @@
 	w_class = ITEMSIZE_LARGE
 	unacidable = 1
 
+/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user)
+	. = ..()
+	if(reagents && reagents.reagent_list.len)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	else
+		. += "<span class='notice'>It is empty.</span>"
+
 /obj/item/reagent_containers/glass/bucket/sandstone/attackby(var/obj/D, mob/user as mob)
 	if(isprox(D))
 		to_chat(user, "This wooden bucket doesn't play well with electronics.")

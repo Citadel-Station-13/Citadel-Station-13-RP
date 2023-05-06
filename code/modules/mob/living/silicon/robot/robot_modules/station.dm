@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.icon_dimension_x = 64
+	R.icon_x_dimension = 64
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style

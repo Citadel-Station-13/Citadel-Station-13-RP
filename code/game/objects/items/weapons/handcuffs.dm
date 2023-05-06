@@ -66,7 +66,7 @@
 
 	playsound(src.loc, cuff_sound, 30, 1, -2)
 
-	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.gloves,/obj/item/clothing/gloves/gauntlets/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.gloves]!</span>")
 		return 0
 
@@ -258,7 +258,7 @@ var/last_chew = 0
 	if(!H.can_equip(src, SLOT_ID_LEGCUFFED, user = user))
 		return FALSE
 
-	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/rig) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
+	if(istype(H.shoes,/obj/item/clothing/shoes/magboots/hardsuit) && !elastic) // Can't cuff someone who's in a deployed hardsuit.
 		to_chat(user, "<span class='danger'>\The [src] won't fit around \the [H.shoes]!</span>")
 		return 0
 

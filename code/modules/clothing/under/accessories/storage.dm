@@ -20,7 +20,7 @@
 		on_rolled["down"] = icon_state
 
 /obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
-	if (has_suit)	//if we are part of a suit
+	if (accessory_host)	//if we are part of a suit
 		hold.open(user)
 		return
 
@@ -28,7 +28,7 @@
 		..(user)
 
 /obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
-	if (has_suit)
+	if (accessory_host)
 		return
 
 	if (hold.handle_mousedrop(usr, over_object))
@@ -132,3 +132,20 @@
 	icon_state = "laconic"
 	slot = ACCESSORY_SLOT_UTILITY
 	slots = 5
+
+//Ashlander Potion Bandolier
+/obj/item/clothing/accessory/storage/ashlander_alchemy
+	name = "hide bandolier"
+	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
+	icon_state = "bandolier_ash"
+	slots = 5
+
+/obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
+	. = ..()
+	hold.can_hold = list(
+		/obj/item/reagent_containers/glass/stone,\
+		/obj/item/stack/medical/poultice_brute,\
+		/obj/item/stack/medical/poultice_burn,\
+		/obj/item/grenade/explosive/ashlander,\
+		/obj/item/bitterash,\
+		/obj/item/flame/lighter)

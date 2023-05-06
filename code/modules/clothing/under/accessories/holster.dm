@@ -67,7 +67,7 @@
 		clear_holster()
 
 /obj/item/clothing/accessory/holster/attack_hand(mob/user, list/params)
-	if (has_suit && (slot & ACCESSORY_SLOT_UTILITY))
+	if (accessory_host && (slot & ACCESSORY_SLOT_UTILITY))
 		if(holstered)
 			unholster(user)
 	..(user)
@@ -89,12 +89,12 @@
 
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
-	if(has_suit)
-		add_obj_verb(has_suit, /obj/item/clothing/accessory/holster/verb/holster_verb)
+	if(accessory_host)
+		add_obj_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
 
 /obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
-	if(has_suit)
-		remove_verb(has_suit, /obj/item/clothing/accessory/holster/verb/holster_verb)
+	if(accessory_host)
+		remove_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
 	..()
 
 //For the holster hotkey

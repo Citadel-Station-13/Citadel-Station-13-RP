@@ -212,61 +212,61 @@
 
 ////// RIGSuit Stuff
 /*
-/datum/design/science/rig
+/datum/design/science/hardsuit
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 6000, MAT_URANIUM = 4000)
 
-/datum/design/science/rig/eva
+/datum/design/science/hardsuit/eva
 	name = "eva hardsuit (empty)"
 	identifier = "eva_hardsuit"
-	build_path = /obj/item/rig/eva
+	build_path = /obj/item/hardsuit/eva
 
-/datum/design/science/rig/mining
+/datum/design/science/hardsuit/mining
 	name = "industrial hardsuit (empty)"
 	identifier = "ind_hardsuit"
-	build_path = /obj/item/rig/industrial
+	build_path = /obj/item/hardsuit/industrial
 
-/datum/design/science/rig/research
+/datum/design/science/hardsuit/research
 	name = "ami hardsuit (empty)"
 	identifier = "ami_hardsuit"
-	build_path = /obj/item/rig/hazmat
+	build_path = /obj/item/hardsuit/hazmat
 
-/datum/design/science/rig/medical
+/datum/design/science/hardsuit/medical
 	name = "medical hardsuit (empty)"
 	identifier = "med_hardsuit"
-	build_path = /obj/item/rig/medical
+	build_path = /obj/item/hardsuit/medical
 */
 
-/datum/design/science/rig_module
+/datum/design/science/hardsuit_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
-/datum/design/science/rig_module/plasma_cutter
-	name = "rig module - plasma cutter"
-	identifier = "rigmod_plasmacutter"
-	build_path = /obj/item/rig_module/device/plasmacutter
+/datum/design/science/hardsuit_module/plasma_cutter
+	name = "hardsuit module - plasma cutter"
+	identifier = "hardsuitmod_plasmacutter"
+	build_path = /obj/item/hardsuit_module/device/plasmacutter
 
-/datum/design/science/rig_module/diamond_drill
-	name = "rig module - diamond drill"
-	identifier = "rigmod_diamonddrill"
-	build_path = /obj/item/rig_module/device/drill
+/datum/design/science/hardsuit_module/diamond_drill
+	name = "hardsuit module - diamond drill"
+	identifier = "hardsuitmod_diamonddrill"
+	build_path = /obj/item/hardsuit_module/device/drill
 
-/datum/design/science/rig_module/maneuvering_jets
-	name = "rig module - maneuvering jets"
-	identifier = "rigmod_maneuveringjets"
-	build_path = /obj/item/rig_module/maneuvering_jets
+/datum/design/science/hardsuit_module/maneuvering_jets
+	name = "hardsuit module - maneuvering jets"
+	identifier = "hardsuitmod_maneuveringjets"
+	build_path = /obj/item/hardsuit_module/maneuvering_jets
 
-/datum/design/science/rig_module/anomaly_scanner
-	name = "rig module - anomaly scanner"
-	identifier = "rigmod_anomalyscanner"
-	build_path = /obj/item/rig_module/device/anomaly_scanner
+/datum/design/science/hardsuit_module/anomaly_scanner
+	name = "hardsuit module - anomaly scanner"
+	identifier = "hardsuitmod_anomalyscanner"
+	build_path = /obj/item/hardsuit_module/device/anomaly_scanner
 
-/datum/design/science/rig_module/orescanner
-	name = "rig module - ore scanner"
-	identifier = "rigmod_orescanner"
-	build_path = /obj/item/rig_module/device/orescanner
+/datum/design/science/hardsuit_module/orescanner
+	name = "hardsuit module - ore scanner"
+	identifier = "hardsuitmod_orescanner"
+	build_path = /obj/item/hardsuit_module/device/orescanner
 
-/datum/design/science/rig_module/orescanneradv
-	name = "rig module - adv. ore scanner"
-	identifier = "rigmod_orescanner_adv"
-	build_path = /obj/item/rig_module/device/orescanner/advanced
+/datum/design/science/hardsuit_module/orescanneradv
+	name = "hardsuit module - adv. ore scanner"
+	identifier = "hardsuitmod_orescanner_adv"
+	build_path = /obj/item/hardsuit_module/device/orescanner/advanced
