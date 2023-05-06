@@ -109,7 +109,7 @@ var/datum/antagonist/ninja/ninjas
 	player.equip_to_slot_or_del(new /obj/item/flashlight(player), SLOT_ID_BELT)
 	create_id("Infiltrator", player)
 
-	var/obj/item/rig/light/ninja/ninjasuit = new(get_turf(player))
+	var/obj/item/hardsuit/light/ninja/ninjasuit = new(get_turf(player))
 	ninjasuit.seal_delay = 0
 	player.put_in_hands(ninjasuit)
 	player.equip_to_slot_or_del(ninjasuit,SLOT_ID_BACK)
@@ -117,10 +117,10 @@ var/datum/antagonist/ninja/ninjas
 		ninjasuit.toggle_seals(src,1)
 		ninjasuit.seal_delay = initial(ninjasuit.seal_delay)
 
-	if(istype(player.back,/obj/item/rig))
-		var/obj/item/rig/rig = player.back
-		if(rig.air_supply)
-			player.internal = rig.air_supply
+	if(istype(player.back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/hardsuit = player.back
+		if(hardsuit.air_supply)
+			player.internal = hardsuit.air_supply
 
 	spawn(10)
 		if(player.internal)

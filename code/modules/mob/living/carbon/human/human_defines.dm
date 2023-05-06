@@ -11,8 +11,8 @@
 
 	/// To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/embedded_flag
-	/// This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
-	var/obj/item/rig/wearing_rig
+	/// This is very not good, but it's much much better than calling get_hardsuit() every update_canmove() call.
+	var/obj/item/hardsuit/wearing_rig
 	/// For human_attackhand.dm, keeps track of the last use of disarm.
 	var/last_push_time
 
