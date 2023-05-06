@@ -3,9 +3,10 @@ SUBSYSTEM_DEF(supply)
 	wait = 30 SECONDS
 
 	/// all factions
-	var/list/datum/supply_faction/factions
+	var/list/datum/supply_faction/factions = list
 	/// global destination lookup
-	var/list/destinations
+	var/list/destinations = list()
+	///
 
 /datum/controller/subsystem/supply/Recover()
 	#warn impl
@@ -19,6 +20,9 @@ SUBSYSTEM_DEF(supply)
 		CRASH("wrong datum")
 	destinations -= what
 	return TRUE
+
+/datum/controller/subsystem/supply/proc/resolve_destination(destination)
+	return destinations[destination]
 
 SUBSYSTEM_DEF(supply)
 	name = "Supply"

@@ -7,12 +7,27 @@
  * remember, composition is better than overriding everything everywhere.
  */
 /datum/supply_faction
+	/// id - unique, auto assign, non persistent, overridable
+	var/id
+	/// id next
+	var/static/id_next = FIRST_ASCENDING_UID
 	/// registered?
 	var/registered = FALSE
+	/// initialized?
+	var/initalized = FALSE
 	/// name
-	var/name
+	var/name = "Unknown Faction"
 	/// destination
 	var/tmp/assigned_destination
+	/// normal singular-buy goodies: list(category = list(typepaths))
+	var/list/normal_catalog = list()
+	/// contraband singular-buy goodies: list(category = list(typepaths))
+	var/list/contraband_catalog = list()
+	/// supply_pack datums; list of typepaths, init'd on register.
+	var/list/datum/supply_pack/packs = list()
+
+/datum/supply_faction/New()
+	STORE_AND_INCREMENT_ASCENDING_UID(id, id_next)
 
 /datum/supply_faction/Destroy()
 	if(registered)
@@ -20,6 +35,7 @@
 	return ..()
 
 /datum/supply_faction/proc/register()
+	initialize()
 	assigned_destination = SSsupply.request_destination()
 	registered = TRUE
 	return TRUE
@@ -28,3 +44,15 @@
 	SSsupply.clear_destination(assigned_destination, src)
 	registered = FALSE
 	return TRUE
+
+/datum/supply_faction/proc/initialize()
+	initialized = TRUE
+	var/list/packs = list()
+	for(var/datum/supply_pack/thing as anything in src.packs)
+		if(istype(thing))
+			packs += thing
+		else if(ispath(thing, /datum/supply_pack))
+			packs += new thing
+	src.packs = packs
+
+	#warn init bounties

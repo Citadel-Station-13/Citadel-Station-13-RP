@@ -1,10 +1,37 @@
+import { ModuleData, ModuleProps, useModule } from "../../backend";
+import { Modular } from "../../layouts/Modular";
+import { WindowProps } from "../../layouts/Window";
+
+interface SupplySystemProps extends ModuleProps {
+
+}
+
+interface SupplySystemData extends ModuleData {
+
+}
+
+export const TGUISupplySystem = (props: SupplySystemProps, context) => {
+  const { data, act } = useModule<SupplySystemData>(context);
+  const window: WindowProps = {
+    title: "test",
+    width: 700,
+    height: 700,
+  };
+  return (
+    <Modular window={window}>
+      test
+    </Modular>
+  );
+};
+
+/*
 import { filter, sortBy } from 'common/collections';
 import { Fragment } from "inferno";
-import { formatTime } from "../format";
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from "../components";
-import { ComplexModal, modalRegisterBodyOverride } from '../interfaces/common/ComplexModal';
-import { Window } from "../layouts";
+import { formatTime } from "../../format";
+import { useBackend, useLocalState } from "../../backend";
+import { Box, Button, LabeledList, Section, Tabs, AnimatedNumber, Stack } from "../../components";
+import { ComplexModal, modalRegisterBodyOverride } from '../common/ComplexModal';
+import { Window } from "../../layouts";
 import { flow } from 'common/fp';
 
 const viewCrateContents = (modal, context) => {
@@ -258,8 +285,8 @@ const SupplyConsoleMenuOrder = (props, context) => {
                 </Stack>
               </Box>
             ))}
-            {/* Alternative collapsible style folders */}
-            {/* {viewingPacks.map(pack => (
+            {/* Alternative collapsible style folders */
+/* {viewingPacks.map(pack => (
               <Collapsible title={pack.name} mb={-0.7}>
                 <center>
                   {pack.manifest.map(item => (
@@ -273,7 +300,8 @@ const SupplyConsoleMenuOrder = (props, context) => {
                     content={"Buy - " + pack.cost + " points"} />
                 </center>
               </Collapsible>
-            ))} */}
+            ))} */
+/*
           </Section>
         </Stack.Item>
       </Stack>
@@ -440,3 +468,4 @@ const SupplyConsoleMenuHistoryExport = (props, context) => {
     </Section>
   );
 };
+*/

@@ -3,6 +3,7 @@
 // and therefore more deserving of parent-class status -- Ater
 
 // Supply requests console
+#warn /obj/machinery/computer/supply
 /obj/machinery/computer/supplycomp
 	name = "supply ordering console"
 	icon_screen = "request"

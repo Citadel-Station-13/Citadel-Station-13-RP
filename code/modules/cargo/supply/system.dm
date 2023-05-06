@@ -9,8 +9,6 @@
  * * handler
  */
 /datum/supply_system
-	/// unique id
-	var/id
 	/// the handler
 	var/datum/supply_handler/handler
 
@@ -25,6 +23,11 @@
 	var/list/datum/supply_order/pending
 	/// accepted orders
 	var/list/datum/supply_order/accepted
+	/// finished orders
+	var/list/datum/supply_order/delivered
+
+	/// completed outgoing shipments
+	var/list/datum/supply_shipment/shipped
 
 
 /datum/supply_system/New(id, datum/supply_handler/handler)

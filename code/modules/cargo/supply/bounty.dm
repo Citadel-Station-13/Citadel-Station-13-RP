@@ -12,8 +12,11 @@
 	var/tmp/assigned_destination
 	/// are we registered?
 	var/registered = FALSE
+	/// the faction we're from
+	var/datum/supply_faction/parent
 
-/datum/supply_bounty/New()
+/datum/supply_bounty/New(datum/supply_faction/parent)
+	src.parent = parent
 	generate()
 
 /datum/supply_bounty/Destroy()
