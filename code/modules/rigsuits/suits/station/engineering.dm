@@ -1,9 +1,9 @@
-/obj/item/rig/eva
+/obj/item/hardsuit/eva
 	name = "EVA suit control module"
 	suit_type = "EVA hardsuit"
 	desc = "A light hardsuit for repairs and maintenance to the outside of habitats and vessels."
 	icon_state = "eva_rig"
-	armor_type = /datum/armor/rig/eva
+	armor_type = /datum/armor/hardsuit/eva
 	slowdown = 0
 	offline_slowdown = 1
 	offline_vision_restriction = 1
@@ -11,8 +11,8 @@
 	seal_delay = 24 //Should be slightly faster than other hardsuits, giving Engineering faster response time for emergencies.
 
 
-	helm_type = /obj/item/clothing/head/helmet/space/rig/eva
-	glove_type = /obj/item/clothing/gloves/gauntlets/rig/eva
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/eva
+	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/eva
 
 	allowed = list(
 		/obj/item/flashlight,
@@ -26,7 +26,7 @@
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
-/datum/armor/rig/eva
+/datum/armor/hardsuit/eva
 	melee = 0.35
 	bullet = 0.1
 	laser = 0.2
@@ -35,39 +35,39 @@
 	bio = 1.0
 	rad = 0.95
 
-/obj/item/clothing/gloves/gauntlets/rig/eva
+/obj/item/clothing/gloves/gauntlets/hardsuit/eva
 	name = "insulated gauntlets"
 	siemens_coefficient = 0
 
-/obj/item/rig/eva/equipped
+/obj/item/hardsuit/eva/equipped
 	initial_modules = list(
-		/obj/item/rig_module/device/plasmacutter,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson
+		/obj/item/hardsuit_module/device/plasmacutter,
+		/obj/item/hardsuit_module/maneuvering_jets,
+		/obj/item/hardsuit_module/device/rcd,
+		/obj/item/hardsuit_module/vision/meson
 		)
 
-/obj/item/clothing/head/helmet/space/rig/eva
+/obj/item/clothing/head/helmet/space/hardsuit/eva
 	light_overlay = "helmet_light_dual"
 	camera_networks = list(NETWORK_ENGINEERING)
 
-/obj/item/rig/ce
+/obj/item/hardsuit/ce
 	name = "advanced voidsuit control module"
 	suit_type = "advanced voidsuit"
 	desc = "An advanced voidsuit that protects against hazardous, low pressure environments. Shines with a high polish."
 	icon_state = "ce_rig"
-	armor_type = /datum/armor/rig/ce
+	armor_type = /datum/armor/hardsuit/ce
 	slowdown = 0
 	offline_slowdown = 0
 	offline_vision_restriction = 0
 	siemens_coefficient= 0.75
-	rigsuit_max_pressure = 20 * ONE_ATMOSPHERE			  // Max pressure the rig protects against when sealed
-	rigsuit_min_pressure = 0							  // Min pressure the rig protects against when sealed
+	rigsuit_max_pressure = 20 * ONE_ATMOSPHERE			  // Max pressure the hardsuit protects against when sealed
+	rigsuit_min_pressure = 0							  // Min pressure the hardsuit protects against when sealed
 	seal_delay = 8 //Why did we give the EVA hardsuit a better equip time than the CE hardsuit, again? I'm changing it.
 
-	helm_type = /obj/item/clothing/head/helmet/space/rig/ce
-	glove_type = /obj/item/clothing/gloves/gauntlets/rig/ce
-	boot_type = /obj/item/clothing/shoes/magboots/rig/ce
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/ce
+	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/ce
+	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/ce
 
 	allowed = list(
 		/obj/item/flashlight,
@@ -83,7 +83,7 @@
 
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
-/datum/armor/rig/ce
+/datum/armor/hardsuit/ce
 	melee = 0.4
 	bullet = 0.2
 	laser = 0.3
@@ -92,23 +92,23 @@
 	bio = 1.0
 	rad = 1.0
 
-/obj/item/clothing/gloves/gauntlets/rig/ce
+/obj/item/clothing/gloves/gauntlets/hardsuit/ce
 	name = "insulated gauntlets"
 	siemens_coefficient = 0
 
-/obj/item/clothing/shoes/magboots/rig/ce
+/obj/item/clothing/shoes/magboots/hardsuit/ce
 	slowdown_on = 0
 
-/obj/item/rig/ce/equipped
+/obj/item/hardsuit/ce/equipped
 	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/maneuvering_jets,
-		/obj/item/rig_module/device/plasmacutter,
-		/obj/item/rig_module/device/rcd,
-		/obj/item/rig_module/vision/meson,
-		/obj/item/rig_module/device/rigwelder, // CE gets tools in their RIG
-		/obj/item/rig_module/device/toolset
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/maneuvering_jets,
+		/obj/item/hardsuit_module/device/plasmacutter,
+		/obj/item/hardsuit_module/device/rcd,
+		/obj/item/hardsuit_module/vision/meson,
+		/obj/item/hardsuit_module/device/rigwelder, // CE gets tools in their hardsuit
+		/obj/item/hardsuit_module/device/toolset
 		)
 
-/obj/item/clothing/head/helmet/space/rig/ce
+/obj/item/clothing/head/helmet/space/hardsuit/ce
 	camera_networks = list(NETWORK_ENGINEERING,NETWORK_COMMAND)

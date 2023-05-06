@@ -8,7 +8,7 @@
 	var/product_type = "undefined"
 	var/charges = 0
 
-/obj/item/rig_module
+/obj/item/hardsuit_module
 	name = "hardsuit upgrade"
 	desc = "It looks pretty sciency."
 	icon = 'icons/obj/rig_modules.dmi'
@@ -16,7 +16,7 @@
 	matter = list(MAT_STEEL = 20000, MAT_PLASTIC = 30000, MAT_GLASS = 5000)
 
 	var/damage = 0
-	var/obj/item/rig/holder
+	var/obj/item/hardsuit/holder
 
 	var/module_cooldown = 10
 	var/next_use = 0
@@ -52,9 +52,9 @@
 	var/activate_string = "Activate"
 	var/deactivate_string = "Deactivate"
 
-	var/list/stat_rig_module/stat_modules = new()
+	var/list/stat_hardsuit_module/stat_modules = new()
 
-/obj/item/rig_module/examine(mob/user)
+/obj/item/hardsuit_module/examine(mob/user)
 	. = ..()
 	switch(damage)
 		if(0)
@@ -64,7 +64,7 @@
 		if(2)
 			. += "It is almost completely destroyed."
 
-/obj/item/rig_module/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/hardsuit_module/attackby(obj/item/W as obj, mob/user as mob)
 
 	if(istype(W,/obj/item/stack/nanopaste))
 
@@ -108,7 +108,7 @@
 		return
 	..()
 
-/obj/item/rig_module/Initialize(mapload)
+/obj/item/hardsuit_module/Initialize(mapload)
 	. = ..()
 	if(suit_overlay_inactive)
 		suit_overlay = suit_overlay_inactive
@@ -128,19 +128,19 @@
 
 		charges = processed_charges
 
-	stat_modules +=	new/stat_rig_module/activate(src)
-	stat_modules +=	new/stat_rig_module/deactivate(src)
-	stat_modules +=	new/stat_rig_module/engage(src)
-	stat_modules +=	new/stat_rig_module/select(src)
-	stat_modules +=	new/stat_rig_module/charge(src)
+	stat_modules +=	new/stat_hardsuit_module/activate(src)
+	stat_modules +=	new/stat_hardsuit_module/deactivate(src)
+	stat_modules +=	new/stat_hardsuit_module/engage(src)
+	stat_modules +=	new/stat_hardsuit_module/select(src)
+	stat_modules +=	new/stat_hardsuit_module/charge(src)
 
 // Called when the module is installed into a suit.
-/obj/item/rig_module/proc/installed(var/obj/item/rig/new_holder)
+/obj/item/hardsuit_module/proc/installed(var/obj/item/hardsuit/new_holder)
 	holder = new_holder
 	return
 
 //Proc for one-use abilities like teleport.
-/obj/item/rig_module/proc/engage()
+/obj/item/hardsuit_module/proc/engage()
 
 	if(damage >= 2)
 		to_chat(usr, "<span class='warning'>The [interface_name] is damaged beyond use!</span>")
@@ -174,7 +174,7 @@
 	return 1
 
 // Proc for toggling on active abilities.
-/obj/item/rig_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
+/obj/item/hardsuit_module/proc/activate(var/skip_engage = 0) // Allow us to skip the engage call.
 	// Allow us to skip the engage call
 	if(active)
 		return 0
@@ -192,7 +192,7 @@
 	return 1
 
 // Proc for toggling off active abilities.
-/obj/item/rig_module/proc/deactivate()
+/obj/item/hardsuit_module/proc/deactivate()
 
 	if(!active)
 		return 0
@@ -210,13 +210,13 @@
 	return 1
 
 // Called when the module is uninstalled from a suit.
-/obj/item/rig_module/proc/removed()
+/obj/item/hardsuit_module/proc/removed()
 	deactivate()
 	holder = null
 	return
 
-// Called by the hardsuit each rig process tick.
-/obj/item/rig_module/process(delta_time)
+// Called by the hardsuit each hardsuit process tick.
+/obj/item/hardsuit_module/process(delta_time)
 	if(active)
 		return active_power_cost
 	else
@@ -224,51 +224,51 @@
 
 // Called by holder rigsuit attackby()
 // Checks if an item is usable with this module and handles it if it is
-/obj/item/rig_module/proc/accepts_item(var/obj/item/input_device)
+/obj/item/hardsuit_module/proc/accepts_item(var/obj/item/input_device)
 	return 0
 
 /mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
-	if(istype(back,/obj/item/rig))
-		var/obj/item/rig/R = back
-		. += legacy_rig_stat(R, C)
-	else if(istype(belt,/obj/item/rig))
-		var/obj/item/rig/R = belt
-		. += legacy_rig_stat(R, C)
+	if(istype(back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/R = back
+		. += legacy_hardsuit_stat(R, C)
+	else if(istype(belt,/obj/item/hardsuit))
+		var/obj/item/hardsuit/R = belt
+		. += legacy_hardsuit_stat(R, C)
 	else
 		C.statpanel_tab("Hardsuit Modules", FALSE)
 
-/mob/proc/legacy_rig_stat(obj/item/rig/R, client/C)
+/mob/proc/legacy_hardsuit_stat(obj/item/hardsuit/R, client/C)
 	var/needed = R.is_activated() && length(R.installed_modules)
 	. = list()
 	if(!C.statpanel_tab("Hardsuit Modules", needed))
 		return
 	var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
 	STATPANEL_DATA_ENTRY("Suit charge", cell_status)
-	for(var/obj/item/rig_module/module in R.installed_modules)
-		for(var/stat_rig_module/SRM in module.stat_modules)
+	for(var/obj/item/hardsuit_module/module in R.installed_modules)
+		for(var/stat_hardsuit_module/SRM in module.stat_modules)
 			if(SRM.CanUse())
 				STATPANEL_DATA_CLICK(SRM.module.interface_name, SRM.name, REF(SRM))
 
-/stat_rig_module
+/stat_hardsuit_module
 	parent_type = /atom/movable
 	var/module_mode = ""
-	var/obj/item/rig_module/module
+	var/obj/item/hardsuit_module/module
 
-/stat_rig_module/New(var/obj/item/rig_module/module)
+/stat_hardsuit_module/New(var/obj/item/hardsuit_module/module)
 	..()
 	src.module = module
 
-/stat_rig_module/proc/AddHref(var/list/href_list)
+/stat_hardsuit_module/proc/AddHref(var/list/href_list)
 	return
 
-/stat_rig_module/proc/CanUse()
+/stat_hardsuit_module/proc/CanUse()
 	return 0
 
-/stat_rig_module/statpanel_click(client/C, action, auth)
+/stat_hardsuit_module/statpanel_click(client/C, action, auth)
 	Click()
 
-/stat_rig_module/Click()
+/stat_hardsuit_module/Click()
 	if(CanUse())
 		var/list/href_list = list(
 							"interact_module" = module.holder.installed_modules.Find(module),
@@ -277,20 +277,20 @@
 		AddHref(href_list)
 		module.holder.Topic(usr, href_list)
 
-/stat_rig_module/DblClick()
+/stat_hardsuit_module/DblClick()
 	return Click()
 
-/stat_rig_module/activate/New(var/obj/item/rig_module/module)
+/stat_hardsuit_module/activate/New(var/obj/item/hardsuit_module/module)
 	..()
 	name = module.activate_string
 	if(module.active_power_cost)
 		name += " ([module.active_power_cost*10]A)"
 	module_mode = "activate"
 
-/stat_rig_module/activate/CanUse()
+/stat_hardsuit_module/activate/CanUse()
 	return module.toggleable && !module.active
 
-/stat_rig_module/deactivate/New(var/obj/item/rig_module/module)
+/stat_hardsuit_module/deactivate/New(var/obj/item/hardsuit_module/module)
 	..()
 	name = module.deactivate_string
 	// Show cost despite being 0, if it means changing from an active cost.
@@ -299,36 +299,36 @@
 
 	module_mode = "deactivate"
 
-/stat_rig_module/deactivate/CanUse()
+/stat_hardsuit_module/deactivate/CanUse()
 	return module.toggleable && module.active
 
-/stat_rig_module/engage/New(var/obj/item/rig_module/module)
+/stat_hardsuit_module/engage/New(var/obj/item/hardsuit_module/module)
 	..()
 	name = module.engage_string
 	if(module.use_power_cost)
 		name += " ([module.use_power_cost*10]E)"
 	module_mode = "engage"
 
-/stat_rig_module/engage/CanUse()
+/stat_hardsuit_module/engage/CanUse()
 	return module.usable
 
-/stat_rig_module/select/Initialize(mapload)
+/stat_hardsuit_module/select/Initialize(mapload)
 	. = ..()
 	name = "Select"
 	module_mode = "select"
 
-/stat_rig_module/select/CanUse()
+/stat_hardsuit_module/select/CanUse()
 	if(module.selectable)
 		name = module.holder.selected_module == module ? "Selected" : "Select"
 		return 1
 	return 0
 
-/stat_rig_module/charge/Initialize(mapload)
+/stat_hardsuit_module/charge/Initialize(mapload)
 	. = ..()
 	name = "Change Charge"
 	module_mode = "select_charge_type"
 
-/stat_rig_module/charge/AddHref(var/list/href_list)
+/stat_hardsuit_module/charge/AddHref(var/list/href_list)
 	var/charge_index = module.charges.Find(module.charge_selected)
 	if(!charge_index)
 		charge_index = 0
@@ -337,7 +337,7 @@
 
 	href_list["charge_type"] = module.charges[charge_index]
 
-/stat_rig_module/charge/CanUse()
+/stat_hardsuit_module/charge/CanUse()
 	if(module.charges && module.charges.len)
 		var/datum/rig_charge/charge = module.charges[module.charge_selected]
 		name = "[charge.display_name] ([charge.charges]C) - Change"

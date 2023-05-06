@@ -156,3 +156,15 @@
 /obj/item/clothing/accessory/halo_projector/nanotrasen
 	name = "corpo halo"
 	icon_state = "nanotrasen"
+
+/obj/item/clothing/accessory/halo_projector/corpomedic
+	name = "corpo medic halo"
+	icon_state = "corpomedic"
+
+/obj/item/clothing/accessory/halo_projector/traumaresponse
+	name = "trauma response halo"
+	icon_state = "traumaresponse"
+
+/obj/item/clothing/accessory/halo_projector/aesculapian
+	name = "aesculapian halo"
+	icon_state = "aesculapian"

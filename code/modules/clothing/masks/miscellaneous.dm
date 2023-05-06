@@ -210,6 +210,20 @@
 	icon_state = "bandblack"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bandblack", SLOT_ID_LEFT_HAND = "bandblack")
 
+/obj/item/clothing/mask/bandana/attack_self(mob/user)
+	. = ..()
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_up"
+		to_chat(user, "You fold the bandana into a cap.")
+		body_cover_flags = HEAD
+	else
+		src.icon_state = initial(icon_state)
+		to_chat(user, "You untie the bandana and spread it out.")
+		slot_flags = "[initial(slot_flags)]"
+		body_cover_flags = "[initial(body_cover_flags)]"
+	update_worn_icon()	//so our mob-overlays update
+
+/*
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
 		if(SLOT_ID_MASK) //Mask is the default for all the settings
@@ -221,8 +235,8 @@
 			inv_hide_flags = 0
 			body_cover_flags = HEAD
 			icon_state = "[initial(icon_state)]_up"
-
 	return ..()
+*/
 
 /obj/item/clothing/mask/bandana/red
 	name = "red bandana"

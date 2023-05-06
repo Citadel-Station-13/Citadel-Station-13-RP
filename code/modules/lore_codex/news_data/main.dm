@@ -27,7 +27,9 @@
 		/datum/lore/codex/page/keisani,
 		/datum/lore/codex/page/xenohybrid,
 		/datum/lore/codex/page/ad3,
-		/datum/lore/codex/page/prince
+		/datum/lore/codex/page/prince,
+		/datum/lore/codex/page/blueshield,
+		/datum/lore/codex/page/volink
 		)
 
 /datum/lore/codex/page/about_news
@@ -442,3 +444,47 @@
 	choice of who will lead the kingdom in place of his beloved son. With many prominent nobles backing opposing candidates, it is clear that even as Prince \
 	Thram's body burned to ash, the race to replace him was already progressing. Its unclear who among the candidates will emerge as crown prince to lead the \
 	New Kingdom of Adhomai in a rapidly changing galaxy"
+
+/datum/lore/codex/page/blueshield
+	name = "Nanotrasen to Expand Bluesheild Program, Highest Funding Since End of Syndicate War - 4/10/2567"
+	data = "The Blueshield has been a stable of Nanotrasen stations for decades. A idea that first came to prominence during the earliest days of the phoron wars \
+	the Blueshield program was formalized following the creation of the Corporate Syndicate whose bloody war against Nanotrasen put Nanotrasen's command staff in such \
+	danger the constant vigilance of Blueshield bodyguards was a necessary precaution. Countless lives were saved by the heroic blueshields during the war with the Syndicate \
+	however, folloing the end of the war the budget for blueshields was cut as many in Nanotrasen's upper management began to see them as an unecessary expense. Today however \
+	in Nanotrasen's monthly budget statements the company annouced that for the first time since the end of the Syndicate war the budget for the Blueshield program would be expanded. \
+	<br><br>\
+	Whether this represents a correction from the budgetary overreaction that occured at the end or the war, or an honest effort to increase the safety of Nanotrasen's command staff is \
+	up to speculation however, some analysts say that the increase is a sign of Nanotrasen's unease both at its current situation and the situation at the Galaxy at large. Some have even \
+	claimed that the increase of funding is the first sign that Nanotrasen is either looking to massively expand in the near future or fears a return to corporate warfare. With less than \
+	a decade passing since the end fo the Syndicate Wars, the propsect of large scale corporate warfare returning to the frontier is a scary thought for many individuals. Nanotrasen assures \
+	this network however, that the increase of budget to Blueshields is simply a correction of earlier oversights, whether this reason holds weight or if the theoriests theory of new corporate \
+	war proves true remains to be seen."
+
+/datum/lore/codex/page/volink
+	name = "Surprise Canidate Shakes Up New Kingdom Crown Prince Selection: Who is Prince Volink Azunja? - 4/24/2567"
+	data = "Since the death of Crown Prince Thram Azunja, the New Kingdom of Adhomai has been in search for a replacement heir to the throne of the \
+	struggling Tajaran state. After almost a month of silence from King Arzthram Azunja, the King finally annouced a royal conferrence, in which potential \
+	canidates for the title of Crown Prince, would formally announce their candidacy. With over a dozen potential canidates among the eligible nephews and grandsons \
+	of King Arzthram many already having signifcant backing among the New Kingdom's noble class it was bound to be a busy event where each of the princes \
+	would be trying their best to stand out. However, one young prince has stolen the spotlight during the conference, the Luna educated prince Volink Azunja son of the \
+	King Arzthram's youngest brother. \
+	<br><br>\
+	The prince's initial annoucement of his candidacy originally was almost ignored, the young prince was written off as being far too \
+	progressive and full of alien ideas to be a serious contender for the crown in the conservative New Kingdom. Volink's presentation today however, greatly shifted \
+	the balance of power of court. Rather than being flanked by a small cadre of his supporters while presenting himself to the King he was escorted to the throne by a \
+	formation of 'knights' armored in shining RiGs and armed with energy shields and metamaterial swords. The knights later revealed to be the sons of many lower ranking \
+	nobles currently serving in the New Kingom Royal Navy, shocked the court. Indeed Volink was accused of violating the laws of the courts, however the Prince quickly \
+	pointed out that it is the tradition that Knights of Noble blood should not be deprived of their swords or shields even in the presence of their king as it is their\
+	right to bear these arms, a rule which dates back to even before the cataclysmic sudden onset iceage that was the Great Frost of Adhomai.\
+	<br><br>\
+	The Prince's gambit seems to be have successful. Already he has courted many undecided nobles and won over many progressives within the noble houses. Among the frontrunners \
+	for the title of crown prince, Volink remains the youngest, a criticism he has noted. Addressing the critiques to his candidacy Volink made the following annoucement: \
+	<br><br>\
+	'For those that accuse me of seeking to upend the kingdom and its noble traditions with alien ideas, I bid you look to the noble sons of Adhomai to by sides: Are they not familar to you? \
+	You have seen them in ancient tales of heroism of times before the Frost, before the Revolution, when S'rendarr's warmth still coated this planet in green. Indeed every child of \
+	Adhomai knows the stories of knights who reigned before the Frost, whose nobility was so legendary that it laid the foundations of the nobility we all treasure today. I am not \
+	abandoning our noble traditions for alien ideas, no I seek to return Adhomai to that ancient nobility lost in the snows of the Great Frost. The New Kingdom will become a beacon \
+	of that nobility, not just for the people of the New Kingdom but for all Tajara. Like Srendarr pulls the worthy from the fields of Messa, I vow to lift all Tajara from the \
+	darkness of this new age, til the old nobility lost in the snow of the Great Frost shines not just on Adhomai but across the galaxy. As for those who say I am unproven I assure them \
+	that they will soon find that I have prooved myself.'"
+

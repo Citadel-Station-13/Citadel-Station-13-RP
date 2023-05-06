@@ -271,8 +271,8 @@
 							tanks += C.get_active_held_item()
 							// yes, the above can result in duplicates.
 							// snowflake rig handling, second highest priority
-							if(istype(C.back, /obj/item/rig))
-								var/obj/item/rig/R = C.back
+							if(istype(C.back, /obj/item/hardsuit))
+								var/obj/item/hardsuit/R = C.back
 								if(R.air_supply && R?.is_activated())
 									locnames += "in your hardsuit"
 									tanks += R.air_supply

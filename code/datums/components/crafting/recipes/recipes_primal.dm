@@ -680,10 +680,27 @@
 
 /datum/crafting_recipe/alchemy_bandolier
 	name = "Alchemy Bandolier"
-	result = /obj/item/storage/belt/ashlander
+	result = /obj/item/clothing/accessory/storage/ashlander_alchemy
 	time = 40
 	reqs = list(/obj/item/stack/animalhide/goliath_hide = 5,
 				/obj/item/stack/material/bone = 2,
 				/obj/item/stack/sinew = 2)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+/datum/crafting_recipe/ashlander_sandals
+	name = "Leather Sandals"
+	result = /obj/item/clothing/shoes/ashwalker
+	time = 20
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 4)
+	category = CAT_PRIMAL
+	always_available = FALSE
+
+//Make this one cloth once I give Ashies a cloth plant? If I do??
+/datum/crafting_recipe/ashlander_wraps
+	name = "Hide Footwraps"
+	result = /obj/item/clothing/shoes/footwraps
+	time = 10
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2)
 	category = CAT_PRIMAL
 	always_available = FALSE

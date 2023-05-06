@@ -316,7 +316,7 @@
 	// Used for lings to not see deadchat, and to have ghosting behave as if they were not really dead.
 	var/forbid_seeing_deadchat = FALSE
 
-	var/get_rig_stats = 0
+	var/get_hardsuit_stats = 0
 
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE

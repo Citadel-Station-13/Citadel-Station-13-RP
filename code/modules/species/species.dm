@@ -464,6 +464,8 @@
 	//? OLD Vars
 	/// Whether the species can infect wounds, only works with claws / bites
 	var/infect_wounds = 0
+	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
+	var/flight_mod = 1
 
 /datum/species/New()
 	if(hud_type)
@@ -526,7 +528,6 @@
 	H.maxHealth = total_health
 
 	add_inherent_verbs(H)
-	add_inherent_spells(H)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]

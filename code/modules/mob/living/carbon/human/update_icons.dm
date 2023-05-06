@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!w_uniform)
 		return
 
-	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/rig))
+	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		return //Wearing a suit that prevents uniform rendering
 
 	//Build a uniform sprite

@@ -62,7 +62,7 @@
 
 	add_verb(user, /mob/living/carbon/human/proc/nif_menu)
 
-/datum/component/nif_menu/proc/nif_menu_click(source, location, control, params, user)
+/datum/component/nif_menu/proc/nif_menu_click(mob/user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H) && H.nif)
 		INVOKE_ASYNC(H.nif, .proc/ui_interact, user)
@@ -76,7 +76,7 @@
 	icon_state = "nif"
 	screen_loc = ui_smallquad
 
-/atom/movable/screen/nif_menu/Click(location, control, params)
+/atom/movable/screen/nif/Click(location, control, params)
 	..()
 	var/datum/component/nif_menu/N = usr.GetComponent(/datum/component/nif_menu)
 	N?.nif_menu_click(usr)

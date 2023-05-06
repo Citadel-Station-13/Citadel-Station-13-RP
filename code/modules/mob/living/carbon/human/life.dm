@@ -384,12 +384,12 @@
 /mob/living/carbon/human/get_breath_from_internal(volume_needed=BREATH_VOLUME)
 	if(internal)
 		//Because rigs store their tanks out of reach of contents.Find(), a check has to be made to make
-		//sure the rig is still worn, still online, and that its air supply still exists.
+		//sure the hardsuit is still worn, still online, and that its air supply still exists.
 		var/obj/item/tank/rig_supply
-		if(istype(back,/obj/item/rig))
-			var/obj/item/rig/rig = back
-			if(rig.is_activated() && (rig.air_supply && internal == rig.air_supply))
-				rig_supply = rig.air_supply
+		if(istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/hardsuit = back
+			if(hardsuit.is_activated() && (hardsuit.air_supply && internal == hardsuit.air_supply))
+				rig_supply = hardsuit.air_supply
 
 		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
 			internal = null
@@ -1107,9 +1107,9 @@
 				embedded_flag = 0
 
 		//Eyes
-		//Check rig first because it's two-check and other checks will override it.
-		if(istype(back,/obj/item/rig))
-			var/obj/item/rig/O = back
+		//Check hardsuit first because it's two-check and other checks will override it.
+		if(istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/O = back
 			if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
 					blinded = 1
@@ -1462,8 +1462,8 @@
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && istype(back, /obj/item/rig))
-					var/obj/item/rig/O = back
+				if(!found_welder && istype(back, /obj/item/hardsuit))
+					var/obj/item/hardsuit/O = back
 					if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
 							found_welder = 1
@@ -1500,11 +1500,11 @@
 		SetSightSelf(species.get_vision_flags(src))
 
 		var/glasses_processed = 0
-		var/obj/item/rig/rig = back
-		if(istype(rig) && rig.visor)
-			if(!rig.helmet || (head && rig.helmet == head))
-				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-					glasses_processed = process_glasses(rig.visor.vision.glasses)
+		var/obj/item/hardsuit/hardsuit = back
+		if(istype(hardsuit) && hardsuit.visor)
+			if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+				if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+					glasses_processed = process_glasses(hardsuit.visor.vision.glasses)
 
 		if(glasses && !glasses_processed)
 			glasses_processed = process_glasses(glasses)
@@ -1584,12 +1584,14 @@
 		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
-
+	/*
+	//Commented out for now to determine how well it fits in on Cit.
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() <= 0)
 			playsound_local(src,pick(scarySounds),50, 1, -1)
+	*/
 
 /mob/living/carbon/human/handle_stomach()
 	spawn(0)

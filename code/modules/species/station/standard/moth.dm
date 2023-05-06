@@ -129,11 +129,11 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	)
 
 	inherent_verbs = list(
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 	)
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	color_mult = 1
 	// todo: replace with proper name
 	wikilink="https://citadel-station.net/wikiRP/index.php?title=Race:_Dnin-Nepids"

@@ -303,19 +303,6 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /turf/simulated/shuttle/wall/voidcraft/green/virgo2/nocol
 	color = null
 
-/turf/simulated/mineral/virgo2/make_ore()
-	if(mineral)
-		return
-
-	var/mineral_name = pickweight(list(MAT_MARBLE = 5, MAT_URANIUM = 5, MAT_PLATINUM = 5, MAT_HEMATITE = 5, MAT_CARBON = 5, MAT_DIAMOND = 5, MAT_GOLD = 5, MAT_SILVER = 5, MAT_LEAD = 5, MAT_VERDANTIUM = 5))
-
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-
-
-
 ////////////////////////////////////////////////
 /////////// LAVALAND 	   /////////////////////
 ////////////////////////////////////////////////

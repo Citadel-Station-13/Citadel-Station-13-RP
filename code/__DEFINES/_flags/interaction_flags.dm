@@ -55,6 +55,8 @@ DEFINE_BITFIELD(interaction_flags_atom, list(
 #define INTERACT_MACHINE_SET_MACHINE (1<<6)
 /// the user must have vision to interact (blind people need not apply)
 #define INTERACT_MACHINE_REQUIRES_SIGHT (1<<7)
+/// allow silicon interaction while offline
+#define INTERACT_MACHINE_OFFLINE_SILICON (1<<8)
 
 DEFINE_BITFIELD(interaction_flags_machine, list(
 	BITFIELD(INTERACT_MACHINE_OPEN),
@@ -65,4 +67,5 @@ DEFINE_BITFIELD(interaction_flags_machine, list(
 	BITFIELD(INTERACT_MACHINE_REQUIRES_SILICON),
 	BITFIELD(INTERACT_MACHINE_SET_MACHINE),
 	BITFIELD(INTERACT_MACHINE_REQUIRES_SIGHT),
+	BITFIELD(INTERACT_MACHINE_OFFLINE_SILICON),
 ))

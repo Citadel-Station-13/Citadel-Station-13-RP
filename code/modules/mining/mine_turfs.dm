@@ -765,77 +765,9 @@
 	if(mineral || ignore_mapgen || ignore_oregen)
 		return
 
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 20,
-			MAT_CARBON = 20,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 1))
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 3,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 70,
-			MAT_CARBON = 70,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 10,
-			MAT_SILVER = 10,
-			MAT_COPPER = 15,
-			MAT_PHORON = 20,
-			MAT_LEAD = 2,
-			MAT_VERDANTIUM = 1))
+	var/mineral_name = standard_mineral_roll(rare_ore)
 
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-
-/turf/simulated/mineral/rich/make_ore(var/rare_ore)
-	if(mineral || ignore_mapgen)
-		return
-	var/mineral_name
-	if(rare_ore)
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 7,
-			MAT_URANIUM = 10,
-			MAT_PLATINUM = 10,
-			MAT_HEMATITE = 10,
-			MAT_CARBON = 10,
-			MAT_DIAMOND = 4,
-			MAT_GOLD = 15,
-			MAT_SILVER = 15,
-			MAT_COPPER = 10,
-			MAT_PHORON = 10,
-			MAT_LEAD = 5,
-			MAT_VERDANTIUM = 2))
-
-
-
-	else
-		mineral_name = pickweight(list(
-			MAT_MARBLE = 5,
-			MAT_URANIUM = 7,
-			MAT_PLATINUM = 7,
-			MAT_HEMATITE = 28,
-			MAT_CARBON = 28,
-			MAT_DIAMOND = 2,
-			MAT_GOLD = 7,
-			MAT_SILVER = 7,
-			MAT_COPPER = 7,
-			MAT_PHORON = 7,
-			MAT_LEAD = 4,
-			MAT_VERDANTIUM = 1))
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
+		if(atom_flags & ATOM_INITIALIZED)
+			UpdateMineral()

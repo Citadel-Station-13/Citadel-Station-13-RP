@@ -651,18 +651,18 @@
 	item_state = "jumperpaddles0"
 	use_on_synthetic = 1
 
-// Rig Defibs
-/obj/item/shockpaddles/standalone/rig
+// Hardsuit Defibs
+/obj/item/shockpaddles/standalone/hardsuit
 	desc = "You shouldn't be seeing these."
 	chargetime = (2 SECONDS)
 
-/obj/item/shockpaddles/standalone/rig/checked_use(var/charge_amt)
+/obj/item/shockpaddles/standalone/hardsuit/checked_use(var/charge_amt)
 	return 1
 
-/obj/item/shockpaddles/standalone/rig/emp_act(severity)
+/obj/item/shockpaddles/standalone/hardsuit/emp_act(severity)
 	return
 
-/obj/item/shockpaddles/standalone/rig/can_use(mob/user, mob/M)
+/obj/item/shockpaddles/standalone/hardsuit/can_use(mob/user, mob/M)
 	return 1
 
 #undef DEFIB_TIME_LIMIT
