@@ -175,7 +175,7 @@
  * * material_parts - assoc list of materials to use, based on the variable of the same name
  */
 /datum/design/proc/lathe_print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, obj/machinery/lathe/fabricator, cost_multiplier = 1)
-	return print(where, amount, material_parts, ingredient_parts, reagent_parts, efficiency_multiplier)
+	return print(where, amount, material_parts, ingredient_parts, reagent_parts, cost_multiplier)
 
 //? legacy below
 

@@ -1019,56 +1019,56 @@
 
 /datum/design/item/mechfab/fighter/pinnace/chassis
 	name = "Pinnace Chassis"
-	id = "pinnace_chassis"
+	identifier = "pinnace_chassis"
 	build_path = /obj/item/mecha_parts/fighter/chassis/pinnace
-	time = 30
+	work = 3 * 30
 	materials = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_PLASTEEL = 25000)
 
 /datum/design/item/mechfab/fighter/pinnace/core
 	name = "Pinnace Core"
-	id = "pinnace_core"
+	identifier = "pinnace_core"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_core
-	time = 60
+	work = 3 * 60
 	materials = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_PLASTEEL = 25000)
 
 /datum/design/item/mechfab/fighter/pinnace/cockpit
 	name = "Pinnace Cockpit"
-	id = "pinnace_cockpit"
+	identifier = "pinnace_cockpit"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_cockpit
-	time = 15
+	work = 3 * 15
 	materials = list(MAT_STEEL = 5000, MAT_PLASTEEL = 15000, MAT_GLASS = 10000, MAT_PLASTIC = 5000)
 
 /datum/design/item/mechfab/fighter/pinnace/main_engine
 	name = "Pinnace Main Engine"
-	id = "pinnace_main_engine"
+	identifier = "pinnace_main_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_main_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 25000, MAT_PLASTEEL = 20000)
 
 /datum/design/item/mechfab/fighter/pinnace/left_engine
 	name = "Pinnace Left Engine"
-	id = "pinnace_left_engine"
+	identifier = "pinnace_left_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_left_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 20000, MAT_PLASTEEL = 15000)
 
 /datum/design/item/mechfab/fighter/pinnace/right_engine
 	name = "Pinnace Right Engine"
-	id = "pinnace_right_engine"
+	identifier = "pinnace_right_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_right_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 20000, MAT_PLASTEEL = 15000)
 
 /datum/design/item/mechfab/fighter/pinnace/left_wing
 	name = "Pinnace Left Wing"
-	id = "pinnace_left_wing"
+	identifier = "pinnace_left_wing"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_left_wing
-	time = 20
+	work = 3 * 20
 	materials = list(MAT_STEEL = 15000, MAT_PLASTIC = 6000, MAT_PLASTEEL = 20000)
 
 /datum/design/item/mechfab/fighter/pinnace/right_wing
 	name = "Pinnace Right Wing"
-	id = "pinnace_right_wing"
+	identifier = "pinnace_right_wing"
 	build_path = /obj/item/mecha_parts/fighter/part/pinnace_right_wing
-	time = 20
+	work = 3 * 20
 	materials = list(MAT_STEEL = 15000, MAT_PLASTIC = 6000, MAT_PLASTEEL = 20000)
