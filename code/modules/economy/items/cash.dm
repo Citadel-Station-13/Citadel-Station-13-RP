@@ -4,19 +4,18 @@
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "spacecash1"
-	opacity = 0
-	density = 0
-	anchored = 0.0
-	damage_force = 1.0
-	throw_force = 1.0
+	throw_force = 0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
-	var/access = list()
-	access = ACCESS_MISC_CASHCRATE
-	var/worth = 0
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
+
+	worth_dynamic = TRUE
+	var/worth = 0
+
+/obj/item/spacecash/get_worth(flags, buying)
+	return worth
 
 /obj/item/spacecash/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/spacecash))
