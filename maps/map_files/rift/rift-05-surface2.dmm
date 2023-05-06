@@ -311,6 +311,24 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
+"anL" = (
+/obj/structure/table/reinforced,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 23;
+	name = "Lower Telesci Blast Doors";
+	id = "telescidoorlower"
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/storage)
 "anZ" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenocont1";
@@ -8703,11 +8721,15 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/assembly/chargebay)
 "fOe" = (
-/obj/machinery/light_construct{
-	dir = 4
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab/foyer)
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "fOh" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -10365,6 +10387,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
+"gOk" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "gOV" = (
 /turf/simulated/wall,
 /area/rift/station/public_garden/gantry)
@@ -10404,6 +10432,9 @@
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
@@ -11104,7 +11135,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "htU" = (
 /obj/structure/grille,
@@ -13057,7 +13088,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "iIr" = (
 /obj/machinery/power/apc{
@@ -16335,7 +16366,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "kMS" = (
 /obj/machinery/door/airlock/maintenance/medical{
@@ -17229,7 +17260,8 @@
 "lpy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/blast/regular/open{
-	dir = 4
+	dir = 4;
+	id = "telescidoorlower"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
@@ -19019,7 +19051,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "myY" = (
 /obj/machinery/fitness/heavy/lifter,
@@ -19193,7 +19225,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating,
+/obj/structure/closet/secure_closet/scientist,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "mCO" = (
 /obj/structure/railing,
@@ -20833,7 +20866,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/machinery/light_construct,
+/obj/structure/closet/secure_closet/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "nMd" = (
@@ -21517,6 +21550,13 @@
 /obj/random/medical/lite,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"ooD" = (
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "opb" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/masks{
@@ -24846,6 +24886,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "qBo" = (
@@ -26237,7 +26280,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "rBx" = (
-/turf/simulated/floor/plating,
+/obj/structure/table/reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Telescience Tower"
+	},
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "rBB" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -26477,6 +26524,9 @@
 	},
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -28784,6 +28834,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"tzB" = (
+/obj/machinery/telepad,
+/turf/simulated/floor/plating,
+/area/rnd/telescience_lab/chamber)
 "tAd" = (
 /obj/machinery/light{
 	dir = 4
@@ -29141,6 +29195,13 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/pool/emergency_closet)
+"tMk" = (
+/obj/structure/closet/secure_closet/scientist,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/storage)
 "tMQ" = (
 /turf/simulated/wall/r_wall,
 /area/security/interrogation)
@@ -30150,7 +30211,8 @@
 /area/security/armory/blue)
 "uHP" = (
 /obj/machinery/door/blast/regular/open{
-	dir = 4
+	dir = 4;
+	id = "telescidoorlower"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
@@ -30755,9 +30817,6 @@
 "uUw" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
-	},
-/obj/machinery/light_construct{
-	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
@@ -32045,12 +32104,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
 "vLT" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
+/obj/structure/table/reinforced,
+/obj/item/binoculars,
+/obj/item/folder/blue{
+	pixel_x = -4;
+	pixel_y = 5
 	},
-/obj/machinery/light_construct,
-/turf/simulated/floor/reinforced,
-/area/rnd/telescience_lab/chamber)
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/storage)
 "vMq" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -35013,7 +35076,8 @@
 /area/hallway/primary/surfacetwo)
 "xPs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/plating,
+/obj/landmark/spawnpoint/job/scientist,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "xPt" = (
 /turf/simulated/wall,
@@ -39123,12 +39187,12 @@ ddZ
 mhX
 oul
 oul
+ooD
 oul
 oul
-oul
-pIR
+fOe
 mhX
-dNx
+anL
 kMj
 iIa
 gQI
@@ -39323,7 +39387,7 @@ oul
 pIR
 mhX
 rBx
-rBx
+dNx
 hsO
 nLU
 aMW
@@ -39509,15 +39573,15 @@ srw
 mIn
 oLJ
 mhX
+gOk
 oul
-oul
-scS
+tzB
 oul
 oul
 hOq
 mhX
-rBx
-rBx
+vLT
+dNx
 myW
 mCM
 aMW
@@ -39708,9 +39772,9 @@ oul
 oul
 oul
 oul
-vLT
+pIR
 mhX
-dNx
+tMk
 ehO
 xPs
 mbS
@@ -40676,7 +40740,7 @@ mhX
 jZo
 scS
 qIa
-fOe
+kCB
 uQA
 lpy
 gEC
