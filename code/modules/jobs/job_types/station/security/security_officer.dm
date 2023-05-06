@@ -32,6 +32,10 @@
 
 /datum/prototype/alt_title/security_officer/cadet
 	title = "Security Cadet"
+	title_blurb = "A Security Cadet is in training to become an Officer. They have very little understanding of standard operations and procedure and \
+					should most often be partnered with an Officer to complete their training. Should the need arise a Cadet is treated in all respects \
+					as an Officer, such as if they need to make an arrest or handle a station threat. When functioning as part of a larger team, Cadets are \
+					often meant to observe and assist rather than take initiative."
 
 /datum/prototype/alt_title/security_officer/guard
 	title = "Security Guard"

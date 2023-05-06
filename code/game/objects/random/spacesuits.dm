@@ -130,12 +130,12 @@
 	icon_state = "generic"
 
 /obj/random/rigsuit/item_to_spawn()
-	return pick(prob(4);/obj/item/rig/light/hacker,
-				prob(5);/obj/item/rig/industrial,
-				prob(5);/obj/item/rig/eva,
-				prob(4);/obj/item/rig/light/stealth,
-				prob(3);/obj/item/rig/hazard,
-				prob(1);/obj/item/rig/merc/empty)
+	return pick(prob(4);/obj/item/hardsuit/light/hacker,
+				prob(5);/obj/item/hardsuit/industrial,
+				prob(5);/obj/item/hardsuit/eva,
+				prob(4);/obj/item/hardsuit/light/stealth,
+				prob(3);/obj/item/hardsuit/hazard,
+				prob(1);/obj/item/hardsuit/merc/empty)
 
 /obj/random/multiple/voidsuit/vintage
 	name = "Random Vintage Voidsuit"

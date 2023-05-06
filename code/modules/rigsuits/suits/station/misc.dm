@@ -1,4 +1,4 @@
-/obj/item/rig/internalaffairs
+/obj/item/hardsuit/internalaffairs
 	name = "augmented tie"
 	suit_type = "augmented suit"
 	desc = "The last suit you'll ever wear."
@@ -22,13 +22,13 @@
 	helm_type = null
 	boot_type = null
 
-/obj/item/rig/internalaffairs/equipped
+/obj/item/hardsuit/internalaffairs/equipped
 	initial_modules = list(
-		/obj/item/rig_module/ai_container,
-		/obj/item/rig_module/device/flash,
-		/obj/item/rig_module/device/paperdispenser,
-		/obj/item/rig_module/device/pen,
-		/obj/item/rig_module/device/stamp
+		/obj/item/hardsuit_module/ai_container,
+		/obj/item/hardsuit_module/device/flash,
+		/obj/item/hardsuit_module/device/paperdispenser,
+		/obj/item/hardsuit_module/device/pen,
+		/obj/item/hardsuit_module/device/stamp
 		)
 
 	glove_type = null

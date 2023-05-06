@@ -382,10 +382,10 @@
 /area/shuttle/specops/centcom)
 "aQ" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
@@ -892,10 +892,10 @@
 /area/shuttle/specops/centcom)
 "bS" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "bT" = (
@@ -1291,7 +1291,7 @@
 /obj/item/mop,
 /obj/item/mop,
 /obj/item/mop,
-/obj/item/rig/ert/janitor,
+/obj/item/hardsuit/ert/janitor,
 /obj/item/lightreplacer,
 /obj/item/lightreplacer,
 /obj/item/storage/box/lights/mixed,
@@ -1464,7 +1464,7 @@
 /area/shuttle/specops/centcom)
 "da" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "db" = (
@@ -1475,14 +1475,14 @@
 	req_access = list(160)
 	},
 /obj/structure/table/rack,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dc" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dd" = (
@@ -1503,10 +1503,10 @@
 /area/shuttle/specops/centcom)
 "dg" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dh" = (
@@ -1652,34 +1652,34 @@
 /area/shuttle/specops/centcom)
 "dv" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dw" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dx" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dy" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "dz" = (
@@ -1874,10 +1874,10 @@
 /area/shuttle/specops/centcom)
 "dP" = (
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /obj/item/storage/belt/utility/chief/full,
 /obj/item/storage/belt/utility/chief/full,
 /obj/item/storage/belt/utility/chief/full,
@@ -2060,10 +2060,10 @@
 	pixel_y = 32
 	},
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "py" = (
@@ -2093,10 +2093,10 @@
 	pixel_y = -32
 	},
 /obj/structure/table/rack/steel,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/specops/centcom)
 "WJ" = (

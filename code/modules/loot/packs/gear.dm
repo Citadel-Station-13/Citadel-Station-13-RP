@@ -21,5 +21,5 @@
 	always = list(
 		/obj/item/pickaxe/diamonddrill,
 		/obj/item/tape_recorder,
-		/obj/item/rig/industrial/equipped,
+		/obj/item/hardsuit/industrial/equipped,
 	)

@@ -1309,8 +1309,8 @@
 /turf/simulated/floor/plating,
 /area/awaymission/spacebattle/cruiser)
 "hv" = (
-/obj/item/clothing/suit/space/rig,
-/obj/item/clothing/head/helmet/space/rig,
+/obj/item/clothing/suit/space/hardsuit,
+/obj/item/clothing/head/helmet/space/hardsuit,
 /turf/simulated/floor,
 /area/awaymission/spacebattle/cruiser)
 "hx" = (
