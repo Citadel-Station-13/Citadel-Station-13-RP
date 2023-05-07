@@ -9,7 +9,7 @@
 	var/title = "NOPE"
 	/// Description of the job
 	var/desc = "No description provided."
-	/// Faction this job is considered part of. Set to a typepath or ID. Resolved to ID on new.
+	/// Faction this job is considered part of. Set to a typepath. Resolved to ID on new. Faction will be automatically loaded if job is enabled.
 	var/faction
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
@@ -90,6 +90,7 @@
 	department_accounts = department_accounts || departments_managed
 	if(ispath(faction, /datum/faction))
 		var/datum/faction/faction_path = faction
+		SSfactions.load_faction(faction_path)
 		faction = initial(faction_path.identifier)
 
 //? Availability

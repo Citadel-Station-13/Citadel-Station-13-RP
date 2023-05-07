@@ -41,7 +41,19 @@ SUBSYSTEM_DEF(factions)
 		if(!F.register())
 			qdel(F)
 
+/**
+ * gets a faction if it exists and is loaded
+ */
 /datum/controller/subsystem/factions/proc/fetch_faction(datum/faction/id_or_path)
+	if(ispath(id_or_path))
+		var/translating = initial(id_or_path.identifier)
+		id_or_path = translating
+	return faction_lookup[translating]
+
+/**
+ * gets a faction, loading it if it isn't already
+ */
+/datum/controller/subsystem/factions/proc/load_faction(datum/faction/id_or_path)
 	if(ispath(id_or_path))
 		var/translating = initial(id_or_path.identifier)
 		if(isnull(faction_lookup[translating]) && initial(id_or_path.lazy))
@@ -49,4 +61,3 @@ SUBSYSTEM_DEF(factions)
 			creating.register()
 		id_or_path = translating
 	return faction_lookup[translating]
-

@@ -25,6 +25,20 @@ SUBSYSTEM_DEF(economy)
 /datum/controller/subsystem/economy/proc/fetch_account(number)
 	return account_lookup[num2text(number, 100)]
 
+/**
+ * fetches the account of a department
+ * 
+ * returns null if the department does not exist, or the faction is not loaded, or the faction
+ * has no economic faction
+ */
+/datum/controller/subsystem/economy/proc/fetch_department_account(datum/department/path_instance)
+
+/**
+ * fetches the account of a faction
+ * 
+ * returns null if the faction is not loaded, or the faction has no economic faction
+ */
+/datum/controller/subsystem/economy/proc/fetch_faction_account(datum/faction/id_path_instance)
 
 #warn AAAAAAAAAAAAAAAa
 
