@@ -70,37 +70,37 @@
 /proc/get_access_ids(access_types = ACCESS_TYPE_ALL)
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(access_types)
+	return SSaccess.access_ids_of_type(access_types)
 
 /proc/get_all_accesses()
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(ACCESS_TYPE_ALL)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_ALL)
 
 /proc/get_all_station_access()
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /proc/get_all_centcom_access()
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(ACCESS_TYPE_CENTCOM)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_CENTCOM)
 
 /proc/get_all_syndicate_access()
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(ACCESS_TYPE_SYNDICATE)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_SYNDICATE)
 
 /proc/get_all_private_access()
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_type(ACCESS_TYPE_PRIVATE)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_PRIVATE)
 
 /proc/get_region_accesses(region)
 	// todo: remove this proc
 	RETURN_TYPE(/list)
-	return SSjob.access_ids_of_region(region)
+	return SSaccess.access_ids_of_region(region)
 
 /proc/get_region_accesses_name(var/code)
 	// todo: remove this proc
@@ -124,7 +124,7 @@
 
 /proc/get_access_desc(id)
 	// todo: remove this proc
-	return SSjob.access_lookup(id)?.access_name
+	return SSaccess.access_lookup(id)?.access_name
 
 /proc/get_centcom_access_desc(A)
 	// todo: remove this proc
@@ -132,7 +132,7 @@
 
 /proc/get_access_by_id(id)
 	// todo: remove this proc
-	return SSjob.access_lookup(id)
+	return SSaccess.access_lookup(id)
 
 /proc/get_all_centcom_jobs()
 	// todo: remove this proc

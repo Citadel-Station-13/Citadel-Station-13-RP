@@ -36,7 +36,7 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 	)
 
 /datum/role/job/station/captain/get_access()
-	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
+	return SSaccess.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /datum/prototype/alt_title/overseer
 	title = "Overseer"

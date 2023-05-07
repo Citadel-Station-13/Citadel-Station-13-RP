@@ -229,7 +229,7 @@
 
 /obj/item/card/id/synthetic/Initialize(mapload)
 	. = ..()
-	access = SSjob.access_ids_of_type(ACCESS_TYPE_STATION) + ACCESS_SPECIAL_SILICONS
+	access = SSaccess.access_ids_of_type(ACCESS_TYPE_STATION) + ACCESS_SPECIAL_SILICONS
 
 /obj/item/card/id/centcom
 	name = "\improper CentCom. ID"
@@ -240,11 +240,11 @@
 
 /obj/item/card/id/centcom/Initialize(mapload)
 	. = ..()
-	access = SSjob.access_ids_of_type(ACCESS_TYPE_CENTCOM)
+	access = SSaccess.access_ids_of_type(ACCESS_TYPE_CENTCOM)
 
 /obj/item/card/id/centcom/station/Initialize(mapload)
 	. = ..()
-	access |= SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
+	access |= SSaccess.access_ids_of_type(ACCESS_TYPE_STATION)
 
 /obj/item/card/id/centcom/vip
 	name = "\improper V.I.P. ID"
