@@ -22,6 +22,7 @@
 	sheet_singular_name = "plank"
 	sheet_plural_name = "planks"
 	table_icon_base = "wood"
+	tgui_icon_key = "plank"
 
 /datum/material/wood/log
 	id = "log"
@@ -30,6 +31,7 @@
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
+	tgui_icon_key = "log"
 
 /datum/material/wood/log/sif
 	id = "log_sif"

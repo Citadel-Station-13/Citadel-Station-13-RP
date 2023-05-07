@@ -10,10 +10,65 @@
  *
  */
 /proc/check_ingredients(list/ingredients, list/selection, list/obj/item/items)
-	#warn impl
+	var/list/materials = list()
+	var/list/reagents = list()
+	var/list/stacks = list()
+	for(var/i in 1 to length(ingredients))
+		if(i > length(selection))
+			break
+		var/list/ingredient_list = ingredients[i]
+		var/type = ingredient_list[INGREDIENT_DATA_TYPE]
+		var/amt = ingredient_list[INGREDIENT_DATA_AMOUNT]
+		var/key = ingredient_list[INGREDIENT_DATA_KEY]
+		var/selected = selection[i]
+		switch(type)
+			if(INGREDIENT_TYPE_MATERIAL)
+				materials[selected] += amt
+			if(INGREDIENT_TYPE_REAGENT)
+				reagents[selected] += amt
+			if(INGREDIENT_TYPE_STACK)
+				stacks[selected] += amt
+			if(INGREDIENT_TYPE_ITEM)
+				var/obj/item/I = locate(selected) in items
+				if(isnull(I))
+					return FALSE
+	// todo: reagents
+	#warn impl materials, stacks
+	return TRUE
 
+/**
+ * returns a list of things by key.
+ * anything unkeyed gets deleted.
+ */
 /proc/use_ingredients(list/ingredients, list/selection, list/obj/item/items)
-	#warn impl
+	. = list()
+	var/list/materials = list()
+	var/list/reagents = list()
+	var/list/stacks = list()
+	for(var/i in 1 to length(ingredients))
+		if(i > length(selection))
+			break
+		var/list/ingredient_list = ingredients[i]
+		var/type = ingredient_list[INGREDIENT_DATA_TYPE]
+		var/amt = ingredient_list[INGREDIENT_DATA_AMOUNT]
+		var/key = ingredient_list[INGREDIENT_DATA_KEY]
+		var/selected = selection[i]
+		switch(type)
+			if(INGREDIENT_TYPE_MATERIAL)
+				materials[selected] += amt
+			if(INGREDIENT_TYPE_REAGENT)
+				reagents[selected] += amt
+			if(INGREDIENT_TYPE_STACK)
+				stacks[selected] += amt
+			if(INGREDIENT_TYPE_ITEM)
+				var/obj/item/I = locate(selected) in items
+				if(isnull(I))
+					continue
+				if(isnull(key))
+					qdel(I)
+				.[key] = I
+	// todo: reagents
+	#warn impl materials, stacks
 
 /proc/ui_ingredients_needed(list/ingredients)
 	return ingredients

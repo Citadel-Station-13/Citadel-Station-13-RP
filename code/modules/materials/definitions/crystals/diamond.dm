@@ -12,3 +12,4 @@
 	tableslam_noise = 'sound/effects/Glasshit.ogg'
 	hardness = 100
 	stack_origin_tech = list(TECH_MATERIAL = 6)
+	tgui_icon_key = "diamond"

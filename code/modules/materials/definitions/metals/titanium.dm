@@ -8,6 +8,7 @@
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	table_icon_base = "metal"
+	tgui_icon_key = "titanium"
 
 /datum/material/plasteel/titanium/hull
 	id = "titanium_hull"

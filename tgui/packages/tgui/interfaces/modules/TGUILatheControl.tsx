@@ -3,7 +3,7 @@ import { ModuleData, useModule } from "../../backend";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
-import { IngredientsAvailable } from "../common/Ingredients";
+import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
 import { MaterialsContext } from "../common/Materials";
 import { ReagentContentsData } from "../common/Reagents";
 
@@ -44,7 +44,7 @@ interface LatheQueueEntry {
   design: string; // design id
   amount: number; // how many
   materials?: Record<string, string>; // key to id
-  ingredients?: any[]; // dataset from Ingredients.tsx
+  ingredients?: IngredientsSelected; // dataset from Ingredients.tsx
 }
 
 interface LatheQueuedProps {

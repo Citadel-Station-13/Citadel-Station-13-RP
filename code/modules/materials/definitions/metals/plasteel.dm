@@ -16,6 +16,7 @@
 	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
 	radiation_resistance = 14
 	table_icon_base = "metal"
+	tgui_icon_key = "platinum"
 
 /datum/material/plasteel/hull
 	id = "plasteel_hull"

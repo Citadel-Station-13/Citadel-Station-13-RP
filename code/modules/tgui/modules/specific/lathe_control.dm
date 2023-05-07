@@ -143,8 +143,15 @@
 /datum/tgui_module/lathe_control/proc/ui_queue_update()
 	var/obj/machinery/lathe/lathe = host
 	push_ui_data(data = list("queue" = ui_queue_data()))
-	#warn impl
 
 /datum/tgui_module/lathe_control/proc/ui_queue_data()
 	var/obj/machinery/lathe/lathe = host
-	#warn impl
+	var/list/got = list()
+	for(var/datum/lathe_queue_entry/entry as anything in lathe.queue)
+		got[++got.len] = list(
+			"design" = entry.design_id,
+			"amount" = entry.amount,
+			"materials" = entry.material_parts,
+			"ingredients" = entry.ingredient_parts,
+		)
+	return got

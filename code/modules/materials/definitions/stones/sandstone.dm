@@ -16,3 +16,4 @@
 	sheet_singular_name = "brick"
 	sheet_plural_name = "bricks"
 	table_icon_base = "stone"
+	tgui_icon_key = "sandstone"

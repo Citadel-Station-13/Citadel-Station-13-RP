@@ -9,6 +9,7 @@
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
+	tgui_icon_key = "metal"
 
 /datum/material/steel/hull
 	id = "steel_hull"

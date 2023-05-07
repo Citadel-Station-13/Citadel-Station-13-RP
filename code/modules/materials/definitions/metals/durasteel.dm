@@ -15,6 +15,7 @@
 	stack_origin_tech = list(TECH_MATERIAL = 8)
 	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 	table_icon_base = "metal"
+	tgui_icon_key = "durasteel"
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"

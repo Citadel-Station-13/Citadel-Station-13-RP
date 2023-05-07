@@ -8,6 +8,7 @@
 	conductivity = 0 // Weird rubber metal.
 	protectiveness = 10 // 33%
 	icon_colour = "#d6c100"
+	tgui_icon_key = "bananium"
 
 /datum/material/sandstone/silencium
 	id = "silencium"
@@ -17,6 +18,7 @@
 	hardness = 30
 	integrity = 201 //hack to stop kitchen benches being flippable, todo: refactor into weight system
 	stack_type = /obj/item/stack/material/silencium
+	tgui_icon_key = "silencium"
 
 /datum/material/fluff //This is to allow for 2 handed weapons that don't want to have a prefix.
 	id = "fluff"

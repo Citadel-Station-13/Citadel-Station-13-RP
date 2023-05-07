@@ -10,3 +10,4 @@
 	weight = 22
 	stack_origin_tech = list(TECH_MATERIAL = 5)
 	door_icon_base = "stone"
+	tgui_icon_key = "uranium"
