@@ -2,7 +2,6 @@
  * handles the actual transport of materials
  */
 /datum/supply_handler
-	/// instant? if so,
 
 
 #warn impl
@@ -15,3 +14,5 @@
 
 /datum/supply_handler/proc/spawn_orders(list/datum/supply_order/orders)
 	#warn impl
+
+
