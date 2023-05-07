@@ -4603,9 +4603,6 @@
 /area/rnd/research)
 "dcq" = (
 /obj/structure/table/rack/shelf,
-/obj/item/rig/hazmat/equipped{
-	req_access = list(65)
-	},
 /obj/item/clothing/glasses/welding/superior,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8983,11 +8980,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "fVF" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Telescience Wing"
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_research{
+	name = "Telescience Wing"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)

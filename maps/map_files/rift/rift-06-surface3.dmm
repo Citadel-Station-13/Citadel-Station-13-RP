@@ -26917,6 +26917,7 @@
 	pixel_x = 6;
 	pixel_y = -4
 	},
+/obj/item/stack/cable_coil,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "wuo" = (
