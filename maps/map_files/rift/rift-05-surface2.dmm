@@ -311,24 +311,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
-"anL" = (
-/obj/structure/table/reinforced,
-/obj/item/gps,
-/obj/item/gps,
-/obj/item/gps,
-/obj/item/gps,
-/obj/item/gps,
-/obj/item/gps,
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/button/remote/blast_door{
-	pixel_y = 23;
-	name = "Lower Telesci Blast Doors";
-	id = "telescidoorlower"
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab/storage)
 "anZ" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenocont1";
@@ -1881,7 +1863,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -8721,15 +8702,18 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/assembly/chargebay)
 "fOe" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
+/obj/structure/table/reinforced,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
+/obj/item/gps,
 /obj/machinery/light{
-	dir = 8;
-	light_range = 12
+	dir = 8
 	},
-/turf/simulated/floor/reinforced,
-/area/rnd/telescience_lab/chamber)
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/storage)
 "fOh" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -8988,7 +8972,6 @@
 /obj/machinery/door/airlock/glass_research{
 	name = "Telescience Wing"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -9182,6 +9165,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"gbX" = (
+/obj/machinery/telepad,
+/turf/simulated/floor/plating,
+/area/rnd/telescience_lab/chamber)
 "gcE" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -10387,12 +10374,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
-"gOk" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/telescience_lab/chamber)
 "gOV" = (
 /turf/simulated/wall,
 /area/rift/station/public_garden/gantry)
@@ -12058,7 +12039,6 @@
 /obj/machinery/door/airlock/glass_research{
 	name = "Telescience Wing"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/foyer)
 "hUU" = (
@@ -14339,7 +14319,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "jxW" = (
@@ -15315,6 +15294,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_lockerroom)
+"kfp" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "kfv" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -17259,9 +17248,9 @@
 /area/rift/surfacebase/outside/outside2)
 "lpy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "telescidoorlower"
+/obj/machinery/door/blast/regular{
+	name = "Lower Inner TeleSci Blast Door";
+	id = "InnerTeleSciBlastDoor"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
@@ -20722,6 +20711,12 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
+"nFQ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "nGM" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -21550,13 +21545,6 @@
 /obj/random/medical/lite,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
-"ooD" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/telescience_lab/chamber)
 "opb" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/masks{
@@ -22202,7 +22190,10 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hos)
 "oOQ" = (
-/obj/machinery/door/blast/regular/open,
+/obj/machinery/door/blast/regular{
+	id = "OuterTeleSciBlastDoor";
+	name = "Lower Exterior TeleSci Blast Door"
+	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
 "oPH" = (
@@ -25657,6 +25648,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"rgs" = (
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/telescience_lab/chamber)
 "rgy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -26283,6 +26281,17 @@
 /obj/structure/table/reinforced,
 /obj/machinery/photocopier/faxmachine{
 	department = "Telescience Tower"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = -11;
+	pixel_y = 24;
+	name = "Lower Outer TeleSci Blast Door Button";
+	id = "OuterTeleSciBlastDoor"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_y = 24;
+	name = "Lower Inner TeleSci Blast Door Button";
+	id = "InnerTeleSciBlastDoor"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
@@ -28834,10 +28843,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"tzB" = (
-/obj/machinery/telepad,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab/chamber)
 "tAd" = (
 /obj/machinery/light{
 	dir = 4
@@ -29195,13 +29200,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/pool/emergency_closet)
-"tMk" = (
-/obj/structure/closet/secure_closet/scientist,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab/storage)
 "tMQ" = (
 /turf/simulated/wall/r_wall,
 /area/security/interrogation)
@@ -30210,9 +30208,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "uHP" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "telescidoorlower"
+/obj/machinery/door/blast/regular{
+	name = "Lower Inner TeleSci Blast Door";
+	id = "InnerTeleSciBlastDoor"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
@@ -30986,6 +30984,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"uXN" = (
+/obj/structure/table/reinforced,
+/obj/item/binoculars,
+/obj/item/folder/blue{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab/storage)
 "uXR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -32104,14 +32113,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/range)
 "vLT" = (
-/obj/structure/table/reinforced,
-/obj/item/binoculars,
-/obj/item/folder/blue{
-	pixel_x = -4;
-	pixel_y = 5
+/obj/structure/closet/secure_closet/scientist,
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/item/paper_bin,
-/obj/item/pen,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
 "vMq" = (
@@ -39187,12 +39192,12 @@ ddZ
 mhX
 oul
 oul
-ooD
+rgs
 oul
 oul
-fOe
+kfp
 mhX
-anL
+fOe
 kMj
 iIa
 gQI
@@ -39573,14 +39578,14 @@ srw
 mIn
 oLJ
 mhX
-gOk
+nFQ
 oul
-tzB
+gbX
 oul
 oul
 hOq
 mhX
-vLT
+uXN
 dNx
 myW
 mCM
@@ -39774,7 +39779,7 @@ oul
 oul
 pIR
 mhX
-tMk
+vLT
 ehO
 xPs
 mbS

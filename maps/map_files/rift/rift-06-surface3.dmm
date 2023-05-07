@@ -22502,9 +22502,15 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_y = 23;
-	name = "Upper Telesci Blast Doors";
-	id = "telescidoorupper"
+	pixel_y = 24;
+	name = "Upper Inner TeleSci Blast Door Button";
+	id = "UpperInnerTeleSciBlastDoor"
+	},
+/obj/machinery/button/remote/blast_door{
+	pixel_x = -11;
+	pixel_y = 24;
+	name = "Upper Outer TeleSci Blast Door Button";
+	id = "UpperOuterTeleSciBlastDoor"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -23312,6 +23318,10 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
+"klx" = (
+/obj/machinery/computer/telescience,
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "kmY" = (
 /obj/structure/handrail,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -24940,6 +24950,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
+"pGn" = (
+/obj/structure/frame{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "pKx" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -25279,12 +25295,12 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/airlock/arrivals)
 "qIs" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "telescidoorupper"
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/regular{
+	name = "Upper Exterior Telesci Blast Door";
+	id = "UpperInnerTeleSciBlastDoor"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
@@ -26600,12 +26616,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/courser_dock)
 "vEF" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4;
-	id = "telescidoorupper"
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/regular{
+	name = "Upper Interior Telesci Blast Door";
+	id = "UpperOuterTeleSciBlastDoor"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -26989,10 +27005,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
-"wPr" = (
-/obj/machinery/computer/telescience,
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab)
 "wTy" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27246,12 +27258,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
-"xyj" = (
-/obj/structure/frame{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab)
 "xzV" = (
 /turf/simulated/wall,
 /area/maintenance/substation/dock)
@@ -31041,7 +31047,7 @@ jRd
 jRd
 jZk
 knK
-xyj
+pGn
 mOy
 mOy
 mOy
@@ -31235,7 +31241,7 @@ jRd
 jRd
 jZk
 knK
-wPr
+klx
 mOy
 qYP
 dRq
@@ -31429,7 +31435,7 @@ jRd
 jRd
 jZk
 knK
-xyj
+pGn
 mOy
 xmO
 lSN
