@@ -1,3 +1,10 @@
+/**
+ * Factions represent a faction in the game world.
+ * They can have economy/supply/other systems attached to them.
+ * 
+ * Departments can belong to factions, and so can jobs.
+ * Jobs do not necessarily have a department, but must have a faction.
+ */
 /datum/faction
 	abstract_type = /datum/faction
 	/// lazy? we only init on request if so
@@ -28,17 +35,17 @@
 	return ..()
 
 /datum/faction/proc/register()
-	if(SSfactions.factions[identifier])
+	if(SSfactions.faction_lookup[identifier])
 		. = FALSE
-		CRASH("found existing faction [SSfactions.factions[identifier]]")
-	SSfactions.factions[identifier] = src
+		CRASH("found existing faction [SSfactions.faction_lookup[identifier]]")
+	SSfactions.faction_lookup[identifier] = src
 	supply.register()
 	registered = TRUE
 	return TRUE
 
 /datum/faction/proc/unregister()
-	if(SSfactions.factions[identifier] == src)
-		SSfactions.factions -= identifier
+	if(SSfactions.faction_lookup[identifier] == src)
+		SSfactions.faction_lookup -= identifier
 	supply.unregister()
 	registered = FALSE
 	return TRUE

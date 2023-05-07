@@ -1,4 +1,6 @@
 /datum/department/planetside
+	identifier = "StationExploration"
+	faction = /datum/faction/station
 	name = DEPARTMENT_PLANET
 	color = "#bab421"
 	sorting_order = 6 // Same as cargo in importance.

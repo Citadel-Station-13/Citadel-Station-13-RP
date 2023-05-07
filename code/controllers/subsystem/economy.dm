@@ -1,8 +1,12 @@
 SUBSYSTEM_DEF(economy)
 	name = "Economy"
 
-	/// account by text id
+	/// account by text id of account number
 	var/list/account_lookup
+	/// faction primary account lookup - uses faction id
+	var/list/faction_lookup
+	/// department primary account lookup - uses department id
+	var/list/department_lookup
 
 /datum/controller/subsystem/economy/Recover()
 	src.account_lookup = SSeconomy.account_lookup || list()

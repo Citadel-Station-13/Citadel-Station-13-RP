@@ -1,4 +1,6 @@
 /datum/department/synthetic
+	identifier = "StationSilicons"
+	faction = /datum/faction/station
 	name = DEPARTMENT_SYNTHETIC
 	short_name = "Bot"
 	color = "#222222"

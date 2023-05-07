@@ -1,4 +1,6 @@
 /datum/department/medical
+	identifier = "StationMedical"
+	faction = /datum/faction/station
 	name = DEPARTMENT_MEDICAL
 	short_name = "Med"
 	color = "#006600"

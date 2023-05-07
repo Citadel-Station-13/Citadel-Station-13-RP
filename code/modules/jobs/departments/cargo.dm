@@ -1,4 +1,6 @@
 /datum/department/cargo
+	identifier = "StationCargo"
+	faction = /datum/faction/station
 	name = DEPARTMENT_CARGO
 	short_name = "Car"
 	color = "#BB9040"

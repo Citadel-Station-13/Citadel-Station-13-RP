@@ -1,4 +1,6 @@
 /datum/department/command
+	identifier = "StationCommand"
+	faction = /datum/faction/station
 	name = DEPARTMENT_COMMAND
 	short_name = "Heads"
 	color = "#3333FF"

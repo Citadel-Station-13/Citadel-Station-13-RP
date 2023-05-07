@@ -1,3 +1,14 @@
+/**
+ * manages game faction datums
+ * 
+ * while jobs/departments does rely on this system, factions do not necessarily have to be playable.
+ * therefore, this is a separate subsystem that's initialized before jobs.
+ * 
+ * some factions are only loaded in on certain maps.
+ * 
+ * todo: jobs don't load without faction being there. maploader --> factions --> jobs --> atoms
+ * todo: factions loading in late should enable departments/jobs as needed.
+ */
 SUBSYSTEM_DEF(factions)
 	name = "Factions"
 	subsystem_flags = SS_NO_FIRE

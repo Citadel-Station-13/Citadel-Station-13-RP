@@ -1,3 +1,9 @@
+/**
+ * A job is the primary role someone is
+ * 
+ * Someone can only be one job at a time.
+ * This is set when their character/mind is instantiated into the round, and never re-set.
+ */
 /datum/role/job
 	/// Abstract type.
 	abstract_type = /datum/role/job
@@ -9,7 +15,7 @@
 	var/title = "NOPE"
 	/// Description of the job
 	var/desc = "No description provided."
-	/// Faction this job is considered part of. Set to a typepath. Resolved to ID on new. Faction will be automatically loaded if job is enabled.
+	/// Faction this job is considered part of, if any. Set to a typepath. Resolved to ID on new. Faction will be automatically loaded if job is enabled.
 	var/faction
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
