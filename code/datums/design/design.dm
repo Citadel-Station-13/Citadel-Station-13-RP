@@ -101,6 +101,7 @@
 		"name" = name,
 		"desc" = desc,
 		"id" = identifier,
+		"category" = category,
 		"materials" = materials,
 		"material_parts" = material_parts,
 		"reagents" = reagents,

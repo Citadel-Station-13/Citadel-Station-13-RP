@@ -64,9 +64,8 @@
 				return
 			if(isnull(new_amount))
 				return
-			entry.amount = clamp(new_amount, 0, D.is_stack? lathe.queue_max_entry_stack : lathe.queue_max_entry)
-			#warn impl
-			ui_controller?.ui_design_update()
+			entry.amount = clamp(new_amount, 0, length(D.ingredients)? 1 : (D.is_stack? lathe.queue_max_entry_stack : lathe.queue_max_entry))
+ 			ui_queue_update()
 			return TRUE
 		if("start")
 			lathe.start_printing()

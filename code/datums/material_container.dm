@@ -207,6 +207,20 @@
 			return FALSE
 	return TRUE
 
+/**
+ * basically, divides by given resources and takes lowest.
+ */
+/datum/material_container/proc/has_multiple(list/wanted, multiplier = 1)
+	if(isnull(stored))
+		return 0
+	. = INFINITY
+	for(var/key in wanted)
+		if(!wanted[key])
+			continue
+		. = min(., stored[key] / (wanted[key] * multiplier))
+		if(!.)
+			return
+
 /datum/material_container/proc/has_space(list/materials, multiplier = 1)
 	LAZYINITLIST(stored)
 	if(isnull(capacity))

@@ -262,30 +262,32 @@
 /**
  * returns if we have resources for something
  *
- * @return number of it we can print, this can be a decimal.
+ * @return number of it we can print, this can be a decimal. if design requires ingredients, this will never be above 1.
  */
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
-	if(!stored_materials.has(instance.materials, efficiency_multiplier))
-		return FALSE
-	var/list/mat_parts = list()
+	var/list/materials = instance.materials.Copy()
 	for(var/key in instance.material_parts)
 		var/id = material_parts[key]
-		mat_parts[id] += instance.material_parts[key]
-	if(!stored_materials.has(mat_parts, efficiency_multiplier))
-		return FALSE
-	if(!stored_reagents.has_all_reagents(instance.reagents, efficiency_multiplier))
-		return FALSE
-	#warn ingredients
-	if(!check_ingredients(instance.ingredients, ingredient_parts, stored_items))
-		return FALSE
-	return TRUE
+		materials[id] += instance.material_parts[key]
+	. = stored_materials.has_multiple(materials, efficiency_multiplier)
+	if(!.)
+		return
+	. = min(., stored_reagents.has_multiple(instance.reagents, efficiency_multiplier))
+	if(!.)
+		return
+	// ingredients? return 1 at most.
+	if(length(instance.ingredients))
+		. = min(., check_ingredients(instance.ingredients, ingredient_parts, stored_items))
 
+/**
+ * uses materials with a multiplier
+ * efficiency multiplier is *not* applied in this proc.
+ * ingredients will ignore multiplier. you have been warned.
+ */
 /obj/machinery/lathe/proc/use_resources(list/materials, list/reagents, list/ingredients, list/ingredient_parts, multiplier = 1)
-	multiplier *= efficiency_multiplier
 	stored_materials.use(materials, multiplier)
 	for(var/key in reagents)
 		stored_reagents.remove_reagent(key, reagents[key] * multiplier)
-	#warn ingredients
 	use_ingredients(ingredients, ingredient_parts, stored_items)
 
 /obj/machinery/lathe/Exited(atom/movable/AM, atom/newLoc)
@@ -299,8 +301,11 @@
  * @return number of it we can print if so, null if we can't print at all and it isn't a resource issue
  */
 /obj/machinery/lathe/proc/can_print(datum/design/instance, list/material_parts, list/ingredient_parts)
-	#warn impl amount
-	return has_design(instance) && has_capabilities_for(instance) && has_resources_for(instance, material_parts, ingredient_parts)
+	if(!has_design(instance))
+		return FALSE
+	if(!has_capabilities_for(instance))
+		return FALSE
+	return has_resources_for(instance, material_parts, ingredient_parts)
 
 /**
  * returns why we can't print something
@@ -313,14 +318,18 @@
 	if(!round(has_resources_for(instance, material_parts, ingredient_parts)))
 		return "Out of materials"
 
-/obj/machinery/lathe/proc/do_print(datum/design/instance, amount, list/material_parts, list/ingredient_parts)
+/**
+ * prints a design
+ *
+ * @return an object, or a list of objects.
+ */
+/obj/machinery/lathe/proc/do_print(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, efficiency = efficiency_multiplier)
 	if(!amount)
 		return
-	#warn impl amount
 	var/list/materials_used = instance.materials.Copy()
 	for(var/key in material_parts)
 		materials_used[material_parts[key]] += instance.material_parts[key]
-	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts, amount)
+	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts, amount * efficiency)
 	. = instance.lathe_print(drop_location(), amount, material_parts, ingredient_parts, null, src, efficiency_multiplier)
 	if(!isnull(print_icon_state))
 		flick(print_icon_state, src)
@@ -366,7 +375,10 @@
 	var/datum/lathe_queue_entry/head = length(queue)? queue[1] : null
 	if(isnull(head))
 		return FALSE
-	. = round(can_print(SSresearch.fetch_design(head.design_id), head.material_parts, head.ingredient_parts) > 0)
+	var/datum/design/D = SSresearch.fetch_design(head.design_id)
+	if(isnull(D))
+		return FALSE
+	. = round(can_print(D, head.material_parts, head.ingredient_parts) > 0)
 	if(!.)
 		atom_say("Unable to continue printing - [why_cant_print(D)].")
 
