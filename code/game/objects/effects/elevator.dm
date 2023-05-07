@@ -8,3 +8,4 @@ GLOBAL_LIST_EMPTY(virtual_elevators)
 /obj/effect/virtual_elevator
 
 #warn impl
+#warn almayer_(lowering, lowered, raising, raised)
