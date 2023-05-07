@@ -398,8 +398,28 @@
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 
-/obj/machinery/lathe/proc/full_design_update()
-	ui_controller?.ui_design_update()
+/**
+ * returns a list of names associated to "off" | "on" | "disabled" | null
+ *
+ * if "off", renders as toggle button that isn't selected
+ * if "on",  renders as toggle button that is selected
+ * if "disabled", renders as a click button that's greyed out
+ * if null,       renders as a click button that isn't
+ */
+/obj/machinery/lathe/proc/ui_custom_options()
+	return list()
+
+/**
+ * called when custom buttons are pressed
+ *
+ * @params
+ * * user - user doing it
+ * * name - name of button
+ *
+ * @return TRUE / FALSE, TRUE to update buttons.
+ */
+/obj/machinery/lathe/proc/ui_custom_act(mob/user, name)
+	return FALSE
 
 /**
  * enqueues an instance with given material_parts

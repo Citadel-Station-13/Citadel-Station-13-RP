@@ -26,6 +26,7 @@
 	if(isnull(lathe))
 		return
 	.["latheName"] = lathe.name
+	.["dynamicButtons"] = lathe.ui_custom_options()
 	.["materialsContext"] = SSmaterials.tgui_materials_context()
 	.["speedMultiplier"] = lathe.speed_multiplier
 	.["efficiencyMultiplier"] = lathe.efficiency_multiplier
@@ -92,6 +93,10 @@
 				return TRUE
 			lathe.eject_item(I)
 			return TRUE
+		if("custom")
+			if(lathe.ui_custom_act(usr, params["name"]))
+				ui_custom_update()
+			return TRUE
 
 /datum/tgui_module/lathe_control/ui_assets(mob/user)
 	. = ..()
@@ -155,3 +160,7 @@
 			"ingredients" = entry.ingredient_parts,
 		)
 	return got
+
+/datum/tgui_module/lathe_control/proc/ui_custom_update()
+	var/obj/machinery/lathe/lathe = host
+	push_ui_data(data = list("dynamicButtons" = lathe.ui_custom_options()))

@@ -1,5 +1,6 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, useModule } from "../../backend";
+import { SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
@@ -18,6 +19,7 @@ interface TGUILatheControlData extends ModuleData {
   latheName: string;
   speedMultiplier: number;
   powerMultiplier: number;
+  dynamicButtons: Record<string, "off" | "on" | "disabled" | null>;
   efficiencyMultiplier: number;
   materials: Record<string, number>;
   materialsContext: MaterialsContext;
@@ -31,6 +33,10 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
+  };
+
+  const sectionProps: SectionProps = {
+    title: `${data.latheName} Control`,
   };
 
   return (
