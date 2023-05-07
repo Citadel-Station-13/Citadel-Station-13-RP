@@ -10614,7 +10614,7 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/hardsuit/medical/equipped{
+/obj/item/rig/medical/equipped{
 	req_access = list(5)
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -23385,6 +23385,12 @@
 	name = "Server Base"
 	},
 /area/server)
+"oCM" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "oDa" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
@@ -46017,7 +46023,7 @@ lcN
 vgp
 vGZ
 jOr
-qpj
+oCM
 qqW
 qEh
 hdT

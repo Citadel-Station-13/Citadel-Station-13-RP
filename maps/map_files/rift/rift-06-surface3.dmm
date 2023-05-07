@@ -20528,6 +20528,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "boK" = (
@@ -22750,6 +22753,9 @@
 /obj/machinery/alarm{
 	pixel_y = 24
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
 "iio" = (
@@ -23318,10 +23324,6 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"klx" = (
-/obj/machinery/computer/telescience,
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab)
 "kmY" = (
 /obj/structure/handrail,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -23812,6 +23814,9 @@
 /obj/machinery/power/apc/direction_bump/north,
 /obj/structure/cable/green{
 	icon_state = "0-2"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -24950,12 +24955,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
-"pGn" = (
-/obj/structure/frame{
-	anchored = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/telescience_lab)
 "pKx" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -25815,6 +25814,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
+"tuh" = (
+/obj/structure/frame{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "tvp" = (
 /obj/structure/table/hardwoodtable,
 /obj/machinery/chemical_dispenser/catering/bar_alc{
@@ -26301,6 +26306,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
+"uWY" = (
+/obj/machinery/computer/telescience,
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "uYx" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
@@ -26497,6 +26506,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -27005,6 +27017,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"wPr" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "wTy" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -27258,6 +27276,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
+"xyj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/rnd/telescience_lab)
 "xzV" = (
 /turf/simulated/wall,
 /area/maintenance/substation/dock)
@@ -31047,7 +31081,7 @@ jRd
 jRd
 jZk
 knK
-pGn
+tuh
 mOy
 mOy
 mOy
@@ -31241,7 +31275,7 @@ jRd
 jRd
 jZk
 knK
-klx
+uWY
 mOy
 qYP
 dRq
@@ -31435,7 +31469,7 @@ jRd
 jRd
 jZk
 knK
-pGn
+tuh
 mOy
 xmO
 lSN
@@ -33377,8 +33411,8 @@ aKW
 aHj
 aus
 vPu
-mOy
-ebz
+wPr
+xyj
 vPu
 aOi
 aOi
