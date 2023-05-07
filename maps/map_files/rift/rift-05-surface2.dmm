@@ -4595,7 +4595,7 @@
 /area/rnd/research)
 "dcq" = (
 /obj/structure/table/rack/shelf,
-/obj/item/rig/hazmat/equipped{
+/obj/item/hardsuit/hazmat/equipped{
 	req_access = list(65)
 	},
 /obj/item/clothing/glasses/welding/superior,
