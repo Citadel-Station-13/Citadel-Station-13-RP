@@ -15,13 +15,13 @@
 	minimal_access = list(ACCESS_COMMAND_EVA, ACCESS_ENGINEERING_MAIN, ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_TECHSTORAGE, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_ENGINEERING_CONSTRUCTION)
 
 	alt_titles = list(
-		"Maintenance Technician" = /datum/prototype/alt_title/maint_tech,
-		"Engine Technician" = /datum/prototype/alt_title/engine_tech,
-		"Electrician" = /datum/prototype/alt_title/electrician,
-		"Apprentice Engineer" = /datum/prototype/alt_title/apprentice_engineer,
-		"Construction Engineer" = /datum/prototype/alt_title/construction_engi,
-		"Artificer-Apprentice" = /datum/prototype/alt_title/artificer_apprentice,
-		"Artificer" = /datum/prototype/alt_title/artificer
+		"Maintenance Technician" = /datum/prototype/simple/alt_title/maint_tech,
+		"Engine Technician" = /datum/prototype/simple/alt_title/engine_tech,
+		"Electrician" = /datum/prototype/simple/alt_title/electrician,
+		"Apprentice Engineer" = /datum/prototype/simple/alt_title/apprentice_engineer,
+		"Construction Engineer" = /datum/prototype/simple/alt_title/construction_engi,
+		"Artificer-Apprentice" = /datum/prototype/simple/alt_title/artificer_apprentice,
+		"Artificer" = /datum/prototype/simple/alt_title/artificer
 		)
 
 	minimal_player_age = 3
@@ -29,37 +29,37 @@
 	outfit_type = /datum/outfit/job/station/station_engineer
 	desc = "An Engineer keeps the station running. They repair damages, keep the atmosphere stable, and ensure that power is being \
 						generated and distributed. On quiet shifts, they may be called upon to make cosmetic alterations to the station."
-/datum/prototype/alt_title/maint_tech
+/datum/prototype/simple/alt_title/maint_tech
 	title = "Maintenance Technician"
 	title_blurb = "A Maintenance Technician is generally a junior Engineer, and can be expected to run the mildly unpleasant or boring tasks that other \
 					Engineers don't care to do."
 
-/datum/prototype/alt_title/engine_tech
+/datum/prototype/simple/alt_title/engine_tech
 	title = "Engine Technician"
 	title_blurb = "An Engine Technician tends to the engine, most commonly a Supermatter crystal. They are expected to be able to keep it stable, and \
 					possibly even run it beyond normal tolerances."
 
-/datum/prototype/alt_title/electrician
+/datum/prototype/simple/alt_title/electrician
 	title = "Electrician"
 	title_blurb = "An Electrician's primary duty is making sure power is properly distributed thoughout the station, utilizing solars, substations, and other \
 					methods to ensure every department has power in an emergency."
 
-/datum/prototype/alt_title/apprentice_engineer
+/datum/prototype/simple/alt_title/apprentice_engineer
 	title = "Apprentice Engineer"
 
-/datum/prototype/alt_title/construction_engi
+/datum/prototype/simple/alt_title/construction_engi
 	title = "Construction Engineer"
 	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
 					as additions to station layout."
 
-/datum/prototype/alt_title/artificer_apprentice
+/datum/prototype/simple/alt_title/artificer_apprentice
 	title = "Artificer-Apprentice"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
-/datum/prototype/alt_title/artificer
+/datum/prototype/simple/alt_title/artificer
 	title = "Artificer"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds

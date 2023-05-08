@@ -14,12 +14,12 @@
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/internal_affairs_agent
-	alt_titles = list("Regulatory Affairs Agent" = /datum/prototype/alt_title/iaa/regulator)
+	alt_titles = list("Regulatory Affairs Agent" = /datum/prototype/simple/alt_title/iaa/regulator)
 	desc = "An Internal Affairs Agent makes sure that the crew is following Standard Operating Procedure. They also \
 						handle complaints against crew members, and can have issues brought to the attention of Central Command, \
 						assuming their paperwork is in order."
 
-/datum/prototype/alt_title/iaa/regulator
+/datum/prototype/simple/alt_title/iaa/regulator
 	title = "Regulatory Affairs Agent"
 
 /*

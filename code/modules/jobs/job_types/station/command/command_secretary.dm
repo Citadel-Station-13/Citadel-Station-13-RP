@@ -22,30 +22,30 @@
 						They are not Heads of Staff, and have no real authority."
 
 	alt_titles = list(
-		"Command Liaison" = /datum/prototype/alt_title/command_liaison,
-		"Bridge Secretary" = /datum/prototype/alt_title/bridge_secretary,
-		"Command Assistant" = /datum/prototype/alt_title/command_assistant,
-		"Command Intern" = /datum/prototype/alt_title/command_intern,
-		"Helmsman" = /datum/prototype/alt_title/commsec/helmsman,
-		"Bridge Officer" = /datum/prototype/alt_title/commsec/officer
+		"Command Liaison" = /datum/prototype/simple/alt_title/command_liaison,
+		"Bridge Secretary" = /datum/prototype/simple/alt_title/bridge_secretary,
+		"Command Assistant" = /datum/prototype/simple/alt_title/command_assistant,
+		"Command Intern" = /datum/prototype/simple/alt_title/command_intern,
+		"Helmsman" = /datum/prototype/simple/alt_title/commsec/helmsman,
+		"Bridge Officer" = /datum/prototype/simple/alt_title/commsec/officer
 	)
 
-/datum/prototype/alt_title/command_liaison
+/datum/prototype/simple/alt_title/command_liaison
 	title = "Command Liaison"
 
-/datum/prototype/alt_title/bridge_secretary
+/datum/prototype/simple/alt_title/bridge_secretary
 	title = "Bridge Secretary"
 
-/datum/prototype/alt_title/command_assistant
+/datum/prototype/simple/alt_title/command_assistant
 	title = "Command Assistant"
 
-/datum/prototype/alt_title/command_intern
+/datum/prototype/simple/alt_title/command_intern
 	title = "Command Intern"
 
-/datum/prototype/alt_title/commsec/helmsman
+/datum/prototype/simple/alt_title/commsec/helmsman
 	title = "Helmsman"
 
-/datum/prototype/alt_title/commsec/officer
+/datum/prototype/simple/alt_title/commsec/officer
 	title = "Bridge Officer"
 	title_outfit = /datum/outfit/job/station/command_secretary/bridge_officer
 

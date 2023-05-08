@@ -1,6 +1,3 @@
-// TODO: file unticked
-// see [code/datums/prototype.dm] for why.
-
 /**
  * global singleton storage and fetcher
  */
@@ -9,6 +6,8 @@ SUBSYSTEM_DEF(repository)
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_REPOSITORY
 
+	/// expected type of prototype
+	var/expected_type = /datum/prototype/simple
 	/// by-type lookup
 	var/list/type_lookup
 	/// by-id lookup
@@ -78,6 +77,9 @@ SUBSYSTEM_DEF(repository)
 		return FALSE
 	uid_lookup[instance] = instance
 	if(hardcoded)
+		// invalidate cache
+		// todo: smarter way to do this
+		subtype_lists = list()
 		type_lookup[instance.type] = instance
 	return TRUE
 
@@ -86,6 +88,9 @@ SUBSYSTEM_DEF(repository)
 		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
 		CRASH("instance refused to unregister. this is undefined behavior.")
+	// invalidate cache
+	// todo: smarter way to do this
+	subtype_lists = list()
 	uid_lookup -= instance.uid
 	return TRUE
 
@@ -93,7 +98,7 @@ SUBSYSTEM_DEF(repository)
  * regenerates entries, kicking out anything that's in the way
  */
 /datum/controller/subsystem/repository/proc/generate()
-	for(var/datum/prototype/instance as anything in subtypesof(/datum/prototype))
+	for(var/datum/prototype/instance as anything in subtypesof(expected_type))
 		if(initial(instance.abstract_type) == instance)
 			continue
 		if(initial(instance.lazy))

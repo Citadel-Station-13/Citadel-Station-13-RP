@@ -35,15 +35,15 @@
 	minimal_access = list(ACCESS_FACTION_TRADER, ACCESS_ENGINEERING_AIRLOCK)
 	additional_access = list(ACCESS_FACTION_TRADER, ACCESS_ENGINEERING_AIRLOCK)
 	alt_titles = list(
-		"Trade Manager" = /datum/prototype/alt_title/trade_manager,
-		"Merchant" = /datum/prototype/alt_title/merchant
+		"Trade Manager" = /datum/prototype/simple/alt_title/trade_manager,
+		"Merchant" = /datum/prototype/simple/alt_title/merchant
 		)
 
-/datum/prototype/alt_title/trade_manager
+/datum/prototype/simple/alt_title/trade_manager
 	title = "Trade Manager"
 //	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
-/datum/prototype/alt_title/merchant
+/datum/prototype/simple/alt_title/merchant
 	title = "Merchant"
 
 /datum/outfit/trade

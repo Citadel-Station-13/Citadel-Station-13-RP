@@ -25,10 +25,10 @@
 					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
 
 	alt_titles = list(
-		"Artificer-Adept" = /datum/prototype/alt_title/artificer_adept
+		"Artificer-Adept" = /datum/prototype/simple/alt_title/artificer_adept
 		)
 
-/datum/prototype/alt_title/artificer_adept
+/datum/prototype/simple/alt_title/artificer_adept
 	title = "Artificer-Adept"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds

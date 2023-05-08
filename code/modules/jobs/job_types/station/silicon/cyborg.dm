@@ -18,17 +18,17 @@
 	desc = "A Cyborg is a mobile station synthetic, piloted by a cybernetically preserved brain. It is considered a person, but is still required \
 						to follow its Laws."
 	alt_titles = list(
-		"Robot" = /datum/prototype/alt_title/robot,
-		"Drone" = /datum/prototype/alt_title/drone
+		"Robot" = /datum/prototype/simple/alt_title/robot,
+		"Drone" = /datum/prototype/simple/alt_title/drone
 		)
 
 // Cyborg Alt Titles
-/datum/prototype/alt_title/robot
+/datum/prototype/simple/alt_title/robot
 	title = "Robot"
 	title_blurb = "A Robot is a mobile station synthetic, piloted by an advanced piece of technology called a Positronic Brain. It is considered a person, \
 					legally, but is required to follow its Laws."
 
-/datum/prototype/alt_title/drone
+/datum/prototype/simple/alt_title/drone
 	title = "Drone"
 	title_blurb = "A Drone is a mobile station synthetic, piloted by a simple computer-based AI. As such, it is not a person, but rather an expensive and \
 					and important piece of station property, and is expected to follow its Laws."

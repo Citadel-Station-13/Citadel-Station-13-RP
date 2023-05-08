@@ -247,7 +247,7 @@
 	. = list()
 	// todo: why do we do assoc list? why don't we just cache? why why why????
 	for(var/title in alt_titles)
-		var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+		var/datum/prototype/simple/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
 		if(!alt_datum)
 			continue
 		. += alt_datum
@@ -260,7 +260,7 @@
 	var/strict = FALSE
 	var/list/strict_titles = list()
 	var/list/all_titles = list()
-	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+	for(var/datum/prototype/simple/alt_title/alt_datum as anything in alt_title_datums())
 		// check if we can be picked at all
 		if(!alt_datum.check_background_ids(background_ids, FALSE))
 			continue
@@ -288,11 +288,11 @@
 		// check if any enforced datums are there that forces them to be certain titles, and if so,
 		// that our 'normal' title is in there.
 		var/list/enforced = list()
-		for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+		for(var/datum/prototype/simple/alt_title/alt_datum as anything in alt_title_datums())
 			if(alt_datum.background_enforce && alt_datum.check_background_ids(background_ids))
 				enforced += alt_datum.title
 		return !length(enforced) || (alt_title in enforced)
-	var/datum/prototype/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
+	var/datum/prototype/simple/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
 	return alt_datum?.check_background_ids(background_ids)
 
 /**
@@ -301,7 +301,7 @@
  * @return enforced title as string, or null for none
  */
 /datum/role/job/proc/alt_title_enforcement(list/background_ids)
-	for(var/datum/prototype/alt_title/alt_datum as anything in alt_title_datums())
+	for(var/datum/prototype/simple/alt_title/alt_datum as anything in alt_title_datums())
 		// don't need to potentially enforce
 		if(!alt_datum.background_enforce)
 			continue
@@ -322,7 +322,7 @@
 
 /datum/role/job/proc/get_outfit(var/mob/living/carbon/human/H, var/alt_title)
 	if(alt_title && alt_titles)
-		var/datum/prototype/alt_title/A = alt_titles[alt_title]
+		var/datum/prototype/simple/alt_title/A = alt_titles[alt_title]
 		if(A && initial(A.title_outfit))
 			. = initial(A.title_outfit)
 	. = . || outfit_type
@@ -405,7 +405,7 @@
 	if(alt_title && alt_titles)
 		var/typepath = alt_titles[alt_title]
 		if(typepath)
-			var/datum/prototype/alt_title/A = new typepath()
+			var/datum/prototype/simple/alt_title/A = new typepath()
 			if(A.title_blurb)
 				message |= A.title_blurb
 	return message

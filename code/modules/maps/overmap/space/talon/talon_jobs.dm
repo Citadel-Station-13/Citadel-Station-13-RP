@@ -37,9 +37,9 @@
 	pto_type = null
 	access = list(ACCESS_FACTION_TALON)
 	minimal_access = list(ACCESS_FACTION_TALON)
-	alt_titles = list("Talon Commander" = /datum/prototype/alt_title/talon_commander)
+	alt_titles = list("Talon Commander" = /datum/prototype/simple/alt_title/talon_commander)
 
-/datum/prototype/alt_title/talon_commander
+/datum/prototype/simple/alt_title/talon_commander
 	title = "Talon Commander"
 
 /datum/role/job/talon_doctor
@@ -65,10 +65,10 @@
 =======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Medic" = /datum/prototype/alt_title/talon_medic)
+	alt_titles = list("Talon Medic" = /datum/prototype/simple/alt_title/talon_medic)
 >>>>>>> citrp/master
 
-/datum/prototype/alt_title/talon_medic
+/datum/prototype/simple/alt_title/talon_medic
 	title = "Talon Medic"
 
 
@@ -95,10 +95,10 @@
 =======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Technician" = /datum/prototype/alt_title/talon_tech)
+	alt_titles = list("Talon Technician" = /datum/prototype/simple/alt_title/talon_tech)
 >>>>>>> citrp/master
 
-/datum/prototype/alt_title/talon_tech
+/datum/prototype/simple/alt_title/talon_tech
 	title = "Talon Technician"
 
 
@@ -125,10 +125,10 @@
 =======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Helmsman" = /datum/prototype/alt_title/talon_helmsman)
+	alt_titles = list("Talon Helmsman" = /datum/prototype/simple/alt_title/talon_helmsman)
 >>>>>>> citrp/master
 
-/datum/prototype/alt_title/talon_helmsman
+/datum/prototype/simple/alt_title/talon_helmsman
 	title = "Talon Helmsman"
 
 
@@ -155,10 +155,10 @@
 =======
 	access = list(access_talon)
 	minimal_access = list(access_talon)
-	alt_titles = list("Talon Security" = /datum/prototype/alt_title/talon_security)
+	alt_titles = list("Talon Security" = /datum/prototype/simple/alt_title/talon_security)
 >>>>>>> citrp/master
 
-/datum/prototype/alt_title/talon_security
+/datum/prototype/simple/alt_title/talon_security
 	title = "Talon Security"
 
 

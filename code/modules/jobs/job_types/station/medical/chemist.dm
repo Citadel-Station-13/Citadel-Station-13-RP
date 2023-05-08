@@ -18,23 +18,23 @@
 	desc = "A Chemist produces and maintains a stock of basic to advanced chemicals for medical and occasionally research use. \
 						They are likely to know the use and dangers of many lab-produced chemicals."
 	alt_titles = list(
-		"Pharmacist" = /datum/prototype/alt_title/pharmacist,
-		"Pharmacologist" = /datum/prototype/alt_title/pharmacologist,
-		"Biochemist" = /datum/prototype/alt_title/biochemist
+		"Pharmacist" = /datum/prototype/simple/alt_title/pharmacist,
+		"Pharmacologist" = /datum/prototype/simple/alt_title/pharmacologist,
+		"Biochemist" = /datum/prototype/simple/alt_title/biochemist
 		)
 
-/datum/prototype/alt_title/biochemist
+/datum/prototype/simple/alt_title/biochemist
 	title = "Biochemist"
 	background_allow = list(
 		/datum/lore/character_background/faction/onkhera_necropolis
 	)
 	background_enforce = TRUE
 
-/datum/prototype/alt_title/pharmacist
+/datum/prototype/simple/alt_title/pharmacist
 	title = "Pharmacist"
 	title_blurb = "A Pharmacist focuses on the chemical needs of the Medical Department, and often offers to fill crew prescriptions at their discretion."
 
-/datum/prototype/alt_title/pharmacologist
+/datum/prototype/simple/alt_title/pharmacologist
 	title = "Pharmacologist"
 	title_blurb = "A Pharmacologist focuses on the chemical needs of the Medical Department, primarily specializing in producing more advanced forms of medicine."
 

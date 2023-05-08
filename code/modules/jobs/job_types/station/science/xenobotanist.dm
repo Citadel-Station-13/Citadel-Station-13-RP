@@ -21,13 +21,13 @@
 	desc = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."
 	alt_titles = list(
-		"Xenohydroponicist" = /datum/prototype/alt_title/xenohydroponicist,
-		"Xenoflorist" = /datum/prototype/alt_title/xenoflorist
+		"Xenohydroponicist" = /datum/prototype/simple/alt_title/xenohydroponicist,
+		"Xenoflorist" = /datum/prototype/simple/alt_title/xenoflorist
 		)
 
-/datum/prototype/alt_title/xenoflorist
+/datum/prototype/simple/alt_title/xenoflorist
 	title = "Xenoflorist"
 
-/datum/prototype/alt_title/xenohydroponicist
+/datum/prototype/simple/alt_title/xenohydroponicist
 	title = "Xenohydroponicist"
 */

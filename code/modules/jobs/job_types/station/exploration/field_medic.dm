@@ -17,14 +17,14 @@
 	outfit_type = /datum/outfit/job/station/sar
 	desc = "A Field medic works as the field doctor of expedition teams."
 	alt_titles = list(
-		"Expedition Medic" = /datum/prototype/alt_title/expedition_medic,
-		"Search and Rescue" = /datum/prototype/alt_title/field_medic/sar
+		"Expedition Medic" = /datum/prototype/simple/alt_title/expedition_medic,
+		"Search and Rescue" = /datum/prototype/simple/alt_title/field_medic/sar
 		)
 
-/datum/prototype/alt_title/expedition_medic
+/datum/prototype/simple/alt_title/expedition_medic
 	title = "Expedition Medic"
 
-/datum/prototype/alt_title/field_medic/sar
+/datum/prototype/simple/alt_title/field_medic/sar
 	title = "Search and Rescue"
 
 /datum/outfit/job/station/sar

@@ -23,16 +23,16 @@
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
 
 	alt_titles = list(
-		"Xenozoologist" = /datum/prototype/alt_title/xenozoologist,
-		"Xenoanthropologist" = /datum/prototype/alt_title/xenoanthropologist
+		"Xenozoologist" = /datum/prototype/simple/alt_title/xenozoologist,
+		"Xenoanthropologist" = /datum/prototype/simple/alt_title/xenoanthropologist
 		)
 
 // Xenibiologist Alt Titles
-/datum/prototype/alt_title/xenozoologist
+/datum/prototype/simple/alt_title/xenozoologist
 	title = "Xenozoologist"
 	title_blurb = "Xenozoologists are well versed in their study of extra-terrestrial life." // Someone make a better blurb please
 
-/datum/prototype/alt_title/xenoanthropologist
+/datum/prototype/simple/alt_title/xenoanthropologist
 	title = "Xenoanthropologist"
 	title_blurb = "Xenoanthropologist still heavily focuses their study on alien lifeforms, but their specialty leans more towards fellow sapient beings than simple animals."
 */

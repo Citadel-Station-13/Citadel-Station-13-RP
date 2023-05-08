@@ -51,18 +51,18 @@
 						transported to Medical for treatment. They are expected to keep the crew informed about threats to their health and safety, and \
 						about the importance of Suit Sensors."
 	alt_titles = list (
-		"Chief Physician" = /datum/prototype/alt_title/cmo/physician,
-		"Director of Medicine" = /datum/prototype/alt_title/cmo/director,
-		"Chief Surgeon" = /datum/prototype/alt_title/cmo/surgeon
+		"Chief Physician" = /datum/prototype/simple/alt_title/cmo/physician,
+		"Director of Medicine" = /datum/prototype/simple/alt_title/cmo/director,
+		"Chief Surgeon" = /datum/prototype/simple/alt_title/cmo/surgeon
 	)
 
-/datum/prototype/alt_title/cmo/physician
+/datum/prototype/simple/alt_title/cmo/physician
 	title = "Chief Physician"
 
-/datum/prototype/alt_title/cmo/director
+/datum/prototype/simple/alt_title/cmo/director
 	title = "Director of Medicine"
 
-/datum/prototype/alt_title/cmo/surgeon
+/datum/prototype/simple/alt_title/cmo/surgeon
 	title = "Chief Surgeon"
 
 /datum/outfit/job/station/chief_medical_officer

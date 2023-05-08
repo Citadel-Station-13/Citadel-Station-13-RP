@@ -29,25 +29,25 @@ var/datum/legacy_announcement/minor/captain_announcement = new(do_newscast = 1)
 						they do not understand everything, and are expected to delegate tasks to the appropriate crew member. The Facility Director is expected to \
 						have an understanding of Standard Operating Procedure, and is subject to it, and legal action, in the same way as every other crew member."
 	alt_titles = list(
-		"Overseer"= /datum/prototype/alt_title/overseer,
-		"Site Manager" = /datum/prototype/alt_title/captain/site,
-		"Director of Operations" = /datum/prototype/alt_title/captain/director,
-		"Captain" = /datum/prototype/alt_title/captain/captain
+		"Overseer"= /datum/prototype/simple/alt_title/overseer,
+		"Site Manager" = /datum/prototype/simple/alt_title/captain/site,
+		"Director of Operations" = /datum/prototype/simple/alt_title/captain/director,
+		"Captain" = /datum/prototype/simple/alt_title/captain/captain
 	)
 
 /datum/role/job/station/captain/get_access()
 	return SSjob.access_ids_of_type(ACCESS_TYPE_STATION)
 
-/datum/prototype/alt_title/overseer
+/datum/prototype/simple/alt_title/overseer
 	title = "Overseer"
 
-/datum/prototype/alt_title/captain/site
+/datum/prototype/simple/alt_title/captain/site
 	title = "Site Manager"
 
-/datum/prototype/alt_title/captain/director
+/datum/prototype/simple/alt_title/captain/director
 	title = "Director of Operations"
 
-/datum/prototype/alt_title/captain/captain
+/datum/prototype/simple/alt_title/captain/captain
 	title = "Captain"
 
 /datum/outfit/job/station/captain

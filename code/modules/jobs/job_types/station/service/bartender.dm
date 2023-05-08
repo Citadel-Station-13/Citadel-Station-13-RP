@@ -16,18 +16,18 @@
 	outfit_type = /datum/outfit/job/station/bartender
 	desc = "A Bartender mixes drinks for the crew. They generally have permission to charge for drinks or deny service to unruly patrons."
 	alt_titles = list(
-		"Barista" = /datum/prototype/alt_title/bartender/barista,
-		"Barkeeper" = /datum/prototype/alt_title/bartender/barkeeper,
-		"Barmaid" = /datum/prototype/alt_title/bartender/barmaid
+		"Barista" = /datum/prototype/simple/alt_title/bartender/barista,
+		"Barkeeper" = /datum/prototype/simple/alt_title/bartender/barkeeper,
+		"Barmaid" = /datum/prototype/simple/alt_title/bartender/barmaid
 	)
 
-/datum/prototype/alt_title/bartender/barkeeper
+/datum/prototype/simple/alt_title/bartender/barkeeper
 	title = "Barkeeper"
 
-/datum/prototype/alt_title/bartender/barmaid
+/datum/prototype/simple/alt_title/bartender/barmaid
 	title = "Barmaid"
 
-/datum/prototype/alt_title/bartender/barista
+/datum/prototype/simple/alt_title/bartender/barista
 	title = "Barista"
 	title_blurb = "A barista mans the Cafe, serving primarily non-alcoholic drinks to the crew. They generally have permission to charge for drinks \
 					or deny service to unruly patrons."
