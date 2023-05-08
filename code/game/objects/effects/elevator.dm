@@ -15,6 +15,9 @@ GLOBAL_LIST_EMPTY(virtual_elevators)
 	bound_x = -64
 	bound_y = -64
 
+	/// unique id
+	var/id
+
 #warn impl
 #warn almayer_(lowering, lowered, raising, raised)
 
