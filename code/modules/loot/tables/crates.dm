@@ -1,5 +1,5 @@
 /datum/prototype/loot_table/abandoned_crate
-	identifier = "AbandonedCrate"
+	id = "LootTable-AbandonedCrate"
 	contents = list(
 		/datum/prototype/loot_pack/ore/valuable = 5,
 		/datum/prototype/loot_pack/gear/space_miner/basic = 5,

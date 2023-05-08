@@ -4,7 +4,7 @@
  */
 /datum/prototype/loot_pack
 	anonymous = TRUE
-	namespace = "LootPack"
+	anonymous_namespace = "LootPack"
 	abstract_type = /datum/prototype/loot_pack
 	/// items that always spawn associated to amount (defaulting to 1)
 	var/list/always

@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(repository)
 	// invalidate cache
 	// todo: smarter way to do this
 	subtype_lists = list()
-	uid_lookup -= instance.uid
+	uid_lookup -= instance.id
 	return TRUE
 
 /**

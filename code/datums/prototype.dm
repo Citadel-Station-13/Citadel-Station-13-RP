@@ -44,7 +44,7 @@ candidates for conversion:
 /datum/prototype/proc/generate_anonymous_uid()
 	// unique always, even across rounds
 	ASSERT(anonymous_namespace)
-	return "[anonymous_namespace]-[num2text(world.realtime, 16)]-[++uid_next]"
+	return "[anonymous_namespace]-[num2text(world.realtime, 16)]-[++id_next]"
 
 /**
  * called on register

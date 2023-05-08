@@ -12,10 +12,10 @@
 			// and obviously error if not anonymous and no identifier
 			instance = new instance
 			type_cache[instance] = instance
-			if(!instance.uid)
-				Fail("[instance.type]: no uid")
-			else if(id_cache[instance.uid])
-				Fail("[instance.type]: collides on uid [instance.uid] with [id_cache[instance.uid]:type].")
+			if(!instance.id)
+				Fail("[instance.type]: no id")
+			else if(id_cache[instance.id])
+				Fail("[instance.type]: collides on id [instance.id] with [id_cache[instance.id]:type].")
 			else
-				id_cache[instance.uid] = instance
+				id_cache[instance.id] = instance
 
