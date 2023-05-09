@@ -1,7 +1,7 @@
-/datum/prototype/loot_pack/chemistry
-	abstract_type = /datum/prototype/loot_pack/chemistry
+/datum/prototype/simple/loot_pack/chemistry
+	abstract_type = /datum/prototype/simple/loot_pack/chemistry
 
-/datum/prototype/loot_pack/chemistry/advanced
+/datum/prototype/simple/loot_pack/chemistry/advanced
 	always = list(
 		/obj/item/reagent_containers/glass/beaker/bluespace,
 		/obj/item/reagent_containers/hypospray/science,

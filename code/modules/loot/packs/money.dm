@@ -1,7 +1,7 @@
-/datum/prototype/loot_pack/money
-	abstract_type = /datum/prototype/loot_pack/money
+/datum/prototype/simple/loot_pack/money
+	abstract_type = /datum/prototype/simple/loot_pack/money
 
-/datum/prototype/loot_pack/money/medium
+/datum/prototype/simple/loot_pack/money/medium
 	always = list(
 		/obj/item/spacecash/c100 = 5,
 	)

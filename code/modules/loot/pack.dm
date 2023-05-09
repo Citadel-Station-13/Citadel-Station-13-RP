@@ -2,10 +2,10 @@
  * holder datum for loot packs
  * can be used alone or in loot tables
  */
-/datum/prototype/loot_pack
+/datum/prototype/simple/loot_pack
 	anonymous = TRUE
 	anonymous_namespace = "LootPack"
-	abstract_type = /datum/prototype/loot_pack
+	abstract_type = /datum/prototype/simple/loot_pack
 	/// items that always spawn associated to amount (defaulting to 1)
 	var/list/always
 	/// items that are associated to chance; nulls are allowed.
@@ -24,7 +24,7 @@
  *
  * this is not deterministic unless the pack itself is deterministic
  */
-/datum/prototype/loot_pack/proc/flatten(amount = amt)
+/datum/prototype/simple/loot_pack/proc/flatten(amount = amt)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/list/intrinsic = always?.Copy() || list()
 	var/list/extra = draw(amount)
@@ -32,7 +32,7 @@
 		intrinsic[thing] = extra[thing] + intrinsic[thing]
 	return intrinsic
 
-/datum/prototype/loot_pack/proc/cache_tally()
+/datum/prototype/simple/loot_pack/proc/cache_tally()
 	SHOULD_NOT_OVERRIDE(TRUE)
 	. = 0
 	for(var/thing in some)
@@ -42,7 +42,7 @@
 /**
  * get x random amount of "some"
  */
-/datum/prototype/loot_pack/proc/draw(amount)
+/datum/prototype/simple/loot_pack/proc/draw(amount)
 	if(amount == 1)
 		. = list()
 		var/got = draw_single()
@@ -52,7 +52,7 @@
 		return
 	return draw_multi(amount)
 
-/datum/prototype/loot_pack/proc/draw_single()
+/datum/prototype/simple/loot_pack/proc/draw_single()
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/total = cached_tally || cache_tally()
 	var/rng = rand(1, total)
@@ -61,7 +61,7 @@
 		if(rng <= 0)
 			return thing
 
-/datum/prototype/loot_pack/proc/draw_multi(amt)
+/datum/prototype/simple/loot_pack/proc/draw_multi(amt)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	if(amt <= 5)
 		// too small to justify the binary insert
@@ -113,13 +113,13 @@
 /**
  * are we deterministic?
  */
-/datum/prototype/loot_pack/proc/is_deterministic()
+/datum/prototype/simple/loot_pack/proc/is_deterministic()
 	return !amt
 
 /**
  * spawn always at
  */
-/datum/prototype/loot_pack/proc/instantiate(atom/location, amount = amt)
+/datum/prototype/simple/loot_pack/proc/instantiate(atom/location, amount = amt)
 	var/safety = 50 // no way you ever need more than this. if you think you do, rethink.
 	var/list/got = flatten(amount)
 	for(var/path in got)
@@ -138,7 +138,7 @@
  * the only restriction is not spawning abstract_type objets.
  * if an abstract type is picked, this just goes forwards without refunding.
  */
-/datum/prototype/loot_pack/proc/chaotic_draw(list/paths, amount = 1)
+/datum/prototype/simple/loot_pack/proc/chaotic_draw(list/paths, amount = 1)
 	. = list()
 	for(var/i in 1 to amount)
 		var/datum/got = pick(paths)
