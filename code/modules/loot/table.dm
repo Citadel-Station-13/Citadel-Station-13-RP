@@ -3,7 +3,7 @@
  */
 /datum/prototype/loot_table
 	anonymous = TRUE
-	namespace = "LootTable"
+	anonymous_namespace = "LootTable"
 
 	/// paths of either /atom/movable's or /datum/prototype/loot_pack's to chance
 	/// string ids will be treated as loot pack prototype ids.
