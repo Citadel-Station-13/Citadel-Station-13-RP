@@ -10614,9 +10614,6 @@
 /obj/item/tank/oxygen{
 	pixel_y = -4
 	},
-/obj/item/hardsuit/medical/equipped{
-	req_access = list(5)
-	},
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
@@ -23385,6 +23382,12 @@
 	name = "Server Base"
 	},
 /area/server)
+"oCM" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/purple/border,
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_hallway)
 "oDa" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
@@ -29218,9 +29221,10 @@
 "shs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
-/obj/machinery/door/airlock/glass_research,
 /obj/machinery/door/firedoor/glass,
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/door/airlock/glass_research{
+	name = "Telescience Wing"
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "shL" = (
@@ -36123,9 +36127,10 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/door/airlock/glass_research,
 /obj/machinery/door/firedoor/glass,
-/obj/item/barrier_tape_segment/engineering,
+/obj/machinery/door/airlock/glass_research{
+	name = "Telescience Wing"
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "wkd" = (
@@ -46015,7 +46020,7 @@ lcN
 vgp
 vGZ
 jOr
-qpj
+oCM
 qqW
 qEh
 hdT
