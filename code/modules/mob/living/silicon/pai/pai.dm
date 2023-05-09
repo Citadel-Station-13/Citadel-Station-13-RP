@@ -270,8 +270,8 @@
 	last_special = world.time + 100
 
 	//I'm not sure how much of this is necessary, but I would rather avoid issues.
-	if(istype(card.loc,/obj/item/rig_module))
-		to_chat(src, "There is no room to unfold inside this rig module. You're good and stuck.")
+	if(istype(card.loc,/obj/item/hardsuit_module))
+		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
 		return 0
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
@@ -359,12 +359,12 @@
 	set name = "Rest"
 	set category = "IC"
 
-	// Pass lying down or getting up to our pet human, if we're in a rig.
+	// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 	if(istype(src.loc,/obj/item/paicard))
 		set_resting(FALSE)
-		var/obj/item/rig/rig = src.get_rig()
-		if(istype(rig))
-			rig.force_rest(src)
+		var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+		if(istype(hardsuit))
+			hardsuit.force_rest(src)
 	else
 		toggle_resting()
 		icon_state = resting ? "[chassis]_rest" : "[chassis]"

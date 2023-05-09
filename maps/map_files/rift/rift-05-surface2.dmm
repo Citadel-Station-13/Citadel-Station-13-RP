@@ -4596,7 +4596,7 @@
 /area/rnd/research)
 "dcq" = (
 /obj/structure/table/rack/shelf,
-/obj/item/rig/hazmat/equipped{
+/obj/item/hardsuit/hazmat/equipped{
 	req_access = list(65)
 	},
 /obj/item/clothing/glasses/welding/superior,
@@ -7209,7 +7209,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "eSk" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -11664,7 +11664,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "hMQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/mask/gas{
@@ -12134,7 +12134,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/tank/jetpack/oxygen,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "iaY" = (
 /obj/machinery/holopad,
 /obj/structure/cable/green{
@@ -13621,7 +13621,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "jbT" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -14037,7 +14037,7 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "jqM" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -15325,7 +15325,7 @@
 	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "khd" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/toolbox/emergency,
@@ -15789,6 +15789,14 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/machinery/button/remote/airlock{
+	dir = 8;
+	id = "secrestroom1";
+	name = "Security Restroom";
+	pixel_x = 26;
+	pixel_y = 4;
+	specialfunctions = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
@@ -16282,7 +16290,7 @@
 "kKh" = (
 /obj/machinery/suit_cycler/security,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "kKy" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/wood,
@@ -17219,10 +17227,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/hammerhead/bay)
-"lot" = (
-/obj/machinery/door/airlock/maintenance/sec,
-/turf/simulated/floor/plating,
-/area/security/hallway)
 "lpl" = (
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/surfacebase/outside/outside2)
@@ -17468,7 +17472,7 @@
 "lye" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "lyr" = (
 /obj/structure/table/woodentable,
 /obj/random/soap,
@@ -20523,7 +20527,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "nCi" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/structure/catwalk,
@@ -20614,7 +20618,7 @@
 	},
 /obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "nEB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -20717,6 +20721,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "nHA" = (
@@ -22796,6 +22801,7 @@
 /area/maintenance/dormitory)
 "pdZ" = (
 /obj/machinery/door/airlock/security{
+	id_tag = "secrestroom1";
 	name = "Security Restroom";
 	req_one_access = list(1,2,4)
 	},
@@ -22931,7 +22937,7 @@
 	pixel_x = -24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "pjv" = (
 /obj/structure/table/rack/shelf,
 /obj/item/tape_recorder{
@@ -24966,7 +24972,7 @@
 	pixel_x = 24
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "qIa" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -25066,7 +25072,7 @@
 /area/medical/medbay_primary_storage)
 "qMP" = (
 /turf/simulated/wall/r_wall,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "qNg" = (
 /obj/machinery/light{
 	dir = 4
@@ -25507,6 +25513,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/security/evidence_storage)
 "rbR" = (
@@ -26047,7 +26054,7 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "rtZ" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -27079,7 +27086,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "slH" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Research Lounge";
@@ -27131,7 +27138,7 @@
 "smO" = (
 /obj/structure/closet/secure_closet/security,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "snv" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -27615,7 +27622,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "sEC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -28251,7 +28258,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "teb" = (
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
@@ -29632,7 +29639,7 @@
 	pixel_x = -23
 	},
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "uhz" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -31439,7 +31446,7 @@
 /area/rnd/workshop)
 "vqS" = (
 /turf/simulated/floor/tiled/steel,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "vrx" = (
 /obj/structure/table/steel,
 /obj/fiftyspawner/steel,
@@ -32869,7 +32876,7 @@
 	},
 /obj/structure/closet/secure_closet/security,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "wpj" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -33873,7 +33880,7 @@
 /obj/item/clothing/suit/space/void/security,
 /obj/item/clothing/head/helmet/space/void/security,
 /turf/simulated/floor/tiled/red,
-/area/tether/surfacebase/security/evastorage)
+/area/security/evastorage)
 "xbW" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -55400,7 +55407,7 @@ pjS
 jrD
 pwT
 dyg
-lot
+lEX
 qcK
 sym
 qcK

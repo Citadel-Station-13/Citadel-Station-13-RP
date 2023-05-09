@@ -2,7 +2,7 @@
  * Defines the helmets, gloves and shoes for rigs.
  */
 
-/obj/item/clothing/head/helmet/space/rig
+/obj/item/clothing/head/helmet/space/hardsuit
 	name = "helmet"
 	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB | ALLOWINTERNALS
@@ -42,7 +42,7 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
-/obj/item/clothing/gloves/gauntlets/rig
+/obj/item/clothing/gloves/gauntlets/hardsuit
 	name = "gauntlets"
 	clothing_flags = THICKMATERIAL | CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
 	atom_flags = PHORONGUARD
@@ -76,7 +76,7 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
-/obj/item/clothing/shoes/magboots/rig
+/obj/item/clothing/shoes/magboots/hardsuit
 	name = "boots"
 	atom_flags = PHORONGUARD
 	clothing_flags = CLOTHING_IGNORE_BELTLINK | CLOTHING_IGNORE_DELIMB
@@ -113,7 +113,7 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
-/obj/item/clothing/suit/space/rig
+/obj/item/clothing/suit/space/hardsuit
 	name = "chestpiece"
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit)
 
@@ -164,7 +164,7 @@
 		SPECIES_ZORREN_HIGH,
 	)
 
-/obj/item/clothing/suit/space/rig/attack_hand(mob/user, list/params)
+/obj/item/clothing/suit/space/hardsuit/attack_hand(mob/user, list/params)
 	if(tacknife)
 		tacknife.loc = get_turf(src)
 		if(user.put_in_active_hand(tacknife))
@@ -175,7 +175,7 @@
 		return
 	..()
 
-/obj/item/clothing/suit/space/rig/attackby(obj/item/I, mob/living/M)
+/obj/item/clothing/suit/space/hardsuit/attackby(obj/item/I, mob/living/M)
 	if(istype(I, /obj/item/material/knife/tacknife))
 		if(tacknife)
 			return
@@ -188,10 +188,10 @@
 	..()
 
 //TODO: move this to modules
-/obj/item/clothing/head/helmet/space/rig/proc/prevent_track()
+/obj/item/clothing/head/helmet/space/hardsuit/proc/prevent_track()
 	return FALSE
 
-/obj/item/clothing/gloves/gauntlets/rig/Touch(atom/A, proximity)
+/obj/item/clothing/gloves/gauntlets/hardsuit/Touch(atom/A, proximity)
 
 	if(!A || !proximity)
 		return FALSE
@@ -200,18 +200,18 @@
 	if(!istype(H) || (!H.back && !H.belt))
 		return FALSE
 
-	var/obj/item/rig/suit = H.back
+	var/obj/item/hardsuit/suit = H.back
 	if(!suit || !istype(suit) || !suit.installed_modules.len)
 		return FALSE
 
-	for(var/obj/item/rig_module/module in suit.installed_modules)
+	for(var/obj/item/hardsuit_module/module in suit.installed_modules)
 		if(module.active && module.activates_on_touch)
 			if(module.engage(A))
 				return TRUE
 
 	return FALSE
 
-//Rig pieces for non-spacesuit based rigs
+//hardsuit pieces for non-spacesuit based rigs
 
 /obj/item/clothing/head/lightrig
 	name = "mask"

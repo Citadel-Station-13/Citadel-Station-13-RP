@@ -237,8 +237,8 @@
 	name = "Electrowarfare and Voice Synthesiser kit"
 	desc = "Kit for confounding organic and synthetic entities alike."
 	starts_with = list(
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/voice
+		/obj/item/hardsuit_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/voice
 	)
 
 /obj/item/storage/secure/briefcase/money

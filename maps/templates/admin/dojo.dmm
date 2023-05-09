@@ -723,7 +723,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bL" = (
-/obj/item/rig/light/stealth,
+/obj/item/hardsuit/light/stealth,
 /obj/structure/table/rack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -779,7 +779,7 @@
 /area/ninja_dojo/dojo)
 "bT" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/chem_dispenser/ninja,
+/obj/item/hardsuit_module/chem_dispenser/ninja,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -828,15 +828,15 @@
 /area/ninja_dojo/dojo)
 "bZ" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/mounted/energy_blade,
+/obj/item/hardsuit_module/mounted/energy_blade,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/ninja_dojo/dojo)
 "ca" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig_module/fabricator/energy_net,
-/obj/item/rig_module/vision/multi,
+/obj/item/hardsuit_module/fabricator/energy_net,
+/obj/item/hardsuit_module/vision/multi,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
