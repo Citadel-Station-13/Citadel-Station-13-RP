@@ -62,7 +62,7 @@
 	burn_mod     = 1.1
 
 	mob_size     = MOB_SMALL
-	pass_flags   = ATOM_PASS_TABLE
+//	pass_flags   = ATOM_PASS_TABLE
 	holder_type  = /obj/item/holder/human
 //	short_sighted = 1
 	gluttonous    = 1
@@ -148,7 +148,6 @@
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 	)
 
 	descriptors = list(
@@ -165,6 +164,9 @@
 	var/static/list/flight_suit_blacklisted_types = list(
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket,
+	)
+	abilities = list(
+		/datum/ability/species/toggle_agility
 	)
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
@@ -217,6 +219,6 @@
 	if(!silent)
 		to_chat(H, SPAN_NOTICE("You catch the air in your wings and greatly slow your fall."))
 		H.visible_message(SPAN_NOTICE("\The [H] glides down from above, landing safely."))
-		H.Stun(2)
+		H.afflict_stun(20 * 2)
 		playsound(H, "rustle", 25, 1)
 	return TRUE

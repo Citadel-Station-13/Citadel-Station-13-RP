@@ -142,17 +142,15 @@
 				var/mob/living/carbon/human/H = src
 				H.w_uniform.add_fingerprint(M)
 
-			var/show_ssd
 			var/mob/living/carbon/human/H = src
 			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
-			if(istype(H))
-				show_ssd = H.species.show_ssd
-			if(show_ssd && !client && !teleop && (!istype(H) || !H.override_ssd))
-				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
-					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
-			else if(lying || src.sleeping)
-				AdjustSleeping(-5)
-				if(H) H.in_stasis = 0
+			if(IS_PRONE(src) || !IS_CONSCIOUS(src))
+				if(!resting_intentionally && IS_PRONE(src) && CHECK_MOBILITY(src, MOBILITY_CAN_STAND))
+					set_resting(FALSE)
+				adjust_sleeping(-5 SECONDS)
+				adjust_unconscious(-2 SECONDS)
+				if(H)
+					H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
 			else
@@ -178,9 +176,9 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustUnconscious(-3)
-			AdjustStunned(-3)
-			AdjustWeakened(-3)
+			adjust_unconscious(20 * -3)
+			adjust_stunned(20 * -3)
+			adjust_paralyzed(20 * -3)
 
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
@@ -245,11 +243,12 @@
 	set name = "Sleep"
 	set category = "IC"
 
-	if(usr.sleeping)
-		to_chat(usr, "<font color='red'>You are already sleeping</font>")
+
+	if(is_sleeping())
+		to_chat(src, "<font color='red'>You are already sleeping</font>")
 		return
-	if(alert(src,"You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
-		usr.AdjustSleeping(20)
+	if(alert(src, "You sure you want to sleep for a while?","Sleep","Yes","No") == "Yes")
+		afflict_sleeping(20 SECONDS)
 
 /mob/living/carbon/Bump(atom/A)
 	. = ..()
@@ -265,7 +264,7 @@
 	stop_pulling()
 	to_chat(src, "<span class='warning'>You slipped on [slipped_on]!</span>")
 	playsound(src.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-	Weaken(FLOOR(stun_duration/2, 1))
+	afflict_paralyze(20 * FLOOR(stun_duration/2, 1))
 	return 1
 
 /mob/living/carbon/proc/add_chemical_effect(var/effect, var/magnitude = 1)
@@ -327,12 +326,12 @@
 /mob/living/carbon/check_obscured_slots()
 	// if(slot)
 	// 	if(head.inv_hide_flags & HIDEMASK)
-	// 		LAZYOR(., SLOT_MASK)
+	// 		LAZYDISTINCTADD(., SLOT_MASK)
 	// 	if(head.inv_hide_flags & HIDEEYES)
-	// 		LAZYOR(., SLOT_EYES)
+	// 		LAZYDISTINCTADD(., SLOT_EYES)
 	// 	if(head.inv_hide_flags & HIDEEARS)
-	// 		LAZYOR(., SLOT_EARS)
+	// 		LAZYDISTINCTADD(., SLOT_EARS)
 
 	if(wear_mask)
 		if(wear_mask.inv_hide_flags & HIDEEYES)
-			LAZYOR(., SLOT_EYES)
+			LAZYDISTINCTADD(., SLOT_EYES)

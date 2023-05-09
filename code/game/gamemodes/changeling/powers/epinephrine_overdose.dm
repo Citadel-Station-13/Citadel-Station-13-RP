@@ -30,11 +30,11 @@
 	var/mob/living/carbon/human/C = src
 	to_chat(C, "<span class='notice'>Energy rushes through us.  [C.lying ? "We arise." : ""]</span>")
 	C.set_stat(CONSCIOUS)
-	C.SetUnconscious(0)
-	C.SetStunned(0)
-	C.SetWeakened(0)
+	C.set_unconscious(0)
+	C.set_stunned(0)
+	C.set_paralyzed(0)
 	C.lying = 0
-	C.update_canmove()
+	C.update_mobility()
 //	C.reagents.add_reagent("toxin", 10)
 	C.reagents.add_reagent("epinephrine", 20)
 
@@ -59,8 +59,8 @@
 	M.add_chemical_effect(CE_SPEEDBOOST, 3)
 	M.ceiling_chemical_effect(CE_PAINKILLER, 60)
 	M.adjustHalLoss(-30)
-	M.AdjustUnconscious(-2)
-	M.AdjustStunned(-2)
-	M.AdjustWeakened(-2)
+	M.adjust_unconscious(20 * -2)
+	M.adjust_stunned(20 * -2)
+	M.adjust_paralyzed(20 * -2)
 	..()
 	return

@@ -69,11 +69,6 @@
 "bI" = (
 /obj/structure/bed/chair/bay/chair,
 /obj/structure/handrail,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -84,6 +79,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_galley)
 "bK" = (
@@ -149,10 +145,6 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -163,6 +155,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_head)
 "cC" = (
@@ -389,11 +382,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "gv" = (
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -410,6 +398,7 @@
 /obj/structure/bed/chair/bay/comfy{
 	dir = 4
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "gC" = (
@@ -674,6 +663,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "ks" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_cockpit)
 "kx" = (
@@ -1069,11 +1059,6 @@
 "qn" = (
 /obj/structure/bed/chair/bay/chair,
 /obj/structure/handrail,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -1084,6 +1069,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "qu" = (
@@ -1181,6 +1167,15 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/salamander_engineering)
+"ub" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/salamander)
 "ur" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -1279,10 +1274,6 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -24
-	},
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -1293,6 +1284,7 @@
 	dir = 8;
 	pixel_x = -32
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_q2)
 "Bf" = (
@@ -1727,14 +1719,10 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/handrail{
 	dir = 8
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander_engineering)
 "Vs" = (
@@ -1885,16 +1873,12 @@
 	name = "Salamander Master Docking Controller";
 	pixel_y = -22
 	},
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable,
 /obj/machinery/light,
 /obj/structure/railing/grey{
 	dir = 8
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/salamander)
 
@@ -2302,7 +2286,7 @@ bN
 dO
 eP
 iS
-hp
+ub
 jT
 iS
 Qq

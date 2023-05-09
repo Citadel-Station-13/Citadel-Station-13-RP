@@ -87,7 +87,10 @@
 	. = holder
 	switch(resolution)
 		if(SONAR_RESOLUTION_VISIBLE)
-			MA = vfx_clone_as_outline(127)
+			if(ismob(src))
+				MA = vfx_clone_as_outline(127, 1, 0, 0)
+			else
+				MA = vfx_clone_as_outline(127)
 			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
 			holder.add_overlay(MA)
 		if(SONAR_RESOLUTION_WALLHACK)

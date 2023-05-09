@@ -1084,7 +1084,7 @@
 /area/rnd/research/testingrange)
 "aSM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
 "aTT" = (
@@ -1275,7 +1275,7 @@
 /area/medical/medbay3)
 "bdW" = (
 /obj/effect/floor_decal/corner/blue/diagonal,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_2)
 "bge" = (
@@ -1388,7 +1388,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "blh" = (
@@ -2624,7 +2624,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora_storage)
 "cpc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "cpD" = (
@@ -3289,7 +3289,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "cQb" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -3923,7 +3923,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "duK" = (
@@ -4712,7 +4712,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "ecT" = (
@@ -5139,7 +5139,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "eus" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "euX" = (
@@ -5488,7 +5488,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "eIW" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_emt_bay)
 "eJd" = (
@@ -5518,7 +5518,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "eLe" = (
@@ -5747,7 +5747,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "eTS" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
@@ -6866,7 +6866,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "fVB" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -7813,7 +7813,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "gIx" = (
@@ -7834,7 +7834,7 @@
 /area/rnd/research_foyer_auxiliary)
 "gJF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "gKp" = (
@@ -9222,7 +9222,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "hTg" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "hTj" = (
@@ -10000,7 +10000,7 @@
 /obj/machinery/camera/network/medbay{
 	dir = 8
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
 "iEI" = (
@@ -10020,7 +10020,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "iFz" = (
@@ -10176,14 +10176,14 @@
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "iPM" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/medbay3)
 "iQr" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
 "iQG" = (
@@ -10718,7 +10718,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak/surgery)
 "joj" = (
@@ -10762,7 +10762,7 @@
 	dir = 8;
 	pixel_x = 25
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
 "jqm" = (
@@ -14297,7 +14297,7 @@
 	dir = 5
 	},
 /obj/landmark/spawnpoint/job/medical_doctor,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "moV" = (
@@ -14839,7 +14839,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "mMe" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/medbay_primary_storage)
 "mMt" = (
@@ -15484,7 +15484,7 @@
 "nnm" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "nnD" = (
@@ -15899,7 +15899,7 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics)
 "nJe" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -16187,7 +16187,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "nZh" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "nZs" = (
@@ -16276,7 +16276,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
 "obu" = (
@@ -16911,7 +16911,7 @@
 "oyG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/psych_ward)
 "ozi" = (
@@ -17445,7 +17445,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/starboard)
 "oUx" = (
@@ -17652,7 +17652,7 @@
 /area/medical/psych_ward)
 "pai" = (
 /obj/structure/table/rack,
-/obj/item/rig/hazmat/equipped{
+/obj/item/hardsuit/hazmat/equipped{
 	req_access = list(65)
 },
 /obj/machinery/light_switch{
@@ -17783,7 +17783,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "pem" = (
@@ -18298,7 +18298,7 @@
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/item/radio/beacon,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "pxo" = (
@@ -18488,7 +18488,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "pCp" = (
@@ -19122,7 +19122,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/fpmaint2)
 "pWt" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "pWL" = (
@@ -19228,7 +19228,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/assembly/robotics/surgery)
 "qas" = (
@@ -19404,7 +19404,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "qig" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "qih" = (
@@ -19607,7 +19607,7 @@
 /area/hallway/primary/port)
 "qra" = (
 /obj/effect/floor_decal/corner/blue,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "qrl" = (
@@ -19719,7 +19719,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "qxu" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/medical/reception)
 "qxB" = (
@@ -21334,7 +21334,7 @@
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "rDF" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -21635,7 +21635,7 @@
 /turf/simulated/open,
 /area/holodeck_control)
 "rPc" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room/exam_1)
@@ -22473,7 +22473,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "szb" = (
@@ -23076,7 +23076,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -23931,7 +23931,7 @@
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "tAv" = (
@@ -23980,7 +23980,7 @@
 /turf/simulated/wall,
 /area/crew_quarters/medbreak/surgery)
 "tCs" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "tCx" = (
@@ -24113,7 +24113,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/aft)
 "tKe" = (
@@ -24227,7 +24227,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/ward)
 "tOE" = (
@@ -25433,7 +25433,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/holodeck_control)
 "uQA" = (
@@ -26275,7 +26275,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
 "vwF" = (
@@ -26835,7 +26835,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
 "wby" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/corner/green{
 	dir = 5
 	},
@@ -27631,7 +27631,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/xenobiology/xenoflora)
 "wGb" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
 "wGA" = (
@@ -28112,7 +28112,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "wTW" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 8
 	},
@@ -28761,7 +28761,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/triumph/station/stairs_three)
 "xyp" = (
@@ -29605,7 +29605,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/fore)
 "ydK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "yfJ" = (
@@ -29664,7 +29664,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "yhM" = (

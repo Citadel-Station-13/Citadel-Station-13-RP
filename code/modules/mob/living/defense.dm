@@ -172,8 +172,8 @@
 	flash_pain()
 
 	if (stun_amount)
-		Stun(stun_amount)
-		Weaken(stun_amount)
+		afflict_stun(20 * stun_amount)
+		afflict_paralyze(20 * stun_amount)
 		apply_effect(STUTTER, stun_amount)
 		apply_effect(EYE_BLUR, stun_amount)
 
@@ -363,7 +363,7 @@
 		ai_holder.react_to_attack(user)
 	src.visible_message("<span class='danger'>[user] has [attack_message] [src]!</span>")
 	user.do_attack_animation(src)
-	spawn(1) updatehealth()
+	spawn(1) update_health()
 	return 1
 
 /mob/living/proc/IgniteMob()
@@ -452,7 +452,7 @@
 // Called when struck by lightning.
 /mob/living/proc/lightning_act()
 	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
-	Unconscious(5)
+	afflict_unconscious(20 * 5)
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)
@@ -473,7 +473,7 @@
 	inflict_poison_damage(5)
 	adjustFireLoss(5) // Acid cannot be 100% resisted by protection.
 	adjustToxLoss(5)
-	confused = max(confused, 1)
+	Confuse(1)
 
 //Blood
 //Acid
@@ -485,24 +485,27 @@
 /mob/living/proc/reagent_permeability()
 	return 1
 
-/mob/living/proc/handle_actions()
+/mob/proc/handle_actions()
+
+/mob/living/handle_actions()
+	// todo: kill this, move to event driven.
 	//Pretty bad, i'd use picked/dropped instead but the parent calls in these are nonexistent
 	for(var/datum/action/A in actions)
 		if(A.CheckRemoval(src))
-			A.Remove(src)
+			A.remove(src)
 	for(var/obj/item/I in src)
 		if(I.action_button_name)
 			if(!I.action)
 				if(I.action_button_is_hands_free)
-					I.action = new/datum/action/item_action/hands_free
+					I.action = new/datum/action/item_action/hands_free(I)
 				else
-					I.action = new/datum/action/item_action
+					I.action = new/datum/action/item_action(I)
 				I.action.name = I.action_button_name
-				I.action.target = I
-			I.action.Grant(src)
-	return
+			I.action.grant(src)
 
 /mob/living/update_action_buttons()
+	// todo: remove this, move to event driven
+	handle_actions()
 	if(!hud_used)
 		return
 	if(!client)
@@ -531,11 +534,6 @@
 	var/button_number = 0
 	for(var/datum/action/A in actions)
 		button_number++
-		if(A.button == null)
-			var/atom/movable/screen/movable/action_button/N = new(hud_used)
-			N.owner = A
-			A.button = N
-
 		var/atom/movable/screen/movable/action_button/B = A.button
 
 		B.UpdateIcon()

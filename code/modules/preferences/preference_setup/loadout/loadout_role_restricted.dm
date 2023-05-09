@@ -10,7 +10,7 @@
 //*Single Departments
 //Security
 /datum/gear/restricted/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Blueshield")
 
 /datum/gear/restricted/security/eyes
 	slot = SLOT_ID_GLASSES
@@ -85,7 +85,7 @@
 
 //Command
 /datum/gear/restricted/command
-	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary")
+	allowed_roles = list("Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary", "Blueshield")
 
 /datum/gear/restricted/command/eyes
 	slot = SLOT_ID_GLASSES
@@ -1084,7 +1084,9 @@
 	name = "Cargo Poncho"
 	path = /obj/item/clothing/accessory/poncho/roles/cargo
 
-
+/datum/gear/restricted/supply/suit/overcoat
+	name = "Cargo Great Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/cargo
 
 //Shoes
 /datum/gear/restricted/supply/shoes/winterboots
@@ -1354,6 +1356,14 @@
 	name = "Facility Director - Cloak"
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/captain
 	allowed_roles = list("Facility Director")
+
+/datum/gear/restricted/command/suit/overcoat
+	name = "Command Formal Overcoat"
+	path = /obj/item/clothing/suit/storage/vest/formal/command
+
+/datum/gear/restricted/command/suit/overcoat/cape
+	name = "Command Formal Overcoat Caped"
+	path = /obj/item/clothing/suit/storage/vest/formal/command/caped
 
 /datum/gear/restricted/command/suit/cloak/hop
 	name = "Head of Personnel - Cloak"

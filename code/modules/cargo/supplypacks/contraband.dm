@@ -112,7 +112,6 @@
 
 /obj/item/storage/box/cargo_null_entry_kit/spy/PopulateContents()
 	new /obj/item/gun/ballistic/silenced(src)
-	new /obj/item/chameleon(src)
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/encryptionkey/syndicate(src)
 	new /obj/item/card/id/syndicate(src)

@@ -77,47 +77,47 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/item/rig/ert,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig_module/vision/multi,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/orescanner,
-/obj/item/rig_module/device/orescanner,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/grenade_launcher/smoke,
-/obj/item/rig_module/cleaner_launcher,
-/obj/item/rig_module/grenade_launcher,
+/obj/item/hardsuit/ert,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit_module/vision/multi,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/orescanner,
+/obj/item/hardsuit_module/device/orescanner,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/grenade_launcher/smoke,
+/obj/item/hardsuit_module/cleaner_launcher,
+/obj/item/hardsuit_module/grenade_launcher,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/holobadge,
@@ -167,15 +167,15 @@
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/briefcase/inflatable,
 /obj/item/storage/belt/utility/full,
-/obj/item/rig/ert,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "af" = (
@@ -587,7 +587,7 @@
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
-/obj/item/rig/ert/janitor,
+/obj/item/hardsuit/ert/janitor,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "aH" = (
@@ -1038,16 +1038,10 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aX" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "aY" = (
@@ -1146,15 +1140,15 @@
 /obj/item/tank/oxygen/yellow,
 /obj/item/tank/vox,
 /obj/item/tank/vox,
-/obj/item/rig_module/chem_dispenser/injector/advanced,
-/obj/item/rig_module/vision/multi,
-/obj/item/rig/military/equipped,
-/obj/item/rig/pmc/commander,
-/obj/item/rig/pmc/medical,
-/obj/item/rig/pmc/engineer,
-/obj/item/rig/pmc/security,
-/obj/item/rig/pmc/security,
-/obj/item/rig/light/ninja,
+/obj/item/hardsuit_module/chem_dispenser/injector/advanced,
+/obj/item/hardsuit_module/vision/multi,
+/obj/item/hardsuit/military/equipped,
+/obj/item/hardsuit/pmc/commander,
+/obj/item/hardsuit/pmc/medical,
+/obj/item/hardsuit/pmc/engineer,
+/obj/item/hardsuit/pmc/security,
+/obj/item/hardsuit/pmc/security,
+/obj/item/hardsuit/light/ninja,
 /obj/item/gun/energy/modular/cannon,
 /obj/item/gun/energy/modular/carbine,
 /obj/item/gun/energy/modular,
@@ -1349,8 +1343,8 @@
 /obj/item/storage/belt/medical/alien,
 /obj/item/storage/belt/utility/alien,
 /obj/item/storage/belt/holding,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /obj/item/gun/energy/pulse_rifle,
 /obj/item/gun/energy/pulse_rifle,
 /obj/item/gun/energy/pulse_rifle,
@@ -1428,6 +1422,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bn" = (
@@ -1641,7 +1636,9 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bG" = (
-/obj/machinery/ion_engine,
+/obj/machinery/ion_engine{
+	dir = 1
+	},
 /turf/simulated/floor/reinforced/airless,
 /area/shuttle/tabiranth)
 "bH" = (
@@ -1736,6 +1733,11 @@
 	maxhealth = 800;
 	name = "Panther"
 	},
+/turf/simulated/floor/reinforced,
+/area/shuttle/tabiranth)
+"nd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "wz" = (
@@ -1847,7 +1849,7 @@ ad
 af
 al
 as
-as
+nd
 as
 aR
 bh

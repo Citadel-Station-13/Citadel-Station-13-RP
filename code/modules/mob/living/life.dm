@@ -14,8 +14,8 @@
 	handle_vision()
 	handle_light()
 
-	handle_actions()
-	update_canmove()
+	// todo: is this necessary? probably but still..
+	update_mobility()
 
 /mob/living/PhysicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -36,6 +36,7 @@
 	for(var/obj/item/grab/G in src)
 		G.process(2)
 
+	auto_resist_rest()
 
 /mob/living/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -85,35 +86,15 @@
 
 //This updates the health and status of the mob (conscious, unconscious, dead)
 /mob/living/proc/handle_regular_UI_updates()
-	updatehealth()
-	if(stat != DEAD)
-		if(paralysis)
-			set_stat(UNCONSCIOUS)
-		else if (status_flags & FAKEDEATH)
-			set_stat(UNCONSCIOUS)
-		else
-			set_stat(CONSCIOUS)
-		return 1
+	update_health()
+	update_stat()
 
 /mob/living/proc/handle_statuses()
-	handle_stunned()
-	handle_weakened()
-	handle_paralysed()
 	handle_stuttering()
 	handle_silent()
 	handle_drugged()
 	handle_slurring()
 	handle_confused()
-
-/mob/living/proc/handle_stunned()
-	if(stunned)
-		AdjustStunned(-1)
-	return stunned
-
-/mob/living/proc/handle_weakened()
-	if(weakened)
-		AdjustWeakened(-1)
-	return weakened
 
 /mob/living/proc/handle_stuttering()
 	if(stuttering)
@@ -134,11 +115,6 @@
 	if(slurring)
 		slurring = max(slurring-1, 0)
 	return slurring
-
-/mob/living/proc/handle_paralysed()
-	if(paralysis)
-		AdjustUnconscious(-1)
-	return paralysis
 
 /mob/living/proc/handle_confused()
 	if(confused)

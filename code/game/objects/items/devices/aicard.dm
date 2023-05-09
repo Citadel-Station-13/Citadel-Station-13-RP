@@ -72,7 +72,7 @@
 				if(carded_ai.deployed_shell && prob(carded_ai.oxyloss)) //You feel it creeping? Eventually will reach 100, resulting in the second half of the AI's remaining life being lonely.
 					carded_ai.disconnect_shell("Disconnecting from remote shell due to insufficent power.")
 				carded_ai.adjustOxyLoss(2)
-				carded_ai.updatehealth()
+				carded_ai.update_health()
 				sleep(10)
 			flush = 0
 	if (href_list["radio"])
@@ -134,14 +134,14 @@
 		if(user.client)
 			to_chat(ai, "<span class='notice'><b>Transfer successful:</b></span> [ai.name] extracted from current device and placed within mobile core.")
 
-		ai.canmove = 1
+		ai.mobility_flags = initial(ai.mobility_flags)
 		update_icon()
 		return TRUE
 	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))
-		carded_ai.canmove = 0
+		carded_ai.mobility_flags = NONE
 		carded_ai.carded = 0
 	name = initial(name)
 	carded_ai = null
@@ -160,11 +160,11 @@
 	..()
 
 /obj/item/aicard/relaymove(var/mob/user, var/direction)
-	if(user.stat || user.stunned)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_MOVE))
 		return
-	var/obj/item/rig/rig = src.get_rig()
-	if(istype(rig))
-		rig.forced_move(direction, user)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(istype(hardsuit))
+		hardsuit.forced_move(direction, user)
 
 //Subtypes
 /obj/item/aicard/aitater

@@ -271,7 +271,23 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/courser/battery
 	name = "\improper Courser Vessel Battery"
 
+//Hammerhead
+/area/shuttle/hammerhead
+	requires_power = 1
+	icon_state = "shuttle"
 
+/area/shuttle/hammerhead/general
+	name = "\improper Hammerhead Barge"
+
+/area/shuttle/hammerhead/cockpit
+	name = "\improper Hammerhead Barge Cockpit"
+
+/area/shuttle/hammerhead/brig
+	name = "\improper Hammerhead Barge Brig"
+
+/area/shuttle/hammerhead/bay
+	name = "\improper Hammerhead Launch Bay"
+	has_gravity = FALSE
 
 // Civilian Transport
 /area/shuttle/civvie
@@ -1051,6 +1067,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/maintenance/substation/research // Research
 	name = "Research Substation"
+
+/area/maintenance/substation/research/telescience_lab
+	name = "Research Telescience Substation"
+
+/area/maintenance/substation/research/xenobiology_lab
+	name = "Research Xenobiology Substation"
+
+/area/maintenance/substation/research/docks
+	name = "Research Docks Substation"
 
 /area/maintenance/substation/cafeteria_dock // Hydro, kitchen, docks, hotel
 	name = "Cafeteria Dock Substation"
@@ -2554,6 +2579,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vacant Office"
 	icon_state = "security"
 
+/area/security/hammerhead_bay
+	name = "\improper Hammerhead Barge Hangar"
+	icon_state = "hangar"
+
 /area/janitor/
 	name = "\improper Custodial Closet"
 	icon_state = "janitor"
@@ -3466,6 +3495,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/exploration/pathfinder_office
 	name = "\improper Pathfinder's Office"
+
+
+/area/station/protean_nanite_room
+	name = "\improper Nanite Chamber"
+	icon_state = "blue"
 
 
 //Elevator areas

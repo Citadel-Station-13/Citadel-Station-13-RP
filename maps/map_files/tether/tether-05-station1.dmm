@@ -2649,7 +2649,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "afA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/camera/network/tether{
 	dir = 4
 	},
@@ -4065,7 +4065,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_monitoring)
 "aid" = (
@@ -8214,7 +8214,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "arI" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "arJ" = (
@@ -8679,7 +8679,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "asT" = (
@@ -9144,7 +9144,7 @@
 /turf/simulated/floor/plating,
 /area/bridge/secondary)
 "atS" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/workshop)
 "atT" = (
@@ -10934,7 +10934,7 @@
 /area/bridge/secondary/teleporter)
 "ayH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/bridge/secondary/teleporter)
 "ayK" = (
@@ -11191,7 +11191,7 @@
 /turf/simulated/floor,
 /area/constructionsite)
 "azX" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -11370,7 +11370,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/station/atrium)
 "aAz" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/bridge/meeting_room)
 "aAB" = (
@@ -13573,7 +13573,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "aLh" = (
@@ -14258,7 +14258,7 @@
 	dir = 1
 	},
 /obj/item/clothing/mask/breath,
-/obj/item/rig/ce/equipped{
+/obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 },
 /turf/simulated/floor/tiled,
@@ -14566,7 +14566,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "aTm" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "aTA" = (
@@ -19611,7 +19611,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "iIr" = (
@@ -21258,7 +21258,7 @@
 /turf/simulated/floor/wood,
 /area/tether/exploration/crew)
 "nsZ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/cyborg,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_cyborg_station)
@@ -22109,7 +22109,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
@@ -22401,7 +22401,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "qsZ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark{
 	name = "morphspawn"
 	},
@@ -23607,7 +23607,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
@@ -24004,7 +24004,7 @@
 /area/tether/exploration/hallway)
 "uhb" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
@@ -24146,7 +24146,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
 "uCv" = (

@@ -41,7 +41,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle someone in your current state.")
 		return
 
@@ -60,7 +60,7 @@
 	if(last_special > world.time)
 		return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot tackle in your current state.")
 		return
 
@@ -68,76 +68,17 @@
 
 	var/failed
 	if(prob(75))
-		T.Weaken(rand(0.5,3))
+		T.afflict_paralyze(20 * rand(0.5,3))
 	else
 		failed = 1
 
 	playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 	if(failed)
-		src.Weaken(rand(2,4))
+		src.afflict_paralyze(20 * rand(2,4))
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message(text("<font color='red'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</font></B>", src, T), 1)
-
-/mob/living/carbon/human/proc/commune()
-	set category = "Abilities"
-	set name = "Commune with creature"
-	set desc = "Send a telepathic message to an unlucky recipient."
-
-	var/list/targets = list()
-	var/target = null
-	var/text = null
-	var/default_distance_mod = 0 SECONDS
-
-	if(nutrition < 50)
-		to_chat(src, SPAN_NOTICE("You don't have enough energy! Try eating. "))
-		return
-
-
-
-	for(var/datum/mind/possible_target in SSticker.minds)
-		if (istype(possible_target.current, /mob/living) && possible_target != src.mind)
-			LAZYADD(targets,possible_target.current)
-
-	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
-	if(!target)
-		return
-
-	text = sanitize(input("What would you like to say?", "Speak to creature", null, null) as message|null)
-
-	if(!text)
-		return
-
-	var/mob/living/M = target
-	if(M.stat == DEAD)
-		to_chat(src, "Not even a [src.species.name] can speak to the dead.")
-		return
-
-	//The further the target is, the longer it takes.
-	var/distance = get_dist(M.loc,loc)
-	var/distance_modifier
-	var/turf/target_location = get_turf(M.loc)
-	if(target_location)
-		if(target_location.z in GLOB.using_map.station_levels)
-			distance_modifier = 0	//No additional values if they're on-station
-	else
-		distance_modifier = default_distance_mod	//No quick snapchatting with someone off-station
-
-	var/delay = clamp((distance / 2), 1, 8) SECONDS + distance_modifier	//Half of distance worth of seconds, up to 8, plus 30 if they're off-station. Max: 38, min: 1.
-	src.visible_message(SPAN_WARNING("[src] seems to focus for a few seconds."),"You begin to seek [target] out. This may take a while.")
-
-	if(do_after(src, delay))
-		log_and_message_admins("COMMUNED to [key_name(M)]) [text]", src)
-
-		to_chat(M, SPAN_INTERFACE("Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <b>[text]</b>"))
-		nutrition -= 50
-		if(istype(M,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = M
-			if(H.species.get_species_id() == src.species.get_species_id())
-				return
-			to_chat(H, SPAN_DANGER("Your nose begins to bleed..."))
-			H.drip(1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"
@@ -187,7 +128,7 @@
 	transfer_languages(src, S)
 
 	if(mind)
-		mind.transfer_to(S)
+		mind.transfer(S)
 
 	message_admins("\The [src] has split into nymphs; player now controls [key_name_admin(S)]")
 	log_admin("\The [src] has split into nymphs; player now controls [key_name(S)]")
@@ -350,7 +291,7 @@
 		src.visible_message("<B>[src]</B>'s flesh begins to mend...")
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	if(do_after(src,delay_length))
+	if(do_after(src, delay_length, mobility_flags = NONE))
 		nutrition -= 200
 
 		for(var/obj/item/organ/I in internal_organs)

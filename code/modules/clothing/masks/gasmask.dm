@@ -51,7 +51,7 @@
 	action_button_name = "Adjust Face Mask"
 
 /obj/item/clothing/mask/gas/half/proc/adjust_mask(mob/user)
-	if(usr.canmove && !usr.stat)
+	if(CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		src.hanging = !src.hanging
 		if (src.hanging)
 			gas_transfer_coefficient = 1
@@ -112,7 +112,7 @@
 	action_button_name = "Toggle Feeding Port"
 
 /obj/item/clothing/mask/gas/swat/vox/proc/feeding_port(mob/user)
-	if(user.canmove && !user.stat)
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 		mask_open = !mask_open
 		if(mask_open)
 			body_cover_flags = EYES
@@ -138,6 +138,14 @@
 	species_restricted = list(SPECIES_ZADDAT)
 	inv_hide_flags = HIDEEARS //semi-transparent
 	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/nitrogen)
+
+/obj/item/clothing/mask/gas/opaque
+	name = "Opaque Mask"
+	desc = "A face-covering mask with an opaque faceplate that can be connected to an air supply, often used by various alien races to filter out oxygen."
+	icon_state = "opaque_mask"
+	inv_hide_flags = null
+	filtered_gases = list(/datum/gas/phoron, /datum/gas/nitrous_oxide, /datum/gas/oxygen)
+
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"

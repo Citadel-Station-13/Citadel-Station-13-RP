@@ -93,7 +93,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 				brainmob.add_modifier(M.type)
 
 	if(H.mind)
-		H.mind.transfer_to(brainmob)
+		H.mind.transfer(brainmob)
 
 	brainmob.languages = H.languages
 
@@ -131,7 +131,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 	if(brainmob)
 		if(brainmob.mind)
-			brainmob.mind.transfer_to(target)
+			brainmob.mind.transfer(target)
 		else
 			target.ckey = brainmob.ckey
 	..()
@@ -257,15 +257,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	H.nutrition = 260 //Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
-	H.Unconscious(4)
-	H.updatehealth()
+	H.afflict_unconscious(20 * 4)
+	H.update_health()
 	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)
 			E.removed()
 			qdel(E)
 			E = null
 	H.regenerate_icons()
-	clonemind.transfer_to(H)
+	clonemind.transfer(H)
 	for(var/modifier_type in R.genetic_modifiers)
 		H.add_modifier(modifier_type)
 

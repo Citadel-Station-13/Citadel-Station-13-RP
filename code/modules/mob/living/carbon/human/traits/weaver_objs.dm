@@ -61,8 +61,9 @@ var/global/list/weavable_items = list()
 /obj/effect/weaversilk/wall/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mover
-		if(H.species.is_weaver)
-			return TRUE
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return TRUE
 	..()
 
 /obj/structure/bed/double/weaversilk_nest
@@ -98,8 +99,10 @@ var/global/list/weavable_items = list()
 		return
 	if(istype(AM, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = AM
-		if(H.species.is_weaver)
-			return
+		for(var/F in H.contents)
+			if(istype(F, /obj/item/organ/internal/weaver))
+				return
+
 	if(isliving(AM) && trap_active)
 		var/mob/living/L = AM
 		if(L.m_intent == MOVE_INTENT_RUN)
@@ -109,7 +112,7 @@ var/global/list/weavable_items = list()
 				"<b>You hear a squishy noise!</b>"
 				)
 			buckle_mob(L, BUCKLE_OP_FORCE)
-			L.Stun(1)
+			L.afflict_stun(20 * 1)
 			to_chat(L, "<span class='danger'>The sticky fibers of \the [src] ensnare, trapping you in place!</span>")
 			trap_active = FALSE
 			desc += " Actually, it looks like it's been all spent."

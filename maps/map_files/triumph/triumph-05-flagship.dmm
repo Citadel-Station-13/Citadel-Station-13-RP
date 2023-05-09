@@ -548,9 +548,9 @@
 /area/centcom/specops)
 "aY" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /obj/item/clothing/accessory/storage/white_vest,
 /obj/item/clothing/accessory/storage/white_vest,
 /obj/item/clothing/accessory/storage/white_vest,
@@ -969,11 +969,11 @@
 /area/centcom/specops)
 "bz" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1076,19 +1076,19 @@
 /area/centcom/specops)
 "bI" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "bJ" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted,
+/obj/item/hardsuit_module/mounted,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
@@ -1388,7 +1388,7 @@
 /area/centcom/specops)
 "cn" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
@@ -1778,9 +1778,9 @@
 /area/centcom/specops)
 "cS" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1845,10 +1845,10 @@
 /area/centcom/specops)
 "cW" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1856,12 +1856,12 @@
 /area/centcom/specops)
 "cX" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1869,8 +1869,8 @@
 /area/centcom/specops)
 "cY" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1891,10 +1891,10 @@
 /area/centcom/specops)
 "da" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1902,9 +1902,9 @@
 /area/centcom/specops)
 "db" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -1913,9 +1913,9 @@
 "dc" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2659,7 +2659,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eA" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "eB" = (

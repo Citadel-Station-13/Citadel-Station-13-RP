@@ -43,7 +43,7 @@
 
 	density = FALSE	// Non-dense, so things can pass over them.
 
-	status_flags = CANPUSH
+	status_flags = STATUS_CAN_PUSH
 	pass_flags = ATOM_PASS_TABLE
 
 	maxHealth = 100
@@ -476,7 +476,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(ishuman(L) && !L.isSynthetic())
-			if(L.incapacitated() || (L.stat && L.stat != DEAD) || L.resting || L.paralysis)
+			if(L.incapacitated() || (L.stat && L.stat != DEAD) || !CHECK_MOBILITY(L, MOBILITY_FLAGS_ANY_INTERACTION) || !IS_CONSCIOUS(L))
 				holder.a_intent = INTENT_GRAB		// Infesting time.
 			else
 				holder.a_intent = INTENT_DISARM	// They're standing up! Try to drop or stun them.

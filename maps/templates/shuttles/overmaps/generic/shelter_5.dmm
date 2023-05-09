@@ -89,8 +89,7 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/deployable/escapepod)
@@ -103,8 +102,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small{
-	dir = 8;
-	pixel_x = 0
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
@@ -147,7 +145,6 @@
 "p" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/floor_decal/industrial/warning{
-	icon_state = "warning";
 	dir = 8
 	},
 /obj/map_helper/airlock/door/ext_door,
@@ -187,18 +184,13 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "t" = (
-/obj/machinery/power/apc{
-	dir = 2;
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
 /obj/effect/floor_decal/techfloor{
-	icon_state = "techfloor_edges";
 	dir = 6
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "u" = (
@@ -221,6 +213,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/small,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/deployable/escapepod)
+"Q" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 
@@ -255,7 +251,7 @@ b
 (5,1,1) = {"
 c
 f
-k
+Q
 s
 v
 "}

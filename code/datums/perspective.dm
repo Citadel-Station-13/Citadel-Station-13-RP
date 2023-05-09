@@ -402,7 +402,7 @@
 
 /datum/perspective/proc/suppress_view(source)
 	var/was = LAZYLEN(view_suppression)
-	LAZYOR(view_suppression, source)
+	LAZYDISTINCTADD(view_suppression, source)
 	if(!was && LAZYLEN(view_suppression))
 		view_dirty = TRUE
 		update_view_size()

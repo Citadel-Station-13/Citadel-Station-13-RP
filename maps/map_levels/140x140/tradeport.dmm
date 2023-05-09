@@ -204,7 +204,7 @@
 /area/tradeport/pads)
 "aO" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig/internalaffairs,
+/obj/item/hardsuit/internalaffairs,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "aQ" = (
@@ -3118,7 +3118,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
 /obj/item/clothing/suit/storage/hooded/wintercoat/cosmic,
-/obj/item/clothing/suit/storage/hooded/ronincoat,
+/obj/item/clothing/suit/storage/toggle/heated/ronincoat,
 /obj/item/clothing/suit/storage/hooded/wintercoat/ratvar,
 /obj/item/clothing/shoes/fake_brass,
 /obj/item/clothing/suit/storage/hooded/cloak/goliath,
@@ -3511,9 +3511,6 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "nr" = (
-/obj/structure/closet/walllocker/autolok_wall{
-	pixel_y = 24
-	},
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1;
 	req_access = list(160);
@@ -7513,7 +7510,7 @@
 /obj/random/soap,
 /obj/item/storage/bag/trash,
 /obj/item/mop,
-/obj/item/rig_module/cleaner_launcher,
+/obj/item/hardsuit_module/cleaner_launcher,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},

@@ -52,7 +52,7 @@
 		var/button = text2num(href_list["button"])
 		if(ISINRANGE(button, 1, 3))
 			selectedbutton = button
-	var/list/cm = rgb_construct_color_matrix(
+	var/list/cm = construct_rgb_color_matrix(
 		text2num(href_list["rr"]),
 		text2num(href_list["rg"]),
 		text2num(href_list["rb"]),

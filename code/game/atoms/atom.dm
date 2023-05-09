@@ -63,14 +63,6 @@
 	 */
 	var/worth_dynamic = FALSE
 
-	//? Colors
-	/**
-	 * used to store the different colors on an atom
-	 *
-	 * its inherent color, the colored paint applied on it, special color effect etc...
-	 */
-	var/list/atom_colours
-
 	//? Health
 	// todo: every usage of these vars need to be parsed because shitcode still exists that
 	// todo: was just monkey patched over by making it not compile error for redefining this..
@@ -165,9 +157,9 @@
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
-	var/icon_dimension_x = 32
+	var/icon_x_dimension = 32
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
-	var/icon_dimension_y = 32
+	var/icon_y_dimension = 32
 
 	//? Filters
 	/// For handling persistent filters
@@ -256,10 +248,6 @@
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
-	//atom color stuff
-	if(color)
-		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
 	if(light_power && light_range)
 		update_light()
 
@@ -326,10 +314,6 @@
 	if (istype(user, /mob/living/silicon/ai)) // WHYYYY
 		return 0
 	return -1
-
-/atom/proc/Bumped(atom/movable/bumped_atom)
-	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_ATOM_BUMPED, bumped_atom)
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
@@ -845,85 +829,6 @@
 /atom/proc/GenerateTag()
 	return
 
-//? Radiation
-
-/**
- * called when we're hit by a radiation wave
- * 
- * this is only called on the top level atoms directly on a turf
- * for nested atoms, you need /datum/component/radiation_listener
- */
-/atom/proc/rad_act(strength, datum/radiation_wave/wave)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
-
-/**
- * called when we're hit by z radiation
- */
-/atom/proc/z_rad_act(strength)
-	SHOULD_CALL_PARENT(TRUE)
-	rad_act(strength)
-
-/atom/proc/add_rad_block_contents(source)
-	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	rad_flags |= RAD_BLOCK_CONTENTS
-
-/atom/proc/remove_rad_block_contents(source)
-	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
-	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
-		rad_flags &= ~RAD_BLOCK_CONTENTS
-
-/atom/proc/clean_radiation(str, mul, cheap)
-	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
-	RA?.clean(str, mul)
-
-//? Atom Colour Priority System
-/**
- * A System that gives finer control over which atom colour to colour the atom with.
- * The "highest priority" one is always displayed as opposed to the default of
- * "whichever was set last is displayed"
- */
-
-/// Adds an instance of colour_type to the atom's atom_colours list
-/atom/proc/add_atom_colour(coloration, colour_priority)
-	if(!atom_colours || !atom_colours.len)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(!coloration)
-		return
-	if(colour_priority > atom_colours.len)
-		return
-	atom_colours[colour_priority] = coloration
-	update_atom_colour()
-
-/// Removes an instance of colour_type from the atom's atom_colours list
-/atom/proc/remove_atom_colour(colour_priority, coloration)
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	if(colour_priority > atom_colours.len)
-		return
-	if(coloration && atom_colours[colour_priority] != coloration)
-		return //if we don't have the expected color (for a specific priority) to remove, do nothing
-	atom_colours[colour_priority] = null
-	update_atom_colour()
-
-/// Resets the atom's color to null, and then sets it to the highest priority colour available
-/atom/proc/update_atom_colour()
-	if(!atom_colours)
-		atom_colours = list()
-		atom_colours.len = COLOUR_PRIORITY_AMOUNT //four priority levels currently.
-	color = null
-	for(var/C in atom_colours)
-		if(islist(C))
-			var/list/L = C
-			if(L.len)
-				color = L
-				return
-		else if(C)
-			color = C
-			return
-
 /**
  * Returns true if this atom has gravity for the passed in turf
  *
@@ -961,6 +866,69 @@
 
 /atom/proc/get_cell()
 	return
+
+//? Radiation
+
+/**
+ * called when we're hit by a radiation wave
+ *
+ * this is only called on the top level atoms directly on a turf
+ * for nested atoms, you need /datum/component/radiation_listener
+ */
+/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
+
+/**
+ * called when we're hit by z radiation
+ */
+/atom/proc/z_rad_act(strength)
+	SHOULD_CALL_PARENT(TRUE)
+	rad_act(strength)
+
+/atom/proc/add_rad_block_contents(source)
+	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	rad_flags |= RAD_BLOCK_CONTENTS
+
+/atom/proc/remove_rad_block_contents(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
+		rad_flags &= ~RAD_BLOCK_CONTENTS
+
+/atom/proc/clean_radiation(str, mul, cheap)
+	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
+	RA?.clean(str, mul)
+
+//? Atom Colour Priority System
+/**
+ * A System that gives finer control over which atom colour to colour the atom with.
+ * The "highest priority" one is always displayed as opposed to the default of
+ * "whichever was set last is displayed"
+ */
+
+/**
+ * getter for current color
+ */
+/atom/proc/get_atom_colour()
+	CRASH("base proc hit")
+
+/**
+ * copies from other
+ */
+/atom/proc/copy_atom_colour(atom/other, colour_priority)
+	CRASH("base proc hit")
+
+/// Adds an instance of colour_type to the atom's atom_colours list
+/atom/proc/add_atom_colour(coloration, colour_priority)
+	CRASH("base proc hit")
+
+/// Removes an instance of colour_type from the atom's atom_colours list
+/atom/proc/remove_atom_colour(colour_priority, coloration)
+	CRASH("base proc hit")
+
+/// Resets the atom's color to null, and then sets it to the highest priority colour available
+/atom/proc/update_atom_colour()
+	CRASH("base proc hit")
 
 //? Filters
 
@@ -1026,6 +994,11 @@
 
 //? Layers
 
+/// Sets our plane
+/atom/proc/set_plane(new_plane)
+	ASSERT(isnum(new_plane))
+	plane = new_plane
+
 /// Sets the new base layer we should be on.
 /atom/proc/set_base_layer(new_layer)
 	ASSERT(isnum(new_layer))
@@ -1060,13 +1033,16 @@
 
 /atom/proc/set_pixel_x(val)
 	pixel_x = val + get_managed_pixel_x()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/set_pixel_y(val)
 	pixel_y = val + get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /atom/proc/reset_pixel_offsets()
 	pixel_x = get_managed_pixel_x()
 	pixel_y = get_managed_pixel_y()
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /**
  * get our pixel_x to reset to
@@ -1099,7 +1075,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
+	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1108,7 +1084,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
+	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

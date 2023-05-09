@@ -211,11 +211,11 @@ GLOBAL_LIST_INIT(robot_modules, list(
 
 /obj/item/robot_module/proc/apply_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
-		R.status_flags &= ~CANPUSH
+		R.status_flags &= ~STATUS_CAN_PUSH
 
 /obj/item/robot_module/proc/remove_status_flags(var/mob/living/silicon/robot/R)
 	if(!can_be_pushed)
-		R.status_flags |= CANPUSH
+		R.status_flags |= STATUS_CAN_PUSH
 
 /// This is different from the dogborg or wideborg vars -- this is specifically if the module is a *dog* - if it should be able to do dog things like bark.
 /obj/item/robot_module/proc/is_dog()
@@ -242,7 +242,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
-	R.icon_dimension_x = 64
+	R.icon_x_dimension = 64
 	add_verb(R, list(
 		/mob/living/silicon/robot/proc/ex_reserve_refill,
 		/mob/living/silicon/robot/proc/rest_style

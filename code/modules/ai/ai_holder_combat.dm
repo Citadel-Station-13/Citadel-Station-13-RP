@@ -301,11 +301,11 @@
 		ai_log("destroy_surroundings() : Going to try to violently clear [problem_turf].", AI_LOG_DEBUG)
 		// First, kill windows in the way.
 		for(var/obj/structure/window/W in problem_turf)
-			if(W.dir == GLOB.reverse_dir[holder.dir]) // So that windows get smashed in the right order
+			if(W.dir == global.reverse_dir[holder.dir]) // So that windows get smashed in the right order
 				ai_log("destroy_surroundings() : Attacking side window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 
-			else if(W.is_fulltile())
+			else if(W.fulltile)
 				ai_log("destroy_surroundings() : Attacking full tile window.", AI_LOG_INFO)
 				return holder.IAttack(W)
 

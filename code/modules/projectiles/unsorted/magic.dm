@@ -115,7 +115,7 @@
 	qdel(src)
 
 /proc/wabbajack(mob/living/M)
-	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (GODMODE & M.status_flags))
+	if(!istype(M) || M.stat == DEAD || M.mob_transforming || (STATUS_GODMODE & M.status_flags))
 		return
 
 	M.mob_transforming = TRUE
@@ -272,7 +272,7 @@
 				S.color = P.color
 				S.atom_colours = P.atom_colours.Copy()
 				if(L.mind)
-					L.mind.transfer_to(S)
+					L.mind.transfer(S)
 					if(owner)
 						to_chat(S, "<span class='userdanger'>You are an animated statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
 				P.forceMove(S)

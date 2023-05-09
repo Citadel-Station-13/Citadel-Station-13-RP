@@ -350,15 +350,10 @@
 /obj/random/mre,
 /obj/random/mre,
 /obj/random/mre,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "aR" = (
@@ -487,15 +482,10 @@
 /obj/item/material/minihoe,
 /obj/item/material/knife,
 /obj/item/material/knife,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/hydroponics)
 "bn" = (
@@ -931,13 +921,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/kitchen)
 "ck" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/white,
 /area/mothership/kitchen)
 "cl" = (
@@ -1366,15 +1351,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "dd" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/eva)
 "de" = (
@@ -1565,16 +1545,11 @@
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom1)
 "dw" = (
@@ -1640,16 +1615,11 @@
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/bathroom2)
 "dH" = (
@@ -1808,12 +1778,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "ee" = (
@@ -1979,18 +1944,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm1)
 "eu" = (
@@ -2094,12 +2054,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/dorm2)
 "eD" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -2109,6 +2063,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm2)
 "eE" = (
@@ -2772,17 +2727,12 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "gd" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "ge" = (
@@ -2812,12 +2762,6 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "gg" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
@@ -2825,6 +2769,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/white,
 /area/mothership/chemistry)
 "gh" = (
@@ -3264,12 +3209,6 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3277,6 +3216,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/pathfinder,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/security)
 "hj" = (
@@ -3461,18 +3401,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm3)
 "hK" = (
@@ -3526,18 +3461,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 28
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm4)
 "hO" = (
@@ -3995,14 +3925,8 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "iS" = (
@@ -4089,17 +4013,11 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jf" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/morgue)
 "jg" = (
@@ -4292,7 +4210,7 @@
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
-/obj/item/rig/ert/janitor,
+/obj/item/hardsuit/ert/janitor,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "jA" = (
@@ -4306,18 +4224,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
 "jB" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/sechallway)
 "jC" = (
@@ -4367,15 +4280,10 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jL" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jM" = (
@@ -4872,14 +4780,8 @@
 	},
 /obj/item/book/manual/security_space_law,
 /obj/structure/closet/secure_closet/nanotrasen_warden,
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	cell_type = /obj/item/cell/super;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -28
-	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/west_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/warden)
 "kM" = (
@@ -4995,18 +4897,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm5)
 "kX" = (
@@ -5060,18 +4957,13 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/wood,
 /area/mothership/dorm6)
 "lb" = (
@@ -5159,16 +5051,11 @@
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "ll" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/white,
 /area/mothership/medical)
 "lo" = (
@@ -5646,14 +5533,14 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mg" = (
-/obj/item/rig_module/grenade_launcher/smoke,
-/obj/item/rig_module/cleaner_launcher,
-/obj/item/rig_module/grenade_launcher,
+/obj/item/hardsuit_module/grenade_launcher/smoke,
+/obj/item/hardsuit_module/cleaner_launcher,
+/obj/item/hardsuit_module/grenade_launcher,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mh" = (
-/obj/item/rig_module/vision/multi,
+/obj/item/hardsuit_module/vision/multi,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5690,13 +5577,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mp" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "mq" = (
@@ -5753,8 +5635,8 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /obj/item/clothing/glasses/thermal,
 /obj/item/clothing/glasses/thermal,
 /obj/item/clothing/suit/armor/pcarrier/merc,
@@ -5768,8 +5650,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mx" = (
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/mounted,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/mounted,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5782,7 +5664,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mz" = (
@@ -5888,10 +5770,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mL" = (
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5901,10 +5783,10 @@
 	dir = 8;
 	req_one_access = list(103)
 	},
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mO" = (
@@ -5956,12 +5838,6 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/rnd)
 "mU" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/structure/cable/cyan,
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
@@ -5969,6 +5845,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "mV" = (
@@ -5993,15 +5870,10 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/power/apc/alarms_hidden/east_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/bridge)
 "mZ" = (
@@ -6056,10 +5928,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nc" = (
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -6069,8 +5941,8 @@
 	dir = 8;
 	req_one_access = list(103)
 	},
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nf" = (
@@ -6288,12 +6160,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "ny" = (
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -6304,8 +6176,8 @@
 	req_one_access = list(103)
 	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nA" = (
@@ -6436,22 +6308,22 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nL" = (
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nM" = (
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/orescanner,
-/obj/item/rig_module/device/orescanner,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/orescanner,
+/obj/item/hardsuit_module/device/orescanner,
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light{
 	dir = 4
@@ -6581,18 +6453,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "oa" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "ob" = (
@@ -6957,17 +6824,13 @@
 /turf/simulated/floor/bluegrid,
 /area/mothership/robotics)
 "oR" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/robotics)
 "oS" = (
@@ -7067,12 +6930,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/holodeck)
 "pc" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -7082,6 +6939,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "pd" = (
@@ -7198,12 +7056,6 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms1)
 "py" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
@@ -7213,6 +7065,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms1)
 "pz" = (
@@ -7362,12 +7215,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
 "pN" = (
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -7377,6 +7224,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/telecomms2)
 "pO" = (
@@ -7765,13 +7613,8 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 8
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	name = "south bump";
-	pixel_y = -28;
-	req_access = list(67)
-	},
 /obj/structure/cable/cyan,
+/obj/machinery/power/apc/alarms_hidden/south_bump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/cryotube)
 "qZ" = (
@@ -7827,12 +7670,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
-	alarms_hidden = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
+/obj/machinery/power/apc/alarms_hidden/north_bump,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rf" = (
@@ -8143,9 +7981,9 @@
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
-/obj/item/rig/ce/equipped{
+/obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
-},
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
@@ -9240,6 +9078,10 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
+"Ow" = (
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/tiled/steel_grid,
+/area/mothership/bridge)
 "Ox" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -9261,6 +9103,13 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
+"Pp" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/holopad/ship/starts_inactive,
+/turf/simulated/floor/carpet/blue,
+/area/mothership/breakroom)
 "PC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button{
@@ -9343,6 +9192,10 @@
 	landmark_tag = "ws_port_dock_1";
 	name = "Cruiser Dock P1"
 	},
+/turf/space,
+/area/space)
+"Rm" = (
+/obj/machinery/holopad/ship/starts_inactive,
 /turf/space,
 /area/space)
 "RE" = (
@@ -15291,7 +15144,7 @@ aa
 aa
 aa
 aa
-aa
+Rm
 aa
 aa
 aa
@@ -19560,7 +19413,7 @@ he
 dD
 mb
 ms
-mG
+Ow
 uI
 np
 nG
@@ -19943,7 +19796,7 @@ tG
 tG
 aq
 ax
-FW
+Pp
 aH
 aW
 bh

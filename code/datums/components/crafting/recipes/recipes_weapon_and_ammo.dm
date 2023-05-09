@@ -291,10 +291,10 @@
 /datum/crafting_recipe/IED
 	name = "IED"
 	result = /obj/item/grenade/explosive/ied
-	reqs = list(/obj/item/stack/cable_coil = 1,
+	reqs = list(/datum/reagent/fuel = 50,
+				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
 				/obj/item/trash/punctured_can = 1)
-	tools = list(TOOL_WELDER)
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_OTHER
@@ -309,17 +309,6 @@
 	time = 15
 	category = CAT_WEAPONRY
 	subcategory = CAT_MELEE
-
-/datum/crafting_recipe/tyrmalin_heavy
-	name = "Tyrmalin heavy-duty mining charge"
-	result = /obj/item/grenade/explosive/ied/tyrmalin/large
-	reqs = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
-				/obj/item/duct_tape_piece = 4)
-	parts = list(/obj/item/grenade/explosive/ied/tyrmalin = 3,
-				/obj/item/duct_tape_piece = 4)
-	time = 15
-	category = CAT_WEAPONRY
-	subcategory = CAT_OTHER
 
 //////////////////
 ///GUNS CRAFTING//
@@ -336,7 +325,7 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/dartgun
-	name = "prototype dart gun"
+	name = "Prototype Dart Gun"
 	result =  /obj/item/gun/ballistic/dartgun/research
 	reqs = list(/obj/item/stack/material/steel = 10,
 	/obj/item/stack/material/glass = 5,
@@ -349,7 +338,7 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/smartdart
-	name = "dart gun magazine"
+	name = "Prototype Dart Gun Magazine"
 	result =  /obj/item/ammo_magazine/chemdart
 	reqs = list(/obj/item/stack/material/steel = 5,
 				/obj/item/stack/material/glass = 2,
@@ -359,7 +348,7 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/rapiddartgun
-	name = "dart gun"
+	name = "Protoype Dart Gun (Rapid)"
 	result = /obj/item/gun/ballistic/dartgun
 	reqs = list(
 		/obj/item/ammo_casing/chemdart = 1,
@@ -413,7 +402,7 @@
 */
 
 /datum/crafting_recipe/piperifle
-	name = "pipe rifle"
+	name = "Pipe Rifle"
 	result = /obj/item/gun/ballistic/contender/pipegun
 	reqs = list(/obj/item/pipe = 1,
 				/obj/item/weaponcrafting/receiver = 1,
@@ -423,6 +412,34 @@
 	time = 100
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/musket_ashlander
+	name = "Musket (Tribal)"
+	result = /obj/item/gun/ballistic/musket/tribal
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+				/obj/item/stack/material/bone = 10,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/lead = 10,
+				/obj/item/elderstone = 3)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	always_available = FALSE
+
+/datum/crafting_recipe/flintlock_ashlander
+	name = "Flintlock (Tribal)"
+	result = /obj/item/gun/ballistic/musket/pistol/tribal
+	reqs = list(/obj/item/stack/animalhide/goliath_hide = 2,
+				/obj/item/stack/material/bone = 5,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/material/lead = 5,
+				/obj/item/elderstone = 2)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 100
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+	always_available = FALSE
 
 //////////////////
 ///AMMO CRAFTING//
@@ -474,7 +491,7 @@
 
 //Munitions
 /datum/crafting_recipe/smartdart
-	name = "chemical dart"
+	name = "Chemical Dart"
 	result =  /obj/item/ammo_casing/chemdart
 	reqs = list(/obj/item/stack/material/steel = 1,
 				/obj/item/stack/material/glass = 1,

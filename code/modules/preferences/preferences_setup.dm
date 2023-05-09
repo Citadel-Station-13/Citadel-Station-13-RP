@@ -191,8 +191,8 @@
 	g_skin = green
 	b_skin = blue
 
-/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
-	copy_to(mannequin)
+/datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin, flags)
+	copy_to(mannequin, flags)
 
 	if(!equip_preview_mob)
 		return

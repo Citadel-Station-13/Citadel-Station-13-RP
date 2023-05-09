@@ -147,13 +147,17 @@
 /datum/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment)
 	if(!id_slot || !id_type)
 		return
+
+	var/faction = H.mind?.original_background_faction()?.id
+	if(faction && !(faction == "nanotrasen") && !ispath(id_type, /obj/item/card/id/external))
+		id_type = /obj/item/card/id/contractor
+
 	var/obj/item/card/id/W = new id_type(H)
+
 	if(id_desc)
 		W.desc = id_desc
-	if(rank)
-		W.rank = rank
-	if(assignment)
-		W.assignment = assignment
+	if(rank && assignment)
+		W.set_registered_rank(rank, assignment)
 	if(H.equip_to_slot_or_del(W, id_slot))
 		return W
 

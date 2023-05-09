@@ -24,7 +24,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aag" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/surfacebase/lowernortheva/external)
 "aah" = (
@@ -648,7 +648,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "abd" = (
 /obj/structure/table/rack,
-/obj/item/rig/medical/equipped{
+/obj/item/hardsuit/medical/equipped{
 	req_access = list(5)
 },
 /obj/structure/fireaxecabinet{
@@ -745,7 +745,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "abi" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/landmark/spawnpoint/job/paramedic,
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1266,7 +1266,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/testingroom)
 "acq" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
 "acr" = (
@@ -4896,7 +4896,7 @@
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "aiE" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/hallway/lower/first_west)
 "aiF" = (
@@ -7019,7 +7019,7 @@
 /turf/simulated/floor/tiled,
 /area/storage/primary)
 "amm" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/item/radio/intercom{
 	dir = 1;
 	pixel_y = 24
@@ -8025,7 +8025,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "anY" = (
@@ -9023,7 +9023,7 @@
 /turf/simulated/floor/tiled,
 /area/storage/surface_eva)
 "apQ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -9461,7 +9461,7 @@
 /turf/simulated/floor/tiled,
 /area/storage/art)
 "aqC" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -10177,7 +10177,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "asc" = (
@@ -10196,7 +10196,7 @@
 /area/tether/surfacebase/surface_one_hall)
 "ase" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "asf" = (
@@ -10857,7 +10857,7 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/locker)
 "ats" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -11679,7 +11679,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "auU" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/tram)
 "auV" = (
@@ -12849,7 +12849,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -13966,7 +13966,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/virology)
 "ayl" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/disease2/isolator,
 /obj/machinery/light{
 	dir = 4
@@ -14213,7 +14213,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayH" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_one_hall)
 "ayI" = (
@@ -17392,7 +17392,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether/surfacebase/cargostore/warehouse)
 "aEm" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/rnd/hallway)
 "aEn" = (
@@ -18253,7 +18253,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/lowernorthhall)
 "aFP" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -19464,7 +19464,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore/office)
 "aHS" = (
@@ -20170,7 +20170,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/cargostore)
 "aJk" = (
@@ -20223,7 +20223,7 @@
 /turf/simulated/floor/carpet,
 /area/crew_quarters/visitor_dining)
 "aJo" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/wood,
 /area/crew_quarters/visitor_dining)
 "aJp" = (
@@ -29518,7 +29518,7 @@
 /turf/simulated/floor,
 /area/holodeck_control)
 "bdl" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
 	},
@@ -29775,7 +29775,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
 "bdJ" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/public_garden_one)
@@ -30972,7 +30972,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/weaponsrange)
 "eFp" = (
@@ -34147,7 +34147,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner2,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -34212,7 +34212,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},

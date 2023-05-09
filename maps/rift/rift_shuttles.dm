@@ -120,6 +120,7 @@
 /obj/effect/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The Mk2 Excursion Shuttle. NT Approved!"
+	color = "#72388d" //Purple
 	fore_dir = WEST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
@@ -128,7 +129,7 @@
 /obj/machinery/computer/shuttle_control/explore/excursion
 	name = "short jump console"
 	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // COURSER SHUTTLE DATA
 
@@ -145,6 +146,7 @@
 /obj/effect/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
+	color = "#af3e97" //Pinkish Purple
 	fore_dir = EAST
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
@@ -157,7 +159,36 @@
 /obj/machinery/computer/shuttle_control/explore/courser
 	name = "short jump console"
 	shuttle_tag = "Courser Scouting Vessel"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
+
+// Hammerhead Patrol Barge
+
+/datum/shuttle/autodock/overmap/hammerhead
+	name = "Hammerhead Patrol Barge"
+	warmup_time = 10
+	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general, /area/shuttle/hammerhead/brig, /area/shuttle/hammerhead/bay)
+	current_location = "rift_hammerhead_hangar"
+	docking_controller_tag = "hammerhead_docker"
+	landmark_transition = "nav_transit_hammerhead"
+	move_time = 15
+
+/obj/effect/overmap/visitable/ship/landable/hammerhead
+	name = "Hammerhead Patrol Barge"
+	desc = "To Detain and Enforce."
+	color = "#b91a14" //Vibrant Red
+	fore_dir = EAST
+	vessel_mass = 10000
+	vessel_size = SHIP_SIZE_SMALL
+	shuttle = "Hammerhead Patrol Barge"
+
+/area/shuttle/hammerhead
+	name = "Hammerhead Patrol Barge"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/hammerhead
+	name = "short jump console"
+	shuttle_tag = "Hammerhead Patrol Barge"
+	//req_one_access = list(ACCESS_GENERAL_PILOT)
 
 // Public Civilian Shuttle
 
@@ -201,6 +232,7 @@
 /obj/effect/overmap/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
+	color = "#754116" //Brown
 	fore_dir = WEST
 	vessel_mass = 25000
 	vessel_size = SHIP_SIZE_SMALL
@@ -229,6 +261,7 @@
 /obj/effect/overmap/visitable/ship/landable/emt
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
+	color = "#69b9de" //Light Blue
 	fore_dir = NORTH
 	vessel_mass = 9000
 	vessel_size = SHIP_SIZE_SMALL

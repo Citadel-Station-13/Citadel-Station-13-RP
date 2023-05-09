@@ -48,13 +48,12 @@
 		use(1, user)
 
 // Generic use
-/obj/item/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/kit))
-		var/obj/item/kit/K = W
+/obj/item/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/kit))
+		var/obj/item/kit/K = I
 		K.customize(src, user)
-		return
-
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 // Root hardsuit kit defines.
 // Icons for modified hardsuits need to be in the proper .dmis because suit cyclers may cock them up.
@@ -148,27 +147,27 @@
 		return
 	return ..()
 
-/obj/item/kit/suit/rig
-	name = "rig modification kit"
+/obj/item/kit/suit/hardsuit
+	name = "hardsuit modification kit"
 	desc = "A kit for modifying a rigsuit."
 	uses = 1
 
-/obj/item/kit/suit/rig/customize(var/obj/item/I, var/mob/user)
-	var/obj/item/rig/RIG = I
-	RIG.suit_state = new_icon
-	RIG.item_state = new_icon
-	RIG.suit_type = "customized [initial(RIG.suit_type)]"
-	RIG.name = "[new_name]"
-	RIG.desc = new_desc
-	RIG.icon = new_icon_file
-	RIG.icon_state = new_icon
-	RIG.icon_override = new_icon_override_file
-	for(var/obj/item/piece in list(RIG.gloves,RIG.helmet,RIG.boots,RIG.chest))
+/obj/item/kit/suit/hardsuit/customize(var/obj/item/I, var/mob/user)
+	var/obj/item/hardsuit/HARDSUIT = I
+	HARDSUIT.suit_state = new_icon
+	HARDSUIT.item_state = new_icon
+	HARDSUIT.suit_type = "customized [initial(HARDSUIT.suit_type)]"
+	HARDSUIT.name = "[new_name]"
+	HARDSUIT.desc = new_desc
+	HARDSUIT.icon = new_icon_file
+	HARDSUIT.icon_state = new_icon
+	HARDSUIT.icon_override = new_icon_override_file
+	for(var/obj/item/piece in list(HARDSUIT.gloves,HARDSUIT.helmet,HARDSUIT.boots,HARDSUIT.chest))
 		if(!istype(piece))
 			continue
-		piece.name = "[RIG.suit_type] [initial(piece.name)]"
-		piece.desc = "It seems to be part of a [RIG.name]."
-		piece.icon_state = "[RIG.suit_state]"
+		piece.name = "[HARDSUIT.suit_type] [initial(piece.name)]"
+		piece.desc = "It seems to be part of a [HARDSUIT.name]."
+		piece.icon_state = "[HARDSUIT.suit_state]"
 		if(istype(piece, /obj/item/clothing/shoes))
 			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
@@ -181,22 +180,22 @@
 		if(istype(piece, /obj/item/clothing/gloves))
 			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
 			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
-	if(RIG.helmet && istype(RIG.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
-		var/obj/item/clothing/head/helmet/H = RIG.helmet
+	if(HARDSUIT.helmet && istype(HARDSUIT.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
+		var/obj/item/clothing/head/helmet/H = HARDSUIT.helmet
 		H.light_overlay = new_light_overlay
 	use(1,user)
 
-/obj/item/kit/suit/rig/can_customize(var/obj/item/I)
-	return istype(I, /obj/item/rig)
+/obj/item/kit/suit/hardsuit/can_customize(var/obj/item/I)
+	return istype(I, /obj/item/hardsuit)
 
-/obj/item/rig/attackby(var/obj/item/O, var/mob/user)
+/obj/item/hardsuit/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/kit/suit))
-		var/obj/item/kit/suit/rig/kit = O
+		var/obj/item/kit/suit/hardsuit/kit = O
 		kit.customize(src, user)
 		return
 	return ..()
 
-/obj/item/kit/suit/rig/debug/Initialize(mapload)
+/obj/item/kit/suit/hardsuit/debug/Initialize(mapload)
 	. = ..()
 	set_info("debug suit", "This is a test", "debug", CUSTOM_ITEM_OBJ, CUSTOM_ITEM_MOB)
 

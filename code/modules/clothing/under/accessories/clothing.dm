@@ -155,6 +155,16 @@
 	icon_state = "roughcloak_tan"
 	item_state = "roughcloak_tan"
 
+/obj/item/clothing/accessory/poncho/rough_cloak_torn
+	name = "Rough Torn Cloak"
+	desc = "A dark, angled coat meant to protect you from dust, sands and other grime. This one has seen worse days."
+	icon_state = "rough_torn_cloak_color"
+	item_state = "rough_torn_cloak_color"
+
+/obj/item/clothing/accessory/poncho/rough_cloak_torn/tan
+	icon_state = "rough_torn_cloak_brown"
+	item_state = "rough_torn_cloak_brown"
+
 //Just a little extra aesthetic for Goliath armor.
 /obj/item/clothing/accessory/poncho/rough_cloak/ashlander
 	name = "goliath hide half cloak"
@@ -542,6 +552,26 @@
 	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
 	icon_state = "antediluvian"
 	//body_cover_flags = HANDS|ARMS
+
+/obj/item/clothing/accessory/antediluvian_gloves/alt
+	name = "Antediluvian bracers alternative"
+	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection. These have a single finger covered in fabric. It isn't fluid proof."
+	icon_state = "ante_hands"
+
+/obj/item/clothing/accessory/antediluvian_socks
+	name = "Antediluvian Socks"
+	desc = "Thigh-length leg-sleeves with a metalic sheen and a golden pattern. Despite the apparent stiffness, they're quite flexible, and have freed toes for maneuverability."
+	icon_state = "ante_socks"
+
+/obj/item/clothing/accessory/antediluvian_necklace
+	name = "Antediluvian Necklace"
+	desc = "A golden cross-necklace. Looks old, and had since lost its meaning."
+	icon_state = "ante_neck"
+
+/obj/item/clothing/accessory/antediluvian_flaps
+	name = "Antediluvian Flaps"
+	desc = "A pair of long extensions attachable around the hips. Made out of stiff, yet flappy enough material to make the wearer appear to make elegant patterns. Or to flop around like the end of a fish-tail. Not for the bottom-endowed."
+	icon_state = "ante_flaps"
 
 /obj/item/clothing/accessory/mekkyaku
 	name = "Mekkyaku turtleneck"

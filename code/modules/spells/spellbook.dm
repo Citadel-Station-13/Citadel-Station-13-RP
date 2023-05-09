@@ -358,14 +358,14 @@
 	var/mob/observer/dead/ghost = stored_swap.ghostize(0)
 	ghost.spell_list = stored_swap.spell_list
 
-	user.mind.transfer_to(stored_swap)
+	user.mind.transfer(stored_swap)
 	stored_swap.spell_list = user.spell_list
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
 			add_verb(user, V)
 
-	ghost.mind.transfer_to(user)
+	ghost.mind.transfer(user)
 	user.key = ghost.key
 	user.spell_list = ghost.spell_list
 
@@ -399,7 +399,7 @@
 /obj/item/spellbook/oneuse/knock/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You're knocked down!</span>")
-	user.Weaken(20)
+	user.afflict_paralyze(20 * 20)
 
 /obj/item/spellbook/oneuse/horsemask
 	spell = /spell/targeted/equip_item/horsemask
