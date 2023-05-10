@@ -4,7 +4,7 @@
 #define REPOSITORY_DEF(what) \
 GLOBAL_REAL(RC##what, /datum/controller/repository/##what); \
 /datum/controller/repository/##what/New(){ \
-	if(global.RC##what != src){ \
+	if(global.RC##what != src && istype(global.RC##what)){ \
 		Recover(global.RC##what); \
 		qdel(global.RC##what); \
 	} \
@@ -14,5 +14,6 @@ GLOBAL_REAL(RC##what, /datum/controller/repository/##what); \
 /datum/controller/subsystem/repository/__init_repositories() { \
 	..(); \
 	RC##what = new; \
+	RC##what.Initialize(); \
 } \
 /datum/controller/repository/##what

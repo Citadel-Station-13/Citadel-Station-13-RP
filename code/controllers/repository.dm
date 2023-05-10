@@ -26,6 +26,12 @@
  */
 /datum/controller/repository/Recover(datum/controller/repository/old_instance)
 	. = ..()
+	if(!istype(old_instance))
+		src.type_lookup = list()
+		src.uid_lookup = list()
+		src.subtype_lists = list()
+		generate()
+		return FALSE
 	src.type_lookup = old_instance.type_lookup
 	if(!islist(src.type_lookup))
 		src.type_lookup = list()
