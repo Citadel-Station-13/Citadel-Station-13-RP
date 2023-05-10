@@ -44,3 +44,18 @@
 	name = "Special Area - Ninja Dojo"
 	desc = "Sneaky"
 	mappath = 'maps/templates/admin/dojo.dmm'
+
+/datum/map_template/admin_use/fun/spa
+	name = "Space Spa"
+	desc = "A pleasant spa located in a spaceship."
+	mappath = 'maps/templates/admin/spa.dmm'
+
+/datum/map_template/admin_use/killhouseteleporter
+	name = "Special Area - killhouse teleporter"
+	desc = "The teleporter leading to security training routines."
+	mappath = 'maps/templates/admin/killhouseteleporter.dmm'
+
+/datum/map_template/admin_use/killhouseone
+	name = "Special Area - killhouse one"
+	desc = "For security training routines."
+	mappath = 'maps/templates/admin/killhouse1.dmm'

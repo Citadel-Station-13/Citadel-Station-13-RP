@@ -1227,3 +1227,16 @@
 	icon_state = "purple"
 
 // The Frozen Temple POI
+
+/area/killhouse
+	icon_state = "purple"
+	is_outside = OUTSIDE_NO
+
+/area/killhouse/teleporter
+
+/area/killhouse/one
+	icon_state = "red"
+
+/area/killhouse/one/outside
+	icon_state = "green"
+	is_outside = OUTSIDE_YES

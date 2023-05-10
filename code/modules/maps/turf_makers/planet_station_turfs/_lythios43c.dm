@@ -30,6 +30,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend/indoors)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 
 //These commands generate turfs that are default indoors
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled)
