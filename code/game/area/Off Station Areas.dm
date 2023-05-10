@@ -1240,3 +1240,17 @@
 /area/killhouse/one/outside
 	icon_state = "green"
 	is_outside = OUTSIDE_YES
+
+/area/killhouse/two
+	icon_state = "red"
+
+/area/killhouse/two/outside
+	icon_state = "green"
+	is_outside = OUTSIDE_YES
+
+/area/killhouse/three
+	icon_state = "red"
+
+/area/killhouse/three/outside
+	icon_state = "green"
+	is_outside = OUTSIDE_YES

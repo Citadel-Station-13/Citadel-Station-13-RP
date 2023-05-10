@@ -122,6 +122,15 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors
 	outdoors = FALSE
 
+/turf/simulated/floor/concrete/lythios43c/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors
+	outdoors = TRUE
+
 
 /// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .
 /turf/unsimulated/icerock/lythios43c

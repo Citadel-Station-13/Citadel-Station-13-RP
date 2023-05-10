@@ -4,7 +4,7 @@
 	cell_type = /obj/item/cell/infinite
 	},
 /obj/machinery/light/small,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "bF" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
@@ -19,7 +19,7 @@
 /area/killhouse/one)
 "dJ" = (
 /obj/structure/trash_pile,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "dP" = (
 /obj/structure/bed/padded,
@@ -29,7 +29,7 @@
 "en" = (
 /obj/structure/closet/jcloset,
 /obj/item/soap/nanotrasen,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "fh" = (
 /obj/structure/table/hardwoodtable,
@@ -55,7 +55,7 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "hf" = (
 /obj/structure/railing/grey,
@@ -64,7 +64,7 @@
 /area/killhouse/one/outside)
 "iw" = (
 /obj/item/trash,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "kb" = (
 /obj/structure/bed/chair{
@@ -86,7 +86,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "kU" = (
 /obj/structure/undies_wardrobe,
@@ -118,7 +118,7 @@
 /area/killhouse/one)
 "lz" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c,
 /area/killhouse/one)
 "lC" = (
 /obj/machinery/vending/fitness,
@@ -134,7 +134,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "mT" = (
 /obj/structure/bed/chair/sofa/beige/right{
@@ -147,7 +147,7 @@
 	dir = 8
 	},
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "oB" = (
 /obj/machinery/light/spot{
@@ -163,7 +163,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "pc" = (
 /obj/structure/table/hardwoodtable,
@@ -245,14 +245,14 @@
 "sj" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "sI" = (
 /obj/structure/sink/kitchen{
 	dir = 4;
 	pixel_x = -14
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "sX" = (
 /turf/simulated/floor/carpet/bcarpet,
@@ -261,13 +261,13 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "tu" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "tA" = (
 /obj/structure/table/wooden_reinforced,
@@ -280,13 +280,13 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c,
 /area/killhouse/one)
 "vp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/black,
-/turf/simulated/floor/tiled/classm,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "wa" = (
 /obj/structure/table/rack,
@@ -315,7 +315,7 @@
 /obj/item/material/twohanded/folded_metal_chair{
 	pixel_y = 8
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "xf" = (
 /obj/structure/bed/padded,
@@ -324,7 +324,7 @@
 /area/killhouse/one)
 "xi" = (
 /obj/structure/fence,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "xG" = (
 /obj/machinery/light/spot{
@@ -372,7 +372,7 @@
 /area/killhouse/one/outside)
 "AC" = (
 /obj/structure/fence/door,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "AJ" = (
 /obj/structure/table/wooden_reinforced,
@@ -407,7 +407,7 @@
 /obj/structure/mopbucket,
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "CO" = (
 /obj/structure/railing/grey,
@@ -415,10 +415,10 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/killhouse/one/outside)
 "De" = (
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "EJ" = (
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "FR" = (
 /obj/machinery/light/spot,
@@ -436,7 +436,7 @@
 /area/killhouse/one)
 "Iu" = (
 /obj/structure/closet/crate/trashcart,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "IJ" = (
 /obj/structure/bed/padded,
@@ -455,7 +455,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/killhouse/one)
 "Jn" = (
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c,
 /area/killhouse/one)
 "JB" = (
 /obj/structure/bed/padded,
@@ -477,7 +477,7 @@
 	light_range = 8;
 	nightshift_allowed = 0
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "KJ" = (
 /obj/item/stool/padded,
@@ -508,7 +508,7 @@
 	dir = 4
 	},
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c,
 /area/killhouse/one)
 "ND" = (
 /obj/machinery/vending/snack,
@@ -527,11 +527,11 @@
 /turf/simulated/floor/wood,
 /area/killhouse/one)
 "OK" = (
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "Pw" = (
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c,
 /area/killhouse/one)
 "PH" = (
 /obj/machinery/vending/cigarette,
@@ -598,17 +598,17 @@
 /area/killhouse/one)
 "Rq" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/concrete/tile/indoors,
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "SA" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "SI" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "SU" = (
 /obj/machinery/light/small{
@@ -632,14 +632,14 @@
 	dir = 1
 	},
 /obj/structure/simple_door/wood,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "Ug" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
 /obj/item/trash,
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "Ui" = (
 /turf/template_noop,
@@ -648,12 +648,12 @@
 /obj/structure/fence/corner{
 	dir = 4
 	},
-/turf/simulated/floor/concrete/rng,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/one/outside)
 "UI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled/classm,
+/turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "VR" = (
 /obj/structure/bed/chair/sofa/beige{
