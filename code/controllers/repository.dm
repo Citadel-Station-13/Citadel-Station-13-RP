@@ -18,16 +18,23 @@
 	generate()
 	return ..()
 
-/datum/controller/repository/Recover()
+/**
+ * Repository Recover()
+ *
+ * The old instance is passed in.
+ * You can, and should, cast it to the type you're defining this on, as it'll always be the same type.
+ */
+/datum/controller/repository/Recover(datum/controller/repository/old_instance)
 	. = ..()
-	src.type_lookup = SSrepository.type_lookup
+	src.type_lookup = old_instance.type_lookup
 	if(!islist(src.type_lookup))
 		src.type_lookup = list()
 		. = FALSE
-	src.uid_lookup = SSrepository.uid_lookup
+	src.uid_lookup = old_instance.uid_lookup
 	if(!islist(src.uid_lookup))
 		src.uid_lookup = list()
 		. = FALSE
+	src.subtype_lists = list()
 
 /**
  * prototypes returned should generally not be modified.

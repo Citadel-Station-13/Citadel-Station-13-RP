@@ -7,7 +7,7 @@ candidates for conversion:
 */
 
 /**
- * global singletons fetched from SSrepository
+ * global singletons fetched from repository controllers
  *
  * they can be registered, or non-registered.
  *
@@ -73,7 +73,7 @@ candidates for conversion:
 	id = data[NAMEOF(src, id)]
 
 /**
- * Supertype of "simple" prototypes handled by base SSrepository.
+ * Supertype of "simple" prototypes handled by RCstructs.
  */
 /datum/prototype/struct
 	abstract_type = /datum/prototype/struct

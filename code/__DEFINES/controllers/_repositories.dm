@@ -2,7 +2,7 @@
 GLOBAL_REAL(RC##what, /datum/controller/repository/##what); \
 /datum/controller/repository/##what/New(){ \
 	if(global.RC##what != src){ \
-		Recover(); \
+		Recover(global.RC##what); \
 		qdel(global.RC##what); \
 	} \
 	global.RC##what = src; \

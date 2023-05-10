@@ -31,7 +31,7 @@
 	var/list/drawn = draw(amount)
 	for(var/thing in drawn)
 		if(ispath(thing, /datum/prototype/struct/loot_pack) || istext(thing))
-			var/datum/prototype/struct/loot_pack/resolved = SSrepository.fetch(thing)
+			var/datum/prototype/struct/loot_pack/resolved = RCstructs.fetch(thing)
 			var/multiplier = drawn[thing]
 			if(!istype(resolved))
 				CRASH("invalid resolution of [thing]: [resolved]")
@@ -112,7 +112,7 @@
 		if(ispath(thing, /obj/item/stack))
 			new thing(location, making)
 		else if(ispath(thing, /datum/prototype/struct/loot_pack) || istext(thing))
-			var/datum/prototype/struct/loot_pack/pack = SSrepository.fetch(thing)
+			var/datum/prototype/struct/loot_pack/pack = RCstructs.fetch(thing)
 			if(!pack)
 				stack_trace("failed to fetch pack for [thing]")
 				continue

@@ -247,7 +247,7 @@
 	. = list()
 	// todo: why do we do assoc list? why don't we just cache? why why why????
 	for(var/title in alt_titles)
-		var/datum/prototype/struct/alt_title/alt_datum = SSrepository.fetch(alt_titles[title])
+		var/datum/prototype/struct/alt_title/alt_datum = RCstructs.fetch(alt_titles[title])
 		if(!alt_datum)
 			continue
 		. += alt_datum
@@ -292,7 +292,7 @@
 			if(alt_datum.background_enforce && alt_datum.check_background_ids(background_ids))
 				enforced += alt_datum.title
 		return !length(enforced) || (alt_title in enforced)
-	var/datum/prototype/struct/alt_title/alt_datum = SSrepository.fetch(alt_titles?[alt_title])
+	var/datum/prototype/struct/alt_title/alt_datum = RCstructs.fetch(alt_titles?[alt_title])
 	return alt_datum?.check_background_ids(background_ids)
 
 /**
