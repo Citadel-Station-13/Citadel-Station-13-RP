@@ -1,5 +1,7 @@
 /datum/unit_test/prototypes/Run()
-	for(var/datum/controller/subsystem/repository/repo_type as anything in typesof(/datum/controller/subsystem/repository))
+	for(var/datum/controller/repository/repo_type as anything in typesof(/datum/controller/repository))
+		if(initial(repo_type.abstract_type) == repo_type)
+			continue
 		var/list/id_cache = list()
 		var/list/type_cache = list()
 		for(var/datum/prototype/instance as anything in subtypesof(initial(repo_type.expected_type)))
