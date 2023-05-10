@@ -17,30 +17,30 @@
 	desc = "A Roboticist maintains and repairs the station's synthetics, including crew with prosthetic limbs. \
 						They can also assist the station by producing simple robots and even pilotable exosuits."
 	alt_titles = list(
-		"Biomechanical Engineer" = /datum/prototype/simple/alt_title/biomech,
-		"Mechatronic Engineer" = /datum/prototype/simple/alt_title/mech_tech,
-		"Prosthetists" = /datum/prototype/simple/alt_title/prosthetists,
-		"Artificer-Specialist" = /datum/prototype/simple/alt_title/artificer_specialist
+		"Biomechanical Engineer" = /datum/prototype/struct/alt_title/biomech,
+		"Mechatronic Engineer" = /datum/prototype/struct/alt_title/mech_tech,
+		"Prosthetists" = /datum/prototype/struct/alt_title/prosthetists,
+		"Artificer-Specialist" = /datum/prototype/struct/alt_title/artificer_specialist
 		)
 
-/datum/prototype/simple/alt_title/artificer_specialist
+/datum/prototype/struct/alt_title/artificer_specialist
 	title = "Artificer-Specialist"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
-/datum/prototype/simple/alt_title/biomech
+/datum/prototype/struct/alt_title/biomech
 	title = "Biomechanical Engineer"
 	title_blurb = "A Biomechanical Engineer primarily works on prosthetics, and the organic parts attached to them. They may have some \
 					knowledge of the relatively simple surgical procedures used in making cyborgs and attaching prosthesis."
 
-/datum/prototype/simple/alt_title/mech_tech
+/datum/prototype/struct/alt_title/mech_tech
 	title = "Mechatronic Engineer"
 	title_blurb = "A Mechatronic Engineer focuses on the construction and maintenance of Exosuits, and should be well versed in their use. \
 					They may also be called upon to work on synthetics and prosthetics, if needed."
 
-/datum/prototype/simple/alt_title/prosthetists
+/datum/prototype/struct/alt_title/prosthetists
 	title = "Prosthetists"
 	title_blurb = "Prosthetists design and fabricate medical supportive devices and measure and fit patients for them. These devices \
 					include artificial limbs (arms, hands, legs, and feet), braces, and other medical or surgical devices."

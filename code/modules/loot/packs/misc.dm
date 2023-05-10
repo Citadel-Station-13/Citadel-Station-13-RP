@@ -1,7 +1,7 @@
-/datum/prototype/simple/loot_pack/misc
-	abstract_type = /datum/prototype/simple/loot_pack/misc
+/datum/prototype/struct/loot_pack/misc
+	abstract_type = /datum/prototype/struct/loot_pack/misc
 
-/datum/prototype/simple/loot_pack/misc/wrestlemania
+/datum/prototype/struct/loot_pack/misc/wrestlemania
 	always = list(
 		/obj/item/clothing/mask/luchador,
 		/obj/item/storage/belt/champion,
@@ -10,7 +10,7 @@
 		/obj/item/stack/material/gold = 5,
 	)
 
-/datum/prototype/simple/loot_pack/misc/clown
+/datum/prototype/struct/loot_pack/misc/clown
 	always = list(
 		/obj/item/storage/backpack/clown,
 		/obj/item/clothing/under/rank/clown,
@@ -22,15 +22,15 @@
 		/obj/item/toy/waterflower,
 	)
 
-/datum/prototype/simple/loot_pack/misc/clown/draw(amount)
+/datum/prototype/struct/loot_pack/misc/clown/draw(amount)
 	return list(
 		/obj/item/ore/vaudium = isnull(amount)? rand(15, 25) : amount,
 	)
 
-/datum/prototype/simple/loot_pack/misc/clown/is_deterministic()
+/datum/prototype/struct/loot_pack/misc/clown/is_deterministic()
 	return FALSE
 
-/datum/prototype/simple/loot_pack/misc/mime
+/datum/prototype/struct/loot_pack/misc/mime
 	always = list(
 		/obj/item/clothing/under/mime,
 		/obj/item/clothing/shoes/black,

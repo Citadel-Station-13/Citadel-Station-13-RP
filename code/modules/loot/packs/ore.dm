@@ -1,7 +1,7 @@
-/datum/prototype/simple/loot_pack/ore
-	abstract_type = /datum/prototype/simple/loot_pack/ore
+/datum/prototype/struct/loot_pack/ore
+	abstract_type = /datum/prototype/struct/loot_pack/ore
 
-/datum/prototype/simple/loot_pack/ore/valuable
+/datum/prototype/struct/loot_pack/ore/valuable
 	some = list(
 		/obj/item/ore/osmium = 5,
 		/obj/item/ore/diamond = 3,

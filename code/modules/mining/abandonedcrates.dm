@@ -21,7 +21,7 @@
 	generate_loot()
 
 /obj/structure/closet/crate/secure/loot/proc/generate_loot()
-	var/datum/prototype/simple/loot_table/table = SSrepository.fetch(/datum/prototype/simple/loot_table/abandoned_crate)
+	var/datum/prototype/struct/loot_table/table = SSrepository.fetch(/datum/prototype/struct/loot_table/abandoned_crate)
 	table.instantiate(src, 1)
 
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user as mob)

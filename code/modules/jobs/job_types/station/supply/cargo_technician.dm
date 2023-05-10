@@ -16,26 +16,26 @@
 	desc = "A Cargo Technician fills and delivers cargo orders. They are encouraged to return delivered crates to the Cargo Shuttle, \
 						because Central Command gives a partial refund."
 	alt_titles = list(
-		"Logistics Specialist" = /datum/prototype/simple/alt_title/logi_spec,
-		"Logisticai-Apprentice" = /datum/prototype/simple/alt_title/logisticai_apprentice,
-		"Logisticai" = /datum/prototype/simple/alt_title/logisticai
+		"Logistics Specialist" = /datum/prototype/struct/alt_title/logi_spec,
+		"Logisticai-Apprentice" = /datum/prototype/struct/alt_title/logisticai_apprentice,
+		"Logisticai" = /datum/prototype/struct/alt_title/logisticai
 		)
 
-/datum/prototype/simple/alt_title/logisticai_apprentice
+/datum/prototype/struct/alt_title/logisticai_apprentice
 	title = "Logisticai-Apprentice"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
-/datum/prototype/simple/alt_title/logisticai
+/datum/prototype/struct/alt_title/logisticai
 	title = "Logisticai"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds
 	)
 	background_enforce = TRUE
 
-/datum/prototype/simple/alt_title/logi_spec
+/datum/prototype/struct/alt_title/logi_spec
 	title = "Logistics Specialist"
 
 /datum/outfit/job/station/cargo_technician

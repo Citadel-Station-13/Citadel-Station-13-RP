@@ -16,24 +16,24 @@
 	outfit_type = /datum/outfit/job/station/chef
 	desc = "A Chef cooks food for the crew. They generally have permission to charge for food or deny service to unruly diners."
 	alt_titles = list(
-		"Cook" = /datum/prototype/simple/alt_title/chef/cook,
-		"Sous-chef" = /datum/prototype/simple/alt_title/chef/souschef,
-		"Kitchen Worker" = /datum/prototype/simple/alt_title/chef/kitchen_worker,
-		"Line Cook" = /datum/prototype/simple/alt_title/chef/line
+		"Cook" = /datum/prototype/struct/alt_title/chef/cook,
+		"Sous-chef" = /datum/prototype/struct/alt_title/chef/souschef,
+		"Kitchen Worker" = /datum/prototype/struct/alt_title/chef/kitchen_worker,
+		"Line Cook" = /datum/prototype/struct/alt_title/chef/line
 	)
 
-/datum/prototype/simple/alt_title/chef/souschef
+/datum/prototype/struct/alt_title/chef/souschef
 	title = "Sous-chef"
 
-/datum/prototype/simple/alt_title/chef/kitchen_worker
+/datum/prototype/struct/alt_title/chef/kitchen_worker
 	title = "Kitchen Worker"
 	title_blurb = "A Kitchen Worker has the same duties, though they may be less experienced."
 
-/datum/prototype/simple/alt_title/chef/line
+/datum/prototype/struct/alt_title/chef/line
 	title = "Line Cook"
 
 // Chef Alt Titles
-/datum/prototype/simple/alt_title/chef/cook
+/datum/prototype/struct/alt_title/chef/cook
 	title = "Cook"
 	title_blurb = "A Cook has the same duties, though they may be less experienced."
 

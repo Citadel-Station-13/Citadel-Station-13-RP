@@ -272,7 +272,7 @@
 	return jobs[J.id]
 
 /datum/preferences/proc/get_job_alt_title_name(datum/role/job/J)
-	RETURN_TYPE(/datum/prototype/simple/alt_title)
+	RETURN_TYPE(/datum/prototype/struct/alt_title)
 	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
 	return titles[J.id] || J.title
 

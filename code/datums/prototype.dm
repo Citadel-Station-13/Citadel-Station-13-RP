@@ -75,5 +75,5 @@ candidates for conversion:
 /**
  * Supertype of "simple" prototypes handled by base SSrepository.
  */
-/datum/prototype/simple
-	abstract_type = /datum/prototype/simple
+/datum/prototype/struct
+	abstract_type = /datum/prototype/struct

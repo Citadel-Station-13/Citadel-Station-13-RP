@@ -15,50 +15,50 @@
 	outfit_type = /datum/outfit/job/station/assistant
 	desc = "An entertainer does just that, entertains! Put on plays, play music, sing songs, tell stories, or read your favorite fanfic."
 	alt_titles = list(
-		"Performer" = /datum/prototype/simple/alt_title/entertainer/performer,
-		"Musician" = /datum/prototype/simple/alt_title/entertainer/musician,
-		"Stagehand" = /datum/prototype/simple/alt_title/entertainer/stagehand,
-		"Actor" = /datum/prototype/simple/alt_title/entertainer/actor,
-		"Dancer" = /datum/prototype/simple/alt_title/entertainer/dancer,
-		"Singer" = /datum/prototype/simple/alt_title/entertainer/singer,
-		"Magician" = /datum/prototype/simple/alt_title/entertainer/magician,
-		"Comedian" = /datum/prototype/simple/alt_title/entertainer/comedian,
-		"Tragedian" = /datum/prototype/simple/alt_title/entertainer/tragedian
+		"Performer" = /datum/prototype/struct/alt_title/entertainer/performer,
+		"Musician" = /datum/prototype/struct/alt_title/entertainer/musician,
+		"Stagehand" = /datum/prototype/struct/alt_title/entertainer/stagehand,
+		"Actor" = /datum/prototype/struct/alt_title/entertainer/actor,
+		"Dancer" = /datum/prototype/struct/alt_title/entertainer/dancer,
+		"Singer" = /datum/prototype/struct/alt_title/entertainer/singer,
+		"Magician" = /datum/prototype/struct/alt_title/entertainer/magician,
+		"Comedian" = /datum/prototype/struct/alt_title/entertainer/comedian,
+		"Tragedian" = /datum/prototype/struct/alt_title/entertainer/tragedian
 		)
 
 // Entertainer Alt Titles
-/datum/prototype/simple/alt_title/entertainer/actor
+/datum/prototype/struct/alt_title/entertainer/actor
 	title = "Actor"
 	title_blurb = "An Actor is someone who acts out a role! Whatever sort of character it is, get into it and impress people with power of comedy and tragedy!"
 
-/datum/prototype/simple/alt_title/entertainer/performer
+/datum/prototype/struct/alt_title/entertainer/performer
 	title = "Performer"
 	title_blurb = "A Performer is someone who performs! Whatever sort of performance will come to your mind, the world's a stage!"
 
-/datum/prototype/simple/alt_title/entertainer/musician
+/datum/prototype/struct/alt_title/entertainer/musician
 	title = "Musician"
 	title_blurb = "A Musician is someone who makes music with a wide variety of musical instruments!"
 
-/datum/prototype/simple/alt_title/entertainer/stagehand
+/datum/prototype/struct/alt_title/entertainer/stagehand
 	title = "Stagehand"
 	title_blurb = "A Stagehand typically performs everything the rest of the entertainers don't. Operate lights, shutters, windows, or narrate through your voicebox!"
 
-/datum/prototype/simple/alt_title/entertainer/dancer
+/datum/prototype/struct/alt_title/entertainer/dancer
 	title = "Dancer"
 	title_blurb = "A Dancer is someone who impresses people through power of their own body! From waltz to breakdance, as long as crowd as cheering!"
 
-/datum/prototype/simple/alt_title/entertainer/singer
+/datum/prototype/struct/alt_title/entertainer/singer
 	title = "Singer"
 	title_blurb = "A Singer is someone with gift of melodious voice! Impress people with your vocal range!"
 
-/datum/prototype/simple/alt_title/entertainer/magician
+/datum/prototype/struct/alt_title/entertainer/magician
 	title = "Magician"
 	title_blurb = "A Magician is someone who awes those around them with impossible! Show off your repertoire of magic tricks, while keeping the secret hidden!"
 
-/datum/prototype/simple/alt_title/entertainer/comedian
+/datum/prototype/struct/alt_title/entertainer/comedian
 	title = "Comedian"
 	title_blurb = "A Comedian will focus on making people laugh with the power of wit! Telling jokes, stand-up comedy, you are here to make others smile!"
 
-/datum/prototype/simple/alt_title/entertainer/tragedian
+/datum/prototype/struct/alt_title/entertainer/tragedian
 	title = "Tragedian"
 	title_blurb = "A Tragedian will focus on making people think about life and world around them! Life is a tragedy, and who's better to convey its emotions than you?"

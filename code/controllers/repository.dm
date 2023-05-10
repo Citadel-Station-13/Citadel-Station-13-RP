@@ -1,13 +1,9 @@
-/**
- * global singleton storage and fetcher
- */
-SUBSYSTEM_DEF(repository)
-	name = "Repository"
-	subsystem_flags = SS_NO_FIRE
-	init_order = INIT_ORDER_REPOSITORY
+/datum/controller/repository
+	abstract_type = /datum/controller/repository
+	name = "REPOSITORY OF SOME KIND"
 
 	/// expected type of prototype
-	var/expected_type = /datum/prototype/simple
+	var/expected_type
 	/// by-type lookup
 	var/list/type_lookup
 	/// by-id lookup
@@ -15,14 +11,14 @@ SUBSYSTEM_DEF(repository)
 	/// fetched subtype lists
 	var/list/subtype_lists
 
-/datum/controller/subsystem/repository/Initialize()
+/datum/controller/controller/repository/Initialize()
 	uid_lookup = list()
 	type_lookup = list()
 	subtype_lists = list()
 	generate()
 	return ..()
 
-/datum/controller/subsystem/repository/Recover()
+/datum/controller/controller/repository/Recover()
 	. = ..()
 	src.type_lookup = SSrepository.type_lookup
 	if(!islist(src.type_lookup))
@@ -37,7 +33,7 @@ SUBSYSTEM_DEF(repository)
  * prototypes returned should generally not be modified.
  * prototypes returned from a typepath input should never, ever be modified.
  */
-/datum/controller/subsystem/repository/proc/fetch(datum/prototype/type_or_id)
+/datum/controller/controller/repository/proc/fetch(datum/prototype/type_or_id)
 	if(isnull(type_or_id))
 		return
 	if(istext(type_or_id))
@@ -56,7 +52,7 @@ SUBSYSTEM_DEF(repository)
  * lists returned should never, ever be modified.
  * this fetches subtypes, not the first type on purpose.
  */
-/datum/controller/subsystem/repository/proc/fetch_subtypes(path)
+/datum/controller/controller/repository/proc/fetch_subtypes(path)
 	RETURN_TYPE(/list)
 	ASSERT(ispath(path, /datum/prototype))
 	if(subtype_lists[path])
@@ -68,10 +64,10 @@ SUBSYSTEM_DEF(repository)
 		generating += instance
 	return generating
 
-/datum/controller/subsystem/repository/proc/register(datum/prototype/instance, force)
+/datum/controller/controller/repository/proc/register(datum/prototype/instance, force)
 	return register_internal(instance, force, FALSE)
 
-/datum/controller/subsystem/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
+/datum/controller/controller/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
 	PRIVATE_PROC(TRUE)
 	if(uid_lookup[instance] && !force)
 		return FALSE
@@ -83,7 +79,7 @@ SUBSYSTEM_DEF(repository)
 		type_lookup[instance.type] = instance
 	return TRUE
 
-/datum/controller/subsystem/repository/proc/unregister(datum/prototype/instance)
+/datum/controller/controller/repository/proc/unregister(datum/prototype/instance)
 	if(type_lookup[instance.type] == instance)
 		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
@@ -97,7 +93,7 @@ SUBSYSTEM_DEF(repository)
 /**
  * regenerates entries, kicking out anything that's in the way
  */
-/datum/controller/subsystem/repository/proc/generate()
+/datum/controller/controller/repository/proc/generate()
 	for(var/datum/prototype/instance as anything in subtypesof(expected_type))
 		if(initial(instance.abstract_type) == instance)
 			continue

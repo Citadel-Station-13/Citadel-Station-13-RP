@@ -16,27 +16,27 @@
 	desc = "A Psychiatrist provides mental health services to crew members in need. They may also be called upon to determine whatever \
 					ails the mentally unwell, frequently under Security supervision. They understand the effects of various psychoactive drugs."
 	alt_titles = list(
-		"Psychologist" = /datum/prototype/simple/alt_title/psychologist,
-		"Psychoanalyst" = /datum/prototype/simple/alt_title/psychologist/psychoanalyst,
-		"Counselor" = /datum/prototype/simple/alt_title/counselor,
-		"Therapist" = /datum/prototype/simple/alt_title/therapist
+		"Psychologist" = /datum/prototype/struct/alt_title/psychologist,
+		"Psychoanalyst" = /datum/prototype/struct/alt_title/psychologist/psychoanalyst,
+		"Counselor" = /datum/prototype/struct/alt_title/counselor,
+		"Therapist" = /datum/prototype/struct/alt_title/therapist
 		)
 
-/datum/prototype/simple/alt_title/psychologist
+/datum/prototype/struct/alt_title/psychologist
 	title = "Psychologist"
 	title_blurb =  "A Psychologist provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 	title_outfit = /datum/outfit/job/station/psychiatrist/psychologist
 
-/datum/prototype/simple/alt_title/psychologist/psychoanalyst
+/datum/prototype/struct/alt_title/psychologist/psychoanalyst
 	title = "Psychoanalyst"
 	title_blurb =  "A Psychoanalyst provides mental health services to crew members in need, focusing more on therapy than medication. They may also be \
 					called upon to determine whatever ails the mentally unwell, frequently under Security supervision."
 
-/datum/prototype/simple/alt_title/counselor
+/datum/prototype/struct/alt_title/counselor
 	title = "Counselor"
 
-/datum/prototype/simple/alt_title/therapist
+/datum/prototype/struct/alt_title/therapist
 	title = "Therapist"
 
 /datum/outfit/job/station/psychiatrist

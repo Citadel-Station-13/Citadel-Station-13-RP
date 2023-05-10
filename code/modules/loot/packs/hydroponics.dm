@@ -1,7 +1,7 @@
-/datum/prototype/simple/loot_pack/hydroponics
-	abstract_type = /datum/prototype/simple/loot_pack/hydroponics
+/datum/prototype/struct/loot_pack/hydroponics
+	abstract_type = /datum/prototype/struct/loot_pack/hydroponics
 
-/datum/prototype/simple/loot_pack/hydroponics/drug_kit
+/datum/prototype/struct/loot_pack/hydroponics/drug_kit
 	id = "LootPack-DrugKit"
 	always = list(
 		/obj/machinery/portable_atmospherics/hydroponics = 3,
@@ -12,9 +12,9 @@
 		/obj/item/seeds/ambrosiadeusseed = 3,
 	)
 
-/datum/prototype/simple/loot_pack/hydroponics/random_seeds
+/datum/prototype/struct/loot_pack/hydroponics/random_seeds
 	id = "LootPack-RandomSeeds"
 	amt = 10
 
-/datum/prototype/simple/loot_pack/hydroponics/random_seeds/draw(amount = amt)
+/datum/prototype/struct/loot_pack/hydroponics/random_seeds/draw(amount = amt)
 	return list(/obj/item/seeds/random = amount)

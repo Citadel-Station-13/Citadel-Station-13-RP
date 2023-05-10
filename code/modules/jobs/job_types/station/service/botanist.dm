@@ -16,9 +16,9 @@
 
 	outfit_type = /datum/outfit/job/station/botanist/gardener
 	desc = "A Botanist grows plants for the Chef and Bartender."
-	alt_titles = list("Gardener" = /datum/prototype/simple/alt_title/gardener)
+	alt_titles = list("Gardener" = /datum/prototype/struct/alt_title/gardener)
 
-/datum/prototype/simple/alt_title/gardener
+/datum/prototype/struct/alt_title/gardener
 	title = "Gardener"
 	title_blurb = "A Gardener may be less professional than their counterparts, and are more likely to tend to the public gardens if they aren't needed elsewhere."
 

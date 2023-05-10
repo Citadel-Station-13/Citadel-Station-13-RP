@@ -20,62 +20,62 @@
 						the principles and requirements of Research and Development. They may also formulate experiments of their own devising, if \
 						they find an appropriate topic."
 	alt_titles = list(
-		"Junior Scientist" = /datum/prototype/simple/alt_title/scientist/junior,
-		"Lab Assistant" = /datum/prototype/simple/alt_title/scientist/assistant,
-		"Researcher" = /datum/prototype/simple/alt_title/scientist/researcher,
-		"Xenoarchaeologist" = /datum/prototype/simple/alt_title/scientist/xenoarch,
-		"Anomalist" = /datum/prototype/simple/alt_title/scientist/anomalist, \
-		"Phoron Researcher" = /datum/prototype/simple/alt_title/scientist/phoron_research,
-		"Circuit Designer" = /datum/prototype/simple/alt_title/scientist/circuit,
-		"Research Field Technician" = /datum/prototype/simple/alt_title/scientist/fieldtech,
-		"Xenobotanist" = /datum/prototype/simple/alt_title/scientist/xenobotanist,
-		"Xenobiologist" = /datum/prototype/simple/alt_title/scientist/xenobiologist
+		"Junior Scientist" = /datum/prototype/struct/alt_title/scientist/junior,
+		"Lab Assistant" = /datum/prototype/struct/alt_title/scientist/assistant,
+		"Researcher" = /datum/prototype/struct/alt_title/scientist/researcher,
+		"Xenoarchaeologist" = /datum/prototype/struct/alt_title/scientist/xenoarch,
+		"Anomalist" = /datum/prototype/struct/alt_title/scientist/anomalist, \
+		"Phoron Researcher" = /datum/prototype/struct/alt_title/scientist/phoron_research,
+		"Circuit Designer" = /datum/prototype/struct/alt_title/scientist/circuit,
+		"Research Field Technician" = /datum/prototype/struct/alt_title/scientist/fieldtech,
+		"Xenobotanist" = /datum/prototype/struct/alt_title/scientist/xenobotanist,
+		"Xenobiologist" = /datum/prototype/struct/alt_title/scientist/xenobiologist
 		)
 
-/datum/prototype/simple/alt_title/scientist/junior
+/datum/prototype/struct/alt_title/scientist/junior
 	title = "Junior Scientist"
 	title_blurb = "A Junior Scientist is a lower-level member of research staff, whose main purpose is to help scientists with their specialized work in more menial fashion, while also \
 					learning the specializations in process."
 
-/datum/prototype/simple/alt_title/scientist/assistant
+/datum/prototype/struct/alt_title/scientist/assistant
 	title = "Lab Assistant"
 	title_blurb = "A Lab Assistant is a lower-level member of research staff, whose main purpose is to help scientists with their specialized work in more menial fashion, while also \
 					learning the specializations in process."
 
-/datum/prototype/simple/alt_title/scientist/researcher
+/datum/prototype/struct/alt_title/scientist/researcher
 	title = "Researcher"
 
-/datum/prototype/simple/alt_title/scientist/xenoarch
+/datum/prototype/struct/alt_title/scientist/xenoarch
 	title = "Xenoarchaeologist"
 	title_blurb = "A Xenoarchaeologist enters digsites in search of artifacts of alien origin. These digsites are frequently in vacuum or other inhospitable \
 					locations, and as such a Xenoarchaeologist should be prepared to handle hostile evironmental conditions."
 
-/datum/prototype/simple/alt_title/scientist/anomalist
+/datum/prototype/struct/alt_title/scientist/anomalist
 	title = "Anomalist"
 	title_blurb = "An Anomalist is a Scientist whose expertise is analyzing alien artifacts. They are familar with the most common methods of testing artifact \
 					function. They work closely with Xenoarchaeologists, or Miners, if either role is present."
 
-/datum/prototype/simple/alt_title/scientist/phoron_research
+/datum/prototype/struct/alt_title/scientist/phoron_research
 	title = "Phoron Researcher"
 	title_blurb = "A Phoron Researcher is a specialist in the practical applications of phoron, and has knowledge of its practical uses and dangers. \
 					Many Phoron Researchers are interested in the combustability and explosive properties of gaseous phoron, as well as the specific hazards \
 					of working with the substance in that state."
 
-/datum/prototype/simple/alt_title/scientist/circuit
+/datum/prototype/struct/alt_title/scientist/circuit
 	title = "Circuit Designer"
 	title_blurb = "A Circuit Designer is a Scientist whose expertise is working with integrated circuits. They are familar with the workings and programming of those devices. \
 					They work to create various useful devices using the capabilities of integrated circuitry."
 
-/datum/prototype/simple/alt_title/scientist/fieldtech
+/datum/prototype/struct/alt_title/scientist/fieldtech
 	title = "Research Field Technician"
 
-/datum/prototype/simple/alt_title/scientist/xenobiologist
+/datum/prototype/struct/alt_title/scientist/xenobiologist
 	title = "Xenobiologist"
 	title_blurb = "A Xenobiologist studies esoteric lifeforms, usually in the relative safety of their lab. They attempt to find ways to benefit \
 						from the byproducts of these lifeforms, and their main subject at present is the Giant Slime."
 	title_outfit = /datum/outfit/job/station/scientist/xenobiologist
 
-/datum/prototype/simple/alt_title/scientist/xenobotanist
+/datum/prototype/struct/alt_title/scientist/xenobotanist
 	title = "Xenobotanist"
 	title_blurb = "A Xenobotanist grows and cares for a variety of abnormal, custom made, and frequently dangerous plant life. When the products of these plants \
 					are both safe and beneficial to the station, they may choose to introduce it to the rest of the crew."

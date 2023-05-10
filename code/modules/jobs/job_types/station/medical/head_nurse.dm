@@ -23,12 +23,12 @@
 	ideal_character_age = 45
 
 	alt_titles = list (
-		"Medical Specialist" = /datum/prototype/simple/alt_title/medical_specialist,
-		"Consultant Physician" = /datum/prototype/simple/alt_title/consultant_physician,
-		"Biotechnical Advisor" = /datum/prototype/simple/alt_title/biotechnical_advisor
+		"Medical Specialist" = /datum/prototype/struct/alt_title/medical_specialist,
+		"Consultant Physician" = /datum/prototype/struct/alt_title/consultant_physician,
+		"Biotechnical Advisor" = /datum/prototype/struct/alt_title/biotechnical_advisor
 	)
 
-/datum/prototype/simple/alt_title/biotechnical_advisor
+/datum/prototype/struct/alt_title/biotechnical_advisor
 	title = "Biotechnical Advisor"
 	title_outfit = /datum/outfit/job/station/medical_doctor // todo: add OSSNECRO outfits.
 	background_allow = list(
@@ -36,14 +36,14 @@
 	)
 	background_enforce = TRUE
 
-/datum/prototype/simple/alt_title/medical_specialist
+/datum/prototype/struct/alt_title/medical_specialist
 	title = "Medical Specialist"
 	title_blurb = "A Medical Specialist is a senior medical professional with extensive knowledge within a particular field of medicine which \
 	is expected to perform the standard duties of a medical doctor, as well as offer training, guidance and oversight to both resident \
 	and attending physicians in all matters, especially when presented with difficult situations within their field of expertise."
 	title_outfit = /datum/outfit/job/station/medical_doctor
 
-/datum/prototype/simple/alt_title/consultant_physician
+/datum/prototype/struct/alt_title/consultant_physician
 	title = "Consultant Physician"
 	title_blurb = "A Consultant Physician is a senior medical professional with extensive training in general medical practice which is expected to perform the \
 	standard duties of a medical doctor, as well as offer training, guidance and oversight to resident and attending physicians, especially when presented with difficult \

@@ -1,7 +1,7 @@
-/datum/prototype/simple/loot_pack/weapons
-	abstract_type = /datum/prototype/simple/loot_pack/weapons
+/datum/prototype/struct/loot_pack/weapons
+	abstract_type = /datum/prototype/struct/loot_pack/weapons
 
-/datum/prototype/simple/loot_pack/weapons/melee1
+/datum/prototype/struct/loot_pack/weapons/melee1
 	some = list(
 		/obj/item/melee/energy/sword,
 		/obj/item/shield/energy,

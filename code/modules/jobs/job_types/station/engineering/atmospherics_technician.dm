@@ -21,24 +21,24 @@
 						understanding of the pipes, vents, and scrubbers that move gasses around the station, and to be familiar with proper firefighting procedure."
 
 	alt_titles = list(
-		"Atmospherics Maintainer" = /datum/prototype/simple/alt_title/atmos_maint,
-		"Pipe Network Specialist" = /datum/prototype/simple/alt_title/pipe_spec,
-		"Disposals Technician" = /datum/prototype/simple/alt_title/disposals_tech,
-		"Artificer" = /datum/prototype/simple/alt_title/atmos_artificer
+		"Atmospherics Maintainer" = /datum/prototype/struct/alt_title/atmos_maint,
+		"Pipe Network Specialist" = /datum/prototype/struct/alt_title/pipe_spec,
+		"Disposals Technician" = /datum/prototype/struct/alt_title/disposals_tech,
+		"Artificer" = /datum/prototype/struct/alt_title/atmos_artificer
 		)
 
 // Atmos Tech Alt Titles
-/datum/prototype/simple/alt_title/atmos_maint
+/datum/prototype/struct/alt_title/atmos_maint
 	title = "Atmospherics Maintainer"
 
-/datum/prototype/simple/alt_title/pipe_spec
+/datum/prototype/struct/alt_title/pipe_spec
 	title = "Pipe Network Specialist"
 
-/datum/prototype/simple/alt_title/disposals_tech
+/datum/prototype/struct/alt_title/disposals_tech
 	title = "Disposals Technician"
 	title_blurb = "A Disposals Technician is an Atmospheric Technician still and can fulfill all the same duties, although specializes more in disposals delivery system's operations and configurations."
 
-/datum/prototype/simple/alt_title/atmos_artificer
+/datum/prototype/struct/alt_title/atmos_artificer
 	title = "Artificer"
 	background_allow = list(
 		/datum/lore/character_background/faction/naramadiguilds

@@ -17,15 +17,15 @@
 	outfit_type = /datum/outfit/job/station/pilot
 	desc = "A Pilot flies the various shuttles in the Virgo-Erigone System."
 	alt_titles = list(
-		"Co-Pilot" = /datum/prototype/simple/alt_title/co_pilot,
-		"Navigator" = /datum/prototype/simple/alt_title/navigator
+		"Co-Pilot" = /datum/prototype/struct/alt_title/co_pilot,
+		"Navigator" = /datum/prototype/struct/alt_title/navigator
 		)
 
-/datum/prototype/simple/alt_title/co_pilot
+/datum/prototype/struct/alt_title/co_pilot
 	title = "Co-Pilot"
 	title_blurb = "A Co-Pilot is there primarily to assist main pilot as well as learn from them"
 
-/datum/prototype/simple/alt_title/navigator
+/datum/prototype/struct/alt_title/navigator
 	title = "Navigator"
 
 /datum/outfit/job/station/pilot

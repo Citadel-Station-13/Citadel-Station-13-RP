@@ -17,18 +17,18 @@
 	outfit_type = /datum/outfit/job/station/shaft_miner
 	desc = "A Shaft Miner mines and processes minerals to be delivered to departments that need them."
 	alt_titles = list(
-		"Drill Technician" = /datum/prototype/simple/alt_title/miner/drill_tech,
-		"Belt Miner" = /datum/prototype/simple/alt_title/miner/belt
+		"Drill Technician" = /datum/prototype/struct/alt_title/miner/drill_tech,
+		"Belt Miner" = /datum/prototype/struct/alt_title/miner/belt
 		)
 
-/datum/prototype/simple/alt_title/miner
-	abstract_type = /datum/prototype/simple/alt_title/miner
+/datum/prototype/struct/alt_title/miner
+	abstract_type = /datum/prototype/struct/alt_title/miner
 
-/datum/prototype/simple/alt_title/miner/drill_tech
+/datum/prototype/struct/alt_title/miner/drill_tech
 	title = "Drill Technician"
 	title_blurb = "A Drill Technician specializes in operating and maintaining the machinery needed to extract ore from veins deep below the surface."
 
-/datum/prototype/simple/alt_title/miner/belt
+/datum/prototype/struct/alt_title/miner/belt
 	title = "Belt Miner"
 
 /datum/outfit/job/station/shaft_miner
