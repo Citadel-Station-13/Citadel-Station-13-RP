@@ -11,14 +11,14 @@
 	/// fetched subtype lists
 	var/list/subtype_lists
 
-/datum/controller/controller/repository/Initialize()
+/datum/controller/repository/Initialize()
 	uid_lookup = list()
 	type_lookup = list()
 	subtype_lists = list()
 	generate()
 	return ..()
 
-/datum/controller/controller/repository/Recover()
+/datum/controller/repository/Recover()
 	. = ..()
 	src.type_lookup = SSrepository.type_lookup
 	if(!islist(src.type_lookup))
@@ -33,7 +33,7 @@
  * prototypes returned should generally not be modified.
  * prototypes returned from a typepath input should never, ever be modified.
  */
-/datum/controller/controller/repository/proc/fetch(datum/prototype/type_or_id)
+/datum/controller/repository/proc/fetch(datum/prototype/type_or_id)
 	if(isnull(type_or_id))
 		return
 	if(istext(type_or_id))
@@ -52,7 +52,7 @@
  * lists returned should never, ever be modified.
  * this fetches subtypes, not the first type on purpose.
  */
-/datum/controller/controller/repository/proc/fetch_subtypes(path)
+/datum/controller/repository/proc/fetch_subtypes(path)
 	RETURN_TYPE(/list)
 	ASSERT(ispath(path, /datum/prototype))
 	if(subtype_lists[path])
@@ -64,10 +64,10 @@
 		generating += instance
 	return generating
 
-/datum/controller/controller/repository/proc/register(datum/prototype/instance, force)
+/datum/controller/repository/proc/register(datum/prototype/instance, force)
 	return register_internal(instance, force, FALSE)
 
-/datum/controller/controller/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
+/datum/controller/repository/proc/register_internal(datum/prototype/instance, force, hardcoded)
 	PRIVATE_PROC(TRUE)
 	if(uid_lookup[instance] && !force)
 		return FALSE
@@ -79,7 +79,7 @@
 		type_lookup[instance.type] = instance
 	return TRUE
 
-/datum/controller/controller/repository/proc/unregister(datum/prototype/instance)
+/datum/controller/repository/proc/unregister(datum/prototype/instance)
 	if(type_lookup[instance.type] == instance)
 		CRASH("tried to unregister a hardcoded instance")
 	if(!instance.unregister())
@@ -93,7 +93,7 @@
 /**
  * regenerates entries, kicking out anything that's in the way
  */
-/datum/controller/controller/repository/proc/generate()
+/datum/controller/repository/proc/generate()
 	for(var/datum/prototype/instance as anything in subtypesof(expected_type))
 		if(initial(instance.abstract_type) == instance)
 			continue
