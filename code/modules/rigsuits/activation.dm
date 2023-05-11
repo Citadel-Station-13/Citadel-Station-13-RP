@@ -1,30 +1,30 @@
-// activation - bit of a misnomer: this is actually whether or not the rig is attached/sealed to you
+// activation - bit of a misnomer: this is actually whether or not the hardsuit is attached/sealed to you
 /**
  * set current activation state to
  */
-/obj/item/rig/proc/set_activation_state(new_state)
+/obj/item/hardsuit/proc/set_activation_state(new_state)
 	activation_state = new_state
 
-/obj/item/rig/proc/is_activated()
+/obj/item/hardsuit/proc/is_activated()
 	return activation_state == RIG_ACTIVATION_ON
 
-/obj/item/rig/proc/is_activating()
+/obj/item/hardsuit/proc/is_activating()
 	return activation_state == RIG_ACTIVATION_STARTUP
 
-/obj/item/rig/proc/is_deactivating()
+/obj/item/hardsuit/proc/is_deactivating()
 	return activation_state == RIG_ACTIVATION_SHUTDOWN
 
-/obj/item/rig/proc/is_cycling()
+/obj/item/hardsuit/proc/is_cycling()
 	return activation_state == RIG_ACTIVATION_STARTUP || activation_state == RIG_ACTIVATION_SHUTDOWN
 
 /**
- * online - whether or not the rig is semantically online. a completely depowered suit can be activated but not online.
+ * online - whether or not the hardsuit is semantically online. a completely depowered suit can be activated but not online.
  */
-/obj/item/rig/proc/is_online()
+/obj/item/hardsuit/proc/is_online()
 	return is_activated() && cell?.charge
 
 /// hook - automatically deactivate if dropped
-/obj/item/rig/dropped(mob/user, flags, atom/newLoc)
+/obj/item/hardsuit/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	reset()
 	// todo: above is utter shitcode fuck springtrap suits rigs need refactored

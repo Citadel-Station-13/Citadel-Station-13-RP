@@ -159,7 +159,6 @@
 /datum/trait/positive/winged_flight/apply(var/datum/species/S,var/mob/living/carbon/human/H)
 	..(S,H)
 	add_verb(H, /mob/living/proc/flying_toggle)
-	add_verb(H, /mob/living/proc/start_wings_hovering)
 
 /datum/trait/positive/hardfeet
 	name = "Hard Feet"

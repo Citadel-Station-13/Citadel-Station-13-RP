@@ -5707,7 +5707,7 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/rig/eva,
+/obj/item/hardsuit/eva,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -10514,7 +10514,7 @@
 	dir = 8;
 	layer = 2.6
 	},
-/obj/item/rig/eva,
+/obj/item/hardsuit/eva,
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -13575,7 +13575,7 @@
 	dir = 8;
 	layer = 2.9
 	},
-/obj/item/rig/ce/equipped{
+/obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
 /obj/item/clothing/mask/breath,

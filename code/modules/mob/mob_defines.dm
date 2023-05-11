@@ -321,7 +321,7 @@
 	///Determines mob's ability to see shadows. 1 = Normal vision, 0 = darkvision.
 	var/seedarkness = 1
 
-	var/get_rig_stats = 0
+	var/get_hardsuit_stats = 0
 
 	/// Skip processing life() if there's just no players on this Z-level.
 	var/low_priority = TRUE

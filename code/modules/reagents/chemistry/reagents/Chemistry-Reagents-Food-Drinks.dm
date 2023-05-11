@@ -1314,6 +1314,7 @@
 	cup_desc = "Made with love! And cocoa beans."
 
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
 		if(prob(5))
 			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
@@ -2231,10 +2232,9 @@
 	glass_desc = "A freezing pint of beer"
 
 /datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.jitteriness = max(M.jitteriness - 3, 0)
+	. = ..()
+	if(.)
+		M.jitteriness = max(M.jitteriness - 3, 0)
 
 /datum/reagent/ethanol/bluecuracao
 	name = "Blue Curacao"
@@ -2273,10 +2273,9 @@
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
 /datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.dizziness +=5
+	. = ..()
+	if(.)
+		M.dizziness += 5
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -2320,7 +2319,7 @@
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
-	..()
+	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
 	M.dizziness = max(0, M.dizziness - 5)
 	M.drowsyness = max(0, M.drowsyness - 3)
 	M.adjust_sleeping(20 * -2)
@@ -2427,7 +2426,7 @@
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 
 /datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.drowsyness = max(0, M.drowsyness - 7)
@@ -2459,7 +2458,7 @@
 	glass_desc = "The glass contain wodka. Xynta."
 
 /datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
 
 /datum/reagent/ethanol/whiskey
@@ -2693,7 +2692,7 @@
 	glass_desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
 
 /datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/bilk
@@ -3062,7 +3061,7 @@
 	glass_special = list("neuroright")
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.afflict_paralyze(20 * 3)
 
 /datum/reagent/ethanol/patron
@@ -3090,13 +3089,13 @@
 
 /datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(dose > 30)
+	if(. > 30)
 		M.adjustToxLoss(2 * removed)
-	if(dose > 60 && ishuman(M) && prob(5))
+	if(. > 60 && ishuman(M) && prob(5))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
-			if(dose < 120)
+			if(. < 120)
 				L.take_damage(10 * removed, 0)
 			else
 				L.take_damage(100, 0)
@@ -3797,9 +3796,9 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed))
-	if(ishuman(M))
+	. = ..()
+	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
+	if(. && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.has_organ[O_LIVER])
 			var/obj/item/organ/L = H.internal_organs_by_name[O_LIVER]
@@ -4218,7 +4217,7 @@
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.adjustOxyLoss(-4 * removed)
@@ -4594,11 +4593,11 @@
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
 
 /datum/reagent/ethanol/deathbell/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 
-	if(dose * strength >= strength) // Early warning
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/monstertamer
@@ -4663,15 +4662,12 @@
 	glass_desc = "Looking into this is like staring at the stars."
 
 /datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
+
 	M.afflict_stun(20 * 2)
-
-/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-
-	if(dose * strength >= strength) // Early warning
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/lotus
@@ -4887,13 +4883,13 @@
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
 /datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.ingested.add_reagent("radium", 0.25)
