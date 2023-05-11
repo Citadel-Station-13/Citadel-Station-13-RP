@@ -328,6 +328,19 @@
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/engineering(src)
 
+// Blueshield Disk //
+/obj/item/disk/nifsoft/blueshield
+	name = "NIFSoft Uploader - Blueshield"
+	desc = "Contains free NIFSofts useful for Blueshields.\n\
+	It has a small label: \n\
+	\"Portable NIFSoft Installation Media. \n\
+	Align ocular port with eye socket and depress red plunger.\""
+
+	stored = /datum/nifsoft/package/blueshield
+
+/datum/nifsoft/package/blueshield
+	software = list(/datum/nifsoft/hud/ar_med,/datum/nifsoft/hud/ar_sec)
+
 // Medical Disk //
 /obj/item/disk/nifsoft/medical
 	name = "NIFSoft Uploader - Medical"
