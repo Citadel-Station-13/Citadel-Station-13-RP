@@ -23,7 +23,7 @@
 	allow_unanchor = TRUE
 	allow_deconstruct = TRUE
 
-	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_ALLOW_SILICON
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OFFLINE_SILICON
 
 	/// reagent synthesizers in us - set to list of typepaths to init on Initialize().
 	var/list/obj/item/reagent_synth/synthesizers

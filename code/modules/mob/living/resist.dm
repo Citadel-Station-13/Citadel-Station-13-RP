@@ -5,12 +5,16 @@
 	if(!incapacitated(INCAPACITATION_KNOCKOUT) && canClick())
 		setClickCooldown(20)
 		resist_grab()
-		if(!weakened)
+		if(CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
 			process_resist()
 
 /mob/living/proc/process_resist()
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_RESIST))
+		return
+
 	if(SEND_SIGNAL(src, COMSIG_MOB_PROCESS_RESIST) & COMPONENT_MOB_RESIST_INTERRUPT)
 		return
+
 	//unbuckling yourself
 	if(buckled)
 		resist_buckle()
@@ -22,20 +26,19 @@
 		C.contents_resist(src)
 		return TRUE
 
-	else if(canmove)
-		if(on_fire)
-			resist_fire() //stop, drop, and roll
-		else
-			resist_restraints()
+	if(resist_fire())
+		return
 
-	else if(canmove)
-		if(on_fire)
-			resist_fire() //stop, drop, and roll
-		else
-			resist_restraints()
+	if(resist_restraints())
+		return
 
-	if(attempt_vr(src,"vore_process_resist",args))
-		return TRUE
+	if(isbelly(loc))
+		var/obj/belly/B = loc
+		B.relay_resist(src)
+		return
+
+	if(resist_a_rest())
+		return
 
 /mob/living/proc/resist_grab()
 	var/resisting = 0

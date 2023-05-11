@@ -214,22 +214,22 @@
 			return 0
 	if(!(target_zone == BP_TORSO))
 		return FALSE
-	var/obj/item/rig/R = target.get_rig(TRUE)
+	var/obj/item/hardsuit/R = target.get_hardsuit(TRUE)
 	if(!R)
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	user.visible_message("[user] starts cutting through the support systems of \the [rig] on [target] with \the [tool]." , \
-	"You start cutting through the support systems of \the [rig] on [target] with \the [tool].")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	user.visible_message("[user] starts cutting through the support systems of \the [hardsuit] on [target] with \the [tool]." , \
+	"You start cutting through the support systems of \the [hardsuit] on [target] with \the [tool].")
 	..()
 
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	rig.reset()
-	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
-		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	hardsuit.reset()
+	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>", \
+		"<span class='notice'>You have cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>")
 
 /datum/surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='danger'>[user]'s [tool] can't quite seem to get through the metal...</span>", \
@@ -341,7 +341,6 @@
 	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
 	target.op_stage.dehusk = 0
 	target.mutations.Remove(MUTATION_HUSK)
-	target.status_flags &= ~DISFIGURED
 	target.update_icons_body()
 	..()
 

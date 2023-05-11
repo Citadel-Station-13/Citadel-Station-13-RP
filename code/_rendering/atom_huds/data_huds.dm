@@ -18,7 +18,7 @@
 /datum/atom_hud/data
 
 /datum/atom_hud/data/human/medical
-	hud_icons = list(STATUS_HUD, LIFE_HUD)
+	hud_icons = list(BIOLOGY_HUD, LIFE_HUD)
 
 /datum/atom_hud/data/human/job_id
 	hud_icons = list(ID_HUD)
@@ -52,7 +52,7 @@
 		I.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
 
 /mob/proc/update_hud_med_status()
-	var/image/holder = hud_list[STATUS_HUD]
+	var/image/holder = hud_list[BIOLOGY_HUD]
 	if(!holder)
 		return
 	var/foundVirus = check_viruses()

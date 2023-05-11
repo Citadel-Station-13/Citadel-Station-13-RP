@@ -57,7 +57,7 @@ var/list/ai_verbs_default = list(
 	anchored = TRUE
 	density = TRUE
 	can_be_antagged = TRUE
-	status_flags = CANSTUN|CANPARALYSE|CANPUSH
+	status_flags = STATUS_CAN_STUN|STATUS_CAN_PARALYZE|STATUS_CAN_PUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
 	see_invisible = SEE_INVISIBLE_LIVING
@@ -159,9 +159,8 @@ var/list/ai_verbs_default = list(
 	if(!is_dummy)
 		aiPDA = new/obj/item/pda/ai(src)
 	SetName(pickedName)
-	anchored = 1
-	canmove = 0
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
 	if(!is_dummy)
 		aiCommunicator = new /obj/item/communicator/integrated(src)
@@ -728,15 +727,15 @@ var/list/ai_verbs_default = list(
 		icon_state = selected_sprite.alive_icon
 		set_light(1, 1, selected_sprite.alive_light)
 
-// Pass lying down or getting up to our pet human, if we're in a rig.
+// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 /mob/living/silicon/ai/lay_down()
 	set name = "Rest"
 	set category = "IC"
 
 	resting = 0
-	var/obj/item/rig/rig = src.get_rig()
-	if(rig)
-		rig.force_rest(src)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(hardsuit)
+		hardsuit.force_rest(src)
 
 /mob/living/silicon/ai/is_sentient()
 	// AI cores don't store what brain was used to build them so we're just gonna assume they can think to some degree.

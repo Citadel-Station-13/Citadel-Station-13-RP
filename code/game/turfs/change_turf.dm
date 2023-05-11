@@ -31,9 +31,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		T.icon_state = icon_state
 	if(T.icon != icon)
 		T.icon = icon
-	if(color)
-		T.atom_colours = atom_colours.Copy()
-		T.update_atom_colour()
+	T.copy_atom_colour(src)
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T

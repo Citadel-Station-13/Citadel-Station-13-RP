@@ -120,7 +120,7 @@
 	if(!wielded && requires_wield)
 		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
 	. = ..()
 /*
@@ -164,10 +164,10 @@
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)
-	var/datum/status_effect/crusher_mark/CM = L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)
-	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(STATUS_EFFECT_CRUSHERMARK))
+	var/datum/status_effect/grouped/crusher_mark/CM = L.has_status_effect(/datum/status_effect/grouped/crusher_mark)
+	if(!CM || CM.hammer_synced != src || !L.remove_status_effect(/datum/status_effect/grouped/crusher_mark))
 		return
-	var/datum/status_effect/crusher_damage/C = L.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
+	var/datum/status_effect/crusher_damage/C = L.has_status_effect(/datum/status_effect/crusher_damage)
 	var/target_health = L.health
 /*
 	for(var/t in trophies)
@@ -198,7 +198,7 @@
 	if(!isliving(A))
 		return
 	var/mob/living/L = A
-	if(!L.has_status_effect(STATUS_EFFECT_CRUSHERMARK))
+	if(!L.has_status_effect(/datum/status_effect/grouped/crusher_mark))
 		detonate(L, TT.thrower, TRUE)
 
 /obj/item/kinetic_crusher/proc/Recharge()
@@ -321,9 +321,10 @@
 /obj/projectile/destabilizer/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
-		// var/had_effect = (L.has_status_effect(STATUS_EFFECT_CRUSHERMARK)) //used as a boolean
-		// var/datum/status_effect/crusher_mark/CM = L.apply_status_effect(STATUS_EFFECT_CRUSHERMARK, hammer_synced)
+		if(hammer_synced.can_mark(L))
+			L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
+		// var/had_effect = (L.has_status_effect(/datum/status_effect/grouped/crusher_mark)) //used as a boolean
+		// var/datum/status_effect/grouped/crusher_mark/CM = L.apply_status_effect(/datum/status_effect/grouped/crusher_mark, hammer_synced)
 /*
 		if(hammer_synced)
 			for(var/t in hammer_synced.trophies)

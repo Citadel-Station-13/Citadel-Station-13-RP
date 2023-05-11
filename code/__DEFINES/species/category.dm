@@ -1,6 +1,6 @@
 //! species categories for UI; volatile, can change at any time.
 
-#define SPECIES_CATEGORY_ANGEL "Celestials"
+#define SPECIES_CATEGORY_DAEDAL "Daedalites"
 #define SPECIES_CATEGORY_HUMAN "Human"
 #define SPECIES_CATEGORY_MISC "Miscellaneous"
 #define SEPCIES_CATEGORY_MOTH "Dnin-Nepid"

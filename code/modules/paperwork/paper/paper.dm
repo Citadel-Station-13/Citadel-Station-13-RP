@@ -182,7 +182,7 @@
 			else
 				user.visible_message("<span class='warning'>[user] begins to wipe [H]'s lipstick off with \the [src].</span>", \
 								 	 "<span class='notice'>You begin to wipe off [H]'s lipstick.</span>")
-				if(do_after(user, 10) && do_after(H, 10, 5, 0))	//user needs to keep their active hand, H does not.
+				if(do_after(user, 10, H, mobility_flags = MOBILITY_CAN_USE | (IS_STANDING(target)? MOBILITY_IS_STANDING : NONE)))	//user needs to keep their active hand, H does not.
 					user.visible_message("<span class='notice'>[user] wipes [H]'s lipstick off with \the [src].</span>", \
 										 "<span class='notice'>You wipe off [H]'s lipstick.</span>")
 					H.lip_style = null
@@ -375,9 +375,9 @@
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
 			var/mob/living/M = usr
-			if(istype(M) && M.back && istype(M.back,/obj/item/rig))
-				var/obj/item/rig/r = M.back
-				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
+			if(istype(M) && M.back && istype(M.back,/obj/item/hardsuit))
+				var/obj/item/hardsuit/r = M.back
+				var/obj/item/hardsuit_module/device/pen/m = locate(/obj/item/hardsuit_module/device/pen) in r.installed_modules
 				if(r.is_online() && m)
 					i = m.device
 				else

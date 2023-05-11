@@ -111,9 +111,13 @@
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
 		strength_mod *=5 //cit change - alcohol ain't good for plants
 
-	M.add_chemical_effect(CE_ALCOHOL, 1)
 	var/effective_dose = dose * strength_mod * (1 + volume/60) //drinking a LOT will make you go down faster
-
+	M.add_chemical_effect(CE_ALCOHOL, 1)
+	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
+		if(prob(effective_dose/2))
+			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+		M.adjustToxLoss(effective_dose/2)
+		return 0
 	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(18) // It is decreased at the speed of 3 per tick
 	if(effective_dose >= strength * 2) // Slurring
@@ -127,8 +131,8 @@
 	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
-		M.Unconscious(60)
-		M.Sleeping(90)
+		M.afflict_unconscious(20 * 60)
+		M.afflict_sleeping(20 * 90)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy*3)
@@ -140,6 +144,7 @@
 
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci*3)
+	return effective_dose
 
 /datum/reagent/ethanol/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(issmall(M)) removed *= 2
@@ -160,23 +165,28 @@
 	if(is_vampire)
 		handle_vampire(M, alien, removed, is_vampire)
 
+	var/effective_dose = strength_mod * dose // this was being recalculated a bunch before--why?
+	if(HAS_TRAIT(M, TRAIT_ALCOHOL_INTOLERANT))
+		if(prob(effective_dose/2))
+			M.add_chemical_effect(CE_ALCOHOL_TOXIC, 1)
+		M.adjustToxLoss(effective_dose/2)
+		return 0
 	M.add_chemical_effect(CE_ALCOHOL, 1)
-
-	if(dose * strength_mod >= strength) // Early warning
+	if(effective_dose >= strength) // Early warning
 		M.make_dizzy(6) // It is decreased at the speed of 3 per tick
-	if(dose * strength_mod >= strength * 2) // Slurring
+	if(effective_dose >= strength * 2) // Slurring
 		M.slurring = max(M.slurring, 30)
-	if(dose * strength_mod >= strength * 3) // Confusion - walking in random directions
+	if(effective_dose >= strength * 3) // Confusion - walking in random directions
 		M.Confuse(20)
-	if(dose * strength_mod >= strength * 4) // Blurry vision
+	if(effective_dose >= strength * 4) // Blurry vision
 		M.eye_blurry = max(M.eye_blurry, 10)
-	if(dose * strength_mod >= strength * 5) // Drowsyness - periodically falling asleep
+	if(effective_dose >= strength * 5) // Drowsyness - periodically falling asleep
 		M.drowsyness = max(M.drowsyness, 20)
-	if(dose * strength_mod >= strength * 6) // Toxic dose
+	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
-	if(dose * strength_mod >= strength * 7) // Pass out
-		M.Unconscious(20)
-		M.Sleeping(30)
+	if(effective_dose >= strength * 7) // Pass out
+		M.afflict_unconscious(20 * 20)
+		M.afflict_sleeping(20 * 30)
 
 	if(druggy != 0)
 		M.druggy = max(M.druggy, druggy)
@@ -188,6 +198,7 @@
 
 	if(halluci)
 		M.hallucination = max(M.hallucination, halluci)
+	return effective_dose
 
 /datum/reagent/ethanol/touch_obj(obj/O)
 	if(istype(O, /obj/item/paper))
@@ -250,7 +261,7 @@
 
 /datum/reagent/lithium/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
@@ -265,7 +276,7 @@
 
 /datum/reagent/mercury/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien != IS_DIONA)
-		if(M.canmove && !M.restrained() && istype(M.loc, /turf/space))
+		if(CHECK_MOBILITY(M, MOBILITY_CAN_MOVE) && istype(M.loc, /turf/space))
 			step(M, pick(GLOB.cardinal))
 		if(prob(5))
 			M.emote(pick("twitch", "drool", "moan"))
@@ -411,7 +422,6 @@
 				if(prob(100 * removed / meltdose)) // Applies disfigurement
 					if (affecting.organ_can_feel_pain())
 						H.emote("scream")
-					H.status_flags |= DISFIGURED
 		else
 			M.take_organ_damage(0, removed * power * 0.1) // Balance. The damage is instant, so it's weaker. 10 units -> 5 damage, double for pacid. 120 units beaker could deal 60, but a) it's burn, which is not as dangerous, b) it's a one-use weapon, c) missing with it will splash it over the ground and d) clothes give some protection, so not everything will hit
 
@@ -470,10 +480,10 @@
 			M.eye_blurry = max(M.eye_blurry, 10)
 		else if(effective_dose < 20)
 			if(prob(50))
-				M.Weaken(2)
+				M.afflict_paralyze(20 * 2)
 			M.drowsyness = max(M.drowsyness, 20)
 		else
-			M.Sleeping(20)
+			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
 
 	if(alien == IS_ALRAUNE) //cit change - too much sugar isn't good for plants

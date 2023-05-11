@@ -26,7 +26,7 @@
 		return
 	to_chat(C, "<span class='notice'>We will attempt to regenerate our form.</span>")
 
-	C.update_canmove()
+	C.update_mobility()
 	C.remove_changeling_powers()
 	changeling.chem_charges -= CHANGELING_STASIS_COST
 

@@ -151,7 +151,7 @@
 	if(!check_trigger(user, toggling, TRUE))
 		return
 	if(windup)
-		if(!do_after(user, windup, ignore_movement = !windup_requires_still))
+		if(!do_after(user, windup, flags = (windup_requires_still? NONE : DO_AFTER_IGNORE_MOVEMENT), mobility_flags = mobility_check_flags))
 			return
 		if(!check_trigger(user, toggling, TRUE))
 			return
@@ -255,11 +255,11 @@
 		return TRUE
 	if((ability_check_flags & ABILITY_CHECK_CONSCIOUS) && !IS_CONSCIOUS(owner))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STANDING) && owner.lying)
+	if((ability_check_flags & ABILITY_CHECK_STANDING) && IS_PRONE(owner))
 		return FALSE
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return FALSE
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
+	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return FALSE
 	return TRUE
 
@@ -277,7 +277,7 @@
 		return "You cannot do that while on the ground."
 	if((ability_check_flags & ABILITY_CHECK_FREE_HAND) && !(owner.has_free_hand()))
 		return "You cannot do that without a free hand."
-	if((ability_check_flags & ABILITY_CHECK_STUNNED) && (!IS_CONSCIOUS(owner) || owner.stunned || owner.weakened || owner.incapacitated()))
+	if(!CHECK_MOBILITY(owner, mobility_check_flags))
 		return "You cannot do that while incapacitated."
 
 /**

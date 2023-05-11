@@ -279,7 +279,11 @@
 		return
 
 	if(anchored)
-		to_chat(user, SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"))
+		user.action_feedback(SPAN_NOTICE("\The [src] won't budge, you can't pick it up!"), src)
+		return
+
+	if(!CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
+		user.action_feedback(SPAN_WARNING("You can't do that right now."), src)
 		return
 
 	if (hasorgans(user))
@@ -451,7 +455,7 @@
 
 	if(!(usr)) //BS12 EDIT
 		return
-	if(!usr.canmove || usr.stat || usr.restrained() || !Adjacent(usr))
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_PICKUP) || !Adjacent(usr))
 		return
 	if((!istype(usr, /mob/living/carbon)) || (istype(usr, /mob/living/carbon/brain)))//Is humanoid, and is not a brain
 		to_chat(usr, "<span class='warning'>You can't pick things up!</span>")
@@ -558,8 +562,8 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Unconscious(1)
-				M.Weaken(4)
+				M.afflict_unconscious(20 * 1)
+				M.afflict_paralyze(20 * 4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
 					to_chat(M, "<span class='warning'>You go blind!</span>")

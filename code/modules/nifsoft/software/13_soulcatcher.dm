@@ -505,6 +505,9 @@
 /mob/living/carbon/brain/caught_soul/set_typing_indicator(state)
 	return eyeobj?.set_typing_indicator(state)
 
+/mob/living/carbon/brain/caught_soul/update_mobility(blocked, forced)
+	return ..(blocked, ALL)
+
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul

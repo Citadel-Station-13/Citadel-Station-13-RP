@@ -104,7 +104,7 @@ Class Procs:
 
 		//Check for knocking people over
 		if(ismob(M) && differential > stun_pressure)
-			if(M:status_flags & GODMODE)
+			if(M:status_flags & STATUS_GODMODE)
 				continue
 			M:airflow_stun()
 

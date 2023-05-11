@@ -57,6 +57,7 @@
 
 /obj/item/clothing/under/event_reward/foxmiko/proc/switchsprite() //Handles the ultimate state of the icon as well as what parts of body the attire covers
 	body_cover_flags = initial(body_cover_flags) //Resets to default coverage for this uniform - upper and lower body
+	LAZYINITLIST(item_state_slots)
 	if(kimono) //If the kimono is parted
 		if(skirt) //If the skirt is parted too
 			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks

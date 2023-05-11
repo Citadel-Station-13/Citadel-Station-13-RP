@@ -121,8 +121,6 @@
 
 	//Unfreeze some things
 	does_not_breathe = FALSE
-	update_canmove()
-	weakened = 2
 
 	//Visual effects
 	var/T = get_turf(src)
@@ -344,7 +342,7 @@
 	/*if(last_special > world.time)
 		return*/
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite anyone in your current state!")
 		return
 
@@ -362,7 +360,7 @@
 
 	//if(last_special > world.time) return
 
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src, "You cannot bite in your current state.")
 		return
 
@@ -689,7 +687,7 @@
 		to_chat(src,"<span class='warning'>You can't shred that type of creature.</span>")
 		return FALSE
 	//Needs to be capable (replace with incapacitated call?)
-	if(stat || paralysis || stunned || weakened || lying || restrained() || buckled)
+	if(stat || !CHECK_MOBILITY(src, MOBILITY_CAN_USE) || lying || restrained() || buckled)
 		to_chat(src,"<span class='warning'>You cannot do that in your current state!</span>")
 		return FALSE
 	//Needs to be adjacent, at the very least.
@@ -862,36 +860,6 @@
 	C.flying = !C.flying
 	update_floating()
 	to_chat(C, "<span class='notice'>You have [C.flying?"started":"stopped"] flying.</span>")
-
-//Proc to stop inertial_drift. Exchange nutrition in order to stop gliding around.
-/mob/living/proc/start_wings_hovering()
-	set name = "Hover"
-	set desc = "Allows you to stop gliding and hover. This will take a fair amount of nutrition to perform."
-	set category = "Abilities"
-
-	var/mob/living/carbon/human/C = src
-	if(!C.flying)
-		to_chat(src, "You must be flying to hover!")
-		return
-	if(C.incapacitated(INCAPACITATION_ALL))
-		to_chat(src, "You cannot hover in your current state!")
-		return
-	if(C.nutrition < 50 && !C.flying) //Don't have any food in you?" You can't hover, since it takes up 25 nutrition. And it's not 25 since we don't want them to immediately fall.
-		to_chat(C, "<span class='notice'>You lack the nutrition to fly.</span>")
-		return
-	if(C.anchored)
-		to_chat(C, "<span class='notice'>You are already hovering and/or anchored in place!</span>")
-		return
-
-	if(!C.anchored && !C.pulledby) //Not currently anchored, and not pulled by anyone.
-		C.anchored = 1 //This is the only way to stop the inertial_drift.
-		C.nutrition -= 25
-		update_floating()
-		to_chat(C, "<span class='notice'>You hover in place.</span>")
-		spawn(6) //.6 seconds.
-			C.anchored = 0
-	else
-		return
 
 /mob/living/proc/toggle_pass_table()
 	set name = "Toggle Agility" //Dunno a better name for this. You have to be pretty agile to hop over stuff!!!

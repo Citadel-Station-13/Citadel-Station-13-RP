@@ -1,11 +1,3 @@
-/obj/item/clothing/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
-	. = ..()
-	if(inhands)
-		return
-	if(LAZYLEN(accessories))
-		for(var/obj/item/clothing/accessory/A in accessories)
-			MA.add_overlay(A.get_mob_overlay())
-
 /obj/item/clothing/render_apply_blood(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta, icon_used)
 	. = ..()
 	if(inhands)

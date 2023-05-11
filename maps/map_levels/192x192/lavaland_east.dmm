@@ -119,7 +119,7 @@
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "sk" = (
-/obj/machinery/portable_atmospherics/hydroponics/soil,
+/obj/machinery/portable_atmospherics/hydroponics/soil/ashlander,
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/ashlander_village)
 "sw" = (
@@ -201,7 +201,7 @@
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/unexplored)
 "AL" = (
-/obj/structure/ashlander/brickmaker,
+/obj/structure/ashlander/production/brickmaker,
 /turf/simulated/floor/sandstone/lavaland,
 /area/lavaland/east/ashlander_village)
 "Cw" = (
@@ -339,7 +339,7 @@
 /area/lavaland/east/ashlander_village)
 "To" = (
 /obj/structure/catwalk/ashlander,
-/obj/structure/ashlander/forge,
+/obj/structure/ashlander/production/forge,
 /turf/simulated/floor/outdoors/lava/indoors/noblend/lavaland,
 /area/lavaland/east/ashlander_village)
 "TF" = (

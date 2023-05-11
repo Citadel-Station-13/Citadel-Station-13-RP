@@ -463,6 +463,8 @@
 	//? OLD Vars
 	/// Whether the species can infect wounds, only works with claws / bites
 	var/infect_wounds = 0
+	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
+	var/flight_mod = 1
 
 /datum/species/New()
 	if(hud_type)
@@ -525,7 +527,6 @@
 	H.maxHealth = total_health
 
 	add_inherent_verbs(H)
-	add_inherent_spells(H)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
@@ -788,9 +789,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/handle_npc(var/mob/living/carbon/human/H)
 	if(H.stat == CONSCIOUS && H.ai_holder)
 		if(H.resting)
-			H.resting = FALSE
-			H.update_canmove()
-	return
+			H.set_intentionally_resting(FALSE)
 
 // Called when lying down on a water tile.
 /datum/species/proc/can_breathe_water()

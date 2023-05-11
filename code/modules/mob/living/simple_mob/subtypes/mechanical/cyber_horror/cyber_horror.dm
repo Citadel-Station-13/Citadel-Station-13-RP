@@ -160,7 +160,7 @@
 
  // Do the actual leap.
  // Lets us pass over everything.
-	status_flags |= LEAPING
+	status_flags |= STATUS_LEAPING
 	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
 	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
@@ -168,8 +168,8 @@
 	sleep(5)
 
  // Revert special passage ability.
-	if(status_flags & LEAPING)
-		status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING)
+		status_flags &= ~STATUS_LEAPING
  // Where we landed. This might be different than A's turf.
 	var/turf/T = get_turf(src)
 
@@ -192,7 +192,7 @@
 		break
 
 	if(victim)
-		victim.Weaken(2)
+		victim.afflict_paralyze(20 * 2)
 		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
 		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE
@@ -292,7 +292,7 @@
 	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(stealthed_weaken_amount)
+			L.afflict_paralyze(20 * stealthed_weaken_amount)
 			to_chat(L, SPAN_DANGER("\The [src] tears into you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()

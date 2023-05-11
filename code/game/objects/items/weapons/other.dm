@@ -212,6 +212,7 @@
 	if(.)
 		return
 	on = !on
+	LAZYINITLIST(item_state_slots)
 	if(on)
 		user.visible_message(
 			SPAN_NOTICE("\The [user] extends the white cane."),

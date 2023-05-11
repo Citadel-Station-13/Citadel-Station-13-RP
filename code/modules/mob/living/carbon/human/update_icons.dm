@@ -80,36 +80,33 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	stack_trace("CANARY: Old human update_icons_huds was called.")
 
 /mob/living/carbon/human/update_transform()
+	var/matrix/old_matrix = transform
+	var/matrix/M = matrix()
+
+	// handle scaling first, we don't want to have massive mobs still shift to align to tile
+	// when they're laying down.
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
 	if(istype(species))
 		desired_scale_x *= species.icon_scale_x
 		desired_scale_y *= species.icon_scale_y
+	M.Scale(desired_scale_x, desired_scale_y)
+	M.Translate(0, 16 * (desired_scale_y - 1))
 
-	var/matrix/M = matrix()
-	var/anim_time = 3
-
-	//Due to some involuntary means, you're laying now
-	if(lying && !resting && !sleeping)
-		anim_time = 1 //Thud
-
-	if(lying) //Only rotate them if we're not drawing a specific icon for being prone. there are no prone icons
-		var/randn = rand(1, 2)
-		if(randn <= 1) // randomly choose a rotation
-			M.Turn(-90)
-		else
-			M.Turn(90)
-		M.Scale(desired_scale_y, desired_scale_x)
+	// handle turning
+	M.Turn(lying)
+	// extremely lazy heuristic to see if we should shift down to appear to be, well, down.
+	if(lying < -45 || lying > 45)
 		M.Translate(1,-6)
-		set_base_layer(MOB_LAYER - 0.01)
-	else
-		M.Scale(desired_scale_x, desired_scale_y)
-		M.Translate(0, 16*(desired_scale_y-1))
-		set_base_layer(MOB_LAYER)
 
-	animate(src, transform = M, time = anim_time)
+	// fall faster if incapacitated
+	var/anim_time = CHECK_MOBILITY(src, MOBILITY_CAN_STAND)? 3 : 1
+
+	animate(src, transform = M, time = anim_time, flags = ANIMATION_PARALLEL)
 	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 	update_icon_special() //May contain transform-altering things
+	update_ssd_overlay()
 
 //DAMAGE OVERLAYS
 //constructs damage icon for each organ from mask * damage field and saves it in our overlays_ lists
@@ -582,7 +579,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!w_uniform)
 		return
 
-	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/rig))
+	if(wear_suit && (wear_suit.inv_hide_flags & HIDEJUMPSUIT) && !istype(wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		return //Wearing a suit that prevents uniform rendering
 
 	//Build a uniform sprite
