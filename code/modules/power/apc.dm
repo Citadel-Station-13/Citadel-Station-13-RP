@@ -1157,6 +1157,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	src.update()
 	update_icon()
 
+/obj/machinery/power/apc/proc/trigger_rcd()
+	toggle_breaker()
+
 //This isn't used for now, so might as well disable it
 /*
 /obj/machinery/power/apc/proc/ion_act()
