@@ -1,3 +1,28 @@
+/**
+ * power networks
+ *
+ * how this works:
+ *
+ * powernets are generic and make some assumptions:
+ * - We **cannot** trust that machines have a particular processing order (e.g. suppliers before/after consumers)
+ * - We **can** trust that we tick in sync with machinery. We **can** trust that off-tick machinery will compensate their usage/demands as needed.
+ *
+ * we make these assumptions because
+ * - specific sorting / bracketing for machinery may not be available, and even if it is, it's usually too stiff to demand of implementations.
+ * - we cannot actually compensate for machinery that tick "wrongly", without overcomplicating this by having power draw have an overengineered
+ *       implementation that involves tracking the time period over which power is used and all sorts of nasty things that we really don't want
+ *       to have to care about.
+ *
+ * all variables are in **kilowatts** unless otherwise stated.
+ */
+/datum/wirenet/power
+
+	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
+	var/load = 0
+
+	
+
+
 /datum/powernet
 	var/list/cables = list()	// all cables & junctions
 	var/list/nodes = list()		// all connected machines
@@ -6,6 +31,14 @@
 	 * Power tracking
 	 * Units: Kilowatts
 	 */
+	/// available power in kilowatts
+	var/avail = 0
+	/// used power in kilowatts - attempted. This KEEPS GOING UP EVEN IF NO MORE IS AVAILABLE.
+	var/load = 0
+
+
+
+
 	var/load = 0				// the current load on the powernet, increased by each machine at processing
 	var/newavail = 0			// what available power was gathered last tick, then becomes...
 	var/avail = 0				//...the current available power in the powernet
@@ -18,6 +51,8 @@
 	var/netexcess = 0			// excess power on the powernet (typically avail-load)
 
 	var/problem = 0				// If this is not 0 there is some sort of issue in the powernet. Monitors will display warnings.
+
+
 
 /datum/powernet/New()
 	START_PROCESSING_POWERNET(src)

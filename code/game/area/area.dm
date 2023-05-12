@@ -54,7 +54,7 @@
 	/// power usages - registered / static
 	var/list/power_usage_static[POWER_CHANNEL_COUNT]
 	/// power channels turned on
-	var/power_channels = POWER_CHANNELS_ALL
+	var/power_channels = POWER_BITS_ALL
 
 	/// Parallax moving?
 	var/parallax_moving = FALSE

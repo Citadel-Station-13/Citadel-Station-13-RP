@@ -49,6 +49,10 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
 
+#define AUTO_THRESHOLD_EQUIP 30
+#define AUTO_THRESHOLD_LIGHT 10
+#define AUTO_THRESHOLD_ENVIR 1
+
 /**
  * APCs
  *
@@ -80,18 +84,34 @@ GLOBAL_LIST_EMPTY(apcs)
 	anchored = 1
 	use_power = USE_POWER_OFF
 	req_access = list(ACCESS_ENGINEERING_ENGINE)
+
+	//? Power Handling
+	/// internal capacitor capacity in joules
+	var/buffer_capacity = 5000
+	/// internal capacitor joules; this is auto-set at init based on if we have a cell / power if null.
+	var/buffer
+	/// our power cell
+	var/obj/item/cell/cell
+	/// starting power cell type
+	var/cell_type = /obj/item/cell/apc
+	/// starting power cell charge in %
+	var/start_charge = 100
+	/// power channels enabled
+	var/channels_enabled = POWER_CHANNELS_ALL
+	/// power channels auto
+	var/channels_auto = POWER_CHANNELS_ALL
+	/// last static usage for channels
+	var/list/last_used_static[POWER_CHANNEL_COUNT]
+
+
+	#warn rest
+
 	var/area/area
 	var/areastring = null
-	var/obj/item/cell/cell
 	var/chargelevel = 0.0005  // Cap for how fast APC cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
-	var/start_charge = 90				// initial cell charge %
-	var/cell_type = /obj/item/cell/apc
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/grid_check = FALSE
-	var/lighting = POWERCHAN_ON_AUTO
-	var/equipment = POWERCHAN_ON_AUTO
-	var/environ = POWERCHAN_ON_AUTO
 	var/operating = 1
 	var/charging = 0
 	var/chargemode = 1
@@ -109,8 +129,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/mob/living/silicon/ai/hacker = null // Malfunction var. If set AI hacked the APC and has full control.
 	var/wiresexposed = 0
 	powernet = 0		// set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
-	var/debug= 0
-	var/autoflag= 0		// 0 = off, 1= eqp and lights off, 2 = eqp off, 3 = all on.
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/longtermpower = 10
@@ -133,9 +151,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_lights = FALSE
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
-
-	/// tracks how behind we arre in charging TODO: literally rewrite apcs entirely to use a proper accumulator-cell system with an internal buffer, ffs
-	var/lazy_draw_accumulator = 0
 
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
@@ -1074,8 +1089,14 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		main_status = 2
 
-	if(debug)
-		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
+
+	#warn placeholder
+	/// power needed in joules over the last tick
+	var/needed = 10000
+
+	
+
+	#warn guh
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area
