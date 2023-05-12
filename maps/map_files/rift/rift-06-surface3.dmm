@@ -12268,13 +12268,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "aFb" = (
-/obj/machinery/tele_pad,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_projector,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aFc" = (
@@ -19576,13 +19576,13 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "aXy" = (
-/obj/machinery/tele_projector,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_pad,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aXA" = (
@@ -22218,6 +22218,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/item/radio/beacon,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "gtg" = (
@@ -22505,15 +22506,15 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_y = 24;
+	id = "UpperInnerTeleSciBlastDoor";
 	name = "Upper Inner TeleSci Blast Door Button";
-	id = "UpperInnerTeleSciBlastDoor"
+	pixel_y = 24
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_x = -11;
-	pixel_y = 24;
+	id = "UpperOuterTeleSciBlastDoor";
 	name = "Upper Outer TeleSci Blast Door Button";
-	id = "UpperOuterTeleSciBlastDoor"
+	pixel_x = -11;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -25298,8 +25299,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	name = "Upper Exterior Telesci Blast Door";
-	id = "UpperInnerTeleSciBlastDoor"
+	id = "UpperInnerTeleSciBlastDoor";
+	name = "Upper Exterior Telesci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
@@ -26632,8 +26633,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	name = "Upper Interior Telesci Blast Door";
-	id = "UpperOuterTeleSciBlastDoor"
+	id = "UpperOuterTeleSciBlastDoor";
+	name = "Upper Interior Telesci Blast Door"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)

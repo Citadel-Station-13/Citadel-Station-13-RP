@@ -10306,6 +10306,7 @@
 "gKK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research/researchdivision)
 "gKT" = (
@@ -17259,8 +17260,8 @@
 "lpy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/blast/regular{
-	name = "Lower Inner TeleSci Blast Door";
-	id = "InnerTeleSciBlastDoor"
+	id = "InnerTeleSciBlastDoor";
+	name = "Lower Inner TeleSci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
@@ -23707,15 +23708,15 @@
 	department = "Telescience Tower"
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_x = -11;
-	pixel_y = 24;
+	id = "OuterTeleSciBlastDoor";
 	name = "Lower Outer TeleSci Blast Door Button";
-	id = "OuterTeleSciBlastDoor"
+	pixel_x = -11;
+	pixel_y = 24
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_y = 24;
+	id = "InnerTeleSciBlastDoor";
 	name = "Lower Inner TeleSci Blast Door Button";
-	id = "InnerTeleSciBlastDoor"
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab/storage)
@@ -30237,8 +30238,8 @@
 /area/security/armory/blue)
 "uHP" = (
 /obj/machinery/door/blast/regular{
-	name = "Lower Inner TeleSci Blast Door";
-	id = "InnerTeleSciBlastDoor"
+	id = "InnerTeleSciBlastDoor";
+	name = "Lower Inner TeleSci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/foyer)
