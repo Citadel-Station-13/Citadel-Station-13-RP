@@ -19,15 +19,6 @@ var/global/defer_powernet_rebuild = 0 // True if net rebuild will be called manu
 /// Machines with this flag will not start processing when it's spawned. Use this if you want to manually control when a machine starts processing.
 #define START_PROCESSING_MANUALLY (1<<1)
 
-//! Channel numbers for power.
-/// Passed as an argument this means "use whatever current channel is"
-#define CURRENT_CHANNEL -1
-#define EQUIP   1
-#define LIGHT   2
-#define ENVIRON 3
-/// For total power used only.
-#define TOTAL   4
-
 //! Bitflags for machine stat variable.
 #define BROKEN	 0x1
 #define NOPOWER	 0x2
