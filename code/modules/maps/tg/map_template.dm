@@ -92,6 +92,7 @@
 
 	SSshuttle.block_init_queue = prev_shuttle_queue_state
 	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
+	SSwirenets.rebuild_wires()
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
 

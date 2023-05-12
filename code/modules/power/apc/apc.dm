@@ -49,165 +49,6 @@ GLOBAL_LIST_EMPTY(apcs)
 #define NIGHTSHIFT_NEVER 2
 #define NIGHTSHIFT_ALWAYS 3
 
-//NOTE: STUFF STOLEN FROM AIRLOCK.DM thx
-
-/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
-
-/obj/machinery/power/apc/direction_bump/east
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/direction_bump/west
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/direction_bump/north
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/direction_bump/south
-	name = "south bump"
-	pixel_y = -28
-
-//Critical//
-/obj/machinery/power/apc/critical
-	is_critical = 1
-
-/obj/machinery/power/apc/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-/// High capacity cell APCs
-/obj/machinery/power/apc/high
-	cell_type = /obj/item/cell/high
-
-/obj/machinery/power/apc/high/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/high/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/high/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/high/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-/// Super capacity cell APCS
-/obj/machinery/power/apc/super
-	cell_type = /obj/item/cell/super
-
-/obj/machinery/power/apc/super/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
-/// Critical APCs with super cells
-/obj/machinery/power/apc/super/critical
-	is_critical = 1
-
-/obj/machinery/power/apc/super/critical/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/super/critical/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/super/critical/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/super/critical/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-/// APCS with hyper cells. How lewd
-/obj/machinery/power/apc/hyper
-	cell_type = /obj/item/cell/hyper
-
-/obj/machinery/power/apc/hyper/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-/obj/machinery/power/apc/hyper/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/hyper/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/hyper/south_bump
-	name = "south bump"
-	pixel_y = -28
-
-
-/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
-/obj/machinery/power/apc/alarms_hidden
-	alarms_hidden = TRUE
-
-/obj/machinery/power/apc/alarms_hidden/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 /**
  * APCs
  *
@@ -1566,3 +1407,161 @@ GLOBAL_LIST_EMPTY(apcs)
 		CHECK_TICK
 
 #undef APC_UPDATE_ICON_COOLDOWN
+
+
+/obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
+
+/obj/machinery/power/apc/direction_bump/east
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/direction_bump/west
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/direction_bump/north
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/direction_bump/south
+	name = "south bump"
+	pixel_y = -28
+
+//Critical//
+/obj/machinery/power/apc/critical
+	is_critical = 1
+
+/obj/machinery/power/apc/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// High capacity cell APCs
+/obj/machinery/power/apc/high
+	cell_type = /obj/item/cell/high
+
+/obj/machinery/power/apc/high/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/high/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/high/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/high/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// Super capacity cell APCS
+/obj/machinery/power/apc/super
+	cell_type = /obj/item/cell/super
+
+/obj/machinery/power/apc/super/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// Critical APCs with super cells
+/obj/machinery/power/apc/super/critical
+	is_critical = 1
+
+/obj/machinery/power/apc/super/critical/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/super/critical/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/super/critical/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/super/critical/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// APCS with hyper cells. How lewd
+/obj/machinery/power/apc/hyper
+	cell_type = /obj/item/cell/hyper
+
+/obj/machinery/power/apc/hyper/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+/obj/machinery/power/apc/hyper/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/hyper/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/hyper/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+/// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
+/obj/machinery/power/apc/alarms_hidden
+	alarms_hidden = TRUE
+
+/obj/machinery/power/apc/alarms_hidden/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/south_bump
+	name = "south bump"
+	pixel_y = -28
