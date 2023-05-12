@@ -6,11 +6,24 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
+"b" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"i" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
 "j" = (
 /obj/item/radio/beacon{
 	anchored = 1
 	},
 /turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"k" = (
+/turf/simulated/floor/tiled/monowhite,
 /area/killhouse/teleporter)
 "l" = (
 /obj/machinery/tele_projector{
@@ -20,15 +33,57 @@
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
+"m" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"n" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/turf/simulated/floor/plating,
+/area/killhouse/teleporter)
+"q" = (
+/obj/structure/table/reinforced,
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"r" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
 "s" = (
 /obj/machinery/tele_pad,
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
+"x" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/nanopaste{
+	amount = 30;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
 "z" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4;
 	icon_state = "warning"
+	},
+/turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"A" = (
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
@@ -38,6 +93,28 @@
 	icon_state = "warning"
 	},
 /turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"C" = (
+/turf/template_noop,
+/area/template_noop)
+"D" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"E" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"G" = (
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"I" = (
+/obj/machinery/computer/operating{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monowhite,
 /area/killhouse/teleporter)
 "J" = (
 /turf/simulated/floor/reinforced,
@@ -51,6 +128,19 @@
 	cell_type = /obj/item/cell/infinite
 	},
 /turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"M" = (
+/obj/machinery/optable,
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"N" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monowhite,
 /area/killhouse/teleporter)
 "Q" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -66,12 +156,33 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/killhouse/teleporter)
+"T" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"U" = (
+/turf/simulated/wall,
+/area/killhouse/teleporter)
 "V" = (
 /obj/machinery/computer/teleporter{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
+/area/killhouse/teleporter)
+"X" = (
+/obj/structure/table/reinforced,
+/obj/item/surgical/bioregen,
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/teleporter)
+"Y" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monowhite,
 /area/killhouse/teleporter)
 "Z" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -82,32 +193,212 @@
 /area/killhouse/teleporter)
 
 (1,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
 Z
 Q
 Q
 a
 "}
 (2,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
 B
 J
 J
 s
 "}
 (3,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
 B
 j
 J
 l
 "}
 (4,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
 B
 J
 J
 V
 "}
 (5,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
 S
 z
 z
 L
+"}
+(6,1,1) = {"
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+C
+"}
+(7,1,1) = {"
+J
+A
+J
+J
+J
+J
+J
+A
+J
+C
+C
+C
+"}
+(8,1,1) = {"
+G
+U
+n
+n
+r
+n
+n
+U
+m
+C
+C
+C
+"}
+(9,1,1) = {"
+J
+n
+T
+k
+k
+k
+k
+n
+J
+C
+C
+C
+"}
+(10,1,1) = {"
+J
+n
+k
+k
+U
+k
+X
+n
+J
+C
+C
+C
+"}
+(11,1,1) = {"
+J
+Y
+k
+k
+M
+k
+E
+D
+J
+C
+C
+C
+"}
+(12,1,1) = {"
+J
+n
+k
+k
+I
+k
+x
+n
+J
+C
+C
+C
+"}
+(13,1,1) = {"
+J
+n
+i
+k
+k
+k
+q
+n
+J
+C
+C
+C
+"}
+(14,1,1) = {"
+G
+U
+n
+n
+N
+n
+n
+U
+m
+C
+C
+C
+"}
+(15,1,1) = {"
+J
+b
+J
+J
+J
+J
+J
+b
+J
+C
+C
+C
 "}
