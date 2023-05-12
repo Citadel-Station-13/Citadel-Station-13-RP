@@ -1,26 +1,3 @@
-///////////////////////////////
-//CABLE STRUCTURE
-///////////////////////////////
-
-
-////////////////////////////////
-// Definitions
-////////////////////////////////
-
-/* Cable directions (d1 and d2)
-
-
-  9   1   5
-	\ | /
-  8 - 0 - 4,
-	/ | \
-  10  2   6
-
-If d1 = 0 and d2 = 0, there's no cable
-If d1 = 0 and d2 = dir, it's a O-X cable, getting from the center of the tile to dir (knot cable)
-If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
-By design, d1 is the smallest direction and d2 is the highest
-*/
 GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"White" = COLOR_WHITE,
 		"Silver" = COLOR_SILVER,
@@ -43,9 +20,34 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"Brown" = COLOR_BROWN
 	))
 
-/obj/structure/cable
+/**
+ * cables
+ *
+ * we're stubborn so we stuck with "old ss13" cables instead of /tg/ redstone cables.
+ *
+ * direction diagram
+ * 9   1   5
+ *   \ | /
+ * 8 - 0 - 4
+ *   / | \
+ * 10  2   6
+ *
+ * cables can either be a "node" with a direction going out (all dirs),
+ * or two dirs for a "smooth" cable from one dir to another.
+ *
+ * if d1 = 0, d2 = 0, there's no cable (why would there be; this is an error state)
+ * if d1 = 0, d2 = X, it's a 0-X cable, going from center of tile (knot) to dir.
+ * if d1 = X, d2 = Y, it's a X-Y cable, going from X to Y dirs.
+ * By design, d1 is the smaller numeric value direction, d2 is the higher. Refere to the diagram.
+ *
+ * furthermore, UP / DOWN (16 / 32) are valid for d2 *only*
+ *
+ * violations of any of the above will result in undefined behavior.
+ * you have been warned. do not fuck around, or ye shall find out.
+ */
+/obj/structure/wire/cable
 	name = "power cable"
-	desc = "A flexible superconducting cable for heavy-duty power transfer."
+	desc = "A flexible superconducting cable for heavy-duty power transfer. Materials science certainly has come far."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
 	atom_colouration_system = FALSE
@@ -55,23 +57,13 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	color = COLOR_RED
 
 	level = 1
-	anchored =1
+	anchored = TRUE
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	var/d1 = 0
 	var/d2 = 1
-	var/datum/powernet/powernet
-	var/obj/machinery/power/breakerbox/breaker_box
 
-/obj/structure/cable/drain_energy(datum/actor, amount, flags)
-	if(!powernet)
-		return 0
-	return powernet.drain_energy_handler(actor, amount, flags)
-
-/obj/structure/cable/can_drain_energy(datum/actor, flags)
-	return TRUE
-
-/obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
+/obj/structure/wire/cable/Initialize(mapload, _color, _d1, _d2)
 	. = ..()
 
 	if(_color)
@@ -83,16 +75,57 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else
 		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
 		var/dash = findtext(icon_state, "-")
-		d1 = text2num( copytext( icon_state, 1, dash ) )
-		d2 = text2num( copytext( icon_state, dash+1 ) )
+		d1 = text2num(copytext(icon_state, 1, dash))
+		d2 = text2num(copytext(icon_state, dash + 1))
+
+	if(dir != SOUTH)
+		var/angle = 180 - dir2angle(dir)
+		if(d1 != 0)
+			d1 = turn(d1, angle)
+		if(!(d2 & (UP | DOWN)))
+			d2 = turn(d2, angle)
+			if(d1 > d2)
+				var/dswap = d2
+				d2 = d1
+				d1 = dswap
+		icon_state = "[d1]-[d2]"
+		dir = SOUTH
+
+	is_junction = d1 == 0
 
 	var/turf/T = src.loc // hide if turf is not intact
 	if(level==1 && T)
 		hide(!T.is_plating())
 
+/obj/structure/wire/cable/setDir()
+	return FALSE // *No.*
+
+/obj/structure/wire/cable/adjacent_wires()
+	. = list()
+
+	// we only want to handle a for loop per turf once, so, start with same turf
+	for(var/obj/structure/wire/cable/C in loc)
+		if(C == src)
+			continue
+		if(C.d1 != d1 && C.d2 != d2 && C.d1 != d2 && C.dr != d1) // no matches
+			continue
+		. += C
+
+	#warn impl
+
+
+/obj/structure/cable/drain_energy(datum/actor, amount, flags)
+	if(!powernet)
+		return 0
+	return powernet.drain_energy_handler(actor, amount, flags)
+
+/obj/structure/cable/can_drain_energy(datum/actor, flags)
+	return TRUE
+
+/obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
+
 	cable_list += src //add it to the global cable list
-	if(auto_merge)
-		auto_merge()
+	#warn cable list???
 
 // cable refactor when
 /obj/structure/cable/proc/auto_merge()
@@ -106,26 +139,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	if(d2 & (d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
 		mergeDiagonalsNetworks(d2)
 
-/obj/structure/cable/yellow
-	color = COLOR_YELLOW
-
-/obj/structure/cable/green
-	color = COLOR_LIME
-
-/obj/structure/cable/blue
-	color = COLOR_BLUE
-
-/obj/structure/cable/pink
-	color = COLOR_PINK
-
-/obj/structure/cable/orange
-	color = COLOR_ORANGE
-
-/obj/structure/cable/cyan
-	color = COLOR_CYAN
-
-/obj/structure/cable/white
-	color = COLOR_WHITE
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)
@@ -447,22 +460,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 						if(C.d1 == req_dir || C.d2 == req_dir)
 							. += C
 
-	// Handle cables on the same turf as us
-	for(var/obj/structure/cable/C in loc)
-		if(C.d1 == d1 || C.d2 == d1 || C.d1 == d2 || C.d2 == d2) // if either of C's d1 and d2 match either of ours
-			. += C
+	#warn translate
 
-	if(d1 == 0)
-		for(var/obj/machinery/power/P in loc)
-			if(P.powernet == 0) continue // exclude APCs with powernet=0
-			if(!powernetless_only || !P.powernet)
-				. += P
-
-	// if the caller asked for powernetless cables only, dump the ones with powernets
-	if(powernetless_only)
-		for(var/obj/structure/cable/C in .)
-			if(C.powernet)
-				. -= C
 
 //should be called after placing a cable which extends another cable, creating a "smooth" cable that no longer terminates in the centre of a turf.
 //needed as this can, unlike other placements, disconnect cables
@@ -834,6 +833,27 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 		C.denode()// this call may have disconnected some cables that terminated on the centre of the turf, if so split the powernets.
 		return
+
+/obj/structure/cable/yellow
+	color = COLOR_YELLOW
+
+/obj/structure/cable/green
+	color = COLOR_LIME
+
+/obj/structure/cable/blue
+	color = COLOR_BLUE
+
+/obj/structure/cable/pink
+	color = COLOR_PINK
+
+/obj/structure/cable/orange
+	color = COLOR_ORANGE
+
+/obj/structure/cable/cyan
+	color = COLOR_CYAN
+
+/obj/structure/cable/white
+	color = COLOR_WHITE
 
 //////////////////////////////
 // Misc.

@@ -22,7 +22,7 @@
  * angle clockwise from north from point A to point B
  *
  * this is visual angle because pixel shifts don't determine loc.
- *
+ *∑
  * this is also visual angle because ss13 uses weird CW of N instead of CCW of E angles (which the rest of the math world does).
  */
 /proc/get_visual_angle_raw(start_x, start_y, start_pixel_x, start_pixel_y, end_x, end_y, end_pixel_x, end_pixel_y)
