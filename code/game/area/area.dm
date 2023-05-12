@@ -46,25 +46,15 @@
 
 	var/debug = 0
 
-	/// Will objects this area be needing power?
-	var/requires_power = TRUE
-	/// This gets overridden to 1 for space in area/.
-	var/always_unpowered = FALSE
-
-	/// Power channel status - Is it currently energized?
-	var/power_equip = TRUE
-	var/power_light = TRUE
-	var/power_environ = TRUE
-
-	// Oneoff power usage - Used once and cleared each power cycle
-	var/oneoff_equip = 0
-	var/oneoff_light = 0
-	var/oneoff_environ = 0
-
-	// Continuous "static" power usage - Do not update these directly!
-	var/static_equip = 0
-	var/static_light = 0
-	var/static_environ = 0
+	//? Area wide power
+	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
+	var/area_power_override = null
+	/// power usages - oneoff
+	var/list/power_usage_burst[POWER_CHANNEL_COUNT]
+	/// power usages - registered / static
+	var/list/power_usage_static[POWER_CHANNEL_COUNT]
+	/// power channels turned on
+	var/power_channels = POWER_CHANNELS_ALL
 
 	/// Parallax moving?
 	var/parallax_moving = FALSE
