@@ -19,8 +19,9 @@
 
 	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
 	var/load = 0
-
 	
+
+
 
 
 /datum/powernet
