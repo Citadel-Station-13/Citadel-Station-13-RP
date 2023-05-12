@@ -78,6 +78,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		d1 = text2num(copytext(icon_state, 1, dash))
 		d2 = text2num(copytext(icon_state, dash + 1))
 
+#ifdef UNIT_TESTS
+	ASSERT(d2 > d1) // triumph wiring incident - never again.
+#endif
+
 	if(dir != SOUTH)
 		var/angle = 180 - dir2angle(dir)
 		if(d1 != 0)
@@ -103,16 +107,78 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/wire/cable/adjacent_wires()
 	. = list()
 
+	var/obj/structure/wire/cable/C
+
 	// we only want to handle a for loop per turf once, so, start with same turf
-	for(var/obj/structure/wire/cable/C in loc)
+	for(C in loc)
 		if(C == src)
 			continue
 		if(C.d1 != d1 && C.d2 != d2 && C.d1 != d2 && C.dr != d1) // no matches
 			continue
 		. += C
 
-	#warn impl
-
+	var/turf/T
+	var/reverse
+	if(d1)
+		// we don't need to worry about up/down here
+		reverse = global.reverse_dir[d1]
+		T = get_step(src, d1)
+		if(!isnull(T))
+			for(C in T)
+				if(C.d1 != reverse && C.d2 != reverse)
+					continue
+				. += C
+			// check diagonals for contacting wires in all adjacent turfs to that diagonal join-point
+			if(ISDIAGONALDIR(d1))
+				T = get_step(src, d1 & (NORTH|SOUTH))
+				if(!isnull(T))
+					reverse = d1 ^ (NORTH|SOUTH)
+					for(C in T)
+						if(C.d1 != reverse && C.d2 != reverse)
+							continue
+						. += C
+				T = get_step(src, d1 & (EAST|WEST))
+				if(!isnull(T))
+					reverse = d1 ^ (EAST|WEST)
+					for(C in T)
+						if(C.d1 != reverse && C.d2 != reverse)
+							continue
+						. += C
+	if(d2)
+		// we *do* need to worry about up/down here
+		if(d2 & (UP|DOWN))
+			// we do not need to check diagonals as UP|DOWN cannot be diagonal
+			reverse = global.reverse_dir[d2]
+			T = get_step_multiz(src, d2)
+			if(!isnull(T))
+				for(C in T)
+					if(C.d2 != reverse && C.d1 != reverse)
+						ccontinue
+					. += C
+		else
+			reverse = global.reverse_dir[d2]
+			T = get_step(src, d2)
+			if(!isnull(T))
+				for(C in T)
+					if(C.d1 != reverse && C.d2 != reverse)
+						continue
+					. += C
+				// check diagonals for contacting wires in all adjacent turfs to that diagonal join-point
+				if(ISDIAGONALDIR(d2))
+					T = get_step(src, d2 & (NORTH|SOUTH))
+					if(!isnull(T))
+						reverse = d2 ^ (NORTH|SOUTH)
+						for(C in T)
+							if(C.d1 != reverse && C.d2 != reverse)
+								continue
+							. += C
+					T = get_step(src, d2 & (EAST|WEST))
+					if(!isnull(T))
+						reverse = d2 ^ (EAST|WEST)
+						for(C in T)
+							if(C.d1 != reverse && C.d2 != reverse)
+								continue
+							. += C
 
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
@@ -435,33 +501,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 //////////////////////////////////////////////
 // Powernets handling helpers
 //////////////////////////////////////////////
-
-//if powernetless_only = 1, will only get connections without powernet
-/obj/structure/cable/proc/get_connections(var/powernetless_only = 0)
-	. = list()	// this will be a list of all connected power objects
-	var/turf/T
-
-	// Handle standard cables in adjacent turfs
-	for(var/cable_dir in list(d1, d2))
-		if(cable_dir == 0)
-			continue
-		var/reverse = global.reverse_dir[cable_dir]
-		T = get_zstep(src, cable_dir)
-		if(T)
-			for(var/obj/structure/cable/C in T)
-				if(C.d1 == reverse || C.d2 == reverse)
-					. += C
-		if(cable_dir & (cable_dir - 1)) // Diagonal, check for /\/\/\ style cables along cardinal directions
-			for(var/pair in list(NORTH|SOUTH, EAST|WEST))
-				T = get_step(src, cable_dir & pair)
-				if(T)
-					var/req_dir = cable_dir ^ pair
-					for(var/obj/structure/cable/C in T)
-						if(C.d1 == req_dir || C.d2 == req_dir)
-							. += C
-
-	#warn translate
-
 
 //should be called after placing a cable which extends another cable, creating a "smooth" cable that no longer terminates in the centre of a turf.
 //needed as this can, unlike other placements, disconnect cables
