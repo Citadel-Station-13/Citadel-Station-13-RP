@@ -821,6 +821,13 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/freezer,
 /area/killhouse/one)
+"MR" = (
+/obj/structure/trash_pile,
+/obj/machinery/power/apc/hyper/east_bump{
+	cell_type = /obj/item/cell/infinite
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/one/outside)
 "MU" = (
 /obj/structure/kitchenspike,
 /obj/effect/debris/cleanable/blood,
@@ -1987,7 +1994,7 @@ ZK
 Rc
 qr
 Iu
-dJ
+MR
 Ug
 sj
 dJ
