@@ -24,6 +24,9 @@
 /obj/item/handcuffs/cable/white,
 /obj/item/handcuffs/cable/white,
 /obj/item/handcuffs/cable/white,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/killhouse/one)
 "bF" = (
@@ -318,10 +321,6 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/killhouse/one/outside)
 "pz" = (
-/obj/machinery/light/spot{
-	light_range = 8;
-	nightshift_allowed = 0
-	},
 /obj/structure/table/wooden_reinforced,
 /obj/structure/flora/pottedplant/shoot{
 	pixel_y = 12
@@ -434,6 +433,13 @@
 "sm" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/one)
+"sD" = (
+/obj/effect/debris/cleanable/blood/drip,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
 /area/killhouse/one)
 "sI" = (
 /obj/structure/sink/kitchen{
@@ -598,6 +604,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/killhouse/one)
+"BK" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/killhouse/one)
 "BU" = (
 /obj/machinery/vending/loadout/uniform,
 /turf/simulated/floor/wood,
@@ -691,6 +704,15 @@
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/freezer,
 /area/killhouse/one)
+"GG" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
 "Hl" = (
 /obj/structure/table/wooden_reinforced,
 /obj/structure/flora/pottedplant/smallcactus{
@@ -781,6 +803,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
+/area/killhouse/one)
+"Ld" = (
+/obj/structure/kitchenspike,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/freezer,
 /area/killhouse/one)
 "LM" = (
 /obj/effect/floor_decal/spline/plain{
@@ -983,6 +1012,13 @@
 "VR" = (
 /obj/structure/bed/chair/sofa/beige{
 	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/one)
+"Wj" = (
+/obj/effect/debris/cleanable/spiderling_remains,
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/killhouse/one)
@@ -1808,7 +1844,7 @@ bF
 qr
 zf
 Rc
-Rc
+QW
 Rc
 Rc
 yt
@@ -2116,7 +2152,7 @@ bF
 bF
 bF
 qr
-Rc
+fu
 Rc
 qr
 en
@@ -2987,7 +3023,7 @@ Rc
 Rc
 AJ
 qr
-Af
+Wj
 Rc
 Rc
 Zb
@@ -3177,9 +3213,9 @@ aS
 yW
 AJ
 qr
-gA
+Ld
 nx
-pg
+sD
 qr
 Nl
 HA
@@ -3799,14 +3835,14 @@ qr
 CP
 De
 qr
-pY
+GG
 Rc
 AJ
 qr
 SU
 Rc
 qr
-pY
+GG
 Rc
 AJ
 qr
@@ -4049,7 +4085,7 @@ qr
 qr
 AJ
 Rc
-pY
+BK
 qr
 SU
 Rc
@@ -4178,7 +4214,7 @@ qr
 Rc
 Ye
 qr
-pY
+GG
 Rc
 dP
 qr
@@ -4357,7 +4393,7 @@ bF
 bF
 bF
 qr
-pY
+GG
 Rc
 Rc
 yt
@@ -4426,7 +4462,7 @@ qr
 Rc
 Rc
 qr
-pY
+GG
 Rc
 Qx
 qr

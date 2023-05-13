@@ -135,6 +135,10 @@
 /obj/machinery/door/airlock/multi_tile/glass,
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
+"bR" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "cw" = (
 /obj/structure/table/standard,
 /obj/structure/flora/pottedplant/shoot{
@@ -174,6 +178,11 @@
 /area/killhouse/two/outside)
 "cZ" = (
 /obj/structure/aquarium/prefilled,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "dc" = (
@@ -250,6 +259,12 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"fc" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/killhouse/two/outside)
 "fi" = (
 /obj/structure/table/standard,
@@ -328,6 +343,14 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"gh" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "gE" = (
 /obj/structure/table/standard,
@@ -646,6 +669,10 @@
 /obj/item/card,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
+"mL" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "na" = (
 /obj/structure/aquarium/prefilled,
 /obj/machinery/light/small{
@@ -744,6 +771,16 @@
 /obj/structure/flora/bush,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/killhouse/two/outside)
+"ps" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
 "pt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -791,6 +828,10 @@
 /obj/structure/table/steel,
 /obj/item/circuitboard/message_monitor,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"qF" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "qG" = (
 /obj/machinery/floodlight,
@@ -1433,6 +1474,12 @@
 /obj/structure/bed/chair/sofa/beige/right,
 /turf/simulated/floor/wood,
 /area/killhouse/two/outside)
+"BP" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
 "BQ" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/blood/OMinus,
@@ -1718,6 +1765,10 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"Fy" = (
+/obj/machinery/vending/nifsoft_shop,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "FD" = (
 /obj/structure/table/standard,
@@ -2210,6 +2261,10 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"OQ" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "OY" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
@@ -2581,6 +2636,10 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"UA" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "UL" = (
 /obj/structure/bed/chair/office/light{
@@ -3573,7 +3632,7 @@ IC
 Uo
 NI
 me
-cN
+gS
 xF
 NI
 Uo
@@ -3818,7 +3877,7 @@ NI
 NI
 NI
 NI
-me
+ps
 cN
 cN
 wH
@@ -4072,7 +4131,7 @@ cN
 wH
 cN
 cN
-xF
+BP
 NI
 Uo
 JQ
@@ -5104,10 +5163,10 @@ Tr
 cN
 Fu
 Tr
+qF
 cN
 cN
-cN
-cN
+Pm
 cN
 cN
 cN
@@ -5145,10 +5204,10 @@ cN
 NI
 NI
 NI
+gh
 uO
 uO
-uO
-uO
+OQ
 NI
 NI
 IC
@@ -5192,7 +5251,7 @@ ho
 bL
 vI
 vI
-vI
+NM
 vI
 vI
 vI
@@ -5211,7 +5270,7 @@ uO
 Ir
 BS
 uO
-uO
+bR
 NI
 IC
 IC
@@ -5270,8 +5329,8 @@ cN
 NI
 BJ
 Ir
-oB
-oB
+YZ
+YZ
 BS
 tO
 NI
@@ -5290,13 +5349,13 @@ kI
 kI
 kI
 Tr
+rU
 cN
 cN
 cN
 cN
 cN
-cN
-cN
+OF
 Tr
 Tr
 Tr
@@ -5332,8 +5391,8 @@ cN
 NI
 vB
 ae
-oB
-oB
+YZ
+YZ
 Bp
 sX
 NI
@@ -5397,7 +5456,7 @@ uO
 ae
 Bp
 uO
-uO
+UA
 NI
 IC
 IC
@@ -5458,7 +5517,7 @@ NI
 cZ
 uO
 uO
-uO
+OQ
 NI
 NI
 IC
@@ -5579,7 +5638,7 @@ cN
 cN
 NI
 nI
-GE
+fc
 GE
 NI
 NI
@@ -5694,7 +5753,7 @@ lv
 Tr
 Tr
 Tr
-cN
+Fy
 cN
 cN
 cN
@@ -5786,7 +5845,7 @@ IC
 IC
 NI
 NI
-cN
+rU
 cN
 cN
 cN
@@ -5849,9 +5908,9 @@ IC
 IC
 NI
 NI
+mL
 cN
-cN
-cN
+gS
 cN
 cN
 cN
@@ -5885,7 +5944,7 @@ cN
 cN
 cN
 cN
-cN
+qF
 NI
 NI
 IC
@@ -6007,7 +6066,7 @@ uO
 ri
 uO
 Tr
-cN
+Cu
 cN
 CE
 Tr
@@ -6193,7 +6252,7 @@ uO
 In
 vx
 Tr
-cN
+Cu
 cN
 qG
 Tr

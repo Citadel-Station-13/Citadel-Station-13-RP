@@ -59,3 +59,8 @@
 	name = "Special Area - killhouse one"
 	desc = "For security training routines."
 	mappath = 'maps/templates/admin/killhouse1.dmm'
+
+/datum/map_template/admin_use/killhousetwo
+	name = "Special Area - killhouse two"
+	desc = "For security training routines."
+	mappath = 'maps/templates/admin/killhouse2.dmm'
