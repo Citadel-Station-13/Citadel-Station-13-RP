@@ -451,18 +451,25 @@ SUBSYSTEM_DEF(ticker)
 		log_and_message_admins("Unable to get overflow spawnpoint; roundstart is going to lag.")
 	//! END
 	for(var/mob/new_player/player in GLOB.player_list)
-		if(player && player.ready && player.mind)
-			if(player.mind.assigned_role=="AI")
-				player.close_spawn_windows()
-				player.AIize()
-			else if(!player.mind.assigned_role)
-				continue
-			else
-				var/mob/living/carbon/human/new_char = player.create_character(S)
-				if(new_char)
-					qdel(player)
-				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
-					data_core.manifest_inject(new_char)
+		if(!player.mind)
+			continue
+
+		if(!player.ready)
+			player.new_player_panel_proc()
+			continue
+
+		if(player.mind.assigned_role=="AI")
+			player.close_spawn_windows()
+			player.AIize()
+		else if(!player.mind.assigned_role)
+			player.new_player_panel_proc()
+			continue
+		else
+			var/mob/living/carbon/human/new_char = player.create_character(S)
+			if(new_char)
+				qdel(player)
+			if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
+				data_core.manifest_inject(new_char)
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
