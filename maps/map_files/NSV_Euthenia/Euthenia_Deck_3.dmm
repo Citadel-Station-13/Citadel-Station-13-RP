@@ -800,6 +800,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"aLh" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Elevator Shaft Access";
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_three/forward/starboard)
 "aLu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -1277,12 +1284,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
-"bgz" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 6
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "bgR" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -1724,6 +1725,10 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
+"bCw" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/plating,
+/area/space)
 "bDd" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 8
@@ -2021,15 +2026,6 @@
 /obj/random/plushie,
 /turf/simulated/floor/carpet,
 /area/security/brig)
-"bOP" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 1
-	},
-/obj/structure/bed/chair/pew/right{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "bPl" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
@@ -3225,6 +3221,9 @@
 /obj/structure/sign/warning/caution{
 	pixel_x = 32
 	},
+/obj/machinery/light/no_nightshift{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
 "cUO" = (
@@ -4057,20 +4056,6 @@
 "dJS" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
-"dKe" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/obj/machinery/button/windowtint{
-	dir = 1;
-	id = "chapel";
-	pixel_x = -25
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "dKj" = (
 /obj/structure/dogbed,
 /obj/item/toy/plushie/squid/pink,
@@ -4950,7 +4935,6 @@
 	dir = 6
 	},
 /obj/structure/table/rack,
-/obj/item/rig/hazmat/equipped,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
 "eDH" = (
@@ -7102,15 +7086,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/cafeteria)
-"gnq" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "gnx" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -8114,12 +8089,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/hydroponics/garden)
-"hdn" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 5
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "hdE" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
@@ -13410,9 +13379,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics/surgeryroom1)
 "lso" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 9
-	},
 /obj/structure/bed/chair/pew/right{
 	dir = 4
 	},
@@ -16513,6 +16479,12 @@
 /area/tether/exploration/pilot_office)
 "nYm" = (
 /obj/structure/stairs/spawner/south,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "nYp" = (
@@ -20955,15 +20927,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/central_three)
-"rXb" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "rYG" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/research)
@@ -20979,15 +20942,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
-"saO" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/fancy/wood/corner{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "sba" = (
 /obj/landmark/spawnpoint/latejoin/station/cryogenics,
 /obj/effect/floor_decal/techfloor{
@@ -22607,9 +22561,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "toY" = (
-/obj/effect/floor_decal/spline/fancy/wood{
-	dir = 10
-	},
 /obj/structure/bed/chair/pew/left{
 	dir = 4
 	},
@@ -22725,6 +22676,11 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/test_area)
+"ttW" = (
+/obj/machinery/pipedispenser/disposal,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating,
+/area/rnd/xenobiology)
 "tuo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/retro/on{
 	dir = 1
@@ -23196,6 +23152,15 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"tTj" = (
+/obj/machinery/atmospherics/component/unary/heater{
+	dir = 1
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/test_area)
 "tTp" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -23565,13 +23530,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"uhT" = (
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/structure/bed/chair/pew/left{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/chapel/main)
 "uie" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -26688,6 +26646,11 @@
 /obj/machinery/suit_cycler/pilot,
 /turf/simulated/floor/tiled/dark,
 /area/tether/exploration/pilot_office)
+"wUe" = (
+/obj/machinery/pipedispenser,
+/obj/effect/floor_decal/industrial/warning/full,
+/turf/simulated/floor/plating,
+/area/rnd/xenobiology)
 "wVb" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/bluegrid,
@@ -27216,6 +27179,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/robotics/surgeryroom1)
+"xtt" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/space)
 "xtv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -28251,6 +28218,15 @@
 	},
 /turf/simulated/floor/lino,
 /area/security/detectives_office)
+"yjI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "yjN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -33333,9 +33309,9 @@ sVT
 vWE
 vWE
 vWE
-vWE
+yjI
 nYm
-lyN
+sVT
 vWE
 vWE
 vWE
@@ -33527,14 +33503,14 @@ vWE
 vWE
 vWE
 vWE
-tFQ
-tFQ
 vWE
 vWE
+sVT
+sVT
+sVT
 vWE
 vWE
-vWE
-vWE
+sVT
 sVT
 sVT
 sVT
@@ -33723,15 +33699,15 @@ vWE
 vWE
 vWE
 vWE
+jMZ
+jMZ
+sVT
 vWE
 vWE
+bCw
 vWE
 vWE
-vWE
-vWE
-vWE
-vWE
-vWE
+bCw
 fBa
 drw
 vva
@@ -35652,8 +35628,8 @@ dff
 bYV
 dff
 uGv
-kCv
-kCv
+wUe
+ttW
 gSP
 pfh
 hox
@@ -37999,7 +37975,7 @@ lPO
 sfg
 kht
 hFy
-qGG
+tTj
 lPO
 rah
 vva
@@ -43523,11 +43499,11 @@ dff
 dff
 dff
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 pVf
@@ -43717,11 +43693,11 @@ vva
 vva
 dff
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 llG
@@ -43911,11 +43887,11 @@ rOW
 vva
 vva
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 llG
@@ -44105,11 +44081,11 @@ kiV
 vva
 vva
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 pVf
@@ -44299,11 +44275,11 @@ hRZ
 vva
 vva
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 pVf
@@ -44493,11 +44469,11 @@ vDw
 vva
 vva
 sVT
-dAV
-dAV
-dAV
-dAV
-dAV
+vWE
+vWE
+vWE
+vWE
+sVT
 pVf
 pVf
 pVf
@@ -44687,11 +44663,11 @@ hIZ
 vva
 vva
 sVT
-wFh
-wFh
-wFh
-wFh
-wFh
+vWE
+vWE
+vWE
+vWE
+sVT
 nyc
 jAM
 jAM
@@ -47085,7 +47061,7 @@ pRP
 fsG
 oAd
 vdM
-rGn
+xtt
 jMZ
 jMZ
 jMZ
@@ -47279,11 +47255,11 @@ vci
 vdM
 ius
 kUM
-rGn
+xtt
 jMZ
 jMZ
 jMZ
-mnd
+aLh
 qcU
 hzm
 hzm
@@ -47473,7 +47449,7 @@ iYL
 vdM
 vdM
 vdM
-rGn
+xtt
 jMZ
 jMZ
 jMZ
@@ -51706,12 +51682,12 @@ soB
 soB
 vxD
 cPf
-afh
-cvA
+mvj
+mvj
 bzD
 bzD
-afh
-cvA
+mvj
+mvj
 uRh
 hdl
 qAV
@@ -51900,12 +51876,12 @@ soB
 lsN
 soB
 cPf
-bOP
-uhT
+lso
+toY
 bzD
 bzD
-bOP
-uhT
+lso
+toY
 cPf
 hdl
 sel
@@ -52094,12 +52070,12 @@ soB
 soB
 soB
 cPf
-afh
-cvA
+mvj
+mvj
 bzD
 bzD
-afh
-cvA
+mvj
+mvj
 uRh
 juN
 txP
@@ -52288,12 +52264,12 @@ soB
 soB
 soB
 cPf
-afh
-cvA
+mvj
+mvj
 bzD
 bzD
-afh
-cvA
+mvj
+mvj
 uRh
 hdl
 txP
@@ -52482,12 +52458,12 @@ jnJ
 soB
 soB
 cIP
-afh
-cvA
+mvj
+mvj
 oJq
 oJq
-afh
-cvA
+mvj
+mvj
 cPf
 qDD
 txP
@@ -52676,12 +52652,12 @@ jnJ
 soB
 soB
 cPf
-hdn
-rXb
-gnq
-dKe
-saO
-bgz
+mvj
+mvj
+mvj
+mvj
+mvj
+mvj
 uRh
 hdl
 txP

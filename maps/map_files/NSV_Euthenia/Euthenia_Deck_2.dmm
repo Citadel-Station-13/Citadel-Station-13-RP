@@ -6928,6 +6928,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"frL" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Elevator Shaft Access";
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_two/forward/starboard)
 "fsc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -7930,6 +7937,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "ggs" = (
+/obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/space)
 "ggB" = (
@@ -9653,6 +9661,12 @@
 	icon_state = "2-8"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "hHh" = (
@@ -16128,6 +16142,12 @@
 	icon_state = "0-4"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "mDp" = (
@@ -16691,6 +16711,12 @@
 	icon_state = "0-2"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 4;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "nfw" = (
@@ -19480,9 +19506,6 @@
 	name = "Engineering Hardsuits";
 	req_access = list(11)
 	},
-/obj/item/rig/eva/equipped,
-/obj/item/rig/eva/equipped,
-/obj/item/rig/eva/equipped,
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/storage)
@@ -22515,6 +22538,12 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "rEv" = (
@@ -24878,7 +24907,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/hallway/primary/central_two)
 "tzm" = (
 /obj/structure/catwalk,
 /turf/simulated/open,
@@ -27338,6 +27367,12 @@
 	icon_state = "4-8"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "vrf" = (
@@ -29447,6 +29482,12 @@
 	icon_state = "0-8"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/shutters{
+	dir = 2;
+	id = "hop_office_desk";
+	layer = 3.1;
+	name = "HoP's Shutters"
+	},
 /turf/simulated/floor/plating,
 /area/space)
 "wKT" = (
@@ -29851,7 +29892,7 @@
 "wZZ" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/techfloor,
-/area/space)
+/area/hallway/primary/central_two)
 "xak" = (
 /obj/structure/cable/green,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -46343,10 +46384,10 @@ rlB
 rlB
 rlB
 tKL
+cIh
+cIh
+cIh
 kLI
-kLI
-kLI
-xQM
 hts
 hts
 hts
@@ -46673,7 +46714,7 @@ lEf
 gkw
 gCF
 gCF
-rHE
+vnd
 tzc
 wZZ
 gxO
@@ -46867,9 +46908,9 @@ lEf
 hAN
 dpZ
 eBk
-rHE
-rHE
-rHE
+vnd
+vnd
+vnd
 vnd
 maQ
 maQ
@@ -47061,7 +47102,7 @@ lEf
 aGy
 fyu
 eBk
-rHE
+vnd
 rHE
 rHE
 vnd
@@ -47255,7 +47296,7 @@ lEf
 cIJ
 poi
 eBk
-rHE
+vnd
 gxy
 tIl
 eqy
@@ -47449,7 +47490,7 @@ lEf
 eBk
 lOJ
 eBk
-mRB
+jOU
 qQr
 qQr
 qQr
@@ -50584,7 +50625,7 @@ ggs
 bRO
 bRO
 bRO
-iIs
+frL
 vUq
 vUq
 xoe

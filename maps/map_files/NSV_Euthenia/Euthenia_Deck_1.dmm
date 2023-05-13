@@ -2465,6 +2465,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"bHp" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Elevator Shaft Access";
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/medical/medbay)
 "bHL" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
@@ -21446,9 +21453,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
 "pUg" = (
-/obj/machinery/vending/cola{
-	dir = 4
-	},
+/obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/fore)
 "pUp" = (
@@ -23879,6 +23884,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/briefingroom)
 "rVt" = (
+/obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/medical/medbay)
 "rVw" = (
@@ -38859,12 +38865,12 @@ lLO
 aBR
 eEc
 eEc
-wJm
+aOe
 wJm
 kTx
 bOq
 wJm
-wJm
+aOe
 eEc
 eEc
 xKi
@@ -50950,7 +50956,7 @@ wkU
 hjR
 xpP
 xpP
-lZd
+bHp
 xnh
 mvG
 jBT
