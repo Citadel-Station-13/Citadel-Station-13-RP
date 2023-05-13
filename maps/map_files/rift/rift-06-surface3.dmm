@@ -21073,6 +21073,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "drn" = (
@@ -21395,6 +21396,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "eml" = (
@@ -21514,6 +21516,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "ezH" = (
@@ -22218,6 +22221,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "gtg" = (
@@ -23553,6 +23557,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "lfK" = (
@@ -23885,6 +23890,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "mpH" = (
@@ -27264,6 +27270,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "xvO" = (
@@ -27429,6 +27436,9 @@
 	frequency = 1380;
 	master_tag = "courser_docker";
 	pixel_y = -22
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
