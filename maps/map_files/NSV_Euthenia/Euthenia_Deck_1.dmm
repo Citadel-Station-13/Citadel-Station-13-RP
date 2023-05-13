@@ -12066,6 +12066,9 @@
 /obj/structure/handrail{
 	dir = 4
 	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -30
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "iCC" = (
@@ -14793,6 +14796,9 @@
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/handrail{
 	dir = 4
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
@@ -18111,6 +18117,9 @@
 	},
 /obj/structure/handrail{
 	dir = 8
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
@@ -26320,6 +26329,9 @@
 /obj/effect/floor_decal/spline/fancy,
 /obj/structure/handrail{
 	dir = 8
+	},
+/obj/structure/closet/walllocker/emergsuit_wall{
+	pixel_y = 30
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
