@@ -10,6 +10,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"ae" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "af" = (
 /obj/structure/table/steel,
 /obj/item/handcuffs/cable/white,
@@ -29,6 +35,18 @@
 	pixel_y = 6
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"ag" = (
+/obj/structure/table/standard,
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stack/nanopaste{
+	amount = 30;
+	pixel_x = 8
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "ak" = (
 /obj/machinery/optable,
@@ -58,6 +76,11 @@
 	},
 /obj/machinery/vending/blood,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "bc" = (
@@ -76,6 +99,31 @@
 /obj/item/storage/firstaid/adv,
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"bA" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"bD" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "bL" = (
 /obj/effect/floor_decal/borderfloor{
@@ -124,6 +172,10 @@
 "cN" = (
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"cZ" = (
+/obj/structure/aquarium/prefilled,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "dc" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -139,11 +191,45 @@
 /area/killhouse/two/outside)
 "dx" = (
 /obj/structure/table/steel,
+/obj/machinery/recharger,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
 "ei" = (
 /obj/structure/bed/chair/sofa/beige/left,
 /turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"ek" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"el" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"er" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"eA" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/window/basic,
+/turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "eF" = (
 /obj/machinery/button/remote/blast_door{
@@ -151,6 +237,11 @@
 	id = "killhousemedgarage";
 	name = " garage door control";
 	pixel_x = 25
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
@@ -190,6 +281,12 @@
 	pixel_y = 0
 	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"fF" = (
+/obj/structure/bed/chair/sofa/green{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "fI" = (
 /obj/machinery/vending/medical,
@@ -283,6 +380,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"hg" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
 "hk" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/nanopaste{
@@ -296,6 +397,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"hn" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "ho" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -304,6 +411,20 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"hO" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/medical_stand/anesthetic,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"hY" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
 /area/killhouse/two/outside)
 "id" = (
 /obj/structure/table/standard,
@@ -337,6 +458,9 @@
 /obj/effect/floor_decal/corner/paleblue,
 /obj/effect/floor_decal/corner/black{
 	dir = 1
+	},
+/obj/machinery/light/spot{
+	alpha = 0
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
@@ -372,6 +496,9 @@
 	pixel_x = -25;
 	pixel_y = -1
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
 "kj" = (
@@ -393,6 +520,15 @@
 "kI" = (
 /obj/structure/curtain/medical,
 /turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"kJ" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "kT" = (
 /obj/structure/trash_pile,
@@ -442,6 +578,16 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/killhouse/two/outside)
+"mc" = (
+/obj/structure/bed/chair/sofa/green/right{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "md" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -466,10 +612,46 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"mG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 2
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/two/outside)
 "mH" = (
 /obj/structure/table/steel,
 /obj/item/card,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"na" = (
+/obj/structure/aquarium/prefilled,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "nf" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -525,6 +707,10 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"nI" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/killhouse/two/outside)
 "nZ" = (
 /obj/structure/trash_pile,
 /obj/item/trash,
@@ -542,12 +728,35 @@
 /obj/item/circuitboard/med_data,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
+"pc" = (
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "pl" = (
 /obj/structure/window/basic{
 	dir = 1
 	},
 /obj/structure/flora/bush,
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"pt" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
 "pu" = (
 /obj/structure/closet/secure_closet/medical3{
@@ -559,8 +768,24 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"pC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
 "qg" = (
 /turf/simulated/floor/concrete/tile/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"ql" = (
+/obj/structure/bed/chair/sofa/green,
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "qs" = (
 /obj/structure/table/steel,
@@ -571,6 +796,11 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"qI" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/southright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "qW" = (
 /obj/structure/bed/chair/sofa/beige,
 /obj/effect/floor_decal/borderfloor{
@@ -578,6 +808,11 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
 	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
@@ -629,6 +864,31 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"se" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/structure/bed/chair/sofa/brown/left,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"si" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"sn" = (
+/obj/structure/bed/chair/sofa/green/corner{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "sr" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ppflowers,
@@ -665,6 +925,12 @@
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"sX" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "ts" = (
 /obj/item/trash,
 /obj/machinery/space_heater,
@@ -688,6 +954,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"tO" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "tP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -704,9 +976,17 @@
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
-"ur" = (
-/obj/machinery/vending/blood,
+"uo" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "uE" = (
@@ -747,6 +1027,24 @@
 /obj/item/storage/toolbox/emergency,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
+"ve" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"vg" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "vs" = (
 /obj/structure/closet/secure_closet/medical3{
 	anchored = 1
@@ -766,6 +1064,10 @@
 	},
 /turf/simulated/floor/wood,
 /area/killhouse/two/outside)
+"vB" = (
+/obj/structure/bed/chair/sofa/beige/left,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "vE" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 5
@@ -778,6 +1080,12 @@
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"vF" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
 /area/killhouse/two/outside)
 "vI" = (
 /obj/effect/floor_decal/borderfloor{
@@ -802,6 +1110,21 @@
 "wt" = (
 /obj/structure/bed/roller/adv,
 /turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two/outside)
+"wv" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"ww" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "wE" = (
 /obj/structure/table/reinforced,
@@ -869,6 +1192,12 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
+"xP" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "xT" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -896,7 +1225,32 @@
 "ys" = (
 /obj/structure/table/standard,
 /obj/machinery/readybutton,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"yw" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"yG" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/killhouse/two/outside)
 "yK" = (
 /obj/machinery/floodlight,
@@ -908,6 +1262,26 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"za" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"zi" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
 "zo" = (
@@ -944,7 +1318,24 @@
 	pixel_x = -32
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"zu" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/adv,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"zJ" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "zP" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -960,6 +1351,17 @@
 /obj/structure/sign/nosmoking_2,
 /turf/simulated/wall/classm,
 /area/killhouse/two/outside)
+"Ae" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded{
+	pixel_y = 3
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/tool/screwdriver,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "Aj" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -969,12 +1371,26 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
+"At" = (
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
 "AL" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/black/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"AZ" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/small{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "Ba" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -995,6 +1411,28 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"Bg" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"Bp" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"BJ" = (
+/obj/structure/bed/chair/sofa/beige/right,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
 "BQ" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/blood/OMinus,
@@ -1008,9 +1446,19 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"BS" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "BX" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"Ce" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "Ck" = (
 /obj/structure/bed/chair/sofa/beige/right{
@@ -1019,6 +1467,16 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"Cp" = (
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"Cu" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "CC" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -1032,6 +1490,10 @@
 /area/killhouse/two/outside)
 "CE" = (
 /obj/machinery/space_heater,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"CI" = (
+/obj/machinery/light/small,
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "CM" = (
@@ -1100,6 +1562,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"Ds" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "Dt" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -1137,6 +1604,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "DU" = (
@@ -1190,12 +1658,56 @@
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"Et" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"EB" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "EG" = (
 /obj/structure/table/standard,
 /obj/machinery/computer/med_data/laptop{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"ER" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"Fb" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"Fn" = (
+/obj/structure/trash_pile,
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"Fu" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "Fw" = (
 /obj/structure/window/reinforced{
@@ -1206,6 +1718,13 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"FD" = (
+/obj/structure/table/standard,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "FG" = (
 /obj/machinery/door/airlock/maintenance/medical{
@@ -1230,6 +1749,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"GE" = (
+/turf/simulated/floor/plating,
+/area/killhouse/two/outside)
 "Hd" = (
 /obj/structure/table/standard,
 /obj/item/defib_kit/loaded{
@@ -1237,9 +1759,6 @@
 	},
 /obj/item/tool/screwdriver,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -1248,6 +1767,11 @@
 	pixel_y = 32
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "Hl" = (
@@ -1260,6 +1784,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"Hn" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
 "HB" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -1269,6 +1799,15 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"HM" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
 /area/killhouse/two/outside)
 "HX" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1286,17 +1825,46 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"Ie" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"Ih" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "Ij" = (
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/black,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "In" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/structure/table/standard,
 /turf/simulated/floor/wood,
+/area/killhouse/two/outside)
+"Ir" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"Iu" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "IA" = (
 /obj/structure/closet/secure_closet/medical3{
@@ -1307,11 +1875,6 @@
 /area/killhouse/two/outside)
 "IC" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/killhouse/two/outside)
-"IM" = (
-/obj/structure/filingcabinet/filingcabinet,
-/obj/effect/floor_decal/corner/paleblue/diagonal,
-/turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "Jk" = (
 /obj/effect/floor_decal/corner/paleblue{
@@ -1386,10 +1949,19 @@
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
-"Lp" = (
-/obj/structure/medical_stand/anesthetic,
-/obj/effect/floor_decal/corner/paleblue/diagonal,
-/turf/simulated/floor/tiled/white,
+"Lt" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/killhouse/two/outside)
+"Lx" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
 "LB" = (
 /obj/structure/grille,
@@ -1411,6 +1983,19 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"LP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "Mn" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -1419,6 +2004,15 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"MB" = (
+/obj/machinery/vending/medical,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "MH" = (
 /obj/effect/floor_decal/spline/plain,
@@ -1468,8 +2062,31 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
+"NB" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "NI" = (
 /turf/simulated/wall/classm,
+/area/killhouse/two/outside)
+"NM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
 "NN" = (
 /obj/structure/table/reinforced,
@@ -1513,6 +2130,26 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"Ob" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"Oc" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"Of" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "Oj" = (
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Scan Records"
@@ -1548,12 +2185,15 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
-"OB" = (
-/obj/structure/filingcabinet/chestdrawer{
-	name = "Scan Records"
+"OF" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"OL" = (
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/diagonal,
-/turf/simulated/floor/tiled/white,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "OP" = (
 /obj/structure/table/standard,
@@ -1570,6 +2210,12 @@
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"OY" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "Pc" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1581,9 +2227,24 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
+"Pm" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"Pn" = (
+/obj/machinery/holoposter{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
 "Pq" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash,
+/obj/machinery/light/small,
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
 /area/killhouse/two/outside)
 "Pu" = (
@@ -1609,12 +2270,35 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"PP" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "Qg" = (
 /obj/structure/table/standard,
 /obj/machinery/light/spot{
 	dir = 1;
 	light_range = 8;
 	nightshift_allowed = 0
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 8;
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
@@ -1625,6 +2309,17 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"Qm" = (
+/obj/structure/bed/chair/sofa/green/left,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two/outside)
+"Qq" = (
+/obj/machinery/vitals_monitor,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "QG" = (
 /obj/structure/table/reinforced,
@@ -1670,13 +2365,31 @@
 /obj/item/paper/pamphlet,
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"Rx" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
 "RE" = (
 /obj/structure/aquarium/prefilled,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"RK" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "RP" = (
 /obj/machinery/sleep_console,
 /turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two/outside)
+"RT" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "Sa" = (
 /obj/effect/floor_decal/borderfloor{
@@ -1711,6 +2424,20 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"SG" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
 "SX" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -1731,12 +2458,49 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"Tp" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/machinery/door/window/southright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
 "Tr" = (
 /turf/simulated/wall,
 /area/killhouse/two/outside)
 "Ts" = (
 /obj/structure/curtain/open/privacy,
 /turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"TJ" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"TM" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"TO" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/white,
 /area/killhouse/two/outside)
 "Ua" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1766,6 +2530,35 @@
 	},
 /obj/effect/floor_decal/corner/paleblue,
 /turf/simulated/floor/tiled/white,
+/area/killhouse/two/outside)
+"Ui" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 2
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plating,
 /area/killhouse/two/outside)
 "Uo" = (
 /turf/simulated/floor/concrete/rng/lythios43c/outdoors,
@@ -1876,6 +2669,14 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
+"Wo" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded{
+	pixel_y = 3
+	},
+/obj/item/tool/screwdriver,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
 "Wx" = (
 /obj/machinery/door/airlock/medical{
 	req_one_access = null
@@ -1955,6 +2756,7 @@
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/light/spot,
 /turf/simulated/floor/tiled/steel,
 /area/killhouse/two/outside)
 "Ym" = (
@@ -1992,7 +2794,15 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/iv_drip,
 /turf/simulated/floor/tiled/monotile,
+/area/killhouse/two/outside)
+"YV" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
 /area/killhouse/two/outside)
 "YZ" = (
 /obj/structure/table/standard,
@@ -2007,6 +2817,12 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel,
+/area/killhouse/two/outside)
+"ZG" = (
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/killhouse/two/outside)
 "ZI" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2447,7 +3263,7 @@ IC
 Uo
 Uo
 qg
-Uo
+TM
 qg
 Uo
 Uo
@@ -2571,7 +3387,7 @@ IC
 Uo
 NI
 me
-cN
+Pm
 xF
 NI
 Uo
@@ -2767,7 +3583,7 @@ eF
 Uo
 Uo
 Uo
-Uo
+TM
 IC
 IC
 IC
@@ -2881,7 +3697,7 @@ NI
 NI
 Mn
 Aj
-cN
+Pm
 ho
 Sa
 NI
@@ -2891,7 +3707,7 @@ kf
 Uo
 Uo
 Uo
-nZ
+Fn
 NI
 NI
 IC
@@ -2948,7 +3764,7 @@ cN
 ho
 cD
 NI
-Uo
+QH
 JQ
 Uo
 Uo
@@ -3078,7 +3894,7 @@ Uo
 Uo
 Uo
 JQ
-Uo
+hg
 NI
 NI
 NI
@@ -3173,12 +3989,12 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
-cN
-cN
-cN
+Tr
+sn
+fF
+mc
+uO
+AZ
 NI
 Uo
 Uo
@@ -3196,7 +4012,7 @@ iu
 cN
 Ck
 NI
-JQ
+At
 Uo
 Uo
 Uo
@@ -3205,11 +4021,11 @@ Uo
 JQ
 NI
 cN
-cN
+RT
 NI
-cN
-cN
-cN
+Pn
+hn
+FD
 NI
 NI
 IC
@@ -3234,13 +4050,13 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+Tr
+Tr
+ql
+YZ
+bD
+uO
+uO
 FG
 Uo
 Uo
@@ -3265,13 +4081,13 @@ Uo
 Uo
 Uo
 Uo
-rw
+zJ
 cN
 cN
 NI
-cN
-cN
-cN
+oB
+YZ
+YZ
 NI
 NI
 NI
@@ -3295,14 +4111,14 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+NI
+NI
+Tr
+Qm
+EB
+ek
+uO
+uO
 NI
 ts
 Uo
@@ -3327,13 +4143,13 @@ JQ
 Uo
 Uo
 Uo
-cN
+za
 cN
 cN
 NI
-cN
-cN
-cN
+ww
+HM
+vg
 NI
 BX
 NI
@@ -3356,15 +4172,15 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+Ts
+Ds
+Ae
+Tr
+uO
+uO
+uO
+uO
+uO
 NI
 gM
 xz
@@ -3377,14 +4193,14 @@ NI
 NI
 Kk
 lb
-lb
+zi
 lb
 Us
 NI
 NI
 NI
 NI
-Pq
+Rx
 Uo
 nZ
 os
@@ -3393,10 +4209,10 @@ NI
 rU
 cN
 NI
-cN
-cN
-cN
-NI
+AZ
+uO
+uO
+Oc
 Uo
 BX
 NI
@@ -3417,16 +4233,16 @@ IC
 IC
 NI
 NI
+Pm
+Ts
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+zu
+Tr
+uO
+uO
+na
+uO
+uO
 NI
 NI
 NI
@@ -3434,8 +4250,8 @@ NI
 NI
 NI
 NI
-Lp
-ur
+NI
+NI
 NI
 lh
 Ke
@@ -3443,8 +4259,8 @@ NI
 lh
 Ke
 NI
-IM
-tB
+NI
+NI
 NI
 NI
 NI
@@ -3456,7 +4272,7 @@ cN
 cN
 NI
 NI
-fT
+kJ
 NI
 NI
 QH
@@ -3480,15 +4296,15 @@ NI
 NI
 cN
 cN
+Ts
+Ts
+Ts
+Tr
 cN
+Gv
+Tr
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+Gv
 NI
 NI
 NI
@@ -3497,19 +4313,19 @@ zt
 BQ
 Xf
 lh
+ER
+wv
+ER
 lh
 lh
 lh
-lh
-lh
-lh
-lh
-lh
-lh
-lh
+eA
+wv
+eA
+tB
+Ob
 Vs
-Vs
-Vs
+yw
 NI
 NI
 NI
@@ -3520,11 +4336,11 @@ cN
 cN
 cN
 cN
-FG
+si
 Uo
 Uo
 Uo
-BX
+mG
 NI
 NI
 IC
@@ -3545,10 +4361,10 @@ cN
 cN
 cN
 cN
+Tr
 cN
 cN
-cN
-cN
+Tr
 cN
 cN
 NI
@@ -3559,15 +4375,15 @@ ny
 Dy
 HX
 SX
+ER
+lh
+ER
 lh
 lh
 lh
+eA
 lh
-lh
-lh
-lh
-lh
-lh
+eA
 lh
 lh
 lh
@@ -3587,7 +4403,7 @@ fI
 dx
 Do
 Uo
-BX
+mG
 NI
 NI
 IC
@@ -3607,29 +4423,29 @@ cN
 cN
 cN
 cN
+Wx
 cN
 cN
-cN
-cN
+lv
 cN
 cN
 NI
 NI
-lh
+hO
 rC
 wt
 aa
 wt
 WX
-lh
+ER
 cx
+LP
 YM
 YM
 YM
-YM
-YM
+Tp
 CC
-lh
+eA
 lh
 lh
 lh
@@ -3639,7 +4455,7 @@ eG
 NI
 NI
 cN
-cN
+Gv
 NI
 Wx
 NI
@@ -3665,16 +4481,16 @@ NI
 cN
 cN
 cN
+kI
+kI
+kI
+kI
+Tr
+rU
 cN
+lv
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+OF
 NI
 Dz
 lh
@@ -3683,7 +4499,7 @@ CM
 aa
 CM
 WX
-lh
+ER
 md
 PF
 Nd
@@ -3691,7 +4507,7 @@ jy
 Nd
 PF
 kW
-lh
+eA
 lh
 lh
 lh
@@ -3727,14 +4543,14 @@ NI
 cN
 cN
 cN
+kI
 cN
 cN
 cN
+Tr
 cN
 cN
-cN
-cN
-cN
+lv
 cN
 cN
 NI
@@ -3745,7 +4561,7 @@ xi
 Es
 ZI
 QY
-lh
+Fb
 LL
 PF
 xc
@@ -3753,7 +4569,7 @@ dc
 XA
 PF
 Lf
-lh
+Of
 lh
 lh
 lh
@@ -3764,7 +4580,7 @@ lh
 Wx
 cN
 cN
-NI
+fL
 cN
 cN
 cN
@@ -3788,15 +4604,15 @@ IC
 NI
 cN
 cN
+gS
+kI
+Qq
+xP
+RK
+Tr
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+Tr
 cN
 cN
 NI
@@ -3804,29 +4620,29 @@ aY
 lh
 lh
 lh
+Ih
 lh
 lh
-lh
-lh
+ER
 Ij
 kY
 xc
-xc
+PP
 xc
 jl
 jr
+eA
 lh
 lh
-lh
-lh
+Ih
 kj
 IA
 IA
-IA
+TO
 NI
 rU
 cN
-NI
+fL
 cN
 cN
 cN
@@ -3849,19 +4665,19 @@ IC
 IC
 NI
 cN
+Fu
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
 cN
+Gv
+Tr
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
-NI
+Gv
+Tr
 br
 lh
 Sw
@@ -3869,7 +4685,7 @@ ny
 Dy
 ny
 SX
-lh
+Iu
 HB
 PF
 Oj
@@ -3877,7 +4693,7 @@ AL
 xc
 PF
 tP
-lh
+qI
 lh
 lh
 lh
@@ -3889,7 +4705,7 @@ Wx
 cN
 cN
 NI
-ng
+RT
 cN
 cN
 Ts
@@ -3912,15 +4728,15 @@ IC
 NI
 cN
 cN
+Pm
+cN
+cN
+rw
 cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
+rw
 cN
 cN
 NI
@@ -3931,7 +4747,7 @@ DN
 aa
 xo
 WX
-lh
+ER
 md
 PF
 gE
@@ -3939,7 +4755,7 @@ sO
 gE
 PF
 kW
-lh
+eA
 lh
 lh
 lh
@@ -3956,11 +4772,11 @@ cN
 cN
 Ts
 cN
-SD
+pc
 ng
 ng
 ng
-cN
+Cp
 SD
 fL
 IC
@@ -3987,21 +4803,21 @@ cN
 cN
 NI
 NI
-lh
+hO
 rC
 RP
 aa
 Wf
 WX
-lh
+ER
 VQ
+Et
 Ud
 Ud
 Ud
-Ud
-Ud
+ve
 Om
-lh
+eA
 lh
 lh
 lh
@@ -4013,7 +4829,7 @@ NI
 cN
 cN
 NI
-ng
+Ce
 cN
 cN
 Ts
@@ -4039,13 +4855,13 @@ cN
 cN
 cN
 cN
+Tr
+MB
 cN
 cN
-cN
-cN
-cN
-cN
-cN
+OF
+Tr
+rU
 cN
 NI
 NI
@@ -4055,15 +4871,15 @@ nf
 Es
 nf
 QY
+ER
+lh
+ER
 lh
 lh
 lh
+eA
 lh
-lh
-lh
-lh
-lh
-lh
+eA
 lh
 lh
 lh
@@ -4072,9 +4888,9 @@ fi
 NI
 NI
 NI
+rU
 cN
-cN
-NI
+fL
 cN
 cN
 cN
@@ -4101,12 +4917,12 @@ cN
 cN
 cN
 cN
+Tr
+ag
 cN
 cN
 cN
-cN
-cN
-cN
+Tr
 cN
 cN
 NI
@@ -4117,26 +4933,26 @@ Hd
 OP
 Nu
 lh
+ER
+NB
+ER
 lh
 lh
 lh
-lh
-lh
-lh
-lh
-lh
-lh
-lh
+eA
+NB
+eA
+tB
+Ob
 KH
-KH
-KH
+uo
 NI
 NI
 NI
 NI
 cN
 cN
-NI
+fL
 cN
 cN
 cN
@@ -4163,12 +4979,12 @@ cN
 cN
 cN
 cN
+Tr
+bA
+Wo
+Ce
 cN
-cN
-cN
-cN
-cN
-cN
+Tr
 cN
 cN
 NI
@@ -4178,8 +4994,8 @@ NI
 NI
 NI
 NI
-Lp
-ur
+NI
+NI
 NI
 lh
 Ke
@@ -4187,8 +5003,6 @@ NI
 lh
 Ke
 NI
-OB
-tB
 NI
 NI
 NI
@@ -4196,7 +5010,9 @@ NI
 NI
 NI
 NI
-rU
+NI
+NI
+cN
 cN
 NI
 cN
@@ -4222,17 +5038,17 @@ IC
 NI
 cN
 cN
+gS
 cN
 cN
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
 cN
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
-Tr
+Gv
 NI
 NI
 NI
@@ -4245,7 +5061,7 @@ NI
 NI
 Mn
 vI
-vI
+NM
 vI
 Sa
 NI
@@ -4283,10 +5099,10 @@ IC
 IC
 NI
 cN
+Fu
+Tr
 cN
-cN
-cN
-cN
+Fu
 Tr
 cN
 cN
@@ -4328,12 +5144,12 @@ cN
 cN
 NI
 NI
-cN
-cN
-cN
-cN
-cN
-cN
+NI
+uO
+uO
+uO
+uO
+NI
 NI
 IC
 IC
@@ -4346,10 +5162,10 @@ IC
 NI
 cN
 cN
+Pm
 cN
 cN
-cN
-Tr
+rw
 cN
 cN
 cN
@@ -4361,7 +5177,7 @@ bL
 vI
 vI
 vI
-vI
+NM
 vI
 vI
 vI
@@ -4388,14 +5204,14 @@ cN
 cN
 cN
 cN
-cN
+OY
 NI
-cN
-cN
-cN
-cN
-cN
-cN
+YV
+uO
+Ir
+BS
+uO
+uO
 NI
 IC
 IC
@@ -4411,7 +5227,7 @@ cN
 cN
 cN
 cN
-Tr
+cN
 cN
 cN
 cN
@@ -4452,12 +5268,12 @@ cN
 cN
 cN
 NI
-cN
-cN
-cN
-cN
-cN
-cN
+BJ
+Ir
+oB
+oB
+BS
+tO
 NI
 IC
 IC
@@ -4468,11 +5284,11 @@ IC
 IC
 IC
 NI
-cN
-cN
-cN
-cN
-cN
+kI
+kI
+kI
+kI
+kI
 Tr
 cN
 cN
@@ -4490,13 +5306,13 @@ Tr
 Tr
 Tr
 Tr
-me
+SG
 cN
 cN
 cN
 cN
 cN
-xF
+Hn
 Tr
 Tr
 Tr
@@ -4513,13 +5329,13 @@ cN
 cN
 cN
 cN
-cN
-cN
-cN
-cN
-cN
-cN
-cN
+NI
+vB
+ae
+oB
+oB
+Bp
+sX
 NI
 IC
 IC
@@ -4530,11 +5346,11 @@ IC
 IC
 IC
 NI
+Cu
 cN
+kI
 cN
-cN
-cN
-cN
+CI
 Tr
 cN
 cN
@@ -4575,13 +5391,13 @@ cN
 cN
 cN
 cN
-NI
-cN
-cN
-cN
-cN
-cN
-cN
+er
+uO
+uO
+ae
+Bp
+uO
+uO
 NI
 IC
 IC
@@ -4592,11 +5408,11 @@ VV
 IC
 IC
 NI
-cN
-cN
-cN
-cN
-cN
+Qq
+xP
+kI
+xP
+Qq
 Tr
 cN
 cN
@@ -4639,10 +5455,10 @@ cN
 cN
 NI
 NI
-cN
-NI
-NI
-NI
+cZ
+uO
+uO
+uO
 NI
 NI
 IC
@@ -4655,10 +5471,10 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
-cN
+Tr
+Tr
+Tr
+Tr
 Tr
 cN
 cN
@@ -4700,10 +5516,10 @@ aG
 cN
 cN
 NI
-cN
-cN
-cN
-cN
+NI
+NI
+hY
+NI
 NI
 NI
 IC
@@ -4718,9 +5534,9 @@ IC
 IC
 NI
 NI
-cN
-cN
-cN
+Tr
+Tr
+Tr
 Tr
 cN
 cN
@@ -4761,10 +5577,10 @@ Wj
 sc
 cN
 cN
-cN
-cN
-cN
-cN
+NI
+nI
+GE
+GE
 NI
 NI
 IC
@@ -4780,9 +5596,9 @@ IC
 IC
 IC
 NI
-NI
-cN
-cN
+Tr
+Tr
+Tr
 Tr
 cN
 cN
@@ -4823,9 +5639,9 @@ cN
 cN
 cN
 cN
-NI
-cN
-cN
+yG
+GE
+vF
 NI
 NI
 IC
@@ -4844,7 +5660,7 @@ IC
 IC
 NI
 NI
-cN
+Tr
 Tr
 cN
 cN
@@ -4862,13 +5678,13 @@ Ym
 lv
 lv
 Tr
-me
+SG
 cN
 cN
+OY
 cN
 cN
-cN
-xF
+Hn
 Tr
 lv
 lv
@@ -4886,7 +5702,7 @@ cN
 cN
 cN
 NI
-cN
+Ui
 NI
 NI
 IC
@@ -4976,7 +5792,7 @@ cN
 cN
 cN
 cN
-cN
+OF
 Tr
 cN
 cN
@@ -5000,15 +5816,15 @@ cN
 cN
 cN
 cN
-cN
+OF
 Tr
+rU
 cN
 cN
 cN
 cN
 cN
-cN
-cN
+OY
 NI
 NI
 IC
@@ -5044,7 +5860,7 @@ lb
 lb
 lb
 lb
-lb
+zi
 lb
 lb
 lb
@@ -5058,7 +5874,7 @@ aL
 lb
 lb
 lb
-lb
+zi
 lb
 lb
 lb
@@ -5110,13 +5926,13 @@ Tr
 Tr
 Tr
 Tr
-Kk
-VY
+pt
+Bg
+OL
 cN
-cN
-cN
-aL
-Us
+ZG
+Ie
+el
 Tr
 Tr
 Tr
@@ -5173,11 +5989,11 @@ IC
 IC
 Tr
 Tr
-Kk
+se
+Lx
 lb
-lb
-lb
-Us
+Lx
+pC
 Tr
 Tr
 IC
@@ -5236,9 +6052,9 @@ IC
 IC
 Tr
 Tr
-lv
-lv
-lv
+fL
+fL
+fL
 Tr
 Tr
 IC
@@ -5251,7 +6067,7 @@ YZ
 UL
 uO
 uO
-uO
+Lt
 Tr
 cN
 cN
@@ -5297,11 +6113,11 @@ IC
 IC
 IC
 IC
+TJ
 IC
 IC
 IC
-IC
-IC
+TJ
 IC
 IC
 IC
