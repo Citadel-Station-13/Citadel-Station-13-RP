@@ -11,15 +11,21 @@
  * - specific sorting / bracketing for machinery may not be available, and even if it is, it's usually too stiff to demand of implementations.
  * - we cannot actually compensate for machinery that tick "wrongly", without overcomplicating this by having power draw have an overengineered
  *       implementation that involves tracking the time period over which power is used and all sorts of nasty things that we really don't want
- *       to have to care about.
+ *       to have to care about. all we can do is expect that people put in the correct values.
  *
  * all variables are in **kilowatts** unless otherwise stated.
  */
 /datum/wirenet/power
-
+	/// available power in network accumulated for the next tick
+	var/supply = 0
+	/// available power left in the current tick
+	var/avail = 0
 	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
 	var/load = 0
 
+/datum/wirenet/power/proc/draw(kw)
+
+/datum/wirenet/power/proc/supply(kw)
 
 
 

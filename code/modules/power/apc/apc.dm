@@ -1094,7 +1094,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	/// power needed in joules over the last tick
 	var/needed = 10000
 
-	
+
 
 	#warn guh
 
