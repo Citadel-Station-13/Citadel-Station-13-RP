@@ -137,7 +137,7 @@
 	desc = "A sleek module decorated with intricate glyphs and alien wards. When worn by a trained agent, the various glyphs faintly glow."
 	suit_type = "PMD agent"
 	icon_state = "para_ert_rig"
-	action_button_name = "Enable RIG Sigils"
+	action_name = "Enable RIG Sigils"
 
 	var/anti_magic = FALSE
 	var/blessed = FALSE

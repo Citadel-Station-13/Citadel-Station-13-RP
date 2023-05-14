@@ -6,7 +6,7 @@
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
 	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
-	action_button_name = "Toggle Flashlight"
+	action_name = "Toggle Flashlight"
 	light_wedge = LIGHT_WIDE
 
 	var/on = FALSE
@@ -327,7 +327,7 @@
 	light_wedge = LIGHT_OMNI
 	light_color = LIGHT_COLOR_FLARE
 
-	action_button_name = null //just pull it manually, neckbeard.
+	action_name = null //just pull it manually, neckbeard.
 	power_use = 0
 	drop_sound = 'sound/items/drop/gloves.ogg'
 	pickup_sound = 'sound/items/pickup/gloves.ogg'

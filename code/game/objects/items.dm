@@ -25,7 +25,7 @@
 	/// This is used to determine how we persist, in addition to potentially atom_persist_flags and obj_persist_flags (not yet made)
 	/// These flags are listed in [code/__DEFINES/inventory/item_flags.dm].
 	var/item_persist_flags = NONE
-  /// This is used to determine how default item-level interaction hooks are handled.
+	/// This is used to determine how default item-level interaction hooks are handled.
 	/// These flags are listed in [code/__DEFINES/_flags/interaction_flags.dm]
 	var/interaction_flags_item = INTERACT_ITEM_ATTACK_SELF
 
@@ -82,12 +82,14 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
+	/// list of action buttons we'll make, or a single typepath of what to make, or a single string. If this is a string, we'll make a default item action with it as the name.
+	var/action_types
+	/// our actions, instantiate
+	var/list/datum/action/actions
+	#warn impl all
 	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
-	/// It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
-	var/action_button_name
-	/// If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
-	var/action_button_is_hands_free = 0
+	#warn erase action
 
 	/// 0 prevents all transfers, 1 is invisible
 	//var/heat_transfer_coefficient = 1

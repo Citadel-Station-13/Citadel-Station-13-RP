@@ -548,7 +548,7 @@
 	name = "reindeer antlers"
 	desc = "A set of costume antlers with a glowing red nose, an Old Earth favorite."
 	icon_state = "reindeer0"
-	action_button_name = "Toggle Nose"
+	action_name = "Toggle Nose"
 
 /obj/item/clothing/head/reindeer/attack_self(mob/user)
 	. = ..()
@@ -690,7 +690,7 @@
 	icon = 'icons/clothing/head/cowl.dmi'
 	icon_state = "golhood"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	action_button_name = "Toggle Hood"
+	action_name = "Toggle Hood"
 
 /obj/item/clothing/head/cowl/attack_self(mob/user)
 	. = ..()
@@ -712,7 +712,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	body_cover_flags = HEAD|FACE
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
-	action_button_name = "Toggle Hood"
+	action_name = "Toggle Hood"
 
 /obj/item/clothing/head/fishingcap
 	name = "Fishing Cap"

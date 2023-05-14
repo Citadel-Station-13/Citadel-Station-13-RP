@@ -795,7 +795,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
-	action_button_name = "Remove/Replace Handset"
+	action_name = "Remove/Replace Handset"
 
 	var/obj/item/radio/bluespace_handset/linked/handset = /obj/item/radio/bluespace_handset/linked
 

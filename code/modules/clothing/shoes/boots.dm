@@ -204,7 +204,7 @@
 	name = "PARA boots"
 	desc = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_boots"
-	action_button_name = "Enable Boot Sigils"
+	action_name = "Enable Boot Sigils"
 
 	var/blessed = FALSE
 

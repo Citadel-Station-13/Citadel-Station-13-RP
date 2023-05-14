@@ -24,7 +24,7 @@
 	sharp = TRUE
 	edge = TRUE
 	// sharpness = SHARP_EDGED
-	action_button_name = "Toggle Light"
+	action_name = "Toggle Light"
 	// actions_types = list(/datum/action/item_action/toggle_light)
 	// var/list/trophies = list()
 	var/charged = TRUE

@@ -7,7 +7,7 @@
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = 0
 	siemens_coefficient = 0.9
-	action_button_name = "Toggle Head-light"
+	action_name = "Toggle Head-light"
 	w_class = ITEMSIZE_NORMAL
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'

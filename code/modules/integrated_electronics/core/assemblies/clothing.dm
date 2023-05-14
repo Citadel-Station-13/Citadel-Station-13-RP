@@ -94,7 +94,7 @@
 	EA.add_component(action_circuit)
 	var/obj/item/integrated_circuit/built_in/self_sensor/S = new(src.EA)
 	EA.add_component(S)
-	EA.action_button_name = "Activate [name]"
+	EA.action_name = "Activate [name]"
 
 
 

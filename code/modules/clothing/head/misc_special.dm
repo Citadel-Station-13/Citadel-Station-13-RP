@@ -22,7 +22,7 @@
 	armor_type = /datum/armor/head/hardhat
 	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 	body_cover_flags = HEAD|FACE|EYES
-	action_button_name = "Flip Welding Mask"
+	action_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
 	var/base_state

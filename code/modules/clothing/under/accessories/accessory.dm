@@ -383,7 +383,7 @@
 	icon_state = "gaiter_red"
 	slot_flags = SLOT_TIE | SLOT_MASK
 	slot = ACCESSORY_SLOT_DECOR
-	action_button_name = "Adjust Gaiter"
+	action_name = "Adjust Gaiter"
 
 /obj/item/clothing/accessory/gaiter/attack_self(mob/user)
 	. = ..()

@@ -12,7 +12,7 @@
 	var/magpulse = 0
 	var/slowdown_on = 3
 	var/icon_base = "magboots"
-	action_button_name = "Toggle Magboots"
+	action_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
 	pickup_sound = 'sound/items/pickup/toolbox.ogg'
@@ -77,7 +77,7 @@
 	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
-	action_button_name = "Toggle the magclaws"
+	action_name = "Toggle the magclaws"
 
 /obj/item/clothing/shoes/magboots/vox/attack_self(mob/user)
 	if(src.magpulse)

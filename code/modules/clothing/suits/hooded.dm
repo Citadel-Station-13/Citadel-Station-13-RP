@@ -7,7 +7,7 @@
 	var/hoodtype = null //so the chaplain hoodie or other hoodies can override this
 	var/hood_up = FALSE
 	var/toggleicon
-	action_button_name = "Toggle Hood"
+	action_name = "Toggle Hood"
 	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
 	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
@@ -82,7 +82,7 @@
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE	//Space carp like space, so you should too
-	action_button_name = "Toggle Carp Hood"
+	action_name = "Toggle Carp Hood"
 	hoodtype = /obj/item/clothing/head/hood/carp_hood
 
 /obj/item/clothing/suit/storage/hooded/ian_costume	//It's Ian, rub his bell- oh god what happened to his inside parts?
@@ -92,7 +92,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Ian Hood"
+	action_name = "Toggle Ian Hood"
 	hoodtype = /obj/item/clothing/head/hood/ian_hood
 
 /obj/item/clothing/suit/storage/hooded/bee_costume
@@ -101,7 +101,7 @@
 	icon_state = "bee"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Bee Hood"
+	action_name = "Toggle Bee Hood"
 	hoodtype = /obj/item/clothing/head/hood/bee_hood
 
 /obj/item/clothing/suit/storage/hooded/flash_costume
@@ -110,14 +110,14 @@
 	icon_state = "flashsuit"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	action_button_name = "Toggle Flash Top"
+	action_name = "Toggle Flash Top"
 	hoodtype = /obj/item/clothing/head/hood/flash_hood
 
 /obj/item/clothing/suit/storage/hooded/techpriest /// TO DO - FIND A WAY TO HIDE FEET PROPERLY
 	name = "tech priest robe"
 	desc = "A robe for those that worship the Omnissiah. Also toasters.. for.. some reason."
 	icon_state = "techpriest"
-	action_button_name = "Toggle Priest Hood"
+	action_name = "Toggle Priest Hood"
 	body_cover_flags = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
 	inv_hide_flags = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "techpriest", SLOT_ID_LEFT_HAND = "techpriest")
@@ -485,7 +485,7 @@
 	clothing_flags = THICKMATERIAL
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
-	action_button_name = "Toggle Eldritch Hood"
+	action_name = "Toggle Eldritch Hood"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
 	armor_type = /datum/armor/lavaland/eldritch

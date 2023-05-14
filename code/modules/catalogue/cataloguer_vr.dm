@@ -2,7 +2,7 @@
 	name = "compact cataloguer"
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "tricorder"
-	action_button_name = "Toggle Cataloguer"
+	action_name = "Toggle Cataloguer"
 	var/deployed = TRUE
 	scan_range = 1
 	tool_speed = 1.2

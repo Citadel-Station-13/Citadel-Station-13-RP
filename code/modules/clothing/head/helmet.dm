@@ -66,7 +66,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
 	valid_accessory_slots = null
-	action_button_name = "Toggle Visor"
+	action_name = "Toggle Visor"
 
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user)
 	. = ..()
@@ -116,7 +116,7 @@
 	siemens_coefficient = 0.6
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
-	action_button_name = "Toggle Head-light"
+	action_name = "Toggle Head-light"
 	min_cold_protection_temperature = T0C - 20
 	cold_protection = HEAD
 
@@ -265,7 +265,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/centcom/ert/paracausal
 	valid_accessory_slots = null
-	action_button_name = "Cycle MAW"
+	action_name = "Cycle MAW"
 
 	flash_protection = FLASH_PROTECTION_MAJOR
 
@@ -298,7 +298,7 @@
 	icon_state = "witchhunterhat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret_black", SLOT_ID_LEFT_HAND = "beret_black")
 	armor_type = /datum/armor/centcom/ert/paracausal
-	action_button_name = "Enable Wards"
+	action_name = "Enable Wards"
 
 /obj/item/clothing/head/helmet/para/inquisitor/attack_self(mob/user)
 	. = ..()

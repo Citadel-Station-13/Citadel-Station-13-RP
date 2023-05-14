@@ -179,7 +179,7 @@
 	name = "PMD issued gloves, stamped with protective seals and spells."
 	icon_state = "para_ert_gloves"
 	item_state = "para_ert_gloves"
-	action_button_name = "Enable Glove Sigils"
+	action_name = "Enable Glove Sigils"
 
 	var/blessed = FALSE
 

@@ -15,7 +15,7 @@
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
-	action_button_name = "Remove/Replace Paddles"
+	action_name = "Remove/Replace Paddles"
 
 	var/obj/item/shockpaddles/linked/paddles
 	var/obj/item/cell/bcell = null

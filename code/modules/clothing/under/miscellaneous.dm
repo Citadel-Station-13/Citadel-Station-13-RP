@@ -1913,7 +1913,7 @@
 	item_state = "antediluvian"
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	//action_button_name = "Reconfigure Suit"
+	//action_name = "Reconfigure Suit"
 
 /*
 /obj/item/clothing/under/antediluvian/verb/switchsprite()

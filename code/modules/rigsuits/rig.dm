@@ -21,7 +21,7 @@
 	desc = "A back-mounted hardsuit deployment and control mechanism."
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_HUGE
-	action_button_name = "Toggle Heatsink"
+	action_name = "Toggle Heatsink"
 
 	// These values are passed on to all component pieces.
 	armor_type = /datum/armor/hardsuit

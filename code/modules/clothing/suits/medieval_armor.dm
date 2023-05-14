@@ -29,7 +29,7 @@
 	desc = "This tarnished helmet has clearly done its job well for many years of service."
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladinhelm"
-	action_button_name = "Toggle Visor"
+	action_name = "Toggle Visor"
 
 /obj/item/clothing/head/helmet/medieval/paladin/attack_self(mob/user)
 	. = ..()
@@ -171,7 +171,7 @@
 	desc = "This tarnished helmet has clearly done its job well for many years of service."
 	icon = 'icons/clothing/suit/armor/medieval/paladin.dmi'
 	icon_state = "paladinhelm"
-	action_button_name = "Toggle Visor"
+	action_name = "Toggle Visor"
 
 /obj/item/clothing/head/medievalfake/paladin/attack_self(mob/user)
 	. = ..()

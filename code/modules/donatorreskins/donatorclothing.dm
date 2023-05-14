@@ -208,7 +208,7 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	inv_hide_flags = HIDEFACE
-	action_button_name = "Adjust Veil"
+	action_name = "Adjust Veil"
 	var/hanging = 0
 
 /obj/item/clothing/mask/donator/dancer/proc/adjust_mask(mob/user)
@@ -251,7 +251,7 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	action_button_name = "Reconfigure Suit"
+	action_name = "Reconfigure Suit"
 
 /obj/item/clothing/under/donator/dancer/verb/switchsprite()
     set name = "Reconfigure Suit"

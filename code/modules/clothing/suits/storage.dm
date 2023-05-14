@@ -37,7 +37,7 @@
 /obj/item/clothing/suit/storage/toggle
 	inv_hide_flags = HIDEHOLSTER
 	var/open = 0	//0 is closed, 1 is open, -1 means it won't be able to toggle
-	action_button_name = "Toggle Coat Buttons"
+	action_name = "Toggle Coat Buttons"
 
 /obj/item/clothing/suit/storage/toggle/ui_action_click()
 	ToggleButtons()

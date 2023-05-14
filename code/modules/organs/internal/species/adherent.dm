@@ -54,7 +54,7 @@
 /obj/item/organ/internal/powered/jets
 	name = "maneuvering jets"
 	desc = "Gas jets from a Adherent chassis."
-	action_button_name = "Toggle Maneuvering Pack"
+	action_name = "Toggle Maneuvering Pack"
 	use_descriptor = "adjust your vector"
 	organ_tag = O_JETS
 	parent_organ = BP_TORSO
@@ -97,7 +97,7 @@
 /obj/item/organ/internal/powered/float
 	name = "levitation plate"
 	desc = "A broad, flat disc of exotic matter. Slick to the touch."
-	action_button_name = "Toggle Antigravity"
+	action_name = "Toggle Antigravity"
 	organ_tag = O_FLOAT
 	parent_organ = BP_GROIN
 	robotic = ORGAN_CRYSTAL
@@ -139,7 +139,7 @@
 	name = "cooling fins"
 	gender = PLURAL
 	desc = "A lacy filligree of heat-radiating fins."
-	action_button_name = "Toggle Cooling"
+	action_name = "Toggle Cooling"
 	organ_tag = O_COOLING_FINS
 	parent_organ = BP_GROIN
 	status = ORGAN_CRYSTAL

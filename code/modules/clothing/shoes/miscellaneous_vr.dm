@@ -12,7 +12,7 @@
 	item_state = "jetboots"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	// resistance_flags = FIRE_PROOF
-	action_button_name = "Activate Jump Boots"
+	action_name = "Activate Jump Boots"
 	permeability_coefficient = 0.05
 	var/jumpdistance = 5 //-1 from to see the actual distance, e.g 4 goes over 3 tiles
 	var/jumpspeed = 3

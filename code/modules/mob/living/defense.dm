@@ -494,13 +494,13 @@
 		if(A.CheckRemoval(src))
 			A.remove(src)
 	for(var/obj/item/I in src)
-		if(I.action_button_name)
+		if(I.action_name)
 			if(!I.action)
 				if(I.action_button_is_hands_free)
 					I.action = new/datum/action/item_action/hands_free(I)
 				else
 					I.action = new/datum/action/item_action(I)
-				I.action.name = I.action_button_name
+				I.action.name = I.action_name
 			I.action.grant(src)
 
 /mob/living/update_action_buttons()

@@ -48,7 +48,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/hanging = FALSE
 	inv_hide_flags = HIDEFACE
-	action_button_name = "Adjust Face Mask"
+	action_name = "Adjust Face Mask"
 
 /obj/item/clothing/mask/gas/half/proc/adjust_mask(mob/user)
 	if(CHECK_MOBILITY(user, MOBILITY_CAN_USE))
@@ -109,7 +109,7 @@
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
-	action_button_name = "Toggle Feeding Port"
+	action_name = "Toggle Feeding Port"
 
 /obj/item/clothing/mask/gas/swat/vox/proc/feeding_port(mob/user)
 	if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
