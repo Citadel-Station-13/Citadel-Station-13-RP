@@ -3,7 +3,8 @@
 	id = "tail_shadekin_short"
 	icon = 'icons/mob/sprite_accessories/tails/shadekin.dmi'
 	icon_state = "shadekin_short"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
-	apply_restrictions = TRUE
 	species_allowed = list(SPECIES_SHADEKIN)
+	apply_restrictions = TRUE
+	do_colouration = TRUE
+	front_behind_system = TRUE
+	color_blend_mode = ICON_MULTIPLY
