@@ -6,5 +6,5 @@
 	speech_verb = "snarls"
 	colour = "sergal"
 	key = "T"
-	syllables = list ("vishante", "kaffas", "ahran", "mikhren", "rhenan", "ruhnar", "sirgna", "oknhe", "hastharan", "vikhnea", "andarana")
+	syllables = list ("vishante", "kaffas", "ahran", "mikhren", "rhenan", "ruhnar", "sirgna", "oknhe", "hastharan", "vikhnea", "andarana", "vienn", "makhara", "sarkhan", "nakran", "seferel")
 	shorthand = "SAG"
