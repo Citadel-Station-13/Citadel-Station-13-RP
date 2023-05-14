@@ -10,7 +10,7 @@
 /mob/living/update_stat(forced, update_mobility)
 	if(stat == DEAD)
 		return stat
-	if(is_unconscious() || is_sleeping() || (status_flags & STATUS_FAKEDEATH))
+	if(is_unconscious() || is_sleeping() || HAS_TRAIT(src, TRAIT_MOB_UNCONSCIOUS) || HAS_TRAIT(src, TRAIT_MOB_SLEEPING) || (status_flags & STATUS_FAKEDEATH))
 		. = UNCONSCIOUS
 	else
 		. = CONSCIOUS

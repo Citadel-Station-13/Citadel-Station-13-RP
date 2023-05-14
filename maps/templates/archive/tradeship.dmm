@@ -539,7 +539,7 @@
 /area/shuttle/trade)
 "bv" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig/internalaffairs,
+/obj/item/hardsuit/internalaffairs,
 /obj/item/clothing/head/helmet/space/void/wizard,
 /obj/item/clothing/suit/space/void/wizard,
 /turf/simulated/shuttle/floor/black,

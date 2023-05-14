@@ -6,7 +6,7 @@
 /area/tradeport/cyndishow)
 "ab" = (
 /obj/structure/table/steel_reinforced,
-/obj/item/rig/internalaffairs,
+/obj/item/hardsuit/internalaffairs,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "ad" = (
@@ -5549,7 +5549,7 @@
 /obj/random/soap,
 /obj/item/storage/bag/trash,
 /obj/item/mop,
-/obj/item/rig_module/cleaner_launcher,
+/obj/item/hardsuit_module/cleaner_launcher,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},

@@ -48,7 +48,6 @@
 		)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/psychic_whisper,
 		/mob/living/carbon/human/proc/hybrid_resin,
@@ -57,8 +56,8 @@
 
 	abilities = list(
 		/datum/ability/species/sonar,
+		/datum/ability/species/toggle_agility,
 	)
-
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.

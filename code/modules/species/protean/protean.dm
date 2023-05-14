@@ -105,8 +105,6 @@
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
@@ -119,7 +117,9 @@
 	)
 	species_statpanel = TRUE
 	var/global/list/protean_abilities = list()
-
+	abilities = list(
+		/datum/ability/species/toggle_flight
+	)
 	var/monochromatic = FALSE //IGNORE ME
 
 /datum/species/protean/New()
@@ -163,7 +163,7 @@
 		else
 			H.nif.durability = rand(21,25)
 
-	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
 	prig.myprotean = H
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
@@ -323,14 +323,14 @@
 	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		src.forceMove(get_turf(prig))
 		prig.forceMove(src)
 		return
 
 	if(isturf(loc))
-		var/obj/item/rig/protean/prig = locate() in contents
+		var/obj/item/hardsuit/protean/prig = locate() in contents
 		if(prig)
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)

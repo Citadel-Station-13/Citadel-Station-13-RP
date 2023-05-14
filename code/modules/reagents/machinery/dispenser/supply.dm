@@ -1,7 +1,7 @@
 /datum/supply_pack/chemical_dispenser
 	name = "Reagent dispenser (Empty)"
 	contains = list(
-			/obj/machinery/chemical_dispenser/unanchored
+			/obj/item/circuitboard/machine/chemical_dispenser
 		)
 	cost = 10
 	container_type = /obj/structure/largecrate
