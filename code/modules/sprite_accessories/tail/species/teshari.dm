@@ -6,7 +6,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "classic_tail"
 	extra_overlay = "classic_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
@@ -16,7 +16,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "classic_tail"
 	extra_overlay = "female_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
@@ -26,7 +26,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "classic_tail"
 	extra_overlay = "female_alt_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
@@ -36,7 +36,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "classic_tail"
 	extra_overlay = "male_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
@@ -46,7 +46,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "classic_tail"
 	extra_overlay = "male_alt_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
@@ -56,7 +56,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/teshari.dmi'
 	icon_state = "fluffy_tail"
 	extra_overlay = "fluffy_feathers"
-	do_colouration = 1
+	do_colouration = TRUE
 	color_blend_mode = ICON_MULTIPLY
 	front_behind_system = TRUE
 
