@@ -3,7 +3,8 @@
 	id = "tail_tajaran"
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "tajtail"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/tajaranhc
@@ -11,7 +12,8 @@
 	id = "tail_tajaran_color"
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "tajtail_hc"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/tajaran_damaged
@@ -20,6 +22,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "tajtail_damaged"
 	species_allowed = list(SPECIES_TAJ)
+	front_behind_system = TRUE
 	color_blend_mode = ICON_ADD
 
 /datum/sprite_accessory/tail/tajaran_stubby
@@ -28,6 +31,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "tajtail_stubby"
 	species_allowed = list(SPECIES_TAJ)
+	front_behind_system = TRUE
 	color_blend_mode = ICON_ADD
 
 /datum/sprite_accessory/tail/stripey
@@ -36,7 +40,8 @@
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "stripeytail"
 	extra_overlay = "stripeytail_mark"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/stripeytail_brown
@@ -44,3 +49,4 @@
 	id = "tail_tajaran_stripey_brown"
 	icon = 'icons/mob/sprite_accessories/tails/tajaran.dmi'
 	icon_state = "stripeytail-brown"
+	front_behind_system = TRUE
