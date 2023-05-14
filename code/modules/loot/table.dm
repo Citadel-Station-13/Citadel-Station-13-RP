@@ -1,11 +1,11 @@
 /**
  * holder datum for loot
  */
-/datum/prototype/loot_table
+/datum/prototype/struct/loot_table
 	anonymous = TRUE
-	namespace = "LootTable"
+	anonymous_namespace = "LootTable"
 
-	/// paths of either /atom/movable's or /datum/prototype/loot_pack's to chance
+	/// paths of either /atom/movable's or /datum/prototype/struct/loot_pack's to chance
 	/// string ids will be treated as loot pack prototype ids.
 	/// * null's in chance will be treated as 1.
 	/// * for performance, putting large chances first is best.
@@ -18,7 +18,7 @@
  *
  * returns typepaths, loot table typepaths, or identifiers, associated to amount.
  */
-/datum/prototype/loot_table/proc/draw(amount)
+/datum/prototype/struct/loot_table/proc/draw(amount)
 	if(amount == 1)
 		return list(draw_single() = 1)
 	return draw_multi(amount)
@@ -26,12 +26,12 @@
 /**
  * draw amount, converts to typepaths for spawning
  */
-/datum/prototype/loot_table/proc/draw_and_resolve(amount)
+/datum/prototype/struct/loot_table/proc/draw_and_resolve(amount)
 	. = list()
 	var/list/drawn = draw(amount)
 	for(var/thing in drawn)
-		if(ispath(thing, /datum/prototype/loot_pack) || istext(thing))
-			var/datum/prototype/loot_pack/resolved = SSrepository.fetch(thing)
+		if(ispath(thing, /datum/prototype/struct/loot_pack) || istext(thing))
+			var/datum/prototype/struct/loot_pack/resolved = RCstructs.fetch(thing)
 			var/multiplier = drawn[thing]
 			if(!istype(resolved))
 				CRASH("invalid resolution of [thing]: [resolved]")
@@ -41,13 +41,13 @@
 		else if(ispath(thing, /atom/movable))
 			.[thing] = drawn[thing] + .[thing]
 
-/datum/prototype/loot_table/proc/cache_tally()
+/datum/prototype/struct/loot_table/proc/cache_tally()
 	. = 0
 	for(var/thing in contents)
 		. += contents[thing] || 1
 	cached_tally = .
 
-/datum/prototype/loot_table/proc/draw_single()
+/datum/prototype/struct/loot_table/proc/draw_single()
 	var/total = cached_tally || cache_tally()
 	var/rng = rand(1, total)
 	for(var/thing in contents)
@@ -55,7 +55,7 @@
 		if(rng <= 0)
 			return thing
 
-/datum/prototype/loot_table/proc/draw_multi(amt)
+/datum/prototype/struct/loot_table/proc/draw_multi(amt)
 	if(amt <= 5)
 		// too small to justify the binary insert
 		. = list()
@@ -104,15 +104,15 @@
 /**
  * spawn contents at
  */
-/datum/prototype/loot_table/proc/instantiate(atom/location, amt)
+/datum/prototype/struct/loot_table/proc/instantiate(atom/location, amt)
 	var/list/got = draw(amt)
 	var/safety = 75 // there's no way you need more than this
 	for(var/thing in got)
 		var/making = got[thing]
 		if(ispath(thing, /obj/item/stack))
 			new thing(location, making)
-		else if(ispath(thing, /datum/prototype/loot_pack) || istext(thing))
-			var/datum/prototype/loot_pack/pack = SSrepository.fetch(thing)
+		else if(ispath(thing, /datum/prototype/struct/loot_pack) || istext(thing))
+			var/datum/prototype/struct/loot_pack/pack = RCstructs.fetch(thing)
 			if(!pack)
 				stack_trace("failed to fetch pack for [thing]")
 				continue

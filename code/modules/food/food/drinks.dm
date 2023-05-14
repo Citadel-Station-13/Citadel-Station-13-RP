@@ -68,7 +68,7 @@
 	return ..()
 
 /obj/item/reagent_containers/food/drinks/standard_pour_into(var/mob/user, var/atom/target)
-	if(!is_open_container())
+	if(!is_open_container() && target.reagents)
 		to_chat(user, "<span class='notice'>You need to open [src]!</span>")
 		return 1
 	if(target == loc) //prevent filling a machine with a glass you just put into it.

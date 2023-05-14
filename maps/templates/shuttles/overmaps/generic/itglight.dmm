@@ -830,7 +830,7 @@
 "eW" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/item/rig/eva,
+/obj/item/hardsuit/eva,
 /turf/simulated/floor/tiled/eris/steel/gray_platform,
 /area/itglight/starboardhighsec)
 "eZ" = (

@@ -251,7 +251,7 @@
 				/obj/structure/closet/crate
 			),
 			prob(2);list(
-				/obj/item/rig/industrial/equipped,
+				/obj/item/hardsuit/industrial/equipped,
 				/obj/item/storage/bag/ore,
 				/obj/structure/closet/crate/engineering
 			),
