@@ -144,11 +144,14 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
 		/mob/living/proc/toggle_pass_table,
+	)
+
+	abilities = list(
+		/datum/ability/species/sonar,
 	)
 
 	descriptors = list(

@@ -114,10 +114,10 @@
 		/datum/ability/species/xenochimera/hatch,
 		/datum/ability/species/xenochimera/commune,
 		/datum/ability/species/xenochimera/dissonant_shriek,
+		/datum/ability/species/sonar,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
