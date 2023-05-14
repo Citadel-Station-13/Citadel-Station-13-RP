@@ -8,11 +8,11 @@
 
 /area/awaymission/carpfarm
 	icon_state = "blank"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/carpfarm/arrival
 	icon_state = "away"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/carpfarm/base
 	icon_state = "away"

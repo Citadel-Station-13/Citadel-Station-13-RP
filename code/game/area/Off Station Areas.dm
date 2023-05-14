@@ -171,7 +171,7 @@
 /area/class_d
 	name = "Class D World"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/class_d/explored
@@ -246,7 +246,7 @@
 /area/class_g
 	name = "Class G World"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/class_g/explored
@@ -261,7 +261,7 @@
 // Desert Planet world areas
 /area/class_h
 	name = "Class H World"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 	icon_state = "away"
 
@@ -316,7 +316,7 @@
 /area/class_m
 	name = "Class M World"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/class_m/inside
@@ -382,7 +382,7 @@
 /area/class_p
 	name = "Class P World"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/class_p/facility
@@ -538,7 +538,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "dark"
 	area_flags = AREA_RAD_SHIELDED
-	requires_power = 1
+	area_power_override = null
 	ambience = AMBIENCE_GENERIC
 
 /area/tradeport/facility
@@ -603,7 +603,7 @@
 
 //////// Mothership areas ////////
 /area/mothership
-	requires_power = 1
+	area_power_override = null
 	area_flags = AREA_RAD_SHIELDED
 	icon_state = "blue-red2"
 /area/mothership/breakroom
@@ -685,7 +685,7 @@
 /area/skipjack_station
 	name = "Raider Outpost"
 	icon_state = "yellow"
-	requires_power = 0
+	area_power_override = TRUE
 	dynamic_lighting = 0
 	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
@@ -704,7 +704,7 @@
 /area/ninja_dojo
 	name = "\improper Ninja Base"
 	icon_state = "green"
-	requires_power = 0
+	area_power_override = TRUE
 	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 /area/ninja_dojo/dojo
@@ -733,7 +733,7 @@
 /area/lavaland
 	name = "Lava Land"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/lavaland/horrors
@@ -750,7 +750,7 @@
 
 /area/lavaland/bosses
 	name = "Lava Land - Boss"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/lavaland/central/base
 	name = "Lava Land (Center) - Mining Base"
@@ -918,19 +918,19 @@
 	name = "\improper Wild West Mines"
 	icon_state = "away1"
 	luminosity = 1
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/wwgov
 	name = "\improper Wild West Mansion"
 	icon_state = "away2"
 	luminosity = 1
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/wwrefine
 	name = "\improper Wild West Refinery"
 	icon_state = "away3"
 	luminosity = 1
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/wwvault
 	name = "\improper Wild West Vault"
@@ -940,7 +940,7 @@
 /area/awaymission/wwvaultdoors
 	name = "\improper Wild West Vault Doors"  // this is to keep the vault area being entirely lit because of requires_power
 	icon_state = "away2"
-	requires_power = 0
+	area_power_override = TRUE
 	luminosity = 0
 
 /area/awaymission/desert
@@ -962,7 +962,7 @@
 /area/awaymission/spacebattle
 	name = "\improper Space Battle"
 	icon_state = "away"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/spacebattle/cruiser
 	name = "\improper NanoTrasen Cruiser"
@@ -994,22 +994,22 @@
 /area/awaymission/listeningpost
 	name = "\improper Listening Post"
 	icon_state = "away"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/beach
 	name = "Beach"
 	icon_state = "null"
 	luminosity = 1
 	dynamic_lighting = 0
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/carpfarm
 	icon_state = "blank"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/carpfarm/arrival
 	icon_state = "away"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/carpfarm/base
 	icon_state = "away"
@@ -1019,18 +1019,13 @@
 
 /area/awaymission/snow_outpost
 	icon_state = "blank"
-	requires_power = 0
+	area_power_override = TRUE
 	ambience = list('sound/music/main.ogg', 'sound/ambience/maintenance/maintenance4.ogg', 'sound/ambience/sif/sif1.ogg', 'sound/ambience/ruins/ruins1.ogg')
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
-	requires_power = 1
-	always_unpowered = 1
-	dynamic_lighting = 1
+	area_power_override = FALSE
 	is_outside = OUTSIDE_YES
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
 	mobcountmax = 100
 	floracountmax = 7000
 	valid_mobs = list(/mob/living/simple_mob/animal/sif/savik, /mob/living/simple_mob/animal/wolf, /mob/living/simple_mob/animal/sif/shantak,
@@ -1058,18 +1053,13 @@
 
 /area/awaymission/snowfield
 	icon_state = "blank"
-//	requires_power = 0
+//	area_power_override = TRUE
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
 
 /area/awaymission/snowfield/outside
 	icon_state = "green"
-	requires_power = 1
-	always_unpowered = 1
-	dynamic_lighting = 1
+	area_power_override = FALSE
 	is_outside = OUTSIDE_YES
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
 	mobcountmax = 40
 	floracountmax = 2000
 
@@ -1099,7 +1089,7 @@
 
 /area/awaymission/zoo
 	icon_state = "green"
-	requires_power = 0
+	area_power_override = TRUE
 	dynamic_lighting = 0
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
 

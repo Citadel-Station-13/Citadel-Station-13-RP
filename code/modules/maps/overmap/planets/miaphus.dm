@@ -123,7 +123,7 @@
 	name = "\improper Away Mission - Miaphus'irra: Shores"
 	icon_state = "away"
 	dynamic_lighting = 1
-	requires_power = 1
+	area_power_override = null
 
 /area/tether_away/beach/powershed
 	name = "\improper Away Mission - Miaphus'irra: Nahtrik Solar Shed"
@@ -290,7 +290,7 @@
 /area/tether_away/beach/desert/poi
 	name = "\improper Away Mission - Miaphus'irra: Desert"
 	icon_state = "away"
-	requires_power = 1
+	area_power_override = null
 
 /area/tether_away/beach/desert/explored
 	name = "\improper Away Mission - Miaphus'irra: Desert (E)"

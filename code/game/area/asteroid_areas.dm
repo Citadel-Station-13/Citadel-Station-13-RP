@@ -119,7 +119,7 @@
 	name = "Engineering Outpost Solars"
 
 /area/outpost/engineering/solarsoutside
-	requires_power = 1
+	area_power_override = null
 	always_unpowered = 1
 	dynamic_lighting = 0
 

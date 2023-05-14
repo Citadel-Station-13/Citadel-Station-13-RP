@@ -11,12 +11,12 @@
 /area/shuttle/generic_shuttle/eng
 	name = "\improper Private Vessel - Engineering"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 /area/shuttle/generic_shuttle/gen
 	name = "\improper Private Vessel - General"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 
 // The shuttle's 'shuttle' computer
 /obj/machinery/computer/shuttle_control/explore/generic_shuttle

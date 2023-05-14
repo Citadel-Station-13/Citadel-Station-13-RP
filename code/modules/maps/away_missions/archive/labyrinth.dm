@@ -3,7 +3,7 @@
 
 /area/awaymission/labyrinth/arrival
 	icon_state = "away"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/awaymission/labyrinth/cave
 	icon_state = "blue"

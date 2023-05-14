@@ -41,7 +41,6 @@ SUBSYSTEM_DEF(machines)
 	return ..() + jointext(msg, "<br>")
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
-	makepowernets()
 	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
@@ -54,22 +53,6 @@ SUBSYSTEM_DEF(machines)
 	INTERNAL_PROCESS_STEP(SSMACHINES_PIPENETS,TRUE,process_pipenets,cost_pipenets,SSMACHINES_MACHINERY)
 	INTERNAL_PROCESS_STEP(SSMACHINES_MACHINERY,FALSE,process_machinery,cost_machinery,SSMACHINES_POWERNETS)
 	INTERNAL_PROCESS_STEP(SSMACHINES_POWERNETS,FALSE,process_powernets,cost_powernets,SSMACHINES_POWER_OBJECTS)
-
-// rebuild all power networks from scratch - only called at world creation or by the admin verb
-// The above is a lie. Turbolifts also call this proc.
-/datum/controller/subsystem/machines/proc/makepowernets()
-	// TODO - check to not run while in the middle of a tick!
-	for(var/datum/powernet/PN in powernets)
-		qdel(PN)
-	powernets.Cut()
-	setup_powernets_for_cables(cable_list)
-
-/datum/controller/subsystem/machines/proc/setup_powernets_for_cables(list/cables)
-	for(var/obj/structure/cable/PC in cables)
-		if(!PC.powernet)
-			var/datum/powernet/NewPN = new()
-			NewPN.add_cable(PC)
-			propagate_network(PC,PC.powernet)
 
 /datum/controller/subsystem/machines/proc/setup_atmos_machinery(list/atmos_machines)
 	for(var/obj/machinery/atmospherics/machine in atmos_machines)

@@ -39,9 +39,7 @@
 
 /area/awaymission/snow_outpost/dark
 	icon_state = "red"
-	requires_power = 1
-	always_unpowered = 1
-	dynamic_lighting = 1
+	area_power_override = null
 
 /area/awaymission/snow_outpost/outside/nospawn
 	icon_state = "away2"
@@ -49,7 +47,7 @@
 	floracountmax = 0
 
 /area/awaymission/snow_outpost/powered
-	requires_power = 0
+	area_power_override = TRUE
 	dynamic_lighting = 1
 	icon_state = "away"
 	ambience = list('sound/ambience/chapel/chapel1.ogg', 'sound/ambience/ruins/ruins5.ogg', 'sound/ambience/ruins/ruins1.ogg')  // Rykka was here. <3

@@ -5,7 +5,7 @@
 	suffix = "abductor.dmm"
 
 /area/abductor
-	requires_power = 0
+	area_power_override = TRUE
 	icon_state = "purple"
 
 /area/abductor/

@@ -10,7 +10,7 @@
 /area/ship/ert
 	name = "\improper ERT Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/ship/ert/engine
@@ -88,7 +88,7 @@
 /area/shuttle/ert_ship_boat
 	name = "\improper NRB Robineau"
 	icon_state = "yellow"
-	requires_power = 0
+	area_power_override = TRUE
 
 // The 'shuttle' of the excursion shuttle
 // /datum/shuttle/autodock/overmap/ert_ship

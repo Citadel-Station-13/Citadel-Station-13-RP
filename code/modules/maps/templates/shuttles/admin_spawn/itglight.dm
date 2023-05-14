@@ -6,7 +6,7 @@
 	suffix = "itglight.dmm"
 
 /area/itglight
-	requires_power = 1
+	area_power_override = null
 	icon_state = "purple"
 
 /area/itglight/cockpit
@@ -76,7 +76,7 @@
 
 /area/shuttle/itglightshuttle
 	name = "ITG Shuttlecraft"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 // The 'Dauntless'

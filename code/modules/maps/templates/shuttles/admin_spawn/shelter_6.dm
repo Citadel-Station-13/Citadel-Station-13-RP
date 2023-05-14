@@ -12,7 +12,7 @@
 	name = "\improper Tabiranth"
 	icon_state = "blue-red2"
 	area_flags = AREA_RAD_SHIELDED
-	requires_power = 1
+	area_power_override = null
 
 // The shuttle's 'shuttle' computer
 /obj/machinery/computer/shuttle_control/explore/tabiranth

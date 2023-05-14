@@ -10,7 +10,7 @@
 /area/ship/expe
 	name = "\improper Event Ship (Use a Subtype!)"
 	icon_state = "shuttle2"
-	requires_power = 1
+	area_power_override = null
 	dynamic_lighting = 1
 
 /area/ship/expe/engineering

@@ -4,11 +4,11 @@
 
 /area/rift/transit
 	name = "Rift Debug Transit"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/rift/space
 	name = "Rift Debug Space"
-	requires_power = 0
+	area_power_override = TRUE
 	is_outside = OUTSIDE_YES
 
 // Elevator areas.
@@ -978,7 +978,7 @@
 /*
 /area/antag/antag_base
 	name = "\improper Syndicate Outpost"
-	requires_power = 0
+	area_power_override = TRUE
 	dynamic_lighting = 0
 
 /area/shuttle/antag_space/base

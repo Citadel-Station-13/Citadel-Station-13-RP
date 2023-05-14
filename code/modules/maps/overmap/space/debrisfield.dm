@@ -59,13 +59,10 @@
 /area/tether_away/debrisfield_vr/shuttle_buffer //For space around shuttle landmarks to keep submaps from generating to block them
 	icon_state = "debrisexplored"
 	name = "\improper Space"
-	requires_power = 1
+	area_power_override = null
 	always_unpowered = 1
 	dynamic_lighting = 0
 	has_gravity = 0
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
 	ambience = AMBIENCE_SPACE
 
 /area/submap/debrisfield_vr
@@ -98,7 +95,7 @@
 
 /area/submap/debrisfield_vr/sci_overrun
 	name = "POI - Overrun Science Ship"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/submap/debrisfield_vr/old_sat
 	name = "POI - Old Satellite"
@@ -108,7 +105,7 @@
 
 /area/submap/debrisfield_vr/mining_drone_ship
 	name = "POI - Disabled Mining Drone"
-	requires_power = 0
+	area_power_override = TRUE
 
 /area/submap/debrisfield_vr/mining_outpost
 	name = "POI - Destroyed Mining Outpost"
@@ -236,9 +233,6 @@
 		T.air_contents.remove(T.air_contents.total_moles)
 
 /area/submap/debrisfield_vr/misc_debris //for random bits of debris that should use dynamic lights
-	requires_power = 1
+	area_power_override = null
 	always_unpowered = 1
 	has_gravity = 0
-	power_light = 0
-	power_equip = 0
-	power_environ = 0

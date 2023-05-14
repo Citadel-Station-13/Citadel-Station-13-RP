@@ -727,6 +727,8 @@
 					if(T.z != X.z)
 						z_level_change = TRUE
 
+					#warn abstract move/moved/whatever has to be around to deal with rebuild of powernets.
+
 					//Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 					for(var/obj/O in T)
 						O.loc = X
