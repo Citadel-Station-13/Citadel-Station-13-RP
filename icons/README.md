@@ -11,6 +11,14 @@ We enforce a rigid-ish structure for organization.
 **Anything not in here is currently undecided and may be freely placed.**
 Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'll work on this, we promise. Anyone can propose changes to the hierarchy, just know what you're doing!
 
+### Sub-hierarchies
+
+/enigmas, /factions, /modules are subhierarchies for storing specific groups within /code/game/enigams, /code/game/factions, /code/modules.
+
+This is to further enforce namespacing and reduce in the amount of over-filled icon folders.
+
+### Hierarchy View
+
 - /icons
   - /clothing - general, non-module clothing items placed in here
     - /{type} - uniform, head, shoes, suit, etc
@@ -20,6 +28,18 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
       - /misc - unsorted things
       - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
     - /gearsets - bundled sets, like voidsuits, cryosuits, etc
+  - /enigmas - one-off / specific / themed content goes in here
+    - /\<enigma-name\> - everything under this is optional; these 4 paths are the recommendations.
+      - /clothing
+      - /items
+      - /machinery
+      - /structures
+  - /factions - faction content goes in here
+    - /\<faction-name\> - everything under this is optional; these 4 paths are the recommendations.
+      - /clothing
+      - /items
+      - /machinery
+      - /structures
   - /items - general, non-module, non-clothing items placed in here
   - /machinery - used for sprites for general, non-module machines. use subdirectories if more than one .dmi is needed, or for closely related machinery.
   - /mapping - used for sprites for in-map-editor objects that are   invisible in game world
@@ -27,7 +47,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
     - /landmarks - landmark icons
     - /spawners - things like window spawners
   - /modules - used for specific departments / content packs / logical bundles
-    - /{modulename} - the examples before are just that, examples. some modules will require different styles of icon organization.
+    - /{modulename} - everything under this is optional; these 4 paths are the recommendations.
       - /items - items
       - /clothing - clothing
       - /machinery - machinery
