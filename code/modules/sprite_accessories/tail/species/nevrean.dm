@@ -3,7 +3,8 @@
 	id = "tail_nevrean"
 	icon = 'icons/mob/sprite_accessories/tails/nevrean.dmi'
 	icon_state = "nevreantail"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreanhc
@@ -11,7 +12,8 @@
 	id = "tail_nevrean_color"
 	icon = 'icons/mob/sprite_accessories/tails/nevrean.dmi'
 	icon_state = "nevreantail_hc"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreandc
@@ -20,7 +22,8 @@
 	icon = 'icons/mob/sprite_accessories/tails/nevrean.dmi'
 	icon_state = "nevreantail_dc"
 	extra_overlay = "nevreantail_dc_tail"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreanwagdc
@@ -29,7 +32,8 @@
 	icon = 'icons/mob/sprite_accessories/tails/nevrean.dmi'
 	icon_state = "wagtail"
 	extra_overlay = "wagtail_dc_tail"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/nevreanwagdc_alt
@@ -38,5 +42,6 @@
 	icon = 'icons/mob/sprite_accessories/tails/nevrean.dmi'
 	icon_state = "wagtail2_dc"
 	extra_overlay = "wagtail2_dc_mark"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
