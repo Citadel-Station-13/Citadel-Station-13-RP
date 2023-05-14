@@ -2,6 +2,7 @@
 	name = "tajaran tail"
 	id = "tail_tajaran"
 	icon_state = "tajtail_s"
+	ani_state = "tajtail_a"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
@@ -9,6 +10,7 @@
 	name = "tajaran tail, colorable"
 	id = "tail_tajaran_color"
 	icon_state = "tajtail_hc_s"
+	ani_state = "tajtail_hc_a"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
