@@ -18,7 +18,6 @@
 
 /datum/ability/species/sonar/on_trigger(mob/user, toggling)
 	. = ..()
-	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
 
 	owner.visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),
