@@ -1,9 +1,9 @@
 /datum/sprite_accessory/tail/special/tajaran
-    name = "tajaran tail"
-    id = "tail_tajaran"
-    icon_state = "tajtail_a"
-    do_colouration = 1
-    color_blend_mode = ICON_MULTIPLY
+	name = "tajaran tail"
+	id = "tail_tajaran"
+	icon_state = "tajtail_a"
+	do_colouration = 1
+	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/tajaran_anim
     name = "tajaran tail, Animated"
