@@ -3,7 +3,8 @@
 	id = "tail_unathi"
 	icon = 'icons/mob/sprite_accessories/tails/unathi.dmi'
 	icon_state = "sogtail"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/unathihc
@@ -11,7 +12,8 @@
 	id = "tail_unathi_color"
 	icon = 'icons/mob/sprite_accessories/tails/unathi.dmi'
 	icon_state = "sogtail_hc"
-	do_colouration = 1
+	do_colouration = TRUE
+	front_behind_system = TRUE
 	color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/unathi_damaged
@@ -20,6 +22,7 @@
 	icon = 'icons/mob/sprite_accessories/tails/unathi.dmi'
 	icon_state = "unathitail_damaged"
 	species_allowed = list(SPECIES_UNATHI)
+	front_behind_system = TRUE
 	color_blend_mode = ICON_ADD
 
 /datum/sprite_accessory/tail/unathi_stubby
@@ -28,4 +31,5 @@
 	icon = 'icons/mob/sprite_accessories/tails/unathi.dmi'
 	icon_state = "unathitail_stubby"
 	species_allowed = list(SPECIES_UNATHI)
+	front_behind_system = TRUE
 	color_blend_mode = ICON_ADD
