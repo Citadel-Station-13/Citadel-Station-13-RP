@@ -18,9 +18,19 @@
 	id = "tail_farwa"
 	icon = 'icons/mob/sprite_accessories/tails/monkey.dmi'
 	icon_state = "farwatail"
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/stok
 	name = "stok tail"
 	id = "tail_stok"
 	icon = 'icons/mob/sprite_accessories/tails/monkey.dmi'
 	icon_state = "stoktail"
+	front_behind_system = TRUE
+
+/datum/sprite_accessory/tail/stokhc
+	name = "stok tail, colorable"
+	id = "tail_stok_colorable"
+	icon = 'icons/mob/sprite_accessories/tails/monkey.dmi'
+	icon_state = "stoktail_hc"
+	do_colouration = TRUE
+	front_behind_system = TRUE
