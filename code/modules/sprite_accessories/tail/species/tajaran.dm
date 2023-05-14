@@ -6,13 +6,12 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/tail/special/tajaranhc
-	name = "tajaran tail, colorable"
-	id = "tail_tajaran_color"
-	icon_state = "tajtail_hc_s"
-	ani_state = "tajtail_hc_a"
-	do_colouration = 1
-	color_blend_mode = ICON_MULTIPLY
+/datum/sprite_accessory/tail/special/tajaran_anim
+    name = "tajaran tail (Animated)"
+    id = "tail_tajaran_anim"
+    icon_state = "tajtail_a"
+    do_colouration = 1
+    color_blend_mode = ICON_MULTIPLY
 
 /datum/sprite_accessory/tail/special/tajaran_damaged
 	name = "tajaran tail, damaged/short"
