@@ -116,7 +116,7 @@
 	if(!wanted)
 		return
 	// todo: this is shit, it doesn't update area power because our power code is primitive.
-	var/kw_used = use_power_oneoff(min(recharge_rate * delta_time, wanted))
+	var/kw_used = use_burst_power(min(recharge_rate * delta_time, wanted))
 	if(!kw_used)
 		return
 	cell.give(DYNAMIC_KW_TO_CELL_UNITS(kw_used, delta_time))

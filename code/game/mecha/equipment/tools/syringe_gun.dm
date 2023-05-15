@@ -60,7 +60,7 @@
 		occupant_message("<span class=\"alert\">No available reagents to load syringe with.</span>")
 		return
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	var/turf/trg = get_turf(target)
 	var/obj/item/reagent_containers/syringe/S = syringes[1]
 	S.forceMove(get_turf(chassis))
@@ -276,7 +276,7 @@
 	var/amount = S.synth_speed / S.processed_reagents.len
 	for(var/reagent in S.processed_reagents)
 		S.reagents.add_reagent(reagent,amount)
-		S.chassis.use_power(energy_drain)
+		S.chassis.use_burst_power(energy_drain)
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone
@@ -440,7 +440,7 @@
 	. = TRUE
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/proc/heal_target(var/mob/living/L)	// We've done all our special checks, just get to fixing damage.
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	if(istype(L))
 		L.adjustBruteLoss(brute_heal * -1)
 		L.adjustFireLoss(burn_heal * -1)

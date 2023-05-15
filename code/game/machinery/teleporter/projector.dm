@@ -65,7 +65,7 @@
 		pad.update_icon()
 		pad.update_use_power(USE_POWER_ACTIVE)
 		update_use_power(USE_POWER_ACTIVE)
-		use_power(5000)
+		use_burst_power(5000)
 		for(var/mob/O in hearers(src, null))
 			O.show_message(SPAN_NOTICE("Teleporter engaged!"), 2)
 	add_fingerprint(usr)

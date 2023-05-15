@@ -53,7 +53,7 @@
 		return
 
 	if(active)
-		use_power(5000)
+		use_burst_power(5000)
 
 
 /obj/machinery/gateway/centerstation/proc/detect()
@@ -121,7 +121,7 @@
 	if(!active)		return
 	if(!awaygate)	return
 
-	use_power(5000)
+	use_burst_power(5000)
 	SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 	playsound(src, 'sound/effects/phasein.ogg', 100, 1)
 	if(awaygate.calibrated)

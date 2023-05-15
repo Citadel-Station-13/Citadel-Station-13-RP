@@ -637,7 +637,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 	outgoing_call?.validate()
 	for(var/obj/effect/overlay/hologram/hologram as anything in holograms)
-		use_power_oneoff(power_per_hologram)
+		use_burst_power(power_per_hologram)
 		hologram.check_location()
 
 /obj/machinery/holopad/proc/check_hologram(obj/effect/overlay/hologram/holopad/holo)

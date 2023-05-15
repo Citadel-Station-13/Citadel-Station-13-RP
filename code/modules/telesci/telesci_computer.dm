@@ -207,7 +207,7 @@
 			teles_left -= 1
 
 			// use a lot of power
-			use_power(trueDistance * 10000)
+			use_burst_power(trueDistance * 10000)
 
 			var/datum/effect_system/spark_spread/S = new /datum/effect_system/spark_spread()
 			S.set_up(5, 1, get_turf(telepad))

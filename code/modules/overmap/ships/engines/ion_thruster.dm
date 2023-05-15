@@ -79,7 +79,7 @@
 /obj/machinery/ion_engine/proc/burn()
 	if(!on && !powered())
 		return 0
-	use_power_oneoff(burn_cost)
+	use_burst_power(burn_cost)
 	. = thrust_limit * generated_thrust
 
 /obj/machinery/ion_engine/proc/get_thrust()

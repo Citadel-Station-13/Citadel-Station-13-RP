@@ -179,7 +179,7 @@
 
 	explosion_intensity = min(explosion_intensity, 12) // 3, 6, 12 explosion cap
 
-	M.use_power(2000000) // Major power spike, few of these will completely burn APC's cell - equivalent of 2GJ of power.
+	M.use_burst_power(2000000) // Major power spike, few of these will completely burn APC's cell - equivalent of 2GJ of power.
 
 	// Trigger a powernet alarm. Careful engineers will probably notice something is going on.
 	var/area/temp_area = get_area(M)

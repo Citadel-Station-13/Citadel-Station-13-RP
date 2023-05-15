@@ -201,7 +201,7 @@
 			//Also heal some oxyloss ourselves because inaprovaline is so bad at preventing it!!
 			occupant.adjustOxyLoss(-4)
 
-			use_power(7500) //This might need tweaking.
+			use_burst_power(7500) //This might need tweaking.
 			return
 
 		else if((occupant.health >= heal_level || occupant.health == occupant.getMaxHealth()) && (!eject_wait))

@@ -265,7 +265,7 @@
 		last_flow_rate = 0
 		last_power_draw = 0
 	else
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		update_connected_network()
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/attackby(var/obj/item/I, var/mob/user)

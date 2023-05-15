@@ -46,7 +46,7 @@
 /obj/structure/wire/conduit/junction/adjacent_wires()
 	. = list()
 	var/turned = turn(dir, 180)
-	for(obj/structure/wire/conduit/other in get_step(src, dir))
+	for(var/obj/structure/wire/conduit/other in get_step(src, dir))
 		if(other.connect_dirs & turned)
 			. += other
 
@@ -67,18 +67,18 @@
 	if(ISDIAGONALDIR(dir))
 		var/ns = NSCOMPONENT(dir)
 		var/ew = EWCOMPONENT(dir)
-		for(obj/structure/wire/conduit/other in get_step(src, ns))
+		for(var/obj/structure/wire/conduit/other in get_step(src, ns))
 			if(other.connect_dirs & turn(ns, 180))
 				. += other
-		for(obj/structure/wire/conduit/other in get_step(src, ew))
+		for(var/obj/structure/wire/conduit/other in get_step(src, ew))
 			if(other.connect_dirs & turn(ew, 180))
 				. += other
 	else
 		var/turned = turn(dir, 180)
-		for(obj/structure/wire/conduit/other in get_step(src, dir))
+		for(var/obj/structure/wire/conduit/other in get_step(src, dir))
 			if(other.connect_dirs & turned)
 				. += other
-		for(obj/structure/wire/conduit/other in get_step(src, turned))
+		for(var/obj/structure/wire/conduit/other in get_step(src, turned))
 			if(other.connect_dirs & dir)
 				. += other
 
@@ -97,7 +97,7 @@
 		if(dir == src.dir)
 			continue
 		var/turned = turn(dir, 180)
-		for(obj/structure/wire/conduit/other in get_step(src, dir))
+		for(var/obj/structure/wire/conduit/other in get_step(src, dir))
 			if(other.connect_dirs & turned)
 				. += other
 
@@ -114,7 +114,7 @@
 	. = list()
 	for(var/dir in GLOB.cardinal)
 		var/turned = turn(dir, 180)
-		for(obj/structure/wire/conduit/other in get_step(src, dir))
+		for(var/obj/structure/wire/conduit/other in get_step(src, dir))
 			if(other.connect_dirs & turned)
 				. += other
 

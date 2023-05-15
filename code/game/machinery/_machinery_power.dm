@@ -50,10 +50,6 @@
 /obj/machinery/proc/get_power_usage()
 	return POWER_CONSUMPTION
 
-// DEPRECATED! - USE use_power_oneoff() instead!
-/obj/machinery/proc/use_power(var/amount, var/chan = -1) // defaults to power_channel
-	return src.use_power_oneoff(amount, chan);
-
 // This will have this machine have its area eat this much power next tick, and not afterwards. Do not use for continued power draw.
 // Returns actual amount drawn (In theory this could be less than the amount asked for. In pratice it won't be FOR NOW)
 /obj/machinery/proc/use_power_oneoff(var/amount, var/chan = CURRENT_CHANNEL)

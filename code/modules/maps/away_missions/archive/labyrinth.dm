@@ -180,7 +180,7 @@
 				M.afflict_unconscious(20 * 4)
 			else
 				M.make_jittery(500)
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		log_message("Honked from [src.name]. HONK!")
 		do_after_cooldown()
 		return

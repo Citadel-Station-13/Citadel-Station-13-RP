@@ -351,7 +351,7 @@
 	// 10kw per hp
 	var/drained_energy = drained_hp * 10000
 	if (source_area)
-		source_area.use_power_oneoff(drained_energy)
+		source_area.use_burst_power(drained_energy)
 	else if (istype(power_source,/datum/powernet))
 		drained_energy = PN.draw_power(drained_energy * 0.001) * 1000
 	else if (istype(power_source, /obj/item/cell))

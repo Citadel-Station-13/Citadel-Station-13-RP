@@ -141,7 +141,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 	return 1
 

@@ -26,7 +26,7 @@
 	else
 		inc_damage *= src.damage_coeff
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	spawn()
 		do_after_cooldown()
 	return max(0, inc_damage)
@@ -42,7 +42,7 @@
 	else if(istype(A, /obj))
 		inc_damage *= damage_coeff
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	spawn()
 		do_after_cooldown()
 	return max(0, inc_damage)
@@ -84,7 +84,7 @@
 		chassis.check_for_internal_damage(list(MECHA_INT_FIRE,MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 		Proj.on_hit(chassis)
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	do_after_cooldown()
 	return
 
@@ -104,7 +104,7 @@
 			chassis.take_damage(round(O.throw_force*damage_coeff))
 			chassis.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
 	set_ready_state(0)
-	chassis.use_power(energy_drain)
+	chassis.use_burst_power(energy_drain)
 	do_after_cooldown()
 	return
 */

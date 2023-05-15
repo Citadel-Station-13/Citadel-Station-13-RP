@@ -100,8 +100,8 @@
 
 /obj/item/shield_projector/rectangle/mecha/adjust_health(amount)
 	. = ..()
-	my_mech.use_power(OMNI_SHIELD_DRAIN)
+	my_mech.use_burst_power(OMNI_SHIELD_DRAIN)
 	if(!active && shield_health < shield_regen_amount)
-		my_mech.use_power(OMNI_SHIELD_DRAIN * 4)
+		my_mech.use_burst_power(OMNI_SHIELD_DRAIN * 4)
 
 #undef OMNI_SHIELD_DRAIN

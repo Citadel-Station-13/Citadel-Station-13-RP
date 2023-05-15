@@ -397,7 +397,7 @@
 		power_draw = pump_gas(src, env, air_contents, transfer_moles, active_power_usage)
 
 	if (power_draw > 0)
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 // perform a flush
 /obj/machinery/disposal/proc/flush()

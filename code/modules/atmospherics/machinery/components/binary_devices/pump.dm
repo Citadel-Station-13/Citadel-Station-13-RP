@@ -136,7 +136,7 @@ Thus, the two variables affect pump operation are set in New():
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 		if(network1)
 			network1.update = 1

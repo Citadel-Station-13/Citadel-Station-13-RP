@@ -98,7 +98,7 @@
 			playsound(loc, "sound/machines/buzz-two.ogg", 100)
 			break
 
-		use_power(USE_POWER_ACTIVE)
+		use_burst_power(USE_POWER_ACTIVE)
 	copying = FALSE
 
 /obj/machinery/photocopier/Topic(href, href_list)

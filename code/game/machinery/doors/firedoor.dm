@@ -416,7 +416,7 @@
 		if(machine_stat & (BROKEN|NOPOWER))
 			return //needs power to open unless it was forced
 		else
-			use_power(360)
+			use_burst_power(360)
 	else
 		if(usr && usr.ckey)
 			log_admin("[usr]([usr.ckey]) has forced open an emergency shutter.")

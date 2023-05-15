@@ -101,7 +101,7 @@
 		return
 	if(!operating)
 		return
-	use_power(10)
+	use_burst_power(10)
 	var/list/affecting = loc.contents - src		// moved items will be all in loc
 	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
 

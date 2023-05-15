@@ -70,7 +70,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		use_burst_power(power_draw)
 
 		if(network)
 			network.update = 1
@@ -89,7 +89,7 @@
 
 	if(air_contents.temperature > 0)
 		var/power_used = pump_gas(src, air_contents, environment, air_contents.total_moles, power_rating)
-		use_power(power_used)
+		use_burst_power(power_used)
 
 		if(network)
 			network.update = 1

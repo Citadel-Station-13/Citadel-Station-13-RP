@@ -17,11 +17,17 @@
  */
 /datum/wirenet/power
 	/// available power in network accumulated for the next tick
+	var/supply_accumulating = 0
+	/// available power in network at start of powernet reset
 	var/supply = 0
-	/// available power left in the current tick
+	/// available power left in the current reset cycle
 	var/avail = 0
+
 	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
 	var/load = 0
+
+
+	
 
 /datum/wirenet/power/proc/draw(kw)
 

@@ -125,7 +125,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
-	use_power(200)
+	use_burst_power(200)
 
 	var/success = 0
 	for(var/obj/machinery/photocopier/faxmachine/F in allfaxes)
@@ -161,14 +161,14 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	else
 		return 0
 
-	use_power(active_power_usage)
+	use_burst_power(active_power_usage)
 	return 1
 
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(mob/sender, destination)
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
-	use_power(200)
+	use_burst_power(200)
 
 	//received copies should not use toner since it's being used by admins only.
 	var/obj/item/rcvdcopy

@@ -566,3 +566,24 @@
 	. = . % 9
 	dropped_atom.pixel_x = -8 + ((.%3)*8)
 	dropped_atom.pixel_y = -8 + (round( . / 3)*8)
+
+//? Power - Availability
+
+#warn impl
+
+//? Power - Burst Usage
+
+/**
+ * Use a burst amount of power.
+ *
+ * @params
+ * * amount - watts
+ * * channel - power channel
+ * * allow_partial - allow partial power usage, aka allow brownouts to affect us
+ * * over_time - (optional) - how long we draw it over.
+ *
+ * @return amount used
+ */
+/obj/machinery/proc/use_burst_power(amount, channel = power_channel, allow_partial, over_time)
+	var/area/our_area = get_area(src)
+	return our_area.use_burst_power(amount, channel, allow_partial, over_time)

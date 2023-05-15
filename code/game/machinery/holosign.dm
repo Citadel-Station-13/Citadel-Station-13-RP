@@ -63,7 +63,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	use_burst_power(5)
 
 	active = !active
 	icon_state = "light[active]"

@@ -242,6 +242,6 @@
 	M.afflict_stun(20 * 2)
 	if(M.reagents.get_reagent_amount("inaprovaline") < 5)
 		M.reagents.add_reagent("inaprovaline", 5)
-	S.chassis.use_power(S.energy_drain)
+	S.chassis.use_burst_power(S.energy_drain)
 	S.update_equip_info()
 	return

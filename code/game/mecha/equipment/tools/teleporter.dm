@@ -14,7 +14,7 @@
 	var/turf/T = get_turf(target)
 	if(T)
 		set_ready_state(0)
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		do_teleport(chassis, T, 4)
 		do_after_cooldown()
 	return

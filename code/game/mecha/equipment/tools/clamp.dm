@@ -77,7 +77,7 @@
 		occupant_message("You lift [target] and start to load it into cargo compartment.")
 		chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
 		set_ready_state(0)
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		O.anchored = 1
 		var/T = chassis.loc
 		if(do_after_cooldown(target))
@@ -116,7 +116,7 @@
 			occupant_message("You push [target] out of the way.")
 			chassis.visible_message("[chassis] pushes [target] out of the way.")
 		set_ready_state(0)
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		do_after_cooldown()
 	return 1
 
@@ -138,7 +138,7 @@
 				chassis.occupant_message("You lift [target] and start to load it into cargo compartment.")
 				chassis.visible_message("[chassis] lifts [target] and starts to load it into cargo compartment.")
 				set_ready_state(0)
-				chassis.use_power(energy_drain)
+				chassis.use_burst_power(energy_drain)
 				O.anchored = 1
 				var/T = chassis.loc
 				if(do_after_cooldown(target))
@@ -170,6 +170,6 @@
 			chassis.occupant_message("You smash into [target], sending them flying.")
 			chassis.visible_message("[chassis] tosses [target] like a piece of paper.")
 		set_ready_state(0)
-		chassis.use_power(energy_drain)
+		chassis.use_burst_power(energy_drain)
 		do_after_cooldown()
 	return 1

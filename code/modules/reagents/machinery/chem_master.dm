@@ -307,7 +307,7 @@
 					name, ""))
 			if (amount == null || amount <= 0)
 				return FALSE
-			use_power(active_power_usage)
+			use_burst_power(active_power_usage)
 			if (to_container == "beaker" && !mode)
 				reagents.remove_reagent(id, amount)
 				return TRUE
@@ -343,7 +343,7 @@
 			var/vol_each_text = params["volume"]
 			var/vol_each_max = reagents.total_volume / amount
 			var/list/style
-			use_power(active_power_usage)
+			use_burst_power(active_power_usage)
 			if (item_type == "pill")
 				vol_each_max = min(60, vol_each_max)
 			else if (item_type == "patch")

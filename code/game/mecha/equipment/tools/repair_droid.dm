@@ -101,7 +101,7 @@
 
 		repaired = 1
 	if(repaired)
-		if(RD.chassis.use_power(RD.energy_drain))
+		if(RD.chassis.use_burst_power(RD.energy_drain))
 			RD.set_ready_state(0)
 		else
 			stop()

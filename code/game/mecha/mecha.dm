@@ -806,7 +806,7 @@
 
 	if(move_result)
 		can_move = 0
-		use_power(step_energy_drain)
+		use_burst_power(step_energy_drain)
 		if(istype(src.loc, /turf/space))
 			if(!src.check_for_support())
 				src.pr_inertial_movement.start(list(src,direction))
@@ -862,7 +862,7 @@
 					can_phase = FALSE
 					flick("[initial_icon]-phase", src)
 					src.loc = get_step(src,src.dir)
-					src.use_power(phasing_energy_drain)
+					src.use_burst_power(phasing_energy_drain)
 					sleep(get_step_delay() * 3)
 					can_phase = TRUE
 					occupant_message("Phazed.")
@@ -1161,7 +1161,7 @@
 		return
 
 	if(Proj.damage_type == HALLOSS)
-		use_power(Proj.agony * 5)
+		use_burst_power(Proj.agony * 5)
 
 	if(!(Proj.nodamage))
 		var/ignore_threshold
@@ -1272,7 +1272,7 @@
 
 /obj/mecha/emp_act(severity)
 	if(get_charge())
-		use_power((cell.charge/2)/severity)
+		use_burst_power((cell.charge/2)/severity)
 		take_damage(50 / severity,"energy")
 	src.log_message("EMP detected",1)
 	if(prob(80))
@@ -2604,7 +2604,7 @@
 	if(!src.cell) return
 	return max(0, src.cell.charge)
 
-/obj/mecha/proc/use_power(amount)
+/obj/mecha/proc/use_burst_power(amount)
 	return call((proc_res["dynusepower"]||src), "dynusepower")(amount)
 
 /obj/mecha/proc/dynusepower(amount)

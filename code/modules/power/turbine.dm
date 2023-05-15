@@ -163,7 +163,7 @@
 	rpm = max(0, rpm - (rpm*rpm)/(COMPFRICTION*efficiency))
 
 	if(starter && !(machine_stat & NOPOWER))
-		use_power(2800)
+		use_burst_power(2800)
 		if(rpm<1000)
 			rpmtarget = 1000
 	else

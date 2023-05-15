@@ -88,7 +88,7 @@
 	if(network1)
 		network1.update = 1
 	if (power_draw > 0)
-		use_power(power_draw)
+		use_burst_power(power_draw)
 		last_power_draw += power_draw
 
 	// STEP 3 - Convert CO2 to O2  (Note: We know our internal group multipier is 1, so just be cool)
@@ -100,7 +100,7 @@
 
 	// STEP 4 - Consume the resources
 	var/converted_moles = min(co2_moles, moles_per_tick)
-	use_power(converted_moles * power_per_mole)
+	use_burst_power(converted_moles * power_per_mole)
 	last_power_draw += converted_moles * power_per_mole
 	stored_material[MATERIAL_ALGAE] -= converted_moles * algae_per_mole
 	stored_material[MATERIAL_CARBON] += converted_moles * carbon_per_mole

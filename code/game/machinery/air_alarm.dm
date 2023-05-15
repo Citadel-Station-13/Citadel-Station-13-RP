@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 				var/energy_used = min(gas.get_thermal_energy_change(target_temperature) , active_power_usage)
 
 				gas.adjust_thermal_energy(energy_used)
-				//use_power(energy_used, ENVIRON) //handle by update_use_power instead
+				//use_burst_power(energy_used, ENVIRON) //handle by update_use_power instead
 			else	//gas cooling
 				var/heat_transfer = min(abs(gas.get_thermal_energy_change(target_temperature)), active_power_usage)
 
@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 
 				heat_transfer = -gas.adjust_thermal_energy(-heat_transfer)	//get the actual heat transfer
 
-				//use_power(heat_transfer / cop, ENVIRON)	//handle by update_use_power instead
+				//use_burst_power(heat_transfer / cop, ENVIRON)	//handle by update_use_power instead
 
 			environment.merge(gas)
 

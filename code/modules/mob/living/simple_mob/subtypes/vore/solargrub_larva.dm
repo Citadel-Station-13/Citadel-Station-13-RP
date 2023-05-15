@@ -284,7 +284,7 @@ var/global/list/grub_machine_overlays = list()
 			power_list = active_power_usages
 	for(var/i = 1 to power_list.len)
 		if(A.powered(i))
-			use_power(power_list[i], i)
+			use_burst_power(power_list[i], i)
 			grub.power_drained += power_list[i]
 	if(prob(5))
 		shuffle_power_usages()

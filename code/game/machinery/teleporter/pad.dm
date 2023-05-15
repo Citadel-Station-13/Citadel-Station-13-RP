@@ -41,7 +41,7 @@
 /obj/machinery/tele_pad/Bumped(M as mob|obj)
 	if(com?.projector?.engaged)
 		teleport(M)
-		use_power_oneoff(5000)
+		use_burst_power(5000)
 
 /obj/machinery/tele_pad/proc/teleport(atom/movable/M as mob|obj)
 	if(!com)

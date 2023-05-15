@@ -183,7 +183,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		update_icon()
 
 // Decide where to get the power to fire from
-/obj/machinery/power/pointdefense/use_power_oneoff(amount, chan = CURRENT_CHANNEL)
+/obj/machinery/power/pointdefense/use_burst_power(amount, chan = CURRENT_CHANNEL)
 	if(powernet)
 		return draw_power(amount * 0.001) * 1000
 	// We are not connected to a powernet, so we want APC power.  Reproduce that code here since this is weird.
@@ -192,7 +192,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	var/area/A = get_area(src)	// make sure it's in an area
 	if(!A || !A.powered(chan))	// and that the area is powered
 		return 0				// if not, then not powered
-	return A.use_power_oneoff(amount, chan)
+	return A.use_burst_power(amount, chan)
 
 // Find controller with the same tag on connected z levels (if any)
 /obj/machinery/power/pointdefense/proc/get_controller()
@@ -257,7 +257,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	var/obj/effect/meteor/M = target.resolve()
 	if(!istype(M))
 		return
-	if(use_power_oneoff(active_power_usage) < active_power_usage)
+	if(use_burst_power(active_power_usage) < active_power_usage)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()

@@ -17,7 +17,7 @@
 	if(..())
 		return
 
-	use_power(50)
+	use_burst_power(50)
 	on = !(on)
 	icon_state = text("igniter[]", on)
 
@@ -104,7 +104,7 @@
 	s.set_up(2, 1, src)
 	s.start()
 	last_spark = world.time
-	use_power(1000)
+	use_burst_power(1000)
 	var/turf/location = src.loc
 	if(isturf(location))
 		location.hotspot_expose(1000,500,1)
@@ -126,7 +126,7 @@
 	if(..())
 		return
 
-	use_power(5)
+	use_burst_power(5)
 
 	active = TRUE
 	icon_state = "launcheract"
@@ -138,7 +138,7 @@
 
 	for(var/obj/machinery/igniter/M in GLOB.machines)
 		if(M.id == id)
-			use_power(50)
+			use_burst_power(50)
 			M.on = !(M.on)
 			M.icon_state = text("igniter[]", M.on)
 

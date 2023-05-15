@@ -30,7 +30,7 @@
 		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 		return
 	playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
-	use_power(5000) // Use a lot of power.
+	use_burst_power(5000) // Use a lot of power.
 	var/mob/living/silicon/robot = H.Robotize()
 	robot.SetLockDown()
 	spawn(50) // So he can't jump out the gate right away.
