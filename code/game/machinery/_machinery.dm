@@ -116,9 +116,7 @@
 	/// overlay state added when panel is open
 	var/panel_icon_state
 
-	//* unsorted
-	var/machine_stat = 0
-	var/emagged = FALSE
+	//* Power *//
 	/**
 	 * USE_POWER_OFF = dont run the auto
 	 * USE_POWER_IDLE = run auto, use idle
@@ -129,9 +127,18 @@
 	var/idle_power_usage = 0
 	/// active power usage in watts
 	var/active_power_usage = 0
-	///EQUIP, ENVIRON or LIGHT
+	/// registered power usage
+	var/registered_power_usage
+	/// what power channel we use for area power
 	var/power_channel = POWER_CHANNEL_EQUIP
-	var/power_init_complete = FALSE
+	/// Static power system is set up?
+	var/power_initialized = FALSE
+	/// recursive power usage initialized
+	var/power_recursive_registered = FALSE
+
+	//* unsorted
+	var/machine_stat = 0
+	var/emagged = FALSE
 	///List of all the parts used to build it, if made from certain kinds of frames.
 	var/list/component_parts = null
 	var/uid
@@ -570,6 +577,36 @@
 //? Power - Availability
 
 #warn impl
+
+//? Power - Static Usage
+
+/obj/machinery/proc/initialize_static_power()
+	#warn impl
+
+/obj/machinery/proc/deinitialize_static_power()
+	#warn impl
+
+/obj/machinery/proc/set_use_power(new_use_power)
+	#warn impl
+
+/obj/machinery/proc/set_power_channel(new_power_channel)
+	#warn impl
+
+/obj/machinery/proc/set_idle_power_usage(new_usage)
+	#warn impl
+
+/obj/machinery/proc/set_active_power_usage(new_usage)
+	#warn impl
+
+/**
+ * overrides current static power usage regardless of use_power
+ */
+/obj/machinery/proc/set_custom_power_usage(new_usage)
+
+/obj/machinery/Moved(atom/old_loc, direction, forced)
+	. = ..()
+	#warn impl
+
 
 //? Power - Burst Usage
 

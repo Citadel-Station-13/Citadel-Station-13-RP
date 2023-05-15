@@ -4,13 +4,16 @@
 #define DOOR_CRUSH_DAMAGE 20
 /// How many minutes that a person can be AFK before not being allowed to be an alien.
 #define ALIEN_SELECT_AFK_BUFFER 1
-// Constants for machine's use_power
+
+//! Constants for machine's use_power
 /// No continuous power use
 #define USE_POWER_OFF    0
 /// Machine is using power at its idle power level
 #define USE_POWER_IDLE   1
 /// Machine is using power at its active power level
 #define USE_POWER_ACTIVE 2
+/// Machine is using a custom amount of power
+#define USE_POWER_CUSTOM 3
 
 //! Bitflags for a machine's preferences on when it should start processing. For use with machinery's `processing_flags` var.
 /// Indicates the machine will automatically start processing right after it's `Initialize()` is ran.
