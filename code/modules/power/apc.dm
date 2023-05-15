@@ -100,9 +100,10 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/channels_enabled = POWER_CHANNELS_ALL
 	/// power channels auto
 	var/channels_auto = POWER_CHANNELS_ALL
-	/// last static usage for channels
-	var/list/last_used_static[POWER_CHANNEL_COUNT]
-
+	/// last static power usage of area
+	var/list/static_power_used = EMPTY_POWER_CHANNEL_LIST
+	/// burst usage for channels since last process()
+	var/list/burst_power_used = EMPTY_POWER_CHANNEL_LIST
 
 	#warn rest
 
@@ -120,11 +121,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/coverlocked = 1
 	var/aidisabled = 0
 	var/obj/machinery/power/terminal/terminal = null
-	var/lastused_light = 0
-	var/lastused_equip = 0
-	var/lastused_environ = 0
-	var/lastused_charging = 0
-	var/lastused_total = 0
 	var/main_status = 0
 	var/mob/living/silicon/ai/hacker = null // Malfunction var. If set AI hacked the APC and has full control.
 	var/wiresexposed = 0
@@ -1429,6 +1425,24 @@ GLOBAL_LIST_EMPTY(apcs)
 
 #undef APC_UPDATE_ICON_COOLDOWN
 
+//? Power usage - burst
+
+/**
+ * use a dynamic amount of burst power
+ *
+ * @params
+ * * amount - how much
+ * * channel - power channel
+ * * allow_partial - allow partial usage
+ * * over_time - (optional) amount of deciseconds this is over, used for smoothing
+ *
+ * @return power drawn
+ */
+/obj/machinery/power/apc/proc/draw_burst_power(amount, channel, allow_partial, over_time)
+
+#warn impl all
+
+//? Subtypes
 
 /obj/machinery/power/apc/direction_bump  //For the love of god there's so many fucking var edits of the APC, use these instead pleaaaaase -Bloop
 

@@ -43,8 +43,8 @@
 	//? Area wide power
 	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
 	var/area_power_override = null
-	/// power usages - oneoff
-	var/list/power_usage_burst = EMPTY_POWER_CHANNEL_LIST
+	/// if set to on, apcs don't ever drain and all power usage is just done without hitting APC at all.
+	var/area_power_infinite = FALSE
 	/// power usages - registered / static
 	var/list/power_usage_static = EMPTY_POWER_CHANNEL_LIST
 	/// power channels turned on
@@ -661,9 +661,28 @@ var/list/ghostteleportlocs = list()
  * use a dynamic amount of burst power
  *
  * @params
+ * * amount - how much
  * * channel - power channel
+ * * allow_partial - allow partial usage
+ * * over_time - (optional) amount of deciseconds this is over, used for smoothing
+ *
+ * @return power drawn
  */
-/area/proc/use_burst_power(channel, allow_partial)
+/area/proc/use_burst_power(amount, channel, allow_partial, over_time)
+	if(!powered(channel))
+		return 0
+	if(area_power_infinite)
+		return amount
+	return isnull(apc)? 0 : apc.draw_burst_power(amount, channel, allow_partial, over_time)
+
+/**
+ * set which power channels are turned on
+ */
+/area/proc/set_power_channels(channels)
+	if(channels == power_channels)
+		return
+	power_channels = channels
+	power_change()
 
 //? Turf operations - add / remove
 
