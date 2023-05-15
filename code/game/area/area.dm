@@ -657,6 +657,14 @@ var/list/ghostteleportlocs = list()
 		return area_power_override
 	return power_channels & global.power_channel_bits[channel]
 
+/**
+ * use a dynamic amount of burst power
+ *
+ * @params
+ * * channel - power channel
+ */
+/area/proc/use_burst_power(channel, allow_partial)
+
 //? Turf operations - add / remove
 
 /**
@@ -667,8 +675,10 @@ var/list/ghostteleportlocs = list()
  */
 /area/proc/take_turfs(list/turf/turfs)
 	var/list/area/old_areas = list()
-	for(var/turf/T as anything in turfs)
+	var/turf/T
+	for(T as anything in turfs)
 		old_areas += T.loc
 	contents.Add(turfs)
 	for(var/i in 1 to length(turfs))
+		T = i
 		T.on_change_area(old_areas[i], src)
