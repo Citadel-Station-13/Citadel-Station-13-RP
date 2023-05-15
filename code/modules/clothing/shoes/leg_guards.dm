@@ -30,7 +30,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/clothing/shoes/leg_guard/ablative
+/obj/item/clothing/shoes/leg_guard/laserproof
 	name = "ablative leg guards"
 	desc = "These will protect your legs and feet from energy weapons."
 	icon_state = "leg_guards_laser"
@@ -39,7 +39,7 @@
 	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/shoes/leg_guard/bulletproof
-	name = "bullet resistant leg guards"
+	name = "ballistic leg guards"
 	desc = "These will protect your legs and feet from ballistic weapons."
 	icon_state = "leg_guards_bullet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")

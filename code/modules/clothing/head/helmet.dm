@@ -53,14 +53,6 @@
 	desc = "A tan helmet made from advanced ceramic. Comfortable and robust."
 	icon_state = "helmet_tac"
 	armor_type = /datum/armor/station/tactical
-	siemens_coefficient = 0.6
-
-/obj/item/clothing/head/helmet/merc
-	name = "combat helmet"
-	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
-	icon_state = "helmet_merc"
-	armor_type = /datum/armor/station/combat
-	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
@@ -68,7 +60,7 @@
 	icon_state = "riot"
 	armor_type = /datum/armor/station/riot
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	siemens_coefficient = 0.7
+	siemens_coefficient = 0.5
 	valid_accessory_slots = null
 	action_button_name = "Toggle Visor"
 
@@ -90,11 +82,11 @@
 	icon_state = "helmet_reflec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ablative
-	siemens_coefficient = 0.1
+	siemens_coefficient = 0.2
 	valid_accessory_slots = null
 
-/obj/item/clothing/head/helmet/bulletproof
-	name = "bullet-resistant helmet"
+/obj/item/clothing/head/helmet/ballistic
+	name = "ballistic helmet"
 	desc = "It's a helmet specifically designed to protect against ballistic projectiles."
 	icon_state = "helmet_bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
@@ -112,12 +104,17 @@
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
 
+/obj/item/clothing/head/helmet/redcombat
+	name = "combat helmet"
+	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
+	icon_state = "helmet_merc"
+	armor_type = /datum/armor/station/combat
+
 /obj/item/clothing/head/helmet/flexitac
 	name = "tactical light helmet"
 	desc = "A tan helmet made from advanced ceramic with an integrated tactical flashlight."
 	icon_state = "flexitac"
 	armor_type = /datum/armor/station/tactical
-	siemens_coefficient = 0.6
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
 	action_button_name = "Toggle Head-light"

@@ -34,7 +34,7 @@
 /datum/armor/station/heavy
 	melee = 0.2
 	bullet = 0.6
-	bullet_soak = 2
+	bullet_soak = 3
 	laser = 0.25
 	energy = 0.1
 	bomb = 0.1
@@ -84,9 +84,9 @@
 /datum/armor/station/combat
 	melee = 0.15
 	bullet = 0.5
-	bullet_soak = 1
+	bullet_soak = 2
 	laser = 0.5
-	laser_soak = 1
+	laser_soak = 2
 	energy = 0.1
 	bomb = 0.2
 	bio = 0.1

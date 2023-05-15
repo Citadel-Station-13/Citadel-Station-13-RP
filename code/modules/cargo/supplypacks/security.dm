@@ -113,7 +113,7 @@
 			/obj/item/clothing/accessory/armor/armguards/tan,
 			/obj/item/clothing/accessory/armor/armguards/ablative,
 			/obj/item/clothing/accessory/armor/armguards/riot,
-			/obj/item/clothing/accessory/armor/armguards/bulletproof
+			/obj/item/clothing/accessory/armor/armguards/ballistic
 			)
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -131,7 +131,7 @@
 			/obj/item/clothing/accessory/armor/legguards/tan,
 			/obj/item/clothing/accessory/armor/legguards/ablative,
 			/obj/item/clothing/accessory/armor/legguards/riot,
-			/obj/item/clothing/accessory/armor/legguards/bulletproof
+			/obj/item/clothing/accessory/armor/legguards/ballistic
 			)
 	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -203,9 +203,9 @@
 	name = "Armor Set - Ablative"
 	contains = list(
 			/obj/item/clothing/head/helmet/ablative,
-			/obj/item/clothing/suit/armor/ablative,
-			/obj/item/clothing/gloves/arm_guard/ablative,
-			/obj/item/clothing/shoes/leg_guard/ablative
+			/obj/item/clothing/suit/armor/laserproof,
+			/obj/item/clothing/gloves/arm_guard/laserproof,
+			/obj/item/clothing/shoes/leg_guard/laserproof
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -229,7 +229,7 @@
 /datum/supply_pack/security/bullet_resistant_armor
 	name = "Armor Set - Ballistic"
 	contains = list(
-			/obj/item/clothing/head/helmet/bulletproof,
+			/obj/item/clothing/head/helmet/ballistic,
 			/obj/item/clothing/suit/armor/bulletproof,
 			/obj/item/clothing/gloves/arm_guard/bulletproof,
 			/obj/item/clothing/shoes/leg_guard/bulletproof
@@ -243,10 +243,10 @@
 /datum/supply_pack/security/bullet_resistant_plates
 	name = "Armor Set - Ballistic (P-Carrier)"
 	contains = list(
-			/obj/item/clothing/head/helmet/bulletproof,
-			/obj/item/clothing/suit/armor/pcarrier/bulletproof,
-			/obj/item/clothing/accessory/armor/armguards/bulletproof,
-			/obj/item/clothing/accessory/armor/legguards/bulletproof
+			/obj/item/clothing/head/helmet/ballistic,
+			/obj/item/clothing/suit/armor/pcarrier/ballistic,
+			/obj/item/clothing/accessory/armor/armguards/ballistic,
+			/obj/item/clothing/accessory/armor/legguards/ballistic
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -623,18 +623,18 @@
 	container_name = "Kevlar Upgrade Kits"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack/security/pcarriers/merc
-	name = "Armor - Mercenary Armor (P-Carrier)"
+/datum/supply_pack/security/pcarriers/combat
+	name = "Armor - Combat Armor (P-Carrier)"
 	contains = list(
 			/obj/item/clothing/suit/armor/pcarrier = 3,
-			/obj/item/clothing/accessory/armor/armorplate/merc = 3,
-			/obj/item/clothing/accessory/armor/armguards/merc = 3,
-			/obj/item/clothing/accessory/armor/legguards/merc = 3,
-			/obj/item/clothing/head/helmet/merc = 3,
+			/obj/item/clothing/accessory/armor/armorplate/combat = 3,
+			/obj/item/clothing/accessory/armor/armguards/combat = 3,
+			/obj/item/clothing/accessory/armor/legguards/combat = 3,
+			/obj/item/clothing/head/helmet/redcombat = 3,
 			)
 	cost = 70
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	container_name = "Mercenary Armor crate"
+	container_name = "Combat Armor crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 	contraband = 1
 

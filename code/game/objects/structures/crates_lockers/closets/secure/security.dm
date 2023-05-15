@@ -230,7 +230,7 @@
 		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/shoes/boots/jackboots,
-		/obj/item/clothing/suit/storage/vest/blueshield,
+		/obj/item/clothing/suit/armor/pcarrier/light/ntbs,
 		/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield,
 		/obj/item/storage/backpack/blueshield,
 		/obj/item/storage/belt/security,

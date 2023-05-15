@@ -114,8 +114,8 @@
 	armor_type = /datum/armor/station/mediumtreated
 
 /obj/item/clothing/accessory/armor/armorplate/heavy
-	name = "heavy armor plate"
-	desc = "A hefty silicon carbide armor plate sporting a polyurethane elastomeric coating to mitigate spalling from lower calibers as they're deflected. It provides excellent protection against ballistics. Fits within a plate carrier."
+	name = "strong armor plate"
+	desc = "A strong silicon carbide armor plate sporting a polyurethane elastomeric coating to mitigate spalling from lower calibers as they're deflected. It provides excellent protection against ballistics. Fits within a plate carrier."
 	icon_state = "armor_heavy"
 	armor_type = /datum/armor/station/heavy
 
@@ -129,11 +129,11 @@
 	name = "combat armor plate"
 	desc = "A hardened steel armor plate, providing solid protection from ballistics and lasers. Suitable for combat with firearms of any type, but offers minimal protection from hand to hand.  Fits within a plate carrier."
 	icon_state = "armor_combat"
-	armor_type = /datum/armor/combat
+	armor_type = /datum/armor/station/combat
 
 /obj/item/clothing/accessory/armor/armorplate/ballistic
 	name = "ballistic armor plate"
-	desc = "A hefty silicon carbide armor plate with a layer of heavy tungsten, followed by a second coating of a polyurethane elastomeric to mitigate spalling from lower calibers as they're deflected. It's design is state of of the art when it comes to ballistics, and as a concequence the material is heavy and not as capable of dispersing laser fire as other varients. Fits within a plate carrier."
+	desc = "A hefty silicon carbide armor plate with a layer of heavy tungsten, followed by a second coating of a polyurethane elastomeric to mitigate spalling from lower calibers as they're deflected. It's design is state of of the art when it comes to ballistics, and as a concequence the material is rather heavy, and is not as capable of dispersing laser fire as other armor varients. Fits within a plate carrier."
 	icon_state = "armor_ballistic"
 	slowdown = 0.7
 	armor_type = /datum/armor/station/ballistic
@@ -148,7 +148,7 @@
 
 /obj/item/clothing/accessory/armor/armorplate/ablative
 	name = "ablative armor plate"
-	desc = "A highly reflective cobalt-chromium-tungsten alloy forms the seemingly jagged surface of the armor plate, which is adorned in perfectly cut and fitted glass prisms that form a smooth low-poly surface. When the ablative armor plate is working as designed, the glass prisms reflect laser fire inwards towards the innermost vertex for subsequent 'ablation'. There is a warning label on the back that warns you. It reads: Attempting to use this ablative armor plate to deflect ballistics and/or non-standard energy beams will result in 'rapid deconstruction'. Fits within a plate carrier."
+	desc = "A highly reflective cobalt-chromium-tungsten alloy forms the seemingly jagged surface of the armor plate, which is adorned in perfectly cut and fitted glass prisms that form a smooth low-poly surface. When the ablative armor plate is working as designed, the glass prisms reflect laser fire inwards towards the innermost vertex for subsequent 'ablation', and sometimes reflection. There is a warning label on the back that warns you. It reads: Attempting to use this ablative armor plate to deflect ballistics and/or non-standard energy beams could result in 'rapid deconstruction' of the armor plate and its user. Fits within a plate carrier."
 	icon_state = "armor_ablative"
 	slowdown = 0.7
 	armor_type = /datum/armor/station/ablative
@@ -161,7 +161,7 @@
 		if(P.reflected)
 			return ..()
 
-		var/reflectchance = 40 - round(damage/3)
+		var/reflectchance = 20 - round(damage/3)
 		if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 			reflectchance /= 2
 		if(P.starting && prob(reflectchance))
@@ -206,10 +206,10 @@
 	desc = "A pair of tan arm pads reinforced with armor plating. Attaches to a plate carrier."
 	icon_state = "armguards_tan"
 
-/obj/item/clothing/accessory/armor/armguards/merc
+/obj/item/clothing/accessory/armor/armguards/combat
 	name = "heavy arm guards"
 	desc = "A pair of red-trimmed black arm pads reinforced with heavy armor plating. Attaches to a plate carrier."
-	icon_state = "armguards_merc"
+	icon_state = "armguards_combat"
 	armor_type = /datum/armor/station/combat
 
 /obj/item/clothing/accessory/armor/armguards/ablative
@@ -220,8 +220,8 @@
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
 	armor_type = /datum/armor/station/ablative
 
-/obj/item/clothing/accessory/armor/armguards/bulletproof
-	name = "bullet resistant arm guards"
+/obj/item/clothing/accessory/armor/armguards/ballistic
+	name = "ballistic arm guards"
 	desc = "These arm guards will protect your arms from ballistic weapons."
 	icon_state = "armguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
@@ -265,10 +265,10 @@
 	desc = "A pair of armored leg pads in tan. Attaches to a plate carrier."
 	icon_state = "legguards_tan"
 
-/obj/item/clothing/accessory/armor/legguards/merc
+/obj/item/clothing/accessory/armor/legguards/combat
 	name = "heavy leg guards"
 	desc = "A pair of heavily armored leg pads in red-trimmed black. Attaches to a plate carrier."
-	icon_state = "legguards_merc"
+	icon_state = "legguards_combat"
 	armor_type = /datum/armor/station/combat
 
 /obj/item/clothing/accessory/armor/legguards/ablative
@@ -279,8 +279,8 @@
 	siemens_coefficient = 0.1
 	armor_type = /datum/armor/station/ablative
 
-/obj/item/clothing/accessory/armor/legguards/bulletproof
-	name = "bullet resistant leg guards"
+/obj/item/clothing/accessory/armor/legguards/ballistic
+	name = "ballistic leg guards"
 	desc = "These will protect your legs from ballistic weapons."
 	icon_state = "legguards_ballistic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
@@ -311,6 +311,11 @@
 	name = "\improper CORPORATE SECURITY tag"
 	desc = "An armor tag with the words CORPORATE SECURITY printed in red lettering."
 	icon_state = "ntstag"
+
+/obj/item/clothing/accessory/armor/tag/ntbs
+	name = "\improper BLUESHIELD tag"
+	desc = "An armor tag with the words BLUESHIELD printed in red lettering."
+	icon_state = "ntbstag"
 
 /obj/item/clothing/accessory/armor/tag/ntc
 	name = "\improper CORPORATE SEC-COM tag"

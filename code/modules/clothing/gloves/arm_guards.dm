@@ -28,7 +28,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/clothing/gloves/arm_guard/ablative
+/obj/item/clothing/gloves/arm_guard/laserproof
 	name = "ablative arm guards"
 	desc = "These arm guards will protect your hands and arms from energy weapons."
 	icon_state = "arm_guards_laser"
@@ -37,7 +37,7 @@
 	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/gloves/arm_guard/bulletproof
-	name = "bullet resistant arm guards"
+	name = "ballistic arm guards"
 	desc = "These arm guards will protect your hands and arms from ballistic weapons."
 	icon_state = "arm_guards_bullet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")

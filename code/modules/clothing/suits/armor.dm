@@ -11,7 +11,7 @@
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
-	siemens_coefficient = 0.6
+	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
@@ -64,7 +64,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "riot_new", SLOT_ID_LEFT_HAND = "riot_new")
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bullet resistant vest"
+	name = "ballistic vest"
 	desc = "A vest that excels in protecting the wearer against high-velocity solid projectiles."
 	icon_state = "bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
@@ -663,6 +663,9 @@
 /obj/item/clothing/suit/armor/pcarrier/light/nts
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/nts)
 
+/obj/item/clothing/suit/armor/pcarrier/light/ntbs
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/ntbs)
+
 /obj/item/clothing/suit/armor/pcarrier/light/ntc
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/ntc)
 
@@ -691,7 +694,7 @@
 
 /obj/item/clothing/suit/armor/pcarrier/press
 	name = "light blue plate carrier"
-	desc = "A lightweight light blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight, light blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_press"
 
 /obj/item/clothing/suit/armor/pcarrier/blue/sol
@@ -718,11 +721,11 @@
 	name = "tactical plate carrier"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/tactical, /obj/item/clothing/accessory/storage/pouches/large/tan)
 
-/obj/item/clothing/suit/armor/pcarrier/merc
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
+/obj/item/clothing/suit/armor/pcarrier/combat
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/combat, /obj/item/clothing/accessory/storage/pouches/large)
 
 //Brig Spec Variants
-/obj/item/clothing/suit/armor/pcarrier/bulletproof
+/obj/item/clothing/suit/armor/pcarrier/ballistic
 	name = "ballistic plate carrier"
 	desc = "A lightweight ballistic vest. Equipped with a ballistic armor plate by default, this armor consists of a kevlar weave augmented by a non-Newtonian gel layer."
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/ballistic)
