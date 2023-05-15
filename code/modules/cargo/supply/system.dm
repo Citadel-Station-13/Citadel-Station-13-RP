@@ -58,3 +58,4 @@
 
 /datum/supply_system/proc/spend(amt, obfuscate, datum/supply_order/order)
 	CRASH("abstract remove credits called")
+
