@@ -206,7 +206,7 @@ BLIND     // can't see anything
 	body_cover_flags = EYES // Cit change
 	inactive_icon_state = "denight"
 	flash_protection = FLASH_PROTECTION_REDUCED
-	vision_modifier = /datum/vision/augmenting/nvg_lowtech
+	vision_modifier = /datum/vision/baseline/nvg_lowtech
 
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"

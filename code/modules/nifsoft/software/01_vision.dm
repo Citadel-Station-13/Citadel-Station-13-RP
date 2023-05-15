@@ -175,6 +175,6 @@
 	access = ACCESS_SECURITY_EQUIPMENT
 	tick_flags = NIF_ACTIVETICK
 	vision_flags = (NIF_V_NIGHTVIS)
-	vision_holder = /datum/vision/augmenting/nvg_lowtech
+	vision_holder = /datum/vision/baseline/nvg_lowtech
 	incompatible_with = list(NIF_MESONS,NIF_MATERIAL,NIF_THERMALS)
 	vision_exclusive = TRUE

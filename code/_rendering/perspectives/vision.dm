@@ -173,6 +173,7 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	priority = DARKSIGHT_PRIORITY_GLASSES
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_NVGS
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_NVGS
+
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_NVGS
 	soft_darksight_smartness = FALSE
 

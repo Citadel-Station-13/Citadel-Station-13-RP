@@ -123,7 +123,6 @@
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	. = ..()
 	var/fullbright = FALSE
-	var/seemeson = FALSE
 
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
@@ -134,7 +133,6 @@
 	if(sight_mode & BORGMESON)
 		AddSightSelf(SEE_TURFS)
 		fullbright = TRUE
-		seemeson = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
 		fullbright = TRUE

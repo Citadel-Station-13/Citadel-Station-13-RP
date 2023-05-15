@@ -99,6 +99,10 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 
+/**
+ * darkvision plate: combines turfs, objs, and mobs planes
+ * the only reason this is a plane and not just a holder is we can inject more stuff later into this plane.
+ */
 /atom/movable/screen/plane_master/darkvision_plate
 	plane = DARKVISION_PLATE_PLANE
 	render_target = DARKVISION_PLATE_RENDER_TARGET
@@ -115,11 +119,7 @@
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()
-	add_filter("plate", 1, layering_filter(render_source = DARKVISION_PLATE_RENDER_TARGET))
-
-#warn redo this shit
-
-/atom/movable/screen/plane_master/
+	add_filter("plate", 100, layering_filter(render_source = DARKVISION_PLATE_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE

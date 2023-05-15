@@ -161,7 +161,6 @@
 		/area/crew_quarters/sleep/Dorm_3/holo,
 		/area/crew_quarters/sleep/Dorm_5/holo,
 		/area/crew_quarters/sleep/Dorm_7/holo,
-		/area/looking_glass/lg_1,
 		/area/rnd/miscellaneous_lab)
 
 	unit_test_exempt_from_atmos = list(

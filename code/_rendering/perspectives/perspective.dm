@@ -422,18 +422,17 @@
 	update_see_in_dark()
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
 	if(!isnull(darkvision_plate))
+		darkvision_plate = darkvision_matrix || null
 	var/atom/movable/screen/plane_master/darkvision_main = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
 	if(!isnull(darkvision_main))
 		if(darkvision_smart && !darkvision_main.has_filter("smart_mask"))
 			darkvision_main.add_filter(
 				"smart_mask",
-				5,
-				alpha_mask_filter(0, 0, render_source = LIGHTING_ALPHA_FORWARD_TARGET),
+				1,
+				alpha_mask_filter(0, 0, render_source = LIGHTING_ALPHA_FORWARD_TARGET, flags = MASK_INVERSE),
 			)
 		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
 			darkvision_main.remove_filter("smart_mask")
-
-	#warn impl
 
 /datum/perspective/proc/check_hard_darkvision()
 	return isnull(hard_darkvision)? 255 : hard_darkvision
@@ -453,7 +452,7 @@
 
 //? plane holder
 
-/datum/perspective/assert_planes()
+/datum/perspective/proc/assert_planes()
 	if(!isnull(planes))
 		return
 	planes = new /datum/plane_holder/mob_perspective

@@ -8,13 +8,8 @@
 	var/relevant_plane_path
 
 /atom/movable/screen/plane_render/darkvision_plate
+	render_source = DARKVISION_PLATE_RENDER_TARGET
 	render_target = DARKVISION_PLATE_FORWARD_TARGET
-	// convert all color to alpha
-	color = list(
-
-	)
-
-#warn uhh
 
 /atom/movable/screen/plane_render/lighting_as_alpha
 	plane = RENDER_INTERMEDIATE_PLANE
@@ -23,5 +18,9 @@
 	relevant_plane_path = /atom/movable/screen/plane_master/lighting
 	// convert all color to alpha
 	color = list(
-
+		0, 0, 0, 0.33,
+		0, 0, 0, 0.33,
+		0, 0, 0, 0.33,
+		0, 0, 0, 0,
+		0, 0, 0, 0
 	)

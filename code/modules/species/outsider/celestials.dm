@@ -74,7 +74,7 @@
 	hunger_factor = 0.1 //more hungry
 	brute_mod = 0.75
 	flight_mod = 0.2
-	darksight = 5
+	vision_innate = /datum/vision/baseline/species_tier_1 //! haha only tier 1 ang*ls
 
 	abilities = list(
 		/datum/ability/species/toggle_flight/auril,

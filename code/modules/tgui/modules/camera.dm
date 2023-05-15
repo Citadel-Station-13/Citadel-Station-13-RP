@@ -68,7 +68,7 @@
 	QDEL_NULL(parallax)
 	return ..()
 
-/datum/tgui_module_old/camera/ensure_tgui_camera()
+/datum/tgui_module_old/camera/proc/ensure_tgui_camera()
 	if(isnull(planes))
 		planes = new
 		planes.map_id = map_name
