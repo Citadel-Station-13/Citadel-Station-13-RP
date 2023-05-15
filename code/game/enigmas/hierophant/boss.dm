@@ -10,3 +10,5 @@
 	return ..()
 
 #warn impl
+
+/datum/ai_holder/special/hierophant
