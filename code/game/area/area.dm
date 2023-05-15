@@ -2,6 +2,12 @@
  * # area
  *
  * A grouping of tiles into a logical space, mostly used by map editors
+ *
+ * *Warning*: Accessing contents in any way, including "in src", "in contents", "contents", etc,
+ *     is *extremely* expensive. Do not do it unless it's truly for an one off purpose.
+ *     This is because BYOND does not actually internally maintain a contents list for /area;
+ *     accessing contents is equivalent to iterating over world and filtering out everything
+ *     not in the area.
  */
 /area
 	level = null
@@ -34,6 +40,27 @@
 	/// holopads - lazyinit'd
 	var/list/obj/machinery/holopad/holopads
 
+	//? Area wide power
+	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
+	var/area_power_override = null
+	/// power usages - oneoff
+	var/list/power_usage_burst = EMPTY_POWER_CHANNEL_LIST
+	/// power usages - registered / static
+	var/list/power_usage_static = EMPTY_POWER_CHANNEL_LIST
+	/// power channels turned on
+	var/power_channels = POWER_BITS_ALL
+
+	/// Parallax moving?
+	var/parallax_moving = FALSE
+	/// Parallax move speed - 0 to disable
+	var/parallax_move_speed = 0
+	/// Parallax move dir - degrees clockwise from north
+	var/parallax_move_angle = 0
+
+	//? Smoothing
+	/// Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
+	var/area/area_limited_icon_smoothing
+
 	//? unsorted
 	var/fire = null
 	var/atmos = 1
@@ -45,23 +72,6 @@
 	var/eject = null
 
 	var/debug = 0
-
-	//? Area wide power
-	/// force all machinery using area power to be able to receive unlimited power, or no power; null for use area power system.
-	var/area_power_override = null
-	/// power usages - oneoff
-	var/list/power_usage_burst[POWER_CHANNEL_COUNT]
-	/// power usages - registered / static
-	var/list/power_usage_static[POWER_CHANNEL_COUNT]
-	/// power channels turned on
-	var/power_channels = POWER_BITS_ALL
-
-	/// Parallax moving?
-	var/parallax_moving = FALSE
-	/// Parallax move speed - 0 to disable
-	var/parallax_move_speed = 0
-	/// Parallax move dir - degrees clockwise from north
-	var/parallax_move_angle = 0
 
 	var/music = null
 
@@ -80,9 +90,6 @@
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
-
-	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
-	var/area/area_limited_icon_smoothing
 
 	var/tmp/is_outside = OUTSIDE_NO
 
@@ -234,9 +241,19 @@
 /area/has_gravity()
 	return has_gravity
 
+/**
+ * DANGER DANGER EXTREMELY EXPENSIVE DO NOT CALL OFTEN
+ *
+ * THIS IS ON THE REFACTOR
+ */
 /area/proc/get_contents()
 	return contents
 
+/**
+ * DANGER DANGER EXTREMELY EXPENSIVE DO NOT CALL OFTEN
+ *
+ * THIS IS ON THE REFACTOR
+ */
 /area/proc/get_cameras()
 	var/list/cameras = list()
 	for (var/obj/machinery/camera/C in src)
@@ -392,35 +409,6 @@
 	//	new lighting behaviour with obj lights
 		icon_state = null
 
-
-/*
-#define EQUIP 1
-#define LIGHT 2
-#define ENVIRON 3
-*/
-
-
-/**
- * Returns int 1 or 0 if the area has power for the given channel
- *
- * evalutes a mixture of variables mappers can set, requires_power, always_unpowered and then
- * per channel power_equip, power_light, power_environ
- */
-/area/proc/powered(chan) // return true if the area has power to given channel
-
-	if(!requires_power)
-		return 1
-	if(always_unpowered)
-		return 0
-	switch(chan)
-		if(EQUIP)
-			return power_equip
-		if(LIGHT)
-			return power_light
-		if(ENVIRON)
-			return power_environ
-
-	return FALSE
 
 /**
  * Called when the area power status changes
@@ -658,6 +646,16 @@ var/list/ghostteleportlocs = list()
 	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
+
+//? Area power
+
+/**
+ * returns if the channel is being powered
+ */
+/area/proc/powered(channel)
+	if(!isnull(area_power_override))
+		return area_power_override
+	return power_channels & global.power_channel_bits[channel]
 
 //? Turf operations - add / remove
 
