@@ -17,8 +17,8 @@
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
-	always_unpowered = 1
-	dynamic_lighting = 0
+	area_power_override = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	mobcountmax = 50
 	floracountmax = 300
 	valid_mobs = list(/mob/living/simple_mob/animal/sif/savik, /mob/living/simple_mob/animal/wolf, /mob/living/simple_mob/animal/sif/shantak,

@@ -4,7 +4,7 @@ var/global/list/map_sectors = list()
 /area/overmap
 	name = "System Map"
 	icon_state = "start"
-	requires_power = FALSE
+	area_power_override = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 /turf/unsimulated/map

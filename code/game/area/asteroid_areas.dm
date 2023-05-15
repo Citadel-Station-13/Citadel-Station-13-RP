@@ -119,9 +119,8 @@
 	name = "Engineering Outpost Solars"
 
 /area/outpost/engineering/solarsoutside
-	area_power_override = null
-	always_unpowered = 1
-	dynamic_lighting = 0
+	area_power_override = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/outpost/engineering/solarsoutside/aft
 	name = "\improper Engineering Outpost Solar Array"

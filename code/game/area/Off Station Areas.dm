@@ -189,7 +189,7 @@
 /area/class_d/wildcat_mining_base
 	name = "Abandoned Facility"
 	icon_state = "blue"
-	requires_power = TRUE
+	area_power_override = null
 
 /area/class_d/wildcat_mining_base/exterior_power
 	name = "Exterior Power"
@@ -237,7 +237,7 @@
 
 /area/class_d/POIs/landing_pad
 	name = "Prefab Homestead"
-	requires_power = FALSE
+	area_power_override = TRUE
 
 /area/class_d/POIs/reactor
 	name = "Prefab Reactor"
@@ -867,14 +867,14 @@
 /area/aerostat
 	name = "\improper Away Mission - Aerostat Outside"
 	icon_state = "away"
-	requires_power = FALSE
+	area_power_override = TRUE
 	dynamic_lighting = FALSE
 	is_outside = OUTSIDE_YES
 
 /area/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
 	icon_state = "crew_quarters"
-	requires_power = TRUE
+	area_power_override = null
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
 	is_outside = OUTSIDE_NO

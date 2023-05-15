@@ -658,3 +658,19 @@ var/list/ghostteleportlocs = list()
 	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
+
+//? Turf operations - add / remove
+
+/**
+ * changes turfs to us
+ *
+ * @params
+ * * turfs - turfs to take.
+ */
+/area/proc/take_turfs(list/turf/turfs)
+	var/list/area/old_areas = list()
+	for(var/turf/T as anything in turfs)
+		old_areas += T.loc
+	contents.Add(turfs)
+	for(var/i in 1 to length(turfs))
+		T.on_change_area(old_areas[i], src)

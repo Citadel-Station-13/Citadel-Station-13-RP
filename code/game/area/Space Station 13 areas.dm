@@ -22,8 +22,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/space
 	name = "\improper Space"
 	icon_state = "space"
-	requires_power = TRUE
-	always_unpowered = TRUE
+	area_power_override = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	has_gravity = FALSE
 	power_light = 0
@@ -2053,8 +2052,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Solars
 
 /area/solar
-	area_power_override = null
-	always_unpowered = 1
+	area_power_override = FALSE
 	ambience = AMBIENCE_SPACE
 
 /area/solar/auxport
@@ -3506,11 +3504,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Used for creating the exchange areas.
 /area/turbolift
 	name = "Turbolift"
-	requires_power = FALSE
+	area_power_override = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	sound_env = SMALL_ENCLOSED
 	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	requires_power = FALSE
+	area_power_override = TRUE
 	area_limited_icon_smoothing = /area/turbolift
 
 	var/lift_floor_label = null

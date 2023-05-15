@@ -232,6 +232,5 @@
 		T.air_contents.remove(T.air_contents.total_moles)
 
 /area/submap/debrisfield_vr/misc_debris //for random bits of debris that should use dynamic lights
-	area_power_override = null
-	always_unpowered = 1
-	has_gravity = 0
+	area_power_override = FALSE
+	has_gravity = FALSE

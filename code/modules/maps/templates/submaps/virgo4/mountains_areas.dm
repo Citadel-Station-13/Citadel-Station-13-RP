@@ -24,12 +24,12 @@
 
 /area/submap/cave/crashed_ufo
 	name = "POI - Crashed Alien Vessel"
-	requires_power = FALSE
+	area_power_override = TRUE
 	ambience = AMBIENCE_OTHERWORLDLY
 
 /area/submap/cave/crashed_ufo_frigate
 	name = "POI - Crashed Alien Frigate"
-	requires_power = FALSE
+	area_power_override = TRUE
 	ambience = AMBIENCE_OTHERWORLDLY
 
 /area/submap/cave/crystal1
@@ -133,7 +133,7 @@
 
 /area/submap/lava_trench/outpost
 	name = "POI - Trench Outpost"
-	requires_power = FALSE
+	area_power_override = TRUE
 	icon_state = "submap2"
 
 /area/submap/cave/random_geyser
@@ -148,4 +148,4 @@
 //Citadel change
 /area/submap/cave/cultmine
 	name = "Cult Mine"
-	requires_power = FALSE
+	area_power_override = TRUE

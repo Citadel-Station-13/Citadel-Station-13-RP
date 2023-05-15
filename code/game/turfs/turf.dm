@@ -564,6 +564,25 @@
 		return TRUE
 	return FALSE
 
+//? area changes
+
+/**
+ * changes area
+ *
+ * @return old area
+ */
+/turf/proc/change_area(area/new_area)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	. = loc
+	new_area.contents.Add(src)
+	on_change_area(., new_area)
+
+/**
+ * called when we change areas
+ */
+/turf/proc/on_change_area(area/old_area, area/new_area)
+	return
+
 //? Radiation
 
 /turf/proc/update_rad_insulation()

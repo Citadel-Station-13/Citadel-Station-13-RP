@@ -37,8 +37,9 @@
  *
  * @params
  * * method - how we were deconstructed
+ * * where - where to drop things (defaults to drop location if ..() is called first)
  */
-/atom/proc/drop_products(method)
+/atom/proc/drop_products(method, atom/where = drop_location())
 	return
 
 /**
@@ -49,8 +50,8 @@
  * * dropping - movable in question
  * * where - where to move to
  */
-/atom/proc/drop_product(method, atom/movable/dropping, atom/where)
-	dropping.forceMove(where || drop_location())
+/atom/proc/drop_product(method, atom/movable/dropping, atom/where = drop_location())
+	dropping.forceMove(where)
 
 //? Armor
 

@@ -103,13 +103,13 @@
 /area/tether_away/aerostat
 	name = "\improper Away Mission - Aerostat Outside"
 	icon_state = "away"
-	requires_power = FALSE
+	area_power_override = TRUE
 	dynamic_lighting = FALSE
 
 /area/tether_away/aerostat/inside
 	name = "\improper Away Mission - Aerostat Inside"
 	icon_state = "crew_quarters"
-	requires_power = TRUE
+	area_power_override = null
 	dynamic_lighting = TRUE
 	forced_ambience = list('sound/ambience/tension/tension.ogg', 'sound/ambience/tension/argitoth.ogg', 'sound/ambience/tension/burning_terror.ogg')
 

@@ -62,6 +62,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	var/d1 = 0
 	var/d2 = 1
+	/// can we be cut with wirecutters? null for no, number for time; usually 0.
+	var/cut_time = 0
 
 /obj/structure/wire/cable/Initialize(mapload, _color, _d1, _d2)
 	. = ..()
@@ -97,13 +99,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	is_junction = d1 == 0
 
-	var/turf/T = src.loc // hide if turf is not intact
-	if(level==1 && T)
-		hide(!T.is_plating())
-
-/obj/structure/wire/cable/setDir()
-	return FALSE // *No.*
-
 /obj/structure/wire/cable/adjacent_wires()
 	. = list()
 
@@ -113,7 +108,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	for(C in loc)
 		if(C == src)
 			continue
-		if(C.d1 != d1 && C.d2 != d2 && C.d1 != d2 && C.dr != d1) // no matches
+		if(C.d1 != d1 && C.d2 != d2 && C.d1 != d2 && C.d2 != d1) // no matches
 			continue
 		. += C
 
@@ -180,6 +175,28 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 								continue
 							. += C
 
+/obj/structure/wire/cable/drop_products(method, atom/where)
+	. = ..()
+	new /obj/item/stack/cable_coil(where, d1? 2 : 1)
+
+/obj/structure/wire/cable/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	. = ..()
+	#warn cable coil
+
+/obj/structure/wire/cable/wirecutter_act(obj/item/I, mob/user, flags, hint)
+	if(!cut_time)
+		return FALSE
+	if(d2 == UP)
+		user.action_feedback(SPAN_WARNING("You must cut this cable from above."), src)
+		return TRUE
+	if(cut_time)
+		user.visible_action_feedback(SPAN_WARNING("[user] starts to cut [src]..."), range = MESSAGE_RANGE_CONSTRUCTION)
+		if(!do_after(user, cut_time, src, mobility_flags = MOBILITY_USE))
+			return FALSE
+	user.visible_action_feedback(SPAN_WARNING("[user] cuts [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
+	investigate_log("[d1]-[d2] cut by [key_name(user)]", INVESTIGATE_WIRES)
+	deconstruct(ATOM_DECONSTRUCT_DISASSEMBLED)
+
 /obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0
@@ -192,18 +209,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 
 	cable_list += src //add it to the global cable list
 	#warn cable list???
-
-// cable refactor when
-/obj/structure/cable/proc/auto_merge()
-	mergeConnectedNetworks(d1) //merge the powernets...
-	mergeConnectedNetworks(d2) //...in the two new cable directions
-	mergeConnectedNetworksOnTurf()
-
-	if(d1 & (d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-		mergeDiagonalsNetworks(d1)
-
-	if(d2 & (d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-		mergeDiagonalsNetworks(d2)
 
 
 /obj/structure/cable/Destroy()					// called when a cable is deleted
@@ -222,56 +227,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
 
-// Rotating cables requires d1 and d2 to be rotated
-/obj/structure/cable/setDir(new_dir)
-	SHOULD_CALL_PARENT(FALSE)
-	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, new_dir)
-	if(powernet)
-		cut_cable_from_powernet() // Remove this cable from the powernet so the connections update
-
-	// If d1 is 0, then it's a not, and doesn't rotate
-	if(d1)
-		// Using turn will maintain the cable's shape
-		// Taking the difference between current orientation and new one
-		d1 = turn(d1, dir2angle(new_dir) - dir2angle(dir))
-	d2 = turn(d2, dir2angle(new_dir) - dir2angle(dir))
-
-	// Maintain d1 < d2
-	if(d1 > d2)
-		var/temp = d1
-		d1 = d2
-		d2 = temp
-
-	//	..()	Cable sprite generation is dependent upon only d1 and d2.
-	// 			Actually changing dir will rotate the generated sprite to look wrong, but function correctly.
-	update_icon()
-	// Add this cable back to the powernet, if it's connected to any
-	if(d1)
-		mergeConnectedNetworks(d1)
-	else
-		mergeConnectedNetworksOnTurf()
-	mergeConnectedNetworks(d2)
-
 ///////////////////////////////////
 // General procedures
 ///////////////////////////////////
 
-//If underfloor, hide the cable
-/obj/structure/cable/hide(var/i)
-	if(istype(loc, /turf))
-		invisibility = i ? 101 : 0
-	update_icon()
-
-/obj/structure/cable/hides_under_flooring()
-	return 1
-
-/obj/structure/cable/update_icon()
-	icon_state = "[d1]-[d2]"
-	alpha = invisibility ? 127 : 255
-
-//Telekinesis has no effect on a cable
-/obj/structure/cable/attack_tk(mob/user)
-	return
 
 // Items usable on a cable :
 //   - Wirecutters : cut it duh !
@@ -280,46 +239,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 //
 
 /obj/structure/cable/attackby(obj/item/W, mob/user)
-
-	var/turf/T = src.loc
-	if(!T.is_plating())
-		return
-
-	if(W.is_wirecutter())
-		var/obj/item/stack/cable_coil/CC
-		if(d1 == UP || d2 == UP)
-			to_chat(user, "<span class='warning'>You must cut this cable from above.</span>")
-			return
-
-		if(breaker_box)
-			to_chat(user, "<span class='warning'>This cable is connected to nearby breaker box. Use breaker box to interact with it.</span>")
-			return
-
-		if (shock(user, 50))
-			return
-
-		if(src.d1)	// 0-X cables are 1 unit, X-X cables are 2 units long
-			CC = new/obj/item/stack/cable_coil(T, 2, null,color)
-		else
-			CC = new/obj/item/stack/cable_coil(T, 1, null, color)
-
-		src.add_fingerprint(user)
-		src.transfer_fingerprints_to(CC)
-
-		for(var/mob/O in viewers(src, null))
-			O.show_message("<span class='warning'>[user] cuts the cable.</span>", 1)
-
-		if(d1 == DOWN || d2 == DOWN)
-			var/turf/turf = GetBelow(src)
-			if(turf)
-				for(var/obj/structure/cable/c in turf)
-					if(c.d1 == UP || c.d2 == UP)
-						qdel(c)
-
-		investigate_log("was cut by [key_name(usr, usr.client)] in [user.loc.loc]","wires")
-
-		qdel(src)
-		return
 
 
 	else if(istype(W, /obj/item/stack/cable_coil))
@@ -358,7 +277,10 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 0
 
 //explosion handling
-/obj/structure/cable/legacy_ex_act(severity)
+/obj/structure/wire/cable/legacy_ex_act(severity)
+	// no breaking if we're underfloor
+	if(invisibility)
+		return
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -371,13 +293,6 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			if (prob(25))
 				new/obj/item/stack/cable_coil(src.loc, src.d1 ? 2 : 1, null, color)
 				qdel(src)
-	return
-
-/obj/structure/cable/proc/cableColor(colorC)
-	var/color_n = "#DD0000"
-	if(colorC)
-		color_n = colorC
-	color = color_n
 
 /////////////////////////////////////////////////
 // Cable laying helpers
