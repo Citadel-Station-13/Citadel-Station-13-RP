@@ -3731,10 +3731,10 @@
 /obj/item/clothing/accessory/armor/tag/abpos,
 /obj/item/clothing/accessory/armor/tag/abneg,
 /obj/item/clothing/accessory/armor/tag/abneg,
-/obj/item/clothing/accessory/armor/tag/sec,
-/obj/item/clothing/accessory/armor/tag/sec,
-/obj/item/clothing/accessory/armor/tag/sec,
-/obj/item/clothing/accessory/armor/tag/sec,
+/obj/item/clothing/accessory/armor/tag/civsec,
+/obj/item/clothing/accessory/armor/tag/civsec,
+/obj/item/clothing/accessory/armor/tag/civsec,
+/obj/item/clothing/accessory/armor/tag/civsec,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "afT" = (
