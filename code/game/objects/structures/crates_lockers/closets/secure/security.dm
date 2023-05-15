@@ -319,8 +319,6 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
-		/obj/item/clothing/suit/storage/vest/officer,
-		/obj/item/clothing/head/helmet,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,

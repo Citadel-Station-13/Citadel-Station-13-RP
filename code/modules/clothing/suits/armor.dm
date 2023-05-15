@@ -168,7 +168,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor_type = /datum/armor/station/medium
+	armor_type = /datum/armor/station/light
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"
@@ -300,7 +300,7 @@
 	desc = "A standard kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	armor_type = /datum/armor/station/medium
+	armor_type = /datum/armor/station/light
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
