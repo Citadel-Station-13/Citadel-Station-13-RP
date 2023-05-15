@@ -7,6 +7,12 @@
 	/// active blasts
 	var/list/obj/effect/vortex/blast/blasts = list()
 
+/datum/vortex_magic/Destroy()
+	cancel_everything()
+	return ..()
+
+/datum/vortex_magic/proc/cancel_everything(fadeout = FALSE)
+
 /datum/vortex_magic/proc/cardinal_blast(atom/target, dist = 7, damage = 10)
 
 /datum/vortex_magic/proc/diagonal_blast(atom/target, dist = 7, damage = 10)
