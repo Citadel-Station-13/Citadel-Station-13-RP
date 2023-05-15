@@ -20,5 +20,5 @@
 /**
  * @return if we finished or got CHECK_TICK'd
  */
-/datum/ai_holder/special/proc/tick()
+/datum/ai_holder/special/proc/tick(cycles)
 	return FALSE

@@ -3,9 +3,9 @@
  */
 /datum/vortex_magic
 	/// created walls
-	var/list/obj/effect/vortex/wall/walls = list()
+	var/list/obj/effect/vortex_magic/wall/walls = list()
 	/// active blasts
-	var/list/obj/effect/vortex/blast/blasts = list()
+	var/list/obj/effect/vortex_magic/blast/blasts = list()
 
 /datum/vortex_magic/Destroy()
 	cancel_everything()
@@ -26,5 +26,9 @@
 /datum/vortex_magic/proc/box_arena(turf/center, radius = 14, decay_after)
 
 /datum/vortex_magic/proc/teleport(turf/where, damage = 30)
+
+/datum/vortex_magic/proc/sweep_blasts(turf/approximate_center, width = 2, spacing = 2, diameter = 16)
+
+/datum/vortex_magic/proc/beam_blast(turf/center, angle, speed = 0.5, width = 3)
 
 #warn impl all
