@@ -59,10 +59,9 @@
 /area/tether_away/debrisfield_vr/shuttle_buffer //For space around shuttle landmarks to keep submaps from generating to block them
 	icon_state = "debrisexplored"
 	name = "\improper Space"
-	area_power_override = null
-	always_unpowered = 1
-	dynamic_lighting = 0
-	has_gravity = 0
+	area_power_override = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	has_gravity = FALSE
 	ambience = AMBIENCE_SPACE
 
 /area/submap/debrisfield_vr

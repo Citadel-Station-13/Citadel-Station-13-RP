@@ -18,8 +18,11 @@
 	var/rebuilding_temperature
 	/// stored materials during network rebuild
 	var/list/rebuilding_materials
+
 	/// directions we are open as bitfield
 	var/connect_dirs = NONE
+	/// % of energy we lose per tick - DANGER: THIS IS EXTREMELY SENSITIVE.
+	var/energy_loss = 0.025
 
 /obj/structure/wire/conduit/Initialize(mapload)
 	normalize_direction()

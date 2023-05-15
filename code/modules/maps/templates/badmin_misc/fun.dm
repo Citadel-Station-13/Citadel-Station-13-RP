@@ -13,153 +13,69 @@
 /area/submap/admin_upload
 	name = "\improper Unknown Area AU" //Nobody will know what this means if they see it, anyway.
 	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+
 /area/submap/admin_upload/pow
 	name = "\improper Unknown Area AU+P"
 	area_power_override = TRUE
+
 /area/submap/admin_upload/lit
 	name = "\improper Unknown Area AU+L"
-	area_power_override = null
-	dynamic_lighting = 0
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+
 /area/submap/admin_upload/powlit
 	name = "\improper Unknown Area AU+PL"
 	area_power_override = TRUE
-	dynamic_lighting = 0
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/submap/admin_upload/AU2
 	name = "\improper Unknown Area A"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU3
 	name = "\improper Unknown Area B"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU4
 	name = "\improper Unknown Area C"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU5
 	name = "\improper Unknown Area D"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU6
 	name = "\improper Unknown Area E"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU7
 	name = "\improper Unknown Area F"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU8
 	name = "\improper Unknown Area G"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU9
 	name = "\improper Unknown Area H"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU10
 	name = "\improper Unknown Area I"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU11
 	name = "\improper Unknown Area J"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU12
 	name = "\improper Unknown Area K"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU13
 	name = "\improper Unknown Area L"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU14
 	name = "\improper Unknown Area M"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU15
 	name = "\improper Unknown Area N"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/AU16
 	name = "\improper Unknown Area O"
-	area_power_override = null
-	dynamic_lighting = 1
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/lo
 	name = "\improper Unknown Area AA"
-	area_power_override = null
-	dynamic_lighting = 1
 	lightswitch = 0
-	power_equip = FALSE
-	power_environ = FALSE
-	power_light = FALSE
 
 /area/submap/admin_upload/lo/one
 	name = "\improper Unknown Area AB"

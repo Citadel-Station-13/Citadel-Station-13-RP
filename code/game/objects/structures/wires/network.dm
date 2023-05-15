@@ -70,5 +70,5 @@
  *
  * cheaper than remove_segment when segments are removed en masse.
  */
-/datum/wirenet/proc/remove_segments(list/obj/structure/wire/joint/joints = segments)
+/datum/wirenet/proc/remove_segments(list/obj/structure/wire/joints = segments)
 	#warn impl
