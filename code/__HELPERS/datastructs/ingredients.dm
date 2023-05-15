@@ -7,7 +7,7 @@
 /**
  * checks an ingredients list and a list of selected ingredients against an items list
  *
- *
+ * @return is everything there?
  */
 /proc/check_ingredients(list/ingredients, list/selection, list/obj/item/items)
 	var/list/materials = list()
@@ -39,6 +39,8 @@
 /**
  * returns a list of things by key.
  * anything unkeyed gets deleted.
+ *
+ * @return list of data by key ; datatype depends on the ingredient type.
  */
 /proc/use_ingredients(list/ingredients, list/selection, list/obj/item/items)
 	. = list()
