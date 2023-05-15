@@ -2317,6 +2317,7 @@
 #include "code\modules\clothing\under\oricon\utility.dm"
 #include "code\modules\clothing\under\utility\utility.dm"
 #include "code\modules\clothing\under\xenos\moth.dm"
+#include "code\modules\clothing\under\xenos\tajaran.dm"
 #include "code\modules\clothing\under\xenos\teshari.dm"
 #include "code\modules\clothing\under\xenos\vox.dm"
 #include "code\modules\customitems\item_spawning.dm"
