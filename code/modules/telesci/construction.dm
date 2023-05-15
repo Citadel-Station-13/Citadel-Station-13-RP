@@ -25,7 +25,7 @@
 	name = T_BOARD("quantum pad")
 	board_type = new /datum/frame/frame_types/machine
 	build_path = /obj/machinery/power/quantumpad
-	origin_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
+	origin_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4, TECH_PRECURSOR = 1)
 	req_components = list(
 		/obj/item/ore/bluespace_crystal = 1,
 		/obj/item/stock_parts/capacitor = 1,
@@ -45,12 +45,6 @@
 	identifier = "telesci_pad"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/telesci_pad
-
-/datum/design/circuit/quantum_pad
-	name = "Quantum Pad"
-	identifier = "quantum_pad"
-	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
-	build_path = /obj/item/circuitboard/quantumpad
 
 /datum/design/science/bluespace_crystal
 	name = "Artificial Bluespace Crystal"

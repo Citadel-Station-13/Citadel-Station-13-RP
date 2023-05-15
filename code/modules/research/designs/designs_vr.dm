@@ -157,12 +157,6 @@
 	req_tech = list(TECH_PHORON = 3, TECH_DATA = 2, TECH_MAGNET = 2)
 	build_path = /obj/item/circuitboard/bomb_tester
 
-/datum/design/circuit/quantum_pad
-	name = "Quantum Pad"
-	identifier = "quantum_pad"
-	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
-	build_path = /obj/item/circuitboard/quantumpad
-
 //////Micro mech stuff
 /datum/design/circuit/mecha/gopher_main
 	name = "'Gopher' central control"

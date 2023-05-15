@@ -18,8 +18,8 @@
 
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
-	identifier = "quantum_pad"
-	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
+	identifier = "QuantumPadCircuit"
+	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4, TECH_PRECURSOR = 1)
 	build_path = /obj/item/circuitboard/quantumpad
 
 //////Micro mech stuff
@@ -117,8 +117,13 @@
 
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
+<<<<<<< HEAD
 	identifier = "quantum_pad"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
+=======
+	id = "quantum_pad"
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5, TECH_PRECURSOR = 1)
+>>>>>>> citrp/master
 	build_path = /obj/item/circuitboard/quantumpad
 
 /datum/design/circuit/vitals_monitor
