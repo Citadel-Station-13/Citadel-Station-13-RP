@@ -4536,7 +4536,7 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
@@ -4548,7 +4548,7 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"

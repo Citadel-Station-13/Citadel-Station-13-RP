@@ -13318,7 +13318,7 @@
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
