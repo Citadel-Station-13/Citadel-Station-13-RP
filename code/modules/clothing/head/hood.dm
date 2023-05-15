@@ -246,6 +246,6 @@
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/medium
 	siemens_coefficient = 1
 	starting_accessories = list(/obj/item/clothing/accessory/armor/helmcover/navy)

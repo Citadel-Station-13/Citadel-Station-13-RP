@@ -29,9 +29,9 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/lasers/New()
 	..()
 	contents = list(
-		/obj/item/clothing/gloves/arm_guard/laserproof,
-		/obj/item/clothing/shoes/leg_guard/laserproof,
-		/obj/item/clothing/head/helmet/laserproof,
+		/obj/item/clothing/gloves/arm_guard/ablative,
+		/obj/item/clothing/shoes/leg_guard/ablative,
+		/obj/item/clothing/head/helmet/ablative,
 		/obj/item/clothing/suit/armor/laserproof,
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,

@@ -1,11 +1,11 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -16,6 +16,10 @@
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
+
+/obj/item/clothing/head/helmet/ntsec
+	name = "corpsec helmet"
+	desc = "Standard headgear for Corporate Security on NT facilities. Protects well enough against a wide range of attacks."
 
 /obj/item/clothing/head/helmet/oricon
 	name = "\improper Orion Confederation Government helmet"
@@ -55,7 +59,7 @@
 	name = "combat helmet"
 	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
 	icon_state = "helmet_merc"
-	armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/station/combat
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/riot
@@ -80,7 +84,7 @@
 		to_chat(user, "You lower the visor on the riot helmet.")
 	update_worn_icon()	//so our mob-overlays update
 
-/obj/item/clothing/head/helmet/laserproof
+/obj/item/clothing/head/helmet/ablative
 	name = "ablative helmet"
 	desc = "It's a helmet specifically designed to protect against energy projectiles."
 	icon_state = "helmet_reflec"

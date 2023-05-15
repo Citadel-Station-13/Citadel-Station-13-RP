@@ -155,7 +155,7 @@
 	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
 	icon_state = "coatcaptain"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcaptain", SLOT_ID_LEFT_HAND = "coatcaptain")
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
@@ -166,7 +166,7 @@
 	name = "head of personnel's winter coat"
 	desc = "A cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana."
 	icon_state = "coathop"
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/hop
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/security
@@ -174,7 +174,7 @@
 	desc = "A heavy jacket made from greyshirt hide, there seems to be a sewed in holster, as well as a thin weave of protection against most damage.'"
 	icon_state = "coatsecurity"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatsecurity", SLOT_ID_LEFT_HAND = "coatsecurity")
-	armor_type = /datum/armor/security/low
+	armor_type = /datum/armor/security/light_formalwear
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,

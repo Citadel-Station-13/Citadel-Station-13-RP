@@ -160,6 +160,7 @@
 		/obj/item/clothing/head/helmet/HoS/hat,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/vest/hos,
+		/obj/item/clothing/accessory/poncho/roles/cloak/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,

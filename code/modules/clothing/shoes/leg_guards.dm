@@ -30,7 +30,7 @@
 				return FALSE
 	return TRUE
 
-/obj/item/clothing/shoes/leg_guard/laserproof
+/obj/item/clothing/shoes/leg_guard/ablative
 	name = "ablative leg guards"
 	desc = "These will protect your legs and feet from energy weapons."
 	icon_state = "leg_guards_laser"
