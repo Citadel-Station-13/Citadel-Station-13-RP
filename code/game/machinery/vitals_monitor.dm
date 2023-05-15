@@ -14,7 +14,7 @@
 	icon = 'icons/obj/heartmonitor.dmi'
 	icon_state = "base"
 	anchored = FALSE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	idle_power_usage = 10
 	active_power_usage = 100
 

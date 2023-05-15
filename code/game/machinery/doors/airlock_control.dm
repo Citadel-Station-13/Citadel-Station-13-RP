@@ -152,7 +152,7 @@
 	desc = "Sends atmospheric readings to a nearby controller."
 
 	anchored = 1
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 
 	var/id_tag
 	var/master_tag
@@ -236,7 +236,7 @@
 	name = "access button"
 
 	anchored = 1
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 
 	var/master_tag
 	var/frequency = 1449

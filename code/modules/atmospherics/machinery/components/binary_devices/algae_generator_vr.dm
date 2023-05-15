@@ -9,7 +9,7 @@
 	circuit = /obj/item/circuitboard/algae_farm
 	anchored = 1
 	density = 1
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 100		// Minimal lights to keep algae alive
 	active_power_usage = 5000	// Powerful grow lights to stimulate oxygen production

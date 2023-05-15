@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(air_alarms)
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
 	active_power_usage = 1000 //For heating/cooling rooms. 1000 joules equates to about 1 degree every 2 seconds for a single tile of air.
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	req_one_access = list(ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	clicksound = "button"
 	clickvol = 30

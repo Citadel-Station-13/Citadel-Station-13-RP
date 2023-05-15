@@ -238,7 +238,7 @@ var/global/list/light_type_cache = list()
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
-	power_channel = LIGHT // Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = POWER_CHANNEL_LIGHT // Lights are calc'd via area so they dont need to be in the machine list
 
 	light_range = 8
 	light_power = 0.8

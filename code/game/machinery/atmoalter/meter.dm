@@ -6,7 +6,7 @@
 	var/obj/machinery/atmospherics/pipe/target = null
 	var/list/pipes_on_turf = list()
 	anchored = 1.0
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	var/frequency = 0
 	var/id
 	use_power = USE_POWER_IDLE

@@ -15,7 +15,7 @@
 	var/icon_state_open = "oxygen_tank_open"
 	var/icon_state_closed = "oxygen_tank"
 
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	idle_power_usage = 10
 	active_power_usage = 120 // No idea what the realistic amount would be.
 

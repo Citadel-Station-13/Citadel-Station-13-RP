@@ -3,7 +3,7 @@
 	desc = "It controls objects, remotely."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "doorctrl0"
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	layer = ABOVE_WINDOW_LAYER
 	anchored = TRUE
 	use_power = USE_POWER_IDLE

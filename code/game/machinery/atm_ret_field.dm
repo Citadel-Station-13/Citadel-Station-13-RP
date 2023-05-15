@@ -6,7 +6,7 @@
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
-	power_channel = ENVIRON	//so they shut off last
+	power_channel = POWER_CHANNEL_ENVIR	//so they shut off last
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 2500

@@ -39,7 +39,7 @@
 
 	var/hatch_open = 0
 
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 

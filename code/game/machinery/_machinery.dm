@@ -130,7 +130,7 @@
 	/// active power usage in watts
 	var/active_power_usage = 0
 	///EQUIP, ENVIRON or LIGHT
-	var/power_channel = EQUIP
+	var/power_channel = POWER_CHANNEL_EQUIP
 	var/power_init_complete = FALSE
 	///List of all the parts used to build it, if made from certain kinds of frames.
 	var/list/component_parts = null

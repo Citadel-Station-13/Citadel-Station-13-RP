@@ -47,7 +47,7 @@
 	/// When active, this turret takes up constant 300 Equipment power.
 	active_power_usage = 300
 	/// Drains power from the EQUIPMENT channel.
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_BRIDGE)
 
 	/// If the turret cover is "open" and the turret is raised.

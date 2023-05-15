@@ -12,7 +12,7 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 200
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	circuit = /obj/item/circuitboard/papershredder
 	var/max_paper = 10
 	var/paperamount = 0

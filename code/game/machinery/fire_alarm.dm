@@ -17,7 +17,7 @@ FIRE ALARM
 	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	var/last_process = 0
 	panel_open = FALSE
 	var/seclevel

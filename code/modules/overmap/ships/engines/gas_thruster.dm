@@ -67,7 +67,7 @@
 	// uncreated_component_parts = list(/obj/item/stock_parts/power/apc/buildable = 1)
 
 	use_power = USE_POWER_OFF
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	idle_power_usage = 1000
 
 	var/datum/ship_engine/gas_thruster/controller

@@ -9,7 +9,7 @@
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
-	power_channel = LIGHT
+	power_channel = POWER_CHANNEL_LIGHT
 	zmm_flags = ZMM_MANGLE_PLANES
 
 	var/on = TRUE

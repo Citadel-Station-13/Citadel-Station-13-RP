@@ -11,7 +11,7 @@
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door_closed"
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
 

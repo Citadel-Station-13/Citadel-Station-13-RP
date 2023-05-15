@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	icon_state = "on_8"
 	idle_power_usage = 0
 	active_power_usage = 3000
-	power_channel = ENVIRON
+	power_channel = POWER_CHANNEL_ENVIR
 	sprite_number = 8
 	use_power = USE_POWER_IDLE
 

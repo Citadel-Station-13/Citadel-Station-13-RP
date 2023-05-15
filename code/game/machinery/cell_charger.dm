@@ -5,7 +5,7 @@
 	icon_state = "ccharger0"
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
-	power_channel = EQUIP
+	power_channel = POWER_CHANNEL_EQUIP
 	idle_power_usage = 5
 	active_power_usage = 30000 //60 kW. (this the power drawn when charging)
 	/// Will provide the modified power rate when upgraded.
