@@ -41,7 +41,7 @@
 	bio = 0.1
 	rad = 0.1
 
-/datum/armor/station/ballistic
+/datum/armor/station/ballistic //Vests (chest/lowertorso) using this tier need to have a slowdown of 0.65 or similar.
 	melee = 0.2
 	bullet = 0.7
 	bullet_soak = 4
@@ -51,7 +51,7 @@
 	bio = 0.1
 	rad = 0.1
 
-/datum/armor/station/ablative
+/datum/armor/station/ablative //Vests (chest/lowertorso) using this tier need to have a slowdown of 0.65 or similar.
 	melee = 0.2
 	bullet = 0.2
 	laser = 0.7
@@ -71,7 +71,7 @@
 	bio = 0.1
 	rad = 0
 
-/datum/armor/station/riot
+/datum/armor/station/riot //Vests (chest/lowertorso) using this tier need to have a slowdown of 0.65 or similar.
 	melee = 0.8
 	melee_soak = 5
 	bullet = 0.2

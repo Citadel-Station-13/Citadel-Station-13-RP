@@ -135,14 +135,14 @@
 	name = "ballistic armor plate"
 	desc = "A hefty silicon carbide armor plate with a layer of heavy tungsten, followed by a second coating of a polyurethane elastomeric to mitigate spalling from lower calibers as they're deflected. It's design is state of of the art when it comes to ballistics, and as a concequence the material is rather heavy, and is not as capable of dispersing laser fire as other armor varients. Fits within a plate carrier."
 	icon_state = "armor_ballistic"
-	slowdown = 0.7
+	slowdown = 0.65
 	armor_type = /datum/armor/station/ballistic
 
 /obj/item/clothing/accessory/armor/armorplate/riot
 	name = "riot armor plate"
 	desc = "A synthetic mesh armor insert made of densely woven aromatic polyamide fibers, coated in malleable ballistic gelatin, and finally tight-jacketed with woven steel-polyethylene filaments. This provides excellent protection against low-velocity trauma, but most modern projectiles could tear through it with ease. Fits within a plate carrier."
 	icon_state = "armor_riot"
-	slowdown = 0.7
+	slowdown = 0.65
 	armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.5
 
@@ -150,7 +150,7 @@
 	name = "ablative armor plate"
 	desc = "A highly reflective cobalt-chromium-tungsten alloy forms the seemingly jagged surface of the armor plate, which is adorned in perfectly cut and fitted glass prisms that form a smooth low-poly surface. When the ablative armor plate is working as designed, the glass prisms reflect laser fire inwards towards the innermost vertex for subsequent 'ablation', and sometimes reflection. There is a warning label on the back that warns you. It reads: Attempting to use this ablative armor plate to deflect ballistics and/or non-standard energy beams could result in 'rapid deconstruction' of the armor plate and its user. Fits within a plate carrier."
 	icon_state = "armor_ablative"
-	slowdown = 0.7
+	slowdown = 0.65
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
 

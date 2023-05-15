@@ -589,7 +589,7 @@
 
 /obj/item/paper/armory_info
 	name = "IMPORTANT: Armory SOP Update"
-	info = "Please review armory policies on your terminal at: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Armory -Note that security officers now require a permit form as well as an equipment request form for longarm (two handed) weapons, stated here: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Security"
+	info = "Please review armory policies on your terminal at: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Armory -Note that security officers now require a permit form as well as an equipment request form for longarm (two handed) weapons, stated here: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Security Armory paperwork forms 4705 through 4708 can be found here: https://citadel-station.net/wikiRP/index.php?title=Guide:_Paperwork#Armory_Inventory"
 
 //Lava Land Colony Notes
 /obj/item/paper/lavaland
