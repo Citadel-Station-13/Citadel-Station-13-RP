@@ -37,7 +37,7 @@
 	movement_cooldown = 2
 	base_attack_cooldown = 8
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/manned
 	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/operative
@@ -76,7 +76,7 @@
 	movement_cooldown = 3
 	base_attack_cooldown = 15
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/livewire/manned
 	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/pyro
@@ -114,7 +114,7 @@
 	movement_cooldown = 5
 	base_attack_cooldown = 15
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 /mob/living/simple_mob/mechanical/mecha/mouse_tank/eraticator/manned
 	pilot_type = /mob/living/simple_mob/animal/space/mouse_army/ammo

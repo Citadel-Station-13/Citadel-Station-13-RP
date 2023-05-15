@@ -100,7 +100,7 @@
 	max_n2 = 0
 	minbodytemp = 0
 
-	ai_holder_type = /datum/ai_holder/mimic
+	ai_holder_type = /datum/ai_holder/fsm/mimic
 
 	var/obj/structure/closet/crate/real_crate
 
@@ -115,7 +115,7 @@
 	vore_capacity = 1
 	vore_default_mode = DM_DIGEST
 
-/datum/ai_holder/mimic
+/datum/ai_holder/fsm/mimic
 	wander = FALSE
 	hostile = TRUE
 

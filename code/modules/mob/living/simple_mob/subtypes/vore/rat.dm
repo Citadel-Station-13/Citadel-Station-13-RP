@@ -44,7 +44,7 @@
 	var/life_since_foodscan = 0
 
 	say_list_type = /datum/say_list/rat
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/rat
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/rat
 
 /mob/living/simple_mob/vore/aggressive/rat/tame		//not quite tame but does not attack on sight
 	name = "curious giant rat"
@@ -59,7 +59,7 @@
 
 	randomized = FALSE
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate
 
 /mob/living/simple_mob/vore/aggressive/rat/death()
 	playsound(src, 'sound/effects/mouse_squeak_loud.ogg', 50, 1)
@@ -98,5 +98,5 @@
 	say_maybe_target = list("Squeek?")
 	say_got_target = list("SQUEEK!")
 
-/datum/ai_holder/simple_mob/melee/rat
+/datum/ai_holder/fsm/simple_mob/melee/rat
 	speak_chance = 3

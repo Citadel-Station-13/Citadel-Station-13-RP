@@ -76,7 +76,9 @@
 			continue
 		if(S.faction != src.faction)
 			continue
-		var/datum/ai_holder/AI = S.ai_holder
+		var/datum/ai_holder/fsm/AI = S.ai_holder
+		if(!istype(AI))
+			continue
 		AI.set_follow(src)
 
 // Variant that automatically commands nearby allies to follow it when created.
@@ -88,10 +90,10 @@
 
 // These ones only retaliate. Used for a PoI.
 /mob/living/simple_mob/animal/sif/shantak/retaliate
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate
 
 /mob/living/simple_mob/animal/sif/shantak/scruffy
 	name = "Scruffy"
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/passive
 	makes_dirt = 0
 	faction = "neutral"

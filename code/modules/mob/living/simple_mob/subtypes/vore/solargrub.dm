@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	response_disarm = "pushes"
 	response_harm = "roughly pushes"
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/solargrub
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate/solargrub
 	say_list_type = /datum/say_list/solargrub
 
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		set_light(2.5, 1, COLOR_YELLOW)
 		return 1
 
-/datum/ai_holder/simple_mob/retaliate/solargrub/react_to_attack(atom/movable/attacker)
+/datum/ai_holder/fsm/simple_mob/retaliate/solargrub/react_to_attack(atom/movable/attacker)
 	holder.anchored = 0
 	holder.set_AI_busy(FALSE)
 	..()

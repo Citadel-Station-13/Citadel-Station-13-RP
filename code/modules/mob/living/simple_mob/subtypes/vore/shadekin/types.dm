@@ -36,7 +36,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/red/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 /mob/living/simple_mob/shadekin/red/ai/white
 	icon_state = "white"
@@ -93,7 +93,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/blue/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/passive
 
 /mob/living/simple_mob/shadekin/blue/ai/white
 	icon_state = "white"
@@ -145,7 +145,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/purple/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate
 
 /mob/living/simple_mob/shadekin/purple/ai/white
 	icon_state = "white"
@@ -195,7 +195,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/yellow/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/hit_and_run
 
 /mob/living/simple_mob/shadekin/yellow/ai/white
 	icon_state = "white"
@@ -205,7 +205,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/yellow/ai/retaliate
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate
 
 /mob/living/simple_mob/shadekin/yellow/ai/retaliate/white
 	icon_state = "white"
@@ -255,7 +255,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/green/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/passive
 
 /mob/living/simple_mob/shadekin/green/ai/white
 	icon_state = "white"
@@ -302,7 +302,7 @@
 	icon_state = "brown"
 
 /mob/living/simple_mob/shadekin/orange/ai
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 /mob/living/simple_mob/shadekin/orange/ai/white
 	icon_state = "white"

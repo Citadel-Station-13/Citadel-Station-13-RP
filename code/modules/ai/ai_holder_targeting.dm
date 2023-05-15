@@ -1,6 +1,6 @@
 // Used for assigning a target for attacking.
 
-/datum/ai_holder
+/datum/ai_holder/fsm
 	var/hostile = FALSE						// Do we try to hurt others?
 	var/retaliate = FALSE					// Attacks whatever struck it first. Mobs will still attack back if this is false but hostile is true.
 	var/mauling = FALSE						// Attacks unconscious mobs
@@ -24,7 +24,7 @@
 // A lot of this is based off of /TG/'s AI code.
 
 // Step 1, find out what we can see.
-/datum/ai_holder/proc/list_targets()
+/datum/ai_holder/fsm/proc/list_targets()
 	. = hearers(vision_range, holder) - holder // Remove ourselves to prevent suicidal decisions. ~ SRC is the ai_holder.
 
 	var/static/list/hostile_machines = typecacheof(list(/obj/machinery/porta_turret, /obj/mecha))
@@ -36,7 +36,7 @@
 	. = typecache_filter_list_reverse(., ignore)
 
 // Step 2, filter down possible targets to things we actually care about.
-/datum/ai_holder/proc/find_target(var/list/possible_targets, var/has_targets_list = FALSE)
+/datum/ai_holder/fsm/proc/find_target(var/list/possible_targets, var/has_targets_list = FALSE)
 	if(!hostile) // So retaliating mobs only attack the thing that hit it.
 		return null
 	. = list()
@@ -56,7 +56,7 @@
 	return new_target
 
 // Step 3, pick among the possible, attackable targets.
-/datum/ai_holder/proc/pick_target(list/targets)
+/datum/ai_holder/fsm/proc/pick_target(list/targets)
 	if(target != null) // If we already have a target, but are told to pick again, calculate the lowest distance between all possible, and pick from the lowest distance targets.
 		targets = target_filter_distance(targets)
 	else
@@ -72,7 +72,7 @@
 	return chosen_target
 
 // Step 4, give us our selected target.
-/datum/ai_holder/proc/give_target(new_target)
+/datum/ai_holder/fsm/proc/give_target(new_target)
 	target = new_target
 	if(target != null)
 		if(should_threaten())
@@ -85,7 +85,7 @@
 // Filters return one or more 'preferred' targets.
 
 // This one is for closest targets.
-/datum/ai_holder/proc/target_filter_distance(list/targets)
+/datum/ai_holder/fsm/proc/target_filter_distance(list/targets)
 	for(var/possible_target in targets)
 		var/atom/A = possible_target
 		var/target_dist = get_dist(holder, target)
@@ -94,7 +94,7 @@
 			targets -= A
 	return targets
 
-/datum/ai_holder/proc/target_filter_closest(list/targets)
+/datum/ai_holder/fsm/proc/target_filter_closest(list/targets)
 	var/lowest_distance = -1
 	var/list/sorted_targets = list()
 	for(var/possible_target in targets)
@@ -111,7 +111,7 @@
 			sorted_targets += A
 	return sorted_targets
 
-/datum/ai_holder/proc/can_attack(atom/movable/the_target)
+/datum/ai_holder/fsm/proc/can_attack(atom/movable/the_target)
 	if(!can_see_target(the_target))
 		return FALSE
 
@@ -153,11 +153,11 @@
 
 // Override this for special targeting criteria.
 // If it returns true, the mob will always select it as the target.
-/datum/ai_holder/proc/found(atom/movable/the_target)
+/datum/ai_holder/fsm/proc/found(atom/movable/the_target)
 	return FALSE
 
 //We can't see the target, go look or attack where they were last seen.
-/datum/ai_holder/proc/lose_target()
+/datum/ai_holder/fsm/proc/lose_target()
 	if(target)
 		target = null
 		lose_target_time = world.time
@@ -166,13 +166,13 @@
 
 
 //Target is no longer valid (?)
-/datum/ai_holder/proc/lost_target()
+/datum/ai_holder/fsm/proc/lost_target()
 	set_stance(STANCE_IDLE)
 	lose_target_position()
 	lose_target()
 
 // Check if target is visible to us.
-/datum/ai_holder/proc/can_see_target(atom/movable/the_target, view_range = vision_range)
+/datum/ai_holder/fsm/proc/can_see_target(atom/movable/the_target, view_range = vision_range)
 	ai_log("can_see_target() : Entering.", AI_LOG_TRACE)
 
 	if(!the_target) // Nothing to target.
@@ -199,7 +199,7 @@
 	return TRUE
 
 // Updates the last known position of the target.
-/datum/ai_holder/proc/track_target_position()
+/datum/ai_holder/fsm/proc/track_target_position()
 	if(!target)
 		lose_target_position()
 
@@ -212,14 +212,14 @@
 		target_last_seen_turf.add_overlay(last_turf_overlay)
 
 // Resets the last known position to null.
-/datum/ai_holder/proc/lose_target_position()
+/datum/ai_holder/fsm/proc/lose_target_position()
 	if(last_turf_display && target_last_seen_turf)
 		target_last_seen_turf.cut_overlay(last_turf_overlay)
 	ai_log("lose_target_position() : Last position is being reset.", AI_LOG_INFO)
 	target_last_seen_turf = null
 
 // Responds to a hostile action against its mob.
-/datum/ai_holder/proc/react_to_attack(atom/movable/attacker)
+/datum/ai_holder/fsm/proc/react_to_attack(atom/movable/attacker)
 	if(holder.stat) // We're dead.
 		ai_log("react_to_attack() : Was attacked by [attacker], but we are dead/unconscious.", AI_LOG_TRACE)
 		return FALSE
@@ -248,7 +248,7 @@
 	return give_target(attacker) // Also handles setting the appropiate stance.
 
 // Sets a few vars so mobs that threaten will react faster to an attacker or someone who attacked them before.
-/datum/ai_holder/proc/on_attacked(atom/movable/AM)
+/datum/ai_holder/fsm/proc/on_attacked(atom/movable/AM)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(!(L.name in attackers))
@@ -258,15 +258,15 @@
 // Causes targeting to prefer targeting the taunter if possible.
 // This generally occurs if more than one option is within striking distance, including the taunter.
 // Otherwise the default filter will prefer the closest target.
-/datum/ai_holder/proc/receive_taunt(atom/movable/taunter, force_target_switch = FALSE)
+/datum/ai_holder/fsm/proc/receive_taunt(atom/movable/taunter, force_target_switch = FALSE)
 	ai_log("receive_taunt() : Was taunted by [taunter].", AI_LOG_INFO)
 	preferred_target = taunter
 	if(force_target_switch)
 		give_target(taunter)
 
-/datum/ai_holder/proc/lose_taunt()
+/datum/ai_holder/fsm/proc/lose_taunt()
 	ai_log("lose_taunt() : Resetting preferred_target.", AI_LOG_INFO)
 	preferred_target = null
 
-/datum/ai_holder/proc/check_attacker(var/atom/movable/A)
+/datum/ai_holder/fsm/proc/check_attacker(var/atom/movable/A)
 	return (A in attackers)

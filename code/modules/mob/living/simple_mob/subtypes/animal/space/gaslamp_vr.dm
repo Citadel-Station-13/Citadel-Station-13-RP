@@ -41,7 +41,7 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	movement_cooldown = 12
 
 	say_list_type = /datum/say_list/gaslamp
-	ai_holder_type = /datum/ai_holder/simple_mob/gaslamp
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/gaslamp
 
 	//speed = 2 not sure what this is, guessing animation, but it conflicts with new system.
 
@@ -71,7 +71,7 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")
 
-/datum/ai_holder/simple_mob/gaslamp
+/datum/ai_holder/fsm/simple_mob/gaslamp
 	hostile = FALSE // The majority of simplemobs are hostile, gaslamps are nice.
 	cooperative = FALSE
 	retaliate = TRUE //so the monster can attack back

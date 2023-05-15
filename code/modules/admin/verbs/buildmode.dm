@@ -481,7 +481,9 @@ GLOBAL_LIST_EMPTY(buildholders)
 					// Reset processes.
 					if(pa.Find("ctrl"))
 						if(!isnull(L.get_AI_stance())) // Null means there's no AI datum or it has one but is player controlled w/o autopilot on.
-							var/datum/ai_holder/AI = L.ai_holder
+							var/datum/ai_holder/fsm/AI = L.ai_holder
+							if(!istype(AI))
+								return
 							AI.forget_everything()
 							to_chat(user, SPAN_NOTICE("\The [L]'s AI has forgotten its target/movement destination/leader."))
 						else
@@ -491,7 +493,9 @@ GLOBAL_LIST_EMPTY(buildholders)
 					// Toggle hostility
 					if(pa.Find("alt"))
 						if(!isnull(L.get_AI_stance()))
-							var/datum/ai_holder/AI = L.ai_holder
+							var/datum/ai_holder/fsm/AI = L.ai_holder
+							if(!istype(AI))
+								return
 							AI.hostile = !AI.hostile
 							to_chat(user, SPAN_NOTICE("\The [L] is now [AI.hostile ? "hostile" : "passive"]."))
 						else
@@ -516,7 +520,9 @@ GLOBAL_LIST_EMPTY(buildholders)
 					if(pa.Find("alt"))
 						var/i = 0
 						for(var/mob/living/unit in holder.selected_mobs)
-							var/datum/ai_holder/AI = unit.ai_holder
+							var/datum/ai_holder/fsm/AI = unit.ai_holder
+							if(!istype(AI))
+								return
 							AI.give_target(A)
 							i++
 						to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to attack \the [A]."))
@@ -528,7 +534,9 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/i = 0 // Attacking mobs.
 					var/j = 0 // Following mobs.
 					for(var/mob/living/unit in holder.selected_mobs)
-						var/datum/ai_holder/AI = unit.ai_holder
+						var/datum/ai_holder/fsm/AI = unit.ai_holder
+						if(!istype(AI))
+							return
 						if(L.IIsAlly(unit) || !AI.hostile || pa.Find("shift"))
 							AI.set_follow(L)
 							j++
@@ -551,7 +559,9 @@ GLOBAL_LIST_EMPTY(buildholders)
 					var/turf/T = object
 					var/i = 0
 					for(var/mob/living/unit in holder.selected_mobs)
-						var/datum/ai_holder/AI = unit.ai_holder
+						var/datum/ai_holder/fsm/AI = unit.ai_holder
+						if(!istype(AI))
+							return
 						AI.give_destination(T, 1, pa.Find("shift")) // If shift is held, the mobs will not stop moving to attack a visible enemy.
 						i++
 					to_chat(user, SPAN_NOTICE("Commanded [i] mob\s to move to \the [T]."))

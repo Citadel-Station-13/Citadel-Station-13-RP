@@ -1,6 +1,6 @@
 // This code handles what to do inside STANCE_FLEE.
 
-/datum/ai_holder
+/datum/ai_holder/fsm
 	var/can_flee = TRUE					// If they're even allowed to flee.
 	var/flee_when_dying = TRUE			// If they should flee when low on health.
 	var/dying_threshold = 0.3			// How low on health the holder needs to be before fleeing. Defaults to 30% or lower health.
@@ -9,7 +9,7 @@
 
 
 
-/datum/ai_holder/proc/should_flee(force = FALSE)
+/datum/ai_holder/fsm/proc/should_flee(force = FALSE)
 	if(holder.has_modifier_of_type(/datum/modifier/berserk)) // Berserked mobs will never flee, even if 'forced' to.
 		return FALSE
 	if(force)
@@ -27,10 +27,10 @@
 	return FALSE
 
 // Override for special fleeing conditionally.
-/datum/ai_holder/proc/special_flee_check()
+/datum/ai_holder/fsm/proc/special_flee_check()
 	return FALSE
 
-/datum/ai_holder/proc/flee_from_target()
+/datum/ai_holder/fsm/proc/flee_from_target()
 	ai_log("flee_from_target() : Entering.", AI_LOG_DEBUG)
 
 	if(!target || !should_flee() || !can_attack(target)) // can_attack() is used since it checks the same things we would need to anyways.

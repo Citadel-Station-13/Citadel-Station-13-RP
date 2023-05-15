@@ -89,7 +89,7 @@
 	speak_emote = list("chitters")
 	say_list_type = /datum/say_list/roach
 	holder_type = /obj/item/holder/roach
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 /mob/living/simple_mob/animal/roach/Initialize(mapload)
 	. = ..()
@@ -118,7 +118,7 @@
 	name = "Greta"
 	desc = "Legend has it this roach sailed across the Eagle Nebula to protest bug burgers."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate/cooperative
 
 	taser_kill = 0
 
@@ -165,7 +165,7 @@
 	melee_damage_lower = 2
 	melee_damage_upper = 3
 
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate/cooperative
 
 	var/amount_grown = -1
 	var/spawn_delay = 20
@@ -260,7 +260,7 @@
 	movement_cooldown = 4
 
 	armor_type = /datum/armor/physiology/roach/jaegar
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive
 
 //When I said roaches made me sick, this isn't what I meant.
 /datum/category_item/catalogue/fauna/roach/seuche
@@ -350,7 +350,7 @@
 	projectiletype = /obj/projectile/energy/blob/toxic
 	projectilesound = 'sound/effects/slime_squish.ogg'
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 //Nanomachines? Huh. That's not very Patriotic.
 /datum/category_item/catalogue/fauna/roach/uberfallen
@@ -391,7 +391,7 @@
 	base_attack_cooldown = 8
 	projectiletype = /obj/projectile/energy/declone
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 //Remember when Liam Neeson taught you how to kill these?
 /datum/category_item/catalogue/fauna/roach/strahlend
@@ -428,7 +428,7 @@
 	base_attack_cooldown = 4
 	projectiletype = /obj/projectile/energy/dart
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting
 
 //The Color out of Bluespace
 /datum/category_item/catalogue/fauna/roach/zeitraum
@@ -469,7 +469,7 @@
 
 	armor_type = /datum/armor/physiology/roach/zeitraum
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/hit_and_run
 
 	var/stealthed = FALSE
 	var/stealthed_alpha = 60			// Lower = Harder to see.

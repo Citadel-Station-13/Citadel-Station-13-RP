@@ -3,7 +3,7 @@
 /mob/living/simple_mob/slime/xenobio
 	desc = "The most basic of slimes.  The grey slime has no remarkable qualities, however it remains one of the most useful colors for scientists."
 	layer = MOB_LAYER + 1 // Need them on top of other mobs or it looks weird when consuming something.
-	ai_holder_type = /datum/ai_holder/simple_mob/xenobio_slime // This should never be changed for xenobio slimes.
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/xenobio_slime // This should never be changed for xenobio slimes.
 	var/is_adult = FALSE // Slimes turn into adults when fed enough. Adult slimes are somewhat stronger, and can reproduce if fed enough.
 	var/maxHealth_adult = 200
 	var/power_charge = 0 // Disarm attacks can shock someone if high/lucky enough.
@@ -21,7 +21,7 @@
 	var/harmless = FALSE // Set to true when pacified. Makes the slime harmless, not get hungry, and not be able to grow/reproduce.
 
 /mob/living/simple_mob/slime/xenobio/Initialize(mapload, var/mob/living/simple_mob/slime/xenobio/my_predecessor)
-	ASSERT(ispath(ai_holder_type, /datum/ai_holder/simple_mob/xenobio_slime))
+	ASSERT(ispath(ai_holder_type, /datum/ai_holder/fsm/simple_mob/xenobio_slime))
 	number = rand(1, 1000)
 	update_name()
 
@@ -41,8 +41,8 @@
 	if(!predecessor)
 		return
 
-	var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
-	var/datum/ai_holder/simple_mob/xenobio_slime/previous_AI = predecessor.ai_holder
+	var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
+	var/datum/ai_holder/fsm/simple_mob/xenobio_slime/previous_AI = predecessor.ai_holder
 	ASSERT(istype(AI))
 	ASSERT(istype(previous_AI))
 
@@ -85,7 +85,7 @@
 		. += "It appears to have been pacified."
 	else
 		if(has_AI())
-			var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+			var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
 			if(AI.rabid)
 				. += "It seems very, very angry and upset."
 			else if(AI.obedience >= 5)
@@ -121,7 +121,7 @@
 	else if(harmless)
 		mood = ":33"
 	else if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			mood = "angry"
 		else if(AI.target)
@@ -140,13 +140,13 @@
 	if(harmless)
 		return
 	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
 		AI.enrage()
 
 /mob/living/simple_mob/slime/xenobio/proc/pacify()
 	harmless = TRUE
 	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
 		AI.pacify()
 
 	faction = "neutral"

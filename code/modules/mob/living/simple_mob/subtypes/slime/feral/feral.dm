@@ -28,7 +28,7 @@
 	movement_cooldown = 10
 	melee_attack_delay = 0.5 SECONDS
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/pointblank
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/pointblank
 
 
 // Slimebatoning/xenotasing it just makes it mad at you (which can be good if you're heavily armored and your friends aren't).

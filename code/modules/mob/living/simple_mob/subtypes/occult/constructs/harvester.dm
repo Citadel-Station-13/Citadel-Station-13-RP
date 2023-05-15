@@ -30,7 +30,7 @@
 	movement_cooldown = 0
 	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/harvester)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive
 
 	//	environment_smash = 1	// Whatever this gets renamed to, Harvesters need to break things
 
@@ -78,7 +78,7 @@
 	friendly = list("caresses")
 	movement_cooldown = 0
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive
 
 	//	environment_smash = 1	// Whatever this gets renamed to, Harvesters need to break things
 

@@ -32,7 +32,7 @@
 	attacktext = list("bapped")
 
 	say_list_type = /datum/say_list/fennec
-	ai_holder_type = /datum/ai_holder/simple_mob/passive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/passive
 
 // Activate Noms!
 /mob/living/simple_mob/vore/fennec

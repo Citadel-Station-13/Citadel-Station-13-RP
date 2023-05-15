@@ -1,4 +1,4 @@
-/datum/ai_holder
+/datum/ai_holder/fsm
 	// General.
 	var/turf/destination = null			// The targeted tile the mob wants to walk to.
 	var/min_distance_to_destination = 1	// Holds how close the mob should go to destination until they're done.
@@ -17,7 +17,7 @@
 	var/wander_when_pulled = FALSE		// If the mob will refrain from wandering if someone is pulling it.
 
 
-/datum/ai_holder/proc/walk_to_destination()
+/datum/ai_holder/fsm/proc/walk_to_destination()
 	ai_log("walk_to_destination() : Entering.",AI_LOG_TRACE)
 	if(!destination)
 		ai_log("walk_to_destination() : No destination.", AI_LOG_WARNING)
@@ -41,7 +41,7 @@
 	walk_path(destination, get_to)
 	ai_log("walk_to_destination() : Exiting.",AI_LOG_TRACE)
 
-/datum/ai_holder/proc/should_go_home()
+/datum/ai_holder/fsm/proc/should_go_home()
 	if(!returns_home || !home_turf)
 		return FALSE
 	if(get_dist(holder, home_turf) > max_home_distance)
@@ -52,7 +52,7 @@
 	return FALSE
 //	return (returns_home && home_turf) && (get_dist(holder, home_turf) > max_home_distance)
 
-/datum/ai_holder/proc/go_home()
+/datum/ai_holder/fsm/proc/go_home()
 	if(home_turf)
 		ai_log("go_home() : Telling holder to go home.", AI_LOG_INFO)
 		lose_follow() // So they don't try to path back and forth.
@@ -60,7 +60,7 @@
 	else
 		ai_log("go_home() : Told to go home without home_turf.", AI_LOG_ERROR)
 
-/datum/ai_holder/proc/give_destination(turf/new_destination, min_distance = 1, combat = FALSE)
+/datum/ai_holder/fsm/proc/give_destination(turf/new_destination, min_distance = 1, combat = FALSE)
 	ai_log("give_destination() : Entering.", AI_LOG_DEBUG)
 
 	destination = new_destination
@@ -77,7 +77,7 @@
 
 
 // Walk towards whatever.
-/datum/ai_holder/proc/walk_path(atom/A, get_to = 1)
+/datum/ai_holder/fsm/proc/walk_path(atom/A, get_to = 1)
 	ai_log("walk_path() : Entered.", AI_LOG_TRACE)
 
 	if(use_astar)
@@ -112,7 +112,7 @@
 
 
 //Take one step along a path
-/datum/ai_holder/proc/move_once()
+/datum/ai_holder/fsm/proc/move_once()
 	ai_log("move_once() : Entered.", AI_LOG_TRACE)
 	if(!path.len)
 		return
@@ -133,14 +133,14 @@
 	ai_log("move_once() : Mob movement on cooldown. Exiting.", AI_LOG_TRACE)
 	return MOVEMENT_ON_COOLDOWN
 
-/datum/ai_holder/proc/should_wander()
+/datum/ai_holder/fsm/proc/should_wander()
 	if(HAS_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT))
 		return
 	else
 		return wander && !leader
 
 // Wanders randomly in cardinal directions.
-/datum/ai_holder/proc/handle_wander_movement()
+/datum/ai_holder/fsm/proc/handle_wander_movement()
 	ai_log("handle_wander_movement() : Entered.", AI_LOG_TRACE)
 	if(isturf(holder.loc) && can_act())
 		wander_delay--
@@ -156,8 +156,8 @@
 			wander_delay = base_wander_delay
 	ai_log("handle_wander_movement() : Exited.", AI_LOG_TRACE)
 
-/datum/ai_holder/proc/pause_automated_movement(source)
+/datum/ai_holder/fsm/proc/pause_automated_movement(source)
 	ADD_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT, source)
 
-/datum/ai_holder/proc/resume_automated_movement(source)
+/datum/ai_holder/fsm/proc/resume_automated_movement(source)
 	REMOVE_TRAIT(src, TRAIT_AI_PAUSE_AUTOMATED_MOVEMENT, source)

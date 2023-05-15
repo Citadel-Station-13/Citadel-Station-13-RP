@@ -45,16 +45,16 @@
 
 	player_msg = "You can fire a taser-like ranged attack by clicking on an enemy or tile at a distance."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/electric_spider
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/electric_spider
 
 /obj/projectile/beam/stun/electric_spider
 	name = "stun beam"
 	agony = 20
 
 // The electric spider's AI.
-/datum/ai_holder/simple_mob/ranged/electric_spider
+/datum/ai_holder/fsm/simple_mob/ranged/electric_spider
 
-/datum/ai_holder/simple_mob/ranged/electric_spider/max_range(atom/movable/AM)
+/datum/ai_holder/fsm/simple_mob/ranged/electric_spider/max_range(atom/movable/AM)
 	if(isliving(AM))
 		var/mob/living/L = AM
 		if(L.incapacitated(INCAPACITATION_DISABLED) || L.stat == UNCONSCIOUS) // If our target is stunned, go in for the kill.

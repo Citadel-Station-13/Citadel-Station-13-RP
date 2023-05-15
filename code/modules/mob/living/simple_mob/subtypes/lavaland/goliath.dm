@@ -77,7 +77,7 @@
 	faction = "lavaland"
 	speak_emote = list("bellows")
 	say_list_type = /datum/say_list/goliath
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/goliath
 
 	var/datum/reagents/goliath_sac = null
 	var/pre_attack = 0
@@ -87,12 +87,12 @@
 	var/pregnant = 0
 	var/child_type = /mob/living/simple_mob/animal/goliath/calf
 
-/datum/ai_holder/simple_mob/melee/goliath
+/datum/ai_holder/fsm/simple_mob/melee/goliath
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = TRUE
 
-/datum/ai_holder/simple_mob/melee/goliath/calf
+/datum/ai_holder/fsm/simple_mob/melee/goliath/calf
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = FALSE
@@ -338,7 +338,7 @@
 	hide_amount = 2
 	exotic_amount = 2
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath/calf
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/goliath/calf
 
 	var/amount_grown = 1
 	var/spawn_delay = 300

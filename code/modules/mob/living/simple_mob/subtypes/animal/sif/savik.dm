@@ -46,7 +46,7 @@
 	a short period of time, however it will tire you and you will be much weaker for awhile after it expires."
 
 	say_list_type = /datum/say_list/savik
-	ai_holder_type = /datum/ai_holder/simple_mob/savik
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/savik
 
 /datum/say_list/savik
 	speak = list("Hruuugh!","Hrunnph")
@@ -58,7 +58,7 @@
 		if(health <= (maxHealth * 0.5)) // At half health, and fighting someone currently.
 			berserk()
 
-/datum/ai_holder/simple_mob/savik
+/datum/ai_holder/fsm/simple_mob/savik
 	mauling = TRUE
 
 // So players can use it too.

@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /mob/living/simple_mob/mechanical/viscerator{
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome;
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive/returnhome;
 	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
@@ -22,7 +22,7 @@
 /area/submap/virgo2/Rockybase)
 "af" = (
 /mob/living/simple_mob/mechanical/combat_drone{
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
 	maxbodytemp = 900
@@ -339,7 +339,7 @@
 /area/submap/virgo2/Rockybase)
 "bl" = (
 /mob/living/simple_mob/mechanical/combat_drone{
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
 	maxbodytemp = 900

@@ -46,7 +46,7 @@ var/global/list/grub_machine_overlays = list()
 	var/obj/machinery/abstract_grub_machine/powermachine
 	var/power_drained = 0
 
-	ai_holder_type = /datum/ai_holder/simple_mob/solargrub_larva
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/solargrub_larva
 
 /mob/living/simple_mob/animal/solargrub_larva/Initialize(mapload)
 	GLOB.solargrubs += src
@@ -205,7 +205,7 @@ var/global/list/grub_machine_overlays = list()
 	var/mob/living/simple_mob/animal/solargrub_larva/grub
 
 
-/datum/ai_holder/simple_mob/solargrub_larva
+/datum/ai_holder/fsm/simple_mob/solargrub_larva
 	//var/fleeing
 	var/static/list/ignored_machine_types = list(
 		/obj/machinery/atmospherics/component/unary/vent_scrubber,
@@ -214,7 +214,7 @@ var/global/list/grub_machine_overlays = list()
 		)
 	var/list/ignored_targets = list()
 
-/datum/ai_holder/simple_mob/solargrub_larva/list_targets()
+/datum/ai_holder/fsm/simple_mob/solargrub_larva/list_targets()
 	var/static/potential_targets = typecacheof(list(/obj/machinery))
 	var/list/actual_targets = list()
 
@@ -236,7 +236,7 @@ var/global/list/grub_machine_overlays = list()
 		actual_targets += M
 	return actual_targets
 
-/datum/ai_holder/simple_mob/solargrub_larva/can_attack(atom/movable/the_target)
+/datum/ai_holder/fsm/simple_mob/solargrub_larva/can_attack(atom/movable/the_target)
 	.=..()
 	var/obj/machinery/M = the_target
 	if(!istype(M))
@@ -251,7 +251,7 @@ var/global/list/grub_machine_overlays = list()
 		return FALSE
 	return
 
-/datum/ai_holder/simple_mob/solargrub_larva/post_melee_attack(atom/A)
+/datum/ai_holder/fsm/simple_mob/solargrub_larva/post_melee_attack(atom/A)
 	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
 		if(ignored_targets.len > 3)
 			ignored_targets.Cut(1,1)

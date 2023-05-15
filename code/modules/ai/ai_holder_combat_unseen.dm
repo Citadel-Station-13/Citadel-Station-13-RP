@@ -1,7 +1,7 @@
 // Used for fighting invisible things.
 
 // Used when a target is out of sight or invisible.
-/datum/ai_holder/proc/engage_unseen_enemy()
+/datum/ai_holder/fsm/proc/engage_unseen_enemy()
 	// Lets do some last things before giving up.
 	if(!ranged)
 		if(get_dist(holder, target_last_seen_turf > 1)) // We last saw them over there.
@@ -14,7 +14,7 @@
 		shoot_near_turf(target_last_seen_turf)
 
 // This shoots semi-randomly near a specific turf.
-/datum/ai_holder/proc/shoot_near_turf(turf/targeted_turf)
+/datum/ai_holder/fsm/proc/shoot_near_turf(turf/targeted_turf)
 	if(!ranged)
 		return // Can't shoot.
 	if(get_dist(holder, targeted_turf) > max_range(targeted_turf))
@@ -31,7 +31,7 @@
 
 // Attempts to attack something on a specific tile.
 // TODO: Put on mob/living?
-/datum/ai_holder/proc/melee_on_tile(turf/T)
+/datum/ai_holder/fsm/proc/melee_on_tile(turf/T)
 	var/mob/living/L = locate() in T
 	if(!L)
 		T.visible_message("\The [holder] attacks nothing around \the [T].")

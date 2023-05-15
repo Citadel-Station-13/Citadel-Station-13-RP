@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/TinyTim
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/horror
 
 	bone_amount = 3
 	hide_amount = 5

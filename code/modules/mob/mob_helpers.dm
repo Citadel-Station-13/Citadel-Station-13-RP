@@ -522,7 +522,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 		threatcount += 4
 */
 	if(has_AI())
-		var/datum/ai_holder/simple_mob/xenobio_slime/AI = ai_holder
+		var/datum/ai_holder/fsm/simple_mob/xenobio_slime/AI = ai_holder
 		if(AI.rabid)
 			threatcount = 10
 

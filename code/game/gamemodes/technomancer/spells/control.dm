@@ -31,7 +31,9 @@
 	if(!L.has_AI())
 		return FALSE
 
-	var/datum/ai_holder/AI = L.ai_holder
+	var/datum/ai_holder/fsm/AI = L.ai_holder
+	if(!istype(AI))
+		continue
 	AI.hostile = FALSE // The Technomancer chooses the target, not the AI.
 	AI.retaliate = TRUE
 	AI.wander = FALSE
@@ -49,7 +51,9 @@
 		return FALSE
 
 	if(L.has_AI())
-		var/datum/ai_holder/AI = L.ai_holder
+		var/datum/ai_holder/fsm/AI = L.ai_holder
+		if(!istype(AI))
+			continue
 		AI.hostile = initial(AI.hostile)
 		AI.retaliate = initial(AI.retaliate)
 		AI.wander = initial(AI.wander)

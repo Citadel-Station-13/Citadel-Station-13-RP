@@ -36,7 +36,7 @@
 				"rad"		= 100
 				)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive
 
 /mob/living/simple_mob/mechanical/mecha/combat/reticent/Initialize(mapload)
 	shields = new /obj/item/shield_projector/rectangle/automatic/reticent(src)

@@ -84,7 +84,7 @@
 
 	armor_type = /datum/armor/physiology/sif_leach
 	say_list_type = /datum/say_list/leech
-	ai_holder_type = /datum/ai_holder/simple_mob/intentional/leech
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/intentional/leech
 
 /mob/living/simple_mob/animal/sif/leech/IIsAlly(mob/living/L)
 	. = ..()
@@ -445,7 +445,7 @@
 		adjustBruteLoss(rand(-10,-60))
 		adjustFireLoss(rand(-10,-60))
 
-/datum/ai_holder/simple_mob/intentional/leech
+/datum/ai_holder/fsm/simple_mob/intentional/leech
 	hostile = TRUE
 	retaliate = TRUE
 	vision_range = 3
@@ -455,7 +455,7 @@
 	home_low_priority = TRUE	// If we've got a target, we're going for them.
 	max_home_distance = 1	// Low to ensure the creature doesn't leave the water unless it has a host.
 
-/datum/ai_holder/simple_mob/intentional/leech/handle_special_strategical()
+/datum/ai_holder/fsm/simple_mob/intentional/leech/handle_special_strategical()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
 	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		var/list/nearby_water = list()
@@ -466,13 +466,13 @@
 			if(T && can_attack(T))
 				home_turf = T
 
-/datum/ai_holder/simple_mob/intentional/leech/special_flee_check()
+/datum/ai_holder/fsm/simple_mob/intentional/leech/special_flee_check()
 	var/mob/living/simple_mob/animal/sif/leech/SL = holder
 
 	if(!SL.host && !istype(get_turf(SL), /turf/simulated/floor/water))
 		return TRUE
 
-/datum/ai_holder/simple_mob/intentional/leech/pre_special_attack(atom/A)
+/datum/ai_holder/fsm/simple_mob/intentional/leech/pre_special_attack(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
 		if(ishuman(L) && !L.isSynthetic())

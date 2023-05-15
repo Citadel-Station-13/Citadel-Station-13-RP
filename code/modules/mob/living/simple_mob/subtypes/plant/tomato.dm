@@ -29,7 +29,7 @@
 	melee_damage_lower = 10
 	attacktext = list("mauled")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/tomatomeat

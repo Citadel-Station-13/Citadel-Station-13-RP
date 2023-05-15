@@ -40,7 +40,7 @@
 	attacktext = list("nipped", "bit", "cut", "clawed")
 
 	say_list_type = /datum/say_list/duck
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/cooperative
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate/cooperative
 
 /datum/say_list/duck
 	speak = list("Wack!", "Wock?", "Wack.")

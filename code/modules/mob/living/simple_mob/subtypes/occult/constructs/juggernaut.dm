@@ -35,7 +35,7 @@
 
 //	environment_smash = 2	// Whatever this gets renamed to, Juggernauts need to break things
 
-	ai_holder_type = /datum/ai_holder/simple_mob/destructive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/destructive
 
 
 	attack_sound = 'sound/weapons/heavysmash.ogg'

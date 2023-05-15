@@ -33,7 +33,7 @@
 	player_msg = "You will automatically alert your owner (if one exists) of enemies you see nearby.<br>\
 	You can also <b>see invisible entities, and will automatically uncloak</b> nearby invisible or hidden enemies."
 
-	ai_holder_type = /datum/ai_holder/simple_mob/monitor
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/monitor
 
 	var/list/seen_mobs = list()
 	var/view_range = 5
@@ -120,15 +120,15 @@
 
 // Can't attack but calls for help. Used by the monitor and spotter wards.
 // Special attacks are not blocked since they might be used for things besides attacking, and can be conditional.
-/datum/ai_holder/simple_mob/monitor
+/datum/ai_holder/fsm/simple_mob/monitor
 	hostile = TRUE // Required to call for help.
 	cooperative = TRUE
 	stand_ground = TRUE // So it doesn't run up to the thing it sees.
 	wander = FALSE
 	can_flee = FALSE
 
-/datum/ai_holder/simple_mob/monitor/melee_attack(atom/A)
+/datum/ai_holder/fsm/simple_mob/monitor/melee_attack(atom/A)
 	return FALSE
 
-/datum/ai_holder/simple_mob/monitor/ranged_attack(atom/A)
+/datum/ai_holder/fsm/simple_mob/monitor/ranged_attack(atom/A)
 	return FALSE

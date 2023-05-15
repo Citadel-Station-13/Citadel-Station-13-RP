@@ -1,7 +1,7 @@
 // This handles obtaining a (usually A*) path towards something, such as a target, destination, or leader.
 // This interacts heavily with code inside ai_holder_movement.dm
 
-/datum/ai_holder
+/datum/ai_holder/fsm
 	// Pathfinding.
 	var/use_astar = FALSE				// Do we use the more expensive A* implementation or stick with BYOND's default step_to()?
 	var/list/path = list()				// A list of tiles that A* gave us as a solution to reach the target.
@@ -10,7 +10,7 @@
 	var/failed_steps = 0				// If move_once() fails to move the mob onto the correct tile, this increases. When it reaches 3, the path is recalc'd since they're probably stuck.
 
 // This clears the stored A* path.
-/datum/ai_holder/proc/forget_path()
+/datum/ai_holder/fsm/proc/forget_path()
 	ai_log("forget_path() : Entering.", AI_LOG_DEBUG)
 	if(path_display)
 		for(var/turf/T in path)
@@ -18,13 +18,13 @@
 	path.Cut()
 	ai_log("forget_path() : Exiting.", AI_LOG_DEBUG)
 
-/datum/ai_holder/proc/give_up_movement()
+/datum/ai_holder/fsm/proc/give_up_movement()
 	ai_log("give_up_movement() : Entering.", AI_LOG_DEBUG)
 	forget_path()
 	destination = null
 	ai_log("give_up_movement() : Exiting.", AI_LOG_DEBUG)
 
-/datum/ai_holder/proc/calculate_path(atom/A, get_to = 1)
+/datum/ai_holder/fsm/proc/calculate_path(atom/A, get_to = 1)
 	ai_log("calculate_path([A],[get_to]) : Entering.", AI_LOG_DEBUG)
 	if(!A)
 		ai_log("calculate_path() : Called without an atom. Exiting.",AI_LOG_WARNING)
@@ -39,7 +39,7 @@
 	ai_log("calculate_path() : Exiting.", AI_LOG_DEBUG)
 
 //A* now, try to a path to a target
-/datum/ai_holder/proc/get_path(var/turf/target,var/get_to = 1, var/max_distance = world.view*6)
+/datum/ai_holder/fsm/proc/get_path(var/turf/target,var/get_to = 1, var/max_distance = world.view*6)
 	ai_log("get_path() : Entering.",AI_LOG_DEBUG)
 	forget_path()
 	var/list/new_path = AStar(get_turf(holder.loc), target, astar_adjacent_proc, /turf/proc/Distance, min_target_dist = get_to, max_node_depth = max_distance, id = holder.IGetID(), exclude = obstacles)

@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/Rickey
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/horror
 
 	meat_amount = 4
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/human

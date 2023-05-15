@@ -52,7 +52,9 @@
 			continue
 		if(L.faction != src.faction)
 			continue
-		var/datum/ai_holder/AI = L.ai_holder
+		var/datum/ai_holder/fsm/AI = L.ai_holder
+		if(!istype(AI))
+			continue
 		AI.set_follow(src)
 	return ..()
 

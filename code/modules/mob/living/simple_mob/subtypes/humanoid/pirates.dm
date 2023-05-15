@@ -46,7 +46,7 @@
 
 	corpse = /obj/spawner/corpse/pirate/melee
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/merc
 	say_list_type = /datum/say_list/pirate
 
 //Armored Variant
@@ -244,7 +244,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/pirate = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/merc/ranged
 
 	corpse = /obj/spawner/corpse/pirate/ranged
 
@@ -281,7 +281,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive
 
 	corpse = /obj/spawner/corpse/pirate/ranged_blunderbuss
 
@@ -317,7 +317,7 @@
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive
 
 	corpse = /obj/spawner/corpse/pirate/ranged_laser
 
@@ -382,7 +382,7 @@
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/merc/ranged
 
 	corpse = /obj/spawner/corpse/pirate/mate/pistol
 
@@ -391,7 +391,7 @@
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
 	icon_state = "bosun"
 	icon_living = "bosun"
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/armor/riot/alt = 100)
 
@@ -562,7 +562,7 @@
 	icon_living = "old-pirateranged"
 	icon_dead = "old-piratemelee_dead"
 	loot_list = list(/obj/item/gun/ballistic/pirate = 100, /obj/item/material/knife/tacknife = 100)
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/merc/ranged
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/armored/old
@@ -588,7 +588,7 @@
 
 	loot_list = list(/obj/item/gun/ballistic/shotgun/doublebarrel/sawn = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/shotgun/armored
@@ -620,7 +620,7 @@
 
 	loot_list = list(/obj/item/gun/energy/zip = 100, /obj/item/material/knife/tacknife = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive
 
 //Armored Variant
 /mob/living/simple_mob/humanoid/pirate/ranged/handcannon/armored
@@ -680,14 +680,14 @@
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/suit/pirate = 100)
 
-	ai_holder_type = /datum/ai_holder/simple_mob/merc/ranged
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/merc/ranged
 
 /mob/living/simple_mob/humanoid/pirate/mate/ranged/bosun /// Special Mech Pilot Pirate
 	name = "Bosun"
 	desc = "An oily pirate mechanist. Thankfully he has but an old laser to defend himself with."
 	icon_state = "bosun"
 	icon_living = "bosun"
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/ranged/aggressive/blood_hunter // This is for use in the Pirate Ripley Mecha
 
 	loot_list = list(/obj/item/gun/energy/retro = 100, /obj/item/clothing/head/welding = 100, /obj/item/clothing/suit/pirate = 100)
 

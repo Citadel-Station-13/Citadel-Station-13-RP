@@ -3,7 +3,7 @@
 // can use a more or less complex AI by giving it a different datum.
 
 /mob/living
-	var/datum/ai_holder/ai_holder = null
+	var/datum/ai_holder/fsm/ai_holder = null
 	var/ai_holder_type = null // Which ai_holder datum to give to the mob when initialized. If null, nothing happens.
 
 /mob/living/Initialize(mapload)
@@ -16,7 +16,7 @@
 		QDEL_NULL(ai_holder)
 	return ..()
 
-/datum/ai_holder
+/datum/ai_holder/fsm
 	var/mob/living/holder = null		// The mob this datum is going to control.
 	var/stance = STANCE_IDLE			// Determines if the mob should be doing a specific thing, e.g. attacking, following, standing around, etc.
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).
@@ -27,21 +27,21 @@
 
 
 
-/datum/ai_holder/hostile
+/datum/ai_holder/fsm/hostile
 	hostile = TRUE
 
-/datum/ai_holder/retaliate
+/datum/ai_holder/fsm/retaliate
 	hostile = TRUE
 	retaliate = TRUE
 
-/datum/ai_holder/New(var/new_holder)
+/datum/ai_holder/fsm/New(var/new_holder)
 	ASSERT(new_holder)
 	holder = new_holder
 	SSai.processing += src
 	home_turf = get_turf(holder)
 	..()
 
-/datum/ai_holder/Destroy()
+/datum/ai_holder/fsm/Destroy()
 	holder = null
 	SSai.processing -= src // We might've already been asleep and removed, but byond won't care if we do this again and it saves a conditional.
 	home_turf = null
@@ -53,7 +53,7 @@
 // Makes this ai holder not get processed.
 // Called automatically when the host mob is killed.
 // Potential future optimization would be to sleep AIs which mobs that are far away from in-round players.
-/datum/ai_holder/proc/go_sleep()
+/datum/ai_holder/fsm/proc/go_sleep()
 	if(stance == STANCE_SLEEP)
 		return
 	forget_everything() // If we ever wake up, its really unlikely that our current memory will be of use.
@@ -62,7 +62,7 @@
 
 // Reverses the above proc.
 // Revived mobs will wake their AI if they have one.
-/datum/ai_holder/proc/go_wake()
+/datum/ai_holder/fsm/proc/go_wake()
 /*	if(stance != STANCE_SLEEP)
 		return
 	if(!should_wake())
@@ -71,7 +71,7 @@
 	set_stance(STANCE_IDLE)
 	SSai.processing += src
 
-/datum/ai_holder/proc/should_wake()
+/datum/ai_holder/fsm/proc/should_wake()
 	if(holder.client && !autopilot)
 		return FALSE
 	if(holder.stat >= DEAD)
@@ -79,7 +79,7 @@
 	return TRUE
 
 // Resets a lot of 'memory' vars.
-/datum/ai_holder/proc/forget_everything()
+/datum/ai_holder/fsm/proc/forget_everything()
 	// Some of these might be redundant, but hopefully this prevents future bugs if that changes.
 	lose_follow()
 	lose_target()
@@ -87,23 +87,23 @@
 	give_up_movement()
 
 // 'Tactical' processes such as moving a step, meleeing an enemy, firing a projectile, and other fairly cheap actions that need to happen quickly.
-/datum/ai_holder/proc/handle_tactics()
+/datum/ai_holder/fsm/proc/handle_tactics()
 	if(busy)
 		return
 	handle_special_tactic()
 	handle_stance_tactical()
 
 // 'Strategical' processes that are more expensive on the CPU and so don't get run as often as the above proc, such as A* pathfinding or robust targeting.
-/datum/ai_holder/proc/handle_strategicals()
+/datum/ai_holder/fsm/proc/handle_strategicals()
 	if(busy)
 		return
 	handle_special_strategical()
 	handle_stance_strategical()
 
 // Override these for special things without polluting the main loop.
-/datum/ai_holder/proc/handle_special_tactic()
+/datum/ai_holder/fsm/proc/handle_special_tactic()
 
-/datum/ai_holder/proc/handle_special_strategical()
+/datum/ai_holder/fsm/proc/handle_special_strategical()
 
 /*
 	//AI Actions
@@ -133,14 +133,14 @@
 */
 
 // For setting the stance WITHOUT processing it
-/datum/ai_holder/proc/set_stance(var/new_stance)
+/datum/ai_holder/fsm/proc/set_stance(var/new_stance)
 	ai_log("set_stance() : Setting stance from [stance] to [new_stance].", AI_LOG_INFO)
 	stance = new_stance
 	if(stance_coloring) // For debugging or really weird mobs.
 		stance_color()
 
 // This is called every half a second.
-/datum/ai_holder/proc/handle_stance_tactical()
+/datum/ai_holder/fsm/proc/handle_stance_tactical()
 	ai_log("========= Fast Process Beginning ==========", AI_LOG_TRACE) // This is to make it easier visually to disinguish between 'blocks' of what a tick did.
 	ai_log("handle_stance_tactical() : Called.", AI_LOG_TRACE)
 
@@ -235,7 +235,7 @@
 	ai_log("========= Fast Process Ending ==========", AI_LOG_TRACE)
 
 // This is called every two seconds.
-/datum/ai_holder/proc/handle_stance_strategical()
+/datum/ai_holder/fsm/proc/handle_stance_strategical()
 	ai_log("++++++++++ Slow Process Beginning ++++++++++", AI_LOG_TRACE)
 	ai_log("handle_stance_strategical() : Called.", AI_LOG_TRACE)
 

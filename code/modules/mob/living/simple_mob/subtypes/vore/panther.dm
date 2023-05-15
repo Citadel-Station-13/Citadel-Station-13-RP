@@ -32,7 +32,7 @@
 	icon_y_dimension = 64
 
 	say_list_type = /datum/say_list/panther
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee/evasive
 
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/panther

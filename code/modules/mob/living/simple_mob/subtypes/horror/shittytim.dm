@@ -34,7 +34,7 @@
 
 
 	say_list_type = /datum/say_list/BigTim
-	ai_holder_type = /datum/ai_holder/simple_mob/horror
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/horror
 
 	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/human

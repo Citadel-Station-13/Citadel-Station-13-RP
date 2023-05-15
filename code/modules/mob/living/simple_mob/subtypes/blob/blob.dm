@@ -54,7 +54,7 @@
 	var/obj/structure/blob/factory/factory = null
 
 	mob_class = MOB_CLASS_SLIME
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 /mob/living/simple_mob/blob/speech_bubble_appearance()
 	return "slime"

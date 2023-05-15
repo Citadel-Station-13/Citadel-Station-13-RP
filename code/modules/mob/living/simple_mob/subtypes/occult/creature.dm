@@ -37,7 +37,7 @@
 
 	speak_emote = list("gibbers")
 
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/melee
 
 	hide_amount = 4
 	hide_type = /obj/item/stack/hairlesshide

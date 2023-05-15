@@ -29,7 +29,7 @@
 	response_harm = "mushes their hand into"
 
 	say_list_type = /datum/say_list/jelly
-	ai_holder_type = /datum/ai_holder/simple_mob/retaliate/jelly
+	ai_holder_type = /datum/ai_holder/fsm/simple_mob/retaliate/jelly
 
 // Activate Noms!
 /mob/living/simple_mob/animal/space/jelly
@@ -42,7 +42,7 @@
 	emote_hear = list("squishes","spluts","splorts","sqrshes","makes slime noises")
 	emote_see = list("undulates quietly")
 
-/datum/ai_holder/simple_mob/retaliate/jelly
+/datum/ai_holder/fsm/simple_mob/retaliate/jelly
 	speak_chance = 2
 
 // Talon's Pet, Wiggleblob!

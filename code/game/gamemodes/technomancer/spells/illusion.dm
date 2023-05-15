@@ -38,7 +38,9 @@
 				return 1
 		else
 			if(pay_energy(100))
-				var/datum/ai_holder/AI = illusion.ai_holder
+				var/datum/ai_holder/fsm/AI = illusion.ai_holder
+				if(!istype(AI))
+					continue
 				AI.give_destination(T)
 
 /obj/item/spell/illusion/on_use_cast(mob/user)

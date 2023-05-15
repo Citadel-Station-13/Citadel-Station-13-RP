@@ -53,7 +53,7 @@
 	if(!new_mob)
 		to_chat(src, "Spawning failed, try again or bully coders")
 		return
-	new_mob.ai_holder_type = /datum/ai_holder/simple_mob/inert //Dont want the mob AI to activate if the client dc's or anything
+	new_mob.ai_holder_type = /datum/ai_holder/fsm/simple_mob/inert //Dont want the mob AI to activate if the client dc's or anything
 
 	if(name)
 		new_mob.real_name = picked_client.prefs.real_name
