@@ -26,7 +26,7 @@
 		new /datum/data/mining_equipment("Shelter Capsule",				/obj/item/survivalcapsule,									50),
 		new /datum/data/mining_equipment("Point Transfer Card",			/obj/item/card/mining_point_card/survey,					50),
 		new /datum/data/mining_equipment("Regular Firstaid Kit",		/obj/item/storage/firstaid/regular,							50),
-		new /datum/data/mining_equipment("Advanced Firstaid Kit",		/obj/item/storage/firstaid/adv,								50),
+	//	new /datum/data/mining_equipment("Advanced Firstaid Kit",		/obj/item/storage/firstaid/adv,								50),
 	//	new /datum/data/mining_equipment("Bone Restoration Medicine",	/obj/item/storage/firstaid/bonemed,							50),
 	//	new /datum/data/mining_equipment("Clotting Kit",				/obj/item/storage/firstaid/clotting,						50),
 		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/miner,	50),
