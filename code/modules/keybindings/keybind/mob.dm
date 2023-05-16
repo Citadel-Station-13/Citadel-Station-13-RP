@@ -184,6 +184,12 @@
 	full_name = "Subtle"
 	description = "Does a subtle emote."
 
+/datum/keybinding/mob/subtler
+	hotkey_keys = list("7")
+	name = "Subtler Anti Ghost"
+	full_name = "Subtler Anti-Ghost"
+	description = "Does a subtle emote that's invisible to ghosts."
+
 /datum/keybinding/mob/subtle/down(client/user)
 	user.mob.subtle_wrapper()
 	return TRUE
