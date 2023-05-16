@@ -3771,6 +3771,7 @@
 #include "code\modules\power\cables\cable.dm"
 #include "code\modules\power\cables\cable_ender.dm"
 #include "code\modules\power\cables\cable_heavyduty.dm"
+#include "code\modules\power\cables\coil.dm"
 #include "code\modules\power\cables\connection.dm"
 #include "code\modules\power\cables\network.dm"
 #include "code\modules\power\cells\device_cells.dm"

@@ -53,6 +53,8 @@ GLOBAL_LIST_EMPTY(powernets)
 	GLOB.powernets -= src
 	return ..()
 
+#warn handle power stuff on merge
+
 /datum/wirenet/power/proc/supply(kw)
 	accumulated += kw
 
