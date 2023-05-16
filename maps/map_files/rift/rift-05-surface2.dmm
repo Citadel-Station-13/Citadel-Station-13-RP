@@ -877,6 +877,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
 /obj/machinery/door/blast/regular{
 	id = "armorylight";
 	name = "Light Armory Acccess"
@@ -12309,22 +12312,10 @@
 "hMY" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
-	dir = 5;
-	pixel_x = -16
-	},
-/obj/effect/floor_decal/corner/red/border/shifted{
-	dir = 4
+	dir = 5
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 8;
-	pixel_x = 16
-	},
-/obj/effect/floor_decal/corner/red/border/shifted{
-	dir = 8
+	dir = 5
 	},
 /obj/machinery/deployable/barrier,
 /turf/simulated/floor/tiled/dark,
@@ -17422,22 +17413,10 @@
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
-	dir = 9;
-	pixel_x = 16
+	dir = 9
 	},
 /obj/effect/floor_decal/corner/red/border{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255;
-	dir = 4;
-	pixel_x = -16
-	},
-/obj/effect/floor_decal/corner/red/border/shifted{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/red/border/shifted{
-	dir = 8
+	dir = 9
 	},
 /obj/machinery/deployable/barrier,
 /turf/simulated/floor/tiled/dark,
@@ -27312,9 +27291,6 @@
 /area/crew_quarters/sleep/Dorm_2)
 "rtz" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255
-	},
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
@@ -27324,6 +27300,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/effect/floor_decal/corner/red/border,
 /obj/machinery/door/blast/regular{
 	id = "armorylight";
 	name = "Light Armory Acccess"
