@@ -446,7 +446,7 @@
 		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
 			darkvision_main.remove_filter("smart_mask")
 	darksight_overlay.overlays = null
-	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays[darkvision_fov]
+	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays["[darkvision_fov]"]
 	if(!isnull(fov_overlay))
 		darksight_overlay.overlays += fov_overlay
 	var/matrix/transformed = matrix()
