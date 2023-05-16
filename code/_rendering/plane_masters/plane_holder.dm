@@ -1,5 +1,3 @@
-/datum/global_plane_holder
-
 /datum/plane_holder
 	/// plane masters by type
 	var/list/masters
@@ -7,6 +5,10 @@
 	var/list/renders
 	/// map id, if not main map
 	var/map_id
+
+/datum/plane_holder/New()
+	generate()
+	sync()
 
 /datum/plane_holder/Destroy()
 	QDEL_LIST_ASSOC_VAL(masters)
@@ -64,8 +66,7 @@
 	set_fake_ambient_occlusion(C.is_preference_enabled(/datum/client_preference/ambient_occlusion))
 
 /datum/plane_holder/proc/set_fake_ambient_occlusion(enabled)
-	by_plane_type(/atom/movable/screen/plane_master/objs).set_fake_ambient_occlusion(enabled)
-	by_plane_type(/atom/movable/screen/plane_master/mobs).set_fake_ambient_occlusion(enabled)
+	return
 
 /**
  * What the mob perspective is in charge of
@@ -89,6 +90,10 @@
 			continue
 		var/atom/movable/screen/plane_render/creating = new path
 		renders[path] = creating
+
+/datum/plane_holder/mob_perspective/set_fake_ambient_occlusion(enabled)
+	by_plane_type(/atom/movable/screen/plane_master/objs).set_fake_ambient_occlusion(enabled)
+	by_plane_type(/atom/movable/screen/plane_master/mobs).set_fake_ambient_occlusion(enabled)
 
 /**
  * Client global planes

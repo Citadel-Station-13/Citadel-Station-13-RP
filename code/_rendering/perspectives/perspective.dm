@@ -432,6 +432,7 @@
 /datum/perspective/proc/update_vision()
 	update_see_in_dark()
 	assert_vision_overlays()
+	assert_planes()
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
 	if(!isnull(darkvision_plate))
 		darkvision_plate = darkvision_matrix || null
