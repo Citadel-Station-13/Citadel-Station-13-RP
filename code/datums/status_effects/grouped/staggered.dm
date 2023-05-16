@@ -6,8 +6,8 @@
 /datum/status_effect/grouped/staggered/on_change(source, old_value, new_value)
 	. = ..()
 	var/highest = 0
-	for(var/source in sources)
-		highest = max(highest, sources[source])
+	for(var/a_source in sources)
+		highest = max(highest, sources[a_source])
 	if(!highest)
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/mob_staggered)
 		applied_highest = 0

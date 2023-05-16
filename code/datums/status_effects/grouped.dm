@@ -53,9 +53,10 @@
 		if((old_expires - world.time) < duration)
 			// refresh
 			deltimer(timers[source])
-			expires[source] = world.time + duration
-			timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
-	else if(old && (duration > 0))
+			if(duration)
+				expires[source] = world.time + duration
+				timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
+	else if(!old && (duration > 0))
 		// didn't exist, set
 		expires[source] = world.time + duration
 		timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)

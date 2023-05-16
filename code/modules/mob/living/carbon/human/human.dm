@@ -1272,7 +1272,7 @@
 				afflict_stagger(EMP_TRAIT_N(2), 5, 2)
 				Confuse(10)
 			if(2)
-				afflict_stagger(EMP_TRAIT(1), 2, 10)
+				afflict_stagger(EMP_TRAIT_N(1), 2, 10)
 				Confuse(7)
 			if(3)
 				afflict_stagger(EMP_TRAIT_N(1), 1, 5)
