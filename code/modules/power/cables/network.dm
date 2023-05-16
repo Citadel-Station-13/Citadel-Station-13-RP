@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(powernets)
+
 /**
  * power networks
  *
@@ -17,69 +19,75 @@
  */
 /datum/wirenet/power
 	/// available power in network accumulated for the next tick
-	var/supply_accumulating = 0
+	var/accumulated = 0
 	/// available power in network at start of powernet reset
 	var/supply = 0
 	/// available power left in the current reset cycle
-	var/avail = 0
+	var/available = 0
+	/// extra power spilled over in last tick - used by machinery wanting to restore some power supplied
+	var/spillover = 0
+	/// spillover percent - used by machinery wanting to restore some power applied but only need to track last input on their end
+	var/spillover_ratio = 0
 
 	/// current power load - regardless of if usage was actually successful. this lets us perform network readings/whatever.
 	var/load = 0
+	/// amount of power that was drawn from non-balancing sources.
+	var/flat_load = 0
+	/// amount of power that was drawn from balancing sources, regardless of if it succeeded.
+	var/dynamic_load = EMPTY_POWER_BALANCING_LIST
+	/// calculated utilization allowed for a given load balancing tier
+	var/dynamic_factor = EMPTY_POWER_BALANCING_LIST
 
+	/// last load - used for viewing
+	var/last_load = 0
+	/// last flat load - used for viewing
+	var/last_flat_load = 0
 
-	
+	#warn finish
 
-/datum/wirenet/power/proc/draw(kw)
+/datum/wirenet/power/New()
+	..()
+	GLOB.powernets += src
+
+/datum/wirenet/power/Destroy()
+	GLOB.powernets -= src
+	return ..()
 
 /datum/wirenet/power/proc/supply(kw)
+	accumulated += kw
+
+/datum/wirenet/power/proc/flat_draw(kw)
+	flat_load += kw
+	load += kw
+	. = min(available, kw)
+	if(!.)
+		return
+	available -= .
+
+/datum/wirenet/power/proc/dynamic_draw(kw, tier)
+	#warn impl
+
+/datum/wirenet/power/proc/reset()
+	spillover = available
+	spillover_ratio = available / supply
+	supply = available = accumulated
+	last_load = load
+	last_flat_load = flat_load
+	load = 0
+	flat_load = 0
+	accumulated = 0
+	for(var/i in 1 to POWER_BALANCING_TIER_TOTAL)
+
+	#warn impl
 
 
-
+#warn impl all
 
 /datum/powernet
-	var/list/cables = list()	// all cables & junctions
-	var/list/nodes = list()		// all connected machines
 
-	/**
-	 * Power tracking
-	 * Units: Kilowatts
-	 */
-	/// available power in kilowatts
-	var/avail = 0
-	/// used power in kilowatts - attempted. This KEEPS GOING UP EVEN IF NO MORE IS AVAILABLE.
-	var/load = 0
-
-
-
-
-	var/load = 0				// the current load on the powernet, increased by each machine at processing
-	var/newavail = 0			// what available power was gathered last tick, then becomes...
-	var/avail = 0				//...the current available power in the powernet
-	var/viewavail = 0			// the availability as it appears on the power console (gradually updated)
-	var/viewload = 0			// the load as it appears on the power console (gradually updated)
-	var/number = 0				// Unused //TODEL
-
-	var/perapc = 0			// per-apc avilability
-	var/perapc_excess = 0
-	var/netexcess = 0			// excess power on the powernet (typically avail-load)
 
 	var/problem = 0				// If this is not 0 there is some sort of issue in the powernet. Monitors will display warnings.
 
-
-
-/datum/powernet/New()
-	START_PROCESSING_POWERNET(src)
-	..()
-
-/datum/powernet/Destroy()
-	for(var/obj/structure/cable/C in cables)
-		cables -= C
-		C.powernet = null
-	for(var/obj/machinery/power/M in nodes)
-		nodes -= M
-		M.powernet = null
-	STOP_PROCESSING_POWERNET(src)
-	return ..()
 
 //Returns the amount of excess power (before refunding to SMESs) from last tick.
 //This is for machines that might adjust their power consumption using this data.

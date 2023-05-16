@@ -28,3 +28,22 @@ GLOBAL_REAL_LIST(power_channel_bits) = list(
 
 /// length must equal POWER_CHANNEL_COUNT
 #define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
+
+//? Powernet - Load Balancing - lower number is higher priority, lower priorities only get power if higher priority is satisfied.
+
+#define POWER_BALANCING_TIER_LOW 3
+#define POWER_BALANCING_TIER_MEDIUM 2
+#define POWER_BALANCING_TIER_HIGH 1
+
+#define POWER_BALANCING_TIER_TOTAL 3
+
+
+/// length must equal POWER_BALANCING_TIER_TOTAL
+GLOBAL_REAL_LIST(power_balancing_tier_names) = list(
+	"Low Priority",
+	"Medium Priority",
+	"High Priority",
+)
+
+/// length must equal POWER_BALANCING_TIER_TOTAL
+#define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
