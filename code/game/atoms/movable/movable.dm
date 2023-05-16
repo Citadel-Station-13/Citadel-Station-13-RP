@@ -463,7 +463,7 @@
 /atom/movable/proc/make_perspective()
 	ASSERT(!self_perspective)
 	. = self_perspective = new /datum/perspective/self
-	self_perspective.eye = src
+	self_perspective.set_eye(src)
 
 /**
  * ensure we have a self perspective

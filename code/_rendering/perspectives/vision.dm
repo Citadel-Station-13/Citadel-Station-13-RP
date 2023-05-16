@@ -129,6 +129,13 @@ GLOBAL_DATUM_INIT(default_darksight, /datum/vision/baseline/default, new)
 GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 /datum/vision/baseline/silicons
 	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
+
+//? observer baseline
+
+/datum/vision/baseline/observer
+	priority = DARKSIGHT_PRIORITY_INNATE
+	soft_darksight_range = 0
 
 //? species
 

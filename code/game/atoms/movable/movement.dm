@@ -350,7 +350,6 @@
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(movement_dir)
 
-
 	var/turf/old_turf = get_turf(old_loc)
 	var/turf/new_turf = get_turf(src)
 
@@ -363,6 +362,8 @@
 
 	if (old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf?.z, new_turf?.z)
+
+	self_perspective?.update_eye_anchor()
 
 	return TRUE
 

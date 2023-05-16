@@ -186,10 +186,10 @@
 		CRASH("mob already had perspective")
 	if(reset_on_logout && !M.client)	// nah
 		return
-	mobs += M
+	LAZYADD(mobs, M)
 	M.using_perspective = src
 	M.sight = sight
-	M.see_in_dark = see_in_dark
+	M.see_in_dark = clamp(see_in_dark, 0, 255)
 	M.see_invisible = see_invisible
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_ADD, M)
 
@@ -202,7 +202,7 @@
 	M.sight = initial(M.sight)
 	M.see_in_dark = initial(M.see_in_dark)
 	M.see_invisible = initial(M.see_invisible)
-	mobs -= M
+	LAZYREMOVE(mobs, M)
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_REMOVE, M, switching)
 	if(M.using_perspective == src)
 		M.using_perspective = null
@@ -222,8 +222,8 @@
 	C.screen |= planes.screens()
 	if(!isnull(images))
 		C.images |= images
-	if(!isnull(darksight_overlay))
-		C.images |= darksight_overlay
+	assert_vision_overlays()
+	C.images |= darksight_overlay
 	update(C)
 
 /**
@@ -372,7 +372,8 @@
 		return
 	detach_from_eye(src.eye)
 	src.eye = AM
-	attach_to_eye(src.eye)
+	if(!isnull(src.eye))
+		attach_to_eye(src.eye)
 	for(var/client/C as anything in clients)
 		var/changed = C.eye
 		C.eye = get_eye(C)
@@ -381,13 +382,23 @@
 		C.perspective = get_eye_mode(C)
 
 /datum/perspective/proc/attach_to_eye(atom/movable/AM)
-	darksight_overlay.loc = AM
+	darksight_overlay?.loc = get_eye_anchor()
 
 /datum/perspective/proc/detach_from_eye(atom/movable/AM)
-	darksight_overlay.loc = null
+	darksight_overlay?.loc = null
+
+/datum/perspective/proc/update_eye_anchor()
+	if(isnull(darksight_overlay))
+		return
+	var/atom/new_anchor = get_eye_anchor()
+	if(new_anchor != darksight_overlay.loc)
+		darksight_overlay.loc = new_anchor
 
 /datum/perspective/proc/get_eye(client/C)
 	return eye
+
+/datum/perspective/proc/get_eye_anchor()
+	return get_eye()
 
 /**
  * get perspective var for a client
@@ -420,6 +431,7 @@
 
 /datum/perspective/proc/update_vision()
 	update_see_in_dark()
+	assert_vision_overlays()
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
 	if(!isnull(darkvision_plate))
 		darkvision_plate = darkvision_matrix || null
@@ -433,6 +445,18 @@
 			)
 		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
 			darkvision_main.remove_filter("smart_mask")
+	switch(darkvision_fov)
+		if(SOFT_DARKSIGHT_FOV_90)
+		if(SOFT_DARKSIGHT_FOV_180)
+		if(SOFT_DARKSIGHT_FOV_270)
+		if(SOFT_DARKSIGHT_FOV_OMNI)
+
+	#warn handle infinite range
+	var/matrix/transformed = matrix()
+	var/factor
+	transformed.Scale(factor, factor)
+	darksight_overlay.transform = transformed
+	#warn transform
 
 /datum/perspective/proc/check_hard_darkvision()
 	return isnull(hard_darkvision)? 255 : hard_darkvision
@@ -449,6 +473,7 @@
 	darksight_overlay.plane = LIGHTING_PLANE
 	darksight_overlay.alpha = 0
 	darksight_overlay.blend_mode = BLEND_ADD
+	darksight_overlay.loc = get_eye_anchor()
 
 //? plane holder
 

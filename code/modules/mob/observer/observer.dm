@@ -6,4 +6,4 @@
 	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
 
 	/// Our darksight
-	var/datum/vision/baseline/vision_innate
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/observer

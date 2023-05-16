@@ -101,7 +101,9 @@
 		reset_perspective(using_perspective)
 		return
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_PERSPECTIVE)
-	using_perspective?.update(client)
+	if(isnull(using_perspective))
+		return
+	using_perspective.update(client)
 
 /**
  * we're considered to be viewing from some/something else's perspective
@@ -203,8 +205,8 @@
  */
 /mob/proc/query_darksight()
 	RETURN_TYPE(/list)
-	var/list/built = vision_modifiers.Copy()
-	built.Insert(innate_darksight(), 1)
+	var/list/built = vision_modifiers?.Copy() || list()
+	built.Insert(1, innate_darksight())
 	return built
 
 /**

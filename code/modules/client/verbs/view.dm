@@ -1,5 +1,5 @@
 /client/verb/toggle_verticality_visibility()
-	set name = "Verticality Overlay"
+	set name = "Toggle Verticality Plane"
 	set desc = "Toggle if you see ceiling overlays and similar."
 
 	var/atom/movable/screen/plane_master/plane = global_planes.by_plane_type(/atom/movable/screen/plane_master/verticality)
