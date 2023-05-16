@@ -431,7 +431,7 @@
 		user.visible_message( \
 			"<span class='warning'>\The [user] has [anchored ? "un" : ""]secured \the [src].</span>", \
 			"<span class='notice'>You [anchored ? "un" : ""]secure \the [src].</span>")
-		anchored = !anchored
+		set_anchored(!anchored)
 		power_change() //Turn on or off the machine depending on the status of power in the new area.
 		update_appearance()
 	return TRUE

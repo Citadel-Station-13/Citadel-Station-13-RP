@@ -90,8 +90,8 @@
 
 /obj/machinery/disease2/incubator/process(delta_time)
 	if(dish && on && dish.virus2)
-		use_burst_power(50,EQUIP)
-		if(!powered(EQUIP))
+		use_burst_power(50,POWER_CHANNEL_EQUIP)
+		if(!powered(POWER_CHANNEL_EQUIP))
 			on = 0
 			icon_state = "incubator"
 

@@ -1,25 +1,60 @@
-//////////////////////////////
-// POWER MACHINERY BASE CLASS
-//////////////////////////////
-
-/////////////////////////////
-// Definitions
-/////////////////////////////
-
+/**
+ * these machines intrinsically have auto-linking powernet connections
+ *
+ * you can further customize them with when/where their powernet connections should try to attach to turf.
+ */
 /obj/machinery/power
-	name = null
 	icon = 'icons/obj/power.dmi'
-	anchored = 1.0
-	var/datum/powernet/powernet = null
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
 
-/obj/machinery/power/Destroy()
-	disconnect_from_network()
-	disconnect_terminal()
+	/// our powernet connection
+	var/datum/wirenet_connection/power/connection
+	/// connect while unanchored?
+	var/connection_requires_anchored = TRUE
+	#warn handling
 
+/obj/machinery/power/Initialize(mapload)
+	connection = new(src)
+	auto_connect()
 	return ..()
+
+/obj/machinery/power/Destroy()
+	disconnect()
+	QDEL_NULL(connection)
+	return ..()
+
+/obj/machinery/power/proc/should_connect()
+	return !connection_requires_anchored || anchored
+
+/obj/machinery/power/set_anchored(anchorvalue)
+	. = ..()
+	auto_connect()
+
+/obj/machinery/power/proc/auto_connect()
+	#warn impl
+
+/obj/machinery/power/proc/disconnect()
+	#warn impl
+
+/obj/machinery/power/proc/connect()
+	#warn impl
+
+/obj/machinery/power/Moved(atom/old_loc, direction, forced)
+	. = ..()
+	auto_connect()
+
+/obj/machinery/power/proc/supply(amount)
+	#warn impl
+
+/obj/machinery/power/proc/fixed_draw(amount)
+	#warn impl
+
+/obj/machinery/power/proc/dynamic_draw(amount, tier)
+	#warn impl
+
 
 ///////////////////////////////
 // General procedures
@@ -34,72 +69,6 @@
 /obj/machinery/power/can_drain_energy(datum/actor, amount)
 	return TRUE
 
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/add_avail(amount)
-	if(powernet)
-		powernet.newavail += amount
-
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/draw_power(amount)
-	if(powernet)
-		return powernet.draw_power(amount)
-	return 0
-
-/**
- * amount is in KW, NOT W
- *
- * include amount to turn this into a boolean check.
- */
-/obj/machinery/power/proc/surplus(amount)
-	if(!powernet)
-		return 0
-	. = powernet.avail - powernet.load
-	if(!isnull(amount))
-		. = . >= amount
-
-/**
- * amount is in KW, NOT W
- *
- * include amount to turn this into a boolean check.
- */
-/obj/machinery/power/proc/avail(amount)
-	return isnull(amount)? (powernet?.avail || 0) : (powernet?.avail >= amount)
-
-/**
- * amount is in KW, NOT W
- */
-/obj/machinery/power/proc/viewload()
-	if(powernet)
-		return powernet.viewload
-	else
-		return 0
-
-/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
-	return
-
-// connect the machine to a powernet if a node cable is present on the turf
-/obj/machinery/power/proc/connect_to_network()
-	var/turf/T = src.loc
-	if(!T || !istype(T))
-		return 0
-
-	var/obj/structure/cable/C = T.get_cable_node() //check if we have a node cable on the machine turf, the first found is picked
-	if(!C || !C.powernet)
-		return 0
-
-	C.powernet.add_machine(src)
-	return 1
-
-// remove and disconnect the machine from its current powernet
-/obj/machinery/power/proc/disconnect_from_network()
-	if(!powernet)
-		return 0
-	powernet.remove_machine(src)
-	return 1
 
 // attach a wire to a power machine - leads from the turf you are standing on
 //almost never called, overwritten by all power machines but terminal and generator
@@ -121,15 +90,6 @@
 		return
 	else
 		..()
-	return
-
-// Power machinery should also connect/disconnect from the network.
-/obj/machinery/power/default_unfasten_wrench(var/mob/user, var/obj/item/W, var/time = 20)
-	if((. = ..()))
-		if(anchored)
-			connect_to_network()
-		else
-			disconnect_from_network()
 
 // Used for power spikes by the engine, has specific effects on different machines.
 /obj/machinery/power/proc/overload(var/obj/machinery/power/source)

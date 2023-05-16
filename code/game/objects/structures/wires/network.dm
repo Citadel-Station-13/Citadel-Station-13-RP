@@ -39,6 +39,28 @@
 	qdel(src)
 
 /**
+ * returns wires
+ */
+/datum/wirenet/proc/get_wires()
+	return segments.Copy()
+
+/**
+ * returns connections
+ */
+/datum/wirenet/proc/get_connections()
+	return connections.Copy()
+
+/**
+ * returns connected hosts without nulls
+ */
+/datum/wirenet/proc/get_hosts()
+	. = list()
+	for(var/datum/wirenet_connection/connection as anything in connections)
+		if(isnull(connection.host))
+			continue
+		. += connection.host
+
+/**
  * construction propagation from a specific wire - use for initial network builds
  */
 /datum/wirenet/proc/build(obj/structure/wire/joint)
@@ -48,6 +70,8 @@
  * and don't want to unnecessarily build the other side
  */
 /datum/wirenet/proc/propagate(obj/structure/wire/joint)
+
+#warn impl all
 
 /**
  * add a wire into ourselves

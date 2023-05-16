@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		return TRUE
 	if(cut_time)
 		user.visible_action_feedback(SPAN_WARNING("[user] starts to cut [src]..."), range = MESSAGE_RANGE_CONSTRUCTION)
-		if(!do_after(user, cut_time, src, mobility_flags = MOBILITY_USE))
+		if(!do_after(user, cut_time, src, mobility_flags = MOBILITY_CAN_USE))
 			return FALSE
 	user.visible_action_feedback(SPAN_WARNING("[user] cuts [src]."), range = MESSAGE_RANGE_CONSTRUCTION)
 	investigate_log("[d1]-[d2] cut by [key_name(user)]", INVESTIGATE_WIRES)

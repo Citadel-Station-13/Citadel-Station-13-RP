@@ -13,7 +13,7 @@ GLOBAL_LIST_EMPTY(cable_ender_lookup)
 	/// what other cable enders we link to
 	var/id
 
-/obj/structure/cable/ender/Initialize(mapload, _color, _d1, _d2, auto_merge)
+/obj/structure/wire/cable/ender/Initialize(mapload, _color, _d1, _d2, auto_merge)
 	if(!isnull(id))
 		LAZYADD(GLOB.cable_ender_lookup[id], src)
 	return ..()
