@@ -115,17 +115,6 @@
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
 	build_path = /obj/item/circuitboard/telesci_pad
 
-/datum/design/circuit/quantum_pad
-	name = "Quantum Pad"
-<<<<<<< HEAD
-	identifier = "quantum_pad"
-	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
-=======
-	id = "quantum_pad"
-	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5, TECH_PRECURSOR = 1)
->>>>>>> citrp/master
-	build_path = /obj/item/circuitboard/quantumpad
-
 /datum/design/circuit/vitals_monitor
 	name = "vitals monitor"
 	identifier = "vitals"
