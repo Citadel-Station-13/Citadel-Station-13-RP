@@ -72,10 +72,12 @@
 	faction = "spiders"
 	maxHealth = 200
 	health = 200
-	pass_flags = PASSTABLE
+	randomized = TRUE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 10
 	movement_sound = 'sound/effects/spider_loop.ogg'
 	poison_resist = 0.5
+	taser_kill = 0 //These seem like they won't be bothered by a taser
 
 	see_in_dark = 10
 
@@ -104,6 +106,10 @@
 	var/poison_chance = 10			// Chance for injection to occur.
 	var/poison_per_bite = 5			// Amount added per injection.
 
+	butchery_loot = list(\
+		/obj/item/stack/material/chitin = 1\
+		)
+
 /mob/living/simple_mob/animal/giant_spider/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -115,7 +121,7 @@
 // Does actual poison injection, after all checks passed.
 /mob/living/simple_mob/animal/giant_spider/proc/inject_poison(mob/living/L, target_zone)
 	if(prob(poison_chance))
-		to_chat(L, "<span class='warning'>You feel a tiny prick.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 /mob/living/simple_mob/animal/giant_spider/proc/make_spiderling()

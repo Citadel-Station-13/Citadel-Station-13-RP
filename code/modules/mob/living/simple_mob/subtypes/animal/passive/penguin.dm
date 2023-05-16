@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/penguin
+	name = "Penguin"
+	desc = "An Earthling bird, similar to chickens or other avians, the \
+	penguin is easily recognizable due to its wobbling gait and its iconic \
+	coloration and pattern. Penguins are generally regarded with amusement, \
+	but the exotic nature of their habitat makes it difficult to keep these \
+	creatures as pets. This has limited their spread across the Frontier."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/penguin
 	name = "penguin"
 	desc = "An ungainly, waddling, cute, and VERY well-dressed bird."
@@ -5,10 +14,12 @@
 	icon_state = "penguin_old"
 	icon_living = "penguin_old"
 	icon_dead = "penguin_old_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/penguin)
 
 	maxHealth = 20
 	health = 20
 	minbodytemp = 175 // Same as Sif mobs.
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "pushes aside"
@@ -21,7 +32,9 @@
 
 	has_langs = list("Bird")
 
+	meat_amount = 2
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
+	bone_amount = 1
 
 /mob/living/simple_mob/animal/passive/penguin/tux
 	name = "Tux"

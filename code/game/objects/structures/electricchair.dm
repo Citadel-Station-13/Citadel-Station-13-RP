@@ -13,7 +13,7 @@
 /obj/structure/bed/chair/e_chair/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		var/obj/structure/bed/chair/C = new /obj/structure/bed/chair(loc)
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		C.setDir(dir)
 		part.loc = loc
 		part.master = null
@@ -54,7 +54,7 @@
 		return
 	if(!A.powered(EQUIP))
 		return
-	A.use_power(EQUIP, 5000)
+	A.use_power_oneoff(EQUIP, 5000)
 	var/light = A.power_light
 	A.updateicon()
 
@@ -69,7 +69,7 @@
 			to_chat(L, "<span class='danger'>You feel a deep shock course through your body!</span>")
 			sleep(1)
 			L.burn_skin(85)
-			L.Stun(600)
+			L.afflict_stun(20 * 6)
 	visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='danger'>You hear a deep sharp shock!</span>")
 
 	A.power_light = light

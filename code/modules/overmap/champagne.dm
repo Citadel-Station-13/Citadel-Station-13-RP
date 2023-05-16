@@ -13,12 +13,12 @@
 	attack_verb = list("attacked", "bonked", "hit")
 	var/min_name_len = 4		// Refuse if shuttle tag is shorter than this.
 	var/max_name_len = 32		// Refuse if shuttle tag is longer than this.
-	var/max_area_turfs = 256	// Refuse if area has more than this many turfs.
+	var/max_area_turfs = 140	// Refuse if area has more than this many turfs.
 
 /obj/item/champagne/afterattack(var/atom/A, mob/user as mob, proximity)
 	if(!proximity)
 		return
-	var/obj/machinery/computer/shuttle_control/explore/comp = A
+	var/obj/machinery/computer/shuttle_control/comp = A
 	if(!istype(comp))
 		return
 
@@ -70,7 +70,7 @@
 	// WARNING - We can't figure out a good base_area or base_turf from inspecttion, as the shuttle is already built!
 	// For now its going to just do world.area and z level base turf. Beware!
 	var/area/base_area = world.area
-	var/base_turf = get_base_turf(get_z(start_loc))
+	var/base_turf = GLOB.using_map.base_turf_by_z[get_z(start_loc)] || /turf/simulated/floor/plating
 	var/obj/effect/shuttle_landmark/automatic/champagne/starting_landmark = new(start_loc, base_area, base_turf)
 
 	// Okay first things first create the shuttle Override to no areas to prevent runtimes, then add them in.
@@ -89,14 +89,14 @@
 	var/obj/effect/overmap/visitable/ship/landable/champagne/newship = new(start_loc, shuttle_name, shuttle_name)
 	// It automatically registers itself with SSshuttle
 
-	log_debug("Created new ship [newship] for shuttle [shuttle] at landmark [starting_landmark]")
+	log_debug(SPAN_DEBUGINFO("Created new ship [newship] for shuttle [shuttle] at landmark [starting_landmark]"))
 	return shuttle
 
 //
 // Shuttle landmark dynamically generated at runtime by champagne bottle.
 //
 /obj/effect/shuttle_landmark/automatic/champagne
-	flags = SLANDMARK_FLAG_ZERO_G // Don't auto-set
+	shuttle_landmark_flags = SLANDMARK_FLAG_ZERO_G // Don't auto-set
 
 /obj/effect/shuttle_landmark/automatic/champagne/Initialize(mapload, base_area, base_turf)
 	src.base_turf = base_turf

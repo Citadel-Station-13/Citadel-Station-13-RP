@@ -13,7 +13,7 @@
 	//var/dir_in = 2//What direction will the mech face when entered/powered on? Defaults to South.
 	//var/step_energy_drain = 10
 	var/health = 300 //health is health
-	//var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
+	//var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of legacy_ex_act.
 	//the values in this list show how much damage will pass through, not how much will be absorbed.
 	var/list/damage_absorption = list("brute"=0.8,"fire"=1.2,"bullet"=0.9,"laser"=1,"energy"=1,"bomb"=1)
 	var/obj/item/cell/cell //Our power source
@@ -42,7 +42,7 @@
 	var/internal_damage = 0 //contains bitflags
 
 	var/list/operation_req_access = list()//required access level for mecha operation
-	var/list/internals_req_access = list(access_engine,access_robotics)//required access level to open cell compartment
+	var/list/internals_req_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_SCIENCE_ROBOTICS)//required access level to open cell compartment
 
 	//var/datum/global_iterator/pr_int_temp_processor //normalizes internal air mixture temperature     //In airtight.dm you go -Agouri
 	var/datum/global_iterator/pr_inertial_movement //controls intertial movement in spesss
@@ -82,10 +82,10 @@
 
 
 /obj/vehicle/proc/removeVerb(verb_path)
-	verbs -= verb_path
+	remove_obj_verb(src, verb_path)
 
 /obj/vehicle/proc/addVerb(verb_path)
-	verbs += verb_path
+	add_obj_verb(src, verb_path)
 
 /*/obj/vehicle/proc/add_airtank() //In airtight.dm -Agouri
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
@@ -186,3 +186,6 @@
 				mecha.cell.charge -= min(20,mecha.cell.charge)
 				mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
 		return
+
+/obj/vehicle/get_cell()
+	return cell

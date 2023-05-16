@@ -1,17 +1,17 @@
-/obj/item/projectile/change
+/obj/projectile/change
 	name = "bolt of change"
 	icon_state = "ice_1"
 	damage = 0
 	damage_type = BURN
 	nodamage = 1
-	check_armour = "energy"
+	damage_flag = ARMOR_ENERGY
 
 	combustion = FALSE
 
-/obj/item/projectile/change/on_hit(var/atom/change)
+/obj/projectile/change/on_hit(var/atom/change)
 	wabbajack(change)
 
-/obj/item/projectile/change/proc/wabbajack(var/mob/M)
+/obj/projectile/change/proc/wabbajack(var/mob/M)
 	if(istype(M, /mob/living) && M.stat != DEAD)
 		if(M.transforming)
 			return
@@ -23,16 +23,12 @@
 			if(Robot.mmi)
 				qdel(Robot.mmi)
 		else
-			for(var/obj/item/W in M)
-				if(istype(W, /obj/item/implant))	//TODO: Carn. give implants a dropped() or something
-					qdel(W)
-					continue
-				M.drop_from_inventory(W)
+			M.drop_inventory(TRUE, TRUE, TRUE)
 
 		var/mob/living/new_mob
 
 		var/options = list("robot", "slime")
-		for(var/t in GLOB.all_species)
+		for(var/t in SScharacters.all_species_names())
 			options += t
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -66,15 +62,15 @@
 
 				if(M.gender == MALE)
 					H.gender = MALE
-					H.name = pick(first_names_male)
+					H.name = pick(GLOB.first_names_male)
 				else if(M.gender == FEMALE)
 					H.gender = FEMALE
-					H.name = pick(first_names_female)
+					H.name = pick(GLOB.first_names_female)
 				else
 					H.gender = NEUTER
-					H.name = pick(first_names_female|first_names_male)
+					H.name = pick(GLOB.first_names_female | GLOB.first_names_male)
 
-				H.name += " [pick(last_names)]"
+				H.name += " [pick(GLOB.last_names)]"
 				H.real_name = H.name
 
 				H.set_species(randomize)
@@ -88,7 +84,7 @@
 
 			new_mob.a_intent = "hurt"
 			if(M.mind)
-				M.mind.transfer_to(new_mob)
+				M.mind.transfer(new_mob)
 			else
 				new_mob.key = M.key
 

@@ -1,13 +1,12 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Section } from '../components';
+import { Section, Button, Box } from '../components';
 import { Window } from '../layouts';
 
 export const StationAlertConsole = () => {
   return (
     <Window
-      width={325}
-      height={500}
+      width={425}
+      height={600}
       resizable>
       <Window.Content scrollable>
         <StationAlertConsoleContent />
@@ -17,55 +16,57 @@ export const StationAlertConsole = () => {
 };
 
 export const StationAlertConsoleContent = (props, context) => {
-  const { data } = useBackend(context);
-  const categories = data.alarms || [];
-  const fire = categories['Fire'] || [];
-  const atmos = categories['Atmosphere'] || [];
-  const power = categories['Power'] || [];
-  return (
-    <Fragment>
-      <Section title="Fire Alarms">
-        <ul>
-          {fire.length === 0 && (
-            <li className="color-good">
-              Systems Nominal
+  const { act, data } = useBackend(context);
+  const {
+    categories = [],
+  } = data;
+  return categories.map(category => (
+    <Section key={category.category} title={category.category}>
+      <ul>
+        {category.alarms.length === 0 && (
+          <li className="color-good">
+            Systems Nominal
+          </li>
+        )}
+        {category.alarms.map(alarm => {
+          let footer = "";
+
+          // To be clear, this is never the case unless the user is an AI.
+          if (alarm.has_cameras) {
+            footer = (
+              <Section>
+                {alarm.cameras.map(camera => (
+                  <Button
+                    key={camera.name}
+                    disabled={camera.deact}
+                    content={camera.name
+                      + (camera.deact ? ' (deactived)' : '')}
+                    icon="video"
+                    onClick={() => act('switchTo', {
+                      camera: camera.camera,
+                    })} />
+                ))}
+              </Section>
+            );
+          } else if (alarm.lost_sources) {
+            footer = (
+              <Box color="bad">
+                Lost Alarm Sources: {alarm.lost_sources}
+              </Box>
+            );
+          }
+
+          return (
+            <li key={alarm.name}>
+              {alarm.name}
+              {alarm.origin_lost
+                ? <Box color="bad">Alarm Origin Lost.</Box>
+                : ''}
+              {footer}
             </li>
-          )}
-          {fire.map(alert => (
-            <li key={alert} className="color-average">
-              {alert}
-            </li>
-          ))}
-        </ul>
-      </Section>
-      <Section title="Atmospherics Alarms">
-        <ul>
-          {atmos.length === 0 && (
-            <li className="color-good">
-              Systems Nominal
-            </li>
-          )}
-          {atmos.map(alert => (
-            <li key={alert} className="color-average">
-              {alert}
-            </li>
-          ))}
-        </ul>
-      </Section>
-      <Section title="Power Alarms">
-        <ul>
-          {power.length === 0 && (
-            <li className="color-good">
-              Systems Nominal
-            </li>
-          )}
-          {power.map(alert => (
-            <li key={alert} className="color-average">
-              {alert}
-            </li>
-          ))}
-        </ul>
-      </Section>
-    </Fragment>
-  );
+          );
+        })}
+      </ul>
+    </Section>
+  ));
 };

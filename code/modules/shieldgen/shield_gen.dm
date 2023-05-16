@@ -8,12 +8,12 @@
 	var/max_field_radius = 150
 	var/list/field = list()
 	density = 1
-	req_one_access = list(access_engine,access_captain,access_security)
+	req_one_access = list(ACCESS_ENGINEERING_MAIN,ACCESS_COMMAND_CAPTAIN,ACCESS_SECURITY_EQUIPMENT)
 	var/locked = 0
 	var/average_field_strength = 0
 	var/strengthen_rate = 0.2
 	var/max_strengthen_rate = 0.9	//the maximum rate that the generator can increase the average field strength
-	var/dissipation_rate = 0.070	//the percentage of the shield strength that needs to be replaced each second
+	var/dissipation_rate = 0.030	//the percentage of the shield strength that needs to be replaced each second
 	var/min_dissipation = 0.01		//will dissipate by at least this rate in renwicks per field tile (otherwise field would never dissipate completely as dissipation is a percentage)
 	var/powered = 0
 	var/check_powered = 1
@@ -28,7 +28,7 @@
 /obj/machinery/shield_gen/advanced
 	name = "advanced bubble shield generator"
 	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated.  This version comes with a more efficent shield matrix."
-	energy_conversion_rate = 0.0020
+	energy_conversion_rate = 0.0012
 
 /obj/machinery/shield_gen/Initialize(mapload)
 	if(anchored)
@@ -69,8 +69,8 @@
 			to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(W.is_wrench())
 		src.anchored = !src.anchored
-		playsound(src, W.usesound, 75, 1)
-		src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
+		playsound(src, W.tool_sound, 75, 1)
+		src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] has been [anchored?"bolted to the floor":"unbolted from the floor"] by [user].</font>")
 
 		if(active)
 			toggle()
@@ -94,13 +94,13 @@
 /obj/machinery/shield_gen/attack_ai(user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/shield_gen/attack_hand(mob/user)
-	if(stat & (BROKEN))
+/obj/machinery/shield_gen/attack_hand(mob/user, list/params)
+	if(machine_stat & (BROKEN))
 		return
 	interact(user)
 
 /obj/machinery/shield_gen/interact(mob/user)
-	if ( (get_dist(src, user) > 1 ) || (stat & (BROKEN)) )
+	if ( (get_dist(src, user) > 1 ) || (machine_stat & (BROKEN)) )
 		if (!istype(user, /mob/living/silicon))
 			user.unset_machine()
 			user << browse(null, "window=shield_generator")
@@ -230,7 +230,7 @@
 
 	updateDialog()
 
-/obj/machinery/shield_gen/ex_act(var/severity)
+/obj/machinery/shield_gen/legacy_ex_act(var/severity)
 
 	if(active)
 		toggle()
@@ -264,7 +264,7 @@
 			to_chat(M, "[icon2html(thing = src, target = M)] You hear heavy droning fade out.")
 
 /obj/machinery/shield_gen/update_icon()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "broke"
 		set_light(0)
 	else

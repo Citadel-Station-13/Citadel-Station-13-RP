@@ -9,11 +9,13 @@
 	icon_state = "cell"
 	item_state = "cell"
 	origin_tech = list(TECH_POWER = 1)
-	force = 5.0
-	throwforce = 5.0
+	damage_force = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
+	/// Are we EMP immune?
+	var/emp_proof = FALSE
 	var/charge
 	var/maxcharge = 1000
 	var/rigged = 0		// true if rigged to explode
@@ -22,7 +24,7 @@
 	var/charge_amount = 25 // How much power to give, if self_recharge is true.  The number is in absolute cell charge, as it gets divided by CELLRATE later.
 	var/last_use = 0 // A tracker for use in self-charging
 	var/charge_delay = 0 // How long it takes for the cell to start recharging after last use
-	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 50)
+	matter = list(MAT_STEEL = 700, MAT_GLASS = 50)
 
 	// Overlay stuff.
 	var/overlay_half_state = "cell-o1" // Overlay used when not fully charged but not empty.
@@ -52,17 +54,13 @@
 	else
 		return PROCESS_KILL
 
-/obj/item/cell/drain_power(var/drain_check, var/surge, var/power = 0)
-
-	if(drain_check)
-		return 1
-
+/obj/item/cell/drain_energy(datum/actor, amount, flags)
 	if(charge <= 0)
 		return 0
+	return use(DYNAMIC_KJ_TO_CELL_UNITS(amount)) * GLOB.cellrate
 
-	var/cell_amt = power * CELLRATE
-
-	return use(cell_amt) / CELLRATE
+/obj/item/cell/can_drain_energy(datum/actor, flags)
+	return TRUE
 
 #define OVERLAY_FULL	2
 #define OVERLAY_PARTIAL	1
@@ -98,6 +96,8 @@
 #undef OVERLAY_EMPTY
 
 /obj/item/cell/proc/percent()		// return % charge of cell
+	if(!maxcharge)
+		return 0
 	return 100.0*charge/maxcharge
 
 /obj/item/cell/proc/fully_charged()
@@ -129,6 +129,20 @@
 		return 0
 	use(amount)
 	return 1
+
+/**
+ * use x cell units, affected by GLOB.cellefficiency
+ */
+/obj/item/cell/proc/use_scaled(amount)
+	return use(amount / GLOB.cellefficiency) * GLOB.cellefficiency
+
+/**
+ * uses x cell units but only if we have enough, affected by GLOB.cellefficiency
+ *
+ * returns TRUE/FALSE
+ */
+/obj/item/cell/proc/checked_use_scaled(amount)
+	return checked_use(amount / GLOB.cellefficiency)
 
 // recharge the cell
 /obj/item/cell/proc/give(var/amount)
@@ -202,6 +216,9 @@
 		rigged = 1 //broken batteries are dangerous
 
 /obj/item/cell/emp_act(severity)
+	. = ..()
+	if(emp_proof)
+		return
 	//remove this once emp changes on dev are merged in
 	if(isrobot(loc))
 		var/mob/living/silicon/robot/R = loc
@@ -212,9 +229,8 @@
 		charge = 0
 
 	update_icon()
-	..()
 
-/obj/item/cell/ex_act(severity)
+/obj/item/cell/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1.0)
@@ -264,6 +280,6 @@
 			return 0
 
 /obj/item/cell/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>\The [user] is licking the electrodes of \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (FIRELOSS)

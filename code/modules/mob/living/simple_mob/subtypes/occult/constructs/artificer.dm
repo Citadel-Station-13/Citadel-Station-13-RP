@@ -2,6 +2,15 @@
 //		Artificer
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/artificer
+	name = "Constructs - Artificer"
+	desc = "Artificers appear to function as a kind of builder class \
+	amongst Constructs. Able to repair their peers and form fortifications, \
+	Artificers are a secondary target. In spite of their specialization, \
+	as with all Constructs the Artificer is deadly in close combat and \
+	should be kept at range."
+	value = CATALOGUER_REWARD_EASY
+
 /mob/living/simple_mob/construct/artificer
 	name = "Artificer"
 	real_name = "Artificer"
@@ -28,7 +37,13 @@
 							/spell/targeted/construct_advanced/mend_acolyte
 							)
 
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/artificer)
+
 	ai_holder_type = /datum/ai_holder/mimic
+
+/mob/living/simple_mob/construct/artificer/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
 
 ////////////////////////////
 //		Ranged Artificer
@@ -42,5 +57,5 @@
 	icon_state = "caster_artificer"
 	icon_living = "caster_artificer"
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
-	projectiletype = /obj/item/projectile/beam/inversion
+	projectiletype = /obj/projectile/beam/inversion
 	projectilesound = 'sound/weapons/spiderlunge.ogg'

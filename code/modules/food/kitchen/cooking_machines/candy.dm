@@ -29,7 +29,7 @@
 /obj/machinery/appliance/mixer/candy/update_icon()
 	. = ..()
 
-	if(!stat)
+	if(!machine_stat)
 		icon_state = on_icon
 		if(candymaker_loop)
 			candymaker_loop.start(src)

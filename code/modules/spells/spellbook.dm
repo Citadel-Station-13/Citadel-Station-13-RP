@@ -224,11 +224,11 @@
 						if("scrying")
 							feedback_add_details("wizard_spell_learned","SO") //please do not change the abbreviation to keep data processing consistent. Add a unique id to any new spells
 							new /obj/item/scrying(get_turf(H))
-							if (!(XRAY in H.mutations))
-								H.mutations.Add(XRAY)
-								H.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-								H.see_in_dark = 8
-								H.see_invisible = SEE_INVISIBLE_LEVEL_TWO
+							if (!(MUTATION_XRAY in H.mutations))
+								H.mutations.Add(MUTATION_XRAY)
+								H.AddSightSelf(SEE_MOBS|SEE_OBJS|SEE_TURFS)
+								H.SetSeeInDarkSelf(8)
+								H.SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 								to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 							temp = "You have purchased a scrying orb, and gained x-ray vision."
 							max_uses--
@@ -254,7 +254,10 @@
 	. = ..()
 	name += spellname
 
-/obj/item/spellbook/oneuse/attack_self(mob/user as mob)
+/obj/item/spellbook/oneuse/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/spell/S = new spell(user)
 	for(var/spell/knownspell in user.spell_list)
 		if(knownspell.type == S.type)
@@ -273,12 +276,12 @@
 		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.real_name] ([user.ckey]) learned the spell [spellname] ([S]).</font>")
 		onlearned(user)
 
-/obj/item/spellbook/oneuse/proc/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/proc/recoil(mob/user)
 	user.visible_message("<span class='warning'>[src] glows in a black light!</span>")
 
 /obj/item/spellbook/oneuse/proc/onlearned(mob/user as mob)
 	used = 1
-	user.visible_message("<span class='caution'>[src] glows dark for a second!</span>")
+	user.visible_message(SPAN_CAUTION("[src] glows dark for a second!"))
 
 /obj/item/spellbook/oneuse/attackby()
 	return
@@ -289,7 +292,7 @@
 	icon_state ="bookfireball"
 	desc = "This book feels warm to the touch."
 
-/obj/item/spellbook/oneuse/fireball/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/fireball/recoil(mob/user)
 	..()
 	explosion(user.loc, -1, 0, 2, 3, 0)// flame_range = 2)
 	qdel(src)
@@ -300,9 +303,9 @@
 	icon_state ="booksmoke"
 	desc = "This book is overflowing with the dank arts."
 
-/obj/item/spellbook/oneuse/smoke/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/smoke/recoil(mob/user)
 	..()
-	to_chat(user, "<span class='caution'>Your stomach rumbles...</span>")
+	to_chat(user, SPAN_CAUTION("Your stomach rumbles..."))
 	if(user.nutrition)
 		user.nutrition -= 200
 		if(user.nutrition <= 0)
@@ -314,7 +317,7 @@
 	icon_state ="bookblind"
 	desc = "This book looks blurry, no matter how you look at it."
 
-/obj/item/spellbook/oneuse/blind/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/blind/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You go blind!</span>")
 	user.Blind(10)
@@ -332,7 +335,7 @@
 	name = "spellbook of [spellname]" //Note, desc doesn't change by design
 	..()
 
-/obj/item/spellbook/oneuse/mindswap/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/mindswap/recoil(mob/user)
 	..()
 	if(stored_swap in dead_mob_list)
 		stored_swap = null
@@ -346,29 +349,29 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs -= V
+			remove_verb(user, V)
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in stored_swap.mind.special_verbs)
-			stored_swap.verbs -= V
+			remove_verb(stored_swap, V)
 
 	var/mob/observer/dead/ghost = stored_swap.ghostize(0)
 	ghost.spell_list = stored_swap.spell_list
 
-	user.mind.transfer_to(stored_swap)
+	user.mind.transfer(stored_swap)
 	stored_swap.spell_list = user.spell_list
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
-	ghost.mind.transfer_to(user)
+	ghost.mind.transfer(user)
 	user.key = ghost.key
 	user.spell_list = ghost.spell_list
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs += V
+			add_verb(user, V)
 
 	to_chat(stored_swap, "<span class='warning'>You're suddenly somewhere else... and someone else?!</span>")
 	to_chat(user, "<span class='warning'>Suddenly you're staring at [src] again... where are you, who are you?!</span>")
@@ -380,13 +383,12 @@
 	icon_state ="bookforcewall"
 	desc = "This book has a dedication to mimes everywhere inside the front cover."
 
-/obj/item/spellbook/oneuse/forcewall/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/forcewall/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You suddenly feel very solid!</span>")
+	user.drop_item_to_ground(src, INV_OP_FORCE)
 	var/obj/structure/closet/statue/S = new /obj/structure/closet/statue(user.loc, user)
 	S.timer = 30
-	user.drop_item()
-
 
 /obj/item/spellbook/oneuse/knock
 	spell = /spell/aoe_turf/knock
@@ -394,10 +396,10 @@
 	icon_state ="bookknock"
 	desc = "This book is hard to hold closed properly."
 
-/obj/item/spellbook/oneuse/knock/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/knock/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>You're knocked down!</span>")
-	user.Weaken(20)
+	user.afflict_paralyze(20 * 20)
 
 /obj/item/spellbook/oneuse/horsemask
 	spell = /spell/targeted/equip_item/horsemask
@@ -409,11 +411,11 @@
 	if(istype(user, /mob/living/carbon/human))
 		to_chat(user, "<font size='15' color='red'><b>HOR-SIE HAS RISEN</b></font>")
 		var/obj/item/clothing/mask/horsehead/magichead = new /obj/item/clothing/mask/horsehead
-		magichead.canremove = 0		//curses!
-		magichead.flags_inv = null	//so you can still see their face
+		ADD_TRAIT(magichead, TRAIT_ITEM_NODROP, MAGIC_TRAIT)
+		magichead.inv_hide_flags = null	//so you can still see their face
 		magichead.voicechange = 1	//NEEEEIIGHH
-		user.drop_from_inventory(user.wear_mask)
-		user.equip_to_slot_if_possible(magichead, slot_wear_mask, 1, 1)
+		user.drop_item_to_ground(user.wear_mask, INV_OP_FORCE)
+		user.equip_to_slot_or_del(magichead, SLOT_ID_MASK)
 		qdel(src)
 	else
 		to_chat(user, "<span class='notice'>I say thee neigh</span>")
@@ -424,7 +426,7 @@
 	icon_state ="bookcharge"
 	desc = "This book is made of 100% post-consumer wizard."
 
-/obj/item/spellbook/oneuse/charge/recoil(mob/user as mob)
+/obj/item/spellbook/oneuse/charge/recoil(mob/user)
 	..()
 	to_chat(user, "<span class='warning'>[src] suddenly feels very warm!</span>")
 	empulse(src, 1, 1, 1, 1)

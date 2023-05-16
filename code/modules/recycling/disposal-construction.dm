@@ -10,7 +10,7 @@
 	anchored = 0
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
-	matter = list(DEFAULT_WALL_MATERIAL = 1850)
+	matter = list(MAT_STEEL = 1850)
 	level = 2
 	var/sortType = ""
 	var/ptype = 0
@@ -222,7 +222,7 @@
 /obj/structure/disposalconstruct/attackby(var/obj/item/I, var/mob/user)
 	var/nicetype = "pipe"
 	var/ispipe = 0 // Indicates if we should change the level of this pipe
-	src.add_fingerprint(user)
+	add_fingerprint(user, 0, I)
 	switch(ptype)
 		if(DISPOSAL_PIPE_BIN)
 			nicetype = "disposal bin"
@@ -291,16 +291,16 @@
 			else
 				density = 1 // We don't want disposal bins or outlets to go density 0
 			to_chat(user, "You attach the [nicetype] to the underfloor.")
-		playsound(loc, I.usesound, 100, 1)
+		playsound(loc, I.tool_sound, 100, 1)
 		update()
 
 	else if(istype(I, /obj/item/weldingtool))
 		if(anchored)
 			var/obj/item/weldingtool/W = I
 			if(W.remove_fuel(0,user))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 				to_chat(user, "Welding the [nicetype] in place.")
-				if(do_after(user, 20 * W.toolspeed))
+				if(do_after(user, 20 * W.tool_speed))
 					if(!src || !W.isOn()) return
 					to_chat(user, "The [nicetype] has been welded in place!")
 					update() // TODO: Make this neat

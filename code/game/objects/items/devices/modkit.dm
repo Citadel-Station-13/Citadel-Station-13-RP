@@ -24,7 +24,6 @@
 
 	if(!parts)
 		to_chat(user, "<span class='warning'>This kit has no parts for this modification left.</span>")
-		user.drop_from_inventory(src)
 		qdel(src)
 		return
 
@@ -48,7 +47,7 @@
 		to_chat(user, "<span class='warning'>[O] must be safely placed on the ground for modification.</span>")
 		return
 
-	playsound(src.loc, O.usesound, 100, 1)
+	playsound(src.loc, O.tool_sound, 100, 1)
 
 	user.visible_message("<span class='notice'>\The [user] opens \the [src] and modifies \the [O].</span>","<span class='notice'>You open \the [src] and modify \the [O].</span>")
 
@@ -60,7 +59,6 @@
 		parts &= ~MODKIT_SUIT
 
 	if(!parts)
-		user.drop_from_inventory(src)
 		qdel(src)
 
 /obj/item/modkit/examine(mob/user)

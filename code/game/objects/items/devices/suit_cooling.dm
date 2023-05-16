@@ -7,18 +7,18 @@
 	slot_flags = SLOT_BACK
 
 	//copied from tank.dm
-	force = 5.0
-	throwforce = 10.0
+	damage_force = 5.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 	action_button_name = "Toggle Heatsink"
 
-	matter = list("steel" = 15000, "glass" = 3500)
+	matter = list(MAT_STEEL = 15000, MAT_GLASS = 3500)
 	origin_tech = list(TECH_MAGNET = 2, TECH_MATERIAL = 2)
 
 	var/on = 0				//is it turned on?
 	var/cover_open = 0		//is the cover open?
-	var/obj/item/cell/cell
+	var/obj/item/cell/cell = /obj/item/cell/high
 	var/max_cooling = 15				// in degrees per second - probably don't need to mess with heat capacity here
 	var/charge_consumption = 3			// charge per second at max_cooling
 	var/thermostat = T20C
@@ -30,13 +30,14 @@
 
 /obj/item/suit_cooling_unit/Initialize(mapload)
 	. = ..()
-	cell = new/obj/item/cell/high(src)	//comes not with the crappy default power cell - because this is dedicated EVA equipment
+	if(ispath(cell))
+		cell = new cell(src)
 
 /obj/item/suit_cooling_unit/Destroy()
 	QDEL_NULL(cell)
 	return ..()
 
-/obj/item/suit_cooling_unit/process(delta_time)
+/obj/item/suit_cooling_unit/process()
 	if (!on || !cell)
 		return PROCESS_KILL
 
@@ -78,8 +79,8 @@
 		if(istype(H.loc, /obj/mecha))
 			var/obj/mecha/M = H.loc
 			return M.return_temperature()
-		else if(istype(H.loc, /obj/machinery/atmospherics/unary/cryo_cell))
-			var/obj/machinery/atmospherics/unary/cryo_cell/C = H.loc
+		else if(istype(H.loc, /obj/machinery/atmospherics/component/unary/cryo_cell))
+			var/obj/machinery/atmospherics/component/unary/cryo_cell/C = H.loc
 			return C.air_contents.temperature
 
 	var/turf/T = get_turf(src)
@@ -119,7 +120,10 @@
 	STOP_PROCESSING(SSobj, src)
 	updateicon()
 
-/obj/item/suit_cooling_unit/attack_self(var/mob/user)
+/obj/item/suit_cooling_unit/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(cover_open && cell)
 		if(ishuman(user))
 			user.put_in_hands(cell)
@@ -151,7 +155,7 @@
 		else
 			cover_open = 1
 			to_chat(user, "You unscrew the panel.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		updateicon()
 		return
 
@@ -160,8 +164,8 @@
 			if(cell)
 				to_chat(user, "There is a [cell] already installed here.")
 			else
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "You insert the [cell].")
 		updateicon()
@@ -180,21 +184,44 @@
 
 /obj/item/suit_cooling_unit/examine(mob/user)
 	. = ..()
+
+	if(Adjacent(user))
+
+		if (on)
+			if (attached_to_suit(src.loc))
+				. += "It's switched on and running."
+			else
+				. += "It's switched on, but not attached to anything."
+		else
+			. += "It is switched off."
+
+		if (cover_open)
+			if(cell)
+				. += "The panel is open, exposing the [cell]."
+			else
+				. += "The panel is open."
+
+		if (cell)
+			. += "The charge meter reads [round(cell.percent())]%."
+		else
+			. += "It doesn't have a power cell installed."
+
+/obj/item/suit_cooling_unit/emergency
+	icon_state = "esuitcooler"
+	cell = /obj/item/cell
+	w_class = ITEMSIZE_NORMAL
+
+/obj/item/suit_cooling_unit/emergency/updateicon()
+	return
+
+/obj/item/suit_cooling_unit/emergency/get_cell()
 	if(on)
-		if(attached_to_suit(src.loc))
-			. += "It's switched on and running."
-		else
-			. += "It's switched on, but not attached to anything."
-	else
-		. += "It is switched off."
+		return null // Don't let recharging happen while we're on
+	return cell
 
-	if (cover_open)
-		if(cell)
-			. += "The panel is open, exposing the [cell]."
-		else
-			. += "The panel is open."
+/obj/item/suit_cooling_unit/emergency/attackby(obj/item/W as obj, mob/user as mob)
+	if (W.is_screwdriver())
+		to_chat(user, "<span class='warning'>This model has the cell permanently installed!</span>")
+		return
 
-	if (cell)
-		. += "The charge meter reads [round(cell.percent())]%."
-	else
-		. += "It doesn't have a power cell installed."
+	return ..()

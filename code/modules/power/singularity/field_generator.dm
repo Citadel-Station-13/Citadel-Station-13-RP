@@ -33,27 +33,22 @@ field_generator power level display
 	var/clean_up = 0
 
 	//If keeping field generators powered is hard then increase the emitter active power usage.
-	var/gen_power_draw = 5500	//power needed per generator
-	var/field_power_draw = 2000	//power needed per field object
+	var/gen_power_draw = 4500	//power needed per generator
+	var/field_power_draw = 1750	//power needed per field object
 
-
-/obj/machinery/field_generator/update_icon()
-	overlays.Cut()
-	if(!active)
-		if(warming_up)
-			overlays += "+a[warming_up]"
+/obj/machinery/field_generator/update_overlays()
+	. = ..()
+	if(warming_up)
+		. += "+a[warming_up]"
 	if(fields.len)
-		overlays += "+on"
+		. += "+on"
 	// Power level indicator
 	// Scale % power to % num_power_levels and truncate value
 	var/level = round(num_power_levels * power / field_generator_max_power)
 	// Clamp between 0 and num_power_levels for out of range power values
-	level = between(0, level, num_power_levels)
+	level = clamp( level, 0,  num_power_levels)
 	if(level)
-		overlays += "+p[level]"
-
-	return
-
+		. += "+p[level]"
 
 /obj/machinery/field_generator/Initialize(mapload)
 	. = ..()
@@ -78,7 +73,7 @@ field_generator power level display
 	return
 
 
-/obj/machinery/field_generator/attack_hand(mob/user as mob)
+/obj/machinery/field_generator/attack_hand(mob/user, list/params)
 	if(state == 2)
 		if(get_dist(src, user) <= 1)//Need to actually touch the thing to turn it on
 			if(src.active >= 1)
@@ -106,14 +101,14 @@ field_generator power level display
 		switch(state)
 			if(0)
 				state = 1
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] secures [src.name] to the floor.", \
 					"You secure the external reinforcing bolts to the floor.", \
 					"You hear ratchet")
 				src.anchored = 1
 			if(1)
 				state = 0
-				playsound(src, W.usesound, 75, 1)
+				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] unsecures [src.name] reinforcing bolts from the floor.", \
 					"You undo the external reinforcing bolts.", \
 					"You hear ratchet")
@@ -129,11 +124,11 @@ field_generator power level display
 				return
 			if(1)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to weld the [src.name] to the floor.", \
 						"You start to weld the [src] to the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 2
 						to_chat(user, "You weld the field generator to the floor.")
@@ -141,11 +136,11 @@ field_generator power level display
 					return
 			if(2)
 				if (WT.remove_fuel(0,user))
-					playsound(loc, WT.usesound, 50, 1)
+					playsound(loc, WT.tool_sound, 50, 1)
 					user.visible_message("[user.name] starts to cut the [src.name] free from the floor.", \
 						"You start to cut the [src] free from the floor.", \
 						"You hear welding")
-					if (do_after(user,20 * WT.toolspeed))
+					if (do_after(user,20 * WT.tool_speed))
 						if(!src || !WT.isOn()) return
 						state = 1
 						to_chat(user, "You cut the [src] free from the floor.")
@@ -159,8 +154,8 @@ field_generator power level display
 /obj/machinery/field_generator/emp_act()
 	return 0
 
-/obj/machinery/field_generator/bullet_act(var/obj/item/projectile/Proj)
-	if(istype(Proj, /obj/item/projectile/beam))
+/obj/machinery/field_generator/bullet_act(var/obj/projectile/Proj)
+	if(istype(Proj, /obj/projectile/beam))
 		power += Proj.damage * EMITTER_DAMAGE_POWER_TRANSFER
 		update_icon()
 	return 0
@@ -174,6 +169,7 @@ field_generator power level display
 
 /obj/machinery/field_generator/proc/turn_off()
 	active = 0
+	warming_up = 0
 	spawn(1)
 		src.cleanup()
 	update_icon()
@@ -200,13 +196,8 @@ field_generator power level display
 		src.power = field_generator_max_power
 
 	var/power_draw = gen_power_draw
-	for(var/obj/machinery/field_generator/FG in connected_gens)
-		if (!isnull(FG))
-			power_draw += gen_power_draw
 	for (var/obj/machinery/containment_field/F in fields)
-		if (!isnull(F))
-			power_draw += field_power_draw
-	power_draw /= 2	//because this will be mirrored for both generators
+		power_draw += field_power_draw / 2		// mirrored for the other generator
 	if(draw_power(round(power_draw)) >= power_draw)
 		return 1
 	else
@@ -333,11 +324,11 @@ field_generator power level display
 	//I want to avoid using global variables.
 	spawn(1)
 		var/temp = 1 //stops spam
-		for(var/obj/singularity/O in machines)
+		for(var/obj/singularity/O in GLOB.machines)
 			if(O.last_warning && temp)
 				if((world.time - O.last_warning) > 50) //to stop message-spam
 					temp = 0
-					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222") //VOREStation Add
+					admin_chat_message(message = "SINGUL/TESLOOSE!", color = "#FF2222")
 					message_admins("A singulo exists and a containment field has failed.",1)
 					investigate_log("has <font color='red'>failed</font> whilst a singulo exists.","singulo")
 					log_game("FIELDGEN([x],[y],[z]) Containment failed while singulo/tesla exists.")

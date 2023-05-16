@@ -8,15 +8,15 @@
 /obj/machinery/appliance
 	name = "cooker"
 	desc = "You shouldn't be seeing this!"
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	var/appliancetype = 0
 	density = 1
 	anchored = 1
 
 	use_power = 0
 	idle_power_usage = 5			// Power used when turned on, but not processing anything
-	active_power_usage = 1000		// Power used when turned on and actively cooking something
-	var/initial_active_power_usage = 1000
+	active_power_usage = 5000		// Power used when turned on and actively cooking something
+	var/initial_active_power_usage = 5000
 
 	var/cooking_power  = 1
 	var/initial_cooking_power = 1
@@ -53,7 +53,7 @@
 	component_parts += /obj/item/stock_parts/matter_bin
 	component_parts += /obj/item/stock_parts/matter_bin
 	if(output_options.len)
-		verbs += /obj/machinery/appliance/proc/choose_output
+		add_obj_verb(src, /obj/machinery/appliance/proc/choose_output)
 
 	if (!available_recipes)
 		available_recipes = new
@@ -99,22 +99,21 @@
 	if (progress < 0.25)
 		return "It's barely started cooking."
 	if (progress < 0.75)
-		return span("notice","It's cooking away nicely.")
+		return SPAN_NOTICE("It's cooking away nicely.")
 	if (progress < 1)
-		return span("notice", "<b>It's almost ready!</b>")
+		return SPAN_NOTICE("<b>It's almost ready!</b>")
 
 	var/half_overcook = (CI.overcook_mult - 1)*0.5
 	if (progress < 1+half_overcook)
-		return span("soghun","<b>It is done !</b>")
+		return SPAN_SOGHUN("<b>It is done !</b>")
 	if (progress < CI.overcook_mult)
-		return span("warning","It looks overcooked, get it out!")
+		return SPAN_WARNING("It looks overcooked, get it out!")
 	else
-		return span("danger","It is burning!!")
+		return SPAN_DANGER("It is burning!!")
 
 /obj/machinery/appliance/update_icon()
-	if (!stat && cooking_objs.len)
+	if (!machine_stat && cooking_objs.len)
 		icon_state = on_icon
-
 	else
 		icon_state = off_icon
 
@@ -140,13 +139,13 @@
 		to_chat(user, "You can't reach [src] from here.")
 		return
 
-	if (stat & POWEROFF)//Its turned off
-		stat &= ~POWEROFF
+	if (machine_stat & POWEROFF)//Its turned off
+		machine_stat &= ~POWEROFF
 		use_power = 1
 		user.visible_message("[user] turns [src] on.", "You turn on [src].")
 
 	else //Its on, turn it off
-		stat |= POWEROFF
+		machine_stat |= POWEROFF
 		use_power = 0
 		user.visible_message("[user] turns [src] off.", "You turn off [src].")
 
@@ -190,7 +189,7 @@
 /obj/machinery/appliance/proc/can_insert(var/obj/item/I, var/mob/user)
 	if (istype(I.loc, /mob/living/silicon))
 		return 0
-	else if (istype(I.loc, /obj/item/rig_module))
+	else if (istype(I.loc, /obj/item/hardsuit_module))
 		return 0
 
 	// We are trying to cook a grabbed mob.
@@ -241,8 +240,8 @@
 
 	else return 1
 
-/obj/machinery/appliance/attackby(var/obj/item/I, var/mob/user)
-	if(!cook_type || (stat & (BROKEN)))
+/obj/machinery/appliance/attackby(obj/item/I, mob/user)
+	if(!cook_type || (machine_stat & (BROKEN)))
 		to_chat(user, "<span class='warning'>\The [src] is not working.</span>")
 		return
 
@@ -267,7 +266,7 @@
 
 //Override for container mechanics
 /obj/machinery/appliance/proc/add_content(var/obj/item/I, var/mob/user)
-	if(!user.unEquip(I))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
 	var/datum/cooking_item/CI = has_space(I)
@@ -532,18 +531,19 @@
 
 /obj/machinery/appliance/proc/burn_food(var/datum/cooking_item/CI)
 	// You dun goofed.
-	CI.burned = 1
+	CI.burned = TRUE
 	CI.container.clear()
 	new /obj/item/reagent_containers/food/snacks/badrecipe(CI.container)
 
 	// Produce nasty smoke.
-	visible_message("<span class='danger'>\The [src] vomits a gout of rancid smoke!</span>")
+	visible_message(SPAN_DANGER("\The [src] vomits a gout of rancid smoke!"))
+	//TODO: True particles @Zandario
 	var/datum/effect_system/smoke_spread/bad/smoke = new /datum/effect_system/smoke_spread/bad
 	smoke.attach(src)
 	smoke.set_up(10, 0, get_turf(src), 300)
 	smoke.start()
 
-/obj/machinery/appliance/attack_hand(var/mob/user)
+/obj/machinery/appliance/attack_hand(mob/user, list/params)
 	if (cooking_objs.len)
 		if (removal_menu(user))
 			return

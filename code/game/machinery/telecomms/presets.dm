@@ -41,14 +41,14 @@
 	network = "tcommsat"
 	autolinkers = list("hub", "relay", "c_relay", "s_relay", "m_relay", "r_relay", "science", "medical",
 	"supply", "service", "common", "command", "engineering", "security", "unused", "hb_relay",
-	"receiverA", "broadcasterA") //VOREStation Edit - Added "hb_relay"
+	"receiverA", "broadcasterA")
 
 /obj/machinery/telecomms/hub/preset_cent
 	id = "CentCom Hub"
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("hub_cent", "c_relay", "s_relay", "m_relay", "r_relay", "hb_relay",
-	 "centcom", "receiverCent", "broadcasterCent") //VOREStation Edit - Added "hb_relay"
+	 "centcom", "receiverCent", "broadcasterCent")
 
 //Receivers
 
@@ -58,18 +58,18 @@
 	autolinkers = list("receiverA") // link to relay
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ)
 
-	//Common and other radio frequencies for people to freely use
-	New()
-		for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
-			freq_listening |= i
-		..()
+/// Common and other radio frequencies for people to freely use.
+/obj/machinery/telecomms/receiver/preset_right/New()
+	for(var/i = PUBLIC_LOW_FREQ, i < PUBLIC_HIGH_FREQ, i += 2)
+		freq_listening |= i
+	..()
 
 /obj/machinery/telecomms/receiver/preset_cent
 	id = "CentCom Receiver"
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("receiverCent")
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 
 
 //Buses
@@ -108,7 +108,7 @@
 /obj/machinery/telecomms/bus/preset_cent
 	id = "CentCom Bus"
 	network = "tcommsat"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("processorCent", "centcom")
 
@@ -201,7 +201,7 @@
 
 /obj/machinery/telecomms/server/presets/centcomm
 	id = "CentCom Server"
-	freq_listening = list(ERT_FREQ, DTH_FREQ)
+	freq_listening = list(ERT_FREQ, DTH_FREQ, SYND_FREQ)
 	produces_heat = 0
 	autolinkers = list("centcom")
 
@@ -220,12 +220,3 @@
 	network = "tcommsat"
 	produces_heat = 0
 	autolinkers = list("broadcasterCent")
-
-/obj/machinery/telecomms/relay/preset/houseboat
-	id = "Nearby Ship Relay"
-	hide = 1
-	produces_heat = 0
-	autolinkers = list("hb_relay")
-
-/obj/machinery/telecomms/relay/proc/reset_z()
-	listening_level = z

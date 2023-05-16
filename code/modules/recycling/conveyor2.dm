@@ -81,13 +81,13 @@
 		backwards = turn(dir, 180)
 
 /obj/machinery/conveyor/proc/update()
-	if(stat & BROKEN)
+	if(machine_stat & BROKEN)
 		icon_state = "conveyor-broken"
 		operating = OFF
 		return
 	if(!operable)
 		operating = OFF
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		operating = OFF
 	if(operating)
 		for(var/atom/movable/AM in loc)
@@ -96,8 +96,8 @@
 
 	// machine process
 	// move items to the target location
-/obj/machinery/conveyor/process()
-	if(stat & (BROKEN | NOPOWER))
+/obj/machinery/conveyor/process(delta_time)
+	if(machine_stat & (BROKEN | NOPOWER))
 		return
 	if(!operating)
 		return
@@ -109,7 +109,7 @@
 	var/turf/T = get_step(src, movedir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
 	var/items_moved = 0
@@ -118,7 +118,7 @@
 			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
 				step(A,movedir)
 				++items_moved
-		if(items_moved >= 10)
+		if(items_moved >= 50)
 			break
 /*
 		if((A.loc == loc) && A.has_gravity())
@@ -127,34 +127,33 @@
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(var/obj/item/I, mob/user)
-	if(isrobot(user))	return //Carn: fix for borgs dropping their modules on conveyor belts
-	if(I.loc != user)	return // This should stop mounted modules ending up outside the module.
-
 	if(default_deconstruction_screwdriver(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	if(default_deconstruction_crowbar(user, I))
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 	if(istype(I, /obj/item/multitool))
 		if(panel_open)
 			var/input = sanitize(input(usr, "What id would you like to give this conveyor?", "Multitool-Conveyor interface", id))
 			if(!input)
 				to_chat(user, "No input found. Please hang up and try your call again.")
-				return
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			id = input
-			for(var/obj/machinery/conveyor_switch/C in machines)
+			for(var/obj/machinery/conveyor_switch/C in GLOB.machines)
 				if(C.id == id)
 					C.conveyors |= src
-			return
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	user.drop_item(get_turf(src))
-	return
+	if(user.a_intent == INTENT_HELP)
+		user.transfer_item_to_loc(I, loc)
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 // attack with hand, move pulled object onto conveyor
-/obj/machinery/conveyor/attack_hand(mob/user as mob)
-	if ((!( user.canmove ) || user.restrained() || !( user.pulling )))
+/obj/machinery/conveyor/attack_hand(mob/user, list/params)
+	if(!CHECK_ALL_MOBILITY(user, MOBILITY_CAN_MOVE | MOBILITY_CAN_USE))
 		return
-	if (user.pulling.anchored)
+	if(isnull(user.pulling) || user.pulling.anchored)
 		return
 	if ((user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1))
 		return
@@ -166,13 +165,11 @@
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
 		user.stop_pulling()
-	return
-
 
 // make the conveyor broken
 // also propagate inoperability to any connected conveyor with the same ID
 /obj/machinery/conveyor/proc/broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	update()
 
 	var/obj/machinery/conveyor/C = locate() in get_step(src, dir)
@@ -229,7 +226,7 @@
 
 /obj/machinery/conveyor_switch/LateInitialize()
 	conveyors = list()
-	for(var/obj/machinery/conveyor/C in machines)
+	for(var/obj/machinery/conveyor/C in GLOB.machines)
 		if(C.id == id)
 			conveyors += C
 
@@ -257,7 +254,7 @@
 		C.setmove()
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/attack_hand(mob/user)
+/obj/machinery/conveyor_switch/attack_hand(mob/user, list/params)
 	if(!allowed(user))
 		to_chat(user, "<span class='warning'>Access denied.</span>")
 		return
@@ -277,7 +274,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()
@@ -292,8 +289,8 @@
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
-			playsound(src, WT.usesound, 50, 1)
-			if(do_after(user, 20 * WT.toolspeed))
+			playsound(src, WT.tool_sound, 50, 1)
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 				new /obj/item/stack/material/steel( src.loc, 2 )
@@ -308,7 +305,7 @@
 				return
 			id = input
 			conveyors = list() // Clear list so they aren't double added.
-			for(var/obj/machinery/conveyor/C in machines)
+			for(var/obj/machinery/conveyor/C in GLOB.machines)
 				if(C.id == id)
 					conveyors += C
 			return
@@ -318,7 +315,7 @@
 	desc = "A conveyor control switch. It appears to only go in one direction."
 
 // attack with hand, switch position
-/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user)
+/obj/machinery/conveyor_switch/oneway/attack_hand(mob/user, list/params)
 	if(position == 0)
 		position = convdir
 	else
@@ -328,7 +325,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()

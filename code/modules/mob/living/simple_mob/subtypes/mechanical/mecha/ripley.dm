@@ -47,7 +47,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 0,
 				"bullet"	= 20,
 				"laser"		= 50,
@@ -84,7 +84,7 @@
 
 	maxHealth = 250
 	heat_resist = 1
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 30,
 				"bullet"	= 40,
 				"laser"		= 50,
@@ -94,7 +94,7 @@
 				"rad"		= 100
 				)
 
-	projectiletype = /obj/item/projectile/bullet/pistol
+	projectiletype = /obj/projectile/bullet/pistol
 	base_attack_cooldown = 0.5 SECONDS
 	needs_reload = TRUE
 	reload_max = 30
@@ -102,3 +102,14 @@
 
 /mob/living/simple_mob/mechanical/mecha/ripley/pirate/manned
 	pilot_type = /mob/living/simple_mob/humanoid/pirate/mate/ranged/bosun
+
+/mob/living/simple_mob/mechanical/mecha/ripley/pirate/last_stand_merc	//Special version used as a quasi boss fight on Virgo 5 (class_d). No unmanned variant
+	name = "Xeno Ripper"
+	desc = "A Ripley modified by a desperate merc. It sports additional riveted armor plating splattered with dried xeno blood and a jury rigged machine gun in addition to its drill.\
+			A repair drone flits around the intimidating mech."
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive	//Its coming right at you!
+	maxHealth = 170				//Less Health
+	has_repair_droid = TRUE		//But has repair drone
+	pilot_type = /mob/living/simple_mob/humanoid/possessed/merc/feral	//Possessed rig suit piloting a mech. Tremble in fear
+	movement_shake_radius = 5	//Actually tremble
+

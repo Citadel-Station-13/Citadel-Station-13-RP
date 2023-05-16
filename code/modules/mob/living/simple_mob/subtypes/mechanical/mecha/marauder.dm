@@ -3,9 +3,9 @@
 /datum/category_item/catalogue/technology/marauder
 	name = "Exosuit - Marauder"
 	desc = "Marauders are the more modern descendants of the Durand model. Stronger, faster, and \
-	more resilient than their predecessor, they have replaced the Durand's role entirely, and are generally seen in service \
-	for various militaries across human space. As such, they are generally unavailable to civilians, including \
-	corporations and most Trans-Stellars."
+	more resilient than their predecessor, they have replaced the Durand's role entirely, and are generally deployed by \
+	NanoTrasen to heavy conflict zones across the Frontier. As such, they are generlly unavailable to civilians, including \
+	low-level NanoTrasen duty stations and most allied corporations."
 	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/marauder
@@ -19,7 +19,7 @@
 	maxHealth = 500
 	deflect_chance = 25
 	sight = SEE_SELF | SEE_MOBS
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 50,
 				"bullet"	= 55,
 				"laser"		= 40,
@@ -31,7 +31,7 @@
 	melee_damage_lower = 45
 	melee_damage_upper = 45
 	base_attack_cooldown = 2 SECONDS
-	projectiletype = /obj/item/projectile/beam/heavylaser
+	projectiletype = /obj/projectile/beam/heavylaser
 
 
 
@@ -59,6 +59,14 @@
 	melee_damage_lower = 55 // The real version hits this hard apparently. Ouch.
 	melee_damage_upper = 55
 
+/datum/category_item/catalogue/technology/mauler
+	name = "Exosuit - Mauler"
+	desc = "In spite of their technological advancement and heavily restricted deployments, NanoTrasen \
+	Marauders may sometimes be stolen, salvaged, or illictly purchased from corrupt company officials. These \
+	repurposed models are designated Maulers - after the first line produced by the Syndicate during the Phoron \
+	wars. Functionally identical in terms of armor and armament, Maulers are considerably more rare than the \
+	already scarce Marauder, and are considered a black market collectable item on par with stolen art."
+	value = CATALOGUER_REWARD_HARD
 
 /mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler
 	name = "mauler"

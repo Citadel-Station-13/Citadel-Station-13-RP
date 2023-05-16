@@ -10,9 +10,11 @@
 	faction = "dragon"
 	maxHealth = 500 // Boss
 	health = 500
+	randomized = TRUE
 
 	melee_damage_lower = 5
 	melee_damage_upper = 30
+	attack_sound = 'sound/weapons/bite.ogg'
 
 	//Space dragons aren't affected by atmos.
 	min_oxy = 0
@@ -26,23 +28,14 @@
 	minbodytemp = 0
 	maxbodytemp = 700
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
+	base_pixel_x = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 	say_list_type = /datum/say_list/dragonboss
 
 /mob/living/simple_mob/vore/aggressive/dragon/Process_Spacemove(var/check_drift = 0)
 	return 1	//No drifting in space for space dragons!
-/*
-/mob/living/simple_mob/vore/aggressive/dragon/FindTarget()
-	. = ..()
-	if(.)
-		custom_emote(1,"snaps at [.]")
-*/
+
 // Activate Noms!
 /mob/living/simple_mob/vore/aggressive/dragon
 	vore_active = 1
@@ -55,16 +48,6 @@
 	health = 200
 	faction = "virgo3b"
 
-/* //VOREStation AI Temporary Removal
-/mob/living/simple_animal/hostile/dragon/Login()
-	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_animal(src)
-	verbs |= /mob/living/simple_animal/proc/animal_mount
-
-/mob/living/simple_animal/hostile/dragon/MouseDrop_T(mob/living/M, mob/living/user)
-	return
-*/
 
 /datum/say_list/dragonboss
 	say_got_target = list("roars and snaps it jaws!")

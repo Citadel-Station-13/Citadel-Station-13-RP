@@ -9,15 +9,11 @@
 	density = 1
 	opacity = 0
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+	pass_flags_self = ATOM_PASS_GLASS
 
 	var/window_flags = 0 // Bitflags to indicate connected windows
 	var/wall_flags = 0 // Bitflags to indicate connected walls
-
-/obj/structure/shuttle/window/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return TRUE
-	return ..()
 
 /obj/structure/shuttle/window/Initialize(mapload)
 	. = ..()

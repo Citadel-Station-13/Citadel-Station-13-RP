@@ -1,5 +1,5 @@
 // Legacy version. Need to investigate what the hell lootdrop in loot.dm does later. -Ace
-/obj/effect/landmark/loot_spawn
+/obj/landmark/loot_spawn
 	name = "loot spawner"
 	icon_state = "grabbed1"
 	var/live_cargo = 1 // So you can turn off aliens.
@@ -7,12 +7,12 @@
 	var/spawned_faction = "hostile" // Spawned mobs can have their faction changed.
 
 
-/obj/effect/landmark/loot_spawn/low
+/obj/landmark/loot_spawn/low
 	name = "low prob loot spawner"
 	icon_state = "grabbed"
 	low_probability = 1
 
-/obj/effect/landmark/loot_spawn/New()
+/obj/landmark/loot_spawn/New()
 
 	switch(pick( \
 	low_probability * 1000;"nothing", \
@@ -24,12 +24,9 @@
 	100 - low_probability * 50;"spacesuit", \
 	"health", \
 	25 + low_probability * 75;"snacks", \
-	/*25;"alien", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	"lights", \
 	25 - low_probability * 25;"engineering", \
 	25 - low_probability * 25;"coffin", \
-	/*25;"mimic", \ //VORESTATION AI TEMPORARY REMOVAL
-	25;"viscerator", \ */ //VORESTATION AI TEMPORARY REMOVAL
 	))
 		if("treasure")
 			var/obj/structure/closet/crate/C = new(src.loc)
@@ -52,7 +49,7 @@
 				var/amount = rand(2,6)
 				var/quantity = rand(10,50)
 				var/list/possible_spawns = list()
-				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/material/animalhide - typesof(/obj/item/stack/material/cyborg))
+				for(var/bar_type in typesof(/obj/item/stack/material) - /obj/item/stack/material - /obj/item/stack/animalhide - typesof(/obj/item/stack/material/cyborg))
 					possible_spawns += bar_type
 
 				var/bar_type = pick(possible_spawns)
@@ -107,37 +104,37 @@
 				var/new_gun = pick( // Copied from Random.dm
 					prob(11);/obj/random/ammo_all,\
 					prob(11);/obj/item/gun/energy/laser,\
-					prob(11);/obj/item/gun/projectile/pirate,\
+					prob(11);/obj/item/gun/ballistic/pirate,\
 					prob(10);/obj/item/material/twohanded/spear,\
 					prob(10);/obj/item/gun/energy/stunrevolver,\
 					prob(10);/obj/item/gun/energy/taser,\
 					prob(10);/obj/item/gun/launcher/crossbow,\
-					prob(10);/obj/item/gun/projectile/shotgun/doublebarrel/pellet,\
+					prob(10);/obj/item/gun/ballistic/shotgun/doublebarrel/pellet,\
 					prob(10);/obj/item/material/knife,\
 					prob(10);/obj/item/material/knife/tacknife/combatknife,\
 					prob(10);/obj/item/material/butterfly/switchblade,\
-					prob(10);/obj/item/gun/projectile/luger,\
-					prob(10);/obj/item/gun/projectile/luger/brown,\
-				/*	prob(10);/obj/item/gun/projectile/pipegun,\ */
-					prob(10);/obj/item/gun/projectile/revolver,\
-					prob(10);/obj/item/gun/projectile/revolver/detective,\
-					prob(10);/obj/item/gun/projectile/revolver/mateba,\
-					prob(10);/obj/item/gun/projectile/revolver/judge,\
-					prob(10);/obj/item/gun/projectile/colt,\
-					prob(10);/obj/item/gun/projectile/shotgun/pump,\
-					prob(10);/obj/item/gun/projectile/shotgun/pump/rifle,\
-				/*	prob(10);/obj/item/gun/projectile/shotgun/pump/rifle/mosin,\ */
+					prob(10);/obj/item/gun/ballistic/luger,\
+					prob(10);/obj/item/gun/ballistic/luger/brown,\
+				/*	prob(10);/obj/item/gun/ballistic/pipegun,\ */
+					prob(10);/obj/item/gun/ballistic/revolver,\
+					prob(10);/obj/item/gun/ballistic/revolver/detective,\
+					prob(10);/obj/item/gun/ballistic/revolver/mateba,\
+					prob(10);/obj/item/gun/ballistic/revolver/judge,\
+					prob(10);/obj/item/gun/ballistic/colt,\
+					prob(10);/obj/item/gun/ballistic/shotgun/pump,\
+					prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle,\
+				/*	prob(10);/obj/item/gun/ballistic/shotgun/pump/rifle/mosin,\ */
 					prob(10);/obj/item/melee/baton,\
 					prob(10);/obj/item/melee/telebaton,\
 					prob(10);/obj/item/melee/classic_baton,\
 					prob(10);/obj/item/melee/energy/sword,\
-					prob(9);/obj/item/gun/projectile/automatic/wt550/lethal,\
-					prob(9);/obj/item/gun/projectile/automatic/pdw,\
-					prob(9);/obj/item/gun/projectile/derringer,\
+					prob(9);/obj/item/gun/ballistic/automatic/wt550/lethal,\
+					prob(9);/obj/item/gun/ballistic/automatic/pdw,\
+					prob(9);/obj/item/gun/ballistic/derringer,\
 					prob(9);/obj/item/gun/energy/crossbow/largecrossbow,\
-					prob(9);/obj/item/gun/projectile/automatic/mini_uzi,\
-					prob(9);/obj/item/gun/projectile/pistol,\
-					prob(9);/obj/item/gun/projectile/shotgun/pump/combat,\
+					prob(9);/obj/item/gun/ballistic/automatic/mini_uzi,\
+					prob(9);/obj/item/gun/ballistic/pistol,\
+					prob(9);/obj/item/gun/ballistic/shotgun/pump/combat,\
 					prob(9);/obj/item/material/twohanded/fireaxe,\
 					prob(9);/obj/item/cane/concealed,\
 					prob(9);/obj/item/gun/energy/gun,\
@@ -145,33 +142,35 @@
 					prob(8);/obj/item/gun/energy/retro,\
 					prob(8);/obj/item/gun/energy/gun/eluger,\
 					prob(8);/obj/item/gun/energy/xray,\
-					prob(8);/obj/item/gun/projectile/automatic/c20r,\
-					prob(8);/obj/item/gun/projectile/automatic/stg,\
+					prob(8);/obj/item/gun/ballistic/automatic/c20r,\
+					prob(8);/obj/item/gun/ballistic/automatic/stg,\
 					prob(8);/obj/item/melee/energy/sword,\
-				/*	prob(8);/obj/item/gun/projectile/automatic/m41a,\ */
+				/*	prob(8);/obj/item/gun/ballistic/automatic/m41a,\ */
 					prob(7);/obj/item/gun/energy/captain,\
 					prob(7);/obj/item/gun/energy/sniperrifle,\
-					prob(7);/obj/item/gun/projectile/automatic/p90,\
-					prob(7);/obj/item/gun/projectile/automatic/as24,\
-					prob(7);/obj/item/gun/projectile/automatic/sts35,\
-					prob(7);/obj/item/gun/projectile/automatic/z8,\
+					prob(7);/obj/item/gun/ballistic/automatic/p90,\
+					prob(7);/obj/item/gun/ballistic/automatic/as24,\
+					prob(7);/obj/item/gun/ballistic/automatic/sts35,\
+					prob(7);/obj/item/gun/ballistic/automatic/z8,\
 					prob(7);/obj/item/gun/energy/gun/burst,\
-					prob(7);/obj/item/gun/projectile/shotgun/pump/USDF,\
-					prob(7);/obj/item/gun/projectile/deagle,\
+					prob(7);/obj/item/gun/ballistic/shotgun/pump/JSDF,\
+					prob(7);/obj/item/gun/ballistic/deagle,\
 					prob(7);/obj/item/gun/launcher/grenade,\
-				/*	prob(6);/obj/item/gun/projectile/SVD,\*/
-					prob(6);/obj/item/gun/projectile/automatic/l6_saw,\
+				/*	prob(6);/obj/item/gun/ballistic/SVD,\*/
+					prob(6);/obj/item/gun/ballistic/automatic/lmg,\
 					prob(6);/obj/item/gun/energy/lasercannon,\
-					prob(5);/obj/item/gun/projectile/automatic/bullpup,\
+					prob(5);/obj/item/gun/ballistic/automatic/bullpup,\
 					prob(5);/obj/item/gun/energy/pulse_rifle,\
-				/*	prob(4);/obj/item/gun/projectile/automatic/battlerifle,\ */
-					prob(3);/obj/item/gun/projectile/deagle/camo,\
+				/*	prob(4);/obj/item/gun/ballistic/automatic/battlerifle,\ */
+					prob(3);/obj/item/gun/ballistic/deagle/camo,\
 					prob(3);/obj/item/gun/energy/gun/nuclear,\
-					prob(2);/obj/item/gun/projectile/deagle/gold,\
-					prob(1);/obj/item/gun/launcher/rocket,\
+					prob(2);/obj/item/gun/ballistic/deagle/gold,\
+					prob(2);/obj/item/gun/ballistic/automatic/lmg/mg42,\
+					prob(2);/obj/item/gun/ballistic/automatic/lmg/m60,\
+					prob(1);/obj/item/gun/ballistic/rocket,\
 					prob(1);/obj/item/gun/launcher/grenade,\
-					prob(1);/obj/item/gun/projectile/gyropistol,\
-					prob(1);/obj/item/gun/projectile/heavysniper,\
+					prob(1);/obj/item/gun/ballistic/gyropistol,\
+					prob(1);/obj/item/gun/ballistic/heavysniper,\
 					prob(1);/obj/item/plastique,\
 					prob(1);/obj/item/material/sword,\
 					prob(1);/obj/item/cane/concealed,\
@@ -199,7 +198,7 @@
 					prob(4);/obj/item/ammo_magazine/m9mmt,\
 					prob(4);/obj/item/ammo_magazine/m9mmt/rubber,\
 					prob(4);/obj/item/ammo_magazine/m10mm,\
-					prob(4);/obj/item/ammo_magazine/m9mmp90,\
+					prob(4);/obj/item/ammo_magazine/m57x28mmp90,\
 				/*	prob(4);/obj/item/ammo_magazine/m14,\
 					prob(4);/obj/item/ammo_magazine/m14/large,\*/
 					prob(4);/obj/item/ammo_magazine/m545/ext,
@@ -334,19 +333,14 @@
 				new /obj/effect/decal/remains/human(src)
 			else if(prob(50))
 				new /obj/effect/decal/remains/xeno(src)
+
 		if("mimic")
-			//a guardian of the tomb!
-			// var/mob/living/simple_mob/hostile/mimic/crate/mimic = new(src.loc)
-			// mimic.faction = spawned_faction
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
+
 		if("viscerator")
-			//more tomb guardians!
-			//var/num = rand(1,3) //VORESTATION AI TEMPORARY REMOVAL
-			var/obj/structure/closet/crate/secure/gear/C = new(src.loc) //VORESTATION AI TEMPORARY EDIT
-			new /obj/item/storage/toolbox/electrical(C) //Placeholder to prevent errors. //VORESTATION AI TEMPORARY EDIT
-			//for(var/i=0,i<num,i++) //VORESTATION AI TEMPORARY REMOVAL
-				//new /mob/living/simple_mob/hostile/viscerator(C)  //VORESTATION AI TEMPORARY REMOVAL
+			var/obj/structure/closet/crate/secure/gear/C = new(src.loc)
+			new /obj/item/storage/toolbox/electrical(C)
 
 	qdel(src)
 
@@ -357,7 +351,7 @@
 	anchored = 1
 	layer = 3.5
 	name = "strange symbol"
-	icon = 'icons/obj/decals_vr.dmi'
+	icon = 'icons/obj/decals.dmi'
 
 /obj/structure/symbol/ca
 	desc = "It looks like a skull, or maybe a crown."
@@ -394,3 +388,8 @@
 /obj/structure/symbol/sa
 	desc = "It looks like a right triangle with a dot to the side. It reminds you of a wooden strut between a wall and ceiling."
 	icon_state = "sa"
+
+/obj/structure/symbol/maint
+	name = "maintenance panel"
+	desc = "This sign suggests that the wall it's attached to can be opened somehow."
+	icon_state = "maintenance_panel"

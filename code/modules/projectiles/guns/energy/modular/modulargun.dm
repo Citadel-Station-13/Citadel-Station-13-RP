@@ -9,7 +9,7 @@
 	icon_state = "mod_pistol"
 	cell_type = /obj/item/cell/device/weapon
 	charge_cost = 120
-	projectile_type = /obj/item/projectile/beam
+	projectile_type = /obj/projectile/beam
 	var/cores = 1//How many lasing cores can we support?
 	var/assembled = 1 //Are we open?
 	var/obj/item/modularlaser/lasermedium/primarycore //Lasing medium core.
@@ -63,7 +63,7 @@
 	firemodes = list()
 	var/burstmode = circuit.maxburst //Max burst controlled by the laser control circuit.
 	//to_chat(world, "The modular weapon at [src.loc] has begun generating a firemode.")
-	var/obj/item/projectile/beammode = primarycore.beamtype //Primary mode fire type.
+	var/obj/projectile/beammode = primarycore.beamtype //Primary mode fire type.
 	var/chargecost = primarycore.beamcost * lasercap.costmod //Cost for primary fire.
 	chargecost += lasercooler.costadd //Cooler adds a flat amount post capacitor based on firedelay mod. Can be negative.
 	var/scatter = laserlens.scatter //Does it scatter the beams?
@@ -72,8 +72,8 @@
 	accuracy = laserlens.accuracy
 	var/chargecost_lethal = 120
 	var/chargecost_special = 120
-	var/obj/item/projectile/beammode_lethal
-	var/obj/item/projectile/beammode_special
+	var/obj/projectile/beammode_lethal
+	var/obj/projectile/beammode_special
 	if(cores > 1 && secondarycore) //Secondary firemode
 		beammode_lethal = secondarycore.beamtype
 		chargecost_lethal = secondarycore.beamcost * lasercap.costmod
@@ -183,22 +183,22 @@
 	if(!assembled)
 		to_chat(user, "<span class='warning'>The gun is open!</span>")
 		return FALSE
-	if(projectile_type == /obj/item/projectile)
+	if(projectile_type == /obj/projectile)
 		to_chat(user, "<span class='warning'>The gun is experiencing a checking error! Open and close the weapon, or try removing all the parts and placing them back in.</span>")
 		var/datum/firemode/new_mode = firemodes[1]
 		new_mode.apply_to(src)
 		return FALSE
 
-/obj/item/gun/energy/modular/attackby(obj/item/O, mob/user)
-	if(O.is_screwdriver())
+/obj/item/gun/energy/modular/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		generatefiremodes()
 		return
-	if(O.is_crowbar())
+	if(I.is_crowbar())
 		if(assembled == TRUE)
-			to_chat(user, "<span class='warning'>Open the [src] first!</span>")
+			to_chat(user, "<span class='warning'>Open [src] first!</span>")
 			return
 		var/turf/T = get_turf(src)
 		if(primarycore && primarycore.removable == TRUE)
@@ -223,72 +223,71 @@
 			circuit.forceMove(T)
 			circuit = null
 		generatefiremodes()
-	if(istype(O, /obj/item/modularlaser))
+	if(istype(I, /obj/item/modularlaser))
 		if(assembled == TRUE)
-			to_chat(user, "<span class='warning'>Open the [src] first!</span>")
+			to_chat(user, "<span class='warning'>Open [src] first!</span>")
 			return
-		var/obj/item/modularlaser/ML = O
+		var/obj/item/modularlaser/ML = I
 		if(istype(ML,/obj/item/modularlaser/lasermedium))
 			var/obj/item/modularlaser/lasermedium/med = ML
 			if(!primarycore && cores >= 1)
+				if(!user.attempt_insert_item_for_installation(med, src))
+					return
 				primarycore = med
-				user.drop_item()
-				med.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [med.name] in the primary core slot.</span>")
 				generatefiremodes()
 				return
 			if(!secondarycore && cores >= 2)
+				if(!user.attempt_insert_item_for_installation(med, src))
+					return
 				secondarycore = med
-				user.drop_item()
-				med.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [med.name] in the secondary core slot.</span>")
 				generatefiremodes()
 				return
 			if(!tertiarycore && cores == 3)
+				if(!user.attempt_insert_item_for_installation(med, src))
+					return
 				tertiarycore = med
-				user.drop_item()
-				med.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [med.name] in the tertiary core slot.</span>")
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/lens))
 			var/obj/item/modularlaser/lens/L = ML
 			if(!laserlens)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				laserlens = L
-				user.drop_item()
-				L.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [L.name] in the lens holder.</span>")
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/capacitor))
 			var/obj/item/modularlaser/capacitor/C = ML
 			if(!lasercap)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				lasercap = C
-				user.drop_item()
-				C.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [C.name] in the power supply slot.</span>")
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/cooling))
 			var/obj/item/modularlaser/cooling/CO = ML
 			if(!lasercooler)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				lasercooler = CO
-				user.drop_item()
-				CO.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [CO.name] in the cooling system mount.</span>")
 				generatefiremodes()
 				return
 		if(istype(ML, /obj/item/modularlaser/controller))
 			var/obj/item/modularlaser/controller/CON = ML
 			if(!circuit)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				circuit = CON
-				user.drop_item()
-				CON.forceMove(src)
 				to_chat(user, "<span class='notice'>You install the [CON.name] in the fire control unit mount and connect it.</span>")
 				generatefiremodes()
 				return
-	generatefiremodes()
-	..()
+	return ..()
 
 //these are debug ones.
 /obj/item/gun/energy/modular/twocore

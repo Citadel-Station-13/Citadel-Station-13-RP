@@ -130,9 +130,63 @@
 	icon_state = "generic"
 
 /obj/random/rigsuit/item_to_spawn()
-	return pick(prob(4);/obj/item/rig/light/hacker,
-				prob(5);/obj/item/rig/industrial,
-				prob(5);/obj/item/rig/eva,
-				prob(4);/obj/item/rig/light/stealth,
-				prob(3);/obj/item/rig/hazard,
-				prob(1);/obj/item/rig/merc/empty)
+	return pick(prob(4);/obj/item/hardsuit/light/hacker,
+				prob(5);/obj/item/hardsuit/industrial,
+				prob(5);/obj/item/hardsuit/eva,
+				prob(4);/obj/item/hardsuit/light/stealth,
+				prob(3);/obj/item/hardsuit/hazard,
+				prob(1);/obj/item/hardsuit/merc/empty)
+
+/obj/random/multiple/voidsuit/vintage
+	name = "Random Vintage Voidsuit"
+	desc = "This is a random vintage voidsuit."
+	icon = 'icons/obj/clothing/spacesuits.dmi'
+	icon_state = "rig-vintagecrew"
+
+/obj/random/multiple/voidsuit/vintage/item_to_spawn()
+	return pick(
+			prob(20);list(
+				/obj/item/clothing/suit/space/void/refurb,
+				/obj/item/clothing/head/helmet/space/void/refurb
+			),
+			prob(20);list(
+				/obj/item/clothing/suit/space/void/refurb/engineering,
+				/obj/item/clothing/head/helmet/space/void/refurb/engineering
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/medical,
+				/obj/item/clothing/head/helmet/space/void/refurb/medical
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/medical,
+				/obj/item/clothing/head/helmet/space/void/refurb/medical/alt
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/marine,
+				/obj/item/clothing/head/helmet/space/void/refurb/marine
+			),
+			prob(5);list(
+				/obj/item/clothing/suit/space/void/refurb/officer,
+				/obj/item/clothing/head/helmet/space/void/refurb/officer
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/pilot,
+				/obj/item/clothing/head/helmet/space/void/refurb/pilot
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/pilot,
+				/obj/item/clothing/head/helmet/space/void/refurb/pilot/alt
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/research,
+				/obj/item/clothing/head/helmet/space/void/refurb/research
+			),
+			prob(10);list(
+				/obj/item/clothing/suit/space/void/refurb/research,
+				/obj/item/clothing/head/helmet/space/void/refurb/research/alt
+			),
+			prob(5);list(
+				/obj/item/clothing/suit/space/void/refurb/mercenary,
+				/obj/item/clothing/head/helmet/space/void/refurb/mercenary
+			)
+		)

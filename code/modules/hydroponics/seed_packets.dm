@@ -7,6 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	name = "packet of seeds"
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	w_class = ITEMSIZE_SMALL
 
 	var/seed_type
@@ -19,16 +20,20 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()
-	if(!seed && seed_type && !isnull(plant_controller.seeds) && plant_controller.seeds[seed_type])
-		seed = plant_controller.seeds[seed_type]
+	if(!seed && seed_type && !isnull(SSplants.seeds) && SSplants.seeds[seed_type])
+		seed = SSplants.seeds[seed_type]
 	update_appearance()
 
 //Updates strings and icon appropriately based on seed datum.
-/obj/item/seeds/proc/update_appearance()
-	if(!seed) return
+/obj/item/seeds/update_appearance()
+	. = ..()
+	if(!seed)
+		return
 
 	// Update icon.
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	var/is_seeds = ((seed.seed_noun in list("seeds","pits","nodes")) ? 1 : 0)
 	var/image/seed_mask
 	var/seed_base_key = "base-[is_seeds ? seed.get_trait(TRAIT_PLANT_COLOUR) : "spores"]"
@@ -49,8 +54,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 		seed_overlay.color = seed.get_trait(TRAIT_PRODUCT_COLOUR)
 		plant_seed_sprites[seed_overlay_key] = seed_overlay
 
-	overlays |= seed_mask
-	overlays |= seed_overlay
+	overlays_to_add += seed_mask
+	overlays_to_add += seed_overlay
+	add_overlay(overlays_to_add)
 
 	if(is_seeds)
 		src.name = "packet of [seed.seed_name] [seed.seed_noun]"
@@ -76,7 +82,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	seed_type = null
 
 /obj/item/seeds/random/Initialize(mapload)
-	seed = plant_controller.create_random_seed()
+	seed = SSplants.create_random_seed()
 	seed_type = seed.name
 	. = ..()
 
@@ -157,6 +163,12 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/carrotseed
 	seed_type = "carrot"
+
+/obj/item/seeds/taroseed
+	seed_type = "taro"
+
+/obj/item/seeds/coconutseed
+	seed_type = "coconut"
 
 /obj/item/seeds/reishimycelium
 	seed_type = "reishi"
@@ -314,6 +326,9 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 /obj/item/seeds/durian
 	seed_type = "durian"
 
+/obj/item/seeds/disho
+	seed_type = "disho"
+
 /obj/item/seeds/vanilla
 	seed_type = "vanilla"
 
@@ -322,3 +337,25 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/rose/blood
 	seed_type = "bloodrose"
+
+/obj/item/seeds/peaseed
+	seed_type = "peas"
+
+//Ashlander Plants
+/obj/item/seeds/ashlander
+	seed_type = "pyrrhlea"
+
+/obj/item/seeds/ashlander/bentars
+	seed_type = "bentars"
+
+/obj/item/seeds/ashlander/juhtak
+	seed_type = "juhtak"
+
+/obj/item/seeds/ashlander/cersut
+	seed_type = "cersut"
+
+/obj/item/seeds/ashlander/shimash
+	seed_type = "shimash"
+
+/obj/item/seeds/ashlander/pokalea
+	seed_type = "pokalea"

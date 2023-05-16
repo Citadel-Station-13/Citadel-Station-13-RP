@@ -1,8 +1,8 @@
 /**
-* DNA 2: The Spaghetti Strikes Back
-*
-* @author N3X15 <nexisentertainment@gmail.com>
-*/
+ * DNA 2: The Spaghetti Strikes Back
+ *
+ * @author N3X15 <nexisentertainment@gmail.com>
+ */
 
 // What each index means:
 #define DNA_OFF_LOWERBOUND 0
@@ -17,15 +17,15 @@
 #define DNA_HARD_BOUNDS    list(1,3490,3500,4095)
 
 // UI Indices (can change to mutblock style, if desired)
-#define DNA_UI_HAIR_R      1
-#define DNA_UI_HAIR_G      2
-#define DNA_UI_HAIR_B      3
-#define DNA_UI_BEARD_R     4
-#define DNA_UI_BEARD_G     5
-#define DNA_UI_BEARD_B     6
-#define DNA_UI_SKIN_TONE   7
-#define DNA_UI_SKIN_R      8
-#define DNA_UI_SKIN_G      9
+#define DNA_UI_HAIR_R       1
+#define DNA_UI_HAIR_G       2
+#define DNA_UI_HAIR_B       3
+#define DNA_UI_BEARD_R      4
+#define DNA_UI_BEARD_G      5
+#define DNA_UI_BEARD_B      6
+#define DNA_UI_SKIN_TONE    7
+#define DNA_UI_SKIN_R       8
+#define DNA_UI_SKIN_G       9
 #define DNA_UI_SKIN_B      10
 #define DNA_UI_EYES_R      11
 #define DNA_UI_EYES_G      12
@@ -42,79 +42,105 @@
 #define DNA_UI_TAIL2_R     23
 #define DNA_UI_TAIL2_G     24
 #define DNA_UI_TAIL2_B     25
-#define DNA_UI_EARS_R      26
-#define DNA_UI_EARS_G      27
-#define DNA_UI_EARS_B      28
-#define DNA_UI_EARS2_R     29
-#define DNA_UI_EARS2_G     30
-#define DNA_UI_EARS2_B     31
-#define DNA_UI_WING_STYLE  32
-#define DNA_UI_WING_R      33
-#define DNA_UI_WING_G      34
-#define DNA_UI_WING_B      35
-#define DNA_UI_WING2_R     36
-#define DNA_UI_WING2_G     37
-#define DNA_UI_WING2_B     38
-#define DNA_UI_LENGTH      38
+#define DNA_UI_TAIL3_R     26
+#define DNA_UI_TAIL3_G     27
+#define DNA_UI_TAIL3_B     28
+#define DNA_UI_EARS_R      29
+#define DNA_UI_EARS_G      30
+#define DNA_UI_EARS_B      31
+#define DNA_UI_EARS2_R     32
+#define DNA_UI_EARS2_G     33
+#define DNA_UI_EARS2_B     34
+#define DNA_UI_EARS3_R     35
+#define DNA_UI_EARS3_G     36
+#define DNA_UI_EARS3_B     37
+#define DNA_UI_WING_STYLE  38
+#define DNA_UI_WING_R      39
+#define DNA_UI_WING_G      40
+#define DNA_UI_WING_B      41
+#define DNA_UI_WING2_R     42
+#define DNA_UI_WING2_G     43
+#define DNA_UI_WING2_B     44
+#define DNA_UI_WING3_R     45
+#define DNA_UI_WING3_G     46
+#define DNA_UI_WING3_B     47
+///! Needs to match the highest number above.
+#define DNA_UI_LENGTH      47
+/// (original was UI+11)
+#define DNA_SE_LENGTH 50
 
-#define DNA_SE_LENGTH 49 // original was UI+11
-// For later:
-//#define DNA_SE_LENGTH 50 // Was STRUCDNASIZE, size 27. 15 new blocks added = 42, plus room to grow.
-
-
-// Defines which values mean "on" or "off".
-//  This is to make some of the more OP superpowers a larger PITA to activate,
-//  and to tell our new DNA datum which values to set in order to turn something
-//  on or off.
+/**
+ * Defines which values mean "on" or "off".
+ *
+ * This is to make some of the more OP superpowers a larger PITA to activate,
+ * and to tell our new DNA datum which values to set in order to turn something
+ * on or off.
+ */
 var/global/list/dna_activity_bounds[DNA_SE_LENGTH]
 
-// Used to determine what each block means (admin hax and species stuff on /vg/, mostly)
+/**
+ * Used to determine what each block means (admin hax and species stuff on /vg/, mostly)
+ */
 var/global/list/assigned_blocks[DNA_SE_LENGTH]
 
-var/global/list/datum/dna/gene/dna_genes[0]
+var/global/list/datum/gene/dna_genes[0]
 
 /////////////////
-// GENE DEFINES
+//! ## GENE DEFINES ## !//
 /////////////////
 // Skip checking if it's already active.
 // Used for genes that check for value rather than a binary on/off.
 #define GENE_ALWAYS_ACTIVATE 1
 
 /datum/dna
-	// READ-ONLY, GETS OVERWRITTEN
-	// DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
-	var/uni_identity="" // Encoded UI
-	var/struc_enzymes="" // Encoded SE
-	var/unique_enzymes="" // MD5 of player name
+//! READ-ONLY, GETS OVERWRITTEN
+//! DO NOT FUCK WITH THESE OR BYOND WILL EAT YOUR FACE
 
-	// Internal dirtiness checks
-	var/dirtyUI=0
-	var/dirtySE=0
+	/// Encoded UI.
+	var/uni_identity   = ""
+	/// Encoded SE.
+	var/struc_enzymes  = ""
+	/// MD5 of player name.
+	var/unique_enzymes = ""
 
-	// Okay to read, but you're an idiot if you do.
-	// BLOCK = VALUE
+	// Internal dirtiness checks.
+	var/dirtyUI = 0
+	var/dirtySE = 0
+
+//! Okay to read, but you're an idiot if you do.
+//! BLOCK = VALUE
 	var/list/SE[DNA_SE_LENGTH]
 	var/list/UI[DNA_UI_LENGTH]
 
-	// From old dna.
-	var/b_type = "A+"  // Should probably change to an integer => string map but I'm lazy.
-	var/real_name          // Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
+//? From old dna.
+	/// Should probably change to an integer => string map but I'm lazy.
+	var/b_type = "A+"
+	/// Stores the real name of the person who originally got this dna datum. Used primarily for changelings,
+	var/real_name
 
-	// VOREStation
 	var/custom_species
-	var/base_species = "Human"
+	var/base_species = SPECIES_HUMAN
 	var/list/species_traits = list()
 	var/blood_color = "#A10808"
-	// VOREStation
+	var/custom_say
+	var/custom_ask
+	var/custom_whisper
+	var/custom_exclaim
 
-	// New stuff
+//? New stuff.
 	var/species = SPECIES_HUMAN
 	var/list/body_markings = list()
 	var/list/body_descriptors = null
-	var/list/genetic_modifiers = list() // Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
+	///? Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
+	var/list/genetic_modifiers = list()
 
-// Make a copy of this strand.
-// USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
+	var/s_base = ""
+
+
+/**
+ * Make a copy of this strand.
+ * USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
+ */
 /datum/dna/proc/Clone()
 	var/datum/dna/new_dna = new()
 	new_dna.unique_enzymes=unique_enzymes
@@ -122,9 +148,15 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.real_name=real_name
 	new_dna.species=species
 	new_dna.body_markings=body_markings.Copy()
-	new_dna.base_species=base_species //VOREStation Edit
-	new_dna.species_traits=species_traits.Copy() //VOREStation Edit
-	new_dna.blood_color=blood_color //VOREStation Edit
+	new_dna.base_species=base_species
+	new_dna.custom_species=custom_species
+	new_dna.species_traits=species_traits.Copy()
+	new_dna.blood_color=blood_color
+	new_dna.custom_say=custom_say
+	new_dna.custom_ask=custom_ask
+	new_dna.custom_whisper=custom_whisper
+	new_dna.custom_exclaim=custom_exclaim
+	new_dna.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
 		new_dna.SE[b]=SE[b]
 		if(b<=DNA_UI_LENGTH)
@@ -132,12 +164,14 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	new_dna.UpdateUI()
 	new_dna.UpdateSE()
 	return new_dna
-///////////////////////////////////////
-// UNIQUE IDENTITY
-///////////////////////////////////////
 
-// Create random UI.
-/datum/dna/proc/ResetUI(var/defer=0)
+
+//! ## UNIQUE IDENTITY ## !//
+
+/**
+ * Create random UI.
+ */
+/datum/dna/proc/ResetUI(defer=0)
 	for(var/i=1,i<=DNA_UI_LENGTH,i++)
 		switch(i)
 			if(DNA_UI_SKIN_TONE)
@@ -147,39 +181,37 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if(!defer)
 		UpdateUI()
 
-/datum/dna/proc/ResetUIFrom(var/mob/living/carbon/human/character)
+
+/datum/dna/proc/ResetUIFrom(mob/living/carbon/human/character)
 	// INITIALIZE!
 	ResetUI(1)
-	// Hair
+	//! Hair
 	// FIXME:  Species-specific defaults pls
 	if(!character.h_style)
 		character.h_style = "Skinhead"
-	var/hair = hair_styles_list.Find(character.h_style)
+	var/hair = GLOB.legacy_hair_lookup.Find(character.h_style)
 
-	// Facial Hair
+	//! Facial Hair
 	if(!character.f_style)
 		character.f_style = "Shaved"
-	var/beard	= facial_hair_styles_list.Find(character.f_style)
+	var/beard	= GLOB.legacy_facial_hair_lookup.Find(character.f_style)
 
-
-	// VOREStation Edit Start
-
-	// Demi Ears
+	//! Demi Ears
 	var/ear_style = 0
 	if(character.ear_style)
-		ear_style = ear_styles_list.Find(character.ear_style.type)
+		ear_style = GLOB.legacy_ears_lookup.Find(character.ear_style.type)
 
-	// Demi Tails
+	//! Demi Tails
 	var/tail_style = 0
 	if(character.tail_style)
-		tail_style = tail_styles_list.Find(character.tail_style.type)
+		tail_style = GLOB.legacy_tail_lookup.Find(character.tail_style.type)
 
-	// Demi Wings
+	//! Demi Wings
 	var/wing_style = 0
 	if(character.wing_style)
-		wing_style = wing_styles_list.Find(character.wing_style.type)
+		wing_style = GLOB.legacy_wing_lookup.Find(character.wing_style.type)
 
-	// Playerscale (This assumes list is sorted big->small)
+	//! Playerscale (This assumes list is sorted big->small)
 	var/size_multiplier = player_sizes_list.len // If fail to find, take smallest
 	for(var/N in player_sizes_list)
 		if(character.size_multiplier >= player_sizes_list[N])
@@ -188,89 +220,97 @@ var/global/list/datum/dna/gene/dna_genes[0]
 
 	// Technically custom_species is not part of the UI, but this place avoids merge problems.
 	src.custom_species = character.custom_species
-	if(istype(character.species,/datum/species/custom))
-		var/datum/species/custom/CS = character.species
-		src.species_traits = CS.traits.Copy()
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
+	src.base_species = character.species.base_species
+	src.species = character.species.name
+	src.blood_color = character.species.blood_color
+	src.species_traits = character.species.traits.Copy()
 
-	if(istype(character.species,/datum/species/xenochimera))
-		var/datum/species/xenochimera/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
-
-	if(istype(character.species,/datum/species/alraune))
-		var/datum/species/alraune/CS = character.species
-		//src.species_traits = CS.traits.Copy() //No traits
-		src.base_species = CS.base_species
-		src.blood_color = CS.blood_color
+	src.custom_say = character.custom_say
+	src.custom_ask = character.custom_ask
+	src.custom_whisper = character.custom_whisper
+	src.custom_exclaim = character.custom_exclaim
 
 	// +1 to account for the none-of-the-above possibility
-	SetUIValueRange(DNA_UI_EAR_STYLE,	ear_style + 1,     ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,	tail_style + 1,    tail_styles_list.len + 1,  1)
-	SetUIValueRange(DNA_UI_PLAYERSCALE,	size_multiplier,   player_sizes_list.len,     1)
-	SetUIValueRange(DNA_UI_WING_STYLE,	wing_style + 1,    wing_styles_list.len + 1,  1)
 
-	SetUIValueRange(DNA_UI_TAIL_R,    character.r_tail,    255,    1)
-	SetUIValueRange(DNA_UI_TAIL_G,    character.g_tail,    255,    1)
-	SetUIValueRange(DNA_UI_TAIL_B,    character.b_tail,    255,    1)
+	SetUIValueRange(DNA_UI_EAR_STYLE,      ear_style + 1,  GLOB.legacy_ears_lookup.len  + 1,  1)
+	SetUIValueRange(DNA_UI_TAIL_STYLE,    tail_style + 1,  GLOB.legacy_tail_lookup.len + 1,  1)
+	SetUIValueRange(DNA_UI_PLAYERSCALE,  size_multiplier,     player_sizes_list.len,  1)
+	SetUIValueRange(DNA_UI_WING_STYLE,    wing_style + 1,  GLOB.legacy_wing_lookup.len + 1,  1)
 
-	SetUIValueRange(DNA_UI_TAIL2_R,   character.r_tail2,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL2_G,   character.g_tail2,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL2_B,   character.b_tail2,   255,    1)
+	//              DNA BLOCK            VALUE                MAX   MIN
+	SetUIValueRange(DNA_UI_TAIL_R,       character.r_tail,    255,    1)
+	SetUIValueRange(DNA_UI_TAIL_G,       character.g_tail,    255,    1)
+	SetUIValueRange(DNA_UI_TAIL_B,       character.b_tail,    255,    1)
 
-	SetUIValueRange(DNA_UI_WING_R,    character.r_wing,    255,    1)
-	SetUIValueRange(DNA_UI_WING_G,    character.g_wing,    255,    1)
-	SetUIValueRange(DNA_UI_WING_B,    character.b_wing,    255,    1)
+	SetUIValueRange(DNA_UI_TAIL2_R,      character.r_tail2,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL2_G,      character.g_tail2,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL2_B,      character.b_tail2,   255,    1)
 
-	SetUIValueRange(DNA_UI_WING2_R,    character.r_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_G,    character.g_wing2,  255,    1)
-	SetUIValueRange(DNA_UI_WING2_B,    character.b_wing2,  255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_R,      character.r_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_G,      character.g_tail3,   255,    1)
+	SetUIValueRange(DNA_UI_TAIL3_B,      character.b_tail3,   255,    1)
 
-	SetUIValueRange(DNA_UI_EARS_R,    character.r_ears,    255,    1)
-	SetUIValueRange(DNA_UI_EARS_G,    character.g_ears,    255,    1)
-	SetUIValueRange(DNA_UI_EARS_B,    character.b_ears,    255,    1)
+	SetUIValueRange(DNA_UI_WING_R,       character.r_wing,    255,    1)
+	SetUIValueRange(DNA_UI_WING_G,       character.g_wing,    255,    1)
+	SetUIValueRange(DNA_UI_WING_B,       character.b_wing,    255,    1)
 
-	SetUIValueRange(DNA_UI_EARS2_R,   character.r_ears2,   255,    1)
-	SetUIValueRange(DNA_UI_EARS2_G,   character.g_ears2,   255,    1)
-	SetUIValueRange(DNA_UI_EARS2_B,   character.b_ears2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_R,      character.r_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_G,      character.g_wing2,   255,    1)
+	SetUIValueRange(DNA_UI_WING2_B,      character.b_wing2,   255,    1)
 
-	// VORE Station Edit End
+	SetUIValueRange(DNA_UI_WING3_R,      character.r_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_G,      character.g_wing3,   255,    1)
+	SetUIValueRange(DNA_UI_WING3_B,      character.b_wing3,   255,    1)
 
-	SetUIValueRange(DNA_UI_HAIR_R,    character.r_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_G,    character.g_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_B,    character.b_hair,    255,    1)
+	SetUIValueRange(DNA_UI_EARS_R,       character.r_ears,    255,    1)
+	SetUIValueRange(DNA_UI_EARS_G,       character.g_ears,    255,    1)
+	SetUIValueRange(DNA_UI_EARS_B,       character.b_ears,    255,    1)
 
-	SetUIValueRange(DNA_UI_BEARD_R,   character.r_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_G,   character.g_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_B,   character.b_facial,  255,    1)
+	SetUIValueRange(DNA_UI_EARS2_R,      character.r_ears2,   255,    1)
+	SetUIValueRange(DNA_UI_EARS2_G,      character.g_ears2,   255,    1)
+	SetUIValueRange(DNA_UI_EARS2_B,      character.b_ears2,   255,    1)
 
-	SetUIValueRange(DNA_UI_EYES_R,    character.r_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_G,    character.g_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_B,    character.b_eyes,    255,    1)
+	SetUIValueRange(DNA_UI_EARS3_R,      character.r_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_G,      character.g_ears3,   255,    1)
+	SetUIValueRange(DNA_UI_EARS3_B,      character.b_ears3,   255,    1)
 
-	SetUIValueRange(DNA_UI_SKIN_R,    character.r_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_G,    character.g_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_B,    character.b_skin,    255,    1)
+	SetUIValueRange(DNA_UI_HAIR_R,       character.r_hair,    255,    1)
+	SetUIValueRange(DNA_UI_HAIR_G,       character.g_hair,    255,    1)
+	SetUIValueRange(DNA_UI_HAIR_B,       character.b_hair,    255,    1)
 
-	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone, 220,    1) // Value can be negative.
+	SetUIValueRange(DNA_UI_BEARD_R,      character.r_facial,  255,    1)
+	SetUIValueRange(DNA_UI_BEARD_G,      character.g_facial,  255,    1)
+	SetUIValueRange(DNA_UI_BEARD_B,      character.b_facial,  255,    1)
 
-	SetUIState(DNA_UI_GENDER,         character.gender!=MALE,        1)
+	SetUIValueRange(DNA_UI_EYES_R,       character.r_eyes,    255,    1)
+	SetUIValueRange(DNA_UI_EYES_G,       character.g_eyes,    255,    1)
+	SetUIValueRange(DNA_UI_EYES_B,       character.b_eyes,    255,    1)
 
-	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  hair_styles_list.len,       1)
-	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
+	SetUIValueRange(DNA_UI_SKIN_R,       character.r_skin,    255,    1)
+	SetUIValueRange(DNA_UI_SKIN_G,       character.g_skin,    255,    1)
+	SetUIValueRange(DNA_UI_SKIN_B,       character.b_skin,    255,    1)
+
+	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone,    220,    1) // Value can be negative.
+
+	SetUIState(DNA_UI_GENDER,      character.gender!=MALE,        1)
+
+	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  GLOB.legacy_hair_lookup.len,       1)
+	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, GLOB.legacy_facial_hair_lookup.len,1)
 
 	body_markings.Cut()
+	
 	for(var/obj/item/organ/external/E in character.organs)
+		E.s_base = s_base
 		if(E.markings.len)
 			body_markings[E.organ_tag] = E.markings.Copy()
 
 	UpdateUI()
 
-// Set a DNA UI block's raw value.
-/datum/dna/proc/SetUIValue(var/block,var/value,var/defer=0)
-	if (block<=0) return
+
+/// Set a DNA UI block's raw value.
+/datum/dna/proc/SetUIValue(block, value, defer=0)
+	if (block<=0)
+		return
 	ASSERT(value>0)
 	ASSERT(value<=4095)
 	UI[block]=value
@@ -278,37 +318,56 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if(!defer)
 		UpdateUI()
 
-// Get a DNA UI block's raw value.
-/datum/dna/proc/GetUIValue(var/block)
-	if (block<=0) return 0
+
+/// Get a DNA UI block's raw value.
+/datum/dna/proc/GetUIValue(block)
+	if (block<=0)
+		return 0
 	return UI[block]
 
-// Set a DNA UI block's value, given a value and a max possible value.
-// Used in hair and facial styles (value being the index and maxvalue being the len of the hairstyle list)
-/datum/dna/proc/SetUIValueRange(var/block,var/value,var/maxvalue,var/defer=0)
-	if (block<=0) return
-	if (value==0) value = 1   // FIXME: hair/beard/eye RGB values if they are 0 are not set, this is a work around we'll encode it in the DNA to be 1 instead.
+
+/**
+ * Set a DNA UI block's value, given a value and a max possible value.
+ * Used in hair and facial styles (value being the index and maxvalue being the len of the hairstyle list)
+ */
+/datum/dna/proc/SetUIValueRange(block, value, maxvalue, defer=0)
+	if (block<=0)
+		return
+	if (value==0)
+		value = 1 // FIXME: hair/beard/eye RGB values if they are 0 are not set, this is a work around we'll encode it in the DNA to be 1 instead.
 	ASSERT(maxvalue<=4095)
 	var/range = (4095 / maxvalue)
 	if(value)
 		SetUIValue(block,round(value * range),defer)
 
-// Getter version of above.
-/datum/dna/proc/GetUIValueRange(var/block,var/maxvalue)
-	if (block<=0) return 0
+
+/**
+ * Gets a DNA UI block's value, given a block and a max possible value.
+ * Used in hair and facial styles (value being the index and maxvalue being the len of the hairstyle list)
+ */
+/datum/dna/proc/GetUIValueRange(block, maxvalue)
+	if (block<=0)
+		return 0
 	var/value = GetUIValue(block)
 	return round(0.5 + (value / 4096) * maxvalue)
 
-// Is the UI gene "on" or "off"?
-// For UI, this is simply a check of if the value is > 2050.
-/datum/dna/proc/GetUIState(var/block)
-	if (block<=0) return
+
+/**
+ * Is the UI gene "on" or "off"?
+ * For UI, this is simply a check of if the value is > 2050.
+ */
+/datum/dna/proc/GetUIState(block)
+	if (block<=0)
+		return
 	return UI[block] > 2050
 
 
-// Set UI gene "on" (1) or "off" (0)
-/datum/dna/proc/SetUIState(var/block,var/on,var/defer=0)
-	if (block<=0) return
+/**
+ * Set UI gene "on" (1) or "off" (0)
+ */
+/datum/dna/proc/SetUIState(block, on, defer=0)
+	if (block<=0)
+		return
 	var/val
 	if(on)
 		val=rand(2050,4095)
@@ -316,26 +375,39 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		val=rand(1,2049)
 	SetUIValue(block,val,defer)
 
-// Get a hex-encoded UI block.
-/datum/dna/proc/GetUIBlock(var/block)
+
+/**
+ * Get a hex-encoded UI block.
+ */
+/datum/dna/proc/GetUIBlock(block)
 	return EncodeDNABlock(GetUIValue(block))
 
-// Do not use this unless you absolutely have to.
-// Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
-// Used in DNA modifiers.
-/datum/dna/proc/SetUIBlock(var/block,var/value,var/defer=0)
-	if (block<=0) return
+
+/**
+ * Do not use this unless you absolutely have to.
+ * Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
+ * Used in DNA modifiers.
+ */
+/datum/dna/proc/SetUIBlock(block, value, defer=0)
+	if (block<=0)
+		return
 	return SetUIValue(block,hex2num(value),defer)
 
-// Get a sub-block from a block.
-/datum/dna/proc/GetUISubBlock(var/block,var/subBlock)
+
+/**
+ * Get a sub-block from a block.
+ */
+/datum/dna/proc/GetUISubBlock(block, subBlock)
 	return copytext(GetUIBlock(block),subBlock,subBlock+1)
 
-// Do not use this unless you absolutely have to.
-// Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
-// Used in DNA modifiers.
-/datum/dna/proc/SetUISubBlock(var/block,var/subBlock, var/newSubBlock, var/defer=0)
-	if (block<=0) return
+/**
+ * Do not use this unless you absolutely have to.
+ * Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
+ * Used in DNA modifiers.
+ */
+/datum/dna/proc/SetUISubBlock(block, subBlock, newSubBlock, defer=0)
+	if (block<=0)
+		return
 	var/oldBlock=GetUIBlock(block)
 	var/newBlock=""
 	for(var/i=1, i<=length(oldBlock), i++)
@@ -345,19 +417,25 @@ var/global/list/datum/dna/gene/dna_genes[0]
 			newBlock+=copytext(oldBlock,i,i+1)
 	SetUIBlock(block,newBlock,defer)
 
-///////////////////////////////////////
-// STRUCTURAL ENZYMES
-///////////////////////////////////////
 
-// "Zeroes out" all of the blocks.
+
+//! ## STRUCTURAL ENZYMES ## !//
+
+/**
+ * "Zeroes out" all of the blocks.
+ */
 /datum/dna/proc/ResetSE()
 	for(var/i = 1, i <= DNA_SE_LENGTH, i++)
 		SetSEValue(i,rand(1,1024),1)
 	UpdateSE()
 
-// Set a DNA SE block's raw value.
-/datum/dna/proc/SetSEValue(var/block,var/value,var/defer=0)
-	if (block<=0) return
+
+/**
+ * Set a DNA SE block's raw value.
+ */
+/datum/dna/proc/SetSEValue(block, value, defer=0)
+	if (block<=0)
+		return
 	ASSERT(value>=0)
 	ASSERT(value<=4095)
 	SE[block]=value
@@ -365,36 +443,56 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	if(!defer)
 		UpdateSE()
 
-// Get a DNA SE block's raw value.
-/datum/dna/proc/GetSEValue(var/block)
-	if (block<=0) return 0
+
+/**
+ * Get a DNA SE block's raw value.
+ */
+/datum/dna/proc/GetSEValue(block)
+	if (block<=0)
+		return 0
 	return SE[block]
 
-// Set a DNA SE block's value, given a value and a max possible value.
-// Might be used for species?
-/datum/dna/proc/SetSEValueRange(var/block,var/value,var/maxvalue)
-	if (block<=0) return
+
+/**
+ * Set a DNA SE block's value, given a value and a max possible value.
+ * Might be used for species?
+ */
+/datum/dna/proc/SetSEValueRange(block, value, maxvalue)
+	if (block<=0)
+		return
 	ASSERT(maxvalue<=4095)
 	var/range = round(4095 / maxvalue)
 	if(value)
 		SetSEValue(block, value * range - rand(1,range-1))
 
-// Getter version of above.
-/datum/dna/proc/GetSEValueRange(var/block,var/maxvalue)
-	if (block<=0) return 0
+
+/**
+ * Getter version of above.
+ */
+/datum/dna/proc/GetSEValueRange(block, maxvalue)
+	if (block<=0)
+		return 0
 	var/value = GetSEValue(block)
 	return round(1 +(value / 4096)*maxvalue)
 
-// Is the block "on" (1) or "off" (0)? (Un-assigned genes are always off.)
-/datum/dna/proc/GetSEState(var/block)
-	if (block<=0) return 0
+
+/**
+ * Is the block "on" (1) or "off" (0)? (Un-assigned genes are always off.)
+ */
+/datum/dna/proc/GetSEState(block)
+	if (block<=0)
+		return 0
 	var/list/BOUNDS=GetDNABounds(block)
 	var/value=GetSEValue(block)
 	return (value > BOUNDS[DNA_ON_LOWERBOUND])
 
-// Set a block "on" or "off".
-/datum/dna/proc/SetSEState(var/block,var/on,var/defer=0)
-	if (block<=0) return
+
+/**
+ * Set a block "on" or "off".
+ */
+/datum/dna/proc/SetSEState(block, on, defer=0)
+	if (block<=0)
+		return
 	var/list/BOUNDS=GetDNABounds(block)
 	var/val
 	if(on)
@@ -403,27 +501,39 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		val=rand(1,BOUNDS[DNA_OFF_UPPERBOUND])
 	SetSEValue(block,val,defer)
 
-// Get hex-encoded SE block.
-/datum/dna/proc/GetSEBlock(var/block)
+
+/**
+ * Get hex-encoded SE block.
+ */
+/datum/dna/proc/GetSEBlock(block)
 	return EncodeDNABlock(GetSEValue(block))
 
-// Do not use this unless you absolutely have to.
-// Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
-// Used in DNA modifiers.
-/datum/dna/proc/SetSEBlock(var/block,var/value,var/defer=0)
-	if (block<=0) return
+
+/**
+ * Do not use this unless you absolutely have to.
+ * Set a block from a hex string.  This is inefficient.  If you can, use SetUIValue().
+ * Used in DNA modifiers.
+ */
+/datum/dna/proc/SetSEBlock(block, value, defer=0)
+	if (block<=0)
+		return
 	var/nval=hex2num(value)
 	//testing("SetSEBlock([block],[value],[defer]): [value] -> [nval]")
 	return SetSEValue(block,nval,defer)
 
-/datum/dna/proc/GetSESubBlock(var/block,var/subBlock)
+
+/datum/dna/proc/GetSESubBlock(block, subBlock)
 	return copytext(GetSEBlock(block),subBlock,subBlock+1)
 
-// Do not use this unless you absolutely have to.
-// Set a sub-block from a hex character.  This is inefficient.  If you can, use SetUIValue().
-// Used in DNA modifiers.
-/datum/dna/proc/SetSESubBlock(var/block,var/subBlock, var/newSubBlock, var/defer=0)
-	if (block<=0) return
+
+/**
+ * Do not use this unless you absolutely have to.
+ * Set a sub-block from a hex character.  This is inefficient.  If you can, use SetUIValue().
+ * Used in DNA modifiers.
+ */
+/datum/dna/proc/SetSESubBlock(block, subBlock, newSubBlock, defer=0)
+	if (block<=0)
+		return
 	var/oldBlock=GetSEBlock(block)
 	var/newBlock=""
 	for(var/i=1, i<=length(oldBlock), i++)
@@ -435,8 +545,9 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	SetSEBlock(block,newBlock,defer)
 
 
-/proc/EncodeDNABlock(var/value)
+/proc/EncodeDNABlock(value)
 	return num2hex(value, 3)
+
 
 /datum/dna/proc/UpdateUI()
 	src.uni_identity=""
@@ -444,6 +555,7 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		uni_identity += EncodeDNABlock(block)
 	//testing("New UI: [uni_identity]")
 	dirtyUI=0
+
 
 /datum/dna/proc/UpdateSE()
 	//var/oldse=struc_enzymes
@@ -454,9 +566,12 @@ var/global/list/datum/dna/gene/dna_genes[0]
 	//testing("New SE: [struc_enzymes]")
 	dirtySE=0
 
-// BACK-COMPAT!
-//  Just checks our character has all the crap it needs.
-/datum/dna/proc/check_integrity(var/mob/living/carbon/human/character)
+
+/**
+ *!BACK-COMPAT!
+ * Just checks our character has all the crap it needs.
+ */
+/datum/dna/proc/check_integrity(mob/living/carbon/human/character)
 	if(character)
 		if(UI.len != DNA_UI_LENGTH)
 			ResetUIFrom(character)
@@ -472,8 +587,11 @@ var/global/list/datum/dna/gene/dna_genes[0]
 		if(length(struc_enzymes)!= 3*DNA_SE_LENGTH)
 			struc_enzymes = "43359156756131E13763334D1C369012032164D4FE4CD61544B6C03F251B6C60A42821D26BA3B0FD6"
 
-// BACK-COMPAT!
-//  Initial DNA setup.  I'm kind of wondering why the hell this doesn't just call the above.
+
+/**
+ * !BACK-COMPAT!
+ * Initial DNA setup.  I'm kind of wondering why the hell this doesn't just call the above.
+ */
 /datum/dna/proc/ready_dna(mob/living/carbon/human/character)
 	ResetUIFrom(character)
 

@@ -10,6 +10,10 @@ export const UI_UPDATE = 1;
 export const UI_DISABLED = 0;
 export const UI_CLOSE = -1;
 
+export const UI_NOT_REFRESHING = 0;
+export const UI_SOFT_REFRESHING = 1;
+export const UI_HARD_REFRESHING = 2;
+
 // All game related colors are stored here
 export const COLORS = {
   // Department colors
@@ -22,7 +26,25 @@ export const COLORS = {
     cargo: '#f39c12',
     centcom: '#00c100',
     other: '#c38312',
+    exploration: '#c38312',
+    silicon: '#c38312',
+    miscellaneous: '#c38312',
+    civillian: '#c38312',
   },
+  // VOREStation Addition begin
+  manifest: {
+    command: "#3333FF",
+    security: "#8e0000",
+    medical: "#006600",
+    engineering: "#b27300",
+    science: "#a65ba6",
+    cargo: "#bb9040",
+    planetside: "#555555",
+    civilian: "#a32800",
+    miscellaneous: "#666666",
+    silicon: "#222222",
+  },
+  // VOREStation Addition end
   // Damage type colors
   damageType: {
     oxy: '#3498db',
@@ -61,7 +83,7 @@ export const CSS_COLORS = [
 
 export const RADIO_CHANNELS = [
   {
-    name: 'Syndicate',
+    name: 'Mercenary',
     freq: 1213,
     color: '#a52a2a',
   },
@@ -129,7 +151,7 @@ export const RADIO_CHANNELS = [
 
 const GASES = [
   {
-    'id': 'o2',
+    'id': 'oxygen',
     'name': 'Oxygen',
     'label': 'O₂',
     'color': 'blue',
@@ -141,15 +163,15 @@ const GASES = [
     'color': 'red',
   },
   {
-    'id': 'co2',
+    'id': 'carbon dioxide',
     'name': 'Carbon Dioxide',
     'label': 'CO₂',
     'color': 'grey',
   },
   {
-    'id': 'plasma',
-    'name': 'Plasma',
-    'label': 'Plasma',
+    'id': 'phoron',
+    'name': 'Phoron',
+    'label': 'Phoron',
     'color': 'pink',
   },
   {
@@ -212,6 +234,24 @@ const GASES = [
     'label': 'H₂',
     'color': 'white',
   },
+  {
+    'id': 'other',
+    'name': 'Other',
+    'label': 'Other',
+    'color': 'white',
+  },
+  {
+    'id': 'pressure',
+    'name': 'Pressure',
+    'label': 'Pressure',
+    'color': 'average',
+  },
+  {
+    'id': 'temperature',
+    'name': 'Temperature',
+    'label': 'Temperature',
+    'color': 'yellow',
+  },
 ];
 
 export const getGasLabel = (gasId, fallbackValue) => {
@@ -229,3 +269,8 @@ export const getGasColor = gasId => {
     || gas.name.toLowerCase() === gasSearchString);
   return gas && gas.color;
 };
+
+// VOREStation Addition start
+/** 0.0 Degrees Celsius in Kelvin */
+export const T0C = 273.15;
+// VOREStation Addition end

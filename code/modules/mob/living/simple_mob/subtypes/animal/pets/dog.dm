@@ -1,3 +1,12 @@
+/datum/category_item/catalogue/fauna/dog
+	name = "Dog"
+	desc = "Canines have been a consistent companion of Humanity for \
+	tens of thousands of years. Descended from Wolves, a larger pack \
+	animal, the modern canine was selectively bred down into its modern \
+	role. Trained to assist with hunting, rescue, or security, dogs have \
+	gone on to be regarded as true friends by many Humans."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/dog
 	name = "dog"
 	real_name = "dog"
@@ -6,9 +15,11 @@
 	icon_state = "corgi"
 	icon_living = "corgi"
 	icon_dead = "corgi_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/dog)
 
 	health = 20
 	maxHealth = 20
+	randomized = TRUE
 
 	response_help  = "pets"
 	response_disarm = "bops"
@@ -22,17 +33,19 @@
 
 	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/corgi
+	bone_amount = 2
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/corgi
 
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-
 
 /mob/living/simple_mob/animal/passive/dog/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/newspaper))
 		if(!stat)
 			for(var/mob/M in viewers(user, null))
 				if ((M.client && !( M.blinded )))
-					M.show_message("<font color='blue'>[user] baps [name] on the nose with the rolled up [O]</font>")
+					M.show_message("<font color=#4F49AF>[user] baps [name] on the nose with the rolled up [O]</font>")
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2))
 					setDir(i)
@@ -41,7 +54,7 @@
 		..()
 
 /mob/living/simple_mob/animal/passive/dog/regenerate_icons()
-	overlays = list()
+	cut_overlays()
 
 	if(inventory_head)
 		var/head_icon_state = inventory_head.icon_state
@@ -50,7 +63,7 @@
 
 		var/icon/head_icon = image('icons/mob/corgi_head.dmi',head_icon_state)
 		if(head_icon)
-			overlays += head_icon
+			add_overlay(head_icon)
 
 	if(inventory_back)
 		var/back_icon_state = inventory_back.icon_state
@@ -59,7 +72,7 @@
 
 		var/icon/back_icon = image('icons/mob/corgi_back.dmi',back_icon_state)
 		if(back_icon)
-			overlays += back_icon
+			add_overlay(back_icon)
 
 	return
 
@@ -114,6 +127,7 @@
 /mob/living/simple_mob/animal/passive/dog/corgi/puppy/Bockscar
 	name = "Bockscar"
 	real_name = "Bockscar"
+	randomized = FALSE
 
 //Sir Pogsley. (Sec Pet)
 /mob/living/simple_mob/animal/passive/dog/pug/SirPogsley
@@ -124,9 +138,12 @@
 	makes_dirt = FALSE
 	var/turns_since_scan = 0
 	var/obj/movement_target
+	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/pug/SirPogsley/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
@@ -181,10 +198,12 @@
 	desc = "This is the HoP's trusty corgi. He does the best he can."
 	var/turns_since_scan = 0
 	var/obj/movement_target
-	makes_dirt = FALSE	//VOREStation edit: no more dirt
+	makes_dirt = FALSE
+	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Ian/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Ian/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 
@@ -246,6 +265,7 @@
 	response_harm   = "kicks"
 	var/turns_since_scan = 0
 	var/puppies = 0
+	randomized = FALSE
 
 //Lisa already has a cute bow!
 /mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Topic(href, href_list)
@@ -254,8 +274,10 @@
 		return
 	..()
 
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/Life()
-	..()
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
 
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
@@ -299,3 +321,4 @@
 	real_name = "Spice"	//Intended to hold the name without altering it.
 	gender = FEMALE
 	desc = "It's a tamaskan, the name Spice can be found on its collar."
+	randomized = FALSE

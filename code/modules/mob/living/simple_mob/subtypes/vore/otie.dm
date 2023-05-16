@@ -18,6 +18,7 @@
 	faction = "otie"
 	maxHealth = 150
 	health = 150
+	randomized = TRUE
 	minbodytemp = 200
 	melee_damage_lower = 2
 	melee_damage_upper = 7 //Don't break my bones bro
@@ -27,17 +28,7 @@
 	attacktext = list("mauled")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 	meat_amount = 6
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
-
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 10
+	base_pixel_x = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/otie
 	say_list_type = /datum/say_list/otie
@@ -45,6 +36,10 @@
 	var/mob/living/carbon/human/friend
 	var/tamed = 0
 	var/tame_chance = 50 //It's a fiddy-fiddy default you may get a buddy pal or you may get mauled and ate. Win-win!
+
+	meat_amount = 6
+	bone_amount = 2
+	hide_amount = 2
 
 // Activate Noms!
 
@@ -181,6 +176,12 @@
 	icon_dead = "sechotie-dead"
 	maxbodytemp = 1000
 
+/mob/living/simple_mob/otie/security/phoron/red/Frankie
+	name = "Frankie"
+	desc = "Madame Foster's personal guard dog, Frankie!  It seems he's gotten some new toys, a metal band on his head lets him manipulate objects with the power of his mind!  What do giant dogs even think about all day?"
+	mod_min = 150
+	mod_max = 150
+
 /mob/living/simple_mob/otie/attackby(var/obj/item/O, var/mob/user) // Trade donuts for bellybrig victims.
 	if(istype(O, /obj/item/reagent_containers/food))
 		qdel(O)
@@ -200,7 +201,7 @@
 	if(ishuman(prey))
 		vore_selected.digest_mode = DM_HOLD
 		if(check_threat(prey) >= 4)
-			global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
+			GLOB.global_announcer.autosay("[src] has detained suspect <b>[target_name(prey)]</b> in <b>[get_area(src)]</b>.", "SmartCollar oversight", "Security")
 	if(istype(prey,/mob/living/simple_mob/animal/passive/mouse))
 		vore_selected.digest_mode = DM_DIGEST
 	. = ..()
@@ -218,8 +219,11 @@
 
 //Pet 4 friendly
 
-/mob/living/simple_mob/otie/attack_hand(mob/living/carbon/human/M as mob)
+/mob/living/simple_mob/otie/attack_hand(mob/user, list/params)
 
+	var/mob/living/M = user
+	if(!istype(M))
+		return
 	switch(M.a_intent)
 		if(INTENT_HELP)
 			if(health > 0)
@@ -258,11 +262,13 @@
 
 /mob/living/simple_mob/otie/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
 
-/mob/living/simple_mob/otie/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/otie/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter/mob/animal)
+
+/mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/otie

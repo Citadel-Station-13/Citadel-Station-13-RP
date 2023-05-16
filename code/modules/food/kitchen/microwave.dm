@@ -4,12 +4,13 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = 2.9
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 2000
-	flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER | NOREACT
 	var/operating = 0 // Is it on?
 	var/dirty = 0 // = {0..100} Does it need cleaning?
 	var/broken = 0 // ={0,1,2} How broken is it???
@@ -80,7 +81,7 @@
 				src.icon_state = "mw"
 				src.broken = 0 // Fix it!
 				src.dirty = 0 // just to be sure
-				src.flags |= OPENCONTAINER
+				src.atom_flags |= OPENCONTAINER
 		else
 			to_chat(user, "<span class='warning'>It's broken!</span>")
 			return 1
@@ -98,7 +99,7 @@
 				src.dirty = 0 // It's clean!
 				src.broken = 0 // just to be sure
 				src.icon_state = "mw"
-				src.flags |= OPENCONTAINER
+				src.atom_flags |= OPENCONTAINER
 		else //Otherwise bad luck!!
 			to_chat(user, "<span class='warning'>It's dirty!</span>")
 			return 1
@@ -115,8 +116,8 @@
 				"<span class='notice'>You add one of [O] to \the [src].</span>")
 			return
 		else
-		//	user.remove_from_mob(O)	//This just causes problems so far as I can tell. -Pete
-			user.drop_from_inventory(O,src)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			user.visible_message( \
 				"<span class='notice'>\The [user] has added \the [O] to \the [src].</span>", \
 				"<span class='notice'>You add \the [O] to \the [src].</span>")
@@ -159,7 +160,7 @@
 	if(istype(user, /mob/living/silicon/robot) && Adjacent(user))
 		attack_hand(user)
 
-/obj/machinery/microwave/attack_hand(mob/user as mob)
+/obj/machinery/microwave/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	interact(user)
 
@@ -238,7 +239,7 @@
 /obj/machinery/microwave/proc/cook()
 	if(src.operating)
 		return // no food duplication!
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	start()
 	if (reagents.total_volume==0 && !(locate(/obj) in contents)) //dry run
@@ -330,7 +331,7 @@
 
 /obj/machinery/microwave/proc/wzhzhzh(var/seconds as num) // Whoever named this proc is fucking literally Satan. ~ Z
 	for (var/i=1 to seconds)
-		if (stat & (NOPOWER|BROKEN))
+		if (machine_stat & (NOPOWER|BROKEN))
 			return 0
 		use_power(active_power_usage)
 		sleep(10)
@@ -380,7 +381,7 @@
 	playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 	src.visible_message("<span class='warning'>The microwave gets covered in muck!</span>")
 	src.dirty = 100 // Make it dirty so it can't be used util cleaned
-	src.flags &= ~OPENCONTAINER //So you can't add condiments
+	src.atom_flags &= ~OPENCONTAINER //So you can't add condiments
 	src.icon_state = "mwbloody" // Make it look dirty too
 	src.operating = 0 // Turn it off again aferwards
 	src.updateUsrDialog()
@@ -392,7 +393,7 @@
 	src.icon_state = "mwb" // Make it look all busted up and shit
 	src.visible_message("<span class='warning'>The microwave breaks!</span>") //Let them know they're stupid
 	src.broken = 2 // Make it broken so it can't be used util fixed
-	src.flags &= ~OPENCONTAINER //So you can't add condiments
+	src.atom_flags &= ~OPENCONTAINER //So you can't add condiments
 	src.operating = 0 // Turn it off again aferwards
 	src.updateUsrDialog()
 
@@ -446,10 +447,3 @@
 	)
 	dispose()
 
-/obj/machinery/microwave/CanAllowThrough(atom/movable/mover, turf/target, height=0, air_group=0)
-	if (!mover)
-		return 1
-	if(mover.checkpass(PASSTABLE))
-	//Animals can run under them, lots of empty space
-		return 1
-	return ..()

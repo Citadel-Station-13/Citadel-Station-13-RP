@@ -1,9 +1,16 @@
+/datum/category_item/catalogue/fauna/horror
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A\
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/faithless
 	name = "Faithless"
 	desc = "The Wish Granter's faith in humanity, incarnate"
 	icon_state = "faithless"
 	icon_living = "faithless"
 	icon_dead = "faithless_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror)
 
 	faction = "faithless"
 
@@ -21,6 +28,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 18
 	attack_armor_pen = 5	//It's a horror from beyond, I ain't gotta explain 5 AP
+	taser_kill = 0 //See Above
 
 	attacktext = list("gripped")
 	attack_sound = 'sound/hallucinations/growl1.ogg'
@@ -40,6 +48,11 @@
 	max_n2 = 0
 	minbodytemp = 0
 
+/mob/living/simple_mob/faithless/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
+
 /mob/living/simple_mob/faithless/Process_Spacemove(var/check_drift = 0)
 	return 1
 
@@ -47,7 +60,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(12))
-			L.Weaken(3)
+			L.afflict_paralyze(20 * 3)
 			L.visible_message("<span class='danger'>\the [src] knocks down \the [L]!</span>")
 
 // Strong Variant

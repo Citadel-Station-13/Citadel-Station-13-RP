@@ -1,7 +1,7 @@
 /obj/machinery/appliance/cooker/oven
 	name = "oven"
 	desc = "Cookies are ready, dear."
-	icon = 'modular_citadel/icons/obj/cooking_machines.dmi'
+	icon = 'icons/obj/cooking_machines.dmi'
 	icon_state = "ovenopen"
 	cook_type = "baked"
 	appliancetype = OVEN
@@ -11,16 +11,16 @@
 	active_power_usage = 6 KILOWATTS
 	//Based on a double deck electric convection oven
 
-	resistance = 16000
+	resistance = 3200
 	idle_power_usage = 2 KILOWATTS
-	//uses ~30% power to stay warm
+	//uses ~3% power to stay warm
 	optimal_power = 0.2
 
 	light_x = 2
 	max_contents = 5
 	container_type = /obj/item/reagent_containers/cooking_container/oven
 
-	stat = POWEROFF	//Starts turned off
+	machine_stat = POWEROFF	//Starts turned off
 
 	var/open = 1
 
@@ -47,7 +47,7 @@
 
 /obj/machinery/appliance/cooker/oven/update_icon()
 	if (!open)
-		if (!stat)
+		if (!machine_stat)
 			icon_state = "ovenclosed_on"
 			if(oven_loop)
 				oven_loop.stop(src)
@@ -92,7 +92,7 @@
 		loss = (active_power_usage / resistance)*4
 		//When the oven door is opened, heat is lost MUCH faster
 
-	playsound(src, 'modular_citadel/sound/machines/hatch_open.ogg', 20, 1)
+	playsound(src, 'sound/machines/hatch_open.ogg', 20, 1)
 	update_icon()
 
 /obj/machinery/appliance/cooker/oven/can_insert(var/obj/item/I, var/mob/user)

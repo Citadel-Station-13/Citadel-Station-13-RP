@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - 'project/**'
 jobs:
   triage:
     runs-on: ubuntu-20.04
@@ -11,3 +12,5 @@ jobs:
         with:
           CONFLICT_LABEL_NAME: 'Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Default attempt count is 5, so default attempt delay is 5 * 10 = 50 seconds.
+          WAIT_MS: 10000

@@ -1,23 +1,13 @@
-
-//duck you byond
-var/global/image/stringbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/iconbro = new() // Temporarily super-global because of BYOND init order dumbness.
-var/global/image/appearance_bro = new() // Temporarily super-global because of BYOND init order dumbness.
-
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/machines                 = list()	// ALL Machines, wether processing or not.
 var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
 var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
-var/global/list/active_diseases          = list()
 var/global/list/hud_icon_reference       = list()
 
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.
 
 var/global/datum/universal_state/universe = new
-
-var/global/list/global_map = null
 
 // Noises made when hit while typing.
 var/list/hit_appends	= list("-OOF", "-ACK", "-UGH", "-HRNK", "-HURGH", "-GLORF")
@@ -52,13 +42,6 @@ var/list/monkeystart     = list()
 var/list/wizardstart     = list()
 var/list/newplayer_start = list()
 
-//Spawnpoints.
-var/list/latejoin          = list()
-var/list/latejoin_gateway  = list()
-var/list/latejoin_elevator = list()
-var/list/latejoin_cryo     = list()
-var/list/latejoin_cyborg   = list()
-
 var/list/prisonwarp         = list() // Prisoners go to these
 var/list/holdingfacility    = list() // Captured people go here
 var/list/xeno_spawn         = list() // Aliens spawn at at these.
@@ -80,10 +63,6 @@ var/list/adminlog  = list()
 
 var/list/powernets = list()	// TODO - Move into SSmachines
 
-var/datum/debug/debugobj
-
-var/datum/moduletypes/mods = new()
-
 var/gravity_is_on = 1
 
 var/join_motd = null
@@ -92,28 +71,10 @@ var/datum/metric/metric = new() // Metric datum, used to keep track of the round
 
 var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
 
-// Forum MySQL configuration. (for use with forum account/key authentication)
-// These are all default values that will load should the forumdbconfig_legacy.txt file fail to read for whatever reason.
-var/forumsqladdress = "localhost"
-var/forumsqlport    = "3306"
-var/forumsqldb      = "tgstation"
-var/forumsqllogin   = "root"
-var/forumsqlpass    = ""
-var/forum_activated_group     = "2"
-var/forum_authenticated_group = "10"
-
 // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
 var/fileaccess_timer = 0
 var/custom_event_msg = null
-
-// Database connections. A connection is established on world creation.
-// Ideally, the connection dies when the server restarts (After feedback logging.).
-var/DBConnection/dbcon     = new() // Feedback    database (New database)
-var/DBConnection/dbcon_old = new() // /tg/station database (Old database) -- see the files in the SQL folder for information on what goes where.
-
-// Reference list for disposal sort junctions. Filled up by sorting junction's New()
-/var/list/tagger_locations = list()
 
 // Added for Xenoarchaeology, might be useful for other stuff.
 var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
@@ -121,9 +82,23 @@ var/global/list/alphabet_uppercase = list("A","B","C","D","E","F","G","H","I","J
 
 // Used by robots and robot preferences.
 var/list/robot_module_types = list(
-	"Standard", "Engineering", "Surgeon",  "Crisis",
-	"Miner",    "Janitor",     "Service",      "Clerical", "Security",
-	"Research"
+	"Standard",
+	"Engineering",
+	"Medical",
+	"Miner",
+	"Janitor",
+	"Service",
+	"Clerical",
+	"Security",
+	"Research",
+	"Quadruped",
+	"MediQuad",
+	"SecuriQuad",
+	"JaniQuad",
+	"SciQuad",
+	"EngiQuad",
+	"Mining Quad",
+	"Service Quad"
 )
 
 // Some scary sounds.
@@ -150,71 +125,59 @@ var/static/list/scarySounds = list(
 // Bomb cap!
 var/max_explosion_range = 14
 
-// Announcer intercom, because too much stuff creates an intercom for one message then hard del()s it.
-var/global/obj/item/radio/intercom/omni/global_announcer = new /obj/item/radio/intercom/omni(null)
-
-var/list/station_departments = list("Command", "Medical", "Engineering", "Science", "Security", "Cargo", "Exploration", "Civilian") //VOREStation Edit
-
-//Icons for in-game HUD glasses. Why don't we just share these a little bit?
-var/static/icon/ingame_hud = icon('icons/mob/hud.dmi')
-var/static/icon/ingame_hud_med = icon('icons/mob/hud_med.dmi')
-
 //Keyed list for caching icons so you don't need to make them for records, IDs, etc all separately.
 //Could be useful for AI impersonation or something at some point?
 var/static/list/cached_character_icons = list()
-
-//VR FILE MERGE BELOW
-
-/hook/startup/proc/modules_vr()
-	robot_module_types += "Medihound"
-	robot_module_types += "K9"
-	robot_module_types += "Janihound"
-	robot_module_types += "Sci-Hound"
-	robot_module_types += "Pupdozer"
-	return 1
 
 var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
 
-var/list/eventdestinations = list() // List of scatter landmarks for VOREStation event portals
+var/list/eventdestinations = list() // List of scatter landmarks for event portals
 
-var/global/list/acceptable_fruit_types= list(
-											"ambrosia",
-											"apple",
-											"banana",
-											"berries",
-											"cabbage",
-											"carrot",
-											"celery",
-											"cherry",
-											"chili",
-											"cocoa",
-											"corn",
-											"durian",
-											"eggplant",
-											"grapes",
-											"greengrapes",
-											"harebells",
-											"lavender",
-											"lemon",
-											"lettuce",
-											"lime",
-											"onion",
-											"orange",
-											"peanut",
-											"poppies",
-											"potato",
-											"pumpkin",
-											"rice",
-											"rose",
-											"rhubarb",
-											"soybean",
-											"spineapple",
-											"sugarcane",
-											"sunflowers",
-											"tomato",
-											"vanilla",
-											"watermelon",
-											"wheat",
-											"whitebeet")
+var/global/list/acceptable_fruit_types = list(
+	"ambrosia",
+	"apple",
+	"banana",
+	"berries",
+	"cabbage",
+	"carrot",
+	"celery",
+	"cherry",
+	"chili",
+	"cocoa",
+	"corn",
+	"durian",
+	"eggplant",
+	"grapes",
+	"greengrapes",
+	"harebells",
+	"jahtak",
+	"lavender",
+	"lemon",
+	"lettuce",
+	"lime",
+	"onion",
+	"orange",
+	"peanut",
+	"poppies",
+	"potato",
+	"pumpkin",
+	"pyrrhlea",
+	"rice",
+	"rose",
+	"rhubarb",
+	"soybean",
+	"spineapple",
+	"sugarcane",
+	"sunflowers",
+	"tomato",
+	"vanilla",
+	"watermelon",
+	"wheat",
+	"whitebeet",
+	)
+
+var/global/list/acceptable_nectar_types= list(
+	"waxcomb (honey)",
+	)

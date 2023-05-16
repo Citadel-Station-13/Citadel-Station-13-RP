@@ -1,7 +1,13 @@
-import { Box } from '../../components';
+import { Box, Flex } from '../../components';
 
+const formatUnits = a => a + ' unit' + (a === 1 ? '' : 's');
+
+/**
+ * Displays a beaker's contents
+ * @property {object} props
+ */
 export const BeakerContents = props => {
-  const { beakerLoaded, beakerContents } = props;
+  const { beakerLoaded, beakerContents = [], buttons } = props;
   return (
     <Box>
       {!beakerLoaded && (
@@ -13,11 +19,35 @@ export const BeakerContents = props => {
           Beaker is empty.
         </Box>
       )}
-      {beakerContents.map(chemical => (
-        <Box key={chemical.name} color="label">
-          {chemical.volume} units of {chemical.name} {chemical.purity < 1 && "(Purity: "+chemical.purity+")"}
+      {beakerContents.map((chemical, i) => (
+        <Box key={chemical.name} width="100%">
+          <Flex align="center" justify="space-between">
+            <Flex.Item color="label">
+              {formatUnits(chemical.volume)} of {chemical.name}
+            </Flex.Item>
+            {!!buttons && (
+              <Flex.Item>
+                {buttons(chemical, i)}
+              </Flex.Item>
+            )}
+          </Flex>
         </Box>
       ))}
     </Box>
   );
 };
+
+// BeakerContents.propTypes = {
+//   /**
+//    * Whether there is a loaded beaker or not
+//    */
+//   beakerLoaded: PropTypes.bool,
+//   /**
+//    * The reagents in the beaker
+//    */
+//   beakerContents: PropTypes.array,
+//   /**
+//    * The buttons to display next to each reagent line
+//    */
+//   buttons: PropTypes.arrayOf(PropTypes.element),
+// };

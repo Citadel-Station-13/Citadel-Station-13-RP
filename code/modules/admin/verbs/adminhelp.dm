@@ -88,19 +88,20 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
 //Tickets statpanel
-/datum/admin_help_tickets/proc/stat_entry()
+/datum/admin_help_tickets/proc/stat_data()
+	. = list()
 	var/num_disconnected = 0
-	stat("Active Tickets:", astatclick.update("[active_tickets.len]"))
+	STATPANEL_DATA_CLICK("Active Tickets:", "[active_tickets.len]", "\ref[astatclick]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
-			stat("#[AH.id]. [AH.initiator_key_name]:", AH.statclick.update())
+			STATPANEL_DATA_CLICK("#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", "\ref[AH.statclick]")
 		else
 			++num_disconnected
 	if(num_disconnected)
-		stat("Disconnected:", astatclick.update("[num_disconnected]"))
-	stat("Closed Tickets:", cstatclick.update("[closed_tickets.len]"))
-	stat("Resolved Tickets:", rstatclick.update("[resolved_tickets.len]"))
+		STATPANEL_DATA_CLICK("Disconnected:", "[num_disconnected]", "\ref[astatclick]")
+	STATPANEL_DATA_CLICK("Closed Tickets:", "[closed_tickets.len]", "\ref[cstatclick]")
+	STATPANEL_DATA_CLICK("Resolved Tickets:", "[resolved_tickets.len]", "\ref[rstatclick]")
 
 //Reassociate still open ticket if one exists
 /datum/admin_help_tickets/proc/ClientLogin(client/C)
@@ -179,7 +180,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	initiator_ckey = initiator.ckey
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket)	//This is a bug
-		log_debug("Multiple ahelp current_tickets")
+		log_debug(SPAN_DEBUG("Multiple ahelp current_tickets"))
 		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
 		initiator.current_ticket.Close()
 	initiator.current_ticket = src
@@ -190,8 +191,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	_interactions = list()
 
 	if(is_bwoink)
-		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
-		message_admins("<font color='blue'>Ticket [TicketHref("#[id]")] created</font>")
+		AddInteraction("<font color=#4F49AF>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
+		message_admins("<font color=#4F49AF>Ticket [TicketHref("#[id]")] created</font>")
 	else
 		MessageNoRecipient(parsed_message)
 
@@ -203,7 +204,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 		log_admin("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
 			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin irc.</span>")
-	send2adminchat() //VOREStation Add
+	send2adminchat()
 	GLOB.ahelp_tickets.active_tickets += src
 
 /datum/admin_help/Destroy()
@@ -218,7 +219,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
 	if(!ref_src)
-		ref_src = "\ref[src]"
+		ref_src = "[REF(src)]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
 	if(state == AHELP_ACTIVE)
 		. += ClosureLinks(ref_src)
@@ -226,12 +227,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //private
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
-		ref_src = "\ref[src]"
-	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)"
+		ref_src = "[REF(src)]"
+	. = ADMIN_AHELP_FULLMONTY(ref_src)
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -249,12 +246,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //won't bug irc
 /datum/admin_help/proc/MessageNoRecipient(msg)
 	var/ref_src = "\ref[src]"
-	var/chat_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [msg]</span>"
+	var/chat_msg = SPAN_ADMINNOTICE("<span class='adminhelp'>Ticket [TicketHref(SPAN_TOOLTIP("Open the ticket in a new window.","#[id]"), ref_src)]</span><b>: [SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")] [FullMonty(ref_src)]:</b> [msg]")
 
-	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
+	AddInteraction(SPAN_DANGER("[SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")]: [msg]"))
 	//send this msg to all admins
 
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
 			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
@@ -483,7 +480,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 //
 
 /client/proc/giveadminhelpverb()
-	src.verbs |= /client/verb/adminhelp
+	add_verb(src, /client/verb/adminhelp)
 	deltimer(adminhelptimerid)
 	adminhelptimerid = 0
 
@@ -495,10 +492,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 /client/verb/adminhelp(msg as text)
 	set category = "Admin"
 	set name = "Adminhelp"
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
 
 	//handle muting and automuting
 	if(prefs.muted & MUTE_ADMINHELP)
@@ -513,7 +506,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 	msg = sanitize(msg)
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
-	src.verbs -= /client/verb/adminhelp
+	remove_verb(src, /client/verb/adminhelp)
 	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
 
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -581,7 +574,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 /proc/get_admin_counts(requiredflags = R_BAN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		.["total"] += X
 		if(requiredflags != 0 && !check_rights(rights_required = requiredflags, show_msg = FALSE, C = X))
 			.["noflags"] += X
@@ -616,7 +609,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 /proc/ircadminwho()
 	var/list/message = list("Admins: ")
 	var/list/admin_keys = list()
-	for(var/adm in admins)
+	for(var/adm in GLOB.admins)
 		var/client/C = adm
 		admin_keys += "[C][C.holder.fakekey ? "(Stealth)" : ""][C.is_afk() ? "(AFK)" : ""]"
 

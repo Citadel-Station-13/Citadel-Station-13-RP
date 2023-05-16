@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -7,7 +6,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "comm"
 	light_color = "#0099ff"
-	req_access = list(access_heads)
+	req_access = list(ACCESS_COMMAND_BRIDGE)
 	circuit = /obj/item/circuitboard/communications
 	var/prints_intercept = 1
 	var/authenticated = 0
@@ -30,13 +29,14 @@
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
 	var/const/STATE_CREWTRANSFER = 10
+	var/const/STATE_NIGHTSHIFT = 11
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
 	var/stat_msg2
 
 	var/datum/lore/atc_controller/ATC
-	var/datum/announcement/priority/crew_announcement = new
+	var/datum/legacy_announcement/priority/crew_announcement = new
 
 /obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
@@ -65,14 +65,14 @@
 			src.state = STATE_DEFAULT
 		if("login")
 			var/mob/M = usr
-			var/obj/item/card/id/I = M.get_active_hand()
+			var/obj/item/card/id/I = M.get_active_held_item()
 			if (istype(I, /obj/item/pda))
 				var/obj/item/pda/pda = I
 				I = pda.id
 			if (I && istype(I))
 				if(src.check_access(I))
 					authenticated = 1
-				if(access_captain in I.access)
+				if(ACCESS_COMMAND_CAPTAIN in I.access)
 					authenticated = 2
 					crew_announcement.announcer = GetNameAndAssignmentFromId(I)
 		if("logout")
@@ -81,16 +81,16 @@
 
 		if("swipeidseclevel")
 			if(src.authenticated) //Let heads change the alert level.
-				var/old_level = security_level
+				var/old_level = GLOB.security_level
 				if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
 				if(tmp_alertlevel > SEC_LEVEL_RED) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
 				set_security_level(tmp_alertlevel)
-				if(security_level != old_level)
+				if(GLOB.security_level != old_level)
 					//Only notify the admins if an actual change happened
 					log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 					message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
-					switch(security_level)
+					switch(GLOB.security_level)
 						if(SEC_LEVEL_GREEN)
 							feedback_inc("alert_comms_green",1)
 						if(SEC_LEVEL_BLUE)
@@ -139,7 +139,7 @@
 			src.currmsg = 0
 			src.state = STATE_MESSAGELIST
 		if("toggleatc")
-			src.ATC.squelched = !src.ATC.squelched
+			src.ATC.toggle_broadcast()
 		if("viewmessage")
 			src.state = STATE_VIEWMESSAGE
 			if (!src.currmsg)
@@ -164,6 +164,9 @@
 				src.state = STATE_VIEWMESSAGE
 		if("status")
 			src.state = STATE_STATUSDISPLAY
+
+		if("nightshift")
+			src.state = STATE_NIGHTSHIFT
 
 		// Status display stuff
 		if("setstat")
@@ -191,8 +194,8 @@
 				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				CentCom_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				message_centcom(input, usr)
+				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -208,8 +211,8 @@
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				Syndicate_announce(input, usr)
-				to_chat(usr, "<font color='blue'>Message transmitted.</font>")
+				message_syndicate(input, usr)
+				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
 				spawn(300)//10 minute cooldown
@@ -255,6 +258,8 @@
 			src.aistate = STATE_MESSAGELIST
 		if("ai-status")
 			src.aistate = STATE_STATUSDISPLAY
+		if("ai-nightshift")
+			src.aistate = STATE_NIGHTSHIFT
 
 		if("securitylevel")
 			src.tmp_alertlevel = text2num( href_list["newalertlevel"] )
@@ -264,8 +269,22 @@
 		if("changeseclevel")
 			state = STATE_ALERT_LEVEL
 
-
-
+		if("setnightshift")
+			var/oldactive = SSnightshift.nightshift_active
+			var/newactive
+			switch(href_list["newsetting"])
+				if("auto")
+					SSnightshift.overridden = FALSE
+					newactive = oldactive
+				if("on")
+					SSnightshift.overridden = TRUE
+					newactive = TRUE
+				if("off")
+					SSnightshift.overridden = TRUE
+					newactive = FALSE
+			if(oldactive != newactive)
+				SSnightshift.update_nightshift(newactive)
+			src.state = STATE_DEFAULT
 	src.updateUsrDialog()
 
 /obj/machinery/computer/communications/emag_act(var/remaining_charges, var/mob/user)
@@ -277,7 +296,7 @@
 /obj/machinery/computer/communications/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/communications/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/communications/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if (GLOB.using_map && !(src.z in GLOB.using_map.contact_levels))
@@ -319,6 +338,7 @@
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Call Emergency Shuttle</A> \]"
 
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=nightshift'>Set Nightshift Setting</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Log In</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
@@ -359,9 +379,25 @@
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+		if(STATE_NIGHTSHIFT)
+			if(!SSnightshift.overridden)
+				dat += "Current Nightshift Setting: <b>Auto ([SSnightshift.nightshift_active ? "On" : "Off"])</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "Auto<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
+			else if(SSnightshift.nightshift_active)
+				dat += "Current Nightshift Setting: <b>On</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "On<BR>"
+			else
+				dat += "Current Nightshift Setting: <b>Off</b><BR>"
+				dat += "Off<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
-			if(security_level == SEC_LEVEL_DELTA)
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The ship is in immediate danger of destruction. Find a way to neutralize the threat to lower the alert level or evacuate.</b></font>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_ORANGE]'>Orange</A><BR>"
@@ -390,6 +426,7 @@
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-nightshift'>Set Nightshift Setting</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
 		if(STATE_MESSAGELIST)
@@ -430,7 +467,7 @@
 	return dat
 
 /proc/enable_prison_shuttle(var/mob/user)
-	for(var/obj/machinery/computer/prison_shuttle/PS in machines)
+	for(var/obj/machinery/computer/prison_shuttle/PS in GLOB.machines)
 		PS.allowedtocall = !(PS.allowedtocall)
 
 /proc/call_shuttle_proc(var/mob/user)
@@ -468,7 +505,7 @@
 	SSemergencyshuttle.call_evac()
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.", 1)
-	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222") //VOREStation Add
+	admin_chat_message(message = "Emergency evac beginning! Called by [key_name(user)]!", color = "#CC2222")
 
 
 	return
@@ -516,7 +553,7 @@
 
 	log_game("[user? key_name(user) : "Autotransfer"] has called the shuttle.")
 	message_admins("[user? key_name_admin(user) : "Autotransfer"] has called the shuttle.", 1)
-	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB") //VOREStation Add
+	admin_chat_message(message = "Autotransfer shuttle dispatched, shift ending soon.", color = "#2277BB")
 
 	return
 
@@ -534,12 +571,12 @@
 
 
 /proc/is_relay_online()
-    for(var/obj/machinery/telecomms/relay/M in world)
-        if(M.stat == 0)
-            return 1
-    return 0
+	for(var/obj/machinery/telecomms/relay/M in world)
+		if(M.machine_stat == 0)
+			return TRUE
+	return FALSE
 
-/obj/machinery/computer/communications/proc/post_status(var/command, var/data1, var/data2)
+/obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 
 	var/datum/radio_frequency/frequency = radio_controller.return_frequency(1435)
 
@@ -560,3 +597,11 @@
 			status_signal.data["picture_state"] = data1
 
 	frequency.post_signal(src, status_signal)
+
+//TODO: Convert to proper cooldowns. A bool for cooldowns is insanely dumb.
+/// Override the cooldown for special actions
+/// Used in places such as CentCom messaging back so that the crew can answer right away
+/obj/machinery/computer/communications/proc/override_cooldown()
+	// COOLDOWN_RESET(src, important_action_cooldown)
+	centcomm_message_cooldown = 0
+	message_cooldown = 0

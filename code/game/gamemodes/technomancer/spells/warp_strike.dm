@@ -54,7 +54,7 @@
 		adjust_instability(12)
 
 		//Finally, we handle striking the victim with whatever's in the user's offhand.
-		var/obj/item/I = user.get_inactive_hand()
+		var/obj/item/I = user.get_inactive_held_item()
 		// List of items we don't want used, for balance reasons or to avoid infinite loops.
 		var/list/blacklisted_items = list(
 			/obj/item/gun,
@@ -69,10 +69,10 @@
 
 			if(istype(I, /obj/item))
 				var/obj/item/W = I
-				W.attack(chosen_target, user)
+				W.melee_attack_chain(chosen_target, user)
 				W.afterattack(chosen_target, user)
 			else
-				I.attack(chosen_target, user)
+				I.melee_attack_chain(chosen_target, user)
 				I.afterattack(chosen_target, user)
 		else
 			chosen_target.attack_hand(user)

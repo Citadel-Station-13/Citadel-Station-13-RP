@@ -10,12 +10,12 @@
 		/obj/docking_port,
 		/obj/structure/lattice,
 		/obj/structure/stone_tile,
-		/obj/item/projectile,
+		/obj/projectile,
 		/obj/effect/projectile,
 		/obj/effect/portal,
 		/obj/effect/abstract,
 		/obj/effect/hotspot,
-		/obj/effect/landmark,
+		/obj/landmark,
 		/obj/effect/temp_visual,
 		/obj/effect/light_emitter/tendril,
 		/obj/effect/collapse,
@@ -65,7 +65,7 @@
 		return FALSE
 	if(!isliving(AM) && !isobj(AM))
 		return FALSE
-	if(is_type_in_typecache(AM, forbidden_types) || AM.throwing || (AM.movement_type & FLOATING))
+	if(is_type_in_typecache(AM, forbidden_types) || AM.throwing || (AM.movement_type & MOVEMENT_FLOATING))
 		return FALSE
 	//Flies right over the chasm
 	if(ismob(AM))
@@ -110,7 +110,7 @@
 		if (isliving(AM))
 			var/mob/living/L = AM
 			L.notransform = TRUE
-			L.Stun(200)
+			L.afflict_stun(20 * 200)
 			L.resting = TRUE
 
 		var/oldtransform = AM.transform
@@ -140,4 +140,4 @@
 			AM.alpha = oldalpha
 			AM.color = oldcolor
 			AM.transform = oldtransform
-			AM.throw_at(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))
+			AM.throw_at_old(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))

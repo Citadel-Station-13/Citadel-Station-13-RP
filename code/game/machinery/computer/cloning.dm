@@ -4,7 +4,7 @@
 	icon_screen = "dna"
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/cloning
-	req_access = list(access_heads) //Only used for record deletion right now.
+	req_access = list(ACCESS_COMMAND_BRIDGE) //Only used for record deletion right now.
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
 	var/list/pods = list() //Linked cloning pods.
 	var/temp = ""
@@ -64,8 +64,8 @@
 /obj/machinery/computer/cloning/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/disk/data)) //INSERT SOME DISKETTES
 		if (!diskette)
-			user.drop_item()
-			W.loc = src
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			diskette = W
 			to_chat(user, "You insert [W].")
 			updateUsrDialog()
@@ -94,11 +94,11 @@
 /obj/machinery/computer/cloning/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/cloning/attack_hand(mob/user as mob)
+/obj/machinery/computer/cloning/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	updatemodules()
@@ -310,10 +310,10 @@
 	if (subject.suiciding)
 		scantemp = "Error: Subject's brain is not responding to scanning stimuli."
 		return
-	if (NOCLONE in subject.mutations)
+	if (MUTATION_NOCLONE in subject.mutations)
 		scantemp = "Error: Mental interface failure."
 		return
-	if (subject.species && subject.species.flags & NO_SCAN && !brain_skip)
+	if (subject.species && subject.species.species_flags & NO_SCAN && !brain_skip)
 		scantemp = "Error: Mental interface failure."
 		return
 	for(var/modifier_type in subject.modifiers)	//Can't be cloned, even if they had a previous scan
@@ -322,9 +322,9 @@
 			return
 	if ((!subject.ckey) || (!subject.client))
 		scantemp = "Error: Mental interface failure."
-		if(subject.stat == DEAD && subject.mind && subject.mind.key) // If they're dead and not in their body, tell them to get in it.
-			for(var/mob/observer/dead/ghost in player_list)
-				if(ghost.ckey == ckey(subject.mind.key))
+		if(subject.stat == DEAD && subject.mind && subject.mind.ckey) // If they're dead and not in their body, tell them to get in it.
+			for(var/mob/observer/dead/ghost in GLOB.player_list)
+				if(ghost.ckey == ckey(subject.mind.ckey))
 					ghost.notify_revive("Someone is trying to scan your body in the cloner. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 					break
 		return

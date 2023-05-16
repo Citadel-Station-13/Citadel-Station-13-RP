@@ -58,7 +58,7 @@
 
 		// For now as a safety measure we will only save if the name matches.
 		if(prefs.real_name != persister.real_name)
-			log_debug("Persist (P4P): Skipping [persister] because ORIG:[persister.real_name] != CURR:[prefs.real_name].")
+			log_debug(SPAN_DEBUG("Persist (P4P): Skipping [persister] because ORIG:[persister.real_name] != CURR:[prefs.real_name]."))
 			return
 
 		return prefs
@@ -107,39 +107,6 @@
 
 	prefs.save_character()
 
-// Saves mob's current coloration state to prefs
-// This basically needs to be the reverse of /datum/category_item/player_setup_item/general/body/copy_to_mob() ~Leshana
-/proc/apply_coloration_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
-	if(!istype(character)) return
-	prefs.r_eyes	= character.r_eyes
-	prefs.g_eyes	= character.g_eyes
-	prefs.b_eyes	= character.b_eyes
-	prefs.h_style	= character.h_style
-	prefs.r_hair	= character.r_hair
-	prefs.g_hair	= character.g_hair
-	prefs.b_hair	= character.b_hair
-	prefs.f_style	= character.f_style
-	prefs.r_facial	= character.r_facial
-	prefs.g_facial	= character.g_facial
-	prefs.b_facial	= character.b_facial
-	prefs.r_skin	= character.r_skin
-	prefs.g_skin	= character.g_skin
-	prefs.b_skin	= character.b_skin
-	prefs.s_tone	= character.s_tone
-	prefs.h_style	= character.h_style
-	prefs.f_style	= character.f_style
-	prefs.b_type	= character.b_type
-
-// Saves mob's current custom species, ears, and tail state to prefs
-// This basically needs to be the reverse of /datum/category_item/player_setup_item/vore/ears/copy_to_mob() ~Leshana
-/proc/apply_ears_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
-	if(character.ear_style) prefs.ear_style = character.ear_style.type
-	if(character.tail_style) prefs.tail_style = character.tail_style.type
-	prefs.r_tail			= character.r_tail
-	prefs.b_tail			= character.b_tail
-	prefs.g_tail			= character.g_tail
-	prefs.custom_species	= character.custom_species
-
 // Saves mob's current organ state to prefs.
 // This basically needs to be the reverse of /datum/category_item/player_setup_item/general/body/copy_to_mob() ~Leshana
 /proc/apply_organs_to_prefs(var/mob/living/carbon/human/character, var/datum/preferences/prefs)
@@ -186,15 +153,15 @@
 			var/datum/sprite_accessory/marking/mark_datum = ML["datum"]
 			var/mark_color = ML["color"]
 			if(!istype(mark_datum) || !mark_color)
-				log_debug("[character]'s organ [O] ([O.type]) has marking [list2params(ML)] with invalid/missing color/datum!")
+				log_debug(SPAN_DEBUG("[character]'s organ [O] ([O.type]) has marking [list2params(ML)] with invalid/missing color/datum!"))
 				continue;
-			if(!(mark_datum.name in body_marking_styles_list))
-				log_debug("[character]'s organ [O] ([O.type]) has marking [mark_datum] which is not in body_marking_styles_list!")
+			if(!(mark_datum.name in GLOB.legacy_marking_lookup))
+				log_debug(SPAN_DEBUG("[character]'s organ [O] ([O.type]) has marking [mark_datum] which is not in body_marking_styles_list!"))
 				continue;
 			// Note: Since datums can cover multiple organs, we may encounter it multiple times, but this is okay
 			// because you're only allowed to have each marking type once! If this assumption changes, obviously update this. ~Leshana
-			new_body_markings[mark_datum.name] = mark_color
-	prefs.body_markings = new_body_markings // Overwrite with new list!
+			new_body_markings[mark_datum.id] = mark_color
+	prefs.body_marking_ids = new_body_markings // Overwrite with new list!
 
 /**
 * Resolve any surplus/deficit in nutrition's effet on weight all at once.

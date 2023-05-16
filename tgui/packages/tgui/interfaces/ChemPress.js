@@ -7,11 +7,15 @@ export const ChemPress = (props, context) => {
   const {
     current_volume,
     product_name,
-    pill_style,
-    pill_styles = [],
     product,
     min_volume,
     max_volume,
+    bottle_style,
+    bottle_styles = [],
+    pill_style,
+    pill_styles = [],
+    patch_style,
+    patch_styles = [],
   } = data;
   return (
     <Window
@@ -80,6 +84,21 @@ export const ChemPress = (props, context) => {
                       id: pill.id,
                     })}>
                     <Box mx={-1} className={pill.class_name} />
+                  </Button>
+                ))}
+              </LabeledList.Item>
+            )}
+            {!condi && (
+              <LabeledList.Item label="Patch type">
+                {patch_styles.map((patch) => (
+                  <Button
+                    key={patch.style}
+                    selected={patch.style === chosen_patch_style}
+                    textAlign="center"
+                    color="transparent"
+                    onClick={() =>
+                      act('change_patch_style', { patch_style: patch.style })}>
+                    <Box mb={0} mt={1} className={patch.class_name} />
                   </Button>
                 ))}
               </LabeledList.Item>

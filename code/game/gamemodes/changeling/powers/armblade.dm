@@ -53,9 +53,9 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "arm_blade"
 	w_class = ITEMSIZE_HUGE
-	force = 5
+	damage_force = 5
 	anchored = 1
-	throwforce = 0 //Just to be on the safe side
+	throw_force = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
 	var/mob/living/creator //This is just like ninja swords, needed to make sure dumb shit that removes the sword doesn't make it stay around.
@@ -74,7 +74,7 @@
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 		src.creator = loc
 
-/obj/item/melee/changeling/dropped(mob/user)
+/obj/item/melee/changeling/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	visible_message("<span class='warning'>With a sickening crunch, [creator] reforms their arm!</span>",
 	"<span class='notice'>We assimilate the weapon back into our body.</span>",
@@ -88,12 +88,12 @@
 	return ..()
 
 /obj/item/melee/changeling/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>")
 	return(BRUTELOSS)
 
 /obj/item/melee/changeling/process(delta_time)  //Stolen from ninja swords.
-	if(!creator || loc != creator || !creator.item_is_in_hands(src))
+	if(!creator || loc != creator || !creator.is_holding(src))
 		// Tidy up a bit.
 		if(istype(loc,/mob/living))
 			var/mob/living/carbon/human/host = loc
@@ -104,10 +104,7 @@
 							organ.implants -= src
 			host.pinned -= src
 			host.embedded -= src
-			host.drop_from_inventory(src)
-		spawn(1)
-			if(src)
-				qdel(src)
+		qdel(src)
 
 /obj/item/melee/changeling/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && prob(defend_chance))
@@ -122,10 +119,10 @@
 	return 0
 
 /obj/item/melee/changeling/unique_parry_check(mob/user, mob/attacker, atom/damage_source)
-	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile))
+	if(user.incapacitated() || !istype(damage_source, /obj/projectile))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = global.reverse_dir[user.dir]
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 
@@ -135,7 +132,7 @@
 	name = "arm blade"
 	desc = "A grotesque blade made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "arm_blade"
-	force = 40
+	damage_force = 40
 	armor_penetration = 15
 	sharp = 1
 	edge = 1
@@ -155,7 +152,7 @@
 	name = "hand claw"
 	desc = "A grotesque claw made out of bone and flesh that cleaves through people as a hot knife through butter."
 	icon_state = "ling_claw"
-	force = 15
+	damage_force = 15
 	sharp = 1
 	edge = 1
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -164,7 +161,7 @@
 
 /obj/item/melee/changeling/claw/greater
 	name = "hand greatclaw"
-	force = 20
+	damage_force = 20
 	armor_penetration = 20
 	pry = 1
 	defend_chance = 60

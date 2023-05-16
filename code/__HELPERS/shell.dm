@@ -1,4 +1,4 @@
-//Runs the command in the system's shell, returns a list of (error code, stdout, stderr)
+//! Runs the command in the system's shell, returns a list of (error code, stdout, stderr)
 
 #define SHELLEO_NAME "data/shelleo."
 #define SHELLEO_ERR ".err"
@@ -34,7 +34,8 @@
 			fdel(err_file)
 		shelleo_ids[shelleo_id] = FALSE
 	else
-		CRASH("Operating System: [world.system_type] not supported") // If you encounter this error, you are encouraged to update this proc with support for the new operating system
+		//? If you encounter this error, you are encouraged to update this proc with support for the new operating system.
+		CRASH("Operating System: [world.system_type] not supported")
 	. = list(errorcode, stdout, stderr)
 #undef SHELLEO_NAME
 #undef SHELLEO_ERR

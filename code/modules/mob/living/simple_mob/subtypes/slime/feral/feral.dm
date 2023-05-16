@@ -1,11 +1,16 @@
 // These slimes lack certain xenobio features but get more combat-oriented goodies. Generally these are more oriented towards Explorers than Xenobiologists.
 
+/datum/category_item/catalogue/fauna/slime/feral
+	name = "Slime - Feral"
+	desc = "Having the means to successfully escape their lab, as well as having to survive on a harsh, cold world has made these \
+	creatures rival the ferocity of other apex predators in this region of Sif. It is considered to be a very invasive species."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/slime/feral
 	name = "feral slime"
-	desc = "The result of slimes escaping containment from some xenobiology lab. \
-	Having the means to successfully escape their lab, as well as having to survive on a harsh, cold world has made these \
-	creatures rival the ferocity of other apex predators in this region of Sif. It is considered to be a very invasive species."
+	desc = "The result of slimes escaping containment from some xenobiology lab."
 	description_info = "Note that processing this large slime will give six cores."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/slime/feral)
 
 	cores = 6 // Xenobio will love getting their hands on these.
 
@@ -17,7 +22,7 @@
 	icon_scale_x = 2 // Twice as big as the xenobio variant.
 	icon_scale_y = 2
 	pixel_y = -10 // Since the base sprite isn't centered properly, the pixel auto-adjustment needs some help.
-	default_pixel_y = -10 // To prevent resetting above var.
+	base_pixel_y = -10 // To prevent resetting above var.
 
 	maxHealth = 300
 	movement_cooldown = 10
@@ -48,7 +53,7 @@
 	minbodytemp = 0
 	cold_damage_per_tick = 0
 
-	projectiletype = /obj/item/projectile/icicle
+	projectiletype = /obj/projectile/icicle
 	base_attack_cooldown = 2 SECONDS
 	ranged_attack_delay = 1 SECOND
 
@@ -56,23 +61,23 @@
 	You are also immune to the cold, and you cause enemies around you to suffer periodic harm from the cold, if unprotected.<br>\
 	Unprotected enemies are also Chilled, making them slower and less evasive, and disabling effects last longer."
 
-/obj/item/projectile/icicle
+/obj/projectile/icicle
 	name = "icicle"
 	icon_state = "ice_2"
 	damage = 40
 	damage_type = BRUTE
-	check_armour = "melee"
+	damage_flag = ARMOR_MELEE
 	armor_penetration = 30
 	speed = 2
 	icon_scale_x = 2 // It hits like a truck.
 	icon_scale_y = 2
 	sharp = TRUE
 
-/obj/item/projectile/icicle/on_impact(atom/A)
+/obj/projectile/icicle/on_impact(atom/A)
 	playsound(get_turf(A), "shatter", 70, 1)
 	return ..()
 
-/obj/item/projectile/icicle/get_structure_damage()
+/obj/projectile/icicle/get_structure_damage()
 	return damage / 2 // They're really deadly against mobs, but less effective against solid things.
 
 /mob/living/simple_mob/slime/feral/dark_blue/handle_special()
@@ -88,6 +93,8 @@
 
 /mob/living/simple_mob/slime/feral/dark_blue/proc/chill(mob/living/L)
 	L.inflict_cold_damage(10)
+	if(QDELETED(L))
+		return
 	if(L.get_cold_protection() < 1)
 		L.add_modifier(/datum/modifier/chilled, 5 SECONDS, src)
 

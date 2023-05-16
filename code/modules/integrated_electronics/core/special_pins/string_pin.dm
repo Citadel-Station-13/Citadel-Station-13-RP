@@ -3,7 +3,7 @@
 	name = "string pin"
 
 /datum/integrated_io/string/ask_for_pin_data(mob/user)
-	var/new_data = input("Please type in a string.","[src] string writing") as null|text
+	var/new_data = input(usr, "Please type in a string.","[src] string writing") as null|text
 	new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
 
 	if(new_data && holder.check_interactivity(user) )
@@ -20,12 +20,10 @@
 /datum/integrated_io/string/scramble()
 	if(!is_valid())
 		return
-	var/string_length = length(data)
-	var/list/options = list("!","@","#","$","%","^","&","*") + alphabet_uppercase
+	var/list/options = list("!","@","#","$","%","^","&","*","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
 	var/new_data = ""
-	while(string_length)
+	for(var/i in 1 to length(data))
 		new_data += pick(options)
-		string_length--
 	push_data()
 
 /datum/integrated_io/string/display_pin_type()

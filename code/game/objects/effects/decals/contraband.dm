@@ -5,7 +5,7 @@
 	name = "contraband item"
 	desc = "You probably shouldn't be holding this."
 	icon = 'icons/obj/contraband.dmi'
-	force = 0
+	damage_force = 0
 
 
 /obj/item/contraband/poster
@@ -149,7 +149,7 @@
 
 /obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wirecutter())
-		playsound(src.loc, W.usesound, 100, 1)
+		playsound(src.loc, W.tool_sound, 100, 1)
 		if(ruined)
 			to_chat(user, "<span class='notice'>You remove the remnants of the poster.</span>")
 			qdel(src)
@@ -158,7 +158,7 @@
 			roll_and_drop(user.loc)
 		return
 
-/obj/structure/sign/poster/attack_hand(mob/user as mob)
+/obj/structure/sign/poster/attack_hand(mob/user, list/params)
 
 	if(ruined)
 		return

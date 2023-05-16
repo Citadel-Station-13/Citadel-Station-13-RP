@@ -9,28 +9,24 @@
  */
 /obj/item/storage/firstaid
 	name = "first aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "It's an emergency medical kit, meant to either treat light injuries or stabilize the dying."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
+	slot_flags = SLOT_BELT
 	max_storage_space = ITEMSIZE_COST_SMALL * 7 // 14
-//	var/list/icon_variety // VOREStation edit
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
 /obj/item/storage/firstaid/Initialize(mapload)
 	. = ..()
-//	if(icon_variety) // VOREStation edit
-//		icon_state = pick(icon_variety)
-//		icon_variety = null
 
 /obj/item/storage/firstaid/fire
 	name = "fire first aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
+	desc = "It's an emergency medical kit, loaded with everything you would need to treat burns of any kind."
 	icon_state = "ointment"
-	item_state_slots = list(slot_r_hand_str = "firstaid-ointment", slot_l_hand_str = "firstaid-ointment")
-//	icon_variety = list("ointment","firefirstaid") // VOREStation edit
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-ointment", SLOT_ID_LEFT_HAND = "firstaid-ointment")
 	starts_with = list(
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/hypospray/autoinjector,
@@ -57,8 +53,7 @@
 	name = "poison first aid kit" //IRL the term used would be poison first aid kit.
 	desc = "Used to treat when one has a high amount of toxins in their body."
 	icon_state = "antitoxin"
-	item_state_slots = list(slot_r_hand_str = "firstaid-toxin", slot_l_hand_str = "firstaid-toxin")
-//	icon_variety = list("antitoxin","antitoxfirstaid","antitoxfirstaid2","antitoxfirstaid3") // VOREStation edit
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-toxin", SLOT_ID_LEFT_HAND = "firstaid-toxin")
 	starts_with = list(
 		/obj/item/reagent_containers/syringe/antitoxin,
 		/obj/item/reagent_containers/syringe/antitoxin,
@@ -71,9 +66,9 @@
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid kit"
-	desc = "A box full of oxygen goodies."
+	desc = "It's an emergency medical kit, commonly seen aboard spacecraft, loaded with chemicals to treat oxygen deprivation."
 	icon_state = "o2"
-	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-o2", SLOT_ID_LEFT_HAND = "firstaid-o2")
 	starts_with = list(
 		/obj/item/reagent_containers/pill/dexalin,
 		/obj/item/reagent_containers/pill/dexalin,
@@ -86,9 +81,9 @@
 
 /obj/item/storage/firstaid/adv
 	name = "advanced first aid kit"
-	desc = "Contains advanced medical treatments, for <b>serious</b> boo-boos."
+	desc = "Contains advanced medical items, for when serious injuries require serious medicine."
 	icon_state = "advfirstaid"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -101,9 +96,9 @@
 
 /obj/item/storage/firstaid/combat
 	name = "combat medical kit"
-	desc = "Contains advanced medical treatments."
+	desc = "A collection of everything an enterprising operative needs to stay alive in the field."
 	icon_state = "bezerk"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/storage/pill_bottle/bicaridine,
 		/obj/item/storage/pill_bottle/dermaline,
@@ -119,11 +114,11 @@
 /obj/item/storage/firstaid/surgery
 	name = "surgery kit"
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
-	icon = 'icons/obj/storage.dmi' // VOREStation edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
 	max_w_class = ITEMSIZE_NORMAL
-	max_storage_space = 25			//update this when necessary!
+	max_storage_space = 25 //update this when necessary!
 
 	can_hold = list(
 		/obj/item/surgical,
@@ -144,14 +139,13 @@
 		/obj/item/surgical/bonegel,
 		/obj/item/surgical/FixOVein,
 		/obj/item/stack/medical/advanced/bruise_pack,
-		///obj/item/healthanalyzer/advanced, //VOREStation Removal,
 		/obj/item/autopsy_scanner
 		)
 
 /obj/item/storage/firstaid/clotting
 	name = "clotting kit"
 	desc = "Contains chemicals to stop bleeding."
-	icon_state = "clottingkit" // VOREStation edit
+	icon_state = "clottingkit"
 	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/clotting = 8)
 
@@ -168,10 +162,10 @@
 	name = "pill bottle"
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
-	item_state_slots = list(slot_r_hand_str = "contsolid", slot_l_hand_str = "contsolid")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 	allow_quick_gather = 1
@@ -182,11 +176,11 @@
 	max_w_class = ITEMSIZE_TINY
 
 	var/label_text = ""
-	var/labeled = 0 // Citadel Change - Used in labeling
+	var/labeled = 0
 	var/base_name = " "
 	var/base_desc = " "
-	var/base_icon = "pill_canister" // Citadel Change - Used in recoloring
-	var/bottle_color = "orange" // Citadel Change - Used in recoloring
+	var/base_icon = "pill_canister"
+	var/bottle_color = "orange"
 
 /obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
@@ -207,8 +201,8 @@
 			to_chat(user, "<span class='notice'>You set the label to \"[tmp_label]\".</span>")
 			label_text = tmp_label
 			update_name_label()
-			labeled = 1 // Citadel Change - Overlay for labels
-			update_icon() // Citadel Change - Overlay for labels
+			labeled = 1
+			update_icon()
 	else
 		..()
 
@@ -224,7 +218,7 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
-/obj/item/storage/pill_bottle/proc/choose_color() // BEGIN Citadel Changes - Bottle recoloring
+/obj/item/storage/pill_bottle/proc/choose_color()
 	set name = "Recolor bottle"
 	set category = "Object"
 	set desc = "Click to choose a color for the pill bottle."
@@ -250,7 +244,7 @@
 /obj/item/storage/pill_bottle/update_icon()
 	..()
 	if(labeled == 1)
-		add_overlay(image(icon = 'icons/obj/chemical.dmi', icon_state = "pill_canister_label"))
+		add_overlay("pill_canister_label")
 	if(base_icon == "pill_canister")
 		if(bottle_color == "orange")
 			icon_state = "[base_icon]"
@@ -260,88 +254,88 @@
 /obj/item/storage/pill_bottle/Initialize(mapload)
 	. = ..()
 	if(base_icon == "pill_canister")
-		verbs += /obj/item/storage/pill_bottle/proc/choose_color
-	update_icon() // END Citadel Changes - Bottle recoloring
+		add_obj_verb(src, /obj/item/storage/pill_bottle/proc/choose_color)
+	update_icon()
 
 /obj/item/storage/pill_bottle/antitox
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to counter toxins."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "green"
 	starts_with = list(/obj/item/reagent_containers/pill/antitox = 7)
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "bottle of Bicaridine pills"
 	desc = "Contains pills used to stabilize the severely injured."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "red" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "red"
 	starts_with = list(/obj/item/reagent_containers/pill/bicaridine = 7)
 
 /obj/item/storage/pill_bottle/dexalin_plus
 	name = "bottle of Dexalin Plus pills"
 	desc = "Contains pills used to treat extreme cases of oxygen deprivation."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "blue"
 	starts_with = list(/obj/item/reagent_containers/pill/dexalin_plus = 7)
 
 /obj/item/storage/pill_bottle/dermaline
 	name = "bottle of Dermaline pills"
 	desc = "Contains pills used to treat burn wounds."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
 	starts_with = list(/obj/item/reagent_containers/pill/dermaline = 7)
 
 /obj/item/storage/pill_bottle/dylovene
 	name = "bottle of Dylovene pills"
 	desc = "Contains pills used to treat toxic substances in the blood."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "green" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "green"
 	starts_with = list(/obj/item/reagent_containers/pill/dylovene = 7)
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "bottle of Inaprovaline pills"
 	desc = "Contains pills used to stabilize patients."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "blue" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "blue"
 	starts_with = list(/obj/item/reagent_containers/pill/inaprovaline = 7)
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "bottle of kelotane pills"
 	desc = "Contains pills used to treat burns."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
 	starts_with = list(/obj/item/reagent_containers/pill/kelotane = 7)
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "bottle of Spaceacillin pills"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "white" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "white"
 	starts_with = list(/obj/item/reagent_containers/pill/spaceacillin = 7)
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "bottle of Tramadol pills"
 	desc = "Contains pills used to relieve pain."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "purple" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "purple"
 	starts_with = list(/obj/item/reagent_containers/pill/tramadol = 7)
 
 /obj/item/storage/pill_bottle/citalopram
 	name = "bottle of Citalopram pills"
 	desc = "Contains pills used to stabilize a patient's mood."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
 	starts_with = list(/obj/item/reagent_containers/pill/citalopram = 7)
 
 /obj/item/storage/pill_bottle/carbon
 	name = "bottle of Carbon pills"
 	desc = "Contains pills used to neutralise chemicals in the stomach."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "black"
 	starts_with = list(/obj/item/reagent_containers/pill/carbon = 7)
 
 /obj/item/storage/pill_bottle/iron
 	name = "bottle of Iron pills"
 	desc = "Contains pills used to aid in blood regeneration."
-	labeled = 1 // Citadel Change - Recoloring - There are a lot of these.
-	bottle_color = "black" // Citadel Change - Recoloring - There are a lot of these.
+	labeled = 1
+	bottle_color = "black"
 	starts_with = list(/obj/item/reagent_containers/pill/iron = 7)
 
 /obj/item/storage/firstaid/clotting
@@ -429,7 +423,7 @@
 	name = "combat organ kit"
 	desc = "Contains advanced organ medical treatments."
 	icon_state = "bezerk"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/storage/pill_bottle/rezadone,
 		/obj/item/storage/pill_bottle/peridaxon,

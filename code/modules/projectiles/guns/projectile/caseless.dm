@@ -1,6 +1,6 @@
-/obj/item/gun/projectile/caseless/prototype
+/obj/item/gun/ballistic/caseless/prototype
 	name = "prototype caseless rifle"
-	desc = "A rifle cooked up in NanoTrasen's R&D labs that operates with Kraut Space Magic™ clockwork internals. Uses solid phoron 5mm caseless rounds."
+	desc = "This experimental rifle is the efforts of NanoTrasen's R&D division, made manifest. Uses 5mm solid-phoron caseless rounds, obviously."
 	icon_state = "caseless"
 	item_state = "caseless"
 	w_class = ITEMSIZE_LARGE
@@ -10,17 +10,19 @@
 	load_method = MAGAZINE
 	magazine_type = null // R&D builds this. Starts unloaded.
 	allowed_magazines = list(/obj/item/ammo_magazine/m5mmcaseless)
+	one_handed_penalty = 15
 
-/obj/item/gun/projectile/caseless/prototype/update_icon()
+/obj/item/gun/ballistic/caseless/prototype/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else
 		icon_state = "[initial(icon_state)]-empty"
 
-/obj/item/gun/projectile/caseless/prototype/loaded
+/obj/item/gun/ballistic/caseless/prototype/loaded
 	magazine_type = /obj/item/ammo_magazine/m5mmcaseless
 
-/obj/item/gun/projectile/caseless/usmc
+/obj/item/gun/ballistic/caseless/usmc
 	name = "M41A Pulse Rifle"
 	desc = "A relic dating back to the Xenomorph Wars and the former primary battle rifle of the  United Solar Marine Corps. Loads using 10x24mm caseless Magazines"
 	icon_state = "usmc"

@@ -1,27 +1,28 @@
-/mob/proc/set_typing_indicator(var/state) //Leaving this here for mobs.
-
-	if(!is_preference_enabled(/datum/client_preference/show_typing_indicator))
+/mob/proc/init_typing_indicator(indicator)
+	if(!indicator)
+		indicator = "[speech_bubble_appearance()]_typing"
+	if(typing_indicator)
 		cut_overlay(typing_indicator, TRUE)
-		return
+	typing = FALSE
+	typing_indicator = mutable_appearance('icons/mob/talk_vr.dmi', indicator, FLOAT_LAYER)
+	typing_indicator.appearance_flags |= RESET_COLOR | PIXEL_SCALE
 
-	if(!typing_indicator)
-		typing_indicator = new
-		//typing_indicator.icon = 'icons/mob/talk_vr.dmi' //VOREStation Edit - Looks better on the right with job icons.
-		//typing_indicator.icon_state = "typing"
-		typing_indicator.icon = 'icons/mob/talk_vr.dmi' //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
-		typing_indicator.icon_state = "[speech_bubble_appearance()]_typing"
+/mob/proc/set_typing_indicator(state)
+	if(!is_preference_enabled(/datum/client_preference/show_typing_indicator))
+		state = FALSE
 
-	if(state && !typing)
-		add_overlay(typing_indicator, TRUE)
-		typing = TRUE
-	else if(typing)
+	if(!state)
+		if(!typing)
+			return
 		cut_overlay(typing_indicator, TRUE)
 		typing = FALSE
-
-	if(shadow) //Multi-Z above-me shadows
-		shadow.set_typing_indicator(state)
-
-	return state
+	else
+		if(typing)
+			return
+		if(!typing_indicator)
+			init_typing_indicator()
+		add_overlay(typing_indicator, TRUE)
+		typing = TRUE
 
 /mob/verb/say_wrapper()
 	set name = ".Say"

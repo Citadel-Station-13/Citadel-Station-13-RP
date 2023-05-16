@@ -53,7 +53,7 @@
 
 	examine(mob/user)
 		. = ..()
-		. += "<font color='blue'>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>"
+		. += "<font color=#4F49AF>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>"
 
 	handleInactive()
 		heat -= 2
@@ -76,25 +76,25 @@
 			P = O
 			user.drop_item()
 			O.loc = src
-			to_chat(user, "<font color='blue'>You add the phoron tank to the generator.</font>")
+			to_chat(user, "<font color=#4F49AF>You add the phoron tank to the generator.</font>")
 		else if(!active)
 			if(O.is_wrench())
 				anchored = !anchored
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				if(anchored)
-					to_chat(user, "<font color='blue'>You secure the generator to the floor.</font>")
+					to_chat(user, "<font color=#4F49AF>You secure the generator to the floor.</font>")
 				else
-					to_chat(user, "<font color='blue'>You unsecure the generator from the floor.</font>")
+					to_chat(user, "<font color=#4F49AF>You unsecure the generator from the floor.</font>")
 				SSmachines.makepowernets()
 			else if(O.is_screwdriver())
 				open = !open
-				playsound(loc, O.usesound, 50, 1)
+				playsound(loc, O.tool_sound, 50, 1)
 				if(open)
-					to_chat(user, "<font color='blue'>You open the access panel.</font>")
+					to_chat(user, "<font color=#4F49AF>You open the access panel.</font>")
 				else
-					to_chat(user, "<font color='blue'>You close the access panel.</font>")
+					to_chat(user, "<font color=#4F49AF>You close the access panel.</font>")
 			else if(O.is_crowbar() && !open)
-				playsound(loc, O.usesound, 50, 1)
+				playsound(loc, O.tool_sound, 50, 1)
 				var/obj/machinery/constructable_frame/machine_frame/new_frame = new /obj/machinery/constructable_frame/machine_frame(src.loc)
 				for(var/obj/item/I in component_parts)
 					I.loc = src.loc

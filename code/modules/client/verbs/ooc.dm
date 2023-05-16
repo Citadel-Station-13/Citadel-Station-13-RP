@@ -5,9 +5,38 @@
 
 	var/motd = config.motd
 	if(motd)
-		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
+		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
 	else
 		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
+	to_chat(src, getAlertDesc())
+
+/client/proc/getAlertDesc()
+	var/color
+	var/desc
+	//borrow the same colors from the fire alarms
+	switch(get_security_level())
+		if("green")
+			color = "#00ff00"
+			desc = "" //no special description if nothing special is going on
+		if("yellow")
+			color = "#ffff00"
+			desc = CONFIG_GET(string/alert_desc_yellow_upto)
+		if("violet")
+			color = "#9933ff"
+			desc = CONFIG_GET(string/alert_desc_violet_upto)
+		if("orange")
+			color = "#ff9900"
+			desc = CONFIG_GET(string/alert_desc_orange_upto)
+		if("blue")
+			color = "#1024A9"
+			desc = CONFIG_GET(string/alert_desc_blue_upto)
+		if("red")
+			color = "#ff0000"
+			desc = CONFIG_GET(string/alert_desc_red_upto)
+		if("delta")
+			color = "#FF6633"
+			desc = CONFIG_GET(string/alert_desc_delta)
+	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")
 
 /client/proc/ooc_wrapper()
 	var/message = input("","ooc (text)") as text|null
@@ -18,10 +47,6 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -30,7 +55,9 @@
 		to_chat(src, "<span class='warning'>You have OOC muted.</span>")
 		return
 
-
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC))
+		to_chat(src, SPAN_WARNING("You are banned from OOC and deadchat."))
+		return
 
 	if(!mob)
 		return
@@ -45,9 +72,7 @@
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
-	// if(is_banned_from(ckey, "OOC"))
-	// 	to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
-	// 	return
+
 	if(QDELETED(src))
 		return
 
@@ -102,10 +127,10 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
-				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM>[msg]</span></span></font>")
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
+				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
-				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message linkify'>OOC: <EM>[display_name]: </EM>[msg]</span></span></span>")
+				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
 
 /client/proc/looc_wrapper()
 	var/message = input("","looc (text)") as text|null
@@ -117,15 +142,15 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-
 	if(!mob)
 		return
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
+		return
+
+	if(is_role_banned_ckey(ckey, role = BAN_ROLE_OOC) && IS_DEAD(mob))
+		to_chat(src, SPAN_WARNING("You are banned from typing in LOOC while dead, and deadchat."))
 		return
 
 	msg = sanitize(msg)
@@ -159,7 +184,8 @@
 
 	var/mob/source = mob.get_looc_source()
 	var/turf/T = get_turf(source)
-	if(!T) return
+	if(!T)
+		return
 	var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0)
 	var/list/m_viewers = in_range["mobs"]
 
@@ -171,12 +197,11 @@
 		display_name = holder.fakekey
 	if(mob.stat != DEAD)
 		display_name = mob.name
-	//VOREStation Add - Resleeving shenanigan prevention
+	// Resleeving shenanigan prevention.
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		if(H.original_player && H.original_player != H.ckey) //In a body not their own
 			display_name = "[H.mind.name] (as [H.name])"
-	//VOREStation Add End
 
 	// Everyone in normal viewing range of the LOOC
 	for(var/mob/viewer in m_viewers)
@@ -188,7 +213,7 @@
 				receivers |= E.owner.client
 
 	// Admins with RLOOC displayed who weren't already in
-	for(var/client/admin in admins)
+	for(var/client/admin in GLOB.admins)
 		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
 			r_receivers |= admin
 
@@ -198,15 +223,15 @@
 	for(var/client/target in receivers)
 		var/admin_stuff = ""
 
-		if(target in admins)
+		if(target in GLOB.admins)
 			admin_stuff += "/([key])"
 
-		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'>[msg]</span></span>")
+		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
 
 	for(var/client/target in r_receivers)
 		var/admin_stuff = "/([key])([admin_jump_link(mob, target.holder)])"
 
-		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'>[msg]</span></span>")
+		to_chat(target, "<span class='looc'>" + "LOOC: " + " <span class='prefix'>(R)</span><EM>[display_name][admin_stuff]: </EM> <span class='message'><span class='linkify'>[msg]</span></span></span>")
 
 /mob/proc/get_looc_source()
 	return src

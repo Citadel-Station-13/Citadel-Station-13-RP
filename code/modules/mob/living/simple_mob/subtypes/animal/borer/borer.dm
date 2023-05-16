@@ -2,6 +2,19 @@
 // IMO they're a relic of several ages we're long past, their code and their design showing this plainly, but removing them would
 // make certain people Unhappy so here we are. They need a complete redesign but thats beyond the scope of the rewrite.
 
+/datum/category_item/catalogue/fauna/borer
+	name = "Cortical Borer"
+	desc = "Cortical Borers are one of the many parasitic life forms \
+	encountered on the Frontier. Often treated - justifiably - with disgust \
+	and fear, evidence of a cortical borer can send a community spiralling \
+	into panic and paranoia. Borers hijack the cortex of their hosts, fully \
+	taking control of their victim's motor functions and speech, effectively \
+	locking the host inside their own body. Borers reproduce inside their host \
+	bodies, making it vital to their life cycle that they remain undetected. \
+	Cortical borers are notably vulnerable to sugar, a fact often exploited when \
+	screening for infested hosts."
+	value = CATALOGUER_REWARD_HARD
+
 /mob/living/simple_mob/animal/borer
 	name = "cortical borer"
 	desc = "A small, quivering sluglike creature."
@@ -9,6 +22,7 @@
 	item_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/borer)
 
 	response_help  = "pokes"
 	response_disarm = "prods"
@@ -16,8 +30,8 @@
 	attacktext = list("nipped")
 	friendly = list("prods")
 
-	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	status_flags = STATUS_CAN_PUSH
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 
 	universal_understand = TRUE
@@ -49,13 +63,13 @@
 /mob/living/simple_mob/animal/borer/Initialize(mapload)
 	add_language("Cortical Link")
 
-	verbs += /mob/living/proc/ventcrawl
-	verbs += /mob/living/proc/hide
+	add_verb(src, /mob/living/proc/ventcrawl)
+	add_verb(src, /mob/living/proc/hide)
 
 	true_name = "[pick("Primary","Secondary","Tertiary","Quaternary")] [rand(1000,9999)]"
 
 	if(!roundstart)
-		request_player()
+		INVOKE_ASYNC(src, .proc/request_player)
 
 	return ..()
 
@@ -65,13 +79,13 @@
 		if(host.reagents.has_reagent("sugar") && !docile)
 			var/message = "You feel the soporific flow of sugar in your host's blood, lulling you into docility."
 			var/target = controlling ? host : src
-			to_chat(target, span("warning", message))
+			to_chat(target, SPAN_WARNING( message))
 			docile = TRUE
 
 		else if(docile)
 			var/message = "You shake off your lethargy as the sugar leaves your host's blood."
 			var/target = controlling ? host : src
-			to_chat(target, span("notice", message))
+			to_chat(target, SPAN_NOTICE(message))
 			docile = FALSE
 
 		// Chem regen.
@@ -81,7 +95,7 @@
 		// Control stuff.
 		if(controlling)
 			if(docile)
-				to_chat(host, span("warning", "You are feeling far too docile to continue controlling your host..."))
+				to_chat(host, SPAN_WARNING( "You are feeling far too docile to continue controlling your host..."))
 				host.release_control()
 				return
 
@@ -91,15 +105,10 @@
 			if(prob(host.brainloss/20))
 				host.say("*[pick(list("blink","blink_r","choke","aflap","drool","twitch","twitch_v","gasp"))]")
 
-/mob/living/simple_mob/animal/borer/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Chemicals", chemicals)
+/mob/living/simple_mob/animal/borer/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_ENTRY("Chemicals", "[chemicals]")
 
 /mob/living/simple_mob/animal/borer/proc/detatch()
 	if(!host || !controlling)
@@ -114,9 +123,9 @@
 	controlling = FALSE
 
 	host.remove_language("Cortical Link")
-	host.verbs -= /mob/living/carbon/proc/release_control
-	host.verbs -= /mob/living/carbon/proc/punish_host
-	host.verbs -= /mob/living/carbon/proc/spawn_larvae
+	remove_verb(host, /mob/living/carbon/proc/release_control)
+	remove_verb(host, /mob/living/carbon/proc/punish_host)
+	remove_verb(host, /mob/living/carbon/proc/spawn_larvae)
 
 	if(host_brain)
 		// these are here so bans and multikey warnings are not triggered on the wrong people when ckey is changed.
@@ -162,9 +171,9 @@
 	if(host.mind)
 		borers.remove_antagonist(host.mind)
 
-	forceMove(get_turf(host))
+	forceMove(host.loc)
+	update_perspective()
 
-	reset_view(null)
 	machine = null
 
 	if(istype(host, /mob/living/carbon/human))
@@ -173,7 +182,6 @@
 		if(head)
 			head.implants -= src
 
-	host.reset_view(null)
 	host.machine = null
 	host = null
 
@@ -196,7 +204,7 @@
 		mind.assigned_role = "Cortical Borer"
 		mind.special_role = "Cortical Borer"
 
-	to_chat(src, span("notice", "You are a cortical borer! You are a brain slug that worms its way \
+	to_chat(src, SPAN_NOTICE("You are a cortical borer! You are a brain slug that worms its way \
 	into the head of its victim. Use stealth, persuasion and your powers of mind control to keep you, \
 	your host and your eventual spawn safe and warm."))
 	to_chat(src, "You can speak to your victim with <b>say</b>, to other borers with <b>say :x</b>, and use your Abilities tab to access powers.")
@@ -218,20 +226,20 @@
 		return
 
 	if(client && client.prefs.muted & MUTE_IC)
-		to_chat(src, span("danger", "You cannot speak in IC (muted)."))
+		to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
 		return
 
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2))
 
 	var/datum/language/L = parse_language(message)
-	if(L && L.flags & HIVEMIND)
+	if(L && L.language_flags & LANGUAGE_HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return
 
 	if(!host)
 		if(chemicals >= 30)
-			to_chat(src, span("alien", "..You emit a psionic pulse with an encoded message.."))
+			to_chat(src, SPAN_ALIEN("..You emit a psionic pulse with an encoded message.."))
 			var/list/nearby_mobs = list()
 			for(var/mob/living/LM in view(src, 1 + round(6 * (chemicals / max_chemicals))))
 				if(LM == src)
@@ -246,15 +254,15 @@
 				message_admins("[src.ckey]/([src]) tried to force [speaker] to say: [message]")
 				speaker.say("[message]")
 				return
-			to_chat(src, span("alien", "..But nothing heard it.."))
+			to_chat(src, SPAN_ALIEN("..But nothing heard it.."))
 		else
-			to_chat(src, span("warning", "You have no host to speak to."))
+			to_chat(src, SPAN_WARNING( "You have no host to speak to."))
 		return //No host, no audible speech.
 
 	to_chat(src, "You drop words into [host]'s mind: \"[message]\"")
 	to_chat(host, "Your own thoughts speak: \"[message]\"")
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(istype(M, /mob/new_player))
 			continue
 		else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))

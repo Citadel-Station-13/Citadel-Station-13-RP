@@ -1,15 +1,14 @@
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
+import { Box, Button, Dimmer, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
+import { FullscreenNotice } from './common/FullscreenNotice';
 
-export const Apc = (props, context) => {
+export const APC = (props, context) => {
   return (
     <Window
       width={450}
-      height={445}
-      resizable>
+      height={445}>
       <Window.Content scrollable>
         <ApcContent />
       </Window.Content>
@@ -61,6 +60,7 @@ const malfMap = {
 const ApcContent = (props, context) => {
   const { act, data } = useBackend(context);
   const locked = data.locked && !data.siliconUser;
+  const normallyLocked = data.normallyLocked;
   const externalPowerStatus = powerStatusMap[data.externalPower]
     || powerStatusMap[0];
   const chargingStatus = powerStatusMap[data.chargingStatus]
@@ -86,8 +86,13 @@ const ApcContent = (props, context) => {
     );
   }
   return (
-    <Fragment>
-      <InterfaceLockNoticeBox />
+    <>
+      <InterfaceLockNoticeBox deny={data.emagged} denialMessage={(
+        <>
+          <Box color="bad" fontSize="1.5rem">Fault in ID authenticator.</Box>
+          <Box color="bad">Please contact maintenance for service.</Box>
+        </>
+      )} />
       <Section title="Power Status">
         <LabeledList>
           <LabeledList.Item
@@ -98,6 +103,7 @@ const ApcContent = (props, context) => {
                 icon={data.isOperating ? 'power-off' : 'times'}
                 content={data.isOperating ? 'On' : 'Off'}
                 selected={data.isOperating && !locked}
+                color={data.isOperating ? "" : "bad"}
                 disabled={locked}
                 onClick={() => act('breaker')} />
             )}>
@@ -113,8 +119,9 @@ const ApcContent = (props, context) => {
             color={chargingStatus.color}
             buttons={(
               <Button
-                icon={data.chargeMode ? 'sync' : 'close'}
+                icon={data.chargeMode ? 'sync' : 'times'}
                 content={data.chargeMode ? 'Auto' : 'Off'}
+                selected={data.chargeMode}
                 disabled={locked}
                 onClick={() => act('charge')} />
             )}>
@@ -131,7 +138,7 @@ const ApcContent = (props, context) => {
                 key={channel.title}
                 label={channel.title}
                 buttons={(
-                  <Fragment>
+                  <>
                     <Box inline mx={2}
                       color={channel.status >= 2 ? 'good' : 'bad'}>
                       {channel.status >= 2 ? 'On' : 'Off'}
@@ -156,33 +163,28 @@ const ApcContent = (props, context) => {
                       selected={!locked && channel.status === 0}
                       disabled={locked}
                       onClick={() => act('channel', topicParams.off)} />
-                  </Fragment>
+                  </>
                 )}>
-                {channel.powerLoad}
+                {channel.powerLoad} W
               </LabeledList.Item>
             );
           })}
           <LabeledList.Item label="Total Load">
-            <b>{data.totalLoad}</b>
+            {data.totalCharging ? (
+              <b>{data.totalLoad} W (+ {data.totalCharging} W charging)</b>
+            ) : (
+              <b>{data.totalLoad} W</b>
+            )}
           </LabeledList.Item>
         </LabeledList>
       </Section>
       <Section
         title="Misc"
         buttons={!!data.siliconUser && (
-          <Fragment>
-            {!!data.malfStatus && (
-              <Button
-                icon={malfStatus.icon}
-                content={malfStatus.content}
-                color="bad"
-                onClick={() => act(malfStatus.action)} />
-            )}
-            <Button
-              icon="lightbulb-o"
-              content="Overload"
-              onClick={() => act('overload')} />
-          </Fragment>
+          <Button
+            icon="lightbulb-o"
+            content="Overload"
+            onClick={() => act('overload')} />
         )}>
         <LabeledList>
           <LabeledList.Item
@@ -191,51 +193,100 @@ const ApcContent = (props, context) => {
               <Button
                 icon={data.coverLocked ? 'lock' : 'unlock'}
                 content={data.coverLocked ? 'Engaged' : 'Disengaged'}
+                selected={data.coverLocked}
                 disabled={locked}
                 onClick={() => act('cover')} />
             )} />
           <LabeledList.Item
-            label="Emergency Lighting"
+            label="Night Shift Lighting"
             buttons={(
-              <Button
-                icon="lightbulb-o"
-                content={data.emergencyLights ? 'Enabled' : 'Disabled'}
-                disabled={locked}
-                onClick={() => act('emergency_lighting')} />
+              <>
+                <Button
+                  icon="lightbulb-o"
+                  content="Disabled"
+                  selected={data.nightshiftSetting === 2}
+                  onClick={() => act('nightshift', {
+                    nightshift: 2,
+                  })} />
+                <Button
+                  icon="lightbulb-o"
+                  content="Automatic"
+                  selected={data.nightshiftSetting === 1}
+                  onClick={() => act('nightshift', {
+                    nightshift: 1,
+                  })} />
+                <Button
+                  icon="lightbulb-o"
+                  content="Enabled"
+                  selected={data.nightshiftSetting === 3}
+                  onClick={() => act('nightshift', {
+                    nightshift: 3,
+                  })} />
+              </>
             )} />
           <LabeledList.Item
             label="Night Shift Lighting"
             buttons={(
               <Button
                 icon="lightbulb-o"
-                content={data.nightshiftLights ? 'Enabled' : 'Disabled'}
-                onClick={() => act('toggle_nightshift')} />
+                content={data.emergencyLights ? 'Enabled' : 'Disabled'}
+                selected={data.emergencyLights}
+                onClick={() => act('emergency_lighting')} />
             )} />
-          {data.hijackable === 1 && (
-            <LabeledList.Item
-              title="Hijacking"
-              buttons={(
-                <Fragment>
-                  <Button
-                    icon="unlock"
-                    content="Hijack"
-                    disabled={data.hijacker}
-                    onClick={() => act('hijack')} />
-                  <Button
-                    icon="lock"
-                    content="Lockdown"
-                    isabled={!data.lockdownavail && data.hijacked === 1}
-                    onClick={() => act('lockdown')} />
-                  <Button
-                    icon="lightbulb-o"
-                    content="Drain"
-                    disabled={!data.drainavail && data.hijacked === 1}
-                    onClick={() => act('drain')} />
-                </Fragment>
-              )} />
-          )}
         </LabeledList>
       </Section>
-    </Fragment>
+    </>
+  );
+};
+
+const GridCheck = (props, context) => {
+  return (
+    <FullscreenNotice title="System Failure">
+      <Box fontSize="1.5rem" bold>
+        <Icon
+          name="exclamation-triangle"
+          verticalAlign="middle"
+          size={3}
+          mr="1rem"
+        />
+      </Box>
+      <Box fontSize="1.5rem" bold>
+        Power surge detected, grid check in effect...
+      </Box>
+    </FullscreenNotice>
+  );
+};
+
+const ApcFailure = (props, context) => {
+  const { data, act } = useBackend(context);
+
+  let rebootOptions = (
+    <Button
+      icon="repeat"
+      content="Restart Now"
+      color="good"
+      onClick={() => act('reboot')}
+    />
+  );
+
+  if (data.locked && !data.siliconUser) {
+    rebootOptions = (
+      <Box color="bad">Swipe an ID card for manual reboot.</Box>
+    );
+  }
+
+  return (
+    <Dimmer textAlign="center">
+      <Box color="bad"><h1>SYSTEM FAILURE</h1></Box>
+      <Box color="average">
+        <h2>
+          I/O regulators malfunction detected! Waiting for system reboot...
+        </h2>
+      </Box>
+      <Box color="good">Automatic reboot in {data.failTime} seconds...</Box>
+      <Box mt={4}>
+        {rebootOptions}
+      </Box>
+    </Dimmer>
   );
 };

@@ -1,0 +1,145 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"i" = (
+/obj/structure/inflatable/door,
+/turf/simulated/shuttle/floor,
+/area/class_d/explored)
+"p" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_y = -26
+	},
+/obj/structure/closet/walllocker/emerglocker{
+	icon_state = "oxygen_tank_open";
+	pixel_y = 28
+	},
+/turf/simulated/shuttle/floor,
+/area/class_d/explored)
+"r" = (
+/obj/structure/door_assembly{
+	icon_state = "door_as_gext3"
+	},
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"u" = (
+/obj/item/tool/crowbar/red,
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"v" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall,
+/area/class_d/explored)
+"w" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor,
+/area/class_d/explored)
+"z" = (
+/obj/structure/grille,
+/obj/structure/shuttle/window,
+/turf/simulated/shuttle/floor,
+/area/class_d/explored)
+"C" = (
+/turf/simulated/shuttle/wall,
+/area/class_d/explored)
+"D" = (
+/obj/random/humanoidremains,
+/obj/item/clothing/suit/space/emergency{
+	breaches = list("huge tear");
+	name = "Ruined Softsuit"
+	},
+/obj/item/clothing/head/helmet/space/emergency,
+/obj/effect/debris/cleanable/blood,
+/obj/item/tank/emergency/oxygen,
+/obj/item/clothing/mask/breath,
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"K" = (
+/obj/random/humanoidremains,
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/shuttle/floor,
+/area/class_d/explored)
+
+(1,1,1) = {"
+a
+u
+e
+a
+a
+"}
+(2,1,1) = {"
+a
+e
+D
+e
+a
+"}
+(3,1,1) = {"
+a
+r
+e
+D
+e
+"}
+(4,1,1) = {"
+e
+e
+e
+e
+u
+"}
+(5,1,1) = {"
+e
+v
+i
+v
+e
+"}
+(6,1,1) = {"
+e
+C
+p
+C
+e
+"}
+(7,1,1) = {"
+e
+C
+w
+C
+a
+"}
+(8,1,1) = {"
+e
+C
+K
+C
+a
+"}
+(9,1,1) = {"
+e
+C
+z
+C
+a
+"}
+(10,1,1) = {"
+e
+e
+e
+a
+a
+"}

@@ -6,7 +6,7 @@
 	program_key_state = "id_key"
 	program_menu_icon = "key"
 	extended_desc = "Program for programming crew ID cards."
-	required_access = access_change_ids
+	required_access = ACCESS_COMMAND_CARDMOD
 	requires_ntnet = 0
 	size = 8
 
@@ -44,13 +44,13 @@
 		data["id_owner"] = id_card && id_card.registered_name ? id_card.registered_name : "-----"
 		data["id_name"] = id_card ? id_card.name : "-----"
 
-	data["command_jobs"] = format_jobs(command_positions)
-	data["engineering_jobs"] = format_jobs(engineering_positions)
-	data["medical_jobs"] = format_jobs(medical_positions)
-	data["science_jobs"] = format_jobs(science_positions)
-	data["security_jobs"] = format_jobs(security_positions)
-	data["cargo_jobs"] = format_jobs(cargo_positions)
-	data["civilian_jobs"] = format_jobs(civilian_positions)
+	data["command_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
+	data["engineering_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_ENGINEERING))
+	data["medical_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_MEDICAL))
+	data["science_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_RESEARCH))
+	data["security_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_SECURITY))
+	data["cargo_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_CARGO))
+	data["civilian_jobs"] = format_jobs(SSjob.get_job_titles_in_department(DEPARTMENT_CIVILIAN))
 	data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
 
 	data["all_centcom_access"] = is_centcom ? get_accesses(1) : null
@@ -167,13 +167,12 @@
 				computer.proc_eject_id(user)
 		if("terminate")
 			if(computer && can_run(user, 1))
-				id_card.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				id_card.assignment = "Dismissed"
 				id_card.access = list()
-				callHook("terminate_employee", list(id_card))
 		if("edit")
 			if(computer && can_run(user, 1))
 				if(href_list["name"])
-					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name),allow_numbers=TRUE)
+					var/temp_name = sanitizeName(input("Enter name.", "Name", id_card.registered_name))
 					if(temp_name)
 						id_card.registered_name = temp_name
 					else
@@ -194,9 +193,9 @@
 					if(module.is_centcom)
 						access = get_centcom_access(t1)
 					else
-						var/datum/job/jobdatum
-						for(var/jobtype in typesof(/datum/job))
-							var/datum/job/J = new jobtype
+						var/datum/role/job/jobdatum
+						for(var/jobtype in typesof(/datum/role/job))
+							var/datum/role/job/J = new jobtype
 							if(ckey(J.title) == ckey(t1))
 								jobdatum = J
 								break

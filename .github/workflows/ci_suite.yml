@@ -3,41 +3,66 @@ on:
   push:
     branches:
     - master
+    - 'project/**'
   pull_request:
     branches:
     - master
+    - 'project/**'
 jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
     runs-on: ubuntu-20.04
+    concurrency:
+      group: run_linters-${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup cache
-        uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - name: Restore SpacemanDMM cache
+        uses: actions/cache@v3
         with:
-          path: $HOME/SpacemanDMM
+          path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm
+
+      - name: Restore Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Restore Rust cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Install Tools
         run: |
           pip3 install setuptools
           bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           tools/bootstrap/python -c ''
+
       - name: Run Linters
         run: |
-          bash tools/ci/check_filedirs.sh vorestation.dme
+          bash tools/ci/check_filedirs.sh citadel.dme
           bash tools/ci/check_changelogs.sh
-          find . -name "*.php" -print0 | xargs -0 -n1 php -l
-          find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
-          tgui/bin/tgui --lint
-          tgui/bin/tgui --test
           bash tools/ci/check_grep.sh
+          bash tools/ci/check_misc.sh
+          tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
+        # This is supposed to go after `bash tools/ci/check_misc.sh`
+        #  tools/bootstrap/python tools/validate_dme.py <citadel.dme
       - name: Annotate Lints
-        uses: yogstation13/DreamAnnotate@v1
+        uses: yogstation13/DreamAnnotate@v2
         if: always()
         with:
           outputFile: output-annotations.txt
@@ -46,25 +71,28 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Compile Maps
     runs-on: ubuntu-20.04
+    concurrency:
+      group: compile_all_maps-${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
-          path: $HOME/BYOND
+          path: ~/BYOND
           key: ${{ runner.os }}-byond
       - name: Compile All Maps
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          python3 tools/ci/template_dm_generator.py
-          tools/build/build
-        env:
-          CBT_BUILD_MODE : ALL_MAPS
+          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   run_all_tests:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Integration Tests
+    concurrency:
+      group: run_all_tests-${{ github.ref }}
+      cancel-in-progress: true
     runs-on: ubuntu-20.04
     services:
       mysql:
@@ -75,19 +103,20 @@ jobs:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup cache
-        uses: actions/cache@v2
+      - uses: actions/checkout@v3
+      - name: Restore BYOND cache
+        uses: actions/cache@v3
         with:
-          path: $HOME/BYOND
+          path: ~/BYOND
           key: ${{ runner.os }}-byond
       - name: Setup database
         run: |
           sudo systemctl start mysql
-          mysql -u root -proot -e 'CREATE DATABASE tg_ci;'
-          mysql -u root -proot tg_ci < SQL/tgstation_schema.sql
-        #  mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
-        #  mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
+          mysql -u root -proot -e 'CREATE DATABASE ss13_ci;'
+          mysql -u root -proot ss13_ci < SQL/database_schema_prefixed.sql
+          mysql -u root -proot ss13_ci < SQL/unified_schema.sql
+        # mysql -u root -proot -e 'CREATE DATABASE tg_ci_prefixed;'
+        # mysql -u root -proot tg_ci_prefixed < SQL/tgstation_schema_prefixed.sql
       - name: Install rust-g
         run: |
           sudo dpkg --add-architecture i386
@@ -98,7 +127,7 @@ jobs:
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build
+          tools/build/build --ci dm -DCIBUILDING -DCITESTING
           bash tools/ci/run_server.sh
         env:
           CBT_BUILD_MODE: TEST_RUN
@@ -107,8 +136,19 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Windows Build
     runs-on: windows-latest
+    concurrency:
+      group: test_windows-${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Restore Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:
@@ -118,7 +158,7 @@ jobs:
           md deploy
           bash tools/deploy.sh ./deploy
       - name: Deploy artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: deploy
           path: deploy

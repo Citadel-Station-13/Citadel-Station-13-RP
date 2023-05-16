@@ -9,7 +9,7 @@
 	w_class = ITEMSIZE_SMALL
 	var/obj/item/stored_item = null
 
-/obj/item/evidencebag/MouseDrop(var/obj/item/I as obj)
+/obj/item/evidencebag/OnMouseDropLegacy(var/obj/item/I as obj)
 	if (!ishuman(usr))
 		return
 	if(!istype(I) || I.anchored)
@@ -30,8 +30,8 @@
 			var/obj/item/storage/U = I.loc
 			user.client.screen -= I
 			U.contents.Remove(I)
-		else if(user.item_is_in_hands(I))
-			user.drop_from_inventory(I)
+		else if(user.is_holding(I))
+			user.transfer_item_to_loc(I, src)
 		else
 			return
 
@@ -59,8 +59,10 @@
 	var/image/img = image("icon"=I, "layer"=FLOAT_LAYER)	//take a snapshot. (necessary to stop the underlays appearing under our inventory-HUD slots ~Carn
 	I.pixel_x = xx		//and then return it
 	I.pixel_y = yy
-	overlays += img
-	overlays += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
+	var/list/overlays_to_add = list()
+	overlays_to_add += img
+	overlays_to_add += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
+	add_overlay(overlays_to_add)
 
 	desc = "An evidence bag containing [I]."
 	I.loc = src
@@ -69,12 +71,15 @@
 	return
 
 
-/obj/item/evidencebag/attack_self(mob/user as mob)
+/obj/item/evidencebag/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
 		"You hear someone rustle around in a plastic bag, and remove something.")
-		overlays.Cut()	//remove the overlays
+		cut_overlays()
 
 		user.put_in_hands(I)
 		stored_item = null
@@ -90,4 +95,4 @@
 /obj/item/evidencebag/examine(mob/user)
 	. = ..()
 	if(stored_item)
-		stored_item.examine(user)
+		. += stored_item.examine(user)

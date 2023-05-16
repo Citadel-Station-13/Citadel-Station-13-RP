@@ -42,7 +42,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -123,8 +123,8 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(knockdown_chance))
-			L.Weaken(3)
-			L.visible_message(span("danger", "\The [src] knocks down \the [L]!"))
+			L.afflict_paralyze(20 * 3)
+			L.visible_message(SPAN_DANGER("\The [src] knocks down \the [L]!"))
 
 /mob/living/simple_mob/vore/aggressive/mimic/will_show_tooltip()
 	return FALSE
@@ -175,7 +175,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/airlock/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/airlock/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -214,7 +214,7 @@
 	melee_damage_upper = 30
 	attack_armor_pen = 50 //Its jaw is an airlock. Its got enough bite strength.
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 70,
 				"bullet" = 30,
 				"laser" = 30,
@@ -266,7 +266,7 @@
 	else
 		return ..()
 
-/obj/structure/closet/crate/mimic/closet/ex_act(severity) //Stores Mimic Contents for later
+/obj/structure/closet/crate/mimic/closet/legacy_ex_act(severity) //Stores Mimic Contents for later
 	for(var/obj/O in src.contents)
 		qdel(O)
 	qdel(src)
@@ -307,7 +307,7 @@
 	melee_damage_upper = 20
 	attack_armor_pen =  25 // NOM NOM
 
-	armor = list(
+	armor_legacy_mob = list(
 				"melee" = 10,
 				"bullet" = 20,
 				"laser" = 20,
@@ -372,7 +372,7 @@
 	else
 		return ..()
 
-/obj/effect/floormimic/ex_act(severity)
+/obj/effect/floormimic/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/effect/floormimic/safe

@@ -34,16 +34,16 @@
 		var/mob/living/M = AM
 		M.slip("the [src.name]",3)
 
-/obj/item/soap/pre_attack(atom/target, mob/user as mob)
+/obj/item/soap/pre_attack(atom/target, mob/user, clickchain_flags, list/params)
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
 		to_chat(user, "<span class='notice'>You need to take that [target.name] off before cleaning it.</span>")
-	else if(istype(target,/obj/effect/decal/cleanable/blood))
+	else if(istype(target,/obj/effect/debris/cleanable/blood))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		target.clean_blood()
 		return	//Blood is a cleanable decal, therefore needs to be accounted for before all cleanable decals.
-	else if(istype(target,/obj/effect/decal/cleanable))
+	else if(istype(target,/obj/effect/debris/cleanable))
 		to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 		qdel(target)
 	else if(istype(target,/turf))
@@ -58,18 +58,21 @@
 		target.clean_blood()
 	return
 
-//attack_as_weapon
-/obj/item/soap/attack(mob/living/target, mob/living/user, var/target_zone)
+/obj/item/soap/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(target && user && ishuman(target) && ishuman(user) && !user.incapacitated() && user.zone_sel &&user.zone_sel.selecting == "mouth" )
 		user.visible_message("<span class='danger'>\The [user] washes \the [target]'s mouth out with soap!</span>")
+		playsound(src.loc, 'sound/items/soapmouth.ogg', 50, 1)
 		user.setClickCooldown(DEFAULT_QUICK_COOLDOWN) //prevent spam
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /*
  * Bike Horns
  */
-/obj/item/bikehorn/attack_self(mob/user as mob)
+/obj/item/bikehorn/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if (spam_flag == 0)
 		spam_flag = 1
 		playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1)

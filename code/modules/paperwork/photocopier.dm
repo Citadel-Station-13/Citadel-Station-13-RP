@@ -11,16 +11,13 @@
 	active_power_usage = 200
 	power_channel = EQUIP
 	circuit = /obj/item/circuitboard/photocopier
-	can_buckle = TRUE
+	buckle_allowed = TRUE
+	buckle_max_mobs = 1
 	var/obj/item/copyitem = null	//what's in the copier!
 	var/copies = 1	//how many copies to print!
 	var/toner = 30 //how much toner is left! woooooo~
 	var/maxcopies = 10	//how many copies can be copied at once- idea shamelessly stolen from bs12's copier!
 	var/copying = FALSE // Is the printer busy with something? Sanity check variable.
-
-/obj/machinery/photocopier/Initialize(mapload)
-	. = ..()
-	default_apply_parts()
 
 /obj/machinery/photocopier/examine(mob/user)
 	. = ..()
@@ -30,7 +27,7 @@
 /obj/machinery/photocopier/attack_ai(mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/photocopier/attack_hand(mob/user as mob)
+/obj/machinery/photocopier/attack_hand(mob/user, list/params)
 	user.set_machine(src)
 
 	nano_ui_interact(user)
@@ -88,7 +85,7 @@
 			sleep(11*B.pages.len)
 			audible_message("<span class='notice'>You can hear [src] whirring as it finishes printing.</span>")
 			playsound(loc, "sound/machines/buzzbeep.ogg", 30)
-		else if (has_buckled_mobs()) // VOREStation EDIT: For ass-copying.
+		else if (has_buckled_mobs()) // For ass-copying.
 			playsound(loc, "sound/machines/copier.ogg", 100, 1)
 			audible_message("<span class='notice'>You can hear [src] whirring as it attempts to scan.</span>")
 			sleep(rand(20,45)) // Sit with your bare ass on the copier for a random time, feel like a fool, get stared at.
@@ -106,7 +103,7 @@
 
 /obj/machinery/photocopier/Topic(href, href_list)
 	if(href_list["copy"])
-		if(stat & (BROKEN|NOPOWER))
+		if(machine_stat & (BROKEN|NOPOWER))
 			return
 		addtimer(CALLBACK(src, .proc/copy_operation, usr), 0)
 
@@ -118,7 +115,7 @@
 			copyitem = null
 		else if(has_buckled_mobs())
 			to_chat(buckled_mobs[1], "<span class='notice'>You feel a slight pressure on your ass.</span>") // It can't eject your asscheeks, but it'll try.
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["min"])
 		if(copies > 1)
 			copies--
@@ -126,8 +123,10 @@
 		if(copies < maxcopies)
 			copies++
 	else if(href_list["aipic"])
-		if(!istype(usr,/mob/living/silicon)) return
-		if(stat & (BROKEN|NOPOWER)) return
+		if(!istype(usr,/mob/living/silicon))
+			return
+		if(machine_stat & (BROKEN|NOPOWER))
+			return
 
 		if(toner >= 5)
 			var/mob/living/silicon/tempAI = usr
@@ -152,9 +151,9 @@
 /obj/machinery/photocopier/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/paper) || istype(O, /obj/item/photo) || istype(O, /obj/item/paper_bundle))
 		if(!copyitem)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			copyitem = O
-			O.loc = src
 			to_chat(user, "<span class='notice'>You insert \the [O] into \the [src].</span>")
 			playsound(loc, "sound/machines/click.ogg", 100, 1)
 			flick(insert_anim, src)
@@ -162,15 +161,16 @@
 			to_chat(user, "<span class='notice'>There is already something in \the [src].</span>")
 	else if(istype(O, /obj/item/toner))
 		if(toner <= 10) //allow replacing when low toner is affecting the print darkness
-			user.drop_item()
+			if(!user.attempt_consume_item_for_construction(O))
+				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
 			toner += T.toner_amount
-			qdel(O)
+			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 	else if(O.is_wrench())
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 	else if(default_deconstruction_screwdriver(user, O))
@@ -180,7 +180,7 @@
 
 	return
 
-/obj/machinery/photocopier/ex_act(severity)
+/obj/machinery/photocopier/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -189,12 +189,12 @@
 				qdel(src)
 			else
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 		else
 			if(prob(50))
 				if(toner > 0)
-					new /obj/effect/decal/cleanable/blood/oil(get_turf(src))
+					new /obj/effect/debris/cleanable/blood/oil(get_turf(src))
 					toner = 0
 	return
 
@@ -216,7 +216,7 @@
 	c.ico = copy.ico
 	c.offset_x = copy.offset_x
 	c.offset_y = copy.offset_y
-	var/list/temp_overlays = copy.overlays       //Iterates through stamps
+	var/list/temp_overlays = copy.overlays     //Iterates through stamps
 	var/image/img                                //and puts a matching
 	for (var/j = 1, j <= min(temp_overlays.len, copy.ico.len), j++) //gray overlay onto the copy
 		if (findtext(copy.ico[j], "cap") || findtext(copy.ico[j], "cent"))
@@ -227,7 +227,7 @@
 			img = image('icons/obj/bureaucracy.dmi', "paper_stamp-dots")
 		img.pixel_x = copy.offset_x[j]
 		img.pixel_y = copy.offset_y[j]
-		c.overlays += img
+		c.add_overlay(img)
 	c.updateinfolinks()
 	if(need_toner)
 		toner--
@@ -260,8 +260,6 @@
 
 	return p
 
-// VOREStation Edit Start
-
 /obj/machinery/photocopier/proc/copyass(mob/user)
 	var/icon/temp_img
 	if(!has_buckled_mobs()) // Are there no mobs buckled to the photocopier?
@@ -269,7 +267,7 @@
 	var/mob/sitter = buckled_mobs[1] // You have to be sitting on the copier/buckled to it and either be a xeno or a human without clothes on that cover your ass.
 	if(ishuman(sitter)) // Suit checks are in can_buckle_mobs at the bottom of the file.
 		var/mob/living/carbon/human/H = sitter // All human subtypes.
-		var/species_to_check = H.get_species()
+		var/species_to_check = H.species.get_true_name()
 		if(species_to_check == SPECIES_CUSTOM || species_to_check == SPECIES_XENOCHIMERA) // Are we a custom species, or Xenochimera? If so, what is the base icon sprite for our species?
 			species_to_check = H.species.base_species // Grab the base species and use that as the 'species' for the purpose of printing off your asscheeks.
 		switch(species_to_check)
@@ -278,6 +276,8 @@
 			if(SPECIES_TAJ)
 				temp_img = icon('icons/obj/butts.dmi', "tajaran")
 			if(SPECIES_UNATHI)
+				temp_img = icon('icons/obj/butts.dmi', "unathi")
+			if(SPECIES_UNATHI_DIGI)
 				temp_img = icon('icons/obj/butts.dmi', "unathi")
 			if(SPECIES_SKRELL)
 				temp_img = icon('icons/obj/butts.dmi', "skrell")
@@ -317,6 +317,8 @@
 			if(SPECIES_SERGAL)
 				temp_img = icon('icons/obj/butts.dmi', "sergal")
 			*/
+			if(SPECIES_APIDAEN)
+				temp_img = icon('icons/obj/butts.dmi', "human") // placeholder until I make bug butts.
 			else // Sanity/Safety check - does their species not show up or not work, or did something fail, but they're DEFINITELY a /human/ subtype? Print the 'default' ass.
 				temp_img = icon('icons/obj/butts.dmi', "human")
 	else if(istype(sitter,/mob/living/silicon/robot/drone)) // Are we a drone?
@@ -341,8 +343,6 @@
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
 		visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
 	return p
-
-// VOREStation Edit Stop
 
 //If need_toner is 0, the copies will still be lightened when low on toner, however it will not be prevented from printing. TODO: Implement print queues for fax machines and get rid of need_toner
 /obj/machinery/photocopier/proc/bundlecopy(var/obj/item/paper_bundle/bundle, var/need_toner=1)
@@ -369,20 +369,14 @@
 	p.pixel_x = rand(-9, 9)
 	return p
 
-// VOREStation Edit Start - Rykka
-
-/obj/machinery/photocopier/can_buckle_check(mob/living/M, forced = FALSE)
-	if(!..())
-		return FALSE
+/obj/machinery/photocopier/can_buckle_mob(mob/M, flags, mob/user, semantic)
 	for(var/obj/item/clothing/C in M)
-		if(M.item_is_in_hands(C))
+		if(M.is_holding(C))
 			continue
-		if((C.body_parts_covered & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
-			to_chat(usr, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
+		if((C.body_cover_flags & LOWER_TORSO) && !istype(C,/obj/item/clothing/under/permit))
+			to_chat(user, "<span class='warning'>One needs to not be wearing pants to photocopy one's ass...</span>")
 			return FALSE
-	return TRUE
-
-// VOREStation Edit Stop - Rykka
+	return ..()
 
 /obj/item/toner
 	name = "toner cartridge"

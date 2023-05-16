@@ -5,10 +5,10 @@
 	icon_state = "nullrod"
 	item_state = "nullrod"
 	slot_flags = SLOT_BELT
-	force = 15
+	damage_force = 15
 	throw_speed = 1
 	throw_range = 4
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
@@ -18,8 +18,8 @@
 	var/projectile_parry_chance = 0	// The base chance for a projectile to be deflected.
 
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.
@@ -41,6 +41,9 @@
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
 /obj/item/nullrod/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user && (user.mind.isholy) && !reskinned)
 		reskin_holy_weapon(user)
 
@@ -111,14 +114,14 @@
 
 /obj/item/nullrod/godhand/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/staff
 	icon_state = "godstaff-red"
 	item_state = "godstaff-red"
 	name = "red holy staff"
 	desc = "It has a mysterious, protective aura."
-	force = 5
+	damage_force = 5
 	slot_flags = SLOT_BACK
 	defend_chance = 50
 	var/shield_icon = "shield-red"
@@ -149,8 +152,8 @@
 	hitsound = 'sound/hallucinations/growl1.ogg'
 
 /obj/item/nullrod/claymore/chainsaw_sword
-	icon_state = "chainswordon"
-	item_state = "chainswordon"
+	icon_state = "chainsword1"
+	item_state = "chainsword1"
 	name = "sacred chainsaw sword"
 	desc = "Suffer not a heretic to live."
 	slot_flags = SLOT_BELT
@@ -180,9 +183,9 @@
 	item_state = "multiverse"
 	slot_flags = SLOT_BELT
 
-/obj/item/nullrod/claymore/multiverse/attack(mob/living/carbon/M, mob/living/carbon/user)
-	force = rand(1, 30)
-	..()
+/obj/item/nullrod/claymore/multiverse/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	damage_force = rand(1, 30)
+	return ..()
 
 /obj/item/nullrod/claymore/saber
 	name = "light energy sword"
@@ -210,8 +213,8 @@
 	icon_state = "sord"
 	item_state = "sord"
 	slot_flags = SLOT_BELT
-	force = 4.13
-	throwforce = 1
+	damage_force = 4.13
+	throw_force = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
@@ -261,7 +264,7 @@
 
 /obj/item/nullrod/chainsaw/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/clown
 	icon = 'icons/obj/wizard.dmi'
@@ -278,8 +281,8 @@
 	item_state = "pride"
 	name = "Pride-struck Hammer"
 	desc = "It resonates an aura of Pride."
-	force = 16
-	throwforce = 15
+	damage_force = 16
+	throw_force = 15
 	w_class = 4
 	slot_flags = SLOT_BACK
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
@@ -301,7 +304,7 @@
 	icon_state = "chain"
 	item_state = "chain"
 	slot_flags = SLOT_BELT
-	force = 12
+	damage_force = 12
 	reach = 2
 	attack_verb = list("whipped", "lashed")
 	hitsound = 'sound/weapons/towelwhip.ogg'
@@ -313,10 +316,10 @@
 	item_state = "fedora"
 	slot_flags = SLOT_HEAD
 	icon = 'icons/obj/clothing/hats.dmi'
-	force = 0
+	damage_force = 0
 	throw_speed = 4
 	throw_range = 7
-	throwforce = 30
+	throw_force = 30
 	sharp = 1
 	attack_verb = list("enlightened", "redpilled")
 
@@ -330,7 +333,7 @@
 
 /obj/item/nullrod/armblade/Initialize(mapload)
 	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, HAND_REPLACEMENT_TRAIT)
 
 /obj/item/nullrod/armblade/claw
 	name = "profane blessing"
@@ -348,12 +351,15 @@
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "basecarp"
 	item_state = "basecarp"
-	force = 15
+	damage_force = 15
 	attack_verb = list("bitten", "eaten", "fin slapped")
 	hitsound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
-/obj/item/nullrod/carp/attack_self(mob/living/user)
+/obj/item/nullrod/carp/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(used_blessing)
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
@@ -363,7 +369,7 @@
 /obj/item/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking
 	name = "monk's staff"
 	desc = "A long, tall staff made of polished wood. Traditionally used in ancient old-Earth martial arts, it is now used to harass the clown."
-	force = 15
+	damage_force = 15
 	defend_chance = 40
 	slot_flags = SLOT_BACK
 	sharp = 1
@@ -372,7 +378,7 @@
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
 
-/obj/item/nullrod/claymore/bostaff/attack(mob/target, mob/living/user)
+/obj/item/nullrod/claymore/bostaff/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	add_fingerprint(user)
 	if(!issilicon(target))
 		return ..()
@@ -392,7 +398,7 @@
 							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
 		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
 		if(prob(25))
-			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+			jedi_spin(usr)
 	else
 		return ..()
 
@@ -429,9 +435,11 @@
 	item_state = null
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
-	force = 4
-	throwforce = 0
+	damage_force = 4
+	throw_force = 0
 	attack_verb = list("whipped", "repented", "lashed", "flagellated")
+	drop_sound = 'sound/items/drop/card.ogg'
+	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/praying = FALSE
 	var/deity_name = "Coderbus" //This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
@@ -440,9 +448,12 @@
 	if(GLOB.deity)
 		deity_name = GLOB.deity
 
-/obj/item/nullrod/rosary/attack(mob/living/M, mob/living/user)
+/obj/item/nullrod/rosary/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
+	if(!isliving(target))
+		return ..()
+	var/mob/living/L = target
 
 	if(!user.mind || user.mind.assigned_role != "Chaplain")
 		to_chat(user, "<span class='notice'>You are not close enough with [deity_name] to use [src].</span>")
@@ -452,17 +463,17 @@
 		to_chat(user, "<span class='notice'>You are already using [src].</span>")
 		return
 
-	user.visible_message("<span class='info'>[user] kneels[M == user ? null : " next to [M]"] and begins to utter a prayer to [deity_name].</span>", \
-		"<span class='info'>You kneel[M == user ? null : " next to [M]"] and begin a prayer to [deity_name].</span>")
+	user.visible_message("<span class='info'>[user] kneels[L == user ? null : " next to [L]"] and begins to utter a prayer to [deity_name].</span>", \
+		"<span class='info'>You kneel[L == user ? null : " next to [L]"] and begin a prayer to [deity_name].</span>")
 
 	praying = TRUE
-	if(do_after(user, 20, target = M))
-		M.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
-		to_chat(M, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
-		M.adjustToxLoss(-5, TRUE, TRUE)
-		M.adjustOxyLoss(-5)
-		M.adjustBruteLoss(-5)
-		M.adjustFireLoss(-5)
+	if(do_after(user, 20, target = L))
+		L.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
+		to_chat(L, "<span class='notice'>[user]'s prayer to [deity_name] has eased your pain!</span>")
+		L.adjustToxLoss(-5, TRUE, TRUE)
+		L.adjustOxyLoss(-5)
+		L.adjustBruteLoss(-5)
+		L.adjustFireLoss(-5)
 		praying = FALSE
 	else
 		to_chat(user, "<span class='notice'>Your prayer to [deity_name] was interrupted.</span>")

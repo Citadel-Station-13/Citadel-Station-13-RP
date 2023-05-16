@@ -1,3 +1,5 @@
+//This is mostly translated and ready to go here, minus correcting a few things in other areas of the code. I just don't want to refactor meat harvesting at the moment. Maybe later.
+
 /datum/component/butchering
 	var/speed = 80 //time in deciseconds taken to butcher something
 	var/effectiveness = 100 //percentage effectiveness; numbers above 100 yield extra drops
@@ -24,7 +26,7 @@
 
 /datum/component/butchering/proc/onItemAttack(obj/item/source, mob/living/M, mob/living/user)
 	if(user.a_intent == INTENT_HARM && M.stat == DEAD && (M.butcher_results || M.guaranteed_butcher_results)) //can we butcher it?
-		if(butchering_enabled && (can_be_blunt || source.is_sharp()))
+		if(butchering_enabled && (can_be_blunt || source.sharp))
 			INVOKE_ASYNC(src, .proc/startButcher, source, M, user)
 			return COMPONENT_ITEM_NO_ATTACK
 
@@ -69,6 +71,7 @@
 /datum/component/butchering/proc/ButcherEffects(mob/living/meat) //extra effects called on butchering, override this via subtypes
 	return
 
+/* I believe I want this for disposals eventually? Commenting out for now to silence its errors.
 ///Special snowflake component only used for the recycler.
 /datum/component/butchering/recycler
 
@@ -88,3 +91,4 @@
 		return
 	if(L.stat == DEAD && (L.butcher_results || L.guaranteed_butcher_results))
 		Butcher(parent, L)
+*/

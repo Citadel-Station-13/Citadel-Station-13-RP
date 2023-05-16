@@ -3,7 +3,7 @@
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
-	message = sanitize_or_reflect(message,src) //VOREStation Edit - Reflect too-long messages, within reason
+	message = sanitize_or_reflect(message,src) // Reflect too-long messages, within reason
 	..(message, alt_name = alt_name, whispering = whispering)
 
 /mob/living/carbon/human/proc/forcesay(list/append)
@@ -78,12 +78,12 @@
 /mob/living/carbon/human/GetVoice()
 
 	var/voice_sub
-	if(istype(back,/obj/item/rig))
-		var/obj/item/rig/rig = back
+	if(istype(back,/obj/item/hardsuit))
+		var/obj/item/hardsuit/hardsuit = back
 		// todo: fix this shit
-		if(rig.speech && rig.speech.voice_holder && rig.speech.voice_holder.active && rig.speech.voice_holder.voice)
-			voice_sub = rig.speech.voice_holder.voice
-	if(!voice_sub)	// If the rig has a voice changer, then we use that. Otherwise, use this
+		if(hardsuit.speech && hardsuit.speech.voice_holder && hardsuit.speech.voice_holder.active && hardsuit.speech.voice_holder.voice)
+			voice_sub = hardsuit.speech.voice_holder.voice
+	if(!voice_sub)	// If the hardsuit has a voice changer, then we use that. Otherwise, use this
 		for(var/obj/item/gear in list(wear_mask,wear_suit,head))
 			if(!gear)
 				continue
@@ -138,7 +138,7 @@
 	return verb
 
 /mob/living/carbon/human/handle_speech_problems(var/list/message_data)
-	if(silent || (sdisabilities & MUTE))
+	if(sdisabilities & SDISABILITY_MUTE)
 		message_data[1] = ""
 		. = 1
 

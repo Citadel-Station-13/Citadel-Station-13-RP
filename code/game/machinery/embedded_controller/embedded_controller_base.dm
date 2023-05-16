@@ -3,7 +3,8 @@
 	anchored = 1
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
-	var/datum/computer/file/embedded_program/program	// The currently executing program
+	var/datum/computer/file/embedded_program/program	//the currently executing program
+	var/list/valid_actions = list()
 	var/on = 1
 
 /obj/machinery/embedded_controller/Initialize(mapload)
@@ -13,7 +14,7 @@
 
 /obj/machinery/embedded_controller/Destroy()
 	if(istype(program))
-		qdel(program)	// The program will clear the ref in its Destroy
+		qdel(program) // the program will clear the ref in its Destroy
 	return ..()
 
 /obj/machinery/embedded_controller/proc/post_signal(datum/signal/signal, comm_line)
@@ -24,39 +25,44 @@
 
 	if(program)
 		program.receive_signal(signal, receive_method, receive_param)
-			//spawn(5) program.process()	// No, program.process sends some signals and machines respond and we here again and we lag -rastaf0
 
-/obj/machinery/embedded_controller/Topic(href, href_list)
-	if((. = ..()))
-		return
+/obj/machinery/embedded_controller/Topic()
+	. = ..()
+	stack_trace("WARNING: Embedded controller [src] ([type]) had Topic() called unexpectedly. Please report this.")
+
+/obj/machinery/embedded_controller/ui_act(action, params)
+	if(..())
+		return TRUE
+	if(LAZYLEN(valid_actions))
+		if(action in valid_actions)
+			program.receive_user_command(action)
 	if(usr)
-		usr.set_machine(src)
-		src.add_fingerprint(usr)
-	// We would now pass it to the program, except that some of our embedded controller types want to block certain commands.
-	// Until/unless that is refactored differently, we rely on subtypes to pass it on.
-	//if(program)
-	//	return program.receive_user_command(href_list["command"])
+		add_fingerprint(usr)
 
-/obj/machinery/embedded_controller/process(delta_time)
+/obj/machinery/embedded_controller/process()
 	if(program)
 		program.process()
 
 	update_icon()
 
 /obj/machinery/embedded_controller/attack_ai(mob/user as mob)
-	src.nano_ui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/embedded_controller/attack_hand(mob/user as mob)
-
+/obj/machinery/embedded_controller/attack_hand(mob/user, list/params)
 	if(!user.IsAdvancedToolUser())
 		return 0
 
-	src.nano_ui_interact(user)
+	ui_interact(user)
+
+/obj/machinery/embedded_controller/ui_interact(mob/user, datum/tgui/ui = null)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "EmbeddedController", src)
+		ui.open()
 
 //
 // Embedded controller with a radio! (Most things (All things?) use this)
 //
-
 /obj/machinery/embedded_controller/radio
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
@@ -65,14 +71,14 @@
 	unacidable = 1
 
 	var/id_tag
-	//var/radio_power_use = 50	// Power used to xmit signals
+	//var/radio_power_use = 50 //power used to xmit signals
 
 	var/frequency = 1379
 	var/radio_filter = null
 	var/datum/radio_frequency/radio_connection
 
 /obj/machinery/embedded_controller/radio/Initialize(mapload)
-	set_frequency(frequency)	// Set it before parent instantiates program
+	set_frequency(frequency) // Set it before parent instantiates program
 	. = ..()
 
 /obj/machinery/embedded_controller/radio/Destroy()
@@ -92,7 +98,7 @@
 /obj/machinery/embedded_controller/radio/post_signal(datum/signal/signal, var/radio_filter = null)
 	signal.transmission_method = TRANSMISSION_RADIO
 	if(radio_connection)
-		//use_power(radio_power_use)	// Neat idea, but causes way too much lag.
+		//use_power(radio_power_use)	//neat idea, but causes way too much lag.
 		return radio_connection.post_signal(src, signal, radio_filter)
 	else
 		qdel(signal)

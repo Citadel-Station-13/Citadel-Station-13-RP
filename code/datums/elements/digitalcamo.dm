@@ -19,7 +19,7 @@
 /datum/element/digitalcamo/Detach(datum/target)
 	. = ..()
 	UnregisterSignal(target, list(COMSIG_PARENT_EXAMINE, COMSIG_LIVING_CAN_TRACK))
-	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+	for(var/mob/living/silicon/ai/AI in GLOB.GLOB.player_list)
 		AI.client.images -= attached_mobs[target]
 	attached_mobs -= target
 
@@ -30,6 +30,6 @@
 	return COMPONENT_CANT_TRACK
 
 /datum/element/digitalcamo/process(delta_time)
-	for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+	for(var/mob/living/silicon/ai/AI in GLOB.GLOB.player_list)
 		for(var/mob in attached_mobs)
 			AI.client.images |= attached_mobs[mob]

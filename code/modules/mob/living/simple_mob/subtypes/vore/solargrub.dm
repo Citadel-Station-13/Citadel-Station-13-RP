@@ -20,13 +20,20 @@ GLOBAL_LIST_EMPTY(solargrubs)
 #define SINK_POWER 1
 
 /mob/living/simple_mob/vore/solargrub
-	name = "juvenile solargrub"
+	name = "Juvenile solargrub"
 	desc = "A young sparkling solargrub"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/solargrub)
 	icon = 'icons/mob/vore.dmi' //all of these are placeholders
 	icon_state = "solargrub"
 	icon_living = "solargrub"
 	icon_dead = "solargrub-dead"
+
+	// CHOMPEDIT Start, Rykka waz here. *pawstamp*; CitRP: Make moth spawning thingy's, read coms;
+	var/charge = null // CHOMPEDIT The amount of power we sucked off, in K as in THOUSANDS.
+	var/can_evolve = 1 // CHOMPEDIT VAR to decide whether this subspecies is allowed to become a queen
+	var/list/adult_forms = list(/mob/living/simple_mob/vore/solarmoth = 70, /mob/living/simple_mob/vore/solarmoth/lunarmoth=30) // CHOMPEDIT VAR that decides what mob the queen form is; CitRP: Makes spawn of lunarmoths possible.
+	//var/adult_forms = "/mob/living/simple_mob/vore/solarmoth" // CHOMPEDIT VAR that decides what mob the queen form is. ex /mob/living/simple_mob/subtypes/vore/solarmoth; CitRP: Without lunarmoth, quoted out for fun;
+	// CHOMPEDIT End, Rykka waz here. *pawstamp*
 
 	faction = "grubs"
 	maxHealth = 50 //grubs can take a lot of harm
@@ -37,6 +44,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 
 	movement_cooldown = 8
 
+	meat_amount = 3
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/grubmeat
 
 	response_help = "pokes"
@@ -53,6 +61,9 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/obj/structure/cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 
+	// kw drain
+	var/power_drain = 100
+
 /mob/living/simple_mob/vore/solargrub/Initialize(mapload)
 	GLOB.solargrubs += src
 	return ..()
@@ -64,9 +75,17 @@ GLOBAL_LIST_EMPTY(solargrubs)
 /datum/say_list/solargrub
 	emote_see = list("squelches", "squishes")
 
-/mob/living/simple_mob/vore/solargrub/Life()
-	. = ..()
-	if(!.) return
+//	This funny bit is questionable atm
+// /mob/living/simple_mob/vore/solargrub/New()
+//	existing_solargrubs += src
+//	..()
+
+/mob/living/simple_mob/vore/solargrub/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != CONSCIOUS)
+		return
 
 	if(!ai_holder.target)
 			//first, check for potential cables nearby to powersink
@@ -82,18 +101,33 @@ GLOBAL_LIST_EMPTY(solargrubs)
 				sparks.start()
 			anchored = 1
 			PN = attached.powernet
-			PN.draw_power(100000) // previous value 150000
-			var/apc_drain_rate = 750 //Going to see if grubs are better as a minimal bother. previous value : 4000
+			PN.draw_power(power_drain)
+			charge += power_drain
 			for(var/obj/machinery/power/terminal/T in PN.nodes)
 				if(istype(T.master, /obj/machinery/power/apc))
 					var/obj/machinery/power/apc/A = T.master
 					if(A.operating && A.cell)
-						var/cur_charge = A.cell.charge / CELLRATE
-						var/drain_val = min(apc_drain_rate, cur_charge)
-						A.cell.use(drain_val * CELLRATE)
+						// they're now a threat
+						// but also fuck off with your *pawstamp* comments ~silicons
+						A.cell.use(DYNAMIC_KJ_TO_CELL_UNITS(4))
 		else if(!attached && anchored)
 			anchored = 0
 			PN = null
+
+		// fuck you
+		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
+			anchored = 0
+			PN = attached.powernet
+			release_vore_contents()
+			prey_excludes.Cut()
+			GLOB.moth_amount += 1 //CitRP: There was some magic going on around this here part, it might actualy be working.
+			death_star()
+
+/mob/living/simple_mob/vore/solargrub/proc/death_star()
+	visible_message("<span class='warning'>\The [src]'s shell rips open and evolves!</span>")
+	var/chosen_form = pickweight(adult_forms)
+	new chosen_form(get_turf(src))
+	qdel(src)
 
 /mob/living/simple_mob/vore/solargrub //active noms
 	vore_bump_chance = 50
@@ -109,8 +143,8 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		if(prob(shock_chance))
 			A.emp_act(4) //The weakest strength of EMP
 			playsound(src, 'sound/weapons/Egloves.ogg', 75, 1)
-			L.Weaken(4)
-			L.Stun(4)
+			L.afflict_paralyze(20 * 4)
+			L.afflict_stun(20 * 4)
 			L.stuttering = max(L.stuttering, 4)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(5, 1, L)
@@ -132,6 +166,10 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	src.anchored = 0
 	set_light(0)
 	..()
+//	This funny bit is questionable atm
+// /mob/living/simple_mob/vore/solargrub/Destroy()
+//	existing_solargrubs -= src
+//	..()
 
 /mob/living/simple_mob/vore/solargrub/handle_light()
 	. = ..()

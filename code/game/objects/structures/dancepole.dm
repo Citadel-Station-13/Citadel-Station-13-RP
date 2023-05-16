@@ -12,24 +12,24 @@
 		anchored = !anchored
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		if(anchored)
-			to_chat(user, "<font color='blue'>You secure \the [src].</font>")
+			to_chat(user, "<font color=#4F49AF>You secure \the [src].</font>")
 		else
-			to_chat(user, "<font color='blue'>You unsecure \the [src].</font>")
+			to_chat(user, "<font color=#4F49AF>You unsecure \the [src].</font>")
 
 	if(istype(O, /obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = O
 		if(WT.remove_fuel(0, user))
-			playsound(src, WT.usesound, 25, 1)
+			playsound(src, WT.tool_sound, 25, 1)
 			for (var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>[user.name] deconstructed \the [src].</span>", 3, "<span class='notice'>You hear welding.</span>", 2)
 			new /obj/item/stack/material/steel(loc)
 			qdel(src)
 
-/obj/structure/dancepole/get_description_interaction()
+/obj/structure/dancepole/get_description_interaction(mob/user)
 	var/list/results = list()
-	results += "[desc_panel_image("welder")] to deconstruct."
+	results += "[desc_panel_image("welder", user)] to deconstruct."
 	if(anchored)
-		results += "[desc_panel_image("wrench")] to unbolt from the floor."
+		results += "[desc_panel_image("wrench", user)] to unbolt from the floor."
 	else
-		results += "[desc_panel_image("wrench")] to anchor to the floor."
+		results += "[desc_panel_image("wrench", user)] to anchor to the floor."
 	return results

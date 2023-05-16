@@ -42,6 +42,8 @@
 		WARNING("A looping sound datum was created without sounds to play.")
 		return
 
+	if(isatom(_output_atoms))
+		_output_atoms = list(_output_atoms)
 	output_atoms = _output_atoms
 	direct = _direct
 
@@ -70,7 +72,7 @@
 	timerid = null
 
 /datum/looping_sound/proc/sound_loop(starttime)
-	if(max_loops && world.time >= starttime + mid_length * max_loops)
+	if(max_loops && (world.time >= (starttime + mid_length * max_loops)))
 		stop()
 		return
 	if(!chance || prob(chance))

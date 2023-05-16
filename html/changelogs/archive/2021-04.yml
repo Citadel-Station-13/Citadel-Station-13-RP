@@ -1,0 +1,86 @@
+2021-04-01:
+  Kraseo:
+  - bugfix: Cleansalaze mixes as intended.
+2021-04-02:
+  nik707:
+  - rscadd: bone machine broke
+2021-04-06:
+  FreeStylaLT:
+  - bugfix: Missing core ejection button from Bridge
+2021-04-11:
+  silicons:
+  - rscadd: air injectors are now OP.
+2021-04-13:
+  FreeStylaLT:
+  - rscadd: Messages when examining things.
+  - rscadd: Preference to not see messages when examining things.
+2021-04-14:
+  MalricB:
+  - soundadd: added a bunch of sounds
+  buffyuwu:
+  - bugfix: unsquishes minitest (dev)
+  - rscadd: adds laugh sounds from main
+  - rscadd: adds a *nyaha emote separately
+  - bugfix: adds emote spam protection for commonly spammed emotes
+2021-04-15:
+  TheLordME:
+  - spellcheck: Fixed a typo in the squeakish desription.
+  - bugfix: Pan-Slavic is no longer the language of a non existant fraction.
+  - code_imp: Language Prefixes differate between upper and lower case
+  - code_imp: Language 'verbs' can be lists now.
+  - refactor: Language Flags are bit shift style now.
+  - refactor: Two language related _vr-files merged into their respective Parents.
+2021-04-17:
+  Kraseo:
+  - imageadd: Better area icons.
+  Mount0:
+  - rscadd: Added an Uno clone that appears in loadouts, the Bits N Bobs vending machine,
+      and two spots on the Triumph.
+  Trilbyspaceclone:
+  - bugfix: Corrects robotics labcoat open sprites to be seeable.
+  buffyuwu:
+  - rscadd: toggle pain messages
+  nik707:
+  - rscdel: 'removes several sif fish types tweak: tweaks time on fishing tweak: tweaks
+      droprates for fish'
+  timothyteakettle:
+  - rscadd: adds taur loafing
+2021-04-21:
+  Ghostcoffeee:
+  - rscadd: Added floppy elf ears
+  Mount0:
+  - rscadd: ashtrays to the bar
+  - rscadd: soda dispenser in the kitchen's walk-in fridge
+  - rscadd: cyborg charger in the empty room across from the janitor closet/elevator
+      on deck 2
+  - rscadd: a second wall charger in the armory
+  - rscadd: a couple of fire closets in the sec hallways
+  - rscadd: a door into the IAA where it borders maint
+  - rscadd: request console to the CE's office
+  - bugfix: bottom right blood locker in the ETC not having any blood
+  nevimer:
+  - rscadd: New RUS-T sprites.
+  - rscadd: 'New field sprites, dynamic transparency scaled from heat. tweak: Stability
+      is tweaked slightly. tweak: The field can be much larger now. tweak: Size can
+      be scaled much larger, in theory.'
+  - code_imp: The logic behind the scaling of the sprites is ported from Scav Station.
+2021-04-25:
+  Auris456852:
+  - bugfix: R-UST's hot loop now is set in the right direction and the wiring works.
+  - bugfix: 'No more duplicate borosilicate engine windows. tweak: Every engine submap
+      now has radiator window shutters. tweak: Removes the rogue button in the middle
+      of the R-UST pipes.'
+  nevimer:
+  - bugfix: RUS-T manual in game now is accurate.
+2021-04-26:
+  buffyuwu:
+  - rscadd: ports main's age gate system
+  silicons:
+  - rscadd: protokinetic daggers, for 1200 points
+  - balance: explorer pins now work on lavaland/anywhere off station
+  - balance: inversion beams get dampened by antimagic
+2021-04-30:
+  FreeStylaLT:
+  - rscadd: Safety features around the pool
+  nik707:
+  - rscdel: 'Constable Alt Titles tweak: Gaoler > Jailer'

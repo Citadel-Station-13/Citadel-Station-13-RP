@@ -1,8 +1,7 @@
-// A controller for a docking port with multiple independent airlocks
-// This is the master controller, that things will try to dock with.
+//a controller for a docking port with multiple independent airlocks
+//this is the master controller, that things will try to dock with.
 /obj/machinery/embedded_controller/radio/docking_port_multi
 	name = "docking port controller"
-
 	program = /datum/computer/file/embedded_program/docking/multi
 	var/child_tags_txt
 	var/child_names_txt
@@ -10,55 +9,44 @@
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/Initialize(mapload)
 	. = ..()
-
 	var/list/names = splittext(child_names_txt, ";")
 	var/list/tags = splittext(child_tags_txt, ";")
-
 	if (names.len == tags.len)
 		for (var/i = 1; i <= tags.len; i++)
 			child_names[tags[i]] = names[i]
 
-
-/obj/machinery/embedded_controller/radio/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/datum/computer/file/embedded_program/docking/multi/docking_program = program	// Cast to proper type
+/obj/machinery/embedded_controller/radio/docking_port_multi/ui_data(mob/user)
+	var/datum/computer/file/embedded_program/docking/multi/docking_program = program // Cast to proper type
 
 	var/list/airlocks[child_names.len]
 	var/i = 1
 	for (var/child_tag in child_names)
 		airlocks[i++] = list("name"=child_names[child_tag], "override_enabled"=(docking_program.children_override[child_tag] == "enabled"))
 
-	data = list(
+	. = list(
 		"docking_status" = docking_program.get_docking_status(),
 		"airlocks" = airlocks,
+		"internalTemplateName" = "DockingConsoleMulti",
 	)
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+/obj/machinery/embedded_controller/radio/docking_port_multi/ui_act(action, params)
+	. = ..()
+	return //Apparently we swallow all input (this is corrected legacy code)
 
-	if (!ui)
-		ui = new(user, src, ui_key, "multi_docking_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
-/obj/machinery/embedded_controller/radio/docking_port_multi/Topic(href, href_list)
-	return 1	// Apparently we swallow all input (this is corrected legacy code)
-
-
-
-// A docking port based on an airlock
+//a docking port based on an airlock
 // This is the actual controller that will be commanded by the master defined above
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi
 	name = "docking port controller"
 	program = /datum/computer/file/embedded_program/airlock/multi_docking
-	var/master_tag	// For mapping
+	var/master_tag	//for mapping
 	tag_secure = 1
+	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "toggle_override")
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
-	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program	// Cast to proper type
 
-	data = list(
+/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/ui_data(mob/user)
+	var/datum/computer/file/embedded_program/airlock/multi_docking/airlock_program = program // Cast to proper type
+
+	. = list(
 		"chamber_pressure" = round(airlock_program.memory["chamber_sensor_pressure"]),
 		"exterior_status" = airlock_program.memory["exterior_status"],
 		"interior_status" = airlock_program.memory["interior_status"],
@@ -66,55 +54,22 @@
 		"docking_status" = airlock_program.master_status,
 		"airlock_disabled" = (airlock_program.docking_enabled && !airlock_program.override_enabled),
 		"override_enabled" = airlock_program.override_enabled,
+		"internalTemplateName" = "AirlockConsoleDocking",
 	)
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "docking_airlock_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
-/obj/machinery/embedded_controller/radio/airlock/docking_port_multi/Topic(href, href_list)
-	if((. = ..()))
-		return
-
-	var/clean = 0
-	switch(href_list["command"])	// Anti-HTML-hacking checks
-		if("cycle_ext")
-			clean = 1
-		if("cycle_int")
-			clean = 1
-		if("force_ext")
-			clean = 1
-		if("force_int")
-			clean = 1
-		if("abort")
-			clean = 1
-		if("toggle_override")
-			clean = 1
-
-	if(clean)
-		program.receive_user_command(href_list["command"])
-
-	return 1
-
-
 
 /*** DEBUG VERBS ***
 
 /datum/computer/file/embedded_program/docking/multi/proc/print_state()
-	to_chat(world, "id_tag: [id_tag]")
-	to_chat(world, "dock_state: [dock_state]")
-	to_chat(world, "control_mode: [control_mode]")
-	to_chat(world, "tag_target: [tag_target]")
-	to_chat(world, "response_sent: [response_sent]")
+	TO_WORLD("id_tag: [id_tag]")
+	TO_WORLD("dock_state: [dock_state]")
+	TO_WORLD("control_mode: [control_mode]")
+	TO_WORLD("tag_target: [tag_target]")
+	TO_WORLD("response_sent: [response_sent]")
 
 /datum/computer/file/embedded_program/docking/multi/post_signal(datum/signal/signal, comm_line)
-	to_chat(world, "Program [id_tag] sent a message!")
+	TO_WORLD("Program [id_tag] sent a message!")
 	print_state()
-	to_chat(world, "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
+	TO_WORLD("[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
 	..(signal)
 
 /obj/machinery/embedded_controller/radio/docking_port_multi/verb/view_state()

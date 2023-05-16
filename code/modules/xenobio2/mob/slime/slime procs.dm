@@ -3,8 +3,8 @@ Slime specific procs go here.
 */
 #define SHINYOVERLAY 0
 #define LIGHTOVERLAY 1
-#define MAXOVERLAY 2	//Should be 1 + last overlay, to give the chance for matte slimes
-
+///Should be 1 + last overlay, to give the chance for matte slimes
+#define MAXOVERLAY 2
 /mob/living/simple_mob/xeno/slime/RandomizeTraits()
 	traitdat.traits[TRAIT_XENO_COLDRES] = rand(30,270)
 	traitdat.traits[TRAIT_XENO_HEATRES] = rand(30,270)
@@ -61,7 +61,7 @@ Slime specific procs go here.
 		GenerateAdult()
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateChild()
-	overlays.Cut()
+	cut_overlay()
 	name = "[nameVar] baby slime"
 	real_name = "[nameVar] baby slime"
 	desc = "A shifting blob of [nameVar] goo."
@@ -75,7 +75,7 @@ Slime specific procs go here.
 	return 1
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateAdult()
-	overlays.Cut()
+	cut_overlay()
 	name = "[nameVar] slime"
 	real_name = "[nameVar] slime"
 	desc = "A shifting mass of [nameVar] goo."
@@ -85,12 +85,13 @@ Slime specific procs go here.
 	GenerateAdultIcon()
 
 /mob/living/simple_mob/xeno/slime/proc/GenerateAdultIcon()	//Hack and slash adventure game to make slimes have no color on light effects later
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	var/image/Img = new(src.icon)
 	Img.icon_state = "slime adult"
 	Img.color = traitdat.traits[TRAIT_XENO_COLOR]
 	Img.layer = src.layer
-	overlays += Img
+	overlays_to_add += Img
 
 	switch(overlay)
 		if(SHINYOVERLAY)
@@ -99,7 +100,7 @@ Slime specific procs go here.
 			I.icon_state = "slime shiny"
 			I.layer = src.layer + 0.1
 			I.color = "#FFFFFF"
-			overlays += I
+			overlays_to_add += I
 		if(LIGHTOVERLAY)
 			var/image/I = new(src.icon)
 			I.icon = src.icon
@@ -107,7 +108,8 @@ Slime specific procs go here.
 			I.icon_state = "slime light"
 			I.layer = src.layer + 0.1
 			I.color = "#FFFFFF"
-			overlays += I
+			overlays_to_add += I
+	add_overlay(overlays_to_add)
 
 /mob/living/simple_mob/xeno/slime/handle_reagents()
 	if(!stasis)

@@ -104,7 +104,7 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/proc/display_in_chatlog(mob/user)
 	to_chat(user, "<br>")
-	to_chat(user, span("notice", "<b>[uppertext(name)]</b>"))
+	to_chat(user, SPAN_NOTICE("<b>[uppertext(name)]</b>"))
 
 	// Some entries get very long so lets not totally flood the chatlog.
 	var/desc_length_limit = 750
@@ -113,9 +113,9 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 		displayed_desc = copytext(displayed_desc, 1, desc_length_limit + 1)
 		displayed_desc += "... (View databanks for full data)"
 
-	to_chat(user, span("notice", "<i>[displayed_desc]</i>"))
-	to_chat(user, span("notice", "Cataloguers : <b>[english_list(cataloguers)]</b>."))
-	to_chat(user, span("notice", "Contributes <b>[value]</b> points to personal exploration fund."))
+	to_chat(user, SPAN_NOTICE("<i>[displayed_desc]</i>"))
+	to_chat(user, SPAN_NOTICE("Cataloguers : <b>[english_list(cataloguers)]</b>."))
+	to_chat(user, SPAN_NOTICE("Contributes <b>[value]</b> points to personal exploration fund."))
 
 /*
 		// Truncates text to limit if necessary.
@@ -128,25 +128,13 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 
 /datum/category_item/catalogue/flora
 
+/datum/category_item/catalogue/flora/common
+	name = "Flora - Common"
+	desc = "A common type of plant, whose seeds are typically commercially available."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/fauna
 
-/datum/category_item/catalogue/fauna/humans
-	name = "Sapients - Humans"
-	desc = "Humans are a space-faring species hailing originally from the planet Earth in the Sol system. \
-	They are currently among the most numerous known species in the galaxy, in both population and holdings, \
-	and are relatively technologically advanced. With good healthcare and a reasonable lifestyle, \
-	they can live to around 110 years. The oldest humans are around 150 years old.\
-	<br><br>\
-	Humanity is the primary driving force for rapid space expansion, owing to their strong, expansionist central \
-	government and opportunistic Trans-Stellar Corporations. The prejudices of the 21st century have mostly \
-	given way to bitter divides on the most important issue of the times� technological expansionism, \
-	with the major human factions squabbling over their approach to technology in the face of a \
-	looming singularity.\
-	<br><br>\
-	While most humans have accepted the existence of aliens in their communities and workplaces as a \
-	fact of life, exceptions abound. While more culturally diverse than most species, humans are \
-	generally regarded as somewhat technophobic and isolationist by members of other species."
-	value = CATALOGUER_REWARD_TRIVIAL
 
 /datum/category_item/catalogue/fauna/skrell
 	name = "Sapients - Skrell"
@@ -254,6 +242,14 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	an assumption which is at odds with their ramshackle technological level."
 	value = CATALOGUER_REWARD_MEDIUM // Since Vox are much rarer.
 
+/datum/category_item/catalogue/fauna/ashlander
+	name = "Sapients - Ashlanders"
+	desc = "The native inhabitants of Surt. Much of their history has been lost, save for artistic \
+	depictions sometimes recovered on archaeological digs. Insular and deeply xenophobic, Ashlanders \
+	were believed to have gone extinct some tens of thousands of years ago following an as yet \
+	unknown cataclysm. Dwelling deep underground in caves, or travelling across the planet's surface \
+	in nomadic caravans, Ashlanders are to be treated with caution."
+	value = CATALOGUER_REWARD_MEDIUM
 
 /datum/category_item/catalogue/technology
 
@@ -433,6 +429,24 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 /datum/category_item/catalogue/anomalous/precursor_b/precursor_b_basic
 	name = "Precursors - Precursor Group Beta"
 
+/datum/category_item/catalogue/anomalous/scorian_religion
+	name = "Scorian Religion"
+	desc = "To date, anthropologists and NanoTrasen researchers have been unable to fully decipher \
+	the Scorian language. A fusion of pictographs and script, much of the modern conception of Ashlander \
+	religious practices comes from diagrams and depictions found on carved sandstone monuments and cave \
+	paintings. The Scorian people appear to be monotheistic, with different tribes worshipping members of \
+	a pantheon known only to researchers as the 'Buried Ones'.\
+	<br><br>\
+	With the return of Ashlanders to the surface of Surt, archaeologists have confirmed several assumptions \
+	about the existence of a religious class within Scorian society. However, multiple hypotheses regarding \
+	religious rites and rituals have also been proven incorrect. The Scorian people are naturally insular and \
+	distrusting of outside observers. This distrust, paired with the existing language barrier, has prevented \
+	any further understanding of Scorian religion to develop. Therefore, many records in this entry may be \
+	disproven at a later date."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(
+		/datum/category_item/catalogue/anomalous/scorian_religion
+	)
 
 /datum/category_item/catalogue/material
 
@@ -510,7 +524,52 @@ GLOBAL_DATUM_INIT(catalogue_data, /datum/category_collection/catalogue, new)
 	Sometimes species one would never see anywhere close to core worlds can be met here."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+/datum/category_item/catalogue/fauna/apidaen
+	name = "Sapients - Apidaen"
+	desc = ""
+	value = CATALOGUER_REWARD_EASY
+
+/datum/category_item/catalogue/fauna/auril
+	name = "Sapients - Auril"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/datum/category_item/catalogue/fauna/dremachir
+	name = "Sapients - Dremachir"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /datum/category_item/catalogue/technology/resleeving
 	name = "Resleeving"
 	desc = ""
 	value = CATALOGUER_REWARD_TRIVIAL
+
+///// Template for Catalogue Data.
+// Obtained by scanning any X.
+/*
+/datum/category_item/catalogue/fauna/X
+	name = "X"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/X)
+
+// Obtained by scanning all X.
+/datum/category_item/catalogue/fauna/all_X
+	name = "Collection - X"
+	desc = "You have scanned a large array of different types of _, \
+	and therefore you have been granted a _ sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/X,
+		/datum/category_item/catalogue/fauna/X
+		)
+
+/datum/category_item/catalogue/fauna/X/Y
+	name = "X - Y"
+	desc = ""
+	value = CATALOGUER_REWARD_TRIVIAL
+
+Mob var:
+catalogue_data = list()
+*/

@@ -8,28 +8,31 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	icon_state = "sleevemate"
 	item_state = "healthanalyzer"
 	slot_flags = SLOT_BELT
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 5
 	throw_range = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 
 	var/datum/mind/stored_mind
 
-/obj/item/sleevemate/attack(mob/living/M, mob/living/user)
-	if(ishuman(M))
-		scan_mob(M, user)
-	else
-		to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
+/obj/item/sleevemate/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = CLICKCHAIN_DO_NOT_PROPAGATE
+	if(ishuman(target))
+		scan_mob(target, user)
+	to_chat(user,"<span class='warning'>Not a compatible subject to work with!</span>")
 
-/obj/item/sleevemate/attack_self(mob/living/user)
+/obj/item/sleevemate/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!stored_mind)
 		to_chat(user,"<span class='warning'>No stored mind in \the [src].</span>")
 		return
 
 	var/choice = alert(user,"What would you like to do?","Stored: [stored_mind.name]","Delete","Backup","Cancel")
-	if(!stored_mind || user.get_active_hand() != src)
+	if(!stored_mind || user.get_active_held_item() != src)
 		return
 	switch(choice)
 		if("Delete")
@@ -77,9 +80,9 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	output += "<b>Sleeve Pair:</b> "
 	if(!H.ckey)
 		output += "<span class='warning'>No mind in that body</span> [stored_mind != null ? "\[<a href='?src=\ref[src];target=\ref[H];mindupload=1'>Upload</a>\]" : null]<br>"
-	else if(H.mind && ckey(H.mind.key) != H.ckey)
+	else if(H.mind && H.mind.ckey != H.ckey)
 		output += "<span class='warning'>May not be correct body</span><br>"
-	else if(H.mind && ckey(H.mind.key) == H.ckey)
+	else if(H.mind && H.mind.ckey == H.ckey)
 		output += "Appears to be correct mind in body<br>"
 	else
 		output += "Unable to perform comparison<br>"
@@ -116,7 +119,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
 	//Sanity checking/href-hacking checking
-	if(usr.get_active_hand() != src)
+	if(usr.get_active_held_item() != src)
 		to_chat(usr,"<span class='warning'>You're not holding \the [src].</span>")
 		return
 
@@ -178,7 +181,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 			return
 
 		var/choice = alert(usr,"This will remove the target's mind from their body. The only way to put it back is via a resleeving pod. Continue?","Confirmation","Continue","Cancel")
-		if(choice == "Continue" && usr.get_active_hand() == src && usr.Adjacent(target))
+		if(choice == "Continue" && usr.get_active_held_item() == src && usr.Adjacent(target))
 
 			usr.visible_message("<span class='warning'>[usr] begins downloading [target]'s mind!</span>","<span class='notice'>You begin downloading [target]'s mind!</span>")
 			if(do_after(usr,35 SECONDS,target)) //This is powerful, yo.
@@ -212,8 +215,8 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 		if(!sleevemate_mob)
 			sleevemate_mob = new()
 
-		stored_mind.active = TRUE //Setting this causes transfer_to, to key them into the mob
-		stored_mind.transfer_to(sleevemate_mob)
+		stored_mind.active = TRUE //Setting this causes transfer, to key them into the mob
+		stored_mind.transfer(sleevemate_mob)
 		SC.catch_mob(sleevemate_mob)
 		stored_mind = null
 		to_chat(usr,"<span class='notice'>Mind transferred into Soulcatcher!</span>")
@@ -239,7 +242,7 @@ var/global/mob/living/carbon/human/dummy/mannequin/sleevemate_mob
 				to_chat(usr,"<span class='warning'>\The [src] no longer has a stored mind.</span>")
 				return
 			stored_mind.active = TRUE
-			stored_mind.transfer_to(target)
+			stored_mind.transfer(target)
 			stored_mind = null
 			to_chat(usr,"<span class='notice'>Mind transferred into [target]!</span>")
 			update_icon()

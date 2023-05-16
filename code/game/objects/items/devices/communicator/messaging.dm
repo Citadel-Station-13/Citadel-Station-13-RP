@@ -34,9 +34,9 @@
 			if(src in comm.voice_invites)
 				comm.open_connection(src)
 				return
-			to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
+			to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Receiving communicator request from [origin_atom].  To answer, use the <b>Call Communicator</b> \
 			verb, and select that name to answer the call.</span>")
-			SEND_SOUND(src, sound('sound/machines/defib_SafetyOn.ogg'))
+			src << 'sound/machines/defib_SafetyOn.ogg'
 			comm.voice_invites |= src
 	if(message == "ping")
 		if(client && client.prefs.communicator_visibility)
@@ -44,8 +44,8 @@
 			random = random / 10
 			exonet.send_message(origin_address, "64 bytes received from [exonet.address] ecmp_seq=1 ttl=51 time=[random] ms")
 	if(message == "text")
-		to_chat(src, "<span class='notice'>[icon2html(thing = origin_atom, target = src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
-		SEND_SOUND(src, sound('sound/machines/defib_safetyOff.ogg'))
+		to_chat(src, "<span class='notice'>[icon2html(origin_atom, src)] Received text message from [origin_atom]: <b>\"[text]\"</b></span>")
+		src << 'sound/machines/defib_safetyOff.ogg'
 		exonet_messages.Add("<b>From [origin_atom]:</b><br>[text]")
 		return
 
@@ -64,6 +64,10 @@
 		who = comm.owner
 		comm.im_contacts |= src
 		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
+	else if(istype(candidate, /obj/item/integrated_circuit))
+		var/obj/item/integrated_circuit/CIRC = candidate
+		who = (CIRC.displayed_name)
+		im_list += list(list("address" = origin_address, "to_address" = exonet.address, "im" = text))
 	else return
 
 	im_contacts |= candidate
@@ -72,9 +76,9 @@
 		return
 
 	if(ringer)
-		playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
+		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[icon2html(thing = src, target = world)] *beep*"))
+			O.show_message(text("[icon2html(src, world)] *beep*"))
 
 	alert_called = 1
 	update_icon()
@@ -85,7 +89,7 @@
 		L = loc
 
 	if(L)
-		to_chat(L, "<span class='notice'>[icon2html(thing = src, target = L)] Message from [who].</span>")
+		to_chat(L, "<span class='notice'>[icon2html(src, world)] Message from [who].</span>")
 
 // Verb: text_communicator()
 // Parameters: None
@@ -130,22 +134,20 @@
 	if(choice)
 		var/obj/item/communicator/chosen_communicator = choice
 		var/mob/observer/dead/O = src
-		var/text_message = sanitize(input(src, "What do you want the message to say?") as message)
+		var/text_message = sanitize(input(src, "What do you want the message to say?") as message|null)
 		if(text_message && O.exonet)
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
 			to_chat(src, "<span class='notice'>You have sent '[text_message]' to [chosen_communicator].</span>")
 			exonet_messages.Add("<b>To [chosen_communicator]:</b><br>[text_message]")
 			log_pda("(DCOMM: [src]) sent \"[text_message]\" to [chosen_communicator]", src)
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))
 					if(istype(M, /mob/new_player) || M.forbid_seeing_deadchat)
 						continue
 					if(M == src)
 						continue
 					M.show_message("Comm IM - [src] -> [chosen_communicator]: [text_message]")
-
-
 
 // Verb: show_text_messages()
 // Parameters: None

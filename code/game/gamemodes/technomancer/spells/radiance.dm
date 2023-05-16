@@ -35,12 +35,12 @@
 
 	if(!istype(T, /turf/space))
 		env = T.return_air()
-		removed = env.remove(0.25 * env.total_moles)	//Remove gas from surrounding area
+		removed = env.remove(0.25 * env.total_moles) // Remove gas from surrounding area
 
 		var/thermal_power = 300 * adjusted_power
 
-		removed.add_thermal_energy(thermal_power)
-		removed.temperature = between(0, removed.temperature, 10000)
+		removed.adjust_thermal_energy(thermal_power)
+		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)
 
@@ -49,5 +49,5 @@
 			continue
 		var/radius = max(get_dist(L, src), 1)
 		var/rads = (adjusted_power / 10) * ( 1 / (radius**2) )
-		L.apply_effect(rads, IRRADIATE)
+		L.afflict_radiation(rads * 5, TRUE)
 	adjust_instability(2)

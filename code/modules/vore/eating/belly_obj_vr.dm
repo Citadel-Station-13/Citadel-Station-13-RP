@@ -14,6 +14,7 @@
 /obj/belly
 	name = "belly"							// Name of this location
 	desc = "It's a belly! You're in it!"	// Flavor text description of inside sight/sound/smells/feels.
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	var/vore_sound = "Gulp"					// Sound when ingesting someone
 	var/vore_verb = "ingest"				// Verb for eating with this in messages
 	var/human_prey_swallow_time = 100		// Time in deciseconds to swallow /mob/living/carbon/human
@@ -49,7 +50,7 @@
 	var/tmp/static/list/item_digest_modes = list(IM_HOLD,IM_DIGEST_FOOD,IM_DIGEST)
 
 	//List of slots that stripping handles strips
-	var/tmp/static/list/slots = list(slot_back,slot_handcuffed,slot_l_store,slot_r_store,slot_wear_mask,slot_l_hand,slot_r_hand,slot_wear_id,slot_glasses,slot_gloves,slot_head,slot_shoes,slot_belt,slot_wear_suit,slot_w_uniform,slot_s_store,slot_l_ear,slot_r_ear)
+	var/tmp/static/list/slots = list(SLOT_ID_BACK,SLOT_ID_HANDCUFFED,SLOT_ID_LEFT_POCKET,SLOT_ID_RIGHT_POCKET,SLOT_ID_MASK,SLOT_ID_WORN_ID,SLOT_ID_GLASSES,SLOT_ID_GLOVES,SLOT_ID_HEAD,SLOT_ID_SHOES,SLOT_ID_BELT,SLOT_ID_SUIT,SLOT_ID_UNIFORM,SLOT_ID_SUIT_STORAGE,SLOT_ID_LEFT_EAR,SLOT_ID_RIGHT_EAR)
 
 	var/tmp/mob/living/owner					// The mob whose belly this is.
 	var/tmp/digest_mode = DM_HOLD				// Current mode the belly is set to from digest_modes (+transform_modes if human)
@@ -169,7 +170,7 @@
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner)
+	if(owner?.vore_organs)
 		owner.vore_organs -= src
 		owner = null
 	. = ..()
@@ -322,7 +323,7 @@
 			if(!P.absorbed) //This is required first, in case there's a person absorbed and not absorbed in a stomach.
 				total_bulge += P.size_multiplier
 		if(total_bulge >= bulge_size && bulge_size != 0)
-			return("<span class='warning'>[formatted_message]</span><BR>")
+			return(SPAN_WARNING("[formatted_message]"))
 		else
 			return ""
 
@@ -357,12 +358,12 @@
 	var/list/raw_list = text2list(html_encode(raw_text),delim)
 	if(raw_list.len > 10)
 		raw_list.Cut(11)
-		log_debug("[owner] tried to set [lowertext(name)] with 11+ messages")
+		log_debug(SPAN_DEBUGWARNING("[owner] tried to set [lowertext(name)] with 11+ messages"))
 
 	for(var/i = 1, i <= raw_list.len, i++)
 		if(length(raw_list[i]) > 160 || length(raw_list[i]) < 10) //160 is fudged value due to htmlencoding increasing the size
 			raw_list.Cut(i,i)
-			log_debug("[owner] tried to set [lowertext(name)] with >121 or <10 char message")
+			log_debug(SPAN_DEBUGWARNING("[owner] tried to set [lowertext(name)] with >121 or <10 char message"))
 		else
 			raw_list[i] = readd_quotes(raw_list[i])
 			//Also fix % sign for var replacement
@@ -404,19 +405,32 @@
 				var/obj/item/organ/internal/mmi_holder/MMI = W
 				var/atom/movable/brain = MMI.removed()
 				if(brain)
-					M.remove_from_mob(brain,owner)
 					brain.forceMove(src)
 					items_preserved += brain
+			if(istype(W,/obj/item/organ/external/chest))
+				var/obj/item/organ/external/chest/C = W
+				for (var/obj/item/I in C.implants)
+					if(istype(I,/obj/item/implant/mirror))
+						I.forceMove(src)
+						items_preserved += I // these are undigestable anyway so just add them regardless
 			for(var/slot in slots)
-				var/obj/item/I = M.get_equipped_item(slot = slot)
+				var/obj/item/I = M.item_by_slot(slot)
 				if(I)
-					M.unEquip(I,force = TRUE)
+					M.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(contaminates || istype(I,/obj/item/card/id))
 						I.gurgle_contaminate(contents, contamination_flavor, contamination_color) //We do an initial contamination pass to get stuff like IDs wet.
 					if(item_digest_mode == IM_HOLD)
 						items_preserved |= I
 					else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ)))
 						items_preserved |= I
+			for(var/obj/item/I as anything in M.get_held_items())
+				M.transfer_item_to_loc(I, src, INV_OP_FORCE)
+				if(contaminates || istype(I,/obj/item/card/id))
+					I.gurgle_contaminate(contents, contamination_flavor, contamination_color) //We do an initial contamination pass to get stuff like IDs wet.
+				if(item_digest_mode == IM_HOLD)
+					items_preserved |= I
+				else if(item_digest_mode == IM_DIGEST_FOOD && !(istype(I,/obj/item/reagent_containers/food) || istype(I,/obj/item/organ)))
+					items_preserved |= I
 
 	//Reagent transfer
 	if(ishuman(owner))
@@ -492,8 +506,8 @@
 		return owner.drop_location()
 	//Sketchy fallback for safety, put them somewhere safe.
 	else
-		log_debug("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
-		var/fallback = pick(latejoin)
+		stack_trace("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
+		var/fallback = SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION)
 		return get_turf(fallback)
 
 //Yes, it's ""safe"" to drop items here
@@ -515,7 +529,7 @@
 		to_chat(R,"<span class='warning'>You attempt to climb out of \the [lowertext(name)]. (This will take around [escapetime/10] seconds.)</span>")
 		to_chat(owner,"<span class='warning'>Someone is attempting to climb out of your [lowertext(name)]!</span>")
 
-		if(do_after(R, escapetime, owner, incapacitation_flags = INCAPACITATION_DEFAULT & ~INCAPACITATION_RESTRAINED))
+		if(do_after(R, escapetime, owner, mobility_flags = MOBILITY_CAN_RESIST))
 			if((owner.stat || escapable) && (R.loc == src)) //Can still escape?
 				release_specific_contents(R)
 				return
@@ -610,18 +624,11 @@
 			to_chat(owner,"<span class='warning'>Your prey appears to be unable to make any progress in escaping your [lowertext(name)].</span>")
 			return
 
-/obj/belly/proc/get_mobs_and_objs_in_belly()
-	var/list/see = list()
-	var/list/belly_mobs = list()
-	see["mobs"] = belly_mobs
-	var/list/belly_objs = list()
-	see["objs"] = belly_objs
-	for(var/mob/living/L in loc.contents)
-		belly_mobs |= L
-	for(var/obj/O in loc.contents)
-		belly_objs |= O
-
-	return see
+/obj/belly/proc/effective_emote_hearers()
+	. = list(loc)
+	for(var/atom/movable/AM as anything in contents)
+		if(AM.atom_flags & ATOM_HEAR)
+			. += AM
 
 //Transfers contents from one belly to another
 /obj/belly/proc/transfer_contents(var/atom/movable/content, var/obj/belly/target, silent = 0)

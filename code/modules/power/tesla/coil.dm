@@ -7,7 +7,7 @@
 	density = TRUE
 
 	// Executing a traitor caught releasing tesla was never this fun!
-	can_buckle = TRUE
+	buckle_allowed = TRUE
 	buckle_lying = FALSE
 
 	circuit = /obj/item/circuitboard/tesla_coil
@@ -24,7 +24,6 @@
 /obj/machinery/power/tesla_coil/Initialize(mapload)
 	. = ..()
 	wires = new(src)
-	default_apply_parts()
 
 /obj/machinery/power/tesla_coil/Destroy()
 	QDEL_NULL(wires)
@@ -38,14 +37,13 @@
 		zap_cooldown -= (C.rating * 20)
 	input_power_multiplier = power_multiplier
 
-
 /obj/machinery/power/tesla_coil/update_icon()
 	if(panel_open)
 		icon_state = "coil_open[anchored]"
 	else
 		icon_state = "coil[anchored]"
 
-/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/tesla_coil/attackby(obj/item/W, mob/user)
 	src.add_fingerprint(user)
 
 	//if(default_deconstruction_screwdriver(user, "coil_open[anchored]", "coil[anchored]", W))
@@ -61,7 +59,7 @@
 		return wires.Interact(user)
 	return ..()
 
-/obj/machinery/power/tesla_coil/attack_hand(mob/user)
+/obj/machinery/power/tesla_coil/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()
@@ -72,7 +70,7 @@
 		//don't lose arc power when it's not connected to anything
 		//please place tesla coils all around the station to maximize effectiveness
 		var/power_produced = powernet ? power / power_loss : power
-		add_avail(power_produced*input_power_multiplier)
+		add_avail(power_produced * input_power_multiplier * 0.001)
 		flick("coilhit", src)
 		playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 		tesla_zap(src, 5, power_produced)
@@ -87,8 +85,10 @@
 	last_zap = world.time
 	var/coeff = (20 - ((input_power_multiplier - 1) * 3))
 	coeff = max(coeff, 10)
-	var/power = (powernet.avail/2)
-	draw_power(power)
+	// upconvert from KW to W
+	var/power = (powernet.avail / 2) * 1000
+	// downconvert from KW to W
+	draw_power(power * 0.001)
 	playsound(src.loc, 'sound/effects/lightningshock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 
@@ -100,9 +100,8 @@
 	icon_state = "grounding_rod0"
 	anchored = FALSE
 	density = TRUE
-
-	can_buckle = TRUE
-	buckle_lying = FALSE
+	buckle_allowed = TRUE
+	buckle_lying = 0
 	circuit = /obj/item/circuitboard/grounding_rod
 
 /obj/machinery/power/grounding_rod/pre_mapped
@@ -114,7 +113,7 @@
 	else
 		icon_state = "grounding_rod[anchored]"
 
-/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user, params)
+/obj/machinery/power/grounding_rod/attackby(obj/item/W, mob/user)
 	//if(default_deconstruction_screwdriver(user, "grounding_rod_open[anchored]", "grounding_rod[anchored]", W))
 	if(default_deconstruction_screwdriver(user, W))
 		return
@@ -126,7 +125,7 @@
 		return
 	return ..()
 
-/obj/machinery/power/grounding_rod/attack_hand(mob/user)
+/obj/machinery/power/grounding_rod/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_GRAB && user_buckle_mob(user.pulling, user))
 		return
 	..()

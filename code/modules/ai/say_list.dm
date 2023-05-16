@@ -15,9 +15,9 @@
 	return ..()
 
 /mob/living/Destroy()
-	QDEL_NULL(say_list)
+	if(say_list)
+		QDEL_NULL(say_list)
 	return ..()
-
 
 /datum/say_list
 	var/list/speak = list()				// Things the mob might say if it talks while idle.
@@ -45,6 +45,10 @@
 
 // This one's pretty dumb, but pirates are dumb anyways and it makes for a good test.
 /datum/say_list/pirate
+	emote_hear = list("whistles a shanty", "coughs loudly")
+	emote_see = list("scratches his ass", "spins his knife around", "spits on the floor", "taps their foot")
+
+
 	speak = list("Yarr!",
 				"Yohoho and a bottle of rum...",
 				"Getting tired of hardtack.",
@@ -55,11 +59,11 @@
 	say_cannot = list("No, matey.")
 	say_maybe_target = list("Eh?", "Who goes there?")
 	say_got_target = list("Yarrrr!", "Just drop your loot and run.")
-	say_threaten = list("You best leave, this booty is mine.", "No plank to walk on, just walk away.")
-	say_stand_down = list("Good.", "That's right, run, you lilly livers.")
-	say_escalate = list("Yarr! That booty is mine!", "Going to gut you, landlubber.")
-	threaten_sound = 'sound/weapons/TargetOn.ogg'
-	stand_down_sound = 'sound/weapons/TargetOff.ogg'
+	say_threaten = list("You best leave, this booty is mine.", "No plank to walk on, just walk away.", "Wanna test your luck landlubber?")
+	say_stand_down = list("Good.", "That's right, run, you lilly livers.", "Typical landlubbers.")
+	say_escalate = list("Yarr! That booty is mine!", "Going to gut you, landlubber.", "Look's like its a pirate's life for me!")
+	threaten_sound = 'sound/effects/holster/sheathout.ogg'
+	stand_down_sound = 'sound/effects/holster/sheathin.ogg'
 
 // Mercs!
 /datum/say_list/merc
@@ -170,3 +174,23 @@
 	emote_see = list ("stares unblinkingly.", "jitters and twitches.", "emits a synthetic scream.", "rapidly twitches.", "convulses.", "twitches uncontrollably.", "goes stock still.")
 	say_threaten = list ("FR@#DOM","EN@ T#I$-$","N0$ M^> B@!#")
 	say_got_target = list("I *#@ Y@%","!E@#$P","F#RR @I","D0@#$ ##OK %","IT $##TS")
+
+//Roach Saylists Woo Hoo
+/datum/say_list/roach
+	speak = list("Chitter!","Chk chk!","Tchk?")
+	emote_hear = list("chitters","chirps","shuffles")
+	emote_see = list("rubs its antennae", "skitters", "clacks across the floor")
+
+/datum/say_list/possessed
+	speak = list("Where am I?",
+				"Why am I here?",
+				"Where did everyone go?")
+
+	emote_hear = list("lets out a mournful cry.", "can be heard sobbing.", "groans out in pain.")
+	emote_see = list("kneels down for a moment, picking something up before casting it away.","stands as still as a statue.", "looks to be doing some kind of work.")
+
+	say_maybe_target = list("Is there someone there?", "Who's there?")
+	say_got_target = list("You! You help people!", "Can you help me?", "I'm lost!")
+	say_threaten = list("Help me!", "Please help!", "Hey, who turned out the lights?", "Allonsy!", "Geronimo!")
+	say_stand_down = list("Please. Anyone. Help!", "Where is everyone?", "Where am I?")
+	say_escalate = list("Help!", "I'm sorry!", "I can't stop!", "I don't want to do this!", "I don't want to go!")

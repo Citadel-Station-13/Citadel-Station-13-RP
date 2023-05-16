@@ -3,21 +3,21 @@
 	name = "Language implant"
 	id = "implant_language"
 	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
-	materials = list(DEFAULT_WALL_MATERIAL = 7000, "glass" = 7000, "gold" = 2000, "diamond" = 3000)
+	materials = list(MAT_STEEL = 7000, MAT_GLASS = 7000, MAT_GOLD = 2000, MAT_DIAMOND = 3000)
 	build_path = /obj/item/implantcase/vrlanguage
 */
-/datum/design/item/implant/backup
-	name = "Backup implant"
-	id = "implant_backup"
-	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
-	build_path = /obj/item/implantcase/backup
+// /datum/design/item/implant/backup
+// 	name = "Backup implant"
+// 	id = "implant_backup"
+// 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
+// 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
+// 	build_path = /obj/item/implantcase/backup
 
 /datum/design/item/weapon/sizegun
 	name = "Size gun"
 	id = "sizegun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 2000, "uranium" = 2000)
+	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
 	build_path = /obj/item/gun/energy/sizegun
 	sort_string = "TAAAB"
 
@@ -25,30 +25,30 @@
 	name = "Bluespace jumpsuit"
 	id = "bsjumpsuit"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 3, TECH_POWER = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/clothing/under/bluespace
 	sort_string = "TAAAC"
 
-/datum/design/item/sleevemate
-	name = "SleeveMate 3700"
-	id = "sleevemate"
-	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
-	build_path = /obj/item/sleevemate
-	sort_string = "TAAAD"
+// /datum/design/item/sleevemate
+// 	name = "SleeveMate 3700"
+// 	id = "sleevemate"
+// 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
+// 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+// 	build_path = /obj/item/sleevemate
+// 	sort_string = "TAAAD"
 
-/datum/design/item/bodysnatcher
-	name = "Body Snatcher"
-	id = "bodysnatcher"
-	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 4000)
-	build_path = /obj/item/bodysnatcher
+// /datum/design/item/bodysnatcher
+// 	name = "Body Snatcher"
+// 	id = "bodysnatcher"
+// 	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
+// 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
+// 	build_path = /obj/item/bodysnatcher
 
 /datum/design/item/item/pressureinterlock
 	name = "APP pressure interlock"
 	id = "pressureinterlock"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 250)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 250)
 	build_path = /obj/item/pressurelock
 	sort_string = "TAADA"
 
@@ -56,7 +56,7 @@
 	name = "Advanced anti-particle rifle"
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 1000, "gold" = 1000, "uranium" = 750)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
 	build_path = /obj/item/gun/energy/particle/advanced
 	sort_string = "TAADB"
 
@@ -64,7 +64,7 @@
 	name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 1500, "gold" = 2000, "uranium" = 1000, "diamond" = 2000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/particle/cannon
 	sort_string = "TAADC"
 
@@ -72,7 +72,7 @@
 	name = "AR glasses"
 	id = "omnihud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud
 	sort_string = "GAAFB"
 
@@ -80,7 +80,7 @@
 	name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
-	materials = list(DEFAULT_WALL_MATERIAL = 4000, "glass" = 2000, "uranium" = 4000, "diamond" = 2000)
+	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/perfect_tele
 	sort_string = "HABAF"
 
@@ -88,7 +88,7 @@
 	name = "nanite implant framework"
 	id = "nif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 8000, "uranium" = 6000, "diamond" = 6000)
+	materials = list(MAT_STEEL = 5000, MAT_GLASS = 8000, MAT_URANIUM = 6000, MAT_DIAMOND = 6000)
 	build_path = /obj/item/nif
 	sort_string = "HABBC"
 
@@ -96,7 +96,7 @@
 	name = "bioadaptive NIF"
 	id = "bioadapnif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 15000, "uranium" = 10000, "diamond" = 10000)
+	materials = list(MAT_STEEL = 10000, MAT_GLASS = 15000, MAT_URANIUM = 10000, MAT_DIAMOND = 10000)
 	build_path = /obj/item/nif/bioadap
 	sort_string = "HABBD" //Changed String from HABBE to HABBD
 //Addiing bioadaptive NIF to Protolathe
@@ -105,7 +105,7 @@
 	name = "adv. NIF repair tool"
 	id = "anrt"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 200, "glass" = 3000, "uranium" = 2000, "diamond" = 2000)
+	materials = list(MAT_STEEL = 200, MAT_GLASS = 3000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/nifrepairer
 	sort_string = "HABBE" //Changed String from HABBD to HABBE
 
@@ -139,13 +139,6 @@
 	build_path = /obj/item/circuitboard/resleeving_control
 	sort_string = "HAADE"
 
-/datum/design/circuit/body_designer
-	name = "Body design console"
-	id = "body_designer"
-	req_tech = list(TECH_DATA = 5)
-	build_path = /obj/item/circuitboard/body_designer
-	sort_string = "HAADF"
-
 /datum/design/circuit/partslathe
 	name = "Parts lathe"
 	id = "partslathe"
@@ -157,7 +150,7 @@
 	name = "\'Retiarius\' capture gun" //cit change
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 3000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
 	build_path = /obj/item/gun/energy/netgun
 	sort_string = "TAADF"
 
@@ -185,7 +178,7 @@
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
 	id = "quantum_pad"
-	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
+	req_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4, TECH_PRECURSOR = 1)
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HABAH"
 
@@ -246,71 +239,71 @@
 
 ////// RIGSuit Stuff
 /*
-/datum/design/item/rig
+/datum/design/item/hardsuit
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 6000, "uranium" = 4000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 6000, MAT_URANIUM = 4000)
 
-/datum/design/item/rig/eva
+/datum/design/item/hardsuit/eva
 	name = "eva hardsuit (empty)"
 	id = "eva_hardsuit"
-	build_path = /obj/item/rig/eva
+	build_path = /obj/item/hardsuit/eva
 	sort_string = "HCAAA"
 
-/datum/design/item/rig/mining
+/datum/design/item/hardsuit/mining
 	name = "industrial hardsuit (empty)"
 	id = "ind_hardsuit"
-	build_path = /obj/item/rig/industrial
+	build_path = /obj/item/hardsuit/industrial
 	sort_string = "HCAAB"
 
-/datum/design/item/rig/research
+/datum/design/item/hardsuit/research
 	name = "ami hardsuit (empty)"
 	id = "ami_hardsuit"
-	build_path = /obj/item/rig/hazmat
+	build_path = /obj/item/hardsuit/hazmat
 	sort_string = "HCAAC"
 
-/datum/design/item/rig/medical
+/datum/design/item/hardsuit/medical
 	name = "medical hardsuit (empty)"
 	id = "med_hardsuit"
-	build_path = /obj/item/rig/medical
+	build_path = /obj/item/hardsuit/medical
 	sort_string = "HCAAD"
 */
 
-/datum/design/item/rig_module
+/datum/design/item/hardsuit_module
 	req_tech = list(TECH_MATERIAL = 5, TECH_POWER = 5, TECH_MAGNET = 5)
-	materials = list(DEFAULT_WALL_MATERIAL = 6000, "glass" = 6000, "silver" = 4000, "uranium" = 2000)
+	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000)
 
-/datum/design/item/rig_module/plasma_cutter
-	name = "rig module - plasma cutter"
+/datum/design/item/hardsuit_module/plasma_cutter
+	name = "hardsuit module - plasma cutter"
 	id = "rigmod_plasmacutter"
-	build_path = /obj/item/rig_module/device/plasmacutter
+	build_path = /obj/item/hardsuit_module/device/plasmacutter
 	sort_string = "HCAAE"
 
-/datum/design/item/rig_module/diamond_drill
-	name = "rig module - diamond drill"
+/datum/design/item/hardsuit_module/diamond_drill
+	name = "hardsuit module - diamond drill"
 	id = "rigmod_diamonddrill"
-	build_path = /obj/item/rig_module/device/drill
+	build_path = /obj/item/hardsuit_module/device/drill
 	sort_string = "HCAAF"
 
-/datum/design/item/rig_module/maneuvering_jets
-	name = "rig module - maneuvering jets"
+/datum/design/item/hardsuit_module/maneuvering_jets
+	name = "hardsuit module - maneuvering jets"
 	id = "rigmod_maneuveringjets"
-	build_path = /obj/item/rig_module/maneuvering_jets
+	build_path = /obj/item/hardsuit_module/maneuvering_jets
 	sort_string = "HCAAG"
 
-/datum/design/item/rig_module/anomaly_scanner
-	name = "rig module - anomaly scanner"
+/datum/design/item/hardsuit_module/anomaly_scanner
+	name = "hardsuit module - anomaly scanner"
 	id = "rigmod_anomalyscanner"
-	build_path = /obj/item/rig_module/device/anomaly_scanner
+	build_path = /obj/item/hardsuit_module/device/anomaly_scanner
 	sort_string = "HCAAH"
 
-/datum/design/item/rig_module/orescanner
-	name = "rig module - ore scanner"
+/datum/design/item/hardsuit_module/orescanner
+	name = "hardsuit module - ore scanner"
 	id = "rigmod_orescanner"
-	build_path = /obj/item/rig_module/device/orescanner
+	build_path = /obj/item/hardsuit_module/device/orescanner
 	sort_string = "HCAAI"
 
-/datum/design/item/rig_module/orescanneradv
-	name = "rig module - adv. ore scanner"
+/datum/design/item/hardsuit_module/orescanneradv
+	name = "hardsuit module - adv. ore scanner"
 	id = "rigmod_orescanner_adv"
-	build_path = /obj/item/rig_module/device/orescanner/advanced
+	build_path = /obj/item/hardsuit_module/device/orescanner/advanced
 	sort_string = "HCAAJ"

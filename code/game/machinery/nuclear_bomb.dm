@@ -5,17 +5,17 @@ var/bomb_set
 	desc = "Uh oh. RUN!!!!"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "nuclearbomb0"
-	density = 1
-	var/deployable = 0.0
-	var/extended = 0.0
-	var/lighthack = 0
-	var/opened = 0.0
-	var/timeleft = 60.0
-	var/timing = 0.0
+	density = TRUE
+	var/deployable = FALSE
+	var/extended = FALSE
+	var/lighthack = FALSE
+	var/opened = FALSE
+	var/timeleft = 1 MINUTE
+	var/timing = 0
 	var/r_code = "ADMIN"
 	var/code = ""
-	var/yes_code = 0.0
-	var/safety = 1.0
+	var/yes_code = 0
+	var/safety = TRUE
 	var/obj/item/disk/nuclear/auth = null
 	var/list/wires = list()
 	var/light_wire
@@ -54,26 +54,26 @@ var/bomb_set
 				attack_hand(M)
 	return
 
-/obj/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
+/obj/machinery/nuclearbomb/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.tool_sound, 50, TRUE)
 		add_fingerprint(user)
 		if(auth)
-			if(opened == 0)
-				opened = 1
-				overlays += image(icon, "npanel_open")
+			if(opened == FALSE)
+				opened = TRUE
+				add_overlay("npanel_open")
 				to_chat(user, "You unscrew the control panel of [src].")
 
 			else
-				opened = 0
-				overlays -= image(icon, "npanel_open")
+				opened = FALSE
+				cut_overlay("npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 		else
-			if(opened == 0)
+			if(opened == FALSE)
 				to_chat(user, "The [src] emits a buzzing noise, the panel staying locked in.")
-			if(opened == 1)
-				opened = 0
-				overlays -= image(icon, "npanel_open")
+			if(opened == TRUE)
+				opened = FALSE
+				cut_overlay("npanel_open")
 				to_chat(user, "You screw the control panel of [src] back on.")
 			flick("nuclearbombc", src)
 
@@ -85,8 +85,8 @@ var/bomb_set
 
 	if(extended)
 		if(istype(O, /obj/item/disk/nuclear))
-			usr.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			auth = O
 			add_fingerprint(user)
 			return
@@ -104,7 +104,7 @@ var/bomb_set
 
 					user.visible_message("[user] starts cutting loose the anchoring bolt covers on [src].", "You start cutting loose the anchoring bolt covers with [O]...")
 
-					if(do_after(user,40 * WT.toolspeed))
+					if(do_after(user,40 * WT.tool_speed))
 						if(!src || !user || !WT.remove_fuel(5, user)) return
 						user.visible_message("[user] cuts through the bolt covers on [src].", "You cut through the bolt cover.")
 						removal_stage = 1
@@ -114,8 +114,8 @@ var/bomb_set
 				if(O.is_crowbar())
 					user.visible_message("[user] starts forcing open the bolt covers on [src].", "You start forcing open the anchoring bolt covers with [O]...")
 
-					playsound(src, O.usesound, 50, 1)
-					if(do_after(user,15 * O.toolspeed))
+					playsound(src, O.tool_sound, 50, 1)
+					if(do_after(user,15 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] forces open the bolt covers on [src].", "You force open the bolt covers.")
 						removal_stage = 2
@@ -131,8 +131,8 @@ var/bomb_set
 						return
 
 					user.visible_message("[user] starts cutting apart the anchoring system sealant on [src].", "You start cutting apart the anchoring system's sealant with [O]...")
-					playsound(src, WT.usesound, 50, 1)
-					if(do_after(user,40 * WT.toolspeed))
+					playsound(src, WT.tool_sound, 50, 1)
+					if(do_after(user,40 * WT.tool_speed))
 						if(!src || !user || !WT.remove_fuel(5, user)) return
 						user.visible_message("[user] cuts apart the anchoring system sealant on [src].", "You cut apart the anchoring system's sealant.")
 						removal_stage = 3
@@ -142,8 +142,8 @@ var/bomb_set
 				if(O.is_wrench())
 
 					user.visible_message("[user] begins unwrenching the anchoring bolts on [src].", "You begin unwrenching the anchoring bolts...")
-					playsound(src, O.usesound, 50, 1)
-					if(do_after(user,50 * O.toolspeed))
+					playsound(src, O.tool_sound, 50, 1)
+					if(do_after(user,50 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] unwrenches the anchoring bolts on [src].", "You unwrench the anchoring bolts.")
 						removal_stage = 4
@@ -153,8 +153,8 @@ var/bomb_set
 				if(O.is_crowbar())
 
 					user.visible_message("[user] begins lifting [src] off of the anchors.", "You begin lifting the device off the anchors...")
-					playsound(src, O.usesound, 50, 1)
-					if(do_after(user,80 * O.toolspeed))
+					playsound(src, O.tool_sound, 50, 1)
+					if(do_after(user,80 * O.tool_speed))
 						if(!src || !user) return
 						user.visible_message("[user] crowbars [src] off of the anchors. It can now be moved.", "You jam the crowbar under the nuclear device and lift it off its anchors. You can now move it!")
 						anchored = 0
@@ -162,7 +162,7 @@ var/bomb_set
 				return
 	..()
 
-/obj/machinery/nuclearbomb/attack_hand(mob/user as mob)
+/obj/machinery/nuclearbomb/attack_hand(mob/user, list/params)
 	if(extended)
 		if(!ishuman(user))
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
@@ -200,7 +200,7 @@ var/bomb_set
 		extended = 1
 	return
 
-obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
+/obj/machinery/nuclearbomb/proc/nukehack_win(mob/user)
 	var/dat
 	dat += "<TT><B>Nuclear Fission Explosive</B><BR>\nNuclear Device Wires:</A><HR>"
 	for(var/wire in wires)
@@ -216,7 +216,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	set name = "Make Deployable"
 	set src in oview(1)
 
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 	if(!ishuman(usr))
 		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
@@ -232,14 +232,14 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 
 /obj/machinery/nuclearbomb/Topic(href, href_list)
 	..()
-	if(!usr.canmove || usr.stat || usr.restrained())
+	if(!CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		return
 	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_machine(src)
 		if(href_list["act"])
 			var/temp_wire = href_list["wire"]
 			if(href_list["act"] == "pulse")
-				if(!istype(usr.get_active_hand(), /obj/item/multitool))
+				if(!istype(usr.get_active_held_item(), /obj/item/multitool))
 					to_chat(usr, "You need a multitool!")
 				else
 					if(wires[temp_wire])
@@ -262,7 +262,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 							else
 								visible_message("<span class='notice'>The [src] emits a quiet whirling noise!</span>")
 			if(href_list["act"] == "wire")
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(!I.is_wirecutter())
 					to_chat(usr, "You need wirecutters!")
 				else
@@ -285,10 +285,10 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				yes_code = 0
 				auth = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/disk/nuclear))
-					usr.drop_item()
-					I.loc = src
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					auth = I
 		if(auth)
 			if(href_list["type"])
@@ -357,7 +357,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 	return
 
 
-/obj/machinery/nuclearbomb/ex_act(severity)
+/obj/machinery/nuclearbomb/legacy_ex_act(severity)
 	return
 
 

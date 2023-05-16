@@ -6,6 +6,9 @@
 /turf/simulated/floor/holofloor
 	thermal_conductivity = 0
 
+/turf/simulated/floor/holofloor/get_lumcount(minlum = 0, maxlum = 1)
+	return 0.8
+
 /turf/simulated/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 	// HOLOFLOOR DOES NOT GIVE A FUCK
@@ -17,36 +20,40 @@
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
 	icon_state = "carpet"
-	initial_flooring = /decl/flooring/carpet
+	initial_flooring = /singleton/flooring/carpet
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
+	canSmoothWith = (SMOOTH_GROUP_CARPET)
 
 /turf/simulated/floor/holofloor/tiled
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
-	initial_flooring = /decl/flooring/tiling
+	initial_flooring = /singleton/flooring/tiling
 
 /turf/simulated/floor/holofloor/tiled/dark
 	name = "dark floor"
 	icon_state = "dark"
-	initial_flooring = /decl/flooring/tiling/dark
+	initial_flooring = /singleton/flooring/tiling/dark
 
 /turf/simulated/floor/holofloor/lino
 	name = "lino"
 	icon = 'icons/turf/flooring/linoleum.dmi'
 	icon_state = "lino"
-	initial_flooring = /decl/flooring/linoleum
+	initial_flooring = /singleton/flooring/linoleum
 
 /turf/simulated/floor/holofloor/wood
 	name = "wooden floor"
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "wood"
-	initial_flooring = /decl/flooring/wood
+	initial_flooring = /singleton/flooring/wood
 
 /turf/simulated/floor/holofloor/grass
 	name = "lush grass"
 	icon = 'icons/turf/flooring/grass.dmi'
 	icon_state = "grass0"
-	initial_flooring = /decl/flooring/grass
+	initial_flooring = /singleton/flooring/grass
 
 /turf/simulated/floor/holofloor/snow
 	name = "snow"
@@ -62,13 +69,9 @@
 	name = "\proper space"
 	icon_state = "white"
 
-/turf/simulated/floor/holofloor/space/update_icon()
-	. = ..()
-	add_overlay(SSskybox.dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"])
-
 /turf/simulated/floor/holofloor/reinforced
 	icon = 'icons/turf/flooring/tiles.dmi'
-	initial_flooring = /decl/flooring/reinforced
+	initial_flooring = /singleton/flooring/reinforced
 	name = "reinforced holofloor"
 	icon_state = "reinforced"
 
@@ -124,16 +127,16 @@
 	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
 	special_attack_type = /datum/unarmed_attack/holopugilism
 
-datum/unarmed_attack/holopugilism
+/datum/unarmed_attack/holopugilism
 	sparring_variant_type = /datum/unarmed_attack/holopugilism
 
-datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+/datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
 	user.do_attack_animation(src)
 	var/damage = rand(0, 9)
 	if(!damage)
@@ -144,7 +147,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	var/armor_block = target.run_armor_check(affecting, "melee")
 	var/armor_soak = target.get_armor_soak(affecting, "melee")
 
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		damage += 5
 
 	playsound(target.loc, "punch", 25, 1, -1)
@@ -178,27 +181,28 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 				if(2)
 					M.visible_message("<span class='danger'>[user] bashes [M] against \the [src]!</span>")
 					if (prob(50))
-						M.Weaken(1)
+						M.afflict_paralyze(20 * 1)
 					M.apply_damage(10)
 					hit(25)
 				if(3)
 					M.visible_message("<span class='danger'><big>[user] crushes [M] against \the [src]!</big></span>")
-					M.Weaken(5)
+					M.afflict_paralyze(20 * 5)
 					M.apply_damage(20)
 					hit(50)
 			return
 
-	if(W.flags & NOBLUDGEON) return
+	if(W.item_flags & ITEM_NOBLUDGEON)
+		return
 
 	if(W.is_screwdriver())
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't unfasten it!</span>")
-	else if(W.is_crowbar() && reinf && state <= 1)
+	else if(W.is_crowbar() && considered_reinforced && construction_state <= 1)
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't pry it!</span>")
-	else if(W.is_wrench() && !anchored && (!state || !reinf))
+	else if(W.is_wrench() && !anchored && (!construction_state || !considered_reinforced))
 		to_chat(user, "<span class='notice'>It's a holowindow, you can't dismantle it!</span>")
 	else
 		if(W.damtype == BRUTE || W.damtype == BURN)
-			hit(W.force)
+			hit(W.damage_force)
 			if(health <= 7)
 				anchored = 0
 				update_nearby_icons()
@@ -221,7 +225,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 		return
 
 	if(src.density && istype(I, /obj/item) && !istype(I, /obj/item/card))
-		var/aforce = I.force
+		var/aforce = I.damage_force
 		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
 		visible_message("<font color='red'><B>[src] was hit by [I].</B></font>")
 		if(I.damtype == BRUTE || I.damtype == BURN)
@@ -254,12 +258,12 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
-//VOREStation Add
+
 /obj/structure/bed/holobed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		to_chat(user, "<span class='notice'>It's a holochair, you can't dismantle it!</span>")
 	return
-//VOREStation Add End
+
 /obj/item/holo
 	damtype = HALLOSS
 	no_attack_log = 1
@@ -271,15 +275,15 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	var/lcolor
 	var/rainbow = FALSE
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
-	force = 3.0
+	damage_force = 3.0
 	throw_speed = 1
 	throw_range = 5
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_SMALL
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	var/active = 0
 
 /obj/item/holo/esword/green
@@ -299,16 +303,19 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 		return TRUE
 	return FALSE
 
-/obj/item/holo/esword/attack_self(mob/living/user as mob)
+/obj/item/holo/esword/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	active = !active
 	if (active)
-		force = 30
+		damage_force = 30
 		item_state = "[icon_state]_blade"
 		w_class = ITEMSIZE_LARGE
 		playsound(src, 'sound/weapons/saberon.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
-		force = 3
+		damage_force = 3
 		item_state = "[icon_state]"
 		w_class = ITEMSIZE_SMALL
 		playsound(src, 'sound/weapons/saberoff.ogg', 50, 1)
@@ -356,36 +363,38 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	desc = "Boom, Shakalaka!"
 	icon = 'icons/obj/basketball.dmi'
 	icon_state = "hoop"
-	anchored = 1
-	density = 1
-	throwpass = 1
+	anchored = TRUE
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
 
-/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/holohoop/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
 		if(G.state<2)
 			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return
 		G.affecting.loc = src.loc
-		G.affecting.Weaken(5)
+		G.affecting.afflict_paralyze(20 * 5)
 		visible_message("<span class='warning'>[G.assailant] dunks [G.affecting] into the [src]!</span>", 3)
 		qdel(W)
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
-		user.drop_item(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, loc))
+			to_chat(user, SPAN_WARNING("[W] is stuck to your hand!"))
+			return
 		visible_message("<span class='notice'>[user] dunks [W] into the [src]!</span>", 3)
 		return
 
 /obj/structure/holohoop/CanAllowThrough(atom/movable/mover, turf/target)
 	if (istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return TRUE
 		if(prob(50))
 			I.forceMove(loc)
-			visible_message(span("notice", "Swish! \the [I] lands in \the [src]."), 3)
+			visible_message(SPAN_NOTICE("Swish! \the [I] lands in \the [src]."), 3)
 		else
-			visible_message(span("warning", "\The [I] bounces off of \the [src]'s rim!"), 3)
+			visible_message(SPAN_WARNING( "\The [I] bounces off of \the [src]'s rim!"), 3)
 		return FALSE
 	return ..()
 
@@ -412,9 +421,9 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
-/obj/machinery/readybutton/attack_hand(mob/user as mob)
+/obj/machinery/readybutton/attack_hand(mob/user, list/params)
 
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 
@@ -499,3 +508,7 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 /mob/living/simple_mob/animal/space/carp/holodeck/proc/derez()
 	visible_message("<span class='notice'>\The [src] fades away!</span>")
 	qdel(src)
+
+/obj/item/paper/fluff/holodeck/trek_diploma
+	name = "paper - Starfleet Academy Diploma"
+	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}

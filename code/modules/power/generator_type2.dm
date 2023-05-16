@@ -6,8 +6,8 @@
 	density = 1
 	use_power = USE_POWER_OFF
 
-	var/obj/machinery/atmospherics/unary/generator_input/input1
-	var/obj/machinery/atmospherics/unary/generator_input/input2
+	var/obj/machinery/atmospherics/component/unary/generator_input/input1
+	var/obj/machinery/atmospherics/component/unary/generator_input/input2
 
 	var/lastgen = 0
 	var/lastgenlev = -1
@@ -19,25 +19,23 @@
 
 /obj/machinery/power/generator_type2/LateInitialize()
 	. = ..()
-	input1 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, 90))
-	input2 = locate(/obj/machinery/atmospherics/unary/generator_input) in get_step(src,turn(dir, -90))
+	input1 = locate(/obj/machinery/atmospherics/component/unary/generator_input) in get_step(src,turn(dir, 90))
+	input2 = locate(/obj/machinery/atmospherics/component/unary/generator_input) in get_step(src,turn(dir, -90))
 	if(!input1 || !input2)
-		stat |= BROKEN
+		machine_stat |= BROKEN
 	updateicon()
 
 /obj/machinery/power/generator_type2/proc/updateicon()
+	cut_overlays()
 
-	if(stat & (NOPOWER|BROKEN))
-		overlays.Cut()
-	else
-		overlays.Cut()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
 
-		if(lastgenlev != 0)
-			overlays += image('icons/obj/power.dmi', "teg-op[lastgenlev]")
+	if(lastgenlev != 0)
+		add_overlay(image('icons/obj/power.dmi', "teg-op[lastgenlev]"))
 
-#define GENRATE 800		// generator output coefficient from Q
-
-
+/// generator output coefficient from Q
+#define GENRATE 800
 /obj/machinery/power/generator_type2/process(delta_time)
 	if(!input1 || !input2)
 		return
@@ -79,7 +77,7 @@
 			if(input2.network)
 				input2.network.update = 1
 
-			add_avail(lastgen)
+			add_avail(lastgen * 0.001)
 	// update icon overlays only if displayed level has changed
 
 	var/genlev = max(0, min( round(11*lastgen / 100000), 11))
@@ -91,13 +89,15 @@
 
 
 /obj/machinery/power/generator_type2/attack_ai(mob/user)
-	if(stat & (BROKEN|NOPOWER)) return
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
 	interact(user)
 
 
-/obj/machinery/power/generator_type2/attack_hand(mob/user)
+/obj/machinery/power/generator_type2/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER)) return
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
 	interact(user)
 
 

@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	permeability_coefficient = 0.05
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/clothing_choices = list()
 	siemens_coefficient = 0.8
@@ -23,7 +23,7 @@
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
@@ -45,11 +45,11 @@
 	name = "sandals"
 	icon_state = "wizard"
 	species_restricted = null
-	body_parts_covered = 0
+	body_cover_flags = 0
 
 	wizard_garb = 1
 
-obj/item/clothing/shoes/sandal/clogs
+/obj/item/clothing/shoes/sandal/clogs
 	name = "plastic clogs"
 	desc = "A pair of plastic clog shoes."
 	icon_state = "clogs"
@@ -58,7 +58,7 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "A pair of magic, black shoes."
 	name = "magic shoes"
 	icon_state = "black"
-	body_parts_covered = FEET
+	body_cover_flags = FEET
 	origin_tech = list(TECH_BLUESPACE = 3, TECH_ARCANE = 5)
 
 /obj/item/clothing/shoes/clown_shoes
@@ -66,7 +66,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "clown shoes"
 	icon_state = "clown"
 	slowdown = SHOES_SLOWDOWN+1
-	force = 0
+	damage_force = 0
 	var/footstep = 1	//used for squeeks whilst walking
 	species_restricted = null
 
@@ -84,8 +84,8 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "boots"
 	desc = "A pair of boots worn by the followers of Nar-Sie."
 	icon_state = "cult"
-	item_state_slots = list(slot_r_hand_str = "cult", slot_l_hand_str = "cult")
-	force = 2
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
+	damage_force = 2
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
 
@@ -115,8 +115,8 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "worn bunny slippers"
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
-	item_state_slots = list(slot_r_hand_str = "slippers", slot_l_hand_str = "slippers")
-	force = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 
 /obj/item/clothing/shoes/laceup
@@ -135,8 +135,8 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Help you swim good."
 	name = "swimming fins"
 	icon_state = "flippers"
-	item_state_slots = list(slot_r_hand_str = "galoshes", slot_l_hand_str = "galoshes")
-	item_flags = NOSLIP
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 
@@ -151,14 +151,14 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
 	icon_state = "sportshoe"
 	addblends = "sportshoe_a"
-	item_state_slots = list(slot_r_hand_str = "sportheld", slot_l_hand_str = "sportheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sportheld", SLOT_ID_LEFT_HAND = "sportheld")
 
 /obj/item/clothing/shoes/skater
 	name = "skater shoes"
 	desc = "A pair of wide shoes with thick soles.  Designed for skating."
 	icon_state = "skatershoe"
 	addblends = "skatershoe_a"
-	item_state_slots = list(slot_r_hand_str = "skaterheld", slot_l_hand_str = "skaterheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skaterheld", SLOT_ID_LEFT_HAND = "skaterheld")
 
 /obj/item/clothing/shoes/heels
 	name = "high heels"
@@ -171,7 +171,7 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "A roll of treated canvas used for wrapping claws or paws"
 	icon_state = "clothwrap"
 	item_state = "clothwrap"
-	force = 0
+	damage_force = 0
 	w_class = ITEMSIZE_SMALL
 	species_restricted = null
 	drop_sound = 'sound/items/drop/clothing.ogg'
@@ -214,6 +214,11 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
 
+/obj/item/clothing/shoes/ashwalker
+	name = "ashen sandals"
+	desc = "Hardy leather sandles capable of withstanding harsh conditions."
+	icon_state = "roman"
+
 /obj/item/clothing/shoes/boots/bsing
 	name = "blue performer's boots"
 	desc = "Dancing in these makes you feel lighter than air."
@@ -238,3 +243,46 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "green holiday shoes"
 	desc = "The tips of these fur lined boots curl slightly, lending them a whimsical flair."
 	icon_state = "christmasbootsg"
+
+/obj/item/clothing/shoes/bountyskin
+	name = "bounty hunter skinsuit (heels)"
+	desc = "The original skinsuit featured agility-boosting heels. These replicas grant no assistance, but look just as stylish."
+	icon_state = "bountyskin"
+
+/obj/item/clothing/shoes/antediluvian
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "antediluvian"
+
+/obj/item/clothing/shoes/antediluvian/heels
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "ante"
+	icon = 'icons/clothing/shoes/ante.dmi'
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+// The things folks do for fashion...
+/obj/item/clothing/shoes/galoshes/black
+	name = "black galoshes"
+	desc = "A black rubber boots."
+	icon_state = "galoshes_black"
+
+/obj/item/clothing/shoes/galoshes/starcon
+	name = "dark-purple semi-galoshes"
+	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
+	icon_state = "galoshes_sc"
+	slowdown = SHOES_SLOWDOWN
+
+//More Warhammer Fun
+/obj/item/clothing/shoes/utilitarian
+	name = "utilitarian shoes"
+	desc = "These shoes seem to have been designed for a cloven foot. They're honestly pretty uncomfortable to wear."
+	icon = 'icons/clothing/suit/armor/utilitarian.dmi'
+	icon_state = "taushoe"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+
+/obj/item/clothing/shoes/ballet
+	name = "Antheia pointe shoes"
+	desc = "These shoes feature long lace straps and flattened off toes. They originate from the Old Earth art of ballet, which featured many acrobatic and technical moves assisted by these shoes."
+	icon = 'icons/clothing/shoes/ballet.dmi'
+	icon_state = "ballet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

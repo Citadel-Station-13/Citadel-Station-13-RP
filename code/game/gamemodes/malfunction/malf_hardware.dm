@@ -1,14 +1,18 @@
 /datum/malf_hardware
-	var/name = ""								// Hardware name
+	/// Hardware name.
+	var/name = ""
+	/// Hardware description.
 	var/desc = ""
-	var/driver = null							// Driver - if not null this verb is given to the AI to control hardware
-	var/mob/living/silicon/ai/owner = null		// AI which owns this.
+	/// Driver - if not null this verb is given to the AI to control hardware.
+	var/driver = null
+	/// AI which owns this.
+	var/mob/living/silicon/ai/owner = null
 
 /datum/malf_hardware/proc/install()
 	if(owner && istype(owner))
 		owner.hardware = src
 		if(driver)
-			owner.verbs += driver
+			add_verb(owner, driver)
 
 /datum/malf_hardware/proc/get_examine_desc()
 	return "It has some sort of hardware attached to its core"
@@ -60,7 +64,7 @@
 
 /datum/malf_hardware/strong_turrets/install()
 	..()
-	for(var/obj/machinery/porta_turret/T in machines)
+	for(var/obj/machinery/porta_turret/T in GLOB.machines)
 		T.maxhealth = round(initial(T.maxhealth) * 1.4)
 		T.shot_delay = round(initial(T.shot_delay) / 2)
 		T.auto_repair = 1

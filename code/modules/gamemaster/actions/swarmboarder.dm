@@ -1,6 +1,6 @@
 /datum/gm_action/swarm_boarder
 	name = "swarmer shell"
-	departments = list(ROLE_EVERYONE, ROLE_SECURITY, ROLE_ENGINEERING)
+	departments = list(DEPARTMENT_EVERYONE, DEPARTMENT_SECURITY, DEPARTMENT_ENGINEERING)
 	chaotic = 30
 	observers_used = TRUE
 	var/area/target_area	// Chosen target area
@@ -34,7 +34,7 @@
 	for(var/i in 1 to 10)
 		var/area/A = pick(grand_list_of_areas)
 		if(is_area_occupied(A))
-			log_debug("[name] event: Rejected [A] because it is occupied.")
+			log_debug(SPAN_DEBUG("[name] event: Rejected [A] because it is occupied."))
 			continue
 		// A good area, great! Lets try and pick a turf
 		var/list/turfs = list()
@@ -42,13 +42,13 @@
 			if(turf_clear(F))
 				turfs += F
 		if(turfs.len == 0)
-			log_debug("[name] event: Rejected [A] because it has no clear turfs.")
+			log_debug(SPAN_DEBUG("[name] event: Rejected [A] because it has no clear turfs."))
 			continue
 		target_area = A
 		target_turf = pick(turfs)
 
 	if(!target_area)
-		log_debug("[name] event: Giving up after too many failures to pick target area")
+		log_debug(SPAN_DEBUG("[name] event: Giving up after too many failures to pick target area"))
 		return
 
 /datum/gm_action/swarm_boarder/start()
@@ -67,7 +67,7 @@
 	new swarmertype(target_turf)
 
 /datum/gm_action/swarm_boarder/get_weight()
-	return -60 + (metric.count_people_in_department(ROLE_SECURITY) * 20 + metric.count_people_in_department(ROLE_SYNTHETIC) * 5 + metric.count_people_in_department(ROLE_EVERYONE) * 1)
+	return -60 + (metric.count_people_in_department(DEPARTMENT_SECURITY) * 20 + metric.count_people_in_department(DEPARTMENT_SYNTHETIC) * 5 + metric.count_people_in_department(DEPARTMENT_EVERYONE) * 1)
 
 /datum/gm_action/swarm_boarder/announce()
 	spawn(rand(5 MINUTES, 15 MINUTES))

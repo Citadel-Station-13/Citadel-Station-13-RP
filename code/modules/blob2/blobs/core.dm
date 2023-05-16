@@ -6,7 +6,7 @@ var/list/blob_cores = list()
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blank_blob"
 	desc = "A huge, pulsating yellow mass."
-	density = TRUE //bandaid fix for PolarisSS13/6173
+	density = TRUE
 	max_integrity = 150
 	point_return = -1
 	health_regen = 0 //we regen in Life() instead of when pulsed
@@ -87,7 +87,7 @@ var/list/blob_cores = list()
 	START_PROCESSING(SSobj, src)
 	update_icon() //so it atleast appears
 	if(!placed && !overmind)
-		create_overmind(new_overmind)
+		INVOKE_ASYNC(src, .proc/create_overmind, new_overmind)
 	if(overmind)
 		update_icon()
 	point_rate = new_rate
@@ -102,14 +102,17 @@ var/list/blob_cores = list()
 	return ..()
 
 /obj/structure/blob/core/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	color = null
 	var/mutable_appearance/blob_overlay = mutable_appearance('icons/mob/blob.dmi', "blob")
 	if(overmind)
 		blob_overlay.color = overmind.blob_type.color
 		name = "[overmind.blob_type.name] [base_name]"
-	overlays += blob_overlay
-	overlays += mutable_appearance('icons/mob/blob.dmi', "blob_core_overlay")
+	overlays_to_add += blob_overlay
+	overlays_to_add += mutable_appearance('icons/mob/blob.dmi', "blob_core_overlay")
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/blob/core/process(delta_time)
 	set waitfor = FALSE

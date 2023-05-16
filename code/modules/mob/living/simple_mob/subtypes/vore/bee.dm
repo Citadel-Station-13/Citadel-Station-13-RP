@@ -1,6 +1,15 @@
+/datum/category_item/catalogue/fauna/bee
+	name = "Space Bumble Bee"
+	desc = "Unlike other attempts at modifying species for easier space transportation, \
+	bumble bee modification went off without a hitch. Space Bees are not capable of flight \
+	in space, obviously, but their survivability in hostile environments has been substantially \
+	improved."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/vore/bee
 	name = "space bumble bee"
 	desc = "Buzz buzz."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bee)
 
 	icon_state = "bee"
 	icon_living = "bee"
@@ -60,7 +69,7 @@
 // Does actual poison injection, after all checks passed.
 /mob/living/simple_mob/vore/bee/proc/inject_poison(mob/living/L, target_zone)
 	if(prob(poison_chance))
-		to_chat(L, "<span class='warning'>You feel a tiny prick.</span>")
+		L.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 /datum/say_list/bee

@@ -1,0 +1,364 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/table/woodentable,
+/obj/item/flame/candle/candelabra/everburn,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"c" = (
+/obj/structure/table/woodentable,
+/obj/item/book{
+	dat = "The majority of the text has faded or been defaced. Several snippets of prayers are legible, but not enough to determine their intent. The phrases 'Great Designer', 'change', and 'flesh' appear repeatedly.";
+	name = "Tenets of The Great Designer"
+	},
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"d" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/horrors)
+"i" = (
+/obj/structure/girder,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"j" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/horrors)
+"k" = (
+/turf/simulated/wall/r_wall,
+/area/lavaland/horrors)
+"n" = (
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/horrors)
+"o" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/obj/structure/bed/chair/pew/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/horrors)
+"q" = (
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"u" = (
+/turf/template_noop,
+/area/template_noop)
+"v" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"x" = (
+/obj/structure/statue/gold/rd,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/horrors)
+"y" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/horrors)
+"A" = (
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"E" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"I" = (
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"K" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/template_noop)
+"N" = (
+/turf/template_noop,
+/area/lavaland/horrors)
+"O" = (
+/obj/item/flame/candle/candelabra/everburn,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/horrors)
+"P" = (
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/horrors)
+"Q" = (
+/obj/effect/debris/cleanable/generic,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/horrors)
+"U" = (
+/obj/structure/table,
+/obj/item/flame/candle/candelabra,
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"X" = (
+/turf/simulated/floor/lavaland,
+/area/lavaland/horrors)
+"Y" = (
+/obj/effect/debris/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood,
+/obj/structure/bed/chair/pew/left{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet/lavaland,
+/area/lavaland/horrors)
+
+(1,1,1) = {"
+u
+N
+N
+N
+N
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+"}
+(2,1,1) = {"
+u
+N
+d
+N
+N
+N
+u
+K
+u
+K
+K
+u
+u
+u
+u
+"}
+(3,1,1) = {"
+u
+d
+d
+d
+d
+d
+d
+d
+d
+d
+n
+N
+N
+u
+u
+"}
+(4,1,1) = {"
+u
+d
+n
+d
+d
+d
+d
+d
+d
+d
+d
+N
+N
+u
+u
+"}
+(5,1,1) = {"
+u
+N
+d
+k
+k
+k
+k
+y
+X
+i
+Q
+N
+N
+u
+u
+"}
+(6,1,1) = {"
+u
+N
+k
+k
+E
+Y
+I
+j
+I
+Y
+U
+y
+N
+u
+u
+"}
+(7,1,1) = {"
+u
+u
+k
+O
+q
+o
+I
+o
+I
+o
+I
+k
+N
+u
+u
+"}
+(8,1,1) = {"
+u
+K
+k
+x
+I
+I
+I
+I
+I
+I
+I
+d
+d
+u
+u
+"}
+(9,1,1) = {"
+u
+u
+k
+O
+I
+j
+P
+Y
+I
+j
+I
+X
+N
+u
+u
+"}
+(10,1,1) = {"
+u
+u
+N
+k
+c
+o
+I
+o
+I
+o
+a
+k
+N
+u
+u
+"}
+(11,1,1) = {"
+u
+u
+N
+A
+k
+k
+v
+X
+k
+k
+k
+k
+d
+u
+u
+"}
+(12,1,1) = {"
+u
+u
+N
+d
+d
+d
+Q
+d
+n
+d
+d
+d
+d
+u
+u
+"}
+(13,1,1) = {"
+u
+u
+N
+N
+N
+d
+d
+d
+d
+d
+d
+d
+d
+u
+u
+"}
+(14,1,1) = {"
+u
+u
+u
+u
+u
+u
+K
+K
+K
+K
+K
+K
+K
+K
+u
+"}
+(15,1,1) = {"
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+u
+"}

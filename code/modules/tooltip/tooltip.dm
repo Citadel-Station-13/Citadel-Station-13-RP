@@ -8,17 +8,17 @@ Configuration:
 - Set control to the correct skin element (remember to actually place the skin element)
 - Set file to the correct path for the .html file (remember to actually place the html file)
 - Attach the datum to the user client on login, e.g.
-/client/New()
-	src.tooltips = new /datum/tooltip(src)
+	/client/New()
+		src.tooltips = new /datum/tooltip(src)
 
 Usage:
 - Define mouse event procs on your (probably HUD) object and simply call the show and hide procs respectively:
-/obj/screen/hud
-	MouseEntered(location, control, params)
-		usr.client.tooltip.show(params, title = src.name, content = src.desc)
+	/atom/movable/screen/hud
+		MouseEntered(location, control, params)
+			usr.client.tooltip.show(params, title = src.name, content = src.desc)
 
-	MouseExited()
-		usr.client.tooltip.hide()
+		MouseExited()
+			usr.client.tooltip.hide()
 
 Customization:
 - Theming can be done by passing the theme var to show() and using css in the html file to change the look
@@ -42,13 +42,16 @@ Notes:
 /datum/tooltip/New(client/C)
 	if (C)
 		owner = C
+		var/datum/asset/stuff = get_asset_datum(/datum/asset/simple/jquery)
+		stuff.send(owner)
 		owner << browse(file2text('code/modules/tooltip/tooltip.html'), "window=[control]")
+
 	..()
 
 
 /datum/tooltip/proc/show(atom/movable/thing, params = null, title = null, content = null, theme = "default", special = "none")
 	if (!thing || !params || (!title && !content) || !owner || !isnum(world.icon_size))
-		return 0
+		return FALSE
 	if (!init)
 		//Initialize some vars
 		init = 1
@@ -69,29 +72,26 @@ Notes:
 	title = replacetext(title, "\improper", "")
 
 	//Make our dumb param object
-	if(params[1] != "i") //Byond Bug: http://www.byond.com/forum/?post=2352648
-		params = "icon-x=16;icon-y=16;[params]" //Put in some placeholders
 	params = {"{ "cursor": "[params]", "screenLoc": "[thing.screen_loc]" }"}
 
 	//Send stuff to the tooltip
-	var/view_size = getviewsize(owner.view)
-	owner << output(list2params(list(params, view_size[1] , view_size[2], "[title][content]", theme, special)), "[control]:tooltip.update")
+	owner << output(list2params(list(params, owner.current_viewport_width, owner.current_viewport_height, "[title][content]", theme, special)), "[control]:tooltip.update")
 
 	//If a hide() was hit while we were showing, run hide() again to avoid stuck tooltips
 	showing = 0
 	if (queueHide)
 		hide()
 
-	return 1
+	return TRUE
 
 
 /datum/tooltip/proc/hide()
+	queueHide = showing ? TRUE : FALSE
+
 	if (queueHide)
 		addtimer(CALLBACK(src, .proc/do_hide), 1)
 	else
 		do_hide()
-
-	queueHide = showing ? TRUE : FALSE
 
 	return TRUE
 
@@ -120,5 +120,3 @@ Notes:
 	if(istype(user))
 		if(user.client && user.client.tooltips)
 			user.client.tooltips.hide()
-
-

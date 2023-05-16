@@ -37,7 +37,7 @@
 	W.access |= default_access
 	W.assignment = "[assignment]"
 	player.set_id_info(W)
-	if(equip) player.equip_to_slot_or_del(W, slot_wear_id)
+	if(equip) player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 	return W
 
 /datum/antagonist/proc/create_radio(var/freq, var/mob/living/carbon/human/player)
@@ -52,13 +52,13 @@
 			R = new/obj/item/radio/headset(player)
 			R.set_frequency(freq)
 
-	player.equip_to_slot_or_del(R, slot_l_ear)
+	player.equip_to_slot_or_del(R, SLOT_ID_LEFT_EAR)
 	return R
 
 /datum/antagonist/proc/create_nuke(var/atom/paper_spawn_loc, var/datum/mind/code_owner)
 
 	// Decide on a code.
-	var/obj/effect/landmark/nuke_spawn = locate(nuke_spawn_loc ? nuke_spawn_loc : "landmark*Nuclear-Bomb")
+	var/obj/landmark/nuke_spawn = locate(nuke_spawn_loc ? nuke_spawn_loc : "landmark*Nuclear-Bomb")
 
 	var/code
 	if(nuke_spawn)

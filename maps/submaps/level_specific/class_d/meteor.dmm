@@ -1,0 +1,83 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"o" = (
+/obj/random/outcrop,
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"u" = (
+/obj/structure/meteorite,
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"w" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+"Y" = (
+/turf/simulated/floor/outdoors/classd,
+/area/class_d/explored)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+w
+o
+Y
+a
+a
+"}
+(3,1,1) = {"
+a
+o
+Y
+Y
+w
+Y
+a
+"}
+(4,1,1) = {"
+a
+Y
+Y
+u
+Y
+w
+a
+"}
+(5,1,1) = {"
+a
+Y
+w
+Y
+Y
+o
+a
+"}
+(6,1,1) = {"
+a
+a
+o
+Y
+w
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+"}

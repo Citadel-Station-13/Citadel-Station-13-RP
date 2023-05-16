@@ -31,6 +31,7 @@
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //makes it so 4 max dmg hits don't instakill you.
 	grab_resist = 100
+	taser_kill = 0 //This Mechanical Dog should probably not be harmed by tasers
 
 	response_help = "pets the"
 	response_disarm = "bops the"
@@ -38,11 +39,7 @@
 	attacktext = list("ravaged")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
+	base_pixel_x = -16
 
 	min_oxy = 0
 	max_oxy = 0
@@ -58,9 +55,9 @@
 	say_list_type = /datum/say_list/corrupthound
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/corrupthound
 
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
+	buckle_max_mobs = 1 //Yeehaw
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
 	buckle_lying = FALSE
 
 	vore_active = TRUE
@@ -108,11 +105,13 @@
 
 /mob/living/simple_mob/vore/aggressive/corrupthound/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
 
-/mob/living/simple_mob/vore/aggressive/corrupthound/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/vore/aggressive/corrupthound/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter/mob/animal, exact = TRUE)
+
+/mob/living/simple_mob/vore/aggressive/corrupthound/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/corrupthound

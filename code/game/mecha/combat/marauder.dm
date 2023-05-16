@@ -5,13 +5,13 @@
 	icon_state = "marauder"
 	initial_icon = "marauder"
 	step_in = 5
-	health = 500
-	maxhealth = 500
+	health = 350
+	maxhealth = 350		//Don't forget to update the /old variant if  you change this number.
 	deflect_chance = 25
 	damage_absorption = list("brute"=0.5,"fire"=0.7,"bullet"=0.45,"laser"=0.6,"energy"=0.7,"bomb"=0.7)
 	max_temperature = 60000
 	infra_luminosity = 3
-	operation_req_access = list(access_cent_specops)
+	operation_req_access = list(ACCESS_CENTCOM_ERT)
 	wreckage = /obj/effect/decal/mecha_wreckage/marauder
 	add_req_access = 0
 	internal_damage_threshold = 25
@@ -29,19 +29,45 @@
 	zoom_possible = 1
 	thrusters_possible = 1
 
+	starting_components = list(
+		/obj/item/mecha_parts/component/hull/durable,
+		/obj/item/mecha_parts/component/actuator,
+		/obj/item/mecha_parts/component/armor/military,
+		/obj/item/mecha_parts/component/gas,
+		/obj/item/mecha_parts/component/electrical
+		)
+
+	starting_equipment = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
+		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster
+		)
+
+	icon_scale_x = 1.5
+	icon_scale_y = 1.5
+
 /obj/mecha/combat/marauder/seraph
 	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
 	name = "Seraph"
 	catalogue_data = list(/datum/category_item/catalogue/technology/seraph)
 	icon_state = "seraph"
 	initial_icon = "seraph"
-	operation_req_access = list(access_cent_creed)
+	operation_req_access = list(ACCESS_CENTCOM_ERT_LEAD)
 	step_in = 3
-	health = 550
+	health = 450
 	wreckage = /obj/effect/decal/mecha_wreckage/seraph
 	internal_damage_threshold = 20
 	force = 55
 	max_equip = 5
+
+	starting_equipment = list(
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+		/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
+		/obj/item/mecha_parts/mecha_equipment/tesla_energy_relay,
+		/obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
+		/obj/item/mecha_parts/mecha_equipment/teleporter
+		)
 
 //Note that is the Mauler
 /obj/mecha/combat/marauder/mauler
@@ -49,43 +75,9 @@
 	name = "Mauler"
 	icon_state = "mauler"
 	initial_icon = "mauler"
-	operation_req_access = list(access_syndicate)
+	operation_req_access = list(ACCESS_FACTION_SYNDICATE)
 	wreckage = /obj/effect/decal/mecha_wreckage/mauler
 	mech_faction = MECH_FACTION_SYNDI
-
-//Note that is the default Marauder
-/obj/mecha/combat/marauder/Initialize(mapload)
-	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/pulse
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster(src)
-	ME.attach(src)
-
-	return
-
-//Note that this is the seraph.
-/obj/mecha/combat/marauder/seraph/Initialize(mapload)
-	. = ..()//Let it equip whatever is needed.
-	var/obj/item/mecha_parts/mecha_equipment/ME
-	if(equipment.len)//Now to remove it and equip anew.
-		for(ME in equipment)
-			ME.detach()
-			qdel(ME)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/teleporter(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay(src)
-	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster(src)
-	ME.attach(src)
-	return
 
 //I'll break this down later
 /obj/mecha/combat/marauder/relaymove(mob/user,direction)
@@ -145,3 +137,15 @@
 						"}
 	output += ..()
 	return output
+
+//Meant for random spawns.
+/obj/mecha/combat/marauder/old
+	desc = "Heavy-duty, combat exosuit, developed after the Durand model. Rarely found among civilian populations. This one is particularly worn looking and likely isn't as sturdy."
+
+	starting_equipment = null
+
+/obj/mecha/combat/marauder/old/Initialize(mapload)
+	. = ..()
+	health = 25
+	maxhealth = 300	//Just slightly worse.
+	cell.charge = rand(0, (cell.charge/2))

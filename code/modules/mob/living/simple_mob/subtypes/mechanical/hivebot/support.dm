@@ -81,7 +81,7 @@
 		if(IIsAlly(SM)) // Don't resupply enemies.
 			if(!isnull(SM.special_attack_charges) && SM.special_attack_charges < initial(SM.special_attack_charges))
 				SM.special_attack_charges += 1
-				to_chat(SM, span("notice", "\The [src] has resupplied you, and you can use your special ability one additional time."))
-				to_chat(src, span("notice", "You have resupplied \the [SM]."))
+				to_chat(SM, SPAN_NOTICE("\The [src] has resupplied you, and you can use your special ability one additional time."))
+				to_chat(src, SPAN_NOTICE("You have resupplied \the [SM]."))
 				last_resupply = world.time
 				break // Only one resupply per pulse.

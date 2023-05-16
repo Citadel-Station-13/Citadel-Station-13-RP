@@ -17,12 +17,12 @@
 	//Power used to maintain temperature once it's heated.
 	//Going with 25% of the active power. This is a somewhat arbitrary value
 
-	resistance = 20000	// Approx. 8-9 minutes to heat up.
+	resistance = 10000	// Approx. 4-5 minutes to heat up.
 
 	max_contents = 2
 	container_type = /obj/item/reagent_containers/cooking_container/fryer
 
-	stat = POWEROFF//Starts turned off
+	machine_stat = POWEROFF//Starts turned off
 
 	var/datum/reagents/oil
 	var/optimal_oil = 9000//90 litres of cooking oil
@@ -42,7 +42,7 @@
 		//Sometimes the fryer will start with much less than full oil, significantly impacting efficiency until filled
 		//hm yes 20% of the time we will make fryers start with less this is very fun and interactive
 		variance = rand()*0.5
-	oil.add_reagent("cornoil", optimal_oil*(1 - variance))
+	oil.add_reagent("tallow", optimal_oil*(1 - variance))
 
 /obj/machinery/appliance/cooker/fryer/heat_up()
 	if (..())
@@ -169,7 +169,7 @@
 	if(ishuman(victim) && user.zone_sel.selecting != "groin" && user.zone_sel.selecting != "chest")
 		var/mob/living/carbon/human/H = victim
 		E = H.get_organ(user.zone_sel.selecting)
-		if(!E || E.species.flags & NO_PAIN)
+		if(!E || E.species.species_flags & NO_PAIN)
 			nopain = 2
 		else if(E.robotic >= ORGAN_ROBOT)
 			nopain = 1
@@ -209,7 +209,7 @@
 		if (I.reagents.total_volume <= 0 && oil)
 			//Its empty, handle scooping some hot oil out of the fryer
 			oil.trans_to(I, I.reagents.maximum_volume)
-			user.visible_message("[user] scoops some oil out of \the [src].", span("notice","You scoop some oil out of \the [src]."))
+			user.visible_message("[user] scoops some oil out of \the [src].", SPAN_NOTICE("You scoop some oil out of \the [src]."))
 			return 1
 		else
 	//It contains stuff, handle pouring any oil into the fryer
@@ -219,13 +219,13 @@
 			var/amount = 0
 			for (var/datum/reagent/R in I.reagents.reagent_list)
 				if (istype(R, /datum/reagent/nutriment/triglyceride/oil))
-					var/delta = oil.get_free_space()
+					var/delta = oil.available_volume()
 					delta = min(delta, R.volume)
 					oil.add_reagent(R.id, delta)
 					I.reagents.remove_reagent(R.id, delta)
 					amount += delta
 			if (amount > 0)
-				user.visible_message("[user] pours some oil into \the [src].", span("notice","You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
+				user.visible_message("[user] pours some oil into \the [src].", SPAN_NOTICE("You pour [amount]u of oil into \the [src]."), "<span class='notice'>You hear something viscous being poured into a metal container.</span>")
 				return 1
 	//If neither of the above returned, then call parent as normal
 	..()

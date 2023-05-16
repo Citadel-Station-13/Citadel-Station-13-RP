@@ -21,7 +21,7 @@
 	desc = "A small, normal-looking drone. It looks like one you'd find on station, except... IT'S COMING AT YOU!"
 	catalogue_data = list(/datum/category_item/catalogue/technology/drone/corrupt_maint_drone)
 
-	icon = 'icons/mob/robots_vr.dmi'
+	icon = 'icons/mob/robots.dmi'
 	icon_state = "corrupt-repairbot"
 	icon_living = "corrupt-repairbot"
 	hovering = FALSE // Can trigger landmines.
@@ -32,7 +32,7 @@
 	movement_cooldown = 0
 	movement_sound = 'sound/effects/servostep.ogg'
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
@@ -69,3 +69,11 @@
 /mob/living/simple_mob/mechanical/corrupt_maint_drone/death()
 	..(null,"is smashed into pieces!")
 	qdel(src)
+
+/mob/living/simple_mob/mechanical/corrupt_maint_drone/weak_no_poison
+	name = "Derelict Maintenance Drone"
+	base_attack_cooldown = 8 // Slower attack rate
+	melee_damage_lower = 4	// Slightly less DPS for this version
+	poison_chance = 0	// No welding fuel poison
+//	pass_flags = Null // Lets see if this stops the bastards from going under barricades
+

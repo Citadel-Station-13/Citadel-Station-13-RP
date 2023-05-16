@@ -14,7 +14,7 @@
 	parent_atom.opacity = 0
 	if(isliving(parent_atom))
 		var/mob/living/L = parent_atom
-		L.add_movespeed_modifier(MOVESPEED_ID_SHRINK_RAY, update=TRUE, priority=100, multiplicative_slowdown=4, movetypes=GROUND)
+		L.add_movespeed_modifier(MOVESPEED_ID_SHRINK_RAY, update=TRUE, priority=100, multiplicative_slowdown=4, movement_type=MOVEMENT_GROUND)
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
 			C.unequip_everything()

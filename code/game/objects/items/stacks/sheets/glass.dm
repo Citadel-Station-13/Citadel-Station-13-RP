@@ -19,7 +19,10 @@
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
-/obj/item/stack/material/glass/attack_self(mob/user as mob)
+/obj/item/stack/material/glass/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	construct_window(user)
 
 /obj/item/stack/material/glass/attackby(obj/item/W, mob/user)
@@ -42,18 +45,14 @@
 				return
 
 			var/obj/item/stack/material/glass/reinforced/RG = new (user.loc)
-			RG.add_fingerprint(user)
 			RG.add_to_stacks(user)
 			var/obj/item/stack/material/glass/G = src
 			src = null
-			var/replace = (user.get_inactive_hand()==G)
+			var/replace = (user.get_inactive_held_item()==G)
 			V.use(1)
 			G.use(1)
 			if (!G && replace)
 				user.put_in_hands(RG)
-
-
-
 
 /*
  * Reinforced glass sheets
@@ -79,12 +78,11 @@
 	if( istype(W, /obj/item/stack/rods) )
 		var/obj/item/stack/rods/V  = W
 		var/obj/item/stack/material/glass/phoronrglass/RG = new (user.loc)
-		RG.add_fingerprint(user)
 		RG.add_to_stacks(user)
 		V.use(1)
 		var/obj/item/stack/material/glass/G = src
 		src = null
-		var/replace = (user.get_inactive_hand()==G)
+		var/replace = (user.get_inactive_held_item()==G)
 		G.use(1)
 		if (!G && !RG && replace)
 			user.put_in_hands(RG)

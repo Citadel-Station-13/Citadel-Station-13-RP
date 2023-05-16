@@ -5,12 +5,12 @@
 	icon_state = "dcell"
 	item_state = "egg6"
 	w_class = ITEMSIZE_SMALL
-	force = 0
+	damage_force = 0
 	throw_speed = 5
 	throw_range = 7
 	maxcharge = 480
 	charge_amount = 5
-	matter = list("metal" = 350, "glass" = 50)
+	matter = list("metal" = 350, MAT_GLASS = 50)
 	preserve_item = 1
 
 /obj/item/cell/device/empty
@@ -25,6 +25,9 @@
 
 /obj/item/cell/device/weapon/empty
 	charge = 0
+
+/obj/item/cell/device/weapon/empproof
+	emp_proof = TRUE
 
 /obj/item/cell/device/weapon/recharge
 	name = "self-charging weapon power cell"

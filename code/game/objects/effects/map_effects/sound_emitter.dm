@@ -73,12 +73,12 @@
 	interval_upper_bound = 1 SECOND
 
 /obj/effect/map_effect/interval/sound_emitter/explosions
-	sounds_to_play = list("explosion")
+	sounds_to_play = list(SFX_ALIAS_EXPLOSION)
 	interval_lower_bound = 5 SECONDS
 	interval_upper_bound = 10 SECONDS
 
 /obj/effect/map_effect/interval/sound_emitter/explosions/distant
-	sounds_to_play = list('sound/effects/explosionfar.ogg')
+	sounds_to_play = list('sound/soundbytes/effects/explosion/explosionfar.ogg')
 
 /obj/effect/map_effect/interval/sound_emitter/ballistic_gunfight
 	sounds_to_play = list(

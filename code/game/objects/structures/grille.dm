@@ -1,18 +1,25 @@
 /obj/structure/grille
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
-	icon = 'icons/obj/structures_vr.dmi' // VOREStation Edit - New icons
+	icon = 'icons/obj/structures/grille.dmi'
 	icon_state = "grille"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
+	rad_flags = RAD_BLOCK_CONTENTS
 	layer = TABLE_LAYER
 	explosion_resistance = 1
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_GRILLE)
+
 	var/health = 10
 	var/destroyed = 0
 
 
-/obj/structure/grille/ex_act(severity)
+/obj/structure/grille/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/structure/grille/update_icon()
@@ -24,7 +31,7 @@
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
 
-/obj/structure/grille/attack_hand(mob/user as mob)
+/obj/structure/grille/attack_hand(mob/user, list/params)
 
 	user.setClickCooldown(user.get_attack_speed())
 	playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
@@ -41,7 +48,7 @@
 	if(shock(user, 70))
 		return
 
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		damage_dealt += 5
 	else
 		damage_dealt += 1
@@ -49,14 +56,11 @@
 	attack_generic(user,damage_dealt,attack_message)
 
 /obj/structure/grille/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGRILLE))
+	if(istype(mover, /obj/projectile) && prob(30))
 		return TRUE
-	if(istype(mover, /obj/item/projectile))
-		return prob(30)
-	return !density
+	return ..()
 
-/obj/structure/grille/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/grille/bullet_act(var/obj/projectile/Proj)
 	if(!Proj)	return
 
 	//Flimsy grilles aren't so great at stopping projectiles. However they can absorb some of the impact
@@ -71,11 +75,11 @@
 		if(BRUTE)
 			//bullets
 			if(Proj.original == src || prob(20))
-				Proj.damage *= between(0, Proj.damage/60, 0.5)
+				Proj.damage *= clamp( Proj.damage/60, 0,  0.5)
 				if(prob(max((damage-10)/25, 0))*100)
 					passthrough = 1
 			else
-				Proj.damage *= between(0, Proj.damage/60, 1)
+				Proj.damage *= clamp( Proj.damage/60, 0,  1)
 				passthrough = 1
 		if(BURN)
 			//beams and other projectiles are either blocked completely by grilles or stop half the damage.
@@ -97,12 +101,12 @@
 		return FALSE
 	else if(W.is_wirecutter())
 		if(!shock(user, 100))
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			new /obj/item/stack/rods(get_turf(src), destroyed ? 1 : 2)
 			qdel(src)
 	else if((W.is_screwdriver()) && (istype(loc, /turf/simulated) || anchored))
 		if(!shock(user, 90))
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			anchored = !anchored
 			user.visible_message("<span class='notice'>[user] [anchored ? "fastens" : "unfastens"] the grille.</span>", \
 								 "<span class='notice'>You have [anchored ? "fastened the grille to" : "unfastened the grille from"] the floor.</span>")
@@ -111,55 +115,41 @@
 	//window placing begin //TODO CONVERT PROPERLY TO MATERIAL DATUM
 	else if(istype(W,/obj/item/stack/material))
 		var/obj/item/stack/material/ST = W
-		if(!ST.material.created_window)
+		if(!ST.material.created_fulltile_window)
 			return 0
 
-		var/dir_to_set = 1
-		if(loc == user.loc)
-			dir_to_set = user.dir
-		else
-			if( ( x == user.x ) || (y == user.y) ) //Only supposed to work for cardinal directions.
-				if( x == user.x )
-					if( y > user.y )
-						dir_to_set = 2
-					else
-						dir_to_set = 1
-				else if( y == user.y )
-					if( x > user.x )
-						dir_to_set = 8
-					else
-						dir_to_set = 4
-			else
-				to_chat(user, "<span class='notice'>You can't reach.</span>")
-				return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
+		if( !(( x == user.x ) || (y == user.y)) ) //Only supposed to work for cardinal directions.
+			to_chat(user, "<span class='notice'>You can't reach.</span>")
+			return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
+
 		for(var/obj/structure/window/WINDOW in loc)
-			if(WINDOW.dir == dir_to_set)
-				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-				return
+			to_chat(user, "<span class='notice'>There is already a window here.</span>")
+			return
+
 		to_chat(user, "<span class='notice'>You start placing the window.</span>")
+
 		if(do_after(user,20))
 			for(var/obj/structure/window/WINDOW in loc)
-				if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
-					to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-					return
+				to_chat(user, "<span class='notice'>There is already a window here.</span>")
+				return
 
-			var/wtype = ST.material.created_window
-			if (ST.use(1))
-				var/obj/structure/window/WD = new wtype(loc, dir_to_set, 1)
+			var/wtype = ST.material.created_fulltile_window
+			if (ST.use(2))
+				var/obj/structure/window/WD = new wtype(loc, 1)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_icon()
 		return
 //window placing end
 
-	else if((W.flags & NOCONDUCT) || !shock(user, 70))
+	else if((W.atom_flags & NOCONDUCT) || !shock(user, 70))
 		user.setClickCooldown(user.get_attack_speed(W))
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force
+				health -= W.damage_force
 			if("brute")
-				health -= W.force * 0.1
+				health -= W.damage_force * 0.1
 	healthcheck()
 	..()
 	return
@@ -189,7 +179,7 @@
 		return 0
 	if(!prob(prb))
 		return 0
-	if(!in_range(src, user))//To prevent TK and mech users from getting shocked
+	if(!in_range(src, user))//To prevent MUTATION_TELEKINESIS and mech users from getting shocked
 		return 0
 	var/turf/T = get_turf(src)
 	var/obj/structure/cable/C = T.get_cable_node()
@@ -200,7 +190,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			if(user.stunned)
+			if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 				return 1
 		else
 			return 0
@@ -222,20 +212,21 @@
 
 // Used in mapping to avoid
 /obj/structure/grille/broken
-	destroyed = 1
+	destroyed = TRUE
+	density = FALSE
 	icon_state = "grille-b"
-	density = 0
-	New()
-		..()
-		health = rand(-5, -1) //In the destroyed but not utterly threshold.
-		healthcheck() //Send this to healthcheck just in case we want to do something else with it.
+
+/obj/structure/grille/broken/New()
+	..()
+	health = rand(-5, -1) //In the destroyed but not utterly threshold.
+	healthcheck() //Send this to healthcheck just in case we want to do something else with it.
 
 /obj/structure/grille/cult
 	name = "cult grille"
 	desc = "A matrice built out of an unknown material, with some sort of force field blocking air around it."
 	icon_state = "grillecult"
 	health = 40 // Make it strong enough to avoid people breaking in too easily.
-	can_atmos_pass = ATMOS_PASS_NO // Make sure air doesn't drain.
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED // Make sure air doesn't drain.
 
 /obj/structure/grille/broken/cult
 	icon_state = "grillecult-b"
@@ -270,13 +261,13 @@
 /obj/structure/grille/rcd_act(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span("notice", "You deconstruct \the [src]."))
+			to_chat(user, SPAN_NOTICE("You deconstruct \the [src]."))
 			qdel(src)
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/window) in loc)
 				return FALSE
-			to_chat(user, span("notice", "You construct a window."))
+			to_chat(user, SPAN_NOTICE("You construct a window."))
 			var/obj/structure/window/WD = new the_rcd.window_type(loc)
 			WD.anchored = TRUE
 			return TRUE
@@ -286,4 +277,3 @@
 	health -= damage
 	spawn(1) healthcheck()
 	return 1
-

@@ -41,7 +41,10 @@
 			spamcheck = 0
 		return
 
-/obj/item/megaphone/attack_self(mob/living/user as mob)
+/obj/item/megaphone/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!can_broadcast(user))
 		return
 
@@ -67,7 +70,7 @@
 	var/broadcast_font = "verdana"
 	var/broadcast_size = 3
 	var/broadcast_color = "#000000" //Black by default.
-	var/list/volume_options = list(2, 3, 4)
+	var/list/volume_options = list(2, 3, 4, 8)
 	var/list/font_options = list("times new roman", "times", "verdana", "sans-serif", "serif", "georgia")
 	var/list/color_options= list("#000000", "#ff0000", "#00ff00", "#0000ff")
 
@@ -141,13 +144,13 @@
 					for(var/mob/living/carbon/M in oviewers(4, T))
 						if(M.get_ear_protection() >= 2)
 							continue
-						M.SetSleeping(0)
+						M.set_sleeping(0)
 						M.stuttering += 20
 						M.ear_deaf += 30
-						M.Weaken(3)
+						M.afflict_paralyze(20 * 3)
 						if(prob(30))
-							M.Stun(10)
-							M.Paralyse(4)
+							M.afflict_stun(20 * 10)
+							M.afflict_unconscious(20 * 4)
 						else
 							M.make_jittery(50)
 				insults--

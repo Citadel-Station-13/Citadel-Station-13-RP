@@ -9,13 +9,11 @@
 
 /area/shuttle/arrival/station
 	icon_state = "shuttle"
-	dynamic_lighting = 0
 	ambience = AMBIENCE_ARRIVALS
 
 /area/shuttle/escape/station
 	name = "\improper Emergency Shuttle Station"
 	icon_state = "shuttle2"
-	dynamic_lighting = 0
 
 /area/shuttle/escape/centcom
 	name = "\improper Emergency Shuttle CentCom"
@@ -99,7 +97,6 @@
 
 /area/shuttle/cryo/station
 	icon_state = "shuttle2"
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/cryo/centcom
 	icon_state = "shuttle"
@@ -152,16 +149,13 @@
 	icon_state = "shuttle"
 
 /area/supply
-	flags = BLUE_SHIELDED
 
 /area/supply/station
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
-	base_turf = /turf/space
+	requires_power = FALSE
 
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
-	requires_power = 0
-	base_turf = /turf/space
+	requires_power = FALSE

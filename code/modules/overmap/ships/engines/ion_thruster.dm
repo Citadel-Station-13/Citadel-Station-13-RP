@@ -40,30 +40,41 @@
 	icon = 'icons/turf/shuttle_parts.dmi'
 	icon_state = "nozzle"
 	power_channel = ENVIRON
-	idle_power_usage = 150
+	idle_power_usage = 100
 	anchored = TRUE
-	// construct_state = /decl/machine_construction/default/panel_closed
+
+	// construct_state = /singleton/machine_construction/default/panel_closed
 	var/datum/ship_engine/ion/controller
 	var/thrust_limit = 1
 	var/on = 1
-	var/burn_cost = 1000
-	var/generated_thrust = 4
+	var/burn_cost = 7500
+	var/generated_thrust = 2.5
+	var/linked = FALSE
 
 /obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
+	SSshuttle.ion_engines += src
+	if(SSshuttle.initialized)
+		link_to_ship()
 
 /obj/machinery/ion_engine/Destroy()
 	QDEL_NULL(controller)
+	SSshuttle.ion_engines -= src
 	. = ..()
+
+/obj/machinery/ion_engine/proc/link_to_ship()
+	for(var/ship in SSshuttle.ships)
+		var/obj/effect/overmap/visitable/ship/S = ship
+		if(S.check_ownership(src))
+			S.engines |= controller
+			linked = TRUE
 
 /obj/machinery/ion_engine/proc/get_status()
 	. = list()
 	.+= "Location: [get_area(src)]."
 	if(!powered())
-		.+= "Insufficient power to operate."
-
-	. = jointext(.,"<br>")
+		.+= list(list("Insufficient power to operate.", "bad"))
 
 /obj/machinery/ion_engine/proc/burn()
 	if(!on && !powered())
@@ -84,16 +95,3 @@
 							/obj/item/stack/cable_coil = 2,
 							/obj/item/stock_parts/matter_bin = 1,
 							/obj/item/stock_parts/capacitor = 2)
-
-//Nerfed Ion Engine for "limping" home/emergency propulsion.
-/obj/machinery/ion_engine/small
-	name = "backup ion propulsion device"
-	desc = "A compact ion propulsion device, using energy and minute amount of gas to generate thrust for emergency maneuvers."
-	icon = 'icons/turf/shuttle_parts.dmi'
-	icon_state = "nozzle"
-	power_channel = ENVIRON
-	idle_power_usage = 150
-	anchored = TRUE
-	on = 0
-	burn_cost = 5000
-	generated_thrust = 0.5

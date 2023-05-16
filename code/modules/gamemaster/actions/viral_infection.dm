@@ -2,7 +2,7 @@
 
 /datum/gm_action/viral_infection
 	name = "viral infection"
-	departments = list(ROLE_MEDICAL)
+	departments = list(DEPARTMENT_MEDICAL)
 	chaotic = 5
 	var/list/viruses = list()
 	severity = 1
@@ -43,7 +43,7 @@
 	..()
 
 	var/list/candidates = list()	//list of candidate keys
-	for(var/mob/living/carbon/human/G in player_list)
+	for(var/mob/living/carbon/human/G in GLOB.player_list)
 		if(G.mind && G.stat != DEAD && G.is_client_active(5) && !player_is_antag(G.mind))
 			var/turf/T = get_turf(G)
 			if(T.z in GLOB.using_map.station_levels)
@@ -80,4 +80,4 @@
 	message_admins("Virus event affecting [english_list(used_candidates_links)] started; Viruses: [english_list(used_viruses_links)]")
 
 /datum/gm_action/viral_infection/get_weight()
-	return (metric.count_people_in_department(ROLE_MEDICAL) * 20)
+	return (metric.count_people_in_department(DEPARTMENT_MEDICAL) * 20)

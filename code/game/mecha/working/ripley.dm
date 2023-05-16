@@ -3,14 +3,29 @@
 	name = "APLU \"Ripley\""
 	icon_state = "ripley"
 	initial_icon = "ripley"
-	step_in = 5 // vorestation edit, was 6 but that's PAINFULLY slow
-	step_energy_drain = 5 // vorestation edit because 10 drained a significant chunk of its cell before you even got out the airlock
+	step_in = 5
+	step_energy_drain = 5
 	max_temperature = 20000
 	health = 200
-	maxhealth = 200
+	maxhealth = 200		//Don't forget to update the /old variant if  you change this number.
 	wreckage = /obj/effect/decal/mecha_wreckage/ripley
 	cargo_capacity = 10
-	var/obj/item/mining_scanner/orescanner // vorestation addition
+	var/obj/item/mining_scanner/orescanner
+
+	minimum_penetration = 10
+
+	encumbrance_gap = 2
+
+	starting_components = list(
+		/obj/item/mecha_parts/component/hull/durable,
+		/obj/item/mecha_parts/component/actuator,
+		/obj/item/mecha_parts/component/armor/mining,
+		/obj/item/mecha_parts/component/gas,
+		/obj/item/mecha_parts/component/electrical
+		)
+
+	icon_scale_x = 1.2
+	icon_scale_y = 1.2
 
 /obj/mecha/working/ripley/Destroy()
 	for(var/atom/movable/A in src.cargo)
@@ -56,8 +71,9 @@
 
 /obj/mecha/working/ripley/deathripley/Initialize(mapload)
 	. = ..()
-	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/safety_clamp
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp/safety
 	ME.attach(src)
+	return
 
 /obj/mecha/working/ripley/mining
 	desc = "An old, dusty mining ripley."
@@ -79,8 +95,25 @@
 	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)//Deletes the beacon so it can't be found easily
 		qdel (B)
 
+/obj/mecha/working/ripley/geiger
+	name = "APLU \"Geiger\""
+	desc = "You can't beat the classics."
+	icon_state = "ripley-old"
+	initial_icon = "ripley-old"
+	max_temperature = 5000
+	health = 150
+	maxhealth = 150
+	internal_damage_threshold = 50
+	step_energy_drain = 3
 
-// VORESTATION EDIT BEGIN
+	show_pilot = TRUE
+	pilot_lift = 5
+
+	max_utility_equip = 1
+	max_universal_equip = 3
+
+	icon_scale_x = 1
+	icon_scale_y = 1
 
 /obj/mecha/working/ripley/Initialize(mapload)
 	. = ..()
@@ -94,5 +127,19 @@
 
 	orescanner.attack_self(usr)
 
-// VORESTATION EDIT END
+//Meant for random spawns.
+/obj/mecha/working/ripley/mining/old
+	desc = "An old, dusty mining ripley."
 
+/obj/mecha/working/ripley/mining/old/Initialize(mapload)
+	. = ..()
+	health = 25
+	maxhealth = 190	//Just slightly worse.
+	cell.charge = rand(0, cell.charge)
+
+/// Moved here from underdark_things.dm (cleaning up files)
+//Mechbay
+/obj/mecha/working/ripley/abandoned/Initialize(mapload)
+	. = ..()
+	for(var/obj/item/mecha_parts/mecha_tracking/B in src.contents)	//Deletes the beacon so it can't be found easily
+		qdel(B)

@@ -2,7 +2,7 @@
 	name = "door"
 	density = 1
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
@@ -23,7 +23,7 @@
 /obj/structure/simple_door/Initialize(mapload, material_name)
 	. = ..(mapload)
 	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
+		material_name = MAT_STEEL
 	material = get_material_by_name(material_name)
 	if(!material)
 		qdel(src)
@@ -38,7 +38,7 @@
 		set_opacity(1)
 	if(material.products_need_process())
 		START_PROCESSING(SSobj, src)
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/structure/simple_door/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -61,7 +61,7 @@
 		if(get_dist(user,src) <= 1) //not remotely though
 			return TryToSwitchState(user)
 
-/obj/structure/simple_door/attack_hand(mob/user as mob)
+/obj/structure/simple_door/attack_hand(mob/user, list/params)
 	return TryToSwitchState(user)
 
 /obj/structure/simple_door/CanAllowThrough(atom/movable/mover, turf/target)
@@ -133,11 +133,11 @@
 			visible_message("<span class='danger'>[user] finished digging [src]!</span>")
 			Dismantle()
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
-		hardness -= W.force/10
+		hardness -= W.damage_force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
 		if(material == get_material_by_name("resin"))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
+		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 		else
 			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
@@ -150,8 +150,8 @@
 		attack_hand(user)
 	return
 
-/obj/structure/simple_door/bullet_act(var/obj/item/projectile/Proj)
-	hardness -= Proj.force/10
+/obj/structure/simple_door/bullet_act(var/obj/projectile/Proj)
+	hardness -= Proj.damage/10
 	CheckHardness()
 
 /obj/structure/simple_door/take_damage(var/damage)
@@ -162,7 +162,7 @@
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
 	if(material == get_material_by_name("resin"))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD)))
+	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 	else
 		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
@@ -179,7 +179,7 @@
 	visible_message("<span class='danger'>The [src] is destroyed!</span>")
 	qdel(src)
 
-/obj/structure/simple_door/ex_act(severity = 1)
+/obj/structure/simple_door/legacy_ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)
@@ -197,7 +197,7 @@
 /obj/structure/simple_door/process(delta_time)
 	if(!material.radioactivity)
 		return
-	SSradiation.radiate(src, round(material.radioactivity/3))
+	radiation_pulse(src, round(material.radioactivity / RAD_INTENSITY_DIVISOR_SIMPLE_DOOR))
 
 /obj/structure/simple_door/iron/Initialize(mapload, material_name)
 	return ..(mapload, "iron")
@@ -225,6 +225,9 @@
 
 /obj/structure/simple_door/sifwood/Initialize(mapload, material_name)
 	return ..(mapload, MAT_SIFWOOD)
+
+/obj/structure/simple_door/hardwood/Initialize(mapload, material_name)
+	return ..(mapload, MAT_HARDWOOD)
 
 /obj/structure/simple_door/resin/Initialize(mapload, material_name)
 	return ..(mapload, "resin")

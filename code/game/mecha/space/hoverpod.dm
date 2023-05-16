@@ -30,7 +30,16 @@
 	. = ..()
 	ion_trail = new /datum/effect_system/ion_trail_follow()
 	ion_trail.set_up(src)
-	ion_trail.start()
+
+/obj/mecha/working/hoverpod/moved_inside(var/mob/living/carbon/human/H as mob)
+	. = ..(H)
+	if(.)
+		ion_trail.start()
+
+/obj/mecha/working/hoverpod/go_out()
+	. = ..()
+	if(!occupant)
+		ion_trail.stop()
 
 //Modified phazon code
 /obj/mecha/working/hoverpod/Topic(href, href_list)
@@ -52,6 +61,9 @@
 	output += ..()
 	return output
 
+/obj/mecha/working/hoverpod/can_ztravel()
+	return (stabilization_enabled && has_charge(step_energy_drain))
+
 // No space drifting
 /obj/mecha/working/hoverpod/check_for_support()
 	//does the hoverpod have enough charge left to stabilize itself?
@@ -67,7 +79,10 @@
 
 // No falling if we've got our boosters on
 /obj/mecha/working/hoverpod/can_fall()
-	return (stabilization_enabled && has_charge(step_energy_drain))
+	if(stabilization_enabled && has_charge(step_energy_drain))
+		return FALSE
+	else
+		return TRUE
 
 /*	// One horrific bastardization of glorious inheritence dead. A billion to go. ~Mech
 //these three procs overriden to play different sounds

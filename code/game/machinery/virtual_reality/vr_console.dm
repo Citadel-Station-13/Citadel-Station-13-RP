@@ -1,7 +1,7 @@
 /obj/machinery/vr_sleeper
 	name = "virtual reality sleeper"
 	desc = "A fancy bed with built-in sensory I/O ports and connectors to interface users' minds with their bodies in virtual reality."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "syndipod_0"
 
 	var/base_state = "syndipod_"
@@ -41,7 +41,7 @@
 	go_out()
 
 /obj/machinery/vr_sleeper/process(delta_time)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		if(occupant)
 			go_out()
 			visible_message("<span class='notice'>\The [src] emits a low droning sound, before the pod door clicks open.</span>")
@@ -72,7 +72,7 @@
 	add_fingerprint(user)
 
 	if(occupant && (istype(I, /obj/item/healthanalyzer) || istype(I, /obj/item/robotanalyzer)))
-		I.attack(occupant, user)
+		I.melee_attack_chain(occupant, user)
 		return
 
 	if(default_deconstruction_screwdriver(user, I))
@@ -85,7 +85,7 @@
 		return
 
 
-/obj/machinery/vr_sleeper/MouseDrop_T(var/mob/target, var/mob/user)
+/obj/machinery/vr_sleeper/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !target.Adjacent(user)|| !isliving(target))
 		return
 	go_in(target, user)
@@ -101,7 +101,7 @@
 
 
 /obj/machinery/vr_sleeper/emp_act(var/severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 
@@ -128,7 +128,7 @@
 
 	var/forced = FALSE
 
-	if(stat & (BROKEN|NOPOWER) || occupant && occupant.stat == DEAD)
+	if(machine_stat & (BROKEN|NOPOWER) || occupant && occupant.stat == DEAD)
 		forced = TRUE
 
 	go_out(forced)
@@ -149,10 +149,10 @@
 		return 0 //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
-/obj/machinery/vr_sleeper/proc/go_in(var/mob/M, var/mob/user)
+/obj/machinery/vr_sleeper/proc/go_in(mob/M, mob/user)
 	if(!M)
 		return
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(!ishuman(M))
 		to_chat(user, "<span class='warning'>\The [src] rejects [M] with a sharp beep.</span>")
@@ -170,10 +170,8 @@
 			to_chat(user, "<span class='warning'>\The [src] is already occupied.</span>")
 			return
 		M.stop_pulling()
-		if(M.client)
-			M.client.perspective = EYE_PERSPECTIVE
-			M.client.eye = src
-		M.loc = src
+		M.forceMove(src)
+		M.update_perspective()
 		update_use_power(USE_POWER_ACTIVE)
 		occupant = M
 
@@ -192,10 +190,8 @@
 	avatar.exit_vr()
 	avatar = null
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
+	occupant.reset_perspective()
 	occupant = null
 	for(var/atom/movable/A in src) // In case an object was dropped inside or something
 		if(A == circuit)
@@ -231,24 +227,24 @@
 		// Get the desired spawn location to put the body
 		var/S = null
 		var/list/vr_landmarks = list()
-		for(var/obj/effect/landmark/virtual_reality/sloc in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/sloc in GLOB.landmarks_list)
 			vr_landmarks += sloc.name
 
 		S = input(occupant, "Please select a location to spawn your avatar at:", "Spawn location") as null|anything in vr_landmarks
 		if(!S)
 			return 0
 
-		for(var/obj/effect/landmark/virtual_reality/i in GLOB.landmarks_list)
+		for(var/obj/landmark/virtual_reality/i in GLOB.landmarks_list)
 			if(i.name == S)
 				S = i
 				break
 
-		avatar = new(S, "Virtual Reality Avatar")
+		avatar = new(S, SPECIES_VR)
 		// If the user has a non-default (Human) bodyshape, make it match theirs.
-		if(occupant.species.name != "Promethean" && occupant.species.name != "Human" && mirror_first_occupant)
+		if(occupant.species.get_species_id() != SPECIES_ID_PROMETHEAN && occupant.species.get_species_id() != SPECIES_ID_HUMAN && mirror_first_occupant)
 			avatar.shapeshifter_change_shape(occupant.species.name)
 		avatar.forceMove(get_turf(S))			// Put the mob on the landmark, instead of inside it
-		avatar.Sleeping(1)
+		avatar.afflict_sleeping(20 * 1)
 
 		occupant.enter_vr(avatar)
 
@@ -259,4 +255,3 @@
 
 	else
 		occupant.enter_vr(avatar)
-

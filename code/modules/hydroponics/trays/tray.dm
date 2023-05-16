@@ -2,9 +2,10 @@
 	name = "hydroponics tray"
 	icon = 'icons/obj/hydroponics_machines.dmi'
 	icon_state = "hydrotray3"
-	density = 1
-	anchored = 1
-	flags = OPENCONTAINER
+	density = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
+	anchored = TRUE
+	atom_flags = OPENCONTAINER
 	volume = 100
 
 	var/mechanical = 1         // Set to 0 to stop it from drawing the alert lights.
@@ -39,6 +40,7 @@
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
 	var/labelled
 	var/frozen = 0				//Is the plant frozen? -1 is used to define trays that can't be frozen. 0 is unfrozen and 1 is frozen.
+	var/hostile_soil = 0		//Does the soil make-up allow for weed invasion?
 
 	// Seed details/line data.
 	var/datum/seed/seed = null // The currently planted seed
@@ -69,7 +71,8 @@
 		"adminordrazine" =  1,
 		"eznutrient" =      1,
 		"robustharvest" =   1,
-		"left4zed" =        1
+		"left4zed" =        1,
+		"ash" =				1,
 		)
 	var/global/list/weedkiller_reagents = list(
 		"fluorine" =       -4,
@@ -79,7 +82,8 @@
 		"sacid" =          -2,
 		"pacid" =          -4,
 		"plantbgone" =     -8,
-		"adminordrazine" = -5
+		"adminordrazine" = -5,
+		"ash" =		       -2
 		)
 	var/global/list/pestkiller_reagents = list(
 		"sugar" =           2,
@@ -115,7 +119,8 @@
 		"radium" =         list( -1.5,  0,   0.2),
 		"adminordrazine" = list(  1,    1,   1  ),
 		"robustharvest" =  list(  0,    0.2, 0  ),
-		"left4zed" =       list(  0,    0,   0.2)
+		"left4zed" =       list(  0,    0,   0.2),
+		"ash" =		       list(  0,    0.2, 0)
 		)
 
 	// Mutagen list specifies minimum value for the mutation to take place, rather
@@ -132,6 +137,7 @@
 	return ..()
 
 /obj/machinery/portable_atmospherics/hydroponics/attack_ghost(var/mob/observer/dead/user)
+	. = ..()
 
 	if(!(harvest && seed && seed.has_mob_product))
 		return
@@ -142,7 +148,6 @@
 	var/response = alert(user, "Are you sure you want to harvest this [seed.display_name]?", "Living plant request", "Yes", "No")
 	if(response == "Yes")
 		harvest()
-	return
 
 /obj/machinery/portable_atmospherics/hydroponics/attack_generic(var/mob/user)
 
@@ -150,19 +155,19 @@
 	if(istype(user,/mob/living/carbon/alien/diona))
 		var/mob/living/carbon/alien/diona/nymph = user
 
-		if(nymph.stat == DEAD || nymph.paralysis || nymph.weakened || nymph.stunned || nymph.restrained())
+		if(!CHECK_MOBILITY(nymph, MOBILITY_CAN_USE))
 			return
 
 		if(weedlevel > 0)
 			nymph.reagents.add_reagent("glucose", weedlevel)
 			weedlevel = 0
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> begins rooting through [src], ripping out weeds and eating them noisily.</font>","<font color='blue'>You begin rooting through [src], ripping out weeds and eating them noisily.</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> begins rooting through [src], ripping out weeds and eating them noisily.</font>","<font color=#4F49AF>You begin rooting through [src], ripping out weeds and eating them noisily.</font>")
 		else if(nymph.nutrition > 100 && nutrilevel < 10)
 			nymph.nutrition -= ((10-nutrilevel)*5)
 			nutrilevel = 10
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> secretes a trickle of green liquid, refilling [src].</font>","<font color='blue'>You secrete a trickle of green liquid, refilling [src].</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> secretes a trickle of green liquid, refilling [src].</font>","<font color=#4F49AF>You secrete a trickle of green liquid, refilling [src].</font>")
 		else
-			nymph.visible_message("<font color='blue'><b>[nymph]</b> rolls around in [src] for a bit.</font>","<font color='blue'>You roll around in [src] for a bit.</font>")
+			nymph.visible_message("<font color=#4F49AF><b>[nymph]</b> rolls around in [src] for a bit.</font>","<font color=#4F49AF>You roll around in [src] for a bit.</font>")
 		return
 
 /obj/machinery/portable_atmospherics/hydroponics/Initialize(mapload)
@@ -196,32 +201,26 @@
 	check_health()
 	update_icon()
 
-/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.get_trait(TRAIT_IMMUTABLE) > 0)
 		return
 
 	//Override for somatoray projectiles.
-	if(istype(Proj ,/obj/item/projectile/energy/floramut)&& prob(20))
-		if(istype(Proj, /obj/item/projectile/energy/floramut/gene))
-			var/obj/item/projectile/energy/floramut/gene/G = Proj
+	if(istype(Proj ,/obj/projectile/energy/floramut)&& prob(20))
+		if(istype(Proj, /obj/projectile/energy/floramut/gene))
+			var/obj/projectile/energy/floramut/gene/G = Proj
 			if(seed)
 				seed = seed.diverge_mutate_gene(G.gene, get_turf(loc))	//get_turf just in case it's not in a turf.
 		else
 			mutate(1)
 			return
-	else if(istype(Proj ,/obj/item/projectile/energy/florayield) && prob(20))
+	else if(istype(Proj ,/obj/projectile/energy/florayield) && prob(20))
 		yield_mod = min(10,yield_mod+rand(1,2))
 		return
 
 	..()
-
-/obj/machinery/portable_atmospherics/hydroponics/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
 
 /obj/machinery/portable_atmospherics/hydroponics/proc/check_health()
 	if(seed && !dead && health <= 0)
@@ -342,7 +341,7 @@
 
 	//Remove the seed if something is already planted.
 	if(seed) seed = null
-	seed = plant_controller.seeds[pick(list("reishi","nettle","amanita","mushrooms","plumphelmet","towercap","harebells","weeds"))]
+	seed = SSplants.seeds[pick(list("reishi","nettle","amanita","mushrooms","plumphelmet","towercap","harebells","weeds"))]
 	if(!seed) return //Weed does not exist, someone fucked up.
 
 	dead = 0
@@ -372,7 +371,7 @@
 	// We need to make sure we're not modifying one of the global seed datums.
 	// If it's not in the global list, then no products of the line have been
 	// harvested yet and it's safe to assume it's restricted to this tray.
-	if(!isnull(plant_controller.seeds[seed.name]))
+	if(!isnull(SSplants.seeds[seed.name]))
 		seed = seed.diverge()
 	seed.mutate(severity,get_turf(src))
 
@@ -428,8 +427,8 @@
 
 	var/previous_plant = seed.display_name
 	var/newseed = seed.get_mutant_variant()
-	if(newseed in plant_controller.seeds)
-		seed = plant_controller.seeds[newseed]
+	if(newseed in SSplants.seeds)
+		seed = SSplants.seeds[newseed]
 	else
 		return
 
@@ -498,11 +497,10 @@
 			return 1
 
 	else if (istype(O, /obj/item/seeds))
-
 		if(!seed)
-
 			var/obj/item/seeds/S = O
-			user.remove_from_mob(O)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 
 			if(!S.seed)
 				to_chat(user, "The packet seems to be empty. You throw it away.")
@@ -532,12 +530,12 @@
 		for (var/obj/item/reagent_containers/food/snacks/grown/G in locate(user.x,user.y,user.z))
 			if(!S.can_be_inserted(G))
 				return
-			S.handle_item_insertion(G, 1)
+			S.handle_item_insertion(G, user, 1)
 
 	else if ( istype(O, /obj/item/plantspray) )
-
 		var/obj/item/plantspray/spray = O
-		user.remove_from_mob(O)
+		if(!user.temporarily_remove_from_inventory(O))
+			return
 		toxins += spray.toxicity
 		pestlevel -= spray.pest_kill_str
 		weedlevel -= spray.weed_kill_str
@@ -552,7 +550,7 @@
 		if(locate(/obj/machinery/atmospherics/portables_connector/) in loc)
 			return ..()
 
-		playsound(loc, O.usesound, 50, 1)
+		playsound(loc, O.tool_sound, 50, 1)
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
@@ -568,11 +566,11 @@
 		update_icon()
 		return
 
-	else if(O.force && seed)
+	else if(O.damage_force && seed)
 		user.setClickCooldown(user.get_attack_speed(O))
 		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [O]!</span>")
 		if(!dead)
-			health -= O.force
+			health -= O.damage_force
 			check_health()
 
 	return
@@ -583,7 +581,7 @@
 	else if(harvest)
 		harvest(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
+/obj/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user, list/params)
 
 	if(istype(usr,/mob/living/silicon))
 		return

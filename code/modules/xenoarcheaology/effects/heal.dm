@@ -8,7 +8,7 @@
 		var/weakness = GetAnomalySusceptibility(toucher)
 		if(prob(weakness * 100))
 			var/mob/living/carbon/C = toucher
-			to_chat(C, "<font color='blue'>You feel a soothing energy invigorate you.</font>")
+			to_chat(C, "<font color=#4F49AF>You feel a soothing energy invigorate you.</font>")
 
 			if(ishuman(toucher))
 				var/mob/living/carbon/human/H = toucher
@@ -19,7 +19,7 @@
 				H.vessel.add_reagent("blood",5)
 				H.nutrition += 50 * weakness
 				H.adjustBrainLoss(-25 * weakness)
-				H.radiation -= min(H.radiation, 25 * weakness)
+				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
 				spawn(1)
 					H.fixblood()
@@ -40,13 +40,13 @@
 			var/weakness = GetAnomalySusceptibility(C)
 			if(prob(weakness * 100))
 				if(prob(10))
-					to_chat(C, "<font color='blue'>You feel a soothing energy radiating from something nearby.</font>")
+					to_chat(C, "<font color=#4F49AF>You feel a soothing energy radiating from something nearby.</font>")
 				C.adjustBruteLoss(-1 * weakness)
 				C.adjustFireLoss(-1 * weakness)
 				C.adjustToxLoss(-1 * weakness)
 				C.adjustOxyLoss(-1 * weakness)
 				C.adjustBrainLoss(-1 * weakness)
-				C.updatehealth()
+				C.update_health()
 
 /datum/artifact_effect/heal/DoEffectPulse()
 	//todo: check over this properly
@@ -55,10 +55,10 @@
 		for (var/mob/living/carbon/C in range(src.effectrange,T))
 			var/weakness = GetAnomalySusceptibility(C)
 			if(prob(weakness * 100))
-				to_chat(C, "<font color='blue'>A wave of energy invigorates you.</font>")
+				to_chat(C, "<font color=#4F49AF>A wave of energy invigorates you.</font>")
 				C.adjustBruteLoss(-5 * weakness)
 				C.adjustFireLoss(-5 * weakness)
 				C.adjustToxLoss(-5 * weakness)
 				C.adjustOxyLoss(-5 * weakness)
 				C.adjustBrainLoss(-5 * weakness)
-				C.updatehealth()
+				C.update_health()

@@ -24,7 +24,6 @@
 /obj/machinery/pipelayer/Initialize(mapload)
 	. = ..()
 	W = new(src)
-	default_apply_parts()
 	update_icon()
 
 /obj/machinery/pipelayer/Destroy()
@@ -52,7 +51,7 @@
 	old_turf = new_turf
 	old_dir = turn(M_Dir, 180)
 
-/obj/machinery/pipelayer/attack_hand(mob/user as mob)
+/obj/machinery/pipelayer/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(panel_open)
@@ -62,8 +61,8 @@
 		var/answer = alert(user, "Do you want to eject all the metal in \the [src]?", , "Yes","No")
 		if(answer == "Yes")
 			var/amount_ejected = eject_metal()
-			user.visible_message("<span class='notice'>[user] removes [amount_ejected] sheet\s of [DEFAULT_WALL_MATERIAL] from the \the [src].</span>",
-				"<span class='notice'>You remove [amount_ejected] sheet\s of [DEFAULT_WALL_MATERIAL] from \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] removes [amount_ejected] sheet\s of [MAT_STEEL] from the \the [src].</span>",
+				"<span class='notice'>You remove [amount_ejected] sheet\s of [MAT_STEEL] from \the [src].</span>")
 		return
 	if(!metal && !on)
 		to_chat(user, "<span class='warning'>\The [src] doesn't work without metal.</span>")
@@ -92,17 +91,15 @@
 		return
 	if(istype(W, /obj/item/pipe))
 		// NOTE - We must check for matter, otherwise the (free) pipe dispenser can be used to get infinite steel.
-		if(!W.matter || W.matter[DEFAULT_WALL_MATERIAL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
-			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [DEFAULT_WALL_MATERIAL] to recycle.</span>")
+		if(!W.matter || W.matter[MAT_STEEL] < pipe_cost * SHEET_MATERIAL_AMOUNT)
+			to_chat(user, "<span class='warning'>\The [W] doesn't contain enough [MAT_STEEL] to recycle.</span>")
 		else if(metal + pipe_cost > max_metal)
 			to_chat(user, "<span class='notice'>\The [src] is full.</span>")
-		else
-			user.drop_from_inventory(W)
+		else if(user.attempt_consume_item_for_construction(W))
 			metal += pipe_cost
 			to_chat(user, "<span class='notice'>You recycle \the [W].</span>")
-			qdel(W)
 		return
-	if(istype(W, /obj/item/stack/material) && W.get_material_name() == DEFAULT_WALL_MATERIAL)
+	if(istype(W, /obj/item/stack/material) && W.get_material_name() == MAT_STEEL)
 		var/result = load_metal(W)
 		if(isnull(result))
 			to_chat(user, "<span class='warning'>Unable to load [W] - no metal found.</span>")
@@ -145,7 +142,7 @@
 /obj/machinery/pipelayer/proc/eject_metal()
 	var/amount_ejected = 0
 	while (metal >= 1)
-		var/datum/material/M = get_material_by_name(DEFAULT_WALL_MATERIAL)
+		var/datum/material/M = get_material_by_name(MAT_STEEL)
 		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))
 		S.amount = min(metal, S.max_amount)
 		metal -= S.amount
@@ -177,7 +174,7 @@
 	var/obj/item/pipe/P = new pi_type(w_turf, p_type, p_dir)
 	P.setPipingLayer(p_layer)
 	// We used metal to make these, so should be reclaimable!
-	P.matter = list(DEFAULT_WALL_MATERIAL = pipe_cost * SHEET_MATERIAL_AMOUNT)
+	P.matter = list(MAT_STEEL = pipe_cost * SHEET_MATERIAL_AMOUNT)
 	P.attackby(W , src)
 
 	return 1

@@ -2,7 +2,7 @@
 	color = "#666666"
 
 /obj/structure/table/rack/steel/Initialize(mapload)
-	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	material = get_material_by_name(MAT_STEEL)
 	return ..()
 
 /obj/structure/table/rack/shelf
@@ -15,5 +15,5 @@
 	color = "#666666"
 
 /obj/structure/table/rack/shelf/steel/Initialize(mapload)
-	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	material = get_material_by_name(MAT_STEEL)
 	return ..()

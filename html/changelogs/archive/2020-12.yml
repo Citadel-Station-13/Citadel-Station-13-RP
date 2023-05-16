@@ -1,0 +1,89 @@
+2020-12-01:
+  Lorilili (Port from Aurora):
+  - rscadd: Added knee-high and thigh-high jackboots.
+  - imageadd: Replaced laceup and leather shoes with oxford shoes.
+  - imageadd: Replaced standard shoe and high-top sprites with newer ones.
+  silicons:
+  - balance: berserk modifier used by saviks reduces slowdown by 0.75 instead of 1
+  - balance: teshari have been given a bit less damage vulnerability and item slowdown
+      mod.
+2020-12-02:
+  Hatterhat:
+  - bugfix: Null rods and equivalents now actually do the bonus damage they're intended
+      to do against demonic creatures and aberrations.
+  - rscadd: Jagged spikes, which are good for jamming into people's ribs and then
+      being guilty of a crime because that's assault with a deadly stick, are now
+      printable from an autolathe. You can't keep your grip on them for long, though.
+  - rscadd: Disruptor blades, which are intended to deal bonus damage to animals and
+      aberrations, are in the code, but unobtainable.
+  SiliconMain:
+  - tweak: Engineering winter coats can now hold the RCD and RPD in exosuit slot
+  TheKnightofAura:
+  - rscadd: Astral wind. A somewhat simple new drink mixed from three service-Borg
+      accessible reagents
+  silicons:
+  - balance: clothing vendors are way cheaper now, go wild.
+2020-12-04:
+  buffyuwu:
+  - bugfix: fixes curtains so they dont vanish underneath the window
+  - bugfix: fixes plushie code typo
+2020-12-05:
+  GrayRachnid:
+  - tweak: altered job titles to make them more setting and common sense compliant.
+  - code_imp: removed all non-modular files that edited jobs and put everything in
+      their non-modular counterparts.
+2020-12-07:
+  VailTheWolf:
+  - rscadd: Gunbox with two "new" rifles.
+  - rscadd: Exploration Vendor selection for Gunbox
+2020-12-08:
+  Hatterhat:
+  - rscadd: Hardsuit wearers can step into cyborg chargers to recharge their suit.
+  - tweak: The material processor can now be toggled to and from a slower processing
+      speed.
+  VailTheWolf:
+  - rscadd: New P90 sprites
+  - rscadd: Explorer pinned H90K
+  silicons:
+  - rscadd: colormates are now capable of evil
+2020-12-10:
+  Kraseo:
+  - rscadd: Gradients on hairstyles.
+2020-12-11:
+  Enzo-Leon:
+  - rscadd: New secondary explosion sound that will "shake" the station/ship with
+      a creaking sound effect
+  - soundadd: New sound files for explosions and ship creaking
+  TheLordME:
+  - rscadd: Chemical Patches work as a single use bruisepack. Applying thier Chemical
+      and bandaging a single wound.
+  - bugfix: Chemical Patches can no longer be placed on surgical sites.
+  - bugfix: Chemical Patches now correctly check for robotic limbs.
+2020-12-14:
+  buffyuwu:
+  - rscadd: expands vampirism mechanics
+2020-12-17:
+  TheLordME:
+  - rscadd: Added Recipe for Bicaridaze, Dermalaze, Inaprovalaze and Tricorladaze.
+      All four are healing chems for chemical patches. They are mixed by adding Sterilizine
+      and foaming agent to they similar sounding parents. Before they were only obtainable
+      via distiller.
+  - bugfix: Fixes ventcrawl-ejection on dieagonal movement
+  silicons:
+  - balance: protean rigs are slightly less godawful
+  - rscadd: now introducing nanotrasen SMART CHARGE - no longer will expedition ships
+      be shut down by 50 powergamers rolling protean and erping in the rechargers.
+  - tweak: cyborg chargers now waste less power while idle
+2020-12-18:
+  Hatterhat:
+  - bugfix: Destructive analyzers now return material to their lathes properly.
+  - tweak: RPEDs now drop lowest part tier when used inhand.
+  - tweak: RPEDs can be clickdragged onto destructive analyzers to recycle lowest
+      part tier.
+  - tweak: Protolathes and autolathes are now less awful to look at.
+2020-12-29:
+  UrsaMajora:
+  - rscadd: cloakglowing and cloakglowingdark icons
+  - rscadd: cloakglowing and cloakglowingdark accessory items
+  - rscadd: Civilian Cloak - Glowing Light and Civilian Cloak - Glowing Dark as loadout
+      selections

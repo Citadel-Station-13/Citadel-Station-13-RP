@@ -51,6 +51,7 @@
 	meat_amount = 0
 	maxHealth = 50
 	health = 50
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/cat/tabiranth/handle_special()
 	. = ..()
@@ -74,11 +75,10 @@
 
 //Emergency teleport - Until a spriter makes something better
 /mob/living/simple_mob/animal/passive/cat/tabiranth/death(gibbed, deathmessage = "teleports away!")
-	overlays = list()
+	cut_overlays()
 	icon_state = ""
 	flick("kphaseout",src)
 	spawn(1 SECOND)
 		qdel(src) //Back from whence you came!
 
 	. = ..(FALSE, deathmessage)
-

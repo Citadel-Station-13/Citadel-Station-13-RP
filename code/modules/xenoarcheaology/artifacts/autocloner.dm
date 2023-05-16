@@ -1,7 +1,7 @@
 /obj/machinery/auto_cloner
 	name = "mysterious pod"
 	desc = "It's full of a viscous liquid, but appears dark and silent."
-	icon = 'icons/obj/cryogenics.dmi'
+	icon = 'icons/obj/medical/cryogenics.dmi'
 	icon_state = "cellold0"
 	var/spawn_type
 	var/time_spent_spawning = 0
@@ -26,7 +26,7 @@
 		/mob/living/simple_mob/animal/space/bear,
 		/mob/living/simple_mob/creature,
 		/mob/living/simple_mob/slime/xenobio,
-		/mob/living/simple_mob/animal/space/carp)// Vorestation edit
+		/mob/living/simple_mob/animal/space/carp)
 	else
 		spawn_type = pick(\
 		/mob/living/simple_mob/animal/passive/cat,

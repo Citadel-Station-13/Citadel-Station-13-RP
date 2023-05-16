@@ -1,24 +1,21 @@
 // Alien larva are quite simple.
-/mob/living/carbon/alien/Life()
+/mob/living/carbon/alien/Life(seconds, times_fired)
+	blinded = null
+	. = ..()
+	if(.)
+		return
 
-	set invisibility = 0
-	set background = 1
+	if(!transforming)
+		update_icons()
 
-	if (transforming)	return
-	if(!loc)			return
+/mob/living/carbon/alien/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
-	..()
-
-	if (stat != DEAD) //still breathing
-		// GROW!
+	if(stat != DEAD)
 		update_progression()
 
-	blinded = null
-
-	//Status updates, death etc.
-	update_icons()
-
-/mob/living/carbon/alien/handle_mutations_and_radiation()
+/mob/living/carbon/alien/handle_mutations_and_radiation(seconds)
 
 	// Currently both Dionaea and larvae like to eat radiation, so I'm defining the
 	// rad absorbtion here. This will need to be changed if other baby aliens are added.
@@ -34,42 +31,26 @@
 	adjustToxLoss(-(rads))
 	return
 
-/mob/living/carbon/alien/handle_regular_status_updates()
+/mob/living/carbon/alien/handle_regular_UI_updates()
 
-	if(status_flags & GODMODE)	return 0
+	if(status_flags & STATUS_GODMODE)	return 0
 
 	if(stat == DEAD)
 		blinded = 1
 		silent = 0
 	else
-		updatehealth()
+		update_health()
 		if(health <= 0)
 			death()
 			blinded = 1
 			silent = 0
 			return 1
 
-		if(paralysis && paralysis > 0)
+		if(!IS_CONSCIOUS(src))
 			blinded = 1
-			stat = UNCONSCIOUS
-			if(halloss > 0)
-				adjustHalLoss(-3)
-
-		if(sleeping)
 			adjustHalLoss(-3)
-			if (mind)
-				if(mind.active && client != null)
-					AdjustSleeping(-1)
-			blinded = 1
-			stat = UNCONSCIOUS
-		else if(resting)
-			if(halloss > 0)
-				adjustHalLoss(-3)
-
-		else
-			stat = CONSCIOUS
-			if(halloss > 0)
-				adjustHalLoss(-1)
+		else if(IS_PRONE(src))
+			adjustHalLoss(-3)
 
 		// Eyes and blindness.
 		if(!has_eyes())
@@ -87,19 +68,14 @@
 	return 1
 
 /mob/living/carbon/alien/handle_regular_hud_updates()
-
-	if (stat == 2 || (XRAY in src.mutations))
-		sight |= SEE_TURFS
-		sight |= SEE_MOBS
-		sight |= SEE_OBJS
-		see_in_dark = 8
-		see_invisible = SEE_INVISIBLE_LEVEL_TWO
+	if (stat == 2 || (MUTATION_XRAY in src.mutations))
+		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(8)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 	else if (stat != 2)
-		sight &= ~SEE_TURFS
-		sight &= ~SEE_MOBS
-		sight &= ~SEE_OBJS
-		see_in_dark = 2
-		see_invisible = SEE_INVISIBLE_LIVING
+		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+		SetSeeInDarkSelf(2)
+		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (healths)
 		if (stat != 2)
@@ -121,23 +97,27 @@
 		else
 			healths.icon_state = "health7"
 
-	if (client)
-		client.screen.Remove(GLOB.global_hud.blurry,GLOB.global_hud.druggy,GLOB.global_hud.vimpaired)
-
 	if ( stat != 2)
-		if ((blinded))
-			overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+		if(blinded)
+			overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 		else
 			clear_fullscreen("blind")
-			set_fullscreen(disabilities & NEARSIGHTED, "impaired", /obj/screen/fullscreen/impaired, 1)
-			set_fullscreen(eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
-			set_fullscreen(druggy, "high", /obj/screen/fullscreen/high)
-		if(machine)
-			if(machine.check_eye(src) < 0)
-				reset_view(null)
+		if(disabilities & DISABILITY_NEARSIGHTED)
+			overlay_fullscreen("impaired", /atom/movable/screen/fullscreen/scaled/impaired, 1)
 		else
-			if(client && !client.adminobs)
-				reset_view(null)
+			clear_fullscreen("impaired")
+		if(eye_blurry)
+			overlay_fullscreen("blurry", /atom/movable/screen/fullscreen/tiled/blurry)
+		else
+			clear_fullscreen("blurry")
+		if(druggy)
+			overlay_fullscreen("high", /atom/movable/screen/fullscreen/tiled/high)
+		else
+			clear_fullscreen("high")
+
+		if(IsRemoteViewing())
+			if(machine && machine.check_eye(src) < 0)
+				reset_perspective()
 
 	return 1
 

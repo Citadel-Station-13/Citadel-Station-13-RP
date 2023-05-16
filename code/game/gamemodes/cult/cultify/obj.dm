@@ -1,7 +1,7 @@
 /obj/proc/cultify()
 	qdel(src)
 
-/obj/effect/decal/cleanable/blood/cultify()
+/obj/effect/debris/cleanable/blood/cultify()
 	return
 
 /obj/effect/decal/remains/cultify()

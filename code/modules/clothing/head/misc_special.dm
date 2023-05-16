@@ -16,12 +16,12 @@
 	name = "welding helmet"
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
-	item_state_slots = list(slot_r_hand_str = "welding", slot_l_hand_str = "welding")
-	matter = list(DEFAULT_WALL_MATERIAL = 3000, "glass" = 1000)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
+	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
-	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	flags_inv = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
-	body_parts_covered = HEAD|FACE|EYES
+	armor_type = /datum/armor/head/hardhat
+	inv_hide_flags = (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+	body_cover_flags = HEAD|FACE|EYES
 	action_button_name = "Flip Welding Mask"
 	siemens_coefficient = 0.9
 	w_class = ITEMSIZE_NORMAL
@@ -31,7 +31,10 @@
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
 
-/obj/item/clothing/head/welding/attack_self()
+/obj/item/clothing/head/welding/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	toggle()
 
 
@@ -43,24 +46,24 @@
 	if(!base_state)
 		base_state = icon_state
 
-	if(usr.canmove && !usr.stat && !usr.restrained())
+	if(CHECK_MOBILITY(usr, MOBILITY_CAN_USE))
 		if(src.up)
 			src.up = !src.up
-			body_parts_covered |= (EYES|FACE)
-			flags_inv |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+			body_cover_flags |= (EYES|FACE)
+			inv_hide_flags |= (HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = base_state
 			flash_protection = FLASH_PROTECTION_MAJOR
 			tint = initial(tint)
 			to_chat(usr, "You flip the [src] down to protect your eyes.")
 		else
 			src.up = !src.up
-			body_parts_covered &= ~(EYES|FACE)
-			flags_inv &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
+			body_cover_flags &= ~(EYES|FACE)
+			inv_hide_flags &= ~(HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[base_state]up"
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			to_chat(usr, "You push the [src] up out of your face.")
-		update_clothing_icon()	//so our mob-overlays
+		update_worn_icon()	//so our mob-overlays
 		if (ismob(src.loc)) //should allow masks to update when it is opened/closed
 			var/mob/M = src.loc
 			M.update_inv_wear_mask()
@@ -71,8 +74,8 @@
 	desc = "A painted welding helmet, this one has a demonic face on it."
 	icon_state = "demonwelding"
 	item_state_slots = list(
-		slot_l_hand_str = "demonwelding",
-		slot_r_hand_str = "demonwelding",
+		SLOT_ID_LEFT_HAND = "demonwelding",
+		SLOT_ID_RIGHT_HAND = "demonwelding",
 		)
 
 /obj/item/clothing/head/welding/knight
@@ -80,8 +83,8 @@
 	desc = "A painted welding helmet, this one looks like a knights helmet."
 	icon_state = "knightwelding"
 	item_state_slots = list(
-		slot_l_hand_str = "knightwelding",
-		slot_r_hand_str = "knightwelding",
+		SLOT_ID_LEFT_HAND = "knightwelding",
+		SLOT_ID_RIGHT_HAND = "knightwelding",
 		)
 
 /obj/item/clothing/head/welding/fancy
@@ -89,8 +92,8 @@
 	desc = "A painted welding helmet, the black and gold make this one look very fancy."
 	icon_state = "fancywelding"
 	item_state_slots = list(
-		slot_l_hand_str = "fancywelding",
-		slot_r_hand_str = "fancywelding",
+		SLOT_ID_LEFT_HAND = "fancywelding",
+		SLOT_ID_RIGHT_HAND = "fancywelding",
 		)
 
 /obj/item/clothing/head/welding/engie
@@ -98,8 +101,8 @@
 	desc = "A painted welding helmet, this one has been painted the engineering colours."
 	icon_state = "engiewelding"
 	item_state_slots = list(
-		slot_l_hand_str = "engiewelding",
-		slot_r_hand_str = "engiewelding",
+		SLOT_ID_LEFT_HAND = "engiewelding",
+		SLOT_ID_RIGHT_HAND = "engiewelding",
 		)
 
 
@@ -111,7 +114,7 @@
 	desc = "It's tasty looking!"
 	icon_state = "cake0"
 	var/onfire = 0
-	body_parts_covered = HEAD
+	body_cover_flags = HEAD
 
 /obj/item/clothing/head/cakehat/process(delta_time)
 	if(!onfire)
@@ -121,21 +124,24 @@
 	var/turf/location = src.loc
 	if(istype(location, /mob/))
 		var/mob/living/carbon/human/M = location
-		if(M.item_is_in_hands(src) || M.head == src)
+		if(M.is_holding(src) || M.head == src)
 			location = M.loc
 
 	if (istype(location, /turf))
 		location.hotspot_expose(700, 1)
 
-/obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
+/obj/item/clothing/head/cakehat/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	onfire = !(onfire)
 	if (onfire)
-		force = 3
+		damage_force = 3
 		damtype = "fire"
 		icon_state = "cake1"
 		START_PROCESSING(SSobj, src)
 	else
-		force = null
+		damage_force = 0
 		damtype = "brute"
 		icon_state = "cake0"
 	return
@@ -148,9 +154,13 @@
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
-	flags_inv = HIDEEARS
+	inv_hide_flags = HIDEEARS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 
-/obj/item/clothing/head/ushanka/attack_self(mob/user as mob)
+/obj/item/clothing/head/ushanka/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(src.icon_state == "ushankadown")
 		src.icon_state = "ushankaup"
 		to_chat(user, "You raise the ear flaps on the ushanka.")
@@ -165,8 +175,8 @@
 	name = "carved pumpkin"
 	desc = "A jack o' lantern! Believed to ward off evil spirits."
 	icon_state = "hardhat0_pumpkin"//Could stand to be renamed
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
+	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_cover_flags = HEAD|FACE|EYES
 	brightness_on = 2
 	light_overlay = "helmet_light"
 	w_class = ITEMSIZE_NORMAL
@@ -180,39 +190,31 @@
 	name = "kitty ears"
 	desc = "A pair of kitty ears. Meow!"
 	icon_state = "kitty"
-	body_parts_covered = 0
+	body_cover_flags = 0
 	siemens_coefficient = 1.5
 	item_icons = list()
-
-	update_icon(var/mob/living/carbon/human/user)
-		if(!istype(user)) return
-		var/icon/ears = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kitty")
-		ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
-
-		var/icon/earbit = new/icon("icon" = 'icons/mob/head.dmi', "icon_state" = "kittyinner")
-		ears.Blend(earbit, ICON_OVERLAY)
 
 /obj/item/clothing/head/richard
 	name = "chicken mask"
 	desc = "You can hear the distant sounds of rhythmic electronica."
 	icon_state = "richard"
-	item_state_slots = list(slot_r_hand_str = "chickenhead", slot_l_hand_str = "chickenhead")
-	body_parts_covered = HEAD|FACE
-	flags_inv = BLOCKHAIR
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chickenhead", SLOT_ID_LEFT_HAND = "chickenhead")
+	body_cover_flags = HEAD|FACE
+	inv_hide_flags = BLOCKHAIR
 
 /obj/item/clothing/head/santa
 	name = "santa hat"
 	desc = "It's a festive christmas hat, in red!"
 	icon_state = "santahatnorm"
-	item_state_slots = list(slot_r_hand_str = "santahat", slot_l_hand_str = "santahat")
-	body_parts_covered = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahat", SLOT_ID_LEFT_HAND = "santahat")
+	body_cover_flags = 0
 
 /obj/item/clothing/head/santa/green
 	name = "green santa hat"
 	desc = "It's a festive christmas hat, in green!"
 	icon_state = "santahatgreen"
-	item_state_slots = list(slot_r_hand_str = "santahatgreen", slot_l_hand_str = "santahatgreen")
-	body_parts_covered = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahatgreen", SLOT_ID_LEFT_HAND = "santahatgreen")
+	body_cover_flags = 0
 
 /*
  * Xenoarch/Surface Loot Hats
@@ -244,9 +246,12 @@
 		START_PROCESSING(SSobj, src)
 		to_chat(H, flavor_equip)
 
-/obj/item/clothing/head/psy_crown/dropped(var/mob/living/carbon/human/H)
+/obj/item/clothing/head/psy_crown/dropped(mob/user, flags, atom/newLoc)
 	..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/H = user
+	if(!ishuman(H))
+		return
 	if(H.is_sentient())
 		if(loc == H) // Still inhand.
 			to_chat(H, flavor_unequip)
@@ -292,3 +297,11 @@
 /obj/item/clothing/head/psy_crown/gluttony/activate_ability(var/mob/living/wearer)
 	..()
 	wearer.add_modifier(/datum/modifier/gluttonyregeneration, 45 SECONDS)
+/obj/item/clothing/head/cone
+	name = "warning cone"
+	desc = "This cone is trying to warn you of something!"
+	description_info = "It looks like you can wear it in your head slot."
+	icon_state = "cone"
+	item_state = "cone"
+	body_cover_flags = HEAD
+	attack_verb = list("warned", "cautioned", "smashed")

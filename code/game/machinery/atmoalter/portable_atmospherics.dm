@@ -11,6 +11,7 @@
 	var/destroyed = 0
 
 	var/start_pressure = ONE_ATMOSPHERE
+	///Maximum pressure allowed on initialize inside the canister, multiplied by the filled var
 	var/maximum_pressure = 90 * ONE_ATMOSPHERE
 
 /obj/machinery/portable_atmospherics/Initialize(mapload)
@@ -98,12 +99,15 @@
 
 /obj/machinery/portable_atmospherics/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	if ((istype(W, /obj/item/tank) && !( src.destroyed )))
-		if (src.holding)
+		if (holding && (user.a_intent != INTENT_GRAB))
+			return
+		if(!user.attempt_insert_item_for_installation(W, src))
 			return
 		var/obj/item/tank/T = W
-		user.drop_item()
-		T.loc = src
-		src.holding = T
+		if(holding)
+			user.grab_item_from_interacted_with(holding, src)
+			to_chat(user, SPAN_NOTICE("You quickly swap the tanks with the quick release valve."))
+		holding = T
 		update_icon()
 		return
 
@@ -112,7 +116,7 @@
 			disconnect()
 			to_chat(user, "<span class='notice'>You disconnect \the [src] from the port.</span>")
 			update_icon()
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			return
 		else
 			var/obj/machinery/atmospherics/portables_connector/possible_port = locate(/obj/machinery/atmospherics/portables_connector/) in loc
@@ -120,7 +124,7 @@
 				if(connect(possible_port))
 					to_chat(user, "<span class='notice'>You connect \the [src] to the port.</span>")
 					update_icon()
-					playsound(src, W.usesound, 50, 1)
+					playsound(src, W.tool_sound, 50, 1)
 					return
 				else
 					to_chat(user, "<span class='notice'>\The [src] failed to connect to the port.</span>")
@@ -132,11 +136,34 @@
 	else if ((istype(W, /obj/item/analyzer)) && Adjacent(user))
 		var/obj/item/analyzer/A = W
 		A.analyze_gases(src, user)
+
+/obj/machinery/portable_atmospherics/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
+
+	if(O.has_buckled_mobs())
+		to_chat(user, SPAN_WARNING( "\The [O] has other entities attached to it. Remove them first."))
 		return
 
-	return
+	if(O == user)
+		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	else
+		visible_message("[user] puts [O] onto \the [src].")
 
 
+	if(do_after(O, 3 SECOND, src))
+		O.forceMove(src.loc)
+
+	if (get_turf(user) == get_turf(src))
+		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")
 
 /obj/machinery/portable_atmospherics/powered
 	var/power_rating
@@ -158,13 +185,13 @@
 		if(cell)
 			to_chat(user, "There is already a power cell installed.")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 		var/obj/item/cell/C = I
 
-		user.drop_item()
 		C.add_fingerprint(user)
 		cell = C
-		C.loc = src
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and inserts [C].</span>", "<span class='notice'>You open the panel on [src] and insert [C].</span>")
 		power_change()
 		return
@@ -175,9 +202,9 @@
 			return
 
 		user.visible_message("<span class='notice'>[user] opens the panel on [src] and removes [cell].</span>", "<span class='notice'>You open the panel on [src] and remove [cell].</span>")
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		cell.add_fingerprint(user)
-		cell.loc = src.loc
+		cell.forceMove(drop_location())
 		cell = null
 		power_change()
 		return

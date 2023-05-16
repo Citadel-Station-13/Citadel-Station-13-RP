@@ -1,0 +1,60 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"h" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/explored)
+"I" = (
+/obj/effect/floor_decal/plaque{
+	desc = "The carving that used to be here has worn beyond any recoginition.";
+	name = "dusty plaque"
+	},
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/explored)
+"U" = (
+/obj/random/multiple/minevault,
+/obj/item/moneybag/vault,
+/turf/simulated/floor/bmarble,
+/area/class_h/explored)
+"Z" = (
+/turf/simulated/wall/sandstone/classh{
+	can_open = 1
+	},
+/area/class_h/explored)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+h
+h
+h
+a
+"}
+(3,1,1) = {"
+a
+Z
+U
+I
+a
+"}
+(4,1,1) = {"
+a
+h
+h
+h
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+a
+"}

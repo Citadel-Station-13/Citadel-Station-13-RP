@@ -1,31 +1,31 @@
 ////FIELD GEN START //shameless copypasta from fieldgen, powersink, and grille
 /obj/machinery/shieldwallgen
-		name = "Shield Generator"
-		desc = "A shield generator."
-		icon = 'icons/obj/stationobjs.dmi'
-		icon_state = "Shield_Gen"
-		anchored = 0
-		density = 1
-		req_access = list(access_engine_equip)
-		var/active = 0
-		var/power = 0
-		var/state = 0
-		var/steps = 0
-		var/last_check = 0
-		var/check_delay = 10
-		var/recalc = 0
-		var/locked = 1
-		var/destroyed = 0
-		var/directwired = 1
+	name = "Shield Generator"
+	desc = "A shield generator."
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "Shield_Gen"
+	anchored = 0
+	density = 1
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
+	var/active = 0
+	var/power = 0
+	var/state = 0
+	var/steps = 0
+	var/last_check = 0
+	var/check_delay = 10
+	var/recalc = 0
+	var/locked = 1
+	var/destroyed = 0
+	var/directwired = 1
 //		var/maxshieldload = 200
-		var/obj/structure/cable/attached		// the attached cable
-		var/storedpower = 0
-		//There have to be at least two posts, so these are effectively doubled
-		var/power_draw = 30000 //30 kW. How much power is drawn from powernet. Increase this to allow the generator to sustain longer shields, at the cost of more power draw.
-		var/max_stored_power = 50000 //50 kW
-		use_power = USE_POWER_OFF	//Draws directly from power net. Does not use APC power.
+	var/obj/structure/cable/attached		// the attached cable
+	var/storedpower = 0
+	//There have to be at least two posts, so these are effectively doubled
+	var/power_draw = 30000 //30 kW. How much power is drawn from powernet. Increase this to allow the generator to sustain longer shields, at the cost of more power draw.
+	var/max_stored_power = 50000 //50 kW
+	use_power = USE_POWER_OFF	//Draws directly from power net. Does not use APC power.
 
-/obj/machinery/shieldwallgen/attack_hand(mob/user as mob)
+/obj/machinery/shieldwallgen/attack_hand(mob/user, list/params)
 	if(state != 1)
 		to_chat(user, "<font color='red'>The shield generator needs to be firmly secured to the floor first.</font>")
 		return 1
@@ -67,7 +67,7 @@
 		return 0
 
 	var/shieldload = between(500, max_stored_power - storedpower, power_draw)	//what we try to draw
-	shieldload = PN.draw_power(shieldload) //what we actually get
+	shieldload = PN.draw_power(shieldload * 0.001) * 1000 //what we actually get
 	storedpower += shieldload
 
 	//If we're still in the red, then there must not be enough available power to cover our load.
@@ -164,14 +164,14 @@
 
 		else if(state == 0)
 			state = 1
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(user, "You secure the external reinforcing bolts to the floor.")
 			src.anchored = 1
 			return
 
 		else if(state == 1)
 			state = 0
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(user, "You undo the external reinforcing bolts.")
 			src.anchored = 0
 			return
@@ -212,7 +212,7 @@
 	src.cleanup(8)
 	..()
 
-/obj/machinery/shieldwallgen/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwallgen/bullet_act(var/obj/projectile/Proj)
 	storedpower -= 400 * Proj.get_structure_damage()
 	..()
 	return
@@ -257,7 +257,7 @@
 	update_nearby_tiles()
 	..()
 
-/obj/machinery/shieldwall/attack_hand(mob/user as mob)
+/obj/machinery/shieldwall/attack_hand(mob/user, list/params)
 	return
 
 
@@ -277,7 +277,7 @@
 			gen_secondary.storedpower -= power_usage
 
 
-/obj/machinery/shieldwall/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/shieldwall/bullet_act(var/obj/projectile/Proj)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		if(prob(50))
@@ -289,7 +289,7 @@
 	return
 
 
-/obj/machinery/shieldwall/ex_act(severity)
+/obj/machinery/shieldwall/legacy_ex_act(severity)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		switch(severity)
@@ -315,10 +315,11 @@
 				G.storedpower -= 12000
 	return
 
-
 /obj/machinery/shieldwall/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
+	. = ..()
+	if(.)
+		return
+	if(istype(mover) && mover.check_pass_flags(ATOM_PASS_GLASS))
 		return prob(20)
-	if(istype(mover, /obj/item/projectile))
+	if(istype(mover, /obj/projectile))
 		return prob(10)
-	return !density

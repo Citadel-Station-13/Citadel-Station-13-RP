@@ -99,10 +99,10 @@ var/list/infomorph_emotions = list(
 	add_language(LANGUAGE_EAL, 1)
 	add_language(LANGUAGE_SIGN, 0)
 
-	verbs += /mob/living/silicon/infomorph/proc/choose_verbs
-	verbs += /mob/living/proc/hide
-	verbs += /mob/living/silicon/infomorph/proc/fold_out
-	verbs += /mob/living/silicon/infomorph/proc/fold_in
+	add_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
+	add_verb(src, /mob/living/proc/hide)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_out)
+	add_verb(src, /mob/living/silicon/infomorph/proc/fold_in)
 
 	software = default_infomorph_software.Copy()
 
@@ -117,18 +117,13 @@ var/list/infomorph_emotions = list(
 	return ..()
 
 /////////// STAT PANEL
-/mob/living/silicon/infomorph/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
-
-// this function shows the information about being silenced as a pAI in the Status panel
-/mob/living/silicon/infomorph/proc/show_silenced()
-	if(src.silence_time)
-		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
-
+/mob/living/silicon/infomorph/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		if(src.silence_time)
+			var/timeleft = round((silence_time - world.timeofday)/10 ,1)
+			STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
 /////////// CHECKERS
 /mob/living/silicon/infomorph/check_eye(var/mob/user as mob)
@@ -214,7 +209,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Open"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
 		return
 
 	if(src.loc != card)
@@ -240,13 +235,12 @@ var/list/infomorph_emotions = list(
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
 	/*
 	if(src.client)
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.eye = src
 	*/
-	src.forceMove(get_turf(card))
+	forceMove(get_turf(card))
 	card.forceMove(src)
 	card.screen_loc = null
 
@@ -257,7 +251,7 @@ var/list/infomorph_emotions = list(
 	set category = "Card Commands"
 	set name = "Chassis Close"
 
-	if(stat || sleeping || paralysis || weakened)
+	if(!IS_CONSCIOUS(src))
 		return
 
 	if(src.loc == card)
@@ -289,18 +283,12 @@ var/list/infomorph_emotions = list(
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(H.loc)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
-	canmove = 1
+	card.forceMove(get_turf(src))
+	forceMove(card)
 	resting = 0
 	icon_state = "[chassis]"
 
@@ -326,7 +314,7 @@ var/list/infomorph_emotions = list(
 	speak_exclamation = sayverbs[(sayverbs.len>1 ? 2 : sayverbs.len)]
 	speak_query = sayverbs[(sayverbs.len>2 ? 3 : sayverbs.len)]
 
-	verbs -= /mob/living/silicon/infomorph/proc/choose_verbs
+	remove_verb(src, /mob/living/silicon/infomorph/proc/choose_verbs)
 
 /mob/living/silicon/infomorph/lay_down()
 	set name = "Rest"
@@ -336,21 +324,19 @@ var/list/infomorph_emotions = list(
 	icon_state = resting ? "[chassis]_rest" : "[chassis]"
 	to_chat(src, "<span class='notice'>You are now [resting ? "resting" : "getting up"]</span>")
 
-	canmove = !resting
-
 ////////////////// ATTACKBY, HAND, SELF etc
 /mob/living/silicon/infomorph/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.force)
+	if(W.damage_force)
 		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.force)
-		src.updatehealth()
+		src.adjustBruteLoss(W.damage_force)
+		src.update_health()
 	else
 		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
 	spawn(1)
 		if(stat != 2) close_up()
 	return
 
-/mob/living/silicon/infomorph/attack_hand(mob/user as mob)
+/mob/living/silicon/infomorph/attack_hand(mob/user, list/params)
 	visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 	close_up()
 
@@ -461,7 +447,7 @@ var/global/list/default_infomorph_software = list()
 
 /mob/living/silicon/infomorph/nano_ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, key_state = self_state)
 	if(user != src)
-		if(ui) ui.set_status(STATUS_CLOSE, 0)
+		if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	if(ui_key != "main")
@@ -469,7 +455,7 @@ var/global/list/default_infomorph_software = list()
 		if(S && !S.toggle)
 			S.on_nano_ui_interact(src, ui, force_open)
 		else
-			if(ui) ui.set_status(STATUS_CLOSE, 0)
+			if(ui) ui.set_status(UI_CLOSE, 0)
 		return
 
 	var/data[0]
@@ -556,7 +542,6 @@ var/global/list/default_infomorph_software = list()
 			. += "\n<span class='warning'>It doesn't seem to be responding.</span>"
 		if(DEAD)
 			. += "\n<span class='deadsay'>It looks completely unsalvageable.</span>"
-	. += "\n*---------*"
 
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]\n"
@@ -564,19 +549,20 @@ var/global/list/default_infomorph_software = list()
 	if (pose)
 		. += "\nIt is [pose]"
 
-
-
-/mob/living/silicon/infomorph/Life()
-	//We're dead or EMP'd or something.
-	if (src.stat == 2)
-		return
-
+/mob/living/silicon/infomorph/Life(seconds, times_fired)
 	//Person was sleeved or otherwise moved away from us, become inert card.
 	if(!ckey || !key)
-		death(0)
+		death()
+		return TRUE
+
+	if((. = ..()))
 		return
 
-	//Clean up the cable if it leaves.
+	//Wipe all the huds, then readd them (of course...)
+	handle_regular_hud_updates()
+	handle_statuses()
+
+	// clean up cable if it leaves
 	if(src.cable)
 		if(get_dist(src, src.cable) > 1)
 			var/turf/T = get_turf(src)
@@ -584,16 +570,11 @@ var/global/list/default_infomorph_software = list()
 			qdel(src.cable)
 			cable = null
 
-	//Wipe all the huds, then readd them (of course...)
-	handle_regular_hud_updates()
-
 	//In response to EMPs, we can be silenced
 	if(silence_time)
 		if(world.timeofday >= silence_time)
 			silence_time = null
 			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
-
-	handle_statuses()
 
 	//Only every so often
 	if(air_master.current_cycle%30 == 1)
@@ -602,9 +583,9 @@ var/global/list/default_infomorph_software = list()
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
 
-/mob/living/silicon/infomorph/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/infomorph/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getBruteLoss() - getFireLoss()

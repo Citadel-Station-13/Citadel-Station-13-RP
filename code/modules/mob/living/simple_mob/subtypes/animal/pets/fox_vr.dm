@@ -1,7 +1,17 @@
+/datum/category_item/catalogue/fauna/fox
+	name = "Fox"
+	desc = "Vulpine creatures, commonly referred to as foxes, are a \
+	somewhat distant cousin of Canines. Due to their elegant features \
+	and coloration, the Fox symbolises beauty and agility. It is frequently \
+	adopted as a covert military icon - a trend that rose in popularity during \
+	the 20th and 21st Centuries on Pre-War Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/fox
 	name = "fox"
 	desc = "It's a fox. I wonder what it says?"
 	tt_desc = "Vulpes vulpes"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/fox)
 
 	icon_state = "fox2"
 	icon_living = "fox2"
@@ -12,6 +22,7 @@
 	movement_cooldown = 0.5
 	see_in_dark = 6
 	mob_size = MOB_SMALL //Foxes are not smaller than cats so bumping them up to small
+	randomized = TRUE
 
 	faction = "fox"
 
@@ -25,6 +36,8 @@
 
 	meat_amount = 1
 	meat_type = /obj/item/reagent_containers/food/snacks/meat/fox
+	bone_amount = 1
+	hide_amount = 3
 
 	say_list_type = /datum/say_list/fox
 	ai_holder_type = /datum/ai_holder/simple_mob/fox
@@ -80,7 +93,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
+/mob/living/simple_mob/animal/passive/fox/OnMouseDropLegacy(atom/over_object)
 	var/mob/living/carbon/H = over_object
 	if(!istype(H) || !Adjacent(H)) return ..()
 
@@ -116,15 +129,15 @@
 
 	if(friend)
 		if(friend == usr)
-			to_chat(L, span("notice", "\The [src] is already your friend!"))
+			to_chat(L, SPAN_NOTICE("\The [src] is already your friend!"))
 			return
 		else
-			to_chat(L, span("warning", "\The [src] ignores you."))
+			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
 			return
 
 	friend = L
 	face_atom(L)
-	to_chat(L, span("notice", "\The [src] is now your friend!"))
+	to_chat(L, SPAN_NOTICE("\The [src] is now your friend!"))
 	visible_emote(pick("nips [friend].", "brushes against [friend].", "tugs on [friend].", "chrrrrs."))
 
 	if(has_AI())
@@ -137,7 +150,7 @@
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
 
-/mob/living/simple_mob/animal/passive/fox/fluff/Life()
+/mob/living/simple_mob/animal/passive/fox/fluff/Life(seconds, times_fired)
 	. = ..()
 	if(!. || !friend) return
 
@@ -197,6 +210,7 @@
 	var/mob/living/friend = null // Our best pal, who we'll follow. awoo.
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 	makes_dirt = FALSE	// No more dirt
+	randomized = FALSE
 
 /mob/living/simple_mob/animal/passive/fox/renault/init_vore()
 	..()

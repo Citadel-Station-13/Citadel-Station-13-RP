@@ -7,8 +7,9 @@
 	var/mode = 0	//off or on.
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/hand_labeler/attack()
-	return
+/obj/item/hand_labeler/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(user.a_intent == INTENT_HARM)
+		return ..()
 
 /obj/item/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
 	if(!proximity)
@@ -52,7 +53,10 @@
 						 "<span class='notice'>You label [A] as [label].</span>")
 	A.name = "[A.name] ([label])"
 
-/obj/item/hand_labeler/attack_self(mob/user as mob)
+/obj/item/hand_labeler/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)

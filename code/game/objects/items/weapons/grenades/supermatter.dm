@@ -19,15 +19,12 @@
 	playsound(src, 'sound/weapons/wave.ogg', 100)
 
 /obj/item/grenade/supermatter/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(implode_at)
-		overlays += image(icon = 'icons/rust.dmi', icon_state = "emfield_s1")
+		add_overlay(image(icon = 'icons/rust.dmi', icon_state = "emfield_s1"))
 
 /obj/item/grenade/supermatter/process(delta_time)
 	if(!isturf(loc))
-		if(ismob(loc))
-			var/mob/M = loc
-			M.drop_from_inventory(src)
 		forceMove(get_turf(src))
 	playsound(src, 'sound/effects/supermatter.ogg', 100)
 	supermatter_pull(src, world.view, STAGE_THREE)

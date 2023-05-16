@@ -33,15 +33,7 @@
 	icon = 'icons/jungle.dmi'
 
 	maxHealth = 75
-	armor_soak = list(
-				"melee" = 5,
-				"bullet" = 0,
-				"laser" = 0,
-				"energy" = 0,
-				"bomb" = 0,
-				"bio" = 0,
-				"rad" = 0
-				)
+	randomized = TRUE
 
 	movement_cooldown = 5
 
@@ -67,8 +59,8 @@
 	name = "big shantak"
 	desc = "A piglike creature with a bright iridiscent mane that sparkles as though lit by an inner light. \
 	This one seems bigger than the others, and has a commanding presence."
-	icon_scale_x = 1.5
-	icon_scale_y = 1.5
+	mod_min = 100
+	mod_max = 150
 	maxHealth = 125
 	player_msg = "You have the ability to <b>command other shantaks to follow you</b>."
 
@@ -98,7 +90,6 @@
 /mob/living/simple_mob/animal/sif/shantak/retaliate
 	ai_holder_type = /datum/ai_holder/simple_mob/retaliate
 
-//Vorestation Addition
 /mob/living/simple_mob/animal/sif/shantak/scruffy
 	name = "Scruffy"
 	ai_holder_type = /datum/ai_holder/simple_mob/passive

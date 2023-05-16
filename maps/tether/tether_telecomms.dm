@@ -3,93 +3,26 @@
 
 // #### Relays ####
 // Telecomms doesn't know about connected z-levels, so we need relays even for the other surface levels.
-/obj/machinery/telecomms/relay/preset/tether/base_low
-	id = "Base Relay 1"
-	listening_level = Z_LEVEL_SURFACE_LOW
-	autolinkers = list("tbl_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/base_low
-	listening_level = Z_LEVEL_SURFACE_LOW
-
-/obj/machinery/telecomms/relay/preset/tether/base_mid
-	id = "Base Relay 2"
-	listening_level = Z_LEVEL_SURFACE_MID
-	autolinkers = list("tbm_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/base_mid
-	listening_level = Z_LEVEL_SURFACE_MID
-
-/obj/machinery/telecomms/relay/preset/tether/base_high
-	id = "Base Relay 3"
-	listening_level = Z_LEVEL_SURFACE_HIGH
-	autolinkers = list("tbh_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/base_high
-	listening_level = Z_LEVEL_SURFACE_HIGH
-
-//Some coverage for midpoint
-/obj/machinery/telecomms/relay/preset/tether/midpoint
-	id = "Midpoint Relay"
-	listening_level = Z_LEVEL_TRANSIT
-	autolinkers = list("tmp_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/midpoint
-	listening_level = Z_LEVEL_TRANSIT
-
-// The station of course needs relays fluff-wise to connect to ground station. But again, no multi-z so, we need one for each z level.
-/obj/machinery/telecomms/relay/preset/tether/station_low
-	id = "Station Relay 1"
-	listening_level = Z_LEVEL_SPACE_LOW
-	autolinkers = list("tsl_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_low
-	listening_level = Z_LEVEL_SPACE_LOW
-
-/obj/machinery/telecomms/relay/preset/tether/station_mid
-	id = "Station Relay 2"
-	listening_level = Z_LEVEL_SPACE_MID
-	autolinkers = list("tsm_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_mid
-	listening_level = Z_LEVEL_SPACE_MID
-
-/obj/machinery/telecomms/relay/preset/tether/station_high
-	id = "Station Relay 3"
-	listening_level = Z_LEVEL_SPACE_HIGH
-	autolinkers = list("tsh_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/station_high
-	listening_level = Z_LEVEL_SPACE_HIGH
-
-/obj/machinery/telecomms/relay/preset/tether/sci_outpost
-	id = "Science Outpost Relay"
-	listening_level = Z_LEVEL_SOLARS
-	autolinkers = list("sci_o_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/tether/sci_outpost
-	listening_level = Z_LEVEL_SOLARS
-
-/obj/machinery/telecomms/relay/preset/underdark
-	id = "Mining Underground Relay"
-	listening_level = Z_LEVEL_UNDERDARK
-	autolinkers = list("ud_relay")
-
-/obj/machinery/telecomms/relay/preset/centcom/underdark
-	listening_level = Z_LEVEL_UNDERDARK
+/obj/machinery/telecomms/relay/preset/tether
+	id = "Tether Relay"
+	autolinkers = list("tether_relay")
 
 // #### Hub ####
 /obj/machinery/telecomms/hub/preset/tether
 	id = "Hub"
 	network = "tcommsat"
 	autolinkers = list("hub",
-		"tbl_relay", "tbm_relay", "tbh_relay", "tmp_relay", "tsl_relay", "tsm_relay", "tsh_relay",
-		"c_relay", "m_relay", "r_relay", "sci_o_relay", "ud_relay",
+		"tether_relay", "c_relay", "m_relay", "r_relay",
 		"science", "medical", "supply", "service", "common", "command", "engineering", "security", "explorer", "unused",
 		"hb_relay", "receiverA", "broadcasterA"
 	)
 
 /obj/machinery/telecomms/receiver/preset_right/tether
+//	id = "tether_rx"
 	freq_listening = list(AI_FREQ, SCI_FREQ, MED_FREQ, SUP_FREQ, SRV_FREQ, COMM_FREQ, ENG_FREQ, SEC_FREQ, ENT_FREQ, EXP_FREQ)
+
+/obj/machinery/telecomms/broadcaster/preset_right/tether
+//	id = "tether_tx"
 
 /obj/machinery/telecomms/bus/preset_two/tether
 	freq_listening = list(SUP_FREQ, SRV_FREQ, EXP_FREQ)
@@ -122,7 +55,6 @@
 /area/tether/surfacebase/tcomms/chamber
 	name = "\improper Telecomms Central Compartment"
 	icon_state = "tcomsatcham"
-	flags = BLUE_SHIELDED
 
 /area/maintenance/substation/tcomms
 	name = "\improper Telecomms Substation"
@@ -133,19 +65,19 @@
 /datum/map/tether/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ) = list(),
-		num2text(AI_FREQ)  = list(access_synth),
+		num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
 		num2text(ENT_FREQ) = list(),
-		num2text(ERT_FREQ) = list(access_cent_specops),
-		num2text(COMM_FREQ)= list(access_heads),
-		num2text(ENG_FREQ) = list(access_engine_equip, access_atmospherics),
-		num2text(MED_FREQ) = list(access_medical_equip),
-		num2text(MED_I_FREQ)=list(access_medical_equip),
-		num2text(SEC_FREQ) = list(access_security),
-		num2text(SEC_I_FREQ)=list(access_security),
-		num2text(SCI_FREQ) = list(access_tox,access_robotics,access_xenobiology),
-		num2text(SUP_FREQ) = list(access_cargo),
-		num2text(SRV_FREQ) = list(access_janitor, access_hydroponics),
-		num2text(EXP_FREQ) = list(access_explorer)
+		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
+		num2text(COMM_FREQ)= list(ACCESS_COMMAND_BRIDGE),
+		num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
+		num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
+		num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
+		num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_XENOBIO),
+		num2text(SUP_FREQ) = list(ACCESS_SUPPLY_BAY),
+		num2text(SRV_FREQ) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
+		num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER)
 	)
 
 /obj/item/multitool/tether_buffered

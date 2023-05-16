@@ -24,7 +24,7 @@ var/global/list/active_radio_jammers = list()
 	var/on = 0
 	var/jam_range = 7
 	var/obj/item/cell/device/weapon/power_source
-	var/tick_cost = 5 //VOREStation Edit - For the ERPs.
+	var/tick_cost = 5 // For the ERPs.
 
 	origin_tech = list(TECH_ILLEGAL = 7, TECH_BLUESPACE = 5) //Such technology! Subspace jamming!
 
@@ -69,8 +69,8 @@ var/global/list/active_radio_jammers = list()
 		update_icon()
 
 
-/obj/item/radio_jammer/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src && power_source)
+/obj/item/radio_jammer/attack_hand(mob/user, list/params)
+	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
 		power_source = null
@@ -79,6 +79,9 @@ var/global/list/active_radio_jammers = list()
 		return ..()
 
 /obj/item/radio_jammer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(on)
 		turn_off(user)
 	else
@@ -89,10 +92,10 @@ var/global/list/active_radio_jammers = list()
 
 /obj/item/radio_jammer/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/cell/device/weapon) && !power_source)
+		if(!user.attempt_insert_item_for_installation(power_source, src))
+			return
 		power_source = W
 		power_source.update_icon() //Why doesn't a cell do this already? :|
-		user.unEquip(power_source)
-		power_source.forceMove(src)
 		update_icon()
 		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
 
@@ -110,9 +113,9 @@ var/global/list/active_radio_jammers = list()
 
 	// Only Cut() if we need to.
 	if(overlay_percent != last_overlay_percent)
-		overlays.Cut()
+		cut_overlays()
 		var/image/I = image(src.icon, src, "jammer_overlay_[overlay_percent]")
-		overlays += I
+		add_overlay(I)
 		last_overlay_percent = overlay_percent
 
 //Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.

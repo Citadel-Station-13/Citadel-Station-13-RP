@@ -2,6 +2,12 @@
 //			Shade
 ////////////////////////////
 
+/datum/category_item/catalogue/fauna/construct/shade
+	name = "%#ERROR#%"
+	desc = "%ERROR% SCAN DATA REDACTED. RETURN SCANNER TO A \
+	CENTRAL ADMINISTRATOR FOR IMMEDIATE MAINTENANCE. %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/construct/shade
 	name = "Shade"
 	real_name = "Shade"
@@ -9,6 +15,7 @@
 	icon_state = "shade"
 	icon_living = "shade"
 	icon_dead = "shade_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/construct/shade)
 
 	response_help  = "puts their hand through"
 	response_disarm = "flails at"
@@ -30,6 +37,10 @@
 	loot_list = list(/obj/item/ectoplasm = 100)
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+/mob/living/simple_mob/construct/shade/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
 
 /mob/living/simple_mob/construct/shade/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/soulstone))

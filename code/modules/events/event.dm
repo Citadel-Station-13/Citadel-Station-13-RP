@@ -74,8 +74,8 @@
 // Only called once.
 /datum/event/proc/start()
 	if(has_skybox_image)
-		SSskybox.rebuild_skyboxes(affecting_z)
-	return
+		for(var/z in affecting_z)
+			SSparallax.queue_z_vis_update(z)
 
 // Called when the tick is equal to the announceWhen variable.
 // Allows you to announce before starting or vice versa.
@@ -98,8 +98,8 @@
 // Only called once.
 /datum/event/proc/end()
 	if(has_skybox_image)
-		SSskybox.rebuild_skyboxes(affecting_z)
-	return
+		for(var/z in affecting_z)
+			SSparallax.queue_z_vis_update(z)
 
 // Returns the latest point of event processing.
 /datum/event/proc/lastProcessAt()
@@ -141,6 +141,14 @@
 // Called during building of skybox to get overlays
 /datum/event/proc/get_skybox_image()
 	return
+
+/datum/event/proc/get_parallax_image()
+	var/image/I = get_skybox_image()
+	if(!I)
+		return
+	I.plane = PARALLAX_PLANE
+	I.layer = PARALLAX_VIS_LAYER_BELOW
+	return I
 
 /datum/event/New(var/datum/event_meta/EM)
 	// Event needs to be responsible for this, as stuff like APLUs currently make their own events for curious reasons

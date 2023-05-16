@@ -131,12 +131,15 @@
 
 
 /datum/point/vector
-	var/speed = 32				//pixels per iteration
+	/// Pixels per iteration
+	var/speed = 32
 	var/iteration = 0
 	var/angle = 0
-	var/mpx = 0					//calculated x/y movement amounts to prevent having to do trig every step.
+	/// Calculated x movement amounts to prevent having to do trig every step.
+	var/mpx = 0
+	/// Calculated y movement amounts to prevent having to do trig every step.
 	var/mpy = 0
-	var/starting_x = 0			//just like before, pixels from EDGE of map! This is set in initialize_location().
+	var/starting_x = 0 //just like before, pixels from EDGE of map! This is set in initialize_location().
 	var/starting_y = 0
 	var/starting_z = 0
 
@@ -169,7 +172,8 @@
 		speed = pixel_speed
 	set_angle(new_angle)
 
-/datum/point/vector/proc/set_angle(new_angle)		//calculations use "byond angle" where north is 0 instead of 90, and south is 180 instead of 270.
+/// Calculations use "byond angle" where north is 0 instead of 90, and south is 180 instead of 270.
+/datum/point/vector/proc/set_angle(new_angle)
 	if(isnull(angle))
 		return
 	angle = new_angle
@@ -187,8 +191,8 @@
 
 /datum/point/vector/proc/increment(multiplier = 1)
 	iteration++
-	x += mpx * multiplier
-	y += mpy * multiplier
+	x += mpx * (multiplier)
+	y += mpy * (multiplier)
 
 /datum/point/vector/proc/return_vector_after_increments(amount = 7, multiplier = 1, force_simulate = FALSE)
 	var/datum/point/vector/v = copy_to()
@@ -202,7 +206,7 @@
 /datum/point/vector/proc/on_z_change()
 	return
 
-/datum/point/vector/processed		//pixel_speed is per decisecond.
+/datum/point/vector/processed // pixel_speed is per decisecond.
 	var/last_process = 0
 	var/last_move = 0
 	var/paused = FALSE

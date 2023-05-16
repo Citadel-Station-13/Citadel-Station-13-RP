@@ -18,33 +18,36 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/deadringer/Destroy() //just in case some smartass tries to stay invisible by destroying the watch
-	uncloak()
+	reveal()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/deadringer/dropped()
+/obj/item/deadringer/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(timer > 20)
-		uncloak()
+		reveal()
 		watchowner = null
 
-/obj/item/deadringer/attack_self(var/mob/living/user as mob)
+/obj/item/deadringer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/mob/living/H = src.loc
 	if (!istype(H, /mob/living/carbon/human))
-		to_chat(H,"<font color='blue'>You have no clue what to do with this thing.</font>")
+		to_chat(H,"<font color=#4F49AF>You have no clue what to do with this thing.</font>")
 		return
 	if(!activated)
 		if(timer == 0)
-			to_chat(H, "<font color='blue'>You press a small button on [src]'s side. It starts to hum quietly.</font>")
+			to_chat(H, "<font color=#4F49AF>You press a small button on [src]'s side. It starts to hum quietly.</font>")
 			bruteloss_prev = H.getBruteLoss()
 			fireloss_prev = H.getFireLoss()
 			activated = 1
 			return
 		else
-			to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It buzzes a little.</font>")
+			to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It buzzes a little.</font>")
 			return
 	if(activated)
-		to_chat(H,"<font color='blue'>You press a small button on [src]'s side. It stops humming.</font>")
+		to_chat(H,"<font color=#4F49AF>You press a small button on [src]'s side. It stops humming.</font>")
 		activated = 0
 		return
 
@@ -57,18 +60,18 @@
 				deathprevent()
 				activated = 0
 				if(watchowner.isSynthetic())
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness! [src]'s screen blinks, being unable to copy your synthetic body!</font>")
 				else
-					to_chat(watchowner, "<font color='blue'>You fade into nothingness, leaving behind a fake body!</font>")
+					to_chat(watchowner, "<font color=#4F49AF>You fade into nothingness, leaving behind a fake body!</font>")
 				icon_state = "deadringer_cd"
 				timer = 50
 				return
 	if(timer > 0)
 		timer--
 	if(timer == 20)
-		uncloak()
+		reveal()
 		if(corpse)
-			new /obj/effect/effect/smoke/chem(corpse.loc)
+			new /obj/effect/particle_effect/smoke/chem(corpse.loc)
 			qdel(corpse)
 	if(timer == 0)
 		icon_state = "deadringer"
@@ -85,7 +88,7 @@
 	makeacorpse(watchowner)
 	return
 
-/obj/item/deadringer/proc/uncloak()
+/obj/item/deadringer/proc/reveal()
 	if(watchowner)
 		watchowner.alpha = 255
 		playsound(get_turf(src), 'sound/effects/uncloak.ogg', 35, 1, -1)
@@ -98,65 +101,65 @@
 	corpse.setDNA(H.dna.Clone())
 	corpse.death(1) //Kills the new mob
 	var/obj/item/clothing/temp = null
-	if(H.get_equipped_item(slot_w_uniform))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/under/chameleon/changeling(corpse), slot_w_uniform)
-		temp = corpse.get_equipped_item(slot_w_uniform)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_w_uniform)
+	if(H.item_by_slot(SLOT_ID_UNIFORM))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/under/chameleon/changeling(corpse), SLOT_ID_UNIFORM)
+		temp = corpse.item_by_slot(SLOT_ID_UNIFORM)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_UNIFORM)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_wear_suit))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/suit/chameleon/changeling(corpse), slot_wear_suit)
-		temp = corpse.get_equipped_item(slot_wear_suit)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_wear_suit)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_SUIT))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/suit/chameleon/changeling(corpse), SLOT_ID_SUIT)
+		temp = corpse.item_by_slot(SLOT_ID_SUIT)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_SUIT)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_shoes))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/shoes/chameleon/changeling(corpse), slot_shoes)
-		temp = corpse.get_equipped_item(slot_shoes)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_shoes)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_SHOES))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/shoes/chameleon/changeling(corpse), SLOT_ID_SHOES)
+		temp = corpse.item_by_slot(SLOT_ID_SHOES)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_SHOES)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_gloves))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/gloves/chameleon/changeling(corpse), slot_gloves)
-		temp = corpse.get_equipped_item(slot_gloves)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_gloves)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_GLOVES))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/gloves/chameleon/changeling(corpse), SLOT_ID_GLOVES)
+		temp = corpse.item_by_slot(SLOT_ID_GLOVES)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_GLOVES)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_l_ear))
-		temp = H.get_equipped_item(slot_l_ear)
-		corpse.equip_to_slot_or_del(new temp.type(corpse), slot_l_ear)
-		temp = corpse.get_equipped_item(slot_l_ear)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_glasses))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/glasses/chameleon/changeling(corpse), slot_glasses)
-		temp = corpse.get_equipped_item(slot_glasses)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_glasses)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_LEFT_EAR))
+		temp = H.item_by_slot(SLOT_ID_LEFT_EAR)
+		corpse.equip_to_slot_or_del(new temp.type(corpse), SLOT_ID_LEFT_EAR)
+		temp = corpse.item_by_slot(SLOT_ID_LEFT_EAR)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_GLASSES))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/glasses/chameleon/changeling(corpse), SLOT_ID_GLASSES)
+		temp = corpse.item_by_slot(SLOT_ID_GLASSES)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_GLASSES)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_wear_mask))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/mask/chameleon/changeling(corpse), slot_wear_mask)
-		temp = corpse.get_equipped_item(slot_wear_mask)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_wear_mask)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_MASK))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/mask/chameleon/changeling(corpse), SLOT_ID_MASK)
+		temp = corpse.item_by_slot(SLOT_ID_MASK)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_MASK)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_head))
-		corpse.equip_to_slot_or_del(new /obj/item/clothing/head/chameleon/changeling(corpse), slot_head)
-		temp = corpse.get_equipped_item(slot_head)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_head)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_HEAD))
+		corpse.equip_to_slot_or_del(new /obj/item/clothing/head/chameleon/changeling(corpse), SLOT_ID_HEAD)
+		temp = corpse.item_by_slot(SLOT_ID_HEAD)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_HEAD)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_belt))
-		corpse.equip_to_slot_or_del(new /obj/item/storage/belt/chameleon/changeling(corpse), slot_belt)
-		temp = corpse.get_equipped_item(slot_belt)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_belt)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_BELT))
+		corpse.equip_to_slot_or_del(new /obj/item/storage/belt/chameleon/changeling(corpse), SLOT_ID_BELT)
+		temp = corpse.item_by_slot(SLOT_ID_BELT)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_BELT)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
-	if(H.get_equipped_item(slot_back))
-		corpse.equip_to_slot_or_del(new /obj/item/storage/backpack/chameleon/changeling(corpse), slot_back)
-		temp = corpse.get_equipped_item(slot_back)
-		var/obj/item/clothing/c_type = H.get_equipped_item(slot_back)
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
+	if(H.item_by_slot(SLOT_ID_BACK))
+		corpse.equip_to_slot_or_del(new /obj/item/storage/backpack/chameleon/changeling(corpse), SLOT_ID_BACK)
+		temp = corpse.item_by_slot(SLOT_ID_BACK)
+		var/obj/item/clothing/c_type = H.item_by_slot(SLOT_ID_BACK)
 		temp.disguise(c_type.type)
-		temp.canremove = 0
+		ADD_TRAIT(temp, TRAIT_ITEM_NODROP, HOLOGRAM_TRAIT)
 	corpse.identifying_gender = H.identifying_gender
 	corpse.flavor_texts = H.flavor_texts.Copy()
 	corpse.real_name = H.real_name

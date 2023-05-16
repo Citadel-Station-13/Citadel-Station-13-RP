@@ -1,69 +1,66 @@
-var/list/admins = list()							//list of all clients whom are admins
+//? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-var/global/list/player_list = list()				//List of all mobs **with clients attached**. Excludes /mob/new_player
-var/global/list/human_mob_list = list()				//List of all human mobs and sub-types, including clientless
-var/global/list/silicon_mob_list = list()			//List of all silicon mobs, including clientless
-var/global/list/ai_list = list()					//List of all AIs, including clientless
-var/global/list/living_mob_list = list()			//List of all alive mobs, including clientless. Excludes /mob/new_player
-var/global/list/dead_mob_list = list()				//List of all dead mobs, including clientless. Excludes /mob/new_player
-var/global/list/listening_objects = list()			//List of all objects which care about receiving messages (communicators, radios, etc)
+/// List of all human mobs and sub-types, including clientless.
+var/global/list/human_mob_list = list()
+/// List of all silicon mobs, including clientless.
+var/global/list/silicon_mob_list = list()
+/// List of all AIs, including clientless.
+var/global/list/ai_list = list()
+/// List of all alive mobs, including clientless. Excludes /mob/new_player
+var/global/list/living_mob_list = list()
+/// List of all dead mobs, including clientless. Excludes /mob/new_player
+var/global/list/dead_mob_list = list()
+/// List of all objects which care about receiving messages (communicators, radios, etc)
+var/global/list/listening_objects = list()
 
-var/global/list/cable_list = list()					//Index for all cables, so that powernets don't have to look through the entire world all the time
-var/global/list/side_effects = list()				//list of all medical sideeffects types by thier names |BS12
-var/global/list/mechas_list = list()				//list of all mechs. Used by hostile mobs target tracking.
-var/global/list/joblist = list()					//list of all jobstypes, minus borg and AI
+/// Index for all cables, so that powernets don't have to look through the entire world all the time.
+var/global/list/cable_list = list()
+/// List of all medical sideeffects types by thier names.
+var/global/list/side_effects = list()
+/// List of all mechs. Used by hostile mobs target tracking.
+var/global/list/mechas_list = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
 
-// Times that players are allowed to respawn ("ckey" = world.time)
+/// Times that players are allowed to respawn ("ckey" = world.time)
 GLOBAL_LIST_EMPTY(respawn_timers)
 
-// Posters
+//* Posters
 var/global/list/poster_designs = list()
 var/global/list/NT_poster_designs = list()
 
-// Uplinks
+//* Uplinks
 var/list/obj/item/uplink/world_uplinks = list()
 
-//Preferences stuff
-	//Hairstyles
-var/global/list/hair_styles_list = list()			//stores /datum/sprite_accessory/hair indexed by name
-var/global/list/hair_styles_male_list = list()
-var/global/list/hair_styles_female_list = list()
-var/global/list/facial_hair_styles_list = list()	//stores /datum/sprite_accessory/facial_hair indexed by name
-var/global/list/facial_hair_styles_male_list = list()
-var/global/list/facial_hair_styles_female_list = list()
-var/global/list/skin_styles_female_list = list()		//unused
-var/global/list/body_marking_styles_list = list()		//stores /datum/sprite_accessory/marking indexed by name
-	//Underwear
+//* Preferences stuff *//
+//!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
-
-	//Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag")
+//!Backpacks - The load order here is important to maintain. Don't go swapping these around.
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/job/ai,/datum/job/cyborg)
+var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
 
-// Visual nets
-var/list/datum/visualnet/visual_nets = list()
-var/datum/visualnet/camera/cameranet = new()
-var/datum/visualnet/cult/cultnet = new()
+//* Visual nets
+GLOBAL_LIST_EMPTY(visual_nets)
+GLOBAL_DATUM_INIT(cameranet, /datum/visualnet/camera, new)
+GLOBAL_DATUM_INIT(cultnet, /datum/visualnet/cult, new)
 
-// Runes
+//* Runes
 var/global/list/rune_list = new()
 var/global/list/escape_list = list()
 var/global/list/endgame_exits = list()
 var/global/list/endgame_safespawns = list()
-// Lavaland
+//* Lavaland
 var/global/list/lavaland_entry = list()
 var/global/list/lavaland_exit = list()
 
-var/global/list/syndicate_access = list(access_maint_tunnels, access_syndicate, access_external_airlocks)
+var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)
 
-// Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
+/// Strings which corraspond to bodypart covering flags, useful for outputting what something covers.
 var/global/list/string_part_flags = list(
 	"head" = HEAD,
 	"face" = FACE,
@@ -76,7 +73,7 @@ var/global/list/string_part_flags = list(
 	"hands" = HANDS
 )
 
-// Strings which corraspond to slot flags, useful for outputting what slot something is.
+/// Strings which corraspond to slot flags, useful for outputting what slot something is.
 var/global/list/string_slot_flags = list(
 	"back" = SLOT_BACK,
 	"face" = SLOT_MASK,
@@ -107,80 +104,16 @@ GLOBAL_LIST_EMPTY(mannequins)
 //////////////////////////
 
 /proc/make_datum_reference_lists()
-	// Keybindings
+	//* Keybindings
 	init_keybindings()
 
-	// Circuits
+	//* Circuits
 	initialize_integrated_circuits_list()
 
+	//* Recipes
+	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
+
 	var/list/paths
-
-	//Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
-	paths = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
-	for(var/path in paths)
-		var/datum/sprite_accessory/hair/H = new path()
-		hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	hair_styles_male_list += H.name
-			if(FEMALE)	hair_styles_female_list += H.name
-			else
-				hair_styles_male_list += H.name
-				hair_styles_female_list += H.name
-
-	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
-	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
-	for(var/path in paths)
-		var/datum/sprite_accessory/facial_hair/H = new path()
-		facial_hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	facial_hair_styles_male_list += H.name
-			if(FEMALE)	facial_hair_styles_female_list += H.name
-			else
-				facial_hair_styles_male_list += H.name
-				facial_hair_styles_female_list += H.name
-
-	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
-	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
-	for(var/path in paths)
-		var/datum/sprite_accessory/marking/M = new path()
-		body_marking_styles_list[M.name] = M
-
-	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
-	for(var/T in paths)
-		var/datum/job/J = new T
-		joblist[J.title] = J
-
-	//Languages and species.
-	paths = typesof(/datum/language)-/datum/language
-	for(var/T in paths)
-		var/datum/language/L = new T
-		GLOB.all_languages[L.name] = L
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[L.key] = L
-
-	var/rkey = 0
-	paths = typesof(/datum/species)
-	for(var/T in paths)
-
-		rkey++
-
-		var/datum/species/S = T
-		if(!initial(S.name))
-			continue
-
-		S = new T
-		S.race_key = rkey //Used in mob icon caching.
-		GLOB.all_species[S.name] = S
-
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			GLOB.playable_species += S.name
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			GLOB.whitelisted_species += S.name
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
@@ -194,7 +127,24 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/poster/P = new T
 		NT_poster_designs += P
 
-	return 1
+	// Custom species traits
+	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
+	for(var/path in paths)
+		var/datum/trait/instance = new path()
+		if(!instance.name)
+			continue //A prototype or something
+		var/cost = instance.cost
+		traits_costs[path] = cost
+		all_traits[path] = instance
+		switch(cost)
+			if(-INFINITY to -0.1)
+				negative_traits[path] = instance
+			if(0)
+				neutral_traits[path] = instance
+			if(0.1 to INFINITY)
+				positive_traits[path] = instance
+
+	return 1 // Hooks must return 1
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()
@@ -207,29 +157,27 @@ GLOBAL_LIST_EMPTY(mannequins)
 				. += "    has: [t]\n"
 	world << .
 */
-//Hexidecimal numbers
+///Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
 
+//! ## Traits
+/// Negative custom species traits, indexed by path.
+var/global/list/negative_traits = list()
+/// Neutral custom species traits, indexed by path.
+var/global/list/neutral_traits = list()
+/// Neutral traits available to all species, indexed by path.
+var/global/list/everyone_traits = list()
+/// Positive custom species traits, indexed by path.
+var/global/list/positive_traits = list()
+/// Just path = cost list, saves time in char setup.
+var/global/list/traits_costs = list()
+/// All of 'em at once. (same instances)
+var/global/list/all_traits = list()
 
-//VR FILE MERGE
-/**
- * VOREStation global lists
-*/
+/// Suit Sensors global list.
+var/global/list/sensorpreflist = list("Off", "Binary", "Vitals", "Tracking", "No Preference")
 
-var/global/list/ear_styles_list = list()	// Stores /datum/sprite_accessory/ears indexed by type
-var/global/list/tail_styles_list = list()	// Stores /datum/sprite_accessory/tail indexed by type
-var/global/list/wing_styles_list = list()	// Stores /datum/sprite_accessory/wing indexed by type
-var/global/list/negative_traits = list()	// Negative custom species traits, indexed by path
-var/global/list/neutral_traits = list()		// Neutral custom species traits, indexed by path
-var/global/list/positive_traits = list()	// Positive custom species traits, indexed by path
-var/global/list/traits_costs = list()		// Just path = cost list, saves time in char setup
-var/global/list/all_traits = list()			// All of 'em at once (same instances)
-
-var/global/list/sensorpreflist = list("Off", "Binary", "Vitals", "Tracking", "No Preference")	//TFF 5/8/19 - Suit Sensors global list
-
-var/global/list/custom_species_bases = list() // Species that can be used for a Custom Species icon base
-
-//stores numeric player size options indexed by name
+/// Stores numeric player size options indexed by name.
 var/global/list/player_sizes_list = list(
 		"Macro" 	= RESIZE_HUGE,
 		"Big" 		= RESIZE_BIG,
@@ -237,14 +185,14 @@ var/global/list/player_sizes_list = list(
 		"Small" 	= RESIZE_SMALL,
 		"Tiny" 		= RESIZE_TINY)
 
-//stores vantag settings indexed by name
+/// Stores vantag settings indexed by name.
 var/global/list/vantag_choices_list = list(
 		VANTAG_NONE		=	"No Involvement",
 		VANTAG_VORE		=	"Be Prey",
 		VANTAG_KIDNAP	=	"Be Kidnapped",
 		VANTAG_KILL		=	"Be Killed")
 
-//Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
+/// Blacklist to exclude items from object ingestion. Digestion blacklist located in digest_act_vr.dm
 GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/hand_tele,
 		/obj/item/card/id/gold/captain/spare,
@@ -257,7 +205,7 @@ GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/disk/nuclear))
 //		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
 
-//Classic Vore sounds
+///Classic Vore sounds
 var/global/list/classic_vore_sounds = list(
 		"Gulp" = 'sound/vore/gulp.ogg',
 		"Insert" = 'sound/vore/insert.ogg',
@@ -286,7 +234,7 @@ var/global/list/classic_release_sounds = list(
 		"None" = null
 		)
 
-//Poojy's Fancy Sounds
+///Poojy's Fancy Sounds
 var/global/list/fancy_vore_sounds = list(
 		"Gulp" = 'sound/vore/sunesound/pred/swallow_01.ogg',
 		"Swallow" = 'sound/vore/sunesound/pred/swallow_02.ogg',
@@ -320,34 +268,36 @@ var/global/list/fancy_release_sounds = list(
 		)
 
 var/global/list/global_vore_egg_types = list(
-		"Unathi" 		= UNATHI_EGG,
+		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
-		"Akula" 		= AKULA_EGG,
-		"Skrell" 		= SKRELL_EGG,
-		"Nevrean"		= NEVREAN_EGG,
-		"Sergal" 		= SERGAL_EGG,
-		"Human"			= HUMAN_EGG,
+		SPECIES_AKULA 		= AKULA_EGG,
+		SPECIES_SKRELL 		= SKRELL_EGG,
+		SPECIES_NEVREAN		= NEVREAN_EGG,
+		SPECIES_SERGAL 		= SERGAL_EGG,
+		SPECIES_HUMAN			= HUMAN_EGG,
 		"Slime"			= SLIME_EGG,
 		"Egg"			= EGG_EGG,
-		"Xenochimera" 		= XENOCHIMERA_EGG,
-		"Xenomorph"		= XENOMORPH_EGG)
+		SPECIES_XENOCHIMERA 		= XENOCHIMERA_EGG,
+		SPECIES_XENO		= XENOMORPH_EGG)
 
 var/global/list/tf_vore_egg_types = list(
-	"Unathi" 		= /obj/structure/closet/secure_closet/egg/unathi,
-	"Tajara" 		= /obj/structure/closet/secure_closet/egg/tajaran,
-	"Akula" 		= /obj/structure/closet/secure_closet/egg/shark,
-	"Skrell" 		= /obj/structure/closet/secure_closet/egg/skrell,
-	"Sergal"		= /obj/structure/closet/secure_closet/egg/sergal,
-	"Nevrean"		= /obj/structure/closet/secure_closet/egg/nevrean,
-	"Human"			= /obj/structure/closet/secure_closet/egg/human,
+	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
+	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
+	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,
+	SPECIES_SERGAL		= /obj/structure/closet/secure_closet/egg/sergal,
+	SPECIES_NEVREAN		= /obj/structure/closet/secure_closet/egg/nevrean,
+	SPECIES_HUMAN			= /obj/structure/closet/secure_closet/egg/human,
 	"Slime"			= /obj/structure/closet/secure_closet/egg/slime,
 	"Egg"			= /obj/structure/closet/secure_closet/egg,
-	"Xenochimera"		= /obj/structure/closet/secure_closet/egg/scree,
-	"Xenomorph"		= /obj/structure/closet/secure_closet/egg/xenomorph)
+	SPECIES_XENOCHIMERA		= /obj/structure/closet/secure_closet/egg/scree,
+	SPECIES_XENO		= /obj/structure/closet/secure_closet/egg/xenomorph)
 
 var/global/list/edible_trash = list(/obj/item/broken_device,
-				/obj/item/clothing/accessory/collar,	//TFF 10/7/19 - add option to nom collars,
-				/obj/item/communicator,		//TFF 19/9/19 - add option to nom communicators and commwatches,
+				/obj/item/clothing/accessory/collar,
+				/obj/item/communicator,
 				/obj/item/clothing/mask,
 				/obj/item/clothing/glasses,
 				/obj/item/clothing/gloves,
@@ -622,48 +572,19 @@ var/global/list/contamination_colors = list("green",
 				"beige",
 				"pink")
 
-//For the mechanic of leaving remains. Ones listed below are basically ones that got no bones or leave no trace after death.
-var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
-				SPECIES_DIONA,
-				SPECIES_ALRAUNE,
-				SPECIES_PROTEAN,
-				SPECIES_MONKEY,					//Exclude all monkey subtypes, to prevent abuse of it. They aren't,
-				SPECIES_MONKEY_TAJ,				//set to have remains anyway, but making double sure,
-				SPECIES_MONKEY_SKRELL,
-				SPECIES_MONKEY_UNATHI,
-				SPECIES_MONKEY_AKULA,
-				SPECIES_MONKEY_NEVREAN,
-				SPECIES_MONKEY_SERGAL,
-				SPECIES_MONKEY_VULPKANIN,
-				SPECIES_XENO,					//Same for xenos,
-				SPECIES_XENO_DRONE,
-				SPECIES_XENO_HUNTER,
-				SPECIES_XENO_SENTINEL,
-				SPECIES_XENO_QUEEN,
-				SPECIES_SHADOW,
-				SPECIES_GOLEM,					//Some special species that may or may not be ever used in event too,
-				SPECIES_SHADEKIN)			//Shadefluffers just poof away
+///For the mechanic of leaving remains. Ones listed below are basically ones that got no bones or leave no trace after death.
+var/global/list/remainless_species = list(SPECIES_ID_PROMETHEAN,
+				SPECIES_ID_DIONA,
+				SPECIES_ID_ALRAUNE,
+				SPECIES_ID_PROTEAN,
+				SPECIES_ID_MONKEY, //Exclude all monkey subtypes, which is handled by ID
+				SPECIES_ID_XENOMORPH, //Same for xenos
+				SPECIES_ID_SHADOW,
+				SPECIES_ID_GOLEM, //Some special species that may or may not be ever used in event too,
+				SPECIES_ID_SHADEKIN) //Shadefluffers just poof away
 
 /hook/startup/proc/init_vore_datum_ref_lists()
 	var/paths
-
-	// Custom Ears
-	paths = typesof(/datum/sprite_accessory/ears) - /datum/sprite_accessory/ears
-	for(var/path in paths)
-		var/obj/item/clothing/head/instance = new path()
-		ear_styles_list[path] = instance
-
-	// Custom Tails
-	paths = typesof(/datum/sprite_accessory/tail) - /datum/sprite_accessory/tail - /datum/sprite_accessory/tail/taur
-	for(var/path in paths)
-		var/datum/sprite_accessory/tail/instance = new path()
-		tail_styles_list[path] = instance
-
-	// Custom Wings
-	paths = typesof(/datum/sprite_accessory/wing) - /datum/sprite_accessory/wing
-	for(var/path in paths)
-		var/datum/sprite_accessory/wing/instance = new path()
-		wing_styles_list[path] = instance
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait
@@ -679,17 +600,24 @@ var/global/list/remainless_species = list(SPECIES_PROMETHEAN,
 				negative_traits[path] = instance
 			if(0)
 				neutral_traits[path] = instance
+				if(!(instance.custom_only))
+					everyone_traits[path] = instance
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	// Custom species icon bases
-	var/list/blacklisted_icons = list(SPECIES_CUSTOM,SPECIES_PROMETHEAN) //Just ones that won't work well.
-	for(var/species_name in GLOB.playable_species)
-		if(species_name in blacklisted_icons)
-			continue
-		var/datum/species/S = GLOB.all_species[species_name]
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			continue
-		custom_species_bases += species_name
+	// Weaver recipe stuff
+	paths = subtypesof(/datum/weaver_recipe/structure)
+	for(var/path in paths)
+		var/datum/weaver_recipe/instance = new path()
+		if(!instance.title)
+			continue //A prototype or something
+		weavable_structures[instance.title] = instance
+
+	paths = subtypesof(/datum/weaver_recipe/item)
+	for(var/path in paths)
+		var/datum/weaver_recipe/instance = new path()
+		if(!instance.title)
+			continue //A prototype or something
+		weavable_items[instance.title] = instance
 
 	return 1 // Hooks must return 1

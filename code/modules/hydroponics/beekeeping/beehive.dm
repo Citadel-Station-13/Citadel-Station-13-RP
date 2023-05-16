@@ -13,22 +13,25 @@
 	var/maxFrames = 5
 
 /obj/machinery/beehive/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	icon_state = "beehive"
 	if(closed)
-		overlays += "lid"
+		overlays_to_add += "lid"
 	if(frames)
-		overlays += "empty[frames]"
+		overlays_to_add += "empty[frames]"
 	if(honeycombs >= 100)
-		overlays += "full[round(honeycombs / 100)]"
+		overlays_to_add += "full[round(honeycombs / 100)]"
 	if(!smoked)
 		switch(bee_count)
 			if(1 to 40)
-				overlays += "bees1"
+				overlays_to_add += "bees1"
 			if(41 to 80)
-				overlays += "bees2"
+				overlays_to_add += "bees2"
 			if(81 to 100)
-				overlays += "bees3"
+				overlays_to_add += "bees3"
+
+	add_overlay(overlays_to_add)
 
 /obj/machinery/beehive/examine(mob/user)
 	. = ..()
@@ -43,7 +46,7 @@
 		return
 	else if(I.is_wrench())
 		anchored = !anchored
-		playsound(loc, I.usesound, 50, 1)
+		playsound(loc, I.tool_sound, 50, 1)
 		user.visible_message("<span class='notice'>[user] [anchored ? "wrenches" : "unwrenches"] \the [src].</span>", "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 		return
 	else if(istype(I, /obj/item/bee_smoker))
@@ -65,11 +68,11 @@
 		if(H.honey)
 			to_chat(user, "<span class='notice'>\The [I] is full with beeswax and honey, empty it in the extractor first.</span>")
 			return
+		if(!user.attempt_consume_item_for_construction(I))
+			return
 		++frames
 		user.visible_message("<span class='notice'>[user] loads \the [I] into \the [src].</span>", "<span class='notice'>You load \the [I] into \the [src].</span>")
 		update_icon()
-		user.drop_from_inventory(I)
-		qdel(I)
 		return
 	else if(istype(I, /obj/item/bee_pack))
 		var/obj/item/bee_pack/B = I
@@ -112,14 +115,14 @@
 			to_chat(user, "<span class='notice'>You can't dismantle \the [src] with these bees inside.</span>")
 			return
 		to_chat(user, "<span class='notice'>You start dismantling \the [src]...</span>")
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		if(do_after(user, 30))
 			user.visible_message("<span class='notice'>[user] dismantles \the [src].</span>", "<span class='notice'>You dismantle \the [src].</span>")
 			new /obj/item/beehive_assembly(loc)
 			qdel(src)
 		return
 
-/obj/machinery/beehive/attack_hand(var/mob/user)
+/obj/machinery/beehive/attack_hand(mob/user, list/params)
 	if(!closed)
 		if(honeycombs < 100)
 			to_chat(user, "<span class='notice'>There are no filled honeycombs.</span>")
@@ -225,39 +228,15 @@
 	icon = 'icons/obj/apiary_bees_etc.dmi'
 	icon_state = "apiary"
 
-/obj/item/beehive_assembly/attack_self(var/mob/user)
+/obj/item/beehive_assembly/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You start assembling \the [src]...</span>")
 	if(do_after(user, 30))
 		user.visible_message("<span class='notice'>[user] constructs a beehive.</span>", "<span class='notice'>You construct a beehive.</span>")
 		new /obj/machinery/beehive(get_turf(user))
-		user.drop_from_inventory(src)
 		qdel(src)
-
-/obj/item/stack/material/wax
-	name = "wax"
-	singular_name = "wax piece"
-	desc = "Soft substance produced by bees. Used to make candles."
-	icon = 'icons/obj/beekeeping.dmi'
-	icon_state = "wax"
-	default_type = "wax"
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-
-/obj/item/stack/material/wax/Initialize(mapload, new_amount, merge)
-	. = ..()
-	recipes = wax_recipes
-
-/datum/material/wax
-	name = "wax"
-	stack_type = /obj/item/stack/material/wax
-	icon_colour = "#fff343"
-	melting_point = T0C+300
-	weight = 1
-	pass_stack_colors = TRUE
-
-var/global/list/datum/stack_recipe/wax_recipes = list( \
-	new/datum/stack_recipe("candle", /obj/item/flame/candle) \
-)
 
 /obj/item/bee_pack
 	name = "bee pack"

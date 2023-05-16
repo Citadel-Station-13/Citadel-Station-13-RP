@@ -1,3 +1,5 @@
+// todo: refactor number.. 4?
+// thise is all snowflakey.
 /client/proc/debug_variables(datum/D in world)
 	set category = "Debug"
 	set name = "View Variables"
@@ -11,46 +13,32 @@
 	if(!D)
 		return
 
-	var/islist = islist(D)
-	if(!islist && !istype(D))
-		return
-
-	var/title = ""
+	var/vtype
+	var/type
 	var/refid = REF(D)
-	var/icon/sprite
-	var/hash
-
-	var/type = islist? /list : D.type
-	var/no_icon = FALSE
-
-	if(istype(D, /atom))
-		sprite = getFlatIcon(D)
-		if(sprite)
-			hash = md5(sprite)
-			src << browse_rsc(sprite, "vv[hash].png")
-		else
-			no_icon = TRUE
-
-	title = "[D] ([REF(D)]) = [type]"
-	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
-
-	var/sprite_text
-	if(sprite)
-		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
-	var/list/header = islist(D)? list("<b>/list</b>") : D.vv_get_header()
-
-	var/marked_line
-	if(holder && holder.marked_datum && holder.marked_datum == D)
-		marked_line = VV_MSG_MARKED
-	var/varedited_line
-	if(!islist && (D.datum_flags & DF_VAR_EDITED))
-		varedited_line = VV_MSG_EDITED
-	var/deleted_line
-	if(!islist && D.gc_destroyed)
-		deleted_line = VV_MSG_DELETED
-
+	var/ref = ref(D)
+	var/list/header
+	var/title = "#unkw"
 	var/list/dropdownoptions
-	if (islist)
+	// welcome to yanderedev
+	// but i assure you this is necessary unless we switch(typeid).
+	// vv refactor #4 when?
+	if(isdatum(D))
+		vtype = VVING_A_DATUM
+		type = D.type
+		header = D.vv_get_header()
+		if(refid == ref)
+			title = "[D] ([ref]) = [type]"
+		else
+			title = "[D] ([refid]/[ref]) = [type]"
+		dropdownoptions = D.vv_get_dropdown()
+		dropdownoptions += D.get_view_variables_options_legacy()
+		header += D.get_view_variables_header_legacy()
+	else if(islist(D))
+		vtype = VVING_A_LIST
+		type = /list
+		header = list("<b>/list [ref]</b>")
+		title = "/list [ref]"
 		dropdownoptions = list(
 			"---",
 			"Add Item" = VV_HREF_TARGETREF_INTERNAL(refid, VV_HK_LIST_ADD),
@@ -65,36 +53,74 @@
 			var/name = dropdownoptions[i]
 			var/link = dropdownoptions[name]
 			dropdownoptions[i] = "<option value[link? "='[link]'":""]>[name]</option>"
+	else if(IS_APPEARANCE(D))
+		vtype = VVING_A_APPEARANCE
+		type = /appearance
+		header = list("<b>virtual appearance [ref]</b>")
+		title = "virtual appearance [ref]"
+		dropdownoptions = list()
 	else
-		dropdownoptions = D.vv_get_dropdown()
+		to_chat(usr, "Invalid vtype.")
+		return
 
-	//VORECODE START
-	if(!islist)
-		dropdownoptions += D.get_view_variables_options_legacy()
-		header += D.get_view_variables_header_legacy()
-	//VORECODE END
+	var/icon/sprite
+	var/hash
 
+	var/no_icon = FALSE
+
+	if(istype(D, /atom))
+		sprite = get_flat_icon(D)
+		if(sprite)
+			hash = md5(sprite)
+			src << browse_rsc(sprite, "vv[hash].png")
+		else
+			no_icon = TRUE
+
+	var/formatted_type = replacetext("[type]", "/", "<wbr>/")
+
+	var/sprite_text
+	if(sprite)
+		sprite_text = no_icon? "\[NO ICON\]" : "<img src='vv[hash].png'></td><td>"
+
+	var/marked_line
+	if(holder && holder.marked_datum && holder.marked_datum == D)
+		marked_line = VV_MSG_MARKED
+	var/varedited_line
+	if(vtype == VVING_A_DATUM && (D.datum_flags & DF_VAR_EDITED))
+		varedited_line = VV_MSG_EDITED
+	var/deleted_line
+	if(vtype == VVING_A_DATUM && D.gc_destroyed)
+		deleted_line = VV_MSG_DELETED
 
 	var/list/names = list()
-	if(!islist)
-		for(var/V in D.vars)
-			names += V
-	sleep(1)
-
 	var/list/variable_html = list()
-	if(islist)
-		var/list/L = D
-		for(var/i in 1 to L.len)
-			var/key = L[i]
-			var/value
-			if(IS_NORMAL_LIST(L) && IS_VALID_ASSOC_KEY(key))
-				value = L[key]
-			variable_html += debug_variable(i, value, 0, L)
-	else
-		names = sortList(names)
-		for(var/V in names)
-			if(D.can_vv_get(V))
-				variable_html += D.vv_get_var(V)
+	switch(vtype)
+		if(VVING_A_DATUM)
+			for(var/V in D.vars)
+				names += V
+		if(VVING_A_LIST)
+		if(VVING_A_APPEARANCE)
+			for(var/V in global._appearance_var_list)
+				names += V
+	sleep(1)
+	switch(vtype)
+		if(VVING_A_DATUM)
+			names = sortList(names)
+			for(var/V in names)
+				if(D.can_vv_get(V))
+					variable_html += D.vv_get_var(V)
+		if(VVING_A_LIST)
+			var/list/L = D
+			for(var/i in 1 to L.len)
+				var/key = L[i]
+				var/value
+				if(IS_NORMAL_LIST(L) && IS_VALID_ASSOC_KEY(key))
+					value = L[key]
+				variable_html += debug_variable(i, value, 0, L)
+		if(VVING_A_APPEARANCE)
+			// lol, lmao
+			for(var/V in names)
+				variable_html += __appearance_v_debug(D, V)
 
 	var/html = {"
 <html>

@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/bats
+	name = "Space Bats"
+	desc = "The byproduct of Human terraforming and genetics \
+	experimentation focusing on creating fauna more adapted to \
+	space travel, Space Bats are vampiric abominations that try \
+	to suck the life out of any warm creature they can find."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/space/bats
 	name = "space bat swarm"
 	desc = "A swarm of cute little blood sucking bats that looks pretty upset."
@@ -7,11 +15,13 @@
 	icon_living = "bat"
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/bats)
 
 	faction = "scarybat"
 
 	maxHealth = 20
 	health = 20
+	randomized = TRUE
 
 	attacktext = list("bites")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -30,7 +40,9 @@
 
 	has_langs = list("Mouse")
 
-	meat_type = /obj/item/reagent_containers/food/snacks/meat
+	meat_amount = 1
+	bone_amount = 1
+	hide_amount = 1
 
 	say_list_type = /datum/say_list/mouse	// Close enough
 
@@ -40,7 +52,7 @@
 	if(isliving(A))
 		var/mob/living/L = A
 		if(prob(scare_chance))
-			L.Stun(1)
+			L.afflict_stun(20 * 1)
 			L.visible_message("<span class='danger'>\the [src] scares \the [L]!</span>")
 
 // Spookiest of bats

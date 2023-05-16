@@ -14,45 +14,47 @@
 
 /obj/mecha/proc/GrantActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
-		eject_action.Grant(user, src)
-	//internals_action.Grant(user, src)
-	cycle_action.Grant(user, src)
-	lights_action.Grant(user, src)
-	stats_action.Grant(user, src)
-	strafing_action.Grant(user, src)//The defaults.
+		eject_action.grant(user, src)
+	internals_action.grant(user, src)
+	cycle_action.grant(user, src)
+	lights_action.grant(user, src)
+	stats_action.grant(user, src)
+	strafing_action.grant(user, src)//The defaults.
 
 	if(defence_mode_possible)
-		defence_action.Grant(user, src)
+		defence_action.grant(user, src)
 	if(overload_possible)
-		overload_action.Grant(user, src)
+		overload_action.grant(user, src)
 	if(smoke_possible)
-		smoke_action.Grant(user, src)
+		smoke_action.grant(user, src)
 	if(zoom_possible)
-		zoom_action.Grant(user, src)
+		zoom_action.grant(user, src)
 	if(thrusters_possible)
-		thrusters_action.Grant(user, src)
+		thrusters_action.grant(user, src)
 	if(phasing_possible)
-		phasing_action.Grant(user, src)
+		phasing_action.grant(user, src)
 	if(switch_dmg_type_possible)
-		switch_damtype_action.Grant(user, src)
+		switch_damtype_action.grant(user, src)
+	if(cloak_possible)
+		cloak_action.grant(user, src)
 
 /obj/mecha/proc/RemoveActions(mob/living/user, human_occupant = 0)
 	if(human_occupant)
-		eject_action.Remove(user, src)
-	//internals_action.Remove(user, src)
-	cycle_action.Remove(user, src)
-	lights_action.Remove(user, src)
-	stats_action.Remove(user, src)
-	strafing_action.Remove(user, src)
+		eject_action.remove(user, src)
+	internals_action.remove(user, src)
+	cycle_action.remove(user, src)
+	lights_action.remove(user, src)
+	stats_action.remove(user, src)
+	strafing_action.remove(user, src)
 
-	defence_action.Remove(user, src)
-	smoke_action.Remove(user, src)
-	zoom_action.Remove(user, src)
-	thrusters_action.Remove(user, src)
-	phasing_action.Remove(user, src)
-	switch_damtype_action.Remove(user, src)
-	overload_action.Remove(user, src)
-
+	defence_action.remove(user, src)
+	smoke_action.remove(user, src)
+	zoom_action.remove(user, src)
+	thrusters_action.remove(user, src)
+	phasing_action.remove(user, src)
+	switch_damtype_action.remove(user, src)
+	overload_action.remove(user, src)
+	cloak_action.remove(user, src)
 
 
 //
@@ -60,11 +62,12 @@
 //
 
 /datum/action/innate/mecha
-	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUNNED | AB_CHECK_ALIVE
+	check_flags = ACTION_CHECK_RESTRAINED | ACTION_CHECK_STUNNED | ACTION_CHECK_ALIVE
 	button_icon = 'icons/effects/actions_mecha.dmi'
 	var/obj/mecha/chassis
 
-/datum/action/innate/mecha/Grant(mob/living/L, obj/mecha/M)
+// todo: this is shitcode
+/datum/action/innate/mecha/grant(mob/living/T, obj/mecha/M)
 	if(M)
 		chassis = M
 	..()
@@ -80,7 +83,7 @@
 	chassis.lights()
 
 
-/*
+
 /datum/action/innate/mecha/mech_toggle_internals
 	name = "Toggle Internal Airtank Usage"
 	button_icon_state = "mech_internals_off"
@@ -89,7 +92,7 @@
 	button_icon_state = "mech_internals_[chassis.use_internal_tank ? "off" : "on"]"
 	button.UpdateIcon()
 	chassis.internal_tank()
-*/
+
 
 
 /datum/action/innate/mecha/mech_view_stats
@@ -185,6 +188,9 @@
 	var/list/available_equipment = list()
 	available_equipment = chassis.equipment
 
+	if(chassis.weapons_only_cycle)
+		available_equipment = chassis.weapon_equipment
+
 	if(available_equipment.len == 0)
 		chassis.occupant_message("No equipment available.")
 		return
@@ -239,6 +245,15 @@
 
 
 
+/datum/action/innate/mecha/mech_toggle_cloaking
+	name = "Toggle Mech phasing"
+	button_icon_state = "mech_phasing_off"
+
+/datum/action/innate/mecha/mech_toggle_cloaking/Activate()
+	button_icon_state = "mech_phasing_[chassis.cloaked ? "off" : "on"]"
+	button.UpdateIcon()
+	chassis.toggle_cloaking()
+
 
 
 /////
@@ -290,12 +305,10 @@
 		return
 	if(overload)
 		overload = 0
-		step_in = initial(step_in)
 		step_energy_drain = initial(step_energy_drain)
 		src.occupant_message("<font color='blue'>You disable leg actuators overload.</font>")
 	else
 		overload = 1
-		step_in = min(1, round(step_in/2))
 		step_energy_drain = step_energy_drain*overload_coeff
 		src.occupant_message("<font color='red'>You enable leg actuators overload.</font>")
 	src.log_message("Toggled leg actuators overload.")
@@ -346,14 +359,15 @@
 	if(usr!=src.occupant)
 		return
 	if(src.occupant.client)
+		var/client/myclient = src.occupant.client
 		src.zoom = !src.zoom
 		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
-			src.occupant.set_viewsize(12)
-			SEND_SOUND(src.occupant, sound('sound/mecha/imag_enh.ogg',volume=50))
+			myclient.set_temporary_view(GLOB.max_client_view_x + 5, GLOB.max_client_view_y + 5)
+			src.occupant << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
-			src.occupant.set_viewsize() // Reset to default
+			myclient.reset_temporary_view()
 	return
 
 
@@ -418,3 +432,36 @@
 	src.occupant_message("<font color=\"[phasing?"#00f\">En":"#f00\">Dis"]abled phasing.</font>")
 	return
 
+
+/obj/mecha/verb/toggle_cloak()
+	set category = "Exosuit Interface"
+	set name = "Toggle cloaking"
+	set src = usr.loc
+	set popup_menu = 0
+	toggle_cloaking()
+
+/obj/mecha/proc/toggle_cloaking()
+	if(usr!=src.occupant)
+		return
+
+	if(cloaked)
+		uncloak()
+	else
+		cloak()
+
+	src.occupant_message("<font color=\"[cloaked?"#00f\">En":"#f00\">Dis"]abled cloaking.</font>")
+	return
+
+/obj/mecha/verb/toggle_weapons_only_cycle()
+	set category = "Exosuit Interface"
+	set name = "Toggle weapons only cycling"
+	set src = usr.loc
+	set popup_menu = 0
+	set_weapons_only_cycle()
+
+/obj/mecha/proc/set_weapons_only_cycle()
+	if(usr!=src.occupant)
+		return
+	weapons_only_cycle = !weapons_only_cycle
+	src.occupant_message("<font color=\"[weapons_only_cycle?"#00f\">En":"#f00\">Dis"]abled weapons only cycling.</font>")
+	return

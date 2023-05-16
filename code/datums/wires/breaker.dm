@@ -1,27 +1,30 @@
 /datum/wires/breakerbox
-	wire_count = 2
 	holder_type = /obj/machinery/power/breakerbox
+	wire_count = 2
+	proper_name = "Breaker box"
 
-var/const/WIRE_TOGGLE = 1
-var/const/WIRE_LOCK = 2
+/datum/wires/breakerbox/New(atom/_holder)
+	wires = list(WIRE_POWER, WIRE_IDSCAN)
+	return ..()
 
-/datum/wires/breakerbox/UpdatePulsed(var/index)
-	switch(index)
-		if(WIRE_TOGGLE)
-			var/obj/machinery/power/breakerbox/B= holder
-			var/on = B.on
-			B.set_state(!on)
-
-/datum/wires/breakerbox/UpdateCut(var/index, var/mended)
-	var/obj/machinery/power/breakerbox/B = holder
-	switch(index)
-		if(WIRE_LOCK)
-			if(!mended)
-				B.update_locked = TRUE
-			else
-				B.update_locked = FALSE
-/datum/wires/breakerbox/CanUse(var/mob/living/L)
+/datum/wires/breakerbox/interactable(mob/user)
 	var/obj/machinery/power/breakerbox/B = holder
 	if(B.panel_open)
 		return TRUE
 	return FALSE
+
+/datum/wires/breakerbox/on_pulse(wire)
+	switch(wire)
+		if(WIRE_POWER)
+			var/obj/machinery/power/breakerbox/B= holder
+			var/on = B.on
+			B.set_state(!on)
+
+/datum/wires/breakerbox/on_cut(wire, mend)
+	var/obj/machinery/power/breakerbox/B = holder
+	switch(wire)
+		if(WIRE_IDSCAN)
+			if(!mend)
+				B.update_locked = TRUE
+			else
+				B.update_locked = FALSE

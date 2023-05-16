@@ -26,7 +26,7 @@
 		RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/try_infect_equipped)
 		if(istype(parent, /obj/item/reagent_containers/food/snacks))
 			RegisterSignal(parent, COMSIG_FOOD_EATEN, .proc/try_infect_eat)
-	else if(istype(parent, /obj/effect/decal/cleanable/blood/gibs))
+	else if(istype(parent, /obj/effect/debris/cleanable/blood/gibs))
 		RegisterSignal(parent, COMSIG_GIBS_STREAK, .proc/try_infect_streak)
 
 /datum/component/infective/proc/try_infect_eat(datum/source, mob/living/eater, mob/living/feeder)

@@ -12,7 +12,13 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 
 /datum/category_item/catalogue/fauna/gaslamp		//TODO: VIRGO_LORE_WRITING_WIP
 	name = "Virgo 3b Fauna - Gaslamp"
-	desc = ""
+	desc = "Gaslamps are a phoron-based life form endemic to the world \
+	of Virgo-3B. They are a sort of fungal organism with physical similarities \
+	to Diona and Vox, although there is no actual link between these species. \
+	They derive energy for movement from a gentle combustion-like reaction in their \
+	bodies using atmospheric phoron, carefully filtered trace oxygen, and captured \
+	meat products. Over-exposure to oxygen causes their insides to burn too hot and \
+	eventually kills them."
 	value = CATALOGUER_REWARD_TRIVIAL
 
 /mob/living/simple_mob/animal/passive/gaslamp
@@ -29,6 +35,9 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	faction = "virgo3b"
 	maxHealth = 100
 	health = 100
+	randomized = TRUE
+	mod_min = 90
+	mod_max = 140
 	movement_cooldown = 12
 
 	say_list_type = /datum/say_list/gaslamp
@@ -57,6 +66,8 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	min_n2 = 0
 	max_n2 = 0
 
+	exotic_amount = 5
+
 /datum/say_list/gaslamp
 	emote_see = list("looms", "sways gently")
 
@@ -69,19 +80,3 @@ TODO: Make them light up and heat the air when exposed to oxygen.
 	speak_chance = 1
 	wander = TRUE
 	base_wander_delay = 9
-
-// Activate Noms!
-/mob/living/simple_mob/animal/passive/gaslamp
-	vore_active = 1
-	vore_capacity = 2
-	vore_bump_chance = 90 //they're frickin' jellyfish anenome filterfeeders, get tentacled
-	vore_bump_emote = "lazily wraps its tentacles around"
-	vore_standing_too = 1 // Defaults to trying to give you that big tentacle hug.
-	vore_ignores_undigestable = 0 // they absorb rather than digest, you're going in either way
-	vore_default_mode = DM_HOLD
-	vore_digest_chance = 0			// Chance to switch to digest mode if resisted
-	vore_absorb_chance = 20			// BECOME A PART OF ME.
-	vore_pounce_chance = 5 // Small chance to punish people who abuse their nomming behaviour to try and kite them forever with repeated melee attacks.
-	vore_stomach_name = "internal chamber"
-	vore_stomach_flavor	= "You are squeezed into the tight embrace of the alien creature's warm and cozy insides."
-	vore_icons = SA_ICON_LIVING

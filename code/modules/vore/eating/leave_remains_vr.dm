@@ -3,7 +3,7 @@
 	if(istype(M,/mob/living/carbon/human))	//Are we even humanoid?
 		var/mob/living/carbon/human/H = M
 
-		if((H.species.name in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
+		if((H.species.get_species_id() in remainless_species) || H.isSynthetic())	//Don't leave anything if there is nothing to leave
 			return
 
 		else
@@ -46,7 +46,7 @@
 				if(SPECIES_SERGAL)
 					new /obj/item/digestion_remains/skull/sergal(src,owner)
 					skull_amount--
-				if(SPECIES_ZORREN_FLAT || SPECIES_ZORREN_HIGH)
+				if(SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH)
 					new /obj/item/digestion_remains/skull/zorren(src,owner)
 					skull_amount--
 				if(SPECIES_NEVREAN)
@@ -76,8 +76,8 @@
 	desc = "A bleached bone. It's very non-descript and its hard to tell what species or part of the body it came from."
 	icon = 'icons/obj/bones_vr.dmi'
 	icon_state = "generic"
-	force = 0
-	throwforce = 0
+	damage_force = 0
+	throw_force = 0
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL
 	var/pred_ckey
@@ -85,10 +85,15 @@
 
 /obj/item/digestion_remains/Initialize(mapload, mob/living/pred)
 	. = ..(mapload)
+	if(!pred)
+		return
 	pred_ckey = pred.ckey
 	pred_name = pred.name
 
 /obj/item/digestion_remains/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user,"<span class='warning'>As you squeeze the [name], it crumbles into dust and falls apart into nothing!</span>")
 		qdel(src)

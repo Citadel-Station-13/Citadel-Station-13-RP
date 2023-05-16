@@ -6,14 +6,14 @@
 	icon_state = "resonator"
 	item_state = "resonator"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	origin_tech =  list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	desc = "A handheld device that creates small fields of energy that resonate until they detonate, crushing rock. It can also be activated without a target to create a field at the user's location, to act as a delayed time trap. It's more effective in low temperature."
 	w_class = ITEMSIZE_NORMAL
-	force = 8
-	throwforce = 10
+	damage_force = 8
+	throw_force = 10
 	var/cooldown = 0
 	var/fieldsactive = 0
 	var/burst_time = 50
@@ -38,6 +38,9 @@
 			fieldsactive--
 
 /obj/item/resonator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(burst_time == 50)
 		burst_time = 30
 		to_chat(user, "<span class='info'>You set the resonator's fields to detonate after 3 seconds.</span>")
@@ -86,8 +89,7 @@
 		qdel(src)
 		return
 	// Otherwise we damage mobs!  Boost damage if low tempreature
-	var/datum/gas_mixture/environment = T.return_air()
-	if(environment.temperature < 250)
+	if(T.return_temperature() < 250)
 		name = "strong resonance field"
 		resonance_damage = 50
 

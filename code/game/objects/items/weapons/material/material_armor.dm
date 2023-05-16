@@ -73,9 +73,9 @@ Protectiveness | Armor %
 	if(!material || unbreakable)
 		return
 
-	if(istype(source, /obj/item/projectile))
-		var/obj/item/projectile/P = source
-		if(P.pass_flags & PASSGLASS)
+	if(istype(source, /obj/projectile))
+		var/obj/projectile/P = source
+		if(P.check_pass_flags(ATOM_PASS_GLASS))
 			if(material.opacity - 0.3 <= 0)
 				return // Lasers ignore 'fully' transparent material.
 
@@ -94,7 +94,6 @@ Protectiveness | Armor %
 	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	if(istype(loc, /mob/living))
 		var/mob/living/M = loc
-		M.drop_from_inventory(src)
 		if(material.shard_type == SHARD_SHARD) // Wearing glass armor is a bad idea.
 			var/obj/item/material/shard/S = material.place_shard(T)
 			M.embed(S)
@@ -133,8 +132,8 @@ Protectiveness | Armor %
 		return PROJECTILE_FORCE_MISS
 
 	if(material.reflectivity)
-		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
-			var/obj/item/projectile/P = damage_source
+		if(istype(damage_source, /obj/projectile/energy) || istype(damage_source, /obj/projectile/beam))
+			var/obj/projectile/P = damage_source
 
 			if(P.reflected) // Can't reflect twice
 				return ..()
@@ -161,8 +160,7 @@ Protectiveness | Armor %
 	var/result = 1 - MATERIAL_ARMOR_COEFFICENT * amount / (1 + MATERIAL_ARMOR_COEFFICENT * abs(amount))
 	result = result * 100
 	result = abs(result - 100)
-	return round(result)
-
+	return round(result) * 0.01
 
 /obj/item/clothing/proc/update_armor()
 	if(material)
@@ -182,21 +180,23 @@ Protectiveness | Armor %
 
 		// Makes sure the numbers stay capped.
 		for(var/number in list(melee_armor, bullet_armor, laser_armor, energy_armor, bomb_armor))
-			number = between(0, number, 100)
+			number = clamp( number, 0,  100)
 
-		armor["melee"] = melee_armor
-		armor["bullet"] = bullet_armor
-		armor["laser"] = laser_armor
-		armor["energy"] = energy_armor
-		armor["bomb"] = bomb_armor
+		set_armor(list(
+			ARMOR_MELEE = melee_armor,
+			ARMOR_BULLET = bullet_armor,
+			ARMOR_LASER = laser_armor,
+			ARMOR_ENERGY = energy_armor,
+			ARMOR_BOMB = bomb_armor,
+		))
 
 		if(!isnull(material.conductivity))
-			siemens_coefficient = between(0, material.conductivity / 10, 10)
+			siemens_coefficient = clamp( material.conductivity / 10, 0,  10)
 		slowdown = clamp(0, round(material.weight / 10, 0.1) * material_weight_factor, 6)
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = DEFAULT_WALL_MATERIAL
+	default_material = MAT_STEEL
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -242,10 +242,14 @@ Protectiveness | Armor %
 		if(second_plate.material != src.material)
 			to_chat(user, "<span class='warning'>Both plates need to be the same type of material.</span>")
 			return
-		user.drop_from_inventory(src)
-		user.drop_from_inventory(second_plate)
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, src.material.name)
-		user.put_in_hands(new_armor)
+		if(!user.attempt_void_item_for_installation(src))
+			return
+		if(!user.attempt_void_item_for_installation(second_plate))
+			return
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(loc, material.name)
+		user.temporarily_remove_from_inventory(second_plate, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
+		user.put_in_hands_or_drop(new_armor)
 		qdel(second_plate)
 		qdel(src)
 	else
@@ -255,10 +259,10 @@ Protectiveness | Armor %
 // Used to craft the makeshift helmet
 /obj/item/clothing/head/helmet/bucket
 	name = "improvised armor (bucket)"
-	desc = "It's a bucket with a large hole cut into it.  You could wear it on your head and look really stupid."
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
+	desc = "It's a bucket with a large hole cut into it. Desperate times require desperate measures, and you can't get more desperate than trusting a CleanMate bucket as a helmet."
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
 	icon_state = "bucket"
-	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor_type = /datum/armor/misc/bucket
 
 /obj/item/clothing/head/helmet/bucket/wood
 	name = "wooden bucket"
@@ -269,9 +273,9 @@ Protectiveness | Armor %
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
 			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
-			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
-			user.put_in_hands(helmet)
-			user.drop_from_inventory(src)
+			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(loc, S.material.name)
+			user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SILENT | INV_OP_DELETING)
+			user.put_in_hands_or_drop(helmet)
 			qdel(src)
 			return
 		else
@@ -281,8 +285,8 @@ Protectiveness | Armor %
 
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
-	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = DEFAULT_WALL_MATERIAL
+	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHAIR
+	default_material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"

@@ -26,7 +26,7 @@
 /obj/effect/meteor_falling/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
-	meteor_fall()
+	INVOKE_ASYNC(src, .proc/meteor_fall)
 
 /obj/effect/meteor_falling/proc/meteor_fall()
 	var/turf/current = get_turf(src)
@@ -36,7 +36,7 @@
 			meteor_impact()
 			return
 		for(var/atom/movable/A in current)
-			A.ex_act(3) //Let's have it be heavy, but not devistation in case it hits walls or something.
+			LEGACY_EX_ACT(A, 3, null) //Let's have it be heavy, but not devistation in case it hits walls or something.
 		forceMove(below)
 		meteor_fall()
 		return
@@ -63,13 +63,13 @@
 				continue
 			if(!L.buckled && !issilicon(L))
 				if(!L.Check_Shoegrip())
-					L.throw_at(get_step_rand(L),1,5)
-				L.Weaken(5)
+					L.throw_at_old(get_step_rand(L),1,5)
+				L.afflict_paralyze(20 * 5)
 			if(L.client)
 				to_chat(L, "<span class='danger'>The ground lurches beneath you!</span>")
 				shake_camera(L, 6, 1)
 				if(!L.ear_deaf)
-					SEND_SOUND(L, sound('sound/effects/explosionfar.ogg'))
+					SEND_SOUND(L, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 	qdel(src)
 
 /obj/structure/meteorite
@@ -96,7 +96,7 @@
 		if(91 to 100)
 			new /obj/machinery/artifact(src)
 
-/obj/structure/meteorite/ex_act()
+/obj/structure/meteorite/legacy_ex_act()
 	return
 
 /obj/structure/meteorite/attackby(var/obj/item/I, var/mob/M)

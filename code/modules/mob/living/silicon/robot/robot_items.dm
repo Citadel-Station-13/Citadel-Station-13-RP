@@ -16,7 +16,10 @@
 	. = ..()
 	files = new /datum/research/techonly(src) //Setup the research data holder.
 
-/obj/item/portable_destructive_analyzer/attack_self(user as mob)
+/obj/item/portable_destructive_analyzer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/response = alert(user, 	"Analyzing the item inside will *DESTROY* the item for good.\n\
 							Syncing to the research server will send the data that is stored inside to research.\n\
 							Ejecting will place the loaded item onto the floor.",
@@ -54,7 +57,7 @@
 			to_chat(user, "The [src] is empty.  Put something inside it first.")
 	if(response == "Sync")
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in machines)
+		for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 			for(var/datum/tech/T in files.known_tech) //Uploading
 				S.files.AddTech2Known(T)
 			for(var/datum/tech/T in S.files.known_tech) //Downloading
@@ -146,11 +149,11 @@
 	dummy_card_type = /obj/item/card/id/syndicate/dummy_cyborg
 
 /obj/item/card/id/science/roboticist/dummy_cyborg
-	access = list(access_robotics)
+	access = list(ACCESS_SCIENCE_ROBOTICS)
 
 /obj/item/card/id/syndicate/dummy_cyborg/Initialize(mapload)
 	. = ..()
-	access |= access_robotics
+	access |= ACCESS_SCIENCE_ROBOTICS
 
 //A harvest item for serviceborgs.
 /obj/item/robot_harvester
@@ -198,7 +201,7 @@
 		for(var/obj/item/reagent_containers/food/I in pickup)
 
 
-			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/item/projectile) )
+			if( I != src && !I.anchored && !istype(I, /obj/item/clothing/under) && !istype(I, /obj/item/clothing/suit) && !istype(I, /obj/projectile) )
 				var/add = 0
 				if(I.w_class == ITEMSIZE_TINY)
 					add = 1
@@ -211,10 +214,10 @@
 
 				I.loc = src
 				carrying.Add(I)
-				overlays += image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer)
+				add_overlay(image("icon" = I.icon, "icon_state" = I.icon_state, "layer" = 30 + I.layer))
 				addedSomething = 1
 		if ( addedSomething )
-			user.visible_message("<font color='blue'>[user] load some items onto their service tray.</font>")
+			user.visible_message("<font color=#4F49AF>[user] loads some items onto their service tray.</font>")
 
 		return
 
@@ -237,7 +240,7 @@
 			dropspot = target.loc
 
 
-		overlays = null
+		cut_overlays()
 
 		var droppedSomething = 0
 
@@ -254,9 +257,9 @@
 							sleep(rand(2,4))
 		if ( droppedSomething )
 			if ( foundtable )
-				user.visible_message("<font color='blue'>[user] unloads their service tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] unloads their service tray.</font>")
 			else
-				user.visible_message("<font color='blue'>[user] drops all the items on their tray.</font>")
+				user.visible_message("<font color=#4F49AF>[user] drops all the items on their tray.</font>")
 
 	return ..()
 
@@ -271,7 +274,10 @@
 	name = "Printing Pen"
 	var/mode = 1
 
-/obj/item/pen/robopen/attack_self(mob/user as mob)
+/obj/item/pen/robopen/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 
 	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
 	if(!choice) return
@@ -316,13 +322,10 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper_bin1"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "sheet-metal"
-
-/obj/item/form_printer/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	return
 
 /obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
 
@@ -332,11 +335,14 @@
 	if(istype(target,/obj/structure/table))
 		deploy_paper(get_turf(target))
 
-/obj/item/form_printer/attack_self(mob/user as mob)
+/obj/item/form_printer/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)
-	T.visible_message("<font color='blue'>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
+	T.visible_message("<font color=#4F49AF>\The [src.loc] dispenses a sheet of crisp white paper.</font>")
 	new /obj/item/paper(T)
 
 
@@ -362,7 +368,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/borg/combat/shield/attack_self(var/mob/living/user)
+/obj/item/borg/combat/shield/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_shield_level()
 
 /obj/item/borg/combat/shield/process(delta_time)
@@ -399,7 +408,7 @@
 	set category = "Object"
 	set src in range(0)
 
-	var/N = input("How much damage should the shield absorb?") in list("5","10","25","50","75","100")
+	var/N = input("How much damage should the shield absorb?") in list("10","20","30","40","50","60")
 	if (N)
 		shield_level = text2num(N)/100
 
@@ -434,7 +443,10 @@
 	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
 	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
-/obj/item/inflatable_dispenser/attack_self()
+/obj/item/inflatable_dispenser/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 

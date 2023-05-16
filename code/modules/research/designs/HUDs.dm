@@ -1,7 +1,7 @@
 // HUDs
 
 /datum/design/item/hud
-	materials = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 50)
+	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 /datum/design/item/hud/AssembleDesignName()
 	..()
@@ -38,18 +38,20 @@
 	build_path = /obj/item/clothing/glasses/material
 	sort_string = "EAAAD"
 
+/* Graviton't
 /datum/design/item/hud/graviton_visor
 	name = "graviton visor"
 	id = "graviton_goggles"
 	req_tech = list(TECH_MAGNET = 5, TECH_ENGINEERING = 3, TECH_BLUESPACE = 3, TECH_PHORON = 3)
-	materials = list(MAT_PLASTEEL = 2000, "glass" = 3000, MAT_PHORON = 1500)
+	materials = list(MAT_PLASTEEL = 2000, MAT_GLASS = 3000, MAT_PHORON = 1500)
 	build_path = /obj/item/clothing/glasses/graviton
 	sort_string = "EAAAE"
+*/
 
 /datum/design/item/hud/omni
 	name = "AR glasses"
 	id = "omnihud"
 	req_tech = list(TECH_MAGNET = 4, TECH_COMBAT = 3, TECH_BIO = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
+	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/clothing/glasses/omnihud
 	sort_string = "EAAVA"

@@ -35,11 +35,10 @@
 	name = "flesh mass"
 	icon_state = "lingspacesuit"
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
-	flags = 0	//Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
-				//it still ends up in your blood. (also balance but muh fluff)
+	clothing_flags = NONE
+	item_flags = ITEM_DROPDEL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
-	canremove = 0
+	armor_type = /datum/armor/none //No armor at all.
 
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)
 	. = ..()
@@ -48,52 +47,45 @@
 		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
-/obj/item/clothing/suit/space/changeling/dropped()
-	. = ..()
-	qdel(src)
-
 /obj/item/clothing/head/helmet/space/changeling
 	name = "flesh mass"
 	icon_state = "lingspacehelmet"
 	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
-	flags = BLOCKHAIR //Again, no THICKMATERIAL.
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	body_parts_covered = HEAD|FACE|EYES
-	canremove = 0
-
-/obj/item/clothing/head/helmet/space/changeling/dropped()
-	. = ..()
-	qdel(src)
+	clothing_flags = NONE
+	inv_hide_flags = BLOCKHAIR
+	item_flags = ITEM_DROPDEL
+	armor_type = /datum/armor/none
+	body_cover_flags = HEAD|FACE|EYES
 
 /obj/item/clothing/shoes/magboots/changeling
 	desc = "A suction cupped mass of flesh, shaped like a foot."
 	name = "fleshy grippers"
 	icon_state = "lingspacesuit"
 	action_button_name = "Toggle Grippers"
-	canremove = 0
+	clothing_flags = NONE
+	item_flags = ITEM_DROPDEL
 
 /obj/item/clothing/shoes/magboots/changeling/set_slowdown()
-	slowdown = shoes? max(SHOES_SLOWDOWN, shoes.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
+	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
 	if (magpulse)
 		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
-		force = 3
+		damage_force = 3
 		to_chat(user, "We release our grip on the floor.")
 	else
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
-		force = 5
+		damage_force = 5
 		to_chat(user, "We cling to the terrain below us.")
-
-/obj/item/clothing/shoes/magboots/changeling/dropped()
-	..()
-	qdel(src)
 
 //Armor
 
@@ -101,8 +93,8 @@
 	name = "chitinous mass"
 	desc = "A tough, hard covering of black chitin."
 	icon_state = "lingarmor"
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	armor = list(melee = 75, bullet = 60, laser = 60, energy = 60, bomb = 60, bio = 0, rad = 0) //It costs 3 points, so it should be very protective.
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	slowdown = 3
@@ -118,7 +110,7 @@
 	name = "chitinous mass"
 	desc = "A tough, hard covering of black chitin with transparent chitin in front."
 	icon_state = "lingarmorhelmet"
-	armor = list(melee = 75, bullet = 60, laser = 60,energy = 60, bomb = 60, bio = 0, rad = 0)
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROTECTION_TEMPERATURE
 
@@ -132,7 +124,7 @@
 	name = "chitinous gauntlets"
 	desc = "Very resilient gauntlets made out of black chitin.  It looks very durable, and can probably resist electrical shock in addition to the elements."
 	icon_state = "lingarmorgloves"
-	armor = list(melee = 75, bullet = 60, laser = 60,energy = 60, bomb = 60, bio = 0, rad = 0) //No idea if glove armor gets checked
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0
 
 /obj/item/clothing/shoes/boots/combat/changeling //Noslips
@@ -140,7 +132,7 @@
 	name = "Footwear made out of a hard, black chitinous material.  The bottoms of these appear to have spikes that can protrude or extract itself into and out \
 	of the floor at will, granting the wearer stability."
 	icon_state = "lingboots"
-	armor = list(melee = 75, bullet = 60, laser = 70,energy = 60, bomb = 60, bio = 0, rad = 0)
+	armor_type = /datum/armor/changeling/chitin
 	siemens_coefficient = 0.3
 	cold_protection = FEET
 	min_cold_protection_temperature = SHOE_MIN_COLD_PROTECTION_TEMPERATURE

@@ -1,29 +1,32 @@
 // Dimension of overmap (squares 4 lyfe)
 var/global/list/map_sectors = list()
 
-/area/overmap/
+/area/overmap
 	name = "System Map"
 	icon_state = "start"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	base_turf = /turf/unsimulated/map
 
 /turf/unsimulated/map
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
+	permit_ao = FALSE
 //	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
 
 /turf/unsimulated/map/edge
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 	var/map_is_to_my
 	var/turf/unsimulated/map/edge/wrap_buddy
 
 /turf/unsimulated/map/edge/Initialize(mapload)
-	. = ..()
-	// This could be done by using the using_map.overmap_size much faster, HOWEVER, doing it programatically to 'find'
-	//	 the edges this way allows for 'sub overmaps' elsewhere and whatnot.
-	for(var/side in GLOB.alldirs)	// The order of this list is relevant: It should definitely break on finding a cardinal FIRST.
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/unsimulated/map/edge/LateInitialize()
+	//This could be done by using the GLOB.using_map.overmap_size much faster, HOWEVER, doing it programatically to 'find'
+	//  the edges this way allows for 'sub overmaps' elsewhere and whatnot.
+	for(var/side in GLOB.alldirs) //The order of this list is relevant: It should definitely break on finding a cardinal FIRST.
 		var/turf/T = get_step(src, side)
 		if(T?.type == /turf/unsimulated/map) //Not a wall, not something else, EXACTLY a flat map turf.
 			map_is_to_my = side
@@ -84,20 +87,3 @@ var/global/list/map_sectors = list()
 	..()
 	if(istype(O, /obj/effect/overmap/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)
-
-// List used to track which zlevels are being 'moved' by the proc below
-var/list/moving_levels = list()
-// Proc to 'move' stars in spess
-// Yes it looks ugly, but it should only fire when state actually change.
-// Null direction stops movement
-proc/toggle_move_stars(zlevel, direction)
-	if(!zlevel)
-		return
-
-	if (moving_levels["[zlevel]"] != direction)
-		moving_levels["[zlevel]"] = direction
-
-		var/list/spaceturfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
-		for(var/turf/space/T in spaceturfs)
-			T.toggle_transit(direction)
-			CHECK_TICK

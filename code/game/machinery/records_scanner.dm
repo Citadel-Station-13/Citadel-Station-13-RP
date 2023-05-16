@@ -4,11 +4,12 @@ obj/machinery/scanner
 	var/outputdir = 0
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "scanner_idle"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/lastuser = null
 
-obj/machinery/scanner/New()
+/obj/machinery/scanner/Initialize(mapload)
+	. = ..()
 	if(!outputdir)
 		switch(dir)
 			if(1)
@@ -35,7 +36,7 @@ obj/machinery/scanner/New()
 	else
 		icon_state = "scanner_idle"
 
-obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
+obj/machinery/scanner/attack_hand(mob/user, list/params)
 	if(stat & NOPOWER)
 		return
 	if(!ishuman(user) || lastuser == user.real_name)
@@ -51,7 +52,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	var/age = user.age
 	var/gender = user.gender
 	/* no dbstuff yet
-	var/DBQuery/cquery = dbcon.NewQuery("SELECT * from jobban WHERE ckey='[user.ckey]'")
+	var/datum/db_query/cquery = dbcon.NewQuery("SELECT * from jobban WHERE ckey='[user.ckey]'")
 	if(!cquery.Execute()) return
 	else
 		while(cquery.NextRow())
@@ -130,7 +131,7 @@ obj/machinery/scanner/attack_hand(mob/living/carbon/human/user)
 	L.fields["b_dna"] = dna
 	L.fields["enzymes"] = user.dna.struc_enzymes
 	L.fields["identity"] = user.dna.uni_identity
-	L.fields["image"] = getFlatIcon(user,0)//What the person looks like. Naked, in this case.
+	L.fields["image"] = get_flat_icon(user,0)//What the person looks like. Naked, in this case.
 	//End locked reporting
 
 	data_core.general += G

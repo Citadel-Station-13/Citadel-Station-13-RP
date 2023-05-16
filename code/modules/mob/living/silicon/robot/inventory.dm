@@ -1,11 +1,13 @@
 //These procs handle putting s tuff in your hand. It's probably best to use these rather than setting stuff manually
 //as they handle all relevant stuff like adding it to the player's screen and such
+// todo: proper inv procs
+//! WARNING: we currently only call equipped/unequipped and jankily using SLOT_ID_HANDS...
 
 //Returns the thing in our active hand (whatever is in our active module-slot, in this case)
-/mob/living/silicon/robot/get_active_hand()
+/mob/living/silicon/robot/get_active_held_item()
 	return module_active
 
-/*-------TODOOOOOOOOOO--------*/
+//TODO: Something apparently?
 
 //Verbs used by hotkeys.
 /mob/living/silicon/robot/verb/cmd_unequip_module()
@@ -27,6 +29,7 @@
 		if (client)
 			client.screen -= module_state_1
 		contents -= module_state_1
+		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_1:loc = module //So it can be used again later
 		module_state_1 = null
@@ -37,6 +40,7 @@
 		if (client)
 			client.screen -= module_state_2
 		contents -= module_state_2
+		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_2:loc = module
 		module_state_2 = null
@@ -47,6 +51,7 @@
 		if (client)
 			client.screen -= module_state_3
 		contents -= module_state_3
+		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_active = null
 		module_state_3:loc = module
 		module_state_3 = null
@@ -63,6 +68,7 @@
 			client.screen -= module_state_1
 		contents -= module_state_1
 		module_state_1:loc = module
+		module_state_1.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_1 = null
 		inv1.icon_state = "inv1"
 	if(module_state_2)
@@ -72,6 +78,7 @@
 			client.screen -= module_state_2
 		contents -= module_state_2
 		module_state_2:loc = module
+		module_state_2.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_2 = null
 		inv2.icon_state = "inv2"
 	if(module_state_3)
@@ -81,6 +88,7 @@
 			client.screen -= module_state_3
 		contents -= module_state_3
 		module_state_3:loc = module
+		module_state_3.unequipped(src, SLOT_ID_HANDS, NONE)
 		module_state_3 = null
 		inv3.icon_state = "inv3"
 	updateicon()
@@ -251,13 +259,103 @@
 			sight_mode |= module_state_3:sight_mode
 	else
 		to_chat(src, "<span class='notice'>You need to disable a module first!</span>")
+	O.equipped(src, SLOT_ID_HANDS, NONE)
 
-/mob/living/silicon/robot/put_in_hands(obj/item/I, del_on_fail = FALSE, merge_stacks = TRUE, forced = FALSE)
-	I.forceMove(drop_location())
+/mob/living/silicon/robot/get_held_items()
+	. = list()
+	if(module_state_1)
+		. += module_state_1
+	if(module_state_2)
+		. += module_state_2
+	if(module_state_3)
+		. += module_state_3
+
+/mob/living/silicon/robot/get_number_of_hands()
+	return 3
+
+/mob/living/silicon/robot/get_held_index(obj/item/I)
+	if(module_state_1 == I)
+		return 1
+	if(module_state_2 == I)
+		return 2
+	if(module_state_3 == I)
+		return 3
+
+/mob/living/silicon/robot/get_held_item_of_index(index)
+	switch(index)
+		if(1)
+			return module_state_1
+		if(2)
+			return module_state_2
+		if(3)
+			return module_state_3
+
+/* for now we don't use generic slots at all */
+// TODO: put in hands should try to put into grippers ~silicons
+
+/mob/living/silicon/robot/is_in_inventory(obj/item/I)
+	return is_module_item(I) || is_in_gripper(I)
+
+/mob/living/silicon/robot/proc/considered_removable(obj/item/I)
+	return (!is_module_item(I))
+
+/mob/living/silicon/robot/proc/is_module_item(obj/item/I)
+	if(!module)
+		return FALSE
+	return (I in module.modules) || (I in module.emag)
+
+/mob/living/silicon/robot/proc/is_in_gripper(obj/item/I, require_active_module)
+	return (																										\
+		I.loc == src?																								\
+		!!gripper_holding(I) :																						\
+		(istype(I.loc, /obj/item/gripper) && (require_active_module? is_holding(I.loc) : is_module_item(I.loc)))	\
+	)
+
+/mob/living/silicon/robot/proc/gripper_holding(obj/item/I)
+	for(var/obj/item/gripper/G in module.modules)
+		if(G.get_item() == I)
+			return G
+
+/mob/living/silicon/robot/proc/unreference_from_gripper(obj/item/I, newloc)
+	if(!istype(I.loc, /obj/item/gripper))
+		return FALSE
+	var/obj/item/gripper/G = I.loc
+	if(!is_module_item(G))
+		return FALSE
+	if(G.get_item() != I)
+		return FALSE
+	G.remove_item(newloc)
 	return TRUE
 
-/mob/living/silicon/robot/is_holding_item_of_type(typepath)
-	for(var/obj/item/I in list(module_state_1, module_state_2, module_state_3))
-		if(istype(I, typepath))
-			return I
+/mob/living/silicon/robot/temporarily_remove_from_inventory(obj/item/I, flags, mob/user)
+	if(!is_in_inventory(I))
+		return TRUE
+	. = considered_removable(I)
+	if(!.)
+		return
+	if(is_in_gripper(I))
+		return unreference_from_gripper(I, null)
+
+/mob/living/silicon/robot/transfer_item_to_loc(obj/item/I, newloc, flags, mob/user)
+	if(is_in_inventory(I) && considered_removable(I))
+		if(is_in_gripper(I))
+			return unreference_from_gripper(I, newloc)
+		I.forceMove(newloc)
+		return TRUE
+	return FALSE
+
+/mob/living/silicon/robot/transfer_item_to_nullspace(obj/item/I, flags, mob/user)
+	if(is_in_inventory(I) && considered_removable(I))
+		if(is_in_gripper(I))
+			return unreference_from_gripper(I, null)
+		I.moveToNullspace()
+		return TRUE
+	return FALSE
+
+/mob/living/silicon/robot/drop_item_to_ground(obj/item/I, flags, mob/user)
+	if(is_in_inventory(I) && considered_removable(I))
+		if(is_in_gripper(I))
+			return unreference_from_gripper(I, drop_location())
+		I.forceMove(drop_location())
+		return TRUE
 	return FALSE

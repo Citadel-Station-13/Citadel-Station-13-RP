@@ -47,7 +47,7 @@
 /datum/uplink_item/item/visible_weapons/dartgun
 	name = "Dart Gun"
 	item_cost = 30
-	path = /obj/item/gun/projectile/dartgun
+	path = /obj/item/gun/ballistic/dartgun
 
 /datum/uplink_item/item/visible_weapons/crossbow
 	name = "Energy Crossbow"
@@ -57,7 +57,7 @@
 /datum/uplink_item/item/visible_weapons/silenced_45
 	name = "Silenced .45"
 	item_cost = 40
-	path = /obj/item/gun/projectile/silenced
+	path = /obj/item/gun/ballistic/silenced
 
 /datum/uplink_item/item/visible_weapons/riggedlaser
 	name = "Exosuit Rigged Laser"
@@ -67,42 +67,42 @@
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver"
 	item_cost = 70
-	path = /obj/item/gun/projectile/revolver
+	path = /obj/item/gun/ballistic/revolver
 
 /datum/uplink_item/item/visible_weapons/mateba
 	name = "Mateba"
 	item_cost = 70
-	path = /obj/item/gun/projectile/revolver/mateba
+	path = /obj/item/gun/ballistic/revolver/mateba
 
 /datum/uplink_item/item/visible_weapons/judge
 	name = "Judge"
 	item_cost = 70
-	path = /obj/item/gun/projectile/revolver/judge
+	path = /obj/item/gun/ballistic/revolver/judge
 
 /datum/uplink_item/item/visible_weapons/pistol_standard_capacity
 	name = "9mm Pistol"
 	item_cost = 40
-	path = /obj/item/gun/projectile/p92x
+	path = /obj/item/gun/ballistic/p92x
 
 /datum/uplink_item/item/visible_weapons/pistol_large_capacity
 	name = "9mm Pistol (with large capacity magazine)"
 	item_cost = 70
-	path = /obj/item/gun/projectile/p92x/large
+	path = /obj/item/gun/ballistic/p92x/large
 
 /datum/uplink_item/item/visible_weapons/lemat
 	name = "LeMat"
 	item_cost = 60
-	path = /obj/item/gun/projectile/revolver/lemat
+	path = /obj/item/gun/ballistic/revolver/lemat
 
 /datum/uplink_item/item/visible_weapons/Derringer
 	name = ".357 Derringer Pistol"
 	item_cost = 40
-	path = /obj/item/gun/projectile/derringer
+	path = /obj/item/gun/ballistic/derringer
 
 /datum/uplink_item/item/visible_weapons/heavysnipermerc
 	name = "Anti-Materiel Rifle (14.5mm)"
 	item_cost = DEFAULT_TELECRYSTAL_AMOUNT
-	path = /obj/item/gun/projectile/heavysniper
+	path = /obj/item/gun/ballistic/heavysniper
 	antag_roles = list("mercenary")
 
 /datum/uplink_item/item/visible_weapons/heavysnipertraitor
@@ -121,28 +121,28 @@
 /datum/uplink_item/item/visible_weapons/tommygun
 	name = "Tommy Gun (.45)" // We're keeping this because it's CLASSY. -Spades
 	item_cost = 60
-	path = /obj/item/gun/projectile/automatic/tommygun
+	path = /obj/item/gun/ballistic/automatic/tommygun
 
 //These are for traitors (or other antags, perhaps) to have the option of purchasing some merc gear.
 /datum/uplink_item/item/visible_weapons/submachinegun
 	name = "Submachine Gun (10mm)"
 	item_cost = 60
-	path = /obj/item/gun/projectile/automatic/c20r
+	path = /obj/item/gun/ballistic/automatic/c20r
 
 /datum/uplink_item/item/visible_weapons/assaultrifle
 	name = "Assault Rifle (5.45mm)"
 	item_cost = 75
-	path = /obj/item/gun/projectile/automatic/sts35
+	path = /obj/item/gun/ballistic/automatic/sts35
 
 /datum/uplink_item/item/visible_weapons/combatshotgun
 	name = "Combat Shotgun"
 	item_cost = 75
-	path = /obj/item/gun/projectile/shotgun/pump/combat
+	path = /obj/item/gun/ballistic/shotgun/pump/combat
 
 /datum/uplink_item/item/visible_weapons/leveraction
 	name = "Lever Action Rifle"
 	item_cost = 50
-	path = /obj/item/gun/projectile/shotgun/pump/rifle/lever
+	path = /obj/item/gun/ballistic/shotgun/pump/rifle/lever
 
 /datum/uplink_item/item/visible_weapons/egun
 	name = "Energy Gun"

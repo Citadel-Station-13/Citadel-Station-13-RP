@@ -1,6 +1,6 @@
 /datum/gm_action/atmos_leak
 	name = "atmospherics leak"
-	departments = list(ROLE_ENGINEERING, ROLE_SYNTHETIC)
+	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_SYNTHETIC)
 	var/area/target_area	// Chosen target area
 	var/area/target_turf	// Chosen target turf in target_area
 	var/gas_type			// Chosen gas to release
@@ -35,7 +35,7 @@
 	for(var/i in 1 to 10)
 		var/area/A = pick(grand_list_of_areas)
 		if(is_area_occupied(A))
-			log_debug("atmos_leak event: Rejected [A] because it is occupied.")
+			log_debug(SPAN_DEBUGWARNING("atmos_leak event: Rejected [A] because it is occupied."))
 			continue
 		// A good area, great! Lets try and pick a turf
 		var/list/turfs = list()
@@ -43,14 +43,14 @@
 			if(turf_clear(F))
 				turfs += F
 		if(turfs.len == 0)
-			log_debug("atmos_leak event: Rejected [A] because it has no clear turfs.")
+			log_debug(SPAN_DEBUGWARNING("atmos_leak event: Rejected [A] because it has no clear turfs."))
 			continue
 		target_area = A
 		target_turf = pick(turfs)
 
 	// If we can't find a good target, give up
 	if(!target_area)
-		log_debug("atmos_leak event: Giving up after too many failures to pick target area")
+		log_debug(SPAN_DEBUGWARNING("atmos_leak event: Giving up after too many failures to pick target area"))
 		return
 
 /datum/gm_action/atmos_leak/announce()
@@ -74,4 +74,4 @@
 		playsound(target_turf, 'sound/effects/smoke.ogg', 50, 1)
 
 /datum/gm_action/atmos_leak/get_weight()
-	return 15 + (metric.count_people_in_department(ROLE_ENGINEERING) * 10 + metric.count_people_in_department(ROLE_SYNTHETIC) * 30)	// Synthetics are counted in higher value because they can wirelessly connect to alarms.
+	return 15 + (metric.count_people_in_department(DEPARTMENT_ENGINEERING) * 10 + metric.count_people_in_department(DEPARTMENT_SYNTHETIC) * 30)	// Synthetics are counted in higher value because they can wirelessly connect to alarms.

@@ -1,6 +1,6 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
+/world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 	var/static/key_cache = list()
 	if(!real_bans_only)
 		if(key_cache[key])
@@ -38,14 +38,14 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 	//Guest Checking
 	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		log_adminwarn("Failed Login: [key] - Guests not allowed")
-		message_admins("<font color='blue'>Failed Login: [key] - Guests not allowed</font>")
+		message_admins("<font color=#4F49AF>Failed Login: [key] - Guests not allowed</font>")
 		key_cache[key] = 0
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
 	//check if the IP address is a known TOR node
 	if(config && config_legacy.ToRban && ToRban_isbanned(address))
 		log_adminwarn("Failed Login: [src] - Banned: ToR")
-		message_admins("<font color='blue'>Failed Login: [src] - Banned: ToR</font>")
+		message_admins("<font color=#4F49AF>Failed Login: [src] - Banned: ToR</font>")
 		//ban their computer_id and ckey for posterity
 		AddBan(ckey, computer_id, "Use of ToR", "Automated Ban", 0, 0)
 		key_cache[key] = 0
@@ -58,7 +58,7 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		. = CheckBan( ckey, computer_id, address )
 		if(.)
 			log_adminwarn("Failed Login: [key] [computer_id] [address] - Banned [.["reason"]]")
-			message_admins("<font color='blue'>Failed Login: [key] id:[computer_id] ip:[address] - Banned [.["reason"]]</font>")
+			message_admins("<font color=#4F49AF>Failed Login: [key] id:[computer_id] ip:[address] - Banned [.["reason"]]</font>")
 			key_cache[key] = 0
 			return .
 		key_cache[key] = 0
@@ -68,7 +68,7 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 
 		var/ckeytext = ckey
 
-		if(!establish_db_connection())
+		if(!SSdbcore.Connect())
 			log_world("Ban database connection failure. Key [ckeytext] not checked")
 			log_misc("Ban database connection failure. Key [ckeytext] not checked")
 			key_cache[key] = 0
@@ -81,15 +81,20 @@ world/IsBanned(key,address,computer_id,type,real_bans_only=FALSE)
 		var/cidquery = ""
 		if(address)
 			failedip = 0
-			ipquery = " OR ip = '[address]' "
+			ipquery = " OR ip = ':ip' "
 
 		if(computer_id)
 			failedcid = 0
-			cidquery = " OR computerid = '[computer_id]' "
+			cidquery = " OR computerid = ':cid' "
 
-		var/DBQuery/query = dbcon.NewQuery("SELECT ckey, ip, computerid, a_ckey, reason, expiration_time, duration, bantime, bantype FROM erro_ban WHERE (ckey = '[ckeytext]' [ipquery] [cidquery]) AND (bantype = 'PERMABAN'  OR (bantype = 'TEMPBAN' AND expiration_time > Now())) AND isnull(unbanned)")
-
-		query.Execute()
+		var/datum/db_query/query = SSdbcore.RunQuery(
+			"SELECT ckey, ip, computerid, a_ckey, reason, expiration_time, duration, bantime, bantype FROM [format_table_name("ban")] WHERE (ckey = :ckey [ipquery] [cidquery]) AND (bantype = 'PERMABAN' OR (bantype = 'TEMPBAN' AND expiration_time > Now())) AND isnull(unbanned)",
+			list(
+				"ckey" = ckeytext,
+				"ip" = address,
+				"cid" = computer_id
+			)
+		)
 
 		while(query.NextRow())
 			var/pckey = query.item[1]

@@ -11,20 +11,21 @@
 	var/report_num = 0
 
 /obj/machinery/microscope/attackby(obj/item/W as obj, mob/user as mob)
-
 	if(sample)
 		to_chat(user, "<span class='warning'>There is already a slide in the microscope.</span>")
-		return
+		return ..()
 
 	if(istype(W, /obj/item/forensics/swab)|| istype(W, /obj/item/sample/fibers) || istype(W, /obj/item/sample/print))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [W] into the microscope.</span>")
-		user.unEquip(W)
-		W.forceMove(src)
 		sample = W
 		update_icon()
 		return
+	return ..()
 
-/obj/machinery/microscope/attack_hand(mob/user)
+/obj/machinery/microscope/attack_hand(mob/user, list/params)
 
 	if(!sample)
 		to_chat(user, "<span class='warning'>The microscope has no sample to examine.</span>")
@@ -39,7 +40,8 @@
 	to_chat(user, "<span class='notice'>Printing findings now...</span>")
 	var/obj/item/paper/report = new(get_turf(src))
 	report.stamped = list(/obj/item/stamp)
-	report.overlays = list("paper_stamped")
+	report.cut_overlays()
+	report.add_overlay("paper_stamped")
 	report_num++
 
 	if(istype(sample, /obj/item/forensics/swab))
@@ -100,7 +102,7 @@
 /obj/machinery/microscope/AltClick()
 	remove_sample(usr)
 
-/obj/machinery/microscope/MouseDrop(var/atom/other)
+/obj/machinery/microscope/OnMouseDropLegacy(var/atom/other)
 	if(usr == other)
 		remove_sample(usr)
 	else

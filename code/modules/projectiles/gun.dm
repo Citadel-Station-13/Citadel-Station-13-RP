@@ -33,18 +33,19 @@
 	desc = "Its a gun. It's pretty terrible, though."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
+	rad_flags = RAD_BLOCK_CONTENTS
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
-	force = 5
+	damage_force = 5
 	preserve_item = 1
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("struck", "hit", "bashed")
@@ -65,18 +66,19 @@
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
 	var/mode_name = null
-	var/projectile_type = /obj/item/projectile	//On ballistics, only used to check for the cham gun
+	var/projectile_type = /obj/projectile	//On ballistics, only used to check for the cham gun
 	var/holy = FALSE //For Divinely blessed guns
 	var/obj/item/ammo_casing/chambered = null
 
 	var/wielded_item_state
 	var/one_handed_penalty = 0 // Penalty applied if someone fires a two-handed gun with one hand.
-	var/obj/screen/auto_target/auto_target
+	var/atom/movable/screen/auto_target/auto_target
 	var/shooting = 0
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/selector_sound = 'sound/weapons/guns/selector.ogg'
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -87,12 +89,14 @@
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
+	/// whether or not we have safeties and if safeties are on
+	var/safety_state = GUN_SAFETY_ON
+
 	var/dna_lock = 0				//whether or not the gun is locked to dna
 	var/obj/item/dnalockingchip/attached_lock
 
 	var/last_shot = 0			//records the last shot fired
 
-//VOREStation Add - /tg/ icon system
 	var/charge_sections = 4
 	var/shaded_charge = FALSE
 	var/ammo_x_offset = 2
@@ -106,6 +110,7 @@
 
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin
 	var/no_pin_required = 0
+	var/scrambled = 0
 
 /obj/item/gun/CtrlClick(mob/user)
 	if(can_flashlight && ishuman(user) && src.loc == usr && !user.incapacitated(INCAPACITATION_ALL))
@@ -123,7 +128,6 @@
 
 	playsound(src, 'sound/machines/button.ogg', 25)
 	update_icon()
-//VOREStation Add End
 
 /obj/item/gun/Initialize(mapload)
 	. = ..()
@@ -136,9 +140,9 @@
 	if(dna_lock)
 		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
-		verbs -= /obj/item/gun/verb/remove_dna
-		verbs -= /obj/item/gun/verb/give_dna
-		verbs -= /obj/item/gun/verb/allow_dna
+		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -160,12 +164,13 @@
 	if(wielded_item_state)
 		var/mob/living/M = loc
 		if(istype(M))
+			LAZYINITLIST(item_state_slots)
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				item_state_slots[slot_l_hand_str] = wielded_item_state
-				item_state_slots[slot_r_hand_str] = wielded_item_state
+				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
 			else
-				item_state_slots[slot_l_hand_str] = initial(item_state)
-				item_state_slots[slot_r_hand_str] = initial(item_state)
+				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
 
 
@@ -201,20 +206,20 @@
 						sleep(1)
 						qdel(src)
 					return 0
-	if(HULK in M.mutations)
+	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
+	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
 			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
 				handle_post_fire(user, user)
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message(
 					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
 					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
 					)
-				M.drop_item()
+				M.drop_item_to_ground(src)
 		else
 			handle_click_empty(user)
 		return 0
@@ -223,6 +228,14 @@
 /obj/item/gun/emp_act(severity)
 	for(var/obj/O in contents)
 		O.emp_act(severity)
+
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	update_appearance()
+
+/obj/item/gun/equipped(mob/user, slot, flags)
+	. = ..()
+	update_appearance()
 
 /obj/item/gun/afterattack(atom/A, mob/living/user, adjacent, params)
 	if(adjacent) return //A is adjacent, is the user, or is on the user's person
@@ -233,56 +246,100 @@
 	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
-
-	if(user && user.a_intent == INTENT_HELP && user.is_preference_enabled(/datum/client_preference/safefiring)) //regardless of what happens, refuse to shoot if help intent is on
-		to_chat(user, "<span class='warning'>You refrain from firing your [src] as your intent is set to help.</span>")
-		return
-
 	else
 		Fire(A, user, params) //Otherwise, fire normally.
 		return
 
-/obj/item/gun/attack(atom/A, mob/living/user, def_zone)
-	if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
-		handle_suicide(user)
-	else if(user.a_intent == INTENT_HARM) //point blank shooting
-		if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A && A != user)
+/obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	var/mob/living/A = target
+	if(!istype(A))
+		return ..()
+	if(user.a_intent == INTENT_HARM) //point blank shooting
+		if (A == user && user.zone_sel.selecting == O_MOUTH && !mouthshoot)
+			handle_suicide(user)
+			return
+		var/mob/living/L = user
+		if(user && user.client && istype(L) && L.aiming && L.aiming.active && L.aiming.aiming_at != A && A != user)
 			PreFire(A,user) //They're using the new gun system, locate what they're aiming at.
 			return
 		else
 			Fire(A, user, pointblank=1)
-	else
-		return ..() //Pistolwhippin'
+			return
+	return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(A, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_lock = A
 		dna_lock = 1
-		verbs += /obj/item/gun/verb/remove_dna
-		verbs += /obj/item/gun/verb/give_dna
-		verbs += /obj/item/gun/verb/allow_dna
+		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		add_obj_verb(src, /obj/item/gun/verb/give_dna)
+		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		return
 
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 25 * A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 25 * A.tool_speed))
 				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
-				verbs -= /obj/item/gun/verb/remove_dna
-				verbs -= /obj/item/gun/verb/give_dna
-				verbs -= /obj/item/gun/verb/allow_dna
+				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
+
+	if(A.is_multitool())
+		if(!scrambled)
+			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60 * A.tool_speed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
+						user.show_message("<span class='danger'>SELF-DESTRUCTING...</span><br>", 2)
+						explosion(get_turf(src), -1, 0, 2, 3)
+						qdel(src)
+					if(11 to 49)
+						to_chat(user, "<span class='notice'>You fail to disrupt \the electronic warfare suite.</span>")
+						return
+					if(50 to 100)
+						to_chat(user, "<span class='notice'>You disrupt \the electronic warfare suite.</span>")
+						scrambled = 1
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have an active electronic warfare suite!</span>")
+
+	if(A.is_wirecutter())
+		if(pin && scrambled)
+			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60* A.tool_speed))
+				switch(rand(1,100))
+					if(1 to 10)
+						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")
+						pin = null
+					if(11 to 74)
+						to_chat(user, "<span class='notice'>You grasp the firing pin, but it slips free!</span>")
+						return
+					if(75 to 100)
+						to_chat(user, "<span class='notice'>You remove \the firing pin from \the [src].</span>")
+						user.put_in_hands(src.pin)
+						pin = null
+			else if(!do_after())
+				return
+		else if(pin && !scrambled)
+			to_chat(user, "<span class='notice'>The \the firing pin is firmly locked into \the [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>\The [src] does not have a firing pin installed!</span>")
+
 	..()
 
 /obj/item/gun/emag_act(var/remaining_charges, var/mob/user)
@@ -294,38 +351,6 @@
 		return 1
 	if(pin)
 		pin.emag_act(remaining_charges, user)
-
-/obj/item/gun/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /obj/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
 
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	if(!user || !target) return
@@ -341,6 +366,19 @@
 	if(world.time < next_fire_time)
 		if (world.time % 3) //to prevent spam
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
+		return
+
+	if(check_safety())
+		//If we are on harm intent (intending to injure someone) but forgot to flick the safety off, there is a 50% chance we
+		//will reflexively do it anyway
+		if(user.a_intent == INTENT_HARM && prob(50))
+			toggle_safety(user)
+		else
+			handle_click_safety(user)
+			return
+
+	if(!user?.client?.is_preference_enabled(/datum/client_preference/help_intent_firing) && user.a_intent == INTENT_HELP)
+		to_chat(user, SPAN_WARNING("You refrain from firing [src] because your intent is set to help!"))
 		return
 
 	var/shoot_time = (burst - 1)* burst_delay
@@ -383,7 +421,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.item_is_in_hands(src) && user.hands_are_full())
+	if(user.is_holding(src) && user.hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -400,15 +438,13 @@
 
 	next_fire_time = world.time + fire_delay
 
-	accuracy = initial(accuracy)	//Reset the gun's accuracy
+	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
 	if(muzzle_flash)
-		//VOREStation Edit - Flashlights
 		if(gun_light)
 			set_light(light_brightness)
 		else
 			set_light(0)
-		//VOREStation Edit End
 
 // Similar to the above proc, but does not require a user, which is ideal for things like turrets.
 /obj/item/gun/proc/Fire_userless(atom/target)
@@ -428,8 +464,8 @@
 			handle_click_empty()
 			break
 
-		if(istype(projectile, /obj/item/projectile))
-			var/obj/item/projectile/P = projectile
+		if(istype(projectile, /obj/projectile))
+			var/obj/projectile/P = projectile
 
 			var/acc = burst_accuracy[min(i, burst_accuracy.len)]
 			var/disp = dispersion[min(i, dispersion.len)]
@@ -502,8 +538,11 @@
 	if (user)
 		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
 	else
-		src.visible_message("*click click*")
-	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+		visible_message("*click click*")
+	playsound(src, 'sound/weapons/empty.ogg', 100, 1)
+
+/obj/item/gun/proc/handle_click_safety(mob/user)
+	user.visible_message(SPAN_WARNING("[user] squeezes the trigger of \the [src] but it doesn't move!"), SPAN_WARNING("You squeeze the trigger but it doesn't move!"), range = MESSAGE_RANGE_COMBAT_SILENCED)
 
 //called after successfully firing
 /obj/item/gun/proc/handle_post_fire(mob/user, atom/target, var/pointblank=0, var/reflex=0)
@@ -559,7 +598,7 @@
 	update_icon()
 
 /obj/item/gun/proc/process_point_blank(obj/projectile, mob/user, atom/target)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -580,7 +619,7 @@
 	P.damage *= damage_mult
 
 /obj/item/gun/proc/process_accuracy(obj/projectile, mob/living/user, atom/target, var/burst, var/held_twohanded)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return //default behaviour only applies to true projectiles
 
@@ -614,7 +653,7 @@
 
 //does the actual launching of the projectile
 /obj/item/gun/proc/process_projectile(obj/projectile, mob/user, atom/target, var/target_zone, var/params=null)
-	var/obj/item/projectile/P = projectile
+	var/obj/projectile/P = projectile
 	if(!istype(P))
 		return FALSE //default behaviour only applies to true projectiles
 
@@ -626,6 +665,8 @@
 			forcespread = rand(50, 50)
 		else if(mob.shock_stage > 70)
 			forcespread = rand(-25, 25)
+		else if(IS_PRONE(mob))
+			forcespread = rand(-15, 15)
 	var/launched = !P.launch_from_gun(target, target_zone, user, params, null, forcespread, src)
 
 	if(launched)
@@ -633,7 +674,7 @@
 
 	return launched
 
-/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/item/projectile/P)
+/obj/item/gun/proc/play_fire_sound(var/mob/user, var/obj/projectile/P)
 	var/shot_sound = fire_sound
 
 	if(!shot_sound && istype(P) && P.fire_sound) // If the gun didn't have a fire_sound, but the projectile exists, and has a sound...
@@ -657,14 +698,14 @@
 	mouthshoot = 1
 	M.visible_message("<font color='red'>[user] sticks their gun in their mouth, ready to pull the trigger...</font>")
 	if(!do_after(user, 40))
-		M.visible_message("<font color='blue'>[user] decided life was worth living</font>")
+		M.visible_message("<font color=#4F49AF>[user] decided life was worth living</font>")
 		mouthshoot = 0
 		return
-	var/obj/item/projectile/in_chamber = consume_next_projectile()
+	var/obj/projectile/in_chamber = consume_next_projectile()
 	if (istype(in_chamber))
 		user.visible_message("<span class = 'warning'>[user] pulls the trigger.</span>")
 		play_fire_sound(M, in_chamber)
-		if(istype(in_chamber, /obj/item/projectile/beam/lasertag))
+		if(istype(in_chamber, /obj/projectile/beam/lasertag))
 			user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
 			mouthshoot = 0
 			return
@@ -715,6 +756,8 @@
 	if(firemodes.len > 1)
 		var/datum/firemode/current_mode = firemodes[sel_mode]
 		. += "The fire selector is set to [current_mode.name]."
+	if(safety_state != GUN_NO_SAFETY)
+		to_chat(user, SPAN_NOTICE("The safety is [check_safety() ? "on" : "off"]."))
 
 /obj/item/gun/proc/switch_firemodes(mob/user)
 	if(firemodes.len <= 1)
@@ -726,10 +769,13 @@
 	var/datum/firemode/new_mode = firemodes[sel_mode]
 	new_mode.apply_to(src)
 	to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
-
+	playsound(loc, selector_sound, 50, 1)
 	return new_mode
 
 /obj/item/gun/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	switch_firemodes(user)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
@@ -744,3 +790,53 @@
 	else
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
 	return 0
+
+/obj/item/gun/update_overlays()
+	. = ..()
+	if(!(item_flags & ITEM_IN_INVENTORY))
+		return
+	. += image('icons/obj/gun/common.dmi', "safety_[check_safety()? "on" : "off"]")
+
+/obj/item/gun/proc/toggle_safety(mob/user)
+	if(user)
+		if(user.stat || user.restrained() || user.incapacitated(INCAPACITATION_DISABLED))
+			to_chat(user, SPAN_WARNING("You can't do that right now."))
+			return
+	if(safety_state == GUN_NO_SAFETY)
+		to_chat(user, SPAN_WARNING("[src] has no safety."))
+		return
+	var/current = check_safety()
+	switch(safety_state)
+		if(GUN_SAFETY_ON)
+			safety_state = GUN_SAFETY_OFF
+		if(GUN_SAFETY_OFF)
+			safety_state = GUN_SAFETY_ON
+	if(user)
+		user.visible_message(
+			SPAN_WARNING("[user] switches the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_NOTICE("You switch the safety of \the [src] [current ? "off" : "on"]."),
+			SPAN_WARNING("You hear a switch being clicked."),
+			MESSAGE_RANGE_COMBAT_SUBTLE
+		)
+	update_appearance()
+	playsound(src, 'sound/weapons/flipblade.ogg', 10, 1)
+
+/obj/item/gun/verb/toggle_safety_verb()
+	set src in usr
+	set category = "Object"
+	set name = "Toggle Gun Safety"
+
+	if(usr == loc)
+		toggle_safety(usr)
+
+/obj/item/gun/AltClick(mob/user)
+	if(loc == user)
+		toggle_safety(user)
+		return TRUE
+	return ..()
+
+/**
+ * returns TRUE/FALSE based on if we have safeties on
+ */
+/obj/item/gun/proc/check_safety()
+	return (safety_state == GUN_SAFETY_ON)

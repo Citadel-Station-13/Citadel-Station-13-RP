@@ -33,24 +33,25 @@
 
 			for(var/obj/item/organ/O in H.internal_organs)
 				if(O.damage > 0) // Fix internal damage
-					O.damage = max(O.damage - (heal_power / 2), 0)
+					O.heal_damage_i(heal_power / 2)
 				if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
-					H.sdisabilities &= ~BLIND
+					H.sdisabilities &= ~SDISABILITY_NERVOUS
 
 			for(var/obj/item/organ/external/O in H.organs) // Fix limbs
 				if(!O.robotic < ORGAN_ROBOT) // No robot parts for this.
 					continue
 				O.heal_damage(0, heal_power / 4, internal = 1, robo_repair = 0)
 
-			for(var/obj/item/organ/E in H.bad_external_organs) // Fix bones
+			// check their limbs
+			// todo: what the fuck why is this two loops
+			for(var/obj/item/organ/E in H.bad_external_organs)
+				// Fix bones
 				var/obj/item/organ/external/affected = E
 				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
 					affected.status &= ~ORGAN_BROKEN
 
-				for(var/datum/wound/W in affected.wounds) // Fix IB
-					if(istype(W, /datum/wound/internal_bleeding))
-						affected.wounds -= W
-						affected.update_damages()
+				// fix IB
+				affected.cure_specific_wound(/datum/wound/internal_bleeding, all = TRUE)
 
 			H.restore_blood() // Fix bloodloss
 		qdel(src)

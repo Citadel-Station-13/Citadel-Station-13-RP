@@ -24,6 +24,9 @@
 /obj/item/storage/fancy/cigarettes/professionals
 	description_fluff = "Decades ago, probably before you were born, Gilthari Exports created the Professional 120s.  They wanted to make a fancy cigarette that would be considered a luxury.  Nowadays, they are generally concidered an emblem of the nouveau riche and the elderly.  They are, however, very high-quality and made from the very best Solar tobacco."
 
+/obj/item/storage/fancy/cigarettes/blackstars
+	description_fluff = "Originally developed as an upscale alternative to tobacco-based cigarettes, Black Stars use a proprietary blend of chemically treated herbs. Although these cigarettes still contain nicotine, they produce a thicker, more richly scented smoke than those using tobacco. Their iconic black filters and papering distinguish them almost as much as the exotic way their cherries glow green."
+
 /obj/item/clothing/mask/smokable/cigarette/cigar
 	description_fluff = "While the label does say that this is a 'premium cigar', it really cannot match other types of cigars on the market.  Is it a quality cigarette?  Perhaps.  Was it hand-made with care?  No.  This is what differentiates between quality products that Gilthari puts out and NanoTrasen 'premium' cigars like this one."
 

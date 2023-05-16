@@ -78,7 +78,10 @@
 	var/detonator_mode = 0
 	var/obj/item/syndie/c4explosive/bomb
 
-/obj/item/flame/lighter/zippo/c4detonator/attack_self(mob/user as mob)
+/obj/item/flame/lighter/zippo/c4detonator/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!detonator_mode)
 		..()
 
@@ -109,5 +112,5 @@
 /obj/item/flame/lighter/zippo/c4detonator/attackby(obj/item/W, mob/user as mob)
 	if(W.is_screwdriver())
 		detonator_mode = !detonator_mode
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You unscrew the top panel of \the [src] revealing a button.</span>")

@@ -32,7 +32,7 @@ var/list/gurgled_overlays = list(
 	if(!gurgled)
 		gurgled = TRUE
 		gurgled_color = contamination_color
-		overlays += gurgled_overlays[gurgled_color]
+		add_overlay(gurgled_overlays[gurgled_color])
 		var/list/pickfrom = contamination_flavors[contamination_flavor]
 		var/gurgleflavor = pick(pickfrom)
 		cleanname = src.name
@@ -44,7 +44,7 @@ var/list/gurgled_overlays = list(
 		return TRUE
 
 /obj/item/proc/can_gurgle()
-	if(flags & PHORONGUARD)
+	if(atom_flags & PHORONGUARD)
 		return FALSE
 	else if(unacidable)
 		return FALSE
@@ -54,7 +54,7 @@ var/list/gurgled_overlays = list(
 /obj/item/decontaminate() //Decontaminate the sogginess as well.
 	..()
 	gurgled = FALSE
-	overlays -= gurgled_overlays[gurgled_color]
+	cut_overlay(gurgled_overlays[gurgled_color])
 	if(cleanname)
 		name = cleanname
 	if(cleandesc)
@@ -81,7 +81,7 @@ var/list/gurgled_overlays = list(
 
 		if(user.loc != location) return				//User has moved
 		if(!I) return 								//Item's been destroyed while washing
-		if(user.get_active_hand() != I) return		//Person has switched hands or the item in their hands
+		if(user.get_active_held_item() != I) return		//Person has switched hands or the item in their hands
 
 		O.clean_blood()
 		user.visible_message( \
@@ -99,7 +99,7 @@ var/list/gurgled_overlays = list(
 		var/turf/T = get_turf(src)
 		for(var/obj/item/I in contents)
 			remove_from_storage(I, T)
-		new/obj/effect/decal/cleanable/molten_item(T)
+		new/obj/effect/debris/cleanable/molten_item(T)
 		qdel(src)
 		return
 	..()

@@ -1,7 +1,7 @@
-/mob/living/silicon/robot/updatehealth()
-	if(status_flags & GODMODE)
+/mob/living/silicon/robot/update_health()
+	if(status_flags & STATUS_GODMODE)
 		health = getMaxHealth()
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = getMaxHealth() - (getBruteLoss() + getFireLoss())
 	return
@@ -111,7 +111,7 @@
 		parts -= picked
 
 /mob/living/silicon/robot/take_overall_damage(var/brute = 0, var/burn = 0, var/sharp = 0, var/used_weapon = null)
-	if(status_flags & GODMODE)	return	//godmode
+	if(status_flags & STATUS_GODMODE)	return	//godmode
 	var/list/datum/robot_component/parts = get_damageable_components()
 
 	 //Combat shielding absorbs a percentage of damage directly into the cell.

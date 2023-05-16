@@ -16,7 +16,7 @@ var/datum/antagonist/rogue_ai/malf
 	hard_cap_round = 1
 	initial_spawn_req = 1
 	initial_spawn_target = 1
-	antaghud_indicator = "hudmalai"
+	antaghud_indicator = "malf"
 
 /datum/antagonist/rogue_ai/New()
 	..()
@@ -87,7 +87,7 @@ var/datum/antagonist/rogue_ai/malf
 	if((flags & ANTAG_OVERRIDE_MOB) && (!player.current || (mob_path && !istype(player.current, mob_path))))
 		var/mob/holder = player.current
 		player.current = new mob_path(get_turf(player.current), null, null, 1)
-		player.transfer_to(player.current)
+		player.transfer(player.current)
 		if(holder) qdel(holder)
 	player.original = player.current
 	return player.current

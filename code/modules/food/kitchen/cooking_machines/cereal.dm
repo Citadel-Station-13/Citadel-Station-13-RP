@@ -35,16 +35,16 @@
 
 	var/image/food_image = image(CI.object.icon, CI.object.icon_state)
 	food_image.color = CI.object.color
-	food_image.overlays += CI.object.overlays
+	food_image.add_overlay(CI.object.overlays)
 	food_image.transform *= 0.7
 
-	product.overlays += food_image
+	product.add_overlay(food_image)
 */
 
 /obj/machinery/appliance/mixer/cereal/update_icon()
 	. = ..()
 
-	if(!stat)
+	if(!machine_stat)
 		icon_state = on_icon
 		if(cerealmaker_loop)
 			cerealmaker_loop.start(src)
@@ -82,4 +82,4 @@
 
 	result.color = result.filling_color
 	for (var/i in images)
-		result.overlays += images[i]
+		result.add_overlay(images[i])

@@ -15,20 +15,27 @@
 	var/menu_tab = 0
 	var/list/expanded_packs = list()
 
+/obj/machinery/computer/supplycomp/attackby(I, user)
+	if(istype(I, /obj/item/engineering_voucher))
+		var/obj/item/engineering_voucher/voucher = I
+		voucher.redeem(user)
+	. = ..()
+
+
 // Supply control console
 /obj/machinery/computer/supplycomp/control
 	name = "supply control console"
 	icon_keyboard = "tech_key"
 	icon_screen = "supply"
 	light_color = "#b88b2e"
-	req_access = list(access_cargo)
+	req_access = list(ACCESS_SUPPLY_BAY)
 	circuit = /obj/item/circuitboard/supplycomp/control
 	authorization = SUP_SEND_SHUTTLE | SUP_ACCEPT_ORDERS
 
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/machinery/computer/supplycomp/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/supplycomp/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	if(!allowed(user))
@@ -43,9 +50,6 @@
 		authorization |= SUP_CONTRABAND
 		req_access = list()
 		return 1
-
-
-
 
 /obj/machinery/computer/supplycomp/nano_ui_interact(mob/user, ui_key = "supply_records", var/datum/nanoui/ui = null, var/force_open = 1, var/key_state = null)
 	var/data[0]
@@ -114,8 +118,8 @@
 					"name" = P.name,
 					"cost" = P.cost,
 					"contraband" = P.contraband,
-					"manifest" = uniqueList(P.manifest),
-					"random" = P.num_contained,
+					"manifest" = P.flattened_nanoui_manifest(),
+					"random" = P.is_random(),
 					"expand" = 0,
 					"ref" = "\ref[P]"
 				)
@@ -259,8 +263,7 @@
 			reqform.info += "REASON: [reason]<br>"
 			reqform.info += "SUPPLY CRATE TYPE: [S.name]<br>"
 			reqform.info += "ACCESS RESTRICTION: [get_access_desc(S.access)]<br>"
-			reqform.info += "CONTENTS:<br>"
-			reqform.info +=  S.get_html_manifest()
+			reqform.info +=  S.get_html_manifest().Join("")
 			reqform.info += "<hr>"
 			reqform.info += "STAMP BELOW TO APPROVE THIS REQUISITION:<br>"
 

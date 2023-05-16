@@ -232,7 +232,7 @@
 					else if(isslime(M))
 						M_job = "slime"
 					else if(issmall(M))
-						M_job = "Monkey"
+						M_job = "Monkey" //???
 					else if(isalien(M))
 						M_job = "Alien"
 					else

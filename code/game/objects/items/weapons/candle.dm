@@ -55,16 +55,16 @@
 		return
 	wax--
 	if(!wax)
-		new/obj/item/trash/candle(src.loc)
-		if(istype(src.loc, /mob))
-			src.dropped()
 		qdel(src)
 	update_icon()
 	if(istype(loc, /turf)) //start a fire if possible
 		var/turf/T = loc
 		T.hotspot_expose(700, 5)
 
-/obj/item/flame/candle/attack_self(mob/user as mob)
+/obj/item/flame/candle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(lit)
 		lit = 0
 		update_icon()
@@ -114,6 +114,15 @@
 /obj/item/flame/candle/everburn/Initialize(mapload)
 	. = ..()
 	light("<span class='notice'>\The [src] mysteriously lights itself!.</span>")
+
+/obj/item/flame/candle/everburn/white
+	desc = "a white pillar candle. Its specially-formulated fuel-oxidizer wax mixture allows continued combustion in airless environments."
+	icon_state = "whitecandle"
+	icon_type = "whitecandle"
+/obj/item/flame/candle/everburn/black
+	desc = "a black pillar candle. Ominous."
+	icon_state = "blackcandle"
+	icon_type = "blackcandle"
 
 /obj/item/flame/candle/candelabra/everburn
 	wax = 99999

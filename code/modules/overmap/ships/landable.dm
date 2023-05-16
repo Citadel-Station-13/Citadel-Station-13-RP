@@ -3,14 +3,15 @@
 // Multiz shuttles currently not supported. Non-autodock shuttles currently not supported.
 
 /obj/effect/overmap/visitable/ship/landable
-	var/shuttle											// Name of associated shuttle.  Must be autodock.
-	var/obj/effect/shuttle_landmark/ship/landmark		// Record our open space landmark for easy reference.
+	var/shuttle                                         // Name of associated shuttle. Must be autodock.
+	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
 	var/multiz = 0										// Index of multi-z levels, starts at 0
 	var/status = SHIP_STATUS_LANDED
 	icon_state = "shuttle"
 	moving_state = "shuttle_moving"
 
 /obj/effect/overmap/visitable/ship/landable/Destroy()
+	GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
 	GLOB.shuttle_moved_event.unregister(SSshuttle.shuttles[shuttle], src)
 	return ..()
 
@@ -34,13 +35,18 @@
 
 // We autobuild our z levels.
 /obj/effect/overmap/visitable/ship/landable/find_z_levels()
+	src.landmark = new(null, shuttle) // Create in nullspace since we lazy-create overmap z
+	add_landmark(landmark, shuttle)
+
+/obj/effect/overmap/visitable/ship/landable/proc/setup_overmap_location()
+	if(LAZYLEN(map_z))
+		return // We're already set up!
 	for(var/i = 0 to multiz)
-		world.increment_max_z()
+		SSmapping.add_new_zlevel("[src] transit [i+1]", list())
 		map_z += world.maxz
 
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
-	landmark = new (center_loc, shuttle)
-	add_landmark(landmark, shuttle)
+	landmark.forceMove(center_loc)
 
 	var/visitor_dir = fore_dir
 	for(var/landmark_name in list("FORE", "PORT", "AFT", "STARBOARD"))
@@ -50,7 +56,9 @@
 		visitor_dir = turn(visitor_dir, 90)
 
 	if(multiz)
-		new /obj/effect/landmark/map_data(center_loc, (multiz + 1))
+		new /obj/landmark/map_data(center_loc, (multiz + 1))
+	register_z_levels()
+	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 
 /obj/effect/overmap/visitable/ship/landable/get_areas()
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
@@ -64,13 +72,19 @@
 	if(istype(shuttle_datum,/datum/shuttle/autodock/overmap))
 		var/datum/shuttle/autodock/overmap/oms = shuttle_datum
 		oms.myship = src
+	GLOB.shuttle_pre_move_event.register(shuttle_datum, src, .proc/pre_shuttle_jump)
 	GLOB.shuttle_moved_event.register(shuttle_datum, src, .proc/on_shuttle_jump)
 	on_landing(landmark, shuttle_datum.current_location) // We "land" at round start to properly place ourselves on the overmap.
+
+
+//
+// Center Landmark
+//
 
 /obj/effect/shuttle_landmark/ship
 	name = "Open Space"
 	landmark_tag = "ship"
-	flags = SLANDMARK_FLAG_AUTOSET | SLANDMARK_FLAG_ZERO_G
+	shuttle_landmark_flags = SLANDMARK_FLAG_ZERO_G // *Not* AUTOSET, these must be world.turf and world.area for lazy loading to work.
 	var/shuttle_name
 	var/list/visitors // landmark -> visiting shuttle stationed there
 
@@ -78,30 +92,44 @@
 	landmark_tag += "_[shuttle_name]"
 	src.shuttle_name = shuttle_name
 	. = ..()
+	base_turf = world.turf
 
 /obj/effect/shuttle_landmark/ship/Destroy()
-	var/obj/effect/overmap/visitable/ship/landable/ship = map_sectors["[z]"]
+	var/obj/effect/overmap/visitable/ship/landable/ship = get_overmap_sector(z)
 	if(istype(ship) && ship.landmark == src)
 		ship.landmark = null
 	. = ..()
+
+/obj/effect/shuttle_landmark/ship/is_valid(datum/shuttle/shuttle)
+	return (isnull(loc) || ..()) // If it doesn't exist yet, its clear
+
+/obj/effect/shuttle_landmark/ship/create_warning_effect(var/datum/shuttle/shuttle)
+	if(isnull(loc))
+		return
+	..()
 
 /obj/effect/shuttle_landmark/ship/cannot_depart(datum/shuttle/shuttle)
 	if(LAZYLEN(visitors))
 		return "Grappled by other shuttle; cannot manouver."
 
+//
+// Visitor Landmark
+//
+
 /obj/effect/shuttle_landmark/visiting_shuttle
-	flags = SLANDMARK_FLAG_AUTOSET | SLANDMARK_FLAG_ZERO_G
+	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET | SLANDMARK_FLAG_ZERO_G
 	var/obj/effect/shuttle_landmark/ship/core_landmark
 
 /obj/effect/shuttle_landmark/visiting_shuttle/Initialize(mapload, obj/effect/shuttle_landmark/ship/master, _name)
 	core_landmark = master
 	name = _name
 	landmark_tag = master.shuttle_name + _name
-	RegisterSignal(master, src, qdel(src))
+	RegisterSignal(master, COMSIG_PARENT_QDELETING, /datum/proc/qdel_self)
 	. = ..()
 
+
 /obj/effect/shuttle_landmark/visiting_shuttle/Destroy()
-	UnregisterSignal(core_landmark, src)
+	UnregisterSignal(core_landmark, COMSIG_PARENT_QDELETING)
 	LAZYREMOVE(core_landmark.visitors, src)
 	core_landmark = null
 	. = ..()
@@ -110,7 +138,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/datum/shuttle/boss_shuttle = SSshuttle.shuttles[core_landmark?.shuttle_name]
+	var/datum/shuttle/boss_shuttle = SSshuttle.shuttles[core_landmark.shuttle_name]
 	if(boss_shuttle.current_location != core_landmark)
 		return FALSE // Only available when our governing shuttle is in space.
 	if(shuttle == boss_shuttle) // Boss shuttle only lands on main landmark
@@ -124,6 +152,17 @@
 	if(old_landmark == src)
 		GLOB.shuttle_moved_event.unregister(shuttle, src)
 		LAZYREMOVE(core_landmark.visitors, src)
+
+//
+// More ship procs
+//
+
+/obj/effect/overmap/visitable/ship/landable/proc/pre_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
+	if(given_shuttle != SSshuttle.shuttles[shuttle])
+		return
+	if(into == landmark)
+		setup_overmap_location() // They're coming boys, better actually exist!
+		GLOB.shuttle_pre_move_event.unregister(SSshuttle.shuttles[shuttle], src)
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_shuttle_jump(datum/shuttle/given_shuttle, obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
 	if(given_shuttle != SSshuttle.shuttles[shuttle])
@@ -141,7 +180,7 @@
 	on_landing(from, into)
 
 /obj/effect/overmap/visitable/ship/landable/proc/on_landing(obj/effect/shuttle_landmark/from, obj/effect/shuttle_landmark/into)
-	var/obj/effect/overmap/visitable/target = map_sectors["[into.z]"]
+	var/obj/effect/overmap/visitable/target = get_overmap_sector(get_z(into))
 	var/datum/shuttle/shuttle_datum = SSshuttle.shuttles[shuttle]
 	if(into.landmark_tag == shuttle_datum.motherdock) // If our motherdock is a landable ship, it won't be found properly here so we need to find it manually.
 		for(var/obj/effect/overmap/visitable/ship/landable/landable in SSshuttle.ships)

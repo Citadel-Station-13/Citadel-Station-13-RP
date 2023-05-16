@@ -42,16 +42,18 @@
 	if(severity >= 2 && prob(33))
 		resistance += 10
 
-	if(GLOB.all_species.len)
-		affected_species = get_infectable_species()
+	affected_species = get_infectable_species()
 
+// todo: this is not great, viruses should check on infect attempt if possible with good performance
 /proc/get_infectable_species()
 	var/list/meat = list()
 	var/list/res = list()
-	for (var/specie in GLOB.all_species)
-		var/datum/species/S = GLOB.all_species[specie]
-		if(!S.get_virus_immune())
-			meat += S
+
+	var/list/species_cache = SScharacters.all_static_species_meta()
+	for(var/datum/species/S in species_cache)
+		if(S.get_virus_immune())
+			continue
+		meat += S
 	if(meat.len)
 		var/num = rand(1,meat.len)
 		for(var/i=0,i<num,i++)
@@ -68,7 +70,7 @@
 		cure(mob)
 		return
 
-	if(mob.stat == 2)
+	if(mob.stat == DEAD)
 		return
 	if(stage <= 1 && clicks == 0) 	// with a certain chance, the mob may become immune to the disease before it starts properly
 		if(prob(5))
@@ -80,7 +82,7 @@
 		cure(mob)
 		return
 
-	if(mob.radiation > 50)
+	if(mob.radiation > RAD_VIRUS_MUTATE)
 		if(prob(1))
 			majormutate()
 
@@ -91,12 +93,11 @@
 		else
 			resistance += rand(1,9)
 
-	//VOREStation Add Start - Corophazine can treat higher stages
+	// Corophazine can treat higher stages
 	var/antibiotics = mob.chem_effects[CE_ANTIBIOTIC]
 	if(antibiotics == ANTIBIO_SUPER)
 		if(prob(70))
 			src.cure(mob)
-	//VOREStation Add End
 
 	//Resistance is capped at 90 without being manually set to 100
 	if(resistance > 90 && resistance < 100)
@@ -139,7 +140,7 @@
 	for(var/datum/disease2/effectholder/e in effects)
 		e.effect.deactivate(mob)
 	mob.virus2.Remove("[uniqueID]")
-	ENABLE_BITFIELD(mob.hud_updateflag, STATUS_HUD)
+	mob.update_hud_med_status()
 
 /datum/disease2/disease/proc/minormutate()
 	//uniqueID = rand(0,10000)
@@ -158,7 +159,7 @@
 	if (prob(5) && prob(100-resistance)) // The more resistant the disease,the lower the chance of randomly developing the antibodies
 		antigen = list(pick(ALL_ANTIGENS))
 		antigen |= pick(ALL_ANTIGENS)
-	if (prob(5) && GLOB.all_species.len)
+	if (prob(5))
 		affected_species = get_infectable_species()
 	if (prob(10))
 		resistance += rand(1,9)
@@ -244,6 +245,28 @@ var/global/list/virusDB = list()
 
 	return r
 
+/datum/disease2/disease/proc/get_tgui_info()
+	. = list(
+		"name" = name(),
+		"spreadtype" = spreadtype,
+		"antigen" = antigens2string(antigen),
+		"rate" = stageprob * 10,
+		"resistance" = resistance,
+		"species" = jointext(affected_species, ", "),
+		"ref" = "\ref[src]",
+	)
+
+	var/list/symptoms = list()
+	for(var/datum/disease2/effectholder/E in effects)
+		symptoms.Add(list(list(
+			"stage" = E.stage,
+			"name" = E.effect.name,
+			"strength" = "[E.multiplier >= 3 ? "Severe" : E.multiplier > 1 ? "Above Average" : "Average"]",
+			"aggressiveness" = E.chance * 15,
+		)))
+	.["symptoms"] = symptoms
+
+
 /datum/disease2/disease/proc/addToDB()
 	if ("[uniqueID]" in virusDB)
 		return 0
@@ -251,15 +274,17 @@ var/global/list/virusDB = list()
 	v.fields["id"] = uniqueID
 	v.fields["name"] = name()
 	v.fields["description"] = get_info()
+	v.fields["tgui_description"] = get_tgui_info()
+	v.fields["tgui_description"]["record"] = "\ref[v]"
 	v.fields["antigen"] = antigens2string(antigen)
 	v.fields["spread type"] = spreadtype
 	virusDB["[uniqueID]"] = v
 	return 1
 
-proc/virus2_lesser_infection()
+/proc/virus2_lesser_infection()
 	var/list/candidates = list()	//list of candidate keys
 
-	for(var/mob/living/carbon/human/G in player_list)
+	for(var/mob/living/carbon/human/G in GLOB.player_list)
 		if(G.client && G.stat != DEAD)
 			candidates += G
 
@@ -269,10 +294,10 @@ proc/virus2_lesser_infection()
 
 	infect_mob_random_lesser(candidates[1])
 
-proc/virus2_greater_infection()
+/proc/virus2_greater_infection()
 	var/list/candidates = list()	//list of candidate keys
 
-	for(var/mob/living/carbon/human/G in player_list)
+	for(var/mob/living/carbon/human/G in GLOB.player_list)
 		if(G.client && G.stat != DEAD)
 			candidates += G
 	if(!candidates.len)	return
@@ -281,7 +306,7 @@ proc/virus2_greater_infection()
 
 	infect_mob_random_greater(candidates[1])
 
-proc/virology_letterhead(var/report_name)
+/proc/virology_letterhead(var/report_name)
 	return {"
 		<center><h1><b>[report_name]</b></h1></center>
 		<center><small><i>[station_name()] Virology Lab</i></small></center>

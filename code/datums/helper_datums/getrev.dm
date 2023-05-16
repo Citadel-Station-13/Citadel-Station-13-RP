@@ -23,7 +23,7 @@
 
 /datum/getrev/proc/get_log_message()
 	var/list/msg = list()
-	msg += "Running /tg/ revision: [date]"
+	msg += "Running CitRP revision: [date]"
 	if(originmastercommit)
 		msg += "origin/master: [originmastercommit]"
 
@@ -126,5 +126,5 @@
 			if(probabilities[ctag] > 0)
 				var/percentage = round(probabilities[ctag] / sum * 100, 0.1)
 				msg += "[ctag] [percentage]%"
-	to_chat(src, msg.Join("<br>"))
 */
+	to_chat(src, msg.Join("<br>"))

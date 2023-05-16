@@ -23,12 +23,12 @@
 	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
 
 	if(confirm == "Yes")
-		if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
+		if(!CHECK_MOBILITY(src, MOBILITY_CAN_USE) || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
 			to_chat(src, "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))")
 			return
 		suiciding = 15
 		does_not_breathe = 0			//Prevents ling-suicide zombies, or something
-		var/obj/item/held_item = get_active_hand()
+		var/obj/item/held_item = get_active_held_item()
 		if(held_item)
 			var/damagetype = held_item.suicide_act(src)
 			if(damagetype)
@@ -69,12 +69,12 @@
 				if(!(damagetype | BRUTELOSS) && !(damagetype | FIRELOSS) && !(damagetype | TOXLOSS) && !(damagetype | OXYLOSS))
 					adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 
-				updatehealth()
+				update_health()
 				return
 
 		log_and_message_admins("[key_name(src)] commited suicide")
 
-		var/datum/gender/T = gender_datums[get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \
@@ -86,7 +86,7 @@
 		visible_message(suicidemsg)
 
 		adjustOxyLoss(max(175 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		updatehealth()
+		update_health()
 
 /mob/living/carbon/brain/verb/suicide()
 	set hidden = 1
@@ -130,7 +130,7 @@
 		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		updatehealth()
+		update_health()
 
 /mob/living/silicon/robot/verb/suicide()
 	set hidden = 1
@@ -150,7 +150,7 @@
 		visible_message("<span class='danger'>[src] is powering down. It looks like they're trying to commit suicide.</span>")
 		//put em at -175
 		adjustOxyLoss(max(getMaxHealth() * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
-		updatehealth()
+		update_health()
 
 /mob/living/silicon/pai/verb/suicide()
 	set category = "pAI Commands"

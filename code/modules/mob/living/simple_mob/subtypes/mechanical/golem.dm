@@ -1,5 +1,16 @@
 // The GOLEM is a spell-flinging synthetic.
 
+// Cataloguer data below - strange we can catalogue space golem wizards
+/datum/category_item/catalogue/technology/drone/technomancer_golem
+	name = "Drone - Technomancer Golem"
+	desc = "Some sort of advanced, unnatural looking synthetic, built for combat.\
+	It has a black-and-blue chassis, and wields some sort of... stun baton in it's hand.\
+	The drone has pristine armor, black and shiny, with the blue synth-parts glowing visibly from inside.\
+	<br><br>\
+	The drone's frame is heavy and armored, unbendable by hand, is barren of any markings or ID,\
+	no traces of paint visible and any 'writing' visible is uncomprehendable, short term scan unable to translate."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/mechanical/technomancer_golem
 	name = "unknown synthetic"
 	desc = "A rather unusual looking synthetic."
@@ -7,6 +18,7 @@
 	icon_state = "golem"
 	health = 300
 	maxHealth = 300
+	catalogue_data = list(/datum/category_item/catalogue/technology/drone/technomancer_golem)
 
 	faction = "golem"
 
@@ -69,7 +81,7 @@
 /mob/living/simple_mob/mechanical/technomancer_golem/death()
 	..()
 	visible_message("\The [src] disintegrates!")
-	new /obj/effect/decal/cleanable/blood/gibs/robot(src.loc)
+	new /obj/effect/debris/cleanable/blood/gibs/robot(src.loc)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()

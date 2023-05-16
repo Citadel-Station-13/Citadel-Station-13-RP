@@ -35,11 +35,11 @@
 			radiate()
 
 /datum/gm_action/solar_storm/get_weight()
-	return 20 + (metric.count_people_in_department(ROLE_ENGINEERING) * 10) + (metric.count_all_space_mobs() * 30)
+	return 20 + (metric.count_people_in_department(DEPARTMENT_ENGINEERING) * 10) + (metric.count_all_space_mobs() * 30)
 
 /datum/gm_action/solar_storm/proc/radiate()
 	// Note: Too complicated to be worth trying to use the radiation system for this.  Its only in space anyway, so we make an exception in this case.
-	for(var/mob/living/L in player_list)
+	for(var/mob/living/L in GLOB.player_list)
 		var/turf/T = get_turf(L)
 		if(!T)
 			continue

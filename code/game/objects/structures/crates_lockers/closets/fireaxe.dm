@@ -34,9 +34,9 @@
 		if(istype(O, /obj/item/multitool))
 			to_chat(user, "<span class='warning'>Resetting circuitry...</span>")
 			playsound(user, 'sound/machines/lockreset.ogg', 50, 1)
-			if(do_after(user, 20 * O.toolspeed))
+			if(do_after(user, 20 * O.tool_speed))
 				src.locked = 0
-				to_chat(user, "<span class = 'caution'> You disable the locking modules.</span>")
+				to_chat(user, SPAN_CAUTION("You disable the locking modules."))
 				update_icon()
 			return
 		else if(istype(O, /obj/item))
@@ -49,7 +49,7 @@
 				return
 			else
 				playsound(user, 'sound/effects/Glasshit.ogg', 100, 1) //We don't want this playing every time
-			if(W.force < 15)
+			if(W.damage_force < 15)
 				to_chat(user, "<span class='notice'>The cabinet's protective glass glances off the hit.</span>")
 			else
 				src.hitstaken++
@@ -62,14 +62,12 @@
 		return
 	if (istype(O, /obj/item/material/twohanded/fireaxe) && src.localopened)
 		if(!fireaxe)
-			if(O:wielded)
-				O:wielded = 0
-				O.update_icon()
-				//to_chat(user, "<span class='warning'>Unwield the axe first.</span>")
-				//return
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			fireaxe = O
-			user.remove_from_mob(O)
-			src.contents += O
+			if(fireaxe.wielded)
+				fireaxe.wielded = FALSE
+				fireaxe.update_icon()
 			to_chat(user, "<span class='notice'>You place the fire axe back in the [src.name].</span>")
 			update_icon()
 		else
@@ -95,9 +93,9 @@
 			else
 				to_chat(user, "<span class='warning'>Resetting circuitry...</span>")
 				playsound(user, 'sound/machines/lockenable.ogg', 50, 1)
-				if(do_after(user,20 * O.toolspeed))
+				if(do_after(user,20 * O.tool_speed))
 					src.locked = 1
-					to_chat(user, "<span class = 'caution'> You re-enable the locking modules.</span>")
+					to_chat(user, SPAN_CAUTION("You re-enable the locking modules."))
 				return
 		else
 			localopened = !localopened
@@ -109,7 +107,7 @@
 				spawn(10) update_icon()
 
 
-/obj/structure/closet/fireaxecabinet/attack_hand(mob/user as mob)
+/obj/structure/closet/fireaxecabinet/attack_hand(mob/user, list/params)
 	var/hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
@@ -158,6 +156,7 @@
 /obj/structure/closet/fireaxecabinet/verb/toggle_openness() //nice name, huh? HUH?! -Erro //YEAH -Agouri
 	set name = "Open/Close"
 	set category = "Object"
+	set src in oview(1)
 
 	if (isrobot(usr) || src.locked || src.smashed)
 		if(src.locked)
@@ -172,6 +171,7 @@
 /obj/structure/closet/fireaxecabinet/verb/remove_fire_axe()
 	set name = "Remove Fire Axe"
 	set category = "Object"
+	set src in oview(1)
 
 	if (isrobot(usr))
 		return

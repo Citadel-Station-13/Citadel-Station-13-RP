@@ -1,6 +1,6 @@
 /datum/gm_action/blob
 	name = "blob infestation"
-	departments = list(ROLE_ENGINEERING, ROLE_SECURITY, ROLE_MEDICAL)
+	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_SECURITY, DEPARTMENT_MEDICAL)
 	chaotic = 25
 
 	var/list/area/excluded = list(
@@ -28,20 +28,20 @@
 	for(var/i in 1 to 10)
 		var/area/A = pick(grand_list_of_areas)
 		if(is_area_occupied(A))
-			log_debug("Blob infestation event: Rejected [A] because it is occupied.")
+			log_debug(SPAN_DEBUGWARNING("Blob infestation event: Rejected [A] because it is occupied."))
 			continue
 		var/list/turfs = list()
 		for(var/turf/simulated/floor/F in A)
 			if(turf_clear(F))
 				turfs += F
 		if(turfs.len == 0)
-			log_debug("Blob infestation event: Rejected [A] because it has no clear turfs.")
+			log_debug(SPAN_DEBUGWARNING("Blob infestation event: Rejected [A] because it has no clear turfs."))
 			continue
 		target_area = A
 		target_turf = pick(turfs)
 
 	if(!target_area)
-		log_debug("Blob infestation event: Giving up after too many failures to pick target area")
+		log_debug(SPAN_DEBUGWARNING("Blob infestation event: Giving up after too many failures to pick target area"))
 
 /datum/gm_action/blob/start()
 	..()
@@ -62,9 +62,9 @@
 		command_announcement.Announce("Confirmed outbreak of level 7 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", new_sound = 'sound/AI/outbreak7.ogg')
 
 /datum/gm_action/blob/get_weight()
-	var/engineers = metric.count_people_in_department(ROLE_ENGINEERING)
-	var/security = metric.count_people_in_department(ROLE_SECURITY)
-	var/medical = metric.count_people_in_department(ROLE_MEDICAL)
+	var/engineers = metric.count_people_in_department(DEPARTMENT_ENGINEERING)
+	var/security = metric.count_people_in_department(DEPARTMENT_SECURITY)
+	var/medical = metric.count_people_in_department(DEPARTMENT_MEDICAL)
 
 	var/assigned_staff = engineers + security
 	if(engineers || security)	// Medical only counts if one of the other two exists, and even then they count as half.

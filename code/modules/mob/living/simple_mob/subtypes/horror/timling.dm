@@ -1,3 +1,9 @@
+/datum/category_item/catalogue/fauna/horror/TinyTim
+	name = "%%OST$OSTLOSTLOS%@!"
+	desc = "%WARNING% PROCESSING FAILURE! RETURN SCANNER TO A CENTRAL \
+	ADMINISTRATOR FOR IMMEDIATE MAINTENANCE! %ERROR%"
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/horror/TinyTim
 	name = "???"
 	desc = "A tall figure wearing ripped clothes. Its eyes are placed on the bulb of skin that's folded over the front of its face."
@@ -9,6 +15,7 @@
 	faction = "horror"
 	icon = 'icons/mob/horror_show/tallhorror.dmi'
 	icon_gib = "generic_gib"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/horror/TinyTim)
 
 	attack_sound = 'sound/h_sounds/youknowwhoitis.ogg'
 
@@ -29,25 +36,33 @@
 	say_list_type = /datum/say_list/TinyTim
 	ai_holder_type = /datum/ai_holder/simple_mob/horror
 
+	bone_amount = 3
+	hide_amount = 5
+	exotic_amount = 1
+
+/mob/living/simple_mob/horror/TinyTim/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/horror/TinyTim/death()
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()
 
 /mob/living/simple_mob/horror/TinyTim/bullet_act()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
-/mob/living/simple_mob/horror/TinyTim/attack_hand()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+/mob/living/simple_mob/horror/TinyTim/attack_hand(mob/user, list/params)
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
-/mob/living/simple_mob/horror/TinyTim/hitby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+/mob/living/simple_mob/horror/TinyTim/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
 
 /mob/living/simple_mob/horror/TinyTim/attackby()
-    playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
-    ..()
+	playsound(src, 'sound/h_sounds/holla.ogg', 50, 1)
+	..()
 
 /datum/say_list/TinyTim
 	speak = list("Wuuuuuhhuuhhhhh?","Urk! Aaaaahaaa!", "Yuhyuhyuhyuh...")

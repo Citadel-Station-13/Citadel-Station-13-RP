@@ -1,43 +1,21 @@
 import { classes } from 'common/react';
+import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Table } from '../components';
+import { Box, Button, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const VendingRow = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    product,
-    productStock,
-    custom,
-  } = props;
-  const {
-    onstation,
-    department,
-    user,
-    jobDiscount,
+    actively_vending,
   } = data;
-  const free = (
-    !onstation
-    || product.price === 0
-    || (
-      !product.premium
-      && department
-      && user
-    )
-  );
-  const discount = department === user?.department;
-  const redPrice = Math.round(product.price * jobDiscount);
+  const {
+    product,
+  } = props;
   return (
     <Table.Row>
       <Table.Cell collapsing>
-        {product.base64 && (
-          <img
-            src={`data:image/jpeg;base64,${product.img}`}
-            style={{
-              'vertical-align': 'middle',
-              'horizontal-align': 'middle',
-            }} />
-        ) || (
+        {product.isatom && (
           <span
             className={classes([
               'vending32x32',
@@ -47,46 +25,36 @@ const VendingRow = (props, context) => {
               'vertical-align': 'middle',
               'horizontal-align': 'middle',
             }} />
-        )}
+        ) || null}
       </Table.Cell>
-      <Table.Cell bold>
-        {product.name}
+      <Table.Cell bold color={product.color}>
+        <Box inline position="relative">
+          {product.name}
+          {product.desc
+            ? <Tooltip content={product.desc} position="right" />
+            : null}
+        </Box>
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         <Box
           color={(
-            custom && 'good'
-            || productStock <= 0 && 'bad'
-            || productStock <= (product.max_amount / 2) && 'average'
+            product.amount <= 0 && 'bad'
+            || product.amount <= (product.max_amount / 2) && 'average'
             || 'good'
           )}>
-          {productStock} in stock
+          {product.amount} in stock
         </Box>
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        {custom && (
-          <Button
-            fluid
-            content={data.access ? 'FREE' : product.price + ' cr'}
-            onClick={() => act('dispense', {
-              'item': product.name,
-            })} />
-        ) || (
-          <Button
-            fluid
-            disabled={(
-              productStock === 0
-              || !free && (
-                !data.user
-                || product.price > data.user.cash
-              )
-            )}
-            content={(free && discount)
-              ? `${redPrice} cr` : `${product.price} cr`}
-            onClick={() => act('vend', {
-              'ref': product.ref,
-            })} />
-        )}
+        <Button
+          fluid
+          icon={product.price ? "credit-card" : "download"}
+          iconSpin={actively_vending === product.name}
+          disabled={product.amount === 0}
+          content={product.price ? ('Buy (' + product.price + '₮)') : ('Vend')}
+          onClick={() => act('vend', {
+            'vend': product.key,
+          })} />
       </Table.Cell>
     </Table.Row>
   );
@@ -95,70 +63,96 @@ const VendingRow = (props, context) => {
 export const Vending = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    user,
-    onstation,
-    product_records = [],
-    coin_records = [],
-    hidden_records = [],
-    stock,
+    panel,
   } = data;
-  let inventory;
-  let custom = false;
-  if (data.vending_machine_input) {
-    inventory = data.vending_machine_input;
-    custom = true;
-  }
-  else {
-    inventory = [
-      ...product_records,
-      ...coin_records,
-    ];
-    if (data.extended_inventory) {
-      inventory = [
-        ...inventory,
-        ...hidden_records,
-      ];
-    }
-  }
-  // Just in case we still have undefined values in the list
-  inventory = inventory.filter(item => !!item);
+
   return (
     <Window
-      title="Vending Machine"
       width={450}
       height={600}
       resizable>
       <Window.Content scrollable>
-        {!!onstation && (
-          <Section title="User">
-            {user && (
-              <Box>
-                Welcome, <b>{user.name}</b>,
-                {' '}
-                <b>{user.job || 'Unemployed'}</b>!
-                <br />
-                Your balance is <b>{user.cash} credits</b>.
-              </Box>
-            ) || (
-              <Box color="light-grey">
-                No registered ID card!<br />
-                Please contact your local HoP!
-              </Box>
-            )}
-          </Section>
-        )}
-        <Section title="Products">
-          <Table>
-            {inventory.map(product => (
-              <VendingRow
-                key={product.name}
-                custom={custom}
-                product={product}
-                productStock={stock[product.name]} />
-            ))}
-          </Table>
-        </Section>
+        <VendingProducts />
+        {panel ? (
+          <VendingMaintenance />
+        ) : null}
       </Window.Content>
     </Window>
+  );
+};
+
+export const VendingProducts = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    coin,
+    chargesMoney,
+    user,
+    userMoney,
+    guestNotice,
+    products,
+  } = data;
+
+  // Just in case we still have undefined values in the list
+  let myproducts = products.filter(item => !!item);
+  return (
+    <Fragment>
+      {!!chargesMoney && (
+        <Section title="User">
+          {user && (
+            <Box>
+              Welcome, <b>{user.name}</b>,
+              {' '}
+              <b>{user.job || 'Unemployed'}</b>!
+              <br />
+              Your balance is <b>{userMoney}₮ Thalers</b>.
+            </Box>
+          ) || (
+            <Box color="light-grey">
+              {guestNotice}
+            </Box>
+          )}
+        </Section>
+      )}
+      <Section title="Products">
+        <Table>
+          {myproducts.map(product => (
+            <VendingRow
+              key={product.name}
+              product={product} />
+          ))}
+        </Table>
+      </Section>
+      {!!coin && (
+        <Section
+          title={coin + " deposited"}
+          buttons={(
+            <Button
+              icon="eject"
+              content="Eject Coin"
+              onClick={() => act('remove_coin')} />
+          )} />
+      )}
+    </Fragment>
+  );
+};
+
+export const VendingMaintenance = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    speaker,
+  } = data;
+
+  return (
+    <Section title="Maintenance Panel">
+      <Section
+        title="Speaker"
+        buttons={(
+          <Button
+            icon={speaker ? "volume-up" : "volume-off"}
+            content={speaker ? 'Enabled' : 'Disabled'}
+            selected={speaker}
+            onClick={() => act('togglevoice')} />
+        )} />
+    </Section>
   );
 };

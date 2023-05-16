@@ -1,33 +1,30 @@
-/////////////////////
-// DISABILITY GENES
-//
-// These activate either a mutation, disability, or sdisability.
-//
-// Gene is always activated.
-/////////////////////
+/**
+ * DISABILITY GENES
+ *
+ * These activate either a mutation, disability, or sdisability.
+ *
+ * Gene is always activated.
+ *
+ * TODO: Rewrite this crap from scratch, this is horrible. -Zandario
+ */
+/datum/gene/disability
+	name = "DISABILITY"
 
-/datum/dna/gene/disability
-	name="DISABILITY"
+	/// Mutation to give (or 0)
+	var/mutation = 0
+	/// Disability to give (or 0)
+	var/disability = 0
+	/// SDisability to give (or 0)
+	var/sdisability = 0
+	/// Activation message
+	var/activation_message = ""
+	/// Yay, you're no longer growing 3 arms
+	var/deactivation_message = ""
 
-	// Mutation to give (or 0)
-	var/mutation=0
-
-	// Disability to give (or 0)
-	var/disability=0
-
-	// SDisability to give (or 0)
-	var/sdisability=0
-
-	// Activation message
-	var/activation_message=""
-
-	// Yay, you're no longer growing 3 arms
-	var/deactivation_message=""
-
-/datum/dna/gene/disability/can_activate(var/mob/M,var/flags)
+/datum/gene/disability/can_activate(mob/M, flags)
 	return 1 // Always set!
 
-/datum/dna/gene/disability/activate(var/mob/M, var/connected, var/flags)
+/datum/gene/disability/activate(mob/M, connected, flags)
 	if(mutation && !(mutation in M.mutations))
 		M.mutations.Add(mutation)
 	if(disability)
@@ -35,11 +32,11 @@
 	if(sdisability)
 		M.sdisabilities|=sdisability
 	if(activation_message)
-		to_chat(M, "<span class='warning'>[activation_message]</span>")
+		to_chat(M, SPAN_WARNING("[activation_message]"))
 	else
 		testing("[name] has no activation message.")
 
-/datum/dna/gene/disability/deactivate(var/mob/M, var/connected, var/flags)
+/datum/gene/disability/deactivate(mob/M, connected, flags)
 	if(mutation && (mutation in M.mutations))
 		M.mutations.Remove(mutation)
 	if(disability)
@@ -47,83 +44,83 @@
 	if(sdisability)
 		M.sdisabilities &= (~sdisability)
 	if(deactivation_message)
-		to_chat(M, "<span class='warning'>[deactivation_message]</span>")
+		to_chat(M, SPAN_WARNING("[deactivation_message]"))
 	else
 		testing("[name] has no deactivation message.")
 
-// Note: Doesn't seem to do squat, at the moment.
-/datum/dna/gene/disability/hallucinate
-	name="Hallucinate"
-	activation_message="Your mind says 'Hello'."
-	mutation=mHallucination
+// Note: Doesn't seem to do squat, at the moment. // For at LEAST 4 years. -Zandario
+/datum/gene/disability/hallucinate
+	name = "Hallucinate"
+	activation_message = "Your mind says 'Hello'."
+	mutation = MUTATION_HALLUCINATION
 
-	New()
-		block=HALLUCINATIONBLOCK
+/datum/gene/disability/hallucinate/New()
+	block = DNABLOCK_HALLUCINATION
 
-/datum/dna/gene/disability/epilepsy
-	name="Epilepsy"
-	activation_message="You get a headache."
-	disability=EPILEPSY
+/datum/gene/disability/epilepsy
+	name = "Epilepsy"
+	activation_message = "You get a headache."
+	disability = DISABILITY_EPILEPSY
 
-	New()
-		block=HEADACHEBLOCK
+/datum/gene/disability/epilepsy/New()
+	block = DNABLOCK_HEADACHE
 
-/datum/dna/gene/disability/cough
-	name="Coughing"
-	activation_message="You start coughing."
-	disability=COUGHING
+/datum/gene/disability/cough
+	name = "Coughing"
+	activation_message = "You start coughing."
+	disability = DISABILITY_COUGHING
 
-	New()
-		block=COUGHBLOCK
+/datum/gene/disability/cough/New()
+	block = DNABLOCK_COUGH
 
-/datum/dna/gene/disability/clumsy
-	name="Clumsiness"
-	activation_message="You feel lightheaded."
-	mutation=CLUMSY
+/datum/gene/disability/clumsy
+	name = "Clumsiness"
+	activation_message = "You feel lightheaded."
+	mutation = MUTATION_CLUMSY
 
-	New()
-		block=CLUMSYBLOCK
+/datum/gene/disability/clumsy/New()
+	block = DNABLOCK_CLUMSY
 
-/datum/dna/gene/disability/tourettes
-	name="Tourettes"
-	activation_message="You twitch."
-	disability=TOURETTES
+/datum/gene/disability/tourettes
+	name = "Tourettes"
+	activation_message = "You twitch."
+	disability = DISABILITY_TOURETTES
 
-	New()
-		block=TWITCHBLOCK
+/datum/gene/disability/tourettes/New()
+	block = DNABLOCK_TWITCH
 
-/datum/dna/gene/disability/nervousness
-	name="Nervousness"
-	activation_message="You feel nervous."
-	disability=NERVOUS
+/datum/gene/disability/nervousness
+	name = "Nervousness"
+	activation_message = "You feel nervous."
+	disability = DISABILITY_NERVOUS
 
-	New()
-		block=NERVOUSBLOCK
+/datum/gene/disability/nervousness/New()
+	block = DNABLOCK_NERVOUS
 
-/datum/dna/gene/disability/blindness
-	name="Blindness"
-	activation_message="You can't seem to see anything."
-	sdisability=BLIND
+/datum/gene/disability/blindness
+	name = "Blindness"
+	activation_message = "You can't seem to see anything."
+	sdisability = SDISABILITY_NERVOUS
 
-	New()
-		block=BLINDBLOCK
+/datum/gene/disability/blindness/New()
+	block = DNABLOCK_BLIND
 
-/datum/dna/gene/disability/deaf
-	name="Deafness"
-	activation_message="It's kinda quiet."
-	sdisability=DEAF
+/datum/gene/disability/deaf
+	name = "Deafness"
+	activation_message = "It's kinda quiet."
+	sdisability = SDISABILITY_DEAF
 
-	New()
-		block=DEAFBLOCK
+/datum/gene/disability/deaf/New()
+	block = DNABLOCK_DEAF
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.ear_deaf = 1
+/datum/gene/disability/deaf/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	M.ear_deaf = 1
 
-/datum/dna/gene/disability/nearsighted
-	name="Nearsightedness"
-	activation_message="Your eyes feel weird..."
-	disability=NEARSIGHTED
+/datum/gene/disability/nearsighted
+	name = "Nearsightedness"
+	activation_message = "Your eyes feel weird..."
+	disability = DISABILITY_NEARSIGHTED
 
-	New()
-		block=GLASSESBLOCK
+/datum/gene/disability/nearsighted/New()
+	block = DNABLOCK_GLASSES

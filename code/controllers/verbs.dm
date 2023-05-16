@@ -4,6 +4,7 @@
 // Clickable stat() button.
 /obj/effect/statclick
 	name = "Initializing..."
+	icon = null
 	var/target
 
 INITIALIZE_IMMEDIATE(/obj/effect/statclick)
@@ -14,8 +15,13 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	src.target = target
 
 /obj/effect/statclick/proc/update(text)
+	if(name == text)
+		return src	// let's ont change for no reason shall we
 	name = text
-	return src
+	return name
+
+/obj/effect/statclick/statpanel_click(client/C, action)
+	Click()
 
 /obj/effect/statclick/debug
 	var/class
@@ -94,8 +100,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	options["LEGACY: air_master"] = air_master
 	options["LEGACY: radio_controller"] = radio_controller
 	options["LEGACY: paiController"] = paiController
-	options["LEGACY: cameranet"] = cameranet
-	options["LEGACY: plant_controller"] = plant_controller
+	options["LEGACY: GLOB.cameranet"] = GLOB.cameranet
 
 	var/pick = input(mob, "Choose a controller to debug/view variables of.", "VV controller:") as null|anything in options
 	if(!pick)

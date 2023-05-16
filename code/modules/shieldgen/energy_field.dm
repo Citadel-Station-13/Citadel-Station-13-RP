@@ -14,11 +14,11 @@
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield"
 	alpha = 100
-	anchored = 1
+	anchored = TRUE
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
-	density = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	density = FALSE
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
 	var/obj/machinery/shield_gen/my_gen = null
 	var/strength = 0 // in Renwicks
 	var/ticks_recovering = 10
@@ -31,8 +31,9 @@
 
 /obj/effect/energy_field/Destroy()
 	update_nearby_tiles()
-	my_gen.field.Remove(src)
-	my_gen = null
+	if(my_gen)
+		my_gen.field.Remove(src)
+		my_gen = null
 	var/turf/current_loc = get_turf(src)
 	. = ..()
 	for(var/direction in GLOB.cardinal)
@@ -41,15 +42,15 @@
 			for(var/obj/effect/energy_field/F in T)
 				F.update_icon()
 
-/obj/effect/energy_field/ex_act(var/severity)
+/obj/effect/energy_field/legacy_ex_act(var/severity)
 	adjust_strength(-(4 - severity) * 4)
 
-/obj/effect/energy_field/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/energy_field/bullet_act(var/obj/projectile/Proj)
 	adjust_strength(-Proj.get_structure_damage() / 10)
 
 /obj/effect/energy_field/attackby(obj/item/W, mob/user)
-	if(W.force)
-		adjust_strength(-W.force / 20)
+	if(W.damage_force)
+		adjust_strength(-W.damage_force / 20)
 		user.do_attack_animation(src)
 		user.setClickCooldown(user.get_attack_speed(W))
 	..()
@@ -63,7 +64,7 @@
 /obj/effect/energy_field/take_damage(var/damage)
 	adjust_strength(-damage / 20)
 
-/obj/effect/energy_field/attack_hand(var/mob/living/user)
+/obj/effect/energy_field/attack_hand(mob/user, list/params)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()
 
@@ -107,8 +108,9 @@
 		update_icon()
 		update_nearby_tiles()
 
-/obj/effect/energy_field/update_icon(var/update_neightbors = 0)
-	overlays.Cut()
+/obj/effect/energy_field/update_icon(update_neightbors = 0)
+	cut_overlays()
+
 	var/list/adjacent_shields_dir = list()
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
@@ -126,10 +128,12 @@
 		icon_state = "shield_broken"
 		set_light(3, 5, "#FF9900")
 
+	var/list/overlays_to_add = list()
 	// Edge overlays
 	for(var/found_dir in adjacent_shields_dir)
-		overlays += image(src.icon, src, icon_state = "shield_edge", dir = found_dir)
+		overlays_to_add += image(src.icon, src, icon_state = "shield_edge", dir = found_dir)
 
+	add_overlay(overlays_to_add)
 
 // Small visual effect, makes the shield tiles brighten up by becoming more opaque for a moment, and spreads to nearby shields.
 /obj/effect/energy_field/proc/impact_effect(var/i, var/list/affected_shields = list())
@@ -146,4 +150,3 @@
 					for(var/obj/effect/energy_field/F in T)
 						if(!(F in affected_shields))
 							F.impact_effect(i, affected_shields) // Spread the effect to them.
-

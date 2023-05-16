@@ -1,0 +1,191 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"e" = (
+/obj/effect/decal/remains/human,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"i" = (
+/turf/simulated/wall,
+/area/template_noop)
+"n" = (
+/turf/simulated/wall,
+/area/lavaland/idleruins)
+"p" = (
+/obj/effect/gibspawner/robot,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"q" = (
+/obj/machinery/door/blast/regular,
+/turf/simulated/floor/plating/lavaland,
+/area/lavaland/idleruins)
+"r" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"x" = (
+/obj/structure/boulder,
+/turf/simulated/floor/outdoors/lavaland,
+/area/template_noop)
+"y" = (
+/obj/structure/boulder,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"z" = (
+/obj/structure/girder/displaced,
+/turf/simulated/floor/plating/lavaland,
+/area/lavaland/idleruins)
+"B" = (
+/obj/structure/bookcase,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"C" = (
+/obj/structure/boulder,
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/plating/lavaland,
+/area/lavaland/idleruins)
+"E" = (
+/obj/item/material/twohanded/spear/plasteel,
+/obj/effect/decal/remains/lizard,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"O" = (
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"P" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/template_noop)
+"R" = (
+/obj/structure/boulder,
+/obj/structure/table,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"W" = (
+/obj/structure/bed/double,
+/turf/simulated/floor/wood/lavaland,
+/area/lavaland/idleruins)
+"X" = (
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/idleruins)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+x
+i
+i
+i
+i
+i
+i
+a
+a
+"}
+(3,1,1) = {"
+a
+n
+O
+O
+W
+O
+B
+n
+a
+a
+"}
+(4,1,1) = {"
+a
+n
+r
+O
+O
+O
+B
+n
+a
+a
+"}
+(5,1,1) = {"
+a
+n
+R
+O
+p
+O
+B
+n
+a
+a
+"}
+(6,1,1) = {"
+a
+n
+r
+O
+O
+O
+O
+q
+a
+a
+"}
+(7,1,1) = {"
+a
+n
+E
+O
+O
+O
+O
+C
+a
+a
+"}
+(8,1,1) = {"
+a
+n
+e
+O
+y
+O
+X
+q
+P
+a
+"}
+(9,1,1) = {"
+a
+n
+n
+n
+n
+n
+z
+X
+P
+P
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+P
+P
+"}

@@ -92,7 +92,7 @@
 					holder.say(pick("Why...?", "I don't understand...?", "Cruel...", "Stop...", "Nooo..."))
 			resentment++ // Done after check so first time will never enrage.
 
-	discipline = between(0, discipline + amount, 10)
+	discipline = clamp( discipline + amount, 0,  10)
 	my_slime.update_mood()
 
 // This slime always enrages if disciplined.
@@ -133,7 +133,7 @@
 		return
 	rabid = TRUE
 	my_slime.update_mood()
-	my_slime.visible_message(span("danger", "\The [src] enrages!"))
+	my_slime.visible_message(SPAN_DANGER("\The [src] enrages!"))
 
 // Called when using a pacification agent (or it's Kendrick being initalized).
 /datum/ai_holder/simple_mob/xenobio_slime/proc/pacify()
@@ -174,8 +174,8 @@
 			var/mob/living/carbon/human/H = AM
 			if(istype(H.species, /datum/species/monkey)) // istype() is so they'll eat the alien monkeys too.
 				return TRUE // Monkeys are always food (sorry Pun Pun).
-			else if(H.species && H.species.name == SPECIES_PROMETHEAN) // Prometheans are always our friends.
-				if(!(H in grudges)) // Unless they're an ass.
+			else if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN) // Prometheans are always our friends.
+				if(!(REF(H) in grudges)) // Unless they're an ass.
 					return FALSE
 		if(discipline && !rabid)
 			return FALSE // We're a good slime.
@@ -185,8 +185,8 @@
 
 	if(ishuman(attacker))
 		var/mob/living/carbon/human/H = attacker
-		if(H.species && H.species.name == SPECIES_PROMETHEAN)	// They're a jerk.
-			grudges |= H
+		if(H.species && H.species.get_species_id() == SPECIES_ID_PROMETHEAN)	// They're a jerk.
+			grudges |= REF(H)
 
 // Commands, reactions, etc
 /datum/ai_holder/simple_mob/xenobio_slime/on_hear_say(mob/living/speaker, message)

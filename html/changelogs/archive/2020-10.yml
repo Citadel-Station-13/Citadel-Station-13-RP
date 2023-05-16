@@ -1,0 +1,108 @@
+2020-10-01:
+  KasparoVy:
+  - bugfix: The regular eyepatch's strap won't cover your good eye when facing south.
+2020-10-02:
+  CharlesWedge:
+  - rscadd: '2 New Grunt Mercs: The Rifleman and the Officer Carrying a Garand and
+      a Desert Eagle Respectively'
+  - rscadd: '5 New Space Mercs carrying: Combat Shotguns, Automatic Shotguns, FALs,
+      L6 SAWs, and Tommy Lasers.'
+  - balance: Base speed of grunt mercs raised to 2 so the ones with E-swords may actually
+      reach their target before they are swissed by explo.
+  - bugfix: Ranged Space Mercs Finally have Armor in line with their Hardsuit. They
+      also properly use the C-20R their sprite shows they carry.
+  - imageadd: New.dmi for the mercs, so they are easy to find and add onto them (Why
+      were **all** our mobs in animal.dmi anyway)
+  RobotAlice:
+  - bugfix: can no longer slide between beds/chairs with clickdrag while buckled
+  ThatOneTeshari:
+  - bugfix: BL3 Phoenix sprite now visible.
+2020-10-03:
+  Enzo-Leon:
+  - rscadd: airlocks & a few other adjustments to map.
+  RealDonaldTrump:
+  - rscadd: Gives the CE his paperwork stamp back
+  ThatOneTeshari:
+  - rscadd: Removes the floral somatoray's pin requirement to be usable on station.
+  - tweak: Removes pin requirement from Phase weapons.
+  - tweak: Removes pin requirement from Temperature guns.
+2020-10-05:
+  Kraseo:
+  - rscadd: Dogborg plushies.
+2020-10-06:
+  RealDonaldTrump:
+  - rscadd: Adds a new area for the Library Private Study
+  - bugfix: Optical Meson Scanner aviators can now be chosen again in the loadout
+  - tweak: Gives borg hypos the same chems as the sleepers.
+  RobotAlice:
+  - bugfix: autopsy scanner now works on help intent
+  - tweak: autopsy scanner no longer used for external repair surgery
+  - tweak: health analyzer now the right tool for external repair surgery
+2020-10-07:
+  drofoljaelisglis:
+  - bugfix: Fixed the white/default ribbon sprite not showing up.
+  - bugfix: Fixed a missing pixel on the butterfly hairpin object sprite.
+  - code_imp: Merged some _vr files.
+2020-10-08:
+  RealDonaldTrump:
+  - rscadd: Ports the turtlenecks for the CMO, RD and HoS from the Main server
+2020-10-13:
+  GrayRachnid:
+  - rscadd: Added the Chief Surgeon fluff title for the CMO
+  - rscdel: Removed the Surgeon General fluff Title from the CMO due to its misuse.
+  KasparoVy:
+  - bugfix: Character preview will now show all loadout accessories (within usual
+      logic) in the order you selected them.
+  - bugfix: All loadout accessories will be equipped to your character when you spawn
+      (within usual logic) in the order you selected them.
+  - rscadd: Added buttons to go forward or backward hair & facial hair styles.
+  - rscadd: Added a button to move a marking to a specific place in the order.
+  - tweak: Markings are now properly aligned.
+  - refactor: Ports Para's colour_square and improves customization colour previews.
+  silicons:
+  - rscdel: Fun has been removed from Poly.
+2020-10-14:
+  KasparoVy:
+  - imageadd: Adds missing colourable apron sprites for humanoids & Teshari.
+  - rscadd: Adds a left arm heart tattoo.
+  - tweak: The right arm heart tattoo is renamed and actually applies to the arm instead
+      of the chest now.
+  VailTheWolf:
+  - rscadd: Bullet Lighter and sounds for all Zippos
+  - soundadd: Zippoopen.oog
+  - soundadd: Zippoclose.oog
+  - imageadd: '"Bulletlighter" into zippo.dmi'
+  Zandario:
+  - bugfix: Lighting Runtimes
+  - bugfix: Many other Runtimes, I recommend checking the PRs linked above.
+  drofoljaelisglis:
+  - rscadd: Added an "Event Rewards" category to the loadout.
+  - tweak: Donator Items now cost 0 loadout points.
+2020-10-15:
+  Zandario:
+  - config: Puts Maps.txt into use
+2020-10-16:
+  Zandario:
+  - bugfix: Fixes some Linter Errors. Suprise!
+2020-10-20:
+  Enzo-Leon:
+  - tweak: Adjusted forward stairwell layout
+2020-10-27:
+  CharlesWedge:
+  - rscadd: Added 2 new types of mimics
+  - imageadd: Sprites for the new mimics plus updated sprites for existing mimics.
+  - code_imp: Mimics updates so they may make use of their monstrous sprites, in addition
+      to the crate sprites. Active mimics are now unmistakably mimics visually.
+  ForFoxSake:
+  - balance: Increased melting point of fissile materials.
+  - rscadd: Added modular fission monitor program.
+2020-10-30:
+  AvaricePleonexia:
+  - bugfix: fixed simple_dress. Had some funky pixels.
+  Zandario:
+  - rscadd: doopytoots's donator reward
+2020-10-31:
+  Enzo-Leon:
+  - rscadd: Engineering floor re-work
+  - rscadd: Reactor change
+  - rscadd: engine changes.

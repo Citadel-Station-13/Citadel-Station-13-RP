@@ -54,7 +54,7 @@
 	if(primary)
 		primary.attack_ghost(ghost)
 
-/obj/machinery/hyperpad/centre/attack_hand(mob/user)
+/obj/machinery/hyperpad/centre/attack_hand(mob/user, list/params)
 	. = ..()
 	if(.)
 		return
@@ -75,7 +75,7 @@
 	src.add_fingerprint(user)
 	startteleport(user)
 
-/obj/machinery/hyperpad/attack_hand(mob/user)
+/obj/machinery/hyperpad/attack_hand(mob/user, list/params)
 	. = ..()
 	if(primary)
 		primary.attack_hand(user)
@@ -146,7 +146,7 @@
 							continue
 					else
 						continue
-				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle)))
+				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle_old)))
 					continue //TP things that move that are "anchored"
 			if(isobserver(ROI))
 				continue

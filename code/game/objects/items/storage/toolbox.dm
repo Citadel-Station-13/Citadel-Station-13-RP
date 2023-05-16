@@ -3,9 +3,9 @@
 	desc = "Danger. Very robust."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "red"
-	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
-	force = 10
-	throwforce = 10
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_red", SLOT_ID_LEFT_HAND = "toolbox_red")
+	damage_force = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 7
 	w_class = ITEMSIZE_LARGE
@@ -19,7 +19,7 @@
 /obj/item/storage/toolbox/emergency
 	name = "emergency toolbox"
 	icon_state = "red"
-	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_red", SLOT_ID_LEFT_HAND = "toolbox_red")
 	starts_with = list(
 		/obj/item/tool/crowbar/red,
 		/obj/item/extinguisher/mini,
@@ -35,7 +35,7 @@
 /obj/item/storage/toolbox/mechanical
 	name = "mechanical toolbox"
 	icon_state = "blue"
-	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_blue", SLOT_ID_LEFT_HAND = "toolbox_blue")
 	starts_with = list(
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/wrench,
@@ -48,7 +48,7 @@
 /obj/item/storage/toolbox/electrical
 	name = "electrical toolbox"
 	icon_state = "yellow"
-	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_yellow", SLOT_ID_LEFT_HAND = "toolbox_yellow")
 	starts_with = list(
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/wirecutters,
@@ -68,9 +68,9 @@
 /obj/item/storage/toolbox/syndicate
 	name = "black and red toolbox"
 	icon_state = "syndicate"
-	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)
-	force = 14
+	damage_force = 14
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow,
 		/obj/item/tool/screwdriver,
@@ -92,11 +92,18 @@
 		/obj/item/analyzer
 	)
 
+/obj/item/storage/toolbox/gold_fake // used in crafting
+	name = "golden toolbox"
+	desc = "A gold plated toolbox, fancy and harmless due to the gold plating being on cardboard!"
+	icon_state = "gold"
+	damage_force = 0
+	throw_force = 0
+
 /obj/item/storage/toolbox/lunchbox
 	max_storage_space = ITEMSIZE_COST_SMALL * 4 //slightly smaller than a toolbox
 	name = "rainbow lunchbox"
 	icon_state = "lunchbox_rainbow"
-	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
 	desc = "A little lunchbox. This one is the colors of the rainbow!"
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL
@@ -124,7 +131,7 @@
 /obj/item/storage/toolbox/lunchbox/heart
 	name = "heart lunchbox"
 	icon_state = "lunchbox_lovelyhearts"
-	item_state_slots = list(slot_r_hand_str = "toolbox_pink", slot_l_hand_str = "toolbox_pink")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_pink", SLOT_ID_LEFT_HAND = "toolbox_pink")
 	desc = "A little lunchbox. This one has cute little hearts on it!"
 
 /obj/item/storage/toolbox/lunchbox/heart/filled
@@ -133,7 +140,7 @@
 /obj/item/storage/toolbox/lunchbox/cat
 	name = "cat lunchbox"
 	icon_state = "lunchbox_sciencecatshow"
-	item_state_slots = list(slot_r_hand_str = "toolbox_green", slot_l_hand_str = "toolbox_green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_green", SLOT_ID_LEFT_HAND = "toolbox_green")
 	desc = "A little lunchbox. This one has a cute little science cat from a popular show on it!"
 
 /obj/item/storage/toolbox/lunchbox/cat/filled
@@ -142,7 +149,7 @@
 /obj/item/storage/toolbox/lunchbox/nt
 	name = "NanoTrasen brand lunchbox"
 	icon_state = "lunchbox_nanotrasen"
-	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_blue", SLOT_ID_LEFT_HAND = "toolbox_blue")
 	desc = "A little lunchbox. This one is branded with the NanoTrasen logo!"
 
 /obj/item/storage/toolbox/lunchbox/nt/filled
@@ -151,7 +158,7 @@
 /obj/item/storage/toolbox/lunchbox/mars
 	name = "\improper Mojave university lunchbox"
 	icon_state = "lunchbox_marsuniversity"
-	item_state_slots = list(slot_r_hand_str = "toolbox_red", slot_l_hand_str = "toolbox_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_red", SLOT_ID_LEFT_HAND = "toolbox_red")
 	desc = "A little lunchbox. This one is branded with the Mojave university logo!"
 
 /obj/item/storage/toolbox/lunchbox/mars/filled
@@ -160,7 +167,7 @@
 /obj/item/storage/toolbox/lunchbox/cti
 	name = "\improper CTI lunchbox"
 	icon_state = "lunchbox_cti"
-	item_state_slots = list(slot_r_hand_str = "toolbox_blue", slot_l_hand_str = "toolbox_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_blue", SLOT_ID_LEFT_HAND = "toolbox_blue")
 	desc = "A little lunchbox. This one is branded with the CTI logo!"
 
 /obj/item/storage/toolbox/lunchbox/cti/filled
@@ -169,7 +176,7 @@
 /obj/item/storage/toolbox/lunchbox/nymph
 	name = "\improper Diona nymph lunchbox"
 	icon_state = "lunchbox_dionanymph"
-	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_yellow", SLOT_ID_LEFT_HAND = "toolbox_yellow")
 	desc = "A little lunchbox. This one is an adorable Diona nymph on the side!"
 
 /obj/item/storage/toolbox/lunchbox/nymph/filled
@@ -178,13 +185,13 @@
 /obj/item/storage/toolbox/lunchbox/syndicate
 	name = "black and red lunchbox"
 	icon_state = "lunchbox_syndie"
-	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	desc = "A little lunchbox. This one is a sleek black and red, made of a durable steel!"
 
 /obj/item/storage/toolbox/lunchbox/cyancowgirl
 	name = "Cyan Cowgirl lunchbox"
 	icon_state = "lunchbox_cyancowgirl"
-	item_state_slots = list(slot_r_hand_str = "toolbox_yellow", slot_l_hand_str = "toolbox_yellow")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_yellow", SLOT_ID_LEFT_HAND = "toolbox_yellow")
 	desc = "A little lunchbox. This one has the familiar Cyan Cowgirl backdrop on it!"
 
 /obj/item/storage/toolbox/lunchbox/syndicate/filled
@@ -194,9 +201,26 @@
 	name = "survival lunchbox"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "lunchbox_survival"
-	item_state_slots = list(slot_r_hand_str = "toolbox_syndi", slot_l_hand_str = "toolbox_syndi")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "toolbox_syndi", SLOT_ID_LEFT_HAND = "toolbox_syndi")
 	desc = "A little lunchbox. This one seems to be much sturdier than normal, made of a durable steel!"
 	max_storage_space = ITEMSIZE_COST_SMALL * 6
 
 /obj/item/storage/toolbox/lunchbox/survival/zaddat
 	starts_with = list(/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose = 6)
+
+/obj/item/storage/toolbox/crystal
+	name = "crystalline toolbox"
+	desc = "A translucent toolbox made out of an odd crystalline material that is surprisingly light."
+	icon_state = "toolbox_crystal"
+	item_state = "toolbox_crystal"
+	origin_tech = list(TECH_COMBAT = 1, TECH_MATERIAL = 3)
+
+/obj/item/storage/toolbox/crystal/Initialize()
+	new /obj/item/multitool/crystal(src)
+	new /obj/item/tool/wrench/crystal(src)
+	new /obj/item/tool/crowbar/crystal(src)
+	new /obj/item/tool/screwdriver/crystal(src)
+	new /obj/item/tool/wirecutters/crystal(src)
+	new /obj/item/weldingtool/electric/crystal(src)
+	update_icon()
+	. = ..()

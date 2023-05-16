@@ -18,35 +18,26 @@
 	var/obj/item/radio/intercom/faultreporter = new /obj/item/radio/intercom{channels=list("Supply")}(null)
 
 	var/list/ore_types = list(
-		"hematite" = /obj/item/ore/iron,
-		"uranium" = /obj/item/ore/uranium,
-		"gold" = /obj/item/ore/gold,
-		"silver" = /obj/item/ore/silver,
-		"diamond" = /obj/item/ore/diamond,
-		"phoron" = /obj/item/ore/phoron,
-		"osmium" = /obj/item/ore/osmium,
+		MAT_HEMATITE = /obj/item/ore/iron,
+		MAT_URANIUM = /obj/item/ore/uranium,
+		MAT_GOLD = /obj/item/ore/gold,
+		MAT_SILVER = /obj/item/ore/silver,
+		MAT_COPPER = /obj/item/ore/copper,
+		MAT_DIAMOND = /obj/item/ore/diamond,
+		MAT_PHORON = /obj/item/ore/phoron,
+		MAT_OSMIUM = /obj/item/ore/osmium,
 		"hydrogen" = /obj/item/ore/hydrogen,
 		"silicates" = /obj/item/ore/glass,
-		"carbon" = /obj/item/ore/coal
+		MAT_CARBON = /obj/item/ore/coal,
+		MAT_MARBLE = /obj/item/ore/marble,
+		MAT_LEAD = /obj/item/ore/lead,
 		)
 
 	//Upgrades
 	var/harvest_speed
 	var/capacity
 	var/charge_use
-	var/exotic_drilling
 	var/obj/item/cell/cell = null
-
-	// Found with an advanced laser. exotic_drilling >= 1
-	var/list/ore_types_uncommon = list(
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead
-		)
-
-	// Found with an ultra laser. exotic_drilling >= 2
-	var/list/ore_types_rare = list(
-		MAT_VERDANTIUM = /obj/item/ore/verdantium
-		)
 
 	//Flags
 	var/need_update_field = 0
@@ -90,7 +81,7 @@
 	//Drill through the flooring, if any.
 	if(istype(get_turf(src), /turf/simulated))
 		var/turf/simulated/T = get_turf(src)
-		T.ex_act(2.0)
+		LEGACY_EX_ACT(T, 2, null)
 
 	//Dig out the tasty ores.
 	if(resource_field.len)
@@ -122,7 +113,8 @@
 			if(contents.len + total_harvest >= capacity)
 				total_harvest = capacity - contents.len
 
-			if(total_harvest <= 0) break
+			if(total_harvest <= 0)
+				break
 			if(harvesting.resources[metal])
 
 				found_resource  = 1
@@ -174,15 +166,15 @@
 		if(cell)
 			to_chat(user, "The drill already has a cell installed.")
 		else
-			user.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			cell = O
 			component_parts += O
 			to_chat(user, "You install \the [O].")
 		return
 	..()
 
-/obj/machinery/mining/drill/attack_hand(mob/user as mob)
+/obj/machinery/mining/drill/attack_hand(mob/user, list/params)
 	check_supports()
 
 	if (panel_open && cell && user.Adjacent(src))
@@ -228,23 +220,16 @@
 	..()
 	harvest_speed = 0
 	capacity = 0
-	charge_use = 50
+	charge_use = 25
 
 	for(var/obj/item/stock_parts/P in component_parts)
 		if(istype(P, /obj/item/stock_parts/micro_laser))
-			harvest_speed = P.rating
-			exotic_drilling = P.rating - 1
-			if(exotic_drilling >= 1)
-				ore_types |= ore_types_uncommon
-				if(exotic_drilling >= 2)
-					ore_types |= ore_types_rare
-			else
-				ore_types -= ore_types_uncommon
-				ore_types -= ore_types_rare
+			harvest_speed += P.rating * 3
 		if(istype(P, /obj/item/stock_parts/matter_bin))
-			capacity = 200 * P.rating
+			capacity = 300 * P.rating
 		if(istype(P, /obj/item/stock_parts/capacitor))
-			charge_use -= 10 * P.rating
+			charge_use -= 5 * P.rating
+	charge_use = max(charge_use, 0)
 	cell = locate(/obj/item/cell) in component_parts
 
 /obj/machinery/mining/drill/proc/check_supports()
@@ -278,17 +263,13 @@
 	need_update_field = 0
 
 	var/turf/T = get_turf(src)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 
-	var/tx = T.x - 2
-	var/ty = T.y - 2
-	var/turf/simulated/mine_turf
-	for(var/iy = 0,iy < 5, iy++)
-		for(var/ix = 0, ix < 5, ix++)
-			mine_turf = locate(tx + ix, ty + iy, T.z)
-			if(!istype(mine_turf, /turf/space/))
-				if(mine_turf && mine_turf.has_resources)
-					resource_field += mine_turf
+	for(var/turf/simulated/mining_turf in RANGE_TURFS(7, T))
+		if(!mining_turf.has_resources)
+			continue
+		resource_field += mining_turf
 
 	if(!resource_field.len)
 		system_error("Resources depleted.")
@@ -310,7 +291,7 @@
 	var/obj/structure/ore_box/B = locate() in orange(1)
 	if(B)
 		for(var/obj/item/ore/O in contents)
-			O.loc = B
+			B.take(O)
 		to_chat(usr, "<span class='notice'>You unload the drill's storage cache into the ore box.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You must move an ore box up to the drill before you can unload it.</span>")
@@ -343,7 +324,7 @@
 			to_chat(user, "<span class='notice'>You can't anchor something to empty space. Idiot.</span>")
 			return
 
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]anchor the brace.</span>")
 
 		anchored = !anchored

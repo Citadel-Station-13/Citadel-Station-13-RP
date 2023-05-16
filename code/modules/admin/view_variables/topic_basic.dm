@@ -45,6 +45,13 @@
 			usr.client.admin_delete(target)
 			if (isturf(src))	// show the turf that took its place
 				usr.client.debug_variables(src)
+				return
+	if(href_list[VV_HK_VIEW_APPEARANCE])
+		var/appearance/A = locate(href_list[VV_HK_VIEW_APPEARANCE])
+		if(!A || !IS_APPEARANCE(A))
+			to_chat(usr, SPAN_WARNING("Invalid ref: [href_list[VV_HK_VIEW_APPEARANCE]]"))
+			return
+		usr.client.debug_variables(A)
 	if(href_list[VV_HK_MARK])
 		usr.client.mark_datum(target)
 	if(href_list[VV_HK_ADDCOMPONENT])
@@ -52,11 +59,9 @@
 			return
 		var/list/names = list()
 		var/list/componentsubtypes = subtypesof(/datum/component)
-		names += "---Components---"
 		names += componentsubtypes
-		names += "---Elements---"
 		names += subtypesof(/datum/element)
-		var/result = input(usr, "Choose a component/element to add","better know what ur fuckin doin pal") as null|anything in names
+		var/result = tgui_input_list(usr, "Choose a component/element to add", "better know what ur fuckin doin pal", names)
 		if(!usr || !result || result == "---Components---" || result == "---Elements---")
 			return
 		if(QDELETED(src))
@@ -74,6 +79,6 @@
 			datumname = "element"
 			target._AddElement(lst)
 		log_admin("[key_name(usr)] has added [result] [datumname] to [key_name(src)].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] has added [result] [datumname] to [key_name_admin(src)].</span>")
+		message_admins("<span class='notice'>[key_name_admin(usr)] has added [result] [datumname] to [target] ([ADMIN_VV(target)]).</span>")
 	if(href_list[VV_HK_CALLPROC])
 		usr.client.callproc_datum(target)

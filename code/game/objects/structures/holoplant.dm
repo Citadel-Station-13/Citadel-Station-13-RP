@@ -21,7 +21,7 @@
 	. = ..()
 	activate()
 
-/obj/machinery/holoplant/attack_hand(var/mob/living/user)
+/obj/machinery/holoplant/attack_hand(mob/user, list/params)
 	if(!istype(user) || interference)
 		return
 
@@ -42,23 +42,23 @@
 	. = ..()
 
 /obj/machinery/holoplant/proc/activate()
-	if(!anchored || stat & (NOPOWER|BROKEN))
+	if(!anchored || machine_stat & (NOPOWER|BROKEN))
 		return
 
 	plant = prepare_icon(emagged ? "emagged" : null)
-	overlays += plant
+	add_overlay(plant)
 	set_light(2)
 	use_power = USE_POWER_ACTIVE
 
 /obj/machinery/holoplant/proc/deactivate()
-	overlays -= plant
+	cut_overlay(plant)
 	QDEL_NULL(plant)
 	set_light(0)
 	use_power = USE_POWER_OFF
 
 /obj/machinery/holoplant/power_change()
 	..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		deactivate()
 	else
 		activate()
@@ -66,20 +66,20 @@
 /obj/machinery/holoplant/proc/flicker()
 	interference = TRUE
 	spawn(0)
-		overlays -= plant
+		cut_overlay(plant)
 		set_light(0)
 		sleep(rand(2,4))
-		overlays += plant
+		add_overlay(plant)
 		set_light(2)
 		sleep(rand(2,4))
-		overlays -= plant
+		cut_overlay(plant)
 		set_light(0)
 		sleep(rand(2,4))
-		overlays += plant
+		add_overlay(plant)
 		set_light(2)
 		interference = FALSE
 
-/obj/machinery/holoplant/proc/prepare_icon(var/state)
+/obj/machinery/holoplant/proc/prepare_icon(state)
 	if(!state)
 		state = pick(possible_plants)
 	var/plant_icon = icon(icon, state)

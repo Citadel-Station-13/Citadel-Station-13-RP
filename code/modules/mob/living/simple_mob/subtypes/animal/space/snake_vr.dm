@@ -1,6 +1,18 @@
+/datum/category_item/catalogue/fauna/snake
+	name = "Snake"
+	desc = "An Earth reptile with a distinct lack of limbs, \
+	snakes ambulate by slithering across the ground. Snakes \
+	possess a wide variety of colorations and patterns, and are \
+	sometimes owned as pets by enthusiasts. Many are venemous, \
+	although there are harmless species, as well as species which \
+	consume their prey via more specific techniques, such as \
+	constriction."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/snake
 	name = "snake"
 	desc = "A big thick snake."
+	catalogue_data = list(/datum/category_item/catalogue/fauna/snake)
 
 	icon_state = "snake"
 	icon_living = "snake"
@@ -9,6 +21,7 @@
 
 	maxHealth = 20
 	health = 20
+	randomized = TRUE
 
 	movement_cooldown = 8 // SLOW-ASS MUTHAFUCKA, I hope.
 
@@ -23,6 +36,10 @@
 	say_list_type = /datum/say_list/snake
 	ai_holder_type = /datum/ai_holder/simple_mob/passive
 
+	bone_amount = 5
+	hide_amount = 1
+	hide_type = /obj/item/stack/hairlesshide
+
 /datum/say_list/snake
 	emote_hear = list("hisses")
 
@@ -35,9 +52,11 @@
 
 	var/turns_since_scan = 0
 	var/obj/movement_target
+	randomized = FALSE
 
-/mob/living/simple_mob/animal/passive/snake/noodle/Life()
-	..()
+/mob/living/simple_mob/animal/passive/snake/noodle/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Not replacing with SA FollowTarget mechanics because Ian behaves... very... specifically.
 
@@ -80,7 +99,7 @@
 						visible_emote("stares at the [movement_target] that [movement_target.loc] has with an unknowable reptilian gaze.")
 
 /* old eating code, couldn't figure out how to make the "swallows food" thing so I'm keeping this here incase someone wants legacy"
-/mob/living/simple_mob/animal/passive/snake/noodle/Life() //stolen from Ian in corgi.dm
+/mob/living/simple_mob/animal/passive/snake/noodle/Life(seconds, times_fired) //stolen from Ian in corgi.dm
 	if(!..())
 		return 0
 

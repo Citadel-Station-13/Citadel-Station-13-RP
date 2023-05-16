@@ -33,7 +33,7 @@
 			if(istype(L, /mob/living/simple_mob))
 				var/mob/living/simple_mob/SM = L
 				SM.health = SM.getMaxHealth() / 3
-				SM.stat = CONSCIOUS
+				SM.set_stat(CONSCIOUS)
 				dead_mob_list -= SM
 				living_mob_list += SM
 				SM.update_icon()
@@ -42,7 +42,7 @@
 				var/mob/living/carbon/human/H = L
 
 				if(!H.client && H.mind) //Don't force the dead person to come back if they don't want to.
-					for(var/mob/observer/dead/ghost in player_list)
+					for(var/mob/observer/dead/ghost in GLOB.player_list)
 						if(ghost.mind == H.mind)
 							ghost.notify_revive("The Technomancer [user.real_name] is trying to revive you. \
 							Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
@@ -53,7 +53,7 @@
 
 				sleep(10 SECONDS)
 				if(H.client)
-					L.stat = CONSCIOUS //Note that if whatever killed them in the first place wasn't fixed, they're likely to die again.
+					L.set_stat(CONSCIOUS) //Note that if whatever killed them in the first place wasn't fixed, they're likely to die again.
 					dead_mob_list -= H
 					living_mob_list += H
 					H.timeofdeath = null

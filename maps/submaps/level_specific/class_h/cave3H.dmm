@@ -1,0 +1,168 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"c" = (
+/turf/simulated/mineral/vacuum,
+/area/class_h/explored)
+"n" = (
+/obj/structure/closet/crate/mimic/cointoss,
+/obj/random/drinkbottle,
+/obj/random/drinkbottle,
+/obj/random/drinkbottle,
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"p" = (
+/obj/structure/closet/crate/mimic/cointoss,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/obj/random/ammo_all,
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"q" = (
+/obj/structure/closet/crate/mimic/cointoss,
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"r" = (
+/obj/structure/closet/crate/mimic/cointoss,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"t" = (
+/turf/simulated/mineral/classh,
+/area/class_h/explored)
+"z" = (
+/obj/random/humanoidremains,
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+"T" = (
+/turf/simulated/mineral/floor/classh,
+/area/class_h/explored)
+
+(1,1,1) = {"
+a
+a
+a
+t
+t
+t
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+t
+t
+t
+t
+t
+t
+T
+a
+a
+"}
+(3,1,1) = {"
+t
+t
+t
+t
+t
+t
+T
+z
+t
+a
+"}
+(4,1,1) = {"
+t
+t
+t
+T
+n
+T
+T
+t
+t
+a
+"}
+(5,1,1) = {"
+t
+t
+T
+T
+T
+T
+T
+c
+t
+t
+"}
+(6,1,1) = {"
+t
+t
+r
+T
+T
+z
+t
+t
+t
+t
+"}
+(7,1,1) = {"
+t
+t
+T
+T
+T
+t
+t
+t
+t
+t
+"}
+(8,1,1) = {"
+t
+t
+p
+T
+T
+T
+t
+t
+t
+t
+"}
+(9,1,1) = {"
+t
+t
+t
+t
+z
+q
+t
+t
+t
+a
+"}
+(10,1,1) = {"
+a
+t
+t
+t
+t
+t
+t
+t
+a
+a
+"}

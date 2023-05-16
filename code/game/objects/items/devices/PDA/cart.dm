@@ -312,7 +312,7 @@ var/list/civilian_cartridges = list(
 		var/list/sensors = list()
 		var/obj/machinery/power/sensor/MS = null
 
-		for(var/obj/machinery/power/sensor/S in machines)
+		for(var/obj/machinery/power/sensor/S in GLOB.machines)
 			sensors.Add(list(list("name_tag" = S.name_tag)))
 			if(S.name_tag == selected_sensor)
 				MS = S
@@ -539,13 +539,10 @@ var/list/civilian_cartridges = list(
 /obj/item/cartridge/Topic(href, href_list)
 	..()
 
-	if (!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
+	if (!CHECK_MOBILITY(usr, MOBILITY_CAN_UI) || !in_range(loc, usr))
 		usr.unset_machine()
 		usr << browse(null, "window=pda")
 		return
-
-
-
 
 	switch(href_list["choice"])
 		if("Medical Records")

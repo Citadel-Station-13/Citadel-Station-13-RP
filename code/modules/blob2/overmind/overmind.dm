@@ -61,13 +61,14 @@ var/list/overminds = list()
 	overminds -= src
 	return ..()
 
-/mob/observer/blob/Stat()
-	..()
-	if(statpanel("Status"))
+/mob/observer/blob/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
 		if(blob_core)
-			stat(null, "Core Health: [blob_core.integrity]")
-		stat(null, "Power Stored: [blob_points]/[max_blob_points]")
-		stat(null, "Total Blobs: [blobs.len]")
+			STATPANEL_DATA_LINE("Core Health: [blob_core.integrity]")
+		STATPANEL_DATA_LINE("Power Stored: [blob_points]/[max_blob_points]")
+		STATPANEL_DATA_LINE("Total Blobs: [blobs.len]")
 
 /mob/observer/blob/Move(NewLoc, Dir = 0)
 	if(placed)
@@ -85,9 +86,12 @@ var/list/overminds = list()
 		return TRUE
 
 /mob/observer/blob/proc/add_points(points)
-	blob_points = between(0, blob_points + points, max_blob_points)
+	blob_points = clamp( blob_points + points, 0,  max_blob_points)
 
-/mob/observer/blob/Life()
+/mob/observer/blob/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(ai_controlled && (!client || auto_pilot))
 		if(prob(blob_type.ai_aggressiveness))
 			auto_attack()

@@ -1,7 +1,7 @@
 import { createSearch, decodeHtmlEntities } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Input, Section, Table, Tabs, NoticeBox } from '../components';
+import { Box, Button, Flex, Input, Section, Table, Tabs, NoticeBox, LabeledList } from '../components';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 
@@ -9,6 +9,9 @@ const MAX_SEARCH_RESULTS = 25;
 
 export const Uplink = (props, context) => {
   const { data } = useBackend(context);
+
+  const [screen, setScreen] = useLocalState(context, 'screen', 0);
+
   const { telecrystals } = data;
   return (
     <Window
@@ -17,18 +20,144 @@ export const Uplink = (props, context) => {
       theme="syndicate"
       resizable>
       <Window.Content scrollable>
-        <GenericUplink
-          currencyAmount={telecrystals}
-          currencySymbol="TC" />
+        <UplinkHeader screen={screen} setScreen={setScreen} />
+        {screen === 0 && (
+          <GenericUplink
+            currencyAmount={telecrystals}
+            currencySymbol="TC" />
+        ) || screen === 1 && (
+          <ExploitableInformation />
+        ) || (
+          <Section color="bad">
+            Error
+          </Section>
+        )}
       </Window.Content>
     </Window>
+  );
+};
+
+const UplinkHeader = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    screen,
+    setScreen,
+  } = props;
+
+  const {
+    discount_name,
+    discount_amount,
+    offer_expiry,
+  } = data;
+
+  return (
+    <Section>
+      <Tabs style={{
+        "border-bottom": "none",
+        "margin-bottom": "0",
+      }}>
+        <Tabs.Tab
+          selected={screen === 0}
+          onClick={() => setScreen(0)}>
+          Request Items
+        </Tabs.Tab>
+        <Tabs.Tab
+          selected={screen === 1}
+          onClick={() => setScreen(1)}>
+          Exploitable Information
+        </Tabs.Tab>
+      </Tabs>
+      <Section title="Item Discount" level={2}>
+        {discount_amount < 100 && (
+          <Box>
+            {discount_name} - {discount_amount}% off.
+            Offer expires at: {offer_expiry}
+          </Box>
+        ) || (
+          <Box>
+            No items currently discounted.
+          </Box>
+        )}
+      </Section>
+    </Section>
+  );
+};
+
+const ExploitableInformation = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    exploit,
+    locked_records,
+  } = data;
+
+  return (
+    <Section title="Exploitable Information" buttons={exploit && (
+      <Button
+        icon="undo"
+        content="Back"
+        onClick={() => act("view_exploits", { id: 0 })} />
+    )}>
+      {exploit && (
+        <Box>
+          <LabeledList>
+            <LabeledList.Item label="Name">
+              {exploit.name}
+            </LabeledList.Item>
+            <LabeledList.Item label="Sex">
+              {exploit.sex}
+            </LabeledList.Item>
+            <LabeledList.Item label="Species">
+              {exploit.species}
+            </LabeledList.Item>
+            <LabeledList.Item label="Age">
+              {exploit.age}
+            </LabeledList.Item>
+            <LabeledList.Item label="Rank">
+              {exploit.rank}
+            </LabeledList.Item>
+            <LabeledList.Item label="Home System">
+              {exploit.home_system}
+            </LabeledList.Item>
+            <LabeledList.Item label="Citizenship">
+              {exploit.citizenship}
+            </LabeledList.Item>
+            <LabeledList.Item label="Faction">
+              {exploit.faction}
+            </LabeledList.Item>
+            <LabeledList.Item label="Religion">
+              {exploit.religion}
+            </LabeledList.Item>
+            <LabeledList.Item label="Fingerprint">
+              {exploit.fingerprint}
+            </LabeledList.Item>
+            <LabeledList.Item label="Other Affiliations">
+              {exploit.antagfaction}
+            </LabeledList.Item>
+            <LabeledList.Divider />
+            <LabeledList.Item>Acquired Information</LabeledList.Item>
+            <LabeledList.Item label="Notes">
+              {exploit.nanoui_exploit_record.split("<br>").map(m => <Box key={m}>{m}</Box>)}
+            </LabeledList.Item>
+          </LabeledList>
+        </Box>
+      ) || locked_records.map(record => (
+        <Button
+          key={record.id}
+          icon="eye"
+          fluid
+          content={record.name}
+          onClick={() => act("view_exploits", { id: record.id })} />
+      ))}
+    </Section>
   );
 };
 
 export const GenericUplink = (props, context) => {
   const {
     currencyAmount = 0,
-    currencySymbol = 'cr',
+    currencySymbol = '₮',
   } = props;
   const { act, data } = useBackend(context);
   const {
@@ -165,7 +294,7 @@ const ItemList = (props, context) => {
                 onmouseover={() => setHoveredItem(item)}
                 onmouseout={() => setHoveredItem({})}
                 onClick={() => act('buy', {
-                  name: item.name,
+                  ref: item.ref,
                 })} />
             </Table.Cell>
           </Table.Row>
@@ -185,7 +314,7 @@ const ItemList = (props, context) => {
           onmouseover={() => setHoveredItem(item)}
           onmouseout={() => setHoveredItem({})}
           onClick={() => act('buy', {
-            name: item.name,
+            ref: item.ref,
           })} />
       )}>
       {decodeHtmlEntities(item.desc)}

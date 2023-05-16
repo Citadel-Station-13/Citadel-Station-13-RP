@@ -1,4 +1,4 @@
-#define waypoint_sector(waypoint) map_sectors["[waypoint.z]"]
+#define waypoint_sector(waypoint) get_overmap_sector(get_z(waypoint))
 
 /datum/shuttle/autodock/overmap
 	warmup_time = 10
@@ -9,8 +9,6 @@
 	var/obj/effect/overmap/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
-	var/skill_needed = SKILL_BASIC
-	var/operator_skill = SKILL_BASIC
 
 /datum/shuttle/autodock/overmap/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
@@ -42,7 +40,7 @@
 	if(moving_status == SHUTTLE_INTRANSIT)
 		return FALSE //already going somewhere, current_location may be an intransit location instead of in a sector
 	var/our_sector = waypoint_sector(current_location)
-	if(!our_sector && myship?.landmark && next_location == myship.landmark)
+	if(myship?.landmark && next_location == myship.landmark)
 		return TRUE //We're not on the overmap yet (admin spawned probably), and we're trying to hook up with our openspace sector
 	return get_dist(our_sector, waypoint_sector(next_location)) <= range
 
@@ -51,18 +49,6 @@
 
 /datum/shuttle/autodock/overmap/can_force()
 	return ..() && can_go()
-
-/datum/shuttle/autodock/overmap/get_travel_time()
-	var/distance_mod = get_dist(waypoint_sector(current_location),waypoint_sector(next_location))
-	var/skill_mod = 0.2*(skill_needed - operator_skill)
-	return move_time * (1 + distance_mod + skill_mod)
-
-/datum/shuttle/autodock/overmap/process_launch()
-	if(prob(10*max(0, skill_needed - operator_skill)))
-		var/places = get_possible_destinations()
-		var/place = pick(places)
-		set_destination(places[place])
-	..()
 
 /datum/shuttle/autodock/overmap/proc/set_destination(var/obj/effect/shuttle_landmark/A)
 	if(A != current_location)
@@ -133,12 +119,22 @@
 	var/icon_full = "fuel_port_full"
 	var/opened = 0
 	var/parent_shuttle
+	var/base_tank = /obj/item/tank/phoron
 
 /obj/structure/fuel_port/Initialize(mapload)
 	. = ..()
-	new /obj/item/tank/phoron(src)
+	if(base_tank)
+		new base_tank(src)
 
-/obj/structure/fuel_port/attack_hand(mob/user as mob)
+/obj/structure/fuel_port/heavy
+	base_tank = /obj/item/tank/phoron/pressurized
+
+/obj/structure/fuel_port/empty
+	base_tank = null	//oops, no gas!
+	opened = 1	//shows open so you can diagnose 'oops, no gas' easily
+	icon_state = "fuel_port_empty"	//set the default state just to be safe
+
+/obj/structure/fuel_port/attack_hand(mob/user, list/params)
 	if(!opened)
 		to_chat(user, "<spawn class='notice'>The door is secured tightly. You'll need a crowbar to open it.")
 		return
@@ -171,7 +167,9 @@
 			to_chat(user, "<spawn class='warning'>\The [src] door is still closed!")
 			return
 		if(contents.len == 0)
-			user.unEquip(W, src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+			to_chat(user, SPAN_WARNING("You install [W] in [src]."))
 	update_icon()
 
 // Walls hide stuff inside them, but we want to be visible.

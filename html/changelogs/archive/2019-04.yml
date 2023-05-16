@@ -1,0 +1,42 @@
+2019-04-01:
+  Atermonera:
+  - bugfix: Stairs have been straightened and now connect to both the heavens and
+      hells, formerly just the hells.
+  Buffalowing:
+  - bugfix: Fixed books so they don't display broken wiki URLs
+  Mechoid:
+  - bugfix: Slimes now respect slime colors as their faction when dealing with other
+      slimes.
+  Novacat:
+  - tweak: All emergency tanks now spawn at full capacity.
+2019-04-06:
+  Buffalowing:
+  - bugfix: Fixed an issue that prevented Terminus from being spoken.
+  - bugfix: Fixed an issue that caused silicate to make windows entirely transparent.
+  - bugfix: Synthetics now have a power cell meter instead of hunger icons.
+  - tweak: Sythetics can now walk in space for a brief amount of time without dying
+      immediately.
+  - tweak: Synthetics are no longer affected by pressure. Because they are synthetic.
+  - rscadd: Synthetics are now vulnerable to EMP blasts, and will react similarly
+      to regular silicons.
+  - bugfix: Fixed an issue that caused Synthetic eyes to be damaged by phoron.
+  - bugfix: Fixed universal translators displaying gibberish.
+  - bugfix: Fixed a bug that caused APC frames to generate infinite metal.
+2019-04-11:
+  Buffalowing:
+  - rscadd: Slime people are now more defined in the codebase.
+  - rscadd: Added a new title screen.
+  - bugfix: Slime people will no longer suffer from a bug that permanently wounds
+      them via removing large embedded objects.
+  - tweak: Slime people will now instead be gravely wounded by objects that would've
+      otherwise embedded into them.
+2019-04-19:
+  Buffalowing:
+  - rscadd: Human based bodies are no longer male only; women will have more feminine
+      shapes than men, etc.
+2019-04-21:
+  Buffalowing:
+  - tweak: Lizards and solargrubs can now be held and interacted with similar to mice.
+  - tweak: Neck surgery is now slightly less deadly.
+  - bugfix: .45 pistols can now be stored in jackets that are capable of holding energy
+      guns.

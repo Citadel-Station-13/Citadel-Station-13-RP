@@ -19,16 +19,16 @@
 	if (!hide_on_roll)
 		on_rolled["down"] = icon_state
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-	if (has_suit)	//if we are part of a suit
+/obj/item/clothing/accessory/storage/attack_hand(mob/user, list/params)
+	if (accessory_host)	//if we are part of a suit
 		hold.open(user)
 		return
 
 	if (hold.handle_attack_hand(user))	//otherwise interact as a regular storage item
 		..(user)
 
-/obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
-	if (has_suit)
+/obj/item/clothing/accessory/storage/OnMouseDropLegacy(obj/over_object as obj)
+	if (accessory_host)
 		return
 
 	if (hold.handle_mousedrop(usr, over_object))
@@ -41,7 +41,10 @@
 	hold.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	to_chat(user, "<span class='notice'>You empty [src].</span>")
 	var/turf/T = get_turf(src)
 	hold.hide_from(usr)
@@ -94,6 +97,11 @@
 	icon_state = "unathiharness2"
 	slots = 2
 
+/obj/item/clothing/accessory/storage/voyager
+	name = "voyager harness"
+	desc = "A leather harness adorned with soft and hard-case pouches, designed for expeditions."
+	icon_state = "explorer"
+
 //Pilot
 /obj/item/clothing/accessory/storage/webbing/pilot1
 	name = "pilot harness"
@@ -105,7 +113,7 @@
 	desc = "Sturdy mess of black synthcotton belts and buckles."
 	icon_state = "pilot_webbing2"
 	sprite_sheets = list(
-			"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 			)
 
 /obj/item/clothing/accessory/storage/knifeharness/Initialize(mapload)
@@ -117,3 +125,27 @@
 
 	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
 	new /obj/item/material/knife/machete/hatchet/unathiknife(hold)
+
+/obj/item/clothing/accessory/storage/laconic
+	name = "laconic field pouch system"
+	desc = "This lightweight webbing system supports a hardened leather case designed to sit comfortably on the wearer's hip."
+	icon_state = "laconic"
+	slot = ACCESSORY_SLOT_UTILITY
+	slots = 5
+
+//Ashlander Potion Bandolier
+/obj/item/clothing/accessory/storage/ashlander_alchemy
+	name = "hide bandolier"
+	desc = "A sturdy bandolier meant to keep the tools or products of alchemy held securely to the wearer's body."
+	icon_state = "bandolier_ash"
+	slots = 5
+
+/obj/item/clothing/accessory/storage/ashlander_alchemy/Initialize(mapload)
+	. = ..()
+	hold.can_hold = list(
+		/obj/item/reagent_containers/glass/stone,\
+		/obj/item/stack/medical/poultice_brute,\
+		/obj/item/stack/medical/poultice_burn,\
+		/obj/item/grenade/explosive/ashlander,\
+		/obj/item/bitterash,\
+		/obj/item/flame/lighter)

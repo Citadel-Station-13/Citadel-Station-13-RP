@@ -1,13 +1,13 @@
 //copy pasta of the space piano, don't hurt me -Pete
 /obj/item/instrument
 	name = "generic instrument"
-	force = 10
+	damage_force = 10
 //	max_integrity = 100
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
 		)
 	var/datum/song/handheld/song
 	var/list/allowed_instrument_ids
@@ -51,6 +51,9 @@
 	return (BRUTELOSS)
 
 /obj/item/instrument/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return TRUE
@@ -125,7 +128,7 @@
 	desc = "Makes all your shredding needs possible."
 	icon_state = "eguitar"
 	item_state = "eguitar"
-	force = 12
+	damage_force = 12
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	allowed_instrument_ids = "eguitar"
@@ -156,7 +159,7 @@
 	desc = "Things are about to get spooky!"
 	icon_state = "trumpet"
 	item_state = "trombone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","trumpeted","mourned","dooted","spooked")
 
 /*
@@ -165,9 +168,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trumpet/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound (loc, 'sound/instruments/trombone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trumpet/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/saxophone
 	name = "saxophone"
@@ -181,7 +184,7 @@
 	desc = "This spooky sound will be sure to leave mortals in bones."
 	icon_state = "saxophone"
 	item_state = "saxophone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","saxxed","mourned","dooted","spooked")
 
 /*
@@ -190,9 +193,9 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/saxophone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/saxophone/En4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/saxophone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/saxophone/En4.mid', 100,1,-1)
 
 /obj/item/instrument/trombone
 	name = "trombone"
@@ -206,7 +209,7 @@
 	desc = "A skeleton's favorite instrument. Apply directly on the mortals."
 	icon_state = "trombone"
 	item_state = "trombone"
-	force = 0
+	damage_force = 0
 	attack_verb = list("played","jazzed","tromboned","mourned","dooted","spooked")
 
 /*
@@ -215,14 +218,14 @@
 	AddComponent(/datum/component/spooky)
 */
 
-/obj/item/instrument/trombone/spectral/attack(mob/living/carbon/C, mob/user)
-	playsound(loc, 'sound/instruments/trombone/Cn4.mid', 100,1,-1)
-	..()
+/obj/item/instrument/trombone/spectral/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	playsound(src, 'sound/runtime/instruments/trombone/Cn4.mid', 100,1,-1)
 
 /obj/item/instrument/recorder
 	name = "recorder"
 	desc = "Just like in school, playing ability and all."
-	force = 5
+	damage_force = 5
 	icon_state = "recorder"
 	item_state = "recorder"
 	allowed_instrument_ids = "recorder"
@@ -234,7 +237,7 @@
 	item_state = "harmonica"
 	allowed_instrument_ids = "harmonica"
 //	slot_flags = ITEM_SLOT_MASK
-	force = 5
+	damage_force = 5
 	w_class = WEIGHT_CLASS_SMALL
 //	actions_types = list(/datum/action/item_action/instrument)
 
@@ -248,7 +251,7 @@
 	. = ..()
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 
-/obj/item/instrument/harmonica/dropped(mob/M)
+/obj/item/instrument/harmonica/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_SAY)
 */
@@ -259,13 +262,13 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
 	attack_verb = list("beautifully honks")
-	allowed_instrument_ids = "bikehorn"
+	allowed_instrument_ids = list("honk", "bikehorn")
 	w_class = WEIGHT_CLASS_TINY
-	force = 0
+	damage_force = 0
 	throw_speed = 3
 	throw_range = 15
 	hitsound = 'sound/items/bikehorn.ogg'

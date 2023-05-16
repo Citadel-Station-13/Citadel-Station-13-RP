@@ -21,7 +21,7 @@ If d1 = 0 and d2 = dir, it's a O-X cable, getting from the center of the tile to
 If d1 = dir1 and d2 = dir2, it's a full X-X cable, getting from dir1 to dir2
 By design, d1 is the smallest direction and d2 is the highest
 */
-var/list/possible_cable_coil_colours = list(
+GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		"White" = COLOR_WHITE,
 		"Silver" = COLOR_SILVER,
 		"Gray" = COLOR_GRAY,
@@ -41,31 +41,70 @@ var/list/possible_cable_coil_colours = list(
 		"Orange" = COLOR_ORANGE,
 		"Beige" = COLOR_BEIGE,
 		"Brown" = COLOR_BROWN
-	)
+	))
 
 /obj/structure/cable
-	level = 1
-	anchored =1
-	var/datum/powernet/powernet
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
 	icon = 'icons/obj/power_cond_white.dmi'
 	icon_state = "0-1"
+	atom_colouration_system = FALSE
+
+	plane = TURF_PLANE
+	layer = EXPOSED_WIRE_LAYER
+	color = COLOR_RED
+
+	level = 1
+	anchored =1
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+
 	var/d1 = 0
 	var/d2 = 1
-	plane = PLATING_PLANE
-	layer = WIRES_LAYER
-	color = COLOR_RED
+	var/datum/powernet/powernet
 	var/obj/machinery/power/breakerbox/breaker_box
 
-/obj/structure/cable/drain_power(var/drain_check, var/surge, var/amount = 0)
-	if(drain_check)
-		return 1
-
+/obj/structure/cable/drain_energy(datum/actor, amount, flags)
 	if(!powernet)
 		return 0
+	return powernet.drain_energy_handler(actor, amount, flags)
 
-	return powernet.draw_power(amount)
+/obj/structure/cable/can_drain_energy(datum/actor, flags)
+	return TRUE
+
+/obj/structure/cable/Initialize(mapload, _color, _d1, _d2, auto_merge)
+	. = ..()
+
+	if(_color)
+		add_atom_colour(GLOB.possible_cable_coil_colours[_color] || COLOR_RED, FIXED_COLOUR_PRIORITY)
+
+	if(_d1 || _d2)
+		d1 = _d1
+		d2 = _d2
+	else
+		// ensure d1 & d2 reflect the icon_state for entering and exiting cable
+		var/dash = findtext(icon_state, "-")
+		d1 = text2num( copytext( icon_state, 1, dash ) )
+		d2 = text2num( copytext( icon_state, dash+1 ) )
+
+	var/turf/T = src.loc // hide if turf is not intact
+	if(level==1 && T)
+		hide(!T.is_plating())
+
+	cable_list += src //add it to the global cable list
+	if(auto_merge)
+		auto_merge()
+
+// cable refactor when
+/obj/structure/cable/proc/auto_merge()
+	mergeConnectedNetworks(d1) //merge the powernets...
+	mergeConnectedNetworks(d2) //...in the two new cable directions
+	mergeConnectedNetworksOnTurf()
+
+	if(d1 & (d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
+		mergeDiagonalsNetworks(d1)
+
+	if(d2 & (d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
+		mergeDiagonalsNetworks(d2)
 
 /obj/structure/cable/yellow
 	color = COLOR_YELLOW
@@ -88,23 +127,6 @@ var/list/possible_cable_coil_colours = list(
 /obj/structure/cable/white
 	color = COLOR_WHITE
 
-/obj/structure/cable/Initialize(mapload)
-	. = ..()
-
-	// ensure d1 & d2 reflect the icon_state for entering and exiting cable
-
-	var/dash = findtext(icon_state, "-")
-
-	d1 = text2num( copytext( icon_state, 1, dash ) )
-
-	d2 = text2num( copytext( icon_state, dash+1 ) )
-
-	var/turf/T = src.loc			// hide if turf is not intact
-	if(level==1)
-		hide(!T.is_plating())
-	cable_list += src //add it to the global cable list
-
-
 /obj/structure/cable/Destroy()					// called when a cable is deleted
 	if(powernet)
 		cut_cable_from_powernet()				// update the powernets
@@ -113,15 +135,13 @@ var/list/possible_cable_coil_colours = list(
 
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
-	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+	. = ..()
+	if(user.client?.inquisitive_ghost)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
-	return
-
 
 // Rotating cables requires d1 and d2 to be rotated
 /obj/structure/cable/setDir(new_dir)
@@ -233,7 +253,7 @@ var/list/possible_cable_coil_colours = list(
 	else if(istype(W, /obj/item/multitool))
 
 		if(powernet && (powernet.avail > 0))		// is it powered?
-			to_chat(user, "<span class='warning'>[powernet.avail]W in power network.</span>")
+			to_chat(user, "<span class='warning'>[render_power(powernet.avail, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)] in power network.</span>")
 
 		else
 			to_chat(user, "<span class='warning'>The cable is not powered.</span>")
@@ -241,7 +261,7 @@ var/list/possible_cable_coil_colours = list(
 		shock(user, 5, 0.2)
 
 	else
-		if(!(W.flags & NOCONDUCT))
+		if(!(W.atom_flags & NOCONDUCT))
 			shock(user, 50, 0.7)
 
 	src.add_fingerprint(user)
@@ -254,12 +274,12 @@ var/list/possible_cable_coil_colours = list(
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(usr.stunned)
+		if(!CHECK_MOBILITY(user, MOBILITY_CAN_USE))
 			return 1
 	return 0
 
 //explosion handling
-/obj/structure/cable/ex_act(severity)
+/obj/structure/cable/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -274,7 +294,7 @@ var/list/possible_cable_coil_colours = list(
 				qdel(src)
 	return
 
-obj/structure/cable/proc/cableColor(var/colorC)
+/obj/structure/cable/proc/cableColor(colorC)
 	var/color_n = "#DD0000"
 	if(colorC)
 		color_n = colorC
@@ -332,7 +352,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 // merge with the powernets of power objects in the given direction
 /obj/structure/cable/proc/mergeConnectedNetworks(var/direction)
 
-	var/fdir = direction ? GLOB.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
+	var/fdir = direction ? global.reverse_dir[direction] : 0 //flip the direction, to match with the source position on its turf
 
 	if(!(d1 == direction || d2 == direction)) //if the cable is not pointed in this direction, do nothing
 		return
@@ -412,7 +432,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	for(var/cable_dir in list(d1, d2))
 		if(cable_dir == 0)
 			continue
-		var/reverse = GLOB.reverse_dir[cable_dir]
+		var/reverse = global.reverse_dir[cable_dir]
 		T = get_zstep(src, cable_dir)
 		if(T)
 			for(var/obj/structure/cable/C in T)
@@ -509,11 +529,11 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	max_amount = MAXCOIL
 	color = COLOR_RED
 	desc = "A coil of power cable."
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
@@ -530,7 +550,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	charge_costs = list(1)
 
 /obj/item/stack/cable_coil/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(locate(/obj/item/stool) in user.loc)
 		user.visible_message("<span class='suicide'>[user] is making a noose with the [src.name]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	else
@@ -551,21 +571,21 @@ obj/structure/cable/proc/cableColor(var/colorC)
 ///////////////////////////////////
 
 //you can use wires to heal robotics
-/obj/item/stack/cable_coil/attack(var/atom/A, var/mob/living/user, var/def_zone)
-	if(ishuman(A) && user.a_intent == INTENT_HELP)
-		var/mob/living/carbon/human/H = A
+/obj/item/stack/cable_coil/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(ishuman(target) && user.a_intent == INTENT_HELP)
+		var/mob/living/carbon/human/H = target
 		var/obj/item/organ/external/S = H.organs_by_name[user.zone_sel.selecting]
 
 		if(!S || S.robotic < ORGAN_ROBOT || S.open == 3)
-			return ..()
+			to_chat(user, SPAN_WARNING("That isn't a robotic limb."))
+			return
 
-		var/use_amt = min(src.amount, CEILING(S.burn_dam/5, 1), 5)
+		var/use_amt = min(src.amount, CEILING(S.burn_dam / 20, 1), 5)
 		if(can_use(use_amt))
 			if(S.robo_repair(5*use_amt, BURN, "some damaged wiring", src, user))
-				src.use(use_amt)
-
-	else
-		return ..()
+				use(use_amt)
+		return
+	return ..()
 
 /obj/item/stack/cable_coil/update_icon()
 	if (!color)
@@ -584,9 +604,9 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	if(!selected_color)
 		return
 
-	var/final_color = possible_cable_coil_colours[selected_color]
+	var/final_color = GLOB.possible_cable_coil_colours[selected_color]
 	if(!final_color)
-		final_color = possible_cable_coil_colours["Red"]
+		final_color = GLOB.possible_cable_coil_colours["Red"]
 		selected_color = "red"
 	color = final_color
 	to_chat(user, "<span class='notice'>You change \the [src]'s color to [lowertext(selected_color)].</span>")
@@ -607,14 +627,12 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	else
 		. += "A coil of power cable. There are [get_amount()] lengths of cable in the coil."
 
-
-
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
 	set category = "Object"
 	var/mob/M = usr
 
-	if(ishuman(M) && !M.restrained() && !M.stat && !M.paralysis && ! M.stunned)
+	if(CHECK_MOBILITY(M, MOBILITY_CAN_USE))
 		if(!istype(usr.loc,/turf)) return
 		if(src.amount <= 14)
 			to_chat(usr, "<span class='warning'>You need at least 15 lengths to make restraints!</span>")
@@ -630,7 +648,7 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	set name = "Change Colour"
 	set category = "Object"
 
-	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in possible_cable_coil_colours
+	var/selected_type = input("Pick new colour.", "Cable Colour", null, null) as null|anything in GLOB.possible_cable_coil_colours
 	set_cable_color(selected_type, usr)
 
 // Items usable on a cable coil :
@@ -642,14 +660,14 @@ obj/structure/cable/proc/cableColor(var/colorC)
 		return
 	..()
 
-/obj/item/stack/cable_coil/use()
+/obj/item/stack/cable_coil/use(used)
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 /obj/item/stack/cable_coil/add()
 	. = ..()
-	update_icon()
+	update_appearance()
 	return
 
 ///////////////////////////////////////////////
@@ -942,24 +960,25 @@ obj/structure/cable/proc/cableColor(var/colorC)
 	amount = MAXCOIL
 	max_amount = MAXCOIL
 	color = COLOR_SILVER
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
-	matter = list(DEFAULT_WALL_MATERIAL = 50, "glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 	slot_flags = SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stacktype = null
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/stack/cable_coil/alien/Initialize(mapload, new_amount, merge, param_color)
 	. = ..()
 	if(embed_chance == -1)		//From /obj/item, don't want to do what the normal cable_coil does
 		if(sharp)
-			embed_chance = force/w_class
+			embed_chance = damage_force/w_class
 		else
-			embed_chance = force/(w_class*3)
+			embed_chance = damage_force/(w_class*3)
 	update_icon()
+	remove_obj_verb(src, /obj/item/stack/cable_coil/verb/make_restraint)
 
 /obj/item/stack/cable_coil/alien/update_icon()
 	icon_state = initial(icon_state)
@@ -978,14 +997,14 @@ obj/structure/cable/proc/cableColor(var/colorC)
 
 
 
-/obj/item/stack/cable_coil/alien/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
+/obj/item/stack/cable_coil/alien/attack_hand(mob/user, list/params)
+	if (user.get_inactive_held_item() == src)
 		var/N = input("How many units of wire do you want to take from [src]?  You can only take up to [amount] at a time.", "Split stacks", 1) as num|null
 		if(N && N <= amount)
 			var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
 			CC.amount = N
 			CC.update_icon()
-			to_chat(user,"<font color='blue'>You take [N] units of wire from the [src].</font>")
+			to_chat(user,"<font color=#4F49AF>You take [N] units of wire from the [src].</font>")
 			if (CC)
 				user.put_in_hands(CC)
 				src.add_fingerprint(user)

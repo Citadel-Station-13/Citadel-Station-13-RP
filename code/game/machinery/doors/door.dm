@@ -1,6 +1,5 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-#define DOOR_REPAIR_AMOUNT 50	//amount of health regained per stack amount used
-
+///amount of health regained per stack amount used
+#define DOOR_REPAIR_AMOUNT 50
 /obj/machinery/door
 	name = "Door"
 	desc = "It opens and closes."
@@ -9,15 +8,18 @@
 	anchored = 1
 	opacity = 1
 	density = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
+	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: rad_insulation_open/closed
+	pass_flags_self = NONE
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
 	var/visible = 1
-	var/p_open = 0
-	var/operating = 0
-	var/autoclose = 0
+	var/p_open = 0//[bool]is the door open?
+	var/operating = 0//[bool]Is the door opening or closing?
+	var/autoclose = 0//[bool]should the door close automaticly
 	var/glass = 0
 	var/normalspeed = 1
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
@@ -71,7 +73,7 @@
 	health = maxhealth
 	update_icon()
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/machinery/door/Destroy()
 	density = FALSE
@@ -108,8 +110,8 @@
 		M.last_bumped = world.time
 		if(M.restrained() && !check_access(null))
 			return
-		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))	//VOREStation Edit: Make wild mice
-			return																		//VOREStation Edit: unable to open doors
+		else if(istype(M, /mob/living/simple_mob/animal/passive/mouse) && !(M.ckey))
+			return
 		else
 			bumpopen(M)
 
@@ -138,14 +140,16 @@
 				do_animate("deny")
 
 /obj/machinery/door/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
-/obj/machinery/door/CanZASPass(turf/T, is_zone)
-	if(is_zone)
-		return block_air_zones ? ATMOS_PASS_NO : ATMOS_PASS_YES
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
 	return ..()
+
+/obj/machinery/door/CanAtmosPass(turf/T, d)
+	if(density)
+		return ATMOS_PASS_AIR_BLOCKED
+	if(block_air_zones)
+		return ATMOS_PASS_ZONE_BLOCKED
+	return ATMOS_PASS_NOT_BLOCKED
 
 /obj/machinery/door/proc/bumpopen(mob/user as mob)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/retrigger_delay, airflow_delay)
@@ -155,12 +159,14 @@
 		return
 	src.add_fingerprint(user)
 	if(density)
-		if(allowed(user))
+		if(istype(user, /mob/living/simple_mob) && !(user.ckey))
+			do_animate("smdeny")
+		else if(allowed(user))
 			open()
 		else
 			do_animate("deny")
 
-/obj/machinery/door/bullet_act(var/obj/item/projectile/Proj)
+/obj/machinery/door/bullet_act(var/obj/projectile/Proj)
 	..()
 
 	var/damage = Proj.get_structure_damage()
@@ -175,7 +181,7 @@
 					new /obj/item/stack/material/steel(src.loc, 2)
 					new /obj/item/stack/rods(src.loc, 3)
 				if(BURN)
-					new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+					new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 			qdel(src)
 
 	if(damage)
@@ -184,23 +190,17 @@
 
 
 
-/obj/machinery/door/hitby(AM as mob|obj, var/speed=5)
-
-	..()
+/obj/machinery/door/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	visible_message("<span class='danger'>[src.name] was hit by [AM].</span>")
-	var/tforce = 0
-	if(ismob(AM))
-		tforce = 15 * (speed/5)
-	else
-		tforce = AM:throwforce * (speed/5)
-	playsound(src.loc, hitsound, 100, 1)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
+	playsound(src, hitsound, 100, 1)
 	take_damage(tforce)
-	return
 
 /obj/machinery/door/attack_ai(mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/door/attack_hand(mob/user as mob)
+/obj/machinery/door/attack_hand(mob/user, list/params)
 	return src.attackby(user, user)
 
 /obj/machinery/door/attack_tk(mob/user as mob)
@@ -209,13 +209,13 @@
 	..()
 
 /obj/machinery/door/attackby(obj/item/I as obj, mob/user as mob)
-	src.add_fingerprint(user)
+	src.add_fingerprint(user, 0, I)
 
 	if(istype(I))
-		if(attackby_vr(I, user))	//VOREStation begin: Fireproofing
-			return					//VOREStation begin: Fireproofing
+		if(attackby_vr(I, user))
+			return
 		if(istype(I, /obj/item/stack/material) && I.get_material_name() == src.get_material_name())
-			if(stat & BROKEN)
+			if(machine_stat & BROKEN)
 				to_chat(user, "<span class='notice'>It looks like \the [src] is pretty busted. It's going to need more than just patching up now.</span>")
 				return
 			if(health >= maxhealth)
@@ -255,8 +255,8 @@
 			var/obj/item/weldingtool/welder = I
 			if(welder.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You start to fix dents and weld \the [get_material_name()] into place.</span>")
-				playsound(src, welder.usesound, 50, 1)
-				if(do_after(user, (5 * repairing) * welder.toolspeed) && welder && welder.isOn())
+				playsound(src, welder.tool_sound, 50, 1)
+				if(do_after(user, (5 * repairing) * welder.tool_speed) && welder && welder.isOn())
 					to_chat(user, "<span class='notice'>You finish repairing the damage to \the [src].</span>")
 					health = between(health, health + repairing*DOOR_REPAIR_AMOUNT, maxhealth)
 					update_icon()
@@ -269,7 +269,7 @@
 			repairing_sheet.amount += repairing-1
 			repairing = 0
 			to_chat(user, "<span class='notice'>You remove \the [repairing_sheet].</span>")
-			playsound(src, I.usesound, 100, 1)
+			playsound(src, I.tool_sound, 100, 1)
 			return
 
 		//psa to whoever coded this, there are plenty of objects that need to call attack() on doors without bludgeoning them.
@@ -278,12 +278,12 @@
 			user.setClickCooldown(user.get_attack_speed(W))
 			if(W.damtype == BRUTE || W.damtype == BURN)
 				user.do_attack_animation(src)
-				if(W.force < min_force)
+				if(W.damage_force < min_force)
 					user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
 				else
 					user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
 					playsound(src.loc, hitsound, 100, 1)
-					take_damage(W.force)
+					take_damage(W.damage_force)
 			return
 
 	if(src.operating > 0 || isrobot(user))
@@ -339,7 +339,7 @@
 
 
 /obj/machinery/door/proc/set_broken()
-	stat |= BROKEN
+	machine_stat |= BROKEN
 	for (var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
 			O.show_message("[src.name] breaks!" )
@@ -354,7 +354,7 @@
 	..()
 
 
-/obj/machinery/door/ex_act(severity)
+/obj/machinery/door/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -374,7 +374,7 @@
 
 /obj/machinery/door/blob_act()
 	if(density) // If it's closed.
-		if(stat & BROKEN)
+		if(machine_stat & BROKEN)
 			spawn(0)
 				open(1)
 		else
@@ -385,9 +385,6 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
-
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -405,9 +402,12 @@
 			if(density)
 				flick("door_spark", src)
 		if("deny")
-			if(density && !(stat & (NOPOWER|BROKEN)))
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
 				flick("door_deny", src)
 				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
+		if("smdeny")
+			if(density && !(machine_stat & (NOPOWER|BROKEN)))
+				flick("door_deny", src)
 	return
 
 
@@ -427,6 +427,7 @@
 	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
+	rad_insulation = RAD_INSULATION_NONE
 	operating = 0
 
 	if(autoclose)
@@ -453,14 +454,21 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(1)	//caaaaarn!
+	rad_insulation = initial(rad_insulation)
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
-	var/obj/fire/fire = locate() in loc
+	var/atom/movable/fire/fire = locate() in loc
 	if(fire)
 		qdel(fire)
 
 	return 1
+
+/obj/machinery/door/proc/toggle_open(var/forced)
+	if(density)
+		open(forced)
+	else
+		close(forced)
 
 /obj/machinery/door/proc/requiresID()
 	return 1
@@ -471,14 +479,9 @@
 	return ..(M)
 
 /obj/machinery/door/update_nearby_tiles(need_rebuild)
-	if(!air_master)
-		return 0
-
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)
-		air_master.mark_for_update(turf)
-
-	return 1
+		turf.queue_zone_update()
 
 /obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
 	if(istype(source))
@@ -510,109 +513,3 @@
 
 	icon = 'icons/turf/stomach_vr.dmi'
 	icon_state = "fleshclosed"
-
-/turf/simulated/floor/proc/adjacent_fire_act_vr(turf/simulated/floor/adj_turf, datum/gas_mixture/adj_air, adj_temp, adj_volume)
-	for(var/obj/machinery/door/D in src) //makes doors next to fire affected by fire
-		D.fire_act(adj_air, adj_temp, adj_volume)
-
-/obj/machinery/door
-	var/reinforcing = 0	//vorestation addition
-
-/obj/machinery/door/firedoor
-	heat_proof = 1
-
-/obj/machinery/door/airlock/vault
-	heat_proof = 1
-
-/obj/machinery/door/airlock/hatch
-	heat_proof = 1
-
-/obj/machinery/door/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	var/maxtemperature = 1800 //same as a normal steel wall
-	var/destroytime = 20 //effectively gives an airlock 200HP between breaking and completely disintegrating
-	if(heat_proof)
-		maxtemperature = 6000 //same as a plasteel rwall
-		destroytime = 50 //fireproof airlocks need to take 500 damage after breaking before they're destroyed
-
-	if(exposed_temperature > maxtemperature)
-		var/burndamage = log(RAND_F(0.9, 1.1) * (exposed_temperature - maxtemperature))
-		if (burndamage && health <= 0) //once they break, start taking damage to destroy_hits
-			destroy_hits -= (burndamage / destroytime)
-			if (destroy_hits <= 0)
-				visible_message("<span class='danger'>\The [src.name] disintegrates!</span>")
-				new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
-				qdel(src)
-		take_damage(burndamage)
-
-	return ..()
-
-// Returns true only if one of the actions unique to reinforcing is done, otherwise false and continuing normal attackby
-/obj/machinery/door/proc/attackby_vr(obj/item/I as obj, mob/user as mob)
-	if(istype(I, /obj/item/stack/material) && I.get_material_name() == "plasteel")
-		if(heat_proof)
-			to_chat(user, "<span class='warning'>\The [src] is already reinforced.</span>")
-			return TRUE
-		if((stat & BROKEN) || (health < maxhealth))
-			to_chat(user, "<span class='notice'>It looks like \the [src] broken. Repair it before reinforcing it.</span>")
-			return TRUE
-		if(!density)
-			to_chat(user, "<span class='warning'>\The [src] must be closed before you can reinforce it.</span>")
-			return TRUE
-
-		var/amount_needed = 2
-
-		var/obj/item/stack/stack = I
-		var/amount_given = amount_needed - reinforcing
-		var/mats_given = stack.get_amount()
-		if(reinforcing && amount_given <= 0)
-			to_chat(user, "<span class='warning'>You must weld or remove \the plasteel from \the [src] before you can add anything else.</span>")
-		else
-			if(mats_given >= amount_given)
-				if(stack.use(amount_given))
-					reinforcing += amount_given
-			else
-				if(stack.use(mats_given))
-					reinforcing += mats_given
-					amount_given = mats_given
-		if(amount_given)
-			to_chat(user, "<span class='notice'>You fit [amount_given] [stack.singular_name]\s on \the [src].</span>")
-
-		return TRUE
-
-	if(reinforcing && istype(I, /obj/item/weldingtool))
-		if(!density)
-			to_chat(user, "<span class='warning'>\The [src] must be closed before you can reinforce it.</span>")
-			return TRUE
-
-		if(reinforcing < 2)
-			to_chat(user, "<span class='warning'>You will need more plasteel to reinforce \the [src].</span>")
-			return TRUE
-
-		var/obj/item/weldingtool/welder = I
-		if(welder.remove_fuel(0,user))
-			to_chat(user, "<span class='notice'>You start weld \the plasteel into place.</span>")
-			playsound(src, welder.usesound, 50, 1)
-			if(do_after(user, 10 * welder.toolspeed) && welder && welder.isOn())
-				to_chat(user, "<span class='notice'>You finish reinforcing \the [src].</span>")
-				heat_proof = 1
-				update_icon()
-				reinforcing = 0
-		return TRUE
-
-	if(reinforcing && I.is_crowbar())
-		var/obj/item/stack/material/plasteel/reinforcing_sheet = new /obj/item/stack/material/plasteel(src.loc)
-		reinforcing_sheet.amount = reinforcing
-		reinforcing = 0
-		to_chat(user, "<span class='notice'>You remove \the [reinforcing_sheet].</span>")
-		playsound(src, I.usesound, 100, 1)
-		return TRUE
-
-	return FALSE
-
-/obj/machinery/door/blast/regular/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	return // blast doors are immune to fire completely.
-
-/obj/machinery/door/blast/regular/
-	heat_proof = 1 //just so repairing them doesn't try to fireproof something that never takes fire damage
-
-

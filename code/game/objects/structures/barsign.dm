@@ -35,7 +35,7 @@
 
 	var/obj/item/card/id/card = I.GetID()
 	if(istype(card))
-		if(access_bar in card.GetAccess())
+		if(ACCESS_GENERAL_BAR in card.GetAccess())
 			var/sign_type = input(user, "What would you like to change the barsign to?") as null|anything in get_valid_states(0)
 			if(!sign_type)
 				return

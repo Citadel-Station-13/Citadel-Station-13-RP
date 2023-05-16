@@ -6,24 +6,6 @@
 			return number
 	return default
 
-/proc/sanitize_text(text, default="")
-	if(istext(text))
-		return text
-	return default
-
-/proc/sanitize_islist(value, default)
-	if(islist(value) && length(value))
-		return value
-	if(default)
-		return default
-
-/proc/sanitize_inlist(value, list/List, default)
-	if(value in List)
-		return value
-	if(default)
-		return default
-	if(List && List.len)
-		return pick(List)
 
 //more specialised stuff
 /proc/sanitize_gender(gender,neuter=0,plural=1, default="male")
@@ -77,10 +59,3 @@
 
 	return crunch + .
 
-/proc/sanitize_ooccolor(color)
-	if(length(color) != length_char(color))
-		CRASH("Invalid characters in color '[color]'")
-	var/list/HSL = rgb2hsl(hex2num(copytext(color, 2, 4)), hex2num(copytext(color, 4, 6)), hex2num(copytext(color, 6, 8)))
-	HSL[3] = min(HSL[3],0.4)
-	var/list/RGB = hsl2rgb(arglist(HSL))
-	return "#[num2hex(RGB[1],2)][num2hex(RGB[2],2)][num2hex(RGB[3],2)]"

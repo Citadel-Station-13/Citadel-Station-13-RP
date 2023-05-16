@@ -1,3 +1,11 @@
+/datum/category_item/catalogue/fauna/malf_drone
+	name = "Malfunctioning Combat Drone"
+	desc = "Many drones like this are fielded by Corporate naval fleets. \
+	Armed with heavy lasers, powerful combat shielding, armored frames, and \
+	self destruct cores, stumbling across one of these in the field is an almost \
+	guaranteed death sentence. When a combat drone malfunctions, it becomes twice \
+	as deadly, as it will attack anything it sees - even former allies."
+	value = CATALOGUER_REWARD_MEDIUM
 
 //malfunctioning combat drones
 /mob/living/simple_mob/hostile/malf_drone
@@ -22,12 +30,12 @@
 	a_intent = INTENT_HARM
 	ranged = 1
 	rapid = 1
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 	destroy_surroundings = 0
 	hovering = TRUE
 
-	armor = list(melee = 25, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 100, rad = 100)	// Some level of armor plating makes sense
+	armor_legacy_mob = list(melee = 25, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 100, rad = 100)	// Some level of armor plating makes sense
 	//Drones aren't affected by atmos.
 	min_oxy = 0
 	max_oxy = 0
@@ -54,7 +62,7 @@
 /mob/living/simple_mob/hostile/malf_drone/Initialize(mapload)
 	. = ..()
 	if(prob(5))
-		projectiletype = /obj/item/projectile/beam/pulse/drone
+		projectiletype = /obj/projectile/beam/pulse/drone
 		projectilesound = 'sound/weapons/pulse2.ogg'
 	ion_trail = new
 	ion_trail.set_up(src)
@@ -67,17 +75,17 @@
 	return TRUE
 
 //self repair systems have a chance to bring the drone back to life
-/mob/living/simple_mob/hostile/malf_drone/Life()
+/mob/living/simple_mob/hostile/malf_drone/Life(seconds, times_fired)
 
 	//emps and lots of damage can temporarily shut us down
 	if(disabled > 0)
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		icon_state = "drone_dead"
 		disabled--
 		wander = 0
 		speak_chance = 0
 		if(disabled <= 0)
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 			icon_state = "drone0"
 			wander = 1
 			speak_chance = 5
@@ -99,7 +107,7 @@
 	//sometimes our targetting sensors malfunction, and we attack anyone nearby
 	if(prob(disabled ? 0 : 1))
 		if(hostile)
-			src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
+			src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] retracts several targetting vanes, and dulls it's running lights.</font>")
 			hostile = 0
 		else
 			src.visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src] suddenly lights up, and additional targetting vanes slide into place.</font>")
@@ -123,9 +131,9 @@
 		exploding = 0
 		if(!disabled)
 			if(prob(50))
-				src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly shuts down!</font>")
 			else
-				src.visible_message("<font color='blue'>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
+				src.visible_message("<font color=#4F49AF>[icon2html(thing = src, target = world)] [src] suddenly lies still and quiet.</font>")
 			disabled = rand(150, 600)
 			walk(src,0)
 
@@ -140,7 +148,7 @@
 
 	if(!exploding && !disabled && prob(explode_chance))
 		exploding = 1
-		stat = UNCONSCIOUS
+		set_stat(UNCONSCIOUS)
 		wander = 1
 		walk(src,0)
 		spawn(rand(50,150))
@@ -272,10 +280,10 @@
 
 	..()
 
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 15
 
-/obj/item/projectile/beam/pulse/drone
+/obj/projectile/beam/pulse/drone
 	damage = 10
 
 // A slightly easier drone, for POIs.

@@ -1,0 +1,70 @@
+2021-08-03:
+  TheLordME:
+  - bugfix: Neomorphs get the resistances and weaknesses lore suggests
+  - refactor: Xenomorph Hybrids are now correctly named Neomorphs
+  zydras:
+  - rscadd: added trees and foliage to the department to help make the exploration
+      look unique
+  - rscadd: added a cyborg recharger to the department's crew lounge
+  - rscadd: added a few piece of fluff/lore papers in the pathfinder office
+  - rscadd: added a water cooler instead of a coffee dispenser to the crew lounge.
+      Go ask the barista for one, you coffee addict.
+  - rscdel: removed the chem analyzer from the crew lounge
+  - bugfix: fixed the wirings of the department being connected to an external line,
+      despite the department SMES
+2021-08-05:
+  TheLordME:
+  - code_imp: improved AI clickcode
+  - bugfix: AIs can now interact with tgui machinery
+2021-08-07:
+  silicons:
+  - rscadd: 'xenobio qol: alt click processor to auto intake, unwrenchable, etc.'
+2021-08-09:
+  CharlesWedge:
+  - rscadd: 'New Virgo 4 Desert Z-Level, 3 New POIs tweak: Former Desert World POIs
+      are reworked for use with dynamic lighting. V-4 Beach/Cave: Have been slightly
+      edited to connect to the new desert location. Also V-4 Beach Solars are now
+      actual solars rather then assemblies, they are also now fenced. tweak: External
+      Plating and external Tiles are now considered Outdoors for purposes of planet
+      lighting.'
+  - code_imp: All the code related to making a new linked Z level loaded
+2021-08-10:
+  Captain277:
+  - rscadd: Adds three sets of tan lines.
+  CharlesWedge:
+  - bugfix: positively actually makes the shield generators behave less stupidly.
+  Saisni:
+  - rscadd: Added new drinks with recipes and metaglass sets
+  - rscdel: Removed duplicate recipe
+  - imageadd: added some icons for drinks
+  - spellcheck: fixed a few typos in drink names and recipes ![SomeDrinks](https://user-images.githubusercontent.com/71731828/127749862-16fe8798-14e2-469e-af08-8b3c4bc7bf18.png)
+      [Bartending Fix.txt](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/files/6911717/Bartending.Fix.txt)
+  Zandario:
+  - rscadd: Alt-Click support for Storage
+  - rscadd: Alt-Click and Ctrl-Click to some vehicles
+2021-08-16:
+  CharlesWedge:
+  - bugfix: Fixed, Weather Datum for V-4 Desert. Roach Vermin Event Should now actually
+      occur.
+  FreeStylaLT:
+  - bugfix: Xenochimera bioadapts now cancel properly
+  Zandario:
+  - code_imp: Touched up the Bitflags and Bitmasks to bring them more in line with
+      main for future ports
+2021-08-19:
+  Captain277:
+  - rscadd: Adding an outfit. Eventually.
+  - rscadd: Extends Midpoint.
+  - rscadd: Squirt guns.
+  Jaybirdnerd:
+  - bugfix: CMO's locker was missing the Job Role Cloak and the Advanced Medical Hand
+      Scanner.
+2021-08-28:
+  Delams-The-SM:
+  - rscadd: Added new markings and tail for jackals
+  yourdoom9898:
+  - bugfix: fixed Bulk Stolen Supply Crate
+2021-08-30:
+  Captain277:
+  - rscadd: 'Second Tint Control buttons to bar booths. tweak: Adjusted access on
+      Xenobot containment.'

@@ -30,8 +30,22 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
+	/// dynamic state support
+	var/dynamic_state = TRUE
+	/// dynamic state overlay, if any
+	var/dynamic_overlay
+	/// dynamic state x shift, for off-center sprites like cases
+	var/dynamic_x_shift
+	/// dynamic state y shift, for off-center sprites like cases
+	var/dynamic_y_shift
+
+// todo: implement dynamic state, like how /tg/ boxes work
+
 // BubbleWrap - A box can be folded up to make card
-/obj/item/storage/box/attack_self(mob/user as mob)
+/obj/item/storage/box/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(..()) return
 
 	//try to fold it.
@@ -120,7 +134,7 @@
 	name = "box of blank shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
 	icon_state = "blankshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/blank = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
@@ -132,7 +146,7 @@
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "beanshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -148,7 +162,7 @@
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "lethalshellshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
@@ -160,7 +174,7 @@
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "lethalslug_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/pellet = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
@@ -172,7 +186,7 @@
 	name = "box of illumination shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "illumshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
@@ -185,7 +199,7 @@
 	name = "box of stun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "stunshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/stunshell = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
@@ -197,7 +211,7 @@
 	name = "box of practice shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
 	icon_state = "blankshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(/obj/item/ammo_casing/a12g/practice = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
@@ -209,13 +223,13 @@
 	name = "box of emp shells"
 	desc = "It has a picture of a gun and several warning symbols on the front."
 	icon_state = "empshot_box"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 8)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 8)
 	drop_sound = 'sound/items/drop/ammobox.ogg'
 	pickup_sound = 'sound/items/pickup/ammobox.ogg'
 
 /obj/item/storage/box/empshells/large
-	starts_with = list(/obj/item/ammo_casing/a12g/emp = 16)
+	starts_with = list(/obj/item/ammo_casing/a12g/techshell/emp = 16)
 
 /obj/item/storage/box/sniperammo
 	name = "box of 14.5mm shells"
@@ -337,7 +351,7 @@
 	name = "death alarm kit"
 	desc = "Box of stuff used to implant death alarms."
 	icon_state = "implant"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	starts_with = list(
 		/obj/item/implantcase/death_alarm = 7,
 		/obj/item/implanter
@@ -416,6 +430,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	starts_with = list(/obj/item/storage/pill_bottle = 7)
+	icon_state = "pillbox"
 
 /obj/item/storage/box/snappops
 	name = "snap pop box"
@@ -457,7 +472,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	storage_slots = 24
 	can_hold = list(/obj/item/light/tube, /obj/item/light/bulb)
 	max_storage_space = ITEMSIZE_COST_SMALL * 24 //holds 24 items of w_class 2
@@ -477,14 +492,104 @@
 	starts_with = list(
 		/obj/item/light/tube = 16,
 		/obj/item/light/bulb = 8
-	)
+		)
+
+/obj/item/storage/box/lights/fairy
+	name = "box of replacement fairy bulbs"
+	icon_state = "lightfairy"
+	can_hold = list(/obj/item/light/bulb/fairy)
+	starts_with = list(/obj/item/light/bulb/fairy = 24)
+
+//Colored Lights
+/obj/item/storage/box/lights/bulbs_colored
+	name = "box of colored bulbs"
+	icon_state = "light_color"
+	starts_with = list(
+		/obj/item/light/bulb/red = 4,
+		/obj/item/light/bulb/orange = 4,
+		/obj/item/light/bulb/yellow = 4,
+		/obj/item/light/bulb/green = 4,
+		/obj/item/light/bulb/blue = 4,
+		/obj/item/light/bulb/purple = 4
+		)
+
+/obj/item/storage/box/lights/bulbs_neon
+	name = "box of neon bulbs"
+	icon_state = "light_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/bulb/neon_pink = 6,
+		/obj/item/light/bulb/neon_blue = 6,
+		/obj/item/light/bulb/neon_green = 6,
+		/obj/item/light/bulb/neon_yellow = 6,
+		/obj/item/light/bulb/neon_white = 6
+		)
+
+/obj/item/storage/box/lights/tubes_colored
+	name = "box of colored tubes"
+	icon_state = "lighttube_color"
+	starts_with = list(
+		/obj/item/light/tube/red = 4,
+		/obj/item/light/tube/orange = 4,
+		/obj/item/light/tube/yellow = 4,
+		/obj/item/light/tube/green = 4,
+		/obj/item/light/tube/blue = 4,
+		/obj/item/light/tube/purple = 4
+		)
+
+/obj/item/storage/box/lights/tubes_neon
+	name = "box of neon tubes"
+	icon_state = "lighttube_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/tube/neon_pink = 6,
+		/obj/item/light/tube/neon_blue = 6,
+		/obj/item/light/tube/neon_green = 6,
+		/obj/item/light/tube/neon_yellow = 6,
+		/obj/item/light/tube/neon_white = 6
+		)
+
+/obj/item/storage/box/lights/mixed_colored
+	name = "box of colored lights"
+	icon_state = "lightmixed_color"
+	starts_with = list(
+		/obj/item/light/tube/red = 2,
+		/obj/item/light/tube/orange = 2,
+		/obj/item/light/tube/yellow = 2,
+		/obj/item/light/tube/green = 2,
+		/obj/item/light/tube/blue = 2,
+		/obj/item/light/tube/purple = 2,
+		/obj/item/light/bulb/red = 2,
+		/obj/item/light/bulb/orange = 2,
+		/obj/item/light/bulb/yellow = 2,
+		/obj/item/light/bulb/green = 2,
+		/obj/item/light/bulb/blue = 2,
+		/obj/item/light/bulb/purple = 2
+		)
+
+/obj/item/storage/box/lights/mixed_neon
+	name = "box of neon lights"
+	icon_state = "lightmixed_color"
+	storage_slots = 30
+	starts_with = list(
+		/obj/item/light/tube/neon_pink = 3,
+		/obj/item/light/tube/neon_blue = 3,
+		/obj/item/light/tube/neon_green = 3,
+		/obj/item/light/tube/neon_yellow = 3,
+		/obj/item/light/tube/neon_white = 3,
+		/obj/item/light/bulb/neon_pink = 3,
+		/obj/item/light/bulb/neon_blue = 3,
+		/obj/item/light/bulb/neon_green = 3,
+		/obj/item/light/bulb/neon_yellow = 3,
+		/obj/item/light/bulb/neon_white = 3
+		)
 
 /obj/item/storage/box/freezer
 	name = "portable freezer"
 	desc = "This nifty shock-resistant device will keep your 'groceries' nice and non-spoiled."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "portafreezer"
-	item_state_slots = list(slot_r_hand_str = "medicalpack", slot_l_hand_str = "medicalpack")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "medicalpack", SLOT_ID_LEFT_HAND = "medicalpack")
 	foldable = null
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(/obj/item/organ)
@@ -494,17 +599,13 @@
 /obj/item/storage/box/freezer/Entered(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(PORTABLE_FREEZER_TRAIT)
 	..()
 
 /obj/item/storage/box/freezer/Exited(var/atom/movable/AM)
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(PORTABLE_FREEZER_TRAIT)
 	..()
 
 /obj/item/storage/box/ambrosia
@@ -583,3 +684,28 @@
 
 /obj/item/storage/secure/briefcase/trashmoney
 	starts_with = list(/obj/item/spacecash/c200 = 10)
+
+/obj/item/storage/box/rainponcho
+	name = "foil raincoat pouch"
+	icon_state = "rainponcho"
+	foldable = null
+	storage_slots = 1
+	can_hold = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+	starts_with = list(/obj/item/clothing/suit/storage/hooded/rainponcho)
+
+//Foam Darts
+/obj/item/storage/box/foamdart
+	name = "box of foam darts"
+	desc = "It has a picture of some foam darts on it."
+	icon = 'icons/obj/ammo.dmi'
+	icon_state = "foambox"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
+	starts_with = list(/obj/item/ammo_casing/foam = 20)
+	drop_sound = 'sound/items/drop/ammobox.ogg'
+	pickup_sound = 'sound/items/pickup/ammobox.ogg'
+
+/obj/item/storage/box/foamdart/riot
+	name = "box of riot darts"
+	desc = "It has a picture of some angry looking foam darts on it."
+	icon_state = "foambox_riot"
+	starts_with = list(/obj/item/ammo_casing/foam/riot = 20)

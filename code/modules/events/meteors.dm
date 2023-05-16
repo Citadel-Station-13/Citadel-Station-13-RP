@@ -2,7 +2,8 @@
 	startWhen		= 30	// About one minute early warning
 	endWhen 		= 60	// Adjusted automatically in tick()
 	has_skybox_image = TRUE
-	var/next_meteor = 6
+	var/alarmWhen   = 30
+	var/next_meteor = 40
 	var/waves = 1
 	var/start_side
 	var/next_meteor_lower = 10
@@ -26,11 +27,17 @@
 /datum/event/meteor_wave/announce()
 	switch(severity)
 		if(EVENT_LEVEL_MAJOR)
-			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = sound('sound/effects/meteor_storm.wav',volume=20))
+			command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = sound('sound/effects/meteor_storm.ogg',volume=20))
 		else
 			command_announcement.Announce("\The [location_name()] is now in a meteor shower.", "Meteor Alert")
 
 /datum/event/meteor_wave/tick()
+	// Begin sending the alarm signals to shield diffusers so the field is already regenerated (if it exists) by the time actual meteors start flying around.
+	if(activeFor >= alarmWhen)
+		for(var/obj/machinery/shield_diffuser/SD in GLOB.machines)
+			if(SD.z in affecting_z)
+				SD.meteor_alarm(10)
+
 	if(waves && activeFor >= next_meteor)
 		send_wave()
 
@@ -69,13 +76,14 @@
 	next_meteor_lower = 5
 	next_meteor_upper = 10
 	next_meteor = 0
+	alarmWhen = 0
 
 /datum/event/meteor_wave/overmap/announce()
 	command_announcement.Announce("Meteors have been detected on collision course with \the [location_name()].", "Meteor Alert", new_sound = 'sound/AI/meteors.ogg')
 	return
 
 /datum/event/meteor_wave/overmap/tick()
-	if(victim && !victim.is_still())	// Meteors mostly fly in your face
+	if(victim && !!victim.is_moving())	// Meteors mostly fly in your face
 		start_side = prob(90) ? victim.fore_dir : pick(GLOB.cardinal)
 	else	// Unless you're standing still
 		start_side = pick(GLOB.cardinal)
@@ -85,23 +93,12 @@
 	. = ..()
 	if(!victim)
 		return
-	var/skill = victim.get_helm_skill()
-	var/speed = victim.get_speed()
-	if(skill >= SKILL_PROF)
-		. = round(. * 0.5)
-	if(victim.is_still())		// Standing still means less shit flies your way
+	// todo: implement skill checks with math on this, do actual overmaps physics
+	var/speed = victim.get_speed_legacy()
+	if(!victim.is_moving())		// Standing still means less shit flies your way
 		. = round(. * 0.1)
 	if(speed < SHIP_SPEED_SLOW)	// Slow and steady
 		. = round(. * 0.5)
 	if(speed > SHIP_SPEED_FAST)	// Sanic stahp
 		. *= 2
 
-	// Smol ship evasion
-	if(victim.vessel_size < SHIP_SIZE_LARGE && speed < SHIP_SPEED_FAST)
-		var/skill_needed = SKILL_PROF
-		if(speed < SHIP_SPEED_SLOW)
-			skill_needed = SKILL_ADEPT
-		if(victim.vessel_size < SHIP_SIZE_SMALL)
-			skill_needed = skill_needed - 1
-		if(skill >= max(skill_needed, victim.skill_needed))
-			. = round(. * 0.5)

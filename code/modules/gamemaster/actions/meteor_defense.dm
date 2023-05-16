@@ -2,7 +2,7 @@
 
 /datum/gm_action/meteor_defense
 	name = "meteor defense"
-	departments = list(ROLE_ENGINEERING, ROLE_CARGO)
+	departments = list(DEPARTMENT_ENGINEERING, DEPARTMENT_CARGO)
 	chaotic = 50
 	var/direction = null
 	var/dir_text = null
@@ -11,9 +11,9 @@
 	var/meteor_types
 
 /datum/gm_action/meteor_defense/get_weight()
-	var/engineers = metric.count_people_in_department(ROLE_ENGINEERING)
-	var/cargo = metric.count_people_in_department(ROLE_CARGO)
-	var/bots = metric.count_people_in_department(ROLE_SYNTHETIC)
+	var/engineers = metric.count_people_in_department(DEPARTMENT_ENGINEERING)
+	var/cargo = metric.count_people_in_department(DEPARTMENT_CARGO)
+	var/bots = metric.count_people_in_department(DEPARTMENT_SYNTHETIC)
 	var/weight = (max(engineers - 1, 0) * 20) // If only one engineer exists, no meteors for now.
 
 	if(engineers >= 2)
@@ -63,7 +63,7 @@
 		while(waves)
 			message_admins("[waves] more wave\s of meteors remain.")
 			spawn(1) // Dir is reversed because the direction describes where meteors are going, not what side it's gonna hit.
-				spawn_meteors(rand(8, 12), meteors_threatening, GLOB.reverse_dir[direction])
+				spawn_meteors(rand(8, 12), meteors_threatening, global.reverse_dir[direction])
 			waves--
 			sleep(30 SECONDS)
 		announcement = "The station has cleared the incoming debris."

@@ -1,8 +1,10 @@
 //Config stuff
-#define PRISON_MOVETIME 150	//Time to station is milliseconds.
-#define PRISON_STATION_AREATYPE "/area/shuttle/prison/station" //Type of the prison shuttle area for station
-#define PRISON_DOCK_AREATYPE "/area/shuttle/prison/prison"	//Type of the prison shuttle area for dock
-
+///Time to station is milliseconds.
+#define PRISON_MOVETIME 150
+///Type of the prison shuttle area for station
+#define PRISON_STATION_AREATYPE "/area/shuttle/prison/station"
+///Type of the prison shuttle area for dock
+#define PRISON_DOCK_AREATYPE "/area/shuttle/prison/prison"
 var/prison_shuttle_moving_to_station = 0
 var/prison_shuttle_moving_to_prison = 0
 var/prison_shuttle_at_station = 0
@@ -15,7 +17,7 @@ var/prison_shuttle_timeleft = 0
 	icon_keyboard = "security_key"
 	icon_screen = "syndishuttle"
 	light_color = "#00ffff"
-	req_access = list(access_security)
+	req_access = list(ACCESS_SECURITY_EQUIPMENT)
 	circuit = /obj/item/circuitboard/prison_shuttle
 	var/temp = null
 	var/hacked = 0
@@ -25,7 +27,7 @@ var/prison_shuttle_timeleft = 0
 /obj/machinery/computer/prison_shuttle/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/prison_shuttle/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/prison_shuttle/attack_hand(mob/user, list/params)
 	if(!src.allowed(user) && (!hacked))
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return
@@ -162,7 +164,7 @@ var/prison_shuttle_timeleft = 0
 				var/turf/D = locate(T.x, throwy - 1, 1)
 							//var/turf/E = get_step(D, SOUTH)
 				for(var/atom/movable/AM as mob|obj in T)
-					AM.Move(D)
+					AM.abstract_move(D)
 				if(istype(T, /turf/simulated))
 					qdel(T)
 			start_location.move_contents_to(end_location)
@@ -192,7 +194,7 @@ var/prison_shuttle_timeleft = 0
 				var/turf/D = locate(T.x, throwy - 1, 1)
 							//var/turf/E = get_step(D, SOUTH)
 				for(var/atom/movable/AM as mob|obj in T)
-					AM.Move(D)
+					AM.abstract_move(D)
 				if(istype(T, /turf/simulated))
 					qdel(T)
 

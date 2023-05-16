@@ -1,15 +1,31 @@
 // Parrots can talk, and may repeat things it hears.
+
+/datum/category_item/catalogue/fauna/parrot
+	name = "Parrot"
+	desc = "An Earthling tropical bird, parrots have been companions on \
+	nautical vessels for many years. Parrots are considered intelligent, \
+	due largely to the curvature of their beaks allowing them to form human \
+	words. Capable of learning and repeating spoken phrases, parrots are often \
+	sought after for morale purposes."
+	value = CATALOGUER_REWARD_TRIVIAL
+
 /mob/living/simple_mob/animal/passive/bird/parrot
 	name = "parrot"
 	description_info = "You can give it a headset by clicking on it with a headset. \
 	To remove it, click the bird while on grab intent."
 	has_langs = list("Galactic Common", "Bird")
+	catalogue_data = list(/datum/category_item/catalogue/fauna/parrot)
+
+	randomized = TRUE
 
 	ai_holder_type = /datum/ai_holder/simple_mob/passive/parrot
 
 	// A headset, so that talking parrots can yell at the crew over comms.
 	// If set to a type, on initialize it will be instantiated into that type.
 	var/obj/item/radio/headset/my_headset = null
+
+	meat_amount = 1
+	bone_amount = 1
 
 // Say list
 /datum/say_list/bird/polly
@@ -56,7 +72,10 @@
 	return ..()
 
 // Clicked on by empty hand.
-/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/living/L)
+/mob/living/simple_mob/animal/passive/bird/parrot/attack_hand(mob/user, list/params)
+	var/mob/living/L = user
+	if(!istype(L))
+		return
 	if(L.a_intent == INTENT_GRAB && my_headset)
 		remove_headset(L)
 	else
@@ -65,17 +84,17 @@
 
 /mob/living/simple_mob/animal/passive/bird/parrot/proc/give_headset(obj/item/radio/headset/new_headset, mob/living/user)
 	if(!istype(new_headset))
-		to_chat(user, span("warning", "\The [new_headset] isn't a headset."))
+		to_chat(user, SPAN_WARNING( "\The [new_headset] isn't a headset."))
 		return
 	if(my_headset)
-		to_chat(user, span("warning", "\The [src] is already wearing \a [my_headset]."))
+		to_chat(user, SPAN_WARNING( "\The [src] is already wearing \a [my_headset]."))
 		return
 	else
-		user.drop_item(new_headset)
+		if(!user.attempt_insert_item_for_installation(new_headset, src))
+			return
 		my_headset = new_headset
-		new_headset.forceMove(src)
-		to_chat(user, span("warning", "You place \a [new_headset] on \the [src]. You monster."))
-		to_chat(src, span("notice", "\The [user] gives you \a [new_headset]. You should put it to good use immediately."))
+		to_chat(user, SPAN_WARNING( "You place \a [new_headset] on \the [src]. You monster."))
+		to_chat(src, SPAN_NOTICE("\The [user] gives you \a [new_headset]. You should put it to good use immediately."))
 		return
 
 /mob/living/simple_mob/animal/passive/bird/parrot/proc/remove_headset(mob/living/user)
@@ -83,10 +102,9 @@
 		to_chat(user, "<span class='warning'>\The [src] doesn't have a headset to remove, thankfully.</span>")
 	else
 		ISay("BAWWWWWK LEAVE THE HEADSET BAWKKKKK!")
-		my_headset.forceMove(get_turf(src))
-		user.put_in_hands(my_headset)
-		to_chat(user, span("notice", "You take away \the [src]'s [my_headset.name]. Finally."))
-		to_chat(src, span("warning", "\The [user] takes your [my_headset.name] away! How cruel!"))
+		user.put_in_hands_or_drop(my_headset)
+		to_chat(user, SPAN_NOTICE("You take away \the [src]'s [my_headset.name]. Finally."))
+		to_chat(src, SPAN_WARNING( "\The [user] takes your [my_headset.name] away! How cruel!"))
 		my_headset = null
 
 /mob/living/simple_mob/animal/passive/bird/parrot/examine(mob/user)
@@ -111,6 +129,7 @@
 	tt_desc = "E Ara macao"
 	my_headset = /obj/item/radio/headset/headset_eng
 	say_list_type = /datum/say_list/bird/polly
+	randomized = FALSE
 
 // Best Bird with best headset.
 /mob/living/simple_mob/animal/passive/bird/parrot/polly/ultimate

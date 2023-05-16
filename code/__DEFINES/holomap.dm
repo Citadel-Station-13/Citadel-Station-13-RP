@@ -2,16 +2,21 @@
 // Constants and standard colors for the holomap
 //
 
-#define HOLOMAP_ICON 'icons/480x480.dmi' // Icon file to start with when drawing holomaps (to get a 480x480 canvas).
-#define HOLOMAP_ICON_SIZE 480 // Pixel width & height of the holomap icon.  Used for auto-centering etc.
-#define ui_holomap "CENTER-7, CENTER-7" // Screen location of the holomap "hud"
-
+/// Icon file to start with when drawing holomaps (to get a 480x480 canvas).
+#define HOLOMAP_ICON 'icons/480x480.dmi'
+/// Pixel width & height of the holomap icon.  Used for auto-centering etc.
+#define HOLOMAP_ICON_SIZE 480
+/// Screen location of the holomap "hud"
+#define ui_holomap "CENTER-7, CENTER-7"
 // Holomap colors
-#define HOLOMAP_OBSTACLE	"#FFFFFFDD"	// Color of walls and barriers
-#define HOLOMAP_PATH		"#66666699"	// Color of floors
-#define HOLOMAP_ROCK		"#66666644"	// Color of mineral walls
-#define HOLOMAP_HOLOFIER	"#79FF79"	// Whole map is multiplied by this to give it a green holoish look
-
+/// Color of walls and barriers
+#define HOLOMAP_OBSTACLE	"#FFFFFFDD"
+/// Color of floors
+#define HOLOMAP_PATH		"#66666699"
+/// Color of mineral walls
+#define HOLOMAP_ROCK		"#66666644"
+/// Whole map is multiplied by this to give it a green holoish look
+#define HOLOMAP_HOLOFIER	"#79FF79"
 #define HOLOMAP_AREACOLOR_COMMAND		"#0000F099"
 #define HOLOMAP_AREACOLOR_SECURITY		"#AE121299"
 #define HOLOMAP_AREACOLOR_MEDICAL		"#447FC299"

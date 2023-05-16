@@ -377,7 +377,7 @@ em {
   font-weight: bold;
 }
 
-.say, .emote, .infoplain {
+.say, .emote, .infoplain, .oocplain, .warningplain {
 }
 
 .deadsay {
@@ -395,6 +395,9 @@ em {
 .binarysay a:active, .binarysay a:visited {
   color: #88ff88;
 }
+
+/* RADIO COLORS */
+/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH TGUI CONSTANTS */
 
 .radio {
   color: #1ecc43;
@@ -432,6 +435,10 @@ em {
   color: #8f4a4b;
 }
 
+.gangradio {
+  color: #ac2ea1;
+}
+
 .centcomradio {
   color: #2681a5;
 }
@@ -446,6 +453,14 @@ em {
 
 .blueteamradio {
   color: #3434fd;
+}
+
+.greenteamradio {
+  color: #34fd34;
+}
+
+.yellowteamradio {
+  color: #fdfd34;
 }
 
 .yell {
@@ -471,6 +486,10 @@ em {
   font-style: italic;
 }
 
+blockquote.warning {
+  border-color: #c51e1e;
+}
+
 .alertwarning {
   color: #FF0000;
   font-weight: bold;
@@ -494,7 +513,7 @@ em {
 
 .minorannounce {
   font-weight: bold;
-  font-size: 185%;
+  font-size: 150%;
 }
 
 .greenannounce {
@@ -510,8 +529,16 @@ em {
   color: #9ab0ff;
 }
 
+blockquote.info {
+  border-color: #9ab0ff;
+}
+
 .notice {
   color: #6685f5;
+}
+
+blockquote.notice {
+  border-color: #6685f5;
 }
 
 .tinynotice {
@@ -569,16 +596,36 @@ em {
   color: #059223;
 }
 
+blockquote.green {
+  border-color: #059223;
+}
+
 .red {
   color: #FF0000;
+}
+
+blockquote.red {
+  border-color: #FF0000;
 }
 
 .blue {
   color: #215cff;
 }
 
+blockquote.blue {
+  border-color: #215cff;
+}
+
 .nicegreen {
   color: #059223;
+}
+
+blockquote.nicegreen {
+  border-color: #059223;
+}
+
+.helpful {
+  color: #368f31;
 }
 
 /* hornichems */
@@ -596,40 +643,44 @@ em {
 }
 
 .cult {
-  color: #aa1c1c;
+  color: #973e3b;
+}
+
+blockquote.cult {
+  border-color: #973e3b;
 }
 
 .cultitalic {
-  color: #aa1c1c;
+  color: #973e3b;
   font-style: italic;
 }
 
 .cultbold {
-  color: #aa1c1c;
+  color: #973e3b;
   font-style: italic;
   font-weight: bold;
 }
 
 .cultboldtalic {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .cultlarge {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 185%;
 }
 
 .narsie {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 925%;
 }
 
 .narsiesmall {
-  color: #aa1c1c;
+  color: #973e3b;
   font-weight: bold;
   font-size: 370%;
 }
@@ -652,6 +703,10 @@ em {
 
 .purple {
   color: #9956d3;
+}
+
+blockquote.purple {
+  border-color: #9956d3;
 }
 
 .holoparasite {
@@ -715,6 +770,10 @@ em {
 /* from decon_msg: font-size: 185% == font-size 3*/
 .brass {
   color: #BE8700;
+}
+
+blockquote.brass {
+  border-color: #BE8700;
 }
 
 .heavy_brass {
@@ -1032,6 +1091,10 @@ em {
   width: auto;
 }
 
+.iconbig {
+  font-size: 2.5em;
+}
+
 .memo {
   color: #638500;
   text-align: center;
@@ -1163,6 +1226,15 @@ em {
 	font-family: "Courier New", Courier, monospace;
 }
 
+.luinimma {
+  color: #d4bd11;
+  font-family: "Trebuchet MS", cursive, sans-serif;
+}
+
+.keisani{
+  color: #AF7751;
+}
+
 .bug {
 	color: #9e9e39;
 }
@@ -1173,6 +1245,15 @@ em {
 
 .zaddat {
   color: #941C1C;
+}
+
+.akula {
+  color: #c51e1e;
+}
+
+.squeakish {
+  color: #f54298;
+  font-family: Arial
 }
 
 .rough {

@@ -1,18 +1,18 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5.0
-	throwforce = 5
+	damage_force = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 3
 	max_amount = 50
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 
-	var/default_type = DEFAULT_WALL_MATERIAL
+	var/default_type = MAT_STEEL
 	var/datum/material/material
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
@@ -22,7 +22,7 @@
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
-		default_type = DEFAULT_WALL_MATERIAL
+		default_type = MAT_STEEL
 	material = get_material_by_name("[default_type]")
 	if(!material)
 		return INITIALIZE_HINT_QDEL
@@ -42,7 +42,7 @@
 		color = material.icon_colour
 
 	if(!material.conductive)
-		flags |= NOCONDUCT
+		atom_flags |= NOCONDUCT
 
 	matter = material.get_matter()
 	update_strings()
@@ -77,9 +77,9 @@
 	if(M) M.update_strings()
 	return transfer
 
-/obj/item/stack/material/attack_self(var/mob/user)
+/obj/item/stack/material/attack_self(mob/user)
 	if(!allow_window_autobuild || !material.build_windows(user, src))
-		..()
+		return ..()
 
 /obj/item/stack/material/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W,/obj/item/stack/cable_coil))
@@ -196,9 +196,9 @@
 	no_variants = FALSE
 
 /obj/item/stack/material/steel
-	name = DEFAULT_WALL_MATERIAL
+	name = MAT_STEEL
 	icon_state = "sheet-metal"
-	default_type = DEFAULT_WALL_MATERIAL
+	default_type = MAT_STEEL
 	no_variants = FALSE
 
 /obj/item/stack/material/steel/hull
@@ -271,6 +271,7 @@
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
+	no_variants = FALSE
 	apply_colour = TRUE
 
 /obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
@@ -283,11 +284,11 @@
 	update_mass()
 	return
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
+/obj/item/stack/material/supermatter/attack_hand(mob/user, list/params)
 	. = ..()
 
 	update_mass()
-	SSradiation.radiate(src, 5 + amount)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_PICKUP_PER_SHEET(amount))
 	var/mob/living/M = user
 	if(!istype(M))
 		return
@@ -296,14 +297,14 @@
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
+		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
 			burn_user = FALSE
 
 		if(burn_user)
 			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
 			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
 			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
-			H.drop_from_inventory(src, get_turf(H))
+			H.drop_item_to_ground(src)
 			return
 
 	if(istype(user, /mob/living/silicon/robot))
@@ -312,13 +313,14 @@
 	if(burn_user)
 		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
 
-/obj/item/stack/material/supermatter/ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
+/obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
-		SSradiation.radiate(get_turf(src), amount * 4)
+		// you dun fucked up
+		radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
 		qdel(src)
 		return
-	SSradiation.radiate(get_turf(src), amount * 2)
+	radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 	..()
 
 /obj/item/stack/material/wood
@@ -333,6 +335,12 @@
 	name = "alien wooden plank"
 	color = "#0099cc"
 	default_type = MAT_SIFWOOD
+
+/obj/item/stack/material/wood/hard
+	name = "hardwood plank"
+	color = "#42291a"
+	default_type = MAT_HARDWOOD
+	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
 
 /obj/item/stack/material/log
 	name = "log"
@@ -353,11 +361,17 @@
 	color = "#0099cc"
 	plank_type = /obj/item/stack/material/wood/sif
 
+/obj/item/stack/material/log/hard
+	name = "hardwood log"
+	default_type = MAT_HARDLOG
+	color = "#6f432a"
+	plank_type = /obj/item/stack/material/wood/hard
+
 /obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
+	if(!istype(W) || W.damage_force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.toolspeed
+		var/time = (3 SECONDS / max(W.damage_force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
@@ -421,7 +435,18 @@
 	name = "leather"
 	desc = "The by-product of mob grinding."
 	icon_state = "sheet-leather"
-	default_type = "leather"
+	default_type = MAT_LEATHER
+	no_variants = FALSE
+	pass_color = TRUE
+	strict_color_stacking = TRUE
+	drop_sound = 'sound/items/drop/leather.ogg'
+	pickup_sound = 'sound/items/pickup/leather.ogg'
+
+/obj/item/stack/material/chitin
+	name = "chitin"
+	desc = "The by-product of mob grinding."
+	icon_state = "chitin"
+	default_type = MAT_CHITIN
 	no_variants = FALSE
 	pass_color = TRUE
 	strict_color_stacking = TRUE
@@ -458,43 +483,58 @@
 	default_type = "reinforced borosilicate glass"
 	no_variants = FALSE
 
-//CitMain Sandbag port.
-/obj/item/stack/material/emptysandbag
-	name = "empty sandbag"
-	desc = "A bag to be filled with sand."
-	icon_state = "sandbag"
-	max_amount = 50
-	description_info = "Fill with sand to convert this into a sandbag."
+/obj/item/stack/material/bananium
+	name = "bananium"
+	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
+	icon_state = "sheet-clown"
+	default_type = "bananium"
 	no_variants = FALSE
-	var/fill_type = /obj/item/stack/material/sandbags
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/pickup/boots.ogg'
 
-	default_type = "emptysandbag"
-	perunit = 1
-
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W, /obj/item/ore/glass))
-		var/time = (3 SECONDS)
-		user.setClickCooldown(time)
-		if(do_after(user, time, src) && use(1))
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-	else
-		return ..()
-
-/obj/item/stack/material/emptysandbag/attackby(var/obj/item/W, var/mob/user)
-	if(istype(W, /obj/item/ore/glass) && !interact(user, src))
-		if(do_after(user, 3 SECONDS, src) && use(1) && qdel(W))
-			var/turf/T = get_turf(user)
-			to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
-			new /obj/item/stack/material/sandbags && !get(T)
-	else
-		return ..()
-
-/obj/item/stack/material/sandbags
-	name = "sandbags"
-	desc = "This is a synthetic bag tightly packed with sand. It is designed to provide structural support and serve as a portable barrier."
-	singular_name = "sandbag"
-	icon_state = "sandbags"
+/obj/item/stack/material/silencium
+	name = "silencium"
+	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
+	icon_state = "sheet-mime"
+	default_type = "silencium"
 	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
 
-	default_type = "sandbags"
-	perunit = 1
+/obj/item/stack/material/brass
+	name = "brass"
+	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
+	icon_state = "sheet-brass"
+	default_type = "brass"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/bone
+	name = "bone"
+	desc = "These dense calcium structures are a common support system for organic life."
+	icon_state = "sheet-bone"
+	default_type = "bone"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+/obj/item/stack/material/copper
+	name = "copper"
+	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon_state = "sheet-copper"
+	default_type = "copper"
+	no_variants = FALSE
+	drop_sound = 'sound/items/drop/boots.ogg'
+	pickup_sound = 'sound/items/drop/boots.ogg'
+
+//Moved out of beehive.dm in conjunction with the primary material.
+/obj/item/stack/material/wax
+	name = "wax"
+	singular_name = "wax piece"
+	desc = "Soft substance produced by bees. Used to make candles."
+	icon_state = "sheet-rtransparent"
+	apply_colour = 1
+	default_type = "wax"
+	no_variants = FALSE
+	pass_color = TRUE

@@ -37,6 +37,7 @@
 
 	maxHealth = 10
 	health = 10
+	randomized = TRUE
 
 	movement_cooldown = -1
 	hovering = TRUE
@@ -48,7 +49,7 @@
 
 	density = FALSE	// Non-dense, so things can walk through their groups unhindered.
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
 	attacktext = list("bit", "buffeted", "slashed")
 
@@ -60,8 +61,8 @@
 	var/colorlist = list(rgb(rand(100,255), rand(100,255), rand(100,255)) =  10, rgb(rand(5,100), rand(5,100), rand(5,100)) = 2, "#222222" = 1)
 	color = pickweight(colorlist)
 
-	default_pixel_y = rand(5,12)
-	pixel_y = default_pixel_y
+	base_pixel_y = rand(5,12)
+	pixel_y = base_pixel_y
 
 	adjust_scale(round(rand(90, 105) / 100))
 
@@ -76,7 +77,7 @@
 
 	melee_damage_upper = 5
 
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 
 /mob/living/simple_mob/animal/sif/glitterfly/rare/Initialize(mapload)
 	. = ..()

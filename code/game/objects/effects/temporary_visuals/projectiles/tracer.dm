@@ -85,6 +85,12 @@
 	light_power = 1
 	light_color = "#FF0D00"
 
+/obj/effect/projectile/tracer/secutorkill
+	icon_state = "beam"
+	light_range = 2
+	light_power = 0.5
+	light_color = "#BF2F4B"
+
 /obj/effect/projectile/tracer/darkmatter
 	icon_state = "darkb"
 	light_range = 2
@@ -115,11 +121,10 @@
 	light_power = 3
 	light_color = "#3300ff"
 
-//VOREStation edit: medigun
+// Medigun
 /obj/effect/projectile/tracer/medigun
 	icon = 'icons/obj/projectiles_vr.dmi'
 	icon_state = "medbeam"
 	light_range = 2
 	light_power = 0.5
 	light_color = "#80F5FF"
-//VOREStation edit ends

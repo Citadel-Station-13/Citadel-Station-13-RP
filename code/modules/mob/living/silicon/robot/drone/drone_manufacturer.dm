@@ -1,75 +1,103 @@
 /proc/count_drones()
 	var/drones = 0
-	for(var/mob/living/silicon/robot/drone/D in player_list)
+	for(var/mob/living/silicon/robot/drone/D in GLOB.player_list)
 		drones++
 	return drones
+
+/proc/count_matriarchs()
+	var/matriarchs = 0
+	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in GLOB.player_list)
+		matriarchs++
+	return matriarchs
 
 /obj/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
+	icon = 'icons/obj/machines/fabricators/industrial_fab.dmi'
+	icon_state = "industrial"
+	base_icon_state = "industrial"
+
 	appearance_flags = 0
 
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
 	active_power_usage = 5000
-
+	var/printing = FALSE
 	var/fabricator_tag = "Upper Level"
 	var/drone_progress = 0
 	var/produce_drones = 2
 	var/time_last_drone = 500
 	var/drone_type = /mob/living/silicon/robot/drone
-
-	icon = 'icons/obj/machines/drone_fab.dmi'
-	icon_state = "drone_fab_idle"
+	var/is_spawn_safe = TRUE
 
 /obj/machinery/drone_fabricator/derelict
 	name = "construction drone fabricator"
 	fabricator_tag = "Upper Level Construction"
 	drone_type = /mob/living/silicon/robot/drone/construction
+	is_spawn_safe = FALSE
 
 /obj/machinery/drone_fabricator/mining
 	name = "mining drone fabricator"
 	fabricator_tag = "Upper Level Mining"
 	drone_type = /mob/living/silicon/robot/drone/mining
 
-/obj/machinery/drone_fabricator/power_change()
-	..()
-	if (stat & NOPOWER)
-		icon_state = "drone_fab_nopower"
+/obj/machinery/drone_fabricator/matriarch
+	name = "matriarch drone fabricator"
+	fabricator_tag = "Upper Level Matriarch"
+	drone_type = /mob/living/silicon/robot/drone/construction/matriarch
+
+/obj/machinery/drone_fabricator/update_icon_state()
+	. = ..()
+	if(machine_stat & NOPOWER || !produce_drones)
+		icon_state = "[base_icon_state]-off"
+	else if(printing)
+		icon_state = "[base_icon_state]-active"
+	else
+		icon_state = base_icon_state
+
+/obj/machinery/drone_fabricator/update_overlays()
+	. = ..()
+	cut_overlays()
+	if(panel_open)
+		add_overlay("[base_icon_state]-panel")
 
 /obj/machinery/drone_fabricator/process(delta_time)
 
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		return
 
-	if(stat & NOPOWER || !produce_drones)
-		if(icon_state != "drone_fab_nopower") icon_state = "drone_fab_nopower"
-		return
-
 	if(drone_progress >= 100)
-		icon_state = "drone_fab_idle"
+		printing = FALSE
+		update_appearance()
 		return
 
-	icon_state = "drone_fab_active"
+	printing = TRUE
 	var/elapsed = world.time - time_last_drone
 	drone_progress = round((elapsed/config_legacy.drone_build_time)*100)
 
 	if(drone_progress >= 100)
 		visible_message("\The [src] voices a strident beep, indicating a drone chassis is prepared.")
 
+	update_appearance()
+
 /obj/machinery/drone_fabricator/examine(mob/user)
 	. = ..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
 		. += "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"
+	if(!is_spawn_safe)
+		. += "<BR> It seems this fabricator has gone into safety lockdown, maybe you can reset it."
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
+		return
+
+	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() > 0))
 		return
 
 	if(player && !istype(player.mob,/mob/observer/dead))
@@ -86,6 +114,7 @@
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
 		if(player.mob && player.mob.mind) player.mob.mind.reset()
 		new_drone.transfer_personality(player)
+		assign_drone_to_matrix(new_drone, "[GLOB.using_map.company_name]")
 
 	return new_drone
 
@@ -133,8 +162,10 @@
 		return
 
 	var/list/all_fabricators = list()
-	for(var/obj/machinery/drone_fabricator/DF in machines)
-		if(DF.stat & NOPOWER || !DF.produce_drones)
+	for(var/obj/machinery/drone_fabricator/DF in GLOB.machines)
+		if(DF.machine_stat & NOPOWER || !DF.produce_drones)
+			continue
+		if(!DF.is_spawn_safe)
 			continue
 		if(DF.drone_progress >= 100)
 			all_fabricators[DF.fabricator_tag] = DF
@@ -147,3 +178,8 @@
 	if(choice)
 		var/obj/machinery/drone_fabricator/chosen_fabricator = all_fabricators[choice]
 		chosen_fabricator.create_drone(src.client)
+
+/obj/machinery/drone_fabricator/attack_hand(mob/user, list/params)
+	if(!is_spawn_safe)
+		is_spawn_safe = TRUE
+		to_chat(user, "You inform the fabricator that it is safe for drones to roam around.")

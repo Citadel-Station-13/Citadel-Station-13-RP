@@ -4,7 +4,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
@@ -15,15 +15,6 @@
 	light_color = "#00FF00"
 	var/obj/machinery/body_scanconsole/console
 
-/obj/machinery/bodyscanner/Initialize(mapload, newdir)
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stack/material/glass/reinforced(src, 2)
-	RefreshParts()
-
 /obj/machinery/bodyscanner/Destroy()
 	if(console)
 		console.scanner = null
@@ -31,35 +22,37 @@
 
 /obj/machinery/bodyscanner/power_change()
 	..()
-	if(!(stat & (BROKEN|NOPOWER)))
+	if(!(machine_stat & (BROKEN|NOPOWER)))
 		set_light(2)
 	else
 		set_light(0)
 
 /obj/machinery/bodyscanner/attackby(var/obj/item/G, user as mob)
+	if(!istype(G))
+		return ..()
 	if(istype(G, /obj/item/grab))
 		var/obj/item/grab/H = G
 		if(panel_open)
-			to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+			to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 			return
 		if(!ismob(H.affecting))
 			return
 		if(!ishuman(H.affecting))
-			to_chat(user, "<span class='warning'>\The [src] is not designed for that organism!</span>")
+			to_chat(user, SPAN_WARNING("\The [src] is not designed for that organism!"))
 			return
 		if(occupant)
-			to_chat(user, "<span class='notice'>\The [src] is already occupied!</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 		if(H.affecting.has_buckled_mobs())
-			to_chat(user, span("warning", "\The [H.affecting] has other entities attached to it. Remove them first."))
+			to_chat(user, SPAN_WARNING("\The [H.affecting] has other entities attached to it. Remove them first."))
 			return
 		var/mob/M = H.affecting
 		if(M.abiotic())
-			to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
+			to_chat(user, SPAN_NOTICE("Subject cannot have abiotic items on."))
 			return
 		M.forceMove(src)
 		occupant = M
-		update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+		update_icon() //icon_state = "body_scanner_1" // Health display for consoles with light and such.
 		playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
 		add_fingerprint(user)
 		qdel(G)
@@ -69,31 +62,31 @@
 		if(default_deconstruction_crowbar(user, G))
 			return
 
-/obj/machinery/bodyscanner/MouseDrop_T(mob/living/carbon/O, mob/user as mob)
+/obj/machinery/bodyscanner/MouseDroppedOnLegacy(mob/living/carbon/O, mob/user as mob)
 	if(!istype(O))
-		return 0 //not a mob
+		return FALSE //not a mob
 	if(user.incapacitated())
-		return 0 //user shouldn't be doing things
+		return FALSE //user shouldn't be doing things
 	if(O.anchored)
-		return 0 //mob is anchored???
+		return FALSE //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+		return FALSE //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
-		return 0 //not a borg or human
+		return FALSE //not a borg or human
 	if(panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
-		return 0 //panel open
+		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
+		return FALSE //panel open
 	if(occupant)
-		to_chat(user, "<span class='notice'>\The [src] is already occupied.</span>")
-		return 0 //occupied
+		to_chat(user, SPAN_NOTICE("\The [src] is already occupied."))
+		return FALSE //occupied
 
 	if(O.buckled)
-		return 0
+		return FALSE
 	if(O.abiotic())
-		to_chat(user, "<span class='notice'>Subject cannot have abiotic items on.</span>")
-		return 0
+		to_chat(user, SPAN_NOTICE("Subject cannot have abiotic items on."))
+		return FALSE
 	if(O.has_buckled_mobs())
-		to_chat(user, span("warning", "\The [O] has other entities attached to it. Remove them first."))
+		to_chat(user, SPAN_WARNING("\The [O] has other entities attached to it. Remove them first."))
 		return
 
 	if(O == user)
@@ -103,13 +96,13 @@
 
 	O.forceMove(src)
 	occupant = O
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 50) // Beepboop you're being scanned. <3
 	add_fingerprint(user)
 
 /obj/machinery/bodyscanner/relaymove(mob/user as mob)
 	if(user.incapacitated())
-		return 0 //maybe they should be able to get out with cuffs, but whatever
+		return FALSE //maybe they should be able to get out with cuffs, but whatever
 	go_out()
 
 /obj/machinery/bodyscanner/verb/eject()
@@ -123,22 +116,20 @@
 	add_fingerprint(usr)
 
 /obj/machinery/bodyscanner/proc/go_out()
-	if ((!(occupant) || src.locked))
+	if(!occupant || src.locked)
 		return
-	if (occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-	occupant.loc = src.loc
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 	return
 
-/obj/machinery/bodyscanner/ex_act(severity)
+/obj/machinery/bodyscanner/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				ex_act(severity)
+				legacy_ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
 			qdel(src)
@@ -147,7 +138,7 @@
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
 				qdel(src)
@@ -156,7 +147,7 @@
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
 				qdel(src)
@@ -167,11 +158,11 @@
 //Body Scan Console
 /obj/machinery/body_scanconsole
 	var/obj/machinery/bodyscanner/scanner
-	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif) //VOREStation Add - Backup Implant, NIF
+	var/known_implants = list(/obj/item/implant/health, /obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/language, /obj/item/implant/language/eal, /obj/item/implant/backup, /obj/item/nif, /obj/item/implant/mirror)
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2_vr.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_terminal_off"
 	dir = 8
 	density = 1
@@ -179,6 +170,7 @@
 	circuit = /obj/item/circuitboard/scanner_console
 	var/printing = null
 	var/printing_text = null
+	var/mirror = null
 
 /obj/machinery/body_scanconsole/Initialize(mapload, newdir)
 	. = ..()
@@ -203,29 +195,18 @@
 				var/obj/machinery/bodyscanner/C = P.connectable
 				scanner = C
 				C.console = src
-				to_chat(user, "<span class='warning'> You link the [src] to the [P.connectable]!</span>")
+				to_chat(user, SPAN_WARNING("You link the [src] to the [P.connectable]!"))
 		else
-			to_chat(user, "<span class='warning'> You store the [src] in the [P]'s buffer!</span>")
+			to_chat(user, SPAN_WARNING("You store the [src] in the [P]'s buffer!"))
 			P.connectable = src
 		return
 	else
 		return attack_hand(user)
 
 /obj/machinery/body_scanconsole/power_change()
-	/* VOREStation Removal
-	if(stat & BROKEN)
-		icon_state = "body_scannerconsole-p"
-	else if(powered() && !panel_open)
-		icon_state = initial(icon_state)
-		stat &= ~NOPOWER
-	else
-		spawn(rand(0, 15))
-			icon_state = "body_scannerconsole-p"
-			stat |= NOPOWER
-	*/
-	update_icon() //icon_state = "body_scanner_1" //VOREStation Edit - Health display for consoles with light and such.
+	update_icon() //Health display for consoles with light and such.
 
-/obj/machinery/body_scanconsole/ex_act(severity)
+/obj/machinery/body_scanconsole/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null
@@ -256,20 +237,21 @@
 	return attack_hand(user)
 
 /obj/machinery/body_scanconsole/attack_ghost(user as mob)
+	. = ..()
 	return attack_hand(user)
 
-/obj/machinery/body_scanconsole/attack_hand(user as mob)
-	if(stat & (NOPOWER|BROKEN))
+/obj/machinery/body_scanconsole/attack_hand(mob/user, list/params)
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	if(!scanner)
 		findscanner()
 		if(!scanner)
-			to_chat(user, "<span class='notice'>Scanner not found!</span>")
+			to_chat(user, SPAN_NOTICE("Scanner not found!"))
 			return
 
 	if (scanner.panel_open)
-		to_chat(user, "<span class='notice'>Close the maintenance panel first.</span>")
+		to_chat(user, SPAN_NOTICE("Close the maintenance panel first."))
 		return
 
 	if(scanner)
@@ -282,10 +264,11 @@
 
 	if(scanner)
 		data["occupied"] = scanner.occupant ? 1 : 0
+		mirror = null
 
 		var/occupantData[0]
 		if(scanner.occupant && ishuman(scanner.occupant))
-			update_icon() //VOREStation Edit - Health display for consoles with light and such.
+			update_icon() // Update health display for consoles with light and such.
 			var/mob/living/carbon/human/H = scanner.occupant
 			occupantData["name"] = H.name
 			occupantData["stat"] = H.stat
@@ -302,8 +285,8 @@
 			occupantData["radLoss"] = H.radiation
 			occupantData["cloneLoss"] = H.getCloneLoss()
 			occupantData["brainLoss"] = H.getBrainLoss()
-			occupantData["paralysis"] = H.paralysis
-			occupantData["paralysisSeconds"] = round(H.paralysis / 4)
+			occupantData["paralysis"] = H.is_unconscious()
+			occupantData["paralysisSeconds"] = round(H.is_unconscious()?.time_left() / 10)
 			occupantData["bodyTempC"] = H.bodytemperature-T0C
 			occupantData["bodyTempF"] = (((H.bodytemperature-T0C) * 1.8) + 32)
 
@@ -351,6 +334,8 @@
 					implantSubData["name"] = I.name
 					if(is_type_in_list(I, known_implants))
 						implantSubData["known"] = 1
+					for(var/obj/item/implant/mirror/P in E.implants)
+						mirror = P
 
 					implantData.Add(list(implantSubData))
 
@@ -370,7 +355,7 @@
 					organStatus["bleeding"] = 1
 				if(E.status & ORGAN_DEAD)
 					organStatus["dead"] = 1
-				for(var/datum/wound/W in E.wounds)
+				for(var/datum/wound/W as anything in E.wounds)
 					if(W.internal)
 						organStatus["internalBleeding"] = 1
 						break
@@ -388,7 +373,7 @@
 			for(var/obj/item/organ/I in H.internal_organs)
 				var/organData[0]
 				organData["name"] = I.name
-				if(I.status & ORGAN_ASSISTED)
+				if(I.robotic == ORGAN_ASSISTED)
 					organData["desc"] = "Assisted"
 				else if(I.robotic >= ORGAN_ROBOT)
 					organData["desc"] = "Mechanical"
@@ -401,9 +386,9 @@
 
 			occupantData["intOrgan"] = intOrganData
 
-			occupantData["blind"] = (H.sdisabilities & BLIND)
-			occupantData["nearsighted"] = (H.disabilities & NEARSIGHTED)
-			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H)) //VOREStation Insert
+			occupantData["blind"] = (H.sdisabilities & SDISABILITY_NERVOUS)
+			occupantData["nearsighted"] = (H.disabilities & DISABILITY_NEARSIGHTED)
+			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H))
 		data["occupant"] = occupantData
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
@@ -423,7 +408,7 @@
 
 		if (!(printing) && printing_text)
 			printing = 1
-			visible_message("<span class='notice'>\The [src] rattles and prints out a sheet of paper.</span>")
+			visible_message(SPAN_NOTICE("\The [src] rattles and prints out a sheet of paper."))
 			playsound(src, 'sound/machines/printer.ogg', 50, 1)
 			var/obj/item/paper/P = new /obj/item/paper(loc)
 			P.info = "<CENTER><B>Body Scan - [href_list["name"]]</B></CENTER><BR>"
@@ -434,12 +419,23 @@
 			printing = null
 			printing_text = null
 
+	if (href_list["backup"])
+		if(mirror != null)
+			var/obj/item/implant/mirror/E = mirror
+			E.post_implant(scanner.occupant)
+			visible_message(SPAN_NOTICE("Manual backup complete."))
+		else
+			visible_message(SPAN_NOTICE("No mirror detected!"))
+		return
+
+
+
 /obj/machinery/body_scanconsole/proc/generate_printing_text()
 	var/dat = ""
 
 	if(scanner)
 		var/mob/living/carbon/human/occupant = scanner.occupant
-		dat = "<font color='blue'><b>Occupant Statistics:</b></font><br>" //Blah obvious
+		dat = "<font color=#4F49AF><b>Occupant Statistics:</b></font><br>" //Blah obvious
 		if(istype(occupant)) //is there REALLY someone in there?
 			var/t1
 			switch(occupant.stat) // obvious, see what their status is
@@ -467,7 +463,7 @@
 			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
 
-			extra_font = "<font color=[occupant.radiation < 10 ? "blue" : "red"]>"
+			extra_font = "<font color=[occupant.radiation < 400 ? "blue" : "red"]>"
 			dat += "[extra_font]\tRadiation Level %: [occupant.radiation]</font><br>"
 
 			extra_font = "<font color=[occupant.getCloneLoss() < 1 ? "blue" : "red"]>"
@@ -476,7 +472,7 @@
 			extra_font = "<font color=[occupant.getBrainLoss() < 1 ? "blue" : "red"]>"
 			dat += "[extra_font]\tApprox. Brain Damage %: [occupant.getBrainLoss()]</font><br>"
 
-			dat += "Paralysis Summary %: [occupant.paralysis] ([round(occupant.paralysis / 4)] seconds left!)<br>"
+			dat += "Paralysis Summary: [round(occupant.is_unconscious()?.time_left() / 10)] seconds left!)<br>"
 			dat += "Body Temperature: [occupant.bodytemperature-T0C]&deg;C ([occupant.bodytemperature*1.8-459.67]&deg;F)<br>"
 
 			dat += "<hr>"
@@ -521,9 +517,10 @@
 				var/internal_bleeding = ""
 				var/lung_ruptured = ""
 				var/o_dead = ""
-				for(var/datum/wound/W in e.wounds) if(W.internal)
-					internal_bleeding = "<br>Internal bleeding"
-					break
+				for(var/datum/wound/W as anything in e.wounds)
+					if(W.internal)
+						internal_bleeding = "<br>Internal bleeding"
+						break
 				if(istype(e, /obj/item/organ/external/chest) && occupant.is_lung_ruptured())
 					lung_ruptured = "Lung ruptured:"
 				if(e.splinted)
@@ -563,7 +560,7 @@
 
 				if(unknown_body)
 					imp += "Unknown body present:"
-				if(!AN && !open && !infected & !imp)
+				if(!AN && !open && !infected && !imp)
 					AN = "None:"
 				if(!(e.status & ORGAN_DESTROYED))
 					dat += "<td>[e.name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][infected][imp][internal_bleeding][lung_ruptured][o_dead]</td>"
@@ -573,7 +570,7 @@
 			for(var/obj/item/organ/i in occupant.internal_organs)
 				var/mech = ""
 				var/i_dead = ""
-				if(i.status & ORGAN_ASSISTED)
+				if(i.robotic == ORGAN_ASSISTED)
 					mech = "Assisted:"
 				if(i.robotic >= ORGAN_ROBOT)
 					mech = "Mechanical:"
@@ -600,9 +597,9 @@
 				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
 				dat += "</tr>"
 			dat += "</table>"
-			if(occupant.sdisabilities & BLIND)
+			if(occupant.sdisabilities & SDISABILITY_NERVOUS)
 				dat += "<font color='red'>Cataracts detected.</font><BR>"
-			if(occupant.disabilities & NEARSIGHTED)
+			if(occupant.disabilities & DISABILITY_NEARSIGHTED)
 				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
 		else
 			dat += "\The [src] is empty."
@@ -634,7 +631,7 @@
 	return incoming
 
 /obj/machinery/bodyscanner/update_icon()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_off"
 		set_light(0)
 	else
@@ -661,7 +658,7 @@
 			console.update_icon(h_ratio)
 
 /obj/machinery/body_scanconsole/update_icon(var/h_ratio)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		icon_state = "scanner_terminal_off"
 		set_light(0)
 	else

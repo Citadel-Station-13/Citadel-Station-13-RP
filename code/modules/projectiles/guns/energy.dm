@@ -1,6 +1,6 @@
 /obj/item/gun/energy
 	name = "energy gun"
-	desc = "A basic energy-based gun."
+	desc = "A basic energy-based gun. NanoTrasen, Hephaestus, Ward-Takahashi, and countless other smaller corporations have their own version of this reliable design."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "energy"
 	fire_sound_text = "laser blast"
@@ -13,7 +13,7 @@
 
 	var/accept_cell_type = /obj/item/cell/device
 	var/cell_type = /obj/item/cell/device/weapon
-	projectile_type = /obj/item/projectile/beam/practice
+	projectile_type = /obj/projectile/beam/practice
 
 	var/modifystate
 	var/charge_meter = 1	//if set, the icon state will be chosen based on the current charge
@@ -105,9 +105,12 @@
 	update_icon()
 
 /obj/item/gun/energy/consume_next_projectile()
-	if(!power_supply) return null
-	if(!ispath(projectile_type)) return null
-	if(!power_supply.checked_use(charge_cost)) return null
+	if(!power_supply)
+		return null
+	if(!ispath(projectile_type))
+		return null
+	if(!power_supply.checked_use(charge_cost))
+		return null
 	return new projectile_type(src)
 
 /obj/item/gun/energy/proc/load_ammo(var/obj/item/C, mob/user)
@@ -122,11 +125,11 @@
 			else
 				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
 				if(do_after(user, 5 * P.w_class))
-					user.remove_from_mob(P)
+					if(!user.attempt_insert_item_for_installation(P, src))
+						return
 					power_supply = P
-					P.loc = src
 					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
-					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 					update_icon()
 					update_held_icon()
 		else
@@ -142,7 +145,7 @@
 		power_supply.update_icon()
 		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
 		power_supply = null
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		update_icon()
 		update_held_icon()
 	else
@@ -152,8 +155,8 @@
 	..()
 	load_ammo(A, user)
 
-/obj/item/gun/energy/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+/obj/item/gun/energy/attack_hand(mob/user, list/params)
+	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else
 		return ..()
@@ -162,12 +165,12 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/rig_module))
-		var/obj/item/rig_module/module = src.loc
+	if(istype(src.loc, /obj/item/hardsuit_module))
+		var/obj/item/hardsuit_module/module = src.loc
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)
-				var/obj/item/rig/suit = H.back
+				var/obj/item/hardsuit/suit = H.back
 				if(istype(suit))
 					return suit.cell
 	return null
@@ -184,7 +187,8 @@
 		. += "Does not have a power cell."
 	return
 
-/obj/item/gun/energy/update_icon(var/ignore_inhands)
+/obj/item/gun/energy/update_icon(ignore_inhands)
+	. = ..()
 	if(power_supply == null)
 		if(modifystate)
 			icon_state = "[modifystate]_open"
@@ -192,7 +196,7 @@
 			icon_state = "[initial(icon_state)]_open"
 		return
 	else if(charge_meter)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+		var/ratio = power_supply.percent() * 0.01
 
 		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
 		if(power_supply.charge < charge_cost)
@@ -211,7 +215,8 @@
 		else
 			icon_state = "[initial(icon_state)]"
 
-	if(!ignore_inhands) update_held_icon()
+	if(!ignore_inhands)
+		update_held_icon()
 
 /obj/item/gun/energy/proc/start_recharge()
 	if(power_supply == null)
@@ -220,15 +225,20 @@
 	START_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/item/gun/energy/get_description_interaction()
+/obj/item/gun/energy/get_description_interaction(mob/user)
 	var/list/results = list()
 
 	if(!battery_lock && !self_recharge)
 		if(power_supply)
-			results += "[desc_panel_image("offhand")]to remove the weapon cell."
+			results += "[desc_panel_image("offhand", user)]to remove the weapon cell."
 		else
 			results += "[desc_panel_image("weapon cell")]to add a new weapon cell."
 
 	results += ..()
 
 	return results
+
+/obj/item/gun/energy/inducer_scan(obj/item/inducer/I, list/things_to_induce, inducer_flags)
+	if(inducer_flags & INDUCER_NO_GUNS)
+		return
+	return ..()

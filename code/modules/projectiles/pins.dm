@@ -12,14 +12,15 @@
 	var/obj/item/gun/gun
 	var/emagged = 0
 
-/obj/item/firing_pin/Initialize(newloc)
+/obj/item/firing_pin/Initialize(mapload)
 	. = ..()
-	if(istype(newloc, /obj/item/gun))
-		gun = newloc
+	if(istype(loc, /obj/item/gun))
+		gun = loc
 
 /obj/item/firing_pin/Destroy()
 	if(gun)
 		gun.pin = null
+		gun = null
 	return ..()
 
 /obj/item/firing_pin/afterattack(atom/target, mob/user, proximity_flag)
@@ -42,16 +43,14 @@
 				to_chat(user, "<span class ='notice'>This firearm already has a firing pin installed.</span>")
 
 /obj/item/firing_pin/proc/gun_insert(mob/living/user, obj/item/gun/G)
-	user.drop_item()
-	forceMove(G)
+	if(!user.attempt_insert_item_for_installation(src, G))
+		return
 	G.pin = src
 	to_chat(user, "<span class ='notice'>You insert [src] into [G].</span>")
-	return
 
 /obj/item/firing_pin/proc/gun_remove(obj/item/gun/G)
 	G.pin = null
 	qdel(src)
-	return
 
 /obj/item/firing_pin/proc/pin_auth(mob/living/user)
 	return TRUE
@@ -177,7 +176,7 @@
 	desc = "A firing pin used to prevent weapon discharge on the station."
 	icon_state = "firing_pin_explorer"
 	fail_message = "<span class='warning'>CANNOT FIRE WHILE ON STATION.</span>"
-	req_access = list(access_armory) //for toggling safety
+	req_access = list(ACCESS_SECURITY_ARMORY) //for toggling safety
 	var/locked = 1
 
 // This checks that the user isn't on the station Z-level.
@@ -185,9 +184,16 @@
 	var/turf/T = get_turf(src)
 	if(!locked)
 		return TRUE
-	if(T.z in GLOB.using_map.station_levels)
+	return !onstation_weapon_locked(T.z)
+
+/// Checks for facility weapon safety interlocks. Returns TRUE if weapons should lock.
+/proc/onstation_weapon_locked(z)
+	if(!z)
 		return FALSE
-	return TRUE
+	var/lock_override = SSmapping.level_trait(z, ZTRAIT_FACILITY_SAFETY)
+	if(isnull(lock_override))
+		return SSmapping.level_trait(z, ZTRAIT_STATION)
+	return lock_override
 
 //Allows swiping an armoury access ID on an explorer locked gun to unlock it
 /obj/item/gun/attackby(obj/item/I, mob/user)

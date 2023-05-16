@@ -6,9 +6,10 @@
 	removable_components = FALSE
 	load_type = /obj/item/rcd_ammo
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_MAGNET = 4)
-	projectile_type = /obj/item/projectile/bullet/magnetic/slug
+	projectile_type = /obj/projectile/bullet/magnetic/slug
 	power_cost = 300
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	slot_flags = SLOT_BELT
 	loaded = /obj/item/rcd_ammo/large
 	slowdown = 1	// Slowdown equals slowdown_worn, until we decide to import the system to differentiate between held and worn items
@@ -100,7 +101,7 @@
 
 	power_cost = 100
 	load_type = /obj/item/magnetic_ammo
-	projectile_type = /obj/item/projectile/bullet/magnetic/flechette
+	projectile_type = /obj/projectile/bullet/magnetic/flechette
 	loaded = /obj/item/magnetic_ammo
 	empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
@@ -131,13 +132,13 @@
 	slowdown_worn = 0
 
 	power_cost = 400
-	projectile_type = /obj/item/projectile/bullet/magnetic/heated
+	projectile_type = /obj/projectile/bullet/magnetic/heated
 	loaded = null
 	empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	firemodes = list(
-		list(mode_name="high power", power_cost = 400, projectile_type = /obj/item/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=15),
-		list(mode_name="low power", power_cost = 150, projectile_type = /obj/item/projectile/bullet/magnetic/heated/weak, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=15),
+		list(mode_name="high power", power_cost = 400, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=15),
+		list(mode_name="low power", power_cost = 150, projectile_type = /obj/projectile/bullet/magnetic/heated/weak, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=15),
 		)
 
 /obj/item/gun/magnetic/railgun/heater/pistol
@@ -156,8 +157,8 @@
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 
 	firemodes = list(
-		list(mode_name="lethal", power_cost = 2000, projectile_type = /obj/item/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
-		list(mode_name="stun", power_cost = 1500, projectile_type = /obj/item/projectile/energy/electrode/stunshot, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=0),
+		list(mode_name="lethal", power_cost = 2000, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
+		list(mode_name="stun", power_cost = 1500, projectile_type = /obj/projectile/energy/electrode/stunshot, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=0),
 		)
 
 /obj/item/gun/magnetic/railgun/heater/pistol/hos
@@ -168,8 +169,8 @@
 	description_antag = "This weapon starts with a DNA locking chip attached. Using an EMAG on the weapon will disarm it, and allow you to use the chip as your own."
 
 	firemodes = list(
-		list(mode_name="lethal", power_cost = 1500, projectile_type = /obj/item/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
-		list(mode_name="stun", power_cost = 1200, projectile_type = /obj/item/projectile/energy/electrode/stunshot, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=0),
+		list(mode_name="lethal", power_cost = 1500, projectile_type = /obj/projectile/bullet/magnetic/heated, burst=1, fire_delay=8, move_delay=null, one_handed_penalty=0),
+		list(mode_name="stun", power_cost = 1200, projectile_type = /obj/projectile/energy/electrode/stunshot, burst=1, fire_delay=5, move_delay=null, one_handed_penalty=0),
 		)
 
 /obj/item/gun/magnetic/railgun/flechette/sif
@@ -187,7 +188,7 @@
 	slowdown = 0.3
 
 	power_cost = 200
-	projectile_type = /obj/item/projectile/bullet/magnetic/flechette/hunting
+	projectile_type = /obj/projectile/bullet/magnetic/flechette/hunting
 	empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	firemodes = list(

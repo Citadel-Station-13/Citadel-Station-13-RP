@@ -42,8 +42,8 @@
 
 	var/display_numerical_stacking = FALSE			//stack things of the same type and show as a single object with a number.
 
-	var/obj/screen/storage/boxes					//storage display object
-	var/obj/screen/close/closer						//close button object
+	var/atom/movable/screen/storage/boxes					//storage display object
+	var/atom/movable/screen/close/closer						//close button object
 
 	var/allow_big_nesting = FALSE					//allow storage objects of the same or greater size.
 
@@ -57,8 +57,8 @@
 	var/screen_max_rows = INFINITY
 	var/screen_pixel_x = 16								//These two are pixel values for screen loc of boxes and closer
 	var/screen_pixel_y = 16
-	var/screen_start_x = 4								//These two are where the storage starts being rendered, screen_loc wise.
-	var/screen_start_y = 2
+	var/screen_start_x = 3								//These two are where the storage starts being rendered, screen_loc wise.
+	var/screen_start_y = 1
 	//End
 
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
@@ -144,7 +144,7 @@
 	var/obj/item/I = parent
 	modeswitch_action = new(I)
 	RegisterSignal(modeswitch_action, COMSIG_ACTION_TRIGGER, .proc/action_trigger)
-	if(I.obj_flags & IN_INVENTORY)
+	if(I.obj_flags & ITEM_IN_INVENTORY)
 		var/mob/M = I.loc
 		if(!istype(M))
 			return
@@ -215,7 +215,7 @@
 		return
 	var/datum/progressbar/progress = new(M, len, I.loc)
 	var/list/rejections = list()
-	while(do_after(M, 10, TRUE, parent, FALSE, CALLBACK(src, .proc/handle_mass_pickup, things, I.loc, rejections, progress)))
+	while(do_after(M, 10, parent, DO_AFTER_NO_PROGRESS, additional_checks = CALLBACK(src, .proc/handle_mass_pickup, things, I.loc, rejections, progress)))
 		stoplag(1)
 	qdel(progress)
 	to_chat(M, "<span class='notice'>You put everything you could [insert_preposition] [parent].</span>")
@@ -273,7 +273,7 @@
 	var/turf/T = get_turf(A)
 	var/list/things = contents()
 	var/datum/progressbar/progress = new(M, length(things), T)
-	while (do_after(M, 10, TRUE, T, FALSE, CALLBACK(src, .proc/mass_remove_from_storage, T, things, progress)))
+	while(do_after(M, 10, T, DO_AFTER_NO_PROGRESS, additional_checks = CALLBACK(src, .proc/mass_remove_from_storage, T, things, progress)))
 		stoplag(1)
 	qdel(progress)
 
@@ -341,14 +341,14 @@
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
 /datum/component/storage/proc/standard_orient_objs(rows, cols, list/obj/item/numerical_display_contents)
-	boxes.screen_loc = "[screen_start_x]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y] to [screen_start_x+cols-1]:[screen_pixel_x],[screen_start_y+rows-1]:[screen_pixel_y]"
+	boxes.screen_loc = "LEFT+[screen_start_x]:[screen_pixel_x],BOTTOM+[screen_start_y]:[screen_pixel_y] to LEFT+[screen_start_x+cols-1]:[screen_pixel_x],BOTTOM+[screen_start_y+rows-1]:[screen_pixel_y]"
 	var/cx = screen_start_x
 	var/cy = screen_start_y
 	if(islist(numerical_display_contents))
 		for(var/type in numerical_display_contents)
 			var/datum/numbered_display/ND = numerical_display_contents[type]
 			ND.sample_object.mouse_opacity = MOUSE_OPACITY_OPAQUE
-			ND.sample_object.screen_loc = "[cx]:[screen_pixel_x],[cy]:[screen_pixel_y]"
+			ND.sample_object.screen_loc = "LEFT+[cx]:[screen_pixel_x],BOTTOM+[cy]:[screen_pixel_y]"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.layer = ABOVE_HUD_LAYER
 			ND.sample_object.plane = ABOVE_HUD_PLANE
@@ -364,7 +364,7 @@
 			if(QDELETED(O))
 				continue
 			O.mouse_opacity = MOUSE_OPACITY_OPAQUE //This is here so storage items that spawn with contents correctly have the "click around item to equip"
-			O.screen_loc = "[cx]:[screen_pixel_x],[cy]:[screen_pixel_y]"
+			O.screen_loc = "LEFT+[cx]:[screen_pixel_x],BOTTOM+[cy]:[screen_pixel_y]"
 			O.maptext = ""
 			O.layer = ABOVE_HUD_LAYER
 			O.plane = ABOVE_HUD_PLANE
@@ -374,7 +374,7 @@
 				cy++
 				if(cy - screen_start_y >= rows)
 					break
-	closer.screen_loc = "[screen_start_x + cols]:[screen_pixel_x],[screen_start_y]:[screen_pixel_y]"
+	closer.screen_loc = "LEFT+[screen_start_x + cols]:[screen_pixel_x],BOTTOM+[screen_start_y]:[screen_pixel_y]"
 
 /datum/component/storage/proc/show_to(mob/M)
 	if(!M.client)
@@ -427,18 +427,18 @@
 	var/atom/real_location = real_location()
 	var/cx = tx
 	var/cy = ty
-	boxes.screen_loc = "[tx]:,[ty] to [mx],[my]"
+	boxes.screen_loc = "LEFT+[tx]:,BOTTOM+[ty] to LEFT+[mx],BOTTOM+[my]"
 	for(var/obj/O in real_location)
 		if(QDELETED(O))
 			continue
-		O.screen_loc = "[cx],[cy]"
+		O.screen_loc = "LEFT+[cx],BOTTOM+[cy]"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
 		cx++
 		if(cx > mx)
 			cx = tx
 			cy--
-	closer.screen_loc = "[mx+1],[my]"
+	closer.screen_loc = "LEFT+[mx+1],BOTTOM+[my]"
 
 //Resets something that is being removed from storage.
 /datum/component/storage/proc/_removal_reset(atom/movable/thing)
@@ -549,14 +549,14 @@
 	// this must come before the screen objects only block, dunno why it wasn't before
 	if(over_object == M)
 		user_show_to_mob(M)
-	if(!istype(over_object, /obj/screen))
+	if(!istype(over_object, /atom/movable/screen))
 		dump_content_at(over_object, M)
 		return
 	if(A.loc != M)
 		return
 	playsound(A, "rustle", 50, TRUE, -5)
-	if(istype(over_object, /obj/screen/inventory/hand))
-		var/obj/screen/inventory/hand/H = over_object
+	if(istype(over_object, /atom/movable/screen/inventory/hand))
+		var/atom/movable/screen/inventory/hand/H = over_object
 		M.putItemFromInventoryInHandIfPossible(A, H.held_index)
 		return
 	A.add_fingerprint(M)
@@ -584,7 +584,7 @@
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /datum/component/storage/proc/can_be_inserted(obj/item/I, stop_messages = FALSE, mob/M)
-	if(!istype(I) || (I.item_flags & ABSTRACT))
+	if(!istype(I) || (I.item_flags & ITEM_ABSTRACT))
 		return FALSE //Not an item
 	if(I == parent)
 		return FALSE	//no paradoxes for you
@@ -628,10 +628,6 @@
 			if(!stop_messages)
 				to_chat(M, "<span class='warning'>[IP] cannot hold [I] as it's a storage item of the same size!</span>")
 			return FALSE //To prevent the stacking of same sized storage items.
-	if(HAS_TRAIT(I, TRAIT_NODROP)) //SHOULD be handled in unEquip, but better safe than sorry.
-		if(!stop_messages)
-			to_chat(M, "<span class='warning'>\the [I] is stuck to your hand, you can't put it in \the [host]!</span>")
-		return FALSE
 	var/datum/component/storage/concrete/master = master()
 	if(!istype(master))
 		return FALSE
@@ -680,7 +676,7 @@
 /datum/component/storage/proc/signal_can_insert(datum/source, obj/item/I, mob/M, silent = FALSE)
 	return can_be_inserted(I, silent, M)
 
-/datum/component/storage/proc/show_to_ghost(datum/source, mob/dead/observer/M)
+/datum/component/storage/proc/show_to_ghost(datum/source, mob/observer/dead/M)
 	return user_show_to_mob(M, TRUE)
 
 /datum/component/storage/proc/signal_show_attempt(datum/source, mob/showto, force = FALSE)

@@ -21,18 +21,48 @@
 
 /obj/random/trash/item_to_spawn()
 	return pick(/obj/effect/decal/remains/lizard,
-				/obj/effect/decal/cleanable/blood/gibs/robot,
-				/obj/effect/decal/cleanable/blood/oil,
-				/obj/effect/decal/cleanable/blood/oil/streak,
-				/obj/effect/decal/cleanable/spiderling_remains,
+				/obj/effect/debris/cleanable/blood/gibs/robot,
+				/obj/effect/debris/cleanable/blood/oil,
+				/obj/effect/debris/cleanable/blood/oil/streak,
+				/obj/effect/debris/cleanable/spiderling_remains,
 				/obj/effect/decal/remains/mouse,
-				/obj/effect/decal/cleanable/vomit,
-				/obj/effect/decal/cleanable/blood/splatter,
-				/obj/effect/decal/cleanable/ash,
-				/obj/effect/decal/cleanable/generic,
-				/obj/effect/decal/cleanable/flour,
-				/obj/effect/decal/cleanable/dirt,
+				/obj/effect/debris/cleanable/vomit,
+				/obj/effect/debris/cleanable/blood/splatter,
+				/obj/effect/debris/cleanable/ash,
+				/obj/effect/debris/cleanable/generic,
+				/obj/effect/debris/cleanable/flour,
+				/obj/effect/debris/cleanable/dirt,
 				/obj/effect/decal/remains/robot)
+
+/obj/random/crate //Random 'standard' crates for variety in maintenance spawns.
+	name = "random crate"
+	desc = "This is a random crate"
+	icon = 'icons/obj/closets/bases/crate.dmi'
+	icon_state = "base"
+
+/obj/random/crate/item_to_spawn() //General crates, excludes some more high-grade and medical brands
+	return pick (/obj/structure/closet/crate/plastic,
+				/obj/structure/closet/crate/aether,
+				/obj/structure/closet/crate/centauri,
+				/obj/structure/closet/crate/einstein,
+				/obj/structure/closet/crate/focalpoint,
+				/obj/structure/closet/crate/gilthari,
+				/obj/structure/closet/crate/grayson,
+				/obj/structure/closet/crate/nanotrasen,
+				/obj/structure/closet/crate/nanothreads,
+				/obj/structure/closet/crate/oculum,
+				/obj/structure/closet/crate/ward,
+				/obj/structure/closet/crate/xion,
+				/obj/structure/closet/crate/zenghu,
+				/obj/structure/closet/crate/allico,
+				/obj/structure/closet/crate/carp,
+				/obj/structure/closet/crate/galaksi,
+				/obj/structure/closet/crate/thinktronic,
+				/obj/structure/closet/crate/ummarcar,
+				/obj/structure/closet/crate/unathi,
+				/obj/structure/closet/crate/hydroponics,
+				/obj/structure/closet/crate/engineering,
+				/obj/structure/closet/crate)
 
 /obj/random/obstruction //Large objects to block things off in maintenance
 	name = "random obstruction"
@@ -221,7 +251,7 @@
 				/obj/structure/closet/crate
 			),
 			prob(2);list(
-				/obj/item/rig/industrial/equipped,
+				/obj/item/hardsuit/industrial/equipped,
 				/obj/item/storage/bag/ore,
 				/obj/structure/closet/crate/engineering
 			),
@@ -250,8 +280,8 @@
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
 				/obj/item/clothing/suit/space/syndicate/black/red,
 				/obj/item/clothing/head/helmet/space/syndicate/black/red,
-				/obj/item/gun/projectile/automatic/mini_uzi,
-				/obj/item/gun/projectile/automatic/mini_uzi,
+				/obj/item/gun/ballistic/automatic/mini_uzi,
+				/obj/item/gun/ballistic/automatic/mini_uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi,
 				/obj/item/ammo_magazine/m45uzi/empty,
@@ -267,8 +297,8 @@
 			prob(2);list(
 				/obj/item/clothing/suit/armor/vest,
 				/obj/item/clothing/suit/armor/vest,
-				/obj/item/gun/projectile/garand,
-				/obj/item/gun/projectile/garand,
+				/obj/item/gun/ballistic/garand,
+				/obj/item/gun/ballistic/garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/item/ammo_magazine/m762garand,
 				/obj/structure/closet/crate/plastic
@@ -348,15 +378,15 @@
 				/obj/item/clothing/head/bearpelt,
 				/obj/item/clothing/under/soviet,
 				/obj/item/clothing/under/soviet,
-				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
-				/obj/item/gun/projectile/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial,
+				/obj/item/gun/ballistic/shotgun/pump/rifle/ceremonial,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
-				/obj/item/gun/projectile/revolver/detective,
-				/obj/item/gun/projectile/contender,
-				/obj/item/gun/projectile/p92x,
-				/obj/item/gun/projectile/derringer,
+				/obj/item/gun/ballistic/revolver/detective,
+				/obj/item/gun/ballistic/contender,
+				/obj/item/gun/ballistic/p92x,
+				/obj/item/gun/ballistic/derringer,
 				/obj/structure/closet/crate
 			),
 			prob(1);list(
@@ -371,9 +401,9 @@
 				/obj/item/vampiric,
 				/obj/structure/closet/crate/science
 			),
-			prob(1);list(
-				/obj/item/archaeological_find
-			),
+			//prob(1);list(
+			//	/obj/item/archaeological_find
+			//),
 			prob(1);list(
 				/obj/item/melee/energy/sword,
 				/obj/item/melee/energy/sword,
@@ -472,3 +502,491 @@
 
 /obj/random/trash_pile/item_to_spawn()
 	return	/obj/structure/trash_pile
+
+/obj/random/multiple/corp_crate/no_weapons
+	name = "random corporate crate (no weapons)"
+	desc = "A random corporate crate with thematic contents. No weapons."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "crate"
+
+/obj/random/multiple/corp_crate/no_weapons/item_to_spawn()
+	return pick(
+			prob(10);list(
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/aether //AETHER AIRSUPPLY
+			),
+			prob(5);list(
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/aether //AETHER OLDSUITS
+			),
+			prob(10);list(
+				/obj/random/mre,
+				/obj/random/mre,
+				/obj/random/mre,
+				/obj/random/mre,
+				/obj/random/mre,
+				/obj/structure/closet/crate/centauri //CENTAURI MRES
+			),
+			prob(10);list(
+				/obj/item/reagent_containers/food/drinks/cans,
+				/obj/item/reagent_containers/food/drinks/cans,
+				/obj/item/reagent_containers/food/drinks/cans,
+				/obj/item/reagent_containers/food/drinks/cans,
+				/obj/item/reagent_containers/food/drinks/cans,
+				/obj/structure/closet/crate/freezer/centauri //CENTAURI SODA
+			),
+			prob(10);list(
+				/obj/item/reagent_containers/food/snacks,
+				/obj/item/reagent_containers/food/snacks,
+				/obj/item/reagent_containers/food/snacks,
+				/obj/item/reagent_containers/food/snacks,
+				/obj/item/reagent_containers/food/snacks,
+				/obj/structure/closet/crate/freezer/centauri //CENTAURI SNACKS
+			),
+			prob(10);list(
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/structure/closet/crate/einstein //EINSTEIN BATTERYPACK
+			),
+			prob(5);list(
+				/obj/item/circuitboard/smes,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/structure/closet/crate/focalpoint //FOCAL SMES
+			),
+			prob(10);list(
+				/obj/item/module/power_control,
+				/obj/item/stack/cable_coil,
+				/obj/item/frame/apc,
+				/obj/item/cell/high,
+				/obj/structure/closet/crate/focalpoint //FOCAL APC
+			),
+			prob(5);list(
+				/obj/random/drinkbottle,
+				/obj/random/drinkbottle,
+				/obj/random/drinkbottle,
+				/obj/random/cigarettes,
+				/obj/random/cigarettes,
+				/obj/random/cigarettes,
+				/obj/structure/closet/crate/gilthari //GILTHARI LUXURY
+			),
+			prob(10);list(
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/structure/closet/crate/grayson //GRAYSON TECH
+			),
+			prob(15);list(
+				/obj/random/multiple/ores,
+				/obj/random/multiple/ores,
+				/obj/random/multiple/ores,
+				/obj/random/multiple/ores,
+				/obj/structure/closet/crate/grayson //GRAYSON ORES
+			),
+			prob(10);list(
+				/obj/item/stack/material,
+				/obj/item/stack/material,
+				/obj/item/stack/material,
+				/obj/item/stack/material,
+				/obj/structure/closet/crate/grayson //GRAYSON MATS
+			),
+			prob(5);list(
+				/obj/item/clothing/suit/space/void/security,
+				/obj/item/clothing/head/helmet/space/void/security,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/secure/nanotrasen //NTSEC SUIT
+			),
+			prob(5);list(
+				/obj/random/multiple/voidsuit/medical,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/secure/veymed //VM SUIT
+			),
+			prob(5);list(
+				/obj/random/multiple/voidsuit/mining,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/grayson //GRAYSON SUIT
+			),
+			prob(5);list(
+				/obj/item/clothing/suit/space/void/engineering,
+				/obj/item/clothing/head/helmet/space/void/engineering,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/xion //XION SUIT
+			),
+			prob(10);list(
+				/obj/random/firstaid,
+				/obj/random/medical,
+				/obj/random/medical,
+				/obj/random/medical,
+				/obj/random/medical/lite,
+				/obj/random/medical/lite,
+				/obj/structure/closet/crate/veymed //VM GRABBAG
+			),
+			prob(10);list(
+				/obj/random/firstaid,
+				/obj/random/firstaid,
+				/obj/random/firstaid,
+				/obj/random/firstaid,
+				/obj/random/unidentified_medicine/fresh_medicine,
+				/obj/random/unidentified_medicine/fresh_medicine,
+				/obj/structure/closet/crate/veymed //VM FAKS
+			),
+			prob(10);list(
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/structure/closet/crate/xion //XION SUPPLY
+			),
+			prob(10);list(
+				/obj/random/firstaid,
+				/obj/random/medical,
+				/obj/random/medical/pillbottle,
+				/obj/random/medical/pillbottle,
+				/obj/random/medical/lite,
+				/obj/random/medical/lite,
+				/obj/structure/closet/crate/zenghu //ZENGHU GRABBAG
+			),
+			prob(10);list(
+				/obj/random/medical/pillbottle,
+				/obj/random/medical/pillbottle,
+				/obj/random/medical/pillbottle,
+				/obj/random/medical/pillbottle,
+				/obj/random/unidentified_medicine/fresh_medicine,
+				/obj/random/unidentified_medicine/fresh_medicine,
+				/obj/structure/closet/crate/zenghu //ZENGHU PILLS
+			),
+			prob(10);list(
+				/obj/item/toner,
+				/obj/item/toner,
+				/obj/item/toner,
+				/obj/item/clipboard,
+				/obj/item/clipboard,
+				/obj/item/pen/red,
+				/obj/item/pen/blue,
+				/obj/item/pen/blue,
+				/obj/item/camera_film,
+				/obj/item/folder/blue,
+				/obj/item/folder/red,
+				/obj/item/folder/yellow,
+				/obj/item/hand_labeler,
+				/obj/item/duct_tape_roll,
+				/obj/item/paper_bin,
+				/obj/structure/closet/crate/ummarcar //UMMARCAR OFFICE TRASH
+			),
+			prob(5);list(
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/item/reagent_containers/food/snacks/unajerky,
+				/obj/structure/closet/crate/unathi //UNAJERKY
+			),
+			prob(10);list(
+				/obj/item/reagent_containers/glass/bucket,
+				/obj/item/mop,
+				/obj/item/clothing/under/rank/janitor,
+				/obj/item/cartridge/janitor,
+				/obj/item/clothing/gloves/black,
+				/obj/item/clothing/head/soft/purple,
+				/obj/item/storage/belt/janitor,
+				/obj/item/clothing/shoes/galoshes,
+				/obj/item/storage/bag/trash,
+				/obj/item/lightreplacer,
+				/obj/item/reagent_containers/spray/cleaner,
+				/obj/item/reagent_containers/glass/rag,
+				/obj/item/grenade/chem_grenade/cleaner,
+				/obj/item/grenade/chem_grenade/cleaner,
+				/obj/item/grenade/chem_grenade/cleaner,
+				/obj/structure/closet/crate/galaksi //GALAKSI JANITOR SUPPLIES
+			),
+			prob(5);list(
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/item/reagent_containers/food/snacks/candy,
+				/obj/structure/closet/crate/allico //GUMMIES
+			),
+			prob(2);list(
+				/obj/item/tank/phoron,
+				/obj/item/tank/phoron,
+				/obj/structure/closet/crate/secure/phoron //HQ FUEL TANKS
+			),
+			prob(1);list(
+				/obj/random/coin,
+				/obj/random/coin,
+				/obj/random/coin,
+				/obj/random/coin,
+				/obj/structure/closet/crate/secure/saare //SAARE BULLION CRATE
+			),
+			prob(1);list(
+				/obj/random/cash,
+				/obj/random/cash,
+				/obj/random/cash,
+				/obj/random/cash,
+				/obj/random/cash,
+				/obj/random/cash,
+				/obj/structure/closet/crate/secure/saare //SAARE CASH CRATE
+			)
+		)
+
+//Large Corporate Crates
+/obj/random/multiple/large_corp_crate
+	name = "random large corporate crate"
+	desc = "A random large corporate crate with thematic contents."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "largermetal"
+
+/obj/random/multiple/large_corp_crate/item_to_spawn()
+	return pick(
+			prob(30);list(
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/large/aether //AETHER SUITSBOX
+			),
+			prob(30);list(
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/structure/closet/crate/large/einstein //EIN BATTERY MEGAPACK
+			),
+			prob(20);list(
+				/obj/item/circuitboard/smes,
+				/obj/item/circuitboard/smes,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/structure/closet/crate/large/einstein //EIN SMESBOX
+			),
+			prob(2);list(
+				/obj/random/energy,
+				/obj/random/energy,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/random/energy,
+				/obj/random/energy,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/item/cell/device/weapon,
+				/obj/structure/closet/crate/large/secure/heph //HEPH ENERGY
+			),
+			prob(2);list(
+				/obj/random/projectile/random,
+				/obj/random/projectile/random,
+				/obj/random/projectile/random,
+				/obj/random/projectile/random,
+				/obj/structure/closet/crate/large/secure/heph //HEPH BALLISTICS
+			),
+			prob(20);list(
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/structure/closet/crate/large/xion //XION TECH SUPPLY
+			),
+			prob(20);list(
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/structure/closet/crate/large/secure/xion //XION TECH COMPS
+			)
+		)
+
+/obj/random/multiple/large_corp_crate/no_weapons
+	name = "random large corporate crate (no weapons)"
+	desc = "A random large corporate crate with thematic contents. No weapons."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "largermetal"
+
+/obj/random/multiple/large_corp_crate/no_weapons/item_to_spawn()
+	return pick(
+			prob(30);list(
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/multiple/voidsuit/vintage,
+				/obj/random/tank,
+				/obj/random/tank,
+				/obj/item/clothing/mask/breath,
+				/obj/item/clothing/mask/breath,
+				/obj/structure/closet/crate/large/aether //AETHER SUITSBOX
+			),
+			prob(30);list(
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/random/powercell,
+				/obj/structure/closet/crate/large/einstein //EIN BATTERY MEGAPACK
+			),
+			prob(20);list(
+				/obj/item/circuitboard/smes,
+				/obj/item/circuitboard/smes,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/item/smes_coil,
+				/obj/structure/closet/crate/large/einstein //EIN SMESBOX
+			),
+			prob(20);list(
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/random/tech_supply/nofail,
+				/obj/structure/closet/crate/large/xion //XION TECH SUPPLY
+			),
+			prob(20);list(
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/random/tech_supply/component/nofail,
+				/obj/structure/closet/crate/large/secure/xion //XION TECH COMPS
+			)
+		)
+/obj/random/empty_or_lootable_crate
+	name = "random crate"
+	desc = "Spawns a random crate which may or may not have contents. Sometimes spawns nothing."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "moneybag"
+	spawn_nothing_percentage = 20
+
+/obj/random/empty_or_lootable_crate/item_to_spawn()
+	return pick(/obj/random/crate,
+			/obj/random/multiple/corp_crate)
+
+/obj/random/crystal
+	name = "random crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/item_to_spawn()
+	return	/obj/machinery/crystal
+
+/obj/random/crystal/ice
+	name = "random ice crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. This time its an ice crystal"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "icecrystal2"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/ice/item_to_spawn()
+	return	/obj/machinery/crystal/ice
+
+/obj/random/crystal/normal_ice
+	name = "random crystal, ice/normal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. 50/50 between ice and normal crystal spawning"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/normal_ice/item_to_spawn()
+	return pick(/obj/machinery/crystal/ice,
+				/obj/machinery/crystal)
+
+/obj/random/snow_debris
+	name = "random snow and ice debri"
+	desc = "for all your cold needs and fun :)"
+	icon = 'icons/obj/snowman.dmi'
+	icon_state = "snowman"
+
+/obj/random/snow_debris/item_to_spawn()
+	return pick(prob(100);/obj/structure/flora/rock/ice,
+				prob(100);/obj/structure/flora/rock/ice/alternative_1,
+				prob(100);/obj/structure/flora/rock/ice/alternative_2,
+				prob(80);/obj/structure/flora/grass/both,
+				prob(60);/obj/structure/flora/bush,
+				prob(40);/obj/structure/flora/tree/dead,
+				prob(1);/obj/structure/snowman,
+				prob(1);/obj/structure/snowman/borg,
+				prob(1);/obj/structure/snowman/spider,
+				prob(1);/obj/machinery/crystal/ice)

@@ -30,6 +30,8 @@
 	"Basketball" 		= new/datum/holodeck_program(/area/holodeck/source_basketball),
 	"Thunderdome"		= new/datum/holodeck_program(/area/holodeck/source_thunderdomecourt, list('sound/music/THUNDERDOME.ogg')),
 	"Beach" 			= new/datum/holodeck_program(/area/holodeck/source_beach),
+	"Chess Board" 		= new/datum/holodeck_program(/area/holodeck/source_chess),
+	"Checker Board" 	= new/datum/holodeck_program(/area/holodeck/source_checker),
 	"Desert" 			= new/datum/holodeck_program(/area/holodeck/source_desert,
 													list(
 														'sound/effects/weather/wind/wind_2_1.ogg',
@@ -73,7 +75,7 @@
 /obj/machinery/computer/HolodeckControl/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
 
-/obj/machinery/computer/HolodeckControl/attack_hand(var/mob/user as mob)
+/obj/machinery/computer/HolodeckControl/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	user.set_machine(src)
@@ -122,7 +124,7 @@
 /obj/machinery/computer/HolodeckControl/Topic(href, href_list)
 	if(..())
 		return 1
-	if((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
+	if(IsAdminGhost(usr) || (usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))) || (istype(usr, /mob/living/silicon)))
 		usr.set_machine(src)
 
 		if(href_list["program"])
@@ -194,14 +196,14 @@
 	emergencyShutdown()
 	..()
 
-/obj/machinery/computer/HolodeckControl/ex_act(severity)
+/obj/machinery/computer/HolodeckControl/legacy_ex_act(severity)
 	emergencyShutdown()
 	..()
 
 /obj/machinery/computer/HolodeckControl/power_change()
 	var/oldstat
 	..()
-	if (stat != oldstat && active && (stat & NOPOWER))
+	if (machine_stat != oldstat && active && (machine_stat & NOPOWER))
 		emergencyShutdown()
 
 /obj/machinery/computer/HolodeckControl/process(delta_time)
@@ -234,30 +236,25 @@
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(2, 1, T)
 					s.start()
-				T.ex_act(3)
+				LEGACY_EX_ACT(T, 3, null)
 				T.hotspot_expose(1000,500,1)
 
 /obj/machinery/computer/HolodeckControl/proc/derez(var/obj/obj , var/silent = 1)
-	holographic_objs.Remove(obj)
-
-	if(obj == null)
+	if(!obj)
 		return
 
-	if(isobj(obj))
-		var/mob/M = obj.loc
-		if(ismob(M))
-			M.remove_from_mob(obj)
+	holographic_objs -=obj
 
 	if(!silent)
 		var/obj/oldobj = obj
 		visible_message("The [oldobj.name] fades away!")
+
 	qdel(obj)
 
 /obj/machinery/computer/HolodeckControl/proc/checkInteg(var/area/A)
 	for(var/turf/T in A)
 		if(istype(T, /turf/space))
 			return 0
-
 	return 1
 
 //Why is it called toggle if it doesn't toggle?
@@ -310,7 +307,7 @@
 		holographic_mobs -= C
 		C.derez()
 
-	for(var/obj/effect/decal/cleanable/blood/B in linkedholodeck)
+	for(var/obj/effect/debris/cleanable/blood/B in linkedholodeck)
 		qdel(B)
 
 	holographic_objs = A.copy_contents_to(linkedholodeck , 1)
@@ -329,7 +326,7 @@
 	linkedholodeck.sound_env = A.sound_env
 
 	spawn(30)
-		for(var/obj/effect/landmark/L in linkedholodeck)
+		for(var/obj/landmark/L in linkedholodeck)
 			if(L.name=="Atmospheric Test Start")
 				spawn(20)
 					var/turf/T = get_turf(L)
@@ -378,3 +375,92 @@
 
 	active = 0
 	use_power = USE_POWER_IDLE
+
+
+// Holodorms
+//
+/obj/machinery/computer/HolodeckControl/holodorm
+	name = "Don't use this one!!!"
+	powerdown_program = "Off"
+	default_program = "Off"
+
+	//Smollodeck
+	active_power_usage = 500
+	item_power_usage = 100
+
+	supported_programs = list(
+	"Off"			= new/datum/holodeck_program(/area/holodeck/holodorm/source_off),
+	"Basic Dorm"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_basic),
+	"Table Seating"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_seating),
+	"Beach Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_beach),
+	"Desert Area"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_desert),
+	"Snow Field"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_snow),
+	"Flower Garden"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_garden),
+	"Space Sim"		= new/datum/holodeck_program(/area/holodeck/holodorm/source_space),
+	"Boxing Ring"	= new/datum/holodeck_program(/area/holodeck/holodorm/source_boxing)
+	)
+
+/obj/machinery/computer/HolodeckControl/holodorm/one
+	name = "dorm one holodeck control"
+	projection_area = /area/crew_quarters/sleep/Dorm_1/holo
+
+/obj/machinery/computer/HolodeckControl/holodorm/three
+	name = "dorm three holodeck control"
+	projection_area = /area/crew_quarters/sleep/Dorm_3/holo
+
+/obj/machinery/computer/HolodeckControl/holodorm/five
+	name = "dorm five holodeck control"
+	projection_area = /area/crew_quarters/sleep/Dorm_5/holo
+
+/obj/machinery/computer/HolodeckControl/holodorm/seven
+	name = "dorm seven holodeck control"
+	projection_area = /area/crew_quarters/sleep/Dorm_7/holo
+
+/obj/machinery/computer/HolodeckControl/holodorm/warship
+	name = "warship holodeck control"
+	projection_area = /area/mothership/holodeck/holo
+
+
+// Small Ship Holodeck
+/obj/machinery/computer/HolodeckControl/houseboat
+	projection_area = /area/houseboat/holodeck_area
+	powerdown_program = "Turn Off"
+	default_program = "Empty Court"
+
+	supported_programs = list(
+	"Basketball" 		= new/datum/holodeck_program(/area/houseboat/holodeck/basketball),
+	"Thunderdome"		= new/datum/holodeck_program(/area/houseboat/holodeck/thunderdome, list('sound/music/THUNDERDOME.ogg')),
+	"Beach" 			= new/datum/holodeck_program(/area/houseboat/holodeck/beach),
+	"Desert" 			= new/datum/holodeck_program(/area/houseboat/holodeck/desert,
+													list(
+														'sound/effects/weather/wind/wind_2_1.ogg',
+											 			'sound/effects/weather/wind/wind_2_2.ogg',
+											 			'sound/effects/weather/wind/wind_3_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_2.ogg',
+											 			'sound/effects/weather/wind/wind_5_1.ogg'
+												 		)
+		 											),
+	"Snowfield" 		= new/datum/holodeck_program(/area/houseboat/holodeck/snow,
+													list(
+														'sound/effects/weather/wind/wind_2_1.ogg',
+											 			'sound/effects/weather/wind/wind_2_2.ogg',
+											 			'sound/effects/weather/wind/wind_3_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_1.ogg',
+											 			'sound/effects/weather/wind/wind_4_2.ogg',
+											 			'sound/effects/weather/wind/wind_5_1.ogg'
+												 		)
+		 											),
+	"Space" 			= new/datum/holodeck_program(/area/houseboat/holodeck/space,
+													list(
+														'sound/ambience/ambispace.ogg',
+														'sound/music/main.ogg',
+														'sound/music/space.ogg',
+														'sound/music/traitor.ogg',
+														)
+													),
+	"Picnic Area" 		= new/datum/holodeck_program(/area/houseboat/holodeck/picnic, list('sound/music/title2.ogg')),
+	"Gaming" 			= new/datum/holodeck_program(/area/houseboat/holodeck/gaming, list('sound/music/traitor.ogg')),
+	"Bunking"			= new/datum/holodeck_program(/area/houseboat/holodeck/bunking, list()),
+	"Turn Off" 			= new/datum/holodeck_program(/area/houseboat/holodeck/off, list())
+	)

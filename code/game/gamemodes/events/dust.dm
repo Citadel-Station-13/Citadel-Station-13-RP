@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /*
 Space dust
@@ -56,7 +55,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 		var/turf/startloc = locate(startx, starty, randomz)
 		var/turf/endloc = locate(endx, endy, randomz)
 		var/obj/effect/space_dust/D = new dust_type(startloc)
-		D.setDir(GLOB.reverse_dir[startside])
+		D.setDir(global.reverse_dir[startside])
 		walk_towards(D, endloc, 1)
 
 /obj/effect/space_dust
@@ -66,7 +65,7 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 	icon_state = "space_dust"
 	density = 1
 	anchored = 1
-	var/strength = 2	// ex_act severity number
+	var/strength = 2	// legacy_ex_act severity number
 	var/life = 2	// How many things we hit before qdel(src)
 
 /obj/effect/space_dust/weak
@@ -101,9 +100,9 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 		playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
 		if(ismob(A))
-			A.ex_act(strength)	// This should work for now I guess
+			LEGACY_EX_ACT(A, strength, null)	// This should work for now I guess
 		else if(!istype(A,/obj/machinery/power/emitter) && !istype(A,/obj/machinery/field_generator))	// Protect the singularity from getting released every round!
-			A.ex_act(strength)	// Changing emitter/field gen ex_act would make it immune to bombs and C4
+			LEGACY_EX_ACT(A, strength, null)	// Changing emitter/field gen legacy_ex_act would make it immune to bombs and C4
 
 		life--
 		if(life <= 0)
@@ -115,6 +114,6 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 	hit(A)
 	return
 
-/obj/effect/space_dust/ex_act(severity)
+/obj/effect/space_dust/legacy_ex_act(severity)
 	qdel(src)
 	return

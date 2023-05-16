@@ -3,8 +3,7 @@
 	var/turf/T = get_turf(src.mob)
 	explosion_rec(T, power)
 
-/obj
-	var/explosion_resistance
+/obj/var/explosion_resistance
 
 
 
@@ -13,7 +12,7 @@ var/list/explosion_turfs = list()
 var/explosion_in_progress = 0
 
 
-proc/explosion_rec(turf/epicenter, power)
+/proc/explosion_rec(turf/epicenter, power)
 
 	var/loopbreak = 0
 	while(explosion_in_progress)
@@ -28,20 +27,20 @@ proc/explosion_rec(turf/epicenter, power)
 	message_admins("Explosion with size ([power]) in area [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z])")
 	log_game("Explosion with size ([power]) in area [epicenter.loc.name] ")
 
-	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power*2,1) )
-	playsound(epicenter, "explosion", 100, 1, round(power,1) )
+	playsound(epicenter, 'sound/soundbytes/effects/explosion/explosionfar.ogg', 100, 1, round(power*2,1) )
+	playsound(epicenter, SFX_ALIAS_EXPLOSION, 100, 1, round(power,1) )
 
 	explosion_in_progress = 1
 	explosion_turfs = list()
 
 	explosion_turfs[epicenter] = power
 
-	//This steap handles the gathering of turfs which will be ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
+	//This steap handles the gathering of turfs which will be legacy_ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(epicenter, direction)
 		T.explosion_spread(power - epicenter.explosion_resistance, direction)
 
-	//This step applies the ex_act effects for the explosion, as planned in the previous step.
+	//This step applies the legacy_ex_act effects for the explosion, as planned in the previous step.
 	for(var/turf/T in explosion_turfs)
 		if(explosion_turfs[T] <= 0) continue
 		if(!T) continue
@@ -53,42 +52,31 @@ proc/explosion_rec(turf/epicenter, power)
 		var/x = T.x
 		var/y = T.y
 		var/z = T.z
-		T.ex_act(severity)
+		LEGACY_EX_ACT(T, severity, null)
 		if(!T)
 			T = locate(x,y,z)
 		for(var/atom/A in T)
-			A.ex_act(severity)
+			LEGACY_EX_ACT(A, severity, null)
 
 	explosion_in_progress = 0
 
-/turf
-	var/explosion_resistance
+/turf/var/explosion_resistance
 
-/turf/space
-	explosion_resistance = 3
+/turf/space/explosion_resistance = 3
 
-/turf/simulated/floor
-	explosion_resistance = 1
+/turf/simulated/floor/explosion_resistance = 1
 
-/turf/simulated/mineral
-	explosion_resistance = 2
-	outdoors = TRUE // for weather
-	edge_blending_priority = 3
+/turf/simulated/mineral/explosion_resistance = 2
 
-/turf/simulated/shuttle/floor
-	explosion_resistance = 1
+/turf/simulated/shuttle/floor/explosion_resistance = 1
 
-/turf/simulated/shuttle/floor4
-	explosion_resistance = 1
+/turf/simulated/shuttle/floor4/explosion_resistance = 1
 
-/turf/simulated/shuttle/plating
-	explosion_resistance = 1
+/turf/simulated/shuttle/plating/explosion_resistance = 1
 
-/turf/simulated/shuttle/wall
-	explosion_resistance = 10
+/turf/simulated/shuttle/wall/explosion_resistance = 10
 
-/turf/simulated/wall
-	explosion_resistance = 10
+/turf/simulated/wall/explosion_resistance = 10
 
 //Code-wise, a safe value for power is something up to ~25 or ~30.. This does quite a bit of damage to the station.
 //direction is the direction that the spread took to come to this tile. So it is pointing in the main blast direction - meaning where this tile should spread most of it's force.

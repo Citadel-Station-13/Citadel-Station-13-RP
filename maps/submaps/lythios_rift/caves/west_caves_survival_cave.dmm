@@ -1,0 +1,187 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/largecrate,
+/obj/item/stack/material/steel{
+	amount = 30
+	},
+/obj/random/triumph,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"b" = (
+/obj/structure/largecrate,
+/obj/random/mre,
+/obj/random/mre,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"e" = (
+/obj/structure/inflatable/door,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"g" = (
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/turf/simulated/mineral/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"x" = (
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"y" = (
+/obj/structure/barricade,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"z" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/pickaxe,
+/obj/item/shovel,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"C" = (
+/obj/structure/table/bench/steel,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"F" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"I" = (
+/obj/item/flame/lighter/zippo/taj,
+/obj/structure/table/woodentable,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"L" = (
+/obj/structure/bonfire{
+	grill = 1
+	},
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"N" = (
+/obj/structure/inflatable,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+"O" = (
+/obj/structure/largecrate,
+/obj/fiftyspawner/log,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
+
+(1,1,1) = {"
+g
+g
+g
+n
+n
+n
+g
+g
+g
+g
+"}
+(2,1,1) = {"
+g
+n
+n
+n
+n
+n
+n
+n
+g
+g
+"}
+(3,1,1) = {"
+n
+n
+n
+I
+x
+x
+n
+n
+n
+g
+"}
+(4,1,1) = {"
+n
+n
+b
+x
+x
+x
+x
+n
+n
+g
+"}
+(5,1,1) = {"
+n
+n
+a
+C
+L
+C
+x
+n
+n
+n
+"}
+(6,1,1) = {"
+n
+n
+z
+x
+x
+x
+x
+x
+n
+n
+"}
+(7,1,1) = {"
+g
+n
+O
+x
+x
+x
+N
+N
+n
+g
+"}
+(8,1,1) = {"
+g
+n
+n
+n
+n
+x
+e
+x
+N
+y
+"}
+(9,1,1) = {"
+g
+g
+n
+n
+n
+n
+N
+e
+N
+y
+"}
+(10,1,1) = {"
+g
+g
+g
+g
+n
+n
+y
+F
+y
+g
+"}

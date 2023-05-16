@@ -28,9 +28,10 @@
 
 /datum/surgery_step/generic/cut_open
 	allowed_tools = list(
-		/obj/item/surgical/scalpel = 100,		\
-		/obj/item/material/knife = 75,	\
-		/obj/item/material/shard = 50, 		\
+		/obj/item/surgical/scalpel = 100,
+		/obj/item/surgical/scalpel_primitive = 80,
+		/obj/item/material/knife = 75,
+		/obj/item/material/shard = 50,
 	)
 	req_open = 0
 
@@ -51,20 +52,20 @@
 
 /datum/surgery_step/generic/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has made an incision on [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You have made an incision on [target]'s [affected.name] with \the [tool].</font>",)
+	user.visible_message("<font color=#4F49AF>[user] has made an incision on [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color=#4F49AF>You have made an incision on [target]'s [affected.name] with \the [tool].</font>",)
 	affected.open = 1
 
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 
 /datum/surgery_step/generic/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing open [target]'s [affected.name] in the wrong place with \the [tool]!</font>")
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Laser Scalpel Surgery
@@ -96,12 +97,12 @@
 
 /datum/surgery_step/generic/cut_with_laser/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You have made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>",)
+	user.visible_message("<font color=#4F49AF>[user] has made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color=#4F49AF>You have made a bloodless incision on [target]'s [affected.name] with \the [tool].</font>",)
 	//Could be cleaner ...
 	affected.open = 1
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	spread_germs_to_organ(affected, user)
 
@@ -109,8 +110,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips as the blade sputters, searing a long gash in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 7.5)
-	affected.createwound(BURN, 12.5)
+	affected.create_wound(CUT, 7.5)
+	affected.create_wound(BURN, 12.5)
 
 ///////////////////////////////////////////////////////////////
 // Incision Management Surgery
@@ -118,7 +119,7 @@
 
 /datum/surgery_step/generic/incision_manager
 	allowed_tools = list(
-		/obj/item/surgical/scalpel/manager = 100
+		/obj/item/surgical/scalpel/manager = 100,
 	)
 
 	priority = 2
@@ -140,14 +141,14 @@
 
 /datum/surgery_step/generic/incision_manager/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You have constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>",)
+	user.visible_message("<font color=#4F49AF>[user] has constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color=#4F49AF>You have constructed a prepared incision on and within [target]'s [affected.name] with \the [tool].</font>",)
 	affected.open = 1
 
 	if(istype(target) && target.should_have_organ(O_HEART))
 		affected.status |= ORGAN_BLEEDING
 
-	affected.createwound(CUT, 1)
+	affected.create_wound(CUT, 1)
 	affected.organ_clamp()
 	affected.open = 2
 
@@ -155,8 +156,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand jolts as the system sparks, ripping a gruesome hole in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20)
-	affected.createwound(BURN, 15)
+	affected.create_wound(CUT, 20)
+	affected.create_wound(BURN, 15)
 
 ///////////////////////////////////////////////////////////////
 // Hemostat Surgery
@@ -164,9 +165,10 @@
 
 /datum/surgery_step/generic/clamp_bleeders
 	allowed_tools = list(
-		/obj/item/surgical/hemostat = 100,	\
-		/obj/item/stack/cable_coil = 75, 	\
-		/obj/item/assembly/mousetrap = 20
+		/obj/item/surgical/hemostat = 100,
+		/obj/item/stack/cable_coil = 75,
+		/obj/item/surgical/hemostat_primitive = 50,
+		/obj/item/assembly/mousetrap = 20,
 	)
 
 	min_duration = 40
@@ -186,8 +188,8 @@
 
 /datum/surgery_step/generic/clamp_bleeders/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] clamps bleeders in [target]'s [affected.name] with \the [tool].</font>",	\
-	"<font color='blue'>You clamp bleeders in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] clamps bleeders in [target]'s [affected.name] with \the [tool].</font>",	\
+	"<font color=#4F49AF>You clamp bleeders in [target]'s [affected.name] with \the [tool].</font>")
 	affected.organ_clamp()
 	spread_germs_to_organ(affected, user)
 
@@ -195,7 +197,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, tearing blood vessals and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",	\
 	"<font color='red'>Your hand slips, tearing blood vessels and causing massive bleeding in [target]'s [affected.name] with \the [tool]!</font>",)
-	affected.createwound(CUT, 10)
+	affected.create_wound(CUT, 10)
 
 ///////////////////////////////////////////////////////////////
 // Retractor Surgery
@@ -203,8 +205,9 @@
 
 /datum/surgery_step/generic/retract_skin
 	allowed_tools = list(
-		/obj/item/surgical/retractor = 100,	\
-		/obj/item/material/kitchen/utensil/fork = 50
+		/obj/item/surgical/retractor = 100,
+		/obj/item/surgical/retractor_primitive = 75,
+		/obj/item/material/kitchen/utensil/fork = 50,
 	)
 
 	allowed_procs = list(IS_CROWBAR = 75)
@@ -233,14 +236,14 @@
 
 /datum/surgery_step/generic/retract_skin/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	var/msg = "<font color='blue'>[user] keeps the incision open on [target]'s [affected.name] with \the [tool].</font>"
-	var/self_msg = "<font color='blue'>You keep the incision open on [target]'s [affected.name] with \the [tool].</font>"
+	var/msg = "<font color=#4F49AF>[user] keeps the incision open on [target]'s [affected.name] with \the [tool].</font>"
+	var/self_msg = "<font color=#4F49AF>You keep the incision open on [target]'s [affected.name] with \the [tool].</font>"
 	if (target_zone == BP_TORSO)
-		msg = "<font color='blue'>[user] keeps the ribcage open on [target]'s torso with \the [tool].</font>"
-		self_msg = "<font color='blue'>You keep the ribcage open on [target]'s torso with \the [tool].</font>"
+		msg = "<font color=#4F49AF>[user] keeps the ribcage open on [target]'s torso with \the [tool].</font>"
+		self_msg = "<font color=#4F49AF>You keep the ribcage open on [target]'s torso with \the [tool].</font>"
 	if (target_zone == BP_GROIN)
-		msg = "<font color='blue'>[user] keeps the incision open on [target]'s lower abdomen with \the [tool].</font>"
-		self_msg = "<font color='blue'>You keep the incision open on [target]'s lower abdomen with \the [tool].</font>"
+		msg = "<font color=#4F49AF>[user] keeps the incision open on [target]'s lower abdomen with \the [tool].</font>"
+		self_msg = "<font color=#4F49AF>You keep the incision open on [target]'s lower abdomen with \the [tool].</font>"
 	user.visible_message(msg, self_msg)
 	affected.open = 2
 
@@ -263,10 +266,11 @@
 
 /datum/surgery_step/generic/cauterize
 	allowed_tools = list(
-		/obj/item/surgical/cautery = 100,			\
-		/obj/item/clothing/mask/smokable/cigarette = 75,	\
-		/obj/item/flame/lighter = 50,			\
-		/obj/item/weldingtool = 25
+		/obj/item/surgical/cautery = 100,
+		/obj/item/clothing/mask/smokable/cigarette = 75,
+		/obj/item/surgical/cautery_primitive = 70,
+		/obj/item/flame/lighter = 50,
+		/obj/item/weldingtool = 25,
 	)
 
 	min_duration = 70
@@ -286,8 +290,8 @@
 
 /datum/surgery_step/generic/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] cauterizes the incision on [target]'s [affected.name] with \the [tool].</font>", \
-	"<font color='blue'>You cauterize the incision on [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] cauterizes the incision on [target]'s [affected.name] with \the [tool].</font>", \
+	"<font color=#4F49AF>You cauterize the incision on [target]'s [affected.name] with \the [tool].</font>")
 	affected.open = 0
 	affected.germ_level = 0
 	affected.status &= ~ORGAN_BLEEDING
@@ -304,8 +308,9 @@
 
 /datum/surgery_step/generic/amputate
 	allowed_tools = list(
-		/obj/item/surgical/circular_saw = 100, \
-		/obj/item/material/knife/machete/hatchet = 75
+		/obj/item/surgical/circular_saw = 100,
+		/obj/item/material/knife/machete/hatchet = 75,
+		/obj/item/surgical/saw_primitive = 60,
 	)
 	req_open = 0
 
@@ -331,13 +336,13 @@
 
 /datum/surgery_step/generic/amputate/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] amputates [target]'s [affected.name] at the [affected.amputation_point] with \the [tool].</font>", \
-	"<font color='blue'>You amputate [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] amputates [target]'s [affected.name] at the [affected.amputation_point] with \the [tool].</font>", \
+	"<font color=#4F49AF>You amputate [target]'s [affected.name] with \the [tool].</font>")
 	affected.droplimb(1,DROPLIMB_EDGE)
 
 /datum/surgery_step/generic/amputate/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, sawing through the bone in [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, sawwing through the bone in [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 30)
+	affected.create_wound(CUT, 30)
 	affected.fracture()

@@ -1,6 +1,6 @@
 /datum/gm_action/viral_outbreak
 	name = "viral outbreak"
-	departments = list(ROLE_MEDICAL, ROLE_EVERYONE)
+	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_EVERYONE)
 	chaotic = 30
 	severity = 1
 	var/list/candidates = list()
@@ -8,7 +8,7 @@
 /datum/gm_action/viral_outbreak/set_up()
 	candidates.Cut()	// Incase we somehow get run twice.
 	severity = rand(2, 4)
-	for(var/mob/living/carbon/human/G in player_list)
+	for(var/mob/living/carbon/human/G in GLOB.player_list)
 		if(G.client && G.stat != DEAD)
 			candidates += G
 	if(!candidates.len)	return
@@ -29,9 +29,9 @@
 		severity--
 
 /datum/gm_action/viral_outbreak/get_weight()
-	var/medical = metric.count_people_in_department(ROLE_MEDICAL)
-	var/security = metric.count_people_in_department(ROLE_SECURITY)
-	var/everyone = metric.count_people_in_department(ROLE_EVERYONE)
+	var/medical = metric.count_people_in_department(DEPARTMENT_MEDICAL)
+	var/security = metric.count_people_in_department(DEPARTMENT_SECURITY)
+	var/everyone = metric.count_people_in_department(DEPARTMENT_EVERYONE)
 
 	var/assigned_staff = medical + round(security / 2)
 

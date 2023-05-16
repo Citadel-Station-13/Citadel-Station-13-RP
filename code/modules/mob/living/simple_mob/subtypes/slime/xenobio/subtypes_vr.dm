@@ -4,4 +4,4 @@
 
 /mob/living/simple_mob/slime/xenobio/Initialize(mapload, var/mob/living/simple_mob/slime/xenobio/my_predecessor)
 	. = ..()
-	Weaken(10)
+	afflict_paralyze(20 * 2)

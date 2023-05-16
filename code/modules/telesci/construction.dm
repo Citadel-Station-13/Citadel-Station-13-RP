@@ -25,7 +25,7 @@
 	name = T_BOARD("quantum pad")
 	board_type = new /datum/frame/frame_types/machine
 	build_path = /obj/machinery/power/quantumpad
-	origin_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4)
+	origin_tech = list(TECH_ENGINEERING = 4, TECH_POWER = 4, TECH_BLUESPACE = 4, TECH_PRECURSOR = 1)
 	req_components = list(
 		/obj/item/ore/bluespace_crystal = 1,
 		/obj/item/stock_parts/capacitor = 1,
@@ -51,7 +51,7 @@
 /datum/design/circuit/quantum_pad
 	name = "Quantum Pad"
 	id = "quantum_pad"
-	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5)
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_PHORON = 4, TECH_BLUESPACE = 5, TECH_PRECURSOR = 1)
 	build_path = /obj/item/circuitboard/quantumpad
 	sort_string = "HAAC"
 
@@ -59,6 +59,6 @@
 	name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)
-	materials = list("diamond" = 1500, "phoron" = 1500)
+	materials = list(MAT_DIAMOND = 1500, MAT_PHORON = 1500)
 	build_path = /obj/item/ore/bluespace_crystal/artificial
 	sort_string = "HAAED"

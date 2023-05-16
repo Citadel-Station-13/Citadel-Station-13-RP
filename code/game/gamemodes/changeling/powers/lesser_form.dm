@@ -64,10 +64,10 @@
 	for (var/obj/item/implant/I in C) //Still preserving implants
 		implants += I
 
-	C.transforming = 1
-	C.canmove = 0
+	C.transforming = TRUE
+	C.update_mobility()
 	C.icon = null
-	C.overlays.Cut()
+	C.cut_overlays()
 	C.invisibility = 101
 	var/atom/movable/overlay/animation = new /atom/movable/overlay( C.loc )
 	animation.icon_state = "blank"
@@ -100,12 +100,12 @@
 	O.adjustBruteLoss(C.getBruteLoss())
 	O.setOxyLoss(C.getOxyLoss())
 	O.adjustFireLoss(C.getFireLoss())
-	O.stat = C.stat
+	O.set_stat(C.stat)
 	for (var/obj/item/implant/I in implants)
 		I.loc = O
 		I.implanted = O
 
-	C.mind.transfer_to(O)
+	C.mind.transfer(O)
 	O.make_changeling()
 	O.changeling_update_languages(changeling.absorbed_languages)
 

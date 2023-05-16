@@ -6,6 +6,7 @@
 	w_class = ITEMSIZE_TINY
 	var/sides = 6
 	var/result = 6
+	var/currently_throwing = FALSE
 	attack_verb = list("diced")
 
 /obj/item/dice/Initialize(mapload)
@@ -54,8 +55,33 @@
 	sides = 10
 	result = 10
 
-/obj/item/dice/attack_self(mob/user as mob)
+/obj/item/dice/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	rollDice(user, 0)
+
+/obj/item/dice/AltClick(mob/user)
+	if (Adjacent(user))
+		rollDice(user,0)
+
+/obj/item/dice/throw_at_old()
+	currently_throwing = TRUE
+
+/obj/item/dice/throw_impact(atom/hit_atom)
+	if(!currently_throwing)
+		return
+	currently_throwing = FALSE
+	result = rand(1, sides)
+	icon_state = "[name][result]"
+
+	var/comment = ""
+	if(sides == 20 && result == 20)
+		comment = "Nat 20!"
+	else if(sides == 20 && result == 1)
+		comment = "Ouch, bad luck."
+
+	visible_message("<span class='notice'>[src] lands on [result]. [comment]</span>", "", "")
 
 /obj/item/dice/proc/rollDice(mob/user as mob, var/silent = 0)
 	result = rand(1, sides)
@@ -122,7 +148,10 @@
 		/obj/item/dice,
 		)
 
-/obj/item/storage/dicecup/attack_self(mob/user as mob)
+/obj/item/storage/dicecup/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	user.visible_message("<span class='notice'>[user] shakes [src].</span>", \
 							 "<span class='notice'>You shake [src].</span>", \
 							 "<span class='notice'>You hear dice rolling.</span>")

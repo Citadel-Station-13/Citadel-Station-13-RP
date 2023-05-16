@@ -23,21 +23,23 @@ var/list/cached_space = list()
 
 /obj/effect/overmap/visitable/sector/temporary/proc/can_die(var/mob/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
-	for(var/mob/M in global.player_list)
+	for(var/mob/M in global.GLOB.player_list)
 		if(M != observer && (M.z in map_z))
 			testing("There are people on it.")
 			return 0
 	return 1
 
-proc/get_deepspace(x,y)
-	var/obj/effect/overmap/visitable/sector/temporary/res = locate(x,y,GLOB.using_map.overmap_z)
+/proc/get_deepspace(x, y)
+	var/turf/unsimulated/map/overmap_turf = locate(x,y,GLOB.using_map.overmap_z)
+	if(!istype(overmap_turf))
+		CRASH("Attempt to get deepspace at ([x],[y]) which is not on overmap: [overmap_turf]")
+	var/obj/effect/overmap/visitable/sector/temporary/res = locate() in overmap_turf
 	if(istype(res))
 		return res
 	else if(cached_space.len)
 		res = cached_space[cached_space.len]
 		cached_space -= res
-		res.x = x
-		res.y = y
+		res.forceMove(overmap_turf)
 		return res
 	else
 		return new /obj/effect/overmap/visitable/sector/temporary(x, y, GLOB.using_map.get_empty_zlevel())
@@ -46,20 +48,55 @@ proc/get_deepspace(x,y)
 	for(var/atom/movable/AM in contents)
 		if(!AM.lost_in_space())
 			return FALSE
+	if(has_buckled_mobs())
+		for(var/mob/M in buckled_mobs)
+			if(!M.lost_in_space())
+				return FALSE
+
 	return TRUE
+
+/*
+/obj/item/uav/lost_in_space()
+	if(state == 1)
+		return FALSE
+	return ..()
+*/
+
+/obj/machinery/power/supermatter/lost_in_space()
+	return FALSE
+
+/obj/singularity/lost_in_space()
+	return FALSE
+
+/obj/vehicle_old/lost_in_space()
+	if(load && !load.lost_in_space())
+		return FALSE
+	return ..()
 
 /mob/lost_in_space()
 	return isnull(client)
 
-/mob/living/carbon/human/lost_in_space()
-	return isnull(client) && !key && stat == DEAD
+/mob/observer/lost_in_space()		// heeyyyyyy buddy can we not :)
+	return FALSE
 
-proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
+/mob/living/carbon/human/lost_in_space()
+	return FALSE
+	// return isnull(client) && !key && stat == DEAD // Allows bodies that players have ghosted from to be deleted - Ater
+
+/proc/overmap_spacetravel(turf/space/T, atom/movable/A)
 	if (!T || !A)
 		return
 
-	var/obj/effect/overmap/visitable/M = map_sectors["[T.z]"]
+	var/obj/effect/overmap/visitable/M = get_overmap_sector(T.z)
 	if (!M)
+		return
+
+	// Is the landmark still on the map.
+	if(!isturf(M.loc))
+		return
+
+	// Don't let AI eyes yeet themselves off the map
+	if(istype(A, /mob/observer/eye))
 		return
 
 	if(A.lost_in_space())
@@ -111,5 +148,5 @@ proc/overmap_spacetravel(var/turf/space/T, var/atom/movable/A)
 		var/obj/effect/overmap/visitable/sector/temporary/source = M
 		if (source.can_die())
 			testing("Caching [M] for future use")
-			source.loc = null
+			source.moveToNullspace()
 			cached_space += source

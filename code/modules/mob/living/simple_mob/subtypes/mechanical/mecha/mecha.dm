@@ -15,7 +15,7 @@
 	mob_size = MOB_LARGE
 
 	// Very close to the base 'damage_absorption' var on the base mecha class.
-	armor = list(
+	armor_legacy_mob = list(
 				"melee"		= 20,
 				"bullet"	= 10,
 				"laser"		= 0,
@@ -111,9 +111,9 @@
 	return ..()
 */
 
-/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/item/projectile/P)
+/mob/living/simple_mob/mechanical/mecha/bullet_act(obj/projectile/P)
 	if(prob(deflect_chance))
-		visible_message(span("warning", "\The [P] is deflected by \the [src]'s armor!"))
+		visible_message(SPAN_WARNING( "\The [P] is deflected by \the [src]'s armor!"))
 		deflect_sprite()
 		return 0
 	return ..()
@@ -124,17 +124,16 @@
 	sleep(1 SECOND)
 	cut_overlay(deflect_image)
 	qdel(deflect_image)
-//	flick_overlay_view(deflect_image, src, duration = 1 SECOND, gc_after = TRUE)
 
 /mob/living/simple_mob/mechanical/mecha/attackby(obj/item/I, mob/user)
 	if(prob(deflect_chance))
-		visible_message(span("warning", "\The [user]'s [I] bounces off \the [src]'s armor!"))
+		visible_message(SPAN_WARNING( "\The [user]'s [I] bounces off \the [src]'s armor!"))
 		deflect_sprite()
 		user.setClickCooldown(user.get_attack_speed(I))
 		return
 	..()
 
-/mob/living/simple_mob/mechanical/mecha/ex_act(severity)
+/mob/living/simple_mob/mechanical/mecha/legacy_ex_act(severity)
 	if(prob(deflect_chance))
 		severity++ // This somewhat misleadingly makes it less severe.
 		deflect_sprite()

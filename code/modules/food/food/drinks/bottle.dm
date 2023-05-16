@@ -1,18 +1,21 @@
 ///////////////////////////////////////////////Alchohol bottles! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
+//remember to set atom_flags = 0 on a bottle subtype to require opening, otherwise its just an open container by default -buffy
 
 /obj/item/reagent_containers/food/drinks/bottle
 	amount_per_transfer_from_this = 10
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	force = 6
+	damage_force = 6
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
 	var/obj/item/reagent_containers/glass/rag/rag = null
 	var/rag_underlay = "rag"
-	on_reagent_change() return // To suppress price updating. Bottles have their own price tags.
+
+/obj/item/reagent_containers/food/drinks/bottle/on_reagent_change()
+	return // To suppress price updating. Bottles have their own price tags.
 
 /obj/item/reagent_containers/food/drinks/bottle/Initialize(mapload)
 	. = ..()
@@ -25,13 +28,13 @@
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
-/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
+/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, datum/thrownthing/TT)
 	..()
 
-	var/mob/M = thrower
+	var/mob/M = TT.thrower
 	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
-		var/throw_dist = get_dist(throw_source, loc)
-		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
+		var/throw_dist = get_dist(TT.initial_turf, loc)
+		if(TT.speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
 				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)
@@ -50,7 +53,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/proc/smash(var/newloc, atom/against = null)
 	if(ismob(loc))
 		var/mob/M = loc
-		M.drop_from_inventory(src)
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	//Creates a shattering noise and replaces the bottle with a broken_bottle
 	var/obj/item/broken_bottle/B = new /obj/item/broken_bottle(newloc)
@@ -104,25 +107,29 @@
 	..()
 
 /obj/item/reagent_containers/food/drinks/bottle/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(rag)
 		remove_rag(user)
 	else
 		..()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/insert_rag(obj/item/reagent_containers/glass/rag/R, mob/user)
-	if(!isGlass || rag) return
-	if(user.unEquip(R))
+	if(!isGlass || rag)
+		return
+	if(user.attempt_insert_item_for_installation(R, src))
 		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
 		rag = R
-		rag.forceMove(src)
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
-	if(!rag) return
-	user.put_in_hands(rag)
+	if(!rag)
+		return
+	user.put_in_hands_or_drop(rag)
 	rag = null
-	flags |= (initial(flags) & OPENCONTAINER)
+	atom_flags |= (initial(atom_flags) & OPENCONTAINER)
 	update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/open(mob/user)
@@ -138,55 +145,52 @@
 	else
 		set_light(0)
 
-/obj/item/reagent_containers/food/drinks/bottle/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	var/blocked = ..()
-
+/obj/item/reagent_containers/food/drinks/bottle/melee_mob_hit(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	. = ..()
+	var/mob/living/L = target
+	if(!istype(L))
+		return
 	if(user.a_intent != INTENT_HARM)
 		return
 	if(!smash_check(1))
 		return //won't always break on the first hit
 
 	// You are going to knock someone out for longer if they are not wearing a helmet.
-	var/weaken_duration = 0
-	if(blocked < 100)
-		weaken_duration = smash_duration + min(0, force - target.getarmor(hit_zone, "melee") + 10)
+	var/weaken_duration = smash_duration + min(0, damage_force - L.legacy_mob_armor(target_zone, "melee") + 10)
 
-	if(hit_zone == "head" && istype(target, /mob/living/carbon/))
-		user.visible_message("<span class='danger'>\The [user] smashes [src] over [target]'s head!</span>")
+	if(target_zone == "head" && istype(L, /mob/living/carbon/))
+		user.visible_message("<span class='danger'>\The [user] smashes [src] over [L]'s head!</span>")
 		if(weaken_duration)
-			target.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
+			L.apply_effect(min(weaken_duration, 5), WEAKEN, blocked) // Never weaken more than a flash!
 	else
-		user.visible_message("<span class='danger'>\The [user] smashes [src] into [target]!</span>")
+		user.visible_message("<span class='danger'>\The [user] smashes [src] into [L]!</span>")
 
-	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
+	//The reagents in the bottle splash all over the L, thanks for the idea Nodrak
 	if(reagents)
-		user.visible_message("<span class='notice'>The contents of \the [src] splash all over [target]!</span>")
-		reagents.splash(target, reagents.total_volume)
+		user.visible_message("<span class='notice'>The contents of \the [src] splash all over [L]!</span>")
+		reagents.splash(L, reagents.total_volume)
 
 	//Finally, smash the bottle. This kills (qdel) the bottle.
-	var/obj/item/broken_bottle/B = smash(target.loc, target)
+	var/obj/item/broken_bottle/B = smash(L.loc, L)
 	user.put_in_active_hand(B)
 
 //Keeping this here for now, I'll ask if I should keep it here.
 /obj/item/broken_bottle
-	name = "Broken Bottle"
+	name = "broken bottle"
 	desc = "A bottle with a sharp broken bottom."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
-	force = 10
-	throwforce = 5
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	damage_force = 10
+	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
 	item_state = "beer"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
 	sharp = 1
 	edge = 0
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
-
-/obj/item/broken_bottle/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
-	playsound(loc, 'sound/weapons/bladeslice.ogg', 50, 1, -1)
-	return ..()
 
 /obj/item/reagent_containers/food/drinks/bottle/gin
 	name = "Griffeater Gin"
@@ -228,15 +232,15 @@
 	. = ..()
 	reagents.add_reagent("vodka", 100)
 
-/obj/item/reagent_containers/food/drinks/bottle/tequilla
-	name = "Caccavo Guaranteed Quality Tequilla"
+/obj/item/reagent_containers/food/drinks/bottle/tequila
+	name = "Caccavo Guaranteed Quality Tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
-	icon_state = "tequillabottle"
+	icon_state = "tequilabottle"
 	center_of_mass = list("x"=16, "y"=3)
 
-/obj/item/reagent_containers/food/drinks/bottle/tequilla/Initialize(mapload)
+/obj/item/reagent_containers/food/drinks/bottle/tequila/Initialize(mapload)
 	. = ..()
-	reagents.add_reagent("tequilla", 100)
+	reagents.add_reagent("tequila", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/bottleofnothing
 	name = "Bottle of Nothing"
@@ -250,7 +254,7 @@
 
 /obj/item/reagent_containers/food/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequilla, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space night clubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = list("x"=16, "y"=6)
 
@@ -267,6 +271,16 @@
 /obj/item/reagent_containers/food/drinks/bottle/rum/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("rum", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/whiterum
+	name = "Captain Pete's Cuban White Rum"
+	desc = "A milky, white alternative to Cuban Spiced! Tastes like coconut."
+	icon_state = "whiterumbottle"
+	center_of_mass = list("x"=16, "y"=8)
+
+/obj/item/reagent_containers/food/drinks/bottle/whiterum/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("whiterum", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/holywater
 	name = "Flask of Holy Water"
@@ -319,14 +333,24 @@
 	reagents.add_reagent("cognac", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine
-	name = "Doublebeard Bearded Special Wine"
-	desc = "Cheap cooking wine pretending to be drinkable."
+	name = "Crab Cove Merlot"
+	desc = "Cheap red cooking wine pretending to be drinkable."
 	icon_state = "winebottle"
 	center_of_mass = list("x"=16, "y"=4)
 
 /obj/item/reagent_containers/food/drinks/bottle/wine/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("wine", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine
+	name = "Crab Cove Sauvignon Blanc"
+	desc = "White wine that's oddly better than the company's red variant."
+	icon_state = "whitewinebottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/whitewine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("whitewine", 100)
 
 /obj/item/reagent_containers/food/drinks/bottle/bitters
 	name = "Rattison's Bitters"
@@ -368,6 +392,27 @@
 /obj/item/reagent_containers/food/drinks/bottle/bluecuracao/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("bluecuracao", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin
+	name = "Victory Gin"
+	desc = "An oily Tajara liquor similar to gin. Bottled at one of the countless distilleries on Adhomai."
+	icon_state = "victorygin"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/victory_gin/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("victory_gin", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead
+	name = "Messa's Mead"
+	desc = "A sweet liquor from Adhomai. Orginally considered a drink of the Tajaran nobility improved technology has made this honey and root based liqour available all across Adhomai and the even the stars beyond."
+	icon_state = "messamead"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/messa_mead/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("messa_mead", 100)
+
 
 /obj/item/reagent_containers/food/drinks/bottle/grenadine
 	name = "Briar Rose Grenadine Syrup"
@@ -515,11 +560,23 @@
 	. = ..()
 	reagents.add_reagent("lemonjuice", 100)
 
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk
+	name = "Coconut Milk"
+	desc = "A carton of NutClarity brand coconut milk."
+	icon_state = "milkbox"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=8)
+	isGlass = 0
+
+/obj/item/reagent_containers/food/drinks/bottle/coconutmilk/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutmilk", 100)
+
 //Small bottles
 /obj/item/reagent_containers/food/drinks/bottle/small
 	volume = 50
 	smash_duration = 1
-	flags = 0 //starts closed
+	atom_flags = NONE //starts closed
 	rag_underlay = "rag_small"
 
 /obj/item/reagent_containers/food/drinks/bottle/small/beer
@@ -643,3 +700,79 @@
 /obj/item/reagent_containers/food/drinks/bottle/small/sassafras/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("sassafras", 60)
+
+/obj/item/reagent_containers/food/drinks/bottle/moonshine
+	name = "jug of moonshine"
+	desc = "This incredibly powerful alcohol can be used as a fuel, paint thinner, or social lubricant."
+	icon_state = "moonshine"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/moonshine/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("moonshine", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/rotgut
+	name = "Throt-Throt's Select Rotgut"
+	desc = "Brewed in sunless caverns, this beastly alcohol will put hair on your chest."
+	icon_state = "rotgutbottle"
+	center_of_mass = list("x"=5, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/rotgut/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("rotgut", 100)
+
+//Tyrmalin Food Imports
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff
+	name = "Grom's Green Stuff"
+	desc = "The classic brand, direct from Goss-Aguz."
+	icon_state = "greenstuffbottle"
+	center_of_mass = list("x"=16, "y"=4)
+
+/obj/item/reagent_containers/food/drinks/bottle/greenstuff/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("greenstuff", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/phobos
+	name = "Phobos Extra"
+	desc = "Every bottle is brewed in the caustic industrial districts of Mars."
+	icon_state = "phobosbottle"
+	center_of_mass = list("x"=12, "y"=14)
+
+/obj/item/reagent_containers/food/drinks/bottle/phobos/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("phobos", 100)
+
+//Apidean Food Imports
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly
+	name = "Wax-Sealed Royal Jelly"
+	desc = "A expensive import from the Denebian colonies, dipped in wax found only in the Queen's chambers."
+	icon_state = "royaljellybottle"
+	center_of_mass = list("x"=10, "y"=8)
+
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("royaljelly", 100)
+
+/obj/item/reagent_containers/food/drinks/bottle/ambrosia_mead
+	name = "Ambrosia Mead"
+	desc = "The drink of the Gods, made by the Apidaen hives. Disclaimer: We do not worship any gods. Only our queens."
+	icon_state = "ambrosia_mead"
+	center_of_mass = list("x"=4, "y"=12)
+
+/obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("mead", 100)
+
+//Unathi Food Imports
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice
+	name = "Hrukhza Leaf Extract"
+	desc = "Hrukhza Leaf, a vital component of any Moghes drinks."
+	icon_state = "hrukhzaextract"
+	item_state = "carton"
+	center_of_mass = list("x"=16, "y"=8)
+	isGlass = FALSE
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice/Initialize()
+	.=..()
+	reagents.add_reagent("unathijuice", 100)

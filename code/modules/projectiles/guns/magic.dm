@@ -12,7 +12,7 @@
 	var/recharge_rate = 4
 	var/charge_tick = 0
 	var/can_charge = 1
-	var/ammo_type = /obj/item/projectile/magic
+	var/ammo_type = /obj/projectile/magic
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
 
@@ -30,11 +30,11 @@
 	. = ..()
 
 /obj/item/gun/magic/proc/recharge_newshot()
-	if(charges && chambered && !chambered.BB)
+	if(charges && chambered && !chambered.get_projectile())
 		chambered.newshot()
 
 /obj/item/gun/magic/proc/process_chamber()
-	if(chambered && !chambered.BB) //if BB is null, i.e the shot has been fired...
+	if(chambered && !chambered.get_projectile()) //if BB is null, i.e the shot has been fired...
 		charges--//... drain a charge
 		recharge_newshot()
 
@@ -60,6 +60,9 @@
 	if(charges == 1)
 		recharge_newshot()
 	return 1
+
+/obj/item/gun/magic/consume_next_projectile()
+	return chambered?.get_projectile()
 
 /obj/item/gun/magic/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='warning'>The [name] whizzles quietly.</span>")

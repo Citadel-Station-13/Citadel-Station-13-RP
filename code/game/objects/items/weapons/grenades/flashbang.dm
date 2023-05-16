@@ -22,8 +22,8 @@
 			damage *= B.overmind.blob_type.burn_multiplier
 		B.adjust_integrity(-damage)
 
-	new/obj/effect/effect/sparks(src.loc)
-	new/obj/effect/effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")
+	new/obj/effect/particle_effect/sparks(src.loc)
+	new/obj/effect/particle_effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")
 
 	qdel(src)
 
@@ -49,16 +49,16 @@
 	if(eye_safety < 1 && get_dist(M, T) <= round(max_range * 0.7 * flash_effectiveness))
 		M.flash_eyes()
 		M.Confuse(2 * flash_effectiveness)
-		M.Weaken(5 * flash_effectiveness)
+		M.afflict_paralyze(20 * 5 * flash_effectiveness)
 
 	//Now applying sound
 	if((get_dist(M, T) <= round(max_range * 0.3 * bang_effectiveness) || src.loc == M.loc || src.loc == M))
 		if(ear_safety > 0)
 			M.Confuse(2)
-			M.Weaken(1)
+			M.afflict_paralyze(20 * 1)
 		else
 			M.Confuse(10)
-			M.Weaken(3)
+			M.afflict_paralyze(20 * 3)
 			if ((prob(14) || (M == src.loc && prob(70))))
 				M.ear_damage += rand(1, 10)
 			else
@@ -89,7 +89,7 @@
 		if(!banglet && !(istype(src , /obj/item/grenade/flashbang/clusterbang)))
 			if (prob(M.ear_damage - 10 + 5))
 				to_chat(M, "<span class='danger'>You can't hear anything!</span>")
-				M.sdisabilities |= DEAF
+				M.sdisabilities |= SDISABILITY_DEAF
 	else if(M.ear_damage >= 5)
 		to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 
@@ -101,7 +101,7 @@
 	name = "stingbang"
 	desc = "A hand held grenade, with an adjustable timer, perfect for stopping riots and playing morally unthinkable pranks."
 	icon_state = "timeg"
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment/rubber, /obj/item/projectile/bullet/pellet/fragment/rubber/strong)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment/rubber, /obj/projectile/bullet/pellet/fragment/rubber/strong)
 	var/num_fragments = 45  //total number of fragments produced by the grenade
 	var/spread_range = 6 // for above and below, see code\game\objects\items\weapons\grenades\explosive.dm
 
@@ -115,7 +115,7 @@
 /obj/item/grenade/flashbang/stingbang/shredbang
 	name = "shredbang"
 	desc = "A hand held grenade, with an adjustable timer, perfect for handling unruly citizens and getting detained by government officials."
-	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment, /obj/item/projectile/bullet/pellet/fragment/strong, /obj/item/projectile/bullet/pellet/fragment)
+	fragment_types = list(/obj/projectile/bullet/pellet/fragment, /obj/projectile/bullet/pellet/fragment/strong, /obj/projectile/bullet/pellet/fragment)
 
 /obj/item/grenade/flashbang/clusterbang//Created by Polymorph, fixed by Sieve
 	desc = "Use of this weapon may constiute a war crime in your area, consult your local Facility Director."

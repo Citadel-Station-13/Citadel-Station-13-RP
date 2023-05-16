@@ -4,23 +4,22 @@ var/global/floorIsLava = 0
 
 
 ////////////////////////////////
-/proc/message_admins(var/msg)
-	msg = "<span class='log_message'><span class='prefix'>ADMIN LOG:</span> <span class='message'>[msg]</span></span>"
-	//log_adminwarn(msg) //log_and_message_admins is for this
-
-	for(var/client/C in admins)
-		if((R_ADMIN|R_MOD) & C.holder.rights)
-			to_chat(C, msg)
+/proc/message_admins(msg)
+	msg = SPAN_ADMIN("<span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span>")
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_ADMINLOG,
+		html = msg,
+		confidential = TRUE)
 
 /proc/msg_admin_attack(var/text) //Toggleable Attack Messages
 	var/rendered = "<span class='log_message><span class='prefix'>ATTACK:</span> <span class='message'>[text]</span></span>"
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/mod/show_attack_logs))
 				var/msg = rendered
 				to_chat(C, msg)
 
-proc/admin_notice(var/message, var/rights)
+/proc/admin_notice(var/message, var/rights)
 	for(var/mob/M in GLOB.mob_list)
 		if(check_rights(rights, 0, M))
 			to_chat(M, message)
@@ -70,6 +69,7 @@ proc/admin_notice(var/message, var/rights)
 		<A href='?_src_=holder;warn=[M.ckey]'>Warn</A> |
 		<A href='?src=\ref[src];newban=\ref[M]'>Ban</A> |
 		<A href='?src=\ref[src];jobban2=\ref[M]'>Jobban</A> |
+		<A href='?src=\ref[src];oocban=[M.ckey]'>[is_role_banned_ckey(M.ckey, role = BAN_ROLE_OOC)? "<font color='red'>OOC Ban</font>" : "OOC Ban"]</A> |
 		<A href='?src=\ref[src];notes=show;mob=\ref[M]'>Notes</A>
 	"}
 
@@ -192,21 +192,20 @@ proc/admin_notice(var/message, var/rights)
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[k]
-		if(!(L.flags & INNATE))
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(!(L.language_flags & LANGUAGE_INNATE))
 			if(!f) body += " | "
 			else f = 0
 			if(L in M.languages)
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#006600'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#006600'>[L.name]</a>"
 			else
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#ff0000'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#ff0000'>[L.name]</a>"
 
 	body += {"<br>
 		</body></html>
 	"}
 
-	usr << browse(body, "window=adminplayeropts;size=550x515")
+	usr << browse(body, "window=[M.ckey]_playerpanel;size=550x515")
 	feedback_add_details("admin_verb","SPP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -650,9 +649,9 @@ proc/admin_notice(var/message, var/rights)
 		log_admin("Announce: [key_name(usr)] : [message]")
 	feedback_add_details("admin_verb","A") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//VOREStation Edit to this verb for the purpose of making it compliant with the annunciator system
-var/datum/announcement/priority/admin_pri_announcer = new
-var/datum/announcement/minor/admin_min_announcer = new
+/// This verb for the purpose of making it compliant with the announcer system.
+var/datum/legacy_announcement/priority/admin_pri_announcer = new
+var/datum/legacy_announcement/minor/admin_min_announcer = new
 /datum/admins/proc/intercom()
 	set category = "Fun"
 	set name = "Intercom Msg"
@@ -670,7 +669,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 			if(message) //They put a message
 				message = sanitize(message, 500, extra = 0)
-				global_announcer.autosay("[message]", "[sender]", "[channel == "Common" ? null : channel]") //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
+				GLOB.global_announcer.autosay("[message]", "[sender]", "[channel == "Common" ? null : channel]") //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
 				log_admin("Intercom: [key_name(usr)] : [sender]:[message]")
 
 	feedback_add_details("admin_verb","IN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -755,7 +754,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 			var/this_sender = decomposed[i]
 			var/this_message = decomposed[++i]
 			var/this_wait = decomposed[++i]
-			global_announcer.autosay("[this_message]", "[this_sender]", "[channel == "Common" ? null : channel]") //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
+			GLOB.global_announcer.autosay("[this_message]", "[this_sender]", "[channel == "Common" ? null : channel]") //Common is a weird case, as it's not a "channel", it's just talking into a radio without a channel set.
 			sleep(this_wait SECONDS)
 
 /datum/admins/proc/toggleooc()
@@ -767,10 +766,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.ooc_allowed = !(config_legacy.ooc_allowed)
-	if (config_legacy.ooc_allowed)
-		to_chat(world, "<B>The OOC channel has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>The OOC channel has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>The OOC channel has been globally [config_legacy.ooc_allowed ? "enabled" : "disabled"].</B></span>")
 	log_and_message_admins("toggled OOC.")
 	feedback_add_details("admin_verb","TOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -783,10 +779,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.looc_allowed = !(config_legacy.looc_allowed)
-	if (config_legacy.looc_allowed)
-		to_chat(world, "<B>The LOOC channel has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>The LOOC channel has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>The LOOC channel has been globally [config_legacy.looc_allowed ? "enabled" : "disabled"].</B></span>")
 	log_and_message_admins("toggled LOOC.")
 	feedback_add_details("admin_verb","TLOOC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -800,10 +793,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 		return
 
 	config_legacy.dsay_allowed = !(config_legacy.dsay_allowed)
-	if (config_legacy.dsay_allowed)
-		to_chat(world, "<B>Deadchat has been globally enabled!</B>")
-	else
-		to_chat(world, "<B>Deadchat has been globally disabled!</B>")
+	to_chat(world, "<span class='oocplain'><B>Deadchat has been globally [config_legacy.dsay_allowed ? "enabled" : "disabled"].</B></span>")
 	log_admin("[key_name(usr)] toggled deadchat.")
 	message_admins("[key_name_admin(usr)] toggled deadchat.", 1)
 	feedback_add_details("admin_verb","TDSAY") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
@@ -829,7 +819,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!check_rights(R_ADMIN))
 		return
 
-	world.update_hub_visibility(!world.visibility)				//CITADEL CHANGE - Use the ported from TG proc in hub.dm instead of setting visibility
+	world.update_hub_visibility(!world.visibility)
 	log_admin("[key_name(usr)] toggled hub visibility.")
 	message_admins("[key_name_admin(usr)] toggled hub visibility.  The server is now [world.visibility ? "visible" : "invisible"] ([world.visibility]).", 1)
 	feedback_add_details("admin_verb","THUB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc
@@ -847,18 +837,17 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!SSticker)
-		alert("Unable to start the game as it is not set up.")
-		return
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		SSticker.current_state = GAME_STATE_SETTING_UP
-		Master.SetRunLevel(RUNLEVEL_SETUP)
+	if(SSticker.current_state <= GAME_STATE_PREGAME)
+		SSticker.start_immediately = TRUE
 		log_admin("[usr.key] has started the game.")
-		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
+		var/msg = ""
+		if(SSticker.current_state == GAME_STATE_INIT)
+			msg = " (The server is still setting up, but the round will be started as soon as possible.)"
+		message_admins(SPAN_ADMINNOTICE("[usr.key] has started the game.[msg]"))
 		feedback_add_details("admin_verb","SN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
 	else
-		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
+		to_chat(usr, SPAN_WARNING("Error: Start Now: Game has already started."))
 		return 0
 
 /datum/admins/proc/toggleenter()
@@ -871,7 +860,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled new player game entering.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled new player game entering.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled new player game entering.</font>", 1)
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -891,13 +880,13 @@ var/datum/announcement/minor/admin_min_announcer = new
 /datum/admins/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
-	set name = "Toggle Return to Menu"
+	set name = "Toggle Respawn"
 	config_legacy.abandon_allowed = !(config_legacy.abandon_allowed)
 	if(config_legacy.abandon_allowed)
 		to_chat(world, "<B>Returning to menu as a ghost is now allowed.</B>")
 	else
 		to_chat(world, "<B>Returning to menu as a ghost is no longer allowed :(</B>")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].</font>", 1)
 	log_admin("[key_name(usr)] toggled respawn to [config_legacy.abandon_allowed ? "On" : "Off"].")
 	world.update_status()
 	feedback_add_details("admin_verb","TR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -922,17 +911,31 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 /datum/admins/proc/delay_end()
 	set category = "Server"
-	set desc="Delay the game end"
-	set name="Delay reboot"
+	set desc = "Prevent the server from restarting"
+	set name = "Delay Reboot"
 
 	if(!check_rights(R_SERVER))
 		return
-	SSticker.delay_end = !SSticker.delay_end
-	var/msg = "[SSticker.delay_end ? "delayed" : "undelayed"] the round end"
-	log_admin("[key_name(usr)] [msg]")
-	message_admins("[key_name_admin(usr)] [msg]")
-	if(SSticker.ready_for_reboot && !SSticker.delay_end) //we undelayed after standard reboot would occur
-		SSticker.standard_reboot()
+
+	if(SSticker.delay_end)
+		tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
+		return
+
+	var/delay_reason = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
+
+	if(isnull(delay_reason))
+		return
+
+	if(SSticker.delay_end)
+		tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
+		return
+
+	SSticker.delay_end = TRUE
+	SSticker.admin_delay_notice = delay_reason
+
+	log_admin("[key_name(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
+	message_admins("[key_name_admin(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
+	// SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Delay Round End", "Reason: [delay_reason]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/delay_start()
 	set category = "Server"
@@ -959,7 +962,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin jumping"
 	set name="Toggle Jump"
 	config_legacy.allow_admin_jump = !(config_legacy.allow_admin_jump)
-	message_admins("<font color='blue'>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
+	message_admins("<font color=#4F49AF>Toggled admin jumping to [config_legacy.allow_admin_jump].</font>")
 	feedback_add_details("admin_verb","TJ") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adspawn()
@@ -967,7 +970,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin spawning"
 	set name="Toggle Spawn"
 	config_legacy.allow_admin_spawning = !(config_legacy.allow_admin_spawning)
-	message_admins("<font color='blue'>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
+	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/adrev()
@@ -975,7 +978,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set desc="Toggle admin revives"
 	set name="Toggle Revive"
 	config_legacy.allow_admin_rev = !(config_legacy.allow_admin_rev)
-	message_admins("<font color='blue'>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
+	message_admins("<font color=#4F49AF>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
 	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
@@ -983,7 +986,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set name = "Unprison"
 	if (M.z == 2)
 		if (config_legacy.allow_admin_jump)
-			M.loc = pick(latejoin)
+			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else
@@ -1019,16 +1022,16 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 	return 0
 
-/datum/admins/proc/spawn_fruit(seedtype in plant_controller.seeds)
+/datum/admins/proc/spawn_fruit(seedtype in SSplants.seeds)
 	set category = "Debug"
 	set desc = "Spawn the product of a seed."
 	set name = "Spawn Fruit"
 
 	if(!check_rights(R_SPAWN))	return
 
-	if(!seedtype || !plant_controller.seeds[seedtype])
+	if(!seedtype || !SSplants.seeds[seedtype])
 		return
-	var/datum/seed/S = plant_controller.seeds[seedtype]
+	var/datum/seed/S = SSplants.seeds[seedtype]
 	S.harvest(usr,0,0,1)
 	log_admin("[key_name(usr)] spawned [seedtype] fruit at ([usr.x],[usr.y],[usr.z])")
 
@@ -1072,16 +1075,16 @@ var/datum/announcement/minor/admin_min_announcer = new
 		for(var/datum/custom_item/item in current_items)
 			to_chat(usr, "- name: [item.name] icon: [item.item_icon] path: [item.item_path] desc: [item.item_desc]")
 
-/datum/admins/proc/spawn_plant(seedtype in plant_controller.seeds)
+/datum/admins/proc/spawn_plant(seedtype in SSplants.seeds)
 	set category = "Debug"
 	set desc = "Spawn a spreading plant effect."
 	set name = "Spawn Plant"
 
 	if(!check_rights(R_SPAWN))	return
 
-	if(!seedtype || !plant_controller.seeds[seedtype])
+	if(!seedtype || !SSplants.seeds[seedtype])
 		return
-	new /obj/effect/plant(get_turf(usr), plant_controller.seeds[seedtype])
+	new /obj/effect/plant(get_turf(usr), SSplants.seeds[seedtype])
 	log_admin("[key_name(usr)] spawned [seedtype] vines at ([usr.x],[usr.y],[usr.z])")
 
 /datum/admins/proc/spawn_atom(var/object as text)
@@ -1090,6 +1093,12 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set name = "Spawn"
 
 	if(!check_rights(R_SPAWN))	return
+
+	if(!object)
+		var/choice = alert(src, "You haven't specified anything to match -- this will lock your game up and take a while! \
+		It will also return the entire spawn list.", "WARNING!", "Cancel", "Continue")
+		if(choice == "Cancel")
+			return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()
@@ -1231,7 +1240,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	else
 		to_chat(world, "<B>Guests may now enter the game.</B>")
 	log_admin("[key_name(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.")
-	message_admins("<font color='blue'>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
@@ -1255,6 +1264,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	if(!ai_number)
 		to_chat(usr, "<b>No AIs located</b>") //Just so you know the thing is actually working and not just ignoring you.
 
+/*
 /datum/admins/proc/show_skills()
 	set category = "Admin"
 	set name = "Show Skills"
@@ -1271,7 +1281,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	show_skill_window(usr, M)
 
 	return
-
+*/
 /client/proc/update_mob_sprite(mob/living/carbon/human/H as mob)
 	set category = "Admin"
 	set name = "Update Mob Sprite"
@@ -1415,22 +1425,27 @@ var/datum/announcement/minor/admin_min_announcer = new
 
 	var/msg
 
-	if(check_rights(R_ADMIN|R_MOD))
-		if (H.paralysis == 0)
-			H.SetParalysis(8000)
-			msg = "has paralyzed [key_name(H)]."
-			log_and_message_admins(msg)
-		else
-			if(alert(src, "[key_name(H)] is paralyzed, would you like to unparalyze them?",,"Yes","No") == "Yes")
-				H.SetParalysis(0)
-				msg = "has unparalyzed [key_name(H)]."
-				log_and_message_admins(msg)
+	if(!check_rights(R_ADMIN|R_MOD))
+		return
+
+	if(!HAS_TRAIT(H, TRAIT_MOB_UNCONSCIOUS))
+		ADD_TRAIT(H, TRAIT_MOB_UNCONSCIOUS, ADMIN_TRAIT)
+		H.update_stat()
+		msg = "has paralyzed [key_name(H)]."
+		log_and_message_admins(msg)
+	else
+		if(alert(src, "[key_name(H)] is paralyzed, would you like to unparalyze them?",,"Yes","No") !="Yes")
+			return
+		REMOVE_TRAIT(H, TRAIT_MOB_UNCONSCIOUS, ADMIN_TRAIT)
+		H.update_stat()
+		msg = "has unparalyzed [key_name(H)]."
+		log_and_message_admins(msg)
 
 /datum/admins/proc/set_tcrystals(mob/living/carbon/human/H as mob)
 	set category = "Debug"
 	set name = "Set Telecrystals"
 	set desc = "Allows admins to change telecrystals of a user."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 	var/crystals
 
 	if(check_rights(R_ADMIN))
@@ -1446,7 +1461,7 @@ var/datum/announcement/minor/admin_min_announcer = new
 	set category = "Debug"
 	set name = "Add Telecrystals"
 	set desc = "Allows admins to change telecrystals of a user by addition."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 	var/crystals
 
 	if(check_rights(R_ADMIN))
@@ -1520,7 +1535,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		if(!P.stamped)
 			P.stamped = new
 		P.stamped += /obj/item/stamp/centcomm
-		P.overlays += stampoverlay
+		P.add_overlay(stampoverlay)
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)
@@ -1533,14 +1548,14 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")
 		if(P.sender) // sent as a reply
 			log_admin("[key_name(src.owner)] replied to a fax message from [key_name(P.sender)]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(P.sender)] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 		else
 			log_admin("[key_name(src.owner)] has sent a fax message to [destination.department]")
-			for(var/client/C in admins)
+			for(var/client/C in GLOB.admins)
 				if((R_ADMIN | R_MOD) & C.holder.rights)
-					to_chat(C, "<span class='log_message'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
+					to_chat(C, "<span class='admin'><span class='prefix'>FAX LOG:</span>[key_name_admin(src.owner)] has sent a fax message to [destination.department] (<a href='?_src_=holder;AdminFaxView=\ref[rcvdcopy]'>VIEW</a>)</span>")
 
 	else
 		to_chat(src.owner, "<span class='warning'>Message reply failed.</span>")

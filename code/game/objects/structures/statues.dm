@@ -6,7 +6,6 @@
 	icon_state = ""
 	density = 1
 	anchored = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/hardness = 1
 	var/oreAmount = 7
 	var/materialType = "steel"
@@ -23,7 +22,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is loosening the [name]'s bolts.", \
 								 "<span class='notice'>You are loosening the [name]'s bolts...</span>")
-			if(do_after(user,40/W.toolspeed, target = src))
+			if(do_after(user,40/W.tool_speed, target = src))
 				if(!src.loc || !anchored)
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
@@ -36,7 +35,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is securing the [name]'s bolts...", \
 								 "<span class='notice'>You are securing the [name]'s bolts...</span>")
-			if(do_after(user, 40/W.toolspeed, target = src))
+			if(do_after(user, 40/W.tool_speed, target = src))
 				if(!src.loc || anchored)
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
@@ -70,7 +69,7 @@
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
 		user.visible_message("[user] is slicing apart the [name].", \
 							 "<span class='notice'>You are slicing apart the [name]...</span>")
-		if(do_after(user, 40/W.toolspeed, target = src))
+		if(do_after(user, 40/W.tool_speed, target = src))
 			if(!src.loc)
 				return
 			playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -79,16 +78,16 @@
 			Dismantle(1)
 
 	else
-		hardness -= W.force/100
+		hardness -= W.damage_force/100
 		..()
 		CheckHardness()
 
-/obj/structure/statue/attack_hand(mob/living/user)
+/obj/structure/statue/attack_hand(mob/user, list/params)
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-/obj/structure/statue/bullet_act(obj/item/projectile/Proj)
+/obj/structure/statue/bullet_act(obj/projectile/Proj)
 	hardness -= Proj.damage
 	..()
 	CheckHardness()
@@ -106,6 +105,9 @@
 				new ore(get_turf(src))
 		else
 			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 1, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	else
@@ -114,12 +116,15 @@
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 		else
-			var/ore = text2path("/obj/item/stack/sheet/material/[materialType]")
+			var/ore = text2path("/obj/item/stack/material/[materialType]")
+			if(!ispath(ore))
+				qdel(src)
+				CRASH("Invalid ore [ore].")
 			for(var/i = 3, i <= oreAmount, i++)
 				new ore(get_turf(src))
 	qdel(src)
 
-/obj/structure/statue/ex_act(severity = 1)
+/obj/structure/statue/legacy_ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)
@@ -302,9 +307,43 @@
 	desc = "This marble statue is shockingly lifelike."
 	icon_state = "corgi"
 
-/////////////////////marble/////////////////////////////////////////
+/obj/structure/statue/marble/venus
+	name = "venusian statue"
+	desc = "This statue pays homage to an ancient Terran sculpture. Or it's a depiction of someone from Venus. Records are unclear."
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "venus"
+
+/////////////////////wood/////////////////////////////////////////
 
 /obj/structure/statue/wood
 	name = "wood statue"
 	desc = "A simple wooden mannequin, generally used to display clothes or equipment. Water frequently."
 	icon_state = "fashion_m"
+
+/obj/structure/statue/bone
+	name = "bone statue"
+	desc = "A towering menhir of bone, perhaps the colossal rib of some fallen beast."
+	icon = 'icons/obj/statuelarge.dmi'
+	icon_state = "rib"
+
+/obj/structure/statue/bone/skull
+	name = "skull statue"
+	desc = "A towering bone pillar depicting the skull of some forgotten beast."
+	icon_state = "skull"
+
+/obj/structure/statue/bone/skull/half
+	name = "eroded skull statue"
+	desc = "An eroded pillar depicting the skull of some forgotten beast."
+	icon_state = "skull-half"
+
+//////////////////Memorial/////////////////
+/obj/structure/memorial
+	name = "Memorial Wall"
+	desc = "An obsidian memorial wall listing the names of NanoTrasen employees who have fallen in the pursuit of the Company's goals - both scientific and political."
+	icon = 'icons/obj/structures_64x.dmi'
+	icon_state = "memorial"
+
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE

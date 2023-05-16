@@ -71,9 +71,6 @@
 			id = null
 	. = ..()
 
-/obj/item/card/id
-	var/lost_access = list()
-
 /obj/item/card/id/digest_act(var/atom/movable/item_storage = null)
 	desc = "A partially digested card that has seen better days. The damage appears to be only cosmetic, but the access codes need to be reprogrammed at the HoP office."
 	icon = 'icons/obj/card_vr.dmi'
@@ -122,7 +119,7 @@
 // Some more complicated stuff
 /////////////
 /obj/item/mmi/digital/posibrain/digest_act(var/atom/movable/item_storage = null)
-	//Replace this with a VORE setting so all types of posibrains can/can't be digested on a whim
+	//Replace this with a pref setting so all types of posibrains can/can't be digested on a whim
 	return FALSE
 
 // Gradual damage measurement

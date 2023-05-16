@@ -10,7 +10,7 @@
 	welcome_text = "Use say \"#g message\" to communicate with your fellow changelings. Remember: you get all of their absorbed DNA if you absorb them."
 	antag_sound = 'sound/effects/antag_notice/ling_alert.ogg'
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
-	antaghud_indicator = "hudchangeling"
+	antaghud_indicator = "changeling"
 
 /datum/antagonist/changeling/get_special_objective_text(var/datum/mind/player)
 	return "<br><b>Changeling ID:</b> [player.changeling.changelingID].<br><b>Genomes Absorbed:</b> [player.changeling.absorbedcount]"
@@ -64,13 +64,13 @@
 			var/mob/living/carbon/human/H = player.current
 			if(H.isSynthetic())
 				return 0
-			if(H.species.flags & NO_SCAN)
+			if(H.species.species_flags & NO_SCAN)
 				return 0
 			return 1
 		else if(isnewplayer(player.current))
 			if(player.current.client && player.current.client.prefs)
-				var/datum/species/S = GLOB.all_species[player.current.client.prefs.species]
-				if(S && (S.flags & NO_SCAN))
+				var/datum/species/S = player.current.client.prefs.real_species_datum()
+				if(S && (S.species_flags & NO_SCAN))
 					return 0
 				if(player.current.client.prefs.organ_data["torso"] == "cyborg") // Full synthetic.
 					return 0

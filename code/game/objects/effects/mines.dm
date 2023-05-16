@@ -31,7 +31,7 @@
 	if(prob(50))
 		explode()
 
-/obj/effect/mine/ex_act(severity)
+/obj/effect/mine/legacy_ex_act(severity)
 	if(severity <= 2 || prob(50))
 		explode()
 	..()
@@ -56,7 +56,7 @@
 		panel_open = !panel_open
 		user.visible_message("<span class='warning'>[user] very carefully screws the mine's panel [panel_open ? "open" : "closed"].</span>",
 		"<span class='notice'>You very carefully screw the mine's panel [panel_open ? "open" : "closed"].</span>")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 
 	else if((W.is_wirecutter() || istype(W, /obj/item/multitool)) && panel_open)
 		interact(user)
@@ -95,10 +95,22 @@
 	s.set_up(3, 1, src)
 	s.start()
 	if(M)
-		M.Stun(30)
+		M.afflict_stun(20 * 30)
 	visible_message("\The [src.name] flashes violently before disintegrating!")
 	spawn(0)
 		qdel(s)
+		qdel(src)
+
+/obj/effect/mine/chlorine
+	mineitemtype = /obj/item/mine/chlorine
+
+/obj/effect/mine/chlorine/explode(var/mob/living/M)
+	triggered = 1
+	for (var/turf/simulated/floor/target in range(1,src))
+		if(!target.blocks_air)
+			target.assume_gas(/datum/gas/chlorine, 30)
+	visible_message("\The [src.name] detonates!")
+	spawn(0)
 		qdel(src)
 
 /obj/effect/mine/n2o
@@ -142,7 +154,7 @@
 
 /obj/effect/mine/frag
 	mineitemtype = /obj/item/mine/frag
-	var/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment)
+	var/fragment_types = list(/obj/projectile/bullet/pellet/fragment)
 	var/num_fragments = 20  //total number of fragments produced by the grenade
 	//The radius of the circle used to launch projectiles. Lower values mean less projectiles are used but if set too low gaps may appear in the spread pattern
 	var/spread_range = 7
@@ -155,7 +167,7 @@
 	var/turf/O = get_turf(src)
 	if(!O)
 		return
-	src.fragmentate(O, 20, 7, list(/obj/item/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
+	src.fragmentate(O, 20, 7, list(/obj/projectile/bullet/pellet/fragment)) //only 20 weak fragments because you're stepping directly on it
 	visible_message("\The [src.name] detonates!")
 	spawn(0)
 		qdel(s)
@@ -211,7 +223,10 @@
 	var/countdown = 10
 	var/minetype = /obj/effect/mine		//This MUST be an /obj/effect/mine type, or it'll runtime.
 
-/obj/item/mine/attack_self(mob/user as mob)	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times
+/obj/item/mine/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return	// You do not want to move or throw a land mine while priming it... Explosives + Sudden Movement = Bad Times
 	add_fingerprint(user)
 	msg_admin_attack("[key_name_admin(user)] primed \a [src]")
 	user.visible_message("[user] starts priming \the [src.name].", "You start priming \the [src.name]. Hold still!")
@@ -221,7 +236,6 @@
 	else
 		visible_message("[user] triggers \the [src.name]!", "You accidentally trigger \the [src.name]!")
 		prime(user, TRUE)
-	return
 
 /obj/item/mine/proc/prime(mob/user as mob, var/explode_now = FALSE)
 	visible_message("\The [src.name] beeps as the priming sequence completes.")
@@ -247,6 +261,11 @@
 	name = "kick mine"
 	desc = "Concentrated war crimes. Handle with care."
 	minetype = /obj/effect/mine/kick
+
+/obj/item/mine/chlorine
+	name = "chlorine gas mine"
+	desc = "A small explosive mine with a skull and crossbones on the side."
+	minetype = /obj/effect/mine/chlorine
 
 /obj/item/mine/n2o
 	name = "nitrous oxide mine"

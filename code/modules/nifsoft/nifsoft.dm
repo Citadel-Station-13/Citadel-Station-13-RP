@@ -3,51 +3,72 @@
 
 //A single piece of NIF software
 /datum/nifsoft
+	abstract_type = /datum/nifsoft
+
 	var/name = "Prototype"
 	var/desc = "Contact a dev!"
 
-	var/obj/item/nif/nif	//The NIF that the software is stored in
 
-	var/list_pos				// List position in the nifsoft list
+	/// The NIF that the software is stored in
+	var/obj/item/nif/nif
+	/// List position in the nifsoft list
+	var/list_pos
+	/// Cost in cash of buying this software from a terminal
+	var/cost = 1000
+	/// This is available in NIFSoft Shops at the start of the game
+	var/vended = TRUE
+	/// The wear (+/- 10% when applied) that this causes to the NIF
+	var/wear = 1
+	/// What access they need to buy it, can only set one for ~reasons~
+	var/access
+	/// If this is a black-market nifsoft (emag option)
+	var/illegal = FALSE
 
-	var/cost = 1000				// Cost in cash of buying this software from a terminal
+	/// Whether the active mode of this implant is on
+	var/active = FALSE
+	/// Passive power drain, can be used in various ways from the software
+	var/p_drain = 0
+	/// Active power drain, same purpose as above, software can treat however
+	var/a_drain = 0
+	/// Whether or not this has an active power consumption mode
+	var/activates = TRUE
+	/// Flags to tell when we'd like to be ticked
+	var/tick_flags = 0
 
-	var/vended = TRUE			// This is available in NIFSoft Shops at the start of the game
-	var/wear = 1				// The wear (+/- 10% when applied) that this causes to the NIF
-	var/access					// What access they need to buy it, can only set one for ~reasons~
-	var/illegal = FALSE			// If this is a black-market nifsoft (emag option)
+	/// If the implant can be destroyed via EMP attack
+	var/empable = TRUE
 
-	var/active = FALSE			// Whether the active mode of this implant is on
-	var/p_drain = 0				// Passive power drain, can be used in various ways from the software
-	var/a_drain = 0				// Active power drain, same purpose as above, software can treat however
-	var/activates = TRUE		// Whether or not this has an active power consumption mode
-	var/tick_flags = 0			// Flags to tell when we'd like to be ticked
+	/// Trial software! Or self-deleting illegal ones!
+	var/expiring = FALSE
+	/// World.time for when they expire
+	var/expires_at
 
-	var/empable = TRUE			// If the implant can be destroyed via EMP attack
+	/// Who this software is useful for
+	var/applies_to = (NIF_ORGANIC|NIF_SYNTHETIC)
 
-	var/expiring = FALSE		// Trial software! Or self-deleting illegal ones!
-	var/expires_at				// World.time for when they expire
-
-	var/applies_to = (NIF_ORGANIC|NIF_SYNTHETIC) // Who this software is useful for
-
-	var/vision_flags = 0	// Various flags for fast lookups that are settable on the NIF
-	var/health_flags = 0	// These are added as soon as the implant is activated
-	var/combat_flags = 0	// Otherwise use set_flag/clear_flag in one of your own procs for tricks
+	/// Various flags for fast lookups that are settable on the NIF
+	var/vision_flags = 0
+	/// These are added as soon as the implant is activated
+	var/health_flags = 0
+	/// Otherwise use set_flag/clear_flag in one of your own procs for tricks
+	var/combat_flags = 0
 	var/other_flags = 0
 
-	var/list/planes_enabled = null	// List of vision planes this nifsoft enables when active
+	var/vision_flags_mob = 0
+	var/darkness_view = 0
 
-	var/list/incompatible_with = null // List of NIFSofts that are disabled when this one is enabled
-
-	var/obj/effect/nif_stat/stat_line // The stat line in the statpanel for this NIFSoft
-
+	/// List of vision planes this nifsoft enables when active
+	var/list/planes_enabled = null
+	/// Whether or not this NIFSoft provides exclusive vision modifier
+	var/vision_exclusive = FALSE
+	/// List of NIFSofts that are disabled when this one is enabled
+	var/list/incompatible_with = null
 
 //Constructor accepts the NIF it's being loaded into
 /datum/nifsoft/New(var/obj/item/nif/nif_load)
 	ASSERT(nif_load)
 
 	nif = nif_load
-	stat_line = new(null, src)
 	if(!install(nif))
 		qdel(src)
 
@@ -56,14 +77,13 @@
 	if(nif)
 		uninstall()
 		nif = null
-	QDEL_NULL(stat_line)
 	return ..()
 
-//Called when the software is installed in the NIF
+///Called when the software is installed in the NIF
 /datum/nifsoft/proc/install()
 	return nif.install(src)
 
-//Called when the software is removed from the NIF
+///Called when the software is removed from the NIF
 /datum/nifsoft/proc/uninstall()
 	if(active)
 		deactivate()
@@ -73,11 +93,11 @@
 	if(!QDESTROYING(src))
 		qdel(src)
 
-//Called every life() tick on a mob on active implants
-/datum/nifsoft/proc/life(var/mob/living/carbon/human/human)
+///Called every life() tick on a mob on active implants
+/datum/nifsoft/proc/on_life(var/mob/living/carbon/human/human)
 	return TRUE
 
-//Called when attempting to activate an implant (could be a 'pulse' activation or toggling it on)
+///Called when attempting to activate an implant (could be a 'pulse' activation or toggling it on)
 /datum/nifsoft/proc/activate(var/force = FALSE)
 	if(active && !force)
 		return
@@ -102,10 +122,15 @@
 		nif.set_flag(combat_flags,NIF_FLAGS_COMBAT)
 		nif.set_flag(other_flags,NIF_FLAGS_OTHER)
 
+		if(vision_exclusive)
+			var/mob/living/carbon/human/H = nif.human
+			if(H && istype(H))
+				H.recalculate_vis()
+
 	return nif_result
 
-//Called when attempting to deactivate an implant
-/datum/nifsoft/proc/deactivate(force = FALSE)
+///Called when attempting to deactivate an implant
+/datum/nifsoft/proc/deactivate(var/force = FALSE)
 	if(!active && !force)
 		return
 	var/nif_result = nif.deactivate(src)
@@ -125,18 +150,23 @@
 		nif.clear_flag(combat_flags,NIF_FLAGS_COMBAT)
 		nif.clear_flag(other_flags,NIF_FLAGS_OTHER)
 
+		if(vision_exclusive)
+			var/mob/living/carbon/human/H = nif.human
+			if(H && istype(H))
+				H.recalculate_vis()
+
 	return nif_result
 
-//Called when an implant expires
+///Called when an implant expires
 /datum/nifsoft/proc/expire()
 	uninstall()
 	return
 
-//Called when installed from a disk
+///Called when installed from a disk
 /datum/nifsoft/proc/disk_install(var/mob/living/carbon/human/target,var/mob/living/carbon/human/user)
 	return TRUE
 
-//Stat-line clickable text
+///Status text for menu
 /datum/nifsoft/proc/stat_text()
 	if(activates)
 		return "[active ? "Active" : "Disabled"]"
@@ -144,7 +174,7 @@
 	return "Always On"
 
 //////////////////////
-//A package of NIF software
+///A package of NIF software
 /datum/nifsoft/package
 	var/list/software = list()
 	wear = 0 //Packages don't cause wear themselves, the software does
@@ -175,20 +205,20 @@
 	icon_state = "medical"
 	item_state = "nanomod"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	w_class = ITEMSIZE_SMALL
 	var/datum/nifsoft/stored = null
 
-/obj/item/disk/nifsoft/afterattack(var/A, mob/user, flag, params)
-	if(!in_range(user, A))
+/obj/item/disk/nifsoft/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!in_range(user, target))
 		return
 
-	if(!ishuman(user) || !ishuman(A))
+	if(!ishuman(user) || !ishuman(target))
 		return
 
-	var/mob/living/carbon/human/Ht = A
+	var/mob/living/carbon/human/Ht = target
 	var/mob/living/carbon/human/Hu = user
 
 	if(!Ht.nif || Ht.nif.stat != NIF_WORKING)
@@ -196,7 +226,7 @@
 		return
 
 	var/extra = extra_params()
-	if(A == user)
+	if(target == user)
 		to_chat(user,"<span class='notice'>You upload [src] into your NIF.</span>")
 	else
 		Ht.visible_message("<span class='warning'>[Hu] begins uploading [src] into [Ht]!</span>","<span class='danger'>[Hu] is uploading [src] into you!</span>")
@@ -204,20 +234,19 @@
 	icon_state = "[initial(icon_state)]-animate"	//makes it play the item animation upon using on a valid target
 	update_icon()
 
-	if(A == user && do_after(Hu,1 SECONDS,Ht))
+	if(target == user && do_after(Hu,1 SECONDS,Ht))
 		new stored(Ht.nif,extra)
 		qdel(src)
-	else if(A != user && do_after(Hu,10 SECONDS,Ht))
+	else if(target != user && do_after(Hu,10 SECONDS,Ht))
 		new stored(Ht.nif,extra)
 		qdel(src)
 	else
 		icon_state = "[initial(icon_state)]"	//If it fails to apply to a valid target and doesn't get deleted, reset its icon state
 		update_icon()
 
-//So disks can pass fancier stuff.
+///So disks can pass fancier stuff.
 /obj/item/disk/nifsoft/proc/extra_params()
 	return null
-
 
 // Compliance Disk //
 /obj/item/disk/nifsoft/compliance
@@ -226,21 +255,24 @@
 	icon_state = "compliance"
 	item_state = "healthanalyzer"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	stored = /datum/nifsoft/compliance
 	var/laws
 
-/obj/item/disk/nifsoft/compliance/afterattack(var/A, mob/user, flag, params)
-	if(!ishuman(A))
+/obj/item/disk/nifsoft/compliance/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+	if(!ishuman(target))
 		return
 	if(!laws)
 		to_chat(user,"<span class='warning'>You haven't set any laws yet. Use the disk in-hand first.</span>")
 		return
-	..(A,user,flag,params)
+	return ..()
 
 /obj/item/disk/nifsoft/compliance/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	var/newlaws = input(user,"Please Input Laws","Compliance Laws",laws) as message
 	newlaws = sanitize(newlaws,2048)
 	if(newlaws)
@@ -262,7 +294,7 @@
 	stored = /datum/nifsoft/package/security
 
 /datum/nifsoft/package/security
-	software = list(/datum/nifsoft/ar_sec,/datum/nifsoft/flashprot)
+	software = list(/datum/nifsoft/hud/ar_sec,/datum/nifsoft/flashprot)
 
 /obj/item/storage/box/nifsofts_security
 	name = "security nifsoft uploaders"
@@ -285,7 +317,7 @@
 	stored = /datum/nifsoft/package/engineering
 
 /datum/nifsoft/package/engineering
-	software = list(/datum/nifsoft/ar_eng,/datum/nifsoft/alarmmonitor,/datum/nifsoft/uvblocker)
+	software = list(/datum/nifsoft/hud/ar_eng,/datum/nifsoft/alarmmonitor,/datum/nifsoft/uvblocker)
 
 /obj/item/storage/box/nifsofts_engineering
 	name = "engineering nifsoft uploaders"
@@ -295,6 +327,19 @@
 /obj/item/storage/box/nifsofts_engineering/PopulateContents()
 	for(var/i = 0 to 7)
 		new /obj/item/disk/nifsoft/engineering(src)
+
+// Blueshield Disk //
+/obj/item/disk/nifsoft/blueshield
+	name = "NIFSoft Uploader - Blueshield"
+	desc = "Contains free NIFSofts useful for Blueshields.\n\
+	It has a small label: \n\
+	\"Portable NIFSoft Installation Media. \n\
+	Align ocular port with eye socket and depress red plunger.\""
+
+	stored = /datum/nifsoft/package/blueshield
+
+/datum/nifsoft/package/blueshield
+	software = list(/datum/nifsoft/hud/ar_med,/datum/nifsoft/hud/ar_sec)
 
 // Medical Disk //
 /obj/item/disk/nifsoft/medical
@@ -307,7 +352,7 @@
 	stored = /datum/nifsoft/package/medical
 
 /datum/nifsoft/package/medical
-	software = list(/datum/nifsoft/ar_med,/datum/nifsoft/crewmonitor)
+	software = list(/datum/nifsoft/hud/ar_med,/datum/nifsoft/crewmonitor)
 
 /obj/item/storage/box/nifsofts_medical
 	name = "medical nifsoft uploaders"

@@ -1,4 +1,18 @@
  //Fodder
+
+/datum/category_item/catalogue/fauna/cyberhorror
+	name = "Cyber Horror"
+	desc = "First witnessed on Surt, the entities hence dubbed 'Cyber Horrors' have \
+	begun to appear at various sites across the Frontier. Based on recordings and logs \
+	found at the mining colony on Surt, these creatures were created via the introduction \
+	of an unidentified Nanite pathogen into organic hosts. The infestation of the host was \
+	treated by the workers on Surt as a form of religious ritual intended to bring the \
+	victim closer to the creators of the pathogen. After those who resisted the plague on \
+	Surt fell, the perpetrators of the incident are believed to have escaped to spread \
+	the affliction to other hosts."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/cyberhorror)
+
 /mob/living/simple_mob/mechanical/cyber_horror
 	name = "Cyber horror"
 	desc = "What was once a man, twisted and warped by machine."
@@ -6,6 +20,7 @@
 	icon_state = "cyber_horror"
 	icon_dead = "cyber_horror_dead"
 	icon_gib = "cyber_horror_dead"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/cyberhorror)
 
 	faction = "synthtide"
 
@@ -20,7 +35,7 @@
 	movement_cooldown = 3
 	movement_sound = 'sound/effects/houndstep.ogg'
 	// To promote a more diverse weapon selection.
-	armor = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 25, bullet = 25, laser = -20, bio = 100, rad = 100)
 	hovering = FALSE
 
 	say_list_type = /datum/say_list/cyber_horror
@@ -53,7 +68,7 @@
 	icon_state = "plasma_cyber_horror"
 	icon_dead = "plasma_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = -10, laser = 40, bio = 100, rad = 100)
 	maxHealth = 75
 	health = 75
 
@@ -66,6 +81,9 @@
 	var/poison_chance = 100
 	var/poison_per_bite = 3
 	var/poison_type = "neurophage_nanites"
+
+	bone_amount = 8
+	bone_type = /obj/item/stack/material/bone
 
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/apply_melee_effects(var/atom/A)
 	if(isliving(A))
@@ -105,7 +123,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
 
  // You do NOT Want to get in touchy range of this thing.
-	armor = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 75, bullet = -10, laser = -25, bio = 100, rad = 100)
 	hovering = FALSE
 
 
@@ -117,6 +135,9 @@
  // How long the leap telegraphing is.
 	var/leap_warmup = 2 SECOND
 	var/leap_sound = 'sound/weapons/spiderlunge.ogg'
+
+	exotic_amount = 10
+	exotic_type = /obj/item/stack/sinew
 
  // Multiplies damage if the victim is stunned in some form, including a successful leap.
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/apply_bonus_melee_damage(atom/A, damage_amount)
@@ -139,16 +160,16 @@
 
  // Do the actual leap.
  // Lets us pass over everything.
-	status_flags |= LEAPING
-	visible_message(span("danger","\The [src] leaps at \the [A]!"))
-	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
+	status_flags |= STATUS_LEAPING
+	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
+	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
  // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
 	sleep(5)
 
  // Revert special passage ability.
-	if(status_flags & LEAPING)
-		status_flags &= ~LEAPING
+	if(status_flags & STATUS_LEAPING)
+		status_flags &= ~STATUS_LEAPING
  // Where we landed. This might be different than A's turf.
 	var/turf/T = get_turf(src)
 
@@ -171,9 +192,9 @@
 		break
 
 	if(victim)
-		victim.Weaken(2)
-		victim.visible_message(span("danger","\The [src] knocks down \the [victim]!"))
-		to_chat(victim, span("critical", "\The [src] jumps on you!"))
+		victim.afflict_paralyze(20 * 2)
+		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -184,8 +205,14 @@
 	icon_state = "vox_cyber_horror"
 	icon_dead = "vox_cyber_horror_dead"
 
-	armor = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = 40, bullet = 30, laser = 30, bio = 100, rad = 100)
 	ai_holder_type = /datum/ai_holder/simple_mob/melee
+
+	meat_amount = 2
+	meat_type = /obj/item/reagent_containers/food/snacks/meat/vox
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+
  // Hit and run mob
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran
 	name = "Tajaran cyber stalker"
@@ -196,78 +223,83 @@
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/hit_and_run
 
-	var/cloaked = FALSE
+	var/stealthed = FALSE
  // Lower = Harder to see.
-	var/cloaked_alpha = 30
+	var/stealthed_alpha = 30
  // This is added on top of the normal melee damage.
-	var/cloaked_bonus_damage = 30
+	var/stealthed_bonus_damage = 30
  // How long to stun for.
-	var/cloaked_weaken_amount = 3
- // Amount of time needed to re-cloak after losing it.
-	var/cloak_cooldown = 10 SECONDS
+	var/stealthed_weaken_amount = 3
+ // Amount of time needed to re-stealth after losing it.
+	var/stealth_cooldown = 10 SECONDS
  // world.time
-	var/last_uncloak = 0
+	var/last_unstealth = 0
+
+	bone_amount = 2
+	bone_type = /obj/item/stack/material/bone
+	hide_amount = 5
+	hide_type = /obj/item/stack/animalhide/grey
 
 
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/cloak()
-	if(cloaked)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/stealth()
+	if(stealthed)
 		return
-	animate(src, alpha = cloaked_alpha, time = 1 SECOND)
-	cloaked = TRUE
+	animate(src, alpha = stealthed_alpha, time = 1 SECOND)
+	stealthed = TRUE
 
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/uncloak()
- // This is assigned even if it isn't cloaked already, to 'reset' the timer if the spider is continously getting attacked.
-	last_uncloak = world.time
-	if(!cloaked)
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/unstealth()
+ // This is assigned even if it isn't stealthed already, to 'reset' the timer if the spider is continously getting attacked.
+	last_unstealth = world.time
+	if(!stealthed)
 		return
 	animate(src, alpha = initial(alpha), time = 1 SECOND)
-	cloaked = FALSE
+	stealthed = FALSE
 
 
-// Check if cloaking if possible.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/can_cloak()
+// Check if stealthing if possible.
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/proc/can_stealth()
 	if(stat)
 		return FALSE
-	if(last_uncloak + cloak_cooldown > world.time)
+	if(last_unstealth + stealth_cooldown > world.time)
 		return FALSE
 
 	return TRUE
 
 
-// Called by things that break cloaks, like Technomancer wards.
+// Called by things that break stealths, like Technomancer wards.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/break_cloak()
-	uncloak()
+	unstealth()
 
 
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/is_cloaked()
-	return cloaked
+	return stealthed
 
 
 // Cloaks the tajaran automatically, if possible.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/handle_special()
-	if(!cloaked && can_cloak())
-		cloak()
+	if(!stealthed && can_stealth())
+		stealth()
 
 
-// Applies bonus base damage if cloaked.
+// Applies bonus base damage if stealthed.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/apply_bonus_melee_damage(atom/A, damage_amount)
-	if(cloaked)
-		return damage_amount + cloaked_bonus_damage
+	if(stealthed)
+		return damage_amount + stealthed_bonus_damage
 	return ..()
 
-// Applies stun, then uncloaks.
+// Applies stun, then unstealths.
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/apply_melee_effects(atom/A)
-	if(cloaked)
+	if(stealthed)
 		if(isliving(A))
 			var/mob/living/L = A
-			L.Weaken(cloaked_weaken_amount)
-			to_chat(L, span("danger", "\The [src] tears into you!"))
+			L.afflict_paralyze(20 * stealthed_weaken_amount)
+			to_chat(L, SPAN_DANGER("\The [src] tears into you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
-	uncloak()
+	unstealth()
 	..() // For the poison.
 
-// Force uncloaking if attacked.
-/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/item/projectile/P)
+// Force unstealthing if attacked.
+/mob/living/simple_mob/mechanical/cyber_horror/tajaran/bullet_act(obj/projectile/P)
 	. = ..()
 	break_cloak()
 
@@ -284,13 +316,13 @@
 	maxHealth = 100
 	health = 100
 
-	projectiletype = /obj/item/projectile/arc/blue_energy
+	projectiletype = /obj/projectile/arc/blue_energy
 	projectilesound = 'sound/weapons/Laser.ogg'
 	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting
 
-	armor = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
+	armor_legacy_mob = list(melee = -30, bullet = 10, laser = 10, bio = 100, rad = 100)
 
-/obj/item/projectile/arc/blue_energy
+/obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
@@ -306,7 +338,7 @@
 	health = 50
 
 	base_attack_cooldown = 4
-	projectiletype = /obj/item/projectile/beam/drone
+	projectiletype = /obj/projectile/beam/drone
 	projectilesound = 'sound/weapons/laser3.ogg'
 	movement_sound = 'sound/effects/servostep.ogg'
 
@@ -325,7 +357,7 @@
 	movement_cooldown = 0
 	movement_sound = 'sound/effects/servostep.ogg'
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
@@ -358,13 +390,120 @@
 		L.reagents.add_reagent(poison_type, poison_per_bite)
 
 //These are the projectiles mobs use
-/obj/item/projectile/beam/drone
+/obj/projectile/beam/drone
 	damage = 3
-/obj/item/projectile/arc/blue_energy
+/obj/projectile/arc/blue_energy
 	name = "energy missle"
 	icon_state = "force_missile"
 	damage = 12
 	damage_type = BURN
+
+//Boss Mob - The High Priest
+/mob/living/simple_mob/mechanical/cyber_horror/priest
+	name = "hulking cyber horror"
+	desc = "A gnarled, still living convert forcibly integrated into a heavy walker platform composed of living metal."
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "the_changed"
+	icon_dead = "the_changed_dead"
+	maxHealth = 450
+	health = 450
+	armor_legacy_mob = list(melee = 30, bullet = 20, laser = 20, bio = 100, rad = 100)
+	response_harm = "harmlessly punches"
+	harm_intent_damage = 0
+	melee_damage_lower = 5
+	melee_damage_upper = 15
+	attack_armor_pen = 20
+	mob_class = MOB_CLASS_ABERRATION
+	mob_size = MOB_HUGE
+	taser_kill = FALSE
+	movement_cooldown = 8
+	special_attack_cooldown = 45 SECONDS
+	special_attack_min_range = 2
+	special_attack_max_range = 8
+	var/poison_chance = 75
+	var/poison_per_bite = 3
+	var/poison_type = "neurophage_nanites"
+
+	base_attack_cooldown = 30
+	projectiletype = /obj/projectile/arc/blue_energy/priest
+	projectilesound = 'sound/weapons/Laser.ogg'
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/aggressive/priest
+
+/obj/projectile/arc/blue_energy/priest
+	name = "nanite cloud"
+	icon_state = "particle-heavy"
+	damage = 15
+	damage_type = BRUTE
+
+/obj/projectile/arc/blue_energy/priest/on_hit(var/atom/target, var/blocked = 0)
+	if(ishuman(target))
+		var/mob/living/carbon/human/M = target
+		M.Confuse(rand(3,5))
+
+/datum/ai_holder/simple_mob/ranged/aggressive/priest //Adopted from the Blood Hunter.
+	pointblank = FALSE
+	closest_distance = 0
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/apply_melee_effects(var/atom/A)
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.reagents)
+			var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
+			if(L.can_inject(src, null, target_zone))
+				inject_poison(L, target_zone)
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/proc/inject_poison(mob/living/L, target_zone)
+	if(prob(poison_chance))
+		to_chat(L, "<span class='warning'>You feel nanites digging into your skin!</span>")
+		L.reagents.add_reagent(poison_type, poison_per_bite)
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/should_special_attack(atom/A)
+	var/mob_count = 0				// Are there enough mobs?
+	var/turf/T = get_turf(A)
+	for(var/mob/M in range(T, 2))
+		if(M.faction == faction) 	// Don't grenade our friends
+			return FALSE
+		if(M in oview(src, special_attack_max_range))
+			if(!M.stat)
+				mob_count ++
+	if(mob_count < 2)
+		return FALSE
+	else
+		return TRUE
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/do_special_attack(atom/target)
+	set waitfor = FALSE
+
+	// Warm-up
+	Beam(target, icon_state = "sat_beam", time = 2 SECONDS, maxdistance = INFINITY)
+	visible_message(SPAN_WARNING( "A glowing port opens up in the [src]'s carapace!"))
+	playsound(src, 'sound/effects/turret/move1.wav', 50, 1)
+	sleep(2 SECONDS)
+
+	for(var/i = 1 to 1)
+		if(target) // Might get deleted in the meantime.
+			var/turf/T = get_turf(target)
+			if(T)
+				visible_message(SPAN_WARNING( "[src] discharges a beam of concentrated energy!"))
+				playsound(src, 'sound/weapons/lasercannonfire.ogg', 70, 1)
+				face_atom(T)
+				var/obj/projectile/arc/radioactive/priest/ball = new(loc)
+				ball.old_style_target(T, src)
+				ball.fire()
+				sleep(2 SECONDS)
+
+	visible_message(SPAN_WARNING( "[src] closes its reactor port."))
+	playsound(src, 'sound/effects/turret/move2.wav', 50, 1)
+
+/obj/projectile/arc/radioactive/priest
+	name  = "superheated plama discharge"
+	icon_state = "plasma3"
+	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
+
+/obj/projectile/arc/radioactive/priest/on_impact(turf/T)
+	. = ..()
+	new /obj/effect/explosion(T)
+	explosion(T, 0, 1, 4)
 
 ////////////////////////
 //Lavaland Cyber_Horrors
@@ -435,5 +574,25 @@
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt
 	name = "smoldering hunter drone"
 	desc = "This creature, formerly a cat, has had arachnid legs crudely grafted to its body. It moves with frightening acuity."
+
+	heat_resist = 1
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/surt
+	name = "warped cyber horror"
+	desc = "A gnarled, still living convert forcibly integrated into a heavy walker platform composed of living metal. The metal has bubbled and warped unnaturally from the heat."
+
+	heat_resist = 1
+
+/mob/living/simple_mob/mechanical/cyber_horror/priest/thechanged
+	name = "The Changed One"
+	desc = "The casing and writhing flesh of this body have been adorned in ritual wax and religious icons. Burned prayer sheets daubed in its own dripping blood flap in the stifling air. The cruciform body integrated into the machine wriggles feebly, its jaw tightly wagging up and down - it has no mouth."
+	maxHealth = 1500
+	health = 1500
+	armor_legacy_mob = list(melee = 50, bullet = 35, laser = 35, bio = 100, rad = 100)
+	movement_cooldown = 4
+	melee_damage_lower = 15
+	melee_damage_upper = 25
+	attack_armor_pen = 25
+	base_attack_cooldown = 7
 
 	heat_resist = 1

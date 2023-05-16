@@ -7,7 +7,7 @@
 	program_menu_icon = "notice"
 	extended_desc = "This program connects to specially calibrated sensors to provide information on the status of a fission core."
 	ui_header = "smmon_0.gif"
-	required_access = access_engine
+	required_access = ACCESS_ENGINEERING_MAIN
 	requires_ntnet = 1
 	network_destination = "fission monitoring system"
 	size = 5
@@ -45,7 +45,7 @@
 	if(!z)
 		return
 	var/valid_z_levels = GLOB.using_map.get_map_levels(z)
-	for(var/obj/machinery/power/fission/F in machines)
+	for(var/obj/machinery/power/fission/F in GLOB.machines)
 		// Unsecured, blown up, not within coverage, not on a tile.
 		if(!F.anchored || F.exploded || !(F.z in valid_z_levels) || !istype(F.loc, /turf/))
 			continue

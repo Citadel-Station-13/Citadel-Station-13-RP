@@ -6,7 +6,7 @@
 	icon_opened = "secureresopen"
 	icon_broken = "secureresbroken"
 	icon_off = "secureresoff"
-	req_access = list(access_tox_storage)
+	req_access = list(ACCESS_SCIENCE_TOXINS)
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/scientist,
@@ -35,7 +35,7 @@
 	icon_opened = "rdsecureopen"
 	icon_broken = "rdsecurebroken"
 	icon_off = "rdsecureoff"
-	req_access = list(access_rd)
+	req_access = list(ACCESS_SCIENCE_RD)
 
 	starts_with = list(
 		/obj/item/clothing/suit/bio_suit/scientist,
@@ -56,9 +56,10 @@
 		/obj/item/tank/air,
 		/obj/item/clothing/mask/gas,
 		/obj/item/flash,
+		/obj/item/storage/box/firingpins,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/science,
 		/obj/item/clothing/shoes/boots/winter/science,
 		/obj/item/gps/science/rd,
-		/obj/item/bluespace_harpoon, //VOREStation Add
+		/obj/item/bluespace_harpoon,
 		/obj/item/clothing/suit/storage/toggle/labcoat/rd,
 		/obj/item/clothing/under/rank/research_director/turtleneck)

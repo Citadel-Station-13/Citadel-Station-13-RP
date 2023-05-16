@@ -4,9 +4,55 @@
 # In the event that multiple org members are to be informed of changes
 # to the same file or dir, add them to the end under Multiple Owners
 
-#deathride58
-/modular_citadel/ @deathride58
+## HOSTS
 
-#LetterJay 
-/modular_citadel/code/modules/client/loadout/__donator.dm @LetterJay 
-/SQL/database_changelog.txt @LetterJay
+/code/modules/client/preferences/preference_setup/loadout/loadout_donator.dm @LetterJay
+
+
+## SEVEROPS
+
+### Multiple Owners
+
+/SQL/database_changelog.txt @LetterJay @silicons
+
+
+## MAINTAINERS
+
+### Zandario
+
+/.github/workflows/ @Zandario
+/code/__DEFINES/chat.dm @Zandario
+/code/__DEFINES/tgui.dm @Zandario
+/code/controllers/subsystem/chat.dm @Zandario
+/code/controllers/subsystem/ping.dm @Zandario
+/code/controllers/subsystem/tgui.dm @Zandario
+/code/modules/tgchat/ @Zandario
+/code/modules/tgui/ @Zandario
+/code/modules/tgui_panel/ @Zandario
+/tools/build/ @Zandario
+/tools/ci/ @Zandario
+/tools/pull_request_hooks/ @Zandario
+/tgui/ @Zandario
+
+### Zandario (explicitly disowned)
+
+/tgui/packages/tgui/interfaces/
+/tgui/packages/tgui/styles/interfaces/
+/tgui/packages/tgui-panel/styles/goon/chat-dark.scss
+/tgui/packages/tgui-panel/styles/goon/chat-light.scss
+
+### TheLordME
+
+/code/modules/power/geothermal_power.dm @TheLordME
+/code/modules/species/station/xenomorph_hybrids/ @TheLordME
+/code/modules/sprite_accessories/wings/xenomorph.dm @TheLordME
+/code/modules/sprite_accessories/tail/species/xenomorph.dm @TheLordME
+/code/modules/sprite_accessories/ears/xenomorph.dm @TheLordME
+/code/modules/events/xenoinfestation.dm @TheLordME
+
+### Multiple Owners
+
+
+## CONTRIBUTORS
+
+### Multiple Owners

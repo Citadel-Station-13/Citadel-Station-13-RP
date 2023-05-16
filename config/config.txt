@@ -1,23 +1,28 @@
 # You can use the "$include" directive to split your configs however you want
 
-$include game_options.txt
 #$include dbconfig.txt
 #$include comms.txt
 #$include antag_rep.txt
 $include resources.txt
-# Cit-specific imports
 $include logging.txt
-$include entries/urls.txt
+$include entries/dbconfig.txt
 $include entries/fail2topic.txt
+$include entries/game_options.txt
 $include entries/lobby.txt
+$include entries/urls.txt
+$include entries/hub.txt
+
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
-# @SERVERNAME tgstation
+# @SERVERNAME CitadelRP
 # Which sets the SERVERNAME, and disallows admins from being able to change it using View Variables.
 # @LOG_TWITTER 0
 # Which explicitly disables LOG_TWITTER, as well as locking it.
 # There are various options which are hard-locked for security reasons.
+
+## Uncomment to set the number of /world/Reboot()s before the DreamDaemon restarts itself. 0 means restart every round. Requires tgstation server tools.
+#ROUNDS_UNTIL_HARD_RESTART 5
 
 ## Uncomment to enable minimap generation
 MINIMAPS_ENABLED
@@ -43,6 +48,13 @@ CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
 ## The minimum build needed for joining the server, if using 512, a good minimum build would be 1421 as that disables the Middle Mouse Button exploit.
 CLIENT_ERROR_BUILD 1421
 
-## TAGLINE - Hub tagline
-TAGLINE <br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>
+## Assets can opt-in to caching their results into `tmp`.
+## This is important, as preferences assets take upwards of 30 seconds (without sleeps) to collect.
+## The cache is assumed to be cleared by TGS recompiling, which deletes `tmp`.
+## This should be disabled (through `CACHE_ASSETS 0`) on development,
+## but enabled on production (the default).
+CACHE_ASSETS 0
 
+## Comment to disable sending a toast notification on the host server when initializations complete.
+## Even if this is enabled, a notification will only be sent if there are no clients connected.
+TOAST_NOTIFICATION_ON_INIT

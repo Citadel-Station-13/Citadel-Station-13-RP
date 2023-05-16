@@ -7,8 +7,8 @@
  * - html - HTML message text
  * - Optional metadata, can be any key/value pair.
  *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /proc/message_to_html(message)

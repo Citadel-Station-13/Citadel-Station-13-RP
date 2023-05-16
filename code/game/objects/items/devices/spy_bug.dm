@@ -5,15 +5,14 @@
 	icon_state = "camgrenade"
 	item_state = "empgrenade"
 	w_class = ITEMSIZE_SMALL
-	force = 0
-	throwforce = 5.0
+	damage_force = 0
+	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
 	origin_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	var/obj/item/bug_monitor/linkedmonitor
 	var/brokentype = /obj/item/brokenbug
 
-//	var/obj/item/radio/bug/radio
 	var/obj/machinery/camera/bug/camera
 	var/camtype = /obj/machinery/camera/bug
 
@@ -22,16 +21,16 @@
 	camera = new camtype(src)
 
 /obj/item/camerabug/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>You crush the [src] under your foot, breaking it.</span>")
 		visible_message("[user.name] crushes the [src] under their foot, breaking it!</span>")
 		new brokentype(get_turf(src))
 		spawn(0)
 		qdel(src)
-/*	else
-		user.set_machine(radio)
-		radio.interact(user)
-*/
+
 /obj/item/camerabug/verb/reset()
 	set name = "Reset camera bug"
 	set category = "Object"
@@ -48,9 +47,9 @@
 	icon = 'icons/obj/grenade.dmi'
 	icon_state = "camgrenadebroken"
 	item_state = "empgrenade"
-	force = 5.0
+	damage_force = 5.0
 	w_class = ITEMSIZE_SMALL
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
 	origin_tech = list(TECH_ENGINEERING = 1)
@@ -65,8 +64,8 @@
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	origin_tech = list(TECH_ENGINEERING = 1, TECH_ILLEGAL = 3) //crush it and you lose the data
-	force = 0
-	throwforce = 5.0
+	damage_force = 0
+	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
 
@@ -100,7 +99,7 @@
 		else
 			to_chat(user, "Error: The device is linked to another monitor.")
 	else
-		if(W.force >= 5)
+		if(W.damage_force >= 5)
 			visible_message("\The [src] lens shatters!")
 			new brokentype(get_turf(src))
 			if(linkedmonitor)
@@ -124,10 +123,7 @@
 		linkedmonitor.unpair(src)
 	linkedmonitor = null
 	..()
-/*
-/obj/item/camerabug/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	radio.hear_talk(M, msg, speaking)
-*/
+
 /obj/item/bug_monitor
 	name = "mobile camera pod monitor"
 	desc = "A portable camera console designed to work with mobile camera pods."
@@ -142,6 +138,9 @@
 	var/list/obj/machinery/camera/bug/cameras = new()
 
 /obj/item/bug_monitor/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(operating)
 		return
 
@@ -165,7 +164,7 @@
 		return
 
 	selected_camera = cameras[1]
-	user.reset_view(selected_camera)
+	user.reset_perspective(selected_camera)
 	view_camera(user)
 
 	operating = 1
@@ -180,16 +179,16 @@
 			var/turf/T = get_turf(selected_camera)
 			if(!T || !is_on_same_plane_or_station(T.z, user.z) || !selected_camera.can_use())
 				user.unset_machine()
-				user.reset_view(null)
+				user.reset_perspective()
 				to_chat(user, "<span class='notice'>Link to [selected_camera] has been lost.</span>")
 				src.unpair(selected_camera.loc)
 				sleep(90)
 			else
 				user.set_machine(selected_camera)
-				user.reset_view(selected_camera)
+				user.reset_perspective(selected_camera)
 			sleep(10)
 		user.unset_machine()
-		user.reset_view(null)
+		user.reset_perspective()
 
 /obj/item/bug_monitor/proc/can_use_cam(mob/user)
 	if(operating)
@@ -200,11 +199,8 @@
 		to_chat(user, "<span class='warning'>Bring a camera in contact with this device to pair the camera.</span>")
 		return
 
-	return 1
-/*
-/obj/item/bug_monitor/hear_talk(mob/M, var/msg, verb, datum/language/speaking)
-	return radio.hear_talk(M, msg, speaking)
-*/
+	return TRUE
+
 /obj/item/bug_monitor/spy
 	name = "\improper PDA"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. Functionality determined by a preprogrammed ROM cartridge."
@@ -218,7 +214,7 @@
 	. += "The time '12:00' is blinking in the corner of the screen and \the [src] looks very cheaply made."
 
 /obj/machinery/camera/bug/check_eye(var/mob/user as mob)
-	return 0
+	return FALSE
 
 /obj/machinery/camera/bug
 	network = list(NETWORK_SECURITY)
@@ -236,21 +232,3 @@
 	. = ..()
 	name = "DV-136ZB #[rand(1000,9999)]"
 	c_tag = name
-
-/* //These were originally supposed to have radios in them. Doesn't work.
-/obj/item/radio/bug
-	listening = 0 //turn it on first
-	frequency = 1359 //sec comms
-	broadcasting = 0
-	canhear_range = 1
-	name = "camera bug device"
-	icon_state = "syn_cypherkey"
-
-/obj/item/radio/bug/spy
-	listening = 0
-	frequency = 1473
-	broadcasting = 0
-	canhear_range = 1
-	name = "spy device"
-	icon_state = "syn_cypherkey"
-	*/

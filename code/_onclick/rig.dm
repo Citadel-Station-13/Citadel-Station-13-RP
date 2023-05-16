@@ -47,32 +47,32 @@
 			return
 	..()
 
-/mob/living/proc/can_use_rig()
+/mob/living/proc/can_use_hardsuit()
 	return 0
 
-/mob/living/carbon/human/can_use_rig()
+/mob/living/carbon/human/can_use_hardsuit()
 	return 1
 
-/mob/living/carbon/brain/can_use_rig()
+/mob/living/carbon/brain/can_use_hardsuit()
 	return istype(loc, /obj/item/mmi)
 
-/mob/living/silicon/ai/can_use_rig()
+/mob/living/silicon/ai/can_use_hardsuit()
 	return carded
 
-/mob/living/silicon/pai/can_use_rig()
+/mob/living/silicon/pai/can_use_hardsuit()
 	return loc == card
 
 /mob/living/proc/HardsuitClickOn(var/atom/A, var/alert_ai = 0)
-	if(!can_use_rig() || !canClick())
+	if(!can_use_hardsuit() || !canClick())
 		return 0
-	var/obj/item/rig/rig = get_rig()
-	if(istype(rig) && !rig.offline && rig.selected_module)
-		if(src != rig.wearer)
-			if(rig.ai_can_move_suit(src, check_user_module = 1))
-				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(rig.wearer, include_name = 1)] to use a hardsuit module.")
+	var/obj/item/hardsuit/hardsuit = get_hardsuit(TRUE)
+	if(hardsuit?.selected_module)
+		if(src != hardsuit.wearer)
+			if(hardsuit.ai_can_move_suit(src, check_user_module = 1))
+				message_admins("[key_name_admin(src, include_name = 1)] is trying to force \the [key_name_admin(hardsuit.wearer, include_name = 1)] to use a hardsuit module.")
 			else
 				return 0
-		rig.selected_module.engage(A, alert_ai)
+		hardsuit.selected_module.engage(A, alert_ai)
 		if(ismob(A)) // No instant mob attacking - though modules have their own cooldowns
 			setClickCooldown(get_attack_speed())
 		return 1

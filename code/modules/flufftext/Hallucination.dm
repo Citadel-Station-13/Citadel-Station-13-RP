@@ -11,7 +11,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 */
 
-mob/living/carbon/var
+/mob/living/carbon/var
 	image/halimage
 	image/halbody
 	obj/halitem
@@ -19,7 +19,7 @@ mob/living/carbon/var
 	handling_hal = 0
 	hal_crit = 0
 
-mob/living/carbon/proc/handle_hallucinations()
+/mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal) return
 	handling_hal = 1
 	while(client && hallucination > 20)
@@ -114,9 +114,9 @@ mob/living/carbon/proc/handle_hallucinations()
 				switch(rand(1,12))
 					if(1) SEND_SOUND(src, sound('sound/machines/airlock.ogg'))
 					if(2)
-						if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1.ogg'))
-						else SEND_SOUND(src, sound('sound/effects/Explosion2.ogg'))
-					if(3) SEND_SOUND(src, sound('sound/effects/explosionfar.ogg'))
+						if(prob(50))SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion1.ogg'))
+						else SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion2.ogg'))
+					if(3) SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1.ogg'))
 					if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2.ogg'))
 					if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3.ogg'))
@@ -168,12 +168,12 @@ mob/living/carbon/proc/handle_hallucinations()
 			if(71 to 72)
 				//Fake death
 //				src.sleeping_willingly = 1
-				SetSleeping(20)
+				set_sleeping(20 * 20)
 				hal_crit = 1
 				hal_screwyhud = 1
 				spawn(rand(50,100))
 //					src.sleeping_willingly = 0
-					SetSleeping(0)
+					set_sleeping(0)
 					hal_crit = 0
 					hal_screwyhud = 0
 	handling_hal = 0
@@ -247,7 +247,7 @@ proc/check_panel(mob/M)
 		to_chat(M, "<font color='red'><B>[my_target] flails around wildly.</B></font>")
 	my_target.show_message("<font color='red'><B>[src] has been attacked by [my_target] </B></font>", 1) //Lazy.
 
-	src.health -= P.force
+	src.health -= P.damage_force
 
 /obj/effect/fake_attacker/Crossed(var/mob/M, somenumber)
 	. = ..()
@@ -328,7 +328,7 @@ proc/check_panel(mob/M)
 		qdel(O)
 	return
 
-GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/projectile, /obj/item/ammo_magazine/s357,\
+GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/gun/ballistic, /obj/item/ammo_magazine/s357,\
 	/obj/item/gun/energy/crossbow, /obj/item/melee/energy/sword,\
 	/obj/item/storage/box/syndicate, /obj/item/storage/box/emps,\
 	/obj/item/cartridge/syndicate, /obj/item/clothing/under/chameleon,\

@@ -1,0 +1,461 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/POIs/tomb)
+"c" = (
+/turf/simulated/floor/outdoors/beach/sand/dirtlight,
+/area/class_h/explored)
+"d" = (
+/obj/random/mob/spider/nurse,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"e" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/POIs/tomb)
+"k" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/ears/earring/dangle/glass,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"l" = (
+/turf/simulated/wall/sandstone,
+/area/class_h/POIs/tomb)
+"m" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/accessory/necklace,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"n" = (
+/turf/simulated/mineral/classh,
+/area/class_h/explored)
+"o" = (
+/turf/simulated/floor/outdoors/beach/sand/lowdesert,
+/area/class_h/explored)
+"p" = (
+/obj/random/mob/spider,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"q" = (
+/turf/simulated/wall/sandstone/classh,
+/area/class_h/explored)
+"w" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/gloves/ring/material/iron,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"H" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/ears/earring/stud/steel,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"K" = (
+/mob/living/simple_mob/animal/giant_spider,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"L" = (
+/turf/simulated/wall/sandstonediamond/classh,
+/area/class_h/POIs/tomb)
+"N" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"O" = (
+/obj/structure/table/marble,
+/obj/effect/decal/remains/mummy2,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"S" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/ears/skrell/chain,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"T" = (
+/obj/structure/table/marble,
+/obj/effect/decal/remains/mummy1,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"U" = (
+/obj/structure/table/marble,
+/obj/item/flame/candle/candelabra/everburn{
+	icon_state = "candelabra_lit";
+	lit = 1
+	},
+/obj/item/clothing/gloves/ring/material/silver,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"W" = (
+/turf/simulated/wall/sandstone/classh{
+	can_open = 1
+	},
+/area/class_h/POIs/tomb)
+"X" = (
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"Y" = (
+/obj/random/mob/spider/mutant,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+"Z" = (
+/obj/effect/decal/remains/mummy1,
+/obj/random/multiple/treasure,
+/turf/simulated/floor/wmarble,
+/area/class_h/POIs/tomb)
+
+(1,1,1) = {"
+a
+a
+a
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+a
+a
+"}
+(3,1,1) = {"
+a
+n
+n
+n
+l
+l
+e
+e
+L
+L
+L
+e
+e
+e
+e
+n
+n
+n
+a
+a
+"}
+(4,1,1) = {"
+n
+n
+n
+n
+l
+Z
+e
+Y
+N
+X
+N
+Y
+W
+Z
+e
+n
+n
+n
+o
+o
+"}
+(5,1,1) = {"
+n
+n
+e
+e
+e
+W
+e
+N
+U
+O
+k
+N
+e
+e
+e
+n
+n
+n
+o
+q
+"}
+(6,1,1) = {"
+n
+n
+e
+N
+N
+d
+e
+X
+X
+K
+X
+N
+e
+n
+n
+n
+o
+o
+o
+c
+"}
+(7,1,1) = {"
+n
+n
+L
+N
+S
+X
+e
+e
+X
+X
+e
+e
+e
+e
+e
+o
+q
+c
+c
+o
+"}
+(8,1,1) = {"
+n
+n
+L
+N
+T
+X
+X
+X
+X
+X
+p
+X
+X
+X
+b
+c
+c
+c
+o
+c
+"}
+(9,1,1) = {"
+n
+n
+L
+X
+T
+X
+X
+X
+X
+X
+p
+X
+X
+X
+X
+c
+c
+o
+c
+o
+"}
+(10,1,1) = {"
+a
+n
+L
+N
+m
+X
+e
+e
+X
+X
+e
+e
+e
+e
+e
+o
+q
+c
+c
+o
+"}
+(11,1,1) = {"
+a
+n
+e
+N
+N
+d
+e
+N
+K
+X
+X
+K
+e
+n
+n
+o
+o
+o
+o
+c
+"}
+(12,1,1) = {"
+a
+n
+e
+e
+e
+e
+e
+N
+w
+O
+H
+X
+e
+n
+n
+n
+n
+o
+o
+q
+"}
+(13,1,1) = {"
+a
+n
+n
+n
+n
+n
+e
+N
+Y
+X
+X
+Y
+e
+n
+n
+n
+n
+n
+o
+o
+"}
+(14,1,1) = {"
+a
+a
+n
+n
+n
+n
+e
+e
+L
+L
+L
+e
+e
+n
+n
+n
+n
+n
+a
+a
+"}
+(15,1,1) = {"
+a
+a
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+n
+a
+a
+a
+a
+"}

@@ -7,56 +7,59 @@
 	return user.nano_default_can_use_topic(src_object)
 
 /mob/proc/nano_default_can_use_topic(var/src_object)
-	return STATUS_CLOSE // By default no mob can do anything with NanoUI
+	return UI_CLOSE // By default no mob can do anything with NanoUI
 
 /mob/observer/dead/nano_default_can_use_topic(var/src_object)
 	if(can_admin_interact())
-		return STATUS_INTERACTIVE							// Admins are more equal
-	if(!client || get_dist(src_object, src)	> client.view)	// Preventing ghosts from having a million windows open by limiting to objects in range
-		return STATUS_CLOSE
-	return STATUS_UPDATE									// Ghosts can view updates
+		return UI_INTERACTIVE							// Admins are more equal
+	if(!client)
+		return UI_CLOSE
+	// todo: in view range for zooming
+	if(get_dist(src, src_object) > min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
+		return UI_CLOSE
+	return UI_UPDATE									// Ghosts can view updates
 
 /mob/living/silicon/pai/nano_default_can_use_topic(var/src_object)
 	if((src_object == src || src_object == radio || src_object == communicator) && !stat)
-		return STATUS_INTERACTIVE
+		return UI_INTERACTIVE
 	else
 		return ..()
 
 /mob/living/silicon/robot/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction()
-	if(. <= STATUS_DISABLED)
+	if(. <= UI_DISABLED)
 		return
 
 	// robots can interact with things they can see within their view range
-	if((src_object in view(src)) && get_dist(src_object, src) <= src.client.view)
-		return STATUS_INTERACTIVE	// interactive (green visibility)
-	return STATUS_DISABLED			// no updates, completely disabled (red visibility)
+	if((src_object in view(src)) && get_dist(src_object, src) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
+		return UI_INTERACTIVE	// interactive (green visibility)
+	return UI_DISABLED			// no updates, completely disabled (red visibility)
 
 /mob/living/silicon/ai/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction()
-	if(. != STATUS_INTERACTIVE)
+	if(. != UI_INTERACTIVE)
 		return
 
 	// Prevents the AI from using Topic on admin levels (by for example viewing through the court/thunderdome cameras)
 	// unless it's on the same level as the object it's interacting with.
 	var/turf/T = get_turf(src_object)
 	if(!T || !(z == T.z || (T.z in GLOB.using_map.player_levels)))
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	// If an object is in view then we can interact with it
 	if(src_object in view(client.view, src))
-		return STATUS_INTERACTIVE
+		return UI_INTERACTIVE
 
 	// If we're installed in a chassi, rather than transfered to an inteliCard or other container, then check if we have camera view
 	if(is_in_chassis())
 		//stop AIs from leaving windows open and using then after they lose vision
-		if(cameranet && !cameranet.checkTurfVis(get_turf(src_object)))
-			return STATUS_CLOSE
-		return STATUS_INTERACTIVE
+		if(GLOB.cameranet && !GLOB.cameranet.checkTurfVis(get_turf(src_object)))
+			return UI_CLOSE
+		return UI_INTERACTIVE
 	else if(get_dist(src_object, src) <= client.view)	// View does not return what one would expect while installed in an inteliCard
-		return STATUS_INTERACTIVE
+		return UI_INTERACTIVE
 
-	return STATUS_CLOSE
+	return UI_CLOSE
 
 //Some atoms such as vehicles might have special rules for how mobs inside them interact with NanoUI.
 /atom/proc/contents_nano_distance(var/src_object, var/mob/living/user)
@@ -64,30 +67,30 @@
 
 /mob/living/proc/shared_living_nano_distance(var/atom/movable/src_object)
 	if (!(src_object in view(4, src))) 	// If the src object is not in visable, disable updates
-		return STATUS_CLOSE
+		return UI_CLOSE
 
 	var/dist = get_dist(src_object, src)
 	if (dist <= 1)
-		return STATUS_INTERACTIVE	// interactive (green visibility)
+		return UI_INTERACTIVE	// interactive (green visibility)
 	else if (dist <= 2)
-		return STATUS_UPDATE 		// update only (orange visibility)
+		return UI_UPDATE 		// update only (orange visibility)
 	else if (dist <= 4)
-		return STATUS_DISABLED 		// no updates, completely disabled (red visibility)
-	return STATUS_CLOSE
+		return UI_DISABLED 		// no updates, completely disabled (red visibility)
+	return UI_CLOSE
 
 /mob/living/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction(src_object)
-	if(. != STATUS_CLOSE)
+	if(. != UI_CLOSE)
 		if(loc)
 			. = min(., loc.contents_nano_distance(src_object, src))
 /*
-	if(STATUS_INTERACTIVE)
-		return STATUS_UPDATE
+	if(UI_INTERACTIVE)
+		return UI_UPDATE
 */
 
 /mob/living/carbon/human/nano_default_can_use_topic(var/src_object)
 	. = shared_nano_interaction(src_object)
-	if(. != STATUS_CLOSE)
+	if(. != UI_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))
-		if(. == STATUS_UPDATE && (TK in mutations))	// If we have telekinesis and remain close enough, allow interaction.
-			return STATUS_INTERACTIVE
+		if(. == UI_UPDATE && (MUTATION_TELEKINESIS in mutations))	// If we have telekinesis and remain close enough, allow interaction.
+			return UI_INTERACTIVE

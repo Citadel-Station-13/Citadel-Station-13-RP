@@ -95,7 +95,7 @@
 			var/ycrd = text2num(dmmRegex.group[4]) + y_offset - 1
 			var/zcrd = text2num(dmmRegex.group[5]) + z_offset - 1
 
-			if(orientation & (EAST | WEST)) //VOREStation edit we just have to pray the upstream spacebrains take into consideration before their refator is done.
+			if(orientation & (EAST | WEST))
 				xcrd = ycrd // temp variable
 				ycrd = xcrdStart
 				xcrdStart = xcrd
@@ -348,11 +348,15 @@
 	var/turf/crds = locate(xcrd,ycrd,zcrd)
 
 	//first instance the /area and remove it from the members list
-	index = members.len
-	if(members[index] != /area/template_noop)
-		var/atype = members[index]
-		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		var/atom/instance = areaCache[atype]
+	index = LAZYLEN(members)
+	if(LAZYACCESS(members,index) != /area/template_noop)
+		if(!ispath(LAZYACCESS(members,index), /area))
+			// you see, some people are bad memes and break things by doing this
+			// this is a far more descriptive error than the "bad loc" you'd get otherwise.
+			CRASH("The last entry in a .dmm's key was not an /area. This will lead to serious errors if allowed to continue. Crashing read proc.")
+		var/atype = LAZYACCESS(members,index)
+		world.preloader_setup(LAZYACCESS(members_attributes,index), atype)//preloader for assigning  set variables on atom creation
+		var/atom/instance = LAZYACCESS(areaCache,atype)
 		if (!instance)
 			instance = GLOB.areas_by_type[atype]
 			if (!instance)
@@ -515,9 +519,13 @@
 	return QDEL_HINT_HARDDEL_NOW
 
 
+/// Template noop (no operation) is used to skip a turf or area when the template is loaded this allows for template transparency
+/// ex. if a ship has gaps in it's design, you would use template_noop to fill these in so that when the ship moves z-level, any
+/// tiles these gaps land on will not be deleted and replaced with the ships (empty) tiles
 /area/template_noop
 	name = "Area Passthrough"
 
+/// See above explanation
 /turf/template_noop
 	name = "Turf Passthrough"
-	icon_state = "template_void"
+	icon_state = "noop"

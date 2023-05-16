@@ -123,7 +123,7 @@
 
 /obj/item/uplink/hidden/CanUseTopic()
 	if(!active)
-		return STATUS_CLOSE
+		return UI_CLOSE
 	return ..()
 
 // The purchasing code.
@@ -224,7 +224,10 @@
 	hidden_uplink = new(src, target_mind, telecrystals)
 	icon_state = "radio"
 
-/obj/item/radio/uplink/attack_self(mob/user as mob)
+/obj/item/radio/uplink/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 
@@ -232,7 +235,10 @@
 	. = ..()
 	hidden_uplink = new(src)
 
-/obj/item/multitool/uplink/attack_self(mob/user as mob)
+/obj/item/multitool/uplink/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(hidden_uplink)
 		hidden_uplink.trigger(user)
 

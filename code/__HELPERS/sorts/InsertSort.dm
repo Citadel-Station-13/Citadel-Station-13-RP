@@ -1,5 +1,8 @@
-//simple insertion sort - generally faster than merge for runs of 7 or smaller
-/proc/sortInsert(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
+/**
+ * InsertionSort
+ * - Generally faster than merge for runs of 7 or smaller.
+ */
+/proc/insertion_sort(list/L, cmp=/proc/cmp_numeric_asc, associative, fromIndex=1, toIndex=0)
 	if(L && L.len >= 2)
 		fromIndex = fromIndex % L.len
 		toIndex = toIndex % (L.len+1)
@@ -8,12 +11,12 @@
 		if(toIndex <= 0)
 			toIndex += L.len + 1
 
-		var/datum/sortInstance/SI = GLOB.sortInstance
+		var/datum/sort_instance/SI = GLOB.sort_instance
 		if(!SI)
 			SI = new
 		SI.L = L
 		SI.cmp = cmp
 		SI.associative = associative
 
-		SI.binarySort(fromIndex, toIndex, fromIndex)
+		SI.binary_sort(fromIndex, toIndex, fromIndex)
 	return L

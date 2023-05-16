@@ -1,5 +1,5 @@
 //Returns the firelevel
-/datum/gas_mixture/proc/zburn(zone/zone, force_burn, no_check = 0)
+/datum/gas_mixture/proc/zburn(datum/zas_zone/zone, force_burn, no_check = 0)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/fuel_energy_release, fuel_energy_release)
 
@@ -7,8 +7,8 @@
 	if((temperature > PHORON_MINIMUM_BURN_TEMPERATURE || force_burn) && (no_check ||check_recombustability(zone? zone.fuel_objs : null)))
 
 		#ifdef FIREDBG
-		log_debug("***************** FIREDBG *****************")
-		log_debug("Burning [zone? zone.name : "zoneless gas_mixture"]!")
+		log_debug(SPAN_DEBUGINFO("***************** FIREDBG *****************"))
+		log_debug(SPAN_DEBUGINFO("Burning [zone? zone.name : "zoneless gas_mixture"]!"))
 		#endif
 
 		var/gas_fuel = 0
@@ -28,7 +28,7 @@
 		//Liquid Fuel
 		var/fuel_area = 0
 		if(zone)
-			for(var/obj/effect/decal/cleanable/liquid_fuel/fuel in zone.fuel_objs)
+			for(var/obj/effect/debris/cleanable/liquid_fuel/fuel in zone.fuel_objs)
 				liquid_fuel += fuel.amount*LIQUIDFUEL_AMOUNT_TO_MOL
 				fuel_area++
 
@@ -61,13 +61,13 @@
 		var/used_oxidizers = used_fuel*(FIRE_REACTION_OXIDIZER_AMOUNT/FIRE_REACTION_FUEL_AMOUNT)
 
 		#ifdef FIREDBG
-		log_debug("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]")
-		log_debug("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]")
-		log_debug("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])")
-		log_debug("liquid_reaction_progress = [liquid_reaction_progress]")
-		log_debug("gas_reaction_progress = [gas_reaction_progress]")
-		log_debug("total_reaction_progress = [total_reaction_progress]")
-		log_debug("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; ")
+		log_debug(SPAN_DEBUGINFO("gas_fuel = [gas_fuel], liquid_fuel = [liquid_fuel], total_oxidizers = [total_oxidizers]"))
+		log_debug(SPAN_DEBUGINFO("fuel_area = [fuel_area], total_fuel = [total_fuel], reaction_limit = [reaction_limit]"))
+		log_debug(SPAN_DEBUGINFO("firelevel -> [firelevel] (gas: [gas_firelevel], liquid: [liquid_firelevel])"))
+		log_debug(SPAN_DEBUGINFO("liquid_reaction_progress = [liquid_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("gas_reaction_progress = [gas_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("total_reaction_progress = [total_reaction_progress]"))
+		log_debug(SPAN_DEBUGINFO("used_fuel = [used_fuel], used_oxidizers = [used_oxidizers]; "))
 		#endif
 
 		//if the reaction is progressing too slow then it isn't self-sustaining anymore and burns out
@@ -95,13 +95,13 @@
 		update_values()
 
 		#ifdef FIREDBG
-		log_debug("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]")
-		log_debug("new temperature = [temperature]; new pressure = [return_pressure()]")
+		log_debug(SPAN_DEBUGINFO("used_gas_fuel = [used_gas_fuel]; used_liquid_fuel = [used_liquid_fuel]; total = [used_fuel]"))
+		log_debug(SPAN_DEBUGINFO("new temperature = [temperature]; new pressure = [return_pressure()]"))
 		#endif
 
 		return firelevel
 
-datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
+/datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
 		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
@@ -120,7 +120,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 			. = 1
 			break
 
-/datum/gas_mixture/proc/check_combustability(obj/effect/decal/cleanable/liquid_fuel/liquid=null)
+/datum/gas_mixture/proc/check_combustability(obj/effect/debris/cleanable/liquid_fuel/liquid=null)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)

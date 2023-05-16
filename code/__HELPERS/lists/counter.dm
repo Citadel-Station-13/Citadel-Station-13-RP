@@ -1,7 +1,7 @@
-/* Definining a counter as a series of key -> numeric value entries
-
+/** Definining a counter as a series of key -> numeric value entries
+ *
  * All these procs modify in place.
-*/
+ */
 
 /proc/counterlist_scale(list/L, scalar)
 	var/list/out = list()

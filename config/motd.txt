@@ -1,5 +1,7 @@
+<center>
 <h1>Welcome to Space Station 13!</h1>
-
--<i>This server is running the <a href="https://ss13polaris.com/">Polaris</a> modification of the <a href="https://baystation12.net/">Baystation12</a> SS13 code.</i>
+<hr>
+<strong>This server is running the <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP">CitadelRP</a> flavor of SS13 code.<strong>
 <br><br>
-<strong>Bugtracker:</strong> <a href="https://github.com/PolarisSS13/Polaris/issues">for posting of bugs and issues.</a>
+<strong>Bugtracker:</strong> <a href="https://github.com/Citadel-Station-13/Citadel-Station-13-RP/issues">For posting of bugs and issues.</a>
+</center>

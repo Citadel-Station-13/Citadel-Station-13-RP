@@ -15,9 +15,9 @@
 
 /obj/machinery/portable_atmospherics/hydroponics/soil/Initialize(mapload)
 	. = ..()
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label
-	verbs -= /obj/machinery/portable_atmospherics/hydroponics/verb/setlight
+	remove_obj_verb(src, /obj/machinery/portable_atmospherics/hydroponics/verb/close_lid_verb)
+	remove_obj_verb(src, /obj/machinery/portable_atmospherics/hydroponics/verb/remove_label)
+	remove_obj_verb(src, /obj/machinery/portable_atmospherics/hydroponics/verb/setlight)
 
 // Holder for vine plants.
 // Icons for plants are generated as overlays, so setting it to invisible wouldn't work.
@@ -63,3 +63,7 @@
 		if(plant.invisibility == INVISIBILITY_MAXIMUM)
 			plant.invisibility = initial(plant.invisibility)
 	..()
+
+/obj/machinery/portable_atmospherics/hydroponics/soil/ashlander
+	name = "ashen soil"
+	hostile_soil = 1

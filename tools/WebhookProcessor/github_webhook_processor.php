@@ -33,15 +33,24 @@ $servers = array();
 $enable_live_tracking = true;
 $path_to_script = 'tools/WebhookProcessor/github_webhook_processor.php';
 $tracked_branch = "master";
-$trackPRBalance = true;
-$prBalanceJson = '';
-$startingPRBalance = 30;
 $maintainer_team_id = 133041;
 $validation = "org";
 $validation_count = 1;
 $tracked_branch = 'master';
 $require_changelogs = false;
 $discordWebHooks = array();
+
+// Only these repositories will announce in game.
+// Any repository that players actually care about.
+$game_announce_whitelist = array(
+	"tgstation",
+	"TerraGov-Marine-Corps",
+);
+
+// Any repository that matches in this blacklist will not appear on Discord.
+$discord_announce_blacklist = array(
+	"/^event-.*$/",
+);
 
 require_once 'secret.php';
 
@@ -177,7 +186,7 @@ function validate_user($payload) {
 		$querystring .= ($querystring == '' ? '' : '+') . urlencode($key) . ':' . urlencode($value);
 	$res = github_apisend('https://api.github.com/search/issues?q='.$querystring);
 	$res = json_decode($res, TRUE);
-	return $res['total_count'] >= (int)$validation_count;
+	return (isset($res['total_count']) && $res['total_count'] >= (int)$validation_count);
 
 }
 
@@ -231,11 +240,10 @@ function tag_pr($payload, $opened) {
 	$tags = array();
 	$title = $payload['pull_request']['title'];
 	if($opened) {	//you only have one shot on these ones so as to not annoy maintainers
-		$tags = checkchangelog($payload, false);
+		$tags = checkchangelog($payload);
 
 		if(strpos(strtolower($title), 'refactor') !== FALSE)
 			$tags[] = 'Refactor';
-
 		if(strpos(strtolower($title), 'revert') !== FALSE)
 			$tags[] = 'Revert';
 		if(strpos(strtolower($title), 'removes') !== FALSE)
@@ -250,7 +258,7 @@ function tag_pr($payload, $opened) {
 	else if ($mergeable === FALSE)
 		$tags[] = 'Merge Conflict';
 
-	$treetags = array('_maps' => 'Map Edit', 'tools' => 'Tools', 'SQL' => 'SQL', '.github' => 'GitHub');
+	$treetags = array('maps' => 'Map Edit', 'tools' => 'Tools', 'SQL' => 'SQL', '.github' => 'GitHub');
 	$addonlytags = array('icons' => 'Sprites', 'sound' => 'Sound', 'config' => 'Config Update', 'code/controllers/configuration/entries' => 'Config Update', 'tgui' => 'UI');
 	foreach($treetags as $tree => $tag)
 		if(has_tree_been_edited($payload, $tree))
@@ -262,6 +270,7 @@ function tag_pr($payload, $opened) {
 			$tags[] = $tag;
 
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
+	check_tag_and_replace($payload, '[no gbp]', 'GBP: No Update', $tags);
 
 	return array($tags, $remove);
 }
@@ -293,7 +302,7 @@ function check_dismiss_changelog_review($payload){
 		return;
 
 	if(!$no_changelog)
-		checkchangelog($payload, false);
+		checkchangelog($payload);
 
 	$review_message = 'Your changelog for this PR is either malformed or non-existent. Please create one to document your changes.';
 
@@ -313,8 +322,21 @@ function check_dismiss_changelog_review($payload){
 				dismiss_review($payload, $R['id'], 'Changelog added/fixed.');
 }
 
+function is_blacklisted($blacklist, $name) {
+	foreach ($blacklist as $pattern) {
+		if (preg_match($pattern, $name)) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 function handle_pr($payload) {
+	global $discord_announce_blacklist;
 	global $no_changelog;
+	global $game_announce_whitelist;
+
 	$action = 'opened';
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {
@@ -323,14 +345,6 @@ function handle_pr($payload) {
 			set_labels($payload, $labels, $remove);
 			if($no_changelog)
 				check_dismiss_changelog_review($payload);
-			/*
-			if(get_pr_code_friendliness($payload) <= 0){
-				$balances = pr_balances();
-				$author = $payload['pull_request']['user']['login'];
-				if(isset($balances[$author]) && $balances[$author] < 0 && !is_maintainer($payload, $author))
-					create_comment($payload, 'You currently have a negative Fix/Feature pull request delta of ' . $balances[$author] . '. Maintainers may close this PR at will. Fixing issues or improving the codebase will improve this score.');
-			}
-			*/
 			break;
 		case 'edited':
 			check_dismiss_changelog_review($payload);
@@ -348,8 +362,7 @@ function handle_pr($payload) {
 			else {
 				$action = 'merged';
 				auto_update($payload);
-				checkchangelog($payload, true);
-				update_pr_balance($payload);
+				checkchangelog($payload);
 				$validated = TRUE; //pr merged events always get announced.
 			}
 			break;
@@ -364,9 +377,16 @@ function handle_pr($payload) {
 	if (!$validated) {
 		$pr_flags |= F_UNVALIDATED_USER;
 	}
-	discord_announce($action, $payload, $pr_flags);
-	game_announce($action, $payload, $pr_flags);
 
+	$repo_name = $payload['repository']['name'];
+
+	if (in_array($repo_name, $game_announce_whitelist)) {
+		game_announce($action, $payload, $pr_flags);
+	}
+
+	if (!is_blacklisted($discord_announce_blacklist, $repo_name)) {
+		discord_announce($action, $payload, $pr_flags);
+	}
 }
 
 function filter_announce_targets($targets, $owner, $repo, $action, $pr_flags) {
@@ -548,66 +568,6 @@ function get_pr_labels_array($payload){
 	return $result;
 }
 
-//helper for getting the path the the balance json file
-function pr_balance_json_path(){
-	global $prBalanceJson;
-	return $prBalanceJson != '' ? $prBalanceJson : 'pr_balances.json';
-}
-
-//return the assoc array of login -> balance for prs
-function pr_balances(){
-	$path = pr_balance_json_path();
-	if(file_exists($path))
-		return json_decode(file_get_contents($path), true);
-	else
-		return array();
-}
-
-//returns the difference in PR balance a pull request would cause
-function get_pr_code_friendliness($payload, $oldbalance = null){
-	global $startingPRBalance;
-	if($oldbalance == null)
-		$oldbalance = $startingPRBalance;
-	$labels = get_pr_labels_array($payload);
-	//anything not in this list defaults to 0
-	$label_values = array(
-		'Fix' => 3,
-		'Refactor' => 10,
-		'Code Improvement' => 2,
-		'Grammar and Formatting' => 1,
-		'Quality of Life' => 1,
-		'Priority: High' => 15,
-		'Priority: CRITICAL' => 20,
-		'Unit Tests' => 6,
-		'Logging' => 1,
-		'Feedback' => 2,
-		'Performance' => 12,
-		'Atomic' => 2,
-		'Feature' => -10,
-		'Balance/Rebalance' => -8,
-		'Sound' => 1,
-		'Sprites' => 1,
-		'GBP: Reset' => $startingPRBalance - $oldbalance,
-	);
-
-	$maxNegative = 0;
-	$maxPositive = 0;
-	foreach($labels as $l){
-		if($l == 'GBP: No Update') {	//no effect on balance
-			return 0;
-		}
-		else if(isset($label_values[$l])) {
-			$friendliness = $label_values[$l];
-			if($friendliness > 0)
-				$maxPositive = max($friendliness, $maxPositive);
-			else
-				$maxNegative = min($friendliness, $maxNegative);
-		}
-	}
-
-	return $maxNegative + $maxPositive;
-}
-
 function is_maintainer($payload, $author){
 	global $maintainer_team_id;
 	$repo_is_org = $payload['pull_request']['base']['repo']['owner']['type'] == 'Organization';
@@ -622,29 +582,6 @@ function is_maintainer($payload, $author){
 		$result = json_decode(github_apisend($check_url), true);
 		return isset($result['state']) && $result['state'] == 'active';
 	}
-}
-
-//payload is a merged pull request, updates the pr balances file with the correct positive or negative balance based on comments
-function update_pr_balance($payload) {
-	global $startingPRBalance;
-	global $trackPRBalance;
-	if(!$trackPRBalance)
-		return;
-	$author = $payload['pull_request']['user']['login'];
-	$balances = pr_balances();
-	if(!isset($balances[$author]))
-		$balances[$author] = $startingPRBalance;
-	$friendliness = get_pr_code_friendliness($payload, $balances[$author]);
-	$balances[$author] += $friendliness;
-	if(!is_maintainer($payload, $author)){	//immune
-		if($balances[$author] < 0 && $friendliness < 0)
-			create_comment($payload, 'Your Fix/Feature pull request delta is currently below zero (' . $balances[$author] . '). Maintainers may close future Feature/Tweak/Balance PRs. Fixing issues or helping to improve the codebase will raise this score.');
-		else if($balances[$author] >= 0 && ($balances[$author] - $friendliness) < 0)
-			create_comment($payload, 'Your Fix/Feature pull request delta is now above zero (' . $balances[$author] . '). Feel free to make Feature/Tweak/Balance PRs.');
-	}
-	$balances_file = fopen(pr_balance_json_path(), 'w');
-	fwrite($balances_file, json_encode($balances));
-	fclose($balances_file);
 }
 
 $github_diff = null;
@@ -687,13 +624,13 @@ function auto_update($payload){
 function has_tree_been_edited($payload, $tree){
 	global $github_diff;
 	get_diff($payload);
-	//find things in the _maps/map_files tree
-	//e.g. diff --git a/_maps/map_files/Cerestation/cerestation.dmm b/_maps/map_files/Cerestation/cerestation.dmm
+	//find things in the maps/map_files tree
+	//e.g. diff --git a/maps/map_files/Cerestation/cerestation.dmm b/maps/map_files/Cerestation/cerestation.dmm
 	return ($github_diff !== FALSE) && (preg_match('/^diff --git a\/' . preg_quote($tree, '/') . '/m', $github_diff) !== 0);
 }
 
 $no_changelog = false;
-function checkchangelog($payload, $compile = true) {
+function checkchangelog($payload) {
 	global $no_changelog;
 	if (!isset($payload['pull_request']) || !isset($payload['pull_request']['body'])) {
 		return;
@@ -711,26 +648,16 @@ function checkchangelog($payload, $compile = true) {
 	$body = str_replace("\r\n", "\n", $body);
 	$body = explode("\n", $body);
 
-	$username = $payload['pull_request']['user']['login'];
 	$incltag = false;
-	$changelogbody = array();
-	$currentchangelogblock = array();
 	$foundcltag = false;
 	foreach ($body as $line) {
 		$line = trim($line);
 		if (substr($line,0,4) == ':cl:' || substr($line,0,1) == '??') {
 			$incltag = true;
 			$foundcltag = true;
-			$pos = strpos($line, " ");
-			if ($pos) {
-				$tmp = substr($line, $pos+1);
-				if (trim($tmp) != 'optional name here')
-					$username = $tmp;
-			}
 			continue;
 		} else if (substr($line,0,5) == '/:cl:' || substr($line,0,6) == '/ :cl:' || substr($line,0,5) == ':/cl:' || substr($line,0,5) == '/??' || substr($line,0,6) == '/ ??' ) {
 			$incltag = false;
-			$changelogbody = array_merge($changelogbody, $currentchangelogblock);
 			continue;
 		}
 		if (!$incltag)
@@ -746,55 +673,56 @@ function checkchangelog($payload, $compile = true) {
 			$firstword = $line;
 		}
 
+		// Line is empty
 		if (!strlen($firstword)) {
-			if (count($currentchangelogblock) <= 0)
-				continue;
-			$currentchangelogblock[count($currentchangelogblock)-1]['body'] .= "\n";
 			continue;
 		}
+
 		//not a prefix line.
-		//so we add it to the last changelog entry as a separate line
 		if (!strlen($firstword) || $firstword[strlen($firstword)-1] != ':') {
-			if (count($currentchangelogblock) <= 0)
-				continue;
-			$currentchangelogblock[count($currentchangelogblock)-1]['body'] .= "\n".$line;
 			continue;
 		}
+
 		$cltype = strtolower(substr($firstword, 0, -1));
+
+		// !!!
+		// !!! If you are changing any of these at the bottom, also edit `tools/pull_request_hooks/changelogConfig.js`.
+		// !!!
+
 		switch ($cltype) {
 			case 'fix':
 			case 'fixes':
 			case 'bugfix':
 				if($item != 'fixed a few things') {
 					$tags[] = 'Fix';
-					$currentchangelogblock[] = array('type' => 'bugfix', 'body' => $item);
+				}
+				break;
+			case 'tweak':
+				if($item != 'tweaked a few things') {
+					$tags[] = 'Tweak';
 				}
 				break;
 			case 'qol':
 				if($item != 'made something easier to use') {
 					$tags[] = 'Quality of Life';
-					$currentchangelogblock[] = array('type' => 'qol', 'body' => $item);
 				}
 				break;
 			case 'soundadd':
 				if($item != 'added a new sound thingy') {
 					$tags[] = 'Sound';
-					$currentchangelogblock[] = array('type' => 'soundadd', 'body' => $item);
 				}
 				break;
 			case 'sounddel':
 				if($item != 'removed an old sound thingy') {
 					$tags[] = 'Sound';
 					$tags[] = 'Removal';
-					$currentchangelogblock[] = array('type' => 'sounddel', 'body' => $item);
 				}
 				break;
 			case 'add':
 			case 'adds':
 			case 'rscadd':
-				if($item != 'Added new things' && $item != 'Added more things') {
+				if($item != 'Added new mechanics or gameplay changes' && $item != 'Added more things') {
 					$tags[] = 'Feature';
-					$currentchangelogblock[] = array('type' => 'rscadd', 'body' => $item);
 				}
 				break;
 			case 'del':
@@ -802,99 +730,54 @@ function checkchangelog($payload, $compile = true) {
 			case 'rscdel':
 				if($item != 'Removed old things') {
 					$tags[] = 'Removal';
-					$currentchangelogblock[] = array('type' => 'rscdel', 'body' => $item);
 				}
 				break;
 			case 'imageadd':
 				if($item != 'added some icons and images') {
 					$tags[] = 'Sprites';
-					$currentchangelogblock[] = array('type' => 'imageadd', 'body' => $item);
 				}
 				break;
 			case 'imagedel':
 				if($item != 'deleted some icons and images') {
 					$tags[] = 'Sprites';
 					$tags[] = 'Removal';
-					$currentchangelogblock[] = array('type' => 'imagedel', 'body' => $item);
 				}
 				break;
 			case 'typo':
 			case 'spellcheck':
 				if($item != 'fixed a few typos') {
 					$tags[] = 'Grammar and Formatting';
-					$currentchangelogblock[] = array('type' => 'spellcheck', 'body' => $item);
 				}
 				break;
 			case 'balance':
-			case 'rebalance':
 				if($item != 'rebalanced something'){
-					$tags[] = 'Balance/Rebalance';
-					$currentchangelogblock[] = array('type' => 'balance', 'body' => $item);
+					$tags[] = 'Balance';
 				}
-				break;
-			case 'tgs':
-				$currentchangelogblock[] = array('type' => 'tgs', 'body' => $item);
 				break;
 			case 'code_imp':
 			case 'code':
 				if($item != 'changed some code'){
 					$tags[] = 'Code Improvement';
-					$currentchangelogblock[] = array('type' => 'code_imp', 'body' => $item);
 				}
 				break;
 			case 'refactor':
 				if($item != 'refactored some code'){
 					$tags[] = 'Refactor';
-					$currentchangelogblock[] = array('type' => 'refactor', 'body' => $item);
 				}
 				break;
 			case 'config':
 				if($item != 'changed some config setting'){
 					$tags[] = 'Config Update';
-					$currentchangelogblock[] = array('type' => 'config', 'body' => $item);
 				}
 				break;
 			case 'admin':
 				if($item != 'messed with admin stuff'){
 					$tags[] = 'Administration';
-					$currentchangelogblock[] = array('type' => 'admin', 'body' => $item);
 				}
-				break;
-			case 'server':
-				if($item != 'something server ops should know')
-					$currentchangelogblock[] = array('type' => 'server', 'body' => $item);
-				break;
-			default:
-				//we add it to the last changelog entry as a separate line
-				if (count($currentchangelogblock) > 0)
-					$currentchangelogblock[count($currentchangelogblock)-1]['body'] .= "\n".$line;
 				break;
 		}
 	}
-
-	if(!count($changelogbody))
-		$no_changelog = true;
-
-	if ($no_changelog || !$compile)
-		return $tags;
-
-	$file = 'author: "'.trim(str_replace(array("\\", '"'), array("\\\\", "\\\""), $username)).'"'."\n";
-	$file .= "delete-after: True\n";
-	$file .= "changes: \n";
-	foreach ($changelogbody as $changelogitem) {
-		$type = $changelogitem['type'];
-		$body = trim(str_replace(array("\\", '"'), array("\\\\", "\\\""), $changelogitem['body']));
-		$file .= '  - '.$type.': "'.$body.'"';
-		$file .= "\n";
-	}
-	$content = array (
-		'branch' 	=> $payload['pull_request']['base']['ref'],
-		'message' 	=> 'Automatic changelog generation for PR #'.$payload['pull_request']['number'].' [ci skip]',
-		'content' 	=> base64_encode($file)
-	);
-
-	$filename = '/html/changelogs/AutoChangeLog-pr-'.$payload['pull_request']['number'].'.yml';
-	echo github_apisend($payload['pull_request']['base']['repo']['url'].'/contents'.$filename, 'PUT', $content);
+	return $tags;
 }
 
 function game_server_send($addr, $port, $str) {

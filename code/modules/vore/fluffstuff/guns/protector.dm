@@ -1,13 +1,12 @@
 // -------------- Protector -------------
 /obj/item/gun/energy/protector
-	name = "small energy gun"
-	desc = "The HeI-98a 'Protector' is a special firearm custom-designed for Nanotrasen by Hephaestus. It features a powerful stun mode, and \
-	an alert-level-locked lethal mode, only usable on code blue and higher. It also features an integrated flashlight!"
-	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
+	name = "Hephaestus \'Myrmidon\'"
+	desc = "The Hephaestus Industries Myrmidon is a common energy sidearm for private security firms in the known galaxy. The Myrmidon can both stun and kill, its lethal mode locked to the alert level of its owner's choice. In the case of Nanotrasen facilities, this is most often locked to Code Blue."
+	description_info = "The \'Myrmidon\' can't be set to lethal unless the station is on Code Blue or higher. Security officers may carry it on Code Green, since its stun abilities are all that can be used until the code is raised, which then unlocks and allows its lethal capabilities."
+	description_fluff = "A common sight among Proxima Centauri Risk Control employees, the Myrmidon encourages responsible adherence to protocol, its lethal mode locked until the employee properly alerts their team and raises the alarm, freeing both the employee and their employer from responsibility for any ensuring casualties."
+	description_antag = "The \'Myrmidon\' can be tampered with to remove its restrictions, freeing up its lethal capabilities on Code Green."
 
-	description_info = "This gun can only be fired in lethal mode while on higher security alert levels. It is legal for sec to carry for this reason, since it cannot be used for lethal force until SOP allows it, in essence."
-	description_fluff = "A special Hephaestus firearm commissioned directly by NanoTrasen, this gun has a wireless connection to the computer's datacore to ensure it can't be used without authorization from heads of staff who have raised the alert level. Until then, *click*!"
-	description_antag = "The gun can be emagged to remove the lethal security level restriction, allowing it to be fired on lethal mode at all times."
+	catalogue_data = list()///datum/category_item/catalogue/information/organization/hephaestus)
 
 	icon = 'icons/vore/custom_guns_vr.dmi'
 	icon_state = "prot"
@@ -16,7 +15,7 @@
 	item_state = "gun"
 
 	fire_sound = 'sound/weapons/Taser.ogg'
-	projectile_type = /obj/item/projectile/beam/stun
+	projectile_type = /obj/projectile/beam/stun
 
 	modifystate = "stun"
 
@@ -31,8 +30,8 @@
 	flight_y_offset = 0
 
 	firemodes = list(
-	list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
-	list(mode_name="lethal", projectile_type=/obj/item/projectile/beam, modifystate="kill", fire_sound='sound/weapons/gauss_shoot.ogg'),
+	list(mode_name="stun", projectile_type=/obj/projectile/beam/stun/protector, modifystate="stun", fire_sound='sound/weapons/Taser.ogg'),
+	list(mode_name="lethal", projectile_type=/obj/projectile/beam, modifystate="kill", fire_sound='sound/weapons/gauss_shoot.ogg'),
 	)
 
 	var/emagged = FALSE
@@ -55,7 +54,8 @@
 
 //Update icons from /tg/, so fancy! Use this more!
 /obj/item/gun/energy/protector/update_icon()
-	overlays.Cut()
+	cut_overlay()
+	var/list/overlays_to_add = list()
 	var/ratio = 0
 
 	/* Don't have one for this gun
@@ -66,7 +66,7 @@
 
 	var/iconState = "[icon_state]_charge"
 	if (modifystate)
-		overlays += "[icon_state]_[modifystate]"
+		overlays_to_add += "[icon_state]_[modifystate]"
 		iconState += "_[modifystate]"
 		/* Don't have one for this gun
 		if(itemState)
@@ -76,21 +76,21 @@
 		ratio = CEILING(((power_supply.charge / power_supply.maxcharge) * charge_sections), 1)
 
 		if(power_supply.charge < charge_cost)
-			overlays += "[icon_state]_empty"
+			overlays_to_add += "[icon_state]_empty"
 		else
 			if(!shaded_charge)
 				var/mutable_appearance/charge_overlay = mutable_appearance(icon, iconState)
 				for(var/i = ratio, i >= 1, i--)
 					charge_overlay.pixel_x = ammo_x_offset * (i - 1)
-					overlays += charge_overlay
+					overlays_to_add += charge_overlay
 			else
-				overlays += "[icon_state]_[modifystate][ratio]"
+				overlays_to_add += "[icon_state]_[modifystate][ratio]"
 
 	if(can_flashlight & gun_light)
 		var/mutable_appearance/flashlight_overlay = mutable_appearance(icon, light_state)
 		flashlight_overlay.pixel_x = flight_x_offset
 		flashlight_overlay.pixel_y = flight_y_offset
-		overlays += flashlight_overlay
+		overlays_to_add += flashlight_overlay
 
 	/* Don't have one for this gun
 	if(itemState)
@@ -98,9 +98,16 @@
 		item_state = itemState
 	*/
 
+	// todo: burn this entire proc to the ground, because the writer deserves to have their eyelids replaced with lemons
+	// "this goodd system but i'm going to snowflake it for one gun"
+
+	add_overlay(overlays_to_add)
+
+	return ..()
+
 
 // Protector beams
-/obj/item/projectile/beam/stun/protector
+/obj/projectile/beam/stun/protector
 	name = "protector stun beam"
 	icon_state = "omnilaser" //A little more cyan
 	light_color = "#00C6FF"

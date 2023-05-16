@@ -5,13 +5,15 @@
  *  /datum/computer/file/embedded_program/airlock/docking
  *		- An extension to the normal airlock program allows disabling of the regular airlock functions when docking
 */
-// A docking port based on an airlock
+
+//a docking port based on an airlock
 /obj/machinery/embedded_controller/radio/airlock/docking_port
 	name = "docking port controller"
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program
 	var/datum/computer/file/embedded_program/docking/airlock/docking_program
 	var/display_name		// For mappers to override docking_program.display_name (how would it show up on docking monitoring program)
 	tag_secure = 1
+	valid_actions = list("cycle_ext", "cycle_int", "force_ext", "force_int", "abort", "toggle_override")
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/Initialize(mapload)
 	. = ..()
@@ -22,7 +24,7 @@
 		docking_program.display_name = display_name
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/multitool))	// Give them part of code, would take few tries to get full
+	if(istype(W,/obj/item/multitool)) //give them part of code, would take few tries to get full
 		var/datum/computer/file/embedded_program/docking/airlock/docking_program = program
 		var/code = docking_program.docking_codes
 		if(!code)
@@ -33,12 +35,11 @@
 	else
 		..()
 
-/obj/machinery/embedded_controller/radio/airlock/docking_port/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	var/data[0]
+/obj/machinery/embedded_controller/radio/airlock/docking_port/ui_data(mob/user)
 	var/datum/computer/file/embedded_program/docking/airlock/docking_program = program
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program = docking_program.airlock_program
 
-	data = list(
+	. = list(
 		"chamber_pressure" = round(airlock_program.memory["chamber_sensor_pressure"]),
 		"exterior_status" = airlock_program.memory["exterior_status"],
 		"interior_status" = airlock_program.memory["interior_status"],
@@ -47,44 +48,13 @@
 		"airlock_disabled" = !(docking_program.undocked() || docking_program.override_enabled),
 		"override_enabled" = docking_program.override_enabled,
 		"docking_codes" = docking_program.docking_codes,
-		"name" = docking_program.get_name()
+		"name" = docking_program.get_name(),
+		"internalTemplateName" = "AirlockConsoleDocking",
 	)
-
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "docking_airlock_console.tmpl", name, 470, 290)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(1)
-
-/obj/machinery/embedded_controller/radio/airlock/docking_port/Topic(href, href_list)
-	if((. = ..()))
-		return
-
-	var/clean = 0
-	switch(href_list["command"])	//anti-HTML-hacking checks
-		if("cycle_ext")
-			clean = 1
-		if("cycle_int")
-			clean = 1
-		if("force_ext")
-			clean = 1
-		if("force_int")
-			clean = 1
-		if("abort")
-			clean = 1
-		if("toggle_override")
-			clean = 1
-
-	if(clean)
-		program.receive_user_command(href_list["command"])
-
-	return 1
-
 
 ///////////////////////////////////////////////////////////////////////////////
 //A docking controller for an airlock based docking port
+//
 /datum/computer/file/embedded_program/docking/airlock
 	var/datum/computer/file/embedded_program/airlock/docking/airlock_program
 
@@ -102,10 +72,10 @@
 		return TRUE
 
 	. = ..(command)
-	. = airlock_program.receive_user_command(command) || .	// Pass along to subprograms; bypass shortcircuit
+	. = airlock_program.receive_user_command(command) || .	//pass along to subprograms; bypass shortcircuit
 
-/datum/computer/file/embedded_program/docking/airlock/process(delta_time)
-	airlock_program?.process()
+/datum/computer/file/embedded_program/docking/airlock/process()
+	airlock_program.process()
 	..()
 
 /datum/computer/file/embedded_program/docking/airlock/receive_signal(datum/signal/signal, receive_method, receive_param)
@@ -118,7 +88,7 @@
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/airlock/ready_for_docking()
-	return airlock_program.done_cycling()
+	return !airlock_program || airlock_program.done_cycling()
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/airlock/finish_docking()
@@ -151,7 +121,7 @@
 	return ..()
 
 /datum/computer/file/embedded_program/airlock/docking/receive_user_command(command)
-	if (master_prog.undocked() || master_prog.override_enabled)	// Only allow the port to be used as an airlock if nothing is docked here or the override is enabled
+	if (master_prog.undocked() || master_prog.override_enabled)	//only allow the port to be used as an airlock if nothing is docked here or the override is enabled
 		return ..(command)
 
 /datum/computer/file/embedded_program/airlock/docking/proc/open_doors()
@@ -165,16 +135,16 @@
 /*** DEBUG VERBS ***
 
 /datum/computer/file/embedded_program/docking/proc/print_state()
-	to_chat(world, "id_tag: [id_tag]")
-	to_chat(world, "dock_state: [dock_state]")
-	to_chat(world, "control_mode: [control_mode]")
-	to_chat(world, "tag_target: [tag_target]")
-	to_chat(world, "response_sent: [response_sent]")
+	TO_WORLD("id_tag: [id_tag]")
+	TO_WORLD("dock_state: [dock_state]")
+	TO_WORLD("control_mode: [control_mode]")
+	TO_WORLD("tag_target: [tag_target]")
+	TO_WORLD("response_sent: [response_sent]")
 
 /datum/computer/file/embedded_program/docking/post_signal(datum/signal/signal, comm_line)
-	to_chat(world, "Program [id_tag] sent a message!")
+	TO_WORLD("Program [id_tag] sent a message!")
 	print_state()
-	to_chat(world, "[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
+	TO_WORLD("[id_tag] sent command \"[signal.data["command"]]\" to \"[signal.data["recipient"]]\"")
 	..(signal)
 
 /obj/machinery/embedded_controller/radio/airlock/docking_port/verb/view_state()

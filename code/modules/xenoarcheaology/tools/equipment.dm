@@ -4,8 +4,8 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "engspace_suit"
 	item_state = "engspace_suit"
-	update_icon_define = "icons/mob/spacesuit.dmi"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)
+	update_icon_define = "icons/mob/clothing/spacesuits.dmi"
+	armor_type = /datum/armor/general/biosuit/anomaly
 	max_pressure_protection = 5   * ONE_ATMOSPHERE // Not very good protection, but if an anomaly starts doing gas stuff you're not screwed
 	min_pressure_protection = 0.4 * ONE_ATMOSPHERE
 
@@ -14,7 +14,7 @@
 	desc = "A sealed bio hood capable of insulating against exotic alien energies."
 	icon_state = "engspace_helmet"
 	item_state = "engspace_helmet"
-	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100)
+	armor_type = /datum/armor/general/biosuit/anomaly
 	max_pressure_protection = 5   * ONE_ATMOSPHERE // Not very good protection, but if an anomaly starts doing gas stuff you're not screwed
 	min_pressure_protection = 0.4 * ONE_ATMOSPHERE
 
@@ -23,7 +23,7 @@
 	desc = "A pressure resistant excavation suit partially capable of insulating against exotic alien energies."
 	icon_state = "cespace_suit"
 	item_state = "cespace_suit"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
+	armor_type = /datum/armor/general/biosuit/anomaly
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/pickaxe)
 	slowdown = 1
 	// Pressure protection inherited from space suits
@@ -33,4 +33,4 @@
 	desc = "A pressure resistant excavation hood partially capable of insulating against exotic alien energies."
 	icon_state = "cespace_helmet"
 	item_state = "cespace_helmet"
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 100)
+	armor_type = /datum/armor/general/biosuit/anomaly

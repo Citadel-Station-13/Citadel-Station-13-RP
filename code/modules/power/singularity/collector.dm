@@ -1,62 +1,59 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-var/global/list/rad_collectors = list()
-
+// todo: rework
 /obj/machinery/power/rad_collector
 	name = "Radiation Collector Array"
 	desc = "A device which uses Hawking Radiation and phoron to produce power."
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "ca"
-	anchored = 0
-	density = 1
-	req_access = list(access_engine_equip)
+	anchored = FALSE
+	density = TRUE
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
-	var/last_power = 0
-	var/last_power_new = 0
+	/// stored power in kilojoules
+	var/stored_power = 0
+	/// mols of phoron to consume per kj of power
+	/**
+	 * (1013)(70)/((8.314)(293.15)) --> ~30 mol phoron in a full takn
+	 * assuming someone's tryharding, 5000 rad/second --> 5 * RAD_MISC_COLLECTOR_MULTIPLIER MW per collector
+	 * we want it to drain in x hours.
+	 * let rads be R, let hours be H, let mols be M
+	 * assuming ssradiation doesn't lag the fuck out,
+	 * factor = 30 / ((60 * 60 * H) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
+	 *
+	 * let's set it to 1 hours for such a tryhard setup for now; cooling phoron is now needed for longetivity :)
+	 */
+	var/gas_usage_factor = 30 / ((60 * 60 * 1) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
+	/// last KW
+	var/last_output
+	/// rad insulation when on
+	var/rad_insulation_active = RAD_INSULATION_HIGH
+	/// rad insulation when off
+	var/rad_insulation_inactive = RAD_INSULATION_NONE
+	/// amount of rads to toss
+	var/flat_loss = RAD_MISC_COLLECTOR_FLAT_LOSS
+	/// kj per rad
+	var/efficiency = RAD_MISC_COLLECTOR_MULTIPLIER
+	/// minimum kj to try to push
+	var/minimum_push = 10
+	/// % of stored power to push per process
+	var/push_ratio = 0.05
 	var/active = 0
 	var/locked = 0
-	var/drainratio = 1
 
 /obj/machinery/power/rad_collector/Initialize(mapload)
 	. = ..()
-	rad_collectors += src
+	AddComponent(/datum/component/radiation_listener)
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
-/obj/machinery/power/rad_collector/Destroy()
-	rad_collectors -= src
-	return ..()
-
-/obj/machinery/power/rad_collector/process(delta_time)
-	//so that we don't zero out the meter if the SM is processed first.
-	last_power = last_power_new
-	last_power_new = 0
-
-
-	if(P && active)
-		var/rads = SSradiation.get_rads_at_turf(get_turf(src))
-		if(rads)
-			receive_pulse(rads * 5) //Maths is hard
-
-	if(P)
-		if(P.air_contents.gas[/datum/gas/phoron] == 0)
-			investigate_log("<font color='red'>out of fuel</font>.","singulo")
-			eject()
-		else
-			P.air_contents.adjust_gas(/datum/gas/phoron, -0.001*drainratio)
-	return
-
-
-/obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
+/obj/machinery/power/rad_collector/attack_hand(mob/user, list/params)
 	if(anchored)
 		if(!src.locked)
 			toggle_power()
 			user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 			"You turn the [src.name] [active? "on":"off"].")
 			investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [user.key]. [P?"Fuel: [round(P.air_contents.gas[/datum/gas/phoron]/0.29)]%":"<font color='red'>It is empty</font>"].","singulo")
-			return
 		else
 			to_chat(user, "<font color='red'>The controls are locked!</font>")
-			return
-
 
 /obj/machinery/power/rad_collector/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/tank/phoron))
@@ -66,9 +63,9 @@ var/global/list/rad_collectors = list()
 		if(src.P)
 			to_chat(user, "<font color='red'>There's already a phoron tank loaded.</font>")
 			return 1
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		src.P = W
-		W.loc = src
 		update_icons()
 		return 1
 	else if(W.is_crowbar())
@@ -77,9 +74,9 @@ var/global/list/rad_collectors = list()
 			return 1
 	else if(W.is_wrench())
 		if(P)
-			to_chat(user, "<font color='blue'>Remove the phoron tank first.</font>")
+			to_chat(user, "<font color=#4F49AF>Remove the phoron tank first.</font>")
 			return 1
-		playsound(src, W.usesound, 75, 1)
+		playsound(src, W.tool_sound, 75, 1)
 		src.anchored = !src.anchored
 		user.visible_message("[user.name] [anchored? "secures":"unsecures"] the [src.name].", \
 			"You [anchored? "secure":"undo"] the external bolts.", \
@@ -104,14 +101,16 @@ var/global/list/rad_collectors = list()
 
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
-	. += "The meter indicates that \the [src] is collecting [last_power] W."
+	if(active)
+		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
+	else
+		. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"</span>"
 
-/obj/machinery/power/rad_collector/ex_act(severity)
+/obj/machinery/power/rad_collector/legacy_ex_act(severity)
 	switch(severity)
 		if(2, 3)
 			eject()
 	return ..()
-
 
 /obj/machinery/power/rad_collector/proc/eject()
 	locked = 0
@@ -126,33 +125,80 @@ var/global/list/rad_collectors = list()
 	else
 		update_icons()
 
-/obj/machinery/power/rad_collector/proc/receive_pulse(var/pulse_strength)
-	if(P && active)
-		var/power_produced = 0
-		power_produced = (min(P.air_contents.gas[/datum/gas/phoron], 1000)) * pulse_strength * 20
-		add_avail(power_produced)
-		last_power_new = power_produced
+// todo: rework
+/obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave/wave)
+	. = ..()
+	var/power_produced = max(0, (strength - flat_loss) * efficiency)
+	var/gas_needed = power_produced * gas_usage_factor
+	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
 		return
-	return
+	P.air_contents.adjust_gas(/datum/gas/phoron, -gas_needed)
+	if(!P.air_contents.gas[/datum/gas/phoron])
+		investigate_log("ran out of gas", INVESTIGATE_SINGULO)
+		eject()
+	stored_power += power_produced
 
+/obj/machinery/power/rad_collector/process(delta_time)
+	if(!stored_power)
+		last_output = 0
+		return
+	var/attempt = clamp(max(minimum_push, stored_power * push_ratio), 0, stored_power)
+	// if you don't have a powernet you still lose the poewr
+	stored_power -= attempt
+	//? kj to kw
+	add_avail((last_output = (attempt / delta_time)))
 
 /obj/machinery/power/rad_collector/proc/update_icons()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(P)
-		overlays += image('icons/obj/singularity.dmi', "ptank")
-	if(stat & (NOPOWER|BROKEN))
-		return
-	if(active)
-		overlays += image('icons/obj/singularity.dmi', "on")
+		overlays_to_add += image('icons/obj/singularity.dmi', "ptank")
+
+	if(!(machine_stat & (NOPOWER|BROKEN)) && active)
+		overlays_to_add += image('icons/obj/singularity.dmi', "on")
+
+	add_overlay(overlays_to_add)
+
+	return
 
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 	if(active)
 		icon_state = "ca_on"
 		flick("ca_active", src)
 	else
 		icon_state = "ca"
 		flick("ca_deactive", src)
+	density = active
 	update_icons()
-	return
+
+/obj/machinery/power/rad_collector/MouseDroppedOnLegacy(mob/living/O, mob/living/user)
+	. = ..()
+	if(!istype(O))
+		return 0 //not a mob
+	if(user.incapacitated())
+		return 0 //user shouldn't be doing things
+	if(O.anchored)
+		return 0 //mob is anchored???
+	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return 0 //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+	if(!ishuman(user) && !isrobot(user))
+		return 0 //not a borg or human
+
+	if(O.has_buckled_mobs())
+		to_chat(user, "<span class='warning'>\The [O] has other entities attached to it. Remove them first.</span>")
+		return
+
+	if(O == user)
+		usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+	else
+		visible_message("[user] puts [O] onto \the [src].")
+
+
+	if(do_after(O, 3 SECOND, src))
+		O.forceMove(src.loc)
+
+	if (get_turf(user) == get_turf(src))
+		usr.visible_message("<span class='warning'>[user] climbs onto \the [src]!</span>")

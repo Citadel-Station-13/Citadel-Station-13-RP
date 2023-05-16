@@ -24,7 +24,7 @@
 	var/cracked = 0
 
 /obj/item/toy/xmas_cracker/attack(mob/target, mob/user)
-	if( !cracked && (istype(target,/mob/living/silicon) || (istype(target,/mob/living/carbon/human) && !target.get_active_hand())) && target.stat == CONSCIOUS)
+	if( !cracked && (istype(target,/mob/living/silicon) || (istype(target,/mob/living/carbon/human) && !target.get_active_held_item())) && target.stat == CONSCIOUS)
 		target.visible_message("<span class='notice'>[user] and [target] pop \an [src]! *pop*</span>", "<span class='notice'>You pull \an [src] with [target]! *pop*</span>", "<span class='notice'>You hear a *pop*.</span>")
 		var/obj/item/paper/Joke = new /obj/item/paper(user.loc)
 		Joke.name = "[pick("awful","terrible","unfunny")] joke"
@@ -54,7 +54,7 @@
 	name = "festive paper hat"
 	icon_state = "xmashat"
 	desc = "A crappy paper hat that you are REQUIRED to wear."
-	flags_inv = 0
-	body_parts_covered = 0
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	inv_hide_flags = 0
+	body_cover_flags = 0
+	armor_type = /datum/armor/none
 

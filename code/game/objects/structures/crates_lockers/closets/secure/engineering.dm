@@ -6,7 +6,7 @@
 	icon_opened = "secureceopen"
 	icon_broken = "securecebroken"
 	icon_off = "secureceoff"
-	req_access = list(access_ce)
+	req_access = list(ACCESS_ENGINEERING_CE)
 
 	starts_with = list(
 		/obj/item/clothing/shoes/magboots/advanced,
@@ -30,14 +30,16 @@
 		/obj/item/flash,
 		/obj/item/t_scanner/upgraded,
 		/obj/item/barrier_tape_roll/engineering,
-		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce,
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/ce,
-		/obj/item/reagent_containers/spray/windowsealant,//VOREStation Add
-		/obj/item/pipe_dispenser, //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/pipe_dispenser,
 		/obj/item/shield_diffuser,
-		/obj/item/switchtool/holo/CE) //Citadel Addition
+		/obj/item/switchtool/holo/CE,
+		/obj/item/clothing/accessory/poncho/roles/cloak/ce,
+		)
 
 /obj/structure/closet/secure_closet/engineering_chief/Initialize(mapload)
 	if(prob(50))
@@ -56,7 +58,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengelecbroken"
 	icon_off = "secureengelecoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/gloves/yellow = 2,
@@ -75,7 +77,7 @@
 	icon_opened = "toolclosetopen"
 	icon_broken = "secureengweldbroken"
 	icon_off = "secureengweldoff"
-	req_access = list(access_construction)
+	req_access = list(ACCESS_ENGINEERING_CONSTRUCTION)
 
 	starts_with = list(
 		/obj/item/clothing/head/welding = 3,
@@ -91,7 +93,7 @@
 	icon_opened = "secureengopen"
 	icon_broken = "secureengbroken"
 	icon_off = "secureengoff"
-	req_access = list(access_engine_equip)
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -109,8 +111,9 @@
 		/obj/item/clothing/shoes/boots/winter/engineering,
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering,
-		/obj/item/reagent_containers/spray/windowsealant, //VOREStation Add
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/shield_diffuser,
+		)
 
 /obj/structure/closet/secure_closet/engineering_personal/Initialize(mapload)
 	if(prob(50))
@@ -130,7 +133,7 @@
 	icon_opened = "secureatmopen"
 	icon_broken = "secureatmbroken"
 	icon_off = "secureatmoff"
-	req_access = list(access_atmospherics)
+	req_access = list(ACCESS_ENGINEERING_ATMOS)
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -138,7 +141,6 @@
 		/obj/item/clothing/head/hardhat/red,
 		/obj/item/flashlight,
 		/obj/item/extinguisher,
-		///obj/item/clamp,	//VOREStation Removal: without leaks those are pointless,
 		/obj/item/radio/headset/headset_eng,
 		/obj/item/radio/headset/headset_eng/alt,
 		/obj/item/clothing/suit/storage/hazardvest,
@@ -150,7 +152,8 @@
 		/obj/item/tank/emergency/oxygen/engi,
 		/obj/item/gps/engineering/atmos,
 		/obj/item/pipe_dispenser,
-		/obj/item/shield_diffuser) //Citadel Addition
+		/obj/item/shield_diffuser,
+		)
 
 /obj/structure/closet/secure_closet/atmos_personal/Initialize(mapload)
 	if(prob(50))
@@ -160,3 +163,44 @@
 	if(prob(50))
 		starts_with += /obj/item/storage/backpack/dufflebag/eng
 	return ..()
+
+/obj/structure/closet/secure_closet/senior_engineer
+	name = "Senior engineer's locker"
+	desc = "It looks like it has been stuffed to the brim with Space OSHA violation notices."
+	icon_state = "secureeng1"
+	icon_closed = "secureeng"
+	icon_locked = "secureeng1"
+	icon_opened = "secureengopen"
+	icon_broken = "secureengbroken"
+	icon_off = "secureengoff"
+	req_access = list(ACCESS_ENGINEERING_ENGINE)
+
+	starts_with = list(
+		/obj/item/clothing/accessory/storage/brown_vest,
+		/obj/item/storage/toolbox/mechanical,
+		/obj/item/radio/headset/headset_eng,
+		/obj/item/radio/headset/headset_eng/alt,
+		/obj/item/clothing/suit/storage/hazardvest,
+		/obj/item/clothing/under/bodysuit/bodysuithazard,
+		/obj/item/clothing/mask/gas,
+		/obj/item/clothing/glasses/meson,
+		/obj/item/cartridge/engineering,
+		/obj/item/barrier_tape_roll/engineering,
+		/obj/item/clothing/head/hardhat,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering,
+		/obj/item/clothing/shoes/boots/winter/engineering,
+		/obj/item/tank/emergency/oxygen/engi,
+		/obj/item/gps/engineering,
+		/obj/item/reagent_containers/spray/windowsealant,
+		/obj/item/shield_diffuser,
+		/obj/item/clothing/suit/fire/firefighter,
+		/obj/item/clothing/head/hardhat/red,
+		/obj/item/flashlight,
+		/obj/item/extinguisher,
+		/obj/item/cartridge/atmos,
+		/obj/item/barrier_tape_roll/atmos,
+		/obj/item/clothing/suit/storage/hooded/wintercoat/engineering/atmos,
+		/obj/item/clothing/shoes/boots/winter/atmos,
+		/obj/item/gps/engineering/atmos,
+		/obj/item/pipe_dispenser,
+		)

@@ -1,8 +1,10 @@
-/* Stack type objects!
+/**
+ * Stack type objects!
+ *
  * Contains:
- * 		Stacks
- * 		Recipe datum
- * 		Recipe list datum
+ * * Stacks
+ * * Recipe datum
+ * * Recipe list datum
  */
 
 /*
@@ -16,39 +18,51 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
-	var/stacktype //determines whether different stack types can merge
-	var/build_type = null //used when directly applied to a turf
+	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
+	var/max_amount = 50
+	/// bandaid until new inventorycode
+	var/mid_delete = FALSE
+	/// Determines whether different stack types can merge.
+	var/stacktype
+	/// Used when directly applied to a turf.
+	var/build_type = null
 	var/uses_charge = 0
 	var/list/charge_costs = null
 	var/list/datum/matter_synth/synths = null
-	var/no_variants = TRUE // Determines whether the item should update it's sprites based on amount.
+	/// Determines whether the item should update it's sprites based on amount.
+	var/no_variants = TRUE
 
-	var/pass_color = FALSE // Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
-	var/strict_color_stacking = FALSE // Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc)
+	/// Will the item pass its own color var to the created item? Dyed cloth, wood, etc.
+	var/pass_color = FALSE
+	/// Will the stack merge with other stacks that are different colors? (Dyed cloth, wood, etc).
+	var/strict_color_stacking = FALSE
 
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
 		amount = new_amount
-	var/safety = 51			//badmin safety check :^)
-	if((amount > max_amount) && max_amount)
-		while(--safety && (amount > max_amount))
-			amount -= max_amount
-			new type(loc, max_amount, FALSE)
+	safety_check()
 	if(!stacktype)
 		stacktype = type
 	. = ..()
 	if(merge)
 		for(var/obj/item/stack/S in loc)
-			if(S.stacktype == stacktype)
+			if(can_merge(S))
 				merge(S)
 	update_icon()
 
+/obj/item/stack/proc/safety_check()
+	if(amount > max_amount)
+		to_chat(usr, "The [name] spills on the [get_area_name(src)]!")
+		amount -= max_amount
+		var/obj/item/stack/newstack = new type(get_turf(usr))
+		newstack.amount = max_amount
+		return TRUE
+	return FALSE
+
 /obj/item/stack/Destroy()
-	if(uses_charge)
-		return 1
 	if (src && usr && usr.machine == src)
 		usr << browse(null, "window=stack")
+	mid_delete = TRUE
 	return ..()
 
 /obj/item/stack/update_icon()
@@ -70,10 +84,15 @@
 	else
 		. += "There is enough charge for [get_amount()]."
 
-/obj/item/stack/attack_self(mob/user as mob)
+/obj/item/stack/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(safety_check())
+		return
 	list_recipes(user)
 
-/obj/item/stack/proc/list_recipes(mob/user as mob, recipes_sublist)
+/obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if (!recipes)
 		return
 	if (!src || get_amount() <= 0)
@@ -128,27 +147,27 @@
 	onclose(user, "stack")
 	return
 
-/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, var/quantity, mob/user)
+/obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, quantity, mob/user)
 	var/required = quantity*recipe.req_amount
 	var/produced = min(quantity*recipe.res_amount, recipe.max_res_amount)
 
 	if (!can_use(required))
 		if (produced>1)
-			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [produced] [recipe.title]\s!</span>")
+			to_chat(user, SPAN_WARNING("You haven't got enough [src] to build \the [produced] [recipe.title]\s!"))
 		else
-			to_chat(user, "<span class='warning'>You haven't got enough [src] to build \the [recipe.title]!</span>")
+			to_chat(user, SPAN_WARNING("You haven't got enough [src] to build \the [recipe.title]!"))
 		return
 
 	if (recipe.one_per_turf && (locate(recipe.result_type) in user.loc))
-		to_chat(user, "<span class='warning'>There is another [recipe.title] here!</span>")
+		to_chat(user, SPAN_WARNING("There is another [recipe.title] here!"))
 		return
 
 	if (recipe.on_floor && !isfloor(user.loc))
-		to_chat(user, "<span class='warning'>\The [recipe.title] must be constructed on the floor!</span>")
+		to_chat(user, SPAN_WARNING("\The [recipe.title] must be constructed on the floor!"))
 		return
 
 	if (recipe.time)
-		to_chat(user, "<span class='notice'>Building [recipe.title] ...</span>")
+		to_chat(user, SPAN_NOTICE("Building [recipe.title] ..."))
 		if (!do_after(user, recipe.time))
 			return
 
@@ -180,7 +199,7 @@
 
 /obj/item/stack/Topic(href, href_list)
 	..()
-	if ((usr.restrained() || usr.stat || usr.get_active_hand() != src))
+	if ((usr.restrained() || usr.stat || usr.get_active_held_item() != src))
 		return
 
 	if (href_list["sublist"] && !href_list["make"])
@@ -207,68 +226,71 @@
 			return
 	return
 
-//Return 1 if an immediate subsequent call to use() would succeed.
-//Ensures that code dealing with stacks uses the same logic
-/obj/item/stack/proc/can_use(var/used)
+/**
+ * Return 1 if an immediate subsequent call to use() would succeed.
+ * Ensures that code dealing with stacks uses the same logic
+ */
+/obj/item/stack/proc/can_use(used)
 	if (get_amount() < used)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /**
-  * Can we merge with this stack?
-  */
+ * Can we merge with this stack?
+ */
 /obj/item/stack/proc/can_merge(obj/item/stack/other)
 	if(!istype(other))
 		return FALSE
+	if(mid_delete || other.mid_delete) // bandaid until new inventory code
+		return FALSE
+	if((strict_color_stacking || other.strict_color_stacking) && (color != other.color))
+		return FALSE
 	return other.stacktype == stacktype
 
-/obj/item/stack/proc/use(var/used)
+/obj/item/stack/proc/use(used)
 	if (!can_use(used))
-		return 0
+		return FALSE
 	if(!uses_charge)
 		amount -= used
 		if (amount <= 0)
-			if(usr)
-				usr.remove_from_mob(src, null)
+			mid_delete = TRUE
 			qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 		update_icon()
-		return 1
+		return TRUE
 	else
 		if(get_amount() < used)
-			return 0
+			return FALSE
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
 			S.use_charge(charge_costs[i] * used) // Doesn't need to be deleted
-		return 1
+		return TRUE
 
-/obj/item/stack/proc/add(var/extra)
+/obj/item/stack/proc/add(extra)
 	if(!uses_charge)
 		if(amount + extra > get_max_amount())
-			return 0
+			return FALSE
 		else
 			amount += extra
 		update_icon()
-		return 1
+		return TRUE
 	else if(!synths || synths.len < uses_charge)
-		return 0
+		return FALSE
 	else
 		for(var/i = 1 to uses_charge)
 			var/datum/matter_synth/S = synths[i]
 			S.add_charge(charge_costs[i] * extra)
 
-/*
-	The transfer and split procs work differently than use() and add().
-	Whereas those procs take no action if the desired amount cannot be added or removed these procs will try to transfer whatever they can.
-	They also remove an equal amount from the source stack.
-*/
+/**
+ * The transfer and split procs work differently than use() and add().
+ * Whereas those procs take no action if the desired amount cannot be added or removed these procs will try to transfer whatever they can.
+ * They also remove an equal amount from the source stack.
+ */
 
-//attempts to transfer amount to S, and returns the amount actually transferred
-/obj/item/stack/proc/transfer_to(obj/item/stack/S, var/tamount=null, var/type_verified)
+/// Attempts to transfer amount to S, and returns the amount actually transferred.
+/obj/item/stack/proc/transfer_to(obj/item/stack/S, tamount=null, type_verified)
 	if (!get_amount())
 		return 0
 	if (!can_merge(S) && !type_verified)
-		return 0
-	if ((strict_color_stacking || S.strict_color_stacking) && S.color != color)
 		return 0
 
 	if (isnull(tamount))
@@ -286,11 +308,11 @@
 		return transfer
 	return 0
 
-//creates a new stack with the specified amount
-/obj/item/stack/proc/split(var/tamount)
+/// Creates a new stack with the specified amount.
+/obj/item/stack/proc/split(tamount)
 	if (!amount)
 		return null
-	if(uses_charge)
+	if (uses_charge)
 		return null
 
 	var/transfer = max(min(tamount, src.amount, initial(max_amount)), 0)
@@ -332,28 +354,34 @@
 		return
 	return max_amount
 
-/obj/item/stack/proc/add_to_stacks(mob/user as mob)
+/obj/item/stack/proc/add_to_stacks(mob/user)
 	for (var/obj/item/stack/item in user.loc)
 		if (item==src)
 			continue
 		var/transfer = src.transfer_to(item)
 		if (transfer)
-			to_chat(user, "<span class='notice'>You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s.</span>")
+			to_chat(user, SPAN_NOTICE("You add a new [item.singular_name] to the stack. It now contains [item.amount] [item.singular_name]\s."))
 		if(!amount)
 			break
 
-/obj/item/stack/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+/obj/item/stack/attack_hand(mob/user, list/params)
+	if(safety_check())
+		return
+	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else
 		return ..()
 
-/obj/item/stack/Crossed(obj/o)
-	if(can_merge(o) && !o.throwing)
-		merge(o)
+/obj/item/stack/Crossed(atom/movable/AM)
 	. = ..()
+	// if we're in a mob, do not automerge
+	if(!ismob(loc) && !AM.throwing && can_merge(AM))
+		merge(AM)
 
-/obj/item/stack/proc/merge(obj/item/stack/S) //Merge src into S, as much as possible
+/// Merge src into S, as much as possible.
+/obj/item/stack/proc/merge(obj/item/stack/S)
+	if(uses_charge)
+		return	// how about no!
 	if(QDELETED(S) || QDELETED(src) || (S == src)) //amusingly this can cause a stack to consume itself, let's not allow that.
 		return
 	var/transfer = get_amount()
@@ -368,7 +396,7 @@
 	S.add(transfer)
 	return transfer
 
-/obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/stack/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		src.transfer_to(S)
@@ -383,7 +411,7 @@
 
 /obj/item/stack/AltClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !in_range(user, src) || !user.canmove)
+	if(!istype(user) || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 		return
 	attempt_split_stack(user)
 
@@ -395,14 +423,15 @@
 			return
 		//get amount from user
 		var/max = get_amount()
-		var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		max = get_amount()
+		// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
+		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
+		max = get_amount() // Not sure why this is done twice but whatever.
 		stackmaterial = min(max, stackmaterial)
-		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
+		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !CHECK_MOBILITY(user, MOBILITY_CAN_PICKUP))
 			return TRUE
 		else
 			change_stack(user, stackmaterial)
-			to_chat(user, "<span class='notice'>You take [stackmaterial] sheets out of the stack</span>")
+			to_chat(user, SPAN_NOTICE("You take [stackmaterial] sheets out of the stack"))
 		return TRUE
 
 /obj/item/stack/proc/change_stack(mob/user, amount)
@@ -412,7 +441,7 @@
 	. = F
 	F.copy_evidences(src)
 	if(user)
-		if(!user.put_in_hands(F, merge_stacks = FALSE))
+		if(!user.put_in_hands(F, INV_OP_NO_MERGE_STACKS))
 			F.forceMove(user.drop_location())
 		add_fingerprint(user)
 		F.add_fingerprint(user)
@@ -442,8 +471,10 @@
 /datum/stack_recipe
 	var/title = "ERROR"
 	var/result_type
-	var/req_amount = 1 //amount of material needed for this recipe
-	var/res_amount = 1 //amount of stuff that is produced in one batch (e.g. 4 for floor tiles)
+	/// Amount of material needed for this recipe.
+	var/req_amount = 1
+	/// Amount of stuff that is produced in one batch (e.g. 4 for floor tiles).
+	var/res_amount = 1
 	var/max_res_amount = 1
 	var/time = 0
 	var/one_per_turf = 0
@@ -451,17 +482,17 @@
 	var/use_material
 	var/pass_color
 
-	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
-		src.title = title
-		src.result_type = result_type
-		src.req_amount = req_amount
-		src.res_amount = res_amount
-		src.max_res_amount = max_res_amount
-		src.time = time
-		src.one_per_turf = one_per_turf
-		src.on_floor = on_floor
-		src.use_material = supplied_material
-		src.pass_color = pass_stack_color
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
+	src.title = title
+	src.result_type = result_type
+	src.req_amount = req_amount
+	src.res_amount = res_amount
+	src.max_res_amount = max_res_amount
+	src.time = time
+	src.one_per_turf = one_per_turf
+	src.on_floor = on_floor
+	src.use_material = supplied_material
+	src.pass_color = pass_stack_color
 
 /*
  * Recipe list datum
@@ -469,6 +500,28 @@
 /datum/stack_recipe_list
 	var/title = "ERROR"
 	var/list/recipes = null
-	New(title, recipes)
-		src.title = title
-		src.recipes = recipes
+
+/datum/stack_recipe_list/New(title, recipes)
+	src.title = title
+	src.recipes = recipes
+
+/obj/item/stack/proc/set_amount(new_amount, no_limits = FALSE)
+	if(new_amount < 0 || new_amount % 1)
+		stack_trace("Tried to set a bad stack amount: [new_amount]")
+		return 0
+
+	// Clean up the new amount
+	new_amount = max(round(new_amount), 0)
+
+	// Can exceed max if you really want
+	if(new_amount > max_amount && !no_limits)
+		new_amount = max_amount
+
+	amount = new_amount
+
+	// Can set it to 0 without qdel if you really want
+	if(amount == 0 && !no_limits)
+		qdel(src)
+		return FALSE
+
+	return TRUE

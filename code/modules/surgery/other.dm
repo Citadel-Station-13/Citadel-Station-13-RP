@@ -26,9 +26,10 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if(!affected) return
 	var/internal_bleeding = 0
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		internal_bleeding = 1
-		break
+	for(var/datum/wound/W as anything in affected.wounds)
+		if(W.internal)
+			internal_bleeding = 1
+			break
 
 	return affected.open == (affected.encased ? 3 : 2) && internal_bleeding
 
@@ -41,13 +42,21 @@
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
-		"<font color='blue'>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>", \
+		"<font color=#4F49AF>You have patched the damaged vein in [target]'s [affected.name] with \the [tool].</font>")
 
-	for(var/datum/wound/W in affected.wounds) if(W.internal)
-		affected.wounds -= W
+	var/cured = FALSE
+	for(var/datum/wound/W as anything in affected.wounds)
+		if(!W.internal)
+			continue
+		cured = TRUE
+		affected.cure_exact_wound(W)
+	if(cured)
 		affected.update_damages()
-	if (ishuman(user) && prob(40)) user:bloody_hands(target, 0)
+
+	if (ishuman(user) && prob(40))
+		var/mob/living/carbon/human/H = user
+		H.bloody_hands(target, 0)
 
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -62,6 +71,7 @@
 	priority = 2
 	allowed_tools = list(
 		/obj/item/surgical/scalpel = 100,        \
+		/obj/item/surgical/scalpel_primitive = 80,	\
 		/obj/item/material/knife = 75,    \
 		/obj/item/material/shard = 50,         \
 	)
@@ -92,15 +102,15 @@
 
 /datum/surgery_step/fix_dead_tissue/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	user.visible_message("<font color='blue'>[user] has cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>", \
-		"<font color='blue'>You have cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>")
+	user.visible_message("<font color=#4F49AF>[user] has cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>", \
+		"<font color=#4F49AF>You have cut away necrotic tissue in [target]'s [affected.name] with \the [tool].</font>")
 	affected.open = 3
 
 /datum/surgery_step/fix_dead_tissue/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<font color='red'>[user]'s hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>", \
 	"<font color='red'>Your hand slips, slicing an artery inside [target]'s [affected.name] with \the [tool]!</font>")
-	affected.createwound(CUT, 20, 1)
+	affected.create_wound(CUT, 20, 1)
 
 ///////////////////////////////////////////////////////////////
 // Necrosis Surgery Step 2
@@ -158,8 +168,8 @@
 		affected.status &= ~ORGAN_DEAD
 		affected.owner.update_icons_body()
 
-		user.visible_message("<font color='blue'>[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.name].</font>", \
-			"<font color='blue'>You apply [trans] units of the solution to affected tissue in [target]'s [affected.name] with \the [tool].</font>")
+		user.visible_message("<font color=#4F49AF>[user] applies [trans] units of the solution to affected tissue in [target]'s [affected.name].</font>", \
+			"<font color=#4F49AF>You apply [trans] units of the solution to affected tissue in [target]'s [affected.name] with \the [tool].</font>")
 
 /datum/surgery_step/treat_necrosis/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
@@ -184,6 +194,7 @@
 	allowed_tools = list(
 		/obj/item/weldingtool = 80,
 		/obj/item/surgical/circular_saw = 60,
+		/obj/item/surgical/saw_primitive = 25,
 		/obj/item/pickaxe/plasmacutter = 100
 		)
 	req_open = 0
@@ -201,27 +212,24 @@
 		var/obj/item/weldingtool/welder = tool
 		if(!welder.isOn() || !welder.remove_fuel(1,user))
 			return 0
-	return (target_zone == BP_TORSO) && ((istype(target.back, /obj/item/rig) && !(target.back.canremove)) || (istype(target.belt, /obj/item/rig) && !(target.belt.canremove)))
+	if(!(target_zone == BP_TORSO))
+		return FALSE
+	var/obj/item/hardsuit/R = target.get_hardsuit(TRUE)
+	if(!R)
+		return FALSE
+	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.back
-	if(!istype(rig))
-		rig = target.belt
-		if(!istype(rig))
-			return
-	user.visible_message("[user] starts cutting through the support systems of \the [rig] on [target] with \the [tool]." , \
-	"You start cutting through the support systems of \the [rig] on [target] with \the [tool].")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	user.visible_message("[user] starts cutting through the support systems of \the [hardsuit] on [target] with \the [tool]." , \
+	"You start cutting through the support systems of \the [hardsuit] on [target] with \the [tool].")
 	..()
 
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.back
-	if(!istype(rig))
-		rig = target.belt
-		if(!istype(rig))
-			return
-	rig.reset()
-	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
-		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	hardsuit.reset()
+	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>", \
+		"<span class='notice'>You have cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>")
 
 /datum/surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='danger'>[user]'s [tool] can't quite seem to get through the metal...</span>", \
@@ -245,7 +253,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (!affected || (affected.robotic >= ORGAN_ROBOT))
 		return 0
-	return target_zone == BP_TORSO && (HUSK in target.mutations)
+	return target_zone == BP_TORSO && (MUTATION_HUSK in target.mutations)
 
 /datum/surgery_step/dehusk/structinitial
 	allowed_tools = list(
@@ -272,14 +280,15 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>", \
 	"<span class='danger'>Your hand slips, and the mesh falls, with \the [tool] scraping [target]'s body.</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/relocateflesh
 	allowed_tools = list(
 		/obj/item/surgical/hemostat = 100,	\
 		/obj/item/stack/cable_coil = 75, 	\
+		/obj/item/surgical/hemostat_primitive = 50, \
 		/obj/item/assembly/mousetrap = 20
 	)
 	min_duration = 90
@@ -303,8 +312,8 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user] accidentally rips a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>", \
 	"<span class='danger'>You accidentally rip a massive chunk out of [target]'s flesh with \the [tool], causing massive damage.</span>")
-	affected.createwound(CUT, 25)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 25)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 /datum/surgery_step/dehusk/structfinish
@@ -331,8 +340,7 @@
 	user.visible_message("<span class='notice'>[user] finishes recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>", \
 	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
 	target.op_stage.dehusk = 0
-	target.mutations.Remove(HUSK)
-	target.status_flags &= ~DISFIGURED
+	target.mutations.Remove(MUTATION_HUSK)
 	target.update_icons_body()
 	..()
 
@@ -344,8 +352,8 @@
 	else if(istype(tool,/obj/item/surgical/FixOVein))
 		user.visible_message("<span class='danger'>[user] fails to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>", \
 	"<span class='danger'>You fail to finish the structure over the gaps in [target]'s flesh, doing more damage than good.</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()
 
 ///////////////////////////////////////////////////////////////
@@ -379,6 +387,6 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	user.visible_message("<span class='danger'>[user]'s hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>", \
 	"<span class='danger'>Your hand slips, failing to finish the surgery, and damaging [target] with \the [tool].</span>")
-	affected.createwound(CUT, 15)
-	affected.createwound(BRUISE, 10)
+	affected.create_wound(CUT, 15)
+	affected.create_wound(BRUISE, 10)
 	..()

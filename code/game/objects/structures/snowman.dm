@@ -5,7 +5,7 @@
 	desc = "A happy little snowman smiles back at you!"
 	anchored = 1
 
-/obj/structure/snowman/attack_hand(mob/user as mob)
+/obj/structure/snowman/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_HARM)
 		to_chat(user, "<span class='notice'>In one hit, [src] easily crumples into a pile of snow. You monster.</span>")
 		var/turf/simulated/floor/F = get_turf(src)

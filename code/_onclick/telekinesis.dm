@@ -39,13 +39,13 @@ var/const/tk_maxrange = 15
 
 /obj/item/attack_tk(mob/user)
 	if(user.stat || !isturf(loc)) return
-	if((TK in user.mutations) && !user.get_active_hand()) // both should already be true to get here
+	if((MUTATION_TELEKINESIS in user.mutations) && !user.get_active_held_item()) // both should already be true to get here
 		var/obj/item/tk_grab/O = new(src)
 		user.put_in_active_hand(O)
 		O.host = user
 		O.focus_object(src)
 	else
-		warning("Strange attack_tk(): TK([TK in user.mutations]) empty hand([!user.get_active_hand()])")
+		warning("Strange attack_tk(): MUTATION_TELEKINESIS([MUTATION_TELEKINESIS in user.mutations]) empty hand([!user.get_active_held_item()])")
 	return
 
 
@@ -53,19 +53,19 @@ var/const/tk_maxrange = 15
 	return // needs more thinking about
 
 /*
-	TK Grab Item (the workhorse of old TK)
+	MUTATION_TELEKINESIS Grab Item (the workhorse of old MUTATION_TELEKINESIS)
 
 	* If you have not grabbed something, do a normal tk attack
 	* If you have something, throw it at the target.  If it is already adjacent, do a normal attackby()
 	* If you click what you are holding, or attack_self(), do an attack_self_tk() on it.
-	* Deletes itself if it is ever not in your hand, or if you should have no access to TK.
+	* Deletes itself if it is ever not in your hand, or if you should have no access to MUTATION_TELEKINESIS.
 */
 /obj/item/tk_grab
 	name = "Telekinetic Grab"
 	desc = "Magic"
 	icon = 'icons/obj/magic.dmi'//Needs sprites
 	icon_state = "2"
-	flags = NOBLUDGEON
+	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
 	//item_state = null
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = HUD_LAYER
@@ -74,21 +74,16 @@ var/const/tk_maxrange = 15
 	var/atom/movable/focus = null
 	var/mob/living/host = null
 
-/obj/item/tk_grab/dropped(mob/user as mob)
+//stops MUTATION_TELEKINESIS grabs being equipped anywhere but into hands
+/obj/item/tk_grab/equipped(mob/user, slot, accessory, creation, silent)
 	. = ..()
-	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you tk-attack a table/closet with an item
-		if(focus.Adjacent(loc))
-			focus.forceMove(loc)
-	qdel(src)
+	if(slot != SLOT_ID_HANDS)
+		qdel(src)
 
-//stops TK grabs being equipped anywhere but into hands
-/obj/item/tk_grab/equipped(var/mob/user, var/slot)
-	..()
-	if( (slot == slot_l_hand) || (slot== slot_r_hand) )	return
-	qdel(src)
-	return
-
-/obj/item/tk_grab/attack_self(mob/user as mob)
+/obj/item/tk_grab/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	if(focus)
 		focus.attack_self_tk(user)
 
@@ -98,7 +93,7 @@ var/const/tk_maxrange = 15
 	if(!host || host != user)
 		qdel(src)
 		return
-	if(!(TK in host.mutations))
+	if(!(MUTATION_TELEKINESIS in host.mutations))
 		qdel(src)
 		return
 	if(isobj(target) && !isturf(target.loc))
@@ -127,13 +122,9 @@ var/const/tk_maxrange = 15
 			I.afterattack(target,user,1) // for splashing with beakers
 	else
 		apply_focus_overlay()
-		focus.throw_at(target, 10, 1, user)
+		focus.throw_at_old(target, 10, 1, user)
 		last_throw = world.time
 	return
-
-/obj/item/tk_grab/attack(mob/living/M as mob, mob/living/user as mob, def_zone)
-	return
-
 
 /obj/item/tk_grab/proc/focus_object(var/obj/target, var/mob/living/user)
 	if(!istype(target,/obj))	return//Cant throw non objects atm might let it do mobs later
@@ -161,7 +152,6 @@ var/const/tk_maxrange = 15
 	return
 
 /obj/item/tk_grab/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(focus && focus.icon && focus.icon_state)
-		overlays += icon(focus.icon,focus.icon_state)
-	return
+		add_overlay(image(focus.icon,focus.icon_state))

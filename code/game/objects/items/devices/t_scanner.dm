@@ -8,7 +8,7 @@
 	item_state = "t-ray"
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	matter = list(MAT_STEEL = 150)
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 
 	var/scan_range = 1
@@ -23,7 +23,13 @@
 /obj/item/t_scanner/update_icon()
 	icon_state = "t-ray[on]"
 
+/obj/item/t_scanner/AltClick()
+	set_active(!on)
+
 /obj/item/t_scanner/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
 	set_active(!on)
 
 /obj/item/t_scanner/proc/set_active(var/active)
@@ -88,10 +94,10 @@
 		if(istype(scanned, /obj/machinery/atmospherics/pipe))
 			var/obj/machinery/atmospherics/pipe/P = scanned
 			I.color = P.pipe_color
-			I.overlays += P.overlays
+			I.copy_overlays(P)
 
 		I.alpha = 128
-		I.mouse_opacity = 0
+		I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		. = I
 
 	// Add it to cache, cutting old entries if the list is too long
@@ -130,21 +136,21 @@
 
 	user_client = new_client
 
-/obj/item/t_scanner/dropped(mob/user)
+/obj/item/t_scanner/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	set_user_client(null)
 
 /obj/item/t_scanner/upgraded
 	name = "Upgraded T-ray Scanner"
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 500, PHORON = 150)
+	matter = list(MAT_STEEL = 500, PHORON = 150)
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 5)
 	scan_range = 3
 
 /obj/item/t_scanner/advanced
 	name = "Advanced T-ray Scanner"
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
-	matter = list(DEFAULT_WALL_MATERIAL = 1500, PHORON = 200, SILVER = 250)
+	matter = list(MAT_STEEL = 1500, PHORON = 200, SILVER = 250)
 	origin_tech = list(TECH_MAGNET = 7, TECH_ENGINEERING = 7, TECH_MATERIAL = 6)
 	scan_range = 7
 

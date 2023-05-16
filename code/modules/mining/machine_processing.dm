@@ -6,7 +6,7 @@
 
 /obj/machinery/mineral/processing_unit_console
 	name = "production machine console"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "console"
 	density = TRUE
 	anchored = TRUE
@@ -22,7 +22,7 @@
 	if (machine)
 		machine.console = src
 	else
-		log_debug("Ore processing machine console at [src.x], [src.y], [src.z] could not find its machine!")
+		log_debug(SPAN_DEBUG("Ore processing machine console at [src.x], [src.y], [src.z] [ADMIN_JMP(src)] could not find its machine!"))
 		qdel(src)
 
 /obj/machinery/mineral/processing_unit_console/Destroy()
@@ -30,7 +30,7 @@
 		inserted_id.forceMove(loc) //Prevents deconstructing from deleting whatever ID was inside it.
 	. = ..()
 
-/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user)
+/obj/machinery/mineral/processing_unit_console/attack_hand(mob/user, list/params)
 	if(..())
 		return
 	interact(user)
@@ -39,20 +39,16 @@
 	if(istype(I, /obj/item/card/id))
 		if(!powered())
 			return
-		if(!inserted_id && user.unEquip(I))
-			I.forceMove(src)
+		if(!inserted_id)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			inserted_id = I
 			interact(user)
 		return
 	..()
 
-/obj/machinery/mineral/processing_unit_console/interact(mob/user)
-	if(..())
-		return
-
-	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Access denied.</span>")
-		return
+/obj/machinery/mineral/processing_unit_console/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	. = ..()
 
 	user.set_machine(src)
 
@@ -82,7 +78,7 @@
 				if(PROCESS_SMELT)
 					dat += "<font color='orange'>smelting</font>"
 				if(PROCESS_COMPRESS)
-					dat += "<font color='blue'>compressing</font>"
+					dat += "<font color=#4F49AF>compressing</font>"
 				if(PROCESS_ALLOY)
 					dat += "<font color='gray'>alloying</font>"
 		else
@@ -130,32 +126,28 @@
 	if(href_list["choice"])
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
-				usr.put_in_hands(inserted_id)
+				usr.grab_item_from_interacted_with(inserted_id, src)
 				inserted_id = null
 			if(href_list["choice"] == "claim")
-				if(access_mining_station in inserted_id.access)
-					inserted_id.mining_points += machine.points
-					machine.points = 0
-				else
-					to_chat(usr, "<span class='warning'>Required access not found.</span>")
+				inserted_id.mining_points += machine.points
+				machine.points = 0
 		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_hand()
+			var/obj/item/card/id/I = usr.get_active_held_item()
 			if(istype(I))
-				usr.drop_item()
-				I.forceMove(src)
+				if(!usr.attempt_insert_item_for_installation(I, src))
+					return
 				inserted_id = I
 			else
 				to_chat(usr, "<span class='warning'>No valid ID.</span>")
 
 	src.updateUsrDialog()
-	return
 
 /**********************Mineral processing unit**************************/
 
 
 /obj/machinery/mineral/processing_unit
 	name = "material processor" //This isn't actually a goddamn furnace, we're in space and it's processing platinum and flammable phoron...
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "furnace"
 	density = TRUE
 	anchored = TRUE
@@ -165,7 +157,7 @@
 	var/obj/machinery/mineral/input = null
 	var/obj/machinery/mineral/output = null
 	var/obj/machinery/mineral/console = null
-	var/sheets_per_tick = 10
+	var/sheets_per_tick = 20
 	var/list/ores_processing = list()
 	var/list/ores_stored = list()
 	var/static/list/alloy_data
@@ -174,18 +166,20 @@
 	var/points = 0
 	var/static/list/ore_values = list(
 		"sand" = 1,
-		"hematite" = 1,
-		"carbon" = 1,
-		"phoron" = 15,
-		"silver" = 16,
-		"gold" = 18,
-		"marble" = 20,
-		"uranium" = 30,
-		"diamond" = 50,
-		"platinum" = 40,
-		"lead" = 40,
-		"mhydrogen" = 40,
-		"verdantium" = 60)
+		MAT_HEMATITE = 1,
+		MAT_CARBON = 1,
+		MAT_PHORON = 15,
+		MAT_COPPER = 15,
+		MAT_SILVER = 16,
+		MAT_GOLD = 18,
+		MAT_MARBLE = 20,
+		MAT_URANIUM = 30,
+		MAT_DIAMOND = 50,
+		MAT_PLATINUM = 40,
+		MAT_LEAD = 40,
+		MAT_METALHYDROGEN = 40,
+		MAT_VAUDIUM = 50,
+		MAT_VERDANTIUM = 60)
 
 /obj/machinery/mineral/processing_unit/Initialize(mapload)
 	. = ..()

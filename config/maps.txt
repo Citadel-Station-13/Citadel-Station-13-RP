@@ -19,6 +19,6 @@ map tether
 	disabled
 endmap
 
-map triumph
-	default
-endmap
+#map triumph
+#	default
+#endmap
