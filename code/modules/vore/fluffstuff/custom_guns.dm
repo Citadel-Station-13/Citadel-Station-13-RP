@@ -706,7 +706,7 @@ END OF CITADEL CHANGES */
 
 //Expedition pistol
 /obj/item/gun/energy/frontier
-	name = "frontier phaser"
+	name = "Expedition Crank Phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
 	item_state = "phaser"
