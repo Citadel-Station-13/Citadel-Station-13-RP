@@ -92,7 +92,7 @@
 	name = "security winter boots"
 	desc = "A pair of winter boots. These ones are lined with grey fur, and coloured an angry red."
 	icon_state = "winterboots_sec"
-	armor_type = /datum/armor/security/light_formalwear
+	armor_type = /datum/armor/security/low
 
 /obj/item/clothing/shoes/boots/winter/science
 	name = "science winter boots"

@@ -8833,6 +8833,21 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
+"gyv" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/hallway/primary/aft)
 "gzz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -13318,7 +13333,7 @@
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/ablative,
+/obj/item/clothing/head/helmet/laserproof,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
@@ -19753,6 +19768,13 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/interrogation)
+"osW" = (
+/obj/structure/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "otS" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -21018,6 +21040,13 @@
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"pjL" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "pjW" = (
 /turf/simulated/floor/tiled/monofloor{
 	dir = 1
@@ -24804,6 +24833,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"rLU" = (
+/obj/effect/floor_decal/techfloor,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/hallway/primary/aft)
 "rMq" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -26004,6 +26043,13 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
+"sFi" = (
+/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/starboard)
 "sFB" = (
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -30548,7 +30594,7 @@
 /obj/item/clothing/shoes/leg_guard/bulletproof,
 /obj/item/clothing/gloves/arm_guard/bulletproof,
 /obj/item/clothing/suit/armor/bulletproof/alt,
-/obj/item/clothing/head/helmet/ballistic,
+/obj/item/clothing/head/helmet/bulletproof,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -44252,15 +44298,15 @@ pPK
 llv
 nIw
 rqJ
-acb
-ahB
+gyv
+rLU
 aqW
 bZM
 bZM
 bZM
 wOg
-lXo
-bZM
+pjL
+sFi
 adA
 aSO
 aSO
@@ -47247,7 +47293,7 @@ guO
 wCn
 wCn
 mRz
-fYj
+osW
 ugw
 fIf
 gMN

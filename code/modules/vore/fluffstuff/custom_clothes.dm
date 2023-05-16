@@ -261,14 +261,14 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	armor_type = /datum/armor/station/padded
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
 	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
 	icon_state = "trek_engsec"
 	item_state = "trek_engsec"
-	armor_type = /datum/armor/station/padded
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/rank/trek/medsci
 	name = "MedSci Uniform"
@@ -345,7 +345,7 @@
 		/obj/item/reagent_containers/glass/bottle,/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/pill,/obj/item/storage/pill_bottle
 		)
-	armor_type = /datum/armor/security/light_formalwear
+	armor_type = /datum/armor/security/low
 
 /obj/item/clothing/suit/storage/trek/ds9/equipped(mob/user, slot, flags)
 	..()

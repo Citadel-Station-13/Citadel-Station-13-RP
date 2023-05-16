@@ -37,7 +37,7 @@
 	armor_type = /datum/armor/station/ablative
 
 /obj/item/clothing/gloves/arm_guard/bulletproof
-	name = "ballistic arm guards"
+	name = "bullet resistant arm guards"
 	desc = "These arm guards will protect your hands and arms from ballistic weapons."
 	icon_state = "arm_guards_bullet"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
@@ -54,7 +54,7 @@
 
 /obj/item/clothing/gloves/arm_guard/combat
 	name = "combat arm guards"
-	desc = "These arm guards will protect your hands and arms from most ranged weapons."
+	desc = "These arm guards will protect your hands and arms from a variety of weapons."
 	icon_state = "arm_guards_combat"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.6

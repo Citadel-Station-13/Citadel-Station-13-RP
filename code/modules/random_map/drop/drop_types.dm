@@ -31,7 +31,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 	contents = list(
 		/obj/item/clothing/gloves/arm_guard/laserproof,
 		/obj/item/clothing/shoes/leg_guard/laserproof,
-		/obj/item/clothing/head/helmet/ablative,
+		/obj/item/clothing/head/helmet/laserproof,
 		/obj/item/clothing/suit/armor/laserproof,
 		/obj/item/clothing/glasses/sunglasses/sechud/tactical,
 		/obj/item/storage/belt/security/tactical/bandolier,
@@ -50,7 +50,7 @@ var/global/list/datum/supply_drop_loot/supply_drop
 /datum/supply_drop_loot/ballistics/New()
 	..()
 	contents = list(
-		/obj/item/clothing/head/helmet/ballistic,
+		/obj/item/clothing/head/helmet/bulletproof,
 		/obj/item/clothing/suit/armor/bulletproof,
 		/obj/item/clothing/gloves/arm_guard/bulletproof,
 		/obj/item/clothing/shoes/leg_guard/bulletproof,

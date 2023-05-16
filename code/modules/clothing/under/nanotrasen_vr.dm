@@ -13,7 +13,7 @@
 	desc = "The security uniform of NanoTrasen's security. It looks sturdy and well padded"
 	icon_state = "navyutility_sec"
 	snowflake_worn_state = "navyutility_sec"
-	armor_type = /datum/armor/station/padded
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/under/nanotrasen/security/warden
 	name = "NanoTrasen warden uniform"
@@ -37,7 +37,7 @@
 		SLOT_ID_LEFT_HAND = "darkbluesoft",
 		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
-	armor_type = /datum/armor/station/padded
+	armor_type = /datum/armor/security/jumpsuit
 
 /obj/item/clothing/head/beret/nanotrasen
 	name = "NanoTrasen security beret"

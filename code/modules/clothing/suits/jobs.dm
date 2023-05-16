@@ -118,7 +118,7 @@
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
-	armor_type = /datum/armor/station/light
+	armor_type = /datum/armor/security/detective
 
 /obj/item/clothing/suit/storage/det_trench/grey
 	name = "grey trenchcoat"
@@ -135,7 +135,7 @@
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/tank/emergency/oxygen, /obj/item/flashlight, /obj/item/gun/energy, /obj/item/gun/ballistic, /obj/item/ammo_magazine,
 	/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/handcuffs, /obj/item/storage/fancy/cigarettes, /obj/item/flame/lighter,
 	/obj/item/tape_recorder, /obj/item/uv_light)
-	armor_type = /datum/armor/station/light
+	armor_type = /datum/armor/security/detective
 
 /obj/item/clothing/suit/storage/forensics/red
 	name = "red jacket"
