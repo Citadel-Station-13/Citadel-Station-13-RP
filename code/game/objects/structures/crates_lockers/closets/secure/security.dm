@@ -160,6 +160,7 @@
 		/obj/item/clothing/head/helmet/HoS/hat,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/vest/hos,
+		/obj/item/clothing/accessory/poncho/roles/cloak/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
@@ -229,7 +230,7 @@
 		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/shoes/boots/jackboots,
-		/obj/item/clothing/suit/storage/vest/blueshield,
+		/obj/item/clothing/suit/armor/pcarrier/light/ntbs,
 		/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield,
 		/obj/item/storage/backpack/blueshield,
 		/obj/item/storage/belt/security,
@@ -318,8 +319,6 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
-		/obj/item/clothing/suit/storage/vest/officer,
-		/obj/item/clothing/head/helmet,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,
