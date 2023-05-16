@@ -109,9 +109,9 @@
 
 /atom/movable/screen/plane_master/darkvision_plate/Initialize(mapload)
 	. = ..()
-	add_filter("turf_render", 1, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
-	add_filter("obj_render", 2, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
-	add_filter("mob_render", 3, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
+	add_filter("turf_render", DARKVISION_PLATE_LAYER_TURFS, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
+	add_filter("obj_render", DARKVISION_PLATE_LAYER_OBJS, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
+	add_filter("mob_render", DARKVISION_PLATE_LAYER_MOBS, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE

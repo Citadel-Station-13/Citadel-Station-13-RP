@@ -445,18 +445,14 @@
 			)
 		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
 			darkvision_main.remove_filter("smart_mask")
-	switch(darkvision_fov)
-		if(SOFT_DARKSIGHT_FOV_90)
-		if(SOFT_DARKSIGHT_FOV_180)
-		if(SOFT_DARKSIGHT_FOV_270)
-		if(SOFT_DARKSIGHT_FOV_OMNI)
-
-	#warn handle infinite range
+	darksight_overlay.overlays = null
+	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays[darkvision_fov]
+	if(!isnull(fov_overlay))
+		darksight_overlay.overlays += fov_overlay
 	var/matrix/transformed = matrix()
-	var/factor
+	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
 	transformed.Scale(factor, factor)
 	darksight_overlay.transform = transformed
-	#warn transform
 
 /datum/perspective/proc/check_hard_darkvision()
 	return isnull(hard_darkvision)? 255 : hard_darkvision
@@ -470,10 +466,13 @@
 		return
 	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
 	darksight_overlay.icon_state = "fade-circle"
-	darksight_overlay.plane = LIGHTING_PLANE
+	darksight_overlay.plane = DARKVISION_PLATE_PLANE
+	darksight_overlay.layer = DARKVISION_PLATE_LAYER_MULTIPLIER
 	darksight_overlay.alpha = 0
-	darksight_overlay.blend_mode = BLEND_ADD
+	darksight_overlay.blend_mode = BLEND_MULTIPLY
+	darksight_overlay.appearance_flags = KEEP_TOGETHER
 	darksight_overlay.loc = get_eye_anchor()
+	update_vision()
 
 //? plane holder
 
