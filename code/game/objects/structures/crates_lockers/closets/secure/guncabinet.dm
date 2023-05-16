@@ -99,6 +99,6 @@
 
 /obj/structure/closet/secure_closet/guncabinet/excursion/PopulateContents()
 	for(var/i in 1 to 4)
-		new /obj/item/gun/energy/frontier/locked(src)
-	for(var/i in 1 to 4)
-		new /obj/item/gun/energy/frontier/locked/holdout
+		new /obj/item/gun/energy/frontier/locked/holdout(src)
+	//for(var/i in 1 to 4)
+		//new /obj/item/gun/energy/frontier/locked/holdout
