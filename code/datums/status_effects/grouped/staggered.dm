@@ -3,7 +3,7 @@
 	duration = 1 SECONDS
 	var/applied_highest = 0
 
-/datum/status_effect/grouped/on_change(source, old_value, new_value)
+/datum/status_effect/grouped/staggered/on_change(source, old_value, new_value)
 	. = ..()
 	var/highest = 0
 	for(var/source in sources)

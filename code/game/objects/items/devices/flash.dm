@@ -34,7 +34,7 @@
 	var/cell_type = /obj/item/cell/device
 
 	//? damage
-	var/stagger_amount = 1.5
+	var/stagger_strength = 1.5
 	var/stagger_duration = 3 SECONDS
 
 /obj/item/flash/Initialize(mapload)

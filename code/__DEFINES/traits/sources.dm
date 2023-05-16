@@ -8,7 +8,9 @@
 //? Automata / AoE effect sources
 
 /// From an EMP blast
-#define EMP_TRAIT
+#define EMP_TRAIT "emp"
+/// Secondary / tiered effects from EMP blast
+#define EMP_TRAIT_N(n) "emp_[n]"
 
 //? Item Sources
 
