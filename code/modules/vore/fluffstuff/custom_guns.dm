@@ -763,7 +763,7 @@ END OF CITADEL CHANGES */
 
 //Phaser Carbine - Reskinned phaser
 /obj/item/gun/energy/frontier/locked/carbine
-	name = "Expeditionary Phaser Carbine"
+	name = "Expedition Phaser Carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon_state = "carbinekill"
 	item_state = "retro"
