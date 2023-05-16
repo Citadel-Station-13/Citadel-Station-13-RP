@@ -194,6 +194,7 @@
 	name = "republican army uniform"
 	desc = "A military uniform used by the forces of Grand People's Army."
 	icon_state = "prauniform"
+	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -202,6 +203,7 @@
 	name = "imperial adhomian army uniform"
 	desc = "A military uniform used by the forces of the New Kingdom of Adhomai's army."
 	icon_state = "nka_uniform"
+	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -309,6 +311,7 @@
 	name = "people's volunteer spacer militia uniform"
 	desc = "A military uniform used by the forces of the People's Volunteer Spacer Militia."
 	icon_state = "pvsm_crewman"
+	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -321,11 +324,12 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-//No armor and should this be here?
+//Should this be here?
 /obj/item/clothing/under/tajaran/ala
 	name = "adhomai liberation army uniform"
 	desc = "A military uniform issued to soldiers of the adhomai liberation army."
 	icon_state = "ala-soldier-civ"
+	armor_type = /datum/armor/station/padded
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
@@ -382,7 +386,4 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-
-
-//uppers
 
