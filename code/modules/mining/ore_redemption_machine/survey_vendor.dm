@@ -27,8 +27,8 @@
 		new /datum/data/mining_equipment("Point Transfer Card",			/obj/item/card/mining_point_card/survey,					50),
 		new /datum/data/mining_equipment("Regular Firstaid Kit",		/obj/item/storage/firstaid/regular,							50),
 		new /datum/data/mining_equipment("Advanced Firstaid Kit",		/obj/item/storage/firstaid/adv,								50),
-		new /datum/data/mining_equipment("Bone Restoration Medicine",	/obj/item/storage/firstaid/bonemed,							50),
-		new /datum/data/mining_equipment("Clotting Kit",				/obj/item/storage/firstaid/clotting,						50),
+	//	new /datum/data/mining_equipment("Bone Restoration Medicine",	/obj/item/storage/firstaid/bonemed,							50),
+	//	new /datum/data/mining_equipment("Clotting Kit",				/obj/item/storage/firstaid/clotting,						50),
 		new /datum/data/mining_equipment("Survival Medipen",			/obj/item/reagent_containers/hypospray/autoinjector/miner,	50),
 		new /datum/data/mining_equipment("Injector (L) - Glucose",		/obj/item/reagent_containers/hypospray/autoinjector/biginjector/glucose,	50),
 		new /datum/data/mining_equipment("Injector (L) - Panacea",		/obj/item/reagent_containers/hypospray/autoinjector/biginjector/purity,		50),
@@ -63,7 +63,6 @@
 		new /datum/data/mining_equipment("Defense Equipment - Marksman Box",	/obj/item/gunbox/marksman,							1000),
 		new	/datum/data/mining_equipment("Exploration Component",		/obj/item/engineering_mystical_tech,						1000),
 		)
-//** Remember that explo is changing A LOT for the shipmap, a vendor is very anathetical to RP, but this is worth the test in the mean time. */
 /obj/machinery/mineral/equipment_vendor/survey/interact(mob/user)
 	user.set_machine(src)
 
