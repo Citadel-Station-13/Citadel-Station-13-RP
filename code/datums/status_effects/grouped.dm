@@ -64,7 +64,12 @@
 /datum/status_effect/grouped/proc/set_source(source, value, duration = src.duration)
 	// source can technically be any non-number value, but to enforce code durability
 	// we don't want any del'able reference types.
-	ASSERT(istext(source) && !isnull(value))
+	ASSERT(istext(source))
+	if(isnull(value))
+		// autodetect if we're just setting duration
+		value = sources[source]
+		if(isnull(value))
+			return FALSE // just a duration set and it ain't there
 	var/old = sources[source]
 	sources[source] = value
 	var/old_expires = expires[source]
@@ -75,7 +80,9 @@
 	if(duration > 0)
 		expires[source] = world.time + duration
 		timers[source] = addtimer(CALLBACK(src, PROC_REF(remove_source), source, TRUE), duration, TIMER_STOPPABLE)
-	on_change(source, old, value)
+	if(old != value)
+		on_change(source, old, value)
+	return TRUE
 
 /**
  * called on a change of source or value.

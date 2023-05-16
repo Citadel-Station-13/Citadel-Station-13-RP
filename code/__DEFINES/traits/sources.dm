@@ -5,6 +5,16 @@
 /// Trait is from ourselves (src)
 #define INNATE_TRAIT "innate"
 
+//? Automata / AoE effect sources
+
+/// From an EMP blast
+#define EMP_TRAIT
+
+//? Item Sources
+
+/// From a flashbulb
+#define FLASH_TRAIT "flash"
+
 //? Mob Sources
 
 /// From species
