@@ -1582,20 +1582,6 @@
 /area/crew_quarters/pool)
 "aXP" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -16;
-	pixel_y = 4
-	},
-/obj/item/clothing/suit/armor/vest/wolftaur{
-	pixel_x = -12;
-	pixel_y = 9
-	},
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
-/obj/item/clothing/accessory/armor/helmcover/nt,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -1603,6 +1589,38 @@
 	alpha = 255
 	},
 /obj/effect/floor_decal/corner/red/bordercorner,
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/armor/pcarrier/navy{
+	pixel_x = -4;
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "aXW" = (
@@ -12314,10 +12332,26 @@
 	alpha = 255;
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 5
-	},
 /obj/machinery/deployable/barrier,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "hNg" = (
@@ -17415,10 +17449,24 @@
 	alpha = 255;
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/red/border{
-	dir = 9
-	},
 /obj/machinery/deployable/barrier,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255;
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	alpha = 255
+	},
+/obj/effect/floor_decal/corner/red/bordercorner2,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "kUn" = (
@@ -20870,33 +20918,17 @@
 	alpha = 255;
 	dir = 8
 	},
-/obj/item/clothing/glasses/sunglasses/aviator{
-	pixel_y = -6
-	},
-/obj/item/clothing/glasses/sunglasses/aviator{
-	pixel_y = -6
-	},
-/obj/item/clothing/glasses/sunglasses/aviator{
-	pixel_y = -6
-	},
-/obj/item/clothing/glasses/sunglasses/aviator{
-	pixel_y = -6
-	},
-/obj/item/clothing/glasses/hud/security/jensenshades{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/hud/security/jensenshades{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/hud/security/jensenshades{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/hud/security/jensenshades{
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/navy,
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
+/obj/item/clothing/accessory/armor/helmcover/nt,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ncT" = (
