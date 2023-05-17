@@ -300,7 +300,7 @@
 
 	//? Sight
 	/// darksight datum - set to typepath, initialized at init
-	var/datum/vision/baseline/vision_innate
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/species_tier_0
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
