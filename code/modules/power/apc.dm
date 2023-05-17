@@ -148,6 +148,58 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
 
+/obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
+	. = ..()
+	GLOB.apcs += src
+
+	wires = new(src)
+
+	// offset 24 pixels in direction of dir
+	// this allows the APC to be embedded in a wall, yet still inside an area
+	if (building)
+		setDir(ndir)
+
+	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
+	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
+	if(!building)
+		autobuild()
+	else
+		area = get_area(src)
+		area.apc = src
+		opened = 1
+		operating = 0
+		name = "[area.name] APC"
+		machine_stat |= MAINT
+		src.update_icon()
+
+/obj/machinery/power/apc/Destroy()
+	GLOB.apcs -= src
+	src.update()
+	area.apc = null
+	area.power_light = 0
+	area.power_equip = 0
+	area.power_environ = 0
+	area.power_change()
+	QDEL_NULL(wires)
+	QDEL_NULL(terminal)
+	QDEL_NULL(cell)
+
+	// Malf AI, removes the APC from AI's hacked APCs list.
+	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
+		hacker.hacked_apcs -= src
+
+	return ..()
+
+/obj/machinery/power/apc/get_cell()
+	return cell
+
+/obj/machinery/power/apc/drop_products(method, atom/where)
+	. = ..()
+	if(!isnull(cell))
+		cell.forceMove(where)
+		cell = null
+	new /obj/item/stack/material/steel(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1)
+
 /obj/machinery/power/apc/updateDialog()
 	if (machine_stat & (BROKEN|MAINT))
 		return
@@ -180,54 +232,6 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	return drained
 
-/obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
-	. = ..()
-	wires = new(src)
-	GLOB.apcs += src
-
-	// offset 24 pixels in direction of dir
-	// this allows the APC to be embedded in a wall, yet still inside an area
-	if (building)
-		setDir(ndir)
-
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
-	if(!building)
-		autobuild()
-	else
-		area = get_area(src)
-		area.apc = src
-		opened = 1
-		operating = 0
-		name = "[area.name] APC"
-		machine_stat |= MAINT
-		src.update_icon()
-
-/obj/machinery/power/apc/Destroy()
-	GLOB.apcs -= src
-	src.update()
-	area.apc = null
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
-	area.power_change()
-	qdel(wires)
-	wires = null
-	qdel(terminal)
-	terminal = null
-	if(cell)
-		cell.forceMove(loc)
-		cell = null
-
-	// Malf AI, removes the APC from AI's hacked APCs list.
-	if((hacker) && (hacker.hacked_apcs) && (src in hacker.hacked_apcs))
-		hacker.hacked_apcs -= src
-
-	return ..()
-
-/obj/machinery/power/apc/get_cell()
-	return cell
-
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
 	..()
@@ -242,22 +246,16 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
 
-/obj/machinery/power/apc/proc/make_terminal()
-	// create a terminal object at the same position as original turf loc
-	// wires will attach to this
-	terminal = new/obj/machinery/power/terminal(src.loc)
-	terminal.setDir(dir)
-	terminal.master = src
-
-/obj/machinery/power/apc/proc/autobuild()
-	has_electronics = 2 //installed and secured
-	// is starting with a power cell installed, create it and set its charge level
+/obj/machinery/power/apc/proc/auto_build()
+	QDEL_NULL(cell)
 	if(cell_type)
-		src.cell = new cell_type(src)
-		cell.charge = start_charge * cell.maxcharge / 100.0 		// (convert percentage to actual value)
+		cell = new cell_type(src)
+		cell.charge = cell.maxcharge * (start_charge / 100)
 
-	var/area/A = src.loc.loc
-
+	//! legacy code
+	has_electronics = 2 //installed and secured
+	var/area/A = get_area(src)
+	A.apc = src
 	//if area isn't specified use current
 	if(isarea(A) && src.areastring == null)
 		src.area = A
@@ -265,16 +263,13 @@ GLOBAL_LIST_EMPTY(apcs)
 	else
 		src.area = get_area_name(areastring)
 		name = "\improper [area.name] APC"
-	area.apc = src
-
 	if(istype(area, /area/submap))
 		alarms_hidden = TRUE
+	//! legacy code end
 
+	create_terminal()
 	update_icon()
-
-	make_terminal()
-
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()
@@ -1087,9 +1082,23 @@ GLOBAL_LIST_EMPTY(apcs)
 
 
 	#warn placeholder
-	/// power needed in joules over the last tick
-	var/needed = 10000
-
+	// start handling draw
+	var/needed = 0
+	// fetch & accumulate
+	for(var/i in 1 to POWER_CHANNEL_COUNT)
+		needed += static_power_used[i] = area.power_usage_static[i]
+	// draw power from grid
+	var/wanted_kw = round((needed + (buffer < buffer_capacity? buffer_capacity - buffer : 0)) * 0.001)
+	var/grid_drawn = draw_grid_power(wanted_kw, TRUE)
+	// subtract
+	needed -= grid_drawn * 1000
+	// difference?
+	if(needed < 0)
+		// recharge buffer
+		buffer = min(buffer_capacity, buffer - needed)
+	else
+		// drain buffer
+		buffer = max(0, buffer - needed)
 
 
 	#warn guh
@@ -1425,7 +1434,35 @@ GLOBAL_LIST_EMPTY(apcs)
 
 #undef APC_UPDATE_ICON_COOLDOWN
 
-//? Power usage - burst
+//? Terminal
+
+/obj/machinery/power/apc/proc/destroy_terminal()
+	QDEL_NULL(terminal)
+
+/obj/machinery/power/apc/proc/create_terminal()
+	if(!isnull(terminal))
+		return
+	terminal = new /obj/machinery/power/terminal(loc, dir, src)
+
+/obj/machinery/power/apc/terminal_destroyed(obj/machinery/power/terminal/terminal)
+	if(terminal == src.terminal)
+		src.terminal = null
+
+//? Power usage - General
+
+/**
+ * draws power from grid
+ *
+ * @params
+ * * amount - kw
+ * * balance - obey grid balancing? FALSE = use flat power from network
+ *
+ * @return kw drawn
+ */
+/obj/machinery/power/apc/proc/draw_grid_power(amount, balance)
+	#warn impl
+
+//? Power usage - Burst
 
 /**
  * use a dynamic amount of burst power
