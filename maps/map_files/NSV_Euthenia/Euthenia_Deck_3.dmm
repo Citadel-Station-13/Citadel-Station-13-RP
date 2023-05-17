@@ -1155,6 +1155,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/black,
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
+"bbg" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/crew_quarters/pool)
 "bbl" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2134,6 +2138,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/item/retail_scanner/civilian,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "bUR" = (
@@ -5784,6 +5789,10 @@
 /obj/item/stock_parts/subspace/treatment,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
+"fnD" = (
+/obj/machinery/door/airlock/external,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "fnI" = (
 /obj/structure/sign/directions/bridge,
 /obj/structure/sign/directions/engineering{
@@ -7988,6 +7997,10 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/medical/psych/psych_1)
+"haM" = (
+/obj/machinery/door/airlock/glass_external,
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "haZ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
@@ -9748,6 +9761,8 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/ears/earmuffs,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "iuN" = (
@@ -12083,6 +12098,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
+"kpk" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_three/forward)
 "kpw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -12157,7 +12175,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_three/forward)
 "ksO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -12639,6 +12657,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/morgue)
+"kMG" = (
+/obj/machinery/door/airlock/glass_external,
+/turf/simulated/floor/plating,
+/area/space)
 "kMO" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing{
@@ -16489,7 +16511,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "nYp" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
@@ -18998,6 +19020,8 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/obj/item/clothing/ears/earmuffs,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
 "qmb" = (
@@ -19592,11 +19616,6 @@
 /obj/random/maintenance/security,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
-"qNf" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/plating,
-/area/hallway/primary/central_three)
 "qNp" = (
 /obj/structure/catwalk,
 /obj/random/trash,
@@ -21707,7 +21726,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_three/forward)
 "sFJ" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -23603,6 +23622,8 @@
 	dir = 9
 	},
 /obj/structure/table/rack/shelf,
+/obj/item/retail_scanner,
+/obj/item/retail_scanner,
 /turf/simulated/floor/tiled/dark,
 /area/vacant/vacant_shop)
 "ujP" = (
@@ -23613,7 +23634,7 @@
 /area/ai)
 "ujR" = (
 /obj/machinery/door/airlock/maintenance,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/hydroponics/garden)
 "ukF" = (
 /obj/machinery/light/small,
@@ -28238,7 +28259,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/space)
 "yjN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -33127,12 +33148,12 @@ vva
 sVT
 sVT
 vWE
-vWE
-vWE
-vWE
-vWE
-vWE
-vWE
+pVf
+pVf
+pVf
+pVf
+pVf
+pVf
 sVT
 sVT
 vva
@@ -33321,13 +33342,13 @@ sVT
 sVT
 vWE
 vWE
-vWE
+pVf
 yjI
 nYm
 sVT
 vWE
-vWE
-vWE
+pVf
+pVf
 sVT
 sVT
 sVT
@@ -33515,13 +33536,13 @@ vWE
 vWE
 vWE
 vWE
-vWE
+pVf
 vWE
 vWE
 sVT
 sVT
 sVT
-vWE
+pVf
 vWE
 sVT
 sVT
@@ -33709,15 +33730,15 @@ vWE
 vWE
 vWE
 vWE
-vWE
-vWE
-vWE
+pVf
+pVf
+pVf
 jMZ
 jMZ
 sVT
-vWE
-vWE
-bCw
+pVf
+pVf
+fnD
 vWE
 vWE
 bCw
@@ -42735,7 +42756,7 @@ sVT
 sVT
 sVT
 sVT
-sVT
+kMG
 sVT
 sVT
 sVT
@@ -42926,10 +42947,10 @@ ciN
 ciN
 ciN
 ciN
-sVT
-dff
-dff
-dff
+kMG
+vWE
+vWE
+vWE
 sVT
 vWE
 sVT
@@ -43121,9 +43142,9 @@ dWI
 dWI
 dWI
 sVT
-dff
-dff
-dff
+vWE
+vWE
+vWE
 sVT
 vWE
 sVT
@@ -45668,7 +45689,7 @@ tmF
 sdz
 gBa
 tQF
-ovf
+bbg
 jPX
 vqh
 jPX
@@ -47994,7 +48015,7 @@ sVt
 lWV
 wWQ
 lqF
-soB
+lnF
 lnF
 lnF
 lnF
@@ -48188,7 +48209,7 @@ sVt
 lWV
 wWQ
 soB
-soB
+lnF
 soB
 soB
 soB
@@ -48382,7 +48403,7 @@ grP
 svR
 wWQ
 soB
-soB
+lnF
 soB
 soB
 sVT
@@ -48576,7 +48597,7 @@ sVt
 lWV
 wWQ
 soB
-soB
+lnF
 soB
 soB
 sVT
@@ -48770,7 +48791,7 @@ sVt
 lWV
 wWQ
 soB
-soB
+lnF
 soB
 soB
 sVT
@@ -48964,9 +48985,9 @@ sVt
 lWV
 rFM
 soB
+lnF
 soB
 soB
-sVT
 sVT
 cHY
 uzO
@@ -49158,12 +49179,12 @@ uvC
 lWV
 syW
 soB
-soB
+lnF
 soB
 sVT
-vva
-uzO
-vva
+sVT
+sVT
+haM
 ygh
 ooV
 dPy
@@ -49352,12 +49373,12 @@ sFJ
 lWV
 syW
 soB
-soB
+lnF
 soB
 sVT
-uzO
-vva
-uzO
+vWE
+vWE
+vWE
 ygh
 ooV
 pIZ
@@ -49546,12 +49567,12 @@ lWV
 lWV
 syW
 soB
+lnF
 soB
-soB
-sVT
-vva
-uzO
-vva
+haM
+vWE
+vWE
+vWE
 ygh
 ooV
 lSL
@@ -49740,7 +49761,7 @@ lWV
 lWV
 syW
 soB
-soB
+lnF
 qDw
 sVT
 sVT
@@ -49934,7 +49955,7 @@ lWV
 lWV
 wWQ
 soB
-soB
+lnF
 qDw
 qDw
 qDw
@@ -50128,7 +50149,7 @@ lWV
 lWV
 wWQ
 soB
-soB
+lnF
 qDw
 qDw
 qDw
@@ -50319,10 +50340,10 @@ syW
 wWQ
 wWQ
 wWQ
-qNf
+pCv
 wWQ
 soB
-soB
+lnF
 soB
 soB
 soB
@@ -50513,10 +50534,10 @@ qDw
 soB
 soB
 soB
+lnF
 soB
 soB
-soB
-soB
+lnF
 soB
 soB
 soB
@@ -50707,10 +50728,10 @@ qDw
 soB
 soB
 soB
+lnF
 soB
 soB
-soB
-soB
+lnF
 soB
 soB
 soB
@@ -50901,10 +50922,10 @@ qDw
 soB
 soB
 soB
-soB
-soB
-soB
-soB
+lnF
+lnF
+lnF
+lnF
 qDw
 qDw
 qDw
@@ -54424,7 +54445,7 @@ ijt
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -54618,7 +54639,7 @@ ijt
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -54812,7 +54833,7 @@ ijt
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -55006,7 +55027,7 @@ ijt
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -55200,7 +55221,7 @@ ijt
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -55394,10 +55415,10 @@ ijt
 ijt
 ijt
 ijt
-ijt
-ijt
-ijt
-ijt
+kpk
+kpk
+kpk
+kpk
 sFH
 kst
 xEL
@@ -55588,7 +55609,7 @@ xEL
 xEL
 xEL
 xEL
-xEL
+kpk
 xEL
 xEL
 xEL
@@ -55782,7 +55803,7 @@ xEL
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt
@@ -55976,7 +55997,7 @@ xEL
 ijt
 ijt
 ijt
-ijt
+kpk
 ijt
 ijt
 ijt

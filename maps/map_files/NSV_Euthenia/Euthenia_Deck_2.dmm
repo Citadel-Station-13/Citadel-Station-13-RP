@@ -615,6 +615,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/atmospheric_substation/medical)
+"avF" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/forward/starboard)
 "avG" = (
 /obj/structure/table/woodentable,
 /obj/item/towel/random,
@@ -1150,7 +1154,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "aOu" = (
 /obj/structure/table/reinforced,
@@ -1726,7 +1730,7 @@
 "bgx" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_gas)
 "bgG" = (
 /turf/simulated/wall/r_wall,
@@ -2185,7 +2189,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/security/brig)
 "bxr" = (
 /turf/simulated/wall/r_wall,
@@ -2776,7 +2780,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "cdR" = (
 /obj/structure/cable/green{
@@ -2905,6 +2909,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/central_two)
+"cji" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/starboard)
 "cjl" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/effect/floor_decal/industrial/danger{
@@ -3832,7 +3840,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "cUP" = (
 /obj/machinery/light/no_nightshift,
@@ -4041,10 +4049,6 @@
 "dbB" = (
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/port)
-"dbM" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/deck_two/aft/starboard)
 "dct" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -6118,11 +6122,11 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "eHb" = (
-/obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 8
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft/starboard)
 "eHO" = (
 /obj/machinery/door/airlock/security{
@@ -6275,10 +6279,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/maintenance/panic_bunker/two)
-"eOo" = (
-/obj/structure/railing,
-/turf/simulated/floor/plating,
-/area/maintenance/deck_two/aft/starboard)
 "eOE" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/floor_decal/borderfloorblack,
@@ -8426,7 +8426,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/starboard)
 "gCv" = (
 /obj/machinery/atmospherics/component/unary/engine/biggest{
@@ -8778,7 +8778,7 @@
 /area/crew_quarters/fitness)
 "gTP" = (
 /obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/aft)
 "gUA" = (
 /obj/machinery/atmospherics/tvalve/digital/mirrored,
@@ -10461,6 +10461,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
+"irU" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/port)
 "isl" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -13502,7 +13508,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "kIN" = (
 /obj/machinery/firealarm{
@@ -14077,7 +14083,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/border_only,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/hallway)
 "lel" = (
 /obj/structure/stairs/spawner/south,
@@ -15129,7 +15135,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/starboard)
 "lRb" = (
 /obj/machinery/power/smes/buildable{
@@ -16562,6 +16568,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/space)
+"mZW" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/port)
 "mZY" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/floodlight,
@@ -18454,7 +18466,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "oDq" = (
 /obj/machinery/door/firedoor/glass/hidden/steel{
@@ -21346,7 +21358,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "qPX" = (
 /obj/machinery/atmospherics/pipe/zpipe/up/scrubbers{
@@ -22683,7 +22695,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/starboard)
 "rKR" = (
 /obj/machinery/light_switch{
@@ -25009,7 +25021,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/recreation_area_hallway)
 "tBz" = (
 /obj/machinery/power/smes/buildable{
@@ -29108,7 +29120,7 @@
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/starboard)
 "wxo" = (
 /obj/machinery/power/apc/direction_bump/south,
@@ -29181,7 +29193,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_two/port)
 "wzB" = (
 /obj/effect/floor_decal/spline/plain{
@@ -29972,7 +29984,7 @@
 "xcp" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/pool/changing_room)
 "xcA" = (
 /obj/machinery/door/firedoor,
@@ -36674,8 +36686,8 @@ lft
 vJA
 vJA
 vJA
-dbM
-dbM
+nqQ
+nqQ
 lft
 kLI
 kLI
@@ -37450,8 +37462,8 @@ qHi
 lft
 qHi
 qHi
-eOo
-dbM
+qHi
+nqQ
 lft
 kLI
 kLI
@@ -37644,8 +37656,8 @@ qHi
 lft
 qHi
 qHi
-eOo
-dbM
+qHi
+nqQ
 lft
 kLI
 kLI
@@ -37838,8 +37850,8 @@ qHi
 lft
 qHi
 qHi
-eOo
-dbM
+qHi
+nqQ
 lft
 kLI
 kLI
@@ -38032,8 +38044,8 @@ qHi
 lft
 qHi
 qHi
-eOo
-dbM
+qHi
+nqQ
 lft
 kLI
 kLI
@@ -38226,8 +38238,8 @@ qHi
 lft
 qHi
 qHi
-eOo
-dbM
+qHi
+nqQ
 lft
 kLI
 kLI
@@ -39356,7 +39368,7 @@ lpu
 lpu
 lpu
 lpu
-lpu
+sej
 iqv
 lpu
 lpu
@@ -39546,11 +39558,11 @@ fZM
 fZM
 pAl
 bgx
-lpu
-lpu
-lpu
-lpu
-lpu
+sej
+sej
+sej
+sej
+sej
 iqv
 lpu
 lpu
@@ -39744,7 +39756,7 @@ bxr
 bxr
 bxr
 iqv
-lpu
+sej
 iqv
 lpu
 lpu
@@ -39938,7 +39950,7 @@ hBq
 iVk
 mNW
 iqv
-lpu
+sej
 bgG
 bgG
 bgG
@@ -40132,7 +40144,7 @@ bYT
 lfF
 mNW
 iqv
-lpu
+sej
 bgG
 nbh
 nbh
@@ -40326,7 +40338,7 @@ xST
 hzI
 bxr
 iqv
-lpu
+sej
 bgG
 nbh
 foH
@@ -40520,7 +40532,7 @@ xST
 lfF
 cex
 iqv
-lpu
+sej
 bgG
 nbh
 foH
@@ -40714,7 +40726,7 @@ tef
 djS
 cex
 iqv
-lpu
+sej
 bgG
 nbh
 foH
@@ -40908,7 +40920,7 @@ kwQ
 mJl
 bxr
 iqv
-lpu
+sej
 bgG
 nbh
 nbh
@@ -41102,7 +41114,7 @@ aPL
 bYL
 bxr
 lpu
-lpu
+sej
 bgG
 bgG
 bgG
@@ -41296,7 +41308,7 @@ uxC
 lfF
 bxr
 lpu
-lpu
+sej
 lpu
 lpu
 mRB
@@ -41490,7 +41502,7 @@ aPL
 cGR
 bxr
 lpu
-lpu
+sej
 lpu
 lpu
 mRB
@@ -41683,8 +41695,8 @@ cXL
 xpI
 qLV
 bxr
-lpu
-lpu
+sej
+sej
 lpu
 lpu
 mRB
@@ -41877,7 +41889,7 @@ cXL
 fgg
 cms
 bxr
-lpu
+sej
 lpu
 lpu
 lpu
@@ -42071,7 +42083,7 @@ cXL
 fgg
 drX
 bxr
-lpu
+sej
 lpu
 lpu
 lpu
@@ -42265,7 +42277,7 @@ aMX
 nER
 drX
 bxr
-lpu
+sej
 lpu
 lpu
 lpu
@@ -44013,7 +44025,7 @@ lsq
 aWK
 uwV
 lpu
-lpu
+sej
 lpu
 mRB
 btP
@@ -44207,7 +44219,7 @@ cCS
 lpu
 uwV
 lpu
-lpu
+sej
 lpu
 iqv
 mRB
@@ -44401,7 +44413,7 @@ qxa
 lpu
 uwV
 uwV
-uwV
+sej
 uwV
 uwV
 mRB
@@ -44595,7 +44607,7 @@ cCS
 lpu
 lpu
 lpu
-lpu
+sej
 lpu
 lpu
 mRB
@@ -47148,7 +47160,7 @@ xrk
 cZg
 iIk
 uhb
-uhb
+dKD
 tKL
 tKL
 tKL
@@ -47341,9 +47353,9 @@ iIk
 iIk
 iIk
 iIk
-vUq
-vUq
-vUq
+kPj
+avF
+kPj
 vUq
 vUq
 vUq
@@ -47528,7 +47540,7 @@ wSc
 dKD
 uhb
 uhb
-uhb
+xdO
 uhb
 uhb
 uhb
@@ -47536,7 +47548,7 @@ uhb
 uhb
 vUq
 vUq
-vUq
+duY
 vUq
 vUq
 vUq
@@ -47720,17 +47732,17 @@ uhb
 xdO
 wSc
 dKD
-uhb
-uhb
-uhb
-uhb
-uhb
-uhb
-uhb
-uhb
-vUq
-vUq
-vUq
+dKD
+dKD
+cji
+dKD
+dKD
+dKD
+dKD
+dKD
+duY
+duY
+duY
 vUq
 vUq
 vUq
@@ -47904,7 +47916,7 @@ mnn
 mwq
 vnd
 vnd
-qzB
+bhd
 vnd
 vnd
 uhb
@@ -47916,7 +47928,7 @@ wSc
 dKD
 uhb
 uhb
-uhb
+xdO
 uhb
 uhb
 uhb
@@ -48098,7 +48110,7 @@ mnn
 uhb
 uhb
 uhb
-uhb
+dKD
 uhb
 xdO
 uhb
@@ -48110,7 +48122,7 @@ wSc
 dKD
 uhb
 uhb
-uhb
+xdO
 uhb
 uhb
 uhb
@@ -48292,7 +48304,7 @@ mnn
 uhb
 uhb
 uhb
-uhb
+dKD
 uhb
 xdO
 xdO
@@ -48486,7 +48498,7 @@ mnn
 uhb
 uhb
 uhb
-uhb
+dKD
 uhb
 uhb
 uhb
@@ -48680,7 +48692,7 @@ uhb
 uhb
 uhb
 uhb
-uhb
+dKD
 uhb
 uhb
 uhb
@@ -48867,14 +48879,14 @@ jDI
 jDI
 ogS
 wXq
+dKD
+dKD
+dKD
+dKD
+dKD
 uhb
 uhb
-uhb
-uhb
-uhb
-uhb
-uhb
-uhb
+dKD
 uhb
 uhb
 uhb
@@ -50193,7 +50205,7 @@ ovn
 lcP
 nHf
 xcp
-tjx
+cfF
 cfF
 ojG
 vnd
@@ -50637,7 +50649,7 @@ duY
 duY
 duY
 fRS
-vUq
+duY
 vUq
 vUq
 vUq
@@ -50758,7 +50770,7 @@ fyF
 ewB
 leg
 cdI
-aCX
+irU
 qPR
 aOi
 tBx
@@ -50953,7 +50965,7 @@ nSw
 mnk
 rpd
 dbB
-rpd
+mZW
 nHz
 tYj
 hWs
@@ -51147,7 +51159,7 @@ nSw
 mnk
 fsK
 dbB
-rpd
+mZW
 nHz
 tYj
 tYj
@@ -51535,7 +51547,7 @@ nFq
 nFq
 kKe
 ojv
-rpd
+mZW
 dbB
 pjs
 pjs
@@ -51729,7 +51741,7 @@ nFq
 jzo
 lBf
 ojv
-rpd
+mZW
 dbB
 pjs
 pjs
@@ -51923,7 +51935,7 @@ nFq
 aOc
 iaY
 ojv
-rpd
+mZW
 uIy
 uIy
 uIy
@@ -52117,7 +52129,7 @@ nFq
 oYt
 sic
 ojv
-rpd
+mZW
 uIy
 kLI
 mRB
@@ -52311,7 +52323,7 @@ nFq
 nFq
 bha
 ojv
-rpd
+mZW
 uIy
 nqw
 hYb
@@ -52699,7 +52711,7 @@ uIy
 dbB
 dbB
 dbB
-rpd
+mZW
 uIy
 kLI
 kLI
@@ -52893,7 +52905,7 @@ uIy
 dbB
 dbB
 dbB
-rpd
+mZW
 uIy
 kLI
 kLI
