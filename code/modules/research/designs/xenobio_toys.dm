@@ -34,7 +34,7 @@
 	desc = "A disk designed to retain humanoid genetic information."
 	id = "gene_disk"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 300, "glass" = 300)
+	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
 	build_path = /obj/item/disk/data
 	sort_string = "HAAHA"
 
@@ -43,6 +43,6 @@
 	desc = "A small disk used for carrying data on plant genetics."
 	id = "plant_disk"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
-	materials = list(DEFAULT_WALL_MATERIAL = 300, "glass" = 300)
+	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
 	build_path = /obj/item/disk/botany
 	sort_string = "HAHAB"
