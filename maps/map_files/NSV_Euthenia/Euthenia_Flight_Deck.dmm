@@ -163,6 +163,12 @@
 "mZ" = (
 /turf/simulated/wall/r_wall,
 /area/maintenance/substation/command)
+"nk" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "ny" = (
 /obj/structure/lattice,
 /obj/machinery/camera/network/outside{
@@ -275,6 +281,15 @@
 "sT" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"sX" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
 "to" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -286,6 +301,12 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/space)
+"uS" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
 /area/space)
 "vw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -499,6 +520,16 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/open,
 /area/maintenance/substation/command)
 "Ht" = (
@@ -569,6 +600,13 @@
 "Kt" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /turf/simulated/wall/r_wall,
+/area/space)
+"Lr" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
 /area/space)
 "LA" = (
 /obj/machinery/light/small{
@@ -720,6 +758,10 @@
 	},
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
+"TB" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "TF" = (
 /turf/simulated/floor/carpet/purcarpet,
@@ -18983,8 +19025,8 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
+Fp
+Fp
 mZ
 yX
 mZ
@@ -19177,7 +19219,7 @@ VJ
 VJ
 VJ
 VJ
-wJ
+Fp
 wJ
 wJ
 gA
@@ -19371,7 +19413,7 @@ VJ
 VJ
 VJ
 VJ
-wJ
+Fp
 wJ
 wJ
 wJ
@@ -19565,16 +19607,16 @@ VJ
 VJ
 VJ
 VJ
-Hj
-Hj
-Hj
-Hj
+Fp
+wJ
+wJ
+wJ
 wJ
 Fp
-Fp
+zp
 oE
 oE
-Fp
+zp
 Fp
 VJ
 VJ
@@ -19753,23 +19795,23 @@ VJ
 VJ
 VJ
 VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-VJ
-Hj
-Hj
-Hj
-Hj
+Fp
+Fp
+TB
+TB
+TB
+Fp
+Fp
+Fp
 wJ
-wJ
+Fp
+Fp
+Fp
 Fp
 oE
 oE
 Fp
-VJ
+Fp
 VJ
 VJ
 VJ
@@ -19947,7 +19989,7 @@ VJ
 VJ
 VJ
 VJ
-VJ
+Fp
 Ti
 Ti
 Ti
@@ -20141,7 +20183,7 @@ VJ
 VJ
 VJ
 VJ
-VJ
+TB
 Ti
 Hu
 Hu
@@ -20335,7 +20377,7 @@ VJ
 VJ
 VJ
 VJ
-VJ
+TB
 Ti
 Hu
 Hu
@@ -20529,7 +20571,7 @@ wJ
 VJ
 VJ
 VJ
-VJ
+TB
 Ti
 Hu
 Hu
@@ -20731,9 +20773,9 @@ Hu
 Hu
 Ti
 Fp
-Fp
-Fp
-Fp
+Xi
+Xi
+Xi
 Fp
 Fp
 oE
@@ -20927,8 +20969,8 @@ Qd
 Xi
 VJ
 VJ
-wJ
-wJ
+VJ
+VJ
 Fp
 oE
 oE
@@ -21121,8 +21163,8 @@ Qd
 Xi
 VJ
 VJ
-Fp
-Fp
+VJ
+VJ
 Fp
 oE
 oE
@@ -27519,11 +27561,11 @@ NT
 Ox
 Ox
 Ox
-Ox
+Lr
 pG
 Zt
-my
-Ox
+sX
+uS
 Ox
 Ox
 Ox
@@ -27712,13 +27754,13 @@ NT
 NT
 Ox
 Ox
-Ox
+pG
 VJ
 VJ
 VJ
 VJ
 VJ
-Ox
+my
 Ox
 Ox
 Ox
@@ -27906,13 +27948,13 @@ NT
 NT
 Ox
 Ox
-Ox
+pG
 VJ
 VJ
 VJ
 VJ
 VJ
-Ox
+my
 Ox
 Ox
 Ox
@@ -28100,13 +28142,13 @@ NT
 NT
 Ox
 Ox
-Ox
+pG
 VJ
 VJ
 VJ
 VJ
 VJ
-Ox
+my
 Ox
 Ox
 Ox
@@ -28294,13 +28336,13 @@ NT
 NT
 Ox
 Ox
-Ox
+pG
 VJ
 VJ
 VJ
 VJ
 VJ
-Ox
+my
 Ox
 Ox
 Ox
@@ -28488,13 +28530,13 @@ NT
 NT
 NT
 NT
-Ox
+pG
 VJ
 VJ
 VJ
 VJ
 VJ
-Ox
+my
 Ox
 Ox
 Ox
@@ -28683,11 +28725,11 @@ NT
 NT
 NT
 Ox
-Ox
-Ox
-Ox
-Ox
-Ox
+nk
+nk
+nk
+nk
+nk
 Ox
 Ox
 Ox

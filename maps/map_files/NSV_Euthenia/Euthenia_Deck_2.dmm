@@ -9533,6 +9533,12 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/maintenance/panic_bunker)
+"hCZ" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/turf/simulated/floor/wood,
+/area/bridge/meeting_room)
 "hDo" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/shield_capacitor,
@@ -47676,7 +47682,7 @@ mRB
 nfq
 gvk
 mRB
-tGw
+hCZ
 alw
 mXb
 xAU

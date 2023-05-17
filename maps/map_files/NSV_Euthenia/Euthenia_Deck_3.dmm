@@ -16354,6 +16354,10 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"nUw" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "nUA" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -18503,6 +18507,7 @@
 /area/space)
 "pID" = (
 /obj/structure/stairs/spawner/west,
+/obj/structure/railing,
 /turf/simulated/floor/reinforced,
 /area/space)
 "pIF" = (
@@ -19753,6 +19758,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"qTn" = (
+/obj/structure/railing,
+/turf/simulated/open,
+/area/space)
 "qTu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -25447,6 +25456,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
+"vUn" = (
+/obj/structure/railing,
+/turf/simulated/floor/reinforced,
+/area/space)
 "vUv" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -43499,11 +43512,11 @@ dff
 dff
 dff
 sVT
+qTn
 vWE
-vWE
-vWE
-vWE
-sVT
+pVf
+pVf
+jUd
 pVf
 pVf
 pVf
@@ -43693,9 +43706,9 @@ vva
 vva
 dff
 sVT
+qTn
 vWE
-vWE
-vWE
+pVf
 vWE
 sVT
 pVf
@@ -43887,9 +43900,9 @@ rOW
 vva
 vva
 sVT
-vWE
-vWE
-vWE
+pVf
+pVf
+pVf
 vWE
 sVT
 pVf
@@ -44082,7 +44095,7 @@ vva
 vva
 sVT
 vWE
-vWE
+pVf
 vWE
 vWE
 sVT
@@ -44276,7 +44289,7 @@ vva
 vva
 sVT
 vWE
-vWE
+pVf
 vWE
 vWE
 sVT
@@ -44470,7 +44483,7 @@ vva
 vva
 sVT
 vWE
-vWE
+pVf
 vWE
 vWE
 sVT
@@ -44664,7 +44677,7 @@ vva
 vva
 sVT
 vWE
-vWE
+pVf
 vWE
 vWE
 sVT
@@ -44858,7 +44871,7 @@ vva
 vva
 sVT
 sVT
-sVT
+nUw
 sVT
 sVT
 sVT
@@ -45052,7 +45065,7 @@ vva
 vva
 sVT
 pID
-vWE
+pVf
 dJS
 pAF
 pAF
@@ -45245,8 +45258,8 @@ rtF
 vva
 vva
 sVT
-wFh
-vWE
+vUn
+pVf
 pAF
 jMZ
 jMZ
@@ -45440,7 +45453,7 @@ vva
 vva
 sVT
 pVf
-vWE
+pVf
 pAF
 jMZ
 jMZ
