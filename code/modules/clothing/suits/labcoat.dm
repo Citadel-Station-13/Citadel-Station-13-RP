@@ -99,7 +99,6 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/rd
 	name = "Research Director's labcoat"
 	desc = "A flashy labcoat with purple markings. It belongs to the Research Director."
-	icon = 'icons/obj/clothing/suits.dmi'
 	icon_state = "labcoat_rd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "science_labcoat", SLOT_ID_LEFT_HAND = "science_labcoat")
 
