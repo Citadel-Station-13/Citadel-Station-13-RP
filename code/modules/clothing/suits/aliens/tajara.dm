@@ -1,4 +1,5 @@
-/obj/item/clothing/suit/tajaran/furs
+//Suits
+/obj/item/clothing/suit/tajaran/furs //Why does this hind the tail?
 	name = "heavy furs"
 	desc = "A traditional Zhan-Khazan garment."
 	icon_state = "zhan_furs"
@@ -16,3 +17,188 @@
 	body_cover_flags = HEAD|FACE
 	drop_sound = 'sound/items/drop/leather.ogg'
 	pickup_sound = 'sound/items/pickup/leather.ogg'
+
+/obj/item/clothing/suit/armor/amohda
+	name = "amohdan swordsman armor"
+	desc = "A suit of armor used by the traditional warriors of Amohda."
+	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
+	icon_state = "amohdan_armor"
+	item_state = "amohdan_armor"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	allowed = list(/obj/item/gun,/obj/item/material/sword)
+	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	species_restricted = list(SPECIES_TAJ)
+	armor_type = /datum/armor/station/stab
+	slowdown = 0.5
+	siemens_coefficient = 0.35
+
+//Coats no hoods
+/obj/item/clothing/suit/storage/toggle/labcoat/tajaran
+	name = "Adhomian medical coat"
+	desc = "A sterile insulated coat made of leather stitched over fur."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "medcoat"
+
+/obj/item/clothing/suit/storage/toggle/tajaran/wool
+	name = "Adhomian wool coat"
+	desc = "An adhomian coat, this one is a design commonly found among the Rhazar'Hrujmagh people."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "zhan_coat"
+
+/obj/item/clothing/suit/storage/toggle/tajaran/raakti_shariim
+	name = "\improper Raakti Shariim coat"
+	desc = "A blue adhomian wool coat with lilac purple accents and pale-gold insignia, signifying a Constable of the NKA's Raakti Shariim."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "raakti_shariim_coat"
+
+/obj/item/clothing/suit/storage/toggle/tajaran
+	name = "Tajaran naval coat"
+	desc = "A thick wool coat from Adhomai."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "navalcoat"
+
+/*
+//Does stuff like this even exist at all because of the frost?
+/obj/item/clothing/suit/storage/tajaran/messa
+	name = "sun sister robe"
+	desc = "A robe worn by the female priests of the S'rand'Marr religion."
+	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
+	icon_state = "messarobes"
+	allowed = list(/obj/item/tank/emergency_oxygen,/obj/item/storage/bible,/obj/item/nullrod,/obj/item/reagent_containers/food/drinks/bottle/holywater)
+
+/obj/item/clothing/suit/storage/tajaran/matake //Do they even exist?
+	name = "Mata'ke priest mantle"
+	desc = "A mantle worn by the priests of Mata'ke."
+	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
+	icon_state = "matakecoat"
+	allowed = list(/obj/item/tank/emergency_oxygen,/obj/item/storage/bible,/obj/item/nullrod,/obj/item/reagent_containers/food/drinks/bottle/holywater)
+*/
+
+/obj/item/clothing/suit/storage/hooded/tajaran/surgery
+	name = "Adhomian surgeon garb"
+	desc = "An utilitarian Adhomian surgeon's garb, with its design hardly changed from the First Revolution."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "tajscrubs"
+	hoodtype = /obj/item/clothing/head/hood/tajaran/surgery
+	species_restricted = list(SPECIES_TAJ)
+
+//Cloaks
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak
+	name = "Adhomian maroon cloak"
+	desc = "A simple maroon colored Adhomian cloak."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "maroon_cloak"
+	body_cover_flags = UPPER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak
+
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak/gruff
+	name = "Gruff cloak"
+	desc = "A cloak designated for the lowest classes of tajara."
+	icon_state = "taj_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	inv_hide_flags = HIDETAIL
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/gruff
+
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak/amohda
+	name = "Amohdan cloak"
+	desc = "Originally used by the Amohdan swordsmen before the First Revolution, this cloak is now commonly worn by the island population."
+	icon_state = "amohda_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|HEAD
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/amohda
+
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak/winter
+	name = "Adhomian winter cloak"
+	desc = "A simple wool cloak used during the early days of the lesser winter."
+	icon_state = "winter_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = TN60C
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/winter
+
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak/royalist
+	name = "Adhomian royalist cloak"
+	desc = "An Adhomian cloak with an asymmetric design. The symbol of the New Kingdom of Adhomai is at its back."
+	icon_state = "royalist_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/royalist
+
+/obj/item/clothing/suit/storage/hooded/tajaran/cloak/fancy
+	name = "Fancy adhomian cloak"
+	desc = "A fancy black Adhomian cloak."
+	icon_state = "hb_cloak"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/fancy
+
+//TODO: Sprite some cloak hoods
+//Hoods no sprites
+/obj/item/clothing/head/hood/tajaran/cloak
+	name  = "Adhomian maroon cloak hood"
+	desc = "A hood attached to a Maroon cloak"
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "maroon_cloakhood"
+	item_state = "maroon_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
+/obj/item/clothing/head/hood/tajaran/cloak/gruff
+	name = "Gruff cloak hood"
+	desc = "A hood attached to a Gruff cloak"
+	desc = "A hood designated for the lowest classes of tajara."
+	icon_state = "taj_cloakhood"
+	item_state = "taj_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
+/obj/item/clothing/head/hood/tajaran/surgery
+	name = "Adhomian surgeon mask"
+	desc = "A surgical mask attached to a surgeon garb."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "tajscrubs_hood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+	species_restricted = list(SPECIES_TAJ)
+
+/obj/item/clothing/head/hood/tajaran/cloak/amohda
+	name = "Amohdan cloak hood"
+	desc = "A hood attached to a Amohdan cloak"
+	icon_state = "amohda_cloakhood"
+	item_state = "amohda_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
+/obj/item/clothing/head/hood/tajaran/cloak/winter
+	name = "Adhomian winter cloak hood"
+	desc = "A hood attached to a Winter cloak"
+	icon_state = "winter_cloakhood"
+	item_state = "winter_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+	cold_protection = HEAD
+	min_cold_protection_temperature = TN60C
+
+/obj/item/clothing/head/hood/tajaran/cloak/royalist
+	name = "Adhomian royalist cloak hood"
+	desc = "A hood attached to a Roaylist cloak"
+	icon_state = "royalist_cloakhood"
+	item_state = "royalist_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
+/obj/item/clothing/head/hood/tajaran/cloak/fancy
+	name = "Fancy adhomian cloak"
+	desc = "A hood attached to a Fancy cloak"
+	icon_state = "hb_cloakhood"
+	item_state = "hb_cloakhood"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
