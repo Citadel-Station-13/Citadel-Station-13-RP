@@ -478,7 +478,7 @@
 	M.adjustToxLoss(0.5 * removed)
 
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_DIONA)
+	if(alien == IS_DIONA, IS_NARAMAD) //For cheeses - Gained immunity, regional plants have something simillar to capsain. TODO: Add those plants.
 		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		if(prob(5))
