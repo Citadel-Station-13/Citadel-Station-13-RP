@@ -210,6 +210,23 @@
 		effect.adjust_duration(amount)
 	return TRUE
 
+/**
+ * heals all incapacitation effects
+ *
+ * @params
+ * * amount - if null, remove all immediately.
+ */
+/mob/proc/clear_all_incapacitation_effects(amount)
+	ASSERT(amount >= 0)
+	for(var/datum/status_effect/incapacitation/path in subtypesof(/datum/status_effect/incapacitation))
+		var/datum/status_effect/incapacitation/effect = has_status_effect(path)
+		if(isnull(effect))
+			continue
+		if(amount)
+			effect.adjust_duration(-amount)
+		else
+			qdel(effect)
+
 //? legacy
 
 /mob/proc/Confuse(amount)

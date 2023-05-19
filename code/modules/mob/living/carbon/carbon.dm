@@ -28,12 +28,6 @@
 		qdel(food)
 	return ..()
 
-/mob/living/carbon/rejuvenate()
-	bloodstr.clear_reagents()
-	ingested.clear_reagents()
-	touching.clear_reagents()
-	..()
-
 /mob/living/carbon/gib()
 	for(var/mob/M in src)
 		if(M in src.stomach_contents)

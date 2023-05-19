@@ -36,6 +36,7 @@
 	if(was_dead && stat != DEAD)
 		// Arise!
 		GLOB.cultnet.updateVisibility(src, 0)
+	#warn what
 
 /mob/living/death(gibbed, deathmessage="seizes up and falls limp...")
 	if(..(gibbed, deathmessage))

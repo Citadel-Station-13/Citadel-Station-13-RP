@@ -98,6 +98,7 @@
 	..()
 
 /mob/living/simple_mob/slime/revive()
+	#warn ugh
 	// Make revived slimes resume glowing.
 	glow_toggle = initial(glow_toggle)
 	handle_light()

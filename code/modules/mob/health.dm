@@ -37,3 +37,25 @@
 		facing_dir = null
 	if(update_mobility)
 		update_mobility()
+
+/**
+ * brings a mob back to life
+ *
+ * @params
+ * * force - ignore health and revive even if we'll immediately die again
+ * * full_heal - fix everything we need to live
+ */
+/mob/proc/revive(force, full_heal)
+	if(full_heal)
+		rejuvenate(TRUE)
+	#warn impl
+
+/**
+ * heals all damage on a mob. by default, only heals "basic" numerical / limb damage. see params for more.
+ *
+ * @param
+ * * fix_missing - restore all organs we'd need to live, and all default organs (say, limbs) that we're missing
+ * * reset_to_slot - wipe all state and reset back to the character slot.
+ */
+/mob/proc/rejuvenate(fix_missing, reset_to_slot)
+	#warn impl

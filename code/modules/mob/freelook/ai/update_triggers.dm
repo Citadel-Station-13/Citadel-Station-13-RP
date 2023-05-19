@@ -67,6 +67,7 @@
 	if(was_dead && stat != DEAD)
 		// Arise!
 		GLOB.cameranet.updateVisibility(src, 0)
+	#warn what
 
 /mob/living/silicon/ai/death(gibbed)
 	if(..())

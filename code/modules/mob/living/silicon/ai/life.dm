@@ -171,3 +171,4 @@
 /mob/living/silicon/ai/rejuvenate()
 	..()
 	add_ai_verbs(src)
+	#warn what

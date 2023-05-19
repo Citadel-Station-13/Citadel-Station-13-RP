@@ -895,7 +895,7 @@
 		germ_level += n
 
 /mob/living/carbon/human/revive()
-
+	#warn ugh
 	if(should_have_organ(O_HEART))
 		vessel.add_reagent("blood",species.blood_volume-vessel.total_volume)
 		fixblood()
