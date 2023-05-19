@@ -2306,6 +2306,7 @@
 #include "code\modules\clothing\under\accessories\shiny_vr.dm"
 #include "code\modules\clothing\under\accessories\storage.dm"
 #include "code\modules\clothing\under\accessories\torch.dm"
+#include "code\modules\clothing\under\accessories\xeno\tajara.dm"
 #include "code\modules\clothing\under\jobs\centcom.dm"
 #include "code\modules\clothing\under\jobs\civilian.dm"
 #include "code\modules\clothing\under\jobs\engineering.dm"

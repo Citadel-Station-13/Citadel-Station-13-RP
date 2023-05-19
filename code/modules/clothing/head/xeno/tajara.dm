@@ -1,5 +1,9 @@
+/obj/item/clothing/head/tajaran
+	icon = 'icons/obj/tajara_items.dmi'
+	contained_sprite = TRUE
+
 //Non-void Helments
-/obj/item/clothing/head/helmet/tajaran/amohda
+/obj/item/clothing/head/helmet/amohda
 	name = "amohdan swordsman helmet"
 	desc = "A helmet used by the traditional warriors of Amohda."
 	icon = 'icons/obj/clothing/species/tajaran/hats.dmi'
@@ -12,7 +16,7 @@
 	armor_type = /datum/armor/general/medieval
 	siemens_coefficient = 0.35
 
-/obj/item/clothing/head/helmet/tajaran/kettle
+/obj/item/clothing/head/helmet/tajaranhelm/kettle
 	name = "Adhomian kettle helmet"
 	desc = "A kettle helmet used by the forces of the new Kingdom of Adhomai."
 	icon = 'icons/obj/clothing/species/tajaran/hats.dmi'

@@ -148,25 +148,6 @@
 	icon_state = "explorer_jacket"
 	item_state = "explorer_jacket"
 
-/*
-//Does stuff like this even exist at all because of the frost?
-/obj/item/clothing/suit/storage/tajaran/messa
-	name = "sun sister robe"
-	desc = "A robe worn by the female priests of the S'rand'Marr religion."
-	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_state = "messarobes"
-	allowed = list(/obj/item/tank/emergency_oxygen,/obj/item/storage/bible,/obj/item/nullrod,/obj/item/reagent_containers/food/drinks/bottle/holywater)
-
-/obj/item/clothing/suit/storage/tajaran/matake //Do they even exist?
-	name = "Mata'ke priest mantle"
-	desc = "A mantle worn by the priests of Mata'ke."
-	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_state = "matakecoat"
-	allowed = list(/obj/item/tank/emergency_oxygen,/obj/item/storage/bible,/obj/item/nullrod,/obj/item/reagent_containers/food/drinks/bottle/holywater)
-*/
-
 /obj/item/clothing/suit/storage/hooded/tajaran/surgery
 	name = "Adhomian surgeon garb"
 	desc = "An utilitarian Adhomian surgeon's garb, with its design hardly changed from the First Revolution."
