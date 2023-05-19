@@ -1,11 +1,11 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = THICKMATERIAL
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_COLD_PROTECTION_TEMPERATURE
@@ -16,6 +16,10 @@
 	ear_protection = 1
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
+
+/obj/item/clothing/head/helmet/ntsec
+	name = "corpsec helmet"
+	desc = "Standard headgear for Corporate Security on NT facilities. Protects well enough against a wide range of attacks."
 
 /obj/item/clothing/head/helmet/oricon
 	name = "\improper Orion Confederation Government helmet"
@@ -49,14 +53,6 @@
 	desc = "A tan helmet made from advanced ceramic. Comfortable and robust."
 	icon_state = "helmet_tac"
 	armor_type = /datum/armor/station/tactical
-	siemens_coefficient = 0.6
-
-/obj/item/clothing/head/helmet/merc
-	name = "combat helmet"
-	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
-	icon_state = "helmet_merc"
-	armor_type = /datum/armor/merc/heavy
-	siemens_coefficient = 0.5
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
@@ -64,7 +60,7 @@
 	icon_state = "riot"
 	armor_type = /datum/armor/station/riot
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	siemens_coefficient = 0.7
+	siemens_coefficient = 0.5
 	valid_accessory_slots = null
 	action_button_name = "Toggle Visor"
 
@@ -80,17 +76,17 @@
 		to_chat(user, "You lower the visor on the riot helmet.")
 	update_worn_icon()	//so our mob-overlays update
 
-/obj/item/clothing/head/helmet/laserproof
+/obj/item/clothing/head/helmet/ablative
 	name = "ablative helmet"
 	desc = "It's a helmet specifically designed to protect against energy projectiles."
 	icon_state = "helmet_reflec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ablative
-	siemens_coefficient = 0.1
+	siemens_coefficient = 0.2
 	valid_accessory_slots = null
 
-/obj/item/clothing/head/helmet/bulletproof
-	name = "bullet-resistant helmet"
+/obj/item/clothing/head/helmet/ballistic
+	name = "ballistic helmet"
 	desc = "It's a helmet specifically designed to protect against ballistic projectiles."
 	icon_state = "helmet_bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
@@ -108,12 +104,17 @@
 	siemens_coefficient = 0.6
 	valid_accessory_slots = null
 
+/obj/item/clothing/head/helmet/redcombat
+	name = "combat helmet"
+	desc = "A heavily reinforced helmet painted with red markings. Feels like it could take a lot of punishment."
+	icon_state = "helmet_merc"
+	armor_type = /datum/armor/station/combat
+
 /obj/item/clothing/head/helmet/flexitac
 	name = "tactical light helmet"
 	desc = "A tan helmet made from advanced ceramic with an integrated tactical flashlight."
 	icon_state = "flexitac"
 	armor_type = /datum/armor/station/tactical
-	siemens_coefficient = 0.6
 	brightness_on = 6
 	light_overlay = "helmet_light_dual_green"
 	action_button_name = "Toggle Head-light"
