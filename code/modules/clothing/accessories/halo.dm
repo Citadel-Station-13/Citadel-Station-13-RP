@@ -168,3 +168,7 @@
 /obj/item/clothing/accessory/halo_projector/aesculapian
 	name = "aesculapian halo"
 	icon_state = "aesculapian"
+
+/obj/item/clothing/accessory/halo_projector/crowned
+	name = "crowned halo"
+	icon_state = "crowned"
