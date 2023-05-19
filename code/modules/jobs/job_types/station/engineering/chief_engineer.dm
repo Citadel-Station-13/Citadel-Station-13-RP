@@ -47,9 +47,9 @@
 
 	minimal_player_age = 7
 	alt_titles = list(
-		"Head Engineer" = /datum/prototype/alt_title/head_engineer,
-		"Maintenance Manager" = /datum/prototype/alt_title/maintenance_manager,
-		"Engineering Director" = /datum/prototype/alt_title/engineering_director
+		"Head Engineer" = /datum/prototype/struct/alt_title/head_engineer,
+		"Maintenance Manager" = /datum/prototype/struct/alt_title/maintenance_manager,
+		"Engineering Director" = /datum/prototype/struct/alt_title/engineering_director
 		)
 
 	outfit_type = /datum/outfit/job/station/chief_engineer
@@ -57,13 +57,13 @@
 						of manpower as much as they handle hands-on operations and repairs. They are also expected to keep the rest of the station informed of \
 						any structural threats to the station that may be hazardous to health or disruptive to work."
 
-/datum/prototype/alt_title/engineering_director
+/datum/prototype/struct/alt_title/engineering_director
 	title = "Engineering Director"
 
-/datum/prototype/alt_title/head_engineer
+/datum/prototype/struct/alt_title/head_engineer
 	title = "Head Engineer"
 
-/datum/prototype/alt_title/maintenance_manager
+/datum/prototype/struct/alt_title/maintenance_manager
 	title = "Maintenance Manager"
 
 /datum/outfit/job/station/chief_engineer
