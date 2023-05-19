@@ -284,7 +284,7 @@
 //Headwear
 /datum/gear/xeno/tajaran/head/zhan_headscarf
 	name = "Tajaran - Zhan Headscarf"
-	path = /obj/item/clothing/head/tajaran/scarf
+	path = /obj/item/clothing/head/tajaranold/scarf
 
 
 

@@ -49,7 +49,7 @@
 	icon_state = "2-6"
 	},
 /obj/effect/decal/remains/tajaran,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "li" = (

@@ -4,11 +4,11 @@
 	desc = "A traditional Zhan-Khazan garment."
 	icon_state = "zhan_furs"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
-	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
+	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	drop_sound = 'sound/items/drop/leather.ogg'
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
-/obj/item/clothing/head/tajaran/scarf	//This stays in /suits because it goes with the furs above
+/obj/item/clothing/head/tajaranold/scarf //This stays in /suits because it goes with the furs above
 	name = "headscarf"
 	desc = "A scarf of coarse fabric. Seems to have ear-holes."
 	icon_state = "zhan_scarf"
@@ -18,9 +18,9 @@
 	drop_sound = 'sound/items/drop/leather.ogg'
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
-/obj/item/clothing/suit/armor/amohda
-	name = "Amohdan swordsman armor"
-	desc = "A suit of armor used by the traditional warriors of Amohda."
+/obj/item/clothing/suit/armor/amohda // Changed to be generic
+	name = "Adhomian swordsman armor"
+	desc = "A suit of armor used by tajaran swordsmen."
 	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
 	icon_state = "amohdan_armor"
