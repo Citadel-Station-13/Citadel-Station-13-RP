@@ -170,7 +170,7 @@
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap
 	name = "5.7 highcap top-mounted magazine"
 	desc = "A high capacity sidearm magazine (5.7x28mm)."
-	id = "ntles"
+	id = "ntleshc"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap
@@ -179,7 +179,7 @@
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/ap
 	name = "5.7 highcap top-mounted magazine (AP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
-	id = "ntlesap"
+	id = "ntleshcap"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2500)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
 	sort_string = "MABDB"
@@ -187,7 +187,7 @@
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hp
 	name = "5.7 highcap top-mounted magazine (HP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
-	id = "ntleshp"
+	id = "ntleshchp"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
 	sort_string = "MABDC"
@@ -195,7 +195,7 @@
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hunter
 	name = "5.7 highcap top-mounted magazine (Hunter)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
-	id = "ntleshunter"
+	id = "ntleshchunter"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 1750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
 	sort_string = "MABDD"
