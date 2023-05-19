@@ -8,6 +8,8 @@
 	edge_blending_priority = 0
 	smoothing_flags = NONE
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/concrete)
+
 /turf/simulated/floor/concrete/tile
 	name = "concrete tile"
 	desc = "That's concrete baby!"
@@ -15,6 +17,8 @@
 	icon_state = "concrete3"
 	initial_flooring = /singleton/flooring/concrete/tile
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/concrete/tile)
 
 /turf/simulated/floor/concrete/rng/Initialize(mapload)
 	. = ..()
