@@ -22,3 +22,5 @@ SUBSYSTEM_DEF(telesci)
 #warn impl
 
 /datum/controller/subsystem/telesci/proc/do_teleport()
+
+/datum/controller/subsystem/telesci/proc/signal_query(turf/epicenter)
