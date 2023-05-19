@@ -19,7 +19,7 @@
 	pickup_sound = 'sound/items/pickup/leather.ogg'
 
 /obj/item/clothing/suit/armor/amohda
-	name = "amohdan swordsman armor"
+	name = "Amohdan swordsman armor"
 	desc = "A suit of armor used by the traditional warriors of Amohda."
 	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
@@ -29,7 +29,7 @@
 	allowed = list(/obj/item/gun,/obj/item/material/sword)
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	species_restricted = list(SPECIES_TAJ)
-	armor_type = /datum/armor/station/stab
+	armor_type = /datum/armor/general/medieval
 	slowdown = 0.5
 	siemens_coefficient = 0.35
 
@@ -61,6 +61,92 @@
 	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
 	icon_state = "navalcoat"
+
+/obj/item/clothing/suit/storage/tajaran/pra_jacket
+	name = "Adhomian surplus jacket"
+	desc = "An olive surplus jacket worn by the forces of the People's Republic of Adhomai's Grand People's Army."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "greenservice"
+	item_state = "greenservice"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/pra_jacket/armored
+	name = "Adhomian surplus jacket"
+	desc = "An olive surplus jacket worn by the forces of the People's Republic of Adhomai's Grand People's Army."
+	armor_type = /datum/armor/station/padded
+	siemens_coefficient = 0.50
+
+/obj/item/clothing/suit/storage/tajaran/dpra_jacket
+	name = "al'mariist jacket"
+	desc = "A jacket based on the DPRA Army's old equipment when they were still a militant insurgency movement."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "dpra_jacket"
+	item_state = "dpra_jacket"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/fancy
+	name = "Fancy royalist jacket"
+	desc = "An adhomian jacket frequently worn by the New Kingdom's nobility."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "nka_Jacket"
+	item_state = "nka_Jacket"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/fancycoat
+	name = "Fancy black ladies coat"
+	desc = "A long tailed coat, commonly worn by woman in the New Kingdom."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "ladies_coat"
+	item_state = "ladies_coat"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/fancycoat/red
+	name = "Fancy red ladies coat"
+	icon_state = "ladies_coat_red"
+	item_state = "ladies_coat_red"
+
+/obj/item/clothing/suit/storage/tajaran/finecoat
+	name = "Fine brown coat"
+	desc = "A fancy, warm coat suitable for a noble."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "finecoat"
+	item_state = "finecoat"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/finecoat/blue
+	name = "fine blue coat"
+	icon_state = "finecoat_blue"
+	item_state = "finecoat_blue"
+
+/obj/item/clothing/suit/storage/tajaran/nka_merchant_navy
+	name = "her majesty's mercantile flotilla captain coat"
+	desc = "A fancy coat worn by captains of the New Kingdom's mercantile navy. It offers extra protection against space wind."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "capjacket"
+	item_state = "capjacket"
+
+/obj/item/clothing/suit/storage/tajaran/hunting
+	name = "Adhomian hunting coat"
+	desc = "A coat made of adhomian pelts. Commonly used by hunters."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "hunter_coat"
+	item_state = "hunter_coat"
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+/obj/item/clothing/suit/storage/tajaran/archeologist
+	name = "Adhomian archeologist jacket"
+	desc = "A leather jacket used by Adhomian archeologists."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
+	icon_state = "explorer_jacket"
+	item_state = "explorer_jacket"
 
 /*
 //Does stuff like this even exist at all because of the frost?
@@ -202,3 +288,14 @@
 	item_state = "hb_cloakhood"
 	body_cover_flags = HEAD
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
+
+//Armor plates
+
+/obj/item/clothing/suit/armor/tajaran/cuirass
+	name = "Adhomian cuirass"
+	desc = "A reinforced cuirass used by the forces of the new Kingdom of Adhomai."
+	icon = 'icons/obj/clothing/species/tajaran/suits.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/suits.dmi'
+	icon_state = "cuirass"
+	item_state = "cuirass"
+	armor_type = /datum/armor/general/medieval/light
