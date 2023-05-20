@@ -27,4 +27,4 @@
 	else
 		now = TRUE
 		add_vision_modifier(/datum/vision/augmenting/observer)
-	to_chat(src,"You [now ? "now" : "no longer"] see darkness.")
+	to_chat(src,"You [now ? "no longer" : "now"] see darkness.")

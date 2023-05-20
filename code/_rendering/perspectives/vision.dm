@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
 	if(istype(path_or_instance))
 		return path_or_instance
 	if(isnull(GLOB.cached_vision_holders[path_or_instance]))
-		GLOB.cached_vision_holders += new path_or_instance
+		GLOB.cached_vision_holders[path_or_instance] = new path_or_instance
 	return GLOB.cached_vision_holders[path_or_instance]
 
 /**

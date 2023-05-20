@@ -97,7 +97,7 @@
 	/// darksight overlay that we maintain
 	var/image/darksight_overlay
 	/// lighting plane alpha
-	var/list/hard_darkvision
+	var/hard_darkvision
 	/// soft darksight range
 	var/darkvision_range
 	/// soft darksight alpha
@@ -112,6 +112,8 @@
 	var/darkvision_fov
 	//  todo: legacy: stuff like mesons that require hard darkvision use this to cap see_in_dark
 	var/darkvision_legacy_throttle
+	//  todo: legacy: used for xray fulbright
+	var/legacy_forced_hard_darkvision
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -351,10 +353,13 @@
 
 /datum/perspective/proc/update_see_in_dark()
 	var/wanted = min(darkvision_legacy_throttle, INFINITY) // show everything
+	// if they have hard darkvision kick it back up
+	if(legacy_forced_hard_darkvision || hard_darkvision < 255)
+		wanted = INFINITY
 	if(wanted != see_in_dark)
 		see_in_dark = wanted
 		for(var/mob/M as anything in mobs)
-			M.see_in_dark = see_in_dark
+			M.see_in_dark = clamp(see_in_dark, 0, 255)
 
 //? Eye
 
@@ -414,7 +419,7 @@
 
 /datum/perspective/proc/push_vision_stack(list/datum/vision/holders)
 	// reset to default
-	hard_darkvision = 0
+	hard_darkvision = 255
 	darkvision_range = SOFT_DARKSIGHT_RANGE_DEFAULT
 	darkvision_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
 	darkvision_matrix = construct_rgb_color_matrix()
@@ -431,8 +436,52 @@
 
 /datum/perspective/proc/update_vision()
 	update_see_in_dark()
-	assert_vision_overlays()
-	assert_planes()
+	update_planes()
+	update_vision_overlays()
+
+/datum/perspective/proc/assert_vision_overlays()
+	if(!isnull(darksight_overlay))
+		return
+	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
+	darksight_overlay.icon_state = "fade-circle"
+	darksight_overlay.plane = DARKVISION_PLATE_PLANE
+	darksight_overlay.layer = DARKVISION_PLATE_LAYER_MULTIPLIER
+	darksight_overlay.alpha = 0
+	darksight_overlay.blend_mode = BLEND_MULTIPLY
+	darksight_overlay.appearance_flags = KEEP_TOGETHER
+	darksight_overlay.loc = get_eye_anchor()
+	update_vision_overlays()
+
+/datum/perspective/proc/update_vision_overlays()
+	if(isnull(darksight_overlay))
+		return
+	darksight_overlay.overlays = null
+	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays["[darkvision_fov]"]
+	if(!isnull(fov_overlay))
+		darksight_overlay.overlays += fov_overlay
+	var/matrix/transformed = matrix()
+	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
+	transformed.Scale(factor, factor)
+	darksight_overlay.transform = transformed
+
+/datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
+	. = legacy_forced_hard_darkvision == amt
+	legacy_forced_hard_darkvision = amt
+	if(.)
+		update_see_in_dark()
+		update_planes()
+
+//? plane holder
+
+/datum/perspective/proc/assert_planes()
+	if(!isnull(planes))
+		return
+	planes = new /datum/plane_holder/mob_perspective
+	update_planes()
+
+/datum/perspective/proc/update_planes()
+	if(isnull(planes))
+		return
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
 	if(!isnull(darkvision_plate))
 		darkvision_plate = darkvision_matrix || null
@@ -446,42 +495,8 @@
 			)
 		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
 			darkvision_main.remove_filter("smart_mask")
-	darksight_overlay.overlays = null
-	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays["[darkvision_fov]"]
-	if(!isnull(fov_overlay))
-		darksight_overlay.overlays += fov_overlay
-	var/matrix/transformed = matrix()
-	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
-	transformed.Scale(factor, factor)
-	darksight_overlay.transform = transformed
-
-/datum/perspective/proc/check_hard_darkvision()
-	return isnull(hard_darkvision)? 255 : hard_darkvision
-
-/datum/perspective/proc/update_hard_darkvision()
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
-	lighting_plane.alpha = check_hard_darkvision()
-
-/datum/perspective/proc/assert_vision_overlays()
-	if(!isnull(darksight_overlay))
-		return
-	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
-	darksight_overlay.icon_state = "fade-circle"
-	darksight_overlay.plane = DARKVISION_PLATE_PLANE
-	darksight_overlay.layer = DARKVISION_PLATE_LAYER_MULTIPLIER
-	darksight_overlay.alpha = 0
-	darksight_overlay.blend_mode = BLEND_MULTIPLY
-	darksight_overlay.appearance_flags = KEEP_TOGETHER
-	darksight_overlay.loc = get_eye_anchor()
-	update_vision()
-
-//? plane holder
-
-/datum/perspective/proc/assert_planes()
-	if(!isnull(planes))
-		return
-	planes = new /datum/plane_holder/mob_perspective
-	update_hard_darkvision()
+	lighting_plane.alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
 
 /**
  * sets a plane visible if it wasn't already

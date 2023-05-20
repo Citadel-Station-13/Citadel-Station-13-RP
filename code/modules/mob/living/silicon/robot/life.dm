@@ -142,10 +142,9 @@
 
 	if(fullbright)
 		// todo: legacy, remove
-		self_perspective.hard_darkvision = 0
-		self_perspective.update_vision()
+		self_perspective.legacy_force_set_hard_darkvision(0)
 	else
-		self_perspective.update_hard_darkvision()
+		self_perspective.legacy_force_set_hard_darkvision(null)
 
 	if (src.healths)
 		if (src.stat != 2)

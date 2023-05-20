@@ -1484,10 +1484,9 @@
 		if(MUTATION_XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 			// todo: legacy, remove
-			self_perspective.hard_darkvision = 0
-			self_perspective.update_vision()
+			self_perspective.legacy_force_set_hard_darkvision(0)
 		else
-			self_perspective.update_hard_darkvision()
+			self_perspective.legacy_force_set_hard_darkvision(null)
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1513,10 +1512,9 @@
 			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
 			RemoveSightSelf(SEE_BLACKNESS)
 			// todo: legacy, remove
-			self_perspective.hard_darkvision = 0
-			self_perspective.update_vision()
+			self_perspective.legacy_force_set_hard_darkvision(0)
 		else
-			self_perspective.update_hard_darkvision()
+			self_perspective.legacy_force_set_hard_darkvision(null)
 
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.vision_flags))
