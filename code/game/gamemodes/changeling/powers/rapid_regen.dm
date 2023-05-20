@@ -26,22 +26,7 @@
 			healing_amount = C.maxHealth
 			to_chat(src, "<span class='notice'>We completely heal ourselves.</span>")
 		spawn(0)
-			C.adjustBruteLoss(-healing_amount)
-			C.adjustFireLoss(-healing_amount)
-			C.adjustOxyLoss(-healing_amount)
-			C.adjustCloneLoss(-healing_amount)
-			C.adjustBrainLoss(-healing_amount)
-			C.restore_blood()
-			C.species.create_organs(C)
-			C.restore_all_organs()
-			C.blinded = 0
-			C.SetBlinded(0)
-			C.eye_blurry = 0
-			C.ear_deaf = 0
-			C.ear_damage = 0
-
-			// make the icons look correct
-			C.regenerate_icons()
+			C.rejuvenate(fix_missing = TRUE)
 
 			// now make it obvious that we're not human (or whatever xeno race they are impersonating)
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)

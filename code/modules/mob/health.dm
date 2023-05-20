@@ -58,4 +58,4 @@
  * * reset_to_slot - wipe all state and reset back to the character slot.
  */
 /mob/proc/rejuvenate(fix_missing, reset_to_slot)
-	#warn impl
+	return TRUE

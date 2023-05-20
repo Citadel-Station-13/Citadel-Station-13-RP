@@ -32,6 +32,8 @@
 	setToxLoss(0)
 	setOxyLoss(0)
 	setCloneLoss(0)
+	// deal with breathing
+	losebreath = 0
 	// deal with brain
 	// todo: brain should be carbon only, or maybe just make the numerical variant simplemob?
 	setBrainLoss(0)
