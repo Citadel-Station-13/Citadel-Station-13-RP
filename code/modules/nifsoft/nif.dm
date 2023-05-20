@@ -641,6 +641,14 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
+	
+/obj/item/nif/authenticbioadap
+	name = "\improper Vey-Med bioadaptive NIF"
+	desc = "A genuine Vey-Med nanotechnology fabricator, designed for strange body types. \
+	Will function in species where it normally wouldn't while still being very durable."
+	durability = 500
+	bioadap = TRUE
+	id = NIF_ID_VEYMEDBIOADAPTIVE
 
 ////////////////////////////////
 // Special Promethean """surgery"""
