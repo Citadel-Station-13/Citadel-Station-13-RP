@@ -3,9 +3,9 @@
 	icon_state = "fade-circle"
 	plane = DARKVISION_PLATE_PLANE
 	layer = DARKVISION_PLATE_LAYER_MULTIPLIER
-	alpha = 255
+	alpha = 0
 	blend_mode = BLEND_MULTIPLY
 	appearance_flags = KEEP_TOGETHER
-	screen_loc = "CENTER"
+	screen_loc = "CENTER-7,CENTER-7"
 
 // todo: auto shift when moving elsewhere?

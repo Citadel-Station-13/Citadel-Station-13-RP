@@ -8,8 +8,25 @@
 	var/relevant_plane_path
 
 /atom/movable/screen/plane_render/darkvision_plate
+	plane = DARKVISION_PLANE
+	layer = DARKVISION_LAYER_PLATE
 	render_source = DARKVISION_PLATE_RENDER_TARGET
-	render_target = DARKVISION_PLATE_FORWARD_TARGET
+	relevant_plane_path = /atom/movable/screen/plane_master/darkvision_plate
+
+/atom/movable/screen/plane_render/darkvision_objs
+	plane = DARKVISION_PLATE_PLANE
+	layer = DARKVISION_PLATE_LAYER_OBJS
+	relevant_plane_path = /atom/movable/screen/plane_master/darkvision_plate
+
+/atom/movable/screen/plane_render/darkvision_turfs
+	plane = DARKVISION_PLATE_PLANE
+	layer = DARKVISION_PLATE_LAYER_TURFS
+	relevant_plane_path = /atom/movable/screen/plane_master/darkvision_plate
+
+/atom/movable/screen/plane_render/darkvision_objs
+	plane = DARKVISION_PLATE_PLANE
+	layer = DARKVISION_PLATE_LAYER_MOBS
+	relevant_plane_path = /atom/movable/screen/plane_master/darkvision_plate
 
 /atom/movable/screen/plane_render/lighting_as_alpha
 	plane = RENDER_INTERMEDIATE_PLANE

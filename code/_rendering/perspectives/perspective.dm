@@ -95,7 +95,7 @@
 
 	//? vision - lighting / nightvision
 	/// darksight overlay that we maintain
-	var/atom/mvoable/screen/darksight/darksight_overlay
+	var/atom/movable/screen/darksight/darksight_overlay
 	/// lighting plane alpha
 	var/hard_darkvision
 	/// soft darksight range
@@ -472,19 +472,17 @@
 /datum/perspective/proc/update_planes()
 	if(isnull(planes))
 		return
-	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision_plate)
-	if(!isnull(darkvision_plate))
-		darkvision_plate = darkvision_matrix || null
-	var/atom/movable/screen/plane_master/darkvision_main = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
-	if(!isnull(darkvision_main))
-		if(darkvision_smart && !darkvision_main.has_filter("smart_mask"))
-			darkvision_main.add_filter(
+	var/atom/movable/screen/plane_master/darkvision_plane = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
+	if(!isnull(darkvision_plane))
+		darkvision_plane.color = darkvision_matrix || null
+		if(darkvision_smart && !darkvision_plane.has_filter("smart_mask"))
+			darkvision_plane.add_filter(
 				"smart_mask",
 				1,
 				alpha_mask_filter(0, 0, render_source = LIGHTING_ALPHA_FORWARD_TARGET, flags = MASK_INVERSE),
 			)
-		else if(!darkvision_smart && darkvision_main.has_filter("smart_mask"))
-			darkvision_main.remove_filter("smart_mask")
+		else if(!darkvision_smart && darkvision_plane.has_filter("smart_mask"))
+			darkvision_plane.remove_filter("smart_mask")
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
 	lighting_plane.alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
 

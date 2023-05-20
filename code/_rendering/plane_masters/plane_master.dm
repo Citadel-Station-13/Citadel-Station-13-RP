@@ -78,7 +78,7 @@
 
 /atom/movable/screen/plane_master/lighting
 	plane = LIGHTING_PLANE
-	blend_mode = BLEND_MULTIimage.pngPLY
+	blend_mode = BLEND_MULTIPLY
 	render_target = LIGHTING_RENDER_TARGET
 	alpha = 255
 
@@ -105,19 +105,9 @@
 	plane = DARKVISION_PLATE_PLANE
 	render_target = DARKVISION_PLATE_RENDER_TARGET
 
-/atom/movable/screen/plane_master/darkvision_plate/Initialize(mapload)
-	. = ..()
-	add_filter("turf_render", DARKVISION_PLATE_LAYER_TURFS, layering_filter(render_source = TURF_PLANE_RENDER_TARGET))
-	add_filter("obj_render", DARKVISION_PLATE_LAYER_OBJS, layering_filter(render_source = OBJ_PLANE_RENDER_TARGET))
-	add_filter("mob_render", DARKVISION_PLATE_LAYER_MOBS, layering_filter(render_source = MOB_PLANE_RENDER_TARGET))
-
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
 	blend_mode = BLEND_ADD
-
-/atom/movable/screen/plane_master/darkvision/Initialize(mapload)
-	. = ..()
-	add_filter("plate", 100, layering_filter(render_source = DARKVISION_PLATE_RENDER_TARGET))
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
@@ -132,6 +122,7 @@
 
 /atom/movable/screen/plane_master/verticality
 	plane = VERTICALITY_PLANE
+	alpha = 0
 	default_invisible = TRUE
 	special_managed = TRUE
 	client_global = TRUE

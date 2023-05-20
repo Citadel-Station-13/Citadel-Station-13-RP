@@ -245,7 +245,9 @@
  *? This plane is what darkvision gets kicked onto.
  */
 #define DARKVISION_PLANE 12
+#define DARKVISION_LAYER_PLATE 0
 #define DARKVISION_LAYER_MAIN 1
+#define DARKVISION_LAYER_MASKING 2
 
 /**
  *! -- Lighting Plane
