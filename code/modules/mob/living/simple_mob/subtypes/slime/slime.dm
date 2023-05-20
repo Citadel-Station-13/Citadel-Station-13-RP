@@ -91,18 +91,11 @@
 		drop_hat()
 	return ..()
 
-/mob/living/simple_mob/slime/death()
-	// Make dead slimes stop glowing.
-	glow_toggle = FALSE
-	handle_light()
-	..()
-
-/mob/living/simple_mob/slime/revive()
-	#warn ugh
-	// Make revived slimes resume glowing.
-	glow_toggle = initial(glow_toggle)
-	handle_light()
-	..()
+/mob/living/simple_mob/slime/set_stat(new_stat, update_mobility)
+	. = ..()
+	if(!.)
+		return
+	glow_toggle = IS_ALIVE(src)? FALSE : initial(glow_toggle)
 
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.

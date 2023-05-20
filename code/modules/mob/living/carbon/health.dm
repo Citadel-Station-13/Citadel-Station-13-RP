@@ -11,6 +11,10 @@
 	. = ..()
 	if(!.)
 		return
+	// viruses
+		for (var/ID in virus2)
+			var/datum/disease2/disease/V = virus2[ID]
+			V.cure(src)
 	// organs
 	// todo: this is obviously bad logic but whatever, we will eventually want separate handling for the two maybe
 	if(fix_missing || reset_to_slot)
@@ -23,7 +27,6 @@
 	bloodstr.clear_reagents()
 	ingested.clear_reagents()
 	touching.clear_reagents()
-	#warn impl
 
 /mob/living/carbon/restore_organs()
 	for(var/obj/item/organ/external/current_organ in organs)

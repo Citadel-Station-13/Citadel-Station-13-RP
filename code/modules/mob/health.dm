@@ -30,13 +30,14 @@
  */
 /mob/proc/set_stat(new_stat, update_mobility = TRUE)
 	if(stat == new_stat)
-		return
+		return FALSE
 	stat = new_stat
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_CONSCIOUS)) | (STAT_IS_CONSCIOUS(new_stat)? MOBILITY_IS_CONSCIOUS : NONE)
 	if(!STAT_IS_CONSCIOUS(new_stat))
 		facing_dir = null
 	if(update_mobility)
 		update_mobility()
+	return TRUE
 
 /**
  * brings a mob back to life

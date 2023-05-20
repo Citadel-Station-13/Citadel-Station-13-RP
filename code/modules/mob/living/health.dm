@@ -18,6 +18,12 @@
 	if(. != stat)
 		set_stat(., update_mobility)
 
+/mob/living/set_stat(new_stat, update_mobility)
+	. = ..()
+	if(!.)
+		return
+	GLOB.cultnet.updateVisibility(src, FALSE)
+
 /mob/living/revive(force, full_heal)
 	. = ..()
 	if(!.)

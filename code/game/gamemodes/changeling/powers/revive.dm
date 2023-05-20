@@ -18,17 +18,15 @@
 
 	revive(TRUE, TRUE)
 
-	to_chat(C, "<span class='notice'>We have regenerated.</span>")
-	C.update_mobility()
-	C.mind.changeling.purchased_powers -= C
+	to_chat(src, "<span class='notice'>We have regenerated.</span>")
+	update_mobility()
+	mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
-	C.set_stat(CONSCIOUS)
-	C.forbid_seeing_deadchat = FALSE
-	C.timeofdeath = null
+	set_stat(CONSCIOUS)
+	forbid_seeing_deadchat = FALSE
+	timeofdeath = null
 	remove_verb(src, /mob/proc/changeling_revive)
 	// re-add our changeling powers
-	C.make_changeling()
-
-
+	make_changeling()
 
 	return 1
