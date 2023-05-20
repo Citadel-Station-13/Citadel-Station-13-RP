@@ -31,13 +31,24 @@
 /mob/proc/set_stat(new_stat, update_mobility = TRUE)
 	if(stat == new_stat)
 		return FALSE
+	var/was_dead = IS_DEAD(src)
 	stat = new_stat
+	var/is_dead = IS_DEAD(src)
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_CONSCIOUS)) | (STAT_IS_CONSCIOUS(new_stat)? MOBILITY_IS_CONSCIOUS : NONE)
 	if(!STAT_IS_CONSCIOUS(new_stat))
 		facing_dir = null
+	if(was_dead != is_dead)
+		if(was_dead && !is_dead)
+			living_mob_list += src
+			dead_mob_list -= src
+		else if(!was_dead && is_dead)
+			living_mob_list -= src
+			dead_mob_list += src
 	if(update_mobility)
 		update_mobility()
 	return TRUE
+
+#warn mob_list_register, mob_list_unregister, mob_list_update_stat
 
 /**
  * brings a mob back to life

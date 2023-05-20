@@ -12,9 +12,9 @@
 	if(!.)
 		return
 	// viruses
-		for (var/ID in virus2)
-			var/datum/disease2/disease/V = virus2[ID]
-			V.cure(src)
+	for (var/ID in virus2)
+		var/datum/disease2/disease/V = virus2[ID]
+		V.cure(src)
 	// organs
 	// todo: this is obviously bad logic but whatever, we will eventually want separate handling for the two maybe
 	if(fix_missing || reset_to_slot)

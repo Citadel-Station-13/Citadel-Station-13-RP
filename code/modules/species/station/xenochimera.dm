@@ -896,7 +896,8 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 
-	H.revive()
+	H.revive(full_heal = TRUE)
+	H.remove_all_restraints()
 	LAZYREMOVE(H.mutations, MUTATION_HUSK)
 	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
 

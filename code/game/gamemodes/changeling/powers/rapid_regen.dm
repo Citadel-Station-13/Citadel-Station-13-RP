@@ -27,6 +27,7 @@
 			to_chat(src, "<span class='notice'>We completely heal ourselves.</span>")
 		spawn(0)
 			C.rejuvenate(fix_missing = TRUE)
+			C.remove_all_restraints()
 
 			// now make it obvious that we're not human (or whatever xeno race they are impersonating)
 			playsound(src, 'sound/effects/blobattack.ogg', 30, 1)

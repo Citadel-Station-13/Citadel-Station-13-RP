@@ -485,17 +485,6 @@ default behaviour is:
 	return
 
 
-
-/mob/living/proc/revive()
-	if(iscarbon(src))
-		var/mob/living/carbon/C = src
-		C.drop_slots_to_ground(list(SLOT_ID_HANDCUFFED, SLOT_ID_LEGCUFFED), INV_OP_FORCE)
-
-	if(ai_holder) // AI gets told to sleep when killed. Since they're not dead anymore, wake it up.
-		ai_holder.go_wake()
-
-#warn above below
-
 /mob/living/proc/rejuvenate()
 
 	heal_overall_damage(getBruteLoss(), getFireLoss())

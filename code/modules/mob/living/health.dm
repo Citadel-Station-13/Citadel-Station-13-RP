@@ -28,7 +28,9 @@
 	. = ..()
 	if(!.)
 		return
-	#warn impl
+	//! WARNING: LEGACY CODE
+	ai_holder?.go_wake()
+	//! END
 
 /mob/living/rejuvenate(fix_missing, reset_to_slot)
 	. = ..()

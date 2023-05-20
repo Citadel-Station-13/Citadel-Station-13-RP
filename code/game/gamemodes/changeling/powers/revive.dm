@@ -16,10 +16,10 @@
 		dead_mob_list -= src
 		living_mob_list += src
 
-	revive(TRUE, TRUE)
+	revive(force = TRUE, full_heal = TRUE)
+	remove_all_restraints()
 
 	to_chat(src, "<span class='notice'>We have regenerated.</span>")
-	update_mobility()
 	mind.changeling.purchased_powers -= C
 	feedback_add_details("changeling_powers","CR")
 	set_stat(CONSCIOUS)

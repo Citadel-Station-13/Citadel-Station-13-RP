@@ -578,15 +578,12 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!istype(M))
 		alert("Cannot revive a ghost")
 		return
-	if(config_legacy.allow_admin_rev)
-		M.revive()
-
-		log_admin("[key_name(usr)] healed / revived [key_name(M)]")
-		var/msg = "<span class='danger'>Admin [key_name_admin(usr)] healed / revived [ADMIN_LOOKUPFLW(M)]!</span>"
-		message_admins(msg)
-		admin_ticket_log(M, msg)
-	else
-		alert("Admin revive disabled")
+	M.revive(full_heal = TRUE)
+	M.remove_all_restraints()
+	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
+	var/msg = "<span class='danger'>Admin [key_name_admin(usr)] healed / revived [ADMIN_LOOKUPFLW(M)]!</span>"
+	message_admins(msg)
+	admin_ticket_log(M, msg)
 	feedback_add_details("admin_verb","REJU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_create_centcom_report()
