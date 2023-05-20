@@ -13,7 +13,7 @@
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/tajaran/scarf/lbrown
-	name = "light brown fur scarf'
+	name = "light brown fur scarf"
 	desc = "A furred scarf, a common tajaran vanity item, this one is light brown."
 	icon_state = "furscarf_lbrown"
 	item_state = "furscarf_lbrown"
@@ -82,16 +82,17 @@
 
 //Cloaks
 /obj/item/clothing/accessory/poncho/tajarancloak
-	name = "common cloak"
+	name = "Adhomian common cloak"
 	desc = "A tajaran cloak made with the middle class in mind, fancy but nothing special."
 	icon = 'icons/mob/clothing/species/tajaran/ties.dmi'
 	icon_override = 'icons/obj/clothing/species/tajaran/ties.dmi'
 	icon_state = "taj_commoncloak"
 	item_state = "taj_commoncloak"
 	icon_override = null
+	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/poncho/tajarancloak/fancy
-	name = "fancy cloak"
+	name = "Adhomian fancy cloak"
 	desc = "A cloak fashioned from the best materials, meant for tajara of high standing."
 	icon_state = "taj_fancycloak"
 	item_state = "taj_fancycloak"
@@ -136,7 +137,7 @@
 	icon_state = "hb_cloak"
 	item_state = "hb_cloak"
 
-//Has issues not poriu
+//Has issues
 
 /obj/item/clothing/accessory/tajaran/nka_waistcoat
 	name = "noble adhomian waistcoat"

@@ -615,3 +615,17 @@
 /datum/gear/suit/leather_supercropped
 	name = "Supercropped Leather Jacket"
 	path = /obj/item/clothing/suit/storage/leather_supercropped
+
+//Tajaran wears
+
+//Cloak no hoods
+/datum/gear/suit/tajaran/tajarancloak
+	name = "Adhomian basic cloak selection"
+	path = /obj/item/clothing/accessory/poncho/tajarancloak
+
+/datum/gear/suit/tajaran/tajarancloak/New()
+	..()
+	var/list/tajarancloaks = list()
+	for(var/obj/item/clothing/accessory/poncho/tajarancloak/tajarancloak as anything in (typesof(/obj/item/clothing/accessory/poncho/tajarancloak)))
+		tajarancloaks[initial(tajarancloak.name)] = tajarancloak
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))

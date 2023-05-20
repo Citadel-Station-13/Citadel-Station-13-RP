@@ -53,6 +53,10 @@
 	icon = 'icons/mob/clothing/species/tajaran/shoes.dmi'
 	icon_state = "taj_workboots"
 	siemens_coefficient = 0.7
+	armor_type = /datum/armor/shoes/boots
+	damage_force = 3
+	can_hold_knife = 1
+	step_volume_mod = 1.2
 	drop_sound = 'sound/items/drop/boots.ogg'
 	pickup_sound = 'sound/items/pickup/boots.ogg'
 	species_restricted = list(SPECIES_TAJ)

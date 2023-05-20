@@ -288,19 +288,32 @@
 	path = /obj/item/clothing/head/tajaranold/scarf
 
 //Accessories
-/datum/gear/xeno/accessory/tajaran/scarf
-	display_name = "Adhomian fur scarf"
-	description = "A selection of tajaran colored fur scarfs."
-	path = /obj/item/clothing/accessory/tajaran/scarf
 
-/datum/gear/xeno/accessory/tajaran/scarf/New()
+//Foot wear
+
+/datum/gear/xeno/tajaran/shoes/workboots
+	display_name = "Tajaran - Adhomian Work boots"
+	description = "A selection of work boots best fitted for Tajara."
+	path = /obj/item/clothing/shoes/tajara/workboots
+
+/datum/gear/xeno/tajaran/shoes/workboots/New()
 	..()
-	var/list/tscarfs = list()
-	for(var/tscarf in (typesof(/obj/item/clothing/accessory/tajaran/scarf)))
-		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
-		tscarfs[initial(tscarf_type.name)] = tscarf_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
+	var/list/tworkboots = list()
+	for(var/tworkboot in (typesof(/obj/item/clothing/shoes/tajara/workboots)))
+		var/obj/item/clothing/shoes/tajara/workboots/tworkboot_type = tworkboot
+		tworkboots[initial(tworkboot_type.name)] = tworkboot_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tworkboots, /proc/cmp_text_asc))
 
+
+/datum/gear/xeno/shoes/tajaran/footwraps
+	name = "Tajaran - Native foot-wear"
+	description = "Native foot and leg wear worn by Tajara, completely covering the legs in wraps and the feet in adhomian fabric."
+	path = /obj/item/clothing/shoes/tajara/footwraps
+
+/datum/gear/xeno/shoes/tajaran/fancy
+	name = "Tajaran - Fancy adhomian shoes"
+	description = "A pair of fancy Tajaran shoes used for formal occasions."
+	path = /obj/item/clothing/shoes/tajara/fancy
 
 //*Promethean
 /datum/gear/xeno/promethean/uniform/cohesion_suit

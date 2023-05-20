@@ -892,3 +892,4 @@ Swimsuits
 /datum/gear/uniform/ballet/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
