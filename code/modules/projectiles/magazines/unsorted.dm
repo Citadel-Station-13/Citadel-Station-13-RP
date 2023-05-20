@@ -1147,3 +1147,51 @@
 /obj/item/ammo_magazine/mfoam/smg/riot
 	name = "toy submachine gun magazine (riot)"
 	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//shell holders
+
+/obj/item/ammo_magazine/shotholder
+	name = "shotgun slug holder"
+	desc = "A convenient pouch that holds 12 gauge shells."
+	icon_state = "shotholder"
+	caliber = "12g"
+	ammo_type = null
+	matter = list(MAT_STEEL = 1440)
+	max_ammo = 4
+	multiple_sprites = 1
+	var/marking_color
+
+/obj/item/ammo_magazine/shotholder/update_icon()
+	. = ..()
+	overlays.Cut()
+	if(marking_color)
+		var/image/I = image(icon, "shotholder-marking")
+		I.color = marking_color
+		overlays += I
+
+/obj/item/ammo_magazine/shotholder/slug
+	name = "shotgun slug holder (slug)"
+	marking_color = PIPE_COLOR_BLACK
+	ammo_type = /obj/item/ammo_casing/a12g
+
+/obj/item/ammo_magazine/shotholder/flare
+	name = "shotgun slug holder (flare)"
+	marking_color = COLOR_RED_GRAY
+	ammo_type = /obj/item/ammo_casing/a12g/flare
+
+/obj/item/ammo_magazine/shotholder/buckshot
+	name = "shotgun slug holder (buckshot)"
+	marking_color = COLOR_RED
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+
+/obj/item/ammo_magazine/shotholder/beanbag
+	name = "shotgun slug holder (beanbag)"
+	marking_color = COLOR_GREEN
+	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+
+/obj/item/ammo_magazine/shotholder/stun
+	name = "shotgun slug holder (stun)"
+	marking_color = PIPE_COLOR_YELLOW
+	ammo_type = /obj/item/ammo_casing/a12g/stunshell
+
+

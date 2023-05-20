@@ -22,6 +22,10 @@
 	name = "ammunition (12g, flare)"
 	path =/obj/item/ammo_casing/a12g/flare
 
+/datum/category_item/autolathe/arms/shot_holder
+	name = "ammunition - shotgun shell pouch (12g, empty)"
+	path =/obj/item/ammo_magazine/shotholder
+
 /datum/category_item/autolathe/arms/shotgun
 	name = "ammunition (12g, slug)"
 	path =/obj/item/ammo_casing/a12g
