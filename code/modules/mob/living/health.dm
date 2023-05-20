@@ -30,12 +30,17 @@
 		return
 	//! WARNING: LEGACY CODE
 	ai_holder?.go_wake()
+	failed_last_breath = 0
+	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END
 
 /mob/living/rejuvenate(fix_missing, reset_to_slot)
 	. = ..()
 	if(!.)
 		return
+	// deal with brute/burn
+	// todo: this is shitcode, fix it in organs update.
+	heal_overall_damage(INFINITY, INFINITY, TRUE)
 	// deal with tox/oxy/clone
 	setToxLoss(0)
 	setOxyLoss(0)

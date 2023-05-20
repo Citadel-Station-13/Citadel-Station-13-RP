@@ -58,9 +58,13 @@
  * * full_heal - fix everything we need to live
  */
 /mob/proc/revive(force, full_heal)
+	// full heal if requested
 	if(full_heal)
 		rejuvenate(TRUE)
-	#warn impl
+	// set to conscious
+	set_stat(CONSCIOUS)
+	// immediately update to kick down if needed
+	update_stat()
 
 /**
  * heals all damage on a mob. by default, only heals "basic" numerical / limb damage. see params for more.

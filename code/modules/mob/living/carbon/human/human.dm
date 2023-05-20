@@ -894,21 +894,6 @@
 	else
 		germ_level += n
 
-/mob/living/carbon/human/revive()
-	#warn ugh
-
-	species.create_organs(src) // Reset our organs/limbs.
-	restore_all_organs()       // Reapply robotics/amputated status from preferences.
-
-	// Reapply markings/appearance from prefs for player mobs
-	if(client) //just to be sure
-		client.prefs.copy_to(src)
-		if(dna)
-			dna.ResetUIFrom(src)
-			sync_organ_dna()
-
-	..()
-
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 	return L && L.is_bruised()

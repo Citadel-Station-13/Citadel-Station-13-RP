@@ -20,7 +20,7 @@
 	remove_all_restraints()
 
 	to_chat(src, "<span class='notice'>We have regenerated.</span>")
-	mind.changeling.purchased_powers -= C
+	mind.changeling.purchased_powers -= src // if yo usee me in blame, this wasn't originally my doing and i don't know why this is here ~silicons
 	feedback_add_details("changeling_powers","CR")
 	set_stat(CONSCIOUS)
 	forbid_seeing_deadchat = FALSE
