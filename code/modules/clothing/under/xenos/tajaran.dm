@@ -180,6 +180,7 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	body_cover_flags = LOWER_TORSO
+	starting_accessories = list(/obj/item/clothing/accessory/tajaran/summershirt)
 
 /obj/item/clothing/under/pants/tajaran
 	name = "adhomian summer pants"
@@ -188,6 +189,7 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	starting_accessories = list(/obj/item/clothing/accessory/tajaran/summershirt)
 
 //Military uniforms no armor protection
 
@@ -277,7 +279,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 //Missing linings
-/obj/item/clothing/under/tajaran/nka_noble
+/obj/item/clothing/under/tajaran/nka_noble //Has issues
 	name = "noble adhomian clothes"
 	desc = "Clothes frequently worn by the New Kingdom's nobles. Likely a hand-me-down."
 	icon_state = "nka_noble_uniform"
@@ -286,7 +288,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/nka_merchant_navy
-	name = "her majesty's mercantile flotilla crew uniform"
+	name = "his majesty's mercantile flotilla crew uniform"
 	desc = "An uniform used by the crew of the New Kingdom's merchant space ships. It is clearly inspired by the ones used back on Adhomai."
 	icon_state = "nka_merchant_navy"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -300,7 +302,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/tajaran/nka_merchant_navy/captain
-	name = "her majesty's mercantile flotilla captain uniform"
+	name = "his majesty's mercantile flotilla captain uniform"
 	desc = "An uniform used by the captain of the New Kingdom's merchant space ships. Not as fancy as the ones used in the Royal Navy."
 	icon_state = "nka_merchant_captain"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL

@@ -281,11 +281,25 @@
 	name = "Tajaran - Zhan-Khazan Furs"
 	path = /obj/item/clothing/suit/tajaran/furs
 
+
 //Headwear
 /datum/gear/xeno/tajaran/head/zhan_headscarf
 	name = "Tajaran - Zhan Headscarf"
 	path = /obj/item/clothing/head/tajaranold/scarf
 
+//Accessories
+/datum/gear/xeno/accessory/tajaran/scarf
+	display_name = "Adhomian fur scarf"
+	description = "A selection of tajaran colored fur scarfs."
+	path = /obj/item/clothing/accessory/tajaran/scarf
+
+/datum/gear/xeno/accessory/tajaran/scarf/New()
+	..()
+	var/list/tscarfs = list()
+	for(var/tscarf in (typesof(/obj/item/clothing/accessory/tajaran/scarf)))
+		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
+		tscarfs[initial(tscarf_type.name)] = tscarf_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
 
 
 //*Promethean

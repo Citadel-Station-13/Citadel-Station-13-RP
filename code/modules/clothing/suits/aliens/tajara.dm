@@ -78,7 +78,7 @@
 	siemens_coefficient = 0.50
 
 /obj/item/clothing/suit/storage/tajaran/dpra_jacket
-	name = "al'mariist jacket"
+	name = "DPRA jacket"
 	desc = "A jacket based on the DPRA Army's old equipment when they were still a militant insurgency movement."
 	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
@@ -124,7 +124,7 @@
 	item_state = "finecoat_blue"
 
 /obj/item/clothing/suit/storage/tajaran/nka_merchant_navy
-	name = "her majesty's mercantile flotilla captain coat"
+	name = "his majesty's mercantile flotilla captain coat"
 	desc = "A fancy coat worn by captains of the New Kingdom's mercantile navy. It offers extra protection against space wind."
 	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
 	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
