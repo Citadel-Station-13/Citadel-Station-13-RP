@@ -448,7 +448,7 @@
 //Tajaran wears
 
 /datum/gear/accessory/tajaran/scarf
-	display_name = "Adhomian fur scarf"
+	name = "Adhomian fur scarf"
 	description = "A selection of tajaran colored fur scarfs."
 	path = /obj/item/clothing/accessory/tajaran/scarf
 

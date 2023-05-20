@@ -88,7 +88,6 @@
 	icon_override = 'icons/obj/clothing/species/tajaran/ties.dmi'
 	icon_state = "taj_commoncloak"
 	item_state = "taj_commoncloak"
-	icon_override = null
 	slot = ACCESSORY_SLOT_OVER
 
 /obj/item/clothing/accessory/poncho/tajarancloak/fancy

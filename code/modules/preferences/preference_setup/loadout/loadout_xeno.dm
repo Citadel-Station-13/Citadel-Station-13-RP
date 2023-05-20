@@ -292,7 +292,7 @@
 //Foot wear
 
 /datum/gear/xeno/tajaran/shoes/workboots
-	display_name = "Tajaran - Adhomian Work boots"
+	name = "Tajaran - Adhomian Work boots"
 	description = "A selection of work boots best fitted for Tajara."
 	path = /obj/item/clothing/shoes/tajara/workboots
 

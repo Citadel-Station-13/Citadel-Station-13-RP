@@ -619,13 +619,16 @@
 //Tajaran wears
 
 //Cloak no hoods
-/datum/gear/suit/tajaran/tajarancloak
+
+/datum/gear/suit/tajarancloak
 	name = "Adhomian basic cloak selection"
+	description = "A selection of tajaran native cloaks."
 	path = /obj/item/clothing/accessory/poncho/tajarancloak
 
-/datum/gear/suit/tajaran/tajarancloak/New()
+/datum/gear/suit/tajarancloak/New()
 	..()
 	var/list/tajarancloaks = list()
-	for(var/obj/item/clothing/accessory/poncho/tajarancloak/tajarancloak as anything in (typesof(/obj/item/clothing/accessory/poncho/tajarancloak)))
-		tajarancloaks[initial(tajarancloak.name)] = tajarancloak
+	for(var/tajarancloak in (typesof(/obj/item/clothing/accessory/poncho/tajarancloak)))
+		var/obj/item/clothing/accessory/poncho/tajarancloak/tajarancloak_type = tajarancloak
+		tajarancloaks[initial(tajarancloak_type.name)] = tajarancloak_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))
