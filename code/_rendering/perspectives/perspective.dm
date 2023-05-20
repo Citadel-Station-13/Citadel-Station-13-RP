@@ -95,7 +95,7 @@
 
 	//? vision - lighting / nightvision
 	/// darksight overlay that we maintain
-	var/image/darksight_overlay
+	var/atom/mvoable/screen/darksight/darksight_overlay
 	/// lighting plane alpha
 	var/hard_darkvision
 	/// soft darksight range
@@ -218,14 +218,16 @@
  */
 /datum/perspective/proc/apply(client/C)
 	SHOULD_CALL_PARENT(TRUE)
+	assert_planes()
+	assert_vision_overlays()
 	if(!isnull(screens))
 		C.screen |= screens
-	assert_planes()
-	C.screen |= planes.screens()
+	if(!isnull(planes))
+		C.screen |= planes.screens()
 	if(!isnull(images))
 		C.images |= images
-	assert_vision_overlays()
-	C.images |= darksight_overlay
+	if(!isnull(darksight_overlay))
+		C.screen |= darksight_overlay
 	update(C)
 
 /**
@@ -242,10 +244,12 @@
 /datum/perspective/proc/remove(client/C)
 	if(!isnull(screens))
 		C.screen -= screens
+	if(!isnull(planes))
+		C.screen -= planes.screens()
 	if(!isnull(images))
 		C.images -= images
 	if(!isnull(darksight_overlay))
-		C.images -= darksight_overlay
+		C.screen -= darksight_overlay
 
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
@@ -387,23 +391,11 @@
 		C.perspective = get_eye_mode(C)
 
 /datum/perspective/proc/attach_to_eye(atom/movable/AM)
-	darksight_overlay?.loc = get_eye_anchor()
 
 /datum/perspective/proc/detach_from_eye(atom/movable/AM)
-	darksight_overlay?.loc = null
-
-/datum/perspective/proc/update_eye_anchor()
-	if(isnull(darksight_overlay))
-		return
-	var/atom/new_anchor = get_eye_anchor()
-	if(new_anchor != darksight_overlay.loc)
-		darksight_overlay.loc = new_anchor
 
 /datum/perspective/proc/get_eye(client/C)
 	return eye
-
-/datum/perspective/proc/get_eye_anchor()
-	return get_eye()
 
 /**
  * get perspective var for a client
@@ -442,23 +434,21 @@
 /datum/perspective/proc/assert_vision_overlays()
 	if(!isnull(darksight_overlay))
 		return
-	darksight_overlay = image(SOFT_DARKSIGHT_15X15_ICON, get_eye())
-	darksight_overlay.icon_state = "fade-circle"
-	darksight_overlay.plane = DARKVISION_PLATE_PLANE
-	darksight_overlay.layer = DARKVISION_PLATE_LAYER_MULTIPLIER
-	darksight_overlay.alpha = 0
-	darksight_overlay.blend_mode = BLEND_MULTIPLY
-	darksight_overlay.appearance_flags = KEEP_TOGETHER
-	darksight_overlay.loc = get_eye_anchor()
+	darksight_overlay = new
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
 	if(isnull(darksight_overlay))
 		return
-	darksight_overlay.overlays = null
-	var/mutable_appearance/fov_overlay = GLOB.darksight_fov_overlays["[darkvision_fov]"]
-	if(!isnull(fov_overlay))
-		darksight_overlay.overlays += fov_overlay
+	switch(darkvision_fov)
+		if(SOFT_DARKSIGHT_FOV_270)
+			darksight_overlay.icon_state = "fade-270-hard"
+		if(SOFT_DARKSIGHT_FOV_180)
+			darksight_overlay.icon_state = "fade-180-hard"
+		if(SOFT_DARKSIGHT_FOV_90)
+			darksight_overlay.icon_state = "fade-90-hard"
+		else
+			darksight_overlay.icon_state = "fade-360"
 	var/matrix/transformed = matrix()
 	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
 	transformed.Scale(factor, factor)

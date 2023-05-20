@@ -449,7 +449,7 @@
 #include "code\_rendering\parallax\parallax_holder.dm"
 #include "code\_rendering\parallax\parallax_object.dm"
 #include "code\_rendering\parallax\types\space.dm"
-#include "code\_rendering\perspectives\fov.dm"
+#include "code\_rendering\perspectives\darksight.dm"
 #include "code\_rendering\perspectives\perspective.dm"
 #include "code\_rendering\perspectives\vision.dm"
 #include "code\_rendering\plane_masters\plane_holder.dm"

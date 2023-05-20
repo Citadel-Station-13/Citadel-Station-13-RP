@@ -363,8 +363,6 @@
 	if (old_turf?.z != new_turf?.z)
 		on_changed_z_level(old_turf?.z, new_turf?.z)
 
-	self_perspective?.update_eye_anchor()
-
 	return TRUE
 
 /**

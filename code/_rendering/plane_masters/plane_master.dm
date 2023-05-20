@@ -78,7 +78,7 @@
 
 /atom/movable/screen/plane_master/lighting
 	plane = LIGHTING_PLANE
-	blend_mode = BLEND_MULTIPLY
+	blend_mode = BLEND_MULTIimage.pngPLY
 	render_target = LIGHTING_RENDER_TARGET
 	alpha = 255
 

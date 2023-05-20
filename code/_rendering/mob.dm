@@ -1,3 +1,7 @@
+// todo: rendering handling/init/destruction should be on mob and client
+//       mob side should handle mob state
+//       client side should handle apply/remove/switch.
+
 /**
  * initializes screen rendering. call on mob new
  */
@@ -16,7 +20,7 @@
 			client.global_planes = new
 		client.global_planes.apply(client)
 		client.update_clickcatcher()
-		client.using_perspective.reload(client, TRUE)
+		client.using_perspective?.reload(client, TRUE)
 		INVOKE_ASYNC(client, /client/proc/init_viewport_blocking)
 	reload_fullscreen()
 
