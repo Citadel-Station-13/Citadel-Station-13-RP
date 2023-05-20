@@ -30,6 +30,7 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend/indoors)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/desert)
 
 //These commands generate turfs that are default indoors
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/floor/tiled)
@@ -120,6 +121,15 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 
 /turf/simulated/floor/tiled/techfloor/lythios43c/indoors
 	outdoors = FALSE
+
+/turf/simulated/floor/concrete/lythios43c/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors
+	outdoors = TRUE
+
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors
+	outdoors = TRUE
 
 
 /// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .

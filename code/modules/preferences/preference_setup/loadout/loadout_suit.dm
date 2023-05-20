@@ -607,3 +607,11 @@
 /datum/gear/suit/cropped_hoodie/croppiest
 	name = "Cropped Hoodie (supercrop)"
 	path = /obj/item/clothing/suit/cropped_hoodie/croppiest
+
+/datum/gear/suit/leather_cropped
+	name = "Cropped Leather Jacket"
+	path = /obj/item/clothing/suit/storage/leather_cropped
+
+/datum/gear/suit/leather_supercropped
+	name = "Supercropped Leather Jacket"
+	path = /obj/item/clothing/suit/storage/leather_supercropped
