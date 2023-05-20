@@ -1157,6 +1157,8 @@
 	caliber = "12g"
 	ammo_type = null
 	matter = list(MAT_STEEL = 1440)
+	ammo_type = /obj/item/ammo_casing/a12g
+	initial_ammo = 0
 	max_ammo = 4
 	multiple_sprites = 1
 	var/marking_color
@@ -1169,27 +1171,30 @@
 		I.color = marking_color
 		overlays += I
 
-/obj/item/ammo_magazine/shotholder/slug
+/obj/item/ammo_magazine/shotholder/full
+	initial_ammo = 4
+
+/obj/item/ammo_magazine/shotholder/full/slug
 	name = "shotgun slug holder (slug)"
 	marking_color = PIPE_COLOR_BLACK
 	ammo_type = /obj/item/ammo_casing/a12g
 
-/obj/item/ammo_magazine/shotholder/flare
+/obj/item/ammo_magazine/shotholder/full/flare
 	name = "shotgun slug holder (flare)"
 	marking_color = COLOR_RED_GRAY
 	ammo_type = /obj/item/ammo_casing/a12g/flare
 
-/obj/item/ammo_magazine/shotholder/buckshot
+/obj/item/ammo_magazine/shotholder/full/buckshot
 	name = "shotgun slug holder (buckshot)"
 	marking_color = COLOR_RED
 	ammo_type = /obj/item/ammo_casing/a12g/pellet
 
-/obj/item/ammo_magazine/shotholder/beanbag
+/obj/item/ammo_magazine/shotholder/full/beanbag
 	name = "shotgun slug holder (beanbag)"
 	marking_color = COLOR_GREEN
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
-/obj/item/ammo_magazine/shotholder/stun
+/obj/item/ammo_magazine/shotholder/full/stun
 	name = "shotgun slug holder (stun)"
 	marking_color = PIPE_COLOR_YELLOW
 	ammo_type = /obj/item/ammo_casing/a12g/stunshell
