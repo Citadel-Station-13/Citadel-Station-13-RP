@@ -636,9 +636,9 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 
 /obj/item/nif/bioadap
 	name = "bioadaptive NIF"
-	desc = "A NIF that goes out of it's way to accomidate strange body types. \
+	desc = "A NIF that goes out of it's way to accomodate strange body types. \
 	Will function in species where it normally wouldn't."
-	durability = 25
+	durability = 50
 	bioadap = TRUE
 	id = NIF_ID_BIOADAPTIVE
 
