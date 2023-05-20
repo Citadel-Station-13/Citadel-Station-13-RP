@@ -242,7 +242,7 @@
 	else if(ammo_magazine)
 		ammo_magazine.forceMove(user.drop_location())
 		user.visible_message("[user] dumps [ammo_magazine] from [src] onto the floor.", SPAN_NOTICE("You dump [ammo_magazine] from [src] onto the floor."))
-		playsound (src, mag_remove_sound, 50, 1)
+		playsound(src, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
 	else
