@@ -71,6 +71,24 @@
 	icon_state = "rwindow_grille_full_fire"
 	firelocks = TRUE
 
+/obj/spawner/window/reinforced/tinted
+	icon_state = "rwindow_grille_pane"
+	window_pane_path = /obj/structure/window/reinforced/tinted
+	window_full_path = /obj/structure/window/reinforced/tinted/full
+
+/obj/spawner/window/reinforced/tinted/firelocks
+	icon_state = "rwindow_grille_pane_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/reinforced/tinted/full
+	icon_state = "rwindow_grille_full"
+	full_window = TRUE
+
+/obj/spawner/window/reinforced/tinted/full/firelocks
+	icon_state = "rwindow_grille_full_fire"
+	firelocks = TRUE
+
+
 /obj/spawner/window/borosillicate
 	icon_state = "phoron_grille_pane"
 	window_pane_path = /obj/structure/window/phoronbasic
@@ -104,3 +122,4 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks
 	icon_state = "rphoron_grille_full_fire"
 	firelocks = TRUE
+

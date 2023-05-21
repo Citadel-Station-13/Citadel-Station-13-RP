@@ -35,6 +35,7 @@
 	num_contained = 5
 	contains = list(
 			/obj/item/clothing/suit/armor/pcarrier,
+			/obj/item/clothing/suit/armor/pcarrier/alt,
 			/obj/item/clothing/suit/armor/pcarrier/blue,
 			/obj/item/clothing/suit/armor/pcarrier/green,
 			/obj/item/clothing/suit/armor/pcarrier/navy,
@@ -50,7 +51,8 @@
 	name = "Armor - Plate carrier tags"
 	contains = list(
 			/obj/item/clothing/accessory/armor/tag,
-			/obj/item/clothing/accessory/armor/tag/nt,
+			/obj/item/clothing/accessory/armor/tag/nts,
+			/obj/item/clothing/accessory/armor/tag/ntc,
 			/obj/item/clothing/accessory/armor/tag/opos,
 			/obj/item/clothing/accessory/armor/tag/oneg,
 			/obj/item/clothing/accessory/armor/tag/apos,
@@ -60,7 +62,7 @@
 			/obj/item/clothing/accessory/armor/tag/abpos,
 			/obj/item/clothing/accessory/armor/tag/abneg
 			)
-	cost = 20
+	cost = 10
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Plate Carrier crate"
 
@@ -76,12 +78,12 @@
 			/obj/item/clothing/accessory/armor/helmcover/tan,
 			/obj/item/clothing/accessory/armor/helmcover/tan
 			)
-	cost = 20
+	cost = 15
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Helmet Covers crate"
 
 /datum/supply_pack/randomised/security/armorplates
-	name = "Armor - Security armor plates"
+	name = "Armor - Security p-carrier armor plates"
 	num_contained = 5
 	contains = list(
 			/obj/item/clothing/accessory/armor/armorplate,
@@ -91,9 +93,9 @@
 			/obj/item/clothing/accessory/armor/armorplate/medium,
 			/obj/item/clothing/accessory/armor/armorplate/medium,
 			/obj/item/clothing/accessory/armor/armorplate/tactical,
-			/obj/item/clothing/accessory/armor/armorplate/laserproof,
+			/obj/item/clothing/accessory/armor/armorplate/ablative,
 			/obj/item/clothing/accessory/armor/armorplate/riot,
-			/obj/item/clothing/accessory/armor/armorplate/bulletproof
+			/obj/item/clothing/accessory/armor/armorplate/ballistic
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -109,11 +111,11 @@
 			/obj/item/clothing/accessory/armor/armguards/navy,
 			/obj/item/clothing/accessory/armor/armguards/green,
 			/obj/item/clothing/accessory/armor/armguards/tan,
-			/obj/item/clothing/accessory/armor/armguards/laserproof,
+			/obj/item/clothing/accessory/armor/armguards/ablative,
 			/obj/item/clothing/accessory/armor/armguards/riot,
-			/obj/item/clothing/accessory/armor/armguards/bulletproof
+			/obj/item/clothing/accessory/armor/armguards/ballistic
 			)
-	cost = 50
+	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
 	access = ACCESS_SECURITY_ARMORY
@@ -127,17 +129,17 @@
 			/obj/item/clothing/accessory/armor/legguards/navy,
 			/obj/item/clothing/accessory/armor/legguards/green,
 			/obj/item/clothing/accessory/armor/legguards/tan,
-			/obj/item/clothing/accessory/armor/legguards/laserproof,
+			/obj/item/clothing/accessory/armor/legguards/ablative,
 			/obj/item/clothing/accessory/armor/legguards/riot,
-			/obj/item/clothing/accessory/armor/legguards/bulletproof
+			/obj/item/clothing/accessory/armor/legguards/ballistic
 			)
-	cost = 50
+	cost = 30
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/randomised/security/carrierbags
-	name = "Armor - Security pouch attachments"
+	name = "Armor - Security p-carrier pouch attachments"
 	num_contained = 5
 	contains = list(
 			/obj/item/clothing/accessory/storage/pouches,
@@ -151,7 +153,7 @@
 			/obj/item/clothing/accessory/storage/pouches/large/green,
 			/obj/item/clothing/accessory/storage/pouches/large/tan
 			)
-	cost = 60
+	cost = 20
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Armor plate crate"
 	access = ACCESS_SECURITY_ARMORY
@@ -172,24 +174,23 @@
 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/riot_armor
-	name = "Armor - Riot"
+	name = "Armor Set - Riot"
 	contains = list(
 			/obj/item/clothing/head/helmet/riot,
 			/obj/item/clothing/suit/armor/riot,
 			/obj/item/clothing/gloves/arm_guard/riot,
 			/obj/item/clothing/shoes/leg_guard/riot
 			)
-	cost = 30
+	cost = 40
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Riot armor crate"
 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/riot_plates
-	name = "Armor - Riot plates"
+	name = "Armor Set - Riot (P-Carrier)"
 	contains = list(
 			/obj/item/clothing/head/helmet/riot,
-			/obj/item/clothing/suit/armor/pcarrier,
-			/obj/item/clothing/accessory/armor/armorplate/riot,
+			/obj/item/clothing/suit/armor/pcarrier/riot,
 			/obj/item/clothing/accessory/armor/armguards/riot,
 			/obj/item/clothing/accessory/armor/legguards/riot
 			)
@@ -199,53 +200,53 @@
 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/ablative_armor
-	name = "Armor - Ablative"
+	name = "Armor Set - Ablative"
 	contains = list(
-			/obj/item/clothing/head/helmet/laserproof,
+			/obj/item/clothing/head/helmet/ablative,
 			/obj/item/clothing/suit/armor/laserproof,
 			/obj/item/clothing/gloves/arm_guard/laserproof,
 			/obj/item/clothing/shoes/leg_guard/laserproof
-			)
-	cost = 40
-	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	container_name = "Ablative armor crate"
-	access = ACCESS_SECURITY_ARMORY
-
-/datum/supply_pack/security/ablative_plates
-	name = "Armor - Ablative plates"
-	contains = list(
-			/obj/item/clothing/head/helmet/laserproof,
-			/obj/item/clothing/suit/armor/pcarrier,
-			/obj/item/clothing/accessory/armor/armorplate/laserproof,
-			/obj/item/clothing/accessory/armor/armguards/laserproof,
-			/obj/item/clothing/accessory/armor/legguards/laserproof
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ablative armor crate"
 	access = ACCESS_SECURITY_ARMORY
 
-/datum/supply_pack/security/bullet_resistant_armor
-	name = "Armor - Ballistic"
+/datum/supply_pack/security/ablative_plates
+	name = "Armor Set - Ablative (P-Carrier)"
 	contains = list(
-			/obj/item/clothing/head/helmet/bulletproof,
+			/obj/item/clothing/head/helmet/ablative,
+			/obj/item/clothing/suit/armor/pcarrier/ablative,
+			/obj/item/clothing/accessory/armor/armguards/ablative,
+			/obj/item/clothing/accessory/armor/legguards/ablative
+			)
+	cost = 50
+	container_type = /obj/structure/closet/crate/secure/nanotrasen
+	container_name = "Ablative armor crate"
+	access = ACCESS_SECURITY_ARMORY
+
+
+/datum/supply_pack/security/bullet_resistant_armor
+	name = "Armor Set - Ballistic"
+	contains = list(
+			/obj/item/clothing/head/helmet/ballistic,
 			/obj/item/clothing/suit/armor/bulletproof,
 			/obj/item/clothing/gloves/arm_guard/bulletproof,
 			/obj/item/clothing/shoes/leg_guard/bulletproof
 			)
-	cost = 40
+	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
 	container_name = "Ballistic armor crate"
 	access = ACCESS_SECURITY_ARMORY
 
+
 /datum/supply_pack/security/bullet_resistant_plates
-	name = "Armor - Ballistic plates"
+	name = "Armor Set - Ballistic (P-Carrier)"
 	contains = list(
-			/obj/item/clothing/head/helmet/bulletproof,
-			/obj/item/clothing/suit/armor/pcarrier,
-			/obj/item/clothing/accessory/armor/armorplate/bulletproof,
-			/obj/item/clothing/accessory/armor/armguards/bulletproof,
-			/obj/item/clothing/accessory/armor/legguards/bulletproof
+			/obj/item/clothing/head/helmet/ballistic,
+			/obj/item/clothing/suit/armor/pcarrier/ballistic,
+			/obj/item/clothing/accessory/armor/armguards/ballistic,
+			/obj/item/clothing/accessory/armor/legguards/ballistic
 			)
 	cost = 50
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
@@ -266,9 +267,9 @@
 	access = ACCESS_SECURITY_ARMORY
 
 /datum/supply_pack/security/tactical
-	name = "Armor - Tactical"
+	name = "Armor - NT Tactical"
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	container_name = "Tactical armor crate"
+	container_name = "NT Tactical armor crate"
 	cost = 40
 	access = ACCESS_SECURITY_ARMORY
 	contains = list(
@@ -622,22 +623,23 @@
 	container_name = "Kevlar Upgrade Kits"
 	access = ACCESS_SECURITY_EQUIPMENT
 
-/datum/supply_pack/security/pcarriers/merc
-	name = "Armor - heavy plate carrier equipment"
+/datum/supply_pack/security/pcarriers/combat
+	name = "Armor - Combat Armor (P-Carrier)"
 	contains = list(
-			/obj/item/clothing/accessory/armor/armorplate/merc = 3,
-			/obj/item/clothing/accessory/armor/armguards/merc = 3,
-			/obj/item/clothing/accessory/armor/legguards/merc = 3,
-			/obj/item/clothing/head/helmet/merc = 3,
+			/obj/item/clothing/suit/armor/pcarrier = 3,
+			/obj/item/clothing/accessory/armor/armorplate/combat = 3,
+			/obj/item/clothing/accessory/armor/armguards/combat = 3,
+			/obj/item/clothing/accessory/armor/legguards/combat = 3,
+			/obj/item/clothing/head/helmet/redcombat = 3,
 			)
-	cost = 65
+	cost = 70
 	container_type = /obj/structure/closet/crate/secure/nanotrasen
-	container_name = "Plate carrier heavy crate"
+	container_name = "Combat Armor crate"
 	access = ACCESS_SECURITY_EQUIPMENT
 	contraband = 1
 
 /datum/supply_pack/security/helmets
-	name = "Armor - Helmet pack"
+	name = "Armor - Helmet Pack"
 	contains = list(
 			/obj/item/clothing/head/helmet = 3,
 			/obj/item/clothing/head/helmet/warden = 1,

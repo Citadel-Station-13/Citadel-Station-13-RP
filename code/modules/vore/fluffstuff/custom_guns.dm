@@ -706,7 +706,7 @@ END OF CITADEL CHANGES */
 
 //Expedition pistol
 /obj/item/gun/energy/frontier
-	name = "frontier phaser"
+	name = "Expedition Crank Phaser"
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
 	item_state = "phaser"
@@ -763,7 +763,7 @@ END OF CITADEL CHANGES */
 
 //Phaser Carbine - Reskinned phaser
 /obj/item/gun/energy/frontier/locked/carbine
-	name = "frontier carbine"
+	name = "Expedition Phaser Carbine"
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon_state = "carbinekill"
 	item_state = "retro"
@@ -773,6 +773,7 @@ END OF CITADEL CHANGES */
 	firemodes = list(
 		list(mode_name="lethal", fire_delay=12, projectile_type=/obj/projectile/beam, modifystate="carbinekill", charge_cost = 300),
 		list(mode_name="low-power", fire_delay=8, projectile_type=/obj/projectile/beam/weaklaser, modifystate="carbinestun", charge_cost = 60),
+
 	)
 
 /obj/item/gun/energy/frontier/locked/carbine/update_icon_state()
@@ -783,7 +784,7 @@ END OF CITADEL CHANGES */
 
 //Expeditionary Holdout Phaser Pistol
 /obj/item/gun/energy/frontier/locked/holdout
-	name = "holdout frontier phaser"
+	name = "Holdout Phaser Pistol"
 	desc = "An minaturized weapon designed for the purpose of expeditionary support to defend themselves on the field. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon = 'icons/obj/gun/energy.dmi'
 	icon_state = "holdoutkill"

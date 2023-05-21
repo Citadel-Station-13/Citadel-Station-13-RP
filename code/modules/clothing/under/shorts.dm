@@ -234,7 +234,7 @@
 	name = "security officer's jumpskirt"
 	desc = "Standard feminine fashion for Security Officers.  It's made of sturdier material than the standard jumpskirts."
 	icon_state = "securityf"
-	armor_type = /datum/armor/security/jumpsuit
+	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/rank/warden/skirt
