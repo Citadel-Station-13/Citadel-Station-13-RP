@@ -27,6 +27,58 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+
+/datum/gear/accessory/insignia
+	name = "Department Insignia Selection"
+	path = /obj/item/clothing/accessory/oricon/department
+	cost = 1
+
+/datum/gear/accessory/insignia/New()
+	..()
+	var/insignia = list()
+	insignia["Command - Crew"] = /obj/item/clothing/accessory/oricon/department/command/crew
+	insignia["Command - Crew Short"] = /obj/item/clothing/accessory/oricon/department/command/service
+	insignia["Command - Bands"] = /obj/item/clothing/accessory/oricon/department/command/fleet
+	insignia["Command - Echelons"] = /obj/item/clothing/accessory/oricon/department/command/marine
+	insignia["Blueshield - Crew"] = /obj/item/clothing/accessory/oricon/department/blueshield/crew
+	insignia["Blueshield - Crew Short"] = /obj/item/clothing/accessory/oricon/department/blueshield/service
+	insignia["Blueshield - Bands"] = /obj/item/clothing/accessory/oricon/department/blueshield/fleet
+	insignia["Blueshield - Echelons"] = /obj/item/clothing/accessory/oricon/department/blueshield/marine
+	insignia["Security - Crew"] = /obj/item/clothing/accessory/oricon/department/security/crew
+	insignia["Security - Crew Short"] = /obj/item/clothing/accessory/oricon/department/security/service
+	insignia["Security - Bands"] = /obj/item/clothing/accessory/oricon/department/security/fleet
+	insignia["Security - Echelons"] = /obj/item/clothing/accessory/oricon/department/security/marine
+	insignia["Medical - Crew"] = /obj/item/clothing/accessory/oricon/department/medical/crew
+	insignia["Medical - Crew Short"] = /obj/item/clothing/accessory/oricon/department/medical/service
+	insignia["Medical - Bands"] = /obj/item/clothing/accessory/oricon/department/medical/fleet
+	insignia["Medical - Echelons"] = /obj/item/clothing/accessory/oricon/department/medical/marine
+	insignia["Science - Crew"] = /obj/item/clothing/accessory/oricon/department/research/crew
+	insignia["Science - Crew Short"] = /obj/item/clothing/accessory/oricon/department/research/service
+	insignia["Science - Bands"] = /obj/item/clothing/accessory/oricon/department/research/fleet
+	insignia["Science - Echelons"] = /obj/item/clothing/accessory/oricon/department/research/marine
+	insignia["Engineering - Crew"] = /obj/item/clothing/accessory/oricon/department/engineering/crew
+	insignia["Engineering - Crew Short"] = /obj/item/clothing/accessory/oricon/department/engineering/service
+	insignia["Engineering - Bands"] = /obj/item/clothing/accessory/oricon/department/engineering/fleet
+	insignia["Engineering - Echelons"] = /obj/item/clothing/accessory/oricon/department/engineering/marine
+	insignia["Supply - Crew"] = /obj/item/clothing/accessory/oricon/department/supply/crew
+	insignia["Supply - Crew Short"] = /obj/item/clothing/accessory/oricon/department/supply/service
+	insignia["Supply - Bands"] = /obj/item/clothing/accessory/oricon/department/supply/fleet
+	insignia["Supply - Echelons"] = /obj/item/clothing/accessory/oricon/department/supply/marine
+	insignia["Service - Crew"] = /obj/item/clothing/accessory/oricon/department/service/crew
+	insignia["Service - Crew Short"] = /obj/item/clothing/accessory/oricon/department/service/service
+	insignia["Service - Bands"] = /obj/item/clothing/accessory/oricon/department/service/fleet
+	insignia["Service - Echelons"] = /obj/item/clothing/accessory/oricon/department/service/marine
+	gear_tweaks += new/datum/gear_tweak/path(insignia)
+
+/datum/gear/accessory/insignia/colored
+	name = "Insignia - Colorable"
+	path = /obj/item/clothing/accessory/oricon/department/colorable
+
+/datum/gear/accessory/insignia/colored/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+
 /datum/gear/accessory/wallet
 	name = "Wallet - Orange"
 	path = /obj/item/storage/wallet/random
