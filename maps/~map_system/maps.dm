@@ -192,12 +192,12 @@ var/list/all_maps = list()
 
 /datum/map/proc/get_empty_zlevel()
 	if(empty_levels == null)
-		world.increment_max_z()
-		empty_levels = list(world.maxz)
+		var/allocated = SSmapping.allocate_zlevel()
+		empty_levels = list(allocated)
 		if(islist(player_levels))
-			player_levels |= world.maxz
+			player_levels |= allocated
 		else
-			player_levels = list(world.maxz)
+			player_levels = list(allocated)
 	return pick(empty_levels)
 
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)

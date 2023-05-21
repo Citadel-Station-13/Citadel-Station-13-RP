@@ -193,7 +193,7 @@
 	if(!darkspace_abduction_z)
 		darkspace_abduction_z = -1
 		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
-		var/z = world.increment_max_z()
+		var/z = SSmapping.allocate_zlevel()
 		var/area/areaInstance = new /area/darkspace_abduction(null)
 		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)

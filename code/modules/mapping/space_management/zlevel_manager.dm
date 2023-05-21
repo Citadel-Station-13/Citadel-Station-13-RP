@@ -20,6 +20,7 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
 	var/new_z = z_list.len + 1
 	if (world.maxz < new_z)
+		// todo: THIS IS BAD
 		world.increment_max_z()
 		CHECK_TICK
 	// TODO: sleep here if the Z level needs to be cleared

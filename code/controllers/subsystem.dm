@@ -397,6 +397,8 @@
 /**
  * Called when max z is changed since subsystems hook it so much.
  *
+ * todo: maploader might need to be able to init the new level before this fires if this ever does more than make indice-lists synchronize.
+ *
  * Arguments:
  * * old_z_count - The old z count.
  * * new_z_count - The new z count.

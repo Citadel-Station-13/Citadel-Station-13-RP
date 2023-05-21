@@ -106,6 +106,7 @@
 					continue
 				else
 					while(world.maxz < zcrd)
+						// todo: THIS IS BAD
 						world.increment_max_z()
 				if(!no_changeturf)
 					WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems")
