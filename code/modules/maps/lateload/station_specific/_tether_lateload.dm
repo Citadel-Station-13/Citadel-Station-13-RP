@@ -3,9 +3,9 @@
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
 	mappath = "maps/map_files/tether/tether_misc.dmm"
 
-	associated_map_datum = /datum/map_z_level/tether_lateload/misc
+	associated_map_datum = /datum/map_level/tether_lateload/misc
 
-/datum/map_z_level/tether_lateload/misc
+/datum/map_level/tether_lateload/misc
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
@@ -14,9 +14,9 @@
 	desc = "Mining, but harder."
 	mappath = "maps/map_files/tether/tether_underdark.dmm"
 
-	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
+	associated_map_datum = /datum/map_level/tether_lateload/underdark
 
-/datum/map_z_level/tether_lateload/underdark
+/datum/map_level/tether_lateload/underdark
 	name = "Underdark"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b
@@ -31,9 +31,9 @@
 	name = "Tether - Plains"
 	desc = "The Virgo 3B away mission."
 	mappath = "maps/map_files/tether/tether_plains.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/tether_plains
+	associated_map_datum = /datum/map_level/tether_lateload/tether_plains
 
-/datum/map_z_level/tether_lateload/tether_plains
+/datum/map_level/tether_lateload/tether_plains
 	name = "Away Mission - Plains"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/mineral/floor/virgo3b

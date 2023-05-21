@@ -7,7 +7,7 @@
 	#include "triumph_overmap.dm"
 	#include "triumph_weather.dm"
 
-	#define USING_MAP_DATUM /datum/map/triumph
+	#define USING_MAP_DATUM /datum/map/station/triumph
 
 	#include "../../maps/map_files/triumph/triumph-01-deck1.dmm"
 	#include "../../maps/map_files/triumph/triumph-02-deck2.dmm"

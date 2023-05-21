@@ -1,11 +1,11 @@
 
-GLOBAL_DATUM_INIT(using_map, /datum/map, new USING_MAP_DATUM)
+GLOBAL_DATUM_INIT(using_map, /datum/map/station, new USING_MAP_DATUM)
 
 var/list/all_maps = list()
 
 /hook/startup/proc/initialise_map_list()
-	for(var/type in typesof(/datum/map) - /datum/map)
-		var/datum/map/M
+	for(var/type in typesof(/datum/map/station) - /datum/map/station)
+		var/datum/map/station/M
 		if(type == GLOB.using_map.type)
 			M = GLOB.using_map
 			M.setup_map()
@@ -17,14 +17,68 @@ var/list/all_maps = list()
 			all_maps[M.path] = M
 	return 1
 
-
+/**
+ * maps
+ * clusters of zlevels, basically.
+ */
 /datum/map
+	/// id - must be unique
+	var/id
+	/// in-code name
+	var/name = "Unknown Map"
+	/// /datum/map_level datums. starts off as paths, inits later.
+	var/list/datum/map_level/levels
+	/// dependencies by id or path of other maps
+	var/list/dependencies
+	/// are we loaded in
+	var/tmp/loaded = FALSE
+
+/datum/map/serialize()
+	. = ..()
+	.["id"] = id
+	.["name"] = name
+	var/list/serialized_levels = (.["levels"] = list())
+	for(var/datum/map_level/level as anything in levels)
+		if(!istype(level))
+			serialized_levels += level // isn't init'd, probably path or id
+			continue
+		serialized_levels += json_encode(level.serialize())
+	.["dependencies"] = dependencies
+
+/datum/map/deserialize(list/data)
+	if(loaded)
+		CRASH("attempted deserialize while loaded")
+	. = ..()
+	id = .["id"]
+	name = .["name"]
+	levels = list()
+	for(var/serialized_level in data["levels"])
+		var/is_it_a_path = text2path(serialized_level)
+		// path
+		if(ispath(is_it_a_path, /datum/map_level))
+			levels += is_it_a_path
+			continue
+		// json
+		if(serialized_level[1] == "{}")
+			var/datum/map_level/level = new
+			level.deserialize(json_decode(serialized_level))
+			levels += level
+			continue
+		// hopefully an id
+		levels += level
+	dependencies = .["dependencies"]
+
+#warn wow
+
+/**
+ * primary station map
+ *
+ * this is what's loaded at init. this determines what other maps initially load.
+ */
+/datum/map/station
 	var/name = "Unnamed Map"
 	var/full_name = "Unnamed Map"
 	var/path
-
-	var/zlevel_datum_type			 // If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
-	var/list/base_turf_by_z = list() // Custom base turf by Z-level. Defaults to world.turf for unlisted Z-levels
 
 	// Automatically populated lists made static for faster lookups
 	var/list/zlevels = list()
@@ -129,7 +183,7 @@ var/list/all_maps = list()
 
 	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
 
-/datum/map/New()
+/datum/map/station/New()
 	..()
 	if(zlevel_datum_type)
 		for(var/type in subtypesof(zlevel_datum_type))
@@ -140,7 +194,7 @@ var/list/all_maps = list()
 		allowed_jobs = subtypesof(/datum/role/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
-/datum/map/proc/get_zlevel_time(var/z)
+/datum/map/station/proc/get_zlevel_time(var/z)
 	if(!z)
 		z = 1
 	var/datum/planet/P = z <= SSplanets.z_to_planet.len ? SSplanets.z_to_planet[z] : null
@@ -154,7 +208,7 @@ var/list/all_maps = list()
 		return T
 
 // Returns a boolean for if it's night or not on a particular zlevel
-/datum/map/proc/get_night(var/z)
+/datum/map/station/proc/get_night(var/z)
 	if(!z)
 		z = 1
 	var/datum/time/now = get_zlevel_time(z)
@@ -169,20 +223,20 @@ var/list/all_maps = list()
 		return FALSE
 
 // Boolean for if we should use SSnightshift night hours
-/datum/map/proc/get_nightshift()
+/datum/map/station/proc/get_nightshift()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
-/datum/map/proc/setup_map()
+/datum/map/station/proc/setup_map()
 	return
 
-/datum/map/proc/perform_map_generation()
+/datum/map/station/proc/perform_map_generation()
 	return
 
-/datum/map/proc/get_network_access(var/network)
+/datum/map/station/proc/get_network_access(var/network)
 	return 0
 
 // By default transition randomly to another zlevel
-/datum/map/proc/get_transit_zlevel(var/current_z_level)
+/datum/map/station/proc/get_transit_zlevel(var/current_z_level)
 	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
 	candidates.Remove(num2text(current_z_level))
 
@@ -190,7 +244,7 @@ var/list/all_maps = list()
 		return current_z_level
 	return text2num(pickweight(candidates))
 
-/datum/map/proc/get_empty_zlevel()
+/datum/map/station/proc/get_empty_zlevel()
 	if(empty_levels == null)
 		var/allocated = SSmapping.allocate_zlevel()
 		empty_levels = list(allocated)
@@ -203,7 +257,7 @@ var/list/all_maps = list()
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
 // zLevels outside station_levels will return an empty list.
-/datum/map/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
+/datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
 		var/obj/effect/overmap/visitable/O = get_overmap_sector(srcz)
@@ -230,13 +284,13 @@ var/list/all_maps = list()
 		else
 			return list(srcz)
 
-/datum/map/proc/get_zlevel_name(var/index)
-	var/datum/map_z_level/Z = zlevels["[index]"]
+/datum/map/station/proc/get_zlevel_name(var/index)
+	var/datum/map_level/Z = zlevels["[index]"]
 	return Z?.name
 
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 // This list needs to be purged but people insist on adding more cruft to the radio.
-/datum/map/proc/default_internal_channels()
+/datum/map/station/proc/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ)   = list(),
 		num2text(AI_FREQ)    = list(ACCESS_SPECIAL_SILICONS),
@@ -252,65 +306,3 @@ var/list/all_maps = list()
 		num2text(SUP_FREQ)   = list(ACCESS_SUPPLY_BAY),
 		num2text(SRV_FREQ)   = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
 	)
-
-// Another way to setup the map datum that can be convenient.  Just declare all your zlevels as subtypes of a common
-// 	subtype of /datum/map_z_level and set zlevel_datum_type on /datum/map to have the lists auto-initialized.
-
-// Structure to hold zlevel info together in one nice convenient package.
-/datum/map_z_level
-	var/z = 0				// Actual z-index of the zlevel. This had better be right!
-	var/name				// Friendly name of the zlevel
-	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
-	var/turf/base_turf = /turf/space // Type path of the base turf for this z
-
-	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
-
-// Holomaps
-	var/holomap_offset_x = -1	// Number of pixels to offset the map right (for centering) for this z
-	var/holomap_offset_y = -1	// Number of pixels to offset the map up (for centering) for this z
-	var/holomap_legend_x = 96	// x position of the holomap legend for this z
-	var/holomap_legend_y = 96	// y position of the holomap legend for this z
-
-// Default constructor applies itself to the parent map datum
-/datum/map_z_level/New(var/datum/map/map, _z)
-	if(_z)
-		src.z = _z
-	if(!z)
-		return
-	map.zlevels["[z]"] = src
-	if(flags & MAP_LEVEL_STATION) map.station_levels |= z
-	if(flags & MAP_LEVEL_ADMIN) map.admin_levels |= z
-	if(flags & MAP_LEVEL_CONTACT) map.contact_levels |= z
-	if(flags & MAP_LEVEL_PLAYER) map.player_levels |= z
-	if(flags & MAP_LEVEL_SEALED) map.sealed_levels |= z
-	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels |= z
-	if(flags & MAP_LEVEL_EMPTY)
-		if(!map.empty_levels) map.empty_levels = list()
-		map.empty_levels |= z
-	if(flags & MAP_LEVEL_CONSOLES)
-		if (!map.map_levels)
-			map.map_levels = list()
-		map.map_levels |= z
-	if(base_turf)
-		map.base_turf_by_z["[z]"] = base_turf
-	if(transit_chance)
-		map.accessible_z_levels["[z]"] = transit_chance
-	// Holomaps
-	// Auto-center the map if needed (Guess based on maxx/maxy)
-	if (holomap_offset_x < 0)
-		holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
-	if (holomap_offset_x < 0)
-		holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
-	// Assign them to the map lists
-	LIST_NUMERIC_SET(map.holomap_offset_x, z, holomap_offset_x)
-	LIST_NUMERIC_SET(map.holomap_offset_y, z, holomap_offset_y)
-	LIST_NUMERIC_SET(map.holomap_legend_x, z, holomap_legend_x)
-	LIST_NUMERIC_SET(map.holomap_legend_y, z, holomap_legend_y)
-
-/datum/map_z_level/Destroy(var/force)
-	stack_trace("Attempt to delete a map_z_level instance [log_info_line(src)]")
-	if(!force)
-		return QDEL_HINT_LETMELIVE // No.
-	if (GLOB.using_map.zlevels["[z]"] == src)
-		GLOB.using_map.zlevels -= "[z]"
-	return ..()

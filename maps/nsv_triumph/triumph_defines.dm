@@ -26,7 +26,7 @@
 #define Z_LEVEL_LAVALAND_EAST			22
 
 // Camera Networks
-/datum/map/triumph
+/datum/map/station/triumph
 	name = "Triumph"
 	full_name = "NSV Triumph"
 	path = "triumph"
@@ -37,7 +37,7 @@
 	overmap_event_areas = 50
 	usable_email_tlds = list("triumph.nt")
 
-	zlevel_datum_type = /datum/map_z_level/triumph
+	zlevel_datum_type = /datum/map_level/triumph
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
@@ -183,7 +183,7 @@
 								/datum/planet/classp,
 								/datum/planet/classm)
 
-/datum/map/triumph/perform_map_generation()
+/datum/map/station/triumph/perform_map_generation()
 	return 1
 
 // For making the 4-in-1 holomap, we calculate some offsets
@@ -196,12 +196,12 @@
 /// 60
 #define TRIUMPH_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TRIUMPH_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
-/datum/map_z_level/triumph/ship
+/datum/map_level/triumph/ship
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 
-/datum/map_z_level/triumph/ship/deck_one
+/datum/map_level/triumph/ship/deck_one
 	z = Z_LEVEL_DECK_ONE
 	name = "Deck 1"
 	transit_chance = 33
@@ -210,7 +210,7 @@
 	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
-/datum/map_z_level/triumph/ship/deck_two
+/datum/map_level/triumph/ship/deck_two
 	z = Z_LEVEL_DECK_TWO
 	name = "Deck 2"
 	transit_chance = 33
@@ -219,7 +219,7 @@
 	holomap_offset_x = TRIUMPH_HOLOMAP_MARGIN_X
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
-/datum/map_z_level/triumph/ship/deck_three
+/datum/map_level/triumph/ship/deck_three
 	z = Z_LEVEL_DECK_THREE
 	name = "Deck 3"
 	transit_chance = 33
@@ -228,7 +228,7 @@
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
 
-/datum/map_z_level/triumph/ship/deck_four
+/datum/map_level/triumph/ship/deck_four
 	z = Z_LEVEL_DECK_FOUR
 	name = "Deck 4"
 	transit_chance = 33
@@ -237,17 +237,17 @@
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*2
 
-/datum/map_z_level/triumph/colony
+/datum/map_level/triumph/colony
 	z = Z_LEVEL_CENTCOM
 	name = "Flagship"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/triumph/ships
+/datum/map_level/triumph/ships
 	z = Z_LEVEL_SHIPS
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/triumph/misc
+/datum/map_level/triumph/misc
 	z = Z_LEVEL_MISC
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT

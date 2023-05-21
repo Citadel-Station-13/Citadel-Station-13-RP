@@ -90,7 +90,7 @@
 /area/maintenance/station/tcomms
 	name = "\improper Telecoms Maintenance"
 
-/datum/map/tether/default_internal_channels()
+/datum/map/station/tether/default_internal_channels()
 	return list(
 		num2text(PUB_FREQ) = list(),
 		num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),

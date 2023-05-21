@@ -27,7 +27,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	mappath = null
 	associated_map_datum = null
 
-/datum/map_z_level/gateway/gateway_destination
+/datum/map_level/gateway/gateway_destination
 	name = "Gateway Destination"
 
 //////////////////////
@@ -37,7 +37,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	name = "Snow Outpost"
 	desc = "Big snowy area with various outposts."
 	mappath = 'maps/away_missions/140x140/snow_outpost.dmm'
-	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
+	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ////////////
 /// Zoo? ///
@@ -46,7 +46,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	name = "Zoo"
 	desc = "Gigantic space zoo"
 	mappath = 'maps/away_missions/140x140/zoo.dmm'
-	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
+	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ///////////////////
 /// Carp Farm   ///
@@ -55,7 +55,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	name = "Carp Farm"
 	desc = "Asteroid base surrounded by carp"
 	mappath = 'maps/away_missions/140x140/carpfarm.dmm'
-	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
+	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ///////////////////
 /// Snow Field  ///
@@ -64,7 +64,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	name = "Snow Field"
 	desc = "An old base in middle of snowy wasteland"
 	mappath = 'maps/away_missions/140x140/snowfield.dmm'
-	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
+	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 //////////////////////
 /// Listening Post ///
@@ -73,4 +73,4 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	name = "Listening Post"
 	desc = "Asteroid-bound mercenary listening post"
 	mappath = 'maps/away_missions/140x140/listeningpost.dmm'
-	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
+	associated_map_datum = /datum/map_level/gateway/gateway_destination

@@ -17,7 +17,7 @@
 	#include "../../_maps/map_files/NLV_Euthenia/Euthenia_Misc.dmm"
 	#include "../../_maps/map_files/NLV_Euthenia/lazy_overmap.dmm"
 
-	#define USING_MAP_DATUM /datum/map/euthenia
+	#define USING_MAP_DATUM /datum/map/station/euthenia
 
 #elif !defined(MAP_OVERRIDE)
 

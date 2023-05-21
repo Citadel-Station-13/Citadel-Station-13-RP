@@ -16,13 +16,13 @@
 	/// ^ The direct file path for your map. Is case sensitive and you need to use /'s not \'s
 	/// Make sure your map file is in a sensible location please for organization sake
 
-	associated_map_datum = /datum/map_z_level/example
+	associated_map_datum = /datum/map_level/example
 	/// ^ This should point to the datum down below. Is used ingame after the z level is index'd for debugging purposes
 
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 	/// Z level traits. Controls some behavior of the z level. Check out maps.dm for more information
 
-/datum/map_z_level/example
+/datum/map_level/example
 	name = "Away Mission - Example Planet"
 	/// Does not have to be the same name as the one you used above. Keep it short and to the point
 

@@ -12,10 +12,10 @@
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
 	mappath = "maps/map_levels/192x192/lavaland.dmm"
-	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland
+	associated_map_datum = /datum/map_level/unique_lateload/lavaland
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_z_level/unique_lateload/lavaland
+/datum/map_level/unique_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	base_turf = /turf/simulated/mineral/floor/lavaland
 
@@ -36,10 +36,10 @@
 	name = "Away Mission - Lava Land (Dungeon)"
 	desc = "The flooded."
 	mappath = "maps/map_levels/192x192/lavaland_dungeon.dmm"
-	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland_dungeon
+	associated_map_datum = /datum/map_level/unique_lateload/lavaland_dungeon
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_z_level/unique_lateload/lavaland_dungeon
+/datum/map_level/unique_lateload/lavaland_dungeon
 	name = "Away Mission - Lava Land (Dungeon)"
 
 /datum/map_template/lateload/unique/lavaland_dungeon/on_map_loaded(z)
@@ -57,10 +57,10 @@
 	name = "Away Mission - Lava Land (East)"
 	desc = "The forgotten."
 	mappath = "maps/map_levels/192x192/lavaland_east.dmm"
-	associated_map_datum = /datum/map_z_level/unique_lateload/lavaland_east
+	associated_map_datum = /datum/map_level/unique_lateload/lavaland_east
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
 
-/datum/map_z_level/unique_lateload/lavaland_east
+/datum/map_level/unique_lateload/lavaland_east
 	name = "Away Mission - Lava Land (East)"
 	base_turf = /turf/simulated/mineral/floor/lavaland
 

@@ -9,11 +9,11 @@
 
 	new associated_map_datum(GLOB.using_map, z)
 
-/datum/map_z_level/rift_lateload
+/datum/map_level/rift_lateload
 	z = 0
 	flags = MAP_LEVEL_SEALED
 
-/datum/map_z_level/rift_lateload/New(var/datum/map/map, mapZ)
+/datum/map_level/rift_lateload/New(var/datum/map/station/map, mapZ)
 	if(mapZ && !z)
 		z = mapZ
 	return ..(map)
