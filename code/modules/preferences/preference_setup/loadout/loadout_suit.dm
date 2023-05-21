@@ -632,3 +632,42 @@
 		var/obj/item/clothing/accessory/poncho/tajarancloak/tajarancloak_type = tajarancloak
 		tajarancloaks[initial(tajarancloak_type.name)] = tajarancloak_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajarancloakhood
+	name = "Adhomian hooded cloak selection"
+	description = "A selection of tajaran native cloaks. These ones have hoods"
+	path = /obj/item/clothing/suit/storage/hooded/tajaran/cloak
+
+/datum/gear/suit/tajarancloakhood/New()
+	..()
+	var/list/tajarancloakhoods = list()
+	for(var/tajarancloakhood in (typesof(/obj/item/clothing/suit/storage/hooded/tajaran/cloak)))
+		var/obj/item/clothing/suit/storage/hooded/tajaran/cloak/tajarancloakhood_type = tajarancloakhood
+		tajarancloakhoods[initial(tajarancloakhood_type.name)] = tajarancloakhood_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloakhoods, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_coat
+	name = "Adhomian coat selection"
+	description = "A selection of tajaran native coats."
+	path = /obj/item/clothing/suit/storage/toggle/tajaran
+
+/datum/gear/suit/tajara_coat/New()
+	..()
+	var/list/tajara_coats = list()
+	for(var/tajara_coat in (typesof(/obj/item/clothing/suit/storage/toggle/tajaran)))
+		var/obj/item/clothing/suit/storage/toggle/tajaran/tajara_coat_type = tajara_coat
+		tajara_coats[initial(tajara_coat_type.name)] = tajara_coat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_coats, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_jacket
+	name = "Adhomian jacket selection"
+	description = "A selection of tajaran native jackets."
+	path = /obj/item/clothing/suit/storage/tajaran
+
+/datum/gear/suit/tajara_jacket/New()
+	..()
+	var/list/tajara_jackets = list()
+	for(var/tajara_jacket in (typesof(/obj/item/clothing/suit/storage/tajaran)))
+		var/obj/item/clothing/suit/storage/tajaran/tajara_jacket_type = tajara_jacket
+		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_jackets, /proc/cmp_text_asc))

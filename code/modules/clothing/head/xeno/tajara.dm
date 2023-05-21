@@ -121,16 +121,14 @@
 
 //Berets
 /obj/item/clothing/head/beret/tajaran
-	icon = 'icons/obj/clothing/species/tajaran/hats.dmi'
-	icon_override = 'icons/mob/clothing/species/tajaran/helmet.dmi'
-	body_cover_flags = HEAD
-	inv_hide_flags = HIDEEARS|BLOCKHAIR
-
-/obj/item/clothing/head/beret/tajaran/pra
 	name = "hadiist army beret"
 	desc = "A green beret issued to hadiist soldiers."
+	icon = 'icons/obj/clothing/species/tajaran/hats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/helmet.dmi'
 	icon_state = "praberet"
 	item_state = "praberet"
+	body_cover_flags = HEAD
+	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 /obj/item/clothing/head/beret/tajaran/dpra
 	name = "liberation army beret"

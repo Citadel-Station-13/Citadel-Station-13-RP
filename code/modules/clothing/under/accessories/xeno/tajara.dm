@@ -107,32 +107,24 @@
 /obj/item/clothing/accessory/poncho/tajarancloak/amohda
 	name = "Amohdan cloak"
 	desc = "Originally used by the Amohdan swordsmen before the First Revolution, this cloak is now commonly worn by the island population."
-	icon = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_state = "amohda_cloak"
 	item_state = "amohda_cloak"
 
 /obj/item/clothing/accessory/poncho/tajarancloak/winter
 	name = "Adhomian winter cloak"
 	desc = "A simple wool cloak used during the early days of the lesser winter."
-	icon = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_state = "winter_cloak"
 	item_state = "winter_cloak"
 
 /obj/item/clothing/accessory/poncho/tajarancloak/royalist
 	name = "Adhomian royalist cloak"
 	desc = "An Adhomian cloak with an asymmetric design. The symbol of the New Kingdom of Adhomai is at its back."
-	icon = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_state = "royalist_cloak"
 	item_state = "royalist_cloak"
 
 /obj/item/clothing/accessory/poncho/tajarancloak/fancy
 	name = "Fancy adhomian cloak"
 	desc = "A fancy black Adhomian cloak."
-	icon = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_state = "hb_cloak"
 	item_state = "hb_cloak"
 

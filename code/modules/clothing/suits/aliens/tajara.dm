@@ -71,11 +71,14 @@
 	item_state = "greenservice"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-/obj/item/clothing/suit/storage/tajaran/pra_jacket/armored
+/obj/item/clothing/suit/storage/armored/tajaran/pra_jacket
 	name = "Adhomian surplus jacket"
 	desc = "An olive surplus jacket worn by the forces of the People's Republic of Adhomai's Grand People's Army."
+	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
+	icon_override = 'icons/mob/clothing/species/tajaran/coats.dmi'
 	armor_type = /datum/armor/station/padded
 	siemens_coefficient = 0.50
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/suit/storage/tajaran/dpra_jacket
 	name = "DPRA jacket"
@@ -123,7 +126,7 @@
 	icon_state = "finecoat_blue"
 	item_state = "finecoat_blue"
 
-/obj/item/clothing/suit/storage/tajaran/nka_merchant_navy
+/obj/item/clothing/suit/storage/tajaran/nka/merchant_navy
 	name = "his majesty's mercantile flotilla captain coat"
 	desc = "A fancy coat worn by captains of the New Kingdom's mercantile navy. It offers extra protection against space wind."
 	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
@@ -140,7 +143,7 @@
 	item_state = "hunter_coat"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
-/obj/item/clothing/suit/storage/tajaran/archeologist
+/obj/item/clothing/suit/storage/tajaran/expo/archeologist
 	name = "Adhomian archeologist jacket"
 	desc = "A leather jacket used by Adhomian archeologists."
 	icon = 'icons/obj/clothing/species/tajaran/coats.dmi'
@@ -205,8 +208,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/tajaran/cloak/fancy
 
-//TODO: Sprite some cloak hoods
-//Hoods no sprites
+//Hoods
 /obj/item/clothing/head/hood/tajaran/cloak
 	name  = "Adhomian maroon cloak hood"
 	desc = "A hood attached to a Maroon cloak"

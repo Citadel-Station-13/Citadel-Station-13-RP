@@ -289,6 +289,19 @@
 
 //Accessories
 
+/datum/gear/xeno/tajaran/accessories/tajara_wrap
+	name = "Tajaran - Marriage wrap"
+	description = "A holy cloth wrap that signifies marriage amongst tajara."
+	path = /obj/item/clothing/accessory/tajaran_wrap
+
+/datum/gear/xeno/tajaran/accessories/tajara_wrap/New()
+	..()
+	var/list/tajara_wraps = list()
+	for(var/tajara_wrap in (typesof(/obj/item/clothing/accessory/tajaran_wrap)))
+		var/obj/item/clothing/accessory/tajaran_wrap/tajara_wrap_type = tajara_wrap
+		tajara_wraps[initial(tajara_wrap_type.name)] = tajara_wrap_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_wraps, /proc/cmp_text_asc))
+
 //Foot wear
 
 /datum/gear/xeno/tajaran/shoes/workboots
@@ -304,16 +317,28 @@
 		tworkboots[initial(tworkboot_type.name)] = tworkboot_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tworkboots, /proc/cmp_text_asc))
 
-
-/datum/gear/xeno/shoes/tajaran/footwraps
+/datum/gear/xeno/tajaran/shoes/footwraps
 	name = "Tajaran - Native foot-wear"
 	description = "Native foot and leg wear worn by Tajara, completely covering the legs in wraps and the feet in adhomian fabric."
 	path = /obj/item/clothing/shoes/tajara/footwraps
 
-/datum/gear/xeno/shoes/tajaran/fancy
+/datum/gear/xeno/tajaran/shoes/fancy
 	name = "Tajaran - Fancy adhomian shoes"
 	description = "A pair of fancy Tajaran shoes used for formal occasions."
 	path = /obj/item/clothing/shoes/tajara/fancy
+
+/datum/gear/xeno/tajaran/shoes/flats
+	name = "Tajaran - Adhomian flats selection"
+	description = "Dress flats, in a selection of colors. Best fitted for Tajara."
+	path = /obj/item/clothing/shoes/flats/tajara
+
+/datum/gear/xeno/tajaran/shoes/flats/New()
+	..()
+	var/list/tflats = list()
+	for(var/tflat in (typesof(/obj/item/clothing/shoes/flats/tajara)))
+		var/obj/item/clothing/shoes/flats/tajara/tflat_type = tflat
+		tflats[initial(tflat_type.name)] = tflat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tflats, /proc/cmp_text_asc))
 
 //*Promethean
 /datum/gear/xeno/promethean/uniform/cohesion_suit

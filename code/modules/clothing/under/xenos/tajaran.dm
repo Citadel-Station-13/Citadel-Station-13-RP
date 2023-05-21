@@ -117,6 +117,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/blue
+	name = "blue fancy adhomian dress"
 	desc = "Created for the rich and party-loving circles of Adhomai, this dress is fashioned from smooth silk and is see through at parts. This one is blue."
 	icon_state = "taj_dress_skyblue"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -124,6 +125,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/green
+	name = "green fancy adhomian dress"
 	desc = "Created for the rich and party-loving circles of Adhomai, this dress is fashioned from smooth silk and is see through at parts. This one is green."
 	icon_state = "taj_dress_green"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -131,6 +133,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/red
+	name = "red fancy adhomian dress"
 	desc = "Created for the rich and party-loving circles of Adhomai, this dress is fashioned from smooth silk and is see through at parts. This one is red."
 	icon_state = "taj_dress_red"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -138,7 +141,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/fancy
-	name = "noble adhomian dress"
+	name = "red noble adhomian dress"
 	desc = "The classical dress of the Adhomian royalty, only to be worn during the special occassions. This one is crimson red."
 	icon_state = "taj_dress_fancy"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -146,6 +149,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/fancy/black
+	name = "black noble adhomian dress"
 	desc = "The classical dress of the Adhomian royalty, only to be worn during the special occassions. This one is dark black."
 	icon_state = "taj_dress_fancy_dark"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -153,7 +157,7 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/formal
-	name = "fancy uniform with skirt"
+	name = "fancy adhomian uniform with skirt"
 	desc = "Formal Tajaran clothing with a skirt."
 	icon_state = "female_taj_fancy"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
@@ -161,18 +165,20 @@
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/formal/alt1
+	name = "fancy adhomian uniform with skirt, alt1"
 	icon_state = "female_taj_fancy_alt1"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/dress/tajaran/formal/alt2
+	name = "fancy adhomian uniform with skirt, alt2"
 	icon_state = "female_taj_fancy_alt2"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-/obj/item/clothing/under/dress/tajaran/summer
+/obj/item/clothing/under/tajaran/summer/dress
 	name = "adhomian summer dress"
 	desc = "An Adhomian dress usually worn during the summer."
 	icon_state = "summer-dress"
@@ -182,7 +188,7 @@
 	body_cover_flags = LOWER_TORSO
 	starting_accessories = list(/obj/item/clothing/accessory/tajaran/summershirt)
 
-/obj/item/clothing/under/pants/tajaran
+/obj/item/clothing/under/tajaran/summer/pants
 	name = "adhomian summer pants"
 	desc = "A pair of adhomian pants usually worn during the summer."
 	icon_state = "summer-pants"
