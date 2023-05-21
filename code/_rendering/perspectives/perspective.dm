@@ -440,6 +440,7 @@
 /datum/perspective/proc/update_vision_overlays()
 	if(isnull(darksight_overlay))
 		return
+	darksight_overlay.overlays = list()
 	switch(darkvision_fov)
 		if(SOFT_DARKSIGHT_FOV_270)
 			darksight_overlay.icon_state = "fade-270-hard"
@@ -452,6 +453,7 @@
 	var/matrix/transformed = matrix()
 	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
 	transformed.Scale(factor, factor)
+	darksight_overlay.alpha = darkvision_alpha
 	darksight_overlay.transform = transformed
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)

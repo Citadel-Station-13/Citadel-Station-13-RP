@@ -1,4 +1,6 @@
 /atom/movable/screen/plane_master
+	icon = null
+	icon_state = null
 	screen_loc = "CENTER"
 	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
 	appearance_flags = PLANE_MASTER
@@ -23,12 +25,13 @@
 /atom/movable/screen/plane_master/space
 	plane = SPACE_PLANE
 	alpha = 255
-	mouse_opacity = 1
+	mouse_opacity = MOUSE_OPACITY_ICON
 	client_global = TRUE
 	special_managed = TRUE
 
 /atom/movable/screen/plane_master/parallax
 	plane = PARALLAX_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
 	client_global = TRUE
@@ -104,10 +107,12 @@
 /atom/movable/screen/plane_master/darkvision_plate
 	plane = DARKVISION_PLATE_PLANE
 	render_target = DARKVISION_PLATE_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
 	blend_mode = BLEND_ADD
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
@@ -115,6 +120,7 @@
 /atom/movable/screen/plane_master/sonar
 	plane = SONAR_PLANE
 	default_invisible = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/observer
 	plane = OBSERVER_PLANE
@@ -126,6 +132,7 @@
 	default_invisible = TRUE
 	special_managed = TRUE
 	client_global = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /atom/movable/screen/plane_master/augmented
 	plane = AUGMENTED_PLANE

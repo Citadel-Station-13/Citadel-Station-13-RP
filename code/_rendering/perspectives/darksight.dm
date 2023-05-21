@@ -1,6 +1,6 @@
 /atom/movable/screen/darksight
 	icon =  SOFT_DARKSIGHT_15X15_ICON
-	icon_state = "fade-circle"
+	icon_state = "full-square"
 	plane = DARKVISION_PLATE_PLANE
 	layer = DARKVISION_PLATE_LAYER_MULTIPLIER
 	alpha = 0
