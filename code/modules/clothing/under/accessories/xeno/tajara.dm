@@ -81,48 +81,54 @@
 	item_state = "wrap_female"
 
 //Cloaks
-/obj/item/clothing/accessory/poncho/tajarancloak
+//No sprites for tesh and vox. No I'm not spriting them
+/obj/item/clothing/accessory/tponcho/tajarancloak
 	name = "Adhomian common cloak"
 	desc = "A tajaran cloak made with the middle class in mind, fancy but nothing special."
 	icon = 'icons/mob/clothing/species/tajaran/ties.dmi'
 	icon_override = 'icons/obj/clothing/species/tajaran/ties.dmi'
 	icon_state = "taj_commoncloak"
 	item_state = "taj_commoncloak"
+	var/fire_resist = T0C+100
+	allowed = list(/obj/item/tank/emergency/oxygen)
+	armor_type = /datum/armor/none
+	slot_flags = SLOT_OCLOTHING | SLOT_TIE
+	body_cover_flags = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	siemens_coefficient = 0.9
+	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
-/obj/item/clothing/accessory/poncho/tajarancloak/fancy
+/obj/item/clothing/accessory/tponcho/tajarancloak/fancy
 	name = "Adhomian fancy cloak"
 	desc = "A cloak fashioned from the best materials, meant for tajara of high standing."
 	icon_state = "taj_fancycloak"
 	item_state = "taj_fancycloak"
 
-/obj/item/clothing/accessory/poncho/tajarancloak/maroon
+/obj/item/clothing/accessory/tponcho/tajarancloak/maroon
 	name = "Adhomian maroon cloak"
 	desc = "A simple maroon colored Adhomian cloak."
-	icon = 'icons/mob/clothing/species/tajaran/suits.dmi'
-	icon_override = 'icons/obj/clothing/species/tajaran/suits.dmi'
 	icon_state = "maroon_cloak"
 	item_state = "maroon_cloak"
 
-/obj/item/clothing/accessory/poncho/tajarancloak/amohda
+/obj/item/clothing/accessory/tponcho/tajarancloak/amohda
 	name = "Amohdan cloak"
 	desc = "Originally used by the Amohdan swordsmen before the First Revolution, this cloak is now commonly worn by the island population."
 	icon_state = "amohda_cloak"
 	item_state = "amohda_cloak"
 
-/obj/item/clothing/accessory/poncho/tajarancloak/winter
+/obj/item/clothing/accessory/tponcho/tajarancloak/winter
 	name = "Adhomian winter cloak"
 	desc = "A simple wool cloak used during the early days of the lesser winter."
 	icon_state = "winter_cloak"
 	item_state = "winter_cloak"
 
-/obj/item/clothing/accessory/poncho/tajarancloak/royalist
+/obj/item/clothing/accessory/tponcho/tajarancloak/royalist
 	name = "Adhomian royalist cloak"
 	desc = "An Adhomian cloak with an asymmetric design. The symbol of the New Kingdom of Adhomai is at its back."
 	icon_state = "royalist_cloak"
 	item_state = "royalist_cloak"
 
-/obj/item/clothing/accessory/poncho/tajarancloak/fancy
+/obj/item/clothing/accessory/tponcho/tajarancloak/fancy
 	name = "Fancy adhomian cloak"
 	desc = "A fancy black Adhomian cloak."
 	icon_state = "hb_cloak"
