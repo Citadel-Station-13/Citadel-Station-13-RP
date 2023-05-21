@@ -1116,7 +1116,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance/substation/surface_atmos
 	name = "\improper Surface Atmos Substation"
 
+/area/maintenance/substation/service
+	name = "\improper Service Substation"
 
+/area/maintenance/substation/hanger
+	name = "\improper Hanger Substation"
 //Hallway
 
 /area/hallway/primary/
@@ -1901,6 +1905,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Engineering"
 	icon_state = "engineering"
 	ambience = AMBIENCE_ENGINEERING
+
+/area/engineering/shield_gen
+	name = "\improper Shield Generation"
+	ambience = AMBIENCE_SUBSTATION
 
 /area/engineering/atmos
 	name = "\improper Atmospherics"
