@@ -4,8 +4,9 @@
 /datum/ability/species/sonar
 	name = "Sonar Ping"
 	desc = "You send out a echolocating pulse, briefly showing your environment past the visible"
-	action_state = "ling_augmented_eyesight"
+	action_state = "shield"
 	cooldown = 8 SECONDS
+	always_bind = TRUE
 
 /datum/ability/species/sonar/unavailable_reason()
 	if(owner?.incapacitated())
@@ -27,7 +28,7 @@
 	owner.plane_holder.set_vis(VIS_SONAR, TRUE)
 	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
 	sonar_automata.receiver = owner
-	sonar_automata.setup_auto(get_turf(src), 14)
+	sonar_automata.setup_auto(get_turf(owner), 14)
 	sonar_automata.start()
 	addtimer(CALLBACK(owner.plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
 
