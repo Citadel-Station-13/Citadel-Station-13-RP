@@ -21,6 +21,19 @@
 	name = "Rift"
 	full_name = "NSB Atlas"
 	path = "rift"
+	levels = list(
+		/datum/map_level/rift/station/underground_floor,
+		/datum/map_level/rift/station/underground_deep,
+		/datum/map_level/rift/station/underground_shallow,
+		/datum/map_level/rift/station/surface_low,
+		/datum/map_level/rift/station/surface_mid,
+		/datum/map_level/rift/station/surface_high,
+		/datum/map_level/rift/base,
+		/datum/map_level/rift/deep,
+		/datum/map_level/rift/caves,
+		/datum/map_level/rift/plains,
+		/datum/map_level/rift/colony,
+	)
 
 	use_overmap = TRUE
 	overmap_z = Z_LEVEL_MISC

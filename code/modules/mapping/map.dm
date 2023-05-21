@@ -27,6 +27,7 @@ var/list/all_maps = list()
 	/// in-code name
 	var/name = "Unknown Map"
 	/// /datum/map_level datums. starts off as paths, inits later.
+	//  todo: for now, this must be in sequential order from bottom to top for multiz maps. this will be fixed when we rework our multiz stack system.
 	var/list/datum/map_level/levels
 	/// dependencies by id or path of other maps
 	var/list/dependencies
