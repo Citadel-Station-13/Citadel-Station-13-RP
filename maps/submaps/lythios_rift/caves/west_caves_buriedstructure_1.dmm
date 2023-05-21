@@ -213,7 +213,7 @@
 	icon_state = "1-4"
 	},
 /obj/item/paper/crumpled{
-	info = "cold... so cold... I can hardly keep my hand strait. This is... my last will and... testim.... [i] the writing becomes mere scribbles at this point before trailing off the paper [/i]"
+	info = "cold... so cold... I can hardly keep my hand strait. This is... my last will and... testim.... <i> the writing becomes mere scribbles at this point before trailing off the paper </i>"
 	},
 /obj/item/pen{
 	pixel_x = -12
