@@ -128,7 +128,6 @@
 	icon_state = "praberet"
 	item_state = "praberet"
 	body_cover_flags = HEAD
-	inv_hide_flags = HIDEEARS|BLOCKHAIR
 
 /obj/item/clothing/head/beret/tajaran/dpra
 	name = "liberation army beret"
