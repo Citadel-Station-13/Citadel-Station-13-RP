@@ -422,6 +422,18 @@
 	name = "Disenchanted Bone Talisman"
 	path = /obj/item/clothing/accessory/disenchanted_talisman
 
+/datum/gear/accessory/legwarmers
+	name = "Thigh-Length Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmers
+
+/datum/gear/accessory/legwarmersmedium
+	name = "Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmersmedium
+
+/datum/gear/accessory/legwarmersshort
+	name = "Short Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmersshort
+
 /datum/gear/accessory/halo_projector
 	name = "Holographic Halo Projector"
 	path = /obj/item/clothing/accessory/halo_projector

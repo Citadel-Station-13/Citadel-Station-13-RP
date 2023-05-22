@@ -6258,8 +6258,8 @@
 /obj/item/clothing/head/helmet,
 /obj/item/clothing/accessory/armor/helmcover/navy,
 /obj/item/clothing/accessory/armor/helmcover/navy,
-/obj/item/clothing/accessory/armor/tag/sec,
-/obj/item/clothing/accessory/armor/tag/sec,
+/obj/item/clothing/accessory/armor/tag/civsec,
+/obj/item/clothing/accessory/armor/tag/civsec,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "nI" = (

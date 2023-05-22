@@ -821,6 +821,10 @@ Swimsuits
 	name = "Asmodai Laced Blouse"
 	path = /obj/item/clothing/under/asmodai
 
+/datum/gear/uniform/blackshortsripped
+	name = "Ripped Black Shorts"
+	path = /obj/item/clothing/under/blackshortsripped
+
 /datum/gear/uniform/summerdress_selection
 	name = "Summer Dress Selection"
 	path = /obj/item/clothing/under/dress/summer
