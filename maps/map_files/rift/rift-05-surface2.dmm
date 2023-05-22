@@ -811,6 +811,24 @@
 	alpha = 255
 	},
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ayE" = (
@@ -10814,6 +10832,7 @@
 "gKK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/research/researchdivision)
 "gKT" = (
@@ -15259,7 +15278,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "2-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
@@ -17594,6 +17613,9 @@
 "kXq" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
@@ -33794,18 +33816,18 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vSw" = (
@@ -35134,9 +35156,9 @@
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/fnseven/vintage,
-/obj/item/gun/ballistic/fnseven/vintage,
-/obj/item/gun/ballistic/fnseven/vintage,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wRc" = (

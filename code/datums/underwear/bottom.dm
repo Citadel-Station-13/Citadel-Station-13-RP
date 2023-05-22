@@ -153,3 +153,8 @@
 	name = "Mankini"
 	icon_state = "mankini"
 	has_color = TRUE
+
+/datum/category_item/underwear/bottom/panties_trimmed
+	name = "Panties, Trimmed"
+	icon_state = "panties_trimmed"
+	has_color = TRUE

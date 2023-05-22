@@ -4949,6 +4949,10 @@
 "TF" = (
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"TK" = (
+/obj/item/radio/beacon/anchored,
+/turf/simulated/floor/tiled,
+/area/gateway/prep_room)
 "TR" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -36636,7 +36640,7 @@ xt
 TW
 TF
 qX
-TF
+TK
 TF
 yY
 Dk

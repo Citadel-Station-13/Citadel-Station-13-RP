@@ -134,38 +134,137 @@
 	build_path = /obj/item/ammo_magazine/m57x28mmp90
 	sort_string = "MABBD"
 
-/datum/design/item/weapon/ballistic/ammo/m57x28mm
-	name = "5.7 magazine"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles
+	name = "5.7 top-mounted magazine"
 	desc = "A standard capacity sidearm magazine (5.7x28mm)."
-	id = "m57x28mm"
+	id = "ntles"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
-	materials = list(MAT_STEEL = 1750, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm
+	materials = list(MAT_STEEL = 1500, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles
 	sort_string = "MABCA"
 
-/datum/design/item/weapon/ballistic/ammo/m57x28mm/ap
-	name = "5.7 magazine (AP)"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/ap
+	name = "5.7 top-mounted magazine (AP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
-	id = "m57x28mmap"
-	materials = list(MAT_STEEL = 2500, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/ap
+	id = "ntlesap"
+	materials = list(MAT_STEEL = 1500, MAT_COPPER = 1000)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/ap
 	sort_string = "MABCB"
 
-/datum/design/item/weapon/ballistic/ammo/m57x28mm/hp
-	name = "5.7 magazine (HP)"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/hp
+	name = "5.7 top-mounted magazine (HP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
-	id = "m57x28mmhp"
-	materials = list(MAT_STEEL = 2100, MAT_COPPER = 750)
-	build_path = /obj/item/ammo_magazine/m57x28mm/hp
+	id = "ntleshp"
+	materials = list(MAT_STEEL = 1500, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hp
 	sort_string = "MABCC"
 
-/datum/design/item/weapon/ballistic/ammo/m57x28mm/hunter
-	name = "5.7 magazine (Hunter)"
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/hunter
+	name = "5.7 top-mounted magazine (Hunter)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
-	id = "m57x28mmhunter"
-	materials = list(MAT_STEEL = 1750, MAT_COPPER = 1250)
-	build_path = /obj/item/ammo_magazine/m57x28mm/hunter
+	id = "ntleshunter"
+	materials = list(MAT_STEEL = 1500, MAT_COPPER = 500)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hunter
 	sort_string = "MABCD"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap
+	name = "5.7 highcap top-mounted magazine"
+	desc = "A high capacity sidearm magazine (5.7x28mm)."
+	id = "ntleshc"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap
+	sort_string = "MABDA"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/ap
+	name = "5.7 highcap top-mounted magazine (AP)"
+	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
+	id = "ntleshcap"
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2500)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
+	sort_string = "MABDB"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hp
+	name = "5.7 highcap top-mounted magazine (HP)"
+	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
+	id = "ntleshchp"
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
+	sort_string = "MABDC"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hunter
+	name = "5.7 highcap top-mounted magazine (Hunter)"
+	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
+	id = "ntleshchunter"
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 1750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
+	sort_string = "MABDD"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven
+	name = "5.7 sidearm magazine"
+	desc = "A standard capacity sidearm magazine (5.7x28mm)."
+	id = "fiveseven"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MAT_STEEL = 1250, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven
+	sort_string = "MABEA"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/ap
+	name = "5.7 sidearm magazine (AP)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
+	id = "fivesevenap"
+	materials = list(MAT_STEEL = 1250, MAT_COPPER = 1000)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/ap
+	sort_string = "MABEB"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/hp
+	name = "5.7 sidearm magazine (HP)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
+	id = "fivesevenhp"
+	materials = list(MAT_STEEL = 1250, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hp
+	sort_string = "MABEC"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/hunter
+	name = "5.7 sidearm magazine (Hunter)"
+	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
+	id = "fivesevenhunter"
+	materials = list(MAT_STEEL = 1250, MAT_COPPER = 250)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hunter
+	sort_string = "MABED"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap
+	name = "5.7 sidearm high-cap magazine"
+	desc = "A high capacity sidearm magazine (5.7x28mm)."
+	id = "fivesevenhc"
+	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
+	materials = list(MAT_STEEL = 2000, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap
+	sort_string = "MABFA"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/ap
+	name = "5.7 sidearm high-cap magazine (AP)"
+	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
+	id = "fivesevenhcap"
+	materials = list(MAT_STEEL = 2500, MAT_COPPER = 1000)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/ap
+	sort_string = "MABFB"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hp
+	name = "5.7 sidearm high-cap magazine (HP)"
+	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
+	id = "fivesevenhchp"
+	materials = list(MAT_STEEL = 2000, MAT_COPPER = 750)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hp
+	sort_string = "MABFC"
+
+/datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hunter
+	name = "5.7 sidearm high-cap magazine (Hunter)"
+	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
+	id = "fivesevenhchunter"
+	materials = list(MAT_STEEL = 2000, MAT_COPPER = 500)
+	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hunter
+	sort_string = "MABFD"
 
 // Phase weapons
 
