@@ -15,6 +15,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	name = "power storage unit"
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit."
 	icon_state = "smes"
+	icon = 'icons/obj/power_vr.dmi'
 	density = 1
 	anchored = 1
 	use_power = USE_POWER_OFF
@@ -111,19 +112,19 @@ GLOBAL_LIST_EMPTY(smeses)
 
 	var/list/overlays_to_add = list()
 
-	overlays_to_add += image('icons/obj/power.dmi', "smes-op[outputting]")
+	overlays_to_add += image(icon, "smes-op[outputting]")
 
 	if(inputting == 2)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-oc2")
+		overlays_to_add += image(icon, "smes-oc2")
 	else if (inputting == 1)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-oc1")
+		overlays_to_add += image(icon, "smes-oc1")
 	else
 		if(input_attempt)
-			overlays_to_add += image('icons/obj/power.dmi', "smes-oc0")
+			overlays_to_add += image(icon, "smes-oc0")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
-		overlays_to_add += image('icons/obj/power.dmi', "smes-og[clevel]")
+		overlays_to_add += image(icon, "smes-og[clevel]")
 
 	add_overlay(overlays_to_add)
 
