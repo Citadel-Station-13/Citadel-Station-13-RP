@@ -463,33 +463,33 @@
 */
 
 //Exploration/Pathfinder Sidearms
-/obj/item/gun/ballistic/fnseven
+/obj/item/gun/ballistic/ntles
 	name = "NT-57 'LES'"
 	desc = "The NT-57 'LES' (Light Expeditionary Sidearm) is a tried and tested pistol often issued to Pathfinders. Featuring a polymer frame, collapsible stock, and integrated optics, the LES is lightweight and reliably functions in nearly any hazardous environment, including vacuum."
-	icon_state = "nt57"
+	icon_state = "ntles"
 	item_state = "pistol"
 	caliber = "5.7x28mm"
 	load_method = MAGAZINE
 	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
-	magazine_type = /obj/item/ammo_magazine/m57x28mm
-	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/ntles
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/ntles)
 	projectile_type = /obj/projectile/bullet/pistol/lap
 	one_handed_penalty = 30
 	var/collapsible = 1
 	var/extended = 0
 
-/obj/item/gun/ballistic/fnseven/update_icon_state()
+/obj/item/gun/ballistic/ntles/update_icon_state()
 	. = ..()
 	if(!extended && ammo_magazine)
-		icon_state = "nt57"
+		icon_state = "ntles"
 	else if(extended && ammo_magazine)
-		icon_state = "nt57_extended"
+		icon_state = "ntles_extended"
 	else if(extended && !ammo_magazine)
-		icon_state = "nt57_extended-e"
+		icon_state = "ntles_extended-e"
 	else
-		icon_state = "nt57-e"
+		icon_state = "ntles-e"
 
-/obj/item/gun/ballistic/fnseven/attack_self(mob/user, obj/item/gun/G)
+/obj/item/gun/ballistic/ntles/attack_self(mob/user, obj/item/gun/G)
 	if(collapsible && !extended)
 		to_chat(user, "<span class='notice'>You pull out the stock on the [src], steadying the weapon.</span>")
 		w_class = ITEMSIZE_LARGE
@@ -506,22 +506,31 @@
 		extended = 0
 		update_icon()
 
-/obj/item/gun/ballistic/fnseven/pathfinder
+/obj/item/gun/ballistic/ntles/pathfinder
 	pin = /obj/item/firing_pin/explorer
 
-/obj/item/gun/ballistic/fnseven/vintage
-	name = "5.7 sidearm"
-	desc = "This classic sidearm design utilizes an adaptable round considered to be superior to 9mm parabellum. It shares a round type with the H90K."
-	icon_state = "fnseven"
-	collapsible = 0
-	extended = 1
+/obj/item/gun/ballistic/fiveseven
+	name = "\improper Five-seven sidearm"
+	desc = "This classic sidearm design utilizes an adaptable round considered by some to be superior to 9mm parabellum. Favored amongst sheild bearers in tactical units for its stability in one-handed use, and high capacity magazines."
+	icon_state = "fiveseven"
+	item_state = "pistol"
+	caliber = "5.7x28mm"
+	load_method = MAGAZINE
+	w_class = ITEMSIZE_SMALL
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2)
+	magazine_type = /obj/item/ammo_magazine/m57x28mm/fiveseven
+	allowed_magazines = list(/obj/item/ammo_magazine/m57x28mm/fiveseven)
+	one_handed_penalty = 0
 
-/obj/item/gun/ballistic/fnseven/vintage/update_icon_state()
+/obj/item/gun/ballistic/fiveseven/update_icon_state()
 	. = ..()
-	if(ammo_magazine)
-		icon_state = "fnseven"
+	if(istype(ammo_magazine,/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap))
+		icon_state = "fiveseven-extended"
 	else
-		icon_state = "fnseven-e"
+		if(ammo_magazine)
+			icon_state = "fiveseven"
+		else
+			icon_state = "fiveseven-e"
 
 //Apidean Weapons
 /obj/item/gun/ballistic/apinae_pistol

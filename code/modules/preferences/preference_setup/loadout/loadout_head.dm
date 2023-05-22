@@ -263,6 +263,14 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/head/beretbs
+	name = "Blueshield Beret"
+	path = /obj/item/clothing/head/beret/sec/corporate/blueshield
+
+/datum/gear/head/beretbs/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
 /datum/gear/head/sombrero
 	name = "Sombrero"
 	path = /obj/item/clothing/head/sombrero
