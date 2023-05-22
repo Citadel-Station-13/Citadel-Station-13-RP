@@ -52,6 +52,7 @@
 	character.flavor_texts["legs"]		= pref.flavor_texts["legs"]
 	character.flavor_texts["feet"]		= pref.flavor_texts["feet"]
 	character.ooc_notes 				= pref.metadata
+	character.profile_text              = pref.profile_text
 	return TRUE
 
 /datum/category_item/player_setup_item/general/flavor/content(datum/preferences/prefs, mob/user, data)

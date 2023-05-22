@@ -19,6 +19,7 @@
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
+	S["Profile_Text"]           >> pref.profile_text
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -29,6 +30,7 @@
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
+	S["Profile_Text"]           << pref.profile_text
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/species_name = pref.real_species_name()
@@ -82,6 +84,7 @@
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
 	. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+	. += "<b>Profile Text:</b> <a href='?src=\ref[src];profile=1'> Edit </a><br>"
 	. = jointext(., null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
@@ -148,6 +151,12 @@
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see in terms of roleplay preferences (including any ERP consent / preference information). This information is considered OOC, unlike 'Flavor Text'.", "OOC Notes" , html_decode(pref.metadata)) as message, extra = 0)
 		if(!isnull(new_metadata) && CanUseTopic(user))
 			pref.metadata = new_metadata
+			return PREFERENCES_REFRESH
+
+	else if(href_list["profile"])
+		var/new_profile = sanitize(input(user, "Enter any information you'd like others to see about your character - information entered here is considered Out Of Character knowledge. You may use the same emphasis characters used in speech here.", "OOC Notes" , html_decode(pref.profile_text)) as message, extra = 0)
+		if(!isnull(new_profile) && CanUseTopic(user))
+			pref.profile_text = new_profile
 			return PREFERENCES_REFRESH
 
 	return ..()
