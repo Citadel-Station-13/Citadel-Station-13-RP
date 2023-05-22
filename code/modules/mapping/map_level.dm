@@ -31,6 +31,9 @@
 
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
 	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
+	//! legacy: what planet to make/use
+	var/planet_path
+	#warn hook planet_path
 
 // Holomaps
 	var/holomap_offset_x = -1	// Number of pixels to offset the map right (for centering) for this z

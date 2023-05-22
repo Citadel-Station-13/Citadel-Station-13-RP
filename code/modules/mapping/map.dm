@@ -33,6 +33,10 @@ var/list/all_maps = list()
 	var/list/dependencies
 	/// are we loaded in
 	var/tmp/loaded = FALSE
+	/// declared width = must match all levels
+	var/width
+	/// declared height - must match all levels
+	var/height
 
 /datum/map/serialize()
 	. = ..()
@@ -45,6 +49,8 @@ var/list/all_maps = list()
 			continue
 		serialized_levels += json_encode(level.serialize())
 	.["dependencies"] = dependencies
+	.["width"] = width
+	.["height"] = height
 
 /datum/map/deserialize(list/data)
 	if(loaded)
@@ -68,6 +74,8 @@ var/list/all_maps = list()
 		// hopefully an id
 		levels += level
 	dependencies = .["dependencies"]
+	width = .["width"]
+	height = .["height"]
 
 #warn wow
 

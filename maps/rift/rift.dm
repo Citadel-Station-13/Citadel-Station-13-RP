@@ -19,8 +19,6 @@
 /datum/map/station/rift
 	id = "rift"
 	name = "Rift"
-	full_name = "NSB Atlas"
-	path = "rift"
 	levels = list(
 		/datum/map_level/rift/station/underground_floor,
 		/datum/map_level/rift/station/underground_deep,
@@ -34,6 +32,14 @@
 		/datum/map_level/rift/plains,
 		/datum/map_level/rift/colony,
 	)
+	width = 192
+	height = 192
+
+
+	#warn *scream
+
+	full_name = "NSB Atlas"
+	path = "rift"
 
 	use_overmap = TRUE
 	overmap_z = Z_LEVEL_MISC
@@ -242,6 +248,7 @@
 	name = "Rift - East Canyon"
 	display_id = "atlas-underground-3"
 	display_name = "NSB Atlas Underground -3 (Canyon)"
+	absolute_path = "maps/rift/levels/rift-01-underground3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -249,12 +256,14 @@
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/station/underground_deep
 	id = "RiftUnderground2"
 	name = "Rift - Underground 2"
 	display_id = "atlas-underground-2"
 	display_name = "NSB Atlas Underground -2 (Engineering Deck)"
+	absolute_path = "maps/rift/levels/rift-02-underground2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -262,12 +271,14 @@
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/station/underground_shallow
 	id = "RiftUnderground1"
 	name = "Rift - Underground 1"
 	display_id = "atlas-underground-1"
 	display_name = "NSB Atlas Underground -1 (Maintenance Deck)"
+	absolute_path = "maps/rift/levels/rift-03-underground1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -275,12 +286,14 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/station/surface_low
 	id = "RiftSurface1"
 	name = "Rift - Surface 1"
 	display_id = "atlas-surface-1"
 	display_name = "NSB Atlas Surface 1 (Logistics Deck)"
+	absolute_path = "maps/rift/levels/rift-04-surface1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -289,12 +302,14 @@
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	transit_chance = 100
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/station/surface_mid
 	id = "RiftSurface2"
 	name = "Rift - Surface 2"
 	display_id = "atlas-surface-2"
 	display_name = "NSB Atlas Surface 2 (Operations Deck)"
+	absolute_path = "maps/rift/levels/rift-05-surface2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -302,12 +317,14 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/station/surface_high
 	id = "RiftSurface3"
 	name = "Rift - Surface 3"
 	display_id = "atlas-surface-3"
 	display_name = "NSB Atlas Surface 3 (Command Deck)"
+	absolute_path = "maps/rift/levels/rift-06-surface3.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -315,54 +332,64 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/base
 	id = "RiftWestUnderground3"
 	name = "Rift - West Canyon"
 	display_id = "atlas-west-canyon"
 	display_name = "NSB Atlas Western Canyons"
+	absolute_path = "maps/rift/levels/rift-07-west_base.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/deep
 	id = "RiftWestUnderground2"
 	name = "Rift - West Caves (Deep)"
 	display_id = "atlas-west-deep"
 	display_name = "NSB Atlas Western Caves - Deep"
+	absolute_path = "maps/rift/levels/rift-08-west_deep.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/caves
 	id = "RiftWestUnderground1"
 	name = "Rift - West Caves (Shallow)"
 	display_id = "atlas-west-caves"
 	display_name = "NSB Atlas Western Caves - Shallow"
+	absolute_path = "maps/rift/levels/rift-09-west_caves.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/plains
 	id = "RiftWestSurface1"
 	name = "Rift - Western Plains"
 	display_id = "atlas-west-plains"
 	display_name = "NSB Atlas Western Plains"
+	absolute_path = "maps/rift/levels/rift-10-west_plains.dmm"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	planet_path = /datum/planet/lythios43c
 
 /datum/map_level/rift/colony
 	id = "RiftOrbitalRelay"
 	name = "Rift - Orbital Relay"
 	display_id = "atlas-relay"
 	display_name = "NSB Atlas Orbital Relay"
+	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT

@@ -1,31 +1,3 @@
-//////////////////////////////////////////
-/// Rift Z Level Weather Definerinator ///
-//////////////////////////////////////////
-/*
-Designates the z levels for weather to generate on. TODO, find a way of
-handling this automatically without having to load these after the map defines.
-The rest of the weather defines have been moved to code/modules/maps/weather
-
-*/
-
-///////////////////////
-/// Lythios Weather ///
-///////////////////////
-var/datum/planet/lythios43c/planet_lythios43c = null
-
-/datum/planet/lythios43c
-	expected_z_levels = list(
-						Z_LEVEL_UNDERGROUND_FLOOR,
-						Z_LEVEL_UNDERGROUND_DEEP,
-						Z_LEVEL_UNDERGROUND,
-						Z_LEVEL_SURFACE_LOW,
-						Z_LEVEL_SURFACE_MID,
-						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_WEST_BASE,
-						Z_LEVEL_WEST_DEEP,
-						Z_LEVEL_WEST_CAVERN,
-						Z_LEVEL_WEST_PLAIN
-						)
 
 ///////////////////////
 /// Class D Weather ///

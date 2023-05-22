@@ -25,34 +25,6 @@
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 
-/*
-
-////////////////////////////////////////////////////////
-/// Lava Land - Event Dungeon						 ///
-////////////////////////////////////////////////////////
-
-// This one is not permanent. Comment this out once it's done.
-/datum/map_template/lateload/unique/lavaland_dungeon
-	name = "Away Mission - Lava Land (Dungeon)"
-	desc = "The flooded."
-	mappath = "maps/map_levels/192x192/lavaland_dungeon.dmm"
-	associated_map_datum = /datum/map_level/unique_lateload/lavaland_dungeon
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_level/unique_lateload/lavaland_dungeon
-	name = "Away Mission - Lava Land (Dungeon)"
-
-/datum/map_template/lateload/unique/lavaland_dungeon/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(z), 0, /area/lavaland/east/unexplored, /datum/map_template/submap/level_specific/lavaland)
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4)
-*/
-
-////////////////////////////////////////////////////////
-/// Lava Land - East								 ///
-////////////////////////////////////////////////////////
-
 /datum/map_template/lateload/unique/lavaland_east
 	name = "Away Mission - Lava Land (East)"
 	desc = "The forgotten."
@@ -72,3 +44,5 @@
 
 /obj/landmark/map_data/lavaland_east
 	height = 1
+
+#warn translate
