@@ -26,6 +26,8 @@ var/list/all_maps = list()
 	var/id
 	/// in-code name
 	var/name = "Unknown Map"
+	/// in-code category
+	var/category = "Misc"
 	/// /datum/map_level datums. starts off as paths, inits later.
 	//  todo: for now, this must be in sequential order from bottom to top for multiz maps. this will be fixed when we rework our multiz stack system.
 	var/list/datum/map_level/levels
@@ -85,9 +87,9 @@ var/list/all_maps = list()
  * this is what's loaded at init. this determines what other maps initially load.
  */
 /datum/map/station
-	var/name = "Unnamed Map"
+	category = "Stations"
+
 	var/full_name = "Unnamed Map"
-	var/path
 
 	// Automatically populated lists made static for faster lookups
 	var/list/zlevels = list()
@@ -194,9 +196,6 @@ var/list/all_maps = list()
 
 /datum/map/station/New()
 	..()
-	if(zlevel_datum_type)
-		for(var/type in subtypesof(zlevel_datum_type))
-			new type(src)
 	if(!map_levels)
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)

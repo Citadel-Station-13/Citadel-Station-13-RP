@@ -39,8 +39,6 @@
 	#warn *scream
 
 	full_name = "NSB Atlas"
-	path = "rift"
-
 	use_overmap = TRUE
 	overmap_z = Z_LEVEL_MISC
 	overmap_size = 60
