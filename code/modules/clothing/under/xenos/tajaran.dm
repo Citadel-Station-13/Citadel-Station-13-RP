@@ -315,7 +315,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-//Yet again no armor
 /obj/item/clothing/under/tajaran/pvsm
 	name = "people's volunteer spacer militia uniform"
 	desc = "A military uniform used by the forces of the People's Volunteer Spacer Militia."
@@ -378,7 +377,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-//Check this please
 /obj/item/clothing/under/tajaran/army_commissar
 	name = "army commissar uniform"
 	desc = "A military uniform used by Party Commissars attached to military units."
@@ -387,7 +385,6 @@
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
-//Check this please
 /obj/item/clothing/under/tajaran/psis
 	name = "people's strategic intelligence service uniform"
 	desc = "An uniform used by the agents of the People's Strategic Intelligence Service. The sight of this uniform is feared by most Tajara."
