@@ -24,5 +24,5 @@
 
 /datum/keybinding/living/rest/down(client/user)
 	var/mob/living/L = user.mob
-	L.resist_a_rest()
+	L.toggle_intentionally_resting()
 	return TRUE
