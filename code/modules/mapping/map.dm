@@ -35,10 +35,17 @@ var/list/all_maps = list()
 	var/list/dependencies
 	/// are we loaded in
 	var/tmp/loaded = FALSE
+	/// are we modified from our prototype?
+	var/tmp/modified = FALSE
 	/// declared width = must match all levels
 	var/width
 	/// declared height - must match all levels
 	var/height
+
+/datum/map/Destroy()
+	if(loaded)
+		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED MAP.")
+	return ..()
 
 /datum/map/serialize()
 	. = ..()

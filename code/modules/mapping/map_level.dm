@@ -20,12 +20,26 @@
 	var/relative_path
 	/// are we loaded in
 	var/tmp/loaded = FALSE
+	/// are we modified from our prototype/definition?
+	var/tmp/modified = FALSE
 	/// linkage enum
 	var/linkage = Z_LINKAGE_NORMAL
 	/// transition enum
 	var/transition = Z_TRANSITION_DEFAULT
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
+	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_north
+	/// id of south zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_south
+	/// id of west zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_west
+	/// id of east zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_east
+	/// id of below zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_below
+	/// id of above zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
+	var/link_above
 
 	#warn below
 
@@ -40,6 +54,21 @@
 	var/holomap_offset_y = -1	// Number of pixels to offset the map up (for centering) for this z
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
 	var/holomap_legend_y = 96	// y position of the holomap legend for this z
+
+/datum/map_level/New()
+	#define UNPACK_LINK(vname) if(ispath(vname, /datum/map_level)) { var/datum/map_level/cast_##vname = vname; vname = initial(cast_##vname.id) ; }
+	UNPACK_LINK(link_north)
+	UNPACK_LINK(link_south)
+	UNPACK_LINK(link_east)
+	UNPACK_LINK(link_west)
+	UNPACK_LINK(link_below)
+	UNPACK_LINK(link_above)
+	#undef UNPACK_LINK
+
+/datum/map_level/Destroy()
+	if(loaded)
+		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED LEVEL.")
+	return ..()
 
 /datum/map_level/serialize()
 	. = ..()
@@ -57,25 +86,56 @@
 	.["linkage"] = linkage
 	.["transition"] = transition
 	.["base_turf"] = "[base_turf]"
+	.["link_north"] = link_north
+	.["link_south"] = link_south
+	.["link_west"] = link_west
+	.["link_east"] = link_east
+	.["link_above"] = link_above
+	.["link_below"] = link_below
 
 /datum/map_level/deserialize(list/data)
 	if(loaded)
 		CRASH("attempted deserialize while loaded")
 	. = ..()
-	id = .["id"]
-	name = .["name"]
-	display_id = .["display_id"]
-	display_name = .["display_name"]
-	traits = .["traits"]
-	attributes = .["attributes"]
+	id = data["id"]
+	name = data["name"]
+	display_id = data["display_id"]
+	display_name = data["display_name"]
+	traits = data["traits"]
+	attributes = data["attributes"]
 	// if you are reading this in the future and you serialize/deserialize a map and it doesn't load,
 	// this is because absolute/relative paths don't actually... work, right now.
-	absolute_path = .["absolute_path"]
-	relative_path = .["relative_path"]
+	absolute_path = data["absolute_path"]
+	relative_path = data["relative_path"]
 	// end
-	linkage = .["linkage"]
-	transition = .["transition"]
-	base_turf = text2path(.["base_turf"])
+	linkage = data["linkage"]
+	transition = data["transition"]
+	base_turf = text2path(data["base_turf"])
+	link_north = data["link_north"]
+	link_south = data["link_south"]
+	link_above = data["link_above"]
+	link_below = data["link_below"]
+	link_west = data["link_west"]
+	link_east = data["link_east"]
+
+/**
+ * get level index in dir
+ */
+/datum/map_level/proc/z_in_dir(dir)
+	switch(dir)
+		if(NORTH)
+		if(SOUTH)
+		if(EAST)
+		if(WEST)
+		if(UP)
+		if(DOWN)
+
+/**
+ * get level datum in dir
+ */
+/datum/map_level/proc/level_in_dir(dir)
+
+#warn impl all
 
 /**
  * called right after we physically load in, before init
