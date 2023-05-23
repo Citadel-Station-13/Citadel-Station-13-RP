@@ -94,15 +94,15 @@ SUBSYSTEM_DEF(mapping)
 
 	// check that the total z count of all maps matches the list of traits
 	var/total_z = 0
-	var/list/parsed_maps = list()
+	var/list/dmm_parseds = list()
 	for (var/file in files)
 		var/full_path = "_mapload/[path]/[file]"
-		var/datum/parsed_map/pm = new(file(full_path))
+		var/datum/dmm_parsed/pm = new(file(full_path))
 		var/bounds = pm?.bounds
 		if (!bounds)
 			errorList |= full_path
 			continue
-		parsed_maps[pm] = total_z  // save the start Z of this file
+		dmm_parseds[pm] = total_z  // save the start Z of this file
 		total_z += bounds[MAP_MAXZ] - bounds[MAP_MINZ] + 1
 
 	if (!length(traits))  // null or empty - default
@@ -123,13 +123,13 @@ SUBSYSTEM_DEF(mapping)
 		++i
 
 	// load the maps
-	for (var/P in parsed_maps)
-		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, orientation = orientation))
+	for (var/P in dmm_parseds)
+		var/datum/dmm_parsed/pm = P
+		if (!pm.load(1, 1, start_z + dmm_parseds[P], no_changeturf = TRUE, orientation = orientation))
 			errorList |= pm.original_path
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
-	return parsed_maps
+	return dmm_parseds
 */
 
 /datum/controller/subsystem/mapping/proc/loadWorld()

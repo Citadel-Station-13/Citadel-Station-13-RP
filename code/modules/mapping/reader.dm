@@ -1,56 +1,71 @@
-///////////////////////////////////////////////////////////////
-//SS13 Optimized Map loader
-//////////////////////////////////////////////////////////////
-/*
+/**
+ * SS13 optimized map loader
+ *
  * Notes:
- * This does NOT support map files where more than one Z is in each grid set, as defined in the file.
- * MultiZ map files ARE supported (however very much discouraged), as long as each gridset only contains one z.
- * This assumes that for the most part, map files are properly formed, either DMM or TGM standard formats. If you feed it bad data, expect to crash.
+ * * This does NOT support map files where more than one Z is in each grid set, as defined in the file.
+ * * MultiZ map files ARE supported (however very much discouraged), as long as each gridset only contains one z.
+ * * This assumes that for the most part, map files are properly formed, either DMM or TGM standard formats. If you feed it bad data, expect to crash.
+ *
+ * Citadel Edits:
+ * * Expanding the world is no longer allowed due to various issues with the BYOND engine that occurs due to expansion.
  */
 #define SPACE_KEY "space"
 
-/datum/grid_set
+/datum/dmm_gridset
 	var/xcrd
 	var/ycrd
 	var/zcrd
-	var/gridLines
+	var/grid_lines
 
-/datum/grid_set/proc/height(key_len)
-	return length(gridLines)
+/datum/dmm_gridset/proc/height(key_len)
+	return length(grid_lines)
 
-/datum/grid_set/proc/width(key_len)
-	return gridLines[1] / key_len
+/datum/dmm_gridset/proc/width(key_len)
+	return grid_lines[1] / key_len
 
-/datum/parsed_map
+/datum/dmm_parsed
+	/// Original path this was loaded from
 	var/original_path
+	/// key length of the .dmm
 	var/key_len = 0
+	/// dmm_gridsets - holds each set of grids in the .dmm
+	var/list/grid_sets = list()
+	/// grid models - holds each model line as string associated to the key like AAA = (/blah, /area/blah, /turf/blah)
 	var/list/grid_models = list()
-	var/list/gridSets = list()
-
-	var/list/modelCache
-
-	/// Unoffset bounds. Null on parse failure.
-	var/list/parsed_bounds
-	var/width
-	var/height
-	/// Offset bounds. Same as parsed_bounds until load().
-	var/list/bounds
+	/// cached, unpacked models so re-loads of the same map are far cheaper. only created on first load.
+	var/list/model_cache
+	/// parse successful?
+	var/tmp/parsed = FALSE
+	#warn hook
+	/// parsed width
+	var/tmp/width
+	/// parsed height
+	var/tmp/height
+	/// parsed bounds - non-offset
+	var/list/tmp/bounds
 
 	var/datum/map_template/template_host
+	#warn hook?
 
+	#ifdef TESTING
+	var/turfsSkipped = 0
+	#endif
+
+	/// Allow maxx/maxy expand? Don't ever turn this on outside of debugging
+	var/allow_expand = FALSE
+	#warn remove
+
+	// the actual regexes used to parse maps
+	// you should probably not touch these
 	// raw strings used to represent regexes more accurately
 	// '' used to avoid confusing syntax highlighting
 	var/static/regex/dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 
-	#ifdef TESTING
-	var/turfsSkipped = 0
-	#endif
-
 /// Shortcut function to parse a map and apply it to the world.
 ///
-/// - `dmm_file`: A .dmm file to load (Required).
+/// - `dmm_file`: A .dmm file to load (Required)
 /// - `x_offset`, `y_offset`, `z_offset`: Positions representign where to load the map (Optional).
 /// - `cropMap`: When true, the map will be cropped to fit the existing world dimensions (Optional).
 /// - `measureOnly`: When true, no changes will be made to the world (Optional).
@@ -74,7 +89,7 @@
 	annihilate_tiles = FALSE,
 	crop_relative_to_game_world = TRUE
 	)
-	var/datum/parsed_map/parsed = new(dmm_file, measureOnly = measureOnly)
+	var/datum/dmm_parsed/parsed = new(dmm_file, measureOnly = measureOnly)
 	if(parsed.bounds && !measureOnly)
 		parsed.load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles)
 	return parsed
@@ -85,10 +100,10 @@
   * WARNING: Crop function crops based on the tiles you'd see in the map editor. If you're planning to load it in in a different orientation later, you better have done the math.
   * It's recommended that you do not crop using this at all.
   */
-/datum/parsed_map/New(tfile, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, measureOnly = FALSE)
+/datum/dmm_parsed/New(tfile, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, measureOnly = FALSE)
 	_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
 
-/datum/parsed_map/proc/_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
+/datum/dmm_parsed/proc/_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
 	var/static/parsing = FALSE
 	UNTIL(!parsing)
 	// do not multithread this or bad things happen
@@ -96,14 +111,14 @@
 	_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
 	parsing = FALSE
 
-/datum/parsed_map/proc/_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
+/datum/dmm_parsed/proc/_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
 	if(isfile(tfile))
 		original_path = "[tfile]"
 		tfile = file2text(tfile)
 	else if(isnull(tfile))
 		// create a new datum without loading a map
 		return
-	bounds = parsed_bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
+	bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	ASSERT(x_upper >= x_lower)
 	ASSERT(y_upper >= y_lower)
 	ASSERT(z_upper >= z_lower)
@@ -139,44 +154,44 @@
 			var/curr_x = text2num(dmmRegex.group[3])
 			var/curr_y = text2num(dmmRegex.group[4])
 
-			var/datum/grid_set/gridSet = new
+			var/datum/dmm_gridset/gridSet = new
 
 			gridSet.xcrd = curr_x
 			gridSet.ycrd = curr_y
 			gridSet.zcrd = curr_z
 
-			var/list/gridLines = splittext(dmmRegex.group[6], "\n")
-			gridSet.gridLines = gridLines
+			var/list/grid_lines = splittext(dmmRegex.group[6], "\n")
+			gridSet.grid_lines = grid_lines
 
 			var/leadingBlanks = 0
-			while(leadingBlanks < gridLines.len && gridLines[++leadingBlanks] == "")
+			while(leadingBlanks < grid_lines.len && grid_lines[++leadingBlanks] == "")
 			if(leadingBlanks > 1)
-				gridLines.Cut(1, leadingBlanks) // Remove all leading blank lines.
+				grid_lines.Cut(1, leadingBlanks) // Remove all leading blank lines.
 
-			var/lines = length(gridLines)
-			if(lines && gridLines[lines] == "")
+			var/lines = length(grid_lines)
+			if(lines && grid_lines[lines] == "")
 				// remove one trailing blank line
-				gridLines.len--
+				grid_lines.len--
 				lines--
 			// y crop
 			var/right_length = y_upper - curr_y + 1
 			if(lines > right_length)
-				lines = gridLines.len = right_length
+				lines = grid_lines.len = right_length
 			if(!lines)			// blank
 				continue
 
-			var/width = length(gridLines[1]) / key_len
+			var/width = length(grid_lines[1]) / key_len
 			// x crop
 			var/right_width = x_upper - curr_x + 1
 			if(width > right_width)
 				for(var/i in 1 to lines)
-					gridLines[i] = copytext(gridLines[i], 1, key_len * right_width)
+					grid_lines[i] = copytext(grid_lines[i], 1, key_len * right_width)
 
 			// during the actual load we're starting at the top and working our way down
 			gridSet.ycrd += lines - 1
 
 			// Safe to proceed, commit gridset to list and record coords.
-			gridSets += gridSet
+			grid_sets += gridSet
 			bounds[MAP_MINX] = min(bounds[MAP_MINX], curr_x)
 			bounds[MAP_MAXX] = max(bounds[MAP_MAXX], curr_x + width - 1)
 			bounds[MAP_MINY] = min(bounds[MAP_MINY], curr_y)
@@ -191,16 +206,15 @@
 	else
 		width = bounds[MAP_MAXX] - bounds[MAP_MINX] + 1
 		height = bounds[MAP_MAXY] - bounds[MAP_MINY] + 1
-	parsed_bounds = bounds
 
-/datum/parsed_map/Destroy()
+/datum/dmm_parsed/Destroy()
 	if(template_host && template_host.cached_map == src)
 		template_host.cached_map = null
 	. = ..()
 	return QDEL_HINT_HARDDEL_NOW
 
 /// Load the parsed map into the world. See [/proc/load_map] for arguments.
-/datum/parsed_map/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, datum/map_orientation_pattern/forced_pattern)
+/datum/dmm_parsed/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, datum/dmm_orientation/forced_pattern)
 	//How I wish for RAII
 	Master.StartLoadingMap()
 	. = _load_impl(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, forced_pattern)
@@ -208,13 +222,14 @@
 
 // Do not call except via load() above.
 // Lower/upper here refers to the actual map template's parsed coordinates, NOT ACTUAL COORDINATES! Figure it out yourself my head hurts too much to implement that too.
-/datum/parsed_map/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = SOUTH, annihilate_tiles = FALSE, datum/map_orientation_pattern/forced_pattern)
+/datum/dmm_parsed/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = SOUTH, annihilate_tiles = FALSE, datum/dmm_orientation/forced_pattern)
 	var/list/areaCache = list()
-	var/list/modelCache = build_cache(no_changeturf)
-	var/space_key = modelCache[SPACE_KEY]
-	var/list/bounds
-	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
-	var/datum/map_orientation_pattern/mode = forced_pattern || GLOB.map_orientation_patterns["[orientation]"] || GLOB.map_orientation_patterns["[SOUTH]"]
+	var/list/model_cache = build_cache(no_changeturf)
+	var/space_key = model_cache[SPACE_KEY]
+	var/list/loaded_bounds
+	var/did_expand = FALSE
+	loaded_bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
+	var/datum/dmm_orientation/mode = forced_pattern || GLOB.dmm_orientations["[orientation]"] || GLOB.dmm_orientations["[SOUTH]"]
 	var/invert_y = mode.invert_y
 	var/invert_x = mode.invert_x
 	var/swap_xy = mode.swap_xy
@@ -224,9 +239,11 @@
 	var/delta_swap = x_offset - y_offset
 	// less checks later
 	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
+	/// Did we try to run out of bounds?
+	var/overflowed = FALSE
 
-	for(var/__I in gridSets)
-		var/datum/grid_set/gridset = __I
+	for(var/__I in grid_sets)
+		var/datum/dmm_gridset/gridset = __I
 		var/parsed_z = gridset.zcrd + z_offset - 1
 		var/zexpansion = parsed_z > world.maxz
 		if(zexpansion)
@@ -235,15 +252,16 @@
 			else
 				while(parsed_z > world.maxz)
 					world.incrementMaxZ()
+					did_expand = TRUE
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 		//these values are the same until a new gridset is reached.
 		var/edge_dist_x = gridset.xcrd - 1											//from left side, 0 is right on the x_offset
-		var/edge_dist_y = gridset.ycrd - length(gridset.gridLines)					//from bottom, 0 is right on the y_offset
+		var/edge_dist_y = gridset.ycrd - length(gridset.grid_lines)					//from bottom, 0 is right on the y_offset
 		var/actual_x_starting = invert_x? (x_offset + width - edge_dist_x - 1) : (x_offset + edge_dist_x)		//this value is not changed, cache.
 		//this value is changed
 		var/actual_y = invert_y? (y_offset + edge_dist_y) : (y_offset + gridset.ycrd - 1)
-		for(var/line in gridset.gridLines)
+		for(var/line in gridset.grid_lines)
 			var/actual_x = actual_x_starting
 			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
 				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
@@ -255,12 +273,22 @@
 						actual_x += xi
 						continue
 					else
-						world.maxx = placement_x
+						if(!allow_expand)
+							overflowed = TRUE
+							actual_x += xi
+						else
+							world.maxx = placement_x
+						did_expand = TRUE
 				if(placement_y > world.maxy)
 					if(cropMap)
 						break
 					else
-						world.maxy = placement_y
+						if(!allow_expand)
+							overflowed = TRUE
+							actual_y += yi
+						else
+							world.maxy = placement_y
+						did_expand = TRUE
 				if(placement_x < 1)
 					actual_x += xi
 					continue
@@ -269,18 +297,18 @@
 				var/model_key = copytext(line, pos, pos + key_len)
 				var/no_afterchange = no_changeturf || zexpansion
 				if(!no_afterchange || (model_key != space_key))
-					var/list/cache = modelCache[model_key]
+					var/list/cache = model_cache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
 					build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, turn_angle, annihilate_tiles, swap_xy, invert_y, invert_x)
 
 					// only bother with bounds that actually exist
-					bounds[MAP_MINX] = min(bounds[MAP_MINX], placement_x)
-					bounds[MAP_MINY] = min(bounds[MAP_MINY], placement_y)
-					bounds[MAP_MINZ] = min(bounds[MAP_MINZ], parsed_z)
-					bounds[MAP_MAXX] = max(bounds[MAP_MAXX], placement_x)
-					bounds[MAP_MAXY] = max(bounds[MAP_MAXY], placement_y)
-					bounds[MAP_MAXZ] = max(bounds[MAP_MAXZ], parsed_z)
+					loaded_bounds[MAP_MINX] = min(loaded_bounds[MAP_MINX], placement_x)
+					loaded_bounds[MAP_MINY] = min(loaded_bounds[MAP_MINY], placement_y)
+					loaded_bounds[MAP_MINZ] = min(loaded_bounds[MAP_MINZ], parsed_z)
+					loaded_bounds[MAP_MAXX] = max(loaded_bounds[MAP_MAXX], placement_x)
+					loaded_bounds[MAP_MAXY] = max(loaded_bounds[MAP_MAXY], placement_y)
+					loaded_bounds[MAP_MAXZ] = max(loaded_bounds[MAP_MAXZ], parsed_z)
 				#ifdef TESTING
 				else
 					++turfsSkipped
@@ -291,10 +319,16 @@
 			CHECK_TICK
 
 	if(!no_changeturf)
-		for(var/t in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]), locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
+		for(var/t in block(locate(loaded_bounds[MAP_MINX], loaded_bounds[MAP_MINY], loaded_bounds[MAP_MINZ]), locate(loaded_bounds[MAP_MAXX], loaded_bounds[MAP_MAXY], loaded_bounds[MAP_MAXZ])))
 			var/turf/T = t
 			//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
+
+	// if(did_expand)
+	// 	world.refresh_atmos_grid()
+
+	if(overflowed)
+		stack_trace("[src] was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
 	#ifdef TESTING
 	if(turfsSkipped)
@@ -303,10 +337,10 @@
 
 	return TRUE
 
-/datum/parsed_map/proc/build_cache(no_changeturf, bad_paths=null)
-	if(modelCache && !bad_paths)
-		return modelCache
-	. = modelCache = list()
+/datum/dmm_parsed/proc/build_cache(no_changeturf, bad_paths=null)
+	if(model_cache && !bad_paths)
+		return model_cache
+	. = model_cache = list()
 	var/list/grid_models = src.grid_models
 	for(var/model_key in grid_models)
 		var/model = grid_models[model_key]
@@ -334,7 +368,7 @@
 
 			if(!ispath(atom_def, /atom)) // Skip the item if the path does not exist.  Fix your crap, mappers!
 				if(bad_paths)
-					LAZYDISTINCTADD(bad_paths[path_text], model_key)
+					LAZYOR(bad_paths[path_text], model_key)
 				continue
 			members.Add(atom_def)
 
@@ -382,7 +416,7 @@
 
 		.[model_key] = list(members, members_attributes)
 
-/datum/parsed_map/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, turn_angle as num, annihilate_tiles = FALSE, swap_xy, invert_y, invert_x)
+/datum/dmm_parsed/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, turn_angle as num, annihilate_tiles = FALSE, swap_xy, invert_y, invert_x)
 	var/index
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
@@ -444,7 +478,7 @@
 ////////////////
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
-/datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
+/datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
 	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
 
 	if(crds)
@@ -467,13 +501,13 @@
 		stoplag()
 		SSatoms.map_loader_begin()
 
-/datum/parsed_map/proc/create_atom(path, crds)
+/datum/dmm_parsed/proc/create_atom(path, crds)
 	set waitfor = FALSE
 	. = new path (crds)
 
 //text trimming (both directions) helper proc
 //optionally removes quotes before and after the text (for variable name)
-/datum/parsed_map/proc/trim_text(what as text,trim_quotes=0)
+/datum/dmm_parsed/proc/trim_text(what as text,trim_quotes=0)
 	if(trim_quotes)
 		return trimQuotesRegex.Replace(what, "")
 	else
@@ -482,7 +516,7 @@
 
 //find the position of the next delimiter,skipping whatever is comprised between opening_escape and closing_escape
 //returns 0 if reached the last delimiter
-/datum/parsed_map/proc/find_next_delimiter_position(text as text,initial_position as num, delimiter=",",opening_escape="\"",closing_escape="\"")
+/datum/dmm_parsed/proc/find_next_delimiter_position(text as text,initial_position as num, delimiter=",",opening_escape="\"",closing_escape="\"")
 	var/position = initial_position
 	var/next_delimiter = findtext(text,delimiter,position,0)
 	var/next_opening = findtext(text,opening_escape,position,0)
@@ -497,7 +531,7 @@
 
 //build a list from variables in text form (e.g {var1="derp"; var2; var3=7} => list(var1="derp", var2, var3=7))
 //return the filled list
-/datum/parsed_map/proc/readlist(text as text, delimiter=",")
+/datum/dmm_parsed/proc/readlist(text as text, delimiter=",")
 	. = list()
 	if (!text)
 		return
@@ -527,7 +561,7 @@
 		else  // simple var
 			. += list(left_constant)
 
-/datum/parsed_map/proc/parse_constant(text)
+/datum/dmm_parsed/proc/parse_constant(text)
 	// number
 	var/num = text2num(text)
 	if(isnum(num))
@@ -561,7 +595,7 @@
 	// fallback: string
 	return text
 
-/datum/parsed_map/vv_edit_var(var_name, var_value)
+/datum/dmm_parsed/vv_edit_var(var_name, var_value)
 	if(var_name == NAMEOF(src, dmmRegex) || var_name == NAMEOF(src, trimQuotesRegex) || var_name == NAMEOF(src, trimRegex))
 		return FALSE
 	return ..()

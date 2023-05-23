@@ -5,7 +5,7 @@
 	var/zdepth = 1
 	var/mappath
 	var/loaded = 0 // Times loaded this round
-	var/datum/parsed_map/cached_map
+	var/datum/dmm_parsed/cached_map
 	var/keep_cached_map = FALSE
 	var/default_annihilate = FALSE
 	var/list/ztraits				//zlevel traits for load_new_z
@@ -25,7 +25,7 @@
 /datum/map_template/proc/preload_size(path = mappath, force_cache = FALSE)
 	if(cached_map)
 		return cached_map.parsed_bounds
-	var/datum/parsed_map/parsed = new(file(path))
+	var/datum/dmm_parsed/parsed = new(file(path))
 	var/bounds = parsed?.parsed_bounds
 	if(bounds)
 		width = bounds[MAP_MAXX] - bounds[MAP_MINX] + 1
@@ -57,7 +57,7 @@
 		return list(height, width, zdepth)
 	return list(width, height, zdepth)
 
-/datum/parsed_map/proc/initTemplateBounds()
+/datum/dmm_parsed/proc/initTemplateBounds()
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
 	var/list/atom/atoms = list()
@@ -92,7 +92,7 @@
 	var/y = centered? max(round((world.maxy - height) / 2), 1) : 1
 
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, ztraits)
-	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop = TRUE, orientation = orientation)
+	var/datum/dmm_parsed/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop = TRUE, orientation = orientation)
 	var/list/bounds = parsed.bounds
 	if(!bounds)
 		return FALSE
@@ -161,7 +161,7 @@
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.
 	var/is_cached = cached_map
-	var/datum/parsed_map/parsed = is_cached || new(file(mappath))
+	var/datum/dmm_parsed/parsed = is_cached || new(file(mappath))
 	cached_map = (force_cache || keep_cached_map) ? parsed : is_cached
 	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE, orientation = orientation, annihilate_tiles = (annihilate == MAP_TEMPLATE_ANNIHILATE_LOADING)))
 		return

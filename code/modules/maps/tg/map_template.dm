@@ -304,3 +304,6 @@
 	else
 		log_debug(SPAN_DEBUG("Submaps loaded."))
 	log_debug(SPAN_DEBUG("Loaded: [english_list(pretty_submap_list)]"))
+
+/datum/map_template/proc/on_map_loaded(z)
+	return
