@@ -213,16 +213,6 @@
 
 	lateload_single_pick = null //Nothing right now.
 
-	planet_datums_to_make = list(/datum/planet/lythios43c,
-		/datum/planet/lavaland,
-		/datum/planet/classg,
-		/datum/planet/classd,
-		/datum/planet/classh,
-		/datum/planet/classp,
-		/datum/planet/classm,
-		/datum/planet/miaphus
-		)
-
 /// Cave Generation
 /datum/map/station/rift/perform_map_generation()
 	. = ..()
@@ -255,6 +245,7 @@
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
+	link_above = /datum/map_level/rift/station/underground_deep
 
 /datum/map_level/rift/station/underground_deep
 	id = "RiftUnderground2"
@@ -270,6 +261,8 @@
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/station/underground_floor
+	link_above = /datum/map_level/rift/station/underground_shallow
 
 /datum/map_level/rift/station/underground_shallow
 	id = "RiftUnderground1"
@@ -285,6 +278,8 @@
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/station/underground_deep
+	link_above = /datum/map_level/rift/station/surface_low
 
 /datum/map_level/rift/station/surface_low
 	id = "RiftSurface1"
@@ -301,6 +296,8 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	transit_chance = 100
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/station/underground_shallow
+	link_above = /datum/map_level/rift/station/surface_mid
 
 /datum/map_level/rift/station/surface_mid
 	id = "RiftSurface2"
@@ -316,6 +313,8 @@
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/station/surface_low
+	link_above = /datum/map_level/rift/station/surface_high
 
 /datum/map_level/rift/station/surface_high
 	id = "RiftSurface3"
@@ -331,6 +330,7 @@
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/station/surface_mid
 
 /datum/map_level/rift/base
 	id = "RiftWestUnderground3"
@@ -345,6 +345,7 @@
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
+	link_above = /datum/map_level/rift/deep
 
 /datum/map_level/rift/deep
 	id = "RiftWestUnderground2"
@@ -359,6 +360,8 @@
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/base
+	link_above = /datum/map_level/rift/caves
 
 /datum/map_level/rift/caves
 	id = "RiftWestUnderground1"
@@ -373,6 +376,8 @@
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/deep
+	link_above = /datum/map_level/rift/plains
 
 /datum/map_level/rift/plains
 	id = "RiftWestSurface1"
@@ -383,6 +388,8 @@
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
+	link_below = /datum/map_level/rift/caves
+	link_east = /datum/map_level/rift/station/surface_low
 
 /datum/map_level/rift/colony
 	id = "RiftOrbitalRelay"

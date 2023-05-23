@@ -1,47 +1,36 @@
 // ### Preset machines  ###
 
-
 // #### Relays ####
 // Telecomms doesn't know about connected z-levels, so we need relays even for the other surface levels.
 /obj/machinery/telecomms/relay/preset/rift/under_shallow
 	id = "Underground Relay 1"
-	listening_level = Z_LEVEL_UNDERGROUND
 	autolinkers = list("rus_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/rift/under_shallow
-	listening_level = Z_LEVEL_UNDERGROUND
 
 /obj/machinery/telecomms/relay/preset/rift/under_deep
 	id = "Underground Relay 2"
-	listening_level = Z_LEVEL_UNDERGROUND_DEEP
 	autolinkers = list("rud_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/rift/under_deep
-	listening_level = Z_LEVEL_UNDERGROUND_DEEP
 
 /obj/machinery/telecomms/relay/preset/rift/base_low
 	id = "Base Relay 1"
-	listening_level = Z_LEVEL_SURFACE_LOW
 	autolinkers = list("rbl_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/rift/base_low
-	listening_level = Z_LEVEL_SURFACE_LOW
 
 /obj/machinery/telecomms/relay/preset/rift/base_mid
 	id = "Base Relay 2"
-	listening_level = Z_LEVEL_SURFACE_MID
 	autolinkers = list("rbm_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/rift/base_mid
-	listening_level = Z_LEVEL_SURFACE_MID
 
 /obj/machinery/telecomms/relay/preset/rift/base_high
 	id = "Base Relay 3"
-	listening_level = Z_LEVEL_SURFACE_HIGH
 	autolinkers = list("rbh_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/rift/base_high
-	listening_level = Z_LEVEL_SURFACE_HIGH
 
 /*
 /obj/machinery/telecomms/relay/preset/tether/sci_outpost
