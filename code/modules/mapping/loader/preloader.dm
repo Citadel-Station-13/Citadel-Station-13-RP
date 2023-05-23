@@ -41,8 +41,13 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 	icon_state = "turf_noop"
 
 /*		No sane way to implement.
-/atom/template_no_annihilate
-	name = "Block In-Load Tile Annihilation"
+/atom/template_block
+	name = "Block Maploader Annihilation"
+	icon = 'icons/mapping/helpers/maploader_objects.dmi'
+	icon_state = "no_annihilate"
+
+/turf/template_block
+	name = "Block Maploader Annihilation"
 	icon = 'icons/mapping/helpers/maploader_objects.dmi'
 	icon_state = "no_annihilate"
 */
