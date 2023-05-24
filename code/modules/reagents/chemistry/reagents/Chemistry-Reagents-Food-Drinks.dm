@@ -1488,7 +1488,7 @@
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
