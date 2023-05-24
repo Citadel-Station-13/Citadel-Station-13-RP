@@ -353,8 +353,6 @@
 
 /datum/reagent/toxin/fertilizer/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE) //cit change: fertilizer is full of natural easily digestible plant fats
-		if(prob(3))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 		return
 
