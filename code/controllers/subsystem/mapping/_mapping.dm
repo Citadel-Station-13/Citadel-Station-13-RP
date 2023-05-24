@@ -19,18 +19,8 @@ SUBSYSTEM_DEF(mapping)
 	var/clearing_reserved_turfs = FALSE
 
 	/// Zlevel manager list of zlevels.
-	var/list/z_list
 	var/datum/space_level/transit
 	var/num_of_res_levels = 1
-
-	/// The current map config datum the round is using
-	var/static/datum/map_config/config
-	/// The next map to load
-	var/static/datum/map_config/next_map_config
-
-	/// Cached map name for statpanel
-
-	var/static/stat_map_name = "Loading..."
 
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
@@ -59,12 +49,6 @@ SUBSYSTEM_DEF(mapping)
 	HACK_LoadMapConfig()
 	if(initialized)
 		return
-	if(config.defaulted)
-		var/old_config = config
-		config = global.config.defaultmap
-		if(!config || config.defaulted)
-			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Tethermap"))
-			config = old_config
 	repopulate_sorted_areas()
 	load_map_templates()
 
