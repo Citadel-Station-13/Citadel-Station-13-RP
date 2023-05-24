@@ -48,6 +48,7 @@
 #define IS_APIDAEN 15
 #define IS_XENOHYBRID 16
 #define IS_MOTH		17
+#define IS_NARAMADI 18
 
 /// Inaprovaline
 #define CE_STABLE "stable"
