@@ -244,3 +244,10 @@
  * "free" / unallocated zlevels use this
  */
 /datum/map_level/unallocated
+	transition = Z_TRANSITION_DISABLED
+
+/**
+ * reserved levels for turf reservations use this
+ */
+/datum/map_level/reserved
+	transition = Z_TRANSITION_DISABLED

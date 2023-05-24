@@ -46,18 +46,6 @@
 		new /obj/landmark/ruin(central_turf, src)
 		return central_turf
 
-/datum/map_template/ruin/proc/place_on_isolated_level(z)
-	var/datum/turf_reservation/reservation = SSmapping.RequestBlockReservation(width, height, z) //Make the new level creation work with different traits.
-	if(!reservation)
-		return
-	var/turf/placement = locate(reservation.bottom_left_coords[1],reservation.bottom_left_coords[2],reservation.bottom_left_coords[3])
-	load(placement)
-	loaded++
-	for(var/turf/T in get_affected_turfs(placement))
-		T.flags_1 |= NO_RUINS
-	var/turf/center = locate(placement.x + round(width/2),placement.y + round(height/2),placement.z)
-	new /obj/landmark/ruin(center, src)
-	return center
 
 /proc/seedRuins(list/z_levels = null, budget = 0, whitelist = list(/area/space), list/potentialRuins)
 	if(!z_levels || !z_levels.len)

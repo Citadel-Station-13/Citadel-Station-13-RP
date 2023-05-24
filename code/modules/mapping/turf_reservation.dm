@@ -9,12 +9,15 @@
 	var/top_right_coords[3]
 	var/wipe_reservation_on_release = TRUE
 	var/turf_type = /turf/space
-	var/borderturf
+	var/border_type
+	var/area_type
+
+#warn hook in area_type
 
 /*
 /datum/turf_reservation/transit
 	turf_type = /turf/space/transit
-	borderturf = /turf/space/transit/border
+	border_type = /turf/space/transit/border
 */
 
 /datum/turf_reservation/proc/Release()
@@ -72,8 +75,8 @@
 		T.turf_flags &= ~UNUSED_RESERVATION_TURF
 		SSmapping.unused_turfs["[T.z]"] -= T
 		SSmapping.used_turfs[T] = src
-		if(borderturf && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))
-			T.ChangeTurf(borderturf, borderturf)
+		if(border_type && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))
+			T.ChangeTurf(border_type, border_type)
 		else
 			T.ChangeTurf(turf_type, turf_type)
 	src.width = width

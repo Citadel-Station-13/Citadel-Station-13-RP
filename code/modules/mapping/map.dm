@@ -22,6 +22,7 @@ var/list/all_maps = list()
  * clusters of zlevels, basically.
  */
 /datum/map
+	abstract_type = /datum/map
 	/// id - must be unique
 	var/id
 	/// in-code name
@@ -102,6 +103,7 @@ var/list/all_maps = list()
  * this is what's loaded at init. this determines what other maps initially load.
  */
 /datum/map/station
+	abstract_type = /datum/map/station
 	category = "Stations"
 
 	var/full_name = "Unnamed Map"
@@ -334,3 +336,10 @@ var/list/all_maps = list()
  * standard sector / planet maps
  */
 /datum/map/sector
+	category = "Sectors"
+	abstract_type = /datum/map/secotr
+
+/**
+ * custom maps
+ */
+/datum/map/custom
