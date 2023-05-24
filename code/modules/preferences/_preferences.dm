@@ -191,6 +191,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //! ## OOC Metadata
 	var/metadata = ""
 	var/profile_text = ""
+	var/headshot_url = ""
 	var/list/ignored_players = list()
 
 	var/client/client = null

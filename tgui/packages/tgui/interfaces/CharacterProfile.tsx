@@ -3,11 +3,13 @@ import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 import { Tabs } from "../components";
 import { resolveAsset } from "../assets";
+import headshot_not_found from '../assets/headshot_not_found.png';
 
 interface CharacterProfileContext {
   oocnotes: String;
   flavortext: String;
   profiletext: String;
+  headshot_url: string;
 }
 
 export const CharacterProfile = (props, context) => {
@@ -17,7 +19,6 @@ export const CharacterProfile = (props, context) => {
     "selectedTab",
     1
   );
-  const headshot_image = resolveAsset("character_headshot.png");
   const preview_image = resolveAsset("character_preview.png");
 
   return (
@@ -34,7 +35,11 @@ export const CharacterProfile = (props, context) => {
           <Divider vertical />
           <Flex.Item width="35%">
             <Section title="Headshot" pb="12" textAlign="center">
-              <img src={headshot_image} height="250px" width="250px" />
+              {data.headshot_url? (
+                <img src={data.headshot_url} height="256px" width="256px" />
+              ) : (
+                <img src={headshot_not_found} height="256px" width="256px" />
+              )}
             </Section>
             <Section title="Character Preview" pt="12" textAlign="center">
               <img
