@@ -5,7 +5,7 @@
 /datum/armor
 	/// just for vv
 	var/name
-	
+
 	var/melee = 0
 	var/melee_tier = ARMOR_TIER_DEFAULT
 	var/melee_soak = 0
@@ -140,12 +140,18 @@
 /datum/armor/proc/resultant_damage(damage, tier, flag)
 	switch(flag)
 		if(ARMOR_MELEE)
+			if(!melee)
+				return damage
 			var/tdiff = melee_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
 		if(ARMOR_BULLET)
+			if(!bullet)
+				return damage
 			var/tdiff = bullet_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
 		if(ARMOR_LASER)
+			if(!laser)
+				return damage
 			var/tdiff = laser_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
 		if(ARMOR_ENERGY)

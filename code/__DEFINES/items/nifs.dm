@@ -1,9 +1,10 @@
 // nifs should die
 
-#define NIF_ID_BASIC			"BASE"
-#define NIF_ID_VEYMED			"VEYMED"
-#define NIF_ID_BOOTLEG			"BAD"
-#define NIF_ID_BIOADAPTIVE		"ADAPTIVE"
+#define NIF_ID_BASIC				"BASE"
+#define NIF_ID_VEYMED				"VEYMED"
+#define NIF_ID_BOOTLEG				"BAD"
+#define NIF_ID_BIOADAPTIVE			"ADAPTIVE"
+#define NIF_ID_VEYMEDBIOADAPTIVE	"VEYMEDBIOADAPTIVE"
 
 // List indexes for software datum references on mobs
 // This also controls the order they are displayed in the NIF stat panel

@@ -19220,6 +19220,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint)
+"mif" = (
+/obj/item/radio/beacon/anchored,
+/turf/simulated/floor/tiled/steel,
+/area/quartermaster/warehouse)
 "mip" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/white,
@@ -54901,7 +54905,7 @@ kjp
 eBp
 qNR
 xBi
-cnk
+mif
 cnk
 srB
 brv

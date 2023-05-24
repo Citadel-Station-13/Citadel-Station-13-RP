@@ -138,3 +138,43 @@
 			if(istype(AM, /obj/item/gun))
 				to_chat(user, "You have pulled out \the [AM]. Say hello to your new friend.")
 		qdel(src)
+
+/obj/item/gunbox/carrier/blueshield
+	name = "\improper Blueshield armor box"
+	desc = "A secure box containing a Blueshield's carrier and armor plate."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
+
+/obj/item/gunbox/carrier/blueshield/attack_self(mob/user)
+	var/list/options = list()
+	options["\improper Black Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield, /obj/item/clothing/accessory/armor/armorplate)
+	options["\improper Black-Short Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt, /obj/item/clothing/accessory/armor/armorplate)
+	options["\improper Navy Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy, /obj/item/clothing/accessory/armor/armorplate)
+	var/choice = input(user,"Select your plate carrier.") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn)
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/clothing))
+				to_chat(user, "You withdraw \the [AM].")
+		qdel(src)
+
+/obj/item/gunbox/armor/security
+	name = "\improper Security armor box"
+	desc = "A secure box containing a single Corporate Security armor vest."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "gunbox"
+
+/obj/item/gunbox/armor/security/attack_self(mob/user)
+	var/list/options = list()
+	options["\improper Flat Vest"] = list(/obj/item/clothing/suit/armor/vest)
+	options["\improper Security Vest"] = list(/obj/item/clothing/suit/armor/vest/alt)
+	options["\improper Webbed Vest"] = list(/obj/item/clothing/suit/storage/vest/officer)
+	var/choice = input(user,"Select your armor vest.") as null|anything in options
+	if(src && choice)
+		var/list/things_to_spawn = options[choice]
+		for(var/new_type in things_to_spawn)
+			var/atom/movable/AM = new new_type(get_turf(src))
+			if(istype(AM, /obj/item/clothing))
+				to_chat(user, "You withdraw \the [AM].")
+		qdel(src)
