@@ -5,10 +5,12 @@
 	var/zdepth = 1
 	var/mappath
 	var/loaded = 0 // Times loaded this round
-	var/datum/dmm_parsed/cached_map
 	var/keep_cached_map = FALSE
 	var/default_annihilate = FALSE
 	var/list/ztraits				//zlevel traits for load_new_z
+
+	/// our parsed map, cached
+	var/datum/dmm_parsed/parsed
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
@@ -92,6 +94,7 @@
 	var/y = centered? max(round((world.maxy - height) / 2), 1) : 1
 
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, ztraits)
+	#warn conform
 	var/datum/dmm_parsed/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop = TRUE, orientation = orientation)
 	var/list/bounds = parsed.bounds
 	if(!bounds)

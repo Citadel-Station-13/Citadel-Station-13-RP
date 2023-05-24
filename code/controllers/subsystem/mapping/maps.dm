@@ -6,10 +6,8 @@
 /datum/controller/subsystem/mapping
 	/// loaded station map
 	var/datum/map/station/current_station
-	/// next station map - either an instance (will be serialized before reboot) or a path or an id.
-	var/next_station
-	/// requested station map - either an instance or an id. this is obviously not used much after load.
-	var/load_station
+	/// next station map
+	var/datum/map/station/next_station
 	/// loaded maps
 	var/list/datum/map/loaded_maps
 	/// available maps - k-v lookup by id
@@ -21,12 +19,18 @@
 	. = ..()
 	write_next_map()
 
+/**
+ * initializes the key-value store of map datums.
+ */
+/datum/controller/subsystem/mapping/proc/init_maps()
+	#warn impl
+
 /datum/controller/subsystem/mapping/proc/write_next_map()
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
 
-/datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
+/datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance = next_station)
 
 #warn impl all

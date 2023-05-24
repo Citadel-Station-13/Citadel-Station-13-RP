@@ -1,4 +1,51 @@
 /**
+ * loads a dmm map
+ * raw operation, does not annihilate tiles or anything,
+ *
+ * ### Positioning
+ *
+ * ll_x/y/z are inclusive.
+ * x/y_lower/upper are inclusive.
+ *
+ * ### Cropping
+ *
+ * When using x/y_lower/upper, this changes which area of the dmm we actually parse. if you do 5, 5 to 10, 10,
+ * and load it at llx/y 10, 10, you end up loading a 6x6 chunk from the game world coordinates 10, 10,
+ * to the game world coordinates 15, 15
+ *
+ * This also immediately crops what's loaded, so, don't use this if you want to have more sections of the parsed map done later.
+ *
+ * @params
+ * * map - dmm file or path or rsc entry
+ * * ll_x - lowerleft x
+ * * ll_y - lowerleft y
+ * * ll_z - lowerleft z. for multiz, this is bottomleft.
+ * * x_lower - crop dmm load to this x.
+ * * y_lower - crop dmm load to this y.
+ * * x_upper - crop dmm load to this x.
+ * * y_upper - crop dmm load to this y.
+ * * z_lower - crop dmm load to this z.
+ * * z_upper - crop dmm load to this z.
+ * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
+ * * place_on_top - use PlaceOnTop instead of ChangeTurf
+ * * orientation - cardinal dir to do. default is south.
+ *
+ * @return /datum/dmm_parsed instance
+ */
+/proc/load_map(map, ll_X, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation)
+	#warn impl
+
+/**
+ * parses a dmm map
+ *
+ * see [/proc/load_map] for args.
+ *
+ * @return /datum/dmm_parsed instance
+ */
+/proc/parsed_map(map, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper)
+	#warn impl
+
+/**
  * SS13 optimized map loader
  *
  * Notes:
@@ -34,26 +81,25 @@
 	var/list/grid_models = list()
 	/// cached, unpacked models so re-loads of the same map are far cheaper. only created on first load.
 	var/list/model_cache
+	/// did we have no changeturf set when we made the model cache?
+	var/model_cache_is_no_changeturf
 	/// parse successful?
 	var/tmp/parsed = FALSE
 	#warn hook
-	/// parsed width
+	/// parsed width - this is subject to cropping!
 	var/tmp/width
-	/// parsed height
+	/// parsed height - this is subject to cropping!
 	var/tmp/height
 	/// parsed bounds - non-offset
-	var/list/tmp/bounds
-
-	var/datum/map_template/template_host
-	#warn hook?
+	var/tmp/list/bounds
+	/// last loaded bounds
+	var/tmp/list/last_loaded_bounds
+	/// template we belong to, if any - makes average case dels faster
+	var/tmp/datum/map_template/template_host
 
 	#ifdef TESTING
 	var/turfsSkipped = 0
 	#endif
-
-	/// Allow maxx/maxy expand? Don't ever turn this on outside of debugging
-	var/allow_expand = FALSE
-	#warn remove
 
 	// the actual regexes used to parse maps
 	// you should probably not touch these
@@ -63,36 +109,15 @@
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 
-/// Shortcut function to parse a map and apply it to the world.
-///
-/// - `dmm_file`: A .dmm file to load (Required)
-/// - `x_offset`, `y_offset`, `z_offset`: Positions representign where to load the map (Optional).
-/// - `cropMap`: When true, the map will be cropped to fit the existing world dimensions (Optional).
-/// - `measureOnly`: When true, no changes will be made to the world (Optional).
-/// - `no_changeturf`: When true, [turf/AfterChange] won't be called on loaded turfs
-/// - `x_lower`, `x_upper`, `y_lower`, `y_upper`: Coordinates (relative to the game world) to crop to (Optional).
-/// - `placeOnTop`: Whether to use [turf/PlaceOnTop] rather than [turf/ChangeTurf] (Optional).
-/proc/load_map(
-	dmm_file as file,
-	x_offset as num,
-	y_offset as num,
-	z_offset as num,
-	cropMap as num,
-	measureOnly as num,
-	no_changeturf as num,
-	x_lower = -INFINITY as num,
-	x_upper = INFINITY as num,
-	y_lower = -INFINITY as num,
-	y_upper = INFINITY as num,
-	placeOnTop = FALSE as num,
-	orientation = SOUTH as num,
-	annihilate_tiles = FALSE,
-	crop_relative_to_game_world = TRUE
-	)
-	var/datum/dmm_parsed/parsed = new(dmm_file, measureOnly = measureOnly)
-	if(parsed.bounds && !measureOnly)
-		parsed.load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles)
-	return parsed
+/**
+ * creates and parses a map
+ *
+ * cropping here is cropping what you'd see in the map editor, aka can actually throw out data.
+ */
+/datum/dmm_parsed/New(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
+
+	#warn impl
+
 
 /**
   * Parse a map, possibly cropping it.
@@ -208,10 +233,51 @@
 		height = bounds[MAP_MAXY] - bounds[MAP_MINY] + 1
 
 /datum/dmm_parsed/Destroy()
-	if(template_host && template_host.cached_map == src)
-		template_host.cached_map = null
+	if(template_host?.parsed == src)
+		template_host.parsed = null
 	. = ..()
-	return QDEL_HINT_HARDDEL_NOW
+	return QDEL_HINT_HARDDEL
+
+/**
+ * loads our map into the game world
+ * raw operation, does not annihilate tiles or anything,
+ *
+ * ### Positioning
+ *
+ * ll_x/y/z are inclusive.
+ * x/y_lower/upper are inclusive.
+ *
+ * ### Cropping
+ *
+ * When using x/y_lower/upper, this changes which area of the dmm we actually load. if you do 5, 5 to 10, 10,
+ * and load it at llx/y 10, 10, you end up loading a 6x6 chunk from the game world coordinates 10, 10,
+ * to the game world coordinates 15, 15
+ *
+ * @params
+ * * map - dmm file or path or rsc entry
+ * * ll_x - lowerleft x
+ * * ll_y - lowerleft y
+ * * ll_z - lowerleft z. for multiz, this is bottomleft.
+ * * x_lower - crop dmm load to this x.
+ * * y_lower - crop dmm load to this y.
+ * * x_upper - crop dmm load to this x.
+ * * y_upper - crop dmm load to this y.
+ * * z_lower - crop dmm load to this z.
+ * * z_upper - crop dmm load to this z.
+ * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
+ * * place_on_top - use PlaceOnTop instead of ChangeTurf
+ */
+/datum/dmm_parsed/proc/load(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
+
+#warn above comment, below
+
+	var/static/loading = FALSE
+	UNTIL(!loading)
+	loading = TRUE
+	. = load(arglist(args))
+	loading = FALSE
+
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
 
 /// Load the parsed map into the world. See [/proc/load_map] for arguments.
 /datum/dmm_parsed/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, datum/dmm_orientation/forced_pattern)
@@ -501,18 +567,24 @@
 		stoplag()
 		SSatoms.map_loader_begin()
 
-/datum/dmm_parsed/proc/create_atom(path, crds)
+/**
+ * create an atom at a location
+ *
+ * * don't use this for turfs
+ * * use instance_atom, don't use this
+ */
+/datum/dmm_parsed/proc/create_movable(path, atom/where)
 	set waitfor = FALSE
-	. = new path (crds)
+	return new path(where)
 
-//text trimming (both directions) helper proc
-//optionally removes quotes before and after the text (for variable name)
-/datum/dmm_parsed/proc/trim_text(what as text,trim_quotes=0)
-	if(trim_quotes)
-		return trimQuotesRegex.Replace(what, "")
-	else
-		return trimRegex.Replace(what, "")
-
+/**
+ * i don't know what this does but the old documentation says:
+ *
+ * text trimming (both directions) helper proc
+ * optionally removes quotes before and after the text (for variable name)
+ */
+/datum/dmm_parsed/proc/trim_text(str, trim_quotes)
+	return trim_quotes? trimQuotesRegex.Replace(what, "") : trimRegex.Replace(what, "")
 
 //find the position of the next delimiter,skipping whatever is comprised between opening_escape and closing_escape
 //returns 0 if reached the last delimiter
@@ -527,7 +599,6 @@
 		next_opening = findtext(text,opening_escape,position,0)
 
 	return next_delimiter
-
 
 //build a list from variables in text form (e.g {var1="derp"; var2; var3=7} => list(var1="derp", var2, var3=7))
 //return the filled list
@@ -561,6 +632,9 @@
 		else  // simple var
 			. += list(left_constant)
 
+/**
+ * parses the value of an attribute
+ */
 /datum/dmm_parsed/proc/parse_constant(text)
 	// number
 	var/num = text2num(text)
@@ -595,7 +669,7 @@
 	// fallback: string
 	return text
 
-/datum/dmm_parsed/vv_edit_var(var_name, var_value)
+/datum/dmm_parsed/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	if(var_name == NAMEOF(src, dmmRegex) || var_name == NAMEOF(src, trimQuotesRegex) || var_name == NAMEOF(src, trimRegex))
 		return FALSE
 	return ..()

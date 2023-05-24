@@ -170,6 +170,8 @@
 	. = ..()
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		STATPANEL_DATA_ENTRY("Map", "[SSmapping.station_map?.name || "Loading..."]")
+		#warn ughhhh next map config hint?
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor

@@ -14,21 +14,51 @@
  *
  * This does not perform **any** generation or processing on the level, including replacing baseturfs!
  *
+ * @params
+ * * level_or_path - an instance or path to allocate
+ * * rebuild - reload stuff like crosslinking/verticality renders?
+ *
  * @#return the instance of /datum/map_level created / used, null on failure
  */
-/datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level)
+/datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
 	RETURN_TYPE(/datum/map_level)
-	#warn impl
+	var/z_index = allocate_z_index()
+	ASSERT(z_index)
+	if(ispath(level_or_path))
+		level_or_path = new level_or_path
+	ASSERT(istype(level_or_path))
+	ASSERT(!level_or_path.loaded)
+	var/datum/map_level/existing = ordered_levels[z_index]
+	if(!isnull(existing))
+		if(existing.loaded)
+			ASSERT(istype(existing, /datum/map_level/unallocated))
+			existing.loaded = FALSE
+	ordered_levels[z_index] = level_or_path
+	. = level_or_path
+	// todo: rebuild?
 
 /**
  * loads a map level.
  *
  * if it doesn't have a file, we'll change all the turfs to the given baseturf and set atmos/whatever.
  *
+ * @params
+ * * instance - level to laod
+ * * reload - reload stuff like crosslinking/verticalitty renders?
+ * * center - center the level if it's mismatched sizes? we will never load a level that's too big.
+ * * crop - crop the level if it's too big instead of panic
+ *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance)
-	#warn impl
+/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center)
+	instance = allocate_level(instance, FALSE)
+	ASSERT(!isnull(instance))
+	// parse map
+
+	#warn impl, including center/etc
+
+	. = TRUE
+	// todo: rebuild?
 
 /**
  * destroys a loaded level and frees it for later usage
@@ -49,9 +79,6 @@
  */
 /datum/controller/subsystem/mapping/proc/deallocate_level(datum/map_level/instance)
 	CRASH("unimplemented")
-
-
-#warn hook below for future usage
 
 /**
  * called when a trait is added to a loaded level

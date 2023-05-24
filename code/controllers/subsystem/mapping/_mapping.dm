@@ -43,6 +43,16 @@ SUBSYSTEM_DEF(mapping)
 	stat_map_name = config.map_name
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	// init first level
+	#warn init default level / reservation
+	// init maps
+	init_maps()
+	// load the map to use
+	read_next_map()
+	// load world
+	load_station()
+
+	#warn below
 	report_progress("Initializing [name] subsystem...")
 	// shim: this goes at the top
 	world.max_z_changed(0, world.maxz) // This is to set up the player z-level list, maxz hasn't actually changed (probably)
@@ -55,9 +65,7 @@ SUBSYSTEM_DEF(mapping)
 		if(!config || config.defaulted)
 			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Tethermap"))
 			config = old_config
-	loadWorld()
 	repopulate_sorted_areas()
-	maploader = new()
 	load_map_templates()
 
 	loadEngine()
@@ -408,3 +416,13 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shelter/S = new shelter_type()
 
 		shelter_templates[S.shelter_id] = S
+
+// todo: admin subsystems panel
+// admin tooling below
+
+/client/proc/change_next_map()
+	set name = "Change Map"
+	set desc = "Change the next map."
+	set category = "Server"
+
+	#warn impl

@@ -23,7 +23,7 @@
  * gets an reusable level, or increments world.maxz
  * WARNING: AFTER THIS, YOU NEED TO USE THE LEVEL, OR READD TO REUSABLE, OR THIS IS A MEMORY LEAK!
  */
-/datum/controller/subsystem/mapping/proc/allocate_zlevel()
+/datum/controller/subsystem/mapping/proc/allocate_z_index()
 	if(islist(reusable_levels) && length(reusable_levels))
 		. = reusable_levels[1]
 		reusable_levels.Cut(1, 2)

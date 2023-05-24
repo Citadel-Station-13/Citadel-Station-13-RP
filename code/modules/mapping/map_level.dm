@@ -205,3 +205,40 @@
 	if (GLOB.using_map.zlevels["[z]"] == src)
 		GLOB.using_map.zlevels -= "[z]"
 	return ..()
+
+/datum/map_level/proc/has_trait(trait)
+	return trait in traits
+
+/datum/map_level/proc/add_trait(trait)
+	if(has_trait(trait))
+		return
+	LAZYDISTINCTADD(traits, trait)
+	if(loaded)
+		SSmapping.on_trait_add(src, trait)
+
+/datum/map_level/proc/remove_trait(trait)
+	if(!has_trait(trait))
+		return
+	LAZYREMOVE(traits, trait)
+	if(loaded)
+		SSmapping.on_trait_del(src, trait)
+
+/datum/map_level/proc/get_attribute(attribute)
+	return attributes?[attribute]
+
+/datum/map_level/proc/set_attribute(attribute, value)
+	var/old = get_attribute(attribute)
+	LAZYSET(attributes, attribute, value)
+	if(loaded)
+		SSmapping.on_attribute_set(src, attribute, old, value)
+
+/datum/map_level/proc/unset_attribute(attribute)
+	var/old = get_attribute(attribute)
+	LAZYREMOVE(attributes, attribute)
+	if(loaded)
+		SSmapping.on_attribute_set(src, attribute, old, null)
+
+/**
+ * "free" / unallocated zlevels use this
+ */
+/datum/map_level/unallocated

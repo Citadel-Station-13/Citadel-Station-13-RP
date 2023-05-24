@@ -41,6 +41,10 @@ var/list/all_maps = list()
 	var/width
 	/// declared height - must match all levels
 	var/height
+	/// crop if too big, instead of panic
+	var/crop = FALSE
+	/// center us if we're smaller than world size
+	var/center = TRUE
 
 /datum/map/Destroy()
 	if(loaded)
@@ -60,6 +64,8 @@ var/list/all_maps = list()
 	.["dependencies"] = dependencies
 	.["width"] = width
 	.["height"] = height
+	.["crop"] = crop
+	.["center"] = center
 
 /datum/map/deserialize(list/data)
 	if(loaded)
@@ -85,6 +91,8 @@ var/list/all_maps = list()
 	dependencies = .["dependencies"]
 	width = .["width"]
 	height = .["height"]
+	crop = .["crop"]
+	center = .["center"]
 
 #warn wow
 
