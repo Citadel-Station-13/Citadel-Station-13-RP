@@ -329,3 +329,8 @@ var/list/all_maps = list()
 		num2text(SUP_FREQ)   = list(ACCESS_SUPPLY_BAY),
 		num2text(SRV_FREQ)   = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
 	)
+
+/**
+ * standard sector / planet maps
+ */
+/datum/map/sector

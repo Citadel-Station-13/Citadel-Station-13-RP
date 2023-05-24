@@ -1,16 +1,28 @@
-/datum/map_template/lateload/space/away_debrisfield
-	name = "Debris Field - Z1 Space"
-	desc = "A random debris field out in space."
-	mappath = "maps/map_levels/192x192/debrisfield.dmm"
-	associated_map_datum = /datum/map_level/space_lateload/away_debrisfield
+/datum/map/sector/debrisfield_192
+	id = "debrisfield_192"
+	name = "Sector - Debris Field"
+	width = 192
+	height = 192
+	levels = list(
+		/datum/map_level/sector/debrisfield_192,
+	)
 
-
-/datum/map_template/lateload/space/away_debrisfield/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(z), 200, /area/space/debrisfield/unexplored, /datum/map_template/submap/level_specific/debrisfield)
-
-/datum/map_level/space_lateload/away_debrisfield
-	name = "Away Mission - Debris Field"
+/datum/map_level/sector/debrisfield_192
+	id = "Debrisfield192"
+	name = "Sector - Debris Field"
+	absolute_path = "maps/sectors/debrisfield_192/levels/debrisfield.dmm"
 	base_turf = /turf/space
+	base_area = /area/space
 
-#warn translate
+/datum/map_level/sector/debrisfield_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			20,
+			/area/space/debrisfield/unexplored,
+			/datum/map_template/submap/level_specific/debrisfield
+		)
+	)

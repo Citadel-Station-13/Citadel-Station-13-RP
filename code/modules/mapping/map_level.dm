@@ -28,6 +28,8 @@
 	var/transition = Z_TRANSITION_DEFAULT
 	/// base turf typepath for this level
 	var/base_turf = /turf/space
+	/// base area typepath for this level
+	var/base_area = /area/space
 	/// id of north zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	var/link_north
 	/// id of south zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
@@ -152,7 +154,7 @@
 	return
 
 /**
- * called in a group after all maps and dependencies load
+ * called in a group after all maps and dependencies load **and** generation callbacks fire.
  *
  * @params
  * * z_index - zlevel we loaded on

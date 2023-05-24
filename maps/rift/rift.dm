@@ -18,7 +18,7 @@
 
 /datum/map/station/rift
 	id = "rift"
-	name = "Rift"
+	name = "World - Rift"
 	levels = list(
 		/datum/map_level/rift/station/underground_floor,
 		/datum/map_level/rift/station/underground_deep,

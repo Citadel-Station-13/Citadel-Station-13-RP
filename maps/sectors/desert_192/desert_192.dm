@@ -17,3 +17,5 @@
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 
 #warn translate
+
+/datum/map/
