@@ -156,6 +156,7 @@
 	icon_state = "ushankadown"
 	inv_hide_flags = HIDEEARS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	cold_protection = HEAD
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)
 	. = ..()
