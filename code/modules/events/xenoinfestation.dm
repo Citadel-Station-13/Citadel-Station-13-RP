@@ -84,7 +84,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))
+			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in LEGACY_MAP_DATUM.station_levels))
 				vents += temp_vent
 	if(vents.len <= 0)
 		log_admin("No valid vents to spawn infestation.")
@@ -181,7 +181,7 @@
 		var/turf/T = get_turf(C)
 		if(!T)
 			continue
-		if(!(T.z in GLOB.using_map.station_levels))
+		if(!(T.z in LEGACY_MAP_DATUM.station_levels))
 			continue
 		i++
 	log_admin("Xenoinfestation found [i] players on station")

@@ -3,7 +3,7 @@
 	endWhen		= 30
 
 /datum/event/carp_migration/start()
-	affecting_z -= GLOB.using_map.sealed_levels	// Space levels only please!
+	affecting_z -= LEGACY_MAP_DATUM.sealed_levels	// Space levels only please!
 	..()
 
 /datum/event/dust/announce()

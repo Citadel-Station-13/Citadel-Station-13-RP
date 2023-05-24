@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 /turf/proc/baseturf_core()
 	// todo: this is shitcode, pull it out on maploader refactor.
 	// this is very obviously a copypaste from ChangeTurf.
-	. = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+	. = SSmapping.level_trait(z, ZTRAIT_BASETURF) || LEGACY_MAP_DATUM.base_turf_by_z["[z]"] || /turf/space
 	if(!ispath(.))
 		. = text2path(.)
 		if (!ispath(.))
@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || LEGACY_MAP_DATUM.base_turf_by_z["[z]"] || /turf/space
 			if(!ispath(path))
 				path = text2path(path)
 				if (!ispath(path))

@@ -44,7 +44,7 @@
 	var/z = get_z(nano_host())
 	if(!z)
 		return
-	var/valid_z_levels = GLOB.using_map.get_map_levels(z)
+	var/valid_z_levels = LEGACY_MAP_DATUM.get_map_levels(z)
 	for(var/obj/machinery/power/fission/F in GLOB.machines)
 		// Unsecured, blown up, not within coverage, not on a tile.
 		if(!F.anchored || F.exploded || !(F.z in valid_z_levels) || !istype(F.loc, /turf/))

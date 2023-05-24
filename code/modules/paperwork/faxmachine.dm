@@ -1,5 +1,5 @@
 var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("[GLOB.using_map.boss_name]", "Hadii's Folly Governmental Authority", "Supply")
+var/list/admin_departments = list("[LEGACY_MAP_DATUM.boss_name]", "Hadii's Folly Governmental Authority", "Supply")
 var/list/alldepartments = list()
 
 var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
@@ -27,7 +27,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	. = ..()
 	allfaxes += src
 	if(!destination)
-		destination = "[GLOB.using_map.boss_name]"
+		destination = "[LEGACY_MAP_DATUM.boss_name]"
 	if(!(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
 		alldepartments |= department
 
@@ -49,7 +49,7 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 		data["scanName"] = scan.name
 	else
 		data["scanName"] = null
-	data["bossName"] = GLOB.using_map.boss_name
+	data["bossName"] = LEGACY_MAP_DATUM.boss_name
 	data["authenticated"] = authenticated
 	data["copyItem"] = copyitem
 	if(copyitem)
@@ -186,12 +186,12 @@ var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
 	adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
-	if (destination == GLOB.using_map.boss_name)
-		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
+	if (destination == LEGACY_MAP_DATUM.boss_name)
+		message_admins(sender, "[uppertext(LEGACY_MAP_DATUM.boss_short)] FAX", rcvdcopy, "CentComFaxReply", "#006100")
 	else if (destination == "Virgo-Prime Governmental Authority")
 		message_admins(sender, "VIRGO GOVERNMENT FAX", rcvdcopy, "CentComFaxReply", "#1F66A0")
 	else if (destination == "Supply")
-		message_admins(sender, "[uppertext(GLOB.using_map.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
+		message_admins(sender, "[uppertext(LEGACY_MAP_DATUM.boss_short)] SUPPLY FAX", rcvdcopy, "CentComFaxReply", "#5F4519")
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")
 

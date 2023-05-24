@@ -202,8 +202,8 @@
 	stack_trace("Attempt to delete a map_level instance [log_info_line(src)]")
 	if(!force)
 		return QDEL_HINT_LETMELIVE // No.
-	if (GLOB.using_map.zlevels["[z]"] == src)
-		GLOB.using_map.zlevels -= "[z]"
+	if (LEGACY_MAP_DATUM.zlevels["[z]"] == src)
+		LEGACY_MAP_DATUM.zlevels -= "[z]"
 	return ..()
 
 /datum/map_level/proc/has_trait(trait)

@@ -50,7 +50,7 @@
 
 	var/list/zlevels
 	if(zlevel && zlevel >= 1)
-		zlevels = GLOB.using_map.get_map_levels(zlevel, TRUE)
+		zlevels = LEGACY_MAP_DATUM.get_map_levels(zlevel, TRUE)
 	else if(zlevel && zlevel == -1)//If we get a -1 just announce it to every z, safes us some loops else where
 		zlevels = list()
 		for(var/z in 1 to world.maxz)

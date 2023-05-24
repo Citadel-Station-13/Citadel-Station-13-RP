@@ -6,15 +6,15 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 	screen_loc = "CENTER-7,CENTER-7"
 
 /obj/effect/lobby_image/Initialize(mapload)
-	icon = GLOB.using_map.lobby_icon
+	icon = LEGACY_MAP_DATUM.lobby_icon
 	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in GLOB.using_map.lobby_screens)
+	for(var/lobby_screen in LEGACY_MAP_DATUM.lobby_screens)
 		if(!(lobby_screen in known_icon_states))
 			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			GLOB.using_map.lobby_screens -= lobby_screen
+			LEGACY_MAP_DATUM.lobby_screens -= lobby_screen
 
-	if(GLOB.using_map.lobby_screens.len)
-		icon_state = pick(GLOB.using_map.lobby_screens)
+	if(LEGACY_MAP_DATUM.lobby_screens.len)
+		icon_state = pick(LEGACY_MAP_DATUM.lobby_screens)
 	else
 		icon_state = known_icon_states[1]
 	. = ..()

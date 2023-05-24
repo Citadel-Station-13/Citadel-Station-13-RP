@@ -600,7 +600,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!input)
 		return
 	if(!customname)
-		customname = "[GLOB.using_map.company_name] Update"
+		customname = "[LEGACY_MAP_DATUM.company_name] Update"
 
 	//New message handling
 	post_comm_message(customname, replacetext(input, "\n", "<br/>"))
@@ -609,7 +609,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if("Yes")
 			command_announcement.Announce(input, customname, new_sound = 'sound/AI/commandreport.ogg', msg_sanitized = 1);
 		if("No")
-			to_chat(world, "<font color='red'>New [GLOB.using_map.company_name] Update available at all communication consoles.</font>")
+			to_chat(world, "<font color='red'>New [LEGACY_MAP_DATUM.company_name] Update available at all communication consoles.</font>")
 			SEND_SOUND(world, sound('sound/AI/commandreport.ogg'))
 
 	log_admin("[key_name(src)] has created a command report: [input]")

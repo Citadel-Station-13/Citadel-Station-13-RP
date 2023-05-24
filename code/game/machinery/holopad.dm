@@ -391,7 +391,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 	if(world.time < holocall_last_radio + 30 SECONDS)
 		return
 	holocall_last_radio = world.time
-	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id_source()] at [get_area(src)].", name, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+	GLOB.global_announcer.autosay("Incoming call from [incoming.caller_id_source()] at [get_area(src)].", name, zlevels = LEGACY_MAP_DATUM.get_map_levels(get_z(src)))
 
 /**
  * get hung up by a call

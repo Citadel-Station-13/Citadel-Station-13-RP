@@ -219,10 +219,10 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in GLOB.using_map.sealed_levels)
+	if(z in LEGACY_MAP_DATUM.sealed_levels)
 		return
 
-	if(GLOB.using_map.use_overmap)
+	if(LEGACY_MAP_DATUM.use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 
@@ -258,7 +258,7 @@
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
+	var/list/candidates = LEGACY_MAP_DATUM.accessible_z_levels.Copy()
 	candidates.Remove("[src.z]")
 
 	if(!candidates.len)

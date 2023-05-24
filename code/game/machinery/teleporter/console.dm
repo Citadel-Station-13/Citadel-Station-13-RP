@@ -97,7 +97,7 @@
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
-		if(!(T.z in GLOB.using_map.player_levels))
+		if(!(T.z in LEGACY_MAP_DATUM.player_levels))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -117,7 +117,7 @@
 			var/turf/T = get_turf(M)
 			if(!T)
 				continue
-			if(!(T.z in GLOB.using_map.player_levels))
+			if(!(T.z in LEGACY_MAP_DATUM.player_levels))
 				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])

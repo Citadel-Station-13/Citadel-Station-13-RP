@@ -6,8 +6,8 @@ var/list/all_maps = list()
 /hook/startup/proc/initialise_map_list()
 	for(var/type in typesof(/datum/map/station) - /datum/map/station)
 		var/datum/map/station/M
-		if(type == GLOB.using_map.type)
-			M = GLOB.using_map
+		if(type == LEGACY_MAP_DATUM.type)
+			M = LEGACY_MAP_DATUM
 			M.setup_map()
 		else
 			M = new type
@@ -260,7 +260,7 @@ var/list/all_maps = list()
 
 // By default transition randomly to another zlevel
 /datum/map/station/proc/get_transit_zlevel(var/current_z_level)
-	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
+	var/list/candidates = LEGACY_MAP_DATUM.accessible_z_levels.Copy()
 	candidates.Remove(num2text(current_z_level))
 
 	if(!candidates.len)

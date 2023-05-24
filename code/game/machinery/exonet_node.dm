@@ -23,8 +23,8 @@
 // Description: Adds components to the machine for deconstruction. Also refreshes the descrition.
 /obj/machinery/exonet_node/map/Initialize(mapload, newdir)
 	. = ..()
-	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the \
-	[GLOB.using_map.station_short] to the rest of the system, at least electronically."
+	desc = "This machine is one of many, many nodes inside [LEGACY_MAP_DATUM.starsys_name]'s section of the Exonet, connecting the \
+	[LEGACY_MAP_DATUM.station_short] to the rest of the system, at least electronically."
 	update_desc()
 
 // Proc: update_icon()

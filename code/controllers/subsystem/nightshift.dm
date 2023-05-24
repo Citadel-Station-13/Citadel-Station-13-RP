@@ -28,8 +28,8 @@ SUBSYSTEM_DEF(nightshift)
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
 	var/announce_z
-	if(GLOB.using_map.station_levels.len)
-		announce_z = pick(GLOB.using_map.station_levels)
+	if(LEGACY_MAP_DATUM.station_levels.len)
+		announce_z = pick(LEGACY_MAP_DATUM.station_levels)
 	priority_announcement.Announce(message, new_title = "Automated Lighting System Announcement", new_sound = 'sound/misc/notice2.ogg', zlevel = announce_z)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift(check_canfire=FALSE) //This is called from elsewhere, like setting the alert levels
@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(nightshift)
 	SSlighting.pause_instant()
 
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
-		if(apc.z in GLOB.using_map.station_levels)
+		if(apc.z in LEGACY_MAP_DATUM.station_levels)
 			apc.set_nightshift(active, TRUE)
 			CHECK_TICK
 

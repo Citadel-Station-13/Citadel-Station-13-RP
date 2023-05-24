@@ -114,7 +114,7 @@
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
 		if(player.mob && player.mob.mind) player.mob.mind.reset()
 		new_drone.transfer_personality(player)
-		assign_drone_to_matrix(new_drone, "[GLOB.using_map.company_name]")
+		assign_drone_to_matrix(new_drone, "[LEGACY_MAP_DATUM.company_name]")
 
 	return new_drone
 

@@ -514,7 +514,7 @@
 	if(!silent)
 		//Make an announcement and log the person entering storage.
 		control_computer.frozen_crew += "[to_despawn.real_name], [to_despawn.mind.role_alt_title] - [stationtime2text()]"
-		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+		announce.autosay("[to_despawn.real_name], [to_despawn.mind.role_alt_title], [on_store_message]", "[on_store_name]", announce_channel, LEGACY_MAP_DATUM.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
 		//visible_message(SPAN_NOTICE("\The [initial(name)] hums and hisses as it moves [to_despawn.real_name] into storage."), 3)
 		visible_message(SPAN_NOTICE("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"

@@ -107,7 +107,7 @@
 /obj/machinery/computer/stockexchange/ui_data(mob/user)
 	var/list/data = list()
 
-	data["stationName"] = GLOB.using_map.station_name
+	data["stationName"] = LEGACY_MAP_DATUM.station_name
 	data["balance"] = balance()
 
 	if(vmode)
