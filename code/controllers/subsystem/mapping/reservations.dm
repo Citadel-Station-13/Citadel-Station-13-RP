@@ -17,7 +17,7 @@
 
 /datum/controller/subsystem/mapping/Recover()
 	. = ..()
-	reformatting_reserved_turfs = FALSE
+	reservation_blocking_op = FALSE
 
 /**
  * allocate a new reservation level
@@ -31,7 +31,7 @@
 	ASSERT(allocate_level(level_struct))
 	reserved_level_count++
 	initialize_reserved_level(level_struct.z_index)
-	reserve_levels |= z
+	reserve_levels |= level_struct.z_index
 	return level_struct.z_index
 
 /**
@@ -49,7 +49,7 @@
 		reserve.border_type = border_override
 	if(!isnull(area_override))
 		reserve.area_type = area_override
-	if(reserve.Reserve(width, height, index))
+	if(reserve.reserve(width, height, index))
 		return reserve
 	var/index = allocate_reserved_level()
 	ASSERT(index)
@@ -71,6 +71,6 @@
 
 /area/unused_reservation_area
 	name = "Unused Reservation Area"
-	area_flags = UNIQUE_AREA
+	unique = TRUE
 	always_unpowered = TRUE
 	has_gravity = FALSE
