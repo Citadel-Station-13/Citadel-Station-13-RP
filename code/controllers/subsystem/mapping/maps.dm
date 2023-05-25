@@ -7,7 +7,7 @@
 	/// station is loaded
 	var/world_is_loaded = FALSE
 	/// loaded station map
-	var/static/datum/map/station/loaded_station = list()
+	var/static/datum/map/station/loaded_station
 	/// next station map
 	var/datum/map/station/next_station
 	/// loaded maps
