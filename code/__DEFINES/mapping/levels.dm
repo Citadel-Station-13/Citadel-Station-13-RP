@@ -22,8 +22,6 @@
 /// Forced - always generate transition borders
 #define Z_TRANSITION_FORCED "forced"
 
-#warn above?
-
 //? "attributes"
 
 //? "traits"

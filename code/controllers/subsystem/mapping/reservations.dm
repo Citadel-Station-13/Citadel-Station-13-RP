@@ -11,7 +11,7 @@
 	/// list of reserved z-indices for fast access
 	var/static/list/reserve_levels = list()
 	/// doing some blocking op on reservation system
-	var/static/reformatting_reserved_turfs = FALSE
+	var/static/reservation_blocking_op = FALSE
 	/// singleton area holding all free reservation turfs
 	var/static/area/unused_reservation_area/unallocated_reserve_area = new
 
@@ -22,29 +22,26 @@
 /**
  * allocate a new reservation level
  */
-
-
-#warn oh no
-
-/datum/controller/subsystem/mapping
-
-/*
-/datum/controller/subsystem/mapping/proc/safety_clear_transit_dock(obj/docking_port/stationary/transit/T, obj/docking_port/mobile/M, list/returning)
-	M.setTimer(0)
-	var/error = M.initiate_docking(M.destination, M.preferred_direction)
-	if(!error)
-		returning += M
-		qdel(T, TRUE)
-*/
+/datum/controller/subsystem/mapping/proc/allocate_reserved_level()
+	if(reserved_level_count && ((world.maxx * world.maxy * (reserved_level_count + 1)) > reserved_turfs_max))
+		log_and_message_admins(SPAN_USERDANGER("Out of dynamic reservation allocations. Is there a memory leak with turf reservations?"))
+		return FALSE
+	log_and_message_admins(SPAN_USERDANGER("Allocating new reserved level. Now at [reserved_level_count]. This is probably not a good thing if the server is not at high load right now."))
+	var/datum/map_level/reserved/level_struct = new
+	ASSERT(allocate_level(level_struct))
+	reserved_level_count++
+	initialize_reserved_level(level_struct.z_index)
+	reserve_levels |= z
+	return level_struct.z_index
 
 /**
+ * requests a rectangular block of turfs to be reserved.
  *
+ * you *must* manually clean it up after you're done with it, or else it's a memory leak.
  *
- *
- * wip doc
+ * failures are considered a runtime due to how sensitive turf management systems are.
  */
 /datum/controller/subsystem/mapping/proc/request_block_reservation(width, height, type = /datum/turf_reservation, turf_override, border_override, area_override)
-	UNTIL((!z || reservation_ready["[z]"]) && !clearing_reserved_turfs)
 	var/datum/turf_reservation/reserve = new type
 	if(!isnull(turf_override))
 		reserve.turf_type = turf_override
@@ -52,37 +49,18 @@
 		reserve.border_type = border_override
 	if(!isnull(area_override))
 		reserve.area_type = area_override
-	#warn below
-	for(var/i in levels_by_trait(ZTRAIT_RESERVED))
-		if(reserve.Reserve(width, height, i))
-			return reserve
-	//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
-	num_of_res_levels += 1
-	var/datum/space_level/newReserved = add_new_zlevel("Transit/Reserved [num_of_res_levels]", list(ZTRAIT_RESERVED = TRUE))
-	initialize_reserved_level(newReserved.z_value)
-	if(reserve.Reserve(width, height, newReserved.z_value))
+	if(reserve.Reserve(width, height, index))
+		return reserve
+	var/index = allocate_reserved_level()
+	ASSERT(index)
+	if(reserve.reserve(width, height, index))
 		return reserve
 	QDEL_NULL(reserve)
+	CRASH("failed to reserve")
 
 /datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
-	#warn SCREAM
-	UNTIL(!clearing_reserved_turfs)				//regardless, lets add a check just in case.
-	clearing_reserved_turfs = TRUE			//This operation will likely clear any existing reservations, so lets make sure nothing tries to make one while we're doing it.
-	if(!level_trait(z,ZTRAIT_RESERVED))
-		clearing_reserved_turfs = FALSE
-		CRASH("Invalid z level prepared for reservations.")
-	var/turf/A = get_turf(locate(SHUTTLE_TRANSIT_BORDER,SHUTTLE_TRANSIT_BORDER,z))
-	var/turf/B = get_turf(locate(world.maxx - SHUTTLE_TRANSIT_BORDER,world.maxy - SHUTTLE_TRANSIT_BORDER,z))
-	var/block = block(A, B)
-	for(var/t in block)
-		// No need to empty() these, because it's world init and they're
-		// already /turf/space/basic.
-		var/turf/T = t
-		T.turf_flags |= UNUSED_RESERVATION_TURF
-	unused_turfs["[z]"] = block
-	reservation_ready["[z]"] = TRUE
-	clearing_reserved_turfs = FALSE
-
+	var/list/turf/turfs = Z_TURFS(z)
+	reserve_turfs(turfs)
 
 /datum/controller/subsystem/mapping/proc/reserve_turfs(list/turf/turfs)
 	for(var/turf/T as anything in turfs)

@@ -20,12 +20,5 @@
 /// Automatically created submaps are forbidden from being this close to the main map's edge.
 #define SUBMAP_MAP_EDGE_PAD 8
 
-
-
-//Reserved/Transit turf type
-#define RESERVED_TURF_TYPE /turf/space
-// #define RESERVED_TURF_TYPE /turf/space/basic			//What the turf is when not being used
-
-
 /// Distance from edge to move to another z-level.
 #define TRANSITIONEDGE				1

@@ -20,6 +20,8 @@
 	var/relative_path
 	/// are we loaded in
 	var/tmp/loaded = FALSE
+	/// our zlevel once loaded
+	var/tmp/z_index
 	/// are we modified from our prototype/definition?
 	var/tmp/modified = FALSE
 	/// linkage enum
@@ -162,6 +164,12 @@
 /datum/map_level/proc/on_loaded_finalize(z_index)
 	return
 
+/**
+ * allow deallocation/unload
+ */
+/datum/map_level/proc/allow_deallocate()
+	return TRUE
+
 #warn all
 
 // Default constructor applies itself to the pae≈rent map datum
@@ -251,3 +259,6 @@
  */
 /datum/map_level/reserved
 	transition = Z_TRANSITION_DISABLED
+
+/datum/map_level/reserved/allow_deallocate()
+	return FALSE
