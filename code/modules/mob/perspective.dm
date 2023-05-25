@@ -222,6 +222,7 @@
 	tim_sort(vision_modifiers)
 
 /mob/proc/add_vision_modifier(datum/vision/modifier)
+	ASSERT(!isnull(modifier))
 	if(ispath(modifier))
 		modifier = cached_vision_holder(modifier)
 	ASSERT(!(modifier in vision_modifiers))
@@ -230,6 +231,7 @@
 	update_darksight()
 
 /mob/proc/remove_vision_modifier(datum/vision/modifier)
+	ASSERT(!isnull(modifier))
 	if(ispath(modifier))
 		modifier = cached_vision_holder(modifier)
 	LAZYREMOVE(vision_modifiers, modifier)

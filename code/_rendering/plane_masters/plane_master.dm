@@ -22,6 +22,12 @@
 
 //* KEEP THESE SORTED
 
+/atom/movable/screen/plane_master/game_relay_plate
+	alpha = 255
+	plane = GAME_RENDER_RELAY_PLANE
+	mouse_opacity = MOUSE_OPACITY_ICON
+	render_target = GAME_RENDER_RELAY_TARGET
+
 /atom/movable/screen/plane_master/space
 	plane = SPACE_PLANE
 	alpha = 255
@@ -100,19 +106,37 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 
-/**
- * darkvision plate: combines turfs, objs, and mobs planes
- * the only reason this is a plane and not just a holder is we can inject more stuff later into this plane.
- */
-/atom/movable/screen/plane_master/darkvision_plate
-	plane = DARKVISION_PLATE_PLANE
-	render_target = DARKVISION_PLATE_RENDER_TARGET
+/atom/movable/screen/plane_master/lightmask
+	plane = LIGHTMASK_PLANE
+	render_target = LIGHTMASK_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// convert all color to alpha
+	color = list(
+		0, 0, 0, 0.39,
+		0, 0, 0, 0.5,
+		0, 0, 0, 0.11,
+		0, 0, 0, 0,
+		1, 1, 1, 0
+	)
 
+/**
+ * darkvision plate: gathers everything we can see, colors it, etc
+ * the actual drawing and occlusion effects are done on the darkvision plane, which is BLEND_ADD.
+ */
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
-	blend_mode = BLEND_ADD
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/screen/plane_master/darkvision/Initialize(mapload)
+	. = ..()
+	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
+
+/atom/movable/screen/plane_master/lightless
+	plane = LIGHTLESS_PLANE
+
+/atom/movable/screen/plane_master/lightless/Initialize(mapload)
+	. = ..()
+	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE

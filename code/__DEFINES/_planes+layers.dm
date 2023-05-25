@@ -71,21 +71,29 @@
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
 /**
- *! -- Render Holder Plane
- *? Screen objects that act as an intermediate for render targets.
- *? Everything on this plane should use * to not be rendered.
- *? This plane has NO plane master.
+ *! -- Game Render "Plate" Plane --
+ *? Screen objects that act as an intermediate for render targets for all relevant game planes.
+ *? This does not include parallax/space/hud/multiz/etc, this is only for game world objects.
  */
-#define RENDER_INTERMEDIATE_PLANE -99
+#define GAME_RENDER_RELAY_PLANE -98
+#define GAME_RENDER_RELAY_TARGET "*GAME_PLATE_RELAY"
+#define GAME_RENDER_RELAY_LAYER_TURFS 2
+#define GAME_RENDER_RELAY_LAYER_OBJS 3
+#define GAME_RENDER_RELAY_LAYER_MOBS 4
 
+/**
+ *! -- Render Holder Plane --
+ *? Unassociated render holders go here. This has no plane master.
+ */
+#define RENDER_HOLDER_PLANE -97
 
 /**
  *! -- Click Catcher Plane
  *? For the click catcher. It catches clicks... Who would've guessed.
  *? This plane has NO plane master.
+ *? This is the lowest "real" plane
  */
-#define CLICKCATCHER_PLANE -98
-
+#define CLICKCATCHER_PLANE -96
 
 /**
  *! -- Space Plane
@@ -222,32 +230,21 @@
  *! -- Lighting Plane
  *? Where the lighting (and darkness) lives (ignoring all other higher planes)
  */
-#define LIGHTING_PLANE 10
+#define LIGHTING_PLANE 9
 #define LIGHTING_LAYER_MAIN 1
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
-#define LIGHTING_ALPHA_FORWARD_TARGET "*LIGHTING_PLANE_ALPHA"
 
-/**
- *! -- Soft Darkvision Render --
- *? Game world is projected onto this plane.
- */
-#define DARKVISION_PLATE_PLANE 11
-#define DARKVISION_PLATE_LAYER_TURFS 1
-#define DARKVISION_PLATE_LAYER_OBJS 2
-#define DARKVISION_PLATE_LAYER_MOBS 3
-#define DARKVISION_PLATE_LAYER_MAIN 4
-#define DARKVISION_PLATE_LAYER_MULTIPLIER 5
-#define DARKVISION_PLATE_RENDER_TARGET "*DARKVISION_PLATE_PLANE"
-#define DARKVISION_PLATE_FORWARD_TARGET "*DARKVISION_PLATE_PROCESSED"
+#define LIGHTMASK_PLANE 11
+#define LIGHTMASK_LAYER_MAIN 1
+#define LIGHTMASK_RENDER_TARGET "*LIGHTING_MASK"
 
-/**
- *! -- Soft Darkvision Plane --
- *? This plane is what darkvision gets kicked onto.
- */
 #define DARKVISION_PLANE 12
-#define DARKVISION_LAYER_PLATE 0
-#define DARKVISION_LAYER_MAIN 1
-#define DARKVISION_LAYER_MASKING 2
+#define DARKVISION_LAYER_GAME 1
+#define DARKVISION_LAYER_ADDITIONAL 2
+#define DARKVISION_LAYER_OCCLUSION 3
+
+#define LIGHTLESS_PLANE 13
+#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
 
 /**
  *! -- Lighting Plane
