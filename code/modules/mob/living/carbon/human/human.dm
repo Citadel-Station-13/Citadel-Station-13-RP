@@ -622,9 +622,9 @@
 				return
 
 	if(href_list["character_profile"])
-		var/datum/description_profile/L = new(src)
-		L.host = src
-		L.ui_interact(usr)
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 	..()
 	return
 /mob/living/carbon/human/needs_to_breathe()

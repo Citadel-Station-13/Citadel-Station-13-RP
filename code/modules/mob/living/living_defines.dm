@@ -105,7 +105,7 @@
 	var/last_blood_warn = -INFINITY
 
 	var/ooc_notes = null
-	var/profile_text = null
+	var/datum/description_profile/profile
 	var/obj/structure/mob_spawner/source_spawner = null
 
 //custom say verbs

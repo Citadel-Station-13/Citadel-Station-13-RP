@@ -19,7 +19,6 @@
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
-	S["Profile_Text"]           >> pref.profile_text
 	S["Headshot_URL"]           >> pref.headshot_url
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
@@ -31,7 +30,6 @@
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
-	S["Profile_Text"]           << pref.profile_text
 	S["Headshot_URL"]           << pref.headshot_url
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
@@ -86,7 +84,6 @@
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
 	. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
-	. += "<b>Profile Text:</b> <a href='?src=\ref[src];profile=1'> Edit </a><br>"
 	. += "<b>Headshot:</b> <a href='?src=\ref[src];headshot=1'>[pref.headshot_url ? "Set" : "Not Set"]</a><br>"
 	. = jointext(., null)
 
@@ -156,16 +153,12 @@
 			pref.metadata = new_metadata
 			return PREFERENCES_REFRESH
 
-	else if(href_list["profile"])
-		var/new_profile = sanitize(input(user, "Enter any information you'd like others to see about your character - information entered here is considered Out Of Character knowledge. You may use the same emphasis characters used in speech here.", "OOC Notes" , html_decode(pref.profile_text)) as message, extra = 0)
-		if(!isnull(new_profile) && CanUseTopic(user))
-			pref.profile_text = new_profile
-			return PREFERENCES_REFRESH
-
 	else if(href_list["headshot"])
 		if(pref.headshot_url)
 			if(alert(user, "Do you want to unset your headshot URL? An admin must set it again.", "Unset Headshot", "No", "Yes") == "Yes")
 				pref.headshot_url = null
+		else
+			to_chat(user, SPAN_BOLDWARNING("You must join the Discord and open a ticket in order to have your headshot URL set!"))
 
 	return ..()
 
