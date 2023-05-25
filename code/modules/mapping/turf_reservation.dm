@@ -53,7 +53,7 @@
 	// pick and take
 	var/list/possible_levels = SSmapping.reserve_levels.Copy()
 	var/level_index
-	var/turf//BL
+	var/turf/BL
 	var/turf/TR
 	var/list/turf/final
 	var/area/area_path = area_type
@@ -69,6 +69,8 @@
 		 * here's the magic
 		 * because reservations are aligned to RESERVED_TURF_RESOLUTION,
 		 * we just have to check the start spots, since we always align to them.
+		 *
+		 * bottom-right turfs on reservations align to 0 * RESERVED_TURF_RESOLUTION + 1, 1 * RESERVED_TURF_RESOLUTION + 1, 2 * RESERVED_TURF_RESOLUTION + 1, ...
 		 */
 		for(var/outer_x in 1 to (total_many_wide - how_many_wide + 1))
 			for(var/outer_y in 1 to (total_many_high - how_many_high + 1))
@@ -84,7 +86,7 @@
 				if(!passing)
 					continue
 				BL = locate(1 + RESERVED_TURF_RESOLUTION * (outer_x - 1), 1 + RESERVED_TURF_RESOLUTION * (outer_y - 1), level_index)
-				TR = locate(anchor.x + width - 1, anchor.y + height - 1, anchor.z)
+				TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
 				final = block(BL, TR)
 				found_a_spot = TRUE
 				break
