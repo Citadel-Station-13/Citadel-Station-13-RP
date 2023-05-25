@@ -41,7 +41,6 @@ var/datum/planet/lythios43c/planet_lythios43c = null
 
 /datum/planet/lythios43c/New()
 	..()
-	planet_lythios43c = src
 	weather_holder = new /datum/weather_holder/lythios43c(src)
 
 /datum/planet/lythios43c/update_sun()
