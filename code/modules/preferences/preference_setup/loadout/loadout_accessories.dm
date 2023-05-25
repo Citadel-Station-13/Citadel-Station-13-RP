@@ -29,7 +29,7 @@
 
 
 /datum/gear/accessory/insignia
-	name = "Department Insignia Selection"
+	name = "Insignia Selection"
 	path = /obj/item/clothing/accessory/oricon/department
 	cost = 1
 
