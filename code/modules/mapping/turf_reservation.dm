@@ -75,74 +75,16 @@
 						break
 				if(!passing)
 					continue
-				final = locate(1 + RESERVED_TURF_RESOLUTION * (outer_x - 1), 1 + RESERVED_TURF_RESOLUTION * (outer_y - 1), level_index)
+				var/turf/anchor = locate(1 + RESERVED_TURF_RESOLUTION * (outer_x - 1), 1 + RESERVED_TURF_RESOLUTION * (outer_y - 1), level_index)
+				BL = list(anchor.x, anchor.y, anchor.z)
+				TR = list(anchor.x + width - 1, anchor.y + height - 1, anchor.z)
+				final = block(locate(arglist(BL)), locate(arglist(TR)))
 				found_a_spot = TRUE
 				break
 			if(found_a_spot)
 				break
 		if(found_a_spot)
 			break
-
-		var/turf/anchor = locate(1, 1, level_index)
-		var/turf/checking
-		var/turf/next
-		do
-			// get lookahead
-			next = (anchor.y + RESERVED_TURF_RESOLUTION + height - 1) > world.maxy? \
-				( \
-					(anchor.x + RESERVED_TURF_RESOLUTION + width - 1) > world.maxx? \
-						null : \
-						locate(anchor.x + RESERVED_TURF_RESOLUTION, 1, level_index)
-				) : \
-				locate(anchor.x, anchor.y + RESERVED_TURF_RESOLUTION, level_index)
-			// check corners
-			checking = anchor
-			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
-				continue
-			checking = locate(anchor.x + width - 1, anchor.y, level_index)
-			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
-				continue
-			checking = locate(anchor.x, anchor.y + height - 1, level_index)
-			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
-				continue
-			checking = locate(anchor.x + width - 1, anchor.y + height - 1, level_index)
-			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
-				continue
-
-		while((anchor = next))
-		if(found_a_spot)
-			break
-
-	for(var/z_index in SSmapping.reserve_levels)
-
-	var/list/avail = SSmapping.unused_turfs["[zlevel]"]
-	var/turf/BL
-	var/turf/TR
-	var/list/turf/final = list()
-	var/passing = FALSE
-	for(var/i in avail)
-		CHECK_TICK
-		BL = i
-		if(!(BL.turf_flags & UNUSED_RESERVATION_TURF))
-			continue
-		if(BL.x + width > world.maxx || BL.y + height > world.maxy)
-			continue
-		TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
-		if(!(TR.turf_flags & UNUSED_RESERVATION_TURF))
-			continue
-		final = block(BL, TR)
-		if(!final)
-			continue
-		passing = TRUE
-		for(var/I in final)
-			var/turf/checking = I
-			if(!(checking.turf_flags & UNUSED_RESERVATION_TURF))
-				passing = FALSE
-				break
-		if(!passing)
-			continue
-		break
-
 	if(!found_a_spot)
 		SSmapping.reservation_blocking_op = FALSE
 		return FALSE
