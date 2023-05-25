@@ -70,11 +70,12 @@
 	insignia["Service - Echelons"] = /obj/item/clothing/accessory/oricon/department/service/marine
 	gear_tweaks += new/datum/gear_tweak/path(insignia)
 
-/datum/gear/accessory/insignia/colored
+/datum/gear/accessory/insigniacolored
 	name = "Insignia - Colorable"
 	path = /obj/item/clothing/accessory/oricon/department/colorable
+	cost = 1
 
-/datum/gear/accessory/insignia/colored/New()
+/datum/gear/accessory/insigniacolored/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
