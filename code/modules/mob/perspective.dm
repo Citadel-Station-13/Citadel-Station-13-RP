@@ -118,7 +118,7 @@
 	. = ..()
 	self_perspective.see_invisible = see_invisible
 	self_perspective.sight = sight
-	update_darksight()
+	update_vision()
 
 //? Perspective - Shunting / Remote Viewing
 
@@ -196,25 +196,25 @@
 /**
  * get our innate darksight
  */
-/mob/proc/innate_darksight()
+/mob/proc/innate_vision()
 	RETURN_TYPE(/datum/vision/baseline)
 	return vision_override || GLOB.default_darksight
 
 /**
  * get all darksight datums, ordered. 1 (front of list) is applied first.
  */
-/mob/proc/query_darksight()
+/mob/proc/query_vision()
 	RETURN_TYPE(/list)
 	var/list/built = vision_modifiers?.Copy() || list()
-	built.Insert(1, innate_darksight())
+	built.Insert(1, innate_vision())
 	return built
 
 /**
- * updates our darksight data and pushes it to perspective
+ * updates our vision data and pushes it to perspective
  */
-/mob/proc/update_darksight()
+/mob/proc/update_vision()
 	ensure_self_perspective()
-	self_perspective.push_vision_stack(query_darksight())
+	self_perspective.push_vision_stack(query_vision())
 
 /mob/proc/sort_vision_modifiers()
 	if(isnull(vision_modifiers))
@@ -228,14 +228,14 @@
 	ASSERT(!(modifier in vision_modifiers))
 	LAZYINITLIST(vision_modifiers)
 	BINARY_INSERT(modifier, vision_modifiers, /datum/vision, modifier, priority, COMPARE_KEY)
-	update_darksight()
+	update_vision()
 
 /mob/proc/remove_vision_modifier(datum/vision/modifier)
 	ASSERT(!isnull(modifier))
 	if(ispath(modifier))
 		modifier = cached_vision_holder(modifier)
 	LAZYREMOVE(vision_modifiers, modifier)
-	update_darksight()
+	update_vision()
 
 /**
  * returns if we have this exact modifier

@@ -1155,7 +1155,7 @@
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
 	reload_rendering()
-	update_darksight()
+	update_vision()
 
 	// skip the rest
 	if(skip)

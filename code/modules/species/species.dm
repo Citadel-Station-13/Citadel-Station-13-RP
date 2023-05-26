@@ -918,6 +918,6 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /**
  * Makes sure innate darksight is there
  */
-/datum/species/proc/assert_innate_darksight()
+/datum/species/proc/assert_innate_vision()
 	if(ispath(vision_innate))
 		vision_innate = new vision_innate

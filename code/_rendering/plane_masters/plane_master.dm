@@ -22,12 +22,6 @@
 
 //* KEEP THESE SORTED
 
-/atom/movable/screen/plane_master/game_relay_plate
-	alpha = 255
-	plane = GAME_RENDER_RELAY_PLANE
-	mouse_opacity = MOUSE_OPACITY_ICON
-	render_target = GAME_RENDER_RELAY_TARGET
-
 /atom/movable/screen/plane_master/space
 	plane = SPACE_PLANE
 	alpha = 255
@@ -112,9 +106,9 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	// convert all color to alpha
 	color = list(
-		0, 0, 0, 0.39,
-		0, 0, 0, 0.5,
-		0, 0, 0, 0.11,
+		0, 0, 0, 0.75,
+		0, 0, 0, 0.75,
+		0, 0, 0, 0.75,
 		0, 0, 0, 0,
 		1, 1, 1, 0
 	)
@@ -125,7 +119,9 @@
  */
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
+	blend_mode = BLEND_ADD
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	render_target = DARKVISION_RENDER_TARGET
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()
@@ -133,6 +129,7 @@
 
 /atom/movable/screen/plane_master/lightless
 	plane = LIGHTLESS_PLANE
+	render_target = LIGHTLESS_RENDER_TARGET
 
 /atom/movable/screen/plane_master/lightless/Initialize(mapload)
 	. = ..()

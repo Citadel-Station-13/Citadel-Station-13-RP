@@ -228,8 +228,6 @@
 		C.screen |= planes.screens()
 	if(!isnull(images))
 		C.images |= images
-	if(!isnull(darksight_overlay))
-		C.screen |= darksight_overlay
 	update(C)
 
 /**
@@ -250,8 +248,6 @@
 		C.screen -= planes.screens()
 	if(!isnull(images))
 		C.images -= images
-	if(!isnull(darksight_overlay))
-		C.screen -= darksight_overlay
 
 /**
  * updates eye, perspective var, virtual eye, lazy eye, sight, see in dark, see invis
@@ -424,6 +420,8 @@
 	// push holders
 	for(var/datum/vision/holder as anything in holders)
 		holder.push(src)
+	var/lit_factor = darkvision_alpha / 255
+	color_matrix_multiply(darkvision_matrix, construct_rgb_color_matrix(rr = lit_factor, gg = lit_factor, bb = lit_factor))
 	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
 	update_vision()
@@ -437,20 +435,21 @@
 	if(!isnull(darksight_overlay))
 		return
 	darksight_overlay = new
-	darksight_image = new /image/darksight_overlay(darksight_overlay)
+	darksight_image = new /image/darksight_overlay
+	darksight_image.loc = darksight_overlay
 	add_image(darksight_image)
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
 	if(isnull(darksight_image))
 		return
-	darksight_image.overlays = list()
-	var/matrix/transformed = matrix()
-	var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
-	// scale base
-	transformed.Scale(factor, factor)
-	// apply the actual fov and mask
-	var/mutable_appearance/occlusion = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-soft")
+	// darksight_image.overlays = list()
+	// var/matrix/transformed = matrix()
+	// var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
+	// // scale base
+	// transformed.Scale(factor, factor)
+	// // apply the actual fov and mask
+	// var/mutable_appearance/occlusion = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-soft")
 	var/state_to_use = "fade-omni-soft"
 	switch(darkvision_fov)
 		if(SOFT_DARKSIGHT_FOV_270)
@@ -459,12 +458,13 @@
 			state_to_use = "fade-180-hard"
 		if(SOFT_DARKSIGHT_FOV_90)
 			state_to_use = "fade-90-hard"
-	occlusion.icon_state = state_to_use
-	occlusion.blend_mode = BLEND_INSET_OVERLAY
-	darksight_image.overlays += occlusion
-	var/brightness_factor = darkvision_alpha / 255
-	darksight_image.color = construct_rgb_color_matrix(rr = brightness_factor, gg = brightness_factor, bb = brightness_factor)
-	darksight_image.transform = transformed
+	// occlusion.icon_state = state_to_use
+	// occlusion.blend_mode = BLEND_INSET_OVERLAY
+	// darksight_image.overlays += occlusion
+	// var/brightness_factor = darkvision_alpha / 255
+	// darksight_image.color = construct_rgb_color_matrix(rr = brightness_factor, gg = brightness_factor, bb = brightness_factor)
+	// darksight_image.transform = transformed
+	darksight_image.icon_state = state_to_use
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
@@ -498,7 +498,9 @@
 	// 	else if(!darkvision_smart && darkvision_plane.has_filter("smart_mask"))
 	// 		darkvision_plane.remove_filter("smart_mask")
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
-	lighting_plane.alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
+	var/wanted_alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
+	lighting_plane.alpha = wanted_alpha
+	darkvision_plate.alpha = wanted_alpha
 
 /**
  * sets a plane visible if it wasn't already

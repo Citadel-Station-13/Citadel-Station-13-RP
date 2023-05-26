@@ -123,6 +123,8 @@ GLOBAL_DATUM_INIT(default_darksight, /datum/vision/baseline/default, new)
 /datum/vision/baseline/default
 	priority = DARKSIGHT_PRIORITY_INNATE
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 //? silicons baseline
 
@@ -130,6 +132,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 /datum/vision/baseline/silicons
 	priority = DARKSIGHT_PRIORITY_INNATE
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_DEFAULT
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 //? observer baseline
 
@@ -145,6 +149,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_DEFAULT
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
 	soft_darksight_smartness = TRUE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 /datum/vision/baseline/species_tier_1
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_1
@@ -152,6 +158,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_1
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_1
 	soft_darksight_smartness = TRUE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 /datum/vision/baseline/species_tier_2
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_2
@@ -159,6 +167,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_2
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_2
 	soft_darksight_smartness = TRUE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 /datum/vision/baseline/species_tier_3
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_TIER_3
@@ -166,6 +176,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_TIER_3
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_TIER_3
 	soft_darksight_smartness = TRUE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 /datum/vision/baseline/species_super
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
@@ -173,6 +185,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_SUPER
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_SUPER
 	soft_darksight_smartness = TRUE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 //? gear
 
@@ -183,12 +197,16 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_NVGS
 	soft_darksight_smartness = FALSE
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 /datum/vision/baseline/nvg_hightech
 	priority = DARKSIGHT_PRIORITY_GLASSES
 	soft_darksight_alpha = SOFT_DARKSIGHT_ALPHA_NVGS
 	soft_darksight_range = SOFT_DARKSIGHT_RANGE_NVGS
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_NVGS
+	/// greyscale
+	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
 //? misc
 

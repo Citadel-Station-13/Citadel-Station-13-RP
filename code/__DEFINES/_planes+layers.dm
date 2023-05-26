@@ -71,23 +71,6 @@
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
 /**
- *! -- Game Render "Plate" Plane --
- *? Screen objects that act as an intermediate for render targets for all relevant game planes.
- *? This does not include parallax/space/hud/multiz/etc, this is only for game world objects.
- */
-#define GAME_RENDER_RELAY_PLANE -98
-#define GAME_RENDER_RELAY_TARGET "*GAME_PLATE_RELAY"
-#define GAME_RENDER_RELAY_LAYER_TURFS 2
-#define GAME_RENDER_RELAY_LAYER_OBJS 3
-#define GAME_RENDER_RELAY_LAYER_MOBS 4
-
-/**
- *! -- Render Holder Plane --
- *? Unassociated render holders go here. This has no plane master.
- */
-#define RENDER_HOLDER_PLANE -97
-
-/**
  *! -- Click Catcher Plane
  *? For the click catcher. It catches clicks... Who would've guessed.
  *? This plane has NO plane master.
@@ -234,17 +217,36 @@
 #define LIGHTING_LAYER_MAIN 1
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
 
+/**
+ * lighting mask plane used for:
+ * - DARKVISION_PLANE masking
+ * - LIGHTLESS_PLANE masking
+ *
+ * this has a color matrix on it to amplify lights, making even softer lights
+ * able to fully mask the other planes.
+ */
 #define LIGHTMASK_PLANE 11
 #define LIGHTMASK_LAYER_MAIN 1
-#define LIGHTMASK_RENDER_TARGET "*LIGHTING_MASK"
+#define LIGHTMASK_RENDER_TARGET "*LIGHTMASK_PLANE"
 
+/**
+ * mob darkvision plane
+ */
 #define DARKVISION_PLANE 12
-#define DARKVISION_LAYER_GAME 1
-#define DARKVISION_LAYER_ADDITIONAL 2
-#define DARKVISION_LAYER_OCCLUSION 3
+#define DARKVISION_LAYER_TURFS 1
+#define DARKVISION_LAYER_OBJS 2
+#define DARKVISION_LAYER_ADDITIONAL 4
+#define DARKVISION_LAYER_MOBS 5
+#define DARKVISION_LAYER_OCCLUSION 6
+#define DARKVISION_LAYER_FOV 7
+#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
+/**
+ * objects on this plane can only be seen without light.
+ */
 #define LIGHTLESS_PLANE 13
 #define LIGHTLESS_LAYER(normal_layer) (normal_layer)
+#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
 
 /**
  *! -- Lighting Plane
