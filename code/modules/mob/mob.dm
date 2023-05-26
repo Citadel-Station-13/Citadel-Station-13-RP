@@ -14,12 +14,8 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
-	GLOB.mob_list += src
+	mob_list_register(stat)
 	set_key_focus(src)
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
@@ -77,9 +73,7 @@
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
+	mob_list_unregister(stat)
 	unset_machine()
 	movespeed_modification = null
 	actionspeed_modification = null
@@ -115,6 +109,24 @@
 		using_perspective = null
 	..()
 	return QDEL_HINT_HARDDEL
+
+/mob/proc/mob_list_register(for_stat)
+	GLOB.mob_list += src
+	if(for_stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+
+/mob/proc/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
+	if(for_stat == DEAD)
+		dead_mob_list -= src
+	else
+		living_mob_list -= src
+
+/mob/proc/mob_list_update_stat(old_stat, new_stat)
+	mob_list_unregister(old_stat)
+	mob_list_register(new_stat)
 
 /**
  * Generate the tag for this mob

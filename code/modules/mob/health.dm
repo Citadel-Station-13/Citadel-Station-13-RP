@@ -32,7 +32,9 @@
 	if(stat == new_stat)
 		return FALSE
 	var/was_dead = IS_DEAD(src)
+	var/old_stat = stat
 	stat = new_stat
+	mob_list_update_stat(old, new_stat)
 	var/is_dead = IS_DEAD(src)
 	mobility_flags = (mobility_flags & ~(MOBILITY_IS_CONSCIOUS)) | (STAT_IS_CONSCIOUS(new_stat)? MOBILITY_IS_CONSCIOUS : NONE)
 	if(!STAT_IS_CONSCIOUS(new_stat))

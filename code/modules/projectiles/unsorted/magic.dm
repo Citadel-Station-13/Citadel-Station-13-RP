@@ -38,7 +38,7 @@
 			to_chat(target, "<span class='notice'>You rise with a start, you're alive!!!</span>")
 		else if(target.stat != DEAD)
 			to_chat(target, "<span class='notice'>You feel great!</span>")
-			target.rejuvenate(fix_missing = TURE)
+			target.rejuvenate(fix_missing = TRUE)
 
 /obj/projectile/magic/teleport
 	name = "bolt of teleportation"
