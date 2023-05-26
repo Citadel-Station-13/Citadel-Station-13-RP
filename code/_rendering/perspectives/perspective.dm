@@ -420,8 +420,6 @@
 	// push holders
 	for(var/datum/vision/holder as anything in holders)
 		holder.push(src)
-	var/lit_factor = darkvision_alpha / 255
-	color_matrix_multiply(darkvision_matrix, construct_rgb_color_matrix(rr = lit_factor, gg = lit_factor, bb = lit_factor))
 	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
 	update_vision()
@@ -500,7 +498,8 @@
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
 	var/wanted_alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
 	lighting_plane.alpha = wanted_alpha
-	darkvision_plate.alpha = wanted_alpha
+	var/lit_factor = darkvision_alpha / 255
+	darkvision_plate.alpha = lit_factor * (wanted_alpha / 255)
 
 /**
  * sets a plane visible if it wasn't already
