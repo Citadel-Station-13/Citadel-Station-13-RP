@@ -77,6 +77,12 @@
 
 /datum/gear/accessory/insigniacolored/New()
 	..()
+	var/insignia = list()
+	insignia["Colorable - Crew"] = /obj/item/clothing/accessory/oricon/department/colorable
+	insignia["Colorable - Crew Short"] = /obj/item/clothing/accessory/oricon/department/colorable/service
+	insignia["Colorable - Bands"] = /obj/item/clothing/accessory/oricon/department/colorable/fleet
+	insignia["Colorable - Echelons"] = /obj/item/clothing/accessory/oricon/department/colorable/marine
+	gear_tweaks += new/datum/gear_tweak/path(insignia)
 	gear_tweaks += gear_tweak_free_color_choice
 
 

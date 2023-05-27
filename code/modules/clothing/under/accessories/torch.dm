@@ -304,6 +304,10 @@ department tags
 	name = "blank insignia"
 	desc = "Insignia denoting assignment to a department. These appear blank."
 
+/obj/item/clothing/accessory/oricon/department/colorable/service
+	name = "blank insignia"
+	desc = "Insignia denoting assignment to a department. These appear blank."
+
 /obj/item/clothing/accessory/oricon/department/colorable/fleet
 	icon_state = "dept_fleet"
 	on_rolled = list("rolled" = "dept_fleet_sleeves", "down" = "none")
@@ -312,7 +316,7 @@ department tags
 	icon_state = "dept_marine"
 	on_rolled = list("down" = "none")
 
-/obj/item/clothing/accessory/oricon/department/colorable/command
+/obj/item/clothing/accessory/oricon/department/command
 	name = "command insignia"
 	desc = "Insignia denoting assignment to the command department."
 	color = "#e5ea4f"
