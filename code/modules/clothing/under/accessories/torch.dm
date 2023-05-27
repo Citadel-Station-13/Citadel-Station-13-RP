@@ -305,8 +305,7 @@ department tags
 	desc = "Insignia denoting assignment to a department. These appear blank."
 
 /obj/item/clothing/accessory/oricon/department/colorable/service
-	name = "blank insignia"
-	desc = "Insignia denoting assignment to a department. These appear blank."
+	icon_state = "dept_service"
 
 /obj/item/clothing/accessory/oricon/department/colorable/fleet
 	icon_state = "dept_fleet"
