@@ -4,6 +4,8 @@
  * This is both used for persistence, as well as potentially admin backend in the future.
  * Please exercise caution when editing the subsystem and the root of /datum/character_data.
  * Use and abuse subtypes to do what you need to do for persistence features.
+ *
+ * todo: this should go on SScharacters
  */
 /datum/controller/subsystem/persistence
 	/// loaded characters - "[id]" = /datum/character_data instance
