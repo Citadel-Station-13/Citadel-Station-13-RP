@@ -487,6 +487,7 @@ default behaviour is:
 
 /mob/living/proc/rejuvenate()
 
+#warn ??
 	heal_overall_damage(getBruteLoss(), getFireLoss())
 
 	// fix all of our organs

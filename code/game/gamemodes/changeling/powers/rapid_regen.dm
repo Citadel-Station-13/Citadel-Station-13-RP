@@ -21,10 +21,7 @@
 
 	if(ishuman(src))
 		var/mob/living/carbon/human/C = src
-		var/healing_amount = 40
-		if(src.mind.changeling.recursive_enhancement)
-			healing_amount = C.maxHealth
-			to_chat(src, "<span class='notice'>We completely heal ourselves.</span>")
+		to_chat(src, "<span class='notice'>We completely heal ourselves.</span>")
 		spawn(0)
 			C.rejuvenate(fix_missing = TRUE)
 			C.remove_all_restraints()
