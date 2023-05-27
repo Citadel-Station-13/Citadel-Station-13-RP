@@ -480,6 +480,8 @@
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_NARAMADI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		if(prob(5))
 			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))

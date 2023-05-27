@@ -141,18 +141,34 @@
 			afflict_root(amount)
 	return TRUE
 
-/mob/proc/afflict_stagger(stacks, maximum)
-	apply_stacking_effect(/datum/status_effect/stacking/staggered, stacks, maximum)
+/**
+ * apply a staggering effect
+ *
+ * @params
+ * * source - source enum
+ * * strength - how strong of a slowdown. the maximum of all stagger effects is taken
+ * * duration - how long to stagger for
+ */
+/mob/proc/afflict_stagger(source, strength, duration)
+	apply_grouped_effect(/datum/status_effect/grouped/staggered, source, strength, duration)
 
-/mob/proc/cure_stagger(stacks)
-	remove_stacking_effect(/datum/status_effect/stacking/staggered, stacks)
+/**
+ * removes a staggering effect source
+ *
+ * @params
+ * * source - source enum
+ * * duration - the duration to remove. if null (default), removes all.
+ */
+/mob/proc/cure_stagger(source, duration)
+	if(!isnull(duration))
+		var/datum/status_effect/grouped/effect = is_staggered()
+		effect.set_source(source, duration = duration)
+		return
+	remove_grouped_effect(/datum/status_effect/grouped/staggered, source)
 
 /mob/proc/is_staggered()
-	RETURN_TYPE(/datum/status_effect/stacking/staggered)
-	return has_status_effect(/datum/status_effect/stacking/staggered)
-
-/mob/proc/stacks_staggered()
-	return is_staggered()?.stacks
+	RETURN_TYPE(/datum/status_effect/grouped/staggered)
+	return has_status_effect(/datum/status_effect/grouped/staggered)
 
 /mob/proc/is_unconscious()
 	RETURN_TYPE(/datum/status_effect)
