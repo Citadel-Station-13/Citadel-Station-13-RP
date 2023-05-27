@@ -65,6 +65,7 @@
 	set_stat(CONSCIOUS)
 	// immediately update to kick down if needed
 	update_stat()
+	return TRUE
 
 /**
  * heals all damage on a mob. by default, only heals "basic" numerical / limb damage. see params for more.

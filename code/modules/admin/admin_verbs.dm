@@ -177,7 +177,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,
-	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
 	/datum/admins/proc/toggle_aliens,

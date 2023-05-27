@@ -484,25 +484,6 @@ default behaviour is:
 /mob/living/proc/restore_all_organs()
 	return
 
-
-/mob/living/proc/rejuvenate()
-
-#warn ??
-	heal_overall_damage(getBruteLoss(), getFireLoss())
-
-	// fix all of our organs
-	restore_all_organs()
-
-	// remove the character from the list of the dead
-	if(stat == DEAD)
-		dead_mob_list -= src
-		living_mob_list += src
-		tod = null
-		timeofdeath = 0
-
-	// restore us to conciousness
-	set_stat(CONSCIOUS)
-
 /mob/living/proc/UpdateDamageIcon()
 	return
 

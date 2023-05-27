@@ -28,8 +28,9 @@
 	. = ..()
 	if(!.)
 		return
-	#warn ??
 	//! WARNING: LEGACY CODE
+	tod = null
+	timeofdeath = 0
 	ai_holder?.go_wake()
 	failed_last_breath = 0
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
@@ -75,6 +76,12 @@
 	ear_deaf = 0
 	ear_damage = 0
 	failed_last_breath = 0
+	mutations?.Remove(
+		MUTATION_HUSK,
+		MUTATION_CLUMSY,
+		MUTATION_FAT,
+		MUTATION_HALLUCINATION,
+	)
 	reload_fullscreen() // LEAVE THIS AT THE END UNTIL WE REWORK HUD RENDERING
 	//! END
 	// update hud after overrides of rejuvenate() fire
@@ -82,8 +89,6 @@
 	// update all icons just in case
 	// todo: we shouldn't have to do this
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, regenerate_icons)))
-
-	#warn impl
 
 //? Body Temperature
 
