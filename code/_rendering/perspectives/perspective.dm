@@ -420,6 +420,8 @@
 	// push holders
 	for(var/datum/vision/holder as anything in holders)
 		holder.push(src)
+	// ensure darkvision matrix is full color format - we have a bug where not doing so can break shit after the first push (?!)
+	darkvision_matrix = color_matrix_expand(darkvision_matrix)
 	darkvision_unlimited = darkvision_range >= SOFT_DARKSIGHT_UNLIMITED_THRESHOLD
 	// update
 	update_vision()
