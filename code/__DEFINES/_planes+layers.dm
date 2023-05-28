@@ -183,14 +183,6 @@
 #define MID_LANDMARK_LAYER (OBJ_LAYER+0.5)
 
 /**
- *! -- Lightless Plane
- *? Objects on this plane can only be seen without light.
- */
-#define LIGHTLESS_PLANE -33
-#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
-#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
-
-/**
  *! -- Mob Plane
 */
 #define MOB_PLANE -25
@@ -198,20 +190,6 @@
 
 #define BELOW_MOB_LAYER (OBJ_LAYER+0.9)
 #define ABOVE_MOB_LAYER (MOB_LAYER+0.1)
-
-/**
- * mob darkvision plane
- * todo: see plane_master.dm for what to-do.
- */
-#define DARKVISION_PLANE -20
-#define DARKVISION_LAYER_TURFS 1
-#define DARKVISION_LAYER_OBJS 2
-#define DARKVISION_LAYER_ADDITIONAL 4
-#define DARKVISION_LAYER_MOBS 5
-#define DARKVISION_LAYER_OCCLUSION 6
-#define DARKVISION_LAYER_NOISE 7
-#define DARKVISION_LAYER_FOV 8
-#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
 /**
  *! -- Cloaked Plane
@@ -266,6 +244,29 @@
 #define LIGHTING_PLANE 9
 #define LIGHTING_LAYER_MAIN 1
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
+
+/**
+ * mob darkvision plane
+ * todo: see plane_master.dm for what to-do.
+ */
+#define DARKVISION_PLANE 10
+#define DARKVISION_LAYER_TURFS 1
+#define DARKVISION_LAYER_OBJS 2
+#define DARKVISION_LAYER_ADDITIONAL 4
+#define DARKVISION_LAYER_MOBS 5
+#define DARKVISION_LAYER_OCCLUSION 6
+#define DARKVISION_LAYER_NOISE 7
+#define DARKVISION_LAYER_FOV 8
+#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
+
+/**
+ *! -- Lightless Plane
+ *? Objects on this plane can only be seen without light.
+ *  todo: proper layering
+ */
+#define LIGHTLESS_PLANE 11
+#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
+#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
 
 /**
  *! -- Above Lighting Plane
