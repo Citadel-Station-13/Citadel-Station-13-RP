@@ -766,7 +766,9 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
-
+/*
 /mob/new_player/make_perspective()
 	. = ..()
 	self_perspective.AddScreen(GLOB.lobby_image)
+*/
+

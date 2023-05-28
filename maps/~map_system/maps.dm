@@ -17,6 +17,10 @@ var/list/all_maps = list()
 			all_maps[M.path] = M
 	return 1
 
+/hook/startup/proc/update_lobby_browsers()
+	GLOB.using_map.refresh_lobby_browsers()
+	return TRUE
+
 
 /datum/map
 	var/name = "Unnamed Map"
@@ -116,8 +120,8 @@ var/list/all_maps = list()
 	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
-	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
-	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
+	var/list/lobby_screens = list('icons/default_lobby.png')	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
+	var/current_lobby_screen
 
 	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
 
@@ -138,6 +142,30 @@ var/list/all_maps = list()
 		map_levels = station_levels.Copy()
 	if(!allowed_jobs || !allowed_jobs.len)
 		allowed_jobs = subtypesof(/datum/role/job)
+
+/datum/map/proc/show_titlescreen(client/C)
+	set waitfor = FALSE
+
+	winset(C, "lobbybrowser", "is-disabled=false;is-visible=true")
+
+	show_browser(C, current_lobby_screen, "file=titlescreen.gif;display=0")
+
+	if(isnewplayer(C.mob))
+		var/mob/new_player/player = C.mob
+		show_browser(C, player.get_lobby_browser_html(), "window=lobbybrowser")
+
+/datum/map/proc/hide_titlescreen(client/C)
+	if(C.mob) // Check if the client is still connected to something
+		// Hide title screen, allowing player to see the map
+		winset(C, "lobbybrowser", "is-disabled=true;is-visible=false")
+
+/datum/map/proc/update_titlescreen(new_screen)
+	current_lobby_screen = new_screen || pick(lobby_screens)
+	refresh_lobby_browsers()
+
+/datum/map/proc/refresh_lobby_browsers()
+	for(var/mob/new_player/player in GLOB.player_list)
+		show_titlescreen(player.client)
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/proc/get_zlevel_time(var/z)
@@ -173,6 +201,7 @@ var/list/all_maps = list()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
 /datum/map/proc/setup_map()
+	update_titlescreen()
 	return
 
 /datum/map/proc/perform_map_generation()
