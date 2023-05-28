@@ -109,6 +109,8 @@
 	var/datum/cutscene/cutscene
 	/// is the cutscene browser in use?
 	var/cutscene_browser = FALSE
+	/// is the cutscene browser ready?
+	var/cutscene_ready = FALSE
 
 		////////////////
 		//ADMIN THINGS//

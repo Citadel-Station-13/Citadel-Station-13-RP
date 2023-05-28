@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Cutscene Browser</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
+<!-- Early Load - Script -->
+<script>
+/// polyfill: element.addEventListener()
+var PROP_ADD_EVENT_LISTENER = (document.addEventListener ? 'addEventListener' : 'attachEvent'); // IE8 handling for Wine users
+/// polyfill: element.textContent
+var PROP_TEXT_CONTENT = (typeof document.body.textContent != 'undefined') ? 'textContent' : 'innerText';
+/// polyfill: window.setTimeout()
+/*\
+|*|
+|*|  Polyfill which enables the passage of arbitrary arguments to the
+|*|  callback functions of JavaScript timers (HTML5 standard syntax).
+|*|
+|*|  https://developer.mozilla.org/en-US/docs/DOM/window.setInterval
+|*|
+|*|  Syntax:
+|*|  var timeoutID = window.setTimeout(func, delay[, arg1, arg2, ...]);
+|*|  var timeoutID = window.setTimeout(code, delay);
+|*|  var intervalID = window.setInterval(func, delay[, arg1, arg2, ...]);
+|*|  var intervalID = window.setInterval(code, delay);
+|*|
+\*/
+(function() {
+  setTimeout(function(arg1) {
+    if (arg1 === 'test') {
+      // feature test is passed, no need for polyfill
+      return;
+    }
+    var __nativeST__ = window.setTimeout;
+    window.setTimeout = function(vCallback, nDelay /*, argumentToPass1, argumentToPass2, etc. */ ) {
+      var aArgs = Array.prototype.slice.call(arguments, 2);
+      return __nativeST__(vCallback instanceof Function ? function() {
+        vCallback.apply(null, aArgs);
+      } : vCallback, nDelay);
+    };
+  }, 0, 'test');
+
+  var interval = setInterval(function(arg1) {
+    clearInterval(interval);
+    if (arg1 === 'test') {
+      // feature test is passed, no need for polyfill
+      return;
+    }
+    var __nativeSI__ = window.setInterval;
+    window.setInterval = function(vCallback, nDelay /*, argumentToPass1, argumentToPass2, etc. */ ) {
+      var aArgs = Array.prototype.slice.call(arguments, 2);
+      return __nativeSI__(vCallback instanceof Function ? function() {
+        vCallback.apply(null, aArgs);
+      } : vCallback, nDelay);
+    };
+  }, 0, 'test');
+}())
+/// polyfill: decode URI
+var decoder = decodeURIComponent || unescape;
+/// polyfill: [].includes()
+if(!Array.prototype.includes) {
+	Array.prototype.includes = function(thing) {
+		for(var i = 0; i < this.length; i++) {
+			if(this[i] == thing) return true;
+		}
+		return false;
+	}
+}
+/// polyfill: "".trim()
+if (!String.prototype.trim) {
+	String.prototype.trim = function () {
+		return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+	};
+}
+</script>
+<style>
+	cutsceneContainer {
+		margin: 0;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		overflow: hidden;
+		background-color: black;
+		height: 100%;
+		width: 100%
+	}
+</style>
+</head>
+<body>
+<div id="cutsceneContainer"></div>
+<script>
+
+window.onload = function() {
+	declareReady();
+};
+
+const ELEMENT_ID_CONTAINER = "cutsceneContainer"
+const SKIN_ID_MAP = "map";
+/// how long to wait before re-loading missing images
+var IMAGE_RETRY_DELAY = 1000;
+/// how many times before we give up
+var IMAGE_RETRY_LIMIT = 5;
+
+var container = document.getElementById(ELEMENT_ID_CONTAINER);
+
+///////////////////// BOOT //////////////////////////////
+
+function window_boot() {
+	register_events()
+	transmit_ready()
+}
+
+function register_events() {
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("mouseup", winset_focus_map);
+	// restore focus after press
+	document[PROP_ADD_EVENT_LISTENER]("keyup", winset_focus_map);
+	window.onresize = function() {
+		stat_submenu.style.height = stat_menu.clientHeight + 'px';
+	}
+}
+
+/////////////////////// DATA ////////////////////////////
+
+
+//////////////// CALLED FROM BYOND //////////////////////
+
+/// called for shutdown or reconnect - this should reset state
+function byond_cleanup() {
+	// we just don't do that for now
+	// this way you can still see your stat data and it's smoother during restarts
+	// todo: connection state tracking?
+}
+
+/// called for init - this is not what initializes us, this is sent after we tell BYOND we are ready.
+function byond_init() {
+	// nothing is done now, this is just a placeholder
+	// /client/proc/statpanel_init() needs to send all data
+	// in one package to this function instead of init_verbs()'ing
+	// if we want to do anything more
+	// as we cannot trust JS function call order or winset/winget order
+	// at all.
+}
+
+/// called for reconnect - this should reset state and transmit ready
+function byond_reconnect() {
+	// wipe state
+	wipe_state();
+	// signal ready so BYOND re-initializes us.
+	transmit_ready();
+}
+
+/// called on data update
+function byond_push(_data) {
+	data = [];
+	_push_data(_data);
+	redraw_content();
+}
+
+/// called on data update to append
+function byond_append(_data) {
+	_push_data(_data);
+	redraw_content();
+}
+
+/// special 2 part push
+function byond_update(cdata, ddata) {
+	// push both c(ached) data and d(ynamic) data at once.
+	data = [];
+	_push_data(cdata);
+	_push_data(ddata);
+	redraw_content();
+}
+
+/// pushes data
+function _push_data(_data) {
+	if(!_data){
+		return;
+	}
+	var parsed = JSON.parse(_data);
+	for(var i = 0; i < parsed.length; i++){
+		if(parsed[i] != null){
+			data.push(parsed[i]);
+		}
+	}
+}
+
+//////////////// TRANSMIT TO BYOND //////////////////////
+
+/// command queue
+// todo: this will actually have a use if we make statpanel actually
+// able to hold state for connection
+// as of right now this *WAS* called (before I removed it) in init_verbs
+// but why the hell are you even able to click verbs before they're init'd?
+var command_queue = [];
+// var connected = false;
+
+/// direct send, do not use
+function __transmit_verb(cmd) {
+	var href = "byond://winset?command=" + cmd;
+	window.location.href = href;
+}
+
+/// queues or sends
+function transmit_verb(cmd) {
+	__transmit_verb(cmd);
+	/*
+	if(connected){
+		__transmit_verb(cmd);
+	}
+	else{
+		command_queue.push(cm)
+	}
+	*/
+}
+
+/// immediate sends
+function transmit_href(action, _data) {
+	var assembled = "";
+	if(_data != undefined){
+		for(var key in _data){
+			assembled += key + "=" + ((_data[key] == undefined)? "1" : _data[key]) + ";"
+		}
+	}
+	window.location.href = "?_src_=stat;act=" + action + ";" + assembled;
+}
+
+/// flushes queue
+function transmit_flush_queue() {
+	for(var i = 0; i < command_queue.length; i++){
+		__transmit_verb(command_queue[i]);
+	}
+	command_queue.length = 0
+}
+
+/// informs byond we are ready
+function transmit_ready() {
+	transmit_verb(".statpanel_ready");
+}
+
+/// quotes a text arg
+function quote_verb_text(text) {
+	return "\"" + text.replace(/"/g, "\\\"") + "\"";
+}
+
+//////////////////// WINSET / WINGET / SKIN /////////////
+
+function winset_focus_map() {
+	current_mouse_target = null;
+	yield_invoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
+}
+
+/////////////////////// STARTUP /////////////////////////
+
+//////////////////////// SHUTDOWN ///////////////////////
+
+/////////////////////// CONNECTION //////////////////////
+
+//////////////////////// MAIN ///////////////////////////
+
+function redraw_menu(){
+	// wipe
+	stat_menu[PROP_TEXT_CONTENT] = ""
+	// redraw
+	for(var i = 0; i < all_tabs.length; ++i){
+		var tab = all_tabs[i];
+		__create_tab_element(tab);
+	}
+	// empty? shouldn't happen but..
+	if(!all_tabs.length) {
+		return;
+	}
+	// change if needed
+	if(!(all_tabs.includes(active_tab)) && all_tabs.includes("Status")) {
+		change_tab("Status");
+	}
+}
+
+function redraw_content(){
+	var tab = active_tab;
+	if(!tab) {
+		draw_loading();
+		return;
+	}
+	if(tab == "Turf"){
+		draw_turf();
+	}
+	else if(all_tabs.includes(tab)){
+		draw_tab(tab);
+		return;
+	}
+	else{
+		draw_error();
+		return;
+	}
+}
+
+///////////////////////// VERBS /////////////////////////
+
+var current_mouse_target = null;
+
+///////////////////// DRAWING - MISC ////////////////////
+
+function draw_loading(){
+	stat_content[PROP_TEXT_CONTENT] = "Loading..."
+}
+
+function draw_error() {
+	stat_content[PROP_TEXT_CONTENT] = "<center><h1>Statpanel errored. Contact an admin/coder, and reconnect.</h1></center>"
+}
+
+///////////////////// DRAWING - TABS ////////////////////
+
+function draw_tab(tab) {
+	// wipe
+	stat_content[PROP_TEXT_CONTENT] = "";
+	// draw verbs
+	if(verbs[tab] != undefined) {
+		var verb_table = document.createElement("div");
+		verb_table.className = "grid-container";
+		var iterating = verbs[tab]
+		for(var i = 0; i < iterating.length; ++i) {
+			var verb = iterating[i];
+			var button = document.createElement("button");
+			button.onmousedown = lambda_onmousedown_verb(button, verb.replace(/\s/g, "-"));
+			button.onmouseup = lambda_onmouseup_verb(button, verb.replace(/\s/g, "-"))
+			button.className = "grid-item";
+			var t = document.createElement("span");
+			t[PROP_TEXT_CONTENT] = verb;
+			t.className = "grid-item-text";
+			button.appendChild(t);
+			verb_table.appendChild(button);
+		}
+		stat_content.appendChild(verb_table)
+	}
+	// draw data
+	if(data.length != 0) {
+		var stat_table = document.createElement("table");
+		for(var i = 0; i < data.length; ++i) {
+			var tr = document.createElement("tr");
+			var entry = data[i];
+			// shitcode central: decode data
+			var dtype = typeof entry;
+			var tdk = document.createElement("td");
+			var tdv = document.createElement("td");
+			if(dtype == "string") {
+				// just text; render normally
+				tdk.innerHTML = entry;
+			}
+			// it's not just string, so it's an array
+			else if(entry.length == 2) {
+				// simple k-v entry
+				tdk.innerHTML = entry[0];
+				tdv.innerHTML = entry[1];
+			}
+			else if(entry.length == 3) {
+				// k-v with value being clickable
+				tdk.innerHTML = entry[0];
+				var a = document.createElement("a");
+				a.innerHTML = entry[1];
+				// todo: token
+				a.href = "?_src_=stat;act=stat_click;ref=" + entry[2];
+				tdv.appendChild(a);
+			}
+			tr.appendChild(tdk);
+			tr.appendChild(tdv);
+			stat_table.appendChild(tr);
+		}
+		stat_content.appendChild(stat_table);
+	}
+}
+
+/////////// FUNCTION FUNCTIONS (IE IS TERRIBLE) /////////
+
+/**
+ * creates the onclick for verbs
+ */
+function lambda_onmousedown_verb(element, verb) {
+	return function(e) {
+		current_mouse_target = element;
+	}
+}
+
+function lambda_onmouseup_verb(element, verb) {
+	return function(e) {
+		if(current_mouse_target === element){
+			yield_invoke(function() {transmit_verb(verb);});
+		}
+		current_mouse_target = null;
+	}
+}
+
+/**
+ * creates the onclick for atoms
+ */
+ function lambda_onclick_atom(ref) {
+	return function(e) {
+		e.preventDefault();
+		atom_invoke(e, ref);
+	}
+ }
+
+/**
+ * creates the onerror function used to load things
+ */
+function lambda_reload_image(node) {
+	var re_ref = node;
+	return setTimeout(function() {
+		var attempts = parseInt(node.getAttribute('img-reload-n'), 10) || 0;
+		if(attempts >= IMAGE_RETRY_LIMIT){
+			return;
+		}
+		var old_src = re_ref.src
+		re_ref.src = null;
+		re_ref.src = old_src + '#' + (Math.random() * 1000);
+		re_ref.setAttribute('img-reload-n', attempts + 1);
+	}, IMAGE_RETRY_DELAY);
+}
+
+function loadInnerHTML(raw) {
+
+}
+function declareReady() {
+
+}
+
+/**
+ * restores focus to byond map
+ */
+function winsetFocusMap() {
+	current_mouse_target = null;
+	yieldInvoke(function() {window.location.href = "byond://winset?" + SKIN_ID_MAP + ".focus=true";});
+}
+
+/**
+ * fires a function after the current stack/whatever
+ * used to yield focus and other stuff
+ */
+function yieldInvoke(f) {
+	setTimeout(f, 0);
+}
+
+/**
+ * revives the window
+ * in body so if we're called we can immediately tell byond that we're ready
+ * and if we're not we obviously just, don't.
+ */
+function reviveWindow() {
+	declareReady();
+}
+
+</script>
+</body>
+</html>

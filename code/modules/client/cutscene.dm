@@ -42,6 +42,15 @@
 /**
  * this should be cheap, cache results yourself if you need caching.
  * this isn't done by default for memory reasons.
+ *
+ * assume that there's no polyfills other than:
+ * - PROP_ADD_EVENT_LISTENER
+ * - PROP_TEXT_CONTENT
+ * - window.setTimeout()
+ * - array.includes()
+ * - string.trim()
+ *
+ * returned HTML should be IE8 compatible.
  */
 /datum/cutscene/browser/proc/build_inner_html(client/C)
 	return ""
