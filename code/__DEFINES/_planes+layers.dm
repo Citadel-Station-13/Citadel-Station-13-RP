@@ -380,8 +380,14 @@
  *? Purely for shenanigans (above HUD)
  * TODO: Probably remove this. @Zandario
  */
-#define PLANE_ADMIN3 99
+#define PLANE_ADMIN3 98
 
+/**
+ *! -- Cutscene Plane
+ *? Cutscenes render on this plane
+ *? This plane has no plane master.
+ */
+#define CUTSCENE_PLANE 99
 
 /// Highest plane. This should stay at 99. No, you don't need more than that.
 #define HIGHEST_PLANE 99

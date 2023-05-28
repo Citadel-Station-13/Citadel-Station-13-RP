@@ -100,9 +100,15 @@
 	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
 	var/statpanel_for_turf = FALSE
 
-	//? throttling
+	//? Throttling
 	/// block re-execution of expensive verbs
 	var/verb_throttle = 0
+
+	//? Cutscenes
+	/// active cutscene
+	var/datum/cutscene/cutscene
+	/// is the cutscene browser in use?
+	var/cutscene_browser = FALSE
 
 		////////////////
 		//ADMIN THINGS//
