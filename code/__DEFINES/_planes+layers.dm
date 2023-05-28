@@ -200,6 +200,20 @@
 #define ABOVE_MOB_LAYER (MOB_LAYER+0.1)
 
 /**
+ * mob darkvision plane
+ * todo: see plane_master.dm for what to-do.
+ */
+#define DARKVISION_PLANE -20
+#define DARKVISION_LAYER_TURFS 1
+#define DARKVISION_LAYER_OBJS 2
+#define DARKVISION_LAYER_ADDITIONAL 4
+#define DARKVISION_LAYER_MOBS 5
+#define DARKVISION_LAYER_OCCLUSION 6
+#define DARKVISION_LAYER_NOISE 7
+#define DARKVISION_LAYER_FOV 8
+#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
+
+/**
  *! -- Cloaked Plane
  *? Invisible things plane.
  */
@@ -252,19 +266,6 @@
 #define LIGHTING_PLANE 9
 #define LIGHTING_LAYER_MAIN 1
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
-
-/**
- * mob darkvision plane
- * todo: see plane_master.dm for what to-do.
- */
-#define DARKVISION_PLANE 12
-#define DARKVISION_LAYER_TURFS 1
-#define DARKVISION_LAYER_OBJS 2
-#define DARKVISION_LAYER_ADDITIONAL 4
-#define DARKVISION_LAYER_MOBS 5
-#define DARKVISION_LAYER_OCCLUSION 6
-#define DARKVISION_LAYER_FOV 7
-#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
 /**
  *! -- Above Lighting Plane

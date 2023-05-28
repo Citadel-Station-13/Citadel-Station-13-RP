@@ -34,3 +34,11 @@
 	layer = DARKVISION_LAYER_MOBS
 	render_source = MOB_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
+
+/atom/movable/screen/plane_render/darkvision_grain
+	plane = DARKVISION_PLANE
+	layer = DARKVISION_LAYER_NOISE
+	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
+	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
+	icon_state = "noise"
+	screen_loc = "SOUTHWEST to NORTHEAST"

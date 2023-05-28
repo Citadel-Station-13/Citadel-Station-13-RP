@@ -769,4 +769,4 @@
 
 /mob/new_player/make_perspective()
 	. = ..()
-	self_perspective.AddScreen(GLOB.lobby_image)
+	self_perspective.add_screen(GLOB.lobby_image)
