@@ -388,6 +388,8 @@
  *? This plane has no plane master.
  */
 #define CUTSCENE_PLANE 99
+#define CUTSCENE_LAYER_BACKDROP 1
+#define CUTSCENE_LAYER_MAIN 10
 
 /// Highest plane. This should stay at 99. No, you don't need more than that.
 #define HIGHEST_PLANE 99

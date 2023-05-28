@@ -46,8 +46,21 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
+	elem "browser1"
+		type = BROWSER
+		pos = 0,0
+		size = 640x480
+		anchor1 = -1,-1
+		anchor2 = -1,-1
+		background-color = none
+		is-visible = false
+		is-disabled = true
+		saved-params = ""
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -278,18 +291,14 @@ window "statwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "stat_tab"
 		type = TAB
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = ""
 		tabs = "stat_pane_browser,stat_pane_byond"
 		current-tab = "stat_pane_browser,stat_pane_byond"
