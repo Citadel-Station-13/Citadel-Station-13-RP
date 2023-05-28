@@ -95,6 +95,18 @@
 #define PARALLAX_VIS_LAYER_ABOVE  100 // Ditto
 
 /**
+ *! -- Zmimic Reserved - End.
+ *? Nothing must be between this and start.
+ */
+#define ZMIMIC_RESERVED_PLANE_END -80
+
+/**
+ *! -- Zmimic Reserved - Start.
+ *? Nothing must be between this and end.
+ */
+#define ZMIMIC_RESERVED_PLANE_START -70
+
+/**
  *! -- Turfs Plane
  *? Turfs themselves, most flooring.
  */
@@ -171,6 +183,14 @@
 #define MID_LANDMARK_LAYER (OBJ_LAYER+0.5)
 
 /**
+ *! -- Lightless Plane
+ *? Objects on this plane can only be seen without light.
+ */
+#define LIGHTLESS_PLANE -33
+#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
+#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
+
+/**
  *! -- Mob Plane
 */
 #define MOB_PLANE -25
@@ -204,6 +224,20 @@
 #define WEATHER_PLANE 4
 
 /**
+ *! -- Lightmask Plane
+ *
+ * lighting mask plane used for:
+ * - DARKVISION_PLANE masking
+ * - LIGHTLESS_PLANE masking
+ *
+ * this has a color matrix on it to amplify lights, making even softer lights
+ * able to fully mask the other planes.
+ */
+#define LIGHTMASK_PLANE 7
+#define LIGHTMASK_LAYER_MAIN 1
+#define LIGHTMASK_RENDER_TARGET "*LIGHTMASK_PLANE"
+
+/**
  *! -- Emissives Plane
  */
 #define EMISSIVE_PLANE 8
@@ -218,19 +252,8 @@
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
 
 /**
- * lighting mask plane used for:
- * - DARKVISION_PLANE masking
- * - LIGHTLESS_PLANE masking
- *
- * this has a color matrix on it to amplify lights, making even softer lights
- * able to fully mask the other planes.
- */
-#define LIGHTMASK_PLANE 11
-#define LIGHTMASK_LAYER_MAIN 1
-#define LIGHTMASK_RENDER_TARGET "*LIGHTMASK_PLANE"
-
-/**
  * mob darkvision plane
+ * todo: see plane_master.dm for what to-do.
  */
 #define DARKVISION_PLANE 12
 #define DARKVISION_LAYER_TURFS 1
@@ -242,14 +265,7 @@
 #define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
 /**
- * objects on this plane can only be seen without light.
- */
-#define LIGHTLESS_PLANE 13
-#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
-#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
-
-/**
- *! -- Lighting Plane
+ *! -- Above Lighting Plane
  *? For effects etc. that shouldn't be affected by darkness.
  */
 #define ABOVE_LIGHTING_PLANE 15
@@ -257,6 +273,7 @@
 
 /**
  *! -- Sonar Plane
+ *? Used for renders for effects like sonar / sensory things
  */
 #define SONAR_PLANE 16
 

@@ -45,6 +45,14 @@
 	plane = OBJ_PLANE
 	render_target = OBJ_PLANE_RENDER_TARGET
 
+/atom/movable/screen/plane_master/lightless
+	plane = LIGHTLESS_PLANE
+	render_target = LIGHTLESS_RENDER_TARGET
+
+/atom/movable/screen/plane_master/lightless/Initialize(mapload)
+	. = ..()
+	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
+
 /atom/movable/screen/plane_master/mobs
 	plane = MOB_PLANE
 	render_target = MOB_PLANE_RENDER_TARGET
@@ -79,6 +87,19 @@
 	. = ..()
 	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
+/atom/movable/screen/plane_master/lightmask
+	plane = LIGHTMASK_PLANE
+	render_target = LIGHTMASK_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// convert all color to alpha, with a boost
+	color = list(
+		0, 0, 0, 0.75,
+		0, 0, 0, 0.75,
+		0, 0, 0, 0.75,
+		0, 0, 0, 0,
+		1, 1, 1, 0
+	)
+
 /atom/movable/screen/plane_master/lighting
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
@@ -100,22 +121,11 @@
 	. = ..()
 	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
 
-/atom/movable/screen/plane_master/lightmask
-	plane = LIGHTMASK_PLANE
-	render_target = LIGHTMASK_RENDER_TARGET
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	// convert all color to alpha
-	color = list(
-		0, 0, 0, 0.75,
-		0, 0, 0, 0.75,
-		0, 0, 0, 0.75,
-		0, 0, 0, 0,
-		1, 1, 1, 0
-	)
-
 /**
  * darkvision plate: gathers everything we can see, colors it, etc
  * the actual drawing and occlusion effects are done on the darkvision plane, which is BLEND_ADD.
+ *
+ * todo: split into turfs/objs/mobs plane? and add a FOV plane? vision.partial_fov for darksight-only fov?
  */
 /atom/movable/screen/plane_master/darkvision
 	plane = DARKVISION_PLANE
@@ -124,14 +134,6 @@
 	render_target = DARKVISION_RENDER_TARGET
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
-	. = ..()
-	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
-
-/atom/movable/screen/plane_master/lightless
-	plane = LIGHTLESS_PLANE
-	render_target = LIGHTLESS_RENDER_TARGET
-
-/atom/movable/screen/plane_master/lightless/Initialize(mapload)
 	. = ..()
 	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
 

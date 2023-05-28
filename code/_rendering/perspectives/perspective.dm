@@ -441,13 +441,6 @@
 /datum/perspective/proc/update_vision_overlays()
 	if(isnull(darksight_image))
 		return
-	// darksight_image.overlays = list()
-	// var/matrix/transformed = matrix()
-	// var/factor = darkvision_unlimited? 10 : (darkvision_range / (15 * 32))
-	// // scale base
-	// transformed.Scale(factor, factor)
-	// // apply the actual fov and mask
-	// var/mutable_appearance/occlusion = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-soft")
 	var/state_to_use = "fade-omni-soft"
 	switch(darkvision_fov)
 		if(SOFT_DARKSIGHT_FOV_270)
@@ -456,13 +449,15 @@
 			state_to_use = "fade-180-hard"
 		if(SOFT_DARKSIGHT_FOV_90)
 			state_to_use = "fade-90-hard"
-	// occlusion.icon_state = state_to_use
-	// occlusion.blend_mode = BLEND_INSET_OVERLAY
-	// darksight_image.overlays += occlusion
-	// var/brightness_factor = darkvision_alpha / 255
-	// darksight_image.color = construct_rgb_color_matrix(rr = brightness_factor, gg = brightness_factor, bb = brightness_factor)
-	// darksight_image.transform = transformed
 	darksight_image.icon_state = state_to_use
+	if(view_dirty)
+		recompute_view_size()
+	// todo: this should take shifting into account, for things like binoculars.
+	var/needed = max(cached_view_height, cached_view_width) / 15
+	var/matrix/transforming = matrix()
+	if(needed > 1)
+		transforming.Scale(needed, needed)
+	darksight_image.transform = transforming
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
@@ -485,16 +480,6 @@
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
 	if(!isnull(darkvision_plate))
 		darkvision_plate.color = darkvision_matrix || null
-	// var/atom/movable/screen/plane_master/darkvision_plane = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
-	// if(!isnull(darkvision_plane))
-	// 	if(darkvision_smart && !darkvision_plane.has_filter("smart_mask"))
-	// 		darkvision_plane.add_filter(
-	// 			"smart_mask",
-	// 			1,
-	// 			alpha_mask_filter(0, 0, render_source = LIGHTING_ALPHA_FORWARD_TARGET, flags = MASK_INVERSE),
-	// 		)
-	// 	else if(!darkvision_smart && darkvision_plane.has_filter("smart_mask"))
-	// 		darkvision_plane.remove_filter("smart_mask")
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
 	var/wanted_alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
 	lighting_plane.alpha = wanted_alpha
@@ -611,6 +596,7 @@
 /datum/perspective/proc/update_view_size(client/C)
 	if(view_dirty)
 		recompute_view_size()
+	update_vision_overlays()
 	if(C)
 		C.request_viewport_update()
 	else
