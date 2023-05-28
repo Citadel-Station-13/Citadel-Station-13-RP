@@ -22,8 +22,10 @@ SUBSYSTEM_DEF(photography)
 /datum/controller/subsystem/photography/proc/is_persistent()
 	#warn impl
 
-/datum/controller/subsystem/photography/proc/storage_root()
-	#warn impl
+/**
+ * url image path for a picture hash. fails if we're not persistent-enabled.
+ */
+/datum/controller/subsystem/photography/proc/url_for_picture(hash)
 
 /**
  * creates a picture from an icon, immediately flushing it to disk.
