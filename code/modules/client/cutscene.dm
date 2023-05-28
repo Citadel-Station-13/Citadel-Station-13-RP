@@ -187,6 +187,7 @@ GLOBAL_DATUM_INIT(cutscene_backdrop, /atom/movable/screen/cutscene_backdrop, new
 	screen_loc = "SOUTHWEST to NORTHEAST"
 	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
 	icon_state = "white"
+	color = "#000000"
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/cutscene_simple)
 /atom/movable/screen/cutscene_simple
