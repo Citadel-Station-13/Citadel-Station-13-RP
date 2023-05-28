@@ -1,3 +1,20 @@
+/client/proc/init_cutscene_system()
+
+/client/proc/cleanup_cutscene_system()
+
+/client/verb/__declare_cutscene_ready()
+	set name = ".scenepanel_ready"
+	set hidden = TRUE
+	set instant = TRUE
+
+	cutscene_ready = TRUE
+
+/client/proc/start_cutscene(datum/cutscene/scene)
+
+/client/proc/end_cutscene()
+
+#warn impl all
+
 /**
  * dynamic cutscene system with synchronization of state.
  */

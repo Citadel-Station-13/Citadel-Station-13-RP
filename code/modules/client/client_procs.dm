@@ -193,6 +193,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	statpanel_boot()
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	// Instantiate cutscene system
+	init_cutscene_system()
 
 	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -335,6 +337,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
+	// initialize cutscene browser
+	// (we don't, the JS does it for us.)
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
@@ -462,6 +466,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	//! cleanup UI
 	/// cleanup statbrowser
 	statpanel_dispose()
+	/// cleanup cutscene system
+	cleanup_cutscene_system()
+	/// cleanup tgui panel
+	QDEL_NULL(tgui_panel)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
