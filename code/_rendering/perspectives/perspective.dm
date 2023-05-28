@@ -96,8 +96,6 @@
 	//? vision - lighting / nightvision
 	/// darksight overlay that we maintain
 	var/atom/movable/screen/darksight/darksight_overlay
-	/// darksight image that we maintain
-	var/image/darksight_image
 	/// lighting plane alpha
 	var/hard_darkvision
 	/// soft darksight range
@@ -301,7 +299,7 @@
 /**
  * works with lists too
  */
-/datum/perspective/proc/AddScreen(atom/movable/AM)
+/datum/perspective/proc/add_screen(atom/movable/AM)
 	var/change = length(screens)
 	if(!change)
 		screens = list()
@@ -314,7 +312,7 @@
 /**
  * works with lists too
  */
-/datum/perspective/proc/RemoveScreen(atom/movable/AM)
+/datum/perspective/proc/remove_screen(atom/movable/AM)
 	var/change = length(screens)
 	if(!change)
 		return
@@ -389,8 +387,13 @@
 		C.perspective = get_eye_mode(C)
 
 /datum/perspective/proc/attach_to_eye(atom/movable/AM)
+	RegisterSignal(AM, COMSIG_ATOM_DIR_CHANGE, PROC_REF(eye_dir_changed))
 
 /datum/perspective/proc/detach_from_eye(atom/movable/AM)
+	UnregisterSignal(AM, COMSIG_ATOM_DIR_CHANGE)
+
+/datum/perspective/proc/eye_dir_changed(atom/movable/source, old_dir, new_dir)
+	darksight_overlay?.dir = new_dir
 
 /datum/perspective/proc/get_eye(client/C)
 	return eye
@@ -412,7 +415,7 @@
 	hard_darkvision = 255
 	darkvision_range = SOFT_DARKSIGHT_RANGE_DEFAULT
 	darkvision_alpha = SOFT_DARKSIGHT_ALPHA_DEFAULT
-	darkvision_matrix = construct_rgb_color_matrix()
+	darkvision_matrix = construct_rgba_color_matrix()
 	darkvision_smart = TRUE
 	darkvision_unlimited = FALSE
 	darkvision_legacy_throttle = INFINITY
@@ -435,13 +438,11 @@
 	if(!isnull(darksight_overlay))
 		return
 	darksight_overlay = new
-	darksight_image = new /image/darksight_overlay
-	darksight_image.loc = darksight_overlay
-	add_image(darksight_image)
+	add_screen(darksight_overlay)
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
-	if(isnull(darksight_image))
+	if(isnull(darksight_overlay))
 		return
 	var/state_to_use = "fade-omni-soft"
 	switch(darkvision_fov)
@@ -451,7 +452,7 @@
 			state_to_use = "fade-180-hard"
 		if(SOFT_DARKSIGHT_FOV_90)
 			state_to_use = "fade-90-hard"
-	darksight_image.icon_state = state_to_use
+	darksight_overlay.icon_state = state_to_use
 	if(view_dirty)
 		recompute_view_size()
 	// todo: this should take shifting into account, for things like binoculars.
@@ -459,7 +460,7 @@
 	var/matrix/transforming = matrix()
 	if(needed > 1)
 		transforming.Scale(needed, needed)
-	darksight_image.transform = transforming
+	darksight_overlay.transform = transforming
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
@@ -481,12 +482,12 @@
 		return
 	var/atom/movable/screen/plane_master/darkvision_plate = planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
 	if(!isnull(darkvision_plate))
-		darkvision_plate.color = darkvision_matrix || null
+		darkvision_plate.color = darkvision_matrix?.Copy()
 	var/atom/movable/screen/plane_master/lighting/lighting_plane = planes?.by_plane_type(/atom/movable/screen/plane_master/lighting)
 	var/wanted_alpha = isnull(legacy_forced_hard_darkvision)? (isnull(hard_darkvision)? 255 : hard_darkvision) : legacy_forced_hard_darkvision
 	lighting_plane.alpha = wanted_alpha
 	var/lit_factor = darkvision_alpha / 255
-	darkvision_plate.alpha = lit_factor * (wanted_alpha / 255)
+	darkvision_plate.alpha = round((lit_factor * (wanted_alpha / 255)) * 255, 1)
 
 /**
  * sets a plane visible if it wasn't already
