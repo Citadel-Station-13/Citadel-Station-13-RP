@@ -147,10 +147,10 @@
 
 /obj/item/gunbox/carrier/blueshield/attack_self(mob/user)
 	var/list/options = list()
-	options["\improper Black Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield, /obj/item/clothing/accessory/armor/armorplate)
-	options["\improper Black-Short Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt, /obj/item/clothing/accessory/armor/armorplate)
-	options["\improper Navy Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy, /obj/item/clothing/accessory/armor/armorplate)
-	var/choice = input(user,"Select your plate carrier.") as null|anything in options
+	options["\improper Black Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield)
+	options["\improper Black-Short Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt)
+	options["\improper Navy Carrier"] = list(/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy)
+	var/choice = input(user,"Select which plate carrier you find within the box.") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
 		for(var/new_type in things_to_spawn)
@@ -170,7 +170,7 @@
 	options["\improper Flat Vest"] = list(/obj/item/clothing/suit/armor/vest)
 	options["\improper Security Vest"] = list(/obj/item/clothing/suit/armor/vest/alt)
 	options["\improper Webbed Vest"] = list(/obj/item/clothing/suit/storage/vest/officer)
-	var/choice = input(user,"Select your armor vest.") as null|anything in options
+	var/choice = input(user,"Select the armor vest you find within the box.") as null|anything in options
 	if(src && choice)
 		var/list/things_to_spawn = options[choice]
 		for(var/new_type in things_to_spawn)

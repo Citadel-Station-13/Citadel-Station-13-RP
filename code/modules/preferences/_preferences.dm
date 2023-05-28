@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/UI_style_alpha = 255
 	/// Style for popup tooltips.
 	var/tooltipstyle = "Midnight"
-	var/client_fps = 0
+	var/client_fps = 40
 
 //! ## Character Preferences
 	/// Our character's name
