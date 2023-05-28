@@ -473,7 +473,7 @@
 	var/matrix/cropping = matrix()
 	var/factor = (darkvision_range / (WORLD_ICON_SIZE)) / 15
 	cropping.Scale(factor)
-	darkvision_occlusion_overlay?.transform = cropping
+	darksight_occlusion_overlay?.transform = cropping
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
