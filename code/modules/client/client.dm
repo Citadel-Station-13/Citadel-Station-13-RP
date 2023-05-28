@@ -111,6 +111,9 @@
 	var/cutscene_browser = FALSE
 	/// is the cutscene browser ready?
 	var/cutscene_ready = FALSE
+	/// cutscene lockout: set after a browser synchronization command to delay the next one
+	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
+	var/cutscene_lockout = FALSE
 
 		////////////////
 		//ADMIN THINGS//

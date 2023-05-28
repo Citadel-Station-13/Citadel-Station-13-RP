@@ -1,6 +1,9 @@
 /client/proc/init_cutscene_system()
 
+	#warn sleep 1 second
+
 /client/proc/cleanup_cutscene_system()
+	end_cutscene()
 
 /client/verb/__declare_cutscene_ready()
 	set name = ".scenepanel_ready"
@@ -9,9 +12,25 @@
 
 	cutscene_ready = TRUE
 
+/client/proc/block_on_cutscene_browser_ready()
+	UNTIL(cutscene_ready)
+
+/client/proc/__start_cutscene(datum/cutscene/scene)
+	PRIVATE_PROC(TRUE)
+	if(cutscene)
+		end_cutscene()
+	cutscene = scene
+	cutscene.setup(src)
+
 /client/proc/start_cutscene(datum/cutscene/scene)
+	set waitfor = FALSE
+	__start_cutscene(scene)
 
 /client/proc/end_cutscene()
+	if(isnull(cutscene))
+		return
+	cutscene.cleanup(src)
+	cutscene = null
 
 #warn impl all
 
@@ -21,12 +40,22 @@
 /datum/cutscene
 	/// viewing clients
 	var/list/client/viewing
+	/// immediate start on init()
+	var/start_immediately = FALSE
+	/// started?
+	var/started = FALSE
+
+/datum/cutscene/Destroy()
+	for(var/client/C as anything in viewing)
+		C.end_cutscene()
+	return ..()
 
 /**
  * initial state
  */
 /datum/cutscene/proc/init()
-	return
+	if(start_immediately)
+		auto_start()
 
 /**
  * sends / enables all assets to client
@@ -34,20 +63,32 @@
  * blocking proc
  */
 /datum/cutscene/proc/setup(client/C)
+	var/had_clients = length(viewing)
+	LAZYINITLIST(viewing)
+	viewing += C
+	if(!had_clients)
+		auto_start()
 	return TRUE
 
 /**
  * removes / disables all assets from client
  */
 /datum/cutscene/proc/cleanup(client/C)
+	viewing -= C
 	return TRUE
 
 /**
  * called when the first client starts viewing
+ * or immediately if start_immediately is set
  *
  * useful for synchronized state
  */
-/datum/cutscene/proc/first_client_join()
+/datum/cutscene/proc/start()
+
+/datum/cutscene/proc/auto_start()
+	if(started)
+		return
+	start()
 
 #warn impl all
 
