@@ -94,8 +94,13 @@
 	var/view_dirty = TRUE
 
 	//? vision - lighting / nightvision
+	// todo: most of these don't need to be on baes /datum/perspective, i think.
+	//       alternatively, just add a way to control whether we bother using this system.
+	//       "darksight_system"?
 	/// darksight overlay that we maintain
-	var/atom/movable/screen/darksight/darksight_overlay
+	var/atom/movable/screen/darksight_fov/darksight_fov_overlay
+	/// darksight overlay that we maintain
+	var/atom/movable/screen/darksight_occlusion/darksight_occlusion_overlay
 	/// lighting plane alpha
 	var/hard_darkvision
 	/// soft darksight range
@@ -118,7 +123,8 @@
 /datum/perspective/Destroy()
 	clear_clients()
 	clear_mobs()
-	QDEL_NULL(darksight_overlay)
+	QDEL_NULL(darksight_fov_overlay)
+	QDEL_NULL(darksight_occlusion_overlay)
 	images = null
 	screens = null
 	clients = null
@@ -393,7 +399,7 @@
 	UnregisterSignal(AM, COMSIG_ATOM_DIR_CHANGE)
 
 /datum/perspective/proc/eye_dir_changed(atom/movable/source, old_dir, new_dir)
-	darksight_overlay?.dir = new_dir
+	darksight_fov_overlay?.dir = new_dir
 
 /datum/perspective/proc/get_eye(client/C)
 	return eye
@@ -435,15 +441,18 @@
 	update_vision_overlays()
 
 /datum/perspective/proc/assert_vision_overlays()
-	if(!isnull(darksight_overlay))
+	. = TRUE
+	if(isnull(darksight_fov_overlay))
+		darksight_fov_overlay = new
+		add_screen(darksight_fov_overlay)
+	if(isnull(darksight_occlusion_overlay))
+		darksight_occlusion_overlay = new
+		add_screen(darksight_occlusion_overlay)
+	if(!.)
 		return
-	darksight_overlay = new
-	add_screen(darksight_overlay)
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
-	if(isnull(darksight_overlay))
-		return
 	var/state_to_use = "fade-omni-soft"
 	switch(darkvision_fov)
 		if(SOFT_DARKSIGHT_FOV_270)
@@ -452,7 +461,7 @@
 			state_to_use = "fade-180-hard"
 		if(SOFT_DARKSIGHT_FOV_90)
 			state_to_use = "fade-90-hard"
-	darksight_overlay.icon_state = state_to_use
+	darksight_fov_overlay?.icon_state = state_to_use
 	if(view_dirty)
 		recompute_view_size()
 	// todo: this should take shifting into account, for things like binoculars.
@@ -460,7 +469,11 @@
 	var/matrix/transforming = matrix()
 	if(needed > 1)
 		transforming.Scale(needed, needed)
-	darksight_overlay.transform = transforming
+	darksight_fov_overlay?.transform = transforming
+	var/matrix/cropping = matrix()
+	var/factor = (darkvision_range / (WORLD_ICON_SIZE)) / 15
+	cropping.Scale(factor)
+	darkvision_occlusion_overlay?.transform = cropping
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
