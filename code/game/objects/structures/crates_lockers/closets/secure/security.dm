@@ -174,11 +174,7 @@
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/radio/headset/heads/hos,
-		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/storage/belt/security,
-		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/under/bodysuit/bodysuitseccom)
 
@@ -196,19 +192,24 @@
 	// citadel edit NSFW > Multiphase
 	starts_with = list(
 		/obj/item/cartridge/hos,
-		/obj/item/barrier_tape_roll/police,
+		/obj/item/storage/belt/security,
+		/obj/item/radio/headset/heads/hos,
+		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/tool/crowbar/red,
-		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
+		/obj/item/storage/box/survival_knife,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/megaphone)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
