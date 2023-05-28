@@ -551,8 +551,12 @@ SUBSYSTEM_DEF(zmimic)
 			obliterate = TRUE
 		else
 			switch(appearance:plane)
+				// these planes are fine, we don't care
 				if(TURF_PLANE, FLOAT_PLANE)
-					// fine
+				// these plnaes need to be obliterated due to the usage of
+				// special rendering that will be lost if the plane is changed.
+				if(LIGHTLESS_PLANE)
+					obliterate = TRUE
 				else
 					plane_needs_fix = TRUE
 

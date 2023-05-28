@@ -212,10 +212,12 @@
 #define ABOVE_PLANE -10
 
 /**
- *! -- World Plane
+ *! -- World Threshold Plane
  *? BYOND's default value for plane, the "base plane"
+ *? The black tiles from SEE_BLACKNESS renders here.
+ *? Anything at, or above this, will not be transferred to higher zlevels by the multiz rendering system.
  */
-#define BYOND_PLANE 0 //! Black tiles outisde of your vision render here.
+#define BYOND_PLANE 0
 
 /**
  *! -- Planet Lighting Plane
