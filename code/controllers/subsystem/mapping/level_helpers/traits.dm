@@ -27,7 +27,7 @@
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
 		if(L.traits[trait])
-			. += L.z_value
+			. += L.z_index
 
 /**
  * Returns a list of z indices with any of these traits
@@ -37,7 +37,7 @@
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
 		if(length(L.traits & traits))
-			. += L.z_value
+			. += L.z_index
 
 /**
  * Returns a list of z indices with any of these traits
@@ -47,4 +47,4 @@
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
 		if(!length(traits - L.traits))
-			. += L.z_value
+			. += L.z_index

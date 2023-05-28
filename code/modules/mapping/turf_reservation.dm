@@ -43,7 +43,7 @@
 	allocated = FALSE
 	SSmapping.reservations -= src
 
-/datum/turf_reservation/proc/reserve(width, height, zlevel)
+/datum/turf_reservation/proc/reserve(width, height, z_override)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		CRASH("invalid request")
 	if(!length(SSmapping.reserve_levels))
@@ -64,7 +64,7 @@
 	var/total_many_wide = FLOOR(world.maxx / RESERVED_TURF_RESOLUTION, 1)
 	var/total_many_high = FLOOR(world.maxy / RESERVED_TURF_RESOLUTION, 1)
 	// the dreaded 5 deep for loop
-	while((level_index = pick_n_take(possible_levels)))
+	while((level_index = z_override) || (level_index = pick_n_take(possible_levels)))
 		/**
 		 * here's the magic
 		 * because reservations are aligned to RESERVED_TURF_RESOLUTION,
@@ -93,6 +93,9 @@
 			if(found_a_spot)
 				break
 		if(found_a_spot)
+			break
+		// if we were overriding and we didn't, break anyways
+		if(!isnull(z_override))
 			break
 	if(!found_a_spot)
 		SSmapping.reservation_blocking_op = FALSE

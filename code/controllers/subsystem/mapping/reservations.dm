@@ -49,7 +49,7 @@
 		reserve.border_type = border_override
 	if(!isnull(area_override))
 		reserve.area_type = area_override
-	if(reserve.reserve(width, height, index))
+	if(reserve.reserve(width, height))
 		return reserve
 	var/index = allocate_reserved_level()
 	ASSERT(index)

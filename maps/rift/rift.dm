@@ -35,6 +35,7 @@
 	width = 192
 	height = 192
 
+	legacy_persistence_id = "rift"
 
 	#warn *scream
 

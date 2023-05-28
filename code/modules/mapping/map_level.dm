@@ -44,6 +44,10 @@
 	var/link_below
 	/// id of above zlevel - overrides linkage if set. can be set to path, autoconverts to id on new.
 	var/link_above
+	/// gas string / atmosphere path / atmosphere id for indoors air
+	var/air_indoors = GAS_STRING_STP
+	/// gas string / atmosphere path / atmosphere id for outdoors air
+	var/air_outdoors = GAS_STRING_VACUUM
 
 	#warn below
 
@@ -68,6 +72,12 @@
 	UNPACK_LINK(link_below)
 	UNPACK_LINK(link_above)
 	#undef UNPACK_LINK
+	if(ispath(air_indoors, /datum/atmosphere))
+		var/datum/atmosphere/cast_air_indoors = air_indoors
+		air_indoors = initial(cast_air_indoors.id)
+	if(ispath(air_outdoors, /datum/atmosphere))
+		var/datum/atmosphere/cast_air_outdoors = air_outdoors
+		air_outdoors = initial(cast_air_outdoors.id)
 
 /datum/map_level/Destroy()
 	if(loaded)
@@ -96,31 +106,54 @@
 	.["link_east"] = link_east
 	.["link_above"] = link_above
 	.["link_below"] = link_below
+	.["air_indoors"] = air_indoors
+	.["air_outdoors"] = air_outdoors
 
 /datum/map_level/deserialize(list/data)
 	if(loaded)
 		CRASH("attempted deserialize while loaded")
 	. = ..()
-	id = data["id"]
-	name = data["name"]
-	display_id = data["display_id"]
-	display_name = data["display_name"]
-	traits = data["traits"]
-	attributes = data["attributes"]
+	if(!isnull(data["id"]))
+		id = data["id"]
+	if(!isnull(data["name"]))
+		name = data["name"]
+	if(!isnull(data["display_id"]))
+		display_id = data["display_id"]
+	if(!isnull(data["display_name"]))
+		display_name = data["display_name"]
+	if(!isnull(data["traits"]))
+		traits = data["traits"]
+	if(!isnull(data["attributes"]))
+		attributes = data["attributes"]
 	// if you are reading this in the future and you serialize/deserialize a map and it doesn't load,
 	// this is because absolute/relative paths don't actually... work, right now.
-	absolute_path = data["absolute_path"]
-	relative_path = data["relative_path"]
+	if(!isnull(data["absolute_path"]))
+		absolute_path = data["absolute_path"]
+	if(!isnull(data["relative_path"]))
+		relative_path = data["relative_path"]
 	// end
-	linkage = data["linkage"]
-	transition = data["transition"]
-	base_turf = text2path(data["base_turf"])
-	link_north = data["link_north"]
-	link_south = data["link_south"]
-	link_above = data["link_above"]
-	link_below = data["link_below"]
-	link_west = data["link_west"]
-	link_east = data["link_east"]
+	if(!isnull(data["linkage"]))
+		linkage = data["linkage"]
+	if(!isnull(data["transition"]))
+		transition = data["transition"]
+	if(!isnull(data["base_turf"]))
+		base_turf = text2path(data["base_turf"])
+	if(!isnull(data["link_north"]))
+		link_north = data["link_north"]
+	if(!isnull(data["link_south"]))
+		link_south = data["link_south"]
+	if(!isnull(data["link_above"]))
+		link_above = data["link_above"]
+	if(!isnull(data["link_below"]))
+		link_below = data["link_below"]
+	if(!isnull(data["link_west"]))
+		link_west = data["link_west"]
+	if(!isnull(data["link_east"]))
+		link_east = data["link_east"]
+	if(!isnull(data["air_indoors"]))
+		air_indoors = data["air_indoors"]
+	if(!isnull(data["air_outdoors"]))
+		air_outdoors = data["air_outdoors"]
 
 /**
  * get level index in dir

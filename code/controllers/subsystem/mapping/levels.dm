@@ -35,6 +35,7 @@
 			existing.loaded = FALSE
 	ordered_levels[z_index] = level_or_path
 	. = level_or_path
+	#warn randomize/set display_id, display_name
 	// todo: rebuild?
 
 /**

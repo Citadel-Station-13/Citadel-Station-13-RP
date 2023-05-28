@@ -192,6 +192,8 @@ var/list/all_maps = list()
 	var/datum/spawnpoint/spawnpoint_died = /datum/spawnpoint/arrivals	// Used if you end the round dead.
 	var/datum/spawnpoint/spawnpoint_left = /datum/spawnpoint/arrivals	// Used of you end the round at centcom.
 	var/datum/spawnpoint/spawnpoint_stayed = /datum/spawnpoint/cryo		// Used if you end the round on the station.
+	/// legacy persistence id
+	var/legacy_persistence_id
 
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.

@@ -1,3 +1,4 @@
+
 /datum/map_template/lateload/planets/away_h_world
 	name = "ExoPlanet - Z3 Planet"
 	desc = "A random unknown planet."

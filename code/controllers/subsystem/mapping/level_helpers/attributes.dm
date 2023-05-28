@@ -13,4 +13,4 @@
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
 		if(L.attributes[key] == value)
-			. += L.z_value
+			. += L.z_index
