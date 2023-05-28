@@ -2,7 +2,7 @@
 	var/artist
 	var/title
 	var/album
-	var/decl/license/license
+	var/singleton/license/license
 	var/song
 	var/url // Remember to include http:// or https:// or BYOND will be sad
 	var/volume = 70
