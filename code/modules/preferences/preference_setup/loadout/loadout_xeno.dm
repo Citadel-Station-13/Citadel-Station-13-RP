@@ -88,7 +88,6 @@
 
 //*Teshari
 /datum/gear/xeno/teshari
-	legacy_species_lock = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
