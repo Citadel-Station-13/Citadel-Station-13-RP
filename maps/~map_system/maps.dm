@@ -129,6 +129,8 @@ var/list/all_maps = list()
 
 	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
 
+	var/list/lobby_tracks = list() //singletons format - /singleton/music_track
+
 /datum/map/New()
 	..()
 	if(zlevel_datum_type)
