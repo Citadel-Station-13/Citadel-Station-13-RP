@@ -864,6 +864,12 @@
 "cN" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/evac)
+"cQ" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "cR" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06"
@@ -6426,6 +6432,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
+"wJ" = (
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "wW" = (
 /turf/unsimulated/wall,
 /area/centcom/main_hall)
@@ -7100,15 +7112,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"zv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
 "zw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7164,10 +7167,6 @@
 /area/centcom/command)
 "zD" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /obj/machinery/photocopier/faxmachine,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -7175,32 +7174,15 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zF" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /obj/item/paper_bin{
 	pixel_x = -1;
 	pixel_y = 5
 	},
 /obj/item/pen,
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
-"zG" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10
-	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zH" = (
@@ -8860,6 +8842,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Oo" = (
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "Ou" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/hypospray,
@@ -9384,6 +9372,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
+/area/centcom/command)
+"Up" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Uq" = (
 /obj/effect/floor_decal/corner/yellow{
@@ -18798,10 +18792,10 @@ xj
 xw
 yw
 yQ
-yC
-zh
-zC
-yC
+wJ
+zk
+zk
+Up
 zU
 yw
 Ao
@@ -18995,7 +18989,7 @@ yR
 zf
 zs
 zD
-yC
+Bf
 yC
 Ah
 yC
@@ -19189,7 +19183,7 @@ yS
 zg
 zt
 zE
-yC
+Bf
 yC
 Ai
 yC
@@ -19383,7 +19377,7 @@ yT
 zf
 zu
 zF
-yC
+Bf
 zV
 yw
 Ap
@@ -19574,10 +19568,10 @@ xj
 xx
 yw
 yU
-yC
-zv
-zG
-yC
+Oo
+Bk
+Bk
+cQ
 zW
 yw
 Aq
