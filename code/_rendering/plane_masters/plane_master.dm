@@ -154,6 +154,13 @@
 		0, 0, 0, 1,
 	)
 
+/atom/movable/screen/plane_master/darkvision_occlusion/Initialize(mapload)
+	. = ..()
+	add_filter("extend_shadow1", 1, drop_shadow_filter(x = 0, y = 0, size = 5, offset = 0, color = "#ffffff7a"))
+	add_filter("extend_shadow2", 1, drop_shadow_filter(x = 0, y = 0, size = 10, offset = 0, color = "#ffffff44"))
+	add_filter("extend_shadow3", 1, drop_shadow_filter(x = 0, y = 0, size = 20, offset = 0, color = "#ffffff22"))
+	add_filter("smoothing", 1, gauss_blur_filter(size = 10))
+
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
 
