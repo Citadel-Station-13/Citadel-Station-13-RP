@@ -24,8 +24,8 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
  * baseline darksight holder - overwrites everything when applied
  */
 /datum/vision/baseline
-	/// hard darksight? null for none, otherwise alpha of lighting plane.
-	var/hard_darksight
+	/// hard darksight? 255 for none, otherwise alpha of lighting plane.
+	var/hard_darksight = 255
 	/// soft darksight radius
 	var/soft_darksight_range = SOFT_DARKSIGHT_RANGE_DEFAULT
 	/// soft darksight alpha
@@ -64,15 +64,20 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
 	var/legacy_throttle = INFINITY
 
 /datum/vision/augmenting/push(datum/perspective/perspective)
-	perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
-	perspective.darkvision_alpha = min(perspective.darkvision_alpha, soft_alpha)
-	perspective.darkvision_range = max(perspective.darkvision_range, soft_range)
+	if(!isnull(hard_alpha))
+		perspective.hard_darkvision = min(perspective.hard_darkvision, hard_alpha)
+	if(!isnull(soft_alpha))
+		perspective.darkvision_alpha = min(perspective.darkvision_alpha, soft_alpha)
+	if(!isnull(soft_range))
+		perspective.darkvision_range = max(perspective.darkvision_range, soft_range)
 	if(!isnull(soft_matrix))
 		perspective.darkvision_matrix = color_matrix_multiply(perspective.darkvision_matrix, soft_matrix)
 	if(disable_soft_smartness)
 		perspective.darkvision_smart = FALSE
-	perspective.darkvision_fov = max(perspective.darkvision_fov, soft_darksight_fov)
-	perspective.darkvision_legacy_throttle = min(perspective.darkvision_legacy_throttle, legacy_throttle)
+	if(!isnull(soft_darksight_fov))
+		perspective.darkvision_fov = max(perspective.darkvision_fov, soft_darksight_fov)
+	if(!isnull(legacy_throttle))
+		perspective.darkvision_legacy_throttle = min(perspective.darkvision_legacy_throttle, legacy_throttle)
 	return ..()
 
 /**

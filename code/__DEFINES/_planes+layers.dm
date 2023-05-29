@@ -246,7 +246,7 @@
 #define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
 
 /**
- * mob darkvision plane
+ *! -- Darkvision Plane
  * todo: see plane_master.dm for what to-do.
  */
 #define DARKVISION_PLANE 10
@@ -254,17 +254,32 @@
 #define DARKVISION_LAYER_OBJS 2
 #define DARKVISION_LAYER_ADDITIONAL 4
 #define DARKVISION_LAYER_MOBS 5
-#define DARKVISION_LAYER_OCCLUSION 6
 #define DARKVISION_LAYER_NOISE 7
 #define DARKVISION_LAYER_FOV 8
 #define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
+
+/**
+ *! -- Darkvision Occlusion Plane
+ *
+ * mob darkvision occlusion plane
+ * why do we need this?
+ * because while fov can be easily done using blend multiply, we need an intermediate slate
+ * to draw occlusion to, if we want sane behavior
+ * tl;dr RESET_TRANSFORM doesn't work without KEEP_APART
+ * KEEP_APART stops us from basically overlaying a no-alpha center onto a black backdrop
+ *
+ * tl;dr shit sucks
+ */
+#define DARKVISION_OCCLUSION_PLANE 11
+#define DARKVISION_OCCLUSION_LAYER_MAIN 1
+#define DARKVISION_OCCLUSION_RENDER_TARGET "*DARKMASK_PLANE"
 
 /**
  *! -- Lightless Plane
  *? Objects on this plane can only be seen without light.
  *  todo: proper layering
  */
-#define LIGHTLESS_PLANE 11
+#define LIGHTLESS_PLANE 12
 #define LIGHTLESS_LAYER(normal_layer) (normal_layer)
 #define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
 

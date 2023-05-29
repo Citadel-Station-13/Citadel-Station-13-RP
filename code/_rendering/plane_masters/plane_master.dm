@@ -135,7 +135,24 @@
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
 	. = ..()
-	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("lightmask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("occlusion", 2, alpha_mask_filter(render_source = DARKVISION_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
+
+/**
+ * *sigh* this sucks but whatever
+ */
+/atom/movable/screen/plane_master/darkvision_occlusion
+	plane = DARKVISION_OCCLUSION_PLANE
+	render_target = DARKVISION_OCCLUSION_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// convert all color to alpha, with a massive boost
+	color = list(
+		0, 0, 0, -0.5,
+		0, 0, 0, -0.5,
+		0, 0, 0, -0.5,
+		0, 0, 0, 0,
+		0, 0, 0, 1,
+	)
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE

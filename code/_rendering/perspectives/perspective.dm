@@ -344,7 +344,7 @@
 
 /datum/perspective/proc/RemoveSight(flags)
 	var/change = sight ^ flags
-	sight |= ~(flags)
+	sight &= ~(flags)
 	if(change)
 		for(var/client/C as anything in clients)
 			C.mob.sight = sight
@@ -477,14 +477,9 @@
 	if(!isnull(darksight_occlusion_overlay))
 		// now, handle occlusion
 		var/matrix/cropping = matrix()
-		var/factor = ((darkvision_range / (WORLD_ICON_SIZE)) / 15) / SOFT_DARKSIGHT_OCCLUSION_EXPAND
+		var/factor = ((darkvision_range / (WORLD_ICON_SIZE)) / ((15 / 2) + 1))
 		cropping.Scale(factor)
-		var/mutable_appearance/masking = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-super", appearance_flags = TILE_BOUND)
-		masking.transform = cropping
-		masking.pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
-		masking.pixel_y = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
-		masking.blend_mode = BLEND_ADD
-		darksight_occlusion_overlay.overlays = list(masking)
+		darksight_occlusion_overlay.transform = cropping
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
