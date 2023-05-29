@@ -26,10 +26,10 @@
 		sync_render(renders[key])
 
 /datum/plane_holder/proc/sync_plane(atom/movable/screen/plane_master/plane)
-	plane.screen_loc = "[map_id? "[map_id]:" : ""]CENTER"
+	plane.screen_loc = "[map_id? "[map_id]:" : ""]"
 
 /datum/plane_holder/proc/sync_render(atom/movable/screen/plane_render/render)
-	render.screen_loc = "[map_id? "[map_id]:" : ""]CENTER"
+	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc]"
 
 /datum/plane_holder/proc/screens()
 	. = list()

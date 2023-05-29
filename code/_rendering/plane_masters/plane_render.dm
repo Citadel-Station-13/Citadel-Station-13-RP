@@ -8,6 +8,8 @@
 
 	/// our relevant plane master that we're pulling from - if this is not in the plane holder, we don't spawn.
 	var/relevant_plane_path
+	/// for overriding base screen loc
+	var/base_screen_loc = "CENTER"
 
 //? darkvision relays
 
@@ -41,4 +43,5 @@
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
 	icon_state = "noise"
-	screen_loc = "SOUTHWEST to NORTHEAST"
+	blend_mode = BLEND_MULTIPLY
+	base_screen_loc = "SOUTHWEST to NORTHEAST"
