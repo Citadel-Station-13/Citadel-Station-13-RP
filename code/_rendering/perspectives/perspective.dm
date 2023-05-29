@@ -97,6 +97,7 @@
 	// todo: most of these don't need to be on baes /datum/perspective, i think.
 	//       alternatively, just add a way to control whether we bother using this system.
 	//       "darksight_system"?
+	var/janky_should_we_use_darksight_system = FALSE
 	/// darksight overlay that we maintain
 	var/atom/movable/screen/darksight_fov/darksight_fov_overlay
 	/// darksight overlay that we maintain

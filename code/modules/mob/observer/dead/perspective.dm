@@ -5,6 +5,11 @@
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/observer, INNATE_TRAIT)
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/cloaked, INNATE_TRAIT)
 	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/augmented, INNATE_TRAIT)
+	// just murder darkvision
+	// todo: this is so fucking jank??
+	var/atom/movable/screen/plane_master/darkvision_holder = self_perspective.planes.by_plane_type(/atom/movable/screen/plane_master/darkvision)
+	darkvision_holder.alpha = 0
+	// todo: let obsrevers see lightmasked objects?!!
 
 /mob/observer/dead/proc/update_ghost_sight()
 	if(ghostvision)
