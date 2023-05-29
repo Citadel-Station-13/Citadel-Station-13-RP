@@ -45,14 +45,6 @@
 	plane = OBJ_PLANE
 	render_target = OBJ_PLANE_RENDER_TARGET
 
-/atom/movable/screen/plane_master/lightless
-	plane = LIGHTLESS_PLANE
-	render_target = LIGHTLESS_RENDER_TARGET
-
-/atom/movable/screen/plane_master/lightless/Initialize(mapload)
-	. = ..()
-	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
-
 /atom/movable/screen/plane_master/mobs
 	plane = MOB_PLANE
 	render_target = MOB_PLANE_RENDER_TARGET
@@ -69,6 +61,7 @@
 
 /atom/movable/screen/plane_master/byond
 	plane = BYOND_PLANE
+	render_target = BYOND_RENDER_TARGET
 
 /atom/movable/screen/plane_master/weather
 	plane = WEATHER_PLANE
@@ -156,10 +149,32 @@
 
 /atom/movable/screen/plane_master/darkvision_occlusion/Initialize(mapload)
 	. = ..()
-	add_filter("extend_shadow1", 1, drop_shadow_filter(x = 0, y = 0, size = 5, offset = 0, color = "#ffffff7a"))
-	add_filter("extend_shadow2", 1, drop_shadow_filter(x = 0, y = 0, size = 10, offset = 0, color = "#ffffff44"))
-	add_filter("extend_shadow3", 1, drop_shadow_filter(x = 0, y = 0, size = 20, offset = 0, color = "#ffffff22"))
-	add_filter("smoothing", 1, gauss_blur_filter(size = 10))
+	add_filter("extend_shadow1", 1, drop_shadow_filter(x = 0, y = 0, size = 2, offset = 0, color = "#999999"))
+	add_filter("extend_shadow2", 1, drop_shadow_filter(x = 0, y = 0, size = 4, offset = 0, color = "#99999944"))
+	add_filter("extend_shadow3", 1, drop_shadow_filter(x = 0, y = 0, size = 6, offset = 0, color = "#99999922"))
+	add_filter("smoothing", 1, gauss_blur_filter(size = 4))
+
+/atom/movable/screen/plane_master/fov_occlusion
+	plane = FOV_OCCLUSION_PLANE
+	render_target = FOV_OCCLUSION_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/screen/plane_master/lightless
+	plane = LIGHTLESS_PLANE
+	render_target = LIGHTLESS_RENDER_TARGET
+
+/atom/movable/screen/plane_master/lightless/Initialize(mapload)
+	. = ..()
+	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
+
+/atom/movable/screen/plane_master/darkvision_forward
+	plane = DARKVISION_FORWARD_PLANE
+	render_target = DARKVISION_FORWARD_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/screen/plane_master/darkvision_forward/Initialize(mapload)
+	. = ..()
+	add_filter("fov", 1, alpha_mask_filter(render_source = FOV_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
 
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
@@ -173,6 +188,10 @@
 	plane = OBSERVER_PLANE
 	default_invisible = TRUE
 
+/atom/movable/screen/plane_master/augmented
+	plane = AUGMENTED_PLANE
+	default_invisible = TRUE
+
 /atom/movable/screen/plane_master/verticality
 	plane = VERTICALITY_PLANE
 	alpha = 0
@@ -180,10 +199,6 @@
 	special_managed = TRUE
 	client_global = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/atom/movable/screen/plane_master/augmented
-	plane = AUGMENTED_PLANE
-	default_invisible = TRUE
 
 /atom/movable/screen/plane_master/fullscreen
 	plane = FULLSCREEN_PLANE

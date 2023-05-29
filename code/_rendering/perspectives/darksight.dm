@@ -2,10 +2,10 @@
 	icon = SOFT_DARKSIGHT_15X15_ICON
 	icon_state = "full-square"
 	screen_loc = "CENTER-7,CENTER-7"
-	plane = DARKVISION_PLANE
-	layer = DARKVISION_LAYER_FOV
+	plane = FOV_OCCLUSION_PLANE
+	layer = FOV_OCCLUSION_LAYER_MAIN
 	alpha = 255
-	blend_mode = BLEND_MULTIPLY
+	blend_mode = BLEND_OVERLAY
 	appearance_flags = KEEP_TOGETHER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
