@@ -315,6 +315,9 @@ var/list/flooring_types
 /singleton/flooring/tiling/new_tile/monodark
 	icon_base = "monodark"
 
+/singleton/flooring/tiling/new_tile/monotech
+	icon_base = "monotech"
+
 /singleton/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"
 

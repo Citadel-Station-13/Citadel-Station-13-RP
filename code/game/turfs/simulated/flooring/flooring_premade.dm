@@ -143,6 +143,11 @@
 	icon_state = "monodark"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monodark
 
+/turf/simulated/floor/tiled/monotech
+	name = "floor"
+	icon_state = "monotech"
+	initial_flooring = /singleton/flooring/tiling/new_tile/monotech
+
 /turf/simulated/floor/tiled/steel_grid
 	name = "floor"
 	icon_state = "steel_grid"
