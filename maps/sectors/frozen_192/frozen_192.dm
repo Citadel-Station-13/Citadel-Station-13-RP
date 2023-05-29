@@ -1,17 +1,28 @@
-/datum/map_template/lateload/planets/away_p_world
-	name = "ExoPlanet - Z5 Planet"
-	desc = "A Cold Frozen Planet."
-	mappath = "maps/map_levels/192x192/Class_P.dmm"
-	associated_map_datum = /datum/map_level/planets_lateload/away_p_world
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+/datum/map/sector/frozen_192
+	id = "frozen_192"
+	name = "Sector - Frozen World"
+	width = 192
+	height = 192
+	levels = list(
+		/datum/map_level/sector/frozen_192,
+	)
 
-/datum/map_template/lateload/planets/away_p_world/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(z), 125, /area/class_p/ruins, /datum/map_template/submap/level_specific/class_p)
-
-
-/datum/map_level/planets_lateload/away_p_world
-	name = "Away Mission - Frozen Planet"
+/datum/map_level/sector/frozen_192
+	id = "FrozenWorld192"
+	name = "Sector - Frozen World"
+	absolute_path = "maps/sectors/frozen_192/levels/frozen_192.dmm"
+	base_area = /area/class_p/ruins
 	base_turf = /turf/simulated/floor/outdoors/ice/classp
 
-#warn translate
+/datum/map_level/sector/frozen_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			125,
+			/area/class_p/ruins,
+			/datum/map_template/submap/level_specific/class_p,
+		)
+	)

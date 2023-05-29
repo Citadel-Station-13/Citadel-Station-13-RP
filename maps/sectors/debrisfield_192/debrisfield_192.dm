@@ -23,6 +23,6 @@
 			list(z_index),
 			20,
 			/area/space/debrisfield/unexplored,
-			/datum/map_template/submap/level_specific/debrisfield
+			/datum/map_template/submap/level_specific/debrisfield,
 		)
 	)
