@@ -150,9 +150,9 @@
 	)
 
 	abilities = list(
+		/datum/ability/species/toggle_agility,
 		/datum/ability/species/sonar,
 	)
-
 	descriptors = list(
 		/datum/mob_descriptor/height = -3,
 		/datum/mob_descriptor/build = -3,
@@ -168,9 +168,7 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket,
 	)
-	abilities = list(
-		/datum/ability/species/toggle_agility
-	)
+
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
 	..()
