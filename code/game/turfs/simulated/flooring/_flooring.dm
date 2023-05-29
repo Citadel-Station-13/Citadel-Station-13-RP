@@ -288,6 +288,10 @@ var/list/flooring_types
 	icon_base = "techfloor_grid"
 	build_type = /obj/item/stack/tile/floor/techgrid
 
+/singleton/flooring/tiling/tech/monogrid
+	icon_base = "techfloor_monogrid"
+	build_type = null
+
 /singleton/flooring/tiling/new_tile
 	name = "floor"
 	icon_base = "tile_full"
@@ -315,8 +319,8 @@ var/list/flooring_types
 /singleton/flooring/tiling/new_tile/monodark
 	icon_base = "monodark"
 
-/singleton/flooring/tiling/new_tile/monotech
-	icon_base = "monotech"
+/singleton/flooring/tiling/new_tile/monotechmaint
+	icon_base = "monotechmaint"
 
 /singleton/flooring/tiling/new_tile/steel_grid
 	icon_base = "steel_grid"
