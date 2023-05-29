@@ -26,12 +26,11 @@
 		SPAN_WARNING("You hear a quiet, high-pitched click.")
 	)
 	owner.self_perspective.set_plane_visible(/atom/movable/screen/plane_master/sonar, "sonar_pulse")
-	owner.plane_holder.set_vis(VIS_SONAR, TRUE)
 	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
 	sonar_automata.receiver = owner
 	sonar_automata.setup_auto(get_turf(owner), 14)
 	sonar_automata.start()
-	addtimer(CALLBACK(self_perspective, TYPE_PROC_REF(/datum/perspective, unset_plane_visible), /atom/movable/screen/plane_master/sonar, "sonar_pulse"), 5 SECONDS, flags = TIMER_OVERRIDE | TIMER_UNIQUE)
+	addtimer(CALLBACK(owner.self_perspective, TYPE_PROC_REF(/datum/perspective, unset_plane_visible), /atom/movable/screen/plane_master/sonar, "sonar_pulse"), 5 SECONDS, flags = TIMER_OVERRIDE | TIMER_UNIQUE)
 
 //Toggle Flight Ability
 /datum/ability/species/toggle_flight
