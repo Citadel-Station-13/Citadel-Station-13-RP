@@ -290,6 +290,7 @@ var/list/flooring_types
 
 /singleton/flooring/tiling/tech/monogrid
 	icon_base = "techfloor_monogrid"
+	flooring_flags = TURF_IS_FRAGILE
 	build_type = null
 
 /singleton/flooring/tiling/new_tile
