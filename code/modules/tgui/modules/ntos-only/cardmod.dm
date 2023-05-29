@@ -14,10 +14,6 @@
 	data["manifest"] = GLOB.PDA_Manifest
 	return data
 
-#warn demote function if not global cardmod
-#warn better tgui
-#warn bank account check
-
 /datum/tgui_module_old/cardmod/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	var/datum/computer_file/program/card_mod/program = host
 	if(!istype(program))
@@ -181,7 +177,7 @@
 			. = TRUE
 		if("reg")
 			if(computer && program.can_run(usr, 1))
-				var/temp_name = sanitizeName(params["reg"], allow_numbers = TRUE)
+				var/temp_name = sanitizeName(params["reg"])
 				if(temp_name)
 					id_card.registered_name = temp_name
 				else

@@ -152,9 +152,9 @@
 
 	dat += "<h2>Other Data</h2>"
 
-	var/list/tgui_data = grown_seed.get_tgui_analyzer_data()
+	var/list/ui_data = grown_seed.get_tgui_analyzer_data()
 
-	dat += jointext(tgui_data["trait_info"], "<br>\n")
+	dat += jointext(ui_data["trait_info"], "<br>\n")
 
 	var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 	P.name = "paper - [form_title]"

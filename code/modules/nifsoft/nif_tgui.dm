@@ -109,7 +109,7 @@
 		ui.open()
 
 /**
- * tgui_data gives the UI any relevant data it needs.
+ * ui_data gives the UI any relevant data it needs.
  * In our case, that's basically everything from our statpanel.
  */
 /obj/item/nif/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
@@ -150,7 +150,7 @@
 	return data
 
 /**
- * tgui_act handles all user input in the UI.
+ * ui_act handles all user input in the UI.
  */
 /obj/item/nif/ui_act(action, list/params, datum/tgui/ui)
 	if(..())

@@ -1,9 +1,20 @@
+GLOBAL_LIST_EMPTY(tgui_old_rcon_modules)
+
 /datum/tgui_module_old/rcon
 	name = "Power RCON"
 	tgui_id = "RCON"
 
 	var/list/known_SMESs = null
 	var/list/known_breakers = null
+
+/datum/tgui_module_old/rcon/New(host)
+	. = ..()
+	GLOB.tgui_old_rcon_modules += src
+
+/datum/tgui_module_old/rcon/Destroy(force, ...)
+	. = ..()
+	GLOB.tgui_old_rcon_modules -= src
+
 
 /datum/tgui_module_old/rcon/ui_data(mob/user)
 	FindDevices() // Update our devices list
