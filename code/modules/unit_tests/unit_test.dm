@@ -47,15 +47,14 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	var/list/allocated
 	var/list/fail_reasons
 
-	var/static/datum/space_level/reservation
+	var/static/datum/map_level/reservation
 
 /proc/cmp_unit_test_priority(datum/unit_test/a, datum/unit_test/b)
 	return initial(a.priority) - initial(b.priority)
 
 /datum/unit_test/New()
 	if (isnull(reservation))
-		var/datum/map_template/unit_tests/template = new
-		reservation = template.load_new_z()
+		reservation = SSmapping.allocate_level(/datum/map_level/unit_tests)
 
 	allocated = new
 	run_loc_floor_bottom_left = get_turf(locate(/obj/landmark/unit_test_bottom_left) in GLOB.landmarks_list)
@@ -211,6 +210,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
 	SSticker.standard_reboot()
 
-/datum/map_template/unit_tests
+/datum/map_level/unit_tests
+	id = "__UnitTestLevel"
 	name = "Unit Tests Zone"
-	mappath = "maps/templates/unit_tests.dmm"
+	absolute_path = "maps/templates/unit_tests.dmm"

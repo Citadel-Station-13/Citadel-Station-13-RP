@@ -10,9 +10,13 @@
 /datum/map_level/sector/frozen_192
 	id = "FrozenWorld192"
 	name = "Sector - Frozen World"
+	display_name = "Class-P Frozen World"
 	absolute_path = "maps/sectors/frozen_192/levels/frozen_192.dmm"
 	base_area = /area/class_p/ruins
 	base_turf = /turf/simulated/floor/outdoors/ice/classp
+	traits = list(
+		ZTRAIT_GRAVITY,
+	)
 
 /datum/map_level/sector/frozen_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

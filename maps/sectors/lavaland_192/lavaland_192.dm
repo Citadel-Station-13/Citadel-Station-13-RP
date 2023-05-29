@@ -1,48 +1,65 @@
-/**
- *! Unique Map Templates
- *? This is for maps that are not overmap accessible but are also not gateway maps. There shouldn't be much of these right now
- *? unless a large shift in design philosophy occurs
- */
+/datum/map/sector/lavaland_192
+	id = "lavaland_192"
+	name = "Sector - Lavaland"
+	width = 192
+	height = 192
+	levels = list(
+		/datum/map_level/sector/lavaland_192/base,
+		/datum/map_level/sector/lavaland_192/east,
+	)
 
-////////////////////////////////////////////////////////
-/// Lava Land - Otherwise known as Surt or something ///
-////////////////////////////////////////////////////////
-
-/datum/map_template/lateload/unique/lavaland
-	name = "Away Mission - Lava Land"
-	desc = "The fabled."
-	mappath = "maps/map_levels/192x192/lavaland.dmm"
-	associated_map_datum = /datum/map_level/unique_lateload/lavaland
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
-
-/datum/map_level/unique_lateload/lavaland
-	name = "Away Mission - Lava Land"
+/datum/map_level/sector/lavaland_192
 	base_turf = /turf/simulated/mineral/floor/lavaland
+	base_area = /area/lavaland/central/unexplored
+	traits = list(
+		ZTRAIT_GRAVITY,
+	)
 
-/datum/map_template/lateload/unique/lavaland/on_map_loaded(z)
+/datum/map_level/sector/lavaland_192/base
+	id = "LavalandBase192"
+	name = "Sector - Lavaland West"
+	display_name = "Surt - West"
+	absolute_path = "maps/sectors/lavaland_192/levels/lavaland_192.dmm"
+	link_east = /datum/map_level/sector/lavaland_192/east
+
+/datum/map_level/sector/lavaland_192/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
-	seed_submaps(list(z), 40, /area/lavaland/central/unexplored, /datum/map_template/submap/level_specific/lavaland)
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
+	additional_generations?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			80,
+			/area/lavaland/central/unexplored,
+			/datum/map_template/submap/level_specific/lavaland,
+		)
+	)
+	// todo: yielding generation
+	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 
-/datum/map_template/lateload/unique/lavaland_east
-	name = "Away Mission - Lava Land (East)"
-	desc = "The forgotten."
-	mappath = "maps/map_levels/192x192/lavaland_east.dmm"
-	associated_map_datum = /datum/map_level/unique_lateload/lavaland_east
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
+/datum/map_level/sector/lavaland_192/east
+	id = "LavalandEast192"
+	name = "Sector - Lavaland East"
+	display_name = "Surt - East"
+	absolute_path = "maps/sectors/lavaland_192/levels/lavaland_192_east.dmm"
+	link_west = /datum/map_level/sector/lavaland_192/base
 
-/datum/map_level/unique_lateload/lavaland_east
-	name = "Away Mission - Lava Land (East)"
-	base_turf = /turf/simulated/mineral/floor/lavaland
-
-/datum/map_template/lateload/unique/lavaland_east/on_map_loaded(z)
+/datum/map_level/sector/lavaland_192/east/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
-	seed_submaps(list(z), 0, /area/lavaland/east/unexplored, /datum/map_template/submap/level_specific/lavaland)
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z, world.maxx - 4, world.maxy - 4)
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			40,
+			/area/lavaland/east/unexplored,
+			/datum/map_template/submap/level_specific/lavaland,
+		)
+	)
+	// todo: yielding generation
+	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z_index, 64, 64)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx - 4, world.maxy - 4)
 
 /obj/landmark/map_data/lavaland_east
 	height = 1
-
-#warn translate

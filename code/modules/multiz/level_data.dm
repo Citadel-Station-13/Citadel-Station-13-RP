@@ -12,7 +12,6 @@ GLOBAL_LIST_EMPTY(levels_by_id)
 
 	var/my_z
 	var/level_id
-	var/base_turf
 	var/list/connects_to
 	var/level_flags
 
@@ -31,9 +30,6 @@ INITIALIZE_IMMEDIATE(/obj/level_data)
 		stack_trace("Duplicate level_id '[level_id]' for z[my_z].")
 	else
 		GLOB.levels_by_id[level_id] = src
-
-	if(base_turf)
-		LEGACY_MAP_DATUM.base_turf_by_z["[my_z]"] = base_turf
 
 	if(level_flags & ZLEVEL_STATION)
 		LEGACY_MAP_DATUM.station_levels |= my_z

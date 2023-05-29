@@ -8,11 +8,3 @@
 		return
 
 	new associated_map_datum(LEGACY_MAP_DATUM, z)
-
-/datum/map_level/lateload
-	z = 0
-
-/datum/map_level/lateload/New(var/datum/map/station/map, mapZ)
-	if(mapZ && !z)
-		z = mapZ
-	return ..(map)

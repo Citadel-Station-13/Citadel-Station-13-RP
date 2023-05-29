@@ -221,8 +221,9 @@
 	if(!LEGACY_MAP_DATUM.use_overmap)
 		return 1
 
+	ASSERT(!LEGACY_MAP_DATUM.overmap_z)
 	testing("Building overmap...")
-	LEGACY_MAP_DATUM.overmap_z = SSmapping.allocate_zlevel()
+	LEGACY_MAP_DATUM.overmap_z = SSmapping.allocate_level()
 
 	testing("Putting overmap on [LEGACY_MAP_DATUM.overmap_z]")
 	var/area/overmap/A = new

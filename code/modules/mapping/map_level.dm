@@ -295,3 +295,9 @@
 
 /datum/map_level/reserved/allow_deallocate()
 	return FALSE
+
+/**
+ * transit levels for shuttles
+ */
+/datum/map_level/transit
+	transition = Z_TRANSITION_DISABLED

@@ -1,12 +1,16 @@
-/datum/map_template/lateload/space/away_tradeport
-	name = "Away Mission - Trade Port"
-	desc = "A space gas station! Stretch your legs!"
-	mappath = "maps/map_levels/192x192/tradeport.dmm"
-	associated_map_datum = /datum/map_level/space_lateload/away_tradeport
-	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = FALSE)
+/datum/map/sector/tradeport_192
+	id = "tradeport_192"
+	name = "Sector - Trade Port (192x192)"
+	width = 192
+	height = 192
+	levels = list(
+		/datum/map_level/sector/tradeport_192,
+	)
 
-/datum/map_level/space_lateload/away_tradeport
-	name = "Away Mission - Trade Port"
+/datum/map_level/sector/tradeport_192
+	id = "Tradeport192"
+	name = "Sector - Trade Port (192x192)"
+	display_name = "Nebula Gas Trade Hub"
+	absolute_path = "maps/sectors/tradeport_192/levels/tradeport_192.dmm"
 	base_turf = /turf/space
-
-#warn translate - this is nebula gas
+	base_area = /area/space
