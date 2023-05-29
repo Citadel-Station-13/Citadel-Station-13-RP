@@ -453,7 +453,8 @@
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
-	var/state_to_use = "fade-omni-soft"
+	// handle fov
+	var/state_to_use = "fade-omni-super"
 	switch(darkvision_fov)
 		if(SOFT_DARKSIGHT_FOV_270)
 			state_to_use = "fade-270-hard"
@@ -470,10 +471,16 @@
 	if(needed > 1)
 		transforming.Scale(needed, needed)
 	darksight_fov_overlay?.transform = transforming
+	// now, handle occlusion
 	var/matrix/cropping = matrix()
-	var/factor = (darkvision_range / (WORLD_ICON_SIZE)) / 15
+	var/factor = ((darkvision_range / (WORLD_ICON_SIZE)) / 15) / SOFT_DARKSIGHT_OCCLUSION_EXPAND
 	cropping.Scale(factor)
-	darksight_occlusion_overlay?.transform = cropping
+	var/mutable_appearance/masking = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-super", appearance_flags = TILE_BOUND)
+	masking.transform = cropping
+	masking.pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
+	masking.pixel_y = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
+	masking.blend_mode = BLEND_ADD
+	darksight_occlusion_overlay.overlays = list(masking)
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
