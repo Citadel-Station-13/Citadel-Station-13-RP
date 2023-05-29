@@ -381,7 +381,8 @@
 	var/change = src.eye != AM
 	if(!change)
 		return
-	detach_from_eye(src.eye)
+	if(!isnull(src.eye))
+		detach_from_eye(src.eye)
 	src.eye = AM
 	if(!isnull(src.eye))
 		attach_to_eye(src.eye)
@@ -453,34 +454,36 @@
 	update_vision_overlays()
 
 /datum/perspective/proc/update_vision_overlays()
-	// handle fov
-	var/state_to_use = "fade-omni-super"
-	switch(darkvision_fov)
-		if(SOFT_DARKSIGHT_FOV_270)
-			state_to_use = "fade-270-hard"
-		if(SOFT_DARKSIGHT_FOV_180)
-			state_to_use = "fade-180-hard"
-		if(SOFT_DARKSIGHT_FOV_90)
-			state_to_use = "fade-90-hard"
-	darksight_fov_overlay?.icon_state = state_to_use
-	if(view_dirty)
-		recompute_view_size()
-	// todo: this should take shifting into account, for things like binoculars.
-	var/needed = max(cached_view_height, cached_view_width) / 15
-	var/matrix/transforming = matrix()
-	if(needed > 1)
-		transforming.Scale(needed, needed)
-	darksight_fov_overlay?.transform = transforming
-	// now, handle occlusion
-	var/matrix/cropping = matrix()
-	var/factor = ((darkvision_range / (WORLD_ICON_SIZE)) / 15) / SOFT_DARKSIGHT_OCCLUSION_EXPAND
-	cropping.Scale(factor)
-	var/mutable_appearance/masking = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-super", appearance_flags = TILE_BOUND)
-	masking.transform = cropping
-	masking.pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
-	masking.pixel_y = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
-	masking.blend_mode = BLEND_ADD
-	darksight_occlusion_overlay.overlays = list(masking)
+	if(!isnull(darksight_fov_overlay))
+		// handle fov
+		var/state_to_use = "fade-omni-super"
+		switch(darkvision_fov)
+			if(SOFT_DARKSIGHT_FOV_270)
+				state_to_use = "fade-270-hard"
+			if(SOFT_DARKSIGHT_FOV_180)
+				state_to_use = "fade-180-hard"
+			if(SOFT_DARKSIGHT_FOV_90)
+				state_to_use = "fade-90-hard"
+		darksight_fov_overlay.icon_state = state_to_use
+		if(view_dirty)
+			recompute_view_size()
+		// todo: this should take shifting into account, for things like binoculars.
+		var/needed = max(cached_view_height, cached_view_width) / 15
+		var/matrix/transforming = matrix()
+		if(needed > 1)
+			transforming.Scale(needed, needed)
+		darksight_fov_overlay.transform = transforming
+	if(!isnull(darksight_occlusion_overlay))
+		// now, handle occlusion
+		var/matrix/cropping = matrix()
+		var/factor = ((darkvision_range / (WORLD_ICON_SIZE)) / 15) / SOFT_DARKSIGHT_OCCLUSION_EXPAND
+		cropping.Scale(factor)
+		var/mutable_appearance/masking = mutable_appearance(SOFT_DARKSIGHT_15X15_ICON, "fade-omni-super", appearance_flags = TILE_BOUND)
+		masking.transform = cropping
+		masking.pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
+		masking.pixel_y = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
+		masking.blend_mode = BLEND_ADD
+		darksight_occlusion_overlay.overlays = list(masking)
 
 /datum/perspective/proc/legacy_force_set_hard_darkvision(amt)
 	. = legacy_forced_hard_darkvision == amt
