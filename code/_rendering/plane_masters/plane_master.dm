@@ -130,6 +130,8 @@
 	. = ..()
 	add_filter("lightmask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
 	add_filter("occlusion", 2, alpha_mask_filter(render_source = DARKVISION_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
+	add_filter("fov", 3, alpha_mask_filter(render_source = FOV_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
+
 
 /**
  * *sigh* this sucks but whatever

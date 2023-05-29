@@ -25,21 +25,21 @@
 	render_source = TURF_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 
-/atom/movable/screen/plane_render/darkvision_forward
-	plane = DARKVISION_PLANE
-	layer = DARKVISION_LAYER_OBJMOBS
-	render_source = DARKVISION_FORWARD_RENDER_TARGET
-	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
+// /atom/movable/screen/plane_render/darkvision_forward
+// 	plane = DARKVISION_PLANE
+// 	layer = DARKVISION_LAYER_OBJMOBS
+// 	render_source = DARKVISION_FORWARD_RENDER_TARGET
+// 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 
 /atom/movable/screen/plane_render/darkvision_objs
-	plane = DARKVISION_FORWARD_PLANE
-	layer = DARKVISION_FORWARD_LAYER_OBJS
+	plane = DARKVISION_PLANE
+	layer = DARKVISION_LAYER_OBJS
 	render_source = OBJ_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 
 /atom/movable/screen/plane_render/darkvision_mobs
-	plane = DARKVISION_FORWARD_PLANE
-	layer = DARKVISION_FORWARD_LAYER_MOBS
+	plane = DARKVISION_PLANE
+	layer = DARKVISION_LAYER_MOBS
 	render_source = MOB_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 
