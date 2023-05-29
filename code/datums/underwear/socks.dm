@@ -246,3 +246,38 @@
 /datum/category_item/underwear/socks/christmas_thigh
 	name = "Thigh, Christmas"
 	icon_state = "christmas_thigh"
+
+/datum/category_item/underwear/socks/thigh_stripe
+	name = "Thigh, Stripe"
+	icon_state = "socks_thigh_stripe"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stripe_short
+	name = "Thigh, Stripe, Shortest"
+	icon_state = "socks_thigh_stripe_short"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stripe_shortest
+	name = "Thigh, Stripe, Short"
+	icon_state = "socks_thigh_stripe_shortest"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stripe_stirrup
+	name = "Thigh, Stripe, Stirrup"
+	icon_state = "socks_thigh_stripe_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stripe_short_stirrup
+	name = "Thigh, Stripe, Shortest, Stirrup"
+	icon_state = "socks_thigh_stripe_short_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stripe_shortest_stirrup
+	name = "Thigh, Stripe, Short, Stirrup"
+	icon_state = "socks_thigh_stripe_shortest_stirrup"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/fishnet_thigh
+	name = "Filled Fishnets"
+	icon_state = "fishnet_thigh"
+	has_color = TRUE

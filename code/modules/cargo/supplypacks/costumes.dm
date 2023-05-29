@@ -182,7 +182,7 @@
 			/obj/item/clothing/shoes/boots/jackboots/toeless,
 			/obj/item/clothing/shoes/boots/workboots/toeless,
 			/obj/item/clothing/suit/tajaran/furs,
-			/obj/item/clothing/head/tajaran/scarf,
+			/obj/item/clothing/head/tajaranold/scarf,
 			/obj/item/clothing/suit/unathi/robe,
 			/obj/item/clothing/suit/unathi/mantle,
 			/obj/item/clothing/under/permit,

@@ -241,39 +241,6 @@
 		to_chat(src, SPAN_WARNING("You set your monitor to display [choice]!"))
 		update_icons_body()
 
-/mob/living/carbon/human
-
-/mob/living/carbon/human/proc/sonar_ping()
-	set name = "Sonar Pulse"
-	set desc = "Allows you to listen in to movement and noises around you."
-	set category = "Abilities"
-
-	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You need to recover before you can use this ability."))
-		return
-	if(is_deaf())
-		to_chat(src, SPAN_WARNING("You are for all intents and purposes currently deaf!"))
-		return
-	if(!get_turf(src))
-		to_chat(src, SPAN_WARNING("Not from here you can't."))
-		return
-	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SONAR_PULSE))
-		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
-		return
-	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
-
-	visible_message(
-		SPAN_WARNING("[src] emits a quiet click."),
-		SPAN_WARNING("You emit a quiet click."),
-		SPAN_WARNING("You hear a quiet, high-pitched click.")
-	)
-	self_perspective.set_plane_visible(/atom/movable/screen/plane_master/sonar, "sonar_pulse")
-	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
-	sonar_automata.receiver = src
-	sonar_automata.setup_auto(get_turf(src), 14)
-	sonar_automata.start()
-	addtimer(CALLBACK(self_perspective, TYPE_PROC_REF(/datum/perspective, unset_plane_visible), /atom/movable/screen/plane_master/sonar, "sonar_pulse"), 5 SECONDS, flags = TIMER_OVERRIDE | TIMER_UNIQUE)
-
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
 	set desc = "Allows you to regrow limbs and heal organs after a period of rest."

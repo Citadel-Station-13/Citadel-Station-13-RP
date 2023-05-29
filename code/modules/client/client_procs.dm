@@ -168,8 +168,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// kick out invalid connections
 	if(connection != "seeker" && connection != "web")
 		return null
+	// is localhost?
+	var/is_localhost = isnull(address) || (address in list("127.0.0.1", "::1"))
 	// kick out guests
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
+	if(!config_legacy.guests_allowed && IsGuestKey(key) && !is_localhost)
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -222,7 +224,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				new /datum/admins(autorank, ckey)
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(isnull(address) || (address in list("127.0.0.1", "::1")))
+	if(is_localhost)
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src

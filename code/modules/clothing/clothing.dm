@@ -232,6 +232,11 @@
 				)
 		else if(isimage(using) || ismutableappearance(using))
 			assembled[name] = using
+		else if(islist(using))
+			var/mutable_appearance/collated = mutable_appearance()
+			collated.dir = SOUTH
+			collated.overlays = using
+			assembled[name] = collated
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return
