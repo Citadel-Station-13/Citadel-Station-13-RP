@@ -461,6 +461,7 @@
 	if(!isnull(darksight_fov_overlay))
 		// handle fov
 		var/state_to_use = "fade-omni-super"
+		var/color_to_use = null
 		switch(darkvision_fov)
 			if(SOFT_DARKSIGHT_FOV_270)
 				state_to_use = "fade-270-hard"
@@ -468,7 +469,17 @@
 				state_to_use = "fade-180-hard"
 			if(SOFT_DARKSIGHT_FOV_90)
 				state_to_use = "fade-90-hard"
+			else
+				state_to_use = "fade-omni-super"
+				color_to_use = list(
+					0, 0, 0, -0.5,
+					0, 0, 0, -0.5,
+					0, 0, 0, -0.5,
+					0, 0, 0, 0,
+					0, 0, 0, 1,
+				)
 		darksight_fov_overlay.icon_state = state_to_use
+		darksight_fov_overlay.color = color_to_use
 		if(view_dirty)
 			recompute_view_size()
 		// todo: this should take shifting into account, for things like binoculars.
