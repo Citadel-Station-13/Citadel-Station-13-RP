@@ -55,8 +55,10 @@ BLIND     // can't see anything
 		if(active)
 			active = 0
 			icon_state = inactive_icon_state
-			user.update_inv_glasses()
-			wearer.remove_vision_modifier(vision_modifier)
+			if(worn_slot != SLOT_ID_HANDS)
+				update_worn_icon()
+			if(worn_slot in active_slots)
+				wearer.remove_vision_modifier(vision_modifier)
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			away_planes = enables_planes
@@ -65,8 +67,10 @@ BLIND     // can't see anything
 		else
 			active = 1
 			icon_state = initial(icon_state)
-			user.update_inv_glasses()
-			wearer.add_vision_modifier(vision_modifier)
+			if(worn_slot != SLOT_ID_HANDS)
+				user.update_inv_glasses()
+			if(worn_slot in active_slots)
+				wearer.add_vision_modifier(vision_modifier)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
 			enables_planes = away_planes

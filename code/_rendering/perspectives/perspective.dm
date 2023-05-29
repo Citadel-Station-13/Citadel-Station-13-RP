@@ -359,10 +359,13 @@
 //? Abstraction - see_in_dark
 
 /datum/perspective/proc/update_see_in_dark()
-	var/wanted = min(darkvision_legacy_throttle, INFINITY) // show everything
+	var/wanted = INFINITY // show everything
 	// if they have hard darkvision kick it back up
 	if(legacy_forced_hard_darkvision || hard_darkvision < 255)
 		wanted = INFINITY
+	// if they have legacy throttle..
+	if(!isnull(darkvision_legacy_throttle))
+		wanted = min(darkvision_legacy_throttle, wanted)
 	if(wanted != see_in_dark)
 		see_in_dark = wanted
 		for(var/mob/M as anything in mobs)
