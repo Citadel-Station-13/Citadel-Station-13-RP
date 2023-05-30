@@ -14,6 +14,7 @@
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
+	planet_path = /datum/planet/lavaland
 
 /datum/map_level/sector/lavaland_192/base
 	id = "LavalandBase192"
@@ -24,7 +25,7 @@
 
 /datum/map_level/sector/lavaland_192/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()
-	additional_generations?.Add(
+	additional_generation?.Add(
 		CALLBACK(
 			GLOBAL_PROC,
 			GLOBAL_PROC_REF(seed_submaps),

@@ -18,6 +18,7 @@
 	name = "Class-G Mineral Rich Planet"
 	desc = "A mineral rich planet with a volatile atmosphere."
 	current_time = new /datum/time/classg()
+	weather_holder = new /datum/planet/classg
 
 /datum/planet/classg/update_sun()
 	..()

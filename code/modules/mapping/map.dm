@@ -147,19 +147,11 @@ var/list/all_maps = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
 	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
-	var/ai_shell_restricted = FALSE		 // Are there z-levels restricted?
-	var/ai_shell_allowed_levels = list() // Which z-levels ARE we allowed to visit?
 
 	// Belter stuff
 	var/list/belter_docked_z = list()
 	var/list/belter_transit_z = list()
 	var/list/belter_belt_z = list()
-
-	var/list/mining_station_z = list()
-	var/list/mining_outpost_z = list()
-
-	//Lavaland Stuff
-	var/list/lavaland_levels = list()
 
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
@@ -210,8 +202,6 @@ var/list/all_maps = list()
 	var/list/unit_test_exempt_from_atmos = list()
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
-
-	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
 
 /datum/map/station/New()
 	..()

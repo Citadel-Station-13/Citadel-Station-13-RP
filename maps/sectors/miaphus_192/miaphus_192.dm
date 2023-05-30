@@ -14,6 +14,7 @@
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
+	planet_path = /datum/planet/miaphus
 
 /datum/map_level/sector/miaphus_192/beach
 	id = "MiaphusBeach192"

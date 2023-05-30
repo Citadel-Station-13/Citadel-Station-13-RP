@@ -15,6 +15,7 @@
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
+	planet_path = /datum/planet/classg
 
 /datum/map_level/sector/mining_192/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

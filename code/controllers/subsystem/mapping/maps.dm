@@ -52,7 +52,7 @@
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance = next_station)
 	ASSERT(istype(instance))
 	ASSERT(isnull(loaded_station))
-	ASSERT(!subsystem_initialized)
+	ASSERT(!initialized)
 	ASSERT(!world_is_loaded)
 	// bootstrap
 	load_server_initial_reservation_area(instance.width, instance.height)

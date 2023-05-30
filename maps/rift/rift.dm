@@ -1,21 +1,3 @@
-#if !defined(USING_MAP_DATUM)
-
-	#include "rift_defines.dm"
-	#include "rift_shuttle_defs.dm"
-	#include "rift_shuttles.dm"
-	#include "rift_telecomms.dm"
-	#include "rift_weather.dm"
-
-	#define USING_MAP_DATUM /datum/map/station/rift
-
-
-#elif !defined(MAP_OVERRIDE)
-
-	#warn A map has already been included, ignoring Rift
-
-#endif
-
-
 /datum/map/station/rift
 	id = "rift"
 	name = "World - Rift"
@@ -45,11 +27,6 @@
 	overmap_size = 60
 	overmap_event_areas = 50
 	usable_email_tlds = list("lythios.nt")
-
-	zlevel_datum_type = /datum/map_level/rift
-	base_turf_by_z = list(Z_LEVEL_WEST_BASE,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_CAVERN)
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
@@ -166,18 +143,6 @@
 		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external) //  Outside,
 
-/* Finish this when you have a ship and the locations for it to access
-	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
-	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2,
-						 	 	 Z_LEVEL_ROGUEMINE_3,
-								 Z_LEVEL_ROGUEMINE_4)
-*/
-
-	lavaland_levels =		list(Z_LEVEL_LAVALAND,
-								 Z_LEVEL_LAVALAND_EAST)
-
 	lateload_z_levels = list(
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
 //		list("Western Canyon","Western Deep Caves","Western Caves","Western Plains"),	///Integration Test says these arent valid maps but everything works, will leave in for now but this prolly isnt needed -Bloop
@@ -195,42 +160,12 @@
 	//	list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
 	)
 
-	ai_shell_restricted = TRUE
-	ai_shell_allowed_levels = list(
-	Z_LEVEL_UNDERGROUND_DEEP,
-		Z_LEVEL_UNDERGROUND,
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_MISC)
-
-	mining_station_z =		list(Z_LEVEL_UNDERGROUND_DEEP)
-	mining_outpost_z =		list(Z_LEVEL_WEST_PLAIN)
-
 	belter_docked_z = 		list(Z_LEVEL_WEST_DEEP)
 	belter_transit_z =	 	list(Z_LEVEL_MISC)
 	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
 						 		 Z_LEVEL_ROGUEMINE_2)
 
 	lateload_single_pick = null //Nothing right now.
-
-/// Cave Generation
-/datum/map/station/rift/perform_map_generation()
-	. = ..()
-	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
-	seed_submaps(list(Z_LEVEL_WEST_DEEP), 50, /area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_deep)
-	seed_submaps(list(Z_LEVEL_WEST_BASE), 50, /area/rift/surfacebase/outside/west_base/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_base)
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_CAVERN, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_DEEP, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_BASE, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_HIGH, world.maxx - 3, world.maxy - 3)
-	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_MID, world.maxx - 3, world.maxy - 3)
-	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_LOW, world.maxx - 3, world.maxy - 3)
-	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND, world.maxx - 3, world.maxy - 3)
-	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND_DEEP, world.maxx - 3, world.maxy - 3)
-
-	return 1
 
 /datum/map_level/rift/station/underground_floor
 	id = "RiftUnderground3"
@@ -247,6 +182,10 @@
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
+
+/datum/map_level/rift/station/underground_floor/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/underground_deep
 	id = "RiftUnderground2"
@@ -265,6 +204,10 @@
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
 
+/datum/map_level/rift/station/underground_deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+
 /datum/map_level/rift/station/underground_shallow
 	id = "RiftUnderground1"
 	name = "Rift - Underground 1"
@@ -281,6 +224,10 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low
+
+/datum/map_level/rift/station/underground_shallow/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/station/surface_low
 	id = "RiftSurface1"
@@ -300,6 +247,10 @@
 	link_below = /datum/map_level/rift/station/underground_shallow
 	link_above = /datum/map_level/rift/station/surface_mid
 
+/datum/map_level/rift/station/surface_low/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+
 /datum/map_level/rift/station/surface_mid
 	id = "RiftSurface2"
 	name = "Rift - Surface 2"
@@ -317,6 +268,10 @@
 	link_below = /datum/map_level/rift/station/surface_low
 	link_above = /datum/map_level/rift/station/surface_high
 
+/datum/map_level/rift/station/surface_mid/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+
 /datum/map_level/rift/station/surface_high
 	id = "RiftSurface3"
 	name = "Rift - Surface 3"
@@ -333,6 +288,10 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/surface_mid
 
+/datum/map_level/rift/station/surface_high/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+
 /datum/map_level/rift/base
 	id = "RiftWestUnderground3"
 	name = "Rift - West Canyon"
@@ -347,6 +306,19 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/deep
+
+/datum/map_level/rift/base/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			50,
+			/area/rift/surfacebase/outside/west_base/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_base,
+		)
+	)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/deep
 	id = "RiftWestUnderground2"
@@ -364,6 +336,19 @@
 	link_below = /datum/map_level/rift/base
 	link_above = /datum/map_level/rift/caves
 
+/datum/map_level/rift/deep/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			50,
+			/area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_deep,
+		)
+	)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
+
 /datum/map_level/rift/caves
 	id = "RiftWestUnderground1"
 	name = "Rift - West Caves (Shallow)"
@@ -379,6 +364,19 @@
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/deep
 	link_above = /datum/map_level/rift/plains
+
+/datum/map_level/rift/caves/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	additional_generation?.Add(
+		CALLBACK(
+			GLOBAL_PROC,
+			GLOBAL_PROC_REF(seed_submaps),
+			list(z_index),
+			50,
+			/area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves,
+		)
+	)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
 
 /datum/map_level/rift/plains
 	id = "RiftWestSurface1"

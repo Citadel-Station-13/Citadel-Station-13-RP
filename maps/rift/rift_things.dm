@@ -19,8 +19,8 @@
 
 /// This is the effect that slams people into the ground upon dropping out of the sky //
 
-/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c/find_planet()
-	planet = planet_lythios43c
+/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c
+	planet_path = /datum/planet/lythios43c
 
 /// Temporary place for this
 // Spawner for lythios animals

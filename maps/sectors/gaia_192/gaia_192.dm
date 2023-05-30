@@ -17,3 +17,4 @@
 	traits = list(
 		ZTRAIT_GRAVITY,
 	)
+	planet_path = /datum/planet/classm

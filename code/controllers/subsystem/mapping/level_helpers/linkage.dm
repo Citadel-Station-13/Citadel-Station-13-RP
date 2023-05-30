@@ -5,5 +5,5 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
-		if(L.linkage_mode == Z_LINKAGE_CROSSLINKED)
+		if(L.linkage == Z_LINKAGE_CROSSLINKED)
 			. += L.z_index

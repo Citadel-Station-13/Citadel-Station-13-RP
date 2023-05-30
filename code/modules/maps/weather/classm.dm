@@ -17,8 +17,7 @@
 	name = "Class-M Gaia Planet"
 	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/classm()
-	
-#warn uhh lol make sure these have weather holders??
+	weather_holder = new /datum/weather_holder/classm
 
 /datum/planet/classm/update_sun()
 	..()
