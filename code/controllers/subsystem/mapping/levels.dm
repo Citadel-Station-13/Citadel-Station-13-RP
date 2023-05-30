@@ -37,6 +37,7 @@
 	. = level_or_path
 	#warn randomize/set display_id, display_name
 	// todo: rebuild?
+	#warn planet.
 
 /**
  * loads a map level.
