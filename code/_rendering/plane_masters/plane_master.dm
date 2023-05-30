@@ -190,7 +190,6 @@
 	plane = VERTICALITY_PLANE
 	alpha = 0
 	default_invisible = TRUE
-	special_managed = TRUE
 	client_global = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
