@@ -5,7 +5,7 @@
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
 	radioactivity = RAD_INTENSITY_MAT_URANIUM
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	icon_colour = "#007A00"
@@ -67,7 +67,7 @@
 	radioactivity = RAD_INTENSITY_MAT_SUPERMATTER
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	shard_type = SHARD_SHARD
 	hardness = 30
 	door_icon_base = "stone"
@@ -81,7 +81,8 @@
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#FC2BC5"
 	shard_type = SHARD_SHARD
 	hardness = 30
@@ -111,7 +112,7 @@
 	id = "sandstone"
 	name = "sandstone"
 	stack_type = /obj/item/stack/material/sandstone
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
@@ -142,8 +143,8 @@
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
 	protectiveness = 10 // 33%
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666666"
 	table_icon_base = "metal"
 
@@ -153,8 +154,8 @@
 	stack_type = /obj/item/stack/material/steel/hull
 	integrity = 250
 	explosion_resistance = 10
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#666677"
 
 /datum/material/steel/hull/place_sheet(var/turf/target) //Deconstructed into normal steel sheets.
@@ -188,8 +189,8 @@
 	stack_type = /obj/item/stack/material/plasteel
 	integrity = 400
 	melting_point = 6000
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#777777"
 	explosion_resistance = 25
 	hardness = 80
@@ -206,8 +207,8 @@
 	name = MAT_PLASTEELHULL
 	stack_type = /obj/item/stack/material/plasteel/hull
 	integrity = 600
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#777788"
 	explosion_resistance = 40
 
@@ -221,8 +222,8 @@
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
 	melting_point = 7000
-	icon_base = 'icons/turf/walls/metal.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#6EA7BE"
 	explosion_resistance = 75
 	hardness = 100
@@ -236,8 +237,8 @@
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	id = "durasteel_hull"
 	name = MAT_DURASTEELHULL
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#45829a"
 	explosion_resistance = 90
 	reflectivity = 0.9
@@ -250,8 +251,8 @@
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
 	conductivity = 2.38
-	icon_base = 'icons/turf/walls/metal.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_metal.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	table_icon_base = "metal"
@@ -260,8 +261,8 @@
 	id = "titanium_hull"
 	name = MAT_TITANIUMHULL
 	stack_type = null
-	icon_base = 'icons/turf/walls/hull.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
+	icon_base = 'icons/turf/walls/metal_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 
 /datum/material/glass
 	id = "glass"
@@ -420,8 +421,8 @@
 	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
 	flags = MATERIAL_BRITTLE
-	icon_base = 'icons/turf/walls/solid.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
+	icon_reinf = 'icons/turf/walls/solid_wall_reinforced.dmi'
 	icon_colour = "#CCCCCC"
 	hardness = 10
 	weight = 12
@@ -567,7 +568,7 @@
 	name = MAT_VALHOLLIDE
 	id = "valhollide"
 	stack_type = /obj/item/stack/material/valhollide
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	door_icon_base = "stone"
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	icon_colour = "##FFF3B2"
@@ -730,7 +731,7 @@
 	name = MAT_HARDWOOD
 	stack_type = /obj/item/stack/material/wood/hard
 	icon_colour = "#42291a"
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	integrity = 65	//a bit stronger than regular wood
@@ -744,7 +745,7 @@
 	stack_type = /obj/item/stack/material/cardboard
 	flags = MATERIAL_BRITTLE
 	integrity = 10
-	icon_base = 'icons/turf/walls/solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#AAAAAA"
 	hardness = 1
@@ -764,7 +765,7 @@
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
 	flags = MATERIAL_BRITTLE
-	icon_base = 'icons/turf/walls/solid.dmi'
+	icon_base = 'icons/turf/walls/solid_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_solid.dmi'
 	icon_colour = "#FFFFFF"
 	integrity = 1
@@ -783,7 +784,7 @@
 	name = "packed snow"
 	flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"
@@ -873,7 +874,7 @@
 	name = "bone"
 	icon_colour = "#e6dfc8"
 	stack_type = /obj/item/stack/material/bone
-	icon_base = 'icons/turf/walls/stone.dmi'
+	icon_base = 'icons/turf/walls/stone_wall.dmi'
 	icon_reinf = 'icons/turf/walls/reinforced_mesh.dmi'
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"

@@ -47,6 +47,14 @@
 
 	var/last_state
 	var/construction_stage
+	/// Paint color of which the wall has been painted with.
+	var/wall_paint
+	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied
+	var/stripe_paint
+	var/stripe_icon
+	var/cache_key
+	var/shiny_wall
+	var/shiny_stripe
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
@@ -75,6 +83,8 @@
 
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
+
+	stripe_icon = material.wall_stripe_icon
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)

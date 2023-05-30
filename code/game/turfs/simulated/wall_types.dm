@@ -146,7 +146,7 @@
 	girder_material = null
 
 /turf/simulated/wall/sandstone
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D9C179"
 
 	material        = /datum/material/sandstone
@@ -154,7 +154,7 @@
 	girder_material = null
 
 /turf/simulated/wall/bone
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#e6dfc8"
 
 	material        = /datum/material/bone
@@ -186,7 +186,7 @@
 	girder_material = null
 
 /turf/simulated/wall/sandstonediamond
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D9C179"
 
 	material        = /datum/material/sandstone
@@ -194,7 +194,7 @@
 	girder_material = null
 
 /turf/simulated/wall/snowbrick
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/stone_wall.dmi'
 	color = "#D8FDFF"
 
 	material        = /datum/material/snowbrick

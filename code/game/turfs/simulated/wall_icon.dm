@@ -1,6 +1,20 @@
 /**
  * generates damage overlays
  */
+
+GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
+/*	/obj/machinery/door/airlock,
+	/obj/structure/window/reinforced/fulltile,
+	/obj/structure/window/fulltile,
+	/obj/structure/window/reinforced/shuttle,
+	/obj/machinery/door/poddoor,
+	/obj/structure/window/reinforced/plasma/fulltile,
+	/obj/structure/window/plasma/fulltile,
+	/obj/structure/low_wall*/
+	))
+
+GLOBAL_REAL_VAR(wall_overlays_cache) = list()
+
 /turf/simulated/wall/proc/generate_wall_damage_overlays()
 	var/alpha_inc = 256 / damage_overlays.len
 
@@ -12,7 +26,7 @@
 
 
 /turf/simulated/wall/proc/get_wall_icon()
-	. = (istype(material) && material.icon_base) || 'icons/turf/walls/solid.dmi'
+	. = (istype(material) && material.icon_base) || 'icons/turf/walls/solid_wall.dmi'
 
 
 /turf/simulated/wall/proc/apply_reinf_overlay()
@@ -47,52 +61,65 @@
 
 
 /turf/simulated/wall/update_overlays()
-	. = ..()
+	var/plating_color = wall_paint || material.icon_colour
+	var/stripe_color = stripe_paint || wall_paint || material.icon_colour
 
-	if(!damage_overlays[1]) // Our list hasn't been populated yet.
-		generate_wall_damage_overlays()
+	var/neighbor_stripe = NONE
+	for (var/cardinal = NORTH; cardinal <= WEST; cardinal *= 2) //No list copy please good sir
+		var/turf/step_turf = get_step(src, cardinal)
+		if(!can_area_smooth(step_turf))
+			continue
+		for(var/atom/movable/movable_thing as anything in step_turf)
+			if(global.neighbor_typecache[movable_thing.type])
+				neighbor_stripe ^= cardinal
+				break
 
-	if(!istype(reinf_material))
-		return
+	var/old_cache_key = cache_key
+	cache_key = "[icon]:[smoothing_junction]:[plating_color]:[stripe_icon]:[stripe_color]:[neighbor_stripe]:[shiny_wall]:[shiny_stripe]:[construction_stage]"
+	if(!(old_cache_key == cache_key))
 
-	// handle fakewalls
-	// TODO: MAKE FAKEWALLS NOT TURFS WTF
-	if(!density)
-		return
-
-
-	//! Wall Overlays
-	if (apply_reinf_overlay())
-		// Reinforcement Construction
-		if (construction_stage != null && construction_stage < 6)
-			var/image/appearance = image('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]")
-			appearance.appearance_flags = RESET_COLOR
-			appearance.color = reinf_material.icon_colour
-			. += appearance
-
-		// Directional Reinforcements.
-		else if(reinf_material.icon_reinf_directionals)
-			var/image/appearance = image(reinf_material.icon_reinf, icon_state)
-			appearance.appearance_flags = RESET_COLOR
-			appearance.color = reinf_material.icon_colour
-			. += appearance
-
-		// Standard Reinforcements.
+		var/potential_overlays = global.wall_overlays_cache[cache_key]
+		if(potential_overlays)
+			overlays = potential_overlays
+			color = plating_color
 		else
-			var/image/appearance = image(reinf_material.icon_reinf, "reinforced")
-			appearance.appearance_flags = RESET_COLOR
-			appearance.color = reinf_material.icon_colour
-			. += appearance
+			color = plating_color
+			//Updating the unmanaged wall overlays (unmanaged for optimisations)
+			overlays.len = 0
+			var/list/new_overlays = list()
 
-	// handle damage overlays
-	if (damage != 0)
-		var/integrity = material.integrity
-		if (reinf_material)
-			integrity += reinf_material.integrity
+			if(shiny_wall)
+				var/image/shine = image(icon, "shine-[smoothing_junction]")
+				shine.appearance_flags = RESET_COLOR
+				new_overlays += shine
 
-		var/overlay = round(damage / integrity * damage_overlays.len) + 1
-		if (overlay > damage_overlays.len)
-			overlay = damage_overlays.len
+			var/image/smoothed_stripe = image(stripe_icon, icon_state)
+			smoothed_stripe.appearance_flags = RESET_COLOR
+			smoothed_stripe.color = stripe_color
+			new_overlays += smoothed_stripe
 
-		damage_overlay = damage_overlays[overlay]
-		. += damage_overlay
+			if(shiny_stripe)
+				var/image/stripe_shine = image(stripe_icon, "shine-[smoothing_junction]")
+				stripe_shine.appearance_flags = RESET_COLOR
+				new_overlays += stripe_shine
+
+			if(neighbor_stripe)
+				var/image/neighb_stripe_overlay = image('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]")
+				neighb_stripe_overlay.appearance_flags = RESET_COLOR
+				neighb_stripe_overlay.color = stripe_color
+				new_overlays += neighb_stripe_overlay
+				if(shiny_wall)
+					var/image/shine = image('icons/turf/walls/neighbor_stripe.dmi', "shine-[neighbor_stripe]")
+					shine.appearance_flags = RESET_COLOR
+					new_overlays += shine
+/*
+			if(construction_stage != 6)
+				var/image/decon_overlay = image('icons/turf/walls/decon_states.dmi', "[construction_stage]")
+				decon_overlay.appearance_flags = RESET_COLOR
+				new_overlays += decon_overlay
+*/
+			overlays = new_overlays
+			global.wall_overlays_cache[cache_key] = new_overlays
+
+	//And letting anything else that may want to render on the wall to work (ie components)
+	return ..()
