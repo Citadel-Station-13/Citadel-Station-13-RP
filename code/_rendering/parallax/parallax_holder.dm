@@ -44,8 +44,7 @@
 	owner = C
 	src.secondary_map = secondary_map
 	src.forced_eye = forced_eye
-	planes = new
-	planes.map_id = secondary_map
+	planes = new(secondary_map)
 	reset()
 
 /datum/parallax_holder/Destroy()

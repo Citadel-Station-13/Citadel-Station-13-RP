@@ -32,6 +32,10 @@
 		plane.alpha = plane.default_invisible? 0 : plane.default_alpha
 
 /datum/plane_holder/proc/sync_render(atom/movable/screen/plane_render/render, in_new)
+	//! todo: support secondary map fullscreens.
+	if(map_id && render.base_screen_loc == "FULLSCREEN")
+		render.screen_loc = null
+		return
 	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc]"
 
 /datum/plane_holder/proc/screens()

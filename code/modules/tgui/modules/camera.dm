@@ -50,7 +50,8 @@
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name
 	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = FULLSCREEN_PLANE
+	cam_foreground.plane = CAMERA_MASK_PLANE
+	cam_foreground.layer = CAMERA_MASK_LAYER_MAIN
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 

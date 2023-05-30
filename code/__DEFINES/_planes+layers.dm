@@ -76,7 +76,14 @@
  *? This plane has NO plane master.
  *? This is the lowest "real" plane
  */
-#define CLICKCATCHER_PLANE -96
+#define CLICKCATCHER_PLANE -99
+
+/**
+ *! -- Camera Background Plane
+ */
+#define CAMERA_BACKGROUND_PLANE -98
+#define CAMERA_BACKGROUND_LAYER_BACK 1
+#define CAMERA_BACKGROUND_LAYER_MAP 2
 
 /**
  *! -- Space Plane
@@ -340,6 +347,12 @@
 #define FULLSCREEN_LAYER_BLIND 20.3
 #define FULLSCREEN_LAYER_CRIT 20.4
 #define FULLSCREEN_LAYER_CURSE 20.5
+
+/**
+ *! -- Camera Mask Plane
+ */
+#define CAMERA_MASK_PLANE 91
+#define CAMERA_MASK_LAYER_MAIN 1
 
 /**
  *! -- Player HUD Plane

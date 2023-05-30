@@ -9,7 +9,8 @@
 	/// our relevant plane master that we're pulling from - if this is not in the plane holder, we don't spawn.
 	/// this can be weird for planes like parallax, so just make a best effort at making this make sense.
 	var/relevant_plane_path
-	/// for overriding base screen loc
+	/// for overriding base screen loc. do "FULLSCREEN" for fullscreen.
+	//  todo: fullscreens are not yet supported on secondary maps
 	var/base_screen_loc = "CENTER"
 
 //? darkvision relays
@@ -45,7 +46,7 @@
 	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
 	icon_state = "noise"
 	blend_mode = BLEND_MULTIPLY
-	base_screen_loc = "SOUTHWEST to NORTHEAST"
+	base_screen_loc = "FULLSCREEN"
 
 /**
  * makes SEE_BLACKNESS block darksight
