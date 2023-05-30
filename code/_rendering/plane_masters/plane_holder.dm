@@ -8,7 +8,7 @@
 
 /datum/plane_holder/New()
 	generate()
-	sync()
+	sync(TRUE)
 
 /datum/plane_holder/Destroy()
 	QDEL_LIST_ASSOC_VAL(masters)
@@ -19,16 +19,18 @@
 	masters = list()
 	renders = list()
 
-/datum/plane_holder/proc/sync()
+/datum/plane_holder/proc/sync(in_new)
 	for(var/key in masters)
-		sync_plane(masters[key])
+		sync_plane(masters[key], in_new)
 	for(var/key in renders)
-		sync_render(renders[key])
+		sync_render(renders[key], in_new)
 
-/datum/plane_holder/proc/sync_plane(atom/movable/screen/plane_master/plane)
+/datum/plane_holder/proc/sync_plane(atom/movable/screen/plane_master/plane, in_new)
 	plane.screen_loc = "[map_id? "[map_id]:" : ""]CENTER"
+	if(plane.default_invisible && in_new)
+		plane.alpha = 0
 
-/datum/plane_holder/proc/sync_render(atom/movable/screen/plane_render/render)
+/datum/plane_holder/proc/sync_render(atom/movable/screen/plane_render/render, in_new)
 	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc]"
 
 /datum/plane_holder/proc/screens()

@@ -16,7 +16,7 @@
 
 /atom/movable/screen/plane_master/proc/set_fake_ambient_occlusion(enabled)
 	if(enabled)
-		filters += AMBIENT_OCCLUSION
+		filters |= AMBIENT_OCCLUSION
 	else
 		filters -= AMBIENT_OCCLUSION
 
@@ -97,6 +97,7 @@
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
 	render_target = LIGHTING_RENDER_TARGET
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 255
 
 /*!
