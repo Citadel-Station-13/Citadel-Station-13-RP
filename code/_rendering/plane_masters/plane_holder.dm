@@ -27,8 +27,8 @@
 
 /datum/plane_holder/proc/sync_plane(atom/movable/screen/plane_master/plane, in_new)
 	plane.screen_loc = "[map_id? "[map_id]:" : ""]CENTER"
-	if(plane.default_invisible && in_new)
-		plane.alpha = 0
+	if(in_new)
+		plane.alpha = plane.default_invisible? 0 : plane.default_alpha
 
 /datum/plane_holder/proc/sync_render(atom/movable/screen/plane_render/render, in_new)
 	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc]"
