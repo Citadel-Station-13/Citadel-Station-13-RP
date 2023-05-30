@@ -263,6 +263,14 @@
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
+/datum/gear/head/beretbs
+	name = "Blueshield Beret"
+	path = /obj/item/clothing/head/beret/sec/corporate/blueshield
+
+/datum/gear/head/beretbs/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
 /datum/gear/head/sombrero
 	name = "Sombrero"
 	path = /obj/item/clothing/head/sombrero
@@ -389,3 +397,36 @@
 /datum/gear/head/bard
 	name = "Audacious Wide Brimmed Hat"
 	path = /obj/item/clothing/head/bard
+
+//Tajaran head wears
+
+/datum/gear/head/furhat
+	name = "Adhomian fur hat"
+	path = /obj/item/clothing/head/tajaran/fur
+
+/datum/gear/head/beret/tajaran
+	name = "Adhomian beret selection"
+	description = "A selection of Adhomian berets."
+	path = /obj/item/clothing/head/beret/tajaran
+
+/datum/gear/head/beret/tajaran/New()
+	..()
+	var/list/tberets = list()
+	for(var/tberet in (typesof(/obj/item/clothing/head/beret/tajaran)))
+		var/obj/item/clothing/head/beret/tajaran/tberet_type = tberet
+		tberets[initial(tberet_type.name)] = tberet_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tberets, /proc/cmp_text_asc))
+
+/datum/gear/head/tajaran/circlet
+	name = "Adhomian circlet selection"
+	description = "A selection of Adhomian circlet."
+	path = /obj/item/clothing/head/tajaran/circlet
+
+/datum/gear/head/tajaran/circlet/New()
+	..()
+	var/list/tcirclets = list()
+	for(var/tcirclet in (typesof(/obj/item/clothing/head/tajaran/circlet)))
+		var/obj/item/clothing/head/tajaran/circlet/tcirclet_type = tcirclet
+		tcirclets[initial(tcirclet_type.name)] = tcirclet_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tcirclets, /proc/cmp_text_asc))
+

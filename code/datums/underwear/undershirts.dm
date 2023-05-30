@@ -266,3 +266,8 @@
 /datum/category_item/underwear/undershirt/cowboyshirt_red
 	name = "Red Cowboy Shirt"
 	icon_state = "cowboyshirt_navy"
+
+/datum/category_item/underwear/undershirt/tank_top_midriff
+	name = "Tank Top, Midriff"
+	icon_state = "tank_midriff"
+	has_color = TRUE
