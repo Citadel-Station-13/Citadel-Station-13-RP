@@ -33,6 +33,21 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%pictures` (
   UNIQUE KEY `hash` (`hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--             photograph table              --
+-- used to store data about photographs      --
+-- picture is picture hash in picture table  --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `picture` char(40) NOT NULL,
+  `created` datetime NOT NULL,
+
+  CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
+  REFERENCES `%_PREFIX_%pictures` (`hash`)
+  ON DELETE SET NULL
+  ON UPDATE CASCADE,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 ------------ players ------------
 
 --           Player lookup table                   --

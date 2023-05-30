@@ -1,3 +1,20 @@
+/obj/item/photo
+	name = "photo"
+	#warn icon/state
+	w_class = ITEMSIZE_TINY
+	drop_sound = 'sound/items/drop/paper.ogg'
+	pickup_sound = 'sound/items/pickup/paper.ogg'
+
+	/// scribble on the back
+	var/scribble
+	/// scribble spans for crayons and stuff
+	var/scribble_spans
+	/// our photograph id
+	var/photograph_id
+
+/obj/item/photo/proc/photograph()
+	return SSphotography.resolve_photograph(photograph_id)
+
 var/global/photo_count = 0
 
 /obj/item/photo

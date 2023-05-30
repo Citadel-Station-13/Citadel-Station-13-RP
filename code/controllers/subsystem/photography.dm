@@ -47,3 +47,8 @@ SUBSYSTEM_DEF(photography)
  * photograph is immutable after.
  */
 /datum/controller/subsystem/photography/proc/save_photograph(datum/photograph/photograph)
+
+/**
+ * loads a photograph datum based on id
+ */
+/datum/controller/subsystem/photography/proc/load_photograph(id)
