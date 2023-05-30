@@ -29,7 +29,7 @@
 /atom/movable/screen/map_view
 	icon_state = "blank"
 	// Map view has to be on the lowest plane to enable proper lighting
-	layer = CAMERA_BACKGROUND_LAYER_RENDER
+	layer = CAMERA_BACKGROUND_LAYER_MAP
 	plane = CAMERA_BACKGROUND_PLANE
 
 /**
