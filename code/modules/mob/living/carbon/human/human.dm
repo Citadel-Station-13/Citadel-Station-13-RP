@@ -620,6 +620,11 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 	..()
 	return
 /mob/living/carbon/human/needs_to_breathe()
