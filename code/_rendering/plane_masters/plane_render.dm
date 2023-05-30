@@ -7,6 +7,7 @@
 	abstract_type = /atom/movable/screen/plane_render
 
 	/// our relevant plane master that we're pulling from - if this is not in the plane holder, we don't spawn.
+	/// this can be weird for planes like parallax, so just make a best effort at making this make sense.
 	var/relevant_plane_path
 	/// for overriding base screen loc
 	var/base_screen_loc = "CENTER"

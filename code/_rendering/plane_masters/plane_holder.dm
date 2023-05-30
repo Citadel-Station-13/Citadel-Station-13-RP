@@ -6,7 +6,8 @@
 	/// map id, if not main map
 	var/map_id
 
-/datum/plane_holder/New()
+/datum/plane_holder/New(map_id)
+	src.map_id = map_id
 	generate()
 	sync(TRUE)
 
@@ -82,6 +83,8 @@
 			continue
 		if(initial(path.client_global))
 			continue
+		if(initial(path.special_managed))
+			continue
 		var/atom/movable/screen/plane_master/creating = new path
 		masters[path] = creating
 	renders = list()
@@ -109,6 +112,8 @@
 			continue
 		if(!initial(path.client_global))
 			continue
+		if(initial(path.special_managed))
+			continue
 		var/atom/movable/screen/plane_master/creating = new path
 		masters[path] = creating
 	renders = list()
@@ -129,6 +134,14 @@
 	masters = list()
 	masters[/atom/movable/screen/plane_master/parallax] = new /atom/movable/screen/plane_master/parallax
 	masters[/atom/movable/screen/plane_master/space] = new /atom/movable/screen/plane_master/space
+	renders = list()
+	for(var/atom/movable/screen/plane_render/path as anything in subtypesof(/atom/movable/screen/plane_render))
+		if(initial(path.abstract_type) == path)
+			continue
+		if(isnull(masters[initial(path.relevant_plane_path)]))
+			continue
+		var/atom/movable/screen/plane_render/creating = new path
+		renders[path] = creating
 
 /**
  * TGUI camera consoles make these
@@ -154,7 +167,7 @@
 		renders[path] = creating
 
 /**
- * All planes
+ * All planes that aren't special_managed.
  */
 /datum/plane_holder/everything
 
@@ -162,6 +175,8 @@
 	masters = list()
 	for(var/atom/movable/screen/plane_master/path as anything in subtypesof(/atom/movable/screen/plane_master))
 		if(initial(path.abstract_type) == path)
+			continue
+		if(initial(path.special_managed))
 			continue
 		var/atom/movable/screen/plane_master/creating = new path
 		masters[path] = creating

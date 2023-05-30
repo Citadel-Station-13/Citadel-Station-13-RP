@@ -217,5 +217,5 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 
 /datum/vision/augmenting/legacy_ghetto_nvgs
 	priority = DARKSIGHT_PRIORITY_GLASSES
-	hard_alpha = 140
+	hard_alpha = 90
 	legacy_throttle = 3
