@@ -170,15 +170,6 @@
 	. = ..()
 	add_filter("mask", 1, alpha_mask_filter(render_source = LIGHTMASK_RENDER_TARGET, flags = MASK_INVERSE))
 
-/atom/movable/screen/plane_master/darkvision_forward
-	plane = DARKVISION_FORWARD_PLANE
-	render_target = DARKVISION_FORWARD_RENDER_TARGET
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-/atom/movable/screen/plane_master/darkvision_forward/Initialize(mapload)
-	. = ..()
-	add_filter("fov", 1, alpha_mask_filter(render_source = FOV_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
-
 /atom/movable/screen/plane_master/above_lighting
 	plane = ABOVE_LIGHTING_PLANE
 

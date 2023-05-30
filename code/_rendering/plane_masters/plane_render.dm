@@ -25,12 +25,6 @@
 	render_source = TURF_PLANE_RENDER_TARGET
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 
-// /atom/movable/screen/plane_render/darkvision_forward
-// 	plane = DARKVISION_PLANE
-// 	layer = DARKVISION_LAYER_OBJMOBS
-// 	render_source = DARKVISION_FORWARD_RENDER_TARGET
-// 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
-
 /atom/movable/screen/plane_render/darkvision_objs
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_OBJS

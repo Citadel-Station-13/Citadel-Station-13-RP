@@ -297,14 +297,6 @@
 #define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
 
 /**
- * mob / obj forward plane for darkvision
- */
-#define DARKVISION_FORWARD_PLANE 14
-#define DARKVISION_FORWARD_LAYER_OBJS 1
-#define DARKVISION_FORWARD_LAYER_MOBS 2
-#define DARKVISION_FORWARD_RENDER_TARGET "*DARKVISION_FORWARD_PLANE"
-
-/**
  *! -- Above Lighting Plane
  *? For effects etc. that shouldn't be affected by darkness.
  */
