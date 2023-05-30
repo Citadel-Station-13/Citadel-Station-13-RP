@@ -729,8 +729,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A lighter fashioned out of an old bullet casing."
 	icon_state = "bulletlighter"
 
+//Tajaran Lighters
 /obj/item/flame/lighter/zippo/taj
-	name = "\improper Adhomai lighter"
+	name = "\improper Adhomian lighter"
 	desc = "A brass mechanical lighter made on Adhomai. Its robust design made it a staple tool for Tajara on all sides of the civil war."
 	icon_state = "tajzippo"
 
