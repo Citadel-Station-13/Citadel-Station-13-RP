@@ -120,6 +120,8 @@
 	var/darkvision_legacy_throttle
 	//  todo: legacy: used for xray fulbright
 	var/legacy_forced_hard_darkvision
+	//  todo: sigh, shadekin things
+	var/legacy_throttle_overridden
 
 /datum/perspective/Destroy()
 	clear_clients()
@@ -364,7 +366,7 @@
 	if(legacy_forced_hard_darkvision || hard_darkvision < 255)
 		wanted = INFINITY
 	// if they have legacy throttle..
-	if(!isnull(darkvision_legacy_throttle))
+	if(!isnull(darkvision_legacy_throttle) && !legacy_throttle_overridden)
 		wanted = min(darkvision_legacy_throttle, wanted)
 	if(wanted != see_in_dark)
 		see_in_dark = wanted
@@ -431,6 +433,7 @@
 	darkvision_unlimited = FALSE
 	darkvision_legacy_throttle = INFINITY
 	darkvision_fov = SOFT_DARKSIGHT_FOV_DEFAULT
+	legacy_throttle_overridden = FALSE
 	// push holders
 	for(var/datum/vision/holder as anything in holders)
 		holder.push(src)

@@ -115,6 +115,8 @@
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
 
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
+
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(
 		/datum/power/shadekin/phase_shift,

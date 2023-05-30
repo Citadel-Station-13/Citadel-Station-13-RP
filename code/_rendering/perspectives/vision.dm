@@ -38,6 +38,7 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
 	var/soft_darksight_fov = SOFT_DARKSIGHT_FOV_90
 	//  todo: this makes mesons / matscanners not be op by limiting see_in_dark while it's active.
 	var/legacy_throttle = INFINITY
+	var/override_legacy_throttle = FALSE
 
 /datum/vision/baseline/push(datum/perspective/perspective)
 	perspective.hard_darkvision = hard_darksight
@@ -47,6 +48,7 @@ GLOBAL_LIST_EMPTY(cached_vision_holders)
 	perspective.darkvision_smart = soft_darksight_smartness
 	perspective.darkvision_fov = soft_darksight_fov
 	perspective.darkvision_legacy_throttle = legacy_throttle
+	perspective.legacy_throttle_overridden = override_legacy_throttle
 	return ..()
 
 /**
@@ -183,6 +185,9 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	soft_darksight_smartness = TRUE
 	/// greyscale
 	soft_darksight_matrix = list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
+
+/datum/vision/baseline/species_tier_3/for_snowflake_ocs
+	override_legacy_throttle = TRUE
 
 /datum/vision/baseline/species_super
 	soft_darksight_fov = SOFT_DARKSIGHT_FOV_SUPER
