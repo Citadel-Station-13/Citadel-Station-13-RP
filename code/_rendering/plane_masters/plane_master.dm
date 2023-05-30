@@ -84,6 +84,9 @@
 	plane = LIGHTMASK_PLANE
 	render_target = LIGHTMASK_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// alpha changes color matrix lists's aa value
+	// don't blame me, i didn't make the rules, god damnit byond.
+	default_alpha = 0
 	// convert all color to alpha, with a boost
 	color = list(
 		0, 0, 0, 0.75,
@@ -141,6 +144,9 @@
 	plane = DARKVISION_OCCLUSION_PLANE
 	render_target = DARKVISION_OCCLUSION_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// alpha changes color matrix lists's aa value
+	// don't blame me, i didn't make the rules, god damnit byond.
+	default_alpha = 0
 	// convert all color to alpha, with a massive boost
 	color = list(
 		0, 0, 0, -0.5,

@@ -36,7 +36,7 @@
 	if(map_id && render.base_screen_loc == "FULLSCREEN")
 		render.screen_loc = null
 		return
-	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc]"
+	render.screen_loc = "[map_id? "[map_id]:" : ""][render.base_screen_loc == "FULLSCREEN"? "SOUTHWEST to NORTHEAST" : render.base_screen_loc]"
 
 /datum/plane_holder/proc/screens()
 	. = list()
