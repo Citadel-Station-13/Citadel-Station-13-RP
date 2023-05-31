@@ -1851,12 +1851,6 @@
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
 
-/mob/living/carbon/human/rejuvenate()
-	restore_blood()
-	shock_stage = 0
-	traumatic_shock = 0
-	..()
-
 /mob/living/carbon/human/proc/weightgain()
 	if (nutrition >= 0 && stat != 2)
 		if (nutrition > MIN_NUTRITION_TO_GAIN && weight < MAX_MOB_WEIGHT && weight_gain)
