@@ -620,6 +620,11 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 	..()
 	return
 /mob/living/carbon/human/needs_to_breathe()
@@ -893,38 +898,6 @@
 		gloves.germ_level += n
 	else
 		germ_level += n
-
-/mob/living/carbon/human/revive()
-
-	if(should_have_organ(O_HEART))
-		vessel.add_reagent("blood",species.blood_volume-vessel.total_volume)
-		fixblood()
-
-	species.create_organs(src) // Reset our organs/limbs.
-	restore_all_organs()       // Reapply robotics/amputated status from preferences.
-
-	if(!client || !key) //Don't boot out anyone already in the mob.
-		for (var/obj/item/organ/internal/brain/H in GLOB.all_brain_organs)
-			if(H.brainmob)
-				if(H.brainmob.real_name == src.real_name)
-					if(H.brainmob.mind)
-						H.brainmob.mind.transfer(src)
-						qdel(H)
-
-	// Reapply markings/appearance from prefs for player mobs
-	if(client) //just to be sure
-		client.prefs.copy_to(src)
-		if(dna)
-			dna.ResetUIFrom(src)
-			sync_organ_dna()
-
-	for (var/ID in virus2)
-		var/datum/disease2/disease/V = virus2[ID]
-		V.cure(src)
-
-	losebreath = 0
-
-	..()
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]

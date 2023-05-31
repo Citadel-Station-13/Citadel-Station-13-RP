@@ -368,7 +368,8 @@ var/list/sacrificed = list()
 		var/datum/gender/TT = GLOB.gender_datums[body_to_sacrifice.get_visible_gender()]
 
 		cult.add_antagonist(corpse_to_raise.mind)
-		corpse_to_raise.revive()
+		corpse_to_raise.revive(full_heal = TRUE)
+		corpse_to_raise.remove_all_restraints()
 
 		usr.say("Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!")
 		corpse_to_raise.visible_message("<span class='warning'>[corpse_to_raise]'s eyes glow with a faint red as [TU.he] stand[TU.s] up, slowly starting to breathe again.</span>", \
