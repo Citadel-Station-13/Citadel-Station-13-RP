@@ -186,16 +186,22 @@
 		if(ARMOR_MELEE)
 			if(damage <= melee_deflect)
 				return 0
+			if(!melee)
+				return damage
 			var/tdiff = melee_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(melee, tdiff))) : (damage * (1 - melee))) - melee_soak)
 		if(ARMOR_BULLET)
 			if(damage <= bullet_deflect)
 				return 0
+			if(!bullet)
+				return damage
 			var/tdiff = bullet_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(bullet, tdiff))) : (damage * (1 - bullet))) - bullet_soak)
 		if(ARMOR_LASER)
 			if(damage <= laser_deflect)
 				return 0
+			if(!laser)
+				return damage
 			var/tdiff = laser_tier - tier
 			return max(0, (tdiff? (damage * (1 - ARMOR_TIER_CALC(laser, tdiff))) : (damage * (1 - laser))) - laser_soak)
 		if(ARMOR_ENERGY)

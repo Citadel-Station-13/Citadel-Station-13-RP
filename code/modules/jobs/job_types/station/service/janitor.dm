@@ -16,22 +16,22 @@
 	outfit_type = /datum/outfit/job/station/janitor
 	desc = "A Janitor keeps the station clean, as long as it doesn't interfere with active crime scenes."
 	alt_titles = list(
-		"Custodian" = /datum/prototype/alt_title/janitor/custodian,
-		"Sanitation Technician" = /datum/prototype/alt_title/janitor/tech,
-		"Viscera Cleaner" = /datum/prototype/alt_title/janitor/gorecleaner,
-		"Maid" = /datum/prototype/alt_title/janitor/maid
+		"Custodian" = /datum/prototype/struct/alt_title/janitor/custodian,
+		"Sanitation Technician" = /datum/prototype/struct/alt_title/janitor/tech,
+		"Viscera Cleaner" = /datum/prototype/struct/alt_title/janitor/gorecleaner,
+		"Maid" = /datum/prototype/struct/alt_title/janitor/maid
 		)
 
-/datum/prototype/alt_title/janitor/custodian
+/datum/prototype/struct/alt_title/janitor/custodian
 	title = "Custodian"
 
-/datum/prototype/alt_title/janitor/tech
+/datum/prototype/struct/alt_title/janitor/tech
 	title = "Sanitation Technician"
 
-/datum/prototype/alt_title/janitor/gorecleaner
+/datum/prototype/struct/alt_title/janitor/gorecleaner
 	title = "Viscera Cleaner"
 
-/datum/prototype/alt_title/janitor/maid
+/datum/prototype/struct/alt_title/janitor/maid
 	title = "Maid"
 	title_outfit = /datum/outfit/job/station/janitor/maid
 

@@ -7826,7 +7826,7 @@
 "atA" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/material/knife/tacknife,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
@@ -8302,7 +8302,7 @@
 "auH" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "auJ" = (
@@ -12268,13 +12268,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "aFb" = (
-/obj/machinery/tele_pad,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_projector,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aFc" = (
@@ -13201,7 +13201,7 @@
 "aHy" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/material/knife/tacknife,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
@@ -14758,6 +14758,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "aLk" = (
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "aLl" = (
@@ -16300,7 +16301,7 @@
 "aPa" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aPc" = (
@@ -17093,7 +17094,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aRf" = (
-/obj/item/radio/beacon,
 /obj/structure/handrail,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -19576,13 +19576,13 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "aXy" = (
-/obj/machinery/tele_projector,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_pad,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aXA" = (
@@ -20528,6 +20528,9 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "boK" = (
@@ -20873,7 +20876,8 @@
 	dir = 1
 	},
 /obj/machinery/light,
-/turf/simulated/floor/plating,
+/obj/machinery/disposal,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "cAo" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -21069,6 +21073,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "drn" = (
@@ -21232,7 +21237,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "dSP" = (
 /obj/structure/cable/orange{
@@ -21391,6 +21396,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "eml" = (
@@ -21510,6 +21516,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "ezH" = (
@@ -21733,7 +21740,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/item/barrier_tape_segment/engineering,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
@@ -22215,6 +22221,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "gtg" = (
@@ -22498,14 +22506,25 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/emt/general)
 "hAi" = (
-/obj/item/barrier_tape_segment/engineering,
-/obj/structure/door_assembly/door_assembly_research,
-/obj/structure/firedoor_assembly,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "UpperInnerTeleSciBlastDoor";
+	name = "Upper Inner TeleSci Blast Door Button";
+	pixel_y = 24
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "UpperOuterTeleSciBlastDoor";
+	name = "Upper Outer TeleSci Blast Door Button";
+	pixel_x = -11;
+	pixel_y = 24
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "hAM" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "hBp" = (
 /obj/machinery/door/airlock/command{
@@ -22738,6 +22757,9 @@
 	},
 /obj/machinery/alarm{
 	pixel_y = 24
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab/chamber)
@@ -23307,9 +23329,6 @@
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/bar)
-"klx" = (
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab)
 "kmY" = (
 /obj/structure/handrail,
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
@@ -23539,6 +23558,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "lfK" = (
@@ -23621,9 +23641,6 @@
 "lDX" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
-	},
-/obj/machinery/light_construct{
-	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
@@ -23804,7 +23821,10 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "lZF" = (
 /obj/machinery/holopad/ship,
@@ -23817,10 +23837,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"mcA" = (
-/obj/item/barrier_tape_segment/engineering,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab)
 "mhO" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -23875,6 +23891,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "mpH" = (
@@ -24945,9 +24962,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
-"pGn" = (
-/turf/simulated/open,
-/area/rnd/telescience_lab)
 "pKx" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -25183,10 +25197,6 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
-"qtT" = (
-/obj/item/storage/toolbox/mechanical,
-/turf/simulated/floor/plating,
-/area/rnd/telescience_lab)
 "qvL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -25291,11 +25301,12 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/airlock/arrivals)
 "qIs" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/regular{
+	id = "UpperInnerTeleSciBlastDoor";
+	name = "Upper Exterior Telesci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
@@ -25332,7 +25343,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "qZl" = (
 /obj/effect/floor_decal/borderfloor{
@@ -25811,13 +25822,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "tuh" = (
-/obj/structure/railing{
-	dir = 1
+/obj/structure/frame{
+	anchored = 1
 	},
-/obj/machinery/light_construct{
-	dir = 1
-	},
-/turf/simulated/open,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "tvp" = (
 /obj/structure/table/hardwoodtable,
@@ -26306,10 +26314,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "uWY" = (
-/obj/structure/frame{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
+/obj/machinery/computer/telescience,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "uYx" = (
 /obj/effect/floor_decal/spline/plain{
@@ -26424,7 +26430,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "vmV" = (
-/obj/machinery/light_construct{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -26507,6 +26513,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
@@ -26626,11 +26635,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/courser_dock)
 "vEF" = (
-/obj/machinery/door/blast/regular/open{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/blast/regular{
+	id = "UpperOuterTeleSciBlastDoor";
+	name = "Upper Interior Telesci Blast Door"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -26895,9 +26905,26 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "wtK" = (
-/obj/structure/frame/computer{
-	dir = 4
+/obj/structure/table/steel,
+/obj/machinery/recharger/wallcharger{
+	pixel_x = 4;
+	pixel_y = 28
 	},
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 12
+	},
+/obj/item/multitool{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/stack/cable_coil,
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "wuo" = (
@@ -26999,7 +27026,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "wPr" = (
-/obj/machinery/light_construct{
+/obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -27151,11 +27178,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "xmO" = (
-/obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/open,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "xqb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -27245,6 +27271,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "xvO" = (
@@ -27259,8 +27286,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "xyj" = (
-/obj/structure/lattice,
-/turf/simulated/open,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
 "xzV" = (
 /turf/simulated/wall,
@@ -27398,6 +27437,9 @@
 	frequency = 1380;
 	master_tag = "courser_docker";
 	pixel_y = -22
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -30858,9 +30900,9 @@ jZk
 jZk
 vPu
 wtK
-wtK
-uWY
-uWY
+mOy
+mOy
+mOy
 mOy
 eIi
 vPu
@@ -31051,11 +31093,11 @@ jRd
 jRd
 jZk
 knK
+tuh
 mOy
-klx
-qtT
-klx
-xyj
+mOy
+mOy
+mOy
 mOy
 eDa
 acH
@@ -31245,11 +31287,11 @@ jRd
 jRd
 jZk
 knK
+uWY
 mOy
-xyj
 qYP
 dRq
-xyj
+mOy
 mOy
 eDa
 acH
@@ -31439,8 +31481,8 @@ jRd
 jRd
 jZk
 knK
+tuh
 mOy
-pGn
 xmO
 lSN
 von
@@ -31634,8 +31676,8 @@ jRd
 jZk
 vPu
 hAi
-mcA
-klx
+mOy
+mOy
 iCv
 vPu
 vPu
@@ -31827,9 +31869,9 @@ mTQ
 mTQ
 jZk
 vPu
-tuh
+rZg
 lPF
-klx
+mOy
 nin
 eDa
 aOi
@@ -32993,7 +33035,7 @@ aOi
 aHj
 aus
 eDa
-klx
+mOy
 ebz
 eDa
 aOi
@@ -33382,7 +33424,7 @@ aHj
 aus
 vPu
 wPr
-ebz
+xyj
 vPu
 aOi
 aOi

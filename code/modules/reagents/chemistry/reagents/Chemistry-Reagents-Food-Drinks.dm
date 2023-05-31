@@ -188,9 +188,6 @@
 	color = "#302000"
 
 /datum/reagent/nutriment/coco/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
@@ -480,9 +477,9 @@
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_NARAMADI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
-		if(prob(5))
-			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -913,8 +910,6 @@
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -922,7 +917,6 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1109,7 +1103,6 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1316,8 +1309,6 @@
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1499,9 +1490,7 @@
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake

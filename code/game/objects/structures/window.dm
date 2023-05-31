@@ -709,6 +709,16 @@
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
 	opacity = TRUE
+/obj/structure/window/reinforced/tinted/full
+	name = "tinted window"
+	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
+	icon_state = "rwindow-full"
+	maxhealth = 80
+	fulltile = TRUE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"

@@ -114,11 +114,11 @@
 		/datum/ability/species/xenochimera/hatch,
 		/datum/ability/species/xenochimera/commune,
 		/datum/ability/species/xenochimera/dissonant_shriek,
+		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_flight,
 	)
 
 	inherent_verbs = list( //Xenochimera get all the special verbs since they can't select traits.
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
@@ -896,7 +896,8 @@
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 
-	H.revive()
+	H.revive(full_heal = TRUE)
+	H.remove_all_restraints()
 	LAZYREMOVE(H.mutations, MUTATION_HUSK)
 	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
 
