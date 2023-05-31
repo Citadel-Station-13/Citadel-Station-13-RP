@@ -98,3 +98,57 @@
 /obj/effect/wingrille_spawn/reinforced/polarized/handle_window_spawn(var/obj/structure/window/reinforced/polarized/P)
 	if(id)
 		P.id = id
+
+/obj/effect/wingrille_spawn/low_wall
+	var/frame_path = /obj/structure/wall_frame
+
+/obj/effect/wingrille_spawn/low_wall/activate()
+	if(activated)
+		return
+	if(locate(frame_path) in loc)
+		warning("Frame Spawner: A frame structure already exists at [loc.x]-[loc.y]-[loc.z]")
+	else
+		var/obj/structure/wall_frame/F = new frame_path(loc)
+		handle_frame_spawn(F)
+	if (!locate(/obj/structure/grille) in get_turf(src))
+		var/obj/structure/grille/G = new /obj/structure/grille(src.loc)
+		handle_grille_spawn(G)
+	var/list/neighbours = list()
+	for (var/dir in GLOB.cardinal)
+		var/turf/T = get_step(src, dir)
+		var/obj/effect/wingrille_spawn/other = locate(/obj/effect/wingrille_spawn) in T
+		if(!other)
+			var/found_connection
+			if(locate(/obj/structure/grille) in T)
+				for(var/obj/structure/window/W in T)
+					if(W.type == win_path && W.dir == get_dir(T,src))
+						found_connection = 1
+						qdel(W)
+			if(!found_connection)
+				var/obj/structure/window/new_win = new win_path(src.loc)
+				new_win.setDir(dir)
+				handle_window_spawn(new_win)
+		else
+			neighbours |= other
+	activated = 1
+	for(var/obj/effect/wingrille_spawn/other in neighbours)
+		if(!other.activated) other.activate()
+
+/obj/effect/wingrille_spawn/low_wall/proc/handle_frame_spawn(var/obj/structure/wall_frame/F)
+	return
+
+/obj/effect/wingrille_spawn/low_wall/reinforced
+	name = "reinforced window grille spawner"
+	icon_state = "r-wingrille"
+	win_path = /obj/structure/window/reinforced
+
+/obj/effect/wingrille_spawn/low_wall/phoron
+	name = "phoron window grille spawner"
+	icon_state = "p-wingrille"
+	win_path = /obj/structure/window/phoronbasic
+
+/obj/effect/wingrille_spawn/low_wall/reinforced_phoron
+	name = "reinforced phoron window grille spawner"
+	icon_state = "pr-wingrille"
+	win_path = /obj/structure/window/phoronreinforced
+

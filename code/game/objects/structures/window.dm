@@ -60,6 +60,14 @@
 		update_verbs()
 	health = maxhealth
 	AIR_UPDATE_ON_INITIALIZE_AUTO
+	if(fulltile)
+		if(considered_reinforced)
+			icon = 'icons/obj/structures/window_reinforced.dmi'
+			icon_state = "window-0"
+		else
+			icon = 'icons/obj/structures/window.dmi'
+			icon_state = "window-0"
+
 
 
 /obj/structure/window/Destroy()
@@ -378,7 +386,6 @@
 				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
 				if (fulltile)
 					P.fulltile = TRUE
-					P.icon_state = "fwindow"
 				P.maxhealth = maxhealth
 				P.health = health
 				P.construction_state = construction_state
@@ -566,6 +573,9 @@
 	crack_overlay = mutable_appearance('icons/obj/structures/window_damage.dmi', "damage[ratio]", -(layer+0.1))
 	. += crack_overlay
 
+/obj/structure/window/proc/is_on_frame()
+	if(locate(/obj/structure/wall_frame) in loc)
+		return TRUE
 
 /obj/structure/window/proc/check_fullwindow()
 	if (dir & (dir - 1)) // Diagonal!
@@ -659,6 +669,37 @@
 		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
 		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
+/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST)
+	var/required_amount = (dir_to_set & (dir_to_set - 1)) ? 4 : 1
+	if (!ST.can_use(required_amount))
+		to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+		return
+	for(var/obj/structure/window/WINDOW in loc)
+		if(WINDOW.dir == dir_to_set)
+			to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
+			return
+		if(WINDOW.check_fullwindow() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
+			to_chat(user, SPAN_NOTICE("There is already a window there."))
+			return
+	to_chat(user, SPAN_NOTICE("You start placing the window."))
+	if(do_after(user,20))
+		for(var/obj/structure/window/WINDOW in loc)
+			if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
+				to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
+				return
+			if(WINDOW.check_fullwindow() && (dir_to_set & (dir_to_set - 1)))
+				to_chat(user, SPAN_NOTICE("There is already a window there."))
+				return
+
+		if (ST.use(required_amount))
+			var/obj/structure/window/WD = new(loc, dir_to_set, FALSE)
+			to_chat(user, SPAN_NOTICE("You place [WD]."))
+			WD.construction_state = 0
+			WD.set_anchored(FALSE)
+		else
+			to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
+			return
+
 
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with... almost anything, really should shatter it."
@@ -678,7 +719,8 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	color = "#aaccff"
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 24
@@ -698,17 +740,19 @@
 	force_threshold = 5
 
 
+
 /obj/structure/window/phoronbasic/full
 	icon = 'icons/obj/structures/window_full_phoron.dmi'
 	icon_state = "window-0"
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 80
 	fulltile = TRUE
+	color = "#7c3a9a"
 
 
 
@@ -733,11 +777,12 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 160
 	fulltile = TRUE
+	color = "#7c3a9a"
 
 
 /obj/structure/window/reinforced
@@ -765,6 +810,7 @@
 
 	maxhealth = 80
 	fulltile = TRUE
+	color = "#aaccff"
 
 
 /obj/structure/window/reinforced/tinted

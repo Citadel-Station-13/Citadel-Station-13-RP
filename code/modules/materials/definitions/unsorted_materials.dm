@@ -672,7 +672,8 @@
 	stack_type = /obj/item/stack/material/wood
 	icon_colour = "#9c5930"
 	integrity = 50
-	icon_base = 'icons/turf/walls/wood.dmi'
+	icon_base = 'icons/turf/walls/wood_wall.dmi'
+	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
 	explosion_resistance = 2
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks

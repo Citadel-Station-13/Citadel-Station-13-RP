@@ -48,9 +48,9 @@
 	var/last_state
 	var/construction_stage
 	/// Paint color of which the wall has been painted with.
-	var/wall_paint
+	var/paint_color
 	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied
-	var/stripe_paint
+	var/stripe_color
 	var/stripe_icon
 	var/cache_key
 	var/shiny_wall

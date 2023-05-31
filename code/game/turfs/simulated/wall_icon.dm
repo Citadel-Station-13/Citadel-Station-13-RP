@@ -46,6 +46,8 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 
 	if(icon == initial(icon))
 		icon = get_wall_icon()
+	if(reinf_material && material.icon_reinf)
+		icon = material.icon_reinf
 
 
 /turf/simulated/wall/update_icon_state()
@@ -61,8 +63,8 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 
 
 /turf/simulated/wall/update_overlays()
-	var/plating_color = wall_paint || material.icon_colour
-	var/stripe_color = stripe_paint || wall_paint || material.icon_colour
+	var/plating_color = paint_color || material.icon_colour
+	stripe_color = stripe_color || paint_color || material.icon_colour
 
 	var/neighbor_stripe = NONE
 	for (var/cardinal = NORTH; cardinal <= WEST; cardinal *= 2) //No list copy please good sir

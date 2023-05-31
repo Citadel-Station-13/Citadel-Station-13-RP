@@ -11,9 +11,9 @@
 	layer = TABLE_LAYER
 	explosion_resistance = 1
 
-	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
-	canSmoothWith = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 	var/health = 10
 	var/destroyed = 0
@@ -154,7 +154,6 @@
 	..()
 	return
 
-
 /obj/structure/grille/proc/healthcheck()
 	if(health <= 0)
 		if(!destroyed)
@@ -209,6 +208,21 @@
 	health -= damage
 	spawn(1) healthcheck()
 	return 1
+
+/obj/structure/grille/proc/is_on_frame()
+	if(locate(/obj/structure/wall_frame) in loc)
+		return TRUE
+
+/proc/place_grille(mob/user, loc, obj/item/stack/rods/ST)
+	if(ST.in_use)
+		return
+	if(ST.get_amount() < 2)
+		to_chat(user, SPAN_WARNING("You need at least two rods to do this."))
+		return
+	user.visible_message(SPAN_NOTICE("\The [user] begins assembling a grille."))
+	if(do_after(user, 1 SECOND, ST) && ST.use(2))
+		var/obj/structure/grille/F = new(loc)
+		user.visible_message(SPAN_NOTICE("\The [user] finishes building \a [F]."))
 
 // Used in mapping to avoid
 /obj/structure/grille/broken
