@@ -798,7 +798,6 @@
 	var/emp_long = 12
 	var/smoke_spread = 1
 	var/smoke_amt = 1
-	var/nutrition_cost
 	cooldown = 10 MINUTES	//Let's not be able to spam this
 	nutrition_enforced = TRUE
 	is_feral = TRUE
