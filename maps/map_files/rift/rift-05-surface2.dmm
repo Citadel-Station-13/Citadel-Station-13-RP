@@ -860,19 +860,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
-"azd" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/mob/living/simple_mob/otie/red/friendly{
-	desc = "The Head of Security's loyal Red Otie. Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though.";
-	name = "Brutus"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/heads/hos)
 "azK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -2686,10 +2673,6 @@
 "bxf" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
-	},
-/obj/structure/dogbed{
-	desc = "A bed made especially for dogs, or other similarly sized pets. Brutus has since grown out of his bed it seems.";
-	name = "Brutus' Bed"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -22598,6 +22581,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"odF" = (
+/obj/structure/table/steel,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "odS" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Research Main Subgrid";
@@ -24193,7 +24181,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "pge" = (
-/obj/structure/barricade/cutout/clown,
+/obj/structure/table/rack,
+/obj/random/firstaid,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "pgh" = (
@@ -29759,6 +29748,12 @@
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"teZ" = (
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Scan Records"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "tfp" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -53912,8 +53907,8 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
+mYq
+szQ
 pge
 sLu
 szQ
@@ -54106,9 +54101,9 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
-pge
+szQ
+szQ
+mYq
 sLu
 sLu
 sLu
@@ -54300,9 +54295,9 @@ oXc
 qUB
 qUB
 sLu
-pge
-pge
-pge
+teZ
+szQ
+odF
 sLu
 sLu
 sLu
@@ -58749,7 +58744,7 @@ hLf
 cvH
 qgw
 cqp
-azd
+cqp
 dwr
 gQH
 ioQ
