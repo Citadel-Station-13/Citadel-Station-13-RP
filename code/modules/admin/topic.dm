@@ -1227,12 +1227,10 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living")
 			return
 
-		if(config_legacy.allow_admin_rev)
-			L.revive()
-			message_admins("<font color='red'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</font>", 1)
-			log_admin("[key_name(usr)] healed / Rrvived [key_name(L)]")
-		else
-			to_chat(usr, "Admin Rejuvinates have been disabled")
+		L.revive(full_heal = TRUE)
+		L.remove_all_restraints()
+		message_admins("<font color='red'>Admin [key_name_admin(usr)] healed / revived [key_name_admin(L)]!</font>", 1)
+		log_admin("[key_name(usr)] healed / Rrvived [key_name(L)]")
 
 	else if(href_list["makeai"])
 		if(!check_rights(R_SPAWN))	return
