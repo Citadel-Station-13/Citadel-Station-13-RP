@@ -162,7 +162,7 @@
 									<br>
 									[data_core ? data_core.get_manifest(0) : ""]
 									"}
-					if(!computer.nano_printer.print_text(contents,text("crew manifest ([])", stationtime2text())))
+					if(!computer.nano_printer.print_text(contents, "crew manifest ([stationtime2text()])"))
 						to_chat(usr, "<span class='notice'>Hardware error: Printer was unable to print the file. It may be out of paper.</span>")
 						return
 					else
@@ -234,4 +234,4 @@
 			. = TRUE
 
 	if(id_card)
-		id_card.name = text("[id_card.registered_name]'s ID Card ([id_card.assignment])")
+		id_card.name = "[id_card.registered_name]'s ID Card ([id_card.assignment])"

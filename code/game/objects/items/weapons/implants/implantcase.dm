@@ -12,25 +12,25 @@
 	var/obj/item/implant/imp = null
 
 /obj/item/implantcase/proc/update()
-	if (src.imp)
-		src.icon_state = text("implantcase-[]", src.imp.implant_color)
+	if (imp)
+		icon_state = "implantcase-[imp.implant_color]"
 	else
-		src.icon_state = "implantcase-0"
+		icon_state = "implantcase-0"
 	return
 
 /obj/item/implantcase/attackby(obj/item/I as obj, mob/user as mob)
 	..()
 	if (istype(I, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != I)
 			return
-		if((!in_range(src, usr) && src.loc != user))
+		if((!in_range(src, usr) && loc != user))
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
 		if(t)
-			src.name = text("Glass Case - '[]'", t)
+			name = "Glass Case - '[t]'"
 		else
-			src.name = "Glass Case"
+			name = "Glass Case"
 	else if(istype(I, /obj/item/reagent_containers/syringe))
 		if(!src.imp)	return
 		if(!src.imp.allow_reagents)	return

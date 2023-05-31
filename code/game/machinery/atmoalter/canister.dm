@@ -193,7 +193,7 @@ update_flag
 
 	if (destroyed)
 		cut_overlays()
-		icon_state = text("[]-1", src.canister_color)
+		icon_state = "[canister_color]-1"
 		return
 
 	if(icon_state != "[canister_color]")

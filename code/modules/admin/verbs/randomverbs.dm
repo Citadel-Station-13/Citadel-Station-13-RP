@@ -86,7 +86,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/msg = input("Message:", text("Subtle PM to [M.key]")) as text
+	var/msg = input("Message:", "Subtle PM to [M.key]") as text
 
 	if (!msg)
 		return
@@ -108,7 +108,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone:")) as text|null
+	var/msg = input("Message:", "Enter the text you wish to appear to everyone:") as text|null
 
 	if (!msg)
 		return
@@ -130,7 +130,7 @@
 	if(!M)
 		return
 
-	var/msg = input("Message:", text("Enter the text you wish to appear to your target:")) as text|null
+	var/msg = input("Message:", "Enter the text you wish to appear to your target:") as text|null
 
 	if( !msg )
 		return
@@ -153,7 +153,7 @@
 	var/range = input("Range:", "Narrate to mobs within how many tiles:", 7) as num|null
 	if(!range)
 		return
-	var/msg = input("Message:", text("Enter the text you wish to appear to everyone within view:")) as text|null
+	var/msg = input("Message:", "Enter the text you wish to appear to everyone within view:") as text|null
 	if (!msg)
 		return
 	for(var/mob/M in view(range,A))
@@ -641,15 +641,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "Explosion"
 
-	if(!check_rights(R_DEBUG|R_FUN|R_EVENT))	return
+	if(!check_rights(R_DEBUG|R_FUN|R_EVENT))
+		return
 
-	var/devastation = input("Range of total devastation. -1 to none", text("Input"))  as num|null
+	var/devastation = input("Range of total devastation. -1 to none", "Input") as num|null
 	if(devastation == null) return
-	var/heavy = input("Range of heavy impact. -1 to none", text("Input"))  as num|null
+	var/heavy = input("Range of heavy impact. -1 to none", "Input") as num|null
 	if(heavy == null) return
-	var/light = input("Range of light impact. -1 to none", text("Input"))  as num|null
+	var/light = input("Range of light impact. -1 to none", "Input") as num|null
 	if(light == null) return
-	var/flash = input("Range of flash. -1 to none", text("Input"))  as num|null
+	var/flash = input("Range of flash. -1 to none", "Input") as num|null
 	if(flash == null) return
 
 	if ((devastation != -1) || (heavy != -1) || (light != -1) || (flash != -1))
@@ -669,15 +670,16 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "EM Pulse"
 
-	if(!check_rights(R_DEBUG|R_FUN|R_EVENT))	return
+	if(!check_rights(R_DEBUG|R_FUN|R_EVENT))
+		return
 
-	var/heavy = input("Range of heavy pulse.", text("Input"))  as num|null
+	var/heavy = input("Range of heavy pulse.", "Input") as num|null
 	if(heavy == null) return
-	var/med = input("Range of medium pulse.", text("Input"))  as num|null
+	var/med = input("Range of medium pulse.", "Input") as num|null
 	if(med == null) return
-	var/light = input("Range of light pulse.", text("Input"))  as num|null
+	var/light = input("Range of light pulse.", "Input") as num|null
 	if(light == null) return
-	var/long = input("Range of long pulse.", text("Input"))  as num|null
+	var/long = input("Range of long pulse.", "Input") as num|null
 	if(long == null) return
 
 	if (heavy || med || light || long)
@@ -914,7 +916,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Special Verbs"
 	set name = "Attack Log"
 
-	to_chat(usr, text("<font color='red'><b>Attack Log for []</b></font>", mob))
+	to_chat(usr, "<font color='red'><b>Attack Log for [mob]</b></font>")
 	for(var/t in M.attack_log)
 		to_chat(usr, t)
 	feedback_add_details("admin_verb","ATTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -1040,7 +1042,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/msg = input("Message:", text("Centcom PM to [M.key]")) as text
+	var/msg = input("Message:", "Centcom PM to [M.key]") as text
 
 	if (!msg)
 		return

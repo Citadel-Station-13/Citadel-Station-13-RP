@@ -325,7 +325,7 @@
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if (href_list["mach_close"])
-		var/t1 = text("window=[]", href_list["mach_close"])
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
@@ -404,8 +404,8 @@
 							if(hasHUD(usr,"security"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -431,14 +431,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"security")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -521,8 +521,8 @@
 							if(hasHUD(usr,"medical"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -548,14 +548,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"medical")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["emprecord"])
 		if(hasHUD(usr,"best"))

@@ -41,7 +41,7 @@
 		M.loc = src.loc
 		for(var/mob/N in viewers(src, null))
 			if(N.client)
-				N.show_message(text("<font color='red'><B>[M] bursts out of [src]!</B></font>"), 2)
+				N.show_message("<font color='red'><B>[M] bursts out of [src]!</B></font>", 2)
 	..()
 
 /mob/living/carbon/attack_hand(mob/user, list/params)
