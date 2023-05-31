@@ -111,7 +111,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
 	/client/proc/toggle_AI_interact,
-	/client/proc/list_event_volunteers
+	/client/proc/list_event_volunteers,
+	/client/proc/set_headshot_for_user
 	)
 
 var/list/admin_verbs_ban = list(

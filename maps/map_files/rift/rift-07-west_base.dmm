@@ -144,7 +144,7 @@
 "hS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/flame/lighter/random,
 /obj/random/contraband,
 /obj/random/contraband,
@@ -241,7 +241,7 @@
 "kQ" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/flame/lighter/random,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -273,7 +273,7 @@
 "mz" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -345,7 +345,7 @@
 "pS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
@@ -449,7 +449,7 @@
 "uQ" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -744,7 +744,7 @@
 "Me" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/random/alcohol,
 /obj/item/paper{
 	info = "There is going to be another accident I can feel it. Colonel Lii'jar seems certain of it and now these latest tests will push the ractors to its limits. I can only hope it holds, at least after last time we know what to do when it fails.";
@@ -833,7 +833,7 @@
 "PN" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/storage/single_use/mre/random,
 /obj/random/contraband,
 /obj/random/contraband,

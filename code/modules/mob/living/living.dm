@@ -52,6 +52,7 @@
 		if(!QDELETED(O))
 			qdel(O)
 	internal_organs.Cut()
+	profile = null
 
 	return ..()
 
