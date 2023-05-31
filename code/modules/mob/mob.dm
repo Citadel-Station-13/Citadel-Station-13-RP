@@ -58,19 +58,13 @@
 		qdel(effect)
 	status_effects = null
 	// mob lists
-<<<<<<< HEAD
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-	// todo: remove machine
-=======
 	mob_list_unregister(stat)
->>>>>>> citrp/master
-	unset_machine()
 	// movespeed
 	movespeed_modification = null
 	// actionspeed
 	actionspeed_modification = null
+	// todo: remove machine
+	unset_machine()
 	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
