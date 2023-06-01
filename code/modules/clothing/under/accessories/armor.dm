@@ -456,14 +456,10 @@
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 
-/obj/item/clothing/accessory/armor/helmetcamera/verb/toggle_camera()
-	set name = "Toggle Helmet Camera"
-	set desc = "Turn your helmet camera on or off."
-	set category = "Object"
-	set src in usr
-	if(usr.stat || usr.restrained() || usr.incapacitated())
+/obj/item/clothing/accessory/armor/helmetcamera/attack_self(mob/user)
+	. = ..()
+	if(.)
 		return
-
 	if(camera_networks)
 		if(!camera)
 			camera = new /obj/machinery/camera(src)
@@ -477,7 +473,6 @@
 			camera.set_status(TRUE)
 			camera.c_tag = usr.name
 			to_chat(usr, "<font color=#4F49AF>User scanned as [camera.c_tag]. Camera activated.</font>")
-
 	else
 		to_chat(usr, "This object does not have a camera.") //Shouldnt ever be visible for helmet cams.
 		return
