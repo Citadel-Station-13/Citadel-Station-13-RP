@@ -1,45 +1,12 @@
-GLOBAL_LIST_EMPTY(portal_blackness_blockers)
+GLOBAL_DATUM_INIT(no_blackness_tile_effect, /obj/effect/no_blackness, new /obj/effect/no_blackness(null))
 
-/proc/portal_blackness_blocker(dir)
-	. = GLOB.portal_blackness_blockers["dir"]
-	if(.)
-		return
-	. = (GLOB.portal_blackness_blockers["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
-
-/atom/movable/portal_blackness_blocker
-	name = null
-	desc = null
-	atom_flags = ATOM_ABSTRACT
-	plane = BYOND_OCCLUSION_PLANE
-	layer = BYOND_OCCLUSION_LAYER_MAIN
+/obj/effect/no_blackness
 	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
 	icon_state = "white"
-
-/atom/movable/portal_blackness_blocker/Initialize(mapload, dir)
-	SHOULD_CALL_PARENT(FALSE)
-	src.dir = dir
-	update()
-	atom_flags |= ATOM_INITIALIZED
-	return INITIALIZE_HINT_NORMAL
-
-/atom/movable/portal_blackness_blocker/proc/update()
-	var/matrix/transforming = matrix()
-	var/horizontal = dir & (EAST|WEST)
-	var/factor = isnum(world.view)? (world.view * 2 + 1) : decode_view_size(world.view)[horizontal? 1 : 2]
-	switch(dir)
-		if(NORTH)
-			transforming.Scale(1, factor)
-			transforming.Translate(0, ((factor - 1) * 0.5 + 32))
-		if(SOUTH)
-			transforming.Scale(1, factor)
-			transforming.Translate(0, -((factor - 1) * 0.5 + 32))
-		if(EAST)
-			transforming.Scale(factor, 1)
-			transforming.Translate(((factor - 1) * 0.5 + 32), 0)
-		if(WEST)
-			transforming.Scale(factor, 1)
-			transforming.Translate(-((factor - 1) * 0.5 + 32), 0)
-	transform = transforming
+	plane = BYOND_OCCLUSION_PLANE
+	layer = BYOND_OCCLUSION_LAYER_MAIN
+	appearance_flags = KEEP_APART | RESET_ALPHA | RESET_COLOR | RESET_TRANSFORM
+	vis_flags = NONE
 
 GLOBAL_LIST_EMPTY(all_portal_masters)
 
@@ -172,7 +139,6 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	portal_distance_x = lowest_x - focused_T.x
 	portal_distance_y = lowest_y - focused_T.y
 
-
 // Portal masters manage everything else involving portals.
 // This is the base type. Use `/side_a` or `/side_b` with matching IDs for actual portals.
 /obj/effect/map_effect/portal/master
@@ -247,6 +213,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 
 		var/turf/T = P.counterpart.get_focused_turf()
 		P.vis_contents += T
+		T.vis_contents |= GLOB.no_blackness_tile_effect
 
 		var/list/things = dview(world.view, T)
 		for(var/turf/turf in things)
@@ -255,6 +222,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 					continue
 
 				P.vis_contents += turf
+				turf.vis_contents |= GLOB.no_blackness_tile_effect
 				observed_turfs += turf
 
 		P.calculate_dimensions()
@@ -363,11 +331,6 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 /obj/effect/map_effect/portal/line
 	name = "portal line"
 	var/obj/effect/map_effect/portal/master/my_master = null
-
-/obj/effect/map_effect/portal/line/Initialize(mapload)
-	. = ..()
-	// for some asinine reason our dir is reversed...
-	vis_contents |= portal_blackness_blocker(turn(dir, 180))
 
 /obj/effect/map_effect/portal/line/Destroy()
 	if(my_master)

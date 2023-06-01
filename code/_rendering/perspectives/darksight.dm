@@ -6,7 +6,7 @@
 	layer = FOV_OCCLUSION_LAYER_MAIN
 	alpha = 255
 	blend_mode = BLEND_OVERLAY
-	appearance_flags = KEEP_TOGETHER
+	appearance_flags = KEEP_TOGETHER | TILE_BOUND
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	pixel_x = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
 	pixel_y = -((15 * WORLD_ICON_SIZE) / 2) + (WORLD_ICON_SIZE / 2)
@@ -20,4 +20,4 @@
 	alpha = 255
 	blend_mode = BLEND_OVERLAY
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	appearance_flags = KEEP_TOGETHER
+	appearance_flags = KEEP_TOGETHER | TILE_BOUND

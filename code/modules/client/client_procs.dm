@@ -791,6 +791,11 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		reset_temporary_view()
 		return
 	using_temporary_viewsize = TRUE
+	// round up; even views are illegal.
+	if(!(width % 2))
+		width++
+	if(!(height % 2))
+		height++
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()
