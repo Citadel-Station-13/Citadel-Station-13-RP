@@ -166,6 +166,7 @@
  */
 #define OBJ_PLANE -35
 
+#define WALL_LAYER         (TURF_LAYER+0.3) //! For walls.
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
 #define STAIRS_LAYER       (TURF_LAYER+0.5) /// Layer for stairs.
 #define DOOR_OPEN_LAYER    (TURF_LAYER+0.7) /// Under all objects if opened. 2.7 due to tables being at 2.6.

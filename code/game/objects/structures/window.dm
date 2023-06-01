@@ -14,6 +14,10 @@
 	w_class = ITEMSIZE_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
+	plane = TURF_PLANE
+	layer = WALL_LAYER
+	atom_flags = ATOM_BORDER
+
 	layer = WINDOW_LAYER
 	pressure_resistance = (4 * ONE_ATMOSPHERE)
 	anchored = TRUE
@@ -257,6 +261,9 @@
 		set_anchored(FALSE)
 		update_verbs()
 		step(src, get_dir(AM, src))
+		if(fulltile)
+			QUEUE_SMOOTH(src)
+			QUEUE_SMOOTH_NEIGHBORS(src)
 
 	take_damage(tforce)
 
@@ -404,6 +411,9 @@
 				set_anchored(FALSE)
 				update_nearby_icons()
 				step(src, get_dir(user, src))
+				if(fulltile)
+					QUEUE_SMOOTH(src)
+					QUEUE_SMOOTH_NEIGHBORS(src)
 		else
 			playsound(loc, 'sound/effects/Glasshit.ogg', 75, TRUE)
 
@@ -719,8 +729,9 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
-	color = "#aaccff"
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	color = GLASS_COLOR
+	alpha = 128
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 24
@@ -747,12 +758,13 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 80
 	fulltile = TRUE
-	color = "#7c3a9a"
+	color = GLASS_COLOR_SILICATE
+	alpha = 128
 
 
 
@@ -777,12 +789,13 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LOW_WALL, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 160
 	fulltile = TRUE
-	color = "#7c3a9a"
+	color = GLASS_COLOR_SILICATE
+	alpha = 128
 
 
 /obj/structure/window/reinforced
@@ -805,19 +818,19 @@
 
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 	maxhealth = 80
 	fulltile = TRUE
-	color = "#aaccff"
+	color = GLASS_COLOR
+	alpha = 128
 
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
 	desc = "It looks rather strong and opaque. Might take a few good hits to shatter it."
 	icon_state = "twindow"
-
 	opacity = TRUE
 
 
@@ -829,29 +842,33 @@
 	maxhealth = 80
 	fulltile = TRUE
 
-	// smoothing_flags = SMOOTH_BITMASK
+	color = GLASS_COLOR_TINTED
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
 	icon_state = "fwindow"
 
+	color = GLASS_COLOR_FROSTED
+
 	maxhealth = 30
 	force_threshold = 5
+	alpha = 128
 
 
 // TODO: Recreate this.
 /obj/structure/window/shuttle
 	name = "shuttle window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
-	icon = 'icons/obj/podwindows.dmi'
+	icon = 'icons/obj/structures/window.dmi'
 	icon_state = "window"
 
-	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_SHUTTLE_PARTS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_SHUTTLE_PARTS)
 
 	maxhealth = 40
@@ -872,11 +889,13 @@
 	icon = 'icons/obj/structures/window_full_reinforced.dmi'
 	icon_state = "window-0"
 
+	color = GLASS_COLOR
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
-	canSmoothWith = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
-
+	alpha = 128
+	color = GLASS_COLOR
 
 	maxhealth = 80
 	fulltile = TRUE
@@ -909,18 +928,10 @@
 
 /obj/structure/window/reinforced/polarized/proc/toggle()
 	if (opacity)
-		animate(
-			src,
-			color = "#FFFFFF",
-			time = 5,
-		)
+		animate(src, color = GLASS_COLOR, time=5)
 		set_opacity(FALSE)
 	else
-		animate(
-			src,
-			color = "#222222",
-			time = 5,
-		)
+		animate(src, color = GLASS_COLOR_FROSTED, time=5)
 		set_opacity(TRUE)
 
 

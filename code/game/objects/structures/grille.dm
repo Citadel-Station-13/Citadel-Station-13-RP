@@ -2,7 +2,8 @@
 	name = "grille"
 	desc = "A flimsy lattice of metal rods, with screws to secure it to the floor."
 	icon = 'icons/obj/structures/grille.dmi'
-	icon_state = "grille"
+	icon_state = "grille-0"
+	base_icon_state = "grille"
 	density = TRUE
 	anchored = TRUE
 	pass_flags_self = ATOM_PASS_GRILLE
@@ -11,6 +12,7 @@
 	layer = TABLE_LAYER
 	explosion_resistance = 1
 
+	plane = TURF_PLANE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
 	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
@@ -21,12 +23,6 @@
 
 /obj/structure/grille/legacy_ex_act(severity)
 	qdel(src)
-
-/obj/structure/grille/update_icon()
-	if(destroyed)
-		icon_state = "[initial(icon_state)]-b"
-	else
-		icon_state = initial(icon_state)
 
 /obj/structure/grille/Bumped(atom/user)
 	if(ismob(user)) shock(user, 70)
@@ -137,7 +133,7 @@
 			if (ST.use(2))
 				var/obj/structure/window/WD = new wtype(loc, 1)
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
-				WD.update_icon()
+				WD.update_appearance()
 		return
 //window placing end
 
