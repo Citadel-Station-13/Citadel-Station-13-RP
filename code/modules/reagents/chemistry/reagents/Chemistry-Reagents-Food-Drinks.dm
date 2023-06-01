@@ -479,6 +479,8 @@
 		return
 	if(alien == IS_NARAMADI)
 		return
+	if(alien == IS_UNATHI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.bodytemperature += rand(10, 25)
 		return
@@ -491,6 +493,33 @@
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
+
+/datum/reagent/hexaisin
+	name = "Hexaisin"
+	id = "Hexaisin"
+	description = "A common chemical found in various plant life in the Moghes regions."
+	taste_description = "pleasant fire"
+	taste_mult = 1.5
+	reagent_state = REAGENT_LIQUID
+	ingest_met = REM
+	color = "#B31008"
+
+/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -633,6 +662,10 @@
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+		return
+	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
@@ -3315,7 +3348,10 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
 	var/drug_strength = 10
 	if(alien == IS_SKRELL)
 		drug_strength = drug_strength * 0.8
@@ -3323,6 +3359,18 @@
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(4, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"

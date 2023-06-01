@@ -4,7 +4,7 @@
 	name = SPECIES_UNATHI_DIGI
 	name_plural = SPECIES_UNATHI_DIGI
 	default_bodytype = BODYTYPE_UNATHI_DIGI
-
+	reagent_tag = IS_UNATHI //Why wasn't this here?
 	icobase       = 'icons/mob/species/unathidigi/body.dmi'
 	deform        = 'icons/mob/species/unathidigi/deformed_body.dmi'
 	husk_icon     = 'icons/mob/species/unathidigi/husk.dmi'
