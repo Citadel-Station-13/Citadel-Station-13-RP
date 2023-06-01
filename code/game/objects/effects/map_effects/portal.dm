@@ -4,7 +4,7 @@ GLOBAL_LIST_EMPTY(portal_blackness_blockers)
 	. = GLOB.portal_blackness_blockers["dir"]
 	if(.)
 		return
-	. = (GLOB.portal_blackness_blockera["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
+	. = (GLOB.portal_blackness_blockers["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
 
 /atom/movable/portal_blackness_blocker
 	name = null
@@ -39,6 +39,7 @@ GLOBAL_LIST_EMPTY(portal_blackness_blockers)
 		if(WEST)
 			transforming.Scale(factor, 1)
 			transforming.Translate(-((factor - 1) * 0.5 + 32), 0)
+	transform = transforming
 
 GLOBAL_LIST_EMPTY(all_portal_masters)
 

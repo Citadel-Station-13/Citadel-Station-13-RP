@@ -224,3 +224,8 @@ GLOBAL_DATUM_INIT(silicon_darksight, /datum/vision/baseline/silicons, new)
 	priority = DARKSIGHT_PRIORITY_GLASSES
 	hard_alpha = 90
 	legacy_throttle = 3
+
+/datum/vision/augmenting/vetalan
+	priority = DARKSIGHT_PRIORITY_MODIFIER
+	soft_alpha = SOFT_DARKSIGHT_ALPHA_TIER_2
+	soft_range = SOFT_DARKSIGHT_RANGE_TIER_2
