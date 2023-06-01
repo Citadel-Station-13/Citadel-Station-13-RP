@@ -55,6 +55,6 @@
 /atom/movable/screen/plane_render/darkvision_blackness
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_BLACKNESS
-	blend_mode = BLEND_ADD
+	blend_mode = BLEND_OVERLAY
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 	render_source = BYOND_RENDER_TARGET
