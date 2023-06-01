@@ -147,8 +147,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	var/lowest_y = 0
 
 	// First pass is for finding the top right corner.
-	for(var/thing in vis_contents)
-		var/turf/T = thing
+	for(var/turf/T in vis_contents)
 		if(T.x > highest_x)
 			highest_x = T.x
 		if(T.y > highest_y)
@@ -158,8 +157,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	lowest_y = highest_y
 
 	// Second one is for the bottom left corner.
-	for(var/thing in vis_contents)
-		var/turf/T = thing
+	for(var/turf/T in vis_contents)
 		if(T.x < lowest_x)
 			lowest_x = T.x
 		if(T.y < lowest_y)
