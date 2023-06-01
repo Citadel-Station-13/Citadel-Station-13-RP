@@ -809,7 +809,6 @@
 	if(owner.incapacitated())
 		return
 
-	if(owner.nutrition)
 	for(var/mob/living/T in get_hearers_in_view(range, owner))
 		if(iscarbon(T))
 			if(T.mind)
