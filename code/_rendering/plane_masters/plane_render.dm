@@ -42,6 +42,7 @@
 /atom/movable/screen/plane_render/darkvision_grain
 	plane = DARKVISION_PLANE
 	layer = DARKVISION_LAYER_NOISE
+	alpha = 150
 	relevant_plane_path = /atom/movable/screen/plane_master/darkvision
 	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
 	icon_state = "noise"

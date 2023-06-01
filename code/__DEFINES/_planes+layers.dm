@@ -220,6 +220,15 @@
 #define BYOND_RENDER_TARGET "BYOND_PLANE"
 
 /**
+ *! Blackness Occlusion Plane
+ *? So you know how BYOND_PLANE has blackness tiles?
+ *? We need to override that in some places. That's where this comes in.
+ */
+#define BYOND_OCCLUSION_PLANE 1
+#define BYOND_OCCLUSION_RNEDER_TARGET "*NOBLACK_PLANE"
+#define BYOND_OCCLUSION_LAYER_MAIN 1
+
+/**
  *! -- Planet Lighting Plane
  *? Lighting on planets.
  */

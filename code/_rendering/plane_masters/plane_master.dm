@@ -62,6 +62,16 @@
 /atom/movable/screen/plane_master/byond
 	plane = BYOND_PLANE
 	render_target = BYOND_RENDER_TARGET
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
+
+/atom/movable/screen/plane_master/byond/Initialize(mapload)
+	. = ..()
+	add_filter("occlusion", 1, alpha_mask_filter(render_source = BYOND_OCCLUSION_RENDER_TARGET, flags = MASK_INVERSE))
+
+/atom/movable/screen/plane_master/byond_occlusion
+	plane = BYOND_OCCLUSION_PLANE
+	render_target = BYOND_OCCLUSION_RENDER_TARGET
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/weather
 	plane = WEATHER_PLANE
@@ -74,6 +84,7 @@
 	plane = EMISSIVE_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	render_target = EMISSIVE_RENDER_TARGET
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 	alpha = 255
 
 /atom/movable/screen/plane_master/emissive/Initialize(mapload)
@@ -84,6 +95,7 @@
 	plane = LIGHTMASK_PLANE
 	render_target = LIGHTMASK_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 	// alpha changes color matrix lists's aa value
 	// don't blame me, i didn't make the rules, god damnit byond.
 	default_alpha = 0
@@ -101,6 +113,7 @@
 	blend_mode = BLEND_MULTIPLY
 	render_target = LIGHTING_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 	alpha = 255
 
 /*!
@@ -128,6 +141,7 @@
 	plane = DARKVISION_PLANE
 	blend_mode = BLEND_ADD
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 	render_target = DARKVISION_RENDER_TARGET
 
 /atom/movable/screen/plane_master/darkvision/Initialize(mapload)
@@ -144,6 +158,7 @@
 	plane = DARKVISION_OCCLUSION_PLANE
 	render_target = DARKVISION_OCCLUSION_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 	// alpha changes color matrix lists's aa value
 	// don't blame me, i didn't make the rules, god damnit byond.
 	default_alpha = 0
@@ -167,10 +182,12 @@
 	plane = FOV_OCCLUSION_PLANE
 	render_target = FOV_OCCLUSION_RENDER_TARGET
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/lightless
 	plane = LIGHTLESS_PLANE
 	render_target = LIGHTLESS_RENDER_TARGET
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/lightless/Initialize(mapload)
 	. = ..()
@@ -183,6 +200,7 @@
 	plane = SONAR_PLANE
 	default_invisible = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/observer
 	plane = OBSERVER_PLANE
@@ -198,12 +216,15 @@
 	default_invisible = TRUE
 	client_global = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/fullscreen
 	plane = FULLSCREEN_PLANE
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/hud
 	plane = HUD_PLANE
+	appearance_flags = PLANE_MASTER | NO_CLIENT_COLOR
 
 /atom/movable/screen/plane_master/inventory
 	plane = INVENTORY_PLANE

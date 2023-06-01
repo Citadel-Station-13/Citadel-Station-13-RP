@@ -1,3 +1,44 @@
+GLOBAL_LIST_EMPTY(portal_blackness_blockers)
+
+/proc/portal_blackness_blocker(dir)
+	. = GLOB.portal_blackness_blocker["dir"]
+	if(.)
+		return
+	. = (GLOB.portal_blackness_blocker["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
+
+/atom/movable/portal_blackness_blocker
+	name = null
+	desc = null
+	atom_flags = ATOM_ABSTRACT
+	plane = BYOND_OCCLUSION_PLANE
+	layer = BYOND_OCCLUSION_LAYER_MAIN
+	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
+	icon_state = "white"
+
+/atom/movable/portal_blackness_blocker/Initialize(mapload, dir)
+	src.dir = dir
+	update()
+	atom_flags |= ATOM_INITIALIZED
+	return INITIALIZE_HINT_NORMAL
+
+/atom/movable/portal_blackness_blocker/proc/update()
+	var/matrix/transforming = matrix()
+	var/horizontal = dir & (EAST|WEST)
+	var/factor = isnum(world.view)? (world.view * 2 + 1) : decode_view_size(world.view)[horizontal? 1 : 2]
+	switch(dir)
+		if(NORTH)
+			transforming.Scale(1, factor)
+			transforming.Translate(0, ((factor - 1) * 0.5 + 32))
+		if(SOUTH)
+			transforming.Scale(1, factor)
+			transforming.Translate(0, -((factor - 1) * 0.5 + 32))
+		if(EAST)
+			transforming.Scale(factor, 1)
+			transforming.Translate(((factor - 1) * 0.5 + 32), 0)
+		if(WEST)
+			transforming.Scale(factor, 1)
+			transforming.Translate(-((factor - 1) * 0.5 + 32), 0)
+
 GLOBAL_LIST_EMPTY(all_portal_masters)
 
 /*
@@ -316,13 +357,17 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 //	color = "#FF0000"
 
 
-
 // Portal lines extend out from the sides of portal masters,
 // They let portals be longer than 1x1.
 // Both sides MUST be the same length, meaning if side A is 1x3, side B must also be 1x3.
 /obj/effect/map_effect/portal/line
 	name = "portal line"
 	var/obj/effect/map_effect/portal/master/my_master = null
+
+/obj/effect/map_effect/portal/line/Initialize(mapload)
+	. = ..()
+	// for some asinine reason our dir is reversed...
+	vis_contents |= portal_blackness_blocker(turn(dir, 180))
 
 /obj/effect/map_effect/portal/line/Destroy()
 	if(my_master)
