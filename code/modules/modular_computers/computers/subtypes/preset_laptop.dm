@@ -74,8 +74,8 @@
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/install_default_programs()
 	..()
-	//hard_drive.store_file(new/datum/computer_file/program/camera_monitor()) Reenable once laptop camera monitoring is functional
-	//hard_drive.store_file(new/datum/computer_file/program/camera_monitor/sechelmet()) Reenable once laptop camera monitoring is functional
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/sechelmet())
 	hard_drive.store_file(new/datum/computer_file/program/digitalwarrant())
 
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden
@@ -91,3 +91,10 @@
 /obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/hos/install_default_programs()
 	..()
 	hard_drive.store_file(new/datum/computer_file/program/comm())
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder
+	name = "\improper Pathfinder's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/explohelmet())
