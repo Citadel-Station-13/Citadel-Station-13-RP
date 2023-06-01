@@ -11216,7 +11216,6 @@
 /area/security/brig)
 "hcy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/nifsofts_security,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11226,6 +11225,12 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 1
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -8
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -15010,12 +15015,6 @@
 /area/maintenance/substation/research)
 "jsy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/evidence{
-	pixel_x = 8
-	},
-/obj/item/storage/box/handcuffs{
-	pixel_x = -8
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -15026,6 +15025,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 8
 	},
+/obj/item/storage/box/nifsofts_security,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "jsz" = (
@@ -30873,13 +30873,6 @@
 "tVG" = (
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"tWb" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	secured_wires = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/medsec_maintenance)
 "tWJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -54448,7 +54441,7 @@ kXL
 qRD
 mvZ
 szQ
-tWb
+szQ
 szQ
 xFu
 byV
