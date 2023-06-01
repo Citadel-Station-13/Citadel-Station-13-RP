@@ -68,7 +68,7 @@
 	var/old_level = GLOB.security_level
 	if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 	if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
-	if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+	if(tmp_alertlevel > SEC_LEVEL_ORANGE) tmp_alertlevel = SEC_LEVEL_ORANGE //cannot engage red/delta. this code was never updated with the fact that blue is lower than orange/violet/etc
 	set_security_level(tmp_alertlevel)
 	if(GLOB.security_level != old_level)
 		//Only notify the admins if an actual change happened
