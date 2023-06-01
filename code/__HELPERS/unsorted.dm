@@ -7,6 +7,7 @@
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
 /// Inverts the colour of an HTML string.
+/// TODO: We can probably do this better these days. @Zandario
 /proc/invertHTML(HTMLstring)
 	if (!(istext(HTMLstring)))
 		CRASH("Given non-text argument!")
@@ -22,12 +23,12 @@
 	textg = num2hex(255 - g)
 	textb = num2hex(255 - b)
 	if (length(textr) < 2)
-		textr = text("0[]", textr)
+		textr = "0[textr]"
 	if (length(textg) < 2)
-		textr = text("0[]", textg)
+		textr = "0[textg]"
 	if (length(textb) < 2)
-		textr = text("0[]", textb)
-	return text("#[][][]", textr, textg, textb)
+		textr = "0[textb]"
+	return "#[textr][textg][textb]"
 
 /**
  * Returns location.  Returns null if no location was found.
