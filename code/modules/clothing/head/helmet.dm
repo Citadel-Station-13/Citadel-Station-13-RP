@@ -2,8 +2,8 @@
 	name = "helmet"
 	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
-	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
+	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	clothing_flags = THICKMATERIAL
 	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
