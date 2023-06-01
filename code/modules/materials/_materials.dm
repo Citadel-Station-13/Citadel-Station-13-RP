@@ -108,12 +108,48 @@
 	var/pass_stack_colors = FALSE
 
 	//? Attributes
+
 	/// relative HP multiplier for something made out of this
 	var/regex_this_integrity = 1
-	/// How permeable this material is, naturally. Range: 0 to 1, inclusive. Anything above 0 is not entirely sealed.
-	var/permeability = 0
-	#warn todo: integrity to multiplier
+	/// relative reactivity multiplier for something made out of this
+	/// * impacts
+	var/reactivity = 1
+	/// relative permeability multiplier for something made out of this
+	/// * impacts permeability armor
+	/// * impacts bomb armor
+	var/permeability = 1
+	/// relative hardness multiplier for something made out of this
+	/// * impacts sharp / blade damage
+	/// * impacts kinetic penetration resistance
+	/// * impacts bomb armor
+	var/regex_this_hardness = 1
+	/// relative kinetic scattering/dampening multiplier for something made out of this
+	/// * impacts kinetic damage resistance
+	/// * impacts bomb armor
+	var/toughness = 1
+	/// relative multiplier for how easily this material scatters energy
+	/// * impacts laser armor penetration resistance
+	/// * impacts special energy armor
+	/// * impacts exotic energy armor (minor)
+	/// * slight modifier to radiation resist
+	var/scattering = 1
+	/// relative mutliplier for how easily this material absorbs regular energy blasts
+	/// * impacts laser armor
+	/// * impacts special energy armor (minor)
+	/// * very slight modifier to radiation resist
+	var/absorption = 1
+	/// relative multiplier for how easily this material deflects exotic energy
+	/// * impacts special energy armor (minor)
+	/// * impacts laser armor penetration resistance (moderate)
+	/// * impacts anomaly armor
+	var/nullification = 1
+	/// relative multiplier for how heavy this material is
+	/// * impacts carry weight of things made out of this
+	/// * impacts radiation armor (major)
+	/// * impacts bomb armor
+	var/density = 1
 
+	#warn pain
 
 	//! Attributes - legacy
 	/// Delay in ticks when cutting through this wall.
@@ -124,12 +160,8 @@
 	var/ignition_point
 	/// K, walls will take damage if they're next to a fire hotter than this
 	var/melting_point = 1800
-	/// How well this material works as armor.  Higher numbers are better, diminishing returns applies.
-	var/protectiveness = 10
 	/// Is the material transparent? 0.5< makes transparent walls/doors.
 	var/opacity = 1
-	/// How reflective to light is the material?  Currently used for laser reflection and defense.
-	var/reflectivity = 0
 	/// Only used by walls currently.
 	var/explosion_resistance = 5
 	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
@@ -143,8 +175,6 @@
 	/// If set, object matter var will be a list containing these values.
 	var/list/composite_material
 	var/luminescence
-	/// Radiation resistance, which is added on top of a material's weight for blocking radiation. Needed to make lead special without superrobust weapons.
-	var/radiation_resistance = 0
 
 	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
 	var/created_window
@@ -154,10 +184,6 @@
 	var/list/window_options = list()
 
 	//! Damage values.
-	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/hardness = 60
-	/// Determines blunt damage/throw_force for weapons.
-	var/weight = 20
 
 	/// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -304,3 +330,23 @@
 
 /datum/material/proc/wall_touch_special(turf/simulated/wall/W, mob/living/L)
 	return
+
+//? Attribute Computations
+
+/**
+ * mutates a base armor datum according to our stats
+ *
+ * @params
+ * * armor_or_list - an armor datum or a list of k-v armor values
+ * *
+ */
+/datum/material/proc/mutate_armor(datum/armor/armor_or_list, ratio = 1)
+	#warn params
+	#warn impl
+
+/**
+ * creates an armor datum based off of our stats
+ */
+/datum/material/proc/create_armor(significance = 1, ratio = 1)
+	#warn params
+	#warn impl
