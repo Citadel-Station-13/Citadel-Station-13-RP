@@ -499,7 +499,7 @@
 
 /datum/reagent/hexaisin
 	name = "Hexaisin"
-	id = "Hexaisin"
+	id = "hexaisin"
 	description = "A common chemical found in various plant life in the Moghes regions."
 	taste_description = "pleasant fire"
 	taste_mult = 1.5
