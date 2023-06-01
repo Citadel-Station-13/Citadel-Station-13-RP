@@ -1,10 +1,10 @@
 GLOBAL_LIST_EMPTY(portal_blackness_blockers)
 
 /proc/portal_blackness_blocker(dir)
-	. = GLOB.portal_blackness_blocker["dir"]
+	. = GLOB.portal_blackness_blockers["dir"]
 	if(.)
 		return
-	. = (GLOB.portal_blackness_blocker["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
+	. = (GLOB.portal_blackness_blockera["dir"] = new /atom/movable/portal_blackness_blocker(null, dir))
 
 /atom/movable/portal_blackness_blocker
 	name = null
@@ -16,6 +16,7 @@ GLOBAL_LIST_EMPTY(portal_blackness_blockers)
 	icon_state = "white"
 
 /atom/movable/portal_blackness_blocker/Initialize(mapload, dir)
+	SHOULD_CALL_PARENT(FALSE)
 	src.dir = dir
 	update()
 	atom_flags |= ATOM_INITIALIZED
