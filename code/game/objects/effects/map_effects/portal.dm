@@ -202,7 +202,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 		crash_with("Portal master [type] ([x],[y],[z]) could not find another portal master with a matching portal_id ([portal_id]).")
 
 /obj/effect/map_effect/portal/master/proc/make_visuals()
-	var/list/observed_turfs = list()
+	var/needed = world_view_max_number() + 1
 	for(var/thing in portal_lines + src)
 		var/obj/effect/map_effect/portal/P = thing
 		P.name = null
@@ -212,18 +212,12 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 			return
 
 		var/turf/T = P.counterpart.get_focused_turf()
-		P.vis_contents += T
-		T.vis_contents |= GLOB.no_blackness_tile_effect
-
-		var/list/things = dview(world.view, T)
-		for(var/turf/turf in things)
-			if(get_dir(turf, T) & P.dir)
-				if(turf in observed_turfs) // Avoid showing the same turf twice or more for improved performance.
-					continue
-
-				P.vis_contents += turf
-				turf.vis_contents |= GLOB.no_blackness_tile_effect
-				observed_turfs += turf
+		var/amount = needed
+		while(T && amount)
+			P.vis_contents += T
+			T.vis_contents |= GLOB.no_blackness_tile_effect
+			T = get_step(T, P.counterpart.dir)
+			amount--
 
 		P.calculate_dimensions()
 
