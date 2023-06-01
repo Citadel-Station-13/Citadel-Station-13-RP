@@ -14819,11 +14819,6 @@
 	pixel_x = -22;
 	pixel_y = 32
 	},
-/obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/tamaskan{
-	desc = "The robotics spry new canine friend! The name 'Sprocket' Can be found on her collar. She seems to love old rock music from Sol.";
-	name = "Sprocket"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "jnl" = (
