@@ -973,14 +973,6 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	message_admins("<font color=#4F49AF>Toggled admin item spawning to [config_legacy.allow_admin_spawning].</font>")
 	feedback_add_details("admin_verb","TAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/adrev()
-	set category = "Server"
-	set desc="Toggle admin revives"
-	set name="Toggle Revive"
-	config_legacy.allow_admin_rev = !(config_legacy.allow_admin_rev)
-	message_admins("<font color=#4F49AF>Toggled reviving to [config_legacy.allow_admin_rev].</font>")
-	feedback_add_details("admin_verb","TAR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /datum/admins/proc/unprison(var/mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Unprison"

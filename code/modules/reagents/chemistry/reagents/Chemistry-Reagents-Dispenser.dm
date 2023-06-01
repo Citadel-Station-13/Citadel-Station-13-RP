@@ -312,8 +312,6 @@
 
 /datum/reagent/phosphorus/affect_blood(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE)
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 2 //cit change - phosphorus is good for plants
 
 /datum/reagent/potassium
