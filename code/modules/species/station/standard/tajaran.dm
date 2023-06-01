@@ -34,7 +34,6 @@
 	metabolic_rate = 1.1
 	gluttonous = 0
 	hunger_factor = 0.1
-	metabolism = 0.03
 
 	color_mult = 1
 	health_hud_intensity = 2.5
