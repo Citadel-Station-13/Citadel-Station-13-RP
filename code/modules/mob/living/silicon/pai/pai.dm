@@ -118,7 +118,7 @@
 	pda = new(src)
 	spawn(5)
 		pda.ownjob = "Personal Assistant"
-		pda.owner = text("[]", src)
+		pda.owner = "[src]"
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
 

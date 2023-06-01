@@ -30,7 +30,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	user.visible_message(text("<span class='notice'>[] uses [] to towel themselves off.</span>", user, src))
+	user.visible_message(SPAN_NOTICE("[user] uses [src] to towel themselves off."))
 	playsound(user, 'sound/weapons/towelwipe.ogg', 25, 1)
 	if(H.fire_stacks > 0)
 		H.fire_stacks = (max(0, H.fire_stacks - 1.5))
