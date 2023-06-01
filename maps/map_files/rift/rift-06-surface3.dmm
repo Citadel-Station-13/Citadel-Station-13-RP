@@ -8256,14 +8256,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
-"auB" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/dogbed{
-	name = "pet bed"
-	},
-/mob/living/simple_mob/animal/passive/fox/renault,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "auC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -11799,15 +11791,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aDK" = (
-/obj/structure/dogbed,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
-	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
@@ -47553,7 +47541,7 @@ aCl
 aYJ
 aXc
 aGk
-auB
+aNT
 aWw
 abo
 aLK
