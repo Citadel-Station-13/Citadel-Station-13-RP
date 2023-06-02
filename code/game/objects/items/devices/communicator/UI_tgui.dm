@@ -30,8 +30,7 @@
 
 /obj/item/communicator/proc/ensure_tgui_camera()
 	if(isnull(planes))
-		planes = new
-		planes.map_id = map_name
+		planes = new(map_name)
 	if(isnull(parallax))
 		parallax = new(secondary_map = map_name, forced_eye = src)
 
