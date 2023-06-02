@@ -13391,9 +13391,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "iqx" = (
