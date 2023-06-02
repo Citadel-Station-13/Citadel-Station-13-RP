@@ -551,6 +551,16 @@
 	qdel(em_render)
 	em_render = null
 
+//? Rendering
+
+/atom/movable/proc/assert_self_render_target()
+	if(render_target == REF(src))
+		return render_target
+	else if(render_target)
+		CRASH("already had render target")
+	render_target = REF(src)
+	return render_target
+
 //? atom colors
 
 /**

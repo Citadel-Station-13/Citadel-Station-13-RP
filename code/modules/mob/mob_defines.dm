@@ -19,6 +19,12 @@
 	/// Fullscreen objects
 	var/list/fullscreens = list()
 
+	//? Recognition
+	/// our recognition holder - if we have this, we recognize mobs based on recognition system
+	var/datum/recognition_holder/recognition
+	/// our identity holder - if we have this, we are recognized based on recognition system
+	var/datum/identity_holder/identity
+
 	//? Intents
 	/// How are we intending to move? Walk / run / etc.
 	var/m_intent = MOVE_INTENT_RUN

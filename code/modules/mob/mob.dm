@@ -96,6 +96,9 @@
 			mind = null
 	// abilities
 	dispose_abilities()
+	// recognition system
+	QDEL_NULL(identity)
+	QDEL_NULL(recognition)
 	// this kicks out client
 	ghostize()
 	if(hud_used)
