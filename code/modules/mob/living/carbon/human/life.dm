@@ -214,7 +214,7 @@
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue
-				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
+				O.show_message(SPAN_DANGER("[src] starts having a seizure!"), SAYCODE_TYPE_VISIBLE)
 			afflict_unconscious(20 * 10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)

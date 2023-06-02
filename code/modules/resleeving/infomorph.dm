@@ -110,8 +110,8 @@ var/list/infomorph_emotions = list(
 	pda = new(src)
 	spawn(5)
 		pda.ownjob = "Sleevecard"
-		pda.owner = text("[]", src)
-		pda.name = pda.owner + " (" + pda.ownjob + ")"
+		pda.owner = "[src]"
+		pda.name = "[pda.owner] ([pda.ownjob])"
 		pda.toff = 1
 
 	return ..()

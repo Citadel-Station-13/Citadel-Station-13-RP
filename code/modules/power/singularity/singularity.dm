@@ -414,7 +414,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		to_chat(M, "<span class='danger'>You look directly into The [src.name] and feel [current_size == STAGE_SUPER ? "helpless" : "weak"].</span>")
 		M.apply_effect(3, STUN)
 		for(var/mob/O in viewers(M, null))
-			O.show_message(text("<span class='danger'>[] stares blankly at The []!</span>", M, src), 1)
+			O.show_message(SPAN_DANGER("[M] stares blankly at The [src]!</span>"), SAYCODE_TYPE_VISIBLE)
 
 /obj/singularity/proc/emp_area()
 	if(current_size != STAGE_SUPER)
