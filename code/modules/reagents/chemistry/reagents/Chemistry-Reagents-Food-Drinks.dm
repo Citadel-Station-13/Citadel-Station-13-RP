@@ -934,7 +934,6 @@
 	description = "A delicious mixture of perfectly healthy mix and terrible chocolate."
 	taste_description = "chocolate milk"
 	color = "#74533b"
-	var/contains_lactose = TRUE //could be used for a lactose intolerance trait?
 
 	cup_icon_state = "cup_brown"
 	cup_name = "Cup of Chocolate Milk"
