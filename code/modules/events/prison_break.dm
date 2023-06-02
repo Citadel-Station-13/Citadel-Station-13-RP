@@ -33,7 +33,7 @@
 	for (var/area/A in areaType)
 		namelist += A.name
 	if(areas && areas.len > 0)
-		command_announcement.Announce("Wide-spread malignant trojan detected in multiple subroutines aboard [station_name()]. Immediate compromise of [list2text(namelist)] likely in approximately five minutes.", "Malware Alert")
+		command_announcement.Announce("Wide-spread malignant trojan detected in multiple subroutines aboard [station_name()]. Immediate compromise of [english_list(namelist)] likely in approximately five minutes.", "Malware Alert")
 
 /datum/event/prison_break/setup()
 	announceWhen = rand(75, 105)
