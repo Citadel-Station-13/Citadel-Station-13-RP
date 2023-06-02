@@ -163,7 +163,7 @@
 	if(ringer)
 		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
 		for (var/mob/O in hearers(2, loc))
-			O.show_message(text("[icon2html(src, world)] *beep*"))
+			O.show_message("[icon2html(src, world)] *beep*")
 
 	alert_called = 1
 	update_icon()
