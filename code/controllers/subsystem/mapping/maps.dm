@@ -26,10 +26,17 @@
  */
 /datum/controller/subsystem/mapping/proc/init_maps()
 	keyed_maps = list()
+	var/list/skipping = list()
+	// if this runtimes, go vv repair it; this is fucked.
+	for(var/datum/map/map as anything in loaded_maps)
+		keyed_maps[map.id] = map
+		skipping[map.id] = TRUE
 	for(var/datum/map/path as anything in subtypesof(/datum/map))
 		if(initial(path.abstract_type) == path)
 			continue
 		if(isnull(path.id))
+			continue
+		if(skipping[path.id])
 			continue
 		var/datum/map/created = new path
 		if(keyed_maps[created.id])
@@ -49,16 +56,31 @@
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, recursing = FALSE)
 	#warn impl
 
+	var/list/datum/map/recursing = list()
+
 	for(var/datum/map/path_or_id as anything in instance.dependencies)
 		if(ispath(path_or_id))
 			path_or_id = initial(path_or_id.id)
 		if(isnull(keyed_maps[path_or_id]))
-			
+			init_fatal("dependency map [path_or_id] unable to be located.")
+			continue
+		recursing |= keyed_maps[path_or_id]
 
 #ifndef FASTBOOT_DISABLE_LATELOAD
 	for(var/datum/map/path_or_id as anything in instance.lateload)
-
+		if(ispath(path_or_id))
+			path_or_id = initial(path_or_id.id)
+		if(isnull(keyed_maps[path_or_id]))
+			init_fatal("lateload map [path_or_id] unable to be located.")
+			continue
+		recursing |= keyed_maps[path_or_id]
 #endif
+
+	for(var/datum/map/map as anything in recursing)
+		if(map.loaded)
+			init_debug("skipping recursing map [map.id] - already loaded")
+			continue
+		_load_map_impl(map, TRUE)
 
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance = next_station)
 	ASSERT(istype(instance))

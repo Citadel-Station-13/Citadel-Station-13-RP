@@ -375,6 +375,9 @@
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
 
+/datum/controller/subsystem/proc/init_debug(msg)
+	subsystem_log("init-debug: [msg]")
+
 /datum/controller/subsystem/proc/init_log(msg)
 	subsystem_log("init-log: [msg]")
 
