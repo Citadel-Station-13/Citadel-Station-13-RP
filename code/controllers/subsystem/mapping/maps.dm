@@ -49,6 +49,17 @@
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, recursing = FALSE)
 	#warn impl
 
+	for(var/datum/map/path_or_id as anything in instance.dependencies)
+		if(ispath(path_or_id))
+			path_or_id = initial(path_or_id.id)
+		if(isnull(keyed_maps[path_or_id]))
+			
+
+#ifndef FASTBOOT_DISABLE_LATELOAD
+	for(var/datum/map/path_or_id as anything in instance.lateload)
+
+#endif
+
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance = next_station)
 	ASSERT(istype(instance))
 	ASSERT(isnull(loaded_station))

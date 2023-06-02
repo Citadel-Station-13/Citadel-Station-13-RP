@@ -14,3 +14,4 @@
 	world.maxx = width
 	world.maxy = height
 	ordered_levels = list(new /datum/map_level/reserved)
+	world.max_z_changed(0, 1)

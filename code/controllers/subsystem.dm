@@ -132,11 +132,9 @@
 	 * # If your var only has two values, put it in as a flag.
 	 */
 
-
 // Do not override
 // /datum/controller/subsystem/New()
 // 	return
-
 
 /**
  * Called before global vars are initialized
@@ -151,7 +149,6 @@
 /datum/controller/subsystem/proc/PreInit(recovering)
 	return
 
-
 /**
  * Called after global vars are initialized
  * Called before Recover()
@@ -164,7 +161,6 @@
  */
 /datum/controller/subsystem/proc/Preload(recovering)
 	return
-
 
 /**
  * This is used so the mc knows when the subsystem sleeps.
@@ -189,7 +185,6 @@
 		enqueue()
 		state = SS_PAUSED
 		queued_time = QT
-
 
 /**
  * previously, this would have been named 'process()' but that name is used everywhere for different things!
@@ -280,7 +275,6 @@
 		queue_prev = queue_node.queue_prev
 		queue_node.queue_prev = src
 
-
 /datum/controller/subsystem/proc/dequeue()
 	if (queue_next)
 		queue_next.queue_prev = queue_prev
@@ -298,7 +292,6 @@
 	if (state == SS_QUEUED)
 		state = SS_IDLE
 
-
 /datum/controller/subsystem/proc/pause()
 	. = TRUE
 	switch(state)
@@ -308,15 +301,9 @@
 		if(SS_SLEEPING)
 			state = SS_PAUSING
 
-
 /// Called after the config has been loaded or reloaded.
 /datum/controller/subsystem/proc/OnConfigLoad()
 	return
-
-
-/datum/controller/subsystem/proc/subsystem_log(msg)
-	return log_subsystem(name, msg)
-
 
 /**
  * Used to initialize the subsystem AFTER the map has loaded.
@@ -331,7 +318,6 @@
 	log_subsystem("INIT", msg)
 	return time
 
-
 /**
  * Hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
  */
@@ -341,28 +327,21 @@
 	else
 		. = "OFFLINE&emsp;"
 
-
 /datum/controller/subsystem/stat_key()
 	return can_fire? "\[[state_letter()]\][name]" : name
-
 
 /datum/controller/subsystem/proc/state_letter()
 	switch (state)
 		if (SS_RUNNING)
 			. = "R"
-
 		if (SS_QUEUED)
 			. = "Q"
-
 		if (SS_PAUSED, SS_PAUSING)
 			. = "P"
-
 		if (SS_SLEEPING)
 			. = "S"
-
 		if (SS_IDLE)
 			. = "  "
-
 
 /**
  * Could be used to postpone a costly subsystem for (default one) var/cycles, cycles.
@@ -393,6 +372,23 @@
 
 	. = ..()
 
+/datum/controller/subsystem/proc/subsystem_log(msg)
+	return log_subsystem(name, msg)
+
+/datum/controller/subsystem/proc/init_log(msg)
+	subsystem_log("init-log: [msg]")
+
+/datum/controller/subsystem/proc/init_warning(msg)
+	subsystem_log("init-warn: [msg]")
+	message_admins("[src] load warning: [msg]")
+
+/datum/controller/subsystem/proc/init_error(msg)
+	subsystem_log("init-error: [msg]")
+	message_admins(SPAN_BOLDANNOUNCE("[src] load error: [msg]"))
+
+/datum/controller/subsystem/proc/init_fatal(msg)
+	subsystem_log("init-fatal: [msg]")
+	to_chat(world, SPAN_BOLDANNOUNCE("[src] load fatal: [msg]"))
 
 /**
  * Called when max z is changed since subsystems hook it so much.

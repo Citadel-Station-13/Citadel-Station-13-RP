@@ -32,8 +32,10 @@ var/list/all_maps = list()
 	/// /datum/map_level datums. starts off as paths, inits later.
 	//  todo: for now, this must be in sequential order from bottom to top for multiz maps. this will be fixed when we rework our multiz stack system.
 	var/list/datum/map_level/levels
-	/// dependencies by id or path of other maps
+	/// dependencies by id or path of other maps - these are critical maps to always load in
 	var/list/dependencies
+	/// lateload by id or path of other maps - these are non-critical maps to always load in
+	var/list/lateload
 	/// are we loaded in
 	var/tmp/loaded = FALSE
 	/// are we modified from our prototype?

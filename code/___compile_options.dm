@@ -4,23 +4,20 @@
 //## Core settings
 //! Fastboot flags - useful for debugging
 /// Disable automatic roundstart icon smoothing.
-// #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
+// #define FASTBOOT_DISABLE_SMOOTHING
 /// Disable loading late maps.
-// #define FASTBOOT_DISABLE_LATELOAD (1<<1)
+// #define FASTBOOT_DISABLE_LATELOAD
 /// Disable atmospherics zone build.
-// #define FASTBOOT_DISABLE_ZONES (1<<2)
-
+// #define FASTBOOT_DISABLE_ZONES
 
 /// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
 // #define DATUMVAR_DEBUGGING_MODE
-
 
 /// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error.
 #ifdef DEBUG
 	#define USE_CUSTOM_ERROR_HANDLER
 	#define DEBUG_SHUTTLES
 #endif
-
 
 /**
  * By using the testing("message") proc you can create debug-feedback for people with this uncommented,

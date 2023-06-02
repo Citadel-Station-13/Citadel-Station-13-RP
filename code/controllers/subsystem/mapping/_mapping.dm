@@ -9,19 +9,6 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/areas_in_z = list()
 
-	/// Zlevel manager list of zlevels.
-	var/datum/space_level/transit
-
-//dlete dis once #39770 is resolved
-/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
-	if(!config)
-#ifdef FORCE_MAP
-		config = load_map_config(FORCE_MAP)
-#else
-		config = load_map_config(error_if_missing = FALSE)
-#endif
-	stat_map_name = config.map_name
-
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	// init first level
 	#warn init default level / reservation
@@ -33,29 +20,15 @@ SUBSYSTEM_DEF(mapping)
 	load_station()
 
 	#warn below
-	report_progress("Initializing [name] subsystem...")
 	// shim: this goes at the top
-	world.max_z_changed(0, world.maxz) // This is to set up the player z-level list, maxz hasn't actually changed (probably)
-	HACK_LoadMapConfig()
-	if(initialized)
-		return
 	repopulate_sorted_areas()
 	load_map_templates()
-
 	loadEngine()
 	preloadShelterTemplates()
 	// Mining generation probably should be here too
 	LEGACY_MAP_DATUM.perform_map_generation()
-	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
-	if(LEGACY_MAP_DATUM)
-		loadLateMaps()
 	if(!LEGACY_MAP_DATUM.overmap_z)
 		build_overmap()
-
-	// basemap - REEVALUATE when runtime maploading is in
-	transit = z_list[1]
-	initialize_reserved_level(transit.z_value)
-	// initialize_reserved_level(transit.z_value)
 
 	// Set up antagonists.
 	populate_antag_type_list()
@@ -239,41 +212,6 @@ SUBSYSTEM_DEF(mapping)
 	//CHECK_TICK //Don't let anything else happen for now
 	// Actually load it
 	chosen_type.load(T)
-
-/datum/controller/subsystem/mapping/proc/loadLateMaps()
-#ifndef FASTBOOT_DISABLE_LATELOAD
-	var/list/deffo_load = LEGACY_MAP_DATUM.lateload_z_levels
-	var/list/maybe_load = LEGACY_MAP_DATUM.lateload_single_pick
-
-	for(var/list/maplist in deffo_load)
-		if(!islist(maplist))
-			log_world("Lateload Z level [maplist] is not a list! Must be in a list!")
-			continue
-		for(var/mapname in maplist)
-			var/datum/map_template/MT = map_templates[mapname]
-			if(!istype(MT))
-				log_world("Lateload Z level \"[mapname]\" is not a valid map!")
-				continue
-			MT.load_new_z(centered = FALSE)
-			CHECK_TICK
-
-	if(LAZYLEN(maybe_load))
-		var/picklist = pick(maybe_load)
-
-		if(!picklist) //No lateload maps at all
-			return
-
-		if(!islist(picklist)) //So you can have a 'chain' of z-levels that make up one away mission
-			log_world("Randompick Z level [picklist] is not a list! Must be in a list!")
-			return
-
-		for(var/map in picklist)
-			var/datum/map_template/MT = map_templates[map]
-			if(!istype(MT))
-				log_world("Randompick Z level \"[map]\" is not a valid map!")
-			else
-				MT.load_new_z(centered = FALSE)
-#endif
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))
