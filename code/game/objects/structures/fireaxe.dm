@@ -183,4 +183,4 @@
 	hasaxe = 0
 	if(fireaxe)
 		hasaxe = 1
-	icon_state = text("fireaxe[][][][]",hasaxe,open,hitstaken,smashed)
+	icon_state = "fireaxe[hasaxe][open][hitstaken][smashed]"

@@ -201,7 +201,7 @@
 
 /obj/machinery/computer/card/proc/print_manifest()
 	var/obj/item/paper/P = new(loc)
-	P.name = text("crew manifest ([])", stationtime2text())
+	P.name = "crew manifest ([stationtime2text()])"
 	P.info = {"<h4>Crew Manifest</h4>
 		<br>
 		[data_core ? data_core.get_manifest(0) : ""]
@@ -231,4 +231,3 @@
 		for(var/datum/access/A as anything in by_cat[category])
 			joining += "- [A.access_name]<br>"
 	P.info += jointext(joining, "")
-

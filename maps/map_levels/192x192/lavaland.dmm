@@ -633,6 +633,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
+"ny" = (
+/mob/living/simple_mob/animal/passive/mouse/gray{
+	name = "Jerry"
+	},
+/turf/simulated/floor/plating,
+/area/lavaland/central/base/common)
 "nz" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4
@@ -1420,9 +1426,6 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
-/mob/living/simple_mob/animal/passive/mouse/gray{
-	name = "Jerry"
-	},
 /obj/machinery/camera/network/mining{
 	dir = 4
 	},
@@ -1480,6 +1483,10 @@
 /area/lavaland/central/base/common)
 "AO" = (
 /turf/simulated/wall/r_wall,
+/area/lavaland/central/base/common)
+"Bh" = (
+/mob/living/simple_mob/animal/passive/mouse/brown/Tom,
+/turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "BY" = (
 /obj/spawner/window/reinforced/full/firelocks,
@@ -10299,7 +10306,7 @@ mN
 oK
 pk
 qz
-qz
+Bh
 oj
 AO
 vm
@@ -10493,7 +10500,7 @@ mZ
 oO
 pn
 pW
-qz
+ny
 so
 AO
 AO

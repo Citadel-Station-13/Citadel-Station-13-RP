@@ -61,10 +61,10 @@
 	set src in usr
 
 	if (t)
-		src.name = text("data disk- '[]'", t)
+		name = "data disk- '[t]'"
 	else
-		src.name = "data disk"
-	src.add_fingerprint(usr)
+		name = "data disk"
+	add_fingerprint(usr)
 	return
 
 /obj/item/card/data/clown
