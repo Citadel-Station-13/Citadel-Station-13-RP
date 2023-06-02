@@ -919,6 +919,7 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	taste_description = "milk"
 	color = "#DFDFDF"
+	var/contains_lactose = TRUE
 
 	glass_name = "Milk"
 	glass_desc = "White and nutritious goodness!"
@@ -933,6 +934,7 @@
 	description = "A delicious mixture of perfectly healthy mix and terrible chocolate."
 	taste_description = "chocolate milk"
 	color = "#74533b"
+	var/contains_lactose = TRUE //could be used for a lactose intolerance trait?
 
 	cup_icon_state = "cup_brown"
 	cup_name = "Cup of Chocolate Milk"
@@ -953,6 +955,14 @@
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -974,6 +984,7 @@
 	description = "An opaque white liquid made from soybeans."
 	taste_description = "soy milk"
 	color = "#DFDFC7"
+	contains_lactose = FALSE
 
 	glass_name = "Soy Milk"
 	glass_desc = "White and nutritious soy goodness!"
@@ -988,6 +999,7 @@
 	description = "An opaque white liquid made from the white inner flesh of a coconut."
 	taste_description = "creamy coconut"
 	color = "#cecece"
+	contains_lactose = FALSE
 
 	glass_name = "Coconut Milk"
 	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
@@ -1486,6 +1498,7 @@
 	taste_description = "vanilla milkshake"
 	color = "#AEE5E4"
 	adj_temp = -9
+	var/contains_lactose = TRUE //in place in case someone makes adds milkshakes with soymilk or coconut milk
 
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
@@ -1510,6 +1523,15 @@
 		else
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 
 /datum/reagent/drink/milkshake/chocoshake
 	name = "Chocolate Milkshake"
@@ -4586,6 +4608,16 @@
 	id = "cheese"
 	color = "#EDB91F"
 	taste_description = "cheese"
+
+/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
+	if(alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 
