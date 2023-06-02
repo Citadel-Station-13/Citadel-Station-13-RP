@@ -46,6 +46,10 @@ GLOBAL_LIST_EMPTY(active_identity_holders)
 
 /datum/identity_holder/proc/get_named_image(name)
 
+/datum/identity_holder/proc/change_facial_identifier(identifier)
+
+/datum/identity_holder/proc/change_voice_identifier(identifier)
+
 /datum/identity_holder/proc/random_facial_identifier()
 	return random_identifier()
 
