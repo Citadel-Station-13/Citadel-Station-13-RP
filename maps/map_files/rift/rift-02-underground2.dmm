@@ -10448,6 +10448,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/mob/living/simple_mob/animal/passive/bird/parrot/polly,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "Ii" = (

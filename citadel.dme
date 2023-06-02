@@ -386,7 +386,6 @@
 #include "code\_globals\regexes.dm"
 #include "code\_globals\religion.dm"
 #include "code\_globals\sensitive.dm"
-#include "code\_globals\text_macros.dm"
 #include "code\_globals\tgui.dm"
 #include "code\_globals\time_vars.dm"
 #include "code\_globals\traits.dm"

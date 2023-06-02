@@ -21,7 +21,7 @@
 	. = ..()
 
 	owner.visible_message(
-		SPAN_WARNING("[src] emits a quiet click."),
+		SPAN_WARNING("[owner] emits a quiet click."),
 		SPAN_WARNING("You emit a quiet click."),
 		SPAN_WARNING("You hear a quiet, high-pitched click.")
 	)

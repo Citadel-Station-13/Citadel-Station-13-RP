@@ -52,7 +52,7 @@
 		hassuit = 1
 	if(occupant)
 		hashuman = 1
-	icon_state = text("suitstorage[][][][][][][][][]", hashelmet, hassuit, hashuman, isopen, islocked, isUV, ispowered, isbroken, issuperUV)
+	icon_state = "suitstorage[hashelmet][hassuit][hashuman][isopen][islocked][isUV][ispowered][isbroken][issuperUV]"
 
 /obj/machinery/suit_storage_unit/power_change()
 	..()
