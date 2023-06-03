@@ -157,9 +157,9 @@ export const Orbit = (props: any, context: any) => {
             .sort(compareNumberedText)
             .map(thing => (
               <OrbitedButton
-              key={thing.name}
-              color="good"
-              thing={thing} />
+                key={thing.name}
+                color="good"
+                thing={thing} />
             ))}
         </Collapsible>
         <Collapsible title={`Simple Mobs - (${simplemobs.length})`}>
