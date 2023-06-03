@@ -171,7 +171,7 @@ export const Orbit = (props: any, context: any) => {
                 key={thing.name}
                 color="good"
                 thing={thing} />
-              ))}
+            ))}
         </Collapsible>
         <Collapsible title={`Items of Interest - (${items_of_interest.length})`}>
           {items_of_interest
