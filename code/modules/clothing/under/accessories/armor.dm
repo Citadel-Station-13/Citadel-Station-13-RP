@@ -489,8 +489,6 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "helmcam_body"
 	slot = ACCESSORY_SLOT_DECOR
-	var/obj/machinery/camera/camera
-	var/list/camera_networks
 	camera_networks = list(NETWORK_CIV_HELMETS)
 
 /obj/item/clothing/accessory/armor/helmetcamera/security
