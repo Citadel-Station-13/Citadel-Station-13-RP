@@ -35,10 +35,6 @@
 
 /datum/orbit_menu/ui_data(mob/user)
 	var/list/data = list()
-	return data
-
-/datum/orbit_menu/ui_static_data(mob/user)
-	var/list/data = list()
 
 	var/list/players = list()
 	var/list/simplemobs = list()
