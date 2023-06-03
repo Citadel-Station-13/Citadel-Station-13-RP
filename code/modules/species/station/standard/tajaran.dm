@@ -30,8 +30,10 @@
 	burn_mod  = 1.15
 	flash_mod = 1.1
 
+	//Cattos be hungy
 	metabolic_rate = 1.1
 	gluttonous = 0
+	hunger_factor = 0.1
 
 	color_mult = 1
 	health_hud_intensity = 2.5

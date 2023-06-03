@@ -14,12 +14,8 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
-	GLOB.mob_list += src
+	mob_list_register(stat)
 	set_key_focus(src)
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
@@ -77,9 +73,7 @@
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
+	mob_list_unregister(stat)
 	unset_machine()
 	movespeed_modification = null
 	actionspeed_modification = null
@@ -115,6 +109,24 @@
 		using_perspective = null
 	..()
 	return QDEL_HINT_HARDDEL
+
+/mob/proc/mob_list_register(for_stat)
+	GLOB.mob_list += src
+	if(for_stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+
+/mob/proc/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
+	if(for_stat == DEAD)
+		dead_mob_list -= src
+	else
+		living_mob_list -= src
+
+/mob/proc/mob_list_update_stat(old_stat, new_stat)
+	mob_list_unregister(old_stat)
+	mob_list_register(new_stat)
 
 /**
  * Generate the tag for this mob
@@ -237,7 +249,7 @@
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[]", msg))
+		if (M.real_name == "[msg]")
 			return M
 	return 0
 
@@ -703,12 +715,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		handle_strip_topic(usr, href_list, op)
 		return
 	if(href_list["mach_close"])
-		var/t1 = text("window=[href_list["mach_close"]]")
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY></HTML>", "window=[name];size=500x200")
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()

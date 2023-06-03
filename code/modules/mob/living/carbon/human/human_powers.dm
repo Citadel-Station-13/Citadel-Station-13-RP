@@ -78,7 +78,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("<font color='red'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</font></B>", src, T), 1)
+			O.show_message("<font color='red'><B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</font></B>", 1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"

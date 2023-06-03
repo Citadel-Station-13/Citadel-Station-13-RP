@@ -7,7 +7,7 @@
 	department_accounts = list(DEPARTMENT_COMMAND)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
-	pto_type = PTO_CIVILIAN
+	pto_type = PTO_COMMAND
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "command staff"

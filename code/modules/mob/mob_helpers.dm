@@ -199,7 +199,7 @@
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[msg]"))
+		if (M.real_name == "[msg]")
 			return 1
 	return 0
 

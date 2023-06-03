@@ -539,27 +539,29 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+/atom/proc/add_hiddenprint(mob/living/M)
+	if (isnull(M))
+		return
+	if (isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
-			return 0
+			return FALSE
 		if (H.gloves)
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 0
-		if (!( src.fingerprints ))
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 1
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return FALSE
+		if (!(fingerprints))
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return TRUE
 	else
-		if(src.fingerprintslast != M.key)
-			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
-			src.fingerprintslast = M.key
+		if (fingerprintslast != M.key)
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
+			fingerprintslast = M.key
 	return
 
 /atom/proc/add_fingerprint(mob/M, ignoregloves, obj/item/tool)

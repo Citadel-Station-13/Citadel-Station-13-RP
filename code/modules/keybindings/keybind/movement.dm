@@ -31,7 +31,7 @@
 	category = CATEGORY_MOVEMENT
 
 /datum/keybinding/movement/multiz_up
-	hotkey_keys = list()
+	hotkey_keys = list("ShiftC")
 	name = "multiz_move_up"
 	full_name = "Move Up Zlevel"
 	description = "Moves up one zlevel if possible"
@@ -41,7 +41,7 @@
 	user.mob.up()
 
 /datum/keybinding/movement/multiz_down
-	hotkey_keys = list()
+	hotkey_keys = list("CtrlC")
 	name = "multiz_move_down"
 	full_name = "Move down Zlevel"
 	description = "Moves down one zlevel if possible"

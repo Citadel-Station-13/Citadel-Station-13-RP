@@ -109,8 +109,8 @@
 		return 0
 	if (!operating) //in case of emag
 		operating = 1
-	flick(text("[src.base_state]opening"), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]opening", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	sleep(10)
 
 	explosion_resistance = 0
@@ -126,8 +126,8 @@
 	if(operating || density)
 		return FALSE
 	operating = TRUE
-	flick(text("[]closing", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	flick("[base_state]closing", src)
+	playsound(loc, 'sound/machines/windowdoor.ogg', 100, 1)
 
 	density = TRUE
 	update_icon()
@@ -167,7 +167,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
@@ -267,7 +267,7 @@
 			close()
 
 	else if (src.density)
-		flick(text("[]deny", src.base_state), src)
+		flick("[base_state]deny", src)
 
 	return
 
