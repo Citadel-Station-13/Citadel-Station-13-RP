@@ -316,13 +316,13 @@
 		to_chat(src , "<span class='danger'>There are no available communicators, sorry.</span>")
 		return
 
-	var/choice = input(src,"Send a voice request to whom?") as null|anything in choices
+	var/choice = tgui_input_list(src,"Send a voice request to whom?","Communicator selection", choices)
 	if(choice)
 		var/obj/item/communicator/chosen_communicator = choice
 		var/mob/observer/dead/O = src
 		if(O.exonet)
 			O.exonet.send_message(chosen_communicator.exonet.address, "voice")
-
+			
 			to_chat(src, "A communications request has been sent to [chosen_communicator].  Now you need to wait until someone answers.")
 
 // Proc: connect_video()

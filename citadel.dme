@@ -3083,6 +3083,7 @@
 #include "code\modules\mob\dead\observer\observer.dm"
 #include "code\modules\mob\dead\observer\observer_movement.dm"
 #include "code\modules\mob\dead\observer\observer_vr.dm"
+#include "code\modules\mob\dead\observer\orbit.dm"
 #include "code\modules\mob\dead\observer\say.dm"
 #include "code\modules\mob\freelook\chunk.dm"
 #include "code\modules\mob\freelook\eye.dm"

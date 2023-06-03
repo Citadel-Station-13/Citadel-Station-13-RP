@@ -100,6 +100,9 @@
 	/// are we a poltergeist and get to do stupid things like move items, throw things, and move chairs?
 	var/is_spooky = FALSE
 
+	/// TGMC style follow selection
+	var/datum/orbit_menu/orbit_menu
+
 /mob/observer/dead/Initialize(mapload)
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
@@ -349,20 +352,28 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	usr.forceMove(pick(get_area_turfs(A)))
-
+/*
 /mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
 	set category = "Ghost"
 	set name = "Follow" // "Haunt"
 	set desc = "Follow and haunt a mob."
 
 	if(!input)
-		input = input(usr, "Select a mob:", "Ghost Follow") as null|anything in getmobs_ghost_follow()
+		input = tgui_input_list(usr, "Select a mob:", "Ghost Follow", getmobs_ghost_follow())
 	if(!input)
 		return
 
 	var/target = getmobs_ghost_follow()[input]
 	if(!target) return
-	ManualFollow(target)
+	ManualFollow(target)*/
+
+/mob/observer/dead/verb/follow()
+	set category = "Ghost"
+	set name = "Follow"
+
+	if(!orbit_menu)
+		orbit_menu = new(src)
+	orbit_menu.ui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/observer/dead/proc/ManualFollow(atom/movable/target)
