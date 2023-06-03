@@ -49,13 +49,30 @@
 	icon_state = "[initial(icon_state)][vial_state]"
 	return ..()
 
-/obj/item/hypospray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
-	if(istype(I, /obj/item/reagent_containers/glass/hypovial))
-		var/obj/item/reagent_containers/glass/hypovia/vial = I
+/obj/item/hypospray/attack_hand(mob/user, list/params)
+	if(user.is_holding_inactive(src))
+		user.put_in_hands_or_drop(loaded)
+		user.action_feedback(SPAN_NOTICE("You remove [loaded] from [src]."), src)
+		loaded = null
+		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
-	#warn impl
+/obj/item/hypospray/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	if(istype(I, /obj/item/reagent_containers/glass/hypovial))
+		var/obj/item/reagent_containers/glass/hypovial/vial = I
+		if(!user.transfer_item_to_loc(vial, src))
+			user.action_feedback(SPAN_WARNING("[vial] is stuck to your hand!"), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		var/obj/item/reagent_containers/glass/hypovial/old_vial = loaded
+		loaded = vial
+		if(!isnull(old_vial))
+			user.action_feedback(SPAN_NOTICE("You quickly swap [old_vial] with [vial]."), src)
+		else
+			user.action_feedback(SPAN_NOTICE("You insert [vial] into [src]."), src)
+		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
+		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+	return ..()
 
 // todo: alt click context radials?
 /obj/item/hypospray/verb/set_transfer_amount()
