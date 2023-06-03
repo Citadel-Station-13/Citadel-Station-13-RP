@@ -303,13 +303,13 @@ SUBSYSTEM_DEF(ticker)
 		var/startupsound = rand(1,4)
 		switch(startupsound)
 			if(1)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_1.mp3'))
+				SEND_SOUND(world, sound('sound/roundStart/start_up_1.ogg'))
 			if(2)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_2.mp3'))
+				SEND_SOUND(world, sound('sound/roundStart/start_up_2.ogg'))
 			if(3)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_3.mp3'))
+				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
 			if(4)
-				SEND_SOUND(world, sound('sound/roundStart/start_up_4.mp3'))//the original sound
+				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
