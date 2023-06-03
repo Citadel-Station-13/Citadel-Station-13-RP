@@ -7,6 +7,7 @@
 	Nowadays, one can expect this model to be on all but the most backwater colonies and installations."
 	icon = 'icons/modules/reagents/items/hyposprays.dmi'
 	icon_state = "hypo"
+	w_class = WEIGHT_CLASS_SMALL
 	#warn inhand icons?
 
 	/// loaded vial
@@ -35,7 +36,6 @@
 #warn vial-bs:
 #warn vial-l: vial-l1, vial-l2, vial-l3, vial-l4, l4 is 100% but l3 is 50%
 
-#warn kits
 #warn kits in vendors & storage
 #warn vials in chemmaster
 
