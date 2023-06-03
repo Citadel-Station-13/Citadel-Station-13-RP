@@ -112,7 +112,7 @@ export const Orbit = (props: any, context: any) => {
       players,
       simplemobs,
       items_of_interest,
-      ]) {
+    ]) {
       const member = source
         .filter(searchFor(searchText))
         .sort(compareNumberedText)[0];
@@ -152,37 +152,37 @@ export const Orbit = (props: any, context: any) => {
         </Section>
 
         <Collapsible title={`Players - (${players.length})`}>
-            {players
-              .filter(searchFor(searchText))
-              .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
+          {players
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+              key={thing.name}
+              color="good"
+              thing={thing} />
+            ))}
+        </Collapsible>
+        <Collapsible title={`Simple Mobs - (${simplemobs.length})`}>
+          {simplemobs
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
                 key={thing.name}
                 color="good"
                 thing={thing} />
               ))}
         </Collapsible>
-        <Collapsible title={`Simple Mobs - (${simplemobs.length})`}>
-            {simplemobs
-              .filter(searchFor(searchText))
-              .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
-              ))}
-        </Collapsible>
         <Collapsible title={`Items of Interest - (${items_of_interest.length})`}>
-            {items_of_interest
-              .filter(searchFor(searchText))
-              .sort(compareNumberedText)
-              .map(thing => (
-                <OrbitedButton
-                  key={thing.name}
-                  color="good"
-                  thing={thing} />
-              ))}
+          {items_of_interest
+            .filter(searchFor(searchText))
+            .sort(compareNumberedText)
+            .map(thing => (
+              <OrbitedButton
+                key={thing.name}
+                color="good"
+                thing={thing} />
+            ))}
         </Collapsible>
         <Collapsible title={`Ghosts - (${ghosts.length})`}>
           {ghosts
