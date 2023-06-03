@@ -58,7 +58,7 @@
 		else if(issimple(M))
 			simplemobs += list(serialized)
 		else if(ishuman(M) && M.ckey)
-			players = list(serialized)
+			players += list(serialized)
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs
