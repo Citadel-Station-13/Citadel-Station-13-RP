@@ -349,7 +349,7 @@ SUBSYSTEM_DEF(ticker)
 	cinematic.icon = 'icons/effects/station_explosion.dmi'
 	cinematic.icon_state = "station_intact"
 	cinematic.layer = 100
-	cinematic.plane = PLANE_PLAYER_HUD
+	cinematic.plane = HUD_PLANE
 	cinematic.mouse_opacity = 0
 	cinematic.screen_loc = "1,0"
 

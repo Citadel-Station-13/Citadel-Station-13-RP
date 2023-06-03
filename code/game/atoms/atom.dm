@@ -756,7 +756,7 @@
 			var/mob/M = AM
 			if(self_message && (M == src))
 				M.show_message(self_message, 1, blind_message, 2)
-			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+			else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
 				M.show_message(message, 1, blind_message, 2)
 			else if(blind_message)
 				M.show_message(blind_message, 2)
@@ -990,6 +990,9 @@
 	if(update)
 		update_filters()
 
+/atom/proc/has_filter(name)
+	return !isnull(filter_data?[name])
+
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null
@@ -1018,8 +1021,8 @@
 	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
+	plane = INVENTORY_PLANE
+	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()

@@ -40,6 +40,11 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//? Traits / Physiology
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+
 	//? Additional info
 	/// what you see on tooltip/examine
 	var/examine_name
@@ -294,8 +299,8 @@
 	var/gluttonous
 
 	//? Sight
-	/// Native darksight distance.
-	var/darksight = 2
+	/// darksight datum - set to typepath, initialized at init
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/species_tier_0
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -430,10 +435,6 @@
 	var/show_ssd = "fast asleep"
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
-
-	//? Traits
-	/// Intrinsic datum traits to apply to the mob
-	var/list/mob_traits
 
 	//? on death drops
 	/// The color of the species flesh.
@@ -911,3 +912,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.dna.ready_dna(H)
 	else
 		src.traits = traits
+
+//? Darksight
+
+/**
+ * Makes sure innate darksight is there
+ */
+/datum/species/proc/assert_innate_vision()
+	if(ispath(vision_innate))
+		vision_innate = new vision_innate
