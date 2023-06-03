@@ -3526,6 +3526,7 @@
 #include "code\modules\mob\observer\dead\free_vr.dm"
 #include "code\modules\mob\observer\dead\logout.dm"
 #include "code\modules\mob\observer\dead\observer_movement.dm"
+#include "code\modules\mob\observer\dead\orbit.dm"
 #include "code\modules\mob\observer\dead\perspective.dm"
 #include "code\modules\mob\observer\dead\say.dm"
 #include "code\modules\modular_computers\laptop_vendor.dm"
