@@ -96,12 +96,16 @@
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
 /obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-
-	#warn impl
+	if(injection_checks(target, user))
+		do_inject(target, user)
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/item/hypospray/proc/injection_checks(mob/target, mob/user, speed_mult = 1, silent = FALSE)
+	#warn impl
 
 /obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode)
+	#warn impl
 
 /obj/item/hypospray/advanced
 	name = "advanced hypospray"
