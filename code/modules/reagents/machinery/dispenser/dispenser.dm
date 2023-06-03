@@ -43,7 +43,7 @@
 	/// inserted beaker / whatever
 	var/obj/item/reagent_containers/inserted
 	/// allow drinking glasses
-	var/allow_drinking = TRUE
+	var/allow_drinking = FALSE
 	/// current dispense amount
 	var/dispense_amount = 10
 	/// max dispense amount - this is relatively important to prevent *easy* maxcaps.
@@ -417,7 +417,7 @@
 		if(istype(container, /obj/item/reagent_containers/cartridge))
 			// always fine
 		else if(istype(container, /obj/item/reagent_containers/food) && !allow_drinking)
-			user.action_feedback(SPAN_WARNING("[src] doesn't accept beakers."), src)
+			user.action_feedback(SPAN_WARNING("[src] doesn't accept non-beakers."), src)
 			return CLICKCHAIN_DO_NOT_PROPAGATE
 		// insert
 		if(!user.transfer_item_to_loc(I, src))

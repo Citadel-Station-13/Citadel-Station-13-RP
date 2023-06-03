@@ -128,7 +128,7 @@
 
 /mob/living/simple_mob/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	for(var/spell in construct_spells)
 		src.add_spell(new spell, "const_spell_ready")
