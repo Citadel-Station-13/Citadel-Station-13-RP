@@ -3,14 +3,14 @@
  */
 
 GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
-/*	/obj/machinery/door/airlock,
-	/obj/structure/window/reinforced/fulltile,
-	/obj/structure/window/fulltile,
-	/obj/structure/window/reinforced/shuttle,
-	/obj/machinery/door/poddoor,
-	/obj/structure/window/reinforced/plasma/fulltile,
-	/obj/structure/window/plasma/fulltile,
-	/obj/structure/low_wall*/
+	/obj/machinery/door/airlock,
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/structure/wall_frame
 	))
 
 GLOBAL_REAL_VAR(wall_overlays_cache) = list()

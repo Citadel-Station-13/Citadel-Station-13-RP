@@ -13,14 +13,20 @@
 /obj/machinery/door/firedoor
 	name = "\improper Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas."
-	icon = 'icons/obj/doors/DoorHazard.dmi'
-	icon_state = "door_open"
+	icon = 'icons/obj/doors/hazard/door.dmi'
+	var/panel_file = 'icons/obj/doors/hazard/panel.dmi'
+	var/welded_file = 'icons/obj/doors/hazard/welded.dmi'
+	var/closed_plane = OBJ_PLANE
+	var/open_plane = OVER_OPENSPACE_PLANE
+	plane = OVER_OPENSPACE_PLANE
+	icon_state = "open"
 	req_one_access = list(ACCESS_COMMAND_EVA)	//ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	opacity = 0
 	density = 0
 	layer = DOOR_OPEN_LAYER - 0.01
-	open_layer = DOOR_OPEN_LAYER - 0.01 // Just below doors when open
+	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = DOOR_CLOSED_LAYER + 0.01 // Just above doors when closed
+
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -36,6 +42,7 @@
 	var/list/areas_added
 	var/list/users_to_open = new
 	var/next_process_time = 0
+	var/low_profile = FALSE
 
 	var/hatch_open = 0
 
@@ -404,6 +411,7 @@
 
 /obj/machinery/door/firedoor/close()
 	latetoggle()
+	plane = closed_plane
 	return ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
@@ -422,47 +430,83 @@
 			log_admin("[usr]([usr.ckey]) has forced open an emergency shutter.")
 			message_admins("[usr]([usr.ckey]) has forced open an emergency shutter.")
 	latetoggle()
+	plane = open_plane
 	return ..()
 
 /obj/machinery/door/firedoor/do_animate(animation)
 	switch(animation)
 		if("opening")
-			flick("door_opening", src)
+			flick("opening", src)
 			playsound(src, 'sound/machines/firelockopen.ogg', 37, 1)
 		if("closing")
 			playsound(src, 'sound/machines/firelockclose.ogg', 37, 1)
-			flick("door_closing", src)
+			flick("closing", src)
 	return
 
 
 /obj/machinery/door/firedoor/update_icon()
-	cut_overlays()
-	var/list/overlays_to_add = list()
+	var/icon/lights_overlay
+	var/icon/panel_overlay
+	var/icon/weld_overlay
+
+	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+		var/turf/step_turf = get_step(src, cardinal)
+		for(var/atom/thing as anything in step_turf)
+			if(thing.type in airlock_typecache)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+		if (step_turf.density == TRUE)
+			switch(cardinal)
+				if(EAST)
+					setDir(SOUTH)
+				if(WEST)
+					setDir(SOUTH)
+				if(NORTH)
+					setDir(WEST)
+				if(SOUTH)
+					setDir(WEST)
+
+	overlays.Cut()
+	set_light(0)
+	var/do_set_light = FALSE
 
 	if(density)
-		icon_state = "door_closed"
-		if(prying)
-			icon_state = "prying_closed"
-		if(hatch_open)
-			overlays_to_add += "hatch"
-		if(blocked)
-			overlays_to_add += "welded"
+
+		icon_state = "closed"
+		if(panel_open)
+			overlays = panel_overlay
 		if(pdiff_alert)
-			overlays_to_add += "palert"
+			lights_overlay += "palert"
+			do_set_light = TRUE
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
-					if(dir_alerts[d] & (1<<(i-1)))
-						overlays_to_add += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+					if(dir_alerts[d] & BITFLAG(i-1))
+						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+						do_set_light = TRUE
 	else
-		icon_state = "door_open"
-		if(prying)
-			icon_state = "prying_open"
-		if(blocked)
-			overlays_to_add += "welded_open"
+		if(low_profile)
+			icon_state = "open_lowprofile"
+		else
+			icon_state = "open"
 
-	add_overlay(overlays_to_add)
+	if(blocked)
+		weld_overlay = welded_file
+
+	if(do_set_light)
+		set_light(2, 0.25, COLOR_SUN)
+
+	overlays += panel_overlay
+	overlays += weld_overlay
+	overlays += lights_overlay
 
 	return
 
@@ -517,7 +561,6 @@
 /obj/machinery/door/firedoor/glass
 	name = "\improper Emergency Glass Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a resilient glass window, allowing you to see the danger."
-	icon = 'icons/obj/doors/DoorHazardGlass.dmi'
 	icon_state = "door_open"
 	glass = 1
 
@@ -525,8 +568,8 @@
 /obj/machinery/door/firedoor/glass/hidden
 	name = "\improper Emergency Shutter System"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
-	icon = 'icons/obj/doors/DoorHazardHidden.dmi'
 	plane = TURF_PLANE
+	low_profile = TRUE
 
 	#ifndef IN_MAP_EDITOR
 	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
@@ -545,4 +588,3 @@
 /obj/machinery/door/firedoor/glass/hidden/steel
 	name = "\improper Emergency Shutter System"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
-	icon = 'icons/obj/doors/DoorHazardHidden_steel.dmi'

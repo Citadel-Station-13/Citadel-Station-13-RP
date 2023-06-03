@@ -1,11 +1,21 @@
 //Terribly sorry for the code doubling, but things go derpy otherwise.
 /obj/machinery/door/airlock/multi_tile
+	airlock_type = "Wide"
 	width = 2
 	appearance_flags = 0
 	var/obj/machinery/filler_object/filler1
 	var/obj/machinery/filler_object/filler2
 	open_sound_powered = 'sound/machines/door/WideOpen.ogg'
 	close_sound_powered = 'sound/machines/door/WideClose.ogg'
+	icon = 'icons/obj/doors/double/door.dmi'
+	fill_file = 'icons/obj/doors/double/fill_steel.dmi'
+	color_file = 'icons/obj/doors/double/color.dmi'
+	color_fill_file = 'icons/obj/doors/double/fill_color.dmi'
+	glass_file = 'icons/obj/doors/double/fill_glass.dmi'
+	bolts_file = 'icons/obj/doors/double/lights_bolts.dmi'
+	deny_file = 'icons/obj/doors/double/lights_deny.dmi'
+	lights_file = 'icons/obj/doors/double/lights_green.dmi'
+	emag_file = 'icons/obj/doors/double/emag.dmi'
 
 /obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()
@@ -64,14 +74,14 @@
 
 /obj/machinery/door/airlock/multi_tile/glass
 	name = "Glass Airlock"
-	icon = 'icons/obj/doors/Door2x1glass.dmi'
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
+	window_color = GLASS_COLOR
+
 
 /obj/machinery/door/airlock/multi_tile/metal
 	name = "Airlock"
-	icon = 'icons/obj/doors/Door2x1metal.dmi'
 	assembly_type = /obj/structure/door_assembly/multi_tile
 
 /obj/machinery/filler_object
@@ -81,5 +91,4 @@
 	density = 0
 
 /obj/machinery/door/airlock/multi_tile/metal/mait
-	icon = 'icons/obj/doors/Door2x1_Maint.dmi'
 	//req_one_access = list(ACCESS_ENGINEERING_MAINT) //VOREStaiton Edit - Maintenance is open access

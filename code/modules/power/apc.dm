@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(apcs)
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
-	icon = 'icons/obj/power_vr.dmi'
+	icon = 'icons/obj/apc.dmi'
 	icon_state = "apc0"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
@@ -479,6 +479,7 @@ GLOBAL_LIST_EMPTY(apcs)
 // update the APC icon to show the three base states
 // also add overlays for indicator lights
 /obj/machinery/power/apc/update_icon()
+
 	if (!status_overlays)
 		status_overlays = 1
 		status_overlays_lock = new
@@ -489,9 +490,9 @@ GLOBAL_LIST_EMPTY(apcs)
 
 		status_overlays_lock.len = 2
 		status_overlays_charging.len = 3
-		status_overlays_equipment.len = 4
-		status_overlays_lighting.len = 4
-		status_overlays_environ.len = 4
+		status_overlays_equipment.len = 5
+		status_overlays_lighting.len = 5
+		status_overlays_environ.len = 5
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
@@ -500,24 +501,34 @@ GLOBAL_LIST_EMPTY(apcs)
 		status_overlays_charging[2] = image(icon, "apco3-1")
 		status_overlays_charging[3] = image(icon, "apco3-2")
 
-		status_overlays_equipment[1] = image(icon, "apco0-0")
-		status_overlays_equipment[2] = image(icon, "apco0-1")
-		status_overlays_equipment[3] = image(icon, "apco0-2")
-		status_overlays_equipment[4] = image(icon, "apco0-3")
+		var/list/channel_overlays = list(status_overlays_equipment, status_overlays_lighting, status_overlays_environ)
+		var/channel = 0
+		for(var/list/channel_leds in channel_overlays)
+			channel_leds[POWERCHAN_OFF + 1] = overlay_image(icon,"apco[channel]",COLOR_RED)
+			channel_leds[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_ORANGE)
+			channel_leds[POWERCHAN_ON + 1] = overlay_image(icon,"apco[channel]",COLOR_LIME)
+			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
+			channel++
 
-		status_overlays_lighting[1] = image(icon, "apco1-0")
-		status_overlays_lighting[2] = image(icon, "apco1-1")
-		status_overlays_lighting[3] = image(icon, "apco1-2")
-		status_overlays_lighting[4] = image(icon, "apco1-3")
 
-		status_overlays_environ[1] = image(icon, "apco2-0")
-		status_overlays_environ[2] = image(icon, "apco2-1")
-		status_overlays_environ[3] = image(icon, "apco2-2")
-		status_overlays_environ[4] = image(icon, "apco2-3")
+	if(update_state < 0)
+		pixel_x = 0
+		pixel_y = 0
+		var/turf/T = get_step(get_turf(src), dir)
+		if(istype(T) && T.density)
+			if(dir == SOUTH)
+				pixel_y = -22
+			else if(dir == NORTH)
+				pixel_y = 22
+			else if(dir == EAST)
+				pixel_x = 22
+			else if(dir == WEST)
+				pixel_x = -22
 
 	var/update = check_updates() 		//returns 0 if no need to update icons.
 						// 1 if we need to update the icon_state
 						// 2 if we need to update the overlays
+
 	if(!update)
 		return
 
@@ -525,7 +536,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(update_state & UPDATE_ALLGOOD)
 			icon_state = "apc0"
 		else if(update_state & (UPDATE_OPENED1|UPDATE_OPENED2))
-			var/basestate = "apc[ cell ? "2" : "1" ]"
+			var/basestate = "apc[ get_cell(FALSE) ? "2" : "1" ]"
 			if(update_state & UPDATE_OPENED1)
 				if(update_state & (UPDATE_MAINT|UPDATE_BROKE))
 					icon_state = "apcmaint" //disabled APC cannot hold cell
@@ -535,45 +546,45 @@ GLOBAL_LIST_EMPTY(apcs)
 				icon_state = "[basestate]-nocover"
 		else if(update_state & UPDATE_BROKE)
 			icon_state = "apc-b"
-		else if(update_state & UPDATE_WIREEXP)
-			icon_state = "apcewires"
 		else if(update_state & UPDATE_BLUESCREEN)
 			icon_state = "apcemag"
+		else if(update_state & UPDATE_WIREEXP)
+			icon_state = "apcewires"
 
 	if(!(update_state & UPDATE_ALLGOOD))
 		if(overlays.len)
-			cut_overlays()
+			overlays.Cut()
 			return
 
 	if(update & 2)
 		if(overlays.len)
-			cut_overlays()
+			overlays.Cut()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			var/list/overlays_to_add = list()
-			overlays_to_add += status_overlays_lock[locked+1]
-			overlays_to_add += status_overlays_charging[charging+1]
+			overlays += status_overlays_lock[locked+1]
+			overlays += status_overlays_charging[charging+1]
 			if(operating)
-				overlays_to_add += status_overlays_equipment[equipment+1]
-				overlays_to_add += status_overlays_lighting[lighting+1]
-				overlays_to_add += status_overlays_environ[environ+1]
-
-			add_overlay(overlays_to_add)
+				overlays += status_overlays_equipment[equipment+1]
+				overlays += status_overlays_lighting[lighting+1]
+				overlays += status_overlays_environ[environ+1]
 
 	if(update & 3)
-		if(update_state & UPDATE_BLUESCREEN)
-			set_light(l_range = 2, l_power = 0.25, l_color = "#0000FF")
+		if((update_state & (UPDATE_OPENED1|UPDATE_OPENED2|UPDATE_BROKE)))
+			set_light(0)
+		else if(update_state & UPDATE_BLUESCREEN)
+			set_light(l_range = 2, l_power = 0.5, l_color = "#00ecff")
 		else if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
 			var/color
 			switch(charging)
 				if(0)
-					color = "#F86060"
+					color = "#f86060"
 				if(1)
-					color = "#A8B0F8"
+					color = "#a8b0f8"
 				if(2)
-					color = "#82FF4C"
-			set_light(l_range = 2, l_power = 0.25, l_color = color)
+					color = "#82ff4c"
+			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
+
 
 /obj/machinery/power/apc/proc/check_updates()
 

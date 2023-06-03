@@ -328,6 +328,19 @@ GLOBAL_LIST_EMPTY(air_alarms)
 /obj/machinery/alarm/update_icon()
 	cut_overlays()
 
+	pixel_x = 0
+	pixel_y = 0
+	var/turf/T = get_step(get_turf(src), turn(dir, 180))
+	if(istype(T) && T.density)
+		if(dir == NORTH)
+			pixel_y = -21
+		else if(dir == SOUTH)
+			pixel_y = 21
+		else if(dir == WEST)
+			pixel_x = 21
+		else if(dir == EAST)
+			pixel_x = -21
+
 	if(panel_open)
 		icon_state = "alarmx"
 		set_light(0)

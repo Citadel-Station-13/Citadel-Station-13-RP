@@ -305,20 +305,20 @@
 	z = Z_LEVEL_WEST_BASE
 	name = "Western Canyon"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 
 /datum/map_z_level/rift/deep
 	z = Z_LEVEL_WEST_DEEP
 	name = "Western Deep Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 
 
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+	base_turf = /turf/simulated/floor/outdoors/icesand/lythios43c/indoor
 
 
 /datum/map_z_level/rift/plains

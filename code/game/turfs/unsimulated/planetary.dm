@@ -83,3 +83,9 @@
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
+	icon = 'icons/turf/walls.dmi'
+	base_icon_state = "wall"
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	color = COLOR_OFF_WHITE

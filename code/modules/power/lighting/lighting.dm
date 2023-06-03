@@ -229,8 +229,8 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light
 	name = "light fixture"
 	icon = 'icons/obj/lighting_vr.dmi'
-	base_icon_state = "tube"
-	icon_state = "tube1"
+	base_icon_state = "tube_empty"
+	icon_state = "tube_empty"
 	desc = "A lighting fixture."
 	anchored = 1
 	plane = MOB_PLANE
@@ -311,6 +311,24 @@ var/global/list/light_type_cache = list()
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
 	shows_alerts = FALSE
+
+/obj/machinery/light/small/update_icon()
+	switch(status) // set icon_states
+		if(LIGHT_OK)
+			if(shows_alerts && current_alert && on)
+				icon_state = "[base_icon_state]-alert-[current_alert]"
+			else
+				icon_state = "[base_icon_state][on]"
+		if(LIGHT_EMPTY)
+			icon_state = "[base_icon_state]-empty"
+			on = 0
+		if(LIGHT_BURNED)
+			icon_state = "[base_icon_state]-burned"
+			on = 0
+		if(LIGHT_BROKEN)
+			icon_state = "[base_icon_state]-broken"
+			on = 0
+	return
 
 /obj/machinery/light/small/flicker
 	auto_flicker = TRUE
@@ -415,21 +433,41 @@ var/global/list/light_type_cache = list()
 	return ..()
 
 /obj/machinery/light/update_icon()
+	cut_overlays()
+
+	pixel_y = 0
+	pixel_x = 0
+	var/turf/T = get_step(get_turf(src), src.dir)
+	if(istype(T) && T.density)
+		if(src.dir == NORTH)
+			pixel_y = 21
+		else if(src.dir == EAST)
+			pixel_x = 10
+		else if(src.dir == WEST)
+			pixel_x = -10
 
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
-				icon_state = "[base_icon_state]-alert-[current_alert]"
+				var/addcolor
+				switch(current_alert)
+					if("atmos")
+						addcolor = COLOR_BLUE
+					if("fire")
+						addcolor = COLOR_ORANGE
+				var/image/I = image(icon, "tube1")
+				I.color = addcolor
+				add_overlay(I)
+
 			else
-				icon_state = "[base_icon_state][on]"
+				add_overlay(image(icon, "tube1"))
 		if(LIGHT_EMPTY)
-			icon_state = "[base_icon_state]-empty"
 			on = 0
 		if(LIGHT_BURNED)
-			icon_state = "[base_icon_state]-burned"
+			add_overlay(image(icon, "tube_burned"))
 			on = 0
 		if(LIGHT_BROKEN)
-			icon_state = "[base_icon_state]-broken"
+			add_overlay(image(icon, "tube_broken"))
 			on = 0
 	return
 

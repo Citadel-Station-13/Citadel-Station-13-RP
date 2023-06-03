@@ -9,6 +9,16 @@
 
 var/global/list/airlock_icon_cache = list()
 
+GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/structure/wall_frame
+	))
+
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
 #define AIRLOCK_OPEN	3
@@ -84,7 +94,7 @@ var/global/list/airlock_icon_cache = list()
 	var/door_color = null
 	var/stripe_color = null
 	var/symbol_color = null
-	var/window_color = null
+	var/window_color = GLASS_COLOR
 	var/window_material = /datum/material/glass
 
 	var/fill_file = 'icons/obj/doors/station/fill_steel.dmi'
@@ -320,107 +330,6 @@ var/global/list/airlock_icon_cache = list()
 	new/obj/structure/door_assembly( src.loc )
 	qdel(src)
 
-/obj/machinery/door/airlock/sandstone
-	name = "Sandstone Airlock"
-	icon = 'icons/obj/doors/Doorsand.dmi'
-	mineral = "sandstone"
-
-/obj/machinery/door/airlock/science
-	name = "Research Airlock"
-	icon = 'icons/obj/doors/Doorsci.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
-	req_one_access = list(ACCESS_SCIENCE_MAIN)
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/glass_science
-	name = "Glass Airlocks"
-	icon = 'icons/obj/doors/Doorsciglass.dmi'
-	opacity = 0
-	assembly_type = /obj/structure/door_assembly/door_assembly_science
-	glass = 1
-	req_one_access = list(ACCESS_SCIENCE_MAIN)
-	open_sound_powered = 'sound/machines/door/sci1o.ogg'
-	close_sound_powered = 'sound/machines/door/sci1c.ogg'
-
-/obj/machinery/door/airlock/highsecurity
-	name = "Secure Airlock"
-	icon = 'icons/obj/doors/hightechsecurity.dmi'
-	explosion_resistance = 20
-	secured_wires = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_highsecurity
-	req_one_access = list(ACCESS_COMMAND_VAULT)
-	open_sound_powered = 'sound/machines/door/secure1o.ogg'
-	close_sound_powered = 'sound/machines/door/secure1c.ogg'
-
-/obj/machinery/door/airlock/voidcraft
-	name = "voidcraft hatch"
-	desc = "It's an extra resilient airlock intended for spacefaring vessels."
-	icon = 'icons/obj/doors/shuttledoors.dmi'
-	explosion_resistance = 20
-	opacity = 0
-	glass = 1
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft
-	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
-	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
-
-// Airlock opens from top-bottom instead of left-right.
-/obj/machinery/door/airlock/voidcraft/vertical
-	icon = 'icons/obj/doors/shuttledoors_vertical.dmi'
-	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft/vertical
-	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
-	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'
-
-/datum/category_item/catalogue/anomalous/precursor_a/alien_airlock
-	name = "Precursor Alpha Object - Doors"
-	desc = "This object appears to be used in order to restrict or allow access to \
-	rooms based on its physical state. In other words, a door. \
-	Despite being designed and created by unknown ancient alien hands, this door has \
-	a large number of similarities to the conventional airlock, such as being driven by \
-	electricity, opening and closing by physically moving, and being air tight. \
-	It also operates by responding to signals through internal electrical conduits. \
-	These characteristics make it possible for one with experience with a multitool \
-	to manipulate the door.\
-	<br><br>\
-	The symbol on the door does not match any living species' patterns, giving further \
-	implications that this door is very old, and yet it remains operational after \
-	thousands of years. It is unknown if that is due to superb construction, or \
-	unseen autonomous maintenance having been performed."
-	value = CATALOGUER_REWARD_EASY
-
-/obj/machinery/door/airlock/alien
-	name = "alien airlock"
-	desc = "You're fairly sure this is a door."
-	catalogue_data = list(/datum/category_item/catalogue/anomalous/precursor_a/alien_airlock)
-	icon = 'icons/obj/doors/Dooralien.dmi'
-	explosion_resistance = 20
-	secured_wires = TRUE
-	hackProof = TRUE
-	assembly_type = /obj/structure/door_assembly/door_assembly_alien
-	req_one_access = list(ACCESS_FACTION_ALIEN)
-
-/obj/machinery/door/airlock/alien/locked
-	icon_state = "door_locked"
-	locked = TRUE
-
-/obj/machinery/door/airlock/alien/public // Entry to UFO.
-	req_one_access = list()
-	normalspeed = FALSE // So it closes faster and hopefully keeps the warm air inside.
-	hackProof = TRUE // No borgs
-
-//"Red" Armory Door
-/obj/machinery/door/airlock/security/armory
-	name = "Red Armory"
-	//color = ""
-
-/obj/machinery/door/airlock/security/armory/allowed(mob/user)
-	if(get_security_level() in list("green","blue"))
-		return FALSE
-
-	return ..(user)
-
-
-
 /*
 About the new airlock wires panel:
 *	An airlock wire dialog can be accessed by the normal way or by using wirecutters or a multitool on the door while the wire-panel is open. This would show the following wires, which you can either wirecut/mend or send a multitool pulse through. There are 9 wires.
@@ -602,8 +511,29 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon()
-	dir = SOUTH
-
+	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+		var/turf/step_turf = get_step(src, cardinal)
+		for(var/atom/thing as anything in step_turf)
+			if(thing.type in airlock_typecache)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+		if (step_turf.density == TRUE)
+			switch(cardinal)
+				if(EAST)
+					setDir(SOUTH)
+				if(WEST)
+					setDir(SOUTH)
+				if(NORTH)
+					setDir(WEST)
+				if(SOUTH)
+					setDir(WEST)
 	switch(state)
 		if(0)
 			if(density)

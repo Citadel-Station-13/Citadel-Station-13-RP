@@ -11,6 +11,7 @@
 	name = "rock"
 	icon = 'icons/turf/walls/natural.dmi'
 	icon_state = "wall"
+	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
@@ -18,10 +19,11 @@
 	blocks_air = 1
 	can_dirty = FALSE
 	has_resources = 1
+	color = COLOR_ASTEROID_ROCK
 
-	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -99,7 +101,12 @@
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
+	base_icon_state = "wall"
 	density = 1
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	color = COLOR_OFF_WHITE
 
 /turf/simulated/mineral/ignore_mapgen
 	ignore_mapgen = 1
@@ -184,8 +191,6 @@
 	. = ..()
 	if(prob(20))
 		overlay_detail = "asteroid[rand(0,9)]"
-	if(random_icon)
-		dir = pick(GLOB.alldirs)
 	if(mineral)
 		if(density)
 			MineralSpread()
