@@ -798,13 +798,17 @@
 	var/emp_long = 12
 	var/smoke_spread = 1
 	var/smoke_amt = 1
-	cooldown = 3 MINUTES	//Let's not be able to spam this
-	nutrition_enforced = FALSE
+	cooldown = 10 MINUTES	//Let's not be able to spam this
+	nutrition_enforced = TRUE
 	is_feral = TRUE
 
 
 /datum/ability/species/xenochimera/dissonant_shriek/on_trigger()
 	. = ..()
+
+	if(owner.incapacitated())
+		return
+
 	for(var/mob/living/T in get_hearers_in_view(range, owner))
 		if(iscarbon(T))
 			if(T.mind)
