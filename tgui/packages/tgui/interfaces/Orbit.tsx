@@ -1,8 +1,6 @@
-import { BooleanLike } from 'common/react';
-import { createSearch, multiline } from 'common/string';
+import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { resolveAsset } from '../assets';
-import { Box, Button, Collapsible, Divider, Flex, Icon, Input, Section } from '../components';
+import { Button, Collapsible, Divider, Flex, Icon, Input, Section } from '../components';
 import { Window } from '../layouts';
 
 const PATTERN_NUMBER = / \(([0-9]+)\)$/;
