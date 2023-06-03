@@ -192,6 +192,7 @@
 #include "code\__DEFINES\inventory\procs.dm"
 #include "code\__DEFINES\inventory\rendering.dm"
 #include "code\__DEFINES\inventory\slots.dm"
+#include "code\__DEFINES\items\hypospray.dm"
 #include "code\__DEFINES\items\inducer.dm"
 #include "code\__DEFINES\items\nifs.dm"
 #include "code\__DEFINES\items\clothing\uniforms.dm"
