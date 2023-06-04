@@ -31,7 +31,6 @@
 	/// can people change how much to inject?
 	var/inject_adjustable = TRUE
 
-#warn sprites: 'icons/modules/reagents/items/hypospray.dmi'
 #warn vial: vial1, vial2, vial3
 #warn vial-bs:
 #warn vial-l: vial-l1, vial-l2, vial-l3, vial-l4, l4 is 100% but l3 is 50%

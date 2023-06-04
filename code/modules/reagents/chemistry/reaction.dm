@@ -1,17 +1,22 @@
 /datum/chemical_reaction
-	//? core
+	//* core *//
 	/// id - must be unique and in CamelCase.
 	var/id
 	/// reagent reaction flags - see [code/__DEFINES/reagents/flags.dm]
 	var/chemical_reaction_flags = NONE
 
+	//* reaction *//
+	/// required reagents as ratios. path or id is supported, prefer paths for compile time checking.
+	var/list/required_reagents = list()
+	/// result reagent path or id. prefer path for compile time checking.
+	var/result
+	/// how much of the result is made per 1 ratio of required_reagents consumed.
+	var/result_amount = 0
+
 	//? legacy / unsorted
 	var/name = null
-	var/result = null
-	var/list/required_reagents = list()
 	var/list/catalysts = list()
 	var/list/inhibitors = list()
-	var/result_amount = 0
 
 	//how far the reaction proceeds each time it is processed. Used with either REACTION_RATE or HALF_LIFE macros.
 	var/reaction_rate = HALF_LIFE(0)
@@ -28,6 +33,26 @@
 	var/reaction_sound = 'sound/effects/bubbles.ogg'
 
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
+
+/datum/chemical_reaction/New()
+	for(var/i in 1 to length(required_reagents))
+		var/datum/reagent/path = required_reagents[i]
+		if(!ispath(path))
+			continue
+		required_reagents[i] = initial(path.id)
+	for(var/i in 1 to length(catalysts))
+		var/datum/reagent/path = catalysts[i]
+		if(!ispath(path))
+			continue
+		catalysts[i] = initial(path.id)
+	for(var/i in 1 to length(inhibitors))
+		var/datum/reagent/path = inhibitors[i]
+		if(!ispath(path))
+			continue
+		inhibitors[i] = initial(path.id)
+	if(ispath(result, /datum/reagent))
+		var/datum/reagent/result_initial = result
+		result = initial(result_initial.id)
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	//check that all the required reagents are present
@@ -123,30 +148,6 @@
 /* Most medication reactions, and their precursors */
 
 //Standard First Aid Medication
-
-/datum/chemical_reaction/inaprovaline
-	//Helps the patient breath in shock, very weak painkiller, and reduces bleeding
-	name = "Inaprovaline"
-	id = "inaprovaline"
-	result = "inaprovaline"
-	required_reagents = list("oxygen" = 1, MAT_CARBON = 1, "sugar" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/tricordrazine
-	//Heals the four standards slowly
-	name = "Tricordrazine"
-	id = "tricordrazine"
-	result = "tricordrazine"
-	required_reagents = list("inaprovaline" = 1, "anti_toxin" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/dylovene
-	//Heals toxin
-	name = "Dylovene"
-	id = "anti_toxin"
-	result = "anti_toxin"
-	required_reagents = list("silicon" = 1, "potassium" = 1, "nitrogen" = 1)
-	result_amount = 3
 
 /datum/chemical_reaction/carthatoline
 	//heals toxin
