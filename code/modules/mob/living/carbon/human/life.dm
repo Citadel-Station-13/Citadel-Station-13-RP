@@ -214,7 +214,7 @@
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue
-				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
+				O.show_message(SPAN_DANGER("[src] starts having a seizure!"), SAYCODE_TYPE_VISIBLE)
 			afflict_unconscious(20 * 10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
@@ -1850,12 +1850,6 @@
 		return
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
-
-/mob/living/carbon/human/rejuvenate()
-	restore_blood()
-	shock_stage = 0
-	traumatic_shock = 0
-	..()
 
 /mob/living/carbon/human/proc/weightgain()
 	if (nutrition >= 0 && stat != 2)

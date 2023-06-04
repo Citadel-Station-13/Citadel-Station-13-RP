@@ -95,7 +95,7 @@
 		I.loc = src
 		loaded_item = I
 		for(var/mob/M in viewers())
-			M.show_message(text("<span class='notice'>[user] adds the [I] to the [src].</span>"), 1)
+			M.show_message(SPAN_NOTICE("[user] adds the [I] to the [src]."), SAYCODE_TYPE_VISIBLE)
 		desc = initial(desc) + "<br>It is holding \the [loaded_item]."
 		flick("portable_analyzer_load", src)
 		icon_state = "portable_analyzer_full"
@@ -115,7 +115,7 @@
 		var/obj/item/I = target
 		if(do_after(src, 5 SECONDS * I.w_class))
 			for(var/mob/M in viewers())
-				M.show_message(text("<span class='notice'>[user] sweeps \the [src] over \the [I].</span>"), 1)
+				M.show_message(SPAN_NOTICE("[user] sweeps \the [src] over \the [I]."), SAYCODE_TYPE_VISIBLE)
 			flick("[initial(icon_state)]-scan", src)
 			if(I.origin_tech && I.origin_tech.len)
 				for(var/T in I.origin_tech)
@@ -311,7 +311,7 @@
 
 	//n_name = copytext(n_name, 1, 32)
 	if(( get_dist(user,paper) <= 1  && user.stat == 0))
-		paper.name = "paper[(n_name ? text("- '[n_name]'") : null)]"
+		paper.name = "paper[(n_name ? "- '[n_name]'" : null)]"
 	add_fingerprint(user)
 	return
 

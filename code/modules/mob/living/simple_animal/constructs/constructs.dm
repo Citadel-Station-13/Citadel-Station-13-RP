@@ -111,7 +111,7 @@
 
 /mob/living/simple_animal/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	add_language("Cult")
 	add_language("Occult")
