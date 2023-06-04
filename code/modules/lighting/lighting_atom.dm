@@ -82,7 +82,7 @@
 	if (!isturf(T))
 		return
 
-	if (new_opacity == TRUE && !T.has_opaque_atom)
+	if (new_opacity == TRUE)
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
 #ifdef AO_USE_LIGHTING_OPACITY
