@@ -641,7 +641,7 @@ var/global/floorIsLava = 0
 	if(!check_rights(0))	return
 
 	var/message = input("Global message to send:", "Admin Announce", null, null)  as message//todo: sanitize for all?
-	if(message)
+	if(trim(message))
 		if(!check_rights(R_SERVER,0))
 			message = sanitize(message, 500, extra = 0)
 		message = replacetext(message, "\n", "<br>") // required since we're putting it in a <p> tag
