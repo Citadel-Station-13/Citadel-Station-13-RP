@@ -799,6 +799,11 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		reset_temporary_view()
 		return
 	using_temporary_viewsize = TRUE
+	// round up; even views are illegal.
+	if(!(width % 2))
+		width++
+	if(!(height % 2))
+		height++
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()
@@ -820,7 +825,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
  */
 /client/proc/set_perspective(datum/perspective/P)
 	if(using_perspective)
-		using_perspective.RemoveClient(src, TRUE)
+		using_perspective.remove_client(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear")
 			using_perspective = null
@@ -829,7 +834,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		lazy_eye = 0
 		perspective = EYE_PERSPECTIVE
 		return
-	P.AddClient(src)
+	P.add_client(src)
 	if(using_perspective != P)
 		stack_trace("using perspective didn't set")
 

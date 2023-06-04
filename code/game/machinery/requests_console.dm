@@ -194,7 +194,10 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			screen = RCS_SENTPASS
 			message_log += "<B>Message sent to [recipient]</B><BR>[message]"
 		else
-			audible_message(text("[icon2html(thing = src, target = world)] *The Requests Console beeps: 'NOTICE: No server detected!'"),,4)
+			audible_message(
+				message = "[icon2html(thing = src, target = world)] *The Requests Console beeps: 'NOTICE: No server detected!'",
+				hearing_distance = 4
+			)
 
 	//Handle printing
 	if (href_list["print"])
@@ -255,7 +258,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/card/id/T = O
-			msgVerified = text("<font color='green'><b>Verified by [T.registered_name] ([T.assignment])</b></font>")
+			msgVerified = SPAN_BOLDNICEGREEN("Verified by [T.registered_name] ([T.assignment])")
 			updateUsrDialog()
 		if(screen == RCS_ANNOUNCE)
 			var/obj/item/card/id/ID = O
@@ -270,7 +273,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 		if(inoperable(MAINT)) return
 		if(screen == RCS_MESSAUTH)
 			var/obj/item/stamp/T = O
-			msgStamped = text("<font color=#4F49AF><b>Stamped with the [T.name]</b></font>")
+			msgStamped = "<font color=#4F49AF><b>Stamped with the [T.name]</b></font>"
 			updateUsrDialog()
 	return
 

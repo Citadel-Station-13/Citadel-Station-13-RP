@@ -1,20 +1,10 @@
-/mob/observer
-	name = "observer"
-	desc = "This shouldn't appear"
-	density = 0
-	mobility_flags = NONE
-	cached_multiplicative_slowdown = 0.5 // 20 tiles per second
-
-/mob/observer/update_mobility()
-	return
-
 /mob/observer/dead
 	name = "ghost"
 	desc = "It's a g-g-g-g-ghooooost!" //jinkies!
 	icon = 'icons/mob/ghost.dmi'
 	icon_state = "ghost"
 	layer = BELOW_MOB_LAYER
-	plane = PLANE_GHOSTS
+	plane = OBSERVER_PLANE
 	alpha = 127
 	stat = DEAD
 	mobility_flags = NONE
@@ -99,12 +89,14 @@
 	var/original_name
 	/// are we a poltergeist and get to do stupid things like move items, throw things, and move chairs?
 	var/is_spooky = FALSE
+	//For a better follow selection:
+	var/datum/orbit_menu/orbit_menu
 
 /mob/observer/dead/Initialize(mapload)
 	var/mob/body = loc
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = world.view //I mean. I don't even know if byond has occlusion culling... but...
-	plane = PLANE_GHOSTS //Why doesn't the var above work...???
+	plane = OBSERVER_PLANE //Why doesn't the var above work...???
 	add_verb(src, /mob/observer/dead/proc/dead_tele)
 
 	var/turf/T
@@ -350,19 +342,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	usr.forceMove(pick(get_area_turfs(A)))
 
-/mob/observer/dead/verb/follow(input in getmobs_ghost_follow())
+/mob/observer/dead/verb/follow()
 	set category = "Ghost"
-	set name = "Follow" // "Haunt"
-	set desc = "Follow and haunt a mob."
+	set name = "Follow"
 
-	if(!input)
-		input = input(usr, "Select a mob:", "Ghost Follow") as null|anything in getmobs_ghost_follow()
-	if(!input)
-		return
-
-	var/target = getmobs_ghost_follow()[input]
-	if(!target) return
-	ManualFollow(target)
+	if(!orbit_menu)
+		orbit_menu = new(src)
+	orbit_menu.ui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/observer/dead/proc/ManualFollow(atom/movable/target)
@@ -618,7 +604,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	add_verb(src, /mob/observer/dead/proc/toggle_visibility)
 	add_verb(src, /mob/observer/dead/proc/ghost_whisper)
 	to_chat(src,"<font color='purple'>As you are now in the realm of the living, you can whisper to the living with the <b>Spectral Whisper</b> verb, inside the IC tab.</font>")
-	if(plane != PLANE_WORLD)
+	if(plane != BYOND_PLANE)
 		user.visible_message( \
 			"<span class='warning'>\The [user] drags ghost, [src], to our plane of reality!</span>", \
 			"<span class='warning'>You drag [src] to our plane of reality!</span>" \
@@ -651,18 +637,18 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Allows you to turn (in)visible (almost) at will."
 
 	var/toggled_invisible
-	if(!forced && plane == PLANE_GHOSTS && world.time < toggled_invisible + 600)
+	if(!forced && plane == OBSERVER_PLANE && world.time < toggled_invisible + 600)
 		to_chat(src, "You must gather strength before you can turn visible again...")
 		return
 
-	if(plane == PLANE_WORLD)
+	if(plane == BYOND_PLANE)
 		toggled_invisible = world.time
 		visible_message("<span class='emote'>It fades from sight...</span>", "<span class='info'>You are now invisible.</span>")
 	else
 		to_chat(src, "<span class='info'>You are now visible!</span>")
 
-	plane = (plane == PLANE_GHOSTS) ? PLANE_WORLD : PLANE_GHOSTS
-	invisibility = (plane == PLANE_WORLD) ? 0 : INVISIBILITY_OBSERVER
+	plane = (plane == OBSERVER_PLANE) ? BYOND_PLANE : OBSERVER_PLANE
+	invisibility = (plane == BYOND_PLANE) ? 0 : INVISIBILITY_OBSERVER
 
 	// Give the ghost a cult icon which should be visible only to itself
 	toggle_icon("cult")
@@ -690,20 +676,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
 	set category = "Ghost"
 	ghostvision = !ghostvision
-	updateghostsight()
+	update_ghost_sight()
 	to_chat(src,"You [ghostvision ? "now" : "no longer"] have ghost vision.")
-
-/mob/observer/dead/verb/toggle_darkness()
-	set name = "Toggle Darkness"
-	set desc = "Toggles your ability to see lighting overlays, and the darkness they create."
-	set category = "Ghost"
-	seedarkness = !seedarkness
-	updateghostsight()
-	to_chat(src,"You [seedarkness ? "now" : "no longer"] see darkness.")
-
-/mob/observer/dead/proc/updateghostsight()
-	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness) //Inversion, because "not seeing" the darkness is "seeing" the lighting plane master.
-	plane_holder.set_vis(VIS_GHOSTS, ghostvision)
 
 /mob/observer/dead/MayRespawn(var/feedback = 0)
 	if(!client)
@@ -830,10 +804,91 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(sound)
 		SEND_SOUND(src, sound(sound))
 
-/mob/observer/dead/make_perspective()
-	var/datum/perspective/P = ..()
-	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
-	P.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
-
 /mob/dead/observer/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return isAdminGhostAI(usr)
+
+/mob/observer/dead/verb/nifjoin()
+	set category = "Ghost"
+	set name = "Join Into Soulcatcher"
+	set desc = "Select a player with a working NIF + Soulcatcher NIFSoft to join into it."
+
+	var/list/filtered = list()
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(!H.nif?.imp_check(NIF_SOULCATCHER))
+			continue
+		var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
+		if(!SC.visibility_check(ckey))
+			continue
+		filtered += H
+
+	var/picked = tgui_input_list(usr, "Pick a friend with NIF and Soulcatcher to join into. Harrass strangers, get banned. Not everyone has a NIF w/ Soulcatcher.","Select a player", filtered)
+
+	//Didn't pick anyone or picked a null
+	if(!picked)
+		return
+
+	//Good choice testing and some instance-grabbing
+	if(!ishuman(picked))
+		to_chat(src,"<span class='warning'>[picked] isn't in a humanoid mob at the moment.</span>")
+		return
+
+	var/mob/living/carbon/human/H = picked
+
+	if(H.stat || !H.client)
+		to_chat(src,"<span class='warning'>[H] isn't awake/alive at the moment.</span>")
+		return
+
+	if(!H.nif)
+		to_chat(src,"<span class='warning'>[H] doesn't have a NIF installed.</span>")
+		return
+
+	var/datum/nifsoft/soulcatcher/SC = H.nif.imp_check(NIF_SOULCATCHER)
+	if(!SC?.visibility_check(ckey))
+		to_chat(src,"<span class='warning'>[H] doesn't have the Soulcatcher NIFSoft installed, or their NIF is unpowered.</span>")
+		return
+
+	//Fine fine, we can ask.
+	var/obj/item/nif/nif = H.nif
+	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+
+	var/req_time = world.time
+	nif.notify("Transient mindstate detected, analyzing...")
+	sleep(15) //So if they are typing they get interrupted by sound and message, and don't type over the box
+	var/response = tgui_alert(H,"[src] ([src.key]) wants to join into your Soulcatcher.","Soulcatcher Request",list("Deny","Allow"))
+
+	if(response == "Deny")
+		to_chat(src,"<span class='warning'>[H] denied your request.</span>")
+		return
+
+	if((world.time - req_time) > 1 MINUTES)
+		to_chat(H,"<span class='warning'>The request had already expired. (1 minute waiting max)</span>")
+		return
+
+	//Final check since we waited for input a couple times.
+	if(H && src && src.key && !H.stat && nif && SC)
+		if(!mind) //No mind yet, aka haven't played in this round.
+			mind = new(key)
+
+		mind.name = name
+		mind.current = src
+		mind.active = TRUE
+
+		SC.catch_mob(src) //This will result in us being deleted so...
+
+/mob/observer/dead/verb/backup_ping()
+	set category = "Ghost"
+	set name = "Notify Transcore"
+	set desc = "If your past-due backup notification was missed or ignored, you can use this to send a new one."
+
+	if(src.mind.name in SStranscore.backed_up)
+		var/datum/transhuman/mind_record/record = SStranscore.backed_up[src.mind.name]
+		if(!(record.dead_state == MR_DEAD))
+			to_chat(src, "<span class='warning'>Your backup is not past-due yet.</span>")
+		else if((world.time - record.last_notification) < 10 MINUTES)
+			to_chat(src, "<span class='warning'>Too little time has passed since your last notification.</span>")
+		else
+			SStranscore.notify(record.mindname, TRUE)
+			record.last_notification = world.time
+			to_chat(src, "<span class='notice'>New notification has been sent.</span>")
+	else
+		to_chat(src, "<span class='warning'>No mind record found!</span>")

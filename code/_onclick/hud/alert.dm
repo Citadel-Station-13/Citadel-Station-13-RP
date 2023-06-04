@@ -40,7 +40,7 @@
 	if(new_master)
 		alert.icon_state = "itembased"
 		var/image/I = image(icon = new_master.icon, icon_state = new_master.icon_state, dir = SOUTH)
-		I.plane = PLANE_PLAYER_HUD_ABOVE
+		I.plane = ABOVE_HUD_PLANE
 		alert.add_overlay(I)
 		alert.master = new_master
 	else

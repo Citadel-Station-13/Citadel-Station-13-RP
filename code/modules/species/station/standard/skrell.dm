@@ -37,8 +37,8 @@
 
 	max_age = 130
 
+	vision_innate = /datum/vision/baseline/species_tier_1
 
-	darksight  = 4
 	flash_mod  = 1.2
 	chemOD_mod = 0.9
 

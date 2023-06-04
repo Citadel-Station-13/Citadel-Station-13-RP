@@ -860,19 +860,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
-"azd" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/mob/living/simple_mob/otie/red/friendly{
-	desc = "The Head of Security's loyal Red Otie. Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though.";
-	name = "Brutus"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/heads/hos)
 "azK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -2686,10 +2673,6 @@
 "bxf" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
-	},
-/obj/structure/dogbed{
-	desc = "A bed made especially for dogs, or other similarly sized pets. Brutus has since grown out of his bed it seems.";
-	name = "Brutus' Bed"
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
@@ -11233,7 +11216,6 @@
 /area/security/brig)
 "hcy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/nifsofts_security,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11243,6 +11225,12 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 1
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -8
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -13391,9 +13379,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "iqx" = (
@@ -14836,11 +14821,6 @@
 	pixel_x = -22;
 	pixel_y = 32
 	},
-/obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/tamaskan{
-	desc = "The robotics spry new canine friend! The name 'Sprocket' Can be found on her collar. She seems to love old rock music from Sol.";
-	name = "Sprocket"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "jnl" = (
@@ -15032,12 +15012,6 @@
 /area/maintenance/substation/research)
 "jsy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/evidence{
-	pixel_x = 8
-	},
-/obj/item/storage/box/handcuffs{
-	pixel_x = -8
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -15048,6 +15022,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 8
 	},
+/obj/item/storage/box/nifsofts_security,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "jsz" = (
@@ -15893,7 +15868,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/research/telescience_lab)
 "jXO" = (
 /obj/structure/cable/green{
@@ -22598,6 +22573,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"odF" = (
+/obj/structure/table/steel,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "odS" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Research Main Subgrid";
@@ -24193,7 +24173,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "pge" = (
-/obj/structure/barricade/cutout/clown,
+/obj/structure/table/rack,
+/obj/random/firstaid,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "pgh" = (
@@ -29759,6 +29740,12 @@
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"teZ" = (
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Scan Records"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "tfp" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -30883,13 +30870,6 @@
 "tVG" = (
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"tWb" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	secured_wires = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/medsec_maintenance)
 "tWJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -53912,8 +53892,8 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
+mYq
+szQ
 pge
 sLu
 szQ
@@ -54106,9 +54086,9 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
-pge
+szQ
+szQ
+mYq
 sLu
 sLu
 sLu
@@ -54300,9 +54280,9 @@ oXc
 qUB
 qUB
 sLu
-pge
-pge
-pge
+teZ
+szQ
+odF
 sLu
 sLu
 sLu
@@ -54458,7 +54438,7 @@ kXL
 qRD
 mvZ
 szQ
-tWb
+szQ
 szQ
 xFu
 byV
@@ -58749,7 +58729,7 @@ hLf
 cvH
 qgw
 cqp
-azd
+cqp
 dwr
 gQH
 ioQ

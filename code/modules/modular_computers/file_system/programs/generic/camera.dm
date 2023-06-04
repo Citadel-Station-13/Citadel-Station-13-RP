@@ -41,3 +41,42 @@
 	size = 14
 	tguimodule_path = /datum/tgui_module_old/camera/ntos/ert
 	available_on_ntnet = 0
+
+//Helmet Cameras
+/datum/computer_file/program/camera_monitor/helmet
+	filename = "helmetcammon"
+	filedesc = "Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+
+/datum/computer_file/program/camera_monitor/sechelmet
+	filename = "sechelmetcammon"
+	filedesc = "Security Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/security_helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras. This camera network requires Security clearance."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+	required_access = ACCESS_SECURITY_EQUIPMENT
+
+/datum/computer_file/program/camera_monitor/explohelmet
+	filename = "explohelmetcammon"
+	filedesc = "Exploration Helmet Camera Monitoring"
+	tguimodule_path = /datum/tgui_module_old/camera/ntos/exploration_helmet
+	program_icon_state = "cameras"
+	program_key_state = "generic_key"
+	program_menu_icon = "search"
+	extended_desc = "This program allows remote access to all civilian helmet cameras. This camera network requires Exploration clearance."
+	size = 8
+	available_on_ntnet = 1
+	requires_ntnet = 1
+	required_access = ACCESS_GENERAL_EXPLORER

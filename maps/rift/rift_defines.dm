@@ -166,7 +166,6 @@
 							NETWORK_SECURITY,
 							NETWORK_TCOMMS,
 							NETWORK_LYTHIOS,
-							NETWORK_EXPLO_HELMETS
 							)
 	secondary_networks = list(
 							NETWORK_ERT,
@@ -177,7 +176,10 @@
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
 							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TALON_SHIP,
+							NETWORK_CIV_HELMETS,
+							NETWORK_EXPLO_HELMETS,
+							NETWORK_SEC_HELMETS
 							)
 
 	bot_patrolling = FALSE
@@ -198,7 +200,6 @@
 		/area/crew_quarters/sleep/Dorm_3/holo,
 		/area/crew_quarters/sleep/Dorm_5/holo,
 		/area/crew_quarters/sleep/Dorm_7/holo,
-		/area/looking_glass/lg_1,
 		/area/rnd/miscellaneous_lab)
 
 	unit_test_exempt_from_atmos = list(
