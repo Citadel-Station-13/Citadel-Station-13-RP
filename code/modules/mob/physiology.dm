@@ -1,11 +1,17 @@
 /**
  * physiology holder
+ *
+ * todo: on biologies update, we might need to lazy-cache this, and have different physiologies for each biology.
  */
 /datum/physiology
+	// todo: /datum/physiology should hold global body physiology, limbs should hold modifiers/whatever themselves.
+	//       this way biologies can be supported as efficiently as possible.
 
 /datum/physiology/proc/apply(datum/physiology_modifier/modifier)
+	// todo: modifier/apply_global, modifier/apply_bodypart
 
 /datum/physiology/proc/revert(datum/physiology_modifier/modifier)
+	// todo: modifier/apply_global, modifier/apply_bodypart
 
 /**
  * physiology modifier
@@ -15,6 +21,8 @@
 
 	/// is this a globally cached modifier?
 	var/is_globally_cached = FALSE
+
+	// todo: on biologies update, we need to specify what biologies this applies to
 
 /**
  * subtype for hardcoded physiology modifiers

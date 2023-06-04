@@ -70,11 +70,9 @@
 /mob/living/carbon/alien/handle_regular_hud_updates()
 	if (stat == 2 || (MUTATION_XRAY in src.mutations))
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(8)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
 	else if (stat != 2)
 		RemoveSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-		SetSeeInDarkSelf(2)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
 
 	if (healths)

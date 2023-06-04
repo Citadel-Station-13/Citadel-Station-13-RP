@@ -62,7 +62,7 @@
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
-	darksight = 6 //Better hunters in the dark.
+	vision_innate = /datum/vision/baseline/species_tier_2
 	hunger_factor = 0.1 //In exchange, they get hungry a tad faster.
 
 	slowdown = -0.2//Speedboost Tesh have -0.5

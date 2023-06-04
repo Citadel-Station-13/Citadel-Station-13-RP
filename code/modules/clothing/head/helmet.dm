@@ -2,9 +2,9 @@
 	name = "helmet"
 	desc = "Standard headgear. Protects well enough against a wide range of attacks."
 	icon_state = "helmet"
-	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	clothing_flags = CLOTHING_THICK_MATERIAL
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
+	restricted_accessory_slots = ACCESSORY_SLOT_HELM_C|ACCESSORY_SLOT_HELM_R
 	armor_type = /datum/armor/station/medium
 	inv_hide_flags = HIDEEARS|BLOCKHEADHAIR
 	cold_protection = HEAD
@@ -26,7 +26,7 @@
 	desc = "A helmet painted in Peacekeeper blue. Stands out like a sore thumb."
 	icon_state = "helmet_sol"
 	armor_type = /datum/armor/oricon/peacekeeper
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/oricon/command
 	name = "command helmet"
@@ -61,7 +61,7 @@
 	armor_type = /datum/armor/station/riot
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 	action_button_name = "Toggle Visor"
 
 /obj/item/clothing/head/helmet/riot/attack_self(mob/user)
@@ -83,7 +83,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.2
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/ballistic
 	name = "ballistic helmet"
@@ -92,7 +92,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "helmet", SLOT_ID_LEFT_HAND = "helmet")
 	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/combat
 	name = "combat helmet"
@@ -102,7 +102,7 @@
 	armor_type = /datum/armor/station/combat
 	inv_hide_flags = HIDEEARS|HIDEEYES|BLOCKHEADHAIR
 	siemens_coefficient = 0.6
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/redcombat
 	name = "combat helmet"
@@ -185,7 +185,7 @@
 	armor_type = /datum/armor/station/tactical
 	inv_hide_flags = HIDEEARS|BLOCKHAIR
 	siemens_coefficient = 0.7
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 /obj/item/clothing/head/helmet/augment
 	name = "Augment Array"
@@ -232,7 +232,7 @@
 	icon_state = "erthelmet_cmd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-green", SLOT_ID_LEFT_HAND = "syndicate-helm-green")
 	armor_type = /datum/armor/centcom/ert
-	valid_accessory_slots = null
+	valid_accessory_slots = ACCESSORY_SLOT_HELM_R
 
 //Commander
 /obj/item/clothing/head/helmet/ert/command

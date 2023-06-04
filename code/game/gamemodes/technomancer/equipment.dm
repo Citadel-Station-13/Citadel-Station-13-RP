@@ -166,6 +166,7 @@
 	origin_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6)
 	toggleable = 1
 	vision_flags = SEE_TURFS|SEE_MOBS|SEE_OBJS
+	vision_flags_remove = SEE_BLACKNESS
 	prescription = 1 // So two versions of these aren't needed.
 
 /datum/technomancer/equipment/med_hud
