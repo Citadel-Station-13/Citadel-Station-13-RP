@@ -1,4 +1,5 @@
 //TODO: We don't have check_reactions or something like it, so we can't prevent idiot transfers. @Zandario
+// todo: this is horrifying and needs refactored. ESPECIALLY ITS TGUI. ~silicons
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
@@ -361,6 +362,8 @@
 				else
 					style = styles[chosen_condi_style]
 				vol_each_max = min(50, vol_each_max)
+			else if(item_type == "hypovial")
+				vol_each_max = min(vol_each_max, 60)
 			else
 				return FALSE
 			if(vol_each_text == "auto")
@@ -393,6 +396,9 @@
 				return FALSE
 
 			//! Start filling
+			var/atom/where = drop_location()
+			name = trim(name)
+
 			if(item_type == "pill")
 				var/obj/item/reagent_containers/pill/P
 				var/target_loc = drop_location()
@@ -446,6 +452,15 @@
 					P.icon_state = "bottle-[chosen_bottle_style]"
 					P.renamed_by_player = TRUE
 					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
+				return TRUE
+
+			if(item_type = "hypovial")
+				var/obj/item/reagent_containers/glass/hypovial/P
+				for(var/i in 1 to amount)
+					P = new(where)
+					P.name = "[name] bottle"
+					P.renamed_by_player = TRUE
+					reagents.trans_to_obj(P, vol_each)
 				return TRUE
 
 			// if(item_type == "condiment_pack")

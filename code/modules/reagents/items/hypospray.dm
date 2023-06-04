@@ -116,6 +116,8 @@
 	#warn impl
 
 /obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode)
+	if(!loaded.reagents.total_volume)
+		return
 	var/logstr = "[inject_amount] of [loaded.reagents.log_list()]"
 	if(user)
 		add_attack_logs(user, target, "injected with [logstr]")

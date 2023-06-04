@@ -417,6 +417,21 @@ const PackagingControls = (props, context) => {
             })}
         />
       )}
+      {!condi && (
+        <PackagingControlsItem
+          label="Hypovials"
+          amount={bottleAmount}
+          amountUnit="vials"
+          sideNote="max 60u"
+          onChangeAmount={(e, value) => setBottleAmount(value)}
+          onCreate={() =>
+            act('create', {
+              type: 'hypovial',
+              amount: bottleAmount,
+              volume: 'auto',
+            })}
+        />
+      )}
       {!!condi && (
         <LabeledList.Item label="Bottle type">
           <Button.Checkbox

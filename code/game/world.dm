@@ -143,8 +143,6 @@ GLOBAL_LIST(topic_status_cache)
 		GLOB.log_directory = "data/logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
-			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
-			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
 			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
 			GLOB.log_directory += "[timestamp]"

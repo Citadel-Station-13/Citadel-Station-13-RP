@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
 /proc/log_reagent(text)
-	WRITE_LOG(GLOB.reagent_log, text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
 
 /proc/log_reagent_transfer(text)
 	log_reagent("TRANSFER: [text]")
