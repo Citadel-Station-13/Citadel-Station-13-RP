@@ -4,9 +4,18 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	w_class = ITEMSIZE_SMALL
+
+	/// start reagent list. overrides reagent/volume. list(id = volume); volume must be specified.
+	var/list/start_with
+	/// start reagent id or path
+	var/start_reagent
+	/// start reagent amount. null for max.
+	var/start_volume
+	/// volume of our default reagents holder
+	var/volume = 30
+
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
-	var/volume = 30
 
 /obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
@@ -21,6 +30,11 @@
 	if(!possible_transfer_amounts)
 		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 	create_reagents(volume)
+	if(!isnull(start_with))
+		for(var/id as in start_with)
+			reagents.add_reagent(id, start_with[id])
+	else if(!isnull(start_reagent))
+		reagents.add_reagent(start_reagent, isnull(start_volume)? volume : start_volume)
 
 /obj/item/reagent_containers/attack_self(mob/user)
 	. = ..()

@@ -31,10 +31,6 @@
 	/// can people change how much to inject?
 	var/inject_adjustable = TRUE
 
-#warn vial: vial1, vial2, vial3
-#warn vial-bs:
-#warn vial-l: vial-l1, vial-l2, vial-l3, vial-l4, l4 is 100% but l3 is 50%
-
 #warn kits in vendors & storage
 #warn vials in chemmaster
 
@@ -141,23 +137,3 @@
 	resist_add_time = 1 SECONDS
 	port_add_time = 0.5 SECONDS
 	thick_add_time = 3 SECONDS
-
-/obj/item/reagent_containers/glass/hypovial
-	name = "hypospray vial"
-	desc = "A standard issue vial used for hyposprays."
-	icon = 'icons/modules/reagents/items/hyposprays.dmi'
-	icon_state = "vial"
-	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
-	volume = 60
-
-/obj/item/reagent_containers/glass/hypovial/large
-	name = "large hypospray vial"
-	desc = "A larger variant of the common hypospray vial. Only compatible with advanced units."
-	icon_state = "vial-l"
-	volume = 120
-
-/obj/item/reagent_containers/glass/hypovial/bluespace
-	name = "bluespace hypospray vial"
-	desc = "A prototype hypospray vial with the ability to hold reagents in a quasi-compressed state."
-	icon_state = "vial-bs"
-	volume = 120
