@@ -448,7 +448,7 @@
 	desc = "A space superiority fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint. \
 	Import craft like this one often ship with no weapons, though the Skrell saw fit to integrate a cloaking device."
 	value = CATALOGUER_REWARD_MEDIUM
-A fighter of Skrellian design.
+
 ////////////// Pinnace //////////////
 
 /obj/mecha/combat/fighter/pinnace
