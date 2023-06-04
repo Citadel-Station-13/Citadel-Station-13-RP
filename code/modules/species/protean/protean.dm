@@ -28,7 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	breath_type = null
 	poison_type = null

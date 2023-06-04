@@ -75,9 +75,6 @@
 	/// If true, the mob runs extremely fast and cannot be slowed.
 	var/force_max_speed = FALSE
 
-	/// Overlay used for darksight eye adjustments
-	var/image/dsoverlay = null
-
 	/// If they're glowing!
 	var/glow_toggle = FALSE
 	/// The range that they're glowing at!

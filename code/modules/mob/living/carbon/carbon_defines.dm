@@ -2,7 +2,7 @@
 	gender = MALE
 	throw_force = 10
 
-//! ## Basics
+	//? Composition
 	/// species - datumized handling of racial intrinsics like health, environmental, breathing, etc. set using set_species() **only**
 	var/datum/species/species
 

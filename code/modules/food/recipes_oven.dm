@@ -36,7 +36,6 @@
 	reagent_mix = RECIPE_REAGENT_REPLACE //No eating polyacid
 
 //Predesigned breads
-//================================
 /datum/recipe/bread
 	appliance = OVEN
 	items = list(

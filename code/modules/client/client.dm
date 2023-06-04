@@ -49,10 +49,10 @@
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
-
-	//? Perspectives
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
+	/// Client global planes
+	var/datum/plane_holder/client_global/global_planes
 
 	//? Viewport
 	/// what we *think* their current viewport size is in pixels

@@ -368,8 +368,6 @@
 	in_selfmove = FALSE
 	if(.)
 		throwing?.terminate()
-	if(pulling && !ismob(pulling) && pulling.density)
-		setDir(turn(dir, 180))	// face pulling
 
 ///Process_Incorpmove
 ///Called by client/Move()

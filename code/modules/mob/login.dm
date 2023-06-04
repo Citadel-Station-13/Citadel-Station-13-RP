@@ -65,23 +65,6 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 
-	if(!plane_holder) //Lazy
-		plane_holder = new(src) //Not a location, it takes it and saves it.
-	if(!vis_enabled)
-		vis_enabled = list()
-	client.screen += plane_holder.plane_masters
-	recalculate_vis()
-
-	// AO support
-	var/ao_enabled = client.is_preference_enabled(/datum/client_preference/ambient_occlusion)
-	plane_holder.set_ao(VIS_OBJS, ao_enabled)
-	plane_holder.set_ao(VIS_MOBS, ao_enabled)
-
-	// Status indicators
-	var/status_enabled = client.is_preference_enabled(/datum/client_preference/status_indicators)
-	plane_holder.set_vis(VIS_STATUS, status_enabled)
-
-
 	if(!client.tooltips)
 		client.tooltips = new(client)
 
@@ -101,6 +84,10 @@
 	client.statpanel_reload()
 	// update ssd overlay
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
+
+	//* legacy
+	// this is below reset_perspective so self perspective generates.
+	recalculate_vis()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

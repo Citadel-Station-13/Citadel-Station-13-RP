@@ -64,3 +64,37 @@
 	card_slot = new/obj/item/computer_hardware/card_slot(src)
 	battery_module = new/obj/item/computer_hardware/battery_module/super(src)
 	battery_module.charge_to_full()
+
+///////
+//Roles
+///////
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security
+	name = "\improper Security Officer's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor())
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/sechelmet())
+	hard_drive.store_file(new/datum/computer_file/program/digitalwarrant())
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden
+	name = "\improper Warden's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/warden/install_default_programs()
+	..()
+	//hard_drive.store_file(new/datum/computer_file/program/warden()) This will hopefully have a working alert level shifter program that only has access to green, blue, and yellow.
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/hos
+	name = "\improper Head of Security's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/security/hos/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/comm())
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder
+	name = "\improper Pathfinder's laptop"
+
+/obj/item/modular_computer/laptop/preset/custom_loadout/standard/pathfinder/install_default_programs()
+	..()
+	hard_drive.store_file(new/datum/computer_file/program/camera_monitor/explohelmet())

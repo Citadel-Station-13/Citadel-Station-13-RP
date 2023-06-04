@@ -22,7 +22,8 @@
 		/datum/language/tajsign
 	)
 
-	darksight = 8
+	vision_innate = /datum/vision/baseline/species_tier_2
+
 	slowdown  = -0.5
 	snow_movement = -1 //Ignores half of light snow
 
