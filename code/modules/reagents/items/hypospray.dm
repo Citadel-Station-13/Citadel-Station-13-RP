@@ -7,9 +7,11 @@
 	Nowadays, one can expect this model to be on all but the most backwater colonies and installations."
 	icon = 'icons/modules/reagents/items/hypospray.dmi'
 	icon_state = "hypo"
+	inhand_state = "hypo"
 	w_class = WEIGHT_CLASS_SMALL
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
+	worn_render_flags = NONE
 
 	/// loaded vial
 	var/obj/item/reagent_containers/glass/hypovial/loaded
@@ -194,6 +196,7 @@
 	name = "combat hypospray"
 	desc = "An upgraded variant of the regular hypospray, this one sports quickened injection - allowing for the faster incapacitation of vic- er, medication of allies. Supports large vials."
 	icon_state = "hypo-combat"
+	inhand_state = "hypo-combat"
 	allow_large = TRUE
 	injection_time = 0.5 SECONDS
 	resist_add_time = 1 SECONDS
