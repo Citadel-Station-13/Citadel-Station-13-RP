@@ -6,6 +6,18 @@
 	icon_state = "vial"
 	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
 	volume = 60
+	/// how many [state][#] overlays we have for reagents remaining
+	var/overlay_count = 3
+
+/obj/item/reagent_containers/glass/hypovial/update_icon(updates)
+	cut_overlays()
+	. = ..()
+	if(overlay_count)
+		var/num = clamp(round((reagents.total_volume / reagents.maximum_volume) * overlay_count, 1), 0, 1)
+		if(num)
+			var/mutable_appearance/overlay = mutable_appearance(icon, "[icon_state][num]")
+			overlay.color = reagents.get_color()
+			add_overlay("icon_state[num]")
 
 /obj/item/reagent_containers/glass/hypovial/large
 	name = "large hypospray vial"
@@ -13,16 +25,14 @@
 	icon_state = "vial-l"
 	w_class = WEIGHT_CLASS_SMALL
 	volume = 120
+	overlay_count = 4
 
 /obj/item/reagent_containers/glass/hypovial/bluespace
 	name = "bluespace hypospray vial"
 	desc = "A prototype hypospray vial with the ability to hold reagents in a quasi-compressed state."
 	icon_state = "vial-bs"
 	volume = 120
-
-#warn vial: vial1, vial2, vial3
-#warn vial-bs:
-#warn vial-l: vial-l1, vial-l2, vial-l3, vial-l4, l4 is 100% but l3 is 50%
+	overlay_count = 0
 
 //* subtypes - regular
 

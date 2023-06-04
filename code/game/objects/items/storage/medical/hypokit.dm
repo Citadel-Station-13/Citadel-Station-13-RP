@@ -37,6 +37,7 @@
 
 /obj/item/storage/hypokit/advanced
 	name = "advanced hypospray kit"
+	icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "briefcase"
 	inhand_state = "normal"
 	hypospray_path = /obj/item/hypospray/advanced
