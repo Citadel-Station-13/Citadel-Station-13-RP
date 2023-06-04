@@ -31,9 +31,7 @@
 	/// can people change how much to inject?
 	var/inject_adjustable = TRUE
 
-#warn kits in vendors & storage
 #warn vials in chemmaster
-#warn vials in autolathe
 
 /obj/item/hypospray/update_icon_state()
 	var/vial_state
@@ -118,7 +116,16 @@
 	#warn impl
 
 /obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode)
-	#warn impl
+	var/logstr = "[inject_amount] of [loaded.reagents.log_list()]"
+	if(user)
+		add_attack_logs(user, target, "injected with [logstr]")
+	log_reagent("hypospray: [user] -> [target] using [mode]: [logstr]")
+	switch(mode)
+		if(HYPOSPRAY_MODE_INJECT)
+			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_INJECT)
+		if(HYPOSPRAY_MODE_SPRAY)
+			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_TOUCH)
+	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
 
 /obj/item/hypospray/advanced
 	name = "advanced hypospray"

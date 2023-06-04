@@ -141,8 +141,6 @@ GLOBAL_LIST(topic_status_cache)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD")
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD")]_"
-		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
 			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
@@ -150,12 +148,8 @@ GLOBAL_LIST(topic_status_cache)
 		else
 			var/timestamp = replacetext(TIME_STAMP("hh:mm:ss", FALSE), ":", ".")
 			GLOB.log_directory += "[timestamp]"
-			GLOB.picture_log_directory += "[timestamp]"
-			GLOB.picture_logging_prefix += "T_[timestamp]_"
 	else
 		GLOB.log_directory = "data/logs/[override_dir]"
-		GLOB.picture_logging_prefix = "O_[override_dir]_"
-		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
@@ -166,6 +160,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_reagent_log = "[GLOB.log_directory]/reagents.log"
 	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
 
 #ifdef UNIT_TESTS

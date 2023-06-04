@@ -31,7 +31,7 @@
 		remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 	create_reagents(volume)
 	if(!isnull(start_with))
-		for(var/id as in start_with)
+		for(var/id in start_with)
 			reagents.add_reagent(id, start_with[id])
 	else if(!isnull(start_reagent))
 		reagents.add_reagent(start_reagent, isnull(start_volume)? volume : start_volume)
