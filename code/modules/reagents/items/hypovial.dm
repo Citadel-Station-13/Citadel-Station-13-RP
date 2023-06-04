@@ -56,6 +56,15 @@
 		/datum/reagent/alkysine = 30,
 	)
 
+/obj/item/reagent_containers/glass/hypovial/arithrazine
+	start_reagent = /datum/reagent/arithrazine
+
+/obj/item/reagent_containers/glass/hypovial/spaceacillin
+	start_reagent = /datum/reagent/spaceacillin
+
+/obj/item/reagent_containers/glass/hypovial/dexalin_plus
+	start_reagent = /datum/reagent/dexalinp
+
 //* subtypes - large
 
 /obj/item/reagent_containers/glass/hypovial/large/bicaridine
@@ -87,3 +96,12 @@
 		/datum/reagent/imidazoline = 30,
 		/datum/reagent/alkysine = 30,
 	)
+
+/obj/item/reagent_containers/glass/hypovial/large/arithrazine
+	start_reagent = /datum/reagent/arithrazine
+
+/obj/item/reagent_containers/glass/hypovial/large/spaceacillin
+	start_reagent = /datum/reagent/spaceacillin
+
+/obj/item/reagent_containers/glass/hypovial/large/dexalin_plus
+	start_reagent = /datum/reagent/dexalinp

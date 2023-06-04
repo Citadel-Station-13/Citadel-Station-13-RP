@@ -33,6 +33,7 @@
 
 #warn kits in vendors & storage
 #warn vials in chemmaster
+#warn vials in autolathe
 
 /obj/item/hypospray/update_icon_state()
 	var/vial_state
@@ -127,6 +128,9 @@
 	injection_time = 0.5 SECONDS
 	resist_add_time = 1 SECONDS
 	port_add_time = 0.5 SECONDS
+
+/obj/item/hypospray/advanced/cmo
+	port_add_time = 0 SECONDS
 
 /obj/item/hypospray/combat
 	name = "combat hypospray"
