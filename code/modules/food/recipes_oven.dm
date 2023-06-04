@@ -5,6 +5,17 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/ovenchips
 
+
+
+/datum/recipe/dionaroast
+	appliance = OVEN
+	fruit = list("apple" = 1)
+	reagents = list("pacid" = 5) //It dissolves the carapace. Still poisonous, though.
+	items = list(/obj/item/holder/diona)
+	result = /obj/item/reagent_containers/food/snacks/dionaroast
+	reagent_mix = RECIPE_REAGENT_REPLACE //No eating polyacid
+
+
 /datum/recipe/ribplate //Putting this here for not seeing a roast section.
 	appliance = OVEN
 	reagents = list("honey" = 5, "spacespice" = 2, "blackpepper" = 1)
@@ -18,6 +29,14 @@
 	items = list(/obj/item/reagent_containers/food/snacks/bearmeat)
 	reagent_mix = RECIPE_REAGENT_REPLACE
 	result = /obj/item/reagent_containers/food/snacks/ribplate_bear
+
+/datum/recipe/teshariroast
+	appliance = OVEN
+	fruit = list("lemon" = 1)
+	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)
+	items = list(/obj/item/reagent_containers/food/snacks/meat/chicken/teshari)
+	result = /obj/item/reagent_containers/food/snacks/teshariroast
+	reagent_mix = RECIPE_REAGENT_REPLACE
 
 
 //Predesigned breads

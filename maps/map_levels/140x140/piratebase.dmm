@@ -184,6 +184,7 @@
 /area/shuttle/pirate/general)
 "ie" = (
 /obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/food/snacks/dionaroast,
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "ig" = (

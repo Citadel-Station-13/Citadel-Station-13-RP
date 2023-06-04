@@ -12082,6 +12082,7 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Qv" = (
+/obj/item/reagent_containers/food/snacks/teshariroast,
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
