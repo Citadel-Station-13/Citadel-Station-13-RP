@@ -454,7 +454,7 @@
 					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
-			if(item_type = "hypovial")
+			if(item_type == "hypovial")
 				var/obj/item/reagent_containers/glass/hypovial/P
 				for(var/i in 1 to amount)
 					P = new(where)

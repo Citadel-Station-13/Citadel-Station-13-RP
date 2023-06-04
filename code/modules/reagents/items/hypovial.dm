@@ -2,7 +2,7 @@
 /obj/item/reagent_containers/glass/hypovial
 	name = "hypospray vial"
 	desc = "A standard issue vial used for hyposprays."
-	icon = 'icons/modules/reagents/items/hyposprays.dmi'
+	icon = 'icons/modules/reagents/items/hypospray.dmi'
 	icon_state = "vial"
 	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
 	volume = 60

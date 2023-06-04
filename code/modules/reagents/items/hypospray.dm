@@ -5,10 +5,11 @@
 	Hardened, low-power electronics allow for it to optimize an injection sequence when the trigger is pulled on the fly, avoiding the need to directly aim for a vein - though a skilled user still tends to have faster operation cycles by far.\n \
 	Initially developed in a joint venture between Nanotrasen and Vey-Med, the designs quickly proliferated due to their immense usefulness - and were subsequently leaked. \
 	Nowadays, one can expect this model to be on all but the most backwater colonies and installations."
-	icon = 'icons/modules/reagents/items/hyposprays.dmi'
+	icon = 'icons/modules/reagents/items/hypospray.dmi'
 	icon_state = "hypo"
 	w_class = WEIGHT_CLASS_SMALL
-	#warn inhand icons?
+	drop_sound = 'sound/items/drop/gun.ogg'
+	pickup_sound = 'sound/items/pickup/gun.ogg'
 
 	/// loaded vial
 	var/obj/item/reagent_containers/glass/hypovial/loaded
@@ -30,8 +31,6 @@
 	var/inject_mode = HYPOSPRAY_MODE_INJECT
 	/// can people change how much to inject?
 	var/inject_adjustable = TRUE
-
-#warn vials in chemmaster
 
 /obj/item/hypospray/update_icon_state()
 	var/vial_state
@@ -136,7 +135,7 @@
 	var/delay = injection_time
 	if(block_flags & CLOTHING_THICK_MATERIAL)
 		if(isnull(thick_add_time))
-			user.action_feedback(SPAN_WARNING("[src] can't inject through something that thick!"), src)
+			user.action_feedback(SPAN_WARNING("[src] can't [inject_verb] through something that thick!"), src)
 			return FALSE
 		delay += thick_add_time
 		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
