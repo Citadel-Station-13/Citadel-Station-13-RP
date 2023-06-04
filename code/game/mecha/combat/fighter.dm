@@ -426,7 +426,7 @@
 	ME.attach(src)
 
 /obj/mecha/combat/fighter/allure/royalty
-	name = "Allure \"Royalty\""
+	name = "\improper Allure \"Royalty\""
 	desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
 	icon_state = "allure_royalty"
 	initial_icon = "allure_royalty"
