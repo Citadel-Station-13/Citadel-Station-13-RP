@@ -18,9 +18,9 @@
 	var/injection_time = 1 SECONDS
 	/// delay add if person is resisting. null to disallow inject.
 	var/resist_add_time = 2 SECONDS
-	/// delay add to injection port items (like hardsuits). null to disallow inject.
+	/// delay add to injection port items (like hardsuits). null to disallow inject. overriden by thick_add_time.
 	var/port_add_time = 1 SECONDS
-	/// delay add to thickmaterial suits. null to disallow inject.
+	/// delay add to thickmaterial suits. null to disallow inject. overrides port_add_time.
 	var/thick_add_time = null
 	/// injection amount
 	var/inject_amount = 5
@@ -107,27 +107,77 @@
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
 /obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(injection_checks(target, user))
+	if(injection_checks(target, user, target_zone))
 		do_inject(target, user)
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/hypospray/proc/injection_checks(mob/target, mob/user, speed_mult = 1, silent = FALSE)
-	#warn impl
+/obj/item/hypospray/proc/injection_checks(mob/target, mob/user, target_zone, speed_mult = 1, silent = FALSE)
+	// todo: legacy cast, get organ/etc should be on mob level maybe.
+	var/mob/living/L = target
+	if(!istype(L))
+		user.action_feedback(SPAN_WARNING("[target] isn't injectable."), src)
+		return FALSE
+	var/obj/item/organ/external/limb = L.get_organ(target_zone || BP_HEAD)
+	if(isnull(limb))
+		user.action_feedback(SPAN_WARNING("[target] doesn't have that limb."), src)
+		return FALSE
+	var/inject_verb
+	var/inject_message
+	switch(inject_mode)
+		if(HYPOSPRAY_MODE_INJECT)
+			inject_verb = "inject"
+		if(HYPOSPRAY_MODE_SPRAY)
+			inject_verb = "spray"
+	var/block_flags = NONE
+	for(var/obj/item/I as anything in target.inventory.items_that_cover(limb.body_part_flags))
+		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
+	// got all coverage, proceed.
+	var/delay = injection_time
+	if(block_flags & CLOTHING_THICK_MATERIAL)
+		if(isnull(thick_add_time))
+			user.action_feedback(SPAN_WARNING("[src] can't inject through something that thick!"), src)
+			return FALSE
+		delay += thick_add_time
+		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
+		inject_message = SPAN_WARNING("[user] starts to dig [src] up against [target]'s [limb]!")
+	else if(block_flags & CLOTHING_INJECTION_PORT)
+		if(isnull(thick_add_time))
+			user.action_feedback(SPAN_WARNING("[src] is not compatible with injection ports!"), src)
+			return FALSE
+		delay += port_add_time
+		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
+		inject_message = SPAN_NOTICE("[user] starts to search for an injection port on [target]'s [limb].")
+	if(target.a_intent != INTENT_HELP)
+		if(isnull(resist_add_time))
+			user.action_feedback(SPAN_WARNING("[src] is not capable of aligning while [target] is resisting! (Non-help intent)"), src)
+			return FALSE
+		delay += resist_add_time
+		// todo: 'friendly name' so limbs can stay concealed of their true names while under clothing?
+		inject_message = SPAN_WARNING("[user] starts to intrusively align [src] up against [target]'s [limb]!")
+	if(!silent)
+		user.visible_action_feedback(inject_message, target, MESSAGE_RANGE_COMBAT_SUPPRESSED)
+	if(!do_after(user, delay, target, mobility_flags = MOBILITY_CAN_USE))
+		return FALSE
+	return TRUE
 
-/obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode)
+/obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode = inject_mode, silent = FALSE)
 	if(!loaded.reagents.total_volume)
 		return
 	var/logstr = "[inject_amount] of [loaded.reagents.log_list()]"
 	if(user)
 		add_attack_logs(user, target, "injected with [logstr]")
 	log_reagent("hypospray: [user] -> [target] using [mode]: [logstr]")
+	var/where_str
 	switch(mode)
 		if(HYPOSPRAY_MODE_INJECT)
 			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_INJECT)
+			where_str = "rushing into your veins"
 		if(HYPOSPRAY_MODE_SPRAY)
 			loaded.reagents.trans_to_mob(target, inject_amount, CHEM_TOUCH)
+			where_str = "on your skin"
 	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
+	target.tactile_feedback(SPAN_WARNING("You feel a tiny prick, and a cool sensation [where_str]."))
 
 /obj/item/hypospray/advanced
 	name = "advanced hypospray"
