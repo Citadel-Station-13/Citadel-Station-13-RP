@@ -425,6 +425,13 @@
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
 	ME.attach(src)
 
+/obj/mecha/combat/fighter/allure/royalty
+	name = "Allure \"Royalty\""
+	desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
+	icon_state = "allure_royalty"
+	initial_icon = "allure_royalty"
+	wreckage = /obj/effect/decal/mecha_wreckage/allure/royalty
+
 /obj/effect/decal/mecha_wreckage/allure
 	name = "allure wreckage"
 	desc = "Remains of some unfortunate fighter. Completely unrepairable."
@@ -432,6 +439,9 @@
 	icon_state = "allure-broken"
 	bound_width = 64
 	bound_height = 64
+
+/obj/effect/decal/mecha_wreckage/allure/royalty
+	icon_state = "allure_royalty-broken"
 
 /datum/category_item/catalogue/technology/allure
 	name = "Voidcraft - Allure"
