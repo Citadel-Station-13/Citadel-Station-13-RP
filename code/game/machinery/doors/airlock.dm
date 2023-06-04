@@ -34,7 +34,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 /obj/machinery/door/airlock
 	name = "Airlock"
 	icon = 'icons/obj/doors/station/door.dmi'
-	icon_state = "door_closed"
+	icon_state = "preview"
 	power_channel = ENVIRON
 	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
@@ -44,7 +44,7 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	normalspeed = 1
 
 	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
-	smoothing_flags = SMOOTH_BITMASK
+	smoothing_flags = SMOOTH_CUSTOM
 	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 	/**
@@ -510,7 +510,7 @@ About the new airlock wires panel:
 		return 0
 
 
-/obj/machinery/door/airlock/update_icon()
+/obj/machinery/door/airlock/update_icon(var/doorstate)
 	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
 		var/turf/step_turf = get_step(src, cardinal)
 		for(var/atom/thing as anything in step_turf)
@@ -534,14 +534,7 @@ About the new airlock wires panel:
 					setDir(WEST)
 				if(SOUTH)
 					setDir(WEST)
-	switch(state)
-		if(0)
-			if(density)
-				icon_state = "closed"
-				state = AIRLOCK_CLOSED
-			else
-				icon_state = "open"
-				state = AIRLOCK_OPEN
+	switch(doorstate)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"
 		if(AIRLOCK_CLOSED)
@@ -1135,6 +1128,7 @@ About the new airlock wires panel:
 				src.closeOther = A
 				break
 	name = "\improper [name]"
+	update_icon(AIRLOCK_CLOSED)
 	. = ..()
 
 /obj/machinery/door/airlock/Destroy()
