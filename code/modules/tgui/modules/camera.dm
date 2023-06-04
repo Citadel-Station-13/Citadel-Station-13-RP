@@ -296,3 +296,21 @@
 
 /datum/tgui_module_old/camera/ntos/hacked/New(host)
 	. = ..(host, GLOB.using_map.station_networks.Copy())
+
+//Crew Helmet Cams
+/datum/tgui_module_old/camera/ntos/helmet
+	name = "Public Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/helmet/New(host)
+	. = ..(host, list(NETWORK_CIV_HELMETS))
+/datum/tgui_module_old/camera/ntos/security_helmet
+	name = "Security Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/security_helmet/New(host)
+	. = ..(host, list(NETWORK_SEC_HELMETS))
+
+/datum/tgui_module_old/camera/ntos/exploration_helmet
+	name = "Exploration Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/exploration_helmet/New(host)
+	. = ..(host, list(NETWORK_EXPLO_HELMETS))
