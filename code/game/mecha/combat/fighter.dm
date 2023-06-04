@@ -445,11 +445,10 @@
 
 /datum/category_item/catalogue/technology/allure
 	name = "Voidcraft - Allure"
-	desc = "A space superiority fighter of zorren design, many would comment that the blocky shape hinders aesthetic appeal. However, Zorren are \
-	often found painting their hulls in intricate designs of purple and gold, and this craft is no exception to the rule. Some individual seems to have \
-	decorated it finely. Import craft like this one often ship with no weapons, though the Zorren saw fit to integrate a cloaking device."
+	desc = "A space superiority fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint. \
+	Import craft like this one often ship with no weapons, though the Skrell saw fit to integrate a cloaking device."
 	value = CATALOGUER_REWARD_MEDIUM
-
+A fighter of Skrellian design.
 ////////////// Pinnace //////////////
 
 /obj/mecha/combat/fighter/pinnace
