@@ -5,7 +5,7 @@
 	icon_state = "kevlar_upgrade"	// RIP PLACEHOLDERS WOOO
 
 /obj/item/kevlarupgrade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity_flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	if(istype(target, /obj/item/clothing/under))

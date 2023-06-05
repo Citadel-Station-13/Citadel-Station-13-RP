@@ -142,7 +142,7 @@
 */
 	if(requires_wield && !wielded)
 		return
-	if(!proximity_flag && charged)//Mark a target, or mine a tile.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && charged)//Mark a target, or mine a tile.
 		var/turf/proj_turf = user.loc
 		if(!isturf(proj_turf))
 			return
@@ -161,7 +161,7 @@
 		update_icon()
 		addtimer(CALLBACK(src, .proc/Recharge), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
 		return
-	if(proximity_flag && isliving(target))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && isliving(target))
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)

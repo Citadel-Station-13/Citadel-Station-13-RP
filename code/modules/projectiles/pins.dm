@@ -25,7 +25,7 @@
 
 /obj/item/firing_pin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(proximity_flag)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		if(istype(target, /obj/item/gun))
 			var/obj/item/gun/G = target
 			if(G.no_pin_required)
@@ -118,7 +118,7 @@
 
 /obj/item/firing_pin/dna/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(proximity_flag && iscarbon(target))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(M.dna && M.dna.unique_enzymes)
 			unique_enzymes = M.dna.unique_enzymes

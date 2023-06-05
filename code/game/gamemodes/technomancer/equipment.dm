@@ -206,7 +206,7 @@
 		S.on_scepter_use_cast(user)
 
 /obj/item/scepter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(proximity_flag)
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 	var/obj/item/item_to_test = user.get_other_hand(src)
 	if(istype(item_to_test, /obj/item/spell))
