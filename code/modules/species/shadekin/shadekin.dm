@@ -35,7 +35,7 @@
 	)
 
 	siemens_coefficient = 1
-	darksight = 10
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	slowdown = -0.5
 	item_slowdown_mod = 0.5
@@ -114,6 +114,8 @@
 		BP_L_FOOT = list("path" = /obj/item/organ/external/foot),
 		BP_R_FOOT = list("path" = /obj/item/organ/external/foot/right),
 	)
+
+	vision_innate = /datum/vision/baseline/species_tier_3/for_snowflake_ocs
 
 	//SHADEKIN-UNIQUE STUFF GOES HERE
 	var/list/shadekin_abilities = list(

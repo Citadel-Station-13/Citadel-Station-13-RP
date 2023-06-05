@@ -517,7 +517,7 @@
 					next_rock += P.excavation_amount
 					while(next_rock > 50)
 						next_rock -= 50
-						var/obj/item/ore/O = new(src)
+						new /obj/item/ore(src)
 				return
 			else
 				return

@@ -45,18 +45,6 @@
 	cost = 3 //Let us not forget this effects tasers!
 	var_changes = list("siemens_coefficient" = 0.5)
 
-/datum/trait/positive/darksight
-	name = "Darksight"
-	desc = "Allows you to see a short distance in the dark, also makes you more vulnerable to flashes."
-	cost = 1
-	var_changes = list("darksight" = 3, "flash_mod" = 2.0)
-
-/datum/trait/positive/darksight_plus
-	name = "Major Darksight"
-	desc = "Allows you to see great distances in the dark, also makes you extremely vulnerable to flashes."
-	cost = 2
-	var_changes = list("darksight" = 7, "flash_mod" = 3.0)
-
 /datum/trait/positive/melee_attack
 	name = "Sharp Melee"
 	desc = "Provides sharp melee attacks that do slightly more damage."

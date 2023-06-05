@@ -106,12 +106,12 @@
 	return 1
 
 // todo: refactor above
-//! Raw "damage"
+//? Raw "damage"
 
 // todo: better name
 // /mob/living/proc/damage_brute()
 
-//! Afflictions
+//? Afflictions
 /**
  * inflicts radiation.
  * will not heal it.

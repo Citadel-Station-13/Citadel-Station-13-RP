@@ -766,7 +766,7 @@
 	slot_flags = SLOT_EYES | SLOT_EARS
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
-	off_state = "spiffygogsup"
+	inactive_icon_state = "spiffygogsup"
 
 //General use
 /obj/item/clothing/accessory/tronket
@@ -985,7 +985,7 @@
 
 	if(!teleport_checks(target,user))
 		return //The checks proc can send them a message if it wants.
-	
+
 	if(user != target && !do_after(user, 5 SECONDS, target))
 		return
 

@@ -3387,47 +3387,6 @@
 	pizza = new /obj/item/reagent_containers/food/snacks/sliceable/pizza/pineapple(src)
 	boxtag = "Hawaiian Sunrise"
 
-/obj/item/reagent_containers/food/snacks/dionaroast
-	name = "roast diona"
-	desc = "It's like an enormous, leathery carrot. With an eye."
-	icon_state = "dionaroast"
-	trash = /obj/item/trash/plate
-	filling_color = "#75754B"
-	nutriment_amt = 6
-	nutriment_desc = list("a chorus of flavor" = 6)
-
-/obj/item/reagent_containers/food/snacks/dionaroast/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("radium", 2)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/teshariroast
-	name = "roast teshari"
-	desc = "It's almost disturbing how closely this resembles a chicken. Plucking the feathers must have taken forever."
-	icon_state = "teshari_roast"
-	trash = /obj/item/trash/plate
-	filling_color = "#75754B"
-	nutriment_amt = 6
-	nutriment_desc = list("lemon pepper wet" = 6)
-
-/obj/item/reagent_containers/food/snacks/tehsariroast/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 2)
-	bitesize = 2
-
-/obj/item/reagent_containers/food/snacks/voxjerky
-	name = "vox jerky"
-	desc = "Dehydrated Vox meat, cut into tough strips. A good source of protein, if you have strong teeth."
-	icon_state = "vox_jerky"
-	nutriment_amt = 6
-	nutriment_desc = list("spicy teriyaki" = 6)
-
-/obj/item/reagent_containers/food/snacks/voxjerky/Initialize(mapload)
-	. = ..()
-	reagents.add_reagent("protein", 6)
-	reagents.add_reagent("phoron", 6)
-	bitesize = 2
-
 ///////////////////////////////////////////
 // new old food stuff from bs12
 ///////////////////////////////////////////

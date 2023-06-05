@@ -83,7 +83,7 @@
 
 	busy = 1
 	for(var/mob/O in viewers(user))
-		O.show_message(text("<font color='red'>[user] started reprogramming [src]!</font>"), 1)
+		O.show_message(SPAN_RED("[user] started reprogramming [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	if(do_after(user, 50))
 		set_state(!on)

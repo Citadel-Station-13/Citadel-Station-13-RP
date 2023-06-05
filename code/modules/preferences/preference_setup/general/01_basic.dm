@@ -19,6 +19,7 @@
 	S["age"]					>> pref.age
 	S["spawnpoint"]				>> pref.spawnpoint
 	S["OOC_Notes"]				>> pref.metadata
+	S["Headshot_URL"]           >> pref.headshot_url
 
 /datum/category_item/player_setup_item/general/basic/save_character(var/savefile/S)
 	S["real_name"]				<< pref.real_name
@@ -29,6 +30,7 @@
 	S["age"]					<< pref.age
 	S["spawnpoint"]				<< pref.spawnpoint
 	S["OOC_Notes"]				<< pref.metadata
+	S["Headshot_URL"]           << pref.headshot_url
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
 	var/species_name = pref.real_species_name()
@@ -82,6 +84,7 @@
 	. += "<b>Age:</b> <a href='?src=\ref[src];age=1'>[pref.age]</a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
 	. += "<b>OOC Notes:</b> <a href='?src=\ref[src];metadata=1'> Edit </a><br>"
+	. += "<b>Headshot:</b> <a href='?src=\ref[src];headshot=1'>[pref.headshot_url ? "Set" : "Not Set"]</a><br>"
 	. = jointext(., null)
 
 /datum/category_item/player_setup_item/general/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
@@ -149,6 +152,13 @@
 		if(!isnull(new_metadata) && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return PREFERENCES_REFRESH
+
+	else if(href_list["headshot"])
+		if(pref.headshot_url)
+			if(alert(user, "Do you want to unset your headshot URL? An admin must set it again.", "Unset Headshot", "No", "Yes") == "Yes")
+				pref.headshot_url = null
+		else
+			to_chat(user, SPAN_BOLDWARNING("You must join the Discord and open a ticket in order to have your headshot URL set!"))
 
 	return ..()
 

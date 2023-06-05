@@ -358,11 +358,6 @@
 	var/datum/nifsoft/soulcatcher/soulcatcher
 	var/identifying_gender
 
-/mob/living/carbon/brain/caught_soul/Login()
-	..()
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE)
-	identifying_gender = client.prefs.identifying_gender
-	reset_perspective((nif?.human) || nif)
 
 /mob/living/carbon/brain/caught_soul/Destroy()
 	if(soulcatcher)
@@ -511,7 +506,7 @@
 ///////////////////
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
-	plane = PLANE_AUGMENTED
+	plane = AUGMENTED_PLANE
 	icon = 'icons/obj/machines/ar_elements.dmi'
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
@@ -548,7 +543,7 @@
 		dummy.cut_overlay(dummy.hud_list)
 		// appearance clone immediately
 		appearance = dummy.appearance
-		plane = PLANE_AUGMENTED
+		plane = AUGMENTED_PLANE
 		qdel(dummy)
 
 /mob/observer/eye/ar_soul/Destroy()

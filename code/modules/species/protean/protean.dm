@@ -28,7 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	breath_type = null
 	poison_type = null
@@ -99,7 +99,6 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
@@ -112,9 +111,11 @@
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
+
 	species_statpanel = TRUE
 	var/global/list/protean_abilities = list()
 	abilities = list(
+		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_flight
 	)
 	var/monochromatic = FALSE //IGNORE ME

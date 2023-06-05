@@ -98,6 +98,7 @@
 
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
+	H.add_vision_modifier(/datum/vision/augmenting/vetalan)
 	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 

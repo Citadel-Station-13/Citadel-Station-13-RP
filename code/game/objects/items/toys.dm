@@ -186,7 +186,7 @@
 					if(!istype(M,/mob/living)) continue
 					if(M == user) continue
 					for(var/mob/O in viewers(world.view, D))
-						O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
+						O.show_message(SPAN_WARNING("\The [M] was hit by the foam dart!"), 1)
 					new /obj/item/toy/ammo/crossbow(M.loc)
 					qdel(D)
 					return
@@ -208,7 +208,7 @@
 	else if (bullets == 0)
 		user.afflict_paralyze(20 * 5)
 		for(var/mob/O in viewers(world.view, user))
-			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
+			O.show_message(SPAN_WARNING("\The [user] realized they were out of ammo and starting scrounging for some!"), 1)
 
 
 /obj/item/toy/crossbow/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -221,8 +221,8 @@
 
 		for(var/mob/O in viewers(target, null))
 			if(O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, target), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
-				O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", target), 1)
+				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head and pulls the trigger!"), 1, SPAN_WARNING("You hear the sound of foam against skull"), 2)
+				O.show_message(SPAN_WARNING("\The [target] was hit in the head by the foam dart!"), 1)
 
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 		new /obj/item/toy/ammo/crossbow(target.loc)
@@ -230,7 +230,7 @@
 	else if (target.lying && src.bullets == 0)
 		for(var/mob/O in viewers(target, null))
 			if (O.client)
-				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, target), 1, "<span class='warning'>You hear someone fall</span>", 2)
+				O.show_message(SPAN_DANGER("\The [user] casually lines up a shot with [target]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!"), 1, SPAN_WARNING("You hear someone fall"), 2)
 		user.afflict_paralyze(20 * 5)
 
 /obj/item/toy/ammo/crossbow
