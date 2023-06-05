@@ -60,6 +60,9 @@
 
 /obj/item/hypospray/attack_hand(mob/user, list/params)
 	if(user.is_holding_inactive(src))
+		if(isnull(loaded))
+			user.action_feedback(SPAN_WARNING("[src] has no vial loaded."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		user.put_in_hands_or_drop(loaded)
 		user.action_feedback(SPAN_NOTICE("You remove [loaded] from [src]."), src)
 		loaded = null
