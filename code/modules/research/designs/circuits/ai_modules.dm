@@ -10,55 +10,55 @@
 
 /datum/design/aimodule/safeguard
 	name = "Safeguard"
-	identifier = "safeguard"
+	id = "safeguard"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/safeguard
 
 /datum/design/aimodule/onehuman
 	name = "OneCrewMember"
-	identifier = "onehuman"
+	id = "onehuman"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/oneHuman
 
 /datum/design/aimodule/protectstation
 	name = "ProtectStation"
-	identifier = "protectstation"
+	id = "protectstation"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/protectStation
 
 /datum/design/aimodule/notele
 	name = "TeleporterOffline"
-	identifier = "notele"
+	id = "notele"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/aiModule/teleporterOffline
 
 /datum/design/aimodule/quarantine
 	name = "Quarantine"
-	identifier = "quarantine"
+	id = "quarantine"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/quarantine
 
 /datum/design/aimodule/oxygen
 	name = "OxygenIsToxicToHumans"
-	identifier = "oxygen"
+	id = "oxygen"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 2, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/oxygen
 
 /datum/design/aimodule/freeform
 	name = "Freeform"
-	identifier = "freeform"
+	id = "freeform"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 4)
 	build_path = /obj/item/aiModule/freeform
 
 /datum/design/aimodule/reset
 	name = "Reset"
-	identifier = "reset"
+	id = "reset"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/reset
 
 /datum/design/aimodule/purge
 	name = "Purge"
-	identifier = "purge"
+	id = "purge"
 	req_tech = list(TECH_DATA = 4, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/purge
 
@@ -74,21 +74,21 @@
 
 /datum/design/aimodule/core/freeformcore
 	name = "Freeform"
-	identifier = "freeformcore"
+	id = "freeformcore"
 	build_path = /obj/item/aiModule/freeformcore
 
 /datum/design/aimodule/core/asimov
 	name = "Asimov"
-	identifier = "asimov"
+	id = "asimov"
 	build_path = /obj/item/aiModule/asimov
 
 /datum/design/aimodule/core/paladin
 	name = "P.A.L.A.D.I.N."
-	identifier = "paladin"
+	id = "paladin"
 	build_path = /obj/item/aiModule/paladin
 
 /datum/design/aimodule/core/tyrant
 	name = "T.Y.R.A.N.T."
-	identifier = "tyrant"
+	id = "tyrant"
 	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 2, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/tyrant

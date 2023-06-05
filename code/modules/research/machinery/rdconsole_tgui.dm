@@ -233,7 +233,7 @@
 
 		data.Add(list(list(
 			"name" = D.name,
-			"id" = D.identifier,
+			"id" = D.id,
 			"mat_list" = mat_list,
 			"chem_list" = chem_list,
 		)))
@@ -271,7 +271,7 @@
 
 		data.Add(list(list(
 			"name" = D.name,
-			"id" = D.identifier,
+			"id" = D.id,
 			"mat_list" = mat_list,
 			"chem_list" = chem_list,
 		)))
@@ -296,7 +296,7 @@
 			data.Add(list(list(
 				"name" = D.name,
 				"desc" = D.desc,
-				"id" = D.identifier,
+				"id" = D.id,
 			)))
 
 	data = tim_sort(data, /proc/cmp_designs_rdconsole, FALSE)
@@ -387,7 +387,7 @@
 
 		if("copy_design") //Copy design data from the research holder to the design disk.
 			for(var/datum/design/D in files.known_designs)
-				if(params["copy_design_ID"] == D.identifier)
+				if(params["copy_design_ID"] == D.id)
 					d_disk.blueprint = D
 					break
 			return TRUE
@@ -501,7 +501,7 @@
 			if(linked_lathe)
 				var/datum/design/being_built = null
 				for(var/datum/design/D in files.known_designs)
-					if(D.identifier == params["build"])
+					if(D.id == params["build"])
 						being_built = D
 						break
 				if(being_built)
@@ -512,7 +512,7 @@
 			if(linked_lathe)
 				var/datum/design/being_built = null
 				for(var/datum/design/D in files.known_designs)
-					if(D.identifier == params["build"])
+					if(D.id == params["build"])
 						being_built = D
 						break
 				if(being_built)
@@ -524,7 +524,7 @@
 			if(linked_imprinter)
 				var/datum/design/being_built = null
 				for(var/datum/design/D in files.known_designs)
-					if(D.identifier == params["imprint"])
+					if(D.id == params["imprint"])
 						being_built = D
 						break
 				if(being_built)

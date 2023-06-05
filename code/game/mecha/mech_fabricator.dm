@@ -200,7 +200,7 @@
 		"desc" = initial(built_item.desc),
 		"printTime" = get_construction_time_w_coeff(initial(D.work)),
 		"cost" = cost,
-		"id" = D.identifier,
+		"id" = D.id,
 		"subCategory" = sub_category,
 		"categoryOverride" = category_override,
 		"searchMeta" = "", // temporarily removed
@@ -390,7 +390,7 @@
   */
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(list/part_list)
 	for(var/datum/design/D in files.known_designs)
-		if((D.lathe_type & valid_buildtype) && (D.identifier in part_list))
+		if((D.lathe_type & valid_buildtype) && (D.id in part_list))
 			add_to_queue(D)
 
 /**
@@ -499,7 +499,7 @@
 		final_sets += part_set
 
 	for(var/datum/design/D in files.known_designs)
-		if((D.lathe_type & valid_buildtype) && D.identifier != "id") // bugfix for weird null entries
+		if((D.lathe_type & valid_buildtype) && D.id != "id") // bugfix for weird null entries
 			// This is for us.
 			var/list/part = output_part_info(D, TRUE)
 
@@ -575,7 +575,7 @@
 			// Add a specific part to queue
 			var/T = params["id"]
 			for(var/datum/design/D in files.known_designs)
-				if((D.lathe_type & valid_buildtype) && (D.identifier == T))
+				if((D.lathe_type & valid_buildtype) && (D.id == T))
 					add_to_queue(D)
 					break
 			return
@@ -609,7 +609,7 @@
 			var/id = params["id"]
 			var/datum/design/D = null
 			for(var/datum/design/D_new in files.known_designs)
-				if((D_new.lathe_type == valid_buildtype) && (D_new.identifier == id))
+				if((D_new.lathe_type == valid_buildtype) && (D_new.id == id))
 					D = D_new
 					break
 

@@ -17,7 +17,7 @@
 	var/obj/machinery/lathe/lathe = host
 	if(isnull(lathe))
 		return
-	.["printing"] = lathe.queue_head_design()?.identifier
+	.["printing"] = lathe.queue_head_design()?.id
 	.["progress"] = lathe.progress
 
 /datum/tgui_module/lathe_control/static_data(mob/user, ...)

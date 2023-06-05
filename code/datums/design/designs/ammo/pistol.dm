@@ -2,73 +2,73 @@
 	abstract_type = /datum/design/ammo/pistol
 
 /datum/design/ammo/pistol/a44
-	identifier = "AmmoPistol44"
+	id = "AmmoPistol44"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m44
 
 /datum/design/ammo/pistol/a44_rubber
-	identifier = "AmmoPistol44Rubber"
+	id = "AmmoPistol44Rubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m44/rubber
 
 /datum/design/ammo/pistol/a45
-	identifier = "AmmoPistol45"
+	id = "AmmoPistol45"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45
 
 /datum/design/ammo/pistol/a45_hunter
-	identifier = "AmmoPistol45Hunter"
+	id = "AmmoPistol45Hunter"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45/hunter
 
 /datum/design/ammo/pistol/a45_practice
-	identifier = "AmmoPistol45Practice"
+	id = "AmmoPistol45Practice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45/practice
 
 /datum/design/ammo/pistol/a45_rubber
-	identifier = "AmmoPistol45Rubber"
+	id = "AmmoPistol45Rubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45/rubber
 
 /datum/design/ammo/pistol/a45_flash
-	identifier = "AmmoPistol45Flash"
+	id = "AmmoPistol45Flash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45/flash
 
 /datum/design/ammo/pistol/a45_uzi
-	identifier = "AmmoUzi45"
+	id = "AmmoUzi45"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m45uzi
 
 /datum/design/pistol/a9mm
-	identifier = "AmmoPistol9mm"
+	id = "AmmoPistol9mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm
 
 /datum/design/pistol/a9mm_rubber
-	identifier = "AmmoPistol9mmRubber"
+	id = "AmmoPistol9mmRubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/rubber
 
 /datum/design/pistol/a9mm_practice
-	identifier = "AmmoPistol9mmPractice"
+	id = "AmmoPistol9mmPractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/practice
 
 /datum/design/pistol/a9mm_flash
-	identifier = "AmmoPistol9mmFlash"
+	id = "AmmoPistol9mmFlash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/flash
@@ -77,25 +77,25 @@
 	abstract_type = /datum/design/pistol/compact
 
 /datum/design/pistol/compact/a9mm
-	identifier = "AmmoCompact9mm"
+	id = "AmmoCompact9mm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact
 
 /datum/design/pistol/compact/a9mm_rubber
-	identifier = "AmmoCompact9mmRubber"
+	id = "AmmoCompact9mmRubber"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact/rubber
 
 /datum/design/pistol/compact/a9mm_practice
-	identifier = "AmmoCompact9mmPractice"
+	id = "AmmoCompact9mmPractice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact/practice
 
 /datum/design/pistol/compact/a9mm_flash
-	identifier = "AmmoCompact9mmFlash"
+	id = "AmmoCompact9mmFlash"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/m9mm/compact/flash

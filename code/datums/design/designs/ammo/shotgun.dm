@@ -3,37 +3,37 @@
 	work = 2 SECONDS
 
 /datum/design/ammo/shotgun/blank
-	identifier = "AmmoShotshellBlank"
+	id = "AmmoShotshellBlank"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/blank
 
 /datum/design/ammo/shotgun/beanbag
-	identifier = "AmmoShotshellBeanbag"
+	id = "AmmoShotshellBeanbag"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/beanbag
 
 /datum/design/ammo/shotgun/slug
-	identifier = "AmmoShotshellSlug"
+	id = "AmmoShotshellSlug"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g
 
 /datum/design/ammo/shotgun/flare
-	identifier = "AmmoShotshellFlare"
+	id = "AmmoShotshellFlare"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/flare
 
 /datum/design/ammo/shotgun/buckshot
-	identifier = "AmmoShotshellBuckshot"
+	id = "AmmoShotshellBuckshot"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/pellet
 
 /datum/design/ammo/shotgun/stun
-	identifier = "AmmoShotshellStun"
+	id = "AmmoShotshellStun"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_casing/a12g/stunshell
@@ -46,19 +46,19 @@
 	work = 5 SECONDS
 
 /datum/design/ammo/shotgun/clip/dual/beanbag
-	identifier = "ClipShotgunBeanbag2"
+	id = "ClipShotgunBeanbag2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/clip/c12g/beanbag
 
 /datum/design/ammo/shotgun/clip/dual/slug
-	identifier = "ClipShotgunSlug2"
+	id = "ClipShotgunSlug2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/clip/c12g
 
 /datum/design/ammo/shotgun/clip/dual/buckshot
-	identifier = "ClipShotgunBuckshot2"
+	id = "ClipShotgunBuckshot2"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/ammo_magazine/clip/c12g/pellet

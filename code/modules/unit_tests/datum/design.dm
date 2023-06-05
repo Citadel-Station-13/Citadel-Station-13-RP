@@ -4,10 +4,10 @@
 	for(var/datum/design/path as anything in subtypesof(/datum/design))
 		if(initial(path.abstract_type) == path)
 			continue
-		if(!initial(path.identifier))
-			Fail("no identifier on [path].")
+		if(!initial(path.id))
+			Fail("no id on [path].")
 			continue
-		if(lookup[initial(path.identifier)])
-			Fail("collision on [initial(path.identifier)] between [path] and [lookup[initial(path.identifier)]:identifier]")
+		if(lookup[initial(path.id)])
+			Fail("collision on [initial(path.id)] between [path] and [lookup[initial(path.id)]:id]")
 			continue
-		lookup[initial(path.identifier)] = path
+		lookup[initial(path.id)] = path

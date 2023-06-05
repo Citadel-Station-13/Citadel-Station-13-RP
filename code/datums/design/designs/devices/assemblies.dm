@@ -4,49 +4,49 @@
 	category = "Assemblies"
 
 /datum/design/assembly/igniter
-	identifier = "AseemblyIgniter"
+	id = "AseemblyIgniter"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/igniter
 
 /datum/design/assembly/signaler
-	identifier = "AseemblySignaler"
+	id = "AseemblySignaler"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/signaler
 
 /datum/design/assembly/infrared
-	identifier = "AseemblyInfrared"
+	id = "AseemblyInfrared"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/infra
 
 /datum/design/assembly/timer
-	identifier = "AseemblyTimer"
+	id = "AseemblyTimer"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/timer
 
 /datum/design/assembly/proximity
-	identifier = "AseemblyProximity"
+	id = "AseemblyProximity"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/prox_sensor
 
 /datum/design/assembly/mousetrap
-	identifier = "AseemblyMousetrap"
+	id = "AseemblyMousetrap"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/mousetrap
 
 /datum/design/assembly/voice
-	identifier = "AseemblyVoice"
+	id = "AseemblyVoice"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/assembly/voice
 
 /datum/design/assembly/electropack
-	identifier = "AseemblyElectropack"
+	id = "AseemblyElectropack"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/radio/electropack

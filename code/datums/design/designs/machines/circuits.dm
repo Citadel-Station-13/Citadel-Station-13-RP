@@ -3,115 +3,115 @@
 	category = "Machine Circuits"
 
 /datum/design/machine_circuit/airalarm
-	identifier = "CircuitAirAlarm"
+	id = "CircuitAirAlarm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/airalarm
 
 /datum/design/machine_circuit/firealarm
-	identifier = "CircuitFireAlarm"
+	id = "CircuitFireAlarm"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/firealarm
 
 /datum/design/machine_circuit/apc
-	identifier = "CircuitAPC"
+	id = "CircuitAPC"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/module/power_control
 
 /datum/design/machine_circuit/statusdisplay
-	identifier = "CircuitStatusDisplay"
+	id = "CircuitStatusDisplay"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/status_display
 
 /datum/design/machine_circuit/aistatusdisplay
-	identifier = "CircuitAIStatusDisplay"
+	id = "CircuitAIStatusDisplay"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/ai_status_display
 
 /datum/design/machine_circuit/newscaster
-	identifier = "CircuitNewscaster"
+	id = "CircuitNewscaster"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/newscaster
 
 /datum/design/machine_circuit/atm
-	identifier = "CircuitATM"
+	id = "CircuitATM"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/atm
 
 /datum/design/machine_circuit/intercom
-	identifier = "CircuitIntercom"
+	id = "CircuitIntercom"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/intercom
 
 /datum/design/machine_circuit/holopad
-	identifier = "CircuitHolopad"
+	id = "CircuitHolopad"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/machine/holopad
 
 /datum/design/machine_circuit/guestpass
-	identifier = "CircuitGuestpass"
+	id = "CircuitGuestpass"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/guestpass
 
 /datum/design/machine_circuit/entertainmentscreen
-	identifier = "CircuitEntertainmentScreen"
+	id = "CircuitEntertainmentScreen"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/security/telescreen/entertainment
 
 /datum/design/machine_circuit/keycardauth
-	identifier = "CircuitKeycardAuth"
+	id = "CircuitKeycardAuth"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/keycard_auth
 
 /datum/design/machine_circuit/photocopier
-	identifier = "CircuitPhotocopier"
+	id = "CircuitPhotocopier"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/photocopier
 
 /datum/design/machine_circuit/fax
-	identifier = "CircuitFax"
+	id = "CircuitFax"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/fax
 
 /datum/design/machine_circuit/papershredder
-	identifier = "CircuitPaperShredder"
+	id = "CircuitPaperShredder"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/papershredder
 
 /datum/design/machine_circuit/microwave
-	identifier = "CircuitMicrowave"
+	id = "CircuitMicrowave"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/microwave
 
 /datum/design/machine_circuit/requestconsole
-	identifier = "CircuitRequestConsole"
+	id = "CircuitRequestConsole"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/request
 
 /datum/design/machine_circuit/pipelayer
-	identifier = "CircuitPipeLayer"
+	id = "CircuitPipeLayer"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/pipelayer
 
 /datum/design/machine_circuit/timeclock
-	identifier = "CircuitTimeclock"
+	id = "CircuitTimeclock"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/circuitboard/timeclock

@@ -254,7 +254,7 @@
 		QDEL_LIST_NULL(stored_items)
 
 /obj/machinery/lathe/proc/has_design(datum/design/id_or_instance)
-	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.identifier)
+	return design_holder.has_id(istext(id_or_instance)? id_or_instance : id_or_instance.id)
 
 /obj/machinery/lathe/proc/has_capabilities_for(datum/design/instance)
 	return lathe_type & instance.lathe_type
@@ -428,7 +428,7 @@
  */
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
-	if(!isnull(last) && last.design_id == instance.identifier)
+	if(!isnull(last) && last.design_id == instance.id)
 		var/adding
 		if(instance.is_stack)
 			adding = amount // no limit on stacks
@@ -441,7 +441,7 @@
 	if(length(queue) >= queue_max)
 		return FALSE
 	var/datum/lathe_queue_entry/inserting = new
-	inserting.design_id = instance.identifier
+	inserting.design_id = instance.id
 	inserting.material_parts = material_parts
 	inserting.ingredient_parts = ingredient_parts
 	inserting.amount = 1

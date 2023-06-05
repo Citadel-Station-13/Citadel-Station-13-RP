@@ -1,5 +1,5 @@
 /datum/design/weapon/knuckle_duster
-	identifier = "WeaponKnuckleDusters"
+	id = "WeaponKnuckleDusters"
 	build_path = /obj/item/clothing/gloves/knuckledusters
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
@@ -9,7 +9,7 @@
 	)
 
 /datum/design/weapon/tactical_knife
-	identifier = "WeaponTacticalKnife"
+	id = "WeaponTacticalKnife"
 	build_path = /obj/item/material/knife/tacknife
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
@@ -21,7 +21,7 @@
 	)
 
 /datum/design/weapon/flamethrower
-	identifier = "WeaponFlamethrower"
+	id = "WeaponFlamethrower"
 	build_path = /obj/item/flamethrower/full
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC

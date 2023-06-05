@@ -8,8 +8,8 @@
 	abstract_type = /datum/design
 
 	//? Design Data - Core
-	/// Must be unique - identifier of design in CamelCase.
-	var/identifier
+	/// Must be unique - id of design in CamelCase.
+	var/id
 	/// design flags - see [code/__DEFINES/datums/design.dm]
 	var/design_flags = NONE
 	/// how are we unlocked - see [code/__DEFINES/datums/design.dm]
@@ -100,7 +100,7 @@
 	return list(
 		"name" = name,
 		"desc" = desc,
-		"id" = identifier,
+		"id" = id,
 		"category" = category,
 		"materials" = materials,
 		"material_parts" = material_parts,

@@ -63,31 +63,31 @@
 
 /datum/design/circuit/fusion
 	name = "fusion core control console"
-	identifier = "fusion_core_control"
+	id = "fusion_core_control"
 	build_path = /obj/item/circuitboard/fusion_core_control
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 
 /datum/design/circuit/fusion/fuel_compressor
 	name = "fusion fuel compressor"
-	identifier = "fusion_fuel_compressor"
+	id = "fusion_fuel_compressor"
 	build_path = /obj/item/circuitboard/fusion_fuel_compressor
 
 /datum/design/circuit/fusion/fuel_control
 	name = "fusion fuel control console"
-	identifier = "fusion_fuel_control"
+	id = "fusion_fuel_control"
 	build_path = /obj/item/circuitboard/fusion_fuel_control
 
 /datum/design/circuit/fusion/gyrotron_control
 	name = "gyrotron control console"
-	identifier = "gyrotron_control"
+	id = "gyrotron_control"
 	build_path = /obj/item/circuitboard/gyrotron_control
 
 /datum/design/circuit/fusion/core
 	name = "fusion core"
-	identifier = "fusion_core"
+	id = "fusion_core"
 	build_path = /obj/item/circuitboard/fusion_core
 
 /datum/design/circuit/fusion/injector
 	name = "fusion fuel injector"
-	identifier = "fusion_injector"
+	id = "fusion_injector"
 	build_path = /obj/item/circuitboard/fusion_injector

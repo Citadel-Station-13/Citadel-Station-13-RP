@@ -8,7 +8,7 @@
 /datum/design/circuit/tesla_coil
 	name = "Machine Design (Tesla Coil Board)"
 	desc = "The circuit board for a tesla coil."
-	identifier = "CircuitTeslaCoil"
+	id = "CircuitTeslaCoil"
 	build_path = /obj/item/circuitboard/tesla_coil
 	req_tech = list(TECH_MAGNET = 2, TECH_POWER = 4)
 
@@ -22,6 +22,6 @@
 /datum/design/circuit/grounding_rod
 	name = "Machine Design (Grounding Rod)"
 	desc = "The circuit board for a grounding rod."
-	identifier = "CircuitGroundingRod"
+	id = "CircuitGroundingRod"
 	build_path = /obj/item/circuitboard/grounding_rod
 	req_tech = list(TECH_MAGNET = 2, TECH_POWER = 2)

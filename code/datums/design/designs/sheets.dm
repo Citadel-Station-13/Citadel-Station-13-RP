@@ -2,7 +2,7 @@
 	abstract_type = /datum/design/sheet
 
 /datum/design/sheet/reinforced_glass
-	identifier = "SheetReinforcedGlass"
+	id = "SheetReinforcedGlass"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials = list(
@@ -13,7 +13,7 @@
 	work = 0.2 SECONDS
 
 /datum/design/sheet/metal_rods
-	identifier = "SheetSteelRods"
+	id = "SheetSteelRods"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	materials = list(

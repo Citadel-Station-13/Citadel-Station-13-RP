@@ -17,24 +17,24 @@
 
 /datum/design/circuit/disk/skrellprint
 	name = SPECIES_SKRELL
-	identifier = "prosthetic_skrell"
+	id = "prosthetic_skrell"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/disk/species/skrell
 
 /datum/design/circuit/disk/tajprint
 	name = SPECIES_TAJ
-	identifier = "prosthetic_tajaran"
+	id = "prosthetic_tajaran"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/disk/species/tajaran
 
 /datum/design/circuit/disk/unathiprint
 	name = SPECIES_UNATHI
-	identifier = "prosthetic_unathi"
+	id = "prosthetic_unathi"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 4)
 	build_path = /obj/item/disk/species/unathi
 
 /datum/design/circuit/disk/teshariprint
 	name = SPECIES_TESHARI
-	identifier = "prosthetic_teshari"
+	id = "prosthetic_teshari"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 4)
 	build_path = /obj/item/disk/species/teshari

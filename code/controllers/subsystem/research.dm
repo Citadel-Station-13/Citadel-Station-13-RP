@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(research)
 		if(initial(path.abstract_type) == path)
 			continue
 		path = new path
-		if(design_lookup[path.identifier])
+		if(design_lookup[path.id])
 			qdel(path)
 			continue
 		if(!register_design(path))
@@ -38,12 +38,12 @@ SUBSYSTEM_DEF(research)
  * make sure you drop all references of the design from your end!
  */
 /datum/controller/subsystem/research/proc/register_design(datum/design/registering)
-	if(design_lookup[registering.identifier])
+	if(design_lookup[registering.id])
 		return FALSE
 	. = TRUE
-	design_lookup[registering.identifier] = registering
+	design_lookup[registering.id] = registering
 	if((registering.lathe_type & LATHE_TYPE_AUTOLATHE) && (registering.design_unlock & DESIGN_UNLOCK_INTRINSIC))
-		autolathe_design_ids += registering.identifier
+		autolathe_design_ids += registering.id
 
 /**
  * gets a design datum
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(research)
  */
 /datum/controller/subsystem/research/proc/fetch_design(datum/design/id_or_typepath)
 	RETURN_TYPE(/datum/design)
-	return design_lookup[ispath(id_or_typepath)? initial(id_or_typepath.identifier) : id_or_typepath]
+	return design_lookup[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
 
 /**
  * gets a list of design datums by id or typepath
@@ -64,7 +64,7 @@ SUBSYSTEM_DEF(research)
 	. = list()
 	var/datum/design/thing
 	for(thing as anything in id_or_typepaths)
-		thing = design_lookup[ispath(thing)? initial(thing.identifier) : thing]
+		thing = design_lookup[ispath(thing)? initial(thing.id) : thing]
 		if(isnull(thing))
 			continue
 		. += thing

@@ -4,55 +4,55 @@
 	category = "Stock Parts"
 
 /datum/design/stock_part/manipulator
-	identifier = "PartManipulatorT1"
+	id = "PartManipulatorT1"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/manipulator
 
 /datum/design/stock_part/bin
-	identifier = "PartBinT1"
+	id = "PartBinT1"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/matter_bin
 
 /datum/design/stock_part/scanner
-	identifier = "PartScannerT1"
+	id = "PartScannerT1"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/scanning_module
 
 /datum/design/stock_part/laser
-	identifier = "PartLaserT1"
+	id = "PartLaserT1"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/micro_laser
 
 /datum/design/stock_part/capacitor
-	identifier = "PartCapacitorT1"
+	id = "PartCapacitorT1"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/capacitor
 
 /datum/design/stock_part/screen
-	identifier = "PartScreen"
+	id = "PartScreen"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/console_screen
 
 /datum/design/stock_part/motor
-	identifier = "PartMotor"
+	id = "PartMotor"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/motor
 
 /datum/design/stock_part/spring
-	identifier = "PartSpring"
+	id = "PartSpring"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/spring
 
 /datum/design/stock_part/gear
-	identifier = "PartGear"
+	id = "PartGear"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/stock_parts/gear
