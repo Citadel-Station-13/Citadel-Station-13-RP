@@ -6,6 +6,7 @@
 	icon_state = "vial"
 	w_class = WEIGHT_CLASS_TINY // 14 fits in a box, not 7
 	volume = 60
+	start_rename = TRUE
 	/// how many [state][#] overlays we have for reagents remaining
 	var/overlay_count = 3
 

@@ -34,6 +34,20 @@
 	/// can people change how much to inject?
 	var/inject_adjustable = TRUE
 
+/obj/item/hypospray/Initialize(mapload)
+	. = ..()
+	if(ispath(loaded))
+		loaded = new loaded(src)
+		update_icon()
+
+/obj/item/hypospray/examine(mob/user)
+	. = ..()
+	if(get_dist(src, user) <= 1)
+		if(!isnull(loaded))
+			. += SPAN_NOTICE("Its vial has [loaded.reagents.total_volume] units remaining.")
+		else
+			. += SPAN_NOTICE("It's unloaded.")
+
 /obj/item/hypospray/update_icon_state()
 	var/vial_state
 	if(!isnull(loaded))
@@ -83,8 +97,7 @@
 	if(isnull(amount))
 		return
 	amount = round(amount, 1)
-	if(amount <= 0)
-		amount = 1
+	amount = clamp(amount, 1, inject_max)
 	inject_amount = amount
 	usr.action_feedback(SPAN_NOTICE("[src] is now set to inject [amount] per use."), src)
 
@@ -106,7 +119,7 @@
 	if(!inject_adjustable)
 		user.action_feedback(SPAN_WARNING("[src] can't have its injection thresholds changed."), src)
 		return
-	inject_amount = (inject_amount + 5 > inject_max)? min(inject_amount, inject_max) : inject_amount + 5
+	inject_amount = (inject_amount + 5 > inject_max)? min(5, inject_max) : inject_amount + 5
 	user.action_feedback(SPAN_NOTICE("[src] is now set to inject [inject_amount] per use."), src)
 
 /obj/item/hypospray/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
@@ -121,6 +134,9 @@
 	if(!istype(L))
 		user.action_feedback(SPAN_WARNING("[target] isn't injectable."), src)
 		return FALSE
+	if(!loaded?.reagents?.total_volume)
+		user.action_feedback(SPAN_WARNING("[src]'s vial is empty."), src)
+		return FALSE
 	var/obj/item/organ/external/limb = L.get_organ(target_zone || BP_HEAD)
 	if(isnull(limb))
 		user.action_feedback(SPAN_WARNING("[target] doesn't have that limb."), src)
@@ -132,6 +148,7 @@
 			inject_verb = "inject"
 		if(HYPOSPRAY_MODE_SPRAY)
 			inject_verb = "spray"
+	inject_message = "[user] starts to [inject_verb] [target] with \the [src]."
 	var/block_flags = NONE
 	for(var/obj/item/I as anything in target.inventory.items_that_cover(limb.body_part_flags))
 		block_flags |= (I.clothing_flags & (CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT))
@@ -162,6 +179,8 @@
 		user.visible_action_feedback(inject_message, target, MESSAGE_RANGE_COMBAT_SUPPRESSED)
 	if(!do_after(user, delay, target, mobility_flags = MOBILITY_CAN_USE))
 		return FALSE
+	if(!loaded?.reagents?.total_volume)
+		return FALSE
 	return TRUE
 
 /obj/item/hypospray/proc/do_inject(mob/target, mob/user, mode = inject_mode, silent = FALSE)
@@ -181,6 +200,8 @@
 			where_str = "on your skin"
 	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
 	target.tactile_feedback(SPAN_WARNING("You feel a tiny prick, and a cool sensation [where_str]."))
+	if(!isnull(user))
+		user.action_feedback("You inject [target] with [src]. [loaded.reagents.total_volume] units remaining.", src)
 
 /obj/item/hypospray/loaded
 	loaded = /obj/item/reagent_containers/glass/hypovial/tricordrazine

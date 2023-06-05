@@ -13,17 +13,11 @@
 	var/start_volume
 	/// volume of our default reagents holder
 	var/volume = 30
+	/// automatically rename to [[start_reagent]]
+	var/start_rename = FALSE
 
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
-
-/obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
-	set name = "Set transfer amount"
-	set category = "Object"
-	set src in range(0)
-	var/N = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
-	if(N)
-		amount_per_transfer_from_this = N
 
 /obj/item/reagent_containers/Initialize(mapload)
 	. = ..()
@@ -35,6 +29,17 @@
 			reagents.add_reagent(id, start_with[id])
 	else if(!isnull(start_reagent))
 		reagents.add_reagent(start_reagent, isnull(start_volume)? volume : start_volume)
+		if(start_rename)
+			var/datum/reagent/R = start_reagent
+			name = "[name] ([initial(R.name)])"
+
+/obj/item/reagent_containers/verb/set_APTFT() //set amount_per_transfer_from_this
+	set name = "Set transfer amount"
+	set category = "Object"
+	set src in range(0)
+	var/N = input("Amount per transfer from this:","[src]") as null|anything in possible_transfer_amounts
+	if(N)
+		amount_per_transfer_from_this = N
 
 /obj/item/reagent_containers/attack_self(mob/user)
 	. = ..()
