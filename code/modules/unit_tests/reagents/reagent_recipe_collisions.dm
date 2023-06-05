@@ -4,7 +4,6 @@
 
 /datum/unit_test/reagent_recipe_collisions/Run()
 	var/list/reactions = SSchemistry.chemical_reactions.Copy()
-		reactions += GLOB.chemical_reactions_list[V]
 	for(var/i in 1 to (reactions.len-1))
 		for(var/i2 in (i+1) to reactions.len)
 			var/datum/chemical_reaction/r1 = reactions[i]
