@@ -1,7 +1,7 @@
 /proc/chem_recipes_do_conflict(datum/chemical_reaction/r1, datum/chemical_reaction/r2)
-	//do the non-list tests first, because they are cheaper
-	// if(r1.required_container != r2.required_container)
-	// 	return FALSE
+	// do the non-list tests first, because they are cheaper
+	if(r1.required_container != r2.required_container)
+		return FALSE
 	// if(r1.is_cold_recipe == r2.is_cold_recipe)
 	// 	if(r1.required_temp != r2.required_temp)
 	// 		//one reaction requires a more extreme temperature than the other, so there is no conflict

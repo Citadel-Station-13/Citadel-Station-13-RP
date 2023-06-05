@@ -18,6 +18,8 @@
 	var/result_amount = 0
 	/// priority - higher is checked first when reacting.
 	var/priority = 0
+	/// required container typepath of holder my_atom
+	var/required_container
 
 	//? legacy / unsorted
 	var/name = null
@@ -70,6 +72,10 @@
 		result = initial(result_initial.id)
 
 /datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
+	// check container
+	if(!isnull(required_container) && !istype(holder.my_atom, required_container))
+		return FALSE
+
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0
