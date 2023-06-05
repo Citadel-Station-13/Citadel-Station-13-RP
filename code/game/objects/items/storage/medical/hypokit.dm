@@ -26,6 +26,7 @@
 	icon_state = "tactical"
 	hypospray_path = /obj/item/hypospray/combat/loaded
 	max_storage_space = INVENTORY_BOX_SPACE * 2
+	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
 
 /obj/item/storage/hypokit/combat/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
@@ -49,6 +50,7 @@
 	inhand_state = "normal"
 	hypospray_path = /obj/item/hypospray/advanced/loaded
 	max_storage_space = INVENTORY_BOX_SPACE * 2
+	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
 
 /obj/item/storage/hypokit/advanced/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
