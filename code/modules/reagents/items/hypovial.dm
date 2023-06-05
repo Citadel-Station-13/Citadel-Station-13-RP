@@ -13,7 +13,7 @@
 	cut_overlays()
 	. = ..()
 	if(overlay_count)
-		var/num = clamp(round((reagents.total_volume / reagents.maximum_volume) * overlay_count, 1), 0, 1)
+		var/num = clamp(round((reagents.total_volume / reagents.maximum_volume) * overlay_count, 1), 0, overlay_count)
 		if(num)
 			var/mutable_appearance/overlay = mutable_appearance(icon, "[icon_state][num]")
 			overlay.color = reagents.get_color()
