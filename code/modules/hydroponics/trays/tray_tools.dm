@@ -67,7 +67,7 @@
 			return TRUE
 
 /obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/datum/seed/grown_seed

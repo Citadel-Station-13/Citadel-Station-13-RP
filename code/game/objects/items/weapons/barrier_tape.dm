@@ -284,7 +284,7 @@ var/list/tape_roll_applications = list()
 		return
 
 /obj/item/barrier_tape_roll/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if (istype(A, /obj/machinery/door))

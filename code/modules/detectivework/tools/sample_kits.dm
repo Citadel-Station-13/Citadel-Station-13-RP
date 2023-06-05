@@ -141,7 +141,7 @@
 	to_chat(user, "<span class='notice'>You transfer [S.evidence.len] [S.evidence.len > 1 ? "[evidence_type]s" : "[evidence_type]"] to \the [S].</span>")
 
 /obj/item/forensics/sample_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	add_fingerprint(user)
 	if(can_take_sample(user, A))

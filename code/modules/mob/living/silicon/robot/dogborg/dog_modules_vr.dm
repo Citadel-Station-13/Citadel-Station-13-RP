@@ -88,7 +88,7 @@
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
 /obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if (user.stat)
 		return
@@ -212,7 +212,7 @@
 		update_icon()
 
 /obj/item/dogborg/tongue/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

@@ -298,7 +298,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/smokable/cigarette/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(glass)) //you can dip cigarettes into beakers
 		var/transfered = glass.reagents.trans_to_obj(src, chem_volume)

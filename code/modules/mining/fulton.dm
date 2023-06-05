@@ -62,7 +62,7 @@ var/global/list/total_extraction_beacons = list()
 		if(T && !T.outdoors)
 			to_chat(user, "[src] can only be used on things that are outdoors!")
 			return
-	if(!flag)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!istype(A))
 		return

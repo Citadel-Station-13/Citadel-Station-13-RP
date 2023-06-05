@@ -681,7 +681,7 @@
 	update_icon()
 
 /obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	..()
 	if(target)

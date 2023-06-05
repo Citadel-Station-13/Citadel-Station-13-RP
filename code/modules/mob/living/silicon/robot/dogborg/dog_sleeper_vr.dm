@@ -54,7 +54,7 @@
 	hound = loc
 	if(!istype(target))
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(target.anchored)
 		return

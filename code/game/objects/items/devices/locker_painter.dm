@@ -71,7 +71,7 @@
 		)
 
 /obj/item/closet_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/non_closet = 0

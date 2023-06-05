@@ -497,7 +497,7 @@
 	..()
 
 /obj/item/radio/headset/mob_headset/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/mob/living/simple_mob))
 		var/mob/living/simple_mob/M = target

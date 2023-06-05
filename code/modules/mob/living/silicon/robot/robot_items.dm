@@ -83,7 +83,7 @@
 /obj/item/portable_destructive_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!isturf(target.loc)) // Don't load up stuff if it's inside a container or mob!
 		return
@@ -109,7 +109,7 @@
 /obj/item/portable_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/obj/item))
 		var/obj/item/I = target
@@ -165,7 +165,7 @@
 /obj/item/robot_harvester/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		var/obj/machinery/portable_atmospherics/hydroponics/T = target
@@ -185,7 +185,7 @@
 	desc = "An autoloading tray specialized for carrying refreshments."
 
 /obj/item/tray/robotray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if ( !target )
 		return

@@ -16,7 +16,7 @@
 	var/max_area_turfs = 140	// Refuse if area has more than this many turfs.
 
 /obj/item/champagne/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	var/obj/machinery/computer/shuttle_control/comp = A
 	if(!istype(comp))

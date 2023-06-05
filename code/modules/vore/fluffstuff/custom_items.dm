@@ -980,7 +980,7 @@
 
 /obj/item/perfect_tele/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(!teleport_checks(target,user))

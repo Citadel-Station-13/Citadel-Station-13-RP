@@ -463,7 +463,7 @@
 				location.hotspot_expose(700, 5)
 
 /obj/item/melee/thermalcutter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!active && max_fuel)

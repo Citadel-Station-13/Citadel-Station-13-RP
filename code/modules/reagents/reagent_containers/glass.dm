@@ -409,7 +409,7 @@
 	volume = 60
 
 /obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		O.reagents.trans_to_obj(src, volume)

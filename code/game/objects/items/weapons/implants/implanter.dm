@@ -120,7 +120,7 @@
 	return ..()
 
 /obj/item/implanter/compressed/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")

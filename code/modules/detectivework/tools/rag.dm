@@ -148,7 +148,7 @@
 		wipe_down(target, user)
 
 /obj/item/reagent_containers/glass/rag/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(istype(A, /obj/structure/reagent_dispensers) || istype(A, /obj/item/reagent_containers/glass/bucket) || istype(A, /obj/structure/mopbucket))

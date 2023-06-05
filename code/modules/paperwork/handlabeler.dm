@@ -12,7 +12,7 @@
 		return ..()
 
 /obj/item/hand_labeler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!mode)	//if it's off, give up.
 		return

@@ -168,7 +168,7 @@ Buildable meters
 
 //called when a turf is attacked with a pipe item
 /obj/item/pipe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(istype(target))
 		user.transfer_item_to_loc(src, target)

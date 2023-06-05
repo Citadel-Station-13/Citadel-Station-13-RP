@@ -30,7 +30,7 @@
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/nullrod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if (istype(A, /turf/simulated/floor))
 		to_chat(user, "<span class='notice'>You hit the floor with the [src].</span>")
@@ -290,7 +290,7 @@
 
 /obj/item/nullrod/pride_hammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A

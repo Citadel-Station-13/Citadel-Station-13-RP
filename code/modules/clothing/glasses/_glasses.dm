@@ -729,7 +729,7 @@ BLIND     // can't see anything
 	var/scrip_loaded = 0
 
 /obj/item/glasses_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(!istype(user))
 		return
