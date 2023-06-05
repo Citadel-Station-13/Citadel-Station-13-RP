@@ -5,6 +5,7 @@
 	#include "rift_shuttles.dm"
 	#include "rift_telecomms.dm"
 	#include "rift_weather.dm"
+	#include "../../maps/submaps/engine_submaps/rift/rift_engine_submaps.dm"
 
 	#define USING_MAP_DATUM /datum/map/rift
 
