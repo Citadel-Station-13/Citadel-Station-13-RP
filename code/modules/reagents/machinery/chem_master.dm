@@ -456,7 +456,7 @@
 				var/obj/item/reagent_containers/glass/hypovial/P
 				for(var/i in 1 to amount)
 					P = new(where)
-					P.name = "[name] bottle"
+					P.name = "[initial(P.name)] ([name])"
 					P.renamed_by_player = TRUE
 					reagents.trans_to_obj(P, vol_each)
 				return TRUE
