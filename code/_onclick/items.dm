@@ -97,6 +97,20 @@
 // /atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
 
 /**
+ * Called after attacking something/someone if CLICKCHAIN_DO_NOT_PROPAGATE was not raised.
+ *
+ * @params
+ * * target - target atom
+ * * user - attacking mob
+ * * clickchain_flags - flags
+ * * list/params - click parameters
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	return NONE
+
+/**
  * standard proc for engaging a target in melee
  *
  * @params
