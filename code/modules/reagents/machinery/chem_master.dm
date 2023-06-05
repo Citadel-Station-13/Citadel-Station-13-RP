@@ -2,7 +2,7 @@
 // todo: this is horrifying and needs refactored. ESPECIALLY ITS TGUI. ~silicons
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
-	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
+	desc = "Used to seperate and package chemicals in to autoinjectors, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = TRUE
 	anchored = TRUE
 	icon = 'icons/obj/medical/chemical.dmi'
@@ -20,10 +20,8 @@
 	var/obj/item/storage/pill_bottle/pill_bottle = null
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
-	var/lolliamount = 5
 	var/autoamount = 5
 	var/max_pill_count = 20
-	var/max_lolli_count = 10
 	var/max_auto_count = 5
 	var/printing = FALSE
 	var/autosprite = TRUE
