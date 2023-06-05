@@ -5,7 +5,7 @@
 	desc = "The base type of fightercraft. Don't spawn this one!"
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
-	var/stabilization_enabled = TRUE //If our anti-space-drift is on
+	var/stabilization_enabled = FALSE //If our anti-space-drift is on
 	var/ground_capable = FALSE //If we can fly over normal turfs and not just space
 
 	icon = 'icons/mecha/fighters64x64.dmi' //See ATTRIBUTIONS.md for details on license
@@ -260,7 +260,7 @@
 	var/image/stripe1_overlay
 	var/image/stripe2_overlay
 
-/obj/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -336,7 +336,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -355,7 +355,7 @@
 	name = "\improper Baron-SV"
 	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
 
-/obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -384,7 +384,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	ME.attach(src)
@@ -423,7 +423,7 @@
 	health = 500
 	maxhealth = 500
 
-/obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
 	ME.attach(src)
@@ -463,7 +463,7 @@
 
 	ground_capable = TRUE
 
-/obj/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
 	ME.attach(src)
