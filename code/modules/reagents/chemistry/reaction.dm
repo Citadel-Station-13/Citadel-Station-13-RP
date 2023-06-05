@@ -1,3 +1,6 @@
+/proc/cmp_chemical_reaction_priority(datum/chemical_reaction/A, datum/chemical_reaction/B)
+	return B.priority - A.priority
+
 /datum/chemical_reaction
 	//* core *//
 	/// id - must be unique and in CamelCase.
@@ -12,6 +15,8 @@
 	var/result
 	/// how much of the result is made per 1 ratio of required_reagents consumed.
 	var/result_amount = 0
+	/// priority - higher is checked first when reacting.
+	var/priority = 0
 
 	//? legacy / unsorted
 	var/name = null
@@ -220,8 +225,6 @@
 	required_reagents = list("dexalin" = 1, MAT_CARBON = 1, MAT_IRON = 1)
 	result_amount = 3
 
-
-
 //Painkiller
 
 /datum/chemical_reaction/paracetamol
@@ -266,20 +269,12 @@
 
 //The Daxon Family
 
-/datum/chemical_reaction/peridaxon
-	//Heals all organs
-	name = "Peridaxon"
-	id = "peridaxon"
-	result = "peridaxon"
-	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
-	catalysts = list(MAT_PHORON = 5)
-	result_amount = 2
-
 /datum/chemical_reaction/nanoperidaxon
 	//Heals ALL organs
 	name = "Nano-Peridaxon"
 	id = "nanoperidaxon"
 	result = "nanoperidaxon"
+	priority = 100
 	required_reagents = list("peridaxon" = 2, "nifrepairnanites" = 2)
 	result_amount = 2
 
@@ -288,6 +283,7 @@
 	name = "Osteodaxon"
 	id = "osteodaxon"
 	result = "osteodaxon"
+	priority = 100
 	required_reagents = list("bicaridine" = 2, MAT_PHORON = 0.1, "carpotoxin" = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1) // Messes with cryox
@@ -298,6 +294,7 @@
 	name = "Respirodaxon"
 	id = "respirodaxon"
 	result = "respirodaxon"
+	priority = 100
 	required_reagents = list("dexalinp" = 2, "biomass" = 2, MAT_PHORON = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("dexalin" = 1)
@@ -308,6 +305,7 @@
 	name = "Gastirodaxon"
 	id = "gastirodaxon"
 	result = "gastirodaxon"
+	priority = 100
 	required_reagents = list("carthatoline" = 1, "biomass" = 2, "tungsten" = 2)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("lithium" = 1)
@@ -318,6 +316,7 @@
 	name = "Hepanephrodaxon"
 	id = "hepanephrodaxon"
 	result = "hepanephrodaxon"
+	priority = 100
 	required_reagents = list("carthatoline" = 2, "biomass" = 2, "lithium" = 1)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("tungsten" = 1)
@@ -328,6 +327,7 @@
 	name = "Cordradaxon"
 	id = "cordradaxon"
 	result = "cordradaxon"
+	priority = 100
 	required_reagents = list("potassium_chlorophoride" = 1, "biomass" = 2, "bicaridine" = 2)
 	catalysts = list(MAT_PHORON = 5)
 	inhibitors = list("clonexadone" = 1)

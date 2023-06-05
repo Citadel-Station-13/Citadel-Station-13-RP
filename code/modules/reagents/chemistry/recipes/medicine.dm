@@ -29,3 +29,17 @@
 		/datum/reagent/dylovene = 1,
 	)
 	result_amount = 2
+
+/datum/chemical_reaction/peridaxon
+	name = "Peridaxon"
+	id = "peridaxon"
+	result = /datum/reagent/peridaxon
+	required_reagents = list(
+		/datum/reagent/bicaridine = 2,
+		/datum/reagent/clonexadone = 2,
+	)
+	catalysts = list(
+		/datum/reagent/toxin/phoron = 5,
+	)
+	result_amount = 2
+	priority = 100
