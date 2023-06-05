@@ -2859,6 +2859,7 @@
 #include "code\modules\mapping\map_config.dm"
 #include "code\modules\mapping\map_orientation_patterns.dm"
 #include "code\modules\mapping\minimaps.dm"
+#include "code\modules\mapping\paint.dm"
 #include "code\modules\mapping\preloader.dm"
 #include "code\modules\mapping\shuttle.dm"
 #include "code\modules\mapping\submap.dm"

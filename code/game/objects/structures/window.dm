@@ -14,8 +14,8 @@
 	w_class = ITEMSIZE_NORMAL
 	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
-	plane = TURF_PLANE
-	layer = WALL_LAYER
+	plane = OBJ_PLANE
+	layer = WINDOW_LAYER
 	atom_flags = ATOM_BORDER
 
 	layer = WINDOW_LAYER

@@ -179,6 +179,7 @@
 #define ABOVE_JUNK_LAYER   (OBJ_LAYER+0.1) /// Things that want to be slightly above common objects.
 #define DOOR_CLOSED_LAYER  (OBJ_LAYER+0.1) /// Doors when closed.
 #define LOW_WALL_LAYER     (OBJ_LAYER+0.11)
+#define GRILLE_LAYER       (OBJ_LAYER+0.12)
 #define WINDOW_LAYER       (OBJ_LAYER+0.2) /// Windows.
 #define ON_WINDOW_LAYER    (OBJ_LAYER+0.3) /// Ontop of a window.
 #define ABOVE_WINDOW_LAYER (OBJ_LAYER+0.4) /// Above full tile windows so wall items are clickable.

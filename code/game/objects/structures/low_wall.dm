@@ -12,6 +12,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
 	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	plane = OBJ_PLANE
 
 	var/default_material = MAT_STEEL
 	var/datum/material/const_material
@@ -68,7 +69,7 @@
 
 	color = paint_color || const_material.icon_colour
 
-	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state)
+	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
 	smoothed_stripe.appearance_flags = RESET_COLOR
 	smoothed_stripe.color = stripe_color || const_material.icon_colour
 	overlays += smoothed_stripe

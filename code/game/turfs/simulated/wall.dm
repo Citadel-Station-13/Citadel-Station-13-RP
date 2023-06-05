@@ -6,8 +6,8 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/walls/solid.dmi'
-	icon_state = "wall-0"
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "generic"
 	base_icon_state = "wall"
 	color = "#666666"
 

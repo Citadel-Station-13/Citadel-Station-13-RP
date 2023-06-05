@@ -4,7 +4,7 @@
 
 GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
 	/obj/machinery/door/airlock,
-	/obj/machinery/filler_object,
+	/obj/structure/filler_object,
 	/obj/structure/window/reinforced/tinted/full,
 	/obj/structure/window/reinforced/full,
 	/obj/structure/window/phoronreinforced/full,
@@ -39,17 +39,13 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 	if(!istype(material))
 		return
 
-	color = material.icon_colour
+	if(!color)
+		color = material.icon_colour
 
 
 /turf/simulated/wall/update_icon()
 	. = ..()
-
-	if(icon == initial(icon))
-		icon = get_wall_icon()
-	if(reinf_material && material.icon_reinf)
-		icon = material.icon_reinf
-
+	update_overlays()
 
 /turf/simulated/wall/update_icon_state()
 	. = ..()
@@ -62,9 +58,17 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 	else if(icon_state == "fwall_open")
 		icon_state = cached_wall_state
 
+/turf/simulated/wall/proc/update_overlays_delayed()
+	update_overlays()
 
 /turf/simulated/wall/update_overlays()
-	var/plating_color = paint_color || material.icon_colour
+	if (material == initial(material))
+		addtimer(CALLBACK(src, /turf/simulated/wall/proc/update_overlays_delayed), 1 SECOND) //our material datum has not been instanced, so we'll runtime about 2 lines down.
+		return
+	icon = material.icon_base
+	if(reinf_material)
+		icon = material.icon_reinf
+	var/plating_color = paint_color || material?.icon_colour || COLOR_WALL_GUNMETAL //fallback in case things are really fucked.
 	stripe_color = stripe_color || paint_color || material.icon_colour
 
 	var/neighbor_stripe = NONE

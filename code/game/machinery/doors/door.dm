@@ -64,11 +64,11 @@
 
 	if(width > 1)
 		if(dir in list(EAST, WEST))
-			bound_width = width * world.icon_size
-			bound_height = world.icon_size
-		else
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
+		else
+			bound_width = width * world.icon_size
+			bound_height = world.icon_size
 
 	health = maxhealth
 	update_icon()
@@ -417,7 +417,6 @@
 	operating = 1
 
 	do_animate("opening")
-	icon_state = "door0"
 	set_opacity(0)
 	sleep(3)
 	src.density = 0

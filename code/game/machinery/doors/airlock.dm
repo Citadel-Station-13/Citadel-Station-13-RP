@@ -179,12 +179,12 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			if(AIRLOCK_CLOSED)
 				if(lights && locked)
 					lights_overlay = bolts_file
-					set_light(0.25, 0.1, 1, 2, COLOR_RED_LIGHT)
+					set_light(1, 2, l_color = COLOR_RED_LIGHT)
 
 			if(AIRLOCK_DENY)
 				if(lights)
 					lights_overlay = deny_file
-					set_light(0.25, 0.1, 1, 2, COLOR_RED_LIGHT)
+					set_light(1, 2, l_color = COLOR_RED_LIGHT)
 
 			if(AIRLOCK_EMAG)
 				sparks_overlay = emag_file
@@ -192,12 +192,12 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 			if(AIRLOCK_CLOSING)
 				if(lights)
 					lights_overlay = lights_file
-					set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+					set_light(1, 2, l_color = COLOR_LIME)
 
 			if(AIRLOCK_OPENING)
 				if(lights)
 					lights_overlay = lights_file
-					set_light(0.25, 0.1, 1, 2, COLOR_LIME)
+					set_light(1, 2, l_color = COLOR_LIME)
 
 		if(machine_stat & BROKEN)
 			damage_overlay = sparks_broken_file
@@ -545,6 +545,9 @@ About the new airlock wires panel:
 	set_airlock_overlays(state)
 
 	return
+
+/obj/machinery/door/airlock/custom_smooth()
+	return //we only custom smooth because we don't need to do anything else.
 
 /obj/machinery/door/airlock/do_animate(animation)
 	if(overlays)

@@ -9,11 +9,11 @@
 	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	rad_flags = RAD_BLOCK_CONTENTS
-	layer = TABLE_LAYER
+	layer = GRILLE_LAYER
 	explosion_resistance = 1
 	color = COLOR_GRAY
 
-	plane = TURF_PLANE
+	plane = OBJ_PLANE
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_GRILLE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_GRILLE)

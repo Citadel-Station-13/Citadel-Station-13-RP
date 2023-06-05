@@ -7,10 +7,14 @@
 	var/full_window = FALSE
 	/// spawn grille at all?
 	var/spawn_grille = TRUE
+	/// spawn low wall?
+	var/spawn_low_wall = FALSE
 	/// full window path
 	var/window_full_path = /obj/structure/window/basic/full
 	/// pane path
 	var/window_pane_path = /obj/structure/window/basic
+	/// low wall path
+	var/low_wall_path = /obj/structure/wall_frame
 	/// found dirs
 	var/found_dirs = NONE
 	/// spawn firedoors? fulltile and non-hidden only for now
@@ -32,6 +36,8 @@
 		new /obj/structure/grille(loc)
 	if(full_window)
 		new window_full_path(loc)
+		if (spawn_low_wall)
+			new low_wall_path(loc)
 	else
 		// spawn in dirs not in found dirs
 		var/obj/structure/window/W
@@ -122,4 +128,67 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks
 	icon_state = "rphoron_grille_full_fire"
 	firelocks = TRUE
+
+/obj/spawner/window/low_wall
+	spawn_low_wall = TRUE
+
+/obj/spawner/window/low_wall/borosillicate/full
+	icon_state = "phoron_grille_full"
+	full_window = TRUE
+	window_pane_path = /obj/structure/window/phoronbasic
+	window_full_path = /obj/structure/window/phoronbasic/full
+
+/obj/spawner/window/low_wall/borosillicate/full/firelocks
+	icon_state = "phoron_grille_full"
+	firelocks = TRUE
+
+/obj/spawner/window/low_wall/borosillicate/reinforced/full
+	icon_state = "rphoron_grille_full"
+	full_window = TRUE
+	window_pane_path = /obj/structure/window/phoronreinforced
+	window_full_path = /obj/structure/window/phoronreinforced/full
+
+/obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks
+	icon_state = "rphoron_grille_full_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/low_wall/reinforced/full
+	icon_state = "rwindow_grille_full"
+	full_window = TRUE
+	window_pane_path = /obj/structure/window/reinforced
+	window_full_path = /obj/structure/window/reinforced/full
+
+/obj/spawner/window/low_wall/reinforced/full/firelocks
+	icon_state = "rwindow_grille_full_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/low_wall/reinforced/tinted/full
+	icon_state = "rwindow_grille_full"
+	full_window = TRUE
+	window_pane_path = /obj/structure/window/reinforced/tinted
+	window_full_path = /obj/structure/window/reinforced/tinted/full
+
+/obj/spawner/window/low_wall/reinforced/tinted/full/firelocks
+	icon_state = "rwindow_grille_full_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/low_wall/full
+	full_window = TRUE
+	icon_state = "window_grille_full"
+
+/obj/spawner/window/low_wall/full/firelocks
+	icon_state = "window_grille_full_fire"
+	firelocks = TRUE
+
+/obj/spawner/window/low_wall/full/nogrille
+	full_window = TRUE
+	icon_state = "window_grille_full"
+	spawn_grille = FALSE
+
+/obj/spawner/window/low_wall/full/firelocks/nogrille
+	icon_state = "window_grille_full"
+	firelocks = TRUE
+	spawn_grille = FALSE
+
+
 
