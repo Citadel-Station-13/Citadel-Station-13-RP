@@ -9,10 +9,13 @@ SUBSYSTEM_DEF(lobby)
 	/// our titlescreen
 	var/datum/cutscene/titlescreen
 
-/datum/controller/subsystem/lobby/Intiialize()
+/datum/controller/subsystem/lobby/Initialize()
 	#warn impl
 	return ..()
 
 /datum/controller/subsystem/lobby/proc/initialize_title_scene()
+	if(!isnull(titlescreen))
+		QDEL_NULL(titlescreen)
+	make_title_scene()
 
 /datum/controller/subsystem/lobby/proc/make_title_scene()

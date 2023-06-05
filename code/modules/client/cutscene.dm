@@ -24,6 +24,8 @@
 
 /client/proc/start_cutscene(datum/cutscene/scene)
 	set waitfor = FALSE
+	if(isnull(scene))
+		return
 	__start_cutscene(scene)
 
 /client/proc/end_cutscene()
@@ -90,8 +92,6 @@
 		return
 	start()
 
-#warn impl all
-
 /**
  * renders in cutscene browser
  */
@@ -113,21 +113,49 @@
 /datum/cutscene/browser/proc/build_inner_html(client/C)
 	return ""
 
+/datum/cutscene/browser/setup(client/C)
+	. = ..()
+	src << output(build_inner_html(C), "[SKIN_BROWSER_ID_CUTSCENE]:build")
+	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+
+/datum/cutscene/browser/cleanup(client/C)
+	. = ..()
+	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")
+	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+
+#warn js side
+
 /**
  * simple cutscene that's just one asset that goes in an <img> tag
  */
 /datum/cutscene/browser/simple
 	/// image file path
 	var/image_path
-
-#warn impl all
+	/// cached html
+	var/cached_html
+	/// what to fcopy the image as
+	var/use_fname
+	/// icon in question
+	var/icon/cached_icon
 
 /datum/cutscene/browser/simple/init()
+	. = ..()
+	if(isicon(image_path))
+		cached_icon = icon(image_path)
+	else if(fexists(image_path)) // fails on URLs
+		cached_icon = icon(image_path)
+	/// good enough
+	var/mutated_path = "[ref(src)]_[rand(1, 1000)]"
+	cached_html = "<img id=\"primaryImage\" src=\"[isnull(cached_icon)? image_path : mutated_path]\">"
+	use_fname = mutated_path
 
 /datum/cutscene/browser/simple/build_inner_html(client/C)
+	return cached_html
 
 /datum/cutscene/browser/simple/setup(client/C)
-
+	if(!isnull(cached_icon))
+		C << browse_rsc(cached_icon, use_fname)
+	return ..()
 
 /**
  * renders on game map

@@ -116,14 +116,13 @@ var/list/all_maps = list()
 	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
 	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
-	/// list of title cutscreens to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
+	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
 	var/list/titlescreens = list(
 		list(
 			'icons/misc/title.dmi',
 			"mockingjay00",
 		)
 	)
-
 
 	// var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
 	// var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
