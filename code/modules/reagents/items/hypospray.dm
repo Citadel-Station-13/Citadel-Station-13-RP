@@ -42,7 +42,7 @@
 
 /obj/item/hypospray/examine(mob/user)
 	. = ..()
-	if(get_dist(src, user) <= 1)
+	if(get_dist(get_turf(src), user) <= 1)
 		if(!isnull(loaded))
 			. += SPAN_NOTICE("Its vial has [loaded.reagents.total_volume] units remaining.")
 		else
