@@ -78,6 +78,7 @@
 		loaded = vial
 		if(!isnull(old_vial))
 			user.action_feedback(SPAN_NOTICE("You quickly swap [old_vial] with [vial]."), src)
+			user.put_in_hands_or_drop(old_vial)
 		else
 			user.action_feedback(SPAN_NOTICE("You insert [vial] into [src]."), src)
 		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
