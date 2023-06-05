@@ -39,17 +39,26 @@
 		var/datum/reagent/path = required_reagents[i]
 		if(!ispath(path))
 			continue
-		required_reagents[i] = initial(path.id)
+		var/amt = required_reagents[path]
+		var/id = initial(path.id)
+		required_reagents[i] = id
+		required_reagents[id] = amt
 	for(var/i in 1 to length(catalysts))
 		var/datum/reagent/path = catalysts[i]
 		if(!ispath(path))
 			continue
-		catalysts[i] = initial(path.id)
+		var/amt = catalysts[path]
+		var/id = initial(path.id)
+		catalysts[i] = id
+		catalysts[id] = amt
 	for(var/i in 1 to length(inhibitors))
 		var/datum/reagent/path = inhibitors[i]
 		if(!ispath(path))
 			continue
-		inhibitors[i] = initial(path.id)
+		var/amt = inhibitors[path]
+		var/id = initial(path.id)
+		inhibitors[i] = id
+		inhibitors[id] = amt
 	if(ispath(result, /datum/reagent))
 		var/datum/reagent/result_initial = result
 		result = initial(result_initial.id)
