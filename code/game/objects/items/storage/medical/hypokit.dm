@@ -4,6 +4,7 @@
 	icon = 'icons/items/storage/firstaid_small.dmi'
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
+	max_storage_space = INVENTORY_BOX_SPACE
 
 	var/hypospray_path = /obj/item/hypospray
 
@@ -19,7 +20,8 @@
 /obj/item/storage/hypokit/combat
 	name = "combat hypospray kit"
 	icon_state = "tactical"
-	hypospray_path = /obj/item/hypospray/combat
+	hypospray_path = /obj/item/hypospray/combat/loaded
+	max_storage_space = INVENTORY_BOX_SPACE * 2
 
 /obj/item/storage/hypokit/combat/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
@@ -28,7 +30,8 @@
 		new /obj/item/reagent_containers/glass/hypovial/large/dylovene(src)
 	for(var/i in 1 to 2)
 		new /obj/item/reagent_containers/glass/hypovial/large/kelotane(src)
-	new /obj/item/reagent_containers/glass/hypovial/large/dexalin_plus(src)
+	for(var/i in 1 to 2)
+		new /obj/item/reagent_containers/glass/hypovial/large/dexalin_plus(src)
 	new /obj/item/reagent_containers/glass/hypovial/large/inaprovaline(src)
 	new /obj/item/reagent_containers/glass/hypovial/large/peridaxon(src)
 	new /obj/item/reagent_containers/glass/hypovial/large/tramadol(src)
@@ -40,7 +43,8 @@
 	icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "briefcase"
 	inhand_state = "normal"
-	hypospray_path = /obj/item/hypospray/advanced
+	hypospray_path = /obj/item/hypospray/advanced/loaded
+	max_storage_space = INVENTORY_BOX_SPACE * 2
 
 /obj/item/storage/hypokit/advanced/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)
@@ -50,14 +54,15 @@
 	for(var/i in 1 to 2)
 		new /obj/item/reagent_containers/glass/hypovial/large/kelotane(src)
 	for(var/i in 1 to 2)
-		new /obj/item/reagent_containers/glass/hypovial/large/dexalin(src)
-	for(var/i in 1 to 2)
-		new /obj/item/reagent_containers/glass/hypovial/large/tricordrazine(src)
-	for(var/i in 1 to 2)
-		new /obj/item/reagent_containers/glass/hypovial/large/inaprovaline(src)
+		new /obj/item/reagent_containers/glass/hypovial/large/dexalin_plus(src)
+	new /obj/item/reagent_containers/glass/hypovial/large/inaprovaline(src)
+	new /obj/item/reagent_containers/glass/hypovial/large/peridaxon(src)
+	new /obj/item/reagent_containers/glass/hypovial/large/tramadol(src)
+	new /obj/item/reagent_containers/glass/hypovial/large/arithrazine(src)
+	new /obj/item/reagent_containers/glass/hypovial/large/spaceacillin(src)
 
 /obj/item/storage/hypokit/advanced/cmo
-	hypospray_path = /obj/item/hypospray/advanced/cmo
+	hypospray_path = /obj/item/hypospray/advanced/cmo/loaded
 
 /obj/item/storage/hypokit/advanced/cmo/loaded/spawn_hypovials()
 	for(var/i in 1 to 2)

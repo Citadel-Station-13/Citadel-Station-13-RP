@@ -17,7 +17,7 @@
 		if(num)
 			var/mutable_appearance/overlay = mutable_appearance(icon, "[icon_state][num]")
 			overlay.color = reagents.get_color()
-			add_overlay("icon_state[num]")
+			add_overlay("[icon_state][num]")
 
 /obj/item/reagent_containers/glass/hypovial/large
 	name = "large hypospray vial"

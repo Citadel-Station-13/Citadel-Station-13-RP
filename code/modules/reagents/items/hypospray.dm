@@ -50,6 +50,7 @@
 		user.action_feedback(SPAN_NOTICE("You remove [loaded] from [src]."), src)
 		loaded = null
 		playsound(src, 'sound/weapons/empty.ogg', 50, FALSE)
+		update_icon()
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -66,6 +67,7 @@
 		else
 			user.action_feedback(SPAN_NOTICE("You insert [vial] into [src]."), src)
 		playsound(src, 'sound/weapons/autoguninsert.ogg', 50, FALSE)
+		update_icon()
 		return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	return ..()
 
@@ -180,6 +182,9 @@
 	playsound(src, 'sound/items/hypospray2.ogg', 50, TRUE, -1)
 	target.tactile_feedback(SPAN_WARNING("You feel a tiny prick, and a cool sensation [where_str]."))
 
+/obj/item/hypospray/loaded
+	loaded = /obj/item/reagent_containers/glass/hypovial/tricordrazine
+
 /obj/item/hypospray/advanced
 	name = "advanced hypospray"
 	desc = "An upgraded hypospray with faster injection protocols. Supports large vials."
@@ -189,8 +194,14 @@
 	resist_add_time = 1 SECONDS
 	port_add_time = 0.5 SECONDS
 
+/obj/item/hypospray/advanced/loaded
+	loaded = /obj/item/reagent_containers/glass/hypovial/large/tricordrazine
+
 /obj/item/hypospray/advanced/cmo
 	port_add_time = 0 SECONDS
+
+/obj/item/hypospray/advanced/cmo/loaded
+	loaded = /obj/item/reagent_containers/glass/hypovial/large/tricordrazine
 
 /obj/item/hypospray/combat
 	name = "combat hypospray"
@@ -202,3 +213,6 @@
 	resist_add_time = 1 SECONDS
 	port_add_time = 0.5 SECONDS
 	thick_add_time = 3 SECONDS
+
+/obj/item/hypospray/combat/loaded
+	loaded = /obj/item/reagent_containers/glass/hypovial/large/tricordrazine
