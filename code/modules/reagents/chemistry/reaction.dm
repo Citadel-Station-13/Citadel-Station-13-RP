@@ -2,6 +2,7 @@
 	return B.priority - A.priority
 
 /datum/chemical_reaction
+	abstract_type = /datum/chemical_reaction
 	//* core *//
 	/// id - must be unique and in CamelCase.
 	var/id
