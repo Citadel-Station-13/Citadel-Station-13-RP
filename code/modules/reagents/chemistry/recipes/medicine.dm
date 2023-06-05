@@ -26,6 +26,6 @@
 	result = /datum/reagent/tricordrazine
 	required_reagents = list(
 		/datum/reagent/inaprovaline = 1,
-		/datum/reagent/tricordrazine = 1,
+		/datum/reagent/dylovene = 1,
 	)
 	result_amount = 2
