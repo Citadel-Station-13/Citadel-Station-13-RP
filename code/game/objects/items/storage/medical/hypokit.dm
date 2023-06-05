@@ -5,6 +5,10 @@
 	inhand_icon = 'icons/items/storage/firstaid.dmi'
 	icon_state = "normal"
 	max_storage_space = INVENTORY_BOX_SPACE
+	can_hold = list(
+		/obj/item/reagent_containers/glass/hypovial,
+		/obj/item/hypospray,
+	)
 
 	var/hypospray_path = /obj/item/hypospray
 
