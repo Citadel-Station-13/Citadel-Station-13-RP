@@ -19,6 +19,7 @@
 		/datum/reagent/sugar = 1,
 	)
 	result_amount = 3
+	priority = 50
 
 /datum/chemical_reaction/tricordrazine
 	name = "Tricordrazine"
