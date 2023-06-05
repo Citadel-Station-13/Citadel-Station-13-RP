@@ -80,7 +80,7 @@
 			to_chat(user, "The [src] is already empty.")
 
 
-/obj/item/portable_destructive_analyzer/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/portable_destructive_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
 	if(!proximity)
@@ -106,7 +106,7 @@
 	icon_state = "portable_scanner"
 	desc = "An advanced scanning device used for analyzing objects without completely annihilating them for science. Unfortunately, it has no connection to any database like its angrier cousin."
 
-/obj/item/portable_scanner/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/portable_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
 	if(!proximity)
@@ -162,7 +162,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "autoharvester"
 
-/obj/item/robot_harvester/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/robot_harvester/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
 	if(!proximity)
@@ -184,7 +184,7 @@
 	name = "RoboTray"
 	desc = "An autoloading tray specialized for carrying refreshments."
 
-/obj/item/tray/robotray/afterattack(atom/target, mob/user as mob, proximity)
+/obj/item/tray/robotray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if ( !target )
@@ -327,7 +327,7 @@
 			)
 	item_state = "sheet-metal"
 
-/obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
+/obj/item/form_printer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
 	if(!target || !flag)
 		return
@@ -450,7 +450,7 @@
 	mode = !mode
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
-/obj/item/inflatable_dispenser/afterattack(var/atom/A, var/mob/user)
+/obj/item/inflatable_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..(A, user)
 	if(!user)
 		return

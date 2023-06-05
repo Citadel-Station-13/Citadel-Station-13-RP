@@ -87,7 +87,7 @@
 			to_chat(user, "<span class='notice'>[GLOB.meta_gas_names[g]]: [round((environment.gas[g] / total_moles) * 100)]%</span>")
 		to_chat(user, "<span class='notice'>Temperature: [round(environment.temperature-T0C,0.1)]&deg;C ([round(environment.temperature,0.1)]K)</span>")
 
-/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, proximity)
+/obj/item/dogborg/boop_module/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if (user.stat)
@@ -211,7 +211,7 @@
 			icon_state = "synthtongue"
 		update_icon()
 
-/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, proximity)
+/obj/item/dogborg/tongue/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 
@@ -493,6 +493,6 @@
 	else
 		to_chat(usr, "You must target the torso.")
 
-/obj/item/dogborg/mirrortool/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+/obj/item/dogborg/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	target.active_mr = imp.stored_mind
 	. = ..()

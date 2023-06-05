@@ -90,7 +90,7 @@
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/reagent_containers/glass/afterattack(var/obj/target, var/mob/user, var/proximity)
+/obj/item/reagent_containers/glass/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
@@ -299,7 +299,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/glass/bucket/afterattack()
+/obj/item/reagent_containers/glass/bucket/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
@@ -408,7 +408,7 @@
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
 
-/obj/item/reagent_containers/portable_fuelcan/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)

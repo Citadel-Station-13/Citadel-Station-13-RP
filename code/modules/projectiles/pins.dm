@@ -23,7 +23,7 @@
 		gun = null
 	return ..()
 
-/obj/item/firing_pin/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/firing_pin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(proximity_flag)
 		if(istype(target, /obj/item/gun))
@@ -116,7 +116,7 @@
 	fail_message = "<span class='warning'>DNA CHECK FAILED.</span>"
 	var/unique_enzymes = null
 
-/obj/item/firing_pin/dna/afterattack(atom/target, mob/user, proximity_flag)
+/obj/item/firing_pin/dna/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(proximity_flag && iscarbon(target))
 		var/mob/living/carbon/M = target

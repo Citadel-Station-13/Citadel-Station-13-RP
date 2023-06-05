@@ -728,7 +728,7 @@ BLIND     // can't see anything
 	icon_state = "modkit"
 	var/scrip_loaded = 0
 
-/obj/item/glasses_kit/afterattack(var/target, var/mob/living/carbon/human/user, var/proximity)
+/obj/item/glasses_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(!istype(user))

@@ -67,7 +67,7 @@
 	else
 		turnOff(user)
 
-/obj/item/chainsaw/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/chainsaw/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	..()
 	if(on)

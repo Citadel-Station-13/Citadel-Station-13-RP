@@ -47,7 +47,7 @@
 	if(cell)
 		cell.emp_act(severity)
 
-/obj/item/inducer/afterattack(atom/A, mob/living/carbon/user, proximity)
+/obj/item/inducer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 	if(cantbeused(user))

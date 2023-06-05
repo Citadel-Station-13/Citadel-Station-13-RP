@@ -264,7 +264,7 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/melee/ashlander/elder/afterattack(atom/A, mob/user)
+/obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(isliving(A))
 		var/mob/living/tm = A // targeted mob
 		if(SA_vulnerability & tm.mob_class)
@@ -391,7 +391,7 @@
 
 //This currently just kills the user. lol
 /*
-/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/living/G, mob/user)
+/obj/item/melee/twohanded/mjollnir/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 
 	if(wielded || isliving(target))
@@ -462,7 +462,7 @@
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
 
-/obj/item/melee/thermalcutter/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/melee/thermalcutter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)

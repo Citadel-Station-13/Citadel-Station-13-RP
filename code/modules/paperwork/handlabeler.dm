@@ -11,7 +11,7 @@
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
-/obj/item/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/hand_labeler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(!mode)	//if it's off, give up.

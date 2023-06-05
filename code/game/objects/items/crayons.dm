@@ -71,7 +71,7 @@
 	shadeColour = input(user, "Please select the shade colour.", "Crayon colour") as color
 	return
 
-/obj/item/pen/crayon/afterattack(atom/target, mob/user as mob, proximity)
+/obj/item/pen/crayon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if(istype(target,/turf/simulated/floor))
 		var/drawtype = input("Choose what you'd like to draw.", "Crayon scribbles") in list("graffiti","rune","letter","arrow")
@@ -234,7 +234,7 @@
 	shadeColour = "#0082A8"
 	colourName = "blue"
 
-/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user as mob, proximity)
+/obj/item/pen/crayon/chalk/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if(istype(target,/turf/simulated/floor))
 		var/drawtype = input("Choose what you'd like to draw.") in list("graffiti","rune")

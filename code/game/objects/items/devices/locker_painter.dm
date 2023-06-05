@@ -70,7 +70,7 @@
 		/obj/structure/closet/walllocker
 		)
 
-/obj/item/closet_painter/afterattack(atom/A, var/mob/user, proximity)
+/obj/item/closet_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 

@@ -44,7 +44,7 @@
 		human = H
 		human.mirror = src
 
-/obj/item/implant/mirror/afterattack(var/obj/machinery/computer/transhuman/resleeving/target, mob/user)
+/obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!istype(target))
 		return
 	target.active_mr = stored_mind
@@ -123,7 +123,7 @@
 	item_flags = ITEM_NOBLUDGEON
 	var/obj/item/implant/mirror/imp = null
 
-/obj/item/mirrortool/afterattack(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
+/obj/item/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/mob/living/carbon/human/H = target
 	if(!istype(H))
 		return

@@ -283,7 +283,7 @@ var/list/tape_roll_applications = list()
 		to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 		return
 
-/obj/item/barrier_tape_roll/afterattack(var/atom/A, mob/user as mob, proximity)
+/obj/item/barrier_tape_roll/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 

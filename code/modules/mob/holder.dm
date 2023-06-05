@@ -150,7 +150,7 @@
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
 
-/obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/holder/fish/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
 	if(!proximity)

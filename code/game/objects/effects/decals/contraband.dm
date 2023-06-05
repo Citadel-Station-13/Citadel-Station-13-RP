@@ -28,7 +28,7 @@
 	name += " - No. [serial_number]"
 
 //Places the poster on a wall
-/obj/item/contraband/poster/afterattack(var/atom/A, var/mob/user, var/adjacent, var/clickparams)
+/obj/item/contraband/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!adjacent)
 		return
 

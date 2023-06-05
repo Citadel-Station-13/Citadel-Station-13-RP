@@ -29,7 +29,7 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
-/obj/item/nullrod/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/nullrod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if (istype(A, /turf/simulated/floor))
@@ -288,7 +288,7 @@
 	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
 	hitsound = 'sound/weapons/resonator_blast.ogg'
 
-/obj/item/nullrod/pride_hammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
+/obj/item/nullrod/pride_hammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(!proximity)
 		return

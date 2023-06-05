@@ -8,7 +8,7 @@
 	var/product			//what it makes - TODO: refactor
 	var/fromitem		//Path that it works on
 
-/obj/item/reskin_kit/afterattack(obj/O, mob/user)
+/obj/item/reskin_kit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(O, product)) // Checks what it was used on
 		to_chat(user,"<span class='warning'>[O] is already modified!</span>") //If it's being used on an already reskinned item
 	else if(O.type == fromitem) //makes sure O is the right thing

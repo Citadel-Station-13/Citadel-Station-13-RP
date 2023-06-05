@@ -32,7 +32,7 @@
 	source.reagents.reaction(src, TOUCH, 10)	//10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 	source.reagents.remove_any(1)				//reaction() doesn't use up the reagents
 */
-/obj/item/mop_deploy/afterattack(atom/A, mob/user, proximity)
+/obj/item/mop_deploy/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))
 		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(A)].</span>")

@@ -38,7 +38,7 @@
 	var/to_suit = /obj/item/clothing/suit/cardborg
 
 	//Conversion proc
-/obj/item/modkit_conversion/afterattack(obj/O, mob/user as mob)
+/obj/item/modkit_conversion/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/flag
 	var/to_type
 	if(istype(O,from_helmet))
@@ -311,7 +311,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_mime/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_mime/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon = "mime"
 	if(istype(O,/obj/item/card/id) && O.icon_state != new_icon)
 		//O.icon = icon // just in case we're using custom sprite paths with fluff items.
@@ -586,7 +586,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "labeler1"
 
-/obj/item/fluff/id_kit_ivy/afterattack(obj/O, mob/user as mob)
+/obj/item/fluff/id_kit_ivy/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/new_icon_state = "ivyholoid"
 	var/new_icon = 'icons/vore/custom_items_vr.dmi'
 	var/new_desc = "Its a thin screen showing ID information, but it seems to be flickering."
@@ -978,7 +978,7 @@
 	//Seems okay to me!
 	return TRUE
 
-/obj/item/perfect_tele/afterattack(mob/living/target, mob/living/user, proximity)
+/obj/item/perfect_tele/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
 	if(!proximity)
 		return

@@ -203,7 +203,7 @@
 	else
 		turnOff(user)
 
-/obj/item/pickaxe/tyrmalin/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/pickaxe/tyrmalin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	..()
 	if(active)

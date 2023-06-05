@@ -126,7 +126,7 @@
 	. = ..()
 	qdel(src)
 
-/obj/item/electric_hand/afterattack(var/atom/target, var/mob/living/carbon/human/user, proximity)
+/obj/item/electric_hand/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
 	if(!proximity)

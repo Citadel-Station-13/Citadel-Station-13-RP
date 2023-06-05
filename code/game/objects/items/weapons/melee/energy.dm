@@ -385,7 +385,7 @@
 	lcolor = "#0000FF"
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
-/obj/item/melee/energy/sword/ionic_rapier/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
+/obj/item/melee/energy/sword/ionic_rapier/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(AM, /obj) && proximity && active)
 		// EMP stuff.
 		var/obj/O = AM
@@ -680,7 +680,7 @@
 		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	update_icon()
 
-/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	..()

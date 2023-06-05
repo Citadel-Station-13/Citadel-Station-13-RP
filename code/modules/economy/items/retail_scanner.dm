@@ -32,7 +32,7 @@
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 // Always face the user when put on a table
-/obj/item/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/retail_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)	return
 	if(istype(AM, /obj/structure/table))
 		src.pixel_y = 3 // Shift it up slightly to look better on table

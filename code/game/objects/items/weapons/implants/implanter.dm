@@ -119,7 +119,7 @@
 		return
 	return ..()
 
-/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
+/obj/item/implanter/compressed/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(!active)

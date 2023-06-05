@@ -390,14 +390,14 @@ HALOGEN COUNTER	- Radcount on mobs
 	analyze_gases(src, user)
 	return
 
-/obj/item/analyzer/afterattack(var/obj/O, var/mob/user, var/proximity)
+/obj/item/analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(proximity)
 		if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 			return
 		analyze_gases(O, user)
 	return
 
-/obj/item/analyzer/longrange/afterattack(var/obj/O, var/mob/user, var/proximity)
+/obj/item/analyzer/longrange/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 		return
 	analyze_gases(O, user)
@@ -485,7 +485,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/details = 0
 	var/recent_fail = 0
 
-/obj/item/reagent_scanner/afterattack(obj/O, mob/living/user, proximity)
+/obj/item/reagent_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity || user.stat || !istype(O))
 		return
 	if(!istype(user))

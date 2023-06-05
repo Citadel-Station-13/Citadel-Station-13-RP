@@ -66,7 +66,7 @@
 			last_reagents = null
 			return TRUE
 
-/obj/item/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
+/obj/item/analyzer/plant_analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!flag)
 		return
 

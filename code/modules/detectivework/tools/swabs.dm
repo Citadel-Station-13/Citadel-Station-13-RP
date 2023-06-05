@@ -68,7 +68,7 @@
 	if(sample_type)
 		set_used(sample_type, H)
 
-/obj/item/forensics/swab/afterattack(var/atom/A, var/mob/user, var/proximity)
+/obj/item/forensics/swab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
 	if(!proximity || istype(A, /obj/machinery/dnaforensics))
 		return

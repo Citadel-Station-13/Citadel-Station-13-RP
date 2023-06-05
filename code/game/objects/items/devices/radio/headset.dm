@@ -496,7 +496,7 @@
 	ui = new(user, src, ui_key, "radio_basic.tmpl", "[name]", 400, 430, state = interactive_state)
 	..()
 
-/obj/item/radio/headset/mob_headset/afterattack(var/atom/movable/target, mob/living/user, proximity)
+/obj/item/radio/headset/mob_headset/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	if(istype(target,/mob/living/simple_mob))

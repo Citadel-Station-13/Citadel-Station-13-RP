@@ -611,7 +611,7 @@
 	. = ..()
 	reagents.add_reagent("egg", 3)
 
-/obj/item/reagent_containers/food/snacks/egg/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/reagent_containers/food/snacks/egg/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(O,/obj/machinery/microwave))
 		return ..()
 	if(!(proximity && O.is_open_container()))
@@ -3959,7 +3959,7 @@ END CITADEL CHANGE */
 	bitesize = 3
 
 //Code for dipping food in batter
-/obj/item/reagent_containers/food/snacks/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(O.is_open_container() && O.reagents && !(istype(O, /obj/item/reagent_containers/food)))
 		for (var/r in O.reagents.reagent_list)
 
@@ -5566,7 +5566,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("sifsap", 2)
 
-/obj/item/reagent_containers/food/snacks/siffruit/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/reagent_containers/food/snacks/siffruit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(O,/obj/machinery/microwave))
 		return ..()
 	if(!(proximity && O.is_open_container()))

@@ -228,7 +228,7 @@ var/global/photo_count = 0
 
 	return mob_detail
 
-/obj/item/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+/obj/item/camera/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!on || !pictures_left || ismob(target.loc)) return
 	captureimage(target, user, flag)
 

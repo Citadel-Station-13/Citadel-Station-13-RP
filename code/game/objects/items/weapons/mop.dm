@@ -38,7 +38,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		mopmode = MOPMODE_TILE
 		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
 
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
+/obj/item/mop/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)

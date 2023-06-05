@@ -221,7 +221,7 @@
 // Description: Tests to make sure it can cast, then casts a combined, ranged, or melee spell based on what it can do and the
 // range the click occured.  Melee casts have higher priority than ranged if both are possible.  Sets cooldown at the end.
 // Don't override this for spells, override the on_*_cast() spells shown above.
-/obj/item/spell/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/spell/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!run_checks())
 		return
 	if(!proximity_flag)

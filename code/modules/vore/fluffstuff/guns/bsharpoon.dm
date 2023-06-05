@@ -22,7 +22,7 @@
 	var/failchance = 5
 	var/failrange = 24
 
-/obj/item/bluespace_harpoon/afterattack(atom/A, mob/user as mob)
+/obj/item/bluespace_harpoon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	var/current_fire = world.time
 	if(!user || !A)
 		return

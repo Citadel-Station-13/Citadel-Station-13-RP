@@ -53,7 +53,7 @@ var/global/list/total_extraction_beacons = list()
 		beacon = A
 		to_chat(user, "You link the extraction pack to the beacon system.")
 
-/obj/item/extraction_pack/afterattack(atom/movable/A, mob/living/carbon/user, flag, params)
+/obj/item/extraction_pack/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!beacon)
 		to_chat(user, "[src] is not linked to a beacon, and cannot be used.")
 		return

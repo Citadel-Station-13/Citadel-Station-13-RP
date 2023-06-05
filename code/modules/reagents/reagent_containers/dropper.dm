@@ -22,7 +22,7 @@
 	else
 		. += "<span class='notice'>It is empty.</span>"
 
-/obj/item/reagent_containers/dropper/afterattack(var/obj/target, var/mob/user, var/proximity)
+/obj/item/reagent_containers/dropper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target.reagents || !proximity) return
 
 	if(reagents.total_volume)

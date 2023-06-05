@@ -61,7 +61,7 @@
 
 	return
 
-/obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
+/obj/item/flamethrower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	// Make sure our user is still holding us
 	if(user && user.get_active_held_item() == src)

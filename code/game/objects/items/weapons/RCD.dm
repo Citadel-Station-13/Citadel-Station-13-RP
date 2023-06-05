@@ -183,7 +183,7 @@
 /obj/item/rcd/proc/can_afford(amount)
 	return stored_matter >= amount
 
-/obj/item/rcd/afterattack(atom/A, mob/living/user, proximity)
+/obj/item/rcd/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!ranged && !proximity)
 		return FALSE
 	use_rcd(A, user)

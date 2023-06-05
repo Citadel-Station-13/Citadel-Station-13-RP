@@ -50,7 +50,7 @@
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
 
-/obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hound = loc
 	if(!istype(target))
 		return

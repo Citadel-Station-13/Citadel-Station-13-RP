@@ -477,7 +477,7 @@
 			return 1
 	return 0
 
-/obj/item/spell/construct/afterattack(atom/target, mob/user, proximity_flag, click_parameters) //Not overriding it caused runtimes, because cooldown checked for core.
+/obj/item/spell/construct/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!run_checks())
 		return
 	if(!proximity_flag)

@@ -206,7 +206,7 @@
 	anchored = FALSE
 	return ..() // Pick it up now that it's unanchored.
 
-/obj/item/duct_tape_piece/afterattack(var/A, mob/user, flag, params)
+/obj/item/duct_tape_piece/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return
 

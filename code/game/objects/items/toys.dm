@@ -42,7 +42,7 @@
 	. = ..()
 	create_reagents(10)
 
-/obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
+/obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
@@ -163,7 +163,7 @@
 		else
 			to_chat(user, "<span class='warning'>It's already fully loaded.</span>")
 
-/obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+/obj/item/toy/crossbow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isturf(target.loc) || target == user) return
 	if(flag) return
 
@@ -365,7 +365,7 @@
 	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
-/obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
+/obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
 	if (istype(A, /obj/item/storage/backpack ))
 		return

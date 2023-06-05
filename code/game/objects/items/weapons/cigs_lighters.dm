@@ -296,7 +296,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	return
 
-/obj/item/clothing/mask/smokable/cigarette/afterattack(obj/item/reagent_containers/glass/glass, mob/user as mob, proximity)
+/obj/item/clothing/mask/smokable/cigarette/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(!proximity)
 		return

@@ -9,7 +9,7 @@
 	if(spawn_reagent)
 		reagents.add_reagent(spawn_reagent, spawn_amount || volume)
 
-/obj/item/reagent_containers/cartridge/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/reagent_containers/cartridge/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (!is_open_container() || !proximity_flag)
 		return
 

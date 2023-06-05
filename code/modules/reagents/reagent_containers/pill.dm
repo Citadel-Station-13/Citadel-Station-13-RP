@@ -73,7 +73,7 @@
 		qdel(src)
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-/obj/item/reagent_containers/pill/afterattack(obj/target, mob/user, proximity)
+/obj/item/reagent_containers/pill/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 
 	if(target.is_open_container() && target.reagents)

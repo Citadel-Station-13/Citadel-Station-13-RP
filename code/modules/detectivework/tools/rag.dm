@@ -147,7 +147,7 @@
 	else
 		wipe_down(target, user)
 
-/obj/item/reagent_containers/glass/rag/afterattack(atom/A as obj|turf|area, mob/user as mob, proximity)
+/obj/item/reagent_containers/glass/rag/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 

@@ -1405,7 +1405,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					to_chat(user, "<span class='notice'>No radiation detected.</span>")
 
-/obj/item/pda/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/pda/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	switch(scanmode)
 

@@ -30,7 +30,7 @@
 		return
 	toggle()
 
-/obj/item/chameleon/afterattack(atom/target, mob/user , proximity)
+/obj/item/chameleon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	if(!active_dummy)
 		if(istype(target,/obj/item) && !istype(target, /obj/item/disk/nuclear))

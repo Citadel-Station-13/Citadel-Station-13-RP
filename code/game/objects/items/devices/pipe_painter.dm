@@ -12,7 +12,7 @@
 		modes += "[C]"
 	mode = pick(modes)
 
-/obj/item/pipe_painter/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/pipe_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 

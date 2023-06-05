@@ -15,7 +15,7 @@
 	var/max_name_len = 32		// Refuse if shuttle tag is longer than this.
 	var/max_area_turfs = 140	// Refuse if area has more than this many turfs.
 
-/obj/item/champagne/afterattack(var/atom/A, mob/user as mob, proximity)
+/obj/item/champagne/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity)
 		return
 	var/obj/machinery/computer/shuttle_control/comp = A

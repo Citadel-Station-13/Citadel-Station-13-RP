@@ -12,7 +12,7 @@
 		return
 	inflate(user,user.loc)
 
-/obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
+/obj/item/inflatable/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..(A, user)
 	if(!user)
 		return

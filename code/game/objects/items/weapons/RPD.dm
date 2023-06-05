@@ -220,7 +220,7 @@
 		playsound(get_turf(src), 'sound/effects/pop.ogg', 50, FALSE)
 	return TRUE
 
-/obj/item/pipe_dispenser/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/pipe_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
 		return ..()
 

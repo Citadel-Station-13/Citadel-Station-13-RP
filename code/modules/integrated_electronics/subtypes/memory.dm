@@ -117,7 +117,7 @@
 			O.data = null
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
-/obj/item/integrated_circuit/memory/constant/afterattack(atom/target, mob/living/user, proximity)
+/obj/item/integrated_circuit/memory/constant/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(accepting_refs && proximity)
 		var/datum/integrated_io/O = outputs[1]
 		O.data = WEAKREF(target)

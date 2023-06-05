@@ -9,7 +9,7 @@
 	var/field_cooldown = 1 MINUTE
 	var/last_field = 0
 
-/obj/item/matter_decompiler/swarm/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
+/obj/item/matter_decompiler/swarm/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
 	if(!proximity) return //Not adjacent.
 

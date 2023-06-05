@@ -126,7 +126,7 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	..()
 	if(A && wielded)
@@ -157,7 +157,7 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
@@ -233,7 +233,7 @@
 		. += "<span class='notice'>Alt-click to set your war cry.</span>"
 		. += "<span class='notice'>Right-click in combat mode to activate the attached explosive.</span>"
 
-/obj/item/material/twohanded/spear/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
@@ -327,7 +327,7 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
+/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity) return
 	..()
 	if(A && wielded)

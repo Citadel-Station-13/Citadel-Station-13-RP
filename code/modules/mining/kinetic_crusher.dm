@@ -133,7 +133,7 @@
 	if(!QDELETED(C) && !QDELETED(L))
 		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
-/obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
+/obj/item/kinetic_crusher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 /*
 	if(istype(target, /obj/item/crusher_trophy))

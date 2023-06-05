@@ -156,7 +156,7 @@
 			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
-/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
+/obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(accepting_refs && proximity)
 		data_to_write = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
@@ -276,7 +276,7 @@
 		io1.holder.interact(user) // This is to update the UI.
 		update_icon()
 
-/obj/item/multitool/afterattack(atom/target, mob/living/user, proximity)
+/obj/item/multitool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(accepting_refs && toolmode == MULTITOOL_MODE_INTCIRCUITS && proximity)
 		weakref_wiring = WEAKREF(target)
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")

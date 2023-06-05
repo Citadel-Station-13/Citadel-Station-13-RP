@@ -58,5 +58,5 @@ avoid code duplication. This includes items that may sometimes act as a standard
 // Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
 // Click parameters is the params string from byond Click() code, see that documentation.
 // todo: redo this
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return

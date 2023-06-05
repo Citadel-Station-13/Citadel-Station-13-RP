@@ -205,7 +205,7 @@
 		var/obj/item/spell/S = item_to_test
 		S.on_scepter_use_cast(user)
 
-/obj/item/scepter/afterattack(atom/target, mob/living/carbon/human/user, proximity_flag, click_parameters)
+/obj/item/scepter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(proximity_flag)
 		return ..()
 	var/obj/item/item_to_test = user.get_other_hand(src)
