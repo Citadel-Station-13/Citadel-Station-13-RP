@@ -11,6 +11,8 @@
 	)
 
 	var/hypospray_path = /obj/item/hypospray
+	var/vial_path = /obj/item/reagent_containers/glass/hypovial
+	var/vial_amount = 6
 
 /obj/item/storage/hypokit/PopulateContents()
 	. = ..()
@@ -18,13 +20,14 @@
 	spawn_hypovials()
 
 /obj/item/storage/hypokit/proc/spawn_hypovials()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/glass/hypovial(src)
+	for(var/i in 1 to vial_amount)
+		new vial_path(src)
 
 /obj/item/storage/hypokit/combat
 	name = "combat hypospray kit"
 	icon_state = "tactical"
 	hypospray_path = /obj/item/hypospray/combat/loaded
+	vial_path = /obj/item/reagent_containers/glass/hypovial/large
 	max_storage_space = INVENTORY_BOX_SPACE * 2
 	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
 
@@ -49,6 +52,7 @@
 	icon_state = "briefcase"
 	inhand_state = "normal"
 	hypospray_path = /obj/item/hypospray/advanced/loaded
+	vial_path = /obj/item/reagent_containers/glass/hypovial/large
 	max_storage_space = INVENTORY_BOX_SPACE * 2
 	storage_cost = ITEMSIZE_COST_NORMAL * 1.5
 
