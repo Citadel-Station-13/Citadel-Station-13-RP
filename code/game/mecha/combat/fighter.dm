@@ -26,8 +26,8 @@
 
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
 
-	stomp_sound = 'sound/machines/generator/generator_end.ogg'
-	swivel_sound = 'sound/machines/hiss.ogg'
+	stomp_sound = 'sound/mecha/fighter/engine_mid_fighter_loop.ogg'
+	swivel_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
 
 	bound_height = 64
 	bound_width = 64
@@ -171,7 +171,10 @@
 
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
-	if(gravity && ground_capable && occupant)
+	if(gravity && !stabilization_enabled)
+		step_in = 0.5 //Slow now that they're on landing gear
+		playsound(src, 'sound/effects/roll.ogg', 50, 1)
+	else if(gravity && ground_capable && occupant)
 		start_hover()
 	else if((!gravity && ground_capable) || !occupant)
 		stop_hover()
