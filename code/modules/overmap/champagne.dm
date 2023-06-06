@@ -18,7 +18,7 @@
 /obj/item/champagne/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	var/obj/machinery/computer/shuttle_control/comp = A
+	var/obj/machinery/computer/shuttle_control/comp = target
 	if(!istype(comp))
 		return
 

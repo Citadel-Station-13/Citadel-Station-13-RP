@@ -478,7 +478,7 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a thermal cutter.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a thermal cutter.")
 			to_chat(user, "<span class='danger'>You begin slicing into the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 			return
 	if (src.active)

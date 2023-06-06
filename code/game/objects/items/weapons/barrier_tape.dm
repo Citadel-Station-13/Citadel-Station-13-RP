@@ -287,7 +287,7 @@ var/list/tape_roll_applications = list()
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	if (istype(A, /obj/machinery/door))
+	if (istype(target, /obj/machinery/door))
 		var/turf/T = get_turf(target)
 		if(locate(/obj/item/barrier_tape_segment, target.loc))
 			to_chat(user, "There's already tape over that door!")

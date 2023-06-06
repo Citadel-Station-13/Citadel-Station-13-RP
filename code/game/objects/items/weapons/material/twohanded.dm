@@ -131,12 +131,12 @@
 	..()
 	if(target && wielded)
 		if(istype(target,/obj/structure/window))
-			var/obj/structure/window/W = Atarget
+			var/obj/structure/window/W = target
 			W.shatter()
 		else if(istype(target,/obj/structure/grille))
 			qdel(target)
 		else if(istype(target,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+			var/obj/effect/plant/P = target
 			P.die_off()
 
 /obj/item/material/twohanded/fireaxe/foam
@@ -336,7 +336,7 @@
 			W.shatter()
 		else if(istype(target,/obj/structure/grille))
 			qdel(target)
-		else if(istype(A,/obj/effect/plant))
+		else if(istype(target,/obj/effect/plant))
 			var/obj/effect/plant/P = target
 			P.die_off()
 

@@ -230,7 +230,7 @@ var/global/photo_count = 0
 
 /obj/item/camera/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!on || !pictures_left || ismob(target.loc)) return
-	captureimage(target, user, flag)
+	captureimage(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, 1, -3)
 

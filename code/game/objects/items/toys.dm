@@ -367,7 +367,7 @@
 
 /obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if (istype(A, /obj/item/storage/backpack ))
+	if (istype(target, /obj/item/storage/backpack ))
 		return
 
 	else if (locate (/obj/structure/table, src.loc))
@@ -397,7 +397,7 @@
 
 		spawn(0)
 			for(var/i=0, i<1, i++)
-				step_towards(D,A)
+				step_towards(D,target)
 				D.reagents.touch_turf(get_turf(D))
 				for(var/atom/T in get_turf(D))
 					D.reagents.touch(T)

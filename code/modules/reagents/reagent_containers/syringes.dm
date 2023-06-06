@@ -55,7 +55,7 @@
 	return
 
 /obj/item/reagent_containers/syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity || !target.reagents)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || !target.reagents)
 		return
 
 	if(mode == SYRINGE_BROKEN)

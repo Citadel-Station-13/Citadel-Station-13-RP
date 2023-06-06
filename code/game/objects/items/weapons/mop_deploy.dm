@@ -35,7 +35,7 @@
 /obj/item/mop_deploy/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target, /turf) || istype(target, /obj/effect/debris/cleanable) || istype(target, /obj/effect/overlay) || istype(target, /obj/effect/rune))
-		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(Atarget)].</span>")
+		user.visible_message("<span class='warning'>[user] begins to clean \the [get_turf(target)].</span>")
 
 		if(do_after(user, 40))
 			var/turf/T = get_turf(target)

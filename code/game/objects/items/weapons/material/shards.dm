@@ -61,7 +61,9 @@
 			return
 	return ..()
 
-/obj/item/material/shard/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/material/shard/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+	if(!istype(user))
+		return
 	var/active_hand //hand the shard is in
 	var/will_break = FALSE
 	var/protected_hands = FALSE //this is a fucking mess

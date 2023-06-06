@@ -232,7 +232,7 @@
 	var/amount = 25.0
 
 
-/obj/item/packageWrap/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/packageWrap/afterattack(atom/movable/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
 		return

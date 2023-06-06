@@ -34,11 +34,11 @@
 // Always face the user when put on a table
 /obj/item/retail_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))	return
-	if(istype(AM, /obj/structure/table))
+	if(istype(target, /obj/structure/table))
 		src.pixel_y = 3 // Shift it up slightly to look better on table
 		src.dir = get_dir(src, user)
 	else
-		scan_item_price(AM)
+		scan_item_price(target)
 
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)

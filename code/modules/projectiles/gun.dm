@@ -246,11 +246,11 @@
 	if(!user.aiming)
 		user.aiming = new(user)
 
-	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != A)
-		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
+	if(user && user.client && user.aiming && user.aiming.active && user.aiming.aiming_at != target)
+		PreFire(target,user,params) //They're using the new gun system, locate what they're aiming at.
 		return
 	else
-		Fire(A, user, params) //Otherwise, fire normally.
+		Fire(target, user, params) //Otherwise, fire normally.
 		return
 
 /obj/item/gun/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
