@@ -141,6 +141,16 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 	icon_state = "monowhite"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monowhite
 
+/turf/simulated/floor/tiled/monodark
+	name = "floor"
+	icon_state = "monodark"
+	initial_flooring = /singleton/flooring/tiling/new_tile/monodark
+
+/turf/simulated/floor/tiled/monotechmaint
+	name = "floor"
+	icon_state = "monotechmaint"
+	initial_flooring = /singleton/flooring/tiling/new_tile/monotechmaint
+
 /turf/simulated/floor/tiled/steel_grid
 	name = "floor"
 	icon_state = "steel_grid"
@@ -223,6 +233,10 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 	icon_state = "techfloor_grid"
 	initial_flooring = /singleton/flooring/tiling/tech/grid
 
+/turf/simulated/floor/tiled/techfloor/monogrid
+	name = "floor"
+	icon_state = "techfloor_monogrid"
+	initial_flooring = /singleton/flooring/tiling/tech/monogrid
 /turf/simulated/floor/reinforced
 	name = "reinforced floor"
 	icon = 'icons/turf/flooring/tiles.dmi'

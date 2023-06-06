@@ -1585,3 +1585,13 @@
 	name = "Springtime Pariah Moto Jacket"
 	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
 	icon_state = "pariah"
+
+/obj/item/clothing/suit/storage/leather_cropped
+	name = "Cropped Leather Jacket"
+	desc = "The first and last choice in any modern-day film."
+	icon_state = "leather_cropped"
+
+/obj/item/clothing/suit/storage/leather_supercropped
+	name = "Supercropped Leather Jacket"
+	desc = "For when the crop just isn't cropped enough."
+	icon_state = "leather_supercropped"

@@ -348,7 +348,5 @@
 	remove_verb(src, /mob/living/carbon/human/proc/jumpstart)
 	visible_message("<span class='warning'>With a hideous, rattling moan, [src] shudders back to life!</span>")
 
-	rejuvenate()
-	restore_blood()
-	fixblood()
-	update_mobility()
+	revive(full_heal = TRUE)
+	remove_all_restraints()

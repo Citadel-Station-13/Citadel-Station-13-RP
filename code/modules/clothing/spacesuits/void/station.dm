@@ -190,20 +190,22 @@
 	desc = "A special helmet designed for work in a hazardous, low pressure environment. Has an additional layer of armor."
 	icon_state = "rig0-sec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_helm", SLOT_ID_LEFT_HAND = "sec_helm")
-	armor_type = /datum/armor/security/space
+	armor_type = /datum/armor/station/secsuit
 	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual"
+	camera_networks = list(NETWORK_SEC_HELMETS)
 
 /obj/item/clothing/suit/space/void/security
 	name = "security voidsuit"
 	desc = "A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor."
 	icon_state = "rig-sec"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit", SLOT_ID_LEFT_HAND = "sec_voidsuit")
-	armor_type = /datum/armor/security/space
+	armor_type = /datum/armor/station/secsuit
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 	siemens_coefficient = 0.7
 
-//Security Crowd Control Voidsuit
+//Security Alternate Voidsuit
+//Todo: Swap crowd control and riot icons and names.
 
 /obj/item/clothing/head/helmet/space/void/security/riot
 	name = "crowd control voidsuit helmet"
@@ -215,18 +217,19 @@
 	icon_state = "rig-sec_riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuit_riot", SLOT_ID_LEFT_HAND = "sec_voidsuit_riot")
 
-//Security Surplus Voidsuit
+//Security Riot Voidsuit
+//Todo: Both of them being called Riot/CC with one in the suit cycler, and one with actual armor values is really dumb. Seriously.
 /obj/item/clothing/head/helmet/space/void/security/alt
 	name = "riot security voidsuit helmet"
 	desc = "A somewhat tacky voidsuit helmet, a fact mitigated by heavy armor plating."
 	icon_state = "rig0-secalt"
-	armor_type = /datum/armor/security/space/riot
+	armor_type = /datum/armor/station/secsuitriot
 
 /obj/item/clothing/suit/space/void/security/alt
 	icon_state = "rig-secalt"
 	name = "riot security voidsuit"
 	desc = "A heavily armored voidsuit, designed to intimidate people who find black intimidating. Surprisingly slimming."
-	armor_type = /datum/armor/security/space/riot
+	armor_type = /datum/armor/station/secsuitriot
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
 //Cydonia Armor
@@ -362,13 +365,13 @@
 	desc = "Shiny blue helmet, complete with far-too-big golden visor. It probably doesn't protects from bright flashes."
 	name = "Facility Director voidsuit helmet"
 	icon_state = "capvoid"
-	armor_type = /datum/armor/security/captain
+	armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/suit/space/void/captain
 	desc = "Sleek, blue and gold suit, fitted with spaceproofing and protective inserts. Fits like an oversized, shiny glove."
 	name = "Facility Director voidsuit"
 	icon_state = "capsuit_void"
-	armor_type = /datum/armor/security/captain
+	armor_type = /datum/armor/station/tactical
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/gun)
 	slowdown = 1.5
 
@@ -378,6 +381,7 @@
 	name = "head of security protosuit helmet"
 	icon_state = "hosproto"
 	armor_type = /datum/armor/security/hos/space
+	camera_networks = list(NETWORK_SEC_HELMETS)
 
 /obj/item/clothing/suit/space/void/headofsecurity
 	desc = "A customized security voidsuit. Has additional composite armor."

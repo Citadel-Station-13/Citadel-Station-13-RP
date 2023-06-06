@@ -208,7 +208,7 @@
 			var/contained = reagentlist()
 			if(ismob(target))
 				while(reagents.total_volume)
-					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_BLOOD)
+					trans += reagents.trans_to_mob(target, amount_per_transfer_from_this, CHEM_INJECT)
 					update_icon()
 					if(!reagents.total_volume || !do_after(user,cycle_time,target))
 						break
@@ -251,7 +251,7 @@
 
 		if (target != user && H.legacy_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
+				O.show_message(SPAN_BOLDDANGER("[user] tries to stab [target] in \the [hit_area] with [name], but the attack is deflected by armor!"), SAYCODE_TYPE_VISIBLE)
 			qdel(src)
 			add_attack_logs(user,target,"Syringe harmclick")
 			return
@@ -267,7 +267,7 @@
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()
-	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_BLOOD)
+	var/trans = reagents.trans_to_mob(target, syringestab_amount_transferred, CHEM_INJECT)
 	if(isnull(trans)) trans = 0
 	add_attack_logs(user,target,"Stabbed with [src.name] containing [contained], trasferred [trans] units")
 	break_syringe(target, user)

@@ -121,23 +121,23 @@
 
 /obj/structure/morgue/attackby(obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != W)
 			return
 		if ((!in_range(src, usr) && src.loc != user))
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
 		if (t)
-			src.name = text("Morgue- '[]'", t)
+			name = "Morgue- '[t]'"
 		else
 			src.name = "Morgue"
 	if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
-			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			user.show_message(SPAN_NOTICE("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 		else if(!anchored)
-			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			user.show_message(SPAN_NOTICE("[src] is now secured."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	src.add_fingerprint(user)
@@ -258,17 +258,17 @@ GLOBAL_LIST_BOILERPLATE(all_crematoriums, /obj/structure/morgue/crematorium)
 
 /obj/structure/morgue/crematorium/attackby(P as obj, mob/user as mob)
 	if (istype(P, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != P)
 			return
-		if ((!in_range(src, usr) > 1 && src.loc != user))
+		if ((!in_range(src, usr) > 1 && loc != user))
 			return
 		t = sanitizeSafe(t, MAX_NAME_LEN)
 		if (t)
-			src.name = text("Crematorium- '[]'", t)
+			name = "Crematorium- '[t]'"
 		else
-			src.name = "Crematorium"
-	src.add_fingerprint(user)
+			name = "Crematorium"
+	add_fingerprint(user)
 	return
 
 /obj/structure/morgue/crematorium/relaymove(mob/user as mob)

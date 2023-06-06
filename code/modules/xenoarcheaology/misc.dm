@@ -81,8 +81,6 @@
 		/obj/item/depth_scanner,
 		/obj/item/core_sampler,
 		/obj/item/gps,
-		/obj/item/beacon_locator,
-		/obj/item/radio/beacon,
 		/obj/item/clothing/glasses/meson,
 		/obj/item/pickaxe,
 		/obj/item/measuring_tape,

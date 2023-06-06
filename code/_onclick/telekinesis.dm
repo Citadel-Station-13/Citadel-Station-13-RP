@@ -68,7 +68,7 @@ var/const/tk_maxrange = 15
 	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
 	//item_state = null
 	w_class = ITEMSIZE_NO_CONTAINER
-	layer = HUD_LAYER
+	layer = HUD_LAYER_BASE
 
 	var/last_throw = 0
 	var/atom/movable/focus = null

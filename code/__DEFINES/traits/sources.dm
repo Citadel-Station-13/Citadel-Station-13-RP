@@ -5,12 +5,26 @@
 /// Trait is from ourselves (src)
 #define INNATE_TRAIT "innate"
 
+//? Automata / AoE effect sources
+
+/// From an EMP blast
+#define EMP_TRAIT "emp"
+/// Secondary / tiered effects from EMP blast
+#define EMP_TRAIT_N(n) "emp_[n]"
+
+//? Item Sources
+
+/// From a flashbulb
+#define FLASH_TRAIT "flash"
+
 //? Mob Sources
 
 /// From species
 #define SPECIES_TRAIT "species"
 /// From species quirks
 #define QUIRK_TRAIT "quirk"
+/// From overall physiology (including any species modifiers)
+#define PHYSIOLOGY_TRAIT "physiology"
 /// status effect trait source
 #define STATUS_EFFECT_TRAIT(id) "status_effect_[id]"
 

@@ -177,7 +177,7 @@
 
 /obj/vehicle_old/train/rover/trolley/RunOver(var/mob/living/M)
 	..()
-	attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+	attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 /obj/vehicle_old/train/rover/engine/RunOver(var/mob/living/M)
 	..()
@@ -187,9 +187,9 @@
 		to_chat(D, "<span class='danger'>You ran over \the [M]!</span>")
 		visible_message("<span class='danger'>\The [src] ran over \the [M]!</span>")
 		add_attack_logs(D,M,"Ran over with [src.name]")
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey]), driven by [D.name] ([D.ckey])</font>"
 	else
-		attack_log += text("\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>")
+		attack_log += "\[[time_stamp()]\] <font color='red'>ran over [M.name] ([M.ckey])</font>"
 
 
 //-------------------------------------------

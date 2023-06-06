@@ -148,7 +148,7 @@
 			var/mob/living/L = l
 			if(L.stat != DEAD && L.mind)
 				L.mind.transfer(soul_owner)
-				soul_owner.revive(TRUE, TRUE)
+				soul_owner.revive(full_heal = TRUE)
 				L.death(FALSE)
 
 // Lose your claim to the throne!

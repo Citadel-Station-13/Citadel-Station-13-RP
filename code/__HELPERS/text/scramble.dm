@@ -80,17 +80,17 @@
 		if (prob(80) && (ckey(n_letter) in list("b","c","d","f","g","h","j","k","l","m","n","p","q","r","s","t","v","w","x","y","z")))
 			if (prob(10))
 				// Replaces the current letter with this instead.
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]-[n_letter]")
+				n_letter = "[n_letter]-[n_letter]-[n_letter]-[n_letter]"
 			else
 				if (prob(20))
-					n_letter = text("[n_letter]-[n_letter]-[n_letter]")
+					n_letter = "[n_letter]-[n_letter]-[n_letter]"
 				else
 					if (prob(5))
 						n_letter = null
 					else
-						n_letter = text("[n_letter]-[n_letter]")
+						n_letter = "[n_letter]-[n_letter]"
 		// Since the above is ran through for each letter, the text just adds up back to the original word.
-		t = text("[t][n_letter]")
+		t = "[t][n_letter]"
 		/// For each letter p is increased to find where the next letter will be.
 		p++
 	return sanitize(t)
@@ -129,17 +129,17 @@
 	while(p <= n)
 		var/n_letter
 		var/n_mod = rand(1,4)
-		if(p+n_mod>n+1)
+		if(p+n_mod > n+1)
 			n_letter = copytext(te, p, n+1)
 		else
 			n_letter = copytext(te, p, p+n_mod)
 		if (prob(50))
 			if (prob(30))
-				n_letter = text("[n_letter]-[n_letter]-[n_letter]")
+				n_letter = "[n_letter]-[n_letter]-[n_letter]"
 			else
-				n_letter = text("[n_letter]-[n_letter]")
+				n_letter = "[n_letter]-[n_letter]"
 		else
-			n_letter = text("[n_letter]")
-		t = text("[t][n_letter]")
-		p=p+n_mod
+			n_letter = "[n_letter]"
+		t = "[t][n_letter]"
+		p += n_mod
 	return sanitize(t)
