@@ -605,7 +605,7 @@
 /obj/item/material/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isturf(target)) // not turf
 		return ..()
-	if(!proximity) // not adjacent
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) // not adjacent
 		return ..()
 	if(target.density) // is dense
 		return ..()

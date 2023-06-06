@@ -11,7 +11,7 @@
 
 /obj/item/matter_decompiler/swarm/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return //Not adjacent.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)

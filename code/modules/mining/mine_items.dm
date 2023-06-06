@@ -204,7 +204,7 @@
 		turnOff(user)
 
 /obj/item/pickaxe/tyrmalin/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(active)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)

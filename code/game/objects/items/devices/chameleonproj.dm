@@ -31,7 +31,7 @@
 	toggle()
 
 /obj/item/chameleon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(!active_dummy)
 		if(istype(target,/obj/item) && !istype(target, /obj/item/disk/nuclear))
 			playsound(get_turf(src), 'sound/weapons/flash.ogg', 100, 1, -6)

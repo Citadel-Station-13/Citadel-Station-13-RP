@@ -43,7 +43,7 @@
 	create_reagents(10)
 
 /obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to_obj(src, 10)
 		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")

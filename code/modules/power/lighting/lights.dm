@@ -248,7 +248,7 @@
 // shatter light, unless it was an attempt to put it in a light socket
 // now only shatter if the intent was harm
 /obj/item/light/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target, /obj/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)

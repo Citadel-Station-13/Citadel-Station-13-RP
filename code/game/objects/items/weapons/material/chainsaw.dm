@@ -68,7 +68,7 @@
 		turnOff(user)
 
 /obj/item/chainsaw/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(on)
 		playsound(src, 'sound/weapons/chainsaw_attack.ogg',40,1)

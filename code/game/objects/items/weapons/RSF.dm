@@ -102,7 +102,7 @@ RSF
 
 /obj/item/rsf/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 
 	if(istype(user,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = user

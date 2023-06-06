@@ -21,7 +21,7 @@
 	)
 
 /obj/item/storage/bible/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(user.mind && (user.mind.assigned_role == "Chaplain"))
 		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
 			to_chat(user, "<span class='notice'>You bless [A].</span>")

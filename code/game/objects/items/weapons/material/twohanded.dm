@@ -127,7 +127,7 @@
 	..()
 
 /obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(A && wielded)
 		if(istype(A,/obj/structure/window))
@@ -328,7 +328,7 @@
 	..()
 
 /obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity) return
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
 	if(A && wielded)
 		if(istype(A,/obj/structure/window))
