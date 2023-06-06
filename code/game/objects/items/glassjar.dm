@@ -18,22 +18,22 @@
 /obj/item/glass_jar/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!proximity || contains)
 		return
-	if(istype(A, /mob))
+	if(istype(target, /mob))
 		var/accept = 0
 		for(var/D in accept_mobs)
-			if(istype(A, D))
+			if(istype(target, D))
 				accept = 1
 		if(!accept)
-			to_chat(user, "[A] doesn't fit into \the [src].")
+			to_chat(user, "[target] doesn't fit into \the [src].")
 			return
-		var/mob/L = A
+		var/mob/L = target
 		user.visible_message("<span class='notice'>[user] scoops [L] into \the [src].</span>", "<span class='notice'>You scoop [L] into \the [src].</span>")
 		L.loc = src
 		contains = 2
 		update_icon()
 		return
-	else if(istype(A, /obj/effect/spider/spiderling))
-		var/obj/effect/spider/spiderling/S = A
+	else if(istype(target, /obj/effect/spider/spiderling))
+		var/obj/effect/spider/spiderling/S = target
 		user.visible_message("<span class='notice'>[user] scoops [S] into \the [src].</span>", "<span class='notice'>You scoop [S] into \the [src].</span>")
 		S.loc = src
 		STOP_PROCESSING(SSobj, S) // No growing inside jars
