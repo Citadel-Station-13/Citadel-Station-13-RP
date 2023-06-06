@@ -15,7 +15,7 @@
 	if(blocked < 2 && isliving(target))
 		var/mob/living/L = target
 		if(L.can_inject(target_zone=def_zone))
-			reagents.trans_to_mob(L, reagent_amount, CHEM_BLOOD)
+			reagents.trans_to_mob(L, reagent_amount, CHEM_INJECT)
 
 /obj/item/ammo_casing/chemdart
 	name = "chemical dart"
