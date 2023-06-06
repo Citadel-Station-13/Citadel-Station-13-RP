@@ -372,7 +372,7 @@
 	var/datum/component/gps_signal/our_sig = GetComponent(/datum/component/gps_signal)
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
-		var/l_id = SSmapping.fluff.level_id(other_z)
+		var/l_id = SSmapping.fluff_level_id(other_z)
 		for(var/datum/component/gps_signal/sig as anything in gpses)
 			if(sig == our_sig)
 				continue

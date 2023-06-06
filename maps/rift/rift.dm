@@ -23,9 +23,6 @@
 
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
-	overmap_z = Z_LEVEL_MISC
-	overmap_size = 60
-	overmap_event_areas = 50
 	usable_email_tlds = list("lythios.nt")
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
