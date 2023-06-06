@@ -297,7 +297,7 @@ var/global/list/grub_machine_overlays = list()
 
 
 /obj/item/multitool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(proximity)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(istype(O, /obj/machinery))
 			var/mob/living/simple_mob/animal/solargrub_larva/grub = locate() in O
 			if(grub)

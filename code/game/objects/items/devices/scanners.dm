@@ -391,7 +391,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	return
 
 /obj/item/analyzer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(proximity)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(istype(O, /obj/item/tank)) // don't double post what atmosanalyzer_scan returns
 			return
 		analyze_gases(O, user)

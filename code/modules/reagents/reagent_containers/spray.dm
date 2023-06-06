@@ -29,7 +29,7 @@
 	if(istype(A, /spell))
 		return
 
-	if(proximity)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(standard_dispenser_refill(user, A))
 			return
 

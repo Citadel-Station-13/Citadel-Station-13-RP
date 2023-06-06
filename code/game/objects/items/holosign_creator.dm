@@ -18,7 +18,7 @@
 
 /obj/item/holosign_creator/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
-	if(flag)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
 		if(!check_allowed_items(target, 1))
 			return
 		var/turf/T = get_turf(target)

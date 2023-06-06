@@ -64,7 +64,7 @@
 	return
 
 /obj/item/laser_pointer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(flag)	//we're placing the object on a table or in backpack
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)	//we're placing the object on a table or in backpack
 		return
 	laser_act(target, user)
 
