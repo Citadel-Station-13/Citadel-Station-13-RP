@@ -1,0 +1,2520 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aI" = (
+/obj/machinery/power/grounding_rod,
+/obj/effect/floor_decal/corner/orange/borderfull,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"aR" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"bg" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"bl" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"bt" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"bz" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"bA" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air/airlock,
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"bM" = (
+/obj/structure/sign/electricshock,
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
+"bW" = (
+/obj/structure/closet/wardrobe/engineering_yellow,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"bY" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"cp" = (
+/obj/structure/fence,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"cs" = (
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"cH" = (
+/obj/machinery/light/spot{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"cI" = (
+/obj/structure/fence/cut/large,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"cR" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"cT" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"cU" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"dk" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"dE" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"dG" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"dL" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/lythios43c,
+/area/engineering/engine_room)
+"ek" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"ey" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"fc" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/submap/pa_room)
+"ff" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"fy" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"fO" = (
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_gas)
+"fP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"gb" = (
+/obj/machinery/camera/network/engine,
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/airlock_sensor/phoron{
+	dir = 5;
+	id_tag = "engi_frostlock2_sensor";
+	name = "frostlock sensor";
+	pixel_x = 38;
+	pixel_y = 24
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"gd" = (
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"gk" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"gn" = (
+/obj/structure/particle_accelerator/particle_emitter/right{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"ha" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"hb" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"hj" = (
+/obj/structure/fence/cut/large{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/lythios43c,
+/area/engineering/engine_room)
+"hC" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"iT" = (
+/obj/structure/sign/electricshock,
+/turf/simulated/floor/plating/lythios43c,
+/area/engineering/engine_room)
+"iY" = (
+/obj/effect/wingrille_spawn/reinforced,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/submap/pa_room)
+"jl" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/techfloor/orange,
+/obj/item/tool/wrench/red,
+/obj/item/clothing/glasses/welding/superior,
+/obj/item/weldingtool/largetank,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"jp" = (
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"jX" = (
+/obj/machinery/camera/network/engine{
+	dir = 1
+	},
+/obj/structure/table/standard,
+/obj/item/circuitboard/tesla_coil{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/circuitboard/tesla_coil{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/stock_parts/capacitor,
+/obj/item/stock_parts/capacitor{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"jY" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"kh" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"ks" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"kC" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"kT" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/pa_room)
+"lh" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"lB" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/item/stack/cable_coil,
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"lC" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"mo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"mG" = (
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"mY" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"np" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"of" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/airlock_sensor/phoron{
+	dir = 5;
+	id_tag = "engi_frostlock1_sensor";
+	name = "frostlock sensor";
+	pixel_x = 38;
+	pixel_y = 24
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"og" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/engineering/engine_room)
+"oz" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	master_tag = "engi_frostlock1";
+	pixel_x = 26;
+	pixel_y = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"oA" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals8,
+/obj/structure/table/standard,
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/manual/engineering_particle_accelerator{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"oO" = (
+/obj/machinery/particle_accelerator/control_box,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"oP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"pa" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"pb" = (
+/obj/machinery/light/spot/flicker,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"ph" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"pu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"pF" = (
+/obj/machinery/power/tesla_coil,
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"pM" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"qt" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 10
+	},
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_y = 26
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"rs" = (
+/obj/effect/floor_decal/industrial/danger/corner,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"sd" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"sl" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"sq" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"su" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"sM" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"sZ" = (
+/obj/effect/floor_decal/corner/lime/borderfull,
+/obj/structure/cable/cyan,
+/obj/machinery/power/emitter,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"tf" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"tq" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"tH" = (
+/obj/effect/floor_decal/corner/blue/borderfull,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"ug" = (
+/obj/machinery/door/airlock/engineering,
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"uw" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/obj/effect/catwalk_plated,
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"uy" = (
+/obj/effect/floor_decal/corner/orange/borderfull,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"uz" = (
+/obj/structure/fence/cut/medium,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"uI" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "engi_frostlock2";
+	name = "Frost Lock Controller";
+	pixel_x = -6;
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1379;
+	id_tag = "engi_frostlock2_pump"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"uS" = (
+/obj/effect/floor_decal/corner/lime/borderfull,
+/obj/structure/cable/cyan,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"va" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"vl" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"vo" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external/glass/bolted/cycling,
+/obj/effect/catwalk_plated/dark,
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"vr" = (
+/obj/machinery/alarm{
+	desc = " ";
+	pixel_y = 24
+	},
+/obj/structure/cable/cyan{
+	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"vI" = (
+/obj/structure/particle_accelerator/particle_emitter/left{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"wf" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"ws" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"wv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"wT" = (
+/turf/template_noop,
+/area/template_noop)
+"yd" = (
+/obj/machinery/computer/atmos_alert{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"yn" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"yy" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"yO" = (
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"yV" = (
+/obj/effect/floor_decal/industrial/danger/corner{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"yX" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"za" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"Aa" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Ab" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"Af" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"Al" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"As" = (
+/obj/machinery/access_button/airlock_exterior{
+	dir = 1;
+	master_tag = "engi_frostlock2";
+	pixel_x = 26;
+	pixel_y = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"AY" = (
+/obj/effect/floor_decal/corner/lime/borderfull,
+/obj/structure/cable/cyan{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Bk" = (
+/turf/simulated/floor/outdoors/dirt/lythios43c,
+/area/engineering/engine_room)
+"Bz" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/access_button/airlock_interior{
+	dir = 1;
+	master_tag = "engi_frostlock1";
+	pixel_y = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"BN" = (
+/obj/structure/particle_accelerator/fuel_chamber{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"BR" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"BW" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"Cm" = (
+/obj/machinery/computer/power_monitor{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"Cs" = (
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
+	},
+/obj/machinery/light_switch{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Cv" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "engi_frostlock2";
+	pixel_y = -22
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Cx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 28
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Da" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/floor,
+/area/submap/pa_room)
+"De" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Dh" = (
+/obj/item/storage/toolbox/electrical,
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"DK" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"DL" = (
+/obj/structure/closet/crate/engineering/electrical,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/engineering/engine_room)
+"DM" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Ek" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/obj/item/stack/cable_coil/random,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"Ep" = (
+/obj/machinery/computer/rcon{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"Et" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"FI" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"FX" = (
+/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Ge" = (
+/obj/effect/floor_decal/steeldecal,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Gj" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/structure/closet/radiation,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Gn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"GK" = (
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"GU" = (
+/obj/structure/particle_accelerator/power_box{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"GW" = (
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
+"Hg" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"HI" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"HL" = (
+/obj/machinery/power/tesla_coil,
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 25
+	},
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"HU" = (
+/obj/machinery/the_singularitygen/tesla{
+	anchored = 1
+	},
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/engineering/engine_room)
+"Il" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/pa_room)
+"IC" = (
+/obj/machinery/power/grounding_rod,
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"IN" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/pa_room)
+"Jp" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Jz" = (
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"JG" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"JS" = (
+/obj/structure/particle_accelerator/particle_emitter/center{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"Ka" = (
+/obj/structure/foamedmetal,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Kj" = (
+/obj/structure/particle_accelerator/end_cap{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/hole{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"KH" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Ll" = (
+/obj/machinery/power/emitter,
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"LY" = (
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
+	},
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"Mg" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Mi" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"Mv" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/effect/floor_decal/corner/lightorange/borderfull,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"ME" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"MV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"Nd" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Nk" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"NM" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Od" = (
+/obj/machinery/light,
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	dir = 1;
+	id = "EngineRadiatorViewport";
+	name = "Viewport Blast Doors";
+	pixel_x = -4;
+	pixel_y = -24;
+	req_access = list(10)
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Oh" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Os" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Ox" = (
+/obj/machinery/light/spot/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"ON" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"OT" = (
+/obj/machinery/field_generator{
+	anchored = 1;
+	state = 1
+	},
+/obj/effect/floor_decal/corner/blue/borderfull,
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Pf" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/wingrille_spawn/reinforced,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/submap/pa_room)
+"Pg" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/effect/floor_decal/corner/lightorange/borderfull,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Pi" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Py" = (
+/obj/structure/cable/cyan{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/cyan{
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/engineering/engine_room)
+"PI" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/engineering/engine_room)
+"PU" = (
+/obj/machinery/power/tesla_coil,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/obj/effect/floor_decal/corner/lightorange/borderfull,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Qh" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "engi_frostlock1";
+	name = "Frost Lock Controller";
+	pixel_x = -6;
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Qi" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "EngineRadiatorViewport";
+	name = "Viewport Blast Doors";
+	pixel_x = -4;
+	pixel_y = 24;
+	req_access = list(10)
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Qk" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"QJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"QL" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"QR" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Ri" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Rj" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Rx" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/submap/pa_room)
+"RK" = (
+/obj/machinery/camera/network/engine{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/engineering/engine_room)
+"Sl" = (
+/turf/simulated/wall/r_wall,
+/area/submap/pa_room)
+"Sr" = (
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Ss" = (
+/obj/machinery/light,
+/obj/structure/closet/wardrobe/engineering_yellow,
+/obj/effect/catwalk_plated,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"SL" = (
+/obj/effect/floor_decal/borderfloor,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"SM" = (
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	frequency = 1379;
+	id_tag = "engi_frostlock1_pump"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"ST" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor,
+/area/submap/pa_room)
+"Te" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Tu" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"TB" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"TW" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external/glass/bolted/cycling,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Ul" = (
+/obj/machinery/door/airlock/engineering,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Uy" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
+	icon_state = "radiation";
+	name = "RADIOACTIVE AREA"
+	},
+/turf/simulated/wall/r_wall,
+/area/submap/pa_room)
+"UX" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Vr" = (
+/turf/simulated/floor/tiled,
+/area/submap/pa_room)
+"Vx" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/submap/pa_room)
+"VM" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"Xr" = (
+/obj/effect/wingrille_spawn/reinforced,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor,
+/area/engineering/engine_room)
+"Yq" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/engineering/engine_room)
+"YE" = (
+/obj/machinery/field_generator{
+	anchored = 1;
+	state = 1
+	},
+/turf/simulated/floor,
+/area/engineering/engine_gas)
+"Zc" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/floor_decal/techfloor/hole,
+/turf/simulated/floor/tiled/techfloor,
+/area/submap/pa_room)
+"Ze" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/engine_room)
+"ZK" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/catwalk_plated,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
+
+(1,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+"}
+(2,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+"}
+(3,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+"}
+(4,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+"}
+(5,1,1) = {"
+wT
+wT
+bM
+cp
+cI
+cp
+cp
+cp
+cp
+bM
+cp
+cp
+cp
+cp
+bM
+cp
+uz
+cp
+cp
+bM
+cp
+cp
+uz
+uz
+cp
+bM
+"}
+(6,1,1) = {"
+wT
+wT
+aR
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
+RK
+Mi
+Mi
+Mi
+Mi
+Ox
+Mi
+Mi
+Mi
+Mi
+RK
+Mi
+Mi
+Mi
+Mi
+Mi
+dL
+"}
+(7,1,1) = {"
+wT
+wT
+Te
+Mi
+Os
+Os
+rs
+DK
+DK
+DK
+DK
+PI
+PI
+PI
+PI
+PI
+DK
+DK
+DK
+DK
+cT
+Os
+Os
+Mi
+Mi
+dL
+"}
+(8,1,1) = {"
+wT
+wT
+aR
+Mi
+dk
+ff
+sZ
+yO
+yO
+tH
+ME
+Bk
+Bk
+Bk
+Bk
+Bk
+Jz
+OT
+yO
+yO
+AY
+ff
+bz
+Mi
+Mi
+dL
+"}
+(9,1,1) = {"
+wT
+wT
+Te
+Mi
+Yq
+Os
+tf
+DM
+hC
+hC
+yV
+Bk
+Bk
+Bk
+Bk
+Bk
+tf
+hC
+hC
+QR
+yV
+Os
+Yq
+Mi
+Mi
+dL
+"}
+(10,1,1) = {"
+wT
+wT
+Te
+Mi
+Yq
+Mi
+uy
+Jz
+Mv
+Bk
+Bk
+Bk
+og
+og
+og
+Bk
+Bk
+Bk
+Mv
+ME
+uy
+Mi
+Yq
+Mi
+Mi
+dL
+"}
+(11,1,1) = {"
+wT
+wT
+bM
+cH
+Yq
+Mi
+Mi
+Jz
+ON
+Bk
+Bk
+og
+og
+og
+og
+og
+Bk
+Bk
+ON
+ME
+Mi
+Mi
+Yq
+Mi
+pb
+iT
+"}
+(12,1,1) = {"
+wT
+wT
+Te
+Mi
+Yq
+Mi
+Mi
+Jz
+PU
+Bk
+Bk
+og
+og
+HU
+og
+og
+Bk
+Bk
+Pg
+ME
+Mi
+Mi
+Yq
+Mi
+Mi
+dL
+"}
+(13,1,1) = {"
+wT
+wT
+Te
+Mi
+Yq
+Mi
+Mi
+Jz
+ON
+Bk
+Bk
+og
+og
+og
+og
+og
+Bk
+Bk
+ON
+ME
+Mi
+Mi
+Yq
+Mi
+Mi
+hj
+"}
+(14,1,1) = {"
+wT
+wT
+aR
+Mi
+Yq
+Mi
+uy
+Jz
+Pg
+Bk
+Bk
+Bk
+og
+og
+og
+Bk
+Bk
+Bk
+Pg
+ME
+aI
+Mi
+Yq
+Mi
+Mi
+dL
+"}
+(15,1,1) = {"
+wT
+wT
+Te
+Mi
+Yq
+Os
+rs
+JG
+Qk
+DK
+cT
+Bk
+Bk
+Bk
+Bk
+Bk
+rs
+DK
+Qk
+lC
+cT
+Os
+Yq
+Mi
+Mi
+dL
+"}
+(16,1,1) = {"
+wT
+wT
+Te
+Mi
+pa
+ff
+uS
+yO
+Ri
+tH
+ME
+Bk
+Bk
+Bk
+Bk
+Bk
+Jz
+tH
+Ri
+yO
+AY
+ff
+lh
+Mi
+Mi
+dL
+"}
+(17,1,1) = {"
+wT
+wT
+GW
+Mi
+Yq
+Os
+tf
+hC
+VM
+Pi
+dG
+UX
+UX
+yX
+UX
+UX
+ws
+Pi
+Rj
+hC
+yV
+Os
+Yq
+Mi
+Mi
+GW
+"}
+(18,1,1) = {"
+wT
+wT
+GW
+oz
+Yq
+Mi
+Mi
+Mi
+Mi
+Mi
+GK
+Mi
+Mi
+ON
+Mi
+Mi
+GK
+Mi
+Mi
+Mi
+Mi
+Mi
+Yq
+As
+Mi
+GW
+"}
+(19,1,1) = {"
+wT
+wT
+GW
+GW
+vo
+Xr
+GW
+Mi
+Mi
+pb
+Sl
+iY
+iY
+Pf
+iY
+iY
+Sl
+bg
+Mi
+Mi
+GW
+Xr
+vo
+GW
+GW
+GW
+"}
+(20,1,1) = {"
+wT
+wT
+wT
+GW
+of
+gd
+GW
+Mi
+Mi
+Mi
+Da
+kT
+Rx
+fc
+IN
+Il
+iY
+Mi
+Mi
+Mi
+GW
+gb
+TB
+GW
+Ka
+GW
+"}
+(21,1,1) = {"
+wT
+wT
+wT
+GW
+Qh
+SM
+GW
+Mi
+Mi
+Mi
+Da
+Vr
+vI
+JS
+gn
+Vr
+iY
+Mi
+Mi
+Mi
+GW
+uI
+QL
+GW
+Ka
+GW
+"}
+(22,1,1) = {"
+wT
+wT
+wT
+GW
+TW
+Xr
+GW
+Xr
+Xr
+Xr
+Uy
+Ge
+hb
+GU
+pM
+Vr
+Uy
+Xr
+Xr
+Xr
+GW
+Xr
+TW
+GW
+Ka
+GW
+"}
+(23,1,1) = {"
+wT
+wT
+wT
+GW
+Bz
+wf
+jp
+Mg
+wv
+Ss
+Sl
+Qi
+oO
+BN
+Zc
+Od
+Sl
+bW
+bA
+Gj
+HI
+wv
+Cv
+GW
+Ka
+GW
+"}
+(24,1,1) = {"
+wT
+wT
+wT
+GW
+qt
+Tu
+za
+Ab
+jY
+cR
+NM
+Al
+Ek
+Kj
+tq
+fP
+FX
+Tu
+kh
+Ab
+za
+jY
+ZK
+GW
+GW
+GW
+"}
+(25,1,1) = {"
+wT
+wT
+wT
+GW
+va
+mo
+Dh
+lB
+SL
+va
+Sl
+Cs
+ey
+Sr
+fy
+oA
+Sl
+mo
+cs
+np
+cs
+SL
+va
+su
+DL
+GW
+"}
+(26,1,1) = {"
+wT
+wT
+wT
+GW
+yy
+oP
+cs
+np
+SL
+va
+Sl
+Sl
+ST
+Vx
+ST
+Sl
+Sl
+Cx
+Gn
+ks
+bY
+SL
+va
+yn
+jl
+GW
+"}
+(27,1,1) = {"
+wT
+wT
+wT
+GW
+vr
+Py
+mY
+Af
+Hg
+Aa
+Jp
+ph
+De
+bl
+Nk
+Oh
+Et
+BR
+Nk
+bt
+sd
+KH
+uw
+BW
+jX
+GW
+"}
+(28,1,1) = {"
+wT
+wT
+wT
+GW
+dE
+ek
+vl
+cU
+Ze
+kC
+sl
+kC
+pu
+FI
+sq
+Nd
+MV
+QJ
+ha
+gk
+GW
+Ul
+ug
+GW
+GW
+GW
+"}
+(29,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+fO
+fO
+mG
+sM
+Ll
+Ll
+fO
+"}
+(30,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+yd
+Cm
+Ep
+wT
+wT
+wT
+wT
+wT
+wT
+fO
+YE
+YE
+sM
+Ll
+pF
+fO
+"}
+(31,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+fO
+IC
+YE
+sM
+pF
+pF
+fO
+"}
+(32,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+fO
+IC
+IC
+LY
+HL
+pF
+fO
+"}
+(33,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+fO
+fO
+fO
+fO
+fO
+fO
+fO
+"}
+(34,1,1) = {"
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+wT
+"}
