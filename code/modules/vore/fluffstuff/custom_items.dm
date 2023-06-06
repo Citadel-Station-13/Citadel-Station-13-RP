@@ -978,7 +978,7 @@
 	//Seems okay to me!
 	return TRUE
 
-/obj/item/perfect_tele/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+/obj/item/perfect_tele/afterattack(mob/living/target, mob/user, clickchain_flags, list/params)
 	//No, you can't teleport people from over there.
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return

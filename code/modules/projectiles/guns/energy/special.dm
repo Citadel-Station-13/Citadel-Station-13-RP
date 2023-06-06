@@ -56,7 +56,7 @@
 
 /obj/item/gun/energy/floragun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//allow shooting into adjacent hydrotrays regardless of intent
-	if(adjacent_flag && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target,/obj/machinery/portable_atmospherics/hydroponics))
 		user.visible_message("<span class='danger'>\The [user] fires \the [src] into \the [target]!</span>")
 		Fire(target,user)
 		return
@@ -271,24 +271,23 @@
 		to_chat(user, "<span class='notice'>\The [src] is already powering up!</span>")
 		return 0
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 
 	var/beameffect = user.Beam(target_turf,icon_state="sat_beam",icon='icons/effects/beam.dmi',time=31, maxdistance=10,beam_type=/obj/effect/ebeam)
 
 	if(beameffect)
-		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [A].</span>")
+		user.visible_message("<span class='cult'>[user] aims \the [src] at \the [target].</span>")
 
 	if(!power_cycle)
 		power_cycle = TRUE
 		if(do_after(user, 30))
-			if(A.loc == target_turf)
-				..(A, user, adjacent, params)
+			if(target.loc == target_turf)
+				return ..()
 			else
 				var/rand_target = pick_random_target(target_turf)
-				if(rand_target)
-					..(rand_target, user, adjacent, params)
-				else
-					..(target_turf, user, adjacent, params)
+				// overwrite param in argument list, which is passed through ..() by default if not overridden.
+				target = rand_target || target
+				return ..()
 		else
 			if(beameffect)
 				qdel(beameffect)

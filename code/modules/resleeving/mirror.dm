@@ -45,9 +45,10 @@
 		human.mirror = src
 
 /obj/item/implant/mirror/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if (!istype(target))
+	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	if (!istype(comp))
 		return
-	target.active_mr = stored_mind
+	comp.active_mr = stored_mind
 
 /obj/item/implant/mirror/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/mirrorscanner))

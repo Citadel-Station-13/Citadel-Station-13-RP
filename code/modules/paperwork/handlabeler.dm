@@ -16,7 +16,7 @@
 		return
 	if(!mode)	//if it's off, give up.
 		return
-	if(A == loc)	// if placing the labeller into something (e.g. backpack)
+	if(target == loc)	// if placing the labeller into something (e.g. backpack)
 		return		// don't set a label
 
 	if(!labels_left)
@@ -25,23 +25,23 @@
 	if(!label || !length(label))
 		to_chat(user, "<span class='notice'>No text set.</span>")
 		return
-	if(length(A.name) + length(label) > 64)
+	if(length(target.name) + length(label) > 64)
 		to_chat(user, "<span class='notice'>Label too big.</span>")
 		return
-	if(ishuman(A))
-		to_chat(user, "<span class='notice'>The label refuses to stick to [A.name].</span>")
+	if(ishuman(target))
+		to_chat(user, "<span class='notice'>The label refuses to stick to [target.name].</span>")
 		return
-	if(issilicon(A))
-		to_chat(user, "<span class='notice'>The label refuses to stick to [A.name].</span>")
+	if(issilicon(target))
+		to_chat(user, "<span class='notice'>The label refuses to stick to [target.name].</span>")
 		return
-	if(isobserver(A))
-		to_chat(user, "<span class='notice'>[src] passes through [A.name].</span>")
+	if(isobserver(target))
+		to_chat(user, "<span class='notice'>[src] passes through [target.name].</span>")
 		return
-	if(istype(A, /obj/item/reagent_containers/glass))
-		to_chat(user, "<span class='notice'>The label can't stick to the [A.name].  (Try using a pen)</span>")
+	if(istype(target, /obj/item/reagent_containers/glass))
+		to_chat(user, "<span class='notice'>The label can't stick to the [target.name].  (Try using a pen)</span>")
 		return
-	if(istype(A, /obj/machinery/portable_atmospherics/hydroponics))
-		var/obj/machinery/portable_atmospherics/hydroponics/tray = A
+	if(istype(target, /obj/machinery/portable_atmospherics/hydroponics))
+		var/obj/machinery/portable_atmospherics/hydroponics/tray = target
 		if(!tray.mechanical)
 			to_chat(user, "<span class='notice'>How are you going to label that?</span>")
 			return
@@ -49,9 +49,9 @@
 		spawn(1)
 			tray.update_icon()
 
-	user.visible_message("<span class='notice'>[user] labels [A] as [label].</span>", \
-						 "<span class='notice'>You label [A] as [label].</span>")
-	A.name = "[A.name] ([label])"
+	user.visible_message("<span class='notice'>[user] labels [target] as [label].</span>", \
+						 "<span class='notice'>You label [target] as [label].</span>")
+	target.name = "[target.name] ([label])"
 
 /obj/item/hand_labeler/attack_self(mob/user)
 	. = ..()

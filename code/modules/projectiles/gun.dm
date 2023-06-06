@@ -237,8 +237,11 @@
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(adjacent) return //A is adjacent, is the user, or is on the user's person
+/obj/item/gun/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		return
+	if(!istype(user))
+		return
 
 	if(!user.aiming)
 		user.aiming = new(user)

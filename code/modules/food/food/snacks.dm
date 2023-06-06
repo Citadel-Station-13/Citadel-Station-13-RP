@@ -612,12 +612,12 @@
 	reagents.add_reagent("egg", 3)
 
 /obj/item/reagent_containers/food/snacks/egg/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(istype(O,/obj/machinery/microwave))
+	if(istype(target,/obj/machinery/microwave))
 		return ..()
-	if(!(proximity && O.is_open_container()))
+	if(!(proximity && target.is_open_container()))
 		return
-	to_chat(user, "You crack \the [src] into \the [O].")
-	reagents.trans_to(O, reagents.total_volume)
+	to_chat(user, "You crack \the [src] into \the [target].")
+	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/egg/throw_impact(atom/hit_atom)
@@ -3960,8 +3960,8 @@ END CITADEL CHANGE */
 
 //Code for dipping food in batter
 /obj/item/reagent_containers/food/snacks/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(O.is_open_container() && O.reagents && !(istype(O, /obj/item/reagent_containers/food)))
-		for (var/r in O.reagents.reagent_list)
+	if(target.is_open_container() && target.reagents && !(istype(target, /obj/item/reagent_containers/food)))
+		for (var/r in target.reagents.reagent_list)
 
 			var/datum/reagent/R = r
 			if (istype(R, /datum/reagent/nutriment/coating))
@@ -5567,12 +5567,12 @@ END CITADEL CHANGE */
 	reagents.add_reagent("sifsap", 2)
 
 /obj/item/reagent_containers/food/snacks/siffruit/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(istype(O,/obj/machinery/microwave))
+	if(istype(target,/obj/machinery/microwave))
 		return ..()
-	if(!(proximity && O.is_open_container()))
+	if(!((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && target.is_open_container()))
 		return
-	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [O].</span>")
-	reagents.trans_to(O, reagents.total_volume)
+	to_chat(user, "<span class='notice'>You tear \the [src]'s sac open, pouring it into \the [target].</span>")
+	reagents.trans_to(target, reagents.total_volume)
 	qdel(src)
 
 /obj/item/reagent_containers/food/snacks/baschbeans
