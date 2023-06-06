@@ -193,6 +193,7 @@
 	armor_type = /datum/armor/station/secsuit
 	siemens_coefficient = 0.7
 	light_overlay = "helmet_light_dual"
+	camera_networks = list(NETWORK_SEC_HELMETS)
 
 /obj/item/clothing/suit/space/void/security
 	name = "security voidsuit"
@@ -380,6 +381,7 @@
 	name = "head of security protosuit helmet"
 	icon_state = "hosproto"
 	armor_type = /datum/armor/security/hos/space
+	camera_networks = list(NETWORK_SEC_HELMETS)
 
 /obj/item/clothing/suit/space/void/headofsecurity
 	desc = "A customized security voidsuit. Has additional composite armor."

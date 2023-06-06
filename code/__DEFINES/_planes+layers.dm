@@ -73,16 +73,23 @@
 /**
  *! -- Click Catcher Plane
  *? For the click catcher. It catches clicks... Who would've guessed.
+ *? This plane has NO plane master.
+ *? This is the lowest "real" plane
  */
 #define CLICKCATCHER_PLANE -99
 
+/**
+ *! -- Camera Background Plane
+ */
+#define CAMERA_BACKGROUND_PLANE -98
+#define CAMERA_BACKGROUND_LAYER_BACK 1
+#define CAMERA_BACKGROUND_LAYER_MAP 2
 
 /**
  *! -- Space Plane
  *? For space turfs.
  */
 #define SPACE_PLANE -95 /// Reserved for use in space/parallax.
-
 
 /**
  *! -- Parallax Plane
@@ -94,24 +101,24 @@
 #define PARALLAX_LAYER_CENTER       0
 #define PARALLAX_VIS_LAYER_ABOVE  100 // Ditto
 
+/**
+ *! -- Zmimic Reserved - End.
+ *? Nothing must be between this and start.
+ */
+#define ZMIMIC_RESERVED_PLANE_END -80
 
 /**
- *! -- LOOKING GLAS PLANE
- *? For the Looking Glass holodecks.
+ *! -- Zmimic Reserved - Start.
+ *? Nothing must be between this and end.
  */
-#define PLANE_LOOKINGGLASS     -77
-#define PLANE_LOOKINGGLASS_IMG -76
-
-
-// Openspace uses planes -80 through -70.
-#define OVER_OPENSPACE_PLANE -50
-
+#define ZMIMIC_RESERVED_PLANE_START -70
 
 /**
  *! -- Turfs Plane
  *? Turfs themselves, most flooring.
  */
 #define TURF_PLANE -45
+#define TURF_PLANE_RENDER_TARGET "TURF_PLANE"
 
 #define PLATING_LAYER               (AREA_LAYER)
 #define PLATING_DECAL_LAYER         (AREA_LAYER+0.01) //! Used for decals on plating and for map editors.
@@ -158,13 +165,13 @@
 
 //! Obj/Mob layer boundary
 
-#define MIMICED_LIGHTING_LAYER      (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
-
+#define MIMICED_LIGHTING_LAYER_MAIN      (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
 
 /**
  *! -- Obj Plane
  */
 #define OBJ_PLANE -35
+#define OBJ_PLANE_RENDER_TARGET "OBJ_PLANE"
 
 #define WALL_LAYER         (TURF_LAYER+0.3) //! For walls.
 #define DEBRIS_LAYER       (TURF_LAYER+0.4) /// Cleanable debris.
@@ -185,11 +192,11 @@
 #define ABOVE_WINDOW_LAYER (OBJ_LAYER+0.4) /// Above full tile windows so wall items are clickable.
 #define MID_LANDMARK_LAYER (OBJ_LAYER+0.5)
 
-
 /**
  *! -- Mob Plane
 */
 #define MOB_PLANE -25
+#define MOB_PLANE_RENDER_TARGET "MOB_PLANE"
 
 #define BELOW_MOB_LAYER (OBJ_LAYER+0.9)
 #define ABOVE_MOB_LAYER (MOB_LAYER+0.1)
@@ -200,140 +207,145 @@
  */
 #define CLOAKED_PLANE -15
 
-
 /**
  *! -- Above Plane
  *? In the sense that it's the highest in 'the world' and not a UI element.
  */
 #define ABOVE_PLANE -10
 
-
 /**
- *! -- World Plane
+ *! -- World Threshold Plane
  *? BYOND's default value for plane, the "base plane"
+ *? The black tiles from SEE_BLACKNESS renders here.
+ *? Anything at, or above this, will not be transferred to higher zlevels by the multiz rendering system.
  */
-#define PLANE_WORLD 0 //! Black tiles outisde of your vision render here.
-
-// I doubt these should be HERE, but they were here so they stay here until I can be bothered to move them. @Zandario
-#define HUD_LAYER    20 /// Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots)
-#define SCREEN_LAYER 22 /// Mob HUD/effects layer.
-
+#define BYOND_PLANE 0
+#define BYOND_RENDER_TARGET "BYOND_PLANE"
 
 /**
- *! -- Status Plane
- *? Status Indicators that show over mobs' heads when certain things like stuns affect them.
+ *! Blackness Occlusion Plane
+ *? So you know how BYOND_PLANE has blackness tiles?
+ *? We need to override that in some places. That's where this comes in.
  */
-#define PLANE_STATUS 2
-
-
-/**
- *! -- Admin1 Plane
- *? Purely for shenanigans (below lighting)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN1 3
-
+#define BYOND_OCCLUSION_PLANE 1
+#define BYOND_OCCLUSION_RENDER_TARGET "*NOBLACK_PLANE"
+#define BYOND_OCCLUSION_LAYER_MAIN 1
 
 /**
  *! -- Planet Lighting Plane
  *? Lighting on planets.
  */
-#define PLANE_PLANETLIGHTING 4
-
+#define WEATHER_PLANE 4
 
 /**
- *! -- Emissive Blocker Plane
+ *! -- Lightmask Plane
+ *
+ * lighting mask plane used for:
+ * - DARKVISION_PLANE masking
+ * - LIGHTLESS_PLANE masking
+ *
+ * this has a color matrix on it to amplify lights, making even softer lights
+ * able to fully mask the other planes.
  */
-#define EMISSIVE_BLOCKER_PLANE 7
-
-#define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
-
-#define EMISSIVE_BLOCKER_LAYER 12
-
+#define LIGHTMASK_PLANE 7
+#define LIGHTMASK_LAYER_MAIN 1
+#define LIGHTMASK_RENDER_TARGET "*LIGHTMASK_PLANE"
 
 /**
  *! -- Emissives Plane
  */
 #define EMISSIVE_PLANE 8
-
-#define EMISSIVE_LAYER 13
-
-
-/**
- *! -- Unblockable Emissives Plane
- */
-#define EMISSIVE_UNBLOCKABLE_PLANE 9
-
-#define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
 #define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
-
-#define EMISSIVE_UNBLOCKABLE_LAYER 14
-#define EMISSIVE_LAYER_UNBLOCKABLE 14
-
 
 /**
  *! -- Lighting Plane
  *? Where the lighting (and darkness) lives (ignoring all other higher planes)
  */
-#define LIGHTING_PLANE 10
-
-#define LIGHTBULB_LAYER      0 // Unused.
-#define LIGHTING_LAYER       1
-#define ABOVE_LIGHTING_LAYER 2
-
+#define LIGHTING_PLANE 9
+#define LIGHTING_LAYER_MAIN 1
+#define LIGHTING_RENDER_TARGET "LIGHTING_PLANE"
 
 /**
- *! -- Lighting Plane
- *? For glowy eyes etc. that shouldn't be affected by darkness.
+ *! -- Darkvision Plane
+ * todo: see plane_master.dm for what to-do.
  */
-#define ABOVE_LIGHTING_PLANE 15
+#define DARKVISION_PLANE 10
+#define DARKVISION_LAYER_TURFS 1
+#define DARKVISION_LAYER_OBJS 2
+#define DARKVISION_LAYER_ADDITIONAL 3
+#define DARKVISION_LAYER_MOBS 4
+#define DARKVISION_LAYER_NOISE 5
+#define DARKVISION_LAYER_BLACKNESS 6
+#define DARKVISION_RENDER_TARGET "DARKVISION_PLANE"
 
-#define EYE_GLOW_LAYER         1
-#define BEAM_PROJECTILE_LAYER  2
-#define SUPERMATTER_WALL_LAYER 3
+/**
+ *! -- Darkvision Occlusion Plane
+ *
+ * mob darkvision occlusion plane
+ * why do we need this?
+ * because while fov can be easily done using blend multiply, we need an intermediate slate
+ * to draw occlusion to, if we want sane behavior
+ * tl;dr RESET_TRANSFORM doesn't work without KEEP_APART
+ * KEEP_APART stops us from basically overlaying a no-alpha center onto a black backdrop
+ *
+ * tl;dr shit sucks
+ */
+#define DARKVISION_OCCLUSION_PLANE 11
+#define DARKVISION_OCCLUSION_LAYER_MAIN 1
+#define DARKVISION_OCCLUSION_LAYER_BLACKNESS 2
+#define DARKVISION_OCCLUSION_RENDER_TARGET "*DARKMASK_PLANE"
 
+/**
+ *! -- FOV plane
+ *
+ * we need this to have an intermediate slate that only renders to certain planes
+ * (mob, obj) rather than also turfs
+ * this makes it far less disorientating.
+ */
+#define FOV_OCCLUSION_PLANE 12
+#define FOV_OCCLUSION_LAYER_MAIN 1
+#define FOV_OCCLUSION_RENDER_TARGET "*FOVMASK_PLANE"
+
+/**
+ *! -- Lightless Plane
+ *? Objects on this plane can only be seen without light.
+ *  todo: proper layering
+ */
+#define LIGHTLESS_PLANE 13
+#define LIGHTLESS_LAYER(normal_layer) (normal_layer)
+#define LIGHTLESS_RENDER_TARGET "LIGHTLESS_PLANE"
+
+/**
+ *! -- Above Lighting Plane
+ *? For effects etc. that shouldn't be affected by darkness.
+ */
+#define ABOVE_LIGHTING_PLANE 20
+#define ABOVE_LIGHTING_LAYER_MAIN 1
 
 /**
  *! -- Sonar Plane
+ *? Used for renders for effects like sonar / sensory things
  */
-#define SONAR_PLANE 16
-
+#define SONAR_PLANE 25
 
 /**
  *! -- Ghost Plane
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
  */
-#define PLANE_GHOSTS 20
-
-
-/**
- *! -- AI Eye Plane
- *? The AI eye lives here.
- */
-#define PLANE_AI_EYE 29
-
-
-/**
- *! -- Meson Plane
- *? Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
- */
-#define PLANE_MESONS 30
-
-
-/**
- *! -- Admin2 Plane
- *? Purely for shenanigans (above lighting)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN2 33
-
+#define OBSERVER_PLANE 30
 
 /**
  *! -- Augmented Plane
  *? Augmented-reality stuff.
  */
-#define PLANE_AUGMENTED 40
+#define AUGMENTED_PLANE 35
+
+/**
+ *! -- Verticality Plane
+ *? Stuff that used to be seen only with mesons, like open ceilings.
+ */
+#define VERTICALITY_PLANE 40
 
 /**
  *! -- Fullscreen Plane
@@ -341,50 +353,44 @@
  */
 #define FULLSCREEN_PLANE 90
 
-#define OBFUSCATION_LAYER 19.9
-#define FLASH_LAYER       20
-#define FULLSCREEN_LAYER  20.1
-#define UI_DAMAGE_LAYER   20.2
-#define BLIND_LAYER       20.3
-#define CRIT_LAYER        20.4
-#define CURSE_LAYER       20.5
-#define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
+#define FULLSCREEN_LAYER_OBFUSCATION 19.9
+#define FULLSCREEN_LAYER_MAIN 20.1
+#define FULLSCREEN_LAYER_DAMAGE 20.2
+#define FULLSCREEN_LAYER_BLIND 20.3
+#define FULLSCREEN_LAYER_CRIT 20.4
+#define FULLSCREEN_LAYER_CURSE 20.5
 
+/**
+ *! -- Camera Mask Plane
+ */
+#define CAMERA_MASK_PLANE 91
+#define CAMERA_MASK_LAYER_MAIN 1
 
 /**
  *! -- Player HUD Plane
  *? Client UI HUD stuff.
  *? The character's UI is on this plane.
+ *
+ * todo: some layers are unused?
  */
-#define PLANE_PLAYER_HUD 95
+#define HUD_PLANE 95
 
-#define LAYER_HUD_UNDER 1 /// Under the HUD items.
-#define LAYER_HUD_BASE  2 /// The HUD items themselves.
-#define LAYER_HUD_ITEM  3 /// Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS).
-#define LAYER_HUD_ABOVE 4 /// Things that reside above items (highlights).
-
+#define HUD_LAYER_UNDER 1 /// Under the HUD items.
+#define HUD_LAYER_BASE  2 /// The HUD items themselves.
+#define HUD_LAYER_ITEM  3 /// Things sitting on HUD items (largely irrelevant because INVENTORY_PLANE).
+#define HUD_LAYER_ABOVE 4 /// Things that reside above items (highlights).
 
 /**
  *! -- Player HUD Items Plane
  *? Separate layer with which to apply colorblindness.
  */
-#define PLANE_PLAYER_HUD_ITEMS 96
-
+#define INVENTORY_PLANE 96
 
 /**
  *! -- Above HUD Plane
  *? Things above the player hud.
  */
-#define PLANE_PLAYER_HUD_ABOVE 97
-
-
-/**
- *! -- Admin3 Plane
- *? Purely for shenanigans (above HUD)
- * TODO: Probably remove this. @Zandario
- */
-#define PLANE_ADMIN3 99
-
+#define ABOVE_HUD_PLANE 97
 
 /// Highest plane. This should stay at 99. No, you don't need more than that.
 #define HIGHEST_PLANE 99
@@ -414,6 +420,3 @@
  * oh yeah and this does NOT work well with FLOAT_LAYER.
  */
 #define MANGLE_PLANE_AND_LAYER(P, L) ((P - LOWEST_PLANE + 1) * (PLANE_MANGLING_FACTOR) + L * LAYER_MANGLING_FACTOR)
-// todo: optimize
-/// Check if a mob can "logically" see an atom plane
-#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)

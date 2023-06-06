@@ -61,12 +61,3 @@
 	tX = clamp(origin.x + text2num(tX) - round(actual_view[1] / 2) - 1, 1, world.maxx)
 	tY = clamp(origin.y + text2num(tY) - round(actual_view[2] / 2) - 1, 1, world.maxy)
 	return locate(tX, tY, tZ)
-
-/**
- * Makes a clickcatcher if necessary, and ensures it's fit to our size.
- */
-/client/proc/update_clickcatcher()
-	if(!click_catcher)
-		click_catcher = new
-	screen |= click_catcher
-	click_catcher.UpdateFill(current_viewport_width, current_viewport_height)

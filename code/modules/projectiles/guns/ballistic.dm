@@ -239,8 +239,15 @@
 /obj/item/gun/ballistic/attack_self(mob/user)
 	if(firemodes.len > 1)
 		switch_firemodes(user)
+	else if(ammo_magazine)
+		ammo_magazine.forceMove(user.drop_location())
+		user.visible_message("[user] dumps [ammo_magazine] from [src] onto the floor.", SPAN_NOTICE("You dump [ammo_magazine] from [src] onto the floor."))
+		playsound(src, mag_remove_sound, 50, 1)
+		ammo_magazine.update_icon()
+		ammo_magazine = null
 	else
 		unload_ammo(user)
+	update_icon()
 
 /obj/item/gun/ballistic/attack_hand(mob/user, list/params)
 	if(user.get_inactive_held_item() == src)

@@ -327,7 +327,7 @@
 /atom/movable/weather_visuals
 	icon = 'icons/effects/weather.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane = PLANE_PLANETLIGHTING
+	plane = WEATHER_PLANE
 
 
 /**

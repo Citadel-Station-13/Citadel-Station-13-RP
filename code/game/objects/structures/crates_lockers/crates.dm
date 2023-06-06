@@ -353,14 +353,14 @@
 	icon_closed = "largebin"
 
 /obj/structure/closet/crate/bin/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_wrench() && !src.opened)
+	if(W.is_wrench() && !opened)
 		if(anchored)
-			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
+			user.show_message(SPAN_NOTICE("[src] can now be moved."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 
 		else if(!anchored)
-			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
+			user.show_message(SPAN_NOTICE("[src] is now secured."))
 			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	else
