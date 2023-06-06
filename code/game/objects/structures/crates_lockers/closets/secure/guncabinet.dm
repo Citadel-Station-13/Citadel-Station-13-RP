@@ -2,9 +2,6 @@
 	name = "gun cabinet"
 	icon = 'icons/obj/guncabinet.dmi'
 	icon_state = "base"
-	icon_off ="base"
-	icon_broken ="base"
-	icon_locked ="base"
 	icon_closed ="base"
 	icon_opened = "base"
 	req_one_access = list(ACCESS_SECURITY_ARMORY)

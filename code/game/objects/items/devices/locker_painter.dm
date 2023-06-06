@@ -86,8 +86,10 @@
 
 	var/config_error
 
-	if(istype(A,/obj/structure/closet/secure_closet))
+	if(istype(A,/obj/structure/closet/))
 		var/obj/structure/closet/secure_closet/F = A
+		if(!F.secure)
+			return
 		if(F.broken)
 			to_chat(user, "<span class='warning'>\The [src] cannot paint broken closets.</span>")
 			return
@@ -98,9 +100,6 @@
 		if(!config_error)
 			F.icon_opened = colour_data["open"]
 			F.icon_closed = colour_data["closed"]
-			F.icon_locked = colour_data["locked"]
-			F.icon_broken = colour_data["broken"]
-			F.icon_off = colour_data["off"]
 			F.update_icon()
 
 	else
