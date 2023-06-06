@@ -614,7 +614,7 @@
 /obj/item/reagent_containers/food/snacks/egg/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(istype(target,/obj/machinery/microwave))
 		return ..()
-	if(!(proximity && target.is_open_container()))
+	if(!((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && target.is_open_container()))
 		return
 	to_chat(user, "You crack \the [src] into \the [target].")
 	reagents.trans_to(target, reagents.total_volume)

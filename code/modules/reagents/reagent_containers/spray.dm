@@ -37,7 +37,7 @@
 		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
 		return
 
-	Spray_at(target, user, proximity)
+	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
 	user.setClickCooldown(4)
 

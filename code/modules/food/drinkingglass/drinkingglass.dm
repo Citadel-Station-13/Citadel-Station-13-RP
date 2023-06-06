@@ -149,7 +149,7 @@
 
 /obj/item/reagent_containers/food/drinks/glass2/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(user.a_intent == INTENT_HARM) //We only want splashing to be done if they are on harm intent.
-		if(!is_open_container() || !proximity)
+		if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 			return 1
 		if(standard_splash_mob(user, target))
 			return 1

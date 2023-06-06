@@ -414,7 +414,7 @@
 /obj/item/electronic_assembly/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	for(var/obj/item/integrated_circuit/input/S in assembly_components)
-		if(S.sense(target,user,proximity))
+		if(S.sense(target,user,(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)))
 			visible_message(SPAN_NOTICE("\The [user] waves \the [src] around [target]."))
 
 /obj/item/electronic_assembly/attackby(var/obj/item/I, var/mob/user, intent)
