@@ -3955,6 +3955,21 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/structure/window/reinforced,
+/obj/item/clothing/shoes/leg_guard/laserproof,
+/obj/item/clothing/gloves/arm_guard/laserproof,
+/obj/item/clothing/suit/armor/laserproof,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "cGc" = (
@@ -4985,6 +5000,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"dxQ" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "dxZ" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -6174,6 +6196,20 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/item/clothing/shoes/leg_guard/laserproof,
+/obj/item/clothing/gloves/arm_guard/laserproof,
+/obj/item/clothing/suit/armor/laserproof,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "etZ" = (
@@ -6899,6 +6935,19 @@
 /obj/item/clothing/suit/armor/pcarrier{
 	pixel_x = 5;
 	pixel_y = 4
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 8
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12485,15 +12534,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
-"iQz" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/space)
 "iQC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13175,6 +13215,17 @@
 /obj/effect/floor_decal/techfloor/hole,
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/tiled/white,
+/area/space)
+"jrm" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/grille/rustic,
+/turf/simulated/floor/plating,
 /area/space)
 "jrQ" = (
 /obj/structure/cable/green{
@@ -17721,6 +17772,21 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/structure/window/reinforced,
+/obj/item/clothing/shoes/leg_guard/bulletproof,
+/obj/item/clothing/gloves/arm_guard/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof/alt,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "mTA" = (
@@ -17906,6 +17972,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
+/area/space)
+"mYV" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
 /area/space)
 "mZk" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
@@ -18773,6 +18845,20 @@
 /obj/item/clothing/accessory/armor/armguards/ablative,
 /obj/item/clothing/suit/armor/pcarrier/ablative,
 /obj/item/clothing/head/helmet/ablative,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 6
+	},
+/obj/item/clothing/accessory/storage/pouches/blue,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "nDa" = (
@@ -23342,6 +23428,13 @@
 /obj/item/clothing/accessory/armor/armguards/ballistic,
 /obj/item/clothing/suit/armor/pcarrier/ballistic,
 /obj/item/clothing/head/helmet/ballistic,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/accessory/storage/pouches/green,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "rAb" = (
@@ -23509,6 +23602,17 @@
 	icon_state = "32-8"
 	},
 /obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/open,
 /area/space)
 "rHt" = (
@@ -23946,6 +24050,13 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area_hallway)
+"rYg" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/space)
 "rYi" = (
 /obj/machinery/door/airlock{
 	name = "Internal Affairs";
@@ -26051,6 +26162,34 @@
 /obj/item/clothing/accessory/armor/tag/nts,
 /obj/item/clothing/accessory/armor/tag/nts,
 /obj/item/clothing/accessory/armor/tag/nts,
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/closet/crate{
+	name = "Carrier Tags"
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/red/border{
+	dir = 1
+	},
+/obj/item/clothing/accessory/armor/tag/opos,
+/obj/item/clothing/accessory/armor/tag/opos,
+/obj/item/clothing/accessory/armor/tag/oneg,
+/obj/item/clothing/accessory/armor/tag/oneg,
+/obj/item/clothing/accessory/armor/tag/bpos,
+/obj/item/clothing/accessory/armor/tag/bpos,
+/obj/item/clothing/accessory/armor/tag/bneg,
+/obj/item/clothing/accessory/armor/tag/bneg,
+/obj/item/clothing/accessory/armor/tag/apos,
+/obj/item/clothing/accessory/armor/tag/apos,
+/obj/item/clothing/accessory/armor/tag/aneg,
+/obj/item/clothing/accessory/armor/tag/aneg,
+/obj/item/clothing/accessory/armor/tag/abpos,
+/obj/item/clothing/accessory/armor/tag/abpos,
+/obj/item/clothing/accessory/armor/tag/abneg,
+/obj/item/clothing/accessory/armor/tag/abneg,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "tFR" = (
@@ -27139,6 +27278,20 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/fore)
+"uuy" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/grille/rustic,
+/turf/simulated/floor/plating,
+/area/space)
 "uuA" = (
 /obj/structure/window/reinforced,
 /obj/structure/closet/walllocker/emergsuit_wall{
@@ -27563,6 +27716,21 @@
 /obj/item/clothing/gloves/arm_guard/bulletproof,
 /obj/item/clothing/suit/armor/bulletproof/alt,
 /obj/item/clothing/head/helmet/ballistic,
+/obj/effect/floor_decal/corner/red{
+	dir = 10
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj{
+	name = "---Merge conflict marker---"
+	},
+/obj/structure/table/rack/steel,
+/obj/structure/window/reinforced,
+/obj/item/clothing/shoes/leg_guard/bulletproof,
+/obj/item/clothing/gloves/arm_guard/bulletproof,
+/obj/item/clothing/suit/armor/bulletproof/alt,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
@@ -28535,6 +28703,12 @@
 /obj/structure/closet/secure_closet/medical2,
 /turf/simulated/floor/tiled,
 /area/medical/surgery)
+"vvP" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "vwm" = (
 /obj/structure/sign/deck/first,
 /turf/simulated/wall,
@@ -28710,7 +28884,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/reinforced,
 /area/space)
 "vEe" = (
 /obj/structure/sign/directions/medical,
@@ -30528,6 +30702,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"wWz" = (
+/obj/structure/ladder/updown,
+/turf/simulated/floor/reinforced,
+/area/space)
 "wXo" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -31215,13 +31393,6 @@
 	},
 /turf/space,
 /area/space)
-"xvB" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/airless,
-/area/space)
 "xwu" = (
 /obj/structure/railing{
 	dir = 4
@@ -31769,6 +31940,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/vacant/vacant_office)
+"xPE" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "xRY" = (
 /obj/structure/railing,
 /turf/space,
@@ -58800,9 +58977,9 @@ tcC
 tcC
 tcC
 tcC
-xvB
-lLO
-iQz
+tcC
+tcC
+tcC
 tcC
 tcC
 tcC
@@ -58994,9 +59171,9 @@ bmU
 lLO
 lLO
 lLO
-vTH
-bCq
-dBY
+lLO
+lLO
+lLO
 lLO
 lLO
 lLO
@@ -59193,14 +59370,14 @@ aBR
 aBR
 aBR
 aBR
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
+aBR
+aBR
+aBR
+aBR
+aBR
+aBR
+aBR
+aBR
 lLO
 lLO
 lLO
@@ -59383,18 +59560,18 @@ lLO
 lLO
 lLO
 aBR
+wWz
+eEc
+eEc
+aBR
+eEc
+vvP
+eEc
+aBR
 eEc
 eEc
 eEc
 aBR
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
 lLO
 lLO
 lLO
@@ -59580,15 +59757,15 @@ gSu
 lFq
 tWo
 nGk
-gSu
-eDU
+uuy
+lFq
 vDY
-eDU
-eDU
-eDU
-eDU
-eDU
-eDU
+lFq
+jrm
+lFq
+lFq
+lFq
+rYg
 eDU
 eDU
 fRZ
@@ -59775,14 +59952,14 @@ eEc
 sXB
 rHf
 aBR
-lLO
-oAM
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
+eEc
+xPE
+eEc
+aBR
+eEc
+mYV
+eEc
+aBR
 lLO
 lLO
 chI
@@ -59969,14 +60146,14 @@ aBR
 aBR
 aBR
 aBR
-lLO
-oAM
-lLO
-lLO
-lLO
-lLO
-lLO
-lLO
+aBR
+dxQ
+aBR
+aBR
+aBR
+aBR
+aBR
+aBR
 lLO
 bmU
 bmU

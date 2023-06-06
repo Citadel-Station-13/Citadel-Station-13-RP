@@ -8923,6 +8923,10 @@
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
 /area/maintenance/deck_two/forward)
+"hbG" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/space)
 "hcm" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/bridge/bunker)
@@ -16714,6 +16718,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"neC" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/forward)
 "neR" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -18079,6 +18087,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/atmos/gas_storage)
+"opo" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "opA" = (
 /turf/simulated/wall/r_wall,
 /area/quartermaster/qm)
@@ -23408,6 +23422,12 @@
 	},
 /turf/simulated/floor/tiled/neutral,
 /area/space)
+"sub" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/space)
 "suH" = (
 /obj/machinery/light_switch{
 	pixel_y = -25
@@ -27433,6 +27453,10 @@
 /obj/machinery/power/apc/direction_bump/west,
 /turf/simulated/floor/tiled,
 /area/hydroponics)
+"vtk" = (
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/reinforced,
+/area/space)
 "vtG" = (
 /turf/simulated/wall/r_wall,
 /area/bridge/bunker)
@@ -29475,6 +29499,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
+"wJO" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/reinforced,
+/area/space)
 "wJT" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -57780,7 +57808,7 @@ lMq
 cOp
 cOp
 lMo
-hQy
+ofL
 hQy
 okA
 lMi
@@ -57974,7 +58002,7 @@ lMq
 lMq
 lMo
 lMo
-hQy
+ofL
 hQy
 okA
 dHe
@@ -58168,7 +58196,7 @@ hts
 lad
 hQy
 hQy
-hQy
+ofL
 hQy
 okA
 okA
@@ -58362,12 +58390,12 @@ hts
 lad
 hQy
 hQy
-hQy
-hQy
-hQy
-hQy
-hQy
-hQy
+ofL
+ofL
+ofL
+neC
+ofL
+ofL
 jjf
 cXQ
 cXQ
@@ -58556,11 +58584,11 @@ hts
 lad
 hQy
 hQy
-hQy
-hQy
-hQy
-hQy
-hQy
+mRB
+mRB
+mRB
+mRB
+mRB
 hQy
 ryK
 hQy
@@ -58750,11 +58778,11 @@ hts
 lad
 hQy
 hQy
-hQy
-hQy
-hQy
-pOM
-hQy
+mRB
+wJO
+sub
+xRi
+mRB
 vDm
 tbE
 ufH
@@ -58941,13 +58969,13 @@ hts
 hts
 hts
 hts
-lad
-hQy
-hQy
+hVX
 hQy
 hQy
 mRB
-mRB
+xRi
+vtk
+opo
 mRB
 mRB
 rtC
@@ -59136,10 +59164,10 @@ hts
 hts
 hts
 lad
+hVX
 lad
-lad
-lad
-lad
+mRB
+hbG
 mRB
 lMM
 mRB
