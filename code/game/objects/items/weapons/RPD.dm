@@ -221,7 +221,7 @@
 	return TRUE
 
 /obj/item/pipe_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!user.IsAdvancedToolUser() || istype(A, /turf/space/transit) || !proximity)
+	if(!user.IsAdvancedToolUser() || istype(target, /turf/space/transit) || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return ..()
 
 	//So that changing the menu settings doesn't affect the pipes already being built.

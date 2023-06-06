@@ -43,7 +43,7 @@
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	var/turf/simulated/floor/F = A
+	var/turf/simulated/floor/F = target
 	if(!istype(F))
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return

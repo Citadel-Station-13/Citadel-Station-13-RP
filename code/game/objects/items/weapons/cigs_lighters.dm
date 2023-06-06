@@ -300,6 +300,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	..()
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
+	var/obj/item/reagent_containers/glass/glass = target
 	if(istype(glass)) //you can dip cigarettes into beakers
 		var/transfered = glass.reagents.trans_to_obj(src, chem_volume)
 		if(transfered)	//if reagents were transfered, show the message

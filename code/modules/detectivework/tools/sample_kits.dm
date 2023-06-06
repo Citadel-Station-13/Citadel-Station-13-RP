@@ -144,11 +144,11 @@
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	add_fingerprint(user)
-	if(can_take_sample(user, A))
-		take_sample(user,A)
+	if(can_take_sample(user, target))
+		take_sample(user,target)
 		return 1
 	else
-		to_chat(user, "<span class='warning'>You are unable to locate any [evidence_type]s on \the [A].</span>")
+		to_chat(user, "<span class='warning'>You are unable to locate any [evidence_type]s on \the [target].</span>")
 		return ..()
 
 /obj/item/forensics/sample_kit/powder

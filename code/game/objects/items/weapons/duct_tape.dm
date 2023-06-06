@@ -207,10 +207,10 @@
 	return ..() // Pick it up now that it's unanchored.
 
 /obj/item/duct_tape_piece/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
+	if(!in_range(user, target) || istype(target, /obj/machinery/door) || !stuck)
 		return
 
-	var/turf/target_turf = get_turf(A)
+	var/turf/target_turf = get_turf(target)
 	var/turf/source_turf = get_turf(user)
 
 	var/dir_offset = 0

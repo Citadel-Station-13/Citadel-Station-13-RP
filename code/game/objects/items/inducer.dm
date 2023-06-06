@@ -52,7 +52,7 @@
 		return ..()
 	if(cantbeused(user))
 		return
-	recharge(A, user)
+	recharge(target, user)
 
 /obj/item/inducer/proc/cantbeused(mob/user)
 	if(!user.IsAdvancedToolUser())

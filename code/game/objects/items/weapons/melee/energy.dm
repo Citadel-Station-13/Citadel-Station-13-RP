@@ -386,9 +386,9 @@
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
 /obj/item/melee/energy/sword/ionic_rapier/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(istype(AM, /obj) && proximity && active)
+	if(istype(target, /obj) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && active)
 		// EMP stuff.
-		var/obj/O = AM
+		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.

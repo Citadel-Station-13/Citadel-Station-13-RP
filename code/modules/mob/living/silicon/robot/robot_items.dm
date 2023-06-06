@@ -329,7 +329,7 @@
 
 /obj/item/form_printer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!target || !flag)
+	if(!target || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	if(istype(target,/obj/structure/table))
@@ -451,16 +451,16 @@
 	to_chat(usr, "You set \the [src] to deploy [mode ? "doors" : "walls"].")
 
 /obj/item/inflatable_dispenser/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	..(A, user)
+	..(target, user)
 	if(!user)
 		return
-	if(!user.Adjacent(A))
+	if(!user.Adjacent(target))
 		to_chat(user, "You can't reach!")
 		return
-	if(istype(A, /turf))
-		try_deploy_inflatable(A, user)
-	if(istype(A, /obj/item/inflatable) || istype(A, /obj/structure/inflatable))
-		pick_up(A, user)
+	if(istype(target, /turf))
+		try_deploy_inflatable(target, user)
+	if(istype(target, /obj/item/inflatable) || istype(target, /obj/structure/inflatable))
+		pick_up(target, user)
 
 /obj/item/inflatable_dispenser/proc/try_deploy_inflatable(var/turf/T, var/mob/living/user)
 	if(mode) // Door deployment

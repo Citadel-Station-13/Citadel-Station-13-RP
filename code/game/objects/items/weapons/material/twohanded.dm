@@ -129,13 +129,13 @@
 /obj/item/material/twohanded/fireaxe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+	if(target && wielded)
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = Atarget
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
-		else if(istype(A,/obj/effect/plant))
+		else if(istype(target,/obj/structure/grille))
+			qdel(target)
+		else if(istype(target,/obj/effect/plant))
 			var/obj/effect/plant/P = A
 			P.die_off()
 
@@ -330,14 +330,14 @@
 /obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+	if(target && wielded)
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
+		else if(istype(target,/obj/structure/grille))
+			qdel(target)
 		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+			var/obj/effect/plant/P = target
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.

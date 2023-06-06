@@ -265,8 +265,8 @@
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/melee/ashlander/elder/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(isliving(A))
-		var/mob/living/tm = A // targeted mob
+	if(isliving(target))
+		var/mob/living/tm = target // targeted mob
 		if(SA_vulnerability & tm.mob_class)
 			tm.apply_damage(SA_bonus_damage) // fuck em
 
@@ -465,9 +465,9 @@
 /obj/item/melee/thermalcutter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!active && max_fuel)
-			O.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
@@ -484,8 +484,8 @@
 	if (src.active)
 		remove_fuel(1)
 		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)

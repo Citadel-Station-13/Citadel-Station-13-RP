@@ -44,7 +44,7 @@
 
 /obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
-	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
 		target.reagents.trans_to_obj(src, 10)
 		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [target].</span>")
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
@@ -373,8 +373,8 @@
 	else if (locate (/obj/structure/table, src.loc))
 		return
 
-	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
-		A.reagents.trans_to(src, 10)
+	else if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to(src, 10)
 		to_chat(user, "<span class='notice'>You refill your flower!</span>")
 		return
 

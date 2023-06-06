@@ -125,7 +125,7 @@
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
+	if(istype(target, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
@@ -133,8 +133,8 @@
 		if(istype(I, /obj/item/storage))
 			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
-		c.scanned = I
-		I.forceMove(src)
+		c.scanned = target
+		target.forceMove(src)
 		update()
 
 /// Universal translator implant.

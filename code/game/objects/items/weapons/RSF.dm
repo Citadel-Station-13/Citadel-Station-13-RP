@@ -112,13 +112,13 @@ RSF
 		if(stored_matter <= 0)
 			return
 
-	if(!istype(A, /obj/structure/table) && !istype(A, /turf/simulated/floor))
+	if(!istype(target, /obj/structure/table) && !istype(target, /turf/simulated/floor))
 		return
 
 	playsound(src, 'sound/machines/click.ogg', 10, 1)
 	var/used_energy = 0
 	var/obj/product
-	var/turf/target = get_turf(A)
+	var/turf/target = get_turf(target)
 
 	switch(mode)
 		if(1)

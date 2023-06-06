@@ -133,7 +133,7 @@
 		return
 
 	// Handle glove conductivity.
-	var/obj/item/clothing/gloves/gloves = user.gloves
+	var/obj/item/clothing/gloves/gloves = user.item_by_slot(SLOT_ID_GLOVES)
 	var/siemens = 1
 	if(gloves)
 		siemens = gloves.siemens_coefficient

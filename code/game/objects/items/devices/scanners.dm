@@ -486,7 +486,7 @@ HALOGEN COUNTER	- Radcount on mobs
 	var/recent_fail = 0
 
 /obj/item/reagent_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity || user.stat || !istype(target))
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || user.stat || !istype(target))
 		return
 	if(!istype(user))
 		return

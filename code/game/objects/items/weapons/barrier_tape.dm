@@ -288,8 +288,8 @@ var/list/tape_roll_applications = list()
 		return
 
 	if (istype(A, /obj/machinery/door))
-		var/turf/T = get_turf(A)
-		if(locate(/obj/item/barrier_tape_segment, A.loc))
+		var/turf/T = get_turf(target)
+		if(locate(/obj/item/barrier_tape_segment, target.loc))
 			to_chat(user, "There's already tape over that door!")
 		else
 			var/obj/item/barrier_tape_segment/P = new tape_type(T)
@@ -297,8 +297,8 @@ var/list/tape_roll_applications = list()
 			P.layer = WINDOW_LAYER
 			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
-	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))
-		var/turf/F = A
+	if (istype(target, /turf/simulated/floor) ||istype(target, /turf/unsimulated/floor))
+		var/turf/F = target
 		var/direction = user.loc == F ? user.dir : turn(user.dir, 180)
 		var/icon/hazard_overlay = hazard_overlays["[direction]"]
 		if(tape_roll_applications[F] == null)

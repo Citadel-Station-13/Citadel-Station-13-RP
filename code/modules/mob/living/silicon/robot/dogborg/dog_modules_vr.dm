@@ -494,5 +494,7 @@
 		to_chat(usr, "You must target the torso.")
 
 /obj/item/dogborg/mirrortool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	target.active_mr = imp.stored_mind
-	. = ..()
+	var/obj/machinery/computer/transhuman/resleeving/comp = target
+	if(!istype(comp))
+		return
+	comp.active_mr = imp.stored_mind

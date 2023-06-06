@@ -184,9 +184,9 @@
 	return stored_matter >= amount
 
 /obj/item/rcd/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!ranged && !proximity)
+	if(!ranged && !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return FALSE
-	use_rcd(A, user)
+	use_rcd(target, user)
 
 // Used to call rcd_act() on the atom hit.
 /obj/item/rcd/proc/use_rcd(atom/A, mob/living/user)

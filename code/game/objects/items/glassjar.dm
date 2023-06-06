@@ -16,7 +16,7 @@
 	update_icon()
 
 /obj/item/glass_jar/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!proximity || contains)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || contains)
 		return
 	if(istype(target, /mob))
 		var/accept = 0

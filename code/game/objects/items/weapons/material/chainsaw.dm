@@ -75,20 +75,20 @@
 	if(A && on)
 		if(get_fuel() > 0)
 			reagents.remove_reagent("fuel", 1)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
+		else if(istype(target,/obj/structure/grille))
 			new /obj/structure/grille/broken(A.loc)
-			new /obj/item/stack/rods(A.loc)
+			new /obj/item/stack/rods(target.loc)
 			qdel(A)
-		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+		else if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
 			qdel(P) //Plant isn't surviving that. At all
-	if (istype(A, /obj/structure/reagent_dispensers/fueltank) || istype(A, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,A) <= 1)
 		to_chat(usr, "<span class='notice'>You begin filling the tank on the [src].</span>")
 		if(do_after(usr, 15))
-			A.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			to_chat(usr, "<span class='notice'>[src] succesfully refueled.</span>")
 		else
