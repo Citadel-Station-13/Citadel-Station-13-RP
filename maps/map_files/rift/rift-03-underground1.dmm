@@ -77,7 +77,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "ao" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/runder/level1)
 "ap" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -613,14 +613,14 @@
 /area/hallway/primary/underone)
 "bB" = (
 /obj/machinery/button/remote/blast_door{
-	dir = 4;
+	dir = 8;
 	id = "hammerheadtransportgarage";
 	name = "Transport Tunnel Garage";
-	pixel_x = -26;
-	pixel_y = -6
+	pixel_x = 26;
+	pixel_y = -5
 	},
 /obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "bD" = (
 /obj/structure/railing{
@@ -1735,12 +1735,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
-"dN" = (
-/obj/structure/closet/medical_wall{
-	pixel_x = 32
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel)
 "dO" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1822,25 +1816,15 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "dZ" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "16-0"
-	},
-/obj/effect/floor_decal/industrial/warning/full,
-/obj/structure/railing{
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/vehicle/ridden/cart/security{
 	dir = 1
 	},
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/light/no_nightshift{
+	dir = 1
 	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "ea" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1952,6 +1936,10 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "ey" = (
@@ -2041,6 +2029,21 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/secure_storage/upper)
+"eG" = (
+/obj/machinery/button/remote/blast_door{
+	id = "hammerheadtransportgarage";
+	name = "Transport Tunnel Garage";
+	pixel_x = -6;
+	pixel_y = 26
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "eI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2055,6 +2058,12 @@
 "eK" = (
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/atmos)
+"eL" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "eN" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
@@ -2558,6 +2567,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
+"gm" = (
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "go" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
@@ -2928,18 +2940,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
 "hL" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/machinery/button/remote/blast_door{
+/obj/machinery/alarm{
 	dir = 1;
-	id = "hammerheadtransport";
-	name = "Transport Tunnel";
-	pixel_x = -5;
-	pixel_y = -26
+	pixel_y = -25
 	},
-/obj/machinery/light/no_nightshift,
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "hN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3407,6 +3412,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/atmos/hallway)
+"jz" = (
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "jB" = (
 /obj/machinery/door/window/brigdoor/eastright{
 	req_access = list(47)
@@ -3467,15 +3475,6 @@
 "jL" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
-"jM" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "jN" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -3734,6 +3733,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"kJ" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "kK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -3810,6 +3813,7 @@
 /area/engineering/atmos)
 "kZ" = (
 /obj/structure/railing/grey,
+/obj/structure/window/basic,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "lb" = (
@@ -4144,6 +4148,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rift/surfacebase/underground/under1)
+"mn" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "fighterbaytransportexit";
+	name = "Transport Tunnel Exit"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/hangar)
 "mo" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
@@ -4203,6 +4218,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"mu" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "mw" = (
 /obj/structure/window/basic{
 	dir = 4
@@ -4619,6 +4640,30 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"oe" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "hammerheadtransport";
+	name = "Transport Tunnel";
+	pixel_x = -6;
+	pixel_y = 26
+	},
+/obj/machinery/button/remote/blast_door{
+	id = "hammerheadtransportgarage";
+	name = "Transport Tunnel Garage";
+	pixel_x = 5;
+	pixel_y = 26
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "of" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/window/reinforced,
@@ -4718,12 +4763,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/station/protean_nanite_room)
-"oD" = (
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "oE" = (
 /obj/machinery/atmospherics/component/binary/algae_farm,
 /turf/simulated/floor/tiled/monotile,
@@ -4761,6 +4800,13 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"oK" = (
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "oM" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 1
@@ -5036,13 +5082,12 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/engineering)
 "pI" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/sec,
+/turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "pJ" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -5088,8 +5133,20 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
+/obj/structure/window/basic{
+	dir = 1
+	},
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
+"pY" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/transport_tunnel)
 "pZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5170,7 +5227,7 @@
 	pixel_x = 6;
 	pixel_y = -26
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "qp" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -5182,6 +5239,12 @@
 	},
 /turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
+"qr" = (
+/obj/structure/closet/medical_wall{
+	pixel_x = 32
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "qt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
 	dir = 8
@@ -5199,13 +5262,6 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
-"qw" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel)
 "qz" = (
 /turf/simulated/wall,
 /area/engineering/atmos)
@@ -5216,6 +5272,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"qF" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "qH" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -5230,14 +5295,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
-"qN" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "qQ" = (
 /obj/structure/holohoop{
 	dir = 1
@@ -5463,6 +5520,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
+"rD" = (
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "rE" = (
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
@@ -5543,7 +5614,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "rT" = (
 /obj/effect/floor_decal/borderfloor,
@@ -5647,6 +5718,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"sm" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -27
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "sn" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -5882,13 +5962,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "tk" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hangar_lockdown";
-	name = "Hangar Lockdown Blast Doors";
-	opacity = 0
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5900,6 +5973,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "hangar_lockdown";
+	name = "Hangar Lockdown Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -6786,6 +6866,20 @@
 /obj/item/storage/fancy/crayons,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"wq" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 1;
+	id = "hammerheadtransport";
+	name = "Transport Tunnel";
+	pixel_x = -5;
+	pixel_y = -26
+	},
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "wt" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/tile/floor,
@@ -7041,7 +7135,12 @@
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
 "xi" = (
-/turf/simulated/floor/concrete/rng/lythios43c,
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cmo_office"
+	},
+/turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/transport_tunnel_garage)
 "xj" = (
 /obj/structure/cable/green{
@@ -7594,6 +7693,9 @@
 "yU" = (
 /turf/simulated/floor/reinforced/airmix,
 /area/engineering/atmos)
+"yW" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/space)
 "yX" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -7944,16 +8046,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
-"Ac" = (
-/obj/structure/stairs/spawner/north,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Af" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
@@ -7969,17 +8061,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
-"Aj" = (
-/obj/machinery/button/remote/blast_door{
-	dir = 8;
-	id = "hammerheadtransportgarage";
-	name = "Transport Tunnel Garage";
-	pixel_x = 26;
-	pixel_y = -5
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Ak" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8221,16 +8302,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
-"Bi" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/vehicle/ridden/cart/security{
-	dir = 1
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 1
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Bj" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/under1)
@@ -8321,7 +8392,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "Bx" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rmine/under1)
 "BA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -8544,30 +8615,6 @@
 /obj/machinery/door/airlock/glass_atmos,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
-"Cv" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadtransport";
-	name = "Transport Tunnel";
-	pixel_x = -6;
-	pixel_y = 26
-	},
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadtransportgarage";
-	name = "Transport Tunnel Garage";
-	pixel_x = 5;
-	pixel_y = 26
-	},
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 4
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 1
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel)
 "Cw" = (
 /obj/random/junk,
 /obj/random/junk,
@@ -8858,20 +8905,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"Ds" = (
-/obj/structure/cable/green{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "Dt" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -8895,7 +8928,7 @@
 	pixel_x = 5;
 	pixel_y = 26
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "DC" = (
 /obj/machinery/door/airlock/glass_external{
@@ -9086,6 +9119,12 @@
 	},
 /turf/simulated/wall,
 /area/maintenance/engineering/pumpstation)
+"Et" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "Eu" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9277,10 +9316,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
-"Fh" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
+"Ff" = (
+/obj/machinery/light/no_nightshift,
+/obj/turbolift_map_holder/rift_fighterbay,
+/obj/effect/floor_decal/industrial/warning/corner,
+/turf/simulated/floor/tiled/techmaint,
+/area/turbolift/rhammerhead/underground)
 "Fi" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -9350,6 +9391,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/maintenance)
+"Ft" = (
+/obj/machinery/light/no_nightshift,
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/turbolift/rhammerhead/underground)
 "Fu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
@@ -9535,6 +9583,18 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"FZ" = (
+/obj/structure/table/rack/shelf,
+/obj/item/key/security_cart{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/key/security_cart{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "Ga" = (
 /obj/machinery/camera/network/engineering{
 	dir = 4
@@ -9929,6 +9989,12 @@
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
+"Hk" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "Hm" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -10174,6 +10240,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/secure_storage/upper)
+"Ie" = (
+/obj/structure/stairs/spawner/north,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "If" = (
 /obj/structure/railing{
 	dir = 8
@@ -10846,13 +10922,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "KB" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hangar_lockdown";
-	name = "Hangar Lockdown Blast Doors";
-	opacity = 0
-	},
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 2
 	},
@@ -10860,6 +10929,13 @@
 	dir = 1;
 	name = "Fighter Hangar";
 	req_one_access = list(19,29,38,43,47,63,67)
+	},
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "hangar_lockdown";
+	name = "Hangar Lockdown Blast Doors";
+	opacity = 0
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
@@ -10959,17 +11035,16 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
 "KW" = (
-/obj/structure/table/rack/shelf,
-/obj/item/key/security_cart{
-	pixel_x = 4;
-	pixel_y = -2
+/obj/structure/cable/green{
+	icon_state = "0-2"
 	},
-/obj/item/key/security_cart{
-	pixel_x = -1;
-	pixel_y = 4
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "KX" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11044,6 +11119,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Lb" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "Ld" = (
 /obj/structure/sign/signnew/cryogenics,
 /turf/simulated/wall,
@@ -11135,6 +11219,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
+"Lq" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "Lr" = (
 /obj/structure/railing{
 	dir = 4
@@ -11391,6 +11484,10 @@
 	can_open = 1
 	},
 /area/maintenance/lower/trash_pit)
+"Mx" = (
+/obj/machinery/light/no_nightshift,
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "My" = (
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c/indoors,
@@ -12342,6 +12439,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"Pu" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/transport_tunnel)
 "Pw" = (
 /obj/structure/musician/piano/unanchored,
 /turf/simulated/floor/plating,
@@ -12648,6 +12751,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "QJ" = (
@@ -12661,6 +12767,9 @@
 	dir = 8;
 	name = "west bump";
 	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -12726,6 +12835,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"QY" = (
+/obj/machinery/light/no_nightshift{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/rift/station/fighter_bay/transport_tunnel)
 "QZ" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -12777,17 +12895,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"Ri" = (
-/obj/structure/cable/green{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/apc{
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Rj" = (
 /obj/machinery/computer/telecomms/monitor{
 	dir = 8
@@ -12849,10 +12956,10 @@
 /area/engineering/atmos)
 "Rr" = (
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-8"
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Rs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -13084,6 +13191,21 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Sm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/station/fighter_bay/hangar)
 "Sn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 9
@@ -13195,22 +13317,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "SH" = (
-/obj/machinery/button/remote/blast_door{
-	id = "hammerheadtransportgarage";
-	name = "Transport Tunnel Garage";
-	pixel_x = -6;
-	pixel_y = 26
-	},
-/obj/effect/floor_decal/industrial/warning/corner{
-	dir = 1
-	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "SI" = (
 /turf/simulated/wall/r_wall,
@@ -13230,6 +13343,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
+"SO" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/station/fighter_bay/hangar)
 "SP" = (
 /turf/simulated/wall/r_wall,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
@@ -13240,7 +13359,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/turf/simulated/floor/concrete/rng/lythios43c,
+/turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
 "SV" = (
 /obj/structure/cable/green{
@@ -13272,6 +13391,9 @@
 /area/rift/station/fighter_bay/maintenance)
 "SY" = (
 /obj/effect/floor_decal/industrial/warning,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
 "SZ" = (
@@ -13341,6 +13463,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Tn" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "Tp" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/cargo,
@@ -13401,6 +13529,9 @@
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
 	pixel_x = -30
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -13543,13 +13674,6 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
-"Ug" = (
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Uh" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/glass_external/public{
@@ -13583,15 +13707,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"Up" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel_garage)
 "Uq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/bluegrid{
@@ -13936,8 +14051,22 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
+"VA" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "hammerheadtransportgarage";
+	name = "Transport Tunnel Garage";
+	pixel_x = -26;
+	pixel_y = -6
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "VB" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -14005,6 +14134,13 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"VQ" = (
+/obj/structure/closet/hydrant{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "VT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -14033,6 +14169,15 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"VX" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel)
 "VY" = (
 /obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
@@ -14130,6 +14275,26 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Wr" = (
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "Wt" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "W-SE"
@@ -14182,6 +14347,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
@@ -14280,6 +14448,12 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
+/obj/structure/window/basic{
+	dir = 8
+	},
+/obj/structure/window/basic{
+	dir = 1
+	},
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "WL" = (
@@ -14333,6 +14507,15 @@
 /obj/effect/floor_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"WY" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage)
 "WZ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -14354,6 +14537,12 @@
 /obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"Xf" = (
+/obj/machinery/light/no_nightshift{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/turbolift/rhammerhead/underground)
 "Xg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -14396,13 +14585,6 @@
 /obj/machinery/nanite_chamber,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/station/protean_nanite_room)
-"Xq" = (
-/obj/structure/closet/hydrant{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/simulated/floor/concrete/rng/lythios43c,
-/area/rift/station/fighter_bay/transport_tunnel)
 "Xs" = (
 /turf/simulated/wall/r_wall,
 /area/tcommsat/chamber)
@@ -14506,11 +14688,6 @@
 "XQ" = (
 /turf/simulated/wall,
 /area/crew_quarters/pool)
-"XR" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/turbolift_map_holder/rift_fighterbay,
-/turf/simulated/floor/tiled/techmaint,
-/area/turbolift/rhammerhead/underground)
 "XS" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
@@ -22386,22 +22563,22 @@ aa
 aa
 mZ
 SR
-Ou
-Ou
-Ou
-Ou
-Ou
-Hm
-Hu
-Ll
-Ll
+mu
+mu
+Lq
+VX
+VX
+pY
+QY
+Pu
+Pu
 Tz
-Hu
+QY
 SY
-Dc
+mn
 QI
-Gn
-Gn
+SO
+SO
 Vz
 Zk
 WU
@@ -22579,12 +22756,12 @@ jL
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -22596,7 +22773,7 @@ Dc
 oz
 Gn
 Gn
-DH
+Sm
 Gn
 OI
 AO
@@ -22773,12 +22950,12 @@ jL
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -22967,12 +23144,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Qw
@@ -23161,12 +23338,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -23355,12 +23532,12 @@ aa
 aa
 aa
 mZ
-XE
-Yz
-Yz
-Yz
-Yz
-Yz
+Et
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Bd
@@ -23549,12 +23726,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -23743,12 +23920,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -23937,12 +24114,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 fX
@@ -24131,12 +24308,12 @@ aa
 aa
 aa
 mZ
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+jz
+jz
+jz
+jz
+jz
+jz
 Hm
 Ll
 Ll
@@ -24325,11 +24502,11 @@ aa
 aa
 aa
 mZ
-XE
-Yz
-Yz
-Yz
-DQ
+Et
+jz
+jz
+jz
+Mx
 mZ
 Kw
 EQ
@@ -24520,9 +24697,9 @@ aa
 aa
 mZ
 DA
-YU
-YU
-YU
+Hk
+Hk
+Hk
 qo
 mZ
 mZ
@@ -25097,9 +25274,9 @@ jL
 jL
 jL
 jL
-jL
 aa
 aa
+kZ
 Uk
 Yz
 Yz
@@ -25484,7 +25661,7 @@ aa
 aa
 aa
 aa
-aa
+jL
 jL
 jL
 jL
@@ -25680,7 +25857,7 @@ aa
 aa
 aa
 aa
-aa
+jL
 aa
 mZ
 Yz
@@ -27427,14 +27604,14 @@ aa
 aa
 aa
 aa
-aa
 CL
+mZ
+XE
 Yz
 Yz
 Yz
-Yz
-Yz
-CL
+DQ
+mZ
 Ol
 VV
 HD
@@ -27621,8 +27798,8 @@ aa
 aa
 aa
 aa
-aa
 CL
+Yz
 Yz
 Yz
 Yz
@@ -27816,13 +27993,13 @@ aa
 aa
 aa
 CL
-mZ
-XE
 Yz
 Yz
 Yz
-DQ
-mZ
+Yz
+Yz
+Yz
+CL
 Ol
 Ol
 Ol
@@ -28006,10 +28183,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
 CL
+CL
+CL
+Yz
 Yz
 Yz
 Yz
@@ -28159,58 +28336,58 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mZ
+mZ
+mZ
 CL
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
 CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+pg
+mZ
 aa
 aa
 aa
@@ -28351,52 +28528,15 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-CL
-CL
-CL
+mZ
+mZ
+mZ
+pe
+gw
+Yz
+Yz
+Yz
+Uk
 Yz
 Yz
 Yz
@@ -28404,7 +28544,44 @@ Yz
 Yz
 Yz
 Yz
-CL
+Yz
+Yz
+Uk
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Uk
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Uk
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Uk
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+pg
+fp
+mZ
 aa
 aa
 aa
@@ -28544,51 +28721,11 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
 mZ
 mZ
-mZ
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
+vN
+Ou
+gw
 Yz
 Yz
 Yz
@@ -28597,7 +28734,47 @@ Yz
 Yz
 Yz
 Yz
-pg
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+ur
+mZ
 mZ
 aa
 aa
@@ -28738,16 +28915,9 @@ Zu
 Zu
 Zu
 Zu
-Zu
 mZ
-mZ
-mZ
-pe
-gw
-Yz
-Yz
-Yz
-Uk
+OU
+pt
 Yz
 Yz
 Yz
@@ -28757,23 +28927,6 @@ Yz
 Yz
 Yz
 Yz
-Uk
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Uk
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Uk
 Yz
 Yz
 Yz
@@ -28782,7 +28935,30 @@ Yz
 Yz
 Yz
 Yz
-Uk
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
 Yz
 Yz
 Yz
@@ -28791,8 +28967,9 @@ Yz
 Yz
 Yz
 pg
-fp
+lJ
 mZ
+aa
 aa
 aa
 aa
@@ -28931,12 +29108,9 @@ Zu
 Zu
 Zu
 Zu
-Zu
 mZ
 mZ
-vN
-Ou
-gw
+dA
 Yz
 Yz
 Yz
@@ -28984,9 +29158,12 @@ Yz
 Yz
 Yz
 Yz
-ur
+pg
+YU
+Pg
 mZ
 mZ
+aa
 aa
 aa
 aa
@@ -29125,10 +29302,17 @@ Zu
 Zu
 Zu
 Zu
-Zu
 mZ
-OU
-pt
+pe
+gw
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+kR
 Yz
 Yz
 Yz
@@ -29138,6 +29322,23 @@ Yz
 Yz
 Yz
 Yz
+kR
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+kR
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+kR
 Yz
 Yz
 Yz
@@ -29146,40 +29347,16 @@ Yz
 Yz
 Yz
 Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
+kR
 Yz
 Yz
 Yz
 pg
-lJ
+fp
 mZ
+mZ
+mZ
+aa
 aa
 aa
 aa
@@ -29320,60 +29497,60 @@ Zu
 Zu
 Zu
 mZ
+gw
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
+Yz
 mZ
-dA
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-pg
-YU
-Pg
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+CL
+mZ
+CL
+CL
+CL
 mZ
 mZ
+mZ
+aa
+aa
+aa
 aa
 aa
 aa
@@ -29513,9 +29690,7 @@ Zu
 Zu
 Zu
 Zu
-mZ
-pe
-gw
+CL
 Yz
 Yz
 Yz
@@ -29523,50 +29698,52 @@ Yz
 Yz
 Yz
 Yz
-kR
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-kR
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-kR
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-kR
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-kR
-Yz
-Yz
-Yz
-pg
-fp
-mZ
-mZ
-mZ
+CL
+CL
+CL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -29707,58 +29884,58 @@ Zu
 Zu
 Zu
 Zu
-mZ
-gw
+CL
 Yz
 Yz
 Yz
 Yz
 Yz
 Yz
-Yz
-Yz
-mZ
 CL
 CL
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-CL
-mZ
-CL
-CL
-CL
-mZ
-mZ
-mZ
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -29908,10 +30085,10 @@ Yz
 Yz
 Yz
 Yz
-Yz
 CL
-CL
-CL
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -30095,15 +30272,15 @@ Zu
 Zu
 Zu
 Zu
+mZ
+XE
+Yz
+Yz
+Yz
+DQ
+mZ
 CL
-Yz
-Yz
-Yz
-Yz
-Yz
-Yz
-CL
-CL
+Zu
 Zu
 Zu
 Zu
@@ -30283,11 +30460,11 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
+SP
+SP
+SP
+SP
+SP
 Zu
 CL
 Yz
@@ -30295,8 +30472,8 @@ Yz
 Yz
 Yz
 Yz
-Yz
 CL
+Zu
 Zu
 Zu
 Zu
@@ -30477,20 +30654,20 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
+SP
+rD
+sm
+Lb
+SP
 Zu
 mZ
-XE
-Yz
-Yz
-Yz
-DQ
+tY
+YU
+YU
+YU
+wO
 mZ
-CL
+Zu
 Zu
 Zu
 Zu
@@ -30672,18 +30849,18 @@ Zu
 Zu
 Zu
 SP
-SP
-SP
-SP
+Wr
+FZ
+Tn
 SP
 Zu
-CL
-Yz
-Yz
-Yz
-Yz
-Yz
-CL
+mZ
+ts
+ts
+ts
+ts
+ts
+mZ
 Zu
 Zu
 Zu
@@ -30866,17 +31043,17 @@ Zu
 Zu
 Zu
 SP
-Ds
-jM
+SP
+SP
 pI
 SP
-Zu
-mZ
-tY
-YU
-YU
-YU
-wO
+kQ
+kQ
+oe
+mu
+mu
+mu
+wq
 mZ
 Zu
 Zu
@@ -31059,18 +31236,18 @@ Zu
 Zu
 Zu
 Zu
-SP
+kQ
 dZ
 KW
 Rr
-SP
-Zu
-mZ
-ts
-ts
-ts
-ts
-ts
+oK
+VA
+PX
+eL
+jz
+jz
+jz
+jz
 mZ
 Zu
 Zu
@@ -31253,17 +31430,17 @@ Zu
 Zu
 Zu
 Zu
-SP
-SP
-SP
-qN
-SP
 kQ
-kQ
-Cv
-Ou
-Ou
-Ou
+Ie
+WY
+gm
+gm
+kJ
+PX
+eL
+jz
+jz
+jz
 hL
 mZ
 Zu
@@ -31448,17 +31625,17 @@ Zu
 Zu
 Zu
 kQ
-Bi
-Ri
-oD
-Ug
+dZ
+gm
+gm
+gm
 bB
 PX
-dA
-Yz
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
+jz
 mZ
 Zu
 Zu
@@ -31642,17 +31819,17 @@ Zu
 Zu
 Zu
 kQ
-Ac
-Up
+kQ
 xi
 xi
-Fh
-PX
-dA
-Yz
-Yz
-Yz
-qw
+xi
+kQ
+kQ
+eG
+jz
+jz
+jz
+Mx
 mZ
 Zu
 Zu
@@ -31835,23 +32012,23 @@ Zu
 Zu
 Zu
 Zu
-kQ
-Bi
-xi
-xi
-xi
-Aj
-PX
-dA
-Yz
-Yz
-Yz
-Yz
+gt
+gt
+Js
+Js
+Js
+gt
+gt
+jz
+jz
+jz
+jz
+jz
 mZ
-Zu
-Zu
-Zu
-Zu
+yW
+yW
+yW
+yW
 Zu
 Zu
 sj
@@ -32030,17 +32207,17 @@ Zu
 Zu
 Zu
 gt
-gt
-Js
-Js
-Js
-gt
+Xf
+Qv
+Qv
+Qv
+Ff
 gt
 SH
-Yz
-Yz
-Yz
-DQ
+jz
+jz
+jz
+Mx
 mZ
 Zu
 Zu
@@ -32228,13 +32405,13 @@ Qv
 Qv
 Qv
 Qv
-XR
+Ea
 Np
-dA
-Yz
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
+jz
 mZ
 Zu
 Zu
@@ -32424,10 +32601,10 @@ Qv
 Qv
 Ea
 Np
-dA
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
 rQ
 mZ
 Zu
@@ -32618,11 +32795,11 @@ Qv
 Qv
 Ea
 Np
-dA
-Yz
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
+Mx
 mZ
 Zu
 Zu
@@ -32812,11 +32989,11 @@ Qv
 Qv
 Ea
 Np
-dA
-Yz
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
+jz
 mZ
 Zu
 Zu
@@ -33006,11 +33183,11 @@ Qv
 Qv
 Ea
 Np
-dA
-Yz
-Yz
-Yz
-Yz
+eL
+jz
+jz
+jz
+jz
 mZ
 Zu
 Zu
@@ -33194,17 +33371,17 @@ Zu
 Zu
 Zu
 gt
+Xf
+Qv
+Qv
+Qv
+Ft
 gt
-gt
-gt
-gt
-gt
-gt
-gw
-Xq
-kR
-dN
-Yz
+qF
+jz
+jz
+jz
+Mx
 mZ
 Zu
 Zu
@@ -33387,18 +33564,18 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-mZ
-mZ
-mZ
-mZ
-mZ
-mZ
+gt
+gt
+gt
+gt
+gt
+gt
+gt
+jz
+VQ
+jz
+qr
+jz
 mZ
 Zu
 Zu
@@ -33587,13 +33764,13 @@ Zu
 Zu
 Zu
 Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
+mZ
+mZ
+mZ
+mZ
+mZ
+mZ
+mZ
 Zu
 Zu
 Zu

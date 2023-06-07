@@ -79,7 +79,7 @@
 			door_y2 = uy - (make_walls ? 0 : 1)
 
 			light_x1 = ux + (make_walls ? 1 : 0)
-			light_y1 = uy + (make_walls ? 2 : 1)
+			light_y1 = uy + lift_size_y - (make_walls ? 1 : 0)
 			light_x2 = ux + lift_size_x - (make_walls ? 1 : 0)
 			light_y2 = uy + lift_size_y - (make_walls ? 1 : 0)
 
