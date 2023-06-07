@@ -772,12 +772,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_3)
-"axT" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "axV" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -909,7 +903,7 @@
 	name = "Port Fighter Entrance"
 	},
 /obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
 "aAg" = (
 /turf/simulated/wall,
@@ -1201,7 +1195,8 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "aJW" = (
 /obj/effect/floor_decal/borderfloor{
@@ -1509,6 +1504,12 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/lino,
 /area/crew_quarters/coffee_shop)
+"aTs" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "aTy" = (
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
@@ -2486,7 +2487,7 @@
 	pixel_x = -26;
 	pixel_y = -26
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "brw" = (
 /obj/structure/table/rack/shelf/steel,
@@ -2555,6 +2556,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
+"btx" = (
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "btA" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
@@ -2849,10 +2856,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"bCx" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "bCH" = (
 /obj/effect/mist,
 /turf/simulated/floor/water/deep/pool,
@@ -3463,7 +3466,10 @@
 "bYD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/reinforced/lythios43c,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "bZj" = (
 /obj/structure/bed/chair{
@@ -3540,7 +3546,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "ccW" = (
 /obj/machinery/light/small{
@@ -4876,7 +4882,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "cWj" = (
 /obj/structure/bed/chair/backed_grey{
@@ -4899,6 +4905,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/hallway/primary/surfacetwo)
+"cWw" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "cWA" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -4979,7 +4991,8 @@
 "cYC" = (
 /obj/machinery/light/no_nightshift,
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "daF" = (
 /obj/machinery/recharge_station,
@@ -5177,6 +5190,17 @@
 /obj/machinery/fitness/punching_bag/clown,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"djJ" = (
+/obj/structure/bed/chair/bay/shuttle{
+	dir = 8
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/hammerhead/cockpit)
 "djU" = (
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
@@ -5338,6 +5362,9 @@
 /obj/structure/medical_stand/anesthetic,
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/sleeper)
+"dpE" = (
+/turf/simulated/wall/r_wall,
+/area/turbolift/rhammerhead/hhbay)
 "dpV" = (
 /obj/machinery/disposal,
 /obj/machinery/light_switch{
@@ -5963,6 +5990,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"dFm" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "dFt" = (
 /turf/simulated/wall,
 /area/medical/surgeryprep)
@@ -6245,7 +6278,7 @@
 /obj/machinery/airlock_sensor/airlock_exterior/shuttle{
 	dir = 4;
 	frequency = 1380;
-	id_tag = "hammerhead_docker_exterior_sensor";
+	id_tag = "hammerhead_exterior_sensor";
 	master_tag = "hammerhead_docker";
 	pixel_y = 23
 	},
@@ -6681,6 +6714,18 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
+"ecx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "edb" = (
 /obj/structure/railing{
 	dir = 4
@@ -6980,6 +7025,12 @@
 /obj/structure/closet/l3closet/medical,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"eqc" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "eqt" = (
 /obj/structure/closet/secure_closet/guncabinet{
 	anchored = 1
@@ -7096,7 +7147,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "eyA" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -7275,6 +7326,13 @@
 /area/crew_quarters/sleep/Dorm_2)
 "eBF" = (
 /obj/machinery/shipsensors,
+/obj/machinery/light/no_nightshift,
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/item/gps/internal/base{
+	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
+	gps_tag = "BARGE";
+	name = "shuttle beacon"
+	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "eBG" = (
@@ -7321,7 +7379,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "eCq" = (
 /turf/simulated/floor/tiled/dark,
@@ -8267,7 +8325,8 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "feR" = (
 /obj/structure/frame{
@@ -8700,7 +8759,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 1
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "frc" = (
 /obj/effect/floor_decal/industrial/outline,
@@ -8863,7 +8922,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "fyb" = (
 /obj/structure/sign/warning/falling,
@@ -9065,7 +9124,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "fHU" = (
 /obj/structure/bed/chair/wood{
@@ -9131,6 +9193,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
+"fJu" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "fJx" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -9156,7 +9224,10 @@
 "fJG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/reinforced/lythios43c,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "fJJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9169,13 +9240,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "fJO" = (
 /obj/structure/table/rack/shelf,
@@ -9402,15 +9473,6 @@
 /obj/item/defib_kit/loaded,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
-"fQC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "fQE" = (
 /turf/simulated/floor/water/deep/pool,
 /area/crew_quarters/pool)
@@ -9742,12 +9804,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"gcI" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "gcL" = (
 /obj/machinery/organ_printer/flesh,
 /obj/effect/floor_decal/corner/paleblue{
@@ -10910,6 +10966,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"gHJ" = (
+/obj/machinery/mech_recharger,
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/floor/tiled/techmaint,
+/area/shuttle/hammerhead/general)
 "gIF" = (
 /obj/structure/girder,
 /turf/simulated/floor/plating,
@@ -11074,7 +11135,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "gQH" = (
 /obj/effect/floor_decal/spline/plain{
@@ -11184,6 +11245,15 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"gUL" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "gUY" = (
 /obj/structure/table/steel,
 /obj/item/tool/crowbar,
@@ -12115,6 +12185,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"hEb" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/maintenance/sec,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "hEi" = (
 /obj/effect/floor_decal/industrial/outline/blue,
 /obj/structure/table/rack/shelf/steel,
@@ -12185,6 +12263,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
+"hEU" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cmo_office"
+	},
+/turf/simulated/floor/plating,
+/area/turbolift/rhammerhead/hhbay)
 "hFu" = (
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/monotile,
@@ -12450,6 +12536,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/heads/hos)
+"hLh" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "hLw" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13397,11 +13489,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
+"ijJ" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Fuel Management";
+	req_one_access = list(1,38)
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/shuttle/hammerhead/general)
 "ijO" = (
 /obj/machinery/camera/network/security{
 	dir = 10
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "ijR" = (
 /obj/structure/table/steel,
@@ -13896,6 +13998,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"iFy" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "iFG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -14616,7 +14727,8 @@
 	},
 /obj/machinery/light/no_nightshift,
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "iZJ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15294,6 +15406,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "jxw" = (
@@ -15621,15 +15734,18 @@
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
 "jNS" = (
-/obj/machinery/door/airlock/voidcraft/vertical{
-	name = "Air Management";
-	req_one_access = list(1,38)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 8
+	},
+/obj/machinery/door/airlock/voidcraft/vertical{
+	name = "Air Management";
+	req_one_access = list(1,38)
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
@@ -16147,7 +16263,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "kbg" = (
 /obj/structure/cable/green{
@@ -17106,6 +17222,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
+"kAt" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "kAC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -17278,6 +17400,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
+"kHO" = (
+/turf/simulated/wall/r_wall,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "kIW" = (
 /obj/effect/floor_decal/borderfloorblack/corner{
 	alpha = 255
@@ -17292,7 +17417,7 @@
 	name = "Port Personnel Entrance"
 	},
 /obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
 "kKd" = (
 /obj/structure/railing{
@@ -17484,13 +17609,10 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "kRF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "kSb" = (
 /obj/structure/railing{
@@ -17732,7 +17854,7 @@
 /area/medical/surgery_hallway)
 "kXL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "kXN" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -18074,7 +18196,7 @@
 	name = "Starboard Fighter Entrance"
 	},
 /obj/machinery/atmospheric_field_generator/perma,
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
 "lhR" = (
 /obj/structure/cable/green{
@@ -18319,7 +18441,8 @@
 	pixel_y = 26
 	},
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "lrw" = (
 /obj/structure/cable/green{
@@ -19542,11 +19665,6 @@
 "mcs" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
-"mdm" = (
-/turf/simulated/shuttle/wall/voidcraft/no_join{
-	icon_state = "void9"
-	},
-/area/shuttle/hammerhead/general)
 "mea" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
@@ -19656,11 +19774,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/recreation_area)
-"mhq" = (
-/turf/simulated/shuttle/wall/voidcraft/red{
-	icon_state = "void6"
-	},
-/area/shuttle/hammerhead/cockpit)
 "mhS" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20188,6 +20301,19 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"mAS" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "mBU" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -20297,6 +20423,14 @@
 /obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"mDk" = (
+/obj/structure/cable/green{
+	icon_state = "32-4"
+	},
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/open,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDt" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20315,6 +20449,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"mDA" = (
+/obj/structure/window/reinforced/tinted/frosted,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mDD" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -21190,7 +21331,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/reinforced/lythios43c,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "ngX" = (
 /obj/effect/floor_decal/borderfloor{
@@ -21673,7 +21817,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "nxk" = (
 /obj/structure/cable/green{
@@ -21689,10 +21833,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
 "nxS" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/warning/corner,
+/obj/structure/catwalk,
+/obj/machinery/light/no_nightshift,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
 	id = "hammerfighter6";
@@ -21700,7 +21846,6 @@
 	pixel_x = -5;
 	pixel_y = -26
 	},
-/obj/machinery/light/no_nightshift,
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "nyq" = (
@@ -22317,6 +22462,12 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
+"nSi" = (
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 1
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "nSn" = (
 /obj/structure/table/steel,
 /obj/item/clothing/accessory/badge/holo,
@@ -22686,11 +22837,6 @@
 "ocv" = (
 /turf/simulated/floor/tiled/monotile,
 /area/assembly/robotics)
-"ocQ" = (
-/turf/simulated/shuttle/wall/voidcraft/red{
-	icon_state = "void5"
-	},
-/area/shuttle/hammerhead/cockpit)
 "odk" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -24467,6 +24613,12 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
+"pkX" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "plb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -25321,7 +25473,7 @@
 	id = "hammerheadpsb";
 	name = "Starboard Personnel Entrance"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/tiled/techmaint,
 /area/shuttle/hammerhead/general)
 "pQT" = (
 /obj/machinery/door/blast/shutters{
@@ -25637,7 +25789,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "qat" = (
 /obj/machinery/door/blast/regular{
@@ -25757,6 +25909,18 @@
 /obj/random/junk,
 /turf/simulated/floor/wood,
 /area/maintenance/security/upper)
+"qdY" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "qey" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -25953,7 +26117,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "qly" = (
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "qmd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -26236,6 +26400,9 @@
 /obj/structure/bed/chair/wheelchair,
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"qxg" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/turbolift/rhammerhead/hhbay)
 "qxp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26383,6 +26550,14 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"qCn" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cmo_office"
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/shuttle/hammerhead/cockpit)
 "qCM" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -27136,6 +27311,9 @@
 	pixel_x = -27;
 	pixel_y = 26
 	},
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "rdE" = (
@@ -27541,6 +27719,23 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
+"rrr" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/tiled/techmaint,
+/area/turbolift/rhammerhead/hhbay)
+"rrx" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "rrL" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -27586,7 +27781,7 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/green,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "rto" = (
 /obj/structure/bed/double/padded,
@@ -28154,7 +28349,7 @@
 /obj/machinery/light/no_nightshift{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "rNr" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -28851,6 +29046,10 @@
 /obj/effect/floor_decal/borderfloorblack,
 /turf/simulated/floor/tiled/dark,
 /area/security/lobby)
+"spg" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "spY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -28907,8 +29106,16 @@
 "sss" = (
 /obj/structure/handrail,
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
+"ssG" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/obj/machinery/light,
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "ssT" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light/small{
@@ -29020,7 +29227,7 @@
 /obj/machinery/camera/network/security{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "sxd" = (
 /obj/effect/floor_decal/rust,
@@ -29761,7 +29968,7 @@
 /area/crew_quarters/sleep/Dorm_4)
 "sZb" = (
 /obj/machinery/light/no_nightshift,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "sZf" = (
 /obj/machinery/door/blast/regular{
@@ -30124,7 +30331,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "tln" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -30669,12 +30876,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_primary_storage)
-"tDn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "tDr" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -31084,7 +31285,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "tVk" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -31405,6 +31606,10 @@
 /obj/structure/sign/signnew/danger,
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/outside2)
+"uht" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
+/turf/simulated/floor/reinforced,
+/area/security/hammerhead_bay)
 "uhx" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/clothing/shoes/magboots,
@@ -31672,6 +31877,12 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
+"utA" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "utK" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chemical_dispenser/full,
@@ -32120,6 +32331,15 @@
 "uLR" = (
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"uMb" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "uMD" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
 /obj/item/reagent_containers/glass/cooler_bottle,
@@ -32290,7 +32510,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "uRh" = (
 /obj/machinery/alarm{
@@ -33215,7 +33435,7 @@
 	pixel_x = -27;
 	pixel_y = 26
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "vnE" = (
 /obj/machinery/light/small,
@@ -33700,7 +33920,8 @@
 /area/rift/trade_shop/loading)
 "vDu" = (
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "vEJ" = (
 /obj/structure/cable/green{
@@ -33834,6 +34055,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
+/obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "vJe" = (
@@ -34034,7 +34256,7 @@
 /obj/machinery/camera/network/security{
 	dir = 8
 	},
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "vSe" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -34310,11 +34532,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/crew_quarters/pool/emergency_closet)
-"wcK" = (
-/turf/simulated/shuttle/wall/voidcraft/no_join{
-	icon_state = "void10"
-	},
-/area/shuttle/hammerhead/general)
 "wcZ" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/reinforced/lythios43c,
@@ -34824,7 +35041,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/reinforced/lythios43c,
+/turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
 "wux" = (
 /obj/structure/table/steel,
@@ -35390,15 +35607,6 @@
 /obj/item/extinguisher,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
-"wQl" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "wQw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -35748,10 +35956,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"xci" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "xco" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
@@ -35871,7 +36075,8 @@
 /obj/structure/handrail,
 /obj/structure/lattice,
 /obj/structure/lattice,
-/turf/simulated/shuttle/plating/carry,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
 "xfF" = (
 /obj/machinery/alarm/monitor/isolation{
@@ -35958,11 +36163,6 @@
 "xjH" = (
 /obj/machinery/computer/ship/sensors{
 	dir = 4
-	},
-/obj/item/gps/internal/base{
-	desc = "A tracking beacon embedded in the shuttle systems, to help explorers find where they landed.";
-	gps_tag = "SHUTTLE";
-	name = "shuttle beacon"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/cockpit)
@@ -36478,18 +36678,21 @@
 /turf/simulated/wall,
 /area/rnd/research/researchdivision)
 "xCl" = (
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
+	},
+/obj/effect/floor_decal/industrial/warning/corner{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/obj/machinery/light/no_nightshift{
+	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "hammerfighter3";
 	name = "Fighter Bay 3";
 	pixel_x = -6;
 	pixel_y = 26
-	},
-/obj/machinery/light/no_nightshift{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/general)
@@ -37292,18 +37495,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
-"xXS" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/security/hammerhead_bay)
 "xXV" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -37649,6 +37840,48 @@
 "yjG" = (
 /obj/structure/handrail{
 	dir = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter1";
+	name = "Fighter Bay 1";
+	pixel_x = 23;
+	pixel_y = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter2";
+	name = "Fighter Bay 2";
+	pixel_x = 32;
+	pixel_y = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter3";
+	name = "Fighter Bay 3";
+	pixel_x = 42;
+	pixel_y = 8
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter4";
+	name = "Fighter Bay 4";
+	pixel_x = 23;
+	pixel_y = -7
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter5";
+	name = "Fighter Bay 5";
+	pixel_x = 32;
+	pixel_y = -7
+	},
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "hammerfighter6";
+	name = "Fighter Bay 6";
+	pixel_x = 42;
+	pixel_y = -7
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/cockpit)
@@ -53116,7 +53349,7 @@ enB
 pBj
 kXA
 fqV
-mhq
+qly
 srt
 uuY
 ehg
@@ -53134,8 +53367,8 @@ sQt
 sQt
 ehg
 hhM
-srt
-ocQ
+qCn
+qly
 sZb
 kXA
 gkM
@@ -53310,7 +53543,7 @@ enB
 dVV
 kXA
 qly
-oOw
+qly
 oOw
 eXr
 yjG
@@ -53329,7 +53562,7 @@ sQt
 yjG
 hOS
 oOw
-oOw
+qly
 qly
 kXA
 wMk
@@ -53504,14 +53737,14 @@ enB
 enB
 kXA
 qly
-oOw
+qly
 oOw
 oOw
 oOw
 oOw
 ehg
 dbt
-ehg
+djJ
 sQt
 sQt
 xaM
@@ -53523,7 +53756,7 @@ oOw
 oOw
 oOw
 oOw
-oOw
+qly
 qly
 kXA
 dAE
@@ -53699,8 +53932,8 @@ enB
 kXA
 qly
 qly
-oOw
-oOw
+qly
+qly
 oOw
 oOw
 oOw
@@ -53715,8 +53948,8 @@ oOw
 oOw
 oOw
 oOw
-oOw
-oOw
+qly
+qly
 qly
 qly
 kXA
@@ -53885,18 +54118,18 @@ pBj
 pBj
 pBj
 pBj
-pBj
-enB
-enB
+kHO
+kHO
+kHO
 enB
 enB
 kXA
 qly
 qly
 qly
-oOw
-oOw
-oOw
+qly
+qly
+qly
 qly
 eBF
 oOw
@@ -53905,11 +54138,11 @@ lCY
 qUM
 oOw
 oOw
-sNY
 qly
-oOw
-oOw
-oOw
+qly
+qly
+qly
+qly
 qly
 qly
 qly
@@ -54079,12 +54312,12 @@ pBj
 pBj
 pBj
 pBj
-pBj
-enB
-enB
-enB
-pBj
-kXA
+kHO
+mDk
+kHO
+kHO
+kHO
+kHO
 fqV
 qly
 qly
@@ -54273,12 +54506,12 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-enB
-pBj
-kXA
+kHO
+btx
+gUL
+gUL
+ssG
+kHO
 swv
 qly
 qly
@@ -54467,16 +54700,16 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-enB
-enB
-pBj
-kXA
-qly
-qly
-qly
-qly
+kHO
+mDA
+uMb
+utA
+btx
+hEb
+hLh
+hLh
+hLh
+pkX
 qly
 qly
 pQK
@@ -54661,16 +54894,16 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-dVV
-enB
-nFd
-kXA
-qly
-qly
-qly
-qly
+kHO
+dpE
+dpE
+dpE
+dpE
+dpE
+hEU
+dpE
+aTs
+eqc
 qly
 iZI
 ilr
@@ -54856,15 +55089,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-enB
-enB
-kXA
-qly
-qly
-qly
-qly
+dpE
+qxg
+qxg
+qxg
+qxg
+qxg
+rrr
+cWw
+eqc
 qly
 vDu
 oPv
@@ -55050,15 +55283,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-enB
-enB
-kXA
-qly
-qly
-qly
-qly
+dpE
+qxg
+qxg
+qxg
+qxg
+qxg
+rrr
+cWw
+eqc
 qly
 vDu
 oPv
@@ -55244,15 +55477,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-nFd
-enB
-kXA
-fqV
-qly
-qly
-qly
+dpE
+qxg
+qxg
+qxg
+qxg
+qxg
+rrr
+cWw
+eqc
 qly
 feI
 ilr
@@ -55438,32 +55671,32 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-dVV
-enB
-kXA
-qly
-tDn
-gcI
-qly
+dpE
+qxg
+qxg
+qxg
+qxg
+qxg
+rrr
+cWw
+eqc
 qly
 vDu
 vVo
 fSv
-jCg
+gHJ
 hsv
 lKw
 uSS
 lXc
 grT
-tCN
+fSv
 gbm
 vDu
 qly
 qly
-bCx
-wQl
+qly
+cVK
 kaZ
 kXA
 kXA
@@ -55632,15 +55865,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-kXA
-qly
-fQC
-axT
-qly
+dpE
+qxg
+qxg
+qxg
+qxg
+qxg
+rrr
+cWw
+eqc
 qly
 vDu
 vVo
@@ -55656,8 +55889,8 @@ gbm
 vDu
 qly
 qly
-xci
-xXS
+qly
+cVK
 tVi
 kXA
 lEq
@@ -55826,15 +56059,15 @@ pBj
 pBj
 pBj
 pBj
-pBj
-pBj
-pBj
-pBj
-kXA
-qly
-kRF
-qly
-qly
+dpE
+dpE
+dpE
+dpE
+dpE
+hEU
+dpE
+nSi
+eqc
 qly
 feI
 ilr
@@ -56026,20 +56259,20 @@ pBj
 pBj
 kXA
 qly
-kRF
 qly
 qly
+eqc
 qly
 vDu
 kWx
 fSv
-jCg
+gHJ
 hsv
 lKw
 uSS
 lXc
 grT
-tCN
+fSv
 tSM
 vDu
 qly
@@ -56220,9 +56453,9 @@ pBj
 pBj
 kXA
 swv
-kRF
 qly
 qly
+eqc
 qly
 vDu
 kWx
@@ -56415,8 +56648,8 @@ pBj
 kXA
 fqV
 kRF
-qly
-qly
+hLh
+kAt
 qly
 cYC
 ilr
@@ -56608,8 +56841,8 @@ pBj
 pBj
 kXA
 qly
-kRF
-qly
+iFy
+dFm
 qly
 qly
 bru
@@ -56626,8 +56859,8 @@ azT
 vnt
 qly
 qly
-qly
-uQM
+uht
+rrx
 qly
 kXA
 pCP
@@ -56802,13 +57035,13 @@ pBj
 pBj
 kXA
 qly
-kRF
-qly
+qdY
+fJu
 qly
 qly
 qly
 lhE
-pxC
+jug
 pxC
 jTU
 pxC
@@ -56820,8 +57053,8 @@ azT
 qly
 qly
 qly
-qly
-uQM
+spg
+mAS
 cbV
 kXA
 pCP
@@ -56996,13 +57229,13 @@ pBj
 pBj
 kXA
 qly
-kRF
+ecx
 qly
 qly
 ilr
 ilr
 ilr
-bap
+ijJ
 bap
 ilr
 ayE
@@ -57190,7 +57423,7 @@ pBj
 pBj
 kXA
 qly
-kRF
+ecx
 qly
 ilr
 ilr
@@ -57384,7 +57617,7 @@ pBj
 pBj
 kXA
 qly
-kRF
+ecx
 qly
 ilr
 ilr
@@ -57578,7 +57811,7 @@ pBj
 pBj
 kXA
 fqV
-kRF
+ecx
 ilr
 ilr
 ilr
@@ -57772,7 +58005,7 @@ pBj
 pBj
 kXA
 swv
-kRF
+ecx
 ilr
 ilr
 iZv
@@ -57966,9 +58199,9 @@ pBj
 pBj
 kXA
 qly
-kRF
-wcK
-qly
+ecx
+ilr
+ilr
 iZv
 iZv
 ilr
@@ -57983,8 +58216,8 @@ iZv
 ilr
 iZv
 iZv
-qly
-mdm
+ilr
+ilr
 uQM
 qly
 kXA

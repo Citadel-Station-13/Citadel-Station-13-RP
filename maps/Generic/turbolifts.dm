@@ -1,7 +1,7 @@
 /obj/turbolift_map_holder/rift
 	name = "Atlas Lift"
 	depth = 5
-	lift_size_x = 2
+	lift_size_x = 2 //Addative to source tile. 3x3 lifts would be 2x2 here because we need to not include the source tile.
 	lift_size_y = 2
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
@@ -14,8 +14,22 @@
 		/area/turbolift/rsurface/level3
 		)
 
+/obj/turbolift_map_holder/rift_fighterbay
+	name = "Hammerhead Lift"
+	depth = 3
+	lift_size_x = 4 //Addative to source tile. 3x3 lifts would be 2x2 here because we need to not include the source tile.
+	lift_size_y = 4
+	icon = 'icons/obj/turbolift_preview_5x5.dmi'
+	wall_type = null // Don't make walls
+
+	areas_to_use = list(
+		/area/turbolift/rhammerhead/underground,
+		/area/turbolift/rhammerhead/midpoint,
+		/area/turbolift/rhammerhead/hhbay,
+		)
+
 /obj/turbolift_map_holder/rift_mining
-	name = "Atlas Minging Lift"
+	name = "Atlas Mining Lift"
 	depth = 4
 	lift_size_x = 2
 	lift_size_y = 1
@@ -30,7 +44,7 @@
 		)
 
 /obj/turbolift_map_holder/rift_west_base
-	name = "Atlas Minging Lift"
+	name = "Atlas Mining Lift"
 	dir = NORTH
 	depth = 4
 	lift_size_x = 3
