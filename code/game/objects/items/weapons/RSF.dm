@@ -118,32 +118,32 @@ RSF
 	playsound(src, 'sound/machines/click.ogg', 10, 1)
 	var/used_energy = 0
 	var/obj/product
-	var/turf/target = get_turf(target)
+	var/turf/target_turf = get_turf(target)
 
 	switch(mode)
 		if(1)
-			product = new /obj/item/clothing/mask/smokable/cigarette(target)
+			product = new /obj/item/clothing/mask/smokable/cigarette(target_turf)
 			used_energy = 10
 		if(2)
-			product = new glasstype(target)
+			product = new glasstype(target_turf)
 			used_energy = 50
 		if(3)
-			product = new /obj/item/reagent_containers/food/drinks/glass2/shot(target)
+			product = new /obj/item/reagent_containers/food/drinks/glass2/shot(target_turf)
 			used_energy = 25
 		if(4)
-			product = new /obj/item/reagent_containers/food/drinks/glass2/wine(target)
+			product = new /obj/item/reagent_containers/food/drinks/glass2/wine(target_turf)
 			used_energy = 25
 		if(5)
-			product = new /obj/item/paper(target)
+			product = new /obj/item/paper(target_turf)
 			used_energy = 10
 		if(6)
-			product = new /obj/item/pen(target)
+			product = new /obj/item/pen(target_turf)
 			used_energy = 50
 		if(7)
-			product = new /obj/item/storage/pill_bottle/dice(target)
+			product = new /obj/item/storage/pill_bottle/dice(target_turf)
 			used_energy = 200
 		if(8)
-			product = new /obj/random/plushie(target) //dear god if this gets spammed i will commit die
+			product = new /obj/random/plushie(target_turf) //dear god if this gets spammed i will commit die
 			used_energy = 1000
 
 	to_chat(user,"<span class='notice'>Dispensing [product ? product : "product"]...</span>")
