@@ -114,6 +114,10 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/// Bandaid around a problem.
 	var/last_spark = 0
 
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
+
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
 	var/icon/filling_overlay
