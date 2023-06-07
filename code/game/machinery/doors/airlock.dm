@@ -43,10 +43,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	autoclose = 1
 	normalspeed = 1
 
-	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
-	smoothing_flags = SMOOTH_CUSTOM
-	canSmoothWith = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
-
 	/**
 	 * If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 	 * If 1, AI control is disabled until the AI hacks back in and disables the lock.
