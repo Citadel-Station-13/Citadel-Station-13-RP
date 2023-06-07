@@ -51,7 +51,7 @@
 	#warn impl
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
-	#warn impl
+w	_load_map_impl(instance)
 
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, recursing = FALSE)
 	#warn impl
@@ -95,5 +95,3 @@
 	// load
 	load_map(instance)
 	return TRUE
-
-#warn impl all
