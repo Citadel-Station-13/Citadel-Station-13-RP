@@ -1,22 +1,3 @@
-
-GLOBAL_DATUM_INIT(using_map, /datum/map/station, new USING_MAP_DATUM)
-
-var/list/all_maps = list()
-
-/hook/startup/proc/initialise_map_list()
-	for(var/type in typesof(/datum/map/station) - /datum/map/station)
-		var/datum/map/station/M
-		if(type == LEGACY_MAP_DATUM.type)
-			M = LEGACY_MAP_DATUM
-			M.setup_map()
-		else
-			M = new type
-		if(!M.path)
-			log_debug(SPAN_DEBUGERROR("Map '[M]' does not have a defined path, not adding to map list!"))
-		else
-			all_maps[M.path] = M
-	return 1
-
 /**
  * maps
  * clusters of zlevels, basically.
@@ -203,6 +184,8 @@ var/list/all_maps = list()
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
 
+	var/list/empty_levels = list()
+
 /datum/map/station/New()
 	..()
 	if(!map_levels)
@@ -253,17 +236,13 @@ var/list/all_maps = list()
 	return 0
 
 // By default transition randomly to another zlevel
-/datum/map/station/proc/get_transit_zlevel(var/current_z_level)
-	var/list/candidates = LEGACY_MAP_DATUM.accessible_z_levels.Copy()
-	candidates.Remove(num2text(current_z_level))
-
-	if(!candidates.len)
-		return current_z_level
-	return text2num(pickweight(candidates))
+/datum/map/station/proc/get_transit_zlevel(current_z_level)
+	. = SSmapping.crosslinked_levels() - current_z_level
+	return SAFEPICK(.)
 
 /datum/map/station/proc/get_empty_zlevel()
 	if(empty_levels == null)
-		var/allocated = SSmapping.allocate_zlevel()
+		var/allocated = SSmapping.allocate_level()
 		empty_levels = list(allocated)
 		if(islist(player_levels))
 			player_levels |= allocated

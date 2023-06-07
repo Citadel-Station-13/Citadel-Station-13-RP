@@ -57,8 +57,8 @@
 	if (level_or_path.holomap_offset_x < 0)
 		level_or_path.holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
 	// Assign them to the map lists
-	LIST_NUMERIC_SET(loaded_station.level_or_path.holomap_offset_x, z_index, level_or_path.holomap_offset_x)
-	LIST_NUMERIC_SET(loaded_station.level_or_path.holomap_offset_y, z_index, level_or_path.holomap_offset_y)
+	LIST_NUMERIC_SET(loaded_station.holomap_offset_x, z_index, level_or_path.holomap_offset_x)
+	LIST_NUMERIC_SET(loaded_station.holomap_offset_y, z_index, level_or_path.holomap_offset_y)
 	LIST_NUMERIC_SET(loaded_station.holomap_legend_x, z_index, level_or_path.holomap_legend_x)
 	LIST_NUMERIC_SET(loaded_station.holomap_legend_y, z_index, level_or_path.holomap_legend_y)
 	//! END

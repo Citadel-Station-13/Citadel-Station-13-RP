@@ -27,8 +27,13 @@
 	// For ruins
 	var/fixed_orientation = FALSE
 
-	/// Zlevel traits
-	var/list/ztraits
+	//* loading as its own level
+	/// traits to have if loaded as standalone level
+	var/list/level_traits
+	/// attributes to have if loaded as standalone level
+	var/list/level_attributes
+	/// id to have if loaded as standalone level
+	var/level_id
 
 /datum/map_template/New(path = null, rename = null)
 	if(path)
