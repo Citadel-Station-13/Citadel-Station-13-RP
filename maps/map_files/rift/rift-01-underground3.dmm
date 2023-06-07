@@ -709,7 +709,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "Qt" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "QE" = (

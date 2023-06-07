@@ -240,7 +240,7 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/emt/cockpit)
 "aaN" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/kitchen)
 "aaO" = (
@@ -738,11 +738,6 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "acd" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/window/reinforced/polarized/full{
-	id = "pathfinder_office"
-	},
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "ace" = (
@@ -808,7 +803,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "ack" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/meeting)
 "acm" = (
@@ -986,11 +981,8 @@
 /turf/simulated/floor/tiled,
 /area/hydroponics)
 "acK" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	icon_state = "shutter0";
@@ -1326,7 +1318,6 @@
 /turf/simulated/floor/plating,
 /area/exploration)
 "adG" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/shutters{
 	density = 0;
@@ -1337,9 +1328,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "adH" = (
@@ -1746,11 +1735,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/bridge)
 "aeA" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -1762,6 +1746,9 @@
 /obj/structure/cable/green,
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hop_office"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
@@ -2039,7 +2026,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "afu" = (
@@ -2504,7 +2491,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "agC" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/cockpit)
 "agD" = (
@@ -3713,7 +3700,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/exploration)
 "ajB" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "ajC" = (
@@ -4164,7 +4151,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "akw" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "akx" = (
@@ -4967,7 +4954,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
 "amp" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/general)
 "amq" = (
@@ -5140,7 +5127,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "amO" = (
@@ -5291,7 +5278,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
 "anh" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "ani" = (
@@ -5589,7 +5576,7 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "anV" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "anW" = (
@@ -5896,7 +5883,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "aoL" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/emt/general)
 "aoM" = (
@@ -6933,7 +6920,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "ars" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
 "art" = (
@@ -7135,9 +7122,7 @@
 "arQ" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "command_bunker"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -7616,7 +7601,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/barrestroom)
 "atc" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "atd" = (
@@ -8342,7 +8327,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "auN" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/courser_dock)
 "auP" = (
@@ -8621,7 +8606,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "avz" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
 "avA" = (
@@ -9644,7 +9629,7 @@
 	name = "Shuttle Blast Doors";
 	opacity = 0
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "axR" = (
@@ -9921,7 +9906,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/shuttle/excursion/cargo)
 "ayw" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway2)
 "ayx" = (
@@ -10720,7 +10705,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
 "aAM" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/teleporter/departing)
 "aAN" = (
@@ -11113,7 +11098,7 @@
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
 "aBP" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
 "aBQ" = (
@@ -11218,7 +11203,7 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "aCc" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cargo)
 "aCd" = (
@@ -11598,7 +11583,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aDe" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/stairwell/primary/surfacethree)
 "aDf" = (
@@ -11880,7 +11865,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aEc" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "aEd" = (
@@ -11922,7 +11907,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/ladder{
@@ -12010,7 +11995,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aEu" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/docking_hallway)
 "aEv" = (
@@ -13700,7 +13685,7 @@
 "aIL" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -14028,7 +14013,7 @@
 /area/hydroponics)
 "aJy" = (
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -14342,9 +14327,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/cockpit)
 "aKf" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
 	id = "botany_hallway"
 	},
 /turf/simulated/floor/plating,
@@ -14650,7 +14633,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aKY" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "aKZ" = (
@@ -14833,7 +14816,7 @@
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
 "aLy" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 2;
@@ -15012,11 +14995,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aLV" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "meeting_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge/meeting_room)
 "aLX" = (
@@ -16139,11 +16119,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "aOL" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 2;
@@ -16213,7 +16190,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass/hidden{
@@ -16256,7 +16233,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "aOV" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/general)
 "aOW" = (
@@ -16469,7 +16446,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/meeting_room)
 "aPE" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aPF" = (
@@ -16490,7 +16467,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge)
 "aPJ" = (
@@ -16556,11 +16533,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
 "aPP" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 4;
@@ -17785,7 +17759,7 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
 "aSL" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/civvie/cockpit)
 "aSN" = (
@@ -18155,7 +18129,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "aTP" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside3)
 "aTQ" = (
@@ -19489,11 +19463,8 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "aXq" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "meeting_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/bridge/bridge_hallway)
 "aXr" = (
@@ -21092,7 +21063,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "dvT" = (
@@ -21425,11 +21396,8 @@
 /turf/simulated/open,
 /area/rnd/telescience_lab/chamber)
 "etC" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "bridge_tint"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/blueshield)
 "evR" = (
@@ -21455,11 +21423,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "ewK" = (
-/obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -21474,7 +21439,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "exb" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "exW" = (
@@ -21566,7 +21531,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "eDa" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "eEa" = (
@@ -22441,11 +22406,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "hjM" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "hop_office"
-	},
 /obj/machinery/door/blast/shutters{
 	density = 0;
 	dir = 8;
@@ -22460,13 +22420,16 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hop_office"
+	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/heads/hop)
 "hrU" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/shuttle/emt/general)
 "hsD" = (
@@ -23091,7 +23054,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "jDU" = (
@@ -24026,6 +23989,23 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
+"mIa" = (
+/obj/machinery/door/blast/shutters{
+	density = 0;
+	dir = 8;
+	icon_state = "shutter0";
+	id = "hop_office_shutters";
+	name = "HoP Office Shutters";
+	opacity = 0
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks{
+	id = "hop_office"
+	},
+/turf/simulated/floor/plating,
+/area/crew_quarters/heads/hop)
 "mID" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -24165,7 +24145,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "naw" = (
@@ -24592,7 +24572,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "owM" = (
@@ -24861,7 +24841,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel,
 /obj/machinery/atmospherics/pipe/simple/visible/aux,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
@@ -25857,11 +25837,11 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "tDF" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "tFR" = (
@@ -25951,7 +25931,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/checkpoint2)
 "tVG" = (
@@ -27194,7 +27174,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/locker/laundry_arrival)
 "xtN" = (
@@ -41543,7 +41523,7 @@ apI
 aaQ
 aWg
 ukW
-aXu
+aKf
 jLq
 aKv
 aeO
@@ -45016,7 +44996,7 @@ tVG
 aEu
 atK
 aPg
-ewK
+mIa
 aam
 hjM
 aeA

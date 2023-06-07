@@ -16,16 +16,13 @@
 	icon = 'icons/obj/doors/hazard/door.dmi'
 	var/panel_file = 'icons/obj/doors/hazard/panel.dmi'
 	var/welded_file = 'icons/obj/doors/hazard/welded.dmi'
-	var/closed_plane = OBJ_PLANE
-	var/open_plane = OVER_OPENSPACE_PLANE
-	plane = OVER_OPENSPACE_PLANE
 	icon_state = "open"
 	req_one_access = list(ACCESS_COMMAND_EVA)	//ACCESS_ENGINEERING_ATMOS, ACCESS_ENGINEERING_ENGINE)
 	opacity = 0
 	density = 0
 	layer = DOOR_OPEN_LAYER - 0.01
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
-	closed_layer = DOOR_CLOSED_LAYER + 0.01 // Just above doors when closed
+	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
 
 
 	//These are frequenly used with windows, so make sure zones can pass.
@@ -411,7 +408,6 @@
 
 /obj/machinery/door/firedoor/close()
 	latetoggle()
-	plane = closed_plane
 	return ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
@@ -430,7 +426,6 @@
 			log_admin("[usr]([usr.ckey]) has forced open an emergency shutter.")
 			message_admins("[usr]([usr.ckey]) has forced open an emergency shutter.")
 	latetoggle()
-	plane = open_plane
 	return ..()
 
 /obj/machinery/door/firedoor/do_animate(animation)

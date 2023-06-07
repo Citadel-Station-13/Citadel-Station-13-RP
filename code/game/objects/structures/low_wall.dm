@@ -1,3 +1,14 @@
+GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/machinery/door/airlock,
+	/obj/structure/grille
+	))
+
 /obj/structure/wall_frame
 	name = "low wall"
 	desc = "A low wall, with space to mount windows or grilles on top of it."
@@ -74,8 +85,8 @@
 	smoothed_stripe.color = stripe_color || const_material.icon_colour
 	overlays += smoothed_stripe
 
-	if(!airlock_typecache)
-		airlock_typecache = typecacheof(list(/obj/machinery/door/airlock))
+	if(!wallframe_typecache)
+		wallframe_typecache = typecacheof(list(/obj/machinery/door/airlock))
 	var/neighbor_stripe = NONE
 	for(var/cardinal in GLOB.cardinal)
 		var/turf/step_turf = get_step(src, cardinal)
@@ -85,12 +96,12 @@
 		if(!can_area_smooth(step_turf))
 			continue
 		for(var/atom/movable/movable_thing as anything in step_turf)
-			if(airlock_typecache[movable_thing.type])
+			if(wallframe_typecache[movable_thing.type])
 				neighbor_stripe ^= cardinal
 				break
 
 	if(neighbor_stripe)
-		var/image/neighb_stripe_overlay = new ('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]")
+		var/image/neighb_stripe_overlay = new ('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)
 		neighb_stripe_overlay.appearance_flags = RESET_COLOR
 		neighb_stripe_overlay.color = stripe_color || const_material.icon_colour
 		overlays += neighb_stripe_overlay

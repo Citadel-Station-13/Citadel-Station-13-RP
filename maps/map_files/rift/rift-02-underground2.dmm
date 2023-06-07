@@ -1022,7 +1022,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/structure/bed/padded,
@@ -1052,7 +1052,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/structure/bed/padded,
@@ -1060,7 +1060,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "cX" = (
@@ -1253,7 +1253,7 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/structure/toilet,
@@ -1401,7 +1401,7 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1798,10 +1798,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "eW" = (
-/obj/structure/window/reinforced/polarized/full{
-	id = "ce_office"
-	},
-/obj/structure/grille,
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "eX" = (
@@ -2425,7 +2422,7 @@
 /area/rnd/secure_storage/lower)
 "gO" = (
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/techfloor{
@@ -2583,7 +2580,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "hk" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
 "hm" = (
@@ -3398,7 +3395,7 @@
 	dir = 5
 	},
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3959,7 +3956,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "kZ" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "lb" = (
@@ -4913,7 +4910,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/guestpass{
-	dir = 3;
+	dir = 2;
 	pixel_y = 26
 	},
 /obj/structure/disposalpipe/segment{
@@ -6599,7 +6596,7 @@
 "sv" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -8598,7 +8595,7 @@
 /turf/simulated/wall,
 /area/chapel/chapel_morgue)
 "Ax" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/secure_storage/lower)
 "Ay" = (
@@ -9023,7 +9020,7 @@
 "Ci" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/machinery/camera/network/engineering{
@@ -9656,7 +9653,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "EP" = (
@@ -10021,7 +10018,7 @@
 "Gm" = (
 /obj/machinery/power/emitter,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/plating,
@@ -10908,7 +10905,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "JW" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "JZ" = (
@@ -12145,7 +12142,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "ON" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "OO" = (
@@ -12411,7 +12408,7 @@
 "PO" = (
 /obj/structure/bed/chair/bay/chair/padded/yellow,
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -13026,9 +13023,7 @@
 "SH" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "chapel_office"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/chapel/office)
 "SK" = (
@@ -13525,7 +13520,7 @@
 /area/maintenance/research/xenobio)
 "UQ" = (
 /obj/machinery/firealarm{
-	dir = 3;
+	dir = 2;
 	pixel_y = 24
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -13865,7 +13860,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/foyer)
 "Wk" = (
@@ -14526,7 +14521,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YL" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "YM" = (
@@ -14729,9 +14724,7 @@
 "ZC" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "chapel_hall"
-	},
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /turf/simulated/floor/plating,
 /area/chapel/main)
 "ZE" = (
