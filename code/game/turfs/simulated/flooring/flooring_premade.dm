@@ -77,6 +77,8 @@
 	icon_state = "wood"
 	initial_flooring = /singleton/flooring/wood
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood)
+
 /turf/simulated/floor/wood/broken
 	icon_state = "broken0" // This gets changed when spawned.
 
@@ -89,6 +91,8 @@
 	icon = 'icons/turf/flooring/wood.dmi'
 	icon_state = "sifwood"
 	initial_flooring = /singleton/flooring/wood/sif
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/wood/sif)
 
 /turf/simulated/floor/wood/sif/broken
 	icon_state = "sifwood_broken0" // This gets changed when spawned.
@@ -395,6 +399,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 	icon_state = "plasteel"
 	initial_flooring = /singleton/flooring/plasteel
 
+CREATE_STANDARD_TURFS(/turf/simulated/floor/plasteel)
+
 /turf/simulated/floor/durasteel
 	name = "durasteel"
 	icon = 'icons/turf/flooring/misc.dmi'
@@ -418,6 +424,8 @@ CREATE_STANDARD_TURFS(/turf/simulated/floor/tiled/monotile)
 	icon = 'icons/turf/flooring/misc.dmi'
 	icon_state = "phoron"
 	initial_flooring = /singleton/flooring/phoron
+
+CREATE_STANDARD_TURFS(/turf/simulated/floor/phoron)
 
 /turf/simulated/floor/uranium
 	name = "uranium"

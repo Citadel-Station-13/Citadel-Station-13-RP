@@ -47,22 +47,27 @@
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral)
+
 /turf/simulated/mineral/rich
 	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
-
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/rich)
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen
 	ignore_oregen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_oregen)
 /turf/simulated/mineral/floor/ignore_oregen
 	ignore_oregen = TRUE
 
 /turf/simulated/mineral/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
+CREATE_STANDARD_TURFS(/turf/simulated/mineral/floor/ignore_cavegen)
 /turf/simulated/mineral/floor/ignore_cavegen/has_air
 	initial_gas_mix = GAS_STRING_STP
 
