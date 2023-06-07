@@ -52,7 +52,6 @@
 	#warn below
 
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
-	var/transit_chance = 0	// Percentile chance this z will be chosen for map-edge space transit.
 	//! legacy: what planet to make/use
 	var/planet_path
 	#warn hook planet_path
@@ -166,6 +165,7 @@
 		if(WEST)
 		if(UP)
 		if(DOWN)
+	#warn impl
 
 /**
  * get level datum in dir
@@ -202,44 +202,6 @@
  */
 /datum/map_level/proc/allow_deallocate()
 	return TRUE
-
-#warn all
-
-// Default constructor applies itself to the pae≈rent map datum
-/datum/map_level/New(var/datum/map/station/map, _z)
-	if(_z)
-		src.z = _z
-	if(!z)
-		return
-	map.zlevels["[z]"] = src
-	if(flags & MAP_LEVEL_STATION) map.station_levels |= z
-	if(flags & MAP_LEVEL_ADMIN) map.admin_levels |= z
-	if(flags & MAP_LEVEL_CONTACT) map.contact_levels |= z
-	if(flags & MAP_LEVEL_PLAYER) map.player_levels |= z
-	if(flags & MAP_LEVEL_SEALED) map.sealed_levels |= z
-	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels |= z
-	if(flags & MAP_LEVEL_EMPTY)
-		if(!map.empty_levels) map.empty_levels = list()
-		map.empty_levels |= z
-	if(flags & MAP_LEVEL_CONSOLES)
-		if (!map.map_levels)
-			map.map_levels = list()
-		map.map_levels |= z
-	if(base_turf)
-		map.base_turf_by_z["[z]"] = base_turf
-	if(transit_chance)
-		map.accessible_z_levels["[z]"] = transit_chance
-	// Holomaps
-	// Auto-center the map if needed (Guess based on maxx/maxy)
-	if (holomap_offset_x < 0)
-		holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
-	if (holomap_offset_x < 0)
-		holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
-	// Assign them to the map lists
-	LIST_NUMERIC_SET(map.holomap_offset_x, z, holomap_offset_x)
-	LIST_NUMERIC_SET(map.holomap_offset_y, z, holomap_offset_y)
-	LIST_NUMERIC_SET(map.holomap_legend_x, z, holomap_legend_x)
-	LIST_NUMERIC_SET(map.holomap_legend_y, z, holomap_legend_y)
 
 /datum/map_level/Destroy(var/force)
 	stack_trace("Attempt to delete a map_level instance [log_info_line(src)]")

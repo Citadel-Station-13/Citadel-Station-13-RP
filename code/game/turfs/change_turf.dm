@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			if(!ispath(path))
 				path = text2path(path)
 				if (!ispath(path))
-					warning("Z-level [z] has invalid baseturf '[SSmapping.level_trait(z, ZTRAIT_BASETURF)]'")
+					warning("Z-level [z] has invalid baseturf '[SSmapping.level_baseturf(z)]'")
 					path = /turf/space
 			if(path == /turf/space)		// no space/basic check, if you use space/basic in a map honestly get bent
 				if(istype(GetBelow(src), /turf/simulated))

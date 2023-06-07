@@ -28,34 +28,6 @@
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
 
-	admin_levels = list()
-	sealed_levels = list()
-	empty_levels = null
-	station_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
-		Z_LEVEL_UNDERGROUND,
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH)
-	contact_levels = list(Z_LEVEL_UNDERGROUND_DEEP,
-		Z_LEVEL_UNDERGROUND,
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_WEST_BASE,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_CAVERN,
-		Z_LEVEL_WEST_PLAIN)
-	player_levels = list(Z_LEVEL_UNDERGROUND_FLOOR,
-		Z_LEVEL_UNDERGROUND_DEEP,
-		Z_LEVEL_UNDERGROUND,
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_WEST_BASE,
-		Z_LEVEL_WEST_PLAIN,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_CAVERN)
-
 	holomap_smoosh = list(list(
 		Z_LEVEL_UNDERGROUND_DEEP,
 		Z_LEVEL_UNDERGROUND,
@@ -176,7 +148,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
 
@@ -196,7 +168,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
@@ -217,7 +189,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low
@@ -238,7 +210,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
 	transit_chance = 100
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_shallow
@@ -260,7 +232,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/surface_low
 	link_above = /datum/map_level/rift/station/surface_high
@@ -281,7 +253,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/surface_mid
 
@@ -393,4 +365,4 @@
 	display_id = "atlas-relay"
 	display_name = "NSB Atlas Orbital Relay"
 	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT

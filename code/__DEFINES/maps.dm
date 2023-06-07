@@ -9,8 +9,6 @@
 #define MAP_LEVEL_PLAYER		0x008
 /// Z-levels that don't allow random transit at edge
 #define MAP_LEVEL_SEALED		0x010
-/// Empty Z-levels that may be used for various things (currently used by bluespace jump)
-#define MAP_LEVEL_EMPTY			0x020
 /// Z-levels available to various consoles, such as the crew monitor (when that gets coded in). Defaults to station_levels if unset.
 #define MAP_LEVEL_CONSOLES		0x040
 // Misc map defines.

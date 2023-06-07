@@ -118,7 +118,6 @@ var/list/all_maps = list()
 	var/list/player_levels = list()  // Z-levels a character can typically reach
 	var/list/sealed_levels = list()  // Z-levels that don't allow random transit at edge
 	var/list/xenoarch_exempt_levels = list()	//Z-levels exempt from xenoarch finds and digsites spawning.
-	var/list/empty_levels = null     // Empty Z-levels that may be used for various things (currently used by bluespace jump)
 	// End Static Lists
 
 	// Z-levels available to various consoles, such as the crew monitor. Defaults to station_levels if unset.
@@ -127,8 +126,6 @@ var/list/all_maps = list()
 	// E-mail TLDs to use for NTnet modular computer e-mail addresses
 	var/list/usable_email_tlds = list("freemail.nt")
 
-	// This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
-	var/list/accessible_z_levels = list()
 
 	//List of additional z-levels to load above the existing .dmm file z-levels using the maploader. Must be map template >>> NAMES <<<.
 	var/list/lateload_z_levels = list()
