@@ -22,8 +22,8 @@
 	color = COLOR_ASTEROID_ROCK
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS)
-	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
+	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS+SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
