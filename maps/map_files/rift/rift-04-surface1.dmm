@@ -15380,6 +15380,11 @@
 "jPz" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
+"jPD" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lowmedbaymaint)
 "jPV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -59331,8 +59336,8 @@ hgE
 hgE
 hgE
 hgE
+hgE
 gTC
-pOR
 pOR
 buH
 tdI
@@ -59525,9 +59530,9 @@ hgE
 hgE
 hgE
 hgE
+hgE
 gTC
 pOR
-buH
 buH
 tdI
 tdI
@@ -59720,10 +59725,10 @@ hgE
 hgE
 hgE
 gTC
-pOR
+gTC
+qYv
 buH
-xve
-bXD
+pOR
 tdI
 pZn
 iTF
@@ -59914,9 +59919,9 @@ hgE
 hgE
 hgE
 gTC
-qYv
-buH
 pOR
+pOR
+buH
 pOR
 kzX
 pZn
@@ -60109,8 +60114,8 @@ gzd
 hgE
 gTC
 pOR
-buH
 pOR
+buH
 pOR
 kzX
 kzX
@@ -60497,9 +60502,9 @@ hgE
 hgE
 gTC
 nbp
-nbp
-nbp
-nbp
+jPD
+xve
+bXD
 aVS
 awP
 rnG
