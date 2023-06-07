@@ -397,3 +397,16 @@
 	new_desc = "The sweet flames painted onto this H.O.N.K. chassis are distressingly realistic, and impart even more hilarity than usual."
 	new_icon = "honker_flaming"
 	allowed_types = list("honker")
+
+
+////////////
+//Fighters//
+////////////
+
+/obj/item/kit/paint/fighter/allure/royalty
+	name = "\"Royalty\" Allure customisation kit"
+	new_name = "Allure \"Royalty\""
+	new_desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
+	new_icon = "allure_royalty"
+	allowed_types = list("allure")
+
