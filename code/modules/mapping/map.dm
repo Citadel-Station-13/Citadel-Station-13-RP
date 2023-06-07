@@ -51,6 +51,7 @@ var/list/all_maps = list()
 
 /datum/map/Destroy()
 	if(loaded)
+		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED MAP.")
 	return ..()
 

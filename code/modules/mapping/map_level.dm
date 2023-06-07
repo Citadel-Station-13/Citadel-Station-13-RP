@@ -80,6 +80,7 @@
 
 /datum/map_level/Destroy()
 	if(loaded)
+		. = QDEL_HINT_LETMELIVE
 		CRASH("UH OH, SOMETHING TRIED TO DELETE AN INSTANTIATED LEVEL.")
 	return ..()
 
@@ -158,21 +159,25 @@
  * get level index in dir
  */
 /datum/map_level/proc/z_in_dir(dir)
-	switch(dir)
-		if(NORTH)
-		if(SOUTH)
-		if(EAST)
-		if(WEST)
-		if(UP)
-		if(DOWN)
-	#warn impl
+	return level_in_dir(dir)?.z_index
 
 /**
  * get level datum in dir
  */
 /datum/map_level/proc/level_in_dir(dir)
-
-#warn impl all
+	switch(dir)
+		if(NORTH)
+			return SSmapping.keyed_levels[link_north]
+		if(SOUTH)
+			return SSmapping.keyed_levels[link_south]
+		if(EAST)
+			return SSmapping.keyed_levels[link_east]
+		if(WEST)
+			return SSmapping.keyed_levels[link_west]
+		if(UP)
+			return SSmapping.keyed_levels[link_above]
+		if(DOWN)
+			return SSmapping.keyed_levels[link_below]
 
 /**
  * called right after we physically load in, before init
@@ -202,14 +207,6 @@
  */
 /datum/map_level/proc/allow_deallocate()
 	return TRUE
-
-/datum/map_level/Destroy(var/force)
-	stack_trace("Attempt to delete a map_level instance [log_info_line(src)]")
-	if(!force)
-		return QDEL_HINT_LETMELIVE // No.
-	if (LEGACY_MAP_DATUM.zlevels["[z]"] == src)
-		LEGACY_MAP_DATUM.zlevels -= "[z]"
-	return ..()
 
 /datum/map_level/proc/has_trait(trait)
 	return trait in traits
