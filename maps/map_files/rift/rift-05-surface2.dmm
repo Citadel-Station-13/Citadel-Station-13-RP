@@ -10075,7 +10075,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "gra" = (
 /obj/structure/table/standard,
-/obj/machinery/recharger,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
 	},
@@ -10085,6 +10084,28 @@
 /obj/machinery/alarm{
 	desc = null;
 	pixel_y = 24
+	},
+/obj/item/storage/hypokit{
+	pixel_x = -8;
+	pixel_y = -8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = -8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/obj/item/storage/hypokit{
+	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
@@ -18859,6 +18880,7 @@
 /obj/item/cane,
 /obj/item/cane/crutch,
 /obj/item/cane/crutch,
+/obj/machinery/recharger,
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "lLU" = (

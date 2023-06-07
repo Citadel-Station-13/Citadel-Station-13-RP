@@ -33,6 +33,13 @@
 /datum/category_item/autolathe/medical/vial
 	name = "glass vial"
 	path =/obj/item/reagent_containers/glass/beaker/vial
+/datum/category_item/autolathe/medical/hypovial
+	name = "hypovial"
+	path =/obj/item/reagent_containers/glass/hypovial
+
+/datum/category_item/autolathe/medical/hypovial_large
+	name = "large hypovial"
+	path =/obj/item/reagent_containers/glass/hypovial/large
 
 /datum/category_item/autolathe/medical/syringe
 	name = "syringe"
