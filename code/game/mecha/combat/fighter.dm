@@ -187,7 +187,7 @@
 /obj/mecha/combat/fighter/get_step_delay()
     . = ..()
     if(has_gravity() && !landing_gear_raised)
-        . += 5
+        . += 4
 
 /obj/mecha/combat/fighter/handle_equipment_movement()
 	. = ..()
@@ -346,7 +346,7 @@
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/combat_shield
+	ME = new /obj/item/mecha_parts/mecha_equipment/omni_shield
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/baron
