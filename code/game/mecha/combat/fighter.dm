@@ -5,7 +5,7 @@
 	desc = "The base type of fightercraft. Don't spawn this one!"
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
-	var/stabilization_enabled = FALSE //If our anti-space-drift is on
+	var/landing_gear_raised = FALSE //If our anti-space-drift is on
 	var/ground_capable = FALSE //If we can fly over normal turfs and not just space
 
 	icon = 'icons/mecha/fighters64x64.dmi' //See ATTRIBUTIONS.md for details on license
@@ -16,7 +16,6 @@
 	dir_in = null //Don't reset direction when empty
 
 	step_in = 2 //Fast
-	var/step_delay
 
 	health = 400
 	maxhealth = 400
@@ -136,17 +135,17 @@
 //Modified phazon code
 /obj/mecha/combat/fighter/Topic(href, href_list)
 	..()
-	if (href_list["toggle_stabilization"])
-		stabilization_enabled = !stabilization_enabled
-		send_byjax(src.occupant,"exosuit.browser","stabilization_command","[stabilization_enabled?"Dis":"En"]able thruster stabilization")
-		src.occupant_message("<span class='notice'>Thruster stabilization [stabilization_enabled? "enabled" : "disabled"].</span>")
+	if (href_list["toggle_landing_gear"])
+		landing_gear_raised = !landing_gear_raised
+		send_byjax(src.occupant,"exosuit.browser","landing_gear_command","[landing_gear_raised?"Lower":"Raise"] landing gear")
+		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
 		return
 
 /obj/mecha/combat/fighter/get_commands()
 	var/output = {"<div class='wr'>
 						<div class='header'>Special</div>
 						<div class='links'>
-						<a href='?src=\ref[src];toggle_stabilization=1'><span id="stabilization_command">[stabilization_enabled?"Dis":"En"]able thruster stabilization</span></a><br>
+						<a href='?src=\ref[src];toggle_landing_gear=1'><span id="landing_gear_command">[landing_gear_raised?"Raise":"Lower"] landing gear</span></a><br>
 						</div>
 						</div>
 						"}
@@ -154,32 +153,38 @@
 	return output
 
 /obj/mecha/combat/fighter/can_ztravel()
-	return (stabilization_enabled && has_charge(step_energy_drain))
+	return (landing_gear_raised && has_charge(step_energy_drain))
 
 // No space drifting
+// This doesnt work but I actually dont want it to anyways, so I'm not touching it at all. Space drifting is cool.
 /obj/mecha/combat/fighter/check_for_support()
-	if (stabilization_enabled)
+	if (landing_gear_raised)
 		return 1
 
 	return ..()
 
 // No falling if we've got our boosters on
 /obj/mecha/combat/fighter/can_fall()
-	if(stabilization_enabled && has_charge(step_energy_drain))
+	if(landing_gear_raised && has_charge(step_energy_drain))
 		return FALSE
 	else
 		return TRUE
 
+
+
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
-	if(gravity && !stabilization_enabled)
-		step_delay = 2 //Slow now that they're on landing gear
+	if (gravity && !landing_gear_raised)
+		step_in *= 5
 		playsound(src, 'sound/effects/roll.ogg', 50, 1)
 	else if(gravity && ground_capable && occupant)
 		start_hover()
+		step_in = initial(step_in)
 	else if((!gravity && ground_capable) || !occupant)
 		stop_hover()
+		step_in = initial(step_in)
 	else if(moved && gravity && !ground_capable)
+		step_in = initial(step_in)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
 		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
@@ -209,7 +214,7 @@
 		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/mecha/combat/fighter/check_for_support()
-	if (has_charge(step_energy_drain) && stabilization_enabled)
+	if (has_charge(step_energy_drain) && landing_gear_raised)
 		return 1
 
 	var/list/things = orange(1, src)
@@ -341,7 +346,7 @@
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
-	ME = new /obj/item/mecha_parts/mecha_equipment/omni_shield
+	ME = new /obj/item/mecha_parts/mecha_equipment/combat_shield
 	ME.attach(src)
 
 /obj/effect/decal/mecha_wreckage/baron
