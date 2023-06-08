@@ -186,7 +186,7 @@
 
 /obj/mecha/combat/fighter/get_step_delay()
     . = ..()
-    if(gravity && !landing_gear_raised)
+    if(has_gravity() && !landing_gear_raised)
         . += 5
 
 /obj/mecha/combat/fighter/handle_equipment_movement()
