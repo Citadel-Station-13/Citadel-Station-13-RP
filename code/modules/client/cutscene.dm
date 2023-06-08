@@ -177,11 +177,13 @@
 	return ..()
 
 /datum/cutscene/native/setup(client/C)
+	. = ..()
 	if(!isnull(screens))
 		C.screen += screens
 	C.screen += GLOB.cutscene_backdrop
 
 /datum/cutscene/native/cleanup(client/C)
+	. = ..()
 	if(!isnull(screens))
 		C.screen -= screens
 	C.screen -= GLOB.cutscene_backdrop
@@ -236,5 +238,5 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/cutscene_simple)
 	. = ..()
 	if(!isnull(path))
 		icon = isicon(path)? path : icon(path)
-	screen_loc = "CENTER:-[width / 2 + WORLD_ICON_SIZE / 2],CENTER:-[height / 2 + WORLD_ICON_SIZE / 2]"
+	screen_loc = "CENTER:-[width / 2 - WORLD_ICON_SIZE / 2],CENTER:-[height / 2 - WORLD_ICON_SIZE / 2]"
 

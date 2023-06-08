@@ -44,8 +44,8 @@ SUBSYSTEM_DEF(lobby)
 /datum/controller/subsystem/lobby/proc/set_title_scene(datum/cutscene/scene)
 	var/list/client/old_viewing
 	if(!isnull(titlescreen))
-		old_viewing = titlescreen.viewing.Copy()
+		old_viewing = titlescreen.viewing?.Copy()
 		QDEL_NULL(titlescreen)
+	titlescreen = scene
 	for(var/client/C as anything in old_viewing)
 		C.start_cutscene(titlescreen)
-	titlescreen = scene
