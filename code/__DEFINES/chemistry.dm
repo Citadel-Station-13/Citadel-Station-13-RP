@@ -1,24 +1,24 @@
+//* Reagent exposure methods.
+//* These are flags for combined checks, but are often passed as an one-bit-value enum to procs.
+
+/// Splashed, touched, sprayed, etc
+#define CHEM_TOUCH (1<<0)
+/// Eaten, drunk, etc
+#define CHEM_INGEST (1<<1)
+/// Injected into bloodstream or equivalent
+#define CHEM_INJECT (1<<2)
+/// Inhaled or immersed in gas
+//  todo: this is currently unimplemented.
+#define CHEM_VAPOR (1<<3)
+
+//* Unsorted
+
 /// Factor of how fast mob nutrition decreases
 #define DEFAULT_HUNGER_FACTOR 0.03
 /// Factor of how fast mob hydration decreases
 #define DEFAULT_THIRST_FACTOR 0.03
 /// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 #define REM 0.2
-
-//! Reagent exposure methods.
-/// Used for splashing.
-#define CHEM_TOUCH (1<<0)
-/// Used for ingesting the reagents. Food, drinks, inhaling smoke.
-#define CHEM_INGEST (1<<1)
-/// Used by foams, sprays, and blob attacks.
-#define CHEM_VAPOR (1<<2)
-/// Used by medical patches and gels.
-#define CHEM_PATCH (1<<3)
-/// Used for direct injection of reagents.
-#define CHEM_INJECT (1<<4)
-/// Used for blood contamination.
-#define CHEM_BLOOD (1<<5)
-
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 

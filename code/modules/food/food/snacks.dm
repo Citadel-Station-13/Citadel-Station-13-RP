@@ -3692,7 +3692,7 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/unajerky/Initialize(mapload)
 		. = ..()
 		reagents.add_reagent("protein", 10)
-		reagents.add_reagent("capsaicin", 2)
+		reagents.add_reagent("hexaisin", 3)
 		bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/croissant
