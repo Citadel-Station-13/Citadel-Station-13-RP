@@ -32,7 +32,7 @@
  *
  * @return /datum/dmm_parsed instance
  */
-/proc/load_map(map, ll_X, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation)
+/proc/load_map(map, ll_x, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation)
 	var/datum/dmm_parsed/parsed = new(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 	. = parsed
 	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation)
@@ -276,17 +276,13 @@
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
+	Master.StartLoadingMap()
 	. = load(arglist(args))
+	Master.StopLoadingMap()
 	loading = FALSE
 
 /datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
 
-/// Load the parsed map into the world. See [/proc/load_map] for arguments.
-/datum/dmm_parsed/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, datum/dmm_orientation/forced_pattern)
-	//How I wish for RAII
-	Master.StartLoadingMap()
-	. = _load_impl(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, orientation, annihilate_tiles, forced_pattern)
-	Master.StopLoadingMap()
 
 // Do not call except via load() above.
 // Lower/upper here refers to the actual map template's parsed coordinates, NOT ACTUAL COORDINATES! Figure it out yourself my head hurts too much to implement that too.
@@ -436,7 +432,7 @@
 
 			if(!ispath(atom_def, /atom)) // Skip the item if the path does not exist.  Fix your crap, mappers!
 				if(bad_paths)
-					LAZYOR(bad_paths[path_text], model_key)
+					LAZYDISTINCTADD(bad_paths[path_text], model_key)
 				continue
 			members.Add(atom_def)
 
@@ -556,9 +552,9 @@
 			else if(!no_changeturf)
 				. = crds.ChangeTurf(path, null, CHANGETURF_DEFER_CHANGE)
 			else
-				. = create_atom(path, crds)//first preloader pass
+				. = create_movable(path, crds)//first preloader pass
 		else
-			. = create_atom(path, crds)//first preloader pass
+			. = create_movable(path, crds)//first preloader pass
 
 	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
 		world.preloader_load(.)
@@ -586,7 +582,7 @@
  * optionally removes quotes before and after the text (for variable name)
  */
 /datum/dmm_parsed/proc/trim_text(str, trim_quotes)
-	return trim_quotes? trimQuotesRegex.Replace(what, "") : trimRegex.Replace(what, "")
+	return trim_quotes? trimQuotesRegex.Replace(str, "") : trimRegex.Replace(str, "")
 
 //find the position of the next delimiter,skipping whatever is comprised between opening_escape and closing_escape
 //returns 0 if reached the last delimiter

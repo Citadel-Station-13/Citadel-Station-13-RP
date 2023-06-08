@@ -144,7 +144,7 @@
 /obj/machinery/computer/roguezones/proc/failsafe_shuttle_recall()
 	if(!shuttle_control)
 		return	// Shuttle computer has been destroyed
-	if (!(shuttle_control.z in LEGACY_MAP_DATUM.belter_belt_z))
+	if (!SSmapping.level_trait(shuttle_control.z, ZTRAIT_LEGACY_BELTER_ACTIVE))
 		return	// Usable only when shuttle is away
 	if(rm_controller.current_zone && rm_controller.current_zone.is_occupied())
 		return	// Not usable if shuttle is in occupied zone

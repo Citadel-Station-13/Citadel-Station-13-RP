@@ -58,7 +58,7 @@
 		return
 	var/datum/dmm_parsed/parsing = parse_map(map_path)
 	width = parsing.width
-	heigth = parsing.height
+	height = parsing.height
 	if(cache_parsed_map)
 		parsed = parsing
 

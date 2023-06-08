@@ -194,7 +194,6 @@
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
-	transit_chance = 100
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_shallow
 	link_above = /datum/map_level/rift/station/surface_mid

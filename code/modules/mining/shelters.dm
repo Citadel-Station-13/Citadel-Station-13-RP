@@ -14,7 +14,7 @@
 	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)
-	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
+	var/affected = get_affecting_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
 		var/area/A = get_area(T)
 		if(is_type_in_typecache(A, banned_areas))
@@ -31,14 +31,14 @@
 	return SHELTER_DEPLOY_ALLOWED
 
 /datum/map_template/shelter/proc/add_roof(turf/deploy_location)
-	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
+	var/affected = get_affecting_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
 		if(isopenturf(T))
 			T.ChangeTurf(/turf/simulated/shuttle/floor/voidcraft)
 
 /datum/map_template/shelter/proc/annihilate_plants(turf/deploy_location)
 	var/deleted_atoms = 0
-	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
+	var/affected = get_affecting_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
 		for(var/obj/structure/flora/AM in T)
 			++deleted_atoms
@@ -46,7 +46,7 @@
 	admin_notice("<span class='danger'>Annihilated [deleted_atoms] plants.</span>", R_DEBUG)
 
 /datum/map_template/shelter/proc/update_lighting(turf/deploy_location)
-	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
+	var/affected = get_affecting_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
 		T.lighting_build_overlay()
 

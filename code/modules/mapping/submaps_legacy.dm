@@ -76,7 +76,7 @@
 			var/turf/T = locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z_level)
 			var/valid = TRUE
 
-			for(var/turf/check in chosen_template.get_affected_turfs(T,TRUE,orientation))
+			for(var/turf/check in chosen_template.get_affecting_turfs(T,TRUE,orientation))
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE	// Probably overlapping something important.
