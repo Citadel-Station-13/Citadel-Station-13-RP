@@ -196,6 +196,10 @@
 /**
  * called in a group after all maps and dependencies load **and** generation callbacks fire.
  *
+ * this is *not* called if we are created from a zlevel, say, when dynamically generating a planet.
+ * this is solely for hardcoded map levels to have load behaviors.
+ * undefined behavior will result if this is overridden on a level used for dynamic generation.
+ *
  * @params
  * * z_index - zlevel we loaded on
  */

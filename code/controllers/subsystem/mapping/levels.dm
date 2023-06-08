@@ -73,15 +73,24 @@
  * * reload - reload stuff like crosslinking/verticalitty renders?
  * * center - center the level if it's mismatched sizes? we will never load a level that's too big.
  * * crop - crop the level if it's too big instead of panic
+ * * deferred_callbacks - generation callbacks to defer. if this isn't provided, we fire them + finalize immediately.
  *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center)
+/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks)
 	instance = allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
 	// parse map
 
 	#warn impl, including center/etc
+
+	var/list/datum/callback/generation_callbacks = list()
+	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
+	// if not group loaded, fire off callbacks / finalize immediately
+	if(isnull(deferred_callbacks))
+		for(var/datum/callback/cb as anything in generation_callbacks)
+			cb.Invoke()
+		instance.on_loaded_finalize(instance.z_index)
 
 	. = TRUE
 	// todo: rebuild?

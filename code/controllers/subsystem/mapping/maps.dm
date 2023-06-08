@@ -44,17 +44,54 @@
 			continue
 		keyed_maps[created.id] = created
 
-/datum/controller/subsystem/mapping/proc/write_next_map()
-	#warn impl
+/datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next = next_station)
+	var/path = "data/next_map.json"
+	if(fexists(path))
+		fdel(path)
+	var/list/data = list()
+	data["type"] = next.type
+	if(next.modified)
+		data["data"] = next.serialize()
+	var/writing = file("data/next_map.json")
+	WRITE_FILE(writing, json_encode(data))
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
-	#warn impl
+	var/path = "data/next_map.json"
+	if(!fexists(path))
+		return
+	var/reading = file("data/next_map.json")
+	var/raw = file2text(reading)
+	var/list/data = json_decode(raw)
+	var/path = data["type"]
+	var/list/data = data["data"]
+	var/datum/map/station/wanted = new path
+	if(!isnull(data))
+		wanted.deserialize(data)
+	next_station = wanted
+	return wanted
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
-	_load_map_impl(instance)
+	var/list/datum/map_level/loaded_levels = list()
+	var/list/datum/callback/generation_callbacks = list()
+	_load_map_impl(instance, loaded_levels, generation_callbacks)
+	// invoke generation
+	for(var/datum/callback/cb as anything in generation_callbacks)
+		cb.Invoke()
+	// invoke finalize
+	for(var/datum/map_level/level as anything in loaded_levels)
+		level.on_loaded_finalize(level.z_index)
 
-/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, recursing = FALSE)
-	#warn impl
+	// todo: rebuild?
+
+/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks)
+	// ensure any lazy data is loaded and ready to be read
+	instance.prime()
+
+	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
+
+	for(var/datum/map_level/level as anything in instance.levels)
+		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks)
+		loaded_levels += level
 
 	var/list/datum/map/recursing = list()
 
@@ -80,9 +117,21 @@
 		if(map.loaded)
 			init_debug("skipping recursing map [map.id] - already loaded")
 			continue
-		_load_map_impl(map, TRUE)
+		_load_map_impl(map, loaded_levels, generation_callbacks)
 
-/datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance = next_station)
+/datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
+	if(isnull(instancce))
+		if(isnull(next_station))
+			read_next_map()
+		instance = next_station
+	if(isnull(instance))
+		var/list/datum/map/station/valid = list()
+		for(var/id in keyed_maps)
+			var/datum/map/map = keyed_maps[id]
+			if(!istype(map, /datum/map/station))
+				continue
+			valid += map
+		instance = pick(valid)
 	ASSERT(istype(instance))
 	ASSERT(isnull(loaded_station))
 	ASSERT(!initialized)

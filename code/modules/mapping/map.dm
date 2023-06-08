@@ -30,6 +30,17 @@
 	/// center us if we're smaller than world size
 	var/center = TRUE
 
+/datum/map/New()
+	// immediately resolve dependencies / lateload
+	for(var/i in 1 to length(dependencies))
+		if(ispath(dependencies[i]))
+			var/datum/map/resolving = dependencies[i]
+			dependencies[i] = initial(resolving.id)
+	for(var/i in 1 to length(lateload))
+		if(ispath(lateload[i]))
+			var/datum/map/resolving = lateload[i]
+			lateload[i] = initial(resolving.id)
+
 /datum/map/Destroy()
 	if(loaded)
 		. = QDEL_HINT_LETMELIVE
@@ -79,7 +90,13 @@
 	crop = .["crop"]
 	center = .["center"]
 
-#warn wow
+/**
+ * loads any lazyloaded stuff we need; called before we load in
+ */
+/datum/map/proc/prime()
+	for(var/i in 1 to length(levels))
+		if(ispath(levels[i]))
+			levels[i] = new levels[i]
 
 /**
  * primary station map
