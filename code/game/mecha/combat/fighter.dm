@@ -171,23 +171,23 @@
 		return TRUE
 
 
-
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
 	if (gravity && !landing_gear_raised)
-		step_in *= 5
 		playsound(src, 'sound/effects/roll.ogg', 50, 1)
 	else if(gravity && ground_capable && occupant)
 		start_hover()
-		step_in = initial(step_in)
 	else if((!gravity && ground_capable) || !occupant)
 		stop_hover()
-		step_in = initial(step_in)
 	else if(moved && gravity && !ground_capable)
-		step_in = initial(step_in)
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
 		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+
+/obj/mecha/combat/fighter/get_step_delay()
+    . = ..()
+    if(gravity && !landing_gear_raised)
+        . += 5
 
 /obj/mecha/combat/fighter/handle_equipment_movement()
 	. = ..()
