@@ -82,7 +82,7 @@
 	icon_state = "rad"
 	desc = "A hood with radiation protective properties. Label: Made with lead, do not eat insulation"
 	inv_hide_flags = BLOCKHAIR
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = HEAD|FACE|EYES
 	armor_type = /datum/armor/general/radsuit
 
@@ -98,4 +98,4 @@
 	slowdown = 1.5
 	armor_type = /datum/armor/general/radsuit
 	inv_hide_flags = HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL

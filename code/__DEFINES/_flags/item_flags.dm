@@ -31,49 +31,40 @@ DEFINE_BITFIELD(item_flags, list(
 ))
 
 //! Flags for the clothing_flags var on /obj/item
-/*
-#define LAVAPROTECT				(1<<0)
-/// SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
-#define STOPSPRESSUREDAMAGE		(1<<1)
-*/
 /// Blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY! (NOTE: flag shared with ONESIZEFITSALL)
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)
-/// Mask allows internals
-#define ALLOWINTERNALS			(1<<3)
-/// Prevents from slipping on wet floors, in space etc
-#define NOSLIP					(1<<4)
-/*
-/// Prevents from slipping on frozen floors
-#define NOSLIP_ICE				(1<<5)
-*/
-/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
-#define THICKMATERIAL			(1<<6)
-/*
-/// The voicebox in this clothing can be toggled.
-#define VOICEBOX_TOGGLABLE		(1<<7)
-/// The voicebox is currently turned off.
-#define VOICEBOX_DISABLED		(1<<8)
-/// Hats with negative effects when worn (i.e the tinfoil hat).
-#define IGNORE_HAT_TOSS			(1<<9)
-*/
-/// Allows helmets and glasses to scan reagents.
-#define SCAN_REAGENTS			(1<<10)
-/// At the moment, masks with this flag will not prevent eating even if they are covering your face.
-#define FLEXIBLEMATERIAL		(1<<11)
-/// Allows special survival food items to be eaten through it
-#define ALLOW_SURVIVALFOOD		(1<<12)
 /// ignores "is this limb here" for equip.
-#define CLOTHING_IGNORE_DELIMB		(1<<13)
+#define CLOTHING_IGNORE_DELIMB		(1<<1)
 /// ignores "do we have a jumpsuit" for belt
-#define CLOTHING_IGNORE_BELTLINK	(1<<14)
+#define CLOTHING_IGNORE_BELTLINK	(1<<2)
 /// for plural limbs, wearable with just one
-#define CLOTHING_ALLOW_SINGLE_LIMB	(1<<15)
+#define CLOTHING_ALLOW_SINGLE_LIMB	(1<<3)
+/// Prevents syringes, parapens and hyposprays if equipped to slot_suit or SLOT_ID_HEAD.
+#define CLOTHING_THICK_MATERIAL		(1<<4)
+/// Syringes / hyposprays / etc can get through, but need to pass through an injection port.
+#define CLOTHING_INJECTION_PORT		(1<<5)
+// todo: audit
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<6)
+/// Mask allows internals
+// todo: audit
+#define ALLOWINTERNALS			(1<<7)
+/// Prevents from slipping on wet floors, in space etc
+// todo: audit
+#define NOSLIP					(1<<8)
+/// Allows helmets and glasses to scan reagents.
+// todo: audit
+#define SCAN_REAGENTS			(1<<9)
+/// At the moment, masks with this flag will not prevent eating even if they are covering your face.
+// todo: audit
+#define FLEXIBLEMATERIAL		(1<<10)
+/// Allows special survival food items to be eaten through it
+// todo: audit
+#define ALLOW_SURVIVALFOOD		(1<<11)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
 	BITFIELD(ALLOWINTERNALS),
 	BITFIELD(NOSLIP),
-	BITFIELD(THICKMATERIAL),
+	BITFIELD(CLOTHING_THICK_MATERIAL),
 	BITFIELD(SCAN_REAGENTS),
 	BITFIELD(FLEXIBLEMATERIAL),
 	BITFIELD(ALLOW_SURVIVALFOOD),
