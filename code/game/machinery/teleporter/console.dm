@@ -85,10 +85,49 @@
 	return
 
 /obj/machinery/computer/teleporter/attack_hand(mob/user, list/params)
-	if(..()) return
+	ui_interact(user)
 
-	/* Ghosts can't use this one because it's a direct selection */
-	if(istype(user, /mob/observer/dead)) return
+/obj/machinery/computer/teleporter/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TeleporterConsole", name) // 500, 800
+		ui.open()
+
+/obj/machinery/computer/teleporter/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = list()
+	var/list/vis_destinations = list()
+	for(var/A in generate_telebeacon_list())
+		vis_destinations += A
+
+	data["disabled"] = is_disabled()
+	data["locked"] = locked?.loc.loc.name || "None!"
+	data["teleporterid"] = id
+	data["projector_charge"] = projector?.current_joules || 0
+	data["projector_charge_max"] = projector?.power_capacity || 0
+	data["projector_recharge_rate"] = projector?.recharge_rate || 0
+	data["projector_recharge_max"] = projector?.recharge_capacity || 0
+	data["valid_destinations"] = vis_destinations
+	return data
+
+/obj/machinery/computer/teleporter/ui_act(action, list/params, datum/tgui/ui)
+	switch(action)
+		if("set_destination")
+			for(var/obj/item/T in generate_telebeacon_list())
+				if (T.name == params["new_locked"])
+					set_destination(T)
+
+		if("set_recharge")
+			var/target = params["target"]
+			projector?.recharge_rate = target
+			projector?.recharge_rate = clamp(projector?.recharge_rate, 0, projector?.recharge_capacity)
+	. = ..()
+
+/obj/machinery/computer/teleporter/proc/is_disabled()
+	if (!(pad||projector))
+		return TRUE
+	return FALSE
+
+/obj/machinery/computer/teleporter/proc/generate_telebeacon_list()
 
 	var/list/L = list()
 	var/list/areaindex = list()
@@ -125,17 +164,15 @@
 			else
 				areaindex[tmpname] = 1
 			L[tmpname] = I
+	return L
 
-	var/desc = tgui_input_list(user, "Please select a location to lock in.", "Locking Computer", L)
-	if(!desc)
-		return
+/obj/machinery/computer/teleporter/proc/set_destination(var/obj/destination)
 	if(get_dist(src, usr) > 1 && !issilicon(usr))
 		return
 
-	locked = L[desc]
+	locked = destination
 	for(var/mob/O in hearers(src, null))
 		O.show_message(SPAN_NOTICE("Locked In"), 2)
-	return
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)
 	set category = "Object"
