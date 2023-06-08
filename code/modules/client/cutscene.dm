@@ -126,15 +126,17 @@
 /datum/cutscene/browser/setup(client/C)
 	. = ..()
 	push_build(C)
+	C.cutscene_browser = TRUE
 	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=1")
 
 /datum/cutscene/browser/cleanup(client/C)
 	. = ..()
 	push_dispose(C)
+	C.cutscene_browser = FALSE
 	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
 
-/datum/cutscene/browser/proc/push_build(client/C)
-	C << output("[url_encode(json_encode(list("raw_html" = build_inner_html)))]", "[SKIN_BROWSER_ID_CUTSCENE]:build")
+/datum/cutscene/browser/proc/push_build(client/C, raw_html = build_inner_html())
+	C << output("[url_encode(json_encode(list("raw_html" = raw_html)))]", "[SKIN_BROWSER_ID_CUTSCENE]:build")
 
 /datum/cutscene/browser/proc/push_dispose(client/C)
 	C << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")

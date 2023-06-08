@@ -7,11 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
 <style>
-	#cutsceneContainer {
-		margin: 0;
+	#testContaoner {
 		position: absolute;
-		top: 0;
-		bottom: 0;
+		top: 0px;
+		height: 200px;
+		width: 100%;
+	}
+	#cutsceneContainer {
+		margin: 0px;
+		position: absolute;
+		top: 200px;
+		bottom: 0px;
 		overflow: hidden;
 		background-color: black;
 		height: 100%;
@@ -95,6 +101,7 @@ if (!String.prototype.trim) {
 }
 
 const ELEMENT_ID_CONTAINER = "cutsceneContainer"
+const ELEMENT_ID_TESTCONTAINER = "testContainer"
 const SKIN_ID_MAP = "map";
 /// how long to wait before re-loading missing images
 var IMAGE_RETRY_DELAY = 1000;
@@ -102,6 +109,7 @@ var IMAGE_RETRY_DELAY = 1000;
 var IMAGE_RETRY_LIMIT = 5;
 
 var container = document.getElementById(ELEMENT_ID_CONTAINER);
+var testContainer = document.getElementById(ELEMENT_ID_TESTCONTAINER);
 
 ///////////////////// BOOT //////////////////////////////
 
@@ -141,6 +149,8 @@ function lambdaReloadImage(node) {
 }
 
 function build(data) {
+	data = JSON.parse(data);
+	testContainer[PROP_TEXT_CONTENT] = data.raw_html;
 	loadInnerHTML(data.raw_html);
 }
 
