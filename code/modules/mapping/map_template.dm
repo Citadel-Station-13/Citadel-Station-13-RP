@@ -1,214 +1,325 @@
 /datum/map_template
+	/// abstract type
+	abstract_type = /datum/map_template
+
 	var/name = "Default Template Name"
-	var/width = 0				//all these are for SOUTH!
-	var/height = 0
-	var/zdepth = 1
-	var/mappath
-	var/loaded = 0 // Times loaded this round
-	var/keep_cached_map = FALSE
-	var/default_annihilate = FALSE
-	var/list/ztraits				//zlevel traits for load_new_z
+	var/desc = "Some text should go here. Maybe."
+	/// If this is set, no more than one template in the same group will be spawned, per submap seeding.
+	var/template_group = null
+	var/mappath = null
+	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+	var/annihilate = FALSE
 
-	/// our parsed map, cached
+	/// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until
+	/// it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
+	/// Set to -1 to force the submap to always be made.
+	var/cost = null
+	/// If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
+	var/allow_duplicates = FALSE
+	/// If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
+	var/discard_prob = 0
+	// For ruins
+	var/fixed_orientation = FALSE
+
+	//* cached data
+	/// cached map
 	var/datum/dmm_parsed/parsed
+	/// keep cached map
+	var/cache_parsed_map = FALSE
+	/// cached width
+	var/width = 0
+	/// cached height
+	var/height = 0
 
-/datum/map_template/New(path = null, rename = null, cache = FALSE)
+	//* loading
+	/// times loaded this round, excluding new zlevel loads
+	var/loaded = 0
+
+	//* loading as its own level
+	/// traits to have if loaded as standalone level
+	var/list/level_traits
+	/// attributes to have if loaded as standalone level
+	var/list/level_attributes
+	/// id to have if loaded as standalone level
+	var/level_id
+
+/datum/map_template/New(path = null, rename = null)
 	if(path)
 		mappath = path
 	if(mappath)
-		preload_size(mappath, cache)
+		preload_size(mappath)
 	if(rename)
 		name = rename
 
-/datum/map_template/Destroy()
-	QDEL_NULL(cached_map)
-	return ..()
-
-/datum/map_template/proc/preload_size(path = mappath, force_cache = FALSE)
-	if(cached_map)
-		return cached_map.parsed_bounds
-	var/datum/dmm_parsed/parsed = new(file(path))
-	var/bounds = parsed?.parsed_bounds
+/datum/map_template/proc/preload_size(path, orientation = SOUTH)
+	#warn conform
+	var/bounds = maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE, orientation=orientation)
 	if(bounds)
-		width = bounds[MAP_MAXX] - bounds[MAP_MINX] + 1
-		height = bounds[MAP_MAXY] - bounds[MAP_MINY] + 1
-		zdepth = bounds[MAP_MAXZ] - bounds[MAP_MINZ] + 1
-		if(force_cache || keep_cached_map)
-			cached_map = parsed
+		if(orientation & (90 | 270))
+			width = bounds[MAP_MAXY]
+			height = bounds[MAP_MAXX]
+		else
+			width = bounds[MAP_MAXX]	// Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
+			height = bounds[MAP_MAXY]
 	return bounds
 
-/datum/map_template/proc/get_parsed_bounds()
-	return preload_size(mappath)
+/datum/map_template/proc/initTemplateBounds(var/list/bounds)
+	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
+		return	// Let proper initialisation handle it later
 
-/datum/map_template/proc/get_last_loaded_bounds()
-	if(cached_map)
-		return cached_map.bounds
-	return get_parsed_bounds()
+	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
+	SSshuttle.block_init_queue = TRUE
 
-/datum/map_template/proc/get_last_loaded_turf_block()
-	if(!cached_map)
-		CRASH("Improper use of get_last_loaded_turf_block, no cached_map.")
-	var/list/B = cached_map.bounds
-	return block(locate(B[MAP_MINX], B[MAP_MINY], B[MAP_MINZ]), locate(B[MAP_MAXX], B[MAP_MAXY], B[MAP_MAXZ]))
-
-/datum/map_template/proc/get_size(orientation = SOUTH)
-	if(!width || !height || !zdepth)
-		preload_size(mappath)
-	var/rotate = (orientation & (NORTH|SOUTH)) != NONE
-	if(rotate)
-		return list(height, width, zdepth)
-	return list(width, height, zdepth)
-
-/datum/dmm_parsed/proc/initTemplateBounds()
-	var/list/obj/machinery/atmospherics/atmos_machines = list()
-	var/list/obj/structure/cable/cables = list()
 	var/list/atom/atoms = list()
 	var/list/area/areas = list()
-
-	var/list/turfs = block(	locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-							locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
-	var/list/border = block(locate(max(bounds[MAP_MINX]-1, 1),			max(bounds[MAP_MINY]-1, 1),			 bounds[MAP_MINZ]),
-							locate(min(bounds[MAP_MAXX]+1, world.maxx),	min(bounds[MAP_MAXY]+1, world.maxy), bounds[MAP_MAXZ])) - turfs
+	var/list/obj/structure/cable/cables = list()
+	var/list/obj/machinery/atmospherics/atmos_machines = list()
+	var/list/turf/turfs = block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+	                   			locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	for(var/L in turfs)
 		var/turf/B = L
+		B.queue_zone_update()
+		QUEUE_SMOOTH(B)
 		atoms += B
 		areas |= B.loc
 		for(var/A in B)
 			atoms += A
 			if(istype(A, /obj/structure/cable))
 				cables += A
-				continue
-			if(istype(A, /obj/machinery/atmospherics))
+			else if(istype(A, /obj/machinery/atmospherics))
 				atmos_machines += A
-	for(var/L in border)
-		var/turf/T = L
-		T.air_update_turf(TRUE) //calculate adjacent turfs along the border to prevent runtimes
+	atoms |= areas
 
-	SSmapping.reg_in_areas_in_z(areas)
+	admin_notice("<span class='danger'>Initializing newly created atom(s) in submap.</span>", R_DEBUG)
 	SSatoms.InitializeAtoms(atoms)
-	SSmachines.setup_template_powernets(cables)
-	SSair.setup_template_machinery(atmos_machines)
 
-/datum/map_template/proc/load_new_z(orientation = SOUTH, list/ztraits = src.ztraits || list(ZTRAIT_AWAY = TRUE), centered = TRUE)
-	var/x = centered? max(round((world.maxx - width) / 2), 1) : 1
-	var/y = centered? max(round((world.maxy - height) / 2), 1) : 1
+	admin_notice("<span class='danger'>Initializing atmos pipenets and machinery in submap.</span>", R_DEBUG)
+	SSmachines.setup_atmos_machinery(atmos_machines)
 
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, ztraits)
+	admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
+	SSmachines.setup_powernets_for_cables(cables)
+
+	// Ensure all machines in loaded areas get notified of power status
+	for(var/I in areas)
+		var/area/A = I
+		A.power_change()
+
+	SSshuttle.block_init_queue = prev_shuttle_queue_state
+	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
+
+	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
+
+/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
+	var/x = 1
+	var/y = 1
+
+	if(centered)
+		x = round((world.maxx - width)/2)
+		y = round((world.maxy - height)/2)
+
 	#warn conform
-	var/datum/dmm_parsed/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop = TRUE, orientation = orientation)
-	var/list/bounds = parsed.bounds
+	var/list/bounds = maploader.load_map(file(mappath), x, y, no_changeturf = TRUE, orientation=orientation)
 	if(!bounds)
 		return FALSE
+	SSmapping.add_new_zlevel(name, traits)
 
 	repopulate_sorted_areas()
 
-	//initialize things that are normally initialized after map load
-	parsed.initTemplateBounds()
-	smooth_zlevel(world.maxz)
-	log_game("Z-level [name] loaded at [x],[y],[world.maxz]")
-	on_map_loaded(world.maxz, parsed.bounds)
+	// Initialize things that are normally initialized after map load
+	initTemplateBounds(bounds)
+	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
+	on_map_loaded(world.maxz)
+	return TRUE
 
-	return level
-
-//Override for custom behavior
-/datum/map_template/proc/on_map_loaded(z, list/bounds)
-	loaded++
-
-/**
-  * Proc to trigger a load at a specific area. Calls on_map_loaded(T.z, loaded_bounds) afterwards.
-  *
-  * @params
-  * * turf/T - Turf to load at
-  * * centered - Center at T or load with the bottomright corner being at T
-  * * orientation - SOUTH is default, anything else rotates the map to face it with the point of reference being the map itself is facing south by default. Cardinals only, don't be a 4head and put in multiple flags. It won't work or be pretty if you try.
-  * * annihilate - Should we destroy stuff in our bounds while loading
-  * * force_cache - Should we force the parsed shuttle to cache instead of being GC'd post loading if it wasn't going to be cached by default
-  * * rotate_placement_to_orientation - Has no effect if centered. Should we rotate where we load it around the turf we're loading at? Used for stuff like engine submaps when the station is rotated.
-  *
-  */
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, annihilate = default_annihilate, force_cache = FALSE, rotate_placement_to_orientation = FALSE)
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
 	var/old_T = T
 	if(centered)
-		T = locate(T.x - round(((orientation & (NORTH|SOUTH))? width : height) / 2) , T.y - round(((orientation & (NORTH|SOUTH)) ? height : width) / 2) , T.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
-	else if(rotate_placement_to_orientation && (orientation != SOUTH))
-		var/newx = T.x
-		var/newy = T.y
-		if(orientation == NORTH)
-			newx -= width
-			newy -= height - 1
-		else if(orientation == WEST)
-			newy -= width
-		else if(orientation == EAST)
-			newx -= height - 1
-		// eh let's not silently fail.
-		if(!ISINRANGE(newx, 1, world.maxx) || !ISINRANGE(newy, 1, world.maxy))
-			stack_trace("Warning: Rotation placed a map template load spot ([COORD(T)]) out of bounds of the game world. Clamping to world borders, this might cause issues.")
-		T = locate(clamp(newx, 1, world.maxx), clamp(newy, 1, world.maxy), T.z)
+		T = locate(T.x - round(((orientation & NORTH|SOUTH) ? width : height)/2) , T.y - round(((orientation & NORTH|SOUTH) ? height : width)/2) , T.z)
 	if(!T)
 		return
-	if(T.x+width-1 > world.maxx)
+	if(T.x+width > world.maxx)
 		return
-	if(T.y+height-1 > world.maxy)
+	if(T.y+height > world.maxy)
 		return
 
-	var/list/border = block(locate(max(T.x - 1, 1), max(T.y - 1, 1), T.z),
-		locate(min(T.x + width + 1, world.maxx), min(T.y + height + 1, world.maxy), T.z))
-	for(var/i in border)
-		var/turf/turf_to_disable = i
-		SSair.remove_from_active(turf_to_disable) //stop processing turfs along the border to prevent runtimes, we return it in initTemplateBounds()
-		turf_to_disable.atmos_adjacent_turfs?.Cut()
-
-	if(annihilate == MAP_TEMPLATE_ANNIHILATE_PRELOAD)
+	if(annihilate)
 		annihilate_bounds(old_T, centered, orientation)
 
-	// Accept cached maps, but don't save them automatically - we don't want
-	// ruins clogging up memory for the whole round.
-	var/is_cached = cached_map
-	var/datum/dmm_parsed/parsed = is_cached || new(file(mappath))
-	cached_map = (force_cache || keep_cached_map) ? parsed : is_cached
-	if(!parsed.load(T.x, T.y, T.z, cropMap=TRUE, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=TRUE, orientation = orientation, annihilate_tiles = (annihilate == MAP_TEMPLATE_ANNIHILATE_LOADING)))
-		return
-	var/list/bounds = parsed.bounds
+	#warn conform
+	var/list/bounds = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE, orientation = orientation)
 	if(!bounds)
 		return
 
-	if(!SSmapping.loading_ruins) //Will be done manually during mapping ss init
+//	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
+	if(SSmapping.initialized)
 		repopulate_sorted_areas()
 
-	//initialize things that are normally initialized after map load
-	parsed.initTemplateBounds()
+	// Initialize things that are normally initialized after map load
+	initTemplateBounds(bounds)
 
-	log_game("[name] loaded at [T.x],[T.y],[T.z]")
-	on_map_loaded(T.z, parsed.bounds)
-
-	return bounds
-
-//This, get_affected_turfs, and load() calculations for bounds/center can probably be optimized. Later.
-/datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
-	var/deleted_atoms = 0
-	log_world("Annihilating objects in map loading location.")
-	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
-	if(turfs_to_clean.len)
-		var/list/kill_these = list()
-		for(var/i in turfs_to_clean)
-			var/turf/T = i
-			kill_these += T.contents
-		for(var/i in kill_these)
-			qdel(i)
-			CHECK_TICK
-			deleted_atoms++
-	log_world("Annihilated [deleted_atoms] objects.")
-
-//for your ever biggening badminnery kevinz000
-//❤ - Cyberboss
-/proc/load_new_z_level(file, name, orientation, list/ztraits)
-	var/datum/map_template/template = new(file, name)
-	return template.load_new_z(orientation, ztraits)
+	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
+	loaded++
+	return TRUE
 
 /datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE, orientation = SOUTH)
 	var/turf/placement = T
 	if(centered)
-		var/turf/corner = locate(placement.x - round(((orientation & (NORTH|SOUTH))? width : height) / 2), placement.y - round(((orientation & (NORTH|SOUTH))? height : width) / 2), placement.z) // %180 catches East/West (90,270) rotations on true, North/South (0,180) rotations on false
+		var/turf/corner = locate(placement.x - round(((orientation & NORTH|SOUTH) ? width : height)/2), placement.y - round(((orientation & NORTH|SOUTH) ? height : width)/2), placement.z)
 		if(corner)
 			placement = corner
-	return block(placement, locate(placement.x + ((orientation & (NORTH|SOUTH)) ? width : height) - 1, placement.y + ((orientation & (NORTH|SOUTH))? height : width) - 1, placement.z))
+	return block(placement, locate(placement.x+((orientation & NORTH|SOUTH) ? width : height)-1, placement.y+((orientation & NORTH|SOUTH) ? height : width)-1, placement.z))
+
+/datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
+	var/deleted_atoms = 0
+	log_debug(SPAN_DEBUG("Annihilating objects in submap loading locatation."))
+	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
+	if(turfs_to_clean.len)
+		for(var/turf/T in turfs_to_clean)
+			for(var/atom/movable/AM in T)
+				++deleted_atoms
+				qdel(AM)
+	log_debug(SPAN_DEBUG("Annihilated [deleted_atoms] objects."))
+
+
+// For your ever biggening badminnery kevinz000
+// ❤ - Cyberboss
+/proc/load_new_z_level(var/file, var/name, var/orientation = SOUTH)
+	var/datum/map_template/template = new(file, name)
+	template.load_new_z(orientation)
+
+// Very similar to the /tg/ version.
+/proc/seed_submaps(var/list/z_levels, var/budget = 0, var/whitelist = /area/space, var/desired_map_template_type = null)
+	set background = TRUE
+
+	if(!z_levels || !z_levels.len)
+		CRASH("seed_submaps() was not given any Z-levels.")
+
+	for(var/zl in z_levels)
+		var/turf/T = locate(1, 1, zl)
+		if(!T)
+			CRASH("Z level [zl] does not exist - Not generating submaps")
+	log_debug(SPAN_DEBUG("Seeding submaps for levels [english_list(z_levels)] with budget [budget], whitelist [whitelist] and template type [desired_map_template_type]"))
+
+	var/overall_sanity = 100	// If the proc fails to place a submap more than this, the whole thing aborts.
+	var/list/potential_submaps = list()	// Submaps we may or may not place.
+	var/list/priority_submaps = list()	// Submaps that will always be placed.
+
+	// Lets go find some submaps to make.
+	for(var/map in SSmapping.map_templates)
+		var/datum/map_template/MT = SSmapping.map_templates[map]
+		if(!MT.allow_duplicates && MT.loaded > 0)	// This probably won't be an issue but we might as well.
+			continue
+		if(!istype(MT, desired_map_template_type))	// Not the type wanted.
+			continue
+		if(MT.discard_prob && prob(MT.discard_prob))
+			continue
+		if(MT.cost && MT.cost < 0)	// Negative costs always get spawned.
+			priority_submaps += MT
+		else
+			potential_submaps += MT
+
+	CHECK_TICK
+
+	var/list/loaded_submap_names = list()
+	var/list/template_groups_used = list()	// Used to avoid spawning three seperate versions of the same PoI.
+	log_debug(SPAN_DEBUG("[potential_submaps.len] potential with [priority_submaps.len] priority maps. Beginning placement."))
+
+	// Now lets start choosing some.
+	while(budget > 0 && overall_sanity > 0)
+		overall_sanity--
+		var/datum/map_template/chosen_template = null
+
+		if(potential_submaps.len)
+			if(priority_submaps.len)	// Do these first.
+				chosen_template = pick(priority_submaps)
+			else
+				chosen_template = pick(potential_submaps)
+
+		else	// We're out of submaps.
+			log_debug(SPAN_DEBUG("Submap loader had no submaps to pick from with [budget] left to spend."))
+			break
+
+		CHECK_TICK
+
+		// Can we afford it?
+		if(chosen_template.cost > budget)
+			priority_submaps -= chosen_template
+			potential_submaps -= chosen_template
+			continue
+
+		// Did we already place down a very similar submap?
+		if(chosen_template.template_group && (chosen_template.template_group in template_groups_used))
+			priority_submaps -= chosen_template
+			potential_submaps -= chosen_template
+			continue
+
+		// If so, try to place it.
+		var/specific_sanity = 100	// A hundred chances to place the chosen submap.
+		while(specific_sanity > 0)
+			specific_sanity--
+			var/orientation = SOUTH
+			chosen_template.preload_size(chosen_template.mappath, orientation)
+			var/width_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation & NORTH|SOUTH) ? chosen_template.width : chosen_template.height) / 2)
+			var/height_border = TRANSITIONEDGE + SUBMAP_MAP_EDGE_PAD + round(((orientation & NORTH|SOUTH) ? chosen_template.height : chosen_template.width) / 2)
+			var/z_level = pick(z_levels)
+			var/turf/T = locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z_level)
+			var/valid = TRUE
+
+			for(var/turf/check in chosen_template.get_affected_turfs(T,TRUE,orientation))
+				var/area/new_area = get_area(check)
+				if(!(istype(new_area, whitelist)))
+					valid = FALSE	// Probably overlapping something important.
+					// to_chat(world, "Invalid due to overlapping with area [new_area.type] at ([check.x], [check.y], [check.z]), when attempting to place at ([T.x], [T.y], [T.z]).")
+					break
+				CHECK_TICK
+
+			CHECK_TICK
+
+			if(!valid)
+				continue
+
+			log_debug(SPAN_DEBUG("Submap \"[chosen_template.name]\" placed at ([T.x], [T.y], [T.z])[ADMIN_JMP(T)]"))
+
+			// Do loading here.
+			chosen_template.load(T, centered = TRUE, orientation=orientation)	// This is run before the main map's initialization routine, so that can initilize our submaps for us instead.
+
+			CHECK_TICK
+
+			// For pretty maploading statistics.
+			if(loaded_submap_names[chosen_template.name])
+				loaded_submap_names[chosen_template.name] += 1
+			else
+				loaded_submap_names[chosen_template.name] = 1
+
+			// To avoid two 'related' similar submaps existing at the same time.
+			if(chosen_template.template_group)
+				template_groups_used += chosen_template.template_group
+
+			// To deduct the cost.
+			if(chosen_template.cost >= 0)
+				budget -= chosen_template.cost
+
+			// Remove the submap from our options.
+			if(chosen_template in priority_submaps)	// Always remove priority submaps.
+				priority_submaps -= chosen_template
+			else if(!chosen_template.allow_duplicates)
+				potential_submaps -= chosen_template
+
+			break	// Load the next submap.
+
+	var/list/pretty_submap_list = list()
+	for(var/submap_name in loaded_submap_names)
+		var/count = loaded_submap_names[submap_name]
+		if(count > 1)
+			pretty_submap_list += "[count] [submap_name]"
+		else
+			pretty_submap_list += "[submap_name]"
+
+	if(!overall_sanity)
+		log_debug(SPAN_DEBUG("Submap loader gave up with [budget] left to spend."))
+	else
+		log_debug(SPAN_DEBUG("Submaps loaded."))
+	log_debug(SPAN_DEBUG("Loaded: [english_list(pretty_submap_list)]"))
+
+/datum/map_template/proc/on_map_loaded(z)
+	return
