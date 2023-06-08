@@ -2880,6 +2880,7 @@
 #include "code\modules\mapping\multiz_helpers.dm"
 #include "code\modules\mapping\shuttle.dm"
 #include "code\modules\mapping\submap.dm"
+#include "code\modules\mapping\submaps_legacy.dm"
 #include "code\modules\mapping\turf_reservation.dm"
 #include "code\modules\mapping\loader\orientation.dm"
 #include "code\modules\mapping\loader\preloader.dm"

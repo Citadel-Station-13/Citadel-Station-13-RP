@@ -19,7 +19,7 @@
 		return
 
 	var/list/preview = list()
-	template.preload_size(template.mappath, orientation)
+	template.preload_size(template.map_path, orientation)
 	for(var/S in template.get_affected_turfs(T,centered = TRUE, orientation=orientation))
 		preview += image('icons/misc/debug_group.dmi',S ,"red")
 	usr.client.images += preview

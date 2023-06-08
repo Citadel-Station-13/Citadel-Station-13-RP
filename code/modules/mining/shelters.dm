@@ -57,7 +57,7 @@
 		built-in navigation, entertainment, medical facilities and a \
 		sleeping area! Order now, and we'll throw in a TINY FAN, \
 		absolutely free!"
-	mappath = "maps/templates/shelters/shelter_1.dmm"
+	map_path = "maps/templates/shelters/shelter_1.dmm"
 
 /datum/map_template/shelter/beta
 	name = "Shelter Beta"
@@ -67,7 +67,7 @@
 		running water, a gourmet three course meal, cooking facilities, \
 		and a deluxe companion to keep you from getting lonely during \
 		an ash storm."
-	mappath = "maps/templates/shelters/shelter_2.dmm"
+	map_path = "maps/templates/shelters/shelter_2.dmm"
 
 /datum/map_template/shelter/gamma
 	name = "Shelter Gamma"
@@ -77,7 +77,7 @@
 		also has a sink. This isn't a survival capsule and so you can \
 		expect that this won't save you if you're bleeding out to \
 		death."
-	mappath = "maps/templates/shelters/shelter_3.dmm"
+	map_path = "maps/templates/shelters/shelter_3.dmm"
 
 /datum/map_template/shelter/delta
 	name = "Shelter Delta"
@@ -87,7 +87,7 @@
 		supplies allow it to hold out for an extended period of time\
 		and a built in medical facility allows field treatment to be \
 		possible."
-	mappath = "maps/templates/shelters/shelter_4.dmm"
+	map_path = "maps/templates/shelters/shelter_4.dmm"
 
 /datum/map_template/shelter/phi
 	name = "Shelter Phi"
@@ -97,4 +97,4 @@
 		Originally designed for use by colonists on worlds with little to \
 		to no contact, the expense of these shelters have prevented them \
 		from seeing common use."
-	mappath = "maps/templates/shelters/shelter_a.dmm"
+	map_path = "maps/templates/shelters/shelter_a.dmm"

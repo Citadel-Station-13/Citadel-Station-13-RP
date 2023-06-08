@@ -409,7 +409,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 /datum/map_template/lateload/tether/tether_misc
 	name = "Tether - Misc"
 	desc = "Misc areas, like some transit areas, holodecks, merc area."
-	mappath = "maps/map_files/tether/tether_misc.dmm"
+	map_path = "maps/map_files/tether/tether_misc.dmm"
 
 	associated_map_datum = /datum/map_level/tether_lateload/misc
 
@@ -420,7 +420,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 /datum/map_template/lateload/tether/tether_underdark
 	name = "Tether - Underdark"
 	desc = "Mining, but harder."
-	mappath = "maps/map_files/tether/tether_underdark.dmm"
+	map_path = "maps/map_files/tether/tether_underdark.dmm"
 
 	associated_map_datum = /datum/map_level/tether_lateload/underdark
 
@@ -438,7 +438,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 /datum/map_template/lateload/tether/tether_plains
 	name = "Tether - Plains"
 	desc = "The Virgo 3B away mission."
-	mappath = "maps/map_files/tether/tether_plains.dmm"
+	map_path = "maps/map_files/tether/tether_plains.dmm"
 	associated_map_datum = /datum/map_level/tether_lateload/tether_plains
 
 /datum/map_level/tether_lateload/tether_plains

@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(mapping)
 	for(var/T in subtypesof(/datum/map_template))
 		var/datum/map_template/template = T
 		template = new T
-		if(!template.mappath)
+		if(!template.map_path)
 			qdel(template)
 			continue
 		map_templates[template.name] = template
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))
 		var/datum/map_template/shelter/shelter_type = item
-		if(!(initial(shelter_type.mappath)))
+		if(!(initial(shelter_type.map_path)))
 			continue
 		var/datum/map_template/shelter/S = new shelter_type()
 

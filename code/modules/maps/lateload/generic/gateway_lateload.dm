@@ -24,7 +24,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 	abstract_type = /datum/map_template/lateload/gateway
 	name = "Gateway Submap"
 	desc = "Please do not use this."
-	mappath = null
+	map_path = null
 	associated_map_datum = null
 
 /datum/map_level/gateway/gateway_destination
@@ -36,7 +36,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/snow_outpost
 	name = "Snow Outpost"
 	desc = "Big snowy area with various outposts."
-	mappath = 'maps/away_missions/140x140/snow_outpost.dmm'
+	map_path = 'maps/away_missions/140x140/snow_outpost.dmm'
 	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ////////////
@@ -45,7 +45,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/zoo
 	name = "Zoo"
 	desc = "Gigantic space zoo"
-	mappath = 'maps/away_missions/140x140/zoo.dmm'
+	map_path = 'maps/away_missions/140x140/zoo.dmm'
 	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ///////////////////
@@ -54,7 +54,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/carpfarm
 	name = "Carp Farm"
 	desc = "Asteroid base surrounded by carp"
-	mappath = 'maps/away_missions/140x140/carpfarm.dmm'
+	map_path = 'maps/away_missions/140x140/carpfarm.dmm'
 	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 ///////////////////
@@ -63,7 +63,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/snowfield
 	name = "Snow Field"
 	desc = "An old base in middle of snowy wasteland"
-	mappath = 'maps/away_missions/140x140/snowfield.dmm'
+	map_path = 'maps/away_missions/140x140/snowfield.dmm'
 	associated_map_datum = /datum/map_level/gateway/gateway_destination
 
 //////////////////////
@@ -72,5 +72,5 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/listeningpost
 	name = "Listening Post"
 	desc = "Asteroid-bound mercenary listening post"
-	mappath = 'maps/away_missions/140x140/listeningpost.dmm'
+	map_path = 'maps/away_missions/140x140/listeningpost.dmm'
 	associated_map_datum = /datum/map_level/gateway/gateway_destination

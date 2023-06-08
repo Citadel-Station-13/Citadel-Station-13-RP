@@ -42,7 +42,7 @@
  *
  * @return /datum/dmm_parsed instance
  */
-/proc/parsed_map(map, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper)
+/proc/parse_map(map, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper)
 	#warn impl
 
 /**

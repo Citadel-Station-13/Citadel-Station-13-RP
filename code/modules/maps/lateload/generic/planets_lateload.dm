@@ -5,7 +5,7 @@
 /datum/map_template/lateload/planets/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
-	mappath = "maps/map_levels/140x140/virgo2_aerostat.dmm"
+	map_path = "maps/map_levels/140x140/virgo2_aerostat.dmm"
 	associated_map_datum = /datum/map_level/planets_lateload/away_aerostat
 
 /datum/map_level/planets_lateload/away_aerostat
@@ -15,7 +15,7 @@
 /datum/map_template/lateload/planets/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
-	mappath = "maps/map_levels/140x140/virgo2_surface.dmm"
+	map_path = "maps/map_levels/140x140/virgo2_surface.dmm"
 	associated_map_datum = /datum/map_level/planets_lateload/away_aerostat_surface
 
 /datum/map_template/lateload/planets/away_aerostat_surface/on_map_loaded(z)
