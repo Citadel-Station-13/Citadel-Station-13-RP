@@ -745,6 +745,26 @@ Swimsuits
 	name = "Antediluvian Corset"
 	path = /obj/item/clothing/under/antediluvian
 
+/datum/gear/uniform/antediluvian_dress
+	name = "Antediluvian Dress"
+	path = /obj/item/clothing/under/antediluvian/dress
+
+/datum/gear/accessory/antediluvian_gloves_alt
+	name = "Antediluvian Bracers Alternate"
+	path = /obj/item/clothing/accessory/antediluvian_gloves/alt
+
+/datum/gear/accessory/antediluvian_socks
+	name = "Antediluvian Socks"
+	path = /obj/item/clothing/accessory/antediluvian_socks
+
+/datum/gear/accessory/antediluvian_necklace
+	name = "Antediluvian Necklace"
+	path = /obj/item/clothing/accessory/antediluvian_necklace
+
+/datum/gear/accessory/antediluvian_flaps
+	name = "Antediluvian Flaps"
+	path = /obj/item/clothing/accessory/antediluvian_flaps
+
 /datum/gear/uniform/hasie
 	name = "Hasie Designer Skirt/Vest"
 	path = /obj/item/clothing/under/hasie
@@ -800,6 +820,10 @@ Swimsuits
 /datum/gear/uniform/asmodai
 	name = "Asmodai Laced Blouse"
 	path = /obj/item/clothing/under/asmodai
+
+/datum/gear/uniform/blackshortsripped
+	name = "Ripped Black Shorts"
+	path = /obj/item/clothing/under/blackshortsripped
 
 /datum/gear/uniform/summerdress_selection
 	name = "Summer Dress Selection"
@@ -868,3 +892,50 @@ Swimsuits
 /datum/gear/uniform/ballet/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+//Tajaran wears
+
+/datum/gear/uniform/tajaran/summercloths_selection
+	name = "Adhomian summerwear"
+	path = /obj/item/clothing/under/tajaran/summer
+
+/datum/gear/uniform/tajaran/summercloths_selection/New()
+	..()
+	var/list/summercloths_selection = list()
+	for(var/summercloths in (typesof(/obj/item/clothing/under/tajaran/summer)))
+		var/obj/item/clothing/under/summercloths_type = summercloths
+		summercloths_selection[initial(summercloths_type.name)] = summercloths_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(summercloths_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/tajara_dress_selection
+	name = "Adhomian dresses selection"
+	description = "A selection of tajaran native dresses."
+	path = /obj/item/clothing/under/dress/tajaran
+
+/datum/gear/uniform/tajaran/tajara_dress_selection/New()
+	..()
+	var/list/tajara_dress_selection = list()
+	for(var/tajara_dress in (typesof(/obj/item/clothing/under/dress/tajaran)))
+		var/obj/item/clothing/under/dress/tajaran/tajara_dress_type = tajara_dress
+		tajara_dress_selection[initial(tajara_dress_type.name)] = tajara_dress_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_dress_selection, /proc/cmp_text_asc))
+
+/datum/gear/uniform/tajaran/laborer
+	name = "Generic Adhomian laborer clothes"
+	path = /obj/item/clothing/under/tajaran
+
+/datum/gear/uniform/tajaran/machinist
+	name = "Adhomian machinist uniform"
+	path = /obj/item/clothing/under/tajaran/mechanic
+
+/datum/gear/uniform/tajaran/raakti_shariim
+	name = "Raakti shariim uniform"
+	path = /obj/item/clothing/under/tajaran/raakti_shariim
+
+/datum/gear/uniform/tajaran/dpra
+	name = "DPRA laborer clothes"
+	path = /obj/item/clothing/under/tajaran/dpra
+
+/datum/gear/uniform/tajaran/dpra/alt
+	name = "DPRA laborer clothes, alternate"
+	path = /obj/item/clothing/under/tajaran/dpra/alt

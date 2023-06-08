@@ -74,6 +74,15 @@
 	storage_name = "Travel Oversight Control"
 	allow_items = TRUE
 
+/obj/machinery/computer/cryopod/psych_ward
+	name = "psych ward oversight console"
+	desc = "An interface between patients and the cryo pod oversight systems tasked with keeping track of all patients who enter deep storage."
+	circuit = "/obj/item/circuitboard/robotstoragecontrol"
+
+	storage_type = "patients"
+	storage_name = "Patient Storage Control"
+	allow_items = TRUE
+
 /obj/machinery/computer/cryopod/ashlander
 	name = "protective warrens token"
 	desc = "A hand carved fetish meant to be hung near entrances to the Warrens, to ward off evil spirits."
@@ -728,7 +737,7 @@
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
-		I.layer = ABOVE_LIGHTING_LAYER
+		I.layer = ABOVE_LIGHTING_LAYER_MAIN
 		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
 	else
@@ -736,7 +745,7 @@
 		if(operable())
 			var/image/I = image(icon, src, "[base_icon_state]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
-			I.layer = ABOVE_LIGHTING_LAYER
+			I.layer = ABOVE_LIGHTING_LAYER_MAIN
 			add_overlay(I)
 
 /obj/machinery/computer/cryopod/gateway

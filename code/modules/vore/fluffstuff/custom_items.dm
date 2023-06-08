@@ -766,7 +766,7 @@
 	slot_flags = SLOT_EYES | SLOT_EARS
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
-	off_state = "spiffygogsup"
+	inactive_icon_state = "spiffygogsup"
 
 //General use
 /obj/item/clothing/accessory/tronket
@@ -790,7 +790,6 @@
 	overlay_state = "flops"
 	slot_flags = SLOT_TIE
 	slot = ACCESSORY_SLOT_DECOR
-
 
 //InterroLouis: Ruda Lizden
 /obj/item/clothing/accessory/badge/holo/detective/ruda

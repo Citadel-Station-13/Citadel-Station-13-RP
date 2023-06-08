@@ -188,9 +188,6 @@
 	color = "#302000"
 
 /datum/reagent/nutriment/coco/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 /datum/reagent/nutriment/instantjuice
 	name = "Juice Powder"
@@ -480,9 +477,11 @@
 /datum/reagent/capsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
+	if(alien == IS_NARAMADI)
+		return
+	if(alien == IS_UNATHI)
+		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
-		if(prob(5))
-			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -494,6 +493,33 @@
 		to_chat(M, "<span class='danger'>Your insides feel uncomfortably hot!</span>")
 	if(dose >= 5)
 		M.apply_effect(2, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
+
+/datum/reagent/hexaisin
+	name = "Hexaisin"
+	id = "hexaisin"
+	description = "A common chemical found in various plant life in the Moghes regions."
+	taste_description = "pleasant fire"
+	taste_mult = 1.5
+	reagent_state = REAGENT_LIQUID
+	ingest_met = REM
+	color = "#B31008"
+
+/datum/reagent/hexaisin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(3, AGONY, 0)
 		if(prob(5))
 			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
 	holder.remove_reagent("frostoil", 5)
@@ -636,6 +662,10 @@
 			M.apply_effect(effective_strength / 2, AGONY, 0)
 
 /datum/reagent/condensedcapsaicin/affect_ingest(mob/living/carbon/M, alien, removed)
+	if(alien == IS_NARAMADI) //Moghes species with exception of Zaddat (for obvious reasons) are immune to taste and ingested effects of Capsaisin and Condensed variants.
+		return
+	if(alien == IS_UNATHI) //If you want to know why, look at Hexaisin. They are still affected by pepperspray, but not drinking it.
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(!H.can_feel_pain())
@@ -889,6 +919,7 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	taste_description = "milk"
 	color = "#DFDFDF"
+	var/contains_lactose = TRUE
 
 	glass_name = "Milk"
 	glass_desc = "White and nutritious goodness!"
@@ -913,8 +944,6 @@
 
 /datum/reagent/drink/milk/chocolate/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milk/affect_ingest(mob/living/carbon/M, alien, removed)
@@ -922,10 +951,17 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI) //Species-wide lactose intolerance, also funny that cheeses can't drink milk.
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -947,6 +983,7 @@
 	description = "An opaque white liquid made from soybeans."
 	taste_description = "soy milk"
 	color = "#DFDFC7"
+	contains_lactose = FALSE
 
 	glass_name = "Soy Milk"
 	glass_desc = "White and nutritious soy goodness!"
@@ -961,6 +998,7 @@
 	description = "An opaque white liquid made from the white inner flesh of a coconut."
 	taste_description = "creamy coconut"
 	color = "#cecece"
+	contains_lactose = FALSE
 
 	glass_name = "Coconut Milk"
 	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
@@ -1109,7 +1147,6 @@
 	if(alien == IS_DIONA)
 		return
 	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
-		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
 		M.nutrition += removed * 3
 	M.heal_organ_damage(0.5 * removed, 0)
 	holder.remove_reagent("capsaicin", 10 * removed)
@@ -1314,9 +1351,8 @@
 	cup_desc = "Made with love! And cocoa beans."
 
 /datum/reagent/drink/hot_coco/affect_ingest(mob/living/carbon/M, alien, removed)
+	..()
 	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/soda/sodawater
@@ -1461,6 +1497,7 @@
 	taste_description = "vanilla milkshake"
 	color = "#AEE5E4"
 	adj_temp = -9
+	var/contains_lactose = TRUE //in place in case someone makes adds milkshakes with soymilk or coconut milk
 
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
@@ -1485,6 +1522,15 @@
 		else
 			M.afflict_sleeping(20 * 20)
 			M.drowsyness = max(M.drowsyness, 60)
+	if(contains_lactose == TRUE && alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 
 /datum/reagent/drink/milkshake/chocoshake
 	name = "Chocolate Milkshake"
@@ -1498,9 +1544,7 @@
 	glass_desc = "A refreshing chocolate milkshake, just like mom used to make."
 
 /datum/reagent/drink/milkshake/chocoshake/affect_ingest(mob/living/carbon/M, alien, removed)
-	if(alien == IS_ALRAUNE) //cit change: choccy is full of natural easily digestible plant fats
-		if(prob(5))
-			to_chat(M, "<span class='vox'>You feel a rush of nutrients fill your body.</span>")
+	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		M.nutrition += removed * 5
 
 /datum/reagent/drink/milkshake/berryshake
@@ -2181,7 +2225,7 @@
 	glass_icon = DRINK_ICON_NOISY
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/ethanol/rootbeerfloat
+/datum/reagent/drink/soda/rootbeerfloat
 	name = "Root Beer Float"
 	id = "rootbeerfloat"
 	description = "A classic from Humanity's early days. Soothing, cool, and nostalgic."
@@ -2231,10 +2275,9 @@
 	glass_desc = "A freezing pint of beer"
 
 /datum/reagent/ethanol/beer/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.jitteriness = max(M.jitteriness - 3, 0)
+	. = ..()
+	if(.)
+		M.jitteriness = max(M.jitteriness - 3, 0)
 
 /datum/reagent/ethanol/bluecuracao
 	name = "Blue Curacao"
@@ -2273,10 +2316,9 @@
 	glass_desc = "Now you want to Pray for a pirate suit, don't you?"
 
 /datum/reagent/ethanol/deadrum/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	if(alien == IS_DIONA)
-		return
-	M.dizziness +=5
+	. = ..()
+	if(.)
+		M.dizziness += 5
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -2320,7 +2362,7 @@
 /datum/reagent/ethanol/coffee/affect_ingest(mob/living/carbon/M, alien, removed)
 	if(alien == IS_DIONA)
 		return
-	..()
+	. = ..() // the rest is coffee stuff, ugh, go make reagent traits etc
 	M.dizziness = max(0, M.dizziness - 5)
 	M.drowsyness = max(0, M.drowsyness - 3)
 	M.adjust_sleeping(20 * -2)
@@ -2427,7 +2469,7 @@
 	glass_desc = "This is a glass of Thirteen Loko, it appears to be of the highest quality. The drink, not the glass."
 
 /datum/reagent/ethanol/thirteenloko/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.drowsyness = max(0, M.drowsyness - 7)
@@ -2459,7 +2501,7 @@
 	glass_desc = "The glass contain wodka. Xynta."
 
 /datum/reagent/ethanol/vodka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.cure_radiation(RAD_MOB_CURE_STRENGTH_VODKA(removed))
 
 /datum/reagent/ethanol/whiskey
@@ -2693,7 +2735,7 @@
 	glass_desc = "Heavy, hot and strong. Just like the Iron fist of the LAW."
 
 /datum/reagent/ethanol/beepsky_smash/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.afflict_stun(20 * 2)
 
 /datum/reagent/ethanol/bilk
@@ -3062,7 +3104,7 @@
 	glass_special = list("neuroright")
 
 /datum/reagent/ethanol/neurotoxin/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	M.afflict_paralyze(20 * 3)
 
 /datum/reagent/ethanol/patron
@@ -3090,13 +3132,13 @@
 
 /datum/reagent/ethanol/pwine/affect_ingest(mob/living/carbon/M, alien, removed)
 	..()
-	if(dose > 30)
+	if(. > 30)
 		M.adjustToxLoss(2 * removed)
-	if(dose > 60 && ishuman(M) && prob(5))
+	if(. > 60 && ishuman(M) && prob(5))
 		var/mob/living/carbon/human/H = M
 		var/obj/item/organ/internal/heart/L = H.internal_organs_by_name[O_HEART]
 		if (L && istype(L))
-			if(dose < 120)
+			if(. < 120)
 				L.take_damage(10 * removed, 0)
 			else
 				L.take_damage(100, 0)
@@ -3327,7 +3369,10 @@
 	..()
 	if(alien == IS_DIONA)
 		return
-
+	if(alien == IS_UNATHI)
+		return
+	if(alien == IS_NARAMADI)
+		return
 	var/drug_strength = 10
 	if(alien == IS_SKRELL)
 		drug_strength = drug_strength * 0.8
@@ -3335,6 +3380,18 @@
 	M.druggy = max(M.druggy, drug_strength)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && CHECK_MOBILITY(M, MOBILITY_CAN_MOVE))
 		step(M, pick(GLOB.cardinal))
+
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(!H.can_feel_pain())
+			return
+	if(dose == metabolism)
+		to_chat(M, "<span class='danger'>You feel like your insides are burning!</span>")
+	else
+		M.apply_effect(4, AGONY, 0)
+		if(prob(5))
+			M.visible_message("<span class='warning'>[M] [pick("dry heaves!","coughs!","splutters!")]</span>", "<span class='danger'>You feel like your insides are burning!</span>")
+	holder.remove_reagent("frostoil", 5)
 
 /datum/reagent/ethanol/sakebomb
 	name = "Sake Bomb"
@@ -3797,9 +3854,9 @@
 	glass_special = list(DRINK_FIZZ)
 
 /datum/reagent/ethanol/godka/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed))
-	if(ishuman(M))
+	. = ..()
+	M.cure_radiation(RAD_MOB_CURE_STRENGTH_GODKA(removed * .))
+	if(. && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.has_organ[O_LIVER])
 			var/obj/item/organ/L = H.internal_organs_by_name[O_LIVER]
@@ -4218,7 +4275,7 @@
 
 //This functions the same as Doctor's Delight, except it gets you drunk too.
 /datum/reagent/ethanol/royaljelly/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.adjustOxyLoss(-4 * removed)
@@ -4551,6 +4608,16 @@
 	color = "#EDB91F"
 	taste_description = "cheese"
 
+/datum/reagent/nutriment/protein/cheese/affect_ingest(mob/living/carbon/M, alien, removed) //Cheese is a kind of milk.
+	if(alien == IS_NARAMADI)
+		if(prob(5))
+			to_chat("You feel nauseous!")
+			return
+		if(prob(20))
+			var/mob/living/L = M
+			L.vomit()
+	return
+
 //SYNNONO MEME FOODS EXPANSION - Credit to Synnono
 
 /datum/reagent/spacespice
@@ -4594,11 +4661,11 @@
 	glass_desc = "The perfect blend of the most alcoholic things a bartender can get their hands on."
 
 /datum/reagent/ethanol/deathbell/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 
-	if(dose * strength >= strength) // Early warning
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/monstertamer
@@ -4663,15 +4730,12 @@
 	glass_desc = "Looking into this is like staring at the stars."
 
 /datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
+
 	M.afflict_stun(20 * 2)
-
-/datum/reagent/ethanol/galacticpanic/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
-
-	if(dose * strength >= strength) // Early warning
+	if(. >= strength) // Early warning
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
-	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
+	if(. >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
 
 /datum/reagent/ethanol/lotus
@@ -4887,13 +4951,13 @@
 	glass_desc = "Deathbell and nuclear waste. The bane of your liver."
 
 /datum/reagent/ethanol/desiretodie/affect_blood(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.bloodstr.add_reagent("radium", 0.3)
 
 /datum/reagent/ethanol/desiretodie/affect_ingest(mob/living/carbon/M, alien, removed)
-	..()
+	. = ..()
 	if(alien == IS_DIONA)
 		return
 	M.ingested.add_reagent("radium", 0.25)

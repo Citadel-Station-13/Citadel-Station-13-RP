@@ -99,8 +99,8 @@
 			STATPANEL_DATA_LINE("Phoron Stored: [P.stored_plasma]/[P.max_plasma]")
 
 
-		if(back && istype(back,/obj/item/rig))
-			var/obj/item/rig/suit = back
+		if(back && istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/suit = back
 			var/cell_status = "ERROR"
 			if(suit.cell)
 				cell_status = "[suit.cell.charge]/[suit.cell.maxcharge]"
@@ -325,7 +325,7 @@
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if (href_list["mach_close"])
-		var/t1 = text("window=[]", href_list["mach_close"])
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
@@ -404,8 +404,8 @@
 							if(hasHUD(usr,"security"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -431,14 +431,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"security")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["medical"])
 		if(hasHUD(usr,"medical"))
@@ -521,8 +521,8 @@
 							if(hasHUD(usr,"medical"))
 								read = 1
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									to_chat(usr, text("[]", R.fields[text("com_[]", counter)]))
+								while(R.fields["com_[counter]"])
+									to_chat(usr, "[R.fields["com_[counter]"]]")
 									counter++
 								if (counter == 1)
 									to_chat(usr, "No comment found")
@@ -548,14 +548,14 @@
 								if ( !(t1) || usr.stat || usr.restrained() || !(hasHUD(usr,"medical")) )
 									return
 								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
+								while(R.fields["com_[counter]"])
 									counter++
 								if(istype(usr,/mob/living/carbon/human))
 									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 								if(istype(usr,/mob/living/silicon/robot))
 									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									R.fields["com_[counter]"] = "Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]"
 
 	if (href_list["emprecord"])
 		if(hasHUD(usr,"best"))
@@ -620,6 +620,11 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["character_profile"])
+		if(!profile)
+			profile = new(src)
+		profile.ui_interact(usr)
 	..()
 	return
 /mob/living/carbon/human/needs_to_breathe()
@@ -894,38 +899,6 @@
 	else
 		germ_level += n
 
-/mob/living/carbon/human/revive()
-
-	if(should_have_organ(O_HEART))
-		vessel.add_reagent("blood",species.blood_volume-vessel.total_volume)
-		fixblood()
-
-	species.create_organs(src) // Reset our organs/limbs.
-	restore_all_organs()       // Reapply robotics/amputated status from preferences.
-
-	if(!client || !key) //Don't boot out anyone already in the mob.
-		for (var/obj/item/organ/internal/brain/H in GLOB.all_brain_organs)
-			if(H.brainmob)
-				if(H.brainmob.real_name == src.real_name)
-					if(H.brainmob.mind)
-						H.brainmob.mind.transfer(src)
-						qdel(H)
-
-	// Reapply markings/appearance from prefs for player mobs
-	if(client) //just to be sure
-		client.prefs.copy_to(src)
-		if(dna)
-			dna.ResetUIFrom(src)
-			sync_organ_dna()
-
-	for (var/ID in virus2)
-		var/datum/disease2/disease/V = virus2[ID]
-		V.cure(src)
-
-	losebreath = 0
-
-	..()
-
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[O_LUNGS]
 	return L && L.is_bruised()
@@ -1154,9 +1127,8 @@
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
-	// todo: this is awful lol
-	if(plane_holder && client)
-		client.screen |= plane_holder.plane_masters
+	reload_rendering()
+	update_vision()
 
 	// skip the rest
 	if(skip)
@@ -1268,16 +1240,17 @@
 	if(isSynthetic())
 		switch(severity)
 			if(1)
-				afflict_stagger(20, 30)
+				afflict_stagger(EMP_TRAIT_N(1), 2, 10)
+				afflict_stagger(EMP_TRAIT_N(2), 5, 2)
 				Confuse(10)
 			if(2)
-				afflict_stagger(10, 15)
+				afflict_stagger(EMP_TRAIT_N(1), 2, 10)
 				Confuse(7)
 			if(3)
-				afflict_stagger(5, 10)
+				afflict_stagger(EMP_TRAIT_N(1), 1, 5)
 				Confuse(5)
 			if(4)
-				afflict_stagger(2)
+				afflict_stagger(EMP_TRAIT_N(1), 0.5, 3)
 				Confuse(2)
 		flash_eyes()
 		to_chat(src, "<font align='center' face='fixedsys' size='10' color='red'><B>*BZZZT*</B></font>")
@@ -1312,10 +1285,10 @@
 	else
 		switch(target_zone)
 			if(BP_HEAD) //If targeting head, check helmets
-				if(head && (head.clothing_flags & THICKMATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
+				if(head && (head.clothing_flags & CLOTHING_THICK_MATERIAL) && !ignore_thickness && !istype(head, /obj/item/clothing/head/helmet/space)) //If they're wearing a head piece, if that head piece is thick, the injector doesn't bypass thickness, and that headpiece isn't a space helmet with an injection port - it fails
 					. = 0
 			else //Otherwise, if not targeting head, check the suit
-				if(wear_suit && (wear_suit.clothing_flags & THICKMATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
+				if(wear_suit && (wear_suit.clothing_flags & CLOTHING_THICK_MATERIAL) && !ignore_thickness&& !istype(wear_suit, /obj/item/clothing/suit/space)) //If they're wearing a suit piece, if that suit piece is thick, the injector doesn't bypass thickness, and that suit isn't a space suit with an injection port - it fails
 					. = 0
 	if(!. && error_msg && user)
 		if(!fail_msg)
@@ -1643,7 +1616,7 @@
 	return BULLET_IMPACT_MEAT
 
 /mob/living/carbon/human/reduce_cuff_time()
-	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/rig))
+	if(istype(gloves, /obj/item/clothing/gloves/gauntlets/hardsuit))
 		return 2
 	return ..()
 

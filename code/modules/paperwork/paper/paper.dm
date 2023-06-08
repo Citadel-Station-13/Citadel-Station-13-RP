@@ -375,9 +375,9 @@
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
 			var/mob/living/M = usr
-			if(istype(M) && M.back && istype(M.back,/obj/item/rig))
-				var/obj/item/rig/r = M.back
-				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
+			if(istype(M) && M.back && istype(M.back,/obj/item/hardsuit))
+				var/obj/item/hardsuit/r = M.back
+				var/obj/item/hardsuit_module/device/pen/m = locate(/obj/item/hardsuit_module/device/pen) in r.installed_modules
 				if(r.is_online() && m)
 					i = m.device
 				else
@@ -586,6 +586,10 @@
 /obj/item/paper/particle_info
 	name = "Particle Control Panel - A Troubleshooter's Guide"
 	info = "If the Particle Control panel is not responding to inputs, simply toggle power to equipment and/or flip the breaker on your local Area Power Controller (APC). Turn the power off, and then back on again. This will resolve the issue."
+
+/obj/item/paper/armory_info
+	name = "IMPORTANT: Armory SOP Update"
+	info = "Please review armory policies on your terminal at: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Armory -Note that security officers now require a permit form as well as an equipment request form for longarm (two handed) weapons, stated here: https://citadel-station.net/wikiRP/index.php?title=SoP:_Security#Security Armory paperwork forms 4705 through 4708 can be found here: https://citadel-station.net/wikiRP/index.php?title=Guide:_Paperwork#Armory_Inventory"
 
 //Lava Land Colony Notes
 /obj/item/paper/lavaland

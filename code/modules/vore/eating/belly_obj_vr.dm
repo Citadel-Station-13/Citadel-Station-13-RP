@@ -170,7 +170,7 @@
 
 /obj/belly/Destroy()
 	SSbellies.belly_list -= src
-	if(owner)
+	if(owner?.vore_organs)
 		owner.vore_organs -= src
 		owner = null
 	. = ..()
@@ -346,7 +346,7 @@
 		if("em")
 			raw_messages = examine_messages
 
-	var/messages = list2text(raw_messages,delim)
+	var/messages = jointext(raw_messages, delim)
 	return messages
 
 // The next function sets the messages on the belly, from human-readable var

@@ -199,7 +199,7 @@
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[msg]"))
+		if (M.real_name == "[msg]")
 			return 1
 	return 0
 
@@ -611,6 +611,9 @@ var/list/global/organ_rel_size = list(
 	if(!screen_place)
 		item.screen_loc = null
 		return
+
+	if(item.base_pixel_x || item.base_pixel_y)
+		screen_place = pixel_shift_screen_loc(screen_place, item.base_pixel_x, item.base_pixel_y)
 
 	item.screen_loc = screen_place
 

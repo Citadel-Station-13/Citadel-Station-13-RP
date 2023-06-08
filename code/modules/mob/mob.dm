@@ -14,18 +14,21 @@
  * * Intialize the transform of the mob
  */
 /mob/Initialize(mapload)
+	// mob lists
 	GLOB.mob_list += src
-	set_key_focus(src)
 	if(stat == DEAD)
 		dead_mob_list += src
 	else
 		living_mob_list += src
+	// atom HUDs
+	set_key_focus(src)
 	prepare_huds()
 	for(var/v in GLOB.active_alternate_appearances)
 		if(!v)
 			continue
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
+	// todo: remove hooks
 	hook_vr("mob_new",list(src))
 	// abilities
 	init_abilities()
@@ -48,41 +51,21 @@
 	update_ssd_overlay()
 	return ..()
 
-/**
- * Delete a mob
- *
- * Removes mob from the following global lists
- * * GLOB.mob_list
- * * dead_mob_list
- * * living_mob_list
- *
- * Unsets the focus var
- *
- * Clears alerts for this mob
- *
- * Resets all the observers perspectives to the tile this mob is on
- *
- * qdels any client colours in place on this mob
- *
- * Ghostizes the client attached to this mob
- *
- * Parent call
- *
- * Returns QDEL_HINT_HARDDEL (don't change this)
- */
-/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
+/mob/Destroy()
 	// status effects
 	for(var/id in status_effects)
 		var/datum/status_effect/effect = status_effects[id]
 		qdel(effect)
 	status_effects = null
 	// mob lists
-	GLOB.mob_list -= src
-	dead_mob_list -= src
-	living_mob_list -= src
-	unset_machine()
+	mob_list_unregister(stat)
+	// movespeed
 	movespeed_modification = null
+	// actionspeed
 	actionspeed_modification = null
+	// todo: remove machine
+	unset_machine()
+	// hud
 	for(var/alert in alerts)
 		clear_alert(alert)
 	if(client)
@@ -104,17 +87,34 @@
 	dispose_abilities()
 	// this kicks out client
 	ghostize()
+	// rendering
 	if(hud_used)
 		QDEL_NULL(hud_used)
 	dispose_rendering()
-	if(plane_holder)
-		QDEL_NULL(plane_holder)
-	// with no client, we can safely remove perspective this way snow-flakily
-	if(using_perspective)
-		using_perspective.RemoveMob(src)
-		using_perspective = null
+	// perspective
+	using_perspective?.remove_mobs(src, TRUE)
+	if(self_perspective)
+		QDEL_NULL(self_perspective)
 	..()
 	return QDEL_HINT_HARDDEL
+
+/mob/proc/mob_list_register(for_stat)
+	GLOB.mob_list += src
+	if(for_stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+
+/mob/proc/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
+	if(for_stat == DEAD)
+		dead_mob_list -= src
+	else
+		living_mob_list -= src
+
+/mob/proc/mob_list_update_stat(old_stat, new_stat)
+	mob_list_unregister(old_stat)
+	mob_list_register(new_stat)
 
 /**
  * Generate the tag for this mob
@@ -237,7 +237,7 @@
 
 /mob/proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
-		if (M.real_name == text("[]", msg))
+		if (M.real_name == "[msg]")
 			return M
 	return 0
 
@@ -703,12 +703,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		handle_strip_topic(usr, href_list, op)
 		return
 	if(href_list["mach_close"])
-		var/t1 = text("window=[href_list["mach_close"]]")
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 
 	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
+		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY><TT>[replacetext(flavor_text, "\n", "<BR>")]</TT></BODY></HTML>", "window=[name];size=500x200")
 		onclose(usr, "[name]")
 	if(href_list["flavor_change"])
 		update_flavor_text()

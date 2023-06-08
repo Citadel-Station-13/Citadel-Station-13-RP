@@ -1,3 +1,9 @@
+/**
+ * Supertype of global singletons used to organize game systems.
+ *
+ * * Do not delete any global singletons in Destroy(); use Recover() to inherit them, and rebuild if necessary.
+ * * Destroy() should only terminate state that should not be kept across a hard reload of a controller, such as current tick usage/queue priorities/whatnot.
+ */
 /datum/controller
 	/// Stub for subsystem names.
 	var/name

@@ -10,8 +10,9 @@
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
 	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
-	layer = LAYER_HUD_BASE
-	plane = PLANE_PLAYER_HUD
+	layer = HUD_LAYER_BASE
+	plane = HUD_PLANE
+	atom_colouration_system = FALSE
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
 	var/datum/hud/hud = null // A reference to the owner HUD, if any.
 
@@ -271,8 +272,8 @@
 							tanks += C.get_active_held_item()
 							// yes, the above can result in duplicates.
 							// snowflake rig handling, second highest priority
-							if(istype(C.back, /obj/item/rig))
-								var/obj/item/rig/R = C.back
+							if(istype(C.back, /obj/item/hardsuit))
+								var/obj/item/hardsuit/R = C.back
 								if(R.air_supply && R?.is_activated())
 									locnames += "in your hardsuit"
 									tanks += R.air_supply

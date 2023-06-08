@@ -153,7 +153,7 @@
 
 /obj/machinery/power/supermatter/proc/explode()
 	message_admins("Supermatter exploded at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-	log_game("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+	investigate_log("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 	anchored = 1
 	grav_pulling = 1
 	exploded = 1
@@ -210,7 +210,7 @@
 		alert_msg = null
 	if(alert_msg)
 		GLOB.global_announcer.autosay(alert_msg, "Supermatter Monitor", "Engineering")
-		log_game("SUPERMATTER([x],[y],[z]) Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+		investigate_log("Emergency engineering announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
@@ -219,7 +219,7 @@
 					SEND_SOUND(M, message_sound)
 			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222")
 			public_alert = 1
-			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
+			investigate_log("Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]", INVESTIGATE_SUPERMATTER)
 		else if((damage > emergency_point) && public_alert)
 			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
 			for(var/mob/M in GLOB.player_list)
@@ -351,7 +351,7 @@
 		env.merge(removed)
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(sqrt(power/6))))) // If they can see it without mesons on.  Bad on them.
-		if(l.isSynthetic() || (PLANE_MESONS in l.planes_visible))
+		if(l.isSynthetic())
 			continue
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
@@ -380,7 +380,7 @@
 		added_damage = proj_damage * config_bullet_energy
 		damage += added_damage
 	if(added_energy || added_damage)
-		log_game("SUPERMATTER([x],[y],[z]) Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.")
+		investigate_log("Hit by \"[Proj.name]\". +[added_energy] Energy, +[added_damage] Damage.", INVESTIGATE_SUPERMATTER)
 	return 0
 
 /obj/machinery/power/supermatter/attack_robot(mob/user as mob)
@@ -476,6 +476,7 @@
 	Consume(AM)
 
 /obj/machinery/power/supermatter/proc/Consume(var/mob/living/user)
+	investigate_log("Consumed [user] ([ref(user)]) potentially last touched by [user.fingerprintslast], adding [istype(user)? 400 : 200] energy.", INVESTIGATE_SUPERMATTER)
 	if(istype(user))
 		user.dust()
 		power += 200
@@ -537,7 +538,7 @@
 /obj/item/broken_sm/Initialize(mapload)
 	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-	investigate_log(INVESTIGATE_RADIATION, "Broken SM shard created.")
+	investigate_log("Broken SM shard created.", INVESTIGATE_RADIATION)
 	START_PROCESSING(SSobj, src)
 
 /obj/item/broken_sm/process(delta_time)

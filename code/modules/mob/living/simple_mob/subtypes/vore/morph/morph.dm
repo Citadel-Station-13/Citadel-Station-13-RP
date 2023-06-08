@@ -172,9 +172,11 @@
 
 /mob/living/simple_mob/vore/hostile/morph/update_transform()
 	if(morphed)
+		var/matrix/old_matrix = transform
 		var/matrix/M = matrix()
 		M.Scale(icon_scale_x, icon_scale_y)
 		M.Turn(icon_rotation)
 		src.transform = M
+		SEND_SIGNAL(src, COMSIG_MOB_UPDATE_TRANSFORM, old_matrix, M)
 	else
 		..()

@@ -1931,6 +1931,14 @@
         snowflake_worn_state = "antediluvian_s"
 */
 
+/obj/item/clothing/under/antediluvian/dress
+	name = "Antediluvian dress"
+	desc = "A metalic dress with inner padding, following a similar, scantily-clad fashion trend.  It is unknown whether it serveed ceremonial or official purpose."
+	icon_state = "ante"
+	icon = 'icons/clothing/suit/misc/ante.dmi'
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 /obj/item/clothing/under/hasie
 	name = "Hasie skirt"
 	desc = "A daring combination of dark charcoals and vibrant reds and whites, the Hasie skirt/vest combo knows what it's doing. Sporting a low cut charcoal miniskirt and matching midriff button-up, this ensemble wows with the incredible color contrast of its two-tone vest."
@@ -2261,3 +2269,8 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/blackshortsripped
+	name = "ripped black shorts"
+	desc = "A pair of torn up black shorts, for those who know better."
+	icon_state = "black_shorts_ripped"

@@ -1,0 +1,6655 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"ae" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"af" = (
+/obj/structure/table/steel,
+/obj/item/handcuffs/cable/white,
+/obj/item/handcuffs/cable/white{
+	pixel_x = -6
+	},
+/obj/item/handcuffs/cable/white{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/obj/item/handcuffs/cable/white{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/item/stack/cable_coil/white{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"ag" = (
+/obj/structure/table/standard,
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stack/nanopaste{
+	amount = 30;
+	pixel_x = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"ak" = (
+/obj/machinery/optable,
+/obj/machinery/oxygen_pump/anesthetic{
+	pixel_x = -28
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/two)
+"aG" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"aL" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"aR" = (
+/obj/structure/window/basic,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"aY" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/machinery/vending/blood,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"bc" = (
+/obj/structure/sign/greencross,
+/turf/simulated/wall/classm,
+/area/killhouse/two)
+"br" = (
+/obj/machinery/requests_console/preset/medical{
+	pixel_y = 26
+	},
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/firstaid/adv,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"bA" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"bD" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"bL" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/door/airlock/multi_tile/glass,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"bR" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"cw" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/shoot{
+	pixel_y = 12
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"cx" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"cD" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 12
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"cK" = (
+/obj/machinery/holoposter{
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"cN" = (
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"cZ" = (
+/obj/structure/aquarium/prefilled,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"dc" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"dn" = (
+/obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"dx" = (
+/obj/structure/table/steel,
+/obj/machinery/recharger,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"ei" = (
+/obj/structure/bed/chair/sofa/beige/left,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"ek" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"el" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"er" = (
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"eA" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/window/basic,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"eF" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 8;
+	id = "killhousemedgarage";
+	name = " garage door control";
+	pixel_x = 25
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"eG" = (
+/obj/machinery/vitals_monitor,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"fc" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"fi" = (
+/obj/structure/table/standard,
+/obj/item/storage/box/nifsofts_medical,
+/obj/item/storage/box/syringes{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"fl" = (
+/obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"fx" = (
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"fD" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/vehicle/sealed/rover{
+	dir = 1;
+	pixel_y = 0
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"fF" = (
+/obj/structure/bed/chair/sofa/green{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"fI" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"fL" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/obj/structure/curtain/open,
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"fQ" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	pixel_y = 24
+	},
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"fT" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"gh" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"gE" = (
+/obj/structure/table/standard,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"gH" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"gM" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/electrical,
+/obj/effect/debris/cleanable/cobweb2,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"gS" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"hb" = (
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"hg" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"hk" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/nanopaste{
+	amount = 30
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"hn" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"ho" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"hO" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/medical_stand/anesthetic,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"hY" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"id" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/bamboo{
+	pixel_y = 11
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"iu" = (
+/obj/structure/table/bench/marble,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"iY" = (
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"jl" = (
+/obj/machinery/door/window/southright,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"jr" = (
+/obj/effect/floor_decal/corner/paleblue,
+/obj/effect/floor_decal/corner/black{
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"jy" = (
+/obj/structure/table/standard,
+/obj/item/deskbell,
+/obj/machinery/door/window/westright,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"jQ" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"ka" = (
+/obj/structure/flora/bush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"kf" = (
+/obj/machinery/button/remote/blast_door{
+	dir = 4;
+	id = "killhousemedgarage";
+	name = " garage door control";
+	pixel_x = -25;
+	pixel_y = -1
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"kj" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"kk" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"kG" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"kI" = (
+/obj/structure/curtain/medical,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"kJ" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"kT" = (
+/obj/structure/trash_pile,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"kW" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"kY" = (
+/obj/machinery/door/window/northleft,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"lb" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"lh" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"lv" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"lB" = (
+/obj/structure/flora/bush,
+/obj/structure/window/basic,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"lH" = (
+/obj/machinery/computer/operating{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monowhite,
+/area/killhouse/two)
+"mc" = (
+/obj/structure/bed/chair/sofa/green/right{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"md" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"me" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"mk" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/bamboo{
+	pixel_y = 11
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"mG" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 2
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/killhouse/two)
+"mH" = (
+/obj/structure/table/steel,
+/obj/item/card,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"mL" = (
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"na" = (
+/obj/structure/aquarium/prefilled,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"nf" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"ng" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"ny" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"nB" = (
+/obj/structure/table/standard,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/clothing/accessory/stethoscope,
+/obj/item/clothing/accessory/stethoscope,
+/obj/item/clothing/accessory/stethoscope,
+/obj/item/hand_labeler,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"nI" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"nZ" = (
+/obj/structure/trash_pile,
+/obj/item/trash,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"os" = (
+/obj/structure/closet/crate/trashcart,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"oB" = (
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"oY" = (
+/obj/structure/table/steel,
+/obj/item/circuitboard/med_data,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"pc" = (
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"pl" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/flora/bush,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"ps" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"pt" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"pu" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"pC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"qg" = (
+/turf/simulated/floor/concrete/tile/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"ql" = (
+/obj/structure/bed/chair/sofa/green,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"qs" = (
+/obj/structure/table/steel,
+/obj/item/circuitboard/message_monitor,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"qF" = (
+/obj/machinery/vending/cola,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"qG" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"qI" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/southright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"qW" = (
+/obj/structure/bed/chair/sofa/beige,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"ri" = (
+/obj/machinery/holoposter{
+	pixel_x = -32
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"ro" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"rw" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"rC" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"rU" = (
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"rW" = (
+/obj/machinery/light/small,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"sc" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"se" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/structure/bed/chair/sofa/brown/left,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"si" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"sn" = (
+/obj/structure/bed/chair/sofa/green/corner{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"sr" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"sF" = (
+/obj/structure/closet/secure_closet/medical2,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"sJ" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"sO" = (
+/obj/structure/table/standard,
+/obj/item/deskbell,
+/obj/machinery/door/window/eastright,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"sX" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"ts" = (
+/obj/item/trash,
+/obj/machinery/space_heater,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"tx" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"tB" = (
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"tO" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"tP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"uo" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"uE" = (
+/obj/structure/table/reinforced,
+/obj/item/surgical/bioregen,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/sign/greencross{
+	name = "Authorized Medical Personnel Only";
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"uM" = (
+/obj/structure/bed/chair/sofa/beige/right,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"uO" = (
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"uX" = (
+/obj/structure/bed/chair/sofa/beige/right,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"vb" = (
+/obj/machinery/light/small,
+/obj/structure/table/rack/shelf/steel,
+/obj/item/storage/toolbox/emergency,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"ve" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"vg" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"vs" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"vx" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"vB" = (
+/obj/structure/bed/chair/sofa/beige/left,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"vE" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"vF" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"vI" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"vL" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"wt" = (
+/obj/structure/bed/roller/adv,
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"wv" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"ww" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"wE" = (
+/obj/structure/table/reinforced,
+/obj/item/surgical/bioregen,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/sign/department/operational{
+	name = "SURGERY - AUTHORIZED PERSONNEL ONLY";
+	pixel_x = -32
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"wH" = (
+/obj/structure/table/standard,
+/obj/item/paper/pamphlet/violent_video_games,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"wZ" = (
+/obj/effect/floor_decal/industrial/outline/red,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"xc" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"xi" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"xo" = (
+/obj/machinery/bodyscanner,
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"xz" = (
+/obj/structure/table/steel,
+/obj/item/stack/cable_coil/orange,
+/obj/item/stack/cable_coil/orange,
+/obj/item/stack/cable_coil/white{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"xF" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"xP" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"xT" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"xV" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"xW" = (
+/obj/structure/closet/secure_closet/CMO,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"ys" = (
+/obj/structure/table/standard,
+/obj/machinery/readybutton,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"yw" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"yG" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"yK" = (
+/obj/machinery/floodlight,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"yQ" = (
+/obj/structure/bed/chair/sofa/beige/left{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"za" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"zi" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"zo" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"zt" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/standard,
+/obj/item/bodybag/cryobag,
+/obj/item/bodybag/cryobag{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stack/nanopaste{
+	amount = 30;
+	pixel_x = 8
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
+/obj/structure/sign/greencross{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"zu" = (
+/obj/structure/table/standard,
+/obj/item/storage/firstaid/adv,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"zJ" = (
+/obj/machinery/door/airlock/multi_tile/metal,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"zP" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/holopad,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ab" = (
+/obj/structure/sign/nosmoking_2,
+/turf/simulated/wall/classm,
+/area/killhouse/two)
+"Ae" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded{
+	pixel_y = 3
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/tool/screwdriver,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Aj" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"At" = (
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"AL" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"AZ" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/small{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"Ba" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 6
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Bg" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Bp" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"BJ" = (
+/obj/structure/bed/chair/sofa/beige/right,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"BP" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/vending/cigarette,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"BQ" = (
+/obj/structure/table/standard,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/newscaster{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"BS" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"BX" = (
+/obj/structure/table/rack/shelf/steel,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"BY" = (
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Ce" = (
+/obj/machinery/vending/blood,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Ck" = (
+/obj/structure/bed/chair/sofa/beige/right{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Cp" = (
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Cu" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"CC" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"CE" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"CI" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"CM" = (
+/obj/structure/medical_stand/anesthetic,
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"CV" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
+/obj/machinery/camera/network/medbay{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Di" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Do" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Dp" = (
+/obj/structure/closet/crate/bin{
+	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
+	icon_closed = "biohazard";
+	icon_opened = "biohazardopen";
+	icon_state = "biohazard";
+	name = "biohazard bin"
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/alarm{
+	desc = null;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ds" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Dt" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"Dy" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Dz" = (
+/obj/machinery/vending/medical,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"DN" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"DR" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"DU" = (
+/obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Eg" = (
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "killhousemedgarage";
+	name = "Garage"
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"En" = (
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre 1";
+	req_access = list(45)
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Es" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals6{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Et" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ev" = (
+/obj/machinery/power/apc/hyper/east_bump{
+	cell_type = /obj/item/cell/infinite
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"EB" = (
+/obj/structure/table/standard,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"EG" = (
+/obj/structure/table/standard,
+/obj/machinery/computer/med_data/laptop{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"ER" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/structure/window/basic{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Fb" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/northleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Fn" = (
+/obj/structure/trash_pile,
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Fu" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Fw" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Fy" = (
+/obj/machinery/vending/nifsoft_shop,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"FD" = (
+/obj/structure/table/standard,
+/obj/machinery/computer/med_data/laptop{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"FG" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"FY" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Gv" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 2
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"GE" = (
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"Hd" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded{
+	pixel_y = 3
+	},
+/obj/item/tool/screwdriver,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = 30
+	},
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Hl" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/subterranean{
+	pixel_y = 11
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Hn" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"HB" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/floor_decal/corner/paleblue/bordercorner2,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"HM" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"HX" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 4
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ie" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/obj/structure/bed/chair/sofa/brown/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Ih" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ij" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/black,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"In" = (
+/obj/machinery/computer/med_data/laptop,
+/obj/structure/table/standard,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"Ir" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"Iu" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"IA" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"IC" = (
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"Jk" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/closet/secure_closet/medical2,
+/obj/machinery/alarm{
+	desc = null;
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"JM" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"JQ" = (
+/obj/item/trash,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Ke" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Kk" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"KH" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Lf" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Lt" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"Lx" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/structure/table/standard,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"LB" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/obj/structure/curtain,
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"LL" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"LP" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/machinery/door/window/northright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Mn" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"MB" = (
+/obj/machinery/vending/medical,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"MH" = (
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"MP" = (
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"Nd" = (
+/obj/structure/table/standard,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Nt" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Nu" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
+/obj/structure/filingcabinet/medical,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Nw" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"NB" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"NI" = (
+/turf/simulated/wall/classm,
+/area/killhouse/two)
+"NM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"NN" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"NQ" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"NT" = (
+/obj/machinery/holoposter{
+	pixel_y = 32
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Ob" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Oc" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Of" = (
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/door/window/southleft,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Oj" = (
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Scan Records"
+	},
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Om" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ov" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/medical_wall{
+	name = "defibrillator storage";
+	pixel_y = 32
+	},
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"OF" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"OL" = (
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"OP" = (
+/obj/structure/table/standard,
+/obj/structure/closet/secure_closet/medical_wall{
+	name = "O- Blood Locker";
+	pixel_x = 32;
+	req_access = list(5)
+	},
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/camera/network/medbay{
+	dir = 8
+	},
+/obj/machinery/recharger,
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"OQ" = (
+/obj/machinery/light/spot,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"OY" = (
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Pc" = (
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Pm" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Pn" = (
+/obj/machinery/holoposter{
+	pixel_x = -32
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"Pq" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash,
+/obj/machinery/light/small,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Pu" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/table/rack/shelf/steel,
+/obj/item/tool/wirecutters/power,
+/obj/effect/debris/cleanable/cobweb,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"PF" = (
+/obj/structure/grille,
+/obj/structure/window/basic/full,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"PK" = (
+/obj/machinery/door/airlock/maintenance/medical{
+	req_one_access = null
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"PP" = (
+/obj/effect/floor_decal/corner/black/diagonal,
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Qg" = (
+/obj/structure/table/standard,
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/obj/item/storage/firstaid/fire{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/toxin{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/storage/firstaid/o2{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Qj" = (
+/obj/structure/window/basic{
+	dir = 1
+	},
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two)
+"Qm" = (
+/obj/structure/bed/chair/sofa/green/left,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"Qq" = (
+/obj/machinery/vitals_monitor,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"QG" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/light,
+/obj/structure/closet/medical_wall{
+	name = "defibrillator storage";
+	pixel_y = -32
+	},
+/obj/item/defib_kit/loaded,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"QH" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"QY" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Rh" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/small{
+	pixel_y = 12
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Rr" = (
+/obj/structure/table/standard,
+/obj/item/paper/pamphlet,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Rx" = (
+/obj/structure/closet/crate/trashcart,
+/obj/item/trash,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"RE" = (
+/obj/structure/aquarium/prefilled,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"RK" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"RP" = (
+/obj/machinery/sleep_console,
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"RT" = (
+/obj/machinery/vending/medical,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Sa" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"St" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Sw" = (
+/obj/effect/floor_decal/borderfloorwhite/corner,
+/obj/effect/floor_decal/corner/paleblue/bordercorner,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"SD" = (
+/obj/machinery/light/spot{
+	alpha = 0
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"SG" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/light/spot{
+	dir = 1;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"SX" = (
+/obj/effect/floor_decal/borderfloorwhite/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Tg" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/largebush{
+	pixel_y = 12
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Tp" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/obj/machinery/door/window/southright,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Tr" = (
+/turf/simulated/wall,
+/area/killhouse/two)
+"Ts" = (
+/obj/structure/curtain/open/privacy,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"TJ" = (
+/obj/machinery/light/spot{
+	dir = 8;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/killhouse/two/outside)
+"TM" = (
+/obj/machinery/light/spot{
+	dir = 4;
+	light_range = 8;
+	nightshift_allowed = 0
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"TO" = (
+/obj/structure/closet/secure_closet/medical3{
+	anchored = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ua" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloorwhite/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner2{
+	dir = 5
+	},
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 12
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ud" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Ui" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair,
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 2
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 4
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 6
+	},
+/obj/item/material/twohanded/folded_metal_chair{
+	pixel_y = 8
+	},
+/turf/simulated/floor/plating,
+/area/killhouse/two)
+"Uo" = (
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two/outside)
+"Uq" = (
+/obj/structure/bed/chair/sofa/beige/left,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Us" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"UA" = (
+/obj/machinery/vending/snack,
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"UL" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"UO" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Vl" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 22
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Vs" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/obj/effect/floor_decal/industrial/outline/blue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"VQ" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"VV" = (
+/turf/template_noop,
+/area/template_noop)
+"VY" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Wf" = (
+/obj/machinery/body_scanconsole,
+/turf/simulated/floor/tiled/steel_grid,
+/area/killhouse/two)
+"Wi" = (
+/obj/machinery/power/apc/hyper/south_bump{
+	cell_type = /obj/item/cell/infinite
+	},
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"Wj" = (
+/obj/structure/table/standard,
+/obj/item/newspaper{
+	pixel_y = 3
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Wm" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/flower{
+	pixel_y = 12
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Wo" = (
+/obj/structure/table/standard,
+/obj/item/defib_kit/loaded{
+	pixel_y = 3
+	},
+/obj/item/tool/screwdriver,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Wx" = (
+/obj/machinery/door/airlock/medical{
+	req_one_access = null
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"WX" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"Xf" = (
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/table/standard,
+/obj/item/roller,
+/obj/item/roller{
+	pixel_y = 8
+	},
+/obj/item/roller{
+	pixel_y = 16
+	},
+/obj/machinery/holoposter{
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/corner/paleblue/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"XA" = (
+/obj/structure/filingcabinet/filingcabinet,
+/obj/effect/floor_decal/corner/black/diagonal,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"XC" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"XG" = (
+/obj/machinery/computer/crew{
+	dir = 4;
+	pixel_x = -4
+	},
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"XM" = (
+/obj/machinery/iv_drip,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"XQ" = (
+/obj/structure/table/steel,
+/obj/item/cell/high,
+/turf/simulated/floor/concrete/rng/lythios43c/outdoors,
+/area/killhouse/two)
+"XR" = (
+/obj/structure/bed/chair/sofa/beige,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"Ya" = (
+/obj/structure/bed/chair/sofa/beige{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/machinery/light/spot,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"Ym" = (
+/obj/machinery/door/airlock/medical{
+	name = "Operating Theatre 2";
+	req_access = list(45)
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"YM" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"YU" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/iv_drip,
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"YV" = (
+/obj/structure/table/standard,
+/obj/structure/flora/pottedplant/smallcactus{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/killhouse/two)
+"YZ" = (
+/obj/structure/table/standard,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+"Zu" = (
+/obj/machinery/status_display,
+/turf/simulated/wall,
+/area/killhouse/two)
+"Zz" = (
+/obj/machinery/door/airlock/glass,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"ZG" = (
+/obj/structure/bed/chair/sofa/brown/left{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/killhouse/two)
+"ZI" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/black/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue,
+/turf/simulated/floor/tiled/white,
+/area/killhouse/two)
+"ZO" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	pixel_x = 22
+	},
+/obj/structure/closet/crate/bin{
+	anchored = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/killhouse/two)
+"ZX" = (
+/obj/structure/table/standard,
+/obj/machinery/recharger,
+/turf/simulated/floor/carpet,
+/area/killhouse/two)
+
+(1,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(2,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+qg
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(3,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+qg
+qg
+qg
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(4,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+qg
+Uo
+qg
+IC
+IC
+IC
+IC
+IC
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(5,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+qg
+Uo
+qg
+Uo
+IC
+IC
+IC
+IC
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(6,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+qg
+Uo
+qg
+Uo
+IC
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(7,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+Uo
+qg
+TM
+qg
+Uo
+Uo
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(8,1,1) = {"
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+bc
+DU
+NI
+dn
+bc
+Uo
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(9,1,1) = {"
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+NI
+me
+Pm
+xF
+NI
+Uo
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+"}
+(10,1,1) = {"
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+lv
+me
+cN
+xF
+lv
+Uo
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+"}
+(11,1,1) = {"
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+lv
+me
+cN
+xF
+lv
+Uo
+IC
+IC
+Uo
+Uo
+Uo
+Uo
+Uo
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+"}
+(12,1,1) = {"
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Uo
+NI
+me
+gS
+xF
+NI
+Uo
+IC
+Ev
+eF
+Uo
+Uo
+Uo
+TM
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+"}
+(13,1,1) = {"
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+fl
+Ab
+Zz
+NI
+NI
+NI
+NI
+NI
+Eg
+Eg
+Eg
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+"}
+(14,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+Mn
+Aj
+Pm
+ho
+Sa
+NI
+NI
+JQ
+kf
+BY
+BY
+BY
+Fn
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+"}
+(15,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+id
+Aj
+cN
+cN
+cN
+ho
+cD
+NI
+QH
+JQ
+BY
+BY
+BY
+BY
+JQ
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+"}
+(16,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+NI
+NI
+NI
+ps
+cN
+cN
+wH
+cN
+cN
+xF
+NI
+kT
+BY
+BY
+BY
+BY
+wZ
+fD
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(17,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+uX
+cN
+iu
+RE
+iu
+cN
+yQ
+NI
+JQ
+BY
+BY
+BY
+BY
+JQ
+hg
+NI
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(18,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+Pu
+af
+mH
+qs
+vb
+NI
+NI
+NI
+qW
+cN
+iu
+RE
+iu
+cN
+Ya
+NI
+BY
+BY
+BY
+BY
+BY
+wZ
+fD
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(19,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+Tr
+sn
+fF
+mc
+uO
+AZ
+NI
+BY
+BY
+JQ
+BY
+yK
+NI
+NI
+NI
+Uq
+cN
+iu
+RE
+iu
+cN
+Ck
+NI
+At
+BY
+BY
+BY
+BY
+BY
+JQ
+NI
+cN
+RT
+NI
+Pn
+hn
+FD
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(20,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+Tr
+Tr
+ql
+YZ
+bD
+uO
+uO
+FG
+BY
+BY
+BY
+BY
+Wi
+NI
+NI
+NI
+Nw
+cN
+cN
+wH
+cN
+cN
+BP
+NI
+BY
+JQ
+BY
+BY
+BY
+BY
+BY
+zJ
+cN
+cN
+NI
+oB
+YZ
+YZ
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(21,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+NI
+Tr
+Qm
+EB
+ek
+uO
+uO
+NI
+ts
+BY
+BY
+BY
+JQ
+NI
+NI
+NI
+Vl
+VY
+cN
+cN
+cN
+aL
+ZO
+NI
+NI
+BY
+BY
+JQ
+BY
+BY
+BY
+za
+cN
+cN
+NI
+ww
+HM
+vg
+NI
+BX
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(22,1,1) = {"
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+Ts
+Ds
+Ae
+Tr
+uO
+uO
+uO
+uO
+uO
+NI
+gM
+xz
+oY
+XQ
+rW
+NI
+NI
+NI
+NI
+Kk
+lb
+zi
+lb
+Us
+NI
+NI
+NI
+NI
+Rx
+BY
+nZ
+os
+Pq
+NI
+rU
+cN
+NI
+AZ
+uO
+uO
+Oc
+BY
+BX
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(23,1,1) = {"
+IC
+IC
+IC
+IC
+NI
+NI
+Pm
+Ts
+cN
+zu
+Tr
+uO
+uO
+na
+uO
+uO
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+lh
+Ke
+NI
+lh
+Ke
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+cN
+cN
+NI
+NI
+kJ
+NI
+NI
+QH
+BY
+BX
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(24,1,1) = {"
+IC
+IC
+IC
+NI
+NI
+cN
+cN
+Ts
+Ts
+Ts
+Tr
+cN
+Gv
+Tr
+cN
+Gv
+NI
+NI
+NI
+NI
+zt
+BQ
+Xf
+lh
+ER
+wv
+ER
+lh
+lh
+lh
+eA
+wv
+eA
+tB
+Ob
+Vs
+yw
+NI
+NI
+NI
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+si
+BY
+BY
+BY
+mG
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+"}
+(25,1,1) = {"
+IC
+IC
+NI
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+Tr
+cN
+cN
+Tr
+cN
+cN
+NI
+NI
+NI
+Sw
+ny
+Dy
+HX
+SX
+ER
+lh
+ER
+lh
+lh
+lh
+eA
+lh
+eA
+lh
+lh
+lh
+lh
+nB
+NI
+NI
+NI
+cN
+cN
+cN
+cN
+gS
+cN
+NI
+fI
+dx
+Do
+BY
+mG
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+"}
+(26,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+Wx
+cN
+cN
+lv
+cN
+cN
+NI
+NI
+hO
+rC
+wt
+aa
+wt
+WX
+ER
+cx
+LP
+YM
+YM
+YM
+Tp
+CC
+eA
+lh
+lh
+lh
+lh
+lh
+eG
+NI
+NI
+cN
+Gv
+NI
+Wx
+NI
+Wx
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+"}
+(27,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+kI
+kI
+kI
+kI
+Tr
+rU
+cN
+lv
+cN
+OF
+NI
+Dz
+lh
+rC
+CM
+aa
+CM
+WX
+ER
+md
+PF
+Nd
+jy
+Nd
+PF
+kW
+eA
+lh
+lh
+lh
+vs
+Fw
+Fw
+Nt
+NI
+cN
+cN
+NI
+cN
+Hl
+cN
+kI
+DR
+kI
+DR
+kI
+DR
+kI
+DR
+LB
+IC
+IC
+IC
+IC
+"}
+(28,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+kI
+cN
+cN
+cN
+Tr
+cN
+cN
+lv
+cN
+cN
+NI
+fQ
+lh
+ro
+xi
+Es
+ZI
+QY
+Fb
+LL
+PF
+xc
+dc
+XA
+PF
+Lf
+Of
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+Wx
+cN
+cN
+fL
+cN
+cN
+cN
+kI
+cN
+kI
+cN
+kI
+cN
+kI
+cN
+LB
+IC
+IC
+IC
+IC
+"}
+(29,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+gS
+kI
+Qq
+xP
+RK
+Tr
+cN
+cN
+Tr
+cN
+cN
+NI
+aY
+lh
+lh
+lh
+Ih
+lh
+lh
+ER
+Ij
+kY
+xc
+PP
+xc
+jl
+jr
+eA
+lh
+lh
+Ih
+kj
+IA
+IA
+TO
+NI
+rU
+cN
+fL
+cN
+cN
+cN
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+NI
+IC
+IC
+IC
+IC
+"}
+(30,1,1) = {"
+IC
+IC
+NI
+cN
+Fu
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+cN
+Gv
+Tr
+cN
+Gv
+Tr
+br
+lh
+Sw
+ny
+Dy
+ny
+SX
+Iu
+HB
+PF
+Oj
+AL
+xc
+PF
+tP
+qI
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+Wx
+cN
+cN
+NI
+RT
+cN
+cN
+Ts
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+fL
+IC
+IC
+IC
+IC
+"}
+(31,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+Pm
+cN
+cN
+rw
+cN
+cN
+cN
+cN
+rw
+cN
+cN
+NI
+Dz
+lh
+rC
+DN
+aa
+xo
+WX
+ER
+md
+PF
+gE
+sO
+gE
+PF
+kW
+eA
+lh
+lh
+lh
+jQ
+pu
+pu
+pu
+NI
+cN
+cN
+NI
+Qg
+cN
+cN
+Ts
+cN
+pc
+ng
+ng
+ng
+Cp
+SD
+fL
+IC
+IC
+IC
+IC
+"}
+(32,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+NI
+hO
+rC
+RP
+aa
+Wf
+WX
+ER
+VQ
+Et
+Ud
+Ud
+Ud
+ve
+Om
+eA
+lh
+lh
+lh
+lh
+lh
+eG
+NI
+NI
+cN
+cN
+NI
+Ce
+cN
+cN
+Ts
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+fL
+IC
+IC
+IC
+IC
+"}
+(33,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+Tr
+MB
+cN
+cN
+OF
+Tr
+rU
+cN
+NI
+NI
+NI
+ro
+nf
+Es
+nf
+QY
+ER
+lh
+ER
+lh
+lh
+lh
+eA
+lh
+eA
+lh
+lh
+lh
+lh
+fi
+NI
+NI
+NI
+rU
+cN
+fL
+cN
+cN
+cN
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+kI
+NI
+IC
+IC
+IC
+IC
+"}
+(34,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+Tr
+ag
+cN
+cN
+cN
+Tr
+cN
+cN
+NI
+NI
+NI
+NI
+Hd
+OP
+Nu
+lh
+ER
+NB
+ER
+lh
+lh
+lh
+eA
+NB
+eA
+tB
+Ob
+KH
+uo
+NI
+NI
+NI
+NI
+cN
+cN
+fL
+cN
+cN
+cN
+kI
+cN
+kI
+cN
+kI
+cN
+kI
+cN
+LB
+IC
+IC
+IC
+IC
+"}
+(35,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+Tr
+bA
+Wo
+Ce
+cN
+Tr
+cN
+cN
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+lh
+Ke
+NI
+lh
+Ke
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+cN
+cN
+NI
+cN
+Tg
+cN
+kI
+YU
+kI
+YU
+kI
+YU
+kI
+YU
+LB
+IC
+IC
+IC
+IC
+"}
+(36,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+gS
+cN
+cN
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+cN
+Gv
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+Mn
+vI
+NM
+vI
+Sa
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+cN
+Gv
+NI
+Wx
+NI
+Wx
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+"}
+(37,1,1) = {"
+IC
+IC
+NI
+cN
+Fu
+Tr
+cN
+Fu
+Tr
+qF
+cN
+cN
+Pm
+cN
+cN
+cN
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+Mn
+Aj
+cN
+cN
+cN
+ho
+Sa
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+NI
+NI
+gh
+uO
+uO
+OQ
+NI
+NI
+IC
+IC
+IC
+IC
+"}
+(38,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+Pm
+cN
+cN
+rw
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+bL
+vI
+vI
+vI
+NM
+vI
+vI
+vI
+bL
+Aj
+cN
+cN
+cN
+cN
+cN
+ho
+bL
+vI
+vI
+NM
+vI
+vI
+vI
+vI
+bL
+cN
+cN
+cN
+cN
+cN
+cN
+OY
+NI
+YV
+uO
+Ir
+BS
+uO
+bR
+NI
+IC
+IC
+IC
+IC
+"}
+(39,1,1) = {"
+IC
+IC
+NI
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+VY
+cN
+cN
+cN
+cN
+cN
+aL
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+BJ
+Ir
+YZ
+YZ
+BS
+tO
+NI
+IC
+IC
+IC
+IC
+"}
+(40,1,1) = {"
+IC
+IC
+NI
+kI
+kI
+kI
+kI
+kI
+Tr
+rU
+cN
+cN
+cN
+cN
+cN
+OF
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+SG
+cN
+cN
+cN
+cN
+cN
+Hn
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+NI
+NI
+NT
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+vB
+ae
+YZ
+YZ
+Bp
+sX
+NI
+IC
+IC
+IC
+IC
+"}
+(41,1,1) = {"
+IC
+IC
+NI
+Cu
+cN
+kI
+cN
+CI
+Tr
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+kk
+xT
+Tr
+uE
+hk
+Tr
+hk
+wE
+Tr
+Nw
+cN
+cN
+Rh
+cN
+cN
+xF
+Tr
+wE
+hk
+Tr
+hk
+uE
+Tr
+ka
+aR
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+er
+uO
+uO
+ae
+Bp
+uO
+UA
+NI
+IC
+IC
+IC
+VV
+"}
+(42,1,1) = {"
+IC
+IC
+NI
+Qq
+xP
+kI
+xP
+Qq
+Tr
+cN
+cN
+uM
+Wj
+tx
+cN
+cN
+pl
+kG
+Tr
+NN
+Pc
+ak
+FY
+sJ
+Tr
+me
+cN
+tx
+RE
+uM
+cN
+xF
+Tr
+sJ
+Pc
+ak
+FY
+gH
+Tr
+kG
+aR
+cN
+cN
+uM
+Rr
+tx
+cN
+cN
+NI
+NI
+cZ
+uO
+uO
+OQ
+NI
+NI
+IC
+IC
+IC
+VV
+"}
+(43,1,1) = {"
+IC
+IC
+NI
+NI
+Tr
+Tr
+Tr
+Tr
+Tr
+cN
+cN
+XR
+Wm
+aG
+cN
+cN
+kk
+kG
+Tr
+Ov
+Pc
+lH
+FY
+Di
+Tr
+me
+cN
+aG
+RE
+XR
+cN
+xF
+Tr
+NQ
+Pc
+lH
+FY
+QG
+Tr
+kG
+lB
+cN
+cN
+XR
+mk
+aG
+cN
+cN
+NI
+NI
+NI
+hY
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+VV
+"}
+(44,1,1) = {"
+IC
+IC
+IC
+NI
+NI
+Tr
+Tr
+Tr
+Tr
+cN
+cN
+ei
+Rr
+sc
+cN
+cN
+Qj
+ka
+Tr
+Jk
+xV
+zP
+vL
+CV
+Tr
+me
+cN
+sc
+RE
+ei
+cN
+xF
+Tr
+Dp
+xV
+zP
+vL
+sF
+Tr
+sr
+aR
+cN
+cN
+ei
+Wj
+sc
+cN
+cN
+NI
+nI
+fc
+GE
+NI
+NI
+IC
+IC
+IC
+IC
+VV
+VV
+"}
+(45,1,1) = {"
+IC
+IC
+IC
+IC
+NI
+Tr
+Tr
+Tr
+Tr
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+kk
+Dt
+Tr
+vE
+JM
+fx
+Ba
+St
+Zu
+me
+cN
+cN
+cw
+cN
+cN
+xF
+Zu
+XM
+Ua
+fx
+zo
+vE
+Tr
+kG
+aR
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+yG
+GE
+vF
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+"}
+(46,1,1) = {"
+VV
+IC
+IC
+IC
+IC
+NI
+NI
+Tr
+Tr
+cN
+cN
+cN
+cN
+cN
+cN
+cK
+Tr
+Tr
+Tr
+lv
+lv
+Ym
+lv
+lv
+Tr
+SG
+cN
+cN
+OY
+cN
+cN
+Hn
+Tr
+lv
+lv
+En
+lv
+lv
+Tr
+Tr
+Tr
+Fy
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+Ui
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+"}
+(47,1,1) = {"
+VV
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+Tr
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+XC
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+Aj
+cN
+cN
+cN
+cN
+cN
+ho
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+vI
+XC
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+NI
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+"}
+(48,1,1) = {"
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+rU
+cN
+cN
+cN
+cN
+cN
+OF
+Tr
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+OF
+Tr
+rU
+cN
+cN
+cN
+cN
+cN
+OY
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+"}
+(49,1,1) = {"
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+mL
+cN
+gS
+cN
+cN
+cN
+UO
+lb
+lb
+lb
+lb
+zi
+lb
+lb
+lb
+VY
+cN
+cN
+cN
+cN
+cN
+aL
+lb
+lb
+lb
+zi
+lb
+lb
+lb
+lb
+UO
+cN
+cN
+cN
+cN
+cN
+qF
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+"}
+(50,1,1) = {"
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+NI
+NI
+NI
+NI
+NI
+NI
+NI
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+pt
+Bg
+OL
+cN
+ZG
+Ie
+el
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+NI
+hb
+NI
+NI
+fT
+NI
+NI
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+"}
+(51,1,1) = {"
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Tr
+Tr
+se
+Lx
+lb
+Lx
+pC
+Tr
+Tr
+IC
+IC
+Tr
+xW
+XG
+ys
+MH
+uO
+ri
+uO
+Tr
+Cu
+cN
+CE
+Tr
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+"}
+(52,1,1) = {"
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Tr
+Tr
+fL
+fL
+fL
+Tr
+Tr
+IC
+IC
+IC
+Tr
+oB
+MP
+YZ
+UL
+uO
+uO
+Lt
+Tr
+cN
+cN
+cN
+Tr
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(53,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+TJ
+IC
+IC
+IC
+TJ
+IC
+IC
+IC
+IC
+Tr
+oB
+EG
+ZX
+MH
+uO
+uO
+uO
+PK
+cN
+cN
+cN
+Tr
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(54,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Tr
+iY
+oB
+oB
+MH
+uO
+In
+vx
+Tr
+Cu
+cN
+qG
+Tr
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(55,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+Tr
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(56,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(57,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(58,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(59,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}
+(60,1,1) = {"
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+IC
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+VV
+"}

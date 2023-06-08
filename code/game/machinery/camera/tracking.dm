@@ -18,7 +18,7 @@
 	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		var/list/tempnetwork = C.network&src.network
 		if (tempnetwork.len)
-			T[text("[][]", C.c_tag, (C.can_use() ? null : " (Deactivated)"))] = C
+			T["[C.c_tag][(C.can_use() ? null : " (Deactivated)")]"] = C
 
 	track = new()
 	track.cameras = T
@@ -115,7 +115,7 @@
 		var/name = M.name
 		if (name in TB.names)
 			TB.namecounts[name]++
-			name = text("[] ([])", name, TB.namecounts[name])
+			name = "[name] ([TB.namecounts[name]])"
 		else
 			TB.names.Add(name)
 			TB.namecounts[name] = 1
@@ -247,8 +247,8 @@
 
 /mob/living/carbon/human/tracking_status()
 	//Cameras can't track people wearing an agent card or a ninja hood.
-	if(istype(head, /obj/item/clothing/head/helmet/space/rig))
-		var/obj/item/clothing/head/helmet/space/rig/helmet = head
+	if(istype(head, /obj/item/clothing/head/helmet/space/hardsuit))
+		var/obj/item/clothing/head/helmet/space/hardsuit/helmet = head
 		if(helmet.prevent_track())
 			return TRACKING_TERMINATE
 

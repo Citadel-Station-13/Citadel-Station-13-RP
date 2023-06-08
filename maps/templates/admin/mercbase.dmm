@@ -1063,8 +1063,8 @@
 	dir = 10
 	},
 /obj/structure/table/rack,
-/obj/item/rig/merc/empty,
-/obj/item/rig/merc/empty,
+/obj/item/hardsuit/merc/empty,
+/obj/item/hardsuit/merc/empty,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -3558,7 +3558,7 @@
 	dir = 8
 	},
 /obj/item/clothing/glasses/goggles,
-/obj/item/clothing/head/helmet/merc{
+/obj/item/clothing/head/helmet/redcombat{
 	armor = list("melee"=70,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "A pilot's flight helmet. It's not very well armored, but it's very well padded, making it resistant to melee attacks.";
 	name = "pilot helmet"

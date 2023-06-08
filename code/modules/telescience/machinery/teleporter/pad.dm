@@ -53,7 +53,7 @@
 		update_use_power(USE_POWER_ACTIVE)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
-		I.layer = ABOVE_LIGHTING_LAYER
+		I.layer = ABOVE_LIGHTING_LAYER_MAIN
 		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
 	else
@@ -62,7 +62,7 @@
 		if(operable())
 			var/image/I = image(icon, src, "[initial(icon_state)]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
-			I.layer = ABOVE_LIGHTING_LAYER
+			I.layer = ABOVE_LIGHTING_LAYER_MAIN
 			add_overlay(I)
 
 /obj/machinery/tele_pad/Bumped(M as mob|obj)

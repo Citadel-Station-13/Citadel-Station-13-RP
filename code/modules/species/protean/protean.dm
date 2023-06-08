@@ -28,7 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	breath_type = null
 	poison_type = null
@@ -99,24 +99,25 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
 		/mob/living/carbon/human/proc/bloodsuck,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/flying_toggle,
-		/mob/living/proc/start_wings_hovering,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/glow_toggle,
 		/mob/living/proc/glow_color,
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
+
 	species_statpanel = TRUE
 	var/global/list/protean_abilities = list()
-
+	abilities = list(
+		/datum/ability/species/sonar,
+		/datum/ability/species/toggle_flight
+	)
 	var/monochromatic = FALSE //IGNORE ME
 
 /datum/species/protean/New()
@@ -160,7 +161,7 @@
 		else
 			H.nif.durability = rand(21,25)
 
-	var/obj/item/rig/protean/prig = new /obj/item/rig/protean(H)
+	var/obj/item/hardsuit/protean/prig = new /obj/item/hardsuit/protean(H)
 	prig.myprotean = H
 
 /datum/species/protean/equip_survival_gear(var/mob/living/carbon/human/H)
@@ -184,16 +185,18 @@
 
 /datum/species/protean/handle_death(var/mob/living/carbon/human/H, gibbed)		// citadel edit - FUCK YOU ACTUALLY GIB THE MOB AFTER REMOVING IT FROM THE BLOB HOW HARD CAN THIS BE!!
 	var/deathmsg = "<span class='userdanger'>You have died as a Protean. You may be revived by nanite chambers (once available), but otherwise, you may roleplay as your disembodied posibrain or respawn on another character.</span>"
-	// force eject brain
-	var/obj/item/organ/internal/the_brain = H.internal_organs_by_name[O_BRAIN]
-	if(the_brain)
-		the_brain.removed(H)
+	// force eject inv
+	H.drop_inventory(TRUE, TRUE, TRUE)
+	// force eject v*re
+	H.release_vore_contents(TRUE, TRUE)
 	if(istype(H.temporary_form, /mob/living/simple_mob/protean_blob))
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
 	else if(!gibbed)
 		to_chat(H, deathmsg)
-		H.gib()
+	ASYNC
+		if(!QDELETED(H))
+			H.gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
@@ -318,14 +321,14 @@
 	set desc = "Allows a protean to solidify its form into one extremely similar to a hardsuit."
 	set category = "Abilities"
 
-	if(istype(loc, /obj/item/rig/protean))
-		var/obj/item/rig/protean/prig = loc
+	if(istype(loc, /obj/item/hardsuit/protean))
+		var/obj/item/hardsuit/protean/prig = loc
 		src.forceMove(get_turf(prig))
 		prig.forceMove(src)
 		return
 
 	if(isturf(loc))
-		var/obj/item/rig/protean/prig = locate() in contents
+		var/obj/item/hardsuit/protean/prig = locate() in contents
 		if(prig)
 			prig.forceMove(get_turf(src))
 			src.forceMove(prig)

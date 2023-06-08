@@ -62,7 +62,7 @@
 	burn_mod     = 1.1
 
 	mob_size     = MOB_SMALL
-	pass_flags   = ATOM_PASS_TABLE
+//	pass_flags   = ATOM_PASS_TABLE
 	holder_type  = /obj/item/holder/human
 //	short_sighted = 1
 	gluttonous    = 1
@@ -144,13 +144,15 @@
 	)
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/proc/hide,
 		/mob/living/proc/shred_limb,
-		/mob/living/proc/toggle_pass_table,
 	)
 
+	abilities = list(
+		/datum/ability/species/toggle_agility,
+		/datum/ability/species/sonar,
+	)
 	descriptors = list(
 		/datum/mob_descriptor/height = -3,
 		/datum/mob_descriptor/build = -3,
@@ -166,6 +168,7 @@
 		/obj/item/clothing/suit/space,
 		/obj/item/clothing/suit/straight_jacket,
 	)
+
 
 /datum/species/teshari/equip_survival_gear(mob/living/carbon/human/H)
 	..()

@@ -267,8 +267,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon))
 		var/mob/living/human_or_robot_user = user
-		var/dat
-		dat = text("<HEAD><TITLE>Newscaster</TITLE></HEAD><H3>Newscaster Unit #[unit_no]</H3>")
+		var/dat = "<HEAD><TITLE>Newscaster</TITLE></HEAD><H3>Newscaster Unit #[unit_no]</H3>"
 
 		scan_user(human_or_robot_user) //Newscaster scans you
 

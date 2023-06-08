@@ -157,9 +157,9 @@
 	/// Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 	/// expected icon width; centering offsets will be calculated from this and our base pixel x.
-	var/icon_dimension_x = 32
+	var/icon_x_dimension = 32
 	/// expected icon height; centering offsets will be calculated from this and our base pixel y.
-	var/icon_dimension_y = 32
+	var/icon_y_dimension = 32
 
 	//? Filters
 	/// For handling persistent filters
@@ -539,27 +539,29 @@
 /atom/proc/melt()
 	return
 
-/atom/proc/add_hiddenprint(mob/living/M as mob)
-	if(isnull(M)) return
-	if(isnull(M.key)) return
+/atom/proc/add_hiddenprint(mob/living/M)
+	if (isnull(M))
+		return
+	if (isnull(M.key))
+		return
 	if (ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if (!istype(H.dna, /datum/dna))
-			return 0
+			return FALSE
 		if (H.gloves)
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] (Wearing gloves). Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 0
-		if (!( src.fingerprints ))
-			if(src.fingerprintslast != H.key)
-				src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",H.real_name, H.key)
-				src.fingerprintslast = H.key
-			return 1
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] (Wearing gloves). Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return FALSE
+		if (!(fingerprints))
+			if (fingerprintslast != H.key)
+				fingerprintshidden += "\[[time_stamp()]\] Real name: [H.real_name], Key: [H.key]"
+				fingerprintslast = H.key
+			return TRUE
 	else
-		if(src.fingerprintslast != M.key)
-			src.fingerprintshidden += text("\[[time_stamp()]\] Real name: [], Key: []",M.real_name, M.key)
-			src.fingerprintslast = M.key
+		if (fingerprintslast != M.key)
+			fingerprintshidden += "\[[time_stamp()]\] Real name: [M.real_name], Key: [M.key]"
+			fingerprintslast = M.key
 	return
 
 /atom/proc/add_fingerprint(mob/M, ignoregloves, obj/item/tool)
@@ -754,7 +756,7 @@
 			var/mob/M = AM
 			if(self_message && (M == src))
 				M.show_message(self_message, 1, blind_message, 2)
-			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+			else if((M.see_invisible >= invisibility) && M.can_see_plane(plane))
 				M.show_message(message, 1, blind_message, 2)
 			else if(blind_message)
 				M.show_message(blind_message, 2)
@@ -988,6 +990,9 @@
 	if(update)
 		update_filters()
 
+/atom/proc/has_filter(name)
+	return !isnull(filter_data?[name])
+
 /atom/proc/clear_filters()
 	filter_data = null
 	filters = null
@@ -1016,8 +1021,8 @@
 	layer = base_layer + 0.001 * relative_layer
 
 /atom/proc/hud_layerise()
-	plane = PLANE_PLAYER_HUD_ITEMS
-	set_base_layer(LAYER_HUD_ITEM)
+	plane = INVENTORY_PLANE
+	set_base_layer(HUD_LAYER_ITEM)
 	// appearance_flags |= NO_CLIENT_COLOR
 
 /atom/proc/hud_unlayerise()
@@ -1075,7 +1080,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
+	return base_pixel_x + (icon_x_dimension - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1084,7 +1089,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
+	return base_pixel_y + (icon_y_dimension - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

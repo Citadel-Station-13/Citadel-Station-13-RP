@@ -163,7 +163,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD) //technically it's contact, but the reagents are being applied to internal tissue
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT) //technically it's contact, but the reagents are being applied to internal tissue
 	if (trans > 0)
 		affected.status &= ~ORGAN_DEAD
 		affected.owner.update_icons_body()
@@ -179,7 +179,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD)
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT)
 
 	user.visible_message("<font color='red'>[user]'s hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>")
@@ -214,22 +214,22 @@
 			return 0
 	if(!(target_zone == BP_TORSO))
 		return FALSE
-	var/obj/item/rig/R = target.get_rig(TRUE)
+	var/obj/item/hardsuit/R = target.get_hardsuit(TRUE)
 	if(!R)
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/hardsuit/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	user.visible_message("[user] starts cutting through the support systems of \the [rig] on [target] with \the [tool]." , \
-	"You start cutting through the support systems of \the [rig] on [target] with \the [tool].")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	user.visible_message("[user] starts cutting through the support systems of \the [hardsuit] on [target] with \the [tool]." , \
+	"You start cutting through the support systems of \the [hardsuit] on [target] with \the [tool].")
 	..()
 
 /datum/surgery_step/hardsuit/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
-	var/obj/item/rig/rig = target.get_rig(TRUE)
-	rig.reset()
-	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [rig] on [target] with \the [tool].</span>", \
-		"<span class='notice'>You have cut through the support systems of \the [rig] on [target] with \the [tool].</span>")
+	var/obj/item/hardsuit/hardsuit = target.get_hardsuit(TRUE)
+	hardsuit.reset()
+	user.visible_message("<span class='notice'>[user] has cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>", \
+		"<span class='notice'>You have cut through the support systems of \the [hardsuit] on [target] with \the [tool].</span>")
 
 /datum/surgery_step/hardsuit/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	user.visible_message("<span class='danger'>[user]'s [tool] can't quite seem to get through the metal...</span>", \

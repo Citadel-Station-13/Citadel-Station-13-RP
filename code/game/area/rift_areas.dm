@@ -798,7 +798,11 @@
 
 /area/security/armory/red
 	name = "\improper Armory - Red"
-	icon_state = "red2"
+	icon_state = "armory"
+
+/area/security/evastorage
+	name = "\improper Security EVA Equipment Storage"
+	icon_state = "security"
 
 /area/security/observation
 	name = "\improper Brig Observation"

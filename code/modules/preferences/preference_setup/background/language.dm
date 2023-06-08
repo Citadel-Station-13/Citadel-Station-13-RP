@@ -86,12 +86,7 @@
 	var/datum/character_species/S = character_species_datum()
 	. = S.get_intrinsic_language_ids()
 	if(include_background)
-		var/list/datum/lore/character_background/backgrounds = list(
-			lore_citizenship_datum(),
-			lore_origin_datum(),
-			lore_religion_datum(),
-			lore_faction_datum()
-		)
+		var/list/datum/lore/character_background/backgrounds = all_background_datums()
 		for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
 			if(!B.innate_languages)
 				continue
@@ -101,12 +96,7 @@
  * returns max amounts we can have. doesn't take into account what we do have.
  */
 /datum/preferences/proc/extraneous_languages_max()
-	var/list/datum/lore/character_background/backgrounds = list(
-		lore_citizenship_datum(),
-		lore_origin_datum(),
-		lore_religion_datum(),
-		lore_faction_datum()
-	)
+	var/list/datum/lore/character_background/backgrounds = all_background_datums()
 	var/tally = character_species_datum().max_additional_languages
 	for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
 		tally += B.language_amount_mod

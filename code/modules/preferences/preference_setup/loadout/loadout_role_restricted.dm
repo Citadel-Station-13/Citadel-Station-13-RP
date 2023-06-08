@@ -10,7 +10,7 @@
 //*Single Departments
 //Security
 /datum/gear/restricted/security
-	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective")
+	allowed_roles = list("Security Officer", "Head of Security", "Warden", "Detective", "Blueshield")
 
 /datum/gear/restricted/security/eyes
 	slot = SLOT_ID_GLASSES

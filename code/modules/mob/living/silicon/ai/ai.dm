@@ -257,8 +257,8 @@ var/list/ai_verbs_default = list(
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
 		if(!stat) // Make sure we're not unconscious/dead.
-			STATPANEL_DATA_LINE(text("System integrity: [(health+100)/2]%"))
-			STATPANEL_DATA_LINE(text("Connected synthetics: [connected_robots.len]"))
+			STATPANEL_DATA_LINE("System integrity: [(health+100)/2]%")
+			STATPANEL_DATA_LINE("Connected synthetics: [connected_robots.len]")
 			for(var/mob/living/silicon/robot/R in connected_robots)
 				var/robot_status = "Nominal"
 				if(R.shell)
@@ -268,11 +268,11 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				STATPANEL_DATA_LINE(text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
-				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]"))
-			STATPANEL_DATA_LINE(text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
+				STATPANEL_DATA_LINE("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]")
+			STATPANEL_DATA_LINE("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
 		else
-			STATPANEL_DATA_LINE(text("Systems nonfunctional"))
+			STATPANEL_DATA_LINE("Systems nonfunctional")
 
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -480,7 +480,7 @@ var/list/ai_verbs_default = list(
 	if (href_list["mach_close"])
 		if (href_list["mach_close"] == "aialerts")
 			viewalerts = 0
-		var/t1 = text("window=[]", href_list["mach_close"])
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
@@ -727,15 +727,15 @@ var/list/ai_verbs_default = list(
 		icon_state = selected_sprite.alive_icon
 		set_light(1, 1, selected_sprite.alive_light)
 
-// Pass lying down or getting up to our pet human, if we're in a rig.
+// Pass lying down or getting up to our pet human, if we're in a hardsuit.
 /mob/living/silicon/ai/lay_down()
 	set name = "Rest"
 	set category = "IC"
 
 	resting = 0
-	var/obj/item/rig/rig = src.get_rig()
-	if(rig)
-		rig.force_rest(src)
+	var/obj/item/hardsuit/hardsuit = src.get_hardsuit()
+	if(hardsuit)
+		hardsuit.force_rest(src)
 
 /mob/living/silicon/ai/is_sentient()
 	// AI cores don't store what brain was used to build them so we're just gonna assume they can think to some degree.

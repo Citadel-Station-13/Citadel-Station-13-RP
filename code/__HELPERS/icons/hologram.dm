@@ -99,17 +99,3 @@ GLOBAL_LIST_EMPTY(hologram_scanline_inverses)
 	rendered.density = FALSE
 	rendered.opacity = FALSE
 	return rendered
-
-/*
-/atom/movable/proc/amask_test()
-	var/atom/movable/screen/render/renderer = hologram_scanline_renderer(32, 32)
-	vis_contents += renderer
-	add_filter("test", 1, alpha_mask_filter(render_source = renderer.render_target))
-
-/atom/proc/asub_test()
-	appearance_flags |= KEEP_TOGETHER
-	var/image/I = image(icon('icons/system/alphamask_32x32.dmi', "scanline"), layer = FLOAT_LAYER)
-	I.color = construct_rgba_color_matrix(aa = -1000000, cr = 1, cg = 1, cb = 1, ca = 1)
-	I.blend_mode = BLEND_SUBTRACT
-	overlays += I
-*/

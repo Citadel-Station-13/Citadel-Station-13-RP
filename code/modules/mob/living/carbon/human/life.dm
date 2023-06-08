@@ -214,7 +214,7 @@
 			for(var/mob/O in viewers(src, null))
 				if(O == src)
 					continue
-				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
+				O.show_message(SPAN_DANGER("[src] starts having a seizure!"), SAYCODE_TYPE_VISIBLE)
 			afflict_unconscious(20 * 10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
@@ -384,12 +384,12 @@
 /mob/living/carbon/human/get_breath_from_internal(volume_needed=BREATH_VOLUME)
 	if(internal)
 		//Because rigs store their tanks out of reach of contents.Find(), a check has to be made to make
-		//sure the rig is still worn, still online, and that its air supply still exists.
+		//sure the hardsuit is still worn, still online, and that its air supply still exists.
 		var/obj/item/tank/rig_supply
-		if(istype(back,/obj/item/rig))
-			var/obj/item/rig/rig = back
-			if(rig.is_activated() && (rig.air_supply && internal == rig.air_supply))
-				rig_supply = rig.air_supply
+		if(istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/hardsuit = back
+			if(hardsuit.is_activated() && (hardsuit.air_supply && internal == hardsuit.air_supply))
+				rig_supply = hardsuit.air_supply
 
 		if ((!rig_supply && !contents.Find(internal)) || !((wear_mask && (wear_mask.clothing_flags & ALLOWINTERNALS)) || (head && (head.clothing_flags & ALLOWINTERNALS))))
 			internal = null
@@ -1107,9 +1107,9 @@
 				embedded_flag = 0
 
 		//Eyes
-		//Check rig first because it's two-check and other checks will override it.
-		if(istype(back,/obj/item/rig))
-			var/obj/item/rig/O = back
+		//Check hardsuit first because it's two-check and other checks will override it.
+		if(istype(back,/obj/item/hardsuit))
+			var/obj/item/hardsuit/O = back
 			if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 				if((!O.is_online() && O.offline_vision_restriction == 2) || (O.is_online() && O.vision_restriction == 2))
 					blinded = 1
@@ -1196,7 +1196,7 @@
 
 	..()
 
-	client.screen.Remove(GLOB.global_hud.darkMask, GLOB.global_hud.nvg, GLOB.global_hud.thermal, GLOB.global_hud.meson, GLOB.global_hud.science, GLOB.global_hud.material, GLOB.global_hud.yellow, GLOB.global_hud.blue, GLOB.global_hud.pink, GLOB.global_hud.beige, GLOB.global_hud.orange, GLOB.global_hud.whitense)
+	client.screen.Remove(GLOB.global_hud.darkMask, GLOB.global_hud.whitense)
 
 	if(istype(client.eye,/obj/machinery/camera))
 		var/obj/machinery/camera/cam = client.eye
@@ -1270,7 +1270,7 @@
 				var/mutable_appearance/healths_ma = new(healths)
 				healths_ma.icon_state = "blank"
 				healths_ma.cut_overlays()
-				healths_ma.plane = PLANE_PLAYER_HUD
+				healths_ma.plane = HUD_PLANE
 
 				var/no_damage = 1
 				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
@@ -1462,8 +1462,8 @@
 					var/obj/item/clothing/head/welding/O = head
 					if(!O.up)
 						found_welder = 1
-				if(!found_welder && istype(back, /obj/item/rig))
-					var/obj/item/rig/O = back
+				if(!found_welder && istype(back, /obj/item/hardsuit))
+					var/obj/item/hardsuit/O = back
 					if(O.helmet && O.helmet == head && (O.helmet.body_cover_flags & EYES))
 						if((!O.is_online() && O.offline_vision_restriction == 1) || (O.is_online() && O.vision_restriction == 1))
 							found_welder = 1
@@ -1481,13 +1481,12 @@
 						break
 
 	else //We aren't dead
-		SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2 ? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
-
 		if(MUTATION_XRAY in mutations)
 			AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
-			SetSeeInDarkSelf(8)
-			if(!druggy)
-				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+			// todo: legacy, remove
+			self_perspective.legacy_force_set_hard_darkvision(0)
+		else
+			self_perspective.legacy_force_set_hard_darkvision(null)
 
 		if(seer==1)
 			var/obj/effect/rune/R = locate() in loc
@@ -1497,30 +1496,25 @@
 				see_invisible = see_invisible_default
 				seer = 0
 
-		if(!seedarkness)
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(8)
-			SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
-		else
-			SetSightSelf(species.get_vision_flags(src))
-			SetSeeInDarkSelf(species.darksight)
-			SetSeeInvisibleSelf(GetSeeInDarkSelf() > 2? SEE_INVISIBLE_LEVEL_ONE : see_invisible_default)
+		SetSightSelf(species.get_vision_flags(src))
 
 		var/glasses_processed = 0
-		var/obj/item/rig/rig = back
-		if(istype(rig) && rig.visor)
-			if(!rig.helmet || (head && rig.helmet == head))
-				if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-					glasses_processed = process_glasses(rig.visor.vision.glasses)
+		var/obj/item/hardsuit/hardsuit = back
+		if(istype(hardsuit) && hardsuit.visor)
+			if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+				if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+					glasses_processed = process_glasses(hardsuit.visor.vision.glasses)
 
 		if(glasses && !glasses_processed)
 			glasses_processed = process_glasses(glasses)
 
 		if(MUTATION_XRAY in mutations)
 			AddSightSelf(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-			SetSeeInDarkSelf(8)
-			if(!druggy)
-				SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+			RemoveSightSelf(SEE_BLACKNESS)
+			// todo: legacy, remove
+			self_perspective.legacy_force_set_hard_darkvision(0)
+		else
+			self_perspective.legacy_force_set_hard_darkvision(null)
 
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.vision_flags))
@@ -1537,8 +1531,6 @@
 
 		if(!glasses_processed && (species.get_vision_flags(src) > 0))
 			AddSightSelf(species.get_vision_flags(src))
-		if(!seer && !glasses_processed && seedarkness)
-			SetSeeInvisibleSelf(see_invisible_default)
 
 		if(machine)
 			var/viewflags = machine.check_eye(src, TRUE)
@@ -1563,30 +1555,17 @@
 /mob/living/carbon/human/proc/process_glasses(var/obj/item/clothing/glasses/G)
 	. = FALSE
 	if(G && G.active)
-		if(G.darkness_view)
-			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + G.darkness_view)
-			. = TRUE
-		if(G.overlay && client)
-			client.screen |= G.overlay
 		if(G.vision_flags)
 			AddSightSelf(G.vision_flags)
+			RemoveSightSelf(G.vision_flags_remove)
 			. = TRUE
-		if(istype(G,/obj/item/clothing/glasses/night) && !seer)
-			SetSeeInvisibleSelf(SEE_INVISIBLE_MINIMUM)
-		if(G.see_invisible >= 0)
-			SetSeeInvisibleSelf(G.see_invisible)
-			. = TRUE
-		else if(!druggy && !seer)
-			SetSeeInvisibleSelf(see_invisible_default)
 
 /mob/living/carbon/human/proc/process_nifsoft_vision(var/datum/nifsoft/NS)
 	. = FALSE
 	if(NS && NS.active)
-		if(NS.darkness_view)
-			SetSeeInDarkSelf((using_perspective?.see_in_dark || 2) + NS.darkness_view)
-			. = TRUE
 		if(NS.vision_flags_mob)
 			AddSightSelf(NS.vision_flags_mob)
+			RemoveSightSelf(NS.vision_flags_mob_remove)
 			. = TRUE
 
 /mob/living/carbon/human/handle_random_events()
@@ -1603,12 +1582,14 @@
 		if (getToxLoss() >= 45 && !isSynthetic())
 			spawn vomit()
 
-
+	/*
+	//Commented out for now to determine how well it fits in on Cit.
 	//0.1% chance of playing a scary sound to someone who's in complete darkness
 	if(isturf(loc) && rand(1,1000) == 1)
 		var/turf/T = loc
 		if(T.get_lumcount() <= 0)
 			playsound_local(src,pick(scarySounds),50, 1, -1)
+	*/
 
 /mob/living/carbon/human/handle_stomach()
 	spawn(0)
@@ -1848,12 +1829,6 @@
 		return
 	else
 		bodytemperature += (BODYTEMP_HEATING_MAX + (fire_stacks * 15)) * (1-thermal_protection)
-
-/mob/living/carbon/human/rejuvenate()
-	restore_blood()
-	shock_stage = 0
-	traumatic_shock = 0
-	..()
 
 /mob/living/carbon/human/proc/weightgain()
 	if (nutrition >= 0 && stat != 2)

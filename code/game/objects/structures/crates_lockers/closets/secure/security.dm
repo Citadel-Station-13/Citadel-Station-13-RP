@@ -160,6 +160,7 @@
 		/obj/item/clothing/head/helmet/HoS/hat,
 		/obj/item/clothing/head/beret/sec/corporate/hos,
 		/obj/item/clothing/suit/storage/vest/hos,
+		/obj/item/clothing/accessory/poncho/roles/cloak/hos,
 		/obj/item/clothing/under/rank/head_of_security/jensen,
 		/obj/item/clothing/under/rank/head_of_security/corp,
 		/obj/item/clothing/under/rank/head_of_security/skirt_pleated,
@@ -173,11 +174,7 @@
 		/obj/item/clothing/shoes/boots/winter/security,
 		/obj/item/clothing/suit/dress/marine/command/hos,
 		/obj/item/clothing/head/helmet/dermal,
-		/obj/item/radio/headset/heads/hos,
-		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/clothing/glasses/sunglasses/sechud,
-		/obj/item/storage/belt/security,
-		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/clothing/mask/gas/half,
 		/obj/item/clothing/under/bodysuit/bodysuitseccom)
 
@@ -195,19 +192,24 @@
 	// citadel edit NSFW > Multiphase
 	starts_with = list(
 		/obj/item/cartridge/hos,
-		/obj/item/barrier_tape_roll/police,
+		/obj/item/storage/belt/security,
+		/obj/item/radio/headset/heads/hos,
+		/obj/item/radio/headset/heads/hos/alt,
 		/obj/item/shield/riot/tele,
 		/obj/item/storage/box/holobadge/hos,
 		/obj/item/clothing/accessory/badge/holo/hos,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/tool/crowbar/red,
-		/obj/item/storage/box/flashbangs,
 		/obj/item/flash,
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/gun/multiphase,
 		/obj/item/melee/telebaton,
+		/obj/item/storage/box/survival_knife,
 		/obj/item/gps/security/hos,
-		/obj/item/flashlight/maglight)
+		/obj/item/flashlight/maglight,
+		/obj/item/storage/box/flashbangs,
+		/obj/item/barrier_tape_roll/police,
+		/obj/item/megaphone)
 
 /obj/structure/closet/secure_closet/blueshield
 	name = "blueshield's locker"
@@ -221,6 +223,7 @@
 	storage_capacity = 2.5 * MOB_MEDIUM
 
 	starts_with = list(
+		/obj/item/disk/nifsoft/blueshield,
 		/obj/item/radio/headset/heads/blueshield,
 		/obj/item/radio/headset/heads/blueshield/alt,
 		/obj/item/clothing/glasses/sunglasses/medhud,
@@ -228,13 +231,12 @@
 		/obj/item/clothing/under/oricon/utility/sysguard/crew/blueshield,
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/shoes/boots/jackboots,
-		/obj/item/clothing/suit/storage/vest/blueshield,
-		/obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield,
+		/obj/item/clothing/suit/armor/pcarrier/light/ntbs,
+		/obj/item/gunbox/carrier/blueshield,
 		/obj/item/storage/backpack/blueshield,
 		/obj/item/storage/belt/security,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/flash,
-
 		/obj/item/gun/ballistic/revolver/consul,
 		/obj/item/ammo_magazine/s44,
 		/obj/item/ammo_magazine/s44,
@@ -318,8 +320,6 @@
 	req_access = list(ACCESS_SECURITY_BRIG)
 
 	starts_with = list(
-		/obj/item/clothing/suit/storage/vest/officer,
-		/obj/item/clothing/head/helmet,
 		/obj/item/cartridge/security,
 		/obj/item/radio/headset/headset_sec,
 		/obj/item/radio/headset/headset_sec/alt,

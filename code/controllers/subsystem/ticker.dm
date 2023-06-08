@@ -300,7 +300,16 @@ SUBSYSTEM_DEF(ticker)
 		mode.post_setup()
 		//Cleanup some stuff
 		to_chat(world, "<font color=#4F49AF><B>Enjoy the game!</B></FONT>")
-		SEND_SOUND(world, sound('sound/AI/welcome.ogg')) // Skie
+		var/startupsound = rand(1,4)
+		switch(startupsound)
+			if(1)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_1.ogg'))
+			if(2)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_2.ogg'))
+			if(3)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_3.ogg'))
+			if(4)
+				SEND_SOUND(world, sound('sound/roundStart/start_up_4.ogg'))//the original sound
 		//Holiday Round-start stuff	~Carn
 		Holiday_Game_Start()
 
@@ -349,7 +358,7 @@ SUBSYSTEM_DEF(ticker)
 	cinematic.icon = 'icons/effects/station_explosion.dmi'
 	cinematic.icon_state = "station_intact"
 	cinematic.layer = 100
-	cinematic.plane = PLANE_PLAYER_HUD
+	cinematic.plane = HUD_PLANE
 	cinematic.mouse_opacity = 0
 	cinematic.screen_loc = "1,0"
 
@@ -451,18 +460,25 @@ SUBSYSTEM_DEF(ticker)
 		log_and_message_admins("Unable to get overflow spawnpoint; roundstart is going to lag.")
 	//! END
 	for(var/mob/new_player/player in GLOB.player_list)
-		if(player && player.ready && player.mind)
-			if(player.mind.assigned_role=="AI")
-				player.close_spawn_windows()
-				player.AIize()
-			else if(!player.mind.assigned_role)
-				continue
-			else
-				var/mob/living/carbon/human/new_char = player.create_character(S)
-				if(new_char)
-					qdel(player)
-				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
-					data_core.manifest_inject(new_char)
+		if(!player.mind)
+			continue
+
+		if(!player.ready)
+			player.new_player_panel_proc()
+			continue
+
+		if(player.mind.assigned_role=="AI")
+			player.close_spawn_windows()
+			player.AIize()
+		else if(!player.mind.assigned_role)
+			player.new_player_panel_proc()
+			continue
+		else
+			var/mob/living/carbon/human/new_char = player.create_character(S)
+			if(new_char)
+				qdel(player)
+			if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))
+				data_core.manifest_inject(new_char)
 
 
 /datum/controller/subsystem/ticker/proc/collect_minds()

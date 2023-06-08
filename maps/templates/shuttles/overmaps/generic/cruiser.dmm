@@ -4210,7 +4210,7 @@
 /obj/item/soap/nanotrasen,
 /obj/item/soap/deluxe,
 /obj/item/soap,
-/obj/item/rig/ert/janitor,
+/obj/item/hardsuit/ert/janitor,
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "jA" = (
@@ -5533,14 +5533,14 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mg" = (
-/obj/item/rig_module/grenade_launcher/smoke,
-/obj/item/rig_module/cleaner_launcher,
-/obj/item/rig_module/grenade_launcher,
+/obj/item/hardsuit_module/grenade_launcher/smoke,
+/obj/item/hardsuit_module/cleaner_launcher,
+/obj/item/hardsuit_module/grenade_launcher,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mh" = (
-/obj/item/rig_module/vision/multi,
+/obj/item/hardsuit_module/vision/multi,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5635,14 +5635,14 @@
 /obj/structure/closet/crate/secure/weapon{
 	req_one_access = list(108)
 	},
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /obj/item/clothing/glasses/thermal,
 /obj/item/clothing/glasses/thermal,
-/obj/item/clothing/suit/armor/pcarrier/merc,
-/obj/item/clothing/suit/armor/pcarrier/merc,
-/obj/item/clothing/head/helmet/merc,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/suit/armor/pcarrier/combat,
+/obj/item/clothing/suit/armor/pcarrier/combat,
+/obj/item/clothing/head/helmet/redcombat,
+/obj/item/clothing/head/helmet/redcombat,
 /obj/item/storage/box/syndie_kit/combat_armor,
 /obj/item/storage/box/syndie_kit/combat_armor,
 /obj/item/storage/box/syndie_kit/combat_armor,
@@ -5650,8 +5650,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mx" = (
-/obj/item/rig_module/mounted,
-/obj/item/rig_module/mounted,
+/obj/item/hardsuit_module/mounted,
+/obj/item/hardsuit_module/mounted,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5664,7 +5664,7 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mz" = (
@@ -5770,10 +5770,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mL" = (
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5783,10 +5783,10 @@
 	dir = 8;
 	req_one_access = list(103)
 	},
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "mO" = (
@@ -5928,10 +5928,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nc" = (
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/anomaly_scanner,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/anomaly_scanner,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -5941,8 +5941,8 @@
 	dir = 8;
 	req_one_access = list(103)
 	},
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nf" = (
@@ -6160,12 +6160,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "ny" = (
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
@@ -6176,8 +6176,8 @@
 	req_one_access = list(103)
 	},
 /obj/structure/window/reinforced/survival_pod,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nA" = (
@@ -6308,22 +6308,22 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nL" = (
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/armory)
 "nM" = (
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/orescanner,
-/obj/item/rig_module/device/orescanner,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/orescanner,
+/obj/item/hardsuit_module/device/orescanner,
 /obj/structure/table/rack/shelf/steel,
 /obj/machinery/light{
 	dir = 4
@@ -7981,7 +7981,7 @@
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
 /obj/item/rcd_ammo,
-/obj/item/rig/ce/equipped{
+/obj/item/hardsuit/ce/equipped{
 	req_access = list(56)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{

@@ -58,9 +58,9 @@
 	if(mind && mind.changeling)
 		mind.changeling.cloaked = 0
 	// Ninja cloak.
-	if(istype(back, /obj/item/rig))
-		var/obj/item/rig/suit = back
-		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+	if(istype(back, /obj/item/hardsuit))
+		var/obj/item/hardsuit/suit = back
+		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				cloaker.deactivate()
 
@@ -69,9 +69,9 @@
 	if(mind && mind.changeling && mind.changeling.cloaked)
 		return TRUE
 	// Ninja cloak.
-	else if(istype(back, /obj/item/rig))
-		var/obj/item/rig/suit = back
-		for(var/obj/item/rig_module/stealth_field/cloaker in suit.installed_modules)
+	else if(istype(back, /obj/item/hardsuit))
+		var/obj/item/hardsuit/suit = back
+		for(var/obj/item/hardsuit_module/stealth_field/cloaker in suit.installed_modules)
 			if(cloaker.active)
 				return TRUE
 	return ..()
@@ -160,7 +160,7 @@
 	return FBP_NONE
 
 /mob/living/carbon/human/recalculate_vis()
-	if(!vis_enabled || !plane_holder)
+	if(!self_perspective)
 		return
 
 	/**
@@ -173,42 +173,25 @@
 	for(var/slot in slots)
 		// Change this type if you move the vision stuff to item or something.
 		var/obj/item/clothing/O = item_by_slot(slot)
-		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
+		if(istype(O) && O.enables_planes && (slot in O.active_slots))
 			compiled_vis |= O.enables_planes
 
-	// Check to see if we have a rig (ugh, blame rigs, desnowflake this).
-	var/obj/item/rig/rig = back
-	if(istype(rig) && rig.visor)
-		if(!rig.helmet || (head && rig.helmet == head))
-			if(rig.visor && rig.visor.vision && rig.visor.active && rig.visor.vision.glasses)
-				var/obj/item/clothing/glasses/V = rig.visor.vision.glasses
+	// Check to see if we have a hardsuit (ugh, blame rigs, desnowflake this).
+	var/obj/item/hardsuit/hardsuit = back
+	if(istype(hardsuit) && hardsuit.visor)
+		if(!hardsuit.helmet || (head && hardsuit.helmet == head))
+			if(hardsuit.visor && hardsuit.visor.vision && hardsuit.visor.active && hardsuit.visor.vision.glasses)
+				var/obj/item/clothing/glasses/V = hardsuit.visor.vision.glasses
 				compiled_vis |= V.enables_planes
 
 	// NIF Support.
 	if(nif)
 		compiled_vis |= nif.planes_visible()
 
+	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
+	for(var/vis in compiled_vis)
 
-	if(!compiled_vis.len && !vis_enabled.len)
-		// Nothin' doin'.
-		return
-
-
-	var/list/oddities = vis_enabled ^ compiled_vis
-
-	if(!oddities.len)
-		// Same thing in both lists!
-		return
-
-	var/list/to_enable = oddities - vis_enabled
-	var/list/to_disable = oddities - compiled_vis
-
-	for(var/vis in to_enable)
-		plane_holder.set_vis(vis,TRUE)
-		vis_enabled += vis
-	for(var/vis in to_disable)
-		plane_holder.set_vis(vis,FALSE)
-		vis_enabled -= vis
+		self_perspective.set_plane_visible(vis, CLOTHING_TRAIT)
 
 /mob/living/carbon/human/get_restraining_bolt()
 	var/obj/item/implant/restrainingbolt/RB

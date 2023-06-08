@@ -33,6 +33,10 @@
 
 	var/cell_type = /obj/item/cell/device
 
+	//? damage
+	var/stagger_strength = 1.5
+	var/stagger_duration = 3 SECONDS
+
 /obj/item/flash/Initialize(mapload)
 	. = ..()
 	power_supply = new cell_type(src)
@@ -75,12 +79,12 @@
 	if(isrobot(src.loc))
 		var/mob/living/silicon/robot/R = src.loc
 		return R.cell
-	if(istype(src.loc, /obj/item/rig_module))
-		var/obj/item/rig_module/module = src.loc
+	if(istype(src.loc, /obj/item/hardsuit_module))
+		var/obj/item/hardsuit_module/module = src.loc
 		if(module.holder && module.holder.wearer)
 			var/mob/living/carbon/human/H = module.holder.wearer
 			if(istype(H) && H.back)
-				var/obj/item/rig/suit = H.back
+				var/obj/item/hardsuit/suit = H.back
 				if(istype(suit))
 					return suit.cell
 	return null
@@ -193,7 +197,7 @@
 
 					if(flash_strength > 0)
 						H.Confuse(flash_strength + 5)
-						H.afflict_stagger(5)
+						H.afflict_stagger(FLASH_TRAIT, stagger_strength, stagger_duration)
 						H.Blind(flash_strength)
 						H.eye_blurry = max(H.eye_blurry, flash_strength + 5)
 						H.flash_eyes()

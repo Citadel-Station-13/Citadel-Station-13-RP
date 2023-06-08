@@ -864,6 +864,12 @@
 "cN" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/evac)
+"cQ" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "cR" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-06"
@@ -6264,7 +6270,7 @@
 /area/centcom/command)
 "tB" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted,
+/obj/item/hardsuit_module/mounted,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
@@ -6426,6 +6432,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
+"wJ" = (
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "wW" = (
 /turf/unsimulated/wall,
 /area/centcom/main_hall)
@@ -7100,15 +7112,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
-"zv" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
 "zw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7164,10 +7167,6 @@
 /area/centcom/command)
 "zD" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /obj/machinery/photocopier/faxmachine,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
@@ -7175,32 +7174,15 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zF" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
-	dir = 1;
-	pixel_y = -16
-	},
 /obj/item/paper_bin{
 	pixel_x = -1;
 	pixel_y = 5
 	},
 /obj/item/pen,
-/turf/unsimulated/floor/steel,
-/area/centcom/command)
-"zG" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/borderfloor/corner2{
-	dir = 10
-	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zH" = (
@@ -7748,12 +7730,12 @@
 /area/centcom/specops)
 "Cm" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
-/obj/item/rig/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
+/obj/item/hardsuit/ert/security,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Cp" = (
@@ -8167,7 +8149,7 @@
 /area/centcom/command)
 "Hg" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert,
+/obj/item/hardsuit/ert,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
@@ -8176,9 +8158,9 @@
 /area/centcom/test)
 "Hq" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
-/obj/item/rig/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
+/obj/item/hardsuit/ert/medical,
 /obj/item/clothing/accessory/storage/white_vest,
 /obj/item/clothing/accessory/storage/white_vest,
 /obj/item/clothing/accessory/storage/white_vest,
@@ -8388,9 +8370,9 @@
 /area/centcom/command)
 "Kf" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
-/obj/item/rig_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
+/obj/item/hardsuit_module/mounted/taser,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -8648,12 +8630,12 @@
 /area/centcom/specops)
 "LW" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/combat,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/chem_dispenser/injector,
-/obj/item/rig_module/device/healthscanner,
-/obj/item/rig_module/device/healthscanner,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/combat,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/chem_dispenser/injector,
+/obj/item/hardsuit_module/device/healthscanner,
+/obj/item/hardsuit_module/device/healthscanner,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -8679,9 +8661,9 @@
 /area/shuttle/specops/general)
 "Mn" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
-/obj/item/rig/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
+/obj/item/hardsuit/ert/engineer,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Mp" = (
@@ -8860,6 +8842,12 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Oo" = (
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/command)
 "Ou" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/hypospray,
@@ -9043,10 +9031,10 @@
 /area/shuttle/specops/general)
 "QU" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/rcd,
-/obj/item/rig_module/device/plasmacutter,
-/obj/item/rig_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/rcd,
+/obj/item/hardsuit_module/device/plasmacutter,
+/obj/item/hardsuit_module/device/plasmacutter,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "QX" = (
@@ -9291,11 +9279,11 @@
 /area/centcom/specops)
 "TK" = (
 /obj/structure/table/rack,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
-/obj/item/rig/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
+/obj/item/hardsuit/ert/assetprotection,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "TL" = (
@@ -9384,6 +9372,12 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
+/area/centcom/command)
+"Up" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Uq" = (
 /obj/effect/floor_decal/corner/yellow{
@@ -9577,10 +9571,10 @@
 /area/centcom/specops)
 "Wt" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/device/drill,
-/obj/item/rig_module/maneuvering_jets,
-/obj/item/rig_module/maneuvering_jets,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/device/drill,
+/obj/item/hardsuit_module/maneuvering_jets,
+/obj/item/hardsuit_module/maneuvering_jets,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -9630,8 +9624,8 @@
 /area/centcom/specops)
 "Xu" = (
 /obj/structure/table/rack,
-/obj/item/rig_module/mounted/egun,
-/obj/item/rig_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
+/obj/item/hardsuit_module/mounted/egun,
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
@@ -9834,9 +9828,9 @@
 "YU" = (
 /obj/structure/table/rack,
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/item/rig_module/rescue_pharm,
-/obj/item/rig_module/sprinter,
-/obj/item/rig_module/sprinter,
+/obj/item/hardsuit_module/rescue_pharm,
+/obj/item/hardsuit_module/sprinter,
+/obj/item/hardsuit_module/sprinter,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "YW" = (
@@ -18798,10 +18792,10 @@ xj
 xw
 yw
 yQ
-yC
-zh
-zC
-yC
+wJ
+zk
+zk
+Up
 zU
 yw
 Ao
@@ -18995,7 +18989,7 @@ yR
 zf
 zs
 zD
-yC
+Bf
 yC
 Ah
 yC
@@ -19189,7 +19183,7 @@ yS
 zg
 zt
 zE
-yC
+Bf
 yC
 Ai
 yC
@@ -19383,7 +19377,7 @@ yT
 zf
 zu
 zF
-yC
+Bf
 zV
 yw
 Ap
@@ -19574,10 +19568,10 @@ xj
 xx
 yw
 yU
-yC
-zv
-zG
-yC
+Oo
+Bk
+Bk
+cQ
 zW
 yw
 Aq

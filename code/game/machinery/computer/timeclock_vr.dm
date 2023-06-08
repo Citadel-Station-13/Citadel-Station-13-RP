@@ -183,7 +183,7 @@
 		card.access = newjob.get_access()
 		card.rank = newjob.title
 		card.assignment = newassignment
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -209,7 +209,7 @@
 		card.access = ptojob.get_access()
 		card.rank = ptojob.title
 		card.assignment = ptojob.title
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -223,7 +223,7 @@
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()
 	if(!card)
 		return FALSE
-	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
+	var/time_left = 3 MINUTES - (world.time - card.last_job_switch)
 	if(time_left > 0)
 		to_chat(usr, "You need to wait another [round((time_left/10)/60, 1)] minute\s before you can switch.")
 		return FALSE

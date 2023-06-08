@@ -140,6 +140,10 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
+/obj/item/reagent_containers/glass/on_reagent_change()
+	. = ..()
+	update_icon()
+
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker."
@@ -147,6 +151,7 @@
 	icon_state = "beaker"
 	base_icon_state = "beaker"
 	item_state = "beaker"
+	w_class = WEIGHT_CLASS_TINY
 	matter = list(MAT_GLASS = 500)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
@@ -154,9 +159,6 @@
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
 	. = ..()
 	desc += " Can hold up to [volume] units."
-
-/obj/item/reagent_containers/glass/beaker/on_reagent_change()
-	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
@@ -201,6 +203,7 @@
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
 	base_icon_state = "beakerlarge"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
@@ -212,6 +215,7 @@
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
 	base_icon_state = "beakernoreact"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
@@ -222,6 +226,7 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
 	base_icon_state = "beakerbluespace"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 5000)
 	volume = 300
 	amount_per_transfer_from_this = 10
@@ -359,6 +364,14 @@
 	matter = list("sandstone" = 50)
 	w_class = ITEMSIZE_LARGE
 	unacidable = 1
+
+/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user)
+	. = ..()
+	if(reagents && reagents.reagent_list.len)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			. += "[icon2html(thing = src, target = world)] The [src.name] currently contains [R.volume] units of [R.name]!"
+	else
+		. += "<span class='notice'>It is empty.</span>"
 
 /obj/item/reagent_containers/glass/bucket/sandstone/attackby(var/obj/D, mob/user as mob)
 	if(isprox(D))

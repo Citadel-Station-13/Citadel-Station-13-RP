@@ -135,8 +135,8 @@
 						SPAN_WARNING("You smother [L] with [src]!"),
 						"You hear some struggling and muffled cries of surprise"
 						)
-					//it's inhaled, so... maybe CHEM_BLOOD doesn't make a whole lot of sense but it's the best we can do for now
-					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_BLOOD)
+					//it's inhaled, so... maybe CHEM_INJECT doesn't make a whole lot of sense but it's the best we can do for now
+					reagents.trans_to_mob(L, amount_per_transfer_from_this, CHEM_INJECT)
 					update_name()
 				else
 					to_chat(user, SPAN_WARNING("You can't smother this creature."))

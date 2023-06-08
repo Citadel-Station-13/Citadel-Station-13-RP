@@ -98,6 +98,7 @@
 
 /datum/trait/neutral/vampire/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
+	H.add_vision_modifier(/datum/vision/augmenting/vetalan)
 	add_verb(H, /mob/living/carbon/human/proc/bloodsuck)
 	add_verb(H, /mob/living/carbon/human/proc/lick_wounds)
 
@@ -277,3 +278,10 @@
 /datum/trait/neutral/cyberpsycho/apply(datum/species/S, mob/living/carbon/human/H)
 	..(S,H)
 	H.AddComponent(/datum/component/cyberpsychosis)
+
+/datum/trait/neutral/alcohol_intolerance
+	name = "Alcohol Intolerance"
+	desc = "You cannot metabolize alcohol; ingesting it will cause vomiting, toxin build-up, liver damage, pain and other unpleasantness."
+	cost = 0
+	custom_only = FALSE
+	traits = list(TRAIT_ALCOHOL_INTOLERANT)

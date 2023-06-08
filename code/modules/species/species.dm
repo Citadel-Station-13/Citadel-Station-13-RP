@@ -40,6 +40,11 @@
 	///Used for metabolizing reagents.
 	var/reagent_tag
 
+	//? Traits / Physiology
+	/// Intrinsic datum traits to apply to the mob
+	var/list/mob_traits
+	//  todo: list of physiologies to add. list, incase we want to have separate ones for separate biology flags.
+
 	//? Additional info
 	/// what you see on tooltip/examine
 	var/examine_name
@@ -294,8 +299,8 @@
 	var/gluttonous
 
 	//? Sight
-	/// Native darksight distance.
-	var/darksight = 2
+	/// darksight datum - set to typepath, initialized at init
+	var/datum/vision/baseline/vision_innate = /datum/vision/baseline/species_tier_0
 	/// Permanent weldervision.
 	var/short_sighted
 	/// If set, this organ is required for vision. Defaults to "eyes" if the species has them.
@@ -431,10 +436,6 @@
 	/// This allows you to pick up crew
 	var/holder_type = /obj/item/holder/micro
 
-	//? Traits
-	/// Intrinsic datum traits to apply to the mob
-	var/list/mob_traits
-
 	//? on death drops
 	/// The color of the species flesh.
 	var/flesh_color = "#FFC896"
@@ -463,6 +464,8 @@
 	//? OLD Vars
 	/// Whether the species can infect wounds, only works with claws / bites
 	var/infect_wounds = 0
+	//How quickly the species can fly up z-levels (0 is instant, 1 is 7 seconds, 0.5 is ~3.5 seconds)
+	var/flight_mod = 1
 
 /datum/species/New()
 	if(hud_type)
@@ -525,7 +528,6 @@
 	H.maxHealth = total_health
 
 	add_inherent_verbs(H)
-	add_inherent_spells(H)
 
 	for(var/name in traits)
 		var/datum/trait/T = all_traits[name]
@@ -910,3 +912,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			H.dna.ready_dna(H)
 	else
 		src.traits = traits
+
+//? Darksight
+
+/**
+ * Makes sure innate darksight is there
+ */
+/datum/species/proc/assert_innate_vision()
+	if(ispath(vision_innate))
+		vision_innate = new vision_innate

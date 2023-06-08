@@ -1,11 +1,11 @@
-/obj/item/rig/vox	//Just to get the atom_flags set up
+/obj/item/hardsuit/vox	//Just to get the atom_flags set up
 	name = "alien control module"
 	desc = "This metal box writhes and squirms as if it were alive..."
 	suit_type = "alien"
 	icon_state = "vox_rig"
-	armor_type = /datum/armor/rig/vox
+	armor_type = /datum/armor/hardsuit/vox
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 0.2
 	offline_slowdown = 5
 	allowed = list(
@@ -17,12 +17,12 @@
 		/obj/item/bluespace_radio,
 	)
 	air_type = /obj/item/tank/vox
-	helm_type = /obj/item/clothing/head/helmet/space/rig/vox
-	boot_type = /obj/item/clothing/shoes/magboots/rig/vox
-	chest_type = /obj/item/clothing/suit/space/rig/vox
-	glove_type = /obj/item/clothing/gloves/gauntlets/rig/vox
+	helm_type = /obj/item/clothing/head/helmet/space/hardsuit/vox
+	boot_type = /obj/item/clothing/shoes/magboots/hardsuit/vox
+	chest_type = /obj/item/clothing/suit/space/hardsuit/vox
+	glove_type = /obj/item/clothing/gloves/gauntlets/hardsuit/vox
 
-/datum/armor/rig/vox
+/datum/armor/hardsuit/vox
 	melee = 0.6
 	bullet = 0.5
 	laser = 0.4
@@ -31,37 +31,37 @@
 	bio = 1.0
 	rad = 0.5
 
-/obj/item/clothing/head/helmet/space/rig/vox
+/obj/item/clothing/head/helmet/space/hardsuit/vox
 	species_restricted = list(SPECIES_VOX)
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE
 
-/obj/item/clothing/shoes/magboots/rig/vox
+/obj/item/clothing/shoes/magboots/hardsuit/vox
 	name = "talons"
 	species_restricted = list(SPECIES_VOX)
 
-/obj/item/clothing/suit/space/rig/vox
+/obj/item/clothing/suit/space/hardsuit/vox
 	species_restricted = list(SPECIES_VOX)
 
-/obj/item/clothing/gloves/gauntlets/rig/vox
+/obj/item/clothing/gloves/gauntlets/hardsuit/vox
 	siemens_coefficient = 0
 	species_restricted = list(SPECIES_VOX)
 
-/obj/item/rig/vox/carapace
+/obj/item/hardsuit/vox/carapace
 	name = "dense alien control module"
 	suit_type = "dense alien"
 	emp_protection = 40 //change this to 30 if too high.
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 	cell_type =  /obj/item/cell/hyper
 	initial_modules = list(
-		/obj/item/rig_module/mounted/energy_blade,
-		/obj/item/rig_module/sprinter,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/vision,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/self_destruct
+		/obj/item/hardsuit_module/mounted/energy_blade,
+		/obj/item/hardsuit_module/sprinter,
+		/obj/item/hardsuit_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/vision,
+		/obj/item/hardsuit_module/power_sink,
+		/obj/item/hardsuit_module/self_destruct
 		)
 
-/obj/item/rig/vox/stealth
+/obj/item/hardsuit/vox/stealth
 	name = "sinister alien control module"
 	suit_type = "sinister alien"
 	icon_state = "voxstealth_rig"
@@ -69,9 +69,9 @@
 	req_access = list(ACCESS_FACTION_SYNDICATE)
 	cell_type =  /obj/item/cell/hyper
 	initial_modules = list(
-		/obj/item/rig_module/stealth_field,
-		/obj/item/rig_module/electrowarfare_suite,
-		/obj/item/rig_module/vision,
-		/obj/item/rig_module/power_sink,
-		/obj/item/rig_module/self_destruct
+		/obj/item/hardsuit_module/stealth_field,
+		/obj/item/hardsuit_module/electrowarfare_suite,
+		/obj/item/hardsuit_module/vision,
+		/obj/item/hardsuit_module/power_sink,
+		/obj/item/hardsuit_module/self_destruct
 		)

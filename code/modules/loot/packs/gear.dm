@@ -1,7 +1,7 @@
-/datum/prototype/loot_pack/gear
-	abstract_type = /datum/prototype/loot_pack/gear
+/datum/prototype/struct/loot_pack/gear
+	abstract_type = /datum/prototype/struct/loot_pack/gear
 
-/datum/prototype/loot_pack/gear/space_miner
+/datum/prototype/struct/loot_pack/gear/space_miner
 	some = list(
 		/obj/item/pickaxe/silver,
 		/obj/item/pickaxe/gold,
@@ -9,7 +9,7 @@
 	)
 	amt = 1
 
-/datum/prototype/loot_pack/gear/space_miner/basic
+/datum/prototype/struct/loot_pack/gear/space_miner/basic
 	always = list(
 		/obj/item/pickaxe/plasmacutter,
 		/obj/item/tape_recorder,
@@ -17,9 +17,9 @@
 		/obj/item/clothing/head/helmet/space/void/mining,
 	)
 
-/datum/prototype/loot_pack/gear/space_miner/advanced
+/datum/prototype/struct/loot_pack/gear/space_miner/advanced
 	always = list(
 		/obj/item/pickaxe/diamonddrill,
 		/obj/item/tape_recorder,
-		/obj/item/rig/industrial/equipped,
+		/obj/item/hardsuit/industrial/equipped,
 	)

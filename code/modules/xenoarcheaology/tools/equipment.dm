@@ -4,7 +4,6 @@
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "engspace_suit"
 	item_state = "engspace_suit"
-	update_icon_define = "icons/mob/clothing/spacesuits.dmi"
 	armor_type = /datum/armor/general/biosuit/anomaly
 	max_pressure_protection = 5   * ONE_ATMOSPHERE // Not very good protection, but if an anomaly starts doing gas stuff you're not screwed
 	min_pressure_protection = 0.4 * ONE_ATMOSPHERE
