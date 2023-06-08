@@ -51,7 +51,7 @@ window "mapwindow"
 		is-pane = true
 		outer-size = 656x538
 		inner-size = 640x499
-	elem "browser1"
+	elem "cutscenebrowser"
 		type = BROWSER
 		pos = 0,0
 		size = 640x480
@@ -59,7 +59,6 @@ window "mapwindow"
 		anchor2 = -1,-1
 		background-color = none
 		is-visible = false
-		is-disabled = true
 		saved-params = ""
 	elem "map"
 		type = MAP

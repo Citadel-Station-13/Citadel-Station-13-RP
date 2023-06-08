@@ -217,6 +217,7 @@
 GLOBAL_DATUM_INIT(cutscene_backdrop, /atom/movable/screen/cutscene_backdrop, new)
 
 /atom/movable/screen/cutscene_backdrop
+	appearance_flags = NO_CLIENT_COLOR | TILE_BOUND | PIXEL_SCALE
 	plane = CUTSCENE_PLANE
 	layer = CUTSCENE_LAYER_BACKDROP
 	mouse_opacity = MOUSE_OPACITY_ICON
@@ -227,6 +228,7 @@ GLOBAL_DATUM_INIT(cutscene_backdrop, /atom/movable/screen/cutscene_backdrop, new
 
 INITIALIZE_IMMEDIATE(/atom/movable/screen/cutscene_simple)
 /atom/movable/screen/cutscene_simple
+	appearance_flags = NO_CLIENT_COLOR | TILE_BOUND | PIXEL_SCALE
 	plane = CUTSCENE_PLANE
 	layer = CUTSCENE_LAYER_MAIN
 
