@@ -6,8 +6,27 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
-<!-- Early Load - Script -->
+<style>
+	#cutsceneContainer {
+		margin: 0;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		overflow: hidden;
+		background-color: black;
+		height: 100%;
+		width: 100%
+	}
+	#primaryImage {
+		height: 100%;
+		width: auto;
+	}
+</style>
+</head>
+<body>
+<div id="cutsceneContainer"></div>
 <script>
+
 /// polyfill: element.addEventListener()
 var PROP_ADD_EVENT_LISTENER = (document.addEventListener ? 'addEventListener' : 'attachEvent'); // IE8 handling for Wine users
 /// polyfill: element.textContent
@@ -74,31 +93,6 @@ if (!String.prototype.trim) {
 		return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
 	};
 }
-</script>
-<style>
-	#cutsceneContainer {
-		margin: 0;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		overflow: hidden;
-		background-color: black;
-		height: 100%;
-		width: 100%
-	}
-	#primaryImage {
-		height: 100%;
-		width: auto;
-	}
-</style>
-</head>
-<body>
-<div id="cutsceneContainer"></div>
-<script>
-
-window.onload = function() {
-	windowBoot()
-};
 
 const ELEMENT_ID_CONTAINER = "cutsceneContainer"
 const SKIN_ID_MAP = "map";
@@ -118,9 +112,9 @@ function windowBoot() {
 
 function registerEvents() {
 	// restore focus after press
-	document[PROP_ADD_EVENT_LISTENER]("mouseup", winset_focus_map);
+	document[PROP_ADD_EVENT_LISTENER]("mouseup", winsetFocusMap);
 	// restore focus after press
-	document[PROP_ADD_EVENT_LISTENER]("keyup", winset_focus_map);
+	document[PROP_ADD_EVENT_LISTENER]("keyup", winsetFocusMap);
 }
 
 /// sends a verb
@@ -185,6 +179,10 @@ function yieldInvoke(f) {
 function reviveWindow() {
 	declareReady();
 }
+
+window.onload = function() {
+	windowBoot()
+};
 
 </script>
 </body>

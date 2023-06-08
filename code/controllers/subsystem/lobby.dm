@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(lobby)
 	set_title_scene(make_title_scene())
 
 /datum/controller/subsystem/lobby/proc/make_title_scene()
-	var/picked = pickweight(GLOB.using_map.titlescreens)
+	var/picked = pickweight(GLOB.using_map.titlescreens.Copy())
 	if(isnull(picked))
 		return
 	var/datum/cutscene/built
@@ -39,6 +39,7 @@ SUBSYSTEM_DEF(lobby)
 		scene.icon_height = I.Height()
 		built = scene
 	built.init()
+	return built
 
 /datum/controller/subsystem/lobby/proc/set_title_scene(datum/cutscene/scene)
 	var/list/client/old_viewing

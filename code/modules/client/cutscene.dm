@@ -1,3 +1,6 @@
+// todo: if byond ever gets threaded browsers, we're standardizing tgui.html and tgui_window.dm
+//       because manually reimplementing this shit is driving me nuts.
+
 /client/proc/init_cutscene_system()
 	set waitfor = FALSE
 	__init_cutscene_system()
@@ -5,6 +8,9 @@
 /client/proc/__init_cutscene_system()
 	PRIVATE_PROC(TRUE)
 	sleep(1 SECONDS)
+	// loads scenepanel if it isn't there
+	src << browse(file('html/cutscenebrowser.html'), "window=[SKIN_BROWSER_ID_CUTSCENE]")
+	// if it is there and we can't tell because byond is byond, send it a signal to reload
 	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:reviveWindow")
 
 /client/proc/cleanup_cutscene_system()
@@ -112,7 +118,7 @@
  * - array.includes()
  * - string.trim()
  *
- * returned HTML should be IE8 compatible.
+ * returned HTML should be IE8 compatible. also, url_encode it.
  */
 /datum/cutscene/browser/proc/build_inner_html(client/C)
 	return ""
@@ -120,12 +126,12 @@
 /datum/cutscene/browser/setup(client/C)
 	. = ..()
 	src << output(build_inner_html(C), "[SKIN_BROWSER_ID_CUTSCENE]:build")
-	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=1")
+	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=1")
 
 /datum/cutscene/browser/cleanup(client/C)
 	. = ..()
 	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")
-	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
 
 /**
  * simple cutscene that's just one asset that goes in an <img> tag
@@ -148,7 +154,7 @@
 		cached_icon = icon(image_path)
 	/// good enough
 	var/mutated_path = "[ref(src)]_[rand(1, 1000)]"
-	cached_html = "<img id=\"primaryImage\" src=\"[isnull(cached_icon)? image_path : mutated_path]\">"
+	cached_html = url_encode("<img id=\"primaryImage\" src=\"[isnull(cached_icon)? image_path : mutated_path]\">")
 	use_fname = mutated_path
 
 /datum/cutscene/browser/simple/build_inner_html(client/C)
@@ -198,7 +204,7 @@
 	return ..()
 
 /datum/cutscene/native/simple/init()
-	object = new(icon_path, icon_width, icon_height)
+	object = new(null, icon_path, icon_width, icon_height)
 
 /datum/cutscene/native/simple/setup(client/C)
 	. = ..()
@@ -226,6 +232,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/cutscene_simple)
 
 /atom/movable/screen/cutscene_simple/Initialize(mapload, path, width, height)
 	. = ..()
-	icon = isicon(path)? path : icon(path)
+	if(!isnull(path))
+		icon = isicon(path)? path : icon(path)
 	screen_loc = "CENTER:-[width / 2 + WORLD_ICON_SIZE / 2],CENTER:-[height / 2 + WORLD_ICON_SIZE / 2]"
 
