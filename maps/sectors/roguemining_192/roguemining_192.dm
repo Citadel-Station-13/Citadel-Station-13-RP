@@ -22,6 +22,9 @@
 	id = "Roguemining1"
 	name = "Roguemining - Allocation 1"
 	absolute_path = "maps/sectors/roguemining_192/levels/roguemining_192_1.dmm"
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_ACTIVE,
+	)
 
 /datum/map/sector/roguemining_192/two
 	id = "roguemining_192_2"
@@ -34,6 +37,9 @@
 	id = "Roguemining2"
 	name = "Roguemining - Allocation 2"
 	absolute_path = "maps/sectors/roguemining_192/levels/roguemining_192_2.dmm"
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_ACTIVE,
+	)
 
 /datum/map/sector/roguemining_192/three
 	id = "roguemining_192_3"
@@ -46,6 +52,9 @@
 	id = "Roguemining3"
 	name = "Roguemining - Allocation 3"
 	absolute_path = "maps/sectors/roguemining_192/levels/roguemining_192_3.dmm"
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_ACTIVE,
+	)
 
 /datum/map/sector/roguemining_192/four
 	id = "roguemining_192_4"
@@ -58,3 +67,6 @@
 	id = "Roguemining4"
 	name = "Roguemining - Allocation 4"
 	absolute_path = "maps/sectors/roguemining_192/levels/roguemining_192_4.dmm"
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_ACTIVE,
+	)

@@ -40,9 +40,9 @@
 	for (var/z in LEGACY_MAP_DATUM.station_levels)
 		generateStationMinimap(z)
 
-	if(LEGACY_MAP_DATUM.holomap_smoosh)
-		for(var/smoosh_list in LEGACY_MAP_DATUM.holomap_smoosh)
-			smooshTetherHolomaps(smoosh_list)
+	var/list/smoosh_levels = SSmapping.levels_by_trait(ZTRAIT_LEGACY_HOLOMAP_SMOOSH)
+	if(length(smoosh_levels))
+		smooshTetherHolomaps(smoosh_levels)
 
 	holomaps_initialized = TRUE
 

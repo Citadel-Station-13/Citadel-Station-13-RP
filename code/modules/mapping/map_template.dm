@@ -6,8 +6,6 @@
 	var/desc = "Some text should go here. Maybe."
 	/// If this is set, no more than one template in the same group will be spawned, per submap seeding.
 	var/template_group = null
-	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
-	var/annihilate = FALSE
 
 	/// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until
 	/// it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
@@ -35,8 +33,10 @@
 	var/height = 0
 
 	//* loading
-	/// times loaded this round, excluding new zlevel loads
-	var/loaded = 0
+	/// times loaded this round
+	var/tmp/loaded = 0
+	/// If true, all (movable) atoms at the location where the map is loaded will be deleted before the map is loaded in.
+	var/annihilate = FALSE
 
 	//* loading as its own level
 	/// traits to have if loaded as standalone level
@@ -57,15 +57,35 @@
 	if(isnull(map_path))
 		return
 	var/datum/dmm_parsed/parsing = parse_map(map_path)
-	#warn impl
+	width = parsing.width
+	heigth = parsing.height
+	if(cache_parsed_map)
+		parsed = parsing
 
-/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
-	var/x = 1
-	var/y = 1
+/datum/map_template/proc/unload()
+	parsed = null
+
+/datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_attributes)
+	var/ll_x = 1
+	var/ll_y = 1
+	var/sideways = orientation & (EAST|WEST)
+	var/real_width = sideways? height : width
+	var/real_height = sideways? width : height
 
 	if(centered)
-		x = round((world.maxx - width)/2)
-		y = round((world.maxy - height)/2)
+		ll_x = round((world.maxx - real_width) / 2)
+		ll_y = round((world.maxy - real_height) / 2)
+
+	var/datum/map_level/dynamic/level = new
+	level.traits = traits.Copy()
+	level.attributes = attributes.Copy()
+	SSmapping.allocate_level(level)
+
+	ASSERT(level.instantiated)
+
+	#warn impl rest
+
+/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
 
 	#warn conform
 	var/list/bounds = maploader.load_map(file(map_path), x, y, no_changeturf = TRUE, orientation=orientation)
@@ -82,19 +102,23 @@
 	return TRUE
 
 /datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
-	var/old_T = T
+	var/ll_x = T.x
+	var/ll_y = T.y
+	var/ll_z = T.z
+	var/sideways = orientation & (EAST|WEST)
+	var/real_width = sideways? height : width
+	var/real_height = sideways? width : height
+
 	if(centered)
-		T = locate(T.x - round(((orientation & NORTH|SOUTH) ? width : height)/2) , T.y - round(((orientation & NORTH|SOUTH) ? height : width)/2) , T.z)
-	if(!T)
-		return
-	if(T.x+width > world.maxx)
-		return
-	if(T.y+height > world.maxy)
-		return
+		ll_x -= round(real_width / 2)
+		ll_y -= round(real_height / 2)
+
+	var/turf/real_turf = locate(ll_x, ll_y, ll_z)
 
 	if(annihilate)
-		annihilate_bounds(old_T, centered, orientation)
+		annihilate_bounds(real_turf, width, height) 
 
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
 	#warn conform
 	var/list/bounds = maploader.load_map(file(map_path), T.x, T.y, T.z, cropMap=TRUE, orientation = orientation)
 	if(!bounds)
@@ -111,24 +135,44 @@
 	loaded++
 	return TRUE
 
-/datum/map_template/proc/get_affected_turfs(turf/T, centered = FALSE, orientation = SOUTH)
-	var/turf/placement = T
-	if(centered)
-		var/turf/corner = locate(placement.x - round(((orientation & NORTH|SOUTH) ? width : height)/2), placement.y - round(((orientation & NORTH|SOUTH) ? height : width)/2), placement.z)
-		if(corner)
-			placement = corner
-	return block(placement, locate(placement.x+((orientation & NORTH|SOUTH) ? width : height)-1, placement.y+((orientation & NORTH|SOUTH) ? height : width)-1, placement.z))
+/datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
+	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")
+	var/list/turf/cleaning = block(
+		ll_turf,
+		locate(
+			ll_turf.x + width - 1,
+			ll_turf.y + height - 1,
+			ll_turf.z
+		)
+	)
+	var/cleaned = 0
+	for(var/turf/T as anything in cleaning)
+		for(var/atom/movable/AM as anything in T)
+			if(!(AM.atom_flags & ATOM_ABSTRACT))
+				continue
+			qdel(AM)
+			++cleaned
+	SSmapping.subsystem_log("Deleted [cleaned] atoms.")
 
-/datum/map_template/proc/annihilate_bounds(turf/origin, centered = FALSE, orientation = SOUTH)
-	var/deleted_atoms = 0
-	log_debug(SPAN_DEBUG("Annihilating objects in submap loading locatation."))
-	var/list/turfs_to_clean = get_affected_turfs(origin, centered, orientation)
-	if(turfs_to_clean.len)
-		for(var/turf/T in turfs_to_clean)
-			for(var/atom/movable/AM in T)
-				++deleted_atoms
-				qdel(AM)
-	log_debug(SPAN_DEBUG("Annihilated [deleted_atoms] objects."))
+/datum/map_template/proc/get_affecting_turfs(turf/T, centered = FALSE, orientation = SOUTH)
+	var/ll_x = T.x
+	var/ll_y = T.y
+	var/ll_z = T.z
+	var/sideways = orientation & (EAST|WEST)
+	var/real_width = sideways? height : width
+	var/real_height = sideways? width : height
+	var/turf/ll_turf = locate(ll_x, ll_y, ll_z)
+	return block(
+		ll_turf,
+		locate(
+			ll_turf.x + width - 1,
+			ll_turf.y + height - 1,
+			ll_turf.z
+		)
+	)
+
+/datum/map_template/proc/init_bounds(list/bounds)
+	#warn impl
 
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)

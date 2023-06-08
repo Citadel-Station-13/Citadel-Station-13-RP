@@ -241,6 +241,11 @@
 		SSmapping.on_attribute_set(src, attribute, old, null)
 
 /**
+ * dynamically generated levels should use this
+ */
+/datum/map_level/dynamic
+
+/**
  * "free" / unallocated zlevels use this
  */
 /datum/map_level/unallocated

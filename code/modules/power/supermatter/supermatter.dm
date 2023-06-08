@@ -233,14 +233,10 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = LEGACY_MAP_DATUM.accessible_z_levels.Copy()
-		for(var/zlevel in LEGACY_MAP_DATUM.station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
-
+		var/list/candidates = SSmapping.crosslinked_levels() - LEGACY_MAP_DATUM.station_levels
+		. = SAFEPICK(candidates)
+		if(.)
+			return
 	return ..()
 
 /obj/machinery/power/supermatter/process(delta_time)

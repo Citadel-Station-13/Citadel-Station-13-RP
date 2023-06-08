@@ -191,11 +191,6 @@
 	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
 						 		 Z_LEVEL_ROGUEMINE_2)
 
-	mining_station_z =		list(Z_LEVEL_SPACE_HIGH)
-	mining_outpost_z =		list(Z_LEVEL_SURFACE_MINE)
-
-	lateload_single_pick = null //Nothing right now.
-
 	planet_datums_to_make = list(/datum/planet/virgo3b,
 								/datum/planet/virgo4,
 								/datum/planet/class_d)

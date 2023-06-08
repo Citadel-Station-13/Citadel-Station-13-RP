@@ -40,3 +40,8 @@
 #define ZTRAIT_FACILITY_SAFETY "facility_safety"
 /// xenoarcheology shouldn't generate here
 #define ZTRAIT_XENOARCH_EXEMPT "xenoarch_exempt"
+
+#define ZTRAIT_LEGACY_HOLOMAP_SMOOSH "_holomap_smoosh"
+#define ZTRAIT_LEGACY_BELTER_DOCK "_belter_dock"
+#define ZTRAIT_LEGACY_BELTER_TRANSIT "_belter_transit"
+#define ZTRAIT_LEGACY_BELTER_ACTIVE "_belter_active"

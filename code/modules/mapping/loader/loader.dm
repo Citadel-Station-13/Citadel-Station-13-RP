@@ -33,7 +33,9 @@
  * @return /datum/dmm_parsed instance
  */
 /proc/load_map(map, ll_X, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation)
-	#warn impl
+	var/datum/dmm_parsed/parsed = new(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
+	. = parsed
+	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation)
 
 /**
  * parses a dmm map
@@ -43,7 +45,7 @@
  * @return /datum/dmm_parsed instance
  */
 /proc/parse_map(map, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper)
-	#warn impl
+	return new /datum/dmm_parsed(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 
 /**
  * SS13 optimized map loader

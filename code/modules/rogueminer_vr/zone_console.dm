@@ -58,19 +58,19 @@
 	if(!shuttle_control)
 		data["shuttle_location"] = "Unknown"
 		data["shuttle_at_station"] = 0
-	else if(shuttle_control.z in LEGACY_MAP_DATUM.belter_docked_z)
+	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
 		data["shuttle_location"] = "Landed"
 		data["shuttle_at_station"] = 1
-	else if(shuttle_control.z == LEGACY_MAP_DATUM.belter_transit_z)
+	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_TRANSIT))
 		data["shuttle_location"] = "In-transit"
 		data["shuttle_at_station"] = 0
-	else if(shuttle_control.z == LEGACY_MAP_DATUM.belter_belt_z)
+	else if(SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE))
 		data["shuttle_location"] = "Belt"
 		data["shuttle_at_station"] = 0
 
 	var/can_scan = 0
 	if(chargePercent >= 100)	// Keep having weird problems with these in one 'if' statement
-		if(shuttle_control && (shuttle_control.z in LEGACY_MAP_DATUM.belter_docked_z))	// Even though I put them all in parens to avoid OoO problems...
+		if(shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_DOCK))
 			if(!curZoneOccupied)	// Not sure why.
 				if(!scanning)
 					can_scan = 1
@@ -79,7 +79,7 @@
 	data["scan_ready"] = can_scan
 
 	// Permit emergency recall of the shuttle if its stranded in a zone with just dead people.
-	data["can_recall_shuttle"] = (shuttle_control && (shuttle_control.z in LEGACY_MAP_DATUM.belter_belt_z) && !curZoneOccupied)
+	data["can_recall_shuttle"] = (shuttle_control && SSmapping.level_trait(get_z(shuttle_control), ZTRAIT_LEGACY_BELTER_ACTIVE) && !curZoneOccupied)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

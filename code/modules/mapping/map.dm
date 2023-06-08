@@ -93,7 +93,6 @@
 	var/full_name = "Unnamed Map"
 
 	// Automatically populated lists made static for faster lookups
-	var/list/zlevels = list()
 	var/list/station_levels = list() // Z-levels the station exists on
 	var/list/admin_levels = list()   // Z-levels for admin functionality (Centcom, shuttle transit, etc)
 	var/list/contact_levels = list() // Z-levels that can be contacted from the station, for eg announcements
@@ -108,13 +107,6 @@
 	// E-mail TLDs to use for NTnet modular computer e-mail addresses
 	var/list/usable_email_tlds = list("freemail.nt")
 
-
-	//List of additional z-levels to load above the existing .dmm file z-levels using the maploader. Must be map template >>> NAMES <<<.
-	var/list/lateload_z_levels = list()
-
-	//Similar to above, but only pick ONE to load, useful for random away missions and whatnot
-	var/list/lateload_single_pick = list()
-
 	var/list/allowed_jobs = list()	// Job datums to use.
 									// Works a lot better so if we get to a point where three-ish maps are used
 									// We don't have to C&P ones that are only common between two of them
@@ -122,17 +114,11 @@
 									// Also including them lets us override already created jobs, letting us keep the datums to a minimum mostly.
 									// This is probably a lot longer explanation than it needs to be.
 
-	var/list/holomap_smoosh		// List of lists of zlevels to smoosh into single icons
 	var/list/holomap_offset_x = list()
 	var/list/holomap_offset_y = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
 	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
-
-	// Belter stuff
-	var/list/belter_docked_z = list()
-	var/list/belter_transit_z = list()
-	var/list/belter_belt_z = list()
 
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
@@ -279,10 +265,6 @@
 			return list(srcz)
 		else
 			return list(srcz)
-
-/datum/map/station/proc/get_zlevel_name(var/index)
-	var/datum/map_level/Z = zlevels["[index]"]
-	return Z?.name
 
 // Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
 // This list needs to be purged but people insist on adding more cruft to the radio.

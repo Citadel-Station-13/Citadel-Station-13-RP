@@ -16,24 +16,28 @@
 	)
 	width = 192
 	height = 192
+	lateload = list(
+		/datum/map/sector/debrisfield_192,
+		/datum/map/sector/piratebase_192,
+		/datum/map/sector/mining_192,
+		/datum/map/sector/gaia_192,
+		/datum/map/sector/frozen_192,
+		/datum/map/sector/wasteland_192,
+		/datum/map/sector/tradeport_192,
+		/datum/map/sector/lavaland_192,
+		/datum/map/sector/miaphus_192,
+		/datum/map/sector/roguemining_192/one,
+	)
+
+	//* LEGACY BELOW *//
 
 	legacy_persistence_id = "rift"
-
-	#warn *scream
-
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
 	usable_email_tlds = list("lythios.nt")
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
-
-	holomap_smoosh = list(list(
-		Z_LEVEL_UNDERGROUND_DEEP,
-		Z_LEVEL_UNDERGROUND,
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH))
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"
@@ -112,30 +116,6 @@
 		/area/engineering/atmos_intake, // Outside,
 		/area/rnd/external) //  Outside,
 
-	lateload_z_levels = list(
-//		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
-//		list("Western Canyon","Western Deep Caves","Western Caves","Western Plains"),	///Integration Test says these arent valid maps but everything works, will leave in for now but this prolly isnt needed -Bloop
-		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
-		list("ExoPlanet - Z1 Planet"),//Mining planet
-		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
-		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
-		list("ExoPlanet - Z4 Planet"), // Gaia Planet
-		list("ExoPlanet - Z5 Planet"), // Frozen Planet
-		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
-		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert")
-	//	list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
-	)
-
-	belter_docked_z = 		list(Z_LEVEL_WEST_DEEP)
-	belter_transit_z =	 	list(Z_LEVEL_MISC)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2)
-
-	lateload_single_pick = null //Nothing right now.
-
 /datum/map_level/rift/station/underground_floor
 	id = "RiftUnderground3"
 	name = "Rift - East Canyon"
@@ -166,6 +146,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
@@ -187,6 +168,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
@@ -208,6 +190,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
@@ -230,6 +213,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
@@ -251,6 +235,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
@@ -298,6 +283,7 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
@@ -366,3 +352,6 @@
 	display_name = "NSB Atlas Orbital Relay"
 	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
+	traits = list(
+		ZTRAIT_LEGACY_BELTER_TRANSIT,
+	)
