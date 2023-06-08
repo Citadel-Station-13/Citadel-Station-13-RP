@@ -18,9 +18,15 @@
 
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
-	GLOB.mob_list += src
+	mob_list_register(stat)
 	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
+
+/mob/new_player/mob_list_register(for_stat)
+	GLOB.mob_list += src
+
+/mob/new_player/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -769,4 +775,4 @@
 
 /mob/new_player/make_perspective()
 	. = ..()
-	self_perspective.AddScreen(GLOB.lobby_image)
+	self_perspective.add_screen(GLOB.lobby_image)

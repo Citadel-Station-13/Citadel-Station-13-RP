@@ -890,11 +890,11 @@
 	var/fail_chance = rand(1,1000)
 	if(fail_chance == 1) // 0.1% chance of exploding, so scientists don't exclusively abuse this to obtain materials.
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The solution begins to vibrate violently!</span>"), 1) // It was at this moment, the Xenobiologist knew... he fucked up.
+			O.show_message(SPAN_WARNING("The solution begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE) // It was at this moment, the Xenobiologist knew... he fucked up.
 		sleep(30)
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder2.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The reaction begins to rapidly sizzle and swell outwards!</span>"), 1)
+			O.show_message(SPAN_WARNING("The reaction begins to rapidly sizzle and swell outwards!"), SAYCODE_TYPE_VISIBLE)
 		sleep(20)
 		explosion(get_turf(holder.my_atom), 0 ,4, 8) //Enough to cause severe damage in the area, but not so much that it'll instantly gib the person.
 		empulse(get_turf(holder.my_atom), 3, 7) //Uh oh, it produced some uranium, too! EMP blast!
@@ -903,7 +903,7 @@
 	if(fail_chance < 101) // 10% chance of it not working at all.
 		playsound(get_turf(holder.my_atom), 'sound/items/Welder.ogg', 100, 1)
 		for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-			O.show_message(text("<span class='warning'>The slime core fizzles disappointingly.</span>"), 1)
+			O.show_message(SPAN_WARNING("The slime core fizzles disappointingly."), SAYCODE_TYPE_VISIBLE)
 		return
 
 	var/blocked = list(/obj/item/stack/material, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/plastic, /obj/item/stack/material/cyborg/plasteel, /obj/item/stack/material/cyborg/glass/reinforced, /obj/item/stack/material/cyborg/wood, /obj/item/stack/animalhide/human, /obj/item/stack/animalhide/corgi, /obj/item/stack/animalhide/cat, /obj/item/stack/animalhide/monkey, /obj/item/stack/animalhide/lizard , /obj/item/stack/animalhide/xeno, /obj/item/stack/material/cyborg, /obj/item/stack/material/cyborg/glass/reinforced)
@@ -982,7 +982,7 @@
 
 /datum/chemical_reaction/slimefire/on_reaction(datum/reagents/holder)
 	for(var/mob/O in viewers(get_turf(holder.my_atom), null))
-		O.show_message(text("<span class='warning'>The slime extract begins to vibrate violently!</span>"), 1)
+		O.show_message(SPAN_WARNING("The slime extract begins to vibrate violently!"), SAYCODE_TYPE_VISIBLE)
 	sleep(50)
 	var/turf/location = get_turf(holder.my_atom.loc)
 	for(var/turf/simulated/floor/target_tile in range(0,location))

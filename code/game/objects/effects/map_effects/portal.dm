@@ -1,3 +1,13 @@
+GLOBAL_DATUM_INIT(no_blackness_tile_effect, /obj/effect/no_blackness, new /obj/effect/no_blackness(null))
+
+/obj/effect/no_blackness
+	icon = 'icons/screen/fullscreen/fullscreen_tiled.dmi'
+	icon_state = "white"
+	plane = BYOND_OCCLUSION_PLANE
+	layer = BYOND_OCCLUSION_LAYER_MAIN
+	appearance_flags = KEEP_APART | RESET_ALPHA | RESET_COLOR | RESET_TRANSFORM
+	vis_flags = NONE
+
 GLOBAL_LIST_EMPTY(all_portal_masters)
 
 /*
@@ -104,8 +114,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	var/lowest_y = 0
 
 	// First pass is for finding the top right corner.
-	for(var/thing in vis_contents)
-		var/turf/T = thing
+	for(var/turf/T in vis_contents)
 		if(T.x > highest_x)
 			highest_x = T.x
 		if(T.y > highest_y)
@@ -115,8 +124,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	lowest_y = highest_y
 
 	// Second one is for the bottom left corner.
-	for(var/thing in vis_contents)
-		var/turf/T = thing
+	for(var/turf/T in vis_contents)
 		if(T.x < lowest_x)
 			lowest_x = T.x
 		if(T.y < lowest_y)
@@ -130,7 +138,6 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	var/turf/focused_T = counterpart.get_focused_turf()
 	portal_distance_x = lowest_x - focused_T.x
 	portal_distance_y = lowest_y - focused_T.y
-
 
 // Portal masters manage everything else involving portals.
 // This is the base type. Use `/side_a` or `/side_b` with matching IDs for actual portals.
@@ -195,7 +202,7 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 		crash_with("Portal master [type] ([x],[y],[z]) could not find another portal master with a matching portal_id ([portal_id]).")
 
 /obj/effect/map_effect/portal/master/proc/make_visuals()
-	var/list/observed_turfs = list()
+	var/needed = world_view_max_number() + 1
 	for(var/thing in portal_lines + src)
 		var/obj/effect/map_effect/portal/P = thing
 		P.name = null
@@ -205,16 +212,12 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 			return
 
 		var/turf/T = P.counterpart.get_focused_turf()
-		P.vis_contents += T
-
-		var/list/things = dview(world.view, T)
-		for(var/turf/turf in things)
-			if(get_dir(turf, T) & P.dir)
-				if(turf in observed_turfs) // Avoid showing the same turf twice or more for improved performance.
-					continue
-
-				P.vis_contents += turf
-				observed_turfs += turf
+		var/amount = needed
+		while(T && amount)
+			P.vis_contents += T
+			T.vis_contents |= GLOB.no_blackness_tile_effect
+			T = get_step(T, P.counterpart.dir)
+			amount--
 
 		P.calculate_dimensions()
 
@@ -314,7 +317,6 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	name = "portal master B"
 	icon_state = "portal_side_b"
 //	color = "#FF0000"
-
 
 
 // Portal lines extend out from the sides of portal masters,

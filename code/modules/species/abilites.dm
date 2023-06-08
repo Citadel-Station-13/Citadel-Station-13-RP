@@ -1,6 +1,36 @@
 /datum/ability/species
 	abstract_type = /datum/ability/species
 
+/datum/ability/species/sonar
+	name = "Sonar Ping"
+	desc = "You send out a echolocating pulse, briefly showing your environment past the visible"
+	action_state = "shield"
+	cooldown = 8 SECONDS
+	always_bind = TRUE
+
+/datum/ability/species/sonar/unavailable_reason()
+	if(owner?.incapacitated())
+		return "You need to recover before you can use this ability."
+	if(owner?.is_deaf())
+		return "You are for all intents and purposes currently deaf!"
+	if(!get_turf(owner))
+		return "Not from here you can't."
+	. = ..()
+
+/datum/ability/species/sonar/on_trigger(mob/user, toggling)
+	. = ..()
+
+	owner.visible_message(
+		SPAN_WARNING("[owner] emits a quiet click."),
+		SPAN_WARNING("You emit a quiet click."),
+		SPAN_WARNING("You hear a quiet, high-pitched click.")
+	)
+	owner.self_perspective.set_plane_visible(/atom/movable/screen/plane_master/sonar, "sonar_pulse")
+	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
+	sonar_automata.receiver = owner
+	sonar_automata.setup_auto(get_turf(owner), 14)
+	sonar_automata.start()
+	addtimer(CALLBACK(owner.self_perspective, TYPE_PROC_REF(/datum/perspective, unset_plane_visible), /atom/movable/screen/plane_master/sonar, "sonar_pulse"), 5 SECONDS, flags = TIMER_OVERRIDE | TIMER_UNIQUE)
 
 //Toggle Flight Ability
 /datum/ability/species/toggle_flight

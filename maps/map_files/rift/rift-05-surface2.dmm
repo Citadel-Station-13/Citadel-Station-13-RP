@@ -811,6 +811,24 @@
 	alpha = 255
 	},
 /obj/effect/floor_decal/corner/red/border,
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
+/obj/item/gunbox/armor/security{
+	pixel_y = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "ayE" = (
@@ -842,19 +860,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
-"azd" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/mob/living/simple_mob/otie/red/friendly{
-	desc = "The Head of Security's loyal Red Otie. Seems this ominous looking longdog has been infused with wicked infernal forces. This one seems rather peaceful though.";
-	name = "Brutus"
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/heads/hos)
 "azK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -925,12 +930,47 @@
 /area/crew_quarters/sleep)
 "aBh" = (
 /obj/structure/table/woodentable,
-/obj/item/paper_bin,
-/obj/item/pen/multi,
 /obj/effect/floor_decal/borderfloorblack/cee,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 26
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/permit/gun{
+	desc = "An example of a card indicating that the owner is allowed to carry a firearm. There's a note saying to fax CentCom if you want to order more blank permits.";
+	name = "sample weapon permit";
+	owner = 1;
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/paper{
+	desc = "";
+	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your NanoTrasen Employee Representitive for more information.";
+	name = "note from CentCom about permits";
+	pixel_x = -4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
@@ -2634,10 +2674,6 @@
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
-/obj/structure/dogbed{
-	desc = "A bed made especially for dogs, or other similarly sized pets. Brutus has since grown out of his bed it seems.";
-	name = "Brutus' Bed"
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "bxX" = (
@@ -3281,6 +3317,10 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner2{
 	dir = 10
+	},
+/obj/item/pen/multi{
+	pixel_x = 3;
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -5940,20 +5980,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "dFT" = (
-/obj/item/folder/red_hos,
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/item/pinpointer{
-	pixel_x = 14
-	},
-/obj/item/stamp/hos{
-	pixel_x = -8;
-	pixel_y = -3
-	},
-/obj/item/stamp/denied{
-	pixel_x = -8;
-	pixel_y = 3
+	pixel_x = -8
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -6962,12 +6993,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "euI" = (
-/obj/item/storage/box/firingpins,
-/obj/item/megaphone,
-/obj/item/storage/belt/security,
 /obj/structure/closet/secure_closet/hos2,
 /obj/effect/floor_decal/borderfloorblack/full,
-/obj/item/storage/box/survival_knife,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/hos)
 "evp" = (
@@ -11189,7 +11216,6 @@
 /area/security/brig)
 "hcy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/nifsofts_security,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -11199,6 +11225,12 @@
 	},
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 1
+	},
+/obj/item/storage/box/handcuffs{
+	pixel_x = -8
+	},
+/obj/item/storage/box/evidence{
+	pixel_x = 8
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
@@ -13347,9 +13379,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "iqx" = (
@@ -14792,11 +14821,6 @@
 	pixel_x = -22;
 	pixel_y = 32
 	},
-/obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/tamaskan{
-	desc = "The robotics spry new canine friend! The name 'Sprocket' Can be found on her collar. She seems to love old rock music from Sol.";
-	name = "Sprocket"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "jnl" = (
@@ -14988,12 +15012,6 @@
 /area/maintenance/substation/research)
 "jsy" = (
 /obj/structure/table/steel,
-/obj/item/storage/box/evidence{
-	pixel_x = 8
-	},
-/obj/item/storage/box/handcuffs{
-	pixel_x = -8
-	},
 /obj/machinery/light{
 	dir = 4
 	},
@@ -15004,6 +15022,7 @@
 /obj/effect/floor_decal/corner/red/bordercorner{
 	dir = 8
 	},
+/obj/item/storage/box/nifsofts_security,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "jsz" = (
@@ -15260,7 +15279,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "2-4"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
@@ -15849,7 +15868,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/plating,
 /area/maintenance/substation/research/telescience_lab)
 "jXO" = (
 /obj/structure/cable/green{
@@ -16206,9 +16225,13 @@
 /area/crew_quarters/pool/emergency_closet)
 "khV" = (
 /obj/structure/table/woodentable,
-/obj/item/camera,
+/obj/item/camera{
+	pixel_x = -2;
+	pixel_y = 7
+	},
 /obj/item/camera_film{
-	pixel_y = -16
+	pixel_x = 3;
+	pixel_y = -2
 	},
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/alarm{
@@ -17595,6 +17618,9 @@
 "kXq" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
@@ -22547,6 +22573,11 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery)
+"odF" = (
+/obj/structure/table/steel,
+/obj/random/maintenance/clean,
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "odS" = (
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - Research Main Subgrid";
@@ -24142,7 +24173,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "pge" = (
-/obj/structure/barricade/cutout/clown,
+/obj/structure/table/rack,
+/obj/random/firstaid,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "pgh" = (
@@ -27915,6 +27947,18 @@
 /area/medical/morgue)
 "rNs" = (
 /obj/structure/table/rack/shelf/steel,
+/obj/effect/floor_decal/borderfloorblack{
+	alpha = 255
+	},
+/obj/effect/floor_decal/corner/red/border,
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/clothing/suit/armor/pcarrier{
+	pixel_x = 6;
+	pixel_y = -5
+	},
 /obj/item/clothing/suit/armor/pcarrier{
 	pixel_x = 6;
 	pixel_y = -5
@@ -27931,9 +27975,6 @@
 	pixel_x = -4;
 	pixel_y = -5
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	alpha = 255
-	},
 /obj/item/clothing/suit/armor/pcarrier/alt{
 	pixel_x = -5;
 	pixel_y = 6
@@ -27958,7 +27999,6 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/effect/floor_decal/corner/red/border,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "rOo" = (
@@ -28710,23 +28750,25 @@
 /area/medical/morgue)
 "suI" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun,
-/obj/item/clothing/accessory/permit/gun{
-	desc = "An example of a card indicating that the owner is allowed to carry a firearm. There's a note saying to fax CentCom if you want to order more blank permits.";
-	name = "sample weapon permit";
-	owner = 1;
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/pen/multi{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/folder/red_hos{
+	pixel_x = -13;
+	pixel_y = -1
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/paper{
-	desc = "";
-	info = "In the event that more weapon permits are needed, please fax Central Command to request more. Please also include a reason for the request. Blank permits will be shipped to cargo for pickup. If long-term permits are desired, please contact your NanoTrasen Employee Representitive for more information.";
-	name = "note from CentCom about permits";
-	pixel_x = -13
+/obj/item/stamp/hos{
+	pixel_x = -16;
+	pixel_y = 11
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
@@ -29698,6 +29740,12 @@
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"teZ" = (
+/obj/structure/filingcabinet/chestdrawer{
+	name = "Scan Records"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/lower/medsec_maintenance)
 "tfp" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -30822,13 +30870,6 @@
 "tVG" = (
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"tWb" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Security Substation";
-	secured_wires = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/lower/medsec_maintenance)
 "tWJ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	alpha = 255;
@@ -33795,18 +33836,18 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
-/obj/item/ammo_magazine/m57x28mm/vintage/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vSw" = (
@@ -34222,12 +34263,13 @@
 /area/rnd/breakroom)
 "wjW" = (
 /obj/structure/table/steel,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/machinery/light,
 /obj/item/storage/box/firingpins{
 	pixel_y = 7
 	},
 /obj/item/storage/box/firingpins,
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/machinery/light,
+/obj/item/storage/box/firingpins,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "wjX" = (
@@ -35135,9 +35177,9 @@
 "wQJ" = (
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/ballistic/fnseven/vintage,
-/obj/item/gun/ballistic/fnseven/vintage,
-/obj/item/gun/ballistic/fnseven/vintage,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
+/obj/item/gun/ballistic/fiveseven,
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "wRc" = (
@@ -53850,8 +53892,8 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
+mYq
+szQ
 pge
 sLu
 szQ
@@ -54044,9 +54086,9 @@ jnK
 szQ
 qUB
 sLu
-pge
-pge
-pge
+szQ
+szQ
+mYq
 sLu
 sLu
 sLu
@@ -54238,9 +54280,9 @@ oXc
 qUB
 qUB
 sLu
-pge
-pge
-pge
+teZ
+szQ
+odF
 sLu
 sLu
 sLu
@@ -54396,7 +54438,7 @@ kXL
 qRD
 mvZ
 szQ
-tWb
+szQ
 szQ
 xFu
 byV
@@ -58687,7 +58729,7 @@ hLf
 cvH
 qgw
 cqp
-azd
+cqp
 dwr
 gQH
 ioQ

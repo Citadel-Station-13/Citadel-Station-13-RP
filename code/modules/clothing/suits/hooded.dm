@@ -570,7 +570,6 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
-	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier
 	valid_accessory_slots = (\
@@ -626,18 +625,18 @@
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_alt"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_navy"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield/navy
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)

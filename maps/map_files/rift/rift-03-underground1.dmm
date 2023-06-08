@@ -7934,7 +7934,7 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/pickaxe,
 /obj/item/shovel,
 /obj/item/storage/bag/ore,
@@ -9226,7 +9226,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
 "Gq" = (
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Gr" = (
@@ -10631,7 +10631,7 @@
 /obj/effect/floor_decal/rust,
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/pickaxe,
 /obj/item/shovel,
 /obj/item/storage/bag/ore,
@@ -12082,7 +12082,6 @@
 /turf/simulated/floor,
 /area/storage/tech)
 "Qv" = (
-/obj/item/reagent_containers/food/snacks/teshariroast,
 /obj/structure/table/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)

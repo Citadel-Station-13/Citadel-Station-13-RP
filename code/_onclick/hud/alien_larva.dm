@@ -11,7 +11,7 @@
 	using.icon = 'icons/mob/screen1_alien.dmi'
 	using.icon_state = (mymob.m_intent == "run" ? "running" : "walking")
 	using.screen_loc = ui_acti
-	using.layer = HUD_LAYER
+	using.layer = HUD_LAYER_BASE
 	src.adding += using
 	move_intent = using
 
