@@ -1261,6 +1261,15 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
 	},
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/single_use/med_pouch/trauma{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/single_use/med_pouch/burn{
+	pixel_x = 3;
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/cockpit)
 "aKn" = (
@@ -14380,13 +14389,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
-"iNU" = (
-/obj/structure/closet/walllocker/emergsuit_wall{
-	dir = 8;
-	pixel_x = -32
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "iOf" = (
 /obj/structure/closet{
 	name = "spare clothes"
@@ -36097,7 +36099,9 @@
 /area/maintenance/research/xenobio)
 "wTm" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = list(1,38)
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -55170,14 +55174,14 @@ eqc
 qly
 qly
 pQK
-iNU
+pxC
 pxC
 xbD
 xbD
 rLY
 nVS
 pxC
-iNU
+pxC
 kJk
 qly
 qly

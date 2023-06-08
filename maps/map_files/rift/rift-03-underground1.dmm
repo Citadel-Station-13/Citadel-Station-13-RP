@@ -617,7 +617,8 @@
 	id = "hammerheadtransportgarage";
 	name = "Transport Tunnel Garage";
 	pixel_x = 26;
-	pixel_y = -5
+	pixel_y = -5;
+	req_one_access = list(1,38)
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete/rng/indoors,
@@ -2034,7 +2035,8 @@
 	id = "hammerheadtransportgarage";
 	name = "Transport Tunnel Garage";
 	pixel_x = -6;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,38)
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -2934,7 +2936,8 @@
 	id = "fighterbaytransportexit";
 	name = "Transport Tunnel";
 	pixel_x = 27;
-	pixel_y = -5
+	pixel_y = -5;
+	req_one_access = list(1,29,38,47)
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techmaint,
@@ -4489,7 +4492,8 @@
 	id = "fighterbaytransport";
 	name = "Transport Tunnel";
 	pixel_x = -6;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -4648,13 +4652,15 @@
 	id = "hammerheadtransport";
 	name = "Transport Tunnel";
 	pixel_x = -6;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "hammerheadtransportgarage";
 	name = "Transport Tunnel Garage";
 	pixel_x = 5;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,38)
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -4741,7 +4747,8 @@
 	id = "fighterbaytransportexit";
 	name = "Transport Tunnel";
 	pixel_x = 26;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -5086,7 +5093,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/airlock/maintenance/sec{
+	req_one_access = list(1,38)
+	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "pJ" = (
@@ -5225,7 +5234,8 @@
 	id = "fighterbaytransport";
 	name = "Transport Tunnel";
 	pixel_x = 6;
-	pixel_y = -26
+	pixel_y = -26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -5242,6 +5252,15 @@
 "qr" = (
 /obj/structure/closet/medical_wall{
 	pixel_x = 32
+	},
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/single_use/med_pouch/trauma{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/storage/single_use/med_pouch/burn{
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -6239,7 +6258,8 @@
 	id = "hammerheadtransport";
 	name = "Transport Tunnel";
 	pixel_x = 5;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -6875,7 +6895,8 @@
 	id = "hammerheadtransport";
 	name = "Transport Tunnel";
 	pixel_x = -5;
-	pixel_y = -26
+	pixel_y = -26;
+	req_one_access = list(1,29,38,47)
 	},
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/concrete/rng/indoors,
@@ -7055,7 +7076,8 @@
 	id = "hammerheadtransport";
 	name = "Transport Tunnel";
 	pixel_x = 6;
-	pixel_y = -26
+	pixel_y = -26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -8823,7 +8845,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Hangar Repair Bay";
-	req_one_access = list(29,47)
+	req_one_access = list(1,29,38,47)
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -8926,7 +8948,8 @@
 	id = "fighterbaytransport";
 	name = "Transport Tunnel";
 	pixel_x = 5;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/indoors,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -10928,7 +10951,7 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 1;
 	name = "Fighter Hangar";
-	req_one_access = list(19,29,38,43,47,63,67)
+	req_one_access = list(1,19,29,38,43,47,63,67)
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -12279,7 +12302,8 @@
 	id = "fighterbaytransport";
 	name = "Transport Tunnel";
 	pixel_x = -5;
-	pixel_y = -26
+	pixel_y = -26;
+	req_one_access = list(1,29,38,47)
 	},
 /turf/simulated/floor/concrete/rng/lythios43c,
 /area/rift/station/fighter_bay/transport_tunnel)
@@ -12481,7 +12505,7 @@
 	id = "hangar_maint";
 	name = "Hangar Maintenance Shutter Control";
 	pixel_y = 28;
-	req_one_access = list(29,47)
+	req_one_access = list(1,29,38,47)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12746,7 +12770,8 @@
 	id = "fighterbaytransportexit";
 	name = "Transport Tunnel";
 	pixel_x = -27;
-	pixel_y = 26
+	pixel_y = 26;
+	req_one_access = list(1,29,38,47)
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -14062,7 +14087,8 @@
 	id = "hammerheadtransportgarage";
 	name = "Transport Tunnel Garage";
 	pixel_x = -26;
-	pixel_y = -6
+	pixel_y = -6;
+	req_one_access = list(1,38)
 	},
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/concrete/rng/indoors,
