@@ -14814,9 +14814,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
-"iZv" = (
-/turf/simulated/shuttle/plating/airless/carry,
-/area/shuttle/hammerhead/general)
 "iZF" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -58671,11 +58668,11 @@ qly
 qly
 eyy
 qly
-iZv
-iZv
 qly
-iZv
-iZv
+qly
+qly
+qly
+qly
 ilr
 ilr
 uQM
