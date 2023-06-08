@@ -14,7 +14,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "ae" = (
-/turf/simulated/floor/glass,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/runder/level2)
 "af" = (
 /obj/machinery/door/airlock/lift,
@@ -22,7 +22,7 @@
 /area/turbolift/runder/level2)
 "ag" = (
 /obj/turbolift_map_holder/rift,
-/turf/simulated/floor/glass,
+/turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/runder/level2)
 "ah" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{

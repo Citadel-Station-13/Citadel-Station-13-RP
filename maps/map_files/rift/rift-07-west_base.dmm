@@ -485,7 +485,7 @@
 /area/rift/surfacebase/outside/west_base)
 "wP" = (
 /obj/turbolift_map_holder/rift_west_base,
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/turbolift/rwest_mining/base)
 "xf" = (
 /obj/random/obstruction,
@@ -551,7 +551,7 @@
 /area/rift/surfacebase/outside/west_base)
 "Az" = (
 /obj/machinery/door/airlock/lift,
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/turbolift/rwest_mining/base)
 "AH" = (
 /turf/simulated/wall/r_wall,
@@ -713,7 +713,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "Kh" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/turbolift/rwest_mining/base)
 "KC" = (
 /turf/simulated/floor/lythios43c/indoors,
