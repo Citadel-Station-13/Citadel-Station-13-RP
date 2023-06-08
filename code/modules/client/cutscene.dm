@@ -22,6 +22,7 @@
 
 /client/proc/__start_cutscene(datum/cutscene/scene)
 	PRIVATE_PROC(TRUE)
+	block_on_cutscene_browser_ready()
 	if(cutscene)
 		end_cutscene()
 	cutscene = scene

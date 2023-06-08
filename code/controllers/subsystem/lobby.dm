@@ -15,6 +15,10 @@ SUBSYSTEM_DEF(lobby)
 
 /datum/controller/subsystem/lobby/proc/initialize_title_scene()
 	refresh_title_scene()
+	for(var/client/C as anything in GLOB.clinets)
+		if(!isnewplayer(C.mob))
+			continue
+		C.start_cutscene(titlescreen)
 
 /datum/controller/subsystem/lobby/proc/refresh_title_scene()
 	set_title_scene(make_title_scene())
@@ -24,7 +28,7 @@ SUBSYSTEM_DEF(lobby)
 	if(isnull(picked))
 		return
 	if(ispath(picked))
-		return new picked
+		return new pickedw
 	if(islist(picked))
 		var/list/arr = picked
 		var/icon/I = icon(arr[1], arr[2])
@@ -37,5 +41,8 @@ SUBSYSTEM_DEF(lobby)
 /datum/controller/subsystem/lobby/proc/set_title_scene(datum/cutscene/scene)
 	var/list/client/old_viewing
 	if(!isnull(titlescreen))
-		old_viewing = titlescreen
+		old_viewing = titlescreen.viewing.Copy()
 		QDEL_NULL(titlescreen)
+	for(var/client/C as anything in old_viewing)
+		C.start_cutscene(titlescreen)
+	titlescreen = scene
