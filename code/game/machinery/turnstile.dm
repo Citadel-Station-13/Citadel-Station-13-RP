@@ -61,7 +61,7 @@
 		return FALSE
 
 ///obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
-/obj/machinery/turnstile/CheckExit(atom/movable/AM, target)
+/obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
 	if(isliving(AM))
 		var/mob/living/M = AM
 		var/outdir = dir
