@@ -5,7 +5,6 @@
 	lift_size_y = 2
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
-	floor_type = /turf/simulated/floor/glass
 
 	areas_to_use = list(
 		/area/turbolift/runder/level2,
