@@ -120,7 +120,7 @@
 /datum/cutscene/browser/setup(client/C)
 	. = ..()
 	src << output(build_inner_html(C), "[SKIN_BROWSER_ID_CUTSCENE]:build")
-	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=1")
 
 /datum/cutscene/browser/cleanup(client/C)
 	. = ..()
