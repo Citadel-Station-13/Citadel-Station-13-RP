@@ -1,6 +1,11 @@
 /client/proc/init_cutscene_system()
+	set waitfor = FALSE
+	__init_cutscene_system()
 
-	#warn sleep 1 second
+/client/proc/__init_cutscene_system()
+	PRIVATE_PROC(TRUE)
+	sleep(1 SECONDS)
+	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:reviveWindow")
 
 /client/proc/cleanup_cutscene_system()
 	end_cutscene()
@@ -33,8 +38,6 @@
 		return
 	cutscene.cleanup(src)
 	cutscene = null
-
-#warn impl all
 
 /**
  * dynamic cutscene system with synchronization of state.
@@ -122,8 +125,6 @@
 	. = ..()
 	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")
 	winset(src, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
-
-#warn js side
 
 /**
  * simple cutscene that's just one asset that goes in an <img> tag
@@ -224,6 +225,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/cutscene_simple)
 
 /atom/movable/screen/cutscene_simple/Initialize(mapload, path, width, height)
 	. = ..()
-	icon = icon(path)
+	icon = isicon(path)? path : icon(path)
 	screen_loc = "CENTER:-[width / 2 + WORLD_ICON_SIZE / 2],CENTER:-[height / 2 + WORLD_ICON_SIZE / 2]"
 

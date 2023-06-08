@@ -97,7 +97,7 @@ if (!String.prototype.trim) {
 <script>
 
 window.onload = function() {
-	declareReady();
+	windowBoot()
 };
 
 const ELEMENT_ID_CONTAINER = "cutsceneContainer"
@@ -111,53 +111,28 @@ var container = document.getElementById(ELEMENT_ID_CONTAINER);
 
 ///////////////////// BOOT //////////////////////////////
 
-function window_boot() {
-	register_events()
-	transmit_ready()
+function windowBoot() {
+	registerEvents()
+	declareReady()
 }
 
-function register_events() {
+function registerEvents() {
 	// restore focus after press
 	document[PROP_ADD_EVENT_LISTENER]("mouseup", winset_focus_map);
 	// restore focus after press
 	document[PROP_ADD_EVENT_LISTENER]("keyup", winset_focus_map);
-	window.onresize = function() {
-		stat_submenu.style.height = stat_menu.clientHeight + 'px';
-	}
 }
 
-/**
- * creates the onclick for verbs
- */
-function lambda_onmousedown_verb(element, verb) {
-	return function(e) {
-		current_mouse_target = element;
-	}
+/// sends a verb
+function transmitVerb(cmd) {
+	var href = "byond://winset?command=" + cmd;
+	window.location.href = href;
 }
-
-function lambda_onmouseup_verb(element, verb) {
-	return function(e) {
-		if(current_mouse_target === element){
-			yield_invoke(function() {transmit_verb(verb);});
-		}
-		current_mouse_target = null;
-	}
-}
-
-/**
- * creates the onclick for atoms
- */
- function lambda_onclick_atom(ref) {
-	return function(e) {
-		e.preventDefault();
-		atom_invoke(e, ref);
-	}
- }
 
 /**
  * creates the onerror function used to load things
  */
-function lambda_reload_image(node) {
+function lambdaReloadImage(node) {
 	var re_ref = node;
 	return setTimeout(function() {
 		var attempts = parseInt(node.getAttribute('img-reload-n'), 10) || 0;
@@ -171,11 +146,19 @@ function lambda_reload_image(node) {
 	}, IMAGE_RETRY_DELAY);
 }
 
-function loadInnerHTML(raw) {
+function build(html) {
+	loadInnerHTML(html);
+}
 
+function dispose() {
+	loadInnerHTML("");
+}
+
+function loadInnerHTML(raw) {
+	container.innerHTML = raw;
 }
 function declareReady() {
-
+	transmitVerb(".scenepanel_ready")
 }
 
 /**
