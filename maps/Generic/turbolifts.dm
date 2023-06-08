@@ -53,7 +53,7 @@
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
-	floor_type = /turf/simulated/shuttle/floor/voidcraft/lythios43c
+	floor_type = /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors
 
 	areas_to_use = list(
 		/area/turbolift/rwest_mining/base,
