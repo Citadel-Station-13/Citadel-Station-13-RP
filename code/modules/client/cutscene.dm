@@ -125,13 +125,19 @@
 
 /datum/cutscene/browser/setup(client/C)
 	. = ..()
-	src << output(build_inner_html(C), "[SKIN_BROWSER_ID_CUTSCENE]:build")
+	push_build(C)
 	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=1")
 
 /datum/cutscene/browser/cleanup(client/C)
 	. = ..()
-	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")
+	push_dispose(C)
 	winset(C, SKIN_BROWSER_ID_CUTSCENE, "is-visible=0")
+
+/datum/cutscene/browser/proc/push_build(client/C)
+	C << output("[url_encode(json_encode(list("raw_html" = build_inner_html)))]", "[SKIN_BROWSER_ID_CUTSCENE]:build")
+
+/datum/cutscene/browser/proc/push_dispose(client/C)
+	C << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:dispose")
 
 /**
  * simple cutscene that's just one asset that goes in an <img> tag
@@ -173,8 +179,8 @@
 	var/list/atom/movable/screens
 
 /datum/cutscene/native/Destroy()
+	. = ..()
 	QDEL_NULL_LIST(screens)
-	return ..()
 
 /datum/cutscene/native/setup(client/C)
 	. = ..()
@@ -202,8 +208,8 @@
 	var/atom/movable/screen/cutscene_simple/object
 
 /datum/cutscene/native/simple/Destroy()
+	. = ..()
 	QDEL_NULL(object)
-	return ..()
 
 /datum/cutscene/native/simple/init()
 	object = new(null, icon_path, icon_width, icon_height)

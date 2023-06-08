@@ -140,8 +140,8 @@ function lambdaReloadImage(node) {
 	}, IMAGE_RETRY_DELAY);
 }
 
-function build(html) {
-	loadInnerHTML(html);
+function build(data) {
+	loadInnerHTML(data.raw_html);
 }
 
 function dispose() {
