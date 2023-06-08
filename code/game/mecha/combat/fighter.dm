@@ -16,6 +16,7 @@
 	dir_in = null //Don't reset direction when empty
 
 	step_in = 2 //Fast
+	var/step_delay
 
 	health = 400
 	maxhealth = 400
@@ -172,7 +173,7 @@
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
 	if(gravity && !stabilization_enabled)
-		step_in = 10 //Slow now that they're on landing gear
+		step_delay = 2 //Slow now that they're on landing gear
 		playsound(src, 'sound/effects/roll.ogg', 50, 1)
 	else if(gravity && ground_capable && occupant)
 		start_hover()
