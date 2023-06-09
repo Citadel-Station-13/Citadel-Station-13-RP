@@ -10,13 +10,11 @@ SUBSYSTEM_DEF(mapping)
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	// init first level
-	#warn init default level / reservation
 	// init maps
 	init_maps()
 	// load the map to use
 	read_next_map()
-	// load world
+	// load world - this also loads our first reserved level.
 	load_station()
 
 	#warn below

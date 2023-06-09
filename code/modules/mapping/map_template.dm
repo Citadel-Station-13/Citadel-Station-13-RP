@@ -66,6 +66,8 @@
 	parsed = null
 
 /datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_attributes)
+	SSmapping.subsystem_log("Loading template [src] ([type]) on a new z-level...")
+
 	var/ll_x = 1
 	var/ll_y = 1
 	var/sideways = orientation & (EAST|WEST)
@@ -81,27 +83,24 @@
 	level.attributes = attributes.Copy()
 	SSmapping.allocate_level(level)
 
-	ASSERT(level.instantiated)
+	ASSERT(level.loaded)
 
-	#warn impl rest
+	load(locate(ll_x, ll_y, level.z_index), FALSE, orientation)
 
-/datum/map_template/proc/load_new_z(var/centered = FALSE, var/orientation = SOUTH, list/traits = src.ztraits || list(ZTRAIT_AWAY = TRUE))
+	SSmapping.subsystem_log("Loaded template [src] ([type]) on z-level [level.z_index]")
 
-	#warn conform
-	var/list/bounds = maploader.load_map(file(map_path), x, y, no_changeturf = TRUE, orientation=orientation)
-	if(!bounds)
-		return FALSE
-	SSmapping.add_new_zlevel(name, traits)
+	on_z_load(level.z_index)
 
-	repopulate_sorted_areas()
-
-	// Initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
-	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
-	on_map_loaded(world.maxz)
-	return TRUE
-
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
+/**
+ * loads a map template
+ *
+ * @params
+ * * T - turf. center or lower left, depending on centered param.
+ * * centered - is T the center, or lower left?
+ * * orientation - the orientation to load in. default is SOUTH.
+ * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
+ */
+/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks)
 	var/ll_x = T.x
 	var/ll_y = T.y
 	var/ll_z = T.z
@@ -115,8 +114,17 @@
 
 	var/turf/real_turf = locate(ll_x, ll_y, ll_z)
 
+	SSmapping.subsystem_log("Loading template [src] ([type]) at [COORD(real_turf)] size [width]x[height] with annihilate mode [annihilate]")
+
 	if(annihilate)
 		annihilate_bounds(real_turf, width, height) 
+
+	#warn rest
+	#warn on_normal_load + its callbacks
+
+	++loaded
+
+	return TRUE
 
 /datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
 	#warn conform
@@ -131,9 +139,6 @@
 	// Initialize things that are normally initialized after map load
 	initTemplateBounds(bounds)
 
-	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
-	loaded++
-	return TRUE
 
 /datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
 	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")
@@ -234,11 +239,13 @@
  * * late_generation - callbacks to fire after ruin seeding. if this is being spawned standalone, it fires immediately.
  */
 /datum/map_template/proc/on_normal_load(list/bounds, list/datum/callback/late_generation)
+	return
 
 /**
  * called when loaded as a new zlevel
  *
  * @params
  * * z_index - zlevel we loaded onto
- * * late_generation - callbacks to fire after z groups / other templates have loaded, but before the other templates fire their late generations. if this is being loaded standalone, it fires immediately.
  */
+/datum/map_template/proc/on_z_load(z_index)
+	return

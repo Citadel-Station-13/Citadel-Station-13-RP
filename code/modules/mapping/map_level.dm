@@ -49,14 +49,13 @@
 	/// gas string / atmosphere path / atmosphere id for outdoors air
 	var/air_outdoors = GAS_STRING_VACUUM
 
-	#warn below
+	//* LEGACY BELOW *//
 
 	var/flags = 0			// Bitflag of which *_levels lists this z should be put into.
 	//! legacy: what planet to make/use
 	var/planet_path
-	#warn hook planet_path
 
-// Holomaps
+	// Holomaps
 	var/holomap_offset_x = -1	// Number of pixels to offset the map right (for centering) for this z
 	var/holomap_offset_y = -1	// Number of pixels to offset the map up (for centering) for this z
 	var/holomap_legend_x = 96	// x position of the holomap legend for this z
@@ -165,6 +164,7 @@
  * get level datum in dir
  */
 /datum/map_level/proc/level_in_dir(dir)
+	RETURN_TYPE(/datum/map_level)
 	switch(dir)
 		if(NORTH)
 			return SSmapping.keyed_levels[link_north]
