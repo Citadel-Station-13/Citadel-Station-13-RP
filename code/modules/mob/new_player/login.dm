@@ -20,5 +20,7 @@
 		if(client)
 			handle_privacy_poll()
 			client.playtitlemusic()
-	client.start_cutscene(SSlobby.titlescreen)
 	return ..()
+
+/mob/new_player/login_cutscene()
+	client.start_cutscene(SSlobby.titlescreen)

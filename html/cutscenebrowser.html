@@ -7,23 +7,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="max-age=15; must-revalidate" />
 <style>
-	#testContaoner {
-		position: absolute;
-		top: 0px;
-		height: 200px;
-		width: 100%;
+	body, html {
+		margin: 0px;
 	}
 	#cutsceneContainer {
 		margin: 0px;
 		position: absolute;
-		top: 200px;
+		top: 0px;
 		bottom: 0px;
+		left: 0px;
+		right: 0px;
 		overflow: hidden;
 		background-color: black;
-		height: 100%;
-		width: 100%
 	}
 	#primaryImage {
+		margin: 0px;
 		height: 100%;
 		width: auto;
 	}
@@ -150,7 +148,6 @@ function lambdaReloadImage(node) {
 
 function build(data) {
 	data = JSON.parse(data);
-	testContainer[PROP_TEXT_CONTENT] = data.raw_html;
 	loadInnerHTML(data.raw_html);
 }
 

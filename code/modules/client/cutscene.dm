@@ -118,7 +118,7 @@
  * - array.includes()
  * - string.trim()
  *
- * returned HTML should be IE8 compatible. also, url_encode it.
+ * returned HTML should be IE8 compatible.
  */
 /datum/cutscene/browser/proc/build_inner_html(client/C)
 	return ""
@@ -162,7 +162,7 @@
 		cached_icon = icon(image_path)
 	/// good enough
 	var/mutated_path = "[ref(src)]_[rand(1, 1000)]"
-	cached_html = url_encode("<img id=\"primaryImage\" src=\"[isnull(cached_icon)? image_path : mutated_path]\">")
+	cached_html = "<img id=\"primaryImage\" src=\"[isnull(cached_icon)? image_path : mutated_path]\">"
 	use_fname = mutated_path
 
 /datum/cutscene/browser/simple/build_inner_html(client/C)
