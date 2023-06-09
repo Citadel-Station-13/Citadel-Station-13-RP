@@ -21,10 +21,10 @@ export const TeleporterConsole = (props, context) => {
   } = data;
   return (
     <Window
-      width={550}
-      height={700}
+      width={600}
+      height={400}
       resizable>
-      {data.disabled ? (<Box color="bad">No sensors detected</Box>):(<TeleporterConsoleOperational locked={locked} />)}
+      {data.disabled ? (<Box color="bad">TELEPORTER PAD OR PROJECTOR NOT FOUND. PLEASE CONTACT YOUR SYSTEM ADMINISTRATOR.</Box>):(<TeleporterConsoleOperational locked={locked} />)}
     </Window>
   );
 };
@@ -41,11 +41,12 @@ export const TeleporterConsoleOperational = (props, context) => {
   } = data;
   return (
     <Section title="Teleporter Control Console">
-      <Flex>
+      <Flex justify="space-around">
         <Section title="Destination Selection">
           <Dropdown
             options={valid_destinations}
             selected={locked || "No Destination"}
+            width="200px"
             onSelected={(value) => act('set_destination', {
               new_locked: value,
             })} />

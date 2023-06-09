@@ -49,7 +49,6 @@
 	if(terminal && terminal.powernet)
 		var/energy_buffer = 0
 		energy_buffer = terminal.draw_power(recharge_rate)
-		visible_message("[energy_buffer]")
 		current_joules += KW_TO_KWM(energy_buffer, 1)
 		current_joules = clamp(current_joules, 0, power_capacity)
 
