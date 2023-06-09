@@ -8,20 +8,32 @@
 /client/proc/__init_cutscene_system()
 	PRIVATE_PROC(TRUE)
 	sleep(1 SECONDS)
-	// loads scenepanel if it isn't there
-	src << browse(file('html/cutscenebrowser.html'), "window=[SKIN_BROWSER_ID_CUTSCENE]")
 	// if it is there and we can't tell because byond is byond, send it a signal to reload
 	src << output(null, "[SKIN_BROWSER_ID_CUTSCENE]:reviveWindow")
+	sleep(2 SECONDS)
+	// loads scenepanel if it isn't there
+	if(!cutscene_init)
+		src << browse(file('html/cutscenebrowser.html'), "window=[SKIN_BROWSER_ID_CUTSCENE]")
+	else
+		cutscene_ready = TRUE
 
 /client/proc/cleanup_cutscene_system()
 	end_cutscene()
 
 /client/verb/__declare_cutscene_ready()
-	set name = ".scenepanel_ready"
+	set name = ".scenepanel_boot"
 	set hidden = TRUE
 	set instant = TRUE
 
+	cutscene_init = TRUE
 	cutscene_ready = TRUE
+
+/client/verb/__declare_cutscene_ready()
+	set name = ".scenepanel_revive"
+	set hidden = TRUE
+	set instant = TRUE
+
+	cutscene_init = TRUE
 
 /client/proc/block_on_cutscene_browser_ready()
 	UNTIL(cutscene_ready)

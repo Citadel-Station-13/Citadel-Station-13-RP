@@ -113,7 +113,7 @@ var testContainer = document.getElementById(ELEMENT_ID_TESTCONTAINER);
 
 function windowBoot() {
 	registerEvents()
-	declareReady()
+	declareReady(false)
 }
 
 function registerEvents() {
@@ -158,8 +158,13 @@ function dispose() {
 function loadInnerHTML(raw) {
 	container.innerHTML = raw;
 }
-function declareReady() {
-	transmitVerb(".scenepanel_ready")
+function declareReady(reviving) {
+	if(reviving){
+		transmitVerb(".scenepanel_revive")
+	}
+	else {
+		transmitVerb(".scenepanel_boot")
+	}
 }
 
 /**
@@ -184,7 +189,7 @@ function yieldInvoke(f) {
  * and if we're not we obviously just, don't.
  */
 function reviveWindow() {
-	declareReady();
+	declareReady(true);
 }
 
 window.onload = function() {
