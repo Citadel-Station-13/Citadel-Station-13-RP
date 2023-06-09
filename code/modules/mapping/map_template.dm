@@ -62,6 +62,15 @@
 	if(cache_parsed_map)
 		parsed = parsing
 
+/datum/map_template/proc/parsed()
+	if(isnull(parsed))
+		. = parse_map(map_path)
+		if(cache_parsed_map)
+			parsed = .
+	else
+		. = parsed
+
+
 /datum/map_template/proc/unload()
 	parsed = null
 
@@ -101,6 +110,7 @@
  * * deferred_callbacks - if specified, generation callbacks are deferred and added to this list, instead of fired immediately.
  */
 /datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH, list/datum/callback/deferred_callbacks)
+	. = FALSE
 	var/ll_x = T.x
 	var/ll_y = T.y
 	var/ll_z = T.z
@@ -117,28 +127,32 @@
 	SSmapping.subsystem_log("Loading template [src] ([type]) at [COORD(real_turf)] size [width]x[height] with annihilate mode [annihilate]")
 
 	if(annihilate)
-		annihilate_bounds(real_turf, width, height) 
+		annihilate_bounds(real_turf, width, height)
 
-	#warn rest
-	#warn on_normal_load + its callbacks
+	var/datum/dmm_parsed/parsed = parsed()
+	var/list/loaded_bounds = parsed.load(ll_x, ll_y, ll_z, orientation = orientation)
+
+	if(isnull(loaded_bounds))
+		CRASH("failed to load")
 
 	++loaded
 
-	return TRUE
+	var/list/datum/callback/callbacks = list()
+	on_normal_load(loaded_bounds, callbacks)
+	if(isnull(deferred_callbacks))
+		for(var/datum/callback/cb as anything in callbacks)
+			cb.Invoke()
+	else
+		deferred_callbacks += callbacks
 
-/datum/map_template/proc/load(turf/T, centered = FALSE, orientation = SOUTH)
-	#warn conform
-	var/list/bounds = maploader.load_map(file(map_path), T.x, T.y, T.z, cropMap=TRUE, orientation = orientation)
-	if(!bounds)
-		return
+	init_bounds(loaded_bounds)
 
-//	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
+	// todo: inefficient as shit
 	if(SSmapping.initialized)
 		repopulate_sorted_areas()
+	// end
 
-	// Initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
-
+	return TRUE
 
 /datum/map_template/proc/annihilate_bounds(turf/ll_turf, width, height)
 	SSmapping.subsystem_log("Annihilating bounds in template spawn location: [COORD(ll_turf)] with area [width]x[height]")
@@ -166,6 +180,11 @@
 	var/sideways = orientation & (EAST|WEST)
 	var/real_width = sideways? height : width
 	var/real_height = sideways? width : height
+
+	if(centered)
+		ll_x -= round(real_width / 2)
+		ll_y -= round(real_height / 2)
+
 	var/turf/ll_turf = locate(ll_x, ll_y, ll_z)
 	return block(
 		ll_turf,
@@ -177,8 +196,9 @@
 	)
 
 /datum/map_template/proc/init_bounds(list/bounds)
-	#warn impl
+	initTemplateBounds(bounds)
 
+// todo: legacy code, this can probably be made better over time
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		return	// Let proper initialisation handle it later
@@ -224,12 +244,6 @@
 	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
 
 	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
-
-// For your ever biggening badminnery kevinz000
-// ❤ - Cyberboss
-// <3 cyberboss you are epic
-/proc/__load_raw_level(path, orientation = SOUTH, center = TRUE)
-	#warn impl
 
 /**
  * called when normally loaded

@@ -120,7 +120,7 @@
 		_load_map_impl(map, loaded_levels, generation_callbacks)
 
 /datum/controller/subsystem/mapping/proc/load_station(datum/map/station/instance)
-	if(isnull(instancce))
+	if(isnull(instance))
 		if(isnull(next_station))
 			read_next_map()
 		instance = next_station

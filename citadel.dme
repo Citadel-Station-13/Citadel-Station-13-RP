@@ -2886,6 +2886,7 @@
 #include "code\modules\mapping\loader\orientation.dm"
 #include "code\modules\mapping\loader\preloader.dm"
 #include "code\modules\mapping\loader\verify.dm"
+#include "code\modules\mapping\loader\wrappers.dm"
 #include "code\modules\mapping\map_helpers\_map_helpers.dm"
 #include "code\modules\mapping\map_helpers\baseturf.dm"
 #include "code\modules\mapping\map_helpers\network_builder\_network_builder.dm"
