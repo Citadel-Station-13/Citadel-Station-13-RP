@@ -7550,7 +7550,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "IV" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/surface)
 "IY" = (
 /turf/unsimulated/wall/planetary/lythios43c{

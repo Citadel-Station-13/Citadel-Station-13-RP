@@ -570,7 +570,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "gz" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/caves)
 "gA" = (
 /obj/machinery/light/small{
