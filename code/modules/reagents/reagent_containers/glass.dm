@@ -90,8 +90,8 @@
 /obj/item/reagent_containers/glass/self_feed_message(var/mob/user)
 	to_chat(user, "<span class='notice'>You swallow a gulp from \the [src].</span>")
 
-/obj/item/reagent_containers/glass/afterattack(var/obj/target, var/mob/user, var/proximity)
-	if(!is_open_container() || !proximity) //Is the container open & are they next to whatever they're clicking?
+/obj/item/reagent_containers/glass/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!is_open_container() || !(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) //Is the container open & are they next to whatever they're clicking?
 		return 1 //If not, do nothing.
 	for(var/type in can_be_placed_into) //Is it something it can be placed into?
 		if(istype(target, type))
@@ -140,6 +140,10 @@
 		name = "[base_name] ([label_text])"
 	desc = "[base_desc] It is labeled \"[label_text]\"."
 
+/obj/item/reagent_containers/glass/on_reagent_change()
+	. = ..()
+	update_icon()
+
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker."
@@ -147,6 +151,7 @@
 	icon_state = "beaker"
 	base_icon_state = "beaker"
 	item_state = "beaker"
+	w_class = WEIGHT_CLASS_TINY
 	matter = list(MAT_GLASS = 500)
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
@@ -154,9 +159,6 @@
 /obj/item/reagent_containers/glass/beaker/Initialize(mapload)
 	. = ..()
 	desc += " Can hold up to [volume] units."
-
-/obj/item/reagent_containers/glass/beaker/on_reagent_change()
-	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
@@ -201,6 +203,7 @@
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
 	base_icon_state = "beakerlarge"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
@@ -212,6 +215,7 @@
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
 	base_icon_state = "beakernoreact"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
@@ -222,6 +226,7 @@
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
 	base_icon_state = "beakerbluespace"
+	w_class = WEIGHT_CLASS_SMALL
 	matter = list(MAT_GLASS = 5000)
 	volume = 300
 	amount_per_transfer_from_this = 10
@@ -299,7 +304,7 @@
 	else
 		return ..()
 
-/obj/item/reagent_containers/glass/bucket/afterattack()
+/obj/item/reagent_containers/glass/bucket/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	.=..()
 	update_icon()
 
@@ -408,11 +413,11 @@
 	possible_transfer_amounts = list(10,20,50,100)
 	volume = 60
 
-/obj/item/reagent_containers/portable_fuelcan/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/reagent_containers/portable_fuelcan/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
-		O.reagents.trans_to_obj(src, volume)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to_obj(src, volume)
 		to_chat(user, "<span class='notice'>You refill [src].</span>")
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return

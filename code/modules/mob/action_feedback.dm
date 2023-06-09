@@ -53,9 +53,15 @@
 	visible_message(others, self, blind, range)
 
 /**
- * gives feedback for something a mob can innately feel
+ * gives feedback for something a mob can innately feel, body or not.
  */
 /mob/proc/innate_feedback(msg)
+	to_chat(src, msg)
+
+/**
+ * gives feedback for something a mob can physically feel on their body.
+ */
+/mob/proc/tactile_feedback(msg)
 	to_chat(src, msg)
 
 /**
