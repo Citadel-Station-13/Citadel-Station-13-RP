@@ -385,10 +385,10 @@
 	lcolor = "#0000FF"
 	projectile_parry_chance = 30	// It's not specifically designed for cutting and slashing, but it can still, maybe, save your life.
 
-/obj/item/melee/energy/sword/ionic_rapier/afterattack(var/atom/movable/AM, var/mob/living/user, var/proximity)
-	if(istype(AM, /obj) && proximity && active)
+/obj/item/melee/energy/sword/ionic_rapier/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && active)
 		// EMP stuff.
-		var/obj/O = AM
+		var/obj/O = target
 		O.emp_act(3) // A weaker severity is used because this has infinite uses.
 		playsound(get_turf(O), 'sound/effects/EMPulse.ogg', 100, 1)
 		user.setClickCooldown(user.get_attack_speed(src)) // A lot of objects don't set click delay.
@@ -680,8 +680,8 @@
 		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	update_icon()
 
-/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
-	if(!proximity)
+/obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	..()
 	if(target)

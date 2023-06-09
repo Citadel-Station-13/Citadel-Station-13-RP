@@ -54,9 +54,3 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		if(!isnull(M.attack_speed_percent))
 			speed *= M.attack_speed_percent
 	return speed
-
-// Proximity_flag is 1 if this afterattack was called on something adjacent, in your square, or on your person.
-// Click parameters is the params string from byond Click() code, see that documentation.
-// todo: redo this
-/obj/item/proc/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	return

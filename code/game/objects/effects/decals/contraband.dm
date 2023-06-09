@@ -28,12 +28,12 @@
 	name += " - No. [serial_number]"
 
 //Places the poster on a wall
-/obj/item/contraband/poster/afterattack(var/atom/A, var/mob/user, var/adjacent, var/clickparams)
-	if (!adjacent)
+/obj/item/contraband/poster/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if (!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	//must place on a wall and user must not be inside a closet/mecha/whatever
-	var/turf/W = A
+	var/turf/W = target
 	if (!iswall(W) || !isturf(user.loc))
 		to_chat(user, "<span class='warning'>You can't place this here!</span>")
 		return
