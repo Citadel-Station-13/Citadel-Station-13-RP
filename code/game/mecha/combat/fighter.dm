@@ -434,6 +434,13 @@
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
 	ME.attach(src)
 
+/obj/mecha/combat/fighter/allure/royalty
+	name = "\improper Allure \"Royalty\""
+	desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
+	icon_state = "allure_royalty"
+	initial_icon = "allure_royalty"
+	wreckage = /obj/effect/decal/mecha_wreckage/allure/royalty
+
 /obj/effect/decal/mecha_wreckage/allure
 	name = "allure wreckage"
 	desc = "Remains of some unfortunate fighter. Completely unrepairable."
@@ -442,11 +449,13 @@
 	bound_width = 64
 	bound_height = 64
 
+/obj/effect/decal/mecha_wreckage/allure/royalty
+	icon_state = "allure_royalty-broken"
+
 /datum/category_item/catalogue/technology/allure
 	name = "Voidcraft - Allure"
-	desc = "A space superiority fighter of zorren design, many would comment that the blocky shape hinders aesthetic appeal. However, Zorren are \
-	often found painting their hulls in intricate designs of purple and gold, and this craft is no exception to the rule. Some individual seems to have \
-	decorated it finely. Import craft like this one often ship with no weapons, though the Zorren saw fit to integrate a cloaking device."
+	desc = "A space superiority fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint. \
+	Import craft like this one often ship with no weapons, though the Skrell saw fit to integrate a cloaking device."
 	value = CATALOGUER_REWARD_MEDIUM
 
 ////////////// Pinnace //////////////
