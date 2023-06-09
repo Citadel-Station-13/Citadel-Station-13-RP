@@ -9574,7 +9574,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "EC" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rmine/under2)
 "ED" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{

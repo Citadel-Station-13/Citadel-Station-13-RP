@@ -566,6 +566,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
+"Fu" = (
+/turf/simulated/wall,
+/area/rift/surfacebase/underground/under1)
 "FV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -15925,11 +15928,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+Fu
+Fu
+Fu
+Fu
+Fu
 dq
 dq
 dq
@@ -16119,11 +16122,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+Fu
+Fu
+Fu
+Fu
+Fu
 dq
 dq
 dq
@@ -16313,11 +16316,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+Fu
+Fu
+Fu
+Fu
+Fu
 dq
 dq
 dq
@@ -16507,11 +16510,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+Fu
+Fu
+Fu
+Fu
+Fu
 dq
 dq
 dq
@@ -16701,11 +16704,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+Fu
+Fu
+Fu
+Fu
+Fu
 dq
 dq
 dq
@@ -19987,7 +19990,7 @@ KS
 KS
 jJ
 vr
-VU
+pz
 jV
 jV
 pz

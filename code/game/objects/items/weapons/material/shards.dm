@@ -61,7 +61,9 @@
 			return
 	return ..()
 
-/obj/item/material/shard/afterattack(var/atom/target, mob/living/carbon/human/user as mob)
+/obj/item/material/shard/afterattack(atom/target, mob/living/user, clickchain_flags, list/params)
+	if(!istype(user))
+		return
 	var/active_hand //hand the shard is in
 	var/will_break = FALSE
 	var/protected_hands = FALSE //this is a fucking mess
@@ -73,30 +75,30 @@
 			/obj/item/clothing/gloves/knuckledusters
 		)
 
-	if(src == user.l_hand)
+	if(src == user.get_left_held_item())
 		active_hand = BP_L_HAND
-	else if(src == user.r_hand)
+	else if(src == user.get_right_held_item())
 		active_hand = BP_R_HAND
 	else
 		return // If it's not actually in our hands anymore, we were probably gentle with it
 
-	active_hand = (src == user.l_hand) ? BP_L_HAND : BP_R_HAND // May not actually be faster than an if-else block, but a little bit cleaner -Ater
-
 	if(prob(75))
 		will_break = TRUE
 
-	if(user.gloves && (user.gloves.body_cover_flags & HANDS) && istype(user.gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
+	var/obj/item/gloves = user.item_by_slot(SLOT_ID_GLOVES)
+
+	if(gloves && (gloves.body_cover_flags & HANDS) && istype(gloves, /obj/item/clothing/gloves)) // Not-gloves aren't gloves, and therefore don't protect us
 		protected_hands = TRUE // If we're wearing gloves we can probably handle it just fine
 		for(var/I in forbidden_gloves)
-			if(istype(user.gloves, I)) // forbidden_gloves is a blacklist, so if we match anything in there, our hands are not protected
+			if(istype(gloves, I)) // forbidden_gloves is a blacklist, so if we match anything in there, our hands are not protected
 				protected_hands = FALSE
 				break
 
-	if(user.gloves && !protected_hands)
+	if(gloves && !protected_hands)
 		to_chat(user, "<span class='warning'>\The [src] partially cuts into your hand through your gloves as you hit \the [target]!</span>")
 		user.apply_damage(light_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge) // Ternary to include break damage
 
-	else if(!user.gloves)
+	else if(!gloves)
 		to_chat(user, "<span class='warning'>\The [src] cuts into your hand as you hit \the [target]!</span>")
 		user.apply_damage(no_glove_d + will_break ? break_damage : 0, BRUTE, active_hand, 0, 0, src, src.sharp, src.edge)
 
