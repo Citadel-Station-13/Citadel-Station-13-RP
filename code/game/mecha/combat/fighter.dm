@@ -372,7 +372,52 @@
 	name = "Voidcraft - Baron"
 	desc = "This is a small space fightercraft that has an arrowhead design. Can hold up to one pilot. \
 	Unlike some fighters, this one is not designed for atmospheric operation, and is only capable of performing \
-	maneuvers in the vacuum of space. Attempting to operate it in an atmosphere is not recommended."
+	maneuvers in the vacuum of space. Attempting flight while in an atmosphere is not recommended."
+	value = CATALOGUER_REWARD_MEDIUM
+
+
+////////////// Duke //////////////
+
+/obj/mecha/combat/fighter/duke
+	name = "\improper Duke"
+	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke"
+	initial_icon = "duke"
+
+	step_in = 4 //slower than a baron and gunpod
+
+	max_hull_equip = 2
+	max_weapon_equip = 3
+	max_utility_equip = 2
+	max_universal_equip = 2
+	max_special_equip = 1
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/duke)
+	wreckage = /obj/effect/decal/mecha_wreckage/duke
+
+	ground_capable = FALSE
+
+/obj/mecha/combat/fighter/duke/loaded/Initialize(mapload) //Loaded version with guns
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/omni_shield
+	ME.attach(src)
+
+/obj/effect/decal/mecha_wreckage/duke
+	name = "Duke wreckage"
+	desc = "Remains of some unfortunate fighter. Completely unrepairable."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke-broken"
+	bound_width = 64
+	bound_height = 64
+
+/datum/category_item/catalogue/technology/duke
+	name = "Voidcraft - Duke"
+	desc = "This is a small space fightercraft that has an arrowhead design. Can hold up to one pilot. \
+	Unlike some fighters, this one is not designed for atmospheric operation, and is only capable of performing \
+	maneuvers in the vacuum of space. Attempting flight while in an atmosphere is not recommended."
 	value = CATALOGUER_REWARD_MEDIUM
 
 
