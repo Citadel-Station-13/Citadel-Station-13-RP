@@ -134,7 +134,7 @@
 /// From base of /obj/item/attack(): (mob/M, mob/user)
 ////#define COMSIG_MOB_ITEM_ATTACK "mob_item_attack"
 	////#define COMPONENT_ITEM_NO_ATTACK (1<<0)
-/// From base of obj/item/afterattack(): (atom/target, obj/item/weapon, proximity_flag, click_parameters)
+/// From base of obj/item/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 ////#define COMSIG_MOB_ITEM_AFTERATTACK "mob_item_afterattack"
 /// From base of obj/item/afterattack_secondary(): (atom/target, obj/item/weapon, proximity_flag, click_parameters)
 ////#define COMSIG_MOB_ITEM_AFTERATTACK_SECONDARY "mob_item_afterattack_secondary"

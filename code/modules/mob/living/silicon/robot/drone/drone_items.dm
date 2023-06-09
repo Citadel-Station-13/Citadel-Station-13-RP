@@ -310,8 +310,8 @@
 		return 1
 	return 0
 
-/obj/item/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
-	if(!proximity)
+/obj/item/gripper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return // This will prevent them using guns at range but adminbuse can add them directly to modules, so eh.
 
 
@@ -392,9 +392,9 @@
 	var/datum/matter_synth/wood = null
 	var/datum/matter_synth/plastic = null
 
-/obj/item/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
+/obj/item/matter_decompiler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return //Not adjacent.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)

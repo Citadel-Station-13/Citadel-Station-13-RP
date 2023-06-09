@@ -144,7 +144,7 @@
 		/obj/item/radio/headset/heads/cmo,
 		/obj/item/radio/headset/heads/cmo/alt,
 		/obj/item/flash,
-		/obj/item/reagent_containers/hypospray/vial,
+		/obj/item/storage/hypokit/advanced/cmo,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/medical/cmo,
 		/obj/item/clothing/shoes/boots/winter/medical,
 		/obj/item/storage/box/freezer,
@@ -154,7 +154,6 @@
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
-		/obj/item/reagent_containers/glass/beaker/vial,
 		/obj/item/clothing/under/rank/chief_medical_officer/turtleneck)
 
 /obj/structure/closet/secure_closet/CMO/Initialize(mapload)

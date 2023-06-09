@@ -472,6 +472,9 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"yX" = (
+/turf/simulated/wall,
+/area/rift/surfacebase/underground/under1)
 "zx" = (
 /obj/structure/sign/warning/bomb_range{
 	pixel_x = -32
@@ -585,6 +588,10 @@
 /obj/machinery/bioscan_antenna/permanent{
 	network_key_obfuscated = "rift_bioscanners"
 	},
+/turf/simulated/floor/plating,
+/area/quartermaster/mining_airlock)
+"Hk" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "Ho" = (
@@ -707,10 +714,6 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
-/area/quartermaster/mining_airlock)
-"Qt" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "QE" = (
 /obj/structure/sign/mining,
@@ -15925,11 +15928,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16119,11 +16122,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16313,11 +16316,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16507,11 +16510,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -16701,11 +16704,11 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
+yX
+yX
+yX
+yX
+yX
 dq
 dq
 dq
@@ -18834,7 +18837,7 @@ Ws
 yh
 ZX
 AB
-Qt
+Hk
 KS
 KS
 KS
@@ -19216,7 +19219,7 @@ jJ
 QE
 jJ
 gG
-Qt
+Hk
 jJ
 jJ
 bX
@@ -19987,7 +19990,7 @@ KS
 KS
 jJ
 vr
-VU
+pz
 jV
 jV
 pz
@@ -20567,7 +20570,7 @@ KS
 KS
 KS
 KS
-Qt
+Hk
 jq
 vr
 zF
@@ -20576,7 +20579,7 @@ jJ
 yS
 LO
 Ji
-Qt
+Hk
 KS
 KS
 KS
@@ -20770,7 +20773,7 @@ wY
 Nq
 Mb
 tB
-Qt
+Hk
 KS
 KS
 KS
@@ -20962,8 +20965,8 @@ hH
 QE
 jJ
 jJ
-Qt
-Qt
+Hk
+Hk
 hH
 Yr
 KS
