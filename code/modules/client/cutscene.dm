@@ -20,7 +20,7 @@
 /client/proc/cleanup_cutscene_system()
 	end_cutscene()
 
-/client/verb/__declare_cutscene_ready()
+/client/verb/__declare_cutscene_boot()
 	set name = ".scenepanel_boot"
 	set hidden = TRUE
 	set instant = TRUE
@@ -28,7 +28,7 @@
 	cutscene_init = TRUE
 	cutscene_ready = TRUE
 
-/client/verb/__declare_cutscene_ready()
+/client/verb/__declare_cutscene_revive()
 	set name = ".scenepanel_revive"
 	set hidden = TRUE
 	set instant = TRUE
