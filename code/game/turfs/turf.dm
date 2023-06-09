@@ -181,9 +181,9 @@
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
-    if (!(atom_flags & ATOM_INITIALIZED))
-        STACK_TRACE("Turf destroyed without initializing.")
-    . = QDEL_HINT_IWILLGC
+	if(!(atom_flags & ATOM_INITIALIZED))
+		STACK_TRACE("Turf destroyed without initializing.")
+	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
 		STACK_TRACE("Incorrect turf deletion")
 	changing_turf = FALSE
