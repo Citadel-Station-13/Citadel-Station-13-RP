@@ -45,6 +45,8 @@
 				allowed_access = allowed_access(B)
 			else
 				to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
+				flick("deny", src)
+				playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
 				return FALSE
 
 			if(allowed_access)
@@ -60,7 +62,6 @@
 	else
 		return FALSE
 
-///obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
 /obj/machinery/turnstile/CheckExit(atom/movable/AM as mob|obj, target)
 	if(isliving(AM))
 		var/mob/living/M = AM
@@ -84,3 +85,5 @@
 		return canexit
 	else
 		return TRUE
+
+
