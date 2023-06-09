@@ -356,14 +356,13 @@
 	if(C.statpanel_tab("Status") && show_stat_health)
 		STATPANEL_DATA_LINE("Health: [round((health / getMaxHealth()) * 100)]%")
 
-/mob/living/simple_mob/lay_down()
-	..()
+/mob/living/simple_mob/set_resting(value)
+	. = ..()
 	if(resting && icon_rest)
 		icon_state = icon_rest
 	else
 		icon_state = icon_living
 	update_icon()
-
 
 /mob/living/simple_mob/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/whispering = 0)
 	verb = "says"
