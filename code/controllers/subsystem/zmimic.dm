@@ -11,6 +11,19 @@
 #define SHADOWER_DARKENING_COLOR "#999999"
 #define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[length(T.baseturfs)] : T.baseturfs)
 
+#define ZM_RECORD_STATS
+
+#ifdef ZM_RECORD_STATS
+#define ZM_RECORD_START STAT_START_STOPWATCH
+#define ZM_RECORD_STOP STAT_STOP_STOPWATCH
+#define ZM_RECORD_WRITE(X...) STAT_LOG_ENTRY(##X)
+#else
+#define ZM_RECORD_START
+#define ZM_RECORD_STOP
+#define ZM_RECORD_WRITE(X...)
+#endif
+
+
 SUBSYSTEM_DEF(zmimic)
 	name = "Z-Mimic"
 	wait = 1
@@ -20,6 +33,8 @@ SUBSYSTEM_DEF(zmimic)
 
 	var/list/queued_turfs = list()
 	var/qt_idex = 1
+	var/list/queued_discovery = list()
+	var/qd_idex = 1
 	var/list/queued_overlays = list()
 	var/qo_idex = 1
 
@@ -27,7 +42,18 @@ SUBSYSTEM_DEF(zmimic)
 	var/openspace_turfs = 0
 
 	var/multiqueue_skips_turf = 0
+	var/multiqueue_skips_discovery = 0
 	var/multiqueue_skips_object = 0
+
+	var/total_updates_turf = 0
+	var/total_updates_discovery = 0
+	var/total_updates_object = 0
+
+#ifdef ZM_RECORD_STATS
+	var/list/turf_stats = list()
+	var/list/discovery_stats = list()
+	var/list/mimic_stats = list()
+#endif
 
 	// Highest Z level in a given Z-group for absolute layering.
 	// zstm[zlev] = group_max
@@ -122,9 +148,11 @@ SUBSYSTEM_DEF(zmimic)
 		"ZSt: [build_zstack_display()]",	// This is a human-readable list of the z-stacks known to ZM.
 		"ZMx: [zlev_maximums.Join(", ")]",	// And this is the raw internal state.
 		// This one gets broken out from the below because it's more important.
-		"Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
-		// In order: Total, Skipped
-		"T: { T: [openspace_turfs] O: [openspace_overlays] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
+		"Q: { T: [queued_turfs.len - (qt_idex - 1)] D: [queued_discovery.len - (qd_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
+		// In order: Total, Queued, Skipped
+		"T(O): { T: [openspace_turfs] O: [openspace_overlays] }",
+		"T(U): { T: [total_updates_turf] D: [total_updates_discovery] O: [total_updates_object] }",
+		"Sk: { T: [multiqueue_skips_turf] D: [multiqueue_skips_discovery] O: [multiqueue_skips_object] }",
 		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
 	return ..() + entries.Join("<br>&emsp;")
@@ -180,6 +208,7 @@ SUBSYSTEM_DEF(zmimic)
 /datum/controller/subsystem/zmimic/proc/RebuildZState()
 	// suspend()
 	UNTIL(state == SS_IDLE)
+	log_subsystem(name, "RebuildZState called: warranty is now void for this round.")
 
 	calculate_zstack_limits()
 
@@ -196,14 +225,28 @@ SUBSYSTEM_DEF(zmimic)
 /datum/controller/subsystem/zmimic/fire(resumed = FALSE, no_mc_tick = FALSE)
 	if (!resumed)
 		qt_idex = 1
+		qd_idex = 1
 		qo_idex = 1
 
-	MC_SPLIT_TICK_INIT(2)
+	MC_SPLIT_TICK_INIT(3)
 	if (!no_mc_tick)
 		MC_SPLIT_TICK
 
+	tick_turfs(no_mc_tick)
+
+	if (!no_mc_tick)
+		MC_SPLIT_TICK
+
+	tick_discovery(no_mc_tick)
+
+	if (!no_mc_tick)
+		MC_SPLIT_TICK
+
+	tick_mimic(no_mc_tick)
+
+// - Turf mimic -
+/datum/controller/subsystem/zmimic/proc/tick_turfs(no_mc_tick)
 	var/list/curr_turfs = queued_turfs
-	var/list/curr_ov = queued_overlays
 
 	while (qt_idex <= curr_turfs.len)
 		var/turf/T = curr_turfs[qt_idex]
@@ -231,6 +274,7 @@ SUBSYSTEM_DEF(zmimic)
 		// Z-Turf on the bottom-most level, just fake-copy space (or baseturf).
 		// It's impossible for anything to be on the synthetic turf, so ignore the rest of the ZM machinery.
 		if (!T.below)
+			ZM_RECORD_START
 			flush_z_state(T)
 			if (T.mz_flags & MZ_MIMIC_BASETURF)
 				simple_appearance_copy(T, READ_BASETURF(T), OPENTURF_MAX_PLANE)
@@ -239,9 +283,13 @@ SUBSYSTEM_DEF(zmimic)
 
 			T.z_generation += 1
 			T.z_queued -= 1
+			total_updates_turf += 1
 
 			if (T.above)
 				T.above.update_mimic()
+
+			ZM_RECORD_STOP
+			ZM_RECORD_WRITE(turf_stats, "Fake: [T.type] on [T.z]")
 
 			if (no_mc_tick)
 				CHECK_TICK
@@ -255,9 +303,12 @@ SUBSYSTEM_DEF(zmimic)
 
 		T.z_generation += 1
 
+		ZM_RECORD_START
+
 		// Get the bottom-most turf, the one we want to mimic.
+		// Baseturf mimics act as false bottoms of the stack.
 		var/turf/Td = T
-		while (Td.below)
+		while (Td.below && !(Td.mz_flags & MZ_MIMIC_BASETURF))
 			Td = Td.below
 
 		// Depth must be the depth of the *visible* turf, not self.
@@ -274,7 +325,11 @@ SUBSYSTEM_DEF(zmimic)
 			if (T.above)
 				T.above.update_mimic()
 
+			total_updates_turf += 1
 			T.z_queued -= 1
+
+			ZM_RECORD_STOP
+			ZM_RECORD_WRITE(turf_stats, "Simple: [T.type] on [T.z]")
 
 			if (no_mc_tick)
 				CHECK_TICK
@@ -286,12 +341,14 @@ SUBSYSTEM_DEF(zmimic)
 		else if (T.mimic_underlay)
 			QDEL_NULL(T.mimic_underlay)
 
-
 		// Handle space parallax & starlight.
 		if (T.below.z_eventually_space)
 			T.z_eventually_space = TRUE
 			if ((T.below.mz_flags & MZ_MIMIC_OVERWRITE) || T.below.type == /turf/space)
 				t_target = SPACE_PLANE
+
+		// Handle root appearance object copy.
+		var/atom/appearance_target
 
 		if (T.mz_flags & MZ_MIMIC_OVERWRITE)
 			// This openturf doesn't care about its icon, so we can just overwrite it.
@@ -301,8 +358,7 @@ SUBSYSTEM_DEF(zmimic)
 			T.name = initial(T.name)
 			T.desc = initial(T.desc)
 			T.gender = initial(T.gender)
-			T.opacity = FALSE
-			T.plane = t_target
+			appearance_target = T
 		else
 			// Some openturfs have icons, so we can't overwrite their appearance.
 			if (!T.below.mimic_proxy)
@@ -311,9 +367,18 @@ SUBSYSTEM_DEF(zmimic)
 			TO.appearance = Td
 			TO.name = T.name
 			TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
-			TO.opacity = FALSE
-			TO.plane = t_target
 			TO.mouse_opacity = initial(TO.mouse_opacity)
+			appearance_target = TO
+
+		ASSERT(appearance_target != null)
+		appearance_target.opacity = FALSE
+		appearance_target.plane = t_target
+
+		if (T.vis_contents.len)
+			var/image/MA = new
+			MA.underlays += T.vis_contents
+			var/fixed_appearance = fixup_appearance_planes(MA) || MA.appearance
+			appearance_target.underlays += fixed_appearance
 
 		T.queue_ao(T.ao_junction_mimic == null) // If ao_junction hasn't been set yet, we need to do a rebuild.
 
@@ -333,11 +398,16 @@ SUBSYSTEM_DEF(zmimic)
 
 		// Handle below atoms.
 
-		// Add everything below us to the update queue.
+		// Add everything below us to the discovery queue.
 		for (var/thing in T.below)
 			var/atom/movable/object = thing
 			if (QDELETED(object) || (object.zmm_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
-				// Don't queue deleted stuff, stuff that's not visible, blacklisted stuff, or stuff that's centered on another tile but intersects ours.
+				/* Don't queue:
+					- (q)deleted objects
+					- Explicitly ignored objects
+					- Objects not rooted on this turf (multitiles)
+					- Always-invisible atoms
+				*/
 				continue
 
 			// Special case: these are merged into the shadower to reduce memory usage.
@@ -345,62 +415,20 @@ SUBSYSTEM_DEF(zmimic)
 				T.shadower.copy_lighting(object)
 				continue
 
-			if (!object.bound_overlay)	// Generate a new overlay if the atom doesn't already have one.
-				object.bound_overlay = new(T)
-				object.bound_overlay.associated_atom = object
-
-			var/override_depth
-			var/original_type = object.type
-			var/original_z = object.z
-			var/have_performed_fixup = FALSE
-
-			switch (object.type)
-				// Layering for recursive mimic needs to be inherited.
-				if (/atom/movable/openspace/mimic)
-					var/atom/movable/openspace/mimic/OOO = object
-					original_type = OOO.mimiced_type
-					override_depth = OOO.override_depth
-					original_z = OOO.original_z
-					have_performed_fixup = OOO.have_performed_fixup
-
-				// If this is a turf proxy (the mimic for a non-OVERWRITE turf), it needs to respect space parallax if relevant.
-				if (/atom/movable/openspace/turf_proxy)
-					if (T.z_eventually_space)
-						// Yes, this is an awful hack; I don't want to add yet another override_* var.
-						override_depth = OPENTURF_MAX_PLANE - SPACE_PLANE
-
-				if (/atom/movable/openspace/turf_mimic)
-					original_z += 1
-
-			var/atom/movable/openspace/mimic/OO = object.bound_overlay
-
-			// If the OO was queued for destruction but was claimed by another OT, stop the destruction timer.
-			if (OO.destruction_timer)
-				deltimer(OO.destruction_timer)
-				OO.destruction_timer = null
-
-			OO.depth = override_depth || min(zlev_maximums[T.z] - original_z, OPENTURF_MAX_DEPTH)
-
-			// These types need to be pushed a layer down for bigturfs to function correctly.
-			switch (original_type)
-				if (/atom/movable/openspace/multiplier, /atom/movable/openspace/turf_proxy)
-					if (OO.depth < OPENTURF_MAX_DEPTH)
-						OO.depth += 1
-
-			OO.mimiced_type = original_type
-			OO.override_depth = override_depth
-			OO.original_z = original_z
-			OO.have_performed_fixup ||= have_performed_fixup
-
-			// Multi-queue to maintain ordering of updates to these
-			//   queueing it multiple times will result in only the most recent
-			//   actually processing.
-			OO.queued += 1
-			queued_overlays += OO
+			// If an atom already has an overlay, we probably don't need to discover it again.
+			// ...but we need to force it if the object was salvaged from another zturf.
+			if (!object.bound_overlay || object.bound_overlay.destruction_timer)
+				queued_discovery += object
+				object.zm_discovery_pending += 1
 
 		T.z_queued -= 1
 		if (T.above)
 			T.above.update_mimic()
+
+		total_updates_turf += 1
+
+		ZM_RECORD_STOP
+		ZM_RECORD_WRITE(turf_stats, "Complex: [T.type] on [T.z]")
 
 		if (no_mc_tick)
 			CHECK_TICK
@@ -411,9 +439,110 @@ SUBSYSTEM_DEF(zmimic)
 		curr_turfs.Cut(1, qt_idex)
 		qt_idex = 1
 
-	if (!no_mc_tick)
-		MC_SPLIT_TICK
+// - Phase: Discovery -- generate OOs, populate their metadata -
+// This is done separately because a bunch of this state doesn't need to be updated every time, and it's useful to trigger this independently
+//  from turf updates -- e.g., a fresh movable moving under a z-turf.
+/datum/controller/subsystem/zmimic/proc/tick_discovery(no_mc_tick)
+	var/list/curr_mov = queued_discovery
+	while (qd_idex <= curr_mov.len)
+		var/atom/movable/object = curr_mov[qd_idex]
+		curr_mov[qd_idex] = null
+		qd_idex += 1
 
+		if (QDELETED(object) || !object.zm_discovery_pending)
+			continue
+		else if (object.zm_discovery_pending > 1)
+			object.zm_discovery_pending -= 1
+			multiqueue_skips_discovery += 1
+
+			if (no_mc_tick)
+				CHECK_TICK
+			else if (MC_TICK_CHECK)
+				break
+			continue
+
+		object.zm_discovery_pending = 0
+
+		var/turf/Tloc = object.loc
+		if (!isturf(Tloc) || !Tloc.above)
+			log_debug("Received insane object in discovery queue, ignoring.")
+			continue
+		var/turf/T = Tloc.above
+
+		ZM_RECORD_START
+
+		if (!object.bound_overlay)
+			var/atom/movable/openspace/mimic/M = new(T)
+			object.bound_overlay = M
+			M.associated_atom = object
+			if (TURF_IS_MIMICKING(M.loc))
+				curr_mov += M
+				M.zm_discovery_pending += 1
+
+		var/override_depth
+		var/original_type = object.type
+		var/original_z = object.z
+
+		switch (object.type)
+			// Layering for recursive mimic needs to be inherited.
+			if (/atom/movable/openspace/mimic)
+				var/atom/movable/openspace/mimic/OOO = object
+				original_type = OOO.mimiced_type
+				override_depth = OOO.override_depth
+				original_z = OOO.original_z
+
+			// If this is a turf proxy (the mimic for a non-OVERWRITE turf), it needs to respect space parallax if relevant.
+			if (/atom/movable/openspace/turf_proxy)
+				if (T.z_eventually_space)
+					// Yes, this is an awful hack; I don't want to add yet another override_* var.
+					override_depth = OPENTURF_MAX_PLANE - SPACE_PLANE
+
+			if (/atom/movable/openspace/turf_mimic)
+				original_z += 1
+
+		var/atom/movable/openspace/mimic/OO = object.bound_overlay
+
+		// If the OO was queued for destruction but was claimed by another OT, stop the destruction timer.
+		if (OO.destruction_timer)
+			deltimer(OO.destruction_timer)
+			OO.destruction_timer = null
+
+		OO.depth = override_depth || min(zlev_maximums[T.z] - original_z, OPENTURF_MAX_DEPTH)
+
+		// These types need to be pushed a layer down for bigturfs to function correctly.
+		switch (original_type)
+			if (/atom/movable/openspace/multiplier, /atom/movable/openspace/turf_proxy)
+				if (OO.depth < OPENTURF_MAX_DEPTH)
+					OO.depth += 1
+
+		OO.mimiced_type = original_type
+		OO.override_depth = override_depth
+		OO.original_z = original_z
+
+		// Multi-queue to maintain ordering of updates to these
+		//   queueing it multiple times will result in only the most recent
+		//   actually processing.
+		OO.queued += 1
+		queued_overlays += OO
+
+		total_updates_discovery += 1
+
+		ZM_RECORD_STOP
+		ZM_RECORD_WRITE(discovery_stats, "Depth [OO.depth] on [OO.z]")
+
+		if (no_mc_tick)
+			CHECK_TICK
+		else if (MC_TICK_CHECK)
+			break
+
+	if (qd_idex > 1)
+		curr_mov.Cut(1, qd_idex)
+		qd_idex = 1
+
+
+// - Phase: Mimic update -- actually update the mimics' appearance, order sensitive -
+/datum/controller/subsystem/zmimic/proc/tick_mimic(no_mc_tick)
+	var/list/curr_ov = queued_overlays
 	while (qo_idex <= curr_ov.len)
 		var/atom/movable/openspace/mimic/OO = curr_ov[qo_idex]
 		curr_ov[qo_idex] = null
@@ -426,8 +555,9 @@ SUBSYSTEM_DEF(zmimic)
 				break
 			continue
 
-		if (QDELETED(OO.associated_atom))	// This shouldn't happen, but just in-case.
+		if (QDELETED(OO.associated_atom))	// This shouldn't happen.
 			qdel(OO)
+			log_debug("Z-Mimic: Received mimic with QDELETED parent ([OO.associated_atom || "<NULL>"])")
 
 			if (no_mc_tick)
 				CHECK_TICK
@@ -445,6 +575,8 @@ SUBSYSTEM_DEF(zmimic)
 			else if (MC_TICK_CHECK)
 				break
 			continue
+
+		ZM_RECORD_START
 
 		// Actually update the overlay.
 		if (OO.dir != OO.associated_atom.dir)
@@ -466,9 +598,19 @@ SUBSYSTEM_DEF(zmimic)
 			if (new_appearance)
 				OO.appearance = new_appearance
 				OO.have_performed_fixup = TRUE
+		else if (OO.associated_atom.type == /atom/movable/openspace/mimic)
+			var/atom/movable/openspace/mimic/M = OO.associated_atom
+			OO.have_performed_fixup ||= M.have_performed_fixup
+		else
+			OO.have_performed_fixup = FALSE
 
 		if (OO.bound_overlay)	// If we have a bound overlay, queue it too.
 			OO.update_above()
+
+		total_updates_object += 1
+
+		ZM_RECORD_STOP
+		ZM_RECORD_WRITE(mimic_stats, "[OO.mimiced_type], fixup [OO.have_performed_fixup ? "Y" : "N"]")
 
 		if (no_mc_tick)
 			CHECK_TICK
@@ -575,7 +717,7 @@ SUBSYSTEM_DEF(zmimic)
 				fixed_underlays[i] = fixed_appearance
 
 		if (mutated)
-			for (var/i in 1 to fixed_overlays.len)
+			for (var/i in 1 to fixed_underlays.len)
 				if (fixed_underlays[i] == null)
 					fixed_underlays[i] = appearance:underlays[i]
 
@@ -791,3 +933,36 @@ var/list/zmimic_fixed_planes = list(
 
 #undef FMT_DEPTH
 #undef READ_BASETURF
+#undef ZM_RECORD_START
+#undef ZM_RECORD_STOP
+#undef ZM_RECORD_WRITE
+
+#ifdef ZM_RECORD_STATS
+/client/proc/zms_display_turf()
+	set name = "ZM Stats - 1Turf"
+	set category = "Debug"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	render_stats(SSzmimic.turf_stats, src)
+
+/client/proc/zms_display_discovery()
+	set name = "ZM Stats - 2Discovery"
+	set category = "Debug"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	render_stats(SSzmimic.discovery_stats, src)
+
+/client/proc/zms_display_mimic()
+	set name = "ZM Stats - 3Mimic"
+	set category = "Debug"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	render_stats(SSzmimic.mimic_stats, src)
+
+#endif

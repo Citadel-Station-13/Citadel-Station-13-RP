@@ -176,6 +176,8 @@
 	if (bound_overlay)
 		QDEL_NULL(bound_overlay)
 
+	zm_discovery_pending = 0
+
 	. = ..()
 
 	moveToNullspace()

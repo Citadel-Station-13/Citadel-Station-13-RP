@@ -138,6 +138,9 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 
 var/list/debug_verbs = list (
 	/client/proc/analyze_openturf,
+	/client/proc/zms_display_turf,
+	/client/proc/zms_display_discovery,
+	/client/proc/zms_display_mimic,
 	/client/proc/atmos_toggle_debug,
 	/client/proc/atmosscan,
 	/client/proc/camera_view,

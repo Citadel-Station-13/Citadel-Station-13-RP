@@ -1,6 +1,7 @@
 /atom/movable
 	/// The mimic (if any) that's *directly* copying us.
 	var/tmp/atom/movable/openspace/mimic/bound_overlay
+	var/tmp/zm_discovery_pending = FALSE
 	/// Movable-level Z-Mimic flags. This uses ZMM_* flags, not ZM_* flags.
 	var/zmm_flags = NONE
 
@@ -206,6 +207,11 @@
 /atom/movable/openspace/mimic/proc/owning_turf_changed()
 	if (!destruction_timer)
 		destruction_timer = addtimer(CALLBACK(src, /datum/.proc/qdel_self), 10 SECONDS, TIMER_STOPPABLE)
+
+/atom/movable/openspace/mimic/proc/get_root()
+	. = associated_atom
+	while ((.):type == /atom/movable/openspace/mimic)
+		. = (.):associated_atom
 
 // -- TURF PROXY --
 

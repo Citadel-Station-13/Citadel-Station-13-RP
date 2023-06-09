@@ -3,8 +3,23 @@
 #define UPDATE_OO_IF_PRESENT CHECK_OO_EXISTENCE(bound_overlay); if (bound_overlay) { update_above(); }
 
 // I do not apologize.
-#define MOVABLE_IS_BELOW_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:above?:mz_flags & MZ_MIMIC_BELOW) || (loc:above?:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, global.reverse_dir[M:dir])?:above?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
-#define MOVABLE_IS_ON_ZTURF(M) (isturf(loc) && ((M:zmm_flags & ZMM_LOOKAHEAD) ? ((get_step(M, M:dir)?:mz_flags & MZ_MIMIC_BELOW) || (loc:mz_flags & MZ_MIMIC_BELOW) || (get_step(M, global.reverse_dir[M:dir])?:mz_flags & MZ_MIMIC_BELOW)) : TURF_IS_MIMICKING(loc:above)))
+
+// These aren't intended to be used anywhere else, they just can't be undef'd because DM is dum.
+#define ZM_INTERNAL_SCAN_LOOKAHEAD(M,VTR,F) ((get_step(M, M:dir)?:VTR & F) || (get_step(M, turn(M:dir, 180))?:VTR & F))
+#define ZM_INTERNAL_SCAN_LOOKBESIDE(M,VTR,F) ((get_step(M, turn(M:dir, 90))?:VTR & F) || (get_step(M, turn(M:dir, -90))?:VTR & F))
+
+/// Is this movable visible from a turf that is mimicking below? Note: this does not necessarily mean *directly* below.
+#define MOVABLE_IS_BELOW_ZTURF(M) (\
+	isturf(M:loc) && (TURF_IS_MIMICKING(M:loc:above) \
+	|| ((M:zmm_flags & ZMM_LOOKAHEAD) && ZM_INTERNAL_SCAN_LOOKAHEAD(M, above?:mz_flags, MZ_MIMIC_BELOW))  \
+	|| ((M:zmm_flags & ZMM_LOOKBESIDE) && ZM_INTERNAL_SCAN_LOOKBESIDE(M, above?:mz_flags, MZ_MIMIC_BELOW))) \
+)
+/// Is this movable located on a turf that is mimicking below? Note: this does not necessarily mean *directly* on.
+#define MOVABLE_IS_ON_ZTURF(M) (\
+	isturf(M:loc) && (TURF_IS_MIMICKING(M:loc) \
+	|| ((M:zmm_flags & ZMM_LOOKAHEAD) && ZM_INTERNAL_SCAN_LOOKAHEAD(M, mz_flags, MZ_MIMIC_BELOW)) \
+	|| ((M:zmm_flags & ZMM_LOOKBESIDE) && ZM_INTERNAL_SCAN_LOOKBESIDE(M, mz_flags, MZ_MIMIC_BELOW))) \
+)
 
 //# Turf Multi-Z flags.
 #define MZ_MIMIC_BELOW     (1<<0)  //! If this turf should mimic the turf on the Z below.
@@ -65,10 +80,12 @@ DEFINE_BITFIELD(mz_flags, list(
 #define ZMM_IGNORE          (1<<0) //! Do not copy this movable. Atoms with INVISIBILITY_ABSTRACT implicitly do not copy.
 #define ZMM_MANGLE_PLANES   (1<<1) //! Check this movable's overlays/underlays for explicit plane use and mangle for compatibility with Z-Mimic. If you're using emissive overlays, you probably should be using this flag. Expensive, only use if necessary.
 #define ZMM_LOOKAHEAD       (1<<2) //! Look one turf ahead and one turf back when considering z-turfs that might be seeing this atom. Cheap, but not free.
-#define ZMM_AUTOMANGLE_NRML (1<<3) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
-#define ZMM_AUTOMANGLE_PRI  (1<<4) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
+#define ZMM_LOOKBESIDE      (1<<3) //! Look one turf to the left/right when considering z-turfs that might be seeing this atom. Cheap, but not free.
+#define ZMM_AUTOMANGLE_NRML (1<<4) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
+#define ZMM_AUTOMANGLE_PRI  (1<<5) //! Behaves the same as ZMM_MANGLE_PLANES, but is automatically applied by SSoverlays. Do not manually use.
 
 #define ZMM_AUTOMANGLE (ZMM_AUTOMANGLE_NRML|ZMM_AUTOMANGLE_PRI)	// convenience
+#define ZMM_WIDE_LOAD (ZMM_LOOKAHEAD|ZMM_LOOKBESIDE)	// Big atom needs to be treated as both long and wide -- basically check range(1) instead of loc.
 
 DEFINE_BITFIELD(zmm_flags, list(
 	BITFIELD(ZMM_IGNORE),

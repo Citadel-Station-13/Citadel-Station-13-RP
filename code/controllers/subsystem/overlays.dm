@@ -195,6 +195,10 @@ SUBSYSTEM_DEF(overlays)
 
 // The same as the above, but with ZM_AUTOMANGLE.
 /atom/movable/build_appearance_list(atom/new_overlays)
+	// If the atom has explicitly opted into mangling, don't bother scanning for automangle.
+	if (zmm_flags & ZMM_MANGLE_PLANES)
+		return ..()
+
 	var/static/image/appearance_bro = new
 	if (islist(new_overlays))
 		new_overlays = new_overlays:Copy()

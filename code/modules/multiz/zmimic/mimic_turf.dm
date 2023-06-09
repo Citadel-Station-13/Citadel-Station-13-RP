@@ -68,6 +68,9 @@
 /// Cleans up Z-mimic objects for this turf. You shouldn't call this directly 99% of the time.
 /turf/proc/cleanup_zmimic()
 	SSzmimic.openspace_turfs -= 1
+	if (SSzmimic.openspace_turfs < 0)
+		stack_trace("Z-Turf count is insane.")
+
 	// Don't remove ourselves from the queue, the subsystem will explode. We'll naturally fall out of the queue.
 	z_queued = 0
 
@@ -89,7 +92,8 @@
 		below = null
 
 /turf/Entered(atom/movable/thing, atom/oldLoc)
-	..()
-	if (thing.bound_overlay || (thing.zmm_flags & ZMM_IGNORE) || thing.invisibility == INVISIBILITY_ABSTRACT || !TURF_IS_MIMICKING(above))
+	. = ..()
+	if ((thing.bound_overlay && !thing.bound_overlay.destruction_timer) || (thing.zmm_flags & ZMM_IGNORE) || thing.invisibility == INVISIBILITY_ABSTRACT || !TURF_IS_MIMICKING(above))
 		return
-	above.update_mimic()
+	SSzmimic.queued_discovery += thing
+	thing.zm_discovery_pending += 1

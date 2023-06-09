@@ -115,13 +115,12 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_OVERMAPS       -20
 #define INIT_ORDER_TICKER         -30
 #define INIT_ORDER_LIGHTING       -40
-#define INIT_ORDER_ZMIMIC         -45
 #define INIT_ORDER_AMBIENT_LIGHT  -46
 #define INIT_ORDER_XENOARCH       -50
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_OPENSPACE      -99
+#define INIT_ORDER_ZMIMIC         -99
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
 
