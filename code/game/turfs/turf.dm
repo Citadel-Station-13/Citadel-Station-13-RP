@@ -181,9 +181,11 @@
 	return INITIALIZE_HINT_NORMAL
 
 /turf/Destroy(force)
-	. = QDEL_HINT_IWILLGC
+    if (!(atom_flags & ATOM_INITIALIZED))
+        STACK_TRACE("Turf destroyed without initializing.")
+    . = QDEL_HINT_IWILLGC
 	if(!changing_turf)
-		stack_trace("Incorrect turf deletion")
+		STACK_TRACE("Incorrect turf deletion")
 	changing_turf = FALSE
 /*
 	var/turf/T = SSmapping.get_turf_above(src)
