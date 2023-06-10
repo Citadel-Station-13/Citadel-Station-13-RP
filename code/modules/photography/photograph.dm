@@ -25,3 +25,5 @@
 
 /datum/photograph/proc/picture()
 	return SSphotography.resolve_picture(picture_hash)
+
+/datum/photograph/proc/unload()

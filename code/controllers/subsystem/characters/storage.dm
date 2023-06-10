@@ -7,7 +7,7 @@
  *
  * todo: this should go on SScharacters
  */
-/datum/controller/subsystem/persistence
+/datum/controller/subsystem/characters
 	/// loaded characters - "[id]" = /datum/character_data instance
 	var/list/character_cache = list()
 
@@ -19,7 +19,7 @@
  * * char - character datum
  * * persisting - update persistence info if mob is given
  */
-/datum/controller/subsystem/persistence/proc/save_character(datum/character_data/char, mob/persisting)
+/datum/controller/subsystem/characters/proc/save_character(datum/character_data/char, mob/persisting)
 	// pause admin proccall guard
 	var/__oldusr = usr
 	usr = null
@@ -66,6 +66,28 @@
 	usr = __oldusr
 
 /**
+ * fetches or makes a character datum of the given canonical name, player id, and type
+ */
+/datum/contrller/subsystem/characters/proc/load_character(name, playerid, type)
+	var/path = character_type_to_datum_path(type)
+	ASSERT(!isnull(path))
+	ASSERT(isnum(playerid))
+	name = ckey(name)
+	ASSERT(length(name))
+
+	// pause admin proccall guard
+	var/__oldusr = usr
+	usr = null
+	// section below can never be allowed to runtime
+
+
+
+	#warn impl all
+
+	// resume admin proccall guard
+	usr = __oldusr
+
+/**
  * fetches a character datum
  * you should not hold references to it yourself
  * refetch when you need it!
@@ -74,7 +96,7 @@
  * * id - character id
  * * force - reload from sql if it's in cache
  */
-/datum/controller/subsystem/persistence/proc/fetch_character(id, force = FALSE)
+/datum/controller/subsystem/characters/proc/fetch_character(id, force = FALSE)
 	ASSERT(isnum(id))
 
 	// pause admin proccall guard
@@ -134,7 +156,7 @@
  * * fetch - fetch the character datums in the process
  * * force - forcefully fetch the character even if it's cached
  */
-/datum/controller/subsystem/persistence/proc/query_characters(playerid, fetch = FALSE, force = FALSE)
+/datum/controller/subsystem/characters/proc/query_characters(playerid, fetch = FALSE, force = FALSE)
 	ASSERT(isnum(playerid))
 
 	// pause admin proccall guard
@@ -168,7 +190,7 @@
  * @params
  * * id - character id
  */
-/datum/controller/subsystem/persistence/proc/character_played(id)
+/datum/controller/subsystem/characters/proc/character_played(id)
 	ASSERT(isnum(id))
 
 	// pause admin proccall guard
@@ -190,7 +212,7 @@
 /**
  * hardcoded switch: what character type string corrosponds to what /datum/character_data
  */
-/datum/controller/subsystem/persistence/proc/character_type_to_datum_path(what)
+/datum/controller/subsystem/characters/proc/character_type_to_datum_path(what)
 	switch(what)
 		if(OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN)
 			return /datum/character_data/human
