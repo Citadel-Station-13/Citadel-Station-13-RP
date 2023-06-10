@@ -100,9 +100,22 @@
 	/// did we get autoswitched to byond stat for turf? if so we'll switch back when we un-list
 	var/statpanel_for_turf = FALSE
 
-	//? throttling
+	//? Throttling
 	/// block re-execution of expensive verbs
 	var/verb_throttle = 0
+
+	//? Cutscenes
+	/// active cutscene
+	var/datum/cutscene/cutscene
+	/// is the cutscene browser in use?
+	var/cutscene_browser = FALSE
+	/// is the cutscene system init'd?
+	var/cutscene_init = FALSE
+	/// is the cutscene browser ready?
+	var/cutscene_ready = FALSE
+	/// cutscene lockout: set after a browser synchronization command to delay the next one
+	/// since byond is deranged and will send winsets and browse calls out of order sometimes.
+	var/cutscene_lockout = FALSE
 
 		////////////////
 		//ADMIN THINGS//
