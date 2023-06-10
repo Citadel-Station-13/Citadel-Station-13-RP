@@ -66,10 +66,10 @@
 	usr = __oldusr
 
 /**
- * fetches or makes a character datum of the given canonical name, player id, and type
+ * fetches or makes a character datum of the given canonical name, player id, and character type
  */
-/datum/contrller/subsystem/characters/proc/load_character(name, playerid, type)
-	var/path = character_type_to_datum_path(type)
+/datum/controller/subsystem/characters/proc/load_character(name, playerid, character_type)
+	var/path = character_type_to_datum_path(character_type)
 	ASSERT(!isnull(path))
 	ASSERT(isnum(playerid))
 	name = ckey(name)
@@ -80,12 +80,33 @@
 	usr = null
 	// section below can never be allowed to runtime
 
+	var/datum/db_query/load_query = SSdbcore.NewQuery(
+		"SELECT `id` FROM \
+		[format_table_name("character")] WHERE playerid = :id AND canonical_name = :name AND character_type = :type",
+		list(
+			"id" = playerid,
+			"canonical_name" = name,
+			"type" = character_type,
+		)
+	)
 
-
-	#warn impl all
+	load_query.Execute(async = FALSE)
 
 	// resume admin proccall guard
 	usr = __oldusr
+
+	if(!load_query.NextRow())
+		// need a new one
+		var/datum/character_data/character = new path
+		character.player_id = playerid
+		character.canonical_name = ckey(name)
+		character.character_type = character_type
+		// immediately save
+		save_character(character)
+		return character
+
+	// was found, load it
+	return fetch_character(text2num(load_query.item[1]))
 
 /**
  * fetches a character datum
@@ -270,7 +291,7 @@
  */
 /datum/character_data/proc/immediate_rename(new_name)
 	canonical_name = ckey(new_name)
-	SSpersistence.save_character(src)
+	SScharacters.save_character(src)
 
 /datum/character_data/human
 	character_type = OBJECT_PERSISTENCE_CHARACTER_TYPE_HUMAN

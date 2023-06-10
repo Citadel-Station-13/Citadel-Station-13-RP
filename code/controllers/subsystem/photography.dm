@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(photography)
 	var/datum/picture/loaded = __sql_load_picture(hash)
 	if(isnull(loaded))
 		return
-	pictre_cache[hash] = loaded
+	picture_cache[hash] = loaded
 	return loaded
 
 /datum/controller/subsystem/photography/proc/__sql_save_picture(datum/picture/pic)
