@@ -12,12 +12,12 @@ export interface MaterialsContext {
 
 export interface FullMaterialsContext {
   materials: Record<string, DetailedMaterial>;
-  sheetAmount: number;
  }
 
 export interface Material {
   name: string;
   id: string;
+  sheetAmount: number;
   iconKey: string;
 }
 
@@ -29,6 +29,7 @@ interface MaterialStorageProps {
   horizontal: BooleanLike;
   stored: Record<string, number>; // id to number
   context: MaterialsContext;
+  eject: (string, number) => void; // called with (id, sheets).
 }
 
 export const MaterialStorage = (props: MaterialStorageProps, context) => {
