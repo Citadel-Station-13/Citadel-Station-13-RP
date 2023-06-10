@@ -55,7 +55,6 @@
 	id = "reset"
 	req_tech = list(TECH_DATA = 3, TECH_MATERIAL = 6)
 	build_path = /obj/item/aiModule/reset
-	sort_string = "XAAAZ"	// Duplicate string, really need to redo this whole thing
 
 /datum/design/aimodule/purge
 	name = "Purge"

@@ -517,28 +517,24 @@ CIRCUITS BELOW
 	id = "baron_main"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/main
-	sort_string = "NAAHA"
 
 /datum/design/circuit/mecha/fighter/baron_flight
 	name = "Baron flight control board"
 	id = "baron_flight"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/flight
-	sort_string = "NAAHB"
 
 /datum/design/circuit/mecha/fighter/baron_targeting
 	name = "Baron weapon control and targeting board"
 	id = "baron_targeting"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/targeting
-	sort_string = "NAAHC"
 
 /datum/design/circuit/mecha/fighter/baron_cockpit_control
 	name = "Baron manual flight control instruments"
 	id = "baron_cockpit_control"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/cockpitboard
-	sort_string = "NAAHD"
 
 
 //Tcomms//

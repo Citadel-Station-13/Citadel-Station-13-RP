@@ -89,7 +89,6 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 15000, MAT_URANIUM = 10000, MAT_DIAMOND = 10000)
 	build_path = /obj/item/nif/bioadap
-	sort_string = "HABBD" //Changed String from HABBE to HABBD
 //Addiing bioadaptive NIF to Protolathe
 
 /datum/design/science/nifrepairtool
@@ -98,7 +97,6 @@
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
 	materials = list(MAT_STEEL = 200, MAT_GLASS = 3000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/nifrepairer
-	sort_string = "HABBE" //Changed String from HABBD to HABBE
 
 // Resleeving Circuitboards
 

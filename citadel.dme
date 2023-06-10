@@ -600,6 +600,7 @@
 #include "code\datums\beam.dm"
 #include "code\datums\callback.dm"
 #include "code\datums\category.dm"
+#include "code\datums\changelog.dm"
 #include "code\datums\character_profile.dm"
 #include "code\datums\computerfiles.dm"
 #include "code\datums\datacore.dm"

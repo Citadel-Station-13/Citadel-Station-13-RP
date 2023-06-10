@@ -2,7 +2,6 @@
 	This is a guide to sort strings and categorization of designs.
 	Its really helpful and neat-looking when items are sorted properly in general R&D list and not just haphazardly.
 
-	sort_string basically sorts items in alphabetic order, using sort_string itself as reference.
 
 
 	A - stock parts all always go first, and above everything else
