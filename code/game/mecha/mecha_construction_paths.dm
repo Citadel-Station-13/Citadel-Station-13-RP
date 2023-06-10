@@ -3219,7 +3219,7 @@
 	return
 
 //////////////////////
-//		Duke
+//		Baron
 //////////////////////
 /datum/construction/mecha/fighter/baron_chassis
 	result = "/obj/mecha/combat/fighter/baron"
