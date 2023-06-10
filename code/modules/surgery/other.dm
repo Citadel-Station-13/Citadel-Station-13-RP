@@ -163,7 +163,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD) //technically it's contact, but the reagents are being applied to internal tissue
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT) //technically it's contact, but the reagents are being applied to internal tissue
 	if (trans > 0)
 		affected.status &= ~ORGAN_DEAD
 		affected.owner.update_icons_body()
@@ -179,7 +179,7 @@
 
 	var/obj/item/reagent_containers/container = tool
 
-	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_BLOOD)
+	var/trans = container.reagents.trans_to_mob(target, container.amount_per_transfer_from_this, CHEM_INJECT)
 
 	user.visible_message("<font color='red'>[user]'s hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>" , \
 	"<font color='red'>Your hand slips, applying [trans] units of the solution to the wrong place in [target]'s [affected.name] with the [tool]!</font>")

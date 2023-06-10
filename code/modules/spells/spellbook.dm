@@ -226,9 +226,7 @@
 							new /obj/item/scrying(get_turf(H))
 							if (!(MUTATION_XRAY in H.mutations))
 								H.mutations.Add(MUTATION_XRAY)
-								H.AddSightSelf(SEE_MOBS|SEE_OBJS|SEE_TURFS)
-								H.SetSeeInDarkSelf(8)
-								H.SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)
+								H.add_vision_modifier(/datum/vision/augmenting/observer)
 								to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 							temp = "You have purchased a scrying orb, and gained x-ray vision."
 							max_uses--
@@ -273,7 +271,7 @@
 	else
 		user.add_spell(S)
 		to_chat(user, "<span class='notice'>you rapidly read through the arcane book. Suddenly you realize you understand [spellname]!</span>")
-		user.attack_log += text("\[[time_stamp()]\] <font color='orange'>[user.real_name] ([user.ckey]) learned the spell [spellname] ([S]).</font>")
+		user.attack_log += "\[[time_stamp()]\] <font color='orange'>[user.real_name] ([user.ckey]) learned the spell [spellname] ([S]).</font>"
 		onlearned(user)
 
 /obj/item/spellbook/oneuse/proc/recoil(mob/user)

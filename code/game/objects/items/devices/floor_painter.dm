@@ -39,11 +39,11 @@
 		"precise" = 0
 		)
 
-/obj/item/floor_painter/afterattack(var/atom/A, var/mob/user, proximity, params)
-	if(!proximity)
+/obj/item/floor_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
-	var/turf/simulated/floor/F = A
+	var/turf/simulated/floor/F = target
 	if(!istype(F))
 		to_chat(user, "<span class='warning'>\The [src] can only be used on station flooring.</span>")
 		return

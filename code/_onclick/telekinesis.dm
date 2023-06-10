@@ -68,7 +68,7 @@ var/const/tk_maxrange = 15
 	item_flags = ITEM_DROPDEL | ITEM_NOBLUDGEON
 	//item_state = null
 	w_class = ITEMSIZE_NO_CONTAINER
-	layer = HUD_LAYER
+	layer = HUD_LAYER_BASE
 
 	var/last_throw = 0
 	var/atom/movable/focus = null
@@ -87,7 +87,7 @@ var/const/tk_maxrange = 15
 	if(focus)
 		focus.attack_self_tk(user)
 
-/obj/item/tk_grab/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity)//TODO: go over this
+/obj/item/tk_grab/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target || !user)	return
 	if(last_throw+3 > world.time)	return
 	if(!host || host != user)
