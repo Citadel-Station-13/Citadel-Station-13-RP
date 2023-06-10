@@ -30,7 +30,7 @@
 		return
 	return ..()
 
-/obj/item/gun/magic/wand/afterattack(atom/target, mob/living/user)
+/obj/item/gun/magic/wand/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!charges)
 		return
 	if(target == user)

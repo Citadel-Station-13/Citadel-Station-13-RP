@@ -1,5 +1,5 @@
 /datum/reagents/metabolism
-	var/metabolism_class //CHEM_TOUCH, CHEM_INGEST, or CHEM_BLOOD
+	var/metabolism_class //CHEM_TOUCH, CHEM_INGEST, or CHEM_INJECT
 	var/metabolism_speed = 1	// Multiplicative, 1 is full speed, 0.5 is half, etc.
 	var/mob/living/carbon/parent
 
@@ -24,7 +24,7 @@
 
 // "Specialized" metabolism datums
 /datum/reagents/metabolism/bloodstream
-	metabolism_class = CHEM_BLOOD
+	metabolism_class = CHEM_INJECT
 
 /datum/reagents/metabolism/ingested
 	metabolism_class = CHEM_INGEST
