@@ -55,7 +55,7 @@
 			//unfortuately we don't know where the dart will actually hit, since that's done by the parent.
 			if(L.can_inject() && syringe.reagents)
 				var/contained = syringe.reagents.get_reagents()
-				var/trans = syringe.reagents.trans_to_mob(L, 15, CHEM_BLOOD)
+				var/trans = syringe.reagents.trans_to_mob(L, 15, CHEM_INJECT)
 				add_attack_logs(TT.thrower,L,"Shot with [src.name] containing [contained], trasferred [trans] units")
 
 		syringe.break_syringe(iscarbon(A)? A : null)

@@ -125,20 +125,13 @@
 
 //General stuff
 
-// /datum/design/science/medical/sleevemate
-// 	name = "SleeveMate 3700"
-// 	id = "sleevemate"
-// 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 2, TECH_BIO = 2)
-// 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
-// 	build_path = /obj/item/sleevemate
-//
-/datum/design/science/medical/protohypospray
-	name = "prototype hypospray"
+/datum/design/item/medical/protohypospray
+	name = "advanced hypospray"
 	desc = "This prototype hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	id = "protohypospray"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3, TECH_POWER = 2, TECH_BIO = 4, TECH_ILLEGAL = 2)
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_GOLD = 1500, MAT_URANIUM = 1000)
-	build_path = /obj/item/reagent_containers/hypospray/science
+	build_path = /obj/item/hypospray/advanced
 
 // ML-3M medigun and cells
 /datum/design/science/medical/cell_based/generate_name(template)

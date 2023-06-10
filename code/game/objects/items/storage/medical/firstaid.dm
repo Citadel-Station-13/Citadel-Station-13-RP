@@ -19,9 +19,6 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/storage/firstaid/Initialize(mapload)
-	. = ..()
-
 /obj/item/storage/firstaid/fire
 	name = "fire first aid kit"
 	desc = "It's an emergency medical kit, loaded with everything you would need to treat burns of any kind."

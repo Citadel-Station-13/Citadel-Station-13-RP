@@ -39,6 +39,8 @@
 
 /datum/tgui_module/lathe_control/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	if(.)
+		return
 	var/obj/machinery/lathe/lathe = host
 	switch(action)
 		if("enqueue")

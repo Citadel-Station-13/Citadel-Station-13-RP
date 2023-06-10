@@ -42,11 +42,11 @@
 	. = ..()
 	create_reagents(10)
 
-/obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
-		A.reagents.trans_to_obj(src, 10)
-		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [A].</span>")
+/obj/item/toy/balloon/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to_obj(src, 10)
+		to_chat(user, "<span class='notice'>You fill the balloon with the contents of [target].</span>")
 		src.desc = "A translucent balloon with some form of liquid sloshing around in it."
 		src.update_icon()
 	return
@@ -163,9 +163,9 @@
 		else
 			to_chat(user, "<span class='warning'>It's already fully loaded.</span>")
 
-/obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+/obj/item/toy/crossbow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!isturf(target.loc) || target == user) return
-	if(flag) return
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) return
 
 	if (locate (/obj/structure/table, src.loc))
 		return
@@ -365,16 +365,16 @@
 	var/datum/reagents/R = create_reagents(10)
 	R.add_reagent("water", 10)
 
-/obj/item/toy/waterflower/afterattack(atom/A as mob|obj, mob/user as mob)
+/obj/item/toy/waterflower/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if (istype(A, /obj/item/storage/backpack ))
+	if (istype(target, /obj/item/storage/backpack ))
 		return
 
 	else if (locate (/obj/structure/table, src.loc))
 		return
 
-	else if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
-		A.reagents.trans_to(src, 10)
+	else if (istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(src,target) <= 1)
+		target.reagents.trans_to(src, 10)
 		to_chat(user, "<span class='notice'>You refill your flower!</span>")
 		return
 
@@ -397,7 +397,7 @@
 
 		spawn(0)
 			for(var/i=0, i<1, i++)
-				step_towards(D,A)
+				step_towards(D,target)
 				D.reagents.touch_turf(get_turf(D))
 				for(var/atom/T in get_turf(D))
 					D.reagents.touch(T)

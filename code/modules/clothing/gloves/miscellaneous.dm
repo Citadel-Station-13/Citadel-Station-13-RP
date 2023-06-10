@@ -133,7 +133,7 @@
 	icon_state = "knuckledusters"
 	materials = list(MAT_STEEL = 500)
 	attack_verb = list("punched", "beaten", "struck")
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 1
 	fingerprint_chance = 100
 	overgloves = 1

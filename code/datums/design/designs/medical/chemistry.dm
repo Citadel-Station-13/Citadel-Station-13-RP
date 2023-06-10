@@ -19,6 +19,18 @@
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
 	build_path = /obj/item/reagent_containers/glass/beaker/vial
 
+/datum/design/medical/chemistry/hypovial
+	id = "ChemistryHypovial"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/glass/hypovial
+
+/datum/design/medical/chemistry/hypovial/large
+	id = "ChemistryHypovialLarge"
+	lathe_type = LATHE_TYPE_AUTOLATHE
+	design_unlock = DESIGN_UNLOCK_INTRINSIC
+	build_path = /obj/item/reagent_containers/glass/hypovial/large
+
 /datum/design/medical/chemistry/syringe
 	id = "ChemistrySyringe"
 	lathe_type = LATHE_TYPE_AUTOLATHE

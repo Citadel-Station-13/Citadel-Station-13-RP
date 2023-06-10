@@ -255,7 +255,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)

@@ -125,7 +125,7 @@
 		if(reagents.total_volume)
 			if(target.reagents)
 				var/contained = reagents.get_reagents()
-				var/trans = reagents.trans_to_mob(target, 30, CHEM_BLOOD)
+				var/trans = reagents.trans_to_mob(target, 30, CHEM_INJECT)
 				add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
 
 /*
