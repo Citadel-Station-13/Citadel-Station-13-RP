@@ -6,9 +6,9 @@
  * third tier is the photo / implementing object itself.
  */
 /datum/photograph
-	/// are we saved? we won't have an ID without being saved
+	/// are we saved? we won't have an ID without being saved. this also determines if we're mutable.
 	var/saved = FALSE
-	/// our unique id - set by subsystem
+	/// our unique id - set by subsystem on save
 	var/id
 	/// picture hash
 	var/picture_hash
@@ -16,14 +16,23 @@
 	var/scene
 	/// description: "you see a photo of [scene]. [description]". do not let players set this.
 	var/desc
-	/// caption. can be set by players.
-	var/caption
 
 #warn impl all
 
 /datum/photograph/proc/mutable_clone()
+	var/datum/photograph/clone = new
+	clone.picture_hash = picture_hash
+	clone.scene = scene
+	clone.desc = desc
+	return clone
 
 /datum/photograph/proc/picture()
 	return SSphotography.resolve_picture(picture_hash)
 
+/datum/photograph/proc/load()
+	// not much to load
+	return TRUE
+
 /datum/photograph/proc/unload()
+	// not much to unload
+	return TRUE
