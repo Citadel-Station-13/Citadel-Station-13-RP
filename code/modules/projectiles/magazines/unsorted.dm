@@ -1160,7 +1160,7 @@
 	icon_state = "shotholder"
 	caliber = "12g"
 	ammo_type = null
-	matter = list(MAT_STEEL = 1440)
+	materials = list(MAT_STEEL = 1440)
 	ammo_type = /obj/item/ammo_casing/a12g
 	initial_ammo = 0
 	max_ammo = 4
