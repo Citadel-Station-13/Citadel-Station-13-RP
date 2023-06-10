@@ -12,6 +12,7 @@
 						 //Setting this to 1 will set locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 	var/list/beacon_uuid_assoc = list()
 
+
 /obj/machinery/computer/teleporter/Initialize(mapload)
 	id = "[rand(1000, 9999)]"
 	. = ..()
@@ -103,7 +104,6 @@
 	data["projector_charge"] = projector?.current_joules || 0
 	data["projector_charge_max"] = projector?.power_capacity || 0
 	data["projector_recharge_rate"] = projector?.recharge_rate || 0
-	data["projector_recharge_max"] = projector?.recharge_capacity || 0
 	data["valid_destinations"] = generate_telebeacon_list()
 	return data
 
@@ -115,7 +115,6 @@
 		if("set_recharge")
 			var/target = params["target"]
 			projector?.recharge_rate = target
-			projector?.recharge_rate = clamp(projector?.recharge_rate, 0, projector?.recharge_capacity)
 	. = ..()
 
 /obj/machinery/computer/teleporter/proc/is_disabled()
@@ -169,27 +168,26 @@
 
 /obj/machinery/computer/teleporter/proc/compare_beacon_to_identifier(var/dname, var/list/beacon_list)
 	var/obj/item/B
-	visible_message("d [dname]")
 	for(var/I in beacon_list)
 		var/bname = beacon_list[I]["beaconname"]
-		visible_message("b [beacon_list[I]["beaconname"]]")
 		if(cmptext(dname, bname))
 			var/datum/weakref/WR = beacon_list[I]["beacon"]
 			B = WR.resolve()
 			break
 	return B
+
 /obj/machinery/computer/teleporter/proc/set_destination(var/obj/destination)
 	if(get_dist(src, usr) > 1 && !issilicon(usr))
 		return
 
 	if(!destination)
-		visible_message(SPAN_BOLDWARNING("[src] buzzes, \"Destination Invalid.\""))
-		laysound(src.loc, 'sound/machines/buzz.ogg', 50, 0)
+		audible_message(SPAN_BOLDWARNING("[src] buzzes, \"Destination Invalid.\""), hearing_distance = 5)
+		playsound(get_turf(src), 'sound/machines/buzz-sigh.ogg', 50, 0)
 		return
 
 	locked = destination
-	visible_message(SPAN_BOLDNOTICE("[src] chimes, \"Destination Locked.\""))
-	playsound(src.loc, 'sound/machines/ping.ogg', 50, 0)
+	audible_message(SPAN_BOLDNOTICE("[src] chimes, \"Destination Locked.\""), hearing_distance = 5)
+	playsound(get_turf(src), 'sound/machines/ping.ogg', 50, 0)
 
 /obj/machinery/computer/teleporter/verb/set_id(t as text)
 	set category = "Object"

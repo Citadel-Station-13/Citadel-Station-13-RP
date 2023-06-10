@@ -1,5 +1,9 @@
-#define BASE_ITEM_KJ_COST 72000
-#define BASE_MOB_KJ_COST 140000
+#define BASE_ITEM_KJ_COST 6000
+#define BASE_MOB_KJ_COST 72000
+#define KJ_USAGE_SEVERITY_MINOR 72000 //sparks, lights flicker
+#define KJ_USAGE_SEVERITY_MAJOR 100000 //emp, surge across the powernet
+#define KJ_USAGE_SEVERITY_SEVERE 150000 //station power grid shuts down.
+
 
 /obj/machinery/tele_projector
 	name = "projector"
@@ -18,10 +22,9 @@
 	var/engaged = FALSE
 	var/building_terminal = FALSE 		//Suggestions about how to avoid clickspam building several terminals accepted!
 	var/power_capacity = 0
-	var/recharge_capacity = 0
 	var/current_joules = 0
 	var/recharge_rate = 0
-
+	var/precharged = FALSE
 
 /obj/machinery/tele_projector/Initialize(mapload)
 	. = ..()
@@ -30,9 +33,10 @@
 
 	component_parts = list()
 	component_parts += new /obj/item/smes_coil(src)
-	component_parts += new /obj/item/smes_coil(src)
 	update_charge()
-	recharge_rate = recharge_capacity/4
+	recharge_rate = 150
+	if(precharged)
+		current_joules = power_capacity
 
 	return INITIALIZE_HINT_LATELOAD
 
@@ -186,10 +190,8 @@
 
 /obj/machinery/tele_projector/proc/update_charge()
 	power_capacity = 0
-	recharge_capacity = 0
 	for(var/obj/item/smes_coil/S in component_parts)
 		power_capacity += KWH_TO_KJ(S.charge_capacity)
-		recharge_capacity += S.flow_capacity
 	current_joules = clamp(current_joules, 0, power_capacity)
 
 /obj/machinery/tele_projector/proc/consume_charge(var/atom/teleporting)
@@ -221,6 +223,7 @@
 	if(current_joules >= teleport_cost)
 		current_joules -= teleport_cost
 		current_joules = clamp(current_joules, 0, power_capacity)
+		do_consequences(teleport_cost)
 		return TRUE
 	return FALSE
 
@@ -257,3 +260,41 @@
 
 /atom/proc/laserhit(obj/L)
 	return TRUE
+
+/obj/machinery/tele_projector/proc/do_consequences(var/power_amt)
+	var/severity = 0
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
+
+	if(power_amt <= KJ_USAGE_SEVERITY_MINOR)
+		severity = 1
+	if(power_amt >= KJ_USAGE_SEVERITY_MAJOR)
+		severity = 2
+	if(power_amt >= KJ_USAGE_SEVERITY_SEVERE)
+		severity = 3
+	for(var/obj/machinery/light/L in GLOB.machines)
+		if(get_dist(get_turf(L), get_turf(src)) > 5*severity)
+			continue
+		L.flicker(rand(1,3*severity))
+	sparks.set_up(5, 0, src)
+	sparks.attach(loc)
+	sparks.start()
+	playsound(src,'sound/effects/EMPulse.ogg', 50, 0)
+	visible_message("[severity]", range=10)
+	switch(severity)
+		if(1)
+			visible_message(SPAN_WARNING("The lights flicker and many devices freeze and reboot as the teleporter punches a hole through space-time."),range=10)
+		if(2)
+			visible_message(SPAN_WARNING("The local APC forcibly shuts down from overload, the lights breaking, as the teleporter punches a hole through space-time."),range=10)
+			var/obj/machinery/power/apc/P = get_area(src).get_apc()
+			P.energy_fail(rand(30,90))
+			P.overload_lighting(35)
+			for(var/obj/machinery/power/apc/A in P.terminal?.powernet?.nodes)
+				P.overload(src)
+		if(3)
+			visible_message(SPAN_WARNING("The local APC overloads as massive current spike is sent into the powernet as the teleporter punches a hole through space-time; moments later, the station is eerily quiet."),range=10)
+			var/obj/machinery/power/apc/P = get_area(src).get_apc()
+			P.overload_lighting(100)
+			for(var/obj/machinery/power/grid_checker/G in GLOB.machines)
+				if(G.z in GLOB.using_map.station_levels)
+					G.power_failure(FALSE)
+

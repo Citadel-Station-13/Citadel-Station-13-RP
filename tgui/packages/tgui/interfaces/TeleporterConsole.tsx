@@ -1,4 +1,4 @@
-import { Section, Flex, Box, Dropdown, ProgressBar, Slider } from "../components";
+import { Section, Flex, Box, Dropdown, ProgressBar, NumberInput } from "../components";
 import { Window } from "../layouts";
 import { useBackend } from "../backend";
 import { toFixed } from 'common/math';
@@ -10,7 +10,6 @@ interface TeleporterConsoleContext {
   "projector_charge",
   "projector_charge_max",
   "projector_recharge_rate",
-  "projector_recharge_max",
   "valid_destinations",
 }
 
@@ -36,7 +35,6 @@ export const TeleporterConsoleOperational = (props, context) => {
     projector_charge,
     projector_charge_max,
     projector_recharge_rate,
-    projector_recharge_max,
     valid_destinations,
   } = data;
   return (
@@ -61,15 +59,17 @@ export const TeleporterConsoleOperational = (props, context) => {
             {toFixed(projector_charge) + ' kJ'}
           </ProgressBar>
           Recharge Rate
-          <Slider
-            color="teal"
+          <br />
+          <NumberInput
             value={projector_recharge_rate}
-            minValue={0}
-            maxValue={projector_recharge_max}
             unit="kW"
-            suppressFlicker={500}
-            onDrag={(e, value) => act('set_recharge', {
-              target: value })} />
+            width="100px"
+            minValue={0}
+            maxValue={100000}
+            suppressFlicker={250}
+            onChange={(e, value) => act('set_recharge', {
+              target: value,
+            })} />
         </Section>
       </Flex>
     </Section>);
