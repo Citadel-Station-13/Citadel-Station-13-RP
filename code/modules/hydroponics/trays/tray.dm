@@ -592,7 +592,7 @@
 	else if(dead)
 		remove_dead(user)
 
-/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user)
+/obj/machinery/portable_atmospherics/hydroponics/examine(mob/user, dist)
 	. = ..()
 	if(seed)
 		. += "<span class='notice'>[seed.display_name] are growing here.</span>"

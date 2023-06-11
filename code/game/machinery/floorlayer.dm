@@ -70,7 +70,7 @@
 		return
 	..()
 
-/obj/machinery/floorlayer/examine(mob/user)
+/obj/machinery/floorlayer/examine(mob/user, dist)
 	. = ..()
 	var/dismantle = mode["dismantle"]
 	var/laying = mode["laying"]

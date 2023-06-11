@@ -93,7 +93,7 @@
 			else
 				to_chat(user, "<font color='red'>You must hold \the [P] steady to burn \the [src].</font>")
 
-/obj/item/paper_bundle/examine(mob/user)
+/obj/item/paper_bundle/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		src.show_content(user)

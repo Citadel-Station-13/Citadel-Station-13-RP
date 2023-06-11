@@ -69,7 +69,7 @@
 /obj/structure/closet/proc/PopulateContents()
 	return
 
-/obj/structure/closet/examine(mob/user)
+/obj/structure/closet/examine(mob/user, dist)
 	. = ..()
 	if(!opened)
 		var/content_size = 0

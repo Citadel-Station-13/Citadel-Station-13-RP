@@ -31,49 +31,36 @@
 	scribble_spans = data["spans"]
 	photograph_id = data["photo"]
 
-/obj/item/photo
-	var/id
-	var/icon/img	//Big photo image
-	var/scribble	//Scribble on the back.
-	var/icon/tiny
-	var/photo_size = 3
-
-#warn parse all
-
-/obj/item/photo/Initialize(mapload)
-	. = ..()
-	id = photo_count++
-
 /obj/item/photo/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
 	user.examinate(src)
+	return ..()
 
-/obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
-	if(istype(P, /obj/item/pen))
-		var/txt = sanitize(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text, 128)
-		if(loc == user && user.stat == 0)
-			scribble = txt
-	..()
+/obj/item/photo/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	// todo: pen_act?
+	if(istype(I, /obj/item/pen))
+		var/str = input(user, "What would you like to write on the back?", "Scribble", scribble) as text|null
+		str = sanitize(str, MAX_SCRIBBLE_LEN, TRUE, TRUE, 3)
+		scribble = str
+		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
-/obj/item/photo/examine(mob/user)
-	if(in_range(user, src))
+/obj/item/photo/examine(mob/user, dist)
+	. = ..()
+	if(dist <= 1)
 		show(user)
-		return ..()
 	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
+		. += SPAN_NOTICE("It is too far away to look at.")
 
-/obj/item/photo/proc/show(mob/user as mob)
-	user << browse_rsc(img, "tmp_photo_[id].png")
-	user << browse("<html><head><title>[name]</title></head>" \
-		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
-		+ "<img src='tmp_photo_[id].png' width='[64*photo_size]' style='-ms-interpolation-mode:nearest-neighbor' />" \
-		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
-		+ "</body></html>", "window=book;size=[64*photo_size]x[scribble ? 400 : 64*photo_size]")
-	onclose(user, "[name]")
-	return
+/obj/item/photo/proc/show(mob/user)
+	// todo: tgui?
+	var/img_url = SSphotography.url_for_photograph(photograph_id, user.client)
+	var/built = {"<html><head><title>[name]</title></head><body style='overflow:hidden;margin:0;text-align:center'>
+	<img src='[img_url]' style='width:auto;height:100%;-ms-interpolation-mode:nearest-neighbor' />
+	[isnull(scribble)? "" : "<br>Written on the back:<br><i>[scribble]</i>"]
+	</body></html>"}
+	user << browse(built, "window=picture_[rand(1, 1000)];size=480x[scribble? 640 : 480]")
 
+// todo: refactor
 /obj/item/photo/verb/rename()
 	set name = "Rename photo"
 	set category = "Object"
@@ -85,20 +72,13 @@
 		name = "[(n_name ? text("[n_name]") : "photo")]"
 	add_fingerprint(usr)
 	return
-/obj/item/photo/proc/copy(var/copy_id = 0)
-	var/obj/item/photo/p = new/obj/item/photo()
 
-	p.name = name
-	p.icon = icon(icon, icon_state)
-	p.tiny = icon(tiny)
-	p.img = icon(img)
-	p.desc = desc
-	p.pixel_x = pixel_x
-	p.pixel_y = pixel_y
-	p.photo_size = photo_size
-	p.scribble = scribble
-
-	if(copy_id)
-		p.id = id
-
-	return p
+/obj/item/photo/proc/copy(include_markup)
+	var/obj/item/photo/clone = new
+	clone.name = name
+	clone.desc = desc
+	if(include_markup)
+		clone.scribble = scribble
+		clone.scribble_spans = scribble_spans
+	clone.photograph_id = photograph_id
+	return clone

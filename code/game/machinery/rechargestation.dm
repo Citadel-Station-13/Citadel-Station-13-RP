@@ -131,7 +131,7 @@
 				var/charge_used = cell.use(diff)
 				rigcell.give(charge_used)
 
-/obj/machinery/recharge_station/examine(mob/user)
+/obj/machinery/recharge_station/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The charge meter reads: [round(chargepercentage())]%</span>"
 

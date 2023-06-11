@@ -24,6 +24,16 @@ SUBSYSTEM_DEF(photography)
 	return CONFIG_GET(flag/sql_enabled) && CONFIG_GET(flag/picture_persistent)
 
 /**
+ * url image path for a photograph id. fails if we're not persistent-enabled and the image isn't loaded.
+ *
+ * this is the preferred method of fetching a picture that should be stored
+ * as we don't even need to grab (and cache) the datum itself.
+ */
+/datum/controller/subsystem/photography/proc/url_for_photograph(id, list/client/clients)
+	var/datum/photograph/loaded = load_photograph(id)
+	return loaded?.img_src(clients)
+
+/**
  * url image path for a picture hash. fails if we're not persistent-enabled and the image isn't loaded.
  *
  * this is the preferred method of fetching a picture that should be stored
@@ -81,7 +91,7 @@ SUBSYSTEM_DEF(photography)
  */
 /datum/controller/subsystem/photography/proc/resolve_picture(hash)
 	. = picture_cache[hash]
-	if(.)
+	if(. || !is_persistent())
 		return
 	var/datum/picture/loaded = __sql_load_picture(hash)
 	if(isnull(loaded))
@@ -95,8 +105,19 @@ SUBSYSTEM_DEF(photography)
 	usr = null
 	// section below can never be allowed to runtime
 
-
-	#warn impl all
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		{"
+			INSERT INTO [format_table_name("pictures")]
+			(`hash`, `width`, `height`) VALUES
+			(:hash, :width, :height)
+		"},
+		list(
+			"hash" = pic.image_hash,
+			"width" = pic.width,
+			"height" = pic.height,
+		)
+	)
+	query.Execute()
 
 	// resume admin proccall guard
 	usr = __oldusr
@@ -108,13 +129,27 @@ SUBSYSTEM_DEF(photography)
 	usr = null
 	// section below can never be allowed to runtime
 
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		{"
+			SELECT `width`, `height`
+			FROM [format_table_name("pictures")]
+			WHERE `hash` = :hash
+		"},
+		list(
+			"hash" = hash,
+		)
+	)
+	query.Execute()
 
-
-	#warn impl all
+	if(query.NextRow())
+		var/datum/picture/pic = new
+		pic.image_hash = hash
+		pic.width = text2num(query.item[1])
+		pic.height = text2num(query.item[2])
+		. = pic
 
 	// resume admin proccall guard
 	usr = __oldusr
-
 
 /**
  * saves a photograph to disk.
@@ -129,7 +164,7 @@ SUBSYSTEM_DEF(photography)
  */
 /datum/controller/subsystem/photography/proc/load_photograph(id)
 	. = photograph_cache[id]
-	if(.)
+	if(. || !is_persistent())
 		return
 	var/datum/photograph/loaded = __sql_load_photograph(id)
 	if(isnull(loaded))
@@ -143,13 +178,23 @@ SUBSYSTEM_DEF(photography)
 	usr = null
 	// section below can never be allowed to runtime
 
-
-
-	#warn impl all
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		{"
+			INSERT INTO [format_table_name("photographs")]
+			(`picture`, `scene`, `desc`) VALUES
+			(:hash, :scene, :desc)
+		"},
+		list(
+			"hash" = photo.picture_hash,
+			"scene" = photo.scene,
+			"desc" = photo.desc,
+		)
+	)
+	query.Execute()
+	photo.id = query.last_insert_id
 
 	// resume admin proccall guard
 	usr = __oldusr
-
 
 /datum/controller/subsystem/photography/proc/__sql_load_photograph(id)
 	// pause admin proccall guard
@@ -157,9 +202,25 @@ SUBSYSTEM_DEF(photography)
 	usr = null
 	// section below can never be allowed to runtime
 
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		{"
+			SELECT `picture`, `scene`, `desc`
+			FROM [format_table_name("photographs")]
+			WHERE `id` = :id
+		"},
+		list(
+			"id" = id,
+		)
+	)
+	query.Execute()
 
-
-	#warn impl all
+	if(query.NextRow())
+		var/datum/photograph/photo = new
+		photo.id = id
+		photo.picture_hash = query.item[1]
+		photo.scene = query.item[2]
+		photo.desc = query.item[3]
+		. = photo
 
 	// resume admin proccall guard
 	usr = __oldusr

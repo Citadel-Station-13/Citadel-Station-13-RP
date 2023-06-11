@@ -13,7 +13,7 @@
 				copied = 1
 				break
 		if(!copied)
-			master_cam.injectaialbum(borg_photo.copy(1), " (synced from [name])")
+			master_cam.injectaialbum(borg_photo.copy(TRUE), " (synced from [name])")
 			synced = 1
 
 	if(synced)

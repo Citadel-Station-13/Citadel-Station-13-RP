@@ -504,7 +504,7 @@
 		to_chat(usr, "This object does not have a camera.") //Shouldnt ever be visible for helmet cams.
 		return
 
-/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user)
+/obj/item/clothing/accessory/armor/helmetcamera/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "The [camera ? "" : "in"]active."

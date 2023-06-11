@@ -45,7 +45,7 @@
 		access = J.get_access()
 		job_access_type = J
 
-/obj/item/card/id/examine(mob/user)
+/obj/item/card/id/examine(mob/user, dist)
 	var/list/result = dat()
 	result.Insert(1, ..())
 	return result

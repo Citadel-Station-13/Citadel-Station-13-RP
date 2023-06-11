@@ -67,7 +67,7 @@
 				return 0
 	return null
 
-/obj/item/melee/energy/examine(mob/user)
+/obj/item/melee/energy/examine(mob/user, dist)
 	. = ..()
 	if(use_cell)
 		if(bcell)

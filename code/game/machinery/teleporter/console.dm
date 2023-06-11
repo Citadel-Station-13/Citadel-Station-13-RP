@@ -33,7 +33,7 @@
 		pad.com = src
 		pad.setDir(dir)
 
-/obj/machinery/computer/teleporter/examine(mob/user)
+/obj/machinery/computer/teleporter/examine(mob/user, dist)
 	. = ..()
 	if(locked)
 		var/turf/T = get_turf(locked)
