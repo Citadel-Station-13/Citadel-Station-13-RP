@@ -1,103 +1,74 @@
 /obj/item/bluespace_beacon
 	name = "bluespace signal flare"
 	desc = "A miniature cell-powered flare used to provide an adequate signal for teleporters to lock onto. It doesn't look very energy-efficient."
+	#warn icon, state
+
+	/// on
+	var/signal_active = FALSE
+	/// tag
+	var/signal_label = "SIG0"
+	/// our signal
+	var/datum/bluespace_signal/signal
+	/// our transmission power
+	var/signal_power = 10
+	/// conversion rate of watts to power
+	var/signal_cost = 100
+	/// max transmission power
+	var/signal_max = 100
+	/// signal power adjustable?
+	var/signal_adjust = TRUE
+	/// our transimssion boost
+	var/signal_boost_power = 0
+	/// conversion rate of watts to boost power
+	var/signal_boost_cost = 0
+	/// signal boost power adjustable?
+	var/signal_boost_adjust = FALSE
+	/// inherent signal inaccuracy
+	var/signal_inaccuracy = 0
+	/// inherent signal instability
+	var/signal_instability = 0
+	/// can we encrypt our signal?
+	var/signal_encryption = FALSE
+	/// encryption key for signal
+	var/signal_key
+	/// obfuscation factor of effective power if encrypted, against anything that doesn't know the key
+	var/signal_obfuscation = 0.01
+	/// power cell
+	var/obj/item/cell/cell
+	/// starting cell
+	var/cell_type = /obj/item/cell/high
+	/// uses power? if false, we just don't draw power.
+	var/cell_powered = TRUE
+
+#warn impl all
+
+/obj/item/bluespace_beacon/Initialize(mapload)
+	. = ..()
+	if(ispath(cell_type))
+		cell = new cell_type
+	reset_signal()
+
+/obj/item/bluespace_beacon/proc/set_active(active)
+
+/obj/item/bluespace_beacon/proc/set_label(label)
+
+/obj/item/bluespace_beacon/proc/reset_signal()
+
+#warn impl all
+
+/obj/item/bluespace_beacon/proc/draw_power(amount)
+
+/obj/item/bluespace_beacon/process(delta_time)
 	#warn impl
 
-/obj/item/radio/beacon
-	name = "tracking beacon"
-	desc = "A beacon used by a teleporter."
-	icon = 'icons/obj/machines/teleporter.dmi'
-	icon_state = "beacon"
-	item_state = "beacon"
-	base_icon_state = "beacon"
-	var/code = "electronic"
-	var/functioning = TRUE
-	origin_tech = list(TECH_BLUESPACE = 1)
-
-GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
-
-/obj/item/radio/beacon/Initialize(mapload)
+/obj/item/bluespace_beacon/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	. = ..()
-	update_icon()
 
-/obj/item/radio/beacon/update_icon()
-	cut_overlays()
-	if(!functioning)
-		add_overlay("[base_icon_state]_malfunction")
-	else
-		add_overlay("[base_icon_state]_on")
-
-/obj/item/radio/beacon/hear_talk()
-	return
-
-/obj/item/radio/beacon/send_hear()
-	return null
-
-/obj/item/radio/beacon/verb/alter_signal(t as text)
-	set name = "Alter Beacon's Signal"
-	set category = "Object"
-	set src in usr
-
-	if(CHECK_MOBILITY(usr, MOBILITY_CAN_MOVE))
-		src.code = t
-	if(!( src.code ))
-		src.code = "beacon"
-	src.add_fingerprint(usr)
-
-/obj/item/radio/beacon/anchored
-	desc = "A beacon used by a teleporter. This one appears to be bolted to the ground."
-	anchored = TRUE
-	w_class = ITEMSIZE_HUGE
-	//randpixel = 0
-
-	var/repair_fail_chance = 35
-
-
-/obj/item/radio/beacon/anchored/Initialize(mapload)
+/obj/item/bluespace_beacon/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	var/turf/T = get_turf(src)
-	hide(hides_under_flooring() && !T.is_plating())
 
-
-/obj/item/radio/beacon/anchored/attackby(obj/item/I, mob/living/user)
-	..()
-	if(istype(I, /obj/item/stack/nanopaste))
-		var/obj/item/stack/nanopaste/S = I
-		if(b_stat)
-			if(S.use(1))
-				to_chat(user, SPAN_NOTICE("You pour some of \the [S] over \the [src]'s circuitry."))
-				if(prob(repair_fail_chance))
-					flick("[initial(icon_state)]_flickon", src)
-					visible_message(SPAN_WARNING("The [src]'s lights come back on briefly, then die out again."))
-				else
-					visible_message(SPAN_NOTICE("\The [src]'s lights come back on."))
-					functioning = TRUE
-					repair_fail_chance += pick(5, 10, 10, 15)
-					update_icon()
-			else
-				to_chat(user, SPAN_WARNING("There's not enough of \the [S] left to fix \the [src]."))
-		else
-			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
-
-// Probably a better way of doing this, I'm lazy.
-/obj/item/radio/beacon/bacon/proc/digest_delay()
-	spawn(600)
-		qdel(src)
-
-
-/// SINGULO BEACON SPAWNER
-/obj/item/radio/beacon/syndicate
-	name = "suspicious beacon"
-	desc = "A label on it reads: <i>Activate to have a singularity beacon teleported to your location</i>."
-	origin_tech = list(TECH_BLUESPACE = 1, TECH_ILLEGAL = 7)
-
-/obj/item/radio/beacon/syndicate/attack_self(mob/user)
+/obj/item/bluespace_beacon/ui_static_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
-	if(.)
-		return
-	if(user)
-		to_chat(user, SPAN_NOTICE("Locked In"))
-		new /obj/machinery/power/singularity_beacon/syndicate(user.loc)
-		playsound(src, 'sound/effects/pop.ogg', 100, 1, 1)
-		qdel(src)
-	return
+
+/obj/item/bluespace_beacon/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()

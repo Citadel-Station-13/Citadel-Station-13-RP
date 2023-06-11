@@ -17,5 +17,27 @@
 	var/identity
 	/// absolute - ignore any jamming / disruption whatsoever, including admin level protections
 	var/absolute = FALSE
+	/// factor of power decrease if unauthorized, from 1 to 0
+	var/obfuscation = 0.01
+	/// key required to authorize
+	var/encryption
+	/// beacon tag
+	var/label
 
 	#warn impl
+
+/datum/bluespace_signal/New(atom/anchoring)
+	#warn impl
+
+/datum/bluespace_signal/Destroy()
+	#warn impl
+	return ..()
+
+/**
+ * signal metadata
+ */
+/datum/bluespace_signal/proc/signal_data()
+	return list(
+		"label" = label,
+	)
+

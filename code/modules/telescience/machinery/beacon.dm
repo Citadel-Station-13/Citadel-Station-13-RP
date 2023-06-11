@@ -1,3 +1,12 @@
+/obj/machinery/bluespace_beacon
+	#warn name, desc, icon, icon state
+
+	allow_deconstruct = TRUE
+	allow_unanchor = TRUE
+
+	/// our internal, actual beacon. this saves us needing to duplicate code.
+	var/obj/item/bluespace_beacon/beacon
+
 #warn circuit
 
 /obj/machinery/bluespace_beacon
