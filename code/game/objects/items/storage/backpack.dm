@@ -457,12 +457,6 @@
 	icon_state = "civilian_rig"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 
-/obj/item/storage/backpack/invisbag
-	name = "Transparent Torso-slung Storage"
-	desc = "A set of straps and pouches designed to be transparent through a complex holographic design."
-	icon_state = "invisbag"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
-
 /*
 /obj/item/storage/backpack/hardsuit/Initialize(mapload)
 	. = ..()

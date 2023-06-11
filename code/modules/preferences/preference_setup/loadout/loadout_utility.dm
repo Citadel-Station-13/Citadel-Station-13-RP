@@ -230,12 +230,6 @@ modular computers
 	slot = SLOT_ID_BACK
 	cost = 0
 
-/datum/gear/utility/invisbag
-	name = "Transparent Torso-slung Storage (Rename and redesc)"
-	path = /obj/item/storage/backpack/invisbag
-	slot = SLOT_ID_BACK
-	cost = 0
-
 /datum/gear/utility/welding_helmet
 	name = "Welding Helmet"
 	path = /obj/item/clothing/head/welding
