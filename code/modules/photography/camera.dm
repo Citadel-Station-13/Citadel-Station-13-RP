@@ -1,45 +1,5 @@
-/*	Photography!
- *	Contains:
- *		Camera
- *		Camera Film
- *		Photos
- *		Photo Albums
- */
+// todo: refactor everything
 
-/*******
-* film *
-*******/
-/obj/item/camera_film
-	name = "film cartridge"
-	icon = 'icons/obj/items.dmi'
-	desc = "A camera film cartridge. Insert it into a camera to reload it."
-	icon_state = "film"
-	item_state = "camera"
-	w_class = ITEMSIZE_TINY
-
-/**************
-* photo album *
-**************/
-/obj/item/storage/photo_album
-	name = "Photo album"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "album"
-	item_state = "briefcase"
-	can_hold = list(/obj/item/photo)
-
-/obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)
-	if((istype(usr, /mob/living/carbon/human)))
-		if(!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-		playsound(loc, "rustle", 50, 1, -5)
-		if(over_object == usr && in_range(src, usr) || usr.contents.Find(src))
-			if(usr.s_active)
-				usr.s_active.close(usr)
-			show_to(usr)
-
-/*********
-* camera *
-*********/
 /obj/item/camera
 	name = "camera"
 	icon = 'icons/obj/items.dmi'
@@ -80,13 +40,14 @@
 
 /obj/item/camera/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/camera_film))
-		if(pictures_left)
-			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
+		var/obj/item/camera_film/film = I
+		if(pictures_left >= pictures_max)
+			to_chat(user, "<span class='notice'>[src] still has a lot of film in it!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
-		pictures_left = pictures_max
+		pictures_left += film.amount
 		return
 	..()
 
@@ -232,25 +193,6 @@
 	if(!user.get_inactive_held_item())
 		user.put_in_inactive_hand(p)
 
-/obj/item/photo/proc/copy(var/copy_id = 0)
-	var/obj/item/photo/p = new/obj/item/photo()
-
-	p.name = name
-	p.icon = icon(icon, icon_state)
-	p.tiny = icon(tiny)
-	p.img = icon(img)
-	p.desc = desc
-	p.pixel_x = pixel_x
-	p.pixel_y = pixel_y
-	p.photo_size = photo_size
-	p.scribble = scribble
-
-	if(copy_id)
-		p.id = id
-
-	return p
-
 /obj/item/camera/spooky
 	name = "camera obscura"
 	desc = "A polaroid camera, some say it can see ghosts!"
-	//see_ghosts = CAMERA_SEE_GHOSTS_BASIC (We should discuss whether this should exist before I bother coding it.)

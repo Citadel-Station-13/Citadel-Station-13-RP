@@ -13,7 +13,7 @@
 	var/photograph_id
 
 /obj/item/photo/proc/photograph()
-	return SSphotography.resolve_photograph(photograph_id)
+	return SSphotography.load_photograph(photograph_id)
 
 var/global/photo_count = 0
 
@@ -78,3 +78,20 @@ var/global/photo_count = 0
 		name = "[(n_name ? text("[n_name]") : "photo")]"
 	add_fingerprint(usr)
 	return
+/obj/item/photo/proc/copy(var/copy_id = 0)
+	var/obj/item/photo/p = new/obj/item/photo()
+
+	p.name = name
+	p.icon = icon(icon, icon_state)
+	p.tiny = icon(tiny)
+	p.img = icon(img)
+	p.desc = desc
+	p.pixel_x = pixel_x
+	p.pixel_y = pixel_y
+	p.photo_size = photo_size
+	p.scribble = scribble
+
+	if(copy_id)
+		p.id = id
+
+	return p

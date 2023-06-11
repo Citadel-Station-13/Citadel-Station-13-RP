@@ -1,6 +1,5 @@
-/**************
-* AI-specific *
-**************/
+// todo: refactor everything
+
 /obj/item/camera/siliconcam
 	var/in_camera_mode = 0
 	var/photos_taken = 0
