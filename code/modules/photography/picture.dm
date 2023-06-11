@@ -43,10 +43,24 @@
 	image_loaded = FALSE
 	return TRUE
 
-/datum/picture/proc/img_src(list/client/clients)
+/**
+ * sends as icon
+ */
+/datum/picture/proc/rsc_src(list/client/clients)
 	if(!islist(clients))
 		clients = list(clients)
-	#warn impl
+	if(!load())
+		return
+	var/rng_path = "picture_[rand(1, 10000)].png"
+	for(var/client/C as anything in clients)
+		C << browse_rsc(full, rng_path)
+	return rng_path
+
+/**
+ * gets img src
+ */
+/datum/picture/proc/img_src(list/client/clients)
+	return SSphotography.url_for_picture(image_hash, clients)
 
 /datum/picture/proc/icon_full()
 	ASSERT(load())
@@ -55,7 +69,8 @@
 /datum/picture/proc/icon_8x8()
 	if(!isnull(eight_by_eight))
 		return eight_by_eight
-	ASSERT(load())
+	if(!load())
+		return
 	var/icon/scaling = icon(full)
 	scaling.Scale(8, 8)
 	eight_by_eight = scaling
@@ -64,7 +79,8 @@
 /datum/picture/proc/icon_4x4()
 	if(!isnull(four_by_four))
 		return four_by_four
-	ASSERT(load())
+	if(!load())
+		return
 	var/icon/scaling = icon(full)
 	scaling.Scale(4, 4)
 	four_by_four = scaling

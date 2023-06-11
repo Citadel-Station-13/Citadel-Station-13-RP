@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(photography)
 		var/datum/picture/loaded = picture_cache[hash]
 		if(isnull(loaded))
 			return
-		return loaded.img_src(clients)
+		return loaded.rsc_src(clients)
 	var/root = CONFIG_GET(string/picture_webroot)
 	return "[root]/[copytext(hash, 1, 3)]/[hash].png"
 

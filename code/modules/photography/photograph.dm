@@ -4,6 +4,8 @@
  * this is the 'second tier' ontop of pictures for de-duping data
  *
  * third tier is the photo / implementing object itself.
+ *
+ * saving/loading handled in SSphotography; blindly adding variables will NOT save them.
  */
 /datum/photograph
 	/// are we saved? we won't have an ID without being saved. this also determines if we're mutable.
@@ -17,8 +19,6 @@
 	/// description: "you see a photo of [scene]. [description]". do not let players set this.
 	var/desc
 
-#warn impl all
-
 /datum/photograph/proc/mutable_clone()
 	var/datum/photograph/clone = new
 	clone.picture_hash = picture_hash
@@ -28,6 +28,9 @@
 
 /datum/photograph/proc/picture()
 	return SSphotography.resolve_picture(picture_hash)
+
+/datum/photograph/proc/img_src(list/client/clients)
+	return SSphotography.url_for_picture(picture_hash, clients)
 
 /datum/photograph/proc/load()
 	// not much to load

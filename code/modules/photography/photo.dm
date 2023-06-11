@@ -15,7 +15,17 @@
 /obj/item/photo/proc/photograph()
 	return SSphotography.load_photograph(photograph_id)
 
-var/global/photo_count = 0
+/obj/item/photo/serialize()
+	. = ..()
+	data["photo"] = photograph_id
+	data["scribble"] = scribble
+	data["scribble_spans"] = scribble_spans
+
+/obj/item/photo/deserialize(list/data)
+	. = ..()
+	scribble = data["scribble"]
+	scribble_spans = data["spans"]
+	photograph_id = data["photo"]
 
 /obj/item/photo
 	name = "photo"
