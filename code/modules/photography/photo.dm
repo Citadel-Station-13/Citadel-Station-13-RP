@@ -1,3 +1,31 @@
+/**
+ * creates a photo item from:
+ * * an icon
+ * * a photograph datum
+ * * a picture datum
+ */
+/proc/create_photo(atom/where, from_what)
+	var/obj/item/photo/instance = new(where)
+	. = instance
+	if(istype(from_what, /icon))
+		var/datum/photograph/photograph = new
+		var/datum/picture/picture = SSphotography.create_picture(from_what)
+		photograph.picture_hash = picture.image_hash
+		SSphotography.save_photograph(photograph)
+		instance.photograph_id = photograph.id
+	else if(istype(from_what, /datum/photograph))
+		var/datum/photograph/photograph = from_what
+		ASSERT(!isnull(photograph.id))
+		instance.photograph_id = photograph.id
+	else if(istype(from_what, /datum/picture))
+		var/datum/picture/picture = from_what
+		var/datum/photograph/photograph = new
+		photograph.picture_hash = picture.image_hash
+		SSphotography.save_photograph(photograph)
+		instance.photograph_id = photograph.id
+	else
+		CRASH("what?")
+
 /obj/item/photo
 	name = "photo"
 	icon = 'icons/modules/photography/photo.dmi'
@@ -17,7 +45,18 @@
 	var/photograph_id
 
 /obj/item/photo/proc/photograph()
+	RETURN_TYPE(/datum/photograph)
 	return SSphotography.load_photograph(photograph_id)
+
+/obj/item/photo/proc/picture()
+	RETURN_TYPE(/datum/picture)
+	var/datum/photograph/photo = photograph()
+	if(isnull(photo))
+		return
+	return SSphotography.resolve_picture(photo.picture_hash)
+
+/obj/item/photo/proc/full_image()
+	return picture()?.icon_full()
 
 /obj/item/photo/serialize()
 	. = ..()
@@ -53,12 +92,18 @@
 
 /obj/item/photo/proc/show(mob/user)
 	// todo: tgui?
-	var/img_url = SSphotography.url_for_photograph(photograph_id, user.client)
-	var/built = {"<html><head><title>[name]</title></head><body style='overflow:hidden;margin:0;text-align:center'>
-	<img src='[img_url]' style='width:auto;height:100%;-ms-interpolation-mode:nearest-neighbor' />
-	[isnull(scribble)? "" : "<br>Written on the back:<br><i>[scribble]</i>"]
+	var/built = {"<html><head><title>[name]</title></head><body style='overflow:hidden;margin:0;'>
+	[html()]
 	</body></html>"}
 	user << browse(built, "window=picture_[rand(1, 1000)];size=480x[scribble? 640 : 480]")
+
+/obj/item/photo/proc/html()
+	var/img_url = SSphotography.url_for_photograph(photograph_id, user.client)
+	var/built = {"<div style='margin:0;text-align:center;'>
+	<img src='[img_url]' style='width:auto;height:100%;-ms-interpolation-mode:nearest-neighbor' />
+	[isnull(scribble)? "" : "<br>Written on the back:<br><i>[scribble]</i>"]
+	</div>"}
+	return built
 
 // todo: refactor
 /obj/item/photo/verb/rename()
@@ -73,8 +118,8 @@
 	add_fingerprint(usr)
 	return
 
-/obj/item/photo/proc/copy(include_markup)
-	var/obj/item/photo/clone = new
+/obj/item/photo/proc/copy(include_markup, atom/where)
+	var/obj/item/photo/clone = new(where)
 	clone.name = name
 	clone.desc = desc
 	if(include_markup)

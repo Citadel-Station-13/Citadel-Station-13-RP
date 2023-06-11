@@ -18,8 +18,6 @@ SUBSYSTEM_DEF(photography)
 // todo: our config system is awful and needs a proper cache..
 // todo: cache eviction
 
-#warn impl all
-
 /datum/controller/subsystem/photography/proc/is_persistent()
 	return CONFIG_GET(flag/sql_enabled) && CONFIG_GET(flag/picture_persistent)
 
@@ -69,20 +67,27 @@ SUBSYSTEM_DEF(photography)
 	var/hash = sha1asfile(I)
 	ASSERT(length(hash))
 	picture.image_hash = hash
+	// cache - load existing if exists to de-dupe
+	__sql_load_picture(picture.image_hash)
+	if(picture_cache[picture.image_hash])
+		// return existing copy if already exists
+		return picture_cache[picture.image_hash]
 	picture.width = I.Width()
 	picture.height = I.Height()
-	// cache
 	picture_cache[picture.image_hash] = picture
 	// sql + storage enabled?
 	if(!is_persistent())
 		// nope; bail
 		return
 	// store
-	#warn store to file
+	// todo: did we really need to fcopy twice to hash and then copy? probably, but that seems wild.
+	fcopy(picture.full, path_for_picture(hash))
 	__sql_save_picture(picture)
 	picture.image_saved = TRUE
 	// unload to conserve memory
 	picture.unload()
+	// return instance
+	return picture
 
 /**
  * resolves a /datum/picture from a hash
