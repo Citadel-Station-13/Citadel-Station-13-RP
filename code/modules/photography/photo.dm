@@ -39,7 +39,7 @@
 	// todo: pen_act?
 	if(istype(I, /obj/item/pen))
 		var/str = input(user, "What would you like to write on the back?", "Scribble", scribble) as text|null
-		str = sanitize(str, MAX_SCRIBBLE_LEN, TRUE, TRUE, 3)
+		str = sanitize(str, MAX_SCRIBBLE_LEN)
 		scribble = str
 		return CLICKCHAIN_DID_SOMETHING | CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
@@ -66,7 +66,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = sanitizeSafe(input(usr, "What would you like to label the photo?", "Photo Labelling", null)  as text, MAX_NAME_LEN)
+	var/n_name = sanitizeSafe(input(usr, "What would you like to label the photo?", "Photo Labelling", null) as text, MAX_NAME_LEN)
 	//loc.loc check is for making possible renaming photos in clipboards
 	if(( (loc == usr || (loc.loc && loc.loc == usr)) && usr.stat == 0))
 		name = "[(n_name ? text("[n_name]") : "photo")]"
