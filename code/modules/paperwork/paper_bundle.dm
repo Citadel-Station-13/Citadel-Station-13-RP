@@ -130,7 +130,7 @@
 		user << browse(dat, "window=[name]")
 	else if(istype(pages[page], /obj/item/photo))
 		var/obj/item/photo/P = W
-		dat += P.html()
+		dat += P.html(user)
 		user << browse(dat, "window=[name]")
 
 /obj/item/paper_bundle/attack_self(mob/user)

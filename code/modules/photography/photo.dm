@@ -97,7 +97,7 @@
 	</body></html>"}
 	user << browse(built, "window=picture_[rand(1, 1000)];size=480x[scribble? 640 : 480]")
 
-/obj/item/photo/proc/html()
+/obj/item/photo/proc/html(mob/user)
 	var/img_url = SSphotography.url_for_photograph(photograph_id, user.client)
 	var/built = {"<div style='margin:0;text-align:center;'>
 	<img src='[img_url]' style='width:auto;height:100%;-ms-interpolation-mode:nearest-neighbor' />
