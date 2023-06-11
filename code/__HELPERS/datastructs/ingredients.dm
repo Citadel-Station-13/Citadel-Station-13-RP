@@ -36,7 +36,7 @@
 	for(var/obj/item/I as anything in items)
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
-			if(istype(i, /obj/item/stack/material))
+			if(istype(I, /obj/item/stack/material))
 				var/obj/item/stack/material/M = S
 				var/mat_id = M.material.id
 				if(materials[mat_id])
@@ -89,7 +89,7 @@
 	for(var/obj/item/I as anything in items)
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/S = I
-			if(istype(i, /obj/item/stack/material))
+			if(istype(I, /obj/item/stack/material))
 				var/obj/item/stack/material/M = S
 				var/mat_id = M.material.id
 				if(materials[mat_id])
