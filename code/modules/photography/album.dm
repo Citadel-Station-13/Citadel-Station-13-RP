@@ -2,9 +2,11 @@
 
 /obj/item/storage/photo_album
 	name = "Photo album"
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/modules/photography/album.dmi'
 	icon_state = "album"
-	item_state = "briefcase"
+	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
+	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
+	inhand_state = "briefcase"
 	can_hold = list(/obj/item/photo)
 
 /obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)

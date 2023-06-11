@@ -1,6 +1,10 @@
 /obj/item/photo
 	name = "photo"
-	#warn icon/state
+	icon = 'icons/modules/photography/photo.dmi'
+	icon_state = "photo"
+	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT
+	inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
+	inhand_state = "paper"
 	w_class = ITEMSIZE_TINY
 	drop_sound = 'sound/items/drop/paper.ogg'
 	pickup_sound = 'sound/items/pickup/paper.ogg'
@@ -17,9 +21,9 @@
 
 /obj/item/photo/serialize()
 	. = ..()
-	data["photo"] = photograph_id
-	data["scribble"] = scribble
-	data["scribble_spans"] = scribble_spans
+	.["photo"] = photograph_id
+	.["scribble"] = scribble
+	.["spans"] = scribble_spans
 
 /obj/item/photo/deserialize(list/data)
 	. = ..()
@@ -28,13 +32,6 @@
 	photograph_id = data["photo"]
 
 /obj/item/photo
-	name = "photo"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "photo"
-	item_state = "paper"
-	w_class = ITEMSIZE_SMALL
-	drop_sound = 'sound/items/drop/paper.ogg'
-	pickup_sound = 'sound/items/pickup/paper.ogg'
 	var/id
 	var/icon/img	//Big photo image
 	var/scribble	//Scribble on the back.

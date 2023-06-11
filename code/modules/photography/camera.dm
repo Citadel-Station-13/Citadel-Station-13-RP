@@ -2,10 +2,11 @@
 
 /obj/item/camera
 	name = "camera"
-	icon = 'icons/obj/items.dmi'
-	desc = "A polaroid camera. 10 photos left."
+	icon = 'icons/modules/photography/camera.dmi'
 	icon_state = "camera"
-	item_state = "camera"
+	worn_state = "camera"
+	worn_render_flags = NONE
+	desc = "A polaroid camera. 10 photos left."
 	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
