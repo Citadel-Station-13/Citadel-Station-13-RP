@@ -41,6 +41,7 @@
 	var/list/items_of_interest = list()
 	var/list/ghosts = list()
 	var/list/misc = list()
+	var/list/npcs = list()
 
 	for(var/name in sortmobs())
 		var/list/serialized = list()
@@ -57,14 +58,19 @@
 			ghosts += list(serialized)
 		else if(issimple(M))
 			simplemobs += list(serialized)
-		else if(ishuman(M) && M.ckey)
-			players += list(serialized)
+		else if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(H.ai_holder || !H.mobility_flags)
+				npcs += list(serialized)
+			else
+				players += list(serialized)
 
 	data["players"] = players
 	data["simplemobs"] = simplemobs
 	data["items_of_interest"] = items_of_interest
 	data["ghosts"] = ghosts
 	data["misc"] = misc
+	data["npcs"] = npcs
 
 	return data
 
