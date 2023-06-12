@@ -141,6 +141,8 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 	for(var/diff_gasses in env.gas)
 		if(ispath(diff_gasses, /datum/gas/helium))
 			helium = env.gas[diff_gasses]
+		else if(ispath(diff_gasses, /datum/gas/vimur))
+			helium = env.gas[diff_gasses]
 		else
 			non_helium += env.gas[diff_gasses]
 	return helium > non_helium
