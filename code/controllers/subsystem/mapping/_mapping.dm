@@ -107,13 +107,3 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shelter/S = new shelter_type()
 
 		shelter_templates[S.shelter_id] = S
-
-// todo: admin subsystems panel
-// admin tooling below
-
-/client/proc/change_next_map()
-	set name = "Change Map"
-	set desc = "Change the next map."
-	set category = "Server"
-
-	#warn impl

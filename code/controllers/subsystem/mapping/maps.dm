@@ -142,3 +142,13 @@
 	// load
 	load_map(instance)
 	return TRUE
+
+// todo: admin subsystems panel
+// admin tooling for map swapping below
+
+/client/proc/change_next_map()
+	set name = "Change Map"
+	set desc = "Change the next map."
+	set category = "Server"
+
+	#warn impl

@@ -87,7 +87,6 @@
 	var/model_cache_is_no_changeturf
 	/// parse successful?
 	var/tmp/parsed = FALSE
-	#warn hook
 	/// parsed width - this is subject to cropping!
 	var/tmp/width
 	/// parsed height - this is subject to cropping!
@@ -277,8 +276,6 @@
  */
 /datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH)
 
-#warn above comment, below
-
 	var/static/loading = FALSE
 	UNTIL(!loading)
 	loading = TRUE
@@ -302,7 +299,7 @@
 	var/invert_x = orientation.invert_x
 	var/swap_xy = orientation.swap_xy
 	var/xi = orientation.xi
-	var/yi = modorientatione.yi
+	var/yi = orientation.yi
 	var/turn_angle = round(SIMPLIFY_DEGREES(orientation.turn_angle), 90)
 	var/delta_swap = x - y
 
@@ -360,7 +357,7 @@
 					var/list/cache = model_cache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
-					build_coordinate(area_cache, cache, locate(placement_x, placement_y, load_z), no_afterchange, place_on_top, turn_angle, swap_xy, invert_y, invert_x)
+					build_coordinate(area_cache, cache, locate(placement_x, placement_y, load_z), no_changeturf, place_on_top, turn_angle, swap_xy, invert_y, invert_x)
 
 					// only bother with bounds that actually exist
 					loaded_bounds[MAP_MINX] = min(loaded_bounds[MAP_MINX], placement_x)
