@@ -10,7 +10,7 @@
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls/natural.dmi'
-	icon_state = "wall"
+	icon_state = "preview"
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_CUSTOM
 	initial_gas_mix = GAS_STRING_VACUUM

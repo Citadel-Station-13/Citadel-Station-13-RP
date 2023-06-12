@@ -6,7 +6,9 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	/obj/structure/window/basic/full,
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/machinery/door/airlock,
-	/obj/structure/grille
+	/obj/structure/grille,
+	/obj/structure/table,
+	/obj/machinery/smartfridge
 	))
 
 /obj/structure/wall_frame
@@ -35,6 +37,10 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	var/health
 	var/max_health
 	var/applies_material_colour = TRUE
+
+/obj/structure/wall_frame/prepainted
+	paint_color = COLOR_WALL_GUNMETAL
+	stripe_color = COLOR_WALL_GUNMETAL
 
 /obj/structure/wall_frame/Initialize(mapload, material_key)
 	. = ..()

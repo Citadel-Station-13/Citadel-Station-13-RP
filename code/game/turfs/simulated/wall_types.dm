@@ -1,7 +1,7 @@
 /turf/simulated/wall/r_wall
 	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "rgeneric"
-	color = null
+	icon_state = "reinforced_solid"
+	color = "#666666"
 	rad_insulation = RAD_INSULATION_SUPER
 
 	material        = /datum/material/plasteel
@@ -16,7 +16,6 @@
 	girder_material = /datum/material/steel/hull
 
 /turf/simulated/wall/rshull
-	icon = 'icons/turf/walls/hull.dmi'
 	color = "#666677"
 	material        = /datum/material/steel/hull
 	reinf_material  = /datum/material/steel/hull
@@ -436,3 +435,88 @@
 		var/image/I = image(icon = src.icon, icon_state = "o_[icon_state]")
 		I.color = stripe_color
 		add_overlay(I)
+
+/turf/simulated/wall/r_wall/prepainted
+	color = COLOR_WALL_GUNMETAL
+	paint_color = COLOR_WALL_GUNMETAL
+	icon_state = "reinforced_solid"
+
+/turf/simulated/wall/r_wall/prepainted/command
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_COMMAND_BLUE
+	color = COLOR_COMMAND_BLUE
+
+/turf/simulated/wall/r_wall/prepainted/security
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_MAROON
+	color = COLOR_MAROON
+
+/turf/simulated/wall/r_wall/prepainted/medical
+	paint_color = COLOR_OFF_WHITE
+	stripe_color = COLOR_BABY_BLUE
+	color = COLOR_BABY_BLUE
+
+/turf/simulated/wall/r_wall/prepainted/engineering
+	paint_color = null
+	stripe_color = COLOR_SUN
+	color = COLOR_SUN
+
+/turf/simulated/wall/r_wall/prepainted/civilian
+	paint_color = COLOR_EGGSHELL
+	stripe_color = COLOR_PALE_BTL_GREEN
+	color = COLOR_PALE_BTL_GREEN
+
+/turf/simulated/wall/r_wall/prepainted/exploration
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_EXPLO_VIOLET
+	color = COLOR_EXPLO_VIOLET
+
+/turf/simulated/wall/r_wall/prepainted/science
+	paint_color = COLOR_OFF_WHITE
+	stripe_color = COLOR_PURPLE_GRAY
+	color = COLOR_PURPLE_GRAY
+
+/turf/simulated/wall/prepainted
+	paint_color = COLOR_WALL_GUNMETAL
+	color = COLOR_WALL_GUNMETAL
+	icon_state = "solid"
+
+/turf/simulated/wall/prepainted/command
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_COMMAND_BLUE
+	color = COLOR_COMMAND_BLUE
+
+/turf/simulated/wall/prepainted/command/alt
+	paint_color = COLOR_GRAY15
+	stripe_color = COLOR_GOLD
+	color = COLOR_GOLD
+
+/turf/simulated/wall/prepainted/security
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_MAROON
+	color = COLOR_MAROON
+
+/turf/simulated/wall/prepainted/medical
+	paint_color = COLOR_OFF_WHITE
+	stripe_color = COLOR_BABY_BLUE
+	color = COLOR_BABY_BLUE
+
+/turf/simulated/wall/prepainted/engineering
+	paint_color = null
+	stripe_color = COLOR_SUN
+	color = COLOR_SUN
+
+/turf/simulated/wall/prepainted/civilian
+	paint_color = COLOR_EGGSHELL
+	stripe_color = COLOR_PALE_BTL_GREEN
+	color = COLOR_PALE_BTL_GREEN
+
+/turf/simulated/wall/prepainted/exploration
+	paint_color = COLOR_GRAY20
+	stripe_color = COLOR_EXPLO_VIOLET
+	color = COLOR_EXPLO_VIOLET
+
+/turf/simulated/wall/prepainted/science
+	paint_color = COLOR_OFF_WHITE
+	stripe_color = COLOR_PURPLE_GRAY
+	color = COLOR_PURPLE_GRAY

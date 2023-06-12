@@ -7,7 +7,7 @@
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/walls/_previews.dmi'
-	icon_state = "generic"
+	icon_state = "solid"
 	base_icon_state = "wall"
 	color = "#666666"
 
@@ -86,6 +86,7 @@
 		START_PROCESSING(SSturfs, src)
 
 	stripe_icon = material.wall_stripe_icon
+	update_overlays()
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)

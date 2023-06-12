@@ -17,7 +17,7 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_sec
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_NT_RED
+	door_color = COLOR_MAROON
 
 /obj/machinery/door/airlock/engineering
 	name = "Engineering Airlock"
@@ -100,7 +100,7 @@
 	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
 	emag_file = 'icons/obj/doors/external/emag.dmi'
-	door_color = COLOR_NT_RED
+	door_color = COLOR_MAROON
 
 /obj/machinery/door/airlock/external/glass/bolted
 	window_color = GLASS_COLOR
@@ -131,7 +131,7 @@
 	req_one_access = list(ACCESS_ENGINEERING_AIRLOCK)
 	open_sound_powered = 'sound/machines/door/space1o.ogg'
 	close_sound_powered = 'sound/machines/door/space1c.ogg'
-	door_color = COLOR_NT_RED
+	door_color = COLOR_MAROON
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass
@@ -287,7 +287,7 @@
 	req_one_access = list(ACCESS_SECURITY_EQUIPMENT)
 	open_sound_powered = 'sound/machines/door/sec1o.ogg'
 	close_sound_powered = 'sound/machines/door/sec1c.ogg'
-	door_color = COLOR_NT_RED
+	door_color = COLOR_MAROON
 	window_color = GLASS_COLOR
 
 /obj/machinery/door/airlock/glass_medical
@@ -517,3 +517,21 @@
 		return FALSE
 
 	return ..(user)
+
+/obj/machinery/door/airlock/multi_tile/glass/civilian
+	glass = TRUE
+	door_color = COLOR_EGGSHELL
+	stripe_color = COLOR_PALE_BTL_GREEN
+	window_color = GLASS_COLOR
+
+/obj/machinery/door/airlock/multi_tile/glass/exploration
+	glass = TRUE
+	door_color = COLOR_GRAY20
+	stripe_color = COLOR_EXPLO_VIOLET
+	window_color = GLASS_COLOR
+
+/obj/machinery/door/airlock/glass/exploration
+	glass = TRUE
+	door_color = COLOR_GRAY20
+	stripe_color = COLOR_EXPLO_VIOLET
+	window_color = GLASS_COLOR

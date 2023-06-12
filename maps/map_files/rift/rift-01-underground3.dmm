@@ -131,7 +131,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "hH" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/quartermaster/mining_airlock)
 "hN" = (
 /obj/structure/sign/mining{
@@ -171,7 +171,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "jJ" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/quartermaster/mining_airlock)
 "jV" = (
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -267,7 +267,7 @@
 /area/rift/surfacebase/underground/under1)
 "pd" = (
 /obj/structure/sign/warning/radioactive,
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "pj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -435,7 +435,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "xo" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/engineering/engine_room)
 "xs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -445,7 +445,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/quartermaster/mining_airlock)
 "xK" = (
-/turf/simulated/wall/r_wall,
+/turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "yh" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -473,7 +473,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "yX" = (
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/rift/surfacebase/underground/under1)
 "zx" = (
 /obj/structure/sign/warning/bomb_range{
@@ -717,7 +717,7 @@
 /area/quartermaster/mining_airlock)
 "QE" = (
 /obj/structure/sign/mining,
-/turf/simulated/wall,
+/turf/simulated/wall/prepainted,
 /area/quartermaster/mining_airlock)
 "Ro" = (
 /turf/unsimulated/wall/planetary/lythios43c{

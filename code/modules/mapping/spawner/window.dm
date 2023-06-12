@@ -14,7 +14,7 @@
 	/// pane path
 	var/window_pane_path = /obj/structure/window/basic
 	/// low wall path
-	var/low_wall_path = /obj/structure/wall_frame
+	var/low_wall_path = /obj/structure/wall_frame/prepainted
 	/// found dirs
 	var/found_dirs = NONE
 	/// spawn firedoors? fulltile and non-hidden only for now

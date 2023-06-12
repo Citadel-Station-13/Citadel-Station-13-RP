@@ -16,6 +16,8 @@
 	deny_file = 'icons/obj/doors/double/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/double/lights_green.dmi'
 	emag_file = 'icons/obj/doors/double/emag.dmi'
+	stripe_file = 'icons/obj/doors/double/stripe.dmi'
+	stripe_fill_file = 'icons/obj/doors/double/fill_stripe.dmi'
 
 /obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()

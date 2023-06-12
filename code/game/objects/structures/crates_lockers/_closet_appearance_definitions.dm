@@ -266,8 +266,8 @@
 		"lower_side_vent"
 	)
 	extra_decals = list(
-		"stripe_vertical_right_partial" = COLOR_NT_RED,
-		"stripe_vertical_left_partial" = COLOR_NT_RED,
+		"stripe_vertical_right_partial" = COLOR_MAROON,
+		"stripe_vertical_left_partial" = COLOR_MAROON,
 		"eng" = COLOR_BEASTY_BROWN
 	)
 
@@ -334,9 +334,9 @@
 
 /singleton/closet_appearance/secure_closet/mining/sec
 	decals = list(
-		"stripe_vertical_mid_partial" = COLOR_NT_RED,
-		"stripe_vertical_left_partial" = COLOR_NT_RED,
-		"mining" = COLOR_NT_RED
+		"stripe_vertical_mid_partial" = COLOR_MAROON,
+		"stripe_vertical_left_partial" = COLOR_MAROON,
+		"mining" = COLOR_MAROON
 	)
 
 /singleton/closet_appearance/secure_closet/command
@@ -432,7 +432,7 @@
 	)
 
 /singleton/closet_appearance/secure_closet/security
-	color = COLOR_NT_RED
+	color = COLOR_MAROON
 	decals = list(
 		"lower_holes"
 	)
@@ -447,7 +447,7 @@
 		"lower_holes"
 	)
 	extra_decals = list(
-		"stripe_vertical_mid_full" = COLOR_NT_RED,
+		"stripe_vertical_mid_full" = COLOR_MAROON,
 		"security" = COLOR_WARM_YELLOW
 	)
 
@@ -625,7 +625,7 @@
 
 /singleton/closet_appearance/crate/medical/trauma
 	decals = list(
-		"crate_stripe" = COLOR_NT_RED,
+		"crate_stripe" = COLOR_MAROON,
 		"crate_cross" = COLOR_OFF_WHITE
 	)
 
@@ -652,13 +652,13 @@
 	extra_decals = list(
 		"crate_radiation_left" = COLOR_WARM_YELLOW,
 		"crate_radiation_right" = COLOR_WARM_YELLOW,
-		"lid_stripes" = COLOR_NT_RED
+		"lid_stripes" = COLOR_MAROON
 	)
 
 /singleton/closet_appearance/crate/engineering
 	color = COLOR_BROWN_ORANGE
 	extra_decals = list(
-		"lid_stripes" = COLOR_NT_RED
+		"lid_stripes" = COLOR_MAROON
 	)
 
 /singleton/closet_appearance/crate/freezer
@@ -680,11 +680,11 @@
 /singleton/closet_appearance/crate/secure/engineering
 	color = COLOR_BROWN_ORANGE
 	extra_decals = list(
-		"lid_stripes" = COLOR_NT_RED
+		"lid_stripes" = COLOR_MAROON
 	)
 
 /singleton/closet_appearance/crate/secure/hazard
-	color = COLOR_NT_RED
+	color = COLOR_MAROON
 	decals = list(
 		"crate_bracing"
 	)
@@ -884,7 +884,7 @@
 	can_lock = TRUE
 
 /singleton/closet_appearance/large_crate/secure/hazard
-	color = COLOR_NT_RED
+	color = COLOR_MAROON
 	decals = list(
 		"crate_bracing"
 	 )
@@ -932,7 +932,7 @@
 	decals = list(
 		"fire"
 	)
-	color = COLOR_NT_RED
+	color = COLOR_MAROON
 
 /singleton/closet_appearance/wall/medical
 	decals = null
@@ -952,7 +952,7 @@
 	)
 
 /singleton/closet_appearance/wall/hydrant
-	color = COLOR_NT_RED
+	color = COLOR_MAROON
 	decals = null
 	extra_decals = list(
 		"stripes" = COLOR_OFF_WHITE,
@@ -967,7 +967,7 @@
 	decals = null
 	extra_decals = null
 
-/singleton/closet_appearance/cart/secure 
+/singleton/closet_appearance/cart/secure
 	can_lock = TRUE
 
 /singleton/closet_appearance/cart/trash

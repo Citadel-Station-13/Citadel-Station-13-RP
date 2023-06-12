@@ -57,7 +57,7 @@
 /obj/item/radio/intercom/department/security
 	name = "station intercom (Security)"
 	frequency = SEC_I_FREQ
-	overlay_color = COLOR_NT_RED
+	overlay_color = COLOR_MAROON
 
 /obj/item/radio/intercom/entertainment
 	name = "entertainment intercom"
