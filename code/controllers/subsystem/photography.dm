@@ -10,6 +10,7 @@
  * non-persistent mode and delivering pictures with browse_rsc() instead of links.
  */
 SUBSYSTEM_DEF(photography)
+	name = "Photography"
 	init_order = INIT_ORDER_PHOTOGRAPHY
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 	/// pictures loaded by hash as text
@@ -80,7 +81,7 @@ SUBSYSTEM_DEF(photography)
 	// sql + storage enabled?
 	if(!is_persistent())
 		// nope; bail
-		return
+		return picture
 	// store
 	// todo: did we really need to fcopy twice to hash and then copy? probably, but that seems wild.
 	fcopy(picture.full, path_for_picture(hash))
@@ -164,7 +165,14 @@ SUBSYSTEM_DEF(photography)
  * photograph is immutable after.
  */
 /datum/controller/subsystem/photography/proc/save_photograph(datum/photograph/photograph)
-	__sql_save_photograph(photograph)
+	if(!is_persistent())
+		// just assign it a temporary id; if it collides we don't really care we did our best
+		var/static/temporary_id_next = 0
+		photograph.id = "[GLOB.round_id]_[num2text(temporary_id_next++, 99999999)]"
+	else
+		__sql_save_photograph(photograph)
+	photograph_cache[photograph.id] = photograph
+	return photograph
 
 /**
  * loads a photograph datum based on id

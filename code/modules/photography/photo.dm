@@ -105,7 +105,7 @@
 /obj/item/photo/proc/show(mob/user)
 	// todo: tgui?
 	var/built = {"<html><head><title>[name]</title></head><body style='overflow:hidden;margin:0;'>
-	[html()]
+	[html(user)]
 	</body></html>"}
 	user << browse(built, "window=picture_[rand(1, 1000)];size=480x[scribble? 640 : 480]")
 
