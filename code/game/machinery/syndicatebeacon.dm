@@ -83,6 +83,9 @@
 	var/icontype = "beacon"
 
 /obj/machinery/power/singularity_beacon/proc/Activate(mob/user = null)
+	if(isnull(connection.network))
+		user.action_feedback(SPAN_WARNING("[src] needs to be connected to a power network."), src)
+		return
 	if(surplus() < 1.5)
 		if(user)
 			to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
@@ -122,16 +125,12 @@
 			return
 
 		if(anchored)
-			anchored = 0
+			set_anchored(FALSE)
 			to_chat(user, "<span class='notice'>You unscrew the beacon from the floor.</span>")
 			playsound(src, W.tool_sound, 50, 1)
-			disconnect_from_network()
 			return
 		else
-			if(!connect_to_network())
-				to_chat(user, "This device must be placed over an exposed cable.")
-				return
-			anchored = 1
+			set_anchored(TRUE)
 			to_chat(user, "<span class='notice'>You screw the beacon to the floor and attach the cable.</span>")
 			playsound(src, W.tool_sound, 50, 1)
 			return

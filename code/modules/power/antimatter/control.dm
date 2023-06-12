@@ -56,7 +56,7 @@
 		//Angry buzz or such here
 		return
 
-	add_avail(stored_power * 0.001)
+	supply(stored_power * 0.001)
 
 	power_cycle++
 	if(power_cycle >= power_cycle_delay)
@@ -144,15 +144,13 @@
 			user.visible_message("[user.name] secures the [src.name] to the floor.", \
 				"You secure the anchor bolts to the floor.", \
 				"You hear a ratchet.")
-			src.anchored = 1
-			connect_to_network()
+			set_anchored(TRUE)
 		else if(!linked_shielding.len > 0)
 			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] unsecures the [src.name].", \
 				"You remove the anchor bolts.", \
 				"You hear a ratchet.")
-			src.anchored = 0
-			disconnect_from_network()
+			set_anchored(FALSE)
 		else
 			to_chat(user, "<font color='red'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</font>")
 		return

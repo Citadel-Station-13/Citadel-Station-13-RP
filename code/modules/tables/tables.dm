@@ -11,7 +11,7 @@ var/list/table_icon_cache = list()
 	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
-	connections = list("nw0", "ne0", "sw0", "se0")
+	legacy_connections = list("nw0", "ne0", "sw0", "se0")
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_TABLES)
@@ -366,24 +366,24 @@ var/list/table_icon_cache = list()
 
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
-			var/image/I = get_table_image(icon, connections[i], 1<<(i-1))
+			var/image/I = get_table_image(icon, legacy_connections[i], 1<<(i-1))
 			overlays_to_add += I
 
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.table_icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
+				var/image/I = get_table_image(icon, "[material.table_icon_base]_[legacy_connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
 				overlays_to_add += I
 
 		// Reinforcements
 		if(reinforced)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[reinforced.table_reinf_icon_base]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
+				var/image/I = get_table_image(icon, "[reinforced.table_reinf_icon_base]_[legacy_connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
 				overlays_to_add += I
 
 		if(carpeted)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "carpet_[connections[i]]", 1<<(i-1))
+				var/image/I = get_table_image(icon, "carpet_[legacy_connections[i]]", 1<<(i-1))
 				overlays_to_add += I
 	else
 		var/type = 0
@@ -425,7 +425,7 @@ var/list/table_icon_cache = list()
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/update_connections(propagate=0)
 	if(!material)
-		connections = list("0", "0", "0", "0")
+		legacy_connections = list("0", "0", "0", "0")
 		if(propagate)
 			for(var/obj/structure/table/T in orange(src, 1))
 				T.update_connections()
@@ -435,7 +435,7 @@ var/list/table_icon_cache = list()
 	var/list/blocked_dirs = list()
 	for(var/obj/structure/window/W in get_turf(src))
 		if(W.fulltile)
-			connections = list("0", "0", "0", "0")
+			legacy_connections = list("0", "0", "0", "0")
 			return
 		blocked_dirs |= W.dir
 
@@ -476,7 +476,7 @@ var/list/table_icon_cache = list()
 				T.update_connections()
 				T.update_icon()
 
-	connections = dirs_to_corner_states(connection_dirs)
+	legacy_connections = dirs_to_corner_states(connection_dirs)
 
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1

@@ -168,7 +168,7 @@
 /obj/effect/make_sonar_image(resolution)
 	return
 
-/obj/structure/cable/make_sonar_image(resolution)
+/obj/structure/wire/cable/make_sonar_image(resolution)
 	return
 
 /atom/movable/lighting_overlay/make_sonar_image(resolution)

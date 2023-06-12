@@ -11,8 +11,8 @@
 	var/breakable
 	var/list/climbers = list()
 
-	var/list/connections
-	var/list/other_connections
+	var/list/legacy_connections
+	var/list/legacy_other_connections
 	var/list/blend_objects = newlist() // Objects which to blend with
 	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
 
@@ -229,8 +229,8 @@
 				dirs += get_dir(src, S)
 
 	if(!can_visually_connect())
-		connections = list("0", "0", "0", "0")
-		other_connections = list("0", "0", "0", "0")
+		legacy_connections = list("0", "0", "0", "0")
+		legacy_other_connections = list("0", "0", "0", "0")
 		return FALSE
 
 	for(var/direction in GLOB.cardinal)
@@ -267,8 +267,8 @@
 
 	refresh_neighbors()
 
-	connections = dirs_to_corner_states(dirs)
-	other_connections = dirs_to_corner_states(other_dirs)
+	legacy_connections = dirs_to_corner_states(dirs)
+	legacy_other_connections = dirs_to_corner_states(other_dirs)
 	return TRUE
 
 /obj/structure/proc/refresh_neighbors()

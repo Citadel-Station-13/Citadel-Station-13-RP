@@ -57,7 +57,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/poison_per_bite = 5 //grubs cause a shock when they bite someone
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
-	var/datum/powernet/PN            // Our powernet
+	var/datum/wirenet/power/PN            // Our powernet
 	var/obj/structure/wire/cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 
@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 		// fuck you
 		if(prob(1) && charge >= 32000 && can_evolve == 1) // CitRP: We can quote this out and see what happens; && moth_amount <= 1) //it's reading from the moth_amount global list to determine if it can evolve. There should only ever be a maxcap of 1 existing solar moth alive at any time. TODO: make the code decrease the list after 1 has spawned this shift.
 			anchored = 0
-			PN = attached.powernet
+			PN = attached.network
 			release_vore_contents()
 			prey_excludes.Cut()
 			GLOB.moth_amount += 1 //CitRP: There was some magic going on around this here part, it might actualy be working.

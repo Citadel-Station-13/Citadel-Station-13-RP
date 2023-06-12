@@ -23,6 +23,7 @@
 	return ..()
 
 /obj/structure/wire/setDir(dir)
+	SHOULD_CALL_PARENT(FALSE)
 	return FALSE //! No.
 
 /obj/structure/wire/proc/join()
