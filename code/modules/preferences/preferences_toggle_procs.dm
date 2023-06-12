@@ -280,19 +280,6 @@
 
 	feedback_add_details("admin_verb","THInstm") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/verb/toggle_status_indicators()
-	set name = "Toggle Status Indicators"
-	set category = "Preferences"
-	set desc = "Enable/Disable seeing status indicators over peoples' heads."
-
-	var/pref_path = /datum/client_preference/status_indicators
-	toggle_preference(pref_path)
-	SScharacters.queue_preferences_save(prefs)
-
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/status_indicators)) ? "see" : "not see"] status indicators.")
-
-	feedback_add_details("admin_verb","TStatusIndicators")
-
 /client/verb/toggle_overhead_chat()
 	set name = "Toggle Overhead Chat"
 	set category = "Preferences"

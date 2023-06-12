@@ -12,15 +12,15 @@
 		return
 	inflate(user,user.loc)
 
-/obj/item/inflatable/afterattack(var/atom/A, var/mob/user)
-	..(A, user)
+/obj/item/inflatable/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	..(target, user)
 	if(!user)
 		return
-	if(!user.Adjacent(A))
+	if(!user.Adjacent(target))
 		to_chat(user,"You can't reach!")
 		return
-	if(istype(A, /turf))
-		inflate(user,A)
+	if(istype(target, /turf))
+		inflate(user,target)
 
 /obj/item/inflatable/CtrlClick(mob/user)
 	inflate(user,src.loc)

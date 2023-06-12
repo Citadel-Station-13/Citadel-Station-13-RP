@@ -129,6 +129,8 @@
 /obj/item/material/twohanded/fireaxe/attack_object(atom/target, mob/user, clickchain_flags, list/params, mult = 1)
 	if(istype(target, /obj/structure/window))
 		mult *= 2
+	else if(istype(target, /obj/effect/plant))
+		mult *= 2
 	return ..()
 
 /obj/item/material/twohanded/fireaxe/foam
@@ -149,7 +151,7 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
@@ -225,7 +227,7 @@
 		. += "<span class='notice'>Alt-click to set your war cry.</span>"
 		. += "<span class='notice'>Right-click in combat mode to activate the attached explosive.</span>"
 
-/obj/item/material/twohanded/spear/afterattack(atom/movable/AM, mob/user, proximity)
+/obj/item/material/twohanded/spear/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(explosive && wielded) //Citadel edit removes qdel and explosive.forcemove(AM)
 		user.say("[war_cry]")
@@ -319,17 +321,17 @@
 	update_icon()
 	..()
 
-/obj/item/material/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+/obj/item/material/twohanded/sledgehammer/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	..()
-	if(A && wielded)
-		if(istype(A,/obj/structure/window))
-			var/obj/structure/window/W = A
+	if(target && wielded)
+		if(istype(target,/obj/structure/window))
+			var/obj/structure/window/W = target
 			W.shatter()
-		else if(istype(A,/obj/structure/grille))
-			qdel(A)
-		else if(istype(A,/obj/effect/plant))
-			var/obj/effect/plant/P = A
+		else if(istype(target,/obj/structure/grille))
+			qdel(target)
+		else if(istype(target,/obj/effect/plant))
+			var/obj/effect/plant/P = target
 			P.die_off()
 
 // This cannot go into afterattack since some mobs delete themselves upon dying.

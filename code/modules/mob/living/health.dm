@@ -58,7 +58,7 @@
 	radiation = 0
 	// fix nutrition
 	// todo: species?
-	nutrition = 40
+	nutrition = 400
 	// deal with temperature
 	set_bodytemperature(nominal_bodytemperature())
 	// extinguish fires

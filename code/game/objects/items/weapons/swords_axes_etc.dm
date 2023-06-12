@@ -150,7 +150,7 @@
 	var/SA_bonus_damage = 35 // 50 total against animals and aberrations.
 	var/SA_vulnerability = MOB_CLASS_ANIMAL | MOB_CLASS_ABERRATION
 
-/obj/item/melee/disruptor/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/melee/disruptor/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/tm = target // targeted mob

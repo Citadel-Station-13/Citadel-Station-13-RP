@@ -25,6 +25,7 @@
 	edge = TRUE
 	// sharpness = SHARP_EDGED
 	action_button_name = "Toggle Light"
+	light_wedge = LIGHT_WIDE
 	// actions_types = list(/datum/action/item_action/toggle_light)
 	// var/list/trophies = list()
 	var/charged = TRUE
@@ -132,7 +133,7 @@
 	if(!QDELETED(C) && !QDELETED(L))
 		C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 
-/obj/item/kinetic_crusher/afterattack(atom/target, mob/living/user, proximity_flag, clickparams)
+/obj/item/kinetic_crusher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 /*
 	if(istype(target, /obj/item/crusher_trophy))
@@ -141,7 +142,7 @@
 */
 	if(requires_wield && !wielded)
 		return
-	if(!proximity_flag && charged)//Mark a target, or mine a tile.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && charged)//Mark a target, or mine a tile.
 		var/turf/proj_turf = user.loc
 		if(!isturf(proj_turf))
 			return
@@ -151,7 +152,7 @@
 			var/obj/item/crusher_trophy/T = t
 			T.on_projectile_fire(D, user)
 */
-		D.preparePixelProjectile(target, user, clickparams)
+		D.preparePixelProjectile(target, user, list2params(params))
 		D.firer = user
 		D.hammer_synced = src
 		playsound(user, 'sound/weapons/plasma_cutter.ogg', 100, 1)
@@ -160,7 +161,7 @@
 		update_icon()
 		addtimer(CALLBACK(src, .proc/Recharge), charge_time * (user?.ConflictElementCount(CONFLICT_ELEMENT_CRUSHER) || 1))
 		return
-	if(proximity_flag && isliving(target))
+	if((clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && isliving(target))
 		detonate(target, user)
 
 /obj/item/kinetic_crusher/proc/detonate(mob/living/L, mob/living/user, thrown = FALSE)

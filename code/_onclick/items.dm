@@ -26,15 +26,12 @@
 	if((. |= pre_attack(target, user, ., params)) & CLICKCHAIN_DO_NOT_PROPAGATE)
 		return
 
-	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
-	var/stupid_fucking_shim = list2params(params)
-
 	// todo: refactor
 	if(resolve_attackby(target, user, params, null, clickchain_flags))
 		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-	// todo: signal for afterattack here & anywhere that calls afterattack
-	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, stupid_fucking_shim)
+	// todo: signal for afterattack here
+	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
 
 /**
  * Called when trying to click something that the user can't Reachability() to.
@@ -46,13 +43,8 @@
  * - params - params as list.
  */
 /obj/item/proc/ranged_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
-	. = clickchain_flags
-
-	// todo: NO. MORE. LIST. PARAMS. WHY. ARE. WE. UNPACKING. THE. LIST. MULTIPLE. TIMES?
-	var/stupid_fucking_shim = list2params(params)
-
-	// todo: signal for afterattack here & anywhere that calls afterattack
-	afterattack(target, user, clickchain_flags & CLICKCHAIN_HAS_PROXIMITY, stupid_fucking_shim)
+	// todo: signal for afterattack here
+	return clickchain_flags | afterattack(target, user, clickchain_flags, params)
 
 /**
  * Called when trying to click something that the user can Reachability() to,
@@ -95,6 +87,20 @@
  */
 // todo: we still use old attackby; convert when possible.
 // /atom/movable/attackby(obj/item/I, mob/user, clickchain_flags, list/params)
+
+/**
+ * Called after attacking something/someone if CLICKCHAIN_DO_NOT_PROPAGATE was not raised.
+ *
+ * @params
+ * * target - target atom
+ * * user - attacking mob
+ * * clickchain_flags - flags
+ * * list/params - click parameters
+ *
+ * @return clickchain flags to append
+ */
+/obj/item/proc/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	return NONE
 
 /**
  * standard proc for engaging a target in melee

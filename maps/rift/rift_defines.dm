@@ -53,8 +53,45 @@
 		Z_LEVEL_WEST_DEEP,
 		Z_LEVEL_WEST_CAVERN)
 
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
+	titlescreens = list(
+		/datum/cutscene/browser/simple/rift_title1 = 20,
+		list(
+			'icons/misc/title_vr.dmi',
+			"title1",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title2",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title3",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title4",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title5",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title6",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title7",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title8",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"bnny",
+		),
+	)
 
 	admin_levels = list()
 	sealed_levels = list()
@@ -129,7 +166,6 @@
 							NETWORK_SECURITY,
 							NETWORK_TCOMMS,
 							NETWORK_LYTHIOS,
-							NETWORK_EXPLO_HELMETS
 							)
 	secondary_networks = list(
 							NETWORK_ERT,
@@ -140,7 +176,10 @@
 							NETWORK_ALARM_POWER,
 							NETWORK_ALARM_FIRE,
 							NETWORK_TALON_HELMETS,
-							NETWORK_TALON_SHIP
+							NETWORK_TALON_SHIP,
+							NETWORK_CIV_HELMETS,
+							NETWORK_EXPLO_HELMETS,
+							NETWORK_SEC_HELMETS
 							)
 
 	bot_patrolling = FALSE
@@ -161,7 +200,6 @@
 		/area/crew_quarters/sleep/Dorm_3/holo,
 		/area/crew_quarters/sleep/Dorm_5/holo,
 		/area/crew_quarters/sleep/Dorm_7/holo,
-		/area/looking_glass/lg_1,
 		/area/rnd/miscellaneous_lab)
 
 	unit_test_exempt_from_atmos = list(

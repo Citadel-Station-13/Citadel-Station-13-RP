@@ -76,10 +76,10 @@
 		O.Move(get_step(user,movementdirection), movementdirection)
 		sleep(3)
 
-/obj/item/extinguisher/afterattack(var/atom/target, var/mob/user, var/flag)
+/obj/item/extinguisher/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	//TODO; Add support for reagents in water.
 
-	if( istype(target, /obj/structure/reagent_dispensers/watertank) && flag)
+	if( istype(target, /obj/structure/reagent_dispensers/watertank) && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		var/obj/o = target
 		var/amount = o.reagents.trans_to_obj(src, 50)
 		to_chat(user, "<span class='notice'>You fill [src] with [amount] units of the contents of [target].</span>")

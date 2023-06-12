@@ -1452,3 +1452,10 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "halfcut_rough"
+
+/datum/sprite_accessory/hair/braided_sidetail
+	name = "Braided Sidetail"
+	id = "hair_braidedsidetail"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "braided_sidetail"

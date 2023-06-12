@@ -26,7 +26,7 @@
 	return 1
 
 
-/*/obj/item/grenade/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+/*/obj/item/grenade/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if (istype(target, /obj/item/storage)) return ..() // Trying to put it in a full container
 	if (istype(target, /obj/item/gun/grenadelauncher)) return ..()
 	if((user.get_active_held_item() == src) && (!active) && (clown_check(user)) && target.loc != src.loc)

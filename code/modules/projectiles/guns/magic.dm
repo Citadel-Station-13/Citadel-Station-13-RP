@@ -16,7 +16,7 @@
 	var/no_den_usage
 	pin = /obj/item/firing_pin/magic
 
-/obj/item/gun/magic/afterattack(atom/target, mob/living/user, flag)
+/obj/item/gun/magic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(no_den_usage)
 		var/area/A = get_area(user)
 		if(istype(A, /area/wizard_station))

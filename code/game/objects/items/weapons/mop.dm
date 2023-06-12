@@ -38,13 +38,13 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		mopmode = MOPMODE_TILE
 		to_chat(user, "<span class='warning'>You will now thoroughly clean a single tile at a time</span>")
 
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
-	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/debris/cleanable) || istype(A, /obj/effect/overlay))
+/obj/item/mop/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target, /turf) || istype(target, /obj/effect/debris/cleanable) || istype(target, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 			return
-		var/turf/T = get_turf(A)
+		var/turf/T = get_turf(target)
 		if(!T)
 			return
 		spawn()
@@ -60,7 +60,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 		else if (mopmode == MOPMODE_SWEEP)
 			sweep(user, T)
 	else
-		makeWet(A, user)
+		makeWet(target, user)
 
 // TO DO : MAKE SWEEPING WORK
 

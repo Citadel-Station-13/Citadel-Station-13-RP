@@ -54,11 +54,13 @@
 	var/combat_flags = 0
 	var/other_flags = 0
 
-	var/vision_flags_mob = 0
-	var/darkness_view = 0
+	var/vision_flags_mob = NONE
+	var/vision_flags_mob_remove = NONE
 
 	/// List of vision planes this nifsoft enables when active
 	var/list/planes_enabled = null
+	/// vision holder to push
+	var/datum/vision/vision_holder
 	/// Whether or not this NIFSoft provides exclusive vision modifier
 	var/vision_exclusive = FALSE
 	/// List of NIFSofts that are disabled when this one is enabled
@@ -112,6 +114,9 @@
 			nif.add_plane(planes_enabled)
 			nif.vis_update()
 
+		if(!isnull(vision_holder))
+			nif.human.add_vision_modifier(vision_holder)
+
 		//If we have other NIFsoft we need to turn off
 		if(incompatible_with)
 			nif.deactivate_these(incompatible_with)
@@ -143,6 +148,9 @@
 		if(planes_enabled)
 			nif.del_plane(planes_enabled)
 			nif.vis_update()
+
+		if(!isnull(vision_holder))
+			nif.human.remove_vision_modifier(vision_holder)
 
 		//Clear all our activation flags
 		nif.clear_flag(vision_flags,NIF_FLAGS_VISION)
