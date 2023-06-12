@@ -53,30 +53,6 @@ GLOBAL_LIST_EMPTY(apcs)
 #define AUTO_THRESHOLD_LIGHT 10
 #define AUTO_THRESHOLD_ENVIR 1
 
-/// APCS with hidden alarms and no power cells
-/obj/machinery/power/apc/alarms_hidden/no_cell
-	cell_type = null
-	chargelevel = 0
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
-	name = "east bump"
-	dir = 4
-	pixel_x = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
-	name = "west bump"
-	dir = 8
-	pixel_x = -28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
-	name = "north bump"
-	dir = 1
-	pixel_y = 28
-
-/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
-	name = "south bump"
-	pixel_y = -28
-
 
 
 /**
@@ -84,8 +60,6 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * Power scale: Watts
  * Power is up-converted to kilowatts for grid.
- *
- * TODO: rewrite apcs entirely, the code barely works and it's all awful
  *
  * dev notes for the next time i'm insane enough to refactor power for no reason:
  * - dynamic power channels? probably not due to list overhead but maybe
@@ -100,6 +74,7 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * ~silicons
  */
+#warn repath to /obj/machinery/apc, no need for power.
 /obj/machinery/power/apc
 	name = "area power controller"
 	desc = "A control terminal for the area electrical systems."
@@ -123,9 +98,9 @@ GLOBAL_LIST_EMPTY(apcs)
 	/// starting power cell charge in %
 	var/start_charge = 100
 	/// power channels enabled
-	var/channels_enabled = POWER_CHANNELS_ALL
+	var/channels_enabled = POWER_BITS_ALL
 	/// power channels auto
-	var/channels_auto = POWER_CHANNELS_ALL
+	var/channels_auto = POWER_BITS_ALL
 	/// last static power usage of area
 	var/list/static_power_used = EMPTY_POWER_CHANNEL_LIST
 	/// burst usage for channels since last process()
@@ -150,7 +125,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/main_status = 0
 	var/mob/living/silicon/ai/hacker = null // Malfunction var. If set AI hacked the APC and has full control.
 	var/wiresexposed = 0
-	powernet = 0		// set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
 	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
 	var/beenhit = 0 // used for counting how many times it has been hit, used for Aliens at the moment
 	var/longtermpower = 10
@@ -174,22 +148,21 @@ GLOBAL_LIST_EMPTY(apcs)
 	var/nightshift_setting = NIGHTSHIFT_AUTO
 	var/last_nightshift_switch = 0
 
-/obj/machinery/power/apc/Initialize(mapload, ndir, building = FALSE)
+/obj/machinery/power/apc/Initialize(mapload, set_dir, constructing)
 	. = ..()
 	GLOB.apcs += src
 
 	wires = new(src)
 
-	// offset 24 pixels in direction of dir
-	// this allows the APC to be embedded in a wall, yet still inside an area
-	if (building)
-		setDir(ndir)
-
-	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
-	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
-	if(!building)
-		autobuild()
+	if(!isnull(set_dir))
+		setDir(set_dir)
 	else
+		update_dir()
+
+	if(!constructing)
+		auto_build()
+	else
+		#warn ???
 		area = get_area(src)
 		area.apc = src
 		opened = 1
@@ -202,10 +175,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	GLOB.apcs -= src
 	src.update()
 	area.apc = null
-	area.power_light = 0
-	area.power_equip = 0
-	area.power_environ = 0
-	area.power_change()
+	area.set_power_channels(NONE)
 	QDEL_NULL(wires)
 	QDEL_NULL(terminal)
 	QDEL_NULL(cell)
@@ -226,19 +196,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		cell = null
 	new /obj/item/stack/material/steel(where, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1)
 
-/obj/machinery/power/apc/updateDialog()
-	if (machine_stat & (BROKEN|MAINT))
-		return
-	..()
-
-/obj/machinery/power/apc/connect_to_network()
-	//Override because the APC does not directly connect to the network; it goes through a terminal.
-	//The terminal is what the power computer looks for anyway.
-	if(!terminal)
-		make_terminal()
-	if(terminal)
-		terminal.connect_to_network()
-
+#warn what
 /obj/machinery/power/apc/drain_energy(datum/actor, amount, flags)
 	charging = FALSE
 	// makes sure fully draining apc cell won't break cell charging
@@ -260,15 +218,17 @@ GLOBAL_LIST_EMPTY(apcs)
 
 // APCs are pixel-shifted, so they need to be updated.
 /obj/machinery/power/apc/setDir(new_dir)
-	..()
+	. = ..()
+	if(!.)
+		return
+	update_dir()
+
+/obj/machinery/power/apc/proc/update_dir()
 	pixel_x = (src.dir & 3)? 0 : (src.dir == 4 ? 24 : -24)
 	pixel_y = (src.dir & 3)? (src.dir ==1 ? 24 : -24) : 0
-	if(terminal)
-		terminal.disconnect_from_network()
-		terminal.setDir(src.dir) // Terminal has same dir as master
-		terminal.connect_to_network() // Refresh the network the terminal is connected to.
-	return
+	terminal?.setDir(dir)
 
+#warn what
 /obj/machinery/power/apc/proc/energy_fail(var/duration)
 	failure_timer = max(failure_timer, round(duration))
 
@@ -1477,7 +1437,7 @@ GLOBAL_LIST_EMPTY(apcs)
 //? Power usage - General
 
 /**
- * draws power from grid
+ * draws power from grid to ourselves
  *
  * @params
  * * amount - kw
@@ -1485,13 +1445,13 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * @return kw drawn
  */
-/obj/machinery/power/apc/proc/draw_grid_power(amount, balance)
+/obj/machinery/power/apc/proc/use_grid_power(amount, balance)
 	#warn impl
 
 //? Power usage - Burst
 
 /**
- * use a dynamic amount of burst power
+ * something is trying to use a dynamic amount of burst power
  *
  * @params
  * * amount - how much
@@ -1501,7 +1461,7 @@ GLOBAL_LIST_EMPTY(apcs)
  *
  * @return power drawn
  */
-/obj/machinery/power/apc/proc/draw_burst_power(amount, channel, allow_partial, over_time)
+/obj/machinery/power/apc/proc/supply_burst_power(amount, channel, allow_partial, over_time)
 
 #warn impl all
 
@@ -1640,7 +1600,6 @@ GLOBAL_LIST_EMPTY(apcs)
 	name = "south bump"
 	pixel_y = -28
 
-
 /// APCs with alarms hidden. Use these for POI's and offmap stuff so engineers dont get notified that shitty_ruins4 is running out of power -Bloop
 /obj/machinery/power/apc/alarms_hidden
 	alarms_hidden = TRUE
@@ -1661,5 +1620,29 @@ GLOBAL_LIST_EMPTY(apcs)
 	pixel_y = 28
 
 /obj/machinery/power/apc/alarms_hidden/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+/// APCS with hidden alarms and no power cells
+/obj/machinery/power/apc/alarms_hidden/no_cell
+	cell_type = null
+	chargelevel = 0
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
 	name = "south bump"
 	pixel_y = -28
