@@ -12,17 +12,17 @@
 		var/datum/picture/picture = SSphotography.create_picture(from_what)
 		photograph.picture_hash = picture.image_hash
 		SSphotography.save_photograph(photograph)
-		instance.photograph_id = photograph.id
+		instance.from_photograph(photograph)
 	else if(istype(from_what, /datum/photograph))
 		var/datum/photograph/photograph = from_what
 		ASSERT(!isnull(photograph.id))
-		instance.photograph_id = photograph.id
+		instance.from_photograph(photograph)
 	else if(istype(from_what, /datum/picture))
 		var/datum/picture/picture = from_what
 		var/datum/photograph/photograph = new
 		photograph.picture_hash = picture.image_hash
 		SSphotography.save_photograph(photograph)
-		instance.photograph_id = photograph.id
+		instance.from_photograph(photograph)
 	else
 		CRASH("what?")
 
@@ -43,6 +43,15 @@
 	var/scribble_spans
 	/// our photograph id
 	var/photograph_id
+
+/obj/item/photo/proc/from_photograph(datum/photograph/photograph)
+	// set id
+	photograph_id = photograph.id
+	// get picture
+	var/datum/picture/picture = photograph.picture()
+	// generate our icon
+	var/icon/generated_icon = icon('icons/modules/photography/photo.dmi', "photo")
+	generated_icon.Blend(picture.four_by_four(), ICON_OVERLAY, 10, 13)
 
 /obj/item/photo/proc/photograph()
 	RETURN_TYPE(/datum/photograph)

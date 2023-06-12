@@ -323,17 +323,12 @@
 		temp_img = icon('icons/obj/butts.dmi', "nymph")
 	else
 		return
-	var/obj/item/photo/p = new /obj/item/photo (loc)
+	var/obj/item/photo/p = create_photo(drop_location(), temp_img)
 	p.desc = "You see [sitter]'s ass on the photo."
 	p.pixel_x = rand(-10, 10)
 	p.pixel_y = rand(-10, 10)
-	p.img = temp_img
-	var/icon/small_img = icon(temp_img) // Icon() is needed or else temp_img will be rescaled too >.>
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	small_img.Scale(8, 8)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	p.icon = ic
-	toner -= 10 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	toner -= 5 // PHOTOCOPYING YOUR ASS IS EXPENSIVE (And so you can't just spam it a bunch).
+	// fuck you let us photocopy more asses; 10 --> 5 toner cost ~silicons
 	if(toner < 0)
 		toner = 0
 		playsound(loc, "sound/machines/buzz-sigh.ogg", 100)
