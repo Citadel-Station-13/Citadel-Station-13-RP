@@ -396,7 +396,7 @@
 /// Also make sure there is a valid control computer
 /obj/machinery/cryopod/proc/despawn_occupant(mob/to_despawn, silent = FALSE)
 	if(to_despawn.has_alerting_status_effect())
-		log_and_message_admins("[key_name(to_despawn)] still had a long lasting status effect while cryoing, have an eye out should they respawn.")
+		log_and_message_admins("[key_name(to_despawn)] still had a long lasting status effect([to_despawn.has_alerting_status_effect()?.identifier]) while cryoing, have an eye out should they respawn.")
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
