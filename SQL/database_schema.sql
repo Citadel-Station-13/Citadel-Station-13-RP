@@ -6,7 +6,7 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
------------- core ------------
+-- core --
 
 --
 -- Table structure for table `schema_revision`
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
------------- photography ------------
+-- photography --
 
 --           picture table            --
 -- used to store data about pictures  --
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   `desc` MEDIUMTEXT null,
   CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
   REFERENCES `%_PREFIX_%pictures` (`hash`)
-  ON DELETE SET NULL
+  ON DELETE CASCADE
   ON UPDATE CASCADE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
------------- players ------------
+-- players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
