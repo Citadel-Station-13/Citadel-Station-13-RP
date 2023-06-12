@@ -436,58 +436,6 @@
 			used += oneoff_environ + (include_static * static_environ)
 	return used
 
-/**
- * Clear all non-static power usage in area
- *
- * Clears all power used for the dynamic equipment, light and environment channels
- */
-/area/proc/clear_usage()
-	oneoff_equip = 0
-	oneoff_light = 0
-	oneoff_environ = 0
-
-/**
- * Add a power value amount to the stored used_x variables
- */
-/area/proc/use_power_oneoff(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			oneoff_equip += amount
-		if(LIGHT)
-			oneoff_light += amount
-		if(ENVIRON)
-			oneoff_environ += amount
-	return amount
-
-/// This is used by machines to properly update the area of power changes.
-/area/proc/power_use_change(old_amount, new_amount, chan)
-	use_power_static(new_amount - old_amount, chan) // Simultaneously subtract old_amount and add new_amount.
-
-/// Not a proc you want to use directly unless you know what you are doing; see use_power_oneoff above instead.
-/area/proc/use_power_static(var/amount, var/chan)
-	switch(chan)
-		if(EQUIP)
-			static_equip += amount
-		if(LIGHT)
-			static_light += amount
-		if(ENVIRON)
-			static_environ += amount
-
-/// This recomputes the continued power usage; can be used for testing or error recovery, but is not called every tick.
-/area/proc/retally_power()
-	static_equip = 0
-	static_light = 0
-	static_environ = 0
-	for(var/obj/machinery/M in src)
-		switch(M.power_channel)
-			if(EQUIP)
-				static_equip += M.get_power_usage()
-			if(LIGHT)
-				static_light += M.get_power_usage()
-			if(ENVIRON)
-				static_environ += M.get_power_usage()
-
-
 //////////////////////////////////////////////////////////////////
 
 /area/vv_get_dropdown()
@@ -681,6 +629,26 @@ var/list/ghostteleportlocs = list()
 		return
 	power_channels = channels
 	power_change()
+
+/**
+ * EXTREMELY SLOW
+ *
+ * Retallys area power and makes sure it's up to date.
+ */
+/area/proc/retally_power()
+	power_usage_static = EMPTY_POWER_CHANNEL_LIST
+	for(var/obj/machinery/M in src)
+		switch(M.use_power)
+			if(USE_POWER_ACTIVE)
+				power_usage_static[M.power_channel] += M.active_power_usage
+				M.registered_power_usage = M.active_power_usage
+			if(USE_POWER_IDLE)
+				power_usage_static[M.power_channel] += M.idle_power_usage
+				M.registered_power_usage = M.idle_power_usage
+			if(USE_POWER_CUSTOM)
+				if(isnull(M.registered_power_usage))
+					continue
+				power_usage_static[M.power_channel] += M.registered_power_usage
 
 //? Dropping
 

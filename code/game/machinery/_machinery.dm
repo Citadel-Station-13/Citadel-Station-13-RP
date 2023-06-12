@@ -9,26 +9,6 @@
  *
  *! ## Class Variables:
  *
- *? use_power (num)
- *-     Current state of auto power use.
- *-     Possible Values:
- *-         NO_POWER_USE --- //? Machine will not use power automatically.
- *-         IDLE_POWER_USE - //? Machine is using power at its idle power level.
- *-         ACTIVE_POWER_USE //? Machine is using power at its active power level.
- *
- *? active_power_usage (num)
- *-     Value for the amount of power to use when in active power mode.
- *
- *? idle_power_usage (num)
- *-     Value for the amount of power to use when in idle power mode.
- *
- *? power_channel (num)
- *-     What channel to draw from when drawing power for power mode
- *-     Possible Values:
- *-         EQUIP:0 - //? Equipment Channel.
- *-         LIGHT:2 - //? Lighting Channel.
- *-         ENVIRON:3 //? Environment Channel.
- *
  *? component_parts (list)
  *-     A list of component parts of machine used by frame based machines.
  *
@@ -55,27 +35,6 @@
  *
  *? Destroy()
  *
- *? auto_use_power()
- *-     This proc determines how power mode power is deducted by the machine.
- *-     'auto_use_power()' is called by the 'master_controller' game_controller every
- *-     tick.
- *
- *-     Return Values:
- *-         return:TRUE  //? If object is powered.
- *-         return:FALSE //? If object is not powered.
- *
- *-     Default definition uses 'use_power', 'power_channel', 'active_power_usage',
- *-     'idle_power_usage', 'powered()', and 'use_power()' implement behavior.
- *
- *? powered(chan = EQUIP)                       'modules/power/power.dm'
- *     Checks to see if area that contains the object has power available for power
- *     channel given in 'chan'.
- *
- *? use_power(amount, chan=EQUIP, autocalled)   'modules/power/power.dm'
- *     Deducts 'amount' from the power channel 'chan' of the area that contains the object.
- *     If it's autocalled then everything is normal, if something else calls use_power we are going to
- *     need to recalculate the power two ticks in a row.
- *
  *? power_change()                              'modules/power/power.dm'
  *     Called by the area that contains the object when ever that area under goes a
  *     power state change (area runs out of power, or area channel is turned off).
@@ -92,7 +51,6 @@
  *
  *? process()                                   'game/machinery/machine.dm'
  *-    Called by the 'master_controller' once per game tick for each machine that is listed in the 'machines' list.
- *
  *
  *! ## Compiled by Aygar
  *! ## Formatted by Zandario
@@ -127,7 +85,7 @@
 	var/idle_power_usage = 0
 	/// active power usage in watts
 	var/active_power_usage = 0
-	/// registered power usage
+	/// registered power usage - not necessarily the same as idle/active, especially if we're on custom mode.
 	var/registered_power_usage
 	/// what power channel we use for area power
 	var/power_channel = POWER_CHANNEL_EQUIP
@@ -154,12 +112,14 @@
 
 	var/interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_SET_MACHINE
 
-/obj/machinery/Initialize(mapload, newdir)
-	if(newdir)
-		setDir(newdir)
+/obj/machinery/Initialize(mapload, new_dir)
+	if(!isnull(new_dir))
+		setDir(new_dir)
+
 	. = ..()
 
 	GLOB.machines += src
+	initialize_static_power()
 
 	if(ispath(circuit))
 		circuit = new circuit(src)
@@ -173,7 +133,9 @@
 	if(!mapload)	// area handles this
 		power_change()
 
+
 /obj/machinery/Destroy()
+	deinitialize_static_power()
 	GLOB.machines.Remove(src)
 	if(!speed_process)
 		STOP_MACHINE_PROCESSING(src)
@@ -195,6 +157,17 @@
 			else
 				qdel(A)
 	return ..()
+
+/obj/machinery/Moved(atom/old_loc, direction, forced)
+	. = ..()
+	if(old_loc != loc)
+		if(power_recursive_registered)
+			UnregisterSignal(old_loc, COMSIG_MOVABLE_MOVED)
+			power_recursive_registered = FALSE
+		if(!isturf(loc))
+			RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(update_power_on_move))
+			power_recursive_registered = TRUE
+		update_power_on_move(src, old_loc)
 
 /obj/machinery/update_overlays()
 	. = ..()
@@ -581,32 +554,114 @@
 //? Power - Static Usage
 
 /obj/machinery/proc/initialize_static_power()
-	#warn impl
+	// refresh
+	set_use_power(use_power)
+	// update recursive registration
+	if(!isturf(loc) && !power_recursive_registered)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(update_power_on_move))
+		power_recursive_registered = TRUE
 
 /obj/machinery/proc/deinitialize_static_power()
-	#warn impl
+	// teardown recursive registration
+	if(power_recursive_registered)
+		UnregisterSignal(loc, COMSIG_MOVABLE_MOVED)
+		power_recursive_registered = FALSE
+	// turn off
+	__set_static_power(0)
 
 /obj/machinery/proc/set_use_power(new_use_power)
-	#warn impl
+	use_power = new_use_power
+	switch(use_power)
+		if(USE_POWER_OFF)
+			__set_static_power(0)
+		if(USE_POWER_ACTIVE)
+			__set_static_power(active_power_usage)
+		if(USE_POWER_IDLE)
+			__set_static_power(idle_power_usage)
+		if(USE_POWER_ACTIVE)
+			__set_static_power(registered_power_usage)
+		else
+			CRASH("unsupported mode: [new_use_power]")
 
 /obj/machinery/proc/set_power_channel(new_power_channel)
-	#warn impl
+	__set_power_channel(new_power_channel)
 
 /obj/machinery/proc/set_idle_power_usage(new_usage)
-	#warn impl
+	if(use_power == USE_POWER_IDLE)
+		__set_static_power(new_usage)
+	idle_power_usage = new_usage
 
 /obj/machinery/proc/set_active_power_usage(new_usage)
-	#warn impl
+	if(use_power == USE_POWER_ACTIVE)
+		__set_static_power(new_usage)
+	active_power_usage = new_usage
 
 /**
  * overrides current static power usage regardless of use_power
  */
 /obj/machinery/proc/set_custom_power_usage(new_usage)
+	__set_static_power(new_usage)
+	use_power = USE_POWER_CUSTOM
 
-/obj/machinery/Moved(atom/old_loc, direction, forced)
-	. = ..()
-	#warn impl
+/**
+ * sets which power channel we're using
+ *
+ * internal usage only.
+ */
+/obj/machinery/proc/__set_power_channel(channel)
+	PRIVATE_PROC(TRUE)
+	if(channel == power_channel)
+		return
+	var/area/our_area = get_power_area()
+	var/old_channel = power_channel
+	power_channel = channel
+	if(!isnull(our_area))
+		our_area.power_usage_static[old_channel] -= registered_power_usage
+		our_area.power_usage_static[power_channel] += registered_power_usage
 
+/**
+ * sets how much static power we're using
+ *
+ * internal usage only.
+ */
+/obj/machinery/proc/__set_static_power(amount)
+	PRIVATE_PROC(TRUE)
+	ASSERT(amount >= 0)
+	var/area/our_area = get_power_area()
+	var/diff = amount - registered_power_usage
+	registered_power_usage = amount
+	if(!isnull(our_area))
+		our_area.power_usage_static[power_channel] += diff
+
+/obj/machinery/proc/update_power_on_move(atom/movable/mover, atom/old_loc)
+	if(!power_initialized)
+		return
+	// todo: this doesn't fire properly if the area changes on the turf, as opposed to us moving
+	//       to another area/turf.
+	var/area/old_area = get_area(old_loc)
+	var/area/new_area = get_area(mover.loc)
+	if(!isnull(old_area))
+		old_area.power_usage_static[power_channel] -= registered_power_usage
+	if(!isnull(new_area))
+		new_area.power_usage_static[power_channel] += registered_power_usage
+	// update if changed.
+	if((old_area.power_channels ^ new_area.power_channels) & global.power_channel_bits[power_channel])
+		power_change()
+
+/**
+ * queries our effective area for power
+ *
+ * since our recursive registration system only supports up to 1 deep nesting,
+ * this does too.
+ */
+/obj/machinery/proc/get_power_area()
+	RETURN_TYPE(/area)
+	if(isnull(loc))
+		return
+	if(isturf(loc))
+		return loc.loc
+	if(isturf(loc.loc))
+		return loc.loc.loc
 
 //? Power - Burst Usage
 
@@ -622,5 +677,5 @@
  * @return amount used
  */
 /obj/machinery/proc/use_burst_power(amount, channel = power_channel, allow_partial, over_time)
-	var/area/our_area = get_area(src)
+	var/area/our_area = get_power_area()
 	return our_area.use_burst_power(amount, channel, allow_partial, over_time)
