@@ -8,7 +8,7 @@
 	if(isnull(joint))
 		return
 	segments = list()
-	connection = list()
+	connections = list()
 	if(subdividing)
 		propagate(joint)
 	else
@@ -30,7 +30,8 @@
  */
 /datum/wirenet/proc/merge(datum/wirenet/into)
 	for(var/datum/wirenet_connection/connection as anything in connections)
-		connection.network = into
+		//* CURSED COLON OPERATOR - /wirenet_connection must always have a var named network, so we assume it's there. *//
+		connection:network = into
 		connection.host?.wirenet_switched(connection, src, into)
 	for(var/obj/structure/wire/segment as anything in segments)
 		segment.network = into

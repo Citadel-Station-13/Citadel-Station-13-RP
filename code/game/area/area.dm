@@ -593,11 +593,9 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 /area/proc/shuttle_departed()
 	return TRUE
 
-/area/AllowDrop()
-	CRASH("Bad op: area/AllowDrop() called")
 
-/area/drop_location()
-	CRASH("Bad op: area/drop_location() called")
+/area/proc/get_apc()
+	return apc
 
 // A hook so areas can modify the incoming args
 /area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
@@ -683,6 +681,14 @@ var/list/ghostteleportlocs = list()
 		return
 	power_channels = channels
 	power_change()
+
+//? Dropping
+
+/area/AllowDrop()
+	CRASH("Bad op: area/AllowDrop() called")
+
+/area/drop_location()
+	CRASH("Bad op: area/drop_location() called")
 
 //? Turf operations - add / remove
 

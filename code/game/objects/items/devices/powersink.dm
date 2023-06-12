@@ -26,7 +26,7 @@
 	var/mode = 0					// 0 = off, 1=clamped (off), 2=operating
 	var/drained_this_tick = 0		// This is unfortunately necessary to ensure we process powersinks BEFORE other machinery such as APCs.
 
-	var/datum/powernet/PN			// Our powernet
+	var/datum/wirenet/power/PN			// Our powernet
 	var/obj/structure/cable/attached		// the attached cable
 
 /obj/item/powersink/Destroy()
@@ -105,11 +105,11 @@
 	set_light(12)
 	PN.trigger_warning()
 	// found a powernet, so drain up to max power from it
-	drained = PN.draw_power(drain_rate)
+	drained = PN.flat_draw(drain_rate)
 	// if tried to drain more than available on powernet
 	// now look for APCs and drain their cells
 	if(drained < drain_rate)
-		for(var/obj/machinery/power/terminal/T in PN.nodes)
+		for(var/obj/machinery/power/terminal/T in PN.get_hosts())
 			// Enough power drained this tick, no need to torture more APCs
 			if(drained >= drain_rate)
 				break

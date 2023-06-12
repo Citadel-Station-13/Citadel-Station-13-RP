@@ -212,14 +212,9 @@
 		if(default_deconstruction_crowbar(user,I))
 			return
 	if(I.is_wrench())
-		anchored = !anchored
+		set_anchored(!anchored)
 		visible_message("<span class='notice'>\The [src] has been [anchored ? "bolted to the floor" : "unbolted from the floor"] by [user].</span>")
 		playsound(src, I.tool_sound, 75, 1)
-		if(anchored)
-			connect_to_network()
-		else
-			disconnect_from_network()
-			turn_off()
 		return
 	if(istype(I, /obj/item/multitool))
 		var/new_temp = input("Input a new target temperature, in degrees C.","Target Temperature", 20) as num
@@ -229,6 +224,10 @@
 		target_temp = max(new_temp, TCMB)
 		return
 	..()
+
+/obj/machinery/power/thermoregulator/disconnect()
+	. = ..()
+	turn_off()
 
 /obj/machinery/power/thermoregulator/attack_hand(mob/user, list/params)
 	add_fingerprint(user)

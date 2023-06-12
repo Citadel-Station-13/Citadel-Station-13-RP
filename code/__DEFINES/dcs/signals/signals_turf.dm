@@ -25,3 +25,6 @@
 
 /// From /datum/element/decal/Detach(): (description, cleanable, directional, mutable_appearance/pic)
 ////#define COMSIG_TURF_DECAL_DETACHED "turf_decal_detached"
+
+/// sent by /turf/proc/wirenode_discovery() to force everything in a turf to re-discover wirenets and connect.
+#define COMSIG_TURF_WIRENODE_DISCOVERY "turf_wirenode_discovery"

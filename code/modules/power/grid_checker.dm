@@ -17,7 +17,6 @@
 
 /obj/machinery/power/grid_checker/Initialize(mapload, newdir)
 	. = ..()
-	connect_to_network()
 	update_icon()
 	wires = new(src)
 	component_parts = list()

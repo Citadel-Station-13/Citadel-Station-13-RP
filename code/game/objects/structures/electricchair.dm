@@ -50,18 +50,16 @@
 
 	// special power handling
 	var/area/A = get_area(src)
-	if(!isarea(A))
-		return
-	if(!A.powered(EQUIP))
-		return
-	A.use_burst_power(EQUIP, 5000)
-	var/light = A.power_light
-	A.updateicon()
-
-	flick("echair1", src)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(12, 1, src)
 	s.start()
+	if(!A.use_burst_power(10000, POWER_CHANNEL_EQUIP))
+		visible_message(SPAN_DANGER("[src] fizzles uselessly."))
+		return
+
+	A.updateicon()
+
+	flick("echair1", src)
 	if(has_buckled_mobs())
 		for(var/a in buckled_mobs)
 			var/mob/living/L = a
@@ -72,6 +70,4 @@
 			L.afflict_stun(20 * 6)
 	visible_message("<span class='danger'>The electric chair went off!</span>", "<span class='danger'>You hear a deep sharp shock!</span>")
 
-	A.power_light = light
 	A.updateicon()
-	return

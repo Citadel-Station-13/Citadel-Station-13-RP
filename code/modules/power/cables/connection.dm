@@ -14,3 +14,5 @@
 	. = src.network
 	src.network = null
 
+/datum/wirenet_connection/power/lazy
+	automatic = TRUE

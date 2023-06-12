@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(solargrubs)
 	var/poison_type = "shockchem"
 	var/poison_chance = 50
 	var/datum/powernet/PN            // Our powernet
-	var/obj/structure/cable/attached        // the attached cable
+	var/obj/structure/wire/cable/attached        // the attached cable
 	var/shock_chance = 10 // Beware
 
 	// kw drain
@@ -100,10 +100,10 @@ GLOBAL_LIST_EMPTY(solargrubs)
 				sparks.set_up(5, 0, get_turf(src))
 				sparks.start()
 			anchored = 1
-			PN = attached.powernet
-			PN.draw_power(power_drain)
+			var/datum/wirenet/power/network = attached.network
+			network.flat_draw(power_drain)
 			charge += power_drain
-			for(var/obj/machinery/power/terminal/T in PN.nodes)
+			for(var/obj/machinery/power/terminal/T in network.get_hosts())
 				if(istype(T.master, /obj/machinery/power/apc))
 					var/obj/machinery/power/apc/A = T.master
 					if(A.operating && A.cell)

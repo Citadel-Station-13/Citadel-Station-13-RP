@@ -26,15 +26,14 @@
 	var/power_level = MAX_POWER_FOR_MASSIVE//So we can limit the power we work with and
 	//dont just have a stupid pump that drains all power
 
-	var/obj/machinery/power/powersupply/power_machine //for funky massive power machines
-	//if its not null the machine attempts to draw from the grid the power machinery is connected to
-	//see examples in the file "code\modules\atmospherics\components\binary_devices\massive_heat_pump.dm"
+	var/datum/wirenet_connection/power/powernet_connection
+
 	var/on = 0
 	var/efficiency = 0
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/Initialize(mapload)
 	. = ..()
-	power_machine = new(src)
+	powernet_connection = new /datum/wirenet_connection/power/lazy(src)
 
 	on_construction("#000", PIPING_LAYER_DEFAULT)
 	air1.volume = ATMOS_DEFAULT_VOLUME_PUMP * 50//give it a much larger volume

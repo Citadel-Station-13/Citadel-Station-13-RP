@@ -36,12 +36,19 @@
 /obj/machinery/power/terminal/process(delta_time)
 	return 1
 
+#warn impl all
+
 /obj/machinery/power/terminal/overload(var/obj/machinery/power/source)
 	if(master)
 		master.overload(source)
 
-#warn impl all
+/obj/machinery/power/terminal/proc/bind(obj/machinery/host)
+	if(!isnull(master))
+		unbind()
+	master = host
 
+/obj/machinery/power/terminal/proc/unbind(obj/machinery/host)
+	master = null
 
 //? machinery-side API
 

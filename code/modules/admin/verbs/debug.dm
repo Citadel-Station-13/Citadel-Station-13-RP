@@ -476,9 +476,8 @@
 
 	for(var/obj/machinery/power/emitter/E in GLOB.machines)
 		if(istype(get_area(E), /area/space))
-			E.anchored = TRUE
+			E.set_anchored(TRUE)
 			E.state = 2
-			E.connect_to_network()
 			E.active = TRUE
 	for(var/obj/machinery/field_generator/F in GLOB.machines)
 		if(istype(get_area(F), /area/space))
@@ -536,8 +535,7 @@
 		if(istype(M.loc.loc,/area/engineering/engine_room))
 			if(istype(M,/obj/machinery/power/rad_collector))
 				var/obj/machinery/power/rad_collector/Rad = M
-				Rad.anchored = 1
-				Rad.connect_to_network()
+				Rad.set_anchored(TRUE)
 
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
 

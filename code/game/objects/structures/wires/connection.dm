@@ -5,6 +5,10 @@
  *
  * Network is intentionally not declared on the base type for this purpose,
  * so you can declare network on subtypes with the necessary typecasting.
+ *
+ * todo: vv hooks
+ *
+ * ! WARNING : YOU MUST HAVE NETWORK DECLARED ON A SUBTYPE, OR THINGS HORRIBLY BREAK. !
  */
 /datum/wirenet_connection
 	/// our host, so we can track
@@ -13,13 +17,35 @@
 	var/obj/structure/wire/joint
 	/// automatic handling of attach/detach/discovery. VERY EXPENSIVE, avoid using.
 	var/automatic = FALSE
-	#warn impl automatic
 
 /datum/wirenet_connection/New(datum/host)
 	src.host = host
+	if(automatic)
+		if(ismovable(host))
+			host.AddElement(/datum/element/connect_loc, list(COMSIG_TURF_WIRENODE_DISCOVERY))
+			RegisterSignals(
+				host,
+				list(
+					COMSIG_TURF_WIRENODE_DISCOVERY,
+					COMSIG_MOVABLE_MOVED,
+				),
+				PROC_REF(auto_move),
+			)
+		else
+			CRASH("attempted automatic wirenet connection usage on non-movable host. are you really that lazy?")
 
 /datum/wirenet_connection/Destroy()
 	disconnect()
+	if(automatic)
+		if(ismovable(host))
+			host.RemoveElement(/datum/element/connect_loc, list(COMSIG_TURF_WIRENODE_DISCOVERY))
+			UnregisterSignal(
+				host,
+				list(
+					COMSIG_TURF_WIRENODE_DISCOVERY,
+					COMSIG_MOVABLE_MOVED,
+				),
+			)
 	host = null
 	return ..()
 
@@ -100,5 +126,3 @@
 			continue
 		AM.wirenode_discovery()
 	SEND_SIGNAL(src, COMSIG_TURF_WIRENODE_DISCOVERY)
-
-#warn impl; lmao

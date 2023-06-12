@@ -67,6 +67,7 @@ GLOBAL_LIST_EMPTY(powernets)
 	available -= .
 
 /datum/wirenet/power/proc/dynamic_draw(kw, tier)
+
 	#warn impl
 
 /datum/wirenet/power/proc/reset()
@@ -78,6 +79,7 @@ GLOBAL_LIST_EMPTY(powernets)
 	load = 0
 	flat_load = 0
 	accumulated = 0
+
 	for(var/i in 1 to POWER_BALANCING_TIER_TOTAL)
 
 	#warn impl
@@ -95,14 +97,6 @@ GLOBAL_LIST_EMPTY(powernets)
 //This is for machines that might adjust their power consumption using this data.
 /datum/powernet/proc/last_surplus()
 	return max(avail - load, 0)
-
-/datum/powernet/proc/draw_power(var/amount)
-	var/draw = clamp( amount, 0,  avail - load)
-	load += draw
-	return draw
-
-/datum/powernet/proc/is_empty()
-	return !cables.len && !nodes.len
 
 // Triggers warning for certain amount of ticks
 /datum/powernet/proc/trigger_warning(var/duration_ticks = 20)
@@ -128,22 +122,3 @@ GLOBAL_LIST_EMPTY(powernets)
 	. = draw_power(amount)
 	if(flags & ENERGY_DRAIN_SURGE)
 		trigger_warning()
-
-////////////////////////////////////////////////
-// Misc.
-///////////////////////////////////////////////
-
-
-// return a knot cable (O-X) if one is present in the turf
-// null if there's none
-/turf/proc/get_cable_node()
-	if(!istype(src, /turf/simulated/floor))
-		return null
-	for(var/obj/structure/cable/C in src)
-		if(C.d1 == 0)
-			return C
-	return null
-
-
-/area/proc/get_apc()
-	return apc

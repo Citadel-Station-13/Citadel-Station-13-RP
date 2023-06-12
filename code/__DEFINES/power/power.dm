@@ -46,4 +46,4 @@ GLOBAL_REAL_LIST(power_balancing_tier_names) = list(
 )
 
 /// length must equal POWER_BALANCING_TIER_TOTAL
-#define EMPTY_POWER_CHANNEL_LIST list(0, 0, 0)
+#define EMPTY_POWER_BALANCING_LIST list(0, 0, 0)

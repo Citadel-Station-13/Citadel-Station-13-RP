@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 	if(genlev != lastgenlev)
 		lastgenlev = genlev
 		updateicon()
-	add_avail(effective_gen * 0.001)
+	supply(effective_gen * 0.001)
 
 /obj/machinery/power/generator/attack_ai(mob/user)
 	attack_hand(user)
@@ -171,15 +171,11 @@ GLOBAL_LIST_EMPTY(all_turbines)
 /obj/machinery/power/generator/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		playsound(src, W.tool_sound, 75, 1)
-		anchored = !anchored
+		set_anchored(!anchored)
 		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
 					"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 					"You hear a ratchet.")
 		update_use_power(anchored ? USE_POWER_IDLE : USE_POWER_ACTIVE)
-		if(anchored) // Powernet connection stuff.
-			connect_to_network()
-		else
-			disconnect_from_network()
 		reconnect()
 		lastgenlev = 0
 		effective_gen = 0
@@ -316,11 +312,11 @@ GLOBAL_LIST_EMPTY(all_turbines)
 //	if(!effective_gen >= max_power / 2 && powernet) // Don't make a spike if we're not making a whole lot of power.
 //		return
 
-	var/list/powernet_union = powernet.nodes
+	var/list/powernet_union = connection?.network?.get_hosts()
 	for(var/obj/machinery/power/terminal/T in powernet.nodes)
 		if(T.master && istype(T.master, /obj/machinery/power/smes))
 			var/obj/machinery/power/smes/S = T.master
-			powernet_union |= S.powernet.nodes
+			powernet_union |= S.connection?.network?.get_hosts() || list()
 
 	var/found_grid_checker = FALSE
 	for(var/obj/machinery/power/grid_checker/G in powernet_union)

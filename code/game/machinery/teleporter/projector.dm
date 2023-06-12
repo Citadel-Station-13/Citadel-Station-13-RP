@@ -30,7 +30,6 @@
 	. = ..()
 	update_appearance()
 
-
 	component_parts = list()
 	component_parts += new /obj/item/smes_coil(src)
 	update_charge()
@@ -50,9 +49,9 @@
 		return
 	if(current_joules == power_capacity)
 		return
-	if(terminal && terminal.powernet)
+	if(!isnull(terminal))
 		var/energy_buffer = 0
-		energy_buffer = terminal.draw_power(recharge_rate)
+		energy_buffer = terminal.dynamic_draw(recharge_rate, POWER_BALANCING_TIER_HIGH)
 		current_joules += KW_TO_KWM(energy_buffer, 1)
 		current_joules = clamp(current_joules, 0, power_capacity)
 
@@ -70,11 +69,8 @@
 		for(var/obj/machinery/power/terminal/term in T)
 			if(term && term.dir == turn(d, 180))
 				terminal = term
+				terminal.bind(src)
 				break
-	if(!terminal)
-		return
-	if(!terminal.powernet)
-		terminal.connect_to_network()
 
 /obj/machinery/tele_projector/update_icon()
 	cut_overlays()
