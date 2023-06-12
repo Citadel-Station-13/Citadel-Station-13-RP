@@ -51,10 +51,6 @@
 	overlays_to_add += I
 	add_overlay(overlays_to_add)
 
-/obj/machinery/atmospherics/component/binary/massive_heat_pump/Destroy()
-	. = ..()
-	qdel(power_machine)
-
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/process(delta_time)
 	if(!network1 || !network2)
 		build_network()//built networks if we are missing them
