@@ -100,8 +100,8 @@
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
 		res.Blend(get_flat_icon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
-	return res
-
+	// trample animations
+	return icon(res, dir = SOUTH, frame = 1)
 
 /obj/item/camera/proc/get_mobs(turf/the_turf as turf)
 	var/mob_detail

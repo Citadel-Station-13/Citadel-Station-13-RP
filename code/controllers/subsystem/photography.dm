@@ -206,7 +206,7 @@ SUBSYSTEM_DEF(photography)
 		)
 	)
 	query.Execute()
-	photo.id = query.last_insert_id
+	photo.id = "[query.last_insert_id]"
 
 	// resume admin proccall guard
 	usr = __oldusr
