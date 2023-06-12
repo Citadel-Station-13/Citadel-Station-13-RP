@@ -31,6 +31,16 @@
 
 	//* LEGACY BELOW *//
 
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/ferry/emergency/escape,
+		/datum/shuttle/autodock/overmap/excursion,
+		/datum/shuttle/autodock/overmap/courser,
+		/datum/shuttle/autodock/overmap/hammerhead,
+		/datum/shuttle/autodock/overmap/civvie,
+		/datum/shuttle/autodock/overmap/emt,
+		/datum/shuttle/autodock/ferry/supply/cargo,
+		/datum/shuttle/autodock/ferry/belter,
+	)
 	legacy_persistence_id = "rift"
 	full_name = "NSB Atlas"
 	use_overmap = TRUE

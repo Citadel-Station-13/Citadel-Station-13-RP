@@ -30,6 +30,10 @@
 	/// center us if we're smaller than world size
 	var/center = TRUE
 
+	//! legacy : spawn these shuttle datums on load
+	var/list/legacy_assert_shuttle_datums
+	#warn hook/impl above
+
 /datum/map/New()
 	// immediately resolve dependencies / lateload
 	for(var/i in 1 to length(dependencies))

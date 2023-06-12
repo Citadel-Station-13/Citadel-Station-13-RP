@@ -14,7 +14,6 @@
 	var/static/list/datum/map/loaded_maps = list()
 	/// available maps - k-v lookup by id
 	var/list/datum/map/keyed_maps
-
 /datum/controller/subsystem/mapping/Shutdown()
 	. = ..()
 	write_next_map()
