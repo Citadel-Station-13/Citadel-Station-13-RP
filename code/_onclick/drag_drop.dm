@@ -40,7 +40,7 @@
 		return
 	if(SEND_SIGNAL(over_object, COMSIG_MOUSEDROPPED_ONTO, src, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
 		return
-	over_object.MouseDroppedOn(src, user, params)
+	over_object.MouseDroppedOn(src, user, proximity, params)
 
 // todo: less shit naming convenions for these
 

@@ -7177,6 +7177,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "arU" = (
@@ -7826,7 +7829,7 @@
 "atA" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/material/knife/tacknife,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
@@ -8256,14 +8259,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
-"auB" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/dogbed{
-	name = "pet bed"
-	},
-/mob/living/simple_mob/animal/passive/fox/renault,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "auC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -8302,7 +8297,7 @@
 "auH" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
 "auJ" = (
@@ -11139,7 +11134,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aBU" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rsurface/level3)
 "aBV" = (
 /obj/structure/cable/green{
@@ -11799,15 +11794,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aDK" = (
-/obj/structure/dogbed,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
-	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
@@ -12268,13 +12259,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "aFb" = (
-/obj/machinery/tele_pad,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_projector,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aFc" = (
@@ -13201,7 +13192,7 @@
 "aHy" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /obj/item/material/knife/tacknife,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_north)
@@ -14758,6 +14749,7 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "aLk" = (
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "aLl" = (
@@ -16300,7 +16292,7 @@
 "aPa" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
-/obj/item/clothing/head/tajaran/scarf,
+/obj/item/clothing/head/tajaranold/scarf,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aPc" = (
@@ -17093,7 +17085,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "aRf" = (
-/obj/item/radio/beacon,
 /obj/structure/handrail,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -19576,13 +19567,13 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/landing_pad)
 "aXy" = (
-/obj/machinery/tele_projector,
 /obj/effect/floor_decal/corner/blue{
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
+/obj/machinery/tele_pad,
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "aXA" = (
@@ -21073,6 +21064,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "drn" = (
@@ -21395,6 +21387,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "eml" = (
@@ -21514,6 +21507,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "ezH" = (
@@ -22218,6 +22212,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
+/obj/item/radio/beacon/anchored,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "gtg" = (
@@ -22505,15 +22501,15 @@
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_y = 24;
+	id = "UpperInnerTeleSciBlastDoor";
 	name = "Upper Inner TeleSci Blast Door Button";
-	id = "UpperInnerTeleSciBlastDoor"
+	pixel_y = 24
 	},
 /obj/machinery/button/remote/blast_door{
-	pixel_x = -11;
-	pixel_y = 24;
+	id = "UpperOuterTeleSciBlastDoor";
 	name = "Upper Outer TeleSci Blast Door Button";
-	id = "UpperOuterTeleSciBlastDoor"
+	pixel_x = -11;
+	pixel_y = 24
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -22605,6 +22601,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
+"hGl" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/teleporter)
 "hKE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
@@ -23553,6 +23561,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "lfK" = (
@@ -23885,6 +23894,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "mpH" = (
@@ -25298,8 +25308,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	name = "Upper Exterior Telesci Blast Door";
-	id = "UpperInnerTeleSciBlastDoor"
+	id = "UpperInnerTeleSciBlastDoor";
+	name = "Upper Exterior Telesci Blast Door"
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/telescience_lab)
@@ -26632,8 +26642,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/blast/regular{
-	name = "Upper Interior Telesci Blast Door";
-	id = "UpperOuterTeleSciBlastDoor"
+	id = "UpperOuterTeleSciBlastDoor";
+	name = "Upper Interior Telesci Blast Door"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/telescience_lab)
@@ -27264,6 +27274,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "xvO" = (
@@ -27429,6 +27440,9 @@
 	frequency = 1380;
 	master_tag = "courser_docker";
 	pixel_y = -22
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
@@ -47542,7 +47556,7 @@ aCl
 aYJ
 aXc
 aGk
-auB
+aNT
 aWw
 abo
 aLK
@@ -49310,7 +49324,7 @@ ayH
 alI
 aFZ
 aMg
-aNO
+hGl
 aNO
 ahr
 aNO

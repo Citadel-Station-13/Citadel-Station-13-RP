@@ -53,6 +53,32 @@ GLOBAL_LIST_EMPTY(apcs)
 #define AUTO_THRESHOLD_LIGHT 10
 #define AUTO_THRESHOLD_ENVIR 1
 
+/// APCS with hidden alarms and no power cells
+/obj/machinery/power/apc/alarms_hidden/no_cell
+	cell_type = null
+	chargelevel = 0
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/east_bump
+	name = "east bump"
+	dir = 4
+	pixel_x = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/west_bump
+	name = "west bump"
+	dir = 8
+	pixel_x = -28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/north_bump
+	name = "north bump"
+	dir = 1
+	pixel_y = 28
+
+/obj/machinery/power/apc/alarms_hidden/no_cell/south_bump
+	name = "south bump"
+	pixel_y = -28
+
+
+
 /**
  * APCs
  *

@@ -1,5 +1,5 @@
 /*******
- * Crypto miner, turns power into points for engineering
+ * Crypto miner, or cryptominer turns power into points for engineering
  * Basicly a glorified power sink
  * Heats either atmos in the connector below or atmos in the environment
  * Reduced efficency the warmer it gets
@@ -30,6 +30,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 /obj/machinery/power/crypto_miner/examine(mob/user)
     . = ..()
+    . += "An indicator on [src]'s controll panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium to function."
     if(GLOB.points_mined)//Only show this if someone actually mined
         . += "[src] is [power_level? "on":"off"]. Current Power Level reads [power_level]."
         . += "Progress to next Point: [(power_drawn/GLOB.power_per_point) *100] %"
@@ -47,6 +48,10 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     if(temperature_damage >= 100)//Once the circuit is fried, turn off
         power_level = 0
         return
+
+    if(!check_right_atmos())
+        temperature_damage++
+        src.visible_message(SPAN_NOTICE("[src] beeps as it is unable to work in this atmosphere."))
 
     var/new_power_drawn = draw_power(power_level * 0.001) * 1000
     power_drawn += new_power_drawn
@@ -128,4 +133,19 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
                 to_chat(user, SPAN_NOTICE("You completely restore the [src]'s circuit"))
     else
         to_chat(user, SPAN_NOTICE("There is no damage on the [src]'s circuit"))
+
+/obj/machinery/power/crypto_miner/proc/check_right_atmos()
+	var/datum/gas_mixture/env = loc.return_air()
+	var/non_helium = 0
+	var/helium = 0
+	for(var/diff_gasses in env.gas)
+		if(ispath(diff_gasses, /datum/gas/helium))
+			helium = env.gas[diff_gasses]
+		else if(ispath(diff_gasses, /datum/gas/vimur))
+			helium = env.gas[diff_gasses]
+		else
+			non_helium += env.gas[diff_gasses]
+	return helium > non_helium
+
+
 

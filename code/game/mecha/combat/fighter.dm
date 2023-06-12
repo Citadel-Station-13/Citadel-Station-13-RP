@@ -5,7 +5,7 @@
 	desc = "The base type of fightercraft. Don't spawn this one!"
 
 	var/datum/effect_system/ion_trail_follow/ion_trail
-	var/stabilization_enabled = TRUE //If our anti-space-drift is on
+	var/landing_gear_raised = FALSE //If our anti-space-drift is on
 	var/ground_capable = FALSE //If we can fly over normal turfs and not just space
 
 	icon = 'icons/mecha/fighters64x64.dmi' //See ATTRIBUTIONS.md for details on license
@@ -26,8 +26,8 @@
 
 	wreckage = /obj/effect/decal/mecha_wreckage/gunpod
 
-	stomp_sound = 'sound/machines/generator/generator_end.ogg'
-	swivel_sound = 'sound/machines/hiss.ogg'
+	stomp_sound = 'sound/mecha/fighter/engine_mid_fighter_move.ogg'
+	swivel_sound = 'sound/mecha/fighter/engine_mid_boost_01.ogg'
 
 	bound_height = 64
 	bound_width = 64
@@ -135,17 +135,17 @@
 //Modified phazon code
 /obj/mecha/combat/fighter/Topic(href, href_list)
 	..()
-	if (href_list["toggle_stabilization"])
-		stabilization_enabled = !stabilization_enabled
-		send_byjax(src.occupant,"exosuit.browser","stabilization_command","[stabilization_enabled?"Dis":"En"]able thruster stabilization")
-		src.occupant_message("<span class='notice'>Thruster stabilization [stabilization_enabled? "enabled" : "disabled"].</span>")
+	if (href_list["toggle_landing_gear"])
+		landing_gear_raised = !landing_gear_raised
+		send_byjax(src.occupant,"exosuit.browser","landing_gear_command","[landing_gear_raised?"Lower":"Raise"] landing gear")
+		src.occupant_message("<span class='notice'>Landing gear [landing_gear_raised? "raised" : "lowered"].</span>")
 		return
 
 /obj/mecha/combat/fighter/get_commands()
 	var/output = {"<div class='wr'>
 						<div class='header'>Special</div>
 						<div class='links'>
-						<a href='?src=\ref[src];toggle_stabilization=1'><span id="stabilization_command">[stabilization_enabled?"Dis":"En"]able thruster stabilization</span></a><br>
+						<a href='?src=\ref[src];toggle_landing_gear=1'><span id="landing_gear_command">[landing_gear_raised?"Raise":"Lower"] landing gear</span></a><br>
 						</div>
 						</div>
 						"}
@@ -153,25 +153,29 @@
 	return output
 
 /obj/mecha/combat/fighter/can_ztravel()
-	return (stabilization_enabled && has_charge(step_energy_drain))
+	return (landing_gear_raised && has_charge(step_energy_drain))
 
 // No space drifting
+// This doesnt work but I actually dont want it to anyways, so I'm not touching it at all. Space drifting is cool.
 /obj/mecha/combat/fighter/check_for_support()
-	if (stabilization_enabled)
+	if (landing_gear_raised)
 		return 1
 
 	return ..()
 
 // No falling if we've got our boosters on
 /obj/mecha/combat/fighter/can_fall()
-	if(stabilization_enabled && has_charge(step_energy_drain))
+	if(landing_gear_raised && has_charge(step_energy_drain))
 		return FALSE
 	else
 		return TRUE
 
+
 /obj/mecha/combat/fighter/proc/consider_gravity(var/moved = FALSE)
 	var/gravity = has_gravity()
-	if(gravity && ground_capable && occupant)
+	if (gravity && !landing_gear_raised)
+		playsound(src, 'sound/effects/roll.ogg', 50, 1)
+	else if(gravity && ground_capable && occupant)
 		start_hover()
 	else if((!gravity && ground_capable) || !occupant)
 		stop_hover()
@@ -179,6 +183,11 @@
 		occupant_message("Collision alert! Vehicle not rated for use in gravity!")
 		take_damage(NOGRAV_FIGHTER_DAMAGE, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+
+/obj/mecha/combat/fighter/get_step_delay()
+    . = ..()
+    if(has_gravity() && !landing_gear_raised)
+        . += 4
 
 /obj/mecha/combat/fighter/handle_equipment_movement()
 	. = ..()
@@ -205,7 +214,7 @@
 		animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 
 /obj/mecha/combat/fighter/check_for_support()
-	if (has_charge(step_energy_drain) && stabilization_enabled)
+	if (has_charge(step_energy_drain) && landing_gear_raised)
 		return 1
 
 	var/list/things = orange(1, src)
@@ -257,7 +266,7 @@
 	var/image/stripe1_overlay
 	var/image/stripe2_overlay
 
-/obj/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/gunpod/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -333,7 +342,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/baron/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -352,7 +361,7 @@
 	name = "\improper Baron-SV"
 	desc = "A conventional space superiority fighter, one-seater. Not capable of ground operations. The Baron-SV (Security Variant) is frequently used by NT Security forces during EVA patrols."
 
-/obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/baron/sec/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
 	ME.attach(src)
@@ -363,7 +372,97 @@
 	name = "Voidcraft - Baron"
 	desc = "This is a small space fightercraft that has an arrowhead design. Can hold up to one pilot. \
 	Unlike some fighters, this one is not designed for atmospheric operation, and is only capable of performing \
-	maneuvers in the vacuum of space. Attempting to operate it in an atmosphere is not recommended."
+	maneuvers in the vacuum of space. Attempting flight while in an atmosphere is not recommended."
+	value = CATALOGUER_REWARD_MEDIUM
+
+
+////////////// Duke //////////////
+
+/obj/mecha/combat/fighter/duke
+	name = "\improper Duke"
+	desc = "The Duke Heavy Fighter is designed and manufactured by Hephaestus Industries as a bulky craft built to punch above its weight. This one comes painted in Nanotrasen's blue white and black color scheme straight out of the fabricator, catering to security team's need for friendly identification. It makes up for the minimal hull upgrade space with a stronger chassis, and multiple mounting points for missiles, bombs, and lasers. It's incapable of Atmospheric flight."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke"
+	initial_icon = "duke"
+
+	step_in = 3 //slightly slower than a baron (this shit doesnt actually work atm, likely due to the whole equipment weight nonsense)
+
+	health = 800
+	maxhealth = 800 //double baron HP, only room for one defensive upgrade. No specials(cloaking, speed, ect) or universals.
+
+	max_hull_equip = 1
+	max_weapon_equip = 4
+	max_utility_equip = 2
+	max_universal_equip = 0
+	max_special_equip = 0
+
+	catalogue_data = list(/datum/category_item/catalogue/technology/duke)
+	wreckage = /obj/effect/decal/mecha_wreckage/duke
+
+	ground_capable = FALSE
+
+/obj/mecha/combat/fighter/duke/loaded/Initialize(mapload) //Loaded version with guns
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME.attach(src)
+
+/obj/mecha/combat/fighter/duke/db
+	name = "\improper Duke \"Deep Blue\""
+	desc = "A Duke heavy fighter decorated with the common 'Deep Blue' customization kit, both designed and sold by Hephaestus Industries. This paint scheme pays homage to one of the first supercomputing systems that dared to push the boundaries of what it meant to think. Think 40 steps ahead of your enemy with these colorations, just as Deep Blue did so many years ago."
+	icon_state = "duke_db"
+	initial_icon = "duke_db"
+	wreckage = /obj/effect/decal/mecha_wreckage/duke/db
+
+/obj/mecha/combat/fighter/duke/db/loaded/Initialize(mapload) //Loaded version with guns
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME.attach(src)
+
+/obj/mecha/combat/fighter/duke/cw
+	name = "\improper Duke \"Clockwork\""
+	desc = "A Duke heavy fighter decorated with the rare 'Clockwork' customization kit, both designed and sold by Hephaestus Industries. Textured paint with accurate colorations and reflectiveness to brass makes this Duke Heavy Fighter stand out amongst the competition in any conflict."
+	icon_state = "duke_cw"
+	initial_icon = "duke_cw"
+	wreckage = /obj/effect/decal/mecha_wreckage/duke/cw
+
+/obj/mecha/combat/fighter/duke/cw/loaded/Initialize(mapload) //Loaded version with guns
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser
+	ME.attach(src)
+	ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive
+	ME.attach(src)
+
+/obj/effect/decal/mecha_wreckage/duke
+	name = "Duke wreckage"
+	desc = "Remains of some unfortunate fighter. Completely unrepairable."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke-broken"
+	bound_width = 64
+	bound_height = 64
+
+/obj/effect/decal/mecha_wreckage/duke/db
+	name = "Duke wreckage"
+	desc = "Remains of some unfortunate fighter. Completely unrepairable."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke_db-broken"
+	bound_width = 64
+	bound_height = 64
+
+/obj/effect/decal/mecha_wreckage/duke/cw
+	name = "Duke wreckage"
+	desc = "Remains of some unfortunate fighter. Completely unrepairable."
+	icon = 'icons/mecha/fighters64x64.dmi'
+	icon_state = "duke_cw-broken"
+	bound_width = 64
+	bound_height = 64
+
+/datum/category_item/catalogue/technology/duke
+	name = "Voidcraft - Duke"
+	desc = "The Duke Heavy Fighter is designed and manufactured by Hephaestus Industries as a bulky craft built to punch above its weight. Primarily armed with missiles, bombs, or similar large payloads, this fighter packs a punch against most at the cost of room for minimul hull modifications, which is almost always reserved for much-needed armor inserts instead of a shield. It's incapable of atmospheric flight."
 	value = CATALOGUER_REWARD_MEDIUM
 
 
@@ -381,7 +480,7 @@
 
 	ground_capable = FALSE
 
-/obj/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/scoralis/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
 	ME.attach(src)
@@ -420,7 +519,19 @@
 	health = 500
 	maxhealth = 500
 
-/obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/allure/loaded/Initialize(mapload) //Loaded version with guns
+	. = ..()
+	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
+	ME.attach(src)
+
+/obj/mecha/combat/fighter/allure/royalty
+	name = "\improper Allure \"Royalty\""
+	desc = "A limited edition purple design with gold inlay that embodies the same colorations and pattern designs of royalty skrellian during the time of the Allure's initial release."
+	icon_state = "allure_royalty"
+	initial_icon = "allure_royalty"
+	wreckage = /obj/effect/decal/mecha_wreckage/allure/royalty
+
+/obj/mecha/combat/fighter/allure/royalty/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/cloak
 	ME.attach(src)
@@ -433,11 +544,13 @@
 	bound_width = 64
 	bound_height = 64
 
+/obj/effect/decal/mecha_wreckage/allure/royalty
+	icon_state = "allure_royalty-broken"
+
 /datum/category_item/catalogue/technology/allure
 	name = "Voidcraft - Allure"
-	desc = "A space superiority fighter of zorren design, many would comment that the blocky shape hinders aesthetic appeal. However, Zorren are \
-	often found painting their hulls in intricate designs of purple and gold, and this craft is no exception to the rule. Some individual seems to have \
-	decorated it finely. Import craft like this one often ship with no weapons, though the Zorren saw fit to integrate a cloaking device."
+	desc = "A space superiority fighter of Skrellian design. Its angular shape and wide overhead cross-section is made up for by it's stout armor and carefully crafted hull paint. \
+	Import craft like this one often ship with no weapons, though the Skrell saw fit to integrate a cloaking device."
 	value = CATALOGUER_REWARD_MEDIUM
 
 ////////////// Pinnace //////////////
@@ -460,7 +573,7 @@
 
 	ground_capable = TRUE
 
-/obj/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with gans
+/obj/mecha/combat/fighter/pinnace/loaded/Initialize(mapload) //Loaded version with guns
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/passenger
 	ME.attach(src)

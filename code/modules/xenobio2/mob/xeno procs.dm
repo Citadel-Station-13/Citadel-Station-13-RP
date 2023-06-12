@@ -54,7 +54,7 @@ Divergence proc, used in mutation to make unique datums.
 		//Let's handle some chemical smoke, for scientific smoke bomb purposes.
 		for(var/obj/effect/particle_effect/smoke/chem/smoke in view(1, src))
 			if(smoke.reagents.total_volume)
-				smoke.reagents.trans_to_mob(src, 10, CHEM_BLOOD, copy = 1)
+				smoke.reagents.trans_to_mob(src, 10, CHEM_INJECT, copy = 1)
 
 		reagents.trans_to_obj(temp_chem_holder, min(reagents.total_volume,rand(1,4)))
 		var/reagent_total

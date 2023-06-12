@@ -48,7 +48,7 @@
 
 /obj/structure/closet/body_bag/attackby(obj/item/W, mob/user)
 	if (istype(W, /obj/item/pen))
-		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
+		var/t = input(user, "What would you like the label to be?", name, null) as text
 		if (user.get_active_held_item() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
@@ -218,7 +218,7 @@
 		return
 
 	if(H.reagents)
-		syringe.reagents.trans_to_mob(H, 30, CHEM_BLOOD)
+		syringe.reagents.trans_to_mob(H, 30, CHEM_INJECT)
 
 /obj/structure/closet/body_bag/cryobag/examine(mob/user)
 	. = ..()

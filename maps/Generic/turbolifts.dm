@@ -1,7 +1,7 @@
 /obj/turbolift_map_holder/rift
 	name = "Atlas Lift"
 	depth = 5
-	lift_size_x = 2
+	lift_size_x = 2 //Addative to source tile. A 3x3 lift would be '2x2' here because we need to not include the source tile.
 	lift_size_y = 2
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
@@ -14,8 +14,23 @@
 		/area/turbolift/rsurface/level3
 		)
 
+/obj/turbolift_map_holder/rift_fighterbay
+	name = "Hammerhead Lift"
+	depth = 3
+	lift_size_x = 6 //Addative to source tile.
+	lift_size_y = 4
+	icon = 'icons/obj/turbolift_preview_5x5.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/floor/tiled/techmaint
+
+	areas_to_use = list(
+		/area/turbolift/rhammerhead/underground,
+		/area/turbolift/rhammerhead/midpoint,
+		/area/turbolift/rhammerhead/hhbay,
+		)
+
 /obj/turbolift_map_holder/rift_mining
-	name = "Atlas Minging Lift"
+	name = "Atlas Mining Lift"
 	depth = 4
 	lift_size_x = 2
 	lift_size_y = 1
@@ -30,14 +45,14 @@
 		)
 
 /obj/turbolift_map_holder/rift_west_base
-	name = "Atlas Minging Lift"
+	name = "Atlas Mining Lift"
 	dir = NORTH
 	depth = 4
 	lift_size_x = 3
 	lift_size_y = 3
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
 	wall_type = null // Don't make walls
-	floor_type = /turf/simulated/shuttle/floor/voidcraft/lythios43c
+	floor_type = /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors
 
 	areas_to_use = list(
 		/area/turbolift/rwest_mining/base,

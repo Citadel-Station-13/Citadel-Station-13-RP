@@ -203,19 +203,19 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	switch(length(M))
 		if(20) // rgba full with constant
 		if(9) // rgb without constant
-			expanding.Insert(4, null) // inject ra
-			expanding.Insert(8, null) // inject ga
-			expanding.Insert(12, null) // inject ba
-			expanding.Insert(13, null, null, null, 1) // inject ar to aa
-			expanding.Insert(17, null, null, null, null) // inject cr to ca
-		if(12) // rgb with constant			expanding.Insert(4, null)
-			expanding.Insert(4, null) // insert ra
-			expanding.Insert(8, null) // inject ga
-			expanding.Insert(12, null) // inject ba
-			expanding.Insert(13, null, null, null, 1) // inject ar to aa
-			expanding.Insert(20, null) // inject ca
+			expanding.Insert(4, 0) // inject ra
+			expanding.Insert(8, 0) // inject ga
+			expanding.Insert(12, 0) // inject ba
+			expanding.Insert(13, 0, 0, 0, 1) // inject ar to aa
+			expanding.Insert(17, 0, 0, 0, 0) // inject cr to ca
+		if(12) // rgb with constant			expanding.Insert(4, 0)
+			expanding.Insert(4, 0) // insert ra
+			expanding.Insert(8, 0) // inject ga
+			expanding.Insert(12, 0) // inject ba
+			expanding.Insert(13, 0, 0, 0, 1) // inject ar to aa
+			expanding.Insert(20, 0) // inject ca
 		if(16) // rgba without constant
-			expanding.Insert(17, null, null, null, null) // inject cr to ca
+			expanding.Insert(17, 0, 0, 0, 0) // inject cr to ca
 		else
 			. = color_matrix_identity()
 			CRASH("what?")
@@ -246,13 +246,13 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 /**
  * Assembles a color matrix, defaulting to identity.
  */
-/proc/construct_rgb_color_matrix(rr = 1, rg, rb, gr, gg = 1, gb, br, bg, bb = 1, cr, cg, cb)
+/proc/construct_rgb_color_matrix(rr = 1, rg = 0, rb = 0, gr = 0, gg = 1, gb = 0, br = 0, bg = 0, bb = 1, cr = 0, cg = 0, cb = 0)
 	return list(rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb)
 
 /**
  * Assembles a color matrix, defaulting to identity.
  */
-/proc/construct_rgba_color_matrix(rr = 1, rg, rb, ra, gr, gg = 1, gb, ga, br, bg, bb = 1, ba, ar, ag, ab, aa = 1, cr, cg, cb, ca)
+/proc/construct_rgba_color_matrix(rr = 1, rg = 0, rb = 0, ra = 0, gr = 0, gg = 1, gb = 0, ga = 0, br = 0, bg = 0, bb = 1, ba = 0, ar = 0, ag = 0, ab = 0, aa = 1, cr = 0, cg = 0, cb = 0, ca = 0)
 	return list(rr, rg, rb, ra, gr, gg, gb, ga, br, bg, bb, ba, ar, ag, ab, aa, cr, cg, cb, ca)
 
 /**

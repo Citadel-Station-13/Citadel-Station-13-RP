@@ -8,13 +8,13 @@
 	blobpwrdisplay.name = "blob power"
 	blobpwrdisplay.icon_state = "block"
 	blobpwrdisplay.screen_loc = ui_health
-	blobpwrdisplay.layer = HUD_LAYER
+	blobpwrdisplay.layer = HUD_LAYER_BASE
 
 	blobhealthdisplay = new /atom/movable/screen()
 	blobhealthdisplay.name = "blob health"
 	blobhealthdisplay.icon_state = "block"
 	blobhealthdisplay.screen_loc = ui_internal
-	blobhealthdisplay.layer = HUD_LAYER
+	blobhealthdisplay.layer = HUD_LAYER_BASE
 
 	mymob.client.screen = list()
 
@@ -35,7 +35,7 @@
 	using.icon = ui_style
 	using.icon_state = "intent_"+mymob.a_intent
 	using.screen_loc = ui_zonesel
-	using.layer = HUD_LAYER
+	using.layer = HUD_LAYER_BASE
 	src.adding += using
 	action_intent = using
 
@@ -49,7 +49,7 @@
 	using.name = "help"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
-	using.layer = HUD_LAYER+0.01
+	using.layer = HUD_LAYER_BASE+0.01
 	src.adding += using
 	help_intent = using
 
@@ -60,7 +60,7 @@
 	using.name = "disarm"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
-	using.layer = HUD_LAYER+0.01
+	using.layer = HUD_LAYER_BASE+0.01
 	src.adding += using
 	disarm_intent = using
 
@@ -71,7 +71,7 @@
 	using.name = "grab"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
-	using.layer = HUD_LAYER+0.01
+	using.layer = HUD_LAYER_BASE+0.01
 	src.adding += using
 	grab_intent = using
 
@@ -82,7 +82,7 @@
 	using.name = INTENT_HARM
 	using.icon = ico
 	using.screen_loc = ui_zonesel
-	using.layer = HUD_LAYER+0.01
+	using.layer = HUD_LAYER_BASE+0.01
 	src.adding += using
 	hurt_intent = using
 

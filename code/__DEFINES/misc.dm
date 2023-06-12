@@ -40,7 +40,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define EFFECTIVE_INVIS				50
 
 /// default mob sight flags
-#define SIGHT_FLAGS_DEFAULT (SEE_SELF)
+#define SIGHT_FLAGS_DEFAULT (SEE_SELF | SEE_BLACKNESS)
 
 /// For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200

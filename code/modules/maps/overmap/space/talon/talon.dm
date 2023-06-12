@@ -274,7 +274,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/shoes/boots/jackboots/toeless,
 		/obj/item/handcuffs = 2,
 		/obj/item/gun/energy/stunrevolver,
-		/obj/item/clothing/accessory/armor/tag/sec,
+		/obj/item/clothing/accessory/armor/tag/civsec,
 		/obj/item/flash,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/glasses/sunglasses,

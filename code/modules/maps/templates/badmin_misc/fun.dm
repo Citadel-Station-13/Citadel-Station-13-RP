@@ -170,9 +170,5 @@
 
 
 /datum/map_template/admin/fun
-/// Todo, add more random fun templates for admins to use
-
-/datum/map_template/admin_use/fun/spa
-	name = "Space Spa"
-	desc = "A pleasant spa located in a spaceship."
-	mappath = 'maps/templates/admin/spa.dmm'
+/// Todo, add more fun templates for admins to use
+//See templates.dm for current adminspawn templates

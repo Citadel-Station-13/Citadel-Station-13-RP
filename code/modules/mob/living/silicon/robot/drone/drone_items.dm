@@ -310,8 +310,8 @@
 		return 1
 	return 0
 
-/obj/item/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
-	if(!proximity)
+/obj/item/gripper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return // This will prevent them using guns at range but adminbuse can add them directly to modules, so eh.
 
 
@@ -392,9 +392,9 @@
 	var/datum/matter_synth/wood = null
 	var/datum/matter_synth/plastic = null
 
-/obj/item/matter_decompiler/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, proximity, params)
+/obj/item/matter_decompiler/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 
-	if(!proximity) return //Not adjacent.
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return //Not adjacent.
 
 	//We only want to deal with using this on turfs. Specific items aren't important.
 	var/turf/T = get_turf(target)
@@ -537,11 +537,11 @@
 		var/module_string = ""
 
 		if (!O)
-			module_string += text("<B>Resource depleted</B><BR>")
+			module_string += "<B>Resource depleted</B><BR>"
 		else if(activated(O))
-			module_string += text("[O]: <B>Activated</B><BR>")
+			module_string += "[O]: <B>Activated</B><BR>"
 		else
-			module_string += text("[O]: <A HREF=?src=\ref[src];act=\ref[O]>Activate</A><BR>")
+			module_string += "[O]: <A HREF=?src=\ref[src];act=\ref[O]>Activate</A><BR>"
 
 		if((istype(O,/obj/item) || istype(O,/obj/item)) && !(istype(O,/obj/item/stack/cable_coil)))
 			tools += module_string
@@ -552,11 +552,11 @@
 
 	if (emagged)
 		if (!module.emag)
-			dat += text("<B>Resource depleted</B><BR>")
+			dat += "<B>Resource depleted</B><BR>"
 		else if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
+			dat += "[module.emag]: <B>Activated</B><BR>"
 		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+			dat += "[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>"
 
 	dat += resources
 
