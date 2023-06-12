@@ -226,10 +226,7 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/Ph = O
-			var/mutable_appearance/photo_overlay = mutable_appearance(Ph.paperwork_overlay_6x7())
-			photo_overlay.pixel_x = 10
-			photo_overlay.pixel_y = 16
-			add_overlay(photo_overlay)
+			INVOKE_ASYNC(src, PROC_REF(add_photo_overlay), Ph)
 			photo = 1
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
@@ -239,3 +236,11 @@
 		desc += "\nThere is a photo attached to it."
 	add_overlay(image('icons/obj/bureaucracy.dmi', "clip"))
 	return
+
+// photo overlay fetches can take time because photos are lazy-loaded
+// thus, this is behind a waitfor in update_icon to not block icon updates while the fetch is going on.
+/obj/item/paper_bundle/proc/add_photo_overlay(obj/item/photo/photo)
+	var/mutable_appearance/photo_overlay = mutable_appearance(photo.paperwork_overlay_6x7())
+	photo_overlay.pixel_x = 10
+	photo_overlay.pixel_y = 16
+	add_overlay(photo_overlay)
