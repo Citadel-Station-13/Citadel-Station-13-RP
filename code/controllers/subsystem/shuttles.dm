@@ -66,6 +66,7 @@ SUBSYSTEM_DEF(shuttle)
 			continue // Its an "abstract class" datum, not for a real shuttle.
 		if(!initial(shuttle.defer_initialisation)) // Skip if it asks not to be initialized at startup.
 			LAZYDISTINCTADD(shuttles_to_initialize, shuttle_type)
+		#warn *scream
 	block_init_queue = FALSE
 	process_init_queues()
 	return ..()
@@ -97,6 +98,7 @@ SUBSYSTEM_DEF(shuttle)
 
 // Initializes all shuttles in shuttles_to_initialize
 /datum/controller/subsystem/shuttle/proc/initialize_shuttles()
+	#warn *scream
 	var/list/shuttles_made = list()
 	for(var/shuttle_type in shuttles_to_initialize)
 		var/shuttle = initialize_shuttle(shuttle_type)
