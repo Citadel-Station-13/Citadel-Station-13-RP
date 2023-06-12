@@ -8,9 +8,11 @@ $include logging.txt
 $include entries/dbconfig.txt
 $include entries/fail2topic.txt
 $include entries/game_options.txt
+$include entries/health.txt
 $include entries/hub.txt
 $include entries/lobby.txt
 $include entries/photography.txt
+$include entries/skills.txt
 $include entries/urls.txt
 
 
