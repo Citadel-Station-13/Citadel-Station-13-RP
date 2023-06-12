@@ -51,7 +51,7 @@
 	var/datum/picture/picture = photograph.picture()
 	// generate our icon
 	var/icon/generated_icon = icon('icons/modules/photography/photo.dmi', "photo")
-	generated_icon.Blend(picture.four_by_four(), ICON_OVERLAY, 10, 13)
+	generated_icon.Blend(picture.icon_4x4(), ICON_OVERLAY, 10, 13)
 
 /obj/item/photo/proc/photograph()
 	RETURN_TYPE(/datum/photograph)
@@ -66,6 +66,9 @@
 
 /obj/item/photo/proc/full_image()
 	return picture()?.icon_full()
+
+/obj/item/photo/proc/paperwork_overlay_6x7()
+	return picture()?.paperwork_overlay()
 
 /obj/item/photo/serialize()
 	. = ..()

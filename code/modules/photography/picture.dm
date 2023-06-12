@@ -20,6 +20,8 @@
 	var/icon/eight_by_eight
 	/// cached 4x4 thumbnail
 	var/icon/four_by_four
+	/// cached paperwork overlay
+	var/icon/paperwork_overlay
 
 /datum/picture/proc/load()
 	if(image_loaded)
@@ -85,3 +87,13 @@
 	scaling.Scale(4, 4)
 	four_by_four = scaling
 	return four_by_four
+
+/datum/picture/proc/paperwork_overlay()
+	if(!isnull(paperwork_overlay))
+		return paperwork_overlay
+	if(!load())
+		return
+	var/icon/generating = icon('icons/modules/photography/photo_overlay_6x7.dmi', "photo")
+	generating.Blend(icon_4x4(), BLEND_OVERLAY, 2, 3)
+	paperwork_overlay = generating
+	return paperwork_overlay

@@ -19,6 +19,11 @@
 	/// description: "you see a photo of [scene]. [description]". do not let players set this.
 	var/desc
 
+/datum/photograph/proc/from_image(icon/I)
+	ASSERT(!saved)
+	var/datum/picture/pic = SSphotography.create_picture(I)
+	picture_hash = pic.image_hash
+
 /datum/photograph/proc/mutable_clone()
 	var/datum/photograph/clone = new
 	clone.picture_hash = picture_hash

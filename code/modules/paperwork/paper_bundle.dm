@@ -226,9 +226,11 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/Ph = O
-			img = Ph.tiny
+			var/mutable_appearance/photo_overlay = mutable_appearance(Ph.paperwork_overlay())
+			photo_overlay.pixel_x = 10
+			photo_overlay.pixel_y = 16
+			add_overlay(photo_overlay)
 			photo = 1
-			add_overlay(img)
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
