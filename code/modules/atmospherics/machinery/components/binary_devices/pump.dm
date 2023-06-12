@@ -43,7 +43,7 @@ Thus, the two variables affect pump operation are set in New():
 		add_hiddenprint(user)
 		if(powered())
 			to_chat(user, "You toggle the power to the pump [use_power ? "Off" : "On"].")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>There doesn't seem to be any power.</span>")
@@ -208,7 +208,7 @@ Thus, the two variables affect pump operation are set in New():
 			set_use_power(USE_POWER_OFF)
 
 	if("power_toggle" in signal.data)
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["set_output_pressure"])
 		target_pressure = between(
@@ -246,7 +246,7 @@ Thus, the two variables affect pump operation are set in New():
 
 	switch(action)
 		if("power")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			. = TRUE
 		if("set_press")
 			var/press = params["press"]

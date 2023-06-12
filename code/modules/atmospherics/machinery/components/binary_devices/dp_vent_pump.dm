@@ -217,7 +217,7 @@
 		update_use_power(text2num(signal.data["power"]))
 
 	if(signal.data["power_toggle"])
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["direction"])
 		pump_direction = text2num(signal.data["direction"])

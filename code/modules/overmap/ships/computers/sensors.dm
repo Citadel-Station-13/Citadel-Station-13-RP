@@ -204,7 +204,7 @@
 		return // No turning on if broken or misplaced.
 	if(!use_power) //need some juice to kickstart
 		use_burst_power(idle_power_usage*5)
-	update_use_power(!use_power)
+	legacy_toggle_use_power()
 	update_icon()
 
 /obj/machinery/shipsensors/process(delta_time)

@@ -95,7 +95,7 @@
 	. = TRUE
 	switch(action)
 		if("toggleStatus")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			update_icon()
 		if("setGasTemperature")
 			var/amount = text2num(params["temp"])

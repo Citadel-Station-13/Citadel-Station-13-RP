@@ -40,7 +40,7 @@
 		add_hiddenprint(user)
 		if(powered())
 			to_chat(user, "You toggle the power to the [src] [on ? "Off" : "On"].")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			on = !on
 			update_icon()
 		else

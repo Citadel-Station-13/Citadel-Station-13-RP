@@ -154,7 +154,7 @@
 	switch(action)
 		if("power")
 			if(!configuring)
-				update_use_power(!use_power)
+				legacy_toggle_use_power()
 			else
 				set_use_power(USE_POWER_OFF)
 			. = TRUE

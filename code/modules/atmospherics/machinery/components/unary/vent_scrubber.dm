@@ -204,7 +204,7 @@
 	if(signal.data["power"] != null)
 		update_use_power(text2num(signal.data["power"]))
 	if(signal.data["power_toggle"] != null)
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["panic_siphon"]) //must be before if("scrubbing" thing
 		panic = text2num(signal.data["panic_siphon"])

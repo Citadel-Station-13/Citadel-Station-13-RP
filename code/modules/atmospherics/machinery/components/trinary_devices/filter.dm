@@ -149,7 +149,7 @@
 
 	switch(action)
 		if("power")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 		if("rate")
 			var/rate = params["rate"]
 			if(rate == "max")

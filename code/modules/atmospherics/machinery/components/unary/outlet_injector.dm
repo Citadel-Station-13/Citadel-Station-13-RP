@@ -175,7 +175,7 @@
 		update_use_power(text2num(signal.data["power"]))
 
 	if(signal.data["power_toggle"])
-		update_use_power(!use_power)
+		legacy_toggle_use_power()
 
 	if(signal.data["inject"])
 		spawn inject()

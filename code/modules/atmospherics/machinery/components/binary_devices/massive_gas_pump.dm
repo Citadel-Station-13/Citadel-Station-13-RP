@@ -160,7 +160,7 @@
 
 	switch(action)
 		if("power")
-			update_use_power(!use_power)
+			legacy_toggle_use_power()
 			. = TRUE
 		if("set_press")
 			var/press = params["press"]

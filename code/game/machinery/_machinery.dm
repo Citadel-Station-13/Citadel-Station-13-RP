@@ -569,6 +569,16 @@
 	// turn off
 	__set_static_power(0)
 
+//! legacy because you shouldn't be doing this and it's bad fucking practice??
+/obj/machinery/proc/legacy_toggle_use_power()
+	switch(use_power)
+		if(USE_POWER_ACTIVE)
+			set_use_power(USE_POWER_IDLE)
+		if(USE_POWER_IDLE)
+			set_use_power(USE_POWER_ACTIVE)
+		else
+			CRASH("tried to toggle without being idle OR active; looks like the tech debt caught up.")
+
 /obj/machinery/proc/set_use_power(new_use_power)
 	use_power = new_use_power
 	switch(use_power)
