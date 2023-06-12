@@ -23,8 +23,11 @@ SUBSYSTEM_DEF(assets)
 /datum/controller/subsystem/assets/Initialize(timeofday)
 	for(var/type in typesof(/datum/asset))
 		var/datum/asset/A = type
-		if (type != initial(A._abstract))
-			load_asset_datum(type)
+		if(type == initial(A.abstract_type))
+			continue
+		if(initial(A.lazy))
+			continue
+		load_asset_datum(type)
 
 	transport.Initialize(cache)
 
