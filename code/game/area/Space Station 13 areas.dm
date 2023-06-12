@@ -25,10 +25,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	area_power_override = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	has_gravity = FALSE
-	power_light = 0
-	has_gravity = 0
-	power_equip = 0
-	power_environ = 0
 	ambience = AMBIENCE_SPACE
 	area_flags = AREA_FLAG_EXTERNAL
 	is_outside = OUTSIDE_YES
@@ -2125,9 +2121,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/assembly/assembly_line //Derelict Assembly Line
 	name = "\improper Assembly Line"
 	icon_state = "ass_line"
-	power_equip = 0
-	power_light = 0
-	power_environ = 0
+	power_channels = NONE
 
 //Teleporter
 
