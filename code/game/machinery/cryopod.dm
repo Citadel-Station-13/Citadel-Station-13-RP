@@ -395,6 +395,8 @@
 /// This function can not be undone; do not call this unless you are sure
 /// Also make sure there is a valid control computer
 /obj/machinery/cryopod/proc/despawn_occupant(mob/to_despawn, silent = FALSE)
+	if(to_despawn.has_alerting_status_effect())
+		log_and_message_admins("[key_name(to_despawn)] still had a long lasting status effect while cryoing, have an eye out should they respawn.")
 	//Recursively despawn mobs
 	for(var/mob/M in to_despawn)
 		despawn_occupant(M)
@@ -519,6 +521,7 @@
 		visible_message(SPAN_NOTICE("\The [initial(name)] [on_store_visible_message_1] [to_despawn.real_name] [on_store_visible_message_2]."), 3)
 	control_computer._admin_logs += "[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) at [stationtime2text()]"
 	log_and_message_admins("[key_name(to_despawn)] ([to_despawn.mind.role_alt_title]) entered cryostorage.")
+
 
 
 	// Dont delete mobs-in-mobs

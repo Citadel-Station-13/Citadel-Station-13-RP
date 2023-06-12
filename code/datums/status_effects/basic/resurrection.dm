@@ -1,5 +1,6 @@
 /datum/status_effect/resurrection_sickness
 	identifier = "resurrection"
+	alert_admins_when_leaving = TRUE
 
 /datum/status_effect/resurrection_sickness/on_apply(...)
 	. = ..()
@@ -15,3 +16,4 @@
 
 /datum/status_effect/resurrection_sickness/resleeve
 	identifier = "resleeve"
+

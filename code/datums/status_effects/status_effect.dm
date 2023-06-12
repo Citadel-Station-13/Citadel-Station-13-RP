@@ -28,6 +28,9 @@
 	/// mob we're affecting
 	var/mob/owner
 
+	/// Alert admins if a mob with this status effect leaves the round:
+	var/alert_admins_when_leaving = FALSE
+
 /datum/status_effect/New(mob/owner, duration, list/arguments)
 	ASSERT(isnull(owner.status_effects[identifier]))
 	src.owner = owner
@@ -226,6 +229,14 @@
 /mob/proc/has_status_effect(datum/status_effect/path)
 	var/id = initial(path.identifier)
 	return LAZYACCESS(status_effects, id)
+
+/mob/proc/has_alerting_status_effect()
+	var/list_length = LAZYLEN(status_effects)
+	for(var/i = list_length;i>=0; i--)
+		var/datum/status_effect/S = LAZYACCESS(L, i)
+		if(S.alert_admins_when_leaving)
+			return S
+
 
 //? Alert object
 
