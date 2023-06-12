@@ -73,7 +73,7 @@
 		icon_state += use_power ? "on" : "off"
 	else
 		icon_state += "off"
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 
 /obj/machinery/atmospherics/component/trinary/atmos_filter/process(delta_time)
 	..()

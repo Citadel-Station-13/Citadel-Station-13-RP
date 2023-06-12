@@ -192,14 +192,14 @@
 			var/input = input("1-5", "disperser strength", 1) as num|null
 			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				strength = sanitize_integer(input, 1, 5, 1)
-				middle.update_idle_power_usage(strength * range * 100)
+				middle.set_idle_power_usage(strength * range * 100)
 			. = TRUE
 
 		if("range")
 			var/input = input("1-5", "disperser radius", 1) as num|null
 			if(input && ui_status(usr, ui.state) == UI_INTERACTIVE)
 				range = sanitize_integer(input, 1, 5, 1)
-				middle.update_idle_power_usage(strength * range * 100)
+				middle.set_idle_power_usage(strength * range * 100)
 			. = TRUE
 
 		if("fire")

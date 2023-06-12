@@ -242,7 +242,7 @@
 					return FALSE
 
 			busy = making.name
-			update_use_power(USE_POWER_ACTIVE)
+			set_use_power(USE_POWER_ACTIVE)
 
 			//Check if we still have the materials.
 			var/coeff = (making.no_scale ? 1 : mat_efficiency) //Stacks are unaffected by production coefficient
@@ -261,7 +261,7 @@
 			sleep(build_time)
 
 			busy = 0
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			update_icon() //So lid opens
 
 			//Sanity check.

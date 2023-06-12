@@ -203,9 +203,9 @@ Thus, the two variables affect pump operation are set in New():
 
 	if(signal.data["power"])
 		if(text2num(signal.data["power"]))
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 		else
-			update_use_power(USE_POWER_OFF)
+			set_use_power(USE_POWER_OFF)
 
 	if("power_toggle" in signal.data)
 		update_use_power(!use_power)

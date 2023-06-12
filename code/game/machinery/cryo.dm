@@ -283,7 +283,7 @@
 	occupant.update_perspective()
 	occupant = null
 	current_heat_capacity = initial(current_heat_capacity)
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	return
 
 /obj/machinery/atmospherics/component/unary/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
@@ -314,7 +314,7 @@
 	vis_contents |= occupant
 	occupant.pixel_y += 19
 	current_heat_capacity = HEAT_CAPACITY_HUMAN
-	update_use_power(USE_POWER_ACTIVE)
+	set_use_power(USE_POWER_ACTIVE)
 //	M.metabslow = 1
 	add_fingerprint(usr)
 	update_icon()

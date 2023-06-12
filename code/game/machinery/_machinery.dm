@@ -169,6 +169,21 @@
 			power_recursive_registered = TRUE
 		update_power_on_move(src, old_loc)
 
+/obj/machinery/vv_edit_var(var_name, new_value)
+	if(var_name == NAMEOF(src, use_power))
+		set_use_power(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, power_channel))
+		set_power_channel(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, idle_power_usage))
+		set_idle_power_usage(new_value)
+		return TRUE
+	else if(var_name == NAMEOF(src, active_power_usage))
+		set_active_power_usage(new_value)
+		return TRUE
+	return ..()
+
 /obj/machinery/update_overlays()
 	. = ..()
 	if(panel_open && panel_icon_state)
@@ -207,21 +222,6 @@
 				return
 		else
 	return
-
-/obj/machinery/vv_edit_var(var_name, new_value)
-	if(var_name == NAMEOF(src, use_power))
-		update_use_power(new_value)
-		return TRUE
-	else if(var_name == NAMEOF(src, power_channel))
-		update_power_channel(new_value)
-		return TRUE
-	else if(var_name == NAMEOF(src, idle_power_usage))
-		update_idle_power_usage(new_value)
-		return TRUE
-	else if(var_name == NAMEOF(src, active_power_usage))
-		update_active_power_usage(new_value)
-		return TRUE
-	return ..()
 
 // todo: refactor tihs
 // todo: rendered_inoperable()

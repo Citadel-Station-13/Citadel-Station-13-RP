@@ -206,7 +206,7 @@
 		return 1
 
 	if (!node)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 	if(!can_pump())
 		return 0
 

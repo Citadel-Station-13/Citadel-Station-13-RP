@@ -504,14 +504,14 @@ var/global/list/light_type_cache = list()
 					on = 0
 					set_light(0)
 			else
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 				set_light(correct_range, correct_power, correct_color)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		emergency_mode = TRUE
 		START_PROCESSING(SSobj, src)
 	else
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		set_light(0)
 
 	active_power_usage = ((light_range * light_power) * LIGHTING_POWER_FACTOR)

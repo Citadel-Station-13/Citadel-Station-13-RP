@@ -72,7 +72,7 @@
 		if(breather.internals)
 			breather.internals.icon_state = "internal0"
 		breather = null
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 
 /obj/machinery/oxygen_pump/attack_ai(mob/user)
 	nano_ui_interact(user)
@@ -88,7 +88,7 @@
 			breather.internal = tank
 			if(breather.internals)
 				breather.internals.icon_state = "internal1"
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 
 /obj/machinery/oxygen_pump/proc/can_apply_to_target(mob/living/carbon/human/target, mob/user)
 	if(!user)
@@ -164,7 +164,7 @@
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 		else if(!breather.internal && tank)
 			breather.internal = tank
 			if(breather.internals)
@@ -286,7 +286,7 @@
 			contained.forceMove(src)
 			src.visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
 			breather = null
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 		else if(!breather.internal && tank)
 			breather.internal = tank
 			if(breather.internals)

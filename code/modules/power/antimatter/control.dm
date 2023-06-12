@@ -207,10 +207,10 @@
 /obj/machinery/power/am_control_unit/proc/toggle_power()
 	active = !active
 	if(active)
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 		visible_message("The [src.name] starts up.")
 	else
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		visible_message("The [src.name] shuts down.")
 	update_icon()
 	return

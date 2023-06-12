@@ -112,23 +112,23 @@
 
 /obj/machinery/cell_charger/process(delta_time)
 	if((machine_stat & (BROKEN|NOPOWER)) || !anchored)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		return
 
 	if(charging && !charging.fully_charged())
 		charging.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 
 		update_icon()
 	else
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 
 
 /obj/machinery/cell_charger/RefreshParts()
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	update_active_power_usage(base_power_draw * E)
+	set_active_power_usage(base_power_draw * E)
 	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 //cit change starts

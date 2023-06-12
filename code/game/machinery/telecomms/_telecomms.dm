@@ -515,7 +515,7 @@
 		if("range")
 			var/new_range = params["range"]
 			overmap_range = clamp(new_range, overmap_range_min, overmap_range_max)
-			update_idle_power_usage(initial(idle_power_usage)**(overmap_range+1))
+			set_idle_power_usage(initial(idle_power_usage)**(overmap_range+1))
 
 // RECEIVER
 /obj/machinery/telecomms/receiver/Options_Menu()
@@ -537,7 +537,7 @@
 		if("range")
 			var/new_range = params["range"]
 			overmap_range = clamp(new_range, overmap_range_min, overmap_range_max)
-			update_idle_power_usage(initial(idle_power_usage)**(overmap_range+1))
+			set_idle_power_usage(initial(idle_power_usage)**(overmap_range+1))
 
 /obj/machinery/telecomms/ui_act(action, params)
 	if(..())

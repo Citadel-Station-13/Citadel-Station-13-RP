@@ -373,7 +373,7 @@
 			to_chat(user, SPAN_WARNING("\The [src] is already occupied."))
 			return
 		M.forceMove(src)
-		update_use_power(USE_POWER_ACTIVE)
+		set_use_power(USE_POWER_ACTIVE)
 		occupant = M
 		update_icon()
 
@@ -392,7 +392,7 @@
 		if(A in component_parts)
 			continue
 		A.loc = src.loc
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	update_icon()
 	toggle_filter()
 	toggle_pump()

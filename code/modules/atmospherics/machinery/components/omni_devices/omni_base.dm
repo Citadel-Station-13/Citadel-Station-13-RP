@@ -65,7 +65,7 @@
 	last_flow_rate = 0
 
 	if(error_check())
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return 0

@@ -354,7 +354,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 		return FALSE
 
 	playsound(src, 'sound/weapons/flash.ogg', 100, FALSE)
-	update_use_power(USE_POWER_IDLE)
+	set_use_power(USE_POWER_IDLE)
 	active = TRUE
 	update_icon()
 	return TRUE
@@ -363,7 +363,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	if(!active)
 		return FALSE
 	playsound(src, 'sound/machines/apc_nopower.ogg', 50, FALSE)
-	update_use_power(USE_POWER_OFF)
+	set_use_power(USE_POWER_OFF)
 	active = FALSE
 	update_icon()
 	return TRUE

@@ -60,7 +60,7 @@
 /obj/machinery/power/supply_beacon/attack_hand(mob/user, list/params)
 
 	if(expended)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		to_chat (user, "<span class='warning'>\The [src] has used up its charge.</span>")
 		return
 

@@ -124,12 +124,12 @@
 
 /obj/machinery/recharger/process(delta_time)
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 		icon_state = icon_state_idle
 		return
 
 	if(!charging)
-		update_use_power(USE_POWER_IDLE)
+		set_use_power(USE_POWER_IDLE)
 		icon_state = icon_state_idle
 	else
 		if(istype(charging, /obj/item/modular_computer))
@@ -137,20 +137,20 @@
 			if(!C.battery_module.battery.fully_charged())
 				icon_state = icon_state_charging
 				C.battery_module.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 			return
 		else if(istype(charging, /obj/item/computer_hardware/battery_module))
 			var/obj/item/computer_hardware/battery_module/BM = charging
 			if(!BM.battery.fully_charged())
 				icon_state = icon_state_charging
 				BM.battery.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 			return
 
 		var/obj/item/cell/C = charging.get_cell()
@@ -158,10 +158,10 @@
 			if(!C.fully_charged())
 				icon_state = icon_state_charging
 				C.give(DYNAMIC_W_TO_CELL_UNITS(efficiency, 1))
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			else
 				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 
 		// NSFW Batteries
 		else if(istype(charging, /obj/item/ammo_casing/microbattery))
@@ -169,11 +169,11 @@
 			if(batt.shots_left >= initial(batt.shots_left))
 				batt.shots_left = initial(batt.shots_left)
 				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 			else
 				icon_state = icon_state_charging
 				batt.shots_left++
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			return
 
 		else if(istype(charging, /obj/item/ammo_magazine/cell_mag))
@@ -189,12 +189,12 @@
 		if(batt.shots_left < initial(batt.shots_left))
 			icon_state = icon_state_charging
 			batt.shots_left++
-			update_use_power(USE_POWER_ACTIVE)
+			set_use_power(USE_POWER_ACTIVE)
 		else
 			tally -= 1
 			if(tally == 0)
 				icon_state = icon_state_charged
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 
 /obj/machinery/recharger/emp_act(severity)
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
@@ -218,7 +218,7 @@
 	var/E = 0
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		E += C.rating
-	update_active_power_usage(base_power_draw * E)
+	set_active_power_usage(base_power_draw * E)
 	efficiency = active_power_usage * RECHARGER_CHEAT_FACTOR
 
 /obj/machinery/recharger/wallcharger

@@ -173,12 +173,12 @@
 			if(!configuring)
 				update_use_power(!use_power)
 			else
-				update_use_power(USE_POWER_OFF)
+				set_use_power(USE_POWER_OFF)
 		if("configure")
 			. = TRUE
 			configuring = !configuring
 			if(configuring)
-				update_use_power(USE_POWER_OFF)
+				set_use_power(USE_POWER_OFF)
 		if("set_flow_rate")
 			. = TRUE
 			if(!configuring || use_power)

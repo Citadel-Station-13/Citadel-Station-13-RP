@@ -216,9 +216,9 @@
 	switch(action)
 		if("toggle")
 			if(use_power == USE_POWER_IDLE)
-				update_use_power(USE_POWER_ACTIVE)
+				set_use_power(USE_POWER_ACTIVE)
 			else
-				update_use_power(USE_POWER_IDLE)
+				set_use_power(USE_POWER_IDLE)
 			update_icon()
 			. = TRUE
 

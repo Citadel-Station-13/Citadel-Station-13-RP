@@ -162,7 +162,7 @@
 		return 1
 
 	if (!node)
-		update_use_power(USE_POWER_OFF)
+		set_use_power(USE_POWER_OFF)
 	//broadcast_status()
 	if(!can_scrub())
 		return 0
@@ -209,14 +209,14 @@
 	if(signal.data["panic_siphon"]) //must be before if("scrubbing" thing
 		panic = text2num(signal.data["panic_siphon"])
 		if(panic)
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			scrubbing = 0
 		else
 			scrubbing = 1
 	if(signal.data["toggle_panic_siphon"] != null)
 		panic = !panic
 		if(panic)
-			update_use_power(USE_POWER_IDLE)
+			set_use_power(USE_POWER_IDLE)
 			scrubbing = 0
 		else
 			scrubbing = 1
