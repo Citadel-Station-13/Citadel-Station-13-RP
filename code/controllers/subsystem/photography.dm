@@ -51,7 +51,7 @@ SUBSYSTEM_DEF(photography)
 /**
  * returns path to store picture. null if we're not persistent.
  */
-/datum/controller/subsystem/photography/path_for_picture(hash)
+/datum/controller/subsystem/photography/proc/path_for_picture(hash)
 	if(!is_persistent())
 		return
 	var/root = CONFIG_GET(string/picture_storage)
