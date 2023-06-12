@@ -226,7 +226,7 @@
 			i++
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/Ph = O
-			var/mutable_appearance/photo_overlay = mutable_appearance(Ph.paperwork_overlay())
+			var/mutable_appearance/photo_overlay = mutable_appearance(Ph.paperwork_overlay_6x7())
 			photo_overlay.pixel_x = 10
 			photo_overlay.pixel_y = 16
 			add_overlay(photo_overlay)

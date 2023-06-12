@@ -92,7 +92,7 @@
 	news.message = message
 	news.message_type = announcement_type
 	news.can_be_redacted = 0
-	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC(announce_newscaster_news), news)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(announce_newscaster_news), news)
 
 /datum/legacy_announcement/proc/PlaySound(message_sound, list/zlevels)
 	for(var/mob/M in GLOB.player_list)
