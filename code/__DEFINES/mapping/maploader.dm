@@ -6,3 +6,5 @@
 #define MAP_MAXX	4
 #define MAP_MAXY	5
 #define MAP_MAXZ	6
+// length
+#define MAP_BOUNDS	6

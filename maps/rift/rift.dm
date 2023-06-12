@@ -128,7 +128,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/station/underground_deep
 
@@ -149,7 +149,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_floor
 	link_above = /datum/map_level/rift/station/underground_shallow
@@ -171,7 +171,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_deep
 	link_above = /datum/map_level/rift/station/surface_low
@@ -193,7 +193,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/underground_shallow
 	link_above = /datum/map_level/rift/station/surface_mid
@@ -215,7 +215,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/surface_low
 	link_above = /datum/map_level/rift/station/surface_high
@@ -237,7 +237,7 @@
 		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	base_turf = /turf/simulated/open
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/station/surface_mid
 
@@ -256,7 +256,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_above = /datum/map_level/rift/deep
 
@@ -285,7 +285,7 @@
 		ZTRAIT_LEGACY_BELTER_DOCK,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/base
 	link_above = /datum/map_level/rift/caves
@@ -314,7 +314,7 @@
 		ZTRAIT_GRAVITY,
 	)
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/deep
 	link_above = /datum/map_level/rift/plains
@@ -339,7 +339,7 @@
 	display_name = "NSB Atlas Western Plains"
 	absolute_path = "maps/rift/levels/rift-10-west_plains.dmm"
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	planet_path = /datum/planet/lythios43c
 	link_below = /datum/map_level/rift/caves
 	link_east = /datum/map_level/rift/station/surface_low
@@ -350,7 +350,7 @@
 	display_id = "atlas-relay"
 	display_name = "NSB Atlas Orbital Relay"
 	absolute_path = "maps/rift/levels/rift-11-orbital.dmm"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT
+	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_CONTACT
 	traits = list(
 		ZTRAIT_LEGACY_BELTER_TRANSIT,
 	)

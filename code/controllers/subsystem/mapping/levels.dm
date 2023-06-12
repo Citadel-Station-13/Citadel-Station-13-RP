@@ -40,15 +40,15 @@
 	#warn planet.
 
 	//! LEGACY
-	if((level_or_path.flags & MAP_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
+	if((level_or_path.flags & LEGACY_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
 		loaded_station.station_levels += z_index
-	if((level_or_path.flags & MAP_LEVEL_ADMIN) || level_or_path.has_trait(ZTRAIT_ADMIN))
+	if((level_or_path.flags & LEGACY_LEVEL_ADMIN) || level_or_path.has_trait(ZTRAIT_ADMIN))
 		loaded_station.admin_levels += z_index
-	if((level_or_path.flags & MAP_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
+	if((level_or_path.flags & LEGACY_LEVEL_CONTACT) || level_or_path.has_trait(ZTRAIT_STATION))
 		loaded_station.contact_levels += z_index
-	if((level_or_path.flags & MAP_LEVEL_SEALED))
+	if((level_or_path.flags & LEGACY_LEVEL_SEALED))
 		loaded_station.sealed_levels += z_index
-	if((level_or_path.flags & MAP_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
+	if((level_or_path.flags & LEGACY_LEVEL_CONSOLES) || level_or_path.has_trait(ZTRAIT_STATION))
 		loaded_station.map_levels += z_index
 	// Holomaps
 	// Auto-center the map if needed (Guess based on maxx/maxy)

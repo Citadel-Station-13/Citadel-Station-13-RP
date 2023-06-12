@@ -54,10 +54,10 @@ Not sure if this will work properly but no reason to get rid of it right now
 
 /datum/map_level/space_lateload/talon1
 	name = "Talon Deck One"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/space
 
 /datum/map_level/space_lateload/talon2
 	name = "Talon Deck Two"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/open

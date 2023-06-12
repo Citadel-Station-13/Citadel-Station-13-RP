@@ -32,7 +32,6 @@
 	var/hide_from_reports = FALSE
 
 	var/has_distress_beacon
-	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
 /obj/effect/overmap/visitable/Initialize(mapload)
@@ -198,7 +197,7 @@
 
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", zlevel = -1)//announce now tells every z-level once if -1 is passed
 
-	priority_announcement.Sound('sound/AI/sos.ogg', LEGACY_MAP_DATUM.zlevels)//play the sound once
+	priority_announcement.Sound('sound/AI/sos.ogg')//play the sound once
 
 	var/image/I = image(icon, icon_state = "distress")
 	I.plane = ABOVE_LIGHTING_PLANE

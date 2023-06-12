@@ -55,8 +55,9 @@
 
 /datum/map_template/proc/preload()
 	if(isnull(map_path))
-		return
+		return FALSE
 	var/datum/dmm_parsed/parsing = parse_map(map_path)
+	. = !!parsing
 	width = parsing.width
 	height = parsing.height
 	if(cache_parsed_map)

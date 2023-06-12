@@ -30,9 +30,9 @@
 	/// What the base turf of the z level is, aka what is left when something like maxcap bomb goes off. If not defined
 	/// it will default to /turf/simulated/space
 
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER
 	/// Z level flags. Similiar to traits except they control a couple different things. These two are what you are likely going
-	/// to be using a lot. MAP_LEVEL_CONTACT means you will be able to hear station alerts and such. MAP_LEVEL_PLAYER simply tells
+	/// to be using a lot. LEGACY_LEVEL_CONTACT means you will be able to hear station alerts and such. LEGACY_LEVEL_PLAYER simply tells
 	/// the z level that players will likely be on the z level. Check out maps.dm for more information
 
 /datum/map_template/lateload/example/on_map_loaded(z)

@@ -58,6 +58,7 @@
 			continue
 		serialized_levels += json_encode(level.serialize())
 	.["dependencies"] = dependencies
+	.["lateload"] = lateload
 	.["width"] = width
 	.["height"] = height
 	.["crop"] = crop
@@ -82,9 +83,8 @@
 			level.deserialize(json_decode(serialized_level))
 			levels += level
 			continue
-		// hopefully an id
-		levels += level
 	dependencies = .["dependencies"]
+	lateload = .["lateload"]
 	width = .["width"]
 	height = .["height"]
 	crop = .["crop"]

@@ -255,6 +255,10 @@
  * and load it at llx/y 10, 10, you end up loading a 6x6 chunk from the game world coordinates 10, 10,
  * to the game world coordinates 15, 15
  *
+ * ### Overflows
+ *
+ * Overflows to world bounds will be logged and denied.
+ *
  * @params
  * * map - dmm file or path or rsc entry
  * * ll_x - lowerleft x
@@ -271,7 +275,7 @@
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH)
 
 #warn above comment, below
 
@@ -283,84 +287,74 @@
 	Master.StopLoadingMap()
 	loading = FALSE
 
+// todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
+//       as opposed to rotating to somewhere else
 /datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
-
-	#warn return bounds!!
-
-// Do not call except via load() above.
-// Lower/upper here refers to the actual map template's parsed coordinates, NOT ACTUAL COORDINATES! Figure it out yourself my head hurts too much to implement that too.
-/datum/dmm_parsed/proc/_load_impl(x_offset = 1, y_offset = 1, z_offset = world.maxz + 1, cropMap = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, placeOnTop = FALSE, orientation = SOUTH, annihilate_tiles = FALSE, datum/dmm_orientation/forced_pattern)
-	var/list/areaCache = list()
+	var/list/area_cache = list()
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
-	var/list/loaded_bounds
-	var/did_expand = FALSE
-	loaded_bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
-	var/datum/dmm_orientation/mode = forced_pattern || GLOB.dmm_orientations["[orientation]"] || GLOB.dmm_orientations["[SOUTH]"]
+
+	var/list/loaded_bounds = list(INFINITY, INFINITY, INFINITY, -INFINITY, -INFINITY, -INFINITY)
+
+	var/datum/dmm_orientation/orientation = GLOB.dmm_orientations["[orientation]"]
+
 	var/invert_y = mode.invert_y
 	var/invert_x = mode.invert_x
 	var/swap_xy = mode.swap_xy
 	var/xi = mode.xi
 	var/yi = mode.yi
 	var/turn_angle = round(SIMPLIFY_DEGREES(mode.turn_angle), 90)
-	var/delta_swap = x_offset - y_offset
+	var/delta_swap = x - y
+
 	// less checks later
-	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
-	/// Did we try to run out of bounds?
+	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || l_lower > -INFINITY || l_upper < INFINITY
+	// did we try to run out of bounds?
 	var/overflowed = FALSE
 
-	for(var/__I in grid_sets)
-		var/datum/dmm_gridset/gridset = __I
-		var/parsed_z = gridset.zcrd + z_offset - 1
-		var/zexpansion = parsed_z > world.maxz
-		if(zexpansion)
-			if(cropMap)
-				continue
-			else
-				while(parsed_z > world.maxz)
-					world.incrementMaxZ()
-					did_expand = TRUE
-			if(!no_changeturf)
-				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
+	for(var/datum/dmm_gridset/gridset as anything in grid_sets)
+		var/load_z = gridset.zcrd + z - 1
+		if(load_z > world.maxz)
+			overflowed = TRUE
+			continue
+
 		//these values are the same until a new gridset is reached.
 		var/edge_dist_x = gridset.xcrd - 1											//from left side, 0 is right on the x_offset
 		var/edge_dist_y = gridset.ycrd - length(gridset.grid_lines)					//from bottom, 0 is right on the y_offset
 		var/actual_x_starting = invert_x? (x_offset + width - edge_dist_x - 1) : (x_offset + edge_dist_x)		//this value is not changed, cache.
 		//this value is changed
 		var/actual_y = invert_y? (y_offset + edge_dist_y) : (y_offset + gridset.ycrd - 1)
+
 		for(var/line in gridset.grid_lines)
 			var/actual_x = actual_x_starting
 			for(var/pos = 1 to (length(line) - key_len + 1) step key_len)
 				var/placement_x = swap_xy? (actual_y + delta_swap) : actual_x
 				var/placement_y = swap_xy? (actual_x - delta_swap) : actual_y
+				// todo: i have no clue what this does, i wrote this code years ago ~silicons
+				// this is probably skipping the tiles that we're cropping after calculating where it is, though for some reason
+				// pos isn't being taken into account, which is a ????
 				if(do_crop && ((placement_x < x_lower) || (placement_x > x_upper) || (placement_y < y_lower) || (placement_y > y_upper)))
 					continue
+				// todo: i have no clue what this does, i wrote this code years ago ~silicons
+				// as you can see, this is not quite efficient
+				// try not to overrun the world.
+				// this is probably skipping the tiles while offsetting so the rest still load in even while
+				// skipping (???)
 				if(placement_x > world.maxx)
-					if(cropMap)
-						actual_x += xi
-						continue
-					else
-						if(!allow_expand)
-							overflowed = TRUE
-							actual_x += xi
-						else
-							world.maxx = placement_x
-						did_expand = TRUE
+					actual_x += xi
+					overflowed = TRUE
+					continue
 				if(placement_y > world.maxy)
-					if(cropMap)
-						break
-					else
-						if(!allow_expand)
-							overflowed = TRUE
-							actual_y += yi
-						else
-							world.maxy = placement_y
-						did_expand = TRUE
+					actual_y += yi
+					overflowed = TRUE
+					continue
 				if(placement_x < 1)
 					actual_x += xi
+					overflowed = TRUE
 					continue
 				if(placement_y < 1)
-					break
+					actual_y += yi
+					overflowed = TRUE
+					continue
 				var/model_key = copytext(line, pos, pos + key_len)
 				var/no_afterchange = no_changeturf || zexpansion
 				if(!no_afterchange || (model_key != space_key))
@@ -385,24 +379,26 @@
 			actual_y += yi
 			CHECK_TICK
 
+	// this weird block of code calls AfterChange after everything is loaded to build adjacent turfs/zones/etc without doing it midway.
 	if(!no_changeturf)
-		for(var/t in block(locate(loaded_bounds[MAP_MINX], loaded_bounds[MAP_MINY], loaded_bounds[MAP_MINZ]), locate(loaded_bounds[MAP_MAXX], loaded_bounds[MAP_MAXY], loaded_bounds[MAP_MAXZ])))
-			var/turf/T = t
-			//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
+		for(var/turf/T as anything in block(
+			locate(
+				loaded_bounds[MAP_MINX],
+				loaded_bounds[MAP_MINY],
+				loaded_bounds[MAP_MINZ]
+			),
+			locate(
+				loaded_bounds[MAP_MAXX],
+				loaded_bounds[MAP_MAXY],
+				loaded_bounds[MAP_MAXZ]
+			)
+		))
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
 
-	// if(did_expand)
-	// 	world.refresh_atmos_grid()
-
 	if(overflowed)
-		stack_trace("[src] was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
+		log_debug("Maploaders was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
-	#ifdef TESTING
-	if(turfsSkipped)
-		testing("Skipped loading [turfsSkipped] default turfs")
-	#endif
-
-	return TRUE
+	return loaded_bounds
 
 /datum/dmm_parsed/proc/build_cache(no_changeturf, bad_paths=null)
 	if(model_cache && !bad_paths)

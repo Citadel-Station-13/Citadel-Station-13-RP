@@ -505,13 +505,13 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 
 /datum/map_level/triumph_lateload/talon1
 	name = "Talon Deck One"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/space
 	z = Z_LEVEL_TALON1
 
 /datum/map_level/triumph_lateload/talon2
 	name = "Talon Deck Two"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/open
 	z = Z_LEVEL_TALON2
 */

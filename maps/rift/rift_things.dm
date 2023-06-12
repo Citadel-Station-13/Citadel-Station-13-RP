@@ -7,15 +7,6 @@
 		Z_LEVEL_WEST_DEEP,
 		Z_LEVEL_WEST_BASE
 	)
-	levels_for_distress = list(
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_MININGPLANET,
-		Z_LEVEL_CLASS_D,
-		Z_LEVEL_DESERT_PLANET,
-		Z_LEVEL_GAIA_PLANET,
-		Z_LEVEL_FROZEN_PLANET
-		)
-
 
 /// This is the effect that slams people into the ground upon dropping out of the sky //
 

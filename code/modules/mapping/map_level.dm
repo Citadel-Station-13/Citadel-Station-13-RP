@@ -248,6 +248,7 @@
  * dynamically generated levels should use this
  */
 /datum/map_level/dynamic
+	modified = TRUE
 
 /**
  * "free" / unallocated zlevels use this
