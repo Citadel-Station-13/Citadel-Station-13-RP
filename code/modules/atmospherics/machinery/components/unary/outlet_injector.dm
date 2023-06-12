@@ -172,7 +172,7 @@
 		return 0
 
 	if(signal.data["power"])
-		update_use_power(text2num(signal.data["power"]))
+		set_use_power(text2num(signal.data["power"]))
 
 	if(signal.data["power_toggle"])
 		legacy_toggle_use_power()
@@ -202,7 +202,7 @@
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/proc/toggle_injecting()
 	injecting = !injecting
-	update_use_power(injecting ? USE_POWER_IDLE : USE_POWER_OFF)
+	set_use_power(text2num(signal.data["power"]))
 	update_icon()
 
 /obj/machinery/atmospherics/component/unary/outlet_injector/attackby(var/obj/item/W as obj, var/mob/user as mob)

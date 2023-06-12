@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 // Set the state of the gravity.
 /obj/machinery/gravity_generator/main/proc/set_state(new_state)
 	charging_state = POWER_IDLE
-	update_use_power(new_state ? USE_POWER_ACTIVE : USE_POWER_IDLE)
+	set_use_power(new_state ? USE_POWER_ACTIVE : USE_POWER_IDLE)
 
 	// Sound the alert if gravity was just enabled or disabled.
 	var/alert = FALSE

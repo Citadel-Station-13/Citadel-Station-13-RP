@@ -137,7 +137,7 @@
 			M.client.perspective = EYE_PERSPECTIVE
 			M.client.eye = src
 		M.loc = src
-		update_use_power(2)
+		set_use_power(USE_POWER_ACTIVE)
 		occupant = M
 
 		update_icon()
@@ -160,7 +160,7 @@
 		if(A in component_parts)
 			continue
 		A.loc = src.loc
-	update_use_power(1)
+	set_use_power(USE_POWER_IDLE)
 	update_icon()
 
 /obj/machinery/vr_sleeper/proc/enter_vr()

@@ -18,7 +18,7 @@
 	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	lit = !lit
-	update_use_power(lit ? USE_POWER_ACTIVE : USE_POWER_IDLE)
+	set_use_power(lit? USE_POWER_ACTIVE : USE_POWER_IDLE)
 	update_icon()
 
 /obj/machinery/holosign/update_icon()

@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(all_turbines)
 		user.visible_message("[user.name] [anchored ? "secures" : "unsecures"] the bolts holding [src.name] to the floor.", \
 					"You [anchored ? "secure" : "unsecure"] the bolts holding [src] to the floor.", \
 					"You hear a ratchet.")
-		update_use_power(anchored ? USE_POWER_IDLE : USE_POWER_ACTIVE)
+		set_use_power(anchored ? USE_POWER_IDLE : USE_POWER_ACTIVE)
 		reconnect()
 		lastgenlev = 0
 		effective_gen = 0

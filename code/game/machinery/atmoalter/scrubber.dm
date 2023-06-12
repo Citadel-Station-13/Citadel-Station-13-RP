@@ -204,9 +204,7 @@
 		last_flow_rate = 0
 		last_power_draw = 0
 		update_icon()
-	var/new_use_power = 1 + on
-	if(new_use_power != use_power)
-		update_use_power(new_use_power)
+	set_use_power(on? USE_POWER_ACTIVE : USE_POWER_IDLE)
 	if(!on)
 		return
 
