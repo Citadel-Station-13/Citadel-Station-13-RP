@@ -236,9 +236,6 @@
 /datum/map/station/proc/setup_map()
 	return
 
-/datum/map/station/proc/perform_map_generation()
-	return
-
 /datum/map/station/proc/get_network_access(var/network)
 	return 0
 

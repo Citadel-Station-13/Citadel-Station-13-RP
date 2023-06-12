@@ -115,29 +115,18 @@
  *
  * cropping here is cropping what you'd see in the map editor, aka can actually throw out data.
  */
-/datum/dmm_parsed/New(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
+/datum/dmm_parsed/New(map, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY)
+	_parse(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 
-	#warn impl
-
-
-/**
-  * Parse a map, possibly cropping it.
-  * Do not use the crop function unless strictly necessary.
-  * WARNING: Crop function crops based on the tiles you'd see in the map editor. If you're planning to load it in in a different orientation later, you better have done the math.
-  * It's recommended that you do not crop using this at all.
-  */
-/datum/dmm_parsed/New(tfile, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, measureOnly = FALSE)
-	_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
-
-/datum/dmm_parsed/proc/_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
+/datum/dmm_parsed/proc/_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 	var/static/parsing = FALSE
 	UNTIL(!parsing)
 	// do not multithread this or bad things happen
 	parsing = TRUE
-	_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
+	_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 	parsing = FALSE
 
-/datum/dmm_parsed/proc/_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, measureOnly)
+/datum/dmm_parsed/proc/_do_parse(tfile, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 	if(isfile(tfile))
 		original_path = "[tfile]"
 		tfile = file2text(tfile)

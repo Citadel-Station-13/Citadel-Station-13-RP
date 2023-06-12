@@ -53,6 +53,11 @@
 		src.map_path = path
 	preload()
 
+/**
+ * gets our width/height
+ *
+ * uses cache if possible; if cache_parsed_map is TRUE, this will autoamtically cache.
+ */
 /datum/map_template/proc/preload()
 	if(isnull(map_path))
 		return FALSE
@@ -63,6 +68,11 @@
 	if(cache_parsed_map)
 		parsed = parsing
 
+/**
+ * gets our parsed map
+ *
+ * uses cache if possible; if cache_parsed_map is TRUE, this will autoamtically cache.
+ */
 /datum/map_template/proc/parsed()
 	if(isnull(parsed))
 		. = parse_map(map_path)
@@ -71,8 +81,19 @@
 	else
 		. = parsed
 
+/**
+ * ensures our parsed map is cached
+ */
+/datum/map_template/proc/load_cache()
+	var/old = cache_parsed_map
+	cache_parsed_map = TRUE
+	parsed()
+	cache_parsed_map = old
 
-/datum/map_template/proc/unload()
+/**
+ * throws out our cached parsed map
+ */
+/datum/map_template/proc/unload_cache()
 	parsed = null
 
 /datum/map_template/proc/load_new_z(centered = FALSE, orientation = SOUTH, list/traits = src.level_traits, list/attributes = src.level_attributes)

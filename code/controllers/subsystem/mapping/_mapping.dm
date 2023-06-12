@@ -10,31 +10,35 @@ SUBSYSTEM_DEF(mapping)
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	// load data
+	// todo: refactor
+	load_map_templates()
+	// todo: refactor
+	preloadShelterTemplates()
+
 	// init maps
 	init_maps()
 	// load the map to use
 	read_next_map()
+
 	// load world - this also loads our first reserved level.
 	load_station()
 
-	#warn below
-	// shim: this goes at the top
-	repopulate_sorted_areas()
-	load_map_templates()
+	// perform snowflake legacy init stuff
+	// todo: refactor
 	loadEngine()
-	preloadShelterTemplates()
-	// Mining generation probably should be here too
-	LEGACY_MAP_DATUM.perform_map_generation()
+	// todo: refactor
 	if(!LEGACY_MAP_DATUM.overmap_z)
 		build_overmap()
-
-	// Set up antagonists.
+	// todo: refactor - Set up antagonists.
 	populate_antag_type_list()
-
-	//Set up spawn points.
+	// todo: refactor - Set up spawn points.
 	populate_spawn_points()
 
+	// finalize
+	// todo: refactor
 	repopulate_sorted_areas()
+
 	return ..()
 
 //
