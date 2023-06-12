@@ -298,16 +298,16 @@
 
 	var/datum/dmm_orientation/orientation = GLOB.dmm_orientations["[orientation]"]
 
-	var/invert_y = mode.invert_y
-	var/invert_x = mode.invert_x
-	var/swap_xy = mode.swap_xy
-	var/xi = mode.xi
-	var/yi = mode.yi
-	var/turn_angle = round(SIMPLIFY_DEGREES(mode.turn_angle), 90)
+	var/invert_y = orientation.invert_y
+	var/invert_x = orientation.invert_x
+	var/swap_xy = orientation.swap_xy
+	var/xi = orientation.xi
+	var/yi = modorientatione.yi
+	var/turn_angle = round(SIMPLIFY_DEGREES(orientation.turn_angle), 90)
 	var/delta_swap = x - y
 
 	// less checks later
-	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || l_lower > -INFINITY || l_upper < INFINITY
+	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
 	// did we try to run out of bounds?
 	var/overflowed = FALSE
 
@@ -320,9 +320,9 @@
 		//these values are the same until a new gridset is reached.
 		var/edge_dist_x = gridset.xcrd - 1											//from left side, 0 is right on the x_offset
 		var/edge_dist_y = gridset.ycrd - length(gridset.grid_lines)					//from bottom, 0 is right on the y_offset
-		var/actual_x_starting = invert_x? (x_offset + width - edge_dist_x - 1) : (x_offset + edge_dist_x)		//this value is not changed, cache.
+		var/actual_x_starting = invert_x? (x + width - edge_dist_x - 1) : (x + edge_dist_x)		//this value is not changed, cache.
 		//this value is changed
-		var/actual_y = invert_y? (y_offset + edge_dist_y) : (y_offset + gridset.ycrd - 1)
+		var/actual_y = invert_y? (y + edge_dist_y) : (y + gridset.ycrd - 1)
 
 		for(var/line in gridset.grid_lines)
 			var/actual_x = actual_x_starting
@@ -356,20 +356,19 @@
 					overflowed = TRUE
 					continue
 				var/model_key = copytext(line, pos, pos + key_len)
-				var/no_afterchange = no_changeturf || zexpansion
-				if(!no_afterchange || (model_key != space_key))
+				if(!no_changeturf || (model_key != space_key))
 					var/list/cache = model_cache[model_key]
 					if(!cache)
 						CRASH("Undefined model key in DMM: [model_key]")
-					build_coordinate(areaCache, cache, locate(placement_x, placement_y, parsed_z), no_afterchange, placeOnTop, turn_angle, annihilate_tiles, swap_xy, invert_y, invert_x)
+					build_coordinate(area_cache, cache, locate(placement_x, placement_y, load_z), no_afterchange, place_on_top, turn_angle, swap_xy, invert_y, invert_x)
 
 					// only bother with bounds that actually exist
 					loaded_bounds[MAP_MINX] = min(loaded_bounds[MAP_MINX], placement_x)
 					loaded_bounds[MAP_MINY] = min(loaded_bounds[MAP_MINY], placement_y)
-					loaded_bounds[MAP_MINZ] = min(loaded_bounds[MAP_MINZ], parsed_z)
+					loaded_bounds[MAP_MINZ] = min(loaded_bounds[MAP_MINZ], load_z)
 					loaded_bounds[MAP_MAXX] = max(loaded_bounds[MAP_MAXX], placement_x)
 					loaded_bounds[MAP_MAXY] = max(loaded_bounds[MAP_MAXY], placement_y)
-					loaded_bounds[MAP_MAXZ] = max(loaded_bounds[MAP_MAXZ], parsed_z)
+					loaded_bounds[MAP_MAXZ] = max(loaded_bounds[MAP_MAXZ], load_z)
 				#ifdef TESTING
 				else
 					++turfsSkipped
@@ -479,7 +478,7 @@
 
 		.[model_key] = list(members, members_attributes)
 
-/datum/dmm_parsed/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf as num, placeOnTop as num, turn_angle as num, annihilate_tiles = FALSE, swap_xy, invert_y, invert_x)
+/datum/dmm_parsed/proc/build_coordinate(list/areaCache, list/model, turf/crds, no_changeturf, placeOnTop, turn_angle, swap_xy, invert_y, invert_x)
 	var/index
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
@@ -491,8 +490,11 @@
 	//The next part of the code assumes there's ALWAYS an /area AND a /turf on a given tile
 	//first instance the /area and remove it from the members list
 	index = members.len
+	// todo: do we need this? this was so it annihilates while loading instead of annihilates before, which was useful in specific circumstances
+	/*
 	if(annihilate_tiles && crds)
 		crds.empty(null)
+	*/
 	if(members[index] != /area/template_noop)
 		var/atype = members[index]
 		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
