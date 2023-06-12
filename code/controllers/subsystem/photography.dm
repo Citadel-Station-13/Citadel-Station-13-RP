@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(photography)
 /datum/controller/subsystem/photography/proc/create_picture(icon/I)
 	var/datum/picture/picture = new
 	// init
-	picture.image_loaded = I
+	picture.full = I
 	var/hash = sha1asfile(I)
 	ASSERT(length(hash))
 	picture.image_hash = hash
