@@ -476,6 +476,8 @@
 
 	M.emote("gasp")
 	M.afflict_paralyze(20 * rand(10,25))
+	M.apply_status_effect(/datum/status_effect/resurrection_sickness,rand(20,30) MINUTES)
+	
 
 /obj/item/shockpaddles/proc/make_announcement(var/message, var/msg_class)
 	audible_message("<b>\The [src]</b> [message]", "\The [src] vibrates slightly.")

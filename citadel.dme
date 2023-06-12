@@ -799,6 +799,7 @@
 #include "code\datums\status_effects\status_effect.dm"
 #include "code\datums\status_effects\basic\crusher_track.dm"
 #include "code\datums\status_effects\basic\incapacitation.dm"
+#include "code\datums\status_effects\basic\resurrection.dm"
 #include "code\datums\status_effects\grouped\crusher_mark.dm"
 #include "code\datums\status_effects\grouped\staggered.dm"
 #include "code\datums\underwear\bottom.dm"

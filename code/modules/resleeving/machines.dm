@@ -589,6 +589,8 @@
 	if(original_occupant)
 		occupant = original_occupant
 
+	occupant.apply_status_effect(/datum/status_effect/resurrection_sickness/resleeve,6 HOURS)
+
 	playsound(src, 'sound/machines/medbayscanner1.ogg', 100, TRUE) // Play our sound at the end of the mind injection!
 	return 1
 
