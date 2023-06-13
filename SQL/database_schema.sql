@@ -82,6 +82,19 @@ END
 $$
 DELIMITER ;
 
+-- Security - Ipintel --
+
+--        Ipintel Cache Table       --
+-- Stores cache entries for IPIntel --
+-- IP is in INET_ATON.              --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
+  `ip` INT(10) unsigned NOT NULL,
+  `date` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+  `intel` double NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ip`),
+  KEY `idx_ipintel` (`ip`, `intel`, `date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Table structure for table `round`
 --

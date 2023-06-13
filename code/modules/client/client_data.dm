@@ -13,10 +13,19 @@ GLOBAL_LIST_EMPTY(client_data)
  * client data datums, to hold
  * round-based data that we don't want wiped
  * by a disconnect.
+ *
+ * this can absolutely contain player specific data, especially if we don't
+ * want to reload it every connect.
  */
 /datum/client_data
 	/// owner ckey
 	var/ckey
 
+	//* externally managed data *//
+	/// playtime - role string to number of minutes.
+	var/list/playtime
+
 /datum/client_data/New(ckey)
 	src.ckey = ckey
+
+#warn playtime handling
