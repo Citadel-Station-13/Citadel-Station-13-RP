@@ -213,3 +213,16 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, holder))
+			return FALSE
+		if (NAMEOF(src, ckey))
+			return FALSE
+		if (NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, view))
+			change_view(var_value, TRUE)
+			return TRUE
+	return ..()

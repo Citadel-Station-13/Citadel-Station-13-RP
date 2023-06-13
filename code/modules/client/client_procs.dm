@@ -768,81 +768,6 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 /client/proc/setDir(newdir)
 	dir = newdir
 
-/client/vv_edit_var(var_name, var_value)
-	switch (var_name)
-		if (NAMEOF(src, holder))
-			return FALSE
-		if (NAMEOF(src, ckey))
-			return FALSE
-		if (NAMEOF(src, key))
-			return FALSE
-		if(NAMEOF(src, view))
-			change_view(var_value, TRUE)
-			return TRUE
-	. = ..()
-
-/client/proc/change_view(new_size, forced, translocate)
-	set waitfor = FALSE	// to async temporary view
-	// todo: refactor this, client view changes should be ephemeral.
-	var/list/L = decode_view_size(new_size)
-	set_temporary_view(L[1], L[2])
-
-/**
- * directly sets our view
- * you should probably be using perspective datums most of the time instead
- * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
- *
- * furthermore, this proc is BLOCKING.
- */
-/client/proc/set_temporary_view(width, height)
-	if(!width || !height || width < 0 || height < 0)
-		reset_temporary_view()
-		return
-	using_temporary_viewsize = TRUE
-	// round up; even views are illegal.
-	if(!(width % 2))
-		width++
-	if(!(height % 2))
-		height++
-	temporary_viewsize_width = width
-	temporary_viewsize_height = height
-	request_viewport_update()
-
-/**
- * resets our temporary view
- * you should probably be using perspective datums most of the time instead
- *
- * furthermore, this proc is BLOCKING
- */
-/client/proc/reset_temporary_view()
-	using_temporary_viewsize = FALSE
-	temporary_viewsize_height = null
-	temporary_viewsize_width = null
-	request_viewport_update()
-
-/**
- * switch perspective - null will cause us to shunt our eye to nullspace!
- */
-/client/proc/set_perspective(datum/perspective/P)
-	if(using_perspective)
-		using_perspective.remove_client(src, TRUE)
-		if(using_perspective)
-			stack_trace("using perspective didn't clear")
-			using_perspective = null
-	if(!P)
-		eye = null
-		lazy_eye = 0
-		perspective = EYE_PERSPECTIVE
-		return
-	P.add_client(src)
-	if(using_perspective != P)
-		stack_trace("using perspective didn't set")
-
-/**
- * reset perspective to default - usually to our mob's
- */
-/client/proc/reset_perspective()
-	set_perspective(mob.get_perspective())
 
 /mob/proc/MayRespawn()
 	return 0
@@ -853,12 +778,6 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
-
-/client/verb/character_setup()
-	set name = "Character Setup"
-	set category = "Preferences"
-	if(prefs)
-		prefs.ShowChoices(usr)
 
 /client/proc/findJoinDate()
 	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
@@ -874,68 +793,8 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 			CRASH("Age check regex failed for [src.ckey]")
 
 /client/proc/AnnouncePR(announcement)
-	//if(prefs && prefs.chat_toggles & CHAT_PULLR)
 	to_chat(src, announcement)
 
-//This is for getipintel.net.
-//You're welcome to replace this proc with your own that does your own cool stuff.
-//Just set the client's ip_reputation var and make sure it makes sense with your config settings (higher numbers are worse results)
-/client/proc/update_ip_reputation()
-	var/request = "http://check.getipintel.net/check.php?ip=[address]&contact=[config_legacy.ipr_email]"
-	var/http[] = world.Export(request)
-
-	/* Debug
-	TO_WORLD_log("Requested this: [request]")
-	for(var/entry in http)
-		TO_WORLD_log("[entry] : [http[entry]]")
-	*/
-
-	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.
-		log_admin("Couldn't connect to getipintel.net to check [address] for [key]")
-		return FALSE
-
-	//429 is rate limit exceeded
-	if(text2num(http["STATUS"]) == 429)
-		log_and_message_admins("getipintel.net reports HTTP status 429. IP reputation checking is now disabled. If you see this, let a developer know.")
-		config_legacy.ip_reputation = FALSE
-		return FALSE
-
-	var/content = file2text(http["CONTENT"]) //world.Export actually returns a file object in CONTENT
-	var/score = text2num(content)
-	if(isnull(score))
-		return FALSE
-
-	//Error handling
-	if(score < 0)
-		var/fatal = TRUE
-		var/ipr_error = "getipintel.net IP reputation check error while checking [address] for [key]: "
-		switch(score)
-			if(-1)
-				ipr_error += "No input provided"
-			if(-2)
-				fatal = FALSE
-				ipr_error += "Invalid IP provided"
-			if(-3)
-				fatal = FALSE
-				ipr_error += "Unroutable/private IP (spoofing?)"
-			if(-4)
-				fatal = FALSE
-				ipr_error += "Unable to reach database"
-			if(-5)
-				ipr_error += "Our IP is banned or otherwise forbidden"
-			if(-6)
-				ipr_error += "Missing contact info"
-
-		log_and_message_admins(ipr_error)
-		if(fatal)
-			config_legacy.ip_reputation = FALSE
-			log_and_message_admins("With this error, IP reputation checking is disabled for this shift. Let a developer know.")
-		return FALSE
-
-	//Went fine
-	else
-		ip_reputation = score
-		return TRUE
 
 /client/proc/disconnect_with_message(var/message = "You have been intentionally disconnected by the server.<br>This may be for security or administrative reasons.")
 	message = "<head><title>You Have Been Disconnected</title></head><body><hr><center><b>[message]</b></center><hr><br>If you feel this is in error, you can contact an administrator out-of-game (for example, on Discord).</body>"
