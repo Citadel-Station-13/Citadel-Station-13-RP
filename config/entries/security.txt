@@ -38,3 +38,13 @@ AGE_VERIFICATION_AUTOBAN
 ### MISC SECURITY CHECKS
 ## Check for CID Randomizers
 # CHECK_CID_RANDOMIZER
+
+### PANIC BUNKER
+## Enable full panic bunker
+# PANIC_BUNKER
+## Enable panic bunker to detected VPNs
+# VPN_BUNKER
+## Set to use playtime tracking instead of raw connected-before check in bunker. Value is in minutes of playtime.
+# PANIC_BUNKER_PLAYTIME 120
+## Set to show players a message if they try to join during panic bunker.
+PANIC_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from never seen before players.

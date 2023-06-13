@@ -44,7 +44,7 @@
 /datum/config_entry/string/ipintel_domain
 	config_entry_value = "check.getipintel.net"
 
-//* Age Verification System *//
+//* Age Verification System - requires DB *//
 
 /datum/config_entry/flag/age_verification //are we using the automated age verification which asks users if they're 18+?
 
@@ -56,38 +56,17 @@
 /// Check for CID Randomizers
 /datum/config_entry/flag/check_cid_randomizer
 
+//* Panic Bunker - requires DB *//
 
+/// Full panic bunker - people who have never connected/played before get bounced off
+/datum/config_entry/flag/panic_bunker
 
+/// Partial panic bunker - Only apply panic_bunker to detected VPNs from IPIntel
+/datum/config_entry/flag/vpn_bunker
 
-/datum/config_entry/flag/panic_bunker	// prevents people the server hasn't seen before from connecting
+/// Instead of "connected successfully at all", we check for playtime if this is set. 0 to disable.
+/datum/config_entry/number/panic_bunker_playtime
 
-/datum/config_entry/number/panic_bunker_living // living time in minutes that a player needs to pass the panic bunker. they pass **if they are above this amount**
-	config_entry_value = 0		// default: <= 0 meaning any playtime works. -1 to disable criteria.
-	integer = TRUE
-
-/datum/config_entry/number/panic_bunker_living_vpn
-	config_entry_value = 0		// default: <= 0 meaning anytime works. -1 to disable criteria.
-	integer = TRUE
-
+/// Message shown to players who try to connect during panic bunker.
 /datum/config_entry/string/panic_bunker_message
-	config_entry_value = "Sorry but the server is currently not accepting connections from never before seen players."
-
-/datum/config_entry/string/panic_server_name
-
-/datum/config_entry/string/panic_server_name/ValidateAndSet(str_val)
-	return str_val != "\[Put the name here\]" && ..()
-
-/datum/config_entry/string/panic_server_address	//Reconnect a player this linked server if this server isn't accepting new players
-
-/datum/config_entry/string/panic_server_address/ValidateAndSet(str_val)
-	return str_val != "byond://address:port" && ..()
-
-/datum/config_entry/number/max_bunker_days
-	config_entry_value = 7
-	min_val = 1
-
-/datum/config_entry/number/notify_new_player_age	// how long do we notify admins of a new player
-	min_val = -1
-
-/datum/config_entry/number/notify_new_player_account_age	// how long do we notify admins of a new byond account
-	min_val = 0
+	default = "Sorry but the server is currently not accepting connections from never before seen players."
