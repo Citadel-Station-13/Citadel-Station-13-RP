@@ -478,6 +478,7 @@
 #include "code\controllers\configuration\entries\health.dm"
 #include "code\controllers\configuration\entries\lobby.dm"
 #include "code\controllers\configuration\entries\logging.dm"
+#include "code\controllers\configuration\entries\playtime.dm"
 #include "code\controllers\configuration\entries\resources.dm"
 #include "code\controllers\configuration\entries\security.dm"
 #include "code\controllers\configuration\entries\skills.dm"

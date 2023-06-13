@@ -2,7 +2,7 @@
 ### Automated IP bans for world/Topic() spammers
 ## Enabled
 FAIL2TOPIC_ENABLED
-## Minimum wait time in deciseconds between valid requests 
+## Minimum wait time in deciseconds between valid requests
 FAIL2TOPIC_RATE_LIMIT 10
 ## Number of requests after breaching rate limit that triggers a ban
 FAIL2TOPIC_MAX_FAILS 5
@@ -16,3 +16,25 @@ TOPIC_MAX_SIZE 1048576
 ## Just list IPs like so:
 # TOPIC_RATE_LIMIT_WHITELIST 351.531.632.145 obviously not valid but you get the point
 TOPIC_RATE_LIMIT_WHITELIST 127.0.0.1
+
+### IPINTEL
+## Email given to API for contact - required.
+# IPINTEL_EMAIL ch@nge.me
+## The threshold of where we consider someone to be a VPN
+IPINTEL_RATING_BAD 1
+## The hours we cache a good ipintel rating for
+IPINTEL_SAVE_GOOD 12
+## The hours we cache a bad ipintel rating for
+IPINTEL_SAVE_BAD 1
+## Ipintel API domain
+IPINTEL_DOMAIN check.getipintel.net
+
+### AGE VERIFICATION
+## Automated Age Verification
+AGE_VERIFICATION
+## Autoban if someone's under 18
+AGE_VERIFICATION_AUTOBAN
+
+### MISC SECURITY CHECKS
+## Check for CID Randomizers
+# CHECK_CID_RANDOMIZER
