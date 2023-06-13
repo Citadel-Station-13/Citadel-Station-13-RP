@@ -1,3 +1,5 @@
+//* Fail2Topic - Topic DoS Guard System *//
+
 /datum/config_entry/number/fail2topic_rate_limit
 	default = 10 //Deciseconds
 
