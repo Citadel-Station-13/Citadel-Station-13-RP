@@ -183,7 +183,7 @@
 /area/engineering/engine_room)
 "aE" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_engineering,
+/obj/machinery/door/airlock/glass/engineering,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aF" = (

@@ -4833,7 +4833,7 @@
 /area/ship/manta/hallways_star)
 "xQ" = (
 /obj/machinery/door/firedoor/border_only,
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	req_one_access = list(150)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9245,7 +9245,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_one_access = list(150)
 	},

@@ -683,7 +683,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -964,7 +964,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Processing";
 	req_one_access = list(1,2,4,38)
 	},
@@ -976,7 +976,7 @@
 	alpha = 255;
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/cable/green{
@@ -1181,7 +1181,7 @@
 /turf/simulated/wall/prepainted,
 /area/crew_quarters/sleep/Dorm_5)
 "aHb" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1305,7 +1305,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "BrigFoyer";
 	layer = 2.8;
 	name = "Security";
@@ -1418,7 +1418,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -1489,7 +1489,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "aQa" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -1584,7 +1584,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "aST" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Chemistry";
 	req_one_access = list(33)
 	},
@@ -1875,7 +1875,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "bao" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -1886,7 +1886,7 @@
 "bav" = (
 /obj/effect/floor_decal/borderfloorwhite/corner,
 /obj/effect/floor_decal/corner/paleblue/bordercorner,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -2982,7 +2982,7 @@
 /area/medical/sleeper)
 "bEq" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -3184,7 +3184,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "bKl" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -4238,7 +4238,7 @@
 /turf/simulated/floor/plating,
 /area/holodeck_control)
 "ctN" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -5078,7 +5078,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -5109,7 +5109,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -5441,7 +5441,7 @@
 /area/hallway/primary/surfacetwo)
 "dkP" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Weapons Testing Range";
 	req_access = list(47)
 	},
@@ -5516,7 +5516,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "dnh" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -5821,7 +5821,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -6041,7 +6041,7 @@
 /turf/simulated/floor,
 /area/maintenance/substation/security)
 "dAH" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "mech_bay_int";
@@ -6347,24 +6347,6 @@
 /obj/item/book/manual/robotics_cyborgs,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"dGJ" = (
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hammerbrigblast";
-	name = "Transit Brig Blast Doors";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/shuttle/hammerhead/general)
 "dHg" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
@@ -6854,7 +6836,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "dXI" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/glass/medical{
 	dir = 1;
 	name = "Medbay Storage";
 	req_access = list(5);
@@ -6957,7 +6939,7 @@
 /area/rift/station/public_garden/gantry)
 "edi" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Firing Range";
 	req_one_access = list(1,2,4)
 	},
@@ -7124,7 +7106,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -7324,7 +7306,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -7339,7 +7321,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -7410,7 +7392,7 @@
 /obj/effect/floor_decal/corner/purple/border,
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/purple/bordercorner2,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -7698,7 +7680,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/privacy,
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -7745,9 +7727,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/security_bathroom)
-"eFY" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/security/hammerhead_bay)
 "eFZ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8005,7 +7984,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -8564,7 +8543,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
 "fei" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -8804,7 +8783,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -8834,7 +8813,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -9155,7 +9134,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "fzv" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security Reception";
 	req_access = newlist();
 	req_one_access = list(2,4)
@@ -9373,7 +9352,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/cable{
@@ -9557,7 +9536,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "fMU" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Lobby";
 	req_one_access = list(29,47)
 	},
@@ -9865,7 +9844,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Telescience Wing"
 	},
 /turf/simulated/floor/tiled,
@@ -10018,7 +9997,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "gcU" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -10120,7 +10099,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/multi_tile/glass/polarized{
+/obj/machinery/door/airlock/multi_tile/medical{
 	id_tag = "medbay_lobby";
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby";
@@ -10195,7 +10174,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -10793,7 +10772,7 @@
 	name = "Warden's Office Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/glass_security/polarized{
+/obj/machinery/door/airlock/glass/security/polarized{
 	id_tag = "warden_office";
 	id_tint = "warden_office";
 	name = "Warden";
@@ -11075,7 +11054,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "gGp" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Locker Room";
 	req_access = list(47)
 	},
@@ -11623,7 +11602,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -12086,7 +12065,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "hso" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/glass/medical{
 	name = "Medbay Hallway";
 	req_one_access = list(5)
 	},
@@ -12376,7 +12355,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/testingrange)
 "hCt" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Robotics Morgue";
 	req_access = list(29,47)
 	},
@@ -12576,7 +12555,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13077,7 +13056,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -13168,7 +13147,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -13216,7 +13195,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "hUN" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Telescience Wing"
 	},
 /turf/simulated/floor/tiled,
@@ -13568,7 +13547,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -13973,7 +13952,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment{
@@ -14020,7 +13999,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -14244,7 +14223,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -15119,7 +15098,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -15251,7 +15230,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/computer/timeclock/premade/south,
@@ -15353,7 +15332,7 @@
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hor)
 "joW" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -15440,7 +15419,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Processing";
 	req_one_access = list(1,2,4,38)
 	},
@@ -15563,7 +15542,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Firing Range";
 	req_one_access = list(1,2,4)
 	},
@@ -15664,7 +15643,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Telescience Storage"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -16350,7 +16329,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment{
@@ -16619,7 +16598,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security/polarized{
+/obj/machinery/door/airlock/glass/security/polarized{
 	id_tint = "seclocker";
 	name = "Locker Room";
 	req_one_access = list(2)
@@ -16652,7 +16631,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
 "kgH" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "EVA Operations";
 	req_one_access = list(1,38)
@@ -16702,7 +16681,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/privacy,
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -16757,7 +16736,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/machinery/alarm{
@@ -17326,7 +17305,7 @@
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden/gantry)
 "kxt" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -17426,7 +17405,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "kAp" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Staircase"
 	},
 /obj/machinery/door/firedoor/glass,
@@ -17802,6 +17781,9 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"kSx" = (
+/turf/simulated/wall/r_wall/prepainted/medical,
+/area/hallway/primary/surfacetwo)
 "kSz" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -17884,7 +17866,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
 "kUS" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -18412,7 +18394,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -18716,7 +18698,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18727,7 +18709,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -19090,7 +19072,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research/researchdivision)
 "lFY" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -19132,15 +19114,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
-"lId" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/industrial/warning,
-/obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/hammerhead/general)
 "lIf" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -19429,7 +19402,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -20249,7 +20222,7 @@
 	id = "mech_bay_ext";
 	name = "Mech Bay Blast Door"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -20745,7 +20718,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -21383,7 +21356,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -21619,7 +21592,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -22016,7 +21989,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -22134,7 +22107,7 @@
 /area/shuttle/hammerhead/general)
 "nzk" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -22423,7 +22396,7 @@
 "nGM" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -22432,7 +22405,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
 "nGZ" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Break Room";
 	req_one_access = list(1,38)
 	},
@@ -22655,15 +22628,7 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop/loading)
 "nPq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/machinery/mech_recharger,
-/turf/simulated/floor/tiled/techmaint,
+/turf/space/basic,
 /area/shuttle/hammerhead/general)
 "nQd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -22888,7 +22853,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/locker)
 "nYw" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -22990,7 +22955,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -23144,7 +23109,7 @@
 /turf/simulated/floor/carpet,
 /area/security/warden)
 "oeU" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -23180,7 +23145,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "ogT" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "ohv" = (
@@ -23196,7 +23161,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/hallway)
 "ohC" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -23783,7 +23748,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/coffee_shop)
 "oFY" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Briefing Room";
 	req_access = newlist();
 	req_one_access = list(1,38)
@@ -24193,7 +24158,7 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -24747,14 +24712,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
-"pgU" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/hammerhead/general)
 "pic" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/catwalk,
@@ -24956,7 +24913,7 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -25029,7 +24986,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
@@ -25314,7 +25271,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Hammerhead Hangar";
 	req_one_access = list(1,38)
@@ -25673,7 +25630,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/medical/reception)
 "pNY" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -25807,7 +25764,7 @@
 /area/medical/surgery)
 "pQv" = (
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/security/hammerhead_bay)
@@ -25841,7 +25798,7 @@
 	dir = 5
 	},
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -26064,7 +26021,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -26545,7 +26502,7 @@
 "qpO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -26744,7 +26701,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_medical/polarized{
+/obj/machinery/door/airlock/medical{
 	id_tint = "medbay_outer";
 	name = "Medbay Lobby"
 	},
@@ -26834,7 +26791,7 @@
 "qzW" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -27469,11 +27426,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/medsec_maintenance)
 "qVe" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/polarized/full{
-	id = "cmo_office"
-	},
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/shuttle/hammerhead/cockpit)
 "qVn" = (
@@ -27543,7 +27496,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -28157,7 +28110,7 @@
 /area/crew_quarters/sleep/Dorm_2)
 "rtz" = (
 /obj/effect/floor_decal/borderfloorblack,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -28469,7 +28422,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
@@ -28983,7 +28936,7 @@
 /obj/effect/floor_decal/corner/paleblue/bordercorner{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/white,
@@ -29118,7 +29071,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "rZC" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -29394,7 +29347,7 @@
 /turf/simulated/floor/tiled/red,
 /area/security/evastorage)
 "slH" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Lounge";
 	req_access = list(47)
 	},
@@ -29677,7 +29630,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "svF" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -29701,13 +29654,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "sxc" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden{
-	dir = 4
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 5
 	},
@@ -29950,7 +29896,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
 "sDx" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -30615,7 +30561,7 @@
 	dir = 8
 	},
 /obj/structure/curtain/open/privacy,
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgeryprep)
 "tcX" = (
@@ -30672,7 +30618,7 @@
 /area/maintenance/asmaint2)
 "tdO" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "EVA Operations";
 	req_one_access = list(1,38)
@@ -30859,23 +30805,6 @@
 /obj/structure/target_stake,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
-"tlB" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "hammerbrigblast";
-	name = "Transit Brig Blast Doors";
-	opacity = 0
-	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/simulated/shuttle/wall/voidcraft/red,
-/area/shuttle/hammerhead/general)
 "tmh" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -31248,7 +31177,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -31446,7 +31375,7 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -31541,7 +31470,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/lightgrey/border,
@@ -31625,7 +31554,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_4)
 "tPS" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Staircase";
 	req_one_access = list(47,43,67)
 	},
@@ -32026,7 +31955,7 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "ufE" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -32085,7 +32014,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Hammerhead Hangar";
 	req_one_access = list(1,38)
@@ -32193,7 +32122,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -32266,7 +32195,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -32283,16 +32212,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
-"uot" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/obj/effect/floor_decal/corner_techfloor_grid/diagonal{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/shuttle/hammerhead/general)
 "upg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -32823,7 +32742,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -32895,7 +32814,7 @@
 /area/crew_quarters/coffee_shop)
 "uMW" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Circuitry Workshop";
 	req_access = list(7);
 	req_one_access = list(7)
@@ -33107,7 +33026,7 @@
 /area/medical/reception)
 "uRD" = (
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Holding Cell";
 	req_one_access = list(1,2,4,38)
 	},
@@ -33609,7 +33528,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
 "vaO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Light Armory";
 	req_access = list(3)
 	},
@@ -33791,7 +33710,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/dormitory)
 "vhX" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Equipment Storage";
 	req_one_access = list(2)
 	},
@@ -34222,9 +34141,6 @@
 /obj/structure/flora/pottedplant/drooping,
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
-"vwK" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/medical/chemistry)
 "vwR" = (
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/sleeper)
@@ -34571,7 +34487,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	layer = 2.8;
 	name = "Security";
 	req_one_access = list(1,38)
@@ -34581,7 +34497,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "vJU" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Lobby";
 	req_one_access = list(29,47)
 	},
@@ -34657,7 +34573,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -35333,7 +35249,7 @@
 	name = "Security Blast Doors";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "BrigFoyer";
 	layer = 2.8;
 	name = "Security";
@@ -36024,7 +35940,7 @@
 /turf/simulated/wall/r_wall/prepainted/medical,
 /area/medical/resleeving)
 "wLN" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "RnD Lab";
 	req_one_access = list(7)
 	},
@@ -36186,18 +36102,8 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"wRw" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/hallway/primary/surfacetwo)
 "wRB" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj{
-	name = "---Merge conflict marker---"
-	},
-/turf/simulated/floor/reinforced,
+/turf/space/basic,
 /area/security/hammerhead_bay)
 "wTh" = (
 /obj/structure/disposalpipe/segment{
@@ -36557,7 +36463,7 @@
 	id = "mech_bay_ext";
 	name = "Mech Bay Blast Door"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/assembly/chargebay)
 "xeE" = (
@@ -37002,7 +36908,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/glass/medical{
 	dir = 1;
 	name = "Medbay Storage";
 	req_access = list(5);
@@ -38024,7 +37930,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "xXV" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -50091,7 +49997,7 @@ rjB
 ccW
 cHW
 eMD
-mPX
+vIP
 vIP
 vIP
 vIP
@@ -50287,7 +50193,7 @@ vgt
 vgt
 vgt
 vgt
-wRw
+xTL
 xTL
 aZU
 bPt
@@ -50481,8 +50387,8 @@ sbA
 lDM
 ylV
 vgt
-xTL
-xTL
+kSx
+kSx
 aZU
 bPt
 mJn
@@ -51443,7 +51349,7 @@ xcy
 rXz
 xvn
 vgt
-vwK
+vgt
 drO
 vgt
 lAN
@@ -51451,8 +51357,8 @@ lAN
 lAN
 vgt
 vgt
-xTL
-xTL
+kSx
+kSx
 bKl
 kxt
 oeU
@@ -53900,7 +53806,7 @@ pBj
 enB
 enB
 pBj
-eFY
+kXA
 rBk
 ewA
 qVe
@@ -55271,7 +55177,7 @@ lMA
 mVJ
 mVJ
 rxs
-uot
+mVJ
 lMA
 lMA
 tRs
@@ -55466,9 +55372,9 @@ uwa
 mVJ
 rxs
 bHp
-dGJ
+uGN
 vFN
-tlB
+ilr
 afd
 ewA
 ewA
@@ -56435,7 +56341,7 @@ sEc
 jmm
 lMA
 bDp
-pgU
+tzL
 sEc
 sEc
 qhO
@@ -56823,7 +56729,7 @@ bHh
 rUW
 iio
 iGX
-lId
+bWT
 fDw
 jEo
 tIg

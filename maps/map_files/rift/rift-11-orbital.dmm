@@ -1294,7 +1294,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "en" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open,
@@ -4056,7 +4056,7 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "mt" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,

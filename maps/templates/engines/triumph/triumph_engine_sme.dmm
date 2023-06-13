@@ -33,7 +33,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -157,7 +157,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -905,7 +905,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{

@@ -569,7 +569,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Patient Psychiatric Ward A"
 	},
 /obj/machinery/door/blast/regular{
@@ -668,7 +668,7 @@
 /turf/simulated/floor/bluegrid,
 /area/space)
 "aEQ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1368,7 +1368,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Patient Psychiatric Ward B"
 	},
 /obj/machinery/door/blast/regular{
@@ -1713,7 +1713,7 @@
 /area/vacant/vacant_shop)
 "bBW" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "detdoor";
 	name = "Detective";
 	req_access = list(4)
@@ -1755,7 +1755,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
 "bEB" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2954,7 +2954,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/storage)
 "cGy" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -3013,11 +3013,6 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
-/area/hallway/primary/central_three)
-"cNc" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
-/obj/machinery/door/airlock/glass,
-/turf/simulated/floor/tiled/steel_ridged,
 /area/hallway/primary/central_three)
 "cNd" = (
 /obj/effect/floor_decal/techfloor{
@@ -3671,7 +3666,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/test_area)
 "duH" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -4124,7 +4119,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "dNp" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	req_one_access = list(18,47)
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -5299,7 +5294,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -5807,7 +5802,7 @@
 /area/crew_quarters/theatre)
 "foe" = (
 /obj/structure/fence/door,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/cable/green{
@@ -6662,7 +6657,7 @@
 /turf/simulated/floor/wood,
 /area/tether/exploration/pilot_office)
 "fSB" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -8009,7 +8004,7 @@
 /turf/simulated/floor/grass,
 /area/medical/psych_ward)
 "hbd" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/airlock/glass,
@@ -9097,7 +9092,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
 "hVs" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
@@ -9945,7 +9940,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -10416,7 +10411,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -11420,7 +11415,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Psychiatric Play-Area Access"
 	},
 /turf/simulated/floor/tiled/white,
@@ -12378,7 +12373,7 @@
 	layer = 3.3;
 	name = "Kitchen Service Shutters"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -13346,7 +13341,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/deck_three/aft/starboard)
 "lqy" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/hydroponics/garden)
@@ -14288,7 +14283,7 @@
 	name = "Toxins Input Connector"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -14325,7 +14320,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -14563,7 +14558,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -15070,7 +15065,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/excursion/cockpit)
 "mNf" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -17013,7 +17008,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/medical/virologyaccess)
 "osk" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -17986,7 +17981,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/gravity_gen)
 "plD" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -20069,7 +20064,7 @@
 /area/ai/foyer)
 "rkl" = (
 /obj/structure/fence/door,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
@@ -20208,7 +20203,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
 "rqb" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
 	req_access = list(29,47)
 	},
@@ -20941,7 +20936,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virology)
 "rWo" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/white,
@@ -21428,7 +21423,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "General Containment";
 	req_access = list(2)
 	},
@@ -23717,7 +23712,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Psychiatric Play-Area Access"
 	},
 /obj/machinery/door/blast/regular{
@@ -25562,7 +25557,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
 "vWD" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -26329,7 +26324,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/engine_monitoring)
 "wEF" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Telecomms Control Room"
 	},
 /obj/machinery/door/firedoor,
@@ -27001,7 +26996,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/central_three)
 "xjd" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/door/airlock/glass,
@@ -27200,7 +27195,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/xenobiology)
 "xrP" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -27567,7 +27562,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
@@ -27607,7 +27602,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/camera/network/research,
@@ -27667,7 +27662,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -27798,7 +27793,7 @@
 /area/security/brig)
 "xQa" = (
 /obj/structure/fence/door,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -27843,7 +27838,7 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/rdoffice)
 "xRW" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/plain{
@@ -43968,9 +43963,9 @@ jdi
 tob
 eTY
 wWQ
-cNc
-cNc
-cNc
+aCT
+aCT
+aCT
 wWQ
 jdi
 xWr

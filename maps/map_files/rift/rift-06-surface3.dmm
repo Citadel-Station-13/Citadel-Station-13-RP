@@ -619,7 +619,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -1555,7 +1555,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "aeq" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	dir = 1;
 	name = "Bridge";
 	req_access = list(19)
@@ -1613,7 +1613,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "aev" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -1680,7 +1680,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/glass_command/polarized{
+/obj/machinery/door/airlock/glass/command/polarized{
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -1746,13 +1746,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aeL" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Explorer Prep";
-	req_one_access = list(19,43,67)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/exploration{
+	name = "Explorer Prep";
+	req_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
@@ -1837,7 +1837,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2897,11 +2897,11 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ahT" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Pilot Prep";
-	req_one_access = list(67)
-	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/exploration{
+	name = "Pilot Prep";
+	req_access = list(67)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "ahU" = (
@@ -3020,7 +3020,7 @@
 /obj/effect/floor_decal/corner/beige/bordercorner2{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -3077,7 +3077,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -4074,7 +4074,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "akF" = (
@@ -4185,7 +4185,7 @@
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar_backroom)
 "akP" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/old_tile/green,
@@ -4275,11 +4275,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "akZ" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass/exploration{
 	name = "Medic Prep";
 	req_one_access = list(44,19,5)
 	},
-/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
 "alb" = (
@@ -4428,7 +4428,7 @@
 /area/maintenance/bar/lower)
 "als" = (
 /obj/machinery/light,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -4522,11 +4522,6 @@
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/grass,
 /area/hydroponics)
-"alI" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2,
-/turf/simulated/floor/tiled/dark,
-/area/bridge/bridge_hallway)
 "alM" = (
 /obj/structure/sign/directions/bridge{
 	dir = 4;
@@ -5000,7 +4995,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
 "amU" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	dir = 1;
 	name = "Bridge";
 	req_access = list(19)
@@ -5508,7 +5503,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/glass_command/polarized{
+/obj/machinery/door/airlock/glass/command/polarized{
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -7056,7 +7051,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/excursion/general)
 "ase" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -7098,8 +7093,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/lattice,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "asj" = (
 /obj/structure/railing{
@@ -7276,7 +7270,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/camera/network/civilian{
-	dir = 9
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
@@ -7595,7 +7589,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "aty" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -8961,7 +8955,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "awI" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -9100,7 +9094,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "awW" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -9365,7 +9359,7 @@
 /area/rift/trade_shop/landing_pad)
 "axI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -10196,7 +10190,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -10361,11 +10355,6 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside3)
 "aAt" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	name = "Exploration Airlock";
-	req_access = list();
-	req_one_access = list(19,43,67)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -10382,6 +10371,9 @@
 	dir = 10
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/multi_tile/glass/exploration{
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "aAx" = (
@@ -10677,7 +10669,7 @@
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -11134,7 +11126,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aCD" = (
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	dir = 1;
 	name = "Bridge";
 	req_access = list(19)
@@ -11318,7 +11310,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11768,7 +11760,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aEB" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/exploration{
 	name = "Exploration Airlock";
 	req_one_access = list(19,43,67)
 	},
@@ -12632,13 +12624,13 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
-/obj/machinery/door/airlock/research{
-	name = "Exploration Showers"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/exploration{
+	name = "Exploration Showers"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "aGS" = (
@@ -13765,10 +13757,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "aJF" = (
-/obj/machinery/door/airlock/research{
-	name = "Pathfinder's Office";
-	req_access = list(44)
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -13776,6 +13764,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/exploration{
+	name = "Pathfinder's Office";
+	req_access = list(44)
+	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "aJH" = (
@@ -13881,7 +13873,7 @@
 	name = "Bridge Lockdown Shutters";
 	opacity = 0
 	},
-/obj/machinery/door/airlock/glass_command/polarized{
+/obj/machinery/door/airlock/glass/command/polarized{
 	id_tint = "bridge_tint";
 	name = "Bridge"
 	},
@@ -14012,7 +14004,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aKh" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -14601,7 +14593,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -16483,15 +16475,11 @@
 	pixel_y = -24
 	},
 /obj/machinery/camera/network/civilian{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "aQJ" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Exploration Airlock";
-	req_one_access = list(19,43,67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
@@ -16499,6 +16487,11 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/exploration{
+	dir = 1;
+	name = "Exploration Airlock";
+	req_one_access = list(19,43,67)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "aQK" = (
@@ -16791,7 +16784,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -16917,7 +16910,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -17669,7 +17662,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
 "aTJ" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -17815,6 +17808,7 @@
 /area/rift/surfacebase/outside/outside3)
 "aUc" = (
 /obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack/corner2,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -17954,16 +17948,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "aUx" = (
-/obj/machinery/door/airlock/multi_tile/glass/exploration{
-	name = "Exploration Briefing";
-	req_one_access = list(19,43,67)
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/multi_tile/glass/exploration{
+	dir = 1;
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/wood,
 /area/exploration/meeting)
@@ -18508,6 +18502,9 @@
 	},
 /obj/machinery/camera/network/exploration{
 	dir = 10
+	},
+/obj/structure/bed/chair/backed_grey{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
@@ -19157,7 +19154,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rsurface/level3)
 "aXN" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/structure/cable/cyan{
@@ -19571,7 +19568,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "aYT" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -19835,7 +19832,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/cockpit)
 "aZM" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -19893,7 +19890,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -20514,11 +20511,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "dfD" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/multi_tile/glass/exploration{
+	dir = 1;
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/courser_dock)
@@ -20527,12 +20528,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/machinery/door/airlock/glass_research{
-	name = "Exploration Airlock";
-	req_one_access = list(19,43,67)
-	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/exploration{
+	name = "Exploration Airlock";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/courser_dock)
@@ -20862,7 +20863,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
-	icon = 'icons/obj/doors/Doorint.dmi';
 	name = "Hydroponics";
 	req_one_access = list(35,28)
 	},
@@ -21532,7 +21532,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/camera/network/civilian{
-	dir = 10
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -21719,7 +21719,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -22037,6 +22037,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
+"hlg" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "hrR" = (
 /obj/machinery/holopad,
 /obj/effect/floor_decal/borderfloor/corner{
@@ -23070,6 +23079,13 @@
 /obj/structure/closet/secure_closet/blueshield,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/blueshield)
+"kFg" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "kFK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -23799,16 +23815,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "mPp" = (
-/obj/machinery/door/airlock/glass_research{
-	name = "Exploration Airlock";
-	req_one_access = list(19,43,67)
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/exploration{
+	dir = 1;
+	name = "Exploration Airlock";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
@@ -23921,7 +23938,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -24366,7 +24383,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "oxu" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -24600,7 +24617,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -24695,15 +24712,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "pEq" = (
-/obj/structure/bed/chair/backed_grey{
-	dir = 8
-	},
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "pHR" = (
+/obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
+/obj/effect/paint/violet,
 /turf/simulated/floor/plating,
 /area/exploration/pathfinder_office)
 "pKx" = (
@@ -25103,7 +25119,7 @@
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
@@ -25191,6 +25207,21 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"rlv" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "rqF" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -25386,7 +25417,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -25893,11 +25924,7 @@
 	dir = 8
 	},
 /obj/machinery/camera/network/civilian{
-	dir = 10
-	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -25958,9 +25985,6 @@
 "uye" = (
 /turf/simulated/wall/prepainted,
 /area/hallway/primary/surfacethree)
-"uDR" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/bridge/office)
 "uGZ" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 1;
@@ -25998,7 +26022,7 @@
 "uIL" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -26088,7 +26112,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -26324,7 +26348,7 @@
 	},
 /obj/structure/cable/green,
 /obj/machinery/camera/network/civilian{
-	dir = 10
+	dir = 1
 	},
 /obj/item/packageWrap,
 /obj/item/packageWrap,
@@ -26604,7 +26628,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "vVs" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor,
@@ -26971,12 +26995,12 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass_research{
-	name = "Exploration Airlock";
-	req_one_access = list(19,43,67)
-	},
 /obj/structure/cable/orange{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/exploration{
+	name = "Exploration Airlock";
+	req_one_access = list(19,43,67)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/courser_dock)
@@ -26998,7 +27022,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "xjG" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -37540,15 +37564,15 @@ acH
 acH
 aTq
 aZd
-aCA
-aCA
-aCA
-aCA
-aCA
-aCA
-aCA
-aCA
-aCA
+aIA
+aIA
+aIA
+aIA
+aIA
+aIA
+aIA
+aIA
+aIA
 aJO
 aTq
 aTq
@@ -37733,17 +37757,17 @@ acH
 acH
 aQK
 aZv
-aCA
-aCA
-aTj
+aIA
+aIA
+hlg
 asi
-aDY
 asi
-aDY
 asi
-aUN
-aCA
-aCA
+asi
+asi
+kFg
+aIA
+aIA
 aZh
 aAd
 aQK
@@ -42784,7 +42808,7 @@ awI
 aWg
 jpv
 aWg
-vMY
+rlv
 aOY
 use
 aKd
@@ -48787,7 +48811,7 @@ aob
 aob
 aob
 aob
-uDR
+aob
 aob
 aob
 abZ
@@ -48802,7 +48826,7 @@ anZ
 aoD
 nRY
 atN
-and
+apg
 aFZ
 aHe
 aNh
@@ -48995,8 +49019,8 @@ aeG
 anZ
 aoD
 nRY
-afW
-aRV
+ayH
+and
 aFZ
 ayO
 ahG
@@ -49189,8 +49213,8 @@ aGA
 ahA
 aml
 nRY
-ayH
-alI
+afW
+aRV
 aAD
 agk
 arT

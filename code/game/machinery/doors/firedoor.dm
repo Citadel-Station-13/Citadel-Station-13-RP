@@ -556,30 +556,6 @@
 /obj/machinery/door/firedoor/glass
 	name = "\improper Emergency Glass Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a resilient glass window, allowing you to see the danger."
-	icon_state = "door_open"
+	icon_state = "open"
 	glass = 1
 
-
-/obj/machinery/door/firedoor/glass/hidden
-	name = "\improper Emergency Shutter System"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."
-	plane = TURF_PLANE
-	low_profile = TRUE
-
-	#ifndef IN_MAP_EDITOR
-	layer = HEAVYDUTY_WIRE_LAYER //Just below pipes
-	#else
-	layer = BELOW_OBJ_LAYER
-	#endif
-
-/obj/machinery/door/firedoor/glass/hidden/open()
-	. = ..()
-	plane = TURF_PLANE
-
-/obj/machinery/door/firedoor/glass/hidden/close()
-	. = ..()
-	plane = OBJ_PLANE
-
-/obj/machinery/door/firedoor/glass/hidden/steel
-	name = "\improper Emergency Shutter System"
-	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This model fits flush with the walls, and has a panel in the floor for maintenance."

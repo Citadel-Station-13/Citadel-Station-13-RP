@@ -341,7 +341,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /obj/structure/disposalpipe/segment{
@@ -679,7 +679,7 @@
 /turf/simulated/floor/tiled/eris/dark/brown_perforated,
 /area/talon/deckone/port_engine)
 "gf" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /obj/machinery/door/firedoor/glass/talon,
@@ -3380,7 +3380,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = list(301)
 	},
 /obj/structure/disposalpipe/segment{
@@ -3407,7 +3407,7 @@
 /area/talon/deckone/port_solar)
 "Cr" = (
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,
@@ -6130,7 +6130,7 @@
 /area/talon/deckone/port_eng)
 "YM" = (
 /obj/machinery/door/firedoor/glass/talon,
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = list(301)
 	},
 /turf/simulated/floor/tiled/eris/techmaint_panels,

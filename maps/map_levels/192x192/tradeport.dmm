@@ -1609,7 +1609,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/trade_ship/cockpit)
 "gj" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Medical Bay";
 	req_access = list(160);
 	req_one_access = null
@@ -3693,7 +3693,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -3828,7 +3828,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "oM" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -4359,7 +4359,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Infirmary";
 	req_one_access = null
 	},
@@ -5521,7 +5521,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/red,
@@ -5825,7 +5825,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -6031,7 +6031,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "xm" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/structure/catwalk,
@@ -7010,7 +7010,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cafeteria)
 "Bc" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -8068,7 +8068,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "EQ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/old_tile/blue,
@@ -9300,7 +9300,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "JA" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -9356,7 +9356,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/catwalk,
@@ -10620,7 +10620,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "OE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/structure/catwalk,
@@ -12020,7 +12020,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "TZ" = (
-/obj/machinery/door/airlock/glass_engineering{
+/obj/machinery/door/airlock/glass/engineering{
 	name = "Engineering";
 	req_access = list(160);
 	req_one_access = null
@@ -12408,7 +12408,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "Vy" = (
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/spine)
@@ -12675,7 +12675,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport)
 "WM" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/light{

@@ -145,7 +145,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "lQ" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "BrigFoyer";
 	layer = 2.8;
 	name = "Security";
@@ -343,7 +343,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/machinery/door/airlock/glass_engineeringatmos{
+/obj/machinery/door/airlock/glass/engineeringatmos{
 	name = "Atmospherics"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -478,7 +478,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "Fm" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research Entrance";
 	req_access = list(47)
 	},

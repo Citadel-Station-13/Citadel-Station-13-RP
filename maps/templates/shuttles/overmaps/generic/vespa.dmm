@@ -836,7 +836,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cx" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -849,7 +849,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/hangarcontrol)
 "cz" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4570,7 +4570,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/expe/medicalchem)
 "kq" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor/glass,
@@ -5012,7 +5012,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/airlock/glass_command{
+/obj/machinery/door/airlock/glass/command{
 	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5552,7 +5552,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seceq)
 "ms" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,
@@ -6308,7 +6308,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seclobby2)
 "nN" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,
@@ -6867,7 +6867,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/seccells)
 "oT" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,
@@ -7939,7 +7939,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
 "rg" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7998,7 +7998,7 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/medicalmain)
 "rq" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor/glass,
@@ -9827,14 +9827,14 @@
 /turf/simulated/wall/rpshull,
 /area/ship/expe/corridor2)
 "vG" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor2)
 "vH" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	req_one_access = newlist()
 	},
 /obj/machinery/door/firedoor,

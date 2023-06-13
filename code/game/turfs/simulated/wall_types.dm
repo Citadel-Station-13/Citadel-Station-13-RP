@@ -442,12 +442,10 @@
 	icon_state = "reinforced_solid"
 
 /turf/simulated/wall/r_wall/prepainted/command
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_COMMAND_BLUE
 	color = COLOR_COMMAND_BLUE
 
 /turf/simulated/wall/r_wall/prepainted/security
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_MAROON
 	color = COLOR_MAROON
 
@@ -457,7 +455,6 @@
 	color = COLOR_BABY_BLUE
 
 /turf/simulated/wall/r_wall/prepainted/engineering
-	paint_color = null
 	stripe_color = COLOR_SUN
 	color = COLOR_SUN
 
@@ -467,7 +464,6 @@
 	color = COLOR_PALE_BTL_GREEN
 
 /turf/simulated/wall/r_wall/prepainted/exploration
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_EXPLO_VIOLET
 	color = COLOR_EXPLO_VIOLET
 
@@ -482,7 +478,6 @@
 	icon_state = "solid"
 
 /turf/simulated/wall/prepainted/command
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_COMMAND_BLUE
 	color = COLOR_COMMAND_BLUE
 
@@ -492,7 +487,6 @@
 	color = COLOR_GOLD
 
 /turf/simulated/wall/prepainted/security
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_MAROON
 	color = COLOR_MAROON
 
@@ -512,7 +506,6 @@
 	color = COLOR_PALE_BTL_GREEN
 
 /turf/simulated/wall/prepainted/exploration
-	paint_color = COLOR_GRAY20
 	stripe_color = COLOR_EXPLO_VIOLET
 	color = COLOR_EXPLO_VIOLET
 

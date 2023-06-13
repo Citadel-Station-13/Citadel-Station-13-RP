@@ -5560,7 +5560,7 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/main_hall)
 "Vv" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
@@ -5599,7 +5599,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "VE" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open,

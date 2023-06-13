@@ -2302,7 +2302,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fB" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Research and Development";
 	req_access = list(7)
 	},
@@ -2495,7 +2495,7 @@
 	},
 /area/centcom/control)
 "fS" = (
-/obj/machinery/door/airlock/glass_research{
+/obj/machinery/door/airlock/glass/research{
 	name = "Robotics Lab";
 	req_access = list(29,47)
 	},
@@ -3731,7 +3731,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "kQ" = (
-/obj/machinery/door/airlock/glass_medical{
+/obj/machinery/door/airlock/glass/medical{
 	name = "Virology Laboratory"
 	},
 /turf/unsimulated/floor/steel{
@@ -4264,7 +4264,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "mO" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_access = newlist()
 	},
@@ -6814,7 +6814,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
 "si" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Warden's Office";
 	req_access = list(3)
 	},
@@ -10357,7 +10357,7 @@
 	},
 /area/centcom/restaurant)
 "Fg" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security";
 	req_access = newlist()
 	},
@@ -10948,7 +10948,7 @@
 	},
 /area/centcom/security)
 "HA" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	id_tag = "innerS";
 	name = "Colonial Security Airlock";
 	req_access = list(63)
@@ -12608,7 +12608,7 @@
 	},
 /area/centcom/security)
 "Of" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Colonial Security Airlock";
 	req_access = list(63)
 	},
@@ -12839,7 +12839,7 @@
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/evac)
 "Pj" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Confiscated Items";
 	req_access = list(3)
 	},
@@ -14765,7 +14765,7 @@
 	},
 /area/centcom/security)
 "Xn" = (
-/obj/machinery/door/airlock/glass_security{
+/obj/machinery/door/airlock/glass/security{
 	name = "Security Processing";
 	req_access = list(1)
 	},

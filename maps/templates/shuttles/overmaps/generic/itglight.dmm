@@ -708,7 +708,7 @@
 /obj/structure/cable/pink{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -1716,7 +1716,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	name = "Bridge";
 	req_one_access = list(777)
 	},
@@ -4142,7 +4142,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessportcargobolts";
 	name = "Port Cargo Access";
 	req_one_access = list(777)
@@ -4194,7 +4194,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_mining{
+/obj/machinery/door/airlock/glass/mining{
 	id_tag = "dauntlessstarboardcargobolts";
 	name = "Starboard Cargo Access";
 	req_one_access = list(777)

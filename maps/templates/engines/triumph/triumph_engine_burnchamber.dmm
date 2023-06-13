@@ -606,7 +606,7 @@
 /turf/simulated/floor/reinforced/oxygen,
 /area/engineering/engine_room)
 "yQ" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -737,13 +737,13 @@
 /turf/simulated/floor/reinforced/airless,
 /area/engineering/engine_room)
 "CF" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "Dc" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -791,7 +791,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -800,7 +800,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/engine_room)
 "FI" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -892,7 +892,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

@@ -1645,7 +1645,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1660,7 +1660,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -28
@@ -2276,7 +2276,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 2;
 	req_one_access = list(18, 47)
 	},
@@ -2534,7 +2534,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "fw" = (
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 8;
 	req_one_access = list(18, 47)
 	},
@@ -2777,7 +2777,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},
@@ -3050,7 +3050,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel,
+/obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "gm" = (
@@ -3210,7 +3210,7 @@
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},
@@ -3245,7 +3245,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},
@@ -5531,7 +5531,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -5574,7 +5574,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	req_one_access = list(18, 47)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -5635,7 +5635,7 @@
 /obj/effect/floor_decal/corner/purple/bordercorner{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor{
 	req_one_access = list(18, 47)
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals7{
@@ -6298,7 +6298,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 2;
 	req_one_access = list(18, 47)
 	},
@@ -6402,7 +6402,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/anomaly_lab)
 "ms" = (
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},
@@ -6514,7 +6514,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
@@ -6689,7 +6689,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	req_one_access = list(18, 47)
 	},
 /turf/simulated/floor/tiled,
@@ -6920,7 +6920,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},
@@ -7127,7 +7127,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass/hidden{
+/obj/machinery/door/firedoor/glass{
 	dir = 1;
 	req_one_access = list(18, 47)
 	},

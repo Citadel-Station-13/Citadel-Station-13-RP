@@ -5,7 +5,7 @@ FIRE ALARM
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/firealarm.dmi'
-	icon_state = "fire0"
+	icon_state = "casing"
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	var/detecting = TRUE
