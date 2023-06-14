@@ -107,12 +107,12 @@
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
 	var/healing_factor = 1
-	if(!H.lying)
-		to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration"))
-		H.active_regen = FALSE
-	else
+	if(H.lying)
 		healing_factor *= 1.2
 	if(H.active_regen)
+		if(!H.lying)
+			to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration"))
+			H.active_regen = FALSE
 		healing_factor *= 4
 	var/turf/T = get_turf(H)
 	if(/obj/effect/alien/weeds in T.contents)
@@ -121,8 +121,9 @@
 		healing_factor *= 1.2
 
 	if(H.nutrition < 50)
-		to_chat(H, SPAN_BOLDWARNING("You are to hungry to benefit from your enhanced regeneration"))
-		H.active_regen = FALSE
+		if(H.active_regen)
+			to_chat(H, SPAN_BOLDWARNING("You are to hungry to benefit from your enhanced regeneration"))
+			H.active_regen = FALSE
 		return
 	//Heal_amount is 0.5, with all bonies above 1.188
 
