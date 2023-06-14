@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(planets)
 /datum/controller/subsystem/planets/proc/legacy_planet_assert(z_index, planet_path)
 	var/datum/planet/existing = locate(planet_path) in planets
 	if(isnull(existing))
-		existing = new
+		existing = new planet_path
 		planets += existing
 	z_to_planet[z_index] = existing
 
