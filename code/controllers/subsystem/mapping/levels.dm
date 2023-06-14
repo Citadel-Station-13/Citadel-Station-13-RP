@@ -40,6 +40,7 @@
 			ASSERT(istype(existing, /datum/map_level/unallocated))
 			existing.loaded = FALSE
 	ordered_levels[z_index] = level_or_path
+	level_or_path.z_index = z_index
 	. = level_or_path
 
 	if(isnull(level_or_path.display_id))
@@ -88,10 +89,11 @@
  * * crop - crop the level if it's too big instead of panic
  * * deferred_callbacks - generation callbacks to defer. if this isn't provided, we fire them + finalize immediately.
  * * orientation - load orientation override
+ * * area_cache - pass in area cache for bundling to dmm_parsed.
  *
  * @return TRUE / FALSE based on success / fail
  */
-/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation)
+/datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
 	instance = allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
 	// parse map
@@ -117,7 +119,7 @@
 	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 		CRASH("tried to load a map that would overrun ):")
 
-	parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation)
+	parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)

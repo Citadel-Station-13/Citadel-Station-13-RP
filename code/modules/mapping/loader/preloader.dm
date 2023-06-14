@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(_preloader, /datum/map_preloader, new)
 		what.vars[attribute] = value
 
 	// handle post processing, so things like directions on subtypes don't break.
-	if(preloader_local.turn_angle)		//safe way to check for if this is necessary
+	if(preloader_local.turn_angle != 0)		//safe way to check for if this is necessary
 		what.dir = turn(what.dir, preloader_local.turn_angle)
 		var/px = what.pixel_x
 		var/py = what.pixel_y

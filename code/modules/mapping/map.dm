@@ -1,6 +1,8 @@
 /**
  * maps
  * clusters of zlevels, basically.
+ *
+ * when maps are loaded, areas are cached together to preserve byond-like behavior.
  */
 /datum/map
 	abstract_type = /datum/map
@@ -31,6 +33,9 @@
 	var/center = TRUE
 	/// orientation - defaults to south
 	var/orientation = SOUTH
+	/// use map-wide area cache instead of individual level area caches; has no effect on submap loading, only level loading.
+	/// don't touch this unless you know what you're doing.
+	var/bundle_area_cache = TRUE
 
 	//! legacy : spawn these shuttle datums on load
 	var/list/legacy_assert_shuttle_datums
@@ -69,13 +74,14 @@
 	.["crop"] = crop
 	.["center"] = center
 	.["orientation"] = orientation
+	.["bundle_area_cache"] = bundle_area_cache
 
 /datum/map/deserialize(list/data)
 	if(loaded)
 		CRASH("attempted deserialize while loaded")
 	. = ..()
-	id = .["id"]
-	name = .["name"]
+	id = data["id"]
+	name = data["name"]
 	levels = list()
 	for(var/serialized_level in data["levels"])
 		var/is_it_a_path = text2path(serialized_level)
@@ -89,13 +95,18 @@
 			level.deserialize(json_decode(serialized_level))
 			levels += level
 			continue
-	dependencies = .["dependencies"]
-	lateload = .["lateload"]
-	width = .["width"]
-	height = .["height"]
-	crop = .["crop"]
-	center = .["center"]
-	orientation = .["orientation"]
+	dependencies = data["dependencies"]
+	lateload = data["lateload"]
+	width = data["width"]
+	height = data["height"]
+	if(!isnull(data["crop"]))
+		crop = data["crop"]
+	if(!isnull(data["center"]))
+		center = data["center"]
+	if(!isnull(data["orientation"]))
+		orientation = data["orientation"]
+	if(!isnull(data["bundle_area_cache"]))
+		bundle_area_cache = data["bundle_area_cache"]
 
 /**
  * loads any lazyloaded stuff we need; called before we load in

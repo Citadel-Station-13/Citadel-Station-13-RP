@@ -92,8 +92,10 @@
 
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
+	var/list/area_cache = instance.bundle_area_cache? list() : null
+
 	for(var/datum/map_level/level as anything in instance.levels)
-		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation)
+		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
 		loaded_levels += level
 
 	var/list/datum/map/recursing = list()

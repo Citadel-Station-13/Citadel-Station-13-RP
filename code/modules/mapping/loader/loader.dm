@@ -29,13 +29,14 @@
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
  * * orientation - cardinal dir to do. default is south.
+ * * area_cache - override area cache and provide your own, usually used to ensure multiple loadings share the same /area's.
  *
  * @return /datum/dmm_parsed instance
  */
-/proc/load_map(map, ll_x, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation)
+/proc/load_map(map, ll_x, ll_y, ll_z, x_lower, y_lower, x_upper, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation, list/area_cache)
 	var/datum/dmm_parsed/parsed = new(map, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper)
 	. = parsed
-	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation)
+	parsed.load(ll_x, ll_y, ll_z, no_changeturf = no_changeturf, place_on_top = place_on_top, orientation = orientation, area_cache = area_cache)
 
 /**
  * parses a dmm map
@@ -260,10 +261,11 @@
  * * z_upper - crop dmm load to this z.
  * * no_changeturf - do not call [turf/AfterChange] when loading turfs.
  * * place_on_top - use PlaceOnTop instead of ChangeTurf
+ * * area_cache - override area cache and provide your own, used to make sure multiple loadings share the same areas if two areas are the same type.
  *
  * @return bounds list of load, or null if failed.
  */
-/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH)
+/datum/dmm_parsed/proc/load(x, y, z, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache)
 
 	var/static/loading = FALSE
 	UNTIL(!loading)
@@ -275,8 +277,7 @@
 
 // todo: verify that when rotating, things load in the same way when cropped e.g. aligned to lower left
 //       as opposed to rotating to somewhere else
-/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH)
-	var/list/area_cache = list()
+/datum/dmm_parsed/proc/_load_impl(x, y, z, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, no_changeturf, place_on_top, orientation = SOUTH, list/area_cache = list())
 	var/list/model_cache = build_cache(no_changeturf)
 	var/space_key = model_cache[SPACE_KEY]
 
@@ -483,18 +484,24 @@
 	*/
 	if(members[index] != /area/template_noop)
 		var/atype = members[index]
-		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
-		var/atom/instance = areaCache[atype]
-		if (!instance)
-			instance = GLOB.areas_by_type[atype]
-			if (!instance)
+		var/area/instance = areaCache[atype]
+		if(isnull(instance))
+			// check uniqueness
+			var/area/area_casted = atype
+			if(initial(area_casted.unique))
+				// unique, give it one more chance
+				instance = GLOB.areas_by_type[atype]
+			// still null?
+			if(isnull(instance))
+				// create it
+				// preloader / loading only done if we're making the instance.
+				// warranty void if a map has varedited areas; you should know better, linter already checks against it.
+				world.preloader_setup(members_attributes[index], atype, turn_angle, invert_x, invert_y, swap_xy)
 				instance = new atype(null)
+				if(GLOB.use_preloader)
+					world.preloader_load(instance)
 			areaCache[atype] = instance
-		if(crds)
-			instance.contents.Add(crds)
-
-		if(GLOB.use_preloader && instance)
-			world.preloader_load(instance)
+		instance.contents.Add(crds)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
 
@@ -532,18 +539,17 @@
 /datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
 	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
 
-	if(crds)
-		if(ispath(path, /turf))
-			if(placeOnTop)
-				. = crds.PlaceOnTop(null, path, CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))
-			else if(!no_changeturf)
-				. = crds.ChangeTurf(path, null, CHANGETURF_DEFER_CHANGE)
-			else
-				. = create_movable(path, crds)//first preloader pass
+	if(ispath(path, /turf))
+		if(placeOnTop)
+			. = crds.PlaceOnTop(null, path, CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))
+		else if(!no_changeturf)
+			. = crds.ChangeTurf(path, null, CHANGETURF_DEFER_CHANGE)
 		else
-			. = create_movable(path, crds)//first preloader pass
+			. = create_atom(path, crds)//first preloader pass
+	else
+		. = create_atom(path, crds)//first preloader pass
 
-	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
+	if(GLOB.use_preloader)//second preloader pass, for those atoms that don't ..() in New()
 		world.preloader_load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize
@@ -558,9 +564,9 @@
  * * don't use this for turfs
  * * use instance_atom, don't use this
  */
-/datum/dmm_parsed/proc/create_movable(path, atom/where)
+/datum/dmm_parsed/proc/create_atom(path, atom/where)
 	set waitfor = FALSE
-	return new path(where)
+	. = new path(where)
 
 /**
  * i don't know what this does but the old documentation says:
