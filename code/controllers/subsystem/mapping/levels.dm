@@ -84,7 +84,22 @@
 	ASSERT(!isnull(instance))
 	// parse map
 
-	#warn impl, including center/etc
+	var/datum/dmm_parsed/parsed = parse_map(instance.resolve_map_path())
+
+	var/real_x = 1
+	var/real_y = 1
+	var/real_z = instance.z_index
+
+	// todo: check my math
+
+	if(center)
+		real_x = 1 + round((world.maxx - parsed.width) / 2)
+		real_y = 1 + round((world.maxy - parsed.height) / 2)
+
+	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
+		CRASH("tried to load a map that would overrun ):")
+
+	parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = instance.orientation)
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)

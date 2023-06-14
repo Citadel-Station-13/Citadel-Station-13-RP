@@ -155,6 +155,12 @@
 		air_outdoors = data["air_outdoors"]
 
 /**
+ * get .dmm path
+ */
+/datum/map_level/proc/resolve_map_path()
+	return absolute_path // no relative path support yet
+
+/**
  * get level index in dir
  */
 /datum/map_level/proc/z_in_dir(dir)

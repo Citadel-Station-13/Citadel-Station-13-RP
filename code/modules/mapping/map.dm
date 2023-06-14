@@ -29,6 +29,8 @@
 	var/crop = FALSE
 	/// center us if we're smaller than world size
 	var/center = TRUE
+	/// orientation - defaults to south
+	var/orientation = SOUTH
 
 	//! legacy : spawn these shuttle datums on load
 	var/list/legacy_assert_shuttle_datums
@@ -66,6 +68,7 @@
 	.["height"] = height
 	.["crop"] = crop
 	.["center"] = center
+	.["orientation"] = orientation
 
 /datum/map/deserialize(list/data)
 	if(loaded)
@@ -92,6 +95,7 @@
 	height = .["height"]
 	crop = .["crop"]
 	center = .["center"]
+	orientation = .["orientation"]
 
 /**
  * loads any lazyloaded stuff we need; called before we load in
