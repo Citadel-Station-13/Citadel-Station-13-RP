@@ -84,6 +84,9 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  * Return TRUe on success, or a string of why it failed.
  */
 /datum/role/ghostrole/proc/AttemptSpawn(client/C, datum/component/ghostrole_spawnpoint/chosen_spawnpoint)
+	if(C.persistent.ligma)
+		log_shadowban("[key_name(C)] ghostrole join as [id] ([type]) blocked.")
+		return "BUG: No instantiator for [src][(id !=type) && ":[id]"] ([type])"
 	if(BanCheck(C))
 		return "You can't spawn as [src] due to an active job-ban."
 	if(!AllowSpawn(C))

@@ -491,8 +491,9 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		to_chat(usr, "<font color='red'>The round is either not ready, or has already finished...</font>")
 		return 0
-	if(!config_legacy.enter_allowed)
+	if(!config_legacy.enter_allowed || client.persistent.ligma)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
 		return 0
 	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
