@@ -74,12 +74,14 @@
 				continue
 			if(!priority_process)
 				sleep(-1)
-			var/datum/component/mineral_resources/resources = T.AddComponent(/datum/component/mineral_resources)
-			LAZYINITLIST(resources.resources)
+			LAZYINITLIST(T.resources)
 
 			for(var/val in common_resources)
 				var/list/ranges = common_resources[val]
-				resources.resources[val] = rand(ranges[1], ranges[2])
+				var/res_num = rand(ranges[1], ranges[2])
+				if(res_num == 0)
+					continue
+				T.resources[val] = res_num
 
 			var/tmp_cell
 			var/spawning
@@ -92,7 +94,10 @@
 
 			for(var/val in spawning)
 				var/list/ranges = spawning[val]
-				resources.resources[val] = rand(ranges[1], ranges[2])
+				var/res_num = rand(ranges[1], ranges[2])
+				if(res_num == 0)
+					continue
+				T.resources[val] = res_num
 
 	return
 

@@ -1431,11 +1431,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 			push_data()
 			activate_pin(2)
 			return
-		var/datum/component/mineral_resources/resources = T.GetComponent(/datum/component/mineral_resources)
-		if(!resources)
-			mineral = null
-		else
-			mineral = resources.resources
+		mineral = T.resources
 		set_pin_data(IC_OUTPUT, 1, mineral)
 		push_data()
 		activate_pin(3)

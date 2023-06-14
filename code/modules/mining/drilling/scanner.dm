@@ -46,8 +46,7 @@
 		if(!T.has_resources)
 			continue
 
-		var/datum/component/mineral_resources/mat_res = T.GetComponent(/datum/component/mineral_resources)
-		for(var/metal in mat_res.resources)
+		for(var/metal in T.resources)
 			var/ore_type
 			var/datum/material/material = SSmaterials.get_material(metal)
 
@@ -67,9 +66,9 @@
 				ore_type = material.name
 			if(ore_type)
 				if(metals[ore_type])
-					metals[ore_type] += mat_res.resources[metal]
+					metals[ore_type] += T.resources[metal]
 				else
-					metals[ore_type] = mat_res.resources[metal]
+					metals[ore_type] = T.resources[metal]
 
 	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()

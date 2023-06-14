@@ -3,6 +3,7 @@
 	var/wet = 0
 	var/image/wet_overlay = null
 	var/has_resources
+	var/list/resources
 
 	var/thermite = 0
 	initial_gas_mix = GAS_STRING_STP
