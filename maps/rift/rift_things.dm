@@ -77,6 +77,3 @@
 		message_admins("\The [A] fell out of the sky.")
 		var/mob/living/L = A
 		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
-
-/obj/effect/step_trigger/zlevel_fall/cavernfall
-	var/static/target_z = Z_LEVEL_WEST_CAVERN

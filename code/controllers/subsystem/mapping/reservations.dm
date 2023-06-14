@@ -66,7 +66,7 @@
 	for(var/turf/T as anything in turfs)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE)
 		T.turf_flags |= UNUSED_RESERVATION_TURF
-		T.loc = unallocated_reserve_area
+		unallocated_reserve_area.contents.Add(T)
 		CHECK_TICK
 
 /area/unused_reservation_area

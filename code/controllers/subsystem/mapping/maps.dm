@@ -46,12 +46,12 @@
 	var/json_path = "data/next_map.json"
 	if(fexists(json_path))
 		fdel(json_path)
-	var/list/data = list()
-	data["type"] = next.type
+	var/list/json = list()
+	json["type"] = next.type
 	if(next.modified)
-		data["data"] = next.serialize()
+		json["data"] = next.serialize()
 	var/writing = file(json_path)
-	WRITE_FILE(writing, json_encode(data))
+	WRITE_FILE(writing, json_encode(json))
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
 	var/json_path = "data/next_map.json"
@@ -59,9 +59,9 @@
 		return
 	var/reading = file(json_path)
 	var/raw = file2text(reading)
-	var/list/data = json_decode(raw)
-	var/path = data["type"]
-	var/list/data = data["data"]
+	var/list/json = json_decode(raw)
+	var/path = json["type"]
+	var/list/data = json["data"]
 	var/datum/map/station/wanted = new path
 	if(!isnull(data))
 		wanted.deserialize(data)
