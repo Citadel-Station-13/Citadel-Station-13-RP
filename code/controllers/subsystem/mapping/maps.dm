@@ -66,13 +66,13 @@
 	var/datum/map/station/next_map
 	var/datum/map/station/default = keyed_maps[keyed_maps[1]]
 	if(isnull(default))
-		STACK_TRACE("no default map; world init is likely going to explode.")
+		stack_trace("no default map; world init is likely going to explode.")
 #ifdef FORCE_MAP
 	if(keyed_maps[FORCE_MAP])
 		next_map = keyed_maps[FORCE_MAP]
 		subsystem_log("loaded forced map [FORCE_MAP]")
 	else
-		STACK_TRACE("fail-1: failed to locate FORCE(d)_MAP [FORCE_MAP]. falling back to default.")
+		stack_trace("fail-1: failed to locate FORCE(d)_MAP [FORCE_MAP]. falling back to default.")
 		subsystem_log("failed to load forced map [FORCE_MAP]")
 		next_map = default
 #else
@@ -90,14 +90,14 @@
 	if(!modified)
 		next_map = keyed_maps[id]
 		if(isnull(next_map))
-			STACK_TRACE("fail-1: non-modified next_map id was [id], which doesn't exist. falling back to path.")
+			stack_trace("fail-1: non-modified next_map id was [id], which doesn't exist. falling back to path.")
 			if(!ispath(path, /datum/map/station))
-				STACK_TRACE("fail-2: non-modified map path [path] when expecting a /datum/map/station. falling back to default.")
+				stack_trace("fail-2: non-modified map path [path] when expecting a /datum/map/station. falling back to default.")
 				next_map = default
 			else
 				next_map = new path
 	else if(!ispath(path, /datum/map/station))
-		STACK_TRACE("fail-fatal: modified map path [path] when expecting a /datum/map/station. falling back to default.")
+		stack_trace("fail-fatal: modified map path [path] when expecting a /datum/map/station. falling back to default.")
 		next_map = default
 	else
 		next_map = new path
