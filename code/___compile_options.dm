@@ -3,10 +3,10 @@
 
 //## Core settings
 //! Fastboot flags - useful for debugging
-/// Disable automatic roundstart icon smoothing.
-// #define FASTBOOT_DISABLE_SMOOTHING
 /// Disable loading late maps.
 // #define FASTBOOT_DISABLE_LATELOAD
+/// Disable automatic roundstart icon smoothing.
+// #define FASTBOOT_DISABLE_SMOOTHING
 /// Disable atmospherics zone build.
 // #define FASTBOOT_DISABLE_ZONES
 
