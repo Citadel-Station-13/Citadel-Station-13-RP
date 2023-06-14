@@ -49,7 +49,7 @@
 			last_production_time = world.time
 			produce()
 
-/obj/item/ammo_magazine/smart/examine(mob/user)
+/obj/item/ammo_magazine/smart/examine(mob/user, dist)
 	. = ..()
 
 	if(attached_cell)

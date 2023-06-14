@@ -43,7 +43,7 @@
 	if(ispath(beaker))
 		beaker = new beaker(src)
 
-/obj/machinery/reagentgrinder/examine(mob/user)
+/obj/machinery/reagentgrinder/examine(mob/user, dist)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
 		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"

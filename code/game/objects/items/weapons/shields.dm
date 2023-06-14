@@ -170,7 +170,7 @@
 		icon_state = "flashshield"
 		item_state = "flashshield"
 
-/obj/item/shield/riot/flash/examine(mob/user)
+/obj/item/shield/riot/flash/examine(mob/user, dist)
 	. = ..()
 	if (embedded_flash?.broken)
 		. += "<span class='info'>The mounted bulb has burnt out. You can try replacing it with a new one.</span>"
@@ -382,7 +382,7 @@
 			lcolor = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 
-/obj/item/shield/energy/examine(mob/user)
+/obj/item/shield/energy/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 

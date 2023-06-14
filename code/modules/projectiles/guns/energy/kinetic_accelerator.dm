@@ -69,7 +69,7 @@
 	projectile_type = /obj/projectile/kinetic/premium
 */
 
-/obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/examine(mob/user, dist)
 	. = ..()
 	if(max_mod_capacity)
 		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
@@ -286,7 +286,7 @@
 	var/minebot_upgrade = TRUE
 	var/minebot_exclusive = FALSE
 
-/obj/item/borg/upgrade/modkit/examine(mob/user)
+/obj/item/borg/upgrade/modkit/examine(mob/user, dist)
 	. = ..()
 	. += "<span class='notice'>Occupies <b>[cost]%</b> of mod capacity.</span>"
 

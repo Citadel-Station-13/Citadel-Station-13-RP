@@ -327,7 +327,7 @@
 /mob/proc/do_examinate(atom/A)
 	var/list/result
 	if(client)
-		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
+		result = A.examine(src, game_range_to(src, A)) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
 	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)

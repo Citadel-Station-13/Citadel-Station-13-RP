@@ -28,7 +28,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
     var/temperature_damage = 0//If not sufficently cooled the circuits take damage and calculations get weaker, at 100 we condsider the circuit fried and it needs repairs/replacement
 
 
-/obj/machinery/power/crypto_miner/examine(mob/user)
+/obj/machinery/power/crypto_miner/examine(mob/user, dist)
     . = ..()
     . += "An indicator on [src]'s controll panel indicates that [src] is in a [(check_right_atmos() ? "sufficent" : "insufficent")] amount of helium to function."
     if(GLOB.points_mined)//Only show this if someone actually mined
@@ -140,6 +140,8 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 	var/helium = 0
 	for(var/diff_gasses in env.gas)
 		if(ispath(diff_gasses, /datum/gas/helium))
+			helium = env.gas[diff_gasses]
+		else if(ispath(diff_gasses, /datum/gas/vimur))
 			helium = env.gas[diff_gasses]
 		else
 			non_helium += env.gas[diff_gasses]

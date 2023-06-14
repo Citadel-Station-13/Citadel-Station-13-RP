@@ -30,7 +30,7 @@
 
 	var/force_holder = null //
 
-/obj/item/gripper/examine(mob/user)
+/obj/item/gripper/examine(mob/user, dist)
 	. = ..()
 	if(wrapped)
 		. += "<span class='notice'>\The [src] is holding \the [wrapped].</span>"

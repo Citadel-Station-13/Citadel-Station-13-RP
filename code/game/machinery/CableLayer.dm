@@ -48,7 +48,7 @@
 		else
 			to_chat(usr, SPAN_WARNING("There's no more cable on the reel."))
 
-/obj/machinery/cablelayer/examine(mob/user)
+/obj/machinery/cablelayer/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("\The [src]'s cable reel has [cable.amount] lengths left.")
 
