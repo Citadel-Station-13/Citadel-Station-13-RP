@@ -18,21 +18,18 @@
 	desc = "Lie down and regenerate your health"
 	action_state = "regenerate"
 	windup = 0 SECOND
-	cooldown = 5 MINUTES
-	interact_type = ABILITY_INTERACT_TOGGLE
+	interact_type = ABILITY_INTERACT_TRIGGER
 	always_bind = TRUE
 	ability_check_flags = ABILITY_CHECK_RESTING
 	mobility_check_flags = MOBILITY_IS_CONSCIOUS
 
-/datum/ability/species/xenomorph_hybrid/regenerate/on_enable()
+/datum/ability/species/xenomorph_hybrid/regenerate/on_trigger()
+	. = ..()
 	var/mob/living/carbon/human/O = owner
 	if(istype(O))
+		to_chat(O, SPAN_NOTICEALIEN("We begin to mend our wounds."))
 		O.active_regen = TRUE
 
-/datum/ability/species/xenomorph_hybrid/regenerate/on_disable()
-	var/mob/living/carbon/human/O = owner
-	if(istype(O))
-		O.active_regen = FALSE
 
 
 
