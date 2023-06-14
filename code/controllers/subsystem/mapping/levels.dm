@@ -100,6 +100,8 @@
 	if(isfile(map_path))
 	else if(!fexists(map_path))
 		CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
+	else
+		map_path = file(map_path)
 	var/datum/dmm_parsed/parsed = parse_map(map_path)
 
 	var/real_x = 1
