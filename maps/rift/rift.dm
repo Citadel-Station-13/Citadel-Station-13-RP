@@ -44,6 +44,8 @@
 	legacy_persistence_id = "rift"
 	full_name = "NSB Atlas"
 	use_overmap = TRUE
+	overmap_size = 60
+	overmap_event_areas = 50
 	usable_email_tlds = list("lythios.nt")
 
 	titlescreens = list(
