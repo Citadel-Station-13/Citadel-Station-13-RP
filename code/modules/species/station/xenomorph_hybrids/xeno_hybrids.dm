@@ -108,6 +108,7 @@
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
 	var/healing_factor = 1
 	if(!H.lying)
+		to_chat(H, SPAN_BOLDWARNING("You need to lie down to benefit from your enhanced regeneration")
 		H.active_regen = FALSE
 	else
 		healing_factor *= 1.2
