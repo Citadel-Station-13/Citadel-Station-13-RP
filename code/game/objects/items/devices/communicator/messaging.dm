@@ -139,6 +139,7 @@
 			if(client.persistent.ligma)
 				show_message("Comm IM - [src] -> [chosen_communicator]: [text_message]")
 				log_shadowban("[key_name(src)] COMMLINK -> [chosen_communicator]: [text_message]")
+				return
 			O.exonet.send_message(chosen_communicator.exonet.address, "text", text_message)
 
 			to_chat(src, "<span class='notice'>You have sent '[text_message]' to [chosen_communicator].</span>")
