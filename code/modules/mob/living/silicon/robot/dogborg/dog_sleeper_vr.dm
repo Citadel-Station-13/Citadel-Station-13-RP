@@ -50,13 +50,14 @@
 /obj/item/dogborg/sleeper/Exit(atom/movable/O)
 	return 0
 
-/obj/item/dogborg/sleeper/afterattack(var/atom/movable/target, mob/living/silicon/user, proximity)
+/obj/item/dogborg/sleeper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	hound = loc
-	if(!istype(target))
+	var/atom/movable/AM = target
+	if(!istype(AM))
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(target.anchored)
+	if(AM.anchored)
 		return
 	if(target in hound.module.modules)
 		return
@@ -75,7 +76,7 @@
 				return
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [target.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 			if(do_after(user, 30, target) && length(contents) < max_item_count)
-				target.forceMove(src)
+				AM.forceMove(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [target.name] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [target] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(analyzer && istype(target,/obj/item))
@@ -137,7 +138,7 @@
 			return
 		user.visible_message("<span class='warning'>[hound.name] is ingesting [H.name] into their [src.name].</span>", "<span class='notice'>You start ingesting [H] into your [src]...</span>")
 		if(!patient && !H.buckled && do_after (user, 50, H))
-			if(!proximity)
+			if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 				return //If they moved away, you can't eat them.
 			if(patient)
 				return //If you try to eat two people at once, you can only eat one.
@@ -219,21 +220,21 @@
 
 	if(!delivery && compactor && length(contents))//garbage counter for trashpup
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
-		dat += "<font color='gray'>([list2text(contents,", ")])</font><BR><BR>"
+		dat += "<font color='gray'>([jointext(contents,", ")])</font><BR><BR>"
 
 	if(delivery && length(contents))
 		dat += "<font color='red'><B>Current load:</B> [length(contents)] / [max_item_count] objects.</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 1.</font><BR>"
 		if(length(deliveryslot_1))
-			dat += "<font color='gray'>([list2text(deliveryslot_1,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_1,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 2.</font><BR>"
 		if(length(deliveryslot_2))
-			dat += "<font color='gray'>([list2text(deliveryslot_2,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_2,", ")])</font><BR>"
 		dat += "<font color='gray'>Cargo compartment slot: Cargo 3.</font><BR>"
 		if(length(deliveryslot_3))
-			dat += "<font color='gray'>([list2text(deliveryslot_3,", ")])</font><BR>"
+			dat += "<font color='gray'>([jointext(deliveryslot_3,", ")])</font><BR>"
 		dat += "<font color='red'>Cargo compartment slot: Fuel.</font><BR>"
-		dat += "<font color='red'>([list2text(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
+		dat += "<font color='red'>([jointext(contents - (deliveryslot_1 + deliveryslot_2 + deliveryslot_3),", ")])</font><BR><BR>"
 
 	if(analyzer && !synced)
 		dat += "<A href='?src=\ref[src];sync=1'>Sync Files</A><BR>"

@@ -35,7 +35,7 @@
 	if(randomize_harvest_count)
 		max_harvests = max(0, rand(min_harvests, max_harvests)) // Incase you want to weight it more toward 'not harvestable', set min_harvests to a negative value.
 
-/obj/structure/flora/examine(mob/user)
+/obj/structure/flora/examine(mob/user, dist)
 	. = ..()
 	if(harvest_count < max_harvests)
 		. += "<span class='notice'>\The [src] seems to have something hanging from it.</span>"

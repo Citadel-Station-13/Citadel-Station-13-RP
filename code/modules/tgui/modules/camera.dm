@@ -13,12 +13,14 @@
 	var/map_name
 	var/const/default_map_size = 15
 	var/atom/movable/screen/map_view/cam_screen
-	/// All the plane masters that need to be applied.
-	var/list/cam_plane_masters
 	var/atom/movable/screen/background/cam_background
 	var/atom/movable/screen/background/cam_foreground
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
+	/// plane holder
+	var/datum/plane_holder/tgui_camera/planes
+	/// parallax holder for camera
+	var/datum/parallax_holder/parallax
 
 /datum/tgui_module_old/camera/New(host, list/network_computer)
 	. = ..()
@@ -34,29 +36,22 @@
 	cam_screen.del_on_map_removal = FALSE
 	cam_screen.screen_loc = "[map_name]:1,1"
 
-	cam_plane_masters = get_tgui_plane_masters()
-
-	for(var/plane in cam_plane_masters)
-		var/atom/movable/screen/instance = plane
-		instance.assigned_map = map_name
-		instance.del_on_map_removal = FALSE
-		instance.screen_loc = "[map_name]:CENTER"
-
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = FALSE
 
 	var/mutable_appearance/scanlines = mutable_appearance('icons/effects/static.dmi', "scanlines")
 	scanlines.alpha = 50
-	scanlines.layer = FULLSCREEN_LAYER
+	scanlines.layer = FULLSCREEN_LAYER_MAIN
 
 	var/mutable_appearance/noise = mutable_appearance('icons/effects/static.dmi', "1 light")
-	noise.layer = FULLSCREEN_LAYER
+	noise.layer = FULLSCREEN_LAYER_MAIN
 
 	cam_foreground = new
 	cam_foreground.assigned_map = map_name
 	cam_foreground.del_on_map_removal = FALSE
-	cam_foreground.plane = FULLSCREEN_PLANE
+	cam_foreground.plane = CAMERA_MASK_PLANE
+	cam_foreground.layer = CAMERA_MASK_LAYER_MAIN
 	cam_foreground.add_overlay(scanlines)
 	cam_foreground.add_overlay(noise)
 
@@ -67,11 +62,18 @@
 		UnregisterSignal(active_camera, COMSIG_MOVABLE_MOVED)
 	active_camera = null
 	last_camera_turf = null
-	qdel(cam_screen)
-	QDEL_LIST(cam_plane_masters)
-	qdel(cam_background)
-	qdel(cam_foreground)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(cam_foreground)
+	QDEL_NULL(planes)
+	QDEL_NULL(parallax)
 	return ..()
+
+/datum/tgui_module_old/camera/proc/ensure_tgui_camera()
+	if(isnull(planes))
+		planes = new(map_name)
+	if(isnull(parallax))
+		parallax = new(secondary_map = map_name, forced_eye = src)
 
 /datum/tgui_module_old/camera/ui_interact(mob/user, datum/tgui/ui = null)
 	// Update UI
@@ -91,10 +93,11 @@
 			playsound(ui_host(), 'sound/machines/terminal_on.ogg', 25, FALSE)
 		// Register map objects
 		user.client.register_map_obj(cam_screen)
-		for(var/plane in cam_plane_masters)
-			user.client.register_map_obj(plane)
 		user.client.register_map_obj(cam_background)
 		user.client.register_map_obj(cam_foreground)
+		ensure_tgui_camera()
+		planes.apply(user.client)
+		parallax.apply(user.client)
 		// Open UI
 		ui = new(user, src, tgui_id, name)
 		ui.open()
@@ -264,8 +267,10 @@
 	// living creature or not, we remove you anyway.
 	concurrent_users -= user_ref
 	// Unregister map objects
-	if(user.client)
+	if(!isnull(user.client))
 		user.client.clear_map(map_name)
+		parallax.remove(user.client)
+		planes.remove(user.client)
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		if(active_camera)
@@ -291,3 +296,21 @@
 
 /datum/tgui_module_old/camera/ntos/hacked/New(host)
 	. = ..(host, LEGACY_MAP_DATUM.station_networks.Copy())
+
+//Crew Helmet Cams
+/datum/tgui_module_old/camera/ntos/helmet
+	name = "Public Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/helmet/New(host)
+	. = ..(host, list(NETWORK_CIV_HELMETS))
+/datum/tgui_module_old/camera/ntos/security_helmet
+	name = "Security Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/security_helmet/New(host)
+	. = ..(host, list(NETWORK_SEC_HELMETS))
+
+/datum/tgui_module_old/camera/ntos/exploration_helmet
+	name = "Exploration Helmet Camera Monitor"
+
+/datum/tgui_module_old/camera/ntos/exploration_helmet/New(host)
+	. = ..(host, list(NETWORK_EXPLO_HELMETS))

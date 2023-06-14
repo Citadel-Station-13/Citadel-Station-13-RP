@@ -1,10 +1,5 @@
-// todo: either tgui window
-// or make it an inhouse lightweight datum
-// probably the latter for minimal points of failure
-// we need to send all init & reload/reset-on-mob-login data in one
-// go, because byond does not ensure function call order
-// race conditions can cause problems where verbs get removed
-// after they get added by a remove-add turning into an add-remove.
+// todo: if byond ever gets threaded browsers, we're standardizing tgui.html and tgui_window.dm
+//       because manually reimplementing this shit is driving me nuts.
 
 /**
  * citadel RP stat system

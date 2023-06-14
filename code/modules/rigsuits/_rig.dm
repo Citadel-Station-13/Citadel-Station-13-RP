@@ -117,7 +117,7 @@
 /obj/item/hardsuit/get_cell()
 	return cell
 
-/obj/item/hardsuit/examine(mob/user)
+/obj/item/hardsuit/examine(mob/user, dist)
 	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))
@@ -1147,7 +1147,7 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
-	layer = SCREEN_LAYER
+	layer = HUD_LAYER_UNDER
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 	alpha = 20 //Animated up when loading

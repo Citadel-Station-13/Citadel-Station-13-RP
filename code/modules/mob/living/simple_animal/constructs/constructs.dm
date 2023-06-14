@@ -111,7 +111,7 @@
 
 /mob/living/simple_animal/construct/Initialize(mapload)
 	. = ..()
-	name = text("[initial(name)] ([rand(1, 1000)])")
+	name = "[initial(name)] ([rand(1, 1000)])"
 	real_name = name
 	add_language("Cult")
 	add_language("Occult")
@@ -150,7 +150,7 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/construct/examine(mob/user)
+/mob/living/simple_animal/construct/examine(mob/user, dist)
 	. = ..()
 	. += "<span cass='info'>This is [icon2html(thing = src, target = user)]\a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())

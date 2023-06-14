@@ -82,7 +82,7 @@
 
 	update_appearance()
 
-/obj/machinery/drone_fabricator/examine(mob/user)
+/obj/machinery/drone_fabricator/examine(mob/user, dist)
 	. = ..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
 		. += "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"

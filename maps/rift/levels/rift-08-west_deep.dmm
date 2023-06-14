@@ -2360,7 +2360,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "uW" = (
-/turf/simulated/shuttle/floor/voidcraft/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/turbolift/rwest_mining/deep)
 "uZ" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,

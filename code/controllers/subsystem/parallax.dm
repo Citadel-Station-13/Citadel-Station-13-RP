@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(parallax)
 /datum/controller/subsystem/parallax/proc/reset_clients_on_z(z)
 	for(var/client/C in GLOB.clients)
 		if(C.mob.z == z)
-			C.parallax_holder?.Reset()
+			C.parallax_holder?.reset()
 
 /**
  * resets vis contents for clients on a z

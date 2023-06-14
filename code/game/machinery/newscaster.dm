@@ -83,7 +83,7 @@
 	if(message_type)
 		newMsg.message_type = message_type
 	if(photo)
-		newMsg.img = photo.img
+		newMsg.img = photo.full_image()
 		newMsg.caption = photo.scribble
 	for(var/datum/feed_channel/FC in network_channels)
 		if(FC.channel_name == channel_name)
@@ -267,8 +267,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 
 	if(istype(user, /mob/living/carbon/human) || istype(user,/mob/living/silicon))
 		var/mob/living/human_or_robot_user = user
-		var/dat
-		dat = text("<HEAD><TITLE>Newscaster</TITLE></HEAD><H3>Newscaster Unit #[unit_no]</H3>")
+		var/dat = "<HEAD><TITLE>Newscaster</TITLE></HEAD><H3>Newscaster Unit #[unit_no]</H3>"
 
 		scan_user(human_or_robot_user) //Newscaster scans you
 
@@ -631,7 +630,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						WANTED.body = msg
 						WANTED.backup_author = scanned_user //I know, a bit wacky
 						if(photo_data)
-							WANTED.img = photo_data.photo.img
+							WANTED.img = photo_data.photo.full_image()
 						news_network.wanted_issue = WANTED
 						news_network.alert_readers()
 						screen = 15
@@ -643,7 +642,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 						news_network.wanted_issue.body = msg
 						news_network.wanted_issue.backup_author = scanned_user
 						if(photo_data)
-							news_network.wanted_issue.img = photo_data.photo.img
+							news_network.wanted_issue.img = photo_data.photo.full_image()
 						screen = 19
 
 			updateUsrDialog()

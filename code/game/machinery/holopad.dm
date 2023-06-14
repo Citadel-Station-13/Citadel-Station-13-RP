@@ -1256,7 +1256,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 		AM.forceMove(loc)
 	return ..()
 
-/obj/effect/overlay/hologram/holopad/ai/examine(mob/user)
+/obj/effect/overlay/hologram/holopad/ai/examine(mob/user, dist)
 	. = ..()
 	//If you need an ooc_notes copy paste, this is NOT the one to use.
 	var/ooc_notes = owner.ooc_notes

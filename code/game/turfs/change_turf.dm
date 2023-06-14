@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 	if(!GLOB.use_preloader && path == type && !(flags & CHANGETURF_FORCEOP) && (baseturfs == new_baseturfs)) // Don't no-op if the map loader requires it to be reconstructed, or if this is a new set of baseturfs
 		return src
-	if(flags & CHANGETURF_SKIP)
+	if(!(atom_flags & ATOM_INITIALIZED) || (flags & CHANGETURF_SKIP))
 		return new path(src)
 
 	// store lighting

@@ -46,8 +46,45 @@
 	use_overmap = TRUE
 	usable_email_tlds = list("lythios.nt")
 
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "bnny")
+	titlescreens = list(
+		/datum/cutscene/browser/simple/rift_title1 = 20,
+		list(
+			'icons/misc/title_vr.dmi',
+			"title1",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title2",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title3",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title4",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title5",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title6",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title7",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title8",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"bnny",
+		),
+	)
 
 	station_name  = "NSB Atlas"
 	station_short = "Atlas"

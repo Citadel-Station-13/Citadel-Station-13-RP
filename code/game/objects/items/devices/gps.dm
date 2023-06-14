@@ -101,7 +101,7 @@
 	. = ..()
 	bind_perspective(null)
 
-/obj/item/gps/examine(mob/user)
+/obj/item/gps/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
 
@@ -185,13 +185,13 @@
 		return
 	if(hud_bound)
 		if(hud_arrow)
-			hud_bound.RemoveScreen(hud_arrow)
+			hud_bound.remove_screen(hud_arrow)
 		hud_bound = null
 	hud_bound = pers
 	if(!hud_bound)
 		return
 	if(hud_arrow)
-		hud_bound.AddScreen(hud_arrow)
+		hud_bound.add_screen(hud_arrow)
 
 /**
  * start tracking a target - either a gps signal or a waypoint
@@ -208,7 +208,7 @@
 	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, /obj/item/gps/proc/stop_tracking)
 	if(!hud_arrow)
 		hud_arrow = new /atom/movable/screen/waypoint_tracker/gps
-		hud_bound?.AddScreen(hud_arrow)
+		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
 	START_PROCESSING(SSprocessing, src)

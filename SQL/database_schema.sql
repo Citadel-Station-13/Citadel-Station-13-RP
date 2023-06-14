@@ -6,6 +6,8 @@
  * PRESERVE ANY vr_'s! We need to replace those tables and features at some point, that's how we konw.
  **/
 
+-- core --
+
 --
 -- Table structure for table `schema_revision`
 --
@@ -15,6 +17,39 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%schema_revision` (
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- photography --
+
+--           picture table            --
+-- used to store data about pictures  --
+-- hash is in sha1 format.            --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%pictures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hash` char(40) NOT NULL,
+  `created` datetime NOT NULL DEFAULT Now(),
+  `width` int NOT NULL,
+  `height` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `hash` (`hash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--             photograph table              --
+-- used to store data about photographs      --
+-- picture is picture hash in picture table  --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `picture` char(40) NOT NULL,
+  `created` datetime NOT NULL DEFAULT Now(),
+  `scene` MEDIUMTEXT null,
+  `desc` MEDIUMTEXT null,
+  CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
+  REFERENCES `%_PREFIX_%pictures` (`hash`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- players --
 
 --           Player lookup table                   --
 -- Used to look up player ID from ckey, as well as --
@@ -41,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   `lastseen` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Table structure for table `round`

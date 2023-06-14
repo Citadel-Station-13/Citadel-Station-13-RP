@@ -357,7 +357,7 @@
 	update_icon()
 	user.visible_message("<span class = 'notice'>\The [user] [concealed ? "conceals" : "reveals"] their hand.</span>")
 
-/obj/item/hand/examine(mob/user)
+/obj/item/hand/examine(mob/user, dist)
 	. = ..()
 	if((!concealed) && cards.len)
 		. += "It contains: "

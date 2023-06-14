@@ -21,10 +21,10 @@
 /obj/item/card/id/syndicate/prevent_tracking()
 	return electronic_warfare
 
-/obj/item/card/id/syndicate/afterattack(var/obj/item/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
-	if(istype(O, /obj/item/card/id))
-		var/obj/item/card/id/I = O
+/obj/item/card/id/syndicate/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
+	if(istype(target, /obj/item/card/id))
+		var/obj/item/card/id/I = target
 		src.access |= I.access
 		if(player_is_antag(user.mind))
 			to_chat(user, "<span class='notice'>The microscanner activates as you pass it over the ID, copying its access.</span>")

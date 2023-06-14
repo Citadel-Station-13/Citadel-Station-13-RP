@@ -181,7 +181,7 @@
 		SEND_SIGNAL(source, COMSIG_FISHING_LINE_SNAPPED) //Stepped out of range or los interrupted
 		return BEAM_CANCEL_DRAW
 
-/obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/fishing_rod/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	. = ..()
 
 	// Reel in if able

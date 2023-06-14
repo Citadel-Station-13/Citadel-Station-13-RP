@@ -255,7 +255,7 @@
 	else
 		return ..()
 
-/obj/item/gun/ballistic/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
 		ammo_magazine.loc = get_turf(src.loc)
@@ -269,7 +269,7 @@
 		ammo_magazine = null
 		update_icon() //make sure to do this after unsetting ammo_magazine
 
-/obj/item/gun/ballistic/examine(mob/user)
+/obj/item/gun/ballistic/examine(mob/user, dist)
 	. = ..()
 	if(ammo_magazine)
 		. += "It has \a [ammo_magazine] loaded."

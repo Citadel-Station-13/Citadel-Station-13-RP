@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(!H.isSynthetic())
-				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_BLOOD))
+				if(H.species.has_organ[O_HEART] && (active_metab.metabolism_class == CHEM_INJECT))
 					var/obj/item/organ/internal/heart/Pump = H.internal_organs_by_name[O_HEART]
 					// todo: completely optimize + refactor metabolism, none of these checks should be in here
 					if(mechanical_circulation)
@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				var/obj/item/organ/internal/heart/machine/Pump = H.internal_organs_by_name[O_PUMP]
 				var/obj/item/organ/internal/stomach/machine/Cycler = H.internal_organs_by_name[O_CYCLER]
 
-				if(active_metab.metabolism_class == CHEM_BLOOD)
+				if(active_metab.metabolism_class == CHEM_INJECT)
 					if(Pump)
 						removed *= 1.1 - Pump.damage / Pump.max_damage
 					else
@@ -201,7 +201,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	dose = min(dose + removed, max_dose)
 	if(removed >= (metabolism * 0.1) || removed >= 0.1) // If there's too little chemical, don't affect the mob, just remove it
 		switch(active_metab.metabolism_class)
-			if(CHEM_BLOOD)
+			if(CHEM_INJECT)
 				affect_blood(M, alien, removed)
 			if(CHEM_INGEST)
 				affect_ingest(M, alien, removed * ingest_abs_mult)
@@ -212,12 +212,20 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	remove_self(removed)
 	return
 
+// todo: on_mob_life with method of CHEM_INJECT, or tick_mob_blood
 /datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return
 
+// todo: on_mob_life with method of CHEM_INGEST, or tick_mob_ingest
 /datum/reagent/proc/affect_ingest(mob/living/carbon/M, alien, removed)
 	M.bloodstr.add_reagent(id, removed)
 	return
+
+// todo: on_mob_life with method of CHEM_TOUCH, or tick_mob_touch
+/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
+	return
+
+// todo: fourth apply method of CHEM_VAPOR implementation?
 
 /datum/reagent/proc/handle_vampire(var/mob/living/carbon/M, var/alien, var/removed, var/is_vampire)
 	if(blood_content > 0 && is_vampire)
@@ -230,9 +238,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				return
 		M.nutrition += removed * blood_content //We should always be able to process real blood.
 
-/datum/reagent/proc/affect_touch(mob/living/carbon/M, alien, removed)
-	return
-
 /datum/reagent/proc/overdose(var/mob/living/carbon/M, var/alien, var/removed) // Overdose effect.
 	if(alien == IS_DIONA)
 		return
@@ -244,9 +249,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/initialize_data(newdata) // Called when the reagent is created.
 	if(!isnull(newdata))
 		data = newdata
-	return
-
-/datum/reagent/proc/mix_data(var/newdata, var/newamount) // You have a reagent with data, and new reagent with its own data get added, how do you deal with that?
 	return
 
 /datum/reagent/proc/get_data() // Just in case you have a reagent that handles data differently.
@@ -275,4 +277,61 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 /datum/reagent/proc/on_update(atom/A)
+	return
+
+/**
+ * called when we first get applied to a mob
+ *
+ * @params
+ * * target - target mob
+ * * holder - the holder on the target mob
+ * * method - an enum of how we're applied from [code/__DEFINES/chemistry.dm]
+ * * amount - how much is being applied
+ * * data - data. not necessarily a list, but casted as one. this is before mix_data is called.
+ *
+ * @return amount to inject into the mob side holder. defaults to amount. this can be overriden by the mob / transfer procs.
+ */
+// todo: implement this proc, replace reaction mob and similar with it.
+// /datum/reagent/proc/apply_to_mob(mob/target, datum/reagents/holder, amount, list/data)
+// 	return amount
+
+/**
+ * called when we first get sprayed/splashed on a non-mob
+ *
+ * not called if we're transferred into a holder on the obj
+ *
+ * @params
+ * * target - the target.
+ * * amount - how much is being applied
+ * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ */
+// todo: implement this proc, replace touch_obj/reaction_obj and similar with it.
+// /datum/reagent/proc/apply_to_obj(obj/target, amount, list/data)
+
+/**
+ * called when we first get sprayed/splashed on a turf
+ *
+ * not called if we're transferred into a holder on the turf, somehow
+ *
+ * @params
+ * * target - the target.
+ * * amount - how much is being applied
+ * * data - data. not necessarily a list, but casted as one. this is before mix_data is caled.
+ */
+// todo: implement this proc, replace touch_turf/reaction_turf and similar with it.
+// /datum/reagent/proc/apply_to_turf(turf/target, amount, list/data)
+
+/**
+ * called when a new reagent is being mixed with this one to mix our data lists.
+ *
+ * this may not be called if the data is the exact same!
+ *
+ * @params
+ * * holder - (optional) the holder we're mixing in, if any.
+ * * current_data - our current data. not necessarily a list, only typecasted to one.
+ * * current_amount - our current amount
+ * * new_data - new inbound data. not necessarily a list, only typedcasted to one.
+ * * new_amount - the amount that's coming in, not what we will be at after mixing.
+ */
+/datum/reagent/proc/mix_data(datum/reagents/holder, list/current_data, current_amount, list/new_data, new_amount)
 	return

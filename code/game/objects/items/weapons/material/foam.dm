@@ -60,5 +60,5 @@
 /obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
 	return ..(mapload,"foam")
 
-/obj/item/material/twohanded/fireaxe/foam/afterattack()
+/obj/item/material/twohanded/fireaxe/foam/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	return

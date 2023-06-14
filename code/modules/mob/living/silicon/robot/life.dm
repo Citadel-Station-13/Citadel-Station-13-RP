@@ -123,7 +123,6 @@
 /mob/living/silicon/robot/handle_regular_hud_updates()
 	. = ..()
 	var/fullbright = FALSE
-	var/seemeson = FALSE
 
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
@@ -134,7 +133,6 @@
 	if(sight_mode & BORGMESON)
 		AddSightSelf(SEE_TURFS)
 		fullbright = TRUE
-		seemeson = TRUE
 	if(sight_mode & BORGMATERIAL)
 		AddSightSelf(SEE_OBJS)
 		fullbright = TRUE
@@ -142,8 +140,11 @@
 		AddSightSelf(SEE_MOBS)
 		fullbright = TRUE
 
-	plane_holder?.set_vis(VIS_FULLBRIGHT, fullbright)
-	plane_holder?.set_vis(VIS_MESONS, seemeson)
+	if(fullbright)
+		// todo: legacy, remove
+		self_perspective.legacy_force_set_hard_darkvision(0)
+	else
+		self_perspective.legacy_force_set_hard_darkvision(null)
 
 	if (src.healths)
 		if (src.stat != 2)

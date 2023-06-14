@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/clothing/suit/storage/hooded/proc/MakeHood()
-	if(!hood)
+	if(!hood && hoodtype)
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
@@ -430,7 +430,7 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -456,7 +456,7 @@
 	icon_state = "miner"
 	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -482,7 +482,7 @@
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"

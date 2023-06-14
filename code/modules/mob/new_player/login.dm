@@ -1,24 +1,3 @@
-GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
-
-/obj/effect/lobby_image
-	name = "Citadel Station 13"
-	desc = "How are you reading this?"
-	screen_loc = "CENTER-7,CENTER-7"
-
-/obj/effect/lobby_image/Initialize(mapload)
-	icon = LEGACY_MAP_DATUM.lobby_icon
-	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in LEGACY_MAP_DATUM.lobby_screens)
-		if(!(lobby_screen in known_icon_states))
-			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			LEGACY_MAP_DATUM.lobby_screens -= lobby_screen
-
-	if(LEGACY_MAP_DATUM.lobby_screens.len)
-		icon_state = pick(LEGACY_MAP_DATUM.lobby_screens)
-	else
-		icon_state = known_icon_states[1]
-	. = ..()
-
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 
@@ -42,3 +21,6 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 			handle_privacy_poll()
 			client.playtitlemusic()
 	return ..()
+
+/mob/new_player/login_cutscene()
+	client.start_cutscene(SSlobby.titlescreen)

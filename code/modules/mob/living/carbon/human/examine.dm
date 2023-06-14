@@ -1,4 +1,4 @@
-/mob/living/carbon/human/examine(mob/user)
+/mob/living/carbon/human/examine(mob/user, dist)
 	var/skip_gear = 0
 	var/skip_body = 0
 
@@ -503,6 +503,7 @@
 		effect.on_examine(.)
 
 	// send signal last so everything else prioritizes above
+	. += SPAN_BOLDNOTICE("<a href='?src=\ref[src];character_profile=1'>\[View Character Profile\]</a>")
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .) //This also handles flavor texts now
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.

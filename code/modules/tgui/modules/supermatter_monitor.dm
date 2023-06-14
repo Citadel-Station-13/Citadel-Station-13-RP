@@ -49,12 +49,14 @@
 			return
 
 		data["active"] = 1
+		data["currentcore"] = active
 		data["SM_area"] = get_area(active)
 		data["SM_integrity"] = active.get_integrity()
 		data["SM_power"] = active.power
 		data["SM_ambienttemp"] = air.temperature
 		data["SM_ambientpressure"] = air.return_pressure()
 		data["SM_EPR"] = active.get_epr()
+		data["SM_History"] = active.history
 		//data["SM_EPR"] = active.get_epr()
 		if(air.total_moles)
 			data["SM_gas_O2"] = round(100*air.gas[/datum/gas/oxygen]/air.total_moles,0.01)

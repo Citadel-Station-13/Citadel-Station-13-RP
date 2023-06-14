@@ -183,7 +183,7 @@
 		card.access = newjob.get_access()
 		card.rank = newjob.title
 		card.assignment = newassignment
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))
@@ -209,7 +209,7 @@
 		card.access = ptojob.get_access()
 		card.rank = ptojob.title
 		card.assignment = ptojob.title
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		card.name = "[card.registered_name]'s ID Card ([card.assignment])"
 		data_core.manifest_modify(card.registered_name, card.assignment, card.rank)
 		card.last_job_switch = world.time
 		callHook("reassign_employee", list(card))

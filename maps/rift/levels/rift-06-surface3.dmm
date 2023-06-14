@@ -7177,6 +7177,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "arU" = (
@@ -8256,14 +8259,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
-"auB" = (
-/obj/effect/floor_decal/spline/plain,
-/obj/structure/dogbed{
-	name = "pet bed"
-	},
-/mob/living/simple_mob/animal/passive/fox/renault,
-/turf/simulated/floor/wood,
-/area/crew_quarters/captain)
 "auC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -11139,7 +11134,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aBU" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rsurface/level3)
 "aBV" = (
 /obj/structure/cable/green{
@@ -11799,15 +11794,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
 "aDK" = (
-/obj/structure/dogbed,
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
-	},
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
 	},
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
@@ -22610,6 +22601,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
+"hGl" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/teleporter)
 "hKE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
@@ -47553,7 +47556,7 @@ aCl
 aYJ
 aXc
 aGk
-auB
+aNT
 aWw
 abo
 aLK
@@ -49321,7 +49324,7 @@ ayH
 alI
 aFZ
 aMg
-aNO
+hGl
 aNO
 ahr
 aNO

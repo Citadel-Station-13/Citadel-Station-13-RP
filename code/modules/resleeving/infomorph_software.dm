@@ -277,19 +277,6 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/datum/infomorph_software/ar_hud
-	name = "AR HUD"
-	ram_cost = 15
-	id = "ar_hud"
-
-/datum/infomorph_software/ar_hud/toggle(mob/living/silicon/infomorph/user)
-	user.arHUD = !user.arHUD
-	if(user.plane_holder)
-		user.plane_holder.set_vis(VIS_AUGMENTED, user.arHUD)
-
-/datum/infomorph_software/ar_hud/is_active(mob/living/silicon/infomorph/user)
-	return user.arHUD
-
 /datum/infomorph_software/translator
 	name = "Universal Translator"
 	ram_cost = 15

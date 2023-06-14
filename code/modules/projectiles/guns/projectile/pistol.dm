@@ -453,7 +453,7 @@
 		icon_state = "[initial(icon_state)]-e"
 
 /* Having issues with getting this to work atm.
-/obj/item/gun/ballistic/konigin/examine(mob/user)
+/obj/item/gun/ballistic/konigin/examine(mob/user, dist)
 	. = ..()
 
 	if(shotgun.loaded)

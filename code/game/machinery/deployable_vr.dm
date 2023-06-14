@@ -63,7 +63,7 @@
 	if(toppled)
 		untopple()
 
-/obj/structure/barricade/cutout/examine(mob/user)
+/obj/structure/barricade/cutout/examine(mob/user, dist)
 	. = ..()
 
 	if(Adjacent(user))

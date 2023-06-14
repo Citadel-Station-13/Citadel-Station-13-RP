@@ -57,7 +57,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weldingtool/examine(mob/user)
+/obj/item/weldingtool/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
@@ -121,12 +121,12 @@
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
 
-/obj/item/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity)
+/obj/item/weldingtool/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
-	if(istype(O, /obj/structure/reagent_dispensers/fueltank) || istype(O, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,O) <= 1)
+	if(istype(target, /obj/structure/reagent_dispensers/fueltank) || istype(target, /obj/item/reagent_containers/portable_fuelcan) && get_dist(src,target) <= 1)
 		if(!welding && max_fuel)
-			O.reagents.trans_to_obj(src, max_fuel)
+			target.reagents.trans_to_obj(src, max_fuel)
 			to_chat(user, "<span class='notice'>You refill [src].</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			return
@@ -137,14 +137,14 @@
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a welding tool.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a welding tool.")
 			to_chat(user, "<span class='danger'>You begin welding on the fueltank and with a moment of lucidity you realize, this might not have been the smartest thing you've ever done.</span>")
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 			return
 	if (src.welding)
 		remove_fuel(1)
 		var/turf/location = get_turf(user)
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 		if (istype(location, /turf))
 			location.hotspot_expose(700, 50, 1)
@@ -573,7 +573,7 @@
 /obj/item/weldingtool/electric/get_cell()
 	return power_supply
 
-/obj/item/weldingtool/electric/examine(mob/user)
+/obj/item/weldingtool/electric/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return
