@@ -32,7 +32,7 @@
 		level_or_path = new level_or_path
 	ASSERT(istype(level_or_path))
 	ASSERT(!level_or_path.loaded)
-	if(!isnull(keyed_levels[level_or_path.id]))
+	if(level_or_path.id && !isnull(keyed_levels[level_or_path.id]))
 		CRASH("fatal id collision on [level_or_path.id]")
 	var/z_index = allocate_z_index()
 	ASSERT(z_index)
@@ -42,7 +42,8 @@
 			ASSERT(istype(existing, /datum/map_level/unallocated))
 			existing.loaded = FALSE
 	ordered_levels[z_index] = level_or_path
-	keyed_levels[level_or_path.id] = level_or_path
+	if(level_or_path.id)
+		keyed_levels[level_or_path.id] = level_or_path
 	level_or_path.z_index = z_index
 	level_or_path.loaded = TRUE
 	. = level_or_path

@@ -43,7 +43,11 @@
 			continue
 		keyed_maps[created.id] = created
 
-/datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next = next_station)
+/datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next)
+	if(isnull(next))
+		next = next_station
+	if(isnull(next))
+		next = loaded_station
 	var/json_path = "data/next_map.json"
 	if(fexists(json_path))
 		fdel(json_path)
@@ -181,5 +185,8 @@
 		return
 
 	var/datum/map/station/changing_to = SSmapping.keyed_maps[picked]
+	var/datum/map/station/was = SSmapping.next_station || SSmapping.loaded_station
+
+	log_and_message_admins("[key_name(src)] is changing the next map from [was.name] ([was.id]) to [changing_to.name] ([changing_to.id])")
 
 	SSmapping.next_station = changing_to

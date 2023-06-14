@@ -18,7 +18,7 @@
 	name = "Class-P Frozen Planet"
 	desc = "A frosted world that seems stuck in time."
 	current_time = new /datum/time/classp()
-	waether_holder = /datum/weather_holder/classp
+	weather_holder = /datum/weather_holder/classp
 
 /datum/planet/classp/update_sun()
 	..()

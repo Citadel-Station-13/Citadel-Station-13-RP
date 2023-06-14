@@ -17,7 +17,7 @@
 	desc = "A freezing ball of ice,"
 	current_time = new /datum/time/lythios43c()
 	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
-	waether_holder = /datum/weather_holder/lythios43c
+	weather_holder = /datum/weather_holder/lythios43c
 
 /datum/planet/lythios43c/update_sun()
 	..()

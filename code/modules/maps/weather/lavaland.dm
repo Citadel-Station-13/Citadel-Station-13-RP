@@ -19,7 +19,7 @@
 	name = "Lava Land"
 	desc = "The fabled."
 	current_time = new /datum/time/lavaland()
-	waether_holder = /datum/weather_holder/lavaland
+	weather_holder = /datum/weather_holder/lavaland
 
 /datum/planet/lavaland/update_sun()
 	..()

@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(legacy_atc)
 	name = "Lore ATC (Legacy)"
 	init_order = INIT_ORDER_LEGACY_ATC
+	subsystem_flags = SS_NO_FIRE
 
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic

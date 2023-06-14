@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(legacy_lore)
 	name = "Loremaster (Legacy)"
 	init_order = INIT_ORDER_LEGACY_LORE
+	subsystem_flags = SS_NO_FIRE
 
 	var/list/organizations = list()
 
