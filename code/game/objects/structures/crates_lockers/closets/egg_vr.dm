@@ -16,6 +16,14 @@
 	if(istype(W, /obj/item/weldingtool))
 		src.dump_contents()
 		qdel(src)
+/*
+/obj/structure/closet/secure_closet/egg/handle_lock_addition() //As funny as it'd be to pop out an egg and slap a lock on it just... no
+	return
+
+/obj/structure/closet/secure_closet/egg/handle_lock_removal()
+	return
+
+*/
 
 /obj/structure/closet/secure_closet/egg/unathi
 	name = "unathi egg"

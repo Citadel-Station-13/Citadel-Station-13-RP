@@ -6,7 +6,7 @@
 	opened = 0
 	wall_mounted = 0 //never solid (You can always pass over it)
 	health = 200
-	secure = TRUE
+//	secure = TRUE
 	locked = TRUE
 
 

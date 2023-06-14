@@ -72,7 +72,7 @@
 	add_overlay("[initial(icon_state)]_charge[nearest_ten]")
 
 
-/obj/item/rcd/examine(mob/user)
+/obj/item/rcd/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
@@ -433,7 +433,7 @@
 	origin_tech = list(TECH_MATERIAL = 4)
 	remaining = RCD_MAX_CAPACITY
 
-/obj/item/rcd_ammo/examine(mob/user)
+/obj/item/rcd_ammo/examine(mob/user, dist)
 	. = ..()
 	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 

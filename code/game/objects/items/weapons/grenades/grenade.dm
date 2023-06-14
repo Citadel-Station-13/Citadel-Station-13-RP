@@ -44,7 +44,7 @@
 	return*/
 
 
-/obj/item/grenade/examine(mob/user)
+/obj/item/grenade/examine(mob/user, dist)
 	. = ..()
 	if(det_time > 1)
 		. += "<span class = 'notice'>The timer is set to [det_time/10] seconds.</span>"

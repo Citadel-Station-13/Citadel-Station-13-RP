@@ -97,7 +97,7 @@
 			I.pixel_y = -3
 		add_overlay(I)
 
-/obj/structure/bigDelivery/examine(mob/user)
+/obj/structure/bigDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -217,7 +217,7 @@
 				I.pixel_y = -3
 		add_overlay(I)
 
-/obj/item/smallDelivery/examine(mob/user)
+/obj/item/smallDelivery/examine(mob/user, dist)
 	. = ..()
 	if(sortTag)
 		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
@@ -314,7 +314,7 @@
 		return
 	return
 
-/obj/item/packageWrap/examine(mob/user)
+/obj/item/packageWrap/examine(mob/user, dist)
 	. = ..()
 	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 

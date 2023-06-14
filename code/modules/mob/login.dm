@@ -84,10 +84,15 @@
 	client.statpanel_reload()
 	// update ssd overlay
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob, update_ssd_overlay)), 0)
+	// reset cutscene to default; this is a proc for new players.
+	login_cutscene()
 
 	//* legacy
 	// this is below reset_perspective so self perspective generates.
 	recalculate_vis()
+
+/mob/proc/login_cutscene()
+	client.end_cutscene()
 
 /// Handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 /mob/proc/update_Login_details()

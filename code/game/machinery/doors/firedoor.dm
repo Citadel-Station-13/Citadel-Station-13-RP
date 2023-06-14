@@ -81,7 +81,7 @@
 /obj/machinery/door/firedoor/get_material()
 	return get_material_by_name(MAT_STEEL)
 
-/obj/machinery/door/firedoor/examine(mob/user)
+/obj/machinery/door/firedoor/examine(mob/user, dist)
 	. = ..()
 	if(!density)
 		return

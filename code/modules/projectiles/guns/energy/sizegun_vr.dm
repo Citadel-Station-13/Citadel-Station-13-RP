@@ -52,7 +52,7 @@
 	size_set_to = (size_select/100)
 	to_chat(usr, "<span class='notice'>You set the size to [size_select]%</span>")
 
-/obj/item/gun/energy/sizegun/examine(mob/user)
+/obj/item/gun/energy/sizegun/examine(mob/user, dist)
 	. = ..()
 	var/size_examine = (size_set_to*100)
 	. += "<span class='info'>It is currently set at [size_examine]%</span>"

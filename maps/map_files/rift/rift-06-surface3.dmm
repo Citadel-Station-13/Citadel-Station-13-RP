@@ -619,9 +619,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
@@ -1264,7 +1261,9 @@
 /obj/machinery/door/airlock/maintenance/rnd{
 	req_one_access = list(19,43,67)
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/exploration)
 "adH" = (
@@ -1746,7 +1745,9 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/crew_quarters/bar)
 "aeL" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -2897,7 +2898,9 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ahT" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /obj/machinery/door/airlock/glass/exploration{
 	name = "Pilot Prep";
 	req_access = list(67)
@@ -3021,7 +3024,7 @@
 	dir = 9
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -3559,11 +3562,11 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "ajz" = (
-/obj/structure/table/steel,
-/obj/machinery/light/small,
-/obj/item/material/ashtray/bronze,
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Research Shuttles Substation Bypass"
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/station/exploration)
+/area/maintenance/substation/research/docks)
 "ajA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4186,7 +4189,7 @@
 /area/crew_quarters/bar_backroom)
 "akP" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -4275,7 +4278,9 @@
 /turf/simulated/floor/tiled/steel,
 /area/exploration/excursion_dock)
 "akZ" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /obj/machinery/door/airlock/glass/exploration{
 	name = "Medic Prep";
 	req_one_access = list(44,19,5)
@@ -6966,6 +6971,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "arU" = (
@@ -8956,7 +8964,7 @@
 /area/rift/surfaceeva/aa/cliff_south)
 "awI" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -9360,7 +9368,7 @@
 "axI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
@@ -10191,7 +10199,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -10670,7 +10678,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -11311,7 +11319,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
@@ -12608,7 +12616,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "aGR" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -13757,7 +13767,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
 "aJF" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -14592,9 +14604,6 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment,
@@ -16910,7 +16919,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -17663,7 +17671,7 @@
 /area/shuttle/excursion/cargo)
 "aTJ" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rift/trade_shop/landing_pad)
@@ -19155,7 +19163,7 @@
 /area/turbolift/rsurface/level3)
 "aXN" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -20919,7 +20927,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "eml" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/science,
 /area/maintenance/research/xenobio)
 "eoD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -21720,7 +21728,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -21945,6 +21953,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
+"gSN" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/research/docks)
 "gTy" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -22026,7 +22040,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
 "hiK" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/telescience_lab/chamber)
 "hjc" = (
 /obj/structure/disposalpipe/segment,
@@ -22185,6 +22199,20 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
+"hGl" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/tiled/steel,
+/area/hallway/secondary/docking_hallway)
 "hKE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
@@ -22694,6 +22722,7 @@
 /area/bridge/bridge_hallway)
 "juG" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "jvC" = (
@@ -22771,9 +22800,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "jGE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/crew_quarters/bar)
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "jIg" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -22993,6 +23027,7 @@
 /area/exploration/excursion_dock)
 "knK" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "kol" = (
@@ -23047,6 +23082,7 @@
 /area/hydroponics)
 "ksU" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab)
 "kuP" = (
@@ -23603,6 +23639,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"mmd" = (
+/obj/structure/table/steel,
+/obj/machinery/light/small,
+/obj/item/material/ashtray/bronze,
+/turf/simulated/floor/plating,
+/area/maintenance/station/exploration)
 "mmq" = (
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
@@ -23852,11 +23894,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "mTk" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Research Shuttles Substation Bypass"
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/research/docks)
+/obj/machinery/door/firedoor/glass{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "mTQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -23939,7 +23984,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -24383,7 +24428,9 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
 "oxu" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -24618,7 +24665,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/camera/network/civilian,
@@ -24686,11 +24733,17 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "pAk" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/research/docks)
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/teleporter)
 "pBE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -24958,6 +25011,7 @@
 /area/maintenance/substation/surface_three)
 "qrc" = (
 /obj/spawner/window/low_wall/borosillicate/reinforced/full/firelocks,
+/obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/telescience_lab/chamber)
 "qrt" = (
@@ -25120,7 +25174,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -25245,6 +25299,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/arrivals/secondary)
+"ryj" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/research/docks)
 "ryH" = (
 /obj/item/radio/intercom/department/security{
 	dir = 1;
@@ -25360,11 +25420,11 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/locker/laundry_arrival)
 "rXm" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/machinery/door/firedoor/glass{
+	dir = 8
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/research/docks)
+/turf/simulated/open,
+/area/exploration)
 "rZg" = (
 /obj/structure/railing{
 	dir = 1
@@ -25418,7 +25478,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -26023,7 +26083,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/lightgrey/border,
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -26113,7 +26173,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -26587,7 +26647,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "vPu" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/science,
 /area/rnd/telescience_lab)
 "vRz" = (
 /obj/structure/cable/green{
@@ -26629,7 +26689,7 @@
 /area/maintenance/station/exploration)
 "vVs" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/light,
@@ -37952,15 +38012,15 @@ aGi
 aGi
 acO
 acO
-jGE
-jGE
+gIG
+gIG
 acO
-jGE
-jGE
+gIG
+gIG
 acO
-jGE
-jGE
-jGE
+gIG
+gIG
+gIG
 acO
 acO
 abx
@@ -42416,7 +42476,7 @@ aXM
 aXM
 aXM
 aPk
-aZM
+jGE
 aWg
 jpv
 aWg
@@ -42610,7 +42670,7 @@ eXv
 eXv
 eXv
 aXM
-aYT
+mTk
 aWg
 jpv
 aWg
@@ -42998,7 +43058,7 @@ eXv
 eXv
 eXv
 aXM
-aZM
+jGE
 aWg
 jpv
 aWg
@@ -43192,7 +43252,7 @@ aXM
 aXM
 aXM
 aPk
-aYT
+mTk
 aWg
 jpv
 aWg
@@ -44375,8 +44435,8 @@ arm
 aNp
 ayj
 akm
-abm
-abm
+rXm
+rXm
 akm
 agz
 veG
@@ -44530,7 +44590,7 @@ aUQ
 aUQ
 aUQ
 aUQ
-ppw
+hGl
 xjG
 uIL
 aWN
@@ -49226,16 +49286,16 @@ aFZ
 aKt
 ajo
 aUH
-ajz
+mmd
 dYZ
 jpO
 aKt
 aKt
 aKt
 tBo
-mTk
-pAk
-rXm
+ajz
+ryj
+gSN
 tBo
 agh
 aYg
@@ -49411,7 +49471,7 @@ axu
 aUc
 aFZ
 aMg
-aNO
+pAk
 aNO
 ahr
 aNO

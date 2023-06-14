@@ -27,6 +27,8 @@
 	..()
 	var/list/zippos = list()
 	for(var/zippo in typesof(/obj/item/flame/lighter/zippo))
+		if(ispath(zippo, /obj/item/flame/lighter/zippo/c4detonator))
+			continue
 		var/obj/item/flame/lighter/zippo/zippo_type = zippo
 		zippos[initial(zippo_type.name)] = zippo_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(zippos, /proc/cmp_text_asc))

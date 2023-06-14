@@ -459,7 +459,6 @@
 	color = COLOR_SUN
 
 /turf/simulated/wall/r_wall/prepainted/civilian
-	paint_color = COLOR_EGGSHELL
 	stripe_color = COLOR_PALE_BTL_GREEN
 	color = COLOR_PALE_BTL_GREEN
 
@@ -496,12 +495,10 @@
 	color = COLOR_BABY_BLUE
 
 /turf/simulated/wall/prepainted/engineering
-	paint_color = null
 	stripe_color = COLOR_SUN
 	color = COLOR_SUN
 
 /turf/simulated/wall/prepainted/civilian
-	paint_color = COLOR_EGGSHELL
 	stripe_color = COLOR_PALE_BTL_GREEN
 	color = COLOR_PALE_BTL_GREEN
 

@@ -126,7 +126,7 @@
 	else if(choice == "Secure Closet Colour")
 		choose_colour_secure()
 
-/obj/item/closet_painter/examine(mob/user)
+/obj/item/closet_painter/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>It is configured to produce the '[colour]' paint scheme or the '[colour_secure]' secure closet paint scheme.</span>"
 

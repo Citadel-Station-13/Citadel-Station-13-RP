@@ -28,6 +28,6 @@
 		return
 	mode = input("Which colour do you want to use?", "Pipe painter", mode) in modes
 
-/obj/item/pipe_painter/examine(mob/user)
+/obj/item/pipe_painter/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>It is in [mode] mode.</span>"

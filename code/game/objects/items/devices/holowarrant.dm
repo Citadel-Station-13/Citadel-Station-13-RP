@@ -12,7 +12,7 @@
 	var/datum/data/record/warrant/active
 
 //look at it
-/obj/item/holowarrant/examine(mob/user)
+/obj/item/holowarrant/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "It's a holographic warrant for '[active.fields["namewarrant"]]'."

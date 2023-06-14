@@ -212,7 +212,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2223,7 +2223,7 @@
 /area/rift/trade_shop)
 "bAm" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -4658,7 +4658,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
@@ -5433,7 +5433,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/corner/brown/border{
@@ -5552,7 +5552,7 @@
 /area/quartermaster/office)
 "dFk" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/light{
 	dir = 8;
@@ -8885,7 +8885,7 @@
 /area/rift/surfaceeva/airlock/main)
 "fNY" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment,
@@ -9721,7 +9721,7 @@
 /area/maintenance/tool_storage)
 "gtI" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10826,7 +10826,7 @@
 /area/quartermaster/garage)
 "haT" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rnd/outpost/xenobiology/outpost_hallway)
@@ -19131,7 +19131,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
@@ -21627,7 +21627,7 @@
 	pixel_y = 26
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/effect/floor_decal/corner/lightgrey/border{
@@ -22443,7 +22443,7 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
@@ -23608,7 +23608,7 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "oDa" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -33410,7 +33410,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
@@ -34134,7 +34134,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/cable{
@@ -37733,7 +37733,7 @@
 /area/medical/patient_wing)
 "xbW" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -39077,7 +39077,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "xQq" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
@@ -39206,7 +39206,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)

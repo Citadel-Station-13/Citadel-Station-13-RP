@@ -7,6 +7,7 @@
 	base_icon_state = "beacon"
 	var/code = "electronic"
 	var/functioning = TRUE
+	var/identifier
 	origin_tech = list(TECH_BLUESPACE = 1)
 
 GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
@@ -14,6 +15,7 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 /obj/item/radio/beacon/Initialize(mapload)
 	. = ..()
 	update_icon()
+	identifier = rand(0,99999)
 
 /obj/item/radio/beacon/update_icon()
 	cut_overlays()

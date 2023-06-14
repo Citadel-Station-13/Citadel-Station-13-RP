@@ -171,7 +171,7 @@
 
 	..()
 
-/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user)
+/obj/machinery/atmospherics/component/unary/freezer/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		. += "The maintenance hatch is open."

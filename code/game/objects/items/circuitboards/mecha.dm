@@ -195,5 +195,28 @@
 	icon_state = "card_mod"
 	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
 
+//Duke//
+/obj/item/circuitboard/mecha/fighter/duke
+
+/obj/item/circuitboard/mecha/fighter/duke/main
+	name = T_BOARD_FIGHTER("Duke central control")
+	icon_state = "mainboard"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/flight
+	name = T_BOARD_FIGHTER("Duke flight control")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/targeting
+	name = T_BOARD_FIGHTER("Duke weapon control and targeting")
+	icon_state = "mcontroller"
+	origin_tech = list(TECH_DATA = 6, TECH_BIO = 4, TECH_COMBAT = 5)
+
+/obj/item/circuitboard/mecha/fighter/duke/cockpitboard
+	name = T_BOARD_FIGHTER("Duke manual flight control instruments")
+	icon_state = "card_mod"
+	origin_tech = list(TECH_DATA = 6, TECH_BLUESPACE = 5)
+
 //Undef the macro, shouldn't be needed outside of fighter construction
 #undef T_BOARD_FIGHTER

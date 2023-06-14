@@ -365,7 +365,7 @@
 	w_class = ITEMSIZE_LARGE
 	unacidable = 1
 
-/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user)
+/obj/item/reagent_containers/glass/bucket/sandstone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -422,7 +422,7 @@
 		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 		return
 
-/obj/item/reagent_containers/portable_fuelcan/examine(mob/user)
+/obj/item/reagent_containers/portable_fuelcan/examine(mob/user, dist)
 	. = ..()
 	if(volume)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.volume] units of fuel!"
@@ -451,7 +451,7 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		add_overlay(lid)
 
-/obj/item/reagent_containers/glass/stone/examine(mob/user)
+/obj/item/reagent_containers/glass/stone/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		for(var/datum/reagent/R in reagents.reagent_list)

@@ -2054,7 +2054,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
@@ -2659,7 +2659,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
@@ -4622,7 +4622,7 @@
 /area/hallway/primary/undertwo)
 "mW" = (
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -4990,7 +4990,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -9508,7 +9508,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14762,7 +14762,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2
+	dir = 1
 	},
 /obj/machinery/light{
 	dir = 1

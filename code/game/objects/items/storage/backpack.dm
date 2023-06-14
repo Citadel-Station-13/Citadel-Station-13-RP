@@ -507,7 +507,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "backpack", SLOT_ID_LEFT_HAND = "backpack")
 	max_storage_space = ITEMSIZE_COST_NORMAL * 5
 
-/obj/item/storage/backpack/parachute/examine(mob/user)
+/obj/item/storage/backpack/parachute/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(parachute)
