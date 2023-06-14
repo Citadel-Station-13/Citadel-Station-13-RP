@@ -14,6 +14,7 @@
 	var/static/list/datum/map/loaded_maps = list()
 	/// available maps - k-v lookup by id
 	var/list/datum/map/keyed_maps
+
 /datum/controller/subsystem/mapping/Shutdown()
 	. = ..()
 	write_next_map()
@@ -79,6 +80,10 @@
 		level.on_loaded_finalize(level.z_index)
 
 	// todo: rebuild?
+
+	// todo: legacy
+	for(var/path in instance.legacy_assert_shuttle_datums)
+		SSshuttle.legacy_shuttle_assert(path)
 
 /datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks)
 	// ensure any lazy data is loaded and ready to be read
@@ -150,4 +155,19 @@
 	set desc = "Change the next map."
 	set category = "Server"
 
-	#warn impl
+	var/list/built = list()
+
+	for(var/id in SSmapping.keyed_maps)
+		var/datum/map/station/M = SSmapping.keyed_maps[id]
+		if(!istype(M))
+			continue
+		built[M.name] = M.id
+
+	var/picked = input(src, "Choose the map for the next round", "Map Rotation", SSmapping.loaded_station.name) as null|anything in built
+
+	if(isnull(picked))
+		return
+
+	var/datum/map/station/changing_to = SSmapping.keyed_maps[picked]
+
+	SSmapping.next_station = changing_to

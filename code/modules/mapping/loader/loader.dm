@@ -153,8 +153,8 @@
 					key_len = length(key)
 				else
 					CRASH("Inconsistent key length in DMM")
-			if(!measureOnly)
-				grid_models[key] = dmmRegex.group[2]
+			// if(!measureOnly)
+			grid_models[key] = dmmRegex.group[2]
 
 		// (1,1,1) = {"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
 		else if(dmmRegex.group[3]) // Coords

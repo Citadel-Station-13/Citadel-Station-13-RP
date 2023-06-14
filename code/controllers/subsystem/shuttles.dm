@@ -90,6 +90,9 @@ SUBSYSTEM_DEF(shuttle)
 		if(MC_TICK_CHECK)
 			return
 
+/datum/controller/subsystem/shuttle/proc/legacy_shuttle_assert(path)
+	#warn impl
+
 /datum/controller/subsystem/shuttle/proc/process_init_queues()
 	if(block_init_queue)
 		return

@@ -37,9 +37,9 @@
 	. = level_or_path
 	#warn randomize/set display_id, display_name
 	// todo: rebuild?
+	// todo: legacy
 	if(!isnull(level_or_path.planet_path))
 		SSplanets.legacy_planet_assert(z_index, level_or_path.planet_path)
-	#warn build shuttle paths
 
 	//! LEGACY
 	if((level_or_path.flags & LEGACY_LEVEL_STATION) || level_or_path.has_trait(ZTRAIT_STATION))
