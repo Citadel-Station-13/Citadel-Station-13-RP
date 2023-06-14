@@ -20,6 +20,9 @@
 			language_prefixes = list()
 		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
 
+	#warn 	S["preferences_disabled"] << pref.preferences_disabled
+	#warn  key = "AGE_VERIFIED"
+
 /**
  * @params
  * - S - the savefile we operate on

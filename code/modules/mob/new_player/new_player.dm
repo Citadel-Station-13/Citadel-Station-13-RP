@@ -5,7 +5,6 @@
 	var/totalPlayersReady = 0
 	var/show_hidden_jobs = 0	// Show jobs that are set to "Never" in preferences
 	var/datum/browser/panel
-	var/age_gate_result
 	universal_speak = 1
 
 	invisibility = 101
@@ -34,7 +33,7 @@
 	new_player_panel_proc()
 
 /mob/new_player/proc/new_player_panel_proc()
-	if(age_gate_result == null && client.prefs && !client.is_preference_enabled(/datum/client_preference/debug/age_verified)) // run first time verification
+	if(age_gate_result == null && !client.is_preference_enabled(/datum/client_preference/debug/age_verified)) // run first time verification
 		verifyage()
 	if(!client)
 		return	// verifyage sleeps what the fuck

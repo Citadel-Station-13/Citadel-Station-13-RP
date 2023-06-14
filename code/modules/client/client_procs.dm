@@ -155,6 +155,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return 1
 
 
+
 	///////////
 	//CONNECT//
 	///////////
@@ -169,7 +170,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(connection != "seeker" && connection != "web")
 		return null
 	// is localhost?
-	var/is_localhost = isnull(address) || (address in list("127.0.0.1", "::1"))
+	var/is_localhost = is_localhost()
 	// kick out guests
 	if(!config_legacy.guests_allowed && IsGuestKey(key) && !is_localhost)
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
@@ -298,10 +299,16 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
 
+
 	// resolve database data
 	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
 	player = new(ckey)
 	player.log_connect()
+
+	// -- security --
+	// run onboarding gauntlet
+	if(!onboarding())
+		return FALSE
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)

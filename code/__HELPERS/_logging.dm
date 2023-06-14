@@ -213,6 +213,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_reagent_transfer(text)
 	log_reagent("TRANSFER: [text]")
 
+/proc/log_security(text)
+	WRITE_LOG(GLOB.world_game_log, "SECURITY: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 

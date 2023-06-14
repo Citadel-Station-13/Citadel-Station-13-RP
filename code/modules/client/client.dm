@@ -226,3 +226,9 @@
 			change_view(var_value, TRUE)
 			return TRUE
 	return ..()
+
+/**
+ * are we localhost?
+ */
+/client/proc/is_localhost()
+	return isnull(address) || (address in list("127.0.0.1", "::1"))
