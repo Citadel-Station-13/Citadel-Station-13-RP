@@ -170,7 +170,7 @@
 		to_chat(user, SPAN_WARNING("[src] is still on cooldown! ([round((world.time - last_used) * 0.1, 0.1)] / [round(cooldown * 0.1, 0.1)])"))
 		return FALSE
 	if(!available_check())
-		to_chat(user, SPAN_WARNING("You can't do that right now!"))
+		to_chat(user, SPAN_WARNING(unavailable_reason()))
 		return FALSE
 	return TRUE
 
