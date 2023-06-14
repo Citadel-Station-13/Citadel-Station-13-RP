@@ -120,6 +120,10 @@
 	if(/obj/structure/bed/hybrid_nest in T.contents)
 		healing_factor *= 1.2
 
+	if(H.nutrition < 50)
+		to_chat(H, SPAN_BOLDWARNING("You are to hungry to benefit from your enhanced regeneration"))
+		H.active_regen = FALSE
+		return
 	//Heal_amount is 0.5, with all bonies above 1.188
 
 	var/heal_amount = heal_rate * healing_factor
@@ -137,6 +141,10 @@
 	for(var/obj/item/organ/external/E in H.bad_external_organs)
 		E.bandage()
 		nutrition_debt += 2 //Costly but not overly expansive, certainly better than bleeding out
+
+	if(H.nutrition < 100)
+		H.nutrition -= nutrition_debt
+		return
 
 	if (H.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
 		for(var/limb_type in src.has_limbs)
