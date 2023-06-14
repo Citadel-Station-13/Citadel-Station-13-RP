@@ -124,12 +124,6 @@
 	#define PRELOAD_RSC	2
 #endif
 
-
-#ifdef LOWMEMORYMODE
-	#define FORCE_MAP "_mapload/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
-#endif
-
-
 // ## CBT BUILD DEFINES
 
 #ifdef CIBUILDING

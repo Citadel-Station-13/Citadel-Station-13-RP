@@ -53,6 +53,8 @@
 		fdel(json_path)
 	var/list/json = list()
 	json["type"] = next.type
+	json["id"] = next.id
+	json["modified"] = next.modified
 	if(next.modified)
 		json["data"] = next.serialize()
 	var/writing = file(json_path)
@@ -60,6 +62,17 @@
 	WRITE_FILE(writing, raw)
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
+	var/datum/map/station/next_map
+	var/datum/map/station/default = keyed_maps[keyed_maps[1]]
+	if(isnull(default))
+		STACK_TRACE("no default map; world init is likely going to explode.")
+#ifdef FORCE_MAP
+	if(keyed_maps[FORCE_MAP])
+		next_map = keyed_maps[FORCE_MAP]
+	else
+		STACK_TRACE("fail-1: failed to locate FORCE(d)_MAP [FORCE_MAP]. falling back to default.")
+		next_map = default
+#else
 	var/json_path = "data/next_map.json"
 	if(!fexists(json_path))
 		return
@@ -67,12 +80,31 @@
 	var/raw = file2text(reading)
 	var/list/json = safe_json_decode(raw)
 	var/path = json["type"]
+	var/id = json["id"]
+	var/modified = json["modified"]
 	var/list/data = json["data"]
-	var/datum/map/station/wanted = new path
-	if(!isnull(data))
-		wanted.deserialize(data)
-	next_station = wanted
-	return wanted
+	if(!modified)
+		next_map = keyed_maps[id]
+		if(isnull(next_map))
+			STACK_TRACE("fail-1: non-modified next_map id was [id], which doesn't exist. falling back to path.")
+			if(!ispath(path, /datum/map/station))
+				STACK_TRACE("fail-2: non-modified map path [path] when expecting a /datum/map/station. falling back to default.")
+				next_map = default
+			else
+				next_map = new path
+	else if(!ispath(path, /datum/map/station))
+		STACK_TRACE("fail-fatal: modified map path [path] when expecting a /datum/map/station. falling back to default.")
+		next_map = default
+	else
+		next_map = new path
+		if(!isnull(data))
+			next_map.deserialize(data)
+#endif
+	if(isnull(next_map))
+		to_chat(world, SPAN_DANGER("FATAL - failed to get next map."))
+		CRASH("FATAL - Failed to get next map")
+	next_station = next_map
+	return next_map
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
 	var/list/datum/map_level/loaded_levels = list()
