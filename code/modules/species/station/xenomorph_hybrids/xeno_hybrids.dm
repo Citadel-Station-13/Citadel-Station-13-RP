@@ -50,8 +50,6 @@
 		/mob/living/proc/shred_limb,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/psychic_whisper,
-		/mob/living/carbon/human/proc/hybrid_resin,
-		/mob/living/carbon/human/proc/hybrid_plant//replaced from the normal weed node to place a singular weed
 		)
 
 	abilities = list(
@@ -95,7 +93,7 @@
 		O_PLASMA =		/obj/item/organ/internal/xenos/plasmavessel/hunter,//Important for the xenomorph abilities, hunter to have a pretty small plasma capacity
 		O_STOMACH =		/obj/item/organ/internal/stomach,
 		O_INTESTINE =	/obj/item/organ/internal/intestine,
-		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner,
+		O_RESIN =		/obj/item/organ/internal/xenos/resinspinner/hybrid,
 		)
 	vision_organ = O_BRAIN//Neomorphs have no (visible) Eyes, seeing without them should be possible.
 
