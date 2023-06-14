@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
-	//! pre-connect-ish
+	//* pre-connect-ish
 	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
 	world.SetConfig("APP/admin", ckey, "role=admin")
 	// block client.Topic() calls from connect
@@ -169,10 +169,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// kick out invalid connections
 	if(connection != "seeker" && connection != "web")
 		return null
-	// is localhost?
-	var/is_localhost = is_localhost()
 	// kick out guests
-	if(!config_legacy.guests_allowed && IsGuestKey(key) && !is_localhost)
+	if(!config_legacy.guests_allowed && is_guest() && !is_localhost())
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -182,13 +180,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
-	//! Resolve storage datums
+	//* Resolve storage datums
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
 	// todo: move resolve database data up here but above preferences
 	// todo: move preferences up here but above persistent
 
-	//! Setup user interface
+	//* Setup user interface
 	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate statpanel
 	statpanel_boot()
@@ -197,7 +195,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// Instantiate cutscene system
 	init_cutscene_system()
 
-	//! Setup admin tooling
+	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
@@ -214,20 +212,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else if(GLOB.deadmins[ckey])
 		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
-	if(CONFIG_GET(flag/autoadmin))
-		if(!GLOB.admin_datums[ckey])
-			var/datum/admin_rank/autorank
-			for(var/datum/admin_rank/R in GLOB.admin_ranks)
-				if(R.name == CONFIG_GET(string/autoadmin_rank))
-					autorank = R
-					break
-			if(!autorank)
-				to_chat(world, "Autoadmin rank not found")
-			else
-				new /datum/admins(autorank, ckey)
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(is_localhost)
+	if(is_localhost())
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
@@ -260,40 +247,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
-	/*
-	var/alert_mob_dupe_login = FALSE
-	if(CONFIG_GET(flag/log_access))
-		for(var/I in GLOB.clients)
-			if(!I || I == src)
-				continue
-			var/client/C = I
-			if(C.key && (C.key != key) )
-				var/matches
-				if( (C.address == address) )
-					matches += "IP ([address])"
-				if( (C.computer_id == computer_id) )
-					if(matches)
-						matches += " and "
-					matches += "ID ([computer_id])"
-					alert_mob_dupe_login = TRUE
-				if(matches)
-					if(C)
-						message_admins("<span class='danger'><B>Notice: </B></span><span class='notice'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)].</span>")
-						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)].")
-					else
-						message_admins("<span class='danger'><B>Notice: </B></span><span class='notice'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)] (no longer logged in). </span>")
-						log_admin_private("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
-
-	*/
-
-	//! WARNING: mob.login is always called async, aka immediately returns on sleep.
-	//! we cannot enforce nosleep due to SDMM limitations.
-	//! therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
+	//* WARNING: mob.login is always called async, aka immediately returns on sleep.
+	//* we cannot enforce nosleep due to SDMM limitations.
+	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
-
-	// if(!using_perspective)
-	// 	stack_trace("mob login didn't put in perspective")
 
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
@@ -306,6 +264,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	player.log_connect()
 
 	// -- security --
+	SSipintel.vpn_score(address)
 	// run onboarding gauntlet
 	if(!onboarding())
 		return FALSE
@@ -339,7 +298,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// 	inline_css = file2text('html/statbrowser.css'),
 	// )
 
-	//! Initialize UI
+	//* Initialize UI
 	// initialize statbrowser
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
@@ -451,12 +410,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	return ..()
 
 /client/Destroy()
+	// Unregister globals
 	GLOB.clients -= src
 	GLOB.directory -= ckey
+	// log
 	log_access("Logout: [key_name(src)]")
-	GLOB.ahelp_tickets.ClientLogout(src)
+	// unreference storage datums
 	persistent = null
 	player = null
+
+	//* unsorted
+	GLOB.ahelp_tickets.ClientLogout(src)
 	if(prefs)
 		prefs.client = null
 		prefs = null
@@ -464,18 +428,21 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(holder)
 		holder.owner = null
 		GLOB.admins -= src //delete them on the managed one too
-	if(using_perspective)
-		set_perspective(null)
 
 	active_mousedown_item = null
 	SSping.currentrun -= src
 
-	//! cleanup UI
-	/// cleanup statbrowser
+	//* cleanup mob-side stuff
+	// clear perspective
+	if(using_perspective)
+		set_perspective(null)
+
+	//* cleanup UI
+	// cleanup statbrowser
 	statpanel_dispose()
-	/// cleanup cutscene system
+	// cleanup cutscene system
 	cleanup_cutscene_system()
-	/// cleanup tgui panel
+	// cleanup tgui panel
 	QDEL_NULL(tgui_panel)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening

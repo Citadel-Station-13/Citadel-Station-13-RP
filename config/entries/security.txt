@@ -18,6 +18,8 @@ TOPIC_MAX_SIZE 1048576
 TOPIC_RATE_LIMIT_WHITELIST 127.0.0.1
 
 ### IPINTEL
+## IPIntel system enabled?
+IPINTEL_ENABLED
 ## Email given to API for contact - required.
 # IPINTEL_EMAIL ch@nge.me
 ## The threshold of where we consider someone to be a VPN
@@ -48,3 +50,5 @@ AGE_VERIFICATION_AUTOBAN
 # PANIC_BUNKER_PLAYTIME 120
 ## Set to show players a message if they try to join during panic bunker.
 PANIC_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from never seen before players.
+## How long to keep someone in bunker bypass list once whitelisted by admins
+PANIC_BUNKER_BYPASS 7

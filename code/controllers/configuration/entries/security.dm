@@ -22,6 +22,8 @@
 
 //* IPIntel - VPN Intelligence System *//
 
+/datum/config_entry/string/ipintel_enabled
+
 /datum/config_entry/string/ipintel_email
 
 /datum/config_entry/string/ipintel_email/ValidateAndSet(str_val)
@@ -70,3 +72,8 @@
 /// Message shown to players who try to connect during panic bunker.
 /datum/config_entry/string/panic_bunker_message
 	default = "Sorry but the server is currently not accepting connections from never before seen players."
+
+/// Days to keep someone in bunker bypass once whitelisted
+/datum/config_entry/number/panic_bunker_bypass
+	default = 7
+	min_val = 1

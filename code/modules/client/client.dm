@@ -228,6 +228,12 @@
 	return ..()
 
 /**
+ * are we a guest account?
+ */
+/client/proc/is_guest()
+	return IsGuestKey(key)
+
+/**
  * are we localhost?
  */
 /client/proc/is_localhost()
