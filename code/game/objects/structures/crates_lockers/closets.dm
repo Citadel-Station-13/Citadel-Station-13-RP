@@ -32,11 +32,22 @@
 
 	var/list/starts_with
 
+
+	var/obj/item/electronics/airlock/lockerelectronics //Installed electronics
+	var/lock_in_use = FALSE //Someone is doing some stuff with the lock here, better not proceed further
+//	var/secure = FALSE //secure locker or not
+
+
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
 	if(mapload && !opened)
 		addtimer(CALLBACK(src, .proc/take_contents), 0)
 	PopulateContents()
+	/*
+	if(secure)
+		lockerelectronics = new(src)
+		lockerelectronics.accesses = req_access
+	*/
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD
 
