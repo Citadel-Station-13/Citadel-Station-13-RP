@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(lobby)
 	set_title_scene(make_title_scene())
 
 /datum/controller/subsystem/lobby/proc/make_title_scene()
-	var/picked = pickweight(GLOB.using_map.titlescreens.Copy())
+	var/picked = pickweight(LEGACY_MAP_DATUM.Copy())
 	if(isnull(picked))
 		return
 	var/datum/cutscene/built

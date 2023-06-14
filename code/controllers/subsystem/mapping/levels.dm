@@ -8,6 +8,8 @@
 	var/static/list/datum/map_level/ordered_levels = list()
 	/// k-v id to level datum lookup
 	var/static/list/datum/map_level/keyed_levels = list()
+	/// literally just a random hexadecimal store to prevent collision
+	var/static/list/random_fluff_level_hashes = list()
 
 /**
  * allocates a new map level using the given datum.
@@ -36,8 +38,11 @@
 	ordered_levels[z_index] = level_or_path
 	. = level_or_path
 
-	
-	#warn randomize/set display_id, display_name
+	if(isnull(level_or_path.display_id))
+		level_or_path.display_id = generate_fluff_level_id()
+	if(isnull(level_or_path.display_name))
+		level_or_path.display_name = "Sector [level_or_path.display_id]"
+
 	// todo: rebuild?
 	// todo: legacy
 	if(!isnull(level_or_path.planet_path))
@@ -158,3 +163,16 @@
  */
 /datum/controller/subsystem/mapping/proc/on_attribute_set(datum/map_level/level, attribute, old_value, new_value)
 	return
+
+/**
+ * generates random hex fluff level id
+ */
+/datum/controller/subsystem/mapping/proc/generate_fluff_level_id()
+	var/discriminator = GLOB.round_id? "[num2hex(GLOB.round_id, 6)]-" : ""
+	var/safety = 500
+	do
+		if(!--safety)
+			CRASH("ran out of safety somehow, wtf")
+		. = "[discriminator][num2hex(rand(1, 16 ** 4 - 1))]"
+	while(. in random_fluff_level_hashes)
+	random_fluff_level_hashes += .
