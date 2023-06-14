@@ -320,11 +320,11 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
 		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
 		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
-			GLOB.lore_atc.msg(message)
+			SSlegacy_atc.msg(message)
 
 	//For ships, it's safe to assume they're big enough to not be sneaky
 	else if(istype(AM, /obj/effect/overmap/visitable/ship))
-		GLOB.lore_atc.msg(message)
+		SSlegacy_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.

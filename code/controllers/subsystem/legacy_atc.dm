@@ -1,9 +1,7 @@
-/// Also, massive additions/refactors by Killian, because the original incarnation was full of holes
-/// Cleaned up to be less shit, again.
+SUBSYSTEM_DEF(legacy_atc)
+	name = "Lore ATC (Legacy)"
+	init_order = INIT_ORDER_LEGACY_ATC
 
-GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
-
-/datum/lore/atc_controller
 	//Shorter delays means more traffic, which gives the impression of a busier system, but also means a lot more radio noise
 	/// How long between ATC traffic
 	var/delay_min = 18 MINUTES
@@ -27,8 +25,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	var/secchannel
 	var/sdfchannel
 
-
-/datum/lore/atc_controller/New() //assuming global start this same or close to init.
+/datum/controller/subsystem/legacy_atc/Initialize()
 	//generate our static event frequencies for the shift. alternately they can be completely fixed, up in the core block
 	ertchannel = "[rand(700,749)].[rand(1,9)]"
 	medchannel = "[rand(750,799)].[rand(1,9)]"
@@ -43,16 +40,18 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 		next_message = world.time + initial_delay
 		START_PROCESSING(SSobj, src)
 
-/datum/lore/atc_controller/process(delta_time)
+	return ..()
+
+/datum/controller/subsystem/legacy_atc/process(delta_time)
 	if(world.time >= next_message)
 		next_message = world.time + rand(delay_min, delay_max)
 		random_convo()
 
-/datum/lore/atc_controller/proc/msg(message, sender)
+/datum/controller/subsystem/legacy_atc/proc/msg(message, sender)
 	ASSERT(message)
 	GLOB.global_announcer.autosay("[message]", sender ? sender : "[(LEGACY_MAP_DATUM).dock_name] Control")
 
-/datum/lore/atc_controller/proc/toggle_broadcast()
+/datum/controller/subsystem/legacy_atc/proc/toggle_broadcast()
 	if(!squelched)
 		msg("Ceasing broadcast of ATC communications.")
 		squelched = TRUE
@@ -63,7 +62,7 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 			squelched = FALSE
 			START_PROCESSING(SSobj, src)
 
-/datum/lore/atc_controller/proc/shift_ending(evac = FALSE)
+/datum/controller/subsystem/legacy_atc/proc/shift_ending(evac = FALSE)
 	msg("[(LEGACY_MAP_DATUM).shuttle_name], this is [(LEGACY_MAP_DATUM).dock_name] Control, you are cleared to complete routine transfer from [(LEGACY_MAP_DATUM).station_name] to [(LEGACY_MAP_DATUM).dock_name].")
 	sleep(5 SECONDS)
 	if(QDELETED(src))
@@ -71,17 +70,17 @@ GLOBAL_DATUM_INIT(lore_atc, /datum/lore/atc_controller, new)
 	msg("[(LEGACY_MAP_DATUM).shuttle_name] departing [(LEGACY_MAP_DATUM).dock_name] for [(LEGACY_MAP_DATUM).station_name] on routine transfer route. Estimated time to arrival: ten minutes.","[(LEGACY_MAP_DATUM).shuttle_name]")
 
 /// Next level optimzation for this: datumize the convo (see main holopads/holodisk!)
-/datum/lore/atc_controller/proc/random_convo()
+/datum/controller/subsystem/legacy_atc/proc/random_convo()
 	/// Resolve to the instances
 	// OKAY what's happening here is a lot less agony inducing than it might seem. All that's happening here is a weighted RNG choice between the listed options in a variable.
 	// The first, [1], is for NanoTrasen Incorporated, while the second option is for ALL organizations including NT. You can add/adjust these options and weights to your hearts content.
 	// ALL the companies and items this list pulls from can be found in the organizations.dm file in this same folder (busy_space).
 	// I'm restoring this to unweighted: with further local tests NT is still *outrageously* common, far more common than the weighting implies
 	// With a small list of ship names/identifiers, this can lead to situations like seemingly-identical ships landing multiple times without taking off again.
-	var/datum/lore/organization/source = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
+	var/datum/lore/organization/source = SSlegacy_lore.organizations[pick(SSlegacy_lore.organizations)]
 
 	/// repurposed for new fun stuff
-	var/datum/lore/organization/secondary = GLOB.loremaster.organizations[pick(GLOB.loremaster.organizations)]
+	var/datum/lore/organization/secondary = SSlegacy_lore.organizations[pick(SSlegacy_lore.organizations)]
 
 	//Let's get some mission parameters, pick our first ship
 	/// get the name - don't need to for now! uncommented to avoid compile warnings.

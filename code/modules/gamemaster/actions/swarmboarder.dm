@@ -71,5 +71,5 @@
 
 /datum/gm_action/swarm_boarder/announce()
 	spawn(rand(5 MINUTES, 15 MINUTES))
-		if(prob(80) && severity >= EVENT_LEVEL_MODERATE && GLOB.lore_atc && !GLOB.lore_atc.squelched)
-			GLOB.lore_atc.msg("Attention civilian vessels in [(LEGACY_MAP_DATUM).starsys_name] shipping lanes, caution is advised as [pick("an unidentified vessel", "a known criminal's vessel", "a derelict vessel")] has been detected passing multiple local stations.")
+		if(prob(80) && severity >= EVENT_LEVEL_MODERATE && SSlegacy_atc && !SSlegacy_atc.squelched)
+			SSlegacy_atc.msg("Attention civilian vessels in [(LEGACY_MAP_DATUM).starsys_name] shipping lanes, caution is advised as [pick("an unidentified vessel", "a known criminal's vessel", "a derelict vessel")] has been detected passing multiple local stations.")

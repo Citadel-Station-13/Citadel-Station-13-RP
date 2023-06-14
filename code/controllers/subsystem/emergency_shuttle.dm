@@ -94,8 +94,8 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
-	if(GLOB.lore_atc.squelched == FALSE)
-		GLOB.lore_atc.toggle_broadcast()
+	if(SSlegacy_atc.squelched == FALSE)
+		SSlegacy_atc.toggle_broadcast()
 
 //calls the shuttle for a routine crew transfer
 /datum/controller/subsystem/emergencyshuttle/proc/call_transfer()
@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_called_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
-	GLOB.lore_atc.shift_ending()
+	SSlegacy_atc.shift_ending()
 
 //recalls the shuttle
 /datum/controller/subsystem/emergencyshuttle/proc/recall()

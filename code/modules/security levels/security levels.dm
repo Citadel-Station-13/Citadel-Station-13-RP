@@ -78,8 +78,8 @@ GLOBAL_VAR_INIT(security_level, SEC_LEVEL_GREEN)
 				FA.mode = 3
 
 		if(level >= SEC_LEVEL_RED)
-			if(GLOB.lore_atc.squelched == FALSE) // Do nothing, ATC relay is already off
-				GLOB.lore_atc.toggle_broadcast()
+			if(SSlegacy_atc.squelched == FALSE) // Do nothing, ATC relay is already off
+				SSlegacy_atc.toggle_broadcast()
 
 		spawn()
 			SSnightshift.check_nightshift()

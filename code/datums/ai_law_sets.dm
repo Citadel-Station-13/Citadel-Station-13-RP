@@ -51,8 +51,8 @@
 	var/company = "*ERROR*"
 	// First, get a list of TSCs in our lore.
 	var/list/candidates = list()
-	for(var/path in GLOB.loremaster.organizations)
-		var/datum/lore/organization/O = GLOB.loremaster.organizations[path]
+	for(var/path in SSlegacy_lore.organizations)
+		var/datum/lore/organization/O = SSlegacy_lore.organizations[path]
 		if(!istype(O, /datum/lore/organization/tsc))
 			continue
 		if(O.short_name == (LEGACY_MAP_DATUM).company_name || O.name == (LEGACY_MAP_DATUM).company_name)

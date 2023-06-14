@@ -1,11 +1,10 @@
-//I AM THE LOREMASTER, ARE YOU THE GATEKEEPER?
+SUBSYSTEM_DEF(legacy_lore)
+	name = "Loremaster (Legacy)"
+	init_order = INIT_ORDER_LEGACY_LORE
 
-GLOBAL_DATUM_INIT(loremaster, /datum/lore/loremaster, new)
-
-/datum/lore/loremaster
 	var/list/organizations = list()
 
-/datum/lore/loremaster/New()
+/datum/controller/subsystem/legacy_lore/Initialize()
 	var/list/paths = subtypesof(/datum/lore/organization)
 	for(var/path in paths)
 		// Some intermediate paths are not real organizations (ex. /datum/lore/organization/mil). Only do ones with names
@@ -13,3 +12,4 @@ GLOBAL_DATUM_INIT(loremaster, /datum/lore/loremaster, new)
 		if(initial(instance.name))
 			instance = new path()
 			organizations[path] = instance
+	return ..()
