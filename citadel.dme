@@ -4688,6 +4688,7 @@
 #include "maps\overmap\shuttles\pirateskiff.dm"
 #include "maps\overmap\shuttles\skipjack.dm"
 #include "maps\overmap\shuttles\specialops.dm"
+#include "maps\rift\rift.dm"
 #include "maps\rift\rift_shuttles.dm"
 #include "maps\rift\rift_telecomms.dm"
 #include "maps\rift\rift_things.dm"
