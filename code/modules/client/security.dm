@@ -5,3 +5,4 @@
 	#warn impl
 
 /client/proc/security_ban(message, time = -1)
+	#warn impl
