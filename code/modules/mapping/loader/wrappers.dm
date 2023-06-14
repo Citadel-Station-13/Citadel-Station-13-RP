@@ -4,7 +4,9 @@
 // ❤ - Cyberboss
 // <3 cyberboss you are epic
 /proc/__load_raw_level(path, orientation = SOUTH, center = TRUE)
-	var/datum/dmm_parsed/parsed = parse_map(path)
+	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
+	if(!parsed.bounds)
+		CRASH("seemingly invalid file")
 	var/datum/map_level/dynamic/level = new
 
 	SSmapping.allocate_level(level)
@@ -26,7 +28,9 @@
 /proc/__load_raw_chunk(path, x, y, z, orientation = SOUTH, center = TRUE)
 	ASSERT(x && y && z)
 
-	var/datum/dmm_parsed/parsed = parse_map(path)
+	var/datum/dmm_parsed/parsed = parse_map(isfile(path)? path : file(path))
+	if(!parsed.bounds)
+		CRASH("seemingly invalid file")
 
 	var/ll_x = x
 	var/ll_y = y

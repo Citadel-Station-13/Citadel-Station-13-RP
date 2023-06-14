@@ -134,6 +134,8 @@
 
 	if(!T)
 		T = SSjob.get_latejoin_spawnpoint()
+	if(!T)
+		T = locate(1,1,1)
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)

@@ -40,9 +40,9 @@ SUBSYSTEM_DEF(shuttle)
 	/// Stores landmark_tags that need to be assigned to the sector (landmark_tag = sector) when registered.
 	var/static/list/landmarks_still_needed = list()
 	/// A queue for shuttles to initialize at the appropriate time.
-	var/static/list/shuttles_to_initialize
+	var/static/list/shuttles_to_initialize = list()
 	/// Used to find all sector objects at the appropriate time.
-	var/static/list/sectors_to_initialize
+	var/static/list/sectors_to_initialize = list()
 	/// Block initialization of new shuttles/sectors
 	var/block_init_queue = TRUE
 

@@ -160,7 +160,7 @@
 		orientation = data["orientation"]
 
 /**
- * get .dmm path
+ * get .dmm path or file
  */
 /datum/map_level/proc/resolve_map_path()
 	return absolute_path // no relative path support yet

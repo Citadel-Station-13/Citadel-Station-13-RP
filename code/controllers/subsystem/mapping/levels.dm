@@ -96,7 +96,11 @@
 	ASSERT(!isnull(instance))
 	// parse map
 
-	var/datum/dmm_parsed/parsed = parse_map(instance.resolve_map_path())
+	var/map_path = instance.resolve_map_path()
+	if(isfile(map_path))
+	else if(!fexists(map_path))
+		CRASH("fexists() failed on map path [map_path] for instance [instance] ([instance.type])")
+	var/datum/dmm_parsed/parsed = parse_map(map_path)
 
 	var/real_x = 1
 	var/real_y = 1

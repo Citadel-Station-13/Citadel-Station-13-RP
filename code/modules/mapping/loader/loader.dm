@@ -16,7 +16,7 @@
  * This also immediately crops what's loaded, so, don't use this if you want to have more sections of the parsed map done later.
  *
  * @params
- * * map - dmm file or path or rsc entry
+ * * map - dmm file() or a raw file2text'd file
  * * ll_x - lowerleft x
  * * ll_y - lowerleft y
  * * ll_z - lowerleft z. for multiz, this is bottomleft.
@@ -269,7 +269,7 @@
 	UNTIL(!loading)
 	loading = TRUE
 	Master.StartLoadingMap()
-	. = load(arglist(args))
+	. = _load_impl(arglist(args))
 	Master.StopLoadingMap()
 	loading = FALSE
 
