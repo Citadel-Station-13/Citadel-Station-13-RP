@@ -59,6 +59,7 @@
 		json["data"] = next.serialize()
 	var/writing = file(json_path)
 	var/raw = safe_json_encode(json)
+	subsystem_log("writing next map [raw]")
 	WRITE_FILE(writing, raw)
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
@@ -69,8 +70,10 @@
 #ifdef FORCE_MAP
 	if(keyed_maps[FORCE_MAP])
 		next_map = keyed_maps[FORCE_MAP]
+		subsystem_log("loaded forced map [FORCE_MAP]")
 	else
 		STACK_TRACE("fail-1: failed to locate FORCE(d)_MAP [FORCE_MAP]. falling back to default.")
+		subsystem_log("failed to load forced map [FORCE_MAP]")
 		next_map = default
 #else
 	var/json_path = "data/next_map.json"
@@ -78,6 +81,7 @@
 		return
 	var/reading = file(json_path)
 	var/raw = file2text(reading)
+	subsystem_log("read raw next map [raw]")
 	var/list/json = safe_json_decode(raw)
 	var/path = json["type"]
 	var/id = json["id"]
@@ -104,6 +108,7 @@
 		to_chat(world, SPAN_DANGER("FATAL - failed to get next map."))
 		CRASH("FATAL - Failed to get next map")
 	next_station = next_map
+	subsystem_log("loaded map [next_station] ([next_station.id])")
 	return next_map
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
