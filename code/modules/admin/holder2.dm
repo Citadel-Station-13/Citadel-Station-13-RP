@@ -31,7 +31,9 @@ GLOBAL_PROTECT(href_token)
 	if(rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
 
-	admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
+	spawn(-1)
+		UNTIL(SSmapping.loaded_station)
+		admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))

@@ -32,9 +32,10 @@
 	for(var/datum/map/path as anything in subtypesof(/datum/map))
 		if(initial(path.abstract_type) == path)
 			continue
-		if(isnull(path.id))
+		var/id = initial(path.id)
+		if(id)
 			continue
-		if(skipping[path.id])
+		if(skipping[id])
 			continue
 		var/datum/map/created = new path
 		if(keyed_maps[created.id])

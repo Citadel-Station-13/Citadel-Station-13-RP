@@ -105,8 +105,9 @@
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
-		if(GLOB.areas_by_type[type])
-			STACK_TRACE("duplicated unique area, someone fucked up")
+		// todo: something is double initing reserve area god damnit...
+		// if(GLOB.areas_by_type[type])
+		// 	STACK_TRACE("duplicated unique area, someone fucked up")
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
