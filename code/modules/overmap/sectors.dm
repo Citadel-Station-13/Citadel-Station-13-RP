@@ -230,7 +230,7 @@
 
 	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
 	testing("Building overmap...")
-	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level()
+	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level().z_index
 
 	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
 	var/area/overmap/A = new

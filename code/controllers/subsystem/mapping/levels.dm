@@ -28,19 +28,23 @@
  */
 /datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
 	RETURN_TYPE(/datum/map_level)
-	var/z_index = allocate_z_index()
-	ASSERT(z_index)
 	if(ispath(level_or_path))
 		level_or_path = new level_or_path
 	ASSERT(istype(level_or_path))
 	ASSERT(!level_or_path.loaded)
+	if(!isnull(keyed_levels[level_or_path.id]))
+		CRASH("fatal id collision on [level_or_path.id]")
+	var/z_index = allocate_z_index()
+	ASSERT(z_index)
 	var/datum/map_level/existing = ordered_levels[z_index]
 	if(!isnull(existing))
 		if(existing.loaded)
 			ASSERT(istype(existing, /datum/map_level/unallocated))
 			existing.loaded = FALSE
 	ordered_levels[z_index] = level_or_path
+	keyed_levels[level_or_path.id] = level_or_path
 	level_or_path.z_index = z_index
+	level_or_path.loaded = TRUE
 	. = level_or_path
 
 	if(isnull(level_or_path.display_id))
