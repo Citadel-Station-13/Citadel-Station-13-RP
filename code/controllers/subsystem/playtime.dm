@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(playtime)
 
 #warn impl all
 
+/*
 GLOBAL_LIST_EMPTY(exp_to_update)
 GLOBAL_PROTECT(exp_to_update)
 
@@ -301,3 +302,4 @@ GLOBAL_PROTECT(exp_to_update)
 		prefs.db_flags = 0	//This PROBABLY won't happen, but better safe than sorry.
 	qdel(flags_read)
 	return TRUE
+*/
