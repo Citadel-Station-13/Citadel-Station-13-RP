@@ -118,6 +118,22 @@
 			levels[i] = new level_path
 
 /**
+ * anything to do immediately on load
+ *
+ * called after level on_loaded_immediate's
+ */
+/datum/map/proc/on_loaded_immediate()
+	return
+
+/**
+ * anything to do after loading with any dependencies
+ *
+ * called after level on_loaded_finalize's
+ */
+/datum/map/proc/on_loaded_finalize()
+	return
+
+/**
  * primary station map
  *
  * this is what's loaded at init. this determines what other maps initially load.

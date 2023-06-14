@@ -3,7 +3,7 @@
  */
 /datum/controller/subsystem/mapping/proc/level_trait(z, trait)
 	var/datum/map_level/L = ordered_levels[z]
-	return L.traits[trait]
+	return L.has_trait(trait)
 
 /**
  * Checks if a z level has any of these traits

@@ -71,22 +71,22 @@
 
 /datum/controller/subsystem/mapping/proc/load_map(datum/map/instance)
 	var/list/datum/map_level/loaded_levels = list()
+	var/list/datum/map/actually_loaded = list()
 	var/list/datum/callback/generation_callbacks = list()
-	_load_map_impl(instance, loaded_levels, generation_callbacks)
+	_load_map_impl(instance, loaded_levels, generation_callbacks, actually_loaded)
 	// invoke generation
 	for(var/datum/callback/cb as anything in generation_callbacks)
 		cb.Invoke()
 	// invoke finalize
 	for(var/datum/map_level/level as anything in loaded_levels)
 		level.on_loaded_finalize(level.z_index)
+	// invoke global finalize
+	for(var/datum/map/map as anything in actually_loaded)
+		map.on_loaded_finalize()
 
 	// todo: rebuild?
 
-	// todo: legacy
-	for(var/path in instance.legacy_assert_shuttle_datums)
-		SSshuttle.legacy_shuttle_assert(path)
-
-/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks)
+/datum/controller/subsystem/mapping/proc/_load_map_impl(datum/map/instance, list/datum/map_level/loaded_levels, list/datum/callback/generation_callbacks, list/datum/map/this_batch)
 	// ensure any lazy data is loaded and ready to be read
 	instance.prime()
 
@@ -97,6 +97,15 @@
 	for(var/datum/map_level/level as anything in instance.levels)
 		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
 		loaded_levels += level
+
+	loaded_maps += instance
+	this_batch += instance
+
+	instance.on_loaded_immediate()
+
+	// todo: legacy
+	for(var/path in instance.legacy_assert_shuttle_datums)
+		SSshuttle.legacy_shuttle_assert(path)
 
 	var/list/datum/map/recursing = list()
 
