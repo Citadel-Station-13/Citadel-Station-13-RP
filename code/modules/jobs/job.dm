@@ -375,7 +375,9 @@
 /datum/role/job/proc/available_in_days(client/C)
 	if(C.has_jexp_bypass())
 		return 0
-	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
+	if(!CONFIG_GET(flag/job_check_account_age))
+		return 0
+	if(isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0
 

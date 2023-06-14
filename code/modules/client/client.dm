@@ -232,3 +232,9 @@
  */
 /client/proc/is_localhost()
 	return isnull(address) || (address in list("127.0.0.1", "::1"))
+
+/**
+ * are we any sort of staff rank?
+ */
+/client/proc/is_staff()
+	return !isnull(holder)

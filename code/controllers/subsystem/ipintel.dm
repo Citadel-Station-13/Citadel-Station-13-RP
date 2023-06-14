@@ -11,16 +11,16 @@ SUBSYSTEM_DEF(ipintel)
 	/// ip (as client.address form) to cache entry
 	var/static/list/vpn_cache = list()
 
-/datum/controller/subsystem/onboarding/proc/vpn_score(address)
+/datum/controller/subsystem/ipintel/proc/vpn_score(address)
 
-/datum/controller/subsystem/onboarding/proc/vpn_check(address)
+/datum/controller/subsystem/ipintel/proc/vpn_check(address)
 	return vpn_score(address) >= vpn_threshold
 
-/datum/controller/subsystem/onboarding/proc/__ipintel_query(address)
+/datum/controller/subsystem/ipintel/proc/__ipintel_query(address)
 
-/datum/controller/subsystem/onboarding/proc/__ipintel_cache_fetch(address)
+/datum/controller/subsystem/ipintel/proc/__ipintel_cache_fetch(address)
 
-/datum/controller/subsystem/onboarding/proc/__ipintel_cache_store(address)
+/datum/controller/subsystem/ipintel/proc/__ipintel_cache_store(address)
 
 #warn impl all
 

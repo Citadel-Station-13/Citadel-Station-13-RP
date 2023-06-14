@@ -19,9 +19,20 @@
 		if(!islist(language_prefixes))
 			language_prefixes = list()
 		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
-
-	#warn 	S["preferences_disabled"] << pref.preferences_disabled
-	#warn  key = "AGE_VERIFIED"
+	if(current_version < 16)
+		if(prefs.client)
+			var/list/pref_datum_entries
+			S["preferences_enabled"] >> pref_datum_entries
+			var/was_age_verified = "AGE_VERIFIED" in pref_datum_entries
+			if(was_age_verified)
+				var/datum/player_data/data = prefs?.client?.player
+				if(!isnull(data))
+					if(data.player_flags & PLAYER_FLAG_AGE_VERIFIED)
+					else
+						data.player_flags |= PLAYER_FLAG_AGE_VERIFIED
+						INVOKE_ASYNC(data, TYPE_PROC_REF(/datum/player_data, save))
+				else
+					log_and_message_admins("Failed to automatically authorize age gating for player with savefile [prefs.path]")
 
 /**
  * @params
