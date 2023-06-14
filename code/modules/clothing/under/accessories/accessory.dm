@@ -933,3 +933,10 @@
 	name = "short legwarmers"
 	desc = "A comfy pair of legwarmers. For those better in the cold than others."
 	icon_state = "legwarmers_short"
+
+
+//misc
+/obj/item/clothing/accessory/civ_exos_mob
+	name = "medical exoframe"
+	desc = "A cheap medical exoframe mass-produced by NanoTransen and provided to employees who cannot function in gravity without assistance."
+	icon_state = "civ_exos_mob"

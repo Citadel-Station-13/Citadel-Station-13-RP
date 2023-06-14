@@ -518,3 +518,8 @@
 		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
 		tscarfs[initial(tscarf_type.name)] = tscarf_type
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
+
+/datum/gear/accessory/civ_exos_mob
+	name = "medical exoframe"
+	description = "A cheap medical exoframe mass-produced by NanoTransen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
+	path = /obj/item/clothing/accessory/civ_exos_mob
