@@ -26,7 +26,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/map_level/L as anything in ordered_levels)
-		if(L.traits[trait])
+		if(L.has_trait(trait))
 			. += L.z_index
 
 /**
