@@ -25,7 +25,7 @@
 	if(ispath(girder_material, /datum/material))
 		girder_material = SSmaterials.get_material(girder_material)
 	else if(!istype(girder_material))
-		girder_material = SSmaterials.get_material(/datum/material/steel)
+		girder_material = SSmaterials.get_material(/datum/material/solid/metal/steel)
 
 	if(reinf_material)
 		construction_stage = 6

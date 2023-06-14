@@ -174,6 +174,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MAT_VAUDIUM			"vaudium"
 #define MAT_VERDANTIUM		"verdantium"
 #define MAT_WOOD			"wood"
+#define MAT_ALGAE           "algae"
 
 
 #define SHARD_SHARD			"shard"

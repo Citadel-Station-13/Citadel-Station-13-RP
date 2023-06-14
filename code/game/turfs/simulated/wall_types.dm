@@ -4,65 +4,65 @@
 	color = null
 	rad_insulation = RAD_INSULATION_SUPER
 
-	material        = /datum/material/plasteel
-	reinf_material  = /datum/material/plasteel
+	material        = /datum/material/solid/metal/plasteel
+	reinf_material  = /datum/material/solid/metal/plasteel
 	girder_material = null
 
 /turf/simulated/wall/shull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#666677"
-	material        = /datum/material/steel/hull
+	material        = /datum/material/solid/metal/steel/hull
 	reinf_material  = null
-	girder_material = /datum/material/steel/hull
+	girder_material = /datum/material/solid/metal/steel/hull
 
 /turf/simulated/wall/rshull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#666677"
-	material        = /datum/material/steel/hull
-	reinf_material  = /datum/material/steel/hull
-	girder_material = /datum/material/steel/hull
+	material        = /datum/material/solid/metal/steel/hull
+	reinf_material  = /datum/material/solid/metal/steel/hull
+	girder_material = /datum/material/solid/metal/steel/hull
 
 /turf/simulated/wall/pshull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#777788"
-	material        = /datum/material/plasteel/hull
+	material        = /datum/material/solid/metal/plasteel/hull
 	reinf_material  = null
-	girder_material = /datum/material/plasteel/hull
+	girder_material = /datum/material/solid/metal/plasteel/hull
 
 /turf/simulated/wall/rpshull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#777788"
-	material        = /datum/material/plasteel/hull
-	reinf_material  = /datum/material/plasteel/hull
-	girder_material = /datum/material/plasteel/hull
+	material        = /datum/material/solid/metal/plasteel/hull
+	reinf_material  = /datum/material/solid/metal/plasteel/hull
+	girder_material = /datum/material/solid/metal/plasteel/hull
 
 /turf/simulated/wall/dshull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#45829a"
-	material        = /datum/material/durasteel/hull
+	material        = /datum/material/solid/metal/durasteel/hull
 	reinf_material  = null
-	girder_material = /datum/material/durasteel/hull
+	girder_material = /datum/material/solid/metal/durasteel/hull
 
 /turf/simulated/wall/rdshull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#45829a"
-	material        = /datum/material/durasteel/hull
-	reinf_material  = /datum/material/durasteel/hull
-	girder_material = /datum/material/durasteel/hull
+	material        = /datum/material/solid/metal/durasteel/hull
+	reinf_material  = /datum/material/solid/metal/durasteel/hull
+	girder_material = /datum/material/solid/metal/durasteel/hull
 
 /turf/simulated/wall/thull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#D1E6E3"
-	material        = /datum/material/plasteel/titanium/hull
+	material        = /datum/material/solid/metal/plasteel/titanium/hull
 	reinf_material  = null
-	girder_material = /datum/material/plasteel/titanium/hull
+	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
 
 /turf/simulated/wall/rthull
 	icon = 'icons/turf/walls/hull.dmi'
 	color = "#D1E6E3"
-	material        = /datum/material/plasteel/titanium/hull
-	reinf_material  = /datum/material/plasteel/titanium/hull
-	girder_material = /datum/material/plasteel/titanium/hull
+	material        = /datum/material/solid/metal/plasteel/titanium/hull
+	reinf_material  = /datum/material/solid/metal/plasteel/titanium/hull
+	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
 
 
 /turf/simulated/wall/cult
@@ -85,7 +85,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#5C5454"
 
-	material        = /datum/material/iron
+	material        = /datum/material/solid/metal/iron
 	reinf_material  = null
 	girder_material = null
 
@@ -93,7 +93,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#007A00"
 
-	material        = /datum/material/uranium
+	material        = /datum/material/solid/metal/uranium
 	reinf_material  = null
 	girder_material = null
 
@@ -101,7 +101,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#00FFE1"
 
-	material        = /datum/material/diamond
+	material        = /datum/material/solid/gemstone/diamond
 	reinf_material  = null
 	girder_material = null
 
@@ -109,7 +109,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#EDD12F"
 
-	material        = /datum/material/gold
+	material        = /datum/material/solid/metal/gold
 	reinf_material  = null
 	girder_material = null
 
@@ -117,7 +117,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#D1E6E3"
 
-	material        = /datum/material/silver
+	material        = /datum/material/solid/metal/silver
 	reinf_material  = null
 	girder_material = null
 
@@ -125,7 +125,7 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#273956"
 
-	material        = /datum/material/lead
+	material        = /datum/material/solid/metal/lead
 	reinf_material  = null
 	girder_material = null
 
@@ -133,15 +133,15 @@
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#273956"
 
-	material        = /datum/material/lead
-	reinf_material  = /datum/material/lead
+	material        = /datum/material/solid/metal/lead
+	reinf_material  = /datum/material/solid/metal/lead
 	girder_material = null
 
 /turf/simulated/wall/phoron
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#FC2BC5"
 
-	material        = /datum/material/phoron
+	material        = /datum/material/solid/exotic/phoron
 	reinf_material  = null
 	girder_material = null
 
@@ -149,7 +149,7 @@
 	icon = 'icons/turf/walls/stone.dmi'
 	color = "#D9C179"
 
-	material        = /datum/material/sandstone
+	material        = /datum/material/solid/stone/sandstone
 	reinf_material  = null
 	girder_material = null
 
@@ -157,40 +157,40 @@
 	icon = 'icons/turf/walls/stone.dmi'
 	color = "#e6dfc8"
 
-	material        = /datum/material/bone
+	material        = /datum/material/solid/organic/bone
 	reinf_material  = null
-	girder_material = /datum/material/bone
+	girder_material = /datum/material/solid/organic/bone
 
 /turf/simulated/wall/ironphoron
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#5C5454"
 
-	material        = /datum/material/iron
-	reinf_material  = /datum/material/phoron
+	material        = /datum/material/solid/metal/iron
+	reinf_material  = /datum/material/solid/exotic/phoron
 	girder_material = null
 
 /turf/simulated/wall/golddiamond
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#EDD12F"
 
-	material        = /datum/material/gold
-	reinf_material  = /datum/material/diamond
+	material        = /datum/material/solid/metal/gold
+	reinf_material  = /datum/material/solid/gemstone/diamond
 	girder_material = null
 
 /turf/simulated/wall/silvergold
 	icon = 'icons/turf/walls/metal.dmi'
 	color = "#D1E6E3"
 
-	material        = /datum/material/silver
-	reinf_material  = /datum/material/gold
+	material        = /datum/material/solid/metal/silver
+	reinf_material  = /datum/material/solid/metal/gold
 	girder_material = null
 
 /turf/simulated/wall/sandstonediamond
 	icon = 'icons/turf/walls/stone.dmi'
 	color = "#D9C179"
 
-	material        = /datum/material/sandstone
-	reinf_material  = /datum/material/diamond
+	material        = /datum/material/solid/stone/sandstone
+	reinf_material  = /datum/material/solid/gemstone/diamond
 	girder_material = null
 
 /turf/simulated/wall/snowbrick
@@ -205,9 +205,9 @@
 	icon = 'icons/turf/walls/resin.dmi'
 	color = "#261438"
 
-	material        = /datum/material/resin
+	material        = /datum/material/solid/organic/resin
 	reinf_material  = null
-	girder_material = /datum/material/resin
+	girder_material = /datum/material/solid/organic/resin
 
 // Kind of wondering if this is going to bite me in the butt.
 /turf/simulated/wall/skipjack
@@ -219,20 +219,20 @@
 	return
 
 /turf/simulated/wall/titanium
-	material        = /datum/material/plasteel/titanium
+	material        = /datum/material/solid/metal/plasteel/titanium
 	reinf_material  = null
 	girder_material = null
 
 /turf/simulated/wall/durasteel
-	material        = /datum/material/durasteel
-	reinf_material  = /datum/material/durasteel
+	material        = /datum/material/solid/metal/durasteel
+	reinf_material  = /datum/material/solid/metal/durasteel
 	girder_material = null
 
 /turf/simulated/wall/wood
 	icon = 'icons/turf/walls/wood.dmi'
 	color = "#9c5930"
 
-	material        = /datum/material/wood
+	material        = /datum/material/organic/wood
 	reinf_material  = null
 	girder_material = null
 
@@ -240,7 +240,7 @@
 	icon = 'icons/turf/walls/wood.dmi'
 	color = "#0099cc"
 
-	material        = /datum/material/wood/sif
+	material        = /datum/material/organic/wood/sif
 	reinf_material  = null
 	girder_material = null
 
@@ -248,7 +248,7 @@
 	icon = 'icons/turf/walls/wood.dmi'
 	color = "#42291a"
 
-	material        = /datum/material/wood/hardwood
+	material        = /datum/material/organic/wood/hardwood
 	reinf_material  = null
 	girder_material = null
 
@@ -256,7 +256,7 @@
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#9c5930"
 
-	material        = /datum/material/wood/log
+	material        = /datum/material/organic/wood/log
 	reinf_material  = null
 	girder_material = null
 
@@ -264,7 +264,7 @@
 	icon = 'icons/turf/walls/log.dmi'
 	color = "#0099cc"
 
-	material        = /datum/material/wood/log/sif
+	material        = /datum/material/organic/wood/log/sif
 	reinf_material  = null
 	girder_material = null
 

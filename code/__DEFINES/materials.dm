@@ -1,0 +1,5 @@
+#define ORE_SURFACE     "surface minerals"
+#define ORE_PRECIOUS    "precious metals"
+#define ORE_NUCLEAR     "nuclear fuel"
+#define ORE_EXOTIC      "exotic matter"
+#define ORE_ANOMALOUS   "anomalous matter"

@@ -56,8 +56,8 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 
 // Reinforced hull steel
 /turf/simulated/wall/fancy_shuttle
-	material       = /datum/material/steel/hull
-	reinf_material = /datum/material/steel/hull
+	material       = /datum/material/solid/metal/steel/hull
+	reinf_material = /datum/material/solid/metal/steel/hull
 
 /turf/simulated/wall/fancy_shuttle/window
 	opacity = FALSE

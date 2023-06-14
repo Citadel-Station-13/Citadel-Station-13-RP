@@ -39,17 +39,17 @@ GLOBAL_LIST_EMPTY(sortedAreas)
 GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 
 GLOBAL_LIST_INIT(ore_types, list(
-		MAT_HEMATITE = /obj/item/ore/iron,
-		MAT_URANIUM = /obj/item/ore/uranium,
-		MAT_GOLD = /obj/item/ore/gold,
-		MAT_SILVER = /obj/item/ore/silver,
-		MAT_DIAMOND = /obj/item/ore/diamond,
-		MAT_PHORON = /obj/item/ore/phoron,
-		MAT_OSMIUM = /obj/item/ore/osmium,
-		"hydrogen" = /obj/item/ore/hydrogen,
-		"silicates" = /obj/item/ore/glass,
-		MAT_CARBON = /obj/item/ore/coal,
-		MAT_VERDANTIUM = /obj/item/ore/verdantium,
-		MAT_MARBLE = /obj/item/ore/marble,
-		MAT_LEAD = /obj/item/ore/lead
+		/datum/material/solid/metal/iron = /obj/item/ore/iron,
+		/datum/material/solid/metal/uranium = /obj/item/ore/uranium,
+		/datum/material/solid/metal/gold = /obj/item/ore/gold,
+		/datum/material/solid/metal/silver = /obj/item/ore/silver,
+		/datum/material/solid/gemstone/diamond = /obj/item/ore/diamond,
+		/datum/material/solid/exotic/phoron = /obj/item/ore/phoron,
+		/datum/material/solid/metal/osmium = /obj/item/ore/osmium,
+		/datum/material/solid/nuclear/mhydrogen = /obj/item/ore/hydrogen,
+		/datum/material/solid/sand = /obj/item/ore/glass,
+		/datum/material/solid/organic/carbon = /obj/item/ore/coal,
+		/datum/material/solid/exotic/verdantium = /obj/item/ore/verdantium,
+		/datum/material/solid/stone/sandstone/marble = /obj/item/ore/marble,
+		/datum/material/solid/metal/lead = /obj/item/ore/lead
 	))

@@ -4,6 +4,32 @@
 	var/rare_val = 0.7              // Threshold for rare metal, set in new as percentage of cell_range.
 	var/chunk_size = 4              // Size each cell represents on map
 
+	var/list/surface_metals = list(
+		/datum/material/solid/metal/iron =              list(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX),
+		/datum/material/solid/metal/copper =            list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/metal/gold =              list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX),
+		/datum/material/solid/metal/silver =            list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX),
+		/datum/material/solid/metal/uranium =           list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+	)
+	var/list/rare_metals = list(
+		/datum/material/solid/metal/gold =              list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/metal/silver =            list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/metal/uranium =           list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/metal/osmium =            list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/exotic/phoron =           list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+	)
+	var/list/deep_metals = list(
+		/datum/material/solid/metal/uranium =           list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX),
+		/datum/material/solid/gemstone/diamond =        list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX),
+		/datum/material/solid/metal/osmium =            list(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX),
+		/datum/material/solid/nuclear/mhydrogen =       list(RESOURCE_MID_MIN,  RESOURCE_MID_MAX),
+		/datum/material/solid/exotic/verdantium =       list(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
+	)
+	var/list/common_resources = list(
+		/datum/material/solid/sand =   list(3,5),
+		/datum/material/solid/organic/carbon = list(3,5)
+	)
+
 /datum/random_map/noise/ore/New()
 	rare_val = cell_range * rare_val
 	deep_val = cell_range * deep_val
@@ -48,50 +74,26 @@
 				continue
 			if(!priority_process)
 				sleep(-1)
-			T.resources = list()
-			T.resources["silicates"] = rand(3,5)
-			T.resources["carbon"] = rand(3,5)
+			var/datum/component/mineral_resources/resources = T.AddComponent(/datum/component/mineral_resources)
+			LAZYINITLIST(resources.resources)
 
-			var/current_cell = map[get_map_cell(x,y)]
-			if(current_cell < rare_val)      // Surface metals.
-				T.resources["hematite"] = rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
-				T.resources["gold"] =     rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["silver"] =   rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["copper"] =   rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["marble"] =   rand(RESOURCE_LOW_MIN, RESOURCE_MID_MAX)
-				T.resources["diamond"] =  0
-				T.resources["phoron"] =   0
-				T.resources["osmium"] =   0
-				T.resources["hydrogen"] = 0
-				T.resources["verdantium"] = 0
-				T.resources["lead"]     = 0
-			else if(current_cell < deep_val) // Rare metals.
-				T.resources["gold"] =     rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["silver"] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["copper"] =   rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["uranium"] =  rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["phoron"] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["osmium"] =   rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["verdantium"] = rand(RESOURCE_LOW_MIN, RESOURCE_LOW_MAX)
-				T.resources["lead"] =     rand(RESOURCE_LOW_MIN, RESOURCE_MID_MAX)
-				T.resources["hydrogen"] = 0
-				T.resources["diamond"] =  0
-				T.resources["hematite"] = 0
-				T.resources["marble"] =   0
-			else                             // Deep metals.
-				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["diamond"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
-				T.resources["verdantium"] = rand(RESOURCE_LOW_MIN, RESOURCE_MID_MAX)
-				T.resources["phoron"] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
-				T.resources["osmium"] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
-				T.resources["hydrogen"] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
-				T.resources["marble"] =   rand(RESOURCE_MID_MIN, RESOURCE_HIGH_MAX)
-				T.resources["lead"] =     rand(RESOURCE_LOW_MIN, RESOURCE_HIGH_MAX)
-				T.resources["hematite"] = 0
-				T.resources["gold"] =     0
-				T.resources["silver"] =   0
-				T.resources["copper"] =   0
+			for(var/val in common_resources)
+				var/list/ranges = common_resources[val]
+				resources.resources[val] = rand(ranges[1], ranges[2])
+
+			var/tmp_cell
+			var/spawning
+			if(tmp_cell < rare_val)
+				spawning = surface_metals
+			else if(tmp_cell < deep_val)
+				spawning = rare_metals
+			else
+				spawning = deep_metals
+
+			for(var/val in spawning)
+				var/list/ranges = spawning[val]
+				resources.resources[val] = rand(ranges[1], ranges[2])
+
 	return
 
 /datum/random_map/noise/ore/get_map_char(var/value)

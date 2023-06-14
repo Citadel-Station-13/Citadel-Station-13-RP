@@ -212,7 +212,7 @@
 				return	(max_amount-total_amount)
 
 
-/// For consuming a dictionary of materials. mats is the map of materials to use and the corresponding amounts, example: list(M/datum/material/glass =100, datum/material/iron=200)
+/// For consuming a dictionary of materials. mats is the map of materials to use and the corresponding amounts, example: list(M/datum/material/solid/glass =100, datum/material/iron=200)
 /datum/component/material_container/proc/use_materials(list/mats, multiplier=1)
 	if(!mats || !length(mats))
 		return FALSE

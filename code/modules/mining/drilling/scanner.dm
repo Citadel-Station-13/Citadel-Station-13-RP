@@ -46,28 +46,30 @@
 		if(!T.has_resources)
 			continue
 
-		for(var/metal in T.resources)
+		var/datum/component/mineral_resources/mat_res = T.GetComponent(/datum/component/mineral_resources)
+		for(var/metal in mat_res.resources)
 			var/ore_type
+			var/datum/material/material = SSmaterials.get_material(metal)
 
 			if(!exact_ores)
-				switch(metal)
-					if("silicates", "carbon", "hematite", "marble")
+				switch(material.ore_type_value)
+					if(ORE_SURFACE)
 						ore_type = "surface minerals"
-					if("gold", "silver", "diamond", "lead", "copper")
+					if(ORE_PRECIOUS)
 						ore_type = "precious metals"
-					if("uranium")
+					if(ORE_NUCLEAR)
 						ore_type = "nuclear fuel"
-					if("phoron", "osmium", "hydrogen")
+					if(ORE_EXOTIC)
 						ore_type = "exotic matter"
-					if("verdantium")
+					if(ORE_ANOMALOUS)
 						ore_type = "anomalous matter"
 			else
-				ore_type = metal
+				ore_type = material.name
 			if(ore_type)
 				if(metals[ore_type])
-					metals[ore_type] += T.resources[metal]
+					metals[ore_type] += mat_res.resources[metal]
 				else
-					metals[ore_type] = T.resources[metal]
+					metals[ore_type] = mat_res.resources[metal]
 
 	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()

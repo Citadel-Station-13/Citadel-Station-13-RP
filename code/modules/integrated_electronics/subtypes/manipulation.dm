@@ -495,17 +495,17 @@
 	ext_cooldown = 1
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
-		/datum/material/iron,
-		/datum/material/glass,
-		/datum/material/silver,
-		/datum/material/gold,
-		/datum/material/diamond,
-		/datum/material/uranium,
+		/datum/material/solid/metal/iron,
+		/datum/material/solid/glass,
+		/datum/material/solid/metal/silver,
+		/datum/material/solid/metal/gold,
+		/datum/material/solid/gemstone/diamond,
+		/datum/material/solid/metal/uranium,
 		/datum/material/plasma,
 		/datum/material/bluespace,
-		/datum/material/bananium,
+		/datum/material/solid/metal/bananium,
 		/datum/material/titanium,
-		/datum/material/plastic
+		/datum/material/solid/organic/plastic
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()

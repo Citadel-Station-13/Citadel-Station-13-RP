@@ -90,7 +90,7 @@
 	return material
 
 /turf/simulated/wall/proc/get_default_material()
-	. = /datum/material/steel
+	. = /datum/material/solid/metal/steel
 
 /turf/simulated/wall/bullet_act(var/obj/projectile/Proj)
 	if(istype(Proj,/obj/projectile/beam))

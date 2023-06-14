@@ -86,17 +86,18 @@
 	//Dig out the tasty ores.
 	if(resource_field.len)
 		var/turf/simulated/harvesting = pick(resource_field)
+		var/datum/component/mineral_resources/resources = harvesting.GetComponent(/datum/component/mineral_resources)
 
-		while(resource_field.len && !harvesting.resources)
+		while(resource_field.len && !resources.resources)
 			harvesting.has_resources = 0
-			harvesting.resources = null
-			resource_field -= harvesting
+			resources.resources = null
+			resource_field -= resources
 			if(resource_field.len) // runtime protection
-				harvesting = pick(resource_field)
+				resources = pick(resource_field)
 			else
-				harvesting = null
+				resources = null
 
-		if(!harvesting) return
+		if(!resources) return
 
 		var/total_harvest = harvest_speed //Ore harvest-per-tick.
 		var/found_resource = 0 //If this doesn't get set, the area is depleted and the drill errors out.
@@ -115,19 +116,19 @@
 
 			if(total_harvest <= 0)
 				break
-			if(harvesting.resources[metal])
+			if(resources.resources[metal])
 
 				found_resource  = 1
 
 				var/create_ore = 0
-				if(harvesting.resources[metal] >= total_harvest)
-					harvesting.resources[metal] -= total_harvest
+				if(resources.resources[metal] >= total_harvest)
+					resources.resources[metal] -= total_harvest
 					create_ore = total_harvest
 					total_harvest = 0
 				else
-					total_harvest -= harvesting.resources[metal]
-					create_ore = harvesting.resources[metal]
-					harvesting.resources[metal] = 0
+					total_harvest -= resources.resources[metal]
+					create_ore = resources.resources[metal]
+					resources.resources[metal] = 0
 
 				for(var/i=1, i <= create_ore, i++)
 					var/oretype = GLOB.ore_types[metal]
@@ -135,8 +136,8 @@
 
 		if(!found_resource)	// If a drill can't see an advanced material, it will destroy it while going through.
 			harvesting.has_resources = 0
-			harvesting.resources = null
-			resource_field -= harvesting
+			resources.resources = null
+			resource_field -= resources
 	else
 		active = 0
 		need_player_check = 1
