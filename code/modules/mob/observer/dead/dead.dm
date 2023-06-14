@@ -857,7 +857,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
 
 	if(client.persistent.ligma)
-		sleep(60)
+		sleep(rand(40,120))
 		to_chat(src, SPAN_WARNING("[H] denied your request."))
 		log_shadowban("[key_name(src)] SC join blocked.")
 		return
