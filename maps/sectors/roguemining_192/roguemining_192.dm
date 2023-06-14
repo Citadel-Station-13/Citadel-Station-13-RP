@@ -6,6 +6,7 @@
  * i think (?)
  */
 /datum/map/sector/roguemining_192
+	abstract_type = /datum/map/sector/roguemining_192
 	width = 192
 	height = 192
 

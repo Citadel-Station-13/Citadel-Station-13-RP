@@ -33,7 +33,7 @@
 		if(initial(path.abstract_type) == path)
 			continue
 		var/id = initial(path.id)
-		if(id)
+		if(isnull(id))
 			continue
 		if(skipping[id])
 			continue

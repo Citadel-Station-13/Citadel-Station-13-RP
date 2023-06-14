@@ -103,7 +103,8 @@
 /datum/map/proc/prime()
 	for(var/i in 1 to length(levels))
 		if(ispath(levels[i]))
-			levels[i] = new levels[i]
+			var/datum/map_level/level_path = levels[i]
+			levels[i] = new level_path
 
 /**
  * primary station map

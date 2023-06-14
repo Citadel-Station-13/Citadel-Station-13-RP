@@ -28,4 +28,6 @@
 		. = reusable_levels[1]
 		reusable_levels.Cut(1, 2)
 	else
+		ASSERT(ordered_levels.len == world.maxz)
+		ordered_levels.len++
 		. = world.increment_max_z()

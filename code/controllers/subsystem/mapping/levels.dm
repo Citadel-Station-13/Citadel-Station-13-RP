@@ -11,6 +11,10 @@
 	/// literally just a random hexadecimal store to prevent collision
 	var/static/list/random_fluff_level_hashes = list()
 
+/datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
+	. = ..()
+	// synchronize datastructures *except* for ordered_levels; allocate_z_index should be doing that.
+
 /**
  * allocates a new map level using the given datum.
  *
