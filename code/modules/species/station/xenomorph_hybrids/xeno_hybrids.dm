@@ -122,37 +122,31 @@
 	//Heal_amount is 0.5, with all bonies above 1.188
 
 	var/heal_amount = heal_rate * healing_factor
-
+	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)
 	H.adjustFireLoss(-heal_amount)
-
+	nutrition_debt += (H.getBruteLoss() ? heal_rate : 0)
 	H.adjustBruteLoss(-heal_amount)
-
+	nutrition_debt += (H.getToxLoss() ? heal_rate : 0)
 	H.adjustToxLoss(-heal_amount)
 
 	if(heal_amount <= 0.6)
+		H.nutrition -= nutrition_debt
 		return //If we do more than normally resting we can repair more difficult stuff
 
 	for(var/obj/item/organ/external/E in H.bad_external_organs)
 		E.bandage()
+		nutrition_debt += 2 //Costly but not overly expansive, certainly better than bleeding out
 
 	if (H.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
 		for(var/limb_type in src.has_limbs)
 			var/obj/item/organ/external/E = H.organs_by_name[limb_type]
 			if((E.status & ORGAN_BROKEN))
 				E.status &= ~ORGAN_BROKEN
+				nutrition_debt += 20 //Really expansive (Might make it a plasma/phoron cost instead)
 				break // Heal one broken bone per processing
+	H.nutrition -= nutrition_debt
 
-	if(heal_amount >= 1)//This cures even IB(its essentially Myelamine)
-		var/wound_heal = heal_amount / 10
-		for(var/obj/item/organ/external/O in H.bad_external_organs)
-			for(var/datum/wound/W as anything in O.wounds)
-				if(W.bleeding())
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.cure_exact_wound(W)
-						continue
-				if(W.internal)
-					W.damage = max(W.damage - wound_heal, 0)
-					if(W.damage <= 0)
-						O.cure_exact_wound(W)
-						continue
+	if(H.vessel.get_reagent_amount("blood") <= blood_level_safe)
+		H.vessel.add_reagent("blood", heal_amount)//instead of IB healing, they regenerate blood a lot faster
+		H.nutrition = max(H.nutrition - (heal_amount * 4), 0)//This actually costs nutrition
+
