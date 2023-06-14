@@ -45,7 +45,7 @@
 	var/datum/map_level/loaded = SSmapping.allocate_level(creating)
 	map_z += loaded.z_index
 
-	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
+	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), loaded.z_index)
 	landmark.forceMove(center_loc)
 
 	var/visitor_dir = fore_dir

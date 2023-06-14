@@ -230,7 +230,7 @@
 	var/list/unit_test_exempt_from_apc = list()
 	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
 
-	var/list/empty_levels = list()
+	var/list/empty_levels
 
 /datum/map/station/New()
 	..()
@@ -285,12 +285,12 @@
 
 /datum/map/station/proc/get_empty_zlevel()
 	if(empty_levels == null)
-		var/allocated = SSmapping.allocate_level()
-		empty_levels = list(allocated)
+		var/datum/map_level/level = SSmapping.allocate_level()
+		empty_levels = list(level.z_index)
 		if(islist(player_levels))
-			player_levels |= allocated
+			player_levels |= level.z_index
 		else
-			player_levels = list(allocated)
+			player_levels = list(level.z_index)
 	return pick(empty_levels)
 
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
