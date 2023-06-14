@@ -536,7 +536,7 @@ var/global/list/default_infomorph_software = list()
 			card.setEmotion(img)
 		return 1
 
-/mob/living/silicon/infomorph/examine(mob/user)
+/mob/living/silicon/infomorph/examine(mob/user, dist)
 	. = ..()
 	switch(src.stat)
 		if(CONSCIOUS)

@@ -56,7 +56,7 @@
 		to_chat(usr, "This helmet does not have a built-in camera.")
 		return
 
-/obj/item/clothing/head/helmet/space/examine(mob/user)
+/obj/item/clothing/head/helmet/space/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "This helmet has a built-in camera. It's [camera ? "" : "in"]active."

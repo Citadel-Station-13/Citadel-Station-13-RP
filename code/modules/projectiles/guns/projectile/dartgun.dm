@@ -100,7 +100,7 @@
 	if(istype(dart))
 		fill_dart(dart)
 
-/obj/item/gun/ballistic/dartgun/examine(mob/user)
+/obj/item/gun/ballistic/dartgun/examine(mob/user, dist)
 	//update_icon()
 	//if (!..(user, 2))
 	//	return

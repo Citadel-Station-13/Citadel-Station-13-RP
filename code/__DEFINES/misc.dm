@@ -90,6 +90,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHELTER_DEPLOY_BAD_AREA			"bad area"
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS	"anchored objects"
 
+#define MAX_SCRIBBLE_LEN		512
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 /// I'm not sure about "easily". It can be a lot longer.
 #define MAX_MESSAGE_LEN			4096
