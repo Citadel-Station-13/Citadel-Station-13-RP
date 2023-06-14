@@ -48,6 +48,8 @@
 	var/air_indoors = GAS_STRING_STP
 	/// gas string / atmosphere path / atmosphere id for outdoors air
 	var/air_outdoors = GAS_STRING_VACUUM
+	/// load orientation - overridden if loaded as part of a /datum/map
+	var/orientation = SOUTH
 
 	//* LEGACY BELOW *//
 
@@ -107,6 +109,7 @@
 	.["link_below"] = link_below
 	.["air_indoors"] = air_indoors
 	.["air_outdoors"] = air_outdoors
+	.["orientation"] = orientation
 
 /datum/map_level/deserialize(list/data)
 	if(loaded)
@@ -153,6 +156,8 @@
 		air_indoors = data["air_indoors"]
 	if(!isnull(data["air_outdoors"]))
 		air_outdoors = data["air_outdoors"]
+	if(!isnull(data["orientation"]))
+		orientation = data["orientation"]
 
 /**
  * get .dmm path

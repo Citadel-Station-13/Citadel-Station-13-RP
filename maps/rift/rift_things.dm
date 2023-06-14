@@ -2,10 +2,10 @@
 // Todo, find a way to populate this list automatically without having to do this
 /obj/effect/overmap/visitable/sector/lythios43c
 	extra_z_levels = list(
-		Z_LEVEL_WEST_PLAIN,
-		Z_LEVEL_WEST_CAVERN,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_BASE
+		/datum/map_level/rift/plains,
+		/datum/map_level/rift/caves,
+		/datum/map_level/rift/deep,
+		/datum/map_level/rift/base,
 	)
 
 /// This is the effect that slams people into the ground upon dropping out of the sky //

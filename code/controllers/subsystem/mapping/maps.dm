@@ -92,7 +92,7 @@
 	subsystem_log("Loading map [instance] ([instance.id]) with [length(instance.levels)] levels...")
 
 	for(var/datum/map_level/level as anything in instance.levels)
-		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks)
+		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation)
 		loaded_levels += level
 
 	var/list/datum/map/recursing = list()

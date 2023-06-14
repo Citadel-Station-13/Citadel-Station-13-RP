@@ -89,7 +89,15 @@
 	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
 		map_z = GetConnectedZlevels(z)
 	if(LAZYLEN(extra_z_levels))
-		map_z |= extra_z_levels
+		for(var/thing in extra_z_levels)
+			if(ispath(thing))
+				var/datum/map_level/level_path = thing
+				thing = initial(level_path.id)
+			var/datum/map_level/level = SSmapping.keyed_levels[thing]
+			if(isnull(level))
+				STACK_TRACE("failed to find level [thing] during init")
+				continue
+			map_z |= level.z_index
 
 /obj/effect/overmap/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
