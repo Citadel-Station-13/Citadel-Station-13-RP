@@ -55,6 +55,7 @@
 	abilities = list(
 		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_agility,
+		/datum/ability/species/xenomorph_hybrid/regenerate,
 	)
 	total_health = 110	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
@@ -103,36 +104,45 @@
 	return TRUE	//they dont quite breathe
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
-	var/heal_amount = min(H.nutrition, 200) / 50 //Not to much else we might as well give them a diona like healing
-	H.nutrition = max(H.nutrition-heal_amount,0)
 
-	if(H.resting)
-		heal_amount *= 1.05//resting allows you to heal a little faster
-	var/fire_damage = H.getFireLoss()
-	if(fire_damage >= heal_amount)
-		H.adjustFireLoss(-heal_amount)
-		heal_amount = 0;
-		return
-	if(fire_damage < heal_amount)
-		H.adjustFireLoss(-heal_amount)
-		heal_amount -= fire_damage
+	if(H.active_regen)
+		if(!H.lying)
+			H.active_regen = FALSE
+			return
+		var/heal_amount = H.nutrition / 50
+		H.nutrition = max(H.nutrition-heal_amount,0)
 
-	var/trauma_damage = H.getBruteLoss()
-	if(trauma_damage >= heal_amount)
-		H.adjustBruteLoss(-heal_amount)
-		heal_amount = 0;
-		return
-	if(trauma_damage < heal_amount)
-		H.adjustBruteLoss(-heal_amount)
-		heal_amount -= trauma_damage
+		var/turf/T = get_turf(H)
+		for (var/thing in T.contents)
+			if(istype(thing, /obj/effect/alien/weeds))
+				heal_amount *= 1.1
+			if(istype(thing, /obj/structure/bed/nest) || istype(thing, /obj/structure/bed/hybrid_nest))
+				heal_amount *= 1.2
+		var/fire_damage = H.getFireLoss()
+		if(fire_damage >= heal_amount)
+			H.adjustFireLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(fire_damage < heal_amount)
+			H.adjustFireLoss(-heal_amount)
+			heal_amount -= fire_damage
 
-	var/posion_damage = H.getToxLoss()
-	if(posion_damage >= heal_amount)
-		H.adjustToxLoss(-heal_amount)
-		heal_amount = 0;
-		return
-	if(posion_damage < heal_amount)
-		H.adjustToxLoss(-heal_amount)
-		heal_amount -= posion_damage
+		var/trauma_damage = H.getBruteLoss()
+		if(trauma_damage >= heal_amount)
+			H.adjustBruteLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(trauma_damage < heal_amount)
+			H.adjustBruteLoss(-heal_amount)
+			heal_amount -= trauma_damage
 
-	H.nutrition += heal_amount
+		var/posion_damage = H.getToxLoss()
+		if(posion_damage >= heal_amount)
+			H.adjustToxLoss(-heal_amount)
+			heal_amount = 0;
+			return
+		if(posion_damage < heal_amount)
+			H.adjustToxLoss(-heal_amount)
+			heal_amount -= posion_damage
+
+		H.nutrition += heal_amount

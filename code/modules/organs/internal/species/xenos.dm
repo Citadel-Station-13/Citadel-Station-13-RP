@@ -154,3 +154,8 @@
 		var/mob/living/carbon/human/H = owner
 		if(H.species.blood_color)
 			add_atom_colour(H.species.blood_color, FIXED_COLOUR_PRIORITY)
+
+/obj/item/organ/internal/heart/xenomorph
+	name = "xenomorph heart"
+
+
