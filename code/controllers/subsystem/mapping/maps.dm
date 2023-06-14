@@ -56,7 +56,8 @@
 	if(next.modified)
 		json["data"] = next.serialize()
 	var/writing = file(json_path)
-	WRITE_FILE(writing, json_encode(json))
+	var/raw = safe_json_encode(json)
+	WRITE_FILE(writing, raw)
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
 	var/json_path = "data/next_map.json"
@@ -64,7 +65,7 @@
 		return
 	var/reading = file(json_path)
 	var/raw = file2text(reading)
-	var/list/json = json_decode(raw)
+	var/list/json = safe_json_decode(raw)
 	var/path = json["type"]
 	var/list/data = json["data"]
 	var/datum/map/station/wanted = new path
