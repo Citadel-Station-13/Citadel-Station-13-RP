@@ -938,5 +938,5 @@
 //misc
 /obj/item/clothing/accessory/civ_exos_mob
 	name = "medical exoframe"
-	desc = "A cheap medical exoframe mass-produced by NanoTransen and provided to employees who cannot function in gravity without assistance."
+	desc = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance."
 	icon_state = "civ_exos_mob"
