@@ -106,8 +106,8 @@
 			T.ChangeTurf(border_type, border_type)
 		else if(T.type != turf_type)
 			T.ChangeTurf(turf_type, turf_type)
-		if(T.loc != area_instance)
-			area_instance.contents.Add(T)
+	// todo: area.assimilate_turfs?
+	area_instance.contents.Add(final)
 	src.reserved_turfs = final.Copy()
 	src.bottom_left_coords = list(BL.x, BL.y, BL.z)
 	src.top_right_coords = list(TR.x, TR.y, TR.z)

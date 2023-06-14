@@ -25,12 +25,13 @@ GLOBAL_PROTECT(href_token)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	admin_datums[ckey] = src
 	if(rights & R_DEBUG) //grant profile access
 		world.SetConfig("APP/admin", ckey, "role=admin")
+
+	admincaster_signature = "[(LEGACY_MAP_DATUM).company_name] Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))

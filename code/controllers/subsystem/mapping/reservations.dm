@@ -66,8 +66,9 @@
 	for(var/turf/T as anything in turfs)
 		T.empty(RESERVED_TURF_TYPE, RESERVED_TURF_TYPE)
 		T.turf_flags |= UNUSED_RESERVATION_TURF
-		unallocated_reserve_area.contents.Add(T)
 		CHECK_TICK
+	// todo: area.assimilate_turfs?
+	unallocated_reserve_area.contents.Add(turfs)
 
 /area/unused_reservation_area
 	name = "Unused Reservation Area"
