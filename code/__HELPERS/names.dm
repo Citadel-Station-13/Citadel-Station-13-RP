@@ -41,7 +41,7 @@ var/religion_name = null
 	return (LEGACY_MAP_DATUM).starsys_name
 
 /proc/station_name()
-	if ((LEGACY_MAP_DATUM).station_name)
+	if ((LEGACY_MAP_DATUM)?.station_name)
 		return (LEGACY_MAP_DATUM).station_name
 
 	var/random = rand(1,5)
