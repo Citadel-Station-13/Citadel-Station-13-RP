@@ -64,7 +64,7 @@
 		return 1
 
 	//Where can we hear?
-	var/list/listening_levels = LEGACY_MAP_DATUM.get_map_levels(listening_level, TRUE, overmap_range)
+	var/list/listening_levels = (LEGACY_MAP_DATUM).get_map_levels(listening_level, TRUE, overmap_range)
 
 	// We couldn't 'hear' it, maybe a relay linked to our hub can 'hear' it
 	if(!(signal.data["level"] in listening_levels))

@@ -63,7 +63,7 @@
 /proc/message_centcom(text, mob/sender, iamessage)
 	var/msg = copytext_char(sanitize(text), 1, MAX_MESSAGE_LEN)
 	// GLOB.requests.message_centcom(sender.client, msg)
-	msg = SPAN_ADMINNOTICE("<b><font color=orange>[uppertext(LEGACY_MAP_DATUM.boss_short)]M[iamessage ? " IA" : ""]:</font>[ADMIN_FULLMONTY(sender)] [ADMIN_CENTCOM_REPLY(sender)]:</b> [msg]")
+	msg = SPAN_ADMINNOTICE("<b><font color=orange>[uppertext((LEGACY_MAP_DATUM).boss_short)]M[iamessage ? " IA" : ""]:</font>[ADMIN_FULLMONTY(sender)] [ADMIN_CENTCOM_REPLY(sender)]:</b> [msg]")
 	// to_chat(GLOB.admins, msg, confidential = TRUE)
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN | R_MOD) & C.holder.rights)

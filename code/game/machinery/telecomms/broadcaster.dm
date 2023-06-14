@@ -58,7 +58,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary
 
-		signal.data["level"] |= LEGACY_MAP_DATUM.get_map_levels(listening_level, TRUE, overmap_range)
+		signal.data["level"] |= (LEGACY_MAP_DATUM).get_map_levels(listening_level, TRUE, overmap_range)
 
 		var/list/forced_radios
 		for(var/datum/weakref/wr in linked_radios_weakrefs)

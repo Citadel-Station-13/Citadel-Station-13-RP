@@ -6,7 +6,7 @@
 		var/list/turf/simulated/floor/turfs = get_area_turfs(typesof(/area/hallway)) //list of all the empty floor turfs in the hallway areas
 		for(var/i in turfs)
 			var/turf/T = i
-			if(!(T.z in LEGACY_MAP_DATUM.station_levels))
+			if(!(T.z in (LEGACY_MAP_DATUM).station_levels))
 				turfs -= T
 
 		if(turfs.len) //Pick a turf to spawn at if we can

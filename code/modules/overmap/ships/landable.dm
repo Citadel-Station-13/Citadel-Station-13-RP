@@ -40,7 +40,9 @@
 /obj/effect/overmap/visitable/ship/landable/proc/setup_overmap_location()
 	if(LAZYLEN(map_z))
 		return // We're already set up!
-	var/datum/map_level/loaded = SSmapping.allocate_level(new /datum/map_level/transit{name = "Transit - [src]";})
+	var/datum/map_level/transit/creating = new
+	creating.name = "Transit - [src]"
+	var/datum/map_level/loaded = SSmapping.allocate_level(creating)
 	map_z += loaded.z_index
 
 	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)

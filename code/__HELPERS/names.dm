@@ -16,12 +16,12 @@ var/church_name = null
 	return name
 
 /proc/command_name()
-	if(istype(LEGACY_MAP_DATUM))
-		return LEGACY_MAP_DATUM.boss_name
+	if(istype((LEGACY_MAP_DATUM)))
+		return (LEGACY_MAP_DATUM).boss_name
 
 /proc/change_command_name(var/name)
 
-	LEGACY_MAP_DATUM.boss_name = name
+	(LEGACY_MAP_DATUM).boss_name = name
 
 	return name
 
@@ -38,11 +38,11 @@ var/religion_name = null
 	return capitalize(name)
 
 /proc/system_name()
-	return LEGACY_MAP_DATUM.starsys_name
+	return (LEGACY_MAP_DATUM).starsys_name
 
 /proc/station_name()
-	if (LEGACY_MAP_DATUM.station_name)
-		return LEGACY_MAP_DATUM.station_name
+	if ((LEGACY_MAP_DATUM).station_name)
+		return (LEGACY_MAP_DATUM).station_name
 
 	var/random = rand(1,5)
 	var/name = ""
@@ -102,7 +102,7 @@ var/religion_name = null
 // Is this even used?
 /proc/world_name(var/name)
 
-	LEGACY_MAP_DATUM.station_name = name
+	(LEGACY_MAP_DATUM).station_name = name
 
 	if(config_legacy?.server_name)
 		world.name = "[config_legacy.server_name]: [name]"

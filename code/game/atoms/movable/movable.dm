@@ -219,10 +219,10 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in LEGACY_MAP_DATUM.sealed_levels)
+	if(z in (LEGACY_MAP_DATUM).sealed_levels)
 		return
 
-	if(LEGACY_MAP_DATUM.use_overmap)
+	if((LEGACY_MAP_DATUM).use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 

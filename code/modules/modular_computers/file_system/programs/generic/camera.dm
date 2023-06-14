@@ -2,7 +2,7 @@
 /proc/get_camera_access(var/network)
 	if(!network)
 		return 0
-	. = LEGACY_MAP_DATUM.get_network_access(network)
+	. = (LEGACY_MAP_DATUM).get_network_access(network)
 	if(.)
 		return
 
@@ -16,7 +16,7 @@
 		if(NETWORK_ERT)
 			return ACCESS_CENTCOM_ERT
 
-	if(network in LEGACY_MAP_DATUM.station_networks)
+	if(network in (LEGACY_MAP_DATUM).station_networks)
 		return ACCESS_SECURITY_EQUIPMENT // Default for all other station networks
 	else
 		return 999	//Inaccessible if not a station network and not mentioned above

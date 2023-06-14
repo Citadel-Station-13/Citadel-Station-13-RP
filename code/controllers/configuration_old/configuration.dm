@@ -708,16 +708,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					LEGACY_MAP_DATUM.station_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					LEGACY_MAP_DATUM.admin_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					LEGACY_MAP_DATUM.contact_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					LEGACY_MAP_DATUM.player_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))

@@ -37,7 +37,7 @@
 		holoMiniMaps[z] = generateHoloMinimap(z)
 
 	// Generate the area overlays, small maps, etc for the station levels.
-	for (var/z in LEGACY_MAP_DATUM.station_levels)
+	for (var/z in (LEGACY_MAP_DATUM).station_levels)
 		generateStationMinimap(z)
 
 	var/list/smoosh_levels = SSmapping.levels_by_trait(ZTRAIT_LEGACY_HOLOMAP_SMOOSH)

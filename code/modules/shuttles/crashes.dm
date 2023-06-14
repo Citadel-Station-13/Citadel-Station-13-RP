@@ -34,7 +34,7 @@
 	ASSERT(istype(target))
 
 	// Blow up the target area?
-	//command_announcement.Announce(departure_message,(announcer ? announcer : "[LEGACY_MAP_DATUM.boss_name]"))
+	//command_announcement.Announce(departure_message,(announcer ? announcer : "[(LEGACY_MAP_DATUM).boss_name]"))
 
 	// What people are we dealing with here
 	var/list/victims = list()

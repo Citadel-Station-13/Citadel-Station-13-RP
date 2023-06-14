@@ -282,14 +282,14 @@
 
 	var/list/loaded_bounds = list(INFINITY, INFINITY, INFINITY, -INFINITY, -INFINITY, -INFINITY)
 
-	var/datum/dmm_orientation/orientation = GLOB.dmm_orientations["[orientation]"]
+	var/datum/dmm_orientation/orientation_pattern = GLOB.dmm_orientations["[orientation]"]
 
-	var/invert_y = orientation.invert_y
-	var/invert_x = orientation.invert_x
-	var/swap_xy = orientation.swap_xy
-	var/xi = orientation.xi
-	var/yi = orientation.yi
-	var/turn_angle = round(SIMPLIFY_DEGREES(orientation.turn_angle), 90)
+	var/invert_y = orientation_pattern.invert_y
+	var/invert_x = orientation_pattern.invert_x
+	var/swap_xy = orientation_pattern.swap_xy
+	var/xi = orientation_pattern.xi
+	var/yi = orientation_pattern.yi
+	var/turn_angle = round(SIMPLIFY_DEGREES(orientation_pattern.turn_angle), 90)
 	var/delta_swap = x - y
 
 	// less checks later

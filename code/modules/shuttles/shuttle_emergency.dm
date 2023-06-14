@@ -35,9 +35,9 @@
 			var/estimated_time = round(SSemergencyshuttle.estimate_arrival_time()/60,1)
 
 			if (SSemergencyshuttle.evac)
-				priority_announcement.Announce(replacetext(replacetext(LEGACY_MAP_DATUM.emergency_shuttle_leaving_dock, "%dock_name%", "[LEGACY_MAP_DATUM.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(LEGACY_MAP_DATUM.shuttle_leaving_dock, "%dock_name%", "[LEGACY_MAP_DATUM.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_leaving_dock, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 	..()
 
 /datum/shuttle/autodock/ferry/emergency/can_launch(var/user)

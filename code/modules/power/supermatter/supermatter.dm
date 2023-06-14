@@ -243,7 +243,7 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = SSmapping.crosslinked_levels() - LEGACY_MAP_DATUM.station_levels
+		var/list/candidates = SSmapping.crosslinked_levels() - (LEGACY_MAP_DATUM).station_levels
 		. = SAFEPICK(candidates)
 		if(.)
 			return

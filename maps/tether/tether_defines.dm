@@ -502,8 +502,8 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in LEGACY_MAP_DATUM.zlevels)
-		var/datum/map_level/Z = LEGACY_MAP_DATUM.zlevels[z_num]
+	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
+		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
 		if(Z.name == "Underdark")
 			teleport_z = Z.z
 
@@ -515,8 +515,8 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in LEGACY_MAP_DATUM.zlevels)
-		var/datum/map_level/Z = LEGACY_MAP_DATUM.zlevels[z_num]
+	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
+		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 

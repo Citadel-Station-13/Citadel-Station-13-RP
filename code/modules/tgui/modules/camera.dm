@@ -219,10 +219,10 @@
 	var/list/all_networks = list()
 	// Access Based
 	if(access_based)
-		for(var/network in LEGACY_MAP_DATUM.station_networks)
+		for(var/network in (LEGACY_MAP_DATUM).station_networks)
 			if(can_access_network(user, get_camera_access(network), 1))
 				all_networks.Add(network)
-		for(var/network in LEGACY_MAP_DATUM.secondary_networks)
+		for(var/network in (LEGACY_MAP_DATUM).secondary_networks)
 			if(can_access_network(user, get_camera_access(network), 0))
 				all_networks.Add(network)
 	// Network Based
@@ -295,7 +295,7 @@
 	additional_networks = list(NETWORK_MERCENARY, NETWORK_ERT, NETWORK_CRESCENT)
 
 /datum/tgui_module_old/camera/ntos/hacked/New(host)
-	. = ..(host, LEGACY_MAP_DATUM.station_networks.Copy())
+	. = ..(host, (LEGACY_MAP_DATUM).station_networks.Copy())
 
 //Crew Helmet Cams
 /datum/tgui_module_old/camera/ntos/helmet

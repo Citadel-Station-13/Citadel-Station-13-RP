@@ -157,7 +157,7 @@
 		data["check_arrest"] = check_arrest
 		data["arrest_type"] = arrest_type
 		data["declare_arrests"] = declare_arrests
-		if(LEGACY_MAP_DATUM.bot_patrolling)
+		if((LEGACY_MAP_DATUM).bot_patrolling)
 			data["will_patrol"] = will_patrol
 
 	return data

@@ -265,7 +265,7 @@
 	if(ad_hoc && src_z == dst_z)
 		return TRUE
 
-	return src_z in LEGACY_MAP_DATUM.get_map_levels(dst_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	return src_z in (LEGACY_MAP_DATUM).get_map_levels(dst_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 /*
 

@@ -363,7 +363,7 @@
 	if(!on)
 		return
 	var/turf/curr = get_turf(src)
-	var/list/detecting_levels = LEGACY_MAP_DATUM.get_map_levels(curr.z, long_range)
+	var/list/detecting_levels = (LEGACY_MAP_DATUM).get_map_levels(curr.z, long_range)
 	.["x"] = curr.x
 	.["y"] = curr.y
 	.["level"] = SSmapping.fluff_level_id(curr.z)

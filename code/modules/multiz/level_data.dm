@@ -32,15 +32,15 @@ INITIALIZE_IMMEDIATE(/obj/level_data)
 		GLOB.levels_by_id[level_id] = src
 
 	if(level_flags & ZLEVEL_STATION)
-		LEGACY_MAP_DATUM.station_levels |= my_z
+		(LEGACY_MAP_DATUM).station_levels |= my_z
 	if(level_flags & ZLEVEL_ADMIN)
-		LEGACY_MAP_DATUM.admin_levels   |= my_z
+		(LEGACY_MAP_DATUM).admin_levels   |= my_z
 	if(level_flags & ZLEVEL_CONTACT)
-		LEGACY_MAP_DATUM.contact_levels |= my_z
+		(LEGACY_MAP_DATUM).contact_levels |= my_z
 	if(level_flags & ZLEVEL_PLAYER)
-		LEGACY_MAP_DATUM.player_levels  |= my_z
+		(LEGACY_MAP_DATUM).player_levels  |= my_z
 	if(level_flags & ZLEVEL_SEALED)
-		LEGACY_MAP_DATUM.sealed_levels  |= my_z
+		(LEGACY_MAP_DATUM).sealed_levels  |= my_z
 
 /obj/level_data/Destroy(force)
 	if(force)

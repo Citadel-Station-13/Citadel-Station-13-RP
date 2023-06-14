@@ -128,7 +128,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 /// Logs a test message. Will use GitHub action syntax found at https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions
 /datum/unit_test/proc/log_for_test(text, priority, file, line)
-	var/map_name = LEGACY_MAP_DATUM.name
+	var/map_name = (LEGACY_MAP_DATUM).name
 
 	// Need to escape the text to properly support newlines.
 	var/annotation_text = replacetext(text, "%", "%25")

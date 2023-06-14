@@ -186,7 +186,7 @@
 		return FALSE
 	var/obstructed = 0
 	var/turf/dest_turf = get_turf(destination)
-	if(local && !(dest_turf.z in LEGACY_MAP_DATUM.player_levels))
+	if(local && !(dest_turf.z in (LEGACY_MAP_DATUM).player_levels))
 		if(istype(teleatom, /mob/living))
 			to_chat(teleatom, SPAN_WARNING("The portal refuses to carry you that far away!"))
 		return FALSE

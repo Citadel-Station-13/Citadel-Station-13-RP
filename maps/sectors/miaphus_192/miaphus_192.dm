@@ -22,7 +22,7 @@
 	display_name = "Miaphus - Beach"
 	absolute_path = "maps/sectors/miaphus_192/levels/miaphus_192_beach.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand
-	link_north = /datum/map_level/miaphus/cave
+	link_north = /datum/map_level/sector/miaphus_192/cave
 
 /datum/map_level/sector/miaphus_192/cave
 	id = "MiaphusCaves192"
@@ -55,7 +55,7 @@
 	display_name = "Miaphus - Desert"
 	absolute_path = "maps/sectors/miaphus_192/levels/miaphus_192_desert.dmm"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
-	link_east = /datum/map_level/sector/miaphus_192/caves
+	link_east = /datum/map_level/sector/miaphus_192/cave
 
 /datum/map_level/sector/miaphus_192/desert/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	. = ..()

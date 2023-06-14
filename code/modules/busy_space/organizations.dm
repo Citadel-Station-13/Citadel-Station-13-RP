@@ -311,9 +311,9 @@
 
 /datum/lore/organization/tsc/nanotrasen/New()
 	..()
-	spawn(1) // BYOND shenanigans means LEGACY_MAP_DATUM is not initialized yet.  Wait a tick.
+	spawn(1) // BYOND shenanigans means (LEGACY_MAP_DATUM) is not initialized yet.  Wait a tick.
 		// Get rid of the current map from the list, so ships flying in don't say they're coming to the current map.
-		var/string_to_test = "[LEGACY_MAP_DATUM.station_name] in [LEGACY_MAP_DATUM.starsys_name]"
+		var/string_to_test = "[(LEGACY_MAP_DATUM).station_name] in [(LEGACY_MAP_DATUM).starsys_name]"
 		if(string_to_test in destination_names)
 			destination_names.Remove(string_to_test)
 

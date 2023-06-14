@@ -36,7 +36,7 @@
 
 	var/list/drones = list()
 	for(var/mob/living/silicon/robot/drone/D in GLOB.mob_list)
-		if(!(D.z in LEGACY_MAP_DATUM.get_map_levels(z, TRUE, 0)))
+		if(!(D.z in (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, 0)))
 			continue
 		if(D.foreign_droid)
 			continue

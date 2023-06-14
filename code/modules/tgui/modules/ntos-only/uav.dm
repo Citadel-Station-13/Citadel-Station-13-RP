@@ -144,8 +144,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = LEGACY_MAP_DATUM.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = LEGACY_MAP_DATUM.get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
+	var/list/zlevels_in_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, TRUE, om_range = DEFAULT_OVERMAP_RANGE) - zlevels_in_range
 	var/their_signal = 0
 	// Measure z-distance between the AM passed in and the nearest relay
 	for(var/relay in ntnet_global.relays)

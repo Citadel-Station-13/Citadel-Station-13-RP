@@ -15,7 +15,7 @@
 
 /datum/news_announcement/New() // I'm sorry...
 	..()
-	channel_name = "The [LEGACY_MAP_DATUM.starsys_name] Times"
+	channel_name = "The [(LEGACY_MAP_DATUM).starsys_name] Times"
 
 /datum/news_announcement/revolution_inciting_event/paycuts_suspicion
 	round_time = 60*10

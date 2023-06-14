@@ -32,7 +32,7 @@
 		return
 
 	// Why did you use this subtype?
-	if(!LEGACY_MAP_DATUM.use_overmap)
+	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return
 
 	// Someone else handling it?
@@ -40,7 +40,7 @@
 		return
 
 	// Where are we able to hear from (and talk to, since we're AIO) anyway?
-	var/map_levels = LEGACY_MAP_DATUM.get_map_levels(z, TRUE, overmap_range)
+	var/map_levels = (LEGACY_MAP_DATUM).get_map_levels(z, TRUE, overmap_range)
 
 	//Bluespace can skip this check
 	if(signal.transmission_method != TRANSMISSION_BLUESPACE)
@@ -119,7 +119,7 @@
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		//signal.data["level"] = LEGACY_MAP_DATUM.contact_levels.Copy()
+		//signal.data["level"] = (LEGACY_MAP_DATUM).contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary
@@ -175,7 +175,7 @@
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		//signal.data["level"] = LEGACY_MAP_DATUM.contact_levels.Copy()
+		//signal.data["level"] = (LEGACY_MAP_DATUM).contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary

@@ -107,7 +107,7 @@
 		else if(T.type != turf_type)
 			T.ChangeTurf(turf_type, turf_type)
 		if(T.loc != area_instance)
-			T.loc = area_instance
+			area_instance.contents += T
 	src.reserved_turfs = final.Copy()
 	src.bottom_left_coords = list(BL.x, BL.y, BL.z)
 	src.top_right_coords = list(TR.x, TR.y, TR.z)

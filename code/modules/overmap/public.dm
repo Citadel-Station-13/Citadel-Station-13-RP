@@ -12,7 +12,7 @@
 	RETURN_TYPE(/obj/effect/overmap/visitable)
 	if(!isnum(what))
 		what = get_z(what) // todo: this doesn't support shuttles :/
-	if(LEGACY_MAP_DATUM.use_overmap)
+	if((LEGACY_MAP_DATUM).use_overmap)
 		return map_sectors["[what]"]
 	else
 		return null

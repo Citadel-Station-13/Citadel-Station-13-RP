@@ -17,7 +17,7 @@
 	var/inactive_on_main_station = 0
 	for(var/datum/zas_zone/zone in air_master.zones)
 		var/turf/simulated/turf = locate() in zone.contents
-		if(turf && (turf.z in LEGACY_MAP_DATUM.station_levels))
+		if(turf && (turf.z in (LEGACY_MAP_DATUM).station_levels))
 			if(zone.needs_update)
 				active_on_main_station++
 			else

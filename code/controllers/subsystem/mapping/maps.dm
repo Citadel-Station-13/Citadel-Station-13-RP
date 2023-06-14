@@ -43,21 +43,21 @@
 		keyed_maps[created.id] = created
 
 /datum/controller/subsystem/mapping/proc/write_next_map(datum/map/station/next = next_station)
-	var/path = "data/next_map.json"
-	if(fexists(path))
-		fdel(path)
+	var/json_path = "data/next_map.json"
+	if(fexists(json_path))
+		fdel(json_path)
 	var/list/data = list()
 	data["type"] = next.type
 	if(next.modified)
 		data["data"] = next.serialize()
-	var/writing = file("data/next_map.json")
+	var/writing = file(json_path)
 	WRITE_FILE(writing, json_encode(data))
 
 /datum/controller/subsystem/mapping/proc/read_next_map()
-	var/path = "data/next_map.json"
-	if(!fexists(path))
+	var/json_path = "data/next_map.json"
+	if(!fexists(json_path))
 		return
-	var/reading = file("data/next_map.json")
+	var/reading = file(json_path)
 	var/raw = file2text(reading)
 	var/list/data = json_decode(raw)
 	var/path = data["type"]

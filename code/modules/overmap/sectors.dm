@@ -42,13 +42,13 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	if(!LEGACY_MAP_DATUM.overmap_z)
+	if(!(LEGACY_MAP_DATUM).overmap_z)
 		build_overmap()
 
-	start_x = start_x || rand(OVERMAP_EDGE, LEGACY_MAP_DATUM.overmap_size - OVERMAP_EDGE)
-	start_y = start_y || rand(OVERMAP_EDGE, LEGACY_MAP_DATUM.overmap_size - OVERMAP_EDGE)
+	start_x = start_x || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
+	start_y = start_y || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
 
-	forceMove(locate(start_x, start_y, LEGACY_MAP_DATUM.overmap_z))
+	forceMove(locate(start_x, start_y, (LEGACY_MAP_DATUM).overmap_z))
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
@@ -103,16 +103,16 @@
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
-	LEGACY_MAP_DATUM.player_levels |= map_z
+	(LEGACY_MAP_DATUM).player_levels |= map_z
 	if(!in_space)
-		LEGACY_MAP_DATUM.sealed_levels |= map_z
+		(LEGACY_MAP_DATUM).sealed_levels |= map_z
 
 /obj/effect/overmap/visitable/proc/unregister_z_levels()
 	map_sectors -= map_z
 
-	LEGACY_MAP_DATUM.player_levels -= map_z
+	(LEGACY_MAP_DATUM).player_levels -= map_z
 	if(!in_space)
-		LEGACY_MAP_DATUM.sealed_levels -= map_z
+		(LEGACY_MAP_DATUM).sealed_levels -= map_z
 
 /obj/effect/overmap/visitable/get_scan_data()
 	if(!known)
@@ -225,24 +225,24 @@
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)
 
 /proc/build_overmap()
-	if(!LEGACY_MAP_DATUM.use_overmap)
+	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return 1
 
-	ASSERT(!LEGACY_MAP_DATUM.overmap_z)
+	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
 	testing("Building overmap...")
-	LEGACY_MAP_DATUM.overmap_z = SSmapping.allocate_level()
+	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level()
 
-	testing("Putting overmap on [LEGACY_MAP_DATUM.overmap_z]")
+	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
 	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,LEGACY_MAP_DATUM.overmap_z), locate(LEGACY_MAP_DATUM.overmap_size,LEGACY_MAP_DATUM.overmap_size,LEGACY_MAP_DATUM.overmap_z)))
+	for (var/square in block(locate(1,1,(LEGACY_MAP_DATUM).overmap_z), locate((LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_z)))
 		var/turf/T = square
-		if(T.x == 1 || T.y == 1 || T.x == LEGACY_MAP_DATUM.overmap_size || T.y == LEGACY_MAP_DATUM.overmap_size)
+		if(T.x == 1 || T.y == 1 || T.x == (LEGACY_MAP_DATUM).overmap_size || T.y == (LEGACY_MAP_DATUM).overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)
 		else
 			T = T.ChangeTurf(/turf/unsimulated/map)
 		ChangeArea(T, A)
 
-	LEGACY_MAP_DATUM.sealed_levels |= LEGACY_MAP_DATUM.overmap_z
+	(LEGACY_MAP_DATUM).sealed_levels |= (LEGACY_MAP_DATUM).overmap_z
 
 	testing("Overmap build complete.")
 	return 1

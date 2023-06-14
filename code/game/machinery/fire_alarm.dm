@@ -30,7 +30,7 @@ FIRE ALARM
 
 /obj/machinery/firealarm/Initialize(mapload)
 	. = ..()
-	if(z in LEGACY_MAP_DATUM.contact_levels)
+	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
 
 /obj/machinery/firealarm/update_icon()

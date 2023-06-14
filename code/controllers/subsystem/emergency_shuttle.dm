@@ -53,9 +53,9 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			var/estimated_time = round(estimate_launch_time()/60,1)
 
 			if (evac)
-				emergency_shuttle_docked.Announce(replacetext(replacetext(LEGACY_MAP_DATUM.emergency_shuttle_docked_message, "%dock_name%", "[LEGACY_MAP_DATUM.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				emergency_shuttle_docked.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_docked_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 			else
-				priority_announcement.Announce(replacetext(replacetext(LEGACY_MAP_DATUM.shuttle_docked_message, "%dock_name%", "[LEGACY_MAP_DATUM.dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
+				priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_docked_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETD%", "[estimated_time] minute\s"))
 
 		//arm the escape pods
 		if (evac)
@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
 	evac = 1
-	emergency_shuttle_called.Announce(replacetext(LEGACY_MAP_DATUM.emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
+	emergency_shuttle_called.Announce(replacetext((LEGACY_MAP_DATUM).emergency_shuttle_called_message, "%ETA%", "[estimated_time] minute\s"))
 	for(var/area/A in GLOB.sortedAreas)
 		if(istype(A, /area/hallway))
 			A.readyalert()
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	shuttle.move_time = SHUTTLE_TRANSIT_DURATION
 	var/estimated_time = round(estimate_arrival_time()/60,1)
 
-	priority_announcement.Announce(replacetext(replacetext(LEGACY_MAP_DATUM.shuttle_called_message, "%dock_name%", "[LEGACY_MAP_DATUM.dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
+	priority_announcement.Announce(replacetext(replacetext((LEGACY_MAP_DATUM).shuttle_called_message, "%dock_name%", "[(LEGACY_MAP_DATUM).dock_name]"),  "%ETA%", "[estimated_time] minute\s"))
 	GLOB.lore_atc.shift_ending()
 
 //recalls the shuttle
@@ -121,14 +121,14 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	shuttle.cancel_launch(src)
 
 	if (evac)
-		emergency_shuttle_recalled.Announce(LEGACY_MAP_DATUM.emergency_shuttle_recall_message)
+		emergency_shuttle_recalled.Announce((LEGACY_MAP_DATUM).emergency_shuttle_recall_message)
 
 		for(var/area/A in GLOB.sortedAreas)
 			if(istype(A, /area/hallway))
 				A.readyreset()
 		evac = 0
 	else
-		priority_announcement.Announce(LEGACY_MAP_DATUM.shuttle_recall_message)
+		priority_announcement.Announce((LEGACY_MAP_DATUM).shuttle_recall_message)
 
 /datum/controller/subsystem/emergencyshuttle/proc/can_call()
 	if (!universe.OnShuttleCall(null))

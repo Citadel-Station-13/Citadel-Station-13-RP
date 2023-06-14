@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(mapping)
 	// todo: refactor
 	loadEngine()
 	// todo: refactor
-	if(!LEGACY_MAP_DATUM.overmap_z)
+	if(!(LEGACY_MAP_DATUM).overmap_z)
 		build_overmap()
 	// todo: refactor - Set up antagonists.
 	populate_antag_type_list()

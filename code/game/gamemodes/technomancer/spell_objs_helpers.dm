@@ -29,7 +29,7 @@
 
 /obj/item/spell/proc/allowed_to_teleport()
 	if(owner)
-		if(owner.z in LEGACY_MAP_DATUM.admin_levels)
+		if(owner.z in (LEGACY_MAP_DATUM).admin_levels)
 			return FALSE
 
 		var/turf/T = get_turf(owner)

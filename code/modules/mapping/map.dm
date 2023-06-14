@@ -319,7 +319,7 @@
  */
 /datum/map/sector
 	category = "Sectors"
-	abstract_type = /datum/map/secotr
+	abstract_type = /datum/map/sector
 
 /**
  * custom maps
