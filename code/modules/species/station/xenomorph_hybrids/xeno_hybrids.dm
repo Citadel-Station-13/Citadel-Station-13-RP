@@ -57,7 +57,7 @@
 		/datum/ability/species/toggle_agility,
 		/datum/ability/species/xenomorph_hybrid/regenerate,
 	)
-	total_health = 110	//Exoskeleton makes you tougher than baseline
+	total_health = 150	//Exoskeleton makes you tougher than baseline
 	brute_mod = 0.95 // Chitin is somewhat hard to crack
 	burn_mod = 1.5	// Natural enemy of xenomorphs is fire. Upgraded to Major Burn Weakness. Reduce to Minor if this is too harsh.
 	blood_volume = 560	//Baseline
@@ -100,49 +100,59 @@
 
 	reagent_tag = IS_XENOHYBRID
 
+	var/heal_rate = 0.5 //Lets just create a set number
+
 /datum/species/xenohybrid/can_breathe_water()
 	return TRUE	//they dont quite breathe
 
 /datum/species/xenohybrid/handle_environment_special(var/mob/living/carbon/human/H)
-
+	var/healing_factor = 1
+	if(!H.lying)
+		H.active_regen = FALSE
+	else
+		healing_factor *= 1.2
 	if(H.active_regen)
-		if(!H.lying)
-			H.active_regen = FALSE
-			return
-		var/heal_amount = H.nutrition / 50
-		H.nutrition = max(H.nutrition-heal_amount,0)
+		healing_factor *= 4
+	var/turf/T = get_turf(H)
+	if(/obj/effect/alien/weeds in T.contents)
+		healing_factor *= 1.1
+	if(/obj/structure/bed/hybrid_nest in T.contents)
+		healing_factor *= 1.2
 
-		var/turf/T = get_turf(H)
-		for (var/thing in T.contents)
-			if(istype(thing, /obj/effect/alien/weeds))
-				heal_amount *= 1.1
-			if(istype(thing, /obj/structure/bed/nest) || istype(thing, /obj/structure/bed/hybrid_nest))
-				heal_amount *= 1.2
-		var/fire_damage = H.getFireLoss()
-		if(fire_damage >= heal_amount)
-			H.adjustFireLoss(-heal_amount)
-			heal_amount = 0;
-			return
-		if(fire_damage < heal_amount)
-			H.adjustFireLoss(-heal_amount)
-			heal_amount -= fire_damage
+	//Heal_amount is 0.5, with all bonies above 1.188
 
-		var/trauma_damage = H.getBruteLoss()
-		if(trauma_damage >= heal_amount)
-			H.adjustBruteLoss(-heal_amount)
-			heal_amount = 0;
-			return
-		if(trauma_damage < heal_amount)
-			H.adjustBruteLoss(-heal_amount)
-			heal_amount -= trauma_damage
+	var/heal_amount = heal_rate * healing_factor
 
-		var/posion_damage = H.getToxLoss()
-		if(posion_damage >= heal_amount)
-			H.adjustToxLoss(-heal_amount)
-			heal_amount = 0;
-			return
-		if(posion_damage < heal_amount)
-			H.adjustToxLoss(-heal_amount)
-			heal_amount -= posion_damage
+	H.adjustFireLoss(-heal_amount)
 
-		H.nutrition += heal_amount
+	H.adjustBruteLoss(-heal_amount)
+
+	H.adjustToxLoss(-heal_amount)
+
+	if(heal_amount <= 0.6)
+		return //If we do more than normally resting we can repair more difficult stuff
+
+	for(var/obj/item/organ/external/E in H.bad_external_organs)
+		E.bandage()
+
+	if (H.getBruteLoss() == 0) //If we have no flat damage remaining, fix internal issues, and not running around
+		for(var/limb_type in src.has_limbs)
+			var/obj/item/organ/external/E = H.organs_by_name[limb_type]
+			if((E.status & ORGAN_BROKEN))
+				E.status &= ~ORGAN_BROKEN
+				break // Heal one broken bone per processing
+
+	if(heal_amount >= 1)//This cures even IB(its essentially Myelamine)
+		var/wound_heal = heal_amount / 10
+		for(var/obj/item/organ/external/O in H.bad_external_organs)
+			for(var/datum/wound/W as anything in O.wounds)
+				if(W.bleeding())
+					W.damage = max(W.damage - wound_heal, 0)
+					if(W.damage <= 0)
+						O.cure_exact_wound(W)
+						continue
+				if(W.internal)
+					W.damage = max(W.damage - wound_heal, 0)
+					if(W.damage <= 0)
+						O.cure_exact_wound(W)
+						continue
