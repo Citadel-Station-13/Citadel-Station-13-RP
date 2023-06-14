@@ -125,7 +125,7 @@
 			to_chat(H, SPAN_BOLDWARNING("You are to hungry to benefit from your enhanced regeneration"))
 			H.active_regen = FALSE
 		return
-	//Heal_amount is 0.5, with all bonies above 1.188
+	//Heal_amount is 0.5, with all bonies above 6.336
 
 	var/heal_amount = heal_rate * healing_factor
 	var/nutrition_debt = (H.getFireLoss() ? heal_rate : 0)
