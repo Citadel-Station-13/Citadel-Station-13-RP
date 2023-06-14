@@ -191,7 +191,7 @@
 "aQ" = (
 /obj/machinery/vending/boozeomat{
 	emagged = 1;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/janibar)

@@ -3272,7 +3272,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Tech Storage";
 	req_access = list(19,23);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9677,7 +9677,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
 	req_access = list(23);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,

@@ -9023,7 +9023,7 @@
 "fzv" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Security Reception";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(2,4)
 	},
 /obj/machinery/door/firedoor/glass,
@@ -10570,7 +10570,7 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation view room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,2,4,38)
 	},
 /obj/structure/cable/green{
@@ -15331,7 +15331,7 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation view room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,2,4,38)
 	},
 /turf/simulated/floor/tiled/dark,
@@ -23756,7 +23756,7 @@
 "oFY" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Briefing Room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,38)
 	},
 /obj/structure/cable/green{
@@ -25228,7 +25228,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
 	req_access = list(4);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,

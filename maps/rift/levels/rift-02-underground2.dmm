@@ -5697,7 +5697,7 @@
 /obj/machinery/door/window/southleft{
 	dir = 4;
 	name = "Hardsuit Storage";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(11,24)
 	},
 /obj/structure/window/reinforced{
@@ -9997,7 +9997,7 @@
 	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -13600,7 +13600,7 @@
 /obj/machinery/door/window/southleft{
 	dir = 8;
 	name = "Jetpack Storage";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
