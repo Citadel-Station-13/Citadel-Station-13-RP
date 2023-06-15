@@ -61,6 +61,7 @@
 		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 20),
 		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 10),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 10),
+		new /datum/data/mining_equipment("Special Parts - Laser Reflector Voucher", /obj/item/engineering_voucher/reflector, 30),
 		//voucher: Solar crate, Vimur canister
 		new /datum/data/mining_equipment("???", /obj/item/engineering_mystical_tech, 1000)
     )
@@ -222,6 +223,12 @@
 /obj/item/engineering_voucher/fuel_compressor
 	name = "Fuel compressor voucher"
 	desc = "A voucher redeemable, at any NT cargo department, for shipment of a Fuel rod compressor"
+	icon_state = "engineering_voucher"
+	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
+
+/obj/item/engineering_voucher/reflector
+	name = "Laser reflector voucher"
+	desc = "A voucher redeemable, at any NT cargo department, for a single laser reflector."
 	icon_state = "engineering_voucher"
 	redeemable_for = new /datum/supply_pack/eng/fusion_fuel_compressor
 
