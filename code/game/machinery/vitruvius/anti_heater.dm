@@ -1,6 +1,6 @@
 /// The "Idro Repression Injection System" uses fusion fuel gas to remove heat from the area
-/obj/machinery/portable_atmospherics/idro
-	name = "Idro Repression Injection System"
+/obj/machinery/portable_atmospherics/aether_displacement_engine
+	name = "Aether Displacement Engine"
 	desc = "A weird machine, it seems to have a connector that fits the standard atmospherics port. It has been marked by the Nanotrasen Artifact Recovery and Utilisation Group as 'Safe for standard NT operations'"
 
 	icon = 'icons/machinery/vitruvius/iris.dmi'
@@ -20,7 +20,7 @@
 	//if we wanted to go by the Oxygen not included consumption, this would be 2.5, which would drain a cannister of hydrogen in 12 minutes
 	// with 1 it lasts for about 30 mintues
 
-/obj/machinery/portable_atmospherics/idro/process(delta_time)
+/obj/machinery/portable_atmospherics/aether_displacement_engine/process(delta_time)
 	. = ..()
 	var/datum/gas_mixture/env = loc.return_air()
 	var/energy_to_target = env.get_thermal_energy_change(100)
@@ -29,10 +29,10 @@
 	env.adjust_thermal_energy(fuel_found.total_moles * cooling_power)
 
 
-/obj/machinery/portable_atmospherics/idro/proc/get_fusion_fuel(moles_needed)
+/obj/machinery/portable_atmospherics/aether_displacement_engine/proc/get_fusion_fuel(moles_needed)
 	return air_contents.remove_by_flag(GAS_FLAG_FUSION_FUEL, moles_needed)
 
-/obj/machinery/portable_atmospherics/idro/anomaly
+/obj/machinery/portable_atmospherics/aether_displacement_engine/anomaly
 	desc = "A weird machine, it seems to have a connector that fits the standard atmospherics port. It is bearing marks of 'Vitruvius' who ever that is."
 
 
