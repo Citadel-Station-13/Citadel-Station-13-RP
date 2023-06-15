@@ -34,4 +34,4 @@
 #define LIGHT_COLOR_INCANDESCENT_TUBE       "#E0EFF0" // rgb(224, 239, 240) Slightly blueish white.
 #define LIGHT_COLOR_INCANDESCENT_BULB       "#FFFEB8" // rgb(255, 254, 184) Slightly yellowish white.
 #define LIGHT_COLOR_INCANDESCENT_FLASHLIGHT "#FFCC66" // rgb(255, 204, 102) Slightly yellowish white.
-#define LIGHT_COLOR_NIGHTSHIFT              "#EFCC86" // rgb(239, 204, 134) Slightly yellowish white.
+#define LIGHT_COLOR_NIGHTSHIFT              "#616191" // rgb(134, 162, 239) Blueish white.

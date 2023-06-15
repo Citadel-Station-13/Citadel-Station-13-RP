@@ -5058,19 +5058,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/emt/cockpit)
-"amG" = (
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "amH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -15582,9 +15569,6 @@
 /area/exploration/courser_dock)
 "aNw" = (
 /obj/machinery/disposal,
-/obj/machinery/light{
-	dir = 4
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
@@ -17838,6 +17822,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -22780,7 +22767,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "ilt" = (
-/obj/machinery/camera/network/civilian,
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/machinery/beehive,
 /turf/simulated/floor/grass,
@@ -23190,6 +23176,7 @@
 "jLq" = (
 /obj/machinery/beehive,
 /obj/structure/flora/ausbushes/stalkybush,
+/obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "jLR" = (
@@ -27165,10 +27152,6 @@
 "xlc" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_range = 12
 	},
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/machinery/smartfridge/drinks,
@@ -40585,7 +40568,7 @@ kps
 axr
 aIa
 ask
-amG
+axr
 jIg
 cqj
 aXu
