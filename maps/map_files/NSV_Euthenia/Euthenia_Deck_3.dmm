@@ -2971,8 +2971,7 @@
 /area/space)
 "cIP" = (
 /obj/machinery/door/airlock{
-	name = "Chapel Office";
-	req_access = s
+	name = "Chapel Office"
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
