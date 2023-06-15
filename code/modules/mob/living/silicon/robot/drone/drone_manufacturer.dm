@@ -128,6 +128,11 @@
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
 		return
 
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
+		log_shadowban("[key_name(src)] SC join blocked.")
+		return
+
 	if(!(config_legacy.allow_drone_spawn))
 		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
 		return
