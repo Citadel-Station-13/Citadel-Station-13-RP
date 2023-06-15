@@ -4708,7 +4708,7 @@
 #include "maps\sectors\mining_192\mining_192.dm"
 #include "maps\sectors\piratebase_192\piratebase_192.dm"
 #include "maps\sectors\roguemining_192\roguemining_192.dm"
-#include "maps\sectors\tradeport_192\shuttles.dm"
+#include "maps\sectors\tradeport\shuttles.dm"
 #include "maps\sectors\tradeport_192\tradeport_192.dm"
 #include "maps\sectors\wasteland_192\wasteland_192.dm"
 #include "maps\submaps\_helpers.dm"
