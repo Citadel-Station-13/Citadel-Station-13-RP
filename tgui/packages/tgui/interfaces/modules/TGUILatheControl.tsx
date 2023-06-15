@@ -69,7 +69,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
 interface LatheDesignProps {
   design: Design;
   materialsContext: MaterialsContext;
-  printButtonAct?: (string, number) => void; // id, amount
+  printButtonAct?: (string, number) => void; // id,
   printButtonText?: string;
 }
 

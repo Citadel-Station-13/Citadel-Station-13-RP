@@ -62,7 +62,7 @@
 /mob/living/simple_mob/vore/hostile/morph/proc/allowed(atom/movable/A)
 	return !is_type_in_typecache(A, blacklist_typecache) && (isobj(A) || ismob(A))
 
-/mob/living/simple_mob/vore/hostile/morph/examine(mob/user)
+/mob/living/simple_mob/vore/hostile/morph/examine(mob/user, dist)
 	if(morphed)
 		form.examine(user)
 		if(get_dist(user,src)<=3)

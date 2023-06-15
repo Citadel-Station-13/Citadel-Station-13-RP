@@ -157,7 +157,7 @@
 	return amount_used
 
 
-/obj/item/cell/examine(mob/user)
+/obj/item/cell/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		. += " It has a power rating of [maxcharge].\nThe charge meter reads [round(src.percent() )]%."

@@ -111,7 +111,7 @@
 
 	..()
 
-/obj/machinery/pipelayer/examine(mob/user)
+/obj/machinery/pipelayer/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>The [src] has [metal] sheets, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.</span>"
 

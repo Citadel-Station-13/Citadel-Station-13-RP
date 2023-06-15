@@ -30,7 +30,7 @@
 	update_cut_status()
 	return ..()
 
-/obj/structure/fence/examine(mob/user)
+/obj/structure/fence/examine(mob/user, dist)
 	. = ..()
 
 	switch(hole_size)

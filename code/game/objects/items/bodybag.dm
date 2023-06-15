@@ -220,7 +220,7 @@
 	if(H.reagents)
 		syringe.reagents.trans_to_mob(H, 30, CHEM_INJECT)
 
-/obj/structure/closet/body_bag/cryobag/examine(mob/user)
+/obj/structure/closet/body_bag/cryobag/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
 		. += "<span class='info'>You peer into \the [src].</span>"

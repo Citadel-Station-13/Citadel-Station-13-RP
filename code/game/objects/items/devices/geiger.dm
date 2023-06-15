@@ -66,7 +66,7 @@
 	update_appearance()
 	update_sound()
 
-/obj/item/geiger_counter/examine(mob/user)
+/obj/item/geiger_counter/examine(mob/user, dist)
 	. = ..()
 	if(!scanning)
 		return

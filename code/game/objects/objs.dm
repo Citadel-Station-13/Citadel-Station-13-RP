@@ -212,7 +212,7 @@
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
 
-/obj/examine(mob/user)
+/obj/examine(mob/user, dist)
 	. = ..()
 	if(materials)
 		if(!materials.len)

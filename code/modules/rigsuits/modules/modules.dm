@@ -54,7 +54,7 @@
 
 	var/list/stat_hardsuit_module/stat_modules = new()
 
-/obj/item/hardsuit_module/examine(mob/user)
+/obj/item/hardsuit_module/examine(mob/user, dist)
 	. = ..()
 	switch(damage)
 		if(0)

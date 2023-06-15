@@ -96,7 +96,7 @@
 	amount++
 
 
-/obj/item/paper_bin/examine(mob/user)
+/obj/item/paper_bin/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) <= 1)
 		if(amount)

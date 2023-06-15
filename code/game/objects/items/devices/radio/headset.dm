@@ -39,7 +39,7 @@
 /obj/item/radio/headset/list_channels(var/mob/user)
 	return list_secure_channels()
 
-/obj/item/radio/headset/examine(mob/user)
+/obj/item/radio/headset/examine(mob/user, dist)
 	. = ..()
 	if(!radio_desc)
 		return

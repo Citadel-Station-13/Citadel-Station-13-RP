@@ -87,7 +87,7 @@
 /obj/item/assembly/process(delta_time)
 	return PROCESS_KILL
 
-/obj/item/assembly/examine(mob/user)
+/obj/item/assembly/examine(mob/user, dist)
 	. = ..()
 	if((in_range(src, user) || loc == user))
 		if(secured)

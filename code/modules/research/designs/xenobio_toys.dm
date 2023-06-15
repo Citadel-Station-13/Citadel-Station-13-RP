@@ -24,3 +24,19 @@
 	req_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 500)
 	build_path = /obj/item/slime_scanner
+
+/datum/design/item/xenobio/gene_disk
+	name = "genetics disk"
+	desc = "A disk designed to retain humanoid genetic information."
+	id = "gene_disk"
+	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
+	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
+	build_path = /obj/item/disk/data
+
+/datum/design/item/xenobio/botany_disk
+	name = "flora data disk"
+	desc = "A small disk used for carrying data on plant genetics."
+	id = "plant_disk"
+	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
+	materials = list(MAT_STEEL = 300, MAT_GLASS = 300)
+	build_path = /obj/item/disk/botany

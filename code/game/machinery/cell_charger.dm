@@ -33,7 +33,7 @@
 	else
 		cut_overlays()
 
-/obj/machinery/cell_charger/examine(mob/user)
+/obj/machinery/cell_charger/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[charging ? "[charging]" : "Nothing"] is in [src].")
 	if(charging)

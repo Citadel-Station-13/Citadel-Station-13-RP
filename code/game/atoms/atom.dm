@@ -411,8 +411,12 @@
  * the [TRANSPARENT] flag is set on the reagents holder
  *
  * Produces a signal [COMSIG_PARENT_EXAMINE]
+ *
+ * @params
+ * * user - who's examining. can be null
+ * * dist - effective distance of examine, usually from user to src.
  */
-/atom/proc/examine(mob/user)
+/atom/proc/examine(mob/user, dist = 1)
 	var/examine_string = get_examine_string(user, thats = TRUE)
 	if(examine_string)
 		. = list("[examine_string].")

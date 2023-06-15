@@ -26,7 +26,7 @@
 	. = ..()
 	generatefiremodes()
 
-/obj/item/gun/energy/modular/examine(mob/user)
+/obj/item/gun/energy/modular/examine(mob/user, dist)
 	. = ..()
 	if(primarycore)
 		. += "The modular weapon has a [primarycore.name] installed in the primary core slot."

@@ -202,6 +202,7 @@
 		/obj/item/stack/cable_coil = 10,
 		/obj/item/stock_parts/capacitor = 2,
 		/obj/item/stock_parts/console_screen = 1,
+		/obj/item/smes_coil = 1,
 	)
 
 /obj/item/circuitboard/body_scanner

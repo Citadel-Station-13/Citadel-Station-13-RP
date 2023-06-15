@@ -28,6 +28,13 @@
 	container_type = /obj/structure/largecrate
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
 
+/datum/supply_pack/atmos/canister_helium
+	name = "Helium canister"
+	cost = 10
+	container_name = "Helium canister crate"
+	container_type = /obj/structure/largecrate
+	contains = list(/obj/machinery/portable_atmospherics/canister/helium)
+
 /datum/supply_pack/atmos/canister_oxygen
 	name = "Oxygen canister"
 	cost = 15

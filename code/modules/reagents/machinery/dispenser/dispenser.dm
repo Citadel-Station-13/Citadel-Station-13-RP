@@ -102,7 +102,7 @@
 	var/obj/item/cell/comp_cell = locate() in component_parts
 	cell = comp_cell
 
-/obj/machinery/chemical_dispenser/examine(mob/user)
+/obj/machinery/chemical_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "It has [length(cartridges)] cartridges installed, and has space for [cartridges_max - length(cartridges)] more."
 

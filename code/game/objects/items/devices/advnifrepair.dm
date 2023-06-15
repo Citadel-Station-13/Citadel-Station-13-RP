@@ -54,7 +54,7 @@
 	update_icon()
 	return 1
 
-/obj/item/nifrepairer/examine(mob/user)
+/obj/item/nifrepairer/examine(mob/user, dist)
 	. = ..()
 	if(supply.total_volume)
 		. += "<span class='notice'>\The [src] contains [supply.total_volume] units of programmed nanites, ready for dispensing.</span>"

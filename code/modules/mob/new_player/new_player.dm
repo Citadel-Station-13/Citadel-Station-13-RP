@@ -494,6 +494,10 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
+	if(client.persistent.ligma)
+		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
+		return 0
 	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
@@ -772,7 +776,3 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
-
-/mob/new_player/make_perspective()
-	. = ..()
-	self_perspective.add_screen(GLOB.lobby_image)

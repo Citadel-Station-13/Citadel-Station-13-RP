@@ -67,7 +67,7 @@
 			icon_state = "[initial(icon_state)]_3"
 		item_state = initial(icon_state)
 
-/obj/item/stack/examine(mob/user)
+/obj/item/stack/examine(mob/user, dist)
 	. = ..()
 	if(!uses_charge)
 		. += "There are [amount] [singular_name]\s in the stack."

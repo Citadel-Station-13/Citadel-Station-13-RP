@@ -108,7 +108,7 @@
 		item_state = "[initial(item_state)]"
 		collapsed = 1
 
-/obj/item/gun/ballistic/rocket/collapsible/examine(mob/user)
+/obj/item/gun/ballistic/rocket/collapsible/examine(mob/user, dist)
 	. = ..()
 	return
 

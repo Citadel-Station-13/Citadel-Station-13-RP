@@ -12,7 +12,7 @@
 	var/scan_exact_ores = FALSE
 	var/scan_exact_amounts = FALSE
 
-/obj/item/mining_scanner/examine(mob/user)
+/obj/item/mining_scanner/examine(mob/user, dist)
 	. = ..()
 	. += "Current scan range is [scanrange] step(s) from user's current location, including current location. Alt-Click to change scan range."
 

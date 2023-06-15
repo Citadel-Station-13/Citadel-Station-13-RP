@@ -185,7 +185,7 @@
 	else
 		icon_state = "suitcooler0"
 
-/obj/item/suit_cooling_unit/examine(mob/user)
+/obj/item/suit_cooling_unit/examine(mob/user, dist)
 	. = ..()
 
 	if(Adjacent(user))

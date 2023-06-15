@@ -1897,6 +1897,7 @@
 		/obj/item/clothing/under/cheongsam/blue = 5,
 		/obj/item/clothing/under/cheongsam/black = 5,
 		/obj/item/clothing/under/cheongsam/darkred = 5,
+		/obj/item/clothing/under/cheongsam/darkgreen = 5,
 		/obj/item/clothing/under/cheongsam/green = 5,
 		/obj/item/clothing/under/cheongsam/purple = 5,
 		/obj/item/clothing/under/cheongsam/darkblue = 5,

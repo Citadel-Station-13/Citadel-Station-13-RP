@@ -536,6 +536,35 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/cockpitboard
 
+//Duke//
+
+/datum/design/circuit/mecha/fighter/duke_main
+	name = "Duke central control board"
+	id = "duke_main"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
+	build_path = /obj/item/circuitboard/mecha/fighter/duke/main
+	sort_string = "NAAIA"
+
+/datum/design/circuit/mecha/fighter/duke_flight
+	name = "Duke flight control board"
+	id = "duke_flight"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
+	build_path = /obj/item/circuitboard/mecha/fighter/duke/flight
+	sort_string = "NAAIB"
+
+/datum/design/circuit/mecha/fighter/duke_targeting
+	name = "Duke weapon control and targeting board"
+	id = "duke_targeting"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
+	build_path = /obj/item/circuitboard/mecha/fighter/duke/targeting
+	sort_string = "NAAIC"
+
+/datum/design/circuit/mecha/fighter/duke_cockpit_control
+	name = "Duke manual flight control instruments"
+	id = "duke_cockpit_control"
+	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
+	build_path = /obj/item/circuitboard/mecha/fighter/duke/cockpitboard
+	sort_string = "NAAID"
 
 //Tcomms//
 

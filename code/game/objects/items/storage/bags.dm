@@ -165,7 +165,7 @@
 	if(O)
 		gather_all(get_turf(src), ismob(source)? source : null)
 
-/obj/item/storage/bag/ore/examine(mob/user)
+/obj/item/storage/bag/ore/examine(mob/user, dist)
 	. = ..()
 	if(!Adjacent(user)) //Can only check the contents of ore bags if you can physically reach them.
 		return

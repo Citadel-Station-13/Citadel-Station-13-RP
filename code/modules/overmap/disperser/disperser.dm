@@ -9,7 +9,7 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/machinery/disperser/examine(mob/user)
+/obj/machinery/disperser/examine(mob/user, dist)
 	. = ..()
 	if(panel_open)
 		to_chat(user, "The maintenance panel is open.")

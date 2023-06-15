@@ -116,7 +116,7 @@
 	else
 		icon_state = base_icon_state || icon_state
 
-/obj/item/ammo_casing/examine(mob/user)
+/obj/item/ammo_casing/examine(mob/user, dist)
 	. = ..()
 	if(!loaded())
 		. += "This one is spent."

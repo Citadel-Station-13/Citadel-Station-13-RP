@@ -40,11 +40,13 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/equipped(mob/user, slot, flags)
 	. = ..()
 	if((!toggleable || active) && (slot in active_slots))
-		user.add_vision_modifier(vision_modifier)
+		if(!isnull(vision_modifier))
+			user.add_vision_modifier(vision_modifier)
 
 /obj/item/clothing/glasses/unequipped(mob/user, slot, flags)
 	. = ..()
-	user.remove_vision_modifier(vision_modifier)
+	if(!isnull(vision_modifier))
+		user.remove_vision_modifier(vision_modifier)
 
 /obj/item/clothing/glasses/attack_self(mob/user)
 	. = ..()
@@ -58,7 +60,8 @@ BLIND     // can't see anything
 			if(worn_slot != SLOT_ID_HANDS)
 				update_worn_icon()
 			if(worn_slot in active_slots)
-				wearer.remove_vision_modifier(vision_modifier)
+				if(!isnull(vision_modifier))
+					wearer.remove_vision_modifier(vision_modifier)
 			flash_protection = FLASH_PROTECTION_NONE
 			tint = TINT_NONE
 			away_planes = enables_planes
@@ -70,7 +73,8 @@ BLIND     // can't see anything
 			if(worn_slot != SLOT_ID_HANDS)
 				user.update_inv_glasses()
 			if(worn_slot in active_slots)
-				wearer.add_vision_modifier(vision_modifier)
+				if(!isnull(vision_modifier))
+					wearer.add_vision_modifier(vision_modifier)
 			flash_protection = initial(flash_protection)
 			tint = initial(tint)
 			enables_planes = away_planes

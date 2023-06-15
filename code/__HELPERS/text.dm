@@ -25,6 +25,7 @@
 // todo probably split this file into other files
 
 /// Used for preprocessing entered text.
+//  todo: extra is a bad param, we should instead just have linebreaks = n for n linebreaks, and a way to disable it.
 /proc/sanitize(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	if(!input)
 		return
@@ -34,7 +35,7 @@
 
 	if(extra)
 		var/temp_input = replace_characters(input, list("\n"="  ","\t"=" "))//one character is replaced by two
-		if(length_char(input) < (length_char(temp_input) - 12)) //12 is the number of linebreaks allowed per message
+		if(length_char(input) < (length_char(temp_input) - (6 * 2))) //12 is the number of linebreaks allowed per message
 			input = replace_characters(temp_input,list("  "=" "))//replace again, this time the double spaces with single ones
 
 	if(encode)

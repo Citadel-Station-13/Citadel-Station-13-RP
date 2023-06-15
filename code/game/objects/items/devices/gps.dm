@@ -101,7 +101,7 @@
 	. = ..()
 	bind_perspective(null)
 
-/obj/item/gps/examine(mob/user)
+/obj/item/gps/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
 
