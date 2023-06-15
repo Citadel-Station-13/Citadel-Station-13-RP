@@ -51,6 +51,8 @@
 		var/mob/moving_mob = mover
 		if ((other_mobs && moving_mob.other_mobs))
 			return TRUE
+		if(wallflowering)
+			return TRUE
 	if(istype(mover, /obj/projectile))
 		var/obj/projectile/P = mover
 		return !P.can_hit_target(src, P.permutated, src == P.original, TRUE)
