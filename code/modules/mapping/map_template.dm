@@ -110,8 +110,8 @@
 		ll_y = round((world.maxy - real_height) / 2)
 
 	var/datum/map_level/dynamic/level = new
-	level.traits = traits.Copy()
-	level.attributes = attributes.Copy()
+	level.traits = isnull(traits)? list() : traits.Copy()
+	level.attributes = isnull(attributes)? list() : attributes.Copy()
 	SSmapping.allocate_level(level)
 
 	ASSERT(level.loaded)
@@ -207,13 +207,13 @@
 		ll_x -= round(real_width / 2)
 		ll_y -= round(real_height / 2)
 
-	var/turf/ll_turf = locate(ll_x, ll_y, ll_z)
+	var/turf/ll_turf = clamped_locate(ll_x, ll_y, ll_z)
 	return block(
 		ll_turf,
-		locate(
-			ll_turf.x + width - 1,
-			ll_turf.y + height - 1,
-			ll_turf.z
+		clamped_locate(
+			ll_x + width - 1,
+			ll_y + height - 1,
+			ll_z
 		)
 	)
 

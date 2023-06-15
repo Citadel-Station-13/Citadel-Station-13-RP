@@ -374,6 +374,7 @@
 #include "code\__HELPERS\type2type\color.dm"
 #include "code\__HELPERS\type2type\type2type.dm"
 #include "code\__HELPERS\unsorted\contents.dm"
+#include "code\__HELPERS\unsorted\locate.dm"
 #include "code\__HELPERS\unsorted\radiation.dm"
 #include "code\__HELPERS\vfx\appearance_cloning.dm"
 #include "code\__HELPERS\vfx\color_animations.dm"

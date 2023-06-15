@@ -124,7 +124,9 @@
 	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 		CRASH("tried to load a map that would overrun ):")
 
-	parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
+	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
+
+	SSatoms.init_map_bounds(loaded_bounds)
 
 	var/list/datum/callback/generation_callbacks = list()
 	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
