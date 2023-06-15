@@ -222,7 +222,7 @@
 	if(isnull(picked))
 		return
 
-	var/datum/map/station/changing_to = SSmapping.keyed_maps[picked]
+	var/datum/map/station/changing_to = SSmapping.keyed_maps[built[picked]]
 	var/datum/map/station/was = SSmapping.next_station || SSmapping.loaded_station
 
 	log_and_message_admins("[key_name(src)] is changing the next map from [was.name] ([was.id]) to [changing_to.name] ([changing_to.id])")
