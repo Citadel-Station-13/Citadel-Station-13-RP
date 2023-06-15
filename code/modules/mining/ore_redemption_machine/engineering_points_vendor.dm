@@ -61,7 +61,7 @@
 		new /datum/data/mining_equipment("Special Parts - Gyrotrons Voucher", 		/obj/item/engineering_voucher/gyrotrons, 20),
 		new /datum/data/mining_equipment("Special Parts - Fuel compressor Voucher",	/obj/item/engineering_voucher/fuel_compressor, 10),
 		new /datum/data/mining_equipment("Special Parts - Collector Voucher", 		/obj/item/engineering_voucher/collectors, 10),
-		new /datum/data/mining_equipment("Special Parts - Laser Reflector Voucher", /obj/item/engineering_voucher/reflector, 100),
+		new /datum/data/mining_equipment("Special Parts - Laser Reflector Voucher", /obj/item/engineering_voucher/reflector, 30),
 		//voucher: Solar crate, Vimur canister
 		new /datum/data/mining_equipment("???", /obj/item/engineering_mystical_tech, 1000)
     )
