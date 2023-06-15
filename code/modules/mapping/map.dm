@@ -214,9 +214,45 @@
 	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
 	var/list/titlescreens = list(
 		list(
+			'icons/misc/title_vr.dmi',
+			"title1",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title2",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title3",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title4",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title5",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title6",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title7",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title8",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"bnny",
+		),
+		list(
 			'icons/misc/title.dmi',
 			"mockingjay00",
-		)
+		),
 	)
 
 	// var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)

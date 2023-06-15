@@ -1,29 +1,32 @@
+/datum/map/station/minitest
+	id = "minitest"
+	name = "World - Minitest (DEBUG)"
+	levels = list(
+		/datum/map_level/minitest/station,
+		/datum/map_level/minitest/sector1,
+		/datum/map_level/minitest/sector2,
+	)
+	width = 100
+	height = 100
 
-#define Z_LEVEL_MAIN_CITADEL_TESTING					1
+	//* LEGACY BELOW *//
 
-/datum/map/station/citadel_minitest
-	name = "Virgo_minitest"
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/overmap/overmapdemo,
+		/datum/shuttle/autodock/ferry/ferrydemo,
+		/datum/shuttle/autodock/multi/multidemo,
+		/datum/shuttle/autodock/web_shuttle/webdemo,
+	)
+
 	full_name = "NSS Citadel Testing Facility"
-	path = "citadel_minitest"
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("minitest1", "minitest2")
 	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
 
-	admin_levels = list()
-	sealed_levels = list()
-	empty_levels = list()
-	station_levels = list(Z_LEVEL_MAIN_CITADEL_TESTING)
-	contact_levels = list(Z_LEVEL_MAIN_CITADEL_TESTING)
-	player_levels = list(Z_LEVEL_MAIN_CITADEL_TESTING)
-
-	accessible_z_levels = list("1" = 100)	// The defines can't be used here sadly.	// For now.
-	base_turf_by_z = list("1" = /turf/space)
-
 	use_overmap = TRUE
-	var/overmap_size = 20			// Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0				// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
-	var/overmap_event_areas = 15	// How many event "clouds" will be generated
+	overmap_size = 20
+	overmap_event_areas = 15
 
 	station_name	= "NSS Citadel Testing Facility"
 	station_short	= "NSS-CTF"
@@ -67,14 +70,33 @@
 
 	allowed_spawns = list("Arrivals Shuttle")
 
+/datum/map_level/minitest/station
+	id = "MinitestStation"
+	name = "Minitest - Station"
+	display_id = "!debug-station"
+	display_name = "Minitest Debugging Map - Station"
+	absolute_path = "maps/minitest/levels/minitest.dmm"
+	traits = list(
+		ZTRAIT_STATION,
+		ZTRAIT_FACILITY_SAFETY,
+	)
+	base_turf = /turf/space
+	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
-/datum/map/station/citadel_minitest/perform_map_generation()
-/*
-	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_MAIN_CITADEL_TESTING, world.maxx, world.maxy)
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MAIN_CITADEL_TESTING, 64, 64)
-*/
-	return 1
+/datum/map_level/minitest/sector1
+	id = "MinitestSector1"
+	name = "Minitest - Sector 1"
+	display_id = "!debug-sector-1"
+	display_name = "Minitest Debugging Map - Sector 1"
+	absolute_path = "maps/minitest/levels/sector1.dmm"
+	base_turf = /turf/simulated/floor/plating
+	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
 
-/turf/simulated/floor/water
-
-/turf/simulated/floor/water/deep
+/datum/map_level/minitest/sector2
+	id = "MinitestSector2"
+	name = "Minitest - Sector 2"
+	display_id = "!debug-sector-2"
+	display_name = "Minitest Debugging Map - Sector 2"
+	absolute_path = "maps/minitest/levels/sector2.dmm"
+	base_turf = /turf/simulated/floor/plating
+	flags = LEGACY_LEVEL_STATION | LEGACY_LEVEL_CONTACT | LEGACY_LEVEL_PLAYER | LEGACY_LEVEL_CONSOLES
