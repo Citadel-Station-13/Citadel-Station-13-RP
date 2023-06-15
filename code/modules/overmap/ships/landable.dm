@@ -5,7 +5,6 @@
 /obj/effect/overmap/visitable/ship/landable
 	var/shuttle                                         // Name of associated shuttle. Must be autodock.
 	var/obj/effect/shuttle_landmark/ship/landmark       // Record our open space landmark for easy reference.
-	var/multiz = 0										// Index of multi-z levels, starts at 0
 	var/status = SHIP_STATUS_LANDED
 	icon_state = "shuttle"
 	moving_state = "shuttle_moving"
@@ -41,11 +40,12 @@
 /obj/effect/overmap/visitable/ship/landable/proc/setup_overmap_location()
 	if(LAZYLEN(map_z))
 		return // We're already set up!
-	for(var/i = 0 to multiz)
-		SSmapping.add_new_zlevel("[src] transit [i+1]", list())
-		map_z += world.maxz
+	var/datum/map_level/transit/creating = new
+	creating.name = "Transit - [src]"
+	var/datum/map_level/loaded = SSmapping.allocate_level(creating)
+	map_z += loaded.z_index
 
-	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), world.maxz)
+	var/turf/center_loc = locate(round(world.maxx/2), round(world.maxy/2), loaded.z_index)
 	landmark.forceMove(center_loc)
 
 	var/visitor_dir = fore_dir
@@ -55,8 +55,6 @@
 		add_landmark(visitor_landmark)
 		visitor_dir = turn(visitor_dir, 90)
 
-	if(multiz)
-		new /obj/landmark/map_data(center_loc, (multiz + 1))
 	register_z_levels()
 	testing("Setup overmap location for \"[name]\" containing Z [english_list(map_z)]")
 

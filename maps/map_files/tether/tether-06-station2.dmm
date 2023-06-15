@@ -2879,7 +2879,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Tech Storage";
 	req_access = list(19,23);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -2971,7 +2971,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
 	req_access = list(23);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
@@ -5917,7 +5917,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_command{
 	name = "E.V.A.";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/universal{
 	dir = 4

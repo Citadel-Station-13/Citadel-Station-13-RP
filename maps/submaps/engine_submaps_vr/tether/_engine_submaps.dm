@@ -16,25 +16,25 @@
 /datum/map_template/engine/rust
 	name = "EngineSubmap_RUST"
 	desc = "R-UST Fusion Tokamak Engine"
-	mappath = 'maps/templates/engines/tether/engine_rust.dmm'
+	map_path = 'maps/templates/engines/tether/engine_rust.dmm'
 	display_name = list("Contained Star", "Synthetic Killer", "Glowy Field", "R-UST", "Fusion Reactor", "Miniature Star")
 
 /datum/map_template/engine/singulo
 	name = "EngineSubmap_Singulo"
 	desc = "Lord Singuloth"
-	mappath = 'maps/templates/engines/tether/engine_singulo.dmm'
+	map_path = 'maps/templates/engines/tether/engine_singulo.dmm'
 	display_name = list("Hypnosis Swirls", "Lord Singuloth", "The Devourer of Stations", "Contained Black Hole", "The Forbidden Succ")
 
 /datum/map_template/engine/supermatter
 	name = "EngineSubmap_SM"
 	desc = "Old Faithful Supermatter"
-	mappath = 'maps/templates/engines/tether/engine_sme.dmm'
+	map_path = 'maps/templates/engines/tether/engine_sme.dmm'
 	display_name = list("Angry Rock", "The Forbidden Rock Candy", "Supermatter", "Death Crystal", "Spicy Crystal")
 
 /datum/map_template/engine/tesla
 	name = "EngineSubmap_Tesla"
 	desc = "The Telsa Engine"
-	mappath = 'maps/templates/engines/tether/engine_tesla.dmm'
+	map_path = 'maps/templates/engines/tether/engine_tesla.dmm'
 	display_name = list("Edison's Bane", "Lady Tesla", "Lightning Ball", "Overpowered Phone Charger", "Exploder of Machines")
 
 // Landmark for where to load in the engine on permament map

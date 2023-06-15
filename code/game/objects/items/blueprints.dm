@@ -85,7 +85,7 @@
 	var/area/A = get_area()
 	var/text = {"<HTML><head><title>[src]</title></head><BODY>
 <h2>[station_name()] blueprints</h2>
-<small>Property of [GLOB.using_map.company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
+<small>Property of [(LEGACY_MAP_DATUM).company_name]. For heads of staff only. Store in high-secure storage.</small><hr>
 "}
 	var/curAreaType = get_area_type()
 	switch (curAreaType)

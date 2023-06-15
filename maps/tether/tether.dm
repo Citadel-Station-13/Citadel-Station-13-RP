@@ -16,7 +16,7 @@
 	#include "../../maps/map_files/tether/tether-09-solars.dmm"
 
 
-	#define USING_MAP_DATUM /datum/map/tether
+	#define USING_MAP_DATUM /datum/map/station/tether
 
 #elif !defined(MAP_OVERRIDE)
 

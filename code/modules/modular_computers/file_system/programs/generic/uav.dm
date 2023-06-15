@@ -171,8 +171,8 @@
 		else
 			return 0
 
-	var/list/zlevels_in_range = GLOB.using_map.get_map_levels(their_z, FALSE)
-	var/list/zlevels_in_long_range = GLOB.using_map.get_map_levels(their_z, TRUE) - zlevels_in_range
+	var/list/zlevels_in_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, FALSE)
+	var/list/zlevels_in_long_range = (LEGACY_MAP_DATUM).get_map_levels(their_z, TRUE) - zlevels_in_range
 	var/their_signal = 0
 	for(var/relay in ntnet_global.relays)
 		var/obj/machinery/ntnet_relay/R = relay

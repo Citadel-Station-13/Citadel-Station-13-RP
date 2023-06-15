@@ -5023,7 +5023,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Hard Storage";
 	req_access = list(11);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/storage)
@@ -5043,7 +5043,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering Hard Storage";
 	req_access = list(11);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/storage)
@@ -8182,7 +8182,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -8228,7 +8228,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -10366,7 +10366,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
 	name = "Teleport Access";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(17)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -10769,7 +10769,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -11518,7 +11518,7 @@
 	},
 /obj/machinery/door/window/southleft{
 	name = "Jetpack Storage";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(11,24)
 	},
 /obj/structure/table/rack{
@@ -11693,7 +11693,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -13254,7 +13254,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Workshop";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(14,24)
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -16205,7 +16205,7 @@
 	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Lobby";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -17026,7 +17026,7 @@
 /area/shuttle/securiship/general)
 "cBc" = (
 /obj/machinery/door/window/brigdoor/westleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(5,67)
 	},
 /obj/structure/cable{
@@ -21831,7 +21831,7 @@
 /area/maintenance/station/eng_lower)
 "oPI" = (
 /obj/machinery/door/window/brigdoor/westright{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(5,67)
 	},
 /obj/structure/cable{
@@ -24310,7 +24310,7 @@
 	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering Lobby";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
