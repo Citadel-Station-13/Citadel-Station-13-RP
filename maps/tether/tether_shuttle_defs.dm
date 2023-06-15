@@ -52,24 +52,6 @@
 	docking_controller_tag = "tether_shuttle"
 	move_direction = NORTH
 
-//////////////////////////////////////////////////////////////
-// RogueMiner "Belter: Shuttle
-
-/datum/shuttle/autodock/ferry/belter
-	name = "Belter"
-	location = FERRY_LOCATION_STATION
-	warmup_time = 5
-	move_time = 30
-	shuttle_area = /area/shuttle/belter
-	landmark_station = "belter_station"
-	landmark_offsite = "belter_zone1"
-	landmark_transition = "belter_transit"
-	docking_controller_tag = "belter_docking"
-	move_direction = EAST
-
-/datum/shuttle/autodock/ferry/belter/New()
-	move_time = move_time + rand(-5 SECONDS, 5 SECONDS)
-	..()
 
 //////////////////////////////////////////////////////////////
 // Surface Mining Outpost Shuttle

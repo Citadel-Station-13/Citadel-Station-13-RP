@@ -60,17 +60,6 @@
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Mining Shuttle"
 
-// Trade Shuttle
-
-/obj/effect/overmap/visitable/ship/landable/trade
-	name = "Beruang Trade Ship"
-	desc = "You know our motto: 'We deliver!'"
-	color = "#754116" //Brown
-	fore_dir = WEST
-	vessel_mass = 25000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Trade Ship"
-
 //EMT Shuttle
 
 /obj/effect/overmap/visitable/ship/landable/emt

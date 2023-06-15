@@ -163,36 +163,6 @@
 	name = "civilian jump console"
 	shuttle_tag = "Civilian Transport"
 
-// TRADE SHIP
-/datum/shuttle/autodock/overmap/trade
-	name = "Beruang Trade Ship"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
-	current_location = "tradeport_hangar"
-	docking_controller_tag = "tradeport_hangar_docker"
-	landmark_transition = "nav_transit_trade"
-	fuel_consumption = 5
-	move_time = 10
-
-/obj/effect/overmap/visitable/ship/landable/trade
-	name = "Beruang Trade Ship"
-	desc = "You know our motto: 'We deliver!'"
-	color = "#754116" //Brown
-	fore_dir = WEST
-	vessel_mass = 25000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Beruang Trade Ship"
-
-/area/shuttle/trade_ship
-	name = "Beruang Trade Ship"
-	icon_state = "shuttle"
-
-/area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Ship"
-
-/area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Ship Cockpit"
-
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt
 	name = "Dart EMT Shuttle"
@@ -244,20 +214,3 @@
 	landmark_station = "supply_dock"
 	docking_controller_tag = "supply_shuttle"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
-
-// RogueMiner "Belter: Shuttle
-
-/datum/shuttle/autodock/ferry/belter
-	name = "Belter"
-	location = FERRY_LOCATION_STATION
-	warmup_time = 6
-	move_time = 20 // i am fairly sure this is in seconds
-	shuttle_area = /area/shuttle/belter
-	landmark_station = "belter_station"
-	landmark_offsite = "belter_zone1"
-	landmark_transition = "belter_transit"
-	docking_controller_tag = "belter_docking"
-
-/datum/shuttle/autodock/ferry/belter/New()
-	move_time = move_time + rand(-5, 10) //30s max, 15s min, probably leaning towards higher values.
-	..()

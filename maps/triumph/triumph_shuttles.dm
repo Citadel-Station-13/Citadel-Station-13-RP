@@ -196,27 +196,6 @@
 	name = "mining jump console"
 	shuttle_tag = "Mining Shuttle"
 
-// TRADE SHIP
-/datum/shuttle/autodock/overmap/trade
-	name = "Beruang Trade Ship"
-	warmup_time = 0
-	shuttle_area = list(/area/shuttle/trade_ship/cockpit, /area/shuttle/trade_ship/general)
-	current_location = "tradeport_hangar"
-	docking_controller_tag = "tradeport_hangar_docker"
-	//landmark_transition = "nav_transit_trade"
-	fuel_consumption = 5
-	move_time = 10
-
-/area/shuttle/trade_ship
-	name = "Beruang Trade Ship"
-	icon_state = "shuttle"
-
-/area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Ship"
-
-/area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Ship Cockpit"
-
 //EMT Shuttle
 /datum/shuttle/autodock/overmap/emt
 	name = "Dart EMT Shuttle"
