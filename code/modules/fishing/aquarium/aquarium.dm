@@ -102,7 +102,7 @@
 	var/mutable_appearance/glass_overlay = mutable_appearance(icon, (atom_flags & ATOM_BROKEN) ? broken_glass_icon_state : glass_icon_state,layer=AQUARIUM_MAX_OFFSET-1)
 	. += glass_overlay
 
-/obj/structure/aquarium/examine(mob/user)
+/obj/structure/aquarium/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to [panel_open ? "close" : "open"] the control panel.")
 

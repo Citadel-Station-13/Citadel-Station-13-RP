@@ -656,6 +656,11 @@
 	desc = "It is a dark red cheongsam dress."
 	icon_state = "cheongsam-darkred"
 
+/obj/item/clothing/under/cheongsam/darkgreen
+	name = "dark green cheongsam"
+	desc = "It is a dark green cheongsam dress."
+	icon_state = "cheongsam-darkgreen"
+
 /obj/item/clothing/under/cheongsam/green
 	name = "green cheongsam"
 	desc = "It is a green cheongsam dress."

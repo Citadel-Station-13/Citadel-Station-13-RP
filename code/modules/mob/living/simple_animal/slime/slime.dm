@@ -241,7 +241,7 @@
 	unity = TRUE
 	attack_same = FALSE
 
-/mob/living/simple_animal/slime/examine(mob/user)
+/mob/living/simple_animal/slime/examine(mob/user, dist)
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
 	if(hat)
 		. += "It is wearing \a [hat]." //slime hat. slat? hlime?

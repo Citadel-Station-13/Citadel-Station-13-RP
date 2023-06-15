@@ -116,7 +116,7 @@
 	size = average_size
 	weight = average_weight
 
-/obj/item/fish/examine(mob/user)
+/obj/item/fish/examine(mob/user, dist)
 	. = ..()
 	// All spacemen have magic eyes of fish weight perception until fish scale (get it?) is implemented.
 	. += SPAN_NOTICE("It's [size] cm long.")

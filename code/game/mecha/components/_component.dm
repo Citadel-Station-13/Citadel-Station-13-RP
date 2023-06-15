@@ -25,7 +25,7 @@
 
 	var/internal_damage_flag	// If set, the component will toggle the flag on or off if it is destroyed / severely damaged.
 
-/obj/item/mecha_parts/component/examine(mob/user)
+/obj/item/mecha_parts/component/examine(mob/user, dist)
 	. = ..()
 	var/show_integrity = round(integrity/integrity_max*100, 0.1)
 	switch(show_integrity)

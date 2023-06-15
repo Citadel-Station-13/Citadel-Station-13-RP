@@ -64,7 +64,7 @@
 	. = ..()
 	failmsg = "The [name]'s refill light blinks red."
 
-/obj/item/lightreplacer/examine(mob/user)
+/obj/item/lightreplacer/examine(mob/user, dist)
 	. = ..()
 	. += "It has [uses] lights remaining."
 

@@ -58,7 +58,7 @@ var/global/list/light_type_cache = list()
 		if(3)
 			icon_state = "tube-empty"
 
-/obj/machinery/light_construct/examine(mob/user)
+/obj/machinery/light_construct/examine(mob/user, dist)
 	. = ..()
 
 	switch(src.stage)
@@ -560,7 +560,7 @@ var/global/list/light_type_cache = list()
 	return cell
 
 // examine verb
-/obj/machinery/light/examine(mob/user)
+/obj/machinery/light/examine(mob/user, dist)
 	. = ..()
 	var/fitting = get_fitting_name()
 	switch(status)

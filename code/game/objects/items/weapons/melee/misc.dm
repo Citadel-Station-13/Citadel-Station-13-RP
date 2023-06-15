@@ -441,7 +441,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/melee/thermalcutter/examine(mob/user)
+/obj/item/melee/thermalcutter/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"

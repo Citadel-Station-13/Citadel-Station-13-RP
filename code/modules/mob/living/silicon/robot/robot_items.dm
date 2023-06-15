@@ -438,7 +438,7 @@
 	max_walls = 10
 	max_doors = 5
 
-/obj/item/inflatable_dispenser/examine(mob/user)
+/obj/item/inflatable_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
 	. += "It is set to deploy [mode ? "doors" : "walls"]"

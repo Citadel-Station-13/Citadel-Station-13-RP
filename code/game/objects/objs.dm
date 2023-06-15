@@ -206,17 +206,10 @@
 /obj/proc/is_safe_to_step(mob/living/L)
 	return TRUE
 
-/obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	return
-
-/obj/attack_hand(mob/user, list/params)
-	if(Adjacent(user))
-		add_fingerprint(user)
-	..()
 
 //? Examine
 
-/obj/examine(mob/user)
+/obj/examine(mob/user, dist)
 	. = ..()
 	if(integrity_examine)
 		. += examine_integrity(user)

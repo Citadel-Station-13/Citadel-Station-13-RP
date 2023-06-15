@@ -51,7 +51,7 @@
 				temp_rating += SP.rating
 		power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
-	examine(mob/user)
+	examine(mob/user, dist)
 		. = ..()
 		. += "<font color=#4F49AF>The generator has [P.air_contents.phoron] units of fuel left, producing [power_gen] per cycle.</font>"
 

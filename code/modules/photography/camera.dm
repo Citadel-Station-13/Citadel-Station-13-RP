@@ -1,118 +1,12 @@
-/*	Photography!
- *	Contains:
- *		Camera
- *		Camera Film
- *		Photos
- *		Photo Albums
- */
+// todo: refactor everything
 
-/*******
-* film *
-*******/
-/obj/item/camera_film
-	name = "film cartridge"
-	icon = 'icons/obj/items.dmi'
-	desc = "A camera film cartridge. Insert it into a camera to reload it."
-	icon_state = "film"
-	item_state = "camera"
-	w_class = ITEMSIZE_TINY
-
-
-/********
-* photo *
-********/
-var/global/photo_count = 0
-
-/obj/item/photo
-	name = "photo"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "photo"
-	item_state = "paper"
-	w_class = ITEMSIZE_SMALL
-	drop_sound = 'sound/items/drop/paper.ogg'
-	pickup_sound = 'sound/items/pickup/paper.ogg'
-	var/id
-	var/icon/img	//Big photo image
-	var/scribble	//Scribble on the back.
-	var/icon/tiny
-	var/photo_size = 3
-
-/obj/item/photo/Initialize(mapload)
-	. = ..()
-	id = photo_count++
-
-/obj/item/photo/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	user.examinate(src)
-
-/obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
-	if(istype(P, /obj/item/pen))
-		var/txt = sanitize(input(user, "What would you like to write on the back?", "Photo Writing", null)  as text, 128)
-		if(loc == user && user.stat == 0)
-			scribble = txt
-	..()
-
-/obj/item/photo/examine(mob/user)
-	if(in_range(user, src))
-		show(user)
-		return ..()
-	else
-		to_chat(user, "<span class='notice'>It is too far away.</span>")
-
-/obj/item/photo/proc/show(mob/user as mob)
-	user << browse_rsc(img, "tmp_photo_[id].png")
-	user << browse("<html><head><title>[name]</title></head>" \
-		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
-		+ "<img src='tmp_photo_[id].png' width='[64*photo_size]' style='-ms-interpolation-mode:nearest-neighbor' />" \
-		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
-		+ "</body></html>", "window=book;size=[64*photo_size]x[scribble ? 400 : 64*photo_size]")
-	onclose(user, "[name]")
-	return
-
-/obj/item/photo/verb/rename()
-	set name = "Rename photo"
-	set category = "Object"
-	set src in usr
-
-	var/n_name = sanitizeSafe(input(usr, "What would you like to label the photo?", "Photo Labelling", null)  as text, MAX_NAME_LEN)
-	//loc.loc check is for making possible renaming photos in clipboards
-	if(( (loc == usr || (loc.loc && loc.loc == usr)) && usr.stat == 0))
-		name = "[(n_name ? "[n_name]" : "photo")]"
-	add_fingerprint(usr)
-	return
-
-
-/**************
-* photo album *
-**************/
-/obj/item/storage/photo_album
-	name = "Photo album"
-	icon = 'icons/obj/items.dmi'
-	icon_state = "album"
-	item_state = "briefcase"
-	can_hold = list(/obj/item/photo)
-
-/obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)
-	if((istype(usr, /mob/living/carbon/human)))
-		if(!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-		playsound(loc, "rustle", 50, 1, -5)
-		if(over_object == usr && in_range(src, usr) || usr.contents.Find(src))
-			if(usr.s_active)
-				usr.s_active.close(usr)
-			show_to(usr)
-
-/*********
-* camera *
-*********/
 /obj/item/camera
 	name = "camera"
-	icon = 'icons/obj/items.dmi'
-	desc = "A polaroid camera. 10 photos left."
+	icon = 'icons/modules/photography/camera.dmi'
 	icon_state = "camera"
-	item_state = "camera"
+	worn_state = "camera"
+	worn_render_flags = NONE
+	desc = "A polaroid camera. 10 photos left."
 	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_BELT
@@ -147,13 +41,14 @@ var/global/photo_count = 0
 
 /obj/item/camera/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/camera_film))
-		if(pictures_left)
-			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
+		var/obj/item/camera_film/film = I
+		if(pictures_left >= pictures_max)
+			to_chat(user, "<span class='notice'>[src] still has a lot of film in it!</span>")
 			return
 		if(!user.attempt_insert_item_for_installation(I, src))
 			return
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
-		pictures_left = pictures_max
+		pictures_left += film.amount
 		return
 	..()
 
@@ -205,8 +100,8 @@ var/global/photo_count = 0
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
 		res.Blend(get_flat_icon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
-	return res
-
+	// trample animations
+	return icon(res, dir = SOUTH, frame = 1)
 
 /obj/item/camera/proc/get_mobs(turf/the_turf as turf)
 	var/mob_detail
@@ -273,51 +168,17 @@ var/global/photo_count = 0
 
 /obj/item/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
 	var/icon/photoimage = get_icon(turfs, target)
-
-	var/icon/small_img = icon(photoimage)
-	var/icon/tiny_img = icon(photoimage)
-	var/icon/ic = icon('icons/obj/items.dmi',"photo")
-	var/icon/pc = icon('icons/obj/bureaucracy.dmi', "photo")
-	small_img.Scale(8, 8)
-	tiny_img.Scale(4, 4)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
-
-	var/obj/item/photo/p = new()
-	p.name = "photo"
-	p.icon = ic
-	p.tiny = pc
-	p.img = photoimage
-	p.desc = mobs
-	p.pixel_x = rand(-10, 10)
-	p.pixel_y = rand(-10, 10)
-	p.photo_size = size
-	return p
+	var/datum/photograph/photograph = new
+	photograph.from_image(photoimage)
+	photograph.desc = mobs
+	SSphotography.save_photograph(photograph)
+	return create_photo(from_what = photograph)
 
 /obj/item/camera/proc/printpicture(mob/user, obj/item/photo/p)
 	p.loc = user.loc
 	if(!user.get_inactive_held_item())
 		user.put_in_inactive_hand(p)
 
-/obj/item/photo/proc/copy(var/copy_id = 0)
-	var/obj/item/photo/p = new/obj/item/photo()
-
-	p.name = name
-	p.icon = icon(icon, icon_state)
-	p.tiny = icon(tiny)
-	p.img = icon(img)
-	p.desc = desc
-	p.pixel_x = pixel_x
-	p.pixel_y = pixel_y
-	p.photo_size = photo_size
-	p.scribble = scribble
-
-	if(copy_id)
-		p.id = id
-
-	return p
-
 /obj/item/camera/spooky
 	name = "camera obscura"
 	desc = "A polaroid camera, some say it can see ghosts!"
-	//see_ghosts = CAMERA_SEE_GHOSTS_BASIC (We should discuss whether this should exist before I bother coding it.)

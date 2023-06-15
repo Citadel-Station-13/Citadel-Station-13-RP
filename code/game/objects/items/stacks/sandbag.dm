@@ -137,7 +137,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//update_connections(TRUE)
 	. = ..()
 
-/obj/structure/sandbag/examine(mob/user)
+/obj/structure/sandbag/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)

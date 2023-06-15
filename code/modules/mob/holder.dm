@@ -32,7 +32,7 @@
 	if(!(flags & INV_OP_DELETING))
 		update_state()
 
-/obj/item/holder/examine(mob/user)
+/obj/item/holder/examine(mob/user, dist)
 	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()

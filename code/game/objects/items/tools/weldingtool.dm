@@ -57,7 +57,7 @@
 		STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/weldingtool/examine(mob/user)
+/obj/item/weldingtool/examine(mob/user, dist)
 	. = ..()
 	if(max_fuel)
 		. += "[icon2html(thing = src, target = world)] The [src.name] contains [get_fuel()]/[src.max_fuel] units of fuel!"
@@ -573,7 +573,7 @@
 /obj/item/weldingtool/electric/get_cell()
 	return power_supply
 
-/obj/item/weldingtool/electric/examine(mob/user)
+/obj/item/weldingtool/electric/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) > 1)
 		return

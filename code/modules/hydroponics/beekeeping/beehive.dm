@@ -33,7 +33,7 @@
 
 	add_overlay(overlays_to_add)
 
-/obj/machinery/beehive/examine(mob/user)
+/obj/machinery/beehive/examine(mob/user, dist)
 	. = ..()
 	if(!closed)
 		. += "The lid is open."

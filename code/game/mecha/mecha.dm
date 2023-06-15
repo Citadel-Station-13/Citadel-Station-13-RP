@@ -443,7 +443,7 @@
 	else
 		return 0
 
-/obj/mecha/examine(mob/user)
+/obj/mecha/examine(mob/user, dist)
 	. = ..()
 
 	var/obj/item/mecha_parts/component/armor/AC = internal_components[MECH_ARMOR]

@@ -257,6 +257,15 @@
 			/obj/item/stack/cable_coil = 5
 			)
 
+/datum/supply_pack/eng/reflector
+	name = "Reflector crate"
+	cost = 60
+	container_name = "Reflector crate"
+	container_type = /obj/structure/closet/crate/engineering
+	contains = list(
+			/obj/structure/prop/prism/reflector = 1
+			)
+
 /datum/supply_pack/eng/tritium
 	name = "Tritium crate"
 	cost = 75

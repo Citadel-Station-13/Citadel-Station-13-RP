@@ -215,6 +215,13 @@ STANDARD_ACCESS_DATUM(ACCESS_SECURITY_MAIN, station/security/main, "Security")
 #define ACCESS_SECURITY_HOS 58
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_HOS, station/security/hos, "Head of Security")
 
+#define ACCESS_SECURITY_GENPOP_ENTER 111
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_ENTER, station/security/genpop_enter, "Genpop - Enter")
+
+#define ACCESS_SECURITY_GENPOP_EXIT 112
+STANDARD_ACCESS_DATUM(ACCESS_SECURITY_GENPOP_EXIT, station/security/genpop_exit, "Genpop - Enter")
+
+
 #define ACCESS_SECURITY_EDIT 306
 STANDARD_ACCESS_DATUM(ACCESS_SECURITY_EDIT, station/security/edit, "Security - Access Edit")
 	sort_order = -1000

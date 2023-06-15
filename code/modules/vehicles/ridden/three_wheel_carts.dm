@@ -10,7 +10,7 @@
 
 
 /datum/component/riding_handler/vehicle/ridden/cart
-	vehicle_move_delay = 2
+	vehicle_move_delay = 1.25
 	allowed_turf_types = list(
 		/turf/simulated,
 		/turf/unsimulated

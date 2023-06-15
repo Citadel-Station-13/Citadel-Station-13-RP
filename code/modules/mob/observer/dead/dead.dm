@@ -454,6 +454,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Become mouse"
 	set category = "Ghost"
 
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+		log_shadowban("[key_name(src)] mouse join blocked")
+		return
+
 	if(config_legacy.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
 		return
@@ -850,6 +855,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	//Fine fine, we can ask.
 	var/obj/item/nif/nif = H.nif
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+
+	if(client.persistent.ligma)
+		sleep(rand(40,120))
+		to_chat(src, SPAN_WARNING("[H] denied your request."))
+		log_shadowban("[key_name(src)] SC join blocked.")
+		return
 
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")

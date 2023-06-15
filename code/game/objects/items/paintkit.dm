@@ -403,6 +403,10 @@
 //Fighters//
 ////////////
 
+
+///Skrell//
+
+//Allure
 /obj/item/kit/paint/fighter/allure/royalty
 	name = "\"Royalty\" Allure customisation kit"
 	new_name = "Allure \"Royalty\""
@@ -410,3 +414,22 @@
 	new_icon = "allure_royalty"
 	allowed_types = list("allure")
 
+
+//Hephestus Industries
+
+//Duke
+/obj/item/kit/paint/fighter/duke/deepblue
+	name = "\"Deep Blue\" Duke customisation kit"
+	desc = "A fairly common repaint kit for the Duke heavy fighter, designed and sold by Hephaestus Industries. A small pamphlet is stored within that reads: 'This kit pays homage to one of the first supercomputing systems that dared to push the boundaries of what it meant to think. Think 40 steps ahead of your enemy with this paint kit, just as Deep Blue did so many years ago.'"
+	new_name = "Duke \"Deep Blue\""
+	new_desc = "A Duke heavy fighter decorated with the common 'Deep Blue' customization kit, both designed and sold by Hephaestus Industries. This paint scheme pays homage to one of the first supercomputing systems that dared to push the boundaries of what it meant to think. Think 40 steps ahead of your enemy with these colorations, just as Deep Blue did so many years ago."
+	new_icon = "duke_db"
+	allowed_types = list("duke")
+
+/obj/item/kit/paint/fighter/duke/clockwork
+	name = "\"Clockwork\" Duke customisation kit"
+	desc = "An uncommon repaint kit for the Duke heavy fighter, designed and sold by Hephaestus Industries. A sticker is attached to the container that reads: 'Return to traditional machinery with this brass clockwork design! Textured paint with accurate colorations and reflectiveness to brass makes this a must-have if you're looking to fight in fashion!'"
+	new_name = "Duke \"Clockwork\""
+	new_desc = "A Duke heavy fighter decorated with the rare 'Clockwork' customization kit, both designed and sold by Hephaestus Industries. Textured paint with accurate colorations and reflectiveness to brass makes this Duke Heavy Fighter stand out amongst the competition in any conflict."
+	new_icon = "duke_cw"
+	allowed_types = list("duke")

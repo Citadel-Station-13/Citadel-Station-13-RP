@@ -45,7 +45,7 @@
 	create_reagents(max_water)
 	reagents.add_reagent("water", max_water)
 
-/obj/item/extinguisher/examine(mob/user)
+/obj/item/extinguisher/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = user)] [src.name] contains [src.reagents.total_volume] units of water left!"
 

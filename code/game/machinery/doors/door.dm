@@ -315,7 +315,7 @@
 	return
 
 
-/obj/machinery/door/examine(mob/user)
+/obj/machinery/door/examine(mob/user, dist)
 	. = ..()
 	if(src.health <= 0)
 		. += "<span class = 'notice'>The [src] is broken!</span>"

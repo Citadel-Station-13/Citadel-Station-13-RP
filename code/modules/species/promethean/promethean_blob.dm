@@ -486,7 +486,7 @@
 	//Return ourselves in case someone wants it
 	return src
 
-/mob/living/simple_mob/slime/promethean/examine(mob/user)
+/mob/living/simple_mob/slime/promethean/examine(mob/user, dist)
 	. = ..()
 	if(hat)
 		. += "They are wearing \a [hat]."
