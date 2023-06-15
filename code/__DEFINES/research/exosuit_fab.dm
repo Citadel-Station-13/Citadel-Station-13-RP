@@ -21,6 +21,10 @@
 #define EXOSUIT_MODULE_PHAZON		(1<<4)
 /// Module is compatible with Pinnace Fighter models
 #define EXOSUIT_MODULE_PINNACE		(1<<5)
+/// Module is compatible with Baron Fighter models
+#define EXOSUIT_MODULE_BARON		(1<<6)
+/// Module is compatible with Duke Fighter models
+#define EXOSUIT_MODULE_DUKE			(1<<7)
 
 /// Module is compatible with "Working" Exosuit models - Ripley
 #define EXOSUIT_MODULE_WORKING		EXOSUIT_MODULE_RIPLEY
@@ -28,8 +32,8 @@
 #define EXOSUIT_MODULE_COMBAT		EXOSUIT_MODULE_GYGAX  | EXOSUIT_MODULE_DURAND | EXOSUIT_MODULE_PHAZON
 /// Module is compatible with "Medical" Exosuit models - Odysseus
 #define EXOSUIT_MODULE_MEDICAL		EXOSUIT_MODULE_ODYSSEUS
-/// Module is compatible with "Fighters" Fighter models - Pinnace
-#define EXOSUIT_MODULE_FIGHTER		EXOSUIT_MODULE_PINNACE
+/// Module is compatible with "Fighters" Fighter models - Pinnace, Baron, Duke
+#define EXOSUIT_MODULE_FIGHTER		EXOSUIT_MODULE_PINNACE | EXOSUIT_MODULE_BARON | EXOSUIT_MODULE_DUKE
 
 // Defines for Exosuit components.
 

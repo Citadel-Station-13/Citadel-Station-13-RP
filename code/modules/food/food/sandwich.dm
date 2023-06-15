@@ -82,7 +82,7 @@
 		qdel(O)
 	return ..()
 
-/obj/item/reagent_containers/food/snacks/csandwich/examine(mob/user)
+/obj/item/reagent_containers/food/snacks/csandwich/examine(mob/user, dist)
 	. = ..()
 	var/obj/item/O = pick(contents)
 	. += "<font color=#4F49AF>You think you can see [O.name] in there.</font>"

@@ -7177,6 +7177,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/teleporter)
 "arU" = (
@@ -11131,7 +11134,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/cliff_south)
 "aBU" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rsurface/level3)
 "aBV" = (
 /obj/structure/cable/green{
@@ -22598,6 +22601,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/dock)
+"hGl" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/teleporter)
 "hKE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/common,
@@ -49309,7 +49324,7 @@ ayH
 alI
 aFZ
 aMg
-aNO
+hGl
 aNO
 ahr
 aNO

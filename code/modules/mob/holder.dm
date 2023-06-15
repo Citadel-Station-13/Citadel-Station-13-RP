@@ -32,7 +32,7 @@
 	if(!(flags & INV_OP_DELETING))
 		update_state()
 
-/obj/item/holder/examine(mob/user)
+/obj/item/holder/examine(mob/user, dist)
 	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()
@@ -150,10 +150,10 @@
 	allowed = list(/obj/item/gun,/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/melee/baton)
 
 
-/obj/item/holder/fish/afterattack(var/atom/target, var/mob/living/user, proximity)
+/obj/item/holder/fish/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!target)
 		return
-	if(!proximity)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 	if(isliving(target))
 		var/mob/living/L = target

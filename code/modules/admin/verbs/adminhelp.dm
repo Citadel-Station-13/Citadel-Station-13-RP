@@ -509,6 +509,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 	remove_verb(src, /client/verb/adminhelp)
 	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
 
+	if(persistent.ligma)
+		to_chat(usr, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")
+		log_shadowban("[key_name(src)] AHELP: [msg]")
+		return
+
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(current_ticket)
 		if(alert(usr, "You already have a ticket open. Is this for the same issue?",,"Yes","No") != "No")

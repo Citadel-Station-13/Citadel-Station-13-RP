@@ -49,7 +49,7 @@
 			last_production_time = world.time
 			produce()
 
-/obj/item/ammo_magazine/smart/examine(mob/user)
+/obj/item/ammo_magazine/smart/examine(mob/user, dist)
 	. = ..()
 
 	if(attached_cell)
@@ -103,7 +103,7 @@
 
 	..()
 
-/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/ammo_magazine/smart/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(src.loc == user)
 		scan_ammo(target, user)
 	..()

@@ -611,7 +611,7 @@ GLOBAL_DATUM_INIT(virtual_announcer_ai, /mob/living/silicon/ai/announcer, new(nu
 		return get_mobs_or_objects_in_view(canhear_range, src)
 
 
-/obj/item/radio/examine(mob/user)
+/obj/item/radio/examine(mob/user, dist)
 	. = ..()
 	if ((in_range(src, user) || loc == user))
 		if (b_stat)

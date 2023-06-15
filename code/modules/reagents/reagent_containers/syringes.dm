@@ -54,8 +54,8 @@
 /obj/item/reagent_containers/syringe/attackby(obj/item/I as obj, mob/user as mob)
 	return
 
-/obj/item/reagent_containers/syringe/afterattack(obj/target, mob/user, proximity)
-	if(!proximity || !target.reagents)
+/obj/item/reagent_containers/syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) || !target.reagents)
 		return
 
 	if(mode == SYRINGE_BROKEN)
@@ -289,7 +289,7 @@
 	visible_name = "a giant syringe"
 	time = 300
 
-/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(obj/target, mob/user, flag)
+/obj/item/reagent_containers/syringe/ld50_syringe/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(mode == SYRINGE_DRAW && ismob(target)) // No drawing 50 units of blood at once
 		to_chat(user, "<span class='notice'>This needle isn't designed for drawing blood.</span>")
 		return

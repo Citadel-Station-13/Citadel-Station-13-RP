@@ -104,6 +104,11 @@
 
 	log_ooc(raw_msg, src)
 
+	if(persistent.ligma)
+		to_chat(src, "<span class='ooc'><span class='everyone'><span class='message'>OOC: <EM>[src.key]: </EM><span class='linkify'>[msg]</span></span></span></span>")
+		log_shadowban("[key_name(src)] OOC: [msg]")
+		return
+
 	var/ooc_style = "everyone"
 	if(holder && !holder.fakekey)
 		ooc_style = "elevated"
@@ -177,8 +182,6 @@
 			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
 			return
 
-	log_looc(msg,src)
-
 	if(msg)
 		handle_spam_prevention(MUTE_OOC)
 
@@ -218,6 +221,13 @@
 			r_receivers |= admin
 
 	msg = emoji_parse(msg)
+
+	if(persistent.ligma)
+		to_chat(src, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
+		log_shadowban("[key_name(src)] LOOC: [msg]")
+		return
+
+	log_looc(msg,src)
 
 	// Send a message
 	for(var/client/target in receivers)

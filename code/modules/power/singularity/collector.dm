@@ -99,7 +99,7 @@
 		return 1
 	return ..()
 
-/obj/machinery/power/rad_collector/examine(mob/user)
+/obj/machinery/power/rad_collector/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"

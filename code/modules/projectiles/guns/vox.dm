@@ -33,7 +33,7 @@
 		last_regen = world.time
 		update_icon()
 
-/obj/item/gun/launcher/spikethrower/examine(mob/user)
+/obj/item/gun/launcher/spikethrower/examine(mob/user, dist)
 	. = ..()
 	. += "It has [spikes] spike\s remaining."
 

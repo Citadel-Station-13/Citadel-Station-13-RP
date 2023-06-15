@@ -287,6 +287,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/entertainment)
+"aiT" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "ajh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1072,9 +1081,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/surfaceeva/aa/surface_south)
-"aNQ" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/medical/virology)
 "aOl" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	id = "violet_protocol";
@@ -1191,9 +1197,6 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/tether/surfacebase/medical/mentalhealth)
-"aUz" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/medical/virologyisolation)
 "aUS" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -2203,7 +2206,7 @@
 /turf/simulated/floor/tiled/monowhite,
 /area/rnd/testingroom)
 "bzQ" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rmine/surface)
 "bzV" = (
 /obj/structure/table/hardwoodtable,
@@ -3016,6 +3019,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/qm)
+"cbY" = (
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/cable/green{
+	icon_state = "32-4"
+	},
+/turf/simulated/open,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "ccj" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -4440,6 +4451,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"cZK" = (
+/obj/structure/stairs/spawner/south,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "cZS" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -5585,6 +5606,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
+"dHW" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "dHX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -7548,6 +7575,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"eTL" = (
+/turf/simulated/wall/r_wall,
+/area/turbolift/rhammerhead/midpoint)
 "eTN" = (
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Medical Maintenance Access";
@@ -7908,6 +7938,19 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
+"fka" = (
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/obj/effect/floor_decal/industrial/warning/full,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "fkT" = (
 /obj/structure/bed/chair/sofa/beige{
 	dir = 8
@@ -11455,6 +11498,15 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
+"hxK" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "hyf" = (
 /obj/machinery/atmospherics/tvalve/digital/mirrored/bypass{
 	dir = 4
@@ -12620,6 +12672,10 @@
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/floor/plating,
 /area/medical/virologytransiteast)
+"igy" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "igE" = (
 /obj/structure/table/rack/shelf,
 /obj/item/cell,
@@ -12735,6 +12791,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
+"ilj" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/lythios43c,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "ilP" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
@@ -14782,6 +14847,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
+"jvA" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "jvY" = (
 /obj/machinery/light{
 	dir = 4
@@ -14798,6 +14870,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"jwS" = (
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "jxa" = (
 /obj/structure/table/hardwoodtable,
 /turf/simulated/floor/wood/broken,
@@ -15380,6 +15455,11 @@
 "jPz" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
+"jPD" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/lowmedbaymaint)
 "jPV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
@@ -19874,6 +19954,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/rnd/chemistry_lab)
+"mwF" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "mwN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
@@ -22406,6 +22495,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
+"nYM" = (
+/obj/structure/sink/puddle,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "nYU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -24183,6 +24276,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/testingroom)
+"oYJ" = (
+/obj/structure/flora/ausbushes/grassybush,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "oYT" = (
 /obj/structure/bed/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24251,6 +24348,14 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
+"oZG" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "cmo_office"
+	},
+/turf/simulated/floor/plating,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "oZM" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -25471,6 +25576,11 @@
 /obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
+"pJH" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/machinery/light,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "pKb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
@@ -25555,6 +25665,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"pNg" = (
+/turf/simulated/open,
+/area/turbolift/rhammerhead/midpoint)
 "pNv" = (
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/rods,
@@ -28321,6 +28434,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
 /area/rnd/xenoarch_storage)
+"rEi" = (
+/obj/structure/flora/ausbushes/fernybush,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "rEy" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -28970,6 +29087,18 @@
 "rZs" = (
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
+"rZD" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/concrete/rng/indoors,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "rZO" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/disposalpipe/segment{
@@ -31408,7 +31537,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "ttM" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/open,
 /area/turbolift/rsurface/level1)
 "tuj" = (
 /obj/structure/table/reinforced,
@@ -31648,6 +31777,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/server)
+"tAP" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/machinery/light,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "tBf" = (
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -34833,6 +34967,10 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/security/prison)
+"vsC" = (
+/obj/structure/flora/ausbushes/palebush,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "vtt" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/green/border,
@@ -37619,6 +37757,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
+"xci" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/outdoors/grass/heavy/interior,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "xcx" = (
 /obj/structure/grille,
 /obj/structure/sign/warning/lethal_turrets{
@@ -38952,6 +39095,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
+"xSd" = (
+/turf/simulated/wall/r_wall,
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint)
 "xSw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54849,9 +54995,9 @@ hgE
 hgE
 xxI
 hgE
-hgE
-hgE
-hgE
+xSd
+xSd
+xSd
 hgE
 hgE
 hgE
@@ -55043,9 +55189,9 @@ hgE
 hgE
 xxI
 hgE
-hgE
-hgE
-hgE
+xSd
+cbY
+xSd
 hgE
 hgE
 hgE
@@ -55236,11 +55382,11 @@ hgE
 hgE
 hgE
 xxI
-hgE
-hgE
-hgE
-hgE
-hgE
+xSd
+xSd
+jvA
+xSd
+xSd
 hgE
 hgE
 hgE
@@ -55430,11 +55576,11 @@ hgE
 hgE
 hgE
 xxI
-hgE
-hgE
-hgE
-hgE
-hgE
+xSd
+fka
+aiT
+dHW
+xSd
 hgE
 hgE
 hgE
@@ -55624,11 +55770,11 @@ hgE
 hgE
 hgE
 xxI
-hgE
-hgE
-hgE
-hgE
-hgE
+xSd
+rZD
+hxK
+hxK
+xSd
 hgE
 hgE
 hgE
@@ -55818,11 +55964,11 @@ hgE
 hgE
 hgE
 xxI
-hgE
-hgE
-hgE
-hgE
-hgE
+xSd
+mwF
+ilj
+cZK
+xSd
 hgE
 hgE
 hgE
@@ -56012,11 +56158,11 @@ hgE
 hgE
 hgE
 xxI
-hgE
-hgE
-hgE
-hgE
-hgE
+xSd
+xSd
+xSd
+xSd
+xSd
 hgE
 hgE
 hgE
@@ -56207,17 +56353,17 @@ hgE
 gzd
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+eTL
+eTL
+eTL
+eTL
+eTL
+eTL
+xSd
+xSd
+xSd
+xSd
 sDY
 msK
 qJI
@@ -56401,17 +56547,17 @@ hgE
 gzd
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+vsC
+tAP
+xSd
 sDY
 mSr
 nzo
@@ -56595,17 +56741,17 @@ hgE
 gzd
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+jwS
+nYM
+xSd
 sDY
 gqN
 nOt
@@ -56789,17 +56935,17 @@ lHl
 gno
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+oYJ
+jwS
+xSd
 sDY
 mkE
 cRs
@@ -56983,17 +57129,17 @@ fOs
 gtL
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+jwS
+xci
+xSd
 sDY
 lIg
 oiO
@@ -57177,17 +57323,17 @@ lHl
 gno
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+jwS
+igy
+xSd
 sDY
 kEZ
 oiO
@@ -57371,17 +57517,17 @@ hgE
 gzd
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+igy
+jwS
+xSd
 sDY
 eiI
 pGv
@@ -57565,17 +57711,17 @@ lHl
 gzd
 xxI
 gzd
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+eTL
+pNg
+pNg
+pNg
+pNg
+pNg
+eTL
+oZG
+rEi
+pJH
+xSd
 sDY
 kEZ
 oiO
@@ -57759,17 +57905,17 @@ lHl
 gzd
 xxI
 gzd
-hgE
-aUz
-aUz
-aUz
-aUz
-aUz
-aUz
-aUz
-hgE
-hgE
-hgE
+eTL
+eTL
+eTL
+eTL
+eTL
+eTL
+eTL
+xSd
+xSd
+xSd
+xSd
 sDY
 kEZ
 oiO
@@ -57954,7 +58100,7 @@ gzd
 xxI
 gzd
 hgE
-aUz
+hgE
 jLF
 jLF
 jLF
@@ -58148,7 +58294,7 @@ gzd
 xxI
 gzd
 hgE
-aUz
+hgE
 jLF
 wJK
 qAx
@@ -58342,7 +58488,7 @@ gzd
 xxI
 gzd
 hgE
-aUz
+hgE
 jLF
 vBt
 lHH
@@ -58534,19 +58680,19 @@ hgE
 hgE
 hgE
 xxI
-aUz
-aUz
-aUz
+hgE
+hgE
+hgE
 jLF
 exH
 hpz
 vSv
 sCX
 jLF
-aUz
-aUz
-aUz
-aUz
+hgE
+hgE
+hgE
+hgE
 hgE
 hgE
 hgE
@@ -58740,7 +58886,7 @@ jLF
 jLF
 jLF
 jLF
-aUz
+hgE
 hgE
 hgE
 hgE
@@ -58934,7 +59080,7 @@ xMV
 ptX
 uqq
 jLF
-aUz
+hgE
 hgE
 hgE
 hgE
@@ -59128,7 +59274,7 @@ blI
 wuO
 uCV
 jLF
-aUz
+hgE
 hgE
 hgE
 hgE
@@ -59331,8 +59477,8 @@ hgE
 hgE
 hgE
 hgE
+hgE
 gTC
-pOR
 pOR
 buH
 tdI
@@ -59525,9 +59671,9 @@ hgE
 hgE
 hgE
 hgE
+hgE
 gTC
 pOR
-buH
 buH
 tdI
 tdI
@@ -59720,10 +59866,10 @@ hgE
 hgE
 hgE
 gTC
-pOR
+gTC
+qYv
 buH
-xve
-bXD
+pOR
 tdI
 pZn
 iTF
@@ -59914,9 +60060,9 @@ hgE
 hgE
 hgE
 gTC
-qYv
-buH
 pOR
+pOR
+buH
 pOR
 kzX
 pZn
@@ -60109,8 +60255,8 @@ gzd
 hgE
 gTC
 pOR
-buH
 pOR
+buH
 pOR
 kzX
 kzX
@@ -60497,9 +60643,9 @@ hgE
 hgE
 gTC
 nbp
-nbp
-nbp
-nbp
+jPD
+xve
+bXD
 aVS
 awP
 rnG
@@ -63383,17 +63529,17 @@ hgE
 hgE
 hgE
 hgE
-aNQ
-aNQ
-aNQ
-aNQ
 hgE
 hgE
 hgE
-aNQ
-aNQ
-aNQ
-aNQ
+hgE
+hgE
+hgE
+hgE
+hgE
+hgE
+hgE
+hgE
 hgE
 hgE
 hgE

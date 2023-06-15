@@ -64,7 +64,7 @@
 	if (istype(A, /obj/item/ammo_casing/arrow))
 		load_ammo(A, user)
 
-/obj/item/gun/ballistic/bow/afterattack(atom/A, mob/living/user)
+/obj/item/gun/ballistic/bow/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	..()
 	src.ready = 0
 	update_icon()

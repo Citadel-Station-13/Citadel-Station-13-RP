@@ -252,7 +252,7 @@
 		to_chat(user, "<span class='warning'>The object is FAR too large!</span>")
 
 
-/obj/item/wrapping_paper/examine(mob/user)
+/obj/item/wrapping_paper/examine(mob/user, dist)
 	. = ..()
 	. += "There is about [src.amount] square units of paper left!"
 
