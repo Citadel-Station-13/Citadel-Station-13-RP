@@ -90,7 +90,6 @@
 	custom_only = FALSE
 	var_changes = list(
 		"is_vampire" = TRUE,
-		// "darksight" = 7,
 		vision_innate = /datum/vision/baseline/species_tier_2, // As per Silicons' suggestion
 		"flash_mod" = 2,
 		"flash_burn" = 5,
