@@ -20,10 +20,6 @@
 
 	full_name = "NSS Citadel Testing Facility"
 
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("minitest1", "minitest2")
-	id_hud_icons = 'icons/mob/hud_jobs_vr.dmi' //CITADEL CHANGE: Ignore this line because it's going to be overriden in modular_citadel\maps\tether\tether_defines.dm	//TODO Remove/Fix these unneccessary Override Overrides everywhere ffs - Zandario
-
 	use_overmap = TRUE
 	overmap_size = 20
 	overmap_event_areas = 15
