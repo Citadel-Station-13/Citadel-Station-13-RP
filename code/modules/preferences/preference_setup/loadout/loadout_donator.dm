@@ -1,5 +1,5 @@
 /datum/gear/donator
-	sort_category = "Donator"
+	sort_category = LOADOUT_CATEGORY_DONATOR
 	cost = 0 // If they went out of their way to PAY for a custom item, given our no-gameplay-advantage-granting-items rule, it's only right that they aren't penalized and need to re-adjust their loadout to compensate for their new item's cost.
 	name = "If this item can be chosen or seen, ping a coder immediately!"
 	path = /obj/item/bikehorn

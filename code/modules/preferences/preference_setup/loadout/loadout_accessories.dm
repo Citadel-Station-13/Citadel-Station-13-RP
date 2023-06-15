@@ -2,7 +2,7 @@
 /datum/gear/accessory
 	name = "Blue Silk Tie"
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 	abstract_type = /datum/gear/accessory
 	path = /obj/item/clothing/accessory
 	cost = 1
@@ -31,7 +31,6 @@
 /datum/gear/accessory/insignia
 	name = "Insignia Selection"
 	path = /obj/item/clothing/accessory/oricon/department
-	cost = 1
 
 /datum/gear/accessory/insignia/New()
 	..()
@@ -73,7 +72,6 @@
 /datum/gear/accessory/insigniacolored
 	name = "Insignia - Colorable"
 	path = /obj/item/clothing/accessory/oricon/department/colorable
-	cost = 1
 
 /datum/gear/accessory/insigniacolored/New()
 	..()
@@ -126,7 +124,6 @@
 /datum/gear/accessory/wcoat
 	name = "Waistcoat - Selection"
 	path = /obj/item/clothing/accessory/wcoat
-	cost = 1
 
 /datum/gear/accessory/wcoat/New()
 	..()
@@ -139,7 +136,6 @@
 /datum/gear/accessory/tie
 	name = "Tie - Selection"
 	path = /obj/item/clothing/accessory/tie
-	cost = 1
 
 /datum/gear/accessory/tie/New()
 	..()
@@ -152,7 +148,6 @@
 /datum/gear/accessory/scarf
 	name = "Scarf - Selection"
 	path = /obj/item/clothing/accessory/scarf
-	cost = 1
 
 /datum/gear/accessory/scarf/New()
 	..()
@@ -165,7 +160,6 @@
 /datum/gear/accessory/scarfcolor
 	name = "Scarf Colorable"
 	path = /obj/item/clothing/accessory/scarf/white
-	cost = 1
 
 /datum/gear/accessory/scarfcolor/New()
 	..()
@@ -174,7 +168,6 @@
 /datum/gear/accessory/jacket
 	name = "Suit Jacket Selection"
 	path = /obj/item/clothing/accessory/jacket
-	cost = 1
 
 /datum/gear/accessory/jacket/New()
 	..()
@@ -211,7 +204,6 @@
 /datum/gear/accessory/holster_selection
 	name = "Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
-	cost = 1
 
 /datum/gear/accessory/holster_selection/New()
 	..()
@@ -274,7 +266,6 @@
 	name = "Bracelet - Selection"
 	description = "Choose from a number of bracelets."
 	path = /obj/item/clothing/accessory/bracelet
-	cost = 1
 
 /datum/gear/accessory/bracelet/material/New()
 	..()
@@ -325,7 +316,6 @@
 /datum/gear/accessory/asym
 	name = "Asymmetric Jacket - Selection"
 	path = /obj/item/clothing/accessory/asymmetric
-	cost = 1
 
 /datum/gear/accessory/asym/New()
 	..()
@@ -343,7 +333,7 @@
 	name = "Choker"
 	path = /obj/item/clothing/accessory/choker
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/gear/choker/New()
 	..()
@@ -353,7 +343,7 @@
 	name = "Collar - Silver"
 	path = /obj/item/clothing/accessory/collar/silver
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/gear/collar/New()
 	..()
@@ -392,7 +382,6 @@
 	path = /obj/item/clothing/accessory/collar/holo/indigestible
 
 /datum/gear/accessory/webbing
-	cost = 1
 
 /datum/gear/accessory/vmcrystal
 	name = "Life Crystal"
@@ -421,7 +410,6 @@
 /datum/gear/accessory/gaiter
 	name = "Neck Gaiter - Selection"
 	path = /obj/item/clothing/accessory/gaiter
-	cost = 1
 
 /datum/gear/accessory/gaiter/New()
 	..()
@@ -434,13 +422,11 @@
 /datum/gear/accessory/laconic
 	name = "Laconic Field Pouch System"
 	path = /obj/item/clothing/accessory/storage/laconic
-	cost = 1
 
 /datum/gear/accessory/buttonup
 	name = "Button Up Shirt"
 	path = /obj/item/clothing/accessory/buttonup
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
 
 /datum/gear/accessory/buttonup/New()
 	..()
@@ -450,12 +436,10 @@
 	name = "Button Up Shirt - Untucked"
 	path = /obj/item/clothing/accessory/buttonup/untucked
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
 
 /datum/gear/accessory/antediluvian
 	name = "Antediluvian Loincloth"
 	path = /obj/item/clothing/accessory/antediluvian
-	cost = 1
 
 /datum/gear/accessory/antediluvian_gloves
 	name = "Antediluvian Bracers"
