@@ -209,6 +209,7 @@
 
 /obj/machinery/door/airlock/maintenance_hatch
 	name = "Maintenance Hatch"
+	airlock_type = "Hatch"
 	explosion_resistance = 20
 	opacity = 1
 	assembly_type = /obj/structure/door_assembly/door_assembly_mhatch

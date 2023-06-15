@@ -1745,9 +1745,6 @@
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"bmv" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/security/checkpoint)
 "bmG" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/portable_atmospherics/hydroponics,
@@ -1796,6 +1793,7 @@
 /area/rnd/chemistry_lab)
 "bnS" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/cargodock)
 "bnY" = (
@@ -1948,6 +1946,7 @@
 	},
 /obj/structure/cable,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint)
 "bqE" = (
@@ -3315,6 +3314,7 @@
 /obj/structure/grille,
 /obj/spawner/window/low_wall/reinforced/electrochromic/full/firelocks,
 /obj/machinery/door/firedoor/glass,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/qm)
 "cmb" = (
@@ -3862,13 +3862,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
-"cBn" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/qm)
 "cBA" = (
 /obj/item/storage/box/beakers{
 	pixel_x = 2;
@@ -4797,6 +4790,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/lawoffice)
+"did" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/maintenance/substation/cargo)
 "die" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
@@ -5491,19 +5487,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virology)
-"dDr" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 8
-	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = -24
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/qm)
 "dEP" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -5868,7 +5851,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "dNx" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/qm)
 "dNB" = (
 /obj/structure/fitness/punchingbag,
@@ -6947,7 +6930,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "esZ" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/delivery)
 "etU" = (
 /obj/machinery/power/breakerbox/activated{
@@ -7198,7 +7181,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
 "eBp" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/warehouse)
 "eBC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -7829,6 +7812,7 @@
 	dir = 4
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/foyer)
 "fcq" = (
@@ -8782,9 +8766,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologytransiteast)
-"fLw" = (
-/turf/simulated/wall/r_wall/prepainted,
-/area/rift/surfaceeva)
 "fLN" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	on = 1
@@ -9521,6 +9502,7 @@
 /area/quartermaster/delivery)
 "gmT" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "gmY" = (
@@ -9954,18 +9936,6 @@
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/station/public_meeting_room)
-"gDH" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 4
-	},
-/obj/structure/bed/chair{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/quartermaster/qm)
 "gDI" = (
 /obj/structure/grille,
 /obj/structure/railing{
@@ -10107,6 +10077,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "gJs" = (
@@ -10572,6 +10543,9 @@
 /area/rnd/hallway)
 "gTL" = (
 /obj/machinery/atmospheric_field_generator/perma,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/quartermaster/garage)
 "gTM" = (
@@ -11844,6 +11818,7 @@
 	opacity = 0
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "hFE" = (
@@ -12788,6 +12763,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/bed/chair,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/qm)
 "ift" = (
@@ -13796,6 +13772,14 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/garage)
 "iJb" = (
+/obj/structure/table/reinforced,
+/obj/item/pen/red{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/pen,
+/obj/item/folder/yellow,
+/obj/item/stamp/qm,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
@@ -14129,7 +14113,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
 "iTr" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/rift/surfaceeva/cargodock)
 "iTx" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -15887,7 +15871,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/hallway)
 "kaF" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/security,
 /area/security/checkpoint)
 "kbe" = (
 /turf/simulated/wall/prepainted,
@@ -23743,16 +23727,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
 "oFp" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/garage)
 "oFG" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"oFO" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/garage)
 "oGF" = (
 /turf/simulated/wall/prepainted/medical,
 /area/medical/psych/psych_2)
@@ -25953,7 +25932,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/tankstorage)
 "pUa" = (
-/turf/simulated/wall/r_wall/prepainted,
+/turf/simulated/wall/r_wall/prepainted/cargo,
 /area/quartermaster/hallway)
 "pUt" = (
 /obj/machinery/photocopier/faxmachine{
@@ -26074,10 +26053,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
-"qaT" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/garage)
 "qaV" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -26385,6 +26360,9 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologypurge)
+"qkC" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/maintenance/cargo)
 "qkF" = (
 /obj/effect/floor_decal/borderfloorwhite/corner{
 	dir = 4
@@ -26974,18 +26952,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
-"qDq" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/effect/floor_decal/corner/brown/border{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/garage)
 "qDy" = (
 /obj/effect/floor_decal/borderfloorwhite/cee{
 	dir = 8
@@ -27453,10 +27419,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
-"qUk" = (
-/obj/structure/bed/chair,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/qm)
 "qUN" = (
 /obj/structure/bookcase{
 	name = "bookcase (Reference)"
@@ -30716,6 +30678,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
+"sOh" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/quartermaster/foyer)
 "sPz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -32183,17 +32148,6 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
-"tHR" = (
-/obj/structure/table/reinforced,
-/obj/item/pen/red{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/pen,
-/obj/item/folder/yellow,
-/obj/item/stamp/qm,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/qm)
 "tHW" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Permanent Confinement";
@@ -35077,6 +35031,11 @@
 /obj/effect/floor_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled/steel,
 /area/rift/surfaceeva)
+"vuL" = (
+/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
+/turf/simulated/floor/plating,
+/area/quartermaster/garage)
 "vvx" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -36479,6 +36438,7 @@
 	},
 /obj/structure/cable,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/checkpoint)
 "wpT" = (
@@ -36868,6 +36828,7 @@
 	},
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
 /obj/structure/disposalpipe/segment,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "wAc" = (
@@ -36938,6 +36899,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
+"wBV" = (
+/turf/simulated/wall/r_wall/prepainted/security,
+/area/rift/surfaceeva)
 "wCc" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -37460,7 +37424,7 @@
 /turf/simulated/floor/plating,
 /area/medical/virologypurge)
 "wRP" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/hallway)
 "wSo" = (
 /turf/simulated/floor/reinforced/lythios43c,
@@ -37963,6 +37927,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
 "xhl" = (
@@ -38212,6 +38177,7 @@
 /area/lawoffice)
 "xnJ" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)
 "xoa" = (
@@ -39106,9 +39072,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
 "xRu" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
@@ -39151,7 +39114,7 @@
 /turf/simulated/floor/snow/gravsnow,
 /area/rift/surfacebase/outside/outside1)
 "xTe" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/office)
 "xTz" = (
 /obj/structure/bed/chair/wood,
@@ -49446,18 +49409,18 @@ kYl
 kYl
 veF
 dER
-vgL
+oFp
+vuL
+vuL
 oFp
 oFp
-vgL
-vgL
-vgL
-vgL
 oFp
+oFp
+vuL
 gTL
 gTL
 oFp
-vgL
+vUA
 iFN
 jZZ
 rPE
@@ -49640,18 +49603,18 @@ kYl
 kYl
 iSM
 dER
-vgL
+oFp
 jfd
 jfd
 nwm
 xks
 cHI
-oFp
+vuL
 rtL
 xRu
-xRu
 mmU
-vgL
+oFp
+vUA
 iFN
 jZZ
 pqd
@@ -49834,7 +49797,7 @@ kYl
 igQ
 rKQ
 hgE
-vgL
+oFp
 aeP
 jfd
 jzl
@@ -49842,10 +49805,10 @@ gso
 qLr
 wRf
 ciq
-oFO
 vzJ
 pQX
-vgL
+oFp
+vUA
 iFN
 gXe
 rgY
@@ -50028,18 +49991,18 @@ nBa
 fgL
 hgE
 hgE
-vgL
+oFp
 fXN
 jfd
 jfd
 sew
 mnh
-oFp
+vuL
 dmW
 nDb
-nDb
 xDK
-vgL
+oFp
+vUA
 hgE
 cqY
 nbg
@@ -50222,7 +50185,7 @@ lPZ
 hgE
 hgE
 hgE
-vgL
+oFp
 hmw
 jfd
 aeP
@@ -50230,9 +50193,9 @@ uyd
 gQY
 aMg
 vGT
-qaT
 bcB
 ahB
+oFp
 fNU
 fNU
 fNU
@@ -50416,7 +50379,7 @@ hgE
 hgE
 hgE
 hgE
-vgL
+oFp
 jfd
 jfd
 jfd
@@ -50424,9 +50387,9 @@ uyd
 mQF
 cbL
 tJX
-qDq
 uGl
 krD
+oFp
 fNU
 dgp
 bhT
@@ -50605,22 +50568,22 @@ lJv
 fqb
 fqb
 iTr
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
 hmw
 jfd
 jzl
 pPL
 reU
-vgL
-vgL
-vgL
-vgL
-vgL
+oFp
+oFp
+oFp
+oFp
+oFp
 fNU
 ydt
 lqo
@@ -50810,7 +50773,7 @@ jfd
 jfd
 dZX
 mHZ
-vgL
+oFp
 jBE
 vgL
 haS
@@ -51004,7 +50967,7 @@ fWU
 fWU
 ikv
 uvS
-vgL
+oFp
 pvv
 vgL
 sDA
@@ -51198,7 +51161,7 @@ eCU
 cTP
 eFz
 mSs
-vgL
+oFp
 fNL
 pMr
 wmb
@@ -51380,26 +51343,26 @@ wRP
 wjJ
 hwq
 szi
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
-vgL
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
+oFp
 yfX
-vgL
+oFp
 fNL
 phu
-bmv
-bmv
+kaF
+kaF
 hGg
-bmv
-fLw
+kaF
+wBV
 uzb
 odd
 rDH
@@ -51574,7 +51537,7 @@ wRP
 bBn
 kDV
 inT
-lvy
+did
 irf
 uHT
 lvy
@@ -51589,12 +51552,12 @@ ooN
 ooN
 ooN
 vNO
-bmv
+kaF
 uSm
 ylL
 rHl
 kaF
-sXZ
+wBV
 hPo
 vuD
 mTX
@@ -51768,7 +51731,7 @@ wRP
 vaP
 ebQ
 pgt
-lvy
+did
 wrP
 kMQ
 vls
@@ -51783,7 +51746,7 @@ fNL
 fNL
 fNL
 fNL
-bmv
+kaF
 pVk
 bTN
 feB
@@ -51977,7 +51940,7 @@ wWJ
 xvJ
 fNL
 fNL
-bmv
+kaF
 ujL
 acl
 aJT
@@ -52156,7 +52119,7 @@ wRP
 vaP
 ebQ
 pgt
-lvy
+did
 lvy
 lvy
 lvy
@@ -52171,7 +52134,7 @@ bXZ
 hPC
 xvJ
 gQU
-bmv
+kaF
 uRx
 jSu
 rOA
@@ -52350,7 +52313,7 @@ wRP
 vaP
 ebQ
 moU
-bXZ
+qkC
 poZ
 mWj
 bXZ
@@ -52544,7 +52507,7 @@ wRP
 vaP
 ebQ
 pgt
-bXZ
+qkC
 kcb
 oEd
 hqo
@@ -52559,7 +52522,7 @@ bXZ
 sPW
 ktX
 frd
-bmv
+kaF
 ukK
 hJE
 mRE
@@ -52738,7 +52701,7 @@ wRP
 vaP
 ebQ
 pgt
-bXZ
+qkC
 mAP
 qSJ
 nJn
@@ -52753,7 +52716,7 @@ bXZ
 qRI
 osC
 eAF
-bmv
+kaF
 kaF
 smW
 kaF
@@ -52932,18 +52895,18 @@ wRP
 vaP
 ebQ
 koz
-bXZ
+qkC
 kTa
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
-bXZ
+qkC
+qkC
+qkC
+qkC
+qkC
+qkC
+qkC
+qkC
+qkC
+qkC
 rOm
 xtl
 xsL
@@ -53126,7 +53089,7 @@ wRP
 bBn
 ebQ
 cjK
-bXZ
+qkC
 tkd
 sBt
 gXB
@@ -53137,7 +53100,7 @@ ttp
 gRv
 wzP
 mau
-bXZ
+qkC
 pIS
 xtl
 nEP
@@ -53320,9 +53283,9 @@ wRP
 vaP
 wGM
 gEv
-bXZ
+qkC
 gxS
-bXZ
+qkC
 esZ
 esZ
 tDp
@@ -53331,7 +53294,7 @@ eGX
 esZ
 esZ
 fbH
-uWy
+sOh
 uWy
 uAD
 uWy
@@ -53514,9 +53477,9 @@ wRP
 vaP
 uPk
 pgt
-bXZ
+qkC
 iGp
-bXZ
+qkC
 esZ
 qtA
 aws
@@ -54494,7 +54457,7 @@ gmT
 aqK
 xTe
 xTe
-uWy
+sOh
 ajh
 eEi
 vwR
@@ -55658,7 +55621,7 @@ gmT
 qXo
 xTe
 xTe
-uWy
+sOh
 kSv
 eEi
 vwR
@@ -56230,7 +56193,7 @@ dMX
 iFG
 bXZ
 qeY
-bXZ
+qkC
 quZ
 jHt
 vDU
@@ -56424,7 +56387,7 @@ dMX
 ouV
 bXZ
 mWj
-bXZ
+qkC
 bMC
 qXS
 gmT
@@ -56618,7 +56581,7 @@ dMX
 ouV
 bXZ
 bXZ
-bXZ
+qkC
 jnz
 wRP
 xTe
@@ -57017,10 +56980,10 @@ dFf
 xBM
 clK
 aJt
-dDr
 gTk
 txE
 tBD
+dNx
 fYd
 spM
 oDo
@@ -57211,10 +57174,10 @@ kHi
 lrc
 clK
 ieZ
-qUk
 hLV
 jkK
 phb
+dNx
 fYd
 hzW
 qTp
@@ -57406,9 +57369,9 @@ guy
 hAl
 ghW
 iJb
-tHR
 gZK
 wOT
+dNx
 kbe
 kbe
 kbe
@@ -57599,10 +57562,10 @@ rZs
 vRV
 clK
 rLI
-cBn
 cbX
 hlH
 kXt
+dNx
 kbe
 lrS
 hNl
@@ -57793,10 +57756,10 @@ twr
 vRV
 clK
 wQk
-gDH
 jRU
 bOg
 oVt
+dNx
 kbe
 iNE
 mKA

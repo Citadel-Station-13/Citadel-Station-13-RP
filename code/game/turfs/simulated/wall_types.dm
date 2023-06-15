@@ -458,6 +458,10 @@
 	stripe_color = COLOR_SUN
 	color = COLOR_SUN
 
+/turf/simulated/wall/r_wall/prepainted/engineering/atmos
+	stripe_color = PIPE_COLOR_CYAN
+	color = PIPE_COLOR_CYAN
+
 /turf/simulated/wall/r_wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
 	color = COLOR_PALE_BTL_GREEN
@@ -470,6 +474,10 @@
 	paint_color = COLOR_OFF_WHITE
 	stripe_color = COLOR_PURPLE_GRAY
 	color = COLOR_PURPLE_GRAY
+
+/turf/simulated/wall/r_wall/prepainted/cargo
+	stripe_color = COLOR_BEASTY_BROWN
+	color = COLOR_BEASTY_BROWN
 
 /turf/simulated/wall/prepainted
 	paint_color = COLOR_WALL_GUNMETAL
@@ -498,6 +506,10 @@
 	stripe_color = COLOR_SUN
 	color = COLOR_SUN
 
+/turf/simulated/wall/prepainted/engineering/atmos
+	stripe_color = PIPE_COLOR_CYAN
+	color = PIPE_COLOR_CYAN
+
 /turf/simulated/wall/prepainted/civilian
 	stripe_color = COLOR_PALE_BTL_GREEN
 	color = COLOR_PALE_BTL_GREEN
@@ -510,3 +522,7 @@
 	paint_color = COLOR_OFF_WHITE
 	stripe_color = COLOR_PURPLE_GRAY
 	color = COLOR_PURPLE_GRAY
+
+/turf/simulated/wall/prepainted/cargo
+	stripe_color = COLOR_BEASTY_BROWN
+	color = COLOR_BEASTY_BROWN

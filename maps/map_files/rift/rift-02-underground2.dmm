@@ -2214,7 +2214,7 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -5565,7 +5565,7 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -8535,6 +8535,9 @@
 /obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
+"Aq" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/quartermaster/miningdock)
 "As" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -8686,6 +8689,9 @@
 /obj/effect/blocker,
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"AX" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/quartermaster/belterdock/gear)
 "AZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12434,6 +12440,7 @@
 /area/engineering/hallway)
 "PM" = (
 /obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "PP" = (
@@ -12907,6 +12914,9 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"Sj" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/quartermaster/belterdock/refinery)
 "Sl" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -13226,6 +13236,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
+"Tw" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/maintenance/lower/mining)
 "Tx" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
@@ -13878,6 +13891,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"Wh" = (
+/turf/simulated/wall/prepainted/cargo,
+/area/maintenance/lower/atmos)
 "Wk" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 1
@@ -32589,13 +32605,13 @@ kM
 kM
 hj
 Mn
-ms
-ms
-ms
-ms
-ms
+Wh
+Wh
+Wh
+Wh
+Wh
 VC
-ms
+Wh
 ms
 jO
 ll
@@ -32783,7 +32799,7 @@ hj
 hj
 hj
 Ze
-uG
+AX
 Gw
 Gw
 Gw
@@ -32977,7 +32993,7 @@ Ze
 Ze
 Ze
 Hz
-uG
+AX
 Sm
 Jr
 BP
@@ -33162,16 +33178,16 @@ Uf
 Tg
 JP
 JP
-EQ
-EQ
-EQ
-EQ
-EQ
-EQ
-EQ
-EQ
-EQ
-uG
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
+AX
 Ap
 KI
 KI
@@ -33365,13 +33381,13 @@ Qg
 Kq
 JE
 Nd
-EQ
-EQ
+Aq
+Aq
 PM
 PM
-EQ
+Aq
 Gr
-EQ
+Aq
 EQ
 jP
 ll
@@ -33560,10 +33576,10 @@ CC
 WZ
 uR
 Hs
-EQ
+Aq
 XK
 XK
-EQ
+Aq
 cw
 QH
 jk
@@ -34142,10 +34158,10 @@ Kt
 Qm
 Ua
 Xe
-EQ
+Aq
 YH
 AU
-EQ
+Aq
 ux
 DO
 OD
@@ -34326,22 +34342,22 @@ vO
 Tg
 JP
 JP
-EQ
-EQ
-EQ
-EQ
-EQ
-EQ
+Aq
+Aq
+Aq
+Aq
+Aq
+Aq
 tL
-EQ
-EQ
-EQ
-EQ
+Aq
+Aq
+Aq
+Aq
 Wy
 CC
-EQ
-EQ
-JP
+Aq
+Aq
+Tw
 JP
 JP
 JP
@@ -34523,19 +34539,19 @@ Aj
 tR
 wL
 xI
-EQ
+Aq
 CF
 Zk
 LW
-RU
+Sj
 Fr
 HW
-RU
+Sj
 Vc
 Sp
-RU
-RU
-JP
+Sj
+Sj
+Tw
 yl
 Tg
 Hq
@@ -34717,11 +34733,11 @@ Ze
 Mc
 JP
 JP
-EQ
+Aq
 Mj
 Mj
 ur
-RU
+Sj
 MU
 MU
 Bt
@@ -34729,7 +34745,7 @@ FW
 MU
 Xm
 AB
-JP
+Tw
 OR
 Tg
 JP
@@ -35105,11 +35121,11 @@ JP
 JP
 JP
 JP
-EQ
+Aq
 Uw
 Uw
 Uw
-RU
+Sj
 FX
 YQ
 Fe
@@ -35117,7 +35133,7 @@ An
 EP
 De
 DZ
-JP
+Tw
 JP
 Ks
 JP
@@ -35299,11 +35315,11 @@ JP
 aO
 aU
 cj
-EQ
+Aq
 Uw
 RD
 Uw
-RU
+Sj
 Kc
 Qr
 MU
@@ -35311,7 +35327,7 @@ tD
 CB
 Qr
 Pu
-RU
+Sj
 ZH
 Xk
 JP
@@ -35493,11 +35509,11 @@ JP
 aR
 Ze
 ek
-EQ
+Aq
 Uw
 Uw
 Uw
-RU
+Sj
 Yz
 Qr
 Rl
@@ -35505,7 +35521,7 @@ FY
 LQ
 Qr
 vN
-RU
+Sj
 Cl
 Xk
 MF
@@ -35687,11 +35703,11 @@ JP
 aT
 Ze
 ft
-EQ
-EQ
+Aq
+Aq
 vH
-EQ
-RU
+Aq
+Sj
 XR
 RU
 EI
@@ -35699,7 +35715,7 @@ wI
 Nx
 RU
 vN
-RU
+Sj
 Cl
 Xk
 Pq
@@ -35885,7 +35901,7 @@ JP
 Rb
 OJ
 La
-RU
+Sj
 xt
 Qr
 Qr
@@ -35893,7 +35909,7 @@ Dm
 Qr
 Qr
 vN
-RU
+Sj
 Ze
 Xk
 Ln
@@ -36079,7 +36095,7 @@ Ff
 JK
 WB
 kR
-RU
+Sj
 Ur
 tN
 vZ
@@ -36087,7 +36103,7 @@ tU
 OL
 tN
 IS
-RU
+Sj
 AC
 Xk
 JP
@@ -36273,15 +36289,15 @@ ZN
 yb
 NS
 TL
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
-RU
+Sj
+Sj
+Sj
+Sj
+Sj
+Sj
+Sj
+Sj
+Sj
 ye
 Xk
 JP

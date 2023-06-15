@@ -171,7 +171,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "jJ" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "jV" = (
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -717,7 +717,7 @@
 /area/quartermaster/mining_airlock)
 "QE" = (
 /obj/structure/sign/mining,
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/prepainted/cargo,
 /area/quartermaster/mining_airlock)
 "Ro" = (
 /turf/unsimulated/wall/planetary/lythios43c{
@@ -20961,13 +20961,13 @@ KS
 jJ
 QE
 jJ
-hH
+jJ
 QE
 jJ
 jJ
 Hk
 Hk
-hH
+jJ
 Yr
 KS
 KS

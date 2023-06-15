@@ -467,7 +467,8 @@
 	)
 
 /singleton/closet_appearance/secure_closet/blueshield
-	color = COLOR_GRAY40
+	color = COLOR_WALL_GUNMETAL
+	decals = null
 	extra_decals = list(
 		"stripe_vertical_left_full" =  COLOR_COMMAND_BLUE,
 		"stripe_vertical_right_full" = COLOR_COMMAND_BLUE,

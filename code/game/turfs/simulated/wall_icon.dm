@@ -12,7 +12,6 @@ GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
 	/obj/structure/window/basic/full,
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/structure/wall_frame,
-	/obj/structure/table,
 	/obj/machinery/smartfridge,
 	))
 
