@@ -247,7 +247,7 @@
 		if(supports.len >= braces_needed)
 			supported = 1
 		else for(var/obj/machinery/mining/brace/check in supports)
-			if(check.brace_tier > 3)
+			if(check.brace_tier >= 3)
 				supported = 1
 
 	update_icon()
@@ -311,12 +311,12 @@
 
 /obj/machinery/mining/brace/examine(mob/user)
 	. = ..()
-	if(brace_tier > 3)
+	if(brace_tier >= 3)
 		. += SPAN_NOTICE("The internals of the brace look resilient enough to support a drill by itself.")
 
 /obj/machinery/mining/brace/Initialize()
 	. = ..()
-	default_apply_parts()
+
 
 /obj/machinery/mining/brace/RefreshParts()
 	..()
