@@ -114,7 +114,7 @@
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
 		if(player.mob && player.mob.mind) player.mob.mind.reset()
 		new_drone.transfer_personality(player)
-		assign_drone_to_matrix(new_drone, "[GLOB.using_map.company_name]")
+		assign_drone_to_matrix(new_drone, "[(LEGACY_MAP_DATUM).company_name]")
 
 	return new_drone
 
@@ -126,6 +126,11 @@
 
 	if(SSticker.current_state < GAME_STATE_PLAYING)
 		to_chat(src, "<span class='danger'>The game hasn't started yet!</span>")
+		return
+
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='danger'>That verb is not currently permitted.</span>")
+		log_shadowban("[key_name(src)] SC join blocked.")
 		return
 
 	if(!(config_legacy.allow_drone_spawn))

@@ -4163,7 +4163,7 @@
 "agE" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -13340,7 +13340,7 @@
 "avV" = (
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(2,4)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15996,7 +15996,7 @@
 "aBX" = (
 /obj/machinery/door/airlock/command{
 	name = "Teleport Access";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(17)
 	},
 /obj/structure/cable/green{

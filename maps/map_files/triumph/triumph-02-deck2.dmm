@@ -5686,7 +5686,7 @@
 /obj/machinery/door/airlock/freezer{
 	name = "Cafe Backroom";
 	req_access = list(28);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4

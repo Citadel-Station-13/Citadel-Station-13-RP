@@ -1,7 +1,7 @@
 
 #define Z_LEVEL_MAIN_CITADEL_TESTING					1
 
-/datum/map/citadel_minitest
+/datum/map/station/citadel_minitest
 	name = "Virgo_minitest"
 	full_name = "NSS Citadel Testing Facility"
 	path = "citadel_minitest"
@@ -68,7 +68,7 @@
 	allowed_spawns = list("Arrivals Shuttle")
 
 
-/datum/map/citadel_minitest/perform_map_generation()
+/datum/map/station/citadel_minitest/perform_map_generation()
 /*
 	new /datum/random_map/automata/cave_system(null, 1, 1, Z_LEVEL_MAIN_CITADEL_TESTING, world.maxx, world.maxy)
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_MAIN_CITADEL_TESTING, 64, 64)

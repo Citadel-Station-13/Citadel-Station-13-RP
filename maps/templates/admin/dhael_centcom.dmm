@@ -4266,7 +4266,7 @@
 "mO" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -10359,7 +10359,7 @@
 "Fg" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -11261,7 +11261,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "residential";
@@ -11512,7 +11512,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -12022,7 +12022,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12234,7 +12234,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -14911,7 +14911,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	desc = "SHIT IS LIT";
 	name = "TACTICAL TOILET";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"

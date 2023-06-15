@@ -5189,7 +5189,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/maintenance/common{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining_eva)
@@ -9957,7 +9957,7 @@
 "arH" = (
 /obj/machinery/door/airlock/glass/medical{
 	name = "First-Aid Station";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -29552,7 +29552,7 @@
 	id = "holodeck";
 	pixel_x = 35;
 	range = 14;
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -30209,7 +30209,7 @@
 "crZ" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Construction Tram Airlock";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
@@ -31315,7 +31315,7 @@
 /area/tether/surfacebase/security/weaponsrange)
 "gff" = (
 /obj/machinery/door/airlock/maintenance/common{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor/plating,
@@ -31425,7 +31425,7 @@
 	id_tag = "briginner";
 	name = "Brig";
 	req_access = list(2);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -32444,7 +32444,7 @@
 	id_tag = "briginner";
 	name = "Brig";
 	req_access = list(2);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
@@ -33232,7 +33232,7 @@
 	id_tag = "brigouter";
 	name = "Brig";
 	req_access = list(2);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
@@ -35150,7 +35150,7 @@
 "qpp" = (
 /obj/machinery/door/airlock/glass/engineering{
 	name = "Construction Tram Airlock";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b{
 	outdoors = 0
@@ -37121,7 +37121,7 @@
 	id_tag = "brigouter";
 	name = "Brig";
 	req_access = list(2);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"

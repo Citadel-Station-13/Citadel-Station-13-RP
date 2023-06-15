@@ -90,24 +90,6 @@
 /area/maintenance/station/tcomms
 	name = "\improper Telecoms Maintenance"
 
-/datum/map/tether/default_internal_channels()
-	return list(
-		num2text(PUB_FREQ) = list(),
-		num2text(AI_FREQ)  = list(ACCESS_SPECIAL_SILICONS),
-		num2text(ENT_FREQ) = list(),
-		num2text(ERT_FREQ) = list(ACCESS_CENTCOM_ERT),
-		num2text(COMM_FREQ)= list(ACCESS_COMMAND_BRIDGE),
-		num2text(ENG_FREQ) = list(ACCESS_ENGINEERING_ENGINE, ACCESS_ENGINEERING_ATMOS),
-		num2text(MED_FREQ) = list(ACCESS_MEDICAL_EQUIPMENT),
-		num2text(MED_I_FREQ)=list(ACCESS_MEDICAL_EQUIPMENT),
-		num2text(SEC_FREQ) = list(ACCESS_SECURITY_EQUIPMENT),
-		num2text(SEC_I_FREQ)=list(ACCESS_SECURITY_EQUIPMENT),
-		num2text(SCI_FREQ) = list(ACCESS_SCIENCE_FABRICATION,ACCESS_SCIENCE_ROBOTICS,ACCESS_SCIENCE_XENOBIO),
-		num2text(SUP_FREQ) = list(ACCESS_SUPPLY_BAY),
-		num2text(SRV_FREQ) = list(ACCESS_GENERAL_JANITOR, ACCESS_GENERAL_BOTANY),
-		num2text(EXP_FREQ) = list(ACCESS_GENERAL_EXPLORER)
-	)
-
 /obj/item/multitool/triumph_buffered
 	name = "pre-linked multitool (tether hub)"
 	desc = "This multitool has already been linked to the Tether telecomms hub and can be used to configure one (1) relay."

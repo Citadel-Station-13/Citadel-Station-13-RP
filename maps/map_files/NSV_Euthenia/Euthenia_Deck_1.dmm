@@ -3761,7 +3761,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6552,7 +6552,7 @@
 "eGe" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7681,7 +7681,7 @@
 "fwY" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -12832,7 +12832,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Internal Affairs";
 	req_access = list(38);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -19082,7 +19082,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Internal Affairs";
 	req_access = list(38);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -21475,7 +21475,7 @@
 "pTR" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Briefing Room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -21831,7 +21831,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -31833,7 +31833,7 @@
 "xVu" = (
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/security/security_equiptment_storage)

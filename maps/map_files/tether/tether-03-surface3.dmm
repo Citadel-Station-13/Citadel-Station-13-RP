@@ -3024,12 +3024,12 @@
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 4;
 	req_access = list(30, 35, 47, 77);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
 	req_access = list(30, 35, 47, 77);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -4802,7 +4802,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Internal Affairs";
 	req_access = list(38);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -24857,7 +24857,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Internal Affairs";
 	req_access = list(38);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -35872,7 +35872,7 @@
 "fGm" = (
 /obj/machinery/door/airlock/glass/security{
 	name = "Briefing Room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

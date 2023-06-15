@@ -32,7 +32,7 @@
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
 
-/datum/map/tether/New()
+/datum/map/station/tether/New()
 	..()
 	var/choice = pickweight(list(
 		"title1" = 50,
@@ -48,7 +48,7 @@
 	if(choice)
 		lobby_screens = list(choice)
 
-/datum/map/tether
+/datum/map/station/tether
 	name = "Virgo"
 	full_name = "NSB Adephagia"
 	path = "tether"
@@ -59,7 +59,7 @@
 	overmap_event_areas = 44
 	usable_email_tlds = list("virgo.nt")
 
-	zlevel_datum_type = /datum/map_z_level/tether
+	zlevel_datum_type = /datum/map_level/tether
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("tether2_night")
@@ -191,16 +191,11 @@
 	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
 						 		 Z_LEVEL_ROGUEMINE_2)
 
-	mining_station_z =		list(Z_LEVEL_SPACE_HIGH)
-	mining_outpost_z =		list(Z_LEVEL_SURFACE_MINE)
-
-	lateload_single_pick = null //Nothing right now.
-
 	planet_datums_to_make = list(/datum/planet/virgo3b,
 								/datum/planet/virgo4,
 								/datum/planet/class_d)
 
-// /datum/map/tether/get_map_info()
+// /datum/map/station/tether/get_map_info()
 // 	. = list()
 // 	. +=  "The [full_name] is an ancient ruin turned workplace in the Virgo-Erigone System, deep in the midst of the Coreward Periphery.<br>"
 // 	. +=  "Humanity has spread across the stars and has met many species on similar or even more advanced terms than them - it's a brave new world and many try to find their place in it . <br>"
@@ -208,7 +203,7 @@
 // 	. +=  "As an employee or contractor of NanoTrasen, operators of the Adephagia and one of the galaxy's largest corporations, you're probably just here to do a job."
 // 	return jointext(., "<br>")
 
-/datum/map/tether/perform_map_generation()
+/datum/map/station/tether/perform_map_generation()
 
 	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
 	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
@@ -325,11 +320,11 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
 		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
 		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
-			GLOB.lore_atc.msg(message)
+			SSlegacy_atc.msg(message)
 
 	//For ships, it's safe to assume they're big enough to not be sneaky
 	else if(istype(AM, /obj/effect/overmap/visitable/ship))
-		GLOB.lore_atc.msg(message)
+		SSlegacy_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.
@@ -341,44 +336,44 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 /// 30
 #define TETHER_HOLOMAP_MARGIN_Y ((HOLOMAP_ICON_SIZE - (3*TETHER_MAP_SIZE)) / 2)
 // We have a bunch of stuff common to the station z levels
-/datum/map_z_level/tether
+/datum/map_level/tether
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 
-/datum/map_z_level/tether/station
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
+/datum/map_level/tether/station
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|MAP_LEVEL_XENOARCH_EXEMPT
 	holomap_legend_x = 220
 	holomap_legend_y = 160
 
-/datum/map_z_level/tether/station/surface_low
+/datum/map_level/tether/station/surface_low
 	z = Z_LEVEL_SURFACE_LOW
 	name = "Surface 1"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/surface_mid
+/datum/map_level/tether/station/surface_mid
 	z = Z_LEVEL_SURFACE_MID
 	name = "Surface 2"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
-/datum/map_z_level/tether/station/surface_high
+/datum/map_level/tether/station/surface_high
 	z = Z_LEVEL_SURFACE_HIGH
 	name = "Surface 3"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_CONSOLES|MAP_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES|LEGACY_LEVEL_SEALED|MAP_LEVEL_XENOARCH_EXEMPT
 	base_turf = /turf/simulated/open
 	holomap_offset_x = TETHER_HOLOMAP_MARGIN_X
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*2
 
-/datum/map_z_level/tether/transit
+/datum/map_level/tether/transit
 	z = Z_LEVEL_TRANSIT
 	name = "Transit"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_SEALED|MAP_LEVEL_PLAYER|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-/datum/map_z_level/tether/station/space_low
+/datum/map_level/tether/station/space_low
 	z = Z_LEVEL_SPACE_LOW
 	name = "Asteroid 1"
 	base_turf = /turf/space
@@ -386,7 +381,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*0
 
-/datum/map_z_level/tether/station/space_high
+/datum/map_level/tether/station/space_high
 	z = Z_LEVEL_SPACE_HIGH
 	name = "Asteroid 2"
 	base_turf = /turf/simulated/open
@@ -394,17 +389,63 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TETHER_HOLOMAP_MARGIN_X - TETHER_MAP_SIZE
 	holomap_offset_y = TETHER_HOLOMAP_MARGIN_Y + TETHER_MAP_SIZE*1
 
-/datum/map_z_level/tether/mine
+/datum/map_level/tether/mine
 	z = Z_LEVEL_SURFACE_MINE
 	name = "Mining Outpost"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 
-/datum/map_z_level/tether/solars
+/datum/map_level/tether/solars
 	z = Z_LEVEL_SOLARS
 	name = "Solar Field"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
+/datum/map_template/lateload/tether/tether_misc
+	name = "Tether - Misc"
+	desc = "Misc areas, like some transit areas, holodecks, merc area."
+	map_path = "maps/map_files/tether/tether_misc.dmm"
+
+	associated_map_datum = /datum/map_level/tether_lateload/misc
+
+/datum/map_level/tether_lateload/misc
+	name = "Misc"
+	flags = LEGACY_LEVEL_ADMIN|LEGACY_LEVEL_SEALED|LEGACY_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+
+/datum/map_template/lateload/tether/tether_underdark
+	name = "Tether - Underdark"
+	desc = "Mining, but harder."
+	map_path = "maps/map_files/tether/tether_underdark.dmm"
+
+	associated_map_datum = /datum/map_level/tether_lateload/underdark
+
+/datum/map_level/tether_lateload/underdark
+	name = "Underdark"
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
+	base_turf = /turf/simulated/mineral/floor/virgo3b
+
+/datum/map_template/lateload/tether/tether_underdark/on_map_loaded(z)
+	. = ..()
+	seed_submaps(list(z), 150, /area/mine/unexplored/underdark, /datum/map_template/submap/level_specific/underdark)
+	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
+
+/datum/map_template/lateload/tether/tether_plains
+	name = "Tether - Plains"
+	desc = "The Virgo 3B away mission."
+	map_path = "maps/map_files/tether/tether_plains.dmm"
+	associated_map_datum = /datum/map_level/tether_lateload/tether_plains
+
+/datum/map_level/tether_lateload/tether_plains
+	name = "Away Mission - Plains"
+	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
+	base_turf = /turf/simulated/mineral/floor/virgo3b
+
+/datum/map_template/lateload/tether/tether_plains/on_map_loaded(z)
+ 	. = ..()
+ 	seed_submaps(list(z), 150, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
+
+
 
 
 /////////////////////
@@ -461,8 +502,8 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in GLOB.using_map.zlevels)
-		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
+		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
 		if(Z.name == "Underdark")
 			teleport_z = Z.z
 
@@ -474,8 +515,8 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	. = ..()
 	teleport_x = x
 	teleport_y = y
-	for(var/z_num in GLOB.using_map.zlevels)
-		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
+		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
 		if(Z.name == "Mining Outpost")
 			teleport_z = Z.z
 
