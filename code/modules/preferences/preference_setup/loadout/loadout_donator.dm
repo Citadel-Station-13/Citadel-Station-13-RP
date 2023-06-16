@@ -273,5 +273,5 @@
 
 /datum/gear/donator/noahcloak
 	name = "Noah's Cloak"
-	path = /obj/item/clothing/suit/storage/hooded/tajaran/cloak/donatornoahcloak
+	path = /obj/item/clothing/suit/storage/hooded/donatornoahcloak
 	ckeywhitelist = list("rainbyplays")
