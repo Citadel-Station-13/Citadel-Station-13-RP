@@ -3,17 +3,17 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "ax" = (
 /obj/machinery/light/flamp,
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "aC" = (
 /obj/machinery/sleep_console{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "aF" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	frequency = 1380;
@@ -24,7 +24,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "be" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -45,18 +45,18 @@
 "bT" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "bW" = (
 /obj/machinery/shower{
 	pixel_y = 18
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "cd" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "cJ" = (
 /obj/structure/railing{
 	dir = 1
@@ -71,22 +71,22 @@
 	pixel_y = 23
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "dA" = (
 /obj/structure/dispenser/phoron,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "dN" = (
 /obj/machinery/vending/boozeomat,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "eq" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "ez" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -97,27 +97,27 @@
 "fl" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "fC" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 2
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "fD" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/phoron,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "fT" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "fV" = (
 /obj/machinery/auto_cloner,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "fY" = (
 /obj/effect/overmap/visitable/sector/pirate_base,
 /turf/space,
@@ -128,37 +128,37 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "gm" = (
 /obj/item/clothing/head/helmet/space/vox/carapace,
 /obj/item/clothing/suit/space/vox/carapace,
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/deuterium,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "gw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/recharge/captain,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "gQ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/hyper,
 /obj/item/storage/secure/briefcase/ml3m_pack_cmo,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "hc" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/phoron,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "hi" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "hB" = (
 /obj/machinery/light{
 	dir = 1
@@ -167,7 +167,7 @@
 /area/shuttle/pirate/general)
 "hT" = (
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "hX" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -176,7 +176,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "hY" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate,
 /obj/effect/overmap/visitable/ship/landable/pirate,
@@ -185,13 +185,13 @@
 "ie" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "ig" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "ip" = (
 /obj/structure/toilet{
 	pixel_y = 16
@@ -200,11 +200,11 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "iq" = (
 /obj/machinery/sleeper/survival_pod,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "iI" = (
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
@@ -236,12 +236,12 @@
 /obj/item/ammo_casing/microbattery/medical/omni3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "kf" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "kg" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
@@ -259,7 +259,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "kU" = (
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -278,7 +278,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/bonemed,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "lI" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
@@ -287,26 +287,26 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "mh" = (
 /obj/structure/dispenser/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "mz" = (
 /obj/structure/bed/padded,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "mE" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/captain,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "mK" = (
 /obj/structure/closet,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "na" = (
 /obj/structure/lattice,
 /turf/space,
@@ -317,12 +317,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "nx" = (
 /obj/structure/bed/padded,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "nB" = (
 /obj/structure/railing{
 	dir = 4
@@ -332,13 +332,13 @@
 /area/space)
 "ol" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "op" = (
 /obj/structure/sign/redcross{
 	pixel_x = 32
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "oy" = (
 /obj/structure/closet/secure_closet/guncabinet/rifle,
 /turf/simulated/floor/reinforced,
@@ -349,17 +349,17 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "pp" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "qL" = (
 /obj/structure/closet,
 /obj/random/mre,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "rA" = (
 /obj/machinery/computer/ship/engines,
 /turf/simulated/floor/reinforced,
@@ -371,7 +371,7 @@
 "rM" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "rQ" = (
 /obj/structure/railing{
 	dir = 4
@@ -383,20 +383,20 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/insiderepair,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "sb" = (
 /obj/structure/sign/atmos/phoron{
 	pixel_y = -32
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "tv" = (
 /obj/structure/closet/crate/secure,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "tJ" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -407,7 +407,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "tO" = (
 /obj/structure/railing{
 	dir = 4
@@ -419,7 +419,7 @@
 	pixel_y = 16
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "ul" = (
 /obj/structure/railing{
 	dir = 1
@@ -431,14 +431,14 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/mhydrogen,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "uv" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "uH" = (
 /obj/machinery/light,
 /obj/machinery/recharger/wallcharger{
@@ -451,48 +451,48 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/toxin3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "uJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/burn3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "uV" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/energy,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "uX" = (
 /obj/machinery/sleeper{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "vL" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "vW" = (
 /mob/living/simple_mob/mechanical/mecha/combat/marauder/mauler{
 	faction = "voxpirate"
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "vX" = (
 /obj/machinery/door/airlock/phoron,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "wb" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/corpse_mend,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "wF" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon/gunsword,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "wN" = (
 /obj/structure/toilet{
 	pixel_y = 16
@@ -502,22 +502,22 @@
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "wT" = (
 /obj/structure/bed/padded,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "wZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/uranium,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "xo" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/adv,
 /obj/machinery/cell_charger,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "xM" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 8
@@ -527,16 +527,16 @@
 "ye" = (
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "yq" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "yr" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/stabilize2,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "yw" = (
 /obj/structure/catwalk,
 /turf/space,
@@ -546,21 +546,21 @@
 /obj/item/ammo_casing/microbattery/medical/toxin3,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "yA" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "zT" = (
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Ar" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/firstaid/clotting,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Az" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/light{
@@ -568,43 +568,43 @@
 	},
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "AH" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Bd" = (
 /obj/structure/catwalk,
 /turf/space,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Cq" = (
 /obj/structure/closet/crate/critter,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "CZ" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/gold,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Dl" = (
 /obj/structure/table/steel_reinforced,
 /obj/random/medical,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Dz" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/material/sword/katana/durasteel,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "DE" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/slime,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "DH" = (
 /obj/machinery/light{
 	dir = 4
@@ -617,11 +617,11 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "DX" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/technician,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Ea" = (
 /obj/machinery/computer/shuttle_control/explore/pirate{
 	dir = 4
@@ -631,12 +631,12 @@
 "Em" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "EB" = (
 /obj/machinery/light,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "EW" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/osmium,
@@ -644,7 +644,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Fl" = (
 /turf/unsimulated/mineral/triumph,
 /area/space)
@@ -652,12 +652,12 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/hyper,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Gb" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "GX" = (
 /turf/space,
 /area/space)
@@ -683,13 +683,13 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/gun/energy/gun/fluff/gunsword,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Il" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Io" = (
 /obj/machinery/power/smes/buildable{
 	charge = 15000;
@@ -703,12 +703,12 @@
 "Iz" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "IJ" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/food/snacks/chickenfillet,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Jl" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
@@ -723,30 +723,30 @@
 /obj/structure/closet,
 /obj/random/tool,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "JA" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "JC" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/diamond,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "JF" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/suppressor,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "JH" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "JT" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
@@ -756,12 +756,12 @@
 /obj/structure/table/steel_reinforced,
 /obj/random/mre,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Kw" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/stabilize2,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "KP" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -773,7 +773,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/cigarettes,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Lg" = (
 /obj/machinery/door/airlock/external,
 /turf/simulated/floor/reinforced,
@@ -782,7 +782,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/recharger,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Ls" = (
 /obj/structure/lattice,
 /obj/structure/railing{
@@ -796,14 +796,14 @@
 "LB" = (
 /obj/structure/closet/crate/secure,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "LM" = (
 /obj/structure/closet/crate/secure,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "LT" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
@@ -848,7 +848,7 @@
 "Ne" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Nz" = (
 /obj/machinery/light{
 	dir = 1
@@ -872,7 +872,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Of" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -889,7 +889,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "OI" = (
 /obj/machinery/porta_turret/industrial{
 	faction = "voxpirate"
@@ -911,17 +911,17 @@
 /obj/machinery/light,
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "PJ" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/curseditem,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Qe" = (
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/durasteel,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Qo" = (
 /obj/machinery/light,
 /obj/structure/bed/chair/shuttle{
@@ -940,23 +940,23 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/brute3,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "QK" = (
 /obj/structure/sink{
 	pixel_y = 23
 	},
 /mob/living/simple_mob/humanoid/merc/voxpirate/pirate,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Rp" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Rx" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "RQ" = (
 /turf/simulated/shuttle/wall/voidcraft/red,
 /area/shuttle/pirate/general)
@@ -993,7 +993,7 @@
 "Uh" = (
 /mob/living/simple_mob/humanoid/merc/voxpirate/boarder,
 /turf/simulated/floor/airless,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Um" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/cell/device/weapon,
@@ -1001,7 +1001,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Vr" = (
 /obj/structure/railing{
 	dir = 8
@@ -1019,16 +1019,16 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/random/firstaid,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "WS" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/item/pickaxe/diamonddrill,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Xd" = (
 /obj/structure/closet/crate/critter,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Xf" = (
 /obj/structure/railing,
 /turf/space,
@@ -1045,12 +1045,12 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Yv" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/drinkbottle,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "Yz" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -1061,7 +1061,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/ammo_casing/microbattery/medical/antirad,
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "YV" = (
 /obj/structure/closet,
 /obj/random/mre,
@@ -1070,7 +1070,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
-/area/piratebase/facility)
+/area/piratebase/halls)
 "YY" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
