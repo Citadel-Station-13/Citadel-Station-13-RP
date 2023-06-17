@@ -17092,7 +17092,7 @@
 "oFm" = (
 /obj/structure/bed/chair/wheelchair,
 /obj/effect/shuttle_landmark/triumph/deck3/emt,
-/obj/effect/overmap/visitable/ship/landable/emt,
+/obj/effect/overmap/visitable/ship/landable/emt/triumph,
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
 	},

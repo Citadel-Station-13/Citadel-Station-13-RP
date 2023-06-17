@@ -7,41 +7,29 @@
 	width = 140
 	height = 140
 	lateload = list(
-
+		/datum/map/sector/debrisfield_140,
+		/datum/map/sector/wasteland_140,
+		/datum/map/sector/desert_140,
+		/datum/map/sector/gaia_140,
+		/datum/map/sector/frozen_140,
+		/datum/map/sector/piratebase_140,
+		/datum/map/sector/tradeport_140,
+		/datum/map/sector/lavaland_140,
+		/datum/map/sector/roguemining_140,
 	)
 
 	//* LEGACY BELOW *//
 
+	legacy_assert_shuttle_datums = list(
+		/datum/shuttle/autodock/overmap/excursion/triumph,
+	)
 
-// Camera Networks
-/datum/map/station/triumph
 	full_name = "NSV Triumph"
 
 	use_overmap = TRUE
 	overmap_size = 60
 	overmap_event_areas = 50
 	usable_email_tlds = list("triumph.nt")
-
-	zlevel_datum_type = /datum/map_level/triumph
-
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("title1", "title2", "title3", "title4", "title5", "title6", "title7", "title8", "title9")
-
-	admin_levels = list()
-	sealed_levels = list()
-	empty_levels = null
-	station_levels = list(Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
-	contact_levels = list(Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
-	player_levels = list(Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR)
 
 	holomap_smoosh = list(list(
 		Z_LEVEL_DECK_ONE,
@@ -121,22 +109,6 @@
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
 	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
 
-	lavaland_levels =		list(Z_LEVEL_LAVALAND,
-								 Z_LEVEL_LAVALAND_EAST)
-
-	lateload_z_levels = list(
-		list("Triumph - Misc","Triumph - Ships",), // Stock Triumph lateload maps
-		list("Debris Field - Z1 Space"), // Debris Field
-		list("Away Mission - Pirate Base"), // Pirate Base & Mining Planet
-		list("ExoPlanet - Z1 Planet"),//Mining planet
-		list("ExoPlanet - Z2 Planet"), // Rogue Exoplanet
-		list("ExoPlanet - Z3 Planet"), // Desert Exoplanet
-		list("ExoPlanet - Z4 Planet"), // Gaia Planet
-		list("ExoPlanet - Z5 Planet"), // Frozen Planet
-		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Away Mission - Trade Port"), // Trading Post
-		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
-	)
 
 // For making the 4-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in triumph z levels.

@@ -32,13 +32,6 @@
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
 
-/*
-/obj/machinery/computer/shuttle_control/cruiser_shuttle
-	name = "cruiser shuttle control console"
-	shuttle_tag = "Cruiser Shuttle"
-	req_one_access = list(ACCESS_COMMAND_BRIDGE)
-*/
-
 //
 // "Tram" Emergency Shuttler
 // Becuase the tram only has its own doors and no corresponding station doors, a docking controller is overkill.
@@ -203,3 +196,43 @@
 /obj/machinery/computer/shuttle_control/explore/emt
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
+
+//////////////////////////////////////////////////////////////
+// Escape shuttle and pods
+/datum/shuttle/autodock/ferry/emergency/escape
+	name = "Escape"
+	location = FERRY_LOCATION_OFFSITE
+	shuttle_area = /area/shuttle/escape
+	warmup_time = 10
+	landmark_offsite = "escape_cc"
+	landmark_station = "escape_triumph"
+	landmark_transition = "escape_transit"
+	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
+
+// Supply shuttle
+/datum/shuttle/autodock/ferry/supply/cargo
+	name = "Supply"
+	location = FERRY_LOCATION_OFFSITE
+	shuttle_area = /area/shuttle/supply
+	warmup_time = 10
+	landmark_offsite = "supply_cc"
+	landmark_station = "supply_dock"
+	docking_controller_tag = "supply_shuttle"
+	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
+
+
+/datum/shuttle/autodock/overmap/excursion/triumph
+	name = "Excursion Shuttle"
+	warmup_time = 2
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	current_location = "triumph_excursion_hangar"
+	docking_controller_tag = "expshuttle_docker"
+
+/area/shuttle/excursion
+	name = "Excursion Shuttle"
+	icon_state = "shuttle"
+
+/obj/machinery/computer/shuttle_control/explore/excursion
+	name = "short jump console"
+	shuttle_tag = "Excursion Shuttle"
+	req_one_access = list(ACCESS_GENERAL_PILOT)

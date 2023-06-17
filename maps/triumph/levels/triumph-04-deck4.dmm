@@ -1433,7 +1433,7 @@
 	pixel_x = 25
 	},
 /obj/effect/shuttle_landmark/triumph/deck4/courser,
-/obj/effect/overmap/visitable/ship/landable/courser,
+/obj/effect/overmap/visitable/ship/landable/courser/triumph,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "bim" = (
@@ -14221,7 +14221,7 @@
 /area/security/lobby)
 "kvk" = (
 /obj/effect/shuttle_landmark/triumph/deck4/civvie,
-/obj/effect/overmap/visitable/ship/landable/civvie,
+/obj/effect/overmap/visitable/ship/landable/civvie/triumph,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
