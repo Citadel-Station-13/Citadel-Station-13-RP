@@ -7,6 +7,9 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
+	/// global ""mutex"" for ensuring two map/level load ops don't go at once
+	var/load_mutex = FALSE
+
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)

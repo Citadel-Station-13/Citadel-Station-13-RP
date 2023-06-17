@@ -30,6 +30,12 @@
  * @#return the instance of /datum/map_level created / used, null on failure
  */
 /datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
+	UNTIL(!load_mutex)
+	load_mutex = TRUE
+	. = _allocate_level(arglist(args))
+	load_mutex = FALSE
+
+/datum/controller/subsystem/mapping/proc/_allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
 	RETURN_TYPE(/datum/map_level)
 	if(ispath(level_or_path))
 		level_or_path = new level_or_path
@@ -99,9 +105,17 @@
  * * orientation - load orientation override
  * * area_cache - pass in area cache for bundling to dmm_parsed.
  *
- * @return TRUE / FALSE based on success / fail
+ * @return loaded bounds, or null on fail
  */
 /datum/controller/subsystem/mapping/proc/load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
+	UNTIL(!load_mutex)
+	load_mutex = TRUE
+	. = _load_level(arglist(args))
+	load_mutex = FALSE
+
+/datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
+	PRIVATE_PROC(TRUE)
+
 	instance = allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
 	// parse map
@@ -132,6 +146,10 @@
 
 	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
 
+	var/list/datum/callback/generation_callbacks = list()
+	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
+
+	// if not group loaded, fire off hooks
 	if(isnull(deferred_callbacks))
 		for(var/datum/D in map_initialization_hooked)
 			if(QDELETED(D))
@@ -139,17 +157,16 @@
 			D.map_initializations(loaded_bounds)
 		map_initialization_hooked = null
 
-	SSatoms.init_map_bounds(loaded_bounds)
-
-	var/list/datum/callback/generation_callbacks = list()
-	instance.on_loaded_immediate(instance.z_index, generation_callbacks)
-	// if not group loaded, fire off callbacks / finalize immediately
-	if(isnull(deferred_callbacks))
 		for(var/datum/callback/cb as anything in generation_callbacks)
 			cb.Invoke()
+
+		if(initialized)
+			SSatoms.init_map_bounds(loaded_bounds)
+
 		instance.on_loaded_finalize(instance.z_index)
 
-	. = TRUE
+	. = loaded_bounds
+
 	// todo: rebuild?
 
 /**
@@ -211,11 +228,30 @@
 
 /**
  * hooks us to SSmapping initializations; this should be called during New() for atoms.
+ *
+ * if no maploading can be hooked, we init immediately
+ * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
  */
 /datum/proc/hook_map_initializations()
-	SSmapping.map_initialization_hooked?.Add(src)
+	if(isnull(Ssmapping.map_initialization_hooked))
+		// postpone to after init
+		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
+			CRASH("undefined behavior: initialization is currently in SSatoms but we tried to hook map init.")
+		addtimer(CALLBACK(src, __immediate_map_initializations), 0)
+	else
+		SSmapping.map_initialization_hooked += src
+
+/datum/proc/__immediate_map_initializations()
+	if(!QDELETED(src))
+		map_initializations()
 
 /**
  * called if we're on SSmapping's map_initializations_hooked list.
+ * called after level on_loaded_immediate
+ * called before atom init
+ * called before level on_loaded_finalize
+ *
+ * @params
+ * * bounds - (optional) bounds list of loaded level. can be null if we were invoked without a level load.
  */
 /datum/proc/map_initializations(list/bounds)
