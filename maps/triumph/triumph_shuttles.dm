@@ -213,28 +213,3 @@
 /obj/machinery/computer/shuttle_control/explore/emt
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
-
-////////////////////////////////////////
-////////      Tour Bus     /////////////
-////////////////////////////////////////
-/*/datum/shuttle/autodock/overmap/tourbus
-	name = "Tour Bus"
-	warmup_time = 0
-	current_location = "tourbus_dock"
-	docking_controller_tag = "tourbus_docker"
-	shuttle_area = list(/area/shuttle/tourbus/cockpit, /area/shuttle/tourbus/general, /area/shuttle/tourbus/engines)
-	fuel_consumption = 1
-
-// The 'ship' of the tourbus
-/obj/effect/overmap/visitable/ship/landable/tourbus
-	name = "Tour Bus"
-	desc = "A small 'space bus', if you will."
-	vessel_mass = 2000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Tour Bus"
-
-/obj/machinery/computer/shuttle_control/explore/tourbus
-	name = "short jump console"
-	shuttle_tag = "Tour Bus"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
-*/
