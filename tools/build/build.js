@@ -47,8 +47,6 @@ export const DmMapsIncludeTarget = new Juke.Target({
     // exclude WIP maps
     const folders = [
       ...Juke.glob('maps/**/*.dmm'),
-    ] - [
-      ...Juke.glob('maps/euthenia/**/*.dmm')
     ];
     const content = folders
       .map((file) => file.replace('maps/', ''))
@@ -64,7 +62,7 @@ export const DmTarget = new Juke.Target({
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
   ],
   inputs: [
-    'maps/map_files/generic/**',
+    'maps/**/*.dm',
     'code/**',
     'html/**',
     'icons/**',

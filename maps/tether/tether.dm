@@ -224,7 +224,7 @@
 	name = "Tether - Space 1"
 	display_id = "adephagia-station-1"
 	display_name = "NSB Adephagia Station 1 (Engineering Deck)"
-	absolute_path = "maps/tether/levels/space1.dmm"
+	absolute_path = "maps/tether/levels/station1.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
@@ -241,7 +241,7 @@
 	name = "Tether - Space 2"
 	display_id = "adephagia-station-2"
 	display_name = "NSB Adephagia Station 2 (Logistics Deck)"
-	absolute_path = "maps/tether/levels/space2.dmm"
+	absolute_path = "maps/tether/levels/station2.dmm"
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,

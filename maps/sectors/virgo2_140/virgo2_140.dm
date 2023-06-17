@@ -22,7 +22,7 @@
 	id = "Virgo2Ground140"
 	name = "Sector - Virgo 2 Ground"
 	display_name = "Remmi Ground Landing"
-	absolute_path = "maps/sectors/virgo2_140/levels/virgo2_140_ground.dmm"
+	absolute_path = "maps/sectors/virgo2_140/levels/virgo2_140_surface.dmm"
 	base_turf = /turf/simulated/floor/outdoors/rocks
 
 /datum/map_level/sector/virgo2_140/ground/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
