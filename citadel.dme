@@ -2761,6 +2761,7 @@
 #include "code\modules\journalism\network\network.dm"
 #include "code\modules\journalism\network\post.dm"
 #include "code\modules\journalism\network\ui.dm"
+#include "code\modules\journalism\network\uplink.dm"
 #include "code\modules\keybindings\bindings_atom.dm"
 #include "code\modules\keybindings\bindings_client.dm"
 #include "code\modules\keybindings\focus.dm"
