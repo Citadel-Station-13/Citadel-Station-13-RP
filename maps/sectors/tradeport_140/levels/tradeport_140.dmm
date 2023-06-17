@@ -4708,7 +4708,6 @@
 /area/tradeport/safarizoo)
 "rB" = (
 /obj/structure/barricade{
-	icon = 'icons/obj/stairs.dmi';
 	icon_state = null;
 	name = "stairs"
 	},
@@ -12576,7 +12575,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/phoron{
-	icon = 'icons/obj/doors/Dooruranium.dmi';
 	name = "Cyndi & Kate's Novelty Wares"
 	},
 /obj/structure/barricade,
