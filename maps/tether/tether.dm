@@ -27,7 +27,6 @@
 	overmap_event_areas = 44
 	usable_email_tlds = list("virgo.nt")
 
-	zlevel_datum_type = /datum/map_level/tether
 
 	lobby_icon = 'icons/misc/title_vr.dmi'
 	lobby_screens = list("tether2_night")
@@ -134,34 +133,11 @@
 		list("Class D - Mountains and Rock Plains")
 		)
 
-	lateload_single_pick = list(
-		//list("Carp Farm"),
-		//list("Snow Field"),
-		//list("Listening Post")
-		)
-
-	ai_shell_restricted = TRUE
-	ai_shell_allowed_levels = list(
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_TRANSIT,
-		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_HIGH,
-		Z_LEVEL_SURFACE_MINE,
-		Z_LEVEL_SOLARS,
-		Z_LEVEL_MISC,
-		Z_LEVEL_BEACH
-		)
-
 	belter_docked_z = 		list(Z_LEVEL_SPACE_HIGH)
 	belter_transit_z =	 	list(Z_LEVEL_MISC)
 	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
 						 		 Z_LEVEL_ROGUEMINE_2)
 
-	planet_datums_to_make = list(/datum/planet/virgo3b,
-								/datum/planet/virgo4,
-								/datum/planet/class_d)
 
 // /datum/map/station/tether/get_map_info()
 // 	. = list()
@@ -181,118 +157,8 @@
 
 	return 1
 
-/datum/skybox_settings/tether
-	icon_state = "space5"
-	use_stars = FALSE
-
-// Overmap stuff. Main file is under code/modules/maps/overmap/_virgo3b.dm
-// Todo, find a way to populate this list automatically without having to do this
-/obj/effect/overmap/visitable/sector/virgo3b
-
-	extra_z_levels = list(
-		Z_LEVEL_SURFACE_MINE,
-		Z_LEVEL_SOLARS,
-		Z_LEVEL_PLAINS,
-		Z_LEVEL_UNDERDARK
-	)
-
-	levels_for_distress = list(
-		Z_LEVEL_OFFMAP1,
-		Z_LEVEL_BEACH,
-		Z_LEVEL_AEROSTAT,
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_FUELDEPOT,
-		Z_LEVEL_CLASS_D
-		)
-
-/obj/effect/overmap/visitable/sector/class_h
-	name = "Desert Planet"
-	desc = "Planet readings indicate light atmosphere and high heat."
-	scanner_desc = @{"[i]Information[/i]
-Atmosphere: Thin
-Weather: Sunny, little to no wind
-Lifesign: Multiple Fauna and humanoid life-signs detected."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#BA9066"
-
-
-/obj/effect/overmap/visitable/sector/pirate_base
-	name = "Pirate Base"
-	desc = "A nest of hostiles to the company. Caution is advised."
-	scanner_desc = @{"[i]Information[/i]
-Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
-	in_space = 1
-	known = FALSE
-	icon_state = "piratebase"
-	color = "#FF3333"
-	initial_generic_waypoints = list("pirate_docking_arm")
-
-/obj/effect/overmap/visitable/sector/mining_planet
-	name = "Mineral Rich Planet"
-	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
-	scanner_desc = @{"[i]Information[/i]
-Atmopshere: Mix of Oxygen, Nitrogen and Phoron. DANGER
-Lifesigns: No immediate life-signs detected."}
-	in_space = 0
-	icon_state = "globe"
-	color = "#8F6E4C"
-	initial_generic_waypoints = list("mining_outpost")
-
-/obj/effect/overmap/visitable/sector/gaia_planet
-	name = "Gaia Planet"
-	desc = "A planet with peaceful life, and ample flora."
-	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?
-Are you weary from all that constant space travel?
-Looking to quench a thirst of multiple types?
-Then look no further than the resorts of Sigmar!
-With a branch on every known Gaia planet, we aim to please and serve.
-Our fully automated ---- [i]Message exceeds character limit.[/i]
-[i] Information [/i]
-Atmosphere: Breathable with standard human required environment
-Weather: Sunny, with chance of showers and thunderstorms. 25C
-Lifesign: Multiple Fauna. No history of hostile life recorded
-Ownership: Planet is owned by the Happy Days and Sunshine Corporation.
-Allignment: Neutral to NanoTrasen. No Discount for services expected."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#33BB33"
-
-/obj/effect/overmap/visitable/sector/class_p
-	name = "Frozen Planet"
-	desc = "A world shrouded in cold and snow that seems to never let up."
-	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}
-	icon_state = "globe"
-	color = "#3434AA"
-	known = FALSE
-	in_space = 0
-
-
-/obj/effect/overmap/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
-	. = ..()
-	announce_atc(AM,going = FALSE)
-
-/obj/effect/overmap/visitable/sector/virgo3b/Uncrossed(var/atom/movable/AM)
-	. = ..()
-	announce_atc(AM,going = TRUE)
-
 /obj/effect/overmap/visitable/sector/virgo3b/get_space_zlevels()
 	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_HIGH)
-
-/obj/effect/overmap/visitable/sector/virgo3b/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
-	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
-	//For landables, we need to see if their shuttle is cloaked
-	if(istype(AM, /obj/effect/overmap/visitable/ship/landable))
-		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
-		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
-		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
-			SSlegacy_atc.msg(message)
-
-	//For ships, it's safe to assume they're big enough to not be sneaky
-	else if(istype(AM, /obj/effect/overmap/visitable/ship))
-		SSlegacy_atc.msg(message)
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.
@@ -412,142 +278,3 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 /datum/map_template/lateload/tether/tether_plains/on_map_loaded(z)
  	. = ..()
  	seed_submaps(list(z), 150, /area/tether/outpost/exploration_plains, /datum/map_template/submap/level_specific/plains)
-
-
-
-
-/////////////////////
-/// Step Triggers ///
-/////////////////////
-
-/obj/effect/step_trigger/teleporter/to_mining/Initialize(mapload)
-	. = ..()
-	teleport_x = src.x
-	teleport_y = 2
-	teleport_z = Z_LEVEL_SURFACE_MINE
-
-/obj/effect/step_trigger/teleporter/from_mining/Initialize(mapload)
-	. = ..()
-	teleport_x = src.x
-	teleport_y = world.maxy - 1
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
-	. = ..()
-	teleport_x = world.maxx - 1
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SOLARS
-
-/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
-	. = ..()
-	teleport_x = 2
-	teleport_y = src.y
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
-	. = ..()
-
-	//If starting on east/west edges.
-	if (src.x == 1)
-		teleport_x = world.maxx - 1
-	else if (src.x == world.maxx)
-		teleport_x = 2
-	else
-		teleport_x = src.x
-	//If starting on north/south edges.
-	if (src.y == 1)
-		teleport_y = world.maxy - 1
-	else if (src.y == world.maxy)
-		teleport_y = 2
-	else
-		teleport_y = src.y
-
-/obj/effect/step_trigger/teleporter/to_underdark
-	icon = 'icons/obj/structures/stairs_64x64.dmi'
-	icon_state = ""
-	invisibility = 0
-/obj/effect/step_trigger/teleporter/to_underdark/Initialize(mapload)
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
-		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
-		if(Z.name == "Underdark")
-			teleport_z = Z.z
-
-/obj/effect/step_trigger/teleporter/from_underdark
-	icon = 'icons/obj/structures/stairs_64x64.dmi'
-	icon_state = ""
-	invisibility = 0
-/obj/effect/step_trigger/teleporter/from_underdark/Initialize(mapload)
-	. = ..()
-	teleport_x = x
-	teleport_y = y
-	for(var/z_num in (LEGACY_MAP_DATUM).zlevels)
-		var/datum/map_level/Z = (LEGACY_MAP_DATUM).zlevels[z_num]
-		if(Z.name == "Mining Outpost")
-			teleport_z = Z.z
-
-/obj/effect/step_trigger/teleporter/to_plains/Initialize(mapload)
-	. = ..()
-	teleport_x = src.x
-	teleport_y = world.maxy - 1
-	teleport_z = Z_LEVEL_PLAINS
-
-/obj/effect/step_trigger/teleporter/from_plains/Initialize(mapload)
-	. = ..()
-	teleport_x = src.x
-	teleport_y = 2
-	teleport_z = Z_LEVEL_SURFACE_LOW
-
-/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
-	planet = planet_virgo3b
-
-
-// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
-/obj/machinery/power/supermatter/touch_map_edge()
-	qdel(src)
-
-
-
-
-
-/// Z level dropper. Todo, make something generic so we dont have to copy pasta this
-
-/obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
-	affect_ghosts = 1
-
-/obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
-	. = ..()
-
-	if(istype(get_turf(src), /turf/simulated/floor))
-		src:target_z = z
-		return INITIALIZE_HINT_QDEL
-
-/obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
-	if(!src:target_z)
-		return
-
-	var/attempts = 100
-	var/turf/simulated/T
-	while(attempts && !T)
-		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),src:target_z)
-		if(candidate.density)
-			attempts--
-			continue
-
-		T = candidate
-		break
-
-	if(!T)
-		return
-
-	if(isobserver(A))
-		A.forceMove(T) // Harmlessly move ghosts.
-		return
-
-	A.forceMove(T)
-	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
-		message_admins("\The [A] fell out of the sky.")
-		var/mob/living/L = A
-		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
