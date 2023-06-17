@@ -2,25 +2,19 @@
 	/// abstract type
 	abstract_type = /datum/map_template
 
+	//* description
+	/// template name
 	var/name = "Default Template Name"
+	/// template description
 	var/desc = "Some text should go here. Maybe."
-	/// If this is set, no more than one template in the same group will be spawned, per submap seeding.
-	var/template_group = null
-
-	/// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until
-	/// it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
-	/// Set to -1 to force the submap to always be made.
-	var/cost = null
-	/// If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
-	var/allow_duplicates = FALSE
-	/// If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
-	var/discard_prob = 0
-	// For ruins
-	var/fixed_orientation = FALSE
 
 	//* file
 	/// path to the map
 	var/map_path
+	/// prefix of path including last /
+	var/prefix
+	/// suffix of path (usually just the filename)
+	var/suffix
 
 	//* cached data
 	/// cached map
@@ -46,11 +40,29 @@
 	/// id to have if loaded as standalone level
 	var/level_id
 
+	//* legacy below *//
+
+	/// If this is set, no more than one template in the same group will be spawned, per submap seeding.
+	var/template_group = null
+
+	/// The map generator has a set 'budget' it spends to place down different submaps. It will pick available submaps randomly until
+	/// it runs out. The cost of a submap should roughly corrispond with several factors such as size, loot, difficulty, desired scarcity, etc.
+	/// Set to -1 to force the submap to always be made.
+	var/cost = null
+	/// If false, only one map template will be spawned by the game. Doesn't affect admins spawning then manually.
+	var/allow_duplicates = FALSE
+	/// If non-zero, there is a chance that the map seeding algorithm will skip this template when selecting potential templates to use.
+	var/discard_prob = 0
+	// For ruins
+	var/fixed_orientation = FALSE
+
 /datum/map_template/New(path, name)
 	if(!isnull(name))
 		src.name = name
 	if(!isnull(path))
 		src.map_path = path
+	if(isnull(map_path))
+		map_path = "[prefix][suffix]"
 	preload()
 
 /**
