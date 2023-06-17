@@ -12,15 +12,6 @@
 
 	//* LEGACY BELOW *//
 
-//Camera networks
-#define NETWORK_TETHER "Tether"
-///Using different from Polaris one for better name
-#define NETWORK_TCOMMS "Telecommunications"
-#define NETWORK_OUTSIDE "Outside"
-#define NETWORK_EXPLORATION "Exploration"
-#define NETWORK_XENOBIO "Xenobiology"
-
-/datum/map/station/tether
 	full_name = "NSB Adephagia"
 	use_overmap = TRUE
 	overmap_size = 50
