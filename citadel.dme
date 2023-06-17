@@ -2992,6 +2992,7 @@
 #include "code\modules\maps\weather\miaphus.dm"
 #include "code\modules\maps\weather\rift_lythios-43c.dm"
 #include "code\modules\maps\weather\tether_virgo3b.dm"
+#include "code\modules\maps\weather\virgo4.dm"
 #include "code\modules\materials\_materials.dm"
 #include "code\modules\materials\fifty_spawner_mats.dm"
 #include "code\modules\materials\material_recipes.dm"

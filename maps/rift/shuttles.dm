@@ -24,7 +24,7 @@
 ////////////////////////////////////////
 
 // The 'shuttle' of the excursion shuttle
-/datum/shuttle/autodock/overmap/excursion
+/datum/shuttle/autodock/overmap/excursion/rift
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	current_location = "rift_excursion_pad"

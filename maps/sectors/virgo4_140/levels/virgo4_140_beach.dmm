@@ -1574,7 +1574,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/kitchen)
 "JG" = (
-/obj/effect/step_trigger/zlevel_fall/beach,
+/obj/effect/step_trigger/zlevel_fall,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/water)
 "JU" = (

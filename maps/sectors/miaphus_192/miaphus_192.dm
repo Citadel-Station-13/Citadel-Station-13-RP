@@ -69,6 +69,3 @@
 			/datum/map_template/submap/level_specific/class_h,
 		)
 	)
-
-/obj/effect/step_trigger/zlevel_fall/beach
-	var/static/target_z

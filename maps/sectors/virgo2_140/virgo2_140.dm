@@ -9,7 +9,6 @@
 	)
 
 /datum/map_level/sector/virgo2_140
-	planet_path = /datum/planet/virgo2
 	air_outdoors = /datum/atmosphere/planet/virgo2
 
 /datum/map_level/sector/virgo2_140/aerostat
