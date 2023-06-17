@@ -2019,9 +2019,6 @@
 /obj/structure/table/holotable,
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
-"Fb" = (
-/turf/unsimulated/map/edge,
-/area/overmap)
 "Gx" = (
 /obj/item/chess/wrook,
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -2080,8 +2077,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "JB" = (
-/turf/unsimulated/map,
-/area/overmap)
+/turf/space/basic,
+/area/space)
 "JH" = (
 /obj/structure/catwalk,
 /obj/structure/bed/chair/sofa/black/right,
@@ -2284,66 +2281,66 @@ ap
 ap
 ap
 ap
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
 "}
 (2,1,1) = {"
 ap
@@ -2426,7 +2423,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -2485,7 +2481,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (3,1,1) = {"
 ap
@@ -2568,7 +2565,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -2627,7 +2623,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (4,1,1) = {"
 ap
@@ -2710,7 +2707,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -2769,7 +2765,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (5,1,1) = {"
 ap
@@ -2852,7 +2849,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -2911,7 +2907,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (6,1,1) = {"
 ap
@@ -2994,7 +2991,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3053,7 +3049,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (7,1,1) = {"
 ap
@@ -3136,7 +3133,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3195,7 +3191,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (8,1,1) = {"
 ap
@@ -3278,7 +3275,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3337,7 +3333,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (9,1,1) = {"
 ap
@@ -3420,7 +3417,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3479,7 +3475,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (10,1,1) = {"
 ap
@@ -3562,7 +3559,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3621,7 +3617,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (11,1,1) = {"
 ap
@@ -3704,7 +3701,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3763,7 +3759,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (12,1,1) = {"
 ap
@@ -3846,7 +3843,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -3905,7 +3901,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (13,1,1) = {"
 ap
@@ -3988,7 +3985,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4047,7 +4043,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (14,1,1) = {"
 ap
@@ -4130,7 +4127,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4189,7 +4185,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (15,1,1) = {"
 ap
@@ -4272,7 +4269,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4331,7 +4327,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (16,1,1) = {"
 ap
@@ -4414,7 +4411,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4473,7 +4469,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (17,1,1) = {"
 ap
@@ -4556,7 +4553,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4615,7 +4611,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (18,1,1) = {"
 ap
@@ -4698,7 +4695,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4757,7 +4753,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (19,1,1) = {"
 ap
@@ -4840,7 +4837,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -4899,7 +4895,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (20,1,1) = {"
 ap
@@ -4982,7 +4979,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5041,7 +5037,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (21,1,1) = {"
 ap
@@ -5124,7 +5121,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5183,7 +5179,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (22,1,1) = {"
 ap
@@ -5266,7 +5263,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5325,7 +5321,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (23,1,1) = {"
 ap
@@ -5408,7 +5405,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5467,7 +5463,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (24,1,1) = {"
 ap
@@ -5550,7 +5547,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5609,7 +5605,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (25,1,1) = {"
 ap
@@ -5692,7 +5689,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5751,7 +5747,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (26,1,1) = {"
 ap
@@ -5834,7 +5831,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -5893,7 +5889,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (27,1,1) = {"
 ap
@@ -5976,7 +5973,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6035,7 +6031,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (28,1,1) = {"
 ap
@@ -6118,7 +6115,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6177,7 +6173,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (29,1,1) = {"
 ap
@@ -6260,7 +6257,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6319,7 +6315,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (30,1,1) = {"
 ap
@@ -6402,7 +6399,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6461,7 +6457,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (31,1,1) = {"
 ap
@@ -6544,7 +6541,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6603,7 +6599,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (32,1,1) = {"
 ap
@@ -6686,7 +6683,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6745,7 +6741,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (33,1,1) = {"
 ap
@@ -6828,7 +6825,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -6887,7 +6883,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (34,1,1) = {"
 ap
@@ -6970,7 +6967,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7029,7 +7025,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (35,1,1) = {"
 ap
@@ -7112,7 +7109,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7171,7 +7167,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (36,1,1) = {"
 ap
@@ -7254,7 +7251,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7313,7 +7309,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (37,1,1) = {"
 ap
@@ -7396,7 +7393,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7455,7 +7451,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (38,1,1) = {"
 ap
@@ -7538,7 +7535,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7597,7 +7593,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (39,1,1) = {"
 ap
@@ -7680,7 +7677,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7739,7 +7735,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (40,1,1) = {"
 ap
@@ -7822,7 +7819,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -7881,7 +7877,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (41,1,1) = {"
 ap
@@ -7964,7 +7961,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8023,7 +8019,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (42,1,1) = {"
 ap
@@ -8106,7 +8103,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8165,7 +8161,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (43,1,1) = {"
 ap
@@ -8248,7 +8245,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8307,7 +8303,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (44,1,1) = {"
 ap
@@ -8390,7 +8387,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8449,7 +8445,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (45,1,1) = {"
 ap
@@ -8532,7 +8529,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8591,7 +8587,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (46,1,1) = {"
 ap
@@ -8674,7 +8671,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8733,7 +8729,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (47,1,1) = {"
 aq
@@ -8816,7 +8813,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -8875,7 +8871,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (48,1,1) = {"
 aq
@@ -8958,7 +8955,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9017,7 +9013,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (49,1,1) = {"
 aq
@@ -9100,7 +9097,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9159,7 +9155,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (50,1,1) = {"
 aq
@@ -9242,7 +9239,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9301,7 +9297,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (51,1,1) = {"
 aq
@@ -9384,7 +9381,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9443,7 +9439,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (52,1,1) = {"
 aq
@@ -9526,7 +9523,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9585,7 +9581,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (53,1,1) = {"
 aq
@@ -9668,7 +9665,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9727,7 +9723,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (54,1,1) = {"
 aq
@@ -9810,7 +9807,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -9869,7 +9865,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (55,1,1) = {"
 aq
@@ -9952,7 +9949,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -10011,7 +10007,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (56,1,1) = {"
 aq
@@ -10094,7 +10091,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -10153,7 +10149,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (57,1,1) = {"
 aq
@@ -10236,7 +10233,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -10295,7 +10291,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (58,1,1) = {"
 aq
@@ -10378,7 +10375,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -10437,7 +10433,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (59,1,1) = {"
 aq
@@ -10520,7 +10517,6 @@ ap
 ap
 ap
 ap
-Fb
 JB
 JB
 JB
@@ -10579,7 +10575,8 @@ JB
 JB
 JB
 JB
-Fb
+JB
+JB
 "}
 (60,1,1) = {"
 aq
@@ -10662,66 +10659,66 @@ ap
 ap
 ap
 ap
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
-Fb
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
+JB
 "}
 (61,1,1) = {"
 aq
