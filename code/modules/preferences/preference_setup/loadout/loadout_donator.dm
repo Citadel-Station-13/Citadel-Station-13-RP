@@ -270,3 +270,8 @@
 	name = "S'rendarr's Hand case"
 	path = /obj/item/storage/fancy/cigar/taj
 	ckeywhitelist = list("vailthewolf")
+
+/datum/gear/donator/noahcloak
+	name = "Noah's Cloak"
+	path = /obj/item/clothing/suit/storage/hooded/tajaran/cloak/donatornoahcloak
+	ckeywhitelist = list("rainbyplays")

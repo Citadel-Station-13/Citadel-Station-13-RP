@@ -134,6 +134,8 @@
 
 	if(!T)
 		T = SSjob.get_latejoin_spawnpoint()
+	if(!T)
+		T = locate(1,1,1)
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)
@@ -454,6 +456,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Become mouse"
 	set category = "Ghost"
 
+	if(client.persistent.ligma)
+		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
+		log_shadowban("[key_name(src)] mouse join blocked")
+		return
+
 	if(config_legacy.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
 		return
@@ -462,7 +469,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	var/turf/T = get_turf(src)
-	if(!T || (T.z in GLOB.using_map.admin_levels))
+	if(!T || (T.z in (LEGACY_MAP_DATUM).admin_levels))
 		to_chat(src, "<span class='warning'>You may not spawn as a mouse on this Z-level.</span>")
 		return
 
@@ -850,6 +857,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	//Fine fine, we can ask.
 	var/obj/item/nif/nif = H.nif
 	to_chat(src,"<span class='notice'>Request sent to [H].</span>")
+
+	if(client.persistent.ligma)
+		sleep(rand(40,120))
+		to_chat(src, SPAN_WARNING("[H] denied your request."))
+		log_shadowban("[key_name(src)] SC join blocked.")
+		return
 
 	var/req_time = world.time
 	nif.notify("Transient mindstate detected, analyzing...")

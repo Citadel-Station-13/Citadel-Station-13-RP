@@ -172,7 +172,7 @@
 	.["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
 	.["security_level"] = get_security_level()
 	.["round_duration"] = roundduration2text()
-	.["map"] = SSmapping.config.map_name
+	.["map"] = (LEGACY_MAP_DATUM).name
 	return json_encode(.)
 
 /datum/world_topic/jsonplayers

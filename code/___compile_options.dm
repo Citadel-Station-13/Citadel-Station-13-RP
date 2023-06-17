@@ -3,24 +3,21 @@
 
 //## Core settings
 //! Fastboot flags - useful for debugging
-/// Disable automatic roundstart icon smoothing.
-// #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
 /// Disable loading late maps.
-// #define FASTBOOT_DISABLE_LATELOAD (1<<1)
+// #define FASTBOOT_DISABLE_LATELOAD
+/// Disable automatic roundstart icon smoothing.
+// #define FASTBOOT_DISABLE_SMOOTHING
 /// Disable atmospherics zone build.
-// #define FASTBOOT_DISABLE_ZONES (1<<2)
-
+// #define FASTBOOT_DISABLE_ZONES
 
 /// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
 // #define DATUMVAR_DEBUGGING_MODE
-
 
 /// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error.
 #ifdef DEBUG
 	#define USE_CUSTOM_ERROR_HANDLER
 	#define DEBUG_SHUTTLES
 #endif
-
 
 /**
  * By using the testing("message") proc you can create debug-feedback for people with this uncommented,
@@ -126,12 +123,6 @@
 	 */
 	#define PRELOAD_RSC	2
 #endif
-
-
-#ifdef LOWMEMORYMODE
-	#define FORCE_MAP "_mapload/rift.json" //TODO: A PROPER runtime or ministation map. @Zandario
-#endif
-
 
 // ## CBT BUILD DEFINES
 

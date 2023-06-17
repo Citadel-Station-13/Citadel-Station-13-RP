@@ -67,7 +67,7 @@
 /area/survivalpod)
 "m" = (
 /obj/structure/closet/secure_closet/bar{
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/light{
 	dir = 1

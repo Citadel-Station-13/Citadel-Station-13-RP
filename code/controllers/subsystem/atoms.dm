@@ -100,6 +100,55 @@ SUBSYSTEM_DEF(atoms)
 /datum/controller/subsystem/atoms/proc/map_loader_stop()
 	initialized = old_subsystem_initialized
 
+/datum/controller/subsystem/atoms/proc/init_map_bounds(list/bounds)
+	if (initialized == INITIALIZATION_INSSATOMS)
+		return	// Let proper initialisation handle it later
+
+	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
+	SSshuttle.block_init_queue = TRUE
+
+	var/list/atom/atoms = list()
+	var/list/area/areas = list()
+	var/list/obj/structure/cable/cables = list()
+	var/list/obj/machinery/atmospherics/atmos_machines = list()
+	var/list/turf/turfs = block(
+		locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
+		locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]),
+	)
+
+	for(var/L in turfs)
+		var/turf/B = L
+		B.queue_zone_update()
+		QUEUE_SMOOTH(B)
+		atoms += B
+		areas |= B.loc
+		for(var/A in B)
+			atoms += A
+			if(istype(A, /obj/structure/cable))
+				cables += A
+			else if(istype(A, /obj/machinery/atmospherics))
+				atmos_machines += A
+	atoms |= areas
+
+	admin_notice("<span class='danger'>Initializing newly created atom(s) in submap.</span>", R_DEBUG)
+	InitializeAtoms(atoms)
+
+	admin_notice("<span class='danger'>Initializing atmos pipenets and machinery in submap.</span>", R_DEBUG)
+	SSmachines.setup_atmos_machinery(atmos_machines)
+
+	admin_notice("<span class='danger'>Rebuilding powernets due to submap creation.</span>", R_DEBUG)
+	SSmachines.setup_powernets_for_cables(cables)
+
+	// Ensure all machines in loaded areas get notified of power status
+	for(var/I in areas)
+		var/area/A = I
+		A.power_change()
+
+	SSshuttle.block_init_queue = prev_shuttle_queue_state
+	SSshuttle.process_init_queues()	// We will flush the queue unless there were other blockers, in which case they will do it.
+
+	admin_notice("<span class='danger'>Submap initializations finished.</span>", R_DEBUG)
+
 /datum/controller/subsystem/atoms/Recover()
 	initialized = SSatoms.initialized
 	if(initialized == INITIALIZATION_INNEW_MAPLOAD)
