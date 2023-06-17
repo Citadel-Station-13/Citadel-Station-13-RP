@@ -22,18 +22,17 @@
 
 	//* LEGACY BELOW *//
 
+	legacy_assert_shuttle_datums = list(
+
+	)
+
+	#warn shuttles
+
 	full_name = "NSB Adephagia"
 	use_overmap = TRUE
 	overmap_size = 50
 	overmap_event_areas = 44
 	usable_email_tlds = list("virgo.nt")
-
-	holomap_smoosh = list(list(
-		Z_LEVEL_SURFACE_LOW,
-		Z_LEVEL_SURFACE_MID,
-		Z_LEVEL_SURFACE_HIGH,
-		Z_LEVEL_SPACE_LOW,
-		Z_LEVEL_SPACE_HIGH))
 
 	station_name  = "NSB Adephagia"
 	station_short = "Tether"
@@ -94,8 +93,6 @@
 
 	meteor_strike_areas = list(/area/tether/surfacebase/outside/outside3)
 
-	default_skybox = /datum/skybox_settings/tether
-
 	unit_test_exempt_areas = list(
 		/area/tether/surfacebase/outside/outside1,
 		/area/tether/elevator,
@@ -129,20 +126,6 @@
 		list("Class D - Mountains and Rock Plains")
 		)
 
-
-/datum/map/station/tether/perform_map_generation()
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SURFACE_MINE, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SURFACE_MINE, 64, 64)         // Create the mining ore distribution map.
-
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_SOLARS, world.maxx, world.maxy) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, Z_LEVEL_SOLARS, 64, 64)         // Create the mining ore distribution map.
-
-	return 1
-
-/obj/effect/overmap/visitable/sector/virgo3b/get_space_zlevels()
-	return list(Z_LEVEL_SPACE_LOW, Z_LEVEL_SPACE_HIGH)
-
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.
 #define TETHER_MAP_SIZE 140
@@ -171,6 +154,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_mid
@@ -189,6 +173,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/station/surface_high
@@ -208,6 +193,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_GRAVITY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	planet_path = /datum/planet/virgo3b
 	link_above = /datum/map_level/tether/transit
@@ -243,6 +229,7 @@
 	traits = list(
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_above = /datum/map_level/tether/station/space_high
 	link_below = /datum/map_level/tether/transit
@@ -260,6 +247,7 @@
 		ZTRAIT_STATION,
 		ZTRAIT_FACILITY_SAFETY,
 		ZTRAIT_LEGACY_BELTER_DOCK,
+		ZTRAIT_LEGACY_HOLOMAP_SMOOSH,
 	)
 	link_below = /datum/map_level/tether/station/space_low
 	base_turf = /turf/simulated/open
@@ -279,6 +267,11 @@
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
 
+/datum/map_level/tether/mine/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
+
 /datum/map_level/tether/solars
 	id = "TetherScienceOutpost"
 	name = "Tether - Science Outpost"
@@ -291,6 +284,11 @@
 	)
 	flags = LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
+/datum/map_level/tether/solars/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
+	. = ..()
+	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, z_index, world.maxx, world.maxy) // Create the mining Z-level.
+	new /datum/random_map/noise/ore(null, 1, 1, z_index, 64, 64)         // Create the mining ore distribution map.
 
 /datum/map_level/tether/misc
 	id = "TetherMisc"
