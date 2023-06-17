@@ -56,10 +56,12 @@
 // Landmark for where to load in the engine on permament map
 /obj/landmark/engine_loader
 	name = "Engine Loader"
-	var/clean_turfs // A list of lists, where each list is (x, )
+	var/list/clean_turfs // A list of lists, where each list is (x, )
 
 /obj/landmark/engine_loader/Initialize(mapload)
 	. = ..()
+	if(istext(clean_turfs))
+		clean_turfs = safe_json_decode(clean_turfs)
 	if(SSmapping.engine_loader)
 		warning("Duplicate engine_loader landmarks: [log_info_line(src)] and [log_info_line(SSmapping.engine_loader)]")
 		return INITIALIZE_HINT_QDEL

@@ -16331,11 +16331,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
-"gjG" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "gjL" = (
 /obj/structure/barricade/cutout/law,
 /turf/simulated/floor/tiled,
@@ -43805,7 +43800,7 @@ aaa
 aaa
 aaa
 aeM
-gjG
+aeM
 aeM
 aeM
 aaa
