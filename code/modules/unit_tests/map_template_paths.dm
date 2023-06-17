@@ -13,5 +13,5 @@
 			if(!fexists(initial(S.prefix) + initial(S.suffix)))
 				TEST_FAIL("Failed to resolve [path]'s prefix+suffix to a file - [initial(S.prefix) + initial(S.suffix)].")
 			continue
-		if(!fexists("[initial(M.mappath)]"))
-			TEST_FAIL("Failed to resolve [path]'s initial mappath to a file - [initial(M.mappath)].")
+		if(!fexists("[initial(M.map_path)]"))
+			TEST_FAIL("Failed to resolve [path]'s initial map_path to a file - [initial(M.map_path)].")

@@ -587,7 +587,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	name = "Medical Bay";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1082,7 +1082,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1211,7 +1211,7 @@
 "cX" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1440,7 +1440,7 @@
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engineering";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1610,7 +1610,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
 	req_access = list(160);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
@@ -1892,7 +1892,7 @@
 /area/shuttle/trade)
 "jo" = (
 /obj/machinery/door/airlock/multi_tile/glass{
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)

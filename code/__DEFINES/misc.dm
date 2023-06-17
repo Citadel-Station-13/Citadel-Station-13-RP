@@ -318,14 +318,6 @@ var/list/economy_station_departments = list(
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
 
-// Maploader bounds indices
-#define MAP_MINX	1
-#define MAP_MINY	2
-#define MAP_MINZ	3
-#define MAP_MAXX	4
-#define MAP_MAXY	5
-#define MAP_MAXZ	6
-
 // /atom/proc/use_check flags
 #define USE_ALLOW_NONLIVING			1
 #define USE_ALLOW_NON_ADV_TOOL_USR	2

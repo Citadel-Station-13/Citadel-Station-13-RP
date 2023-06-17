@@ -513,7 +513,7 @@
 	name = "interior access button";
 	pixel_x = 26;
 	pixel_y = -26;
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission)
@@ -562,7 +562,7 @@
 	id_tag = "carp_inner";
 	locked = 1;
 	name = "External Access";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
@@ -663,7 +663,7 @@
 	id_tag = "carp_outer";
 	locked = 1;
 	name = "External Access";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/plating,
 /area/awaymission)
@@ -684,7 +684,7 @@
 	name = "exterior access button";
 	pixel_x = 26;
 	pixel_y = 26;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/airless,
 /area/awaymission)
