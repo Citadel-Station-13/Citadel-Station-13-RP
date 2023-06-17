@@ -6150,7 +6150,7 @@
 /obj/item/tool/wrench{
 	desc = "The lower jaw seems to keep jiggling...";
 	name = "loose wrench";
-	toolspeed = 3
+	tool_speed = 3
 	},
 /obj/random/cigarettes,
 /turf/simulated/floor/plating,
@@ -6790,7 +6790,7 @@
 /obj/item/tool/wirecutters{
 	desc = "It gets jammed a lot.";
 	name = "janky wirecutters";
-	toolspeed = 2
+	tool_speed = 2
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/deck_three/port)
@@ -21141,13 +21141,13 @@
 /obj/item/material/minihoe,
 /obj/item/shovel/spade{
 	desc = "A small tool for digging and moving dirt. This one is made from cheap plastics";
-	force = 0;
+	damage_force = 0;
 	name = "plastic spade";
 	throw_force = 0
 	},
 /obj/item/shovel/spade{
 	desc = "A small tool for digging and moving dirt. This one is made from cheap plastics";
-	force = 0;
+	damage_force = 0;
 	name = "plastic spade";
 	throw_force = 0
 	},

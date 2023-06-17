@@ -110,6 +110,8 @@
 	var/static/regex/dmmRegex = new(@'"([a-zA-Z]+)" = \(((?:.|\n)*?)\)\n(?!\t)|\((\d+),(\d+),(\d+)\) = \{"([a-zA-Z\n]*)"\}', "g")
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
+	/// used to parse out \[, \] to their unescaped forms
+	var/static/regex/textConstantProcessing = new(@'\([\[\]])', "g")
 
 /**
  * creates and parses a map
@@ -579,6 +581,7 @@
 
 //find the position of the next delimiter,skipping whatever is comprised between opening_escape and closing_escape
 //returns 0 if reached the last delimiter
+// todo: comment this more
 /datum/dmm_parsed/proc/find_next_delimiter_position(text as text,initial_position as num, delimiter=",",opening_escape="\"",closing_escape="\"")
 	var/position = initial_position
 	var/next_delimiter = findtext(text,delimiter,position,0)
@@ -593,6 +596,7 @@
 
 //build a list from variables in text form (e.g {var1="derp"; var2; var3=7} => list(var1="derp", var2, var3=7))
 //return the filled list
+// todo: parse / comment ths more
 /datum/dmm_parsed/proc/readlist(text as text, delimiter=",")
 	. = list()
 	if (!text)
@@ -625,6 +629,11 @@
 
 /**
  * parses the value of an attribute
+ *
+ * known limitations:
+ * * text doesn't support \" and likely not most byond "text macros"
+ * * lists don't support nested lists
+ * * see: not parsed
  */
 /datum/dmm_parsed/proc/parse_constant(text)
 	// number
@@ -634,7 +643,8 @@
 
 	// string
 	if(text[1] == "\"")
-		return copytext(text, length(text[1]) + 1, findtext(text, "\"", length(text[1]) + 1))
+		var/str = copytext(text, length(text[1]) + 1, findtext(text, "\"", length(text[1]) + 1))
+		return textConstantProcessing.Replace(str, "$1")
 
 	// list
 	if(copytext(text, 1, 6) == "list(")//6 == length("list(") + 1
