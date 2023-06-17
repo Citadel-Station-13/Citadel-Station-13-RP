@@ -374,8 +374,6 @@
 /obj/structure/prop{
 	desc = "A man-sized pod for entering suspended animation. This one is room temperature.";
 	dir = 8;
-	icon = 'icons/obj/Cryogenic2.dmi';
-	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
 /obj/effect/floor_decal/corner/brown/full{
