@@ -4680,7 +4680,6 @@
 #include "maps\generic\map_data.dm"
 #include "maps\generic\misc.dm"
 #include "maps\generic\spawn_points.dm"
-#include "maps\generic\station_shuttles.dm"
 #include "maps\generic\step_triggers.dm"
 #include "maps\generic\telecomms.dm"
 #include "maps\generic\turbolifts.dm"
