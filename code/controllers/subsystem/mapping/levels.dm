@@ -117,7 +117,7 @@
 /datum/controller/subsystem/mapping/proc/_load_level(datum/map_level/instance, rebuild, center, crop, list/deferred_callbacks, orientation, list/area_cache)
 	PRIVATE_PROC(TRUE)
 
-	instance = allocate_level(instance, FALSE)
+	instance = _allocate_level(instance, FALSE)
 	ASSERT(!isnull(instance))
 	// parse map
 
