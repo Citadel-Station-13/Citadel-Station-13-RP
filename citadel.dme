@@ -4685,7 +4685,6 @@
 #include "maps\generic\telecomms.dm"
 #include "maps\generic\turbolifts.dm"
 #include "maps\generic\shuttles\ferry\belter.dm"
-#include "maps\generic\shuttles\ferry\cargo.dm"
 #include "maps\generic\shuttles\ferry\escape.dm"
 #include "maps\minitest\minitest.dm"
 #include "maps\minitest\sectors.dm"
