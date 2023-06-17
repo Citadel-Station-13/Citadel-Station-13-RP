@@ -1,38 +1,23 @@
-// Normal map defs
-// Z1 is dynamic transit.
-#define Z_LEVEL_DECK_ONE				2
-#define Z_LEVEL_DECK_TWO				3
-#define Z_LEVEL_DECK_THREE				4
-#define Z_LEVEL_DECK_FOUR				5
-#define Z_LEVEL_CENTCOM					6
-#define Z_LEVEL_MISC					7
-#define Z_LEVEL_SHIPS					8
+/datum/map/station/triumph
+	id = "triumph"
+	name = "World - Triumph"
+	levels = list(
 
-#define Z_LEVEL_DEBRISFIELD				9
-#define Z_LEVEL_PIRATEBASE				10
-#define Z_LEVEL_MININGPLANET			11
-#define Z_LEVEL_UNKNOWN_PLANET			12
-#define Z_LEVEL_DESERT_PLANET			13
-#define Z_LEVEL_GAIA_PLANET				14
-#define Z_LEVEL_FROZEN_PLANET			15
+	)
+	width = 140
+	height = 140
+	lateload = list(
 
-#define Z_LEVEL_ROGUEMINE_1				16
-#define Z_LEVEL_ROGUEMINE_2				17
-#define Z_LEVEL_ROGUEMINE_3				18
-#define Z_LEVEL_ROGUEMINE_4				19
+	)
 
-#define Z_LEVEL_TRADEPORT				20
-#define Z_LEVEL_LAVALAND				21
-#define Z_LEVEL_LAVALAND_EAST			22
+	//* LEGACY BELOW *//
+
 
 // Camera Networks
 /datum/map/station/triumph
-	name = "Triumph"
 	full_name = "NSV Triumph"
-	path = "triumph"
 
 	use_overmap = TRUE
-	overmap_z = Z_LEVEL_MISC
 	overmap_size = 60
 	overmap_event_areas = 50
 	usable_email_tlds = list("triumph.nt")

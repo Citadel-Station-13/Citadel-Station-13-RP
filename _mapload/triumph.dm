@@ -1,1 +1,1 @@
-#define FORCE_MAP "_mapload/triumph.json"
+#define FORCE_MAP "triumph"

@@ -4715,4 +4715,7 @@
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
 #include "maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
+#include "maps\tether\shuttles.dm"
+#include "maps\tether\telecomms.dm"
+#include "maps\tether\tether.dm"
 // END_INCLUDE

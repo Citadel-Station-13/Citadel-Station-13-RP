@@ -1,28 +1,16 @@
-//Normal map defs
-#define Z_LEVEL_SURFACE_LOW					2
-#define Z_LEVEL_SURFACE_MID					3
-#define Z_LEVEL_SURFACE_HIGH				4
-#define Z_LEVEL_TRANSIT						5
-#define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_HIGH					7
-#define Z_LEVEL_SURFACE_MINE				8
-#define Z_LEVEL_SOLARS						9
-#define Z_LEVEL_MISC						10
-#define Z_LEVEL_UNDERDARK					11
-#define Z_LEVEL_PLAINS						12
-#define Z_LEVEL_OFFMAP1						13
-#define Z_LEVEL_OFFMAP2						14
-#define Z_LEVEL_ROGUEMINE_1					15
-#define Z_LEVEL_ROGUEMINE_2					16
-#define Z_LEVEL_BEACH						17
-#define Z_LEVEL_BEACH_CAVE					18
-#define Z_LEVEL_DESERT						19
-#define Z_LEVEL_AEROSTAT					20
-#define Z_LEVEL_AEROSTAT_SURFACE			21
-#define Z_LEVEL_DEBRISFIELD					22
-#define Z_LEVEL_FUELDEPOT					23
-#define Z_LEVEL_GATEWAY						24
-#define Z_LEVEL_CLASS_D						25
+/datum/map/station/tether
+	id = "tether"
+	name = "World - Tether"
+	levels = list(
+
+	)
+	width = 140
+	height = 140
+	lateload = list(
+
+	)
+
+	//* LEGACY BELOW *//
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
@@ -32,29 +20,9 @@
 #define NETWORK_EXPLORATION "Exploration"
 #define NETWORK_XENOBIO "Xenobiology"
 
-/datum/map/station/tether/New()
-	..()
-	var/choice = pickweight(list(
-		"title1" = 50,
-		"title2" = 10,
-		"title3" = 50,
-		"title4" = 50,
-		"title5" = 20,
-		"title6" = 20,
-		"title7" = 20,
-		"title8" = 1,
-		"title9" = 1
-	))
-	if(choice)
-		lobby_screens = list(choice)
-
 /datum/map/station/tether
-	name = "Virgo"
 	full_name = "NSB Adephagia"
-	path = "tether"
-
 	use_overmap = TRUE
-	overmap_z = Z_LEVEL_MISC
 	overmap_size = 50
 	overmap_event_areas = 44
 	usable_email_tlds = list("virgo.nt")
