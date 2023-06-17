@@ -33,7 +33,7 @@
 	fuel_consumption = 3
 	move_direction = WEST
 
-/obj/effect/overmap/visitable/ship/landable/excursion
+/obj/effect/overmap/visitable/ship/landable/excursion/rift
 	name = "Excursion Shuttle"
 	desc = "The Mk2 Excursion Shuttle. NT Approved!"
 	color = "#72388d" //Purple

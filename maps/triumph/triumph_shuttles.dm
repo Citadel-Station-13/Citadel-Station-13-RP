@@ -85,16 +85,6 @@
 	shuttle_area = list(/area/shuttle/excursion/triumph)
 	fuel_consumption = 3
 
-
-// The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/excursion
-	name = "Excursion Shuttle"
-	desc = "The traditional Excursion Shuttle."
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Excursion Shuttle"
-
-
 // EXCURSION SHUTTLE DATA
 
 /datum/shuttle/autodock/overmap/excursion

@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods
-/datum/shuttle/autodock/ferry/emergency/escape
+/datum/shuttle/autodock/ferry/emergency/escape/tether
 	name = "Escape"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/escape
@@ -12,7 +12,7 @@
 	move_direction = NORTH
 
 //////////////////////////////////////////////////////////////
-/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1
+/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1/tether
 	name = "Large Escape Pod 1"
 	location = FERRY_LOCATION_STATION
 	shuttle_area = /area/shuttle/large_escape_pod1
@@ -26,7 +26,7 @@
 
 //////////////////////////////////////////////////////////////
 // Supply shuttle
-/datum/shuttle/autodock/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo/tether
 	name = "Supply"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/supply
@@ -96,7 +96,7 @@
 	req_one_access = list(ACCESS_SUPPLY_MINE)
 
 // The 'shuttle' of the excursion shuttle
-/datum/shuttle/autodock/overmap/excursion
+/datum/shuttle/autodock/overmap/excursion/tether
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	current_location = "tether_excursion_hangar"

@@ -23,10 +23,16 @@
 	//* LEGACY BELOW *//
 
 	legacy_assert_shuttle_datums = list(
-
+		/datum/shuttle/autodock/ferry/emergency/escape/tether,
+		/datum/shuttle/autodock/ferry/escape_pod/large_escape_pod1/tether,
+		/datum/shuttle/autodock/ferry/supply/cargo/tether,
+		/datum/shuttle/autodock/ferry/tether_backup,
+		/datum/shuttle/autodock/ferry/surface_mining_outpost,
+		/datum/shuttle/autodock/overmap/excursion/tether,
+		/datum/shuttle/autodock/overmap/tourbus,
+		/datum/shuttle/autodock/overmap/medivac,
+		/datum/shuttle/autodock/overmap/securiship,
 	)
-
-	#warn shuttles
 
 	full_name = "NSB Adephagia"
 	use_overmap = TRUE
@@ -117,7 +123,6 @@
 
 
 	lateload_z_levels = list(
-		list("Tether - Misc","Tether - Underdark","Tether - Plains"), //Stock Tether lateload maps
 		list("Asteroid Belt 1","Asteroid Belt 2"),
 		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
 		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),

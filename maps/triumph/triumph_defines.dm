@@ -120,10 +120,6 @@
 
 	belter_docked_z = 		list(Z_LEVEL_DECK_TWO)
 	belter_transit_z =	 	list(Z_LEVEL_SHIPS)
-	belter_belt_z = 		list(Z_LEVEL_ROGUEMINE_1,
-						 		 Z_LEVEL_ROGUEMINE_2,
-						 	 	 Z_LEVEL_ROGUEMINE_3,
-								 Z_LEVEL_ROGUEMINE_4)
 
 	lavaland_levels =		list(Z_LEVEL_LAVALAND,
 								 Z_LEVEL_LAVALAND_EAST)
@@ -141,35 +137,6 @@
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)")
 	)
-
-	ai_shell_restricted = TRUE
-	ai_shell_allowed_levels = list(
-		Z_LEVEL_DECK_ONE,
-		Z_LEVEL_DECK_TWO,
-		Z_LEVEL_DECK_THREE,
-		Z_LEVEL_DECK_FOUR,
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_PIRATEBASE,
-		Z_LEVEL_MININGPLANET,
-		Z_LEVEL_UNKNOWN_PLANET,
-		Z_LEVEL_DESERT_PLANET,
-		Z_LEVEL_GAIA_PLANET,
-		Z_LEVEL_FROZEN_PLANET,
-		Z_LEVEL_TRADEPORT,
-		Z_LEVEL_LAVALAND,
-		Z_LEVEL_LAVALAND_EAST)
-
-	lateload_single_pick = null //Nothing right now.
-
-	planet_datums_to_make = list(/datum/planet/lavaland,
-								/datum/planet/classg,
-								/datum/planet/classd,
-								/datum/planet/classh,
-								/datum/planet/classp,
-								/datum/planet/classm)
-
-/datum/map/station/triumph/perform_map_generation()
-	return 1
 
 // For making the 4-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in triumph z levels.

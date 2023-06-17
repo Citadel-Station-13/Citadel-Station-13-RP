@@ -33,7 +33,7 @@
 
 	legacy_assert_shuttle_datums = list(
 		/datum/shuttle/autodock/ferry/emergency/escape,
-		/datum/shuttle/autodock/overmap/excursion,
+		/datum/shuttle/autodock/overmap/excursion/rift,
 		/datum/shuttle/autodock/overmap/courser,
 		/datum/shuttle/autodock/overmap/hammerhead,
 		/datum/shuttle/autodock/overmap/civvie,

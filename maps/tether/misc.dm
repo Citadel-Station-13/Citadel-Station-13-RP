@@ -81,7 +81,6 @@
 /obj/effect/step_trigger/teleporter/from_plains
 	map_level_target = /datum/map_level/tether/station/surface_low
 
-
 /obj/effect/step_trigger/teleporter/from_plains/Initialize(mapload)
 	. = ..()
 	teleport_x = src.x
