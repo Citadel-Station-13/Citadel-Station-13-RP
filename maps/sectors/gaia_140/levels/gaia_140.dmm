@@ -283,8 +283,6 @@
 /area/class_m/inside)
 "gS" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "gV" = (
@@ -600,8 +598,6 @@
 /area/class_m/outside)
 "on" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1029,13 +1025,6 @@
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/outdoors/grass/classm,
 /area/class_m/outside)
-"wp" = (
-/obj/structure/table/rack,
-/obj/item/material/fishing_rod/modern/strong,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_rod/modern/strong,
-/turf/simulated/floor/wood/classm,
-/area/class_m/inside)
 "wt" = (
 /obj/machinery/vending/cola,
 /obj/machinery/light{
@@ -7516,7 +7505,7 @@ XR
 Am
 ZS
 Be
-wp
+gS
 Am
 bA
 bA

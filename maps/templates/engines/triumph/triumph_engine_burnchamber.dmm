@@ -578,7 +578,7 @@
 	frequency = 1438;
 	input_tag = "hotloop_in";
 	name = "Pressure Chamber Control";
-	sensors = list("hotloop_sensor" = "Pressure Chamber")
+	sensors = list("hotloop_sensor"="Pressure Chamber")
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)
@@ -679,7 +679,7 @@
 	frequency = 1437;
 	input_tag = "engine_in";
 	name = "Burn Chamber Control";
-	sensors = list("engine_sensor" = "Burn Chamber")
+	sensors = list("engine_sensor"="Burn Chamber")
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_room)

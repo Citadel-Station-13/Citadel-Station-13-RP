@@ -727,16 +727,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm2)
-"la" = (
-/obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/stack/cable_coil/pink,
-/obj/item/stack/cable_coil/pink,
-/turf/simulated/floor/tiled/asteroid_steel,
-/area/tether_away/beach/resort/janibar)
 "le" = (
 /turf/simulated/floor/water/beach{
 	dir = 5
@@ -906,10 +896,6 @@
 /area/tether_away/beach/resort)
 "pd" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
 /turf/simulated/floor/tiled/asteroid_steel,
@@ -1573,10 +1559,6 @@
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/kitchen)
-"JG" = (
-/obj/effect/step_trigger/zlevel_fall,
-/turf/simulated/floor/outdoors/beach/sand/desert,
-/area/tether_away/beach/water)
 "JU" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -9785,7 +9767,7 @@ Nv
 li
 Nv
 sD
-la
+pd
 zw
 Nv
 Nv
@@ -18611,7 +18593,7 @@ bf
 bk
 mC
 mC
-JG
+mC
 mC
 fQ
 bf
