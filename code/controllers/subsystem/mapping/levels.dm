@@ -10,6 +10,9 @@
 	var/static/list/datum/map_level/keyed_levels = list()
 	/// literally just a random hexadecimal store to prevent collision
 	var/static/list/random_fluff_level_hashes = list()
+	/// stuff that puts themselves in this get map_initializations() hook called on them
+	/// at end of level or map load cycle before general atom init.
+	var/tmp/list/datum/map_initialization_hooked
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -124,7 +127,17 @@
 	if(!crop && ((parsed.width + real_x - 1) > world.maxx || (parsed.height + real_y - 1) > world.maxy))
 		CRASH("tried to load a map that would overrun ):")
 
+	if(isnull(deferred_callbacks))
+		map_initialization_hooked = list()
+
 	var/list/loaded_bounds = parsed.load(real_x, real_y, real_z, no_changeturf = TRUE, place_on_top = FALSE, orientation = orientation || instance.orientation, area_cache = area_cache)
+
+	if(isnull(deferred_callbacks))
+		for(var/datum/D in map_initialization_hooked)
+			if(QDELETED(D))
+				continue
+			D.map_initializations(loaded_bounds)
+		map_initialization_hooked = null
 
 	SSatoms.init_map_bounds(loaded_bounds)
 
@@ -195,3 +208,14 @@
 		. = "[discriminator][num2hex(rand(1, 16 ** 4 - 1))]"
 	while(. in random_fluff_level_hashes)
 	random_fluff_level_hashes += .
+
+/**
+ * hooks us to SSmapping initializations; this should be called during New() for atoms.
+ */
+/datum/proc/hook_map_initializations()
+	SSmapping.map_initialization_hooked?.Add(src)
+
+/**
+ * called if we're on SSmapping's map_initializations_hooked list.
+ */
+/datum/proc/map_initializations(list/bounds)
