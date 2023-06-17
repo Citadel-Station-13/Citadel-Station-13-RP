@@ -12,7 +12,7 @@
 	var/static/list/random_fluff_level_hashes = list()
 	/// stuff that puts themselves in this get map_initializations() hook called on them
 	/// at end of level or map load cycle before general atom init.
-	var/tmp/list/datum/map_initialization_hooked
+	var/tmp/list/obj/map_helper/map_initialization_hooked
 
 /datum/controller/subsystem/mapping/on_max_z_changed(old_z_count, new_z_count)
 	. = ..()
@@ -226,34 +226,3 @@
 		. = "[discriminator][num2hex(rand(1, 16 ** 4 - 1))]"
 	while(. in random_fluff_level_hashes)
 	random_fluff_level_hashes += .
-
-/**
- * hooks us to SSmapping initializations; this should be called during New() for atoms.
- *
- * if no maploading can be hooked, we init immediately
- * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
- */
-/datum/proc/hook_map_initializations()
-	if(isnull(SSmapping.map_initialization_hooked))
-		// postpone to after init
-		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
-			CRASH("undefined behavior: initialization is currently in SSatoms but we tried to hook map init.")
-		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
-		// addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, __immediate_map_initializations)), 0)
-	else
-		SSmapping.map_initialization_hooked += src
-
-/datum/proc/__immediate_map_initializations()
-	if(!QDELETED(src))
-		map_initializations()
-
-/**
- * called if we're on SSmapping's map_initializations_hooked list.
- * called after level on_loaded_immediate
- * called before atom init
- * called before level on_loaded_finalize
- *
- * @params
- * * bounds - (optional) bounds list of loaded level. can be null if we were invoked without a level load.
- */
-/datum/proc/map_initializations(list/bounds)

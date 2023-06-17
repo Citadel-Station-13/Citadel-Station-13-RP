@@ -1,14 +1,10 @@
 // Landmark for where to load in the engine on permament map
 /obj/map_helper/engine_loader
 	name = "Engine Loader"
-	late = TRUE
+	early = TRUE
 	var/list/clean_turfs // A list of lists, where each list is (x, )
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
-
-/obj/map_helper/engine_loader/New()
-	hook_map_initializations()
-	return ..()
 
 /obj/map_helper/engine_loader/map_initializations(list/bounds)
 	. = ..()
