@@ -2,11 +2,11 @@
 "aa" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ac" = (
 /obj/machinery/mineral/processing_unit,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ad" = (
 /turf/simulated/wall/lavaland,
 /area/lavaland/east/transit)
@@ -19,7 +19,7 @@
 	status = 2
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ak" = (
 /mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lavaland,
@@ -28,13 +28,13 @@
 /obj/structure/girder,
 /obj/structure/boulder,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "aq" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "az" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/infinite;
@@ -50,13 +50,13 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "aE" = (
 /obj/structure/fence/door/opened{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/dirt/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "aL" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -74,11 +74,11 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "aW" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ba" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -88,37 +88,37 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bd" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "be" = (
 /obj/effect/gibspawner/human,
 /obj/item/pickaxe,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bi" = (
 /obj/effect/gibspawner/human,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bm" = (
 /obj/machinery/conveyor{
 	dir = 4;
 	id = "mining_interior"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bn" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/secure/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -129,17 +129,17 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bs" = (
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bv" = (
 /obj/structure/closet/crate/medical/blood,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "bF" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -157,14 +157,14 @@
 /obj/item/bedsheet/orangedouble,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ck" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Temple to the Great Designer";
 	req_one_access = null
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "cH" = (
 /obj/machinery/door/blast/shutters{
 	dir = 4;
@@ -176,19 +176,19 @@
 "cJ" = (
 /obj/structure/girder,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "cO" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "cQ" = (
 /obj/structure/table/glass,
 /obj/random/medical,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "cU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark/lavaland,
@@ -198,7 +198,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "df" = (
 /obj/structure/sign/warning{
 	desc = "Warning: The PMD has confirmed multiple Memetic Hazards in this area. Please wear the appropriate protection.";
@@ -210,7 +210,7 @@
 "dk" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "dx" = (
 /obj/structure/sink{
 	dir = 8;
@@ -219,7 +219,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "dI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -234,18 +234,18 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "eo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "et" = (
 /obj/machinery/door/airlock{
 	name = "P. Masson"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "eE" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
@@ -258,18 +258,18 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fk" = (
 /turf/simulated/mineral/ignore_mapgen/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fv" = (
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fC" = (
 /obj/machinery/vending/cola,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fD" = (
 /obj/landmark/map_data/lavaland_east,
 /turf/simulated/mineral/triumph/lavaland,
@@ -279,7 +279,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fO" = (
 /obj/machinery/computer/operating,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -289,7 +289,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fP" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
@@ -299,12 +299,12 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "fT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/xion,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ge" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -316,7 +316,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gm" = (
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
@@ -325,30 +325,30 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gp" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/internals,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gC" = (
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gF" = (
 /obj/structure/table/fancyblack,
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gI" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gK" = (
 /obj/machinery/mineral/processing_unit_console{
 	density = 0;
@@ -356,7 +356,7 @@
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "gV" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -366,41 +366,41 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "hn" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "hr" = (
 /obj/effect/gibspawner/human,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "hu" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "The Caldera Cauldron";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "hM" = (
 /turf/simulated/wall/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "if" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/bluedouble,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "it" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Hab Block Three";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ix" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
@@ -410,27 +410,27 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "iX" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ji" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jz" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood,
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jD" = (
 /obj/machinery/mineral/unloading_machine,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jE" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -439,7 +439,7 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jG" = (
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
@@ -450,7 +450,7 @@
 /obj/effect/gibspawner/human,
 /obj/item/pickaxe/silver,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jK" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -467,23 +467,23 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jT" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Backflow Pump Substation";
 	req_one_access = null
 	},
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jU" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "jX" = (
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kh" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
@@ -491,12 +491,12 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kj" = (
 /obj/structure/table/standard,
 /obj/machinery/microwave,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "km" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/effect/floor_decal/spline/plain{
@@ -505,30 +505,30 @@
 /obj/machinery/door/window/eastright,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kp" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kw" = (
 /obj/machinery/door/airlock{
 	name = "J. Zukauskas"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kx" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "kL" = (
 /obj/structure/fence/corner,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kQ" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "kW" = (
 /obj/structure/mirror{
 	pixel_x = -28
@@ -538,13 +538,13 @@
 	status = 2
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lf" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lg" = (
 /obj/structure/bed/chair/backed_grey{
 	dir = 8
@@ -562,7 +562,7 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lo" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
@@ -571,30 +571,30 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lt" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Town Hall";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lM" = (
 /obj/structure/bed/chair/backed_grey{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "lP" = (
 /obj/machinery/appliance/cooker/grill,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mw" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
@@ -603,7 +603,7 @@
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mG" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -613,43 +613,43 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mI" = (
 /obj/structure/bed/chair/pew/right{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mJ" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mK" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mP" = (
 /turf/simulated/wall/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "mX" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nb" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nc" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ne" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
@@ -659,7 +659,7 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nh" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -671,14 +671,14 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nl" = (
 /obj/structure/table/standard,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nq" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -686,19 +686,19 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nD" = (
 /obj/structure/fence/door/opened{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/dirt/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nF" = (
 /obj/machinery/door/airlock{
 	name = "N. Kramer"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 4
@@ -707,11 +707,11 @@
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nL" = (
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "nR" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -730,11 +730,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "oh" = (
 /obj/structure/bed/chair/sofa/black/left,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "oo" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -742,7 +742,7 @@
 	name = "L. Keller"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "op" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -750,7 +750,7 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ow" = (
 /obj/item/material/shard,
 /obj/structure/table,
@@ -764,7 +764,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "oI" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -779,19 +779,19 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "oL" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "oY" = (
 /obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pj" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -802,13 +802,13 @@
 	},
 /obj/random/medical,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pu" = (
 /obj/machinery/door/airlock{
 	name = "L. Bernat"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pz" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -819,30 +819,30 @@
 	},
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pD" = (
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pI" = (
 /obj/machinery/vending/fitness,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "pJ" = (
 /obj/effect/decal/remains/mummy2{
 	pixel_y = 10
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "qh" = (
 /obj/structure/boulder,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "qN" = (
 /obj/structure/mirror{
 	pixel_x = 28
@@ -851,13 +851,13 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "qP" = (
 /obj/machinery/door/airlock{
 	name = "F. Poirier"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "qX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
@@ -877,19 +877,19 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "re" = (
 /obj/structure/table/glass,
 /obj/random/medical/pillbottle,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ro" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "rz" = (
 /obj/machinery/shower{
 	dir = 4
@@ -905,28 +905,28 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "rS" = (
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "rX" = (
 /obj/effect/gibspawner/human,
 /obj/item/digestion_remains/ribcage,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "sj" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "sk" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "sx" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -936,16 +936,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "sJ" = (
 /obj/structure/flora/ausbushes/stalkybush,
 /turf/simulated/floor/water/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "sR" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/gilthari,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tb" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -957,7 +957,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tk" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 4
@@ -966,7 +966,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tp" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lavaland,
@@ -982,7 +982,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tu" = (
 /obj/structure/toilet{
 	dir = 4
@@ -991,33 +991,33 @@
 /obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tw" = (
 /obj/structure/closet/cabinet,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tC" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tH" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tN" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tW" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "tZ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
@@ -1026,7 +1026,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "uc" = (
 /mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lava/lavaland,
@@ -1038,7 +1038,7 @@
 	status = 2
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "uK" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1046,7 +1046,7 @@
 	},
 /obj/machinery/mineral/input,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "uS" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
@@ -1056,7 +1056,7 @@
 	outputting = 0
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vi" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -1065,12 +1065,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vk" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vs" = (
 /obj/structure/bed,
 /obj/item/bedsheet/cosmos,
@@ -1078,14 +1078,14 @@
 	pixel_x = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vy" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vz" = (
 /obj/structure/mirror{
 	pixel_x = 28
@@ -1095,13 +1095,13 @@
 	status = 2
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vF" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -1113,21 +1113,21 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vP" = (
 /obj/effect/gibspawner/generic,
 /obj/item/pickaxe/hand,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "vS" = (
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wn" = (
 /obj/effect/gibspawner/human,
 /obj/item/pickaxe/excavationdrill,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ww" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/unexplored)
@@ -1142,17 +1142,17 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wy" = (
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wz" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wF" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -1160,13 +1160,13 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wL" = (
 /obj/structure/bed,
 /obj/item/bedsheet/green,
 /obj/effect/decal/remains/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wP" = (
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
@@ -1175,7 +1175,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "wR" = (
 /turf/unsimulated/mineral/triumph,
 /area/lavaland/east/explored)
@@ -1186,12 +1186,12 @@
 	name = "A. Ibanez"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xc" = (
 /obj/structure/bed,
 /obj/item/bedsheet/red,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xe" = (
 /obj/structure/sign/warning/docking_area{
 	pixel_x = -32
@@ -1200,21 +1200,21 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xk" = (
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xm" = (
 /obj/structure/table,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xw" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xz" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -1223,7 +1223,7 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xG" = (
 /obj/effect/gibspawner/human,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -1233,18 +1233,18 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xH" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xM" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/einstein,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xO" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
@@ -1252,11 +1252,11 @@
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "xR" = (
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yh" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -1267,15 +1267,15 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yn" = (
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yB" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/dirt/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yM" = (
 /obj/structure/closet/crate/bin{
 	desc = "A large bin for medical and other personnel that deals with bio-grade waste.";
@@ -1291,11 +1291,11 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yQ" = (
 /obj/effect/decal/remains/mummy2,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yU" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -1310,44 +1310,44 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "yV" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zg" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zl" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Infirmary"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zp" = (
 /obj/structure/bed/chair/pew/left{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zC" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zD" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -1359,12 +1359,12 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "zT" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Am" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/unexplored)
@@ -1374,7 +1374,7 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "AN" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /obj/effect/floor_decal/steeldecal/steel_decals4{
@@ -1384,14 +1384,14 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "AV" = (
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "AY" = (
 /mob/living/simple_mob/animal/space/bats/surt,
 /turf/simulated/floor/outdoors/lavaland,
@@ -1400,7 +1400,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Bi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -1412,16 +1412,16 @@
 	},
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Bq" = (
 /obj/structure/table/glass,
 /obj/item/paper_bin,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "BA" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "BB" = (
 /turf/simulated/mineral/ignore_mapgen/lavaland,
 /area/lavaland/east/unexplored)
@@ -1438,14 +1438,14 @@
 	},
 /obj/effect/gibspawner/robot,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "BM" = (
 /obj/item/material/shard,
 /obj/structure/table,
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "BQ" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/food/condiment/small/peppermill{
@@ -1455,7 +1455,7 @@
 	pixel_x = -3
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "BT" = (
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
@@ -1464,43 +1464,43 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Cu" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Cx" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Cz" = (
 /turf/simulated/floor/water/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "CA" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Di" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Dl" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Do" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/greendouble,
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Dr" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
@@ -1509,53 +1509,53 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Dt" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DA" = (
 /obj/structure/fence/cut/large{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/structure/simple_door/hardwood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DE" = (
 /obj/structure/fence/corner{
 	dir = 1
 	},
 /obj/structure/fence,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DF" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DL" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "DN" = (
 /obj/structure/boulder,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ef" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ew" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
@@ -1564,18 +1564,18 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "EI" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
 	},
 /obj/structure/boulder,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Fa" = (
 /obj/structure/bed/chair/wood,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Fh" = (
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 4
@@ -1584,7 +1584,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Fx" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -1593,7 +1593,7 @@
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Fy" = (
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
@@ -1602,17 +1602,17 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "FB" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/science,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "FC" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "FG" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 4
@@ -1621,13 +1621,13 @@
 /obj/item/melee/nanite_knife,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "FJ" = (
 /obj/machinery/door/airlock{
 	name = "S. Kertesz"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "FU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
@@ -1637,28 +1637,28 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Gy" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "GF" = (
 /obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "GX" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "GZ" = (
 /obj/structure/sign/poster/nanotrasen{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "HN" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 4
@@ -1667,7 +1667,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "HQ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -1682,14 +1682,14 @@
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "HT" = (
 /obj/structure/barricade,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IC" = (
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IE" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -1697,7 +1697,7 @@
 	name = "S. Pemberton"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IH" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1707,13 +1707,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IK" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Surgery"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IP" = (
 /obj/machinery/iv_drip,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1725,7 +1725,7 @@
 /obj/effect/floor_decal/borderfloorwhite/corner2,
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "IS" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
@@ -1734,7 +1734,7 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Jh" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/door/airlock/glass_external{
@@ -1744,27 +1744,27 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Jo" = (
 /obj/structure/bed/chair/wood{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "JG" = (
 /turf/simulated/mineral/ignore_mapgen/lavaland,
 /area/lavaland/east/explored)
 "JO" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "JX" = (
 /turf/simulated/mineral/triumph/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Kf" = (
 /obj/effect/gibspawner/generic,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Kh" = (
 /obj/item/stack/material/wood,
 /obj/item/stack/material/wood,
@@ -1772,14 +1772,14 @@
 /obj/item/stack/material/wood,
 /obj/item/stack/material/wood,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Km" = (
 /obj/effect/floor_decal/rust,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Kt" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
@@ -1788,7 +1788,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Kv" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
@@ -1801,33 +1801,33 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "KF" = (
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "KJ" = (
 /obj/structure/fence/cut/medium{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ld" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /obj/structure/sign/poster{
 	pixel_x = -32
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Lk" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ly" = (
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "LF" = (
 /obj/effect/floor_decal/industrial/warning/dust/corner{
 	dir = 8
@@ -1836,28 +1836,28 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "LQ" = (
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "LU" = (
 /obj/structure/bed,
 /obj/item/bedsheet/rainbow,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Me" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 8
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Mf" = (
 /obj/machinery/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ml" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -1866,7 +1866,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Mw" = (
 /obj/structure/girder/displaced,
 /obj/structure/sink{
@@ -1874,14 +1874,14 @@
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "MA" = (
 /obj/machinery/power/solar_control{
 	dir = 1;
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "MD" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lavaland,
@@ -1891,37 +1891,37 @@
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ns" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/medical,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Nx" = (
 /obj/structure/bed/chair/backed_red,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NB" = (
 /obj/structure/fence/cut/large,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NF" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NP" = (
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NR" = (
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NU" = (
 /mob/living/simple_mob/mechanical/cyber_horror/cat_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "NY" = (
 /obj/structure/table/hardwoodtable,
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -1929,20 +1929,20 @@
 	},
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Oi" = (
 /obj/structure/railing,
 /obj/structure/boulder,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Oj" = (
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ot" = (
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Oy" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -1954,40 +1954,40 @@
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "OH" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "OM" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Pa" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Pd" = (
 /obj/structure/table,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Pl" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Po" = (
 /obj/structure/bed/chair/sofa/black/right,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Pr" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -1999,21 +1999,21 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "PU" = (
 /obj/structure/table/rack,
 /obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "PW" = (
 /obj/structure/bed/double,
 /obj/item/bedsheet/yellowdouble,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "PZ" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Qc" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -2022,11 +2022,11 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Qf" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Qh" = (
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/unexplored)
@@ -2035,10 +2035,10 @@
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Qx" = (
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Qy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
@@ -2048,7 +2048,7 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "QJ" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/explored)
@@ -2056,19 +2056,19 @@
 /obj/structure/table/steel_reinforced,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Re" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/secure/aether,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Rj" = (
 /obj/effect/decal/remains/human,
 /obj/item/pickaxe/plasmacutter,
 /obj/effect/debris/cleanable/blood,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ru" = (
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
@@ -2077,18 +2077,18 @@
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RA" = (
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RF" = (
 /obj/effect/debris/cleanable/blood,
 /obj/effect/decal/remains/human,
 /obj/structure/boulder,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RH" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -2101,19 +2101,19 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RI" = (
 /obj/structure/bed/chair/bar_stool,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RJ" = (
 /obj/machinery/mineral/input,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RK" = (
 /turf/simulated/floor/outdoors/dirt/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RL" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
@@ -2122,39 +2122,39 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RN" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RO" = (
 /obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RR" = (
 /obj/item/stack/rods,
 /obj/item/material/shard,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "RT" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "Central Park";
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Sg" = (
 /obj/effect/gibspawner/human,
 /obj/item/pickaxe/hand,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Sj" = (
 /obj/structure/table/woodentable,
 /obj/item/trash/lollipop_stick,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Sn" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -2162,7 +2162,7 @@
 	},
 /obj/machinery/mineral/output,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Su" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -2170,53 +2170,53 @@
 	name = "A. Norman"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Sy" = (
 /obj/machinery/appliance/cooker/fryer,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SK" = (
 /obj/item/trash/cheesie,
 /obj/item/trash/chips,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SS" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SU" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/hydroponics,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SV" = (
 /obj/effect/gibspawner/human,
 /obj/item/pickaxe,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SX" = (
 /obj/structure/table/standard,
 /obj/item/material/knife/butch,
 /obj/item/material/kitchen/rollingpin,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "SZ" = (
 /obj/structure/fence/cut/medium{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Tl" = (
 /obj/structure/bed/chair/wood,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Tm" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "To" = (
 /obj/structure/catwalk,
 /turf/simulated/floor/outdoors/lava/lavaland,
@@ -2224,16 +2224,16 @@
 "Tv" = (
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ty" = (
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TB" = (
 /obj/machinery/door/airlock/glass_medical{
 	name = "Triage"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TE" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -2241,7 +2241,7 @@
 	},
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TI" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
@@ -2249,18 +2249,18 @@
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TJ" = (
 /obj/structure/bed/chair/wood,
 /obj/machinery/light{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TS" = (
 /obj/structure/ore_box,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "TX" = (
 /obj/effect/map_effect/portal/master/side_b{
 	dir = 4;
@@ -2277,7 +2277,7 @@
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ui" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 8
@@ -2286,11 +2286,11 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Uj" = (
 /obj/structure/table/woodentable,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Um" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -2299,7 +2299,7 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Uq" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -2312,35 +2312,35 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Uz" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "UP" = (
 /obj/effect/debris/cleanable/blood,
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Ve" = (
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/east/explored)
 "Vk" = (
 /obj/structure/boulder,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "VC" = (
 /obj/structure/bed/chair/wood{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "VO" = (
 /obj/structure/table/marble,
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "VR" = (
 /obj/structure/bed/roller,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2353,20 +2353,20 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "We" = (
 /mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Wk" = (
 /turf/simulated/floor/outdoors/lava/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Wn" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Refinery"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Wp" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -2378,22 +2378,22 @@
 	machine_stat = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "WH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/medical/blood,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "WM" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "WO" = (
 /obj/structure/bed/chair/backed_red{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "WQ" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -2401,12 +2401,12 @@
 	name = "H. Sharma"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Xd" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/veymed,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Xf" = (
 /obj/structure/table/glass,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -2420,11 +2420,11 @@
 	pixel_y = 2
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Xn" = (
 /obj/structure/flora/tree/jungle_small,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Xo" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 1
@@ -2433,18 +2433,18 @@
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Xr" = (
 /obj/structure/boulder,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "XE" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "XF" = (
 /obj/structure/table/glass,
 /obj/item/storage/firstaid/surgery,
@@ -2458,13 +2458,13 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "XU" = (
 /obj/structure/fence{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "XW" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -2472,13 +2472,13 @@
 	name = "I. Weiss"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Yr" = (
 /obj/item/stack/rods,
 /obj/item/material/shard,
 /obj/item/material/shard,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Yw" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -2487,7 +2487,7 @@
 /obj/structure/window/reinforced/full,
 /obj/structure/curtain/black,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Yx" = (
 /obj/machinery/power/solar{
 	machine_stat = 1
@@ -2496,17 +2496,17 @@
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YB" = (
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/trap/delayed/wood/lavaland{
 	id = "temple_trap"
 	},
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YC" = (
 /mob/living/simple_mob/mechanical/cyber_horror/ling_cyber_horror/surt,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YG" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/steeldecal/steel_decals4,
@@ -2514,11 +2514,11 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YO" = (
 /obj/machinery/vending/fitness,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YR" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -2530,19 +2530,19 @@
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YU" = (
 /obj/structure/toilet{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YV" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "YY" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/high/empty;
@@ -2555,7 +2555,7 @@
 	},
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Zd" = (
 /obj/structure/bed/chair/backed_grey{
 	dir = 8
@@ -2579,7 +2579,7 @@
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Zh" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -2587,7 +2587,7 @@
 	name = "Toilet"
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Zk" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -2595,20 +2595,20 @@
 	},
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "Zw" = (
 /obj/structure/table/marble,
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ZE" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ZL" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 1
@@ -2623,7 +2623,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ZS" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/door/airlock/glass_external{
@@ -2631,12 +2631,12 @@
 	req_one_access = null
 	},
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 "ZX" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled/lavaland,
-/area/lavaland/east/colony)
+/area/lavaland/east/ashlander_village)
 
 (1,1,1) = {"
 wR
