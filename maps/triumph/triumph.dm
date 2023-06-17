@@ -177,7 +177,7 @@
 	)
 	base_turf = /turf/simulated/open
 	link_above = /datum/map_level/triumph/ship/deck_four
-	link_below == /datum/map_level/triumph/ship/deck_two
+	link_below = /datum/map_level/triumph/ship/deck_two
 	flags = LEGACY_LEVEL_STATION|LEGACY_LEVEL_CONTACT|LEGACY_LEVEL_PLAYER|LEGACY_LEVEL_CONSOLES
 	holomap_offset_x = HOLOMAP_ICON_SIZE - TRIUMPH_HOLOMAP_MARGIN_X - TRIUMPH_MAP_SIZE
 	holomap_offset_y = TRIUMPH_HOLOMAP_MARGIN_Y + TRIUMPH_MAP_SIZE*1
