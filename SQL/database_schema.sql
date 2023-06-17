@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%photographs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `picture` char(40) NOT NULL,
   `created` datetime NOT NULL DEFAULT Now(),
-  `scene` MEDIUMTEXT null,
-  `desc` MEDIUMTEXT null,
+  `scene` TEXT null,
+  `desc` TEXT null,
   CONSTRAINT `linked_picture` FOREIGN KEY (`picture`)
   REFERENCES `%_PREFIX_%pictures` (`hash`)
   ON DELETE CASCADE
@@ -309,4 +309,66 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%population` (
 
 -- journalism --
 
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%journalism_channels` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `creator_ckey` VARCHAR(32) NULL,
+  `creator_player` INT(11) NULL,
+  `author` VARCHAR(128) NOT NULL,
+  `name` VARCHAR(128) NOT NULL,
+  `network` INT(11) NOT NULL,
+  `created_date` DATETIME NOT NULL DEFAULT Now(),
+  `updated_date` DATETIME NOT NULL DEFAULT Now(),
+  `flags` BIT(24) NOT NULL DEFAULT "0",
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY `player_id` (`creator_player`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%journalism_posts` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `creator_ckey` VARCHAR(32) NULL,
+  `creator_player` INT(11) NULL,
+  `author` VARCHAR(128) NOT NULL,
+  `channel` INT(11) NOT NULL,
+  `title` VARCHAR(256) NOT NULL,
+  `message` TEXT NOT NULL,
+  `created_date` DATETIME NOT NULL DEFAULT Now(),
+  `updated_date` DATETIME NOT NULL DEFAULT Now(),
+  `flags` BIT(24) NOT NULL DEFAULT "0",
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY `channel` (`channel`)
+  REFERENCES `%_PREFIX_%journalism_channels` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%journalism_comments` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `creator_ckey` VARCHAR(32) NULL,
+  `creator_player` INT(11) NULL,
+  `author` VARCHAR(128) NOT NULL,
+  `post` INT(11) NOT NULL,
+  `message` TEXT NOT NULL,
+  `created_date` DATETIME NOT NULL DEFAULT Now(),
+  `flags` BIT(24) NOT NULL DEFAULT "0",
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY `post` (`post`)
+  REFERENCES `%_PREFIX_%journalism_posts` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%journalism_trace` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `network` INT(11) NOT NULL,
+  `ckey` VARCHAR(32) NULL,
+  `player` INT(11) NULL,
+  `message` TEXT,
+  PRIMARY KEY (`id`),
+  CONSTRAINT FOREIGN KEY `player` (`player`)
+  REFERENCES `%_PREFIX_%player` (`id`)
+  ON DELETE NULL
+  ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
