@@ -30,6 +30,7 @@
  * @#return the instance of /datum/map_level created / used, null on failure
  */
 /datum/controller/subsystem/mapping/proc/allocate_level(datum/map_level/level_or_path = /datum/map_level, rebuild)
+	RETURN_TYPE(/datum/map_level)
 	UNTIL(!load_mutex)
 	load_mutex = TRUE
 	. = _allocate_level(arglist(args))
@@ -233,11 +234,12 @@
  * if Initialize() is in SSatoms, this crashes for safety as that should not happen.
  */
 /datum/proc/hook_map_initializations()
-	if(isnull(Ssmapping.map_initialization_hooked))
+	if(isnull(SSmapping.map_initialization_hooked))
 		// postpone to after init
 		if(SSatoms.initialized == INITIALIZATION_INSSATOMS)
 			CRASH("undefined behavior: initialization is currently in SSatoms but we tried to hook map init.")
-		addtimer(CALLBACK(src, __immediate_map_initializations), 0)
+		message_admins("a datum with map initializations was created. if this was you, you are in charge of invoking map_initializations() on it. this is not called by default outside of mapload as many things using the hook are highly destructive.")
+		// addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, __immediate_map_initializations)), 0)
 	else
 		SSmapping.map_initialization_hooked += src
 

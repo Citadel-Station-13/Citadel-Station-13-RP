@@ -7496,7 +7496,7 @@
 	dir = 5
 	},
 /obj/structure/lattice,
-/obj/landmark/engine_loader,
+/obj/map_helper/engine_loader,
 /turf/space,
 /area/space)
 "BC" = (

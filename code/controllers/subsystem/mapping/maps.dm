@@ -156,7 +156,12 @@
 	var/list/area_cache = instance.bundle_area_cache? list() : null
 
 	for(var/datum/map_level/level as anything in instance.levels)
-		load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
+		var/list/bounds = load_level(level, FALSE, instance.center, instance.crop, generation_callbacks, instance.orientation, area_cache)
+		if(isnull(bounds))
+			STACK_TRACE("unable to load level [level] ([level.id])")
+			message_admins(world, SPAN_DANGER("PANIC: Unable to load level [level] ([level.id])"))
+			continue
+		bounds_collect[++bounds_collect.len] = bounds
 		loaded_levels += level
 
 	loaded_maps += instance
