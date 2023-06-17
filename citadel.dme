@@ -2927,6 +2927,7 @@
 #include "code\modules\maps\overmap\planets\classp.dm"
 #include "code\modules\maps\overmap\planets\miaphus.dm"
 #include "code\modules\maps\overmap\planets\virgo2.dm"
+#include "code\modules\maps\overmap\planets\virgo4.dm"
 #include "code\modules\maps\overmap\space\alienship.dm"
 #include "code\modules\maps\overmap\space\centcom.dm"
 #include "code\modules\maps\overmap\space\debrisfield.dm"
