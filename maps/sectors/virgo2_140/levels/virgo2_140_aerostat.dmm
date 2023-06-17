@@ -803,7 +803,7 @@
 "cv" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/floor/sky/virgo2_sky;
 	landmark_tag = "aerostat_west";
 	name = "Virgo 2 Aerostat (W)"
 	},
@@ -1518,7 +1518,7 @@
 "kD" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/floor/sky/virgo2_sky;
 	landmark_tag = "aerostat_northwest";
 	name = "Virgo 2 Aerostat (NW)"
 	},
@@ -1555,7 +1555,7 @@
 "zX" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/floor/sky/virgo2_sky;
 	landmark_tag = "aerostat_south";
 	name = "Virgo 2 Aerostat (S)"
 	},
@@ -1571,7 +1571,7 @@
 "Dt" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
+	base_turf = /turf/simulated/floor/sky/virgo2_sky;
 	landmark_tag = "aerostat_northeast";
 	name = "Virgo 2 Aerostat (NE)"
 	},
