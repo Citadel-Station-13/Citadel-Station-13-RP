@@ -4731,6 +4731,7 @@
 #include "maps\tether\shuttles.dm"
 #include "maps\tether\telecomms.dm"
 #include "maps\tether\tether.dm"
+#include "maps\triumph\sectors.dm"
 #include "maps\triumph\shuttles.dm"
 #include "maps\triumph\telecomms.dm"
 #include "maps\triumph\triumph.dm"
