@@ -1571,3 +1571,10 @@
 	icon = 'icons/mob/human_face_vr.dmi'
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "inari"
+
+/datum/sprite_accessory/hair/rocksatr
+	name = "Rockstar"
+	id = "hair_rockstar"
+	icon = 'icons/mob/human_face_vr.dmi'
+	icon_add = 'icons/mob/human_face_vr_add.dmi'
+	icon_state = "rockstar"
