@@ -401,7 +401,7 @@
 /area/engineering/hallway)
 "aaO" = (
 /obj/landmark/engine_loader{
-	clean_turfs = list(list(20,93,30,118),list(31,94,35,96),list(29,97,43,118),list(44,113,46,118))
+	clean_turfs = "[[20,93,30,118],[31,94,35,96],[29,97,43,118],[44,113,46,118]]"
 	},
 /turf/space,
 /area/space)
