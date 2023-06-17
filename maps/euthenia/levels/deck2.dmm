@@ -30227,9 +30227,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "xlM" = (
-/obj/machinery/computer/power_monitor{
-	throwpass = 1
-	},
+/obj/machinery/computer/power_monitor,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
 	},

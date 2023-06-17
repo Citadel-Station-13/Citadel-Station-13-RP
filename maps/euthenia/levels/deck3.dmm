@@ -21143,13 +21143,13 @@
 	desc = "A small tool for digging and moving dirt. This one is made from cheap plastics";
 	force = 0;
 	name = "plastic spade";
-	throwforce = 0
+	throw_force = 0
 	},
 /obj/item/shovel/spade{
 	desc = "A small tool for digging and moving dirt. This one is made from cheap plastics";
 	force = 0;
 	name = "plastic spade";
-	throwforce = 0
+	throw_force = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/brig)
@@ -28126,8 +28126,7 @@
 /area/engineering/engine_eva)
 "ybP" = (
 /obj/machinery/computer/power_monitor{
-	dir = 4;
-	throwpass = 1
+	dir = 4
 	},
 /obj/machinery/camera/network/engineering{
 	dir = 4
