@@ -7,9 +7,15 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
-	/// global ""mutex"" for ensuring two map/level load ops don't go at once
+	/// global mutex for ensuring two map/level load ops don't go at once
+	/// a separate mutex is used at the actual maploader level
+	/// this ensures we aren't shoving maps in during map init, as that can be both laggy and/or bad to legacy code that
+	/// expect zlevel adjacency.
 	var/load_mutex = FALSE
 
+	// todo: this is going to need a lot more documentation
+	// the idea of a single zlevel for areas is sorta flawed
+	// this is an acceptable lazy lookup but we need to standardize what this means / look at how this is generated.
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
@@ -24,7 +30,7 @@ SUBSYSTEM_DEF(mapping)
 	// load the map to use
 	read_next_map()
 
-	// load world - this also loads our first reserved level.
+	// load world - this also initializes our first reserved level, which is compiled in.
 	load_station()
 
 	// perform snowflake legacy init stuff

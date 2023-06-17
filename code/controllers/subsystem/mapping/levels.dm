@@ -152,7 +152,7 @@
 
 	// if not group loaded, fire off hooks
 	if(isnull(deferred_callbacks))
-		for(var/datum/D in map_initialization_hooked)
+		for(var/obj/map_helper/D in map_initialization_hooked)
 			if(QDELETED(D))
 				continue
 			D.map_initializations(loaded_bounds)

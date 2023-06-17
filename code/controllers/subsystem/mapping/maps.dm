@@ -126,7 +126,7 @@
 	map_initialization_hooked = list()
 	_load_map_impl(instance, loaded_levels, generation_callbacks, actually_loaded, loaded_bounds)
 	// invoke hooks
-	for(var/datum/D in map_initialization_hooked)
+	for(var/obj/map_helper/D in map_initialization_hooked)
 		if(QDELETED(D))
 			continue
 		D.map_initializations(loaded_bounds)
