@@ -1166,7 +1166,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = FALSE
 	pixel_x -= shift_pixel_x
 	pixel_y -= shift_pixel_y
-	wallflowering = FALSE
+	wallflowering = NONE
 	shift_pixel_x = 0
 	shift_pixel_y = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -1177,11 +1177,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
-	if(abs(val) < WALLFLOWERING_PIXEL_SHIFT)
-		if(wallflowering)
-			wallflowering = abs(shift_pixel_y) >= WALLFLOWERING_PIXEL_SHIFT
-	else
-		wallflowering = TRUE
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
@@ -1190,11 +1192,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
-	if(abs(val) < WALLFLOWERING_PIXEL_SHIFT)
-		if(wallflowering)
-			wallflowering = abs(shift_pixel_x) >= WALLFLOWERING_PIXEL_SHIFT
-	else
-		wallflowering = TRUE
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
@@ -1203,11 +1207,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
-	if(abs(shift_pixel_x) < WALLFLOWERING_PIXEL_SHIFT)
-		if(wallflowering)
-			wallflowering = abs(shift_pixel_y) >= WALLFLOWERING_PIXEL_SHIFT
-	else
-		wallflowering = TRUE
+	switch(shift_pixel_x)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
@@ -1216,11 +1222,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
-	if(abs(shift_pixel_y) < WALLFLOWERING_PIXEL_SHIFT)
-		if(wallflowering)
-			wallflowering = abs(shift_pixel_x) >= WALLFLOWERING_PIXEL_SHIFT
-	else
-		wallflowering = TRUE
+	switch(shift_pixel_y)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 //? Reachability
