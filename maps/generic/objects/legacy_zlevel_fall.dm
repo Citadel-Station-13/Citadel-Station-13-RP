@@ -13,6 +13,8 @@
 	if(!src:target_z)
 		return
 
+	if(A.atom_flags & ATOM_ABSTRACT)
+		return
 	if(isobserver(A) || A.anchored)
 		return
 	if(A.throwing)
