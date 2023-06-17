@@ -27,7 +27,7 @@
 	var/list/probabilities = CONFIG_GET(keyed_list/engine_submap)
 
 	var/list/potential_subtypes = subtypesof(/datum/map_template/engine)
-	var/list/potential_filtered
+	var/list/potential_filtered = list()
 
 	for(var/datum/map_template/engine/path as anything in potential_subtypes)
 		var/their_for_map = initial(path.for_map)
@@ -52,7 +52,7 @@
 
 	SSmapping.subsystem_log("initializing engine [chosen.name] at [COORD(T)]")
 	if(!SSmapping.initialized)
-		to_chat(SPAN_DANGER("Engine loaded: [chosen.display_name]"))
+		to_chat(world, SPAN_DANGER("Engine loaded: [chosen.display_name]"))
 
 	annihilate_bounds()
 	chosen.load(T)

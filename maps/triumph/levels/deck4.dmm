@@ -293,11 +293,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"amI" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/space,
-/area/space)
 "amS" = (
 /obj/structure/closet/emcloset,
 /obj/effect/floor_decal/borderfloor{
@@ -2662,12 +2657,6 @@
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"bZX" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/grille,
-/turf/space,
-/area/space)
 "cac" = (
 /obj/structure/table/reinforced,
 /turf/simulated/floor/carpet,
@@ -37098,7 +37087,7 @@ nIK
 nIK
 nIK
 nIK
-amI
+pkc
 pkc
 mUX
 bFX
@@ -40222,7 +40211,7 @@ nIK
 nIK
 nIK
 nIK
-bZX
+clY
 kgT
 mUX
 bFX
