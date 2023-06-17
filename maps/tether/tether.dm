@@ -17,7 +17,12 @@
 	width = 140
 	height = 140
 	lateload = list(
-
+		/datum/map/sector/roguemining_140,
+		/datum/map/sector/desert_140,
+		/datum/map/sector/virgo2_140,
+		/datum/map/sector/virgo4_140,
+		/datum/map/sector/tradeport_140,
+		/datum/map/sector/wasteland_140,
 	)
 
 	//* LEGACY BELOW *//
@@ -120,16 +125,6 @@
 		/area/tether/surfacebase/lowernortheva, // it airlock
 		/area/tether/surfacebase/lowernortheva/external, //it outside
 		/area/tether/surfacebase/security/gasstorage) //it maint
-
-
-	lateload_z_levels = list(
-		list("Asteroid Belt 1","Asteroid Belt 2"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
-		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface"),
-		list("Debris Field - Z1 Space"),
-		list("Fuel Depot - Z1 Space"),
-		list("Class D - Mountains and Rock Plains")
-		)
 
 // For making the 6-in-1 holomap, we calculate some offsets
 /// Width and height of compiled in tether z levels.

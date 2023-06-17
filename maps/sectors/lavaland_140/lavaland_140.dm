@@ -1,5 +1,3 @@
-
-#warn impl
 /datum/map/sector/lavaland_140
 	id = "lavaland_140"
 	name = "Sector - Lavaland"
