@@ -3,13 +3,19 @@
  */
 
 import { Window } from "../../layouts";
-import { JournalismProps } from "./data";
 
+export interface JournalismProps {
+
+}
+
+export interface JournalismData {
+
+}
 
 export const Journalism = (props: JournalismProps, context) => {
   return (
-    <Window>
+    <Window width={500} height={800}>
       test
-    </Window>2
+    </Window>
   );
 };

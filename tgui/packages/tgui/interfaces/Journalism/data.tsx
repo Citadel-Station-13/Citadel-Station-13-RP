@@ -20,36 +20,37 @@ export enum JournalismGlobalmode {
   RESTRICT = (1<<2),
 }
 
-export interface JournalismProps {
-
+export interface NewsData {
+  author?: string; // poster name
+  ckey?: string; // poster ckey
+  hidden?: boolean; // hidden by own poster
+  censored?: boolean; // censored by d-notice
+  deleted?: boolean; // deleted by moderator
 }
 
-export interface JournalismData {
-
-}
-
-export interface NewsComment {
-  author: string;
+export interface NewsComment extends NewsData {
   message: string;
-  ckey?: string;
 }
 
-export interface NewsPost {
-  author: string;
+export interface NewsPost extends NewsData {
   title: string;
   message: string;
-  locked?: boolean; // no comments
+  locked?: boolean; // no comments from other people
   picture?: string; // picture hash
-  ckey?: string;
 }
 
-export interface NewsChannel {
-  author: string;
+export interface NewsChannel extends NewsData {
   name: string;
-  locked?: boolean; // only posts from author
-  ckey?: string;
+  locked?: boolean; // only posts from creator
 }
 
 export interface NewsNetwork {
   name: string;
+  writelocked?: boolean; // read-only
+}
+
+export interface NewsTrace {
+  author: string; // name
+  ckey?: string; // ckey - only given to admin interfaces
+  action: string; // log line
 }
