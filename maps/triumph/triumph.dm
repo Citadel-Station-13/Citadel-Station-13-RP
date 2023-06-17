@@ -22,6 +22,12 @@
 
 	legacy_assert_shuttle_datums = list(
 		/datum/shuttle/autodock/overmap/excursion/triumph,
+		/datum/shuttle/autodock/ferry/emergency/escape/triumph,
+		/datum/shuttle/autodock/ferry/supply/cargo/triumph,
+		/datum/shuttle/autodock/overmap/emt/triumph,
+		/datum/shuttle/autodock/overmap/mining/triumph,
+		/datum/shuttle/autodock/overmap/civvie/triumph,
+		/datum/shuttle/autodock/overmap/courser/triumph,
 	)
 
 	full_name = "NSV Triumph"

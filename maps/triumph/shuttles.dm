@@ -32,55 +32,9 @@
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
 
-//
-// "Tram" Emergency Shuttler
-// Becuase the tram only has its own doors and no corresponding station doors, a docking controller is overkill.
-// Just open the gosh darn doors!  Also we avoid having a physical docking controller obj for gameplay reasons.
-/datum/shuttle/autodock/ferry/emergency
-	var/tag_door_station = "escape_shuttle_hatch_station"
-	var/tag_door_offsite = "escape_shuttle_hatch_offsite"
-	var/frequency = 1380 // Why this frequency? BECAUSE! Thats what someone decided once.
-	var/datum/radio_frequency/radio_connection
-
-/datum/shuttle/autodock/ferry/emergency/dock()
-	..()
-	// Open Doorsunes
-	var/datum/signal/signal = new
-	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
-	signal.data["command"] = "secure_open"
-	post_signal(signal)
-
-/datum/shuttle/autodock/ferry/emergency/undock()
-	..()
-	// Close Doorsunes
-	var/datum/signal/signal = new
-	signal.data["tag"] = location ? tag_door_offsite : tag_door_station
-	signal.data["command"] = "secure_close"
-	post_signal(signal)
-
-/datum/shuttle/autodock/ferry/emergency/proc/post_signal(datum/signal/signal, var/filter = null)
-	signal.transmission_method = TRANSMISSION_RADIO
-	if(radio_connection)
-		return radio_connection.post_signal(src, signal, filter)
-	else
-		qdel(signal)
-
-////////////////////////////////////////
-//////// Excursion Shuttle /////////////
-////////////////////////////////////////
-
-// The 'shuttle' of the excursion shuttle
-/datum/shuttle/autodock/overmap/excursion
-	name = "Excursion Shuttle"
-	warmup_time = 0
-	current_location = "triumph_excursion_hangar"
-	docking_controller_tag = "expshuttle_dock"
-	shuttle_area = list(/area/shuttle/excursion/triumph)
-	fuel_consumption = 3
-
 // EXCURSION SHUTTLE DATA
 
-/datum/shuttle/autodock/overmap/excursion
+/datum/shuttle/autodock/overmap/excursion/triumph
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/excursion/triumph)
@@ -99,28 +53,9 @@
 	shuttle_tag = "Excursion Shuttle"
 	req_one_access = list(ACCESS_GENERAL_PILOT)
 
-//Courser Scout Vessel
-/datum/shuttle/autodock/overmap/courser
-	name = "Courser Scouting Vessel"
-	warmup_time = 0
-	current_location = "triumph_courser_hangar"
-	docking_controller_tag = "courser_dock"
-	shuttle_area = list(/area/shuttle/courser)
-	fuel_consumption = 3
-
-
-// The 'ship' of the courser
-/obj/effect/overmap/visitable/ship/landable/courser
-	name = "Courser Scouting Vessel"
-	desc = "A lightweight reconnaissance ship repurposed for expeditionary field work."
-	vessel_mass = 8000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Courser Scouting Vessel"
-
-
 // COURSER SHUTTLE DATA
 
-/datum/shuttle/autodock/overmap/courser
+/datum/shuttle/autodock/overmap/courser/triumph
 	name = "Courser Scouting Vessel"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
@@ -141,7 +76,7 @@
 
 // Public Civilian Shuttle
 
-/datum/shuttle/autodock/overmap/civvie
+/datum/shuttle/autodock/overmap/civvie/triumph
 	name = "Civilian Transport"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/civvie/cockpit, /area/shuttle/civvie/general)
@@ -162,7 +97,7 @@
 
 // Mining Shuttle
 
-/datum/shuttle/autodock/overmap/mining
+/datum/shuttle/autodock/overmap/mining/triumph
 	name = "Mining Shuttle"
 	warmup_time = 10
 	shuttle_area = list(/area/shuttle/mining_ship/general)
@@ -180,7 +115,7 @@
 	shuttle_tag = "Mining Shuttle"
 
 //EMT Shuttle
-/datum/shuttle/autodock/overmap/emt
+/datum/shuttle/autodock/overmap/emt/triumph
 	name = "Dart EMT Shuttle"
 	warmup_time = 5
 	shuttle_area = list(/area/shuttle/emt/general, /area/shuttle/emt/cockpit)
@@ -199,7 +134,7 @@
 
 //////////////////////////////////////////////////////////////
 // Escape shuttle and pods
-/datum/shuttle/autodock/ferry/emergency/escape
+/datum/shuttle/autodock/ferry/emergency/escape/triumph
 	name = "Escape"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/escape
@@ -210,7 +145,7 @@
 	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
 
 // Supply shuttle
-/datum/shuttle/autodock/ferry/supply/cargo
+/datum/shuttle/autodock/ferry/supply/cargo/triumph
 	name = "Supply"
 	location = FERRY_LOCATION_OFFSITE
 	shuttle_area = /area/shuttle/supply
