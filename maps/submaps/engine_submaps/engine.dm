@@ -1,57 +1,5 @@
-// This causes engine maps to get 'checked' and compiled, when undergoing a unit test.
-// This is so Travis can validate PoIs, and ensure future changes don't break PoIs, as PoIs are loaded at runtime and the compiler can't catch errors.
-// When adding a new engine, please add it to this list.
 
-/datum/map_template/engine
-	name = "Engine Content"
-	desc = "It would be boring to have the same engine every day right?"
-	// annihilate = TRUE - Would wipe out in a rectangular area unfortunately
-	allow_duplicates = FALSE
-	/// world announce name
-	var/display_name
 
-/datum/map_template/engine/New()
-	. = ..()
-	if(isnull(display_name))
-		display_name = name
-
-/datum/map_template/engine/rust
-	name = "EngineSubmap_RUST"
-	desc = "R-UST Fusion Tokamak Engine"
-	map_path = "maps/templates/engines/triumph/triumph_engine_rust.dmm"
-	display_name = "Budget Star"
-
-/*
-/datum/map_template/engine/singulo
-	name = "Singularity Engine"
-	desc = "Lord Singuloth"
-	map_path = 'maps/templates/engines/triumph/engine_singulo.dmm'
-*/
-
-/datum/map_template/engine/supermatter
-	name = "EngineSubmap_SM"
-	desc = "Old Faithful Supermatter"
-	map_path = "maps/templates/engines/triumph/triumph_engine_sme.dmm"
-	display_name = "Angry Rock"
-
-/*
-/datum/map_template/engine/tesla
-	name = "Edison's Bane"
-	desc = "The Telsa Engine"
-	map_path = 'maps/templates/engines/triumph/engine_tesla.dmm'
-*/
-
-/datum/map_template/engine/burnchamber
-	name = "EngineSubmap_Burn"
-	desc = "Burn Chamber Engine"
-	map_path = "maps/templates/engines/triumph/triumph_engine_burnchamber.dmm"
-	display_name = "Toxins Lab"
-
-/datum/map_template/engine/fission
-	name = "EngineSubmap_Fission"
-	desc = "The Fission Reactor"
-	map_path = "maps/templates/engines/triumph/triumph_engine_fission.dmm"
-	display_name = "Nuclear Bomb"
 
 // Landmark for where to load in the engine on permament map
 /obj/landmark/engine_loader
