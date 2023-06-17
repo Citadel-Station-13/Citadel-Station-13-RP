@@ -4987,7 +4987,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/hardsuit/eva/equipped{
 	req_access = list(10)
-},
+	},
 /turf/simulated/floor/tiled/dark,
 /area/ai_monitored/storage/eva)
 "arG" = (
@@ -20973,7 +20973,6 @@
 /area/quartermaster/belterdock/refinery)
 "oTt" = (
 /obj/effect/decal/remains,
-/obj/item/clothing/under/rank/centcom/officer,
 /obj/item/clothing/head/beret/centcom/officer,
 /obj/item/clothing/shoes/laceup,
 /turf/simulated/mineral/floor/vacuum,

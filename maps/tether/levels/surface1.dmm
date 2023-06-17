@@ -650,7 +650,7 @@
 /obj/structure/table/rack,
 /obj/item/hardsuit/medical/equipped{
 	req_access = list(5)
-},
+	},
 /obj/structure/fireaxecabinet{
 	pixel_x = -32
 	},
@@ -19093,7 +19093,7 @@
 /obj/random/action_figure,
 /obj/random/action_figure,
 /obj/structure/closet/wardrobe/grey{
-	starts_with = list(/obj/structure/barricade/cutout/viva, /obj/item/clothing/under/color/grey = 3, /obj/item/clothing/shoes/black = 3, /obj/item/clothing/head/soft/grey = 3, /obj/item/storage/toolbox/mechanical = 3, /obj/item/clothing/gloves/fyellow = 3, /obj/item/soap/syndie = 3, /obj/item/storage/box/mousetraps = 3)
+	starts_with = list(/obj/structure/barricade/cutout/viva,/obj/item/clothing/under/color/grey=3,/obj/item/clothing/shoes/black=3,/obj/item/clothing/head/soft/grey=3,/obj/item/storage/toolbox/mechanical=3,/obj/item/clothing/gloves/fyellow=3,/obj/item/soap/syndie=3,/obj/item/storage/box/mousetraps=3)
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)

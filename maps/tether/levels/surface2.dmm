@@ -4640,22 +4640,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = -4;
-	pixel_y = -6
-	},
-/obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = 5;
-	pixel_y = -6
-	},
-/obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = 5;
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -11172,7 +11156,7 @@
 /obj/machinery/vending/cigarette{
 	name = "Cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /obj/effect/floor_decal/techfloor/hole{
 	dir = 1
@@ -15354,11 +15338,6 @@
 /area/tether/surfacebase/fish_farm)
 "aAz" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
@@ -15588,11 +15567,6 @@
 /area/tether/surfacebase/fish_farm)
 "aBg" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
-/obj/item/material/fishing_net,
 /obj/machinery/camera/network/civilian{
 	dir = 9
 	},
@@ -18608,7 +18582,7 @@
 /obj/random/maintenance/engineering,
 /obj/effect/floor_decal/rust,
 /obj/item/clothing/suit/storage/vest/hoscoat/jensen{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
 	desc = "Its an old, dusty trenchcoat... what a shame.";
 	name = "trenchcoat"
 	},
@@ -26372,7 +26346,7 @@
 	input_tag = "atmos_out";
 	name = "Atmos Intake Control";
 	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
+	sensors = list("atmos_intake"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos/monitoring)

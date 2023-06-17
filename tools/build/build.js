@@ -43,8 +43,12 @@ export const WarningParameter = new Juke.Parameter({
 
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
+    // include all maps
+    // exclude WIP maps
     const folders = [
       ...Juke.glob('maps/**/*.dmm'),
+    ] - [
+      ...Juke.glob('maps/euthenia/**/*.dmm')
     ];
     const content = folders
       .map((file) => file.replace('maps/', ''))

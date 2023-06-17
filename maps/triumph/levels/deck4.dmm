@@ -599,7 +599,7 @@
 "azM" = (
 /obj/machinery/door/window/brigdoor/eastleft{
 	req_access = null;
-	req_one_access = list(44, 67)
+	req_one_access = list(44,67)
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -9530,7 +9530,7 @@
 /obj/structure/ship_munition/disperser_charge/mining,
 /obj/machinery/door/window/brigdoor/westleft{
 	req_access = null;
-	req_one_access = list(44, 67)
+	req_one_access = list(44,67)
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/courser_dock)
@@ -20096,7 +20096,7 @@
 "oIf" = (
 /obj/machinery/door/window/brigdoor/eastright{
 	req_access = null;
-	req_one_access = list(44, 67)
+	req_one_access = list(44,67)
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -30002,7 +30002,7 @@
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/brigdoor/northright{
 	name = "Quarantine Cell";
-	req_access = list(1, 38)
+	req_access = list(1,38)
 	},
 /turf/simulated/floor/tiled,
 /area/exploration/excursion_dock)
@@ -33610,7 +33610,7 @@
 /obj/structure/ship_munition/disperser_charge/fire,
 /obj/machinery/door/window/brigdoor/westright{
 	req_access = null;
-	req_one_access = list(44, 67)
+	req_one_access = list(44,67)
 	},
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{

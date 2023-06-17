@@ -1331,7 +1331,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -6664,10 +6664,10 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped,
 /obj/structure/table/standard,
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)
@@ -7351,7 +7351,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -8651,7 +8651,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -9823,7 +9823,7 @@
 	input_tag = "atmos_out";
 	name = "Atmos Intake Control";
 	output_tag = "atmos_in";
-	sensors = list("atmos_intake" = "Tank")
+	sensors = list("atmos_intake"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
@@ -17654,7 +17654,7 @@
 /obj/structure/table/rack,
 /obj/item/hardsuit/hazmat/equipped{
 	req_access = list(65)
-},
+	},
 /obj/machinery/light_switch{
 	dir = 4;
 	pixel_x = -28
@@ -18965,7 +18965,7 @@
 	name = "Burn Chamber Air Control";
 	output_tag = "burn_out";
 	pressure_setting = 0;
-	sensors = list("burn_sensor" = "Burn Chamber")
+	sensors = list("burn_sensor"="Burn Chamber")
 	},
 /obj/machinery/button/ignition{
 	id = "burn_chamber";
@@ -22682,7 +22682,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -26655,7 +26655,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -27917,10 +27917,10 @@
 /obj/item/slime_scanner,
 /obj/item/slime_scanner,
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /obj/item/storage/box/monkeycubes{
-	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped = 10)
+	starts_with = list(/obj/item/reagent_containers/food/snacks/monkeycube/wrapped=10)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology)

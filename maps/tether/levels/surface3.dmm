@@ -3023,12 +3023,12 @@
 "aeF" = (
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 4;
-	req_access = list(30, 35, 47, 77);
+	req_access = list(30,35,47,77);
 	req_one_access = list()
 	},
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 8;
-	req_access = list(30, 35, 47, 77);
+	req_access = list(30,35,47,77);
 	req_one_access = list()
 	},
 /obj/machinery/door/firedoor,
@@ -4167,7 +4167,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -5844,7 +5844,7 @@
 "aiZ" = (
 /obj/machinery/door/window/brigdoor/southright{
 	req_access = null;
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -7208,7 +7208,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -8891,7 +8891,7 @@
 "apa" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = list();
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -10025,7 +10025,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora_storage)
@@ -10168,7 +10168,7 @@
 /area/rnd/xenobiology/xenoflora)
 "ars" = (
 /obj/machinery/vending/hydronutrients{
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 5
@@ -10226,7 +10226,7 @@
 	},
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
@@ -10850,7 +10850,7 @@
 "asF" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = list();
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -11917,7 +11917,6 @@
 /area/rnd/xenobiology/xenoflora)
 "auT" = (
 /obj/structure/table/glass,
-/obj/machinery/chemical_dispenser/xenoflora/full,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
 "auU" = (
@@ -14049,7 +14048,7 @@
 "ayK" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenoflora Research";
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
@@ -16366,7 +16365,7 @@
 /area/hallway/lower/third_south)
 "aCW" = (
 /obj/machinery/vending/hydronutrients{
-	req_one_access = list(30, 35, 47, 77)
+	req_one_access = list(30,35,47,77)
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
