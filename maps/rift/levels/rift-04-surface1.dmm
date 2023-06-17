@@ -3093,7 +3093,6 @@
 /area/library)
 "cdH" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -5425,7 +5424,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
@@ -8865,9 +8863,7 @@
 /turf/simulated/wall/r_wall/prepainted,
 /area/rift/surfaceeva/airlock/main)
 "fNY" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -9079,9 +9075,7 @@
 /turf/simulated/floor/tiled,
 /area/medical/virologytransiteast)
 "fVs" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
@@ -15821,7 +15815,6 @@
 /area/security/forensics)
 "jZc" = (
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/borderfloor{
@@ -22422,7 +22415,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
@@ -28388,9 +28380,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
@@ -29667,7 +29657,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
 /obj/machinery/firealarm{
-	dir = 1;
 	pixel_y = 24
 	},
 /obj/structure/ladder{
@@ -34087,9 +34076,7 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -37696,9 +37683,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
 "xbW" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
 	},
@@ -38329,9 +38314,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
 "xtr" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
+/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 1
 	},

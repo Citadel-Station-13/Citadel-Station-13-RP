@@ -36,6 +36,7 @@
 	//Multi-tile doors
 	dir = EAST
 	var/width = 1
+	var/autoset_dir = TRUE
 
 	// turf animation
 	var/atom/movable/overlay/c_animation = null

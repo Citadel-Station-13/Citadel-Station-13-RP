@@ -43,6 +43,10 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	autoclose = 1
 	normalspeed = 1
 
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
+
 	/**
 	 * If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
 	 * If 1, AI control is disabled until the AI hacks back in and disables the lock.
@@ -114,9 +118,6 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/// Bandaid around a problem.
 	var/last_spark = 0
 
-	smoothing_flags = SMOOTH_CUSTOM
-	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_GRILLE + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS )
 
 /obj/machinery/door/airlock/proc/set_airlock_overlays(state)
 	var/icon/color_overlay
@@ -511,10 +512,21 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(var/doorstate)
-	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
-		var/turf/step_turf = get_step(src, cardinal)
-		for(var/atom/thing as anything in step_turf)
-			if(thing.type in airlock_typecache)
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+			var/turf/step_turf = get_step(src, cardinal)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in airlock_typecache)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+			if (step_turf.density == TRUE)
 				switch(cardinal)
 					if(EAST)
 						setDir(SOUTH)
@@ -524,16 +536,6 @@ About the new airlock wires panel:
 						setDir(WEST)
 					if(SOUTH)
 						setDir(WEST)
-		if (step_turf.density == TRUE)
-			switch(cardinal)
-				if(EAST)
-					setDir(SOUTH)
-				if(WEST)
-					setDir(SOUTH)
-				if(NORTH)
-					setDir(WEST)
-				if(SOUTH)
-					setDir(WEST)
 	switch(doorstate)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"

@@ -23,6 +23,7 @@
 	layer = DOOR_OPEN_LAYER - 0.01
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
+	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 
 	//These are frequenly used with windows, so make sure zones can pass.
@@ -46,6 +47,7 @@
 	power_channel = ENVIRON
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
+	autoset_dir = FALSE
 
 	var/list/tile_info[4]
 	var/list/dir_alerts[4] // 4 dirs, bitflags

@@ -65,6 +65,7 @@
 	if(!c_tag)
 		var/area/A = get_area(src)
 		c_tag = "[A ? A.name : "Unknown"] #[rand(111,999)]"
+	update_icon()
 	return ..()
 
 /obj/machinery/camera/Destroy()

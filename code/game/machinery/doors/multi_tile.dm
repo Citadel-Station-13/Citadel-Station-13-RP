@@ -23,6 +23,10 @@
 	. = ..()
 	SetBounds()
 	create_fillers()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/door/airlock/multi_tile/LateInitialize()
+	SetBounds()
 
 /obj/machinery/door/airlock/multi_tile/Destroy()
 	QDEL_NULL(filler1)

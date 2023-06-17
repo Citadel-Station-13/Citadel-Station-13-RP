@@ -456,7 +456,6 @@
 /obj/machinery/door/airlock/voidcraft
 	name = "voidcraft hatch"
 	desc = "It's an extra resilient airlock intended for spacefaring vessels."
-	icon = 'icons/obj/doors/shuttledoors.dmi'
 	explosion_resistance = 20
 	opacity = 0
 	glass = 1
@@ -466,7 +465,6 @@
 
 // Airlock opens from top-bottom instead of left-right.
 /obj/machinery/door/airlock/voidcraft/vertical
-	icon = 'icons/obj/doors/shuttledoors_vertical.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_voidcraft/vertical
 	open_sound_powered = 'sound/machines/door/shuttle1o.ogg'
 	close_sound_powered = 'sound/machines/door/shuttle1c.ogg'

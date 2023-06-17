@@ -7,7 +7,6 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/machinery/door/airlock,
 	/obj/structure/grille,
-	/obj/structure/table,
 	/obj/machinery/smartfridge
 	))
 
