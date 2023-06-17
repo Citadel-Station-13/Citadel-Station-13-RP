@@ -111,7 +111,7 @@
 	var/static/regex/trimQuotesRegex = new(@'^[\s\n]+"?|"?[\s\n]+$|^"|"$', "g")
 	var/static/regex/trimRegex = new(@'^[\s\n]+|[\s\n]+$', "g")
 	/// used to parse out \[, \] to their unescaped forms
-	var/static/regex/textConstantProcessing = new(@'([\[\]])', "g")
+	var/static/regex/textConstantProcessing = new(@'\\([\[\]])', "g")
 
 /**
  * creates and parses a map
