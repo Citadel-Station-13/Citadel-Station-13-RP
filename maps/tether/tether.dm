@@ -27,11 +27,6 @@
 	overmap_event_areas = 44
 	usable_email_tlds = list("virgo.nt")
 
-
-	lobby_icon = 'icons/misc/title_vr.dmi'
-	lobby_screens = list("tether2_night")
-	id_hud_icons = 'icons/mob/hud_jobs_cit.dmi'
-
 	holomap_smoosh = list(list(
 		Z_LEVEL_SURFACE_LOW,
 		Z_LEVEL_SURFACE_MID,
@@ -139,13 +134,6 @@
 						 		 Z_LEVEL_ROGUEMINE_2)
 
 
-// /datum/map/station/tether/get_map_info()
-// 	. = list()
-// 	. +=  "The [full_name] is an ancient ruin turned workplace in the Virgo-Erigone System, deep in the midst of the Coreward Periphery.<br>"
-// 	. +=  "Humanity has spread across the stars and has met many species on similar or even more advanced terms than them - it's a brave new world and many try to find their place in it . <br>"
-// 	. +=  "Though Virgo-Erigone is not important for the great movers and shakers, it sees itself in the midst of the interests of a reviving alien species of the Zorren, corporate and subversive interests and other exciting dangers the Periphery has to face.<br>"
-// 	. +=  "As an employee or contractor of NanoTrasen, operators of the Adephagia and one of the galaxy's largest corporations, you're probably just here to do a job."
-// 	return jointext(., "<br>")
 
 /datum/map/station/tether/perform_map_generation()
 

@@ -1,46 +1,29 @@
-/////// For now just going to put placeholder copies of each object in here without any extra defines. Will need to rework station telecomms sometime in order to make map rotation not ass -Bloop
+/area/tether/surfacebase/tcomms
+	name = "\improper Telecomms"
+	ambience = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg')
 
+/area/tether/surfacebase/tcomms/entrance
+	name = "\improper Telecomms Teleporter"
+	icon_state = "tcomsatentrance"
 
-//// Tether///////
+/area/tether/surfacebase/tcomms/foyer
+	name = "\improper Telecomms Foyer"
+	icon_state = "tcomsatfoyer"
 
-/obj/machinery/telecomms/relay/preset/tether
+/area/tether/surfacebase/tcomms/storage
+	name = "\improper Telecomms Storage"
+	icon_state = "tcomsatwest"
 
-/obj/machinery/telecomms/hub/preset/tether
+/area/tether/surfacebase/tcomms/computer
+	name = "\improper Telecomms Control Room"
+	icon_state = "tcomsatcomp"
 
-/obj/machinery/telecomms/receiver/preset_right/tether
+/area/tether/surfacebase/tcomms/chamber
+	name = "\improper Telecomms Central Compartment"
+	icon_state = "tcomsatcham"
 
-/obj/machinery/telecomms/broadcaster/preset_right/tether
+/area/maintenance/substation/tcomms
+	name = "\improper Telecomms Substation"
 
-/obj/machinery/telecomms/bus/preset_two/tether
-
-/obj/machinery/telecomms/server/presets/service/tether
-
-//// Triumph ////
-
-/obj/machinery/telecomms/relay/preset/triumph/deck_one
-
-/obj/machinery/telecomms/relay/preset/centcom/triumph/deck_one
-
-/obj/machinery/telecomms/relay/preset/triumph/deck_two
-
-/obj/machinery/telecomms/relay/preset/centcom/triumph/deck_two
-
-/obj/machinery/telecomms/relay/preset/triumph/deck_three
-
-/obj/machinery/telecomms/relay/preset/centcom/triumph/deck_three
-
-/obj/machinery/telecomms/relay/preset/triumph/deck_four
-
-/obj/machinery/telecomms/relay/preset/centcom/triumph/deck_four
-
-/obj/machinery/telecomms/hub/preset/triumph
-
-/obj/machinery/telecomms/receiver/preset_right/triumph
-
-/obj/machinery/telecomms/broadcaster/preset_right/triumph
-
-/obj/machinery/telecomms/bus/preset_two/triumph
-
-/obj/machinery/telecomms/server/presets/service/triumph
-
-
+/area/maintenance/station/tcomms
+	name = "\improper Telecoms Maintenance"

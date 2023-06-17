@@ -1,8 +1,3 @@
-// ### Preset machines  ###
-
-
-// #### Relays ####
-// Telecomms doesn't know about connected z-levels, so we need relays even for the other surface levels.
 /obj/machinery/telecomms/relay/preset/triumph/deck_one
 	id = "Deck Relay 1"
 	listening_level = Z_LEVEL_DECK_ONE
@@ -60,35 +55,6 @@
 	autolinkers = list("service", "explorer")
 
 // Telecommunications Satellite
-/area/tether/surfacebase/tcomms
-	name = "\improper Telecomms"
-	ambience = list('sound/ambience/ambisin2.ogg', 'sound/ambience/signal.ogg', 'sound/ambience/signal.ogg')
-
-/area/tether/surfacebase/tcomms/entrance
-	name = "\improper Telecomms Teleporter"
-	icon_state = "tcomsatentrance"
-
-/area/tether/surfacebase/tcomms/foyer
-	name = "\improper Telecomms Foyer"
-	icon_state = "tcomsatfoyer"
-
-/area/tether/surfacebase/tcomms/storage
-	name = "\improper Telecomms Storage"
-	icon_state = "tcomsatwest"
-
-/area/tether/surfacebase/tcomms/computer
-	name = "\improper Telecomms Control Room"
-	icon_state = "tcomsatcomp"
-
-/area/tether/surfacebase/tcomms/chamber
-	name = "\improper Telecomms Central Compartment"
-	icon_state = "tcomsatcham"
-
-/area/maintenance/substation/tcomms
-	name = "\improper Telecomms Substation"
-
-/area/maintenance/station/tcomms
-	name = "\improper Telecoms Maintenance"
 
 /obj/item/multitool/triumph_buffered
 	name = "pre-linked multitool (tether hub)"
