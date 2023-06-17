@@ -6,6 +6,12 @@
 	// override for map, otherwise defaults to loaded station as we have no way of detecting what's being loaded right now
 	var/for_map
 
+/obj/map_helper/engine_loader/New()
+	return ..()
+
+/obj/map_helper/engine_loader/Initialize(mapload)
+	return ..()
+
 /obj/map_helper/engine_loader/map_initializations(list/bounds)
 	. = ..()
 	if(istext(clean_turfs))
@@ -26,6 +32,8 @@
 	var/list/potential_filtered = list()
 
 	for(var/datum/map_template/engine/path as anything in potential_subtypes)
+		if(initial(path.abstract_type) == path)
+			continue
 		var/their_for_map = initial(path.for_map)
 		if(ispath(their_for_map))
 			var/datum/map/map_path = their_for_map

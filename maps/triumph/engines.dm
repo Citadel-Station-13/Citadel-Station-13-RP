@@ -1,4 +1,5 @@
 /datum/map_template/engine/triumph
+	abstract_type = /datum/map_template/engine/triumph
 	prefix = "maps/triumph/engines/"
 	for_map = /datum/map/station/triumph
 

@@ -49,3 +49,4 @@
  * * bounds - (optional) bounds list of loaded level. can be null if we were invoked without a level load.
  */
 /obj/map_helper/proc/map_initializations(list/bounds)
+	return

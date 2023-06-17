@@ -1,4 +1,5 @@
 /datum/map_template/engine
+	abstract_type = /datum/map_template/engine
 	name = "Engine Content"
 	desc = "It would be boring to have the same engine every day, right?"
 

@@ -1,5 +1,4 @@
 /datum/map_template
-	/// abstract type
 	abstract_type = /datum/map_template
 
 	//* description
