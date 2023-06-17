@@ -1,34 +1,26 @@
 /obj/machinery/telecomms/relay/preset/triumph/deck_one
 	id = "Deck Relay 1"
-	listening_level = Z_LEVEL_DECK_ONE
 	autolinkers = list("tb1_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/triumph/deck_one
-	listening_level = Z_LEVEL_DECK_ONE
 
 /obj/machinery/telecomms/relay/preset/triumph/deck_two
 	id = "Deck Relay 2"
-	listening_level = Z_LEVEL_DECK_TWO
 	autolinkers = list("tb2_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/triumph/deck_two
-	listening_level = Z_LEVEL_DECK_TWO
 
 /obj/machinery/telecomms/relay/preset/triumph/deck_three
 	id = "Deck Relay 3"
-	listening_level = Z_LEVEL_DECK_THREE
 	autolinkers = list("tb3_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/triumph/deck_three
-	listening_level = Z_LEVEL_DECK_THREE
 
 /obj/machinery/telecomms/relay/preset/triumph/deck_four
 	id = "Deck Relay 4"
-	listening_level = Z_LEVEL_DECK_FOUR
 	autolinkers = list("tb4_relay")
 
 /obj/machinery/telecomms/relay/preset/centcom/triumph/deck_four
-	listening_level = Z_LEVEL_DECK_FOUR
 
 // #### Hub ####
 /obj/machinery/telecomms/hub/preset/triumph
