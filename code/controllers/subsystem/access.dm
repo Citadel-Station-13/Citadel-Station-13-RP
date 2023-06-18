@@ -1,4 +1,4 @@
-/datum/controller/subsystem/access
+SUBSYSTEM_DEF(access)
 	name = "Access"
 	init_order = INIT_ORDER_ACCESS
 	/// all access datums

@@ -48,9 +48,6 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	for(var/obj/item/retail_scanner/RS in GLOB.transaction_devices)
 		if(RS.account_to_connect)
 			RS.linked_account = GLOB.department_accounts[RS.account_to_connect]
-	for(var/obj/machinery/cash_register/CR in GLOB.transaction_devices)
-		if(CR.account_to_connect)
-			CR.linked_account = GLOB.department_accounts[CR.account_to_connect]
 
 	GLOB.current_date_string = "[num2text(rand(1,31))] [pick("January","February","March","April","May","June","July","August","September","October","November","December")], [game_year]"
 
