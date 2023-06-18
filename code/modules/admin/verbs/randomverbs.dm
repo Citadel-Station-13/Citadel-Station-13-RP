@@ -474,7 +474,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			spawnloc = get_turf(src.mob)
 
 		if("Arrivals") //Spawn them at a latejoin spawnpoint
-			spawnloc = SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION)?.GetSpawnLoc()
+			spawnloc = SSjob.get_latejoin_spawnpoint(faction = /datum/faction/station)?.GetSpawnLoc()
 
 		else //I have no idea how you're here
 			to_chat(src, "Invalid spawn location choice.")

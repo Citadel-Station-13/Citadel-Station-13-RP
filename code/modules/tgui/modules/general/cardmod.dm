@@ -174,7 +174,7 @@
 /datum/tgui_module/card_mod/static_data(mob/user, obj/item/card/id/editing = edit_target(), obj/item/card/id/authing = auth_source())
 	. = ..()
 	.["access"] = SSaccess.tgui_access_data()
-	var/list/direct_cache = ((authing?.access || list()) & SSjob.cached_access_edit_relevant)
+	var/list/direct_cache = ((authing?.access || list()) & SSaccess.cached_access_edit_relevant)
 	.["modify_type"] = query_access_types(user, editing, authing, direct_cache)
 	.["modify_region"] = query_access_regions(user, editing, authing, direct_cache)
 	.["modify_ids"] = query_access_ids(user, editing, authing, direct_cache)
@@ -290,7 +290,7 @@
 
 /datum/tgui_module/card_mod/standard/query_access_ids(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in direct || (((authing?.access || list())) & SSaccess.cached_access_edit_relevant))
 		var/datum/access/A = SSaccess.access_lookup(id)
 		if(isnull(A.access_edit_list))
 			continue
@@ -301,19 +301,19 @@
 
 /datum/tgui_module/card_mod/standard/query_access_types(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in direct || (((authing?.access || list())) & SSaccess.cached_access_edit_relevant))
 		var/datum/access/A = SSaccess.access_lookup(id)
 		. |= A.access_edit_type
 
 /datum/tgui_module/card_mod/standard/query_access_categories(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = list()
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in direct || (((authing?.access || list())) & SSaccess.cached_access_edit_relevant))
 		var/datum/access/A = SSaccess.access_lookup(id)
 		. |= A.access_edit_category
 
 /datum/tgui_module/card_mod/standard/query_access_regions(mob/user, obj/item/card/id/editing, obj/item/card/id/authing, list/direct)
 	. = NONE
-	for(var/id in direct || (((authing?.access || list())) & SSjob.cached_access_edit_relevant))
+	for(var/id in direct || (((authing?.access || list())) & SSaccess.cached_access_edit_relevant))
 		var/datum/access/A = SSaccess.access_lookup(id)
 		if(isnull(A.access_edit_region))
 			continue

@@ -7,6 +7,8 @@
 	var/category = "Misc"
 	/// path of what we contain
 	var/item_type
+	/// autodetect everything we can
+	var/auto = FALSE
 	/// max amount per order
 	var/max_amount = 1
 	/// flags
@@ -67,3 +69,6 @@
 		#warn impl
 	else
 		#warn impl
+
+/datum/supply_item/auto
+	auto = TRUE

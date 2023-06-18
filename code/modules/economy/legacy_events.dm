@@ -73,7 +73,7 @@
 				body = "A small [pick("pirate","Nation of Mars","Revolutionary Solar People's Party","mercenary")] fleet has precise-jumped into proximity with [affected_dest.name], [pick("for a smash-and-grab operation","in a hit and run attack","in an overt display of hostilities")]. Much damage was done, and security has been tightened since the incident."
 			if(ALIEN_RAIDERS)
 				if(prob(20))
-					body = "Ue-Katish pirates exiled from Ue'Orsi have raided [affected_dest.name] today, no doubt on orders from their enigmatic masters. Stealing wildlife, farm animals, medical research materials and kidnapping civilians. [(LEGACY_USING_MAP).company_name] authorities are standing by to counter attempts at bio-terrorism."
+					body = "Ue-Katish pirates exiled from Ue'Orsi have raided [affected_dest.name] today, no doubt on orders from their enigmatic masters. Stealing wildlife, farm animals, medical research materials and kidnapping civilians. [(LEGACY_MAP_DATUM).company_name] authorities are standing by to counter attempts at bio-terrorism."
 				else
 					body = "The Vox have raided [affected_dest.name] today, stealing wildlife, farm animals, medical research materials and kidnapping civilians. Fleet assets have moved to reinforce the effected region."
 			if(AI_LIBERATION)
@@ -83,7 +83,7 @@
 			if(CULT_CELL_REVEALED)
 				body = "A [pick("dastardly","blood-thirsty","villanous","crazed")] doomsday cult has [pick("been discovered","been revealed","revealed themselves","gone public")] on [affected_dest.name] earlier today. Public morale has been shaken due to [pick("certain","several","one or two")] [pick("high-profile","well known","popular")] individuals [pick("performing illegal acts","claiming allegiance to the cult","swearing loyalty to the cult leader","promising to aid to the cult")] before those involved could be brought to justice."
 			if(SECURITY_BREACH)
-				body = "There was [pick("a security breach in","an unauthorised access in","an attempted theft in","an anarchist attack in","violent sabotage of")] a [pick("high-security","restricted access","classified")] [pick("section","zone","area")] this morning. Security was tightened on [affected_dest.name] after the incident, and the editor reassures all [(LEGACY_USING_MAP).company_name] personnel that such lapses are rare."
+				body = "There was [pick("a security breach in","an unauthorised access in","an attempted theft in","an anarchist attack in","violent sabotage of")] a [pick("high-security","restricted access","classified")] [pick("section","zone","area")] this morning. Security was tightened on [affected_dest.name] after the incident, and the editor reassures all [(LEGACY_MAP_DATUM).company_name] personnel that such lapses are rare."
 			if(ANIMAL_RIGHTS_RAID)
 				body = "[pick("Militant animal rights activists","Members of the terrorist group Galactic Organization for Animal Rights")] have [pick("launched a campaign of terror","unleashed a swathe of destruction","raided farms and pastures","forced entry to an animal processing plant")] on [affected_dest.name] earlier today, freeing numerous [pick("farm animals","animals")]. Prices for tame and breeding animals have spiked as a result."
 			if(FESTIVAL)
@@ -311,7 +311,7 @@ var/list/weighted_mundaneevent_locations = list()
 	if(!event_type)
 		return
 
-	var/author = "The "+(LEGACY_USING_MAP).starsys_name+" Times"
+	var/author = "The "+(LEGACY_MAP_DATUM).starsys_name+" Times"
 	var/channel = author
 
 	//see if our location has custom event info for this event
@@ -322,7 +322,7 @@ var/list/weighted_mundaneevent_locations = list()
 			if(RESEARCH_BREAKTHROUGH)
 				body = "A major breakthough in the field of [pick("phoron research","super-compressed materials","nano-augmentation","bluespace research","volatile power manipulation")] \
 				was announced [pick("yesterday","a few days ago","last week","earlier this month")] by a private firm on [affected_dest.name]. \
-				[(LEGACY_USING_MAP).company_name] declined to comment as to whether this could impinge on profits."
+				[(LEGACY_MAP_DATUM).company_name] declined to comment as to whether this could impinge on profits."
 
 			if(ELECTION)
 				body = "The pre-selection of an additional candidates was announced for the upcoming [pick("supervisors council","advisory board","governership","board of inquisitors")] \
@@ -332,7 +332,7 @@ var/list/weighted_mundaneevent_locations = list()
 				"I will maintain my company's record profits","I believe in our future","We must return to our moral core","Just like... chill out dudes")]'."
 
 			if(RESIGNATION)
-				body = "[(LEGACY_USING_MAP).company_name] regretfully announces the resignation of [pick("Sector Admiral","Division Admiral","Ship Admiral","Vice Admiral")] [random_name(pick(MALE,FEMALE))]."
+				body = "[(LEGACY_MAP_DATUM).company_name] regretfully announces the resignation of [pick("Sector Admiral","Division Admiral","Ship Admiral","Vice Admiral")] [random_name(pick(MALE,FEMALE))]."
 				if(prob(25))
 					var/locstring = pick("Segunda","Salusa","Cepheus","Andromeda","Gruis","Corona","Aquila","Asellus") + " " + pick("I","II","III","IV","V","VI","VII","VIII")
 					body += " In a ceremony on [affected_dest.name] this afternoon, they will be awarded the \
@@ -416,11 +416,11 @@ var/list/weighted_mundaneevent_locations = list()
 				else
 					body += "is recovering from plastic surgery in a clinic on [affected_dest.name] for the [pick("second","third","fourth")] time, reportedly having made the decision in response to "
 					body += "[pick("unkind comments by an ex","rumours started by jealous friends",\
-					"the decision to be dropped by a major sponsor","a disasterous interview on [(LEGACY_USING_MAP).starsys_name] Tonight")]."
+					"the decision to be dropped by a major sponsor","a disasterous interview on [(LEGACY_MAP_DATUM).starsys_name] Tonight")]."
 			if(TOURISM)
 				body += "Tourists are flocking to [affected_dest.name] after the surprise announcement of [pick("major shopping bargains by a wily retailer",\
 				"a huge new ARG by a popular entertainment company","a secret tour by popular artiste [random_name(pick(MALE,FEMALE))]")]. \
-				The [(LEGACY_USING_MAP).starsys_name] Times is offering discount tickets for two to see [random_name(pick(MALE,FEMALE))] live in return for eyewitness reports and up to the minute coverage."
+				The [(LEGACY_MAP_DATUM).starsys_name] Times is offering discount tickets for two to see [random_name(pick(MALE,FEMALE))] live in return for eyewitness reports and up to the minute coverage."
 
 	news_network.SubmitArticle(body, author, channel, null, 1)
 */
@@ -452,17 +452,17 @@ var/list/weighted_mundaneevent_locations = list()
 	"'Here kitty kitty' no longer preferred tajaran retrieval technique.",\
 	"Man travels 7000 light years to retrieve lost hankie, 'It was my favourite'.",\
 	"New bowling lane that shoots mini-meteors at bowlers very popular.",\
-	"[pick(SPECIES_UNATHI,"Spacer")] gets tattoo of "+(LEGACY_USING_MAP).starsys_name+" on chest '[pick("[(LEGACY_USING_MAP).boss_short]","star","starship","asteroid")] tickles most'.",\
+	"[pick(SPECIES_UNATHI,"Spacer")] gets tattoo of "+(LEGACY_MAP_DATUM).starsys_name+" on chest '[pick("[(LEGACY_MAP_DATUM).boss_short]","star","starship","asteroid")] tickles most'.",\
 	"Skrell marries computer; wedding attended by 100 modems.",\
 	"Chef reports successfully using harmonica as cheese grater.",\
-	"[(LEGACY_USING_MAP).company_name] invents handkerchief that says 'Bless you' after sneeze.",\
+	"[(LEGACY_MAP_DATUM).company_name] invents handkerchief that says 'Bless you' after sneeze.",\
 	"Clone accused of posing for other clones�s school photo.",\
 	"Clone accused of stealing other clones�s employee of the month award.",\
 	"Woman robs station with hair dryer; crewmen love new style.",\
 	"This space for rent.",\
 	"[affected_dest.name] Baker Wins Pickled Crumpet Toss Three Years Running",\
 	"Skrell Scientist Discovers Abacus Can Be Used To Dry Towels",\
-	"Survey: 'Cheese Louise' Voted Best Pizza Restaurant In [(LEGACY_USING_MAP).starsys_name]",\
+	"Survey: 'Cheese Louise' Voted Best Pizza Restaurant In [(LEGACY_MAP_DATUM).starsys_name]",\
 	"I Was Framed, jokes [affected_dest.name] artist",\
 	"Mysterious Loud Rumbling Noises In [affected_dest.name] Found To Be Mysterious Loud Rumblings",\
 	"Alien ambassador becomes lost on [affected_dest.name], refuses to ask for directions",\
