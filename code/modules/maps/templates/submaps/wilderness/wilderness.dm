@@ -221,7 +221,7 @@
 /datum/map_template/submap/level_specific/wilderness/normal/ButcherShack
 	name = "Butcher Shack"
 	desc = "An old, bloody butcher's shack. Get your meat here!"
-	suffix = "ButcherShack.dmm"
+	suffix = "butchershack.dmm"
 	cost = 5
 
 /datum/map_template/submap/level_specific/wilderness/deep/Chapel1
