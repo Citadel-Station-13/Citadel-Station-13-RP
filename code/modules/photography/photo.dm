@@ -7,6 +7,8 @@
 /proc/create_photo(atom/where, from_what)
 	var/obj/item/photo/instance = new(where)
 	. = instance
+	if(isfile(from_what))
+		from_what = icon(from_what, dir = SOUTH, frame = 1)
 	if(istype(from_what, /icon))
 		var/datum/photograph/photograph = new
 		var/datum/picture/picture = SSphotography.create_picture(from_what)
