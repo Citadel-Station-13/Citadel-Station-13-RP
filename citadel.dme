@@ -492,11 +492,8 @@
 #include "code\controllers\configuration_old\configuration.dm"
 #include "code\controllers\configuration_old\configuration_vr.dm"
 #include "code\controllers\observer_listener\atom\observer.dm"
-<<<<<<< HEAD
-#include "code\controllers\subsystem\access.dm"
-=======
 #include "code\controllers\repository\structs.dm"
->>>>>>> citrp/master
+#include "code\controllers\subsystem\access.dm"
 #include "code\controllers\subsystem\ai.dm"
 #include "code\controllers\subsystem\air.dm"
 #include "code\controllers\subsystem\airflow.dm"
