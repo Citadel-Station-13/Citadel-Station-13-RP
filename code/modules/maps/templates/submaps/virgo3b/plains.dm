@@ -58,7 +58,7 @@
 /datum/map_template/submap/level_specific/plains/normal/Rocky2
 	name =  "Rocky2"
 	desc = "More rocks."
-	map_path = "maps/submaps/surface_submaps/wilderness/Rocky2.dmm"
+	map_path = "maps/submaps/wilderness/Rocky2.dmm"
 	allow_duplicates = TRUE
 	cost = 5
 

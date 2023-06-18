@@ -4,7 +4,10 @@
 		if(initial(M.abstract_type) == path)
 			continue
 		var/map_path = initial(M.map_path)
+		var/using_prefixes = FALSE
 		if(isnull(map_path))
 			map_path = "[initial(M.prefix)][initial(M.suffix)]"
+			using_prefixes = TRUE
 		if(!fexists("[map_path]"))
-			TEST_FAIL("Failed to resolve [path]'s initial map_path or prefix_suffix to a file - [initial(M.map_path)] / [initial(M.prefix)]+[initial(M.suffix)].")
+			var/reason = using_prefixes? "prefix+suffix ([initial(M.prefix)] / [initial(M.suffix)])" : "map_path ([initial(M.map_path)])"
+			TEST_FAIL("Failed to resolve [path]'s initial [reason] to a file.")
