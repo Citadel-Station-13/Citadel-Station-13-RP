@@ -14,7 +14,6 @@
 
 // BEGIN_INCLUDE
 #include "_mapload\_basemap.dm"
-#include "_mapload\triumph.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"
 #include "code\__global_init.dm"
