@@ -40,13 +40,8 @@
 			their_for_map = initial(map_path.id)
 		if(their_for_map != src.for_map)
 			continue
-		potential_filtered[path] = initial(path.name)
-
-	if(length(probabilities))
-		for(var/path in potential_filtered)
-			var/name = potential_filtered[path]
-			var/probability = probabilities[name]
-			potential_filtered[path] = isnum(probability)? probability : 1
+		var/name = initial(path.name)
+		potential_filtered[path] = isnum(probabilities[name])? probabilities[name] : 1
 
 	var/picked_path = pickweightAllowZero(potential_filtered)
 
