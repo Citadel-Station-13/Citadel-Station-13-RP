@@ -59,20 +59,20 @@
 
 	var/list/candidates = list()
 
-	for(var/obj/overmap/event/O in get_step(linked, overmapdir))
+	for(var/obj/overmap/tiled/hazard/O in get_step(linked, overmapdir))
 		candidates += O
 
 	//Way to waste a charge
 	if(!length(candidates))
 		return TRUE
 
-	var/obj/overmap/event/finaltarget = pick(candidates)
+	var/obj/overmap/tiled/hazard/finaltarget = pick(candidates)
 	//log_and_message_admins("A type [chargetype] disperser beam was launched at [finaltarget].", location=finaltarget)
 
 	fire_at_event(finaltarget, chargetype)
 	return TRUE
 
-/obj/machinery/computer/ship/disperser/proc/fire_at_event(obj/overmap/event/finaltarget, chargetype)
+/obj/machinery/computer/ship/disperser/proc/fire_at_event(obj/overmap/tiled/hazard/finaltarget, chargetype)
 	if(chargetype & finaltarget.weaknesses)
 		var/turf/T = finaltarget.loc
 		qdel(finaltarget)

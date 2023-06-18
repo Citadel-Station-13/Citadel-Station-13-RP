@@ -18,58 +18,58 @@
 	count = 15
 	radius = 3
 	continuous = FALSE
-	hazards = /obj/overmap/event/meteor
+	hazards = /obj/overmap/tiled/hazard/meteor
 
 /datum/overmap_event/electric
 	name = "electrical storm"
 	count = 18
 	radius = 4
-	hazards = /obj/overmap/event/electric
+	hazards = /obj/overmap/tiled/hazard/electric
 
 /datum/overmap_event/dust
 	name = "dust cloud"
 	count = 22
 	radius = 4
-	hazards = /obj/overmap/event/dust
+	hazards = /obj/overmap/tiled/hazard/dust
 
 /datum/overmap_event/ion
 	name = "ion cloud"
 	count = 19
 	radius = 4
-	hazards = /obj/overmap/event/ion
+	hazards = /obj/overmap/tiled/hazard/ion
 
 /datum/overmap_event/carp
 	name = "carp shoal"
 	count = 12
 	radius = 3
 	continuous = FALSE
-	hazards = /obj/overmap/event/carp
+	hazards = /obj/overmap/tiled/hazard/carp
 
 /datum/overmap_event/carp_heavy
 	name = "carp school"
 	count = 9
 	radius = 3
 	continuous = FALSE
-	hazards = /obj/overmap/event/carp_heavy
+	hazards = /obj/overmap/tiled/hazard/carp_heavy
 
 /datum/overmap_event/hostile_migration
 	name = "hostile lifesigns"
 	count = 11
 	radius = 3
 	continuous = FALSE
-	hazards = /obj/overmap/event/hostile_migration
+	hazards = /obj/overmap/tiled/hazard/hostile_migration
 
 /datum/overmap_event/communications_blackout
 	name = "Ionspheric Bubble"
 	count = 12
 	radius = 3
-	hazards = /obj/overmap/event/communications_blackout
+	hazards = /obj/overmap/tiled/hazard/communications_blackout
 
 /datum/overmap_event/cult
 	name = "Screaming Signal"
 	count = 12
 	radius = 3
-	hazards = /obj/overmap/event/cult
+	hazards = /obj/overmap/tiled/hazard/cult
 
 
 /datum/overmap_event/pirate
@@ -77,4 +77,4 @@
 	count = 7
 	radius = 3
 	continuous = FALSE
-	hazards = /obj/overmap/event/pirate
+	hazards = /obj/overmap/tiled/hazard/pirate
