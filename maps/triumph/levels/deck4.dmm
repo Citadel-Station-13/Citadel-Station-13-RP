@@ -21848,7 +21848,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
-/obj/effect/overmap/visitable/ship/landable/excursion,
+/obj/effect/overmap/visitable/ship/landable/excursion/triumph,
 /obj/effect/shuttle_landmark/triumph/deck4/excursion,
 /obj/structure/handrail{
 	dir = 4

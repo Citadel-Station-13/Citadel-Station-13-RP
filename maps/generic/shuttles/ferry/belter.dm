@@ -1,4 +1,3 @@
-
 /datum/shuttle/autodock/ferry/belter
 	name = "Belter"
 	location = FERRY_LOCATION_STATION

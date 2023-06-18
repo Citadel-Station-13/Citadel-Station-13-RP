@@ -2,7 +2,7 @@
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
-/obj/effect/overmap/visitable/ship/landable/excursion
+/obj/effect/overmap/visitable/ship/landable/excursion/triumph
 	name = "Excursion Shuttle"
 	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
 	color = "#72388d" //Purple

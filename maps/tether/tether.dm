@@ -37,6 +37,7 @@
 		/datum/shuttle/autodock/overmap/tourbus,
 		/datum/shuttle/autodock/overmap/medivac,
 		/datum/shuttle/autodock/overmap/securiship,
+		/datum/shuttle/autodock/ferry/belter,
 	)
 
 	full_name = "NSB Adephagia"
