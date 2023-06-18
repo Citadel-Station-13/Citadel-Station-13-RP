@@ -44,7 +44,9 @@
 
 	if(length(probabilities))
 		for(var/path in potential_filtered)
-			potential_filtered[path] = probabilities[potential_filtered[path]] || 1
+			var/name = potential_filtered[path]
+			var/probability = probabilities[name]
+			potential_filtered[path] = isnum(probability)? probability : 1
 
 	var/picked_path = pickweightAllowZero(potential_filtered)
 
