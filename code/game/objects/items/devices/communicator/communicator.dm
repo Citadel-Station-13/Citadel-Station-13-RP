@@ -126,7 +126,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 // Proc: examine()
 // Parameters: 1 (user - the person examining the device)
 // Description: Shows all the voice mobs inside the device, and their status.
-/obj/item/communicator/examine(mob/user)
+/obj/item/communicator/examine(mob/user, dist)
 	. = ..()
 
 	for(var/mob/living/voice/voice in contents)
@@ -309,9 +309,10 @@ var/global/list/obj/item/communicator/all_communicators = list()
 	QDEL_NULL(exonet)
 
 	last_camera_turf = null
-	qdel(cam_screen)
-	QDEL_LIST(cam_plane_masters)
-	qdel(cam_background)
+	QDEL_NULL(cam_screen)
+	QDEL_NULL(cam_background)
+	QDEL_NULL(planes)
+	QDEL_NULL(parallax)
 
 	return ..()
 

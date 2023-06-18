@@ -22,22 +22,22 @@
 	. = ..()
 	remove_obj_verb(src, /obj/item/reagent_containers/verb/set_APTFT)
 
-/obj/item/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(istype(A, /obj/item/storage) || istype(A, /obj/structure/table) || istype(A, /obj/structure/closet) || istype(A, /obj/item/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart))
+/obj/item/reagent_containers/spray/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target, /obj/item/storage) || istype(target, /obj/structure/table) || istype(target, /obj/structure/closet) || istype(target, /obj/item/reagent_containers) || istype(target, /obj/structure/sink) || istype(target, /obj/structure/janitorialcart))
 		return
 
-	if(istype(A, /spell))
+	if(istype(target, /spell))
 		return
 
-	if(proximity)
-		if(standard_dispenser_refill(user, A))
+	if(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)
+		if(standard_dispenser_refill(user, target))
 			return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
 		to_chat(user, "<span class='notice'>\The [src] is empty!</span>")
 		return
 
-	Spray_at(A, user, proximity)
+	Spray_at(target, user, (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 
 	user.setClickCooldown(4)
 
@@ -76,7 +76,7 @@
 	spray_size = next_list_item(spray_size, spray_sizes)
 	to_chat(user, "<span class='notice'>You adjusted the pressure nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
 
-/obj/item/reagent_containers/spray/examine(mob/user)
+/obj/item/reagent_containers/spray/examine(mob/user, dist)
 	. = ..()
 	if(loc == user)
 		. += "[round(reagents.total_volume)] units left."
@@ -129,7 +129,7 @@
 	. = ..()
 	reagents.add_reagent("condensedcapsaicin", 40)
 
-/obj/item/reagent_containers/spray/pepper/examine(mob/user)
+/obj/item/reagent_containers/spray/pepper/examine(mob/user, dist)
 	. = ..()
 	. += "The safety is [safety ? "on" : "off"]."
 
@@ -230,7 +230,7 @@
 	. = ..()
 	reagents.add_reagent("water", 100)
 
-/obj/item/reagent_containers/spray/squirt/examine(mob/user)
+/obj/item/reagent_containers/spray/squirt/examine(mob/user, dist)
 	. = ..()
 	. += "The tank is [pumped ? "depressurized" : "pressurized"]."
 

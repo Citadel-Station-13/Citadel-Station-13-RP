@@ -204,11 +204,12 @@ var/global/list/tele_landmarks = list() // Terrible, but the alternative is loop
 /* Teleporter which simulates falling out of the sky. */
 
 /obj/effect/step_trigger/teleporter/planetary_fall
+	var/planet_path
 	var/datum/planet/planet = null
 
 // First time setup, which planet are we aiming for?
 /obj/effect/step_trigger/teleporter/planetary_fall/proc/find_planet()
-	return
+	planet = locate(planet_path) in SSplanets.planets
 
 /obj/effect/step_trigger/teleporter/planetary_fall/Trigger(var/atom/movable/A)
 	if(!planet)

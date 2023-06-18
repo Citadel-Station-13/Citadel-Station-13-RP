@@ -33,7 +33,6 @@
 	var/allow_vote_mode = 0				// allow votes to change mode
 	var/allow_admin_jump = 1			// allows admin jumping
 	var/allow_admin_spawning = 1		// allows admin item spawning
-	var/allow_admin_rev = 1				// allows admin revives
 	var/vote_delay = 6000				// minimum time between voting sessions (deciseconds, 10 minute default)
 	var/vote_period = 600				// length of voting period (deciseconds, default 1 minute)
 	var/vote_autotransfer_initial = 108000 // Length of time before the first autotransfer vote is called
@@ -396,9 +395,6 @@
 				if ("allow_admin_jump")
 					config_legacy.allow_admin_jump = 1
 
-				if("allow_admin_rev")
-					config_legacy.allow_admin_rev = 1
-
 				if ("allow_admin_spawning")
 					config_legacy.allow_admin_spawning = 1
 
@@ -712,16 +708,16 @@
 					config_legacy.use_overmap = 1
 /*
 				if("station_levels")
-					GLOB.using_map.station_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).station_levels = text2numlist(value, ";")
 
 				if("admin_levels")
-					GLOB.using_map.admin_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).admin_levels = text2numlist(value, ";")
 
 				if("contact_levels")
-					GLOB.using_map.contact_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).contact_levels = text2numlist(value, ";")
 
 				if("player_levels")
-					GLOB.using_map.player_levels = text2numlist(value, ";")
+					(LEGACY_MAP_DATUM).player_levels = text2numlist(value, ";")
 */
 				if("expected_round_length")
 					config_legacy.expected_round_length = MinutesToTicks(text2num(value))

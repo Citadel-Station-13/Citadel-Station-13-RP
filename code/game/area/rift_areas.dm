@@ -91,6 +91,24 @@
 	lift_floor_name = "Base"
 	lift_announce_str = "Arriving at Base Level."
 
+/area/turbolift/rhammerhead/underground
+	name = "transport tunnel (underground)"
+	lift_floor_label = "Underground Transport Tunnel"
+	lift_floor_name = "Security Garage, Transport Tunnel, Fighter bay."
+	lift_announce_str = "Arriving at the underground transport tunnel."
+
+/area/turbolift/rhammerhead/midpoint
+	name = "midpoint (level 1)"
+	lift_floor_label = "Elevator Midpoint"
+	lift_floor_name = "Nothing."
+	lift_announce_str = "Arriving at the elevator's midpoint."
+
+/area/turbolift/rhammerhead/hhbay
+	name = "hammherhead bay (level 2)"
+	lift_floor_label = "Hammerhead Bay 2"
+	lift_floor_name = "Hammerhead Docking Bay, Brig."
+	lift_announce_str = "Arriving at the Hammerhead Docking bay."
+
 
 /*
 /area/turbolift/t_station/level1
@@ -798,7 +816,11 @@
 
 /area/security/armory/red
 	name = "\improper Armory - Red"
-	icon_state = "red2"
+	icon_state = "armory"
+
+/area/security/evastorage
+	name = "\improper Security EVA Equipment Storage"
+	icon_state = "security"
 
 /area/security/observation
 	name = "\improper Brig Observation"
@@ -955,6 +977,14 @@
 /area/rift/station/fighter_bay/maintenance
 	name = "\improper Fighter Bay Maintenance"
 
+/area/rift/station/fighter_bay/transport_tunnel
+	name = "\improper Transport Tunnel"
+
+/area/rift/station/fighter_bay/transport_tunnel_garage
+	name = "\improper Transport Tunnel Garage"
+
+/area/rift/station/fighter_bay/transport_tunnel_garage_maint
+	name = "\improper Transport Tunnel Garage Maint"
 
 //Civilian Garden
 

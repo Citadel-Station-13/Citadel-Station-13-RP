@@ -5,9 +5,10 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
-/datum/sprite_accessory/tail/special/akulahc
-	name = "akula tail, colorable"
-	id = "tail_akula_color"
-	icon_state = "sharktail_hc_s"
+/datum/sprite_accessory/tail/special/akula_anim
+	name = "akula tail, animated"
+	id = "tail_akula_anim"
+	icon_state = "sharktail_s"
+	ani_state = "sharktail_w"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY

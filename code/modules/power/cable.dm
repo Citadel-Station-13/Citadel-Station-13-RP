@@ -617,7 +617,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	else
 		w_class = ITEMSIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user)
+/obj/item/stack/cable_coil/examine(mob/user, dist)
 	. = ..()
 
 	if(get_amount() == 1)

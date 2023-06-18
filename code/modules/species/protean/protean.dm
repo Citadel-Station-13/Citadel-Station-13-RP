@@ -28,7 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	darksight = 3 // Major darksight is a bit much, regular one will do for the moment.
+	vision_innate = /datum/vision/baseline/species_tier_1
 
 	breath_type = null
 	poison_type = null
@@ -99,7 +99,6 @@
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
 		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/proc/eat_trash,
-		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,
 		/mob/living/carbon/human/proc/succubus_drain_finalize,
 		/mob/living/carbon/human/proc/succubus_drain_lethal,
@@ -112,9 +111,11 @@
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
+
 	species_statpanel = TRUE
 	var/global/list/protean_abilities = list()
 	abilities = list(
+		/datum/ability/species/sonar,
 		/datum/ability/species/toggle_flight
 	)
 	var/monochromatic = FALSE //IGNORE ME
@@ -287,16 +288,19 @@
 	var/dt = 2	// put it on param sometime but for now assume 2
 	var/mob/living/carbon/human/H = holder
 	var/obj/item/organ/external/E = H.get_organ(BP_TORSO)
+	var/obj/item/organ/external/HE = H.get_organ(BP_HEAD) // Head for disfigurement
 	var/heal = 1 * dt
 	var/brute_heal_left = max(0, heal - E.brute_dam)
 	var/burn_heal_left = max(0, heal - E.burn_dam)
 
 	E.heal_damage(min(heal, E.brute_dam), min(heal, E.burn_dam), TRUE, TRUE)
-
+	HE.disfigured = 0 // Fix disfigurement, become pretty once more
+	// I didn't want to constantly rebuild and lose my markings to stop being an unknown
 	holder.adjustBruteLoss(-brute_heal_left, include_robo = TRUE)
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(RAD_MOB_CURE_PROTEAN_REGEN)
+
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))

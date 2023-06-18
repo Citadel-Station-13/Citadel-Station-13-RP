@@ -78,7 +78,7 @@
 
 	for(var/mob/O in viewers(src, null))
 		if ((O.client && !( O.blinded )))
-			O.show_message(text("<font color='red'><B>[] [failed ? "tried to tackle" : "has tackled"] down []!</font></B>", src, T), 1)
+			O.show_message("<font color='red'><B>[src] [failed ? "tried to tackle" : "has tackled"] down [T]!</font></B>", 1)
 
 /mob/living/carbon/human/proc/regurgitate()
 	set name = "Regurgitate"
@@ -241,39 +241,6 @@
 		to_chat(src, SPAN_WARNING("You set your monitor to display [choice]!"))
 		update_icons_body()
 
-/mob/living/carbon/human
-
-/mob/living/carbon/human/proc/sonar_ping()
-	set name = "Sonar Pulse"
-	set desc = "Allows you to listen in to movement and noises around you."
-	set category = "Abilities"
-
-	if(incapacitated())
-		to_chat(src, SPAN_WARNING("You need to recover before you can use this ability."))
-		return
-	if(is_deaf())
-		to_chat(src, SPAN_WARNING("You are for all intents and purposes currently deaf!"))
-		return
-	if(!get_turf(src))
-		to_chat(src, SPAN_WARNING("Not from here you can't."))
-		return
-	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SONAR_PULSE))
-		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
-		return
-	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
-
-	visible_message(
-		SPAN_WARNING("[src] emits a quiet click."),
-		SPAN_WARNING("You emit a quiet click."),
-		SPAN_WARNING("You hear a quiet, high-pitched click.")
-	)
-	plane_holder.set_vis(VIS_SONAR, TRUE)
-	var/datum/automata/wave/sonar/single_mob/sonar_automata = new
-	sonar_automata.receiver = src
-	sonar_automata.setup_auto(get_turf(src), 14)
-	sonar_automata.start()
-	addtimer(CALLBACK(plane_holder, /datum/plane_holder/proc/set_vis, VIS_SONAR, FALSE), 5 SECONDS, flags = TIMER_OVERRIDE|TIMER_UNIQUE)
-
 /mob/living/carbon/human/proc/regenerate()
 	set name = "Regenerate"
 	set desc = "Allows you to regrow limbs and heal organs after a period of rest."
@@ -291,7 +258,7 @@
 		src.visible_message("<B>[src]</B>'s flesh begins to mend...")
 
 	var/delay_length = round(active_regen_delay * species.active_regen_mult)
-	if(do_after(src,delay_length))
+	if(do_after(src, delay_length, mobility_flags = NONE))
 		nutrition -= 200
 
 		for(var/obj/item/organ/I in internal_organs)

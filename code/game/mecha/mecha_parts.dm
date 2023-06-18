@@ -497,24 +497,120 @@
 /obj/item/mecha_parts/fighter/part/pinnace_left_wing
 	name="\improper Pinnace Left Wing"
 	icon_state = "pinnace_l_wing"
-	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_right_wing
 	name="\improper Pinnace Right Wing"
 	icon_state = "pinnace_r_wing"
-	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_main_engine
 	name="\improper Pinnace Main Engine"
 	icon_state = "pinnace_m_engine"
-	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_left_engine
 	name="\improper Pinnace Left Engine"
 	icon_state = "pinnace_l_engine"
-	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
 /obj/item/mecha_parts/fighter/part/pinnace_right_engine
 	name="\improper Pinnace Right Engine"
 	icon_state = "pinnace_r_engine"
-	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_BIO = 2, TECH_ENGINEERING = 2)
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
+
+//! Baron
+
+/obj/item/mecha_parts/fighter/chassis/baron
+	name = "\improper Baron Chassis"
+	icon_state = "baron_chassis"
+
+	origin_tech = list(TECH_MATERIAL = 2)
+
+/obj/item/mecha_parts/fighter/chassis/baron/New()
+	..()
+	construct = new /datum/construction/mecha/fighter/baron_chassis(src)
+
+
+/obj/item/mecha_parts/fighter/part/baron_core
+	name="\improper Baron Core"
+	icon_state = "baron_core"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_cockpit
+	name="\improper Baron Cockpit"
+	icon_state = "baron_cockpit"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_left_wing
+	name="\improper Baron Left Wing"
+	icon_state = "baron_l_wing"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_right_wing
+	name="\improper Baron Right Wing"
+	icon_state = "baron_r_wing"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_main_engine
+	name="\improper Baron Main Engine"
+	icon_state = "baron_m_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_left_engine
+	name="\improper Baron Left Engine"
+	icon_state = "baron_l_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/baron_right_engine
+	name="\improper Baron Right Engine"
+	icon_state = "baron_r_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+//! Duke
+
+/obj/item/mecha_parts/fighter/chassis/duke
+	name = "\improper Duke Chassis"
+	icon_state = "duke_chassis"
+
+	origin_tech = list(TECH_MATERIAL = 2)
+
+/obj/item/mecha_parts/fighter/chassis/duke/New()
+	..()
+	construct = new /datum/construction/mecha/fighter/duke_chassis(src)
+
+
+/obj/item/mecha_parts/fighter/part/duke_core
+	name="\improper Duke Core"
+	icon_state = "duke_core"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_cockpit
+	name="\improper Duke Cockpit"
+	icon_state = "duke_cockpit"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_BIO = 2, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_left_wing
+	name="\improper Duke Left Wing"
+	icon_state = "duke_l_wing"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_right_wing
+	name="\improper Duke Right Wing"
+	icon_state = "duke_r_wing"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_main_engine
+	name="\improper Duke Main Engine"
+	icon_state = "duke_m_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_left_engine
+	name="\improper Duke Left Engine"
+	icon_state = "duke_l_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)
+
+/obj/item/mecha_parts/fighter/part/duke_right_engine
+	name="\improper Duke Right Engine"
+	icon_state = "duke_r_engine"
+	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 5, TECH_ENGINEERING = 4)

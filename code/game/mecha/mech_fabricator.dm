@@ -74,6 +74,8 @@
 		"Rigsuit",
 		"Phazon",
 		"Pinnace",
+		"Baron",
+		"Duke",
 		"Gopher",
 		"Polecat",
 		"Weasel",
@@ -194,6 +196,10 @@
 					category_override += "Phazon"
 				if(mech_types & EXOSUIT_MODULE_PINNACE)
 					category_override += "Pinnace"
+				if(mech_types & EXOSUIT_MODULE_BARON)
+					category_override += "Baron"
+				if(mech_types & EXOSUIT_MODULE_DUKE)
+					category_override += "Duke"
 
 	var/list/part = list(
 		"name" = D.name,
@@ -687,7 +693,7 @@
 			sleep(15)
 			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB corrupted \[Code 0x00FA\]. Truncating data structure...\"")
 			sleep(30)
-			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB truncated. Please contact your [GLOB.using_map.company_name] system operator for future assistance.\"")
+			visible_message("[icon2html(src, world)] <b>[src]</b> beeps: \"User DB truncated. Please contact your [(LEGACY_MAP_DATUM).company_name] system operator for future assistance.\"")
 			req_access = null
 			emagged = 1
 			return 1

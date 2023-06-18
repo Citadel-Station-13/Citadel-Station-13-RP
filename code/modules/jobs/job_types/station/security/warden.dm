@@ -13,7 +13,7 @@
 	idtype = /obj/item/card/id/security/warden
 	pto_type = PTO_SECURITY
 	additional_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_EVA, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, ACCESS_MEDICAL_MORGUE, ACCESS_ENGINEERING_AIRLOCK)
-	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_EVA, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK)
+	minimal_access = list(ACCESS_SECURITY_EQUIPMENT, ACCESS_COMMAND_EVA, ACCESS_SECURITY_MAIN, ACCESS_SECURITY_BRIG, ACCESS_SECURITY_ARMORY, ACCESS_ENGINEERING_MAINT, ACCESS_ENGINEERING_AIRLOCK, ACCESS_SECURITY_GENPOP_ENTER, ACCESS_SECURITY_GENPOP_EXIT)
 	minimal_player_age = 5
 
 	outfit_type = /datum/outfit/job/station/warden
@@ -22,14 +22,14 @@
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
 	alt_titles = list(
-		"Jailor" = /datum/prototype/alt_title/warden/jailor,
-		"Dispatch Officer" = /datum/prototype/alt_title/warden/dispatch_officer
+		"Jailor" = /datum/prototype/struct/alt_title/warden/jailor,
+		"Dispatch Officer" = /datum/prototype/struct/alt_title/warden/dispatch_officer
 		)
 
-/datum/prototype/alt_title/warden/jailor
+/datum/prototype/struct/alt_title/warden/jailor
 	title = "Jailor"
 
-/datum/prototype/alt_title/warden/dispatch_officer
+/datum/prototype/struct/alt_title/warden/dispatch_officer
 	title = "Dispatch Officer"
 
 /datum/outfit/job/station/warden

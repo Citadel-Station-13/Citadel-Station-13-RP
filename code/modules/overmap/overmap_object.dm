@@ -92,7 +92,7 @@
 
 /obj/effect/overmap/Initialize(mapload)
 	. = ..()
-	if(!GLOB.using_map.use_overmap)
+	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return INITIALIZE_HINT_QDEL
 
 	if(known && !mapload)

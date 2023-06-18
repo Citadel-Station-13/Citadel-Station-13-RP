@@ -507,12 +507,12 @@
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
 		if(cell)
-			STATPANEL_DATA_LINE( text("Charge Left: [round(cell.percent())]%"))
-			STATPANEL_DATA_LINE( text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-			STATPANEL_DATA_LINE( text("Power Cell Load: [round(used_power_this_tick)]W"))
+			STATPANEL_DATA_LINE("Charge Left: [round(cell.percent())]%")
+			STATPANEL_DATA_LINE("Cell Rating: [round(cell.maxcharge)]") // Round just in case we somehow get crazy values
+			STATPANEL_DATA_LINE("Power Cell Load: [round(used_power_this_tick)]W")
 		else
-			STATPANEL_DATA_LINE( text("No Cell Inserted!"))
-		STATPANEL_DATA_LINE( text("Lights: [lights_on ? "ON" : "OFF"]"))
+			STATPANEL_DATA_LINE("No Cell Inserted!")
+		STATPANEL_DATA_LINE("Lights: [lights_on ? "ON" : "OFF"]")
 		STATPANEL_DATA_LINE("")
 		// if you have a jetpack, show the internal tank pressure
 		var/obj/item/tank/jetpack/current_jetpack = installed_jetpack()
@@ -594,7 +594,7 @@
 			update_health()
 			add_fingerprint(user)
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the dents on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the dents on [src]!"), SAYCODE_TYPE_VISIBLE)
 		else
 			to_chat(user, "Need more welding fuel!")
 			return
@@ -609,7 +609,7 @@
 			adjustFireLoss(-30)
 			update_health()
 			for(var/mob/O in viewers(user, null))
-				O.show_message(text("<font color='red'>[user] has fixed some of the burnt wires on [src]!</font>"), 1)
+				O.show_message(SPAN_RED("[user] has fixed some of the burnt wires on [src]!"), SAYCODE_TYPE_VISIBLE)
 
 	else if (W.is_crowbar() && user.a_intent != INTENT_HARM)	// crowbar means open or close the cover
 		if(opened)
@@ -982,21 +982,21 @@
 
 	for (var/obj in module.modules)
 		if (!obj)
-			dat += text("<B>Resource depleted</B><BR>")
+			dat += "<B>Resource depleted</B><BR>"
 		else if(activated(obj))
-			dat += text("[obj]: <B>Activated</B><BR>")
+			dat += "[obj]: <B>Activated</B><BR>"
 		else
-			dat += text("[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>")
+			dat += "[obj]: <A HREF=?src=\ref[src];act=\ref[obj]>Activate</A><BR>"
 	if (emagged || emag_items)
 		if(activated(module.emag))
-			dat += text("[module.emag]: <B>Activated</B><BR>")
+			dat += "[module.emag]: <B>Activated</B><BR>"
 		else
-			dat += text("[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>")
+			dat += "[module.emag]: <A HREF=?src=\ref[src];act=\ref[module.emag]>Activate</A><BR>"
 /*
 		if(activated(obj))
-			dat += text("[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>")
+			dat += "[obj]: \[<B>Activated</B> | <A HREF=?src=\ref[src];deact=\ref[obj]>Deactivate</A>\]<BR>"
 		else
-			dat += text("[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>")
+			dat += "[obj]: \[<A HREF=?src=\ref[src];act=\ref[obj]>Activate</A> | <B>Deactivated</B>\]<BR>"
 */
 	src << browse(dat, "window=robotmod")
 
@@ -1439,13 +1439,6 @@
 				to_chat(src, "You refill the extinguisher using your water reserves.")
 			else
 				to_chat(src, "Insufficient water reserves.")
-
-/mob/living/silicon/robot/on_changed_z_level(old_z, new_z)
-	if(shell)
-		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
-			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
-			undeploy()
-	..()
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(lockcharge)

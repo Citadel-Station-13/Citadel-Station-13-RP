@@ -44,6 +44,8 @@
 		ACCESS_SECURITY_MAIN,
 		ACCESS_SUPPLY_MAIN,
 		ACCESS_SUPPLY_MINE,
+		ACCESS_SECURITY_GENPOP_ENTER,
+		ACCESS_SECURITY_GENPOP_EXIT,
 	)
 	minimum_character_age = 25
 	minimal_player_age = 14
@@ -53,18 +55,18 @@
 						keep the other Department Heads, and the rest of the crew, aware of developing situations that may be a threat. If necessary, the HoS may \
 						perform the duties of absent Security roles, such as distributing gear from the Armory."
 	alt_titles = list(
-		"Security Commander" = /datum/prototype/alt_title/hos/commander,
-		"Chief of Security" = /datum/prototype/alt_title/hos/chief,
-		"Defense Director" = /datum/prototype/alt_title/hos/director
+		"Security Commander" = /datum/prototype/struct/alt_title/hos/commander,
+		"Chief of Security" = /datum/prototype/struct/alt_title/hos/chief,
+		"Defense Director" = /datum/prototype/struct/alt_title/hos/director
 		)
 
-/datum/prototype/alt_title/hos/commander
+/datum/prototype/struct/alt_title/hos/commander
 	title = "Security Commander"
 
-/datum/prototype/alt_title/hos/chief
+/datum/prototype/struct/alt_title/hos/chief
 	title = "Chief of Security"
 
-/datum/prototype/alt_title/hos/director
+/datum/prototype/struct/alt_title/hos/director
 	title = "Defense Director"
 
 /datum/outfit/job/station/head_of_security

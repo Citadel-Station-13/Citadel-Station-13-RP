@@ -26,20 +26,20 @@
 			lost_target()
 			ai_log("engage_target() : No more targets. Exiting.", AI_LOG_DEBUG)
 			return
-	//		if(lose_target_time + lose_target_timeout < world.time)
-	//			ai_log("engage_target() : Unseen enemy timed out.", AI_LOG_TRACE)
-	//			set_stance(STANCE_IDLE) // It must've been the wind.
-	//			lost_target()
-	//			ai_log("engage_target() : Exiting.", AI_LOG_DEBUG)
-	//			return
+			// if(lose_target_time + lose_target_timeout < world.time)
+			// 	ai_log("engage_target() : Unseen enemy timed out.", AI_LOG_TRACE)
+			// 	set_stance(STANCE_IDLE) // It must've been the wind.
+			// 	lost_target()
+			// 	ai_log("engage_target() : Exiting.", AI_LOG_DEBUG)
+			// 	return
 
-	//		// But maybe we do one last ditch effort.
-	//		if(!target_last_seen_turf || intelligence_level < AI_SMART)
-	//			ai_log("engage_target() : No last known position or is too dumb to fight unseen enemies.", AI_LOG_TRACE)
-	//			set_stance(STANCE_IDLE)
-	//		else
-	//			ai_log("engage_target() : Fighting unseen enemy.", AI_LOG_TRACE)
-	//			engage_unseen_enemy()
+			// // But maybe we do one last ditch effort.
+			// if(!target_last_seen_turf || intelligence_level < AI_SMART)
+			// 	ai_log("engage_target() : No last known position or is too dumb to fight unseen enemies.", AI_LOG_TRACE)
+			// 	set_stance(STANCE_IDLE)
+			// else
+			// 	ai_log("engage_target() : Fighting unseen enemy.", AI_LOG_TRACE)
+			// 	engage_unseen_enemy()
 		else
 			ai_log("engage_target() : Got new target ([target]).", AI_LOG_TRACE)
 

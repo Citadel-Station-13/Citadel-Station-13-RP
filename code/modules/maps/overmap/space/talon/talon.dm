@@ -274,7 +274,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/shoes/boots/jackboots/toeless,
 		/obj/item/handcuffs = 2,
 		/obj/item/gun/energy/stunrevolver,
-		/obj/item/clothing/accessory/armor/tag/sec,
+		/obj/item/clothing/accessory/armor/tag/civsec,
 		/obj/item/flash,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/glasses/sunglasses,
@@ -494,24 +494,24 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /datum/map_template/triumph_lateload/offmap/talon1
 	name = "Offmap Ship - Talon Z1"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "maps/map_levels/140x140/talon/talon1.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/talon1
+	map_path = "maps/map_levels/140x140/talon/talon1.dmm"
+	associated_map_datum = /datum/map_level/triumph_lateload/talon1
 
 /datum/map_template/triumph_lateload/offmap/talon2
 	name = "Offmap Ship - Talon Z2"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "maps/map_levels/140x140/talon/talon2.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/talon2
+	map_path = "maps/map_levels/140x140/talon/talon2.dmm"
+	associated_map_datum = /datum/map_level/triumph_lateload/talon2
 
-/datum/map_z_level/triumph_lateload/talon1
+/datum/map_level/triumph_lateload/talon1
 	name = "Talon Deck One"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/space
 	z = Z_LEVEL_TALON1
 
-/datum/map_z_level/triumph_lateload/talon2
+/datum/map_level/triumph_lateload/talon2
 	name = "Talon Deck Two"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/open
 	z = Z_LEVEL_TALON2
 */

@@ -18,8 +18,8 @@
 	name_language   = LANGUAGE_ID_VULPKANIN
 	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 
-	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
-//	gluttonous = 1
+	vision_innate = /datum/vision/baseline/species_tier_1
+
 	color_mult = 1
 
 	blurb = {"

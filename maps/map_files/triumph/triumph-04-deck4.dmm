@@ -7469,7 +7469,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass_security{
 	name = "Security Reception";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(2,4)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8833,21 +8833,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/excursion_dock)
-"gyv" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/hallway/primary/aft)
 "gzz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
@@ -13333,7 +13318,7 @@
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
 	},
@@ -13608,7 +13593,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -14374,7 +14359,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation view room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,2,4,38)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -17754,7 +17739,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
 	req_access = list(4);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -19768,13 +19753,6 @@
 /obj/machinery/holopad,
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/interrogation)
-"osW" = (
-/obj/structure/catwalk,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
 "otS" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -20247,7 +20225,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Interrogation";
 	req_access = list(4);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
@@ -21040,13 +21018,6 @@
 	},
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
-"pjL" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
 "pjW" = (
 /turf/simulated/floor/tiled/monofloor{
 	dir = 1
@@ -23556,8 +23527,8 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/command{
 	name = "Private Restroom";
-	req_access = newlist();
-	req_one_access = newlist()
+	req_access = list();
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/captain)
@@ -24833,16 +24804,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
-"rLU" = (
-/obj/effect/floor_decal/techfloor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/hallway/primary/aft)
 "rMq" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -24887,8 +24848,8 @@
 "rNO" = (
 /obj/machinery/door/airlock/command{
 	name = "Private Restroom";
-	req_access = newlist();
-	req_one_access = newlist()
+	req_access = list();
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/CE_quarters)
@@ -25648,8 +25609,8 @@
 "ssc" = (
 /obj/machinery/door/airlock/command{
 	name = "Private Restroom";
-	req_access = newlist();
-	req_one_access = newlist()
+	req_access = list();
+	req_one_access = list()
 	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/CMO_quarters)
@@ -25969,7 +25930,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Equipment Storage";
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -26043,13 +26004,6 @@
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
-"sFi" = (
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/starboard)
 "sFB" = (
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/docking_hallway)
@@ -29049,7 +29003,7 @@
 /obj/machinery/door/window/southright{
 	name = "Jetpack Storage";
 	req_access = list(1,2,18);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/item/tank/jetpack/carbondioxide,
 /obj/item/tank/jetpack/carbondioxide,
@@ -30594,7 +30548,7 @@
 /obj/item/clothing/shoes/leg_guard/bulletproof,
 /obj/item/clothing/gloves/arm_guard/bulletproof,
 /obj/item/clothing/suit/armor/bulletproof/alt,
-/obj/item/clothing/head/helmet/bulletproof,
+/obj/item/clothing/head/helmet/ballistic,
 /obj/machinery/light,
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -32682,8 +32636,8 @@
 "xlC" = (
 /obj/machinery/door/airlock/command{
 	name = "Private Restroom";
-	req_access = newlist();
-	req_one_access = newlist()
+	req_access = list();
+	req_one_access = list()
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
@@ -33440,7 +33394,7 @@
 /obj/machinery/embedded_controller/radio/airlock/airlock_controller{
 	id_tag = "sec_shuttle_airlock";
 	pixel_y = 3;
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,2);
 	tag_airpump = "sec_shuttle_pump";
 	tag_chamber_sensor = "sec_shuttle_sensor";
@@ -34086,7 +34040,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
 	name = "Interrogation view room";
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(1,2,4,38)
 	},
 /obj/structure/cable/green{
@@ -44298,15 +44252,15 @@ pPK
 llv
 nIw
 rqJ
-gyv
-rLU
+acb
+ahB
 aqW
 bZM
 bZM
 bZM
 wOg
-pjL
-sFi
+lXo
+bZM
 adA
 aSO
 aSO
@@ -47293,7 +47247,7 @@ guO
 wCn
 wCn
 mRz
-osW
+fYj
 ugw
 fIf
 gMN

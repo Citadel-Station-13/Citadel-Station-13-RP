@@ -185,6 +185,7 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	name = MAT_COPPER
 	display_name = "raw copper"
 	smelts_to = "copper"
+	alloy = 1
 	result_amount = 4
 	spread_chance = 20
 	ore = /obj/item/ore/copper

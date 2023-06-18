@@ -31,7 +31,7 @@
 
 /datum/event/radiation_storm/proc/radiate()
 	var/radiation_level = rand(50, 200)
-	for(var/z in GLOB.using_map.station_levels)
+	for(var/z in (LEGACY_MAP_DATUM).station_levels)
 		z_radiation(null, z, radiation_level, z_radiate_flags = Z_RADIATE_CHECK_AREA_SHIELD)
 
 	for(var/mob/living/carbon/C in living_mob_list)

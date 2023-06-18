@@ -110,7 +110,7 @@
 
 	var/list/people_with_jobs = get_people_with_job(job_type, cutoff)
 	var/datum/role/job/J = SSjob.job_by_type(job_type)
-	var/datum/prototype/alt_title/A = new alt_title_type()
+	var/datum/prototype/struct/alt_title/A = new alt_title_type()
 
 	for(var/M in people_with_jobs)
 		if(J.has_alt_title(M, null, A.title))

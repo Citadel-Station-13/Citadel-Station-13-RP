@@ -18,9 +18,15 @@
 
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
-	GLOB.mob_list += src
+	mob_list_register(stat)
 	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
+
+/mob/new_player/mob_list_register(for_stat)
+	GLOB.mob_list += src
+
+/mob/new_player/mob_list_unregister(for_stat)
+	GLOB.mob_list -= src
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
@@ -488,6 +494,10 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
+	if(client.persistent.ligma)
+		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+		log_shadowban("[key_name(src)] latejoin as [rank] blocked.")
+		return 0
 	var/datum/role/job/J = SSjob.job_by_title(rank)
 	var/reason
 	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
@@ -766,7 +776,3 @@
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
-
-/mob/new_player/make_perspective()
-	. = ..()
-	self_perspective.AddScreen(GLOB.lobby_image)

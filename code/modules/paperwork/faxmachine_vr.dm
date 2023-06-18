@@ -14,7 +14,7 @@
 		file("[GLOB.log_directory]/faxes/fax_[faxid].html") << text;
 	else if (istype(fax, /obj/item/photo))
 		var/obj/item/photo/H = fax
-		fcopy(H.img, "[GLOB.log_directory]/faxes/photo_[faxid].png")
+		fcopy(H.full_image(), "[GLOB.log_directory]/faxes/photo_[faxid].png")
 		var/text = "<html><head><title>[H.name]</title></head>" \
 			+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 			+ "<img src='photo_[faxid].png'>" \

@@ -1,70 +1,14 @@
-/*
-** Landmark Defs
- */
-
-// Shared landmark for docking at the station
-
-//Replace when we've got the map working and can actually place docking points
-/*
-/obj/effect/shuttle_landmark/automatic/station_dockpoint1
-	name = "Station Docking Point 1"
-	landmark_tag = "nav_station_docking1"
-	docking_controller = "deck4_dockarm1"
-	base_turf = /turf/space
-	base_area = /area/space
-
-/obj/effect/shuttle_landmark/automatic/station_dockpoint2
-	name = "NSV Triumph - Docking Arm 2"
-	landmark_tag = "nav_capitalship_docking2"
-	docking_controller = "deck4_dockarm2"
-	base_turf = /turf/space
-	base_area = /area/space
-*/
-
-/*
-////////////////////////////////////////
-// Triumph custom shuttle implemnetations
-////////////////////////////////////////
-
-/obj/machinery/computer/shuttle_control/triumph_backup
-	name = "triumph backup shuttle control console"
-	shuttle_tag = "Triumph Backup"
-	req_one_access = list(ACCESS_COMMAND_BRIDGE,ACCESS_GENERAL_PILOT)
-*/
 
 /obj/machinery/computer/shuttle_control/multi/mercenary
 	name = "vessel control console"
 	shuttle_tag = "Mercenary"
 	req_one_access = list(ACCESS_FACTION_SYNDICATE)
 
-/*
-/obj/machinery/computer/shuttle_control/multi/ninja
-	name = "vessel control console"
-	shuttle_tag = "Ninja"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/multi/skipjack
-	name = "vessel control console"
-	shuttle_tag = "Skipjack"
-	//req_one_access = list()
-
-/obj/machinery/computer/shuttle_control/multi/specops
-	name = "vessel control console"
-	shuttle_tag = "NDV Phantom"
-	req_one_access = list(ACCESS_CENTCOM_ERT)
-*/
 
 /obj/machinery/computer/shuttle_control/multi/trade
 	name = "vessel control console"
 	shuttle_tag = "Trade"
 	req_one_access = list(ACCESS_FACTION_TRADER)
-
-/*
-/obj/machinery/computer/shuttle_control/cruiser_shuttle
-	name = "cruiser shuttle control console"
-	shuttle_tag = "Cruiser Shuttle"
-	req_one_access = list(ACCESS_COMMAND_BRIDGE)
-*/
 
 //
 // "Tram" Emergency Shuttler
@@ -137,7 +81,6 @@
 	name = "Courser Scouting Vessel"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/courser/cockpit, /area/shuttle/courser/general, /area/shuttle/courser/battery)
-	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "rift_courser_hangar"
 	docking_controller_tag = "courser_docker"
 	landmark_transition = "nav_transit_courser"
@@ -166,17 +109,19 @@
 /datum/shuttle/autodock/overmap/hammerhead
 	name = "Hammerhead Patrol Barge"
 	warmup_time = 10
-	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general, /area/shuttle/hammerhead/brig, /area/shuttle/hammerhead/bay)
+	shuttle_area = list(/area/shuttle/hammerhead/cockpit, /area/shuttle/hammerhead/general)
 	current_location = "rift_hammerhead_hangar"
 	docking_controller_tag = "hammerhead_docker"
 	landmark_transition = "nav_transit_hammerhead"
 	move_time = 15
+	fuel_consumption = 5
+	move_direction = WEST
 
 /obj/effect/overmap/visitable/ship/landable/hammerhead
 	name = "Hammerhead Patrol Barge"
 	desc = "To Detain and Enforce."
 	color = "#b91a14" //Vibrant Red
-	fore_dir = EAST
+	fore_dir = WEST
 	vessel_mass = 10000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Hammerhead Patrol Barge"
@@ -275,27 +220,44 @@
 	name = "EMT jump console"
 	shuttle_tag = "Dart EMT Shuttle"
 
-////////////////////////////////////////
-////////      Tour Bus     /////////////
-////////////////////////////////////////
-/*/datum/shuttle/autodock/overmap/tourbus
-	name = "Tour Bus"
-	warmup_time = 0
-	current_location = "tourbus_dock"
-	docking_controller_tag = "tourbus_docker"
-	shuttle_area = list(/area/shuttle/tourbus/cockpit, /area/shuttle/tourbus/general, /area/shuttle/tourbus/engines)
-	fuel_consumption = 1
+//? merged
 
-// The 'ship' of the tourbus
-/obj/effect/overmap/visitable/ship/landable/tourbus
-	name = "Tour Bus"
-	desc = "A small 'space bus', if you will."
-	vessel_mass = 2000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Tour Bus"
 
-/obj/machinery/computer/shuttle_control/explore/tourbus
-	name = "short jump console"
-	shuttle_tag = "Tour Bus"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
-*/
+// Escape shuttle and pods
+/datum/shuttle/autodock/ferry/emergency/escape
+	name = "Escape"
+	location = FERRY_LOCATION_OFFSITE
+	shuttle_area = /area/shuttle/escape
+	warmup_time = 10
+	landmark_offsite = "escape_cc"
+	landmark_station = "escape_rift"
+	landmark_transition = "escape_transit"
+	move_time = SHUTTLE_TRANSIT_DURATION_RETURN
+
+// Supply shuttle
+/datum/shuttle/autodock/ferry/supply/cargo
+	name = "Supply"
+	location = FERRY_LOCATION_OFFSITE
+	shuttle_area = /area/shuttle/supply
+	warmup_time = 10
+	landmark_offsite = "supply_cc"
+	landmark_station = "supply_dock"
+	docking_controller_tag = "supply_shuttle"
+	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
+
+// RogueMiner "Belter: Shuttle
+
+/datum/shuttle/autodock/ferry/belter
+	name = "Belter"
+	location = FERRY_LOCATION_STATION
+	warmup_time = 6
+	move_time = 20 // i am fairly sure this is in seconds
+	shuttle_area = /area/shuttle/belter
+	landmark_station = "belter_station"
+	landmark_offsite = "belter_zone1"
+	landmark_transition = "belter_transit"
+	docking_controller_tag = "belter_docking"
+
+/datum/shuttle/autodock/ferry/belter/New()
+	move_time = move_time + rand(-5, 10) //30s max, 15s min, probably leaning towards higher values.
+	..()

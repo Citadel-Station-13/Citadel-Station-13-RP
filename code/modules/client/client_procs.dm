@@ -168,8 +168,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// kick out invalid connections
 	if(connection != "seeker" && connection != "web")
 		return null
+	// is localhost?
+	var/is_localhost = isnull(address) || (address in list("127.0.0.1", "::1"))
 	// kick out guests
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
+	if(!config_legacy.guests_allowed && IsGuestKey(key) && !is_localhost)
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
@@ -191,6 +193,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	statpanel_boot()
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
+	// Instantiate cutscene system
+	init_cutscene_system()
 
 	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
@@ -222,7 +226,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				new /datum/admins(autorank, ckey)
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(isnull(address) || (address in list("127.0.0.1", "::1")))
+	if(is_localhost)
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
@@ -333,6 +337,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// (we don't, the JS does it for us. by signalling statpanel_ready().)
 	// Initialize tgui panel
 	tgui_panel.initialize()
+	// initialize cutscene browser
+	// (we don't, the JS does it for us.)
 
 	//if(alert_mob_dupe_login)
 	//	spawn()
@@ -460,6 +466,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	//! cleanup UI
 	/// cleanup statbrowser
 	statpanel_dispose()
+	/// cleanup cutscene system
+	cleanup_cutscene_system()
+	/// cleanup tgui panel
+	QDEL_NULL(tgui_panel)
 
 	. = ..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
@@ -789,6 +799,11 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		reset_temporary_view()
 		return
 	using_temporary_viewsize = TRUE
+	// round up; even views are illegal.
+	if(!(width % 2))
+		width++
+	if(!(height % 2))
+		height++
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()
@@ -810,7 +825,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
  */
 /client/proc/set_perspective(datum/perspective/P)
 	if(using_perspective)
-		using_perspective.RemoveClient(src, TRUE)
+		using_perspective.remove_client(src, TRUE)
 		if(using_perspective)
 			stack_trace("using perspective didn't clear")
 			using_perspective = null
@@ -819,7 +834,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		lazy_eye = 0
 		perspective = EYE_PERSPECTIVE
 		return
-	P.AddClient(src)
+	P.add_client(src)
 	if(using_perspective != P)
 		stack_trace("using perspective didn't set")
 

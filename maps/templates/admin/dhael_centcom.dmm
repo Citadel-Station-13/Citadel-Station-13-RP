@@ -4266,7 +4266,7 @@
 "mO" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/security)
@@ -10359,7 +10359,7 @@
 "Fg" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Security";
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -11261,7 +11261,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "residential";
@@ -11512,7 +11512,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -12022,7 +12022,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12234,7 +12234,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	req_access = list(63);
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/machinery/button/remote/airlock{
 	id = "front";
@@ -12499,7 +12499,7 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -13665,7 +13665,7 @@
 /obj/item/clothing/gloves/arm_guard/bulletproof,
 /obj/item/clothing/shoes/leg_guard/bulletproof,
 /obj/item/clothing/suit/armor/bulletproof/alt,
-/obj/item/clothing/head/helmet/bulletproof,
+/obj/item/clothing/head/helmet/ballistic,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -13951,7 +13951,7 @@
 /obj/item/clothing/gloves/arm_guard/laserproof,
 /obj/item/clothing/shoes/leg_guard/laserproof,
 /obj/item/clothing/suit/armor/laserproof,
-/obj/item/clothing/head/helmet/laserproof,
+/obj/item/clothing/head/helmet/ablative,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/crescent,
 /turf/unsimulated/floor{
@@ -14911,7 +14911,7 @@
 /obj/machinery/door/airlock/highsecurity{
 	desc = "SHIT IS LIT";
 	name = "TACTICAL TOILET";
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"

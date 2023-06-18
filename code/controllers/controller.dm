@@ -1,3 +1,9 @@
+/**
+ * Supertype of global singletons used to organize game systems.
+ *
+ * * Do not delete any global singletons in Destroy(); use Recover() to inherit them, and rebuild if necessary.
+ * * Destroy() should only terminate state that should not be kept across a hard reload of a controller, such as current tick usage/queue priorities/whatnot.
+ */
 /datum/controller
 	/// Stub for subsystem names.
 	var/name
@@ -18,12 +24,23 @@
 	return
 
 
-/// When we enter dmm_suite.load_map
+/**
+ * called before we start loading a parsed map
+ *
+ * this can delay the loading process. this is **NOT** the denotation of starting a *semantic*
+ * map loading process - loading a single planet can call this dozens of times, as each
+ * submap is itself considered a mapload!
+ */
 /datum/controller/proc/StartLoadingMap()
 	return
 
-
-/// When we exit dmm_suite.load_map
+/**
+ * called after we stop loading a parsed map
+ *
+ * this can delay the loading process. this is **NOT** the denotation of stopping a *semantic*
+ * map loading process - loading a single planet can call this dozens of times, as each
+ * submap is itself considered a mapload!
+ */
 /datum/controller/proc/StopLoadingMap()
 	return
 

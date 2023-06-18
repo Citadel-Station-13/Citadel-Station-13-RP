@@ -80,7 +80,7 @@
 		holstered.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/holster/examine(mob/user)
+/obj/item/clothing/accessory/holster/examine(mob/user, dist)
 	. = ..()
 	if (holstered)
 		. += "A [holstered] is holstered here."
@@ -128,12 +128,12 @@
 
 /obj/item/clothing/accessory/holster/armpit
 	name = "armpit holster"
-	desc = "A worn-out handgun holster. Perfect for concealed carry."
+	desc = "A handgun holster that fits under the user's arm. Perfect for concealed carry."
 	icon_state = "holster"
 
 /obj/item/clothing/accessory/holster/waist
 	name = "waist holster"
-	desc = "A handgun holster. Made of expensive leather."
+	desc = "A handgun holster that's worn around the waist. Made of expensive leather."
 	icon_state = "holster"
 	overlay_state = "holster_low"
 	concealed_holster = 0
@@ -141,14 +141,14 @@
 
 /obj/item/clothing/accessory/holster/hip
 	name = "hip holster"
-	desc = "A handgun holster slung low on the hip, draw pardner!"
+	desc = "A handgun holster slung low on the hip."
 	icon_state = "holster_hip"
 	concealed_holster = 0
 	slot = ACCESSORY_SLOT_WEAPON
 
 /obj/item/clothing/accessory/holster/leg
 	name = "leg holster"
-	desc = "A tacticool handgun holster. Worn on the upper leg."
+	desc = "A modern black handgun holster. Worn on the upper leg."
 	icon_state = "holster_leg"
 	overlay_state = "holster_leg"
 	concealed_holster = 0

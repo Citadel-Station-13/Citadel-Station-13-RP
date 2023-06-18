@@ -6,6 +6,10 @@
 	unequip_sound = 'sound/items/drop/clothing.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
+	//? equip
+	/// Inventory slot IDs where this is active for any effects. Used by subtypes, to be potentially refactored in the future.
+	var/list/active_slots
+
 	//? legacy
 
 	var/list/species_restricted = null //Only these species can wear this kit.
@@ -17,8 +21,8 @@
 
 	var/flash_protection = FLASH_PROTECTION_NONE
 	var/tint = TINT_NONE
+	// todo: probably refactor these two
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
-	var/list/plane_slots		//But only if it's equipped into this specific slot
 
 	// todo: kill this stupid shit lmao
 	/*
@@ -31,7 +35,6 @@
 	var/ear_protection = 0
 	var/blood_sprite_state
 
-	var/update_icon_define = null	// Only needed if you've got multiple files for the same type of clothing
 	var/recent_struggle = 0
 
 	/// is considered wizard garb?
@@ -58,6 +61,15 @@
 	/// full list of accessories, everything inside must be an /obj/item. *not* /obj/item/clothing.
 	var/list/accessories
 
+/obj/item/clothing/Initialize(mapload)
+	. = ..()
+	if(islist(active_slots))
+		active_slots = typelist(NAMEOF(src, active_slots), active_slots)
+	if(starting_accessories)
+		for(var/T in starting_accessories)
+			var/obj/item/clothing/accessory/tie = new T(src)
+			src.attach_accessory(null, tie)
+
 // Aurora forensics port.
 /obj/item/clothing/clean_blood()
 	..()
@@ -71,13 +83,6 @@
 			acc += A.get_fibers()
 	if(acc.len)
 		. += " with traces of [english_list(acc)]"
-
-/obj/item/clothing/Initialize(mapload)
-	. = ..()
-	if(starting_accessories)
-		for(var/T in starting_accessories)
-			var/obj/item/clothing/accessory/tie = new T(src)
-			src.attach_accessory(null, tie)
 
 /obj/item/clothing/equipped(mob/user, slot, flags)
 	. = ..()
@@ -227,6 +232,11 @@
 				)
 		else if(isimage(using) || ismutableappearance(using))
 			assembled[name] = using
+		else if(islist(using))
+			var/mutable_appearance/collated = mutable_appearance()
+			collated.dir = SOUTH
+			collated.overlays = using
+			assembled[name] = collated
 	if(!length(available))
 		to_chat(user, SPAN_WARNING("[src] can only be worn one way."))
 		return

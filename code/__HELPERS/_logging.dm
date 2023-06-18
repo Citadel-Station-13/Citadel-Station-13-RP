@@ -207,6 +207,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 
+/proc/log_reagent(text)
+	WRITE_LOG(GLOB.world_reagent_log, text)
+
+/proc/log_reagent_transfer(text)
+	log_reagent("TRANSFER: [text]")
+
 /proc/log_subsystem(subsystem, text)
 	WRITE_LOG(GLOB.subsystem_log, "[subsystem]: [text]")
 
@@ -224,6 +230,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
  */
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
+
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
 
 /**
  * Rarely gets called; just here in case the config breaks.
