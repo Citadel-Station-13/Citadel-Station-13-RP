@@ -249,10 +249,6 @@
 			'icons/misc/title_vr.dmi',
 			"bnny",
 		),
-		list(
-			'icons/misc/title.dmi',
-			"mockingjay00",
-		),
 	)
 
 	// var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
