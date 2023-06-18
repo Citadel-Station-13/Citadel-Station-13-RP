@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/ship/triumph
+/obj/overmap/visitable/ship/triumph
 	name = "NSV Triumph"	// Name of the location on the overmap.
 	desc = "The Triumph is one of the many ships that is a part of the NDV Marksmans Fleet in this sector"
 

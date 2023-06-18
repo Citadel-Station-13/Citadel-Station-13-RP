@@ -299,7 +299,7 @@
 /datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
-		var/obj/effect/overmap/visitable/O = get_overmap_sector(srcz)
+		var/obj/overmap/visitable/O = get_overmap_sector(srcz)
 		if(!istype(O))
 			return list(srcz)
 
@@ -310,7 +310,7 @@
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(om_range, T))
+		for(var/obj/overmap/visitable/V in range(om_range, T))
 			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 

@@ -1,7 +1,7 @@
 // -- Datums -- //
 
 
-/obj/effect/overmap/visitable/sector/debrisfield
+/obj/overmap/visitable/sector/debrisfield
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
@@ -14,7 +14,7 @@
 ////Holy shit spagetti pain. TODO fix this debrifield/debrifield_vr bullshit - Bloop///
 
 
-/obj/effect/overmap/visitable/sector/debrisfield_vr
+/obj/overmap/visitable/sector/debrisfield_vr
 	name = "Debris Field"
 	desc = "Space junk galore."
 	scanner_desc = @{"[i]Transponder[/i]: Various faint signals
@@ -164,12 +164,12 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/tinycarrier
 
 /obj/effect/shuttle_landmark/shuttle_initializer/tinycarrier/Initialize(mapload)
-	var/obj/effect/overmap/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
+	var/obj/overmap/visitable/O = get_overmap_sector(get_z(src)) //make this into general system some other time
 	LAZYINITLIST(O.initial_restricted_waypoints)
 	O.initial_restricted_waypoints["Debris Carrier"] = list(landmark_tag)
 	. = ..()
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier
+/obj/overmap/visitable/ship/landable/tinycarrier
 	scanner_name = "TBD"
 	scanner_desc = "TBD"
 	vessel_mass = 12000
@@ -177,7 +177,7 @@
 	shuttle = "Debris Carrier"
 	fore_dir = WEST
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier/Initialize(mapload)
+/obj/overmap/visitable/ship/landable/tinycarrier/Initialize(mapload)
 	. = ..()
 	var/datum/lore/organization/O = SSlegacy_lore.organizations[/datum/lore/organization/other/sysdef]
 	var/newname = "SDV [pick(O.ship_names)]"
@@ -188,7 +188,7 @@
 \[b\]Notice\[/b\]: Registration Expired"}
 	rename_areas(newname)
 
-/obj/effect/overmap/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
+/obj/overmap/visitable/ship/landable/tinycarrier/proc/rename_areas(newname)
 	var/datum/shuttle/S = SSshuttle.shuttles[shuttle]
 	for(var/area/A in S.shuttle_area)
 		A.name = "[newname] [initial(A.name)]"

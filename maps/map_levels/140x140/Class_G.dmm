@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/overmap/visitable/sector/mining_planet,
+/obj/overmap/visitable/sector/mining_planet,
 /turf/unsimulated/mineral/triumph,
 /area/class_g/unexplored)
 "f" = (

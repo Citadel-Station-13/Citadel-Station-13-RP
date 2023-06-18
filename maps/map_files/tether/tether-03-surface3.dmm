@@ -34632,7 +34632,7 @@
 	landmark_tag = "tourbus_dock";
 	name = "Tourbus Pad"
 	},
-/obj/effect/overmap/visitable/ship/landable/tourbus,
+/obj/overmap/visitable/ship/landable/tourbus,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/tourbus/general)
 "cbn" = (

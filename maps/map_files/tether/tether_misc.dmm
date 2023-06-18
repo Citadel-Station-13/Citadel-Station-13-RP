@@ -2835,7 +2835,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sF" = (
-/obj/effect/overmap/bluespace_rift,
+/obj/overmap/bluespace_rift,
 /turf/unsimulated/map,
 /area/overmap)
 "sH" = (

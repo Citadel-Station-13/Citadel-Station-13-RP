@@ -8,7 +8,7 @@
 // Uses Lorentzian dynamics to avoid going too fast.
 
 // todo: /obj/overmap/entity
-/obj/effect/overmap/visitable/ship
+/obj/overmap/visitable/ship
 	name = "spacecraft"
 	desc = "This marker represents a spaceship. Scan it for more information."
 	scanner_desc = "Unknown spacefaring vessel."
@@ -59,27 +59,27 @@
 	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
 
-/obj/effect/overmap/visitable/ship/New()
+/obj/overmap/visitable/ship/New()
 	// assign id immediately
 	id = "[++id_next]"
 	return ..()
 
-/obj/effect/overmap/visitable/ship/Initialize(mapload)
+/obj/overmap/visitable/ship/Initialize(mapload)
 	. = ..()
 	SSshuttle.ships += src
 	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_x + 1
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
 
-/obj/effect/overmap/visitable/ship/Destroy()
+/obj/overmap/visitable/ship/Destroy()
 	STOP_PROCESSING(SSprocessing, src)
 	SSshuttle.ships -= src
 	. = ..()
 
 //? todo why tf is this relaymove
-/obj/effect/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
+/obj/overmap/visitable/ship/relaymove(mob/user, direction, accel_limit)
 	accelerate(direction, accel_limit)
 
-/obj/effect/overmap/visitable/ship/get_scan_data(mob/user)
+/obj/overmap/visitable/ship/get_scan_data(mob/user)
 	. = ..()
 
 	if(!!is_moving())
@@ -96,16 +96,16 @@
 	. += {"\[i\]Life Signs\[/i\]: [life ? life : "None"]"}
 
 // Projected acceleration based on information from engines
-/obj/effect/overmap/visitable/ship/proc/get_acceleration_legacy()
+/obj/overmap/visitable/ship/proc/get_acceleration_legacy()
 	return round(get_total_thrust()/get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
 // Does actual burn and returns the resulting acceleration
-/obj/effect/overmap/visitable/ship/proc/get_burn_acceleration_legacy()
+/obj/overmap/visitable/ship/proc/get_burn_acceleration_legacy()
 	return round(burn() / get_vessel_mass(), OVERMAP_DISTANCE_ACCURACY)
 
-/obj/effect/overmap/visitable/ship/proc/get_vessel_mass()
+/obj/overmap/visitable/ship/proc/get_vessel_mass()
 	. = vessel_mass
-	for(var/obj/effect/overmap/visitable/ship/ship in src)
+	for(var/obj/overmap/visitable/ship/ship in src)
 		. += ship.get_vessel_mass()
 
 /**
@@ -113,12 +113,12 @@
  *
  * get speed in tiles / decisecond
  */
-/obj/effect/overmap/visitable/ship/proc/get_speed_legacy()
+/obj/overmap/visitable/ship/proc/get_speed_legacy()
 	. = QUANTIZE_OVERMAP_DISTANCE(sqrt(vel_x ** 2 + vel_y ** 2))
 	. = OVERMAP_DIST_TO_PIXEL(.) / WORLD_ICON_SIZE / 10
 
 // Get heading in BYOND dir bits
-/obj/effect/overmap/visitable/ship/proc/get_heading()
+/obj/overmap/visitable/ship/proc/get_heading()
 	var/res = NONE
 	if(vel_x)
 		if(vel_x > 0)
@@ -133,10 +133,10 @@
 	return res
 
 // Get heading in degrees (like a compass heading)
-/obj/effect/overmap/visitable/ship/proc/get_heading_degrees()
+/obj/overmap/visitable/ship/proc/get_heading_degrees()
 	return (arctan(vel_y, vel_x) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
 
-/obj/effect/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
+/obj/overmap/visitable/ship/proc/adjust_speed(n_x, n_y)
 	var/old_still = !is_moving()
 	PENALIZED_SPEED_CHANGE(vel_x, n_x)
 	PENALIZED_SPEED_CHANGE(vel_y, n_y)
@@ -157,7 +157,7 @@
 			SSparallax.update_z_motion(zz)
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, global.reverse_dir[fore_dir])
 
-/obj/effect/overmap/visitable/ship/proc/get_brake_path()
+/obj/overmap/visitable/ship/proc/get_brake_path()
 	if(!get_acceleration_legacy())
 		return INFINITY
 	if(!is_moving())
@@ -170,7 +170,7 @@
 	var/burns_per_grid = 1/ (burn_delay * get_speed_legacy())
 	return round(num_burns/burns_per_grid)
 
-/obj/effect/overmap/visitable/ship/proc/decelerate()
+/obj/overmap/visitable/ship/proc/decelerate()
 	if(is_moving() && can_burn())
 		var/deceleration = get_burn_acceleration_legacy()
 		//? shim: convert to new overmaps units from old
@@ -179,7 +179,7 @@
 		adjust_speed(-SIGN(vel_x) * min(deceleration,abs(vel_x)), -SIGN(vel_y) * min(deceleration,abs(vel_y)))
 		last_burn = world.time
 
-/obj/effect/overmap/visitable/ship/proc/accelerate(direction, accel_limit)
+/obj/overmap/visitable/ship/proc/accelerate(direction, accel_limit)
 	if(can_burn())
 		last_burn = world.time
 		var/acceleration = min(get_burn_acceleration_legacy(), accel_limit)
@@ -196,7 +196,7 @@
 		if(direction & SOUTH)
 			adjust_speed(0, -acceleration)
 
-/obj/effect/overmap/visitable/ship/process(delta_time)
+/obj/overmap/visitable/ship/process(delta_time)
 	var/new_position_x = position_x + (OVERMAP_DIST_TO_PIXEL(vel_x) * delta_time)
 	var/new_position_y = position_y + (OVERMAP_DIST_TO_PIXEL(vel_y) * delta_time)
 
@@ -223,7 +223,7 @@
 	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
 
 // If we get moved, update our internal tracking to account for it
-/obj/effect/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
+/obj/overmap/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
 	. = ..()
 	// If moving out of another sector start off centered in the turf.
 	if(!isturf(old_loc))
@@ -235,7 +235,7 @@
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(position_y, WORLD_ICON_SIZE)
 
 
-/obj/effect/overmap/visitable/ship/update_icon()
+/obj/overmap/visitable/ship/update_icon()
 	if(!!is_moving())
 		icon_state = moving_state
 		transform = matrix().Turn(get_heading_degrees())
@@ -244,18 +244,18 @@
 		transform = null
 	..()
 
-/obj/effect/overmap/visitable/ship/setDir(new_dir)
+/obj/overmap/visitable/ship/setDir(new_dir)
 	return ..(NORTH)	// NO! We always face north.
 
-/obj/effect/overmap/visitable/ship/proc/burn()
+/obj/overmap/visitable/ship/proc/burn()
 	for(var/datum/ship_engine/E in engines)
 		. += E.burn()
 
-/obj/effect/overmap/visitable/ship/proc/get_total_thrust()
+/obj/overmap/visitable/ship/proc/get_total_thrust()
 	for(var/datum/ship_engine/E in engines)
 		. += E.get_thrust()
 
-/obj/effect/overmap/visitable/ship/proc/can_burn()
+/obj/overmap/visitable/ship/proc/can_burn()
 	if(halted)
 		return 0
 	if (world.time < last_burn + burn_delay)
@@ -264,7 +264,7 @@
 		. |= E.can_burn()
 
 // Deciseconds to next step
-/obj/effect/overmap/visitable/ship/proc/ETA()
+/obj/overmap/visitable/ship/proc/ETA()
 	. = INFINITY
 	if(vel_x)
 		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
@@ -276,15 +276,15 @@
 		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
 	. = max(., 0)
 
-/obj/effect/overmap/visitable/ship/proc/halt()
+/obj/overmap/visitable/ship/proc/halt()
 	adjust_speed(-vel_x, -vel_y)
 	halted = 1
 
-/obj/effect/overmap/visitable/ship/proc/unhalt()
+/obj/overmap/visitable/ship/proc/unhalt()
 	if(!SSshuttle.overmap_halted)
 		halted = 0
 
-/obj/effect/overmap/visitable/ship/populate_sector_objects()
+/obj/overmap/visitable/ship/populate_sector_objects()
 	..()
 	for(var/obj/machinery/computer/ship/S in GLOB.machines)
 		S.attempt_hook_up(src)
@@ -292,14 +292,14 @@
 		if(check_ownership(E.holder))
 			engines |= E
 
-/obj/effect/overmap/visitable/ship/proc/get_landed_info()
+/obj/overmap/visitable/ship/proc/get_landed_info()
 	return "This ship cannot land."
 
-/obj/effect/overmap/visitable/ship/get_distress_info()
+/obj/overmap/visitable/ship/get_distress_info()
 	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
 	var/x_to_use = T?.x || "UNK"
 	var/y_to_use = T?.y || "UNK"
 	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed_legacy() * 1000], HDG:[get_heading_degrees()]\]"
 
-/obj/effect/overmap/visitable/ship/set_glide_size(new_glide_size, recursive)
+/obj/overmap/visitable/ship/set_glide_size(new_glide_size, recursive)
 	return	// *no*.

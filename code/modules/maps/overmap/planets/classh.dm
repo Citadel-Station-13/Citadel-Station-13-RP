@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/class_h
+/obj/overmap/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
 	scanner_desc = @{"[i]Information[/i]

@@ -26862,7 +26862,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
 /obj/effect/shuttle_landmark/rift/deck2/hammerhead,
-/obj/effect/overmap/visitable/ship/landable/hammerhead,
+/obj/overmap/visitable/ship/landable/hammerhead,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
 "qDA" = (

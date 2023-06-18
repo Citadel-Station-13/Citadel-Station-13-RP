@@ -37,7 +37,7 @@
 /turf/simulated/mineral/rich/triumph/classg,
 /area/class_g/explored)
 "B" = (
-/obj/effect/overmap/visitable/sector/mining_planet,
+/obj/overmap/visitable/sector/mining_planet,
 /turf/unsimulated/mineral/classg,
 /area/class_g/explored)
 "E" = (

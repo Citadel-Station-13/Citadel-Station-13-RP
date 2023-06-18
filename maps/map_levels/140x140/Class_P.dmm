@@ -939,7 +939,7 @@
 	},
 /area/class_p/facility)
 "PL" = (
-/obj/effect/overmap/visitable/sector/class_p,
+/obj/overmap/visitable/sector/class_p,
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/explored)
 "PO" = (

@@ -3866,7 +3866,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/shuttle/pirate/deck)
 "Is" = (
-/obj/effect/overmap/visitable/ship/landable/pirate,
+/obj/overmap/visitable/ship/landable/pirate,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -5447,7 +5447,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/piratebase/bunks)
 "Xd" = (
-/obj/effect/overmap/visitable/sector/pirate_base,
+/obj/overmap/visitable/sector/pirate_base,
 /turf/space,
 /area/space)
 "Xg" = (

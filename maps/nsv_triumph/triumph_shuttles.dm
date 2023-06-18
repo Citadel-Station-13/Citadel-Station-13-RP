@@ -87,7 +87,7 @@
 
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/excursion
+/obj/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The traditional Excursion Shuttle."
 	vessel_mass = 8000
@@ -127,7 +127,7 @@
 
 
 // The 'ship' of the courser
-/obj/effect/overmap/visitable/ship/landable/courser
+/obj/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "A lightweight reconnaissance ship repurposed for expeditionary field work."
 	vessel_mass = 8000
@@ -247,7 +247,7 @@
 	fuel_consumption = 1
 
 // The 'ship' of the tourbus
-/obj/effect/overmap/visitable/ship/landable/tourbus
+/obj/overmap/visitable/ship/landable/tourbus
 	name = "Tour Bus"
 	desc = "A small 'space bus', if you will."
 	vessel_mass = 2000

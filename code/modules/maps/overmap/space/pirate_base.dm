@@ -1,5 +1,5 @@
 
-/obj/effect/overmap/visitable/sector/pirate_base
+/obj/overmap/visitable/sector/pirate_base
 	name = "Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]

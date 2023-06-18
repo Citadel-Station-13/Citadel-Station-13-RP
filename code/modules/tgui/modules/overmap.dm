@@ -1,5 +1,5 @@
 /datum/tgui_module_old/ship
-	var/obj/effect/overmap/visitable/ship/linked
+	var/obj/overmap/visitable/ship/linked
 	var/list/viewers
 	var/extra_view = 0
 
@@ -31,19 +31,19 @@
 	unlook(user)
 
 /datum/tgui_module_old/ship/proc/sync_linked()
-	var/obj/effect/overmap/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
+	var/obj/overmap/visitable/ship/sector = get_overmap_sector(get_z(ui_host()))
 	if(!sector)
 		return
 	return attempt_hook_up_recursive(sector)
 
-/datum/tgui_module_old/ship/proc/attempt_hook_up_recursive(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up_recursive(obj/overmap/visitable/ship/sector)
 	if(attempt_hook_up(sector))
 		return sector
-	for(var/obj/effect/overmap/visitable/ship/candidate in sector)
+	for(var/obj/overmap/visitable/ship/candidate in sector)
 		if((. = .(candidate)))
 			return
 
-/datum/tgui_module_old/ship/proc/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
+/datum/tgui_module_old/ship/proc/attempt_hook_up(obj/overmap/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(ui_host()))
@@ -106,7 +106,7 @@
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
@@ -156,7 +156,7 @@
 /datum/tgui_module_old/ship/fullmonty/ui_state(mob/user, datum/tgui_module/module)
 	return GLOB.admin_state
 
-/datum/tgui_module_old/ship/fullmonty/New(host, obj/effect/overmap/visitable/ship/new_linked)
+/datum/tgui_module_old/ship/fullmonty/New(host, obj/overmap/visitable/ship/new_linked)
 	. = ..()
 	if(!istype(new_linked))
 		CRASH("Warning, [new_linked] is not an overmap ship! Something went horribly wrong for [usr]!")
@@ -164,7 +164,7 @@
 	name = initial(name) + " ([linked.name])"
 	// HELM
 	var/area/overmap/map = locate() in world
-	for(var/obj/effect/overmap/visitable/sector/S in map)
+	for(var/obj/overmap/visitable/sector/S in map)
 		if(S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
@@ -183,7 +183,7 @@
 
 	// HELM
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
@@ -279,7 +279,7 @@
 		else
 			data["status"] = "OK"
 		var/list/contacts = list()
-		for(var/obj/effect/overmap/O in view(7,linked))
+		for(var/obj/overmap/O in view(7,linked))
 			if(linked == O)
 				continue
 			if(!O.scannable)

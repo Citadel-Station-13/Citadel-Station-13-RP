@@ -10567,7 +10567,7 @@
 /turf/simulated/floor,
 /area/ship/expe/engines)
 "yu" = (
-/obj/effect/overmap/visitable/ship/vespa,
+/obj/overmap/visitable/ship/vespa,
 /turf/space,
 /area/space)
 "yv" = (

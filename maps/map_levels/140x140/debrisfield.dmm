@@ -15,7 +15,7 @@
 /turf/space,
 /area/space/debrisfield/explored)
 "f" = (
-/obj/effect/overmap/visitable/sector/debrisfield,
+/obj/overmap/visitable/sector/debrisfield,
 /turf/space,
 /area/space/debrisfield/explored)
 "j" = (

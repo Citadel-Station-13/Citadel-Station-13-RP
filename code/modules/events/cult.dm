@@ -111,17 +111,17 @@
 
 // Overmap version
 /datum/event/cult/overmap/announce()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
+	if(istype(victim, /obj/overmap/visitable/ship/talon))
 		command_announcement.Announce("Attention ITV Talon. You have run into a hostile sub-sector. High potential for humanoid and non-humanoid entities to warp on your ship. Brace.", "Screaming Signals Intercepted")
 	else
 		command_announcement.Announce("Attention [station_name()], the ship has run into a hostile sub-sector and reports of humanoid and non-humanoid entities are warping onto the ships! Advise immediate removal of these intruders before productivy aboard gets hindered!", "Screaming Signals Intercepted", new_sound = 'sound/effects/c_alarm.mp3')//,volume=5)
 		return
 
 /datum/event/cult/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /obj/overmap/visitable/ship/landable))
 		kill()
 		return
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //Forces the location to be the Talon.
+	if(istype(victim, /obj/overmap/visitable/ship/talon)) //Forces the location to be the Talon.
 		isTalon = 1
 		location = 5
 	return ..()

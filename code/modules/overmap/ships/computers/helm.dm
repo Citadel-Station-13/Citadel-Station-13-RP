@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()
 	var/area/overmap/map = locate() in world
-	for(var/obj/effect/overmap/visitable/sector/S in map)
+	for(var/obj/overmap/visitable/sector/S in map)
 		if (S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"

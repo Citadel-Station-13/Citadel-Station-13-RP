@@ -454,7 +454,7 @@
 	},
 /obj/effect/floor_decal/techfloor/orange/corner,
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle,
-/obj/effect/overmap/visitable/ship/landable/hybridshuttle,
+/obj/overmap/visitable/ship/landable/hybridshuttle,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bn" = (

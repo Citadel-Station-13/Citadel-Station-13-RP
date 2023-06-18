@@ -61,7 +61,7 @@
 	fuel_consumption = 3
 	move_direction = WEST
 
-/obj/effect/overmap/visitable/ship/landable/excursion
+/obj/overmap/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "The Mk2 Excursion Shuttle. NT Approved!"
 	color = "#72388d" //Purple
@@ -86,7 +86,7 @@
 	landmark_transition = "nav_transit_courser"
 	move_time = 15
 
-/obj/effect/overmap/visitable/ship/landable/courser
+/obj/overmap/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
 	color = "#af3e97" //Pinkish Purple
@@ -117,7 +117,7 @@
 	fuel_consumption = 5
 	move_direction = WEST
 
-/obj/effect/overmap/visitable/ship/landable/hammerhead
+/obj/overmap/visitable/ship/landable/hammerhead
 	name = "Hammerhead Patrol Barge"
 	desc = "To Detain and Enforce."
 	color = "#b91a14" //Vibrant Red
@@ -147,7 +147,7 @@
 	fuel_consumption = 10
 	move_time = 30
 
-/obj/effect/overmap/visitable/ship/landable/civvie
+/obj/overmap/visitable/ship/landable/civvie
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = NORTH
@@ -174,7 +174,7 @@
 	fuel_consumption = 5
 	move_time = 10
 
-/obj/effect/overmap/visitable/ship/landable/trade
+/obj/overmap/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
 	color = "#754116" //Brown
@@ -203,7 +203,7 @@
 	landmark_transition = "nav_transit_emt"
 	move_time = 10
 
-/obj/effect/overmap/visitable/ship/landable/emt
+/obj/overmap/visitable/ship/landable/emt
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
 	color = "#69b9de" //Light Blue

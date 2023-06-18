@@ -709,7 +709,7 @@
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc,
-/obj/effect/overmap/visitable/ship/landable/mackerel_lc,
+/obj/overmap/visitable/ship/landable/mackerel_lc,
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
 	id_tag = "mackerel_lc_docking_star";
 	name = "Starboard Airlock Control";

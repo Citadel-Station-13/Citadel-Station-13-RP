@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/mining_planet
+/obj/overmap/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
 	scanner_desc = @{"[i]Information[/i]

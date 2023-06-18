@@ -1,4 +1,4 @@
-/obj/effect/overmap/visitable/sector/class_p
+/obj/overmap/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}

@@ -1,56 +1,48 @@
-// Dimension of overmap (squares 4 lyfe)
-var/global/list/map_sectors = list()
 
-/area/overmap
-	name = "System Map"
-	icon_state = "start"
-	requires_power = FALSE
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-
-/turf/unsimulated/map
+/turf/overmap
 	icon = 'icons/turf/space.dmi'
 	icon_state = "map"
 	permit_ao = FALSE
 //	initialized = FALSE	// TODO - Fix unsimulated turf initialization so this override is not necessary!
 
-/turf/unsimulated/map/edge
+/turf/overmap/edge
 	opacity = TRUE
 	density = TRUE
 	var/map_is_to_my
-	var/turf/unsimulated/map/edge/wrap_buddy
+	var/turf/overmap/edge/wrap_buddy
 
-/turf/unsimulated/map/edge/Initialize(mapload)
+/turf/overmap/edge/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
-/turf/unsimulated/map/edge/LateInitialize()
+/turf/overmap/edge/LateInitialize()
 	//This could be done by using the (LEGACY_MAP_DATUM).overmap_size much faster, HOWEVER, doing it programatically to 'find'
 	//  the edges this way allows for 'sub overmaps' elsewhere and whatnot.
 	for(var/side in GLOB.alldirs) //The order of this list is relevant: It should definitely break on finding a cardinal FIRST.
 		var/turf/T = get_step(src, side)
-		if(T?.type == /turf/unsimulated/map) //Not a wall, not something else, EXACTLY a flat map turf.
+		if(T?.type == /turf/overmap) //Not a wall, not something else, EXACTLY a flat map turf.
 			map_is_to_my = side
 			break
 
 	if(map_is_to_my)
 		var/turf/T = get_step(src, map_is_to_my)	// Should be a normal map turf
-		while(istype(T, /turf/unsimulated/map))
+		while(istype(T, /turf/overmap))
 			T = get_step(T, map_is_to_my)	// Could be a wall if the map is only 1 turf big
-			if(istype(T, /turf/unsimulated/map/edge))
+			if(istype(T, /turf/overmap/edge))
 				wrap_buddy = T
 				break
 
-/turf/unsimulated/map/edge/Destroy()
+/turf/overmap/edge/Destroy()
 	wrap_buddy = null
 	return ..()
 
-/turf/unsimulated/map/edge/Bumped(var/atom/movable/AM)
+/turf/overmap/edge/Bumped(var/atom/movable/AM)
 	if(wrap_buddy?.map_is_to_my)
 		AM.forceMove(get_step(wrap_buddy, wrap_buddy.map_is_to_my))
 	else
 		. = ..()
 
-/turf/unsimulated/map/Initialize(mapload)
+/turf/overmap/Initialize(mapload)
 	. = ..()
 	name = "[x]-[y]"
 	var/list/numbers = list()
@@ -78,12 +70,12 @@ var/global/list/map_sectors = list()
 			I.pixel_x = 5*i + 2
 		add_overlay(I)
 
-/turf/unsimulated/map/Entered(var/atom/movable/O, var/atom/oldloc)
+/turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
-	if(istype(O, /obj/effect/overmap/visitable/ship))
+	if(istype(O, /obj/overmap/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_entered(src, O, oldloc)
 
-/turf/unsimulated/map/Exited(var/atom/movable/O, var/atom/newloc)
+/turf/overmap/Exited(var/atom/movable/O, var/atom/newloc)
 	..()
-	if(istype(O, /obj/effect/overmap/visitable/ship))
+	if(istype(O, /obj/overmap/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)

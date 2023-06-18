@@ -1070,7 +1070,7 @@
 	},
 /area/class_p/unexplored)
 "XR" = (
-/obj/effect/overmap/visitable/sector/class_p,
+/obj/overmap/visitable/sector/class_p,
 /turf/simulated/floor/outdoors/snow/classp,
 /area/class_p/unexplored)
 "Yh" = (

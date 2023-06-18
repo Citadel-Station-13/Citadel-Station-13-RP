@@ -7102,7 +7102,7 @@
 	landmark_tag = "tether_excursion_hangar";
 	name = "Excursion Shuttle Dock"
 	},
-/obj/effect/overmap/visitable/ship/landable/excursion,
+/obj/overmap/visitable/ship/landable/excursion,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "fyu" = (

@@ -9,7 +9,7 @@
 /turf/simulated/mineral/classh,
 /area/class_h/explored)
 "l" = (
-/obj/effect/overmap/visitable/sector/class_h,
+/obj/overmap/visitable/sector/class_h,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "o" = (

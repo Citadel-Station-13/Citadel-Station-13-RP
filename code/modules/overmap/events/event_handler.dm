@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 	var/list/candidate_turfs = list()
 	for(var/Trf in overmap_turfs)
 		var/turf/T = Trf
-		if(!(locate(/obj/effect/overmap/visitable) in T))
+		if(!(locate(/obj/overmap/visitable) in T))
 			candidate_turfs += T
 
 	for(var/i = 1 to number_of_events)
@@ -69,7 +69,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		if(T in candidate_turfs)
 			return T
 
-/singleton/overmap_event_handler/proc/start_hazard(var/obj/effect/overmap/visitable/ship/ship, var/obj/effect/overmap/event/hazard)	// Make these accept both hazards or events
+/singleton/overmap_event_handler/proc/start_hazard(var/obj/overmap/visitable/ship/ship, var/obj/overmap/event/hazard)	// Make these accept both hazards or events
 	if(!(ship in ship_events))
 		ship_events += ship
 
@@ -85,7 +85,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		E.victim = ship
 		LAZYADD(ship_events[ship], E)
 
-/singleton/overmap_event_handler/proc/stop_hazard(var/obj/effect/overmap/visitable/ship/ship, var/obj/effect/overmap/event/hazard)
+/singleton/overmap_event_handler/proc/stop_hazard(var/obj/overmap/visitable/ship/ship, var/obj/overmap/event/hazard)
 	for(var/event_type in hazard.events)
 		var/datum/event/E = is_event_active(ship, event_type, hazard.difficulty)
 		if(E)
@@ -98,22 +98,22 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		if(E.type == event_type && E.severity == severity)
 			return E
 
-/singleton/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, var/obj/effect/overmap/visitable/ship/ship, var/old_loc)
+/singleton/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, var/obj/overmap/visitable/ship/ship, var/old_loc)
 	if(!istype(ship))
 		return
 	if(new_loc == old_loc)
 		return
 
-	for(var/obj/effect/overmap/event/E in hazard_by_turf[new_loc])
+	for(var/obj/overmap/event/E in hazard_by_turf[new_loc])
 		start_hazard(ship, E)
 
-/singleton/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, var/obj/effect/overmap/visitable/ship/ship, var/new_loc)
+/singleton/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, var/obj/overmap/visitable/ship/ship, var/new_loc)
 	if(!istype(ship))
 		return
 	if(new_loc == old_loc)
 		return
 
-	for(var/obj/effect/overmap/event/E in hazard_by_turf[old_loc])
+	for(var/obj/overmap/event/E in hazard_by_turf[old_loc])
 		if(is_event_included(hazard_by_turf[new_loc], E))
 			continue	// If new turf has the same event as well... keep it going!
 		stop_hazard(ship, E)
@@ -123,7 +123,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		return
 
 	var/list/active_hazards = list()
-	for(var/obj/effect/overmap/event/E in T)
+	for(var/obj/overmap/event/E in T)
 		if(is_event_included(active_hazards, E, TRUE))
 			continue
 		active_hazards += E
@@ -134,23 +134,23 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		hazard_by_turf |= T
 		hazard_by_turf[T] = active_hazards
 
-	for(var/obj/effect/overmap/visitable/ship/ship in T)
+	for(var/obj/overmap/visitable/ship/ship in T)
 		for(var/datum/event/E in ship_events[ship])
 			if(is_event_in_turf(E, T))
 				continue
 			E.kill()
 			LAZYREMOVE(ship_events[ship], E)
 
-		for(var/obj/effect/overmap/event/E in active_hazards)
+		for(var/obj/overmap/event/E in active_hazards)
 			start_hazard(ship, E)
 
 /singleton/overmap_event_handler/proc/is_event_in_turf(var/datum/event/E, var/turf/T)
-	for(var/obj/effect/overmap/event/hazard in hazard_by_turf[T])
+	for(var/obj/overmap/event/hazard in hazard_by_turf[T])
 		if(E in hazard.events && E.severity == hazard.difficulty)
 			return TRUE
 
-/singleton/overmap_event_handler/proc/is_event_included(var/list/hazards, var/obj/effect/overmap/event/E, var/equal_or_better)	// This proc is only used so it can break out of 2 loops cleanly
-	for(var/obj/effect/overmap/event/A in hazards)
+/singleton/overmap_event_handler/proc/is_event_included(var/list/hazards, var/obj/overmap/event/E, var/equal_or_better)	// This proc is only used so it can break out of 2 loops cleanly
+	for(var/obj/overmap/event/A in hazards)
 		if(istype(A, E.type) || istype(E, A.type))
 			if(same_entries(A.events, E.events))
 				if(equal_or_better)

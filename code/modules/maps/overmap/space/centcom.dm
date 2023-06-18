@@ -1,5 +1,5 @@
 //Overmap Controller
-/obj/effect/overmap/visitable/sector/centcom
+/obj/overmap/visitable/sector/centcom
 	name = "NTS Demeter"
 	desc = "The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."
 	scanner_desc = @{"[i]Information[/i]: The only NanoTrasen-owned orbital body in Lythios. The NTS Demeter was constructed via prefab by Nanotrasen and is used as a midpoint for sorting cargo, transferring crew to the NSB Atlas, as homes for local employees in the residential areas, and as orbital oversight for early threat detection. Very few Central Command Officers are present here at all times, and even fewer are the defensive capabilities that are reserved primarily for the inhabitants."}
@@ -22,11 +22,11 @@
 	start_x = null
 	start_y = null
 
-/obj/effect/overmap/visitable/sector/centcom/Initialize()
+/obj/overmap/visitable/sector/centcom/Initialize()
 	. = ..()
 	Orbit()
 
-/obj/effect/overmap/visitable/sector/centcom/proc/Orbit()
+/obj/overmap/visitable/sector/centcom/proc/Orbit()
 	if(!randxloc)
 		start_x = pick(13, 14, 16, 17)
 	if(!randyloc)
