@@ -38,7 +38,7 @@
 	name = "Excursion Shuttle"
 	warmup_time = 0
 	shuttle_area = list(/area/shuttle/excursion/triumph)
-	//shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
+	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
 	current_location = "triumph_excursion_hangar"
 	docking_controller_tag = "expshuttle_docker"
 	landmark_transition = "nav_transit_exploration"
@@ -154,20 +154,3 @@
 	landmark_station = "supply_dock"
 	docking_controller_tag = "supply_shuttle"
 	flags = SHUTTLE_FLAGS_PROCESS|SHUTTLE_FLAGS_SUPPLY
-
-
-/datum/shuttle/autodock/overmap/excursion/triumph
-	name = "Excursion Shuttle"
-	warmup_time = 2
-	shuttle_area = list(/area/shuttle/excursion/cockpit, /area/shuttle/excursion/general, /area/shuttle/excursion/cargo)
-	current_location = "triumph_excursion_hangar"
-	docking_controller_tag = "expshuttle_docker"
-
-/area/shuttle/excursion
-	name = "Excursion Shuttle"
-	icon_state = "shuttle"
-
-/obj/machinery/computer/shuttle_control/explore/excursion
-	name = "short jump console"
-	shuttle_tag = "Excursion Shuttle"
-	req_one_access = list(ACCESS_GENERAL_PILOT)
