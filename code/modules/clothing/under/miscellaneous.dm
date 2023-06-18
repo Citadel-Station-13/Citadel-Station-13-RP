@@ -1896,12 +1896,13 @@
 
 /obj/item/clothing/under/navy_gray
 	name = "navy gray jumpsuit"
-	desc = "A grey jumpsuit resembling those worn in the Navy, without any markings."
+	desc = "A light grey-blue jumpsuit resembling those worn in the Navy, without any of the traditional markings."
 	icon = 'icons/clothing/uniform/rank/utility.dmi'
 	icon_state = "lightnavy"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_bodytypes = BODYTYPE_DEFAULT
 
 /obj/item/clothing/under/chiming_dress
     name = "chiming dress"
