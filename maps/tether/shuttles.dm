@@ -109,7 +109,7 @@
 /obj/effect/overmap/visitable/ship/landable/excursion/tether
 	name = "Excursion Shuttle"
 	desc = "The traditional Excursion Shuttle. NT Approved!"
-	fore_dir = NOTH
+	fore_dir = NORTH
 	vessel_mass = 8000
 	vessel_size = SHIP_SIZE_SMALL
 	shuttle = "Excursion Shuttle"

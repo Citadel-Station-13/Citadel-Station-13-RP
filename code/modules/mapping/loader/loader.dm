@@ -539,6 +539,8 @@
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /datum/dmm_parsed/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop, turn_angle = 0, swap_xy, invert_y, invert_x)
+	if(ispath(path, /obj/structure/cable))
+		pass()
 	world.preloader_setup(attributes, path, turn_angle, invert_x, invert_y, swap_xy)
 
 	if(ispath(path, /turf))
