@@ -3,7 +3,7 @@
 	name = "Eyepatch"
 	path = /obj/item/clothing/glasses/eyepatch
 	slot = SLOT_ID_GLASSES
-	sort_category = "Glasses and Eyewear"
+	sort_category = LOADOUT_CATEGORY_GLASSES
 
 /datum/gear/eyes/eyepatchwhite
 	name = "Eyepatch (Recolorable)"
