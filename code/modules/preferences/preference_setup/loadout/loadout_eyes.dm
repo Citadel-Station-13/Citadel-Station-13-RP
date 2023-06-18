@@ -117,6 +117,10 @@
 	name = "White Blindfold"
 	path = /obj/item/clothing/glasses/sunglasses/blindfold/whiteblindfold
 
+/datum/gear/eyes/whiteblindfoldfake
+	name = "White Blindfold (Fake)"
+	path = /obj/item/clothing/glasses/sunglasses/fakeblindfold/whiteblindfold
+
 /datum/gear/eyes/redglasses
 	name = "Red Glasses"
 	path = /obj/item/clothing/glasses/redglasses
