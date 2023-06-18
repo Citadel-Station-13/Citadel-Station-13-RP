@@ -1,10 +1,10 @@
 /**
  * While these computers can be placed anywhere, they will only function if placed on either a non-space, non-shuttle turf
- * with an /obj/overmap/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /obj/overmap/visitable/ship
+ * with an /obj/overmap/entity/visitable/ship present elsewhere on that z level, or else placed in a shuttle area with an /obj/overmap/entity/visitable/ship
  * somewhere on that shuttle. Subtypes of these can be then used to perform ship overmap movement functions.
  */
 /obj/machinery/computer/ship
-	var/obj/overmap/visitable/ship/linked
+	var/obj/overmap/entity/visitable/ship/linked
 	/// Weakrefs to mobs in direct-view mode.
 	var/list/viewers
 	/// how much the view is increased by when the mob is in overmap mode.
@@ -13,7 +13,7 @@
 	var/hacked = 0
 
 /// A late init operation called in SSshuttle, used to attach the thing to the right ship.
-/obj/machinery/computer/ship/proc/attempt_hook_up(obj/overmap/visitable/ship/sector)
+/obj/machinery/computer/ship/proc/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!istype(sector))
 		return
 	if(sector.check_ownership(src))
@@ -21,7 +21,7 @@
 		return TRUE
 
 /obj/machinery/computer/ship/proc/sync_linked(var/user = null)
-	var/obj/overmap/visitable/ship/sector = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/ship/sector = get_overmap_sector(z)
 	if(!sector)
 		return
 	. = attempt_hook_up_recursive(sector)
@@ -29,10 +29,10 @@
 		to_chat(user, SPAN_NOTICE("[src] reconnected to [linked]"))
 		user << browse(null, "window=[src]") // Close reconnect dialog
 
-/obj/machinery/computer/ship/proc/attempt_hook_up_recursive(obj/overmap/visitable/ship/sector)
+/obj/machinery/computer/ship/proc/attempt_hook_up_recursive(obj/overmap/entity/visitable/ship/sector)
 	if(attempt_hook_up(sector))
 		return sector
-	for(var/obj/overmap/visitable/ship/candidate in sector)
+	for(var/obj/overmap/entity/visitable/ship/candidate in sector)
 		if((. = .(candidate)))
 			return
 

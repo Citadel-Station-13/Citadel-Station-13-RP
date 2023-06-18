@@ -546,7 +546,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/screebarge,
-/obj/overmap/visitable/ship/landable/screebarge,
+/obj/overmap/entity/visitable/ship/landable/screebarge,
 /turf/simulated/floor/reinforced,
 /area/shuttle/screebarge/fore)
 "bC" = (

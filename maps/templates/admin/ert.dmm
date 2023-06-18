@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/overmap/visitable/ship/ert_ship,
+/obj/overmap/entity/visitable/ship/ert_ship,
 /turf/space,
 /area/space)
 "ac" = (

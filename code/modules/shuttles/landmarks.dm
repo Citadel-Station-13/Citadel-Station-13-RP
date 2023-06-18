@@ -54,15 +54,15 @@
 	if(!istype(docking_controller))
 		log_error("Could not find docking controller for shuttle waypoint '[name]', docking tag was '[docking_tag]'.")
 	if((LEGACY_MAP_DATUM).use_overmap)
-		var/obj/overmap/visitable/location = get_overmap_sector(z)
+		var/obj/overmap/entity/visitable/location = get_overmap_sector(z)
 		if(location && location.docking_codes)
 
 			docking_controller.docking_codes = location.docking_codes
 
 /obj/effect/shuttle_landmark/forceMove()
-	var/obj/overmap/visitable/map_origin = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/map_origin = get_overmap_sector(z)
 	. = ..()
-	var/obj/overmap/visitable/map_destination = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/map_destination = get_overmap_sector(z)
 	if(map_origin != map_destination)
 		if(map_origin)
 			map_origin.remove_landmark(src, shuttle_restricted)
@@ -70,7 +70,7 @@
 			map_destination.add_landmark(src, shuttle_restricted)
 
 // Called when the landmark is added to an overmap sector.
-/obj/effect/shuttle_landmark/proc/sector_set(var/obj/overmap/visitable/O, shuttle_name)
+/obj/effect/shuttle_landmark/proc/sector_set(var/obj/overmap/entity/visitable/O, shuttle_name)
 	shuttle_restricted = shuttle_name
 
 /obj/effect/shuttle_landmark/proc/is_valid(var/datum/shuttle/shuttle)
@@ -131,7 +131,7 @@
 	landmark_tag += "-[x]-[y]-[z]-[random_id("landmarks",1,9999)]"
 	return ..()
 
-/obj/effect/shuttle_landmark/automatic/sector_set(var/obj/overmap/visitable/O)
+/obj/effect/shuttle_landmark/automatic/sector_set(var/obj/overmap/entity/visitable/O)
 	..()
 	name = ("[O.name] - [original_name] ([x],[y])")
 

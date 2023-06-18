@@ -1,4 +1,4 @@
-/obj/overmap/visitable/sector/gaia_planet
+/obj/overmap/entity/visitable/sector/gaia_planet
 	name = "Gaia Planet"
 	desc = "A planet with peaceful life, and ample flora."
 	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?

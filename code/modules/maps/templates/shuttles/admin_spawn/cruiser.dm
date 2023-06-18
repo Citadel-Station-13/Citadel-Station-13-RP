@@ -119,7 +119,7 @@
 	desc = "A large NT cruiser."
 	suffix = "cruiser.dmm"
 
-/obj/overmap/visitable/ship/cruiser
+/obj/overmap/entity/visitable/ship/cruiser
 	name = "spacecraft"
 	desc = "Spacefaring vessel. NanoTrasen IFF detected."
 	scanner_name = "NDV Daedalus"

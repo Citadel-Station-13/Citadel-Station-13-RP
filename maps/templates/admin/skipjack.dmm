@@ -888,7 +888,7 @@
 	id_tag = "vox_east_sensor";
 	pixel_x = -25
 	},
-/obj/overmap/visitable/ship/landable/skipjack,
+/obj/overmap/entity/visitable/ship/landable/skipjack,
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;

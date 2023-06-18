@@ -1,4 +1,4 @@
-/obj/overmap/visitable/planet
+/obj/overmap/entity/visitable/planet
 	name = "planet"
 	icon_state = "globe"
 	in_space = 0
@@ -16,10 +16,10 @@
 	var/skybox_offset_x = 0
 	var/skybox_offset_y = 0
 
-/obj/overmap/visitable/planet/Initialize(mapload)
+/obj/overmap/entity/visitable/planet/Initialize(mapload)
 	. = ..()
 
-/obj/overmap/visitable/planet/get_skybox_representation()
+/obj/overmap/entity/visitable/planet/get_skybox_representation()
 	var/image/skybox_image = image('icons/skybox/planet.dmi', "")
 
 	var/list/overlays_to_add = list()
@@ -90,13 +90,13 @@
 	skybox_image.appearance_flags = RESET_COLOR
 	return skybox_image
 
-/obj/overmap/visitable/planet/proc/get_base_image()
+/obj/overmap/entity/visitable/planet/proc/get_base_image()
 	var/image/base = image('icons/skybox/planet.dmi', "base")
 	base.color = get_surface_color()
 	return base
 
-/obj/overmap/visitable/planet/proc/get_surface_color()
+/obj/overmap/entity/visitable/planet/proc/get_surface_color()
 	return surface_color
 
-/obj/overmap/visitable/planet/proc/get_atmosphere_color()
+/obj/overmap/entity/visitable/planet/proc/get_atmosphere_color()
 	return atmosphere_color

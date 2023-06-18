@@ -1628,7 +1628,7 @@
 	},
 /area/awaymission/snowfield/base)
 "Bw" = (
-/obj/overmap/visitable/sector/gateway/snowfield,
+/obj/overmap/entity/visitable/sector/gateway/snowfield,
 /turf/simulated/floor/outdoors/snow{
 	temperature = 243.15
 	},

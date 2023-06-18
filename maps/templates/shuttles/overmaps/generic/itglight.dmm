@@ -181,7 +181,7 @@
 /turf/simulated/floor/tiled/eris/dark/monofloor,
 /area/itglight/cockpit)
 "as" = (
-/obj/overmap/visitable/ship/itglight,
+/obj/overmap/entity/visitable/ship/itglight,
 /turf/space,
 /area/space)
 "av" = (

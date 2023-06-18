@@ -3,12 +3,12 @@ var/list/cached_space = list()
 
 // Space stragglers go here
 
-/obj/overmap/visitable/sector/temporary
+/obj/overmap/entity/visitable/sector/temporary
 	name = "Deep Space"
 	invisibility = 101
 	known = 0
 
-/obj/overmap/visitable/sector/temporary/New(var/nx, var/ny, var/nz)
+/obj/overmap/entity/visitable/sector/temporary/New(var/nx, var/ny, var/nz)
 	loc = locate(nx, ny, (LEGACY_MAP_DATUM).overmap_z)
 	x = nx
 	y = ny
@@ -16,12 +16,12 @@ var/list/cached_space = list()
 	map_sectors["[nz]"] = src
 	testing("Temporary sector at [x],[y] was created, corresponding zlevel is [nz].")
 
-/obj/overmap/visitable/sector/temporary/Destroy()
+/obj/overmap/entity/visitable/sector/temporary/Destroy()
 	map_sectors["[map_z]"] = null
 	testing("Temporary sector at [x],[y] was deleted.")
 	return ..()
 
-/obj/overmap/visitable/sector/temporary/proc/can_die(var/mob/observer)
+/obj/overmap/entity/visitable/sector/temporary/proc/can_die(var/mob/observer)
 	testing("Checking if sector at [map_z[1]] can die.")
 	for(var/mob/M in global.GLOB.player_list)
 		if(M != observer && (M.z in map_z))
@@ -33,7 +33,7 @@ var/list/cached_space = list()
 	var/turf/overmap/overmap_turf = locate(x,y,(LEGACY_MAP_DATUM).overmap_z)
 	if(!istype(overmap_turf))
 		CRASH("Attempt to get deepspace at ([x],[y]) which is not on overmap: [overmap_turf]")
-	var/obj/overmap/visitable/sector/temporary/res = locate() in overmap_turf
+	var/obj/overmap/entity/visitable/sector/temporary/res = locate() in overmap_turf
 	if(istype(res))
 		return res
 	else if(cached_space.len)
@@ -42,7 +42,7 @@ var/list/cached_space = list()
 		res.forceMove(overmap_turf)
 		return res
 	else
-		return new /obj/overmap/visitable/sector/temporary(x, y, (LEGACY_MAP_DATUM).get_empty_zlevel())
+		return new /obj/overmap/entity/visitable/sector/temporary(x, y, (LEGACY_MAP_DATUM).get_empty_zlevel())
 
 /atom/movable/proc/lost_in_space()
 	for(var/atom/movable/AM in contents)
@@ -87,7 +87,7 @@ var/list/cached_space = list()
 	if (!T || !A)
 		return
 
-	var/obj/overmap/visitable/M = get_overmap_sector(T.z)
+	var/obj/overmap/entity/visitable/M = get_overmap_sector(T.z)
 	if (!M)
 		return
 
@@ -127,8 +127,8 @@ var/list/cached_space = list()
 	testing("[A] spacemoving from [M] ([M.x], [M.y]).")
 
 	var/turf/map = locate(M.x,M.y,(LEGACY_MAP_DATUM).overmap_z)
-	var/obj/overmap/visitable/TM
-	for(var/obj/overmap/visitable/O in map)
+	var/obj/overmap/entity/visitable/TM
+	for(var/obj/overmap/entity/visitable/O in map)
 		if(O != M && O.in_space && prob(50))
 			TM = O
 			break
@@ -144,8 +144,8 @@ var/list/cached_space = list()
 			if(D.pulling)
 				D.pulling.forceMove(dest)
 
-	if(istype(M, /obj/overmap/visitable/sector/temporary))
-		var/obj/overmap/visitable/sector/temporary/source = M
+	if(istype(M, /obj/overmap/entity/visitable/sector/temporary))
+		var/obj/overmap/entity/visitable/sector/temporary/source = M
 		if (source.can_die())
 			testing("Caching [M] for future use")
 			source.moveToNullspace()

@@ -543,7 +543,7 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/gecko_cr_wreck,
-/obj/overmap/visitable/ship/landable/gecko_cr_wreck,
+/obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/gecko_cr_cockpit_wreck)
 "lr" = (

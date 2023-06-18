@@ -1,4 +1,4 @@
-/obj/overmap/visitable/sector/fueldepot
+/obj/overmap/entity/visitable/sector/fueldepot
 	name = "Fuel Depot"
 	desc = "Self-service refueling depot."
 	scanner_desc = @{"[i]Registration[/i]: Virgo-Erigonne System Authority

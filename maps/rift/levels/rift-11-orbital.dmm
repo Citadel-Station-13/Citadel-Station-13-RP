@@ -8419,7 +8419,7 @@
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
 "Kp" = (
-/obj/overmap/visitable/ship/landable/specops,
+/obj/overmap/entity/visitable/ship/landable/specops,
 /obj/machinery/button/flasher{
 	id = "breach_flash";
 	pixel_y = 26
@@ -8721,7 +8721,7 @@
 /turf/unsimulated/floor/dark,
 /area/tdome/tdomeadmin)
 "MO" = (
-/obj/overmap/visitable/sector/centcom,
+/obj/overmap/entity/visitable/sector/centcom,
 /turf/space,
 /area/space)
 "MR" = (

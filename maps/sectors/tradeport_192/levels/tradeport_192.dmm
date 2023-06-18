@@ -2323,7 +2323,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/commons)
 "iQ" = (
-/obj/overmap/visitable/sector/trade_post,
+/obj/overmap/entity/visitable/sector/trade_post,
 /turf/space,
 /area/space)
 "iR" = (
@@ -9832,7 +9832,7 @@
 	pixel_x = -25
 	},
 /obj/effect/shuttle_landmark/triumph/trade/hangar,
-/obj/overmap/visitable/ship/landable/trade,
+/obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "LR" = (

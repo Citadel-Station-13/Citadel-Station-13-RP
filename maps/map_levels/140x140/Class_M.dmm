@@ -1558,7 +1558,7 @@
 /turf/simulated/floor/tiled/classm,
 /area/class_m/inside)
 "HC" = (
-/obj/overmap/visitable/sector/gaia_planet,
+/obj/overmap/entity/visitable/sector/gaia_planet,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside)
 "HE" = (

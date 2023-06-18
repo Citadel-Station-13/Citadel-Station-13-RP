@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/overmap/visitable/sector/virgo4
+/obj/overmap/entity/visitable/sector/virgo4
 	name = "Virgo 4"
 	desc = "Home to sand, and things with big fluffy ears."
 	scanner_desc = @{"[i]Stellar Body[/i]: Virgo 4

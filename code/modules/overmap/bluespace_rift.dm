@@ -27,7 +27,7 @@
 	paused = FALSE
 
 /obj/overmap/bluespace_rift/Crossed(atom/movable/AM)
-	if(istype(AM, /obj/overmap/visitable/ship) && !paused && partner)
+	if(istype(AM, /obj/overmap/entity/visitable/ship) && !paused && partner)
 		partner.take_this(AM)
 	else
 		return ..()

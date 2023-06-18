@@ -12671,7 +12671,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/shuttle_landmark/triumph/deck2/mining,
-/obj/overmap/visitable/ship/landable/mining,
+/obj/overmap/entity/visitable/ship/landable/mining,
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/mining_ship/general)
 "MF" = (

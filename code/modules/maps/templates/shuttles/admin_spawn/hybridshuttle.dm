@@ -37,7 +37,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/overmap/visitable/ship/landable/hybridshuttle
+/obj/overmap/entity/visitable/ship/landable/hybridshuttle
 	scanner_name = "XN-29 Prototype Shuttle"
 	scanner_desc = @{"[i]Registration[/i]: UNKNOWN
 [i]Class[/i]: Shuttle

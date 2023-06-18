@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/overmap/visitable/sector/debrisfield_vr,
+/obj/overmap/entity/visitable/sector/debrisfield_vr,
 /turf/space,
 /area/space/debrisfield/unexplored)
 "b" = (

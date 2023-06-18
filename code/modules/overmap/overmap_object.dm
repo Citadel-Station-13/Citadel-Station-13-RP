@@ -78,7 +78,7 @@
 /obj/overmap/proc/update_skybox_representation()
 	expire_skybox_representation()
 	build_skybox_representation()
-	for(var/obj/overmap/visitable/O in loc)
+	for(var/obj/overmap/entity/visitable/O in loc)
 		for(var/z in O.map_z)
 			SSparallax.queue_z_vis_update(z)
 
@@ -99,13 +99,13 @@
 		SSovermaps.queue_helm_computer_rebuild()
 	update_icon()
 
-/obj/overmap/Crossed(var/obj/overmap/visitable/other)
+/obj/overmap/Crossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
 		for(var/z in other.map_z)
 			SSparallax.queue_z_vis_update(z)
 
-/obj/overmap/Uncrossed(var/obj/overmap/visitable/other)
+/obj/overmap/Uncrossed(var/obj/overmap/entity/visitable/other)
 	. = ..()
 	if(istype(other))
 		for(var/z in other.map_z)

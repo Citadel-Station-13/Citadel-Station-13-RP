@@ -1,6 +1,6 @@
 // This is where Overmap stuff itself is defined
 
-/obj/overmap/visitable/sector/citadel_minitest/station
+/obj/overmap/entity/visitable/sector/citadel_minitest/station
 	name = "Minitest Station"	// Name of the location on the overmap.
 	desc = "The Citadel Minitest Station.  A small base useful for testing and loading quickly!"	// The description of the location on the overmap.
 	base = 1		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
@@ -9,13 +9,13 @@
 	// The waypoints that are avaliable once you are at this Navpoint
 	initial_generic_waypoints = list("nav_shared_space", "nav_station_inside", "nav_station_docking1", "nav_station_docking2")
 
-/obj/overmap/visitable/sector/citadel_minitest/carpfarm
+/obj/overmap/entity/visitable/sector/citadel_minitest/carpfarm
 	name = "Carp Farm"
 	desc = "Abandond space carp farming facility."
 	start_x = 12
 	start_y = 7
 
-/obj/overmap/visitable/sector/citadel_minitest/beach
+/obj/overmap/entity/visitable/sector/citadel_minitest/beach
 	name = "Beach Planet"
 	desc = "A beach in space.  Or on a planet.  Its a hack."
 	in_space = 0
@@ -45,7 +45,7 @@
 // Making Overmap Shuttle into a Landable Ship
 //
 
-/obj/overmap/visitable/ship/landable/overmapdemo
+/obj/overmap/entity/visitable/ship/landable/overmapdemo
 	name = "VSS Overmap Demo"
 	desc = "Small little shuttle nonetheless capable of overmap travel!"
 	vessel_mass = 5000

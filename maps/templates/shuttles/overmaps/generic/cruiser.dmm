@@ -8889,7 +8889,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "EP" = (
-/obj/overmap/visitable/ship/cruiser,
+/obj/overmap/entity/visitable/ship/cruiser,
 /turf/space,
 /area/space)
 "EQ" = (

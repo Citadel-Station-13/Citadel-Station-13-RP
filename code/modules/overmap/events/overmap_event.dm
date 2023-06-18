@@ -2,7 +2,7 @@
 ** /obj/overmap/tiled/hazard - Actual instances of event hazards on the overmap map
 */
 // TO-DO: We need to find a way to get BSAs ported or something to make weaknesses work so crew have a chance to *fight* tiles later - Enzo 9/9/2020
-// We don't subtype /obj/overmap/visitable because that'll create sections one can travel to
+// We don't subtype /obj/overmap/entity/visitable because that'll create sections one can travel to
 //	 and with them "existing" on the overmap Z-level things quickly get odd.
 /obj/overmap/tiled/hazard
 	name = "event"

@@ -203,8 +203,8 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
  * returns if we can reach another holopad
  */
 /obj/machinery/holopad/proc/holocall_connectivity(obj/machinery/holopad/other)
-	var/obj/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
-	var/obj/overmap/visitable/their_sector = get_overmap_sector(get_z(other))
+	var/obj/overmap/entity/visitable/our_sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/their_sector = get_overmap_sector(get_z(other))
 	if(!our_sector || !their_sector)
 		return !(sector_only || other.sector_only) && (get_z(src) == get_z(other))
 	if(our_sector != their_sector)
@@ -216,12 +216,12 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
  */
 /obj/machinery/holopad/proc/holocall_query()
 	. = list()
-	var/obj/overmap/visitable/our_sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/our_sector = get_overmap_sector(get_z(src))
 	for(var/id in GLOB.holopad_lookup)
 		var/obj/machinery/holopad/pad = GLOB.holopad_lookup[id]
 		if(!pad.operable() || !pad.call_visibility)
 			continue
-		var/obj/overmap/visitable/their_sector = get_overmap_sector(get_z(pad))
+		var/obj/overmap/entity/visitable/their_sector = get_overmap_sector(get_z(pad))
 		if(!our_sector || !their_sector)
 			if((sector_only || pad.sector_only) || (get_z(src) != get_z(pad)))
 				continue
@@ -243,9 +243,9 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/holocall_name(obj/machinery/holopad/in_respects_to)
 	if(holopad_name)
 		return holopad_name
-	var/obj/overmap/visitable/sector = get_overmap_sector(get_z(src))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(src))
 	if(in_respects_to && call_anonymous_sector)
-		var/obj/overmap/visitable/other = get_overmap_sector(in_respects_to)
+		var/obj/overmap/entity/visitable/other = get_overmap_sector(in_respects_to)
 		if(sector != other)
 			return "Anonymous"
 	return "[sector? "[sector.scanner_name || sector.name]: " : ""][get_area(src)?:name] - [holopad_uid]"
@@ -264,7 +264,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 /obj/machinery/holopad/proc/ui_connectivity_data()
 	var/list/built = list()
 	for(var/obj/machinery/holopad/pad as anything in holocall_query())
-		var/obj/overmap/visitable/sector = get_overmap_sector(get_z(pad))
+		var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(pad))
 		var/sector_name = sector?.scanner_name || sector?.name
 		built[++built.len] = list(
 			"id" = pad.holopad_uid,
@@ -924,7 +924,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /datum/holocall/proc/ui_caller_id_source()
 	// todo: overmap sector names for anonymous.
-	var/obj/overmap/visitable/sector = get_overmap_sector(get_z(source))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(source))
 	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
 	return list(
 		"name" = (source.call_anonymous_sector && cross_sector)? "Anonymous" : source.holocall_name(),
@@ -937,7 +937,7 @@ GLOBAL_VAR_INIT(holopad_connectivity_rebuild_queued, FALSE)
 
 /datum/holocall/proc/ui_caller_id_destination()
 	// todo: overmap sector names for anonymous.
-	var/obj/overmap/visitable/sector = get_overmap_sector(get_z(destination))
+	var/obj/overmap/entity/visitable/sector = get_overmap_sector(get_z(destination))
 	var/scanner_name = sector?.scanner_name || sector?.name || "Unknown"
 	return list(
 		"name" = (destination.call_anonymous_sector && cross_sector)? "Anonymous" : destination.holocall_name(),

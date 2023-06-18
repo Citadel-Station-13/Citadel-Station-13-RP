@@ -36,7 +36,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/overmap/visitable/ship/landable/escapepod
+/obj/overmap/entity/visitable/ship/landable/escapepod
 	scanner_name = "Escape Pod"
 	scanner_desc = @{"[i]Registration[/i]: NOT AVAILABLE
 [i]Class[/i]: Escape Pod

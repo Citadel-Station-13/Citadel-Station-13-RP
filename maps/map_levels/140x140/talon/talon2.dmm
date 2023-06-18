@@ -1106,7 +1106,7 @@
 /turf/simulated/floor/reinforced,
 /area/talon/decktwo/vault)
 "nn" = (
-/obj/overmap/visitable/ship/talon,
+/obj/overmap/entity/visitable/ship/talon,
 /turf/space,
 /area/space)
 "nt" = (
@@ -4431,7 +4431,7 @@
 	dir = 1;
 	icon_state = "1-2"
 	},
-/obj/overmap/visitable/ship/landable/talon_lifeboat,
+/obj/overmap/entity/visitable/ship/landable/talon_lifeboat,
 /obj/effect/shuttle_landmark/shuttle_initializer/talon_lifeboat,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/lifeboat)

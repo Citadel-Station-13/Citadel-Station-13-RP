@@ -529,7 +529,7 @@
 /turf/simulated/shuttle/wall/alien,
 /area/abductor/interior)
 "Hv" = (
-/obj/overmap/visitable/ship/abductor,
+/obj/overmap/entity/visitable/ship/abductor,
 /turf/space,
 /area/space)
 "IH" = (

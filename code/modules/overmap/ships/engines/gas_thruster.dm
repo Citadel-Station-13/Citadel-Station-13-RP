@@ -95,7 +95,7 @@
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
-		var/obj/overmap/visitable/ship/S = ship
+		var/obj/overmap/entity/visitable/ship/S = ship
 		if(S.check_ownership(src))
 			S.engines |= controller
 			if(dir != S.fore_dir)

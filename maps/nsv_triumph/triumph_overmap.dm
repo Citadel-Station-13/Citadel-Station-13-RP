@@ -2,7 +2,7 @@
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
-/obj/overmap/visitable/ship/landable/excursion
+/obj/overmap/entity/visitable/ship/landable/excursion
 	name = "Excursion Shuttle"
 	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
 	color = "#72388d" //Purple
@@ -28,7 +28,7 @@
 	req_one_access = list(ACCESS_GENERAL_PILOT)
 
 //Courser Shuttle Data
-/obj/overmap/visitable/ship/landable/courser
+/obj/overmap/entity/visitable/ship/landable/courser
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
 	color = "#af3e97" //Pinkish Purple
@@ -39,7 +39,7 @@
 
 // Public Civilian Shuttle
 
-/obj/overmap/visitable/ship/landable/civvie
+/obj/overmap/entity/visitable/ship/landable/civvie
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = EAST
@@ -51,7 +51,7 @@
 
 // Mining Shuttle
 
-/obj/overmap/visitable/ship/landable/mining
+/obj/overmap/entity/visitable/ship/landable/mining
 	name = "Mining Shuttle"
 	desc = "It ain't much, but it's honest work."
 	color = "#ba7d4b" //Tan
@@ -62,7 +62,7 @@
 
 // Trade Shuttle
 
-/obj/overmap/visitable/ship/landable/trade
+/obj/overmap/entity/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
 	color = "#754116" //Brown
@@ -73,7 +73,7 @@
 
 //EMT Shuttle
 
-/obj/overmap/visitable/ship/landable/emt
+/obj/overmap/entity/visitable/ship/landable/emt
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
 	color = "#00a5f2" //Light Blue
@@ -84,7 +84,7 @@
 
 // STATIC PLANET/BASE LOCATIONS
 
-/obj/overmap/visitable/sector/class_h
+/obj/overmap/entity/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
 	scanner_desc = @{"[i]Information[/i]
@@ -97,7 +97,7 @@ Lifesign: Multiple Fauna and humanoid life-signs detected."}
 	color = "#BA9066"
 
 
-/obj/overmap/visitable/sector/pirate_base
+/obj/overmap/entity/visitable/sector/pirate_base
 	name = "Pirate Base"
 	desc = "A nest of hostiles to the company. Caution is advised."
 	scanner_desc = @{"[i]Information[/i]
@@ -108,7 +108,7 @@ Warning, unable to scan through sensor shielding systems at location. Possible h
 	color = "#FF3333"
 	initial_generic_waypoints = list("pirate_docking_arm")
 
-/obj/overmap/visitable/sector/mining_planet
+/obj/overmap/entity/visitable/sector/mining_planet
 	name = "Mineral Rich Planet"
 	desc = "A planet filled with valuable minerals. No life signs currently detected on the surface."
 	scanner_desc = @{"[i]Information[/i]
@@ -119,7 +119,7 @@ Lifesigns: No immediate life-signs detected."}
 	color = "#8F6E4C"
 	initial_generic_waypoints = list("mining_outpost")
 
-/obj/overmap/visitable/sector/gaia_planet
+/obj/overmap/entity/visitable/sector/gaia_planet
 	name = "Gaia Planet"
 	desc = "A planet with peaceful life, and ample flora."
 	scanner_desc = @{"[i]Incoming Message[/i]: Hello travler! Looking to enjoy the shine of the star on land?
@@ -139,7 +139,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/obj/overmap/visitable/sector/class_p
+/obj/overmap/entity/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}

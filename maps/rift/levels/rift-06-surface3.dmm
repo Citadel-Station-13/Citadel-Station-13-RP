@@ -7728,7 +7728,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "atn" = (
-/obj/overmap/visitable/sector/lythios43c,
+/obj/overmap/entity/visitable/sector/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "atp" = (
@@ -8221,7 +8221,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 9
 	},
-/obj/overmap/visitable/ship/landable/courser,
+/obj/overmap/entity/visitable/ship/landable/courser,
 /obj/effect/shuttle_landmark/rift/deck3/courser,
 /obj/machinery/embedded_controller/radio/airlock/docking_port{
 	frequency = 1380;
@@ -11529,7 +11529,7 @@
 	dir = 4
 	},
 /obj/effect/shuttle_landmark/rift/deck3/emt,
-/obj/overmap/visitable/ship/landable/emt,
+/obj/overmap/entity/visitable/ship/landable/emt,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/emt/general)
 "aCW" = (
@@ -18011,7 +18011,7 @@
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/overmap/visitable/ship/landable/civvie,
+/obj/overmap/entity/visitable/ship/landable/civvie,
 /obj/effect/shuttle_landmark/rift/deck3/civvie,
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/general)
@@ -23337,7 +23337,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/overmap/visitable/ship/landable/excursion,
+/obj/overmap/entity/visitable/ship/landable/excursion,
 /obj/effect/shuttle_landmark/rift/deck3/excursion,
 /obj/structure/cable/orange{
 	icon_state = "4-8"

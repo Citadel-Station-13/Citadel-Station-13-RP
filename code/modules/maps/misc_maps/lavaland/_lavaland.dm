@@ -1,6 +1,6 @@
 // Shuttle Path for lava land
 // -- Datums -- //
-/*/obj/overmap/visitable/sector/lavaland
+/*/obj/overmap/entity/visitable/sector/lavaland
 	name = "Mineral Rich Planet"			// The name of the destination
 	desc = "Sensors indicate that this is a world filled with minerals.  There seems to be a thin atmosphere on the planet."
 	icon_state = "globe"

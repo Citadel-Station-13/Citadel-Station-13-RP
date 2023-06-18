@@ -14,7 +14,7 @@
 	icon_screen = "adv_sensors_screen"
 	light_color = "#05A6A8"
 
-/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/overmap/visitable/ship/sector)
+/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
 	find_sensors()

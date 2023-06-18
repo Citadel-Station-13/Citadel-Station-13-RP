@@ -100,7 +100,7 @@
 //	fuel_consumption = 3
 
 // The 'ship'
-/obj/overmap/visitable/ship/ert_ship
+/obj/overmap/entity/visitable/ship/ert_ship
 	name = "NRV Von Braun"
 	desc = "Spacefaring vessel. Broadcasting Corporate Emergency Responder IFF."
 	scanner_desc = @{"[i]Registration[/i]: Nanotrasen RRV Von Braun

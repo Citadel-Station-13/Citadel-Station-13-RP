@@ -72,10 +72,10 @@
 
 /turf/overmap/Entered(var/atom/movable/O, var/atom/oldloc)
 	..()
-	if(istype(O, /obj/overmap/visitable/ship))
+	if(istype(O, /obj/overmap/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_entered(src, O, oldloc)
 
 /turf/overmap/Exited(var/atom/movable/O, var/atom/newloc)
 	..()
-	if(istype(O, /obj/overmap/visitable/ship))
+	if(istype(O, /obj/overmap/entity/visitable/ship))
 		GLOB.overmap_event_handler.on_turf_exited(src, O, newloc)

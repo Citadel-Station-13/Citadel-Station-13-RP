@@ -11,7 +11,7 @@
 	defer_initialisation = TRUE
 
 // The 'ship' of the shuttle
-/obj/overmap/visitable/ship/landable/pirate
+/obj/overmap/entity/visitable/ship/landable/pirate
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	color = "#751713" //Dark Red

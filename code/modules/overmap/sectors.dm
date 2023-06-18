@@ -1,7 +1,7 @@
 //===================================================================================
 //Overmap object representing zlevel(s)
 //===================================================================================
-/obj/overmap/visitable
+/obj/overmap/entity/visitable
 	name = "map object"
 	scannable = TRUE
 	scanner_desc = "!! No Data Available !!"
@@ -34,7 +34,7 @@
 	var/has_distress_beacon
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
-/obj/overmap/visitable/Initialize(mapload)
+/obj/overmap/entity/visitable/Initialize(mapload)
 	. = ..()
 	if(. == INITIALIZE_HINT_QDEL)
 		return
@@ -71,21 +71,21 @@
 
 
 // You generally shouldn't destroy these.
-/obj/overmap/visitable/Destroy()
+/obj/overmap/entity/visitable/Destroy()
 	testing("Deleting [src] overmap sector at [x],[y]")
 	unregister_z_levels()
 	return ..()
 
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
-/obj/overmap/visitable/proc/populate_sector_objects()
+/obj/overmap/entity/visitable/proc/populate_sector_objects()
 
-/obj/overmap/visitable/proc/get_areas()
+/obj/overmap/entity/visitable/proc/get_areas()
 	. = list()
 	for(var/area/A)
 		if (A.z in map_z)
 			. += A
 
-/obj/overmap/visitable/proc/find_z_levels()
+/obj/overmap/entity/visitable/proc/find_z_levels()
 	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
 		map_z = GetConnectedZlevels(z)
 	if(LAZYLEN(extra_z_levels))
@@ -99,7 +99,7 @@
 				continue
 			map_z |= level.z_index
 
-/obj/overmap/visitable/proc/register_z_levels()
+/obj/overmap/entity/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
@@ -107,14 +107,14 @@
 	if(!in_space)
 		(LEGACY_MAP_DATUM).sealed_levels |= map_z
 
-/obj/overmap/visitable/proc/unregister_z_levels()
+/obj/overmap/entity/visitable/proc/unregister_z_levels()
 	map_sectors -= map_z
 
 	(LEGACY_MAP_DATUM).player_levels -= map_z
 	if(!in_space)
 		(LEGACY_MAP_DATUM).sealed_levels -= map_z
 
-/obj/overmap/visitable/get_scan_data()
+/obj/overmap/entity/visitable/get_scan_data()
 	if(!known)
 		known = TRUE
 		name = initial(name)
@@ -123,14 +123,14 @@
 		desc = initial(desc)
 	return ..()
 
-/obj/overmap/visitable/proc/get_space_zlevels()
+/obj/overmap/entity/visitable/proc/get_space_zlevels()
 	if(in_space)
 		return map_z
 	else
 		return list()
 
 //Helper for init.
-/obj/overmap/visitable/proc/check_ownership(obj/object)
+/obj/overmap/entity/visitable/proc/check_ownership(obj/object)
 	var/area/A = get_area(object)
 	if(A in SSshuttle.shuttle_areas)
 		return 0
@@ -140,23 +140,23 @@
 		return 1
 
 //If shuttle_name is false, will add to generic waypoints; otherwise will add to restricted. Does not do checks.
-/obj/overmap/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
+/obj/overmap/entity/visitable/proc/add_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
 	landmark.sector_set(src, shuttle_name)
 	if(shuttle_name)
 		LAZYADD(restricted_waypoints[shuttle_name], landmark)
 	else
 		generic_waypoints += landmark
 
-/obj/overmap/visitable/proc/remove_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
+/obj/overmap/entity/visitable/proc/remove_landmark(obj/effect/shuttle_landmark/landmark, shuttle_name)
 	if(shuttle_name)
 		var/list/shuttles = restricted_waypoints[shuttle_name]
 		LAZYREMOVE(shuttles, landmark)
 	else
 		generic_waypoints -= landmark
 
-/obj/overmap/visitable/proc/get_waypoints(var/shuttle_name)
+/obj/overmap/entity/visitable/proc/get_waypoints(var/shuttle_name)
 	. = list()
-	for(var/obj/overmap/visitable/contained in src)
+	for(var/obj/overmap/entity/visitable/contained in src)
 		. += contained.get_waypoints(shuttle_name)
 	for(var/thing in generic_waypoints)
 		.[thing] = name
@@ -164,25 +164,25 @@
 		for(var/thing in restricted_waypoints[shuttle_name])
 			.[thing] = name
 
-/obj/overmap/visitable/proc/cleanup()
+/obj/overmap/entity/visitable/proc/cleanup()
 	return FALSE
 
-/obj/overmap/visitable/MouseEntered(location, control, params)
+/obj/overmap/entity/visitable/MouseEntered(location, control, params)
 	openToolTip(user = usr, tip_src = src, params = params, title = name)
 
 	..()
 
-/obj/overmap/visitable/MouseDown()
+/obj/overmap/entity/visitable/MouseDown()
 	closeToolTip(usr) //No reason not to, really
 
 	..()
 
-/obj/overmap/visitable/MouseExited()
+/obj/overmap/entity/visitable/MouseExited()
 	closeToolTip(usr) //No reason not to, really
 
 	..()
 
-/obj/overmap/visitable/sector
+/obj/overmap/entity/visitable/sector
 	name = "generic sector"
 	desc = "Sector with some stuff in it."
 	icon_state = "sector"
@@ -190,9 +190,9 @@
 
 // Because of the way these are spawned, they will potentially have their invisibility adjusted by the turfs they are mapped on
 // 	prior to being moved to the overmap. This blocks that. Use set_invisibility to adjust invisibility as needed instead.
-/obj/overmap/visitable/sector/hide()
+/obj/overmap/entity/visitable/sector/hide()
 
-/obj/overmap/visitable/proc/distress(mob/user)
+/obj/overmap/entity/visitable/proc/distress(mob/user)
 	if(has_distress_beacon)
 		return FALSE
 	has_distress_beacon = TRUE
@@ -215,10 +215,10 @@
 	addtimer(CALLBACK(src, .proc/distress_update), 5 MINUTES)
 	return TRUE
 
-/obj/overmap/visitable/proc/get_distress_info()
+/obj/overmap/entity/visitable/proc/get_distress_info()
 	return "\[X:[x], Y:[y]\]"
 
-/obj/overmap/visitable/proc/distress_update()
+/obj/overmap/entity/visitable/proc/distress_update()
 	var/message = "This is the final message from the distress beacon launched from '[initial(name)]'. I can provide this additional information to rescuers: [get_distress_info()]. \
 	Please render assistance under your obligations per the Interplanetary Convention on Space SAR, or relay this message to a party who can. Thank you for your urgent assistance."
 

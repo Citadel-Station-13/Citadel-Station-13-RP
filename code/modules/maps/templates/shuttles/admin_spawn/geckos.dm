@@ -140,7 +140,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/gecko_cr_wreck
 
 // The 'ship'
-/obj/overmap/visitable/ship/landable/gecko_sh
+/obj/overmap/entity/visitable/ship/landable/gecko_sh
 	scanner_name = "Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Fingers
 [i]Class[/i]: Medium Shuttle
@@ -151,7 +151,7 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Stationhopper"
 
-/obj/overmap/visitable/ship/landable/gecko_cr
+/obj/overmap/entity/visitable/ship/landable/gecko_cr
 	scanner_name = "Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Business
 [i]Class[/i]: Medium Shuttle
@@ -162,7 +162,7 @@
 	vessel_size = SHIP_SIZE_LARGE
 	shuttle = "Gecko Cargo Hauler"
 
-/obj/overmap/visitable/ship/landable/gecko_cr_wreck
+/obj/overmap/entity/visitable/ship/landable/gecko_cr_wreck
 	scanner_name = "Wrecked Gecko-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Sticky Situation
 [i]Class[/i]: Medium Shuttle

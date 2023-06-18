@@ -12,7 +12,7 @@
 #define SLANDMARK_FLAG_AUTOSET	1
 /// Zero-G shuttles moved here will lose gravity unless the area has ambient gravity.
 #define SLANDMARK_FLAG_ZERO_G	2
-// Overmap landable shuttles (/obj/overmap/visitable/ship/landable on a /datum/shuttle/autodock/overmap)
+// Overmap landable shuttles (/obj/overmap/entity/visitable/ship/landable on a /datum/shuttle/autodock/overmap)
 /// Ship is at any other shuttle landmark.
 #define SHIP_STATUS_LANDED		1
 /// Ship is at it's shuttle datum's transition shuttle landmark.

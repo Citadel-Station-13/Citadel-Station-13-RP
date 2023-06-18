@@ -1,5 +1,5 @@
 //Overmap Controller
-/obj/overmap/visitable/sector/trade_post
+/obj/overmap/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
@@ -75,7 +75,7 @@
 	fuel_consumption = 5
 	move_time = 10
 
-/obj/overmap/visitable/ship/landable/trade
+/obj/overmap/entity/visitable/ship/landable/trade
 	name = "Beruang Trade Ship"
 	desc = "You know our motto: 'We deliver!'"
 	vessel_mass = 4000

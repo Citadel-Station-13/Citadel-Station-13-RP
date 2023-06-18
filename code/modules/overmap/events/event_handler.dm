@@ -16,7 +16,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 	var/list/candidate_turfs = list()
 	for(var/Trf in overmap_turfs)
 		var/turf/T = Trf
-		if(!(locate(/obj/overmap/visitable) in T))
+		if(!(locate(/obj/overmap/entity/visitable) in T))
 			candidate_turfs += T
 
 	for(var/i = 1 to number_of_events)
@@ -69,7 +69,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		if(T in candidate_turfs)
 			return T
 
-/singleton/overmap_event_handler/proc/start_hazard(var/obj/overmap/visitable/ship/ship, var/obj/overmap/tiled/hazard/hazard)	// Make these accept both hazards or events
+/singleton/overmap_event_handler/proc/start_hazard(var/obj/overmap/entity/visitable/ship/ship, var/obj/overmap/tiled/hazard/hazard)	// Make these accept both hazards or events
 	if(!(ship in ship_events))
 		ship_events += ship
 
@@ -85,7 +85,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		E.victim = ship
 		LAZYADD(ship_events[ship], E)
 
-/singleton/overmap_event_handler/proc/stop_hazard(var/obj/overmap/visitable/ship/ship, var/obj/overmap/tiled/hazard/hazard)
+/singleton/overmap_event_handler/proc/stop_hazard(var/obj/overmap/entity/visitable/ship/ship, var/obj/overmap/tiled/hazard/hazard)
 	for(var/event_type in hazard.events)
 		var/datum/event/E = is_event_active(ship, event_type, hazard.difficulty)
 		if(E)
@@ -98,7 +98,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		if(E.type == event_type && E.severity == severity)
 			return E
 
-/singleton/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, var/obj/overmap/visitable/ship/ship, var/old_loc)
+/singleton/overmap_event_handler/proc/on_turf_entered(var/turf/new_loc, var/obj/overmap/entity/visitable/ship/ship, var/old_loc)
 	if(!istype(ship))
 		return
 	if(new_loc == old_loc)
@@ -107,7 +107,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 	for(var/obj/overmap/tiled/hazard/E in hazard_by_turf[new_loc])
 		start_hazard(ship, E)
 
-/singleton/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, var/obj/overmap/visitable/ship/ship, var/new_loc)
+/singleton/overmap_event_handler/proc/on_turf_exited(var/turf/old_loc, var/obj/overmap/entity/visitable/ship/ship, var/new_loc)
 	if(!istype(ship))
 		return
 	if(new_loc == old_loc)
@@ -134,7 +134,7 @@ GLOBAL_DATUM_INIT(overmap_event_handler, /singleton/overmap_event_handler, new)
 		hazard_by_turf |= T
 		hazard_by_turf[T] = active_hazards
 
-	for(var/obj/overmap/visitable/ship/ship in T)
+	for(var/obj/overmap/entity/visitable/ship/ship in T)
 		for(var/datum/event/E in ship_events[ship])
 			if(is_event_in_turf(E, T))
 				continue

@@ -1639,7 +1639,7 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "Tq" = (
-/obj/overmap/visitable/sector/virgo2,
+/obj/overmap/entity/visitable/sector/virgo2,
 /turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "TR" = (

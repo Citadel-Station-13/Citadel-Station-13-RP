@@ -6,7 +6,7 @@
 	var/range = 0	//how many overmap tiles can shuttle go, for picking destinations and returning.
 	var/fuel_consumption = 0 //Amount of moles of gas consumed per trip; If zero, then shuttle is magic and does not need fuel
 	var/list/obj/structure/fuel_port/fuel_ports //the fuel ports of the shuttle (but usually just one)
-	var/obj/overmap/visitable/ship/landable/myship //my overmap ship object
+	var/obj/overmap/entity/visitable/ship/landable/myship //my overmap ship object
 
 	category = /datum/shuttle/autodock/overmap
 
@@ -60,7 +60,7 @@
 	if(!our_sector && myship?.landmark)
 		res["Perform Test Jump"] = myship.landmark
 		return res //We're not on the overmap, maybe an admin spawned us on a non-sector map. We're broken until we connect to our space z-level.
-	for (var/obj/overmap/visitable/S in range(get_turf(our_sector), range))
+	for (var/obj/overmap/entity/visitable/S in range(get_turf(our_sector), range))
 		var/list/waypoints = S.get_waypoints(name)
 		for(var/obj/effect/shuttle_landmark/LZ in waypoints)
 			if(LZ.is_valid(src))

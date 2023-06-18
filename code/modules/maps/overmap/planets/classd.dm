@@ -1,4 +1,4 @@
-/obj/overmap/visitable/sector/classd
+/obj/overmap/entity/visitable/sector/classd
 	name = "Class D Moon"
 	desc = "A rocky planet with radioactive hazards abundant."
 	scanner_desc = @{"[i]Stellar Body[/i]:

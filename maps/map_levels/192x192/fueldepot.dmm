@@ -1076,7 +1076,7 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "tJ" = (
-/obj/overmap/visitable/sector/fueldepot,
+/obj/overmap/entity/visitable/sector/fueldepot,
 /turf/space,
 /area/space)
 "vy" = (

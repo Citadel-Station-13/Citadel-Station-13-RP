@@ -922,7 +922,7 @@
 /area/shuttle/curabitur/curashuttle/med)
 "bL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/curashuttle,
-/obj/overmap/visitable/ship/landable/curashuttle,
+/obj/overmap/entity/visitable/ship/landable/curashuttle,
 /obj/structure/handrail{
 	dir = 1
 	},

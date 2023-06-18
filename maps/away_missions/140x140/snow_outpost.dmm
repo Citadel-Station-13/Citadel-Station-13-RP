@@ -2848,7 +2848,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "Uy" = (
-/obj/overmap/visitable/sector/gateway/snowoutpost,
+/obj/overmap/entity/visitable/sector/gateway/snowoutpost,
 /turf/simulated/mineral/ignore_mapgen,
 /area/awaymission/snow_outpost/dark)
 "Vk" = (

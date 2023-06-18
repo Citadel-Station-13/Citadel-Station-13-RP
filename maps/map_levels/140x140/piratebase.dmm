@@ -119,7 +119,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "fY" = (
-/obj/overmap/visitable/sector/pirate_base,
+/obj/overmap/entity/visitable/sector/pirate_base,
 /turf/space,
 /area/space)
 "gj" = (
@@ -179,7 +179,7 @@
 /area/piratebase/facility)
 "hY" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/pirate,
-/obj/overmap/visitable/ship/landable/pirate,
+/obj/overmap/entity/visitable/ship/landable/pirate,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
 "ie" = (

@@ -18,7 +18,7 @@
 /area/shuttle/salamander)
 "aL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/salamander,
-/obj/overmap/visitable/ship/landable/salamander,
+/obj/overmap/entity/visitable/ship/landable/salamander,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},

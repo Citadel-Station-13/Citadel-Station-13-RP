@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/overmap/visitable/sector/alienship
+/obj/overmap/entity/visitable/sector/alienship
 	name = "Unknown Vessel"
 	desc = "An unknown vessel detected by sensors."
 	start_x = 12

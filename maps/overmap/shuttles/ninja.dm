@@ -39,7 +39,7 @@
 	defer_initialisation = TRUE
 
 // The 'ship' of the shuttle
-/obj/overmap/visitable/ship/landable/ninja
+/obj/overmap/entity/visitable/ship/landable/ninja
 	name = "Unknown Vessel"
 	desc = "Scans inconclusive."
 	vessel_mass = 4000

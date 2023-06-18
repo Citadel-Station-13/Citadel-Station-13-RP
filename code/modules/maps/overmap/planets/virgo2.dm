@@ -12,7 +12,7 @@
 	maximum_temp = 612
 
 
-/obj/overmap/visitable/sector/virgo2
+/obj/overmap/entity/visitable/sector/virgo2
 	name = "Virgo 2"
 	desc = "Includes the Remmi Aerostat and associated ground mining complexes."
 	scanner_desc = @{"[i]Stellar Body[/i]: Virgo 2

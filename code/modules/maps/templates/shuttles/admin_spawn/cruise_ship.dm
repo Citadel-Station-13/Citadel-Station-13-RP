@@ -39,7 +39,7 @@
 	defer_initialisation = TRUE //We're not loaded until an admin does it
 
 // The 'ship'
-/obj/overmap/visitable/ship/landable/cruise_ship
+/obj/overmap/entity/visitable/ship/landable/cruise_ship
 	icon_state = "shuttle"
 	moving_state = "shuttle"
 	scanner_name = "UKN Aerondight"

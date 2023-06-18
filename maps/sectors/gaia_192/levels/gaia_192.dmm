@@ -2168,7 +2168,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside/cabin)
 "lI" = (
-/obj/overmap/visitable/sector/gaia_planet,
+/obj/overmap/entity/visitable/sector/gaia_planet,
 /turf/simulated/floor/water/deep/classm,
 /area/class_m/outside/beach)
 "lJ" = (

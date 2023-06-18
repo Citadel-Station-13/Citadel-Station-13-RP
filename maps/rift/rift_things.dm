@@ -1,6 +1,6 @@
 // Overmap stuff. Main file is under code/modules/maps/overmap/_lythios43c.dm
 // Todo, find a way to populate this list automatically without having to do this
-/obj/overmap/visitable/sector/lythios43c
+/obj/overmap/entity/visitable/sector/lythios43c
 	extra_z_levels = list(
 		/datum/map_level/rift/plains,
 		/datum/map_level/rift/caves,

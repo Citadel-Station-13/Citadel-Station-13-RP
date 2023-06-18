@@ -1433,7 +1433,7 @@
 	pixel_x = 25
 	},
 /obj/effect/shuttle_landmark/triumph/deck4/courser,
-/obj/overmap/visitable/ship/landable/courser,
+/obj/overmap/entity/visitable/ship/landable/courser,
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
 "bim" = (
@@ -8317,7 +8317,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
 	},
-/obj/overmap/visitable/ship/triumph,
+/obj/overmap/entity/visitable/ship/triumph,
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "giY" = (
@@ -14221,7 +14221,7 @@
 /area/security/lobby)
 "kvk" = (
 /obj/effect/shuttle_landmark/triumph/deck4/civvie,
-/obj/overmap/visitable/ship/landable/civvie,
+/obj/overmap/entity/visitable/ship/landable/civvie,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
@@ -21859,7 +21859,7 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/excursion/general)
 "pTM" = (
-/obj/overmap/visitable/ship/landable/excursion,
+/obj/overmap/entity/visitable/ship/landable/excursion,
 /obj/effect/shuttle_landmark/triumph/deck4/excursion,
 /obj/structure/handrail{
 	dir = 4
