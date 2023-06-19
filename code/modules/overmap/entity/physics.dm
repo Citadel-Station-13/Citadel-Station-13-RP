@@ -8,6 +8,8 @@
 	// todo: proper overmaps physics, take diff from overmap south/west
 	pos_x = (((loc.x - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
 	pos_y = (((loc.y - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
+	pixel_x = 0
+	pixel_y = 0
 
 // legacy ticking hook
 /obj/overmap/entity/process(delta_time)
@@ -18,12 +20,15 @@
 	var/new_position_x = pos_x + vel_x * dt
 	var/new_position_y = pos_y + vel_y * dt
 
-	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
-	var/new_turf_x = CEILING(OVERMAP_DIST_TO_PIXEL(new_position_x) / WORLD_ICON_SIZE, 1)
-	var/new_turf_y = CEILING(OVERMAP_DIST_TO_PIXEL(new_position_y) / WORLD_ICON_SIZE, 1)
+	var/new_pos_pix_x = OVERMAP_DIST_TO_PIXEL(new_position_x)
+	var/new_pos_pix_y = OVERMAP_DIST_TO_PIXEL(new_position_y)
 
-	var/new_pixel_x = MODULUS(new_position_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
-	var/new_pixel_y = MODULUS(new_position_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
+	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
+	var/new_turf_x = CEILING(new_pos_pix_x / WORLD_ICON_SIZE, 1)
+	var/new_turf_y = CEILING(new_pos_pix_y / WORLD_ICON_SIZE, 1)
+
+	var/new_pixel_x = MODULUS(new_pos_pix_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
+	var/new_pixel_y = MODULUS(new_pos_pix_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE / 2) - 1
 
 	var/new_loc = locate(new_turf_x, new_turf_y, z)
 

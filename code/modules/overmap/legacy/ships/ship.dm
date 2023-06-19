@@ -23,10 +23,6 @@
 	/// Arbitrary number, affects how likely are we to evade meteors.
 	var/vessel_size = SHIP_SIZE_LARGE
 
-	/// Pixel coordinates in the world.
-	var/position_x
-	/// Pixel coordinates in the world.
-	var/position_y
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0
 	/// How often ship can do burns.
@@ -49,9 +45,6 @@
 /obj/overmap/entity/visitable/ship/Initialize(mapload)
 	. = ..()
 	SSshuttle.ships += src
-	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_x + 1
-	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
-
 /obj/overmap/entity/visitable/ship/Destroy()
 	SSshuttle.ships -= src
 	. = ..()
@@ -204,11 +197,11 @@
 /obj/overmap/entity/visitable/ship/proc/ETA()
 	. = INFINITY
 	if(vel_x)
-		var/offset = MODULUS(position_x, WORLD_ICON_SIZE)
+		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_x), WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_x > 0) ? (WORLD_ICON_SIZE - offset) : offset
 		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_x))) * 10)
 	if(vel_y)
-		var/offset = MODULUS(position_y, WORLD_ICON_SIZE)
+		var/offset = MODULUS(OVERMAP_DIST_TO_PIXEL(pos_y), WORLD_ICON_SIZE)
 		var/dist_to_go = (vel_y > 0) ? (WORLD_ICON_SIZE - offset) : offset
 		. = min(., (dist_to_go / OVERMAP_DIST_TO_PIXEL(abs(vel_y))) * 10)
 	. = max(., 0)
