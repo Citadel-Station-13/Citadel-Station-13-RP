@@ -101,7 +101,6 @@
 /area/space/debrisfield/medshuttlecrash)
 "v" = (
 /obj/structure/table/rack,
-/obj/item/reagent_containers/chem_disp_cartridge/clonexadone,
 /turf/simulated/shuttle/floor/airless,
 /area/space/debrisfield/medshuttlecrash)
 "w" = (
@@ -181,16 +180,6 @@
 /area/space/debrisfield/medshuttlecrash)
 "M" = (
 /turf/simulated/shuttle/wall/hard_corner,
-/area/space/debrisfield/medshuttlecrash)
-"V" = (
-/obj/structure/table/rack,
-/obj/item/reagent_containers/chem_disp_cartridge/dexalin_p,
-/turf/simulated/shuttle/floor/airless,
-/area/space/debrisfield/medshuttlecrash)
-"W" = (
-/obj/structure/table/rack,
-/obj/item/reagent_containers/chem_disp_cartridge/peridaxon,
-/turf/simulated/shuttle/floor/airless,
 /area/space/debrisfield/medshuttlecrash)
 
 (1,1,1) = {"
@@ -646,8 +635,8 @@ c
 t
 c
 v
-V
-W
+v
+v
 c
 a
 a

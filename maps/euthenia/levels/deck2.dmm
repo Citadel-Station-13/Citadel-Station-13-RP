@@ -4101,12 +4101,7 @@
 "ddA" = (
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
-/obj/item/sign{
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
-	icon_state = "warning";
-	name = "hazard stripes"
-	},
+/obj/item/sign,
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "dej" = (
@@ -30232,9 +30227,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "xlM" = (
-/obj/machinery/computer/power_monitor{
-	throwpass = 1
-	},
+/obj/machinery/computer/power_monitor,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
 	},

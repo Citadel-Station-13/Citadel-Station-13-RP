@@ -13,7 +13,6 @@
 /area/ninja_dojo/dojo)
 "ae" = (
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -21,7 +20,6 @@
 "af" = (
 /obj/effect/floor_decal/asteroid,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -32,7 +30,6 @@
 "ah" = (
 /obj/item/target/alien,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken2"
 	},
 /area/ninja_dojo/dojo)
@@ -218,17 +215,13 @@
 	},
 /area/ninja_dojo/dojo)
 "aI" = (
-/obj/machinery/door/airlock{
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	},
+/obj/machinery/door/airlock,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/ninja_dojo/dojo)
 "aJ" = (
-/obj/machinery/door/airlock{
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	},
+/obj/machinery/door/airlock,
 /obj/map_helper/airlock/door/int_door,
 /turf/unsimulated/floor{
 	icon_state = "plating";
@@ -412,7 +405,6 @@
 /area/shuttle/ninja)
 "bb" = (
 /turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken1"
 	},
 /area/ninja_dojo/dojo)
@@ -467,9 +459,7 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "bj" = (
-/obj/machinery/door/airlock{
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	},
+/obj/machinery/door/airlock,
 /turf/unsimulated/floor{
 	dir = 8;
 	icon_state = "wood"
@@ -535,7 +525,6 @@
 "bn" = (
 /obj/structure/flora/tree/pine,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -543,7 +532,6 @@
 "bo" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -554,7 +542,6 @@
 	health = 1e+006
 	},
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -586,7 +573,6 @@
 	dir = 8
 	},
 /turf/unsimulated/floor{
-	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
 	name = "snow"
 	},
@@ -608,7 +594,6 @@
 /area/ninja_dojo/dojo)
 "bw" = (
 /turf/unsimulated/wall{
-	icon = 'icons/obj/doors/Dooruranium.dmi';
 	icon_state = "door_closed";
 	name = "Sealed Door"
 	},
@@ -736,9 +721,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bN" = (
-/obj/machinery/door/airlock{
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	},
+/obj/machinery/door/airlock,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -869,7 +852,6 @@
 "ce" = (
 /obj/machinery/space_heater,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken3"
 	},
 /area/ninja_dojo/dojo)
@@ -886,9 +868,7 @@
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "vm" = (
-/obj/machinery/door/airlock{
-	icon = 'icons/obj/doors/Dooruranium.dmi'
-	},
+/obj/machinery/door/airlock,
 /obj/map_helper/airlock/door/ext_door,
 /turf/unsimulated/floor{
 	icon_state = "plating";

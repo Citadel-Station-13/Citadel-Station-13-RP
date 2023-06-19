@@ -62,7 +62,7 @@
 
 /atom/movable/openspace
 	name = ""
-	// simulated = FALSE
+	atom_flags = ATOM_ABSTRACT
 	anchored = TRUE
 	mouse_opacity = FALSE
 	abstract_type = /atom/movable/openspace // unsure if this is valid, check with Lohi

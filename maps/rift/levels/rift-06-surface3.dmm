@@ -21334,7 +21334,6 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/freezer{
-	icon = 'icons/obj/doors/Doorint.dmi';
 	name = "Hydroponics";
 	req_one_access = list(35,28)
 	},

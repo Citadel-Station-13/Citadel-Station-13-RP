@@ -7,6 +7,15 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	subsystem_flags = SS_NO_FIRE
 
+	/// global mutex for ensuring two map/level load ops don't go at once
+	/// a separate mutex is used at the actual maploader level
+	/// this ensures we aren't shoving maps in during map init, as that can be both laggy and/or bad to legacy code that
+	/// expect zlevel adjacency.
+	var/load_mutex = FALSE
+
+	// todo: this is going to need a lot more documentation
+	// the idea of a single zlevel for areas is sorta flawed
+	// this is an acceptable lazy lookup but we need to standardize what this means / look at how this is generated.
 	var/list/areas_in_z = list()
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
@@ -21,12 +30,10 @@ SUBSYSTEM_DEF(mapping)
 	// load the map to use
 	read_next_map()
 
-	// load world - this also loads our first reserved level.
+	// load world - this also initializes our first reserved level, which is compiled in.
 	load_station()
 
 	// perform snowflake legacy init stuff
-	// todo: refactor
-	loadEngine()
 	// todo: refactor
 	if(!(LEGACY_MAP_DATUM).overmap_z)
 		build_overmap()
@@ -47,8 +54,6 @@ SUBSYSTEM_DEF(mapping)
 //
 /datum/controller/subsystem/mapping
 	var/list/map_templates = list()
-	var/dmm_suite/maploader = null
-	var/obj/landmark/engine_loader/engine_loader
 	var/list/shelter_templates = list()
 
 /datum/controller/subsystem/mapping/Recover()
@@ -64,44 +69,6 @@ SUBSYSTEM_DEF(mapping)
 			continue
 		map_templates[template.name] = template
 	return TRUE
-
-/datum/controller/subsystem/mapping/proc/loadEngine()
-	if(!engine_loader)
-		return // Seems this map doesn't need an engine loaded.
-
-	var/turf/T = get_turf(engine_loader)
-	if(!isturf(T))
-		subsystem_log("[log_info_line(engine_loader)] not on a turf! Cannot place engine template.")
-		return
-
-	// Choose an engine type
-	var/datum/map_template/engine/chosen_type = null
-	var/list/probabilities = CONFIG_GET(keyed_list/engine_submap)
-	if (length(probabilities))
-		var/chosen_name = lowertext(pickweightAllowZero(probabilities))
-		for(var/mapname in map_templates)
-			// yeah yeah yeah inefficient fight me someone can code me a better subsystem if they want to bother
-			if(lowertext(mapname) == chosen_name)
-				chosen_type = map_templates[mapname]
-		if(!istype(chosen_type))
-			log_config("Configured engine map [chosen_name] is not a valid engine map name!")
-	if(!istype(chosen_type))
-		var/list/engine_types = list()
-		for(var/map in map_templates)
-			var/datum/map_template/engine/MT = map_templates[map]
-			if(istype(MT))
-				engine_types += MT
-		chosen_type = pick(engine_types)
-	subsystem_log("Chose Engine Map: [chosen_type.name]")
-	admin_notice("<span class='danger'>Chose Engine Map: [chosen_type.name]</span>", R_DEBUG)
-	to_chat(world, "<span class='danger'>Engine loaded: [chosen_type.display_name]</span>")
-	GLOB.used_engine = chosen_type.display_name
-
-	// Annihilate movable atoms
-	engine_loader.annihilate_bounds()
-	//CHECK_TICK //Don't let anything else happen for now
-	// Actually load it
-	chosen_type.load(T)
 
 /datum/controller/subsystem/mapping/proc/preloadShelterTemplates()
 	for(var/item in subtypesof(/datum/map_template/shelter))
