@@ -2575,15 +2575,11 @@
 /area/centcom/simulated/evac)
 "ii" = (
 /obj/machinery/light/flamp/noshade,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "ij" = (
 /obj/structure/flora/ausbushes/brflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "ik" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2714,26 +2710,18 @@
 /area/centcom/simulated/evac)
 "iM" = (
 /obj/structure/flora/ausbushes/ppflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iN" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iO" = (
 /obj/structure/table/bench/wooden,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iP" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iR" = (
 /obj/structure/statue/marble/venus{
@@ -2768,9 +2756,7 @@
 "iV" = (
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/ausbushes/ywflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
+/turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iW" = (
 /obj/item/perfect_tele_beacon{
