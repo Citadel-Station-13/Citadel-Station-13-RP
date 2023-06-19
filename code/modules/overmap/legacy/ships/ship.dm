@@ -34,12 +34,6 @@
 	var/position_x
 	/// Pixel coordinates in the world.
 	var/position_y
-	/// velocity x in overmap units per second
-	var/vel_x
-	/// velocity y in overmap units per second
-	var/vel_y
-	/// max speed in overmap units per second
-	var/max_speed = OVERMAP_DISTANCE_TILE
 	/// Worldtime when ship last acceleated.
 	var/last_burn = 0
 	/// How often ship can do burns.
@@ -59,11 +53,6 @@
 	var/skill_needed = SKILL_NONE //We don't like skills.
 	var/operator_skill
 
-/obj/overmap/entity/visitable/ship/New()
-	// assign id immediately
-	id = "[++id_next]"
-	return ..()
-
 /obj/overmap/entity/visitable/ship/Initialize(mapload)
 	. = ..()
 	SSshuttle.ships += src
@@ -71,7 +60,6 @@
 	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + (WORLD_ICON_SIZE/2) + pixel_y + 1
 
 /obj/overmap/entity/visitable/ship/Destroy()
-	STOP_PROCESSING(SSprocessing, src)
 	SSshuttle.ships -= src
 	. = ..()
 
@@ -83,7 +71,7 @@
 	. = ..()
 
 	if(!!is_moving())
-		. += {"\n\[i\]Heading\[/i\]: [get_heading_degrees()]\n\[i\]Velocity\[/i\]: [get_speed_legacy() * 1000]"}
+		. += {"\n\[i\]Heading\[/i\]: [get_heading()]\n\[i\]Velocity\[/i\]: [get_speed_legacy() * 1000]"}
 	else
 		. += {"\n\[i\]Vessel was stationary at time of scan.\[/i\]\n"}
 
@@ -114,11 +102,10 @@
  * get speed in tiles / decisecond
  */
 /obj/overmap/entity/visitable/ship/proc/get_speed_legacy()
-	. = QUANTIZE_OVERMAP_DISTANCE(sqrt(vel_x ** 2 + vel_y ** 2))
-	. = OVERMAP_DIST_TO_PIXEL(.) / WORLD_ICON_SIZE / 10
+	return OVERMAP_DIST_TO_PIXEL(get_speed()) / WORLD_ICON_SIZE / 10
 
 // Get heading in BYOND dir bits
-/obj/overmap/entity/visitable/ship/proc/get_heading()
+/obj/overmap/entity/visitable/ship/proc/get_heading_direction()
 	var/res = NONE
 	if(vel_x)
 		if(vel_x > 0)
@@ -132,26 +119,22 @@
 			res |= SOUTH
 	return res
 
-// Get heading in degrees (like a compass heading)
-/obj/overmap/entity/visitable/ship/proc/get_heading_degrees()
-	return (arctan(vel_y, vel_x) + 360) % 360	// Yes ATAN2(y, x) is correct to get clockwise degrees
-
 /obj/overmap/entity/visitable/ship/proc/adjust_speed(n_x, n_y)
 	var/old_still = !is_moving()
 	PENALIZED_SPEED_CHANGE(vel_x, n_x)
 	PENALIZED_SPEED_CHANGE(vel_y, n_y)
+	// funny; this proc isn't optimized so we abuse it to do our work so i don't have to refactor adjust_speed
+	set_velocity(vel_x, vel_y)
 	update_icon()
 	var/still = !is_moving()
 	if(still == old_still)
 		return
 	else if(still)
-		STOP_PROCESSING(SSprocessing, src)
 		for(var/zz in map_z)
 			SSparallax.update_z_motion(zz)
 			// fuck you we're extra brutal today, decelration kills you too!
 			SSmapping.throw_movables_on_z_turfs_of_type(zz, /turf/space, fore_dir)
 	else
-		START_PROCESSING(SSprocessing, src)
 		glide_size = WORLD_ICON_SIZE/max(DS2TICKS(SSprocessing.wait), 1)	// Down to whatever decimal
 		for(var/zz in map_z)
 			SSparallax.update_z_motion(zz)
@@ -238,7 +221,7 @@
 /obj/overmap/entity/visitable/ship/update_icon()
 	if(!!is_moving())
 		icon_state = moving_state
-		transform = matrix().Turn(get_heading_degrees())
+		transform = matrix().Turn(get_heading())
 	else
 		icon_state = initial(icon_state)
 		transform = null
@@ -299,7 +282,7 @@
 	var/turf/T = get_turf(src) // Usually we're on the turf, but sometimes we might be landed or something.
 	var/x_to_use = T?.x || "UNK"
 	var/y_to_use = T?.y || "UNK"
-	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed_legacy() * 1000], HDG:[get_heading_degrees()]\]"
+	return "\[X:[x_to_use], Y:[y_to_use], VEL:[get_speed_legacy() * 1000], HDG:[get_heading()]\]"
 
 /obj/overmap/entity/visitable/ship/set_glide_size(new_glide_size, recursive)
 	return	// *no*.
