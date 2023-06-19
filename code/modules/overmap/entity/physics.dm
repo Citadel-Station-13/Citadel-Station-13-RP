@@ -6,8 +6,8 @@
 	vel_x = 0
 	vel_y = 0
 	// todo: proper overmaps physics, take diff from overmap south/west
-	pos_x = ((loc.x - 1) * WORLD_ICON_SIZE) + MODULUS(pos_x, WORLD_ICON_SIZE)
-	pos_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(pos_y, WORLD_ICON_SIZE)
+	pos_x = (((loc.x - 1) * WORLD_ICON_SIZE) * OVERMAP_PIXEL_TO_DIST) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_PIXEL_TO_DIST)
+	pos_y = (((loc.y - 1) * WORLD_ICON_SIZE) * OVERMAP_PIXEL_TO_DIST) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_PIXEL_TO_DIST)
 
 // legacy ticking hook
 /obj/overmap/entity/process(delta_time)
@@ -15,12 +15,12 @@
 
 /obj/overmap/entity/proc/physics_tick(dt)
 	// todo: proper overmaps physics, take diff from overmap south/west
-	var/new_position_x = pos_x + (OVERMAP_DIST_TO_PIXEL(vel_x) * dt)
-	var/new_position_y = pos_y + (OVERMAP_DIST_TO_PIXEL(vel_y) * dt)
+	var/new_position_x = pos_x + vel_x * dt
+	var/new_position_y = pos_y + vel_y * dt
 
 	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
-	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
-	var/new_turf_y = CEILING(new_position_y / WORLD_ICON_SIZE, 1)
+	var/new_turf_x = CEILING(OVERMAP_DIST_TO_PIXEL(new_position_x) / WORLD_ICON_SIZE, 1)
+	var/new_turf_y = CEILING(OVERMAP_DIST_TO_PIXEL(new_position_y) / WORLD_ICON_SIZE, 1)
 
 	var/new_pixel_x = MODULUS(new_position_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
 	var/new_pixel_y = MODULUS(new_position_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
@@ -95,4 +95,4 @@
  * get clockwise of N degrees heading of our cardinal velocity
  */
 /obj/overmap/entity/proc/get_heading()
-	return arctan(vel_y, vel_x)
+	return (arctan(vel_y, vel_x) + 360) % 360
