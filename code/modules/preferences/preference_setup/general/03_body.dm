@@ -565,16 +565,16 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_style"])
-		var/marking_count = len(pref.body_marking_ids)
-		if(marking_count >= MAXIMUM_MARKINGS)
-			to_chat(user, "<span class='warning'>You may only select up to [MAXIMUM_MARKINGS] markings!</span>")
-			return
 		var/list/usable_markings = pref.body_marking_ids ^ GLOB.sprite_accessory_markings
 		var/list/translated = list()
 		for(var/id in usable_markings)
 			var/datum/sprite_accessory/S = GLOB.sprite_accessory_markings[id]
 			translated[S.name] = id
 		var/new_marking = tgui_input_list(user, "Choose a body marking:", "Character Preference", translated)
+		var/marking_count = length(pref.body_marking_ids)
+		if(marking_count >= MAXIMUM_MARKINGS)
+			to_chat(user, "<span class='warning'>You may only select up to [MAXIMUM_MARKINGS] markings!</span>")
+			return
 		if(new_marking && CanUseTopic(user))
 			pref.body_marking_ids[translated[new_marking]] = "#000000" //New markings start black
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
