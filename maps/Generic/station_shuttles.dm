@@ -15,7 +15,7 @@
 	move_direction = NORTH
 */
 // The 'ship' of the excursion shuttle // I find it really funny that every shuttle has this line because we've all just copy pasted from the origional lol - Bloop
-/obj/effect/overmap/visitable/ship/landable/tourbus
+/obj/overmap/visitable/ship/landable/tourbus
 	name = "Tour Bus"
 	desc = "A small 'space bus', if you will."
 	vessel_mass = 2000
@@ -43,7 +43,7 @@
 */
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/securiship
+/obj/overmap/visitable/ship/landable/securiship
 	name = "Securiship Shuttle"
 	desc = "A security transport ship."
 	vessel_mass = 4000
@@ -70,7 +70,7 @@
 */
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/medivac
+/obj/overmap/visitable/ship/landable/medivac
 	name = "Medivac Shuttle"
 	desc = "A medical evacuation shuttle."
 	vessel_mass = 4000
