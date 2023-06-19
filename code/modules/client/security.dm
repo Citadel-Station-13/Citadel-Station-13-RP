@@ -1,6 +1,6 @@
 /client/proc/security_note(message)
 	log_and_message_admins("client security: noting [key_name(src)] | [message]")
-	add_system_note("client-security", [message])
+	add_system_note("client-security", message)
 
 /client/proc/security_kick(message)
 	log_and_message_admins("client security: kicking [key_name(src)] | [message]")
