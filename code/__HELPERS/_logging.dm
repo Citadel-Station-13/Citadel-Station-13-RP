@@ -188,6 +188,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
 
+/proc/log_ipintel(text)
+	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
+	message_admins("IPIntel error: [text]")
+
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")

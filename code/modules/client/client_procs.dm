@@ -5,12 +5,6 @@
 ///Could probably do with being lower.
 ///Restricts client uploads to the server to 1MB
 #define UPLOAD_LIMIT		1048576
-GLOBAL_LIST_INIT(blacklisted_builds, list(
-	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1408" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
-	"1428" = "bug causing right-click menus to show too many verbs that's been fixed in version 1429",
-
-	))
 
 #define LIMITER_SIZE	5
 #define CURRENT_SECOND	1
@@ -264,39 +258,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	player.log_connect()
 
 	// -- security --
+	// start caching it immediately
 	SSipintel.vpn_score(address)
 	// run onboarding gauntlet
 	if(!onboarding())
 		return FALSE
 
-	if (byond_version >= 512)
-		if (!byond_build || byond_build < 1386)
-			message_admins("<span class='adminnotice'>[key_name(src)] has been detected as spoofing their byond version. Connection rejected.</span>")
-			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
-			log_access("Failed Login: [key] - Spoofed byond version")
-			qdel(src)
-
-		if (num2text(byond_build) in GLOB.blacklisted_builds)
-			log_access("Failed login: [key] - blacklisted byond version")
-			to_chat(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
-			to_chat(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
-			to_chat(src, "<span class='danger'>Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
-			if(connecting_admin)
-				to_chat(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
-			else
-				disconnect_with_message("Your version of BYOND ([byond_version].[byond_build]) is blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]]. Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")
-				return
-
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
-
-	// Initialize stat panel
-	// stat_panel.initialize(
-	// 	inline_html = file2text('html/statbrowser.html'),
-	// 	inline_js = file2text('html/statbrowser.js'),
-	// 	inline_css = file2text('html/statbrowser.css'),
-	// )
 
 	//* Initialize UI
 	// initialize statbrowser
