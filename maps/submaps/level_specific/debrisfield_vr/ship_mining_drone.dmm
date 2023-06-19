@@ -44,7 +44,6 @@
 "ah" = (
 /obj/structure/prop{
 	desc = "An array of conventional power storage units, for when the added charge longivity and cost of a SMES unit is unneded or impractical.";
-	icon = 'icons/obj/power.dmi';
 	icon_state = "gridchecker_off";
 	name = "capacitor bank"
 	},
@@ -75,7 +74,6 @@
 "ak" = (
 /obj/structure/prop{
 	desc = "There are a number of what seem to be error messages on these screens, none intelligible.";
-	icon = 'icons/obj/mainframe.dmi';
 	icon_state = "leftb";
 	name = "console"
 	},
@@ -84,7 +82,6 @@
 "al" = (
 /obj/structure/prop{
 	desc = "This isn't going to be fixable.";
-	icon = 'icons/obj/mainframe.dmi';
 	icon_state = "aimainframeb";
 	name = "broken console"
 	},
@@ -119,7 +116,6 @@
 "ar" = (
 /obj/machinery/power/rtg/fake_gen{
 	desc = "An array of conventional power storage units, for when the added charge longivity and cost of a SMES unit is unneded or impractical.";
-	icon = 'icons/obj/power.dmi';
 	icon_state = "gridchecker_off";
 	name = "capacitor bank";
 	power_gen = 12
@@ -443,12 +439,11 @@
 	density = 1;
 	desc = "A bizarre mess of robotic limbs, glowing microrefineries, and nanoassemblers gradually converting the pile of raw materials into active hivebots.";
 	destructible = 1;
-	icon = 'icons/obj/recycling.dmi';
 	icon_state = "grinder-b1";
 	name = "hivebot assembler";
 	simultaneous_spawns = 6;
 	spawn_delay = 300;
-	spawn_types = list(/mob/living/simple_mob/mechanical/hivebot/swarm = 200, /mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic = 50, /mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser = 25, /mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion = 10, /mob/living/simple_mob/mechanical/hivebot/tank/meatshield = 10)
+	spawn_types = list(/mob/living/simple_mob/mechanical/hivebot/swarm=200,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/basic=50,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/laser=25,/mob/living/simple_mob/mechanical/hivebot/ranged_damage/ion=10,/mob/living/simple_mob/mechanical/hivebot/tank/meatshield=10)
 	},
 /turf/simulated/floor/airless,
 /area/submap/debrisfield_vr/mining_drone_ship)
@@ -543,7 +538,6 @@
 "ba" = (
 /obj/structure/prop{
 	desc = "An array of conventional power storage units, for when the added charge longivity and cost of a SMES unit is unneded or impractical.";
-	icon = 'icons/obj/power.dmi';
 	icon_state = "gridchecker_off";
 	name = "capacitor bank"
 	},

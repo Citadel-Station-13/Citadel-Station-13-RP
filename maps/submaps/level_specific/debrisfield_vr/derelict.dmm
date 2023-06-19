@@ -371,12 +371,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
-"bp" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
-/area/submap/debrisfield_vr/derelict/interior)
 "bq" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -473,19 +467,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
-"bI" = (
-/obj/machinery/door/airlock/alien,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/submap/debrisfield_vr/derelict/interior)
-"bJ" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty,
-/area/submap/debrisfield_vr/derelict/interior)
 "bK" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -547,13 +528,6 @@
 "bR" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
-/area/submap/debrisfield_vr/derelict/interior)
-"bS" = (
-/obj/machinery/door/airlock/alien,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/reinforced,
 /area/submap/debrisfield_vr/derelict/interior)
 "bT" = (
 /obj/mob_spawner/derelict/corrupt_maint_swarm,
@@ -629,12 +603,6 @@
 "cf" = (
 /obj/structure/cable{
 	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/dark,
-/area/submap/debrisfield_vr/derelict/interior)
-"cg" = (
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/submap/debrisfield_vr/derelict/interior)
@@ -1872,7 +1840,7 @@ ao
 ao
 ao
 ao
-bI
+bQ
 aG
 ao
 ao
@@ -1946,7 +1914,7 @@ aF
 aF
 bk
 av
-bJ
+bN
 aw
 av
 bW
@@ -2020,7 +1988,7 @@ bw
 av
 bk
 av
-bJ
+bN
 aw
 av
 aF
@@ -2094,7 +2062,7 @@ aF
 aF
 bk
 av
-bJ
+bN
 aw
 av
 bX
@@ -2168,7 +2136,7 @@ av
 av
 bk
 av
-bJ
+bN
 aw
 av
 av
@@ -2242,7 +2210,7 @@ aF
 aF
 bk
 av
-bJ
+bN
 aw
 av
 aF
@@ -2316,7 +2284,7 @@ aF
 aF
 bk
 av
-bJ
+bN
 aw
 av
 aF
@@ -2390,7 +2358,7 @@ av
 aF
 bk
 av
-bJ
+bN
 aw
 av
 aD
@@ -2464,7 +2432,7 @@ bm
 av
 bB
 av
-bJ
+bN
 aw
 av
 aF
@@ -2538,7 +2506,7 @@ bk
 bB
 av
 av
-bJ
+bN
 aw
 av
 bY
@@ -2620,7 +2588,7 @@ av
 av
 av
 av
-cg
+cD
 aF
 ao
 bf
@@ -2843,7 +2811,7 @@ av
 av
 av
 aY
-cg
+cD
 ao
 bf
 aK
@@ -2986,7 +2954,7 @@ bN
 aw
 av
 aF
-cg
+cD
 aF
 aF
 aF
@@ -3648,7 +3616,7 @@ aK
 ao
 ao
 ao
-bp
+bG
 bi
 ao
 ao
@@ -3722,7 +3690,7 @@ aK
 aK
 ao
 ao
-bp
+bG
 bi
 ao
 ao
@@ -3796,7 +3764,7 @@ aK
 aK
 aK
 ao
-bp
+bG
 bi
 ao
 aK
@@ -3870,7 +3838,7 @@ aK
 aK
 aK
 ao
-bp
+bG
 bi
 ao
 aK
@@ -3944,7 +3912,7 @@ ao
 ao
 ao
 ao
-bS
+bH
 bU
 ao
 ao
@@ -4083,14 +4051,14 @@ ao
 ao
 aM
 bi
-bp
+bG
 bi
 bi
 av
 bi
-bp
+bG
 av
-bp
+bG
 av
 bi
 bi
@@ -4162,9 +4130,9 @@ av
 bi
 av
 bi
-bp
+bG
 av
-bp
+bG
 av
 bi
 bi
