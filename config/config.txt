@@ -1,9 +1,5 @@
 # You can use the "$include" directive to split your configs however you want
 
-#$include dbconfig.txt
-#$include antag_rep.txt
-$include resources.txt
-$include logging.txt
 $include entries/chat_bridge.txt
 $include entries/cross_server.txt
 $include entries/database.txt
@@ -12,6 +8,7 @@ $include entries/general.txt
 $include entries/health.txt
 $include entries/lobby.txt
 $include entries/logging.txt
+$include entries/photography.txt
 $include entries/resources.txt
 $include entries/security.txt
 $include entries/skills.txt

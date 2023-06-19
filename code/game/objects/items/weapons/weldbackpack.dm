@@ -108,7 +108,7 @@
 	else if (istype(target, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user,"<span class='warning'>The pack is already full!</span>")
 
-/obj/item/weldpack/examine(mob/user)
+/obj/item/weldpack/examine(mob/user, dist)
 	. = ..()
 	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
 

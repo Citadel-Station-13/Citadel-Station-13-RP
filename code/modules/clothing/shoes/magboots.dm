@@ -62,7 +62,7 @@
 	. = ..()
 	set_slowdown()
 
-/obj/item/clothing/shoes/magboots/examine(mob/user)
+/obj/item/clothing/shoes/magboots/examine(mob/user, dist)
 	. = ..()
 	var/state = "disabled"
 	if(clothing_flags & NOSLIP)
@@ -109,7 +109,7 @@
 		magpulse = 0
 		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 
-/obj/item/clothing/shoes/magboots/vox/examine(mob/user)
+/obj/item/clothing/shoes/magboots/vox/examine(mob/user, dist)
 	. = ..()
 	if(magpulse)
 		. += "It would be hard to take these off without relaxing your grip first."

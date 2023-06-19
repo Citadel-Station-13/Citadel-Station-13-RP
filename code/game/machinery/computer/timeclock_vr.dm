@@ -191,7 +191,7 @@
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.rank
 		H.mind.role_alt_title = card.assignment
-		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name] has moved On-Duty as [card.assignment].", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/makeOffDuty()
@@ -217,7 +217,7 @@
 		H.mind.assigned_role = ptojob.title
 		H.mind.role_alt_title = ptojob.title
 		foundjob.current_positions--
-		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = GLOB.using_map.get_map_levels(get_z(src)))
+		announce.autosay("[card.registered_name], [oldtitle], has moved Off-Duty.", "Employee Oversight", channel, zlevels = (LEGACY_MAP_DATUM).get_map_levels(get_z(src)))
 	return
 
 /obj/machinery/computer/timeclock/proc/checkCardCooldown()

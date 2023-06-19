@@ -750,7 +750,7 @@
 		accuracy = initial(accuracy)
 		recoil = initial(recoil)
 
-/obj/item/gun/examine(mob/user)
+/obj/item/gun/examine(mob/user, dist)
 	. = ..()
 	if(!no_pin_required)
 		if(pin)

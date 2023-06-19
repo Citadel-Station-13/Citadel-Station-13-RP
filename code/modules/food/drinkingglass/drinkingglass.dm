@@ -27,7 +27,7 @@
 
 	matter = list(MAT_GLASS = 60)
 
-/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user)
+/obj/item/reagent_containers/food/drinks/glass2/examine(mob/user, dist)
 	. = ..()
 
 	for(var/I in extras)

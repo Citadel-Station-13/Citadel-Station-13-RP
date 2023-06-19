@@ -247,7 +247,7 @@
 		else
 			to_chat(user, "<span class='notice'>[src] already has a weight slid into the hilt.")
 
-/obj/item/melee/bokken/examine(mob/user)
+/obj/item/melee/bokken/examine(mob/user, dist)
 	. = ..()
 	if(reinforced)
 		. += "There's a metal rod shoved into the base."

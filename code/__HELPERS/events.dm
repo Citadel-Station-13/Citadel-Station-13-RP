@@ -11,7 +11,7 @@
 			for(var/areapath in typesof(parentpath))
 				// Check if it actually exists.
 				var/area/A = locate(areapath)
-				if(istype(A) && (A.z in GLOB.using_map.player_levels))
+				if(istype(A) && (A.z in (LEGACY_MAP_DATUM).player_levels))
 					grand_list_of_areas += A
 	return grand_list_of_areas
 

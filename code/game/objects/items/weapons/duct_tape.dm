@@ -167,7 +167,7 @@
 
 	var/obj/item/stuck = null
 
-/obj/item/duct_tape_piece/examine(mob/user)
+/obj/item/duct_tape_piece/examine(mob/user, dist)
 	if(stuck)
 		return stuck.examine(user)
 	else

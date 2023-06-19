@@ -234,6 +234,9 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_runtime(text)
 	WRITE_LOG(GLOB.world_runtime_log, text)
 
+/proc/log_shadowban(text)
+	WRITE_LOG(GLOB.world_game_log, "SHADOWBAN: [text]")
+
 /**
  * Rarely gets called; just here in case the config breaks.
  */

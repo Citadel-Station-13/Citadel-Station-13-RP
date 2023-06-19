@@ -27,7 +27,7 @@
 	max_w_class = ITEMSIZE_SMALL
 	max_storage_space = ITEMSIZE_SMALL * 7
 
-/obj/item/storage/secure/examine(mob/user)
+/obj/item/storage/secure/examine(mob/user, dist)
 	. = ..()
 	. += "The service panel is [src.open ? "open" : "closed"]."
 

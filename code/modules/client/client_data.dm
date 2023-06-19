@@ -20,6 +20,8 @@ GLOBAL_LIST_EMPTY(client_data)
 /datum/client_data
 	/// owner ckey
 	var/ckey
+	/// absolutely, positively annihilated
+	var/ligma = FALSE
 
 	//* externally managed data *//
 	/// playtime - role string to number of minutes.
@@ -27,5 +29,22 @@ GLOBAL_LIST_EMPTY(client_data)
 
 /datum/client_data/New(ckey)
 	src.ckey = ckey
+
+	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
+	var/client/C = GLOB.directory[src.ckey]
+	var/why
+	if("[C.ckey]" in the_cheese_touch)
+		why = "ckey"
+		src.ligma = TRUE
+	else if("[C.computer_id]" in the_cheese_touch)
+		why = "computerid"
+		src.ligma = TRUE
+	else if("[C.address]" in the_cheese_touch)
+		why = "IP address"
+		src.ligma = TRUE
+	if(src.ligma)
+		log_shadowban("[ckey] autobanned based on [why].")
+		message_admins(SPAN_DANGER("Automatically shadowbanning [ckey] based on configuration (matched on [why]). Varedit client.persistent.ligma to change this."))
+
 
 #warn playtime handling

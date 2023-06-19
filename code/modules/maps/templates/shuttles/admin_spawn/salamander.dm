@@ -11,7 +11,7 @@
 /datum/map_template/shuttle/overmap/generic/salamander_wreck
 	name = "OM Ship - Salamander Corvette Wreckage"
 	desc = "A medium multirole spacecraft, or at least what's left of it."
-	mappath = "maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
+	map_path = "maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
 	annihilate = TRUE
 
 // The shuttle's area(s)

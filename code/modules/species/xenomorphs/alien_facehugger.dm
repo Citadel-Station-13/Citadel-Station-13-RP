@@ -49,7 +49,7 @@ var/const/MAX_ACTIVE_TIME = 400
 		return INITIALIZE_HINT_QDEL
 */
 
-/obj/item/clothing/mask/facehugger/examine(mob/user)
+/obj/item/clothing/mask/facehugger/examine(mob/user, dist)
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)
@@ -331,7 +331,7 @@ var/const/MAX_ACTIVE_TIME = 400
 	else
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_mob/animal/space/alien/facehugger/examine(mob/user)
+/mob/living/simple_mob/animal/space/alien/facehugger/examine(mob/user, dist)
 	..(user)
 	switch(stat)
 		if(DEAD,UNCONSCIOUS)

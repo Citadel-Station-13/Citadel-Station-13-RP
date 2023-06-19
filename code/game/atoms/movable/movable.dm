@@ -219,10 +219,10 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in GLOB.using_map.sealed_levels)
+	if(z in (LEGACY_MAP_DATUM).sealed_levels)
 		return
 
-	if(GLOB.using_map.use_overmap)
+	if((LEGACY_MAP_DATUM).use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 
@@ -258,12 +258,11 @@
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
-	candidates.Remove("[src.z]")
-
-	if(!candidates.len)
-		return null
-	return text2num(pickweight(candidates))
+	var/list/candidates = SSmapping.crosslinked_levels()
+	candidates -= z
+	if(!length(candidates))
+		return
+	return pick(candidates)
 
 // Returns the current scaling of the sprite.
 // Note this DOES NOT measure the height or width of the icon, but returns what number is being multiplied with to scale the icons, if any.

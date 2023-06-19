@@ -376,7 +376,7 @@ GLOBAL_LIST(topic_status_cache)
 	// ---Hub title---
 	var/servername = config_legacy?.server_name
 	var/stationname = station_name()
-	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	var/defaultstation = (LEGACY_MAP_DATUM) ? (LEGACY_MAP_DATUM).station_name : stationname
 	if(servername || stationname != defaultstation)
 		. += (servername ? "<b>[servername]" : "<b>")
 		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
@@ -395,8 +395,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	// ---Hub footer---
 	. += "\["
-	if(GLOB.using_map)
-		. += "[GLOB.using_map.station_short], "
+	if((LEGACY_MAP_DATUM))
+		. += "[(LEGACY_MAP_DATUM).station_short], "
 
 	. += "[get_security_level()] alert, "
 
