@@ -2576,14 +2576,12 @@
 "ii" = (
 /obj/machinery/light/flamp/noshade,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
 "ij" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
@@ -2717,27 +2715,23 @@
 "iM" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
 "iN" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
 "iO" = (
 /obj/structure/table/bench/wooden,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
 "iP" = (
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
@@ -2753,7 +2747,6 @@
 /area/centcom/simulated/evac)
 "iS" = (
 /obj/structure/memorial{
-	icon = 'icons/obj/structures_vr.dmi';
 	icon_state = "memorial-l"
 	},
 /turf/unsimulated/floor/steel{
@@ -2778,7 +2771,6 @@
 /obj/structure/table/bench/wooden,
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/unsimulated/floor/steel{
-	icon = 'icons/turf/outdoors.dmi';
 	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
@@ -8801,7 +8793,6 @@
 /area/centcom/command)
 "NZ" = (
 /obj/structure/memorial{
-	icon = 'icons/obj/structures_vr.dmi';
 	icon_state = "memorial-r"
 	},
 /turf/unsimulated/floor/steel{

@@ -47,7 +47,6 @@
 	)
 	// todo: yield invoke generation
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 4, world.maxy - 4)
-	new /datum/random_map/noise/ore/beachmine(null, 1, 1, z_index, 64, 64)
 
 /datum/map_level/sector/miaphus_192/desert
 	id = "MiaphusDesert192"
@@ -69,6 +68,3 @@
 			/datum/map_template/submap/level_specific/class_h,
 		)
 	)
-
-/obj/effect/step_trigger/zlevel_fall/beach
-	var/static/target_z

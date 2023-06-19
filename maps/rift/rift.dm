@@ -33,7 +33,7 @@
 
 	legacy_assert_shuttle_datums = list(
 		/datum/shuttle/autodock/ferry/emergency/escape,
-		/datum/shuttle/autodock/overmap/excursion,
+		/datum/shuttle/autodock/overmap/excursion/rift,
 		/datum/shuttle/autodock/overmap/courser,
 		/datum/shuttle/autodock/overmap/hammerhead,
 		/datum/shuttle/autodock/overmap/civvie,
@@ -316,7 +316,8 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			50,
-			/area/rift/surfacebase/outside/west_base/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_base,
+			/area/rift/surfacebase/outside/west_base/submap_seedzone,
+			/datum/map_template/submap/level_specific/rift/west_base,
 		)
 	)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
@@ -346,7 +347,8 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			50,
-			/area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_deep,
+			/area/rift/surfacebase/outside/west_deep/submap_seedzone,
+			/datum/map_template/submap/level_specific/rift/west_deep,
 		)
 	)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)
@@ -375,7 +377,8 @@
 			GLOBAL_PROC_REF(seed_submaps),
 			list(z_index),
 			50,
-			/area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves,
+			/area/rift/surfacebase/outside/west_caves/submap_seedzone,
+			/datum/map_template/submap/level_specific/rift/west_caves,
 		)
 	)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z_index, world.maxx - 3, world.maxy - 3)

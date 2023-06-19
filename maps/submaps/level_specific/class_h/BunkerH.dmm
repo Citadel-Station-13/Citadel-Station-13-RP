@@ -463,7 +463,6 @@
 /area/class_h/POIs/vault)
 "Lp" = (
 /obj/effect/debris/cleanable/greenglow,
-/obj/item/reagent_containers/chem_disp_cartridge/radium,
 /obj/effect/map_effect/radiation_emitter/strong,
 /turf/simulated/mineral/floor/cave,
 /area/class_h/explored)
