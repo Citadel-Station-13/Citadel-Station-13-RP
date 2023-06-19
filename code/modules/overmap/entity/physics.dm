@@ -2,9 +2,16 @@
  * (re)initialize physics
  */
 /obj/overmap/entity/proc/initialize_physics()
+	deactivate_physics()
+	vel_x = 0
+	vel_y = 0
 	// todo: proper overmaps physics, take diff from overmap south/west
 	pos_x = ((loc.x - 1) * WORLD_ICON_SIZE) + MODULUS(pos_x, WORLD_ICON_SIZE)
 	pos_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(pos_y, WORLD_ICON_SIZE)
+
+// legacy ticking hook
+/obj/overmap/entity/process(delta_time)
+	physics_tick(delta_time)
 
 /obj/overmap/entity/proc/physics_tick(dt)
 	// todo: proper overmaps physics, take diff from overmap south/west
@@ -41,7 +48,6 @@
 
 	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
 		activate_physics()
-
 
 /obj/overmap/entity/proc/set_velocity(vx, vy)
 	if(!isnull(vx))
