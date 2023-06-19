@@ -2,11 +2,36 @@
  * (re)initialize physics
  */
 /obj/overmap/entity/proc/initialize_physics()
-	#warn impl
+	// todo: proper overmaps physics, take diff from overmap south/west
+	pos_x = ((loc.x - 1) * WORLD_ICON_SIZE) + MODULUS(pos_x, WORLD_ICON_SIZE)
+	pos_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(pos_y, WORLD_ICON_SIZE)
 
 /obj/overmap/entity/proc/physics_tick(dt)
+	// todo: proper overmaps physics, take diff from overmap south/west
+	var/new_position_x = pos_x + (OVERMAP_DIST_TO_PIXEL(vel_x) * dt)
+	var/new_position_y = pos_y + (OVERMAP_DIST_TO_PIXEL(vel_y) * dt)
 
-	#warn uh
+	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
+	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
+	var/new_turf_y = CEILING(new_position_y / WORLD_ICON_SIZE, 1)
+
+	var/new_pixel_x = MODULUS(new_position_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
+	var/new_pixel_y = MODULUS(new_position_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
+
+	var/new_loc = locate(new_turf_x, new_turf_y, z)
+
+	pos_x = new_position_x
+	pos_y = new_position_y
+
+	if(new_loc != loc)
+		var/turf/old_loc = loc
+		Move(new_loc, NORTH, dt * 10)
+		if(get_dist(old_loc, loc) > 1)
+			pixel_x = new_pixel_x
+			pixel_y = new_pixel_y
+			return
+	// todo: actual animations
+	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
 
 /obj/overmap/entity/proc/adjust_velocity(vx, vy)
 	set_velocity(vel_x + vx, vel_y + vy)

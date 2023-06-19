@@ -37,3 +37,8 @@
 /obj/overmap/entity/Destroy()
 	deactivate_physics()
 	return ..()
+
+/obj/overmap/entity/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
+	. = ..()
+	if(!isturf(old_loc) || forced)
+		initialize_physics()

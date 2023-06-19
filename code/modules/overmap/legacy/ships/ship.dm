@@ -172,45 +172,6 @@
 		if(direction & SOUTH)
 			adjust_speed(0, -acceleration)
 
-/obj/overmap/entity/visitable/ship/process(delta_time)
-	var/new_position_x = position_x + (OVERMAP_DIST_TO_PIXEL(vel_x) * delta_time)
-	var/new_position_y = position_y + (OVERMAP_DIST_TO_PIXEL(vel_y) * delta_time)
-
-	// For simplicity we assume that you can't travel more than one turf per tick.  That would be hella-fast.
-	var/new_turf_x = CEILING(new_position_x / WORLD_ICON_SIZE, 1)
-	var/new_turf_y = CEILING(new_position_y / WORLD_ICON_SIZE, 1)
-
-	var/new_pixel_x = MODULUS(new_position_x, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
-	var/new_pixel_y = MODULUS(new_position_y, WORLD_ICON_SIZE) - (WORLD_ICON_SIZE/2) - 1
-
-	var/new_loc = locate(new_turf_x, new_turf_y, z)
-
-	position_x = new_position_x
-	position_y = new_position_y
-
-	if(new_loc != loc)
-		var/turf/old_loc = loc
-		Move(new_loc, NORTH, delta_time * 10)
-		if(get_dist(old_loc, loc) > 1)
-			pixel_x = new_pixel_x
-			pixel_y = new_pixel_y
-			return
-	// todo: actual animations
-	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
-
-// If we get moved, update our internal tracking to account for it
-/obj/overmap/entity/visitable/ship/Moved(atom/old_loc, direction, forced = FALSE)
-	. = ..()
-	// If moving out of another sector start off centered in the turf.
-	if(!isturf(old_loc))
-		position_x = (WORLD_ICON_SIZE/2) + 1
-		position_y = (WORLD_ICON_SIZE/2) + 1
-		pixel_x = 0
-		pixel_y = 0
-	position_x = ((loc.x - 1) * WORLD_ICON_SIZE) + MODULUS(position_x, WORLD_ICON_SIZE)
-	position_y = ((loc.y - 1) * WORLD_ICON_SIZE) + MODULUS(position_y, WORLD_ICON_SIZE)
-
-
 /obj/overmap/entity/visitable/ship/update_icon()
 	if(!!is_moving())
 		icon_state = moving_state
