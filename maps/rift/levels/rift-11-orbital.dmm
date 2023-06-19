@@ -2746,9 +2746,7 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial{
-	icon_state = "memorial-l"
-	},
+/obj/structure/memorial/small/left,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -8792,9 +8790,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/command)
 "NZ" = (
-/obj/structure/memorial{
-	icon_state = "memorial-r"
-	},
+/obj/structure/memorial/small/right,
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
