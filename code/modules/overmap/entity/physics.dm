@@ -6,8 +6,8 @@
 	vel_x = 0
 	vel_y = 0
 	// todo: proper overmaps physics, take diff from overmap south/west
-	pos_x = (((loc.x - 1) * WORLD_ICON_SIZE) * OVERMAP_PIXEL_TO_DIST) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_PIXEL_TO_DIST)
-	pos_y = (((loc.y - 1) * WORLD_ICON_SIZE) * OVERMAP_PIXEL_TO_DIST) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_PIXEL_TO_DIST)
+	pos_x = (((loc.x - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
+	pos_y = (((loc.y - 1) * WORLD_ICON_SIZE) * OVERMAP_DISTANCE_PIXEL) + ((WORLD_ICON_SIZE * 0.5) * OVERMAP_DISTANCE_PIXEL)
 
 // legacy ticking hook
 /obj/overmap/entity/process(delta_time)
