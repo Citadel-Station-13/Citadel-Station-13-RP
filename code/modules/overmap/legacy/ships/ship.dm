@@ -18,13 +18,6 @@
 	glide_size = 8
 	var/moving_state = "ship_moving"
 
-	//! identity
-	/// id
-	var/id
-	/// next id
-	var/static/id_next = 0
-
-
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
 	var/vessel_mass = 10000
 	/// Arbitrary number, affects how likely are we to evade meteors.

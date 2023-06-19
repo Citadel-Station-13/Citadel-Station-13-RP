@@ -15,6 +15,10 @@
 	var/vel_x
 	/// velocity y in overmap units per second
 	var/vel_y
+	/// position x in overmap units
+	var/pos_x
+	/// position y in overmap units
+	var/pos_y
 	/// max speed in overmap units per second
 	var/max_speed = OVERMAP_DISTANCE_TILE
 	/// is moving
@@ -27,6 +31,7 @@
 
 /obj/overmap/entity/Initialize(mapload)
 	. = ..()
+	initialize_physics()
 	update_velocity_ticking()
 
 /obj/overmap/entity/Destroy()

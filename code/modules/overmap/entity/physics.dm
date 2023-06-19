@@ -1,4 +1,11 @@
+/**
+ * (re)initialize physics
+ */
+/obj/overmap/entity/proc/initialize_physics()
+	#warn impl
+
 /obj/overmap/entity/proc/physics_tick(dt)
+
 	#warn uh
 
 /obj/overmap/entity/proc/adjust_velocity(vx, vy)
@@ -8,7 +15,7 @@
 	vel_x = vx
 	vel_y = vy
 
-	if(!should_be_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
+	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
 		activate_physics()
 
 /obj/overmap/entity/proc/update_velocity_ticking()
