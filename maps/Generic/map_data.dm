@@ -4,7 +4,7 @@
 /obj/landmark/map_data/virgo3b
 	height = 6
 
-/obj/overmap/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
+/obj/overmap/entity/visitable/sector/virgo3b // Just a placeholder for when the map isnt loaded
 
 // Triumph
 /obj/landmark/map_data/triumph
