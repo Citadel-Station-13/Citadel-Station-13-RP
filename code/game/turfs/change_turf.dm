@@ -433,6 +433,6 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		qdel(L)
 
 /turf/proc/ReplaceWithLattice()
-	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+	. = ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 	if(!(locate(/obj/structure/lattice) in .))
 		new /obj/structure/lattice(.)
