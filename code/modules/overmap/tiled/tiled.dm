@@ -4,5 +4,4 @@
  * static, world icon size hitboxes
  */
 /obj/overmap/tiled
-
-#warn impl all
+	icon = 'icons/modules/overmap/tiled.dmi'

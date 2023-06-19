@@ -6,8 +6,7 @@
 //	 and with them "existing" on the overmap Z-level things quickly get odd.
 /obj/overmap/tiled/hazard
 	name = "event"
-	icon = 'icons/obj/overmap.dmi'
-	icon_state = "event"
+	icon_state = "unknown"
 	opacity = 1
 	var/list/events							// List of event datum paths
 	var/list/event_icon_states				// Randomly picked from
