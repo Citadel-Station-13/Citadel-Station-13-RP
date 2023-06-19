@@ -1,7 +1,7 @@
 /obj/overmap/bluespace_rift
 	name = "bluespace rift"
 	desc = "Some sort of bluespace rift. Who knows where it leads?"
-	icon = 'icons/obj/overmap.dmi'
+	icon = 'icons/modules/overmap/entity.dmi'
 	icon_state = "portal"
 	color = "#2288FF"
 

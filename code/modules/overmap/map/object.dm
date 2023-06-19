@@ -1,6 +1,6 @@
 /obj/overmap
 	name = "map object"
-	icon = 'icons/obj/overmap.dmi'
+	icon = 'icons/modules/overmap/entity.dmi'
 	icon_state = "object"
 	color = "#fffffe"
 

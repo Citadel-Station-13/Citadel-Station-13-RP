@@ -5,7 +5,6 @@
 [i]Class[/i]: Installation (Space)
 [i]Transponder[/i]: Transmitting (CIV), V-E.S.A.
 [b]Notice[/b]: This facility classified for public use for the purpose of refueling and recharging starships"}
-	icon = 'icons/obj/overmap_vr.dmi'
 	icon_state = "fueldepot"
 	color = "#33FF33"
 	initial_generic_waypoints = list("fueldepot_east","fueldepot_west","fueldepot_north","fueldepot_south")
