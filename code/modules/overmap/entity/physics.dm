@@ -34,11 +34,20 @@
 	animate(src, pixel_x = new_pixel_x, pixel_y = new_pixel_y, time = 8, flags = ANIMATION_END_NOW)
 
 /obj/overmap/entity/proc/adjust_velocity(vx, vy)
-	set_velocity(vel_x + vx, vel_y + vy)
+	if(!isnull(vx))
+		vel_x += vx
+	if(isnull(vy))
+		vel_y += vy
+
+	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
+		activate_physics()
+
 
 /obj/overmap/entity/proc/set_velocity(vx, vy)
-	vel_x = vx
-	vel_y = vy
+	if(!isnull(vx))
+		vel_x = vx
+	if(isnull(vy))
+		vel_y = vy
 
 	if(!is_moving && (QUANTIZE_OVERMAP_DISTANCE(vel_x) || QUANTIZE_OVERMAP_DISTANCE(vel_y)))
 		activate_physics()

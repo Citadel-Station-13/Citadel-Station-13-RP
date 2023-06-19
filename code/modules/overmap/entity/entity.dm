@@ -42,3 +42,13 @@
 	. = ..()
 	if(!isturf(old_loc) || forced)
 		initialize_physics()
+
+/obj/overmap/entity/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, vel_x))
+			set_velocity(vx = var_value)
+			return TRUE
+		if(NAMEOF(src, vel_y))
+			set_velocity(vy = var_value)
+			return TRUE
+	return ..()
