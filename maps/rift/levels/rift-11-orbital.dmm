@@ -9602,7 +9602,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/specops/engine)
 "Xm" = (
-/turf/unsimulated/map/edge,
+/turf/overmap/edge,
 /area/overmap)
 "Xo" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -10002,7 +10002,7 @@
 /turf/simulated/floor/plating,
 /area/centcom/specops)
 "ZY" = (
-/turf/unsimulated/map,
+/turf/overmap,
 /area/overmap)
 
 (1,1,1) = {"

@@ -2020,7 +2020,7 @@
 /turf/simulated/floor/holofloor/reinforced,
 /area/space)
 "Fb" = (
-/turf/unsimulated/map/edge,
+/turf/overmap/edge,
 /area/overmap)
 "Gx" = (
 /obj/item/chess/wrook,
@@ -2080,7 +2080,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "JB" = (
-/turf/unsimulated/map,
+/turf/overmap,
 /area/overmap)
 "JH" = (
 /obj/structure/catwalk,

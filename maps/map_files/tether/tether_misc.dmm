@@ -2836,7 +2836,7 @@
 /area/centcom/simulated/medical)
 "sF" = (
 /obj/overmap/bluespace_rift,
-/turf/unsimulated/map,
+/turf/overmap,
 /area/overmap)
 "sH" = (
 /obj/item/chess/wpawn,
@@ -4425,7 +4425,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "OY" = (
-/turf/unsimulated/map,
+/turf/overmap,
 /area/overmap)
 "Pb" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -5969,7 +5969,7 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/bathroom)
 "Xl" = (
-/turf/unsimulated/map/edge,
+/turf/overmap/edge,
 /area/overmap)
 "Xm" = (
 /obj/structure/bed/chair,
