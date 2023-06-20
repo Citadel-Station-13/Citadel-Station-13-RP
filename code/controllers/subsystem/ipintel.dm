@@ -29,11 +29,34 @@ SUBSYSTEM_DEF(ipintel)
 	vpn_threshold = CONFIG_GET(number/ipintel_rating_bad)
 
 /datum/controller/subsystem/ipintel/proc/vpn_score(address)
+	var/datum/ipintel/cached = vpn_cache[address]
+	if(isnull(cached))
+		var/datum/ipintel/fetched = ipintel_cache_fetch(address)
+		if(!isnull(fetched))
+			cached = fetched
+			vpn_cache[address] = fetched
+	if(cached?.is_valid())
+		return cached.intel
+	var/score = ipintel_query(address)
+	if(isnull(score))
+		return
+	var/datum/ipintel/result = new
+	result.intel = score
+	result.address = address
+	ipintel_cache_store(result)
+	vpn_cache[address] = result
+	return result.intel
 
 /datum/controller/subsystem/ipintel/proc/vpn_check(address)
 	return vpn_score(address) >= vpn_threshold
 
 /datum/controller/subsystem/ipintel/proc/ipintel_query(address, retries)
+	PRIVATE_PROC(TRUE)
+	// no flooding API without cache being available
+	if(!SSdbcore.Connect())
+		log_ipintel("ipintel: no DB")
+		message_admins("IPIntel failed due to lack of database. Yell at your hosts.")
+		return
 	if(retries > max_retries)
 		log_ipintel("ipintel: bailing for [address] due to [retries] > [max_retries].")
 		return
@@ -84,10 +107,35 @@ SUBSYSTEM_DEF(ipintel)
 		return .()
 
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_fetch(address)
+	PRIVATE_PROC(TRUE)
+	if(!SSdbcore.Connect())
+		return
+	// admin proccall guard override - there's no volatile args here
+	var/old_usr = usr
+	usr = null
+	. = ipintel_cache_fetch_impl(address)
+	usr = old_usr
+
+/datum/controller/subsystem/ipintel/proc/ipintel_cache_fetch_impl(address)
+	PRIVATE_PROC(TRUE)
+	#warn impl
 
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_store(address)
+	PRIVATE_PROC(TRUE)
+	if(!SSdbcore.Connect())
+		return
+	// admin proccall guard override - there's no volatile args here
+	var/old_usr = usr
+	usr = null
+	. = ipintel_cache_store_impl(address)
+	usr = old_usr
+
+/datum/controller/subsystem/ipintel/proc/ipintel_cache_store_impl(address)
+	PRIVATE_PROC(TRUE)
+	#warn impl
 
 /datum/controller/subsystem/ipintel/proc/ipintel_error(address, error, retries)
+	PRIVATE_PROC(TRUE)
 	var/str = "IPIntel error handling on [address]: "
 	if(retries)
 		consequetive_errors++
@@ -95,8 +143,6 @@ SUBSYSTEM_DEF(ipintel)
 		str += "Could not check [address]. Disabling IPIntel for "
 	else
 		str += "Attempting to retry."
-
-#warn impl all
 
 /datum/ipintel
 	var/address
