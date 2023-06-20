@@ -1,5 +1,5 @@
 /datum/design/machine_circuit
-	abstract_type = /datum/design/machine_cicruict
+	abstract_type = /datum/design/machine_circuit
 	category = "Machine Circuits"
 
 /datum/design/machine_circuit/airalarm

@@ -19,7 +19,6 @@
 		var/list/ingredient_list = ingredients[i]
 		var/type = ingredient_list[INGREDIENT_DATA_TYPE]
 		var/amt = ingredient_list[INGREDIENT_DATA_AMOUNT]
-		var/key = ingredient_list[INGREDIENT_DATA_KEY]
 		var/selected = selection[i]
 		switch(type)
 			if(INGREDIENT_TYPE_MATERIAL)
@@ -40,7 +39,7 @@
 				var/obj/item/stack/material/M = S
 				var/mat_id = M.material.id
 				if(materials[mat_id])
-					materials[mat_id] - M.amount * SHEET_MATERIAL_AMOUNT
+					materials[mat_id] -= M.amount * SHEET_MATERIAL_AMOUNT
 					if(materials[mat_id] <= 0)
 						materials -= mat_id
 			else
@@ -110,13 +109,12 @@
 /proc/ui_ingredients_available(list/obj/item/items)
 	. = list()
 	var/list/materials = list()
-	var/list/materials = list()
 	var/list/material_lookup = list()
 	var/list/reagents = list()
 	var/list/reagent_lookup = list()
 	var/list/stacks = list()
 	var/list/stack_lookup = list()
-	var/list/items = list()
+	var/list/item_instances = list()
 	var/list/mass_items = list()
 	var/list/mass_item_lookup = list()
 
@@ -136,7 +134,7 @@
 			if(isnull(mass_item_lookup[I.type]))
 				mass_item_lookup[I.type] = I.name
 		else
-			items[++items.len] = list(
+			item_instances[++item_instances.len] = list(
 				"name" = I.name,
 				"ref" = ref(I),
 				"path" = I.type,
@@ -150,7 +148,7 @@
 		"reagentLookup" = reagent_lookup,
 		"stacks" = stacks,
 		"stackLookup" = stack_lookup,
-		"items" = items,
+		"items" = item_instances,
 		"massItems" = mass_items,
 		"massItemLookup" = mass_item_lookup,
 	)

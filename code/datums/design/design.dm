@@ -85,7 +85,7 @@
 	if(!name)
 		name = generate_name(build_name)
 	if(!desc)
-		desc = generate_desc()
+		desc = generate_desc(build_desc)
 
 /datum/design/proc/generate_name(template)
 	return template

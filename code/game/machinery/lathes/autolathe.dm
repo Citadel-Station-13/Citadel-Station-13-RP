@@ -1,8 +1,13 @@
+/obj/item/circuitboard/machine/lathe/autolathe
+	name = T_BOARD("autolathe")
+	build_path = /obj/machinery/lathe/autolathe
+
 /obj/machinery/lathe/autolathe
 	name = "autolathe"
 	desc = "A versatile lathe capable of printing many objects with the right loaded designs."
 	icon = 'icons/machinery/lathe/autolathe.dmi'
 	icon_state = "base"
+	circuit = /obj/item/circuitboard/machine/lathe/autolathe
 	design_holder = /datum/design_holder/autolathe
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	has_interface = TRUE

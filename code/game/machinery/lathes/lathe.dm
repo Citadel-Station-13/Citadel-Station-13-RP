@@ -195,7 +195,7 @@
 		if(user.is_in_inventory(I) && !user.transfer_item_to_loc(I, src))
 			user.action_feedback(SPAN_WARNING("[I] is stuck to your hand!"), src)
 			return FALSE
-		user.action_feedback(SPAN_NOTICE("You insert [I] into [src].]"), src)
+		user.action_feedback(SPAN_NOTICE("You insert [I] into [src]."), src)
 	I.forceMove(src)
 	LAZYADD(stored_items, I)
 	ui_controller?.ui_ingredients_update()
@@ -515,7 +515,7 @@
 	/// items to use for design - order matters! uses weakref's.
 	var/list/ingredient_parts
 
-/datum/lathe_queue_entry/proc/ui_data()
+/datum/lathe_queue_entry/ui_data()
 	return list(
 		"design" = design_id,
 		"amount" = amount,

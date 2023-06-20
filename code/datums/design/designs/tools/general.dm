@@ -15,7 +15,7 @@
 	id = "ToolMultitool"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/tool/multitool
+	build_path = /obj/item/multitool
 
 /datum/design/tool/tray_scanner
 	id = "ToolTrayScanner"
@@ -63,7 +63,7 @@
 	id = "ToolHatchet"
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	design_unlock = DESIGN_UNLOCK_INTRINSIC
-	build_path = /obj/item/knife/machete/hatchet
+	build_path = /obj/item/material/knife/machete/hatchet
 
 /datum/design/tool/minihoe
 	id = "ToolMinihoe"

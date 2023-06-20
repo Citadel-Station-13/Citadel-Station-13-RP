@@ -1148,54 +1148,54 @@
 	name = "Duke Chassis"
 	id = "duke_chassis"
 	build_path = /obj/item/mecha_parts/fighter/chassis/duke
-	time = 30
+	work = 3 * 30
 	materials = list(MAT_STEEL = 37500, MAT_GLASS = 15000, MAT_PLASTEEL = 20000)
 
 /datum/design/item/mechfab/fighter/duke/core
 	name = "Duke Core"
 	id = "duke_core"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_core
-	time = 60
+	work = 3 * 60
 	materials = list(MAT_STEEL = 37500, MAT_GLASS = 10000, MAT_PLASTEEL = 20000)
 
 /datum/design/item/mechfab/fighter/duke/cockpit
 	name = "Duke Cockpit"
 	id = "duke_cockpit"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_cockpit
-	time = 15
+	work = 3 * 15
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 2500, MAT_PLASTEEL = 5000, MAT_PLASTIC = 5000)
 
 /datum/design/item/mechfab/fighter/duke/main_engine
 	name = "Duke Main Engine"
 	id = "duke_main_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_main_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 25000, MAT_PLASTEEL = 15000)
 
 /datum/design/item/mechfab/fighter/duke/left_engine
 	name = "Duke Left Engine"
 	id = "duke_left_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_left_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 20000, MAT_PLASTEEL = 10000)
 
 /datum/design/item/mechfab/fighter/duke/right_engine
 	name = "Duke Right Engine"
 	id = "duke_right_engine"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_right_engine
-	time = 25
+	work = 3 * 25
 	materials = list(MAT_STEEL = 20000, MAT_PLASTEEL = 10000)
 
 /datum/design/item/mechfab/fighter/duke/left_wing
 	name = "Duke Left Wing"
 	id = "duke_left_wing"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_left_wing
-	time = 20
+	work = 3 * 20
 	materials = list(MAT_STEEL = 10000, MAT_PLASTIC = 5000, MAT_PLASTEEL = 20000)
 
 /datum/design/item/mechfab/fighter/duke/right_wing
 	name = "Duke Right Wing"
 	id = "duke_right_wing"
 	build_path = /obj/item/mecha_parts/fighter/part/duke_right_wing
-	time = 20
+	work = 3 * 20
 	materials = list(MAT_STEEL = 10000, MAT_PLASTIC = 5000, MAT_PLASTEEL = 20000)

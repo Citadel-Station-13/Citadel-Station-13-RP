@@ -120,7 +120,7 @@
 /datum/design/science/hardsuit_module/hardsuitwelder
 	name = "RIG arc-welder"
 	id = "hardsuitmod_welder"
-	build_path = /obj/item/hardsuit_module/device/hardsuitwelder
+	build_path = /obj/item/hardsuit_module/device/rigwelder
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
 
 /datum/design/science/hardsuit_module/toolset
