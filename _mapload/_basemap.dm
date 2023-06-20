@@ -1,16 +1,9 @@
-/// Uncomment this to load centcom and runtime station and thats it.
-// #define LOWMEMORYMODE
+/// load in the first reserved level, necessary to not have Dream Daemon start in MUD mode.
+#include "_basemap.dmm"
 
-#include "../maps/core/reservation_base_level.dmm"
+#ifdef ALL_MAPS
 
-/**
- * This map is 25x25x1.
- * The zlevel will expand as the world loads.
- */
-#ifndef LOWMEMORYMODE
-	#ifdef ALL_MAPS
-		#ifdef CIBUILDING
-			#include "..\maps\templates.dm"
-		#endif
+	#ifdef CIBUILDING
+		#include "..\maps\templates.dm"
 	#endif
 #endif

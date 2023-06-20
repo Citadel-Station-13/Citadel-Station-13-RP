@@ -262,14 +262,14 @@
 
 /datum/map_template/submap/level_specific/debrisfield_vr/gutted_mackerel
 	name = "Gutted Mackerel LC"
-	mappath = "maps/offmap_vr/om_ships/mackerel_lc_wreck.dmm"
+	map_path = "maps/submaps/level_specific/debrisfield_vr/mackerel_lc_wreck.dmm"
 	cost = 35
 	allow_duplicates = FALSE
 	discard_prob = 25
 
 /datum/map_template/submap/level_specific/debrisfield_vr/wrecked_salamander
 	name = "Wrecked Salamander"
-	mappath = "maps/offmap_vr/om_ships/salamander_wreck.dmm"
+	map_path = "maps/submaps/level_specific/debrisfield_vr/salamander_wreck.dmm"
 	cost = 35
 	allow_duplicates = FALSE
 	discard_prob = 34

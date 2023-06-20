@@ -359,7 +359,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -734,7 +734,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -829,7 +829,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/brigdoor/southleft{
-	req_access = newlist();
+	req_access = list();
 	req_one_access = list(150)
 	},
 /obj/effect/floor_decal/borderfloorblack{

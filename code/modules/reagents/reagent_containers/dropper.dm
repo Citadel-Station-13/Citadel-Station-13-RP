@@ -15,7 +15,7 @@
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
 
-/obj/item/reagent_containers/dropper/examine(mob/user)
+/obj/item/reagent_containers/dropper/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It contains [reagents.total_volume] units of liquid.</span>"

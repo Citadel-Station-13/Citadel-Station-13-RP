@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/ert_ship
 	name = "OM Ship - ERT Ship (New Z)"
 	desc = "NT Emergency Response Ship."
-	mappath = "maps/templates/admin/ert.dmm"
+	map_path = "maps/templates/admin/ert.dmm"
 
 	// The ship's area(s)
 /area/ship/ert

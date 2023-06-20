@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	var/obj/item/paicard/pai = null	// A slot for a personal AI device
 
-/obj/item/pda/examine(mob/user)
+/obj/item/pda/examine(mob/user, dist)
 	. = ..()
 	. += "The time [stationtime2text()] is displayed in the corner of the screen."
 

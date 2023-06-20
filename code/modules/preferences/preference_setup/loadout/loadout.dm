@@ -23,7 +23,7 @@ var/list/gear_datums = list()
 	// todo: remove in favor of uid locks and or just a better system.
 	// Term to check the whitelist for.
 	var/legacy_species_lock
-	var/sort_category = "General"
+	var/sort_category = LOADOUT_CATEGORY_GENERAL
 	/// List of datums which will alter the item after it has been spawned.
 	var/list/gear_tweaks = list()
 	/// Does it go on the exploitable information list?

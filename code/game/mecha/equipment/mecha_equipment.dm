@@ -44,7 +44,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/mecha_parts/mecha_equipment/examine(mob/user)
+/obj/item/mecha_parts/mecha_equipment/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("[src] will fill [equip_type?"a [equip_type]":"any"] slot.")
 

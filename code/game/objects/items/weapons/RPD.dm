@@ -87,7 +87,7 @@
 	return(BRUTELOSS)
 */
 
-/obj/item/pipe_dispenser/examine(mob/user)
+/obj/item/pipe_dispenser/examine(mob/user, dist)
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 

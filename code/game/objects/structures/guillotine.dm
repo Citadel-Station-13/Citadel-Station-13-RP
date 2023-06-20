@@ -39,7 +39,7 @@
 	LAZYINITLIST(buckled_mobs)
 	. = ..()
 
-/obj/structure/guillotine/examine(mob/user)
+/obj/structure/guillotine/examine(mob/user, dist)
 	. = ..()
 
 	. += "It is [anchored ? "wrenched to the floor." : "unsecured. A wrench should fix that."]"

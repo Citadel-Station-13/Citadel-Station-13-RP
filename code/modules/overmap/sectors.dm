@@ -32,7 +32,6 @@
 	var/hide_from_reports = FALSE
 
 	var/has_distress_beacon
-	var/list/levels_for_distress
 	var/list/unowned_areas // areas we don't own despite them being present on our z
 
 /obj/effect/overmap/visitable/Initialize(mapload)
@@ -43,13 +42,12 @@
 	find_z_levels() // This populates map_z and assigns z levels to the ship.
 	register_z_levels() // This makes external calls to update global z level information.
 
-	if(!GLOB.using_map.overmap_z)
-		build_overmap()
+	ASSERT((LEGACY_MAP_DATUM).overmap_z)
 
-	start_x = start_x || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
-	start_y = start_y || rand(OVERMAP_EDGE, GLOB.using_map.overmap_size - OVERMAP_EDGE)
+	start_x = start_x || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
+	start_y = start_y || rand(OVERMAP_EDGE, (LEGACY_MAP_DATUM).overmap_size - OVERMAP_EDGE)
 
-	forceMove(locate(start_x, start_y, GLOB.using_map.overmap_z))
+	forceMove(locate(start_x, start_y, (LEGACY_MAP_DATUM).overmap_z))
 
 	docking_codes = "[ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))][ascii2text(rand(65,90))]"
 
@@ -90,22 +88,30 @@
 	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
 		map_z = GetConnectedZlevels(z)
 	if(LAZYLEN(extra_z_levels))
-		map_z |= extra_z_levels
+		for(var/thing in extra_z_levels)
+			if(ispath(thing))
+				var/datum/map_level/level_path = thing
+				thing = initial(level_path.id)
+			var/datum/map_level/level = SSmapping.keyed_levels[thing]
+			if(isnull(level))
+				STACK_TRACE("failed to find level [thing] during init")
+				continue
+			map_z |= level.z_index
 
 /obj/effect/overmap/visitable/proc/register_z_levels()
 	for(var/zlevel in map_z)
 		map_sectors["[zlevel]"] = src
 
-	GLOB.using_map.player_levels |= map_z
+	(LEGACY_MAP_DATUM).player_levels |= map_z
 	if(!in_space)
-		GLOB.using_map.sealed_levels |= map_z
+		(LEGACY_MAP_DATUM).sealed_levels |= map_z
 
 /obj/effect/overmap/visitable/proc/unregister_z_levels()
 	map_sectors -= map_z
 
-	GLOB.using_map.player_levels -= map_z
+	(LEGACY_MAP_DATUM).player_levels -= map_z
 	if(!in_space)
-		GLOB.using_map.sealed_levels -= map_z
+		(LEGACY_MAP_DATUM).sealed_levels -= map_z
 
 /obj/effect/overmap/visitable/get_scan_data()
 	if(!known)
@@ -198,7 +204,7 @@
 
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", zlevel = -1)//announce now tells every z-level once if -1 is passed
 
-	priority_announcement.Sound('sound/AI/sos.ogg', GLOB.using_map.zlevels)//play the sound once
+	priority_announcement.Sound('sound/AI/sos.ogg')//play the sound once
 
 	var/image/I = image(icon, icon_state = "distress")
 	I.plane = ABOVE_LIGHTING_PLANE
@@ -218,24 +224,24 @@
 	priority_announcement.Announce(message, new_title = "Automated Distress Signal", new_sound = 'sound/AI/sos.ogg', zlevel = -1)
 
 /proc/build_overmap()
-	if(!GLOB.using_map.use_overmap)
+	if(!(LEGACY_MAP_DATUM).use_overmap)
 		return 1
 
+	ASSERT(!(LEGACY_MAP_DATUM).overmap_z)
 	testing("Building overmap...")
-	world.increment_max_z()
-	GLOB.using_map.overmap_z = world.maxz
+	(LEGACY_MAP_DATUM).overmap_z = SSmapping.allocate_level().z_index
 
-	testing("Putting overmap on [GLOB.using_map.overmap_z]")
+	testing("Putting overmap on [(LEGACY_MAP_DATUM).overmap_z]")
 	var/area/overmap/A = new
-	for (var/square in block(locate(1,1,GLOB.using_map.overmap_z), locate(GLOB.using_map.overmap_size,GLOB.using_map.overmap_size,GLOB.using_map.overmap_z)))
+	for (var/square in block(locate(1,1,(LEGACY_MAP_DATUM).overmap_z), locate((LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_size,(LEGACY_MAP_DATUM).overmap_z)))
 		var/turf/T = square
-		if(T.x == 1 || T.y == 1 || T.x == GLOB.using_map.overmap_size || T.y == GLOB.using_map.overmap_size)
+		if(T.x == 1 || T.y == 1 || T.x == (LEGACY_MAP_DATUM).overmap_size || T.y == (LEGACY_MAP_DATUM).overmap_size)
 			T = T.ChangeTurf(/turf/unsimulated/map/edge)
 		else
 			T = T.ChangeTurf(/turf/unsimulated/map)
 		ChangeArea(T, A)
 
-	GLOB.using_map.sealed_levels |= GLOB.using_map.overmap_z
+	(LEGACY_MAP_DATUM).sealed_levels |= (LEGACY_MAP_DATUM).overmap_z
 
 	testing("Overmap build complete.")
 	return 1

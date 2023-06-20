@@ -25,7 +25,7 @@
 	var/list/program
 	var/dirty_items = FALSE
 
-/obj/item/integrated_circuit_printer/examine(mob/user)
+/obj/item/integrated_circuit_printer/examine(mob/user, dist)
 	. = ..()
 	ui_interact(user)
 

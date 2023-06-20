@@ -296,7 +296,7 @@
 	to_chat(src, "<span class='warning'>There is nothing of interest to take.</span>")
 	return 0
 
-/mob/living/simple_mob/spiderbot/examine(mob/user)
+/mob/living/simple_mob/spiderbot/examine(mob/user, dist)
 	. = ..()
 	if(src.held_item)
 		. += "It is carrying [icon2html(thing = src, target = world)] \a [src.held_item]."

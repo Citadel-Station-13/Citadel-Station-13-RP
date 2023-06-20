@@ -11,7 +11,7 @@
 	icon_state = "mining_drill"
 	circuit = /obj/item/circuitboard/miningdrill
 	var/braces_needed = 2
-	var/list/supports = list()
+	var/list/obj/machinery/mining/brace/supports = list()
 	var/supported = 0
 	var/active = 0
 	var/list/resource_field = list()
@@ -243,8 +243,12 @@
 	else
 		anchored = 1
 
-	if(supports && supports.len >= braces_needed)
-		supported = 1
+	if(supports)
+		if(supports.len >= braces_needed)
+			supported = 1
+		else for(var/obj/machinery/mining/brace/check in supports)
+			if(check.brace_tier >= 3)
+				supported = 1
 
 	update_icon()
 
@@ -302,11 +306,23 @@
 	desc = "A machinery brace for an industrial drill. It looks easily two feet thick."
 	icon_state = "mining_brace"
 	circuit = /obj/item/circuitboard/miningdrillbrace
+	var/brace_tier = 1
 	var/obj/machinery/mining/drill/connected
 
-/obj/machinery/mining/brace/Initialize(mapload, newdir)
+/obj/machinery/mining/brace/examine(mob/user)
 	. = ..()
-	component_parts = list()
+	if(brace_tier >= 3)
+		. += SPAN_NOTICE("The internals of the brace look resilient enough to support a drill by itself.")
+
+/obj/machinery/mining/brace/Initialize()
+	. = ..()
+
+
+/obj/machinery/mining/brace/RefreshParts()
+	..()
+	brace_tier = 0
+	for(var/obj/item/stock_parts/manipulator/M in component_parts)
+		brace_tier += M.rating
 
 /obj/machinery/mining/brace/attackby(obj/item/W as obj, mob/user as mob)
 	if(connected && connected.active)
@@ -316,6 +332,8 @@
 	if(default_deconstruction_screwdriver(user, W))
 		return
 	if(default_deconstruction_crowbar(user, W))
+		return
+	if(default_part_replacement(user,W))
 		return
 
 	if(W.is_wrench())

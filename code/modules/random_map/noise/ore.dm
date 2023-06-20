@@ -83,7 +83,7 @@
 					continue
 				T.resources[val] = res_num
 
-			var/tmp_cell
+			var/tmp_cell = map[get_map_cell(x,y)]
 			var/spawning
 			if(tmp_cell < rare_val)
 				spawning = surface_metals
@@ -98,8 +98,6 @@
 				if(res_num == 0)
 					continue
 				T.resources[val] = res_num
-
-	return
 
 /datum/random_map/noise/ore/get_map_char(var/value)
 	if(value < rare_val)
