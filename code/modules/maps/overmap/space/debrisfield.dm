@@ -179,7 +179,7 @@
 
 /obj/effect/overmap/visitable/ship/landable/tinycarrier/Initialize(mapload)
 	. = ..()
-	var/datum/lore/organization/O = GLOB.loremaster.organizations[/datum/lore/organization/other/sysdef]
+	var/datum/lore/organization/O = SSlegacy_lore.organizations[/datum/lore/organization/other/sysdef]
 	var/newname = "SDV [pick(O.ship_names)]"
 	scanner_name = newname
 	scanner_desc = {"\[i\]Registration\[/i\]: [newname]

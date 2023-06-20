@@ -17,6 +17,7 @@
 	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercenary \
 	forces deploying to eradicate a large xenomorph infestation."
 	current_time = new /datum/time/classd()
+	weather_holder = /datum/weather_holder/classd
 
 /datum/planet/classd/update_sun()
 	..()

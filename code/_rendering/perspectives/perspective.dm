@@ -705,7 +705,7 @@
 
 /datum/perspective/self/temporary/remove_mobs(mob/M, switching)
 	. = ..()
-	if(!mobs.len)
+	if(!length(mobs))
 		qdel(src)
 
 /**

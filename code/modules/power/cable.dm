@@ -187,6 +187,8 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 1
 
 /obj/structure/cable/update_icon()
+	if(!(atom_flags & ATOM_INITIALIZED))
+		return // do NOT trample d1/d2 before they're set..
 	icon_state = "[d1]-[d2]"
 	alpha = invisibility ? 127 : 255
 

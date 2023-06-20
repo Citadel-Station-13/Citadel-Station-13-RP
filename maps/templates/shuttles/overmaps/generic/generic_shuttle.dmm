@@ -236,7 +236,7 @@
 /area/shuttle/generic_shuttle/gen)
 "az" = (
 /obj/machinery/computer/ship/helm{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -376,7 +376,7 @@
 /area/shuttle/generic_shuttle/gen)
 "aR" = (
 /obj/machinery/computer/shuttle_control/explore/generic_shuttle{
-	req_one_access = newlist()
+	req_one_access = list()
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4

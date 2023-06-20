@@ -170,6 +170,9 @@
 	. = ..()
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+		STATPANEL_DATA_ENTRY("Map", "[(LEGACY_MAP_DATUM)?.name || "Loading..."]")
+		if(!isnull(SSmapping.next_station) && (SSmapping.next_station.name != SSmapping.loaded_station.name))
+			STATPANEL_DATA_ENTRY("Next Map", "[SSmapping.next_station.name]")
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 // todo: refactor
@@ -1163,6 +1166,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = FALSE
 	pixel_x -= shift_pixel_x
 	pixel_y -= shift_pixel_y
+	wallflowering = NONE
 	shift_pixel_x = 0
 	shift_pixel_y = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
@@ -1173,6 +1177,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
@@ -1181,6 +1192,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
+	switch(val)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
@@ -1189,6 +1207,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
+	switch(shift_pixel_x)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(EAST)) | WEST
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(EAST|WEST)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(WEST)) | EAST
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
@@ -1197,6 +1222,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+	switch(shift_pixel_y)
+		if(-INFINITY to -WALLFLOWERING_PIXEL_SHIFT)
+			wallflowering = (wallflowering & ~(NORTH)) | SOUTH
+		if(-WALLFLOWERING_PIXEL_SHIFT + 1 to WALLFLOWERING_PIXEL_SHIFT - 1)
+			wallflowering &= ~(NORTH|SOUTH)
+		if(WALLFLOWERING_PIXEL_SHIFT to INFINITY)
+			wallflowering = (wallflowering & ~(SOUTH)) | NORTH
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 //? Reachability
