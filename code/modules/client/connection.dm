@@ -24,3 +24,13 @@
 		to_chat(src, SPAN_DANGER("Your client is still initializing. Wait a moment."))
 		return FALSE
 	return TRUE
+
+/**
+ * initializes us once everything resolves
+ * this is necessary because things like IPIntel/panic bunker stuff
+ * take time to resolve, and we don't want to block client/New().
+ */
+/client/proc/deferred_initialization_block()
+	UNTIL(!panic_bunker_pending)
+	UNTIL(!queued_security_kick)
+	initialized = TRUE

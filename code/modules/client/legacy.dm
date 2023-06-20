@@ -7,7 +7,7 @@
 		var/datum/db_query/query_hours = SSdbcore.RunQuery(
 			"SELECT department, hours FROM [format_table_name("vr_player_hours")] WHERE ckey = :ckey",
 			list(
-				"ckey" = sql_ckey
+				"ckey" = ckey
 			)
 		)
 		while(query_hours.NextRow())

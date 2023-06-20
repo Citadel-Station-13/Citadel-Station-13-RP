@@ -352,6 +352,8 @@
 	// set initialized if we're not queued for a security kick
 	if(!queued_security_kick || panic_bunker_pending)
 		initialized = TRUE
+	else
+		addtimer(CALLBACK(src, PROC_REF(deferred_initialization_block)), 0)
 	// show any migration errors
 	prefs.auto_flush_errors()
 	// update our hub label
