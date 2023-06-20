@@ -9,7 +9,7 @@
  * @return overmap entity if found, null otherwise.
  */
 /proc/get_overmap_sector(atom/what)
-	RETURN_TYPE(/obj/effect/overmap/visitable)
+	RETURN_TYPE(/obj/overmap/entity/visitable)
 	if(!isnum(what))
 		what = get_z(what) // todo: this doesn't support shuttles :/
 	if((LEGACY_MAP_DATUM).use_overmap)

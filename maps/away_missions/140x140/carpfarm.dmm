@@ -757,7 +757,7 @@
 /turf/space,
 /area/space)
 "Fi" = (
-/obj/effect/overmap/visitable/sector/gateway/carpfarm,
+/obj/overmap/entity/visitable/sector/gateway/carpfarm,
 /turf/space,
 /area/space)
 "Zb" = (

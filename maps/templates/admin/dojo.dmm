@@ -265,7 +265,7 @@
 	req_access = list(150)
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/overmap/visitable/ship/landable/ninja,
+/obj/overmap/entity/visitable/ship/landable/ninja,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aM" = (

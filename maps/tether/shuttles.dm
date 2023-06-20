@@ -106,7 +106,7 @@
 	move_direction = NORTH
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/excursion/tether
+/obj/overmap/entity/visitable/ship/landable/excursion/tether
 	name = "Excursion Shuttle"
 	desc = "The traditional Excursion Shuttle. NT Approved!"
 	fore_dir = NORTH
@@ -132,7 +132,7 @@
 	move_direction = NORTH
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/tourbus
+/obj/overmap/entity/visitable/ship/landable/tourbus
 	name = "Tour Bus"
 	desc = "A small 'space bus', if you will."
 	vessel_mass = 2000
@@ -157,7 +157,7 @@
 	move_direction = EAST
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/medivac
+/obj/overmap/entity/visitable/ship/landable/medivac
 	name = "Medivac Shuttle"
 	desc = "A medical evacuation shuttle."
 	vessel_mass = 4000
@@ -179,7 +179,7 @@
 	move_direction = NORTH
 
 // The 'ship' of the excursion shuttle
-/obj/effect/overmap/visitable/ship/landable/securiship
+/obj/overmap/entity/visitable/ship/landable/securiship
 	name = "Securiship Shuttle"
 	desc = "A security transport ship."
 	vessel_mass = 4000

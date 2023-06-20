@@ -2045,7 +2045,7 @@
 	pixel_x = -25
 	},
 /obj/effect/shuttle_landmark/triumph/trade/hangar,
-/obj/effect/overmap/visitable/ship/landable/trade,
+/obj/overmap/entity/visitable/ship/landable/trade,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "hO" = (
@@ -11075,7 +11075,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "Qo" = (
-/obj/effect/overmap/visitable/sector/trade_post,
+/obj/overmap/entity/visitable/sector/trade_post,
 /turf/space,
 /area/space)
 "Qp" = (

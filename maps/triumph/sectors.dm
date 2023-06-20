@@ -2,7 +2,7 @@
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 // EXCURSION SHUTTLE DATA
-/obj/effect/overmap/visitable/ship/landable/excursion/triumph
+/obj/overmap/entity/visitable/ship/landable/excursion/triumph
 	name = "Excursion Shuttle"
 	desc = "A modified Excursion shuttle thats seen in use of the Marksman fleet of NanoTrasen."
 	color = "#72388d" //Purple
@@ -12,7 +12,7 @@
 	shuttle = "Excursion Shuttle"
 
 //Courser Shuttle Data
-/obj/effect/overmap/visitable/ship/landable/courser/triumph
+/obj/overmap/entity/visitable/ship/landable/courser/triumph
 	name = "Courser Scouting Vessel"
 	desc = "Where there's a cannon, there's a way."
 	color = "#af3e97" //Pinkish Purple
@@ -23,7 +23,7 @@
 
 // Public Civilian Shuttle
 
-/obj/effect/overmap/visitable/ship/landable/civvie/triumph
+/obj/overmap/entity/visitable/ship/landable/civvie/triumph
 	name = "Civilian Transport"
 	desc = "A basic, but slow, transport to ferry civilian to and from the ship."
 	fore_dir = EAST
@@ -35,7 +35,7 @@
 
 // Mining Shuttle
 
-/obj/effect/overmap/visitable/ship/landable/mining/triumph
+/obj/overmap/entity/visitable/ship/landable/mining/triumph
 	name = "Mining Shuttle"
 	desc = "It ain't much, but it's honest work."
 	color = "#ba7d4b" //Tan
@@ -46,7 +46,7 @@
 
 //EMT Shuttle
 
-/obj/effect/overmap/visitable/ship/landable/emt/triumph
+/obj/overmap/entity/visitable/ship/landable/emt/triumph
 	name = "Dart EMT Shuttle"
 	desc = "The budget didn't allow for flashing lights."
 	color = "#00a5f2" //Light Blue
