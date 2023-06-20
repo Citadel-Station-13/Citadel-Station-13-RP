@@ -20,6 +20,8 @@ SUBSYSTEM_DEF(research)
 	return ..()
 
 /datum/controller/subsystem/research/proc/build_designs()
+	design_lookup = list()
+	autolathe_design_ids = list()
 	for(var/datum/design/path as anything in subtypesof(/datum/design))
 		if(initial(path.abstract_type) == path)
 			continue
