@@ -2,7 +2,7 @@
 	return "Data storage design ([..()])"
 
 /datum/design/science/disk/design_disk
-	name = "Design Storage Disk"
+	design_name = "Design Storage Disk"
 	desc = "Produce additional disks for storing device designs."
 	id = "design_disk"
 	req_tech = list(TECH_DATA = 1)
@@ -10,7 +10,7 @@
 	build_path = /obj/item/disk/design_disk
 
 /datum/design/science/disk/tech_disk
-	name = "Technology Data Storage Disk"
+	design_name = "Technology Data Storage Disk"
 	desc = "Produce additional disks for storing technology data."
 	id = "tech_disk"
 	req_tech = list(TECH_DATA = 1)

@@ -83,8 +83,8 @@
 		H.b_skin = 0
 		H.dna.ResetUIFrom(H)
 
-		H.real_name = "Synthmorph #[rand(100,999)]"
-		H.name = H.real_name
+		H.real_design_name = "Synthmorph #[rand(100,999)]"
+		H.design_name = H.real_name
 		H.dir = 2
 		H.add_language(LANGUAGE_EAL)
 		return H
@@ -97,7 +97,7 @@
 	var/gender = MALE
 
 /datum/design/science/prosfab/pros/torso/male
-	name = "FBP Torso (M)"
+	design_name = "FBP Torso (M)"
 	id = "pros_torso_m"
 	build_path = /obj/item/organ/external/chest
 	gender = MALE
@@ -105,13 +105,13 @@
 /obj/item/organ/external/chest/f //To satisfy CI. :|
 
 /datum/design/science/prosfab/pros/torso/female
-	name = "FBP Torso (F)"
+	design_name = "FBP Torso (F)"
 	id = "pros_torso_f"
 	build_path = /obj/item/organ/external/chest/f
 	gender = FEMALE
 
 /datum/design/science/prosfab/pros/head
-	name = "Prosthetic Head"
+	design_name = "Prosthetic Head"
 	id = "pros_head"
 	build_path = /obj/item/organ/external/head
 	work = (30 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -119,56 +119,56 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 3, TECH_DATA = 3)	//Saving the values just in case
 
 /datum/design/science/prosfab/pros/l_arm
-	name = "Prosthetic Left Arm"
+	design_name = "Prosthetic Left Arm"
 	id = "pros_l_arm"
 	build_path = /obj/item/organ/external/arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 10125)
 
 /datum/design/science/prosfab/pros/l_hand
-	name = "Prosthetic Left Hand"
+	design_name = "Prosthetic Left Hand"
 	id = "pros_l_hand"
 	build_path = /obj/item/organ/external/hand
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3375)
 
 /datum/design/science/prosfab/pros/r_arm
-	name = "Prosthetic Right Arm"
+	design_name = "Prosthetic Right Arm"
 	id = "pros_r_arm"
 	build_path = /obj/item/organ/external/arm/right
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 10125)
 
 /datum/design/science/prosfab/pros/r_hand
-	name = "Prosthetic Right Hand"
+	design_name = "Prosthetic Right Hand"
 	id = "pros_r_hand"
 	build_path = /obj/item/organ/external/hand/right
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 3375)
 
 /datum/design/science/prosfab/pros/l_leg
-	name = "Prosthetic Left Leg"
+	design_name = "Prosthetic Left Leg"
 	id = "pros_l_leg"
 	build_path = /obj/item/organ/external/leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 8437)
 
 /datum/design/science/prosfab/pros/l_foot
-	name = "Prosthetic Left Foot"
+	design_name = "Prosthetic Left Foot"
 	id = "pros_l_foot"
 	build_path = /obj/item/organ/external/foot
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 2813)
 
 /datum/design/science/prosfab/pros/r_leg
-	name = "Prosthetic Right Leg"
+	design_name = "Prosthetic Right Leg"
 	id = "pros_r_leg"
 	build_path = /obj/item/organ/external/leg/right
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 8437)
 
 /datum/design/science/prosfab/pros/r_foot
-	name = "Prosthetic Right Foot"
+	design_name = "Prosthetic Right Foot"
 	id = "pros_r_foot"
 	build_path = /obj/item/organ/external/foot/right
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -178,7 +178,7 @@
 	category = list("Prosthetics, Internal")
 
 /datum/design/science/prosfab/pros/internal/cell
-	name = "Prosthetic Powercell"
+	design_name = "Prosthetic Powercell"
 	id = "pros_cell"
 	build_path = /obj/item/organ/internal/cell
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -186,7 +186,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/eyes
-	name = "Prosthetic Eyes"
+	design_name = "Prosthetic Eyes"
 	id = "pros_eyes"
 	build_path = /obj/item/organ/internal/eyes/robot
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -194,35 +194,35 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/hydraulic
-	name = "Hydraulic Hub"
+	design_name = "Hydraulic Hub"
 	id = "pros_hydraulic"
 	build_path = /obj/item/organ/internal/heart/machine
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/reagcycler
-	name = "Reagent Cycler"
+	design_name = "Reagent Cycler"
 	id = "pros_reagcycler"
 	build_path = /obj/item/organ/internal/stomach/machine
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/heatsink
-	name = "Heatsink"
+	design_name = "Heatsink"
 	id = "pros_heatsink"
 	build_path = /obj/item/organ/internal/robotic/heatsink
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/diagnostic
-	name = "Diagnostic Controller"
+	design_name = "Diagnostic Controller"
 	id = "pros_diagnostic"
 	build_path = /obj/item/organ/internal/robotic/diagnostic
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500, MAT_PLASTIC = 3000)
 
 /datum/design/science/prosfab/pros/internal/heart
-	name = "Prosthetic Heart"
+	design_name = "Prosthetic Heart"
 	id = "pros_heart"
 	build_path = /obj/item/organ/internal/heart
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -230,7 +230,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/lungs
-	name = "Prosthetic Lungs"
+	design_name = "Prosthetic Lungs"
 	id = "pros_lung"
 	build_path = /obj/item/organ/internal/lungs
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -238,7 +238,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/liver
-	name = "Prosthetic Liver"
+	design_name = "Prosthetic Liver"
 	id = "pros_liver"
 	build_path = /obj/item/organ/internal/liver
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -246,7 +246,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/kidneys
-	name = "Prosthetic Kidneys"
+	design_name = "Prosthetic Kidneys"
 	id = "pros_kidney"
 	build_path = /obj/item/organ/internal/kidneys
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -254,7 +254,7 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/spleen
-	name = "Prosthetic Spleen"
+	design_name = "Prosthetic Spleen"
 	id = "pros_spleen"
 	build_path = /obj/item/organ/internal/spleen
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -262,14 +262,14 @@
 //	req_tech = list(TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
 
 /datum/design/science/prosfab/pros/internal/larynx
-	name = "Prosthetic Larynx"
+	design_name = "Prosthetic Larynx"
 	id = "pros_larynx"
 	build_path = /obj/item/organ/internal/voicebox
 	work = (15 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 750, MAT_PLASTIC = 500)
 
 /datum/design/science/prosfab/pros/internal/backup_battery
-	name = "Synthetic Back-Up Battery"
+	design_name = "Synthetic Back-Up Battery"
 	id = "synth_backup_battery"
 	build_path = /obj/item/fbp_backup_cell
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -283,62 +283,62 @@
 	materials = list(MAT_STEEL = 3750, MAT_GLASS = 1750)
 
 /datum/design/science/prosfab/augment/hand
-	name = "resonant analyzer"
+	design_name = "resonant analyzer"
 	id = "aug_hand"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 500)
 	build_path = /obj/item/organ/internal/augment/armmounted/hand
 
 /datum/design/science/prosfab/augment/shoulder
-	name = "rotary toolkit"
+	design_name = "rotary toolkit"
 	id = "aug_shoulder"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_ENGINEERING = 4, TECH_DATA = 3)
 	materials = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple
 
 /datum/design/science/prosfab/augment/arm
-	name = "implanted taser"
+	design_name = "implanted taser"
 	id = "aug_arm"
 	req_tech = list(TECH_BIO = 4, TECH_COMBAT = 4, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 2000)
 	build_path = /obj/item/organ/internal/augment/armmounted/taser
 
 /datum/design/science/prosfab/augment/shoulder_med
-	name = "rotary medical kit"
+	design_name = "rotary medical kit"
 	id = "aug_shouldermed"
 	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 4, TECH_DATA = 3)
 	materials = list(MAT_STEEL = 1500, MAT_GLASS = 1000, MAT_PLASTIC = 1000)
 	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/multiple/medical
 
 /datum/design/science/prosfab/augment/shoulder_combat
-	name = "muscular overclocker"
+	design_name = "muscular overclocker"
 	id = "aug_shouldercombat"
 	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 4, TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 2000, MAT_PLASTIC = 3000, MAT_SILVER = 1000, MAT_GOLD = 500)
 	build_path = /obj/item/organ/internal/augment/armmounted/shoulder/surge
 
 /datum/design/science/prosfab/augment/pelvis
-	name = "locomotive optimizer"
+	design_name = "locomotive optimizer"
 	id = "aug_pelvis"
 	req_tech = list(TECH_BIO = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5)
 	materials = list(MAT_STEEL = 1500, MAT_PLASTIC = 2000, MAT_SILVER = 500, MAT_GOLD = 1000)
 	build_path = /obj/item/organ/internal/augment/bioaugment/sprint_enhance
 
 /datum/design/science/prosfab/augment/arm_laser
-	name = "implanted laser rifle"
+	design_name = "implanted laser rifle"
 	id = "aug_armlaser"
 	req_tech = list(TECH_BIO = 5, TECH_COMBAT = 5, TECH_MATERIAL = 5)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 1000, MAT_PLASTIC = 2000, MAT_GOLD = 2000)
 	build_path = /obj/item/organ/internal/augment/armmounted
 
 /datum/design/science/prosfab/augment/eyes
-	name = "thermolensing sunglasses"
+	design_name = "thermolensing sunglasses"
 	id = "aug_eyes"
 	req_tech = list(TECH_BIO = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4, TECH_DATA = 5)
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 1000, MAT_PLASTIC = 1500, MAT_GOLD = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/organ/internal/augment/bioaugment/thermalshades
 
 /datum/design/science/prosfab/augment/hand_sword
-	name = "implanted energy blade"
+	design_name = "implanted energy blade"
 	id = "aug_handsword"
 	req_tech = list(TECH_BIO = 6, TECH_COMBAT = 6, TECH_ILLEGAL = 4, TECH_MATERIAL = 4)
 	materials = list(MAT_STEEL = 1500, MAT_GLASS = 500, MAT_PLASTIC = 2000, MAT_GOLD = 2000, MAT_URANIUM = 1500, MAT_DIAMOND = 2500)
@@ -351,49 +351,49 @@
 	materials = list(MAT_STEEL = 3750)
 
 /datum/design/science/prosfab/cyborg/exoskeleton
-	name = "Robot Exoskeleton"
+	design_name = "Robot Exoskeleton"
 	id = "robot_exoskeleton"
 	build_path = /obj/item/robot_parts/robot_suit
 	work = (50 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 37500)
 
 /datum/design/science/prosfab/cyborg/torso
-	name = "Robot Torso"
+	design_name = "Robot Torso"
 	id = "robot_torso"
 	build_path = /obj/item/robot_parts/chest
 	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 30000)
 
 /datum/design/science/prosfab/cyborg/head
-	name = "Robot Head"
+	design_name = "Robot Head"
 	id = "robot_head"
 	build_path = /obj/item/robot_parts/head
 	work = (35 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 18750)
 
 /datum/design/science/prosfab/cyborg/l_arm
-	name = "Robot Left Arm"
+	design_name = "Robot Left Arm"
 	id = "robot_l_arm"
 	build_path = /obj/item/robot_parts/l_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 13500)
 
 /datum/design/science/prosfab/cyborg/r_arm
-	name = "Robot Right Arm"
+	design_name = "Robot Right Arm"
 	id = "robot_r_arm"
 	build_path = /obj/item/robot_parts/r_arm
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 13500)
 
 /datum/design/science/prosfab/cyborg/l_leg
-	name = "Robot Left Leg"
+	design_name = "Robot Left Leg"
 	id = "robot_l_leg"
 	build_path = /obj/item/robot_parts/l_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 11250)
 
 /datum/design/science/prosfab/cyborg/r_leg
-	name = "Robot Right Leg"
+	design_name = "Robot Right Leg"
 	id = "robot_r_leg"
 	build_path = /obj/item/robot_parts/r_leg
 	work = (20 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -408,42 +408,42 @@
 	materials = list(MAT_STEEL = 7500)
 
 /datum/design/science/prosfab/cyborg/component/binary_communication_device
-	name = "Binary Communication Device"
+	design_name = "Binary Communication Device"
 	id = "binary_communication_device"
 	build_path = /obj/item/robot_parts/robot_component/binary_communication_device
 
 /datum/design/science/prosfab/cyborg/component/radio
-	name = "Radio"
+	design_name = "Radio"
 	id = "radio"
 	build_path = /obj/item/robot_parts/robot_component/radio
 
 /datum/design/science/prosfab/cyborg/component/actuator
-	name = "Actuator"
+	design_name = "Actuator"
 	id = "actuator"
 	build_path = /obj/item/robot_parts/robot_component/actuator
 
 /datum/design/science/prosfab/cyborg/component/diagnosis_unit
-	name = "Diagnosis Unit"
+	design_name = "Diagnosis Unit"
 	id = "diagnosis_unit"
 	build_path = /obj/item/robot_parts/robot_component/diagnosis_unit
 
 /datum/design/science/prosfab/cyborg/component/camera
-	name = "Camera"
+	design_name = "Camera"
 	id = "camera"
 	build_path = /obj/item/robot_parts/robot_component/camera
 
 /datum/design/science/prosfab/cyborg/component/armour
-	name = "Armour Plating (Robot)"
+	design_name = "Armour Plating (Robot)"
 	id = "armour"
 	build_path = /obj/item/robot_parts/robot_component/armour
 
 // /datum/design/science/prosfab/cyborg/component/armour_heavy
-// 	name = "Armour Plating (Platform)"
+// 	design_name = "Armour Plating (Platform)"
 // 	id = "platform_armour"
 // 	build_path = /obj/item/robot_parts/robot_component/armour_platform
 
 /datum/design/science/prosfab/cyborg/component/ai_shell
-	name = "AI Remote Interface"
+	design_name = "AI Remote Interface"
 	id = "mmi_ai_shell"
 	build_path = /obj/item/mmi/inert/ai_remote
 
@@ -455,54 +455,54 @@
 	materials = list(MAT_STEEL = 7500)
 
 /datum/design/science/prosfab/robot_upgrade/rename
-	name = "Rename Module"
+	design_name = "Rename Module"
 	desc = "Used to rename a cyborg."
 	id = "borg_rename_s"
 	build_path = /obj/item/borg/upgrade/rename
 
 /datum/design/science/prosfab/robot_upgrade/reset
-	name = "Reset Module"
+	design_name = "Reset Module"
 	desc = "Used to reset a cyborg's module. Destroys any other upgrades applied to the robot."
 	id = "borg_reset_module"
 	build_path = /obj/item/borg/upgrade/reset
 
 /datum/design/science/prosfab/robot_upgrade/restart
-	name = "Emergency Restart Module"
+	design_name = "Emergency Restart Module"
 	desc = "Used to force a restart of a disabled-but-repaired robot, bringing it back online."
 	id = "borg_restart_module"
 	materials = list(MAT_STEEL = 45000, MAT_GLASS = 3750)
 	build_path = /obj/item/borg/upgrade/restart
 
 /datum/design/science/prosfab/robot_upgrade/vtec
-	name = "VTEC Module"
+	design_name = "VTEC Module"
 	desc = "Used to kick in a robot's VTEC systems, increasing their speed."
 	id = "borg_vtec_module"
 	materials = list(MAT_STEEL = 60000, MAT_GLASS = 4500, MAT_GOLD = 3750)
 	build_path = /obj/item/borg/upgrade/vtec
 
 /datum/design/science/prosfab/robot_upgrade/tasercooler
-	name = "Rapid Taser Cooling Module"
+	design_name = "Rapid Taser Cooling Module"
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate."
 	id = "borg_taser_module"
 	materials = list(MAT_STEEL = 60000, MAT_GLASS = 4500, MAT_GOLD = 1500, MAT_DIAMOND = 375)
 	build_path = /obj/item/borg/upgrade/tasercooler
 
 /datum/design/science/prosfab/robot_upgrade/jetpack
-	name = "Jetpack Module"
+	design_name = "Jetpack Module"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations."
 	id = "borg_jetpack_module"
 	materials = list(MAT_STEEL = 7500, MAT_PHORON = 11250, MAT_URANIUM = 15000)
 	build_path = /obj/item/borg/upgrade/jetpack
 
 /datum/design/science/prosfab/robot_upgrade/advhealth
-	name = "Advanced Health Analyzer Module"
+	design_name = "Advanced Health Analyzer Module"
 	desc = "An advanced health analyzer suitable for diagnosing more serious injuries."
 	id = "borg_advhealth_module"
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 6500, MAT_DIAMOND = 350)
 	build_path = /obj/item/borg/upgrade/advhealth
 
 /datum/design/science/prosfab/robot_upgrade/syndicate
-	name = "Scrambled Equipment Module"
+	design_name = "Scrambled Equipment Module"
 	desc = "Allows for the construction of lethal upgrades for cyborgs."
 	id = "borg_syndicate_module"
 	req_tech = list(TECH_COMBAT = 4, TECH_ILLEGAL = 3)
@@ -510,7 +510,7 @@
 	build_path = /obj/item/borg/upgrade/syndicate
 
 /datum/design/science/prosfab/robot_upgrade/language
-	name = "Language Module"
+	design_name = "Language Module"
 	desc = "Used to let cyborgs other than clerical or service speak a variety of languages."
 	id = "borg_language_module"
 	req_tech = list(TECH_DATA = 6, TECH_MATERIAL = 6)
@@ -520,42 +520,42 @@
 // Synthmorph Bags.
 
 /datum/design/science/prosfab/synthmorphbag
-	name = "Synthmorph Storage Bag"
+	design_name = "Synthmorph Storage Bag"
 	desc = "Used to store or slowly defragment an FBP."
 	id = "misc_synth_bag"
 	materials = list(MAT_STEEL = 250, MAT_GLASS = 250, MAT_PLASTIC = 2000)
 	build_path = /obj/item/bodybag/cryobag/robobag
 
 /datum/design/science/prosfab/badge_nt
-	name = "NanoTrasen Tag"
+	design_name = "NanoTrasen Tag"
 	desc = "Used to identify an empty NanoTrasen FBP."
 	id = "misc_synth_bag_tag_nt"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag
 
 /datum/design/science/prosfab/badge_morph
-	name = "Morpheus Tag"
+	design_name = "Morpheus Tag"
 	desc = "Used to identify an empty Morpheus FBP."
 	id = "misc_synth_bag_tag_morph"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/morpheus
 
 /datum/design/science/prosfab/badge_wardtaka
-	name = "Ward-Takahashi Tag"
+	design_name = "Ward-Takahashi Tag"
 	desc = "Used to identify an empty Ward-Takahashi FBP."
 	id = "misc_synth_bag_tag_wardtaka"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/wardtaka
 
 /datum/design/science/prosfab/badge_zenghu
-	name = "Zeng-Hu Tag"
+	design_name = "Zeng-Hu Tag"
 	desc = "Used to identify an empty Zeng-Hu FBP."
 	id = "misc_synth_bag_tag_zenghu"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/zenghu
 
 /datum/design/science/prosfab/badge_gilthari
-	name = "Gilthari Tag"
+	design_name = "Gilthari Tag"
 	desc = "Used to identify an empty Gilthari FBP."
 	id = "misc_synth_bag_tag_gilthari"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_GOLD = 1000)
@@ -563,7 +563,7 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_ILLEGAL = 2, TECH_PHORON = 2)
 
 /datum/design/science/prosfab/badge_veymed
-	name = "Vey-Medical Tag"
+	design_name = "Vey-Medical Tag"
 	desc = "Used to identify an empty Vey-Medical FBP."
 	id = "misc_synth_bag_tag_veymed"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
@@ -571,28 +571,28 @@
 	req_tech = list(TECH_MATERIAL = 3, TECH_ILLEGAL = 1, TECH_BIO = 4)
 
 /datum/design/science/prosfab/badge_hephaestus
-	name = "Hephaestus Tag"
+	design_name = "Hephaestus Tag"
 	desc = "Used to identify an empty Hephaestus FBP."
 	id = "misc_synth_bag_tag_heph"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/hephaestus
 
 /datum/design/science/prosfab/badge_grayson
-	name = "Grayson Tag"
+	design_name = "Grayson Tag"
 	desc = "Used to identify an empty Grayson FBP."
 	id = "misc_synth_bag_tag_grayson"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/grayson
 
 /datum/design/science/prosfab/badge_xion
-	name = "Xion Tag"
+	design_name = "Xion Tag"
 	desc = "Used to identify an empty Xion FBP."
 	id = "misc_synth_bag_tag_xion"
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500, MAT_PLASTIC = 1000)
 	build_path = /obj/item/clothing/accessory/badge/corporate_tag/xion
 
 /datum/design/science/prosfab/badge_bishop
-	name = "Bishop Tag"
+	design_name = "Bishop Tag"
 	desc = "Used to identify an empty Bishop FBP."
 	id = "misc_synth_bag_tag_bishop"
 	materials = list(MAT_STEEL = 500, MAT_GLASS = 2000, MAT_PLASTIC = 500)

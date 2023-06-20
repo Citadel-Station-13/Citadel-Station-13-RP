@@ -1,10 +1,10 @@
 // Various beakers
 
 /datum/design/science/beaker/AssembleDesignName()
-	name = "Beaker prototype ([build_name])"
+	design_name = "Beaker prototype ([build_name])"
 
 /datum/design/science/beaker/noreact
-	name = "cryostasis"
+	design_name = "cryostasis"
 	desc = "A cryostasis beaker that allows for chemical storage without reactions. Can hold up to 50 units."
 	id = "splitbeaker"
 	req_tech = list(TECH_MATERIAL = 2)
@@ -12,7 +12,7 @@
 	build_path = /obj/item/reagent_containers/glass/beaker/noreact
 
 /datum/design/science/beaker/bluespace
-	name = TECH_BLUESPACE
+	design_name = TECH_BLUESPACE
 	desc = "A bluespace beaker, powered by experimental bluespace technology and Element Cuban combined with the Compound Pete. Can hold up to 300 units."
 	id = "bluespacebeaker"
 	req_tech = list(TECH_BLUESPACE = 2, TECH_MATERIAL = 6)

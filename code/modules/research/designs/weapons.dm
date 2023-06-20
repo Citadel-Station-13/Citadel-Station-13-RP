@@ -78,7 +78,7 @@
 	return "Ballistic weapon ammo ([..()])"
 
 /datum/design/science/weapon/ballistic/ammo/ammo_9mmAdvanced
-	name = "9mm magazine"
+	design_name = "9mm magazine"
 	id = "ammo_9mm"
 	desc = "A 21 round magazine for an advanced 9mm SMG."
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
@@ -86,7 +86,7 @@
 	build_path = /obj/item/ammo_magazine/m9mmAdvanced
 
 /datum/design/science/weapon/ballistic/ammo/techshell
-	name = "unloaded tech shell"
+	design_name = "unloaded tech shell"
 	desc = "A high-tech shotgun shell which can be loaded with materials to produce unique effects."
 	id = "techshell"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
@@ -94,7 +94,7 @@
 	build_path = /obj/item/ammo_casing/a12g/techshell
 
 /datum/design/science/weapon/ballistic/ammo/stunshell
-	name = "stun shell"
+	design_name = "stun shell"
 	desc = "A stunning shell for a shotgun."
 	id = "stunshell"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3)
@@ -102,7 +102,7 @@
 	build_path = /obj/item/ammo_casing/a12g/stunshell
 
 /datum/design/science/weapon/ballistic/ammo/m57x28mmp90
-	name = "H90K magazine"
+	design_name = "H90K magazine"
 	desc = "A large capacity top mounted magazine (5.7x28mm armor-piercing)."
 	id = "m57x28mmp90"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
@@ -110,7 +110,7 @@
 	build_path = /obj/item/ammo_magazine/m57x28mmp90
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles
-	name = "5.7 top-mounted magazine"
+	design_name = "5.7 top-mounted magazine"
 	desc = "A standard capacity sidearm magazine (5.7x28mm)."
 	id = "ntles"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
@@ -118,28 +118,28 @@
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/ap
-	name = "5.7 top-mounted magazine (AP)"
+	design_name = "5.7 top-mounted magazine (AP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "ntlesap"
 	materials = list(MAT_STEEL = 1500, MAT_COPPER = 1000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/ap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/hp
-	name = "5.7 top-mounted magazine (HP)"
+	design_name = "5.7 top-mounted magazine (HP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "ntleshp"
 	materials = list(MAT_STEEL = 1500, MAT_COPPER = 750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hp
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/hunter
-	name = "5.7 top-mounted magazine (Hunter)"
+	design_name = "5.7 top-mounted magazine (Hunter)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
 	id = "ntleshunter"
 	materials = list(MAT_STEEL = 1500, MAT_COPPER = 500)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/hunter
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap
-	name = "5.7 highcap top-mounted magazine"
+	design_name = "5.7 highcap top-mounted magazine"
 	desc = "A high capacity sidearm magazine (5.7x28mm)."
 	id = "ntleshc"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
@@ -147,28 +147,28 @@
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/ap
-	name = "5.7 highcap top-mounted magazine (AP)"
+	design_name = "5.7 highcap top-mounted magazine (AP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "ntleshcap"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2500)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hp
-	name = "5.7 highcap top-mounted magazine (HP)"
+	design_name = "5.7 highcap top-mounted magazine (HP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "ntleshchp"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 2000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/ntles/highcap/hunter
-	name = "5.7 highcap top-mounted magazine (Hunter)"
+	design_name = "5.7 highcap top-mounted magazine (Hunter)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
 	id = "ntleshchunter"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 1750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven
-	name = "5.7 sidearm magazine"
+	design_name = "5.7 sidearm magazine"
 	desc = "A standard capacity sidearm magazine (5.7x28mm)."
 	id = "fiveseven"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
@@ -176,28 +176,28 @@
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/ap
-	name = "5.7 sidearm magazine (AP)"
+	design_name = "5.7 sidearm magazine (AP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "fivesevenap"
 	materials = list(MAT_STEEL = 1250, MAT_COPPER = 1000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/ap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/hp
-	name = "5.7 sidearm magazine (HP)"
+	design_name = "5.7 sidearm magazine (HP)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "fivesevenhp"
 	materials = list(MAT_STEEL = 1250, MAT_COPPER = 750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hp
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/hunter
-	name = "5.7 sidearm magazine (Hunter)"
+	design_name = "5.7 sidearm magazine (Hunter)"
 	desc = "A standard capacity sidearm magazine (5.7x28mm hunter)."
 	id = "fivesevenhunter"
 	materials = list(MAT_STEEL = 1250, MAT_COPPER = 250)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/hunter
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap
-	name = "5.7 sidearm high-cap magazine"
+	design_name = "5.7 sidearm high-cap magazine"
 	desc = "A high capacity sidearm magazine (5.7x28mm)."
 	id = "fivesevenhc"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 4)
@@ -205,21 +205,21 @@
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/ap
-	name = "5.7 sidearm high-cap magazine (AP)"
+	design_name = "5.7 sidearm high-cap magazine (AP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm armor-piercing)."
 	id = "fivesevenhcap"
 	materials = list(MAT_STEEL = 2500, MAT_COPPER = 1000)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/ap
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hp
-	name = "5.7 sidearm high-cap magazine (HP)"
+	design_name = "5.7 sidearm high-cap magazine (HP)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hollow point)."
 	id = "fivesevenhchp"
 	materials = list(MAT_STEEL = 2000, MAT_COPPER = 750)
 	build_path = /obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hp
 
 /datum/design/item/weapon/ballistic/ammo/m57x28mm/fiveseven/highcap/hunter
-	name = "5.7 sidearm high-cap magazine (Hunter)"
+	design_name = "5.7 sidearm high-cap magazine (Hunter)"
 	desc = "A high capacity sidearm magazine (5.7x28mm hunter)."
 	id = "fivesevenhchunter"
 	materials = list(MAT_STEEL = 2000, MAT_COPPER = 500)
@@ -314,14 +314,14 @@
 	return "Melee weapon prototype ([..()])"
 
 /datum/design/science/weapon/melee/esword
-	name = "Portable Energy Blade"
+	design_name = "Portable Energy Blade"
 	id = "chargesword"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 4, TECH_ARCANE = 1)
 	materials = list(MAT_PLASTEEL = 3500, MAT_GLASS = 1000, MAT_LEAD = 2250, MAT_METALHYDROGEN = 500)
 	build_path = /obj/item/melee/energy/sword/charge
 
 /datum/design/science/weapon/melee/eaxe
-	name = "Energy Axe"
+	design_name = "Energy Axe"
 	id = "chargeaxe"
 	req_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 5, TECH_ENGINEERING = 4, TECH_ILLEGAL = 4)
 	materials = list(MAT_PLASTEEL = 3500, MAT_OSMIUM = 2000, MAT_LEAD = 2000, MAT_METALHYDROGEN = 500)
@@ -353,7 +353,7 @@
 //Commenting this weapon out pending further review.
 /*
 /datum/design/science/weapon/energy/protector
-	name = "\'Myrmidon\' code-locked e-gun"
+	design_name = "\'Myrmidon\' code-locked e-gun"
 	desc = "The 'Myrmidon' is a common energy gun that cannot fired lethally on Code Green, requiring Code Blue or higher to unlock its deadly capabilities."
 	id = "protector"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
@@ -362,7 +362,7 @@
 */
 
 /datum/design/science/weapon/energy/netgun
-	name = "\'Retiarius\' capture gun"
+	design_name = "\'Retiarius\' capture gun"
 	id = "netgun"
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 5, TECH_MAGNET = 3)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 3000)
@@ -390,21 +390,21 @@
 	return "Anti-particle weapon prototype ([..()])"
 
 /datum/design/science/weapon/particle/advparticle
-	name = "Advanced anti-particle rifle"
+	design_name = "Advanced anti-particle rifle"
 	id = "advparticle"
 	req_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_URANIUM = 750)
 	build_path = /obj/item/gun/energy/particle/advanced
 
 /datum/design/science/weapon/particle/particlecannon
-	name = "Anti-particle cannon"
+	design_name = "Anti-particle cannon"
 	id = "particlecannon"
 	req_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 5, TECH_POWER = 4, TECH_MAGNET = 4)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 1500, MAT_GOLD = 2000, MAT_URANIUM = 1000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/particle/cannon
 
 /datum/design/science/weapon/particle/pressureinterlock
-	name = "APP pressure interlock"
+	design_name = "APP pressure interlock"
 	id = "pressureinterlock"
 	req_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 250)
@@ -415,14 +415,14 @@
 	return "Cell-based weapon prototype ([..()])"
 
 /datum/design/science/weapon/cell_based/prototype_nsfw
-	name = "cell-loaded revolver"
+	design_name = "cell-loaded revolver"
 	id = "nsfw_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 6000, MAT_PHORON = 8000, MAT_URANIUM = 4000)
 	build_path = /obj/item/gun/ballistic/cell_loaded/combat/prototype
 
 /datum/design/science/weapon/cell_based/prototype_nsfw_mag
-	name = "combat cell magazine"
+	design_name = "combat cell magazine"
 	id = "nsfw_mag_prototype"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 4, TECH_COMBAT = 7)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 4000, MAT_PHORON = 4000)
@@ -432,49 +432,49 @@
 	return "Microbattery prototype ([..()])"
 
 /datum/design/science/nsfw_cell/stun
-	name = "STUN"
+	design_name = "STUN"
 	id = "nsfw_cell_stun"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/stun
 
 /datum/design/science/nsfw_cell/lethal
-	name = "LETHAL"
+	design_name = "LETHAL"
 	id = "nsfw_cell_lethal"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_PHORON = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/lethal
 
 /datum/design/science/nsfw_cell/net
-	name = "NET"
+	design_name = "NET"
 	id = "nsfw_cell_net"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/net
 
 /datum/design/science/nsfw_cell/ion
-	name = "ION"
+	design_name = "ION"
 	id = "nsfw_cell_ion"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/ion
 
 /datum/design/science/nsfw_cell/shotstun
-	name = "SCATTERSTUN"
+	design_name = "SCATTERSTUN"
 	id = "nsfw_cell_shotstun"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 6, TECH_COMBAT = 6)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 2000, MAT_GOLD = 2000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/shotstun
 
 /datum/design/science/nsfw_cell/xray
-	name = "XRAY"
+	design_name = "XRAY"
 	id = "nsfw_cell_xray"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 4, TECH_POWER = 5, TECH_COMBAT = 7)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 1000, MAT_GOLD = 1000, MAT_URANIUM = 1000, MAT_PHORON = 1000)
 	build_path = /obj/item/ammo_casing/microbattery/combat/xray
 
 /datum/design/science/nsfw_cell/stripper
-	name = "STRIPPER"
+	design_name = "STRIPPER"
 	id = "nsfw_cell_stripper"
 	req_tech = list(TECH_MATERIAL = 7, TECH_BIO = 4, TECH_POWER = 4, TECH_COMBAT = 4, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_URANIUM = 2000, MAT_PHORON = 2000, MAT_DIAMOND = 500)
@@ -485,7 +485,7 @@
 	return "Modular weapon prototype ([..()])"
 
 /datum/design/science/modweapon/basic
-	name = "modular energy pistol"
+	design_name = "modular energy pistol"
 	id = "modpistol"
 	req_tech = list(TECH_MATERIAL = 4, TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_SILVER = 3000)
@@ -494,7 +494,7 @@
 /*
 
 /datum/design/science/modweapon/adv
-	name = "advanced modular energy pistol"
+	design_name = "advanced modular energy pistol"
 	id = "advmodpistol"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 3000, MAT_GOLD = 2000, MAT_URANIUM = 3000)
@@ -503,21 +503,21 @@
 */
 
 /datum/design/science/modweapon/carbine
-	name = "modular energy carbine"
+	design_name = "modular energy carbine"
 	id = "modcarbine"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/gun/energy/modular/carbine
 
 /datum/design/science/modweapon/rifle
-	name = "modular energy rifle"
+	design_name = "modular energy rifle"
 	id = "modrifle"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/gun/energy/modular/rifle
 
 /datum/design/science/modweapon/tririfle
-	name = "tri-core modular energy rifle"
+	design_name = "tri-core modular energy rifle"
 	id = "threemodrifle"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 1500)
@@ -526,21 +526,21 @@
 /*
 
 /datum/design/science/modweapon/compact
-	name = "compact modular energy pistol"
+	design_name = "compact modular energy pistol"
 	id = "modcompact"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 5000, MAT_DIAMOND = 3000)
 	build_path = /obj/item/gun/energy/modular/compact
 
 /datum/design/science/modweapon/scatter
-	name = "modular energy scattergun"
+	design_name = "modular energy scattergun"
 	id = "modscatter"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5, TECH_ILLEGAL = 4)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
 	build_path = /obj/item/gun/energy/modular/rifle/scatter
 
 /datum/design/science/modweapon/cannon
-	name = "modular energy cannon"
+	design_name = "modular energy cannon"
 	id = "modcannon"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_GOLD = 6000, MAT_URANIUM = 4000, MAT_DIAMOND = 4000)
@@ -549,7 +549,7 @@
 */
 
 /datum/design/science/modweapon/nuclear
-	name = "modular AEG"
+	design_name = "modular AEG"
 	id = "modAEG"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6, TECH_BLUESPACE = 4)
 	materials = list(MAT_STEEL = 12000, MAT_GLASS = 12000, MAT_SILVER = 6000, MAT_LEAD = 20000, MAT_URANIUM = 20000, MAT_DIAMOND = 4000)
@@ -559,14 +559,14 @@
 	return "Modular weapon module design ([..()])"
 
 /datum/design/science/modweaponnodule/stunmedium
-	name = "stun medium"
+	design_name = "stun medium"
 	id = "stunmedium"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/stun
 
 /datum/design/science/modweaponnodule/stunweak
-	name = "weak stun medium"
+	design_name = "weak stun medium"
 	id = "stunweak"
 	req_tech = list(TECH_MAGNET = 1, TECH_POWER = 2, TECH_COMBAT = 1)
 	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000)
@@ -575,7 +575,7 @@
 /*
 
 /datum/design/science/modweaponnodule/netmedium
-	name = "net projector medium"
+	design_name = "net projector medium"
 	id = "netmedium"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_GOLD = 4000, MAT_URANIUM = 2000)
@@ -584,21 +584,21 @@
 */
 
 /datum/design/science/modweaponnodule/electrode
-	name = "electrode projector tube"
+	design_name = "electrode projector tube"
 	id =	"electrodetube"
 	req_tech =  list(TECH_MAGNET = 2, TECH_POWER = 3, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/electrode
 
 /datum/design/science/modweaponnodule/laser
-	name = "laser medium"
+	design_name = "laser medium"
 	id = "lasermedium"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_SILVER = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/laser
 
 /datum/design/science/modweaponnodule/weaklaser
-	name = "low-power laser medium"
+	design_name = "low-power laser medium"
 	id = "weaklaser"
 	req_tech =  list(TECH_MAGNET = 3, TECH_POWER = 3, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
@@ -607,21 +607,21 @@
 /*
 
 /datum/design/science/modweaponnodule/sniper
-	name = "laser sniper medium"
+	design_name = "laser sniper medium"
 	id = "sniperlaser"
 	req_tech =  list(TECH_MAGNET = 5, TECH_POWER = 6, TECH_COMBAT = 4)
 	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_DIAMOND = 10)
 	build_path = /obj/item/modularlaser/lasermedium/laser/sniper
 
 /datum/design/science/modweaponnodule/heavylaser
-	name = "heavy laser medium"
+	design_name = "heavy laser medium"
 	id = "heavylasermedium"
 	req_tech =  list(TECH_MAGNET = 6, TECH_POWER = 6, TECH_COMBAT = 5, TECH_ILLEGAL = 2)
 	materials =	list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/heavy
 
 /datum/design/science/modweaponnodule/cannonmedium
-	name = "cannon beam medium"
+	design_name = "cannon beam medium"
 	id = "cannonmedium"
 	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 2000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
@@ -630,56 +630,56 @@
 */
 
 /datum/design/science/modweaponnodule/xraser
-	name = "xraser medium"
+	design_name = "xraser medium"
 	id = "xraser"
 	req_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_COMBAT = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_URANIUM = 4000, MAT_GOLD = 4000, MAT_DIAMOND = 500)
 	build_path = /obj/item/modularlaser/lasermedium/laser/xray
 
 /datum/design/science/modweaponnodule/dig
-	name = "excavation beam medium"
+	design_name = "excavation beam medium"
 	id = "digbeam"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_PLASTEEL = 500)
 	build_path = /obj/item/modularlaser/lasermedium/dig
 
 /datum/design/science/modweaponnodule/lightning
-	name = "lightning arc tube"
+	design_name = "lightning arc tube"
 	id = "lightning"
 	req_tech = list(TECH_MAGNET = 6, TECH_POWER = 7)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_SILVER = 4000, MAT_GOLD = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/lightning
 
 /datum/design/science/modweaponnodule/hook
-	name = "graviton grapple tube"
+	design_name = "graviton grapple tube"
 	id = "hook"
 	req_tech = list(TECH_ARCANE = 4, TECH_POWER = 2)
 	materials =list(MAT_STEEL = 8000, MAT_GLASS = 8000, MAT_MORPHIUM = 4000, MAT_VERDANTIUM = 4000)
 	build_path = /obj/item/modularlaser/lasermedium/hook
 
 /datum/design/science/modweaponnodule/phasemedium
-	name = "phase projector tube"
+	design_name = "phase projector tube"
 	id = "phasemedium"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lasermedium/phase
 
 /datum/design/science/modweaponnodule/basiclens
-	name = "basic lens"
+	design_name = "basic lens"
 	id = "basiclens"
 	req_tech = list(TECH_MATERIAL = 3)
 	materials = list(MAT_GLASS = 8000)
 	build_path = /obj/item/modularlaser/lens/basic
 
 /datum/design/science/modweaponnodule/advlens
-	name = "advanced lens"
+	design_name = "advanced lens"
 	id = "advlens"
 	req_tech = list(TECH_MATERIAL = 6)
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/advanced
 
 /datum/design/science/modweaponnodule/superlens
-	name = "superior lens"
+	design_name = "superior lens"
 	id = "superlens"
 	req_tech =  list(TECH_MATERIAL = 9)
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_DURASTEEL = 2000)
@@ -688,14 +688,14 @@
 /*
 
 /datum/design/science/modweaponnodule/scatterlens
-	name = "scatter lens"
+	design_name = "scatter lens"
 	id = "scatterlens"
 	req_tech = list(TECH_MATERIAL = 6)
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000)
 	build_path = /obj/item/modularlaser/lens/scatter
 
 /datum/design/science/modweaponnodule/advscatterlens
-	name = "advanced scatter lens"
+	design_name = "advanced scatter lens"
 	id = "advscatterlens"
 	req_tech = list(TECH_MATERIAL = 9)
 	materials = list(MAT_GLASS = 8000, MAT_SILVER = 3000, MAT_VERDANTIUM = 2000)
@@ -704,21 +704,21 @@
 */
 
 /datum/design/science/modweaponnodule/basiccap
-	name = "basic capacitor"
+	design_name = "basic capacitor"
 	id = "basiccap"
 	req_tech = list(TECH_POWER = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/capacitor/basic
 
 /datum/design/science/modweaponnodule/ecocap
-	name = "efficient capacitor"
+	design_name = "efficient capacitor"
 	id = "ecocap"
 	req_tech = list(TECH_POWER = 4)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500)
 	build_path = /obj/item/modularlaser/capacitor/eco
 
 /datum/design/science/modweaponnodule/supereco
-	name = "economical capacitor"
+	design_name = "economical capacitor"
 	id = "superecocap"
 	req_tech = list(TECH_POWER = 6)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
@@ -727,14 +727,14 @@
 /*
 
 /datum/design/science/modweaponnodule/quickcap
-	name = "high throughput capactior"
+	design_name = "high throughput capactior"
 	id = "quickcap"
 	req_tech = list(TECH_POWER = 8)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/capacitor/speed
 
 /datum/design/science/modweaponnodule/advqcap
-	name = "very high throughput capactior"
+	design_name = "very high throughput capactior"
 	id = "advqcap"
 	req_tech = list(TECH_POWER = 8)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
@@ -743,21 +743,21 @@
 */
 
 /datum/design/science/modweaponnodule/basicac
-	name = "cooling system"
+	design_name = "cooling system"
 	id = "basicac"
 	req_tech = list(TECH_ENGINEERING = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	build_path = /obj/item/modularlaser/cooling/basic
 
 /datum/design/science/modweaponnodule/recoverac
-	name = "regenerative cooling system"
+	design_name = "regenerative cooling system"
 	id = "recoverac"
 	req_tech = list(TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/efficient
 
 /datum/design/science/modweaponnodule/fastac
-	name = "high-power regenerative cooling system"
+	design_name = "high-power regenerative cooling system"
 	id = "fastac"
 	req_tech = list(TECH_ENGINEERING = 7)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
@@ -766,14 +766,14 @@
 /*
 
 /datum/design/science/modweaponnodule/superac
-	name = "supercharged cooling system"
+	design_name = "supercharged cooling system"
 	id = "superac"
 	req_tech = list(TECH_ENGINEERING = 4)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
 	build_path = /obj/item/modularlaser/cooling/speed
 
 /datum/design/science/modweaponnodule/bestac
-	name = "hypercharged cooling system"
+	design_name = "hypercharged cooling system"
 	id = "hyperac"
 	req_tech = list(TECH_ENGINEERING = 7)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500, MAT_VERDANTIUM = 300)
@@ -782,7 +782,7 @@
 */
 
 /datum/design/science/modweaponnodule/modcontrol
-	name = "controller"
+	design_name = "controller"
 	id = "modcontrol"
 	req_tech = list(TECH_DATA = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
@@ -791,7 +791,7 @@
 /*
 
 /datum/design/science/modweaponnodule/an94
-	name = "AN-94 patterned fire controller"
+	design_name = "AN-94 patterned fire controller"
 	id = "an94"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
@@ -800,7 +800,7 @@
 */
 
 /datum/design/science/modweaponnodule/threecontrol
-	name = "burst FCU"
+	design_name = "burst FCU"
 	id = "threecontrol"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
@@ -809,7 +809,7 @@
 /*
 
 /datum/design/science/modweaponnodule/fivecontrol
-	name = "quintburst FCU"
+	design_name = "quintburst FCU"
 	id = "fivecontrol"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 4)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 1000, MAT_SILVER = 500, MAT_GOLD = 500)
@@ -822,14 +822,14 @@
 	return "Weapon firing pin ([..()])"
 
 /datum/design/science/pin/test
-	name = "Testing range"
+	design_name = "Testing range"
 	id = "test_range_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 1000)
 	build_path = /obj/item/firing_pin/test_range
 
 /datum/design/science/pin/explorer
-	name = "Exploration"
+	design_name = "Exploration"
 	id = "explorer_pin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_POWER = 2, TECH_COMBAT = 2)
 	materials = list(MAT_STEEL = 1000, MAT_GLASS = 500)

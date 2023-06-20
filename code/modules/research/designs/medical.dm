@@ -7,7 +7,7 @@
 // Surgical devices
 
 /datum/design/science/medical/scalpel_laser1
-	name = "Basic Laser Scalpel"
+	design_name = "Basic Laser Scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks basic and could be improved."
 	id = "scalpel_laser1"
 	req_tech = list(TECH_BIO = 2, TECH_MATERIAL = 2, TECH_MAGNET = 2)
@@ -15,7 +15,7 @@
 	build_path = /obj/item/surgical/scalpel/laser1
 
 /datum/design/science/medical/scalpel_laser2
-	name = "Improved Laser Scalpel"
+	design_name = "Improved Laser Scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks somewhat advanced."
 	id = "scalpel_laser2"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 4, TECH_MAGNET = 4)
@@ -23,7 +23,7 @@
 	build_path = /obj/item/surgical/scalpel/laser2
 
 /datum/design/science/medical/scalpel_laser3
-	name = "Advanced Laser Scalpel"
+	design_name = "Advanced Laser Scalpel"
 	desc = "A scalpel augmented with a directed laser, for more precise cutting without blood entering the field. This one looks to be the pinnacle of precision energy cutlery!"
 	id = "scalpel_laser3"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 5)
@@ -31,7 +31,7 @@
 	build_path = /obj/item/surgical/scalpel/laser3
 
 /datum/design/science/medical/scalpel_manager
-	name = "Incision Management System"
+	design_name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision allowing for the immediate commencement of therapeutic steps."
 	id = "scalpel_manager"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 7, TECH_MAGNET = 5, TECH_DATA = 4)
@@ -39,7 +39,7 @@
 	build_path = /obj/item/surgical/scalpel/manager
 
 /datum/design/science/medical/saw_manager
-	name = "Energetic Bone Diverter"
+	design_name = "Energetic Bone Diverter"
 	desc = "A strange development following the I.M.S., this heavy tool can split and open, or close and shut, intentional holes in bones."
 	id = "advanced_saw"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_DATA = 5)
@@ -47,7 +47,7 @@
 	build_path = /obj/item/surgical/circular_saw/manager
 
 /datum/design/science/medical/organ_ripper
-	name = "Organ Ripper"
+	design_name = "Organ Ripper"
 	desc = "A modern and horrifying take on an ancient practice, this tool is capable of rapidly removing an organ from a hopefully willing patient, without damaging it."
 	id = "organ_ripper"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_ILLEGAL = 3)
@@ -55,7 +55,7 @@
 	build_path = /obj/item/surgical/scalpel/ripper
 
 /datum/design/science/medical/bone_clamp
-	name = "Bone Clamp"
+	design_name = "Bone Clamp"
 	desc = "A miracle of modern science, this tool rapidly knits together bone, without the need for bone gel."
 	id = "bone_clamp"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_DATA = 4)
@@ -63,7 +63,7 @@
 	build_path = /obj/item/surgical/bone_clamp
 
 /datum/design/science/medical/switchtool
-	name = "Surgical Multi-tool"
+	design_name = "Surgical Multi-tool"
 	desc = "A set of compact surgical instruments housed in a small handle, allowing surgical proccedures on the go."
 	id = "surgery_switchtool"
 	req_tech = list(TECH_BIO = 4, TECH_MATERIAL = 5, TECH_MAGNET = 4, TECH_DATA = 4)
@@ -71,7 +71,7 @@
 	build_path = /obj/item/switchtool/surgery
 
 /datum/design/science/medical/medical_analyzer
-	name = "health analyzer"
+	design_name = "health analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject."
 	id = "medical_analyzer"
 	req_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
@@ -79,7 +79,7 @@
 	build_path = /obj/item/healthanalyzer
 
 /datum/design/science/medical/improved_analyzer
-	name = "improved health analyzer"
+	design_name = "improved health analyzer"
 	desc = "A prototype version of the regular health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels."
 	id = "improved_analyzer"
 	req_tech = list(TECH_MAGNET = 5, TECH_BIO = 6)
@@ -87,7 +87,7 @@
 	build_path = /obj/item/healthanalyzer/improved
 
 /datum/design/science/medical/advanced_analyzer
-	name = "advanced health analyzer"
+	design_name = "advanced health analyzer"
 	desc = "A prototype version of the improved health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites"
 	id = "advanced_analyzer"
 	req_tech = list(TECH_MAGNET = 6, TECH_BIO = 7, TECH_PHORON = 4)
@@ -95,7 +95,7 @@
 	build_path = /obj/item/healthanalyzer/advanced
 
 /datum/design/science/medical/phasic_analyzer
-	name = "phasic health analyzer"
+	design_name = "phasic health analyzer"
 	desc = "A prototype version of the advanced health analyzer, able to distinguish the location of more serious injuries as well as accurately determine radiation levels, and neurological analysis suites. This analyzer even picks up chemicals in the patient's stomach."
 	id = "phasic_analyzer"
 	req_tech = list(TECH_MAGNET = 7, TECH_BIO = 8, TECH_BLUESPACE = 6, TECH_PHORON = 5)
@@ -103,7 +103,7 @@
 	build_path = /obj/item/healthanalyzer/phasic
 
 /datum/design/science/medical/advanced_roller
-	name = "advanced roller bed"
+	design_name = "advanced roller bed"
 	desc = "A more advanced version of the regular roller bed, with inbuilt surgical stabilisers and an improved folding system."
 	id = "roller_bed"
 	req_tech = list(TECH_BIO = 3, TECH_MATERIAL = 3, TECH_MAGNET = 3)
@@ -126,7 +126,7 @@
 //General stuff
 
 /datum/design/item/medical/protohypospray
-	name = "advanced hypospray"
+	design_name = "advanced hypospray"
 	desc = "This prototype hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	id = "protohypospray"
 	req_tech = list(TECH_MATERIAL = 4, TECH_ENGINEERING = 3, TECH_POWER = 2, TECH_BIO = 4, TECH_ILLEGAL = 2)
@@ -138,7 +138,7 @@
 	return "Cell-based medical prototype ([..()])"
 
 /datum/design/science/medical/cell_based/cell_medigun_mag_advanced
-	name = "advanced medical cell magazine"
+	design_name = "advanced medical cell magazine"
 	id = "cell_medigun_mag_advanced"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 4, TECH_BIO = 7)
 	materials = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
@@ -150,21 +150,21 @@
 //Tier 1
 
 /datum/design/science/medigun_cell/toxin
-	name = "TOXIN"
+	design_name = "TOXIN"
 	id = "medigun_cell_toxin"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin
 
 /datum/design/science/medigun_cell/omni
-	name = "OMNI"
+	design_name = "OMNI"
 	id = "medigun_cell_omni"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
 	build_path = /obj/item/ammo_casing/microbattery/medical/omni
 
 /datum/design/science/medigun_cell/antirad
-	name = "ANTIRAD"
+	design_name = "ANTIRAD"
 	id = "medigun_cell_antirad"
 	req_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_BIO = 4)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250)
@@ -173,28 +173,28 @@
 //Tier 2
 
 /datum/design/science/medigun_cell/brute2
-	name = "BRUTE-II"
+	design_name = "BRUTE-II"
 	id = "medigun_cell_brute2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/brute2
 
 /datum/design/science/medigun_cell/burn2
-	name = "BURN-II"
+	design_name = "BURN-II"
 	id = "medigun_cell_burn2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/burn2
 
 /datum/design/science/medigun_cell/stabilize2
-	name = "STABILIZE-II"
+	design_name = "STABILIZE-II"
 	id = "medigun_cell_stabilize2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_SILVER = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/stabilize2
 
 /datum/design/science/medigun_cell/omni2
-	name = "OMNI-II"
+	design_name = "OMNI-II"
 	id = "medigun_cell_omni2"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_POWER = 2, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900)
@@ -203,28 +203,28 @@
 //Tier 3
 
 /datum/design/science/medigun_cell/toxin2
-	name = "TOXIN-II"
+	design_name = "TOXIN-II"
 	id = "medigun_cell_toxin2"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 900, MAT_SILVER = 900, MAT_DIAMOND = 500)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin2
 
 /datum/design/science/medigun_cell/haste
-	name = "HASTE"
+	design_name = "HASTE"
 	id = "medigun_cell_haste"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_SILVER = 900, MAT_DIAMOND = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/haste
 
 /datum/design/science/medigun_cell/resist
-	name = "RESIST"
+	design_name = "RESIST"
 	id = "medigun_cell_resist"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_GOLD = 900, MAT_URANIUM = 900, MAT_DIAMOND = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/resist
 
 /datum/design/science/medigun_cell/corpse_mend
-	name = "CORPSE MEND"
+	design_name = "CORPSE MEND"
 	id = "medigun_cell_corpse_mend"
 	req_tech = list(TECH_MATERIAL = 6, TECH_MAGNET = 3, TECH_POWER = 3, TECH_BIO = 6)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_PHORON = 3000, MAT_DIAMOND = 3000)
@@ -233,28 +233,28 @@
 //Tier 4
 
 /datum/design/science/medigun_cell/brute3
-	name = "BRUTE-III"
+	design_name = "BRUTE-III"
 	id = "medigun_cell_brute3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/brute3
 
 /datum/design/science/medigun_cell/burn3
-	name = "BURN-III"
+	design_name = "BURN-III"
 	id = "medigun_cell_burn3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_PRECURSOR = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/burn3
 
 /datum/design/science/medigun_cell/toxin3
-	name = "TOXIN-III"
+	design_name = "TOXIN-III"
 	id = "medigun_cell_toxin3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
 	build_path = /obj/item/ammo_casing/microbattery/medical/toxin3
 
 /datum/design/science/medigun_cell/omni3
-	name = "OMNI-III"
+	design_name = "OMNI-III"
 	id = "medigun_cell_omni3"
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 5, TECH_BIO = 7, TECH_ARCANE = 2)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_DIAMOND = 500, MAT_VERDANTIUM = 900)
@@ -263,21 +263,21 @@
 //Tierless
 
 /datum/design/science/medigun_cell/shrink
-	name = "SHRINK"
+	design_name = "SHRINK"
 	id = "medigun_cell_shrink"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
 	build_path = /obj/item/ammo_casing/microbattery/medical/shrink
 
 /datum/design/science/medigun_cell/grow
-	name = "GROW"
+	design_name = "GROW"
 	id = "medigun_cell_grow"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)
 	build_path = /obj/item/ammo_casing/microbattery/medical/grow
 
 /datum/design/science/medigun_cell/normalsize
-	name = "NORMALSIZE"
+	design_name = "NORMALSIZE"
 	id = "medigun_cell_normalsize"
 	req_tech = list(TECH_MATERIAL = 5, TECH_MAGNET = 3, TECH_BLUESPACE = 3, TECH_BIO = 5, TECH_ILLEGAL = 5)
 	materials = list(MAT_STEEL = 4500, MAT_GLASS = 4500, MAT_PLASTIC = 2250, MAT_URANIUM = 1800)

@@ -4,7 +4,7 @@
 	return "Anomalous prototype ([..()])"
 
 /datum/design/science/anomaly/camotrap
-	name = "Chameleon Trap"
+	design_name = "Chameleon Trap"
 	desc = "A self-miraging mechanical trap, capable of producing short bursts of electric current when triggered."
 	id = "hunt_trap"
 	materials = list(MAT_DURASTEEL = 3000, MAT_METALHYDROGEN = 1000, MAT_PHORON = 2000)
@@ -17,7 +17,7 @@
 	return "Alien prototype ([..()])"
 
 /datum/design/science/precursor/crowbar
-	name = "Hybrid Crowbar"
+	design_name = "Hybrid Crowbar"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridcrowbar"
 	req_tech = list(TECH_ENGINEERING = 6, TECH_MATERIAL = 6, TECH_BLUESPACE = 3, TECH_PRECURSOR = 1)
@@ -25,7 +25,7 @@
 	build_path = /obj/item/tool/crowbar/hybrid
 
 /datum/design/science/precursor/wrench
-	name = "Hybrid Wrench"
+	design_name = "Hybrid Wrench"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwrench"
 	req_tech = list(TECH_ENGINEERING = 6, TECH_MATERIAL = 5, TECH_BLUESPACE = 2, TECH_MAGNET = 3, TECH_PRECURSOR = 1)
@@ -33,7 +33,7 @@
 	build_path = /obj/item/tool/wrench/hybrid
 
 /datum/design/science/precursor/screwdriver
-	name = "Hybrid Screwdriver"
+	design_name = "Hybrid Screwdriver"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridscrewdriver"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 5, TECH_BLUESPACE = 2, TECH_MAGNET = 3, TECH_PRECURSOR = 1)
@@ -41,7 +41,7 @@
 	build_path = /obj/item/tool/screwdriver/hybrid
 
 /datum/design/science/precursor/wirecutters
-	name = "Hybrid Wirecutters"
+	design_name = "Hybrid Wirecutters"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwirecutters"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 5, TECH_PHORON = 2, TECH_PRECURSOR = 1)
@@ -49,7 +49,7 @@
 	build_path = /obj/item/tool/wirecutters/hybrid
 
 /datum/design/science/precursor/welder
-	name = "Hybrid Welding Tool"
+	design_name = "Hybrid Welding Tool"
 	desc = "A tool utilizing cutting edge modern technology, and ancient component designs."
 	id = "hybridwelder"
 	req_tech = list(TECH_ENGINEERING = 6, TECH_MATERIAL = 6, TECH_BLUESPACE = 3, TECH_PHORON = 3, TECH_MAGNET = 5, TECH_PRECURSOR = 1)
@@ -58,7 +58,7 @@
 
 
 /datum/design/science/precursor/janusmodule
-	name = "Blackbox Circuit Datamass"
+	design_name = "Blackbox Circuit Datamass"
 	desc = "A design that seems to be in a constantly shifting superposition."
 	id = "janus_module"
 	materials = list(MAT_DURASTEEL = 3000, MAT_MORPHIUM = 2000, MAT_METALHYDROGEN = 6000, MAT_URANIUM = 6000, MAT_VERDANTIUM = 1500)

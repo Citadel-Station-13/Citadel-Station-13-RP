@@ -1,7 +1,7 @@
 // PDA
 
 /datum/design/science/general/pda
-	name = "PDA"
+	design_name = "PDA"
 	desc = "Cheaper than whiny non-digital assistants."
 	id = "pda"
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)

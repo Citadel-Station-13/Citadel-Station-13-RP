@@ -4,7 +4,7 @@
 	return "Experimental tool prototype ([..()])"
 
 /datum/design/science/tool/experimental_welder
-	name = "Experimental welding tool"
+	design_name = "Experimental welding tool"
 	desc = "A welding tool that generates fuel for itself."
 	id = "expwelder"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_PHORON = 3, TECH_MATERIAL = 4)
@@ -12,7 +12,7 @@
 	build_path = /obj/item/weldingtool/experimental
 
 /datum/design/science/tool/hand_drill
-	name = "Hand drill"
+	design_name = "Hand drill"
 	desc = "A simple powered hand drill."
 	id = "handdrill"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
@@ -20,7 +20,7 @@
 	build_path = /obj/item/tool/screwdriver/power
 
 /datum/design/science/tool/jaws_life
-	name = "Jaws of life"
+	design_name = "Jaws of life"
 	desc = "A set of jaws of life, compressed through the magic of science."
 	id = "jawslife"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 2)
@@ -28,7 +28,7 @@
 	build_path = /obj/item/tool/crowbar/power
 
 /datum/design/science/tool/switchtool
-	name = "Switchtool"
+	design_name = "Switchtool"
 	desc = "A combined wirecutter, screwdriver, crowbar, wrench and multitool. The small size makes it somewhat slower at work."
 	id = "switchtool"
 	req_tech = list(TECH_ENGINEERING = 4, TECH_MATERIAL = 4)
@@ -41,7 +41,7 @@
 	return "Engineering device prototype ([..()])"
 
 /datum/design/science/engineering/t_scanner
-	name = "T-ray Scanner"
+	design_name = "T-ray Scanner"
 	desc = "A terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	id = "tscanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2, TECH_MATERIAL = 2)
@@ -49,7 +49,7 @@
 	build_path = /obj/item/t_scanner
 
 /datum/design/science/engineering/t_scanner_upg
-	name = "Upgraded T-ray Scanner"
+	design_name = "Upgraded T-ray Scanner"
 	desc = "An upgraded version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	id = "upgradedtscanner"
 	req_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 4, TECH_MATERIAL = 2)
@@ -57,7 +57,7 @@
 	build_path = /obj/item/t_scanner/upgraded
 
 /datum/design/science/engineering/t_scanner_adv
-	name = "Advanced T-ray Scanner"
+	design_name = "Advanced T-ray Scanner"
 	desc = "An advanced version of the terahertz-ray emitter and scanner used to detect underfloor objects such as cables and pipes."
 	id = "advancedtscanner"
 	req_tech = list(TECH_MAGNET = 6, TECH_ENGINEERING = 6, TECH_MATERIAL = 6)
@@ -65,7 +65,7 @@
 	build_path = /obj/item/t_scanner/advanced
 
 /datum/design/science/engineering/atmosanalyzer
-	name = "Atmospheric Analyzer"
+	design_name = "Atmospheric Analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels."
 	id = "atmosanalyzer"
 	req_tech = list(TECH_ENGINEERING = 2)
@@ -73,7 +73,7 @@
 	build_path = /obj/item/analyzer
 
 /datum/design/science/engineering/atmosanalyzerlongrange
-	name = "Long Range Atmospheric Analyzer"
+	design_name = "Long Range Atmospheric Analyzer"
 	desc = "A hand-held environmental scanner which reports current gas levels from a distance."
 	id = "atmosanalyzerlr"
 	req_tech = list(TECH_ENGINEERING = 4)

@@ -1,20 +1,20 @@
 
 /* Uncomment if someone makes these buildable
 /datum/design/circuit/general_alert
-	name = "general alert console"
+	design_name = "general alert console"
 	id = "general_alert"
 	build_path = /obj/item/circuitboard/general_alert
 
 // Removal of loyalty implants. Can't think of a way to add this to the config option.
 /datum/design/science/implant/loyalty
-	name = "loyalty"
+	design_name = "loyalty"
 	id = "implant_loyal"
 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 3)
 	materials = list(MAT_STEEL = 7000, MAT_GLASS = 7000)
 	build_path = /obj/item/implantcase/loyalty"
 
 /datum/design/rust_core_control
-	name = "Circuit Design (RUST core controller)"
+	design_name = "Circuit Design (RUST core controller)"
 	desc = "Allows for the construction of circuit boards used to build a core control console for the RUST fusion engine."
 	id = "rust_core_control"
 	req_tech = list("programming" = 4, "engineering" = 4)
@@ -23,7 +23,7 @@
 	build_path = "/obj/item/circuitboard/rust_core_control"
 
 datum/design/rust_fuel_control
-	name = "Circuit Design (RUST fuel controller)"
+	design_name = "Circuit Design (RUST fuel controller)"
 	desc = "Allows for the construction of circuit boards used to build a fuel injector control console for the RUST fusion engine."
 	id = "rust_fuel_control"
 	req_tech = list("programming" = 4, "engineering" = 4)
@@ -32,7 +32,7 @@ datum/design/rust_fuel_control
 	build_path = "/obj/item/circuitboard/rust_fuel_control"
 
 datum/design/rust_fuel_port
-	name = "Internal circuitry (RUST fuel port)"
+	design_name = "Internal circuitry (RUST fuel port)"
 	desc = "Allows for the construction of circuit boards used to build a fuel injection port for the RUST fusion engine."
 	id = "rust_fuel_port"
 	req_tech = list("engineering" = 4, "materials" = 5)
@@ -41,7 +41,7 @@ datum/design/rust_fuel_port
 	build_path = "/obj/item/module/rust_fuel_port"
 
 datum/design/rust_fuel_compressor
-	name = "Circuit Design (RUST fuel compressor)"
+	design_name = "Circuit Design (RUST fuel compressor)"
 	desc = "Allows for the construction of circuit boards used to build a fuel compressor of the RUST fusion engine."
 	id = "rust_fuel_compressor"
 	req_tech = list("materials" = 6, "phorontech" = 4)
@@ -50,7 +50,7 @@ datum/design/rust_fuel_compressor
 	build_path = "/obj/item/module/rust_fuel_compressor"
 
 datum/design/rust_core
-	name = "Internal circuitry (RUST tokamak core)"
+	design_name = "Internal circuitry (RUST tokamak core)"
 	desc = "The circuit board that for a RUST-pattern tokamak fusion core."
 	id = "pacman"
 	req_tech = list(bluespace = 3, phorontech = 4, magnets = 5, powerstorage = 6)
@@ -59,7 +59,7 @@ datum/design/rust_core
 	build_path = "/obj/item/circuitboard/rust_core"
 
 datum/design/rust_injector
-	name = "Internal circuitry (RUST tokamak core)"
+	design_name = "Internal circuitry (RUST tokamak core)"
 	desc = "The circuit board that for a RUST-pattern particle accelerator."
 	id = "pacman"
 	req_tech = list(powerstorage = 3, engineering = 4, phorontech = 4, materials = 6)

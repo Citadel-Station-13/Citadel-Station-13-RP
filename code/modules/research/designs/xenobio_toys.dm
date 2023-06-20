@@ -18,7 +18,7 @@
 // Other
 
 /datum/design/science/xenobio/slime_scanner
-	name = "slime scanner"
+	design_name = "slime scanner"
 	desc = "A hand-held body scanner able to learn information about slimes."
 	id = "slime_scanner"
 	req_tech = list(TECH_MAGNET = 2, TECH_BIO = 2)
@@ -26,7 +26,7 @@
 	build_path = /obj/item/slime_scanner
 
 /datum/design/item/xenobio/gene_disk
-	name = "genetics disk"
+	design_name = "genetics disk"
 	desc = "A disk designed to retain humanoid genetic information."
 	id = "gene_disk"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
@@ -34,7 +34,7 @@
 	build_path = /obj/item/disk/data
 
 /datum/design/item/xenobio/botany_disk
-	name = "flora data disk"
+	design_name = "flora data disk"
 	desc = "A small disk used for carrying data on plant genetics."
 	id = "plant_disk"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)

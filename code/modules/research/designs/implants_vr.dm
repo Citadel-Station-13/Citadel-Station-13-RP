@@ -1,12 +1,12 @@
 // /datum/design/science/implant/backup
-// 	name = "Backup implant"
+// 	design_name = "Backup implant"
 // 	id = "implant_backup"
 // 	req_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2, TECH_DATA = 4, TECH_ENGINEERING = 2)
 // 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
 // 	build_path = /obj/item/implantcase/backup
 //
 /datum/design/science/implant/sizecontrol
-	name = "Size control implant"
+	design_name = "Size control implant"
 	id = "implant_size"
 	req_tech = list(TECH_MATERIAL = 3, TECH_BIO = 4, TECH_DATA = 4, TECH_ENGINEERING = 3)
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_SILVER = 3000)
@@ -14,7 +14,7 @@
 
 /* Make language great again
 /datum/design/science/implant/language
-	name = "Language implant"
+	design_name = "Language implant"
 	id = "implant_language"
 	req_tech = list(TECH_MATERIAL = 5, TECH_BIO = 5, TECH_DATA = 4, TECH_ENGINEERING = 4) //This is not an easy to make implant.
 	materials = list(MAT_STEEL = 7000, MAT_GLASS = 7000, MAT_GOLD = 2000, MAT_DIAMOND = 3000)

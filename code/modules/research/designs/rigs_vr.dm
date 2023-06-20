@@ -18,25 +18,25 @@
 
 /datum/design/science/hardsuit/AssembleDesignName()
 	..()
-	name = "hardsuit prototype ([name])"
+	design_name = "hardsuit prototype ([name])"
 
 /datum/design/science/hardsuit/eva
-	name = "eva hardsuit (empty)"
+	design_name = "eva hardsuit (empty)"
 	id = "eva_hardsuit"
 	build_path = /obj/item/hardsuit/eva
 
 /datum/design/science/hardsuit/mining
-	name = "industrial hardsuit (empty)"
+	design_name = "industrial hardsuit (empty)"
 	id = "ind_hardsuit"
 	build_path = /obj/item/hardsuit/industrial
 
 /datum/design/science/hardsuit/research
-	name = "ami hardsuit (empty)"
+	design_name = "ami hardsuit (empty)"
 	id = "ami_hardsuit"
 	build_path = /obj/item/hardsuit/hazmat
 
 /datum/design/science/hardsuit/medical
-	name = "medical hardsuit (empty)"
+	design_name = "medical hardsuit (empty)"
 	id = "med_hardsuit"
 	build_path = /obj/item/hardsuit/medical
 */
@@ -49,82 +49,82 @@
 	return "hardsuit module prototype ([..()])"
 
 /datum/design/science/hardsuit_module/maneuvering_jets
-	name = "maneuvering jets"
+	design_name = "maneuvering jets"
 	id = "hardsuitmod_maneuveringjets"
 	build_path = /obj/item/hardsuit_module/maneuvering_jets
 
 /datum/design/science/hardsuit_module/sprinter
-	name = "sprinter"
+	design_name = "sprinter"
 	id = "hardsuitmod_sprinter"
 	build_path = /obj/item/hardsuit_module/sprinter
 
 /datum/design/science/hardsuit_module/plasma_cutter
-	name = "plasma cutter"
+	design_name = "plasma cutter"
 	id = "hardsuitmod_plasmacutter"
 	build_path = /obj/item/hardsuit_module/device/plasmacutter
 
 /datum/design/science/hardsuit_module/diamond_drill
-	name = "diamond drill"
+	design_name = "diamond drill"
 	id = "hardsuitmod_diamonddrill"
 	build_path = /obj/item/hardsuit_module/device/drill
 
 /datum/design/science/hardsuit_module/anomaly_scanner
-	name = "anomaly scanner"
+	design_name = "anomaly scanner"
 	id = "hardsuitmod_anomalyscanner"
 	build_path = /obj/item/hardsuit_module/device/anomaly_scanner
 
 /datum/design/science/hardsuit_module/orescanner
-	name = "ore scanner"
+	design_name = "ore scanner"
 	id = "hardsuitmod_orescanner"
 	build_path = /obj/item/hardsuit_module/device/orescanner
 
 /datum/design/science/hardsuit_module/orescanneradv
-	name = "adv. ore scanner"
+	design_name = "adv. ore scanner"
 	id = "hardsuitmod_orescanneradv"
 	build_path = /obj/item/hardsuit_module/device/orescanner/advanced
 
 /datum/design/science/hardsuit_module/rescue_pharm
-	name = "rescue pharm"
+	design_name = "rescue pharm"
 	id = "hardsuitmod_rescue_pharm"
 	build_path = /obj/item/hardsuit_module/rescue_pharm
 
 /datum/design/science/hardsuit_module/lasercannon
-	name = "laser cannon"
+	design_name = "laser cannon"
 	id = "hardsuitmod_lasercannon"
 	build_path = /obj/item/hardsuit_module/mounted
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 
 /datum/design/science/hardsuit_module/egun
-	name = "energy gun"
+	design_name = "energy gun"
 	id = "hardsuitmod_egun"
 	build_path = /obj/item/hardsuit_module/mounted/egun
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 1000)
 
 /datum/design/science/hardsuit_module/taser
-	name = "taser"
+	design_name = "taser"
 	id = "hardsuitmod_taser"
 	build_path = /obj/item/hardsuit_module/mounted/taser
 
 /datum/design/science/hardsuit_module/armblade
-	name = "arm-mounted blade"
+	design_name = "arm-mounted blade"
 	id = "hardsuitmod_armblade"
 	build_path = /obj/item/hardsuit_module/armblade
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_GOLD = 2000)
 
 /datum/design/science/hardsuit_module/rcd
-	name = "rcd"
+	design_name = "rcd"
 	id = "hardsuitmod_rcd"
 	build_path = /obj/item/hardsuit_module/device/rcd
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 6000, MAT_SILVER = 4000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)
 
 /datum/design/science/hardsuit_module/hardsuitwelder
-	name = "RIG arc-welder"
+	design_name = "RIG arc-welder"
 	id = "hardsuitmod_welder"
 	build_path = /obj/item/hardsuit_module/device/rigwelder
 	materials = list(MAT_STEEL = 6000, MAT_GLASS = 4000, MAT_SILVER = 2000, MAT_GOLD = 4000)
 
 /datum/design/science/hardsuit_module/toolset
-	name = "RIG toolset"
+	design_name = "RIG toolset"
 	id = "hardsuitmod_tools"
 	build_path = /obj/item/hardsuit_module/device/toolset
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000, MAT_SILVER = 2000, MAT_PLASTEEL = 1000)

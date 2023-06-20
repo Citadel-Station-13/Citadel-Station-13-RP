@@ -173,14 +173,14 @@
 // RPEDs
 
 /datum/design/science/stock_part/RPED
-	name = "Rapid Part Exchange Device"
+	design_name = "Rapid Part Exchange Device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	id = "rped"
 	req_tech = list(TECH_ENGINEERING = 3, TECH_MATERIAL = 3)
 	build_path = /obj/item/storage/part_replacer
 
 /datum/design/science/stock_part/ARPED
-	name = "Advanced Rapid Part Exchange Device"
+	design_name = "Advanced Rapid Part Exchange Device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts.  This one has a greatly upgraded storage capacity."
 	id = "arped"
 	req_tech = list(TECH_ENGINEERING = 5, TECH_MATERIAL = 5)

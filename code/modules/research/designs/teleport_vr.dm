@@ -6,7 +6,7 @@
 	return "Teleportation device prototype ([..()])"
 
 /datum/design/science/teleport/translocator
-	name = "Personal translocator"
+	design_name = "Personal translocator"
 	id = "translocator"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 6)
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_URANIUM = 4000, MAT_DIAMOND = 2000)
@@ -14,7 +14,7 @@
 
 /*
 /datum/design/science/teleport/bluespace_crystal
-	name = "Artificial Bluespace Crystal"
+	design_name = "Artificial Bluespace Crystal"
 	id = "bluespace_crystal"
 	req_tech = list(TECH_BLUESPACE = 3, TECH_PHORON = 4)
 	materials = list(MAT_DIAMOND = 1500, MAT_PHORON = 1500)

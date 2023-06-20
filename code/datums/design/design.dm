@@ -22,6 +22,8 @@
 	var/name
 	/// desc of design, shows in UIs. if null, it'll be auto-detected from the build_path if possible.
 	var/desc
+	/// overrides build_name for purposes of name generation.
+	var/design_name
 	/// category - string or list, or null; null results in undefined behavior depending on UI.
 	var/category = "Misc"
 
@@ -83,14 +85,14 @@
 
 /datum/design/proc/generate()
 	if(!name)
-		name = generate_name(build_name)
+		name = generate_name(design_name || build_name)
 	if(!desc)
-		desc = generate_desc(build_desc)
+		desc = generate_desc(design_name || build_name, build_desc)
 
 /datum/design/proc/generate_name(template)
 	return template
 
-/datum/design/proc/generate_desc(template)
+/datum/design/proc/generate_desc(template_name, template_desc)
 	return template
 
 /**

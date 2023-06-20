@@ -52,21 +52,21 @@
 	build_path = /obj/item/analyzer/plant_analyzer
 
 /datum/design/science/biotech/nif
-	name = "nanite implant framework"
+	design_name = "nanite implant framework"
 	id = "nif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 8000, MAT_URANIUM = 6000, MAT_DIAMOND = 6000)
 	build_path = /obj/item/nif
 
 /datum/design/science/biotech/nifbio
-	name = "bioadaptive NIF"
+	design_name = "bioadaptive NIF"
 	id = "bioadapnif"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5, TECH_BIO = 5)
 	materials = list(MAT_STEEL = 10000, MAT_GLASS = 15000, MAT_URANIUM = 10000, MAT_DIAMOND = 10000)
 	build_path = /obj/item/nif/bioadap
 
 /datum/design/science/biotech/nifrepairtool
-	name = "adv. NIF repair tool"
+	design_name = "adv. NIF repair tool"
 	id = "anrt"
 	req_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_MATERIAL = 5, TECH_ENGINEERING = 5, TECH_DATA = 5)
 	materials = list(MAT_STEEL = 200, MAT_GLASS = 3000, MAT_URANIUM = 2000, MAT_DIAMOND = 2000)

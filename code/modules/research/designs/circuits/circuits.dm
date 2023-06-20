@@ -19,357 +19,357 @@ CIRCUITS BELOW
 		else
 			return "Circuit design ([..()])"
 
-/datum/design/circuit/generate_desc(template)
+/datum/design/circuit/generate_desc(template_name, template_desc)
 	return "Allows for the construction of \a [build_name] circuit board."
 
 /datum/design/circuit/arcademachine
-	name = "battle arcade machine"
+	design_name = "battle arcade machine"
 	id = "arcademachine"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/arcade/battle
 
 /datum/design/circuit/oriontrail
-	name = "orion trail arcade machine"
+	design_name = "orion trail arcade machine"
 	id = "oriontrail"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/arcade/orion_trail
 
 /datum/design/circuit/clawmachine
-	name = "grab-a-gift arcade machine"
+	design_name = "grab-a-gift arcade machine"
 	id = "clawmachine"
 	req_tech = list(TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/arcade/clawmachine
 
 /datum/design/circuit/jukebox
-	name = "jukebox"
+	design_name = "jukebox"
 	id = "jukebox"
 	req_tech = list(TECH_MAGNET = 2, TECH_DATA = 1)
 	build_path = /obj/item/circuitboard/jukebox
 
 /datum/design/circuit/seccamera
-	name = "security camera monitor"
+	design_name = "security camera monitor"
 	id = "seccamera"
 	build_path = /obj/item/circuitboard/security
 
 /datum/design/circuit/secdata
-	name = "security records console"
+	design_name = "security records console"
 	id = "sec_data"
 	build_path = /obj/item/circuitboard/secure_data
 
 /datum/design/circuit/prisonmanage
-	name = "prisoner management console"
+	design_name = "prisoner management console"
 	id = "prisonmanage"
 	build_path = /obj/item/circuitboard/prisoner
 
 /datum/design/circuit/med_data
-	name = "medical records console"
+	design_name = "medical records console"
 	id = "med_data"
 	build_path = /obj/item/circuitboard/med_data
 
 /datum/design/circuit/operating
-	name = "patient monitoring console"
+	design_name = "patient monitoring console"
 	id = "operating"
 	build_path = /obj/item/circuitboard/operating
 
 /datum/design/circuit/scan_console
-	name = "DNA machine"
+	design_name = "DNA machine"
 	id = "scan_console"
 	build_path = /obj/item/circuitboard/scan_consolenew
 
 /datum/design/circuit/clonecontrol
-	name = "cloning control console"
+	design_name = "cloning control console"
 	id = "clonecontrol"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/cloning
 
 /datum/design/circuit/clonepod
-	name = "clone pod"
+	design_name = "clone pod"
 	id = "clonepod"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/clonepod
 
 /datum/design/circuit/clonescanner
-	name = "cloning scanner"
+	design_name = "cloning scanner"
 	id = "clonescanner"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/clonescanner
 
 /datum/design/circuit/crewconsole
-	name = "crew monitoring console"
+	design_name = "crew monitoring console"
 	id = "crewconsole"
 	req_tech = list(TECH_DATA = 3, TECH_MAGNET = 2, TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/crew
 
 /datum/design/circuit/teleconsole
-	name = "teleporter control console"
+	design_name = "teleporter control console"
 	id = "teleconsole"
 	req_tech = list(TECH_DATA = 3, TECH_BLUESPACE = 2)
 	build_path = /obj/item/circuitboard/teleporter
 
 /datum/design/circuit/robocontrol
-	name = "robotics control console"
+	design_name = "robotics control console"
 	id = "robocontrol"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/robotics
 
 /datum/design/circuit/mechacontrol
-	name = "exosuit control console"
+	design_name = "exosuit control console"
 	id = "mechacontrol"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/mecha_control
 
 /datum/design/circuit/rdconsole
-	name = "R&D control console"
+	design_name = "R&D control console"
 	id = "rdconsole"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/rdconsole
 
 /datum/design/circuit/aifixer
-	name = "AI integrity restorer"
+	design_name = "AI integrity restorer"
 	id = "aifixer"
 	req_tech = list(TECH_DATA = 3, TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/aifixer
 
 /datum/design/circuit/comm_monitor
-	name = "telecommunications monitoring console"
+	design_name = "telecommunications monitoring console"
 	id = "comm_monitor"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/comm_monitor
 
 /datum/design/circuit/comm_server
-	name = "telecommunications server monitoring console"
+	design_name = "telecommunications server monitoring console"
 	id = "comm_server"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/comm_server
 
 /datum/design/circuit/message_monitor
-	name = "messaging monitor console"
+	design_name = "messaging monitor console"
 	id = "message_monitor"
 	req_tech = list(TECH_DATA = 5)
 	build_path = /obj/item/circuitboard/message_monitor
 
 /datum/design/circuit/aiupload
-	name = "AI upload console"
+	design_name = "AI upload console"
 	id = "aiupload"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/aiupload
 
 /datum/design/circuit/borgupload
-	name = "cyborg upload console"
+	design_name = "cyborg upload console"
 	id = "borgupload"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/borgupload
 
 /datum/design/circuit/destructive_analyzer
-	name = "destructive analyzer"
+	design_name = "destructive analyzer"
 	id = "destructive_analyzer"
 	req_tech = list(TECH_DATA = 2, TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/destructive_analyzer
 
 /datum/design/circuit/protolathe
-	name = "protolathe"
+	design_name = "protolathe"
 	id = "protolathe"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/protolathe
 
 /datum/design/circuit/circuit_imprinter
-	name = "circuit imprinter"
+	design_name = "circuit imprinter"
 	id = "circuit_imprinter"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/circuit_imprinter
 
 /datum/design/circuit/autolathe
-	name = "autolathe board"
+	design_name = "autolathe board"
 	id = "autolathe"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/circuitboard/autolathe
+	build_path = /obj/item/circuitboard/lathe/autolathe
 
 /datum/design/circuit/rdservercontrol
-	name = "R&D server control console"
+	design_name = "R&D server control console"
 	id = "rdservercontrol"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/rdservercontrol
 
 /datum/design/circuit/rdserver
-	name = "R&D server"
+	design_name = "R&D server"
 	id = "rdserver"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/rdserver
 
 /datum/design/circuit/mechfab
-	name = "exosuit fabricator"
+	design_name = "exosuit fabricator"
 	id = "mechfab"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/mechfab
 
 /datum/design/circuit/prosfab
-	name = "prosthetics fabricator"
+	design_name = "prosthetics fabricator"
 	id = "prosfab"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/prosthetics
 
 /datum/design/circuit/mech_recharger
-	name = "mech recharger"
+	design_name = "mech recharger"
 	id = "mech_recharger"
 	req_tech = list(TECH_DATA = 2, TECH_POWER = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/mech_recharger
 
 /datum/design/circuit/recharge_station
-	name = "cyborg recharge station"
+	design_name = "cyborg recharge station"
 	id = "recharge_station"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/recharge_station
 
 /datum/design/circuit/atmosalerts
-	name = "atmosphere alert console"
+	design_name = "atmosphere alert console"
 	id = "atmosalerts"
 	build_path = /obj/item/circuitboard/atmos_alert
 
 /datum/design/circuit/air_management
-	name = "atmosphere monitoring console"
+	design_name = "atmosphere monitoring console"
 	id = "air_management"
 	build_path = /obj/item/circuitboard/air_management
 
 /datum/design/circuit/rcon_console
-	name = "RCON remote control console"
+	design_name = "RCON remote control console"
 	id = "rcon_console"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_POWER = 5)
 	build_path = /obj/item/circuitboard/rcon_console
 
 /datum/design/circuit/dronecontrol
-	name = "drone control console"
+	design_name = "drone control console"
 	id = "dronecontrol"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/drone_control
 
 /datum/design/circuit/powermonitor
-	name = "power monitoring console"
+	design_name = "power monitoring console"
 	id = "powermonitor"
 	build_path = /obj/item/circuitboard/powermonitor
 
 /datum/design/circuit/solarcontrol
-	name = "solar control console"
+	design_name = "solar control console"
 	id = "solarcontrol"
 	build_path = /obj/item/circuitboard/solar_control
 
 /*
 /datum/design/circuit/shutoff_monitor
-	name = "Automatic shutoff valve monitor"
+	design_name = "Automatic shutoff valve monitor"
 	id = "shutoff_monitor"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/shutoff_monitor
 */
 
 /datum/design/circuit/pacman
-	name = "PACMAN-type generator"
+	design_name = "PACMAN-type generator"
 	id = "pacman"
 	req_tech = list(TECH_DATA = 3, TECH_PHORON = 3, TECH_POWER = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/pacman
 
 /datum/design/circuit/superpacman
-	name = "SUPERPACMAN-type generator"
+	design_name = "SUPERPACMAN-type generator"
 	id = "superpacman"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4, TECH_ENGINEERING = 4)
 	build_path = /obj/item/circuitboard/pacman/super
 
 /datum/design/circuit/mrspacman
-	name = "MRSPACMAN-type generator"
+	design_name = "MRSPACMAN-type generator"
 	id = "mrspacman"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 5, TECH_ENGINEERING = 5)
 	build_path = /obj/item/circuitboard/pacman/mrs
 
 /datum/design/circuit/batteryrack
-	name = "cell rack PSU"
+	design_name = "cell rack PSU"
 	id = "batteryrack"
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/batteryrack
 
 /datum/design/circuit/smes_cell
-	name = "'SMES' superconductive magnetic energy storage"
+	design_name = "'SMES' superconductive magnetic energy storage"
 	desc = "Allows for the construction of circuit boards used to build a SMES."
 	id = "smes_cell"
 	req_tech = list(TECH_POWER = 7, TECH_ENGINEERING = 5)
 	build_path = /obj/item/circuitboard/smes
 
 /datum/design/circuit/grid_checker
-	name = "power grid checker"
+	design_name = "power grid checker"
 	desc = "Allows for the construction of circuit boards used to build a grid checker."
 	id = "grid_checker"
 	req_tech = list(TECH_POWER = 4, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/grid_checker
 
 /datum/design/circuit/breakerbox
-	name = "breaker box"
+	design_name = "breaker box"
 	desc = "Allows for the construction of circuit boards used to build a breaker box."
 	id = "breakerbox"
 	req_tech = list(TECH_POWER = 3, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/breakerbox
 
 /datum/design/circuit/gas_heater
-	name = "gas heating system"
+	design_name = "gas heating system"
 	id = "gasheater"
 	req_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 1)
 	build_path = /obj/item/circuitboard/unary_atmos/heater
 
 /datum/design/circuit/gas_cooler
-	name = "gas cooling system"
+	design_name = "gas cooling system"
 	id = "gascooler"
 	req_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	build_path = /obj/item/circuitboard/unary_atmos/cooler
 
 /datum/design/circuit/secure_airlock
-	name = "secure airlock electronics"
+	design_name = "secure airlock electronics"
 	desc =  "Allows for the construction of a tamper-resistant airlock electronics."
 	id = "securedoor"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/airlock_electronics/secure
 
 /datum/design/circuit/ordercomp
-	name = "supply ordering console"
+	design_name = "supply ordering console"
 	id = "ordercomp"
 	build_path = /obj/item/circuitboard/supplycomp
 
 /datum/design/circuit/supplycomp
-	name = "supply control console"
+	design_name = "supply control console"
 	id = "supplycomp"
 	req_tech = list(TECH_DATA = 3)
 	build_path = /obj/item/circuitboard/supplycomp/control
 
 /datum/design/circuit/biogenerator
-	name = "biogenerator"
+	design_name = "biogenerator"
 	id = "biogenerator"
 	req_tech = list(TECH_DATA = 2)
 	build_path = /obj/item/circuitboard/biogenerator
 
 /datum/design/circuit/miningdrill
-	name = "mining drill head"
+	design_name = "mining drill head"
 	id = "mining drill head"
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	build_path = /obj/item/circuitboard/miningdrill
 
 /datum/design/circuit/miningdrillbrace
-	name = "mining drill brace"
+	design_name = "mining drill brace"
 	id = "mining drill brace"
 	req_tech = list(TECH_DATA = 1, TECH_ENGINEERING = 1)
 	build_path = /obj/item/circuitboard/miningdrillbrace
 
 /datum/design/circuit/comconsole
-	name = "communications console"
+	design_name = "communications console"
 	id = "comconsole"
 	build_path = /obj/item/circuitboard/communications
 
 /datum/design/circuit/idcardconsole
-	name = "ID card modification console"
+	design_name = "ID card modification console"
 	id = "idcardconsole"
 	build_path = /obj/item/circuitboard/card
 
 /datum/design/circuit/emp_data
-	name = "employment records console"
+	design_name = "employment records console"
 	id = "emp_data"
 	build_path = /obj/item/circuitboard/skills
 
 /datum/design/circuit/arf_generator
-	name = "atmospheric field generator"
+	design_name = "atmospheric field generator"
 	id = "arf_generator"
 	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/arf_generator
@@ -378,106 +378,106 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 3)
 
 /datum/design/circuit/mecha/AssembleDesignName()
-	name = "Exosuit module circuit design ([name])"
+	design_name = "Exosuit module circuit design ([name])"
 /datum/design/circuit/mecha/AssembleDesignDesc()
 	desc = "Allows for the construction of \a [name] module."
 
 /datum/design/circuit/mecha/ripley_main
-	name = "APLU 'Ripley' central control"
+	design_name = "APLU 'Ripley' central control"
 	id = "ripley_main"
 	build_path = /obj/item/circuitboard/mecha/ripley/main
 
 /datum/design/circuit/mecha/ripley_peri
-	name = "APLU 'Ripley' peripherals control"
+	design_name = "APLU 'Ripley' peripherals control"
 	id = "ripley_peri"
 	build_path = /obj/item/circuitboard/mecha/ripley/peripherals
 
 /datum/design/circuit/mecha/odysseus_main
-	name = "'Odysseus' central control"
+	design_name = "'Odysseus' central control"
 	id = "odysseus_main"
 	req_tech = list(TECH_DATA = 3,TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/mecha/odysseus/main
 
 /datum/design/circuit/mecha/odysseus_peri
-	name = "'Odysseus' peripherals control"
+	design_name = "'Odysseus' peripherals control"
 	id = "odysseus_peri"
 	req_tech = list(TECH_DATA = 3,TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/mecha/odysseus/peripherals
 
 /datum/design/circuit/mecha/gygax_main
-	name = "'Gygax' central control"
+	design_name = "'Gygax' central control"
 	id = "gygax_main"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/gygax/main
 
 /datum/design/circuit/mecha/gygax_peri
-	name = "'Gygax' peripherals control"
+	design_name = "'Gygax' peripherals control"
 	id = "gygax_peri"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/gygax/peripherals
 
 /datum/design/circuit/mecha/gygax_targ
-	name = "'Gygax' weapon control and targeting"
+	design_name = "'Gygax' weapon control and targeting"
 	id = "gygax_targ"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/gygax/targeting
 
 /datum/design/circuit/mecha/gygax_medical
-	name = "'Serenity' medical control"
+	design_name = "'Serenity' medical control"
 	id = "gygax_medical"
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 2)
 	build_path = /obj/item/circuitboard/mecha/gygax/medical
 
 /datum/design/circuit/mecha/durand_main
-	name = "'Durand' central control"
+	design_name = "'Durand' central control"
 	id = "durand_main"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/durand/main
 
 /datum/design/circuit/mecha/durand_peri
-	name = "'Durand' peripherals control"
+	design_name = "'Durand' peripherals control"
 	id = "durand_peri"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/mecha/durand/peripherals
 
 /datum/design/circuit/mecha/durand_targ
-	name = "'Durand' weapon control and targeting"
+	design_name = "'Durand' weapon control and targeting"
 	id = "durand_targ"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/mecha/durand/targeting
 
 /datum/design/circuit/mecha/honker_main
-	name = "'H.O.N.K.' central control"
+	design_name = "'H.O.N.K.' central control"
 	id = "honker_main"
 	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/honker/main
 
 /datum/design/circuit/mecha/honker_peri
-	name = "'H.O.N.K.' peripherals control"
+	design_name = "'H.O.N.K.' peripherals control"
 	id = "honker_peri"
 	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/honker/peripherals
 
 /datum/design/circuit/mecha/honker_targ
-	name = "'H.O.N.K.' weapon control and targeting"
+	design_name = "'H.O.N.K.' weapon control and targeting"
 	id = "honker_targ"
 	req_tech = list(TECH_DATA = 4, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/honker/targeting
 
 /datum/design/circuit/mecha/reticent_main
-	name = "'Reticent' central control"
+	design_name = "'Reticent' central control"
 	id = "reticent_main"
 	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/reticent/main
 
 /datum/design/circuit/mecha/reticent_peri
-	name = "'Reticent' peripherals control"
+	design_name = "'Reticent' peripherals control"
 	id = "reticent_peri"
 	req_tech = list(TECH_DATA = 5, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/reticent/peripherals
 
 /datum/design/circuit/mecha/reticent_targ
-	name = "'Reticent' weapon control and targeting"
+	design_name = "'Reticent' weapon control and targeting"
 	id = "reticent_targ"
 	req_tech = list(TECH_DATA = 5, TECH_COMBAT = 2, TECH_ILLEGAL = 4)
 	build_path = /obj/item/circuitboard/mecha/reticent/targeting
@@ -487,25 +487,25 @@ CIRCUITS BELOW
 //Pinnace//
 
 /datum/design/circuit/mecha/fighter/pinnace_main
-	name = "Pinnace central control board"
+	design_name = "Pinnace central control board"
 	id = "pinnace_main"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/main
 
 /datum/design/circuit/mecha/fighter/pinnace_flight
-	name = "Pinnace flight control board"
+	design_name = "Pinnace flight control board"
 	id = "pinnace_flight"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/flight
 
 /datum/design/circuit/mecha/fighter/pinnace_targeting
-	name = "Pinnace weapon control and targeting board"
+	design_name = "Pinnace weapon control and targeting board"
 	id = "pinnace_targeting"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/targeting
 
 /datum/design/circuit/mecha/fighter/pinnace_cockpit_control
-	name = "Pinnace manual flight control instruments"
+	design_name = "Pinnace manual flight control instruments"
 	id = "pinnace_cockpit_control"
 	req_tech = list(TECH_DATA = 3, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/pinnace/cockpitboard
@@ -513,25 +513,25 @@ CIRCUITS BELOW
 //Baron//
 
 /datum/design/circuit/mecha/fighter/baron_main
-	name = "Baron central control board"
+	design_name = "Baron central control board"
 	id = "baron_main"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/main
 
 /datum/design/circuit/mecha/fighter/baron_flight
-	name = "Baron flight control board"
+	design_name = "Baron flight control board"
 	id = "baron_flight"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/flight
 
 /datum/design/circuit/mecha/fighter/baron_targeting
-	name = "Baron weapon control and targeting board"
+	design_name = "Baron weapon control and targeting board"
 	id = "baron_targeting"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/targeting
 
 /datum/design/circuit/mecha/fighter/baron_cockpit_control
-	name = "Baron manual flight control instruments"
+	design_name = "Baron manual flight control instruments"
 	id = "baron_cockpit_control"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/baron/cockpitboard
@@ -539,25 +539,25 @@ CIRCUITS BELOW
 //Duke//
 
 /datum/design/circuit/mecha/fighter/duke_main
-	name = "Duke central control board"
+	design_name = "Duke central control board"
 	id = "duke_main"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/duke/main
 
 /datum/design/circuit/mecha/fighter/duke_flight
-	name = "Duke flight control board"
+	design_name = "Duke flight control board"
 	id = "duke_flight"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4)
 	build_path = /obj/item/circuitboard/mecha/fighter/duke/flight
 
 /datum/design/circuit/mecha/fighter/duke_targeting
-	name = "Duke weapon control and targeting board"
+	design_name = "Duke weapon control and targeting board"
 	id = "duke_targeting"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/duke/targeting
 
 /datum/design/circuit/mecha/fighter/duke_cockpit_control
-	name = "Duke manual flight control instruments"
+	design_name = "Duke manual flight control instruments"
 	id = "duke_cockpit_control"
 	req_tech = list(TECH_DATA = 5, TECH_POWER = 4, TECH_COMBAT = 3)
 	build_path = /obj/item/circuitboard/mecha/fighter/duke/cockpitboard
@@ -568,104 +568,104 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
 /datum/design/circuit/tcom/AssembleDesignName()
-	name = "Telecommunications machinery circuit design ([name])"
+	design_name = "Telecommunications machinery circuit design ([name])"
 /datum/design/circuit/tcom/AssembleDesignDesc()
 	desc = "Allows for the construction of a telecommunications [name] circuit board."
 
 /datum/design/circuit/tcom/server
-	name = "server mainframe"
+	design_name = "server mainframe"
 	id = "tcom-server"
 	build_path = /obj/item/circuitboard/telecomms/server
 
 /datum/design/circuit/tcom/processor
-	name = "processor unit"
+	design_name = "processor unit"
 	id = "tcom-processor"
 	build_path = /obj/item/circuitboard/telecomms/processor
 
 /datum/design/circuit/tcom/bus
-	name = "bus mainframe"
+	design_name = "bus mainframe"
 	id = "tcom-bus"
 	build_path = /obj/item/circuitboard/telecomms/bus
 
 /datum/design/circuit/tcom/hub
-	name = "hub mainframe"
+	design_name = "hub mainframe"
 	id = "tcom-hub"
 	build_path = /obj/item/circuitboard/telecomms/hub
 
 /datum/design/circuit/tcom/relay
-	name = "relay mainframe"
+	design_name = "relay mainframe"
 	id = "tcom-relay"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 4, TECH_BLUESPACE = 3)
 	build_path = /obj/item/circuitboard/telecomms/relay
 
 /datum/design/circuit/tcom/broadcaster
-	name = "subspace broadcaster"
+	design_name = "subspace broadcaster"
 	id = "tcom-broadcaster"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_BLUESPACE = 2)
 	build_path = /obj/item/circuitboard/telecomms/broadcaster
 
 /datum/design/circuit/tcom/receiver
-	name = "subspace receiver"
+	design_name = "subspace receiver"
 	id = "tcom-receiver"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_BLUESPACE = 2)
 	build_path = /obj/item/circuitboard/telecomms/receiver
 
 /datum/design/circuit/tcom/exonet_node
-	name = "exonet node"
+	design_name = "exonet node"
 	id = "tcom-exonet_node"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5, TECH_BLUESPACE = 4)
 	build_path = /obj/item/circuitboard/telecomms/exonet_node
 
 /datum/design/circuit/ntnet_relay
-	name = "NTNet Quantum Relay"
+	design_name = "NTNet Quantum Relay"
 	id = "ntnet_relay"
 	req_tech = list(TECH_DATA = 4)
 	build_path = /obj/item/circuitboard/ntnet_relay
 
 /datum/design/circuit/aicore
-	name = "AI core"
+	design_name = "AI core"
 	id = "aicore"
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/aicore
 
 /datum/design/circuit/fossilrevive
-	name = "Fossil DNA extractor"
+	design_name = "Fossil DNA extractor"
 	id = "fossilrevive"
 	req_tech = list(TECH_DATA = 4, TECH_BIO = 3)
 	build_path = /obj/item/circuitboard/dnarevive
 
 /datum/design/circuit/shield_generator
-	name = "shield generator"
+	design_name = "shield generator"
 	id = "shield_generator"
 	req_tech = list(TECH_MAGNET = 3, TECH_POWER = 4, TECH_BLUESPACE = 2, TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/shield_generator
 
 /datum/design/circuit/shield_diffuser
-	name = "shield diffuser"
+	design_name = "shield diffuser"
 	id = "shield_diffuser"
 	req_tech = list(TECH_MAGNET = 4, TECH_POWER = 2, TECH_ENGINEERING = 5)
 	build_path = /obj/item/circuitboard/shield_diffuser
 
 /datum/design/circuit/pointdefense
-	name = "point defense battery"
+	design_name = "point defense battery"
 	id = "pointdefense"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 3, TECH_COMBAT = 4)
 	build_path = /obj/item/circuitboard/pointdefense
 
 /datum/design/circuit/pointdefense_control
-	name = "point defense control" //Once upon a time, this was called a deluxe microwave.
+	design_name = "point defense control" //Once upon a time, this was called a deluxe microwave.
 	id = "pointdefense_control"
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 3, TECH_COMBAT = 2)
 	build_path = /obj/item/circuitboard/pointdefense_control
 
 /datum/design/circuit/massive_gas_pump
-	name = "High performance gas pump"
+	design_name = "High performance gas pump"
 	id = "massive_gas_pump"
 	req_tech = list(TECH_ENGINEERING = 3)
 	build_path = /obj/item/circuitboard/massive_gas_pump
 
 /datum/design/circuit/massive_heat_pump
-	name = "High performance heat pump"
+	design_name = "High performance heat pump"
 	id = "massive_heat_pump"
 	req_tech = list(TECH_ENGINEERING = 4)
 	build_path = /obj/item/circuitboard/massive_heat_pump
