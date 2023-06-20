@@ -1905,7 +1905,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fI" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Unlocked Autolathe"
@@ -8263,7 +8263,7 @@
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wf" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wg" = (

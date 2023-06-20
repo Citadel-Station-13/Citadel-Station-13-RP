@@ -124,12 +124,6 @@
 	req_tech = list(TECH_DATA = 5)
 	build_path = /obj/item/circuitboard/resleeving_control
 
-/datum/design/circuit/partslathe
-	design_name = "Parts lathe"
-	id = "partslathe"
-	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/circuitboard/partslathe
-
 /datum/design/science/weapon/netgun
 	design_name = "\'Retiarius\' capture gun" //cit change
 	id = "netgun"

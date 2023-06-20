@@ -895,7 +895,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/ert/engineering)
 "hP" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Unlocked Autolathe"

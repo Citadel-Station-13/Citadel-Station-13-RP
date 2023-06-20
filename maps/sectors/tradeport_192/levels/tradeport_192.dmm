@@ -9447,7 +9447,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "Ks" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Unlocked Autolathe"
@@ -9499,7 +9499,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "KE" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Unlocked Autolathe"

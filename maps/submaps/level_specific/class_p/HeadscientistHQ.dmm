@@ -206,7 +206,7 @@
 /turf/simulated/shuttle/floor/yellow,
 /area/submap/HeadscientistHQ)
 "ix" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "iy" = (

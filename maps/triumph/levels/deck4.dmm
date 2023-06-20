@@ -4152,7 +4152,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -24689,7 +24689,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "rGT" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /obj/effect/floor_decal/industrial/warning,

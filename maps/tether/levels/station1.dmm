@@ -25182,7 +25182,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/medivac/general)
 "wZd" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/security/checkpoint/science)
 "xdE" = (

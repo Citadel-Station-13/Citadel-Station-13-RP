@@ -2013,7 +2013,6 @@
 /obj/item/stock_parts/matter_bin,
 /obj/item/stock_parts/manipulator,
 /obj/item/stock_parts/console_screen,
-/obj/item/circuitboard/partslathe,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "akN" = (
@@ -2035,7 +2034,7 @@
 /obj/item/stock_parts/manipulator,
 /obj/structure/table/rack/steel,
 /obj/item/stock_parts/console_screen,
-/obj/item/circuitboard/autolathe,
+/obj/item/circuitboard/machine/lathe/autolathe,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "akP" = (
@@ -2603,7 +2602,7 @@
 	pixel_y = 1
 	},
 /obj/item/circuitboard/rdconsole,
-/obj/item/circuitboard/autolathe{
+/obj/item/circuitboard/machine/lathe/autolathe{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -24280,7 +24279,7 @@
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/quartermaster/office)
 "vbN" = (

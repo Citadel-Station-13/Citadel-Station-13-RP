@@ -849,7 +849,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mess)
 "ie" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/dark,

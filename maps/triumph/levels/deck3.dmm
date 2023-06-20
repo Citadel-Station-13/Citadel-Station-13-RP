@@ -15372,7 +15372,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/medbay/aft)
 "nhH" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /obj/machinery/requests_console{
@@ -18387,7 +18387,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /turf/simulated/floor/tiled,

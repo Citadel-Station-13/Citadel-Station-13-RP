@@ -1920,7 +1920,7 @@
 	},
 /area/centcom/specops)
 "de" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Unlocked Autolathe"
@@ -2168,7 +2168,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "dI" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Centcom Autolathe"
@@ -2272,7 +2272,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/control)
 "dP" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
 	hacked = 1;
 	name = "Centcom Autolathe"

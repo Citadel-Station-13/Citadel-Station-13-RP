@@ -409,7 +409,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "aok" = (
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7057,7 +7057,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
 "enB" = (
@@ -25275,7 +25275,7 @@
 /obj/machinery/holoposter{
 	pixel_x = -32
 	},
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research)
 "pyL" = (

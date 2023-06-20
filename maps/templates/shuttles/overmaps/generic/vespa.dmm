@@ -7349,7 +7349,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
-/obj/machinery/autolathe{
+/obj/machinery/lathe/autolathe{
 	hacked = 1;
 	name = "unlocked autolathe"
 	},
@@ -8067,7 +8067,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/engineeringequipment)
 "rz" = (
-/obj/machinery/autolathe,
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/yellow/border,
 /turf/simulated/floor/tiled/techfloor,
