@@ -44,6 +44,12 @@
 	/// Database data
 	var/datum/player_data/player
 
+	//? Connection
+	/// queued client security kick
+	var/queued_security_kick
+	/// currently age gate blocked
+	var/age_verification_open = FALSE
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher

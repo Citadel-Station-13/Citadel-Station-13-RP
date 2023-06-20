@@ -22,7 +22,7 @@
 
 //* IPIntel - VPN Intelligence System *//
 
-/datum/config_entry/string/ipintel_enabled
+/datum/config_entry/flag/ipintel_enabled
 
 /datum/config_entry/string/ipintel_email
 

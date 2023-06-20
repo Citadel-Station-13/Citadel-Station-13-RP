@@ -84,6 +84,11 @@
 	// Log
 	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
+	// Route age gate
+	if(href_list["client_age_verify"])
+		age_verify_topic(href_list)
+		return
+
 	// Route statpanel
 	if(href_list["statpanel"])
 		_statpanel_act(href_list["statpanel"], href_list)
@@ -363,8 +368,9 @@
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
 	//? We are done
-	// set initialized
-	initialized = TRUE
+	// set initialized if we're not queued for a security kick
+	if(!queued_security_kick)
+		initialized = TRUE
 	// show any migration errors
 	prefs.auto_flush_errors()
 	// update our hub label
@@ -739,9 +745,3 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)
 
-
-/client/proc/disconnect_with_message(var/message = "You have been intentionally disconnected by the server.<br>This may be for security or administrative reasons.")
-	message = "<head><title>You Have Been Disconnected</title></head><body><hr><center><b>[message]</b></center><hr><br>If you feel this is in error, you can contact an administrator out-of-game (for example, on Discord).</body>"
-	window_flash(src)
-	src << browse(message,"window=dropmessage;size=480x360;can_close=1")
-	qdel(src)

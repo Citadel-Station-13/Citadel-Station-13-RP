@@ -122,6 +122,7 @@
 #include "code\__DEFINES\atmospherics\pipes.dm"
 #include "code\__DEFINES\cargo\supply.dm"
 #include "code\__DEFINES\client\player_flags.dm"
+#include "code\__DEFINES\client\playtime.dm"
 #include "code\__DEFINES\color\color.dm"
 #include "code\__DEFINES\color\colour_priority.dm"
 #include "code\__DEFINES\color\lights.dm"

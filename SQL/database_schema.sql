@@ -77,7 +77,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
 -- Playtime / JEXP --
 
 --      Role Time Table - Master     --
@@ -85,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
 
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
   `player` INT(11) NOT NULL,
-  `role` VARCHAR(64) NOT NULL,
+  `roleid` VARCHAR(64) NOT NULL,
   `minutes` INT UNSIGNED NOT NULL,
-  PRIMARY KEY(`player`, `role`)
+  PRIMARY KEY(`player`, `roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --      Role Time - Logging       --
@@ -95,25 +94,25 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime` (
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
   `player` INT(11),
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `role` VARCHAR(64) NOT NULL,
+  `roleid` VARCHAR(64) NOT NULL,
   `minutes` INT(11) NOT NULL,
   `datetime` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`),
   KEY `player` (`player`),
-  KEY `role` (`role`),
+  KEY `roleid` (`roleid`),
   KEY `datetime` (`datetime`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DELIMITER $$
 SQL SECURITY INVOKER
 $$
-CREATE TRIGGER `role_timeTlogupdate` AFTER UPDATE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, job, delta) VALUES (NEW.CKEY, NEW.job, NEW.minutes-OLD.minutes);
+CREATE TRIGGER `role_timeTlogupdate` AFTER UPDATE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (NEW.CKEY, NEW.roleid, NEW.minutes-OLD.minutes);
 END
 $$
-CREATE TRIGGER `role_timeTloginsert` AFTER INSERT ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, job, delta) VALUES (NEW.ckey, NEW.job, NEW.minutes);
+CREATE TRIGGER `role_timeTloginsert` AFTER INSERT ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (NEW.ckey, NEW.roleid, NEW.minutes);
 END
 $$
-CREATE TRIGGER `role_timeTlogdelete` AFTER DELETE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, job, delta) VALUES (OLD.ckey, OLD.job, 0-OLD.minutes);
+CREATE TRIGGER `role_timeTlogdelete` AFTER DELETE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (OLD.ckey, OLD.roleid, 0-OLD.minutes);
 END
 $$
 DELIMITER ;
@@ -130,8 +129,6 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%ipintel` (
   PRIMARY KEY (`ip`),
   KEY `idx_ipintel` (`ip`, `intel`, `date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-=======
->>>>>>> upstream/master
 
 --
 -- Table structure for table `round`

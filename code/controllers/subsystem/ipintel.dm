@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(ipintel)
 	if(!enabled)
 		return
 
-	var/list/http[] = world.Export("http://[CONFIG_GET(string/ipintel_domain)]/check.php?ip=[ip]&contact=[CONFIG_GET(string/ipintel_email)]&format=json&flags=f")
+	var/list/http[] = world.Export("http://[CONFIG_GET(string/ipintel_domain)]/check.php?ip=[address]&contact=[CONFIG_GET(string/ipintel_email)]&format=json&flags=f")
 
 	if(isnull(http))
 		ipintel_error(address, "Unable to connect", retries)

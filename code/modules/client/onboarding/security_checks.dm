@@ -7,13 +7,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/security_checks()
 	if(byond_version < 513)
 		security_kick("BYOND 512 and prior clients are too outdated.", tell_user = TRUE)
-		return FALSE
+		return TRUE
 	if(!byond_build || byond_build < 1386)
 		message_admins("[src] detected as BYOND version spoof. Kicking.")
 		security_note("likely spoofed byond version")
 		security_kick("likely spoofed byond version")
-		return FALSE
+		return TRUE
 	if(num2text(byond_build, 999) in GLOB.blacklisted_builds)
-		security_kick("[byond_build] is blacklisted due to [blacklisted_builds[num2text(byond_build)]]. Please update your BYOND version.", tell_user = TRUE)
-		return FALSE
+		security_kick("[byond_build] is blacklisted due to [GLOB.blacklisted_builds[num2text(byond_build)]]. Please update your BYOND version.", tell_user = TRUE)
+		return TRUE
 	return TRUE

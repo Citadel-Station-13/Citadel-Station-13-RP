@@ -1,64 +1,59 @@
 /**
  * playtime tracking system
+ *
+ * yes, the code is messy and probably shouldn't be half-in-subsystem and half-elsewhere, buuut
+ * whatever.
  */
 SUBSYSTEM_DEF(playtime)
 	name = "Playtime"
 	wait = 10 MINUTES
+	subsystem_flags = SS_NO_TICK_CHECK
+
+/datum/controller/subsystem/playtime/Shutdown()
+	immediate_flush_all(TRUE)
+	return ..()
 
 /datum/controller/subsystem/playtime/fire(resumed)
+	for(var/client/C in GLOB.clients)
+		queue_playtimes(C)
+		C.persistent.flush_playtime()
+		CHECK_TICK
 
+/datum/controller/subsystem/playtime/proc/immediate_flush_all(synchronous)
+	for(var/client/C in GLOB.clients)
+		queue_playtimes(C)
+		C.persistent.flush_playtime(synchronous)
 
+/**
+ * returns a list of playtime roles
+ */
+/datum/controller/subsystem/playtime/proc/playtime_for(mob/M)
+	if(isobserver(M))
+		return list(PLAYER_PLAYTIME_OBSERVER)
+	else if(isnewplayer(M))
+		return list(PLAYER_PLAYTIME_LOBBY)
+	. = list(PLAYER_PLAYTIME_LIVING)
+	var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
+	var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
+	if(J)
+		. += PLAYER_PLAYTIME_ROLE(J.id)
+
+/datum/controller/subsystem/playtime/proc/queue_playtimes(client/C)
+	var/list/playtimes = playtime_for(C.mob)
+	var/now = REALTIMEOFDAY
+	var/since_last = now - C.persistent.playtime_last
+	C.persistent.playtime_last = now
+	if(since_last < 0)
+		CRASH("how was since_last [since_last] < 0?")
+	if(!length(playtimes))
+		return
+	LAZYINITLIST(C.persistent.playtime_queued)
+	for(var/role in playtimes)
+		C.persistent.playtime_queued[role] += since_last
 
 #warn impl all
 
 /*
-GLOBAL_LIST_EMPTY(exp_to_update)
-GLOBAL_PROTECT(exp_to_update)
-
-// Procs
-/datum/job/proc/required_playtime_remaining(client/C)
-	if(!C)
-		return 0
-	if(!CONFIG_GET(flag/use_exp_tracking))
-		return 0
-	if(!SSdbcore.Connect())
-		return 0
-	if(!exp_requirements || !exp_type)
-		return 0
-	if(!job_is_xp_locked(src.title))
-		return 0
-	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights_for(C,R_ADMIN))
-		return 0
-	var/isexempt = C.prefs.db_flags & DB_FLAG_EXEMPT
-	if(isexempt)
-		return 0
-	var/my_exp = C.calc_exp_type(get_exp_req_type())
-	var/job_requirement = get_exp_req_amount()
-	if(my_exp >= job_requirement)
-		return 0
-	else
-		return (job_requirement - my_exp)
-
-/datum/job/proc/get_exp_req_amount()
-	if(title in (GLOB.command_positions | list("AI")))
-		var/uerhh = CONFIG_GET(number/use_exp_restrictions_heads_hours)
-		if(uerhh)
-			return uerhh * 60
-	return exp_requirements
-
-/datum/job/proc/get_exp_req_type()
-	if(title in (GLOB.command_positions | list("AI")))
-		if(CONFIG_GET(flag/use_exp_restrictions_heads_department) && exp_type_department)
-			return exp_type_department
-	return exp_type
-
-/proc/job_is_xp_locked(jobtitle)
-	if(!CONFIG_GET(flag/use_exp_restrictions_heads) && (jobtitle in (GLOB.command_positions | list("AI"))))
-		return FALSE
-	if(!CONFIG_GET(flag/use_exp_restrictions_other) && !(jobtitle in (GLOB.command_positions | list("AI"))))
-		return FALSE
-	return TRUE
-
 /client/proc/calc_exp_type(exptype)
 	var/list/explist = prefs.exp.Copy()
 	var/amount = 0

@@ -3,10 +3,17 @@
 /client/proc/security_note(message, tell_user)
 	log_access("client security: noting [key_name(src)] | [message]")
 	add_system_note("client-security", message)
+	if(tell_user)
+		to_chat(src, SPAN_BOLDANNOUNCE("CLIENT-SECURITY: [message]<br>Please correct this."))
 
-/client/proc/security_kick(message, tell_user)
+/client/proc/security_kick(message, tell_user, immediate)
 	log_access("client security: kicking [key_name(src)] | [message]")
-	qdel(src)
+	if(tell_user)
+		to_chat(src, SPAN_BOLDANNOUNCE("CLIENT-SECURITY: [message]<br>Please correct this.<br>You will now be disconnected."))
+		disconnection_message(message)
+		if(!immediate)
+			queue_security_kick(5 SECONDS)
+	queue_security_kick()
 
 /**
  * time is in minutes
@@ -18,3 +25,30 @@
 	add_system_note("client-security", "banned for [time_displayed]: [message]")
 	qdel(src)
 	AddBan(ckey, computer_id, "client-security: [message]", minutes = time)
+
+/**
+ * queues a security kick
+ * ensures the client's around for atleast delay
+ */
+/client/proc/queue_security_kick(delay)
+	#warn impl
+
+/**
+ * shows a disconnection message that's hopefully resistant to fast-disconnects
+ */
+/client/proc/disconnection_message(msg)
+	var/content = {"
+		<html>
+		<head>
+		<title>Disconnection</title>
+		</head>
+		<body>
+		You have been intentionally disconnected by the server.<br><br>
+		<center><b>[msg]></b></center>
+		<br><hr>
+		If you feel this is in error, contact an administrator out of game (e.g. on Discord).
+		</body>
+		</html>
+	"}
+	src << browse(content, "window=droppedFromServer;size=480x360;can_close=1")
+	window_flash(src)
