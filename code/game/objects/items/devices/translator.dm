@@ -25,7 +25,7 @@
 		set_context(context)
 
 /obj/item/universal_translator/Destroy()
-	if(context && ispath(context))
+	if(context && !ispath(context))
 		QDEL_NULL(context)
 	return ..()
 
