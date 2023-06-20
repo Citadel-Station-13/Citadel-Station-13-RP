@@ -148,7 +148,6 @@
 	push_ui_data(data = list("reagents" = lathe.stored_reagents?.tgui_reagent_contents() || list()))
 
 /datum/tgui_module/lathe_control/proc/ui_queue_update()
-	var/obj/machinery/lathe/lathe = host
 	push_ui_data(data = list("queue" = ui_queue_data()))
 
 /datum/tgui_module/lathe_control/proc/ui_queue_data()

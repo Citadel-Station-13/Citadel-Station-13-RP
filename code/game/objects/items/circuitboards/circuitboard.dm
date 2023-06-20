@@ -6,6 +6,7 @@
  * this will usually be /obj/machinery, but other things are possible.
  */
 /obj/item/circuitboard
+
 	name = "circuit board"
 	icon = 'icons/obj/module.dmi'
 	icon_state = "id_mod"

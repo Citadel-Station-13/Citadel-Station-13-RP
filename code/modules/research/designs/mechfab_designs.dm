@@ -426,9 +426,8 @@
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
 	materials = list(MAT_STEEL = 7500)
 
-/datum/design/science/mecha/AssembleDesignDesc()
-	if(!desc)
-		desc = "Allows for the construction of \a '[build_name]' exosuit module."
+/datum/design/science/mecha/generate_desc(template_name, template_desc)
+	return "Allows for the construction of \a '[template_name]' exosuit module."
 
 /datum/design/science/mecha/tracking
 	design_name = "Exosuit Tracking Beacon"

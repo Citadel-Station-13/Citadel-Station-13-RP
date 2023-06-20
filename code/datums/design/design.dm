@@ -93,7 +93,7 @@
 	return template
 
 /datum/design/proc/generate_desc(template_name, template_desc)
-	return template
+	return template_desc
 
 /**
  * Encodes data for [tgui/packages/tgui/interfaces/common/Design.tsx]

@@ -376,7 +376,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/cell/device,
 		/obj/item/circuitboard/broken,
 		/obj/item/circuitboard/arcade,
-		/obj/item/circuitboard/lathe/autolathe,
+		/obj/item/circuitboard/machine/lathe/autolathe,
 		/obj/item/circuitboard/atmos_alert,
 		/obj/item/circuitboard/airalarm,
 		/obj/item/circuitboard/fax,

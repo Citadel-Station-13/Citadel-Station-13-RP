@@ -1,7 +1,7 @@
 // Various beakers
 
-/datum/design/science/beaker/AssembleDesignName()
-	design_name = "Beaker prototype ([build_name])"
+/datum/design/science/beaker/generate_name(template)
+	return "Beaker prototype ([template])"
 
 /datum/design/science/beaker/noreact
 	design_name = "cryostasis"

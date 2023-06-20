@@ -182,7 +182,7 @@ CIRCUITS BELOW
 	design_name = "autolathe board"
 	id = "autolathe"
 	req_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 2)
-	build_path = /obj/item/circuitboard/lathe/autolathe
+	build_path = /obj/item/circuitboard/machine/lathe/autolathe
 
 /datum/design/circuit/rdservercontrol
 	design_name = "R&D server control console"
@@ -377,10 +377,11 @@ CIRCUITS BELOW
 /datum/design/circuit/mecha
 	req_tech = list(TECH_DATA = 3)
 
-/datum/design/circuit/mecha/AssembleDesignName()
-	design_name = "Exosuit module circuit design ([name])"
-/datum/design/circuit/mecha/AssembleDesignDesc()
-	desc = "Allows for the construction of \a [name] module."
+/datum/design/circuit/mecha/generate_name(template)
+	return "Exosuit module circuit design ([template])"
+
+/datum/design/circuit/mecha/generate_desc(template_name, template_desc)
+	return "Allows for the construction of \a [template_name] module."
 
 /datum/design/circuit/mecha/ripley_main
 	design_name = "APLU 'Ripley' central control"
@@ -567,10 +568,11 @@ CIRCUITS BELOW
 /datum/design/circuit/tcom
 	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4)
 
-/datum/design/circuit/tcom/AssembleDesignName()
-	design_name = "Telecommunications machinery circuit design ([name])"
-/datum/design/circuit/tcom/AssembleDesignDesc()
-	desc = "Allows for the construction of a telecommunications [name] circuit board."
+/datum/design/circuit/tcom/generate_name(template)
+	return "Telecommunications machinery circuit design ([template])"
+
+/datum/design/circuit/tcom/generate_desc(template_name, template_desc)
+	return "Allows for the construction of a telecommunications [template_name] circuit board."
 
 /datum/design/circuit/tcom/server
 	design_name = "server mainframe"

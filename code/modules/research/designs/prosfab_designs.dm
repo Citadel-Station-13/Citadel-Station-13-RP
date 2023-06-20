@@ -83,8 +83,8 @@
 		H.b_skin = 0
 		H.dna.ResetUIFrom(H)
 
-		H.real_design_name = "Synthmorph #[rand(100,999)]"
-		H.design_name = H.real_name
+		H.real_name = "Synthmorph #[rand(100,999)]"
+		H.name = H.real_name
 		H.dir = 2
 		H.add_language(LANGUAGE_EAL)
 		return H

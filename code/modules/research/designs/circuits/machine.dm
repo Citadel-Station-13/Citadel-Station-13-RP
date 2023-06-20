@@ -2,4 +2,4 @@
 	abstract_type = /datum/design/circuit/machine
 
 /datum/design/circuit/machine/generate_name(template)
-	return "Machine circuit ([tempplate])"
+	return "Machine circuit ([template])"

@@ -2,11 +2,11 @@
 	lathe_type = LATHE_TYPE_CIRCUIT
 	materials = list(MAT_GLASS = 2000, MAT_GOLD = 100)
 
-/datum/design/aimodule/AssembleDesignName()
-	design_name = "AI module design ([name])"
+/datum/design/aimodule/generate_name(template)
+	return "AI module design ([template])"
 
-/datum/design/aimodule/AssembleDesignDesc()
-	desc = "Allows for the construction of \a '[name]' AI module."
+/datum/design/aimodule/generate_desc(template_name, template_desc)
+	return "Allows for the construction of \a '[template_name]' AI module."
 
 /datum/design/aimodule/safeguard
 	design_name = "Safeguard"
