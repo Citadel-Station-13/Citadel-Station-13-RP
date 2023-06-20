@@ -343,10 +343,10 @@
 	hook_vr("client_new",list(src))
 
 	if(config_legacy.paranoia_logging)
-		if(isnum(player_age) && player_age == -1)
+		if(isnum(player.player_age) && player.player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
-		if(isnum(account_age) && account_age <= 2)
-			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
+		if(isnum(persistent.account_age) && persistent.account_age <= 2)
+			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([persistent.account_age] days).")
 
 	//? We are done
 	// set initialized if we're not queued for a security kick
@@ -459,39 +459,6 @@
 	while(query.NextRow())
 		sql_id = query.item[1]
 		player_age = text2num(query.item[2])
-		break
-
-	account_join_date = sanitizeSQL(findJoinDate())
-	if(account_join_date && SSdbcore.Connect())
-		var/datum/db_query/query_datediff = SSdbcore.RunQuery(
-			"SELECT DATEDIFF(Now(), :date)",
-			list(
-				"date" = account_join_date
-			)
-		)
-		if(query_datediff.NextRow())
-			account_age = text2num(query_datediff.item[1])
-
-	var/datum/db_query/query_ip = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE ip = :addr",
-		list(
-			"addr" = address
-		)
-	)
-	related_accounts_ip = ""
-	while(query_ip.NextRow())
-		related_accounts_ip += "[query_ip.item[1]], "
-		break
-
-	var/datum/db_query/query_cid = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE computerid = :cid",
-		list(
-			"cid" = sanitizeSQL(computer_id)
-		)
-	)
-	related_accounts_cid = ""
-	while(query_cid.NextRow())
-		related_accounts_cid += "[query_cid.item[1]], "
 		break
 
 	//Just the standard check to see if it's actually a number
@@ -686,19 +653,6 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 	// Something went wrong, client is usually kicked or transfered to a new mob at this point
 	return 0
-
-/client/proc/findJoinDate()
-	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
-	if(!http)
-		log_world("Failed to connect to byond age check for [ckey]")
-		return
-	var/F = file2text(http["CONTENT"])
-	if(F)
-		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
-		if(R.Find(F))
-			. = R.group[1]
-		else
-			CRASH("Age check regex failed for [src.ckey]")
 
 /client/proc/AnnouncePR(announcement)
 	to_chat(src, announcement)

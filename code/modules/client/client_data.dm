@@ -22,6 +22,10 @@ GLOBAL_LIST_EMPTY(client_data)
 	var/ckey
 	/// absolutely, positively annihilated
 	var/ligma = FALSE
+	/// byond account join date
+	var/account_join
+	/// byond account age
+	var/account_age
 
 	//* externally managed data *//
 	/// playtime - role string to number of minutes.
@@ -38,6 +42,8 @@ GLOBAL_LIST_EMPTY(client_data)
 /datum/client_data/New(ckey)
 	src.ckey = ckey
 	src.playtime_last = REALTIMEOFDAY
+
+	load_account_age()
 
 	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
 	var/client/C = GLOB.directory[src.ckey]
@@ -94,6 +100,41 @@ GLOBAL_LIST_EMPTY(client_data)
 		playtime[query.item[1]] = text2num(query.item[2])
 	playtime_mutex = FALSE
 
-/datum/client_data/proc/block_on_playtime_loaded()
+/datum/client_data/proc/block_on_playtime_loaded(timeout = INFINITY)
+	var/timed_out = world.time + timeout
 	load_playtime()
-	UNTIL(playtime_loaded)
+	UNTIL(playtime_loaded || world.time > timed_out)
+
+/datum/client_data/proc/block_on_account_age_loaded(timeout = INFINITY)
+	var/timed_out = world.time + timeout
+	UNTIL(!isnull(account_age) || world.time > timed_out)
+	return account_age
+
+/datum/client_data/proc/load_account_age()
+	var/list/http = world.Export("http://byond.com/members/[ckey]?format=text")
+	if(!http)
+		log_world("Failed to connect to byond age check for [ckey]")
+		return
+	var/F = file2text(http["CONTENT"])
+	. = null
+	if(F)
+		// year-month-day
+		var/regex/R = regex("joined = \"(\\d{4}-\\d{2}-\\d{2})\"")
+		if(R.Find(F))
+			var/str = R.group[1]
+			account_join = str
+			if(!SSdbcore.Connect())
+				account_age = null
+				return
+			var/datum/db_query/query = SSdbcore.RunQuery(
+				"SELECT DATEDIFF(Now(), :date)",
+				list(
+					"date" = str,
+				)
+			)
+			if(query.NextRow())
+				. = text2num(query.item[1])
+		else
+			CRASH("Age check regex failed for [src.ckey]")
+	account_age = .
+

@@ -63,11 +63,11 @@
 	var/highlight_special_characters = 1
 
 	for(var/client/C in GLOB.clients)
-		if(C.player_age == "Requires database")
+		if(C.player.player_age == "Requires database")
 			missing_ages = 1
 			continue
-		if(C.player_age < age)
-			msg += "[key_name(C, 1, 1, highlight_special_characters)]: account is [C.player_age] days old<br>"
+		if(C.player.player_age < age)
+			msg += "[key_name(C, 1, 1, highlight_special_characters)]: account is [C.player.player_age] days old<br>"
 
 	if(missing_ages)
 		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present.")

@@ -24,6 +24,8 @@
 	var/player_flags = NONE
 	/// player age
 	var/player_age
+	/// join date
+	var/player_first_seen
 
 /datum/player_data/New(key)
 	src.ckey = ckey(key)
@@ -86,7 +88,7 @@
 			lookup_pid = text2num(lookup_pid)
 		qdel(lookup)
 		lookup = SSdbcore.ExecuteQuery(
-			"SELECT id, flags, datediff(Now(), firstseen) FROM [format_table_name("player")] WHERE id = :id",
+			"SELECT id, flags, datediff(Now(), firstseen), firstseen FROM [format_table_name("player")] WHERE id = :id",
 			list(
 				"id" = lookup_pid
 			)
@@ -101,6 +103,7 @@
 				lookup_age = text2num(lookup_age)
 			player_id = lookup_pid
 			player_flags = lookup_flags
+			player_first_seen = lookup.item[4]
 			player_age = lookup_age
 			qdel(lookup)
 			available = TRUE
@@ -125,6 +128,7 @@
 				"fs" = migrate_firstseen
 			)
 		)
+		player_first_seen = migrate_firstseen
 	else
 		insert = SSdbcore.ExecuteQuery(
 			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, Now(), Now())",
@@ -132,6 +136,7 @@
 				"flags" = player_flags,
 			)
 		)
+		player_first_seen = time_stamp()
 	var/insert_id = insert.last_insert_id
 	if(istext(insert_id))
 		insert_id = text2num(insert_id)

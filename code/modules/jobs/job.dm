@@ -375,8 +375,8 @@
 		return 0
 	if(!CONFIG_GET(flag/job_check_account_age))
 		return 0
-	if(isnum(C.player_age) && isnum(minimal_player_age))
-		return max(0, minimal_player_age - C.player_age)
+	if(isnum(C.player.player_age) && isnum(minimal_player_age))
+		return max(0, minimal_player_age - C.player.player_age)
 	return 0
 
 /datum/role/job/proc/apply_fingerprints(var/mob/living/carbon/human/target)
