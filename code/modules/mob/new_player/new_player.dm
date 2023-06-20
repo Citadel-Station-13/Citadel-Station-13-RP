@@ -150,6 +150,8 @@
 		new_player_panel_proc()
 
 	if(href_list["observe"])
+		// don't lose out if we join fast
+		SSplaytime.queue_playtimes(client)
 		if(!client.reject_age_unverified())
 			return
 		var/alert_time = SSticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config_legacy.respawn_time/10/60)
@@ -372,6 +374,8 @@
 	return timer - world.time
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
+	// don't lose out if we join fast
+	SSplaytime.queue_playtimes(client)
 	if (src != usr)
 		return 0
 	if(SSticker.current_state != GAME_STATE_PLAYING)
@@ -478,6 +482,8 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
+	// don't lose out if we join fast
+	SSplaytime.queue_playtimes(client)
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()

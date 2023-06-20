@@ -31,13 +31,13 @@ GLOBAL_LIST_EMPTY(client_data)
 	/// playtime is loading or flushing
 	var/playtime_mutex = FALSE
 	/// playtime - queued for addition
-	var/list/playtime_queued
+	var/list/playtime_queued = list()
 	/// last REALTIMEOFDAY we did queuing
 	var/playtime_last
 
 /datum/client_data/New(ckey)
 	src.ckey = ckey
-	src.playtime_last = 0
+	src.playtime_last = REALTIMEOFDAY
 
 	var/list/the_cheese_touch = CONFIG_GET(keyed_list/shadowban)
 	var/client/C = GLOB.directory[src.ckey]
@@ -59,7 +59,11 @@ GLOBAL_LIST_EMPTY(client_data)
 	set waitfor = FALSE
 	if(playtime_loaded)
 		return
+	// no args, injection proof; release proccall guard
+	var/old_usr = usr
+	usr = null
 	load_playtime_impl()
+	usr = old_usr
 
 /datum/client_data/proc/load_playtime_impl()
 	PRIVATE_PROC(TRUE)
@@ -67,17 +71,29 @@ GLOBAL_LIST_EMPTY(client_data)
 	if(playtime_mutex)
 		return
 	playtime_mutex = TRUE
-	LAZYINITLIST(playtime)
-	#warn impl
+	playtime = list()
+	var/player_id
+	var/client/client = GLOB.directory[ckey]
+	if(isnull(client))
+		playtime_mutex = FALSE
+		return
+	client.player.block_on_available()
+	// clients can be deleted at any time.
+	player_id = client?.player?.player_id
+	if(isnull(player_id))
+		playtime_mutex = FALSE
+		return
+	var/datum/db_query/query = SSdbcore.NewQuery(
+		"SELECT `roleid`, `minutes` FROM [format_table_name("playtime")] WHERE player = :player",
+		list(
+			"player" = player_id,
+		)
+	)
+	query.Execute()
+	while(query.NextRow())
+		playtime[query.item[1]] = text2num(query.item[2])
 	playtime_mutex = FALSE
 
 /datum/client_data/proc/block_on_playtime_loaded()
 	load_playtime()
 	UNTIL(playtime_loaded)
-
-/datum/client_data/proc/flush_playtime(synchronous)
-	block_on_playtime_loaded() // probably ensure we don't duplicate playtimes
-	flush_playtime_impl
-	#warn impl
-
-#warn playtime handling

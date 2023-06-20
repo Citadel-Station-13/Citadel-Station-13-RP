@@ -3,6 +3,8 @@
  *
  * yes, the code is messy and probably shouldn't be half-in-subsystem and half-elsewhere, buuut
  * whatever.
+ *
+ * todo: this can probably be optimized to be better at yielding instead of using dumb CHECK_TICKS.
  */
 SUBSYSTEM_DEF(playtime)
 	name = "Playtime"
@@ -16,13 +18,22 @@ SUBSYSTEM_DEF(playtime)
 /datum/controller/subsystem/playtime/fire(resumed)
 	for(var/client/C in GLOB.clients)
 		queue_playtimes(C)
-		C.persistent.flush_playtime()
 		CHECK_TICK
+	flush_playtimes()
 
-/datum/controller/subsystem/playtime/proc/immediate_flush_all(synchronous)
+/datum/controller/subsystem/playtime/proc/flush_playtimes()
+	var/list/built = list()
 	for(var/client/C in GLOB.clients)
-		queue_playtimes(C)
-		C.persistent.flush_playtime(synchronous)
+		var/playerid = C.player.player_id
+		for(var/roleid in C.persistent.playtime_queued)
+			var/minutes = C.persistent.playtime_queued[roleid]
+			built[++built.len] = list(
+				"roleid" = roleid,
+				"minutes" = minutes,
+				"player" = playerid
+			)
+		C.persistent.playtime_queued = list()
+	SSdbcore.MassInsert(format_table_name("playtime"), built, duplicate_key = "ON DUPLICATE KEY UPDATE minutes = minutes + VALUES(minutes)")
 
 /**
  * returns a list of playtime roles

@@ -559,6 +559,9 @@
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
+	// don't lose out on that sweet observer playtime
+	SSplaytime.queue_playtimes(client)
+
 	if(stat != DEAD)
 		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
