@@ -137,4 +137,3 @@ GLOBAL_LIST_EMPTY(client_data)
 		else
 			CRASH("Age check regex failed for [src.ckey]")
 	account_age = .
-

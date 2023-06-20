@@ -40,10 +40,12 @@ SUBSYSTEM_DEF(playtime)
  */
 /datum/controller/subsystem/playtime/proc/playtime_for(mob/M)
 	if(isobserver(M))
+		#warn dead vs observing?
 		return list(PLAYER_PLAYTIME_OBSERVER)
 	else if(isnewplayer(M))
 		return list(PLAYER_PLAYTIME_LOBBY)
 	. = list(PLAYER_PLAYTIME_LIVING)
+	#warn what if they're dead lol
 	var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
 	var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
 	if(J)
