@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(playtime)
 	subsystem_flags = SS_NO_TICK_CHECK
 
 /datum/controller/subsystem/playtime/Shutdown()
-	immediate_flush_all(TRUE)
+	flush_playtimes()
 	return ..()
 
 /datum/controller/subsystem/playtime/fire(resumed)

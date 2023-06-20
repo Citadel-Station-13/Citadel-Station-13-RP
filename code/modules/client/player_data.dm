@@ -6,6 +6,8 @@
 	//! intrinsics
 	/// our ckey
 	var/ckey
+	/// our key
+	var/key
 	/// available: null if don't know yet, FALSE if no dbcon, TRUE if loaded
 	var/available
 	/// loading?
@@ -23,10 +25,11 @@
 	/// player age
 	var/player_age
 
-/datum/player_data/New(ckey)
-	src.ckey = ckey
+/datum/player_data/New(key)
+	src.ckey = ckey(key)
 	if(!src.ckey)
 		return
+	src.key = key
 	load()
 
 /**
@@ -61,6 +64,8 @@
 
 /datum/player_data/proc/_load()
 	if(IsAdminAdvancedProcCall())
+		return
+	if(IsGuestKey(key))
 		return
 	var/datum/db_query/lookup
 	lookup = SSdbcore.ExecuteQuery(
@@ -206,6 +211,8 @@
 /**
  * block until we know if we're available
  * then return if we are
+ *
+ * WARNING: without database, or if this is for a guest key, we will never be available.
  */
 /datum/player_data/proc/block_on_available()
 	UNTIL(!isnull(available))

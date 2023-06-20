@@ -244,25 +244,34 @@
 	// build top level menu
 	GLOB.main_window_menu.setup(src)
 
+	// log & lookup updates
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
+	// log connection in text file
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
+	// log to db
+	log_connection_to_db()
+	// log to player lookup
+	update_lookup_in_db()
 
 	//* WARNING: mob.login is always called async, aka immediately returns on sleep.
 	//* we cannot enforce nosleep due to SDMM limitations.
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
+	handle_legacy_connection_whatevers()
+
+	#warn get rid of this
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
 
 
 	// resolve database data
-	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
-	player = new(ckey)
+	player = new(key)
 	player.log_connect()
 
 	// -- security --
+
 	// start caching it immediately
 	SSipintel.vpn_score(address)
 	// run onboarding gauntlet
@@ -529,18 +538,6 @@
 		else
 			log_admin("Couldn't perform IP check on [key] with [address]")
 
-	// Department Hours
-	if(config_legacy.time_off)
-		var/datum/db_query/query_hours = SSdbcore.RunQuery(
-			"SELECT department, hours FROM [format_table_name("vr_player_hours")] WHERE ckey = :ckey",
-			list(
-				"ckey" = sql_ckey
-			)
-		)
-		while(query_hours.NextRow())
-			LAZYINITLIST(department_hours)
-			department_hours[query_hours.item[1]] = text2num(query_hours.item[2])
-
 	if(sql_id)
 		SSdbcore.RunQuery(
 			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
@@ -563,18 +560,6 @@
 			)
 		)
 
-	//Logging player access
-	var/serverip = "[world.internet_address]:[world.port]"
-	SSdbcore.RunQuery(
-		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :serverip, :ckey, :ip, :computerid)",
-		list(
-			"serverip" = serverip,
-			"ckey" = sql_ckey,
-			"ip" = sql_ip,
-			"computerid" = sql_computerid
-		)
-	)
-
 #undef UPLOAD_LIMIT
 
 //checks if a client is afk
@@ -594,7 +579,6 @@
 		sleep(1)
 	else
 		stoplag(5)
-
 
 /client/Click(atom/object, atom/location, control, params)
 	var/ab = FALSE
