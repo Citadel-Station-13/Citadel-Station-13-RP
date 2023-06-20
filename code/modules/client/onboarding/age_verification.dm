@@ -103,10 +103,9 @@
 	return TRUE
 
 /client/proc/age_gate_internal_failed()
-	user << browse(null, "window=age_gate")
+	src << browse(null, "window=age_gate")
 	security_ban("Age verification failed. Appeal this on the Discord after you are 18 years of age or older.")
 
 /client/proc/age_gate_internal_succeeded()
+	src << browse(null, "window=age_gate")
 	set_age_verified()
-	user << browse(null, "window=age_gate")
-	

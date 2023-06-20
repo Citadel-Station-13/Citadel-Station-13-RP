@@ -11,5 +11,3 @@
 	if(!age_verification())
 		return FALSE
 	return TRUE
-
-#warn impl all

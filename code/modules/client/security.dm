@@ -1,5 +1,3 @@
-#warn tell_user on both
-
 /client/proc/security_note(message, tell_user)
 	log_access("client security: noting [key_name(src)] | [message]")
 	add_system_note("client-security", message)
