@@ -49,6 +49,8 @@
 	var/queued_security_kick
 	/// currently age gate blocked
 	var/age_verification_open = FALSE
+	/// panic bunker is still resolving
+	var/panic_bunker_pending = FALSE
 
 	//? Rendering
 	/// Click catcher

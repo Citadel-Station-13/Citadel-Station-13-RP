@@ -117,11 +117,15 @@
 	if(href_list["show_preferences"])
 		if(!client.reject_age_unverified())
 			return
+		if(!client.reject_on_initialization_block())
+			return
 		client.prefs.ShowChoices(src)
 		return 1
 
 	if(href_list["ready"])
 		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
 			return
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)	// Make sure we don't ready up after the round has started
 			var/want_to_be_ready = text2num(href_list["ready"])
@@ -153,6 +157,8 @@
 		// don't lose out if we join fast
 		SSplaytime.queue_playtimes(client)
 		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
 			return
 		var/alert_time = SSticker?.current_state <= GAME_STATE_SETTING_UP ? 1 : round(config_legacy.respawn_time/10/60)
 
@@ -196,6 +202,8 @@
 
 	if(href_list["late_join"])
 		if(!client.reject_age_unverified())
+			return
+		if(!client.reject_on_initialization_block())
 			return
 
 		if(!SSticker || SSticker.current_state != GAME_STATE_PLAYING)

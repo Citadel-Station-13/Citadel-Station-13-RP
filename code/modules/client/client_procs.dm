@@ -350,7 +350,7 @@
 
 	//? We are done
 	// set initialized if we're not queued for a security kick
-	if(!queued_security_kick)
+	if(!queued_security_kick || panic_bunker_pending)
 		initialized = TRUE
 	// show any migration errors
 	prefs.auto_flush_errors()

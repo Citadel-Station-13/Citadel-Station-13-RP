@@ -18,3 +18,9 @@
 			"cid" = computer_id,
 		)
 	)
+
+/client/proc/reject_on_initialization_block()
+	if(!initialized)
+		to_chat(src, SPAN_DANGER("Your client is still initializing. Wait a moment."))
+		return FALSE
+	return TRUE
