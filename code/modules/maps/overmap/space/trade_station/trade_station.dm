@@ -1,5 +1,5 @@
 //Overmap Controller
-/obj/effect/overmap/visitable/sector/trade_post
+/obj/overmap/entity/visitable/sector/trade_post
 	name = "Nebula Gas Food Mart"
 	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
 	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}

@@ -2985,7 +2985,7 @@
 /turf/simulated/floor,
 /area/ship/mercenary/southairlock)
 "gd" = (
-/obj/effect/overmap/visitable/ship/mercship{
+/obj/overmap/entity/visitable/ship/mercship{
 	fore_dir = 4
 	},
 /turf/space,

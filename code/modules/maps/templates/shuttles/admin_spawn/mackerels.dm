@@ -183,7 +183,7 @@
 	shuttle_type = /datum/shuttle/autodock/overmap/mackerel_lc_wreck
 
 // The 'ship'
-/obj/effect/overmap/visitable/ship/landable/mackerel_sh
+/obj/overmap/entity/visitable/ship/landable/mackerel_sh
 	scanner_name = "Mackerel-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Phish Phlake
 [i]Class[/i]: Small Shuttle
@@ -194,7 +194,7 @@
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Stationhopper"
 
-/obj/effect/overmap/visitable/ship/landable/mackerel_lc
+/obj/overmap/entity/visitable/ship/landable/mackerel_lc
 	scanner_name = "Mackerel-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Phishy Business
 [i]Class[/i]: Small Shuttle
@@ -205,7 +205,7 @@
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Light Cargo"
 
-/obj/effect/overmap/visitable/ship/landable/mackerel_hc
+/obj/overmap/entity/visitable/ship/landable/mackerel_hc
 	scanner_name = "Mackerel-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Phish Pharma
 [i]Class[/i]: Small Shuttle
@@ -216,7 +216,7 @@
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Heavy Cargo"
 
-/obj/effect/overmap/visitable/ship/landable/mackerel_hc_skel
+/obj/overmap/entity/visitable/ship/landable/mackerel_hc_skel
 	scanner_name = "Mackerel-class Transport (Spartanized)"
 	scanner_desc = @{"[i]Registration[/i]: ITV Phish Pond
 [i]Class[/i]: Small Shuttle
@@ -227,7 +227,7 @@
 	vessel_size = SHIP_SIZE_TINY
 	shuttle = "Mackerel Heavy Cargo Spartan"
 
-/obj/effect/overmap/visitable/ship/landable/mackerel_lc_wreck
+/obj/overmap/entity/visitable/ship/landable/mackerel_lc_wreck
 	scanner_name = "Wrecked Mackerel-class Transport"
 	scanner_desc = @{"[i]Registration[/i]: ITV Phish Phood
 [i]Class[/i]: Small Shuttle Wreck
