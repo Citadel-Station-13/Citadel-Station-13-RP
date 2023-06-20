@@ -1,0 +1,11 @@
+## Cross-Server Comms ##
+
+## Our secret key - used to auth incoming messages
+# COMMS_KEY default_pwd
+
+## List of cross server bunker overrides
+## TODO: remove / replace
+# CROSS_SERVER_BUNKER_OVERRIDE
+
+## Our server name in cross-server communications
+# CROSS_COMM_NAME Citadel Station 13 - RP

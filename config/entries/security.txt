@@ -1,0 +1,54 @@
+### FAIL2TOPIC:
+### Automated IP bans for world/Topic() spammers
+## Enabled
+FAIL2TOPIC_ENABLED
+## Minimum wait time in deciseconds between valid requests
+FAIL2TOPIC_RATE_LIMIT 10
+## Number of requests after breaching rate limit that triggers a ban
+FAIL2TOPIC_MAX_FAILS 5
+## Firewall rule name used on physical server
+FAIL2TOPIC_RULE_NAME _dd_fail2topic
+
+## HARD topic limit, even without fail2topic
+TOPIC_MAX_SIZE 1048576
+
+### FAIL2TOPIC WHITELISTING
+## Just list IPs like so:
+# TOPIC_RATE_LIMIT_WHITELIST 351.531.632.145 obviously not valid but you get the point
+TOPIC_RATE_LIMIT_WHITELIST 127.0.0.1
+
+### IPINTEL
+## IPIntel system enabled?
+IPINTEL_ENABLED
+## Email given to API for contact - required.
+# IPINTEL_EMAIL ch@nge.me
+## The threshold of where we consider someone to be a VPN
+IPINTEL_RATING_BAD 1
+## The hours we cache a good ipintel rating for
+IPINTEL_SAVE_GOOD 12
+## The hours we cache a bad ipintel rating for
+IPINTEL_SAVE_BAD 1
+## Ipintel API domain
+IPINTEL_DOMAIN check.getipintel.net
+
+### AGE VERIFICATION
+## Automated Age Verification
+AGE_VERIFICATION
+## Autoban if someone's under 18
+AGE_VERIFICATION_AUTOBAN
+
+### MISC SECURITY CHECKS
+## Check for CID Randomizers
+# CHECK_CID_RANDOMIZER
+
+### PANIC BUNKER
+## Enable full panic bunker
+# PANIC_BUNKER
+## Enable panic bunker to detected VPNs
+# VPN_BUNKER
+## Set to use playtime tracking instead of raw connected-before check in bunker. Value is in minutes of playtime.
+# PANIC_BUNKER_PLAYTIME 120
+## Set to show players a message if they try to join during panic bunker.
+PANIC_BUNKER_MESSAGE Sorry, but the server is currently not accepting connections from never seen before players.
+## How long to keep someone in bunker bypass list once whitelisted by admins
+PANIC_BUNKER_BYPASS 7

@@ -32,15 +32,6 @@
 	default = null
 	min_val = 0
 
-/datum/config_entry/string/community_shortname
-
-/datum/config_entry/string/community_link
-
-/datum/config_entry/string/tagline
-	default = "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>"
-
-/datum/config_entry/flag/usetaglinestrings
-
 /datum/config_entry/flag/cache_assets
 	default = TRUE
 
@@ -53,3 +44,6 @@
 /datum/config_entry/number/rounds_until_hard_restart
 	default = -1
 	min_val = 0
+
+/// Enable or disable the toast notification when the the instance finishes initializing.
+/datum/config_entry/flag/toast_notification_on_init

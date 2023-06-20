@@ -44,6 +44,14 @@
 	/// Database data
 	var/datum/player_data/player
 
+	//? Connection
+	/// queued client security kick
+	var/queued_security_kick
+	/// currently age gate blocked
+	var/age_verification_open = FALSE
+	/// panic bunker is still resolving
+	var/panic_bunker_pending = FALSE
+
 	//? Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -213,3 +221,34 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+/client/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, holder))
+			return FALSE
+		if (NAMEOF(src, ckey))
+			return FALSE
+		if (NAMEOF(src, key))
+			return FALSE
+		if(NAMEOF(src, view))
+			change_view(var_value, TRUE)
+			return TRUE
+	return ..()
+
+/**
+ * are we a guest account?
+ */
+/client/proc/is_guest()
+	return IsGuestKey(key)
+
+/**
+ * are we localhost?
+ */
+/client/proc/is_localhost()
+	return isnull(address) || (address in list("127.0.0.1", "::1"))
+
+/**
+ * are we any sort of staff rank?
+ */
+/client/proc/is_staff()
+	return !isnull(holder)

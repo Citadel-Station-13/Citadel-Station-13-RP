@@ -3,8 +3,6 @@
 	abstract_type = /datum/role/job
 
 	//? Intrinsics
-	/// ID of the job, used for save/load
-	var/id
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 	/// Description of the job
@@ -375,7 +373,9 @@
 /datum/role/job/proc/available_in_days(client/C)
 	if(C.has_jexp_bypass())
 		return 0
-	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
+	if(!CONFIG_GET(flag/job_check_account_age))
+		return 0
+	if(isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0
 
