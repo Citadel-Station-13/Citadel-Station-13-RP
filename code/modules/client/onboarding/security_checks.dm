@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "Your version: [byond_version].[byond_build]")
 		to_chat(src, "Required version: [cev].[ceb] or later")
 		to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-		if (connecting_admin)
+		if (is_staff())
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
 			disconnection_message("Your BYOND version ([byond_version].[byond_build]) is too old. Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
