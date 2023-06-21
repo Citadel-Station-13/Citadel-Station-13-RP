@@ -476,6 +476,7 @@
 #include "code\controllers\configuration\config_entry.dm"
 #include "code\controllers\configuration\configuration.dm"
 #include "code\controllers\configuration\whitelists.dm"
+#include "code\controllers\configuration\entries\admin.dm"
 #include "code\controllers\configuration\entries\chat_bridge.dm"
 #include "code\controllers\configuration\entries\cross_server.dm"
 #include "code\controllers\configuration\entries\database.dm"

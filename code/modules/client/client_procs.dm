@@ -213,7 +213,7 @@
 		connecting_admin = TRUE
 	*/
 	// if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-	if(is_localhost())
+	if(is_localhost() && CONFIG_GET(flag/enable_localhost_rank))
 		holder = new /datum/admins("!localhost!", ALL, ckey)
 		holder.owner = src
 		GLOB.admins |= src
