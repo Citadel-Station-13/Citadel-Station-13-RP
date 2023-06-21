@@ -14,7 +14,7 @@
 	icon_screen = "adv_sensors_screen"
 	light_color = "#05A6A8"
 
-/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/effect/overmap/visitable/ship/sector)
+/obj/machinery/computer/ship/sensors/attempt_hook_up(obj/overmap/entity/visitable/ship/sector)
 	if(!(. = ..()))
 		return
 	find_sensors()
@@ -66,7 +66,7 @@
 		else
 			data["status"] = "OK"
 		var/list/contacts = list()
-		for(var/obj/effect/overmap/O in view(7,linked))
+		for(var/obj/overmap/O in view(7,linked))
 			if(linked == O)
 				continue
 			if(!O.scannable)
@@ -97,7 +97,7 @@
 			. = TRUE
 
 		if("scan")
-			var/obj/effect/overmap/O = locate(params["scan"])
+			var/obj/overmap/O = locate(params["scan"])
 			if(istype(O) && !QDELETED(O) && (O in view(7,linked)))
 				var/obj/item/paper/P = new /obj/item/paper(get_turf(src))
 				P.name = "paper (Sensor Scan - [O])"

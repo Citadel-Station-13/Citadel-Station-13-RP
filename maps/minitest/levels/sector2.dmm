@@ -282,7 +282,7 @@
 /turf/simulated/floor/beach/sand,
 /area/awaymission/wwmines)
 "bd" = (
-/obj/effect/overmap/visitable/sector/citadel_minitest/beach,
+/obj/overmap/entity/visitable/sector/citadel_minitest/beach,
 /turf/space,
 /area/awaymission/wwmines)
 

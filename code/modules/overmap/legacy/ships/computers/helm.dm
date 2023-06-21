@@ -50,7 +50,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 /obj/machinery/computer/ship/helm/proc/get_known_sectors()
 	var/area/overmap/map = locate() in world
-	for(var/obj/effect/overmap/visitable/sector/S in map)
+	for(var/obj/overmap/entity/visitable/sector/S in map)
 		if (S.known)
 			var/datum/computer_file/data/waypoint/R = new()
 			R.fields["name"] = S.name
@@ -72,7 +72,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 			var/direction = get_dir(linked.loc, T)
 			var/acceleration = min(linked.get_acceleration_legacy(), accellimit)
 			var/speed = linked.get_speed_legacy()
-			var/heading = linked.get_heading()
+			var/heading = linked.get_heading_direction()
 
 			// Destination is current grid or speedlimit is exceeded
 			if((get_dist(linked.loc, T) <= brake_path) || speed > speedlimit)
@@ -99,7 +99,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/list/data = ..()
 
 	var/turf/T = get_turf(linked)
-	var/obj/effect/overmap/visitable/sector/current_sector = locate() in T
+	var/obj/overmap/entity/visitable/sector/current_sector = locate() in T
 
 	data["sector"] = current_sector ? current_sector.name : "Deep Space"
 	data["sector_info"] = current_sector ? current_sector.desc : "Not Available"
@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	data["d_y"] = dy
 	data["speedlimit"] = speedlimit ? speedlimit*1000 : "Halted"
 	data["accel"] = min(round(linked.get_acceleration_legacy()*1000, 0.01),accellimit*1000)
-	data["heading"] = linked.get_heading_degrees()
+	data["heading"] = linked.get_heading()
 	data["autopilot_disabled"] = autopilot_disabled
 	data["autopilot"] = autopilot
 	data["manual_control"] = viewing_overmap(user)

@@ -67,7 +67,7 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 "Y" = (
-/obj/effect/overmap/visitable/sector/class_h,
+/obj/overmap/entity/visitable/sector/class_h,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/explored)
 

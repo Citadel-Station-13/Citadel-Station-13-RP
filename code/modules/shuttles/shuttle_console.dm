@@ -161,7 +161,7 @@ GLOBAL_LIST_BOILERPLATE(papers_dockingcode, /obj/item/paper/dockingcodes)
 	var/dockingcodes = null
 	var/z_to_check = codes_from_z ? codes_from_z : z
 	if((LEGACY_MAP_DATUM).use_overmap)
-		var/obj/effect/overmap/visitable/location = get_overmap_sector(z_to_check)
+		var/obj/overmap/entity/visitable/location = get_overmap_sector(z_to_check)
 		if(location && location.docking_codes)
 			dockingcodes = location.docking_codes
 

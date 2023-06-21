@@ -1524,7 +1524,7 @@
 	req_one_access = list(101)
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth,
-/obj/effect/overmap/visitable/ship/landable/tabiranth,
+/obj/overmap/entity/visitable/ship/landable/tabiranth,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
