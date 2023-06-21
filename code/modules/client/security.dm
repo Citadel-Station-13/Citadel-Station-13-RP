@@ -1,11 +1,13 @@
 /client/proc/security_note(message, tell_user)
 	log_access("client security: noting [key_name(src)] | [message]")
+	message_admins("client security: noting [key_name(src)] for [message]")
 	add_system_note("client-security", message)
 	if(tell_user)
 		to_chat(src, SPAN_BOLDANNOUNCE("CLIENT-SECURITY: [message]<br>Please correct this."))
 
 /client/proc/security_kick(message, tell_user, immediate)
 	log_access("client security: kicking [key_name(src)] | [message]")
+	message_admins("client security: kicking [key_name(src)] | [message]")
 	if(tell_user)
 		to_chat(src, SPAN_BOLDANNOUNCE("CLIENT-SECURITY: [message]<br>Please correct this.<br>You will now be disconnected."))
 		disconnection_message(message)
@@ -20,6 +22,7 @@
 /client/proc/security_ban(message, time = -1)
 	var/time_displayed = time == -1? "" : "for [DisplayTimeText(time MINUTES)]"
 	log_access("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
+	message_admins("client security: banning [key_name(src)] [time == -1? "" : "for [time_displayed]"] | [message]")
 	add_system_note("client-security", "banned for [time_displayed]: [message]")
 	qdel(src)
 	AddBan(ckey, computer_id, "client-security: [message]", minutes = time)

@@ -266,18 +266,18 @@
 		return FALSE
 
 
-	// resolve database data
+	//* Resolve database data
 	player = new(key)
 	player.log_connect()
 
-	// -- security --
-
+	//* Connection Security
 	// start caching it immediately
-	SSipintel.vpn_score(address)
+	SSipintel.vpn_connection_check(address, ckey)
 	// run onboarding gauntlet
 	if(!onboarding())
 		return FALSE
 
+	//* Initialize Input
 	if(SSinput.initialized)
 		set_macros()
 		update_movement_keys()
@@ -435,46 +435,6 @@
 	qdel(query_get_notes)
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
-w
-/client/proc/log_client_to_db()
-	var/admin_rank = "Player"
-	if(src.holder)
-		admin_rank = src.holder.rank
-
-	var/sql_ip = sql_sanitize_text(src.address) || "0.0.0.0"
-	var/sql_computerid = sql_sanitize_text(src.computer_id)
-	var/sql_admin_rank = sql_sanitize_text(admin_rank)
-
-	//Panic bunker code
-	if ((player_age == -1) && !(ckey in GLOB.bunker_passthrough)) //first connection
-		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
-			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
-			to_chat(src, config_legacy.panic_bunker_message)
-			return "BUNKER_DROPPED"
-	if(player_age == -1)
-		player_age = 0		//math requires this to not be -1.
-
-	if(config_legacy.ip_reputation)
-		if(config_legacy.ipr_allow_existing && player_age >= config_legacy.ipr_minimum_age)
-			log_admin("Skipping IP reputation check on [key] with [address] because of player age")
-		else if(update_ip_reputation()) //It is set now
-			if(ip_reputation >= config_legacy.ipr_bad_score) //It's bad
-				//Log it
-				if(config_legacy.paranoia_logging) //We don't block, but we want paranoia log messages
-					log_and_message_admins("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
-				else //We just log it
-					log_admin("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
-
-				//Take action if required
-				if(config_legacy.ipr_block_bad_ips && config_legacy.ipr_allow_existing) //We allow players of an age, but you don't meet it
-					disconnect_with_message("Sorry, we only allow VPN/Proxy/Tor usage for players who have spent at least [config_legacy.ipr_minimum_age] days on the server. If you are unable to use the internet without your VPN/Proxy/Tor, please contact an admin out-of-game to let them know so we can accommodate this.")
-					return 0
-				else if(config_legacy.ipr_block_bad_ips) //We don't allow players of any particular age
-					disconnect_with_message("Sorry, we do not accept connections from users via VPN/Proxy/Tor connections. If you believe this is in error, contact an admin out-of-game.")
-					return 0
-		else
-			log_admin("Couldn't perform IP check on [key] with [address]")
 
 #undef UPLOAD_LIMIT
 

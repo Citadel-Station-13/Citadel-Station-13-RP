@@ -28,6 +28,9 @@ SUBSYSTEM_DEF(ipintel)
 	next_attempt = 0
 	vpn_threshold = CONFIG_GET(number/ipintel_rating_bad)
 
+/datum/controller/subsystem/ipintel/proc/vpn_connection_check(address, ckey)
+	#warn impl
+
 /datum/controller/subsystem/ipintel/proc/vpn_score(address)
 	var/datum/ipintel/cached = vpn_cache[address]
 	if(isnull(cached))
