@@ -29,17 +29,23 @@ SUBSYSTEM_DEF(ipintel)
 	vpn_threshold = CONFIG_GET(number/ipintel_rating_bad)
 
 /datum/controller/subsystem/ipintel/proc/vpn_connection_check(address, ckey)
-	#warn impl
+	var/score = vpn_score(address)
+	if(score >= vpn_threshold)
+		log_and_message_admins("[ckey] detected to likely be using a vpn ([score] >= [vpn_threshold])")
+		log_access("[ckey] ([address]) is likely using a vpn ([score] >= [vpn_threshold])")
 
 /datum/controller/subsystem/ipintel/proc/vpn_score(address)
 	var/datum/ipintel/cached = vpn_cache[address]
 	if(isnull(cached))
 		var/datum/ipintel/fetched = ipintel_cache_fetch(address)
 		if(!isnull(fetched))
+			log_ipintel("successfully fetched cache for [address]")
 			cached = fetched
 			vpn_cache[address] = fetched
 	if(cached?.is_valid())
+		log_ipintel("using valid cache for [address]")
 		return cached.intel
+	log_ipintel("using api for [address]")
 	var/score = ipintel_query(address)
 	if(isnull(score))
 		return
@@ -121,21 +127,36 @@ SUBSYSTEM_DEF(ipintel)
 
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_fetch_impl(address)
 	PRIVATE_PROC(TRUE)
+	var/datum/db_query/fetch = SSdbcore.NewQuery(
+		"SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW()) FROM [format_table_name("ipintel")] WHERE ip = INET_ATON(:ip)",
+		list(
+			"ip" = address,
+		)
+	)
 	#warn impl
 
-/datum/controller/subsystem/ipintel/proc/ipintel_cache_store(address)
+/datum/controller/subsystem/ipintel/proc/ipintel_cache_store(datum/ipintel/entry)
 	PRIVATE_PROC(TRUE)
 	if(!SSdbcore.Connect())
 		return
 	// admin proccall guard override - there's no volatile args here
 	var/old_usr = usr
 	usr = null
-	. = ipintel_cache_store_impl(address)
+	. = ipintel_cache_store_impl(entry)
 	usr = old_usr
 
-/datum/controller/subsystem/ipintel/proc/ipintel_cache_store_impl(address)
+/datum/controller/subsystem/ipintel/proc/ipintel_cache_store_impl(datum/ipintel/entry)
 	PRIVATE_PROC(TRUE)
-	#warn impl
+	var/datum/db_query/update = SSdbcore.NewQuery(
+		"INSERT INTO [format_table_name("ipintel")] (ip, intel) VALUES (INET_ATON(:ip), :intel) \
+		ON DUPLICATE KEY UPDATE intel = VALUES(intel), date = NOW()",
+		list(
+			"ip" = entry.address,
+			"intel" = entry.intel,
+		)
+	)
+	update.Execute()
+	qdel(update)
 
 /datum/controller/subsystem/ipintel/proc/ipintel_error(address, error, retries)
 	PRIVATE_PROC(TRUE)
