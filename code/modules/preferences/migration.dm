@@ -23,7 +23,7 @@
 		if(prefs.client)
 			var/list/pref_datum_entries
 			S["preferences_enabled"] >> pref_datum_entries
-			var/was_age_verified = "AGE_VERIFIED" in pref_datum_entries
+			var/was_age_verified = ("AGE_VERIFIED" in pref_datum_entries)
 			if(was_age_verified)
 				var/datum/player_data/data = prefs?.client?.player
 				if(!isnull(data))
