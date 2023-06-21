@@ -29,7 +29,13 @@ SUBSYSTEM_DEF(ipintel)
 	vpn_threshold = CONFIG_GET(number/ipintel_rating_bad)
 
 /datum/controller/subsystem/ipintel/proc/vpn_connection_check(address, ckey)
+	if(!CONFIG_GET(flag/ipintel_enabled))
+		return
 	var/score = vpn_score(address)
+	if(isnull(score))
+		log_and_message_admins("Unable to check IPIntel for [ckey].")
+		log_access("[ckey] ([address]) could not be checked by IPIntel.")
+		return
 	if(score >= vpn_threshold)
 		log_and_message_admins("[ckey] detected to likely be using a vpn ([score] >= [vpn_threshold])")
 		log_access("[ckey] ([address]) is likely using a vpn ([score] >= [vpn_threshold])")
@@ -95,6 +101,9 @@ SUBSYSTEM_DEF(ipintel)
 		if(response["status"] == "success")
 			var/parsed = text2num(response["result"])
 			if(isnum(parsed))
+				// reset error counts
+				consequetive_errors = 0
+				next_attempt = 0
 				return parsed
 			ipintel_error(address, "Bad intel from server: [response["result"]]", retries)
 			retries++
@@ -133,7 +142,15 @@ SUBSYSTEM_DEF(ipintel)
 			"ip" = address,
 		)
 	)
-	#warn impl
+	fetch.Execute()
+	if(fetch.NextRow())
+		var/datum/ipintel/fetched = new /datum/ipintel
+		. = fetched
+		fetched.address = address
+		fetched.intel = text2num(fetch.item[2])
+		fetched.cached_timestamp = fetch.item[1]
+		fetched.cached_realtime = world.realtime - (text2num(fetch.item[3]) * 10 * 60)
+	qdel(fetch)
 
 /datum/controller/subsystem/ipintel/proc/ipintel_cache_store(datum/ipintel/entry)
 	PRIVATE_PROC(TRUE)
@@ -163,17 +180,20 @@ SUBSYSTEM_DEF(ipintel)
 	var/str = "IPIntel error handling on [address]: "
 	if(retries)
 		consequetive_errors++
-		#warn impl all
-		str += "Could not check [address]. Disabling IPIntel for "
+		var/how_long = consequetive_errors * 2 MINUTES
+		str += "Could not check [address]. Disabling IPIntel for [DisplayTimeText(how_long)]."
+		next_attempt = REALTIMEOFDAY + how_long
 	else
 		str += "Attempting to retry."
 
 /datum/ipintel
 	var/address
 	var/intel
+	var/cached_timestamp
 	var/cached_realtime
 
 /datum/ipintel/New()
+	cached_timestamp = time_stamp()
 	cached_realtime = world.realtime
 
 /datum/ipintel/proc/is_valid()
@@ -182,67 +202,6 @@ SUBSYSTEM_DEF(ipintel)
 	return world.realtime < cached_realtime + (allowable_hours HOURS)
 
 /**
-/datum/ipintel
-	var/cache = FALSE
-	var/cacheminutesago = 0
-	var/cachedate = ""
-
-/datum/ipintel/New()
-	cachedate = SQLtime()
-
-/proc/get_ip_intel(ip, bypasscache = FALSE, updatecache = TRUE)
-	var/datum/ipintel/res = new()
-	res.ip = ip
-	. = res
-	if (!ip || !CONFIG_GET(string/ipintel_email) || !SSipintel.enabled)
-		return
-	if (!bypasscache)
-		var/datum/ipintel/cachedintel = SSipintel.cache[ip]
-		if (cachedintel?.is_valid())
-			cachedintel.cache = TRUE
-			return cachedintel
-
-		if(SSdbcore.Connect())
-			var/rating_bad = CONFIG_GET(number/ipintel_rating_bad)
-			var/datum/db_query/query_get_ip_intel = SSdbcore.NewQuery({"
-				SELECT date, intel, TIMESTAMPDIFF(MINUTE,date,NOW())
-				FROM [format_table_name("ipintel")]
-				WHERE
-					ip = INET_ATON(':ip')
-					AND ((
-							intel < :rating_bad
-							AND
-							date + INTERVAL :save_good HOUR > NOW()
-						) OR (
-							intel >= :rating_bad
-							AND
-							date + INTERVAL :save_bad HOUR > NOW()
-					))
-			"}, list("ip" = ip, "rating_bad" = rating_bad, "save_good" = CONFIG_GET(number/ipintel_save_good), "save_bad" = CONFIG_GET(number/ipintel_save_bad)))
-			if(!query_get_ip_intel.Execute())
-				qdel(query_get_ip_intel)
-				return
-			if (query_get_ip_intel.NextRow())
-				res.cache = TRUE
-				res.cachedate = query_get_ip_intel.item[1]
-				res.intel = text2num(query_get_ip_intel.item[2])
-				res.cacheminutesago = text2num(query_get_ip_intel.item[3])
-				res.cacherealtime = world.realtime - (text2num(query_get_ip_intel.item[3])*10*60)
-				SSipintel.cache[ip] = res
-				qdel(query_get_ip_intel)
-				return
-			qdel(query_get_ip_intel)
-	res.intel = ip_intel_query(ip)
-	if (updatecache && res.intel >= 0)
-		SSipintel.cache[ip] = res
-		if(SSdbcore.Connect())
-			var/datum/db_query/query_add_ip_intel = SSdbcore.NewQuery(
-				"INSERT INTO [format_table_name("ipintel")] (ip, intel) VALUES (INET_ATON(:ip), :intel) ON DUPLICATE KEY UPDATE intel = VALUES(intel), date = NOW()",
-				list("ip" = ip, "intel" = res.intel)
-			)
-			query_add_ip_intel.Execute()
-			qdel(query_add_ip_intel)
-
 /proc/ipintel_handle_error(error, ip, retryed)
 	if (retryed)
 		SSipintel.errors++
