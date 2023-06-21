@@ -1,9 +1,11 @@
 /client/proc/update_lookup_in_db()
+	// ensure db is up
 	if(!SSdbcore.Connect())
 		return
 	// unlike connection log, we don't care about guest keys here
 	if(is_guest())
 		return
+
 	var/datum/db_query/lookup = SSdbcore.NewQuery(
 		"SELECT id FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
 		list(
@@ -13,10 +15,11 @@
 	lookup.Execute()
 	var/sql_id
 	if(lookup.NextRow())
-		sql_id = text2num(query.item[1])
+		sql_id = text2num(lookup.item[1])
+	qdel(lookup)
 
 	if(sql_id)
-		SSdbcore.RunQuery(
+		var/datum/db_query/update = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
 			list(
 				"ip" = address,
@@ -25,9 +28,11 @@
 				"id" = sql_id,
 			)
 		)
+		update.Execute()
+		qdel(update)
 	else
 		//New player!! Need to insert all the stuff
-		SSdbcore.RunQuery(
+		var/datum/db_query/insert = SSdbcore.NewQuery(
 			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
 			list(
 				"ckey" = ckey,
@@ -36,11 +41,13 @@
 				"rank" = holder?.rank || "Player",
 			)
 		)
-
+		insert.Execute()
+		qdel(insert)
 
 /client/proc/log_connection_to_db()
 	if(!SSdbcore.Connect())
 		return
+
 	SSdbcore.RunQuery(
 		"INSERT INTO [format_table_name("connection_log")] (id, datetime, serverip, ckey, ip, computerid) VALUES (null, Now(), :server, :ckey, :ip, :cid)",
 		list(
