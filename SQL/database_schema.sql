@@ -95,24 +95,22 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%playtime_log` (
   `player` INT(11),
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `roleid` VARCHAR(64) NOT NULL,
-  `minutes` INT(11) NOT NULL,
+  `delta` INT(11) NOT NULL,
   `datetime` TIMESTAMP NOT NULL DEFAULT NOW() ON UPDATE NOW(),
   PRIMARY KEY (`id`),
   KEY `player` (`player`),
   KEY `roleid` (`roleid`),
-  KEY `datetime` (`datetime`),
+  KEY `datetime` (`datetime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DELIMITER $$
-SQL SECURITY INVOKER
-$$
-CREATE TRIGGER `role_timeTlogupdate` AFTER UPDATE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (NEW.CKEY, NEW.roleid, NEW.minutes-OLD.minutes);
+CREATE TRIGGER `playtimeTlogupdate` AFTER UPDATE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes-OLD.minutes);
 END
 $$
-CREATE TRIGGER `role_timeTloginsert` AFTER INSERT ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (NEW.ckey, NEW.roleid, NEW.minutes);
+CREATE TRIGGER `playtimeTloginsert` AFTER INSERT ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (NEW.player, NEW.roleid, NEW.minutes);
 END
 $$
-CREATE TRIGGER `role_timeTlogdelete` AFTER DELETE ON `role_time` FOR EACH ROW BEGIN INSERT into role_time_log (ckey, roleid, delta) VALUES (OLD.ckey, OLD.roleid, 0-OLD.minutes);
+CREATE TRIGGER `playtimeTlogdelete` AFTER DELETE ON `%_PREFIX_%playtime` FOR EACH ROW BEGIN INSERT into `%_PREFIX_%playtime_log` (player, roleid, delta) VALUES (OLD.player, OLD.roleid, 0-OLD.minutes);
 END
 $$
 DELIMITER ;
