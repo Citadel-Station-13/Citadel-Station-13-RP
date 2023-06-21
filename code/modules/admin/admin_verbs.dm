@@ -188,7 +188,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
-	/client/proc/ip_reputation,
 	/client/proc/paranoia_logging,
 	/client/proc/reestablish_db_connection,
 	/client/proc/change_next_map,

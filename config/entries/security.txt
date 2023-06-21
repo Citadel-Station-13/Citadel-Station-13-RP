@@ -19,7 +19,7 @@ TOPIC_RATE_LIMIT_WHITELIST 127.0.0.1
 
 ### IPINTEL
 ## IPIntel system enabled?
-IPINTEL_ENABLED
+# IPINTEL_ENABLED
 ## Email given to API for contact - required.
 # IPINTEL_EMAIL ch@nge.me
 ## The threshold of where we consider someone to be a VPN
@@ -33,13 +33,13 @@ IPINTEL_DOMAIN check.getipintel.net
 
 ### AGE VERIFICATION
 ## Automated Age Verification
-AGE_VERIFICATION
+# AGE_VERIFICATION
 ## Autoban if someone's under 18
 AGE_VERIFICATION_AUTOBAN
 
 ### MISC SECURITY CHECKS
 ## Check for CID Randomizers
-# CHECK_CID_RANDOMIZER
+CHECK_CID_RANDOMIZER
 
 ### PANIC BUNKER
 ## Enable full panic bunker

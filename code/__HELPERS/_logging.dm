@@ -190,7 +190,6 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /proc/log_ipintel(text)
 	WRITE_LOG(GLOB.world_runtime_log, "IPINTEL: [text]")
-	message_admins("IPIntel error: [text]")
 
 /proc/log_vote(text)
 	if (config_legacy.log_vote)
