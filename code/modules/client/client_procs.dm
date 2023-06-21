@@ -259,7 +259,7 @@
 	. = ..()	//calls mob.Login()
 
 	handle_legacy_connection_whatevers()
-	
+
 	//* Resolve database data
 	player = new(key)
 	player.log_connect()
@@ -369,6 +369,7 @@
 	// log
 	log_access("Logout: [key_name(src)]")
 	// unreference storage datums
+	prefs = null
 	persistent = null
 	player = null
 

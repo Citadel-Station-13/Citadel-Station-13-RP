@@ -219,8 +219,9 @@
  *
  * WARNING: without database, or if this is for a guest key, we will never be available.
  */
-/datum/player_data/proc/block_on_available()
-	UNTIL(!isnull(available))
+/datum/player_data/proc/block_on_available(timeout = INFINITY)
+	var/timed_out = world.time + timeout
+	UNTIL(!isnull(available) || world.time > timed_out)
 	return available
 
 /**
