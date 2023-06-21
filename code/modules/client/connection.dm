@@ -4,7 +4,39 @@
 	// unlike connection log, we don't care about guest keys here
 	if(is_guest())
 		return
-	#warn impl
+	var/datum/db_query/lookup = SSdbcore.NewQuery(
+		"SELECT id FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+		list(
+			"ckey" = ckey,
+		)
+	)
+	lookup.Execute()
+	var/sql_id
+	if(lookup.NextRow())
+		sql_id = text2num(query.item[1])
+
+	if(sql_id)
+		SSdbcore.RunQuery(
+			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+			list(
+				"ip" = address,
+				"computerid" = computer_id,
+				"lastadminrank" = holder?.rank || "Player",
+				"id" = sql_id,
+			)
+		)
+	else
+		//New player!! Need to insert all the stuff
+		SSdbcore.RunQuery(
+			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
+			list(
+				"ckey" = ckey,
+				"ip" = address,
+				"cid" = computer_id,
+				"rank" = holder?.rank || "Player",
+			)
+		)
+
 
 /client/proc/log_connection_to_db()
 	if(!SSdbcore.Connect())

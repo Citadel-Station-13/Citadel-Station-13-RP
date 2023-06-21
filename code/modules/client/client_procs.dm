@@ -435,39 +435,8 @@
 	qdel(query_get_notes)
 	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 */
-
-// Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
-
+w
 /client/proc/log_client_to_db()
-
-	if ( IsGuestKey(src.key) )
-		return
-
-	if(!SSdbcore.Connect())
-		return
-
-	var/sql_ckey = sql_sanitize_text(src.ckey)
-
-	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
-		list(
-			"ckey" = sql_ckey
-		)
-	)
-	var/sql_id = 0
-	player_age = -1	// New players won't have an entry so knowing we have a connection we set this to zero to be updated if their is a record.
-	while(query.NextRow())
-		sql_id = query.item[1]
-		player_age = text2num(query.item[2])
-		break
-
-	//Just the standard check to see if it's actually a number
-	if(sql_id)
-		if(istext(sql_id))
-			sql_id = text2num(sql_id)
-		if(!isnum(sql_id))
-			return
-
 	var/admin_rank = "Player"
 	if(src.holder)
 		admin_rank = src.holder.rank
@@ -506,28 +475,6 @@
 					return 0
 		else
 			log_admin("Couldn't perform IP check on [key] with [address]")
-
-	if(sql_id)
-		SSdbcore.RunQuery(
-			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
-			list(
-				"ip" = sql_ip,
-				"computerid" = sql_computerid,
-				"lastadminrank" = sql_admin_rank,
-				"id" = sql_id
-			)
-		)
-	else
-		//New player!! Need to insert all the stuff
-		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
-			list(
-				"ckey" = sql_ckey,
-				"ip" = sql_ip,
-				"cid" = sql_computerid,
-				"rank" = sql_admin_rank
-			)
-		)
 
 #undef UPLOAD_LIMIT
 

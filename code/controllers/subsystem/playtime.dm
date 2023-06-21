@@ -40,18 +40,22 @@ SUBSYSTEM_DEF(playtime)
  */
 /datum/controller/subsystem/playtime/proc/playtime_for(mob/M)
 	if(isobserver(M))
-		#warn dead vs observing?
-		return list(PLAYER_PLAYTIME_OBSERVER)
+		var/mob/observer/dead/ghost = M
+		return list(ghost.started_as_observer? PLAYER_PLAYTIME_OBSERVER : PLAYER_PLAYTIME_DEAD)
 	else if(isnewplayer(M))
 		return list(PLAYER_PLAYTIME_LOBBY)
-	. = list(PLAYER_PLAYTIME_LIVING)
-	#warn what if they're dead lol
-	var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
-	var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
-	if(J)
-		. += PLAYER_PLAYTIME_ROLE(J.id)
+	if(IS_DEAD(M))
+		. = list(PLAYER_PLAYTIME_DEAD)
+	else
+		. = list(PLAYER_PLAYTIME_LIVING)
+		var/best_effort_attempt_at_resolving_legacy_name_based_roles = M.mind?.assigned_role
+		var/datum/role/job/J = SSjob.job_by_title(best_effort_attempt_at_resolving_legacy_name_based_roles)
+		if(J)
+			. += PLAYER_PLAYTIME_ROLE(J.id)
 
 /datum/controller/subsystem/playtime/proc/queue_playtimes(client/C)
+	if(isnull(C))
+		return
 	var/list/playtimes = playtime_for(C.mob)
 	var/now = REALTIMEOFDAY
 	var/since_last = now - C.persistent.playtime_last
