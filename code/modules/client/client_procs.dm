@@ -259,13 +259,7 @@
 	. = ..()	//calls mob.Login()
 
 	handle_legacy_connection_whatevers()
-
-	#warn get rid of this
-	if(log_client_to_db() == "BUNKER_DROPPED")
-		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
-		return FALSE
-
-
+	
 	//* Resolve database data
 	player = new(key)
 	player.log_connect()
