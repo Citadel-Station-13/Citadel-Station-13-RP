@@ -7,15 +7,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/security_checks()
 	if(byond_version < 513)
 		security_kick("BYOND 512 and prior clients are too outdated.", tell_user = TRUE)
-		return TRUE
+		return FALSE
 	if(!byond_build || byond_build < 1386)
 		message_admins("[src] detected as BYOND version spoof. Kicking.")
 		security_note("likely spoofed byond version")
 		security_kick("likely spoofed byond version")
-		return TRUE
+		return FALSE
 	if(num2text(byond_build, 999) in GLOB.blacklisted_builds)
 		security_kick("[byond_build] is blacklisted due to [GLOB.blacklisted_builds[num2text(byond_build)]]. Please update your BYOND version.", tell_user = TRUE)
-		return TRUE
+		return FALSE
 	var/cev = CONFIG_GET(number/client_error_version)
 	var/ceb = CONFIG_GET(number/client_error_build)
 	var/cwv = CONFIG_GET(number/client_warn_version)
@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
 		else
 			disconnection_message("Your BYOND version ([byond_version].[byond_build]) is too old. Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-			return 0
+			return FALSE
 	else if (byond_version < cwv)	//We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
 			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"

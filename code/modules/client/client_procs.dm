@@ -196,14 +196,14 @@
 
 	//* Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
-	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
+	// var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	var/debug_tools_allowed = FALSE
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
-		connecting_admin = TRUE
+		// connecting_admin = TRUE
 		//if(check_rights_for(src, R_DEBUG))
 		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
 			debug_tools_allowed = TRUE
@@ -219,7 +219,7 @@
 		GLOB.admins |= src
 		//admins |= src // this makes them not have admin. what the fuck??
 		// holder.associate(ckey)
-		connecting_admin = TRUE
+		// connecting_admin = TRUE
 	//CITADEL EDIT
 	//if(check_rights_for(src, R_DEBUG))	//check if autoadmin gave us it
 	if(R_DEBUG & holder?.rights) //this is absolutely horrid
@@ -266,9 +266,11 @@
 
 	//* Connection Security
 	// start caching it immediately
-	SSipintel.vpn_connection_check(address, ckey)
+	INVOKE_ASYNC(SSipintel, TYPE_PROC_REF(/datum/controller/subsystem/ipintel, vpn_connection_check), address, ckey)
 	// run onboarding gauntlet
 	if(!onboarding())
+		if(!queued_security_kick)
+			security_kick("Unknown error during client init. Contact staff on Discord.", TRUE)
 		return FALSE
 
 	//* Initialize Input
