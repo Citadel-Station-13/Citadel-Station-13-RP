@@ -3,9 +3,9 @@
  */
 /client/proc/panic_bunker()
 	set waitfor = FALSE
+	. = TRUE
 	panic_bunker_pending = TRUE
 	run_bunker_checks()
-	return TRUE
 
 /client/proc/run_bunker_checks()
 	// we need database up
