@@ -623,8 +623,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * this is a destructive operation and will erase old organs!
  */
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
-
 	H.mob_size = mob_size
+
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
@@ -647,6 +647,15 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if(O.parent_organ)
 			organ_data = has_limbs[O.parent_organ]
 			organ_data["has_children"] = organ_data["has_children"]+1
+
+	for(var/id in pref.body_marking_ids)
+		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
+		var/mark_color = "[pref.body_marking_ids[id]]"
+
+		for(var/BP in mark_datum.body_parts)
+			var/obj/item/organ/external/O = character.organs_by_name[BP]
+			if(O)
+				O.markings[id] = list("color" = mark_color, "datum" = mark_datum)
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
