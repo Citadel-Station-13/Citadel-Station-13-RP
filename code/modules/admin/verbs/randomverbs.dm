@@ -970,7 +970,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		message_admins("Admin [key_name_admin(usr)] has disabled random events.", 1)
 	feedback_add_details("admin_verb","TRE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/despawn_player(var/mob/M in living_mob_list)
+/client/proc/despawn_player()
 	set name = "Cryo Player"
 	set category = "Admin"
 	set desc = "Removes a player from the round as if they'd cryo'd."
@@ -978,6 +978,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_ADMIN))
 		return
+
+	var/mob/M = tgui_input_list(src.mob, "Which player would you like to cryo?", "Pick to cryo", living_mob_list)
+
 
 	if(!M)
 		return
@@ -1004,7 +1007,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	feedback_add_details("admin_verb","ACRYO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 	if(ishuman(M))
-		var/obj/machinery/cryopod/CP = human_cryopods[input(usr,"Select a cryopod to use","Cryopod Choice") as null|anything in human_cryopods]
+		var/obj/machinery/cryopod/CP = human_cryopods[tgui_input_list(usr,"Select a cryopod to use","Cryopod Choice",human_cryopods)]
 		if(!CP)
 			return
 		M.ghostize()
@@ -1019,7 +1022,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			ai.clear_client()
 			return
 		else
-			var/obj/machinery/cryopod/robot/CP = robot_cryopods[input(usr,"Select a cryopod to use","Cryopod Choice") as null|anything in robot_cryopods]
+			var/obj/machinery/cryopod/robot/CP = robot_cryopods[tgui_input_list(usr,"Select a cryopod to use","Cryopod Choice",robot_cryopods)]
 			if(!CP)
 				return
 			M.ghostize()
