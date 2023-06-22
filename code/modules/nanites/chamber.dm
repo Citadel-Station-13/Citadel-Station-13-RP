@@ -50,18 +50,18 @@
 	var/operation_effects_timerid
 
 	/// cost to rebuild a protean's swarm
-	var/static/list/protean_cost_nanoswarm = list(
+	var/list/protean_cost_nanoswarm = list(
 		MAT_STEEL = 20000,
 	)
 	/// cost to rebuild protean's orchestrator
-	var/static/list/protean_cost_orchestrator = list(
+	var/list/protean_cost_orchestrator = list(
 		MAT_VERDANTIUM = 4000,
 		MAT_GOLD = 8000,
 		MAT_SILVER = 8000,
 		MAT_METALHYDROGEN = 12000,
 	)
 	/// cost to rebuild protean's refactory
-	var/static/list/protean_cost_refactory = list(
+	var/list/protean_cost_refactory = list(
 		MAT_DIAMOND = 6000,
 		MAT_MORPHIUM = 12000,
 		MAT_STEEL = 5000,
@@ -70,6 +70,9 @@
 
 /obj/machinery/nanite_chamber/Initialize(mapload)
 	. = ..()
+	protean_cost_nanoswarm = typelist(NAMEOF(protean_cost_nanoswarm), protean_cost_nanoswarm)
+	protean_cost_orchestrator = typelist(NAMEOF(protean_cost_orchestrator), protean_cost_orchestrator)
+	protean_cost_refactory = typelist(NAMEOF(protean_cost_refactory), protean_cost_refactory)
 	detect_connection()
 
 /obj/machinery/nanite_chamber/Destroy()
