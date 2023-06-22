@@ -67,6 +67,9 @@ SUBSYSTEM_DEF(ipintel)
 
 /datum/controller/subsystem/ipintel/proc/ipintel_query(address, retries)
 	PRIVATE_PROC(TRUE)
+	// bruh it's localhost
+	if(address == "127.0.0.1" || isnull(address))
+		return 0
 	// no flooding API without cache being available
 	if(!SSdbcore.Connect())
 		log_ipintel("ipintel: no DB")

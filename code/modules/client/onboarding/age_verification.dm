@@ -1,4 +1,8 @@
 /client/proc/age_verification()
+	if(!player.block_on_available(10 SECONDS))
+		message_admins("FATAL: player data unavailable during age verification.")
+		. = TRUE
+		CRASH("player data was not available during age verification")
 	if(is_staff())
 		set_age_verified()
 		return TRUE
@@ -34,7 +38,7 @@
 
 	dat += "<form action='?src=[REF(src)]'>"
 	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-	dat += "<input type='hidden' name='client_age_verify' value='1"
+	dat += "<input type='hidden' name='client_age_verify' value='1'>"
 	dat += "<select name = 'Month'>"
 	var/monthList = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12)
 	for(var/month in monthList)
