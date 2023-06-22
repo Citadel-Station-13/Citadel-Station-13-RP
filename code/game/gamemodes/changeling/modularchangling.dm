@@ -3,7 +3,7 @@
 //Ling power's evolution menu entry datum should be contained alongside the mob proc for the actual power, in their own file.
 
 GLOBAL_LIST_INIT(changeling_powers, init_changeling_powers())
-/proc/init_changeling_poewrs()
+/proc/init_changeling_powers()
 	. = list()
 	for(var/datum/power/changeling/path as anything in subtypesof(/datum/power/changeling))
 		. += new path
