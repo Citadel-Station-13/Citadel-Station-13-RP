@@ -6757,7 +6757,7 @@
 	landmark_tag = "tether_excursion_hangar";
 	name = "Excursion Shuttle Dock"
 	},
-/obj/effect/overmap/visitable/ship/landable/excursion/tether,
+/obj/overmap/entity/visitable/ship/landable/excursion,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/general)
 "axK" = (
@@ -22527,7 +22527,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "rDX" = (
-/obj/effect/overmap/visitable/sector/virgo3b,
+/obj/overmap/entity/visitable/sector/virgo3b,
 /turf/space,
 /area/space)
 "rEP" = (

@@ -627,7 +627,7 @@
 	pixel_y = 28
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/generic_shuttle,
-/obj/effect/overmap/visitable/ship/landable/generic_shuttle,
+/obj/overmap/entity/visitable/ship/landable/generic_shuttle,
 /turf/simulated/floor/plating,
 /area/shuttle/generic_shuttle/gen)
 "br" = (

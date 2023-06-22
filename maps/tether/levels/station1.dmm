@@ -17021,7 +17021,7 @@
 	landmark_tag = "tether_securiship_dock";
 	name = "Securiship Dock"
 	},
-/obj/effect/overmap/visitable/ship/landable/securiship,
+/obj/overmap/entity/visitable/ship/landable/securiship,
 /turf/simulated/floor/tiled/eris/techmaint_cargo,
 /area/shuttle/securiship/general)
 "cBc" = (
@@ -20025,7 +20025,7 @@
 	landmark_tag = "tether_medivac_dock";
 	name = "Medivac Bay"
 	},
-/obj/effect/overmap/visitable/ship/landable/medivac,
+/obj/overmap/entity/visitable/ship/landable/medivac,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/eris/steel/gray_perforated,
 /area/shuttle/medivac/general)

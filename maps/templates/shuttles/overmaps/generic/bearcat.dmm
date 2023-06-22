@@ -622,7 +622,7 @@
 /obj/map_helper/airlock/atmos/pump_out_internal,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /obj/effect/shuttle_landmark/shuttle_initializer/bearcat,
-/obj/effect/overmap/visitable/ship/landable/bearcat,
+/obj/overmap/entity/visitable/ship/landable/bearcat,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/bearcat/dock_starboard)
 "bG" = (

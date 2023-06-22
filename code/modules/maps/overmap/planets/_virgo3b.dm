@@ -11,7 +11,7 @@
 	minimum_temp = 234
 	maximum_temp = 234
 
-/obj/effect/overmap/visitable/sector/virgo3b
+/obj/overmap/entity/visitable/sector/virgo3b
 	name = "Virgo 3B"
 	desc = "Full of phoron, and home to the NSB Adephagia, where you can dock and refuel your craft."
 	scanner_desc = @{"[i]Registration[/i]: NSB Adephagia
@@ -39,7 +39,7 @@
 
 //Despite not being in the multi-z complex, these levels are part of the overmap sector
 /* This should be placed in the map's define files.
-/obj/effect/overmap/visitable/sector/virgo3b
+/obj/overmap/entity/visitable/sector/virgo3b
 	extra_z_levels = list(
 		Z_LEVEL_SURFACE_MINE,
 		Z_LEVEL_SOLARS,

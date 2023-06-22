@@ -34,7 +34,7 @@
 	if(active_docking_controller)
 		set_docking_codes(active_docking_controller.docking_codes)
 	else if((LEGACY_MAP_DATUM).use_overmap)
-		var/obj/effect/overmap/visitable/location = get_overmap_sector(get_z(current_location))
+		var/obj/overmap/entity/visitable/location = get_overmap_sector(get_z(current_location))
 		if(location && location.docking_codes)
 			set_docking_codes(location.docking_codes)
 	dock()

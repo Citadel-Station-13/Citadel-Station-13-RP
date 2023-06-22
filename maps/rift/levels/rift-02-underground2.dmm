@@ -8285,13 +8285,12 @@
 	name = "Emergency Core Eject";
 	pixel_y = -21
 	},
-/obj/machinery/button/remote/airlock{
-	desc = "A remote control-switch for the engine core airlock hatch bolts.";
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine core's emergency ejection vent.";
 	dir = 1;
 	id = "EngineVent";
-	name = "Engine Ejection Vent";
-	pixel_y = -32;
-	specialfunctions = 4
+	name = "Emergency Engine Ejection Vent";
+	pixel_y = -32
 	},
 /obj/structure/window/basic{
 	dir = 1

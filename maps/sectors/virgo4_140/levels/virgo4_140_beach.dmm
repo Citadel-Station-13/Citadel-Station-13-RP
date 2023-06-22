@@ -552,7 +552,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/lockermed)
 "hx" = (
-/obj/effect/overmap/visitable/sector/virgo4,
+/obj/overmap/entity/visitable/sector/virgo4,
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/water)
 "hL" = (
