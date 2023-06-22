@@ -21679,7 +21679,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/door/firedoor/glass/hidden/steel{
+/obj/machinery/door/firedoor/{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
