@@ -7,7 +7,8 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/machinery/door/airlock,
 	/obj/structure/grille,
-	/obj/machinery/smartfridge
+	/obj/machinery/smartfridge,
+	/turf/simulated/wall/,
 	))
 
 /obj/structure/wall_frame
@@ -23,7 +24,7 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	layer = LOW_WALL_LAYER
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_LOW_WALL)
-	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS+SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_AIRLOCK+SMOOTH_GROUP_LOW_WALL+SMOOTH_GROUP_WALLS)
 	plane = OBJ_PLANE
 
 	var/default_material = MAT_STEEL
@@ -83,7 +84,7 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 /obj/structure/wall_frame/update_overlays()
 	overlays.len = 0
 
-	color = paint_color || const_material.icon_colour
+	color = const_material.icon_colour
 
 	var/image/smoothed_stripe = image(const_material.wall_stripe_icon, icon_state, layer = ABOVE_WINDOW_LAYER)
 	smoothed_stripe.appearance_flags = RESET_COLOR

@@ -1450,6 +1450,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool)
+"aOQ" = (
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/stairwell/primary/surfacetwo)
 "aOR" = (
 /obj/machinery/light/no_nightshift,
 /turf/simulated/floor/reinforced,
@@ -2976,7 +2980,7 @@
 /obj/structure/sign/department/operational{
 	pixel_x = -32
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/sleeper)
@@ -3172,7 +3176,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "bJu" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/recreation_area)
 "bJz" = (
@@ -3902,7 +3906,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "ciw" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "ciC" = (
@@ -7475,7 +7479,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
 "ezx" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgeryprep)
@@ -15062,7 +15066,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "jew" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/hallway)
@@ -16023,7 +16027,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "jOA" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgery)
@@ -20689,7 +20693,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "mFG" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/hallway/primary/surfacetwo)
 "mFW" = (
@@ -25397,7 +25401,7 @@
 	name = "Research Director Office shutter";
 	opacity = 0
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/lockers)
@@ -26871,7 +26875,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/sleep)
 "qBo" = (
@@ -28198,7 +28202,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/hammerhead/general)
 "rxv" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/darkred,
 /turf/simulated/floor/plating,
 /area/security/briefing_room)
@@ -32068,7 +32072,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "ujA" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/babyblue,
 /turf/simulated/floor/plating,
 /area/medical/surgery2)
@@ -37872,7 +37876,7 @@
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden/gantry)
 "xWi" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/workshop)
@@ -52907,7 +52911,7 @@ ktB
 hhA
 vzn
 gjf
-sQD
+aOQ
 hPU
 mJn
 vKN
@@ -53101,7 +53105,7 @@ ktB
 aoF
 nTp
 kYq
-sQD
+aOQ
 grW
 mJn
 vKN
@@ -53294,7 +53298,7 @@ rab
 rab
 rab
 rab
-sQD
+aOQ
 rab
 qIm
 mJn
@@ -54458,7 +54462,7 @@ rab
 rab
 rab
 rab
-sQD
+aOQ
 rab
 egW
 mJn
@@ -54653,7 +54657,7 @@ ktB
 wHt
 ngX
 jpg
-sQD
+aOQ
 hPU
 mJn
 vKN
@@ -54847,7 +54851,7 @@ ktB
 hhA
 sRF
 gjf
-sQD
+aOQ
 grW
 mJn
 fre

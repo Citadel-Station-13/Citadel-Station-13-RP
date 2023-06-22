@@ -673,7 +673,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
 "ayM" = (
-/turf/simulated/wall/hardwood,
+/turf/simulated/wall/wood/hardwood,
 /area/rift/surfacebase/outside/outside1)
 "azh" = (
 /obj/effect/floor_decal/spline/plain{
@@ -1339,7 +1339,7 @@
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "baL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/stairwell/primary/surfaceone)
 "baN" = (
@@ -1370,7 +1370,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
 "bbD" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/wood/hardwood,
 /area/crew_quarters/game_room)
 "bbE" = (
 /obj/machinery/door/airlock/research{
@@ -8480,7 +8480,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "fAI" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/library)
 "fBk" = (
@@ -8518,7 +8518,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
 "fCX" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/wood/hardwood,
 /area/library)
 "fDe" = (
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -9495,7 +9495,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "gmT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/office)
@@ -12087,7 +12087,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/tankstorage)
 "hMq" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/station/public_garden)
 "hMx" = (
@@ -26380,7 +26380,7 @@
 /turf/simulated/floor/grass,
 /area/medical/psych)
 "qkT" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/purplegray,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
@@ -26999,7 +26999,7 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "qGS" = (
-/turf/simulated/wall/prepainted,
+/turf/simulated/wall/wood/hardwood,
 /area/library/study)
 "qHm" = (
 /obj/structure/closet/crate/freezer/rations,
@@ -30091,7 +30091,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_breakroom)
 "sxf" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/tether/surfacebase/entertainment)
 "sxj" = (
@@ -38161,7 +38161,7 @@
 /turf/simulated/floor/wood,
 /area/lawoffice)
 "xnJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/beastybrown,
 /turf/simulated/floor/plating,
 /area/quartermaster/delivery)

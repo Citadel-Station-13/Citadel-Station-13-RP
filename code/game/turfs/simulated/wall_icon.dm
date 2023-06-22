@@ -4,6 +4,8 @@
 
 GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
 	/obj/machinery/door/airlock,
+	/obj/machinery/door/firedoor,
+	/obj/machinery/door/blast,
 	/obj/structure/filler_object,
 	/obj/structure/window/reinforced/tinted/full,
 	/obj/structure/window/reinforced/full,

@@ -2955,7 +2955,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/transport_tunnel)
 "hL" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
 "hN" = (
@@ -12170,7 +12170,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 8
 	},
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -12220,7 +12220,7 @@
 /area/rift/station/adherent_maintenance)
 "Oq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
@@ -14753,6 +14753,11 @@
 	dir = 5
 	},
 /obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
+"Yh" = (
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/pipecyan,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Yi" = (
@@ -30596,7 +30601,7 @@ Zx
 nL
 eT
 Oi
-vj
+Yh
 Xg
 eT
 eT
@@ -30982,7 +30987,7 @@ Zx
 mD
 Zx
 uU
-vj
+Yh
 av
 oM
 nO
@@ -31176,7 +31181,7 @@ Zx
 mD
 Zx
 av
-vj
+Yh
 xP
 Fk
 yE
@@ -31370,7 +31375,7 @@ bW
 mD
 Zx
 av
-vj
+Yh
 av
 fC
 Zx
@@ -31758,7 +31763,7 @@ co
 mD
 Zx
 av
-vj
+Yh
 qt
 fC
 Zx
@@ -32146,7 +32151,7 @@ Zx
 lo
 Zx
 av
-vj
+Yh
 qt
 eX
 nq
@@ -32340,7 +32345,7 @@ RW
 jp
 AD
 Sn
-vj
+Yh
 WH
 RA
 RA
@@ -32534,12 +32539,12 @@ Zx
 Zx
 Zx
 Zx
-vj
-vj
-vj
-vj
+Yh
+Yh
+Yh
+Yh
 Fm
-vj
+Yh
 eT
 eT
 eT

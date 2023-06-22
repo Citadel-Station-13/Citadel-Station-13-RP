@@ -201,10 +201,11 @@
 	icon_state = "window_grille_full_fire"
 	firelocks = TRUE
 
-/obj/spawner/window/low_wall/full/nogrille
+/obj/spawner/window/low_wall/full/nogrille/firelocks
 	full_window = TRUE
 	icon_state = "window_grille_full"
 	spawn_grille = FALSE
+	firelocks = TRUE
 
 /obj/spawner/window/low_wall/full/firelocks/nogrille
 	icon_state = "window_grille_full"

@@ -100,7 +100,7 @@
 	deny_file = 'icons/obj/doors/external/lights_deny.dmi'
 	lights_file = 'icons/obj/doors/external/lights_green.dmi'
 	emag_file = 'icons/obj/doors/external/emag.dmi'
-	door_color = COLOR_MAROON
+	door_color = COLOR_NT_RED
 
 /obj/machinery/door/airlock/external/glass/bolted
 	window_color = GLASS_COLOR
@@ -382,45 +382,46 @@
 	name = "Gold Airlock"
 	icon = 'icons/obj/doors/Doorgold.dmi'
 	mineral = "gold"
+	door_color = COLOR_GOLD
 
 /obj/machinery/door/airlock/silver
 	name = "Silver Airlock"
-	icon = 'icons/obj/doors/Doorsilver.dmi'
 	mineral = "silver"
+	door_color = COLOR_SILVER
 
 /obj/machinery/door/airlock/diamond
 	name = "Diamond Airlock"
-	icon = 'icons/obj/doors/Doordiamond.dmi'
 	mineral = "diamond"
+	door_color = COLOR_DIAMOND
 
 /obj/machinery/door/airlock/uranium
 	name = "Uranium Airlock"
 	desc = "And they said I was crazy."
-	icon = 'icons/obj/doors/Dooruranium.dmi'
 	mineral = "uranium"
 	var/last_event = 0
 	var/rad_power = RAD_INTENSITY_MAT_SPECIAL_URANIUM_AIRLOCK
+	door_color = COLOR_PAKISTAN_GREEN
 
 /obj/machinery/door/airlock/bananium
 	name = "Bananium Airlock"
 	desc = "An absolute atrocity."
-	icon = 'icons/obj/doors/Doorbananium.dmi'
 	mineral = "bananium"
 	open_sound_powered = 'sound/items/bikehorn.ogg'
 	close_sound_powered = 'sound/items/bikehorn.ogg'
+	door_color = COLOR_YELLOW
 
 /obj/machinery/door/airlock/silencium
 	name = "Silencium Airlock"
 	desc = "The pinnacle of noise cancelling door technology."
-	icon = 'icons/obj/doors/Doorsilencium.dmi'
 	mineral = "silencium"
 	open_sound_powered = 'sound/effects/footstep/carpet1.ogg'
 	close_sound_powered = 'sound/effects/footstep/carpet1.ogg'
+	door_color = COLOR_SILVER
 
 /obj/machinery/door/airlock/sandstone
 	name = "Sandstone Airlock"
-	icon = 'icons/obj/doors/Doorsand.dmi'
 	mineral = "sandstone"
+	door_color = COLOR_PALE_ORANGE
 
 /obj/machinery/door/airlock/science
 	name = "Research Airlock"

@@ -228,23 +228,22 @@
 	girder_material = null
 
 /turf/simulated/wall/wood
-	icon = 'icons/turf/walls/wood.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "wood"
 	color = "#9c5930"
 
 	material        = /datum/material/wood
 	reinf_material  = null
 	girder_material = null
 
-/turf/simulated/wall/sifwood
-	icon = 'icons/turf/walls/wood.dmi'
+/turf/simulated/wall/wood/sifwood
 	color = "#0099cc"
 
 	material        = /datum/material/wood/sif
 	reinf_material  = null
 	girder_material = null
 
-/turf/simulated/wall/hardwood
-	icon = 'icons/turf/walls/wood.dmi'
+/turf/simulated/wall/wood/hardwood
 	color = "#42291a"
 
 	material        = /datum/material/wood/hardwood
@@ -450,7 +449,7 @@
 	color = COLOR_MAROON
 
 /turf/simulated/wall/r_wall/prepainted/medical
-	paint_color = COLOR_OFF_WHITE
+	paint_color = COLOR_GRAY80
 	stripe_color = COLOR_BABY_BLUE
 	color = COLOR_BABY_BLUE
 
@@ -471,7 +470,7 @@
 	color = COLOR_EXPLO_VIOLET
 
 /turf/simulated/wall/r_wall/prepainted/science
-	paint_color = COLOR_OFF_WHITE
+	paint_color = COLOR_GRAY80
 	stripe_color = COLOR_PURPLE_GRAY
 	color = COLOR_PURPLE_GRAY
 
@@ -498,7 +497,7 @@
 	color = COLOR_MAROON
 
 /turf/simulated/wall/prepainted/medical
-	paint_color = COLOR_OFF_WHITE
+	paint_color = COLOR_GRAY80
 	stripe_color = COLOR_BABY_BLUE
 	color = COLOR_BABY_BLUE
 
@@ -519,7 +518,7 @@
 	color = COLOR_EXPLO_VIOLET
 
 /turf/simulated/wall/prepainted/science
-	paint_color = COLOR_OFF_WHITE
+	paint_color = COLOR_GRAY80
 	stripe_color = COLOR_PURPLE_GRAY
 	color = COLOR_PURPLE_GRAY
 

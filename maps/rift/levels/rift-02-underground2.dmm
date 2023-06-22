@@ -186,7 +186,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "aE" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_airlock)
@@ -2054,7 +2054,7 @@
 	pixel_y = 24
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
@@ -2110,7 +2110,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 1
+	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
@@ -4311,7 +4311,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
+	dir = 8;
 	req_one_access = list(18,47)
 	},
 /obj/structure/disposalpipe/segment{
@@ -4559,7 +4559,6 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -4609,9 +4608,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
@@ -4621,9 +4617,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
 "mW" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -4689,7 +4682,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -4746,9 +4738,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4781,7 +4770,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass{
-	dir = 2;
+	dir = 4;
 	req_one_access = list(18,47)
 	},
 /obj/machinery/alarm{
@@ -7570,7 +7559,9 @@
 /area/engineering/foyer)
 "wr" = (
 /obj/effect/floor_decal/borderfloor,
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 8
+	},
 /obj/structure/sign/department/eng{
 	pixel_y = -32
 	},
@@ -10439,7 +10430,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "HY" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/workshop)
 "Ib" = (
@@ -10991,7 +10982,9 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Km" = (
-/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/firedoor/glass{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/undertwo)
 "Kn" = (
@@ -13847,6 +13840,11 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
+"VV" = (
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
+/obj/effect/paint/beastybrown,
+/turf/simulated/floor/plating,
+/area/quartermaster/miningdock)
 "VW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -14436,7 +14434,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Yl" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -14576,7 +14574,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YJ" = (
-/obj/spawner/window/low_wall/reinforced/full/firelocks,
+/obj/spawner/window/low_wall/full/nogrille/firelocks,
 /obj/effect/paint/sun,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
@@ -33383,8 +33381,8 @@ JE
 Nd
 Aq
 Aq
-PM
-PM
+VV
+VV
 Aq
 Gr
 Aq
