@@ -1127,29 +1127,30 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	color[3] = color[1] * cm[7] + color[2] * cm[8] + color[3] * cm[9] + cm[12] * 255
 	return rgb(color[1], color[2], color[3])
 
+// citadel edit: use this so we can VV it at a negligible performance hit.
+GLOBAL_LIST_EMPTY(icon_exists_cache)
 /**
  * Checks if the given iconstate exists in the given file, caching the result.
  * Setting scream to TRUE will print a stack trace ONCE.
  * Written by Kapu1178
  */
 /proc/icon_exists(file, state, scream)
-	var/static/list/icon_states_cache = list()
-	if(icon_states_cache[file]?[state])
+	if(icon_exists_cache[file]?[state])
 		return TRUE
 
-	if(icon_states_cache[file]?[state] == FALSE)
+	if(icon_exists_cache[file]?[state] == FALSE)
 		return FALSE
 
 	var/list/states = icon_states(file)
 
-	if(!icon_states_cache[file])
-		icon_states_cache[file] = list()
+	if(!icon_exists_cache[file])
+		icon_exists_cache[file] = list()
 
 	if(state in states)
-		icon_states_cache[file][state] = TRUE
+		icon_exists_cache[file][state] = TRUE
 		return TRUE
 	else
-		icon_states_cache[file][state] = FALSE
+		icon_exists_cache[file][state] = FALSE
 		if(scream)
 			stack_trace("Icon Lookup for state: [state] in file [file] failed.")
 		return FALSE
