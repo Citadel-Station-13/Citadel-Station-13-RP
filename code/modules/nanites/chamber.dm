@@ -70,9 +70,9 @@
 
 /obj/machinery/nanite_chamber/Initialize(mapload)
 	. = ..()
-	protean_cost_nanoswarm = typelist(NAMEOF(protean_cost_nanoswarm), protean_cost_nanoswarm)
-	protean_cost_orchestrator = typelist(NAMEOF(protean_cost_orchestrator), protean_cost_orchestrator)
-	protean_cost_refactory = typelist(NAMEOF(protean_cost_refactory), protean_cost_refactory)
+	protean_cost_nanoswarm = typelist(NAMEOF(src, protean_cost_nanoswarm), protean_cost_nanoswarm)
+	protean_cost_orchestrator = typelist(NAMEOF(src, protean_cost_orchestrator), protean_cost_orchestrator)
+	protean_cost_refactory = typelist(NAMEOF(src, protean_cost_refactory), protean_cost_refactory)
 	detect_connection()
 
 /obj/machinery/nanite_chamber/Destroy()
