@@ -8,7 +8,7 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	/obj/machinery/door/airlock,
 	/obj/structure/grille,
 	/obj/machinery/smartfridge,
-	/turf/simulated/wall/,
+	/turf/simulated/wall,
 	))
 
 /obj/structure/wall_frame
@@ -105,6 +105,8 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 			if(wallframe_typecache[movable_thing.type])
 				neighbor_stripe ^= cardinal
 				break
+		if(wallframe_typecache[step_turf.type])
+			neighbor_stripe ^= cardinal
 
 	if(neighbor_stripe)
 		var/image/neighb_stripe_overlay = new ('icons/turf/walls/neighbor_stripe.dmi', "stripe-[neighbor_stripe]", layer = ABOVE_WINDOW_LAYER)

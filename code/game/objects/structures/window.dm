@@ -733,7 +733,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = FULLTILE_SMOOTHING
 	color = GLASS_COLOR
-	alpha = 128
+	alpha = 180
 
 
 	maxhealth = 24
@@ -766,7 +766,7 @@
 	maxhealth = 80
 	fulltile = TRUE
 	color = GLASS_COLOR_SILICATE
-	alpha = 128
+	alpha = 180
 
 
 
@@ -797,7 +797,7 @@
 	maxhealth = 160
 	fulltile = TRUE
 	color = GLASS_COLOR_SILICATE
-	alpha = 128
+	alpha = 180
 
 
 /obj/structure/window/reinforced
@@ -826,7 +826,7 @@
 	maxhealth = 80
 	fulltile = TRUE
 	color = GLASS_COLOR
-	alpha = 128
+	alpha = 180
 
 
 /obj/structure/window/reinforced/tinted
@@ -858,7 +858,7 @@
 
 	maxhealth = 30
 	force_threshold = 5
-	alpha = 128
+	alpha = 180
 
 
 // TODO: Recreate this.
@@ -896,7 +896,7 @@
 	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
 	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 	// canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
-	alpha = 128
+	alpha = 180
 	color = GLASS_COLOR
 
 	maxhealth = 80

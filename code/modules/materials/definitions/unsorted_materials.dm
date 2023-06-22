@@ -732,8 +732,8 @@
 	name = MAT_HARDWOOD
 	stack_type = /obj/item/stack/material/wood/hard
 	icon_colour = "#42291a"
-	icon_base = 'icons/turf/walls/stone_wall.dmi'
-	icon_reinf = 'icons/turf/walls/reinforced_stone.dmi'
+	icon_base = 'icons/turf/walls/wood_wall.dmi'
+	wall_stripe_icon = 'icons/turf/walls/wood_wall_stripe.dmi'
 	icon_reinf_directionals = TRUE
 	integrity = 65	//a bit stronger than regular wood
 	hardness = 20
