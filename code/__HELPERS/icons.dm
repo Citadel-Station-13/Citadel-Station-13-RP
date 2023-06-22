@@ -1135,22 +1135,22 @@ GLOBAL_LIST_EMPTY(icon_exists_cache)
  * Written by Kapu1178
  */
 /proc/icon_exists(file, state, scream)
-	if(icon_exists_cache[file]?[state])
+	if(GLOB.icon_exists_cache[file]?[state])
 		return TRUE
 
-	if(icon_exists_cache[file]?[state] == FALSE)
+	if(GLOB.icon_exists_cache[file]?[state] == FALSE)
 		return FALSE
 
 	var/list/states = icon_states(file)
 
-	if(!icon_exists_cache[file])
-		icon_exists_cache[file] = list()
+	if(!GLOB.icon_exists_cache[file])
+		GLOB.icon_exists_cache[file] = list()
 
 	if(state in states)
-		icon_exists_cache[file][state] = TRUE
+		GLOB.icon_exists_cache[file][state] = TRUE
 		return TRUE
 	else
-		icon_exists_cache[file][state] = FALSE
+		GLOB.icon_exists_cache[file][state] = FALSE
 		if(scream)
 			stack_trace("Icon Lookup for state: [state] in file [file] failed.")
 		return FALSE
