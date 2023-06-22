@@ -9074,15 +9074,6 @@
 /obj/structure/bed/chair,
 /turf/simulated/floor/tiled/red,
 /area/security/hallway)
-"ftN" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/cyan,
-/obj/effect/shuttle_landmark/rift/deck2/hammerhead,
-/obj/effect/overmap/visitable/ship/landable/hammerhead,
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/shuttle/hammerhead/general)
 "fuH" = (
 /obj/structure/sink{
 	pixel_y = 18
@@ -26935,7 +26926,6 @@
 /obj/overmap/entity/visitable/ship/landable/hammerhead,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/hammerhead/general)
-
 "qDA" = (
 /obj/machinery/recharge_station,
 /obj/structure/window/reinforced/tinted/frosted{
@@ -27575,7 +27565,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "raC" = (
-/turf/simulated/wall/hardwood,
+/turf/simulated/wall/wood/hardwood,
 /area/rift/surfacebase/outside/outside2)
 "raF" = (
 /obj/structure/table/woodentable,
@@ -58289,7 +58279,7 @@ yld
 oBA
 ilr
 eeC
-ftN
+qDr
 ilr
 yld
 oBA
