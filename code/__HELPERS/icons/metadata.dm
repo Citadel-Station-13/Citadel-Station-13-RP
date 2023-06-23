@@ -1,7 +1,7 @@
 /**
  * icon_states() but doesn't leak memory out the ass
  *
- * warning: this is actually pretty slow on /file and /icon objects.
+ * warning: this is actually pretty slow on runtime loaded or created /file and /icon objects.
  * try not to use this on those.
  */
 /proc/fast_icon_states(what)
