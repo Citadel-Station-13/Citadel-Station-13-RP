@@ -5,20 +5,31 @@
  * try not to use this on those.
  */
 /proc/fast_icon_states(what)
-	if(isicon(what) || isfile(what))
-		// uh oh
-		// gotta fcopy
-		if(!fcopy(what, "data/tmp/rustg_icon_states.dmi"))
-			. = list()
-			CRASH("failed to fcopy a passed in icon/file to scratch destination for rustg invoke")
-		// invoke
-		. = rustg_dmi_icon_states("data/tmp/rustg_icon_states.dmi")
-		if(!fdel("data/tmp/rustg_icon_states.dmi"))
-			CRASH("failed to fdel temporary scratch file")
+	#define TEMPORARY_FILE "data/tmp/rustg_icon_states.dmi"
+	if(isfile(what))
+		var/into_path = "[what]"
+		if(length(into_path))
+			// compiled
+			. = rustg_dmi_icon_states(into_path)
+		else
+			// runtime
+			if(!fcopy(what, TEMPORARY_FILE))
+				CRASH("failed to fcopy")
+			. = rustg_dmi_icon_states(TEMPORARY_FILE)
+			if(!fdel(TEMPORARY_FILE))
+				CRASH("failed to fdel")
+	else if(isicon(what))
+		// always runtime
+		if(!fcopy(what, TEMPORARY_FILE))
+			CRASH("failed to fcopy")
+		. = rustg_dmi_icon_states(TEMPORARY_FILE)
+		if(!fdel(TEMPORARY_FILE))
+			CRASH("failed to fdel")
 	else if(istext(what))
-		// can invoke directly
+		// assume path on server
 		. = rustg_dmi_icon_states(what)
 	if(!length(.))
 		. = list()
 		CRASH("failed to run icon states; please check the input / source.")
 	. = json_decode(.)
+	#undef TEMPORARY_FILE
