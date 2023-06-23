@@ -622,8 +622,13 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
  * called to ensure organs are consistent with our species's
  * this is a destructive operation and will erase old organs!
  */
-/datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
+/datum/species/proc/create_organs(var/mob/living/carbon/human/H, var/delete_nif = FALSE) //Handles creation of mob organs.
 	H.mob_size = mob_size
+
+	// if we have a NIF, unimplant it before it gets wiped
+	var/obj/item/nif/our_nif = H.nif
+	if(H.nif)
+		H.nif.unimplant(H)
 
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()
@@ -669,14 +674,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
-	if(H.nif)
-		var/type = H.nif.type
-		var/durability = H.nif.durability
-		var/list/nifsofts = H.nif.nifsofts
-		var/list/nif_savedata = H.nif.save_data.Copy()
-
-		var/obj/item/nif/nif = new type(H,durability,nif_savedata)
-		nif.nifsofts = nifsofts
+	// if we had a NIF, decide if we want to delete it, or put it back
+	if(our_nif)
+		if(delete_nif)
+			QDEL_NULL(our_nif)
+		else
+			our_nif.quick_implant(H)
 
 	if(base_color)
 		H.r_skin = hex2num(copytext(base_color,2,4))
