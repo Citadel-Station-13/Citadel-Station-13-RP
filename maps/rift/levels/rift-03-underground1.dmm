@@ -962,7 +962,6 @@
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -1068,18 +1067,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/xenobio)
 "cy" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 8
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "cz" = (
-/obj/machinery/door/firedoor/glass{
-	dir = 1
-	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -1100,7 +1093,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "cC" = (
-/obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
@@ -1109,9 +1101,6 @@
 "cD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
-	},
-/obj/machinery/door/firedoor/glass{
-	dir = 8
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 8

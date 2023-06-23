@@ -16,8 +16,9 @@ GLOBAL_REAL_VAR(airlock_typecache) = typecacheof(list(
 	/obj/structure/window/phoronbasic/full,
 	/obj/structure/window/basic/full,
 	/obj/structure/window/reinforced/polarized/full,
-	/obj/structure/wall_frame
-	))
+	/obj/structure/wall_frame,
+	/obj/spawner/window
+	)) //the spawner is there specifically because doors are initializing weird.
 
 #define AIRLOCK_CLOSED	1
 #define AIRLOCK_CLOSING	2
@@ -512,30 +513,6 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/update_icon(var/doorstate)
-	if(autoset_dir)
-		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
-			var/turf/step_turf = get_step(src, cardinal)
-			for(var/atom/thing as anything in step_turf)
-				if(thing.type in airlock_typecache)
-					switch(cardinal)
-						if(EAST)
-							setDir(SOUTH)
-						if(WEST)
-							setDir(SOUTH)
-						if(NORTH)
-							setDir(WEST)
-						if(SOUTH)
-							setDir(WEST)
-			if (step_turf.density == TRUE)
-				switch(cardinal)
-					if(EAST)
-						setDir(SOUTH)
-					if(WEST)
-						setDir(SOUTH)
-					if(NORTH)
-						setDir(WEST)
-					if(SOUTH)
-						setDir(WEST)
 	switch(doorstate)
 		if(AIRLOCK_OPEN)
 			icon_state = "open"
@@ -1133,6 +1110,32 @@ About the new airlock wires panel:
 				src.closeOther = A
 				break
 	name = "\improper [name]"
+	if(autoset_dir)
+		for (var/cardinal in GLOB.cardinal) //No list copy please good sir
+			var/turf/step_turf = get_step(src, cardinal)
+			for(var/atom/thing as anything in step_turf)
+				if(thing.type in airlock_typecache)
+					switch(cardinal)
+						if(EAST)
+							setDir(SOUTH)
+						if(WEST)
+							setDir(SOUTH)
+						if(NORTH)
+							setDir(WEST)
+						if(SOUTH)
+							setDir(WEST)
+					break
+			if (step_turf.density == TRUE)
+				switch(cardinal)
+					if(EAST)
+						setDir(SOUTH)
+					if(WEST)
+						setDir(SOUTH)
+					if(NORTH)
+						setDir(WEST)
+					if(SOUTH)
+						setDir(WEST)
+				break
 	update_icon(AIRLOCK_CLOSED)
 	. = ..()
 

@@ -21,12 +21,12 @@
 
 /obj/machinery/door/airlock/multi_tile/Initialize(mapload)
 	. = ..()
-	SetBounds()
-	create_fillers()
+	update_icon()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/airlock/multi_tile/LateInitialize()
 	SetBounds()
+	create_fillers()
 
 /obj/machinery/door/airlock/multi_tile/Destroy()
 	QDEL_NULL(filler1)
