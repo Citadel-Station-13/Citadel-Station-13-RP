@@ -1,5 +1,8 @@
 /**
- * icon_states() but faster and better, basically
+ * icon_states() but doesn't leak memory out the ass
+ *
+ * warning: this is actually pretty slow on /file and /icon objects.
+ * try not to use this on those.
  */
 /proc/fast_icon_states(what)
 	if(isicon(what) || isfile(what))
