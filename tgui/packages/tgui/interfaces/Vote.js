@@ -49,7 +49,7 @@ const StartVoteOptions = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  disabled={ vote_happening }
+                  disabled={vote_happening}
                   onClick={() => act("restart")}>
                   Restart
                 </Button>
@@ -111,7 +111,7 @@ const ChoicesPanel = (props, context) => {
               disabled={!selected_choice}
               onClick={() => {
                 act("unvote");
-            }}>
+              }}>
                 Unvote
             </Button>
           </LabeledList>
