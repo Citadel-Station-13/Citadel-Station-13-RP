@@ -58,10 +58,9 @@
 		last_flow_rate = last_power_draw = 0
 		return
 
-	if(!power_machine || !power_machine.powernet)
-		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
-			last_flow_rate = last_power_draw = 0
-			return//make sure we are connected to a powernet
+	if(!powernet_connection?.network)
+		last_flow_rate = last_power_draw = 0
+		return//make sure we are connected to a powernet
 
 	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
@@ -81,7 +80,7 @@
 	if (power_draw >= 0)
 		last_power_draw = power_draw
 
-		power_machine.draw_power(power_draw * 0.001)
+		powernet_connection.flat_draw(power_draw * 0.001)
 		if(network1)
 			network1.update = 1
 
@@ -103,7 +102,7 @@
 		return
 
 /obj/machinery/atmospherics/component/binary/massive_gas_pump/update_icon()
-	if(inoperable() || !anchored || !power_machine.powernet)
+	if(inoperable() || !anchored || !powernet_connection.network)
 		icon_state = "pump"
 	else if(use_power)
 		switch(last_power_draw)

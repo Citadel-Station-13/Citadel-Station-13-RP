@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(powernets)
 /datum/wirenet/power/proc/supply(kw)
 	accumulated += kw
 
-/datum/wirenet/power/proc/flat_draw(kw)
+)
 	flat_load += kw
 	load += kw
 	. = min(available, kw)

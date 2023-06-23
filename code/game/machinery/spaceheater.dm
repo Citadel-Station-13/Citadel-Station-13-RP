@@ -245,11 +245,11 @@
 /obj/machinery/power/thermoregulator/process()
 	if(!on)
 		return
-	if(!powernet)
+	if(!connection.network)
 		turn_off()
 		return
 
-	if((draw_power(idle_power_usage * 0.001) * 1000) < idle_power_usage)
+	if((connection.flat_draw(idle_power_usage * 0.001) * 1000) < idle_power_usage)
 		visible_message("<span class='notice'>\The [src] shuts down.</span>")
 		turn_off()
 		return
@@ -313,10 +313,10 @@
 	..(severity)
 
 /obj/machinery/power/thermoregulator/overload(var/obj/machinery/power/source)
-	if(!anchored || !powernet)
+	if(!anchored || !connection.network)
 		return
 	// 1.5 MW
-	var/power_avail = draw_power(1500)
+	var/power_avail = connection.flat_draw(1500)
 	var/datum/gas_mixture/env = loc.return_air()
 	if(env)
 		var/datum/gas_mixture/removed = env.remove_ratio(0.99)

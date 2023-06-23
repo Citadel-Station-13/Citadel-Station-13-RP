@@ -60,9 +60,8 @@
 	if((machine_stat & (NOPOWER|BROKEN)) || !use_power)
 		return
 
-	if(!power_machine || !power_machine.powernet)
-		if(!power_machine || !power_machine.connect_to_network())//returns 0 if it fails to find a
-			return//make sure we are connected to a powernet
+	if(!powernet_connection.network)
+		return//make sure we are connected to a powernet
 
 	power_rating = power_machine.surplus() * 1000 //update power rateing to what ever is avaiable
 	power_rating = clamp(power_rating, 0, power_level)
@@ -138,7 +137,7 @@
 		return
 
 /obj/machinery/atmospherics/component/binary/massive_heat_pump/update_icon()
-	if(inoperable() || !anchored || !power_machine.powernet)
+	if(inoperable() || !anchored || !powernet_connection.network)
 		icon_state = "pump"
 	else if(use_power)
 		switch(last_power_draw)

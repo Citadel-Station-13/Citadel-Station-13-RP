@@ -48,7 +48,7 @@
 
 /obj/machinery/power/supply_beacon/attackby(obj/item/W, mob/user)
 	if(!use_power && W.is_wrench())
-		if(!anchored && !connect_to_network())
+		if(!anchored && !connection.network)
 			to_chat(user, "<span class='warning'>This device must be placed over an exposed cable.</span>")
 			return
 		anchored = !anchored
@@ -107,7 +107,7 @@
 		return PROCESS_KILL
 	if(!use_power)
 		return
-	if(draw_power(0.5) < 0.5)
+	if(connection.flat_draw(0.5) < 0.5)
 		deactivate()
 		return
 	if(!target_drop_time)
