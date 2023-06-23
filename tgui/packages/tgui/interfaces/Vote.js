@@ -111,7 +111,7 @@ const ChoicesPanel = (props, context) => {
               disabled={!selected_choice}
               onClick={() => {
                 act("unvote");
-              }}>
+            }}>
                 Unvote
             </Button>
           </LabeledList>
