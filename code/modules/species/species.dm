@@ -628,7 +628,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	// store the markings for each limb we have so we can apply them to our new limbs
 	var/list/temporary_marking_store = list()
 	for(var/limb_type in has_limbs)
-		var/obj/item/organ/external/existing_limb = H.organs[limb_type]
+		var/obj/item/organ/external/existing_limb = H.organs_by_name[limb_type]
 		if(existing_limb && istype(existing_limb))
 			temporary_marking_store[limb_type] = existing_limb.markings
 
