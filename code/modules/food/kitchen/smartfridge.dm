@@ -51,9 +51,9 @@
 	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/machinery/smartfridge/proc/accept_check(var/obj/item/O as obj) //This isn't complex! You didn't need to override this for EVERY. SINGLE. SUBTYPE.
-	if((O.type in accepted_types) && !(O.type in blacklisted_types))
-		return TRUE
-	return FALSE
+	if(is_type_in_list(O, blacklisted_types))
+		return FALSE
+	return is_type_in_list(O, accepted_types)
 
 /obj/machinery/smartfridge/process(delta_time)
 	if(machine_stat & (BROKEN|NOPOWER))
@@ -141,6 +141,7 @@
 		if(!user.attempt_insert_item_for_installation(O, src))
 			return
 		stock(O)
+		update_icon()
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
 
 
@@ -308,13 +309,13 @@
 	desc = "A refrigerated storage unit for xenobiological samples."
 	req_access = list(ACCESS_SCIENCE_MAIN)
 	icon_contents = "slime"
-	accepted_types = list(/obj/item/slime_extract, /obj/item/slimepotion)
+	accepted_types = list(/obj/item/slime_extract/, /obj/item/slimepotion/)
 
 /obj/machinery/smartfridge/secure/medbay
 	name = "\improper Refrigerated Medicine Storage"
 	desc = "A refrigerated storage unit for storing medicine and chemicals."
 	req_one_access = list(ACCESS_MEDICAL_MAIN,ACCESS_MEDICAL_CHEMISTRY)
-	accepted_types = list(/obj/item/reagent_containers/glass, /obj/item/storage/pill_bottle, /obj/item/reagent_containers/pill/)
+	accepted_types = list(/obj/item/reagent_containers/glass/, /obj/item/storage/pill_bottle/, /obj/item/reagent_containers/pill/)
 
 /obj/machinery/smartfridge/secure/virology
 	name = "\improper Refrigerated Virus Storage"
@@ -325,7 +326,7 @@
 /obj/machinery/smartfridge/chemistry
 	name = "\improper Smart Chemical Storage"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
-	accepted_types = list(/obj/item/storage/pill_bottle, /obj/item/reagent_containers)
+	accepted_types = list(/obj/item/storage/pill_bottle/, /obj/item/reagent_containers/)
 
 /obj/machinery/smartfridge/chemistry/virology
 	name = "\improper Smart Virus Storage"
@@ -337,15 +338,15 @@
 	icon_base = "fridge_dark"
 	icon_contents = "drink"
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
-	accepted_types = list(/obj/item/reagent_containers/glass,/obj/item/reagent_containers/food/drinks,/obj/item/reagent_containers/food/condiment)
+	accepted_types = list(/obj/item/reagent_containers/glass/,/obj/item/reagent_containers/food/drinks/,/obj/item/reagent_containers/food/condiment/)
 
 /obj/machinery/smartfridge/food
 	name = "\improper Hot Foods Display"
 	icon_state = "fridge_food"
 	icon_state = "fridge_food"
 	desc = "A climated storage for dishes waiting to be eaten"
-	accepted_types = list(/obj/item/reagent_containers/food/snacks, /obj/item/reagent_containers/food/condiment)
-	blacklisted_types = list(/obj/item/reagent_containers/food/snacks/grown)
+	accepted_types = list(/obj/item/reagent_containers/food/snacks/, /obj/item/reagent_containers/food/condiment/)
+	blacklisted_types = list(/obj/item/reagent_containers/food/snacks/grown/)
 
 
 /obj/machinery/smartfridge/drying_rack
