@@ -1187,6 +1187,9 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "aVh" = (
@@ -9060,7 +9063,7 @@
 "fVb" = (
 /obj/machinery/cryopod,
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 4
 	},
 /obj/machinery/computer/cryopod{
 	pixel_x = -32
@@ -14624,9 +14627,7 @@
 /area/maintenance/tool_storage)
 "jiM" = (
 /obj/effect/floor_decal/rust,
-/obj/machinery/camera/network/security{
-	dir = 6
-	},
+/obj/machinery/camera/network/security,
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "jjg" = (
@@ -17509,10 +17510,6 @@
 /obj/structure/table/steel,
 /obj/item/reagent_containers/food/drinks/cans/waterbottle,
 /obj/machinery/light/small,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
 "kWq" = (
@@ -26922,6 +26919,9 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner2,
 /obj/effect/floor_decal/corner/red/bordercorner2,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "qCA" = (
@@ -27043,7 +27043,7 @@
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
 /obj/machinery/camera/network/security{
-	dir = 10
+	dir = 1
 	},
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -34195,9 +34195,6 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_cell_hallway)
 "uPk" = (
@@ -36195,6 +36192,10 @@
 "whP" = (
 /obj/structure/bed/chair{
 	dir = 4
+	},
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)

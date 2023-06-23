@@ -79,11 +79,11 @@
 	TRIUMPH_SET_ATMOS
 
 /turf/unsimulated/wall/planetary/lythios43c
-	name = "facility wall"
+	name = "glacial permafrost"
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C
-	icon = 'icons/turf/walls.dmi'
+	icon = 'icons/turf/walls/natural.dmi'
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = (SMOOTH_GROUP_WALLS+SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)

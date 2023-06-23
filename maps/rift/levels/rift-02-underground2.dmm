@@ -3513,7 +3513,7 @@
 /area/hallway/primary/undertwo)
 "jX" = (
 /obj/machinery/firealarm{
-	dir = 8;
+	dir = 4;
 	pixel_x = 24
 	},
 /obj/effect/floor_decal/techfloor{
@@ -3762,7 +3762,7 @@
 /area/engineering/locker_room)
 "kF" = (
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /obj/effect/floor_decal/techfloor{
@@ -9847,9 +9847,6 @@
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
-"FD" = (
-/turf/unsimulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "FF" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2;
@@ -27462,7 +27459,7 @@ aa
 Xh
 "}
 (66,1,1) = {"
-FD
+Xh
 aa
 aa
 aa
