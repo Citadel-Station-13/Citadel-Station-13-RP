@@ -625,6 +625,13 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs.
 	H.mob_size = mob_size
 
+	// store the markings for each limb we have so we can apply them to our new limbs
+	var/list/temporary_marking_store = list()
+	for(var/limb_type in has_limbs)
+		var/obj/item/organ/external/existing_limb = H.organs[limb_type]
+		if(existing_limb && istype(existing_limb))
+			temporary_marking_store[limb_type] = existing_limb.markings
+
 	for(var/obj/item/organ/organ in H.contents)
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
@@ -648,14 +655,11 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			organ_data = has_limbs[O.parent_organ]
 			organ_data["has_children"] = organ_data["has_children"]+1
 
-	for(var/id in pref.body_marking_ids)
-		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
-		var/mark_color = "[pref.body_marking_ids[id]]"
-
-		for(var/BP in mark_datum.body_parts)
-			var/obj/item/organ/external/O = character.organs_by_name[BP]
-			if(O)
-				O.markings[id] = list("color" = mark_color, "datum" = mark_datum)
+		// check if we had an old limb of the same type that had markings
+		var/obj/item/organ/external/limb = O
+		var/markings_for_limb = temporary_marking_store[limb_type]
+		if(istype(O) && markings_for_limb)
+			limb.markings = markings_for_limb
 
 	for(var/organ_tag in has_organ)
 		var/organ_type = has_organ[organ_tag]
