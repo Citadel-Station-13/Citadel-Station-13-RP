@@ -1,5 +1,5 @@
 import { useBackend } from "../backend";
-import { Box, Icon, Stack, Button, Section, NoticeBox, LabeledList, Collapsible, FitText } from "../components";
+import { Box, Icon, Stack, Button, Section, NoticeBox, LabeledList, Collapsible } from "../components";
 import { Window } from "../layouts";
 
 export const Vote = (props, context) => {
@@ -49,7 +49,7 @@ const StartVoteOptions = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Button
-                  disabled={vote_happening }
+                  disabled={ vote_happening }
                   onClick={() => act("restart")}>
                   Restart
                 </Button>
@@ -76,7 +76,7 @@ const ChoicesPanel = (props, context) => {
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title= "Choices" >
+      <Section fill scrollable title="Choices" >
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (
@@ -94,7 +94,7 @@ const ChoicesPanel = (props, context) => {
                       Vote
                     </Button>
                   }>
-                  {(selected_choice == choice.name) && (
+                  {(selected_choice === choice.name) && (
                     <Icon
                       alignSelf="right"
                       mr={2}
@@ -111,9 +111,9 @@ const ChoicesPanel = (props, context) => {
               disabled={!selected_choice}
               onClick={() => {
                 act("unvote");
-              }}>
+            }}>
                 Unvote
-              </Button>
+            </Button>
           </LabeledList>
         ) : (
           <NoticeBox>No choices available!</NoticeBox>
