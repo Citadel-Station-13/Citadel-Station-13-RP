@@ -28,8 +28,7 @@
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 	color_mult = TRUE
 
-	vision_innate = /datum/vision/baseline/species_tier_3 // I am going to buff proteans - Absolute madman
-														// Apparently super-tech nanites were blind in the darkness
+	vision_innate = /datum/vision/baseline/species_tier_3
 	breath_type = null
 	poison_type = null
 
