@@ -1,4 +1,4 @@
-var/global/list/wing_icon_cache = list()
+GLOBAL_LIST_EMPTY(wing_icon_cache)
 
 /mob/living/carbon/human/proc/get_ears_overlay()
 	if(ear_style && !(head && (head.inv_hide_flags & BLOCKHEADHAIR)))

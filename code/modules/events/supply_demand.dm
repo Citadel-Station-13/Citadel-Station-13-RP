@@ -1,4 +1,4 @@
-/var/global/running_demand_events = list()
+GLOBAL_LIST_EMPTY(running_demand_events)
 
 /hook/sell_shuttle/proc/supply_demand_sell_shuttle(var/area/area_shuttle)
 	for(var/datum/event/supply_demand/E in running_demand_events)

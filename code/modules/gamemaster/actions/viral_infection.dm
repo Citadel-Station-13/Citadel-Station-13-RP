@@ -1,4 +1,4 @@
-/var/global/list/event_viruses = list() // so that event viruses are kept around for admin logs, rather than being GCed
+GLOBAL_LIST_EMPTY(event_viruses) // so that event viruses are kept around for admin logs, rather than being GCed
 
 /datum/gm_action/viral_infection
 	name = "viral infection"

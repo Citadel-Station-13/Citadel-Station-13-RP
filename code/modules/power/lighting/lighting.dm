@@ -14,7 +14,7 @@
 #define LIGHTING_POWER_FACTOR 2
 ///How much power emergency lights will consume per tick
 #define LIGHT_EMERGENCY_POWER_USE 0.2
-var/global/list/light_type_cache = list()
+GLOBAL_LIST_EMPTY(light_type_cache)
 /proc/get_light_type_instance(var/light_type)
 	. = light_type_cache[light_type]
 	if(!.)

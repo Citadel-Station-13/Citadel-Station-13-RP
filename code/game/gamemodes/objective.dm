@@ -1,4 +1,4 @@
-var/global/list/all_objectives = list()
+GLOBAL_LIST_EMPTY(all_objectives)
 
 /datum/objective
 	/// Who owns the objective.

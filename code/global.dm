@@ -1,8 +1,8 @@
 // Items that ask to be called every cycle.
 var/global/datum/datacore/data_core = null
-var/global/list/processing_machines      = list()	// TODO - Move into SSmachines
-var/global/list/processing_power_items   = list()	// TODO - Move into SSmachines
-var/global/list/hud_icon_reference       = list()
+GLOBAL_LIST_EMPTY(processing_machines)		// TODO - Move into SSmachines
+GLOBAL_LIST_EMPTY(processing_power_items)	// TODO - Move into SSmachines
+GLOBAL_LIST_EMPTY(hud_icon_reference)
 
 
 var/global/list/global_mutations  = list() // List of hidden mutation things.

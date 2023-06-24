@@ -1,6 +1,6 @@
 
-var/global/list/weavable_structures = list()
-var/global/list/weavable_items = list()
+GLOBAL_LIST_EMPTY(weavable_structures)
+GLOBAL_LIST_EMPTY(weavable_items)
 
 // Structures
 

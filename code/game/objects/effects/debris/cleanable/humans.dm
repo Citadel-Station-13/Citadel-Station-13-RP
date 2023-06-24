@@ -1,7 +1,7 @@
 //for 1 unit of depth in puddle (amount var)
 #define DRYING_TIME 5 * 60*10
 
-var/global/list/image/splatter_cache=list()
+GLOBAL_LIST_EMPTY(splatter_cache)
 
 /obj/effect/debris/cleanable/blood
 	name = "blood"

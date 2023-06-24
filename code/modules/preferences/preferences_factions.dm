@@ -1,8 +1,8 @@
-var/global/list/seen_citizenships = list()
-var/global/list/seen_systems = list()
-var/global/list/seen_factions = list()
-var/global/list/seen_antag_factions = list()
-var/global/list/seen_religions = list()
+GLOBAL_LIST_EMPTY(seen_citizenships)
+GLOBAL_LIST_EMPTY(seen_systems)
+GLOBAL_LIST_EMPTY(seen_factions)
+GLOBAL_LIST_EMPTY(seen_antag_factions)
+GLOBAL_LIST_EMPTY(seen_religions)
 
 //Commenting this out for now until I work the lists it into the event generator/journalist/chaplain.
 /proc/UpdateFactionList(mob/living/carbon/human/M)
@@ -13,7 +13,7 @@ var/global/list/seen_religions = list()
 		seen_religions    |= M.client.prefs.religion*/
 	return
 
-var/global/list/citizenship_choices = list(
+GLOBAL_LIST_INIT(citizenship_choices,list(
 	"Earth",
 	"Mars",
 	"Luna",
@@ -21,9 +21,9 @@ var/global/list/citizenship_choices = list(
 	"Moghes",
 	"Meralar",
 	"Qerr'balak"
-	)
+	))
 
-var/global/list/home_system_choices = list(
+GLOBAL_LIST_INIT(home_system_choices,list(
 	"Sol",
 	"S'rand'marr",
 	"Nyx",
@@ -32,24 +32,24 @@ var/global/list/home_system_choices = list(
 	"Epsilon Ursae Minoris",
 	"Rarkajar",
 	"Frontier Space"
-	)
+	))
 
-var/global/list/faction_choices = list(
+GLOBAL_LIST_INIT(faction_choices,list(
 	"NanoTrasen",
 	"Vey Med",
 	"Ward-Takahashi GMB",
 	"Free Trade Union"
-	)
+	))
 
-var/global/list/antag_faction_choices = list()	//Should be populated after brainstorming. Leaving as blank in case brainstorming does not occur.
+GLOBAL_LIST_EMPTY(antag_faction_choices)	//Should be populated after brainstorming. Leaving as blank in case brainstorming does not occur.
 
-var/global/list/antag_visiblity_choices = list(
+GLOBAL_LIST_INIT(antag_visiblity_choices,list(
 	"Hidden",
 	"Shared",
 	"Known"
-	)
+	))
 
-var/global/list/religion_choices = list(
+GLOBAL_LIST_INIT(religion_choices,list(
 	"Unitarianism",
 	"Neopaganism",
 	"Islam",
@@ -69,4 +69,4 @@ var/global/list/religion_choices = list(
 	"The Brass Order",
 	"Agnosticism",
 	"Deism"
-	)
+	))

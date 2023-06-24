@@ -1,4 +1,4 @@
-var/list/gurgled_overlays = list(
+GLOBAL_LIST_INIT(gurgled_overlays,list(
 								"green" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "green"),
 								"white" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "white"),
 								"black" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "black"),
@@ -14,7 +14,7 @@ var/list/gurgled_overlays = list(
 								"cyan" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "cyan"),
 								"beige" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "beige"),
 								"pink" = image('icons/effects/sludgeoverlay_vr.dmi', icon_state = "pink")
-								)
+								))
 
 /obj/item
 	var/gurgled = FALSE

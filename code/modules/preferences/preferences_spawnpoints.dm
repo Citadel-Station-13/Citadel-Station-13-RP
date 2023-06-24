@@ -1,4 +1,4 @@
-var/list/datum/spawnpoint/spawntypes = list()
+GLOBAL_LIST_EMPTY(spawntypes)
 
 /proc/populate_spawn_points()
 	spawntypes = list()

@@ -36,8 +36,8 @@
 
 
 // Global list holding all configured jukebox tracks
-var/global/list/all_jukebox_tracks = list()
-var/global/list/all_lobby_tracks = list()
+GLOBAL_LIST_EMPTY(all_jukebox_tracks)
+GLOBAL_LIST_EMPTY(all_lobby_tracks)
 
 // Read the jukebox configuration file on system startup.
 /hook/startup/proc/load_jukebox_tracks()

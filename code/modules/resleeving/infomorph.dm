@@ -427,8 +427,8 @@ var/list/infomorph_emotions = list(
 	return 0
 
 /////////////// SOFTWARE DOWNLOADS
-var/global/list/infomorph_software_by_key = list()
-var/global/list/default_infomorph_software = list()
+GLOBAL_LIST_EMPTY(infomorph_software_by_key)
+GLOBAL_LIST_EMPTY(default_infomorph_software)
 /hook/startup/proc/populate_infomorph_software_list()
 	var/r = 1 // I would use ., but it'd sacrifice runtime detection
 	for(var/type in typesof(/datum/infomorph_software) - /datum/infomorph_software)

@@ -1,6 +1,6 @@
 // Generates cave systems for the asteroid, and places ore tiles.
-var/global/list/random_maps = list()
-var/global/list/map_count = list()
+GLOBAL_LIST_EMPTY(random_maps)
+GLOBAL_LIST_EMPTY(map_count)
 
 /datum/random_map
 
@@ -61,7 +61,7 @@ var/global/list/map_count = list()
 	// if(seed)
 	//	rand_seed(seed)
 	//	priority_process = 1
-	
+
 	// removed. the problem is that nothing but the master controller should ever be fucking with random seeding ~silicons
 
 	for(var/i = 0;i<max_attempts;i++)

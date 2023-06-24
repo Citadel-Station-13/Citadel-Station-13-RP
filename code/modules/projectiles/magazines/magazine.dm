@@ -208,8 +208,8 @@
 	return max_ammo - length(stored_ammo)
 
 //magazine icon state caching
-/var/global/list/magazine_icondata_keys = list()
-/var/global/list/magazine_icondata_states = list()
+GLOBAL_LIST_EMPTY(magazine_icondata_keys)
+GLOBAL_LIST_EMPTY(magazine_icondata_states)
 
 /proc/initialize_magazine_icondata(var/obj/item/ammo_magazine/M)
 	var/typestr = "[M.type]"

@@ -1,4 +1,4 @@
-var/list/table_icon_cache = list()
+GLOBAL_LIST_EMPTY(table_icon_cache)
 
 /obj/structure/table
 	name = "table frame"
