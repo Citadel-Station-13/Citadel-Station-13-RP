@@ -2,7 +2,7 @@
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
-	icon_state = "closed"
+	icon_state = "base"
 	density = 1
 	w_class = ITEMSIZE_HUGE
 	layer = UNDER_JUNK_LAYER
@@ -466,16 +466,12 @@
 /obj/structure/closet/update_icon()//Putting the sealed stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	if(opened)
 		icon_state = "open"
-		overlays.Cut()
+	else if(broken)
+		icon_state = "closed_emagged[sealed ? "_welded" : ""]"
+	else if(locked)
+		icon_state = "closed_locked[sealed ? "_welded" : ""]"
 	else
-		if(broken)
-			icon_state = "closed_emagged[sealed ? "_welded" : ""]"
-		else
-			if(locked)
-				icon_state = "closed_locked[sealed ? "_welded" : ""]"
-			else
-				icon_state = "closed_unlocked[sealed ? "_welded" : ""]"
-			overlays.Cut()
+		icon_state = "closed_unlocked[sealed ? "_welded" : ""]"
 
 /obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)
