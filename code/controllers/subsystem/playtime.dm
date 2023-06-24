@@ -22,6 +22,15 @@ SUBSYSTEM_DEF(playtime)
 	flush_playtimes()
 
 /datum/controller/subsystem/playtime/proc/flush_playtimes()
+	if(!SSdbcore.Connect())
+		return
+	// admin proccall guard override - there's no volatile args here
+	var/old_usr = usr
+	usr = null
+	. = flush_playtimes_impl(address)
+	usr = old_usr
+
+/datum/controller/subsystem/playtime/proc/flush_playtimes_impl()
 	var/list/built = list()
 	for(var/client/C in GLOB.clients)
 		var/playerid = C.player.player_id
@@ -58,7 +67,8 @@ SUBSYSTEM_DEF(playtime)
 		return
 	var/list/playtimes = playtime_for(C.mob)
 	var/now = REALTIMEOFDAY
-	var/since_last = now - C.persistent.playtime_last
+	// deciseconds to minutes
+	var/since_last = round((now - C.persistent.playtime_last) * (1 / 10) * (1 / 60))
 	C.persistent.playtime_last = now
 	if(since_last < 0)
 		CRASH("how was since_last [since_last] < 0?")

@@ -38,7 +38,20 @@ const validYears = () => {
 };
 const VALID_YEARS = validYears();
 
-const VALID_MONTHS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => n.toString());
+const VALID_MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+].map((n) => n.toString());
 
 const validDays = (month: number, year: number) => {
   let current = daysInMonth(month, year);
@@ -68,20 +81,20 @@ export const AgeVerifyMenu = (props, context) => {
               <Stack height="280px">
                 <Stack.Item width="33%" overflowY="scroll" overflowX="hidden">
                   {
-                    VALID_MONTHS.map((m) => (
-                      <Button key={m} fluid content={m} color="transparent" selected={m === month}
-                        onClick={() => setMonth(m)} />
-                    ))
-                  }
-                </Stack.Item>
-                <Stack.Item width="33%" overflowY="scroll" overflowX="hidden">
-                  {
                     validDays(
                       (month === null)? 1 : Number.parseInt(month, 10),
                       (year === null)? 1 : Number.parseInt(year, 10)
                     ).map((m) => (
                       <Button key={m} fluid content={m} color="transparent" selected={m === day}
                         onClick={() => setDay(m)} />
+                    ))
+                  }
+                </Stack.Item>
+                <Stack.Item width="33%" overflowY="scroll" overflowX="hidden">
+                  {
+                    VALID_MONTHS.map((m) => (
+                      <Button key={m} fluid content={m} color="transparent" selected={m === month}
+                        onClick={() => setMonth(m)} />
                     ))
                   }
                 </Stack.Item>
@@ -103,7 +116,7 @@ export const AgeVerifyMenu = (props, context) => {
                 || year === null
                 }
                 onClick={() => act('verify', {
-                  month: month,
+                  month: (VALID_MONTHS.findIndex((m) => m === month) + 1),
                   year: year,
                   day: day,
                 })} />
