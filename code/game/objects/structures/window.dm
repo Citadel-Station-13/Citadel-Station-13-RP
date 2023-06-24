@@ -392,9 +392,11 @@
 
 			if (do_after(user, 20 * C.tool_speed, src) && construction_state == WINDOW_STATE_UNSECURED)
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, TRUE)
-				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
-				if (fulltile)
-					P.fulltile = TRUE
+				var/obj/structure/window/reinforced/polarized/P
+				if(fulltile)
+					P = new /obj/structure/window/reinforced/polarized/full(loc)
+				else
+					P = new(loc, dir)
 				P.maxhealth = maxhealth
 				P.health = health
 				P.construction_state = construction_state
