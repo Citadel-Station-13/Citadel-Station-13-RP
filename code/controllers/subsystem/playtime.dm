@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(playtime)
 	// admin proccall guard override - there's no volatile args here
 	var/old_usr = usr
 	usr = null
-	. = flush_playtimes_impl(address)
+	. = flush_playtimes_impl()
 	usr = old_usr
 
 /datum/controller/subsystem/playtime/proc/flush_playtimes_impl()
