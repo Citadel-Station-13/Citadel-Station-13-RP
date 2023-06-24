@@ -174,10 +174,22 @@
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	//* record their existence (tm)
+	// log & lookup updates
+	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
+	// log connection in text file
+	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
+	// log to db
+	log_connection_to_db()
+	// log to player lookup
+	update_lookup_in_db()
+
 	//* Resolve storage datums
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
-	// todo: move resolve database data up here but above preferences
+	//* Resolve database data
+	player = new(key)
+	player.log_connect()
 	// todo: move preferences up here but above persistent
 
 	//* Setup user interface
@@ -239,25 +251,12 @@
 	// build top level menu
 	GLOB.main_window_menu.setup(src)
 
-	// log & lookup updates
-	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
-	// log connection in text file
-	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
-	// log to db
-	log_connection_to_db()
-	// log to player lookup
-	update_lookup_in_db()
-
 	//* WARNING: mob.login is always called async, aka immediately returns on sleep.
 	//* we cannot enforce nosleep due to SDMM limitations.
 	//* therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
 	handle_legacy_connection_whatevers()
-
-	//* Resolve database data
-	player = new(key)
-	player.log_connect()
 
 	//* Connection Security
 	// start caching it immediately
