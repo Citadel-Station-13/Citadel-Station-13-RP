@@ -96,7 +96,10 @@ GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 	var/datum/tgui/found = SStgui.get_open_ui(usr, GLOB.age_verify_menu)
 	if(!isnull(found))
 		found.close()
-	security_ban("Age verification failed. Appeal this on the Discord after you are 18 years of age or older.")
+	if(CONFIG_GET(flag/age_verification_autoban))
+		security_ban("Age verification failed. Appeal this on the Discord after you are 18 years of age or older.")
+	else
+		security_kick("Age verification failed. This server is for 18+ only.", TRUE)
 
 /client/proc/age_gate_internal_succeeded()
 	var/datum/tgui/found = SStgui.get_open_ui(usr, GLOB.age_verify_menu)

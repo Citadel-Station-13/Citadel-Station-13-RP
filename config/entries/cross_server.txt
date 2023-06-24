@@ -3,6 +3,10 @@
 ## Our secret key - used to auth incoming messages
 # COMMS_KEY default_pwd
 
+## allow sending out cross server bunker overrides
+## TODO: remove / replace
+ALLOW_CROSS_SERVER_BUNKER_OVERRIDE
+
 ## List of cross server bunker overrides
 ## TODO: remove / replace
 # CROSS_SERVER_BUNKER_OVERRIDE
