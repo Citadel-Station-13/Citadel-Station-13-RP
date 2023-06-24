@@ -48,7 +48,7 @@
 		</head>
 		<body>
 		You have been intentionally disconnected by the server.<br><br>
-		<center><b>[msg]></b></center>
+		<center><b>[msg]</b></center>
 		<br><hr>
 		If you feel this is in error, contact an administrator out of game (e.g. on Discord).
 		</body>
