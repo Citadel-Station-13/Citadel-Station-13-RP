@@ -84,11 +84,6 @@
 	// Log
 	log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
-	// Route age gate
-	if(href_list["client_age_verify"])
-		age_gate_topic(href_list)
-		return
-
 	// Route statpanel
 	if(href_list["statpanel"])
 		_statpanel_act(href_list["statpanel"], href_list)

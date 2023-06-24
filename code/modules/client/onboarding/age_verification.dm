@@ -8,7 +8,7 @@
 		return TRUE
 	if(is_age_verified())
 		return TRUE
-	age_gate_window()
+	GLOB.age_verify_menu.ui_interact(mob)
 	return TRUE
 
 /client/proc/set_age_verified()
@@ -28,48 +28,32 @@
 	if(!.)
 		to_chat(src, SPAN_DANGER("Age verification must be completed before doing that."))
 
-//* This is an important thing, so, we don't use TGUI *//
+GLOBAL_DATUM_INIT(age_verify_menu, /datum/age_verify_menu, new)
 
-/client/proc/age_gate_window()
-	var/list/dat = list("<center>")
-	dat += "Enter your date of birth here, to confirm that you are over 18.<BR>"
-	dat += "<b>Your date of birth is not saved, only the fact that you are over/under 18 is.</b><BR>"
-	dat += "</center>"
+/datum/age_verify_menu
 
-	dat += "<form action='?src=[REF(src)]'>"
-	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-	dat += "<input type='hidden' name='client_age_verify' value='1'>"
-	dat += "<select name = 'Month'>"
-	var/monthList = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12)
-	for(var/month in monthList)
-		dat += "<option value = [monthList[month]]>[month]</option>"
-	dat += "</select>"
-	dat += "<select name = 'Year' style = 'float:right'>"
-	var/current_year = text2num(time2text(world.realtime, "YYYY"))
-	var/start_year = 1920
-	for(var/year in start_year to current_year)
-		var/reverse_year = 1920 + (current_year - year)
-		dat += "<option value = [reverse_year]>[reverse_year]</option>"
-	dat += "</select>"
-	dat += "<center><input type='submit' value='Submit information'></center>"
-	dat += "</form>"
+/datum/age_verify_menu/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AgeVerifyMenu")
+		ui.open()
 
-	var/datum/browser/popup = new(src, "age_gate", "<div align='center'>Age Gate</div>", 400, 250)
-	popup.set_window_options("can_close=0")
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
+/datum/age_verify_menu/ui_status(mob/user, datum/ui_state/state, datum/tgui_module/module)
+	return UI_INTERACTIVE
 
-/client/proc/age_gate_topic(list/href_list)
-	// ensure they're not verified
-	if(is_age_verified())
+/datum/age_verify_menu/ui_act(action, list/params, datum/tgui/ui)
+	. = ..()
+	if(.)
+		return
+
+	if(usr.client.is_age_verified())
 		return TRUE
 
-	if(!href_list["Month"])
-		// how??
-		return TRUE
+	var/player_month = text2num(params["month"])
+	var/player_year = text2num(params["year"])
 
-	var/player_month = text2num(href_list["Month"])
-	var/player_year = text2num(href_list["Year"])
+	if(isnull(player_month) || isnull(player_year))
+		return TRUE
 
 	var/current_time = world.realtime
 	var/current_month = text2num(time2text(current_time, "MM"))
@@ -83,10 +67,10 @@
 
 	var/month_difference = current_total_months - player_total_months
 	if(month_difference > months_in_eighteen_years)
-		age_gate_internal_succeeded()
+		usr.client.age_gate_internal_succeeded()
 	else
 		if(month_difference < months_in_eighteen_years)
-			age_gate_internal_failed()
+			usr.client.age_gate_internal_failed()
 		else
 			//they could be 17 or 18 depending on the /day/ they were born in
 			var/current_day = text2num(time2text(current_time, "DD"))
@@ -97,19 +81,25 @@
 			var/list/days = list()
 			for(var/number in 1 to total_days_in_player_month)
 				days += number
-			var/player_day = input(src, "What day of [player_month] were you born in.") as anything in days
+			var/player_day = text2num(params["day"])
+			if(isnull(player_day))
+				return TRUE
 			if(player_day <= current_day)
 				//their birthday has passed
-				age_gate_internal_succeeded()
+				usr.client.age_gate_internal_succeeded()
 			else
 				//it has NOT been their 18th birthday yet
-				age_gate_internal_failed()
+				usr.client.age_gate_internal_failed()
 	return TRUE
 
 /client/proc/age_gate_internal_failed()
-	src << browse(null, "window=age_gate")
+	var/datum/tgui/found = SStgui.get_open_ui(usr, GLOB.age_verify_menu)
+	if(!isnull(found))
+		found.close()
 	security_ban("Age verification failed. Appeal this on the Discord after you are 18 years of age or older.")
 
 /client/proc/age_gate_internal_succeeded()
-	src << browse(null, "window=age_gate")
+	var/datum/tgui/found = SStgui.get_open_ui(usr, GLOB.age_verify_menu)
+	if(!isnull(found))
+		found.close()
 	set_age_verified()
