@@ -1,4 +1,4 @@
-var/list/admin_datums = list()
+GLOBAL_LIST_EMPTY(admin_datums)
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)

@@ -1,9 +1,9 @@
-var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
+GLOBAL_LIST_EMPTY(allfaxes)
 /proc/admin_departments()
 	return list("[(LEGACY_MAP_DATUM).boss_name]", "Hadii's Folly Governmental Authority", "Supply")
-var/list/alldepartments = list()
+GLOBAL_LIST_EMPTY(alldepartments)
 
-var/list/adminfaxes = list()	//cache for faxes that have been sent to admins
+GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"

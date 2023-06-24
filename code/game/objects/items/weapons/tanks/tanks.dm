@@ -1,5 +1,4 @@
-
-var/list/global/tank_gauge_cache = list()
+GLOBAL_LIST_EMPTY(tank_gauge_cache)
 
 /**
  * # Gas Tank

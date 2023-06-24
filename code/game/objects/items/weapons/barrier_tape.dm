@@ -26,8 +26,8 @@
 		return INITIALIZE_HINT_QDEL
 
 
-var/list/image/hazard_overlays
-var/list/tape_roll_applications = list()
+GLOBAL_LIST_EMPTY(hazard_overlays)
+GLOBAL_LIST_EMPTY(tape_roll_applications)
 
 /obj/item/barrier_tape_segment
 	name = "tape"

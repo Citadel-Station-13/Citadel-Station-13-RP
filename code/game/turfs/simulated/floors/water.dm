@@ -106,7 +106,7 @@
 
 /turf/simulated/floor/water/deep/indoors
 	outdoors = FALSE
-	
+
 /turf/simulated/floor/water/pool
 	name = "pool"
 	desc = "Don't worry, it's not closed."
@@ -149,7 +149,7 @@
 	remove_modifiers_of_type(/datum/modifier/fire)
 	inflict_water_damage(20 * amount) // Only things vulnerable to water will actually be harmed (slimes/prommies).
 
-var/list/shoreline_icon_cache = list()
+GLOBAL_LIST_EMPTY(shoreline_icon_cache)
 
 /turf/simulated/floor/water/beach
 	name = "beach shoreline"

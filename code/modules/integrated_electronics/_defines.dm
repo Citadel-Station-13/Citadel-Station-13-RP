@@ -65,7 +65,7 @@
 
 #define MAX_CIRCUIT_CLONE_TIME 3 MINUTES //circuit slow-clones can only take up this amount of time to complete
 
-var/list/all_integrated_circuits = list()
+GLOBAL_LIST_EMPTY(all_integrated_circuits)
 
 //Mostly deprecated, currently only used for circuit bags in integrated_electronics\core\tools.dm
 /proc/initialize_integrated_circuits_list()

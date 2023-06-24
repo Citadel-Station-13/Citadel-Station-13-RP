@@ -4,24 +4,24 @@
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
 /// List of all human mobs and sub-types, including clientless.
-var/global/list/human_mob_list = list()
+GLOBAL_LIST_EMPTY(human_mob_list)
 /// List of all silicon mobs, including clientless.
-var/global/list/silicon_mob_list = list()
+GLOBAL_LIST_EMPTY(silicon_mob_list)
 /// List of all AIs, including clientless.
-var/global/list/ai_list = list()
+GLOBAL_LIST_EMPTY(ai_list)
 /// List of all alive mobs, including clientless. Excludes /mob/new_player
-var/global/list/living_mob_list = list()
+GLOBAL_LIST_EMPTY(living_mob_list)
 /// List of all dead mobs, including clientless. Excludes /mob/new_player
-var/global/list/dead_mob_list = list()
+GLOBAL_LIST_EMPTY(dead_mob_list)
 /// List of all objects which care about receiving messages (communicators, radios, etc)
-var/global/list/listening_objects = list()
+GLOBAL_LIST_EMPTY(listening_objects)
 
 /// Index for all cables, so that powernets don't have to look through the entire world all the time.
-var/global/list/cable_list = list()
+GLOBAL_LIST_EMPTY(cable_list)
 /// List of all medical sideeffects types by thier names.
-var/global/list/side_effects = list()
+GLOBAL_LIST_EMPTY(side_effects)
 /// List of all mechs. Used by hostile mobs target tracking.
-var/global/list/mechas_list = list()
+GLOBAL_LIST_EMPTY(mechas_list)
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -30,19 +30,19 @@ var/global/list/mechas_list = list()
 GLOBAL_LIST_EMPTY(respawn_timers)
 
 //* Posters
-var/global/list/poster_designs = list()
-var/global/list/NT_poster_designs = list()
+GLOBAL_LIST_EMPTY(poster_designs)
+GLOBAL_LIST_EMPTY(NT_poster_designs)
 
 //* Uplinks
-var/list/obj/item/uplink/world_uplinks = list()
+var/list/obj/item/uplink/world_uplinks
 
 //* Preferences stuff *//
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
-var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
-var/global/list/exclude_jobs = list(/datum/role/job/station/ai,/datum/role/job/station/cyborg)
+GLOBAL_LIST_INIT(backbaglist, list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag"))
+GLOBAL_LIST_INIT(pdachoicelist, list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound"))
+GLOBAL_LIST_INIT(exclude_jobs, list(/datum/role/job/station/ai,/datum/role/job/station/cyborg))
 
 //* Visual nets
 GLOBAL_LIST_EMPTY(visual_nets)
@@ -50,13 +50,13 @@ GLOBAL_DATUM_INIT(cameranet, /datum/visualnet/camera, new)
 GLOBAL_DATUM_INIT(cultnet, /datum/visualnet/cult, new)
 
 //* Runes
-var/global/list/rune_list = new()
-var/global/list/escape_list = list()
-var/global/list/endgame_exits = list()
-var/global/list/endgame_safespawns = list()
+GLOBAL_LIST_EMPTY(rune_list)
+GLOBAL_LIST_EMPTY(escape_list)
+GLOBAL_LIST_EMPTY(endgame_exits)
+GLOBAL_LIST_EMPTY(endgame_safespawns)
 //* Lavaland
-var/global/list/lavaland_entry = list()
-var/global/list/lavaland_exit = list()
+GLOBAL_LIST_EMPTY(lavaland_entry)
+GLOBAL_LIST_EMPTY(lavaland_exit)
 
 var/global/list/syndicate_access = list(ACCESS_ENGINEERING_MAINT, ACCESS_FACTION_SYNDICATE, ACCESS_ENGINEERING_AIRLOCK)
 
@@ -162,17 +162,17 @@ var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
 
 //! ## Traits
 /// Negative custom species traits, indexed by path.
-var/global/list/negative_traits = list()
+GLOBAL_LIST_EMPTY(negative_traits)
 /// Neutral custom species traits, indexed by path.
-var/global/list/neutral_traits = list()
+GLOBAL_LIST_EMPTY(neutral_traits)
 /// Neutral traits available to all species, indexed by path.
-var/global/list/everyone_traits = list()
+GLOBAL_LIST_EMPTY(everyone_traits)
 /// Positive custom species traits, indexed by path.
-var/global/list/positive_traits = list()
+GLOBAL_LIST_EMPTY(positive_traits)
 /// Just path = cost list, saves time in char setup.
-var/global/list/traits_costs = list()
+GLOBAL_LIST_EMPTY(traits_costs)
 /// All of 'em at once. (same instances)
-var/global/list/all_traits = list()
+GLOBAL_LIST_EMPTY(all_traits)
 
 /// Suit Sensors global list.
 var/global/list/sensorpreflist = list("Off", "Binary", "Vitals", "Tracking", "No Preference")
@@ -204,6 +204,8 @@ GLOBAL_LIST_INIT(item_vore_blacklist, list(
 		/obj/item/clothing/head/helmet/space,
 		/obj/item/disk/nuclear))
 //		/obj/item/clothing/suit/storage/hooded/wintercoat/roiz)
+
+//The vore sounds aren't being actively mutuated, so they live without being GLOB'd. For now.
 
 ///Classic Vore sounds
 var/global/list/classic_vore_sounds = list(

@@ -12,7 +12,7 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 
 GLOBAL_LIST_EMPTY(turf_edge_cache)
 
-var/list/flooring_cache = list()
+GLOBAL_LIST_EMPTY(flooring_cache)
 
 /turf/simulated/floor/update_appearance(updates)
 	cut_overlays()

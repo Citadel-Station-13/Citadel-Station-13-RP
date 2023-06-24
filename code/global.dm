@@ -69,7 +69,7 @@ var/join_motd = null
 
 var/datum/metric/metric = new() // Metric datum, used to keep track of the round.
 
-var/list/awaydestinations = list() // Away missions. A list of landmarks that the warpgate can take you to.
+GLOBAL_LIST_EMPTY(awaydestinations) // Away missions. A list of landmarks that the warpgate can take you to.
 
 // For FTP requests. (i.e. downloading runtime logs.)
 // However it'd be ok to use for accessing attack logs and such too, which are even laggier.
@@ -133,7 +133,7 @@ var/list/shell_module_types = list(
 	"Standard", "Service", "Clerical"
 )
 
-var/list/eventdestinations = list() // List of scatter landmarks for event portals
+GLOBAL_LIST_EMPTY(eventdestinations) // List of scatter landmarks for event portals
 
 var/global/list/acceptable_fruit_types = list(
 	"ambrosia",

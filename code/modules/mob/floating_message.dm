@@ -1,4 +1,4 @@
-var/list/floating_chat_colors = list()
+GLOBAL_LIST_EMPTY(floating_chat_colors)
 
 /atom/movable
 	var/list/stored_chat_text

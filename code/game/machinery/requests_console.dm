@@ -30,7 +30,7 @@
 var/req_console_assistance = list()
 var/req_console_supplies = list()
 var/req_console_information = list()
-var/list/obj/machinery/requests_console/allConsoles = list()
+GLOBAL_LIST_EMPTY(allConsoles)
 
 /obj/machinery/requests_console
 	name = "requests console"

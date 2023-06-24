@@ -1,5 +1,5 @@
 var/datum/ai_icon/default_ai_icon = new/datum/ai_icon/blue()
-var/list/datum/ai_icon/ai_icons
+GLOBAL_LIST_EMPTY(ai_icons)
 
 /datum/ai_icon
 	var/name

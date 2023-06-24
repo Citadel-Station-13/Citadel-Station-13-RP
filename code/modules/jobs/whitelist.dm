@@ -1,6 +1,6 @@
 #define WHITELISTFILE "data/whitelist.txt"
 
-var/list/whitelist = list()
+GLOBAL_LIST_EMPTY(whitelist)
 
 /hook/startup/proc/loadWhitelist()
 	if(config_legacy.usewhitelist)

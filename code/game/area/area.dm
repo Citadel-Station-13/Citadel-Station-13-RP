@@ -634,7 +634,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 
 // TODO: nuke this entire system from orbit and rewrite from scratch ~silicons
 // "i am far too lazy" WELL GUESS WHAT IM DEALING WITH YOUR STUPID SHIT NOW
-var/list/teleportlocs = list()
+GLOBAL_LIST_EMPTY(teleportlocs)
 
 /proc/setupTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
@@ -656,7 +656,7 @@ var/list/teleportlocs = list()
 
 	return 1
 
-var/list/ghostteleportlocs = list()
+GLOBAL_LIST_EMPTY(ghostteleportlocs)
 
 /hook/startup/proc/setupGhostTeleportLocs()
 	for(var/area/AR in GLOB.sortedAreas)
