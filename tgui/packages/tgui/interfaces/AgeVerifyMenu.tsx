@@ -51,9 +51,9 @@ const validDays = (month: number, year: number) => {
 
 export const AgeVerifyMenu = (props, context) => {
   let { data, act } = useBackend(context);
-  let [month, setMonth] = useLocalState<string>(context, "month", "1");
-  let [day, setDay] = useLocalState<string>(context, "day", "1");
-  let [year, setYear] = useLocalState<string>(context, "year", (new Date()).getFullYear().toString());
+  let [month, setMonth] = useLocalState<string | null>(context, "month", null);
+  let [day, setDay] = useLocalState<string | null>(context, "day", null);
+  let [year, setYear] = useLocalState<string | null>(context, "year", null);
   return (
     <Window width={400} height={400} title="Age Verification">
       <Window.Content>
@@ -76,7 +76,10 @@ export const AgeVerifyMenu = (props, context) => {
                 </Stack.Item>
                 <Stack.Item width="33%" overflowY="scroll" overflowX="hidden">
                   {
-                    validDays(Number.parseInt(month, 10), Number.parseInt(year, 10)).map((m) => (
+                    validDays(
+                      (month === null)? 1 : Number.parseInt(month, 10),
+                      (year === null)? 1 : Number.parseInt(year, 10)
+                    ).map((m) => (
                       <Button key={m} fluid content={m} color="transparent" selected={m === day}
                         onClick={() => setDay(m)} />
                     ))
@@ -94,6 +97,11 @@ export const AgeVerifyMenu = (props, context) => {
             </Stack.Item>
             <Stack.Item>
               <Button.Confirm textAlign="center" color="transparent" fluid content="Submit"
+                disabled={
+                  month === null
+                || day === null
+                || year === null
+                }
                 onClick={() => act('verify', {
                   month: month,
                   year: year,
