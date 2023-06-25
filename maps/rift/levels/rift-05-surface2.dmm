@@ -674,6 +674,9 @@
 	dir = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/sleep)
 "awp" = (
@@ -11284,6 +11287,9 @@
 	name = "note from CentCom";
 	pixel_x = -6;
 	pixel_y = -4
+	},
+/obj/machinery/light/small{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
@@ -35528,9 +35534,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/structure/morgue{
 	dir = 2
 	},
