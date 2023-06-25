@@ -11,6 +11,12 @@
 			var/entry = "\t[C.key]"
 			if(C.holder && C.holder.fakekey)
 				entry += " <i>(as [C.holder.fakekey])</i>"
+			if(!C.initialized)
+				entry += " - [SPAN_BOLDANNOUNCE("UNINITIALIZED!")]"
+				continue
+			if(isnull(C.mob))
+				entry += " - [SPAN_BOLDANNOUNCE("NULL MOB!")]"
+				continue
 			entry += " - Playing as [C.mob.real_name]"
 			switch(C.mob.stat)
 				if(UNCONSCIOUS)
