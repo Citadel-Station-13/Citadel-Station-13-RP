@@ -7350,7 +7350,6 @@
 	dir = 5
 	},
 /obj/machinery/lathe/autolathe{
-	hacked = 1;
 	name = "unlocked autolathe"
 	},
 /turf/simulated/floor/tiled/techfloor,

@@ -1460,9 +1460,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
 	},
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/corner/blue{
 	dir = 10
 	},
@@ -6278,9 +6276,7 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "eye" = (
@@ -22041,9 +22037,7 @@
 /area/medical/medbay)
 "qqA" = (
 /obj/effect/floor_decal/corner/mauve/full,
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/corner/mauve{
 	dir = 4
@@ -31780,9 +31774,7 @@
 /obj/effect/floor_decal/corner/red/border{
 	dir = 8
 	},
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
 "xSn" = (

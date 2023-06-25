@@ -849,9 +849,7 @@
 /turf/simulated/floor/tiled/steel_dirty/silver,
 /area/piratebase/mess)
 "ie" = (
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel_dirty/dark,
 /area/piratebase/dock)
 "if" = (

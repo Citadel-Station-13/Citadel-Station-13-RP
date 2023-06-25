@@ -5567,7 +5567,6 @@
 "mn" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /turf/simulated/floor/tiled/steel_grid,

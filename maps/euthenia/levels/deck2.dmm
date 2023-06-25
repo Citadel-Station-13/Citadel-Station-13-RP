@@ -23619,9 +23619,7 @@
 /turf/simulated/floor/plating,
 /area/space)
 "sCZ" = (
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/machinery/requests_console{
 	department = "Robotics";
 	departmentType = 2;

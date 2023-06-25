@@ -1173,7 +1173,6 @@
 "de" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -1444,7 +1443,6 @@
 "dI" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/borderfloorwhite{
@@ -1548,7 +1546,6 @@
 "dP" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Centcom Autolathe"
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -13919,7 +13916,6 @@
 "Tx" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/unsimulated/floor{

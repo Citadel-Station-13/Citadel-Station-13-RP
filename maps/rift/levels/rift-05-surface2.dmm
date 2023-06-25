@@ -409,9 +409,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "aok" = (
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "aos" = (

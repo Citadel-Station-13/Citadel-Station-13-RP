@@ -38377,9 +38377,7 @@
 	layer = 3.3;
 	pixel_y = 26
 	},
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/rnd/research)
 "nnK" = (

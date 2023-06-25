@@ -364,7 +364,6 @@
 /area/survivalpod)
 "K" = (
 /obj/machinery/lathe/autolathe{
-	hacked = 1;
 	name = "military autolathe"
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,

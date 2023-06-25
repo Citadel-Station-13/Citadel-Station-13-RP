@@ -15372,9 +15372,7 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/medbay/aft)
 "nhH" = (
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /obj/machinery/requests_console{
 	department = "Robotics";
 	departmentType = 2;
@@ -18387,9 +18385,7 @@
 	name = "Station Intercom (General)";
 	pixel_y = 26
 	},
-/obj/machinery/lathe/autolathe{
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled,
 /area/rnd/reception_desk)
 "pzB" = (

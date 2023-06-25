@@ -268,7 +268,6 @@
 /area/ship/mercenary/med)
 "aJ" = (
 /obj/machinery/lathe/autolathe{
-	hacked = 1;
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{
@@ -2921,7 +2920,6 @@
 /area/ship/mercenary/fighter)
 "fX" = (
 /obj/machinery/lathe/autolathe{
-	hacked = 1;
 	name = "unlocked autolathe"
 	},
 /obj/effect/floor_decal/borderfloorblack{

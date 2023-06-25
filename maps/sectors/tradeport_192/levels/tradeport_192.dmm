@@ -9449,7 +9449,6 @@
 "Ks" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -9501,7 +9500,6 @@
 "KE" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
 /turf/simulated/floor/tiled/dark,

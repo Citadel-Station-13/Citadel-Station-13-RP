@@ -453,7 +453,6 @@
 "au" = (
 /obj/machinery/lathe/autolathe{
 	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	hacked = 1;
 	mat_efficiency = 0.5;
 	name = "Centcom Autolathe"
 	},
