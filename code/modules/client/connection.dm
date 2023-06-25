@@ -45,6 +45,12 @@
 		qdel(insert)
 
 /client/proc/log_connection_to_db()
+	set waitfor = FALSE
+	log_connection_to_db_impl()
+
+/client/proc/log_connection_to_db_impl()
+	PRIVATE_PROC(TRUE)
+
 	if(!SSdbcore.Connect())
 		return
 
