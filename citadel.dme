@@ -3009,6 +3009,7 @@
 #include "code\modules\materials\definitions\solid\materials_solid_cult.dm"
 #include "code\modules\materials\definitions\solid\materials_solid_exotic.dm"
 #include "code\modules\materials\definitions\solid\materials_solid_fissile.dm"
+#include "code\modules\materials\definitions\solid\materials_solid_gemstones.dm"
 #include "code\modules\materials\definitions\solid\materials_solid_glass.dm"
 #include "code\modules\materials\definitions\solid\materials_solid_holographic.dm"
 #include "code\modules\materials\definitions\solid\materials_solid_metal.dm"
