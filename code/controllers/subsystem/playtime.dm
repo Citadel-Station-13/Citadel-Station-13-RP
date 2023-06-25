@@ -17,6 +17,8 @@ SUBSYSTEM_DEF(playtime)
 
 /datum/controller/subsystem/playtime/fire(resumed)
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		queue_playtimes(C)
 		CHECK_TICK
 	flush_playtimes()
