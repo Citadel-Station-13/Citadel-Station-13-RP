@@ -21,10 +21,10 @@
 	var/scan_id = 1
 	var/is_secure = 0
 	var/wrenchable = TRUE
-	var/list/accepted_types = list()
+	var/list/accepted_types = list(/obj/item/reagent_containers/food/snacks/grown/)
 	var/list/blacklisted_types = list()
 	var/datum/wires/smartfridge/wires = null
-	var/icon_contents = "chem"
+	var/icon_contents = "food"
 	var/icon_base = "fridge_sci"
 
 /obj/machinery/smartfridge/secure
