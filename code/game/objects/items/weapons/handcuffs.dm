@@ -46,6 +46,8 @@
 /obj/item/handcuffs/proc/can_place(var/mob/target, var/mob/user)
 	if(user == target)
 		return 1
+	if(target.lying) //Mobs that are lying down can be handcuffed without needing to grab them, to make arrests a little easier
+		return 1
 	if(istype(user, /mob/living/silicon/robot))
 		if(user.Adjacent(target))
 			return 1

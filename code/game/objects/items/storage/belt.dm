@@ -140,6 +140,7 @@
 		/obj/item/clothing/gloves,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/hypospray,
+		/obj/item/reagent_containers/glass/hypovial,
 		/obj/item/clothing/glasses,
 		/obj/item/tool/crowbar,
 		/obj/item/flashlight,
