@@ -33,6 +33,8 @@ SUBSYSTEM_DEF(playtime)
 /datum/controller/subsystem/playtime/proc/flush_playtimes_impl()
 	var/list/built = list()
 	for(var/client/C in GLOB.clients)
+		if(!C.initialized)
+			continue
 		var/playerid = C.player.player_id
 		for(var/roleid in C.persistent.playtime_queued)
 			var/minutes = C.persistent.playtime_queued[roleid]
@@ -65,6 +67,8 @@ SUBSYSTEM_DEF(playtime)
 /datum/controller/subsystem/playtime/proc/queue_playtimes(client/C)
 	if(isnull(C))
 		return
+	if(!C.initialized)
+		CRASH("how was this called on an uninitialized client?")
 	var/list/playtimes = playtime_for(C.mob)
 	var/now = REALTIMEOFDAY
 	// deciseconds to minutes
