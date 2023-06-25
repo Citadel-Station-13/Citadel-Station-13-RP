@@ -2,8 +2,11 @@
 
 //Ling power's evolution menu entry datum should be contained alongside the mob proc for the actual power, in their own file.
 
-var/list/powers = typesof(/datum/power/changeling) - /datum/power/changeling	//needed for the badmin verb for now
-var/list/datum/power/changeling/powerinstances = list()
+GLOBAL_LIST_INIT(changeling_powers, init_changeling_powers())
+/proc/init_changeling_powers()
+	. = list()
+	for(var/datum/power/changeling/path as anything in subtypesof(/datum/power/changeling))
+		. += new path
 
 /datum/power //Could be used by other antags too
 	var/name = "Power"
@@ -35,9 +38,6 @@ var/list/datum/power/changeling/powerinstances = list()
 		return
 	src = usr.mind.changeling
 
-	if(!powerinstances.len)
-		for(var/P in powers)
-			powerinstances += new P()
 
 	var/dat = "<html><head><title>Changling Evolution Menu</title></head>"
 
@@ -254,7 +254,7 @@ var/list/datum/power/changeling/powerinstances = list()
 		<table width='560' align='center' cellspacing='0' cellpadding='5' id='maintable_data'>"}
 
 	var/i = 1
-	for(var/datum/power/changeling/P in powerinstances)
+	for(var/datum/power/changeling/P in GLOB.changeling_powers)
 		var/ownsthis = 0
 
 		if(P in purchased_powers)
@@ -321,7 +321,7 @@ var/list/datum/power/changeling/powerinstances = list()
 	var/datum/power/changeling/Thepower = Pname
 
 
-	for (var/datum/power/changeling/P in powerinstances)
+	for (var/datum/power/changeling/P in GLOB.changeling_powers)
 		//to_chat(world, "[P] - [Pname] = [P.name == Pname ? "True" : "False"]")
 		if(P.name == Pname)
 			Thepower = P
