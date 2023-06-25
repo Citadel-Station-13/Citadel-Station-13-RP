@@ -6,7 +6,7 @@
 		return	// component intercepted
 	if(!silent)
 		user.visible_message(SPAN_INFO("[user] swipes [src] through [predicate]."), range = visual_range)
-	var/datum/money_account/customer_account = get_account(associated_account_number)
+	var/datum/economy_account/customer_account = get_account(associated_account_number)
 	if(!customer_account)
 		data[DYNAMIC_PAYMENT_DATA_FAIL_REASON] = "Error: Unable to access account. Please contact technical support if problem persist."
 		return PAYMENT_DYNAMIC_ERROR
@@ -38,7 +38,7 @@
 	data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT] = customer_account
 	data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE] = PAYMENT_TYPE_BANK_CARD
 	// transaction log
-	var/datum/transaction/T = new
+	var/datum/economy_transaction/T = new
 	T.amount = amount
 	var/list/details = predicate.query_transaction_details(data)
 	T.target_name = details[CHARGE_DETAIL_RECIPIENT]

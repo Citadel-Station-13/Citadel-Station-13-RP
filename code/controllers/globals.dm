@@ -49,6 +49,8 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 	gvars_datum_init_order = list()
 	gvars_datum_protected_varlist = list("gvars_datum_protected_varlist")
 
+	var/start = REALTIMEOFDAY
+
 	//? See https://github.com/tgstation/tgstation/issues/26954
 	for(var/I in typesof(/datum/controller/global_vars/proc))
 		var/CLEANBOT_RETURNS = "[I]"
@@ -60,4 +62,8 @@ GLOBAL_REAL(GLOB, /datum/controller/global_vars)
 		var/end_tick = world.time
 		if(end_tick - start_tick)
 			warning("Global [I] slept during initialization!")
+
+	var/end = REALTIMEOFDAY
+	log_world("initialized global variables in [round((end - start) * 0.1, 0.1)]s")
+
 	QDEL_NULL(exclude_these)

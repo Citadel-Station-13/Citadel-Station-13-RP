@@ -199,7 +199,7 @@
 				var/payer_name = "Unknown"
 				switch(data[DYNAMIC_PAYMENT_DATA_CURRENCY_TYPE])
 					if(PAYMENT_TYPE_BANK_CARD)
-						var/datum/money_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
+						var/datum/economy_account/A = data[DYNAMIC_PAYMENT_DATA_BANK_ACCOUNT]
 						if(A)
 							payer_name = A.owner_name
 					else
@@ -269,7 +269,7 @@
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
 	GLOB.vendor_account.money += currently_vending.price
 
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of [currently_vending.item_name]"
 	T.amount = "[currently_vending.price]"

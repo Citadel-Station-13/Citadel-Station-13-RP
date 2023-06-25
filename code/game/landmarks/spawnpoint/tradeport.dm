@@ -6,4 +6,4 @@
 
 /obj/landmark/spawnpoint/latejoin/tradeport
 	name = "Tradeport Latejoin"
-	faction = JOB_FACTION_TRADEPORT
+	faction = /datum/faction/trader

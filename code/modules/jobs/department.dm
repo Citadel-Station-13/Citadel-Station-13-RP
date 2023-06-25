@@ -1,9 +1,20 @@
-// A datum that holds information about a specific department.
-// It is held inside, and managed by, the SSjob subsystem automatically,
-// just define a department, and put that department's name in one or more job datums' departments list.
-// todo: refactor
+/**
+ * A department is a collection of jobs.
+ * It can only belong to one faction, or belong to none.
+ * 
+ * A job can be in one or more departments, but only one department may be its primary department.
+ * A job can manage multiple departments.
+ * A department can be managed by one or more jobs.
+ * 
+ * todo: refactor
+ */
 /datum/department
+	abstract_type = /datum/department
 	var/name = "NOPE"		// Name used in UIs, and the index for the department assoc list in SSjob.
+	/// id - must be unique globally.
+	var/identifier
+	/// faction - typepath or id, what faction we belong to
+	var/faction
 	var/short_name = "NO"	// Shorter name, used for things like external Topic() responses.
 	var/color = "#000000"	// Color to use in UIs to represent this department.
 	var/list/jobs = list()	// Assoc list. Key is the job title, and the value is a reference to the job datum. Populated by SSjob subsystem.

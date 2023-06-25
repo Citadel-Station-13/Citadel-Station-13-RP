@@ -746,3 +746,6 @@
 		return
 	for(var/atom/A as anything in contents)
 		A.clean_radiation(str, mul, cheap)
+
+/obj/item/storage/export_recurse()
+	return contents

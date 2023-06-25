@@ -21,7 +21,6 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
-	init_access()
 	if(!length(department_datums))
 		setup_departments()
 	if(!length(occupations))
@@ -30,7 +29,6 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
-	init_access()
 	occupations = SSjob.occupations
 	name_occupations = SSjob.name_occupations
 	job_lookup = SSjob.job_lookup
@@ -48,10 +46,10 @@ SUBSYSTEM_DEF(job)
 		var/datum/role/job/J = job_lookup[id]
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
-		var/faction = J.faction
-		LAZYINITLIST(job_pref_ui_cache[faction])
+		var/datum/faction/faction = SSfactions.fetch_faction(J.faction)
+		LAZYINITLIST(job_pref_ui_cache[faction.name])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
-		LAZYADD(job_pref_ui_cache[faction][department], id)
+		LAZYADD(job_pref_ui_cache[faction.name][department], id)
 	// todo: why
 	for(var/fname in job_pref_ui_cache)
 		var/list/faction = job_pref_ui_cache[fname]

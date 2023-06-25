@@ -7,7 +7,7 @@
 #define GET_WORTH_CONTAINING (1<<2)
 
 /// default flags for /atom/proc/get_worth
-#define GET_WORTH_DEFAULT (GET_WORTH_INTRINSIC | GET_WORTH_MATERIALS | GET_WORTH_CONTAINING)
+#define GET_WORTH_DEFAULT (GET_WORTH_INTRINSIC | GET_WORTH_CONTAINING)
 
 //? factors for worth_buy_factor - multiplier for core worth system
 

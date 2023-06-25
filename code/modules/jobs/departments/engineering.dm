@@ -1,4 +1,6 @@
 /datum/department/engineering
+	identifier = "StationEngineering"
+	faction = /datum/faction/station
 	name = DEPARTMENT_ENGINEERING
 	short_name = "Eng"
 	color = "#B27300"

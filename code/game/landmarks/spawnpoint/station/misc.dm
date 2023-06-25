@@ -1,5 +1,5 @@
 /obj/landmark/spawnpoint/latejoin/station
-	faction = JOB_FACTION_STATION
+	faction = /datum/faction/station
 	method = LATEJOIN_METHOD_DEFAULT
 
 /obj/landmark/spawnpoint/latejoin/station/arrivals_shuttle
@@ -42,4 +42,4 @@
 	announce_template = "%NAME%, %JOB%, has arrived on the tram."
 
 /obj/landmark/spawnpoint/overflow/station
-	faction = JOB_FACTION_STATION
+	faction = /datum/faction/station

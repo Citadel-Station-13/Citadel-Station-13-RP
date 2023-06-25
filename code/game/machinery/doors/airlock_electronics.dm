@@ -18,7 +18,7 @@
 
 /obj/item/airlock_electronics/ui_static_data(mob/user)
 	. = ..()
-	.["access"] = SSjob.tgui_access_data()
+	.["access"] = SSaccess.tgui_access_data()
 
 /obj/item/airlock_electronics/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -52,7 +52,7 @@
 				conf_req_access = null
 				conf_req_one_access = null
 			else
-				var/list/access_ids = SSjob.access_ids_of_category(category)
+				var/list/access_ids = SSaccess.access_ids_of_category(category)
 				LAZYREMOVE(conf_req_one_access, access_ids)
 				LAZYREMOVE(conf_req_access, access_ids)
 			return TRUE

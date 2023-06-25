@@ -10,7 +10,7 @@
 	var/receipt_num
 	var/machine_id = ""
 	var/obj/item/card/id/held_card
-	var/datum/money_account/detailed_account_view
+	var/datum/economy_account/detailed_account_view
 	var/creating_new_account = 0
 	var/const/fund_cap = 1000000
 
@@ -23,7 +23,7 @@
 		return 1
 
 /obj/machinery/account_database/proc/create_transation(target, reason, amount)
-	var/datum/transaction/T = new()
+	var/datum/economy_transaction/T = new()
 	T.target_name = target
 	T.purpose = reason
 	T.amount = amount
@@ -84,7 +84,7 @@
 		data["suspended"] = detailed_account_view.suspended
 
 		var/list/trx[0]
-		for (var/datum/transaction/T in detailed_account_view.transaction_log)
+		for (var/datum/economy_transaction/T in detailed_account_view.transaction_log)
 			trx.Add(list(list(\
 				"date" = T.date, \
 				"time" = T.time, \
@@ -98,7 +98,7 @@
 
 	var/list/accounts[0]
 	for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-		var/datum/money_account/D = GLOB.all_money_accounts[i]
+		var/datum/economy_account/D = GLOB.all_money_accounts[i]
 		accounts.Add(list(list(\
 			"account_number"=D.account_number,\
 			"owner_name"=D.owner_name,\
@@ -223,7 +223,7 @@
 							<tbody>
 						"}
 
-					for (var/datum/transaction/T in detailed_account_view.transaction_log)
+					for (var/datum/economy_transaction/T in detailed_account_view.transaction_log)
 						text += {"
 									<tr>
 										<td>[T.date] [T.time]</td>
@@ -257,7 +257,7 @@
 					"}
 
 					for(var/i=1, i<=GLOB.all_money_accounts.len, i++)
-						var/datum/money_account/D = GLOB.all_money_accounts[i]
+						var/datum/economy_account/D = GLOB.all_money_accounts[i]
 						text += {"
 								<tr>
 									<td>#[D.account_number]</td>

@@ -1,5 +1,46 @@
 SUBSYSTEM_DEF(supply)
 	name = "Supply"
+	init_order = INIT_ORDER_SUPPLY
+	wait = 30 SECONDS
+
+	/// supply system by id
+	var/list/system_lookup = list()
+	/// all factions
+	var/list/datum/supply_faction/factions = list()
+	/// global destination lookup
+	var/list/destinations = list()
+	///
+
+/datum/controller/subsystem/supply/Initialize()
+	#warn impl; station and trader hardcode for now
+	return ..()
+
+/datum/controller/subsystem/supply/Recover()
+	#warn impl
+
+/datum/controller/subsystem/supply/proc/request_destination(datum/requesting)
+	#warn impl
+
+/datum/controller/subsystem/supply/proc/clear_destination(what, datum/requesting)
+	if(requesting != destinations[what])
+		. = FALSE
+		CRASH("wrong datum")
+	destinations -= what
+	return TRUE
+
+/datum/controller/subsystem/supply/proc/resolve_destination(destination)
+	return destinations[destination]
+
+/**
+ * creates a supply system if it's not there already
+ */
+/datum/controller/subsystem/supply/proc/load_supply_system(id, system_path, handler_path)
+	if(!isnull(system_lookup[id]))
+		return
+	var/datum/supply_system/system = new system_path(id, new handler_path)
+
+SUBSYSTEM_DEF(supply)
+	name = "Supply"
 	wait = 300
 	// Supply Points
 	var/points = 50

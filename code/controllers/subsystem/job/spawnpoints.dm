@@ -52,6 +52,9 @@
  *
  */
 /datum/controller/subsystem/job/proc/get_roundstart_spawnpoint(mob/M, client/C, job_path, faction, random = TRUE, harder = FALSE)
+	if(ispath(faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/obj/landmark/spawnpoint)
 	if(random)
 		. = list()
@@ -99,7 +102,10 @@
  * - random - deterministic first pick or random?
  * - harder - used when the first iteration failed, tells spawnpoints to skip certain checks
  */
-/datum/controller/subsystem/job/proc/get_latejoin_spawnpoint(client/C, job_path, faction = JOB_FACTION_STATION, method, random = TRUE, harder = FALSE)
+/datum/controller/subsystem/job/proc/get_latejoin_spawnpoint(client/C, job_path, faction = /datum/faction/station, method, random = TRUE, harder = FALSE)
+	if(ispath(faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	RETURN_TYPE(/obj/landmark/spawnpoint)
 	if(random)
 		. = list()	// Priority 1: Job specific spawnpoints
@@ -164,6 +170,9 @@
  * - faction - what faction the player is in terms of job factions
  */
 /datum/controller/subsystem/job/proc/possible_latejoin_spawnpoints(client/C, job_path, faction)
+	if(ispath(faction))
+		var/datum/faction/faction_path = faction
+		faction = initial(faction_path.identifier)
 	. = list()
 	// Get all job specific methods, and allow for override if needed
 	if(job_path && length(job_spawnpoints[job_path]))

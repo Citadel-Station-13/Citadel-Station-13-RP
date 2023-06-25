@@ -1,3 +1,9 @@
+/**
+ * A job is the primary role someone is
+ * 
+ * Someone can only be one job at a time.
+ * This is set when their character/mind is instantiated into the round, and never re-set.
+ */
 /datum/role/job
 	/// Abstract type.
 	abstract_type = /datum/role/job
@@ -9,7 +15,7 @@
 	var/title = "NOPE"
 	/// Description of the job
 	var/desc = "No description provided."
-	/// Faction this job is considered part of, for the future considerations of "offmap"/offstation jobs
+	/// Faction this job is considered part of, if any. Set to a typepath. Resolved to ID on new. Faction will be automatically loaded if job is enabled.
 	var/faction
 	/// Determines if this job can be spawned into by players
 	var/join_types = JOB_ROUNDSTART | JOB_LATEJOIN
@@ -88,6 +94,10 @@
 /datum/role/job/New()
 	. = ..()
 	department_accounts = department_accounts || departments_managed
+	if(ispath(faction, /datum/faction))
+		var/datum/faction/faction_path = faction
+		SSfactions.load_faction(faction_path)
+		faction = initial(faction_path.identifier)
 
 //? Availability
 
@@ -336,13 +346,14 @@
 	return economy_payscale * (istype(D)? D.economy_payscale : 1)
 
 /datum/role/job/proc/setup_account(var/mob/living/carbon/human/H)
+	#warn uh oh
 	if(!account_allowed || (H.mind && H.mind.initial_account))
 		return
 
 	// Give them an account in the station database
 	var/money_amount = round(get_economic_payscale() * ECONOMY_PAYSCALE_BASE * ECONOMY_PAYSCALE_MULT * \
 	H.mind.original_pref_economic_modifier + gaussian(ECONOMY_PAYSCALE_RANDOM_MEAN, ECONOMY_PAYSCALE_RANDOM_DEV))
-	var/datum/money_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
+	var/datum/economy_account/M = create_account(H.real_name, money_amount, null, offmap_spawn)
 	if(H.mind)
 		var/remembered_info = ""
 		remembered_info += "<b>Your account number is:</b> #[M.account_number]<br>"
@@ -350,7 +361,7 @@
 		remembered_info += "<b>Your account funds are:</b> $[M.money]<br>"
 
 		if(M.transaction_log.len)
-			var/datum/transaction/T = M.transaction_log[1]
+			var/datum/economy_transaction/T = M.transaction_log[1]
 			remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 		H.mind.store_memory(remembered_info)
 

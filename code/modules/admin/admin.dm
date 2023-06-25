@@ -978,7 +978,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set name = "Unprison"
 	if (M.z == 2)
 		if (config_legacy.allow_admin_jump)
-			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
+			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = /datum/faction/station))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else

@@ -90,7 +90,7 @@
 	var/brigged_since = -1
 
 	/// Put this here for easier tracking ingame.
-	var/datum/money_account/initial_account
+	var/datum/economy_account/initial_account
 
 	/// Used for antag tcrystal trading, more info in code\game\objects\items\telecrystals.dm
 	var/accept_tcrystals = 0
