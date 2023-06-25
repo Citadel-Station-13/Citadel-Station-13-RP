@@ -6,7 +6,7 @@ PROCESSING_SUBSYSTEM_DEF(projectiles)
 	subsystem_flags = SS_NO_INIT
 	var/global_max_tick_moves = 15
 	var/global_pixel_speed = 2
-	var/global_iterations_per_move = 16
+	var/global_iterations_per_move = 10
 
 /datum/controller/subsystem/processing/projectiles/proc/set_pixel_speed(new_speed)
 	global_pixel_speed = new_speed
