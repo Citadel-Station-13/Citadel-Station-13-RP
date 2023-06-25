@@ -618,7 +618,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_power)
 "sT" = (
-/obj/effect/overmap/visitable/sector/classd,
+/obj/overmap/entity/visitable/sector/classd,
 /turf/simulated/mineral/classd/indoors,
 /area/class_d/explored/underground)
 "sY" = (

@@ -207,7 +207,7 @@
 /turf/space/basic,
 /area/space/debrisfield/explored)
 "Xj" = (
-/obj/effect/overmap/visitable/sector/debrisfield,
+/obj/overmap/entity/visitable/sector/debrisfield,
 /turf/space,
 /area/space/debrisfield/explored)
 "YI" = (

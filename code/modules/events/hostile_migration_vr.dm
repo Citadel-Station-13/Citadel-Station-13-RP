@@ -114,7 +114,7 @@
 
 // Overmap version
 /datum/event/hostile_migration/overmap/announce()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon))
 		command_announcement.Announce("Unidentified hostile lifesigns detected migrating towards ITV Talon through the exterior pipes. Secure any exterior access, including ducting and ventilation.","Hostile Vermin Boarding Alert")
 		return
 	else
@@ -123,10 +123,10 @@
 
 // override: cancel if not main ship as this is too dumb to target the actual ship crossing it.
 /datum/event/hostile_migration/overmap/start()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/landable))
 		kill()
 		return
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //Forces the location to the Talon.
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon)) //Forces the location to the Talon.
 		isTalon = 1
 		location = 8
 	return ..()
