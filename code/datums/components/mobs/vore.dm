@@ -1,6 +1,11 @@
 /datum/component/vore
 	can_transfer = TRUE
 
+	/// ui panel
+	var/datum/vore_panel/panel
+	/// vore holders
+	var/list/obj/vore_holder/holders
+
 /datum/component/vore/Initialize(...)
 	. = ..()
 
