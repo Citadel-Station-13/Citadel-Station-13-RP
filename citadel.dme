@@ -4615,7 +4615,6 @@
 #include "code\modules\vore\eating\vore_vr.dm"
 #include "code\modules\vore\eating\vorepanel_vr.dm"
 #include "code\modules\vore\persist\persist_vr.dm"
-#include "code\modules\vore\resizing\grav_pull_vr.dm"
 #include "code\modules\vore\resizing\holder_micro_vr.dm"
 #include "code\modules\vore\resizing\resize_vr.dm"
 #include "code\modules\xenoarcheaology\anomaly_container.dm"
