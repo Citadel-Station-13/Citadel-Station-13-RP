@@ -734,6 +734,7 @@
 #include "code\datums\components\crafting\recipes\recipes_robot.dm"
 #include "code\datums\components\crafting\recipes\recipes_weapon_and_ammo.dm"
 #include "code\datums\components\items\wielding.dm"
+#include "code\datums\components\mobs\vore.dm"
 #include "code\datums\components\movable\aquarium.dm"
 #include "code\datums\components\riding\riding_filter.dm"
 #include "code\datums\components\riding\riding_handler.dm"
