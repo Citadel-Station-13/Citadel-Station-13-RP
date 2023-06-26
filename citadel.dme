@@ -285,6 +285,8 @@
 #include "code\__DEFINES\traits\unsorted.dm"
 #include "code\__DEFINES\turfs\change_turf.dm"
 #include "code\__DEFINES\turfs\type_generation.dm"
+#include "code\__DEFINES\vore\belly.dm"
+#include "code\__DEFINES\vore\prefs.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_global_objects.dm"
 #include "code\__HELPERS\_lists_tg.dm"
