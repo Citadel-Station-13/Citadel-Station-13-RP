@@ -93,8 +93,10 @@
 	var/datum/tgui_module/lathe_control/ui_controller
 
 /obj/machinery/lathe/Initialize(mapload)
-	. = ..()
 	create_storages()
+	if(ispath(design_holder))
+		design_holder = new design_holder(src)
+	. = ..()
 	if(!isnull(insert_icon_state_specific))
 		insert_icon_state_specific = typelist(NAMEOF(src, insert_icon_state_specific), insert_icon_state_specific)
 

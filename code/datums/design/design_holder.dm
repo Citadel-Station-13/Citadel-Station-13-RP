@@ -4,6 +4,9 @@
 	/// owner datum - this can even be null, this is just so lathes don't delete "shared" holders.
 	var/datum/owner
 
+/datum/design_holder/New(datum/owner)
+	src.owner = owner
+
 /datum/design_holder/Destroy()
 	owner = null
 	return ..()

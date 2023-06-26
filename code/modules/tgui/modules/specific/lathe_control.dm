@@ -19,6 +19,9 @@
 		return
 	.["printing"] = lathe.queue_head_design()?.id
 	.["progress"] = lathe.progress
+	.["storesMaterials"] = !isnull(lathe.stored_materials)
+	.["storesReagents"] = !isnull(lathe.stored_reagents)
+	.["storesItems"] = !!length(lathe.items_max)
 
 /datum/tgui_module/lathe_control/static_data(mob/user, ...)
 	. = ..()
@@ -57,6 +60,11 @@
 			if(isnull(entry))
 				return TRUE
 			lathe.queue.Cut(index, index + 1)
+			ui_queue_update()
+			return TRUE
+		if("clear")
+			lathe.queue.len = 0
+			ui_queue_update()
 			return TRUE
 		if("modqueue")
 			var/index = text2num(params["index"])
@@ -107,10 +115,20 @@
 /datum/tgui_module/lathe_control/proc/ui_design_data(datum/design/design)
 	var/list/datum/design/designs = islist(design)? design : list(design)
 	var/list/built = list()
+	var/list/collated = list()
 	if(!islist(designs))
 		design = list(design)
 	for(var/datum/design/D as anything in designs)
 		built[++built.len] = D.ui_data_list()
+		collated[D.category] = TRUE
+	var/list/flatten = list()
+	for(var/key in collated)
+		flatten += key
+	collated = flatten
+	return list(
+		"instances" = built,
+		"categories" = collated,
+	)
 
 /datum/tgui_module/lathe_control/proc/ui_design_add(list/datum/design/designs)
 	if(design_update_queued)

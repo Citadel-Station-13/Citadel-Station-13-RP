@@ -8,7 +8,7 @@
 	icon = 'icons/machinery/lathe/autolathe.dmi'
 	icon_state = "base"
 	circuit = /obj/item/circuitboard/machine/lathe/autolathe
-	design_holder = /datum/design_holder/autolathe
+	design_holder = /datum/design_holder/lathe/autolathe
 	lathe_type = LATHE_TYPE_AUTOLATHE
 	has_interface = TRUE
 	active_icon_state = "active"
@@ -21,7 +21,7 @@
 	)
 	insert_icon_state = "load_steel"
 
-/datum/design_holder/autolathe
+/datum/design_holder/lathe/autolathe
 
-/datum/design_holder/autolathe/available_ids()
+/datum/design_holder/lathe/autolathe/available_ids()
 	return SSresearch.autolathe_design_ids | ..()
