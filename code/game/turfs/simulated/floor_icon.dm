@@ -118,7 +118,7 @@ var/list/flooring_cache = list()
 // todo: better system
 /proc/generate_border_cache_for(state, dir)
 	// make it
-	var/static/list/states = icon_states('icons/turf/outdoors_edge.dmi')
+	var/static/list/states = fast_icon_states('icons/turf/outdoors_edge.dmi')
 	var/actual
 	if(state in states)
 		actual = state

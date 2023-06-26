@@ -15,7 +15,7 @@
 		var/icon_state = initial(item.icon_state)
 		var/icon/I
 
-		var/icon_states_list = icon_states(icon_file)
+		var/icon_states_list = fast_icon_states(icon_file)
 		if(icon_state in icon_states_list)
 			I = icon(icon_file, icon_state, SOUTH)
 			var/c = initial(item.color)

@@ -3,12 +3,12 @@
 // Maybe some day it would be used as unit test.
 // -------- IT IS NOW!
 /datum/unit_test/plantgrowth/Run()
-	var/list/states = icon_states('icons/obj/hydroponics/growing.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_fruits.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_flowers.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_mushrooms.dmi')
-	states |= icon_states('icons/obj/hydroponics/growing_vegetables.dmi')
-	states |= icon_states('goon/icons/obj/hydroponics.dmi')
+	var/list/states = fast_icon_states('icons/obj/hydroponics/growing.dmi')
+	states |= fast_icon_states('icons/obj/hydroponics/growing_fruits.dmi')
+	states |= fast_icon_states('icons/obj/hydroponics/growing_flowers.dmi')
+	states |= fast_icon_states('icons/obj/hydroponics/growing_mushrooms.dmi')
+	states |= fast_icon_states('icons/obj/hydroponics/growing_vegetables.dmi')
+	states |= fast_icon_states('goon/icons/obj/hydroponics.dmi')
 	var/list/paths = subtypesof(/obj/item/seeds) - /obj/item/seeds - typesof(/obj/item/seeds/sample) - /obj/item/seeds/lavaland
 
 	for(var/seedpath in paths)

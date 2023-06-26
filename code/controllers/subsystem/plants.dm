@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(plants)
  */
 /datum/controller/subsystem/plants/proc/setup()
 	//Build the icon lists.
-	for(var/icostate in icon_states('icons/obj/hydroponics_growing.dmi'))
+	for(var/icostate in fast_icon_states('icons/obj/hydroponics_growing.dmi'))
 		var/split = findtext(icostate,"-")
 		if(!split)
 			//Invalid icon_state
@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(plants)
 		if(!(plant_sprites[base]) || (plant_sprites[base]<ikey))
 			plant_sprites[base] = ikey
 
-	for(var/icostate in icon_states('icons/obj/hydroponics_products.dmi'))
+	for(var/icostate in fast_icon_states('icons/obj/hydroponics_products.dmi'))
 		var/split = findtext(icostate,"-")
 		if(split)
 			plant_product_sprites |= copytext(icostate,1,split)

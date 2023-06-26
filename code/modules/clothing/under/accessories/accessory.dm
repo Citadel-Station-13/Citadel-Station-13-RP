@@ -31,7 +31,7 @@
 	var/mutable_appearance/inv_overlay
 	var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
 	if(icon_override)
-		if("[tmp_icon_state]_tie" in icon_states(icon_override))
+		if("[tmp_icon_state]_tie" in fast_icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_tie"
 		inv_overlay = mutable_appearance(icon = icon_override, icon_state = tmp_icon_state)
 	else
@@ -59,7 +59,7 @@
 			tmp_icon_state = on_rolled["rolled"]
 
 	if(icon_override)
-		if("[tmp_icon_state]_mob" in icon_states(icon_override))
+		if("[tmp_icon_state]_mob" in fast_icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_mob"
 		mob_overlay = mutable_appearance("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
 	else if(wearer && sprite_sheets?[bodytype_to_string(wearer.species.get_effective_bodytype(wearer, src, accessory_host.worn_slot))]) //Teshari can finally into webbing, too!

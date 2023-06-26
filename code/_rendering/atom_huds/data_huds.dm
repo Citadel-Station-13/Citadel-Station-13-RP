@@ -152,7 +152,7 @@
 			holder.icon_state = "syndicate"
 
 /proc/RoundHealth(health, icon = GLOB.hud_icon_files[LIFE_HUD])
-	var/list/icon_states = icon_states(icon)
+	var/list/icon_states = fast_icon_states(icon)
 	for(var/icon_state in icon_states)
 		if(health >= text2num(icon_state))
 			return icon_state

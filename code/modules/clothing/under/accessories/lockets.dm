@@ -18,7 +18,7 @@
 	if(!base_icon)
 		base_icon = icon_state
 
-	if(!("[base_icon]_open" in icon_states(icon)))
+	if(!("[base_icon]_open" in fast_icon_states(icon)))
 		to_chat(user, "\The [src] doesn't seem to open.")
 		return
 

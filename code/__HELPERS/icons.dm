@@ -864,7 +864,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 		if (isnull(icon_state))
 			icon_state = A.icon_state
-			if (!(icon_state in icon_states(I, 1)))
+			if (!(icon_state in fast_icon_states(I, 1)))
 				icon_state = initial(A.icon_state)
 				if (isnull(dir))
 					dir = initial(A.dir)
@@ -1141,7 +1141,7 @@ GLOBAL_LIST_EMPTY(icon_exists_cache)
 	if(GLOB.icon_exists_cache[file]?[state] == FALSE)
 		return FALSE
 
-	var/list/states = icon_states(file)
+	var/list/states = fast_icon_states(file)
 
 	if(!GLOB.icon_exists_cache[file])
 		GLOB.icon_exists_cache[file] = list()

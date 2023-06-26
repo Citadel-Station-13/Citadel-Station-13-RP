@@ -47,7 +47,7 @@
 		if(!icon || !icon_state)
 			continue
 		if(!icon_state_cache[icon])
-			icon_state_cache[icon] = icon_states(icon)
+			icon_state_cache[icon] = fast_icon_states(icon)
 		if(!(icon_state in icon_state_cache[icon]))      // state doesn't exist, do not let user pick
 			continue
 		var/name = initial(C.name)

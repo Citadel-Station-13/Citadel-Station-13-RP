@@ -454,7 +454,7 @@ so as to remain in compliance with the most up-to-date laws."
 	for(var/i = 1, i <= alerts.len, i++)
 		var/atom/movable/screen/alert/alert = alerts[alerts[i]]
 
-		if(alert.icon_state in icon_states(ui_style))
+		if(alert.icon_state in fast_icon_states(ui_style))
 			alert.icon = ui_style
 
 		else if(!alert.no_underlay)

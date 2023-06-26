@@ -603,10 +603,10 @@
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))
 			//Making sure all of our items have the sprites to be refitted.
-			var/helmet_check = ((helmet!=null && (initial(parent_helmet.icon_state) in icon_states(helmet.sprite_sheets_obj[target_species],1))) || helmet==null)
+			var/helmet_check = ((helmet!=null && (initial(parent_helmet.icon_state) in fast_icon_states(helmet.sprite_sheets_obj[target_species],1))) || helmet==null)
 			//If the helmet exists, only return true if there's also sprites for it. If the helmet doesn't exist, return true.
-			var/suit_check = ((suit!=null && (initial(parent_suit.icon_state) in icon_states(suit.sprite_sheets_obj[target_species],1))) || suit==null)
-			var/suit_helmet_check = ((suit!=null && suit.helmet!=null && (initial(parent_helmet.icon_state) in icon_states(suit.helmet.sprite_sheets_obj[target_species],1))) || suit==null || suit.helmet==null)
+			var/suit_check = ((suit!=null && (initial(parent_suit.icon_state) in fast_icon_states(suit.sprite_sheets_obj[target_species],1))) || suit==null)
+			var/suit_helmet_check = ((suit!=null && suit.helmet!=null && (initial(parent_helmet.icon_state) in fast_icon_states(suit.helmet.sprite_sheets_obj[target_species],1))) || suit==null || suit.helmet==null)
 			if(helmet_check && suit_check && suit_helmet_check)
 				if(helmet)
 					helmet.refit_for_species(target_species)
