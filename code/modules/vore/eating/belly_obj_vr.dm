@@ -120,46 +120,6 @@
 	//List has indexes that are the digestion mode strings, and keys that are lists of strings.
 	var/tmp/list/emote_lists = list()
 
-//For serialization, keep this updated, required for bellies to save correctly.
-/obj/belly/vars_to_save()
-	return ..() + list(
-		"name",
-		"desc",
-		"vore_sound",
-		"vore_verb",
-		"human_prey_swallow_time",
-		"nonhuman_prey_swallow_time",
-		"emote_time",
-		"digest_brute",
-		"digest_burn",
-		"immutable",
-		"can_taste",
-		"escapable",
-		"escapetime",
-		"digestchance",
-		"absorbchance",
-		"escapechance",
-		"transferchance",
-		"transferlocation",
-		"bulge_size",
-		"shrink_grow_size",
-		"struggle_messages_outside",
-		"struggle_messages_inside",
-		"digest_messages_owner",
-		"digest_messages_prey",
-		"examine_messages",
-		"emote_lists",
-		"mode_flags",
-		"item_digest_mode",
-		"contaminates",
-		"contamination_flavor",
-		"contamination_color",
-		"release_sound",
-		"fancy_vore",
-		"is_wet",
-		"wet_loop"
-		)
-
 /obj/belly/Initialize(mapload)
 	. = ..()
 	//If not, we're probably just in a prefs list or something.
