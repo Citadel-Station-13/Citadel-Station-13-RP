@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_default_icons -= bodytype_str
 			continue
 		var/icon/I = render_default_icons[bodytype_str]
-		render_state_cache[bodytype_str] = icon_states(I)
+		render_state_cache[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_state_cache[bodytype_str])
 			render_state_cache[bodytype_str][state] = TRUE
@@ -300,7 +300,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rolldown_icons -= bodytype_str
 			continue
 		var/icon/I = render_rolldown_icons[bodytype_str]
-		render_rolldown_states[bodytype_str] = icon_states(I)
+		render_rolldown_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rolldown_states[bodytype_str])
 			render_rolldown_states[bodytype_str][state] = TRUE
@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rollsleeve_icons -= bodytype_str
 			continue
 		var/icon/I = render_rollsleeve_icons[bodytype_str]
-		render_rollsleeve_states[bodytype_str] = icon_states(I)
+		render_rollsleeve_states[bodytype_str] = fast_icon_states(I)
 		// turn into hash
 		for(var/state in render_rollsleeve_states[bodytype_str])
 			render_rollsleeve_states[bodytype_str][state] = TRUE
