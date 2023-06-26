@@ -133,7 +133,7 @@
 
 	var/mob/user = usr
 	if(href_list["buy_item"])
-		var/datum/uplink_item/UI = (locate(href_list["buy_item"]) in uplink.items)
+		var/datum/uplink_item/UI = (locate(href_list["buy_item"]) in GLOB.uplink.items)
 		UI.buy(src, usr)
 	else if(href_list["lock"])
 		toggle()
@@ -146,7 +146,7 @@
 		if(href_list["id"])
 			exploit_id = href_list["id"]
 		if(href_list["category"])
-			category = locate(href_list["category"]) in uplink.categories
+			category = locate(href_list["category"]) in GLOB.uplink.categories
 
 	update_nano_data()
 	return 1
@@ -154,7 +154,7 @@
 /obj/item/uplink/hidden/proc/update_nano_data()
 	if(nanoui_menu == 0)
 		var/categories[0]
-		for(var/datum/uplink_category/category in uplink.categories)
+		for(var/datum/uplink_category/category in GLOB.uplink.categories)
 			if(category.can_view(src))
 				categories[++categories.len] = list("name" = category.name, "ref" = "\ref[category]")
 		nanoui_data["categories"] = categories
