@@ -338,6 +338,7 @@
 #include "code\__HELPERS\icons\download.dm"
 #include "code\__HELPERS\icons\flatten.dm"
 #include "code\__HELPERS\icons\hologram.dm"
+#include "code\__HELPERS\icons\metadata.dm"
 #include "code\__HELPERS\lists\_string_lists.dm"
 #include "code\__HELPERS\lists\asset_sorted.dm"
 #include "code\__HELPERS\lists\associations.dm"

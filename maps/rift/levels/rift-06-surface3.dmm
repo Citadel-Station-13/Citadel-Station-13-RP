@@ -23323,7 +23323,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/overmap/entity/visitable/ship/landable/excursion,
+/obj/overmap/entity/visitable/ship/landable/excursion/rift,
 /obj/effect/shuttle_landmark/rift/deck3/excursion,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
