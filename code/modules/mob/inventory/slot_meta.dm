@@ -1,5 +1,6 @@
 /// global slot meta cache - all ids must be string!
-GLOBAL_LIST_INIT(inventory_slot_meta, init_inventory_slot_meta())
+/// initialized by SSearly_init
+GLOBAL_LIST_EMPTY(inventory_slot_meta)
 /// global slot meta cache by type - only works for hardcoded
 GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
