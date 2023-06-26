@@ -78,9 +78,9 @@ GLOBAL_VAR_INIT(economy_init, FALSE)
 	if(GLOB.economy_init)
 		return 2
 
-	//news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
-	news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
-	news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
+	//GLOB.news_network.CreateFeedChannel("The [(LEGACY_MAP_DATUM).starsys_name] Times", "[(LEGACY_MAP_DATUM).starsys_name] Times ExoNode - [(LEGACY_MAP_DATUM).station_short]", 1, 1)
+	GLOB.news_network.CreateFeedChannel("The Gibson Gazette", "Editor Mike Hammers", 1, 1)
+	GLOB.news_network.CreateFeedChannel("Oculum Content Aggregator", "Oculus v6rev7", 1, 1)
 
 	for(var/loc_type in typesof(/datum/trade_destination) - /datum/trade_destination)
 		var/datum/trade_destination/D = new loc_type

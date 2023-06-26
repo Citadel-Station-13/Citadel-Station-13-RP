@@ -149,7 +149,7 @@ var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluesp
 
 /proc/announce_newscaster_news(datum/news_announcement/news)
 	var/datum/feed_channel/sendto
-	for(var/datum/feed_channel/FC in news_network.network_channels)
+	for(var/datum/feed_channel/FC in GLOB.news_network.network_channels)
 		if(FC.channel_name == news.channel_name)
 			sendto = FC
 			break
@@ -160,7 +160,7 @@ var/global/list/newscaster_standard_feeds = list(/datum/news_announcement/bluesp
 		sendto.author = news.author
 		sendto.locked = 1
 		sendto.is_admin_channel = 1
-		news_network.network_channels += sendto
+		GLOB.news_network.network_channels += sendto
 
 	var/author = news.author ? news.author : sendto.author
-	news_network.SubmitArticle(news.message, author, news.channel_name, null, !news.can_be_redacted, news.message_type)
+	GLOB.news_network.SubmitArticle(news.message, author, news.channel_name, null, !news.can_be_redacted, news.message_type)

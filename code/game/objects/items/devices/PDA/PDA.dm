@@ -615,12 +615,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(mode==6)
 		if(has_reception)
 			feeds.Cut()
-			for(var/datum/feed_channel/channel in news_network.network_channels)
+			for(var/datum/feed_channel/channel in GLOB.news_network.network_channels)
 				feeds[++feeds.len] = list("name" = channel.channel_name, "censored" = channel.censored)
 		data["feedChannels"] = feeds
 	if(mode==61)
 		var/datum/feed_channel/FC
-		for(FC in news_network.network_channels)
+		for(FC in GLOB.news_network.network_channels)
 			if(FC.channel_name == active_feed["name"])
 				break
 
