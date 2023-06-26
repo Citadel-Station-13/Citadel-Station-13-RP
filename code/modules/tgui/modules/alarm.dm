@@ -27,7 +27,7 @@
 /datum/tgui_module_old/alarm_monitor/engineering
 /datum/tgui_module_old/alarm_monitor/engineering/New()
 	..()
-	alarm_handlers = list(atmosphere_alarm, fire_alarm, power_alarm)
+	alarm_handlers = list(GLOB.atmosphere_alarm, GLOB.fire_alarm, GLOB.power_alarm)
 
 // Subtype for glasses_state
 /datum/tgui_module_old/alarm_monitor/engineering/glasses
@@ -46,7 +46,7 @@
 /datum/tgui_module_old/alarm_monitor/security
 /datum/tgui_module_old/alarm_monitor/security/New()
 	..()
-	alarm_handlers = list(camera_alarm, motion_alarm)
+	alarm_handlers = list(GLOB.camera_alarm, GLOB.motion_alarm)
 
 // Subtype for glasses_state
 /datum/tgui_module_old/alarm_monitor/security/glasses
