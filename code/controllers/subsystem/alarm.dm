@@ -4,7 +4,7 @@ GLOBAL_DATUM_INIT(atmosphere_alarm, /datum/alarm_handler/atmosphere, new)
 GLOBAL_DATUM_INIT(camera_alarm, /datum/alarm_handler/camera, new)
 GLOBAL_DATUM_INIT(fire_alarm, /datum/alarm_handler/fire, new)
 GLOBAL_DATUM_INIT(motion_alarm, /datum/alarm_handler/motion, new)
-GLOBAL_DATUM_INIT(power_alram, /datum/alarm_handler/power, new)
+GLOBAL_DATUM_INIT(power_alarm, /datum/alarm_handler/power, new)
 
 SUBSYSTEM_DEF(alarms)
 	name = "Alarms"

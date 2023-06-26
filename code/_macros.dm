@@ -17,8 +17,8 @@
 
 #define CanDefaultInteract(user) (CanUseTopic(user, DefaultTopicState()) == UI_INTERACTIVE)
 
-#define sequential_id(key) uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
+#define sequential_id(key) GLOB.uniqueness_repository.Generate(/datum/uniqueness_generator/id_sequential, key)
 
-#define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
+#define random_id(key,min_id,max_id) GLOB.uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
 #define JOINTEXT(X) jointext(X, null)

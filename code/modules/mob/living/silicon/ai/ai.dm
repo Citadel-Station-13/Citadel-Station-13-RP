@@ -294,7 +294,7 @@ var/list/ai_verbs_default = list(
 			custom_sprite = 1
 			selected_sprite = new/datum/ai_icon("Custom", "[src.ckey]-ai", "4", "[ckey]-ai-crash", "#FFFFFF", "#FFFFFF", "#FFFFFF")
 		else
-			selected_sprite = default_ai_icon
+			selected_sprite =GLOB. default_ai_icon
 	updateicon()
 
 /mob/living/silicon/ai/pointed(atom/A as mob|obj|turf in view())
@@ -716,7 +716,7 @@ var/list/ai_verbs_default = list(
 	..()
 
 /mob/living/silicon/ai/updateicon()
-	if(!selected_sprite) selected_sprite = default_ai_icon
+	if(!selected_sprite) selected_sprite = GLOB.default_ai_icon
 
 	if(stat == DEAD)
 		icon_state = selected_sprite.dead_icon

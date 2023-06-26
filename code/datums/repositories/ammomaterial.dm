@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(ammo_repository, /dautm/repository/ammomaterial, new)
+GLOBAL_DATUM_INIT(ammo_repository, /datum/repository/ammomaterial, new)
 
 /datum/repository/ammomaterial
 	var/list/ammotypes
