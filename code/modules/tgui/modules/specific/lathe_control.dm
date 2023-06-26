@@ -63,6 +63,8 @@
 			ui_queue_update()
 			return TRUE
 		if("clear")
+			if(!length(lathe.queue))
+				return TRUE
 			lathe.queue.len = 0
 			ui_queue_update()
 			return TRUE

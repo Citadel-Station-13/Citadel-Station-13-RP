@@ -6,8 +6,8 @@ import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialsContext } from "../common/Materials";
-import { ReagentContentsData } from "../common/Reagents";
+import { MaterialsContext, MaterialStorage } from "../common/Materials";
+import { ReagentContents, ReagentContentsData } from "../common/Reagents";
 
 interface TGUILatheControlProps {
 
@@ -81,22 +81,32 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   switch (resourcesSelect) {
     case "Materials":
       resourceRender = (
-        <>
-          test
-        </>
+        <MaterialStorage horizontal stored={data.materials} context={data.materialsContext}
+          eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
       );
       break;
     case "Reagents":
       resourceRender = (
-        <>
-          test
-        </>
+        <ReagentContents
+          reagents={data.reagents}
+          reagentButtons={(id) => (
+            [1, 5, 10, 20, 50].map(
+              (n) => (
+                <Button
+                  icon="minus"
+                  key={n}
+                  content={`-${n}`}
+                  onClick={() => act('disposeReagent', { id: id, amonut: n })} />
+
+              )
+            )
+          )} />
       );
       break;
     case "Items":
       resourceRender = (
         <>
-          test
+          Unimplemented
         </>
       );
       break;
