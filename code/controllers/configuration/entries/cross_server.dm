@@ -4,6 +4,7 @@
 /datum/config_entry/string/comms_key/ValidateAndSet(str_val)
 	return str_val != "default_pwd" && length(str_val) > 6 && ..()
 
+// todo: remove
 /datum/config_entry/keyed_list/cross_server_bunker_override
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_TEXT
@@ -23,4 +24,5 @@
 /datum/config_entry/flag/allow_cross_server_bunker_override
 	protection = CONFIG_ENTRY_LOCKED
 
+// todo: remove, cluster staging/organization should be in a database
 /datum/config_entry/string/cross_comms_name
