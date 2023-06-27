@@ -10123,7 +10123,6 @@
 	dir = 1
 	},
 /obj/item/floor_painter,
-/obj/item/closet_painter,
 /obj/item/pipe_painter,
 /obj/item/hand_labeler,
 /turf/simulated/floor/tiled,

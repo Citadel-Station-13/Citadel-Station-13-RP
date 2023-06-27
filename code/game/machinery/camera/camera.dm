@@ -300,14 +300,16 @@
 	base_pixel_x = 0
 	base_pixel_y = 0
 	var/turf/T = get_step(get_turf(src), turn(src.dir, 180))
-	if(istype(T, /turf/simulated/wall))
-		switch(dir)
-			if(SOUTH)
-				base_pixel_y = 21
-			if(WEST)
-				base_pixel_x = 10
-			if(EAST)
-				base_pixel_x = -10
+	for(var/obj/O in T.contents)
+		if(O.density)
+			switch(dir)
+				if(SOUTH)
+					base_pixel_y = 21
+				if(WEST)
+					base_pixel_x = 10
+				if(EAST)
+					base_pixel_x = -10
+			break
 	reset_pixel_offsets()
 
 /obj/machinery/camera/proc/triggerCameraAlarm(duration = 0)

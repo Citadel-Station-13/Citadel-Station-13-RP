@@ -8827,7 +8827,6 @@
 /area/engineering/storage)
 "Gf" = (
 /obj/structure/table/reinforced,
-/obj/item/closet_painter,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/multitool{
 	pixel_x = 5

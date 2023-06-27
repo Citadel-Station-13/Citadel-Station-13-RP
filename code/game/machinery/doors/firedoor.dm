@@ -1,4 +1,14 @@
-
+GLOBAL_LIST_INIT(firelock_align_types, typecacheof(list(
+	/obj/structure/window/reinforced/tinted/full,
+	/obj/structure/window/reinforced/full,
+	/obj/structure/window/phoronreinforced/full,
+	/obj/structure/window/phoronbasic/full,
+	/obj/structure/window/basic/full,
+	/obj/structure/window/reinforced/polarized/full,
+	/obj/structure/wall_frame/prepainted/,
+	/obj/structure/wall_frame,
+	/obj/machinery/door/airlock/multi_tile,
+	/obj/machinery/door/airlock)))
 /// kPa
 #define FIREDOOR_MAX_PRESSURE_DIFF 25
 /// °C
@@ -24,7 +34,6 @@
 	open_layer = DOOR_OPEN_LAYER - 0.01// Just below doors when open
 	closed_layer = MID_LANDMARK_LAYER // Need this to be above windows/grilles/low walls.
 	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
-
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.
@@ -74,6 +83,11 @@
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
 			areas_added += A
+
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/door/firedoor/LateInitialize()
+	setDir(dir)
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
@@ -477,30 +491,39 @@
 
 /obj/machinery/door/firedoor/setDir(ndir)
 	. = ..()
-	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
-		var/turf/step_turf = get_step(src, cardinal)
-		for(var/atom/thing as anything in step_turf)
-			if(thing.type in airlock_typecache)
-				switch(cardinal)
-					if(EAST)
-						dir = SOUTH
-					if(WEST)
-						dir = SOUTH
+	for(var/D in GLOB.cardinal)
+		var/turf/T = get_step(src, D)
+		for(var/obj/A in T.contents)
+			if(A.type in GLOB.firelock_align_types) //this is mainly for the cases where mappers can't manually align firelocks, i.e window spawners.
+				switch(D)
 					if(NORTH)
 						dir = WEST
+						break
+					if(EAST)
+						dir = SOUTH
+						break
 					if(SOUTH)
 						dir = WEST
-			return
-		if (step_turf.density == TRUE)
-			switch(cardinal)
-				if(EAST)
-					dir = SOUTH
-				if(WEST)
-					dir = SOUTH
+						break
+					if(WEST)
+						dir = SOUTH
+						break
+		if(T.density)
+			switch(D)
 				if(NORTH)
 					dir = WEST
+					break
+				if(EAST)
+					dir = SOUTH
+					break
 				if(SOUTH)
 					dir = WEST
+					break
+				if(WEST)
+					dir = SOUTH
+					break
+
+
 
 /obj/machinery/door/firedoor/border_only
 /*
