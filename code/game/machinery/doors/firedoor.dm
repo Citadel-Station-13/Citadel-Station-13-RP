@@ -74,6 +74,7 @@
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
 			areas_added += A
+	setDir(dir)
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
@@ -443,9 +444,40 @@
 
 /obj/machinery/door/firedoor/update_icon()
 	var/icon/lights_overlay
-	var/icon/panel_overlay
-	var/icon/weld_overlay
 
+	cut_overlays()
+	set_light(0)
+	var/do_set_light = FALSE
+
+	if(density)
+		icon_state = "closed"
+		if(panel_open)
+			add_overlay(panel_file)
+		if(pdiff_alert)
+			lights_overlay += "palert"
+			do_set_light = TRUE
+		if(dir_alerts)
+			for(var/d=1;d<=4;d++)
+				for(var/i=1;i<=ALERT_STATES.len;i++)
+					if(dir_alerts[d] & BITFLAG(i-1))
+						add_overlay("alert_[ALERT_STATES[i]]")
+						do_set_light = TRUE
+	else
+		if(low_profile)
+			icon_state = "open_lowprofile"
+		else
+			icon_state = "open"
+
+	if(blocked)
+		add_overlay(welded_file)
+
+	if(do_set_light)
+		set_light(2, 0.25, COLOR_SUN)
+
+	return
+
+/obj/machinery/door/firedoor/setDir(ndir)
+	. = ..()
 	for (var/cardinal in GLOB.cardinal) //No list copy please good sir
 		var/turf/step_turf = get_step(src, cardinal)
 		for(var/atom/thing as anything in step_turf)
@@ -469,45 +501,6 @@
 					setDir(WEST)
 				if(SOUTH)
 					setDir(WEST)
-
-	overlays.Cut()
-	set_light(0)
-	var/do_set_light = FALSE
-
-	if(density)
-
-		icon_state = "closed"
-		if(panel_open)
-			overlays = panel_overlay
-		if(pdiff_alert)
-			lights_overlay += "palert"
-			do_set_light = TRUE
-		if(dir_alerts)
-			for(var/d=1;d<=4;d++)
-				var/cdir = GLOB.cardinal[d]
-				for(var/i=1;i<=ALERT_STATES.len;i++)
-					if(dir_alerts[d] & BITFLAG(i-1))
-						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
-						do_set_light = TRUE
-	else
-		if(low_profile)
-			icon_state = "open_lowprofile"
-		else
-			icon_state = "open"
-
-	if(blocked)
-		weld_overlay = welded_file
-
-	if(do_set_light)
-		set_light(2, 0.25, COLOR_SUN)
-
-	overlays += panel_overlay
-	overlays += weld_overlay
-	overlays += lights_overlay
-
-	return
-
-//These are playing merry hell on ZAS.  Sorry fellas :(
 
 /obj/machinery/door/firedoor/border_only
 /*

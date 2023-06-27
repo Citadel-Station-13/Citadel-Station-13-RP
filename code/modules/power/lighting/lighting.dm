@@ -328,7 +328,6 @@ var/global/list/light_type_cache = list()
 		if(LIGHT_BROKEN)
 			icon_state = "[base_icon_state]-broken"
 			on = 0
-	return
 
 /obj/machinery/light/small/flicker
 	auto_flicker = TRUE
@@ -423,6 +422,7 @@ var/global/list/light_type_cache = list()
 
 	on = powered()
 	update(0)
+	setDir(dir)
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
@@ -434,17 +434,6 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/update_icon()
 	cut_overlays()
-
-	pixel_y = 0
-	pixel_x = 0
-	var/turf/T = get_step(get_turf(src), src.dir)
-	if(istype(T) && T.density)
-		if(src.dir == NORTH)
-			pixel_y = 21
-		else if(src.dir == EAST)
-			pixel_x = 10
-		else if(src.dir == WEST)
-			pixel_x = -10
 
 	switch(status) // set icon_states
 		if(LIGHT_OK)
@@ -460,16 +449,30 @@ var/global/list/light_type_cache = list()
 				add_overlay(I)
 
 			else
-				add_overlay(image(icon, "tube1"))
+				add_overlay("tube1")
 		if(LIGHT_EMPTY)
 			on = 0
 		if(LIGHT_BURNED)
-			add_overlay(image(icon, "tube_burned"))
+			add_overlay("tube_burned")
 			on = 0
 		if(LIGHT_BROKEN)
-			add_overlay(image(icon, "tube_broken"))
+			add_overlay("tube_broken")
 			on = 0
-	return
+
+/obj/machinery/light/setDir(ndir)
+	. = ..()
+	base_pixel_y = 0
+	base_pixel_x = 0
+	var/turf/T = get_step(get_turf(src), src.dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(NORTH)
+				base_pixel_y = 21
+			if(EAST)
+				base_pixel_x = 10
+			if(WEST)
+				base_pixel_x = -10
+	reset_pixel_offsets()
 
 /obj/machinery/light/flamp/update_icon()
 	if(lamp_shade)

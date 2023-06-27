@@ -32,39 +32,43 @@ FIRE ALARM
 	. = ..()
 	if(z in (LEGACY_MAP_DATUM).contact_levels)
 		set_security_level(GLOB.security_level ? get_security_level() : "green")
+	setDir(dir)
+
+/obj/machinery/firealarm/setDir(ndir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	switch(dir)
+		if(NORTH)
+			base_pixel_y = -21
+		if(SOUTH)
+			base_pixel_y = 21
+		if(WEST)
+			base_pixel_x = -21
+		if(EAST)
+			base_pixel_x = 21
+	reset_pixel_offsets()
 
 /obj/machinery/firealarm/update_icon()
 	cut_overlays()
-
-	pixel_x = 0
-	pixel_y = 0
-	if(dir == NORTH)
-		pixel_y = -21
-	else if(dir == SOUTH)
-		pixel_y = 21
-	else if(dir == WEST)
-		pixel_x = -21
-	else if(dir == EAST)
-		pixel_x = 21
-
-	add_overlay(image(icon, "casing"))
+	add_overlay("casing")
 
 	if(panel_open)
 		set_light(0)
 		return
 
 	if(machine_stat & BROKEN)
-		add_overlay(image(icon, "broken"))
+		add_overlay("broken")
 		set_light(0)
 	else if(machine_stat & NOPOWER)
 		set_light(0)
 		return
 	else
 		if(!detecting)
-			add_overlay(image(icon, "fire1"))
+			add_overlay("fire1")
 			set_light(l_range = 4, l_power = 0.9, l_color = "#ff0000")
 		else
-			add_overlay(image(icon, "fire0"))
+			add_overlay("fire0")
 			var/image/alarm_img
 			switch(seclevel)
 				if("green")

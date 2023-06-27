@@ -177,7 +177,7 @@
 	icon_state = icon_closed
 	opened = 0
 
-	playsound(loc, close_sound, 15, 1, -3)
+	playsound(src, close_sound, 15, 1, -3)
 	if(initial(density))
 		density = !density
 	return 1

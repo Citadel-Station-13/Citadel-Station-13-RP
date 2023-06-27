@@ -683,25 +683,25 @@
 		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
 		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
-/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST)
+/proc/place_window(mob/user, loc, dir_to_set, obj/item/stack/material/ST, var/fulltile = FALSE)
 	var/required_amount = (dir_to_set & (dir_to_set - 1)) ? 4 : 1
 	if (!ST.can_use(required_amount))
 		to_chat(user, SPAN_NOTICE("You do not have enough sheets."))
 		return
-	for(var/obj/structure/window/WINDOW in loc)
-		if(WINDOW.dir == dir_to_set)
+	for(var/obj/structure/window/W in loc)
+		if(W.dir == dir_to_set)
 			to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
 			return
-		if(WINDOW.check_fullwindow() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
+		if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1))) //two fulltile windows
 			to_chat(user, SPAN_NOTICE("There is already a window there."))
 			return
 	to_chat(user, SPAN_NOTICE("You start placing the window."))
 	if(do_after(user,20))
-		for(var/obj/structure/window/WINDOW in loc)
-			if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
+		for(var/obj/structure/window/W in loc)
+			if(W.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
 				to_chat(user, SPAN_NOTICE("There is already a window facing this way there."))
 				return
-			if(WINDOW.check_fullwindow() && (dir_to_set & (dir_to_set - 1)))
+			if(W.check_fullwindow() && (dir_to_set & (dir_to_set - 1)))
 				to_chat(user, SPAN_NOTICE("There is already a window there."))
 				return
 

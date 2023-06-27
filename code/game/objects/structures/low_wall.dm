@@ -1,4 +1,4 @@
-GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
+GLOBAL_LIST_INIT(wallframe_typecache, typecacheof(list(
 	/obj/structure/window/reinforced/tinted/full,
 	/obj/structure/window/reinforced/full,
 	/obj/structure/window/phoronreinforced/full,
@@ -9,7 +9,7 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	/obj/structure/grille,
 	/obj/machinery/smartfridge,
 	/turf/simulated/wall,
-	))
+	)))
 
 /obj/structure/wall_frame
 	name = "low wall"
@@ -71,6 +71,7 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	const_material = get_material_by_name(new_material)
 	if(!const_material)
 		qdel(src)
+		return
 	name = "[const_material.display_name] [initial(name)]"
 	max_health = round(const_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
 	health = max_health
@@ -91,8 +92,8 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 	smoothed_stripe.color = stripe_color || const_material.icon_colour
 	overlays += smoothed_stripe
 
-	if(!wallframe_typecache)
-		wallframe_typecache = typecacheof(list(/obj/machinery/door/airlock))
+	if(!GLOB.wallframe_typecache)
+		GLOB.wallframe_typecache = typecacheof(list(/obj/machinery/door/airlock))
 	var/neighbor_stripe = NONE
 	for(var/cardinal in GLOB.cardinal)
 		var/turf/step_turf = get_step(src, cardinal)
@@ -102,10 +103,10 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 		if(!can_area_smooth(step_turf))
 			continue
 		for(var/atom/movable/movable_thing as anything in step_turf)
-			if(wallframe_typecache[movable_thing.type])
+			if(GLOB.wallframe_typecache[movable_thing.type])
 				neighbor_stripe ^= cardinal
 				break
-		if(wallframe_typecache[step_turf.type])
+		if(GLOB.wallframe_typecache[step_turf.type])
 			neighbor_stripe ^= cardinal
 
 	if(neighbor_stripe)
@@ -144,6 +145,12 @@ GLOBAL_REAL_VAR(wallframe_typecache) = typecacheof(list(
 		if(istype(W,/obj/item/stack/material/glass))
 			var/obj/item/stack/material/ST = W
 			if(ST.material.opacity <= 0.7)
-				place_window(user, loc, SOUTHWEST, ST)
+				place_window(user, loc, SOUTHWEST, ST, TRUE)
 			return TRUE
+
+		if(W.is_wrench())
+			if(do_after(user,40 * W.tool_speed))
+				playsound(src, W.tool_sound, 100, 1)
+				new const_material.stack_type(get_turf(src), 2)
+				qdel(src)
 

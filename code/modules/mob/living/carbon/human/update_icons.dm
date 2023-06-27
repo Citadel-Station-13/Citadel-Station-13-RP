@@ -1206,10 +1206,3 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	ret.color = color
 	ret.appearance_flags = (PIXEL_SCALE) | flags
 	return ret
-
-/proc/emissive_overlay_image(icon,icon_state,color,flags)
-	var/image/ret = image(icon,icon_state)
-	ret.color = color
-	ret.appearance_flags = (PIXEL_SCALE) | flags
-	ret.plane = EMISSIVE_PLANE
-	return ret

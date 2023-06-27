@@ -77,10 +77,10 @@
 		icon_state = icon_base
 
 	if(is_secure)
-		overlays += image(icon, "[icon_base]-sidepanel")
+		add_overlay("[icon_base]-sidepanel")
 
 	if(panel_open)
-		overlays += image(icon, "[icon_base]-panel")
+		add_overlay("[icon_base]-panel")
 
 	var/image/I
 	var/is_off = ""
@@ -90,16 +90,15 @@
 	// Fridge contents
 	switch(length(contents))
 		if(0)
-			I = image(icon, "empty[is_off]")
+			add_overlay("empty[is_off]")
 		if(1 to 2)
-			I = image(icon, "[icon_contents]-1[is_off]")
+			add_overlay("[icon_contents]-1[is_off]")
 		if(3 to 5)
-			I = image(icon, "[icon_contents]-2[is_off]")
+			add_overlay("[icon_contents]-2[is_off]")
 		if(6 to 8)
-			I = image(icon, "[icon_contents]-3[is_off]")
+			add_overlay("[icon_contents]-3[is_off]")
 		else
-			I = image(icon, "[icon_contents]-4[is_off]")
-	overlays += I
+			add_overlay("[icon_contents]-4[is_off]")
 
 	// Fridge top
 	I = image(icon, "[icon_base]-top")

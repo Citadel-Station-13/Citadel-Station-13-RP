@@ -70,15 +70,15 @@
 		/obj/structure/closet/walllocker
 		)
 
-/obj/item/closet_painter/afterattack(atom/A, mob/user, clickchain_flags, list/params)
+/obj/item/closet_painter/afterattack(atom/target, mob/user, clickchain_flags, list/params)
 	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
 		return
 
 	var/non_closet = 0
-	if(!istype(A, /obj/structure/closet))
+	if(!istype(target, /obj/structure/closet))
 		non_closet = 1
 	for(var/ctype in forbidden_types)
-		if(istype(A, ctype))
+		if(istype(target, ctype))
 			non_closet = 1
 	if(non_closet)
 		to_chat(user, "<span class='warning'>\The [src] can only be used on closets.</span>")
@@ -86,8 +86,8 @@
 
 	var/config_error
 
-	if(istype(A,/obj/structure/closet/))
-		var/obj/structure/closet/F = A
+	if(istype(target,/obj/structure/closet/))
+		var/obj/structure/closet/F = target
 		if(!F.secure)
 			return
 		if(F.broken)
@@ -103,7 +103,7 @@
 			F.update_icon()
 
 	else
-		var/obj/structure/closet/F = A
+		var/obj/structure/closet/F = target
 		var/list/colour_data = colours[colour]
 		if(!islist(colour_data))
 			config_error = 1

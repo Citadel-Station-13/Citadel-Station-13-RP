@@ -2,7 +2,7 @@
  * generates damage overlays
  */
 
-GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
+GLOBAL_LIST_INIT(neighbor_typecache, typecacheof(list(
 	/obj/machinery/door/airlock,
 	/obj/machinery/door/firedoor,
 	/obj/machinery/door/blast,
@@ -15,9 +15,9 @@ GLOBAL_REAL_VAR(neighbor_typecache) = typecacheof(list(
 	/obj/structure/window/reinforced/polarized/full,
 	/obj/structure/wall_frame,
 	/obj/machinery/smartfridge,
-	))
+	)))
 
-GLOBAL_REAL_VAR(wall_overlays_cache) = list()
+GLOBAL_LIST_EMPTY(wall_overlays_cache)
 
 /turf/simulated/wall/proc/generate_wall_damage_overlays()
 	var/alpha_inc = 256 / damage_overlays.len
@@ -80,7 +80,7 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 		if(!can_area_smooth(step_turf))
 			continue
 		for(var/atom/movable/movable_thing as anything in step_turf)
-			if(global.neighbor_typecache[movable_thing.type])
+			if(GLOB.neighbor_typecache[movable_thing.type])
 				neighbor_stripe ^= cardinal
 				break
 
@@ -88,7 +88,7 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 	cache_key = "[icon]:[smoothing_junction]:[plating_color]:[stripe_icon]:[stripe_color]:[neighbor_stripe]:[shiny_wall]:[shiny_stripe]:[construction_stage]"
 	if(!(old_cache_key == cache_key))
 
-		var/potential_overlays = global.wall_overlays_cache[cache_key]
+		var/potential_overlays = GLOB.wall_overlays_cache[cache_key]
 		if(potential_overlays)
 			overlays = potential_overlays
 			color = plating_color
@@ -129,7 +129,7 @@ GLOBAL_REAL_VAR(wall_overlays_cache) = list()
 				new_overlays += decon_overlay
 */
 			overlays = new_overlays
-			global.wall_overlays_cache[cache_key] = new_overlays
+			GLOB.wall_overlays_cache[cache_key] = new_overlays
 
 	//And letting anything else that may want to render on the wall to work (ie components)
 	return ..()

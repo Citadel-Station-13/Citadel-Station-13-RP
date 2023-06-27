@@ -376,6 +376,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		name = "[area.name] APC"
 		machine_stat |= MAINT
 		src.update_icon()
+	setDir(dir)
 
 /obj/machinery/power/apc/Destroy()
 	GLOB.apcs -= src
@@ -510,21 +511,6 @@ GLOBAL_LIST_EMPTY(apcs)
 			channel_leds[POWERCHAN_ON_AUTO + 1] = overlay_image(icon,"apco[channel]",COLOR_BLUE)
 			channel++
 
-
-	if(update_state < 0)
-		pixel_x = 0
-		pixel_y = 0
-		var/turf/T = get_step(get_turf(src), dir)
-		if(istype(T) && T.density)
-			if(dir == SOUTH)
-				pixel_y = -22
-			else if(dir == NORTH)
-				pixel_y = 22
-			else if(dir == EAST)
-				pixel_x = 22
-			else if(dir == WEST)
-				pixel_x = -22
-
 	var/update = check_updates() 		//returns 0 if no need to update icons.
 						// 1 if we need to update the icon_state
 						// 2 if we need to update the overlays
@@ -584,6 +570,23 @@ GLOBAL_LIST_EMPTY(apcs)
 			set_light(l_range = 2, l_power = 0.5, l_color = color)
 		else
 			set_light(0)
+
+/obj/machinery/power/apc/setDir(new_dir)
+	. = ..()
+	base_pixel_x = 0
+	base_pixel_y = 0
+	var/turf/T = get_step(get_turf(src), dir)
+	if(istype(T) && T.density)
+		switch(dir)
+			if(SOUTH)
+				base_pixel_y = -22
+			if(NORTH)
+				base_pixel_y = 22
+			if(EAST)
+				base_pixel_x = 22
+			if(WEST)
+				base_pixel_x = -22
+	reset_pixel_offsets()
 
 
 /obj/machinery/power/apc/proc/check_updates()

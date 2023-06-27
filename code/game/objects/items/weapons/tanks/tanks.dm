@@ -458,6 +458,8 @@ var/list/global/tank_gauge_cache = list()
 		log_debug(SPAN_DEBUGWARNING("[x],[y] tank is rupturing: [pressure] kPa, integrity [integrity]"))
 		#endif
 
+		air_contents.react()
+
 		if(integrity <= 0)
 			var/turf/simulated/T = get_turf(src)
 			if(!T)
