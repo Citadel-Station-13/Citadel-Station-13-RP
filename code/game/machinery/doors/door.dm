@@ -74,6 +74,8 @@
 	update_icon()
 
 	update_nearby_tiles()
+	if(autoset_dir)
+		setDir(dir)
 
 /obj/machinery/door/Destroy()
 	density = FALSE

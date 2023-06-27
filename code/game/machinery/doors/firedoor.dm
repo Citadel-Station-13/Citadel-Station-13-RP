@@ -74,7 +74,6 @@
 		if(istype(A) && !(A in areas_added))
 			LAZYADD(A.all_doors, src)
 			areas_added += A
-	setDir(dir)
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/area/A in areas_added)
@@ -484,23 +483,24 @@
 			if(thing.type in airlock_typecache)
 				switch(cardinal)
 					if(EAST)
-						setDir(SOUTH)
+						dir = SOUTH
 					if(WEST)
-						setDir(SOUTH)
+						dir = SOUTH
 					if(NORTH)
-						setDir(WEST)
+						dir = WEST
 					if(SOUTH)
-						setDir(WEST)
+						dir = WEST
+			return
 		if (step_turf.density == TRUE)
 			switch(cardinal)
 				if(EAST)
-					setDir(SOUTH)
+					dir = SOUTH
 				if(WEST)
-					setDir(SOUTH)
+					dir = SOUTH
 				if(NORTH)
-					setDir(WEST)
+					dir = WEST
 				if(SOUTH)
-					setDir(WEST)
+					dir = WEST
 
 /obj/machinery/door/firedoor/border_only
 /*
