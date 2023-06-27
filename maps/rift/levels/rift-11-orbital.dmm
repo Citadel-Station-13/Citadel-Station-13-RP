@@ -864,6 +864,10 @@
 "cN" = (
 /turf/unsimulated/wall,
 /area/centcom/simulated/evac)
+"cP" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "cQ" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -1291,13 +1295,6 @@
 /obj/machinery/camera/network/crescent{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel,
-/area/centcom/simulated/evac)
-"en" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular/open,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eo" = (
@@ -2573,18 +2570,6 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
-"ii" = (
-/obj/machinery/light/flamp/noshade,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
-"ij" = (
-/obj/structure/flora/ausbushes/brflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
 "ik" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 8
@@ -2712,42 +2697,11 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
-"iM" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
-"iN" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
-"iO" = (
-/obj/structure/table/bench/wooden,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
-"iP" = (
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
-	},
-/area/centcom/simulated/evac)
 "iR" = (
 /obj/structure/statue/marble/venus{
 	anchored = 1;
 	dir = 8;
 	pixel_y = -5
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
-"iS" = (
-/obj/structure/memorial{
-	icon_state = "memorial-l"
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
@@ -2765,13 +2719,6 @@
 	},
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
-"iV" = (
-/obj/structure/table/bench/wooden,
-/obj/structure/flora/ausbushes/ywflowers,
-/turf/unsimulated/floor/steel{
-	icon_state = "grass"
 	},
 /area/centcom/simulated/evac)
 "iW" = (
@@ -4047,12 +3994,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
-"mt" = (
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
-/turf/unsimulated/floor/steel,
-/area/centcom/simulated/main_hall)
 "mu" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -5300,6 +5241,9 @@
 /obj/item/clothing/glasses/hud/health,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"pP" = (
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "pR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -6127,6 +6071,12 @@
 /obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/carpet/blue,
 /area/centcom/control)
+"sw" = (
+/obj/structure/memorial/small/right,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/simulated/evac)
 "sA" = (
 /obj/machinery/button/crematorium{
 	id = "creamtorium-cc";
@@ -6409,6 +6359,10 @@
 	},
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"wu" = (
+/obj/structure/table/bench/wooden,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "wA" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -7197,6 +7151,10 @@
 /obj/structure/table/bench/standard,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
+"zM" = (
+/obj/structure/flora/ausbushes/brflowers,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "zN" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/borderfloor{
@@ -7854,6 +7812,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/specops/general)
+"Dv" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/unsimulated/floor/steel,
+/area/centcom/simulated/main_hall)
 "Dx" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/toxin{
@@ -8671,6 +8635,13 @@
 /obj/item/gun/energy/sniperrifle,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"Ms" = (
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular/open,
+/turf/simulated/floor/tiled/steel,
+/area/centcom/simulated/evac)
 "Mu" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8791,14 +8762,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/command)
-"NZ" = (
-/obj/structure/memorial{
-	icon_state = "memorial-r"
-	},
-/turf/unsimulated/floor/steel{
-	icon_state = "asteroidfloor"
-	},
-/area/centcom/simulated/evac)
 "Oc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -9219,6 +9182,10 @@
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
+"SP" = (
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "SQ" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Power Management";
@@ -9634,6 +9601,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/centcom/specops/dock)
+"Xy" = (
+/obj/machinery/light/flamp/noshade,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "XF" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/autoinjectors,
@@ -9853,6 +9824,12 @@
 	},
 /turf/unsimulated/floor/wood,
 /area/centcom/specops)
+"Zf" = (
+/obj/structure/memorial/small/left,
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/simulated/evac)
 "Zg" = (
 /obj/structure/table/rack,
 /obj/item/clothing/glasses/night,
@@ -9946,6 +9923,11 @@
 /obj/item/gun/ballistic/automatic/sts35,
 /turf/unsimulated/floor/dark,
 /area/centcom/specops)
+"ZM" = (
+/obj/structure/table/bench/wooden,
+/obj/structure/flora/ausbushes/ywflowers,
+/turf/simulated/floor/grass,
+/area/centcom/simulated/evac)
 "ZN" = (
 /obj/machinery/vending/wallmed1{
 	layer = 3.3;
@@ -15251,9 +15233,9 @@ cN
 cN
 cN
 cN
-en
-en
-en
+Ms
+Ms
+Ms
 fC
 gk
 gG
@@ -15267,9 +15249,9 @@ fC
 fC
 ls
 aD
-mt
-mt
-mt
+Dv
+Dv
+Dv
 aD
 nx
 nx
@@ -19527,11 +19509,11 @@ gr
 gQ
 ft
 hy
-ii
-iM
-iM
-iM
-ii
+Xy
+SP
+SP
+SP
+Xy
 kX
 lx
 aP
@@ -19721,11 +19703,11 @@ ft
 ft
 ft
 hy
-ij
-iN
-iP
-iP
-ij
+zM
+cP
+pP
+pP
+zM
 kX
 aD
 aQ
@@ -19915,11 +19897,11 @@ hP
 hP
 cN
 hy
-ij
-iO
-iO
-iN
-ij
+zM
+wu
+wu
+cP
+zM
 kY
 lx
 aP
@@ -20109,11 +20091,11 @@ hP
 hP
 cN
 hy
-ij
-iP
-iN
-iP
-ij
+zM
+pP
+cP
+pP
+zM
 kY
 lx
 aP
@@ -20303,11 +20285,11 @@ hP
 hP
 cN
 hy
-ij
+zM
 iR
 iT
-iP
-ij
+pP
+zM
 kX
 aD
 aP
@@ -20497,11 +20479,11 @@ hP
 hP
 cN
 hy
-ij
-iS
+zM
+Zf
 iT
-iN
-ij
+cP
+zM
 kX
 ly
 aP
@@ -20691,11 +20673,11 @@ hP
 hP
 cN
 hy
-ij
-NZ
+zM
+sw
 iT
-iP
-ij
+pP
+zM
 kX
 lz
 aP
@@ -20885,11 +20867,11 @@ hP
 hP
 cN
 hy
-ij
+zM
 iU
 iT
-iP
-ij
+pP
+zM
 kX
 aD
 aQ
@@ -21079,11 +21061,11 @@ hP
 hP
 cN
 hy
-ij
-iP
-iP
-iN
-ij
+zM
+pP
+pP
+cP
+zM
 kY
 lx
 aP
@@ -21273,11 +21255,11 @@ hP
 hP
 cN
 hy
-ij
-iV
-iO
-iP
-ij
+zM
+ZM
+wu
+pP
+zM
 kY
 lx
 aP
@@ -21467,11 +21449,11 @@ hP
 hP
 cN
 hy
-ij
-iP
-iP
-iN
-ij
+zM
+pP
+pP
+cP
+zM
 kX
 aD
 aP
@@ -21661,11 +21643,11 @@ hP
 hP
 cN
 hy
-ii
-iM
-iM
-iM
-ii
+Xy
+SP
+SP
+SP
+Xy
 kX
 lx
 aP

@@ -14161,6 +14161,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
+"iBR" = (
+/obj/machinery/status_display,
+/turf/simulated/wall/r_wall/prepainted,
+/area/rift/stairwell/primary/surfacetwo)
 "iBU" = (
 /obj/structure/table/steel,
 /obj/item/paper_bin,
@@ -21563,7 +21567,7 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	dir = 4;
+	dir = 8;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -54483,7 +54487,7 @@ rab
 rab
 rab
 aOQ
-rab
+iBR
 egW
 mJn
 mCk
@@ -55647,7 +55651,7 @@ dxZ
 dxZ
 jfz
 bEq
-wNK
+dxZ
 hHE
 hTe
 nvR

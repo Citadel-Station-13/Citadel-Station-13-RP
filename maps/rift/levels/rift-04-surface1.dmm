@@ -25510,6 +25510,18 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/psych)
+"pGE" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/alarm{
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled,
+/area/rnd/outpost/xenobiology/outpost_main)
 "pHc" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment{
@@ -38312,11 +38324,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_x = 30;
-	pixel_y = -22
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "xsL" = (
@@ -45789,7 +45796,7 @@ vOK
 vwg
 foq
 mDS
-nNF
+pGE
 hpa
 sVi
 diG

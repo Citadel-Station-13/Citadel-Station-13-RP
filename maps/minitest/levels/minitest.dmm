@@ -740,20 +740,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
-"bI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/glass/engineering,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
-"bJ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/glass/engineering,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "bK" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -2996,15 +2982,6 @@
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/webdemo)
-"hx" = (
-/obj/machinery/computer/shuttle_control/web{
-	dir = 2;
-	my_doors = list("webdemo_docker_hatch" = "Hatch");
-	name = "Web-Demo Console";
-	shuttle_tag = "Web-Demo"
-	},
-/turf/simulated/shuttle/floor,
-/area/shuttle/webdemo)
 "hy" = (
 /obj/machinery/light{
 	dir = 4;
@@ -3045,6 +3022,10 @@
 /turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/overmapdemo)
+"hH" = (
+/obj/landmark/spawnpoint/overflow/station,
+/turf/simulated/floor/tiled,
+/area/bridge)
 "kU" = (
 /obj/structure/shuttle,
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -3095,6 +3076,15 @@
 /obj/overmap/entity/visitable/sector/citadel_minitest/station,
 /turf/space,
 /area/space)
+"LJ" = (
+/obj/machinery/computer/shuttle_control/web{
+	dir = 2;
+	my_doors = list("webdemo_docker_hatch"="Hatch");
+	name = "Web-Demo Console";
+	shuttle_tag = "Web-Demo"
+	},
+/turf/simulated/shuttle/floor,
+/area/shuttle/webdemo)
 "ML" = (
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
 	id_tag = "station_dock2";
@@ -3115,11 +3105,25 @@
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/overmapdemo)
+"Og" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/glass/engineering,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "Pg" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/space,
 /turf/simulated/shuttle/plating/carry,
 /area/shuttle/multidemo)
+"RZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/airlock/glass/engineering,
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "SN" = (
 /obj/machinery/door/airlock/external{
 	frequency = 1379;
@@ -5164,7 +5168,7 @@ gz
 gf
 gf
 gN
-hx
+LJ
 hz
 ht
 gN
@@ -5261,7 +5265,7 @@ gj
 gf
 gr
 gf
-gf
+hH
 gz
 gf
 gf
@@ -5363,7 +5367,7 @@ gk
 gf
 gr
 gf
-gf
+gB
 gf
 gf
 gf
@@ -6846,7 +6850,7 @@ aB
 at
 bs
 by
-bI
+RZ
 bN
 cb
 ch
@@ -6948,7 +6952,7 @@ aB
 aZ
 bs
 bz
-bJ
+Og
 bO
 cc
 ci
