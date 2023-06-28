@@ -175,7 +175,7 @@
 					return suit.cell
 	return null
 
-/obj/item/gun/energy/examine(mob/user)
+/obj/item/gun/energy/examine(mob/user, dist)
 	. = ..()
 	if(power_supply)
 		if(charge_cost)

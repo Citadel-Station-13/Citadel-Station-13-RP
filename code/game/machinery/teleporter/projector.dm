@@ -291,6 +291,6 @@
 			var/obj/machinery/power/apc/P = get_area(src).get_apc()
 			P.overload_lighting(100)
 			for(var/obj/machinery/power/grid_checker/G in GLOB.machines)
-				if(G.z in GLOB.using_map.station_levels)
+				if(G.z in (LEGACY_MAP_DATUM))
 					G.power_failure(FALSE)
 

@@ -25,6 +25,13 @@
  * boots statpanel up during connect
  */
 /client/proc/statpanel_boot()
+	set waitfor = FALSE
+	statpanel_boot_impl()
+
+/client/proc/statpanel_boot_impl()
+	PRIVATE_PROC(TRUE)
+	// give client a second to load
+	sleep(2 SECONDS)
 	// loads statbrowser if it isn't there
 	src << browse(file('html/statbrowser.html'), "window=statbrowser")
 	// if it is there and we can't tell because byond is byond, send it a signal to reload

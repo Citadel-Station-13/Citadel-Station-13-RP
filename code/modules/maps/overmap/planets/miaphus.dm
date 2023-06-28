@@ -1,6 +1,6 @@
 // -- Datums -- //
 
-/obj/effect/overmap/visitable/sector/miaphus
+/obj/overmap/entity/visitable/sector/miaphus
 	name = "Miaphus'irra"
 	desc = "A former Tajaran penal colony turned NT client state."
 	scanner_desc = @{"[i]Stellar Body[/i]: Miaphus'irra

@@ -16,7 +16,7 @@ GLOBAL_LIST_BOILERPLATE(all_mopbuckets, /obj/structure/mopbucket)
 	. = ..()
 	create_reagents(300)
 
-/obj/structure/mopbucket/examine(mob/user)
+/obj/structure/mopbucket/examine(mob/user, dist)
 	. = ..()
 	. += "[src] [icon2html(thing = src, target = user)] contains [reagents.total_volume] unit\s of water!"
 

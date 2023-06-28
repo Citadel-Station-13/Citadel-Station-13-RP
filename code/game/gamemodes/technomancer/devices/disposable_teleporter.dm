@@ -22,7 +22,7 @@
 	one has been provided to allow you to leave your hideout."
 	uses = 1
 
-/obj/item/disposable_teleporter/examine(mob/user)
+/obj/item/disposable_teleporter/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There are [uses] uses remaining.</span>"
 

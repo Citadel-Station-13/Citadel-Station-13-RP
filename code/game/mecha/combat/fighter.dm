@@ -64,10 +64,10 @@
 //We don't get lost quite as easy.
 /obj/mecha/combat/fighter/touch_map_edge()
 	//No overmap enabled or no driver to choose
-	if(!GLOB.using_map.use_overmap || !occupant || !can_ztravel())
+	if(!(LEGACY_MAP_DATUM).use_overmap || !occupant || !can_ztravel())
 		return ..()
 
-	var/obj/effect/overmap/visitable/our_ship = get_overmap_sector(z)
+	var/obj/overmap/entity/visitable/our_ship = get_overmap_sector(z)
 
 	//We're not on the overmap
 	if(!our_ship)
@@ -106,7 +106,7 @@
 		new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
 
 	var/list/choices = list()
-	for(var/obj/effect/overmap/visitable/V in range(1, our_ship))
+	for(var/obj/overmap/entity/visitable/V in range(1, our_ship))
 		choices[V.name] = V
 
 	var/choice = input("Choose an overmap destination:", "Destination", null) as null|anything in choices
@@ -116,7 +116,7 @@
 		setDir(backwards)
 		return
 	else
-		var/obj/effect/overmap/visitable/V = choices[choice]
+		var/obj/overmap/entity/visitable/V = choices[choice]
 		if(occupant != this_occupant || this_x != x || this_y != y || this_z != z || get_dist(V,our_ship) > 1) //Sanity after user input
 			to_chat(occupant, "<span class='warning'>You or they appear to have moved!</span>")
 			return

@@ -84,7 +84,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(temp_vent.network && ((temp_vent.loc.z in GLOB.using_map.station_levels) || isTalon == 1))
+			if(temp_vent.network && ((temp_vent.loc.z in (LEGACY_MAP_DATUM).station_levels) || isTalon == 1))
 				vents += temp_vent
 
 	if(piratestring == "human")
@@ -142,7 +142,7 @@
 
 // Overmap version
 /datum/event/pirate/overmap/announce()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon))
 		if(piratestring == "human")
 			command_announcement.Announce("Attention, Crew of the ITV Talon, thanks for delivering your ship to us suckers!", "Incoming Transmission")
 		if (piratestring == "vox")
@@ -158,9 +158,9 @@
 			command_announcement.Announce("Attention [station_name()], a tiny teleportation matrix has been detected on the nearby vessel. Prepare Crew to repell small boarders.", "Boarding Alert", new_sound = sound('sound/effects/siren.ogg', volume=25))
 
 /datum/event/pirate/overmap/start()		// override - cancel if not main ship since it doesn't properly target the actual triggering ship
-	if(istype(victim, /obj/effect/overmap/visitable/ship/landable))
+	if(istype(victim, /obj/overmap/entity/visitable/ship/landable))
 		kill()
-	if(istype(victim, /obj/effect/overmap/visitable/ship/talon)) //Forces the location to be the Talon.
+	if(istype(victim, /obj/overmap/entity/visitable/ship/talon)) //Forces the location to be the Talon.
 		isTalon = 1
 		location = 5
 	return ..()

@@ -29,7 +29,7 @@
 		return
 	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
 
-/obj/structure/gravemarker/examine(mob/user)
+/obj/structure/gravemarker/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)

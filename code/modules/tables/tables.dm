@@ -103,7 +103,7 @@ var/list/table_icon_cache = list()
 	update_connections(TRUE) // Update tables around us to ignore us (material=null forces no connections)
 	. = ..()
 
-/obj/structure/table/examine(mob/user)
+/obj/structure/table/examine(mob/user, dist)
 	. = ..()
 	if(health < maxhealth)
 		switch(health / maxhealth)

@@ -1,7 +1,7 @@
 /datum/gear/cosmetic
 	name = "Purple Comb"
 	path = /obj/item/haircomb
-	sort_category = "Cosmetics"
+	sort_category = LOADOUT_CATEGORY_COSMETICS
 
 /datum/gear/cosmetic/lipstick
 	name = "Lipstick - Red"

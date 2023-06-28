@@ -25,7 +25,7 @@
 	victim = null
 	. = ..()
 
-/obj/machinery/vitals_monitor/examine(mob/user)
+/obj/machinery/vitals_monitor/examine(mob/user, dist)
 	. = ..()
 	if(victim)
 		if(machine_stat & NOPOWER)

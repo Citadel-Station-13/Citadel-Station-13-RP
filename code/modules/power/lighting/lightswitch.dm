@@ -67,7 +67,7 @@
 	if(y_offset)
 		pixel_y = (dir & 3) ? (dir == NORTH ? -y_offset : y_offset) : 0
 
-/obj/structure/construction/examine(mob/user)
+/obj/structure/construction/examine(mob/user, dist)
 	. = ..()
 	switch(stage)
 		if(FRAME_UNFASTENED)

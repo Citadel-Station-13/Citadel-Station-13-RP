@@ -29,7 +29,7 @@
 	template = null // without this, capsules would be one use. per round.
 	. = ..()
 
-/obj/item/survivalcapsule/examine(mob/user)
+/obj/item/survivalcapsule/examine(mob/user, dist)
 	. = ..()
 	get_template()
 	. += "This capsule has the [template.name] stored."

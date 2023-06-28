@@ -143,7 +143,7 @@ GLOBAL_LIST_BOILERPLATE(pointdefense_turrets, /obj/machinery/power/pointdefense)
 	I.appearance_flags |= RESET_TRANSFORM
 	underlays += I
 
-/obj/machinery/power/pointdefense/examine(mob/user)
+/obj/machinery/power/pointdefense/examine(mob/user, dist)
 	. = ..()
 	if(powernet)
 		. += "It is connected to a power cable below."

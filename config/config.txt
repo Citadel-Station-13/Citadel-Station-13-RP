@@ -1,60 +1,16 @@
 # You can use the "$include" directive to split your configs however you want
 
-#$include dbconfig.txt
-#$include comms.txt
-#$include antag_rep.txt
-$include resources.txt
-$include logging.txt
-$include entries/dbconfig.txt
-$include entries/fail2topic.txt
-$include entries/game_options.txt
+$include entries/admin.txt
+$include entries/chat_bridge.txt
+$include entries/cross_server.txt
+$include entries/database.txt
+$include entries/game.txt
+$include entries/general.txt
+$include entries/health.txt
 $include entries/lobby.txt
+$include entries/logging.txt
+$include entries/photography.txt
+$include entries/resources.txt
+$include entries/security.txt
+$include entries/skills.txt
 $include entries/urls.txt
-$include entries/hub.txt
-
-
-# You can use the @ character at the beginning of a config option to lock it from being edited in-game
-# Example usage:
-# @SERVERNAME CitadelRP
-# Which sets the SERVERNAME, and disallows admins from being able to change it using View Variables.
-# @LOG_TWITTER 0
-# Which explicitly disables LOG_TWITTER, as well as locking it.
-# There are various options which are hard-locked for security reasons.
-
-## Uncomment to set the number of /world/Reboot()s before the DreamDaemon restarts itself. 0 means restart every round. Requires tgstation server tools.
-#ROUNDS_UNTIL_HARD_RESTART 5
-
-## Uncomment to enable minimap generation
-MINIMAPS_ENABLED
-
-## System command that invokes youtube-dl, used by Play Internet Sound.
-## You can install youtube-dl with
-## "pip install youtube-dl" if you have pip installed
-## from https://github.com/rg3/youtube-dl/releases
-## or your package manager
-## The default value assumes youtube-dl is in your system PATH
-# INVOKE_YOUTUBEDL youtube-dl
-
-## CLIENT VERSION CONTROL
-## This allows you to configure the minimum required client version, as well as a warning version, and message for both.
-## These trigger for any version below (non-inclusive) the given version, so 510 triggers on 509 or lower.
-## These messages will be followed by one stating the clients current version and the required version for clarity.
-## If CLIENT_WARN_POPUP is uncommented a popup window with the message will be displayed instead
-#CLIENT_WARN_VERSION 511
-#CLIENT_WARN_POPUP
-#CLIENT_WARN_MESSAGE Byond released 511 as the stable release. You can set the framerate your client runs at, which makes the game feel very different and cool. Shortly after its release we will end up using 511 client features and you will be forced to update.
-CLIENT_ERROR_VERSION 511
-CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
-## The minimum build needed for joining the server, if using 512, a good minimum build would be 1421 as that disables the Middle Mouse Button exploit.
-CLIENT_ERROR_BUILD 1421
-
-## Assets can opt-in to caching their results into `tmp`.
-## This is important, as preferences assets take upwards of 30 seconds (without sleeps) to collect.
-## The cache is assumed to be cleared by TGS recompiling, which deletes `tmp`.
-## This should be disabled (through `CACHE_ASSETS 0`) on development,
-## but enabled on production (the default).
-CACHE_ASSETS 0
-
-## Comment to disable sending a toast notification on the host server when initializations complete.
-## Even if this is enabled, a notification will only be sent if there are no clients connected.
-TOAST_NOTIFICATION_ON_INIT

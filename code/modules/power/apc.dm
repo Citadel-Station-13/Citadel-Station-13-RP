@@ -257,7 +257,7 @@ GLOBAL_LIST_EMPTY(apcs)
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
-/obj/machinery/power/apc/examine(mob/user)
+/obj/machinery/power/apc/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user))
 		if(machine_stat & BROKEN)

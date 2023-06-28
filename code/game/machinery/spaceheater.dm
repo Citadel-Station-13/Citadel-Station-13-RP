@@ -28,7 +28,7 @@
 	else
 		set_light(0)
 
-/obj/machinery/space_heater/examine(mob/user)
+/obj/machinery/space_heater/examine(mob/user, dist)
 	. = ..()
 	. += "The heater is [on ? "on" : "off"] and the hatch is [panel_open ? "open" : "closed"]."
 	if(panel_open)
@@ -200,7 +200,7 @@
 	var/target_temp = T20C
 	var/mode = MODE_IDLE
 
-/obj/machinery/power/thermoregulator/examine(mob/user)
+/obj/machinery/power/thermoregulator/examine(mob/user, dist)
 	. = ..()
 	. += "<span class = 'notice'>There is a small display that reads [target_temp]K.</span>"
 

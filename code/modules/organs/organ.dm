@@ -87,22 +87,11 @@
 		owner = loc
 		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
 		if(internal)
-			if(!LAZYLEN(owner.internal_organs))
-				owner.internal_organs = list()
-			if(!LAZYLEN(owner.internal_organs_by_name))
-				owner.internal_organs_by_name = list()
-
-			owner.internal_organs |= src
-			owner.internal_organs_by_name[organ_tag] = src
-
+			LAZYDISTINCTADD(owner.internal_organs, src)
+			LAZYSET(owner.internal_organs_by_name, organ_tag, src)
 		else
-			if(!LAZYLEN(owner.organs))
-				owner.organs = list()
-			if(!LAZYLEN(owner.organs_by_name))
-				owner.organs_by_name = list()
-
-			owner.organs |= src
-			owner.organs_by_name[organ_tag] = src
+			LAZYDISTINCTADD(owner.organs, src)
+			LAZYSET(owner.organs_by_name, organ_tag, src)
 
 	if(!max_damage)
 		max_damage = min_broken_damage * 2
@@ -263,7 +252,7 @@
 /obj/item/organ/proc/adjust_germ_level(var/amount)		// Unless you're setting germ level directly to 0, use this proc instead
 	germ_level = clamp(germ_level + amount, 0, INFECTION_LEVEL_MAX)
 
-/obj/item/organ/examine(mob/user)
+/obj/item/organ/examine(mob/user, dist)
 	. = ..()
 	if(status & ORGAN_DEAD)
 		. += "<span class='notice'>The decay has set in.</span>"

@@ -102,6 +102,9 @@
 	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
+		// todo: something is double initing reserve area god damnit...
+		// if(GLOB.areas_by_type[type])
+		// 	STACK_TRACE("duplicated unique area, someone fucked up")
 		GLOB.areas_by_type[type] = src
 
 	uid = ++global_uid
@@ -220,11 +223,12 @@
 	A.contents.Add(T)
 	if(old_area)
 		// Handle dynamic lighting update if
-		if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
-			if(A.dynamic_lighting)
-				T.lighting_build_overlay()
-			else
-				T.lighting_clear_overlay()
+		if(SSlighting.initialized)
+			if(T.dynamic_lighting && old_area.dynamic_lighting != A.dynamic_lighting)
+				if(A.dynamic_lighting)
+					T.lighting_build_overlay()
+				else
+					T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
 
@@ -564,7 +568,7 @@ var/list/teleportlocs = list()
 			continue
 		var/station = FALSE
 		for(var/turf/T in AR.contents)
-			if(T.z in GLOB.using_map.station_levels)
+			if(T.z in (LEGACY_MAP_DATUM).station_levels)
 				station = TRUE
 				break
 			else
@@ -585,7 +589,7 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in GLOB.using_map.player_levels)
+		if (picked.z in (LEGACY_MAP_DATUM).player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 

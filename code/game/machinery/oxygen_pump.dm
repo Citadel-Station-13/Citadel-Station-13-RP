@@ -148,7 +148,7 @@
 	if(istype(W, /obj/item/tank) && !machine_stat)
 		to_chat(user, SPAN_WARNING("Please open the maintenance hatch first."))
 
-/obj/machinery/oxygen_pump/examine(mob/user)
+/obj/machinery/oxygen_pump/examine(mob/user, dist)
 	. = ..()
 	if(tank)
 		. += SPAN_NOTICE("The meter shows [round(tank.air_contents.return_pressure())] kPa.")

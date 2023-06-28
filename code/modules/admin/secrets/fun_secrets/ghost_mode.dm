@@ -30,7 +30,7 @@
 					step_rand(W)
 
 			var/area/A = get_area(M)
-			if(A.area_power_override == null && A.power_light && (A.z in GLOB.using_map.player_levels))
+			if(A.area_power_override == null && A.power_light && (A.z in (LEGACY_MAP_DATUM).player_levels))
 				affected_areas |= get_area(M)
 
 	affected_mobs |= user

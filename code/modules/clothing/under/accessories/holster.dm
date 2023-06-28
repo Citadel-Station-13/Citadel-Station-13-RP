@@ -80,7 +80,7 @@
 		holstered.emp_act(severity)
 	..()
 
-/obj/item/clothing/accessory/holster/examine(mob/user)
+/obj/item/clothing/accessory/holster/examine(mob/user, dist)
 	. = ..()
 	if (holstered)
 		. += "A [holstered] is holstered here."
@@ -94,7 +94,7 @@
 
 /obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
 	if(accessory_host)
-		remove_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
+		remove_obj_verb(accessory_host, /obj/item/clothing/accessory/holster/verb/holster_verb)
 	..()
 
 //For the holster hotkey

@@ -193,7 +193,7 @@
 	else
 		return ..()
 
-/obj/vehicle_old/train/engine/examine(mob/user)
+/obj/vehicle_old/train/engine/examine(mob/user, dist)
 	. = ..()
 	. += "The power light is [on ? "on" : "off"].\nThere are[key ? "" : " no"] keys in the ignition."
 	. += "The charge meter reads [cell? round(cell.percent(), 0.01) : 0]%"

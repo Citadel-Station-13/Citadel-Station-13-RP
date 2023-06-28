@@ -50,8 +50,6 @@
 /datum/perspective
 	/// eye - where visual calcs go from
 	var/atom/movable/eye
-	/// virtual eye - the center of the map display
-	var/atom/movable/virtual_eye
 	/// client perspective var
 	var/perspective = EYE_PERSPECTIVE
 	/// images
@@ -132,7 +130,6 @@
 	screens = null
 	clients = null
 	set_eye(null)
-	virtual_eye = null
 	return ..()
 
 /// ONLY CALL FROM CLIENT.SET_PERSPECTIVE
@@ -708,7 +705,7 @@
 
 /datum/perspective/self/temporary/remove_mobs(mob/M, switching)
 	. = ..()
-	if(!mobs.len)
+	if(!length(mobs))
 		qdel(src)
 
 /**
