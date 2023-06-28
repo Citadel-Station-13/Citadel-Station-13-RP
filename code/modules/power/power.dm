@@ -46,6 +46,9 @@
 	. = ..()
 	auto_connect()
 
+/obj/machinery/power/proc/is_connected()
+	return connection.is_connected()
+
 /obj/machinery/power/proc/supply(amount)
 	connection.network?.supply(amount)
 
@@ -58,6 +61,9 @@
 	if(isnull(connection.network))
 		return 0
 	return connection.network.dynamic_draw(amount, tier)
+
+/obj/machinery/power/proc/directly_connected_hosts()
+	return isnull(connection.network)? lists() : connection.network.get_hosts()
 
 ///////////////////////////////
 // General procedures

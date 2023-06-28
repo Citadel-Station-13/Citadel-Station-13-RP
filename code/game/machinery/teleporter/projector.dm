@@ -18,7 +18,7 @@
 	circuit = /obj/item/circuitboard/tele_projector
 
 	var/obj/machinery/tele_pad/pad
-	var/obj/machinery/power/terminal
+	var/obj/machinery/power/terminal/terminal
 	var/engaged = FALSE
 	var/building_terminal = FALSE 		//Suggestions about how to avoid clickspam building several terminals accepted!
 	var/power_capacity = 0
@@ -69,7 +69,7 @@
 		for(var/obj/machinery/power/terminal/term in T)
 			if(term && term.dir == turn(d, 180))
 				terminal = term
-				terminal.bind(src)
+				term.bind(src)
 				break
 
 /obj/machinery/tele_projector/update_icon()
@@ -282,7 +282,7 @@
 			var/obj/machinery/power/apc/P = get_area(src).get_apc()
 			P.energy_fail(rand(30,90))
 			P.overload_lighting(35)
-			for(var/obj/machinery/power/apc/A in P.terminal?.powernet?.nodes)
+			for(var/obj/machinery/power/apc/A in P.terminal.directly_connected_hosts())
 				P.overload(src)
 		if(3)
 			visible_message(SPAN_WARNING("The local APC overloads as massive current spike is sent into the powernet as the teleporter punches a hole through space-time; moments later, the station is eerily quiet."),range=10)

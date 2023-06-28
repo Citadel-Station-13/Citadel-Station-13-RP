@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
+	owned_core.supply(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)

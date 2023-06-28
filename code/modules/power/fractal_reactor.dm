@@ -19,11 +19,8 @@
 /obj/machinery/power/fractal_reactor/Initialize(mapload, newdir)
 	. = ..()
 	if(!mapped_in)
-		to_chat(world, "<b><font color='red'>WARNING:</font><font color='black'> Map testing power source activated at: X:[src.loc.x] Y:[src.loc.y] Z:[src.loc.z]</font></b>")
+		var/turf/T = get_turf(src)
+		message_admins(SPAN_BOLDANNOUNCE("Map testing power source activated at: [COORD(T)]"))
 
 /obj/machinery/power/fractal_reactor/process(delta_time)
-	if(!powernet && !powernet_connection_failed)
-		if(!connect_to_network())
-			powernet_connection_failed = 1
-			addtimer(VARSET_CALLBACK(src, powernet_connection_failed, FALSE), 15 SECONDS)
-	add_avail(power_generation_rate)
+	supply(power_generation_rate)

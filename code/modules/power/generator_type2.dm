@@ -77,7 +77,7 @@
 			if(input2.network)
 				input2.network.update = 1
 
-			add_avail(lastgen * 0.001)
+			supply(lastgen * 0.001)
 	// update icon overlays only if displayed level has changed
 
 	var/genlev = max(0, min( round(11*lastgen / 100000), 11))

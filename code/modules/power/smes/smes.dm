@@ -74,8 +74,6 @@ GLOBAL_LIST_EMPTY(smeses)
 
 /obj/machinery/power/smes/LateInitialize()
 	. = ..()
-	if(!powernet)
-		connect_to_network()
 
 	dir_loop:
 		for(var/d in GLOB.cardinal)
@@ -87,9 +85,7 @@ GLOBAL_LIST_EMPTY(smeses)
 	if(!terminal)
 		machine_stat |= BROKEN
 		return
-	terminal.master = src
-	if(!terminal.powernet)
-		terminal.connect_to_network()
+	terminal.bind(src)
 	update_icon()
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
@@ -232,10 +228,11 @@ GLOBAL_LIST_EMPTY(smeses)
 		return 0
 	return 1
 
-/obj/machinery/power/smes/draw_power(var/amount)
-	if(terminal && terminal.powernet)
-		return terminal.powernet.draw_power(amount)
-	return 0
+/obj/machinery/power/smes/flat_draw(amount)
+	return terminal.flat_draw(amount)
+
+/obj/machinery/power/smes/dynamic_draw(amount, tier)
+	return terminal.dynamic_draw(amount, tier)
 
 /obj/machinery/power/smes/attack_ai(mob/user)
 	add_hiddenprint(user)
@@ -376,59 +373,6 @@ GLOBAL_LIST_EMPTY(smeses)
 				. = TRUE
 			if(.)
 				output_level = clamp(target, 0, output_level_max)
-
-/*
-/obj/machinery/power/smes/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if(machine_stat & BROKEN)
-		return
-
-	// this is the data which will be sent to the ui
-	var/data[0]
-	data["nameTag"] = name_tag
-	data["storedCapacity"] = round(100.0*charge/capacity, 0.1)
-	data["storedCapacityAbs"] = round(charge/(1000*60), 0.1)
-	data["storedCapacityMax"] = round(capacity/(1000*60))
-	data["charging"] = inputting
-	data["chargeMode"] = input_attempt
-	data["chargeLevel"] = round(input_level/1000, 0.1)
-	data["chargeMax"] = round(input_level_max/1000)
-	if (terminal && terminal.powernet)
-		data["chargeLoad"] = round(terminal.powernet.avail/1000, 0.1)
-	else
-		data["chargeLoad"] = 0
-	data["outputOnline"] = output_attempt
-	data["outputLevel"] = round(output_level/1000, 0.1)
-	data["outputMax"] = round(output_level_max/1000)
-	data["outputLoad"] = round(output_used/1000, 0.1)
-
-	if(outputting)
-		data["outputting"] = 2			// smes is outputting
-	else if(!outputting && output_attempt)
-		data["outputting"] = 1			// smes is online but not outputting because it's charge level is too low
-	else
-		data["outputting"] = 0			// smes is not outputting
-
-	// update the ui if it exists, returns null if no ui is passed/found
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		// the ui does not exist, so we'll create a new() one
-        // for a list of parameters and their descriptions see the code docs in \code\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "smes.tmpl", "SMES Unit", 540, 380)
-		// when the ui is first opened this is the data it will use
-		ui.set_initial_data(data)
-		// open the new ui window
-		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
-
-/obj/machinery/power/smes/buildable/main/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
-	if (!ui)
-		ui = new(user, src, ui_key, "smesmain.tmpl", "SMES Unit", 540, 405)
-		ui.set_auto_update(1)
-	..()
-*/
 
 /**
  * returns available terminal power in watts

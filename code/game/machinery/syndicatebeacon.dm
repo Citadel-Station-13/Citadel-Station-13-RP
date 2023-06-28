@@ -148,7 +148,7 @@
 		return PROCESS_KILL
 	else
 		// 1.5 kw
-		if(draw_power(1.5) < 1.5)
+		if(flat_draw(1.5) < 1.5)
 			Deactivate()
 
 /obj/machinery/power/singularity_beacon/syndicate

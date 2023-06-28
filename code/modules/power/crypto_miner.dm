@@ -42,7 +42,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
 
 
 /obj/machinery/power/crypto_miner/process(delta_time)
-    if(!powernet || !power_level || !anchored)
+    if(!is_connected() || !power_level || !anchored)
         return
 
     if(temperature_damage >= 100)//Once the circuit is fried, turn off
@@ -53,7 +53,7 @@ GLOBAL_VAR_INIT(power_per_point, 1000 KILOWATTS)
         temperature_damage++
         src.visible_message(SPAN_NOTICE("[src] beeps as it is unable to work in this atmosphere."))
 
-    var/new_power_drawn = draw_power(power_level * 0.001) * 1000
+    var/new_power_drawn = flat_draw(power_level * 0.001) * 1000
     power_drawn += new_power_drawn
     heat_environ(new_power_drawn)//Converts the used power into heat, will probably overheat the room fairly quick.
     process_thermal_properties()//calculates damage and efficency

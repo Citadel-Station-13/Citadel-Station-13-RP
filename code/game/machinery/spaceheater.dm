@@ -270,7 +270,7 @@
 		change_mode(MODE_IDLE)
 	else if(heat_transfer > 0)
 		change_mode(MODE_HEATING)
-		power_avail = draw_power(min(heat_transfer, active_power_usage) * 0.001) * 1000
+		power_avail = flat_draw(min(heat_transfer, active_power_usage) * 0.001) * 1000
 		removed.adjust_thermal_energy(min(power_avail * THERMOREGULATOR_CHEAT_FACTOR, heat_transfer))
 	else
 		change_mode(MODE_COOLING)
@@ -278,7 +278,7 @@
 		var/cop = removed.temperature / TN60C
 		var/actual_heat_transfer = heat_transfer
 		heat_transfer = min(heat_transfer, active_power_usage * cop)
-		power_avail = draw_power((heat_transfer/cop) * 0.001) * 1000
+		power_avail = flat_draw((heat_transfer/cop) * 0.001) * 1000
 		removed.adjust_thermal_energy(-min(power_avail * THERMOREGULATOR_CHEAT_FACTOR * cop, actual_heat_transfer))
 	env.merge(removed)
 
