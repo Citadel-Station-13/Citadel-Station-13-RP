@@ -14,6 +14,9 @@
 	. = src.network
 	src.network = null
 
+/datum/wirenet_connection/power/is_connected()
+	return !isnull(network)
+
 /datum/wirenet_connection/power/proc/flat_draw(kw)
 	return network.flat_draw(kw)
 

@@ -621,7 +621,7 @@ var/list/ghostteleportlocs = list()
 /area/proc/use_burst_power(amount, channel, allow_partial, over_time)
 	if(!powered(channel))
 		return 0
-	if(area_power_infinite)
+	if(area_power_infinite || (area_power_override == TRUE))
 		return amount
 	return isnull(apc)? 0 : apc.draw_burst_power(amount, channel, allow_partial, over_time)
 

@@ -92,6 +92,9 @@
 /datum/wirenet_connection/proc/auto_move(atom/movable/host)
 	return auto_to_turf(get_turf(host))
 
+/datum/wirenet_connection/proc/is_connected()
+	return FALSE
+
 /**
  * called when we're connected to a wirenet datum
  * *not* the physical joint, but an actual wirenet network datum.

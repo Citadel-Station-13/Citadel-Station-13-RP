@@ -123,23 +123,9 @@
 				if(C.d1 == turn(direction, 180) || C.d2 == turn(direction, 180))
 					connection_dirs += direction
 					break
-
 		for(var/direction in connection_dirs)
-			var/obj/structure/cable/C = new/obj/structure/cable(src.loc)
-			C.d1 = 0
-			C.d2 = direction
-			C.icon_state = "[C.d1]-[C.d2]"
+			var/obj/structure/cable/C = new/obj/structure/cable(loc, null, 0, direction)
 			C.breaker_box = src
-
-			var/datum/powernet/PN = new()
-			PN.add_cable(C)
-
-			C.mergeConnectedNetworks(C.d2)
-			C.mergeConnectedNetworksOnTurf()
-
-			if(C.d2 & (C.d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-				C.mergeDiagonalsNetworks(C.d2)
-
 	else
 		icon_state = icon_state_off
 		for(var/obj/structure/cable/C in src.loc)

@@ -252,7 +252,7 @@
 	// the TURBGENQ and TURBGENG values
 	lastgen = ((compressor.rpm / TURBGENQ)**TURBGENG) * TURBGENQ * productivity
 
-	add_avail(lastgen * 0.001)
+	supply(lastgen * 0.001)
 
 	// Weird function but it works. Should be something else...
 	var/newrpm = ((compressor.gas_contained.temperature) * compressor.gas_contained.total_moles)/4

@@ -35,10 +35,7 @@
 		if(active_for <= 0)
 			active_for = 0
 			scan_for_collectors(0)
-	if(powernet)
-		if(power_total > 0)
-			add_avail(power_total/power_factor)
-
+	supply(power_total / power_factor)
 
 /obj/machinery/power/geothermal_controller/update_icon_state()
 	switch(power_total)
@@ -53,7 +50,6 @@
 		else
 			icon_state = "controller_idle"
 	return ..()
-
 
 /obj/machinery/power/geothermal_controller/proc/scan_for_collectors(var/ran)
 	power_total = 0

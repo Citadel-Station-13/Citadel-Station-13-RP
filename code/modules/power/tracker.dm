@@ -54,8 +54,8 @@
 	//set icon dir to show sun illumination
 	setDir(turn(NORTH, -angle - 22.5))	// 22.5 deg bias ensures, e.g. 67.5-112.5 is EAST
 
-	if(powernet && (powernet == control.powernet)) //update if we're still in the same powernet
-		control.cdir = angle
+	if(connection.network == control?.connection.network)
+		control.cdir = angle //update if we're still in the same powernet
 
 /obj/machinery/power/tracker/attackby(var/obj/item/W, var/mob/user)
 

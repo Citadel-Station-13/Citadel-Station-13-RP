@@ -47,14 +47,17 @@
 	auto_connect()
 
 /obj/machinery/power/proc/supply(amount)
-	#warn impl
+	connection.network?.supply(amount)
 
-/obj/machinery/power/proc/fixed_draw(amount)
-	#warn impl
+/obj/machinery/power/proc/flat_draw(amount)
+	if(isnull(connection.network))
+		return 0
+	return connection.network.flat_draw(amount)
 
 /obj/machinery/power/proc/dynamic_draw(amount, tier)
-	#warn impl
-
+	if(isnull(connection.network))
+		return 0
+	return connection.network.dynamic_draw(amount, tier)
 
 ///////////////////////////////
 // General procedures

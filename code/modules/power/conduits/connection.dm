@@ -6,4 +6,8 @@
 	var/datum/wirenet/plasma
 
 
+
 #warn impl; lmao
+
+/datum/wirenet_connection/plasma/is_connected()
+	return !isnull(plasma)

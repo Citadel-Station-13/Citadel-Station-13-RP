@@ -148,7 +148,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 			if(!isnull(T))
 				for(C in T)
 					if(C.d2 != reverse && C.d1 != reverse)
-						ccontinue
+						continue
 					. += C
 		else
 			reverse = global.reverse_dir[d2]

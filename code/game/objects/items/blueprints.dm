@@ -151,9 +151,7 @@
 		return
 	var/area/A = new
 	A.name = str
-	A.power_equip = 0
-	A.power_light = 0
-	A.power_environ = 0
+	A.power_channels = NONE
 	A.area_power_override = null
 	move_turfs_to_area(turfs, A)
 	A.addSorted()

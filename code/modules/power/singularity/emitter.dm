@@ -29,7 +29,6 @@
 
 	integrity = 80
 
-
 /obj/machinery/power/emitter/verb/rotate_clockwise()
 	set name = "Rotate Emitter Clockwise"
 	set category = "Object"
@@ -41,10 +40,8 @@
 	src.setDir(turn(src.dir, 270))
 	return 1
 
-/obj/machinery/power/emitter/Initialize(mapload)
-	. = ..()
-	if(state == 2 && anchored)
-		connect_to_network()
+/obj/machinery/power/emitter/should_connect()
+	return !connection_requires_anchored || anchored || (state == 2)
 
 /obj/machinery/power/emitter/Destroy()
 	message_admins("Emitter deleted at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
@@ -107,7 +104,7 @@
 		return
 	if(((src.last_shot + src.fire_delay) <= world.time) && (src.active == 1))
 
-		var/actual_load = draw_power(active_power_usage * 0.001) * 1000
+		var/actual_load = flat_draw(active_power_usage * 0.001) * 1000
 		if(actual_load >= active_power_usage) //does the laser have enough power to shoot?
 			if(!powered)
 				powered = 1
@@ -158,14 +155,14 @@
 				user.visible_message("[user.name] secures [src] to the floor.", \
 					"You secure the external reinforcing bolts to the floor.", \
 					"You hear a ratchet.")
-				src.anchored = 1
+				set_anchored(TRUE)
 			if(1)
 				state = 0
 				playsound(src, W.tool_sound, 75, 1)
 				user.visible_message("[user.name] unsecures [src] reinforcing bolts from the floor.", \
 					"You undo the external reinforcing bolts.", \
 					"You hear a ratchet.")
-				src.anchored = 0
+				set_anchored(FALSE)
 				disconnect_from_network()
 			if(2)
 				to_chat(user, "<span class='warning'>\The [src] needs to be unwelded from the floor.</span>")
@@ -189,7 +186,7 @@
 						if(!src || !WT.isOn()) return
 						state = 2
 						to_chat(user, "You weld [src] to the floor.")
-						connect_to_network()
+						auto_connect()
 				else
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 			if(2)
@@ -202,7 +199,7 @@
 						if(!src || !WT.isOn()) return
 						state = 1
 						to_chat(user, "You cut [src] free from the floor.")
-						disconnect_from_network()
+						auto_connect()
 				else
 					to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
 		return
