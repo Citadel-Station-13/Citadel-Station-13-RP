@@ -65,4 +65,4 @@
 	cost = 0
 	name = "Miaphus'irra Campagian Medal"
 	path = /obj/item/clothing/accessory/medal/nka_miaphus
-	ckeywhitelist = list("trubus", "alphamach", "monara", "pixel-the-kitty", "biteroankles", "jacksontmurphy", "slybrowngote", "r0adic")
+	ckeywhitelist = list("trubus", "alphamach", "monara", "pixel-the-kitty", "biteroankles", "jacksontmurphy", "slybrowngote", "r0adic", "mazian")
