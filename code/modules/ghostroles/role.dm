@@ -48,8 +48,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/important_info
 	/// should we show the standard ghostrole greeting?
 	var/show_standard_greeting = TRUE
-	/// snowflake ID for if we're not to be referred to by path - dynamically created ghostolres
-	var/id
 	/// spawnerless - advanced users only. This isn't for "load in spawners in PreInstantiate()", this is for true spawnpoint-less ghostroles.
 	var/spawnerless = FALSE
 	/// assigned role. defaults to name.

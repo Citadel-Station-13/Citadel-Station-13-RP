@@ -215,10 +215,9 @@ var/global/list/grub_machine_overlays = list()
 	var/list/ignored_targets = list()
 
 /datum/ai_holder/simple_mob/solargrub_larva/list_targets()
-	var/static/potential_targets = typecacheof(list(/obj/machinery))
 	var/list/actual_targets = list()
 
-	for(var/AT in typecache_filter_list(range(vision_range, holder), potential_targets))
+	for(var/AT in typecache_filter_list(range(vision_range, holder), GLOB.typecache_machine))
 		var/obj/machinery/M = AT
 		if(istype(M, /obj/machinery/atmospherics/component/unary/vent_pump))
 			var/obj/machinery/atmospherics/component/unary/vent_pump/V = M
