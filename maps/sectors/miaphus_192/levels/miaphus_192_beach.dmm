@@ -4065,7 +4065,7 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/tether_away/beach/bunker)
 "HW" = (
-/obj/effect/overmap/visitable/sector/miaphus,
+/obj/overmap/entity/visitable/sector/miaphus,
 /turf/simulated/floor/water/deep,
 /area/tether_away/beach/water)
 "Ia" = (
@@ -4662,12 +4662,6 @@
 /area/tether_away/beach/station/tram)
 "NW" = (
 /obj/structure/closet/crate/miningcar,
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate,
-/obj/item/gun/projectile/pirate,
 /obj/item/ammo_magazine/s357,
 /obj/item/ammo_magazine/clip/c545,
 /obj/item/ammo_magazine/clip/c762,
@@ -4777,10 +4771,6 @@
 /area/tether_away/beach/bunker/kitchen)
 "OZ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
 /turf/simulated/mineral/floor/cave{
@@ -5782,10 +5772,6 @@
 /area/tether_away/beach/resort/dorm2)
 "YY" = (
 /obj/structure/table/rack,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
-/obj/item/material/fishing_rod/modern/cheap,
 /obj/item/stack/cable_coil/pink,
 /obj/item/stack/cable_coil/pink,
 /turf/simulated/floor/wood,

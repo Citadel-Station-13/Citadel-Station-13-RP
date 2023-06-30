@@ -1,6 +1,5 @@
 //? roleban types
 /// full server ban - currently just a shim to go to legacy isbanned, eventually just will go to server_ban.dm
-
 #define BAN_ROLE_SERVER "server"
 /// OOC + LOOC + deadchat ban
 #define BAN_ROLE_OOC "ooc"

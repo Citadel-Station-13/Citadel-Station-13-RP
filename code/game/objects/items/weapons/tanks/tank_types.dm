@@ -212,7 +212,7 @@
 	name = "emergency phoron tank"
 	desc = "An emergency air tank hastily painted red."
 	icon = 'icons/obj/tank_vr.dmi'
-	icon_state = "emergency_nitro"
+	icon_state = "emergency_phoron_vox"
 	gauge_icon = "indicator_emergency"
 	volume = 6
 	gauge_cap = 3
@@ -223,7 +223,7 @@
 
 /obj/item/tank/emergency/phoron/double
 	name = "double emergency phoron tank"
-	icon_state = "emergency_double_nitro"
+	icon_state = "emergency_double_vox"
 	gauge_icon = "indicator_emergency_double"
 	volume = 10
 

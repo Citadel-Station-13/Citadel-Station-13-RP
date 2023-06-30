@@ -192,6 +192,7 @@
 
 /**
  * called right after we physically load in, before init
+ * called before atom init
  *
  * this is *not* called if we are created from a zlevel, say, when dynamically generating a planet.
  * this is solely for hardcoded map levels to have load behaviors.
@@ -199,13 +200,14 @@
  *
  * @params
  * * z_index - zlevel we loaded on
- * * generation_callbacks - callbacks to add to perform post_loaded generation. this will be done in a batch before on_loaded_finalize.
+ * * generation_callbacks - callbacks to add to perform post_loaded generation. this will be done in a batch before on_loaded_finalize and before atom init.
  */
 /datum/map_level/proc/on_loaded_immediate(z_index, list/datum/callback/additional_generation)
 	return
 
 /**
  * called in a group after all maps and dependencies load **and** generation callbacks fire.
+ * called after atom init
  *
  * this is *not* called if we are created from a zlevel, say, when dynamically generating a planet.
  * this is solely for hardcoded map levels to have load behaviors.

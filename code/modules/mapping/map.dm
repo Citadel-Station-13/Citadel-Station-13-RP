@@ -214,9 +214,41 @@
 	/// list of title cutscreens by path to display. for legacy support, tuples of list(icon, state) work too. associate to % chance, defaulting to 1.
 	var/list/titlescreens = list(
 		list(
-			'icons/misc/title.dmi',
-			"mockingjay00",
-		)
+			'icons/misc/title_vr.dmi',
+			"title1",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title2",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title3",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title4",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title5",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title6",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title7",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"title8",
+		),
+		list(
+			'icons/misc/title_vr.dmi',
+			"bnny",
+		),
 	)
 
 	// var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
@@ -299,7 +331,7 @@
 /datum/map/station/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
 	// Overmap behavior
 	if(use_overmap)
-		var/obj/effect/overmap/visitable/O = get_overmap_sector(srcz)
+		var/obj/overmap/entity/visitable/O = get_overmap_sector(srcz)
 		if(!istype(O))
 			return list(srcz)
 
@@ -310,7 +342,7 @@
 		// Otherwise every sector we're on top of
 		var/list/connections = list()
 		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(om_range, T))
+		for(var/obj/overmap/entity/visitable/V in range(om_range, T))
 			connections |= V.map_z	// Adding list to list adds contents
 		return connections
 

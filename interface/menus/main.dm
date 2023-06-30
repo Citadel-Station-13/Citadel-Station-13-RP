@@ -37,7 +37,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_category/main_zoom/init_entries()
 	. = ..()
-	var/static/list/auto_sizes = list(
+	var/list/auto_sizes = list(
 		32,
 		48,
 		64,

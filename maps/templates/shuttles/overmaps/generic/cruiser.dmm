@@ -7500,9 +7500,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 4
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
@@ -7689,9 +7687,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
@@ -7996,9 +7992,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 4
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
@@ -8562,9 +8556,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 1
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "wA" = (
@@ -8765,9 +8757,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 6
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
@@ -8778,9 +8768,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 1
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "Ct" = (
@@ -8889,7 +8877,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "EP" = (
-/obj/effect/overmap/visitable/ship/cruiser,
+/obj/overmap/entity/visitable/ship/cruiser,
 /turf/space,
 /area/space)
 "EQ" = (
@@ -8986,9 +8974,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "HG" = (
@@ -9205,9 +9191,7 @@
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 9
 	},
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "RP" = (

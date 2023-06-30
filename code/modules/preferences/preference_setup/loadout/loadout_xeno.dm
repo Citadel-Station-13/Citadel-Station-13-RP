@@ -6,7 +6,7 @@
 	path = /obj/item/clothing/suit/storage/fluff/loincloth
 	slot = null
 	allowed_roles = null //Since 99.99% of all items in this file are going to be species-locked, we should keep the role-locked species items here, rather than in the role_restricted.dm file.
-	sort_category = "Xenowear"
+	sort_category = LOADOUT_CATEGORY_XENOWEAR
 
 /datum/gear/xeno/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory

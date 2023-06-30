@@ -105,6 +105,19 @@
 	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0
 	var/teleport_z = 0
+	/// map path / id to resolve on init for z
+	var/map_level_target
+
+/obj/effect/step_trigger/teleporter/Initialize(mapload)
+	. = ..()
+	if(!isnull(map_level_target))
+		if(ispath(map_level_target))
+			var/datum/map_level/level_path = map_level_target
+			map_level_target = initial(level_path.id)
+		if(isnull(SSmapping.keyed_levels[map_level_target]))
+			CRASH("failed to resolve [map_level_target] ([initial(map_level_target)])")
+		var/datum/map_level/level = SSmapping.keyed_levels[map_level_target]
+		teleport_z = level.z_index
 
 /obj/effect/step_trigger/teleporter/Trigger(atom/movable/AM)
 	if(teleport_x && teleport_y && teleport_z)
