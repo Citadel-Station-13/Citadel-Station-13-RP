@@ -73,4 +73,3 @@
 	desc = "Issued by the New Kingdom of Adhomai for participation in the campaign against Pirate Lord Ssizikar's 'The Catskinner' Tartic during his invasion of Miaphus'irra. \
 	The twin medals represent Adhomai's twin suns."
 	icon_state = "nka_campaign"
-	item_state = "nka_cmapgin"
