@@ -142,6 +142,28 @@
 	if(C.statpanel_tab("Status"))
 		. += show_silenced()
 
+// No binary for pAIs.
+/mob/living/silicon/pai/binarycheck()
+	return 0
+
+// See software.dm for Topic()
+/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
+	// Resting is just an aesthetic feature for them.
+	return ..(movable, be_close, no_dexterity, no_tk)
+
+/mob/living/silicon/pai/update_icon()
+	..()
+	update_fullness_pai()
+	if(!people_eaten && !resting)
+		icon_state = "[chassis]"
+	else if(!people_eaten && resting)
+		icon_state = "[chassis]_rest"
+	else if(people_eaten && !resting)
+		icon_state = "[chassis]_full"
+	else if(people_eaten && resting)
+		icon_state = "[chassis]_rest_full"
+
+/// camera handling
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)
 		return -1
@@ -166,26 +188,7 @@
 	. = ..()
 	cameraFollow = null
 
-// No binary for pAIs.
-/mob/living/silicon/pai/binarycheck()
-	return 0
-
-// Handle being picked up.
-/mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
-	var/obj/item/holder/H = ..(grabber, self_drop)
-	if(!istype(H))
-		return
-
-	H.icon_state = "[chassis]"
-	grabber.update_inv_l_hand()
-	grabber.update_inv_r_hand()
-	return H
-
-// See software.dm for Topic()
-/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
-	// Resting is just an aesthetic feature for them.
-	return ..(movable, be_close, no_dexterity, no_tk)
-
+// vore-related stuff
 /mob/living/silicon/pai/proc/update_fullness_pai() //Determines if they have something in their stomach. Copied and slightly modified.
 	var/new_people_eaten = 0
 	for(var/belly in vore_organs)
@@ -194,14 +197,3 @@
 			new_people_eaten += M.size_multiplier
 	people_eaten = min(1, new_people_eaten)
 
-/mob/living/silicon/pai/update_icon()
-	..()
-	update_fullness_pai()
-	if(!people_eaten && !resting)
-		icon_state = "[chassis]"
-	else if(!people_eaten && resting)
-		icon_state = "[chassis]_rest"
-	else if(people_eaten && !resting)
-		icon_state = "[chassis]_full"
-	else if(people_eaten && resting)
-		icon_state = "[chassis]_rest_full"

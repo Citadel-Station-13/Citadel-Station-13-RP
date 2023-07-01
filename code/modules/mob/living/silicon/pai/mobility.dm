@@ -76,6 +76,17 @@
 	add_verb(src, /mob/living/proc/set_size)
 	add_verb(src, /mob/living/proc/shred_limb)
 
+// Handle being picked up.
+/mob/living/silicon/pai/get_scooped(var/mob/living/carbon/grabber, var/self_drop)
+	var/obj/item/holder/H = ..(grabber, self_drop)
+	if(!istype(H))
+		return
+
+	H.icon_state = "[chassis]"
+	grabber.update_inv_l_hand()
+	grabber.update_inv_r_hand()
+	return H
+
 // this is a general check for if we can do things such as fold in/out or perform other special actions
 /mob/living/silicon/pai/proc/can_action()
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
