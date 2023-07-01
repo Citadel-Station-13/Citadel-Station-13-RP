@@ -78,6 +78,7 @@ DEFINE_BITFIELD(runlevels, list(
 // todo: tg init brackets
 
 #define INIT_ORDER_FAIL2TOPIC      200
+#define INIT_ORDER_IPINTEL         197
 #define INIT_ORDER_TIMER           195
 #define INIT_ORDER_DBCORE          190
 #define INIT_ORDER_EARLY_INIT      185

@@ -198,7 +198,7 @@
 	.["card_rank"] = editing?.rank
 	.["card_assignment"] = editing?.assignment
 	.["granted"] = editing?.access
-	.["can_demote"] = auth_demote(user, editing, authing, editing.rank)
+	.["can_demote"] = auth_demote(user, editing, authing, editing?.rank)
 
 /datum/tgui_module/card_mod/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
