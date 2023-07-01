@@ -36,6 +36,7 @@
 	var/obj/item/paicard/card	// The card we inhabit
 	var/obj/item/radio/radio		// Our primary radio
 	var/obj/item/communicator/integrated/communicator	// Our integrated communicator.
+	var/obj/item/pda/ai/pai/pda = null // Our integrated PDA
 
 	var/chassis = "pai-repairbot"   // A record of your chosen chassis.
 	var/global/list/possible_chassis = list(
@@ -66,7 +67,8 @@
 
 	var/master				// Name of the one who commands us
 	var/master_dna			// DNA string for owner verification
-							// Keeping this separate from the laws var, it should be much more difficult to modify
+
+								// Keeping this separate from the laws var, it should be much more difficult to modify
 	var/pai_law0 = "Serve your master."
 	var/pai_laws				// String for additional operating instructions our master might give us
 
@@ -78,26 +80,11 @@
 	var/screen				// Which screen our main window displays
 	var/subscreen			// Which specific function of the main screen is being displayed
 
-	var/obj/item/pda/ai/pai/pda = null
-
-	var/secHUD = 0			// Toggles whether the Security HUD is active or not
-	var/medHUD = 0			// Toggles whether the Medical  HUD is active or not
-
-	var/medical_cannotfind = 0
-	var/datum/data/record/medicalActive1		// Datacore record declarations for record software
-	var/datum/data/record/medicalActive2
-
-	var/security_cannotfind = 0
-	var/datum/data/record/securityActive1		// Could probably just combine all these into one
-	var/datum/data/record/securityActive2
-
 	var/obj/machinery/door/hackdoor		// The airlock being hacked
 	var/hackprogress = 0				// Possible values: 0 - 1000, >= 1000 means the hack is complete and will be reset upon next check
 	var/hack_aborted = 0
 
 	var/obj/item/integated_radio/signal/sradio // AI's signaller
-
-	var/translator_on = 0 // keeps track of the translator module
 
 	var/current_pda_messaging = null
 
