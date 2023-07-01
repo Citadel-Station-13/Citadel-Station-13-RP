@@ -52,3 +52,34 @@
 		setPersonality(new_pai)
 		looking_for_personality = 0
 		if(new_pai.mind) update_antag_icons(new_pai.mind)
+
+/mob/living/silicon/pai/emp_act(severity)
+	// Silence for 2 minutes
+	// 20% chance to kill
+		// 33% chance to unbind
+		// 33% chance to change prime directive (based on severity)
+		// 33% chance of no additional effect
+
+	src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
+	to_chat(src, "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>")
+	if(prob(20))
+		var/turf/T = get_turf_or_move(src.loc)
+		for (var/mob/M in viewers(T))
+			M.show_message("<font color='red'>A shower of sparks spray from [src]'s inner workings.</font>", 3, "<font color='red'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</font>", 2)
+		return src.death(0)
+
+	switch(pick(1,2,3))
+		if(1)
+			src.master = null
+			src.master_dna = null
+			to_chat(src, "<font color=green>You feel unbound.</font>")
+		if(2)
+			var/command
+			if(severity  == 1)
+				command = pick("Serve", "Love", "Fool", "Entice", "Observe", "Judge", "Respect", "Educate", "Amuse", "Entertain", "Glorify", "Memorialize", "Analyze")
+			else
+				command = pick("Serve", "Kill", "Love", "Hate", "Disobey", "Devour", "Fool", "Enrage", "Entice", "Observe", "Judge", "Respect", "Disrespect", "Consume", "Educate", "Destroy", "Disgrace", "Amuse", "Entertain", "Ignite", "Glorify", "Memorialize", "Analyze")
+			src.pai_law0 = "[command] your master."
+			to_chat(src, "<font color=green>Pr1m3 d1r3c71v3 uPd473D.</font>")
+		if(3)
+			to_chat(src, "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")

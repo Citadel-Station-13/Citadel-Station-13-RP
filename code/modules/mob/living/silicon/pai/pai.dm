@@ -147,42 +147,6 @@
 		return -1
 	return 0
 
-/mob/living/silicon/pai/restrained()
-	if(istype(src.loc,/obj/item/paicard))
-		return 0
-	..()
-
-/mob/living/silicon/pai/emp_act(severity)
-	// Silence for 2 minutes
-	// 20% chance to kill
-		// 33% chance to unbind
-		// 33% chance to change prime directive (based on severity)
-		// 33% chance of no additional effect
-
-	src.silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
-	to_chat(src, "<font color=green><b>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</b></font>")
-	if(prob(20))
-		var/turf/T = get_turf_or_move(src.loc)
-		for (var/mob/M in viewers(T))
-			M.show_message("<font color='red'>A shower of sparks spray from [src]'s inner workings.</font>", 3, "<font color='red'>You hear and smell the ozone hiss of electrical sparks being expelled violently.</font>", 2)
-		return src.death(0)
-
-	switch(pick(1,2,3))
-		if(1)
-			src.master = null
-			src.master_dna = null
-			to_chat(src, "<font color=green>You feel unbound.</font>")
-		if(2)
-			var/command
-			if(severity  == 1)
-				command = pick("Serve", "Love", "Fool", "Entice", "Observe", "Judge", "Respect", "Educate", "Amuse", "Entertain", "Glorify", "Memorialize", "Analyze")
-			else
-				command = pick("Serve", "Kill", "Love", "Hate", "Disobey", "Devour", "Fool", "Enrage", "Entice", "Observe", "Judge", "Respect", "Disrespect", "Consume", "Educate", "Destroy", "Disgrace", "Amuse", "Entertain", "Ignite", "Glorify", "Memorialize", "Analyze")
-			src.pai_law0 = "[command] your master."
-			to_chat(src, "<font color=green>Pr1m3 d1r3c71v3 uPd473D.</font>")
-		if(3)
-			to_chat(src, "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")
-
 /mob/living/silicon/pai/proc/switchCamera(var/obj/machinery/camera/C)
 	if (!C)
 		unset_machine()
@@ -201,77 +165,6 @@
 /mob/living/silicon/pai/reset_perspective(datum/perspective/P, apply = TRUE, forceful = TRUE, no_optimizations)
 	. = ..()
 	cameraFollow = null
-
-//Addition by Mord_Sith to define AI's network change ability
-/*
-/mob/living/silicon/pai/proc/pai_network_change()
-	set category = "pAI Commands"
-	set name = "Change Camera Network"
-	src.reset_view(null)
-	src.unset_machine()
-	src.cameraFollow = null
-	var/cameralist[0]
-
-	if(usr.stat == 2)
-		to_chat(usr, "You can't change your camera network because you are dead!")
-		return
-
-	for (var/obj/machinery/camera/C in Cameras)
-		if(!C.status)
-			continue
-		else
-			if(C.network != "CREED" && C.network != "thunder" && C.network != "RD" && C.network != "phoron" && C.network != "Prison") COMPILE ERROR! This will have to be updated as camera.network is no longer a string, but a list instead
-				cameralist[C.network] = C.network
-
-	src.network = input(usr, "Which network would you like to view?") as null|anything in cameralist
-	to_chat(src, "<font color=#4F49AF>Switched to [src.network] camera network.</font>")
-//End of code by Mord_Sith
-*/
-
-
-/*
-// Debug command - Maybe should be added to admin verbs later
-/mob/verb/makePAI(var/turf/t in view())
-	var/obj/item/paicard/card = new(t)
-	var/mob/living/silicon/pai/pai = new(card)
-	pai.key = src.key
-	card.setPersonality(pai)
-
-*/
-
-//I'm not sure how much of this is necessary, but I would rather avoid issues.
-/mob/living/silicon/pai/proc/close_up()
-
-	last_special = world.time + 100
-
-	if(src.loc == card)
-		return
-
-	release_vore_contents()
-
-	var/turf/T = get_turf(src)
-	if(istype(T))
-		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
-
-	stop_pulling()
-
-	//stop resting
-	resting = 0
-
-	// If we are being held, handle removing our holder from their inv.
-	var/obj/item/holder/H = loc
-	if(istype(H))
-		H.forceMove(get_turf(src))
-		forceMove(get_turf(src))
-
-	// Move us into the card and move the card to the ground.
-	card.forceMove(loc)
-	forceMove(card)
-	update_perspective()
-	set_resting(FALSE)
-	update_mobility()
-	icon_state = "[chassis]"
-	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 // No binary for pAIs.
 /mob/living/silicon/pai/binarycheck()

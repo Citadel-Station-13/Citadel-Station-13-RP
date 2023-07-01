@@ -1,0 +1,77 @@
+/mob/living/silicon/pai/restrained()
+	if(istype(src.loc,/obj/item/paicard))
+		return 0
+	..()
+//I'm not sure how much of this is necessary, but I would rather avoid issues.
+/mob/living/silicon/pai/proc/close_up()
+
+	last_special = world.time + 100
+
+	if(src.loc == card)
+		return
+
+	release_vore_contents()
+
+	var/turf/T = get_turf(src)
+	if(istype(T))
+		T.visible_message("<b>[src]</b> neatly folds inwards, compacting down to a rectangular card.")
+
+	stop_pulling()
+
+	//stop resting
+	resting = 0
+
+	// If we are being held, handle removing our holder from their inv.
+	var/obj/item/holder/H = loc
+	if(istype(H))
+		H.forceMove(get_turf(src))
+		forceMove(get_turf(src))
+
+	// Move us into the card and move the card to the ground.
+	card.forceMove(loc)
+	forceMove(card)
+	update_perspective()
+	set_resting(FALSE)
+	update_mobility()
+	icon_state = "[chassis]"
+	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+
+/mob/living/silicon/pai/proc/open_up()
+	last_special = world.time + 100
+
+	//I'm not sure how much of this is necessary, but I would rather avoid issues.
+	if(istype(card.loc,/obj/item/hardsuit_module))
+		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
+		return 0
+	else if(istype(card.loc,/mob))
+		var/mob/holder = card.loc
+		var/datum/belly/inside_belly = check_belly(card)
+		if(inside_belly)
+			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
+			return 0
+		if(ishuman(holder))
+			var/mob/living/carbon/human/H = holder
+			for(var/obj/item/organ/external/affecting in H.organs)
+				if(card in affecting.implants)
+					affecting.take_damage(rand(30,50))
+					affecting.implants -= card
+					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
+					break
+		holder.drop_item_to_ground(card, INV_OP_FORCE)
+	else if(istype(card.loc,/obj/item/pda))
+		var/obj/item/pda/holder = card.loc
+		holder.pai = null
+
+	forceMove(card.loc)
+	card.forceMove(src)
+	update_perspective()
+
+	card.screen_loc = null
+
+	var/turf/T = get_turf(src)
+	if(istype(T))
+		T.visible_message("<b>[src]</b> folds outwards, expanding into a mobile form.")
+
+	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
+	add_verb(src, /mob/living/proc/set_size)
+	add_verb(src, /mob/living/proc/shred_limb)
