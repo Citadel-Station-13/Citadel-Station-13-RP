@@ -87,6 +87,9 @@
 	grabber.update_inv_r_hand()
 	return H
 
+/mob/living/silicon/pai/movement_delay()
+	return ..() + speed
+
 // this is a general check for if we can do things such as fold in/out or perform other special actions
 /mob/living/silicon/pai/proc/can_action()
 	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
