@@ -75,3 +75,16 @@
 	add_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 	add_verb(src, /mob/living/proc/set_size)
 	add_verb(src, /mob/living/proc/shred_limb)
+
+// this is a general check for if we can do things such as fold in/out or perform other special actions
+/mob/living/silicon/pai/proc/can_action()
+	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
+		return FALSE
+
+	if(src.loc == card)
+		return FALSE
+
+	if(world.time <= last_special)
+		return FALSE
+
+	return TRUE

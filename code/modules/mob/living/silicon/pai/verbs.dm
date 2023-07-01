@@ -2,13 +2,8 @@
 	set category = "pAI Commands"
 	set name = "Unfold Chassis"
 
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return
-
-	if(src.loc != card)
-		return
-
-	if(world.time <= last_special)
+	// see pai/mobility.dm
+	if(!can_action())
 		return
 
 	open_up()
@@ -17,13 +12,7 @@
 	set category = "pAI Commands"
 	set name = "Collapse Chassis"
 
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return
-
-	if(src.loc == card)
-		return
-
-	if(world.time <= last_special)
+	if(!can_action())
 		return
 
 	close_up()
