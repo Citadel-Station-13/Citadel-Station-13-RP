@@ -1,7 +1,8 @@
 /mob/living/silicon/pai/restrained()
 	if(istype(src.loc,/obj/item/paicard))
-		return 0
+		return FALSE
 	..()
+
 //I'm not sure how much of this is necessary, but I would rather avoid issues.
 /mob/living/silicon/pai/proc/close_up()
 
@@ -19,7 +20,7 @@
 	stop_pulling()
 
 	//stop resting
-	resting = 0
+	resting = FALSE
 
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
@@ -42,13 +43,13 @@
 	//I'm not sure how much of this is necessary, but I would rather avoid issues.
 	if(istype(card.loc,/obj/item/hardsuit_module))
 		to_chat(src, "There is no room to unfold inside this hardsuit module. You're good and stuck.")
-		return 0
+		return FALSE
 	else if(istype(card.loc,/mob))
 		var/mob/holder = card.loc
 		var/datum/belly/inside_belly = check_belly(card)
 		if(inside_belly)
 			to_chat(src, "<span class='notice'>There is no room to unfold in here. You're good and stuck.</span>")
-			return 0
+			return FALSE
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.organs)
@@ -87,6 +88,7 @@
 	grabber.update_inv_r_hand()
 	return H
 
+// handle movement speed
 /mob/living/silicon/pai/movement_delay()
 	return ..() + speed
 
