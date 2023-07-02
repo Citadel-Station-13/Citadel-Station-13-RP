@@ -124,7 +124,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   }
 
   return (
-    <Modular window={windowProps} scrollable>
+    <Modular window={windowProps}>
       <Stack vertical fill>
         <Stack.Item>
           <Stack fluid>
@@ -187,10 +187,10 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
             }
           </Stack>
         </Stack.Item>
-        <Stack.Item grow={1}>
-          <Stack fluid>
+        <Stack.Item grow>
+          <Stack fluid fill>
             <Stack.Item>
-              <Section fill title="Categories">
+              <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
                     data.designs.categories.map((cat) => (
@@ -205,7 +205,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               </Section>
             </Stack.Item>
             <Stack.Item grow>
-              <Section fill title="Designs">
+              <Section fill title="Designs" scrollable>
                 {
                   Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
                     d1.name.localeCompare(d2.name)
@@ -218,8 +218,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               </Section>
             </Stack.Item>
             <Stack.Item>
-              <Section fill title="Queue"
-                minWidth="250px"
+              <Section fill title="Queue" scrollable
                 buttons={
                   <>
                     <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
@@ -236,7 +235,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                     data.queue.map((entry, index) => (
                       <Stack.Item key={`${index}-${entry.amount}-${entry.design}`}>
                         <LatheQueued
-                          entry={entry} design={data.designs[entry.design]} index={index} />
+                          entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
                       </Stack.Item>
                     ))
                   }
@@ -259,7 +258,7 @@ interface LatheQueueEntry {
 
 interface LatheQueuedProps {
   entry: LatheQueueEntry;
-  design: Design;
+  design?: Design;
   index: number;
 }
 
@@ -267,7 +266,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
   let { act } = useModule<TGUILatheControlData>(context);
   return (
     <Collapsible
-      title={`${props.entry.amount}x ${props.design.name}`}
+      title={`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
       buttons={
         <>
           <Button
@@ -286,7 +285,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             onClick={() => act('dequeue', { index: props.index })} />
         </>
       }>
-      tested
+      test
     </Collapsible>
   );
 };
@@ -356,17 +355,15 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           }
         </>
       )}>
-      <Stack>
-        <Stack.Item grow={1}>
-          { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
-            <Table width="100%">
-              <Table.Row>
-                <Table.Cell width="33%" />
-                <Table.Cell width="33%" />
-                <Table.Cell width="33%" />
-              </Table.Row>
-              {
-                props.design.materials
+      { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
+        <Table>
+          <Table.Row>
+            <Table.Cell />
+            <Table.Cell />
+            <Table.Cell />
+          </Table.Row>
+          {
+            props.design.materials
                     && Object.entries(props.design.materials).map(([id, amt]) => (
                       <Table.Row key={id}>
                         <Table.Cell />
@@ -387,54 +384,52 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                         </Table.Cell>
                       </Table.Row>
                     ))
-              }
-              {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
-                let selected = mats[name];
-                let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
-                return (
-                  <Table.Row key={name}>
-                    <Table.Cell textAlign="center">
-                      {name}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Dropdown
-                        width="100%"
-                        color="transparent"
-                        selected={selectedName}
-                        onSelected={(val) => {
-                          let newMats = { ...mats };
-                          newMats[name] = val;
-                          setMats(newMats);
-                        }}
-                        options={
-                          Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
-                        } />
-                    </Table.Cell>
-                    <Table.Cell textAlign="center"
-                      color={!selected || data.materials[selected] >= amt? null : "bad"}>
-                      {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                    </Table.Cell>
-                  </Table.Row>
-                );
-              })}
-              {props.design.reagents && (
-                Object.entries(props.design.reagents).map(([id, amt]) => (
-                  <Table.Row key={id}>
-                    <Table.Cell />
-                    <Table.Cell>
-                      {id}
-                    </Table.Cell>
-                    <Table.Cell textAlign="center"
-                      color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
-                      {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
-                    </Table.Cell>
-                  </Table.Row>
-                ))
-              )}
-            </Table>
+          }
+          {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
+            let selected = mats[name];
+            let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
+            return (
+              <Table.Row key={name}>
+                <Table.Cell textAlign="center">
+                  {name}
+                </Table.Cell>
+                <Table.Cell>
+                  <Dropdown
+                    width="100%"
+                    color="transparent"
+                    selected={selectedName}
+                    onSelected={(val) => {
+                      let newMats = { ...mats };
+                      newMats[name] = val;
+                      setMats(newMats);
+                    }}
+                    options={
+                      Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
+                    } />
+                </Table.Cell>
+                <Table.Cell textAlign="center"
+                  color={!selected || data.materials[selected] >= amt? null : "bad"}>
+                  {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                </Table.Cell>
+              </Table.Row>
+            );
+          })}
+          {props.design.reagents && (
+            Object.entries(props.design.reagents).map(([id, amt]) => (
+              <Table.Row key={id}>
+                <Table.Cell />
+                <Table.Cell>
+                  {id}
+                </Table.Cell>
+                <Table.Cell textAlign="center"
+                  color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
+                  {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
+                </Table.Cell>
+              </Table.Row>
+            ))
           )}
-        </Stack.Item>
-      </Stack>
+        </Table>
+      )}
     </Collapsible>
   );
 };
