@@ -165,6 +165,8 @@
 			SSatoms.init_map_bounds(loaded_bounds)
 
 		instance.on_loaded_finalize(instance.z_index)
+	else
+		deferred_callbacks += generation_callbacks
 
 	. = loaded_bounds
 

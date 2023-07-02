@@ -283,12 +283,14 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	return
 
 /obj/singularity/Move(atom/newloc, direct)
+	if(ISDIAGONALDIR(direct)) // split diagonal moves
+		return ..()
 	if(current_size >= STAGE_FIVE || check_turfs_in(direct))
 		last_failed_movement = 0//Reset this because we moved
 		return ..()
 	else
 		last_failed_movement = direct
-		return 0
+		return FALSE
 
 /obj/singularity/proc/move(force_move = 0)
 	if(!move_self)
