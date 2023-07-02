@@ -7,7 +7,7 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, Dropdown, Stack, Table, Tabs } from "../../components";
+import { Button, Collapsible, Dropdown, NumberInput, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -231,12 +231,16 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       onClick={() => act(data.queueActive? "stop" : "start")} />
                   </>
                 }>
-                {
-                  data.queue.map((entry, index) => (
-                    <LatheQueued key={`${index}-${entry.amount}-${entry.design}`}
-                      entry={entry} design={data.designs[entry.design]} />
-                  ))
-                }
+                <Stack vertical>
+                  {
+                    data.queue.map((entry, index) => (
+                      <Stack.Item key={`${index}-${entry.amount}-${entry.design}`}>
+                        <LatheQueued
+                          entry={entry} design={data.designs[entry.design]} index={index} />
+                      </Stack.Item>
+                    ))
+                  }
+                </Stack>
               </Section>
             </Stack.Item>
           </Stack>
@@ -256,13 +260,34 @@ interface LatheQueueEntry {
 interface LatheQueuedProps {
   entry: LatheQueueEntry;
   design: Design;
+  index: number;
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
+  let { act } = useModule<TGUILatheControlData>(context);
   return (
-    <>
-      test
-    </>
+    <Collapsible
+      title={`${props.entry.amount}x ${props.design.name}`}
+      buttons={
+        <>
+          <Button
+            color="transparent"
+            icon="plus"
+            onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
+          <NumberInput minValue={1} maxValue={100} step={1}
+            value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
+          <Button
+            color="transparent"
+            icon="minus"
+            onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount - 1 })} />
+          <Button
+            color="transparent"
+            icon="multiply"
+            onClick={() => act('dequeue', { index: props.index })} />
+        </>
+      }>
+      tested
+    </Collapsible>
   );
 };
 
@@ -302,7 +327,13 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               key={n}
               icon="plus"
               content={`${n}`}
-              onClick={() => act('enqueue', { id: props.design.id, amount: n, immediate: false })} />
+              onClick={() => act('enqueue', {
+                id: props.design.id,
+                amount: n,
+                immediate: false,
+                materials: mats,
+                items: [],
+              })} />
           ))}
           {
             data.printing? (
@@ -314,7 +345,13 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               <Button.Confirm
                 icon="play"
                 content="Print"
-                onClick={() => act('enqueue', { id: props.design.id, amount: 1, immediate: true })} />
+                onClick={() => act('enqueue', {
+                  id: props.design.id,
+                  amount: 1,
+                  immediate: true,
+                  materials: mats,
+                  items: [],
+                })} />
             )
           }
         </>
@@ -356,7 +393,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
                 let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
                 return (
                   <Table.Row key={name}>
-                    <Table.Cell>
+                    <Table.Cell textAlign="center">
                       {name}
                     </Table.Cell>
                     <Table.Cell>

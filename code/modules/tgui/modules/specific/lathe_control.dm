@@ -17,7 +17,7 @@
 	var/obj/machinery/lathe/lathe = host
 	if(isnull(lathe))
 		return
-	.["printing"] = lathe.queue_head_design()?.id
+	.["printing"] = lathe.printing && lathe.queue_head_design()?.id
 	.["progress"] = lathe.progress
 	.["storesMaterials"] = !isnull(lathe.stored_materials)
 	.["storesReagents"] = !isnull(lathe.stored_reagents)

@@ -163,6 +163,7 @@
 		var/obj/item/stack/material/M = I
 		if(used)
 			user.action_feedback(SPAN_NOTICE("You insert [used] sheets of [I]."), src)
+			ui_controller?.ui_materials_update()
 		else
 			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
 		if(!isnull(insert_icon_state_specific?[M.material.id]))
@@ -429,8 +430,12 @@
  * amount variable is reserved but unused at this given time.
  */
 /obj/machinery/lathe/proc/enqueue(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, start_immediately)
+	if(instance.material_parts)
+		for(var/key in instance.material_parts)
+			if(!material_parts[key])
+				return FALSE
 	var/datum/lathe_queue_entry/last = length(queue)? queue[length(queue)] : null
-	if(!isnull(last) && last.design_id == instance.id)
+	if(!isnull(last) && last.design_id == instance.id && last.material_parts ~= material_parts && last.ingredient_parts ~= ingredient_parts)
 		var/adding
 		if(instance.is_stack)
 			adding = amount // no limit on stacks
