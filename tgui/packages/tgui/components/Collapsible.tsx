@@ -44,13 +44,13 @@ export class Collapsible extends Component<CollapsibleProps, CollapsibleState> {
       ...rest
     } = props;
     return (
-      <Box mb={1}>
+      <Box>
         <div className="Collapsible">
           <div className="Collapsible__head">
             <div className="Collapsible__toggle">
               <Button
                 fluid
-                color={color} w
+                color={color}
                 icon={open ? 'chevron-down' : 'chevron-right'}
                 onClick={() => this.setState({ open: !open })}
                 {...rest}>

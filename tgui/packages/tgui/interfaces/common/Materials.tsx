@@ -5,7 +5,7 @@ import { formatMoney, formatSiUnit } from '../../format';
 import { useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
 
-// / the space is intentional
+// the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
 
 export interface MaterialsContext {

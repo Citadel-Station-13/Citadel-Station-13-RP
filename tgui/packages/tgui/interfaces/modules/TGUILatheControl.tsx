@@ -193,7 +193,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
-                    data.designs.categories.map((cat) => (
+                    data.designs.categories.sort((c1, c2) => c1.localeCompare(c2)).map((cat) => (
                       <Tabs.Tab key={cat} fluid color="transparent"
                         selected={cat === category}
                         onClick={() => setCategory(cat)}>
@@ -204,7 +204,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 </Tabs>
               </Section>
             </Stack.Item>
-            <Stack.Item grow>
+            <Stack.Item grow={1.5}>
               <Section fill title="Designs" scrollable>
                 {
                   Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
@@ -217,7 +217,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 }
               </Section>
             </Stack.Item>
-            <Stack.Item>
+            <Stack.Item grow={1}>
               <Section fill title="Queue" scrollable
                 buttons={
                   <>
@@ -230,16 +230,12 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       onClick={() => act(data.queueActive? "stop" : "start")} />
                   </>
                 }>
-                <Stack vertical>
-                  {
-                    data.queue.map((entry, index) => (
-                      <Stack.Item key={`${index}-${entry.amount}-${entry.design}`}>
-                        <LatheQueued
-                          entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
-                      </Stack.Item>
-                    ))
-                  }
-                </Stack>
+                {
+                  data.queue.map((entry, index) => (
+                    <LatheQueued key={`${index}-${entry.amount}-${entry.design}`}
+                      entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
+                  ))
+                }
               </Section>
             </Stack.Item>
           </Stack>
@@ -266,6 +262,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
   let { act } = useModule<TGUILatheControlData>(context);
   return (
     <Collapsible
+      color="transparent"
       title={`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
       buttons={
         <>
@@ -281,7 +278,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount - 1 })} />
           <Button
             color="transparent"
-            icon="multiply"
+            icon="trash"
             onClick={() => act('dequeue', { index: props.index })} />
         </>
       }>
