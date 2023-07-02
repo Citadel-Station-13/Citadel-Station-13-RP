@@ -17,10 +17,7 @@
 }
 
 .Collapsible__toggle {
-  display: unset;
-  flex: 1;
   flex-grow: 1;
-  justify-self: flex-start;
   padding: 0 0.25em;
 
   &:first-child {
@@ -33,9 +30,6 @@
 }
 
 .Collapsible__buttons {
-  display: unset;
-  flex: 1;
-  justify-self: flex-end;
   padding: 0 0.25em;
   white-space: nowrap;
 

@@ -7,7 +7,7 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, Dropdown, NumberInput, Stack, Table, Tabs } from "../../components";
+import { Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -270,7 +270,7 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             color="transparent"
             icon="plus"
             onClick={() => act('modqueue', { index: props.index, amount: props.entry.amount + 1 })} />
-          <NumberInput minValue={1} maxValue={100} step={1}
+          <NumberInput minValue={1} maxValue={100} step={1} width={3}
             value={props.entry.amount} onChange={(e, v) => act('modqueue', { index: props.index, amount: v })} />
           <Button
             color="transparent"
@@ -282,7 +282,46 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
             onClick={() => act('dequeue', { index: props.index })} />
         </>
       }>
-      test
+      {props.design?.materials && (
+        <Section title="Base Materials">
+          <LabeledList>
+            {Object.entries(props.design.materials).map(([k, v]) => (
+              <LabeledList.Item key={k} label={k}>
+                {`${v}${MATERIAL_STORAGE_UNIT_NAME}`}
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
+      )}
+      {props.design?.reagents && (
+        <Section title="Base Reagents">
+          <LabeledList>
+            {Object.entries(props.design.reagents).map(([k, v]) => (
+              <LabeledList.Item key={k} label={k}>
+                {`${v}${REAGENT_STORAGE_UNIT_NAME}`}
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
+      )}
+      {props.entry.materials && (
+        <Section title="Material Parts">
+          <LabeledList>
+            {Object.entries(props.entry.materials).map(([k, v]) => (
+              <LabeledList.Item key={k} label={k}>
+                {`${props.design?.material_parts?.[k] || "!ERROR! "}${MATERIAL_STORAGE_UNIT_NAME} of ${v}`}
+              </LabeledList.Item>
+            ))}
+          </LabeledList>
+        </Section>
+      )}
+      {props.entry.ingredients && (
+        <Section title="Selected Ingredients">
+          <NoticeBox danger>
+            Unimplemented - contact a developer!
+          </NoticeBox>
+        </Section>
+      )}
     </Collapsible>
   );
 };

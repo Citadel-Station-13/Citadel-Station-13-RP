@@ -440,7 +440,7 @@
 		if(instance.is_stack)
 			adding = amount // no limit on stacks
 		else
-			adding = min(last.amount - queue_max_entry, amount)
+			adding = clamp(amount, 0, last.amount - queue_max_entry)
 		last.amount += adding
 		amount -= adding
 		if(!amount)
@@ -451,7 +451,7 @@
 	inserting.design_id = instance.id
 	inserting.material_parts = material_parts
 	inserting.ingredient_parts = ingredient_parts
-	inserting.amount = 1
+	inserting.amount = amount
 	LAZYINITLIST(queue)
 	queue += inserting
 	reconsider_queue(start_immediately)
