@@ -36,23 +36,6 @@
 		visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
 		close_up()
 
-/obj/item/paicard/attack_ghost(mob/dead/observer/user)
-	if(pai)
-		to_chat(user, "<span class='warning'>This pAI is already in use!</span>")
-		return
-	else
-		var/pai_name = sanitizeSafe(stripped_input(usr, "Enter a name for your pAI", "pAI Name", user.name, MAX_NAME_LEN))
-		if(!pai_name)
-			to_chat(user, "<span class='warning'>Entered name is not valid.</span>")
-			return
-		var/mob/living/silicon/pai/new_pai = new(src)
-		new_pai.name = user.name
-		new_pai.real_name = user.name
-		new_pai.key = user.key
-		setPersonality(new_pai)
-		looking_for_personality = 0
-		if(new_pai.mind) update_antag_icons(new_pai.mind)
-
 /mob/living/silicon/pai/emp_act(severity)
 	// Silence for 2 minutes
 	// 20% chance to kill

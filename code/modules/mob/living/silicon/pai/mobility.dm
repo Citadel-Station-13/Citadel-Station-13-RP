@@ -108,5 +108,6 @@
 // space movement (we get one ion burst every 3 seconds)
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = NONE)
 	if(world.time >= last_space_movement + 30)
+		last_space_movement = world.time
 		return TRUE
 	return FALSE
