@@ -6,7 +6,7 @@
 //I'm not sure how much of this is necessary, but I would rather avoid issues.
 /mob/living/silicon/pai/proc/close_up()
 
-	last_special = world.time + 100
+	last_special = world.time + 20
 
 	if(src.loc == card)
 		return
@@ -38,7 +38,7 @@
 	remove_verb(src, /mob/living/silicon/pai/proc/pai_nom)
 
 /mob/living/silicon/pai/proc/open_up()
-	last_special = world.time + 100
+	last_special = world.time + 20
 
 	//I'm not sure how much of this is necessary, but I would rather avoid issues.
 	if(istype(card.loc,/obj/item/hardsuit_module))
