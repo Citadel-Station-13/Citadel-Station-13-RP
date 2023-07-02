@@ -92,6 +92,9 @@
 
 	var/people_eaten = 0
 
+	// space movement related
+	var/last_space_movement = 0
+
 /mob/living/silicon/pai/Initialize(mapload)
 	. = ..()
 	card = loc
