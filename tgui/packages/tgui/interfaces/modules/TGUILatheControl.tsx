@@ -1,6 +1,13 @@
+/**
+ * todo: implement ingredients
+ *
+ * @file
+ * @license MIT
+ */
+
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, LabeledList, Stack, Tabs } from "../../components";
+import { Button, Collapsible, Dropdown, LabeledList, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -200,10 +207,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
             <Stack.Item grow>
               <Section fill title="Designs">
                 {
-                  Object.values(data.designs.instances).filter((d) => d.category === category).map((d) => (
+                  Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
+                    d1.name.localeCompare(d2.name)
+                  ).map((d) => (
                     <LatheDesign
                       key={d.id}
-                      materialsContext={data.materialsContext}
                       design={d} />
                   ))
                 }
@@ -307,20 +315,49 @@ const LatheDesign = (props: LatheDesignProps, context) => {
       )}>
       <Stack>
         <Stack.Item grow={1}>
-          {
-            props.design.materials && (
-              <LabeledList>
-                {
-                  Object.entries(props.design.materials).map(([id, amt]) => (
-                    <LabeledList.Item label={data.materialsContext.materials[id].name} key={id} textAlign="right"
-                      color={data.materials[id] >= amt? null : "bad"}>
-                      {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                    </LabeledList.Item>
-                  ))
-                }
-              </LabeledList>
-            )
-          }
+          { (!!props.design.materials || !!props.design.material_parts) && (
+            <Table>
+              {
+                props.design.materials
+                    && Object.entries(props.design.materials).map(([id, amt]) => (
+                      <Table.Row key={id}>
+                        <Table.Cell />
+                        <Table.Cell>
+                          {data.materialsContext.materials[id].name}
+                        </Table.Cell>
+                        <Table.Cell textAlign="right" color={data.materials[id] >= amt? null : "bad"}>
+                          {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                        </Table.Cell>
+                      </Table.Row>
+                    ))
+              }
+              {props.design.material_parts
+                     && Object.entries(props.design.material_parts).map(([name, amt]) => {
+                       let selected = mats[name];
+                       let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
+                       return (
+                         <Table.Row key={name}>
+                           <Table.Cell>
+                             {name}
+                           </Table.Cell>
+                           <Table.Cell textAlign="right">
+                             <Dropdown
+                               display="inline"
+                               color="transparent"
+                               selected={selectedName}
+                               onSelected={(val) => setMats({ ...mats, name: val })}
+                               options={
+                                 Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
+                               } />
+                           </Table.Cell>
+                           <Table.Cell color={!selected || data.materials[selected] >= amt? null : "bad"}>
+                             {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                           </Table.Cell>
+                         </Table.Row>
+                       );
+                     })}
+            </Table>
+          )}
         </Stack.Item>
         <Stack.Item grow={1}>
           {
@@ -337,9 +374,6 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               </LabeledList>
             )
           }
-        </Stack.Item>
-        <Stack.Item grow={1}>
-          test
         </Stack.Item>
       </Stack>
     </Collapsible>
