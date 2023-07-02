@@ -102,8 +102,9 @@ SUBSYSTEM_DEF(materials)
 			"iconKey" = mat.tgui_icon_key,
 			"sheetAmount" = SHEET_MATERIAL_AMOUNT,
 		)
-		data[++data.len] = built
+		data[mat.id] = built
 	// todo: per-material sheetAmount
 	return list(
 		"materials" = data,
+		"sheetAmount" = SHEET_MATERIAL_AMOUNT,
 	)

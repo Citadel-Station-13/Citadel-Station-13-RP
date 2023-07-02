@@ -260,7 +260,6 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
 
 interface LatheDesignProps {
   design: Design;
-  materialsContext: MaterialsContext;
 }
 
 const LatheDesign = (props: LatheDesignProps, context) => {

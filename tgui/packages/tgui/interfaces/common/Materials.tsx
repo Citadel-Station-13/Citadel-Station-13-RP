@@ -15,6 +15,7 @@ export interface MaterialsContext {
 
 export interface FullMaterialsContext {
   materials: Record<string, DetailedMaterial>;
+  sheetAmount: number;
  }
 
 export interface Material {
