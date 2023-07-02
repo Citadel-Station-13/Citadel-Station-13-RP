@@ -248,8 +248,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 interface LatheQueueEntry {
   design: string; // design id
   amount: number; // how many
-  materials?: Record<string, string>; // key to id
-  ingredients?: IngredientsSelected; // dataset from Ingredients.tsx
+  materials: Record<string, string> | null; // key to id
+  ingredients: IngredientsSelected | null; // dataset from Ingredients.tsx
 }
 
 interface LatheQueuedProps {

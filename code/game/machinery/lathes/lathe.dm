@@ -526,6 +526,6 @@
 	return list(
 		"design" = design_id,
 		"amount" = amount,
-		"materials" = material_parts,
-		"ingredients" = ingredient_parts,
+		"materials" = length(material_parts)? material_parts : null,
+		"ingredients" = length(ingredient_parts)? ingredient_parts : null,
 	)

@@ -121,7 +121,7 @@
 	if(!islist(designs))
 		design = list(design)
 	for(var/datum/design/D as anything in designs)
-		built[++built.len] = D.ui_data_list()
+		built[D.id] = D.ui_data_list()
 		collated[D.category] = TRUE
 	var/list/flatten = list()
 	for(var/key in collated)
@@ -174,12 +174,7 @@
 	var/obj/machinery/lathe/lathe = host
 	var/list/got = list()
 	for(var/datum/lathe_queue_entry/entry as anything in lathe.queue)
-		got[++got.len] = list(
-			"design" = entry.design_id,
-			"amount" = entry.amount,
-			"materials" = entry.material_parts,
-			"ingredients" = entry.ingredient_parts,
-		)
+		got[++got.len] = entry.ui_data()
 	return got
 
 /datum/tgui_module/lathe_control/proc/ui_custom_update()
