@@ -7,7 +7,7 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, Dropdown, LabeledList, Stack, Table, Tabs } from "../../components";
+import { Button, Collapsible, Dropdown, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -270,15 +270,21 @@ interface LatheDesignProps {
   design: Design;
 }
 
+const areMaterialsChosen = (mats: Record<string, number>, chosen: Record<string, string>) => {
+  return Object.keys(mats).every((mat) => (mat in chosen));
+};
+
 const LatheDesign = (props: LatheDesignProps, context) => {
   const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
 
-  // / materials: key = material id
+  // materials: key = material id
   let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-mats`, {});
-  // / ingredients: key = ingredient id/value
+  // ingredients: key = ingredient id/value
   let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
 
-  let awaitingSelections = !!props.design.material_parts || !!props.design.ingredients;
+  // ingredients are currently unspported.
+  let awaitingSelections = !areMaterialsChosen(props.design.material_parts || {}, mats)
+  || !!props.design.ingredients;
 
   return (
     <Collapsible
@@ -315,65 +321,81 @@ const LatheDesign = (props: LatheDesignProps, context) => {
       )}>
       <Stack>
         <Stack.Item grow={1}>
-          { (!!props.design.materials || !!props.design.material_parts) && (
-            <Table>
+          { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
+            <Table width="100%">
+              <Table.Row>
+                <Table.Cell width="33%" />
+                <Table.Cell width="33%" />
+                <Table.Cell width="33%" />
+              </Table.Row>
               {
                 props.design.materials
                     && Object.entries(props.design.materials).map(([id, amt]) => (
                       <Table.Row key={id}>
                         <Table.Cell />
                         <Table.Cell>
-                          {data.materialsContext.materials[id].name}
+                          <div style={{
+                            "display": "inline-block",
+                            "padding-left": "0.5em",
+                            "width": "base em(100px)",
+                            "line-height": "base.em(17px)",
+                            "font-family": "Verdana, sans-serif",
+                            "font-size": "base.em(12px)",
+                          }}>
+                            {data.materialsContext.materials[id].name}
+                          </div>
                         </Table.Cell>
-                        <Table.Cell textAlign="right" color={data.materials[id] >= amt? null : "bad"}>
+                        <Table.Cell textAlign="center" color={data.materials[id] >= amt? null : "bad"}>
                           {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
                         </Table.Cell>
                       </Table.Row>
                     ))
               }
-              {props.design.material_parts
-                     && Object.entries(props.design.material_parts).map(([name, amt]) => {
-                       let selected = mats[name];
-                       let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
-                       return (
-                         <Table.Row key={name}>
-                           <Table.Cell>
-                             {name}
-                           </Table.Cell>
-                           <Table.Cell textAlign="right">
-                             <Dropdown
-                               display="inline"
-                               color="transparent"
-                               selected={selectedName}
-                               onSelected={(val) => setMats({ ...mats, name: val })}
-                               options={
-                                 Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
-                               } />
-                           </Table.Cell>
-                           <Table.Cell color={!selected || data.materials[selected] >= amt? null : "bad"}>
-                             {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
-                           </Table.Cell>
-                         </Table.Row>
-                       );
-                     })}
-            </Table>
-          )}
-        </Stack.Item>
-        <Stack.Item grow={1}>
-          {
-            props.design.reagents && (
-              <LabeledList>
-                {
-                  Object.entries(props.design.reagents).map(([id, amt]) => (
-                    <LabeledList.Item label={id} key={id} textAlign="right"
+              {props.design.material_parts && Object.entries(props.design.material_parts).map(([name, amt]) => {
+                let selected = mats[name];
+                let selectedName = (selected && data.materialsContext[selected]?.name) || "Select";
+                return (
+                  <Table.Row key={name}>
+                    <Table.Cell>
+                      {name}
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Dropdown
+                        width="100%"
+                        color="transparent"
+                        selected={selectedName}
+                        onSelected={(val) => {
+                          let newMats = { ...mats };
+                          newMats[name] = val;
+                          setMats(newMats);
+                        }}
+                        options={
+                          Object.keys(data.materials).map((id) => data.materialsContext.materials[id].name)
+                        } />
+                    </Table.Cell>
+                    <Table.Cell textAlign="center"
+                      color={!selected || data.materials[selected] >= amt? null : "bad"}>
+                      {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                    </Table.Cell>
+                  </Table.Row>
+                );
+              })}
+              {props.design.reagents && (
+                Object.entries(props.design.reagents).map(([id, amt]) => (
+                  <Table.Row key={id}>
+                    <Table.Cell />
+                    <Table.Cell>
+                      {id}
+                    </Table.Cell>
+                    <Table.Cell textAlign="center"
                       color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
                       {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
-                    </LabeledList.Item>
-                  ))
-                }
-              </LabeledList>
-            )
-          }
+                    </Table.Cell>
+                  </Table.Row>
+                ))
+              )}
+            </Table>
+          )}
         </Stack.Item>
       </Stack>
     </Collapsible>
