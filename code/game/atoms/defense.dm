@@ -321,7 +321,7 @@
 	// do da funny logic
 	deconstructed(method)
 	// drop things after so things that rely on having objects don't break
-	drop_products(method, atom/where)
+	drop_products(method, where)
 	// goodbye, cruel world
 	qdel(src)
 

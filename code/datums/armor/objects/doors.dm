@@ -1,6 +1,6 @@
 /datum/armor/door
 	melee_deflect = 5
-	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_LOW)
+	melee_tier = ARMOR_BARELY_BEATS(MELEE_TIER_LIGHT)
 	melee_soak = 5
 	melee = 0.2
 

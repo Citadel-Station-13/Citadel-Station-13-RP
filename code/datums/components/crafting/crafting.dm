@@ -118,10 +118,10 @@
 	if(!isturf(a.loc))
 		return
 
-	for(var/atom/movable/AM in range(radius_range, a))
-		if(AM.obj_flags & OBJ_HOLOGRAM)
+	for(var/obj/O in range(radius_range, a))
+		if(O.obj_flags & OBJ_HOLOGRAM)
 			continue
-		. += AM
+		. += O
 
 /datum/component/personal_crafting/proc/get_surroundings(atom/a)
 	. = list()

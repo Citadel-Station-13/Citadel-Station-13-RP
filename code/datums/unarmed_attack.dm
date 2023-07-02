@@ -144,10 +144,8 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/unarmed_attack/bite
 	attack_verb = list("bit")
 	attack_sound = 'sound/weapons/bite.ogg'
-	shredding = 0
-	damage = 0
-	sharp = 0
-	edge = 0
+	damage = 5
+	damage_mode = NONE
 
 /datum/unarmed_attack/bite/event1
 
@@ -304,9 +302,6 @@ GLOBAL_LIST_EMPTY(unarmed_attack_cache)
 /datum/unarmed_attack/light_strike
 	attack_noun = list("tap","light strike")
 	attack_verb = list("tapped", "lightly struck")
-	damage = 3
+	damage = 5
+	damagE_mode = NONE
 	damage_type = AGONY
-	shredding = 0
-	damage = 0
-	sharp = 0
-	edge = 0
