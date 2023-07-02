@@ -22,8 +22,8 @@
 	laser = 0.25
 	energy = 0.35
 	bomb = 0.35
-	bio = 0.6
-	rad = 0.6
+	bio = 1.0
+	rad = 0.9
 
 /datum/armor/exploration/space/pathfinder
 	melee = 0.5
