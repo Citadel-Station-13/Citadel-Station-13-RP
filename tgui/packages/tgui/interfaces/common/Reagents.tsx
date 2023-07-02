@@ -1,12 +1,16 @@
 /**
  * Collection of common reagent things.
  *
+ * todo: make array a dict instead for fast lookup?
+ *
  * @file
  * @license MIT
  */
 
 import { InfernoNode } from "inferno";
 import { LabeledList, NoticeBox, Section } from "../../components";
+
+export const REAGENT_STORAGE_UNIT_NAME = "u";
 
 interface ReagentContentsProps {
   buttons?: InfernoNode;

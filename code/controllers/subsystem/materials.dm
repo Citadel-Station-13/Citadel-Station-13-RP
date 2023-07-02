@@ -88,13 +88,14 @@ SUBSYSTEM_DEF(materials)
  * * FullMaterialsContext
  *
  * @params
- * * ids - material ids.
+ * * ids - material ids. defaults to all.
  * * full - for FullMaterialsContext? usually not needed.
  */
 /datum/controller/subsystem/materials/proc/tgui_materials_context(list/ids, full = FALSE)
 	var/list/data = list()
-	for(var/id in ids)
-		var/datum/material/mat = get_material(id)
+	// a hack to make this default to all if not specified.
+	for(var/id in ids || material_lookup)
+		var/datum/material/mat = material_lookup[id]
 		var/list/built = list(
 			"name" = mat.display_name || mat.name,
 			"id" = mat.id,

@@ -41,12 +41,13 @@ interface IngredientsDisplayProps {
   ingredients: IngredientsAvailable;
   lazy: BooleanLike;
   title?: string;
+  vertical: boolean;
 }
 
 export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
   return (
     <Section title={props.title || "Ingredients"}>
-      test
+      Unimplemented
     </Section>
   );
 };
@@ -56,13 +57,14 @@ interface IngredientsProps {
   available: IngredientsAvailable;
   selection: BooleanLike;
   selected?: IngredientsSelected;
+  vertical: boolean;
   select: (number, string) => void; // called with (index, data).
 }
 
 export const Ingredients = (props: IngredientsProps, context) => {
   return (
     <Section>
-      test
+      Unimplemented
     </Section>
   );
 };

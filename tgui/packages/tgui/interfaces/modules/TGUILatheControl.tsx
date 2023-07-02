@@ -1,13 +1,13 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, Stack, Tabs } from "../../components";
+import { Button, Collapsible, LabeledList, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialsContext, MaterialStorage } from "../common/Materials";
-import { ReagentContents, ReagentContentsData } from "../common/Reagents";
+import { MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME } from "../common/Materials";
+import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 
 interface TGUILatheControlProps {
 
@@ -81,26 +81,30 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   switch (resourcesSelect) {
     case "Materials":
       resourceRender = (
-        <MaterialStorage horizontal stored={data.materials} context={data.materialsContext}
-          eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
+        <Section>
+          <MaterialStorage horizontal stored={data.materials} context={data.materialsContext}
+            eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
+        </Section>
       );
       break;
     case "Reagents":
       resourceRender = (
-        <ReagentContents
-          reagents={data.reagents}
-          reagentButtons={(id) => (
-            [1, 5, 10, 20, 50].map(
-              (n) => (
-                <Button
-                  icon="minus"
-                  key={n}
-                  content={`-${n}`}
-                  onClick={() => act('disposeReagent', { id: id, amonut: n })} />
+        <Section>
+          <ReagentContents
+            reagents={data.reagents}
+            reagentButtons={(id) => (
+              [1, 5, 10, 20, 50].map(
+                (n) => (
+                  <Button
+                    icon="minus"
+                    key={n}
+                    content={`-${n}`}
+                    onClick={() => act('disposeReagent', { id: id, amonut: n })} />
 
+                )
               )
-            )
-          )} />
+            )} />
+        </Section>
       );
       break;
     case "Items":
@@ -113,7 +117,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   }
 
   return (
-    <Modular window={windowProps}>
+    <Modular window={windowProps} scrollable>
       <Stack vertical fill>
         <Stack.Item>
           <Stack fluid>
@@ -302,7 +306,43 @@ const LatheDesign = (props: LatheDesignProps, context) => {
           }
         </>
       )}>
-      test
+      <Stack>
+        <Stack.Item grow={1}>
+          {
+            props.design.materials && (
+              <LabeledList>
+                {
+                  Object.entries(props.design.materials).map(([id, amt]) => (
+                    <LabeledList.Item label={data.materialsContext.materials[id].name} key={id} textAlign="right"
+                      color={data.materials[id] >= amt? null : "bad"}>
+                      {`${amt}${MATERIAL_STORAGE_UNIT_NAME}`}
+                    </LabeledList.Item>
+                  ))
+                }
+              </LabeledList>
+            )
+          }
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          {
+            props.design.reagents && (
+              <LabeledList>
+                {
+                  Object.entries(props.design.reagents).map(([id, amt]) => (
+                    <LabeledList.Item label={id} key={id} textAlign="right"
+                      color={(data.reagents.find((r) => r.id === id)?.amount || 0) >= amt? null : "bad"}>
+                      {`${amt}${REAGENT_STORAGE_UNIT_NAME}`}
+                    </LabeledList.Item>
+                  ))
+                }
+              </LabeledList>
+            )
+          }
+        </Stack.Item>
+        <Stack.Item grow={1}>
+          test
+        </Stack.Item>
+      </Stack>
     </Collapsible>
   );
 };
