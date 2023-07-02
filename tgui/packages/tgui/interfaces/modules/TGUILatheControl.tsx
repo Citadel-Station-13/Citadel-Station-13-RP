@@ -1,6 +1,6 @@
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Stack, Tabs } from "../../components";
+import { Button, Collapsible, Stack, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
@@ -197,9 +197,10 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               <Section fill title="Designs">
                 {
                   Object.values(data.designs.instances).filter((d) => d.category === category).map((d) => (
-                    <>
-                      {d.name}
-                    </>
+                    <LatheDesign
+                      key={d.id}
+                      materialsContext={data.materialsContext}
+                      design={d} />
                   ))
                 }
               </Section>
@@ -256,15 +257,52 @@ const LatheQueued = (props: LatheQueuedProps, context) => {
 interface LatheDesignProps {
   design: Design;
   materialsContext: MaterialsContext;
-  printButtonAct?: (string, number) => void; // id,
-  printButtonText?: string;
 }
 
 const LatheDesign = (props: LatheDesignProps, context) => {
+  const { data, act, moduleID } = useModule<TGUILatheControlData>(context);
+
+  // / materials: key = material id
+  let [mats, setMats] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-mats`, {});
+  // / ingredients: key = ingredient id/value
+  let [inds, setInds] = useLocalState<Record<string, string>>(context, `${moduleID}-${props.design.id}-inds`, {});
+
+  let awaitingSelections = !!props.design.material_parts || !!props.design.ingredients;
 
   return (
-    <>
+    <Collapsible
+      title={props.design.name}
+      color="transparent"
+      buttons={awaitingSelections? (
+        <Button
+          color="transparent"
+          textColor="red"
+          content="Selections required." />
+      ) : (
+        <>
+          {[1, 5, 10].map((n) => (
+            <Button
+              key={n}
+              icon="plus"
+              content={`${n}`}
+              onClick={() => act('enqueue', { id: props.design.id, amount: n, immediate: false })} />
+          ))}
+          {
+            data.printing? (
+              <Button
+                icon="play"
+                content="Busy"
+                disabled />
+            ) : (
+              <Button.Confirm
+                icon="play"
+                content="Print"
+                onClick={() => act('enqueue', { id: props.design.id, amount: 1, immediate: true })} />
+            )
+          }
+        </>
+      )}>
       test
-    </>
+    </Collapsible>
   );
 };
