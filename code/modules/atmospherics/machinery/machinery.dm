@@ -173,7 +173,7 @@ Pipelines + Other Objects -> Pipe network
 	return FALSE
 
 // Deconstruct into a pipe item.
-/obj/machinery/atmospherics/drop_products(method)
+/obj/machinery/atmospherics/drop_products(method, atom/where)
 	if(construction_type)
 		var/obj/item/pipe/I = new construction_type(loc, null, null, src)
 		I.setPipingLayer(piping_layer)

@@ -501,7 +501,7 @@
 			return panel_open? dyntool_image_forward(TOOL_SCREWDRIVER) : dyntool_image_backward(TOOL_SCREWDRIVER)
 	return ..()
 
-/obj/machinery/chemical_dispenser/drop_products(method)
+/obj/machinery/chemical_dispenser/drop_products(method, atom/where)
 	. = ..()
 	if(synthesizers && !synthesizers_swappable)
 		QDEL_LIST(synthesizers) // nope

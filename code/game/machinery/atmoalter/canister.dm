@@ -229,7 +229,7 @@ update_flag
 	if(exposed_temperature > temperature_resistance)
 		inflict_atom_damage(5)
 
-/obj/machinery/portable_atmospherics/canister/drop_products(method)
+/obj/machinery/portable_atmospherics/canister/drop_products(method, atom/where)
 	. = ..()
 	new /obj/item/stack/material/steel(drop_location(), method == ATOM_DECONSTRUCT_DISASSEMBLED? 10 : 7)
 

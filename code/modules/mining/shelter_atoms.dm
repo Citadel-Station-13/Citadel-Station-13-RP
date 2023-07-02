@@ -260,7 +260,7 @@
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/drop_products(method)
+/obj/structure/fans/drop_products(method, atom/where)
 	. = ..()
 	new buildstacktype(drop_location(), buildstackamount)
 

@@ -154,7 +154,7 @@
 	..()
 	return
 
-/obj/structure/grille/drop_products(method)
+/obj/structure/grille/drop_products(method, atom/where)
 	. = ..()
 	drop_product(method, new /obj/item/stack/rods(null, method == ATOM_DECONSTRUCT_DISASSEMBLED? 2 : 1) , drop_location())
 

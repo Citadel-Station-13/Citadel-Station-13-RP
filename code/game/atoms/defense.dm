@@ -234,6 +234,15 @@
 		atom_destruction()
 
 /**
+ * directly sets max integrity
+ *
+ * @params
+ * * amount - how much to set to
+ */
+/atom/proc/set_max_integrity(amount)
+	#warn impl
+
+/**
  * adjusts integrity - routes directly to [damage_integrity] and [heal_integrity]
  *
  * @params
@@ -247,6 +256,17 @@
 		return heal_integrity(amount, gradual)
 	else
 		return damage_integrity(amount, gradual)
+
+/**
+ * adjusts max integrity - will automatically reduce integrity if it's above max. will call [damage_integrity].
+ *
+ * @params
+ * * amount - how much to adjust
+ * * damaging - is this considered damage, if we end up reducing integrity?
+ * * gradual - burst or gradual?
+ */
+/atom/proc/set_max_integrity(amount, damaging, gradual)
+	#warn impl
 
 /**
  * percent integrity, rounded.
@@ -301,7 +321,7 @@
 	// do da funny logic
 	deconstructed(method)
 	// drop things after so things that rely on having objects don't break
-	drop_products(method)
+	drop_products(method, atom/where)
 	// goodbye, cruel world
 	qdel(src)
 
@@ -321,8 +341,9 @@
  *
  * @params
  * * method - how we were deconstructed
+ * * where - where to drop products; set in base if null to drop_location().
  */
-/atom/proc/drop_products(method)
+/atom/proc/drop_products(method, atom/where = drop_location())
 	return
 
 /**

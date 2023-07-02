@@ -167,7 +167,7 @@
 /obj/structure/window/reinforced/holowindow
 	allow_deconstruct = FALSE
 
-/obj/structure/window/reinforced/holowindow/drop_products(method)
+/obj/structure/window/reinforced/holowindow/drop_products(method, atom/where)
 	return
 /obj/structure/window/reinforced/holowindow/shatter_feedback()
 	playsound(src, "shatter", 70, 1)

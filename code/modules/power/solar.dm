@@ -58,17 +58,16 @@ GLOBAL_LIST_EMPTY(solars_list)
 	if(!S)
 		S = new /obj/item/solar_assembly(src)
 		S.glass_type = /obj/item/stack/material/glass
-		S.anchored = TRUE
-	S.loc = src
+	else
+		S.forceMove(src)
 	if(S.glass_type == /obj/item/stack/material/glass/reinforced) //if the panel is in reinforced glass
-		health *= 2 								 //this need to be placed here, because panels already on the map don't have an assembly linked to
+		set_max_integrity(integrity_max * 2)
+		set_integrity(integrity * 2)
 	update_icon()
 
-
-
-/obj/machinery/power/solar/attackby(obj/item/W, mob/user)
-
-	if(W.is_crowbar())
+/obj/machinery/power/solar/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	// todo: tool act
+	if(I.is_crowbar())
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		user.visible_message("<span class='notice'>[user] begins to take the glass off the solar panel.</span>")
 		if(do_after(user, 50))
@@ -79,25 +78,17 @@ GLOBAL_LIST_EMPTY(solars_list)
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			user.visible_message("<span class='notice'>[user] takes the glass off the solar panel.</span>")
 			qdel(src)
-		return
-	else if (W)
-		src.add_fingerprint(user)
-		src.health -= W.damage_force
-		src.healthcheck()
-	..()
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
-
-/obj/machinery/power/solar/proc/healthcheck()
-	if (src.health <= 0)
-		if(!(machine_stat & BROKEN))
-			broken()
+/obj/machinery/solar/drop_products(method, atom/where)
+	. = ..()
+	switch(method)
+		if(ATOM_DECONSTRUCT_DISASSEMBLED)
+			new /obj/item/stack/material/glass(where, 2)
 		else
-			new /obj/item/material/shard(src.loc)
-			new /obj/item/material/shard(src.loc)
-			qdel(src)
-			return
-	return
-
+			for(var/i in 1 to 2)
+				new /obj/item/material/shard(where)
 
 /obj/machinery/power/solar/update_icon()
 	..()
@@ -143,12 +134,16 @@ GLOBAL_LIST_EMPTY(solars_list)
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()
 
-/obj/machinery/power/solar/proc/broken()
+/obj/machinery/power/solar/atom_break()
+	. = ..()
 	machine_stat |= BROKEN
 	unset_control()
 	update_icon()
-	return
 
+/obj/machinery/power/solar/atom_fix()
+	. = ..()
+	machine_stat &= ~(BROKEN)
+	update_icon()
 
 /obj/machinery/power/solar/legacy_ex_act(severity)
 	switch(severity)

@@ -3,9 +3,6 @@
 	icon = 'icons/obj/machines/research.dmi'
 	icon_state = "server"
 
-	integrity = 100
-	integrity_max = 100
-
 	var/datum/research/files
 	///List of R&D consoles with upload to server access.
 	var/list/id_with_upload = list()
@@ -18,6 +15,7 @@
 	var/produces_heat = TRUE
 	idle_power_usage = 800
 	var/delay = 10
+	var/health = 100
 	req_access = list(ACCESS_SCIENCE_RD) //Only the R&D can change server settings.
 	circuit = /obj/item/circuitboard/rdserver
 
