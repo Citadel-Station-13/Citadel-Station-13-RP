@@ -76,6 +76,94 @@
 /obj/item/gripper/CtrlClick(mob/user)
 	drop_item()
 
+/obj/item/gripper/attack_self(mob/user)
+	. = ..()
+	if(.)
+		return
+	if(wrapped)
+		return wrapped.attack_self(user)
+	return ..()
+
+/obj/item/gripper/attackby(obj/item/I, mob/living/user, list/params, clickchain_flags, damage_multiplier)
+	// todo: items should have a melee_receive_chain or something that
+	//       lets us arbitrarily route melee_attack_chain to something else.
+	if(!isnull(wrapped))
+		. = wrapped.attackby(I, user, params, clickchain_flags, damage_multiplier)
+		if(.)
+			return
+		return clickchain_flags | I.afterattack(src, user, clickchain_flags, params)
+	return ..()
+
+/obj/item/gripper/melee_attack_chain(atom/target, mob/user, clickchain_flags, list/params)
+	if(!isnull(wrapped))
+		return wrapped.melee_attack_chain(target, uesr, clickchain_flags | CLICKCHAIN_DO_NOT_ATTACK, params)
+	return ..()
+
+/obj/item/gripper/verb/drop_item()
+	set name = "Drop Item"
+	set desc = "Release an item from your magnetic gripper."
+	set category = "Robot Commands"
+
+	if(!wrapped)
+		return
+
+	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
+	remove_item(drop_location())
+
+/obj/item/gripper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(istype(target,/obj/item)) //Check that we're not pocketing a mob.
+		//...and that the item is not in a container.
+		if(!isturf(target.loc))
+			return
+
+		var/obj/item/I = target
+
+		if(I.anchored)
+			to_chat(user,"<span class='notice'>You are unable to lift \the [I] from \the [I.loc].</span>")
+			return
+
+		//Check if the item is blacklisted.
+		var/grab = 0
+		for(var/typepath in can_hold)
+			if(istype(I,typepath))
+				grab = 1
+				break
+
+		//We can grab the item, finally.
+		if(grab)
+			to_chat(user, "You collect \the [I].")
+			insert_item(I)
+			return
+		else
+			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
+
+	else if(istype(target,/obj/machinery/power/apc))
+		var/obj/machinery/power/apc/A = target
+		if(A.opened)
+			if(A.cell)
+
+				insert_item(A.cell)
+				A.cell.add_fingerprint(user)
+				A.cell.update_icon()
+				A.cell = null
+
+				A.charging = 0
+				A.update_icon()
+
+				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+
+	else if(istype(target,/mob/living/silicon/robot))
+		var/mob/living/silicon/robot/A = target
+		if(A.opened)
+			if(A.cell)
+				insert_item(A.cell)
+				A.cell.add_fingerprint(user)
+				A.cell.update_icon()
+				A.updateicon()
+				A.cell = null
+
+				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+
 /obj/item/gripper/omni
 	name = "omni gripper"
 	desc = "A strange grasping tool that can hold anything a human can, but still maintains the limitations of application its more limited cousins have."
@@ -213,15 +301,6 @@
 		/obj/item/material/gravemarker
 		)
 
-/obj/item/gripper/no_use/organ
-	name = "organ gripper"
-	icon_state = "gripper-flesh"
-	desc = "A specialized grasping tool used to preserve and manipulate organic material."
-
-	can_hold = list(
-		/obj/item/organ
-		)
-
 /obj/item/gripper/no_use/organ/Entered(var/atom/movable/AM)
 	..()
 	if(istype(AM, /obj/item/organ))
@@ -233,6 +312,11 @@
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
 		O.unpreserve(GRIPPER_TRAIT)
+
+/obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
+
+/obj/item/gripper/no_use/attack_self(mob/user)
+	return
 
 /obj/item/gripper/no_use/organ/robotics
 	name = "robotics organ gripper"
@@ -258,14 +342,6 @@
 		/obj/item/mecha_parts/mecha_tracking
 		)
 
-/obj/item/gripper/no_use //Used when you want to hold and put items in other things, but not able to 'use' the item
-
-/obj/item/gripper/no_use/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	return
-
 /obj/item/gripper/no_use/loader //This is used to disallow building with metal.
 	name = "sheet loader"
 	desc = "A specialized loading device, designed to pick up and insert sheets of materials inside machines."
@@ -275,106 +351,11 @@
 		/obj/item/stack/material
 		)
 
-/obj/item/gripper/attack_self(mob/user)
-	. = ..()
-	if(.)
-		return
-	if(wrapped)
-		return wrapped.attack_self(user)
-	return ..()
+/obj/item/gripper/no_use/organ
+	name = "organ gripper"
+	icon_state = "gripper-flesh"
+	desc = "A specialized grasping tool used to preserve and manipulate organic material."
 
-/obj/item/gripper/attackby(var/obj/item/O, var/mob/user)
-	if(wrapped) // We're interacting with the item inside. If you can hold a cup with 2 fingers and stick a straw in it, you could do that with a gripper and another robotic arm.
-		var/resolved = wrapped.attackby(O, user)
-		if(!resolved && wrapped && O)
-			O.afterattack(wrapped,user,1)
-		return resolved
-	return ..()
-
-/obj/item/gripper/verb/drop_item()
-	set name = "Drop Item"
-	set desc = "Release an item from your magnetic gripper."
-	set category = "Robot Commands"
-
-	if(!wrapped)
-		return
-
-	to_chat(usr, "<span class='danger'>You drop \the [wrapped].</span>")
-	remove_item(drop_location())
-
-/obj/item/gripper/attack_mob(mob/target, mob/user, clickchain_flags, list/params, mult, target_zone, intent)
-	if(wrapped) 	//The damage_force of the wrapped obj gets set to zero during the attack() and afterattack().
-		force_holder = wrapped.damage_force
-		wrapped.damage_force = 0
-		target.attackby(wrapped, user, params, clickchain_flags)	//attackby reportedly gets procced by being clicked on, at least according to Anewbe.
-		return 1
-	return 0
-
-/obj/item/gripper/afterattack(atom/target, mob/user, clickchain_flags, list/params)
-	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))
-		return // This will prevent them using guns at range but adminbuse can add them directly to modules, so eh.
-
-
-	if(wrapped) //Already have an item.
-		//Pass the attack on to the target. This might delete/relocate wrapped.
-		var/resolved = target.attackby(wrapped, user)
-		if(!resolved && wrapped && target)
-			wrapped.afterattack(target,user,1)
-		//wrapped's damage_force was set to zero.  This resets it to the value it had before.
-		if(wrapped)
-			wrapped.damage_force = force_holder
-		force_holder = null
-
-	else if(istype(target,/obj/item)) //Check that we're not pocketing a mob.
-
-		//...and that the item is not in a container.
-		if(!isturf(target.loc))
-			return
-
-		var/obj/item/I = target
-
-		if(I.anchored)
-			to_chat(user,"<span class='notice'>You are unable to lift \the [I] from \the [I.loc].</span>")
-			return
-
-		//Check if the item is blacklisted.
-		var/grab = 0
-		for(var/typepath in can_hold)
-			if(istype(I,typepath))
-				grab = 1
-				break
-
-		//We can grab the item, finally.
-		if(grab)
-			to_chat(user, "You collect \the [I].")
-			insert_item(I)
-			return
-		else
-			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
-
-	else if(istype(target,/obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = target
-		if(A.opened)
-			if(A.cell)
-
-				insert_item(A.cell)
-				A.cell.add_fingerprint(user)
-				A.cell.update_icon()
-				A.cell = null
-
-				A.charging = 0
-				A.update_icon()
-
-				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
-
-	else if(istype(target,/mob/living/silicon/robot))
-		var/mob/living/silicon/robot/A = target
-		if(A.opened)
-			if(A.cell)
-				insert_item(A.cell)
-				A.cell.add_fingerprint(user)
-				A.cell.update_icon()
-				A.updateicon()
-				A.cell = null
-
-				user.visible_message("<span class='danger'>[user] removes the power cell from [A]!</span>", "You remove the power cell.")
+	can_hold = list(
+		/obj/item/organ
+		)
