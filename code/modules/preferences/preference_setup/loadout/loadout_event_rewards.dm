@@ -50,4 +50,4 @@
 /datum/gear/event_reward/nka_miaphus
 	name = "Miaphus'irra Campagian Medal"
 	path = /obj/item/clothing/accessory/medal/nka_miaphus
-	ckeywhitelist = list("trubus", "alphamach", "monara", "pixel-the-kitty", "biteroankles", "jacksontmurphy", "slybrowngote", "r0adic", "mazian")
+	ckeywhitelist = list("trubus", "alphamach", "monara", "pixelthekitty", "biteroankles", "jacksontmurphy", "slybrowngote", "r0adic", "mazian")
