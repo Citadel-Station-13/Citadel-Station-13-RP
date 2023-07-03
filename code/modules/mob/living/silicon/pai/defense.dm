@@ -1,15 +1,3 @@
-//Overriding this will stop a number of headaches down the track.
-/mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.damage_force)
-		visible_message("<span class='danger'>[user.name] attacks [src] with [W]!</span>")
-		src.adjustBruteLoss(W.damage_force)
-		src.update_health()
-	else
-		visible_message("<span class='warning'>[user.name] bonks [src] harmlessly with [W].</span>")
-	spawn(1)
-		if(stat != 2) close_up()
-	return
-
 /mob/living/silicon/pai/attackby(obj/item/W as obj, mob/user as mob)
 	var/obj/item/card/id/ID = W.GetID()
 	if(ID)
@@ -28,6 +16,8 @@
 		else if(istype(W, /obj/item/card/id) && idaccessible == 0)
 			to_chat(user, "<span class='notice'>[src] is not accepting access modifcations at this time.</span>")
 			return
+	else
+		. = ..()
 
 /mob/living/silicon/pai/attack_hand(mob/user, list/params)
 	if(user.a_intent == INTENT_HELP)
