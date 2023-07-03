@@ -2,4 +2,4 @@
 	name = "sheetmaterials"
 
 /datum/asset/spritesheet/materials/create_spritesheets()
-	InsertAll("material-stack-", 'icons/interface/materials.dmi')
+	InsertAll("stack-", 'icons/interface/materials.dmi')

@@ -9,6 +9,12 @@ import { InfernoNode } from 'inferno';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
+// spritesheet name
+export const MATERIAL_SPRITESHEET_NAME = "sheetmaterials";
+// spritesheet icon size key to use
+export const MATERIAL_SPRITESHEET_SIZEKEY = "32x32";
+// full spritesheet part of the .css class to use
+export const MATERIAL_SPRITESHEET_CSS = `${MATERIAL_SPRITESHEET_NAME}${MATERIAL_SPRITESHEET_SIZEKEY}`;
 
 export interface MaterialsContext {
   materials: Record<string, Material>;
@@ -77,14 +83,28 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
           <b>No materials loaded.</b>
         </Box>
       ) : (
-        <Flex>
+        <Flex wrap>
           {Object.entries(props.materialList).sort(
             ([a1, a2], [b1, b2]) => a1.localeCompare(b1)
           ).map(([id, amt]) => {
 
             return (
-              <Flex.Item key={id}>
-                Unimplemented
+              <Flex.Item key={id} width="80px">
+                <Flex direction="column" align="center">
+                  <Flex.Item>
+                    <Box
+                      className={classes([
+                        MATERIAL_SPRITESHEET_CSS,
+                        `stack-${props.materialContext.materials[id].iconKey}`,
+                      ])} />
+                  </Flex.Item>
+                  <Flex.Item>
+                    test
+                  </Flex.Item>
+                  <Flex.Item>
+                    {props.materialButtons && props.materialButtons(id)}
+                  </Flex.Item>
+                </Flex>
               </Flex.Item>
             );
           })}

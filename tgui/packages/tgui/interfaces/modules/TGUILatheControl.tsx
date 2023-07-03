@@ -394,9 +394,9 @@ const LatheDesign = (props: LatheDesignProps, context) => {
       { (!!props.design.materials || !!props.design.material_parts || !!props.design.reagents) && (
         <Table>
           <Table.Row>
-            <Table.Cell />
-            <Table.Cell />
-            <Table.Cell />
+            <Table.Cell width="33%" />
+            <Table.Cell width="33%" />
+            <Table.Cell width="33%" />
           </Table.Row>
           {
             props.design.materials
