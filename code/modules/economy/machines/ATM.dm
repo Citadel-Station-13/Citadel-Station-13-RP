@@ -132,7 +132,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 		new_list["time"] = T.time
 		new_list["source_terminal"] = T.source_terminal
 		transaction_num++
-		passed_list["[transaction_num]"] = new_list.Copy()
+		passed_list["[transaction_num]"] = new_list
 	return passed_list
 
 /obj/machinery/atm/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
@@ -166,13 +166,25 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 
 /obj/machinery/atm/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
+	var/mob/living/carbon/human/user = usr
 	switch(action)
 		if("attempt_authentication")
-			attempt_authentication(usr, text2num(params["pin"]), text2num(params["acc"]))
+			attempt_authentication(user, text2num(params["pin"]), text2num(params["acc"]))
 		if("eject_card")
-			authenticated_account = null
-			account_security_level = 0
-			release_held_id(usr)
+			if(held_card)
+				authenticated_account = null
+				account_security_level = 0
+				release_held_id(user)
+			else
+				//this might happen if the user had the browser window open when somebody emagged it
+				if(emagged > 0)
+					to_chat(user, "<font color='red'>[icon2html(thing = src, target = user)] The ATM card reader rejected your ID because this machine has been sabotaged!</font>")
+				else
+					var/obj/item/I = user.get_active_held_item()
+					if (istype(I, /obj/item/card/id))
+						if(!user.attempt_insert_item_for_installation(I, src))
+							return
+						held_card = I
 		if("balance_statement")
 			if(authenticated_account)
 				var/obj/item/paper/R = new(src.loc)
@@ -204,7 +216,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 					var/target_account_number = text2num(params["target_acc_number"])
 					var/transfer_purpose = params["purpose"]
 					if(charge_to_account(target_account_number, authenticated_account.owner_name, transfer_purpose, machine_id, transfer_amount))
-						to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='info'>Funds transfer successful.</span>")
+						to_chat(user, "[icon2html(thing = src, target = user)]<span class='info'>Funds transfer successful.</span>")
 						authenticated_account.money -= transfer_amount
 
 						//create an entry in the account transaction log
@@ -217,9 +229,9 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 						T.amount = "([transfer_amount])"
 						authenticated_account.transaction_log.Add(T)
 					else
-						to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>Funds transfer failed.</span>")
+						to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>Funds transfer failed.</span>")
 				else
-					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>You don't have enough funds to do that!</span>")
+					to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>You don't have enough funds to do that!</span>")
 		if("change_security_level")
 			if(authenticated_account)
 				var/new_sec_level = max( min(text2num(params["new_security_level"]), 2), 0)
@@ -237,9 +249,9 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 					authenticated_account.money -= amount
 
 					if(text2num(params["form_ewallet"]))
-						spawn_ewallet(amount,src.loc,usr)
+						spawn_ewallet(amount,src.loc,user)
 					else
-						spawn_money(amount,src.loc,usr)
+						spawn_money(amount,src.loc,user)
 
 					//create an entry in the account transaction log
 					var/datum/transaction/T = new()
@@ -251,7 +263,7 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 					T.time = stationtime2text()
 					authenticated_account.transaction_log.Add(T)
 				else
-					to_chat(usr, "[icon2html(thing = src, target = usr)]<span class='warning'>You don't have enough funds to do that!</span>")
+					to_chat(user, "[icon2html(thing = src, target = user)]<span class='warning'>You don't have enough funds to do that!</span>")
 
 		if ("print_transaction")
 			if(authenticated_account)
@@ -292,18 +304,6 @@ GLOBAL_LIST_INIT(atm_sounds, list('sound/items/polaroid1.ogg', 'sound/items/pola
 				R.stamps += "<HR><i>This paper has been stamped by the Automatic Teller Machine.</i>"
 
 				playsound(loc, pick(GLOB.atm_sounds), 50, 1)
-
-		if("insert_card")
-			if(!held_card)
-				//this might happen if the user had the browser window open when somebody emagged it
-				if(emagged > 0)
-					to_chat(usr, "<font color='red'>[icon2html(thing = src, target = usr)] The ATM card reader rejected your ID because this machine has been sabotaged!</font>")
-				else
-					var/obj/item/I = usr.get_active_held_item()
-					if (istype(I, /obj/item/card/id))
-						if(!usr.attempt_insert_item_for_installation(I, src))
-							return
-						held_card = I
 		if("logout")
 			authenticated_account = null
 			account_security_level = 0

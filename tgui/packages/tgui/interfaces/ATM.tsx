@@ -2,13 +2,30 @@ import { Section, Flex, Box, Button, Input, LabeledList, Collapsible, Divider } 
 import { Window } from "../layouts";
 import { useBackend, useLocalState } from "../backend";
 
-const securityArray = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
+const ACCOUNT_SECURITY_DESCRIPTIONS: AccountSecurityDescription[] = [{ "level": 0, "desc": "Only account number required, automatically scanned from ID in proximity." },
   { "level": 1, "desc": "Account number and PIN required; ID autoscan disabled." },
   { "level": 2, "desc": "Inserted ID card, Account number, and PIN required." }];
 
-const SECURITY_LEVEL_MIN = 0;
-const SECURITY_LEVEL_MED = 1;
-const SECURITY_LEVEL_MAX = 2;
+enum AccountSecurityLevels {
+  SECURITY_LEVEL_MIN = 0,
+  SECURITY_LEVEL_MED = 1,
+  SECURITY_LEVEL_MAX = 2}
+
+interface AccountSecurityDescription {
+  level: number,
+  desc: String
+}
+
+type AccountTransactionLog = Record<string, AccountTransactionEntry>;
+
+interface AccountTransactionEntry {
+  target_name: string;
+  purpose: string;
+  amount: number;
+  date: string;
+  time: string;
+  source_terminal: string;
+}
 
 interface ATMContext {
   "incorrect_attempts" : number,
@@ -17,7 +34,7 @@ interface ATMContext {
 	"emagged" : boolean,
 	"authenticated_acc" : boolean,
 	"account_name" : String,
-	"transaction_log": [],
+	"transaction_log": AccountTransactionLog,
 	"account_security_level" : number,
 	"current_account_security_level" : number,
 	"acc_suspended": boolean,
@@ -32,17 +49,21 @@ export const ATM = (props, context) => {
   const { act, data } = useBackend<ATMContext>(context);
   if (!data.authenticated_acc) {
     return (
-      <Window resizable width={400} height={400} scrollable>
-        <Section title={data.machine_id} >
-          {data.ticks_left_locked_down ? (<LockedElement />) : (<LoginElement />) }
-        </Section>
+      <Window resizable width={400} height={400}>
+        <Window.Content scrollable>
+          <Section title={data.machine_id} >
+            {data.ticks_left_locked_down || data.emagged ? (<LockedElement />) : (<LoginElement />) }
+          </Section>
+        </Window.Content>
       </Window>
     ); }
   return (
     <Window resizable width={400} height={400} scrollable>
-      <Section title={data.machine_id} >
-        <ATMElement />
-      </Section>
+      <Window.Content scrollable>
+        <Section title={data.machine_id} >
+          <ATMElement />
+        </Section>
+      </Window.Content>
     </Window>
   );
 };
@@ -67,7 +88,7 @@ const LoginElement = (props, context) => {
         entering your account number/PIN to continue.<br /><br />
         <LabeledList>
           <LabeledList.Item label="Inserted Card">
-            <Button onClick={() => act('eject_card')} textAlign="right">{data.inserted_card_name}</Button><br />
+            <Button onClick={() => act('eject_card')} textAlign="right" icon="sim-card">{data.inserted_card_name}</Button><br />
           </LabeledList.Item>
           <LabeledList.Item label="Account Number">
             <Input placeholder="Account Number" onChange={(e, value) => setAcc(value)} textAlign="right" /><br />
@@ -75,7 +96,7 @@ const LoginElement = (props, context) => {
           <LabeledList.Item label="PIN">
             <Input placeholder="PIN" onChange={(e, value) => setPin(value)} textAlign="right" /><br /><br />
           </LabeledList.Item>
-          <Button onClick={() => act('attempt_authentication', { pin: epin, acc: eacc })}> Confirm and Authenticate </Button><br />
+          <Button onClick={() => act('attempt_authentication', { pin: epin, acc: eacc })} icon="key"> Confirm and Authenticate </Button><br />
         </LabeledList>
       </Flex.Item>
     </Flex>
@@ -84,17 +105,29 @@ const LoginElement = (props, context) => {
 };
 
 const LockedElement = (props, context) => {
+  const { act, data } = useBackend<ATMContext>(context);
   return (
-    <Box textColor="#ff000d" backgroundColor="#540004" fillPositionedParent>
-      <Flex wrap vertical>
-        <Flex.Item>
-          Welcome to this Nanotrasen Automatic Teller Machine.<br />
-          Unfortunately, this terminal has been locked down due to a security incident.<br />
-          Please try again later.<br />
-          We apologize for the inconvenience.<br />
-        </Flex.Item>
-      </Flex>
-    </Box>
+    <Flex justify="space-between" direction="column" textColor="#ff000d" backgroundColor="#540004" scrollable>
+      <Flex.Item><br />
+        <Box textAlign="center" fontSize="32">
+          <b>[ERR 1S - TERMINAL LOCKED OUT]</b>
+        </Box>
+      </Flex.Item><br />
+      <Flex.Item>
+        <Box textAlign="center" fontSize="32">
+          Welcome to this Nanotrasen Automatic Teller Machine.
+          Unfortunately, we are unable to service your requests at this time.
+          This terminal has been taken out of service due to a security incident.
+          Please contact the Command department for more information.
+        </Box>
+      </Flex.Item><br />
+      <Flex.Item>
+        <Box textAlign="center" fontSize="32">
+          <b>[ERR 1S - TERMINAL LOCKED OUT]</b>
+        </Box>
+      </Flex.Item><br />
+      <Button onClick={() => act('logout')} icon="key">Logout</Button>
+    </Flex>
   );
 };
 
@@ -109,21 +142,26 @@ const ATMElement = (props, context) => {
 
   if (data.acc_suspended) {
     return (
-      <Flex justify="space-around" direction="column" ml={2} textColor="#ff000d" backgroundColor="#540004">
-        <Flex.Item>
+      <Flex justify="space-between" direction="column" textColor="#ff000d" backgroundColor="#540004" scrollable>
+        <Flex.Item><br />
           <Box textAlign="center" fontSize="32">
-            \// ACCOUNT SUSPENDED //
+            <b>[ERR 5Ac - ACCOUNT SUSPENDED]</b>
           </Box>
+        </Flex.Item><br />
+        <Flex.Item>
           <Box textAlign="center" fontSize="32">
             Welcome to this Nanotrasen Automatic Teller Machine.
             Unfortunately, we are unable to service your requests at this time.
             This account has been suspended by the authority of the authorized feduciary aboard this facility.
             Please contact the Command department for more information.
           </Box>
+        </Flex.Item><br />
+        <Flex.Item>
           <Box textAlign="center" fontSize="32">
-            \// ACCOUNT SUSPENDED //
+            <b>[ERR 5Ac - ACCOUNT SUSPENDED]</b>
           </Box>
-        </Flex.Item>
+        </Flex.Item><br />
+        <Button onClick={() => act('logout')} icon="key">Logout</Button>
       </Flex>
     );
   }
@@ -133,8 +171,8 @@ const ATMElement = (props, context) => {
       <Flex.Item>
         Welcome, <b>{data.account_name}</b>.<br />
         Current Funds: <b>{data.balance}</b> cr<br />
-        Inserted ID: <Button onClick={() => act('eject_card')} textAlign="right">{data.inserted_card_name}</Button><br />
-        For your security, you will be logged out in <b>{data.logout_time}</b><br />
+        Inserted ID: <Button onClick={() => act('eject_card')} textAlign="right" icon="sim-card">{data.inserted_card_name}</Button><br />
+        For your security, you will be logged out in <b>{data.logout_time}.</b><br />
       </Flex.Item>
       <Divider />
       <Flex.Item>
@@ -142,28 +180,58 @@ const ATMElement = (props, context) => {
           <LabeledList>
             <LabeledList.Item label="Security Setting">
               <Button.Checkbox
-                checked={Security === SECURITY_LEVEL_MIN}
-                onClick={() => { setSecurity(SECURITY_LEVEL_MIN); act('change_security_level', { new_security_level: Security }); }} >Minimal Security
+                checked={Security === AccountSecurityLevels.SECURITY_LEVEL_MIN}
+                onClick={() => { setSecurity(AccountSecurityLevels.SECURITY_LEVEL_MIN); act('change_security_level', { new_security_level: Security }); }} >Minimal Security
               </Button.Checkbox>
               <Button.Checkbox
-                checked={Security === SECURITY_LEVEL_MED}
-                onClick={() => { setSecurity(SECURITY_LEVEL_MED); act('change_security_level', { new_security_level: Security }); }} >Medium Security
+                checked={Security === AccountSecurityLevels.SECURITY_LEVEL_MED}
+                onClick={() => { setSecurity(AccountSecurityLevels.SECURITY_LEVEL_MED); act('change_security_level', { new_security_level: Security }); }} >Medium Security
               </Button.Checkbox>
               <Button.Checkbox
-                checked={Security === SECURITY_LEVEL_MAX}
-                onClick={() => { setSecurity(SECURITY_LEVEL_MAX); act('change_security_level', { new_security_level: Security }); }} >Maximum Security
+                checked={Security === AccountSecurityLevels.SECURITY_LEVEL_MAX}
+                onClick={() => { setSecurity(AccountSecurityLevels.SECURITY_LEVEL_MAX); act('change_security_level', { new_security_level: Security }); }} >Maximum Security
               </Button.Checkbox>
             </LabeledList.Item>
             <LabeledList.Item label="Setting Information">
-              {securityArray.find(option => option.level === Security)?.desc}
+              {ACCOUNT_SECURITY_DESCRIPTIONS.find(option => option.level === Security)?.desc}
             </LabeledList.Item>
           </LabeledList>
         </Collapsible>
         <Divider />
         <Collapsible title="Transaction Log" icon="money-bill">
           <LabeledList>
-            {data.transaction_log}
+            {
+              Object.entries(data.transaction_log).map(([numString, logEntry]) => {
+                return (
+                  <LabeledList.Item key={numString} label={numString}>
+                    <Collapsible title="Transaction">
+                      <LabeledList>
+                        <LabeledList.Item label="Target Name">
+                          {logEntry.target_name}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Purpose">
+                          {logEntry.purpose}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Amount">
+                          <b>{logEntry.amount}cr</b>
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Date">
+                          {logEntry.date}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Time">
+                          {logEntry.time}
+                        </LabeledList.Item>
+                        <LabeledList.Item label="Source Terminal">
+                          {logEntry.source_terminal}
+                        </LabeledList.Item>
+                      </LabeledList>
+                    </Collapsible>
+                  </LabeledList.Item>
+                );
+              })
+            }
           </LabeledList>
+          <Button icon="clipboard-list" onClick={() => act('print_transaction')}>Print Transactions</Button>
         </Collapsible>
         <Divider />
         <Collapsible title="Transfer Funds" icon="money-check">
@@ -177,7 +245,7 @@ const ATMElement = (props, context) => {
             <LabeledList.Item label="Amount">
               <Input placeholder="Amount" onChange={(e, value) => setTransferAmount(value)} />
             </LabeledList.Item>
-            <Button onClick={() => act('transfer', { target_acc_number: TransferTarget, purpose: TransferPurpose, funds_amount: TransferAmount })}>Confirm Transfer</Button>
+            <Button onClick={() => act('transfer', { target_acc_number: TransferTarget, purpose: TransferPurpose, funds_amount: TransferAmount })} icon="check">Confirm Transfer</Button>
           </LabeledList>
         </Collapsible>
         <Divider />
@@ -192,7 +260,11 @@ const ATMElement = (props, context) => {
             <Button onClick={() => act('withdrawal', { funds_amount: WithdrawAmount, form_ewallet: EWallet })}>Withdraw</Button>
           </LabeledList>
         </Collapsible>
-        <Button onClick={() => act('logout')}>Logout</Button>
+        <Divider />
+        <Flex.Item direction="column">
+          <Button icon="clipboard-list" onClick={() => act('balance_statement')}>Print Statement</Button>
+          <Button onClick={() => act('logout')} icon="key">Logout</Button>
+        </Flex.Item>
       </Flex.Item>
     </Flex>
   );
