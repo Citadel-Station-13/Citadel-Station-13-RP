@@ -4,10 +4,10 @@ export interface Design {
   name: string;
   desc: string;
   category: string;
-  materials?: Record<string, number>;
-  material_parts?: Record<string, number>;
-  reagents?: Record<string, number>;
-  ingredients?: IngredientsNeeded;
+  materials: Record<string, number> | null;
+  material_parts: Record<string, number> | null;
+  reagents: Record<string, number> | null;
+  ingredients: IngredientsNeeded | null;
   resultItem: DesignItem;
   id: string;
 }

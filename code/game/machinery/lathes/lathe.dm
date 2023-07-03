@@ -233,11 +233,13 @@
 
 /obj/machinery/lathe/proc/create_storages()
 	if(isnull(stored_materials))
-		stored_materials = new(materials_max)
+		if(materials_max != 0)
+			stored_materials = new(materials_max)
 	else
 		stored_materials.set_multiplied_capacity(materials_max, storage_multiplier)
 	if(isnull(stored_reagents))
-		stored_reagents = new(reagents_max, src)
+		if(reagents_max != 0)
+			stored_reagents = new(reagents_max, src)
 	else
 		stored_reagents.maximum_volume = reagents_max
 
@@ -440,7 +442,7 @@
 		if(instance.is_stack)
 			adding = amount // no limit on stacks
 		else
-			adding = clamp(amount, 0, last.amount - queue_max_entry)
+			adding = clamp(amount, 0, queue_max_entry - last.amount)
 		last.amount += adding
 		amount -= adding
 		if(!amount)

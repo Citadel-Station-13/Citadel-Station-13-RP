@@ -1,9 +1,11 @@
 import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Flex, Section } from '../../components';
+import { Box, Button, NumberInput, Flex, Section, Icon } from '../../components';
 import { classes } from 'common/react';
 import { formatMoney, formatSiUnit } from '../../format';
-import { useSharedState } from '../../backend';
+import { useLocalState, useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
+import { SectionProps } from '../../components/Section';
+import { InfernoNode } from 'inferno';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
@@ -29,21 +31,68 @@ export interface DetailedMaterial extends Material {
 
 }
 
-interface MaterialStorageProps {
-  horizontal: BooleanLike;
-  stored: Record<string, number>; // id to number
-  context: MaterialsContext;
+interface MaterialStorageProps extends MaterialRenderProps {
   eject: (string, number) => void; // called with (id, sheets).
 }
 
 export const MaterialStorage = (props: MaterialStorageProps, context) => {
-  const [fancy, setFancy] = useSharedState(context, 'matStoreFancy', true);
+  return (
+    <MaterialRender
+      {...props}
+      materialButtons={(id) => {
+        const [ejectAmt, setEjectAmt] = useLocalState<number>(context, `matEject-${id}`, 1);
+        return (
+          <>
+            {props.materialButtons}
+            <NumberInput value={ejectAmt} onChange={(e, v) => setEjectAmt(v)} />
+            <Button
+              icon="eject"
+              onClick={() => props.eject(id, ejectAmt)} />
+          </>
+        );
+      }}
+    />
+  );
+};
+
+interface MaterialRenderProps extends SectionProps {
+  horizontal: BooleanLike;
+  materialContext: MaterialsContext;
+  // id to number
+  materialList: Record<string, number>;
+  // id map to an element to render below/to the side respectively for vertical/horizontal
+  materialButtons?: (id) => InfernoNode;
+}
+
+export const MaterialRender = (props: MaterialRenderProps, context) => {
+  const [fancy, setFancy] = useSharedState(context, 'materialsFancy', true);
+  const isEmpty = Object.keys(props.materialList).length === 0;
+
   return props.horizontal? (
-    <Section>
-      test
+    <Section {...props}>
+      {isEmpty? (
+        <Box textAlign="center">
+          <Icon size={5} name="inbox" />
+          <br />
+          <b>No materials loaded.</b>
+        </Box>
+      ) : (
+        <Flex>
+          {Object.entries(props.materialList).sort(
+            ([a1, a2], [b1, b2]) => a1.localeCompare(b1)
+          ).map(([id, amt]) => {
+
+            return (
+              <Flex.Item key={id}>
+                Unimplemented
+              </Flex.Item>
+            );
+          })}
+        </Flex>
+      )}
     </Section>
   ) : (
-    <Section>
+    <Section {...props}>
       Unimplemented
     </Section>
   );

@@ -89,29 +89,29 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
     case "Materials":
       resourceRender = (
         <Section>
-          <MaterialStorage horizontal stored={data.materials} context={data.materialsContext}
+          <MaterialStorage horizontal materialList={data.materials} materialContext={data.materialsContext}
             eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
         </Section>
       );
       break;
     case "Reagents":
       resourceRender = (
-        <Section>
-          <ReagentContents
-            reagents={data.reagents}
-            reagentButtons={(id) => (
-              [1, 5, 10, 20, 50].map(
-                (n) => (
-                  <Button
-                    icon="minus"
-                    key={n}
-                    content={`-${n}`}
-                    onClick={() => act('disposeReagent', { id: id, amonut: n })} />
+        <ReagentContents
+          mr={0.5}
+          ml={0.5}
+          reagents={data.reagents}
+          reagentButtons={(id) => (
+            [1, 5, 10, 20, 50].map(
+              (n) => (
+                <Button
+                  icon="minus"
+                  key={n}
+                  content={`-${n}`}
+                  onClick={() => act('disposeReagent', { id: id, amonut: n })} />
 
-                )
               )
-            )} />
-        </Section>
+            )
+          )} />
       );
       break;
     case "Items":
