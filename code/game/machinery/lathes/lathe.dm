@@ -270,14 +270,17 @@
  * @return number of it we can print, this can be a decimal. if design requires ingredients, this will never be above 1.
  */
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
-	var/list/materials = instance.materials.Copy()
-	for(var/key in instance.material_parts)
-		var/id = material_parts[key]
-		materials[id] += instance.material_parts[key]
-	. = stored_materials.has_multiple(materials, efficiency_multiplier)
+	. = INFINITY
+	if(!isnull(instance.materials))
+		var/list/materials = instance.materials.Copy()
+		for(var/key in instance.material_parts)
+			var/id = material_parts[key]
+			materials[id] += instance.material_parts[key]
+		. = stored_materials.has_multiple(materials, efficiency_multiplier)
 	if(!.)
 		return
-	. = min(., stored_reagents.has_multiple(instance.reagents, efficiency_multiplier))
+	if(!isnull(instance.reagents))
+		. = min(., stored_reagents.has_multiple(instance.reagents, efficiency_multiplier))
 	if(!.)
 		return
 	// ingredients? return 1 at most.

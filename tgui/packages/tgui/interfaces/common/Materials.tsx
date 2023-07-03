@@ -6,6 +6,8 @@ import { useLocalState, useSharedState } from '../../backend';
 import { BoxProps } from '../../components/Box';
 import { SectionProps } from '../../components/Section';
 import { InfernoNode } from 'inferno';
+import { toFixed } from 'common/math';
+import { Sprite } from '../../components/Sprite';
 
 // the space is intentional
 export const MATERIAL_STORAGE_UNIT_NAME = " cm³";
@@ -62,7 +64,8 @@ export const MaterialStorage = (props: MaterialStorageProps, context) => {
 };
 
 interface MaterialRenderProps extends SectionProps {
-  horizontal: BooleanLike;
+  horizontal?: BooleanLike;
+  formatSI?: BooleanLike;
   materialContext: MaterialsContext;
   // id to number
   materialList: Record<string, number>;
@@ -89,17 +92,17 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
           ).map(([id, amt]) => {
 
             return (
-              <Flex.Item key={id} width="80px">
+              <Flex.Item key={id}>
                 <Flex direction="column" align="center">
                   <Flex.Item>
-                    <Box
-                      className={classes([
-                        MATERIAL_SPRITESHEET_CSS,
-                        `stack-${props.materialContext.materials[id].iconKey}`,
-                      ])} />
+                    <Sprite
+                      sheet={MATERIAL_SPRITESHEET_NAME}
+                      sizeKey={MATERIAL_SPRITESHEET_SIZEKEY}
+                      prefix="stack"
+                      sprite={props.materialContext.materials[id].iconKey} />
                   </Flex.Item>
                   <Flex.Item>
-                    test
+                    {(amt < 1 && amt > 0)? toFixed(amt, 2) : formatSiUnit(amt, 0)}
                   </Flex.Item>
                   <Flex.Item>
                     {props.materialButtons && props.materialButtons(id)}

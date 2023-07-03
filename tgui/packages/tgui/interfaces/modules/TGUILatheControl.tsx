@@ -88,10 +88,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
   switch (resourcesSelect) {
     case "Materials":
       resourceRender = (
-        <Section>
-          <MaterialStorage horizontal materialList={data.materials} materialContext={data.materialsContext}
-            eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
-        </Section>
+        <MaterialStorage
+          horizontal
+          materialList={data.materials}
+          materialContext={data.materialsContext}
+          eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
       );
       break;
     case "Reagents":
