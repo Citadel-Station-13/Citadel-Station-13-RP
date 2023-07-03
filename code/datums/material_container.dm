@@ -68,7 +68,7 @@
 		material = SSmaterials.get_material(material)
 	var/can_dump = round(stored[material.id] / SHEET_MATERIAL_AMOUNT)
 	var/dumping = min(amount, can_dump)
-	stored -= dumping * SHEET_MATERIAL_AMOUNT
+	stored[material.id] -= dumping * SHEET_MATERIAL_AMOUNT
 	var/safety = 50
 	. = 0
 	var/obj/item/stack/stack_type = material.stack_type

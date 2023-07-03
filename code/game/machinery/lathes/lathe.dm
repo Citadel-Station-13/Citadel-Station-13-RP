@@ -166,6 +166,7 @@
 			ui_controller?.ui_materials_update()
 		else
 			user.action_feedback(SPAN_WARNING("[src] can't hold any more of [I]."), src)
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!isnull(insert_icon_state_specific?[M.material.id]))
 			flick(insert_icon_state_specific[M.material.id], src)
 		else if(!isnull(insert_icon_state))
@@ -179,7 +180,8 @@
 				user.action_feedback(SPAN_NOTICE("You transfer [amt] units of the solution from \the [I] to [src]."), src)
 			else
 				user.action_feedback(SPAN_WARNING("[src] can't hold any more reagents!"), src)
-			return CLICKCHAIN_DO_NOT_PROPAGATE
+				return CLICKCHAIN_DO_NOT_PROPAGATE
+			return CLICKCHAIN_DO_NOT_PROPAGATE | CLICKCHAIN_DID_SOMETHING
 	else if(isitem(I) && (user.a_intent == INTENT_HELP))
 		if(!(I.item_flags & ITEM_EASY_LATHE_DECONSTRUCT))
 			if(!insert_item(I, user))
@@ -345,9 +347,12 @@
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
 		return
-	progress_queue(delta_time, 1)
+	progress_queue(delta_time * 10, 1)
 
-/obj/machinery/lathe/proc/progress_queue(time, mult)
+/**
+ * progresses queue by time deciseconds and mult multiplier
+ */
+/obj/machinery/lathe/proc/progress_queue(time, mult = 1)
 	if(!length(queue))
 		stop_printing()
 		return
