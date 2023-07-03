@@ -50,6 +50,9 @@ interface IngredientsDisplayProps {
 }
 
 export const IngredientsDisplay = (props: IngredientsDisplayProps, context) => {
+  // Just here to make ESlint not complain about unused variables
+  let { ingredients, lazy, vertical } = props;
+  // End
   return (
     <Section title={props.title || "Ingredients"}>
       Unimplemented
@@ -67,6 +70,9 @@ interface IngredientsProps {
 }
 
 export const Ingredients = (props: IngredientsProps, context) => {
+  // Just here to make ESlint not complain about unused variables
+  let { need, available, selection, selected, vertical, select } = props;
+  // End
   return (
     <Section>
       Unimplemented

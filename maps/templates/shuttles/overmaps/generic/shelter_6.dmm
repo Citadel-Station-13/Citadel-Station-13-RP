@@ -451,11 +451,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "au" = (
-/obj/machinery/lathe/autolathe{
-	desc = "Your typical Autolathe. It appears to have much more options than your regular one, however...";
-	mat_efficiency = 0.5;
-	name = "Centcom Autolathe"
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "av" = (

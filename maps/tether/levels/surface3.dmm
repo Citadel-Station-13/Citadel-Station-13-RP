@@ -13135,10 +13135,6 @@
 /obj/effect/floor_decal/corner/blue/bordercorner2{
 	dir = 8
 	},
-/obj/machinery/computer/id_restorer{
-	dir = 4;
-	pixel_x = -30
-	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/surface_three_hall)
 "axc" = (

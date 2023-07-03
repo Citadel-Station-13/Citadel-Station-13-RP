@@ -635,7 +635,7 @@
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "Dm" = (
-/obj/machinery/partslathe,
+/obj/machinery/lathe/autolathe,
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "Dn" = (
