@@ -12,6 +12,16 @@
 	icon = 'icons/mob/pai_vr.dmi'
 	icon_state = "pai-repairbot"
 
+	// our normal health
+	health = 50
+	maxHealth = 50
+
+	// our emitter max health, health, regen, and when we last went to 0 emitter health (0 means we are alive currently)
+	var/emitter_max_health = 50
+	var/emitter_health = 50
+	var/emitter_health_regen = 1
+	var/last_emitter_death = 0
+
 	emote_type = 2		// pAIs emotes are heard, not seen, so they can be seen through a container (eg. person)
 	pass_flags = 1
 	mob_size = MOB_SMALL

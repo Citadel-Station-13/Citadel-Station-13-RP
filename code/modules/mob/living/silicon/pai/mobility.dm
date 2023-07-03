@@ -103,6 +103,9 @@
 	if(world.time <= last_special)
 		return FALSE
 
+	if(is_emitter_dead())
+		return FALSE
+
 	return TRUE
 
 // space movement (we get one ion burst every 3 seconds)
