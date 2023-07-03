@@ -93,13 +93,8 @@
 	return ..() + speed
 
 // this is a general check for if we can do things such as fold in/out or perform other special actions
+// (basically if some condition should be checked upon the use of all mob abilities like closing/opening the shell it goes here instead)
 /mob/living/silicon/pai/proc/can_action()
-	if(!CHECK_MOBILITY(src, MOBILITY_CAN_MOVE))
-		return FALSE
-
-	if(src.loc == card)
-		return FALSE
-
 	if(world.time <= last_special)
 		return FALSE
 
