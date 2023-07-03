@@ -29,7 +29,6 @@ interface TGUILatheControlData extends ModuleData {
   storesItems: BooleanLike;
   storesMaterials: BooleanLike;
   storesReagents: BooleanLike;
-  queueActive: BooleanLike;
   queue: Array<LatheQueueEntry>;
   latheName: string;
   speedMultiplier: number;
@@ -39,7 +38,7 @@ interface TGUILatheControlData extends ModuleData {
   materials: Record<string, number>;
   materialsContext: MaterialsContext;
   reagents: ReagentContentsData;
-  printing: string;
+  printing: BooleanLike;
   ingredients: IngredientsAvailable;
 }
 
@@ -250,11 +249,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       <>
                         <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
                           color="transparent" />
-                        <Button content={data.queueActive? "Stop" : "Start"}
-                          icon={data.queueActive? "stop" : "play"}
+                        <Button content={data.printing? "Stop" : "Start"}
+                          icon={data.printing? "stop" : "play"}
                           color="transparent"
-                          selected={data.queueActive}
-                          onClick={() => act(data.queueActive? "stop" : "start")} />
+                          selected={data.printing}
+                          onClick={() => act(data.printing? "stop" : "start")} />
                       </>
                     }>
                     {

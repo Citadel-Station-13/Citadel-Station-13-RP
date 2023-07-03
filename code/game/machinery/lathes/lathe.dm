@@ -336,7 +336,7 @@
 /obj/machinery/lathe/proc/do_print(datum/design/instance, amount = 1, list/material_parts, list/ingredient_parts, efficiency = efficiency_multiplier)
 	if(!amount)
 		return
-	var/list/materials_used = instance.materials.Copy()
+	var/list/materials_used = instance.materials?.Copy() || list()
 	for(var/key in material_parts)
 		materials_used[material_parts[key]] += instance.material_parts[key]
 	use_resources(materials_used, instance.reagents, instance.ingredients, ingredient_parts, amount * efficiency)
