@@ -28,8 +28,6 @@
 	/// currently held item
 	VAR_PRIVATE/obj/item/wrapped
 
-	var/force_holder = null //
-
 /obj/item/gripper/examine(mob/user, dist)
 	. = ..()
 	if(wrapped)
