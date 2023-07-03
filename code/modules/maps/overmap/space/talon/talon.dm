@@ -24,7 +24,7 @@
 
 ///////////////////////////
 //// The Talon
-/obj/effect/overmap/visitable/ship/talon
+/obj/overmap/entity/visitable/ship/talon
 	scanner_name = "ITV Talon"
 	scanner_desc = @{"[i]Registration[/i]: ITV Talon
 [i]Class[/i]: Frigate
@@ -71,7 +71,7 @@
 
 ///////////////////////////
 //// The Lifeboat
-/obj/effect/overmap/visitable/ship/landable/talon_lifeboat
+/obj/overmap/entity/visitable/ship/landable/talon_lifeboat
 	name = "Talon lifeboat"
 	desc = "A tiny engineless lifeboat from the ITV Talon."
 	vessel_mass = 1000
@@ -79,7 +79,7 @@
 	shuttle = "Talon lifeboat"
 
 /*
-/obj/effect/overmap/visitable/ship/talon_lifeboat/landable/get_skybox_representation()
+/obj/overmap/entity/visitable/ship/talon_lifeboat/landable/get_skybox_representation()
 	var/image/I = image('aro.dmi', "skybox")
 	I.pixel_x = 200
 	I.pixel_y = 200
@@ -274,7 +274,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 		/obj/item/clothing/shoes/boots/jackboots/toeless,
 		/obj/item/handcuffs = 2,
 		/obj/item/gun/energy/stunrevolver,
-		/obj/item/clothing/accessory/armor/tag/sec,
+		/obj/item/clothing/accessory/armor/tag/civsec,
 		/obj/item/flash,
 		/obj/item/flashlight/maglight,
 		/obj/item/clothing/glasses/sunglasses,
@@ -494,24 +494,24 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /datum/map_template/triumph_lateload/offmap/talon1
 	name = "Offmap Ship - Talon Z1"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "maps/map_levels/140x140/talon/talon1.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/talon1
+	map_path = "maps/map_levels/140x140/talon/talon1.dmm"
+	associated_map_datum = /datum/map_level/triumph_lateload/talon1
 
 /datum/map_template/triumph_lateload/offmap/talon2
 	name = "Offmap Ship - Talon Z2"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "maps/map_levels/140x140/talon/talon2.dmm"
-	associated_map_datum = /datum/map_z_level/triumph_lateload/talon2
+	map_path = "maps/map_levels/140x140/talon/talon2.dmm"
+	associated_map_datum = /datum/map_level/triumph_lateload/talon2
 
-/datum/map_z_level/triumph_lateload/talon1
+/datum/map_level/triumph_lateload/talon1
 	name = "Talon Deck One"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/space
 	z = Z_LEVEL_TALON1
 
-/datum/map_z_level/triumph_lateload/talon2
+/datum/map_level/triumph_lateload/talon2
 	name = "Talon Deck Two"
-	flags = MAP_LEVEL_PLAYER
+	flags = LEGACY_LEVEL_PLAYER
 	base_turf = /turf/simulated/open
 	z = Z_LEVEL_TALON2
 */

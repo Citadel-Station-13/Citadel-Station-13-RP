@@ -13,7 +13,7 @@
 
 /obj/item/clothing/glasses/hud/health/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "Prescription Health Scanner HUD"
@@ -31,7 +31,7 @@
 
 /obj/item/clothing/glasses/hud/security/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "Prescription Security HUD"
@@ -46,7 +46,6 @@
 	icon_state = "jensenshades"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	vision_flags = SEE_MOBS
-	see_invisible = SEE_INVISIBLE_NOLIGHTING
 
 //Port of _vr files.
 /obj/item/clothing/glasses/omnihud
@@ -62,12 +61,12 @@
 	var/datum/tgui_module_old/tgarscreen
 	var/tgarscreen_path
 	var/flash_prot = 0 //0 for none, 1 for flash weapon protection, 2 for welder protection
-	enables_planes = list(VIS_AUGMENTED)
-	plane_slots = list(SLOT_ID_GLASSES)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
+	active_slots = list(SLOT_ID_GLASSES)
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_ID_JOB), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/Initialize(mapload)
 	. = ..()
@@ -141,11 +140,11 @@
 	action_name = "AR Console (Crew Monitor)"
 	prescription = 1
 	tgarscreen_path = /datum/tgui_module_old/crew_monitor/glasses
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/med/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_ID_JOB, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/med/ar_interact(var/mob/living/carbon/human/user)
 	if(tgarscreen)
@@ -160,12 +159,11 @@
 	flash_protection = FLASH_PROTECTION_MAJOR
 	prescription = 1
 	action_name = "AR Console (Security Alerts)"
-	enables_planes = list(VIS_AUGMENTED)
-
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/sec/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/omnihud/sec/ar_interact(var/mob/living/carbon/human/user)
 	if(arscreen)
@@ -204,7 +202,7 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "projector"
-	off_state = "projector-off"
+	inactive_icon_state = "projector-off"
 	body_cover_flags = 0
 	toggleable = 1
 	prescription = 1
@@ -228,7 +226,7 @@
 	if(toggleable)
 		if(active)
 			active = 0
-			icon_state = off_state
+			icon_state = inactive_icon_state
 			item_state = "[initial(item_state)]-off"
 			usr.update_inv_glasses()
 			to_chat(usr, "You deactivate the retinal projector on the [src].")
@@ -248,7 +246,7 @@
 	icon_state = "pf_goggles"
 	prescription = 1
 	action_name = "Toggle Zoom"
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/exp/ui_action_click()
 	zoom(wornslot = SLOT_ID_GLASSES)
@@ -260,11 +258,11 @@
 	mode = "best"
 	prescription = 1
 	flash_protection = FLASH_PROTECTION_MAJOR
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)
 
 /obj/item/clothing/glasses/omnihud/all/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/clothing/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
+	AddElement(/datum/element/hud_granter, list(DATA_HUD_SECURITY_ADVANCED, DATA_HUD_MEDICAL), list(SLOT_ID_GLASSES))
 
 /obj/item/clothing/glasses/hud/security/eyepatch
     name = "Security Hudpatch"
@@ -272,7 +270,7 @@
     icon_state = "hudpatch"
     item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
     body_cover_flags = 0
-    enables_planes = list(VIS_AUGMENTED)
+    enables_planes = list(/atom/movable/screen/plane_master/augmented)
     var/eye = null
 
 /obj/item/clothing/glasses/hud/security/eyepatch/verb/switcheye()
@@ -293,7 +291,7 @@
 	name = "meson eyeHUD"
 	desc = "A eyepatch equipped with a scanning lens and mounted retinal projector. For when you take style over smarts."
 	icon_state = "mesonpatch"
-	off_state = "eyepatch"
+	inactive_icon_state = "eyepatch"
 	body_cover_flags = 0
 	toggleable = 1
 	vision_flags = SEE_TURFS //but they can spot breaches. Due to the way HUDs work, they don't provide darkvision up-close the way mesons do.
@@ -315,7 +313,7 @@
 	if(toggleable)
 		if(active)
 			active = 0
-			icon_state = off_state
+			icon_state = inactive_icon_state
 			item_state = "[initial(item_state)]-off"
 			usr.update_inv_glasses()
 			to_chat(usr, "You deactivate the retinal projector on the [src].")
@@ -333,4 +331,4 @@
 	icon_state = "medpatch"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_cover_flags = 0
-	enables_planes = list(VIS_AUGMENTED)
+	enables_planes = list(/atom/movable/screen/plane_master/augmented)

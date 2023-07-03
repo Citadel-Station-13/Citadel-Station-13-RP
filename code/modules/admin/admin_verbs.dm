@@ -88,7 +88,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/man_up,
 	/client/proc/global_man_up,
 	/client/proc/response_team, // Response Teams admin verb
-	/client/proc/trader_ship, // Trader ship admin verb
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
@@ -111,7 +110,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
 	/client/proc/toggle_AI_interact,
-	/client/proc/list_event_volunteers
+	/client/proc/list_event_volunteers,
+	/client/proc/set_headshot_for_user
 	)
 
 var/list/admin_verbs_ban = list(
@@ -177,7 +177,6 @@ var/list/admin_verbs_server = list(
 	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,
-	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
 	/datum/admins/proc/toggle_aliens,
@@ -188,9 +187,9 @@ var/list/admin_verbs_server = list(
 	/client/proc/modify_server_news,
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
-	/client/proc/ip_reputation,
 	/client/proc/paranoia_logging,
-	/client/proc/reestablish_db_connection
+	/client/proc/reestablish_db_connection,
+	/client/proc/change_next_map,
 	)
 
 var/list/admin_verbs_debug = list(
@@ -313,7 +312,6 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/everyone_random,
 	/client/proc/reload_configuration,
 	/datum/admins/proc/toggleAI,
-	/datum/admins/proc/adrev,
 	/datum/admins/proc/adspawn,
 	/datum/admins/proc/adjump,
 	/client/proc/restart_controller,
@@ -1093,7 +1091,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Fun"
 	set name = "Give Spell"
 	set desc = "Gives a spell to a mob."
-	var/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spells
+	var/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in typesof(/spell)
 	if(!S) return
 	T.spell_list += new S
 	feedback_add_details("admin_verb","GS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

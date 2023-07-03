@@ -48,8 +48,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/important_info
 	/// should we show the standard ghostrole greeting?
 	var/show_standard_greeting = TRUE
-	/// snowflake ID for if we're not to be referred to by path - dynamically created ghostolres
-	var/id
 	/// spawnerless - advanced users only. This isn't for "load in spawners in PreInstantiate()", this is for true spawnpoint-less ghostroles.
 	var/spawnerless = FALSE
 	/// assigned role. defaults to name.
@@ -84,6 +82,9 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  * Return TRUe on success, or a string of why it failed.
  */
 /datum/role/ghostrole/proc/AttemptSpawn(client/C, datum/component/ghostrole_spawnpoint/chosen_spawnpoint)
+	if(C.persistent.ligma)
+		log_shadowban("[key_name(C)] ghostrole join as [id] ([type]) blocked.")
+		return "BUG: No instantiator for [src][(id !=type) && ":[id]"] ([type])"
 	if(BanCheck(C))
 		return "You can't spawn as [src] due to an active job-ban."
 	if(!AllowSpawn(C))

@@ -199,7 +199,7 @@
 /obj/item/spacecash/ewallet/update_icon()
 	return //space cash
 
-/obj/item/spacecash/ewallet/examine(mob/user)
+/obj/item/spacecash/ewallet/examine(mob/user, dist)
 	. = ..()
 	if (!(user in view(2)) && user!=src.loc)
 		return

@@ -88,7 +88,7 @@
 		return
 	return ..()
 
-/obj/machinery/organ_printer/examine(mob/user)
+/obj/machinery/organ_printer/examine(mob/user, dist)
 	. = ..()
 	var/biomass = get_biomass_volume()
 	if(biomass)

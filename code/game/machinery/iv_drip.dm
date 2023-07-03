@@ -196,7 +196,7 @@
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_BLOOD)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_INJECT)
 				update_appearance()
 
 		// Take blood
@@ -291,7 +291,7 @@
 	to_chat(usr, SPAN_NOTICE("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
 	update_appearance()
 
-/obj/machinery/iv_drip/examine(mob/user)
+/obj/machinery/iv_drip/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(user, src) > 2)
 		return

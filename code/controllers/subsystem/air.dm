@@ -338,9 +338,9 @@ SUBSYSTEM_DEF(air)
 	// 2. check if it's special and should look up the level's defaults
 	switch(gas_string)
 		if(ATMOSPHERE_USE_INDOORS)
-			gas_string = GAS_STRING_STP
+			gas_string = SSmapping.lookup_outdoors_air(turf_context.z)
 		if(ATMOSPHERE_USE_OUTDOORS)
-			gas_string = SSmapping.level_trait(turf_context.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
+			gas_string = SSmapping.lookup_indoors_air(turf_context.z)
 	// 3: process atmosphere
 	if(generated_atmospheres[gas_string])
 		var/datum/atmosphere/A = generated_atmospheres[gas_string]

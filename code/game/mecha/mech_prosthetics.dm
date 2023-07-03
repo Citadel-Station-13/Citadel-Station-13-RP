@@ -48,6 +48,8 @@
 					"Rigsuit",
 					"Phazon",
 					"Pinnace",
+					"Baron",
+					"Duke",
 					"Gopher",
 					"Polecat",
 					"Weasel",

@@ -154,3 +154,11 @@
 	refund_amt = 4
 	refund_type = /obj/item/stack/material/wood
 	build_machine_type = /obj/machinery/button/doorbell
+
+
+/obj/machinery/doorbell_chime/cursed
+	chime_sound = 'sound/effects/adminhelp.ogg'
+
+/obj/machinery/doorbell_chime/soft
+	chime_sound = 'sound/machines/achime.ogg'
+

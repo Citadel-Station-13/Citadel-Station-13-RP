@@ -44,7 +44,6 @@
 	var/damage_mode = NONE
 	// todo: port over damtype
 
-
 	//? unsorted / legacy
 	/// This saves our blood splatter overlay, which will be processed not to go over the edges of the sprite
 	var/image/blood_overlay = null
@@ -236,7 +235,7 @@
 	src.loc = T
 
 /// See inventory_sizes.dm for the defines.
-/obj/item/examine(mob/user)
+/obj/item/examine(mob/user, dist)
 	. = ..()
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
 

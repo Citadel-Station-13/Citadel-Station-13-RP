@@ -76,7 +76,7 @@
 /obj/machinery/vending/blood{
 	density = 0;
 	pixel_y = 18;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
@@ -292,12 +292,12 @@
 /obj/item/card/id/syndicate{
 	access = list(616);
 	assignment = "Curabitur Contractor";
-	origin_tech = newlist()
+	origin_tech = list()
 	},
 /obj/item/card/id/syndicate{
 	access = list(616);
 	assignment = "Curabitur Contractor";
-	origin_tech = newlist()
+	origin_tech = list()
 	},
 /obj/item/spacecash/c1000,
 /obj/item/spacecash/c1000,
@@ -357,7 +357,7 @@
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/defib_kit/compact/combat/loaded,
 /obj/item/mmi/radio_enabled{
-	req_access = newlist()
+	req_access = list()
 	},
 /obj/machinery/light{
 	dir = 4
@@ -502,7 +502,7 @@
 /obj/machinery/vending/medical{
 	dir = 4;
 	pixel_x = -14;
-	req_access = newlist()
+	req_access = list()
 	},
 /turf/simulated/floor/tiled/white,
 /area/shuttle/curabitur/curashuttle/med)
@@ -922,7 +922,7 @@
 /area/shuttle/curabitur/curashuttle/med)
 "bL" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/curashuttle,
-/obj/effect/overmap/visitable/ship/landable/curashuttle,
+/obj/overmap/entity/visitable/ship/landable/curashuttle,
 /obj/structure/handrail{
 	dir = 1
 	},

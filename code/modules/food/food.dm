@@ -19,8 +19,8 @@
 		src.pixel_x = rand(-6.0, 6) //Randomizes postion
 		src.pixel_y = rand(-6.0, 6)
 
-/obj/item/reagent_containers/food/afterattack(atom/A, mob/user, proximity, params)
-	if(center_of_mass.len && proximity && params && istype(A, /obj/structure/table))
+/obj/item/reagent_containers/food/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(center_of_mass.len && (clickchain_flags & CLICKCHAIN_HAS_PROXIMITY) && istype(target, /obj/structure/table))
 		//Places the item on a grid
 		var/list/mouse_control = params2list(params)
 

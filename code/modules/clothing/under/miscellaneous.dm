@@ -656,6 +656,11 @@
 	desc = "It is a dark red cheongsam dress."
 	icon_state = "cheongsam-darkred"
 
+/obj/item/clothing/under/cheongsam/darkgreen
+	name = "dark green cheongsam"
+	desc = "It is a dark green cheongsam dress."
+	icon_state = "cheongsam-darkgreen"
+
 /obj/item/clothing/under/cheongsam/green
 	name = "green cheongsam"
 	desc = "It is a green cheongsam dress."
@@ -1891,13 +1896,13 @@
 
 /obj/item/clothing/under/navy_gray
 	name = "navy gray jumpsuit"
-	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
-	icon_state = "navy_jumpsuit"
-
-/obj/item/clothing/under/navy_gray_fem
-	name = "navy gray jumpsuit"
-	desc = "The gray, branchless version issued to all who enrolled. Or those who visited the duty-free store on their way out."
-	icon_state = "navy_jumpsuit_fem"
+	desc = "A light grey-blue jumpsuit resembling those worn in the Navy, without any of the traditional markings."
+	icon = 'icons/clothing/uniform/rank/utility.dmi'
+	icon_state = "lightnavy"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_bodytypes = BODYTYPE_DEFAULT
 
 /obj/item/clothing/under/chiming_dress
     name = "chiming dress"
@@ -2269,3 +2274,8 @@
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/blackshortsripped
+	name = "ripped black shorts"
+	desc = "A pair of torn up black shorts, for those who know better."
+	icon_state = "black_shorts_ripped"

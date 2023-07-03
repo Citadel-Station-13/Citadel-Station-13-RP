@@ -15,6 +15,7 @@
 	var/icon_off = "secureoff"
 	wall_mounted = 0 //never solid (You can always pass over it)
 	health = 200
+//	secure = TRUE
 
 /obj/structure/closet/secure_closet/can_open()
 	if(src.locked)

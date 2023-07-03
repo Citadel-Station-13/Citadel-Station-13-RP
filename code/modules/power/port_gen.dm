@@ -48,7 +48,7 @@
 	if(!anchored)
 		return
 
-/obj/machinery/power/port_gen/examine(mob/user)
+/obj/machinery/power/port_gen/examine(mob/user, dist)
 	. = ..()
 	if(active)
 		. += "<span class='notice'>The generator is on.</span>"
@@ -153,7 +153,7 @@
 
 	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
 
-/obj/machinery/power/port_gen/pacman/examine(mob/user)
+/obj/machinery/power/port_gen/pacman/examine(mob/user, dist)
 	. = ..()
 	. += "\The [src] appears to be producing [power_gen*power_output] W."
 	. += "There [sheets == 1 ? "is" : "are"] [sheets] sheet\s left in the hopper."
@@ -417,16 +417,16 @@
 
 	user.set_machine(src)
 
-	var/dat = text("<b>[name]</b><br>")
+	var/dat = "<b>[name]</b><br>"
 	if (active)
-		dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
+		dat += "Generator: <A href='?src=\ref[src];action=disable'>On</A><br>"
 	else
-		dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='?src=\ref[src];action=eject'>Eject</A><br>")
+		dat += "Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>"
+	dat += "[capitalize(sheet_name)]: [sheets] - <A href='?src=\ref[src];action=eject'>Eject</A><br>"
 	var/stack_percent = round(sheet_left * 100, 1)
-	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] Watts<A href='?src=\ref[src];action=higher_power'>+</A><br>")
-	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
+	dat += "Current stack: [stack_percent]% <br>"
+	dat += "Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] Watts<A href='?src=\ref[src];action=higher_power'>+</A><br>"
+	dat += "Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>"
 
 	var/tempstr = "Temperature: [temperature]&deg;C<br>"
 	dat += (overheating)? "<span class='danger'>[tempstr]</span>" : tempstr
@@ -534,7 +534,7 @@
 	if(panel_open && irradiate)
 		radiation_pulse(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 
-/obj/machinery/power/rtg/examine(mob/user)
+/obj/machinery/power/rtg/examine(mob/user, dist)
 	. = ..()
 	if(Adjacent(user, src) || isobserver(user))
 		. += "<span class='notice'>The status display reads: Power generation now at <b>[power_gen]</b>kW.</span>"

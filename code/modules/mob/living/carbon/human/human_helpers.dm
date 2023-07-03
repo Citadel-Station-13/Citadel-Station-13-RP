@@ -160,7 +160,7 @@
 	return FBP_NONE
 
 /mob/living/carbon/human/recalculate_vis()
-	if(!vis_enabled || !plane_holder)
+	if(!self_perspective)
 		return
 
 	/**
@@ -173,7 +173,7 @@
 	for(var/slot in slots)
 		// Change this type if you move the vision stuff to item or something.
 		var/obj/item/clothing/O = item_by_slot(slot)
-		if(istype(O) && O.enables_planes && (slot in O.plane_slots))
+		if(istype(O) && O.enables_planes && (slot in O.active_slots))
 			compiled_vis |= O.enables_planes
 
 	// Check to see if we have a hardsuit (ugh, blame rigs, desnowflake this).
@@ -188,27 +188,10 @@
 	if(nif)
 		compiled_vis |= nif.planes_visible()
 
+	self_perspective.unset_plane_visible(source = CLOTHING_TRAIT)
+	for(var/vis in compiled_vis)
 
-	if(!compiled_vis.len && !vis_enabled.len)
-		// Nothin' doin'.
-		return
-
-
-	var/list/oddities = vis_enabled ^ compiled_vis
-
-	if(!oddities.len)
-		// Same thing in both lists!
-		return
-
-	var/list/to_enable = oddities - vis_enabled
-	var/list/to_disable = oddities - compiled_vis
-
-	for(var/vis in to_enable)
-		plane_holder.set_vis(vis,TRUE)
-		vis_enabled += vis
-	for(var/vis in to_disable)
-		plane_holder.set_vis(vis,FALSE)
-		vis_enabled -= vis
+		self_perspective.set_plane_visible(vis, CLOTHING_TRAIT)
 
 /mob/living/carbon/human/get_restraining_bolt()
 	var/obj/item/implant/restrainingbolt/RB

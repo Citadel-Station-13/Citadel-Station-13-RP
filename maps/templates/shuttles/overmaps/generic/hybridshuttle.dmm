@@ -74,9 +74,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "am" = (
-/obj/structure/bed/alien{
-	icon = 'icons/obj/abductor_vr.dmi'
-	},
+/obj/structure/bed/alien,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
@@ -454,13 +452,11 @@
 	},
 /obj/effect/floor_decal/techfloor/orange/corner,
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle,
-/obj/effect/overmap/visitable/ship/landable/hybridshuttle,
+/obj/overmap/entity/visitable/ship/landable/hybridshuttle,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bn" = (
-/obj/machinery/mech_recharger{
-	icon = 'icons/turf/shuttle_alien_blue.dmi'
-	},
+/obj/machinery/mech_recharger,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bo" = (

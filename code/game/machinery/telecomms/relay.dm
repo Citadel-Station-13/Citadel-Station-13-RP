@@ -30,7 +30,7 @@
 
 	// Add our level and send it back
 	if(can_send(signal))
-		signal.data["level"] |= GLOB.using_map.get_map_levels(listening_level)
+		signal.data["level"] |= (LEGACY_MAP_DATUM).get_map_levels(listening_level)
 
 // Checks to see if it can send/receive.
 

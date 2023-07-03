@@ -101,7 +101,7 @@
 	. = ..()
 	bind_perspective(null)
 
-/obj/item/gps/examine(mob/user)
+/obj/item/gps/examine(mob/user, dist)
 	. = ..()
 	. += SPAN_NOTICE("Alt-click to switch it [on? "off" : "on"].")
 
@@ -185,13 +185,13 @@
 		return
 	if(hud_bound)
 		if(hud_arrow)
-			hud_bound.RemoveScreen(hud_arrow)
+			hud_bound.remove_screen(hud_arrow)
 		hud_bound = null
 	hud_bound = pers
 	if(!hud_bound)
 		return
 	if(hud_arrow)
-		hud_bound.AddScreen(hud_arrow)
+		hud_bound.add_screen(hud_arrow)
 
 /**
  * start tracking a target - either a gps signal or a waypoint
@@ -208,7 +208,7 @@
 	RegisterSignal(tracking, COMSIG_PARENT_QDELETING, /obj/item/gps/proc/stop_tracking)
 	if(!hud_arrow)
 		hud_arrow = new /atom/movable/screen/waypoint_tracker/gps
-		hud_bound?.AddScreen(hud_arrow)
+		hud_bound?.add_screen(hud_arrow)
 	hud_arrow.set_disabled(FALSE)
 	update_tracking()
 	START_PROCESSING(SSprocessing, src)
@@ -238,7 +238,7 @@
 		return
 	var/angle
 	var/valid = TRUE
-	var/curr_l_id = SSmapping.level_id(get_z(src))
+	var/curr_l_id = SSmapping.fluff_level_id(get_z(src))
 	var/turf/T = get_turf(src)
 	if(!T)
 		hud_arrow?.set_disabled(TRUE)
@@ -253,7 +253,7 @@
 		var/datum/component/gps_signal/sig = tracking
 		var/atom/A = sig.parent
 		var/turf/AT = get_turf(A)
-		if(SSmapping.level_id(get_z(A)) != curr_l_id)
+		if(SSmapping.fluff_level_id(get_z(A)) != curr_l_id)
 			valid = FALSE
 		else
 			angle = arctan(AT.x - T.x, AT.y - T.y)
@@ -363,16 +363,16 @@
 	if(!on)
 		return
 	var/turf/curr = get_turf(src)
-	var/list/detecting_levels = GLOB.using_map.get_map_levels(curr.z, long_range)
+	var/list/detecting_levels = (LEGACY_MAP_DATUM).get_map_levels(curr.z, long_range)
 	.["x"] = curr.x
 	.["y"] = curr.y
-	.["level"] = SSmapping.level_id(curr.z)
+	.["level"] = SSmapping.fluff_level_id(curr.z)
 	var/list/others = list()
 	.["signals"] = others
 	var/datum/component/gps_signal/our_sig = GetComponent(/datum/component/gps_signal)
 	for(var/other_z in detecting_levels)
 		var/list/gpses = GLOB.gps_transmitters[other_z]
-		var/l_id = SSmapping.level_id(other_z)
+		var/l_id = SSmapping.fluff_level_id(other_z)
 		for(var/datum/component/gps_signal/sig as anything in gpses)
 			if(sig == our_sig)
 				continue

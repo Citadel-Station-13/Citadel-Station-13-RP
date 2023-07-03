@@ -2,7 +2,7 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 
 /proc/generate_no_ceiling_image()
 	var/image/I = image(icon = 'icons/turf/open_space.dmi', icon_state = "no_ceiling")
-	I.plane = PLANE_MESONS
+	I.plane = VERTICALITY_PLANE
 	return I
 
 /turf/simulated/floor/calculate_adjacencies()

@@ -103,13 +103,9 @@
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
-			if(!istype(vismob, /mob/observer))
-				M.show_message(message, SAYCODE_TYPE_ALWAYS)
-
-			else //(istype(vismob, /mob/observer))
-				var/mob/observer/O = vismob
-				if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
-					O.show_message(message, SAYCODE_TYPE_ALWAYS)
+			if(istype(vismob, /mob/observer))
+				continue
+			M.show_message(message, SAYCODE_TYPE_ALWAYS)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj

@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/armor
 	allowed = list(/obj/item/gun/ballistic/sec/flash, /obj/item/gun/energy,/obj/item/reagent_containers/spray/pepper,/obj/item/gun/ballistic,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_OVER\
 		|ACCESSORY_SLOT_MEDAL\
@@ -11,7 +11,7 @@
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
 	heat_protection = UPPER_TORSO|LOWER_TORSO
 	max_heat_protection_temperature = ARMOR_MAX_HEAT_PROTECTION_TEMPERATURE
-	siemens_coefficient = 0.6
+	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/can_equip(mob/M, slot, mob/user, flags)
 	. = ..()
@@ -37,7 +37,7 @@
 	desc = "An armored vest that protects against some damage."
 	icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/light
 
 /obj/item/clothing/suit/armor/vest/alt
 	name = "security armor"
@@ -56,7 +56,7 @@
 	desc = "A vest with heavy padding to protect against melee attacks."
 	icon_state = "riot"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor_type = /datum/armor/security/special/riot
+	armor_type = /datum/armor/station/riot
 	siemens_coefficient = 0.5
 
 /obj/item/clothing/suit/armor/riot/alt
@@ -64,13 +64,13 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "riot_new", SLOT_ID_LEFT_HAND = "riot_new")
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bullet resistant vest"
+	name = "ballistic vest"
 	desc = "A vest that excels in protecting the wearer against high-velocity solid projectiles."
 	icon_state = "bulletproof"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor_type = /datum/armor/security/special/ballistic
+	armor_type = /datum/armor/station/ballistic
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/bulletproof/alt
@@ -84,7 +84,7 @@
 	icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor_type = /datum/armor/security/special/ablative
+	armor_type = /datum/armor/station/ablative
 	siemens_coefficient = 0.1
 
 /obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -113,11 +113,11 @@
 
 /obj/item/clothing/suit/armor/combat
 	name = "combat vest"
-	desc = "A vest that protects the wearer from several common types of weaponry."
+	desc = "A vest that protects the wearer from several common types of ranged weaponry."
 	icon_state = "combat"
 	blood_overlay_type = "armor"
 	slowdown = 0.5
-	armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/station/combat
 	siemens_coefficient = 0.6
 
 /obj/item/clothing/suit/armor/tactical
@@ -128,7 +128,7 @@
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	inv_hide_flags = HIDETIE|HIDEHOLSTER
 	slowdown = 1
-	armor_type = /datum/armor/security/swat
+	armor_type = /datum/armor/station/tactical
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/armor/swat
@@ -138,7 +138,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	allowed = list(/obj/item/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/tank/emergency/oxygen,/obj/item/clothing/head/helmet)
 	slowdown = 1
@@ -168,7 +168,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
 	blood_overlay_type = "armor"
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/light
 
 /obj/item/clothing/suit/armor/caution
 	name = "improvised armor (caution sign)"
@@ -294,17 +294,17 @@
 	desc = "A set of armor worn by medical members of the Emergency Response Team. Has blue and white highlights."
 	icon_state = "ertarmor_med"
 
-//New Vests
+//Armor Vests
 /obj/item/clothing/suit/storage/vest
 	name = "armor vest"
 	desc = "A standard kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "armor", SLOT_ID_LEFT_HAND = "armor")
-	armor_type = /datum/armor/security/medium
+	armor_type = /datum/armor/station/light
 	allowed = list(/obj/item/gun,/obj/item/reagent_containers/spray/pepper,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/melee/baton,/obj/item/handcuffs,/obj/item/flashlight/maglight,/obj/item/clothing/head/helmet)
 
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 	min_cold_protection_temperature = ARMOR_MIN_COLD_PROTECTION_TEMPERATURE
@@ -393,7 +393,6 @@
 	name = "\improper Orion Confederation armored vest"
 	desc = "A synthetic armor vest. This one is marked with the crest of the Orion Confederation."
 	icon_state = "solvest"
-	armor_type = /datum/armor/security/medium
 
 /obj/item/clothing/suit/storage/vest/oricon/heavy
 	name = "\improper Orion Confederation heavy armored vest"
@@ -446,7 +445,7 @@
 	desc = "A heavy kevlar vest with webbing attached."
 	icon_state = "webvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor_type = /datum/armor/security/high
+	armor_type = /datum/armor/station/heavy
 	slowdown = 0.5
 
 /obj/item/clothing/suit/storage/vest/heavy/officer
@@ -487,14 +486,14 @@
 	desc = "A high-quality heavy kevlar vest in a fetching tan. The vest is surprisingly flexible, and possibly made of an advanced material."
 	icon_state = "mercwebvest"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor_type = /datum/armor/merc/heavy
+	armor_type = /datum/armor/station/combat
 	slowdown = 0
 
 /obj/item/clothing/suit/storage/vest/capcarapace
 	name = "captain's carapace"
 	desc = "A fireproof, armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
 	icon_state = "capcarapace"
-	armor_type = /datum/armor/security/captain
+	armor_type = /datum/armor/station/tactical
 
 /obj/item/clothing/suit/storage/vest/formal
 	name = "formal armored wear"
@@ -556,7 +555,7 @@
 	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
 	icon_state = "heavy"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor_type = /datum/armor/security/special/bulky_kinetic
+	armor_type = /datum/armor/security/bulky_kinetic
 	w_class = ITEMSIZE_HUGE // Very bulky, very heavy.
 	gas_transfer_coefficient = 0.90
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
@@ -603,7 +602,7 @@
 //Modular plate carriers
 /obj/item/clothing/suit/armor/pcarrier
 	name = "plate carrier"
-	desc = "A lightweight black plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight black plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
@@ -650,14 +649,25 @@
 					to_chat(H, "<span class='warning'>You can't wear \the [A] with \the [H.shoes], they're in the way.</span>")
 					return FALSE
 	return TRUE
+
+/obj/item/clothing/suit/armor/pcarrier/alt
+	desc = "A lightweight black plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own. This one has less material at the waist, making it more practical for belt-worn equipment."
+	icon_state = "pcarrier_alt"
+
 /obj/item/clothing/suit/armor/pcarrier/light
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/armor/pcarrier/light/sol
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag)
 
-/obj/item/clothing/suit/armor/pcarrier/light/nt
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/nt)
+/obj/item/clothing/suit/armor/pcarrier/light/nts
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/nts)
+
+/obj/item/clothing/suit/armor/pcarrier/light/ntbs
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/ntbs)
+
+/obj/item/clothing/suit/armor/pcarrier/light/ntc
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate, /obj/item/clothing/accessory/armor/tag/ntc)
 
 /obj/item/clothing/suit/armor/pcarrier/medium
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches)
@@ -665,75 +675,77 @@
 /obj/item/clothing/suit/armor/pcarrier/medium/sol
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag)
 
-/obj/item/clothing/suit/armor/pcarrier/medium/security
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/sec)
+/obj/item/clothing/suit/armor/pcarrier/medium/civsec
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/civsec)
 
 /obj/item/clothing/suit/armor/pcarrier/medium/command
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/com)
 
-/obj/item/clothing/suit/armor/pcarrier/medium/nt
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/nt)
+/obj/item/clothing/suit/armor/pcarrier/medium/nts
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/nts)
+
+/obj/item/clothing/suit/armor/pcarrier/medium/ntc
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches, /obj/item/clothing/accessory/armor/tag/ntc)
 
 /obj/item/clothing/suit/armor/pcarrier/blue
 	name = "blue plate carrier"
-	desc = "A lightweight blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_blue"
 
 /obj/item/clothing/suit/armor/pcarrier/press
 	name = "light blue plate carrier"
-	desc = "A lightweight light blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight, light blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_press"
 
 /obj/item/clothing/suit/armor/pcarrier/blue/sol
 	name = "peacekeeper plate carrier"
-	desc = "A lightweight plate carrier vest in SCG Peacekeeper colors. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight plate carrier vest with built-in spall guard. This one is in SCG Peacekeeper colors. It can be equipped with armor plates, but provides no protection of its own."
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium, /obj/item/clothing/accessory/storage/pouches/blue, /obj/item/clothing/accessory/armor/armguards/blue, /obj/item/clothing/accessory/armor/tag)
 
 /obj/item/clothing/suit/armor/pcarrier/green
 	name = "green plate carrier"
-	desc = "A lightweight green plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight green plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_green"
 
 /obj/item/clothing/suit/armor/pcarrier/navy
 	name = "navy plate carrier"
-	desc = "A lightweight navy blue plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight navy blue plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_navy"
 
 /obj/item/clothing/suit/armor/pcarrier/tan
 	name = "tan plate carrier"
-	desc = "A lightweight tan plate carrier vest. It can be equipped with armor plates, but provides no protection of its own."
+	desc = "A lightweight tan plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own."
 	icon_state = "pcarrier_tan"
 
 /obj/item/clothing/suit/armor/pcarrier/tan/tactical
 	name = "tactical plate carrier"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/tactical, /obj/item/clothing/accessory/storage/pouches/large/tan)
 
-/obj/item/clothing/suit/armor/pcarrier/merc
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/merc, /obj/item/clothing/accessory/armor/armguards/merc, /obj/item/clothing/accessory/armor/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
+/obj/item/clothing/suit/armor/pcarrier/combat
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/combat, /obj/item/clothing/accessory/storage/pouches/large)
 
 //Brig Spec Variants
-/obj/item/clothing/suit/armor/pcarrier/bulletproof
+/obj/item/clothing/suit/armor/pcarrier/ballistic
 	name = "ballistic plate carrier"
 	desc = "A lightweight ballistic vest. Equipped with a ballistic armor plate by default, this armor consists of a kevlar weave augmented by a non-Newtonian gel layer."
-	icon_state = "ballistic"
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/bulletproof, /obj/item/clothing/accessory/armor/tag/sec)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/ballistic)
 
-/obj/item/clothing/suit/armor/pcarrier/laserproof
+/obj/item/clothing/suit/armor/pcarrier/ablative
 	name = "ablative plate carrier"
 	desc = "A lightweight deflector vest. Equipped with an ablative armor plate by default, this armor consists of a polished Cartesian Glance Plating and an inset network of heat sink channels."
 	icon_state = "ablative"
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/laserproof, /obj/item/clothing/accessory/armor/tag/sec)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/ablative)
 
 /obj/item/clothing/suit/armor/pcarrier/riot
 	name = "riot suppression plate carrier"
 	desc = "A lightweight padded vest. Equipped with a padded armor plate by default, this armor consists of a stab resistant kevlar weave and hardened fleximat padding."
 	icon_state = "riot"
-	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot, /obj/item/clothing/accessory/armor/tag/sec)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/riot)
 
 //Clown Op Carrier
 /obj/item/clothing/suit/armor/pcarrier/clownop
 	name = "clown commando plate carrier"
-	desc = "A lightweight red and white plate carrier vest. It can be equipped with armor plates, but provides no protection of its own. Honk."
+	desc = "A lightweight red and white plate carrier vest with built-in spall guard. It can be equipped with armor plates, but provides no protection of its own. Honk."
 	icon_state = "clowncarrier"
 	starting_accessories = list(/obj/item/clothing/accessory/armor/armorplate/medium)
 
@@ -777,20 +789,6 @@
 	armor_type = /datum/armor/centcom/ert/paracausal
 	action_name = "Enable Coat Sigils"
 	valid_accessory_slots = null
-
-/obj/item/clothing/suit/armor/heavy
-	name = "heavy armor"
-	desc = "An old military-grade suit of armor. Incredibly robust against brute force damage! However, it offers little protection from energy-based weapons, which, combined with its bulk, makes it woefully obsolete."
-	icon_state = "heavy"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	armor_type = /datum/armor/security/special/bulky_kinetic
-	w_class = ITEMSIZE_HUGE // massively bulky item
-	gas_transfer_coefficient = 0.90
-	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
-	slowdown = 5 // If you're a tank you're gonna move like a tank.
-	inv_hide_flags = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 0
-
 
 /obj/item/clothing/suit/armor/vest/wolftaur
 	name = "wolf-taur armor vest"

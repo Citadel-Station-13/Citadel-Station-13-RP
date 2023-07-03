@@ -81,7 +81,7 @@
 
 	action_name = "Toggle Helmet"
 
-/obj/item/clothing/suit/space/void/examine(mob/user)
+/obj/item/clothing/suit/space/void/examine(mob/user, dist)
 	. = ..()
 	var/list/part_list = new
 	for(var/obj/item/I in list(helmet,boots,tank,cooler))

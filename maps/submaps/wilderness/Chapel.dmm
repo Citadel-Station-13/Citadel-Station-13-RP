@@ -300,11 +300,6 @@
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/wood/sif,
 /area/submap/Chapel1)
-"bk" = (
-/obj/structure/table/sifwoodentable,
-/obj/item/material/fishing_net,
-/turf/simulated/floor/wood/sif,
-/area/submap/Chapel1)
 "bl" = (
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/grass/sif,
@@ -1335,7 +1330,7 @@ aX
 ba
 bd
 bh
-bk
+av
 ac
 ac
 ab

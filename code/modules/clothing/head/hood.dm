@@ -130,7 +130,7 @@
 	name = "explorer hood"
 	desc = "An armoured hood for exploring harsh environments."
 	icon_state = "explorer"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/exploration/soft
@@ -140,7 +140,7 @@
 	desc = "An armoured hood for mining in harsh environments."
 	icon = 'icons/clothing/suit/mining.dmi'
 	icon_state = "minehood"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
@@ -151,7 +151,7 @@
 	name = "eldritch hood"
 	desc = "A baggy hood smeared with some kind of waxy substance. Up close, what appeared to be burlap is revealed to actually be tanned skin."
 	icon_state = "eldritch"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	siemens_coefficient = 0.9
 	armor_type = /datum/armor/lavaland/eldritch
 
@@ -233,19 +233,30 @@
 	desc = "A heavily modified NT-DDO standard issue combat helmet. Although this configuration is necessarily not spaceworthy, it retains its counterpart's protections."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	icon_state = "deathsquad"
-	armor_type = /datum/armor/centcom/deathsquad
-	clothing_flags = THICKMATERIAL
+	armor_type = /datum/armor/station/heavy
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	inv_hide_flags = BLOCKHAIR
-	siemens_coefficient = 0.6
+	siemens_coefficient = 0.7
 
 /obj/item/clothing/head/hood/covertcarrier/blueshield
 	name = "experimental retractable helmet"
-	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection.."
+	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection."
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "helmet"
 	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
-	clothing_flags = THICKMATERIAL
-	armor_type = /datum/armor/security/medium
-	siemens_coefficient = 1
+	clothing_flags = CLOTHING_THICK_MATERIAL
+	armor_type = /datum/armor/station/medium
+	siemens_coefficient = 0.7
+
+/obj/item/clothing/head/hood/covertcarrier/blueshield/navy
+	name = "experimental retractable helmet"
+	desc = "A modified NT standard issue helmet. It has been designed to retract and collapse in on itself without sacrificing protection."
+	icon = 'icons/obj/clothing/hats.dmi'
+	icon_state = "helmet"
+	valid_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	restricted_accessory_slots = (ACCESSORY_SLOT_HELM_C)
+	clothing_flags = CLOTHING_THICK_MATERIAL
+	armor_type = /datum/armor/station/medium
+	siemens_coefficient = 0.7
 	starting_accessories = list(/obj/item/clothing/accessory/armor/helmcover/navy)

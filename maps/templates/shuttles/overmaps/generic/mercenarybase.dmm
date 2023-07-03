@@ -2325,7 +2325,7 @@
 /obj/item/clothing/suit/armor/combat,
 /obj/item/clothing/shoes/leg_guard/combat,
 /obj/item/clothing/gloves/arm_guard/combat,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/head/helmet/redcombat,
 /turf/simulated/floor/tiled/dark,
 /area/mercbase/eqroom)
 "lO" = (
@@ -2356,12 +2356,12 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/combat,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/accessory/armor/armguards/merc,
-/obj/item/clothing/accessory/armor/legguards/merc,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/accessory/armor/armguards/combat,
+/obj/item/clothing/accessory/armor/legguards/combat,
+/obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/energy/gun,
 /obj/item/grenade/flashbang,
 /turf/simulated/floor/tiled/dark,
@@ -2396,12 +2396,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/combat,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/accessory/armor/armguards/merc,
-/obj/item/clothing/accessory/armor/legguards/merc,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/accessory/armor/armguards/combat,
+/obj/item/clothing/accessory/armor/legguards/combat,
+/obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/energy/gun,
 /obj/item/grenade/flashbang,
 /turf/simulated/floor/tiled/dark,
@@ -3174,12 +3174,12 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/combat,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/accessory/armor/armguards/merc,
-/obj/item/clothing/accessory/armor/legguards/merc,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/accessory/armor/armguards/combat,
+/obj/item/clothing/accessory/armor/legguards/combat,
+/obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/energy/gun,
 /obj/item/grenade/flashbang,
 /turf/simulated/floor/tiled/dark,
@@ -3214,12 +3214,12 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/clothing/suit/armor/pcarrier/merc,
+/obj/item/clothing/suit/armor/pcarrier/combat,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/mask/gas/syndicate,
-/obj/item/clothing/accessory/armor/armguards/merc,
-/obj/item/clothing/accessory/armor/legguards/merc,
-/obj/item/clothing/head/helmet/merc,
+/obj/item/clothing/accessory/armor/armguards/combat,
+/obj/item/clothing/accessory/armor/legguards/combat,
+/obj/item/clothing/head/helmet/redcombat,
 /obj/item/gun/energy/gun,
 /obj/item/grenade/flashbang,
 /turf/simulated/floor/tiled/dark,

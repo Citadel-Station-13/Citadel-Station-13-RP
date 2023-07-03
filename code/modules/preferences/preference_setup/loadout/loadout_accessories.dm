@@ -2,7 +2,7 @@
 /datum/gear/accessory
 	name = "Blue Silk Tie"
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 	abstract_type = /datum/gear/accessory
 	path = /obj/item/clothing/accessory
 	cost = 1
@@ -26,6 +26,63 @@
 /datum/gear/accessory/armband/colored/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+
+/datum/gear/accessory/insignia
+	name = "Insignia Selection"
+	path = /obj/item/clothing/accessory/oricon/department
+
+/datum/gear/accessory/insignia/New()
+	..()
+	var/insignia = list()
+	insignia["Command - Crew"] = /obj/item/clothing/accessory/oricon/department/command/crew
+	insignia["Command - Crew Short"] = /obj/item/clothing/accessory/oricon/department/command/service
+	insignia["Command - Bands"] = /obj/item/clothing/accessory/oricon/department/command/fleet
+	insignia["Command - Echelons"] = /obj/item/clothing/accessory/oricon/department/command/marine
+	insignia["Blueshield - Crew"] = /obj/item/clothing/accessory/oricon/department/blueshield/crew
+	insignia["Blueshield - Crew Short"] = /obj/item/clothing/accessory/oricon/department/blueshield/service
+	insignia["Blueshield - Bands"] = /obj/item/clothing/accessory/oricon/department/blueshield/fleet
+	insignia["Blueshield - Echelons"] = /obj/item/clothing/accessory/oricon/department/blueshield/marine
+	insignia["Security - Crew"] = /obj/item/clothing/accessory/oricon/department/security/crew
+	insignia["Security - Crew Short"] = /obj/item/clothing/accessory/oricon/department/security/service
+	insignia["Security - Bands"] = /obj/item/clothing/accessory/oricon/department/security/fleet
+	insignia["Security - Echelons"] = /obj/item/clothing/accessory/oricon/department/security/marine
+	insignia["Medical - Crew"] = /obj/item/clothing/accessory/oricon/department/medical/crew
+	insignia["Medical - Crew Short"] = /obj/item/clothing/accessory/oricon/department/medical/service
+	insignia["Medical - Bands"] = /obj/item/clothing/accessory/oricon/department/medical/fleet
+	insignia["Medical - Echelons"] = /obj/item/clothing/accessory/oricon/department/medical/marine
+	insignia["Science - Crew"] = /obj/item/clothing/accessory/oricon/department/research/crew
+	insignia["Science - Crew Short"] = /obj/item/clothing/accessory/oricon/department/research/service
+	insignia["Science - Bands"] = /obj/item/clothing/accessory/oricon/department/research/fleet
+	insignia["Science - Echelons"] = /obj/item/clothing/accessory/oricon/department/research/marine
+	insignia["Engineering - Crew"] = /obj/item/clothing/accessory/oricon/department/engineering/crew
+	insignia["Engineering - Crew Short"] = /obj/item/clothing/accessory/oricon/department/engineering/service
+	insignia["Engineering - Bands"] = /obj/item/clothing/accessory/oricon/department/engineering/fleet
+	insignia["Engineering - Echelons"] = /obj/item/clothing/accessory/oricon/department/engineering/marine
+	insignia["Supply - Crew"] = /obj/item/clothing/accessory/oricon/department/supply/crew
+	insignia["Supply - Crew Short"] = /obj/item/clothing/accessory/oricon/department/supply/service
+	insignia["Supply - Bands"] = /obj/item/clothing/accessory/oricon/department/supply/fleet
+	insignia["Supply - Echelons"] = /obj/item/clothing/accessory/oricon/department/supply/marine
+	insignia["Service - Crew"] = /obj/item/clothing/accessory/oricon/department/service/crew
+	insignia["Service - Crew Short"] = /obj/item/clothing/accessory/oricon/department/service/service
+	insignia["Service - Bands"] = /obj/item/clothing/accessory/oricon/department/service/fleet
+	insignia["Service - Echelons"] = /obj/item/clothing/accessory/oricon/department/service/marine
+	gear_tweaks += new/datum/gear_tweak/path(insignia)
+
+/datum/gear/accessory/insigniacolored
+	name = "Insignia - Colorable"
+	path = /obj/item/clothing/accessory/oricon/department/colorable
+
+/datum/gear/accessory/insigniacolored/New()
+	..()
+	var/insignia = list()
+	insignia["Colorable - Crew"] = /obj/item/clothing/accessory/oricon/department/colorable
+	insignia["Colorable - Crew Short"] = /obj/item/clothing/accessory/oricon/department/colorable/service
+	insignia["Colorable - Bands"] = /obj/item/clothing/accessory/oricon/department/colorable/fleet
+	insignia["Colorable - Echelons"] = /obj/item/clothing/accessory/oricon/department/colorable/marine
+	gear_tweaks += new/datum/gear_tweak/path(insignia)
+	gear_tweaks += gear_tweak_free_color_choice
+
 
 /datum/gear/accessory/wallet
 	name = "Wallet - Orange"
@@ -67,7 +124,6 @@
 /datum/gear/accessory/wcoat
 	name = "Waistcoat - Selection"
 	path = /obj/item/clothing/accessory/wcoat
-	cost = 1
 
 /datum/gear/accessory/wcoat/New()
 	..()
@@ -80,7 +136,6 @@
 /datum/gear/accessory/tie
 	name = "Tie - Selection"
 	path = /obj/item/clothing/accessory/tie
-	cost = 1
 
 /datum/gear/accessory/tie/New()
 	..()
@@ -93,7 +148,6 @@
 /datum/gear/accessory/scarf
 	name = "Scarf - Selection"
 	path = /obj/item/clothing/accessory/scarf
-	cost = 1
 
 /datum/gear/accessory/scarf/New()
 	..()
@@ -106,7 +160,6 @@
 /datum/gear/accessory/scarfcolor
 	name = "Scarf Colorable"
 	path = /obj/item/clothing/accessory/scarf/white
-	cost = 1
 
 /datum/gear/accessory/scarfcolor/New()
 	..()
@@ -115,7 +168,6 @@
 /datum/gear/accessory/jacket
 	name = "Suit Jacket Selection"
 	path = /obj/item/clothing/accessory/jacket
-	cost = 1
 
 /datum/gear/accessory/jacket/New()
 	..()
@@ -152,7 +204,6 @@
 /datum/gear/accessory/holster_selection
 	name = "Holster - Selection"
 	path = /obj/item/clothing/accessory/holster
-	cost = 1
 
 /datum/gear/accessory/holster_selection/New()
 	..()
@@ -215,7 +266,6 @@
 	name = "Bracelet - Selection"
 	description = "Choose from a number of bracelets."
 	path = /obj/item/clothing/accessory/bracelet
-	cost = 1
 
 /datum/gear/accessory/bracelet/material/New()
 	..()
@@ -266,7 +316,6 @@
 /datum/gear/accessory/asym
 	name = "Asymmetric Jacket - Selection"
 	path = /obj/item/clothing/accessory/asymmetric
-	cost = 1
 
 /datum/gear/accessory/asym/New()
 	..()
@@ -284,7 +333,7 @@
 	name = "Choker"
 	path = /obj/item/clothing/accessory/choker
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/gear/choker/New()
 	..()
@@ -294,7 +343,7 @@
 	name = "Collar - Silver"
 	path = /obj/item/clothing/accessory/collar/silver
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
+	sort_category = LOADOUT_CATEGORY_ACCESSORIES
 
 /datum/gear/collar/New()
 	..()
@@ -333,7 +382,6 @@
 	path = /obj/item/clothing/accessory/collar/holo/indigestible
 
 /datum/gear/accessory/webbing
-	cost = 1
 
 /datum/gear/accessory/vmcrystal
 	name = "Life Crystal"
@@ -362,7 +410,6 @@
 /datum/gear/accessory/gaiter
 	name = "Neck Gaiter - Selection"
 	path = /obj/item/clothing/accessory/gaiter
-	cost = 1
 
 /datum/gear/accessory/gaiter/New()
 	..()
@@ -375,13 +422,11 @@
 /datum/gear/accessory/laconic
 	name = "Laconic Field Pouch System"
 	path = /obj/item/clothing/accessory/storage/laconic
-	cost = 1
 
 /datum/gear/accessory/buttonup
 	name = "Button Up Shirt"
 	path = /obj/item/clothing/accessory/buttonup
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
 
 /datum/gear/accessory/buttonup/New()
 	..()
@@ -391,12 +436,10 @@
 	name = "Button Up Shirt - Untucked"
 	path = /obj/item/clothing/accessory/buttonup/untucked
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
-	sort_category = "Accessories"
 
 /datum/gear/accessory/antediluvian
 	name = "Antediluvian Loincloth"
 	path = /obj/item/clothing/accessory/antediluvian
-	cost = 1
 
 /datum/gear/accessory/antediluvian_gloves
 	name = "Antediluvian Bracers"
@@ -422,6 +465,18 @@
 	name = "Disenchanted Bone Talisman"
 	path = /obj/item/clothing/accessory/disenchanted_talisman
 
+/datum/gear/accessory/legwarmers
+	name = "Thigh-Length Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmers
+
+/datum/gear/accessory/legwarmersmedium
+	name = "Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmersmedium
+
+/datum/gear/accessory/legwarmersshort
+	name = "Short Legwarmers"
+	path = /obj/item/clothing/accessory/legwarmersshort
+
 /datum/gear/accessory/halo_projector
 	name = "Holographic Halo Projector"
 	path = /obj/item/clothing/accessory/halo_projector
@@ -432,3 +487,23 @@
 	for(var/obj/item/clothing/accessory/halo_projector/halo as anything in typesof(/obj/item/clothing/accessory/halo_projector))
 		halos[initial(halo.name)] = halo
 	gear_tweaks += new/datum/gear_tweak/path(tim_sort(halos, /proc/cmp_text_asc))
+
+//Tajaran wears
+
+/datum/gear/accessory/tajaran/scarf
+	name = "Adhomian fur scarf"
+	description = "A selection of tajaran colored fur scarfs."
+	path = /obj/item/clothing/accessory/tajaran/scarf
+
+/datum/gear/accessory/tajaran/scarf/New()
+	..()
+	var/list/tscarfs = list()
+	for(var/tscarf in (typesof(/obj/item/clothing/accessory/tajaran/scarf)))
+		var/obj/item/clothing/accessory/tajaran/scarf/tscarf_type = tscarf
+		tscarfs[initial(tscarf_type.name)] = tscarf_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tscarfs, /proc/cmp_text_asc))
+
+/datum/gear/accessory/civ_exos_mob
+	name = "medical exoframe"
+	description = "A cheap medical exoframe mass-produced by NanoTrasen and provided to employees who cannot function in gravity without assistance. (This is cosmetic, and does not actually do anything.)"
+	path = /obj/item/clothing/accessory/civ_exos_mob

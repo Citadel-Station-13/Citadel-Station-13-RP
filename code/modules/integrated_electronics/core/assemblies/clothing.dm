@@ -48,7 +48,7 @@
 		EA.emp_act(severity)
 	..()
 
-/obj/item/clothing/examine(mob/user)
+/obj/item/clothing/examine(mob/user, dist)
 	if(EA)
 		EA.examine(user)
 	. = ..()

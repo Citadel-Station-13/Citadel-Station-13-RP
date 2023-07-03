@@ -368,7 +368,8 @@ var/list/sacrificed = list()
 		var/datum/gender/TT = GLOB.gender_datums[body_to_sacrifice.get_visible_gender()]
 
 		cult.add_antagonist(corpse_to_raise.mind)
-		corpse_to_raise.revive()
+		corpse_to_raise.revive(full_heal = TRUE)
+		corpse_to_raise.remove_all_restraints()
 
 		usr.say("Pasnar val'keriam usinar. Savrae ines amutan. Yam'toth remium il'tarat!")
 		corpse_to_raise.visible_message("<span class='warning'>[corpse_to_raise]'s eyes glow with a faint red as [TU.he] stand[TU.s] up, slowly starting to breathe again.</span>", \
@@ -1072,10 +1073,10 @@ var/list/sacrificed = list()
 		var/obj/item/nullrod/N = locate() in T
 		if(N)
 			for(var/mob/O in viewers(T, null))
-				O.show_message(text("<span class='warning'><B>[] invokes a talisman at [], but they are unaffected!</B></span>", usr, T), 1)
+				O.show_message(SPAN_BOLDWARNING("[usr] invokes a talisman at [T], but they are unaffected"), 1)
 		else
 			for(var/mob/O in viewers(T, null))
-				O.show_message(text("<span class='warning'><B>[] invokes a talisman at []</B></span>", usr, T), 1)
+				O.show_message(SPAN_BOLDWARNING("[usr] invokes a talisman at [T]"), 1)
 
 			if(issilicon(T))
 				T.afflict_paralyze(20 * 15)

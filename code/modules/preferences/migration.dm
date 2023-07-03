@@ -19,6 +19,26 @@
 		if(!islist(language_prefixes))
 			language_prefixes = list()
 		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
+	if(current_version < 16)
+		if(prefs.client)
+			var/list/pref_datum_entries
+			S["preferences"] >> pref_datum_entries
+			var/was_age_verified = ("AGE_VERIFIED" in pref_datum_entries)
+			if(was_age_verified)
+				var/datum/player_data/data = prefs?.client?.player
+				// alright well, this is evil, but whatever
+				// yes, this is a blocking proc
+				// this can do horrible things but hey, fuck the old age gate system and whoever allowed it to stand.
+				if(!isnull(data) && (SSdbcore.Connect() && data.block_on_available()))
+					if(data.player_flags & PLAYER_FLAG_AGE_VERIFIED)
+					else
+						data.player_flags |= PLAYER_FLAG_AGE_VERIFIED
+						var/datum/tgui/open_verify = SStgui.get_open_ui(prefs.client.mob, GLOB.age_verify_menu)
+						if(!isnull(open_verify))
+							qdel(open_verify)
+						INVOKE_ASYNC(data, TYPE_PROC_REF(/datum/player_data, save))
+				else
+					log_and_message_admins("Failed to automatically authorize age gating for player with savefile [prefs.path]")
 
 /**
  * @params

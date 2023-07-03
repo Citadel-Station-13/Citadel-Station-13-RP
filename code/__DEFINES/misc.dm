@@ -39,7 +39,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define EFFECTIVE_INVIS				50
 
 /// default mob sight flags
-#define SIGHT_FLAGS_DEFAULT (SEE_SELF)
+#define SIGHT_FLAGS_DEFAULT (SEE_SELF | SEE_BLACKNESS)
 
 /// For the client FPS pref and anywhere else
 #define MAX_CLIENT_FPS	200
@@ -90,6 +90,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHELTER_DEPLOY_BAD_AREA			"bad area"
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS	"anchored objects"
 
+#define MAX_SCRIBBLE_LEN		512
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 /// I'm not sure about "easily". It can be a lot longer.
 #define MAX_MESSAGE_LEN			4096
@@ -316,14 +317,6 @@ var/list/economy_station_departments = list(
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)
 #define MAX_CLIENT_VIEW	34
-
-// Maploader bounds indices
-#define MAP_MINX	1
-#define MAP_MINY	2
-#define MAP_MINZ	3
-#define MAP_MAXX	4
-#define MAP_MAXY	5
-#define MAP_MAXZ	6
 
 // /atom/proc/use_check flags
 #define USE_ALLOW_NONLIVING			1

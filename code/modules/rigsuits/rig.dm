@@ -137,7 +137,7 @@
 /obj/item/hardsuit/get_cell()
 	return cell
 
-/obj/item/hardsuit/examine(mob/user)
+/obj/item/hardsuit/examine(mob/user, dist)
 	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))

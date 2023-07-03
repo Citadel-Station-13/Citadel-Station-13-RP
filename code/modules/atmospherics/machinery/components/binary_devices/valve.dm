@@ -320,6 +320,6 @@
 			"You hear a ratchet.")
 		deconstruct()
 
-/obj/machinery/atmospherics/valve/examine(mob/user)
-	..()
+/obj/machinery/atmospherics/valve/examine(mob/user, dist)
+	. = ..()
 	. += "It is [open ? "open" : "closed"]."

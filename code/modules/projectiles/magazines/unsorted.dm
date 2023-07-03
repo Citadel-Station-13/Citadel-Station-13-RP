@@ -471,7 +471,7 @@
 /obj/item/ammo_magazine/m57x28mm
 	name = "magazine (5.7x28mm)"
 	desc = "A durable top-loading magazine, designed for withstanding rough treatment."
-	icon_state = "fiveseven"
+	icon_state = "ntles"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	matter = list(MAT_STEEL = 300, MAT_COPPER = 300)
@@ -480,48 +480,53 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/m57x28mm/ap
+//NTLES
+
+/obj/item/ammo_magazine/m57x28mm/ntles/
+	max_ammo = 30
+
+/obj/item/ammo_magazine/m57x28mm/ntles/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	desc = "A standard capacity magazine loaded with armor piercing bullets."
 	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 
-/obj/item/ammo_magazine/m57x28mm/hp
+/obj/item/ammo_magazine/m57x28mm/ntles/hp
 	name = "magazine (5.7x28mm hollow-point)"
 	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
-/obj/item/ammo_magazine/m57x28mm/hunter
+/obj/item/ammo_magazine/m57x28mm/ntles/hunter
 	name = "magazine (5.7x28mm hunter)"
 	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
-/obj/item/ammo_magazine/m57x28mm/empty
+/obj/item/ammo_magazine/m57x28mm/ntles/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/m57x28mm/large
-	name = "large capacity magazine (5.7x28mm)"
-	icon_state = "fiveseven_highcap"
-	max_ammo = 30
+/obj/item/ammo_magazine/m57x28mm/ntles/highcap
+	name = "high capacity magazine (5.7x28mm)"
+	icon_state = "ntles_highcap"
+	max_ammo = 50
 	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
-/obj/item/ammo_magazine/m57x28mm/large/ap
-	name = "large capacity magazine (5.7x28mm armor piercing)"
-	desc = "A high capacity magazine loaded with armor piercing bullets."
+/obj/item/ammo_magazine/m57x28mm/ntles/highcap/ap
+	name = "high capacity magazine (5.7x28mm armor piercing)"
 	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
-/obj/item/ammo_magazine/m57x28mm/large/hp
-	name = "large capacity magazine (5.7x28mm hollow-point)"
+/obj/item/ammo_magazine/m57x28mm/ntles/highcap/hp
+	name = "high capacity magazine (5.7x28mm hollow-point)"
 	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
-/obj/item/ammo_magazine/m57x28mm/large/hunter
-	name = "large capacity magazine (5.7x28mm hunter)"
+/obj/item/ammo_magazine/m57x28mm/ntles/highcap/hunter
+	name = "high capacity magazine (5.7x28mm hunter)"
 	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
-/obj/item/ammo_magazine/m57x28mm/large/empty
+/obj/item/ammo_magazine/m57x28mm/ntles/highcap/empty
 	initial_ammo = 0
+
+//Harpy SMG
 
 /obj/item/ammo_magazine/m57x28mm/smg
 	name = "NT-SMG-8 magazine (5.7x28mm)"
@@ -534,65 +539,64 @@
 	ammo_mark = "cmbtsmg_ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 
-//Vintage Mags
-/obj/item/ammo_magazine/m57x28mm/vintage
-	name = "vinage magazine (5.7x28mm)"
+//Fiveseven mags
+/obj/item/ammo_magazine/m57x28mm/fiveseven
+	name = "fiveseven magazine (5.7x28mm)"
 	desc = "A sturdy double stack magazine with a reinforced spring, designed for withstanding rough treatment."
-	icon_state = "fiveseven_old"
+	icon_state = "fiveseven"
 	origin_tech = list(TECH_COMBAT = 2)
 	mag_type = MAGAZINE
 	matter = list(MAT_STEEL = 300, MAT_COPPER = 300)
 	caliber = "5.7x28mm"
 	ammo_type = /obj/item/ammo_casing/a57x28mm
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = 1
 
-/obj/item/ammo_magazine/m57x28mm/vintage/ap
+/obj/item/ammo_magazine/m57x28mm/fiveseven/ap
 	name = "magazine (5.7x28mm armor piercing)"
-	desc = "A standard capacity magazine loaded with armor piercing bullets."
 	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
 
-/obj/item/ammo_magazine/m57x28mm/vintage/hp
+/obj/item/ammo_magazine/m57x28mm/fiveseven/hp
 	name = "magazine (5.7x28mm hollow-point)"
 	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
-/obj/item/ammo_magazine/m57x28mm/vintage/hunter
+/obj/item/ammo_magazine/m57x28mm/fiveseven/hunter
 	name = "magazine (5.7x28mm hunter)"
 	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
-/obj/item/ammo_magazine/m57x28mm/vintage/empty
+/obj/item/ammo_magazine/m57x28mm/fiveseven/empty
 	initial_ammo = 0
 
-/obj/item/ammo_magazine/m57x28mm/vintage/large
-	name = "large capacity vintage magazine (5.7x28mm)"
+/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap
+	name = "high capacity fiveseven magazine (5.7x28mm)"
+	desc = "A sturdy, extra long double stack magazine with a reinforced spring, designed for withstanding rough treatment."
 	icon_state = "fiveseven_highcap"
 	max_ammo = 30
 	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 
-/obj/item/ammo_magazine/m57x28mm/vintage/large/ap
-	name = "large capacity magazine (5.7x28mm armor piercing)"
-	desc = "A high capacity magazine loaded with armor piercing bullets."
+/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/ap
+	name = "high capacity magazine (5.7x28mm armor piercing)"
 	ammo_mark = "ap"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
-/obj/item/ammo_magazine/m57x28mm/vintage/large/hp
-	name = "large capacity magazine (5.7x28mm hollow-point)"
+/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hp
+	name = "high capacity magazine (5.7x28mm hollow-point)"
 	ammo_mark = "hp"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hp
 
-/obj/item/ammo_magazine/m57x28mm/vintage/large/hunter
-	name = "large capacity magazine (5.7x28mm hunter)"
+/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/hunter
+	name = "high capacity magazine (5.7x28mm hunter)"
 	ammo_mark = "hunter"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
-/obj/item/ammo_magazine/m57x28mm/vintage/large/empty
+/obj/item/ammo_magazine/m57x28mm/fiveseven/highcap/empty
 	initial_ammo = 0
 
 //p90
 /obj/item/ammo_magazine/m57x28mmp90
-	name = "large capacity top mounted magazine (5.7x28mm armor-piercing)"
+	name = "high capacity top mounted magazine (5.7x28mm armor-piercing)"
 	icon_state = "p90"
 	mag_type = MAGAZINE
 	ammo_type = /obj/item/ammo_casing/a57x28mm/ap
@@ -602,7 +606,7 @@
 	multiple_sprites = 1
 
 /obj/item/ammo_magazine/m57x28mmp90/hunter
-	name = "large capacity top mounted magazine (5.7x28mm hunter)"
+	name = "high capacity top mounted magazine (5.7x28mm hunter)"
 	ammo_type = /obj/item/ammo_casing/a57x28mm/hunter
 
 /obj/item/ammo_magazine/m57x28mmp90/empty
@@ -1147,3 +1151,56 @@
 /obj/item/ammo_magazine/mfoam/smg/riot
 	name = "toy submachine gun magazine (riot)"
 	ammo_type = /obj/item/ammo_casing/foam/riot
+
+//shell holders
+
+/obj/item/ammo_magazine/shotholder
+	name = "shotgun slug holder"
+	desc = "A convenient pouch that holds 12 gauge shells."
+	icon_state = "shotholder"
+	caliber = "12g"
+	ammo_type = null
+	matter = list(MAT_STEEL = 1440)
+	ammo_type = /obj/item/ammo_casing/a12g
+	initial_ammo = 0
+	max_ammo = 4
+	multiple_sprites = 1
+	var/marking_color
+
+/obj/item/ammo_magazine/shotholder/update_icon()
+	. = ..()
+	overlays.Cut()
+	if(marking_color)
+		var/image/I = image(icon, "shotholder-marking")
+		I.color = marking_color
+		overlays += I
+
+/obj/item/ammo_magazine/shotholder/full
+	initial_ammo = 4
+
+/obj/item/ammo_magazine/shotholder/full/slug
+	name = "shotgun slug holder (slug)"
+	marking_color = PIPE_COLOR_BLACK
+	ammo_type = /obj/item/ammo_casing/a12g
+
+/obj/item/ammo_magazine/shotholder/full/flare
+	name = "shotgun slug holder (flare)"
+	marking_color = COLOR_RED_GRAY
+	ammo_type = /obj/item/ammo_casing/a12g/flare
+
+/obj/item/ammo_magazine/shotholder/full/buckshot
+	name = "shotgun slug holder (buckshot)"
+	marking_color = COLOR_RED
+	ammo_type = /obj/item/ammo_casing/a12g/pellet
+
+/obj/item/ammo_magazine/shotholder/full/beanbag
+	name = "shotgun slug holder (beanbag)"
+	marking_color = COLOR_GREEN
+	ammo_type = /obj/item/ammo_casing/a12g/beanbag
+
+/obj/item/ammo_magazine/shotholder/full/stun
+	name = "shotgun slug holder (stun)"
+	marking_color = PIPE_COLOR_YELLOW
+	ammo_type = /obj/item/ammo_casing/a12g/stunshell
+
+

@@ -7,7 +7,7 @@
 	icon_state = "space"
 	desc = "A special helmet designed for work in a hazardous, low-pressure environment."
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	permeability_coefficient = 0.01
 	armor_type = /datum/armor/general/space
 	inv_hide_flags = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -56,7 +56,7 @@
 		to_chat(usr, "This helmet does not have a built-in camera.")
 		return
 
-/obj/item/clothing/head/helmet/space/examine(mob/user)
+/obj/item/clothing/head/helmet/space/examine(mob/user, dist)
 	. = ..()
 	if(camera_networks && get_dist(user,src) <= 1)
 		. += "This helmet has a built-in camera. It's [camera ? "" : "in"]active."
@@ -70,7 +70,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.02
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL | CLOTHING_INJECTION_PORT
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight,/obj/item/tank/emergency/oxygen,/obj/item/suit_cooling_unit)
 	slowdown = 1
