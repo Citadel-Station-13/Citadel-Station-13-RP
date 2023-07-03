@@ -75,7 +75,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
-    width: 1000,
+    width: 1200,
     height: 600,
   };
 
@@ -189,7 +189,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
         </Stack.Item>
         <Stack.Item grow>
           <Stack fluid fill>
-            <Stack.Item>
+            <Stack.Item grow={0.4}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
@@ -217,7 +217,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 }
               </Section>
             </Stack.Item>
-            <Stack.Item grow={1}>
+            <Stack.Item grow={0.8}>
               <Section fill title="Queue" scrollable
                 buttons={
                   <>
