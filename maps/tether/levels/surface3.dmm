@@ -38480,10 +38480,7 @@
 /obj/effect/floor_decal/corner/mauve/bordercorner2{
 	dir = 10
 	},
-/obj/machinery/lathe/autolathe{
-	dir = 1;
-	hacked = 1
-	},
+/obj/machinery/lathe/autolathe,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
 "nyy" = (
