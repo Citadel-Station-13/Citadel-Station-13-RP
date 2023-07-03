@@ -238,6 +238,7 @@
 			return dyntool_image_forward(TOOL_SCREWDRIVER)
 
 /obj/machinery/process(delta_time)//If you dont use process or power why are you here
+	return PROCESS_KILL
 
 /obj/machinery/update_overlays()
 	. = ..()

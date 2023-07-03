@@ -7,13 +7,14 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, Stack, Table, Tabs } from "../../components";
+import { Box, Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
+import { formatSiUnit } from "../../format";
 import { Modular } from "../../layouts/Modular";
 import { WindowProps } from "../../layouts/Window";
 import { Design } from "../common/Design";
 import { IngredientsAvailable, IngredientsSelected } from "../common/Ingredients";
-import { MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME } from "../common/Materials";
+import { MaterialRender, MaterialsContext, MaterialStorage, MATERIAL_STORAGE_UNIT_NAME } from "../common/Materials";
 import { ReagentContents, ReagentContentsData, REAGENT_STORAGE_UNIT_NAME } from "../common/Reagents";
 
 interface TGUILatheControlProps {
@@ -75,8 +76,8 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
-    width: 1200,
-    height: 600,
+    width: 1000,
+    height: 900,
   };
 
   const sectionProps: SectionProps = {
@@ -90,6 +91,9 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
       resourceRender = (
         <MaterialStorage
           horizontal
+          fitted
+          m={0.5}
+          materialScale={1.5}
           materialList={data.materials}
           materialContext={data.materialsContext}
           eject={(id, amount) => act('ejectMaterial', { id: id, amount: amount })} />
@@ -122,6 +126,26 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
         </>
       );
       break;
+  }
+
+  let queuedMaterials: Record<string, number> = {};
+  if (data.queue.length !== 0) {
+    data.queue.forEach((entry) => {
+      let design = data.designs.instances[entry.design];
+      if (design === undefined) {
+        return;
+      }
+      if (design.materials !== null) {
+        Object.entries(design.materials).forEach(([id, amt]) => {
+          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + amt * entry.amount;
+        });
+      }
+      if (entry.materials !== null && design.material_parts !== null) {
+        Object.entries(entry.materials).forEach(([name, id]) => {
+          queuedMaterials[id] = (queuedMaterials[id] ?? 0) + ((design.material_parts as {})[name] ?? 0) * entry.amount;
+        });
+      }
+    });
   }
 
   return (
@@ -219,25 +243,50 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
               </Section>
             </Stack.Item>
             <Stack.Item grow={0.8}>
-              <Section fill title="Queue" scrollable
-                buttons={
-                  <>
-                    <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
-                      color="transparent" />
-                    <Button content={data.queueActive? "Stop" : "Start"}
-                      icon={data.queueActive? "stop" : "play"}
-                      color="transparent"
-                      selected={data.queueActive}
-                      onClick={() => act(data.queueActive? "stop" : "start")} />
-                  </>
-                }>
+              <Stack vertical fill>
+                <Stack.Item grow>
+                  <Section fill title="Queue" scrollable
+                    buttons={
+                      <>
+                        <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
+                          color="transparent" />
+                        <Button content={data.queueActive? "Stop" : "Start"}
+                          icon={data.queueActive? "stop" : "play"}
+                          color="transparent"
+                          selected={data.queueActive}
+                          onClick={() => act(data.queueActive? "stop" : "start")} />
+                      </>
+                    }>
+                    {
+                      data.queue.map((entry, index) => (
+                        <LatheQueued key={`${index}-${entry.amount}-${entry.design}`}
+                          entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
+                      ))
+                    }
+                  </Section>
+                </Stack.Item>
                 {
-                  data.queue.map((entry, index) => (
-                    <LatheQueued key={`${index}-${entry.amount}-${entry.design}`}
-                      entry={entry} design={data.designs.instances[entry.design]} index={index + 1} />
-                  ))
+                  Object.keys(queuedMaterials).length !== 0 && (
+                    <Stack.Item>
+                      <Section title="Material Cost">
+                        <MaterialRender
+                          ml={0.5}
+                          mr={0.5}
+                          horizontal
+                          materialList={queuedMaterials}
+                          materialContext={data.materialsContext}
+                          materialButtons={(id) => (
+                            ((data.materials[id] ?? 0) < queuedMaterials[id]) && (
+                              <Box textColor="bad">
+                                {formatSiUnit(queuedMaterials[id] - (data.materials[id] ?? 0))}
+                              </Box>
+                            )
+                          )} />
+                      </Section>
+                    </Stack.Item>
+                  )
                 }
-              </Section>
+              </Stack>
             </Stack.Item>
           </Stack>
         </Stack.Item>

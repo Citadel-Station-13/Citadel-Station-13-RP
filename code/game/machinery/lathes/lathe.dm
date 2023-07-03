@@ -345,7 +345,7 @@
 /obj/machinery/lathe/process(delta_time)
 	if(!queue_active)
 		return
-	check_queue_head()
+	progress_queue(delta_time, 1)
 
 /obj/machinery/lathe/proc/progress_queue(time, mult)
 	if(!length(queue))

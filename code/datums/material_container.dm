@@ -66,7 +66,9 @@
 /datum/material_container/proc/dump(atom/where, datum/material/material, amount = INFINITY)
 	if(!istype(material))
 		material = SSmaterials.get_material(material)
-	var/dumping = min(amount, round(stored[material.id] / SHEET_MATERIAL_AMOUNT))
+	var/can_dump = round(stored[material.id] / SHEET_MATERIAL_AMOUNT)
+	var/dumping = min(amount, can_dump)
+	stored -= dumping * SHEET_MATERIAL_AMOUNT
 	var/safety = 50
 	. = 0
 	var/obj/item/stack/stack_type = material.stack_type
