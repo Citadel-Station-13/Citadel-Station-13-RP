@@ -67,7 +67,7 @@
 		if(3)
 			to_chat(src, "<font color=green>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</font>")
 
-/mob/living/silicon/pai/is_emitter_dead()
+/mob/living/silicon/pai/proc/is_emitter_dead()
 	if(last_emitter_death != 0)
 		return TRUE
 	return FALSE

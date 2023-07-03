@@ -50,4 +50,4 @@
 		last_emitter_death = 0
 		set_stat(CONSCIOUS)
 	else
-		emitter_health = max_emitter_health - (getBruteLoss() + getFireLoss())
+		emitter_health = emitter_max_health - (getBruteLoss() + getFireLoss())
