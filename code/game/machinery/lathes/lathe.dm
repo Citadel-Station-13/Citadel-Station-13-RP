@@ -354,16 +354,18 @@
  */
 /obj/machinery/lathe/proc/progress_queue(time, mult = 1)
 	if(!length(queue))
+		atom_say("Print queue completed.")
 		stop_printing()
 		return
-	check_queue_head()
+	if(!check_queue_head())
+		return
 	var/total = time * mult
 	progress += total
 	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/design/D
 	while(!isnull(head))
 		D = SSresearch.fetch_design(head.design_id)
-		var/printed = min(head.amount, round(D.work / progress), has_resources_for(D, head.material_parts, head.ingredient_parts))
+		var/printed = min(head.amount, round(progress / D.work), has_resources_for(D, head.material_parts, head.ingredient_parts))
 		progress -= printed * D.work
 		head.amount -= printed
 		do_print(D, printed, head.material_parts, head.ingredient_parts)
