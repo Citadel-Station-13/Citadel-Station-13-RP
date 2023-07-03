@@ -28,6 +28,7 @@
 	if(health <= 0)
 		death(null,"gives one shrill beep before falling lifeless.")
 
+/mob/living/silicon/pai/process()
 	if(emitter_health <= 0)
 		if(last_emitter_death == 0)
 			last_emitter_death = world.time
@@ -39,9 +40,11 @@
 
 	// heal more when "dead" to avoid being down for an incredibly long duration
 	if(last_emitter_death != 0)
-		heal_overall_damage(2 * emitter_health_regen * seconds)
+		heal_overall_damage(2 * emitter_health_regen)
 	else
-		heal_overall_damage(emitter_health_regen * seconds)
+		heal_overall_damage(emitter_health_regen)
+
+	return ..()
 
 /mob/living/silicon/pai/update_health()
 	if(status_flags & STATUS_GODMODE)

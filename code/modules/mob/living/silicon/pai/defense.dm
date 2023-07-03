@@ -19,13 +19,6 @@
 	else
 		. = ..()
 
-/mob/living/silicon/pai/attack_hand(mob/user, list/params)
-	if(user.a_intent == INTENT_HELP)
-		visible_message("<span class='notice'>[user.name] pats [src].</span>")
-	else
-		visible_message("<span class='danger'>[user.name] boops [src] on the head.</span>")
-		close_up()
-
 /mob/living/silicon/pai/emp_act(severity)
 	// Silence for 2 minutes
 	// 20% chance to kill

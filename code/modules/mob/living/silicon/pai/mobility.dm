@@ -105,9 +105,10 @@
 
 // space movement (we get one ion burst every 3 seconds)
 /mob/living/silicon/pai/Process_Spacemove(movement_dir = NONE)
-	if(world.time >= last_space_movement + 30)
-		last_space_movement = world.time
-		// place an effect for the movement
-		new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
-		return TRUE
-	return FALSE
+	. = ..()
+	if(!.)
+		if(world.time >= last_space_movement + 30)
+			last_space_movement = world.time
+			// place an effect for the movement
+			new /obj/effect/temp_visual/pai_ion_burst(get_turf(src))
+			return TRUE
