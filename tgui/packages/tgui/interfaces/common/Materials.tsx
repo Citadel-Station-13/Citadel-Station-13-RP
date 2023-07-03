@@ -1,5 +1,9 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Flex, Section, Icon } from '../../components';
+import { Box, Button, NumberInput, Flex, Section, Icon, Stack } from '../../components';
 import { classes } from 'common/react';
 import { formatMoney, formatSiUnit } from '../../format';
 import { useLocalState, useSharedState } from '../../backend';
@@ -86,13 +90,13 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
           <b>No materials loaded.</b>
         </Box>
       ) : (
-        <Flex wrap>
+        <Stack wrap>
           {Object.entries(props.materialList).sort(
             ([a1, a2], [b1, b2]) => a1.localeCompare(b1)
           ).map(([id, amt]) => {
 
             return (
-              <Flex.Item key={id}>
+              <Stack.Item key={id}>
                 <Flex direction="column" align="center">
                   <Flex.Item>
                     <Sprite
@@ -108,10 +112,10 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
                     {props.materialButtons && props.materialButtons(id)}
                   </Flex.Item>
                 </Flex>
-              </Flex.Item>
+              </Stack.Item>
             );
           })}
-        </Flex>
+        </Stack>
       )}
     </Section>
   ) : (
@@ -121,6 +125,11 @@ export const MaterialRender = (props: MaterialRenderProps, context) => {
   );
 };
 
+/**
+ * For anything below this, which are inherited parts of the file and not written by myself.
+ * @file
+ * @license AGPLv3
+ */
 // * legacy below * //
 
 export const MATERIAL_KEYS = {

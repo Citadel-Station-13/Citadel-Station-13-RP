@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @license MIT
+ */
+
 import { BooleanLike } from "common/react";
 import { Section } from "../../components";
 

@@ -1,6 +1,13 @@
+/**
+ * @file
+ * @license MIT
+ */
 import { IngredientsNeeded } from "./Ingredients";
 
-export interface Design {
+/**
+ * The Design interface. This is a class to facilitate the definition of static functions.
+ */
+export abstract class Design {
   name: string;
   desc: string;
   category: string;

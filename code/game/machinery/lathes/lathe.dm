@@ -271,7 +271,7 @@
  */
 /obj/machinery/lathe/proc/has_resources_for(datum/design/instance, list/material_parts, list/ingredient_parts)
 	. = INFINITY
-	if(!isnull(instance.materials))
+	if(length(instance.materials))
 		var/list/materials = instance.materials.Copy()
 		for(var/key in instance.material_parts)
 			var/id = material_parts[key]
@@ -279,8 +279,8 @@
 		. = stored_materials.has_multiple(materials, efficiency_multiplier)
 	if(!.)
 		return
-	if(!isnull(instance.reagents))
-		. = min(., stored_reagents.has_multiple(instance.reagents, efficiency_multiplier))
+	if(length(instance.reagents))
+		. = min(., stored_reagents?.has_multiple(instance.reagents, efficiency_multiplier))
 	if(!.)
 		return
 	// ingredients? return 1 at most.
@@ -389,6 +389,7 @@
 	. = round(can_print(D, head.material_parts, head.ingredient_parts) > 0)
 	if(!.)
 		atom_say("Unable to continue printing - [why_cant_print(D)].")
+		stop_printing()
 
 /obj/machinery/lathe/proc/start_printing(silent)
 	if(queue_active)
