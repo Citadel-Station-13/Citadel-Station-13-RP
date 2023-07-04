@@ -1,5 +1,14 @@
 import { useBackend } from "../backend";
-import { Box, Icon, Stack, Button, Section, NoticeBox, LabeledList, Collapsible } from "../components";
+import {
+  Box,
+  Icon,
+  Stack,
+  Button,
+  Section,
+  NoticeBox,
+  LabeledList,
+  Collapsible,
+} from "../components";
 import { Window } from "../layouts";
 
 export const Vote = (props, context) => {
@@ -31,9 +40,7 @@ export const Vote = (props, context) => {
 
 const StartVoteOptions = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    vote_happening,
-  } = data;
+  const { vote_happening } = data;
   return (
     <Stack.Item>
       <Collapsible title="Start a vote">
@@ -43,21 +50,21 @@ const StartVoteOptions = (props, context) => {
               <Stack.Item>
                 <Button
                   disabled={vote_happening}
-                  onClick={() => act("transfer")}>
+                  onClick={() => act("transfer")}
+                >
                   Start Transfer Vote
                 </Button>
               </Stack.Item>
               <Stack.Item>
                 <Button
                   disabled={vote_happening}
-                  onClick={() => act("restart")}>
+                  onClick={() => act("restart")}
+                >
                   Restart
                 </Button>
               </Stack.Item>
               <Stack.Item>
-                <Button
-                  disabled={vote_happening}
-                  onClick={() => act("custom")}>
+                <Button disabled={vote_happening} onClick={() => act("custom")}>
                   Custom Vote
                 </Button>
               </Stack.Item>
@@ -75,7 +82,7 @@ const ChoicesPanel = (props, context) => {
 
   return (
     <Stack.Item grow>
-      <Section fill scrollable title={question} >
+      <Section fill scrollable title={question}>
         {choices.length !== 0 ? (
           <LabeledList>
             {choices.map((choice, i) => (
@@ -85,20 +92,25 @@ const ChoicesPanel = (props, context) => {
                   textAlign="right"
                   buttons={
                     <Button
-                      color={((selected_choice.name !== choice.name) ? "green" : "grey")}
+                      color={
+                        selected_choice.name !== choice.name ? "green" : "grey"
+                      }
                       disabled={choice.name === selected_choice}
                       onClick={() => {
                         act("vote", { index: i + 1 });
-                      }}>
+                      }}
+                    >
                       Vote
                     </Button>
-                  }>
-                  {(selected_choice === choice.name) && (
+                  }
+                >
+                  {selected_choice === choice.name && (
                     <Icon
                       alignSelf="right"
                       mr={2}
                       color="green"
-                      name="vote-yea" />
+                      name="vote-yea"
+                    />
                   )}
                   {choice.votes} Votes
                 </LabeledList.Item>
@@ -110,8 +122,9 @@ const ChoicesPanel = (props, context) => {
               disabled={!selected_choice}
               onClick={() => {
                 act("unvote");
-            }}>
-                Unvote
+              }}
+            >
+              Unvote
             </Button>
           </LabeledList>
         ) : (
@@ -131,11 +144,9 @@ const TimePanel = (props, context) => {
     <Stack.Item mt={1}>
       <Section>
         <Stack justify="space-between">
-          <Box fontSize={1.5}>
-            Time Remaining: {time_remaining || 0}s
-          </Box>
+          <Box fontSize={1.5}>Time Remaining: {time_remaining || 0}s</Box>
           {!!upper_admin && (
-            <Button color="red" onClick={() => act('cancel')}>
+            <Button color="red" onClick={() => act("cancel")}>
               Cancel Vote
             </Button>
           )}
