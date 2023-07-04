@@ -4204,7 +4204,6 @@
 #include "code\modules\research\designs\engineering.dm"
 #include "code\modules\research\designs\HUDs.dm"
 #include "code\modules\research\designs\implants.dm"
-#include "code\modules\research\designs\implants_vr.dm"
 #include "code\modules\research\designs\locator_devices.dm"
 #include "code\modules\research\designs\mechfab_designs.dm"
 #include "code\modules\research\designs\medical.dm"
