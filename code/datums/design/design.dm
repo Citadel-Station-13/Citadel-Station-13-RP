@@ -70,11 +70,11 @@
 		is_stack = TRUE
 		var/obj/item/stack/stack_path = build_path
 		max_stack = initial(stack_path.max_amount)
-	var/obj/item/instance = new build_path
 	// this is evil, but hey.
-	if(!(instance.atom_flags & ATOM_INITIALIZED))
-		// lathe designs should not be breaking if init'd; we init designs right before atoms.
-		SSatoms.InitAtom(instance, list(FALSE))
+	var/old_ssatoms_init = SSatoms.initialized
+	SSatoms.initialized = INITIALIZATION_INNEW_REGULAR
+	var/obj/item/instance = new build_path
+	SSatoms.initialized = old_ssatoms_init
 	// lathe designs shouldn't be qdeleting, but incase someone puts in a random..
 	if(QDELETED(instance))
 		return
