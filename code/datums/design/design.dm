@@ -16,6 +16,8 @@
 	var/design_unlock = NONE
 	/// is stack? autodetected.
 	var/is_stack = FALSE
+	/// max stack amount? autodetected.
+	var/max_stack
 
 	//? Design Data - UI
 	/// name of design, shows in UIs. this is usually built from build_name. do *not* manually set this most of the time.
@@ -66,6 +68,8 @@
 		return
 	if(ispath(build_path, /obj/item/stack))
 		is_stack = TRUE
+		var/obj/item/stack/stack_path = build_path
+		max_stack = initial(stack_path.max_amount)
 	var/obj/item/instance = new build_path
 	if(isnull(materials))
 		materials = instance.materials?.Copy()
@@ -127,7 +131,7 @@
 /datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(is_stack)
 		var/obj/item/stack/S = build_path
-		var/stack_size = initial(S.max_amount)
+		var/stack_size = max_stack
 		if(stack_size >= amount)
 			. = new build_path(where, amount)
 			on_print(., material_parts, ingredient_parts, reagent_parts, cost_multiplier)

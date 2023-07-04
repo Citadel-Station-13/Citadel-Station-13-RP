@@ -38,7 +38,11 @@ interface TGUILatheControlData extends ModuleData {
   materials: Record<string, number>;
   materialsContext: MaterialsContext;
   reagents: ReagentContentsData;
-  printing: BooleanLike;
+  queueActive: BooleanLike;
+  // current progress in deciseconds
+  progress: number;
+  // design ID being printed
+  printing: string | null;
   ingredients: IngredientsAvailable;
 }
 
@@ -249,11 +253,11 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                       <>
                         <Button.Confirm icon="minus" content="Clear" onClick={() => act('clear')}
                           color="transparent" />
-                        <Button content={data.printing? "Stop" : "Start"}
-                          icon={data.printing? "stop" : "play"}
+                        <Button content={data.queueActive? "Stop" : "Start"}
+                          icon={data.queueActive? "stop" : "play"}
                           color="transparent"
-                          selected={data.printing}
-                          onClick={() => act(data.printing? "stop" : "start")} />
+                          selected={data.queueActive}
+                          onClick={() => act(data.queueActive? "stop" : "start")} />
                       </>
                     }>
                     {
@@ -308,7 +312,7 @@ interface LatheQueuedProps {
 }
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
-  let { act } = useModule<TGUILatheControlData>(context);
+  let { data, act } = useModule<TGUILatheControlData>(context);
   return (
     <Collapsible
       color="transparent"
@@ -420,7 +424,7 @@ const LatheDesign = (props: LatheDesignProps, context) => {
               })} />
           ))}
           {
-            data.printing? (
+            data.queueActive? (
               <Button
                 icon="play"
                 content="Busy"

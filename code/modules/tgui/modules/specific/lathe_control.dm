@@ -17,7 +17,8 @@
 	var/obj/machinery/lathe/lathe = host
 	if(isnull(lathe))
 		return
-	.["printing"] = lathe.printing && lathe.queue_head_design()?.id
+	.["queueActive"] = lathe.queue_active
+	.["printing"] = lathe.printing
 	.["progress"] = lathe.progress
 	.["storesMaterials"] = !isnull(lathe.stored_materials)
 	.["storesReagents"] = !isnull(lathe.stored_reagents)
@@ -52,7 +53,10 @@
 			var/immediate = text2num(params["start"])
 			var/list/material_parts = params["materials"]
 			var/list/item_parts = params["items"]
-			lathe.enqueue(SSresearch.fetch_design(id), amount, material_parts, item_parts, immediate)
+			var/datum/design/D = SSresearch.fetch_design(id)
+			if(!lathe.has_design(D))
+				return TRUE
+			lathe.enqueue(D, amount, material_parts, item_parts, immediate)
 			return TRUE
 		if("dequeue")
 			var/index = text2num(params["index"])

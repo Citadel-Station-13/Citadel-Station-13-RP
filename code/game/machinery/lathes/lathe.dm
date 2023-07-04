@@ -326,7 +326,7 @@
 	if(!has_capabilities_for(instance))
 		return "Design is unsupported"
 	if(!round(has_resources_for(instance, material_parts, ingredient_parts)))
-		return "Out of materials"
+		return "Out of resources"
 
 /**
  * prints a design
@@ -353,28 +353,33 @@
  * progresses queue by time deciseconds and mult multiplier
  */
 /obj/machinery/lathe/proc/progress_queue(time, mult = 1)
-	if(!length(queue))
-		atom_say("Print queue completed.")
-		stop_printing()
-		return
 	if(!check_queue_head())
 		return
 	var/total = time * mult
 	progress += total
 	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/design/D
+	var/left_this_tick = max_items_per_tick
 	while(!isnull(head))
 		D = SSresearch.fetch_design(head.design_id)
-		var/printed = min(head.amount, round(progress / D.work), has_resources_for(D, head.material_parts, head.ingredient_parts))
+		var/resource_limited = has_resources_for(D, head.material_parts, head.ingredient_parts)
+		if(!resource_limited)
+			if(queue_active)
+				atom_say("Print queue interrupted - out of resources.")
+			stop_printing()
+			break
+		var/printed = min(head.amount, D.is_stack? (D.max_stack * left_this_tick) : left_this_tick, round(progress / D.work), resource_limited)
+		left_this_tick -= D.is_stack? CEILING(D.max_stack / printed, 1) : printed
 		progress -= printed * D.work
 		head.amount -= printed
 		do_print(D, printed, head.material_parts, head.ingredient_parts)
 		if(!head.amount)
 			queue.Cut(1, 2)
+			if(!check_queue_head(check_resources = FALSE))
+				return
 			head = queue[1]
-			check_queue_head()
-		else
-			return
+		if(left_this_tick <= 0)
+			break
 
 /obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))
@@ -386,23 +391,42 @@
 	RETURN_TYPE(/datum/design)
 	return length(queue)? (SSresearch.fetch_design(queue[1].design_id)) : null
 
-/obj/machinery/lathe/proc/check_queue_head(silent)
-	var/datum/lathe_queue_entry/head = length(queue)? queue[1] : null
-	if(isnull(head))
+/obj/machinery/lathe/proc/check_queue_head(silent, check_resources = TRUE)
+	if(!length(queue))
+		if(!silent && queue_active)
+			atom_say("Print queue complete.")
+		stop_printing()
 		return FALSE
+	var/datum/lathe_queue_entry/head = queue[1]
 	var/datum/design/D = SSresearch.fetch_design(head.design_id)
 	if(isnull(D))
-		return FALSE
-	. = round(can_print(D, head.material_parts, head.ingredient_parts) > 0)
-	if(!.)
-		atom_say("Unable to continue printing - [why_cant_print(D)].")
+		if(!silent && queue_active)
+			atom_say("Print queue interrupted - unknown entry in queue.")
 		stop_printing()
+		return FALSE
+	if(!has_design(D))
+		if(!silent && queue_active)
+			atom_say("Print queue interrupted - unknown entry in queue.")
+		stop_printing()
+		return FALSE
+	if(!has_capabilities_for(D))
+		if(!silent && queue_active)
+			atom_say("Print queue interrupted - incompatible design in queue.")
+		stop_printing()
+		return FALSE
+	if(check_resources && !round(has_resources_for(D, head.material_parts, head.ingredient_parts)))
+		if(!silent && queue_active)
+			atom_say("Print queue interrupted - out of resources.")
+		stop_printing()
+		return FALSE
+	return TRUE
 
 /obj/machinery/lathe/proc/start_printing(silent)
 	if(queue_active)
 		return
 	if(!check_queue_head(silent))
 		return
+	ui_controller?.update_ui_data()
 	queue_active = TRUE
 	update_use_power(USE_POWER_ACTIVE)
 	update_icon()
@@ -411,6 +435,7 @@
 	if(!queue_active)
 		return
 	queue_active = FALSE
+	ui_controller?.update_ui_data()
 	update_use_power(USE_POWER_IDLE)
 	update_icon()
 
