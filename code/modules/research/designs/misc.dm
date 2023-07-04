@@ -1,4 +1,5 @@
-// Everything that didn't fit elsewhere
+/datum/design/science/general
+	abstract_type = /datum/design/science/general
 
 /datum/design/science/general/generate_name(template)
 	return "General purpose design ([..()])"
@@ -40,6 +41,9 @@
 	materials = list(MAT_STEEL = 1500, MAT_SILVER = 150, MAT_GLASS = 3000)
 	build_path = /obj/item/lightreplacer
 
+/datum/design/science/illegal
+	abstract_type = /datum/design/science/illegal
+
 /datum/design/science/illegal/generate_name(template)
 	return "Non-standard design ([..()])"
 
@@ -72,14 +76,7 @@
 	req_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 3, TECH_POWER = 2)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 2000, MAT_URANIUM = 2000)
 	build_path = /obj/item/gun/energy/sizegun
-/*
-/datum/design/science/general/bodysnatcher
-	design_name = "Body Snatcher"
-	id = "bodysnatcher"
-	req_tech = list(TECH_MAGNET = 3, TECH_BIO = 3, TECH_ILLEGAL = 2)
-	materials = list(MAT_STEEL = 4000, MAT_GLASS = 4000)
-	build_path = /obj/item/bodysnatcher
-*/
+
 /datum/design/science/general/inducer_sci
 	design_name = "Inducer (Scientific)"
 	id = "inducersci"

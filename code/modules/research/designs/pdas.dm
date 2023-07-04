@@ -11,6 +11,7 @@
 // Cartridges
 
 /datum/design/science/pda_cartridge
+	abstract_type = /datum/design/science/pda_cartridge
 	req_tech = list(TECH_ENGINEERING = 2, TECH_POWER = 3)
 	materials = list(MAT_STEEL = 50, MAT_GLASS = 50)
 

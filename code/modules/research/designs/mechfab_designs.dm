@@ -1,9 +1,11 @@
 /datum/design/science/mechfab
+	abstract_type = /datum/design/science/mechfab
 	lathe_type = LATHE_TYPE_MECHA
 	category = list("Other")
 	req_tech = list(TECH_MATERIAL = 1)
 
 /datum/design/science/mechfab/ripley
+	abstract_type = /datum/design/science/mechfab/ripley
 	category = list("Ripley")
 
 /datum/design/science/mechfab/ripley/chassis
@@ -66,6 +68,7 @@
 	materials = list(MAT_STEEL = 22500)
 
 /datum/design/science/mechfab/odysseus
+	abstract_type = /datum/design/science/mechfab/odysseus
 	category = list("Odysseus")
 
 /datum/design/science/mechfab/odysseus/chassis
@@ -118,6 +121,7 @@
 	materials = list(MAT_STEEL = 11250)
 
 /datum/design/science/mechfab/gygax
+	abstract_type = /datum/design/science/mechfab/gygax
 	category = list("Gygax")
 
 /datum/design/science/mechfab/gygax/chassis/serenity
@@ -183,6 +187,7 @@
 	materials = list(MAT_STEEL = 37500, MAT_DIAMOND = 7500)
 
 /datum/design/science/mechfab/durand
+	abstract_type = /datum/design/science/mechfab/durand
 	category = list("Durand")
 
 /datum/design/science/mechfab/durand/chassis
@@ -242,6 +247,7 @@
 	materials = list(MAT_STEEL = 37500, MAT_URANIUM = 7500)
 
 /datum/design/science/mechfab/janus
+	abstract_type = /datum/design/science/mechfab/janus
 	category = list("Janus")
 	req_tech = list(TECH_MATERIAL = 7, TECH_BLUESPACE = 5, TECH_MAGNET = 6, TECH_PHORON = 3, TECH_ARCANE = 1, TECH_PRECURSOR = 2)
 
@@ -303,6 +309,7 @@
 	materials = list(MAT_SUPERMATTER = 2000, MAT_PLASTEEL = 60000, MAT_URANIUM = 3250, MAT_DURASTEEL = 2000, MAT_MORPHIUM = 3000, MAT_GOLD = 5000, MAT_VERDANTIUM = 5000, MAT_DIAMOND = 10000, MAT_LEAD = 15000)
 
 /datum/design/science/mechfab/honker
+	abstract_type = /datum/design/science/mechfab/honker
 	category = list("H.O.N.K.")
 
 /datum/design/science/mechfab/honker/chassis
@@ -362,6 +369,7 @@
 	materials = list(MAT_STEEL = 37500, MAT_DIAMOND = 7500, MAT_PLASTIC = 5000, MAT_BANANIUM = 20000)
 
 /datum/design/science/mechfab/reticent
+	abstract_type = /datum/design/science/mechfab/reticent
 	category = list("Reticent")
 
 /datum/design/science/mechfab/reticent/chassis
@@ -421,6 +429,7 @@
 	materials = list(MAT_STEEL = 37500, MAT_OSMIUM = 7500, MAT_PLASTIC = 5000, MAT_SILENCIUM = 20000)
 
 /datum/design/science/mecha
+	abstract_type = /datum/design/science/mecha
 	lathe_type = LATHE_TYPE_MECHA
 	category = list("Exosuit Equipment")
 	work = (10 * (1 / 3) * 10) // auto regexed to be old time divided by 3 in seconds.
@@ -511,6 +520,7 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg/rigged
 
 /datum/design/science/mecha/weapon
+	abstract_type = /datum/design/science/mecha/weapon
 	req_tech = list(TECH_COMBAT = 3)
 	materials = list(MAT_STEEL = 8000, MAT_GLASS = 2000)
 
@@ -979,6 +989,7 @@
  */
 
 /datum/design/science/mechfab/vehicle
+	abstract_type = /datum/design/science/mechfab/vehicle
 	lathe_type = LATHE_TYPE_MECHA
 	category = list("Vehicle")
 	req_tech = list(TECH_MATERIAL = 5, TECH_ENGINEERING = 6)
@@ -1017,6 +1028,7 @@
 ///Pinnace///
 
 /datum/design/item/mechfab/fighter/pinnace
+	abstract_type = /datum/design/item/mechfab/fighter/pinnace
 	category = list("Pinnace")
 
 /datum/design/item/mechfab/fighter/pinnace/chassis
@@ -1079,6 +1091,7 @@
 ///Baron///
 
 /datum/design/item/mechfab/fighter/baron
+	abstract_type = /datum/design/item/mechfab/fighter/baron
 	category = list("Baron")
 
 /datum/design/item/mechfab/fighter/baron/chassis
@@ -1141,6 +1154,7 @@
 ///Duke///
 
 /datum/design/item/mechfab/fighter/duke
+	abstract_type = /datum/design/item/mechfab/fighter/duke
 	category = list("Duke")
 
 /datum/design/item/mechfab/fighter/duke/chassis

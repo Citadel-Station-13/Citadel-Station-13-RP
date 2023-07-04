@@ -1,4 +1,5 @@
-//Anomaly
+/datum/design/science/anomaly
+	abstract_type = /datum/design/science/anomaly
 
 /datum/design/science/anomaly/generate_name(template)
 	return "Anomalous prototype ([..()])"
@@ -11,7 +12,8 @@
 	req_tech = list(TECH_MATERIAL = 4, TECH_BLUESPACE = 3, TECH_MAGNET = 4, TECH_PHORON = 2, TECH_ARCANE = 2)
 	build_path = /obj/item/beartrap/hunting
 
-// Precursor
+/datum/design/science/precursor
+	abstract_type = /datum/design/science/precursor
 
 /datum/design/science/precursor/generate_name(template)
 	return "Alien prototype ([..()])"

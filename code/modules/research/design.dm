@@ -3,6 +3,7 @@
  * legacy science designs
  */
 /datum/design/science
+	abstract_type = /datum/design/science
 	lathe_type = LATHE_TYPE_PROTOLATHE
 
 //Make sure items don't get free power

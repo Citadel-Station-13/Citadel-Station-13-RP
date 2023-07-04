@@ -1,8 +1,11 @@
-// Modular computer components
+/datum/design/science/modularcomponent
+	abstract_type = /datum/design/science/modularcomponent
+
 /datum/design/science/modularcomponent/generate_name(template)
 	return "Computer part design ([..()])"
 
-// Hard drives
+/datum/design/science/modularcomponent/disk
+	abstract_type = /datum/design/science/modularcomponent/disk
 
 /datum/design/science/modularcomponent/disk/normal
 	design_name = "basic hard drive"
@@ -45,7 +48,8 @@
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 100)
 	build_path = /obj/item/computer_hardware/hard_drive/micro
 
-// Network cards
+/datum/design/science/modularcomponent/netcard
+	abstract_type = /datum/design/science/modularcomponent/netcard
 
 /datum/design/science/modularcomponent/netcard/basic
 	design_name = "basic network card"
@@ -68,7 +72,8 @@
 	materials = list(MAT_STEEL = 5000, MAT_GLASS = 400)
 	build_path = /obj/item/computer_hardware/network_card/wired
 
-// Batteries
+/datum/design/science/modularcomponent/battery
+	abstract_type = /datum/design/science/modularcomponent/battery
 
 /datum/design/science/modularcomponent/battery/normal
 	design_name = "standard battery module"
@@ -112,9 +117,10 @@
 	materials = list(MAT_STEEL = 4000)
 	build_path = /obj/item/computer_hardware/battery_module/micro
 
-// Processor unit
+/datum/design/science/modularcomponent/cpu
+	abstract_type = /datum/design/science/modularcomponent/cpu
 
-/datum/design/science/modularcomponent/cpu/
+/datum/design/science/modularcomponent/cpu/normal
 	design_name = "computer processor unit"
 	id = "cpu_normal"
 	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 2)
@@ -142,8 +148,6 @@
 	materials = list(MAT_STEEL = 16000, glass = 4000)
 	build_path = /obj/item/computer_hardware/processor_unit/photonic/small
 
-// Other parts
-
 /datum/design/science/modularcomponent/cardslot
 	design_name = "RFID card slot"
 	id = "cardslot"
@@ -165,7 +169,8 @@
 	materials = list(MAT_STEEL = 10000)
 	build_path = /obj/item/computer_hardware/tesla_link
 
-// Data crystals (USB flash drives)
+/datum/design/science/modularcomponent/portabledrive
+	abstract_type = /datum/design/science/modularcomponent/portabledrive
 
 /datum/design/science/modularcomponent/portabledrive/generate_name(template)
 	return "Portable data drive design ([..()])"

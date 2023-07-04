@@ -1,4 +1,5 @@
 /datum/design/science/medical
+	abstract_type = /datum/design/science/medical
 	materials = list(MAT_STEEL = 30, MAT_GLASS = 20)
 
 /datum/design/science/medical/generate_name(template)
@@ -110,19 +111,6 @@
 	materials = list(MAT_STEEL = 4000, MAT_GLASS = 2000, MAT_PHORON = 2000)
 	build_path = /obj/item/roller/adv
 
-/*
-	KV - ML3M stuff
-		KVA - gun
-		KVB - magazines
-		KVC - cells
-			KVCA - tier 0
-			KVCB - tier 1
-			KVCC - tier 2
-			KVCD - tier 3
-			KVCE - tier 4
-			KVCO - tierless
-*/
-
 //General stuff
 
 /datum/design/item/medical/protohypospray
@@ -143,6 +131,9 @@
 	req_tech = list(TECH_MATERIAL = 7, TECH_MAGNET = 6, TECH_POWER = 4, TECH_BIO = 7)
 	materials = list(MAT_STEEL = 5000, MAT_PLASTIC = 10000, MAT_GLASS = 5000, MAT_SILVER = 1500, MAT_GOLD = 1500, MAT_DIAMOND = 5000)
 	build_path = /obj/item/ammo_magazine/cell_mag/medical/advanced
+
+/datum/design/science/medigun_cell
+	abstract_type = /datum/design/science/medigun_cell
 
 /datum/design/science/medigun_cell/generate_name(template)
 	return "Nanite cell prototype ([..()])"
