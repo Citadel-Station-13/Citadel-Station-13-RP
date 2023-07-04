@@ -95,7 +95,7 @@
 
 	free_space -= length(strip_html_properly(new_text))
 
-/obj/item/paper/examine(mob/user)
+/obj/item/paper/examine(mob/user, dist)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/observer/dead))
 		show_content(usr)

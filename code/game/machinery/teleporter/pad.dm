@@ -26,16 +26,14 @@
 		update_use_power(USE_POWER_ACTIVE)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
-		I.layer = ABOVE_LIGHTING_LAYER
+		I.layer = ABOVE_LIGHTING_LAYER_MAIN
 		add_overlay(I)
-		set_light(0.4, 1.2, 4, 10)
 	else
-		set_light(0)
 		update_use_power(USE_POWER_IDLE)
 		if(operable())
 			var/image/I = image(icon, src, "[initial(icon_state)]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
-			I.layer = ABOVE_LIGHTING_LAYER
+			I.layer = ABOVE_LIGHTING_LAYER_MAIN
 			add_overlay(I)
 
 /obj/machinery/tele_pad/Bumped(M as mob|obj)
@@ -47,8 +45,10 @@
 	if(!com)
 		return
 	if(!com.locked)
-		for(var/mob/O in hearers(src, null))
-			O.show_message(SPAN_WARNING("Failure: Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
+		return
+	if(!com.projector.consume_charge(M))
+		audible_message(SPAN_BOLDWARNING("[src] buzzes harshly, \"Power reserves insufficent for teleport. Lighten mass load or await recharge.\""))
+		playsound(src.loc, 'sound/machines/apc_nopower.ogg', 50, 0)
 		return
 	do_teleport(M, com.locked)
 	if(com.one_time_use) //Make one-time-use cards only usable one time!

@@ -126,7 +126,7 @@
 	if(ammo_mark)
 		add_overlay("[initial(icon_state)]_[ammo_mark]")
 
-/obj/item/ammo_magazine/examine(mob/user)
+/obj/item/ammo_magazine/examine(mob/user, dist)
 	. = ..()
 	. += "There [(stored_ammo.len == 1)? "is" : "are"] [stored_ammo.len] round\s left!"
 

@@ -121,7 +121,8 @@
 
 	var/braindamage = (H.brainloss * 0.6) //Can only heal half brain damage.
 
-	H.revive()
+	H.revive(full_heal = TRUE)
+	H.remove_all_restraints()
 	LAZYREMOVE(H.mutations, MUTATION_HUSK)
 	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
 	H.setBrainLoss(braindamage)

@@ -269,7 +269,7 @@
 		if(rand(1,max_shells) > loaded.len)
 			chamber_offset = rand(0,max_shells - loaded.len)
 
-/obj/item/gun/ballistic/revolver/lemat/examine(mob/user)
+/obj/item/gun/ballistic/revolver/lemat/examine(mob/user, dist)
 	. = ..()
 	if(secondary_loaded)
 		var/to_print

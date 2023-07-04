@@ -21,7 +21,7 @@
 	return ..()
 
 /obj/item/clothing/suit/storage/hooded/proc/MakeHood()
-	if(!hood)
+	if(!hood && hoodtype)
 		var/obj/item/clothing/head/hood/H = new hoodtype(src)
 		hood = H
 
@@ -430,7 +430,7 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	atom_flags = PHORONGUARD
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -456,7 +456,7 @@
 	icon_state = "miner"
 	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -482,7 +482,7 @@
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	clothing_flags = THICKMATERIAL
+	clothing_flags = CLOTHING_THICK_MATERIAL
 	inv_hide_flags = HIDEHOLSTER
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
@@ -570,7 +570,6 @@
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	item_icons = list(SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "pcarrier"
-	inv_hide_flags = HIDEHOLSTER
 	body_cover_flags = UPPER_TORSO|LOWER_TORSO
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier
 	valid_accessory_slots = (\
@@ -626,18 +625,18 @@
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/alt
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_alt"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)
 
 /obj/item/clothing/suit/storage/hooded/covertcarrier/blueshield/navy
 	name = "experimental plate carrier"
 	desc = "The NT-COV/OV-4a plate carrier is an experimental armor system designed for usage by Blueshields. The covert/overt plate carrier is slim enough to be concealed beneath certain types of jackets or coverings. During a crisis, the vest's retractable helmet may be deployed for added protection. Contains a removable light armor plate for potential upgrading."
 	icon_state = "pcarrier_navy"
 	hoodtype = /obj/item/clothing/head/hood/covertcarrier/blueshield/navy
-	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs)
+	starting_accessories = list(/obj/item/clothing/accessory/armor/tag/ntbs, /obj/item/clothing/accessory/armor/armorplate)

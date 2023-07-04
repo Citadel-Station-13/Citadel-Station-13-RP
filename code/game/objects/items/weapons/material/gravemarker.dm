@@ -35,7 +35,7 @@
 			qdel(src)
 	..()
 
-/obj/item/material/gravemarker/examine(mob/user)
+/obj/item/material/gravemarker/examine(mob/user, dist)
 	. = ..()
 	if(get_dist(src, user) < 4)
 		if(grave_name)

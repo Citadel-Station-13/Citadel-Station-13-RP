@@ -46,7 +46,7 @@
 			icon_state = "pinonfar"
 	spawn(5) .()
 
-/obj/item/pinpointer/examine(mob/user)
+/obj/item/pinpointer/examine(mob/user, dist)
 	. = ..()
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)

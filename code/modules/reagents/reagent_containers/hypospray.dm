@@ -75,7 +75,7 @@
 
 	if(H.reagents)
 		var/contained = reagentlist()
-		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_BLOOD)
+		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_INJECT)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")
 		to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 		return TRUE
@@ -169,7 +169,7 @@
 	else
 		icon_state = "[initial(icon_state)]0"
 
-/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user)
+/obj/item/reagent_containers/hypospray/autoinjector/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"
@@ -431,7 +431,7 @@
 	else
 		icon_state = "[initial(icon_state)]_ready"
 
-/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user)
+/obj/item/reagent_containers/hypospray/glukoz/examine(mob/user, dist)
 	. = ..()
 	if(reagents && reagents.reagent_list.len)
 		. += "<span class='notice'>It is currently loaded.</span>"

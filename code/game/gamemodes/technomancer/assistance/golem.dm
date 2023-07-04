@@ -209,7 +209,7 @@
 	master = user
 	name = "[master]'s [initial(name)]"
 
-/mob/living/simple_animal/technomancer_golem/examine(mob/user)
+/mob/living/simple_animal/technomancer_golem/examine(mob/user, dist)
 	. = ..()
 	if(user.mind && technomancers.is_antagonist(user.mind))
 		. += "Your pride and joy.  It's a very special synthetic robot, capable of using functions similar to you, and you built it \

@@ -54,8 +54,6 @@ Key procs
 	/// Other modification datums this conflicts with.
 	var/conflicts_with
 
-
-
 /datum/movespeed_modifier/New()
 	. = ..()
 	if(!id)

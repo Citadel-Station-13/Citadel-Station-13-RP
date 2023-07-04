@@ -100,7 +100,7 @@
 		if(istype(src, /obj/item/clothing/accessory))
 			var/obj/item/clothing/accessory/A = src
 			old = A.get_mob_overlay()
-			if(old.plane == FLOAT_PLANE)
+			if(!isnull(old) && old.plane == FLOAT_PLANE)
 				old.layer = layer_used + BODY_LAYER + 0.1
 		return old
 	var/list/mutable_appearance/rendered = render_mob_appearance(M, accessory_render_specific? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/use_one_for_accessory) : slot_meta, bodytype)
@@ -247,7 +247,7 @@
 	if(A)
 		remove_accessory(usr,A)
 	if(!LAZYLEN(accessories))
-		remove_verb(src, /obj/item/clothing/proc/removetie_verb)
+		remove_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 		accessories = null
 
 /obj/item/clothing/emp_act(severity)

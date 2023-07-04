@@ -169,7 +169,8 @@ var/list/ai_verbs_default = list(
 		if (istype(L, /datum/ai_laws))
 			laws = L
 	else
-		laws = new GLOB.using_map.default_law_type
+		var/datum/map/station/loaded = (LEGACY_MAP_DATUM)
+		laws = new loaded.default_law_type
 
 	aiMulti = new(src)
 	aiRadio = new(src)
@@ -257,8 +258,8 @@ var/list/ai_verbs_default = list(
 	if(C.statpanel_tab("Status"))
 		STATPANEL_DATA_LINE("")
 		if(!stat) // Make sure we're not unconscious/dead.
-			STATPANEL_DATA_LINE(text("System integrity: [(health+100)/2]%"))
-			STATPANEL_DATA_LINE(text("Connected synthetics: [connected_robots.len]"))
+			STATPANEL_DATA_LINE("System integrity: [(health+100)/2]%")
+			STATPANEL_DATA_LINE("Connected synthetics: [connected_robots.len]")
 			for(var/mob/living/silicon/robot/R in connected_robots)
 				var/robot_status = "Nominal"
 				if(R.shell)
@@ -268,11 +269,11 @@ var/list/ai_verbs_default = list(
 				else if(!R.cell || R.cell.charge <= 0)
 					robot_status = "DEPOWERED"
 				//Name, Health, Battery, Module, Area, and Status! Everything an AI wants to know about its borgies!
-				STATPANEL_DATA_LINE(text("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
-				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]"))
-			STATPANEL_DATA_LINE(text("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]")) //Count of total AI shells
+				STATPANEL_DATA_LINE("[R.name] | S.Integrity: [R.health]% | Cell: [R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "Empty"] | \
+				Module: [R.modtype] | Loc: [get_area_name(R, TRUE)] | Status: [robot_status]")
+			STATPANEL_DATA_LINE("AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]") //Count of total AI shells
 		else
-			STATPANEL_DATA_LINE(text("Systems nonfunctional"))
+			STATPANEL_DATA_LINE("Systems nonfunctional")
 
 
 /mob/living/silicon/ai/proc/setup_icon()
@@ -449,12 +450,12 @@ var/list/ai_verbs_default = list(
 	if(emergency_message_cooldown)
 		to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
 		return
-	var/input = sanitize(input(usr, "Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
+	var/input = sanitize(input(usr, "Please choose a message to transmit to [(LEGACY_MAP_DATUM).boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 	if(!input)
 		return
 	message_centcom(input, usr)
 	to_chat(usr, "<span class='notice'>Message transmitted.</span>")
-	log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
+	log_game("[key_name(usr)] has made an IA [(LEGACY_MAP_DATUM).boss_short] announcement: [input]")
 	emergency_message_cooldown = 1
 	spawn(300)
 		emergency_message_cooldown = 0
@@ -480,7 +481,7 @@ var/list/ai_verbs_default = list(
 	if (href_list["mach_close"])
 		if (href_list["mach_close"] == "aialerts")
 			viewalerts = 0
-		var/t1 = text("window=[]", href_list["mach_close"])
+		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])

@@ -282,13 +282,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/hammerhead/cockpit
 	name = "\improper Hammerhead Barge Cockpit"
 
-/area/shuttle/hammerhead/brig
-	name = "\improper Hammerhead Barge Brig"
-
-/area/shuttle/hammerhead/bay
-	name = "\improper Hammerhead Launch Bay"
-	has_gravity = FALSE
-
 // Civilian Transport
 /area/shuttle/civvie
 	requires_power = 1
@@ -307,18 +300,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle/mining_ship/general
 	name = "\improper Mining Shuttle"
-
-//Trade Ship
-/area/shuttle/trade_ship
-	requires_power = 1
-	icon_state = "shuttle2"
-	area_flags = AREA_RAD_SHIELDED
-
-/area/shuttle/trade_ship/general
-	name = "\improper Beruang Trade Shuttle"
-
-/area/shuttle/trade_ship/cockpit
-	name = "\improper Beruang Trade Shuttle Cockpit"
 
 //EMT Shuttle
 /area/shuttle/emt

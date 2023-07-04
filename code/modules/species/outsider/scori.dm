@@ -40,8 +40,9 @@
 	radiation_mod = 1.5
 	toxins_mod = 1.5
 
+	vision_innate = /datum/vision/baseline/species_tier_3
+
 	//Adapted to overcast skies and caverns.
-	darksight = 10	//Funny snowflake Shadekin value. This was originally 5. Then I tested Changeling's 8. Both were insufficient. I like the feel of 10.
 	flash_mod = 3.0
 
 	siemens_coefficient = 1.5

@@ -3,7 +3,7 @@
 	name = "Apron - Blue"
 	path = /obj/item/clothing/suit/storage/apron
 	slot = SLOT_ID_SUIT
-	sort_category = "Suits and Overwear"
+	sort_category = LOADOUT_CATEGORY_SUITS
 
 /datum/gear/suit/apron_white
 	name = "Apron - Colorable"
@@ -615,3 +615,72 @@
 /datum/gear/suit/leather_supercropped
 	name = "Supercropped Leather Jacket"
 	path = /obj/item/clothing/suit/storage/leather_supercropped
+
+//Tajaran wears
+
+//Cloak no hoods
+
+/datum/gear/suit/tajarancloak
+	name = "Adhomian basic cloak selection"
+	description = "A selection of tajaran native cloaks."
+	path = /obj/item/clothing/accessory/tponcho/tajarancloak
+
+/datum/gear/suit/tajarancloak/New()
+	..()
+	var/list/tajarancloaks = list()
+	for(var/tajarancloak in (typesof(/obj/item/clothing/accessory/tponcho/tajarancloak)))
+		var/obj/item/clothing/accessory/tponcho/tajarancloak/tajarancloak_type = tajarancloak
+		tajarancloaks[initial(tajarancloak_type.name)] = tajarancloak_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloaks, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajarancloakhood
+	name = "Adhomian hooded cloak selection"
+	description = "A selection of tajaran native cloaks. These ones have hoods"
+	path = /obj/item/clothing/suit/storage/hooded/tajaran/cloak
+
+/datum/gear/suit/tajarancloakhood/New()
+	..()
+	var/list/tajarancloakhoods = list()
+	for(var/tajarancloakhood in (typesof(/obj/item/clothing/suit/storage/hooded/tajaran/cloak)))
+		var/obj/item/clothing/suit/storage/hooded/tajaran/cloak/tajarancloakhood_type = tajarancloakhood
+		tajarancloakhoods[initial(tajarancloakhood_type.name)] = tajarancloakhood_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajarancloakhoods, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_coat
+	name = "Adhomian coat selection"
+	description = "A selection of tajaran native coats."
+	path = /obj/item/clothing/suit/storage/toggle/tajaran/coat
+
+/datum/gear/suit/tajara_coat/New()
+	..()
+	var/list/tajara_coats = list()
+	for(var/tajara_coat in (typesof(/obj/item/clothing/suit/storage/toggle/tajaran/coat)))
+		var/obj/item/clothing/suit/storage/toggle/tajaran/coat/tajara_coat_type = tajara_coat
+		tajara_coats[initial(tajara_coat_type.name)] = tajara_coat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_coats, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_coat_alt //No toggle
+	name = "Adhomian coat alt selection"
+	description = "A alternative selection of tajaran native coats."
+	path = /obj/item/clothing/suit/storage/tajaran/coat
+
+/datum/gear/suit/tajara_coat_alt/New()
+	..()
+	var/list/tajara_coat_alts = list()
+	for(var/tajara_coat_alt in (typesof(/obj/item/clothing/suit/storage/tajaran/coat)))
+		var/obj/item/clothing/suit/storage/tajaran/coat/tajara_coat_alt_type = tajara_coat_alt
+		tajara_coat_alts[initial(tajara_coat_alt_type.name)] = tajara_coat_alt_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_coat_alts, /proc/cmp_text_asc))
+
+/datum/gear/suit/tajara_jacket
+	name = "Adhomian jacket selection"
+	description = "A selection of tajaran native jackets."
+	path = /obj/item/clothing/suit/storage/tajaran/jacket
+
+/datum/gear/suit/tajara_jacket/New()
+	..()
+	var/list/tajara_jackets = list()
+	for(var/tajara_jacket in (typesof(/obj/item/clothing/suit/storage/tajaran/jacket)))
+		var/obj/item/clothing/suit/storage/tajaran/jacket/tajara_jacket_type = tajara_jacket
+		tajara_jackets[initial(tajara_jacket_type.name)] = tajara_jacket_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_jackets, /proc/cmp_text_asc))

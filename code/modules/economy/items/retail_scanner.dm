@@ -32,13 +32,13 @@
 	GLOB.transaction_devices += src // Global reference list to be properly set up by /proc/setup_economy()
 
 // Always face the user when put on a table
-/obj/item/retail_scanner/afterattack(atom/movable/AM, mob/user, proximity)
-	if(!proximity)	return
-	if(istype(AM, /obj/structure/table))
+/obj/item/retail_scanner/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY))	return
+	if(istype(target, /obj/structure/table))
 		src.pixel_y = 3 // Shift it up slightly to look better on table
 		src.dir = get_dir(src, user)
 	else
-		scan_item_price(AM)
+		scan_item_price(target)
 
 // Reset dir when picked back up
 /obj/item/retail_scanner/pickup(mob/user, flags, atom/oldLoc)
@@ -401,22 +401,22 @@
 //--Premades--//
 
 /obj/item/retail_scanner/command
-	account_to_connect = "Command"
+	account_to_connect = DEPARTMENT_COMMAND
 
 /obj/item/retail_scanner/medical
-	account_to_connect = "Medical"
+	account_to_connect = DEPARTMENT_MEDICAL
 
 /obj/item/retail_scanner/engineering
-	account_to_connect = "Engineering"
+	account_to_connect = DEPARTMENT_ENGINEERING
 
 /obj/item/retail_scanner/science
-	account_to_connect = "Science"
+	account_to_connect = DEPARTMENT_RESEARCH
 
 /obj/item/retail_scanner/security
-	account_to_connect = "Security"
+	account_to_connect = DEPARTMENT_SECURITY
 
 /obj/item/retail_scanner/cargo
-	account_to_connect = "Cargo"
+	account_to_connect = DEPARTMENT_CARGO
 
 /obj/item/retail_scanner/civilian
-	account_to_connect = "Civilian"
+	account_to_connect = DEPARTMENT_CIVILIAN

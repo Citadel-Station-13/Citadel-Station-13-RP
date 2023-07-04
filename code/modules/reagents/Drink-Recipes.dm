@@ -1745,7 +1745,7 @@
 	name = "Mocha Bubble Tea"
 	id = "mochaabubbletea"
 	result = "mochabubbletea"
-	required_reagents = list("chocobubbletea" = 5, "coffee" = 1)
+	required_reagents = list("cocoabubbletea" = 5, "coffee" = 1)
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/pinacolada

@@ -21,6 +21,8 @@
 /datum/tgui_panel/Del()
 	window.unsubscribe(src)
 	window.close()
+	client = null
+	window = null
 	return ..()
 
 /**

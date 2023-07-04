@@ -169,23 +169,24 @@ var/bomb_set
 			return 1
 
 		user.set_machine(src)
-		var/dat = text("<TT><B>Nuclear Fission Explosive</B><BR>\nAuth. Disk: <A href='?src=\ref[];auth=1'>[]</A><HR>", src, (auth ? "++++++++++" : "----------"))
+		var/dat = "<TT><B>Nuclear Fission Explosive</B><BR>\nAuth. Disk: <A href='?src=\ref[src];auth=1'>[(auth ? "++++++++++" : "----------")]</A><HR>"
 		if(auth)
 			if(yes_code)
-				dat += text("\n<B>Status</B>: []-[]<BR>\n<B>Timer</B>: []<BR>\n<BR>\nTimer: [] <A href='?src=\ref[];timer=1'>Toggle</A><BR>\nTime: <A href='?src=\ref[];time=-10'>-</A> <A href='?src=\ref[];time=-1'>-</A> [] <A href='?src=\ref[];time=1'>+</A> <A href='?src=\ref[];time=10'>+</A><BR>\n<BR>\nSafety: [] <A href='?src=\ref[];safety=1'>Toggle</A><BR>\nAnchor: [] <A href='?src=\ref[];anchor=1'>Toggle</A><BR>\n", (timing ? "Func/Set" : "Functional"), (safety ? "Safe" : "Engaged"), timeleft, (timing ? "On" : "Off"), src, src, src, timeleft, src, src, (safety ? "On" : "Off"), src, (anchored ? "Engaged" : "Off"), src)
+				dat += "\n<B>Status</B>: [(timing ? "Func/Set" : "Functional")]-[(safety ? "Safe" : "Engaged")]<BR>\n<B>Timer</B>: [timeleft]<BR>\n<BR>\nTimer: [(timing ? "On" : "Off")] <A href='?src=\ref[src];timer=1'>Toggle</A><BR>\nTime: <A href='?src=\ref[src];time=-10'>-</A> <A href='?src=\ref[src];time=-1'>-</A> [timeleft] <A href='?src=\ref[src];time=1'>+</A> <A href='?src=\ref[src];time=10'>+</A><BR>\n<BR>\nSafety: [(safety ? "On" : "Off")] <A href='?src=\ref[src];safety=1'>Toggle</A><BR>\nAnchor: [(anchored ? "Engaged" : "Off")] <A href='?src=\ref[src];anchor=1'>Toggle</A><BR>\n"
+
 			else
-				dat += text("\n<B>Status</B>: Auth. S2-[]<BR>\n<B>Timer</B>: []<BR>\n<BR>\nTimer: [] Toggle<BR>\nTime: - - [] + +<BR>\n<BR>\n[] Safety: Toggle<BR>\nAnchor: [] Toggle<BR>\n", (safety ? "Safe" : "Engaged"), timeleft, (timing ? "On" : "Off"), timeleft, (safety ? "On" : "Off"), (anchored ? "Engaged" : "Off"))
+				dat += "\n<B>Status</B>: Auth. S2-[(safety ? "Safe" : "Engaged")]<BR>\n<B>Timer</B>: [timeleft]<BR>\n<BR>\nTimer: [(timing ? "On" : "Off")] Toggle<BR>\nTime: - - [timeleft] + +<BR>\n<BR>\n[(safety ? "On" : "Off")] Safety: Toggle<BR>\nAnchor: [(anchored ? "Engaged" : "Off")] Toggle<BR>\n"
 		else
 			if(timing)
-				dat += text("\n<B>Status</B>: Set-[]<BR>\n<B>Timer</B>: []<BR>\n<BR>\nTimer: [] Toggle<BR>\nTime: - - [] + +<BR>\n<BR>\nSafety: [] Toggle<BR>\nAnchor: [] Toggle<BR>\n", (safety ? "Safe" : "Engaged"), timeleft, (timing ? "On" : "Off"), timeleft, (safety ? "On" : "Off"), (anchored ? "Engaged" : "Off"))
+				dat += "\n<B>Status</B>: Set-[(safety ? "Safe" : "Engaged")]<BR>\n<B>Timer</B>: [timeleft]<BR>\n<BR>\nTimer: [(timing ? "On" : "Off")] Toggle<BR>\nTime: - - [timeleft] + +<BR>\n<BR>\nSafety: [(safety ? "On" : "Off")] Toggle<BR>\nAnchor: [(anchored ? "Engaged" : "Off")] Toggle<BR>\n"
 			else
-				dat += text("\n<B>Status</B>: Auth. S1-[]<BR>\n<B>Timer</B>: []<BR>\n<BR>\nTimer: [] Toggle<BR>\nTime: - - [] + +<BR>\n<BR>\nSafety: [] Toggle<BR>\nAnchor: [] Toggle<BR>\n", (safety ? "Safe" : "Engaged"), timeleft, (timing ? "On" : "Off"), timeleft, (safety ? "On" : "Off"), (anchored ? "Engaged" : "Off"))
+				dat += "\n<B>Status</B>: Auth. S1-[(safety ? "Safe" : "Engaged")]<BR>\n<B>Timer</B>: [timeleft]<BR>\n<BR>\nTimer: [(timing ? "On" : "Off")] Toggle<BR>\nTime: - - [timeleft] + +<BR>\n<BR>\nSafety: [(safety ? "On" : "Off")] Toggle<BR>\nAnchor: [(anchored ? "Engaged" : "Off")] Toggle<BR>\n"
 		var/message = "AUTH"
 		if(auth)
-			message = text("[]", code)
+			message = "[code]"
 			if(yes_code)
 				message = "*****"
-		dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+		dat += "<HR>\n>[message]<BR>\n<A href='?src=\ref[src];type=1'>1</A>-<A href='?src=\ref[src];type=2'>2</A>-<A href='?src=\ref[src];type=3'>3</A><BR>\n<A href='?src=\ref[src];type=4'>4</A>-<A href='?src=\ref[src];type=5'>5</A>-<A href='?src=\ref[src];type=6'>6</A><BR>\n<A href='?src=\ref[src];type=7'>7</A>-<A href='?src=\ref[src];type=8'>8</A>-<A href='?src=\ref[src];type=9'>9</A><BR>\n<A href='?src=\ref[src];type=R'>R</A>-<A href='?src=\ref[src];type=0'>0</A>-<A href='?src=\ref[src];type=E'>E</A><BR>\n</TT>"
 		user << browse(dat, "window=nuclearbomb;size=300x400")
 		onclose(user, "nuclearbomb")
 	else if(deployable)
@@ -204,11 +205,11 @@ var/bomb_set
 	var/dat
 	dat += "<TT><B>Nuclear Fission Explosive</B><BR>\nNuclear Device Wires:</A><HR>"
 	for(var/wire in wires)
-		dat += text("[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>")
-	dat += text("<HR>The device is [timing ? "shaking!" : "still"]<BR>")
-	dat += text("The device is [safety ? "quiet" : "whirring"].<BR>")
-	dat += text("The lights are [lighthack ? "static" : "functional"].<BR>")
-	user << browse("<HTML><HEAD><TITLE>Bomb Defusion</TITLE></HEAD><BODY>[dat]</BODY></HTML>","window=nukebomb_hack")
+		dat += "[wire] Wire: <A href='?src=\ref[src];wire=[wire];act=wire'>[wires[wire] ? "Mend" : "Cut"]</A> <A href='?src=\ref[src];wire=[wire];act=pulse'>Pulse</A><BR>"
+	dat += "<HR>The device is [timing ? "shaking!" : "still"]<BR>"
+	dat += "The device is [safety ? "quiet" : "whirring"].<BR>"
+	dat += "The lights are [lighthack ? "static" : "functional"].<BR>"
+	user << browse("<HTML><HEAD><TITLE>Bomb Defusion</TITLE></HEAD><BODY>[dat]</BODY></HTML>", "window=nukebomb_hack")
 	onclose(user, "nukebomb_hack")
 
 /obj/machinery/nuclearbomb/verb/make_deployable()
@@ -303,7 +304,7 @@ var/bomb_set
 						yes_code = 0
 						code = null
 					else
-						code += text("[]", href_list["type"])
+						code += href_list["type"]
 						if(length(code) > 5)
 							code = "ERROR"
 			if(yes_code)
@@ -378,7 +379,7 @@ var/bomb_set
 
 	var/off_station = 0
 	var/turf/bomb_location = get_turf(src)
-	if(bomb_location && (bomb_location.z in GLOB.using_map.station_levels))
+	if(bomb_location && (bomb_location.z in (LEGACY_MAP_DATUM).station_levels))
 		if((bomb_location.x < (128-NUKERANGE)) || (bomb_location.x > (128+NUKERANGE)) || (bomb_location.y < (128-NUKERANGE)) || (bomb_location.y > (128+NUKERANGE)))
 			off_station = 1
 	else

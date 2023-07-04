@@ -305,7 +305,6 @@
 /obj/structure/bed/padded,
 /obj/item/bedsheet/orange,
 /turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken1"
 	},
 /area/skipjack_station)
@@ -456,14 +455,12 @@
 "bh" = (
 /turf/unsimulated/wall{
 	desc = "That looks like it doesn't open easily.";
-	icon = 'icons/obj/doors/rapid_pdoor.dmi';
 	icon_state = "pdoor1";
 	name = "Shuttle Bay Blast Door"
 	},
 /area/skipjack_station)
 "bi" = (
 /turf/unsimulated/floor{
-	icon = 'icons/turf/flooring/wood.dmi';
 	icon_state = "wood_broken3"
 	},
 /area/skipjack_station)
@@ -888,7 +885,7 @@
 	id_tag = "vox_east_sensor";
 	pixel_x = -25
 	},
-/obj/effect/overmap/visitable/ship/landable/skipjack,
+/obj/overmap/entity/visitable/ship/landable/skipjack,
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;

@@ -7,7 +7,6 @@
 /area/centcom/specops)
 "ac" = (
 /turf/unsimulated/wall{
-	icon = 'icons/obj/doors/Doorext.dmi';
 	icon_state = "door_locked";
 	name = "Sealed Door"
 	},

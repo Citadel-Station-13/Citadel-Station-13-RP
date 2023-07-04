@@ -26,7 +26,7 @@
 	var/brightness_color = LIGHT_COLOR_HALOGEN
 
 	var/nightshift_range = 6
-	var/nightshift_power = 0.4
+	var/nightshift_power = 0.5
 	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
 
 /obj/item/light/tube
@@ -41,7 +41,7 @@
 	brightness_color = LIGHT_COLOR_HALOGEN
 
 	nightshift_range = 6
-	nightshift_power = 0.4
+	nightshift_power = 0.5
 
 /obj/item/light/tube/large
 	w_class = ITEMSIZE_SMALL
@@ -109,7 +109,7 @@
 	brightness_range = 4
 
 	nightshift_range = 4
-	nightshift_power = 0.4
+	nightshift_power = 0.5
 
 /obj/item/light/bulb/strong
 	name = "light bulb"
@@ -122,8 +122,9 @@
 
 	brightness_range = 8
 
-	nightshift_range = 8
+	nightshift_range = 8 //Basically just a no-nightshift light.
 	nightshift_power = 0.8
+	nightshift_color = LIGHT_COLOR_TUNGSTEN
 
 /obj/item/light/throw_impact(atom/hit_atom)
 	..()
@@ -247,8 +248,8 @@
 // called after an attack with a light item
 // shatter light, unless it was an attempt to put it in a light socket
 // now only shatter if the intent was harm
-/obj/item/light/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+/obj/item/light/afterattack(atom/target, mob/user, clickchain_flags, list/params)
+	if(!(clickchain_flags & CLICKCHAIN_HAS_PROXIMITY)) return
 	if(istype(target, /obj/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)

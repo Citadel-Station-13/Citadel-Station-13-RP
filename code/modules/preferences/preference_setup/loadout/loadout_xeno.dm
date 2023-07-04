@@ -6,7 +6,7 @@
 	path = /obj/item/clothing/suit/storage/fluff/loincloth
 	slot = null
 	allowed_roles = null //Since 99.99% of all items in this file are going to be species-locked, we should keep the role-locked species items here, rather than in the role_restricted.dm file.
-	sort_category = "Xenowear"
+	sort_category = LOADOUT_CATEGORY_XENOWEAR
 
 /datum/gear/xeno/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -88,7 +88,6 @@
 
 //*Teshari
 /datum/gear/xeno/teshari
-	legacy_species_lock = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -281,12 +280,64 @@
 	name = "Tajaran - Zhan-Khazan Furs"
 	path = /obj/item/clothing/suit/tajaran/furs
 
+
 //Headwear
 /datum/gear/xeno/tajaran/head/zhan_headscarf
 	name = "Tajaran - Zhan Headscarf"
-	path = /obj/item/clothing/head/tajaran/scarf
+	path = /obj/item/clothing/head/tajaranold/scarf
 
+//Accessories
 
+/datum/gear/xeno/tajaran/accessories/tajara_wrap
+	name = "Tajaran - Marriage wrap"
+	description = "A holy cloth wrap that signifies marriage amongst tajara."
+	path = /obj/item/clothing/accessory/tajaran_wrap
+
+/datum/gear/xeno/tajaran/accessories/tajara_wrap/New()
+	..()
+	var/list/tajara_wraps = list()
+	for(var/tajara_wrap in (typesof(/obj/item/clothing/accessory/tajaran_wrap)))
+		var/obj/item/clothing/accessory/tajaran_wrap/tajara_wrap_type = tajara_wrap
+		tajara_wraps[initial(tajara_wrap_type.name)] = tajara_wrap_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tajara_wraps, /proc/cmp_text_asc))
+
+//Foot wear
+
+/datum/gear/xeno/tajaran/shoes/workboots
+	name = "Tajaran - Adhomian Work boots"
+	description = "A selection of work boots best fitted for Tajara."
+	path = /obj/item/clothing/shoes/tajara/workboots
+
+/datum/gear/xeno/tajaran/shoes/workboots/New()
+	..()
+	var/list/tworkboots = list()
+	for(var/tworkboot in (typesof(/obj/item/clothing/shoes/tajara/workboots)))
+		var/obj/item/clothing/shoes/tajara/workboots/tworkboot_type = tworkboot
+		tworkboots[initial(tworkboot_type.name)] = tworkboot_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tworkboots, /proc/cmp_text_asc))
+
+/datum/gear/xeno/tajaran/shoes/footwraps
+	name = "Tajaran - Native foot-wear"
+	description = "Native foot and leg wear worn by Tajara, completely covering the legs in wraps and the feet in adhomian fabric."
+	path = /obj/item/clothing/shoes/tajara/footwraps
+
+/datum/gear/xeno/tajaran/shoes/fancy
+	name = "Tajaran - Fancy adhomian shoes"
+	description = "A pair of fancy Tajaran shoes used for formal occasions."
+	path = /obj/item/clothing/shoes/tajara/fancy
+
+/datum/gear/xeno/tajaran/shoes/flats
+	name = "Tajaran - Adhomian flats selection"
+	description = "Dress flats, in a selection of colors. Best fitted for Tajara."
+	path = /obj/item/clothing/shoes/flats/tajara
+
+/datum/gear/xeno/tajaran/shoes/flats/New()
+	..()
+	var/list/tflats = list()
+	for(var/tflat in (typesof(/obj/item/clothing/shoes/flats/tajara)))
+		var/obj/item/clothing/shoes/flats/tajara/tflat_type = tflat
+		tflats[initial(tflat_type.name)] = tflat_type
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tflats, /proc/cmp_text_asc))
 
 //*Promethean
 /datum/gear/xeno/promethean/uniform/cohesion_suit
@@ -1013,7 +1064,8 @@
 
 
 //*Non-Restricted Items (THIS SHOULD BE KEPT MINIMAL. IF IT HAS A SPECIFIC SPECIES, PLACE IT THERE.)
-/datum/gear/xeno/back/saddlebag
+//These need a taur maintainer before they're readded. None of them work as intended.
+/*/datum/gear/xeno/back/saddlebag
 	name = "Generic - Saddle Bag, Horse"
 	path = /obj/item/storage/backpack/saddlebag
 	cost = 2
@@ -1029,6 +1081,7 @@
 /datum/gear/xeno/back/taur_vest
 	name = "Generic - Taur Duty Vest, Backpack"
 	path = /obj/item/storage/backpack/saddlebag_common/vest
+*/
 
 /datum/gear/xeno/uniform
 	name = "Generic - Gear Harness"

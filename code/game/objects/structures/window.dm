@@ -100,7 +100,7 @@
 	update_nearby_icons() // Icon update
 
 
-/obj/structure/window/examine(mob/user)
+/obj/structure/window/examine(mob/user, dist)
 	. = ..()
 
 	if (health == maxhealth)
