@@ -72,18 +72,24 @@
 		max_stack = initial(stack_path.max_amount)
 	var/obj/item/instance = new build_path
 	var/detected_materials = FALSE
+	// todo: maybe /obj/proc/detect_materials, /obj/proc/detect_material_parts ? this works fine for now tho.
 	if(isnull(materials))
-		materials = instance.materials?.Copy()
+		if(!isnull(instance.materials))
+			materials = instance.materials.Copy()
+			detected_materials = TRUE
 		if(!isnull(materials) && !isnull(instance.material_parts) && !isnull(instance.material_defaults))
+			// subtract out the material defaults the instance itself added
 			for(var/key in instance.material_parts)
 				materials[instance.material_defaults[key]] -= instance.material_parts[key]
-		detected_materials = TRUE
 	if(isnull(material_parts))
-		material_parts = instance.material_parts?.Copy()
-		detected_materials = TRUE
+		if(!isnull(instance.material_parts))
+			material_parts = instance.material_parts.Copy()
+			detected_materials = TRUE
 	if(isnull(reagents))
-		reagents = list() // nah no autodetect for now.
-		detected_materials = TRUE
+		// if(!isnull(instance.reagents))
+			// reagents = instance.reagents.Copy()
+			// detected_materials = TRUE
+		reagents = list() // nah no autodetect for now, reagents are way to ocomplicated
 	if(!build_name)
 		build_name = instance.name
 	if(!build_desc)
