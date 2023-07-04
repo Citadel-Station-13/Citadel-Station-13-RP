@@ -12,7 +12,7 @@ import { Button } from './Button';
 interface CollapsibleProps extends BoxProps {
   buttons?: InfernoNode;
   color?: string;
-  title?: string;
+  title?: string | InfernoNode;
   open?: BooleanLike;
 }
 

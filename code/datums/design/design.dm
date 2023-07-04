@@ -107,6 +107,7 @@
 		"name" = name,
 		"desc" = desc,
 		"id" = id,
+		"work" = work,
 		"category" = category,
 		"materials" = length(materials)? materials : null,
 		"material_parts" = length(material_parts)? material_parts : null,
@@ -130,7 +131,6 @@
  */
 /datum/design/proc/print(atom/where, amount, list/material_parts, list/ingredient_parts, list/reagent_parts, cost_multiplier = 1)
 	if(is_stack)
-		var/obj/item/stack/S = build_path
 		var/stack_size = max_stack
 		if(stack_size >= amount)
 			. = new build_path(where, amount)

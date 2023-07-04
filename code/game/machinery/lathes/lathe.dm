@@ -369,6 +369,8 @@
 			stop_printing()
 			break
 		var/printed = min(head.amount, D.is_stack? (D.max_stack * left_this_tick) : left_this_tick, round(progress / D.work), resource_limited)
+		if(!printed)
+			break
 		left_this_tick -= D.is_stack? CEILING(D.max_stack / printed, 1) : printed
 		progress -= printed * D.work
 		head.amount -= printed
@@ -380,6 +382,7 @@
 			head = queue[1]
 		if(left_this_tick <= 0)
 			break
+	ui_controller?.ui_queue_update()
 
 /obj/machinery/lathe/proc/reconsider_queue(autostart, silent)
 	if(!length(queue))

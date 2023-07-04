@@ -17,6 +17,7 @@ export abstract class Design {
   ingredients: IngredientsNeeded | null;
   resultItem: DesignItem;
   id: string;
+  work: number;
 }
 
 export interface DesignItem {

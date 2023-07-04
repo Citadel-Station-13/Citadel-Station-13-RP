@@ -7,7 +7,7 @@
 
 import { BooleanLike } from "common/react";
 import { ModuleData, useLocalState, useModule } from "../../backend";
-import { Box, Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, Stack, Table, Tabs } from "../../components";
+import { Box, Button, Collapsible, Dropdown, LabeledList, NoticeBox, NumberInput, ProgressBar, Stack, Table, Tabs } from "../../components";
 import { Section, SectionProps } from "../../components/Section";
 import { formatSiUnit } from "../../format";
 import { Modular } from "../../layouts/Modular";
@@ -79,7 +79,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
 
   const windowProps: WindowProps = {
     title: data.latheName,
-    width: 1000,
+    width: 1200,
     height: 900,
   };
 
@@ -217,7 +217,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
         </Stack.Item>
         <Stack.Item grow>
           <Stack fluid fill>
-            <Stack.Item grow={0.4}>
+            <Stack.Item grow={0.3}>
               <Section fill title="Categories" scrollable>
                 <Tabs vertical>
                   {
@@ -232,7 +232,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 </Tabs>
               </Section>
             </Stack.Item>
-            <Stack.Item grow={1.5}>
+            <Stack.Item grow={1.3}>
               <Section fill title="Designs" scrollable>
                 {
                   Object.values(data.designs.instances).filter((d) => d.category === category).sort((d1, d2) =>
@@ -245,7 +245,7 @@ export const TGUILatheControl = (props: TGUILatheControlProps, context) => {
                 }
               </Section>
             </Stack.Item>
-            <Stack.Item grow={0.8}>
+            <Stack.Item grow={0.9}>
               <Stack vertical fill>
                 <Stack.Item grow>
                   <Section fill title="Queue" scrollable
@@ -313,10 +313,28 @@ interface LatheQueuedProps {
 
 const LatheQueued = (props: LatheQueuedProps, context) => {
   let { data, act } = useModule<TGUILatheControlData>(context);
+  let progressRender;
+  if (props.index === 1 && data.queueActive && props.design !== undefined) {
+    progressRender = (
+      <ProgressBar
+        position="absolute"
+        top={0}
+        bottom={0}
+        left={0}
+        right={0}
+        color="#ffffff44"
+        value={data.progress / props.design.work} />
+    );
+  }
   return (
     <Collapsible
       color="transparent"
-      title={`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
+      title={
+        <>
+          {`${props.entry.amount}x ${props.design !== undefined? props.design.name : "Error - Design Unloaded"}`}
+          {progressRender}
+        </>
+      }
       buttons={
         <>
           <Button
